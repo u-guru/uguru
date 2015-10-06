@@ -314,6 +314,48 @@ section {
 				@include flex;
 				@include flex-wrap;
 				padding: 0 15px 15px;
+				#guru-ranking-popup-progress-bar {
+					position: relative;
+					width: 150px;
+					height: 150px;
+					margin: 0 auto 10px;
+					svg {
+						path {
+							stroke-linecap: round!important;
+						}
+					}
+					.progressbar-text {
+						display: none;
+					}
+					#popup-percentile {
+						@include center-xy;
+						#popup-percentile-ranking {
+							position: relative;
+							font-size: 44px;
+							font-weight: 600;
+							line-height: 1;
+							text-align: center;
+							&:after {
+								content: "th";
+								display: block;
+								position: absolute;
+								top: -1px;
+								right: -1px;
+								font-size: 12px;
+								font-weight: 400;
+								line-height: 28px;
+								text-transform: uppercase;
+							}
+						}
+						#popup-percentile-label {
+							font-size: 12px;
+							font-weight: 400;
+							letter-spacing: 1px;
+							line-height: 15px;
+							text-transform: uppercase;
+						}
+					}
+				}
 				h2 {
 					@include opacity(.9);
 					width: 100%;
@@ -1412,6 +1454,9 @@ section {
 	border: 0;
 	height: 50px;
 	line-height: 50px;
+	a.activated, a:active {
+		@include opacity(.5);
+	}
 	svg {
 		width: 100%;
 		height: 100%;
@@ -1697,6 +1742,7 @@ section {
 			@include flex-center;
 			z-index: 2;
 			height: calc(100% - 150px);
+			width: 100%;
 			div {
 				width: 100%;
 				button {
@@ -1709,11 +1755,88 @@ section {
 					line-height: 1.2;
 					text-transform: uppercase;
 				}
+				.bg-lake-80p.activated, .bg-lake-80p:active {
+					@include opacity(1);
+					background: $lake!important;
+				}
+				.bg-campus-80p.activated, .bg-campus-80p:active {
+					@include opacity(1);
+					background: $campus!important;
+				}
+			}
+			&.trending-container {
+				height: calc(100% - 130px);
+			}
+			#trending {
+				width: calc(100% - 30px);
+				margin: 15px;
+				h1 {
+					font-size: 14px;
+					font-weight: 600;
+					letter-spacing: 1px;
+					text-align: center;
+					text-transform: uppercase;
+					padding: 15px;
+					background: rgba($charcoal,.9);
+				}
+				ul {
+					margin-top: 2px;
+					background: rgba(white,.9);
+					li {
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+						padding: 15px 0;
+						button {
+							width: 70px;
+							height: 70px;
+							font-size: 14px;
+							padding: 10px;
+							svg {
+								path {
+									stroke: white;
+								}
+							}
+						}
+						button + span {
+							display: block;
+							margin-top: 5px;
+							width: 100%;
+							font-size: 14px;
+							font-weight: 600;
+							text-align: center;
+							text-transform: uppercase;
+						}
+					}
+				}
+				ul + button {
+					width: 100%;
+					height: 64px;
+					border-radius: 0;
+					margin-top: 2px;
+				}
 			}
 		}
 	}
 }
-
+@media screen and (min-height:667px) {
+	.home-view {
+		#student-home {
+			#home-content {
+				#trending {
+					ul {
+						li {
+							button {
+								width: 100px!important;
+								height: 100px!important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 
 /* ---------- GURU ONBOARDING */
@@ -2033,6 +2156,13 @@ section {
 					color: inherit!important;
 					font-weight: 600;
 				}
+				input:active + label {
+					background: rgba(white,.2);
+				}
+				input:checked:active + label {
+					@include opacity(.75);
+					background: $campus;
+				}
 			}
 		}
 	}
@@ -2150,6 +2280,9 @@ section {
 			position: relative;
 			height: 75%;
 			text-align: center;
+			a.active, a.activated, a:active {
+				@include opacity(.75);
+			}
 			h1 {
 				@include center-xy;
 				z-index: 9;
@@ -2180,6 +2313,7 @@ section {
 	font-size: 18px;
 	#profile {
 		overflow-y: scroll;
+		overflow-x: hidden;
 		height: calc(100% - 50px);
 	}
 	#btn-edit-profile, #btn-save-profile {
@@ -2188,6 +2322,14 @@ section {
 	}
 	#btn-save-profile button {
 		width: 100%;
+	}
+	#btn-save-profile:active {
+		@include opacity(1);
+		background: $cerise!important;
+	}
+	#btn-edit-profile:active {
+		@include opacity(1);
+		background: $shamrock!important;
 	}
 	.round {
 		@include round;
@@ -2289,6 +2431,9 @@ section {
 					text-transform: uppercase;
 				}
 			}
+			a.active, a.activated, a:active {
+				@include opacity(.75);
+			}
 		}
 		#profile-list {
 			text-align: center;
@@ -2359,6 +2504,7 @@ section {
 						width: 35px;
 						height: 40px;
 						padding: 10px;
+						fill: none;
 						stroke: white;
 						stroke-width: 10;
 						stroke-linecap: round;
@@ -2373,39 +2519,34 @@ section {
 					@include flex-wrap;
 					text-align: center;
 					li {
-						padding: 10px 15px;
 						width: 50%;
 						font-weight: 600;
-						position:relative;
+						position: relative;
+						span {
+							display: block;
+							padding: 10px 15px;
+						}
 					}
-					li:nth-child(1){
+					li:nth-child(1) span {
 						background: $lake;
 					}
-					li:nth-child(2){
+					li:nth-child(2) span {
 						background: $gold;
 					}
-					li:nth-child(3){
+					li:nth-child(3) span {
 						background: $azure;
 					}
-					li:nth-child(4){
+					li:nth-child(4) span {
 						background: $orange;
 					}
-					li:nth-child(5){
+					li:nth-child(5) span {
 						background: $shamrock;
 					}
-					li:nth-child(6){
+					li:nth-child(6) span {
 						background: $cerise;
 					}
-				}
-				ul.default {
-					@include listless;
-					@include flex;
-					@include flex-wrap;
-					text-align: center;
-					li {
-						padding: 10px 15px;
-						width: 100%;
-						font-weight: 600;
+					a:active + span, a.active + span {
+						@include opacity(.75);
 					}
 				}
 			}
@@ -2435,60 +2576,82 @@ section {
 						}
 					}
 				}
-				#profile-major, #profile-job {
+				#profile-major, #profile-job, #profile-experiences {
 					div {
-						ul.majors {
+						ul.majors, ul.experience {
 							li {
 								position: relative;
 								width: 100%;
-								font-weight: 200;
+								padding: 0;
 								border-bottom: 1px solid rgba(white, .1);
+								font-weight: 200;
 								&:last-child {
 									border-bottom: 0;
 								}
+								span {
+									display: block;
+									padding: 10px 15px;
+								}
+								a.active + span, a:active + span {
+									background: rgba(white,.1);
+								}
 							}
 						}
-						ul.default {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							text-align: center;
-							li {
-								padding: 10px 15px;
-								width: 100%;
-								font-weight: 600;
+						ul.majors + ul.default, ul.experience + ul.default {
+							border-top: 1px solid rgba(white, .1);
+						}
+					}
+				}
+				#profile-experiences {
+					a {
+						position: static;
+						height: auto;
+						background: transparent;
+						text-align: left!important;
+						padding: 10px 15px;
+						span {
+							padding: 0!important;
+							h2 {
+								margin-bottom: 2px;
+							}
+							svg {
+								@include transform-reset;
+								padding: 0;
+								text-align: right;
+								stroke-width: 3px;
 							}
 						}
+						.list-item-detail {
+							width: calc(100% - 35px);
+						}
+						.list-item-icon {
+							width: 35px;
+						}
+					}
+					a.active, a:active {
+						background: rgba(white,.1);
 					}
 				}
 				#profile-skills {
 					div {
 						ul.skills {
 							li {
-								position:relative;
+								position: relative;
 							}
-							li:nth-child(1){
+							li:nth-child(1) span {
 								background: $lake;
 							}
-							li:nth-child(2){
+							li:nth-child(2) span {
 								background: $shamrock;
 							}
-							li:nth-child(3){
+							li:nth-child(3) span {
 								background: $azure;
 							}
-							li:nth-child(4){
+							li:nth-child(4) span {
 								background: $moola;
 							}
-						}
-						ul.default {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							text-align: center;
-							li {
-								padding: 10px 15px;
-								width: 100%;
-								font-weight: 600;
+							a:active + span, a.active + span {
+								@include opacity(.75);
 							}
 						}
 					}
@@ -2497,24 +2660,16 @@ section {
 					div {
 						ul.languages {
 							li {
-								position:relative;
+								position: relative;
 							}
-							li:nth-child(1){
+							li:nth-child(1) span {
 								background: $gold;
 							}
-							li:nth-child(2){
+							li:nth-child(2) span {
 								background: $orange;
 							}
-						}
-						ul.default {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							text-align: center;
-							li {
-								padding: 10px 15px;
-								width: 100%;
-								font-weight: 600;
+							a:active + span, a.active + span {
+								@include opacity(.75);
 							}
 						}
 					}
@@ -2525,6 +2680,17 @@ section {
 						font-weight: 300;
 						text-align: center;
 					}
+				}
+			}
+			.default {
+				@include listless;
+				@include flex;
+				@include flex-wrap;
+				text-align: center;
+				li {
+					padding: 10px 15px!important;
+					width: 100%!important;
+					font-weight: 600;
 				}
 			}
 		}
@@ -2593,6 +2759,9 @@ section {
 					.credit-icon {
 						background: $cerise;
 					}
+				}
+				a.active, a:active {
+					@include opacity(.75);
 				}
 			}
 			.active {

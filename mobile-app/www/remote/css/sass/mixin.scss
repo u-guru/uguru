@@ -179,6 +179,13 @@
 	-o-transform: rotate($angle+deg);
 	transform: rotate($angle+deg);
 }
+@mixin transform-reset {
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
 
 @mixin keyframes($name) {
 	@-webkit-keyframes #{$name} {

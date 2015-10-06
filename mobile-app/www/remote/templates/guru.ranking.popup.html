@@ -8,13 +8,18 @@
 		<div class='svg-logo-wrapper tour-guru' ng-include="img_base + 'templates/tour-guru-svg.html'"> </div>
 	</div>
     <div class='content-wrapper'>
-        <div id='guru-ranking-popup-progress-bar' style='height:150px;width:150px;margin:auto;'></div>
         <div class='content-body'>
-            <h2>Welcome to Guru Mode</h2>
-            <p>Check here daily to see new tips. Tasks here will increase <strong>your hourly rate</strong> and <strong>guru ranking</strong>.</p>
+            <h2>Congrats!</h2>
+	        <div id='guru-ranking-popup-progress-bar'>
+				<div id="popup-percentile">
+					<div id="popup-percentile-ranking">{{page.guru_ranking}}</div>
+					<div id="popup-percentile-label">Percentile</div>
+				</div>
+			</div>
+            <p>Your ranking has increased.</p>
         </div>
         <div class='content-footer'>
-	        <button class='bg-cerise white-text semibold' ng-click='closeWelcomePopup()'>Okay, got it!</button>
+	        <button class='bg-cerise white-text semibold' ng-click='closeWelcomePopup()'>Sweet</button>
         </div>
     </div>
 </div>

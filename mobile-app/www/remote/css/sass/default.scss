@@ -1109,6 +1109,9 @@ header {
 				}
 			}
 		}
+		a.active, a:active {
+			@include opacity(.75);
+		}
 		.header-nav-next {
 			h1 {
 				text-align: right;
@@ -1205,6 +1208,9 @@ button {
 	border: 0;
 	color: white;
 	font-size: 24px;
+}
+button.active, button.activated {
+	@include opacity(.75);
 }
 
 .input-ghost {
@@ -2223,6 +2229,22 @@ input[type=range]:focus::-ms-fill-upper {
 	59% { @include opacity(1); }
 	60% { @include opacity(0); }
 	100% { @include opacity(0); }
+}
+
+.toast {
+	background: $cerise;
+	padding: 10px;
+	font-weight: 600;
+	text-align: center;
+	text-transform: uppercase;
+	height: 50px;
+	overflow: hidden;
+}
+.toast + * {
+	height: calc(100% - 50px)!important;
+}
+.toast + * header.third {
+	height: calc(100% / 3 + 15px);
 }
 
 // .chart {

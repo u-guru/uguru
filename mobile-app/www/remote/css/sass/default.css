@@ -946,6 +946,9 @@ header {
           stroke-width: 7px;
           stroke-linecap: round;
           stroke-linejoin: round; }
+    header .header-nav a.active, header .header-nav a:active {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
     header .header-nav .header-nav-next h1 {
       text-align: right; }
   header .header-nav-back, header .header-down {
@@ -1033,6 +1036,10 @@ button {
   border: 0;
   color: white;
   font-size: 24px; }
+
+button.active, button.activated {
+  filter: alpha(opacity=75);
+  opacity: 0.75; }
 
 .input-ghost {
   display: block;
@@ -2388,3 +2395,18 @@ input[type=range]:focus::-ms-fill-upper {
   100% {
     filter: alpha(opacity=0);
     opacity: 0; } }
+
+.toast {
+  background: #DB1988;
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  height: 50px;
+  overflow: hidden; }
+
+.toast + * {
+  height: calc(100% - 50px) !important; }
+
+.toast + * header.third {
+  height: calc(100% / 3 + 15px); }

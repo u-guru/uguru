@@ -29,10 +29,13 @@ body {
 
 body.platform-ios ul li.active, body.platform-ios ul li.activated {
   background: rgba(255, 255, 255, 0.2); }
+
 body.platform-ios ul li ::selection {
   background: rgba(255, 255, 255, 0.1); }
+
 body.platform-ios ul li a.active, body.platform-ios ul li a.activated {
   background: rgba(255, 255, 255, 0.2); }
+
 body.platform-ios ul li a:hover, body.platform-ios ul li .list .list-item a:hover {
   background: rgba(255, 255, 255, 0.1); }
 
@@ -45,19 +48,23 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
+
 .uguru-view h1.verified span svg {
   display: inline !important;
   width: 20px;
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
+
 .uguru-view .request#request header:before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
+
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
+
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -93,8 +100,10 @@ section {
     transform: rotate(45deg);
     width: 30px;
     height: 30px; }
+
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
+
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -115,6 +124,7 @@ section {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
+
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -185,6 +195,7 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
+
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
@@ -335,6 +346,46 @@ section {
         -webkit-flex-flow: row wrap;
         flex-flow: row wrap;
         padding: 0 15px 15px; }
+        .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar {
+          position: relative;
+          width: 150px;
+          height: 150px;
+          margin: 0 auto 10px; }
+          .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar svg path {
+            stroke-linecap: round !important; }
+          .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar .progressbar-text {
+            display: none; }
+          .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+            .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile #popup-percentile-ranking {
+              position: relative;
+              font-size: 44px;
+              font-weight: 600;
+              line-height: 1;
+              text-align: center; }
+              .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile #popup-percentile-ranking:after {
+                content: "th";
+                display: block;
+                position: absolute;
+                top: -1px;
+                right: -1px;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 28px;
+                text-transform: uppercase; }
+            .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile #popup-percentile-label {
+              font-size: 12px;
+              font-weight: 400;
+              letter-spacing: 1px;
+              line-height: 15px;
+              text-transform: uppercase; }
         .uguru-popup .uguru-popup-content .content-wrapper .content-body h2 {
           filter: alpha(opacity=90);
           opacity: 0.9;
@@ -402,6 +453,7 @@ section {
 
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
+
 .terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px; }
@@ -468,8 +520,10 @@ section {
   #experience-modal .main textarea {
     font-size: 20px;
     height: 100%; } }
+
 .signup-modal h1 + h1 {
   margin-top: 0; }
+
 .signup-modal #account-form {
   height: calc(100% - 50px);
   padding: 15px; }
@@ -498,6 +552,7 @@ section {
     #account-form input {
       margin-top: 20px !important;
       font-size: 18px !important; } }
+
 .terms-modal {
   color: #2B3234; }
   .terms-modal h3 {
@@ -521,6 +576,7 @@ section {
 
 .faq-modal header.bg-charcoal {
   z-index: 1000 !important; }
+
 .faq-modal iframe {
   min-height: 100%;
   width: 100%; }
@@ -608,6 +664,7 @@ section {
           stroke-width: 9px;
           stroke-linecap: round;
           stroke-linejoin: round; }
+
 .request-modal #request-subcategories {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -730,6 +787,7 @@ section {
             stroke-width: 9px;
             stroke-linecap: round;
             stroke-linejoin: round; }
+
 .request-modal .request-content {
   height: calc(100% - 50px);
   padding-bottom: 64px;
@@ -1073,6 +1131,7 @@ section {
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
+
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -1164,24 +1223,31 @@ section {
       width: 100%;
       height: 100%;
       background: url(../../img/schools.jpg) center center/cover; } }
+
 .guru-mode .list {
   background: #40484B; }
+
 .guru-mode .list-item.active, .guru-mode .list-item.activated {
   background: #8A9EA3; }
+
 .guru-mode .list-item .list-item-icon svg path, .guru-mode .list-item .list-item-icon svg circle {
   stroke: #fff; }
+
 .guru-mode .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
+
 .guru-mode .list-item-agenda {
   background: white;
   color: #2B3234; }
   .guru-mode .list-item-agenda.active, .guru-mode .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
+
 .guru-mode .list-item-mode {
   background: rgba(138, 158, 163, 0.75); }
 
 .student-mode .list {
   background: white; }
+
 .student-mode .list-item {
   color: #40484B; }
   .student-mode .list-item .list-item-icon svg path {
@@ -1191,16 +1257,19 @@ section {
     color: white; }
     .student-mode .list-item.activated svg path, .student-mode .list-item.active svg path {
       stroke: white; }
+
 .student-mode .list-item-profile {
   background: #50A5DD;
   color: white; }
   .student-mode .list-item-profile .list-item-icon svg circle {
     stroke: white; }
+
 .student-mode .list-item-agenda {
   background: #40484B;
   color: white; }
   .student-mode .list-item-agenda:active, .student-mode .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
+
 .student-mode .list-item-mode {
   background: #50A5DD;
   color: white; }
@@ -1250,6 +1319,9 @@ section {
   border: 0;
   height: 50px;
   line-height: 50px; }
+  .tabs a.activated, .tabs a:active {
+    filter: alpha(opacity=50);
+    opacity: 0.5; }
   .tabs svg {
     width: 100%;
     height: 100%;
@@ -1530,7 +1602,8 @@ section {
     -webkit-justify-content: center;
     justify-content: center;
     z-index: 2;
-    height: calc(100% - 150px); }
+    height: calc(100% - 150px);
+    width: 100%; }
     .home-view #student-home #home-content div {
       width: 100%; }
       .home-view #student-home #home-content div button {
@@ -1542,10 +1615,78 @@ section {
         font-weight: 600;
         line-height: 1.2;
         text-transform: uppercase; }
+      .home-view #student-home #home-content div .bg-lake-80p.activated, .home-view #student-home #home-content div .bg-lake-80p:active {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        background: #50A5DD !important; }
+      .home-view #student-home #home-content div .bg-campus-80p.activated, .home-view #student-home #home-content div .bg-campus-80p:active {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        background: #8A9EA3 !important; }
+    .home-view #student-home #home-content.trending-container {
+      height: calc(100% - 130px); }
+    .home-view #student-home #home-content #trending {
+      width: calc(100% - 30px);
+      margin: 15px; }
+      .home-view #student-home #home-content #trending h1 {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 15px;
+        background: rgba(43, 50, 52, 0.9); }
+      .home-view #student-home #home-content #trending ul {
+        margin-top: 2px;
+        background: rgba(255, 255, 255, 0.9); }
+        .home-view #student-home #home-content #trending ul li {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          padding: 15px 0; }
+          .home-view #student-home #home-content #trending ul li button {
+            width: 70px;
+            height: 70px;
+            font-size: 14px;
+            padding: 10px; }
+            .home-view #student-home #home-content #trending ul li button svg path {
+              stroke: white; }
+          .home-view #student-home #home-content #trending ul li button + span {
+            display: block;
+            margin-top: 5px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase; }
+      .home-view #student-home #home-content #trending ul + button {
+        width: 100%;
+        height: 64px;
+        border-radius: 0;
+        margin-top: 2px; }
+
+@media screen and (min-height: 667px) {
+  .home-view #student-home #home-content #trending ul li button {
+    width: 100px !important;
+    height: 100px !important; } }
 
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search input {
   width: calc(100% - 25px); }
+
 .onboarding progress, .onboarding .progress {
   position: absolute;
   top: 0;
@@ -1564,18 +1705,24 @@ section {
     width: 95%; }
   .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"] {
     width: 86%; }
+
 .onboarding header h1:not(header .header-nav a h1) {
   text-align: center; }
+
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
+
 .onboarding#demographic header:before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
+
 .onboarding#demographic header h1 {
   font-size: 24px; }
+
 .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
+
 .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1713,6 +1860,7 @@ section {
         border-color: rgba(80, 165, 221, 0.1); }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
+
 .onboarding#start {
   background: #40484B; }
   .onboarding#start #start-container {
@@ -1806,6 +1954,12 @@ section {
         border-color: white !important;
         color: inherit !important;
         font-weight: 600; }
+      .courses-view #courses-list ul li input:active + label {
+        background: rgba(255, 255, 255, 0.2); }
+      .courses-view #courses-list ul li input:checked:active + label {
+        filter: alpha(opacity=75);
+        opacity: 0.75;
+        background: #8A9EA3; }
 
 .skills-view {
   background: #2B3234; }
@@ -1903,6 +2057,9 @@ section {
     position: relative;
     height: 75%;
     text-align: center; }
+    .photo-view #photo-container #profile-icon a.active, .photo-view #photo-container #profile-icon a.activated, .photo-view #photo-container #profile-icon a:active {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
     .photo-view #photo-container #profile-icon h1 {
       position: absolute;
       top: 50%;
@@ -1940,12 +2097,21 @@ section {
   font-size: 18px; }
   .guru-profile-view #profile {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: calc(100% - 50px); }
   .guru-profile-view #btn-edit-profile, .guru-profile-view #btn-save-profile {
     bottom: 50px !important;
     width: 100%; }
   .guru-profile-view #btn-save-profile button {
     width: 100%; }
+  .guru-profile-view #btn-save-profile:active {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #DB1988 !important; }
+  .guru-profile-view #btn-edit-profile:active {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #69B3A5 !important; }
   .guru-profile-view .round {
     border-radius: 1000px;
     -ms-box-orient: horizontal;
@@ -2071,6 +2237,9 @@ section {
           width: 100px;
           text-align: center;
           text-transform: uppercase; }
+      .guru-profile-view #profile-desc #profile-icon a.active, .guru-profile-view #profile-desc #profile-icon a.activated, .guru-profile-view #profile-desc #profile-icon a:active {
+        filter: alpha(opacity=75);
+        opacity: 0.75; }
     .guru-profile-view #profile-desc #profile-list {
       text-align: center; }
       .guru-profile-view #profile-desc #profile-list ul {
@@ -2141,6 +2310,7 @@ section {
           width: 35px;
           height: 40px;
           padding: 10px;
+          fill: none;
           stroke: white;
           stroke-width: 10;
           stroke-linecap: round;
@@ -2161,41 +2331,27 @@ section {
       flex-flow: row wrap;
       text-align: center; }
       .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li {
-        padding: 10px 15px;
         width: 50%;
         font-weight: 600;
         position: relative; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(1) {
+        .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li span {
+          display: block;
+          padding: 10px 15px; }
+      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(1) span {
         background: #50A5DD; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(2) {
+      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(2) span {
         background: #F9D57B; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(3) {
+      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(3) span {
         background: #55A4B7; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(4) {
+      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(4) span {
         background: #E5753C; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(5) {
+      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(5) span {
         background: #69B3A5; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(6) {
+      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(6) span {
         background: #DB1988; }
-    .guru-profile-view #profile-info .profile-inside #profile-courses ul.default {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.default li {
-        padding: 10px 15px;
-        width: 100%;
-        font-weight: 600; }
+      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses a:active + span, .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses a.active + span {
+        filter: alpha(opacity=75);
+        opacity: 0.75; }
     .guru-profile-view #profile-info .profile-inside h1 {
       padding: 10px;
       font-size: 14px;
@@ -2225,94 +2381,96 @@ section {
           padding: 10px 15px;
           width: 50%;
           font-weight: 600; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li {
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li {
       position: relative;
       width: 100%;
-      font-weight: 200;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li:last-child {
-        border-bottom: 0; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.default {
-      list-style: none;
-      margin: 0;
       padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.default li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.default li {
-        padding: 10px 15px;
-        width: 100%;
-        font-weight: 600; }
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 200; }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li:last-child {
+        border-bottom: 0; }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li span {
+        display: block;
+        padding: 10px 15px; }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li a:active + span {
+        background: rgba(255, 255, 255, 0.1); }
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience + ul.default {
+      border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a {
+      position: static;
+      height: auto;
+      background: transparent;
+      text-align: left !important;
+      padding: 10px 15px; }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span {
+        padding: 0 !important; }
+        .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span h2 {
+          margin-bottom: 2px; }
+        .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span svg {
+          -webkit-transform: none;
+          -moz-transform: none;
+          -ms-transform: none;
+          -o-transform: none;
+          transform: none;
+          padding: 0;
+          text-align: right;
+          stroke-width: 3px; }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a .list-item-detail {
+        width: calc(100% - 35px); }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a .list-item-icon {
+        width: 35px; }
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a.active, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a:active {
+      background: rgba(255, 255, 255, 0.1); }
     .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li {
       position: relative; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(1) {
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(1) span {
       background: #50A5DD; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(2) {
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(2) span {
       background: #69B3A5; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(3) {
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(3) span {
       background: #55A4B7; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(4) {
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(4) span {
       background: #81B566; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.default {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.default li {
-        padding: 10px 15px;
-        width: 100%;
-        font-weight: 600; }
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills a.active + span {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
     .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li {
       position: relative; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(1) {
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(1) span {
       background: #F9D57B; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(2) {
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(2) span {
       background: #E5753C; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.default {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.default li {
-        padding: 10px 15px;
-        width: 100%;
-        font-weight: 600; }
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages a.active + span {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
     .guru-profile-view #profile-info .profile-inside #profile-other .empty li {
       width: 100%;
       font-weight: 300;
       text-align: center; }
+    .guru-profile-view #profile-info .profile-inside .default {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      text-align: center; }
+      .guru-profile-view #profile-info .profile-inside .default li {
+        padding: 10px 15px !important;
+        width: 100% !important;
+        font-weight: 600; }
 
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
   position: relative; }
+
 .credibility-view #credit-slider {
   position: absolute;
   bottom: 0;
@@ -2383,6 +2541,9 @@ section {
         color: #DB1988; }
         .credibility-view #credit-slider ul li a:active .credit-icon, .credibility-view #credit-slider ul li a:focus .credit-icon, .credibility-view #credit-slider ul li a:hover .credit-icon {
           background: #DB1988; }
+      .credibility-view #credit-slider ul li a.active, .credibility-view #credit-slider ul li a:active {
+        filter: alpha(opacity=75);
+        opacity: 0.75; }
     .credibility-view #credit-slider ul .active#credit-exp a {
       border-bottom: 5px solid #69B3A5;
       color: #69B3A5; }
@@ -2433,6 +2594,7 @@ section {
       color: #50A5DD; }
       .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
         background: #50A5DD; }
+
 .credibility-view #credibility-content-wrapper {
   position: relative;
   background: #40484B;
@@ -2495,6 +2657,7 @@ section {
         height: 60px; }
   .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body p {
     font-size: 22px; } }
+
 @media screen and (min-width: 414px) {
   .credibility-view #credit-slider ul li {
     font-size: 18px; }
@@ -2504,8 +2667,10 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
+
 .guru-view header:before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
+
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2606,8 +2771,10 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
+
 .guru-view .tip-container h2 {
   font-size: 22px; }
+
 .guru-view .tip-container p {
   margin-top: 10px;
   font-size: 18px; }
@@ -2621,6 +2788,7 @@ section {
     transform: none; }
   .guru-view #guru-ranking #guru-stats .stats-bar {
     margin-bottom: 9px; } }
+
 @media screen and (min-width: 414px) {
   .guru-view #guru-ranking > div {
     -webkit-transform: scale(1.2);
@@ -2628,6 +2796,7 @@ section {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2); } }
+
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
@@ -2677,5 +2846,3 @@ section {
   position: absolute;
   right: 10px;
   top: 34%; }
-
-/*# sourceMappingURL=style.css.map */
