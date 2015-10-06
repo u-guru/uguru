@@ -71,14 +71,17 @@ function DeviceService( $cordovaNgCardIO,
 
   //doesn't work for emulators!
 	function readyDevice(callback) {
+
+    //seems like document URL still has an http even if running inside the app, need to confirm
     var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+    console.log("document.URL: " + document.URL);
     if(app) {
       console.log("Running on mobile");
 
       document.addEventListener("deviceready", onDeviceReady);
     } else {
       console.log("Detected desktop browser");
-      if (isMobile() && mobileOS) {
+      if (isMobile() && typeof mobileOS !== 'undefined') {
         onDeviceReady();
       }
 

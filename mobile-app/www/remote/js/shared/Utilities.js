@@ -21,7 +21,7 @@ function Utilities($rootScope, Settings) {
 		rAF: rAF,
 		checkFreeSpace: checkFreeSpace,
 		getFreeSpace: getFreeSpace,
-		clearLoader: clearLoader
+		clearLoader: clearLoader,
 		sortArrObjByKey: sortArrObjByKey
 	}
 
