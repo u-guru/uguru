@@ -280,7 +280,8 @@ def generate_categories_json():
             'icon_url': category.icon_url,
             'is_approved': category.is_approved,
             'is_active': category.is_active,
-            'description': category.description
+            'description': category.description,
+            'hex_color': category.hex_color
         }
         result_dict[category.name] = category_dict
         for subcategory in subcategories:
@@ -298,6 +299,16 @@ def generate_categories_json():
     with open('app/static/data/categories.json', 'wb') as fp:
         json.dump(result_dict, fp, sort_keys = True, indent = 4)
 
+def update_categories():
+    from app.models import Category, Subcategory
+    categories_dict = json.load(open('app/static/data/categories.json'))
+    for key in categories_dict.keys():
+        category_id = categories_dict[key]['id']
+        print category_id, categories_dict[key]['name']
+        for subcategory in categories_dict[key]['subcategories']:
+            subcategory_id = subcategory['id']
+            subcategory_name = subcategory['name']
+            print subcategory_id, subcategory_name
 
 
 def generate_init_categories():
@@ -345,6 +356,9 @@ if arg in ['print_categories', '-pc']:
     print_categories()
 
 if arg in ['delete_categories', '-dc']:
+    delete_categories()
+
+if arg in ['update_categories', '-uc']:
     delete_categories()
 
 if arg in ['generate_categories_json', '-gc']:
