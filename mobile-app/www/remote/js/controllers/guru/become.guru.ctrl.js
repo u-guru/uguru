@@ -128,10 +128,7 @@ angular.module('uguru.guru.controllers')
       if (index === 2) {
 
         uTracker.track(tracker, 'Become Guru: Skills');
-        $ionicSideMenuDelegate.canDragContent(true);
-        $scope.static.categories[0].skills = mapGuruCoursesToCategoriesObj($scope.user.guru_courses);
-        $scope.static.categories[0].active_skills_count = $scope.static.categories[0].skills.length;
-        console.log('processing this shit', $scope.static.categories[0]);
+        $ionicSideMenuDelegate.canDragContent(true);        
       }
 
       if (index === 3) {

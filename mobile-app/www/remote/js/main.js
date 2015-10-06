@@ -28,7 +28,7 @@ if (LOCAL) {
 
   BASE_URL = _ipaddress;
   LOCAL_URL = 'http://192.168.42.78:5000'
-  REST_URL = 'http://192.168.1.43:5000'
+  // REST_URL = 'http://192.168.1.43:5000'
 
 } else {
   img_base = '/static/'
