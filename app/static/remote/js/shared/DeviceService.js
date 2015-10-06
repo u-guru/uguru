@@ -78,7 +78,7 @@ function DeviceService( $cordovaNgCardIO,
       document.addEventListener("deviceready", onDeviceReady);
     } else {
       console.log("Detected desktop browser");
-      if (isMobile()) {
+      if (isMobile() && mobileOS) {
         onDeviceReady();
       }
 

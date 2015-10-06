@@ -157,8 +157,8 @@ angular.module('uguru.student.controllers', [])
                  anchor: new google.maps.Point(0,0),
                  strokeWeight: 0,
                  scale: 1/2,
-                 latitude: $scope.user.university.latitude,
-                 longitude: $scope.user.university.longitude,
+                 latitude: ($scope.user.university && $scope.user.university.latitude) || 0,
+                 longitude: ($scope.user.university && $scope.user.university.longitude) || 0,
                  labelClass: 'student-home-map-label'
             }
 

@@ -13,7 +13,7 @@ from lib.api_utils import json_response
 from pprint import pprint
 
 
-APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31']
+APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31', 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3']
 
 @auth.verify_password
 def verify_password(email, password):
@@ -2579,7 +2579,54 @@ class AdminViewUsersList(restful.Resource):
 
         return users, 200
 
+class AdminViewUniversitiesListAll(restful.Resource):
+    @marshal_with(AdminUniversitySerializer)
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+        universities = University.query.filter(University.us_news_ranking != None, University.us_news_ranking < 220).all()
+        return universities, 200
+
+class AdminViewUniversitiesListAllDistribution(restful.Resource):
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+        universities = University.query.filter(University.us_news_ranking != None, University.us_news_ranking < 220).all()
+        keys = ['total','banner_url', 'courses_sanitized', 'departments_sanitized',\
+        'logo_url', 'school_color_one', 'population', 'num_emails']
+        result_dict = {}
+        for key in keys:
+            result_dict[key] = 0
+        result_dict['total'] = len(universities)
+        for uni in universities:
+            if uni.departments_sanitized: result_dict['departments_sanitized'] += 1
+            if uni.courses_sanitized: result_dict['courses_sanitized'] += 1
+            if uni.logo_url: result_dict['logo_url'] += 1
+            if uni.population: result_dict['population'] += 1
+            if uni.school_color_one: result_dict['school_color_one'] += 1
+            if uni.num_emails: result_dict['num_emails'] += 1
+
+        return json.dumps(result_dict, indent=4, sort_keys=True), 200
+
+class AdminViewUniversitiesListPrepared(restful.Resource):
+    @marshal_with(AdminUniversitySerializer)
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+        universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.num_emails > 1000, University.school_color_one != None, University.banner_url != None, University.logo_url != None).all()
+        return universities, 200
+
+
 class AdminViewUniversitiesList(restful.Resource):
+    @marshal_with(AdminUniversitySerializer)
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+        if _type == 'us_news':
+            universities = University.query.filter(University.courses_sanitized > 0, University.departments_sanitized > 0, University.us_news_ranking != None).all()
+        if _type == 'prepared':
+            universities = University.query.filter(University.courses_sanitized > 0, University.departments_sanitized > 0, University.num_emails > 0).all()
+        return universities, 200
 
     @marshal_with(AdminUniversitySerializer)
     def post(self, auth_token):
@@ -2861,13 +2908,29 @@ class AdminUniversityCourseView(restful.Resource):
 
         return jsonify(success=[True])
 
+    @marshal_with(AdminUniversityDeptCourseSerializer)
     def get(self, auth_token, uni_id):
-        if not auth_token in uni_id:
+        if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
-        return jsonify(success=[True])
+        university = University.query.get(uni_id)
+        if university:
+            return university.courses
+        abort(404)
 
 class AdminOneUniversityView(restful.Resource):
+    
+    @marshal_with(AdminUniversitySerializer)
+    def get(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        university = University.query.get(uni_id)
+        if university:
+            return university
+        abort(404)
+
+
     @marshal_with(AdminUniversitySerializer)
     def put(self, auth_token, uni_id):
         print auth_token, uni_id
@@ -2957,6 +3020,19 @@ class AdminOneUniversityView(restful.Resource):
                     abort(401)
                 u.is_public = is_public
 
+            if 'num_emails' in request.json:
+                u.num_emails = request.json.get('num_emails')
+
+            if 'num_depts' in request.json:
+                u.num_emails = request.json.get('num_depts')
+
+            if 'departments_sanitized' in request.json:
+                u.departments_sanitized = University.sanitizeDepartments()
+
+            if 'courses_sanitized' in request.json:
+                u.courses_sanitized = University.sanitizeCourses()
+
+
             db_session.commit()
 
             return u, 200
@@ -2964,41 +3040,19 @@ class AdminOneUniversityView(restful.Resource):
         return "UNAUTHORIZED", 201
 
 class AdminUniversityView(restful.Resource):
-    def get(self):
-
-        from static.data.universities_efficient import universities_arr
-
-        return json.dumps(universities_arr), 201
-
     @marshal_with(AdminUniversitySerializer)
-    def post(self, auth_token):
-        if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
+    def get(self, auth_token, uni_id):
+        
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
 
-            # parse the response
-            request_json = json.loads(request.json)
+        university = University.query.get(uni_id)
+        if university:
+            return university
+        abort(404)
 
-
-            university_name = request_json.get('name')
-
-            u = University.query.filter_by(name=university_name).first()
-            if u:
-                u.last_updated = datetime.now()
-                return u, 200
-
-            u = University()
-            u.name = university_name
-            u.num_courses = int(num_classes)
-
-            # u.num_depts = int(num_dept)
-
-            u.short_name = request_json.get('short_name')
-            u.last_updated = datetime.now()
-            db_session.add(u)
-            db_session.commit()
-
-            return u, 200
-
-        return "UNAUTHORIZED", 201
+    def put(self, auth_token, uni_id):
+        pass
 
 class AdminUniversityDeptCoursesView(restful.Resource):
 
@@ -3052,6 +3106,17 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
 # create a department
 class AdminUniversityDeptView(restful.Resource):
+    @marshal_with(AdminUniversityDeptSerializer)
+    def get(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        university = University.query.get(uni_id)
+        if university:
+            return university.departments
+        abort(404)
+
+
 
     @marshal_with(AdminUniversityDeptSerializer)
     def post(self, auth_token, uni_id):
@@ -3152,8 +3217,11 @@ api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/man
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns')
 api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>')
 api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
-api.add_resource(AdminViewUsersList, '/api/admin/<string:apiuth_token>/users')
+api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
+api.add_resource(AdminViewUniversitiesListPrepared, '/api/admin/<string:auth_token>/universities/prepared')
+api.add_resource(AdminViewUniversitiesListAll, '/api/admin/<string:auth_token>/universities/us_news')
+api.add_resource(AdminViewUniversitiesListAllDistribution, '/api/admin/<string:auth_token>/universities/distribution')
 api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
 api.add_resource(AdminViewUserAnalytics, '/api/admin/analytics/user')
 
