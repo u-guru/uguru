@@ -10,6 +10,30 @@ function DownloadService(Utilities, uTracker, DeviceService) {
 
 	return {
 		downloadFile: downloadFile,
+		deleteFile: deleteFile
+	}
+
+	function deleteFile(URL) {
+		if(DeviceService.isMobile()) {
+			var fileName = Utilities.getFileName(URL.toString());
+			var directory = cordova.file.dataDirectory;
+			var filePath = dircetory + fileName;
+			window.resolveLocalFileSystemURL(filePath, fileSuccess, fileError);
+			function fileSuccess(fileEntry) {
+				fileEntry.remove(removeSuccess, removeError);
+
+				function removeSuccess() {
+					console.log("Successfully deleted " + fileEntry.name);
+				}
+				function removeError(msg) {
+					console.log("Error " + msg + ": Could not delete " + fileEntry.name);
+				}
+			}
+			function fileError() {
+				console.log("Could not find " + fileName);
+			}
+
+		}
 	}
 
 	function downloadFile(URL) {

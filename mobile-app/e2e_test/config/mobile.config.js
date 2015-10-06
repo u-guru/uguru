@@ -13,6 +13,7 @@ exports.config = {
     framework: 'jasmine2',
     //appium port has to be 4723
      seleniumAddress: 'http://localhost:4723/wd/hub',
+     chromeDriver: '/Users/nlmac/Downloads/xwalkdriver64_release',
 
 
          capabilities: {
@@ -52,6 +53,8 @@ exports.config = {
                 platformName: 'android',
                  platformVersion: '4.4',
                 //udid: 'TA96516CU0',
+                //automationName: 'Appium',
+                chromedriverExecutable: '/Users/nlmac/Downloads/xwalkdriver64_release',
                   deviceName: 'Nick Moto G',
                   autoWebview: 'true'
 
