@@ -2889,7 +2889,7 @@ class AdminUniversityCourseView(restful.Resource):
 
     @marshal_with(AdminUniversityDeptCourseSerializer)
     def get(self, auth_token, uni_id):
-        if not auth_token in uni_id:
+        if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
         university = University.query.get(uni_id)
@@ -2898,6 +2898,18 @@ class AdminUniversityCourseView(restful.Resource):
         abort(404)
 
 class AdminOneUniversityView(restful.Resource):
+    
+    @marshal_with(AdminUniversitySerializer)
+    def get(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        university = University.query.get(uni_id)
+        if university:
+            return university
+        abort(404)
+
+
     @marshal_with(AdminUniversitySerializer)
     def put(self, auth_token, uni_id):
         print auth_token, uni_id
