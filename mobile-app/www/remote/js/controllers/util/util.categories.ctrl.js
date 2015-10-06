@@ -162,9 +162,9 @@ angular.module('uguru.util.controllers')
         _class: 'bg-orange',
         active: false,
         active_skills_count:0,
-        skills: ['Resume editing', 'Interview Preparation','Build a Website',
-        'Design', 'Professional Writing/Copy Writing', 'Programming Questions',
-        'Internship Mentorship'],
+        skills: ["Design", "Interview Help", "Resume Building", "Skill Building",
+        "Website Building", "Professional Writing", "Programming Questions", "Internship Mentorship",
+        "Beauty & Grooming"],
         bg_url: categories_img_base +'./img/categories/bg/consulting.jpg',
         icon_url: categories_img_base + './img/categories/icon/consulting-small.svg'
       },
@@ -174,7 +174,7 @@ angular.module('uguru.util.controllers')
         db_name:'baking',
         active: false,
         active_skills_count:0,
-        skills: ['Brownies', 'Flan','Pie'],
+        skills: ["Cake", "Cupcakes", "Donuts", "Coffee", "Flan", "Cookies", "Brownies"],
         bg_url: categories_img_base +'./img/categories/bg/baking.jpg',
         icon_url: categories_img_base + './img/categories/icon/baking-small.svg'
       },
@@ -184,7 +184,7 @@ angular.module('uguru.util.controllers')
         _class: 'bg-moola',
         active: false,
         active_skills_count:0,
-        skills: ['Professional', 'Outdoors','Headshot', 'Graduation', 'Fashion', '#Selfie'],
+        skills: ["Graduation Photos", "Professional Headshots", "Athletic & Action Images", "Outdoor & Scenery"],
         bg_url: categories_img_base +'./img/categories/bg/photography.jpg',
         icon_url: categories_img_base + './img/categories/icon/photography-small.svg'
       },
@@ -194,8 +194,7 @@ angular.module('uguru.util.controllers')
         db_name:'household',
         active: false,
         active_skills_count:0,
-        skills: ['Laundry', 'Build Furniture (Ikea)', 'I have a Vacuum', 'Dirty Dishes',
-        'Ironing/Drycleaning'],
+        skills: ["Laundry", "Vacuuming", "House Cleaning", "Dishes", "Build Ikea Furniture"],
         bg_url: categories_img_base +'./img/categories/bg/household.jpg',
         icon_url: categories_img_base + './img/categories/icon/household-small.svg'
       },
@@ -205,8 +204,7 @@ angular.module('uguru.util.controllers')
         _class: 'bg-azure',
         active: false,
         active_skills_count:0,
-        skills: ['Laptop Repair','Hardware Upgrade', 'iPhone Screen Repair',
-        'Sell iPhone Charges (we wholesale)', 'Software Performance'],
+        skills: ["Wifi setup", "Phone Screen Repair", "Computer Repair", "Virus Removal", "Software Setup"],
         bg_url: categories_img_base +'./img/categories/bg/tech.jpg',
         icon_url: categories_img_base + './img/categories/icon/technology-small.svg'
       },
@@ -216,8 +214,7 @@ angular.module('uguru.util.controllers')
         _class: 'bg-lake',
         active: false,
         active_skills_count:0,
-        skills: ['Athletic Training','Specialized Dance', 'Help student move in/out',
-        'Sell iPhone Charges (we wholesale)', 'Software Performance'],
+        skills: ["Moving Help", "Team Sports", "Personal Trainer", "Weight Training", "Yoga", "Cardio Activities"],
         bg_url: categories_img_base +'./img/categories/bg/sports.jpg',
         icon_url: categories_img_base + './img/categories/icon/sports-small.svg'
       },
@@ -227,9 +224,9 @@ angular.module('uguru.util.controllers')
         _class: 'bg-eggplant',
         active: false,
         active_skills_count:0,
-        skills: ['Walgreens', 'Local Convenience Stores',
-        'Exam books', 'Textbooks', 'Late night coffee',
-        'School supplies'],
+        skills: ["Food Delivery",
+        "Car Sharing", "Truck Borrow", "Walgreens Run", "Chipotle, etc Run", "School Supplies",
+        "Late Night Snack/Coffee"],
         bg_url: categories_img_base +'./img/categories/bg/delivery.jpg',
         icon_url: categories_img_base + './img/categories/icon/delivery-small.svg'
       }

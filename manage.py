@@ -263,7 +263,7 @@ def print_categories():
         for subcategory in category.subcategories:
             print '    >>', subcategory.name
         print
-        
+
 
 def generate_categories_json():
     from app.models import Category
@@ -272,7 +272,7 @@ def generate_categories_json():
     for category in Category.query.all():
         subcategories = category.subcategories
         category_dict = {
-            'id': category.id, 
+            'id': category.id,
             'num_subcategories':len(subcategories),
             'num_gurus': len(category.gurus.all()),
             'subcategories': [],
@@ -280,7 +280,8 @@ def generate_categories_json():
             'icon_url': category.icon_url,
             'is_approved': category.is_approved,
             'is_active': category.is_active,
-            'description': category.description
+            'description': category.description,
+            'hex_color': category.hex_color
         }
         result_dict[category.name] = category_dict
         for subcategory in subcategories:
@@ -298,14 +299,55 @@ def generate_categories_json():
     with open('app/static/data/categories.json', 'wb') as fp:
         json.dump(result_dict, fp, sort_keys = True, indent = 4)
 
+def update_categories():
+    from app.models import Category, Subcategory
+    from app.database import db_session
+    categories_dict = json.load(open('app/static/data/categories.json'))
+    for key in categories_dict.keys():
+        category_id = categories_dict[key]['id']
+        category = Category.query.get(category_id)
+        category.hex_color = categories_dict[key]['hex_color']
+        category.num_subcategories = len(categories_dict[key]['subcategories'])
+        category.background_url = categories_dict[key]['background_url']
+        category.icon_url = categories_dict[key]['icon_url']
+        category.is_approved = True
+        # category.is_approved = categories_dict[key]['is_approved']
+        # category.is_active = categories_dict[key]['is_active']
+        category.is_active = True
+        category.num_gurus = len(category.gurus.all())
+        category.description = categories_dict[key]['description']
+
+        print category.id, category.name
+        for subcategory in categories_dict[key]['subcategories']:
+            subcategory_id = subcategory['id']
+            subcategory = Subcategory.query.get(subcategory_id)
+            print '   >>', subcategory.id, subcategory.name
+        print
+    db_session.commit()
+    generate_categories_json()
+    print 'categories successfully updated && json is generated'
 
 
+
+def generate_init_categories():
+    from app.models import Category, Subcategory
+    categories_dict = json.load(open('app/static/data/categories.json'))
+    result_dict = {}
+    for key in categories_dict.keys():
+        result_dict[key] = []
+        for subcategory in categories_dict[key]['subcategories']:
+            result_dict[key].append(subcategory['name'])
+            print subcategory['name']
+
+    with open('app/static/data/categories_init.json', 'wb') as fp:
+        json.dump(result_dict, fp, sort_keys = True, indent = 4)
+    print 'categories init file generated'
 
 
 def init_categories():
     import json
     from app.models import Category, Subcategory
-    categories_dict = json.load(open('app/static/data/categories.json'))
+    categories_dict = json.load(open('app/static/data/categories_init.json'))
     categories = categories_dict.keys()
     for category_name in categories:
         print 'creating', category_name
@@ -315,8 +357,12 @@ def init_categories():
             print '  >> creating', subcategory_name
             Subcategory.create(subcategory_name, category.id)
         print
+    print
 
-    print 
+
+
+if arg in ['generate_init_categories', '-gic']:
+    generate_init_categories()
 
 if arg == 'initialize':
     init()
@@ -329,6 +375,9 @@ if arg in ['print_categories', '-pc']:
 
 if arg in ['delete_categories', '-dc']:
     delete_categories()
+
+if arg in ['update_categories', '-uc']:
+    update_categories()
 
 if arg in ['generate_categories_json', '-gc']:
     generate_categories_json()
@@ -574,7 +623,7 @@ if arg == 'print_skills':
         print "#############"
         print key
         print "#############"
-    
+
 
 if arg == 'remove_skill':
     from app.models import guru_skill_table
@@ -582,14 +631,14 @@ if arg == 'remove_skill':
         for u in User.query.all():
             if skill in u.guru_skills:
                 db_session.execute(guru_skill_table.delete(guru_skill_table.c.user_id == u.id and guru_courses_table.c.skill_id == c.id))
-        
+
     for skill in Skill.query.all():
         db_session.delete(skill)
         db_session.commit()
 
 
 if arg =='init_skills':
-    
+
     {
         'Photography':['Professional', 'Outdoor', 'Headshot'],
         'Freelancing':['Resume Editing','Interview Prep', 'Build a Website'],

@@ -14,6 +14,8 @@ university_fields['longitude'] = fields.Float(attribute='longitude')
 major_fields = {}
 major_fields['id'] = fields.Integer(attribute='id')
 major_fields['name'] = fields.String(attribute='name')
+major_fields['abbr'] = fields.String(attribute='abbr')
+major_fields['code'] = fields.String(attribute='code')
 
 subcategory_fields = {}
 subcategory_fields['id'] = fields.Integer(attribute='id')
@@ -37,6 +39,8 @@ department_fields = {}
 department_fields['id'] = fields.Integer(attribute='id')
 department_fields['abbr'] = fields.String(attribute='abbr')
 department_fields['title'] = fields.String(attribute='title')
+department_fields['name'] = fields.String(attribute='name')
+department_fields['code'] = fields.String(attribute='code')
 
 position_fields = {}
 position_fields['id'] = fields.Integer(attribute='id')
@@ -290,6 +294,7 @@ UserSerializer = {
     'is_a_guru': fields.Boolean,
     'files': fields.List(fields.Nested(file_fields)),
     'transcript_file': fields.Nested(file_fields),
+    'transcript_verified_by_admin': fields.Boolean,
     'is_admin': fields.Boolean,
     'is_support_admin': fields.Boolean,
     'guru_deposit': fields.Boolean,
@@ -405,8 +410,13 @@ CourseSerializer = {
 
 MajorSerializer = {
     'name': fields.String,
-    'id': fields.Integer
+    'id': fields.Integer,
+    'code': fields.String,
+    'title': fields.String,
+    'abbr': fields.String
 }
+
+
 
 UniversitySerializer = {
     'name': fields.String,
@@ -508,6 +518,7 @@ DepartmentSerializer = {
     'id': fields.Integer,
     'name': fields.String,
     'abbr': fields.String,
+    'code': fields.String,
     'title': fields.String,
     'is_popular': fields.Boolean
 }

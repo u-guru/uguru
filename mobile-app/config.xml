@@ -10,7 +10,11 @@
   <content src="remote/local.index.html"/>
   <access origin="*"/>
   <allow-navigation href="http://*/*"/>
+<<<<<<< HEAD
   <preference name="CrosswalkAnimatable" value="true"/>
+=======
+  <content src="http://192.168.42.119:8100" original-src="remote/local.index.html"/>
+>>>>>>> d5c611871c06a41683ae76d37bf64fb47bc3b0df
   <preference name="orientation" value="portrait"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
