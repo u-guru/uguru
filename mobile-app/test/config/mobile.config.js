@@ -134,13 +134,13 @@ exports.config = {
               guruHome:[
                           // '../test_case/mobileTest/workflows/access.js',
                           // '../test_case/mobileTest/workflows/university.js', 
-                          // '../test_case/mobileTest/workflows/major.js',
-                          // '../test_case/mobileTest/workflows/course.js',
-                          // '../test_case/mobileTest/workflows/category.js',
-                          // '../test_case/mobileTest/workflows/photo.js',
-                           '../test_case/mobileTest/sidemenu/signup.js',
-
-                          '../test_case/mobileTest/guruProfile/home.js'
+                          //  '../e2e/workflows/home.js',
+                          //  '../e2e/workflows/major.js',
+                          //  '../e2e/workflows/course.js',
+                          //  '../e2e/workflows/category.js',
+                          //  '../e2e/becomeGuru/photoSpec.js',
+                           '../e2e/account/signupSpec.js',
+                          // '../test_case/mobileTest/guruProfile/home.js'
                      ],
              credit:[
                          // '../test_case/mobileTest/workflows/access.js',
@@ -327,8 +327,11 @@ exports.config = {
     
             protractor.get = require('../test_case/globals.js').globals;
             protractor.run = require('../test_case/globals.js').run;
+
             global.doc =require('../test_case/newGlobals.js');
+            global.account = require('../e2e/account/accountPageObject.js');
             global.EC  = protractor.ExpectedConditions;
+
             global.localhost = '192.168.0.109'
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);

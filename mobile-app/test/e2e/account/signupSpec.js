@@ -19,8 +19,9 @@ describe('Sign-up test', function () {
 	});
 	it('Launch Profile',function()
 	{
-		browser.wait(EC.elementToBeClickable(element(by.id('btn-edit-profile'))),4000);
- 		element(by.id('btn-edit-profile')).click();	
+		// browser.wait(EC.elementToBeClickable(element(by.id('btn-edit-profile'))),4000);
+ 		// element(by.id('btn-edit-profile')).click();	
+ 		account.LaunchSignUpAtGuru();
 	});
 
 	// it("go to the new-home page",function()
@@ -39,28 +40,28 @@ describe('Sign-up test', function () {
 	// });
 	it("Active Sign-up",function()
 	{
-		// doc.pickSideMenu(5,"Signup");
-		//doc.checkItemDisplay("SIGN UP",true,'click');
+		account.CheckSignUpPageDisplayed();
+	});
 
-		expect(element(by.id('account')).isDisplayed()).toBe(true);
-	});
 	//Need to fix closing
-	describe("check term & condition paging",function()
-	{
-		it('check term & condition is working',function()
-		{
-			element(by.id('tos')).click();
-		});
-		it('check Term Page is shown', function()
-		{
-			expect(element(by.css('.modal-backdrop.active')).getText()).toContain("TERMS & CONDITIONS");
-		});
-		it('Closed Term Page',function()
-		{
-	 		browser.wait(EC.visibilityOf(closeButton),3000);
-			closeButton.click();
-		});
-	});
+	//Add later 
+	// describe("check term & condition paging",function()
+	// {
+	// 	it('check term & condition is working',function()
+	// 	{
+	// 		//element(by.id('tos')).click();
+	// 		account.OpenTermPage.click();
+	// 	});
+	// 	it('check Term Page is shown', function()
+	// 	{
+	// 		expect(element(by.css('.modal-backdrop.active')).getText()).toContain("TERMS & CONDITIONS");
+	// 	});
+	// 	it('Closed Term Page',function()
+	// 	{
+	//  		browser.wait(EC.visibilityOf(closeButton),3000);
+	// 		closeButton.click();
+	// 	});
+	// });
 
 	describe("Check Facebook is disabled", function()
 	{
@@ -73,27 +74,32 @@ describe('Sign-up test', function () {
 				{
 	        		it('Enter A key on : ' + str[index],function()
 					{
-						if(index == 0)
-							doc.setInput('d',0,"signupForm.full_"+str[index],true);
-						else
-							doc.setInput('d',0,"signupForm."+str[index],true);
-
+						if(index=== 0)
+							account.enterName('jason');
+						else if (index === 1)
+							account.enterEmail();
+						else if (index === 2)
+							account.enterPassword('test');
 					});
 
 					it('Check Facebook is hidden',function()
 					{
-						expect(element(by.css('[ng-click="connectWithFacebook()"]')).isDisplayed()).toBe(false);
+						account.checkFacebookIsDisplayed(false);
 					});
-					it('Clear Word',function()
+
+					it('Clear word',function()
 					{
-						if(index == 0)
-							doc.setInput('',0,"signupForm.full_"+str[index],false);
-						else
-							doc.setInput('',0,"signupForm."+str[index],false);	
+						if(index=== 0)
+							account.clearName('jason');
+						else if (index === 1)
+							account.clearEmail();
+						else if (index === 2)
+							account.clearPassword('test');
 					});
+
 					it('Check Facebook is back and showed',function()
 					{
-						expect(element(by.css('[ng-click="connectWithFacebook()"]')).isDisplayed()).toBe(true);
+						account.checkFacebookIsDisplayed(true);
 					});
 				});
 	        })(i);
@@ -191,47 +197,43 @@ describe('Sign-up test', function () {
 	// });
 	describe("SIgn up with Email",function()
 	{
-		
 		it('Enter Name : ',function()
 		{
-			// doc.setInput('jason',0);
-			doc.setInput('jason',0,"signupForm.full_name",true);
-
+			account.enterName('jason');
 		});
+
 		it('Enter Email : ',function()
 		{
-			// doc.setInput(doc.generateRandomEmail(),1,true);
-			doc.setInput(doc.generateRandomEmail(),0,"signupForm.email",true);
-
+			account.enterEmail();
 		});
+
 		it('Enter Password : ',function()
 		{
-			// doc.setInput('test',2);
-			doc.setInput('test',0,"signupForm.password",true);
-
+			account.enterPassword('test');
 		});
+
 		it('Create account',function()
 		{
-		    doc.socialButton(1,"Create an Account");
+		    account.CreateAccount();
 		});
 		it('check Sign up successful',function()
 		{
-			doc.checkMsg("Account Successfully Created");
-			// browser.sleep(10000);
+			account.CheckAccountMessage("Account Successfully Created");
 		})
-		
-		// it("Log off",function () {
-		//  	// doc.pickSideMenu(4,"Logout");
-		//  	doc.checkItemDisplay("Logout",true,"click");
-		//  	browser.sleep(100);
-		//  	var alertDialog = browser.switchTo().alert();
-		// 	alertDialog.accept();  // Use to accept (simulate clicking ok)
-		// });
-		// it ("Log out Successful",function(){
-		// 	doc.checkMsg("You have been successfully logged out!");
-		// });
+
 	});
 	
+	describe('close tab',function()
+	{
+		it('SideBar closed',function()
+		{
+			var settingsLink = element(by.css('ion-view'));
+			browser.wait(EC.elementToBeClickable(settingsLink), 5000); //wait for the element to become clickable
+			settingsLink.click();
+			browser.sleep(10000);		
+		});
+
+	});
 	
 
 	

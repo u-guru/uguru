@@ -19,7 +19,7 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 			beforeAll(function()
 			{
 	            // browser.get("http://localhost:8100/#/");
-	            browser.refresh();
+	            // browser.refresh();
 	            browser.get("http://"+localhost+":8100/#/university");
 			});
 			it("Enter Access Code : cool ",function()

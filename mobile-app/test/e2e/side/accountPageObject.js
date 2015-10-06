@@ -10,6 +10,11 @@ var Account = function()
 		doc.setInput(str,0,	this.nameModel,true);
 	};
 
+	this.clearName = function()
+	{
+		doc.setInput('',0,this.nameModel,false);
+	};
+	
 	this.enterEmail = function(str)
 	{
 		if(str != null)
@@ -17,10 +22,19 @@ var Account = function()
 		else
 			doc.setInput(doc.generateRandomEmail(),0, this.emailModel,true);
 	};
+	this.clearEmail = function()
+	{
+		doc.setInput('',0,this.emailModel,false);
+	};
 
 	this.enterPassword = function(str)
 	{
 		doc.setInput(str,0,	this.passwordModel,true);
+	};
+
+	this.clearPassword = function()
+	{
+		doc.setInput('',0,this.passwordModel,false);
 	};
 
 	this.CreateAccount = function()
