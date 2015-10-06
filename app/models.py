@@ -601,7 +601,7 @@ class University(Base):
         u = University.admin_update(University(_id=_id), args_dict)
         return u
 
-    def sanitizeUniversityCourses(self):
+    def sanitizeCourses(self):
         count = 0
         if course in self.courses:
             if course.name or course.short_name or course.full_name:
@@ -610,7 +610,7 @@ class University(Base):
             self.courses_sanitized = True
             db_session.commit()
 
-    def sanitizeUniversityDepartments(self):
+    def sanitizeDepartments(self):
         count = 0
         if department in self.departments:
             if d.code or d.abbr or d.name or d.short_name or d.title or d.variations:
