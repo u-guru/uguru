@@ -19,11 +19,22 @@ major_fields['code'] = fields.String(attribute='code')
 
 subcategory_fields = {}
 subcategory_fields['id'] = fields.Integer(attribute='id')
-subcategory_fields['name'] = fields.Integer(attribute='name')
+subcategory_fields['name'] = fields.String(attribute='name')
+subcategory_fields['icon_url'] = fields.String(attribute='icon_url')
+subcategory_fields['is_active'] = fields.String(attribute='is_active')
+subcategory_fields['is_approved'] = fields.String(attribute='is_approved')
+subcategory_fields['description'] = fields.String(attribute='description')
+
 
 category_fields = {}
 category_fields['id'] = fields.Integer(attribute='id')
-category_fields['name'] = fields.Integer(attribute='name')
+category_fields['name'] = fields.String(attribute='name')
+category_fields['hex_color'] = fields.String(attribute='hex_color')
+
+user_subcategory_fields = {}
+user_subcategory_fields['id'] = fields.Integer(attribute='id')
+user_subcategory_fields['name'] = fields.String(attribute='name')
+user_subcategory_fields['category'] = fields.Nested(category_fields)
 
 tag_fields = {}
 tag_fields['id'] = fields.Integer(attribute='id')
@@ -370,7 +381,7 @@ UserSerializer = {
     'total_earned': fields.Float,
     'departments': fields.List(fields.Nested(department_fields)),
     'guru_categories': fields.List(fields.Nested(category_fields)),
-    'guru_subcategories': fields.List(fields.Nested(subcategory_fields)),
+    'guru_subcategories': fields.List(fields.Nested(user_subcategory_fields)),
 }
 
 DeviceSerializer = {
@@ -387,6 +398,18 @@ DeviceSerializer = {
     'background_location_enabled': fields.Boolean,
     'location_enabled': fields.Boolean,
     'camera_enabled': fields.Boolean
+}
+
+CategorySerializer = {
+    'id':fields.Integer,
+    'name':fields.String,
+    'background_url': fields.String,
+    'icon_url': fields.String,
+    'description': fields.String,
+    'is_active': fields.Boolean,
+    'is_approved': fields.Boolean,
+    'hex_color': fields.String,
+    'subcategories': fields.List(fields.Nested(subcategory_fields))
 }
 
 SessionSerializer = {

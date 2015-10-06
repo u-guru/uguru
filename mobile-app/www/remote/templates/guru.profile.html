@@ -131,7 +131,12 @@
 					<h1>Skills</h1>
 					<div>
 						<ul class='skills'>
+<<<<<<< HEAD
 							<li ng-repeat='skill in user_skills'>
+=======
+							<li ng-repeat='subcategory in user.guru_subcategories' class='{{subcategory.category.hex_color}}'>
+								<span>{{subcategory.name}}</span>
+>>>>>>> 12799831f26246f734469833dff7649d7d910aff
 								<a ng-click='removeGuruSkill(skill)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>

@@ -28,13 +28,13 @@
     </header>
     <div id="skills-list" class="onboarding-list">
       <ul class='list list-item-half flex-wrap'>
-        <li ng-repeat='category in static.categories' style='background:url({{category.bg_url}})'>
-          <a class='skill-item-link bg-{{category._class}} ng-class:{"important":category.active_skills_count > 0}' ng-click='launchCategoryModal(category)'>
+        <li ng-repeat='category in categories' style='background:url({{categories_img_base + category.background_url}})'>
+          <a class='skill-item-link bg-{{category._class}} {{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
             <img ='background:url({{category.icon_url}})' >
             <div>
-              <span class="skill-label ng-class:{'count-exists':category.active_skills_count > 0}">{{category.name}}</span>
-              <span class="skill-count" ng-show='category.active_skills_count > 1'>{{category.active_skills_count}} selected</span>
-              <span class="skill-count" ng-show='category.active_skills_count === 1'>{{category.active_skills_count}} selected</span>
+              <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
+              <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
+              <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
             </div>
           </a>
         </li>
