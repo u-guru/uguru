@@ -13,7 +13,7 @@ from lib.api_utils import json_response
 from pprint import pprint
 
 
-APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31']
+APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31', 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3']
 
 @auth.verify_password
 def verify_password(email, password):
