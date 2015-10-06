@@ -233,7 +233,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   function getGPS() {
     $scope.isLocationActive = true;
-    Geolocation.getLocation($scope);
+    Geolocation.getLocation($scope, $scope.universitiesSorted);
+    //Geolocation.sortByDistance($scope.universitiesSorted);
+    
   };
 
 

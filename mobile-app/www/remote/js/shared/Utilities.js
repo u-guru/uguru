@@ -99,7 +99,7 @@ function Utilities($rootScope, Settings) {
 			limit: 1000
 		});
 
-		if(id === 'university') matcher.preserveOrder = false;
+		if(id === 'university') matcher.preserveOrder = true;
 
 		return matcher.getMatches(input);
 

@@ -10,8 +10,10 @@ angular.module('uguru.root.services')
 function Geolocation($timeout, University,
   Utilities, Settings) {
   var scope;
+  var isLocated = null;
   var deviceGPS = {
     sortByLocation: sortByLocation,
+    sortByDistance: sortByDistance,
     enableGPS: enableGPS,
     getLocation: getLocation
   };
@@ -27,7 +29,7 @@ function Geolocation($timeout, University,
     }
   }
 
-  function getLocation(scope) {
+  function getLocation(scope, list) {
     scope.loader.showAmbig();
     scope = scope;
     var posOptions = {
@@ -38,11 +40,11 @@ function Geolocation($timeout, University,
 
     function geoSuccess(position) {
       console.log('location found!', position.coords.latitude, position.coords.longitude);
-
+      isLocated = true;
       var nearestResults = [];
       nearestResults = sortByLocation( position.coords.latitude,
                                 position.coords.longitude,
-                                University.getTargetted());
+                                list);
       if (scope) {
         scope.nearestResults = nearestResults;
         scope.user.last_position = position.coords;
@@ -98,6 +100,11 @@ function Geolocation($timeout, University,
       return 0;
     }
     return list.sort(compareDistance);
+  }
+
+
+  function sortByDistance(list) {
+    if(list[0].rawMiles !== undefined) return list.sort(compareDistance);
   }
 
 
