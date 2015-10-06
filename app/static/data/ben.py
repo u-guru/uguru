@@ -2,13 +2,13 @@ import requests, json
 
 def uguruAPI(arg='', _json=None, _type='get'):
 	if arg: arg = '/' + arg 
-	BASE_URL = 'http://localhost:5000/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3/universities%s' % arg
+	BASE_URL = 'https://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3/universities%s' % arg
 	print BASE_URL
 	if _type == 'get':
-		return json.loads(requests.get(BASE_URL, json=_json).text)
+		return json.loads(requests.get(BASE_URL).text)
 	if _type =='put':
-		headers = {'contentType': 'application/json;charset=UTF-8'},
-		return json.load(requests.put(url=BASE_URL, json=_json, headers=headers).text)
+		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+		return requests.put(url=BASE_URL, data=json.dumps(_json), headers=headers).text
 
 ## number of emails > 0, departments are sanitizied, courses are sanitized
 def getMostUpdatedUniversities():
@@ -27,6 +27,7 @@ def getUniversity(uni_id):
 	return university
 
 def updateUniversity(uni_dict):
+	
 	university = uguruAPI(str(uni_dict['id']), uni_dict, 'put')
 	print university
 	return university
@@ -46,6 +47,6 @@ if __name__ == '__main__':
     	getUniversity(args[2])
 
     if args[1] in ['update-one', '-uo']:
-    	updateUniversity({'id':2732, 'num_emails':5 })
+    	updateUniversity({'id':2732, 'num_emails':10 })
 
 
