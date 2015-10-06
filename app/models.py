@@ -57,6 +57,18 @@ user_campaign_table = Table('user-campaign_assoc',
     Column('campaign_id', Integer, ForeignKey('campaign.id'))
     )
 
+guru_category_table = Table('user-category_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('category_id', Integer, ForeignKey('category.id'))
+    )
+
+guru_subcategory_table = Table('user-subcategory_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('subcategory_id', Integer, ForeignKey('subcategory.id'))
+    )
+
 queue_guru_table = Table('guru-queue_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -167,6 +179,16 @@ class User(Base):
 
     guru_languages = relationship("Language",
         secondary = guru_languages_table,
+        backref= backref('gurus', lazy='dynamic')
+    )
+
+    guru_categories = relationship("Category",
+        secondary = guru_category_table,
+        backref= backref('gurus', lazy='dynamic')
+    )
+
+    guru_subcategories = relationship("Subcategory",
+        secondary = guru_subcategory_table,
         backref= backref('gurus', lazy='dynamic')
     )
 
@@ -750,6 +772,19 @@ class Department(Base):
         uselist = False,
         primaryjoin = "(Course.department_id==Department.id) & "\
                         "(Course.is_popular==True)")
+
+    def __repr__(self):
+        if self.title:
+            return "<Department'%r', '%r'>" %\
+              (str(self.id), str(self.title))
+        if self.abbr:
+            return "<Department'%r', '%r'>" %\
+              (str(self.id), str(self.abbr))
+        if self.name:
+            return "<Department'%r', '%r'>" %\
+              (str(self.id), str(self.name))
+        return "MALFORMED MAJOR", str(self.id)
+
 
 
 class Campaign(Base):
@@ -1935,6 +1970,146 @@ class Skill(Base):
     def __repr__(self):
         return "<Skill '%r', '%r'>" %\
               (self.id, self.name)
+
+
+class Category(Base):
+    __tablename__ = 'category'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    background_url = Column(String)
+    icon_url = Column(String)
+    description = Column(String)
+    is_active = Column(Boolean, default=True)
+    is_approved = Column(Boolean, default=True)
+    hex_color = Column(String)
+
+    @staticmethod
+    def create(name, icon_url=None, background_url='',
+        description='', is_active=False, is_approved=False):
+
+        category_arr = Category.query.filter_by(name=name).all()
+        if category_arr:
+            print 'category', name, 'already exists!'
+            return category_arr[0]
+
+        category = Category()
+        category.icon_url = icon_url
+        category.name = name
+        category.background_url = background_url
+        category.description = description
+        category.is_active = is_active
+        category.is_approved = is_approved
+
+        db_session.add(category)
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        return category
+
+    def active_subcategories(self):
+        return [subcategory for subcategory in self.subcategories if subcategory.is_active]
+
+    def inactive_subcategories(self):
+        return [subcategory for subcategory in self.subcategories if not subcategory.is_active]
+
+    def set_inactive(self):
+        self.is_active = False
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def set_active(self):
+        self.is_active = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def approve(self):
+        self.is_approved = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+class Subcategory(Base):
+    __tablename__ = 'subcategory'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship("Category",
+        primaryjoin = "Category.id == Subcategory.category_id",
+        backref = 'subcategories'
+        )
+    icon_url = Column(String)
+    description = Column(String)
+    is_active = Column(Boolean, default=True)
+    is_approved = Column(Boolean, default=False)
+
+    @staticmethod
+    def create(name, category_id, icon_url=None,
+        description='', is_active=False, is_approved=False):
+
+        subcategory_arr = Subcategory.query.filter_by(name=name).all()
+        if subcategory_arr:
+            print 'category', name, 'already exists!'
+            return subcategory_arr[0]
+
+        if not name or not category_id:
+            raise
+
+        subcategory = Subcategory()
+        subcategory.category_id = category_id
+        subcategory.icon_url = icon_url
+        subcategory.name = name
+        subcategory.description = description
+        subcategory.is_active = is_active
+        subcategory.is_approved = is_approved
+
+        db_session.add(subcategory)
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        return subcategory
+
+
+    def set_inactive(self):
+        self.is_active = False
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def set_active(self):
+        self.is_active = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def approve(self):
+        self.is_approved = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
 
 
 class Course(Base):

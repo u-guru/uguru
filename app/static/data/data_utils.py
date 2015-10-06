@@ -1,5 +1,7 @@
 import json
 
+ADMIN_API_TOKEN = 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3'
+
 def loadJsonArrayFromFile(filename):
     arr = json.load(open(filename))
     return arr
@@ -39,6 +41,7 @@ def updateMailgunJsonWithFreshData(num=1000):
     saveObjToJson(results, 'mailgun')
     print 'Most recent results saved to mailgun.json\n'
     print 'Number of universities with emails %s' % numWithEmails
+    return filtered_results
 
 def sortArrayObjByKey(array, keyString, reverse=True):
     return sorted(array, key=lambda k:k[keyString], reverse=reverse)
@@ -138,6 +141,8 @@ def benchmarkCurrentUniversities():
     print '#Missing Dept ONLY: %i out of %i' % (len(missingDepts) , totalCount)
     print '#Missing Both ONLY: %i out of %i' % (len(missingBoth) , totalCount)
 
+
+
 def cleanDepartments():
     from app.models import University
     import json
@@ -184,6 +189,7 @@ def cleanDepartmentsCode():
                 count += 1
     print 'num codes', count
 
+
 # progress so far
 def benchmarkCoursesForAllUniversities(email_only=False):
     pass
@@ -199,19 +205,171 @@ def is_number(s):
 def benchmarckCoursesForAllUniversities():
     pass
 
+def getRequiredKeys():
+    universities = loadJsonArrayFromFile('fa15_all.json')
+    return universities[0].keys() + ['emails_only', 'departments', 'courses']
+
+def getAllUsNewsUniversityNames():
+    import json
+    universities = loadJsonArrayFromFile('fa15_targetted.json')
+    universityNames = [university['name'] for university in universities]
+    return universityNames
+
+def getTodayDayMonth():
+    from datetime import datetime
+    today = datetime.now().day
+    month = datetime.now().month 
+    return month, today
+
+def requestUguruAdminServer(admin_token, args):
+    base_url = 'https://www.uguru.me/api/v1/%s/'
+
+def isDepartmentsReady(uni_id, uni_name):
+    import requests, json
+    BASE_URL = 'https://www.uguru.me/api/v1/universities/%s' % uni_id
+    departments_url = BASE_URL + '/departments'
+    
+    departments_arr = json.loads(requests.get(departments_url).text)
+    
+    empty_count = 0
+    for dept in departments_arr:
+        if not dept.get('code') and not dept.get('abbr') and not dept.get('name') \
+        and not dept.get('short_name') and not dept.get('variations') and not dept.get('title'):
+            empty_count += 1
+
+    if empty_count > len(departments_arr) * 0.25:
+        print str(int(empty_count / float(len(departments_arr)) * 100)) + '%', uni_name, 'departments', 'are empty'
+        return False
+
+    return True
+
+
+def isCoursesReady(uni_id, uni_name):
+    import requests, json
+    BASE_URL = 'https://www.uguru.me/api/v1/universities/%s' % uni_id
+    courses_url = BASE_URL + '/courses'
+    
+    courses_arr = json.loads(requests.get(courses_url).text)
+    
+    empty_count = 0
+    for course in courses_arr:
+        if not course.get('name') and not course.get('short_name') and not course.get('full_name'):
+            empty_count += 1
+
+    if empty_count > len(courses_arr) * 0.25:
+        print str(int(empty_count / float(len(courses_arr)) * 100)) + '%', uni_name, 'courses', 'are empty'
+        return False
+
+    return True
+
+def sanitizeAllCourses(departments):
+    pass
+
+def isUniversityReady(uni_data, has_emails=False):
+    import requests, json
+    from time import sleep
+    
+    ## Case #1
+    if not has_emails:
+        return False
+
+    # requiredKeys = getRequiredKeys()
+    requiredKeys = ['school_color_one', 'population', 'banner_url', 'rank', 'fa15_start', 'id', 'school_color_two', 'city', 'name', 'longitude', 'state', 'popular_courses', 'latitude', 'logo_url']
+    
+    # grab uni_id
+    uni_id = uni_data['id']
+
+    # Find uni_data
+    all_uni_data = loadJsonArrayFromFile('fa15_all.json')
+    for uni_info in all_uni_data:
+        if int(uni_info['id']) == int(uni_id):
+            uni_data = uni_info
+            break
+
+    ## Step 1 
+    for key in requiredKeys:
+        if not uni_data.get(key):
+            print uni_data['name'], 'does not have', key
+            return False
+
+
+    # /<admin_token>/universities/<university_id>
+    # /<admin_token>/universities/<university_id>/departments
+    # /<admin_token>/universities/<university_id>/courses
+    ## Step 2
+    if isDepartmentsReady(uni_data['id'], uni_data['name']):
+        uni_data['departments'] = True
+    else:
+        return False
+    sleep(1)
+    
+    if isCoursesReady(uni_data['id'], uni_data['name']):
+        uni_data['courses'] = True
+    else:
+        return False
+    sleep(1)
+    return uni_data
+
+
+    # for department in departments_arr:
+
+    
+    
+    ## CHeck if any of the required keys are going to be null
+    ## Case #3
+    ## Query Uguru Admin API for departments
+    ## Loop through all ugu
+
+    ## Case #2
+    ## Are departments as
+    if not has_emails:
+        return False
+
+    return False
+
 
 if __name__ == '__main__':
     import sys
     args = sys.argv
 
-
-
     if args[1] in ['targetted', '-t']:
         countTargetted()
 
     # Create a new fa15_targetted-APPROVAL.json file with limited targetted universities
-    if args[1] in ['update-mailgun', '-um']:
-        updateMasterWithMailgunEmails()
+    if args[1] in ['universities-ready', '-ur']:
+        
+        mailgunUniversities = updateMailgunJsonWithFreshData(1000)
+        
+        finalUniversities = []
+        ## 30/200 --> keys --> courses --> departments
+        print '\n\n=====Processing %s Universities\n\n=====' % len(mailgunUniversities)
+        approved = 0
+        index = 0
+        for university_dict in mailgunUniversities:
+            if isUniversityReady(university_dict, True):
+                finalUniversities.append(university_dict)
+                print 'Woohoo! %s', university_dict['name'], 'is approved!'
+                approved += 1
+            index += 1
+            print "UPDATE:", "%s/%s" % (approved, index), 'approved so far\n'
+                
+
+        filename = 'fa15_targetted_%s_%s.json' % getTodayDayMonth()
+        saveObjToJson(finalUniversities, filename)
+
+        print len(finalUniversities), 'total universities ready'
+        print 
+        print 'Results saved in', 'fa15_targetted_%s_%s.json' % getTodayDayMonth()
+
+        ## Open fa15_all.json --> starts with 200 
+        ## 1. Filter it so it only contains the ones with emails > 1000
+        ## 2. Are departments sanitized?
+        ## 3. Are courses sanitizated?
+        ## 4. Filter it so it only containes the ones with required keys
+
+        # updateMasterWithMailgunEmails()
+
+        ## Emails -->
 
     # Will print #of universities that have at least X emails
     if args[1] in ['print-mailgun', '-pm']:
@@ -219,3 +377,7 @@ if __name__ == '__main__':
         if len(args) > 2 and is_number(args[2]):
             number = int(args[2])
         updateMailgunJsonWithFreshData(number)
+    
+    if args[1] in ['university-list','-ul']:
+        universityNames = getAllUsNewsUniversityNames()
+        for name in universityNames: print name

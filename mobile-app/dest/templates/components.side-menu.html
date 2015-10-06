@@ -1,19 +1,15 @@
 <ion-view ng-controller='SidebarController'>
-<ion-list class='side-menu-list with-icon menu-student'>
-	<!-- Toggle between menu-guru and menu-student to switch color modes -->
+<ion-list class='side-menu-list with-icon ng-class:{"student-mode":!root.vars.guru_mode, "guru-mode":root.vars.guru_mode}'>
+	<!-- Toggle between guru-mode and student-mode to switch color modes -->
 	<ion-item class='list-item list-item-profile'>
 		<span class="list-item-icon" ng-if='user.id'>
 			<img class='sidebar-img-source' id='sidebar-img-photo' src='{{user.profile_url}}'/>
-			<!-- <svg viewBox="0 0 100 100">
-				<g fill="none" fill-rule="evenodd">
-					<circle cx="50" cy="50" r="50"></circle>
-				</g>
-			</svg> -->
+
 		</span>
 		<span class="list-item-detail" ng-if='user.id' id='student-sidebar-profile'>
 			<span class='student-profile-name'>{{user.name.split(' ')[0]}} {{user.name.split(' ')[1][0].toUpperCase()}}.</span>
 			<span class='student-profile-year' ng-if='user.id && user.year && user.university.name'>Sophomore</span>
-			<span ng-if='user.id && !user.year && user.university'>{{user.university.name || user.university.title}}</span>
+			<span class='student-profile-school' ng-if='user.id && !user.year && user.university'>{{user.university.name || user.university.title}}</span>
 		</span>
 		<span class="list-item-detail" ng-if='!user.id || (!user.university.name && !user.university.title)'>
 			<h3 class='text-center'>{{user.university.name || user.university.title || 'SETTINGS'}}</h3>
@@ -70,7 +66,7 @@
 		</span>
 		<span class="list-item-detail">Settings</span>
 	</ion-item>
-	<ion-item class='list-item' ng-if='user && user.id' ng-click='logoutUser()'>
+	<ion-item class='list-item' ng-if='user && user.id' ng-click='logoutUser(true)'>
 		<span class="list-item-icon">
 			<svg viewBox="0 0 100 100">
 			    <path d="M38.9873686,23.7410842 C26.7973138,28.2645884 18.081899,40.0689661 18.081899,53.8841841 C18.081899,71.5925239 32.3998272,86 50,86 C67.6001728,86 81.918101,71.5925239 81.918101,53.8841841 C81.918101,40.0689661 73.2026862,28.2645884 61.0152913,23.7410842 M50,14 L50,54.4983197" fill="none"></path>
@@ -95,7 +91,7 @@
 		</span>
 		<span class="list-item-detail">Login</span>
 	</ion-item>
-	<ion-item class='list-item list-item-guru' ng-if="!root.vars.guru_mode && user.is_a_guru && user.id" ng-click='goToGuru()'>
+	<ion-item class='list-item list-item-mode' ng-if="!root.vars.guru_mode && user.is_a_guru && user.id" ng-click='goToGuru()'>
 		<span class="list-item-icon">
 			<svg viewBox="0 0 100 100">
 			    <g fill="none">
@@ -108,7 +104,7 @@
 		</span>
 		<span class="list-item-detail">Guru Mode</span>
 	</ion-item>
-	<ion-item class='list-item list-item-student' ng-if='root.vars.guru_mode && user.is_a_guru && user.id' ng-click='goToStudent()'>
+	<ion-item class='list-item list-item-mode' ng-if='root.vars.guru_mode && user.is_a_guru && user.id' ng-click='goToStudent()'>
 		<span class="list-item-icon">
 			<svg viewBox="0 0 100 100">
 			    <g fill="none" >

@@ -16,7 +16,6 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout,
   $q, Major, $ionicSideMenuDelegate, Utilities,
   $localstorage, uTracker, University) {
-
     $scope.backToStudentEditProfile = function(is_saved) {
 
       if (is_saved) {
@@ -54,7 +53,6 @@ angular.module('uguru.util.controllers')
     // $scope.majors = $scope.static.majors || GetMajorsList();
 
     $scope.removeMajor = function(major, index) {
-
       if (!confirm('Remove ' + major.name + '?')) {
         return;
       }
@@ -93,7 +91,7 @@ angular.module('uguru.util.controllers')
 
       //t == 0
       $timeout(function() {
-        $scope.majors.splice(index, index + 1);
+        $scope.majors.splice(index, 1);
       }, 250)
 
 
@@ -108,11 +106,6 @@ angular.module('uguru.util.controllers')
         $scope.majorInput.value = '';
       }
 
-      $timeout(function() {
-        $scope.user.majors.push(major);
-        $localstorage.setObject('user', $scope.user);
-      }, 750)
-
       //update the server
 
       uTracker.track(tracker, 'Major Added', {
@@ -124,7 +117,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.query = function(input) {
-      $scope.majors = Utilities.nickMatcher(input, University.majors || Major.getGeneral());
+      console.log('currentLength',$scope.majors.length)
+      $scope.majors = Utilities.nickMatcher(input, $scope.majors || University.majors || Major.getGeneral());
     }
 
     $scope.removeUserMajorsFromMaster = function() {
@@ -147,6 +141,30 @@ angular.module('uguru.util.controllers')
 
       }
     }
+
+    $scope.removeEmptyMajors = function() {
+      var majorIndicesToSlice = [];
+      if ($scope.majors && $scope.majors.length) {
+        for (var i = 0; i < $scope.majors.length; i ++) {
+            var indexMajor = $scope.majors[i];
+            if ((!indexMajor.name) && (!indexMajor.title) && (!indexMajor.abbr)) {
+              console.log('adding', i, indexMajor);
+              majorIndicesToSlice.push(i);
+            }
+          }
+        }
+        console.log('emptyMajors', majorIndicesToSlice.length, $scope.majors.length)
+        // tricky plz ask;
+        var offset = 0;
+        for (var j = 0; j < majorIndicesToSlice.length; j++) {
+          indexToRemove = majorIndicesToSlice[j]
+          // console.log(indexToRemove, $scope.majors[indexToRemove])
+          $scope.majors.splice(indexToRemove - offset, 1);
+          offset++;
+        }
+        console.log('new length', $scope.majors.length)
+
+      }
 
 
 
@@ -198,7 +216,11 @@ angular.module('uguru.util.controllers')
     }
 
 
-    $scope.majors = University.majors || getMajorsForUniversityId();
+    $scope.majors = University.majors || getMajorsBecomeGuru();
+    $scope.removeUserMajorsFromMaster();
+
+    // $timeout(function() {$scope.removeEmptyMajors();}, 1000)
+
   }
 
 

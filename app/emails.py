@@ -94,11 +94,19 @@ def send_campaign_email(campaign_name, template_name,
 def send_transactional_email(subject, content, receiver, tags, email=None):
 
     # if not email and receiver.email:
-    receiver_info = [{
-        'email':receiver.email,
-        'name':receiver.name,
-        'type': 'to'
-    }]
+    if email:
+        receiver_info = [{
+            'email':email,
+            'name':receiver.name,
+            'type': 'to'
+        }]
+    else:
+
+        receiver_info = [{
+            'email':receiver.email,
+            'name':receiver.name,
+            'type': 'to'
+        }]
 
     # if email:
     #     receiver_info = receiver.email

@@ -1,12 +1,11 @@
 angular
 .module('sharedServices')
 .factory("Utilities", [
-	'$cordovaSplashscreen',
 	'Settings',
 	Utilities
 	]);
 
-function Utilities($cordovaSplashscreen, Settings) {
+function Utilities(Settings) {
 
 	return {
 		getNetworkSpeed: getNetworkSpeed,
@@ -17,7 +16,21 @@ function Utilities($cordovaSplashscreen, Settings) {
 		getFileName: getFileName,
 		isElementInViewport: isElementInViewport,
 		transitionEndEventName: transitionEndEventName,
-		fireBeforeEnter: fireBeforeEnter
+		fireBeforeEnter: fireBeforeEnter,
+		rAF: rAF,
+		sortArrObjByKey: sortArrObjByKey
+	}
+
+	function sortArrObjByKey(arr, key) {
+		function compare(a,b) {
+		  if (a[key] < b[key])
+		    return -1;
+		  if (a[key] > b[key])
+		    return 1;
+		  return 0;
+		}
+		arr.sort(compare);
+		return arr
 	}
 
 	function getNetworkSpeed() {
@@ -79,8 +92,9 @@ function Utilities($cordovaSplashscreen, Settings) {
 		}
 		var inputLowerCase = input.toLowerCase();
 		for(var i=0; i<list.length; i++) {
-
-			var nameLowerCase = list[i].name.toLowerCase();
+			var elem = list[i];
+			var elemName = elem.name || elem.abbr || elem.title;
+			var nameLowerCase = elemName.toLowerCase();
 
 			var inputLowerCase = input.toLowerCase();
 
@@ -135,11 +149,17 @@ function Utilities($cordovaSplashscreen, Settings) {
 		return BeforeEnterEvent;
 	}
 
-	
+	function rAF() {
+	  return
+	  	window.requestAnimationFrame ||
+	    window.webkitRequestAnimationFrame ||
+	    window.mozRequestAnimationFrame ||
+	    function(callback) {
+	      window.setTimeout(callback, 16);
+	    };
+	}
+
+
 
 
 }
-
-
-
-

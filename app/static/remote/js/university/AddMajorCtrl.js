@@ -11,16 +11,11 @@ angular.module('uguru.util.controllers')
   '$ionicSideMenuDelegate',
   'Utilities',
   '$localstorage',
+  'uTracker',
+  'University',
   function($scope, $state, $timeout,
   $q, Major, $ionicSideMenuDelegate, Utilities,
-  $localstorage) {
-
-
-
-    if (!$scope.user.majors) {
-      $scope.user.majors = [];
-    }
-
+  $localstorage, uTracker, University) {
     $scope.backToStudentEditProfile = function(is_saved) {
 
       if (is_saved) {
@@ -58,7 +53,6 @@ angular.module('uguru.util.controllers')
     // $scope.majors = $scope.static.majors || GetMajorsList();
 
     $scope.removeMajor = function(major, index) {
-
       if (!confirm('Remove ' + major.name + '?')) {
         return;
       }
@@ -67,6 +61,10 @@ angular.module('uguru.util.controllers')
       $scope.majors.push(removedMajor);
 
       var confirmCallback = function() {
+
+        uTracker.track(tracker, 'Major Removed', {
+          '$Major': major.name
+        });
         $scope.success.show(0, 2000, major.name + ' successfully removed');
       }
 
@@ -93,7 +91,7 @@ angular.module('uguru.util.controllers')
 
       //t == 0
       $timeout(function() {
-        $scope.majors.splice(index, index + 1);
+        $scope.majors.splice(index, 1);
       }, 250)
 
 
@@ -108,19 +106,19 @@ angular.module('uguru.util.controllers')
         $scope.majorInput.value = '';
       }
 
-      $timeout(function() {
-        $scope.user.majors.push(major);
-        $localstorage.setObject('user', $scope.user);
-      }, 750)
-
       //update the server
+
+      uTracker.track(tracker, 'Major Added', {
+        '$Major': major.name
+      });
 
       $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
     }
 
     $scope.query = function(input) {
-      $scope.majors = Utilities.nickMatcher(input, Major.getGeneral());
+      console.log('currentLength',$scope.majors.length)
+      $scope.majors = Utilities.nickMatcher(input, $scope.majors || University.majors || Major.getGeneral());
     }
 
     $scope.removeUserMajorsFromMaster = function() {
@@ -144,6 +142,30 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.removeEmptyMajors = function() {
+      var majorIndicesToSlice = [];
+      if ($scope.majors && $scope.majors.length) {
+        for (var i = 0; i < $scope.majors.length; i ++) {
+            var indexMajor = $scope.majors[i];
+            if ((!indexMajor.name) && (!indexMajor.title) && (!indexMajor.abbr)) {
+              console.log('adding', i, indexMajor);
+              majorIndicesToSlice.push(i);
+            }
+          }
+        }
+        console.log('emptyMajors', majorIndicesToSlice.length, $scope.majors.length)
+        // tricky plz ask;
+        var offset = 0;
+        for (var j = 0; j < majorIndicesToSlice.length; j++) {
+          indexToRemove = majorIndicesToSlice[j]
+          // console.log(indexToRemove, $scope.majors[indexToRemove])
+          $scope.majors.splice(indexToRemove - offset, 1);
+          offset++;
+        }
+        console.log('new length', $scope.majors.length)
+
+      }
+
 
 
 
@@ -164,15 +186,40 @@ angular.module('uguru.util.controllers')
 
     });
 
+    $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.majors && $scope.limit < $scope.majors.length) {
         $scope.limit += 10;
       }
     }
 
+    $scope.clearSearchInput = function() {
+      $scope.search_text = '';
+      $scope.query('');
+    }
 
-    $scope.majors = Major.getGeneral();
+    var getMajorsBecomeGuru = function() {
+      University.getMajors($scope.user.university_id).then(function(majors) {
+
+        majors = majors.plain();
+
+        $scope.majors = majors;
+        University.majors = majors;
+        $localstorage.setObject('universityMajors', majors.plain())
+
+
+      },function(err) {
+
+        alert('Something went wrong... Please contact support!');
+
+      });
+    }
+
+
+    $scope.majors = University.majors || getMajorsBecomeGuru();
     $scope.removeUserMajorsFromMaster();
+
+    // $timeout(function() {$scope.removeEmptyMajors();}, 1000)
 
   }
 

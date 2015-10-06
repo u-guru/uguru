@@ -1,73 +1,29 @@
- <ion-view hide-nav-bar='true' class='dark-bg'>
-   <div class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
-      <div class="buttons">
-      <button class="button button-clear button-header-link cancel-button button-left" ng-click='backToEditProfile()'>Back</button>
-      </div>
-      <h1 class="title bold">My Languages</h1>
-      <div class='buttons'>
-        <button style='padding-top:0.1em;'class="button button-clear button-header-link submit-button button-right " id='done-button' ng-click='backToEditProfile(true)'>Save</button>
-      </div>
-  </div>
-  <ion-content class='dark-bg has-header' scroll='false'>
-      <div class='pure-g'>
-        <div class="list pure-u-1">
-          <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2">
-                  <i class='icon ion-search onboarding-search-icon' ng-hide="languageInput.value.length > 0"></i>
-                      <input id='guru-language-input' type="text" class='ng-class:{"align-left-start":search_text.length > 0}'
-                        fast-matcher
-                        fast-matcher-source="static.languages"
-                        fast-matcher-output="matchingLanguages"
-                        fast-matcher-properties="name"
-                        fast-matcher-any-word="true"
-                        fast-matcher-limit="10"
-                        fast-matcher-preserve-order="true"
-                        fast-matcher-case-insensitive="true"
-                        placeholder="Search All Languages"
-                        ng-model = "search_text"
-                      />
-                  </span>
-                </label>
-              </div>
+    <section id="major" class="onboarding charcoal-bg">
+
+      <header ng-if='guruLanguagesModal.isShown();' class='third flex-center'>
+        <h1 class="text-center">Edit Language</h1>
+        <a class="header-nav-back left-0 absolute p10xy top-0" ng-click='guruLanguagesModal.hide()'>
+          <i class='icon ion-chevron-down'> </i>
+        </a>
+          <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+            <input type="search" id='language-input' placeholder="I can speak ..."
+            ng-model="search_text"
+            ng-keyup="query(search_text)"/>
           </div>
+      </header>
+      <div id="language-list" buffered-scroll='increaseLimit()' class="onboarding-list" >
+        <ul class="list list-item-border no-icon">
 
-            <ion-list ng-show='languageInput.value.length > 0'>
-              <ion-scroll>
-                <ion-item class='item-button-right request-form-item course-item major-item' ng-repeat='language in matchingLanguages' ng-click='addSelectedGuruLanguage(language, language_search_text)'>
-                  <p class='semibold'> {{language.name}} </p>
-                </ion-item>
-              </ion-scroll>
-            </ion-list>
+          <li ng-if="languageInput && languageInput.value.length === 0" class="major-item selected" ng-repeat='language in user.guru_languages'>
 
-            <div class='pure-g-c flex-column flex-space-between' ng-show='languageInput.value.length === 0'>
-
-              <div class='flex-item-c center j-end' ng-show='user.guru_languages.length > 0'>
-                <div class='pure-g'>
-
-                  <div class='pure-u-1'>
-                    <p class='uppercase opacity-3-4 micro-text bold sans-bold white-text padding-half'> <strong> My Languages </strong> <br>
-                    </p>
-                    <div class='micro-text regular white-text' style='opacity:1'>(Double tap to Remove)</div>
-                  </div>
-                </div>
-
-                <div class='pure-g'>
-
-                  <div class='pure-u-1'>
-                    <a class='course-tag major-tag white-bg orange' on-double-tap="removeGuruLanguageAndUpdate(language, $index)" style='font-size:80%;' ng-repeat="language in user.guru_languages track by $index">{{language.name}} &nbsp; &nbsp; <i class='icon ion-checkmark'></i></a>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class='flex-item-c center'>
-              </div>
-
-
-              <div class='flex-item-c j-start'>
-
-              </div>
-            </div>
-        </ion-content>
-
-
-</ion-view>
+            <a ng-click='removeGuruLanguageAndUpdate(language, $index)'>{{language.name}}</a>
+            <svg viewBox="0 0 100 100">
+                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+          </li>
+          <li class="major-item major-business" ng-repeat='language in static.languages | limitTo: limit'>
+            <a ng-click='addSelectedGuruLanguage(language, $index)'>{{language.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </section>

@@ -1,6 +1,10 @@
 
 
-    <ion-slide-box class='full-xy'class='dark-bg' on-slide-changed="slideHasChanged($index)" delegate-handle='become-guru-slide-box' class='become-guru-slidebox-container'>
+    <ion-slide-box on-slide-changed="slideHasChanged($index)" delegate-handle='become-guru-slide-box' class='become-guru-slidebox-container'>
+
+      <ion-slide>
+        <div ng-include="img_base + BASE + 'templates/become.guru.skills.html'"></div>
+      </ion-slide>
 
       <ion-slide>
         <div ng-include="img_base + BASE + 'templates/majors.html'"></div>
@@ -8,10 +12,6 @@
 
       <ion-slide>
          <div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
-      </ion-slide>
-
-      <ion-slide>
-        <div ng-include="img_base + BASE + 'templates/become.guru.skills.html'"></div>
       </ion-slide>
 
       <!-- <ion-slide>

@@ -97,7 +97,11 @@
 			<div ng-if='user.transcript_file && user.transcript_file.url'>
 				<h1 class="section-header">Transcript Submitted</h1>
 				<div class="credit-body">
-					<p>Thank you for uploading your transcript. We're in the process of verifying.</p>
+                    <p ng-if='user.transcript_verified_by_admin'>Your transcript has been <strong> verified</strong> and <strong>approved</strong>!</p>
+					<p ng-if='!user.transcript_verified_by_admin'>Thank you for uploading your transcript. We're in the process of verifying.</p>
+                    <div ng-if='!transcript_verified_by_admin' class='text-center block top-0 full-x semibold bg-cerise p20xy'>
+                            AWAITING APPROVAL
+                    </div>
 				</div>
 				<button ng-click='showActionSheetTranscriptPhoto()' class="semibold bg-moola">Edit your transcript</button>
 			</div>
@@ -117,7 +121,7 @@
          <div ng-if='user.fb_id'>
           <h1 class="section-header">Your Facebook is connected</h1>
           <div class="credit-body">
-	          <p>Don't worry - we will never post with your permission</p>
+	          <p class='weight-600'>Don't worry - we will never post with your permission</p>
           </div>
         </div>
       </div>
@@ -156,14 +160,19 @@
                 <br>
                 <strong class='CAPS'>Must be your school.edu email</strong>
               </p>
+              <div class='text-center block top-0 full-x'  ng-if='user.school_email && !user.school_email_confirmed'>
+                    <a class='semibold white-text-50' style='opacity:0.5;' ng-click='checkStatus()'>
+                        Check Status
+                    </a>
+                </div>
 
           </div>
           <button id='launch-email-confirm-popup' ng-click='launchConfirmEmailPopup()' class="semibold bg-lake">Confirm Your Email</button>
         </div>
         <div ng-if='user.school_email_confirmed'>
-          <h1 class="section-header">Email <strong>{{user.school_email}}</strong><br/>confirmed!</h1>
+          <h1 class="section-header">Verify your .edu email</h1>
           <div class="credit-body">
-	          <p>We won't share this with anyone!</p>
+	          <p>Email <strong><br><u>{{user.school_email}}</u><br></strong>is now confirmed!<br><br>We won't share this with anyone!</p>
           </div>
         </div>
       </div>

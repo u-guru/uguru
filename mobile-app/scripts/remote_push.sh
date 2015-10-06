@@ -64,13 +64,13 @@ echo
 echo 'pushing to git, to the master branch'
 echo
 echo
-git push origin staging
+git push origin master
 echo
 echo
 echo 'pushing to heroku, to the master branch'
 echo
 echo
-git push rest staging:master
+git push rest master
 echo
 echo
 echo 'last part: restarting servers & updating database'

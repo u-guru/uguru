@@ -2,6 +2,8 @@
 !app/static/data/fa15_targetted.json
 !app/static/data/fa15_*.json
 !app/static/data/*.json
+!app/static/data/categories.json
+!app/static/data/init_categories.json
 .elasticbeanstalk/
 venv
 app.db

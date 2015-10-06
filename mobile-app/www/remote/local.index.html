@@ -34,6 +34,7 @@
     <!-- The main css file -->
     <link href="remote/css/sass/default.css" rel="stylesheet">
     <link href="remote/css/sass/style.css" rel="stylesheet">
+    <link href="remote/css/sass/components/map.css" rel="stylesheet">
 
     <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
@@ -96,7 +97,7 @@
 
    <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
      for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="remote/lib/mixpanel/mixpanel.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
-   </script>  
+   </script>
 
 
  <script type="text/javascript">
@@ -115,7 +116,10 @@
     <script src="lib/lodash/dist/lodash.js"></script>
     <script src='remote/lib/angular-google-maps/angular-google-maps.min.js'></script>
     <script src='remote/lib/spinningwheel/spinning-wheel.min.js'></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <!-- <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script> -->
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src='remote/lib/angular-google-maps/default-map-styles.js'></script>
+    <script src='remote/lib/angular-google-maps/google-marker-with-labels.js'></script>
     <script type="text/javascript" src="remote/lib/cta/cta.min.js"></script>
 
 
@@ -137,7 +141,7 @@
     <script src="remote/lib/d3/d3.min.js"></script>
     <script src="remote/lib/mixpanel/mixpanel.js"></script>
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
-    
+
     <script src="remote/lib/localytics/localytics.js"></script>
 
     <!-- <script src="remote/lib/rAF.js"></script> -->
@@ -208,6 +212,7 @@
     <script type="text/javascript" src="remote/js/factories/Skill.js"></script>
     <script type="text/javascript" src="remote/js/factories/LocalStorage.js"></script>
     <script type="text/javascript" src="remote/js/factories/Github.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Category.js"></script>
 
     <!-- uguru app services -->
     <script type="text/javascript" src="remote/js/services/RootService.js"></script>
@@ -273,6 +278,7 @@
     <script type="text/javascript" src="remote/js/shared/Utilities.js"></script>
     <script type="text/javascript" src="remote/js/shared/LoadingService.js"></script>
     <script type="text/javascript" src="remote/js/shared/AnimationService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/MapService.js"></script>
     <script type="text/javascript" src="remote/js/shared/Settings.js"></script>
     <script type="text/javascript" src="remote/js/shared/DownloadService.js"></script>
     <script type="text/javascript" src="remote/js/shared/InAppBrowser.js"></script>
@@ -326,7 +332,7 @@
         <script>
           WebFont.load({
             google: {
-              families: ['Source Sans Pro:200,300,400,600,700,900']
+              families: ['Source Sans Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic']
             }
           });
     </script>
