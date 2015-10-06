@@ -2592,7 +2592,7 @@ class AdminViewUniversitiesListPrepared(restful.Resource):
     def get(self, auth_token):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED"
-        universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.num_emails > 0).all()
+        universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.num_emails > 1000, University.school_color_one != None, University.banner_url != None, University.logo_url != None).all()
         return universities, 200
 
 
