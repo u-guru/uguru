@@ -1109,6 +1109,9 @@ header {
 				}
 			}
 		}
+		a.active, a:active {
+			@include opacity(.75);
+		}
 		.header-nav-next {
 			h1 {
 				text-align: right;
@@ -1205,6 +1208,18 @@ button {
 	border: 0;
 	color: white;
 	font-size: 24px;
+}
+button.round {
+	@include round;
+	width: auto;
+	height: auto;
+	padding: 5px 10px;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+button.active, button.activated {
+	@include opacity(.75);
 }
 
 .input-ghost {
@@ -1331,6 +1346,20 @@ button.disabled {
 					url(/static/remote/img/svg/search.svg) center/cover no-repeat;
 		width: 18px;
 		height: 18px;
+	}
+	.side-icon {
+		@include opacity(1);
+		@include center-y;
+		right: 12px;
+		z-index: 0;
+		.ion-navigate {
+			@include opacity(.6);
+		}
+		.ion-navigate.active,
+		.ion-navigate.activated,
+		.ion-navigate.location-active {
+			@include opacity(1);
+		}
 	}
 }
 
@@ -2209,6 +2238,22 @@ input[type=range]:focus::-ms-fill-upper {
 	59% { @include opacity(1); }
 	60% { @include opacity(0); }
 	100% { @include opacity(0); }
+}
+
+.toast {
+	background: $cerise;
+	padding: 10px;
+	font-weight: 600;
+	text-align: center;
+	text-transform: uppercase;
+	height: 50px;
+	overflow: hidden;
+}
+.toast + * {
+	height: calc(100% - 50px)!important;
+}
+.toast + * header.third {
+	height: calc(100% / 3 + 15px);
 }
 
 // .chart {

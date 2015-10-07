@@ -5,13 +5,36 @@
             <h1 class="text-center">Student Home</h1>
         </header>
         <div id='student-home-map-container'></div>
-        <div id="home-content">
-            <div>
+        <div id="home-content" class="trending-container">
+            <div ng-if='!user.is_a_guru'>
 	            <button class="home-button bg-lake-80p" ng-click='launchRequestModal()'>Request<br/>Help</button>
 	        </div>
-            <!-- <div ng-if='user.is_a_guru'> -->
-	        <div>
+	        <div ng-if='!user.is_a_guru'>
 				<button class="home-button bg-campus-80p" ng-click='goToBecomeGuru()'>Become<br/>a Guru</button>
+	        </div>
+	        <div id="trending" ng-if='user.is_a_guru'>
+		        <h1>Trending at your school</h1>
+		        <ul class="ugrid-3">
+			        <li>
+			        	<button class="bg-cerise">
+							<span ng-include="img_base + 'templates/svg/academic.html'"></span>
+			        	</button>
+			        	<span class="txt-cerise">Academic</span>
+			        </li>
+			        <li>
+			        	<button class="bg-orange">
+			        		<span ng-include="img_base + 'templates/svg/freelancing.html'"></span>
+			        	</button>
+			        	<span class="txt-orange">Freelancing</span>
+			        </li>
+			        <li>
+			        	<button class="bg-campus">
+			        		<span ng-include="img_base + 'templates/svg/delivery.html'"></span>
+			        	</button>
+			        	<span class="txt-campus">Delivery</span>
+			        </li>
+		        </ul>
+		        <button class="bg-slate-90p">Request</button>
 	        </div>
         </div>
     </section>

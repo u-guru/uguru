@@ -44,7 +44,7 @@ angular.module('uguru.util.controllers')
       $localstorage.setObject('userGPACourseList', $scope.userCourses);
       $scope.gpaPage.gpa = calculateGpa($scope.userCourses);
       $scope.tempCourse.courseName = '';
-      $scope.success.show(0, 1000, 'Saved!');
+      $scope.loader.showSuccess('Saved!', 1500);
       $scope.addCourseGPAModal.hide();
 
     }
@@ -68,7 +68,7 @@ angular.module('uguru.util.controllers')
         courseAlreadyAdded = courseList[i];
         if (courseAlreadyAdded.courseName.toLowerCase()
           === courseDict.courseName.toLowerCase()) {
-          $scope.success.show(0, 1500, 'You have already added ' + courseDict.courseName + '!')
+          $scope.success.show('You have already added ' + courseDict.courseName + '!', 1500);
           $scope.tempCourse.courseName = '';
           return 0;
         }
@@ -106,7 +106,7 @@ angular.module('uguru.util.controllers')
           break;
         }
       }
-      $scope.success.show(0, 2000, 'Course ' + tempCourse.courseName + ' removed!');
+      $scope.success.show('Course ' + tempCourse.courseName + ' removed!', 2000);
       $localstorage.setObject('userGPACourseList', $scope.userCourses);
       $scope.tempCourse.courseName = '';
       $scope.tempCourse.removeButton = null;
