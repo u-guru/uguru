@@ -1,12 +1,12 @@
-<section id="major" class="onboarding charcoal-bg full-xy">
+<section can-swipe-back='false'id="major" class="onboarding charcoal-bg full-xy">
     <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
         <h1 class="text-center">Select your major</h1>
         <div class="header-nav">
-            <a class="header-nav-back" ng-click='previousSlide()'>
+            <a class="header-nav-back" ng-click='goBackToStudentHome()'>
                 <svg viewBox="0 0 100 100">
                             <path d="M68,86 L32,50 L68,14"></path>
                          </svg>
-                <h1>Majors</h1>
+                <h1>Home</h1>
             </a>
             <a class="header-nav-next" ng-click='nextSlide()'>
                 <h1>Courses</h1>

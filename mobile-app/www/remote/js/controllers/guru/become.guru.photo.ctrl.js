@@ -83,6 +83,13 @@ angular.module('uguru.guru.controllers')
       }
     }
 
+    $scope.$on('$ionicView.enter', function() {
+      $scope.user.is_a_guru = true;
+      $localstorage.setObject('user', $scope.user);
+      $scope.user.updateAttr('is_a_guru', $scope.user, true, null, $scope);
+
+    })
+
     $scope.userPhotoList = [];
     $scope.samplePhotoList = [{src: '/img/onboarding/profile1.jpg'},
       {src: '/img/onboarding/profile2.jpg'},

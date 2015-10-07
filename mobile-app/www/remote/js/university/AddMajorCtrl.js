@@ -173,22 +173,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-    // $scope.$on('$ionicView.enter', function() {
-
-
-    //   $timeout(function() {
-
-    //     $scope.majorInput = document.getElementById('major-input');
-    //     //add event listener
-
-    //     majorInput.addEventListener("keyup", function() {
-
-    //     }, 500);
-
-
-    //   }, 1000);
-
-    // });
+    
 
     $scope.limit = 10;
     $scope.increaseLimit = function() {
@@ -222,7 +207,7 @@ angular.module('uguru.util.controllers')
     //$scope.majors = University.majors || getMajorsForUniversityId();
 
     $scope.majors = University.majors || getMajorsBecomeGuru();
-    console.log($scope.majors.slice(0, 10));
+    console.log('majors', $scope.majors.slice(0, 10));
     $scope.removeUserMajorsFromMaster();
 
     // $timeout(function() {$scope.removeEmptyMajors();}, 1000)
