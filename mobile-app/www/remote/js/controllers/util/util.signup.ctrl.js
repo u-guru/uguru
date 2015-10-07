@@ -1325,10 +1325,11 @@ angular.module('uguru.util.controllers')
           }
 
           //let them see their profile information is synced
-          $timeout(function(){
-            $ionicSideMenuDelegate.toggleRight();
-            $scope.loader.hide();
-          }, 1000)
+          // Hide For E2E used
+          // $timeout(function(){
+          //   $ionicSideMenuDelegate.toggleRight();
+          //   $scope.loader.hide();
+          // }, 1000)
 
       },
       function(err){

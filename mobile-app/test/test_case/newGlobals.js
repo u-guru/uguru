@@ -8,7 +8,7 @@ var global = function() {
   this.tabBar = function(id,index)
   {
     str = '#'+id+' a';
-
+    browser.wait(EC.visibilityOf(element(by.id(id))),3000);
     element.all(by.css(str)).then(function(items)
     {
         browser.wait(EC.elementToBeClickable(items[index]),3000);
@@ -423,8 +423,8 @@ var global = function() {
             return browser.switchTo().alert().then(
                 function() 
                 {
-                 expect(browser.switchTo().alert().getText()).toContain("Please enter valid");
-                 browser.switchTo().alert().accept();
+                   expect(browser.switchTo().alert().getText()).toContain("Please enter valid");
+                   browser.switchTo().alert().accept();
 
                  return true;
                 }, 

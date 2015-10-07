@@ -1,14 +1,46 @@
-describe('#Error Test Flow : Check BecomeGuru Button',function()
+describe('#Error Test Flow : Check SwitchStudent Button with New Account',function()
 {
 
-	beforeAll(function()
-	{
-        // browser.get("http://localhost:8100/#/");
-            browser.refresh();
-        // if(startButton.isPresent() === false)
-            browser.get("http://"+localhost+":8100/#/home");
-	});
+	
+		beforeAll(function()
+		{
+	        // browser.get("http://localhost:8100/#/");
+browser.manage().deleteAllCookies();
+         browser.refresh();
 
+	        // // if(startButton.isPresent() === false)
+	        //     browser.get("http://"+localhost+":8100/#/home");
+		});
+
+    describe('@Workflow : access page', function () {
+
+		 it('Send key : cool',function()
+          {
+                access.EnterAccessCode('cool');
+          });
+
+          it('Press enter',function()
+          {
+                access.RedeemClick();
+          });
+
+          it('Check page changed & check message show : Access Granted',function()
+          {
+              access.CheckMessage('cool');
+          });
+    });
+
+    describe('@Workflow : University page', function () {
+     	//browser.driver.get("http://localhost:8100/#/university");
+
+    	it("choose a university",function()
+    	{
+    		// doc.newPickList('school-list');
+    		university.SelectSchool(0);
+    	});
+ 
+    	
+    });
 	describe('@Workflow : Sidebar page', function () {
 
 		it('Open sidebar ',function()
@@ -18,60 +50,71 @@ describe('#Error Test Flow : Check BecomeGuru Button',function()
 
 
 	})
-	// describe("@Workflow : Log in", function()
-	// {
-	// 	it('Open Login button',function()
-	// 	{
-	// 		sidebar.OpenLoginModal();
-	// 	});
-
-	// 	it('Enter Email : ',function()
-	// 	{
-	// 		account.enterEmail('jason@sjsu.edu');
-	// 	});
-
-	// 	it('Enter Password : ',function()
-	// 	{
-	// 		account.enterPassword('test');
-	// 	});
-
-	// 	it('Login account',function()
-	// 	{
-	// 	    account.LoginAccount();
-	// 	});
-	// });
-	describe("Check ", function()
+	describe("@Workflow : Log in", function()
 	{
-	
-		it('Close side menu',function()
+		it('Open Login button',function()
 		{
-			var ele = element(by.css('.view-container'));
-			ele.getLocation().then(function(value)
-			{
-				console.log('Location : ',value);
-			});
+			sidebar.OpenLoginModal();
 		});
-		it('Check ',function()
-		{
-			var ele = element(by.css('.view-container'));
-			//for(var x = 0 , var y = 0 ; ;)
-			var x = 0; 
-			var y =0;
-			var stop = false;
-			do
-			{
-				doc.clickCanvas(ele,x,y);
-				ele.getLocation().then(function(value)
-				{
-					if(value.x == 0)
-					{
-						console.log('X : ',x ,'Y : ', y);
-					}
-				});
-				++x;
-				++y;
-			} while (stop == false||x != 1000);
 
+		it('Enter Email : jason@sjsu.edu',function()
+		{
+			account.enterEmail('jason@sjsu.edu');
+		});
+
+		it('Enter Password : ',function()
+		{
+			account.enterPassword('test');
+		});
+
+		it('Login account',function()
+		{
+		    account.LoginAccount();
 		});
 	});
+	describe("Check  mode enable",function()
+	{
+		it ('Close Sidebar',function()
+		{
+			expect(true).tobe(false,'Still working on it');
+		});
+		it('Check BecomeGuru is not present',function()
+		{
+			home.CheckBecomeGuruIsNotPresent();
+		});
+	});
+	// describe("Check ", function()
+	// {
+	
+	// 	it('Close side menu',function()
+	// 	{
+	// 		var ele = element(by.css('.view-container'));
+	// 		ele.getLocation().then(function(value)
+	// 		{
+	// 			console.log('Location : ',value);
+	// 		});
+	// 	});
+	// 	it('Check ',function()
+	// 	{
+	// 		var ele = element(by.css('.view-container'));
+	// 		//for(var x = 0 , var y = 0 ; ;)
+	// 		var x = 0; 
+	// 		var y =0;
+	// 		var stop = false;
+	// 		do
+	// 		{
+	// 			doc.clickCanvas(ele,x,y);
+	// 			ele.getLocation().then(function(value)
+	// 			{
+	// 				if(value.x == 0)
+	// 				{
+	// 					console.log('X : ',x ,'Y : ', y);
+	// 				}
+	// 			});
+	// 			++x;
+	// 			++y;
+	// 		} while (stop == false||x != 1000);
+
+	// 	});
+	// });
 });

@@ -1,6 +1,7 @@
 var GuruProfile = function()
 {
 	this.photo = element(by.id('profile-icon'));
+	this.photoImg = element(by.id('guru-profile-img'));
 	//Buttons
 	this.AddCourse = element(by.css('#profile-courses button'));
 	this.AddMajor = element(by.css('#profile-major button'));
@@ -16,9 +17,9 @@ var GuruProfile = function()
 	//Modal Element
 	this.ModalPage = element(by.css('.modal-backdrop.active'));
 	this.ModalTitle = element(by.css('.modal-backdrop.active .text-center'));
-	this.ModalClose = element.all(by.css('.modal-backdrop.active a'));
+	this.ModalCloseElement = element.all(by.css('.modal-backdrop.active a'));
 	this.ModalSkill = element.all(by.repeater('skill in active_category.skills'))
-
+	this.ModalLists  = element.all(by.css('.modal-backdrop.active li'));
 	// this.ModelClose = element(by.css('.modal-backdrop.active .header-down'));
 	// this.ModelClose = element(by.css('.modal-backdrop.active .header-nav-back'));
 	// this.ModelClose = element(by.css('.modal-backdrop.active .header-close'));
@@ -42,7 +43,13 @@ var GuruProfile = function()
 	{
 	   doc.uploadPhoto('file-input-guru-edit-profile',size);
 	};
-
+	this.checkImgIsUpdated = function()
+	{
+		this.photoImg.getAttribute('src').then(function(value)
+		{
+			expect(value).not.toBe("https://graph.facebook.com/10152573868267292/picture?width=100&height=100","Photo Is not upload");
+		});
+	};
 	this.OpenModal = function(name)
 	{
 		switch(name)
@@ -76,17 +83,17 @@ var GuruProfile = function()
 	{
 		 doc.newPickList('.modal-backdrop.active',index);
 	};
-
+	this.ModalHasData = function()
+	{
+		expect(this.ModalLists.first().isPresent()).toBe(true,'No data are found');
+	};
 	this.CloseModal = function()
 	{
-		this.ModelClose.then(function(items)
+		this.ModalCloseElement.then(function(items)
 		{
 			items[0].click();
 		});
 	};
-
-
-
 };
 
 module.exports = new GuruProfile();

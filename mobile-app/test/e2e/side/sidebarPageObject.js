@@ -1,12 +1,17 @@
 'use strict';
 var Sidebar = function() {
+
+	//
 	this.sideMenuButton= element(by.css('#settings-button'));
 	this.sideMenuList = element(by.css('.side-menu-list.with-icon'))
 	this.UguruPopup = element(by.id('home-uguru-popup'))
 	this.CloseButtonOfPopUp = element.all(by.css('[ng-click="closeWelcomePopup()"]')).first()
 	this.CloseSideMenu = element(by.css('[ng-click="toggleRightSideMenu()"]'));
 	this.ActionSheetOptions = element.all(by.repeater('b in buttons'));
-
+	this.textarea = element(by.tagName('textarea'));
+	this.emoIcon = element(by.css(".intercom-composer-emoji-button"));
+	this.emoList = element(by.css('.intercom-emoji-selector-panel-small'));
+	this.SupportMsg = element(by.css('.intercom-comment-body.intercom-embed-body'));
 	//Wrapper
 	this.EditPasswordWrapper =  element(by.id('edit-password-uguru-popup'));
 	//Modal
@@ -57,6 +62,12 @@ var Sidebar = function() {
 	 {
 	 	doc.checkItemDisplay("LOGIN",true,'click');
 	 };
+
+	 this.OpenLogoutModal = function()
+	 {
+	 	doc.checkItemDisplay("LOGOUT",true,'click');
+	 };
+	 
 	 this.OpenSettingAction = function()
 	 {
 	 	doc.checkItemDisplay("SETTINGS",true,'click');
@@ -99,9 +110,17 @@ var Sidebar = function() {
 
 	 this.OpenSupportModal = function()
 	 {
-
+	 	doc.checkItemDisplay("SUPPORT",true,'click');
 	 };	
 
+	 this.keyinTextArea = function(inputs)
+	 {
+	 	this.textarea.sendKeys(inputs);
+	 };
+	 this.OpenEmoIcon = function()
+	 {
+	 	this.emoIcon.click();
+	 };
 	 this.CloseModal = function()
 	 {
 	 	// expect(this.CloseModalButton.isPresent()).toBe(true,"No Close Can Found");

@@ -1,35 +1,37 @@
-var University = require('../university/universityPageObject.js');
-var Access = require('../access/accessPageObject.js');
+// var University = require('../university/universityPageObject.js');
+// var Access = require('../access/accessPageObject.js');
 
 describe('#Error Test Flow : University Scroll',function()
 {
-	var university = new University();
-    var access  = new Access();
+	// var university = new University();
+ //    var access  = new Access();
 
-	describe('@Workflow : access page', function () {
-		// var accessInput = element(by.id("access-code-bar"));
-		var accessInput = element(by.tagName("input"));
-		var startButton = element(by.id("redeem-button"));
-			beforeAll(function()
-			{
-	            // browser.get("http://localhost:8100/#/");
-	            	browser.getCurrentUrl().then(function(url)
-	            	{
-            			browser.get("http://"+localhost+":8100/#/university");
-	            	})		
-    		});
-			it("Enter Access Code : cool ",function()
-			{
-				doc.setInput('cool',0,'access.codeInput');
-			});
-
-			it("Check Successed",function()
-			{
-				//browser.wait(EC.elementToBeClickable(startButton),5000);
-				startButton.click();
-				doc.checkMsg("Access Granted");
-			});
+	beforeAll(function()
+	{
+        // browser.get("http://localhost:8100/#/");
+browser.manage().deleteAllCookies();
+         browser.refresh();
+        // if(startButton.isPresent() === false)
+            // browser.get("http://"+localhost+":8100/#/home");
 	});
+    describe('@Workflow : access page', function () {
+
+		 it('Send key : cool',function()
+          {
+                access.EnterAccessCode('cool');
+          });
+
+          it('Press enter',function()
+          {
+                access.RedeemClick();
+          });
+
+          it('Check page changed & check message show : Access Granted',function()
+          {
+              access.CheckMessage('cool');
+          });
+    });
+
 	describe("Infinity scroll test for school-list",function()
 	{
 		for(var i = 8; i < 40; i+=8)

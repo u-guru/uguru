@@ -19,5 +19,9 @@ var Home = function()
 	 {
 	 	this.guruButton.click();
 	 };
+	 this.CheckBecomeGuruIsNotPresent = function()
+	 {
+	 	expect(this.guruButton.isPresent()).toBe(false,"BecomeGuru Button is still present")
+	 };
 }
 module.exports = new Home();

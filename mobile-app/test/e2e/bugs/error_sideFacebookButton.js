@@ -4,10 +4,42 @@ describe('#Error Test Flow : Check Facebook button at Sidebar',function()
 	beforeAll(function()
 	{
         // browser.get("http://localhost:8100/#/");
-            browser.refresh();
-        // if(startButton.isPresent() === false)
-            browser.get("http://"+localhost+":8100/#/home");
+browser.manage().deleteAllCookies();
+         browser.refresh();
+
+        // // if(startButton.isPresent() === false)
+        //     browser.get("http://"+localhost+":8100/#/home");
 	});
+
+    describe('@Workflow : access page', function () {
+
+		 it('Send key : cool',function()
+          {
+                access.EnterAccessCode('cool');
+          });
+
+          it('Press enter',function()
+          {
+                access.RedeemClick();
+          });
+
+          it('Check page changed & check message show : Access Granted',function()
+          {
+              access.CheckMessage('cool');
+          });
+    });
+
+    describe('@Workflow : University page', function () {
+     	//browser.driver.get("http://localhost:8100/#/university");
+
+    	it("choose a university",function()
+    	{
+    		// doc.newPickList('school-list');
+    		university.SelectSchool(0);
+    	});
+ 
+    	
+    });
 
 	describe('@Workflow : Sidebar page', function () {
 

@@ -15,44 +15,43 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 	// var major = new Major();
 	// var home = new Home();
 
-	describe('@Workflow : access page', function () {
-		// var accessInput = element(by.id("access-code-bar"));
-		var accessInput = element(by.tagName("input"));
-		var startButton = element(by.id("redeem-button"));
-			beforeAll(function()
-			{
-	            // browser.get("http://localhost:8100/#/");
-		            browser.refresh();
-	            // if(startButton.isPresent() === false)
-		            // browser.get("http://"+localhost+":8100/#/university");
-			});
-			it("Enter Access Code : cool ",function()
-			{
-				doc.setInput('cool',0,'access.codeInput');
-			});
-
-			it("Check Successed",function()
-			{
-				//browser.wait(EC.elementToBeClickable(startButton),5000);
-				startButton.click();
-				doc.checkMsg("Access Granted");
-			});
+	beforeAll(function()
+	{
+        // browser.get("http://localhost:8100/#/");
+browser.manage().deleteAllCookies();
+         browser.refresh();
+        // if(startButton.isPresent() === false)
+            // browser.get("http://"+localhost+":8100/#/home");
 	});
+    describe('@Workflow : access page', function () {
 
-	describe('@Workflow : University page', function () {
-	 	//browser.driver.get("http://localhost:8100/#/university");
-		it("choose a university",function()
-		{
-		//	doc.pickList('university in initialUniversities');
-			// doc.newPickList('school-list')
-			university.SelectSchool();
-		});
-		it("check the current position",function()
-		{
-			expect(browser.getCurrentUrl()).toContain("/#/home");
-		});
-		
-	});
+		 it('Send key : cool',function()
+          {
+                access.EnterAccessCode('cool');
+          });
+
+          it('Press enter',function()
+          {
+                access.RedeemClick();
+          });
+
+          it('Check page changed & check message show : Access Granted',function()
+          {
+              access.CheckMessage('cool');
+          });
+    });
+
+    describe('@Workflow : University page', function () {
+     	//browser.driver.get("http://localhost:8100/#/university");
+
+    	it("choose a university",function()
+    	{
+    		// doc.newPickList('school-list');
+    		university.SelectSchool(0);
+    	});
+ 
+    	
+    });
 
 	describe('@Workflow : Home page', function () {
 

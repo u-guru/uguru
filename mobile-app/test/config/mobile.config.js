@@ -260,22 +260,30 @@ exports.config = {
                             // '../e2e/workflows/side.js'
                         ],
                   bugs : [
-                            // '../e2e/bugs/error_universitylist.js',
-                            // '../e2e/bugs/error_universityScroll.js',
-                            // '../e2e/bugs/error_gps.js',
-                            // '../e2e/bugs/error_majorScroll.js',
-                            // '../e2e/bugs/error_majorSearch.js',
-                            // '../e2e/bugs/error_courseList.js',
-                            // '../e2e/bugs/error_profileEditTest.js',
+                            '../e2e/bugs/error_universitylist.js',
+                            '../e2e/bugs/error_universityScroll.js',
+                            '../e2e/bugs/error_gps.js',
+                            '../e2e/bugs/error_majorScroll.js',
+                            '../e2e/bugs/error_majorSearch.js',
+                            '../e2e/bugs/error_courseList.js',
+                            '../e2e/bugs/error_profileEditTest.js',
                             // '../e2e/bugs/error_guruProfileButton.js', //imcomplicated 
-                            // '../e2e/bugs/error_sideFacebookButton.js',
-                               // '../e2e/bugs/error_editPassword.js',
-                               '../e2e/bugs/error_loginExistAccount.js',
-                                                        
+                            '../e2e/bugs/error_sideFacebookButton.js',
+                            '../e2e/bugs/error_editPassword.js',
+                            '../e2e/bugs/error_loginNewAccount.js',
+                            '../e2e/bugs/error_loginExistAccount.js',
+                            '../e2e/bugs/error_GPSalertAfterLogoff.js', 
+                               '../e2e/bugs/error_guruProfileMajorCourse.js', //imcomplicated 
+                             '../e2e/bugs/error_scrollAddSkill.js', 
+                             '../e2e/bugs/error_phone.js', 
+                              '../e2e/bugs/error_QAsupport.js', 
+                              // '../e2e/bugs/error_profilePhoto.js', 
+                                                          
 
                           ]
 
         },
+        // restartBrowserBetweenTests: true,
         rootElement: "[ng-app]" ,
 
        // rootElement: 'uguru' ,
