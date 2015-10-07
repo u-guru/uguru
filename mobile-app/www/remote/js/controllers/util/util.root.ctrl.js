@@ -379,7 +379,7 @@ angular.module('uguru.util.controllers')
 
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
-            DeviceService.readyDevice();
+            DeviceService.readyDevice($scope);
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
 

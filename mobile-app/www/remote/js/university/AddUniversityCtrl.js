@@ -17,12 +17,15 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'AnimationService',
   'PerformanceService',
   '$templateCache',
+  'AccessService',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache) {
+  DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache, AccessService) {
 
+  $scope.storedAccess = !AccessService.validate();
+  
   //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
   uTracker.setUser(tracker, 'localyticsTest');
@@ -30,8 +33,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   $scope.universitiesSorted = University.getSorted().slice();
   $scope.universities = $scope.universitiesSorted;
-  $scope.isLocationActive = false;
-  $scope.isLocationGiven = null; // null if getGPS not called, false if not given, true if lat/lon
 
   $scope.universityInput = {
     value: ''
@@ -202,28 +203,31 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   };
 
+  //$scope.isLocationActive = false;
+  //$scope.isLocationGiven = null; // null if getGPS not called, false if not given, true if lat/lon
+
   $scope.toggleLocationIconAppearance = function() {
+
     // get GPS if we haven't attempted it
-    if ($scope.isLocationGiven === null) {
+    if (Geolocation.isLocationGiven === null) {
       getGPS();
     }
-    else if ($scope.locationGiven === false) {
-      alert('Please enable GPS permissions from your settings.')
+    else if (Geolocation.islocationGiven === false) {
+      alert('Please enable GPS permissions from your settings.');
       //reset to null & see if they will do it again
-      $scope.isLocationGiven = null;
+      Geolocation.isLocationGiven = null;
     }
-    else if ($scope.isLocationGiven) {
-      $scope.isLocationActive = !$scope.isLocationActive;
+    else if (Geolocation.isLocationGiven) {
+      Geolocation.isLocationActive = !Geolocation.isLocationActive;
     }
     else {
-      $scope.locationGiven = false;
-      $scope.locationActive = false;
+      Geolocation.islocationGiven = false;
+      Geolocation.islocationActive = false;
     }
   }
 
-
   function getGPS() {
-    $scope.isLocationActive = true;
+    Geolocation.isLocationActive = true;
     Geolocation.getLocation($scope, $scope.universitiesSorted);
     //Geolocation.sortByDistance($scope.universitiesSorted);
     
@@ -232,8 +236,17 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   $scope.$on('$ionicView.loaded', function() {
     // android doesn't have a special prompt
-    if (DeviceService.getPlatform() === 'android') {
+    // if (DeviceService.getPlatform() === 'android') {
+    //   getGPS();
+    // }
+    console.log("university view loaded");
+    if (Geolocation.isLocationGiven) {
+      Geolocation.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
+    } else {
       getGPS();
+      // $timeout(function() {
+      //   Geolocation.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
+      // }, 2000);
     }
   });
 
@@ -247,6 +260,13 @@ angular.module('uguru.directives')
     $scope.$watch(
       'universityInput.value',
       function(newValue, oldValue) {
+
+        var source;
+        if(Geolocation.isLocationActive) {
+          source = $scope.universitiesSortedByLocation;
+        } else {
+          source = $scope.universitiesSorted;
+        }
 
         if(newValue.length < oldValue.length) {
           if(queryPromise) {
