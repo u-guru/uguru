@@ -164,6 +164,34 @@
 	margin: 0;
 	padding: 0;
 }
+@mixin translate($xpos, $ypos) {
+	-webkit-transform: translate($xpos,$ypos);
+	-moz-transform: translate($xpos,$ypos);
+	-ms-transform: translate($xpos,$ypos);
+	-o-transform: translate($xpos,$ypos);
+	transform: translate($xpos,$ypos);
+}
+@mixin translate-x($xpos) {
+	-webkit-transform: translateX($xpos);
+	-moz-transform: translateX($xpos);
+	-ms-transform: translateX($xpos);
+	-o-transform: translateX($xpos);
+	transform: translateX($xpos);
+}
+@mixin translate-y($ypos) {
+	-webkit-transform: translateY($ypos);
+	-moz-transform: translateY($ypos);
+	-ms-transform: translateY($ypos);
+	-o-transform: translateY($ypos);
+	transform: translateY($ypos);
+}
+@mixin transform-origin($origin) {
+	-webkit-transform-origin: $origin;
+	-moz-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	-o-transform-origin: $origin;
+	transform-origin: $origin;
+}
 @mixin blur($blur) {
 	filter: blur($blur+px);
 	-webkit-filter: blur($blur+px);
@@ -178,6 +206,13 @@
 	-ms-transform: rotate($angle+deg);
 	-o-transform: rotate($angle+deg);
 	transform: rotate($angle+deg);
+}
+@mixin scale($scale) {
+	-webkit-transform: scale($scale);
+	-moz-transform: scale($scale);
+	-ms-transform: scale($scale);
+	-o-transform: scale($scale);
+	transform: scale($scale);
 }
 @mixin transform-reset {
 	-webkit-transform: none;

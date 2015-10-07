@@ -1209,6 +1209,15 @@ button {
 	color: white;
 	font-size: 24px;
 }
+button.round {
+	@include round;
+	width: auto;
+	height: auto;
+	padding: 5px 10px;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
 button.active, button.activated {
 	@include opacity(.75);
 }

@@ -2333,16 +2333,9 @@ section {
 		background: $shamrock!important;
 	}
 	.round {
-		@include round;
 		@include flex;
 		@include flex-center;
 		margin: 5px auto;
-		width: auto;
-		height: auto;
-		padding: 5px 10px;
-		font-size: 14px;
-		font-weight: 600;
-		text-transform: uppercase;
 		line-height: 18px;
 		background: $campus;
 		svg {
@@ -3067,6 +3060,92 @@ section {
 	}
 }
 
+
+
+/* ---------- OFFLINE */
+#offline {
+	@include flex;
+	@include flex-center;
+	padding: 15px;
+	background: $smoke;
+	color: $charcoal;
+	text-align: center;
+	> div {
+		width: 100%;
+	}
+	svg {
+		width: 100%;
+		max-width: 75%;
+		#phone {
+			@include animation-name(phone-hover);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
+		}
+		#shadow {
+			@include animation-name(shadow-hover);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
+			@include scale(0.98);
+			@include transform-origin(center center);
+		}
+		#sweat {
+			@include animation-name(sweat-roll);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
+		}
+	}
+	svg + div {
+		margin-top: 30px;
+		h1 {
+			font-size: 24px;
+			font-weight: 600;
+		}
+		p {
+			margin: 10px 0 15px;
+			font-weight: 300;
+		}
+		button {
+			font-size: 16px;
+			padding: 5px 15px;
+		}
+	}
+}
+
+@include keyframes(phone-hover) {
+	0% {
+		@include translate-y(0);
+	}
+	50% {
+		@include translate-y(2px);
+	}
+	100% {
+		@include translate-y(0);
+	}
+}
+
+@include keyframes(shadow-hover) {
+	0% {
+		@include scale(0.9);
+	}
+	50% {
+		@include scale(1);
+	}
+	100% {
+		@include scale(0.9);
+	}
+}
+
+@include keyframes(sweat-roll) {
+	0% {
+		@include translate-y(5px);
+	}
+	50% {
+		@include translate-y(10px);
+	}
+	100% {
+		@include translate-y(5px);
+	}
+}
 
 
 
