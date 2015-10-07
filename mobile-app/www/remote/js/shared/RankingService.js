@@ -5,14 +5,19 @@ angular
 		]);
 
 function RankingService() {
-	var recentlyUpdated = false;
+  var isInit, progressCircle, recentlyUpdated;
+  var options = {};
 	
 	return {
 		calcRanking: calcRanking,
 		calcCredibility: calcCredibility,
 		calcProfile: calcProfile,
 		showPopover: showPopover,
-		recentlyUpdated: recentlyUpdated
+		recentlyUpdated: recentlyUpdated,
+    isInit: isInit,
+    progressCircle: progressCircle,
+    updateRanking: updateRanking,
+    options:options
 	}
 
 	function showPopover(start, end) {
@@ -22,7 +27,11 @@ function RankingService() {
             function (modal){
               modal.classList.add('show');
               setTimeout(function() {
-              	initAndAnimateProgress('#guru-ranking-popup-progress-bar', start, end);
+              	var spanPreviousInput = document.querySelector('#previous-guru-ranking');
+                var spanCurrentInput = document.querySelector('#current-guru-ranking');
+                spanPreviousInput.innerHTML = Math.round(start, 2) + 'th';
+                spanCurrentInput.innerHTML = Math.round(end, 2) + 'th';
+                initAndAnimateProgress('#guru-ranking-popup-progress-bar', start, end);
               }, 250);
             }
           );
@@ -42,7 +51,10 @@ function RankingService() {
 	}
 
 	function initProgress(selector, start) {
-		var circle = new ProgressBar.Circle(selector, {
+		if (progressCircle) {
+      return progressCircle;
+    }
+    var circle = new ProgressBar.Circle(selector, {
               color: '#2B3234',
               strokeWidth: 8,
               trailWidth: 8,
@@ -57,8 +69,8 @@ function RankingService() {
               }
           });
 		circle.text = document.getElementById('popup-percentile-ranking');
-		console.log('update .. attempting to set to', start / 100.0);
 		circle.set(start / 100.0);
+    progressCircle = circle;
 		return circle;
 	}
 
@@ -76,7 +88,15 @@ function RankingService() {
           }, 20);
 	}
 
-	function calcRanking(user) {
+	function updateRanking(user) {
+    RankingService.options.previousGuruRanking = user.current_guru_ranking;
+    RankingService.options.currentGuruRanking = calcRanking(user);
+    if (RankingService.options.previousGuruRanking !== RankingService.options.currentGuruRanking) {
+      RankingService.recentlyUpdated = true;
+    }
+  }
+
+  function calcRanking(user) {
         var base = 25; //40%
         var num_items = 5;
         var max_points = 100;

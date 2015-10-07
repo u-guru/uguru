@@ -739,6 +739,18 @@ angular.module('uguru.guru.controllers')
       }
     }
 
+    $scope.$on('$ionicView.enter', function() {
+          
+          $timeout(function() {
+            
+            if (RankingService.recentlyUpdated) {
+              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
+            }
+
+          }, 1000)
+
+    })
+
 
   }
 

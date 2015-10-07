@@ -267,11 +267,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           
           $timeout(function() {
 
-            var previousGuruRanking = $scope.user.current_guru_ranking;
-            var currentGuruRanking = RankingService.calcRanking($scope.user);
-            console.log('needs to change from ', previousGuruRanking, 'to', currentGuruRanking);
-            if (currentGuruRanking !== previousGuruRanking) {
-              RankingService.showPopover(previousGuruRanking, currentGuruRanking + 20);
+            RankingService.options.previousGuruRanking = $scope.user.current_guru_ranking;
+            RankingService.options.currentGuruRanking = RankingService.calcRanking($scope.user);
+            
+            if (RankingService.options.currentGuruRanking !== RankingService.options.previousGuruRanking) {
+              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking + 20);
             }
 
           }, 1000)
