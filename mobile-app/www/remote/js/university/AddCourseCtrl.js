@@ -15,13 +15,10 @@ angular.module('uguru.util.controllers')
   'University',
   'Utilities',
   'uTracker',
+  'Course',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate, University, Utilities, uTracker) {
-
-    $scope.generalCourses = University.getTargetted()[0].popular_courses.slice();
-    console.log("$scope.generalCourses: " + $scope.generalCourses);
-    $scope.courses = [];
+    $ionicSideMenuDelegate, University, Utilities, uTracker, Course) {
 
     $scope.search_text = {
       course: ''
@@ -245,7 +242,7 @@ angular.module('uguru.util.controllers')
         University.courses = courses;
         $localstorage.setObject('universityCourses', courses.plain())
 
-
+        console.log("$scope.courses: " + $scope.courses);
       },function(err) {
 
         alert('Something went wrong... Please contact support!');
@@ -256,7 +253,9 @@ angular.module('uguru.util.controllers')
 
 
     $scope.courses = University.courses || getCoursesBecomeGuru();
-    console.log($scope.courses.slice(0, 10));
+
+    $scope.coursesSource = University.courses || getCoursesBecomeGuru();
+    //console.log($scope.courses.slice(0, 10));
 
   }
 

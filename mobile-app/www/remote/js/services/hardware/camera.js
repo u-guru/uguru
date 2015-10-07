@@ -29,10 +29,10 @@ function Camera($timeout, DeviceService) {
 
     var cameraOptions = {
       quality: 65,
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: 0,
       sourceType: index,
       allowEdit: false,
-      encodingType: Camera.EncodingType.JPEG,
+      encodingType: 0, // JEPG: 0, PNG: 1
       targetWidth: 500,
       targetHeight: 500,
       // popoverOptions: CameraPopoverOptions,

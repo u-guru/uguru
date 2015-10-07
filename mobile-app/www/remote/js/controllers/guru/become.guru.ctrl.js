@@ -25,8 +25,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
-    // $scope.majors = $scope.static.majors;
-    // $scope.courses = $scope.static.courses;
+
     $scope.search_text = '';
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
@@ -93,8 +92,6 @@ angular.module('uguru.guru.controllers')
                       $localstorage.setObject('courses', courses);
                       $scope.root.vars.courses = courses;
                       $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
-                      $scope.static.courses = $scope.root.vars.courses;
-                      $scope.static.popular_courses = $scope.root.vars.popular_courses;
 
                 },
                   function(error) {
@@ -132,9 +129,6 @@ angular.module('uguru.guru.controllers')
 
         uTracker.track(tracker, 'Become Guru: Skills');
         $ionicSideMenuDelegate.canDragContent(true);
-        $scope.static.categories[0].skills = mapGuruCoursesToCategoriesObj($scope.user.guru_courses);
-        $scope.static.categories[0].active_skills_count = $scope.static.categories[0].skills.length;
-        console.log('processing this shit', $scope.static.categories[0]);
       }
 
       if (index === 3) {

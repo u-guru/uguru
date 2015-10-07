@@ -11,7 +11,6 @@ function UniversityMatcher(University, $q) {
 	sortByRank(list);
 	var uniDictionary = null;
 	init();
-	console.log("before the return");
 
 	var cachedInput = null;
 	var cachedDictionary = null;

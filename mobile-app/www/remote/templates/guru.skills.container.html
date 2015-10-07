@@ -28,7 +28,7 @@
     </header>
     <div id="skills-list" class="onboarding-list">
       <ul class='list list-item-half flex-wrap'>
-        <li ng-repeat='category in categories' style='background:url({{categories_img_base + category.background_url}})'>
+        <li ng-repeat='category in categories' style='background:url({{category.bg_url}})'>
           <a class='skill-item-link {{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
             <img ='background:url({{category.icon_url}})' >
             <div>

@@ -1,13 +1,14 @@
 angular.module('uguru.root.services')
 .service('Geolocation',
     [
+    '$rootScope',
     '$timeout',
     'University',
     'Utilities',
     'Settings',
     Geolocation]);
 
-function Geolocation($timeout, University,
+function Geolocation($rootScope, $timeout, University,
   Utilities, Settings) {
   var scope;
   var isLocated = null;
@@ -32,6 +33,7 @@ function Geolocation($timeout, University,
   function getLocation(scope, list) {
     scope.loader.showAmbig();
     scope = scope;
+    list = list;
     var posOptions = {
       timeout: 3000,
       enableHighAccuracy: false, //may cause high errors if true
@@ -99,7 +101,10 @@ function Geolocation($timeout, University,
         return 1;
       return 0;
     }
-    return list.sort(compareDistance);
+    $rootScope.$apply(function() {
+     list.sort(compareDistance); 
+     return;
+    });
   }
 
 

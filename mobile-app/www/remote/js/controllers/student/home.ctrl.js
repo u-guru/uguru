@@ -25,7 +25,7 @@ angular.module('uguru.student.controllers', [])
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService) {
 
-        $ionicSideMenuDelegate.canDragContent(true);
+        $ionicSideMenuDelegate.canDragContent(false);
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/verb.home.modal.html', {
             scope: $scope,
@@ -68,7 +68,6 @@ angular.module('uguru.student.controllers', [])
             var openRatio = $ionicSideMenuDelegate.getOpenRatio();
             return openRatio;
         }
-
         var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
                 $scope.sideMenuActive = false;
@@ -78,7 +77,6 @@ angular.module('uguru.student.controllers', [])
                 }, 250)
             }
         }
-
         $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
 

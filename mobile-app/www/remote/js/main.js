@@ -3,40 +3,21 @@ var LOCAL = _local || false; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
 
-// console.log("_local: " + _local);
-// console.log("_startpage: " + _startpage);
-// console.log("_ipaddress: " + _ipaddress);
-
-var img_base = '';
-
-
 // isAdmin = true;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
-
-// ==============================
-// CONSOLE_SETTINGS: Toggle console logs. Comment to enable, uncomment to disable.
-// console.log("Disabling console logs. To enable: comment out CONSOLE_SETTINGS in main.js");
-// console.log = function() {};
-// ==============================
-
 var BASE = '';
+var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-
   BASE_URL = _ipaddress;
 
 } else {
   img_base = '/static/'
 }
-
-// mixpanel = window.mixpanel || null;
-
- //if (mixpanel) mixpanel.track("App Launch");
-
 
 var tracker = 'lo';
 var stats = new Stats();
@@ -52,28 +33,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $state, $ionicHistory,
    Version, $rootScope,
   $templateCache, Device, User,
-  DeviceService, uTracker, $log) {
-
-
-  // $log.getInstance = function(context) {
-  //   return {
-  //     log: enhanceLogging($log.log, context),
-  //     info: enhanceLogging($log.info, context),
-  //     warn: enhanceLogging($log.warn, context),
-  //     debug: enhanceLogging($log.debug, context),
-  //     error: enhanceLogging($log.error, context)
-  //   };
-  // };
-
-  // function enhanceLogging(loggingFunc, context) {
-  //   return function() {
-  //     var modifiedArguments = [].slice.call(arguments);
-  //     modifiedArguments[0] = [moment().format("dddd h:mm:ss a") + '::[' + context + ']> '] + modifiedArguments[0];
-  //     loggingFunc.apply(null, modifiedArguments);
-  //   };
-  // }
-
-  var openKeyboard = null;
+  DeviceService, uTracker) {
 
   uTracker.init(tracker);
  
@@ -103,89 +63,18 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
 
-
-//abstract
-  // .state('admin', {
-  //   url: '/admin',
-  //   abstract: true,
-  //   templateUrl: BASE + 'templates/admin/admin.html',
-  //   controller: 'AdminCtrl'
-  // })
-  // .state('admin.admin-home', {
-  //   url: '/admin/admin-home',
-  //   templateUrl: BASE + 'templates/admin/admin.home.html',
-  //   controller: 'AdminCtrl'
-  // })
-
-
-
-
   $stateProvider
   .state('root', {
         url: '',
         abstract: true,
         templateUrl: BASE + 'templates/root.html',
-        controller: 'RootController',
-        // resolve: {
-        //   loadCache: ['$templateCache', function($templateCache) {
-
-        //   }],
-        //   preload: ['$state', '$timeout', function($state, $timeout) {
-        //     $timeout(function() {
-        //       $state.go('root.become-guru').then(function() {
-        //         $state.go('root.home').then(function() {
-        //           $state.go('root.university');
-        //         })
-        //       })
-        //     }, 0);
-        //   }]
-        // }
+        controller: 'RootController'
   }).
-
-  // state('root.admin', {
-  //   url: '/admin',
-  //   templateUrl: BASE + 'templates/admin/admin.home.html',
-  //   controller: 'AdminCtrl'
-  // }).
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
-        resolve: {
-          // loadCache: ['$templateCache', function($templateCache) {
-          //   $templateCache.get(BASE + 'templates/home.html');
-          // }],
-          // loadCache: function($templateCache) {
-          //   $templateCache.get(BASE + 'templates/university.html');
-          //   $templateCache.get(BASE + 'templates/home.html');
-          //   $templateCache.get(BASE + 'templates/become.uguru.html');
-          //   $templateCache.get(BASE + 'templates/become.majors.html');
-          // },
-          
-          // preload: ['$state', function($state) {
-          //   console.log("preloading");
-          //   $state.go('^.become-guru').then(function(){
-          //     console.log("become-guru");
-          //     $state.go('^.home').then(function(){
-          //       $state.go('^.university');
-          //     });
-          //   });
-          // }],
-
-          deviceInfo: function(DeviceService) {
-            return DeviceService.getPlatform();
-          }
-        },
         controller: 'AddUniversityCtrl'
   }).
-
-  state('privacy', {
-        url:'/privacy',
-        templateUrl: BASE + 'templates/privacy-terms.modal.html'    
-  }).
-
-
-
-
   state('root.university-container', {
         url: '/university-container',
         templateUrl: BASE + 'templates/university.container.html',
@@ -229,11 +118,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.home', {
         url: '/home',
         templateUrl: BASE + 'templates/home.html',
-        // resolve: {
-        //   loadCache: ['$templateCache', function($templateCache) {
-        //     $templateCache.get(BASE + 'templates/become.guru.html');
-        //   }]
-        // },
         controller: 'HomeController'
   }).
   state('root.guru', {
@@ -256,14 +140,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
   }).
-  state('root.become-guru.photography', {
-        url:'/photography',
-        templateUrl: BASE + 'templates/category.skills.modal.html'    
-  }).
-
-
-
-
   state('root.courses', {
         url: '/courses',
         templateUrl: BASE + 'templates/courses.html',
@@ -357,36 +233,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 });
 
-//background loading stuff
 
-var processSkills = function($scope) {
-  if (!$scope.static) {
-    $scope.static = {skills: []}
-  }
 
-  if ($scope.static.skills && $scope.static.skills.length > 0) {
-
-        $scope.static.professional_skills = [];
-        $scope.static.specialized_skills = [];
-        $scope.static.chores_skills = [];
-        $scope.static.labor_skills = [];
-
-        for (var i = 0; i < $scope.static.skills.length; i ++) {
-          var skill = $scope.static.skills[i];
-          if (skill.category === 'labor') {
-            $scope.static.labor_skills.push(skill);
-          }
-          if (skill.category === 'specialized') {
-            $scope.static.specialized_skills.push(skill);
-          }
-          if (skill.category === 'chores') {
-            $scope.static.chores_skills.push(skill);
-          }
-          if (skill.category === 'professional') {
-            $scope.static.professional_skills.push(skill);
-          }
-        }
-    }
-    console.log('skills processed');
-}
 
