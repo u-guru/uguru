@@ -120,6 +120,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).
+  state('root.bakery-guru-profile', {
+        url: '/bakery-guru-profile',
+        templateUrl: BASE + 'templates/bakery.guru.profile.html',
+  }).
+  state('root.photo-guru-profile', {
+        url: '/photo-guru-profile',
+        templateUrl: BASE + 'templates/photo.guru.profile.html',
+  }).
   state('root.guru', {
         url: '/guru',
         templateUrl: BASE + 'templates/guru.html',
@@ -139,6 +147,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/become-guru',
         templateUrl: BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
+  }).
+  state('root.offline', {
+        url: '/offline',
+        templateUrl: BASE + 'templates/offline.html',
+  }).
+
+  state('root.become-guru.photography', {
+        url:'/photography',
+        templateUrl: BASE + 'templates/category.skills.modal.html'    
   }).
   state('root.courses', {
         url: '/courses',

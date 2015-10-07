@@ -21,31 +21,6 @@ angular.module('uguru.util.controllers')
       $scope.user.majors = [];
     }
 
-    $scope.backToStudentEditProfile = function(is_saved) {
-
-      if (is_saved) {
-        $scope.success.show(0, 1500);
-      } else {
-        $scope.loader.show();
-      }
-
-      if ($scope.root.vars.guru_mode) {
-
-        $state.go('^.guru-profile');
-
-      } else {
-
-        $timeout(function() {
-          $ionicSideMenuDelegate.toggleRight();
-        }, 500);
-
-      }
-
-      $timeout(function() {
-        $scope.loader.hide();
-
-      }, 500);
-    }
 
     $scope.keyboard_force_off = false;
 
@@ -74,7 +49,7 @@ angular.module('uguru.util.controllers')
         uTracker.track(tracker, 'Major Removed', {
           '$Major': major.name
         });
-        $scope.success.show(0, 2000, major.name + ' successfully removed');
+        $scope.loader.showSuccess(major.name + ' successfully removed', 2000);
       }
 
 
@@ -125,6 +100,7 @@ angular.module('uguru.util.controllers')
 
     }
 
+
     $scope.removeUserMajorsFromMaster = function() {
       var majorIndicesToSlice = [];
       if ($scope.majors && $scope.user.majors) {
@@ -171,22 +147,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-    // $scope.$on('$ionicView.enter', function() {
-
-
-    //   $timeout(function() {
-
-    //     $scope.majorInput = document.getElementById('major-input');
-    //     //add event listener
-
-    //     majorInput.addEventListener("keyup", function() {
-
-    //     }, 500);
-
-
-    //   }, 1000);
-
-    // });
+    
 
     $scope.limit = 10;
     $scope.increaseLimit = function() {
@@ -205,10 +166,8 @@ angular.module('uguru.util.controllers')
     var getMajorsBecomeGuru = function() {
       University.getMajors($scope.user.university_id).then(function(majors) {
 
-        majors = majors.plain();
-
-        $scope.majors = majors;
         University.majors = majors;
+        $scope.majors = majors.plain();
         $localstorage.setObject('universityMajors', majors.plain())
 
 
@@ -219,10 +178,9 @@ angular.module('uguru.util.controllers')
       });
     }
 
-
+    //$scope.majors = University.majors || getMajorsForUniversityId();
 
     $scope.majors = University.majors || getMajorsBecomeGuru();
-
     $scope.removeUserMajorsFromMaster();
 
     // $timeout(function() {$scope.removeEmptyMajors();}, 1000)

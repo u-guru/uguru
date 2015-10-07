@@ -22,7 +22,6 @@ angular.module('uguru.guru.controllers')
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService) {
-
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -48,7 +47,7 @@ angular.module('uguru.guru.controllers')
     $scope.goBackToStudentHome = function() {
 
       uTracker.track(tracker, 'Student Home');
-      //$ionicViewSwitcher.nextDirection('back');
+      $ionicViewSwitcher.nextDirection('back');
       $state.go('^.home');
       AnimationService.slide('right');
     }
@@ -102,18 +101,14 @@ angular.module('uguru.guru.controllers')
         );
       }
 
-
+    $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
 
       if (index === 0) {
 
         uTracker.track(tracker, 'Become Guru: Majors');
-        if ($scope.data.majors) {
-          $scope.majors = $scope.data.majors;
-        }
-        console.log('grabbing courses from server')
-        $scope.getCoursesFromServer();
+        
         $ionicSideMenuDelegate.canDragContent(false);
       }
 
@@ -128,7 +123,7 @@ angular.module('uguru.guru.controllers')
       if (index === 2) {
 
         uTracker.track(tracker, 'Become Guru: Skills');
-        $ionicSideMenuDelegate.canDragContent(true);
+        $ionicSideMenuDelegate.canDragContent(true);        
       }
 
       if (index === 3) {
@@ -138,6 +133,30 @@ angular.module('uguru.guru.controllers')
       }
        else {
         $ionicSideMenuDelegate.canDragContent(true);
+      }
+    }
+
+    $scope.onDragLeft = function() {
+      
+      $ionicSideMenuDelegate.canDragContent(false);
+      $ionicSlideBoxDelegate.enableSlide(false);
+
+      return;
+    }
+
+    $scope.onDragRight = function() {
+      
+      if ($scope.activeSlideIndex === 0) {
+        $ionicSideMenuDelegate.canDragContent(false);
+        $ionicSlideBoxDelegate.enableSlide(false);
+      }
+
+      return;
+    }
+    $scope.onDragLeft = function() {
+      
+      if ($scope.activeSlideIndex === 0) {
+        $ionicSlideBoxDelegate.enableSlide(true);      
       }
     }
 

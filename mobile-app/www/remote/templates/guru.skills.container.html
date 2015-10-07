@@ -1,44 +1,43 @@
 <section id="skill" class="onboarding full-xy">
     <header id="category-skills" class="third flex-center" ng-if='!guruSkillsModal.isShown()'>
-      <div class="header-nav">
-        <a class="header-nav-back" ng-click='previousSlide()'>
-	          <svg viewBox="0 0 100 100">
-				      <path d="M68,86 L32,50 L68,14"></path>
-			      </svg>
-            <h1>Courses</h1>
-        </a>
-        <a class="header-nav-next" ng-click='nextSlide()'>
-  			 <h1>Photo</h1>
-          <svg viewBox="0 0 100 100">
-    				<path d="M32,86 L68,50 L32,14"></path>
-    			</svg>
-        </a>
-      </div>
-      <h1>{{active_category.name}}</h1>
+        <div class="header-nav">
+            <a class="header-nav-back" ng-click='previousSlide()'>
+                <svg viewBox="0 0 100 100">
+                    <path d="M68,86 L32,50 L68,14"></path>
+                </svg>
+                <h1>Courses</h1>
+            </a>
+            <a class="header-nav-next" ng-click='nextSlide()'>
+                <h1>Photo</h1>
+                <svg viewBox="0 0 100 100">
+                    <path d="M32,86 L68,50 L32,14"></path>
+                </svg>
+            </a>
+        </div>
+        <h1>{{active_category.name}}</h1>
     </header>
     <header id="category-skills" class="third flex-center" ng-if='guruSkillsModal.isShown()'>
         <div class="header-nav">
-			<a class="header-down" ng-click='guruSkillsModal.hide()'>
-				<svg viewBox="0 0 100 100">
-					<path d="M14,32 L50,68 L86,32"></path>
-				</svg>
-			</a>
+            <a class="header-down" ng-click='guruSkillsModal.hide()'>
+                <svg viewBox="0 0 100 100">
+                    <path d="M14,32 L50,68 L86,32"></path>
+                </svg>
+            </a>
         </div>
-		<h1 class="text-center">Edit Skills</h1>
+        <h1 class="text-center">Edit Skills</h1>
     </header>
     <div id="skills-list" class="onboarding-list">
-      <ul class='list list-item-half flex-wrap'>
-        <li ng-repeat='category in categories' style='background:url({{category.bg_url}})'>
-          <a class='skill-item-link {{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
-            <img ='background:url({{category.icon_url}})' >
-            <div>
-              <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
-              <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
-              <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
-            </div>
-          </a>
-        </li>
-
-      </ul>
+        <ul class='list list-item-half flex-wrap'>
+            <li ng-repeat='category in categories' style='background:url({{categories_img_base + category.background_url}})'>
+                <a class='skill-item-link bg-{{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
+                    <img='background:url({{category.icon_url}})'>
+                        <div>
+                            <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
+                            <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
+                            <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
+                        </div>
+                </a>
+            </li>
+        </ul>
     </div>
-  </section>
+</section>

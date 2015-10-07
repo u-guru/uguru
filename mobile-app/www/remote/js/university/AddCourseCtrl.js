@@ -20,6 +20,9 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate, University, Utilities, uTracker, Course) {
 
+    
+    $scope.courses = [];
+
     $scope.search_text = {
       course: ''
     };
@@ -42,45 +45,6 @@ angular.module('uguru.util.controllers')
         }, 500)
       }
     }
-
-    $scope.backToStudentEditProfile = function(is_saved) {
-
-
-      if (is_saved) {
-        $scope.success.show(0, 1500);
-      } else {
-        $scope.loader.show();
-      }
-
-      if ($scope.root.vars.guru_mode) {
-
-        $state.go('^.guru-profile');
-
-      } else {
-
-        $timeout(function() {
-          $ionicSideMenuDelegate.toggleRight();
-        }, 500);
-
-      }
-
-
-      $timeout(function() {
-        $scope.loader.hide();
-
-      }, 500);
-    }
-
-    $scope.toggleEditGuru = function() {
-      $scope.editCourseMode = !$scope.editCourseMode;
-
-      if ($scope.editCourseMode) {
-        $timeout(function() {
-          $scope.focusCourseInput();
-        }, 500)
-      }
-    }
-
 
 
     $scope.query = function(input) {
@@ -118,7 +82,7 @@ angular.module('uguru.util.controllers')
 
 
       var confirmCallback = function() {
-        $scope.success.show(0, 2000, course.name + ' successfully removed');
+        $scope.loader.showSuccess(course.name + ' successfully removed', 2000);
       }
 
       //update local user object

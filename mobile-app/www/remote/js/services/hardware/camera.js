@@ -65,7 +65,7 @@ function Camera($timeout, DeviceService) {
         formData.append('profile_url', $scope.user.id);
       }
 
-      $scope.success.show(0, 1500, 'Saving...');
+      $scope.loader.showSuccess('Saving...', 2000);
 
       $timeout(function() {
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);

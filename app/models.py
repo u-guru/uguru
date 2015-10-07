@@ -540,6 +540,9 @@ class University(Base):
     sp15_start = Column(DateTime)
     sp15_end = Column(DateTime)
 
+    departments_sanitized = Column(Boolean, default=False)
+    courses_sanitized = Column(Boolean, default=False)
+
     gurus = relationship("User",
         primaryjoin = "(User.university_id==University.id) & "\
                         "(User.is_a_guru==True)")
@@ -597,6 +600,24 @@ class University(Base):
     def admin_create(args_dict, _id):
         u = University.admin_update(University(_id=_id), args_dict)
         return u
+
+    def sanitizeCourses(self):
+        count = 0
+        for course in self.courses:
+            if course.name or course.short_name or course.full_name:
+                count += 1
+        if count == len(self.courses):
+            self.courses_sanitized = True
+            db_session.commit()
+
+    def sanitizeDepartments(self):
+        count = 0
+        for d in self.departments:
+            if d.code or d.abbr or d.name or d.short_name or d.title or d.variations:
+                count += 1
+        if count == len(self.departments):
+            self.departments_sanitized = True
+            db_session.commit()
 
     @staticmethod
     def is_university_targetted(university):

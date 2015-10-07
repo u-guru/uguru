@@ -19,10 +19,10 @@ function Utilities($rootScope, Settings) {
 		transitionEndEventName: transitionEndEventName,
 		fireBeforeEnter: fireBeforeEnter,
 		rAF: rAF,
+		sortArrObjByKey: sortArrObjByKey,
 		checkFreeSpace: checkFreeSpace,
 		getFreeSpace: getFreeSpace,
-		clearLoader: clearLoader,
-		sortArrObjByKey: sortArrObjByKey
+		clearLoader: clearLoader
 	}
 
 	function sortArrObjByKey(arr, key) {

@@ -38,6 +38,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     value: ''
   };
 
+  //only shows back button local
+  $scope.showBackButton = false || LOCAL;
   // Measure app load times
   var appLoadTime;
   var appStartTime;

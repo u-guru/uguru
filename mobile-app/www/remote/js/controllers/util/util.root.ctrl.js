@@ -408,15 +408,55 @@ angular.module('uguru.util.controllers')
             }, false);
 
             document.addEventListener("online", function() {
+                // is this desktop only? 
+                if (!$scope.platform.web)
+                {
+                    return;
+                }
 
-                // console.log('device is online...');
-                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // console.log('Getting user from server');
-                User.getUserFromServer($scope, null, $state);
+                $scope.loader.showSuccess('Connection Detected', 2000)
+                $scope.transitionOfflineToOnline = true;
+                $timeout(function() {
+                    if ($scope.transitionOfflineToOnline) {
+                        $scope.loader.showAmbig();
+                        // fuck it if it hasn't been set false they are probably offline
+                        $timeout(function() {
+                            $state.go('^.offline');
+                        }, 5000)
+                    }
+                }, 2000)
+                var transitionToOnline = function() {
+                    $timeout(function() {
+                        $scope.loader.hide()
+                        $scope.transitionOfflineToOnline = null;
+                    }, 1000);
+                    if ($scope.user && $scope.root.vars.guru_mode) {
+                        $state.go('^.guru');
+                    } else {
+                        $state.go('^.home');
+                    }
+                }
+                User.getUserFromServer($scope, transitionToOnline, $state);
+
             }, false);
 
             document.addEventListener("offline", function() {
-                // console.log('device is offline...');
+
+                $scope.checkIfOnline = function() {
+                    $scope.loader.showAmbig();
+                    $timeout(function() {
+                        //purposely showing the old one --> need to refactor to loader.fail..
+                        $scope.loader.hide();
+                        alert('Sorry - no connect detected! We miss you!');
+                    }, 2000)
+                }
+
+                $state.go('^.offline');
+
+            }, false);
+
+            document.addEventListener("pause", function() {
+                User.getUserFromServer($scope, null, $state);
             }, false);
         });
 

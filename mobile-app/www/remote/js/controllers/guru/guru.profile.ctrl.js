@@ -104,7 +104,7 @@ angular.module('uguru.guru.controllers')
       $scope.profile.intro_edit_mode = false;
       $timeout(function() {
         $scope.loader.hide();
-        $scope.success.show(250, 1000, 'Saved!');
+        $scope.loader.showSuccess('Saved!', 1500);
       }, 500);
     }
 
@@ -244,7 +244,7 @@ angular.module('uguru.guru.controllers')
       });
     }
 
-    $scope.launchAddGuruExperienceModal = function(experience) {
+    $scope.launchAddGuruExperienceModal = function(experience, index) {
 
       $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
             scope: $scope,
@@ -252,6 +252,7 @@ angular.module('uguru.guru.controllers')
         }).then(function(modal) {
             if (experience) {
               $scope.experience = experience;
+              $scope.experience_index = index;
             } else {
               $scope.experience = {
                 name: '',
@@ -737,6 +738,18 @@ angular.module('uguru.guru.controllers')
 
       }
     }
+
+    $scope.$on('$ionicView.enter', function() {
+          
+          $timeout(function() {
+            
+            if (RankingService.recentlyUpdated) {
+              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
+            }
+
+          }, 1000)
+
+    })
 
 
   }

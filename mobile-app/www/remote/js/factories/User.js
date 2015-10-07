@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate', 'Category',
+    '$ionicSideMenuDelegate', 'Category', 'RankingService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category) {
+        $ionicSideMenuDelegate, Category, RankingService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -571,9 +571,10 @@ angular.module('uguru.user', [])
         $scope.user.support_tickets = user.support_tickets;
         $scope.user.max_hourly = parseInt(user.max_hourly);
 
-        $scope.user.current_profile_percent = user.current_profile_percent = calcProfileCompleteness(user);
-        $scope.user.current_credibility_percent = user.current_credibility_percent = calcCredibilityCompleteness(user);
-        $scope.user.current_guru_ranking = calcGuruCurrentRanking(user);
+        $scope.user.current_profile_percent = RankingService.calcProfile(user);
+        $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
+        $scope.user.current_guru_ranking = RankingService.calcRanking(user);
+        
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
         $scope.user.is_a_guru = !$scope.user.show_become_guru;
@@ -1138,7 +1139,7 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
-                        $scope.success.show(JSON.stringify(err));
+                        alert('Your card information is incorrect. Please try again');
                         console.log(JSON.stringify(err));
                         console.log('error...something happened with the server;')
                     });
@@ -1192,11 +1193,6 @@ angular.module('uguru.user', [])
                             else {
                                 $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);
-                            }
-
-                            if ($state.current.name !== 'root.request-description') {
-                                $scope.success.show(0, 1500);
-                                $scope.loader.hide();
                             }
 
                             if (callback_success) {
