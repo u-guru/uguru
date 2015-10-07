@@ -46,18 +46,19 @@
 				<div class='edit-button' hidden> </div>
 				<h1>Courses you can tutor</h1>
 				<div>
-                    <ul class='courses'>
+                    <ul class='courses profile-list profile-list-half'>
     					<li ng-repeat='course in user.guru_courses track by $index'>
-    						<a ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
+    						<a class="remove" ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
     							<svg viewBox="0 0 100 100">
     							    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
     							</svg>
     						</a>
     						<span>{{course.name}}</span>
     					</li>
+    					<li></li>
     				</ul>
                     <ul class="empty" ng-if="!user.guru_courses.length && !profile.edit_mode">
-                        <li style='padding:10px 15px;'class='text-center weight-300 p10x15y'><span><em>No courses added</em></span></li>
+                        <li><span><em>No courses added</em></span></li>
                     </ul>
     				<ul class='default' ng-if='profile.edit_mode'>
     					<li><button class="round" ng-click='launchGuruCoursesModal()'>
@@ -71,11 +72,11 @@
 			</div>
 			<div id="profile-other">
 				<div id="profile-major">
-					<h1>My Majors</h1>
+					<h1>Majors</h1>
 					<div>
-						<ul class='majors' ng-if='user.majors && user.majors.length > 0'>
+						<ul class='majors profile-list' ng-if='user.majors && user.majors.length > 0'>
 							<li ng-repeat='major in user.majors'>
-								<a ng-click='removeMajor(major, $index)' ng-if='profile.edit_mode'>
+								<a class="remove" ng-click='removeMajor(major, $index)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 									    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
@@ -97,9 +98,9 @@
 					</div>
 				</div>
                 <div id="profile-experiences">
-                    <h1>Experiences</h1>
+                    <h1>Experience</h1>
                     <div>
-                        <ul class="experience list with-icon">
+                        <ul class="experience profile-list list with-icon">
                             <li ng-repeat='experience in user.guru_experiences'>
                                 <a ng-click='launchAddGuruExperienceModal(experience)'>
                                     <span class="list-item-detail">
@@ -130,22 +131,18 @@
 				<div id="profile-skills">
 					<h1>Skills</h1>
 					<div>
-						<ul class='skills'>
-<<<<<<< HEAD
-							<li ng-repeat='skill in user_skills'>
-=======
-							<li ng-repeat='subcategory in user.guru_subcategories' class='{{subcategory.category.hex_color}}'>
-								<span>{{subcategory.name}}</span>
->>>>>>> 12799831f26246f734469833dff7649d7d910aff
-								<a ng-click='removeGuruSkill(skill)' ng-if='profile.edit_mode'>
+						<ul class='skills profile-list profile-list-half'>
+							<li ng-repeat='subcategory in user.guru_subcategories'>
+								<a class="remove" ng-click='removeGuruSkill(skill)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
 								</a>
-								<span>{{skill.name}}</span>
+								<span class=''>{{subcategory.name}}</span>
 							</li>
+							<li></li>
 						</ul>
-						<ul class="empty" ng-if="!user.categories.length && !profile.edit_mode">
+						<ul class="empty" ng-if="!user.guru_subcategories.length && !profile.edit_mode">
 							<li><span><em>No skills added</em></span></li>
 						</ul>
 						<ul class='default' ng-if='profile.edit_mode'>
@@ -161,15 +158,16 @@
 				<div id="profile-languages">
 					<h1>Languages</h1>
 					<div>
-						<ul class='languages'>
+						<ul class='languages profile-list profile-list-half'>
 							<li ng-repeat='language in user.guru_languages'>
-								<a ng-click='removeGuruLanguage(language)' ng-if='profile.edit_mode'>
+								<a class="remove" ng-click='removeGuruLanguage(language)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
 								</a>
 								<span>{{language.name}}</span>
 							</li>
+							<li></li>
 						</ul>
 						<ul class="empty" ng-if="!user.guru_languages.length && !profile.edit_mode">
 							<li><span><em>No languages added</em></span></li>
@@ -182,6 +180,7 @@
 								<span>Add a language</span>
 							</button></li>
 						</ul>
+						<hr ng-if="!profile.edit_mode"/>
 					</div>
 				</div>
 			</div>

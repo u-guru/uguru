@@ -56,7 +56,7 @@ section {
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
 
-.uguru-view .request#request header:before {
+.uguru-view .request#request header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
 
 .uguru-view .request#request header .request-header h1 {
@@ -211,7 +211,7 @@ section {
     height: 40px !important; }
   .uguru-view .input-search-ghost input {
     font-size: 18px; }
-  .uguru-view .input-search-ghost:before {
+  .uguru-view .input-search-ghost::before {
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -370,7 +370,7 @@ section {
               font-weight: 600;
               line-height: 1;
               text-align: center; }
-              .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile #popup-percentile-ranking:after {
+              .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile #popup-percentile-ranking::after {
                 content: "th";
                 display: block;
                 position: absolute;
@@ -870,7 +870,7 @@ section {
     padding: 15px;
     border: 2px solid #F1F1F1;
     border-bottom: 0; }
-    .request-modal .request-content .request-loc .request-address:after {
+    .request-modal .request-content .request-loc .request-address::after {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -986,7 +986,7 @@ section {
     .availability-modal section > div {
       height: 100%;
       width: 100%; }
-      .availability-modal section > div:after {
+      .availability-modal section > div::after {
         content: "";
         position: fixed;
         z-index: 10;
@@ -1213,7 +1213,7 @@ section {
     position: relative;
     height: calc(100% - 384px - 84px);
     text-transform: none; }
-    .side-menu-list .list-item-agenda:before {
+    .side-menu-list .list-item-agenda::before {
       filter: alpha(opacity=30);
       opacity: 0.3;
       content: "";
@@ -1507,7 +1507,7 @@ section {
 
 .university-view {
   background: #2B3234; }
-  .university-view header:before {
+  .university-view header::before {
     background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
     margin-top: 3px; }
@@ -1713,7 +1713,7 @@ section {
   height: calc(100% / 3 * 2);
   overflow: auto; }
 
-.onboarding#demographic header:before {
+.onboarding#demographic header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
 
 .onboarding#demographic header h1 {
@@ -1826,7 +1826,7 @@ section {
           border-right: 0; }
     .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup {
       left: 0; }
-      .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup:before {
+      .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup::before {
         left: 25%; }
       .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup li a {
         color: #8A9EA3;
@@ -1835,7 +1835,7 @@ section {
         background: rgba(138, 158, 163, 0.05); }
     .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup {
       left: -100%; }
-      .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup:before {
+      .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup::before {
         left: 75%; }
       .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup li a {
         color: #69B3A5;
@@ -1844,7 +1844,7 @@ section {
         background: rgba(105, 179, 165, 0.05); }
     .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup {
       left: 0; }
-      .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup:before {
+      .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup::before {
         left: 25%; }
       .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup li a {
         color: #55A4B7;
@@ -1853,7 +1853,7 @@ section {
         background: rgba(85, 164, 183, 0.05); }
     .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup {
       left: -100%; }
-      .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup:before {
+      .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup::before {
         left: 75%; }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a {
         color: #50A5DD;
@@ -1878,13 +1878,14 @@ section {
 
 .major-view, .language-view {
   background: #2B3234; }
-  .major-view header:before, .language-view header:before {
+  .major-view header::before, .language-view header::before {
     background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }
   .major-view #major-list ul, .major-view #language-list ul, .language-view #major-list ul, .language-view #language-list ul {
     margin-top: 1px; }
     .major-view #major-list ul li a, .major-view #language-list ul li a, .language-view #major-list ul li a, .language-view #language-list ul li a {
       border-color: #8A9EA3;
-      margin-bottom: 1px;
+      margin-bottom: 2px;
+      padding: 0 40px 0 20px;
       font-weight: 400;
       font-size: 20px;
       line-height: 1.2; }
@@ -1912,7 +1913,7 @@ section {
 
 .courses-view {
   background: #2B3234; }
-  .courses-view header:before {
+  .courses-view header::before {
     background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
   .courses-view #courses-list ul {
     margin: 1px 1px 0; }
@@ -1963,7 +1964,7 @@ section {
 
 .skills-view {
   background: #2B3234; }
-  .skills-view header:before {
+  .skills-view header::before {
     background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
   .skills-view #skills-list ul {
     padding: 1px;
@@ -2009,7 +2010,7 @@ section {
           font-size: 12px;
           line-height: 1.25;
           text-transform: uppercase; }
-    .skills-view #skills-list ul [class*="bg-"]:after {
+    .skills-view #skills-list ul [class*="bg-"]::after {
       filter: alpha(opacity=70);
       opacity: 0.7;
       position: absolute;
@@ -2018,21 +2019,21 @@ section {
       height: 100%;
       left: 0;
       top: 0; }
-    .skills-view #skills-list ul .bg-cerise.important:after {
+    .skills-view #skills-list ul .bg-cerise.important::after {
       background: #DB1988; }
-    .skills-view #skills-list ul .bg-orange.important:after {
+    .skills-view #skills-list ul .bg-orange.important::after {
       background: #E5753C; }
-    .skills-view #skills-list ul .bg-gold.important:after {
+    .skills-view #skills-list ul .bg-gold.important::after {
       background: #F9D57B; }
-    .skills-view #skills-list ul .bg-moola.important:after {
+    .skills-view #skills-list ul .bg-moola.important::after {
       background: #81B566; }
-    .skills-view #skills-list ul .bg-shamrock.important:after {
+    .skills-view #skills-list ul .bg-shamrock.important::after {
       background: #69B3A5; }
-    .skills-view #skills-list ul .bg-azure.important:after {
+    .skills-view #skills-list ul .bg-azure.important::after {
       background: #55A4B7; }
-    .skills-view #skills-list ul .bg-lake.important:after {
+    .skills-view #skills-list ul .bg-lake.important::after {
       background: #50A5DD; }
-    .skills-view #skills-list ul .bg-eggplant.important:after {
+    .skills-view #skills-list ul .bg-eggplant.important::after {
       background: #9A5BC5; }
 
 .photo-view {
@@ -2262,7 +2263,7 @@ section {
           font-weight: 400; }
         .guru-profile-view #profile-desc #profile-list ul #profile-loc {
           font-size: 16px; }
-          .guru-profile-view #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty):after {
+          .guru-profile-view #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty)::after {
             content: ", "; }
     .guru-profile-view #profile-desc #profile-bars #profile-rating {
       list-style: none;
@@ -2294,28 +2295,42 @@ section {
     padding-bottom: 64px; }
     .guru-profile-view #profile-info .profile-inside h1 {
       background: rgba(255, 255, 255, 0.05);
+      color: white;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-align: center;
+      text-transform: uppercase;
       color: white; }
     .guru-profile-view #profile-info .profile-inside li {
       position: relative; }
-      .guru-profile-view #profile-info .profile-inside li a {
+      .guru-profile-view #profile-info .profile-inside li .remove {
         position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
         right: 0;
-        top: 0; }
-        .guru-profile-view #profile-info .profile-inside li a svg {
+        width: 35px;
+        height: 35px; }
+        .guru-profile-view #profile-info .profile-inside li .remove svg {
           -webkit-transform: rotate(45deg);
           -moz-transform: rotate(45deg);
           -ms-transform: rotate(45deg);
           -o-transform: rotate(45deg);
           transform: rotate(45deg);
           width: 35px;
-          height: 40px;
+          height: 35px;
           padding: 10px;
           fill: none;
           stroke: white;
           stroke-width: 10;
           stroke-linecap: round;
           stroke-linejoin: round; }
-    .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses {
+    .guru-profile-view #profile-info .profile-inside .profile-list {
       list-style: none;
       margin: 0;
       padding: 0;
@@ -2329,83 +2344,49 @@ section {
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li {
-        width: 50%;
+      text-align: center;
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid rgba(255, 255, 255, 0.05); }
+      .guru-profile-view #profile-info .profile-inside .profile-list li {
+        width: 100%;
         font-weight: 600;
-        position: relative; }
-        .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li span {
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.05); }
+        .guru-profile-view #profile-info .profile-inside .profile-list li:first-child {
+          border-top: 0; }
+        .guru-profile-view #profile-info .profile-inside .profile-list li:last-child {
+          border-bottom: 0; }
+        .guru-profile-view #profile-info .profile-inside .profile-list li span {
           display: block;
           padding: 10px 15px; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(1) span {
-        background: #50A5DD; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(2) span {
-        background: #F9D57B; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(3) span {
-        background: #55A4B7; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(4) span {
-        background: #E5753C; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(5) span {
-        background: #69B3A5; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(6) span {
-        background: #DB1988; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses a:active + span, .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses a.active + span {
-        filter: alpha(opacity=75);
-        opacity: 0.75; }
-    .guru-profile-view #profile-info .profile-inside h1 {
-      padding: 10px;
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-align: center;
-      text-transform: uppercase;
-      color: white; }
+      .guru-profile-view #profile-info .profile-inside .profile-list a:active + span, .guru-profile-view #profile-info .profile-inside .profile-list a.active + span {
+        background: rgba(138, 158, 163, 0.5); }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(2) {
+      border-bottom: 0 !important; }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child {
+      display: none; }
+    .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li {
+      width: 50%; }
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-child(1), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-child(2) {
+        border-top: 0; }
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(2),
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(3):nth-child(odd),
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
+        border-bottom: 0; }
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
+        display: block; }
     .guru-profile-view #profile-info .profile-inside #profile-other > div {
       background: #2B3234; }
-      .guru-profile-view #profile-info .profile-inside #profile-other > div div ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        text-align: center; }
-        .guru-profile-view #profile-info .profile-inside #profile-other > div div ul li {
-          padding: 10px 15px;
-          width: 50%;
-          font-weight: 600; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li {
-      position: relative;
-      width: 100%;
-      padding: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-weight: 200; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li:last-child {
-        border-bottom: 0; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li span {
-        display: block;
-        padding: 10px 15px; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors li a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li a.active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience li a:active + span {
-        background: rgba(255, 255, 255, 0.1); }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.experience + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.experience + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.majors + ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences div ul.experience + ul.default {
-      border-top: 1px solid rgba(255, 255, 255, 0.1); }
     .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a {
-      position: static;
-      height: auto;
-      background: transparent;
       text-align: left !important;
-      padding: 10px 15px; }
+      padding: 10px 15px;
+      background: transparent !important; }
       .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span {
-        padding: 0 !important; }
+        padding: 0 !important;
+        font-weight: 300; }
         .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span h2 {
-          margin-bottom: 2px; }
+          margin-bottom: 2px;
+          font-weight: 600 !important; }
         .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span svg {
           -webkit-transform: none;
           -moz-transform: none;
@@ -2414,39 +2395,29 @@ section {
           transform: none;
           padding: 0;
           text-align: right;
-          stroke-width: 3px; }
+          stroke-width: 3px;
+          fill: none; }
       .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a .list-item-detail {
         width: calc(100% - 35px); }
       .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a .list-item-icon {
         width: 35px; }
     .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a.active, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a:active {
-      background: rgba(255, 255, 255, 0.1); }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li {
-      position: relative; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(1) span {
-      background: #50A5DD; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(2) span {
-      background: #69B3A5; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(3) span {
-      background: #55A4B7; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(4) span {
-      background: #81B566; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills a.active + span {
-      filter: alpha(opacity=75);
-      opacity: 0.75; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li {
-      position: relative; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(1) span {
-      background: #F9D57B; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(2) span {
-      background: #E5753C; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages a:active + span, .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages a.active + span {
-      filter: alpha(opacity=75);
-      opacity: 0.75; }
-    .guru-profile-view #profile-info .profile-inside #profile-other .empty li {
-      width: 100%;
-      font-weight: 300;
-      text-align: center; }
+      background: rgba(138, 158, 163, 0.5) !important; }
+    .guru-profile-view #profile-info .profile-inside #profile-other hr {
+      padding: 0;
+      margin: 0;
+      border: 1px solid rgba(255, 255, 255, 0.05); }
+    .guru-profile-view #profile-info .profile-inside .empty {
+      border: 0 !important; }
+      .guru-profile-view #profile-info .profile-inside .empty li {
+        width: 100% !important;
+        font-weight: 300 !important;
+        text-align: center !important;
+        border: 0 !important; }
+        .guru-profile-view #profile-info .profile-inside .empty li span {
+          display: block;
+          padding: 10px 15px;
+          text-align: center; }
     .guru-profile-view #profile-info .profile-inside .default {
       list-style: none;
       margin: 0;
@@ -2465,7 +2436,22 @@ section {
       .guru-profile-view #profile-info .profile-inside .default li {
         padding: 10px 15px !important;
         width: 100% !important;
-        font-weight: 600; }
+        font-weight: 600;
+        border-top: 2px solid rgba(255, 255, 255, 0.05) !important; }
+        .guru-profile-view #profile-info .profile-inside .default li span {
+          padding: 0 !important; }
+
+@media screen and (min-width: 414px) {
+  .guru-profile-view #profile-info .profile-inside .profile-list-half li {
+    width: 50%; }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-child(1), .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-child(2) {
+      border-top: 0; }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(2),
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(3):nth-child(odd),
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
+      border-bottom: 0; }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
+      display: block; } }
 
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
@@ -2668,7 +2654,7 @@ section {
         width: 70px;
         height: 70px; } }
 
-.guru-view header:before {
+.guru-view header::before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
 
 .guru-view #guru-ranking {
@@ -2740,7 +2726,7 @@ section {
         font-weight: 600;
         line-height: 1;
         text-align: center; }
-        .guru-view #guru-ranking #guru-chart #percentile #percentile-ranking:after {
+        .guru-view #guru-ranking #guru-chart #percentile #percentile-ranking::after {
           content: "th";
           display: block;
           position: absolute;

@@ -78,7 +78,7 @@ section {
 	.request {
 		&#request {
 			header {
-				&:before {
+				&::before {
 					background: url(../images/schools.jpg) no-repeat center center / cover;
 				}
 				.request-header {
@@ -203,7 +203,7 @@ section {
 			input {
 				font-size: 18px;
 			}
-			&:before {
+			&::before {
 				@include center-y;
 				display: block;
 				background: url(../../img/svg/search.svg) no-repeat center center/cover,
@@ -335,7 +335,7 @@ section {
 							font-weight: 600;
 							line-height: 1;
 							text-align: center;
-							&:after {
+							&::after {
 								content: "th";
 								display: block;
 								position: absolute;
@@ -922,7 +922,7 @@ section {
 				padding: 15px;
 				border: 2px solid $smoke;
 				border-bottom: 0;
-				&:after {
+				&::after {
 					@include center-xy;
 					@include opacity(.15);
 					-webkit-filter: grayscale(1);
@@ -1067,7 +1067,7 @@ section {
 		> div {
 			height: 100%;
 			width: 100%;
-			&:after {
+			&::after {
 				content: "";
 				position: fixed;
 				z-index: 10;
@@ -1309,7 +1309,7 @@ section {
 			position: relative;
 			height: calc(100% - 384px - 84px);
 			text-transform: none;
-			&:before {
+			&::before {
 				@include opacity(.3);
 				content: "";
 				position: absolute;
@@ -1631,7 +1631,7 @@ section {
 .university-view {
 	background: $charcoal;
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
 		}
@@ -1884,7 +1884,7 @@ section {
 	}
 	&#demographic {
 		header {
-			&:before {
+			&::before {
 				background: url(../images/schools.jpg) no-repeat center center / cover;
 			}
 			h1 {
@@ -1975,7 +1975,7 @@ section {
 					&.bg-campus {
 						.demographic-popup {
 							left: 0;
-							&:before {
+							&::before {
 								left: 25%;
 							}
 							li {
@@ -1992,7 +1992,7 @@ section {
 					&.bg-shamrock {
 						.demographic-popup {
 							left: -100%;
-							&:before {
+							&::before {
 								left: 75%;
 							}
 							li {
@@ -2009,7 +2009,7 @@ section {
 					&.bg-azure {
 						.demographic-popup {
 							left: 0;
-							&:before {
+							&::before {
 								left: 25%;
 							}
 							li {
@@ -2026,7 +2026,7 @@ section {
 					&.bg-lake {
 						.demographic-popup {
 							left: -100%;
-							&:before {
+							&::before {
 								left: 75%;
 							}
 							li {
@@ -2060,7 +2060,7 @@ section {
 .major-view, .language-view {
 	background: $charcoal;
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
 		}
@@ -2071,7 +2071,8 @@ section {
 			li {
 				a {
 					border-color: $campus;
-					margin-bottom: 1px;
+					margin-bottom: 2px;
+					padding: 0 40px 0 20px;
 					font-weight: 400;
 					font-size: 20px;
 					line-height: 1.2;
@@ -2106,7 +2107,7 @@ section {
 .courses-view {
 	background: $charcoal;
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
 		}
@@ -2172,7 +2173,7 @@ section {
 .skills-view {
 	background: $charcoal;
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
 		}
@@ -2214,7 +2215,7 @@ section {
 					}
 				}
 			}
-			[class*="bg-"]:after {
+			[class*="bg-"]::after {
 				@include opacity(.7);
 				position: absolute;
 				content: "";
@@ -2223,28 +2224,28 @@ section {
 				left: 0;
 				top: 0;
 			}
-			.bg-cerise.important:after {
+			.bg-cerise.important::after {
 				background: $cerise;
 			}
-			.bg-orange.important:after {
+			.bg-orange.important::after {
 				background: $orange;
 			}
-			.bg-gold.important:after {
+			.bg-gold.important::after {
 				background: $gold;
 			}
-			.bg-moola.important:after {
+			.bg-moola.important::after {
 				background: $moola;
 			}
-			.bg-shamrock.important:after {
+			.bg-shamrock.important::after {
 				background: $shamrock;
 			}
-			.bg-azure.important:after {
+			.bg-azure.important::after {
 				background: $azure;
 			}
-			.bg-lake.important:after {
+			.bg-lake.important::after {
 				background: $lake;
 			}
-			.bg-eggplant.important:after {
+			.bg-eggplant.important::after {
 				background: $eggplant;
 			}
 		}
@@ -2462,7 +2463,7 @@ section {
 				}
 				#profile-loc {
 					font-size: 16px;
-					#profile-loc-city:not(:empty):after {
+					#profile-loc-city:not(:empty)::after {
 						content: ", "
 					}
 				}
@@ -2492,17 +2493,25 @@ section {
 			h1 {
 				background: rgba(white,.05);
 				color: white;
+				padding: 10px;
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 2px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
 			}
 			li {
 				position: relative;
-				a {
-					position: absolute;
+				.remove {
+					@include center-y;
 					right: 0;
-					top: 0;
+					width: 35px;
+					height: 35px;
 					svg {
 						@include rotate(45);
 						width: 35px;
-						height: 40px;
+						height: 35px;
 						padding: 10px;
 						fill: none;
 						stroke: white;
@@ -2512,113 +2521,81 @@ section {
 					}
 				}
 			}
-			#profile-courses {
-				ul.courses {
-					@include listless;
-					@include flex;
-					@include flex-wrap;
-					text-align: center;
-					li {
-						width: 50%;
-						font-weight: 600;
-						position: relative;
-						span {
-							display: block;
-							padding: 10px 15px;
-						}
+			.profile-list {
+				@include listless;
+				@include flex;
+				@include flex-wrap;
+				text-align: center;
+				border-left: 1px solid rgba(white,.05);
+				border-right: 1px solid rgba(white,.05);
+				li {
+					width: 100%;
+					font-weight: 600;
+					position: relative;
+					border: 1px solid rgba(white,.05);
+					&:first-child {
+						border-top: 0;
 					}
-					li:nth-child(1) span {
-						background: $lake;
+					&:last-child {
+						border-bottom: 0;
 					}
-					li:nth-child(2) span {
-						background: $gold;
+					span {
+						display: block;
+						padding: 10px 15px;
 					}
-					li:nth-child(3) span {
-						background: $azure;
+				}
+				a:active + span, a.active + span {
+					background: rgba($campus,.5);
+				}
+			}
+			.profile-list-half {
+				li {
+					&:nth-last-child(2) {
+						border-bottom: 0!important;
 					}
-					li:nth-child(4) span {
-						background: $orange;
-					}
-					li:nth-child(5) span {
-						background: $shamrock;
-					}
-					li:nth-child(6) span {
-						background: $cerise;
-					}
-					a:active + span, a.active + span {
-						@include opacity(.75);
+					&:last-child {
+						display: none;
 					}
 				}
 			}
-			h1 {
-				padding: 10px;
-				font-size: 14px;
-				font-weight: 400;
-				letter-spacing: 2px;
-				text-align: center;
-				text-transform: uppercase;
-				color: white;
+			.courses.profile-list-half {
+				li {
+					width: 50%;
+					&:nth-child(1), &:nth-child(2) {
+						border-top: 0;
+					}
+					&:nth-last-child(2),
+					&:nth-last-child(3):nth-child(odd),
+					&:last-child:nth-child(even) {
+						border-bottom: 0;
+					}
+					&:last-child:nth-child(even) {
+						display: block;
+					}
+				}
 			}
 			#profile-other {
 				> div {
 					background: $charcoal;
-					div {
-						ul {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							text-align: center;
-							li {
-								padding: 10px 15px;
-								width: 50%;
-								font-weight: 600;
-							}
-						}
-					}
-				}
-				#profile-major, #profile-job, #profile-experiences {
-					div {
-						ul.majors, ul.experience {
-							li {
-								position: relative;
-								width: 100%;
-								padding: 0;
-								border-bottom: 1px solid rgba(white, .1);
-								font-weight: 200;
-								&:last-child {
-									border-bottom: 0;
-								}
-								span {
-									display: block;
-									padding: 10px 15px;
-								}
-								a.active + span, a:active + span {
-									background: rgba(white,.1);
-								}
-							}
-						}
-						ul.majors + ul.default, ul.experience + ul.default {
-							border-top: 1px solid rgba(white, .1);
-						}
-					}
 				}
 				#profile-experiences {
 					a {
-						position: static;
-						height: auto;
-						background: transparent;
 						text-align: left!important;
 						padding: 10px 15px;
+						background: transparent!important;
 						span {
 							padding: 0!important;
+							font-weight: 300;
 							h2 {
 								margin-bottom: 2px;
+								font-weight: 600!important;
 							}
 							svg {
 								@include transform-reset;
 								padding: 0;
 								text-align: right;
 								stroke-width: 3px;
+								fill: none;
 							}
 						}
 						.list-item-detail {
@@ -2629,55 +2606,25 @@ section {
 						}
 					}
 					a.active, a:active {
-						background: rgba(white,.1);
+						background: rgba($campus,.5)!important;
 					}
 				}
-				#profile-skills {
-					div {
-						ul.skills {
-							li {
-								position: relative;
-							}
-							li:nth-child(1) span {
-								background: $lake;
-							}
-							li:nth-child(2) span {
-								background: $shamrock;
-							}
-							li:nth-child(3) span {
-								background: $azure;
-							}
-							li:nth-child(4) span {
-								background: $moola;
-							}
-							a:active + span, a.active + span {
-								@include opacity(.75);
-							}
-						}
-					}
+				hr {
+					padding: 0;
+					margin: 0;
+					border: 1px solid rgba(white, .05);
 				}
-				#profile-languages {
-					div {
-						ul.languages {
-							li {
-								position: relative;
-							}
-							li:nth-child(1) span {
-								background: $gold;
-							}
-							li:nth-child(2) span {
-								background: $orange;
-							}
-							a:active + span, a.active + span {
-								@include opacity(.75);
-							}
-						}
-					}
-				}
-				.empty {
-					li {
-						width: 100%;
-						font-weight: 300;
+			}
+			.empty {
+				border: 0!important;
+				li {
+					width: 100%!important;
+					font-weight: 300!important;
+					text-align: center!important;
+					border: 0!important;
+					span {
+						display: block;
+						padding: 10px 15px;
 						text-align: center;
 					}
 				}
@@ -2691,6 +2638,34 @@ section {
 					padding: 10px 15px!important;
 					width: 100%!important;
 					font-weight: 600;
+					border-top: 2px solid rgba(white, .05)!important;
+					span {
+						padding: 0!important;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:414px) {
+	.guru-profile-view {
+		#profile-info {
+			.profile-inside {
+				.profile-list-half {
+					li {
+						width: 50%;
+						&:nth-child(1), &:nth-child(2) {
+							border-top: 0;
+						}
+						&:nth-last-child(2),
+						&:nth-last-child(3):nth-child(odd),
+						&:last-child:nth-child(even) {
+							border-bottom: 0;
+						}
+						&:last-child:nth-child(even) {
+							display: block;
+						}
+					}
 				}
 			}
 		}
@@ -2964,7 +2939,7 @@ section {
 // GURU RANKING
 .guru-view {
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
 		}
 	}
@@ -3009,7 +2984,7 @@ section {
 					line-height: 1;
 					text-align: center;
 
-					&:after {
+					&::after {
 						content: "th";
 						display: block;
 						position: absolute;
