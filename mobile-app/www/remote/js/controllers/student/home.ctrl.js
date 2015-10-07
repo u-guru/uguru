@@ -226,9 +226,9 @@ angular.module('uguru.student.controllers', [])
                     $scope.initStudentHomeMap();
                 }, 1000)
             }
-            // $timeout(function() {
-            //     checkOnboardingStatus();
-            // }, 1000);
+            $timeout(function() {
+                checkOnboardingStatus();
+            }, 1000);
 
 
             // $timeout(function() {

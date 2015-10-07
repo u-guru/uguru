@@ -1138,7 +1138,7 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
-                        $scope.success.show(JSON.stringify(err));
+                        alert('Your card information is incorrect. Please try again');
                         console.log(JSON.stringify(err));
                         console.log('error...something happened with the server;')
                     });
@@ -1192,11 +1192,6 @@ angular.module('uguru.user', [])
                             else {
                                 $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);
-                            }
-
-                            if ($state.current.name !== 'root.request-description') {
-                                $scope.success.show(0, 1500);
-                                $scope.loader.hide();
                             }
 
                             if (callback_success) {

@@ -104,7 +104,7 @@ angular.module('uguru.guru.controllers')
       $scope.profile.intro_edit_mode = false;
       $timeout(function() {
         $scope.loader.hide();
-        $scope.success.show(250, 1000, 'Saved!');
+        $scope.loader.showSuccess('Saved!', 1500);
       }, 500);
     }
 
