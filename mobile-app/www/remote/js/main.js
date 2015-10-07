@@ -233,6 +233,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).
+  state('root.bakery-guru-profile', {
+        url: '/bakery-guru-profile',
+        templateUrl: BASE + 'templates/bakery.guru.profile.html',
+  }).
+  state('root.photo-guru-profile', {
+        url: '/photo-guru-profile',
+        templateUrl: BASE + 'templates/photo.guru.profile.html',
+  }).
   state('root.guru', {
         url: '/guru',
         templateUrl: BASE + 'templates/guru.html',

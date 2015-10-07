@@ -85,6 +85,24 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           }
         }
 
+
+        var getIonicSideMenuOpenRatio = function() {
+            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+            return openRatio;
+        }
+
+        var isSideMenuOpen = function(ratio) {
+            if (!ratio && ratio !== -1) {
+                $scope.sideMenuActive = false;
+            } else {
+                $timeout(function() {
+                    $scope.sideMenuActive = true;
+                }, 250)
+            }
+        }
+
+        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+
         $scope.launchGuruRankingPopup = function() {
 
           var homeCenterComponent = document.getElementById('guru-home');
@@ -188,7 +206,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.initializeProgressBars = function() {
-          var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar');
+          var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
           animateProgressCircle(guruRankingCircle, $scope.user.guru_ranking, true);
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
