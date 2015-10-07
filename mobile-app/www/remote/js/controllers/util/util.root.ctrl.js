@@ -737,19 +737,41 @@ angular.module('uguru.util.controllers')
 
             document.addEventListener("online", function() {
 
-                // console.log('device is online...');
-                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // console.log('Getting user from server');
-                User.getUserFromServer($scope, null, $state);
+                // is this desktop only? 
+                if (!$scope.platform.web)
+                {
+                    return;
+                }
+                
+                $scope.loader.showSuccess('Connection Detected', 2000)
+                $scope.transitionOfflineToOnline = true;
+                $timeout(function() {
+                    if ($scope.transitionOfflineToOnline) {
+                        $scope.loader.showAmbig();
+                        // fuck it if it hasn't been set false they are probably offline
+                        $timeout(function() {
+                            $state.go('^.offline');
+                        }, 5000)
+                    }
+                }, 2000)
+                var transitionToOnline = function() {
+                    $timeout(function() {
+                        $scope.loader.hide()
+                        $scope.transitionOfflineToOnline = null;
+                    }, 1000);
+                    if ($scope.user && $scope.root.vars.guru_mode) {
+                        $state.go('^.guru');
+                    } else {
+                        $state.go('^.home');
+                    }
+                }
+                User.getUserFromServer($scope, transitionToOnline, $state);
 
             }, false);
 
             document.addEventListener("offline", function() {
 
-                // console.log('device is offline...');
-                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // console.log('getting updated user from server...');
-                // User.getUserFromServer($scope);
+                $state.go('^.offline');
 
             }, false);
 
