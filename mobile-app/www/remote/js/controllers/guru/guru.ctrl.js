@@ -217,6 +217,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           var guruHourlyLine = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
           animateProgressLine(guruHourlyLine, $scope.user.current_hourly || 80);
+
         }
 
         var initGuruRankingCircleProgress = function() {
@@ -227,16 +228,36 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return document.querySelectorAll('.progressbar-text').length;
         }
 
+        var checkIsFirstTimeGuruMode = function(appOnboardingObj) {
+          console.log('checking...');
+            if (!appOnboardingObj || appOnboardingObj === {} || appOnboardingObj.guruWelcome) {
+                console.log ('it is the first itme..');
+                appOnboardingObj = {
+                    guruWelcome: true
+                }
+                $localstorage.setObject('appOnboarding', appOnboardingObj);
+                $scope.launchWelcomeGuruPopup();
+            } else {
+              console.log(appOnboardingObj);
+            }
+        }
+
 
         $scope.$on('$ionicView.beforeEnter', function() {
 
-          console.log($scope.user);
-
             if (!haveProgressBarsBeenInitialized()) {
               $timeout(function() {
+
+                //show it after the progress is complete
                 $scope.initializeProgressBars();
+              
               }, 500)
             }
+
+            var appOnboardingObj = $localstorage.getObject('appOnboarding');
+            $timeout(function() {
+              checkIsFirstTimeGuruMode(appOnboardingObj);
+            }, 5000)
 
         });
 
