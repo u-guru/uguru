@@ -7,6 +7,11 @@ var Photo = function()
 	this.ActionSheetButtons = element.all(by.repeater('b in buttons'));
 	this.FinishStep = element(by.css('[ng-click="goToGuruMode()"]'));
 
+	this.UploadPhoto = function (size)
+	{
+	   doc.uploadPhoto('file-input-web',size);
+	};
+
 	this.NextPage =function()
 	{
 		this.FinishStep.click();
@@ -45,4 +50,4 @@ var Photo = function()
 	};
 
 }
-module.exports = Photo;
+module.exports = new Photo();

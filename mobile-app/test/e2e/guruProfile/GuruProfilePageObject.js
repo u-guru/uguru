@@ -28,6 +28,12 @@ var GuruProfile = function()
 	{
 		this.EditModeButton.click();
 	};
+	this.CheckEditModeNotActived = function()
+	{
+		// expect(this.SaveButton.isPresent()).toBe(false,)
+		expect(this.EditModeButton.isPresent()).toBe(true,"Edit Button Support to be present");
+		expect(this.SaveButton.isPresent()).toBe(false,"Save Button Support to not present");
+	};
 	this.DeactiveEditMode = function()
 	{
 		this.SaveButton.click();

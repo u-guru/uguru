@@ -1,11 +1,14 @@
 'use strict';
 var Sidebar = function() {
-	this.sideMenuButton= element(by.css('.header-menu'));
+	this.sideMenuButton= element(by.css('#settings-button'));
 	this.sideMenuList = element(by.css('.side-menu-list.with-icon'))
 	this.UguruPopup = element(by.id('home-uguru-popup'))
 	this.CloseButtonOfPopUp = element.all(by.css('[ng-click="closeWelcomePopup()"]')).first()
 	this.CloseSideMenu = element(by.css('[ng-click="toggleRightSideMenu()"]'));
+	this.ActionSheetOptions = element.all(by.repeater('b in buttons'));
 
+	//Wrapper
+	this.EditPasswordWrapper =  element(by.id('edit-password-uguru-popup'));
 	//Modal
 	this.Modal = element(by.css('.modal-backdrop.active'));
 	this.CloseModalButton = element.all(by.css('.modal-backdrop.active .header-nav'));
@@ -48,12 +51,40 @@ var Sidebar = function() {
 	 this.OpenSignUpModal = function()
 	 {
 	 	doc.checkItemDisplay("SIGN UP",true,'click');
-
 	 }
 
 	 this.OpenLoginModal = function()
 	 {
 	 	doc.checkItemDisplay("LOGIN",true,'click');
+	 };
+	 this.OpenSettingAction = function()
+	 {
+	 	doc.checkItemDisplay("SETTINGS",true,'click');
+	 };
+
+	 this.OpenAccountInformation = function()
+	 {
+	 	this.ActionSheetOptions.then(function(items)
+	 	{
+	 		// browser.wait(EC.elementToBeClickable(items[2]),5000);
+	 		items[2].click();
+	 	});
+	 };
+
+	 this.OpenEditPassword = function()
+	 {
+	 	// doc.waitLoading();
+	 	this.ActionSheetOptions.then(function(items)
+	 	{
+	 		// browser.wait(EC.elementToBeClickable(items[2]),5000)
+	 		items[2].click();
+	 	});
+	 };
+	 
+	 this.checkEditPasswordPop = function()
+	 {
+	 	browser.wait(EC.visibilityOf(this.EditPasswordWrapper),3000,"Password Wrapper no showing up");
+	 	expect(this.EditPasswordWrapper.isDisplayed()).toBe(true);
 	 };
 
 	 this.OpenFAQModal = function()
@@ -85,4 +116,4 @@ var Sidebar = function() {
 	 };
 	
 }
-module.exports = Sidebar;
+module.exports = new Sidebar();

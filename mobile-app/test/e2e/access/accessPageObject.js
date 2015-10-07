@@ -46,4 +46,4 @@ var Access = function()
 
 
 }
-module.exports = Access;
+module.exports = new Access();

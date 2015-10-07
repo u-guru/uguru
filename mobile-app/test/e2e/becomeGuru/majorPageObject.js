@@ -115,7 +115,7 @@ var Major = function()
 
 	 this.SelectMajor = function(index)
 	 {
-	 	doc.newPickList('major-list',index);
+	 	doc.newPickList('#major-list',index);
 	 }
 
 
@@ -135,4 +135,4 @@ var Major = function()
 
 
 }
-module.exports = Major;
+module.exports = new Major();

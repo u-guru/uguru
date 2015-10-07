@@ -37,9 +37,9 @@ var University = function() {
     this.SelectSchool =function(specificIndex)
     {
       if (specificIndex == null)
-        doc.newPickList('school-list')
+        doc.newPickList('#school-list')
       else
-        doc.newPickList('school-list',specificIndex)
+        doc.newPickList('#school-list',specificIndex)
 
     };
     this.checkRepeatingData = function()
@@ -136,4 +136,4 @@ var University = function() {
           });
     };
 };
-module.exports = University;
+module.exports = new University();

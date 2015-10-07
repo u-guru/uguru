@@ -266,7 +266,12 @@ exports.config = {
                             // '../e2e/bugs/error_majorScroll.js',
                             // '../e2e/bugs/error_majorSearch.js',
                             // '../e2e/bugs/error_courseList.js',
-                            '../e2e/bugs/error_profileEditTest.js',
+                            // '../e2e/bugs/error_profileEditTest.js',
+                            // '../e2e/bugs/error_guruProfileButton.js', //imcomplicated 
+                            // '../e2e/bugs/error_sideFacebookButton.js',
+                               // '../e2e/bugs/error_editPassword.js',
+                               '../e2e/bugs/error_loginExistAccount.js',
+                                                        
 
                           ]
 
@@ -335,6 +340,17 @@ exports.config = {
             global.credibility = require('../e2e/guruProfile/creditibilityPageObject.js');
             global.guruprofile = require('../e2e/guruProfile/GuruProfilePageObject.js');
             global.guru = require('../e2e/guruProfile/guruPageObject.js');
+            global.university = require('../e2e/university/universityPageObject.js');
+            global.access = require('../e2e/access/accessPageObject.js');
+            global.major = require('../e2e/becomeGuru/majorPageObject.js');
+            global.course = require('../e2e/becomeGuru/coursePageObject.js');
+            global.category = require('../e2e/becomeGuru/categoryPageObject.js');
+            global.home= require('../e2e/home/homePageObject.js');
+            global.photo = require('../e2e/becomeGuru/photoPageObject.js');
+            global.sidebar= require('../e2e/side/sidebarPageObject.js');
+
+
+
 
             global.EC  = protractor.ExpectedConditions;
             global.localhost = '192.168.0.109'

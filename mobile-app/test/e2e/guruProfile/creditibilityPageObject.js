@@ -10,7 +10,7 @@ var Credibility = function()
 
 	this.OpenCredibilityOptions = function(index)
 	{
-		doc.newPickList('credit-slider',index);
+		doc.newPickList('#credit-slider',index);
 	};
 
 	this.CheckCredibilityOptionTitle = function(title)

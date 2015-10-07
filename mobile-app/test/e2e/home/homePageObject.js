@@ -20,4 +20,4 @@ var Home = function()
 	 	this.guruButton.click();
 	 };
 }
-module.exports = Home;
+module.exports = new Home();

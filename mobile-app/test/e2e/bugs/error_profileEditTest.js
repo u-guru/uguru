@@ -1,16 +1,19 @@
-var University = require('../university/universityPageObject.js');
-var Access = require('../access/accessPageObject.js');
-var Major = require('../becomeGuru/majorPageObject.js');
-var Course = require('../becomeGuru/coursePageObject.js');
-
-var Home= require('../home/homePageObject.js');
+// var University = require('../university/universityPageObject.js');
+// var Access = require('../access/accessPageObject.js');
+// var Major = require('../becomeGuru/majorPageObject.js');
+// var Course = require('../becomeGuru/coursePageObject.js');
+// var Category = require('../becomeGuru/categoryPageObject.js');
+// var Home= require('../home/homePageObject.js');
+// var Photo = require('../becomeGuru/photoPageObject.js');
+// var Account= require('../side/accountPageObject.js');
+// var Sidebar= require('../side/sidebarPageObject.js');
 
 describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is applied to the profile page',function()
 {
-	var university = new University();
-    var access  = new Access();
-	var major = new Major();
-	var home = new Home();
+	// var university = new University();
+ //    var access  = new Access();
+	// var major = new Major();
+	// var home = new Home();
 
 	describe('@Workflow : access page', function () {
 		// var accessInput = element(by.id("access-code-bar"));
@@ -19,8 +22,9 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 			beforeAll(function()
 			{
 	            // browser.get("http://localhost:8100/#/");
-	            // browser.refresh();
-	            browser.get("http://"+localhost+":8100/#/university");
+		            browser.refresh();
+	            // if(startButton.isPresent() === false)
+		            // browser.get("http://"+localhost+":8100/#/university");
 			});
 			it("Enter Access Code : cool ",function()
 			{
@@ -40,8 +44,8 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 		it("choose a university",function()
 		{
 		//	doc.pickList('university in initialUniversities');
-			doc.newPickList('school-list')
-
+			// doc.newPickList('school-list')
+			university.SelectSchool();
 		});
 		it("check the current position",function()
 		{
@@ -73,7 +77,7 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 	});
 
 	describe('@Workflow : Major page', function () {
-		var major = new Major();
+		// var major = new Major();
 
 		it ('Start becomeGuru process',function()
 		{
@@ -92,7 +96,7 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 
 	});
 	describe('@Workflow : Course page', function () {
-		var course = new Course();
+		// var course = new Course();
 
 		describe('Check Data & Go Next Section',function()
 		{
@@ -108,34 +112,33 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 		});
 
 	});
-	var Category = require('../becomeGuru/categoryPageObject.js');
 
 	describe('@Workflow : category page', function () {
-		var category = new Category();
+		// var category = new Category();
 		it('Next page',function()
 		{
 			category.GoToPhotoPage();
 		});
 	});
 
-	var Photo = require('../becomeGuru/photoPageObject.js');
 
 	describe('@Workflow : photo test', function () {
-		var photo = new Photo();
+		// var photo = new Photo();
 
-		it('Waiting to received the message',function()
+		// it('Waiting to received the message',function()
+		// {
+		// 	photo.NextPage();
+		// });
+		it('Upload Photo',function()
 		{
-			photo.NextPage();
+			photo.UploadPhoto('small');
 		});
 	});
 
-	var Account= require('../side/accountPageObject.js');
-	var Sidebar= require('../side/sidebarPageObject.js');
-
 	describe('@Workflow : Sign Up',function()
 	{
-		var account = new Account();
-		var sidebar = new Sidebar();
+		// var account = new Account();
+		// var sidebar = new Sidebar();
 
 		it('Launch Profile',function()
 		{
@@ -173,43 +176,53 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 			it('Check Side Menu is not present',function()
 			{
 				var side = element(by.css('.menu.menu-right'));
-				side.isDisplayed().then(function(value)
+				// side.isDisplayed().then(function(value)
+				// {
+				// 	if(value == true)
+				// 	{
+				// 		expect(value).toBe(false,"Side Menus shouldn't display");
+				// 		sidebar.FindSideButton("STUDENT MODE");
+				// 		element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).click();
+				// 		element(by.css('.view-container')).click();
+				// 	}	
+				// });
+				var settingsLink = element.all(by.css('ion-view'));
+				browser.sleep(5000);
+				settingsLink.then(function(items)
 				{
-					if(value == true)
-					{
-						expect(value).toBe(false,"Side Menus shouldn't display");
-						sidebar.FindSideButton("STUDENT MODE");
-						element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).click();
-						element(by.css('.view-container')).click();
-					}	
+					expect(items.length).toBe(0);
+					// browser.wait(EC.elementToBeClickable(items[2]), 5000); //wait for the element to become clickable
+					browser.wait(EC.visibilityOf(items[3]), 5000); //wait for the element to become clickable
+					items[3].click();
 				});
+				browser.sleep(10000);
 			});
 			
 		});	
 	});
 
-	describe('Edit Mode is not Enable',function()
-	{
-		it('Click profile tab',function()
-		{
-			doc.tabBar('guru-tab-bar',1);
-		});		
-		it('Check Edit is disabled',function()
-		{
-			expect(element(by.id('btn-edit-profile')).isPresent()).toBe(true,"Edit Button Support to be present");
-			expect(element(by.id('btn-save-profile')).isPresent()).toBe(false,"Save Button Support to not present");
-		});
-	});
-	describe('Check data from becomeGuru is applied to profile',function()
-	{
-		it('Check Major has something',function()
-		{
-			var objList = element.all(by.css('#profile-major li'));
-			objList.then(function(items)
-			{
-				expect(items.length>1).toBe(true,"Nothing is Add to profile");
-			});
-		});		
-	});
+	// describe('Edit Mode is not Enable',function()
+	// {
+	// 	it('Click profile tab',function()
+	// 	{
+	// 		doc.tabBar('guru-tab-bar',1);
+	// 	});		
+	// 	it('Check Edit is disabled',function()
+	// 	{
+	// 		expect(element(by.id('btn-edit-profile')).isPresent()).toBe(true,"Edit Button Support to be present");
+	// 		expect(element(by.id('btn-save-profile')).isPresent()).toBe(false,"Save Button Support to not present");
+	// 	});
+	// });
+	// describe('Check data from becomeGuru is applied to profile',function()
+	// {
+	// 	it('Check Major has something',function()
+	// 	{
+	// 		var objList = element.all(by.css('#profile-major li'));
+	// 		objList.then(function(items)
+	// 		{
+	// 			expect(items.length>1).toBe(true,"Nothing is Add to profile");
+	// 		});
+	// 	});		
+	// });
 
 });

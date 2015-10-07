@@ -70,7 +70,7 @@ var Course = function()
 	};
 	 this.SelectCourse = function(index)
 	 {
-	 	doc.newPickList('courses-list',index);
+	 	doc.newPickList('#courses-list',index);
 	 };
 
 
@@ -97,4 +97,4 @@ var Course = function()
   
 
 }
-module.exports = Course
+module.exports = new Course();

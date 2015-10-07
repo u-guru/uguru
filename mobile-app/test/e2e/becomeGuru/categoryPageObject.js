@@ -16,12 +16,12 @@ var Category = function()
 
 	this.ChooseSkillSection = function()
 	{
-		doc.newPickList('skills-list',index);
+		doc.newPickList('#skills-list',index);
 	};
 
 	this.SelectSkill = function(index)
 	{
-		doc.newPickList('skills-list',index);
+		doc.newPickList('#skills-list',index);
 	};
 
 	this.SkillIsExist = function()
@@ -68,4 +68,4 @@ var Category = function()
 		});
     };
 }
-module.exports = Category;
+module.exports = new Category();
