@@ -53,6 +53,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     console.log("throttling by directive!");
   }
 
+  $scope.testAlert = function() {
+    confirm("Can you click on me?");
+  }
+
+
   $scope.checkAccessCode = function(code) {
 
     if ($scope.keyboardExists && !$scope.redeemRecentlyPressed) {
