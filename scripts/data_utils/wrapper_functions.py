@@ -1,9 +1,8 @@
 import requests, json
-from time import sleep
 
 def uguruAPI(arg='', _json=None, _type='get'):
 	if arg: arg = '/' + arg 
-	BASE_URL = 'https://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3/universities%s' % arg
+	BASE_URL = 'http://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3/universities%s' % arg
 	print BASE_URL
 	if _type == 'get':
 		return json.loads(requests.get(BASE_URL).text)
@@ -28,20 +27,22 @@ def getUniversity(uni_id):
 	return university
 
 def updateUniversity(uni_dict):
+	
 	university = uguruAPI(str(uni_dict['id']), uni_dict, 'put')
 	print university
 	return university
 
-def updateEmailsForMailgun():
-	from data_utils import updateMailgunJsonWithFreshData
-	mailgun_universities = updateMailgunJsonWithFreshData(1000)
-	for university in mailgun_universities:
-		payload = {
-			'id':university.get('id'),
-			'num_emails' : university.get('count')
-			}
-		updateUniversity(payload)
-		sleep(1)
+def getUnsantisedAmountOfDepartments():
+	departments_arr = uguruAPI('us_news')
+	index = 0
+	for departments in departments_arr:
+		departments_info = departments['departments_sanitized']
+		if departments_info == None:
+			index += 1
+	print index
+	return index
+
+
 
 
 if __name__ == '__main__':
@@ -58,9 +59,9 @@ if __name__ == '__main__':
     	getUniversity(args[2])
 
     if args[1] in ['update-one', '-uo']:
-    	updateUniversity({'id':2732, 'num_emails':10 })
-
-    if args[1] in ['update-emails', '-ue']:
-		updateEmailsForMailgun()    	
+    	pass
+    if args[1] in ['unsantised-department','-ud']:
+    	getUnsantisedAmountOfDepartments()
+    	#updateUniversity({'id':2732, 'num_emails':10 })
 
 

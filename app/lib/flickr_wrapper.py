@@ -19,7 +19,7 @@ def search_university_response_api(university):
         tag_mode='all',
         content_type=1,
         text=university.name,
-        # lat=university.latitude,
+        # lat=university.latitude,You as
         # lon=university.longitude,
         # radius=20,
         sort='relevance',
@@ -46,6 +46,8 @@ def process_returned_photos(photos_arr):
     return result_photos
 
 
+if __name__ == "__main__":
+    generate_flickr_url()
 
 
 # print len(processed_arr)

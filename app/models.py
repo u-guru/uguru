@@ -603,7 +603,7 @@ class University(Base):
 
     def sanitizeCourses(self):
         count = 0
-        if course in self.courses:
+        for course in self.courses:
             if course.name or course.short_name or course.full_name:
                 count += 1
         if count == len(self.courses):
@@ -612,7 +612,7 @@ class University(Base):
 
     def sanitizeDepartments(self):
         count = 0
-        if department in self.departments:
+        for d in self.departments:
             if d.code or d.abbr or d.name or d.short_name or d.title or d.variations:
                 count += 1
         if count == len(self.departments):
