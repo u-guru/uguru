@@ -39,97 +39,97 @@ angular.module('uguru.util.controllers')
 
     //temporary --> Learn resolves && inject properly
     //** Start University Functions ** //
-    var queryTimeout = false;
-    var emptyTimeout = false;
-    $scope.query = function(input) {
-      if(!queryTimeout) {
-        queryTimeout = true;
-        //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
-        $scope.universities = UniversityMatcher.cachedMatch(input);
-        $timeout(function() {queryTimeout = false;}, 600);
-      }
-      else if(input.length === 0) {
-        if(!emptyTimeout) {
-          emptyTimeout = true;
-          $scope.universities = UniversityMatcher.cachedMatch(input);
-          $timeout(function() {emptyTimeout = false;}, 600);
-        }
-      }
+    // var queryTimeout = false;
+    // var emptyTimeout = false;
+    // $scope.query = function(input) {
+    //   if(!queryTimeout) {
+    //     queryTimeout = true;
+    //     //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
+    //     $scope.universities = UniversityMatcher.cachedMatch(input);
+    //     $timeout(function() {queryTimeout = false;}, 600);
+    //   }
+    //   else if(input.length === 0) {
+    //     if(!emptyTimeout) {
+    //       emptyTimeout = true;
+    //       $scope.universities = UniversityMatcher.cachedMatch(input);
+    //       $timeout(function() {emptyTimeout = false;}, 600);
+    //     }
+    //   }
 
-    }
+    // }
 
-    var schoolList = document.querySelectorAll('#school-list')[0];
+    // var schoolList = document.querySelectorAll('#school-list')[0];
 
-    $scope.search_text = '' || ($scope.user.university && $scope.user.university.name);
-    $scope.location = false;
-    $scope.universities = University.getTargetted();
+    // $scope.search_text = '' || ($scope.user.university && $scope.user.university.name);
+    // $scope.location = false;
+    // $scope.universities = University.getTargetted();
 
-    sortByRank(University.getTargetted());
-    $scope.limit = 10;
-    $scope.increaseLimit = function() {
-      if($scope.limit < $scope.universities.length) {
-        $scope.limit += 10;
-      }
-    }
+    // sortByRank(University.getTargetted());
+    // $scope.limit = 10;
+    // $scope.increaseLimit = function() {
+    //   if($scope.limit < $scope.universities.length) {
+    //     $scope.limit += 10;
+    //   }
+    // }
 
-    function sortByRank(list) {
-      function compareRank(a, b) {
-        if (a.rank < b.rank)
-          return -1;
-        if (a.rank > b.rank)
-          return 1;
+    // function sortByRank(list) {
+    //   function compareRank(a, b) {
+    //     if (a.rank < b.rank)
+    //       return -1;
+    //     if (a.rank > b.rank)
+    //       return 1;
 
-        return 0;
-      }
-      return list.sort(compareRank);
-    }
+    //     return 0;
+    //   }
+    //   return list.sort(compareRank);
+    // }
 
-    $scope.universitySelected = function(university, $event) {
+    // $scope.universitySelected = function(university, $event) {
 
-      //if user is switching universities
-      if ($scope.user.university_id
-          && university.id !== $scope.user.university_id
-          && !confirm('Are you sure? Your current courses will be deactivated'))
-      {
-          return;
-      }
+    //   //if user is switching universities
+    //   if ($scope.user.university_id
+    //       && university.id !== $scope.user.university_id
+    //       && !confirm('Are you sure? Your current courses will be deactivated'))
+    //   {
+    //       return;
+    //   }
 
-      //start fetching majors right now
-      $scope.getMajorsForUniversityId(university.id);
-      $scope.getCoursesForUniversityId(university.id);
+    //   //start fetching majors right now
+    //   $scope.getMajorsForUniversityId(university.id);
+    //   $scope.getCoursesForUniversityId(university.id);
 
-      $scope.loader.show();
-      $scope.user.university_id = university.id;
-      $scope.user.university = university;
-      $scope.search_text = '';
+    //   $scope.loader.show();
+    //   $scope.user.university_id = university.id;
+    //   $scope.user.university = university;
+    //   $scope.search_text = '';
 
-      //update user to locat storage
-      $scope.rootUser.updateLocal($scope.user);
+    //   //update user to locat storage
+    //   $scope.rootUser.updateLocal($scope.user);
 
-      var payload = {
-        'university_id': $scope.user.university_id
-      };
+    //   var payload = {
+    //     'university_id': $scope.user.university_id
+    //   };
 
-      //save university
-      var postUniversitySelectedCallback = function() {
-          $timeout(function() {
+    //   //save university
+    //   var postUniversitySelectedCallback = function() {
+    //       $timeout(function() {
 
-            UniversityMatcher.clearCache();
-            $scope.loader.hide();
+    //         UniversityMatcher.clearCache();
+    //         $scope.loader.hide();
 
 
-            if ($scope.universityModal && $scope.universityModal.isShown()) {
-              $scope.loader.showSuccess('University Saved', 1500);
-              $timeout(function() {
-                $scope.removeLaunchUniversityModal();
-              }, 500);
+    //         if ($scope.universityModal && $scope.universityModal.isShown()) {
+    //           $scope.loader.showSuccess('University Saved', 1500);
+    //           $timeout(function() {
+    //             $scope.removeLaunchUniversityModal();
+    //           }, 500);
 
-            }
-          }, 1000);
-      }
+    //         }
+    //       }, 1000);
+    //   }
 
-      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
-    }
+    //   $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+    // }
 
 //use for abstract
     $scope.openAdmin = function() {
@@ -241,32 +241,25 @@ angular.module('uguru.util.controllers')
 
       uTracker.track(tracker, 'Privacy Modal');
 
-      var options = {
-        "direction"        : "up", // 'left|right|up|down', default 'left' (which is like 'next')
-        "duration"         :  400, // in milliseconds (ms), default 400
-        "slowdownfactor"   :   1000, // overlap views (higher number is more) or no overlap (1), default 4
-        "iosdelay"         :  60, // ms to wait for the iOS webview to update before animation kicks in, default 60
-        "androiddelay"     :  70, // same as above but for Android, default 70
-        "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
-        "fixedPixelsTop"   :   0, // the number of pixels of your fixed header, default 0 (iOS and Android)
-        "fixedPixelsBottom":   0 // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
-      };
+      // var options = {
+      //   "direction"        : "up", // 'left|right|up|down', default 'left' (which is like 'next')
+      //   "duration"         :  400, // in milliseconds (ms), default 400
+      //   "slowdownfactor"   :   1000, // overlap views (higher number is more) or no overlap (1), default 4
+      //   "iosdelay"         :  60, // ms to wait for the iOS webview to update before animation kicks in, default 60
+      //   "androiddelay"     :  70, // same as above but for Android, default 70
+      //   "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
+      //   "fixedPixelsTop"   :   0, // the number of pixels of your fixed header, default 0 (iOS and Android)
+      //   "fixedPixelsBottom":   0 // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
+      // };
       
-      $state.go('privacy');
-      window.plugins.nativepagetransitions.slide(
-              options,
-              function (msg) {console.log("success: " + msg)}, // called when the animation has finished
-              function (msg) {alert("error: " + msg)} // called in case you pass in weird values
-            );
+      // $state.go('privacy');
+      // window.plugins.nativepagetransitions.slide(
+      //         options,
+      //         function (msg) {console.log("success: " + msg)}, // called when the animation has finished
+      //         function (msg) {alert("error: " + msg)} // called in case you pass in weird values
+      //       );
 
-      //$scope.privacyModal.show();
-    }
-
-    $scope.closeModal = function(modal) {
-      switch(modal) {
-        case 'privacy':
-          //Animation.
-      }
+      $scope.privacyModal.show();
     }
 
 

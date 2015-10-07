@@ -24,8 +24,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
   $ionicSlideBoxDelegate, PerformanceService, ThrottleService) {
 
-  DeviceService.readyDevice();
-
   PerformanceService.testNetworkSpeed();
 
   // var list = UniversityMatcher.list;

@@ -22,7 +22,8 @@ function DeviceService( $cordovaNgCardIO,
 		isMobile: isMobile,
 		isWeb: isWeb,
     ios: iOSService,
-    getInfo: getInfo
+    getInfo: getInfo,
+    checkUpdates: checkUpdates
 	}
 
 	function isMobile() {
@@ -34,12 +35,11 @@ function DeviceService( $cordovaNgCardIO,
 	}
   // returns object
 	function getDevice() {
-		console.log("getDevice() returns: " + ionic.Platform.device());
 		return ionic.Platform.device();
 	}
   // returns string value
   function getPlatform() {
-    console.log("getPlatform() returns: " + ionic.Platform.platform());
+    //console.log("getPlatform() returns: " + ionic.Platform.platform());
     return ionic.Platform.platform();
   }
 
@@ -71,47 +71,36 @@ function DeviceService( $cordovaNgCardIO,
 
   //doesn't work for emulators!
 	function readyDevice(callback) {
-    var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
-    if(app) {
-      console.log("Running on mobile");
 
-      document.addEventListener("deviceready", onDeviceReady);
-    } else {
-      console.log("Detected desktop browser");
-      if (isMobile() && mobileOS) {
-        onDeviceReady();
-      }
-
+    //seems like document URL still has an http even if running inside the app, need to confirm
+    //var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+    //console.log("document.URL: " + document.URL);
+    if (isMobile() ) {
+      onDeviceReady();
     }
 
 	}
 
 	function onDeviceReady(callback) {
+    console.log("DeviceService.onDeviceReady()");
 		//checkUpdates();
 
+    //Ugh --> they overroad the native js OnDOMContentLoaded ...
+    ionic.DomUtil.ready(function(){
+      if(navigator.splashscreen) {
 
+        //offset is to avoid the sidebar showing last second before
+        $timeout(function() {
+          console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
+          navigator.splashscreen.hide();
+        }, 2000);
+      }
+    })
 
-        //Ugh --> they overroad the native js OnDOMContentLoaded ...
-        ionic.DomUtil.ready(function(){
-          if(navigator.splashscreen) {
-
-            //offset is to avoid the sidebar showing last second before
-            $timeout(function() {
-              console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
-              navigator.splashscreen.hide();
-            }, 3000);
-          }
-        })
-
-        if(navigator.splashscreen) {
-          console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
-          navigator.splashscreen.show();
-        }
-
-        var posOptions = {
-      		timeout: 2000,
-  			enableHighAccuracy: false, //may cause high errors if true
-        }
+    if(navigator.splashscreen) {
+      console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
+      navigator.splashscreen.show();
+    }
 
 		if(isMobile()) {
 
@@ -142,7 +131,9 @@ function DeviceService( $cordovaNgCardIO,
       console.log("running local: skipping over checkUpdates");
       return;
     }
-
+    console.log("did not detect local, checking for updates");
+    // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+    //local_version = $localstorage.getObject('version');
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
           function(response) {

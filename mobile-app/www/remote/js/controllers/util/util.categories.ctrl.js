@@ -22,13 +22,14 @@ angular.module('uguru.util.controllers')
     Category, Utilities) {
 
     if (!img_base || !img_base.length) {
-      $scope.categories_img_base = 'remote/';
+      categories_img_base = 'remote/';
     } else {
-      $scope.categories_img_base = img_base + 'remote/';
+      categories_img_base = img_base + 'remote/';
     }
 
 
-    $scope.categories = Utilities.sortArrObjByKey(Category.categories, 'name');
+    //$scope.categories = Utilities.sortArrObjByKey(Category.categories, 'name');
+    
     $scope.active_category = {name:'Select category', active:false};
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
@@ -49,42 +50,14 @@ angular.module('uguru.util.controllers')
 
       if($scope.active_category!==category){
         $scope.active_category = category;
-        updateMainBackground($scope.categories_img_base + category.background_url);
+        updateMainBackground(category.bg_url);
       }
 
       uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name
       });
       $scope.active_category.active = true;
-
-      if(category.name === 'Photography') {
-
-
-        console.log("height: " + (window.innerHeight / 3) );
-          var options = {
-            "direction"        : "up", // 'left|right|up|down', default 'left' (which is like 'next')
-            "duration"         :  2500, // in milliseconds (ms), default 400
-            "slowdownfactor"   :   1000, // overlap views (higher number is more) or no overlap (1), default 4
-            "iosdelay"         :  60, // ms to wait for the iOS webview to update before animation kicks in, default 60
-            "androiddelay"     :  70, // same as above but for Android, default 70
-            "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
-            "fixedPixelsTop"   :  189, // the number of pixels of your fixed header, default 0 (iOS and Android)
-            "fixedPixelsBottom":   0 // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
-          };
-          
-          $state.go('.photography');
-          window.plugins.nativepagetransitions.slide(
-                  options,
-                  function (msg) {console.log("success: " + msg)}, // called when the animation has finished
-                  function (msg) {alert("error: " + msg)} // called in case you pass in weird values
-                );
-
-
-
-
-      } else {
-        $scope.categorySkillsModal.show();  
-      }
+      $scope.categorySkillsModal.show();  
       
     }
 
@@ -123,31 +96,52 @@ angular.module('uguru.util.controllers')
       return guruCategoryCourses;
     }
 
-    $scope.updateCategoryCount = function(category, subcategory, index) {
+    // $scope.updateCategoryCount = function(category, subcategory, index) {
 
-      category.active_subcategories += 1;
-      Category.categories = $scope.categories;
-      $localstorage.setObject('categories', $scope.categories);
+    //   category.active_subcategories += 1;
+    //   Category.categories = $scope.categories;
+    //   $localstorage.setObject('categories', $scope.categories);
 
-      if (subcategory.active) {
-        addGuruSubcategory(subcategory);
-      }
-      //set to false
-      else {
-        removeGuruSubcategory(subcategory);
-      }
+    //   if (subcategory.active) {
+    //     addGuruSubcategory(subcategory);
+    //   }
+    //   //set to false
+    //   else {
+    //     removeGuruSubcategory(subcategory);
+    //   }
+    // }
 
-
+    $scope.updateCategoryCount = function(category, skill, index) {
+      if (category.name === 'Academic Courses'
+        && confirm('Are you sure? This will remove ' + skill.name + ' from your courses'))
+      {
+        guru_courses = $scope.user.guru_courses;
+        category.skills.splice(index, index + 1);
+        for (var i = 0; i < $scope.user.guru_courses.length; i ++) {
+          var guru_course = guru_courses[i];
+          if (skill.id === guru_course.id) {
+            $scope.user.guru_courses.splice(i, i+1);
+          }
+        }
+        skill.active = false;
+        category.active_skills_count += skill.active ? 1 : -1;
+        return;
+    } else {
+      category.active_skills_count += skill.active ? 1 : -1;
+      $scope.user.categories[category.db_name][skill.name] = skill.active;
+      $localstorage.setObject('user', $scope.user);
     }
+  }
+
+
     var addGuruSubcategory = function(subcategory) {
       $scope.user.updateAttr('add_guru_subcategory', $scope.user, subcategory, null, $scope);
     }
 
+
     var removeGuruSubcategory = function(subcategory) {
       $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
     }
-
-
 
   }
 

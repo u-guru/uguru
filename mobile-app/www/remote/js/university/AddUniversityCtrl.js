@@ -22,9 +22,8 @@ angular.module('uguru.util.controllers', ['sharedServices'])
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, UniversityMatcher, $ionicSlideBoxDelegate,
   DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache) {
-  console.log("preloading slide transitions");
-  AnimationService.initSlide();
-  console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
+
+  //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
@@ -40,17 +39,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   //only shows back button local
   $scope.showBackButton = false || LOCAL;
-
-  // $timeout(function(), {
-  //   $templateCache.get(BASE + 'templates/home.html');
-  //   $templateCache.get(BASE + 'templates/become.guru.html');
-  //   $templateCache.get(BASE + 'templates/majors.html');
-  //   $templateCache.get(BASE + 'templates/become.guru.courses.html');
-  //   $templateCache.get(BASE + 'templates/become.guru.skills.html');
-  //   $templateCache.get(BASE + 'templates/become.guru.photo.html');
-  // }, 500);
-  
-
   // Measure app load times
   var appLoadTime;
   var appStartTime;
@@ -236,7 +224,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   function getGPS() {
     $scope.isLocationActive = true;
-    Geolocation.getLocation($scope);
+    Geolocation.getLocation($scope, $scope.universitiesSorted);
+    //Geolocation.sortByDistance($scope.universitiesSorted);
+    
   };
 
 

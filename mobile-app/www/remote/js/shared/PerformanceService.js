@@ -87,8 +87,8 @@ function PerformanceService(uTracker, DeviceService, DownloadService) {
 
 	function testNetworkSpeed() {
 
-		console.log("testing network speed...");
-		DownloadService.downloadFile("https://placeimg.com/1000/1000/nature");
+		//console.log("testing network speed...");
+		DownloadService.downloadFile("https://placeimg.com/800/800/nature");
 
 
 	}

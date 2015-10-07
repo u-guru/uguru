@@ -266,13 +266,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.$on('$ionicView.enter', function() {
           
           $timeout(function() {
-
-            RankingService.options.previousGuruRanking = $scope.user.current_guru_ranking;
-            RankingService.options.currentGuruRanking = RankingService.calcRanking($scope.user);
-            
-            if (RankingService.options.currentGuruRanking !== RankingService.options.previousGuruRanking) {
-              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking + 20);
-            }
+            //commented out until it's 100% so won't get in the way of other branches pulling mine.
+            // if (RankingService.recentlyUpdated) {
+            //   RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
+            // }
 
           }, 1000)
 

@@ -329,7 +329,7 @@ angular.module('uguru.user', [])
 
             var guru_ratings = user.guru_ratings;
             user.guru_avg_rating = calcAverage(guru_ratings);
-            console.log()
+            
             if (!user.guru_avg_rating) {
                 user.guru_avg_rating = 0;
             }
@@ -1382,7 +1382,7 @@ angular.module('uguru.user', [])
                     .customPUT(JSON.stringify(payload))
                     .then(function(device){
                         console.log('device returned from server');
-                        console.log(JSON.stringify(device));
+                        //console.log(JSON.stringify(device));
                         $scope.user.current_device = device;
                         $scope.user.push_notifications = $scope.user.current_device.push_notif_enabled;
                         console.log('user push notifications are now', $scope.user.push_notifications);

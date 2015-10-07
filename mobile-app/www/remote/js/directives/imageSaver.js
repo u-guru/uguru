@@ -58,7 +58,7 @@ angular.module('uguru.directives')
 						useSavedFile();
 					},
 					function(error) {
-						console.log("Error downloading image. Code: " + error.code);
+						//console.log("Error downloading image. Code: " + error.code);
 					},
 					// Boolean for trustAllHosts which accepts all security certs and is useful
 					// since Android rejects self-signed security certs.

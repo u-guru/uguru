@@ -21,7 +21,6 @@ angular.module('uguru.util.controllers')
       $scope.user.majors = [];
     }
 
-    
 
     $scope.keyboard_force_off = false;
 
@@ -36,7 +35,6 @@ angular.module('uguru.util.controllers')
       }
     };
 
-    // $scope.majors = $scope.static.majors || GetMajorsList();
 
     $scope.removeMajor = function(major, index) {
       if (!confirm('Remove ' + major.name + '?')) {

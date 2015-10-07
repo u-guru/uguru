@@ -24,8 +24,7 @@ angular.module('uguru.guru.controllers')
     $ionicViewSwitcher, $window, University, uTracker, AnimationService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
-    // $scope.majors = $scope.static.majors;
-    // $scope.courses = $scope.static.courses;
+
     $scope.search_text = '';
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
@@ -92,8 +91,6 @@ angular.module('uguru.guru.controllers')
                       $localstorage.setObject('courses', courses);
                       $scope.root.vars.courses = courses;
                       $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
-                      $scope.static.courses = $scope.root.vars.courses;
-                      $scope.static.popular_courses = $scope.root.vars.popular_courses;
 
                 },
                   function(error) {
