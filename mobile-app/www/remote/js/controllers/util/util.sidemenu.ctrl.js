@@ -394,7 +394,7 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
         callbackSuccess = function() {
           $scope.loader.hide();
-          $scope.success.show(0, 1500, 'Saved!');
+          $scope.loader.showSuccess('Saved!', 1500);
         }
 
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
@@ -435,7 +435,7 @@ angular.module('uguru.util.controllers')
               return;
             }
             $scope.user.updateAttr('email', $scope.user, $scope.user.email, null, $scope);
-            $scope.success.show(0, 1000, 'Saved!');
+            $scope.loader.showSuccess('Saved!', 1500);
             var uguruPopup = document.getElementById('edit-email-uguru-popup');
             uguruPopup.classList.remove('show');
         })
@@ -468,7 +468,7 @@ angular.module('uguru.util.controllers')
               return;
             }
             $scope.user.updateAttr('email', $scope.user, $scope.user.email , null, $scope);
-            $scope.success.show(0, 1000, 'Saved!');
+            $scope.loader.showSuccess('Saved!', 1500);
             var uguruPopup = document.getElementById('edit-email-uguru-popup');
             uguruPopup.classList.remove('show');
         }
@@ -521,7 +521,7 @@ angular.module('uguru.util.controllers')
                 var successCallback = function() {
 
                   $scope.loader.hide();
-                  $scope.success.show(0, 1000, 'Password Successfully Changed');
+                  $scope.loader.showSuccess('Password Successfully Changed', 1500);
                   $timeout(function() {
                     var uguruPopup = document.getElementById('edit-password-uguru-popup');
                     uguruPopup.classList.remove('show');
@@ -531,7 +531,7 @@ angular.module('uguru.util.controllers')
 
                 var failureCallback = function(resp) {
                   $scope.loader.hide();
-                  $scope.success.show(0, 1000, 'Something went wrong ... Please contact support!');
+                  $scope.loader.showSuccess('Something went wrong ... Please contact support!', 1500);
                   $timeout(function() {
                     var uguruPopup = document.getElementById('edit-password-uguru-popup');
                     uguruPopup.classList.remove('show');
@@ -577,7 +577,7 @@ angular.module('uguru.util.controllers')
               return;
             }
             $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
-            $scope.success.show(0, 1000, 'Saved!');
+            $scope.loader.showSuccess('Saved!', 1500);
             var uguruPopup = document.getElementById('edit-name-uguru-popup');
             uguruPopup.classList.remove('show');
         })
@@ -611,7 +611,7 @@ angular.module('uguru.util.controllers')
               return;
             }
             $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
-            $scope.success.show(0, 1000, 'Saved!');
+            $scope.loader.showSuccess('Saved!', 1500);
             var uguruPopup = document.getElementById('edit-name-uguru-popup');
             uguruPopup.classList.remove('show');
         }

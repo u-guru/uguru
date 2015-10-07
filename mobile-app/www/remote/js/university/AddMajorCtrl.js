@@ -21,31 +21,7 @@ angular.module('uguru.util.controllers')
       $scope.user.majors = [];
     }
 
-    $scope.backToStudentEditProfile = function(is_saved) {
-
-      if (is_saved) {
-        $scope.success.show(0, 1500);
-      } else {
-        $scope.loader.show();
-      }
-
-      if ($scope.root.vars.guru_mode) {
-
-        $state.go('^.guru-profile');
-
-      } else {
-
-        $timeout(function() {
-          $ionicSideMenuDelegate.toggleRight();
-        }, 500);
-
-      }
-
-      $timeout(function() {
-        $scope.loader.hide();
-
-      }, 500);
-    }
+    
 
     $scope.keyboard_force_off = false;
 
@@ -75,7 +51,7 @@ angular.module('uguru.util.controllers')
         uTracker.track(tracker, 'Major Removed', {
           '$Major': major.name
         });
-        $scope.success.show(0, 2000, major.name + ' successfully removed');
+        $scope.loader.showSuccess(major.name + ' successfully removed', 2000);
       }
 
 
@@ -207,7 +183,6 @@ angular.module('uguru.util.controllers')
     //$scope.majors = University.majors || getMajorsForUniversityId();
 
     $scope.majors = University.majors || getMajorsBecomeGuru();
-    console.log('majors', $scope.majors.slice(0, 10));
     $scope.removeUserMajorsFromMaster();
 
     // $timeout(function() {$scope.removeEmptyMajors();}, 1000)
