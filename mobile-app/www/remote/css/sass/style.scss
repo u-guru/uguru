@@ -1605,6 +1605,7 @@ section {
 			.ion-navigate.activated,
 			.ion-navigate.location-active {
 				@include opacity(1);
+				color: $cerise;
 			}
 		}
 	}

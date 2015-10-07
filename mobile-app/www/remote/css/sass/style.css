@@ -1458,7 +1458,8 @@ section {
     .university-view header .side-icon .ion-navigate.activated,
     .university-view header .side-icon .ion-navigate.location-active {
       filter: alpha(opacity=100);
-      opacity: 1; }
+      opacity: 1;
+      color: #DB1988; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
     .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
