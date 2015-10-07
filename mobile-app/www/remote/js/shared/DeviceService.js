@@ -6,11 +6,13 @@ angular
 	'iOSService',
 	'WindowsService',
   '$timeout',
+  'Geolocation',
+  'University',
 	DeviceService
 	]);
 
-function DeviceService( $cordovaNgCardIO,
-	AndroidService, iOSService, WindowsService, $timeout) {
+function DeviceService($cordovaNgCardIO,
+	AndroidService, iOSService, WindowsService, $timeout, Geolocation, University) {
 
 	return {
 		readyDevice: readyDevice,
@@ -69,19 +71,19 @@ function DeviceService( $cordovaNgCardIO,
   }
 
 
-  //doesn't work for emulators!
-	function readyDevice(callback) {
 
-    //seems like document URL still has an http even if running inside the app, need to confirm
-    //var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
-    //console.log("document.URL: " + document.URL);
+	function readyDevice(scope) {
+
+    var userAgent = navigator.userAgent;
+    console.log("userAgent: " + userAgent);
+    
     if (isMobile() ) {
-      onDeviceReady();
+      onDeviceReady(scope);
     }
 
 	}
 
-	function onDeviceReady(callback) {
+	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
 		//checkUpdates();
 
@@ -103,6 +105,7 @@ function DeviceService( $cordovaNgCardIO,
     }
 
 		if(isMobile()) {
+      Geolocation.getLocation(scope);
 
 	 		var mobileOS = getPlatform().toLowerCase();
 		  	switch(mobileOS) {
@@ -120,9 +123,9 @@ function DeviceService( $cordovaNgCardIO,
 		  	console.log("detected platform: " + getPlatform());
 
 		}
-		if(typeof callback === 'function') {
-			callback();
-		}
+		// if(typeof callback === 'function') {
+		// 	callback();
+		// }
 	}
 	function checkUpdates() {
 

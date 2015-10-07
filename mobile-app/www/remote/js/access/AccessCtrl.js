@@ -24,6 +24,12 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
   $ionicSlideBoxDelegate, PerformanceService, ThrottleService) {
 
+  // if(AccessService.validate()){
+  //   $timeout(function() {
+  //     $ionicSlideBoxDelegate.next();
+  //   }, 0);  
+  // }
+
   PerformanceService.testNetworkSpeed();
 
   // var list = UniversityMatcher.list;
