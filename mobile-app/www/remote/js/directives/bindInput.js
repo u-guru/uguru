@@ -1,5 +1,5 @@
 angular.module('uguru.directives')
-.directive('bindInput', function($timeout, Utilities, Major) {
+.directive('bindInput', function($timeout, Utilities, Major, Course, University) {
 
 	function link($scope, elem, attr) {
 
@@ -15,7 +15,8 @@ angular.module('uguru.directives')
 			case 'courses':
 				model = 'search_text.course';
 				getSource = function() {
-					return $scope.$parent.originalCourses;
+					//return $scope.$parent.originalCourses;
+					return $scope.$parent.generalCourses;
 				}
 				break;
 		}

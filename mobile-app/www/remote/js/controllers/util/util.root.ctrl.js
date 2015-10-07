@@ -50,6 +50,21 @@ angular.module('uguru.util.controllers')
             universities: []
         }
 
+        $ionicPlatform.registerBackButtonAction(function(e) {
+            var popup = document.querySelectorAll('.uguru-popup.show')[0];
+            if(popup !== null && popup !== undefined) {
+                console.log("found popup");
+                popup.className = 'uguru-popup';
+                e.stopPropagation();
+
+                e.preventDefault();
+                return false;
+            } else {
+                console.log("no popup found");
+                $ionicHistory.goBack(-1);
+            }
+        }, 101);
+
         $scope.isLocalServer = LOCAL || false;
 
         $scope.network_speed = null;
@@ -658,11 +673,12 @@ angular.module('uguru.util.controllers')
 
             document.addEventListener("resume", function() {
 
-                if (LOCAL) {
-                    return;
-                }
+                 console.log('device is resuming....');
 
-                // console.log('device is resuming....');
+                console.log("testing network speed...");
+                DownloadService.downloadFile("https://placeimg.com/800/800/nature");
+
+
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('device resumed');
                 local_version = $localstorage.getObject('version');
@@ -671,6 +687,7 @@ angular.module('uguru.util.controllers')
                     function(response) {
                         var serverVersionNumber = parseFloat(JSON.parse(response).version);
                         $scope.root.vars.version = serverVersionNumber;
+
 
 
                         console.log('server', serverVersionNumber, typeof(serverVersionNumber));

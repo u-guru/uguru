@@ -18,12 +18,12 @@ angular.module('uguru.student.controllers', [])
     '$ionicActionSheet',
     '$ionicPopover',
     'uTracker',
+    'AnimationService',
     'MapService',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-        $ionicActionSheet, $ionicPopover, uTracker, MapService) {
-
+        $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService) {
 
         $ionicSideMenuDelegate.canDragContent(true);
 
@@ -104,18 +104,28 @@ angular.module('uguru.student.controllers', [])
             $scope.verbModal.hide();
         }
 
+        $timeout(function() {
+            AnimationService.initSlide();
+        }, 500);
         $scope.goToBecomeGuru = function() {
 
-            uTracker.track(tracker, 'Become Guru');
 
-            $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.become-guru');
+            //uTracker.track(tracker, 'Become Guru');
+            
+            //$ionicViewSwitcher.nextDirection('none');
+
+
+            $timeout(function() {
+                $state.go('^.become-guru');
+                AnimationService.slide('left');
+            }, 0);
+            
         }
 
 
         $scope.launchWelcomeStudentPopup = function() {
 
-            var homeCenterComponent = document.getElementById('home-content-header');
+            var homeCenterComponent = document.getElementById('home-content');
             var uguruPopup = document.getElementById('home-uguru-popup');
             $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {
                     duration: 1

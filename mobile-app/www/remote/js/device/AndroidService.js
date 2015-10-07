@@ -3,7 +3,6 @@ angular
 .factory('AndroidService', [
   '$rootScope',
   '$state',
-  '$localstorage',
 	'$cordovaPush',
 	'Geolocation',
   'University',
@@ -13,7 +12,7 @@ angular
 	AndroidService
 	]);
 
-function AndroidService($rootScope, $state, $localstorage, $cordovaPush,
+function AndroidService($rootScope, $state, $cordovaPush,
   Geolocation, University, Major, Skill, Profession) {
 
 	return {

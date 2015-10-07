@@ -19,9 +19,13 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate, University, Utilities, uTracker) {
 
+    $scope.generalCourses = University.getTargetted()[0].popular_courses.slice();
+    console.log("$scope.generalCourses: " + $scope.generalCourses);
     $scope.courses = [];
 
-    $scope.course_search_text = '';
+    $scope.search_text = {
+      course: ''
+    };
     $scope.alwaysTrue = true;
     $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
@@ -29,7 +33,7 @@ angular.module('uguru.util.controllers')
 
     if ($scope.root.vars.guru_mode || $state.current.name === 'root.become-guru') {
       $scope.editCourseMode = false;
-      $scope.course_search_text = '';
+      $scope.search_text.course = '';
     }
 
     $scope.swipeRightGoBack = function() {
@@ -157,11 +161,11 @@ angular.module('uguru.util.controllers')
 
 
 
-      $scope.search_text = '';
+      $scope.search_text.course = '';
 
       //set the course text to what it should be
       $scope.studentCourseInput.value = '';
-      $scope.course_search_text = course.name
+      $scope.search_text.course = course.name
 
       $scope.user.student_courses.push(course);
 
@@ -188,7 +192,7 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.loader.hide()
-        $scope.search_text = '';
+        $scope.search_text.course = '';
       }, 500)
 
 

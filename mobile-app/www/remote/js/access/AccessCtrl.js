@@ -14,16 +14,19 @@ angular.module('uguru.util.controllers')
   'DownloadService',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
+  'PerformanceService',
+  'ThrottleService',
   AccessController
   ]);
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-  $ionicSlideBoxDelegate) {
+  $ionicSlideBoxDelegate, PerformanceService, ThrottleService) {
 
   DeviceService.readyDevice();
 
+  PerformanceService.testNetworkSpeed();
 
   // var list = UniversityMatcher.list;
   // for (var i=0; i<10; i++) {
@@ -40,6 +43,15 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     codeInput: '',
     errorInputMsg: null,
   };
+  
+
+  $scope.testing = ThrottleService(function() {
+    console.log("throttling!!")
+  }, 2000);
+
+  $scope.testDir = function() {
+    console.log("throttling by directive!");
+  }
 
   $scope.checkAccessCode = function(code) {
 
@@ -77,6 +89,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       //fadeout after 500 seconds
       var postShakeCallback = function() {
             setTimeout(function() {
+              $scope.loader.hide();
               AnimationService.fadeOutElem(errorTextElem, 1000);
             }, 1500);
       }
@@ -85,6 +98,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       AnimationService.shakeElem(errorTextElem, 500, postShakeCallback);
 
     }
+
   };
 
   $scope.accessInputOnFocus = function() {
@@ -121,46 +135,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   };
 
   window.addEventListener('native.keyboardshow', keyboardShowHandler);
-
-  // cordova.plugins.Keyboard.disableScroll(true);
-  // window.addEventListener('native.keyboardhide', keyboardHideHandler);
-
-  var accessInput = document.getElementById('access-code-bar');
-
-  accessInput.addEventListener('keyup', submitKeyupListener);
-  accessInput.addEventListener('keydown', submitKeydownListener);
-
-  function submitKeyupListener(e) {
-
-    if($scope.access.codeInput.length > 0) {
-      $scope.access.errorInputMsg = '';
-    }
-
-    var key = e.keyCode || e.key || e.which;
-    //if enter is pressed;
-    if (key === 13) {
-      $scope.checkAccessCode($scope.access.codeInput);
-      // e.preventDefault();
-    }
-
-
-
-  }
-
-  function submitKeydownListener(e) {
-
-
-    var key = e.keyCode || e.key || e.which;
-    //if enter is pressed;
-
-    if ((e.keyCode == 65 || e.keyCode == 88) && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
-        e.target.select();
-    }
-
-
-
-  }
 
 
   function keyboardShowHandler(e){

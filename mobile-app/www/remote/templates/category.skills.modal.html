@@ -3,11 +3,11 @@
         <div id="skills-list" class="onboarding-list">
             <div>
                 <ul class='list checklist-{{active_category._class}}' style='height:calc(61px * {{active_category.subcategories.length}});'>
-                    <li ng-repeat='subcategory in active_category.subcategories'class='ng-class:{"active":active_category.subcategory.active}'>
+                    <li ng-repeat='subcategory in active_category.subcategories'class='ng-class:{"active":subcategory.active}'>
                         <span>
                             <label>{{subcategory.name}}</label>
-                            <input type="checkbox" ng-model='subcategory.active'ng-change='updateCategoryCount(active_category, subcategory, $index)'>
-                            <span></span>
+                            <input type="checkbox" ng-model='subcategory.active'ng-change='updateCategoryCount(active_category, skill, $index)'>
+                            <span class='{{active_category._class}}'></span>
                         </span>
                     </li>
                 </ul>

@@ -1,14 +1,13 @@
 angular.module('uguru.root.services')
 .service('Geolocation',
     [
-    '$localstorage',
     '$timeout',
     'University',
     'Utilities',
     'Settings',
     Geolocation]);
 
-function Geolocation($localstorage, $timeout, University,
+function Geolocation($timeout, University,
   Utilities, Settings) {
   var scope;
   var deviceGPS = {
@@ -52,18 +51,24 @@ function Geolocation($localstorage, $timeout, University,
         scope.loader.hide();
       }
       return nearestResults;
-      //$localstorage.setObject('nearest-universities', $scope.universities);
+      //$window.localStorage['nearest-universities'] = JSON.stringify(scope.universities);
     }
     function geoError(error) {
         switch(error.code) {
           case 1:
             alert('Sorry! Please enable your GPS settings.');
+            scope.loader.hide();
+            scope.isLocationActive = false;
             break;
           case 2:
             alert('Sorry! Please check your GPS signal.');
+            scope.loader.hide();
+            scope.isLocationActive = false;
             break;
           case 3:
             alert('Sorry! Please check your GPS signal.');
+            scope.loader.hide();
+            scope.isLocationActive = false;
             break;
         }
 

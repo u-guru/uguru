@@ -8,12 +8,12 @@
 	    </div>
         <div id="access-code" class="p20xy full-x flex-column-impt text-center" ng-init='getLoadTime()'>
             <p id='input-error-text' class='block full-x hide-opacity semibold caps ng-class:{"show-opacity":access.errorInputMsg}'>{{access.errorInputMsg}}&nbsp;</p>
-	        <input id="access-code-bar" class='input-outline full-x text-center' ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' type="text" placeholder="Enter your access code"/>
+	        <input id="access-code-bar" class='input-outline full-x text-center' ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' type="text" placeholder="Enter your access code" submit='checkAccessCode(access.codeInput)'/>
 	    </div>
 	</div>
     <div id="access-start" class="text-center full-x">
 
-        <button id='redeem-button'class="btn-caps-bold bg-charcoal-10p ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" ng-click="checkAccessCode(access.codeInput)">Redeem</button>
+        <button id='redeem-button'class="btn-caps-bold bg-charcoal-10p ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" thr-click="checkAccessCode(access.codeInput)">Redeem</button>
     </div>
 </section>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html><html>
   <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
@@ -100,12 +101,17 @@
    </script>
 
 
- <script type="text/javascript">
-   window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var n=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(n?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(a,o);for(var r=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=r(p[c])};
-   heap.load("849016067");
+ <script>
+     +function(l,y,t,i,c,s) {
+         l['LocalyticsGlobal'] = i;
+         l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
+         l[i].t = +new Date;
+         (s = y.createElement(t)).type = 'text/javascript';
+         s.src = 'remote/lib/localytics/localytics.js';
+         (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
+         
+     }(window, document, 'script', 'll');
  </script>
-
-
 
 
     <script src="remote/lib/windows/winstore-jscompat.js"></script>
@@ -138,11 +144,14 @@
     <script src="remote/lib/velocity/velocity.min.js"></script>
     <script src="remote/lib/velocity/velocity.ui.min.js"></script>
     <script src="remote/lib/velocity/angular-velocity.min.js"></script>
+    <script src="remote/lib/fastMatcher.js"></script>
     <script src="remote/lib/d3/d3.min.js"></script>
     <script src="remote/lib/mixpanel/mixpanel.js"></script>
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
 
+
     <script src="remote/lib/localytics/localytics.js"></script>
+
 
     <!-- <script src="remote/lib/rAF.js"></script> -->
 
@@ -196,6 +205,9 @@
     <script type="text/javascript" src="remote/js/directives/bufferedScroll.js"></script>
     <script type="text/javascript" src="remote/js/directives/imageSaver.js"></script>
     <script type="text/javascript" src="remote/js/directives/uSlideBox.js"></script>
+    <script type="text/javascript" src="remote/js/directives/bindInput.js"></script>
+    <script type="text/javascript" src="remote/js/directives/throttle.js"></script>
+    <script type="text/javascript" src="remote/js/directives/submit.js"></script>
 
     <!-- uguru app factories-->
     <script type="text/javascript" src="remote/js/factories/Session.js"></script>
@@ -264,6 +276,7 @@
     <script type="text/javascript" src="remote/js/controllers/guru/guru.questions.ctrl.js"></script>
 
     <script type="text/javascript" src="remote/js/university/AddUniversityCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/university/UniversityFilterCtrl.js"></script>
     <script type="text/javascript" src="remote/js/university/AddMajorCtrl.js"></script>
     <script type="text/javascript" src="remote/js/university/AddCourseCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
@@ -283,8 +296,10 @@
     <script type="text/javascript" src="remote/js/shared/DownloadService.js"></script>
     <script type="text/javascript" src="remote/js/shared/InAppBrowser.js"></script>
     <script type="text/javascript" src="remote/js/shared/UniversityMatcher.js"></script>
-    <!-- <script type="text/javascript" src="remote/js/shared/UniversityWorker.js"></script> -->
+    <script type="text/javascript" src="remote/js/shared/ThrottleService.js"></script>
+     -->
     <script type="text/javascript" src="remote/js/shared/uTracker.js"></script>
+    <script type="text/javascript" src="remote/js/shared/PerformanceService.js"></script>
 
     <!-- Specific Device Services, still under SharedService module -->
     <script type="text/javascript" src="remote/js/device/AndroidService.js"></script>
@@ -295,7 +310,7 @@
 
     <script type="text/javascript" src="remote/js/services/ngCardIO.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.signup.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.sidebar.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.sidemenu.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-payment.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.contact-guru.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>

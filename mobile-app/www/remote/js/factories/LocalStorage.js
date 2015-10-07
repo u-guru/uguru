@@ -33,7 +33,6 @@ angular.module('ionic.utils', [])
         $timeout.cancel(downloadPromise);
       }
       downloadPromise = $timeout(function() {
-        $window.localStorage['download_records'] = JSON.stringify(downloadRecords);
 
         var totalSize = 0;
         var totalTime = 0;
@@ -42,10 +41,19 @@ angular.module('ionic.utils', [])
           totalTime += (downloadRecords.files[i].time_ms / 1000);
         }
         var downloadSpeed = (totalSize/totalTime).toFixed(2);
+        //console.log("downloaded: " + totalSize + "kb in " + totalTime + "ms. resulting in a speed of " + downloadSpeed + " kb/s");
+
+        downloadRecords.downloadSpeed = downloadSpeed;
+        $window.localStorage['download_records'] = JSON.stringify(downloadRecords);
 
         downloadPromise = null;
 
-      }, 10000);
+        // uTracker.track(tracker, 'Network Info', {
+        //   "$Download_Speed": downloadSpeed,
+        //   "$Network_Type": navigator.connection.type
+        // });
+
+      }, 7000);
     },
 
     init: function()

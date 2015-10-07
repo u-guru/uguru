@@ -1,10 +1,11 @@
+
 var LOCAL = _local || false; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
 
-console.log("_local: " + _local);
-console.log("_startpage: " + _startpage);
-console.log("_ipaddress: " + _ipaddress);
+// console.log("_local: " + _local);
+// console.log("_startpage: " + _startpage);
+// console.log("_ipaddress: " + _ipaddress);
 
 var img_base = '';
 
@@ -40,6 +41,7 @@ if (LOCAL) {
 
 
 var tracker = 'lo';
+var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
@@ -55,32 +57,28 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   DeviceService, uTracker, $log) {
 
 
-  $log.getInstance = function(context) {
-    return {
-      log: enhanceLogging($log.log, contect),
-      info: enhanceLogging($log.info, context),
-      warn: enhanceLogging($log.warn, context),
-      debug: enhanceLogging($log.debug, context),
-      error: enhanceLogging($log.error, context)
-    };
-  };
+  // $log.getInstance = function(context) {
+  //   return {
+  //     log: enhanceLogging($log.log, context),
+  //     info: enhanceLogging($log.info, context),
+  //     warn: enhanceLogging($log.warn, context),
+  //     debug: enhanceLogging($log.debug, context),
+  //     error: enhanceLogging($log.error, context)
+  //   };
+  // };
 
-  function enhanceLogging(loggingFunc, context) {
-    return function() {
-      var modifiedArguments = [].slice.call(arguments);
-      modifiedArguments[0] = [moment().format("dddd h:mm:ss a") + '::[' + context + ']> '] + modifiedArguments[0];
-      loggingFunc.apply(null, modifiedArguments);
-    };
-  }
-
+  // function enhanceLogging(loggingFunc, context) {
+  //   return function() {
+  //     var modifiedArguments = [].slice.call(arguments);
+  //     modifiedArguments[0] = [moment().format("dddd h:mm:ss a") + '::[' + context + ']> '] + modifiedArguments[0];
+  //     loggingFunc.apply(null, modifiedArguments);
+  //   };
+  // }
 
   var openKeyboard = null;
-  var tracker = 'lo'
 
   uTracker.init(tracker);
-  // uTracker.init('mp');
-
-
+ 
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -94,6 +92,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     });
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
+  
+  $ionicConfigProvider.views.transition('none');
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(true);
@@ -127,7 +127,21 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '',
         abstract: true,
         templateUrl: BASE + 'templates/root.html',
-        controller: 'RootController'
+        controller: 'RootController',
+        // resolve: {
+        //   loadCache: ['$templateCache', function($templateCache) {
+
+        //   }],
+        //   preload: ['$state', '$timeout', function($state, $timeout) {
+        //     $timeout(function() {
+        //       $state.go('root.become-guru').then(function() {
+        //         $state.go('root.home').then(function() {
+        //           $state.go('root.university');
+        //         })
+        //       })
+        //     }, 0);
+        //   }]
+        // }
   }).
 
   // state('root.admin', {
@@ -139,15 +153,41 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
         resolve: {
+          // loadCache: ['$templateCache', function($templateCache) {
+          //   $templateCache.get(BASE + 'templates/home.html');
+          // }],
           // loadCache: function($templateCache) {
           //   $templateCache.get(BASE + 'templates/university.html');
+          //   $templateCache.get(BASE + 'templates/home.html');
+          //   $templateCache.get(BASE + 'templates/become.uguru.html');
+          //   $templateCache.get(BASE + 'templates/become.majors.html');
           // },
+          
+          // preload: ['$state', function($state) {
+          //   console.log("preloading");
+          //   $state.go('^.become-guru').then(function(){
+          //     console.log("become-guru");
+          //     $state.go('^.home').then(function(){
+          //       $state.go('^.university');
+          //     });
+          //   });
+          // }],
+
           deviceInfo: function(DeviceService) {
             return DeviceService.getPlatform();
           }
         },
         controller: 'AddUniversityCtrl'
   }).
+
+  state('privacy', {
+        url:'/privacy',
+        templateUrl: BASE + 'templates/privacy-terms.modal.html'    
+  }).
+
+
+
+
   state('root.university-container', {
         url: '/university-container',
         templateUrl: BASE + 'templates/university.container.html',
@@ -212,6 +252,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/become-guru',
         templateUrl: BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
+  }).
+  state('root.offline', {
+        url: '/offline',
+        templateUrl: BASE + 'templates/offline.html',
+  }).
+
+  state('root.become-guru.photography', {
+        url:'/photography',
+        templateUrl: BASE + 'templates/category.skills.modal.html'    
   }).
   state('root.courses', {
         url: '/courses',
