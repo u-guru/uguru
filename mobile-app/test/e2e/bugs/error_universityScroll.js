@@ -6,18 +6,11 @@ describe('#Error Test Flow : University Scroll',function()
 	// var university = new University();
  //    var access  = new Access();
 
-	beforeAll(function()
-	{
-        // browser.get("http://localhost:8100/#/");
-         browser.refresh();
-
-        // if(startButton.isPresent() === false)
-            // browser.get("http://"+localhost+":8100/#/home");
-	});
 	afterAll(function()
 	{
-	 browser.manage().deleteAllCookies();
+   		doc.ResetAll();
 	});
+
     describe('@Workflow : access page', function () {
 
 		 it('Send key : cool',function()

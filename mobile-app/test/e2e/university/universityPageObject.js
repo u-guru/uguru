@@ -9,7 +9,7 @@ var University = function() {
     this.BackButton = element(by.css('[ng-click="goToAccess()"]'));
     this.GPSButton = element(by.css('[ng-click="toggleLocationIconAppearance()"]'));
     this.GPSIcon = element(by.css('.icon.ion-navigate'));
-    this.OutputOfMillage = element.all(by.binding('university.miles | number'));
+    this.OutputOfMillage = element.all(by.css('.school-distance.txt-lake'));
 
 
     this.ChekSchoolListIsPresent = function() {
@@ -68,6 +68,7 @@ var University = function() {
 
     this.toggleGPS = function()
     {
+         browser.wait(EC.visibilityOf(university.GPSButton),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
          browser.getCapabilities().then(function (caps) {
               var platformName = caps.caps_.platformName;
               expect(platformName).toBe('android');
@@ -98,10 +99,10 @@ var University = function() {
             element.all(by.css('#school-list li:not(.ng-hide)')).then(function(items){
                 if (start === null)
                   for(var i = 0 ; i < items.length; i++)
-                    expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing at index : " + i);
+                    expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
                 else
                   for(var i = 0 ; i < start; i++)
-                    expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing at index : " + i);
+                    expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
                 
             });
           }, function(){

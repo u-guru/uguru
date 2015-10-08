@@ -3,16 +3,10 @@ describe('#Error Test Flow : Major + Course has no data && Mutiple #guru-tab-bar
 {
 	
 
-
-		beforeAll(function()
-	{
-        // browser.get("http://localhost:8100/#/");
-browser.manage().deleteAllCookies();
-         browser.refresh();
-
-        // // if(startButton.isPresent() === false)
-        //     browser.get("http://"+localhost+":8100/#/home");
-	});
+		afterAll(function()
+	   {
+	       doc.ResetAll();
+	   });
 
     describe('@Workflow : access page', function () {
 
@@ -43,7 +37,22 @@ browser.manage().deleteAllCookies();
  
     	
     });
+    describe('@Workflow : Home page', function () {
 
+    	describe('Welcome uguru logo pop',function()
+    	{
+    		it('Check welcome logo pop up ',function()
+    		{
+    			home.CheckPopUpIsShown()
+    		});
+
+    		it('Close welcome logo',function()
+    		{
+    			home.CloseThePopUp();
+    		});	
+    	});
+
+    });
 	describe('@Workflow : Major page', function () {
 		// var major = new Major();
 

@@ -6,14 +6,10 @@ describe('#Error Test Flow : GPS Disable',function()
 	// var university = new University();
  //    var access  = new Access();
 
-	beforeAll(function()
-	{
-        // browser.get("http://localhost:8100/#/");
-browser.manage().deleteAllCookies();
-         browser.refresh();
-        // if(startButton.isPresent() === false)
-            // browser.get("http://"+localhost+":8100/#/home");
-	});
+	 afterAll(function()
+    {
+        doc.ResetAll();
+    });
     describe('@Workflow : access page', function () {
 
 		 it('Send key : cool',function()
@@ -36,9 +32,7 @@ browser.manage().deleteAllCookies();
 	{
 		it("Toggle GPS button",function()
 		{
-
-            browser.wait(EC.visibilityOf(university.GPSButton),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
-            university.GPSButton.click();
+        university.GPSButton.click();
 
 		});
 		it('Check school-list is back to default list',function()

@@ -15,14 +15,10 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 	// var major = new Major();
 	// var home = new Home();
 
-	beforeAll(function()
-	{
-        // browser.get("http://localhost:8100/#/");
-browser.manage().deleteAllCookies();
-         browser.refresh();
-        // if(startButton.isPresent() === false)
-            // browser.get("http://"+localhost+":8100/#/home");
-	});
+ 	afterAll(function()
+    {
+        doc.ResetAll();
+    });
     describe('@Workflow : access page', function () {
 
 		 it('Send key : cool',function()
@@ -60,11 +56,6 @@ browser.manage().deleteAllCookies();
 			it('Check welcome logo pop up ',function()
 			{
 				home.CheckPopUpIsShown()
-			});
-
-			it('select a major',function()
-			{
-				major.SelectMajor(0);
 			});
 
 			it('Close welcome logo',function()
@@ -124,14 +115,14 @@ browser.manage().deleteAllCookies();
 	describe('@Workflow : photo test', function () {
 		// var photo = new Photo();
 
-		// it('Waiting to received the message',function()
-		// {
-		// 	photo.NextPage();
-		// });
-		it('Upload Photo',function()
+		it('Waiting to received the message',function()
 		{
-			photo.UploadPhoto('small');
+			photo.NextPage();
 		});
+		// it('Upload Photo',function()
+		// {
+		// 	photo.UploadPhoto('small');
+		// });
 	});
 
 	describe('@Workflow : Sign Up',function()
@@ -174,54 +165,55 @@ browser.manage().deleteAllCookies();
 
 			it('Check Side Menu is not present',function()
 			{
-				var side = element(by.css('.menu.menu-right'));
-				// side.isDisplayed().then(function(value)
+				// var side = element(by.css('.menu.menu-right'));
+				// // side.isDisplayed().then(function(value)
+				// // {
+				// // 	if(value == true)
+				// // 	{
+				// // 		expect(value).toBe(false,"Side Menus shouldn't display");
+				// // 		sidebar.FindSideButton("STUDENT MODE");
+				// // 		element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).click();
+				// // 		element(by.css('.view-container')).click();
+				// // 	}	
+				// // });
+				// var settingsLink = element.all(by.css('ion-view'));
+				// browser.sleep(5000);
+				// settingsLink.then(function(items)
 				// {
-				// 	if(value == true)
-				// 	{
-				// 		expect(value).toBe(false,"Side Menus shouldn't display");
-				// 		sidebar.FindSideButton("STUDENT MODE");
-				// 		element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).click();
-				// 		element(by.css('.view-container')).click();
-				// 	}	
+				// 	expect(items.length).toBe(0);
+				// 	// browser.wait(EC.elementToBeClickable(items[2]), 5000); //wait for the element to become clickable
+				// 	browser.wait(EC.visibilityOf(items[3]), 5000); //wait for the element to become clickable
+				// 	items[3].click();
 				// });
-				var settingsLink = element.all(by.css('ion-view'));
-				browser.sleep(5000);
-				settingsLink.then(function(items)
-				{
-					expect(items.length).toBe(0);
-					// browser.wait(EC.elementToBeClickable(items[2]), 5000); //wait for the element to become clickable
-					browser.wait(EC.visibilityOf(items[3]), 5000); //wait for the element to become clickable
-					items[3].click();
-				});
-				browser.sleep(10000);
+				// browser.sleep(10000);
+				expect(true).toBe(false,"Feature incompleted")
 			});
 			
 		});	
 	});
 
-	// describe('Edit Mode is not Enable',function()
-	// {
-	// 	it('Click profile tab',function()
-	// 	{
-	// 		doc.tabBar('guru-tab-bar',1);
-	// 	});		
-	// 	it('Check Edit is disabled',function()
-	// 	{
-	// 		expect(element(by.id('btn-edit-profile')).isPresent()).toBe(true,"Edit Button Support to be present");
-	// 		expect(element(by.id('btn-save-profile')).isPresent()).toBe(false,"Save Button Support to not present");
-	// 	});
-	// });
-	// describe('Check data from becomeGuru is applied to profile',function()
-	// {
-	// 	it('Check Major has something',function()
-	// 	{
-	// 		var objList = element.all(by.css('#profile-major li'));
-	// 		objList.then(function(items)
-	// 		{
-	// 			expect(items.length>1).toBe(true,"Nothing is Add to profile");
-	// 		});
-	// 	});		
-	// });
+	describe('Edit Mode is not Enable',function()
+	{
+		it('Click profile tab',function()
+		{
+			doc.tabBar('guru-tab-bar',1);
+		});		
+		it('Check Edit is disabled',function()
+		{
+			expect(element(by.id('btn-edit-profile')).isPresent()).toBe(true,"Edit Button Support to be present");
+			expect(element(by.id('btn-save-profile')).isPresent()).toBe(false,"Save Button Support to not present");
+		});
+	});
+	describe('Check data from becomeGuru is applied to profile',function()
+	{
+		it('Check Major has something',function()
+		{
+			var objList = element.all(by.css('#profile-major li'));
+			objList.then(function(items)
+			{
+				expect(items.length>1).toBe(true,"Nothing is Add to profile");
+			});
+		});		
+	});
 
 });

@@ -1,7 +1,7 @@
 'use strict';
 var Major = function()
 {
-	 this.InputModel= "search_text";
+	 this.InputModel= "search_text.major";
 	 this.guruButton = element(by.css('[ng-click="goToBecomeGuru()"]'));
 	 this.homePopUp = element(by.id('home-uguru-popup'));
 	 this.CloseButtonOfPopUp = element.all(by.css('[ng-click="closeWelcomePopup()"]')).first();

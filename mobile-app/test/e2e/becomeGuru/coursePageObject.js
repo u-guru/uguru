@@ -19,7 +19,7 @@ var Course = function()
 
 	this.CheckCourseListNotEmpty =function()
 	{
-		expect(this.CourseList.first().isPresent()).toBe(true,"[#course-list] should not be empty");
+		expect(this.CourseList.isPresent()).toBe(true,"[#course-list] should not be empty");
 
 		// this.CourseList.then(function (items) {
 		// 	expect(items.length).not.toBe(0,"Empty [#course-list]");

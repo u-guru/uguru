@@ -28,13 +28,13 @@ var Access = function()
 
 	 this.CheckMessage = function(isPass)
 	 {
-	 	doc.waitLoading();
+	 	// doc.waitLoading();
 	 	if(isPass == 'cool')
 	 	{
 	 		doc.checkMsg("Access Granted");
 	 	}
 	 	else
-	 	{
+	 	{	
 	 		browser.wait(EC.visibilityOf(startButton.element(by.tagName("p"))),800);
 	 		startButton.element(by.tagName("p")).getText().then(function(value)
 	 		{

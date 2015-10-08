@@ -10,14 +10,11 @@ describe('#Error Test Flow : Major Scroll',function()
 	// var major = new Major();
 	// var home = new Home();
 
-	beforeAll(function()
-	{
-        // browser.get("http://localhost:8100/#/");
-browser.manage().deleteAllCookies();
-         browser.refresh();
-        // if(startButton.isPresent() === false)
-            // browser.get("http://"+localhost+":8100/#/home");
-	});
+    afterAll(function()
+    {
+        doc.ResetAll();
+    });
+    
     describe('@Workflow : access page', function () {
 
 		 it('Send key : cool',function()
@@ -70,7 +67,10 @@ browser.manage().deleteAllCookies();
 		{
 			major.BeginBecomeGuru();
 		});
-
+		it('Check majors list has data',function()
+		{
+			major.CheckMoreMajorIsLoad();
+		});
 		for( i = 8; i < 40; i+=8)
 		{
 			(function(index) {

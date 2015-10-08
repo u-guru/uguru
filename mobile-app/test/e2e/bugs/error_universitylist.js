@@ -5,13 +5,9 @@ describe('#Error Test Flow : University list',function()
 {
 	// var university = new University();
  //    var access  = new Access();
-
-	beforeAll(function()
+	afterAll(function()
 	{
-        // browser.get("http://localhost:8100/#/");
-		 browser.manage().deleteAllCookies();
-         browser.refresh();
-        // if(startButton.isPresent() === false)
+   		doc.ResetAll();
 	});
     describe('@Workflow : access page', function () {
 

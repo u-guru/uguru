@@ -1,5 +1,18 @@
 
 var global = function() {
+  /*********************************************************
+  *
+  *
+  *
+  ********************************************************/
+  this.ResetAll = function()
+  {
+    browser.manage().deleteAllCookies();
+    browser.executeScript('window.sessionStorage.clear();');
+    browser.executeScript('window.localStorage.clear();');
+    browser.executeScript('window.location.reload(true);')
+    browser.get("http://"+localhost+":8100/#/university");
+  }
   /**********************************************************
   *
   *
@@ -127,7 +140,7 @@ var global = function() {
   {
     var spin = element(by.id("circle"));
     browser.wait(EC.presenceOf(spin),3000, "No loading spin is shown");
-    browser.wait(EC.invisibilityOf(spin),3000, "Loading spin is not disappeared");
+    browser.wait(EC.stalenessOf(spin),3000, "Loading spin is not disappeared");
   };
   /**********************************************************
   *checkMsg 
@@ -136,12 +149,17 @@ var global = function() {
   ***********************************************************/
   this.checkMsg = function(msg)
   {
-    var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
+    // var newMsg = element(by.css(".loading .text-center.ng-binding"));
+    var newMsg = element(by.binding("successLoaderText"));
     browser.wait(EC.presenceOf(newMsg),3000, "Can't Find Message : "+msg);
+    browser.wait(EC.invisibilityOf(newMsg),3000, "Message "+msg+" does not get invisibility");
+    browser.sleep(5000);
     newMsg.getAttribute('value').then(function(value)
     {
       expect(value).toContain(msg);
     }); 
+    expect(newMsg.getText()).toContain(msg);
+    expect(true).toBe(false,"Incompleted")
   };
   /*************************************
   *isListShow 

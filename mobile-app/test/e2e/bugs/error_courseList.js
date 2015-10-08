@@ -6,15 +6,10 @@
 
 describe('#Error Test Flow : Course Data',function()
 {
-	beforeAll(function()
-	{
-        // browser.get("http://localhost:8100/#/");
-		 browser.manage().deleteAllCookies();
-         browser.refresh();
-
-                 // if(startButton.isPresent() === false)
-            // browser.get("http://"+localhost+":8100/#/home");
-	});
+ 	afterAll(function()
+    {
+        doc.ResetAll();
+    });
     describe('@Workflow : access page', function () {
 
 		 it('Send key : cool',function()
