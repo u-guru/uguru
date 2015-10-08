@@ -4,8 +4,8 @@ echo "Removing android"
 cordova platform rm android
 echo "Removing facebook connect plugin"
 cordova plugin rm com.phonegap.plugins.facebookconnect
-cordova plugins rm org.apache.cordova.file
 cordova plugins rm org.apache.cordova.file-transfer
+cordova plugins rm org.apache.cordova.file
 echo
 echo "Remove cordova push plugin"
 # cordova plugin rm com.phonegap.plugins.PushPlugin
@@ -25,12 +25,13 @@ echo
 cd platforms/android
 echo
 cp local.properties com.phonegap.plugins.facebookconnect/FacebookLib
+cd ../../
 # echo "Adding push plugin "
 echo ""
 # cordova plugin add https://github.com/phonegap-build/PushPlugin.git
 # echo
-mkdir com.phonegap.plugins.facebookconnect/FacebookLib/ant-build
-cd com.phonegap.plugins.facebookconnect/FacebookLib
+# mkdir com.phonegap.plugins.facebookconnect/FacebookLib/ant-build
+# cd com.phonegap.plugins.facebookconnect/FacebookLib
 # mkdir ant-build
 # ant release
 # ant clean
