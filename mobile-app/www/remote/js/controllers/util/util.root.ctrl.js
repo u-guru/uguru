@@ -166,6 +166,7 @@ angular.module('uguru.util.controllers')
             if (skipShowAlert || confirm('Are you sure you want to log out?')) {
                   $scope.loader.show();
                   $localstorage.setObject('user', []);
+                  $localstorage.set('access', false);
                   $localstorage.setObject('appOnboarding', null);
                   // $scope.user = null;;
                   $ionicHistory.clearCache();
@@ -173,6 +174,10 @@ angular.module('uguru.util.controllers')
                   //toggle in the middle
                   $timeout(function() {
                         $scope.user = User.getLocal();
+                        $scope.user.majors = [];
+                        $scope.user.university = null;
+                        $scope.user.university_id = null;
+                        $scope.user.guru_courses = null;
                         $scope.user.updateAttr = User.updateAttrUser;
                         $scope.user.createObj = User.createObj;
                         $scope.user.updateObj = User.updateObj;

@@ -877,6 +877,7 @@ class UserOneView(restful.Resource):
         user.guru_experiences = []
         # user.guru_courses = []
         user.majors = []
+        user.departments = []
         user.student_ratings = []
 
         user.guru_ratings = []
@@ -905,11 +906,7 @@ class UserOneView(restful.Resource):
 
 
 
-        u = University.query.filter_by(name='Uguru University').first()
-        if u:
-            user.university_id = u.id
-        else:
-            user.university_id = None
+        user.university_id = None
 
         for course in user.student_courses + user.guru_courses:
             c = course
@@ -2584,8 +2581,15 @@ class AdminViewUsersList(restful.Resource):
             return "UNAUTHORIZED", 401
 
         users = User.query.all()
-
         return users, 200
+
+class AdminViewUniversitiesListEmails(restful.Resource):
+    @marshal_with(AdminUniversitySerializer)
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+        universities = University.query.filter(University.us_news_ranking != None, University.us_news_ranking < 220, University.num_emails > 1000).all()
+        return universities, 200
 
 class AdminViewUniversitiesListAll(restful.Resource):
     @marshal_with(AdminUniversitySerializer)
@@ -3215,7 +3219,7 @@ api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/device
 api.add_resource(AdminUserView, '/api/admin/users/')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>')
-api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
+api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
@@ -3227,6 +3231,7 @@ api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_tok
 api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
 api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
+api.add_resource(AdminViewUniversitiesListEmails, '/api/admin/<string:auth_token>/universities/emails')
 api.add_resource(AdminViewUniversitiesListPrepared, '/api/admin/<string:auth_token>/universities/prepared')
 api.add_resource(AdminViewUniversitiesListAll, '/api/admin/<string:auth_token>/universities/us_news')
 api.add_resource(AdminViewUniversitiesListAllDistribution, '/api/admin/<string:auth_token>/universities/distribution')

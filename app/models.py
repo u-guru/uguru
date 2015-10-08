@@ -796,15 +796,21 @@ class Department(Base):
 
     def __repr__(self):
         if self.title:
-            return "<Department'%r', '%r'>" %\
+            return "<Department'%s', '%s'>" %\
               (str(self.id), str(self.title))
         if self.abbr:
-            return "<Department'%r', '%r'>" %\
+            return "<Department'%s', '%s'>" %\
               (str(self.id), str(self.abbr))
         if self.name:
-            return "<Department'%r', '%r'>" %\
+            return "<Department'%s', '%s'>" %\
               (str(self.id), str(self.name))
-        return "MALFORMED MAJOR", str(self.id)
+        if self.short_name:
+            return "<Department'%s', '%s'>" %\
+              (str(self.id), str(self.short_name))
+        if self.code:
+            return "<Department'%s', '%s'>" %\
+              (str(self.id), str(self.code))
+        return "EMPTY DEPARTMENT with %s courses" % len(self.courses) 
 
 
 
