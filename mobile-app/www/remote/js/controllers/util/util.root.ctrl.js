@@ -28,14 +28,14 @@ angular.module('uguru.util.controllers')
     'DeviceService',
     'Utilities',
     'Category',
-    'PerformanceService',
+    'DownloadService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
         $cordovaSplashscreen, $timeout, Geolocation,
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
-         Utilities, Category, PerformanceService) {
+         Utilities, Category, DownloadService) {
 
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
@@ -383,6 +383,7 @@ angular.module('uguru.util.controllers')
 
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
+            DownloadService.testNetworkSpeed();
             DeviceService.readyDevice($scope);
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
@@ -407,7 +408,7 @@ angular.module('uguru.util.controllers')
             document.addEventListener("resume", function() {
                 console.log('device is resuming....');
 
-                PerformanceService.testNetworkSpeed();
+                DownloadService.testNetworkSpeed();
                 DeviceService.checkUpdates();
             }, false);
 

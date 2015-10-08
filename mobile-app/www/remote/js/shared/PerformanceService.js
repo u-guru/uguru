@@ -1,12 +1,11 @@
 angular.module('sharedServices')
 .factory('PerformanceService', [
 	"uTracker",
-	"DeviceService",
 	"DownloadService",
 	PerformanceService
 	]);
 
-function PerformanceService(uTracker, DeviceService, DownloadService) {
+function PerformanceService(uTracker, DownloadService) {
 
 	var appStartTime, appLoadTime;
 
@@ -17,7 +16,6 @@ function PerformanceService(uTracker, DeviceService, DownloadService) {
 		setListResponseTime: setListResponseTime,
 		sendListResponseTime: sendListResponseTime,
 		sendNetworkInfo: sendNetworkInfo,
-		testNetworkSpeed: testNetworkSpeed
 	}
 
 	function getAppLoadTime() {
@@ -70,27 +68,17 @@ function PerformanceService(uTracker, DeviceService, DownloadService) {
 	}
 
 
-
+	// Should only call on mobile, but don't implement a check in here, otherwise it throws circular dependency error
+	// Instead implement the check from the context of which this function is being called.
 	function sendNetworkInfo() {
-		if(DeviceService.isMobile()) {
+
 			$timeout(function() {
 				var downloadRecords = JSON.parse($window.localStorage['download_records'] || '{"files": []}');
-
 				uTracker.track(tracker, "Network Info", {
 					"$Download_Speed": downloadRecords.downloadSpeed,
 					"$Connection_Type": navigator.connection.type
 				});
 			}, 5000);
-		}
-			
-	}
-
-	function testNetworkSpeed() {
-
-		//console.log("testing network speed...");
-		DownloadService.downloadFile("https://placeimg.com/800/800/nature");
-
-
 	}
 
 }

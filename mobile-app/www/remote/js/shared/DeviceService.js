@@ -85,6 +85,7 @@ function DeviceService($cordovaNgCardIO,
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
+    
 		//checkUpdates();
 
     //Ugh --> they overroad the native js OnDOMContentLoaded ...

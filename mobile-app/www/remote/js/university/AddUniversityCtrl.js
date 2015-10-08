@@ -205,6 +205,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   
   $scope.location = Geolocation;
+  
   $scope.toggleLocationIconAppearance = function() {
     // get GPS if we haven't attempted it
     if (Geolocation.settings.isAllowed === null) {
