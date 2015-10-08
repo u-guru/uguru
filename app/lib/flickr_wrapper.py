@@ -12,13 +12,13 @@ def generate_flickr_url(farm_id, server_id, photo_id, secret):
     return "https://farm%s.staticflickr.com/%s/%s_%s_z.jpg" %(farm_id, server_id, photo_id, secret)
 
 
-def search_university_response_api(text):
+def search_university_response_api(tags='panorama', text="UC Berkeley", all_or='all'):
     response = flickr.photos.search(
         api_key=FLICKR_API_KEY,
         # geo_context=2,
-        tags='panorama',
+        tags=tags,
         safe_search=1,
-        tag_mode='all',
+        tag_mode=all_or,
         content_type=1,
         text=text,
         # lat=university.latitude,You as
@@ -27,8 +27,8 @@ def search_university_response_api(text):
         sort='relevance',
         extras='description, tags, views',
         format='json')
-    with open('flickr_response.json','wb') as outfile:
-        json.dump(response,outfile,indent=4)
+    # with open('flickr_response.json','wb') as outfile:
+    #     json.dump(response,outfile,indent=4)
     return response
     
 
@@ -37,7 +37,7 @@ def parse_flickr_response(flickr_response):
     photos_arr = json.loads(parsed_flickr_response)
     with open('parsed_flickr_response.json','wb') as outfile:
         json.dump(photos_arr['photos']['photo'],outfile,indent=4)
-    print photos_arr['photos']['photo']
+    # print photos_arr['photos']['photo']
     return photos_arr['photos']['photo']
     
 def process_returned_photos(photos_arr):
@@ -50,28 +50,25 @@ def process_returned_photos(photos_arr):
                 'views': int(photo_obj['views']),
                 'description': photo_obj['description']
                 })
-
-
-
-    array.append(result_photos)
-    print result_photos
+    # array.append(result_photos)
+    # print result_photos
     return result_photos
 
-empty_array_dict = {}
+# empty_array_dict = {}
   
-if __name__ == "__main__":
-    name = json.load(open('school_without_banner.json'))
-    for items in name:
-        name =  items['name']
-        search_university_response_api(text=name)
-        parse_flickr_response(flickr_response=json.load(open('flickr_response.json')))
-        process_returned_photos(photos_arr=json.load(open('parsed_flickr_response.json')))
+# if __name__ == "__main__":
+#     name = json.load(open('school_without_banner.json'))
+#     for items in name:
+#         name =  items['name']
+#         search_university_response_api(text=name)
+#         parse_flickr_response(flickr_response=json.load(open('flickr_response.json')))
+#         process_returned_photos(photos_arr=json.load(open('parsed_flickr_response.json')))
    
 
-        empty_array_dict[name] = array
-        array = []
-        with open('school_flickr_url.json','wb') as outfile:
-            json.dump(empty_array_dict,outfile,indent=4)
+#         empty_array_dict[name] = array
+#         array = []
+#         with open('school_flickr_url.json','wb') as outfile:
+#             json.dump(empty_array_dict,outfile,indent=4)
  
 
 # print len(processed_arr)

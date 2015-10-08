@@ -4,6 +4,7 @@ from models import *
 from twilio import *
 from twilio.rest import TwilioRestClient
 from flask import render_template, redirect, url_for, session, request
+import json
 
 # Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
@@ -436,6 +437,48 @@ def admin_logout():
         session.pop('user')
         session.pop('admin')
     return redirect(url_for('admin_login'))
+
+
+# from static.data.ben import getAllUsNewsUniversities
+    
+
+@app.route('/admin/universities/ben/stats/<arg>')
+def ben_stats(arg=None):
+    from static.data.ben import getAllUsNewsUniversities
+    usNewsArr = getAllUsNewsUniversities()
+    all_keys = usNewsArr[0].keys()
+    result_dict = {}
+    for key in all_keys:
+        result_dict[key] = 0
+    for uni in usNewsArr:
+        for key in all_keys:
+            if uni.get(key):
+                result_dict[key] += 1
+    if arg == 'emails':
+        result = [uni['name'] for uni in usNewsArr if uni.get('num_emails')]
+        return json.dumps(result)
+    if arg == '!school_color':
+        result = [uni for uni in usNewsArr if uni.get('num_emails') and not uni.get('school_color_one')]
+        return json.dumps(result)
+    # else:
+    #     return json.dumps(result_dict, indent=4)
+    
+
+
+@app.route('/admin/ben/flickr/<uni_name>')
+def flickr_ben_admin(uni_name):
+    def html_image_string(url):
+        return '<img src="%s" alt="Smiley face" height="auto" width="%s">' % (url, '100%')
+    from lib.flickr_wrapper import parse_flickr_response, search_university_response_api, process_returned_photos    
+
+    flickrResponse = search_university_response_api(tags='Panorama', text=uni_name, all_or='all')
+    arr = process_returned_photos(parse_flickr_response(flickrResponse))
+    urls = [html_image_string(item['url']) for item in arr][0:5]
+    
+    html_strings_of_imgs = " ".join(urls)
+
+    return html_strings_of_imgs
+
 
 
 @app.route('/admin/universities/flickr/')
