@@ -58,6 +58,10 @@ angular.module('uguru.util.controllers')
 
         $scope.isLocalServer = LOCAL || false;
 
+        $scope.window = {       
+            width: document.querySelector('body').getBoundingClientRect().width        
+        }
+
 
         //how to make platform ready...
         $scope.user = User.getLocal();
