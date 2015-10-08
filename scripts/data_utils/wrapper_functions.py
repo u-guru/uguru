@@ -59,9 +59,11 @@ if __name__ == '__main__':
     	getUniversity(args[2])
 
     if args[1] in ['update-one', '-uo']:
-    	pass
+    	updateUniversity({'id':2116, 'population':'3047' })
+
     if args[1] in ['unsantised-department','-ud']:
     	getUnsantisedAmountOfDepartments()
+    	
     	#updateUniversity({'id':2732, 'num_emails':10 })
 
 

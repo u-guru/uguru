@@ -46,8 +46,9 @@ def process_returned_photos(photos_arr):
     return result_photos
 
 
-if __name__ == "__main__":
-    generate_flickr_url()
+#if __name__ == "__main__":
+    #generate_flickr_url(farm_id, server_id, photo_id, secret)
+    
 
 
 # print len(processed_arr)
