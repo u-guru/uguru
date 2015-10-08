@@ -122,14 +122,24 @@ function Geolocation($rootScope, $timeout, University,
     // }
 
 
-      return list.sort(compareDistance); 
-
-    
+    // return list.sort(compareDistance); 
 
     // $rootScope.$apply(function() {
-    //  list.sort(compareDistance); 
-    //  return;
+     return list.sort(compareDistance); 
     // });
+
+    // try{
+    //   console.log("try block");
+    //   $rootScope.$apply(function() {
+    //    return list.sort(compareDistance); 
+    //   });
+    // } finally {
+    //   console.log("finally block");
+    //   $rootScope.$apply(function() {
+    //    return list.sort(compareDistance); 
+    //   });
+    // }
+    
   }
 
   function compareDistance(a, b) {
