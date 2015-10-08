@@ -149,17 +149,17 @@ var global = function() {
   ***********************************************************/
   this.checkMsg = function(msg)
   {
-    // var newMsg = element(by.css(".loading .text-center.ng-binding"));
-    var newMsg = element(by.binding("successLoaderText"));
-    browser.wait(EC.presenceOf(newMsg),3000, "Can't Find Message : "+msg);
+    var newMsg = element(by.css(".loading .text-center.ng-binding"));
+     // var newMsg = element(by.binding("successLoaderText"));
+    // browser.wait(EC.presenceOf(newMsg),3000, "Can't Find Message : "+msg);
     browser.wait(EC.invisibilityOf(newMsg),3000, "Message "+msg+" does not get invisibility");
     browser.sleep(5000);
     newMsg.getAttribute('value').then(function(value)
     {
       expect(value).toContain(msg);
     }); 
-    expect(newMsg.getText()).toContain(msg);
-    expect(true).toBe(false,"Incompleted")
+    // expect(newMsg.getText()).toContain(msg);
+    // expect(true).toBe(false,"Incompleted")
   };
   /*************************************
   *isListShow 
