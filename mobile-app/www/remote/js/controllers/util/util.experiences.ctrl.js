@@ -17,6 +17,23 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate) {
 
+    $scope.removeGuruExperience = function(experience, index) {
+      var removedExperience = $scope.user.guru_experiences.splice(index, 1);
+
+      var successCallback = function() {
+        $scope.loader.hide();
+        $scope.loader.showSuccess('Experience removed!', 1500);
+        if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
+          $scope.guruExperiencesModal.remove();
+        }
+      }
+
+      $scope.loader.show();
+
+      $scope.user.updateAttr('remove_guru_experience', $scope.user, $scope.experience, successCallback, $scope);
+
+    }
+    
     $scope.saveGuruExperience = function() {
       if (!$scope.experience.name.length ||!$scope.experience.years || !$scope.experience.description.length) {
         $scope.success.show(0, 1500,'Please enter in all fields');
@@ -25,7 +42,7 @@ angular.module('uguru.util.controllers')
 
       var successCallback = function() {
         $scope.loader.hide();
-        $scope.success.show(0, 1500, 'Saved!');
+        $scope.loader.showSuccess($scope.experience.name +'saved!', 1500);
         if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
           $scope.guruExperiencesModal.remove();
         }

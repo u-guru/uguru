@@ -7,10 +7,12 @@ flickr_api.set_keys(api_key = FLICKR_API_KEY, api_secret = FLICKR_API_SECRET)
 
 from flickr_api.api import flickr
 
+
 def generate_flickr_url(farm_id, server_id, photo_id, secret):
     return "https://farm%s.staticflickr.com/%s/%s_%s_z.jpg" %(farm_id, server_id, photo_id, secret)
 
-def search_university_response_api(university):
+
+def search_university_response_api(text):
     response = flickr.photos.search(
         api_key=FLICKR_API_KEY,
         # geo_context=2,
@@ -18,21 +20,26 @@ def search_university_response_api(university):
         safe_search=1,
         tag_mode='all',
         content_type=1,
-        text=university.name,
+        text=text,
         # lat=university.latitude,You as
         # lon=university.longitude,
         # radius=20,
         sort='relevance',
         extras='description, tags, views',
         format='json')
+    with open('flickr_response.json','wb') as outfile:
+        json.dump(response,outfile,indent=4)
     return response
-
+    
 
 def parse_flickr_response(flickr_response):
     parsed_flickr_response = flickr_response.split('jsonFlickrApi(')[1].split('"})')[0] + '"}'
     photos_arr = json.loads(parsed_flickr_response)
+    with open('parsed_flickr_response.json','wb') as outfile:
+        json.dump(photos_arr['photos']['photo'],outfile,indent=4)
+    print photos_arr['photos']['photo']
     return photos_arr['photos']['photo']
-
+    
 def process_returned_photos(photos_arr):
     result_photos = []
     for photo_obj in photos_arr:
@@ -43,12 +50,18 @@ def process_returned_photos(photos_arr):
                 'views': int(photo_obj['views']),
                 'description': photo_obj['description']
                 })
+    with open('returned_photos.json','wb') as outfile:
+        json.dump(result_photos,outfile,indent=4)           
+    print result_photos
     return result_photos
 
 
-#if __name__ == "__main__":
-    #generate_flickr_url(farm_id, server_id, photo_id, secret)
-    
+if __name__ == "__main__":
+    search_university_response_api(text='Bowdoin College')
+    parse_flickr_response(flickr_response=json.load(open('flickr_response.json')))
+    process_returned_photos(photos_arr=json.load(open('parsed_flickr_response.json')))
+    #generate_flickr_url()
+
 
 
 # print len(processed_arr)

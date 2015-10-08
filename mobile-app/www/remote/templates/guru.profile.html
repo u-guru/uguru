@@ -1,35 +1,35 @@
 <ion-view class='uguru-view profile-view guru-profile-view bg-charcoal'>
-<section id="profile" class='guru-profile'>
-	<div id="profile-desc">
-		<div class="profile-inside">
-			<div id="profile-icon">
-				<img ng-src="{{user.profile_url}}" id='guru-profile-img' ng-if='user.id && user.profile_url && !profile.edit_mode'/>
-				<a ng-click='takeProfilePhoto()' ng-if='!user.id || !user.profile_url || profile.edit_mode'>
-					<img ng-src="{{user.profile_url}}" id='guru-profile-img'/>
-					<h1 ng-show='user.profile_url'>Edit<br/>Photo</h1>
-				</a>
-			</div>
-			<nav id="profile-list">
-				<ul>
-					<li id="profile-name">
-						<!-- SAMIR -only use .verified if the profile is verified
+	<section id="profile" class='guru-profile'>
+		<div id="profile-desc">
+			<div class="profile-inside">
+				<div id="profile-icon">
+					<img ng-src="{{user.profile_url}}" id='guru-profile-img' ng-if='user.id && user.profile_url && !profile.edit_mode' />
+					<a ng-click='takeProfilePhoto()' ng-if='!user.id || !user.profile_url || profile.edit_mode'>
+						<img ng-src="{{user.profile_url}}" id='guru-profile-img' />
+						<h1 ng-show='user.profile_url'>Edit<br/>Photo</h1>
+					</a>
+				</div>
+				<nav id="profile-list">
+					<ul>
+						<li id="profile-name">
+							<!-- SAMIR -only use .verified if the profile is verified
 						<h1 class="verified">
 						-->
-						<h1>
+							<h1>
 							<span class="inline">{{user.name}}</span>
 							<span class="inline">
 								<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 							</span>
 						</h1>
-					</li>
-					<li id="profile-school">{{user.university.title}}</li>
-					<li id="profile-loc">
-						<span id="profile-loc-city">{{user.university.city}}</span>
-						<span id="profile-loc-state">{{user.university.state}}</span>
-					</li>
-				</ul>
-			</nav>
-			<!-- <nav id="profile-bars" class='p20xy'>
+						</li>
+						<li id="profile-school">{{user.university.title}}</li>
+						<li id="profile-loc">
+							<span id="profile-loc-city">{{user.university.city}}</span>
+							<span id="profile-loc-state">{{user.university.state}}</span>
+						</li>
+					</ul>
+				</nav>
+				<!-- <nav id="profile-bars" class='p20xy'>
 				<ul id="profile-rating">
 					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
 					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
@@ -38,176 +38,191 @@
 					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
 				</ul>
 			</nav> -->
-		</div>
-	</div>
-	<div id="profile-info">
-		<div class="profile-inside">
-			<div id="profile-courses">
-				<div class='edit-button' hidden> </div>
-				<h1>Courses you can tutor</h1>
-				<div>
-                    <ul class='courses'>
-    					<li ng-repeat='course in user.guru_courses track by $index'>
-    						<span>{{course.name}}</span>
-    						<a ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
-    							<svg viewBox="0 0 100 100">
-    							    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-    							</svg>
-    						</a>
-    					</li>
-    				</ul>
-                    <ul class="empty" ng-if="!user.guru_courses.length && !profile.edit_mode">
-                        <li style='padding:10px 15px;'class='text-center weight-300 p10x15y'><span><em>No courses added</em></span></li>
-                    </ul>
-    				<ul class='default' ng-if='profile.edit_mode'>
-    					<li><button class="round" ng-click='launchGuruCoursesModal()'>
-    						<svg viewBox="0 0 100 100">
-    						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-    						</svg>
-    						<span>Add a course</span>
-    					</button></li>
-    				</ul>
-                </div>
 			</div>
-			<div id="profile-other">
-				<div id="profile-major">
-					<h1>My Majors</h1>
+		</div>
+		<div id="profile-info">
+			<div class="profile-inside">
+				<div id="profile-courses">
+					<div class='edit-button' hidden> </div>
+					<h1>Courses you can tutor</h1>
 					<div>
-						<ul class='majors' ng-if='user.majors && user.majors.length > 0'>
-							<li ng-repeat='major in user.majors'>
-								<span>{{major.code ||major.abbr || major.title || major.name}}</span>
-								<a ng-click='removeMajor(major, $index)' ng-if='profile.edit_mode'>
-									<svg viewBox="0 0 100 100">
-									    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-									</svg>
-								</a>
-							</li>
-						</ul>
-						<ul class="empty" ng-if="!user.majors.length && !profile.edit_mode">
-							<li><span><em>No majors added</em></span></li>
-						</ul>
-						<ul class='default' ng-if='profile.edit_mode'>
-							<li><button class="round" ng-click='launchGuruMajorsModal()'>
-								<svg viewBox="0 0 100 100">
-								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-								</svg>
-								<span>Add a major</span>
-							</button></li>
-						</ul>
-					</div>
-				</div>
-				<div id="profile-skills">
-					<h1>Skills</h1>
-					<div>
-						<ul class='skills'>
-							<li ng-repeat='subcategory in user.guru_subcategories' class='{{subcategory.category.hex_color}}'>
-								<span>{{subcategory.name}}</span>
-								<a ng-click='removeGuruSkill(skill)' ng-if='profile.edit_mode'>
+						<ul class='courses profile-list profile-list-half'>
+							<li ng-repeat='course in user.guru_courses track by $index'>
+								<a class="remove" ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
 								</a>
+								<span>{{course.name}}</span>
 							</li>
+							<li></li>
 						</ul>
-						<ul class="empty" ng-if="!user.categories.length && !profile.edit_mode">
-							<li><span><em>No skills added</em></span></li>
+						<ul class="empty" ng-if="!user.guru_courses.length && !profile.edit_mode">
+							<li><span><em>No courses added</em></span></li>
 						</ul>
 						<ul class='default' ng-if='profile.edit_mode'>
-							<li><button class="round" ng-click='launchGuruSkillsModal()'>
-								<svg viewBox="0 0 100 100">
-								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-								</svg>
-								<span>Add a skill</span>
-							</button></li>
-						</ul>
-					</div>
-				</div>
-				<div id="profile-languages">
-					<h1>Languages</h1>
-					<div>
-						<ul class='languages'>
-							<li ng-repeat='language in user.guru_languages'>
-								<span>{{language.name}}</span>
-								<a ng-click='removeGuruLanguage(language)' ng-if='profile.edit_mode'>
+							<li>
+								<button class="round" ng-click='launchGuruCoursesModal()'>
 									<svg viewBox="0 0 100 100">
 										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
-								</a>
+									<span>Add a course</span>
+								</button>
 							</li>
-						</ul>
-						<ul class="empty" ng-if="!user.guru_languages.length && !profile.edit_mode">
-							<li><span><em>No languages added</em></span></li>
-						</ul>
-						<ul class='default' ng-if='profile.edit_mode'>
-							<li><button class="round" ng-click='launchGuruLanguagesModal()'>
-								<svg viewBox="0 0 100 100">
-								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-								</svg>
-								<span>Add a language</span>
-							</button></li>
 						</ul>
 					</div>
 				</div>
-                <div id="profile-experiences">
-                    <h1>Experiences</h1>
-                    <div>
-                        <ul class="credit-body list with-icon">
-                            <li class='full-x' ng-repeat='experience in user.guru_experiences'>
-                                <a ng-click='launchAddGuruExperienceModal(experience)'>
-                                    <span class="list-item-detail">
+				<div id="profile-other">
+					<div id="profile-major">
+						<h1>Majors</h1>
+						<div>
+							<ul class='majors profile-list' ng-if='user.majors && user.majors.length > 0'>
+								<li ng-repeat='major in user.majors'>
+									<a class="remove" ng-click='removeMajor(major, $index)' ng-if='profile.edit_mode'>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+									</a>
+									<span>{{major.code ||major.abbr || major.title || major.name}}</span>
+								</li>
+							</ul>
+							<ul class="empty" ng-if="!user.majors.length && !profile.edit_mode">
+								<li><span><em>No majors added</em></span></li>
+							</ul>
+							<ul class='default' ng-if='profile.edit_mode'>
+								<li>
+									<button class="round" ng-click='launchGuruMajorsModal()'>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+										<span>Add a major</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="profile-experiences">
+						<h1>Experience</h1>
+						<div>
+							<ul class="experience profile-list list with-icon">
+								<li ng-repeat='experience in user.guru_experiences'>
+									<a ng-click='launchAddGuruExperienceModal(experience)'>
+										<span class="list-item-detail">
                                         <h2>{{experience.name}}</h2>
                                         <span>{{experience.years}} years</span>
-                                    </span>
-                                    <span class="list-item-icon">
+										</span>
+										<span class="list-item-icon">
                                         <svg viewBox="0 0 100 100">
                                             <path d="M15.6243489,84.7923176 L19.5509642,73.6399994 L69.794924,23.3911161 L77.0255506,30.6217427 L26.7800007,80.8660212 L15.6243489,84.7923176 Z M13.3333333,87.0833333 L16.6666667,83.75 L13.3333333,87.0833333 L13.3333333,87.0833333 Z M70.8333333,23.75 L73.3350627,21.25 L70.8333333,23.75 L70.8333333,23.75 Z M76.6666667,29.5833333 L79.1666667,27.0833333 L76.6666667,29.5833333 L76.6666667,29.5833333 Z M82.5205606,25.5682252 L85.7479206,28.7955852 C85.7479206,28.7955852 67.7080166,46.8354927 67.5,47.0435059 M75.9393067,32.2348919 L79.1666667,35.4622519 M19.5499992,73.6399994 L26.7800007,80.8700027 L19.5499992,73.6399994 Z M77.7627936,15.0378071 L85.3792239,22.6542374 L81.0085605,27.0249008 L73.3921302,19.4084705 L77.7627936,15.0378071 Z"></path>
                                         </svg>
                                     </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="empty" ng-if="!user.guru_experiences.length && !profile.edit_mode">
-                            <li><span><em>No Guru Experiences Added</em></span></li>
-                        </ul>
-                        <ul class='default' ng-if='profile.edit_mode'>
-                            <li class='full-x'><button style='width:65%;' class="round" ng-click='launchAddGuruExperienceModal()'>
-                                <svg viewBox="0 0 100 100">
-                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                </svg>
-                                <span>Add Guru Experience</span>
-                            </button></li>
-                        </ul>
-                    </div>
-                </div>
+									</a>
+								</li>
+							</ul>
+							<ul class="empty" ng-if="!user.guru_experiences.length && !profile.edit_mode">
+								<li><span><em>No Experience Added</em></span></li>
+							</ul>
+							<ul class='default' ng-if='profile.edit_mode'>
+								<li class='full-x'>
+									<button class="round" ng-click='launchAddGuruExperienceModal()'>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+										<span>Add Experience</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="profile-skills">
+						<h1>Skills</h1>
+						<div>
+							<ul class='skills profile-list profile-list-half'>
+								<li ng-repeat='subcategory in user.guru_subcategories'>
+									<a class="remove" ng-click='removeGuruSkill(skill)' ng-if='profile.edit_mode'>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+									</a>
+									<span class=''>{{subcategory.name}}</span>
+								</li>
+								<li></li>
+							</ul>
+							<ul class="empty" ng-if="!user.guru_subcategories.length && !profile.edit_mode">
+								<li><span><em>No skills added</em></span></li>
+							</ul>
+							<ul class='default' ng-if='profile.edit_mode'>
+								<li>
+									<button class="round" ng-click='launchGuruSkillsModal()'>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+										<span>Add a skill</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="profile-languages">
+						<h1>Languages</h1>
+						<div>
+							<ul class='languages profile-list profile-list-half'>
+								<li ng-repeat='language in user.guru_languages'>
+									<a class="remove" ng-click='removeGuruLanguage(language)' ng-if='profile.edit_mode'>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+									</a>
+									<span>{{language.name}}</span>
+								</li>
+								<li></li>
+							</ul>
+							<ul class="empty" ng-if="!user.guru_languages.length && !profile.edit_mode">
+								<li><span><em>No languages added</em></span></li>
+							</ul>
+							<ul class='default' ng-if='profile.edit_mode'>
+								<li>
+									<button class="round" ng-click='launchGuruLanguagesModal()'>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+										<span>Add a language</span>
+									</button>
+								</li>
+							</ul>
+							<hr ng-if="!profile.edit_mode" />
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+		<button id="btn-edit-profile" class="btn-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!profile.edit_mode' ng-click='profile.edit_mode = true;'>Edit</button>
+		<button id="btn-save-profile" class="btn-fixed semibold bottom-0 left-0 save-button bg-cerise-90p ng-class:{'relative':profile.edit_mode}" ng-click='saveGuruProfile()' ng-if='profile.edit_mode'>Save</button>
+
+	</section>
+	<input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none' />
+
+	<div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar' ng-if='user && user.id'>
+		<a class="tab-item" nav-direction='swap' href='#/guru'>
+			<svg viewBox="0 0 100 100">
+				<path d="M87.0865246,40.1315789 L52.7535993,15.621175 C51.9274059,15.0703794 51.0094132,14.7031824 49.9996213,14.7031824 C48.9898294,14.7031824 48.0718367,14.9785802 47.2456434,15.621175 L12.912718,40.1315789 C11.9029261,40.8659731 11.168532,41.9675643 10.9849334,43.1609547 C10.8013349,44.4461444 11.0767327,45.6395349 11.8111268,46.6493268 C12.7291195,47.8427173 14.1061085,48.6689106 15.666696,48.6689106 C16.6764879,48.6689106 17.5944806,48.3935129 18.420674,47.750918 L18.6960718,47.5673195 L49.9996226,25.4712358 L81.3949721,47.5673195 L81.670368,47.750918 C82.4965613,48.3017136 83.414554,48.6689106 84.4243459,48.6689106 C85.9849334,48.6689106 87.3619224,47.9345165 88.2799151,46.6493268 C88.9225099,45.6395349 89.1979077,44.3543452 89.0143092,43.1609547 C88.8307107,41.875765 88.0963166,40.8659731 87.0865246,40.1315789 Z M49.9996213,49.8898409 C53.4298605,49.8898409 56.1875038,47.1321976 56.1875038,43.7019584 C56.1875038,40.2717192 53.4298605,37.5140759 49.9996213,37.5140759 C46.5693821,37.5140759 43.8117388,40.2717192 43.8117388,43.7019584 C43.8117388,47.1321976 46.5693821,49.8898409 49.9996213,49.8898409 Z M60.0520182,83.0018356 L60.0520182,59.9215187 C60.0520182,58.269815 58.7112723,56.9308446 57.0503046,56.9308446 L42.8578934,56.9308446 C41.2000927,56.9308446 39.8561798,58.2776352 39.8561798,59.9215188 L39.8561798,83.001836 M18.6505494,47.8133415 L18.6505494,80.2999257 C18.6505495,83.0596321 20.8838911,85.2968164 23.652709,85.2968165 L41.5085665,85.2968176 L58.4914307,85.2968176 L76.3472905,85.2968165 C79.1099073,85.2968164 81.3494506,83.0643071 81.3494505,80.2999257 L81.3494498,47.8133415"></path>
+			</svg>
+		</a>
+		<a class="tab-item active" nav-direction='swap' href='#/guru-profile'>
+			<svg viewBox="0 0 100 100">
+				<path d="M50.0000186,14 C30.1802821,14 14.030417,30.1419103 14.0000373,49.9835145 C13.9861494,59.7785062 17.8513192,69.2750235 24.6069034,76.038418 C31.0239706,82.4616905 39.5485232,86 48.6120989,86 C49.0955707,86 49.5825143,85.9904558 50.072062,85.969632 C70.2181637,85.1444892 86,69.3383625 86,49.9861175 C86,30.142778 69.8510029,14 50.0000186,14 L50.0000186,14 Z M24.18272,74.5721092 C25.26272,65.2447492 30.77792,57.3967492 38.83328,53.6988292 C35.65568,50.7151492 33.65696,46.4911492 33.65696,41.7986692 C33.65696,32.7871492 40.98848,25.4556292 50,25.4556292 C59.01152,25.4556292 66.34304,32.7871492 66.34304,41.7986692 C66.34304,46.4911492 64.34432,50.7151492 61.16672,53.6988292 C69.22208,57.3967492 74.73728,65.2447492 75.81728,74.5721092"></path>
+			</svg>
+		</a>
+		<a class="tab-item" nav-direction='swap' href='#/guru-credibility'>
+			<svg viewBox="0 0 100 100">
+				<path d="M50.0004009,87.5 L49.6435674,87.3885396 C49.3284312,87.2907111 41.8541713,84.8882991 34.3526478,75.7726048 C21.9604997,60.7142284 19.3592231,39.2272348 19.3592231,23.8521185 L19.3592231,22.6853931 L20.5259486,22.6493088 C20.7063701,22.6436957 38.7060173,21.9933765 49.2265933,13.1503191 L50.0004009,12.5 L50.7742086,13.1503191 C61.3084165,22.0054046 79.2936299,22.6444975 79.4740514,22.6493088 L80.6407769,22.6845912 L80.6407769,23.8521185 C80.6407769,39.2264329 78.0395003,60.7142284 65.6481541,75.7726048 C58.1466305,84.8882991 50.6723707,87.291513 50.3572345,87.3893415 L50.0004009,87.5 L50.0004009,87.5 Z M50,57.5 L41.1832212,62.1352549 L42.8670761,52.3176275 L35.7341523,45.3647451 L45.5916106,43.9323725 L50,35 L54.4083894,43.9323725 L64.2658477,45.3647451 L57.1329239,52.3176275 L58.8167788,62.1352549 L50,57.5 Z"></path>
+			</svg>
+		</a>
+		<a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
+			<svg viewBox="0 0 100 100">
+				<path d="M77.7071855,34.003249 C72.1666671,24.4442603 61.8219498,18.0006703 50,18.0000001 L50,8 L50,18 L49.9981554,18 C38.1779324,18 27.8332606,24.4437373 22.2927152,34.0031916 L22.2927152,34.0031916 L13.626933,29 L22.2927152,34.0031916 C19.5635175,38.7120495 17.9999998,44.1769094 17.9999998,50 C17.9999998,55.8230906 19.5635175,61.2879505 22.2927152,65.9968084 L13.626933,71 L22.2927152,65.9968084 C27.8332606,75.5562627 38.1779324,82 49.9981554,82 L50,92 L50,82 C61.8219498,81.9993298 72.1666671,75.5557397 77.7071855,65.996751 L86.373067,71 L77.7071855,65.996751 C80.4364952,61.2879061 82.0000002,55.823067 82.0000002,50 C82.0000002,44.176933 80.4364952,38.7120939 77.7071855,34.003249 L86.373067,29 L77.7071855,34.003249 Z M49.9989624,68 C40.0749409,68 31.9999999,59.925059 31.9999999,50 C31.9999999,40.074941 40.0749409,32 49.9989624,32 C59.9250591,32 68.0000001,40.074941 68.0000001,50 C68.0000001,59.925059 59.9250591,68 49.9989624,68 L49.9989624,68 L49.9989624,68 Z"></path>
+			</svg>
+		</a>
 	</div>
-	<button id="btn-edit-profile" class="btn-caps-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!profile.edit_mode' ng-click='profile.edit_mode = true;'>Edit</button>
-	<button id="btn-save-profile" class="btn-caps-fixed semibold bottom-0 left-0 save-button bg-cerise-90p ng-class:{'relative':profile.edit_mode}" ng-click='saveGuruProfile()'ng-if='profile.edit_mode'>Save</button>
 
-</section>
-<input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
-
-<div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar' ng-if='user && user.id'>
-	<a class="tab-item" nav-direction='swap' href='#/guru'>
-		<svg viewBox="0 0 100 100">
-			<path d="M87.0865246,40.1315789 L52.7535993,15.621175 C51.9274059,15.0703794 51.0094132,14.7031824 49.9996213,14.7031824 C48.9898294,14.7031824 48.0718367,14.9785802 47.2456434,15.621175 L12.912718,40.1315789 C11.9029261,40.8659731 11.168532,41.9675643 10.9849334,43.1609547 C10.8013349,44.4461444 11.0767327,45.6395349 11.8111268,46.6493268 C12.7291195,47.8427173 14.1061085,48.6689106 15.666696,48.6689106 C16.6764879,48.6689106 17.5944806,48.3935129 18.420674,47.750918 L18.6960718,47.5673195 L49.9996226,25.4712358 L81.3949721,47.5673195 L81.670368,47.750918 C82.4965613,48.3017136 83.414554,48.6689106 84.4243459,48.6689106 C85.9849334,48.6689106 87.3619224,47.9345165 88.2799151,46.6493268 C88.9225099,45.6395349 89.1979077,44.3543452 89.0143092,43.1609547 C88.8307107,41.875765 88.0963166,40.8659731 87.0865246,40.1315789 Z M49.9996213,49.8898409 C53.4298605,49.8898409 56.1875038,47.1321976 56.1875038,43.7019584 C56.1875038,40.2717192 53.4298605,37.5140759 49.9996213,37.5140759 C46.5693821,37.5140759 43.8117388,40.2717192 43.8117388,43.7019584 C43.8117388,47.1321976 46.5693821,49.8898409 49.9996213,49.8898409 Z M60.0520182,83.0018356 L60.0520182,59.9215187 C60.0520182,58.269815 58.7112723,56.9308446 57.0503046,56.9308446 L42.8578934,56.9308446 C41.2000927,56.9308446 39.8561798,58.2776352 39.8561798,59.9215188 L39.8561798,83.001836 M18.6505494,47.8133415 L18.6505494,80.2999257 C18.6505495,83.0596321 20.8838911,85.2968164 23.652709,85.2968165 L41.5085665,85.2968176 L58.4914307,85.2968176 L76.3472905,85.2968165 C79.1099073,85.2968164 81.3494506,83.0643071 81.3494505,80.2999257 L81.3494498,47.8133415"></path>
-		</svg>
-	</a>
-	<a class="tab-item active" nav-direction='swap' href='#/guru-profile'>
-		<svg viewBox="0 0 100 100">
-			<path d="M50.0000186,14 C30.1802821,14 14.030417,30.1419103 14.0000373,49.9835145 C13.9861494,59.7785062 17.8513192,69.2750235 24.6069034,76.038418 C31.0239706,82.4616905 39.5485232,86 48.6120989,86 C49.0955707,86 49.5825143,85.9904558 50.072062,85.969632 C70.2181637,85.1444892 86,69.3383625 86,49.9861175 C86,30.142778 69.8510029,14 50.0000186,14 L50.0000186,14 Z M24.18272,74.5721092 C25.26272,65.2447492 30.77792,57.3967492 38.83328,53.6988292 C35.65568,50.7151492 33.65696,46.4911492 33.65696,41.7986692 C33.65696,32.7871492 40.98848,25.4556292 50,25.4556292 C59.01152,25.4556292 66.34304,32.7871492 66.34304,41.7986692 C66.34304,46.4911492 64.34432,50.7151492 61.16672,53.6988292 C69.22208,57.3967492 74.73728,65.2447492 75.81728,74.5721092"></path>
-		</svg>
-	</a>
-	<a class="tab-item" nav-direction='swap' href='#/guru-credibility'>
-		<svg viewBox="0 0 100 100">
-			<path d="M15,80.9978179 C15,83.208162 16.800691,85 19.0021821,85 L80.9978179,85 C83.208162,85 85,83.199309 85,80.9978179 L85,19.0021821 C85,16.791838 83.199309,15 80.9978179,15 L19.0021821,15 C16.791838,15 15,16.800691 15,19.0021821 L15,80.9978179 Z M65.8963209,36.0500496 L74.6420605,36.0500496 L74.6420605,44.8000496 M74.6463209,36.0500496 L55.493321,55.2030495 L44.7969505,44.506679 L25.3536791,63.9499504"></path>
-		</svg>
-	</a>
-	<a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
-		<svg viewBox="0 0 100 100">
-			<path d="M77.7071855,34.003249 C72.1666671,24.4442603 61.8219498,18.0006703 50,18.0000001 L50,8 L50,18 L49.9981554,18 C38.1779324,18 27.8332606,24.4437373 22.2927152,34.0031916 L22.2927152,34.0031916 L13.626933,29 L22.2927152,34.0031916 C19.5635175,38.7120495 17.9999998,44.1769094 17.9999998,50 C17.9999998,55.8230906 19.5635175,61.2879505 22.2927152,65.9968084 L13.626933,71 L22.2927152,65.9968084 C27.8332606,75.5562627 38.1779324,82 49.9981554,82 L50,92 L50,82 C61.8219498,81.9993298 72.1666671,75.5557397 77.7071855,65.996751 L86.373067,71 L77.7071855,65.996751 C80.4364952,61.2879061 82.0000002,55.823067 82.0000002,50 C82.0000002,44.176933 80.4364952,38.7120939 77.7071855,34.003249 L86.373067,29 L77.7071855,34.003249 Z M49.9989624,68 C40.0749409,68 31.9999999,59.925059 31.9999999,50 C31.9999999,40.074941 40.0749409,32 49.9989624,32 C59.9250591,32 68.0000001,40.074941 68.0000001,50 C68.0000001,59.925059 59.9250591,68 49.9989624,68 L49.9989624,68 L49.9989624,68 Z"></path>
-		</svg>
-	</a>
-</div>
 </ion-view>
