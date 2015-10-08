@@ -742,7 +742,7 @@ angular.module('uguru.util.controllers')
                 {
                     return;
                 }
-                
+
                 $scope.loader.showSuccess('Connection Detected', 2000)
                 $scope.transitionOfflineToOnline = true;
                 $timeout(function() {
@@ -770,6 +770,15 @@ angular.module('uguru.util.controllers')
             }, false);
 
             document.addEventListener("offline", function() {
+
+                $scope.checkIfOnline = function() {
+                    $scope.loader.showAmbig();
+                    $timeout(function() {
+                        //purposely showing the old one --> need to refactor to loader.fail..
+                        $scope.loader.hide();
+                        alert('Sorry - no connect detected! We miss you!');
+                    }, 2000)
+                }
 
                 $state.go('^.offline');
 

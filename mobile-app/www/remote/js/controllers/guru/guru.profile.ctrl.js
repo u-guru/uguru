@@ -244,7 +244,7 @@ angular.module('uguru.guru.controllers')
       });
     }
 
-    $scope.launchAddGuruExperienceModal = function(experience) {
+    $scope.launchAddGuruExperienceModal = function(experience, index) {
 
       $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
             scope: $scope,
@@ -252,6 +252,7 @@ angular.module('uguru.guru.controllers')
         }).then(function(modal) {
             if (experience) {
               $scope.experience = experience;
+              $scope.experience_index = index;
             } else {
               $scope.experience = {
                 name: '',

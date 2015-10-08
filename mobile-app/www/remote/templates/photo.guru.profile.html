@@ -1,4 +1,72 @@
-<ion-view class='full-xy bg-shamrock'>
-	<section>
+<ion-view class='uguru-view profile-view guru-profile-view photo-guru-profile-view full-xy bg-white'>
+	<section id="profile" class="guru-profile">
+		<div id="profile-banner"></div>
+		<div id="profile-desc">
+			<div class="profile-inside">
+				<div id="profile-icon">
+					<img ng-src="{{user.profile_url}}" id='guru-profile-img' />
+				</div>
+				<nav id="profile-list">
+					<ul>
+						<li id="profile-name">
+							<h1 class="verified">
+								<span class="inline">{{user.name}}</span>
+								<span class="inline">
+									<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
+								</span>
+							</h1>
+						</li>
+						<li id="profile-blurb">
+							<q>A NorCal based contemporary photographer specializing in events and urban scenery.</q>
+						</li>
+						<li id="profile-contact">
+							<button class="btn-ghost-charcoal">Contact</button>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<nav id="profile-nav">
+			<hr/>
+			<ul class="ugrid-2">
+				<li><a class="active" href="#">Skills</a></li>
+				<li><a href="#">Gallery</a></li>
+			</ul>
+		</nav>
+		<div id="profile-skills" class="profile-slide">
+			<hr/>
+			<section>
+				<h1>Specialties</h1>
+				<ul class="ugrid-2">
+					<li>Female</li>
+					<li>Nightlife</li>
+					<li>Headshots</li>
+					<li>Graduation</li>
+					<li>Athletic</li>
+					<li>Fashion</li>
+				</ul>
+			</section>
+			<hr/>
+			<section>
+				<h1>Cameras</h1>
+				<ul class="ugrid-2">
+					<li>Nikon</li>
+					<li>Canon</li>
+					<li>iPhone 6</li>
+					<li>Polaroid</li>
+				</ul>
+			</section>
+			<hr/>
+			<section>
+				<h1>Courses</h1>
+				<ul class="ugrid-2">
+					<li>ARTH 100</li>
+					<li>ART 300</li>
+					<li>STUDIO 6</li>
+					<li>PHOTO 122</li>
+				</ul>
+			</section>
+		</div>
+		<button id="book-guru" class="fixed bottom-0 full-x bg-charcoal-90p caps semibold">Book Guru</button>
 	</section>
 </ion-view>

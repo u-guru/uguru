@@ -14,6 +14,7 @@ var img_base = '';
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
+// var REST_URL = 'http://192.168.12.130:5000'
 
 
 // ==============================
@@ -29,7 +30,7 @@ if (LOCAL) {
 
   BASE_URL = _ipaddress;
   LOCAL_URL = 'http://192.168.42.78:5000'
-  // REST_URL = 'http://192.168.1.43:5000'
+  REST_URL = 'http://localhost:5000'
 
 } else {
   img_base = '/static/'
@@ -78,7 +79,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   var openKeyboard = null;
 
   uTracker.init(tracker);
- 
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -92,7 +93,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     });
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
-  
+
   $ionicConfigProvider.views.transition('none');
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
@@ -162,7 +163,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
           //   $templateCache.get(BASE + 'templates/become.uguru.html');
           //   $templateCache.get(BASE + 'templates/become.majors.html');
           // },
-          
+
           // preload: ['$state', function($state) {
           //   console.log("preloading");
           //   $state.go('^.become-guru').then(function(){
@@ -182,7 +183,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   state('privacy', {
         url:'/privacy',
-        templateUrl: BASE + 'templates/privacy-terms.modal.html'    
+        templateUrl: BASE + 'templates/privacy-terms.modal.html'
   }).
 
 
@@ -268,7 +269,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   state('root.become-guru.photography', {
         url:'/photography',
-        templateUrl: BASE + 'templates/category.skills.modal.html'    
+        templateUrl: BASE + 'templates/category.skills.modal.html'
   }).
   state('root.courses', {
         url: '/courses',
@@ -395,4 +396,3 @@ var processSkills = function($scope) {
     }
     console.log('skills processed');
 }
-

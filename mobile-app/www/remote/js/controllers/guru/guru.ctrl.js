@@ -17,10 +17,11 @@ angular.module('uguru.guru.controllers', [])
   '$ionicBackdrop',
   '$ionicViewSwitcher',
   '$ionicActionSheet',
+  'RankingService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet)     {
+  $ionicActionSheet, RankingService)     {
 
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
@@ -207,7 +208,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.initializeProgressBars = function() {
           var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-          animateProgressCircle(guruRankingCircle, $scope.user.guru_ranking, true);
+          animateProgressCircle(guruRankingCircle, $scope.user.current_guru_ranking);
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
           animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent || 60);
@@ -250,7 +251,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
                 //show it after the progress is complete
                 $scope.initializeProgressBars();
-              
+
               }, 500)
             }
 
@@ -262,18 +263,20 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         });
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
-        // $scope.$on('$ionicView.enter', function() {
-        //   $timeout(function() {
-        //       $scope.launchGuruRankingPopup();
+        $scope.$on('$ionicView.enter', function() {
 
-        //       $timeout(function() {
-        //         var guruRankingPopupCircle = initGuruRankProgress('#guru-ranking-popup-progress-bar', '#2B3234','#69B3A5');
+          $timeout(function() {
 
-        //         animateProgressCircle(guruRankingPopupCircle, 75);
-        //       }, 1000 )
+            var previousGuruRanking = $scope.user.current_guru_ranking;
+            var currentGuruRanking = RankingService.calcRanking($scope.user);
+            console.log('needs to change from ', previousGuruRanking, 'to', currentGuruRanking);
+            if (currentGuruRanking !== previousGuruRanking) {
+              RankingService.showPopover(previousGuruRanking, currentGuruRanking + 20);
+            }
 
-        //   }, 1000)
-        // }, 1000)
+          }, 1000)
+
+        })
 
 
 

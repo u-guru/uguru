@@ -423,6 +423,14 @@ class UserOneView(restful.Resource):
             user.name = name
             db_session.commit()
 
+        if request.json.get('remove_guru_experience'):
+            guru_experience_json = request.json.get('remove_guru_experience')
+            experience_id = guru_experience_json.get('id')
+            experience = Experience.query.get(experience_id)
+            if experience and experience in user.guru_experiences:
+                user.guru_experiences.remove(experience)
+                db_session.commit()
+
         if request.json.get('add_guru_experience'):
             print 'guru_experience_received'
             guru_experience_json = request.json.get('add_guru_experience')
