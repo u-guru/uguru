@@ -293,6 +293,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .right-0 {
   right: 0 !important; }
 
+.bottom-64 {
+  bottom: 64px !important; }
+
 .full-x, .full-width {
   width: 100% !important; }
 
@@ -881,6 +884,9 @@ header {
           stroke-width: 7px;
           stroke-linecap: round;
           stroke-linejoin: round; }
+    header .header-nav a.active, header .header-nav a:active {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
     header .header-nav .header-nav-next h1 {
       text-align: right; }
   header .header-nav-back, header .header-down {
@@ -968,6 +974,19 @@ button {
   border: 0;
   color: white;
   font-size: 24px; }
+
+button.round {
+  border-radius: 1000px;
+  width: auto;
+  height: auto;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase; }
+
+button.active, button.activated {
+  filter: alpha(opacity=75);
+  opacity: 0.75; }
 
 .input-ghost {
   display: block;
@@ -1131,6 +1150,26 @@ button.disabled {
     background: url(../../img/svg/search.svg) no-repeat center center/cover, url(/static/remote/img/svg/search.svg) center/cover no-repeat;
     width: 18px;
     height: 18px; }
+  .input-search-ghost .side-icon {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 12px;
+    z-index: 0; }
+    .input-search-ghost .side-icon .ion-navigate {
+      filter: alpha(opacity=60);
+      opacity: 0.6; }
+    .input-search-ghost .side-icon .ion-navigate.active,
+    .input-search-ghost .side-icon .ion-navigate.activated,
+    .input-search-ghost .side-icon .ion-navigate.location-active {
+      filter: alpha(opacity=100);
+      opacity: 1; }
 
 .picker {
   font-size: 20px;
@@ -2272,5 +2311,19 @@ input[type=range]:focus::-ms-fill-upper {
   100% {
     filter: alpha(opacity=0);
     opacity: 0; } }
+.toast {
+  background: #DB1988;
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  height: 50px;
+  overflow: hidden; }
+
+.toast + * {
+  height: calc(100% - 50px) !important; }
+
+.toast + * header.third {
+  height: calc(100% / 3 + 15px); }
 
 /*# sourceMappingURL=default.css.map */

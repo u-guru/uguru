@@ -17,9 +17,10 @@ angular.module('uguru.guru.controllers')
   '$ionicActionSheet',
   '$cordovaFacebook',
   'uTracker',
+  'University',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
-  $ionicActionSheet, $cordovaFacebook, uTracker) {
+  $ionicActionSheet, $cordovaFacebook, uTracker, University) {
 
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
@@ -103,25 +104,39 @@ angular.module('uguru.guru.controllers')
       $scope.profile.intro_edit_mode = false;
       $timeout(function() {
         $scope.loader.hide();
-        $scope.success.show(250, 1000, 'Saved!');
+        $scope.loader.showSuccess('Saved!', 1500);
       }, 500);
     }
 
     $scope.removeMajor = function(major, index) {
-      if (!confirm('Remove ' + major.name + '?')) {
+
+      if (!confirm('Remove ' + (major.code || major.name || major.title || major.abbr) + '?')) {
         return;
       }
 
-      var removedMajor = $scope.user.majors.splice(index,1);
-      $scope.majors.push(removedMajor);
+
+      University.majors.push(major);
+      $scope.user.majors.splice(index,1);
 
       var confirmCallback = function() {
 
         uTracker.track(tracker, 'Major Removed', {
-          '$Major': major.name
+          '$Major': (major.code || major.name || major.title || major.abbr)
         });
-        $scope.success.show(0, 2000, major.name + ' successfully removed');
+        $scope.success.show(0, 2000, (major.code || major.name || major.title || major.abbr) + ' successfully removed');
       }
+
+      $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
+
+    }
+
+    $scope.removeGuruSubcategory = function(subcategory) {
+      if (!confirm('Remove ' + subcategory.name + '?')) {
+        return;
+      }
+
+      $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
+
     }
 
     $scope.initLateNightOptions = function() {
@@ -228,8 +243,8 @@ angular.module('uguru.guru.controllers')
             $scope.tutoringPlatformsModal.show();
       });
     }
-    console.log($scope.user);
-    $scope.launchAddGuruExperienceModal = function(experience) {
+
+    $scope.launchAddGuruExperienceModal = function(experience, index) {
 
       $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
             scope: $scope,
@@ -237,6 +252,7 @@ angular.module('uguru.guru.controllers')
         }).then(function(modal) {
             if (experience) {
               $scope.experience = experience;
+              $scope.experience_index = index;
             } else {
               $scope.experience = {
                 name: '',
@@ -722,6 +738,18 @@ angular.module('uguru.guru.controllers')
 
       }
     }
+
+    $scope.$on('$ionicView.enter', function() {
+          
+          $timeout(function() {
+            
+            if (RankingService.recentlyUpdated) {
+              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
+            }
+
+          }, 1000)
+
+    })
 
 
   }

@@ -91,25 +91,25 @@ var University = function() {
     this.checkMileage = function(toggle,start)
     {
       if(toggle === 0)
-                {
-                  browser.wait(EC.visibilityOf(this.OutputOfMillage.first()),3000).then(
-                    function()
-                    {
-                      element.all(by.css('#school-list li:not(.ng-hide)')).then(function(items){
-                          if (start === null)
-                            for(var i = 0 ; i < items.length; i++)
-                              expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing at index : " + i);
-                          else
-                            for(var i = 0 ; i < start; i++)
-                              expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing at index : " + i);
-                          
-                      });
-                    }, function(){
-                        //code to want to execute on failure.
-                        // console.log("failure");
-                          doc.checkMsg("Unable to Find the Location at #"+index +", did you enable share Location");
-                    });
-                }
+      {
+        browser.wait(EC.visibilityOf(this.OutputOfMillage.first()),3000).then(
+          function()
+          {
+            element.all(by.css('#school-list li:not(.ng-hide)')).then(function(items){
+                if (start === null)
+                  for(var i = 0 ; i < items.length; i++)
+                    expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing at index : " + i);
+                else
+                  for(var i = 0 ; i < start; i++)
+                    expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing at index : " + i);
+                
+            });
+          }, function(){
+              //code to want to execute on failure.
+              // console.log("failure");
+                doc.checkMsg("Unable to Find the Location at #"+start +", did you enable share Location");
+          });
+      }
         else
         {
           browser.wait(EC.invisibilityOf(this.OutputOfMillage.first()),3000,"Miles Should Be Hidden");

@@ -9,7 +9,7 @@ describe('#Error Test Flow : University list',function()
 	beforeAll(function()
 	{
         // browser.get("http://localhost:8100/#/");
-browser.manage().deleteAllCookies();
+		 browser.manage().deleteAllCookies();
          browser.refresh();
         // if(startButton.isPresent() === false)
 	});

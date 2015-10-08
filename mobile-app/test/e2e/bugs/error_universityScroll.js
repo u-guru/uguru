@@ -9,10 +9,14 @@ describe('#Error Test Flow : University Scroll',function()
 	beforeAll(function()
 	{
         // browser.get("http://localhost:8100/#/");
-browser.manage().deleteAllCookies();
          browser.refresh();
+
         // if(startButton.isPresent() === false)
             // browser.get("http://"+localhost+":8100/#/home");
+	});
+	afterAll(function()
+	{
+	 browser.manage().deleteAllCookies();
 	});
     describe('@Workflow : access page', function () {
 
@@ -45,13 +49,15 @@ browser.manage().deleteAllCookies();
 				{
 					university.ChekSchoolListIsIncrease(index);
 				});
-				it ('Scroll back to top',function()
-		 		{
-		 			university.ScrollSchoolList(0);
-				});
+			
 				it('Check mileage of school is shown',function()
 				{
 					university.checkMileage(0,index);
+				});
+
+				it ('Scroll back to top',function()
+		 		{
+		 			university.ScrollSchoolList(0);
 				});
 	        })(i);
 		}

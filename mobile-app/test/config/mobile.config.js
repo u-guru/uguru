@@ -1,26 +1,4 @@
 "use strict";
-// for (var i = 0; i < 4; i++) {
-//         switch (i) {
-//             case 0:
-//                 //set resolution 1
-//                 browser.manage().window().setSize(320, 480);
-//                 break;
-//             case 1:
-//                 //set resolution 2
-//                 browser.manage().window().setSize(600, 800);
-//                 break;
-//             case 2:
-//                 //set resolution 3
-//                 browser.manage().window().setSize(768, 1024);
-//                 break;
-//             case 3:
-//                 //set resolution 4
-//                 browser.manage().window().setSize(1080, 1920);
-//                 break;
-//             default:
-//                 return;
-//         }
-//     }
 exports.config = {
     framework: 'jasmine2',
 
@@ -262,22 +240,22 @@ exports.config = {
                   bugs : [
                             '../e2e/bugs/error_universitylist.js',
                             '../e2e/bugs/error_universityScroll.js',
-                            '../e2e/bugs/error_gps.js',
-                            '../e2e/bugs/error_majorScroll.js',
-                            '../e2e/bugs/error_majorSearch.js',
-                            '../e2e/bugs/error_courseList.js',
-                            '../e2e/bugs/error_profileEditTest.js',
-                            // '../e2e/bugs/error_guruProfileButton.js', //imcomplicated 
-                            '../e2e/bugs/error_sideFacebookButton.js',
-                            '../e2e/bugs/error_editPassword.js',
-                            '../e2e/bugs/error_loginNewAccount.js',
-                            '../e2e/bugs/error_loginExistAccount.js',
-                            '../e2e/bugs/error_GPSalertAfterLogoff.js', 
-                               '../e2e/bugs/error_guruProfileMajorCourse.js', //imcomplicated 
-                             '../e2e/bugs/error_scrollAddSkill.js', 
-                             '../e2e/bugs/error_phone.js', 
-                              '../e2e/bugs/error_QAsupport.js', 
-                              // '../e2e/bugs/error_profilePhoto.js', 
+                            // '../e2e/bugs/error_gps.js',
+                            // '../e2e/bugs/error_majorScroll.js',
+                            // '../e2e/bugs/error_majorSearch.js',
+                            // '../e2e/bugs/error_courseList.js',
+                            // '../e2e/bugs/error_profileEditTest.js',
+                            // // '../e2e/bugs/error_guruProfileButton.js', //imcomplicated 
+                            // '../e2e/bugs/error_sideFacebookButton.js',
+                            // '../e2e/bugs/error_editPassword.js',
+                            // '../e2e/bugs/error_loginNewAccount.js',
+                            // '../e2e/bugs/error_loginExistAccount.js',
+                            // '../e2e/bugs/error_GPSalertAfterLogoff.js', 
+                            //    '../e2e/bugs/error_guruProfileMajorCourse.js', //imcomplicated 
+                            //  '../e2e/bugs/error_scrollAddSkill.js', 
+                            //  '../e2e/bugs/error_phone.js', 
+                            //   '../e2e/bugs/error_QAsupport.js', 
+                            //   '../e2e/bugs/error_profilePhoto.js', 
                                                           
 
                           ]

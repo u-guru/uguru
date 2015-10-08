@@ -1,6 +1,8 @@
-<ion-view ng-controller='SidebarController'>
+
+<ion-view ng-controller='SideMenuController'>
 <ion-list class='side-menu-list with-icon ng-class:{"student-mode":!root.vars.guru_mode, "guru-mode":root.vars.guru_mode}'>
 	<!-- Toggle between guru-mode and student-mode to switch color modes -->
+
 	<ion-item class='list-item list-item-profile'>
 		<span class="list-item-icon" ng-if='user.id'>
 			<img class='sidebar-img-source' id='sidebar-img-photo' src='{{user.profile_url}}'/>

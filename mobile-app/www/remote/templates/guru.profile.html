@@ -46,18 +46,19 @@
 				<div class='edit-button' hidden> </div>
 				<h1>Courses you can tutor</h1>
 				<div>
-                    <ul class='courses'>
+                    <ul class='courses profile-list profile-list-half'>
     					<li ng-repeat='course in user.guru_courses track by $index'>
-    						<span>{{course.name}}</span>
-    						<a ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
+    						<a class="remove" ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
     							<svg viewBox="0 0 100 100">
     							    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
     							</svg>
     						</a>
+    						<span>{{course.name}}</span>
     					</li>
+    					<li></li>
     				</ul>
                     <ul class="empty" ng-if="!user.guru_courses.length && !profile.edit_mode">
-                        <li style='padding:10px 15px;'class='text-center weight-300 p10x15y'><span><em>No courses added</em></span></li>
+                        <li><span><em>No courses added</em></span></li>
                     </ul>
     				<ul class='default' ng-if='profile.edit_mode'>
     					<li><button class="round" ng-click='launchGuruCoursesModal()'>
@@ -71,16 +72,16 @@
 			</div>
 			<div id="profile-other">
 				<div id="profile-major">
-					<h1>My Majors</h1>
+					<h1>Majors</h1>
 					<div>
-						<ul class='majors' ng-if='user.majors && user.majors.length > 0'>
+						<ul class='majors profile-list' ng-if='user.majors && user.majors.length > 0'>
 							<li ng-repeat='major in user.majors'>
-								<span>{{major.code ||major.abbr || major.title || major.name}}</span>
-								<a ng-click='removeMajor(major, $index)' ng-if='profile.edit_mode'>
+								<a class="remove" ng-click='removeMajor(major, $index)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 									    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
 								</a>
+								<span>{{major.code ||major.abbr || major.title || major.name}}</span>
 							</li>
 						</ul>
 						<ul class="empty" ng-if="!user.majors.length && !profile.edit_mode">
@@ -96,20 +97,52 @@
 						</ul>
 					</div>
 				</div>
+                <div id="profile-experiences">
+                    <h1>Experience</h1>
+                    <div>
+                        <ul class="experience profile-list list with-icon">
+                            <li ng-repeat='experience in user.guru_experiences'>
+                                <a ng-click='launchAddGuruExperienceModal(experience)'>
+                                    <span class="list-item-detail">
+                                        <h2>{{experience.name}}</h2>
+                                        <span>{{experience.years}} years</span>
+                                    </span>
+                                    <span class="list-item-icon">
+                                        <svg viewBox="0 0 100 100">
+                                            <path d="M15.6243489,84.7923176 L19.5509642,73.6399994 L69.794924,23.3911161 L77.0255506,30.6217427 L26.7800007,80.8660212 L15.6243489,84.7923176 Z M13.3333333,87.0833333 L16.6666667,83.75 L13.3333333,87.0833333 L13.3333333,87.0833333 Z M70.8333333,23.75 L73.3350627,21.25 L70.8333333,23.75 L70.8333333,23.75 Z M76.6666667,29.5833333 L79.1666667,27.0833333 L76.6666667,29.5833333 L76.6666667,29.5833333 Z M82.5205606,25.5682252 L85.7479206,28.7955852 C85.7479206,28.7955852 67.7080166,46.8354927 67.5,47.0435059 M75.9393067,32.2348919 L79.1666667,35.4622519 M19.5499992,73.6399994 L26.7800007,80.8700027 L19.5499992,73.6399994 Z M77.7627936,15.0378071 L85.3792239,22.6542374 L81.0085605,27.0249008 L73.3921302,19.4084705 L77.7627936,15.0378071 Z"></path>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="empty" ng-if="!user.guru_experiences.length && !profile.edit_mode">
+                            <li><span><em>No Experience Added</em></span></li>
+                        </ul>
+                        <ul class='default' ng-if='profile.edit_mode'>
+                            <li class='full-x'><button class="round" ng-click='launchAddGuruExperienceModal()'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                </svg>
+                                <span>Add Experience</span>
+                            </button></li>
+                        </ul>
+                    </div>
+                </div>
 				<div id="profile-skills">
 					<h1>Skills</h1>
 					<div>
-						<ul class='skills'>
-							<li ng-repeat='skill in user_skills'>
-								<span>{{skill.name}}</span>
-								<a ng-click='removeGuruSkill(skill)' ng-if='profile.edit_mode'>
+						<ul class='skills profile-list profile-list-half'>
+							<li ng-repeat='subcategory in user.guru_subcategories'>
+								<a class="remove" ng-click='removeGuruSkill(skill)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
 								</a>
+								<span class=''>{{subcategory.name}}</span>
 							</li>
+							<li></li>
 						</ul>
-						<ul class="empty" ng-if="!user.categories.length && !profile.edit_mode">
+						<ul class="empty" ng-if="!user.guru_subcategories.length && !profile.edit_mode">
 							<li><span><em>No skills added</em></span></li>
 						</ul>
 						<ul class='default' ng-if='profile.edit_mode'>
@@ -125,15 +158,16 @@
 				<div id="profile-languages">
 					<h1>Languages</h1>
 					<div>
-						<ul class='languages'>
+						<ul class='languages profile-list profile-list-half'>
 							<li ng-repeat='language in user.guru_languages'>
-								<span>{{language.name}}</span>
-								<a ng-click='removeGuruLanguage(language)' ng-if='profile.edit_mode'>
+								<a class="remove" ng-click='removeGuruLanguage(language)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
 								</a>
+								<span>{{language.name}}</span>
 							</li>
+							<li></li>
 						</ul>
 						<ul class="empty" ng-if="!user.guru_languages.length && !profile.edit_mode">
 							<li><span><em>No languages added</em></span></li>
@@ -146,39 +180,9 @@
 								<span>Add a language</span>
 							</button></li>
 						</ul>
+						<hr ng-if="!profile.edit_mode"/>
 					</div>
 				</div>
-                <div id="profile-experiences">
-                    <h1>Experiences</h1>
-                    <div>
-                        <ul class="credit-body list with-icon">
-                            <li class='full-x' ng-repeat='experience in user.guru_experiences'>
-                                <a ng-click='launchAddGuruExperienceModal(experience)'>
-                                    <span class="list-item-detail">
-                                        <h2>{{experience.name}}</h2>
-                                        <span>{{experience.years}} years</span>
-                                    </span>
-                                    <span class="list-item-icon">
-                                        <svg viewBox="0 0 100 100">
-                                            <path d="M15.6243489,84.7923176 L19.5509642,73.6399994 L69.794924,23.3911161 L77.0255506,30.6217427 L26.7800007,80.8660212 L15.6243489,84.7923176 Z M13.3333333,87.0833333 L16.6666667,83.75 L13.3333333,87.0833333 L13.3333333,87.0833333 Z M70.8333333,23.75 L73.3350627,21.25 L70.8333333,23.75 L70.8333333,23.75 Z M76.6666667,29.5833333 L79.1666667,27.0833333 L76.6666667,29.5833333 L76.6666667,29.5833333 Z M82.5205606,25.5682252 L85.7479206,28.7955852 C85.7479206,28.7955852 67.7080166,46.8354927 67.5,47.0435059 M75.9393067,32.2348919 L79.1666667,35.4622519 M19.5499992,73.6399994 L26.7800007,80.8700027 L19.5499992,73.6399994 Z M77.7627936,15.0378071 L85.3792239,22.6542374 L81.0085605,27.0249008 L73.3921302,19.4084705 L77.7627936,15.0378071 Z"></path>
-                                        </svg>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="empty" ng-if="!user.guru_experiences.length && !profile.edit_mode">
-                            <li><span><em>No Guru Experiences Added</em></span></li>
-                        </ul>
-                        <ul class='default' ng-if='profile.edit_mode'>
-                            <li class='full-x'><button style='width:65%;' class="round" ng-click='launchAddGuruExperienceModal()'>
-                                <svg viewBox="0 0 100 100">
-                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                </svg>
-                                <span>Add Guru Experience</span>
-                            </button></li>
-                        </ul>
-                    </div>
-                </div>
 			</div>
 		</div>
 	</div>
@@ -201,7 +205,7 @@
 	</a>
 	<a class="tab-item" nav-direction='swap' href='#/guru-credibility'>
 		<svg viewBox="0 0 100 100">
-			<path d="M15,80.9978179 C15,83.208162 16.800691,85 19.0021821,85 L80.9978179,85 C83.208162,85 85,83.199309 85,80.9978179 L85,19.0021821 C85,16.791838 83.199309,15 80.9978179,15 L19.0021821,15 C16.791838,15 15,16.800691 15,19.0021821 L15,80.9978179 Z M65.8963209,36.0500496 L74.6420605,36.0500496 L74.6420605,44.8000496 M74.6463209,36.0500496 L55.493321,55.2030495 L44.7969505,44.506679 L25.3536791,63.9499504"></path>
+		    <path d="M50.0004009,87.5 L49.6435674,87.3885396 C49.3284312,87.2907111 41.8541713,84.8882991 34.3526478,75.7726048 C21.9604997,60.7142284 19.3592231,39.2272348 19.3592231,23.8521185 L19.3592231,22.6853931 L20.5259486,22.6493088 C20.7063701,22.6436957 38.7060173,21.9933765 49.2265933,13.1503191 L50.0004009,12.5 L50.7742086,13.1503191 C61.3084165,22.0054046 79.2936299,22.6444975 79.4740514,22.6493088 L80.6407769,22.6845912 L80.6407769,23.8521185 C80.6407769,39.2264329 78.0395003,60.7142284 65.6481541,75.7726048 C58.1466305,84.8882991 50.6723707,87.291513 50.3572345,87.3893415 L50.0004009,87.5 L50.0004009,87.5 Z M50,57.5 L41.1832212,62.1352549 L42.8670761,52.3176275 L35.7341523,45.3647451 L45.5916106,43.9323725 L50,35 L54.4083894,43.9323725 L64.2658477,45.3647451 L57.1329239,52.3176275 L58.8167788,62.1352549 L50,57.5 Z"></path>
 		</svg>
 	</a>
 	<a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
@@ -212,268 +216,3 @@
 </div>
 
 </ion-view>
-
-<!--
-
-<ion-view hide-nav-bar='true' class='ranking guru-profile' cache-view="false">
-
-  <ion-header-bar class='dark-bg-header'>
-      <h1 class='title'>Profile</h1>
-      <div class="buttons">
-
-        <button id='E2E-editProfile' ng-if="!root.vars.profile.edit_mode" class="button button-clear button-header-link button-blue" ng-click='root.vars.profile.edit_mode = !root.vars.profile.edit_mode'>
-          Edit
-        </button>
-        <button id='E2E-saveProfile'ng-if="root.vars.profile.edit_mode"class="button button-clear button-header-link button-submit cancel-button button-blue" ng-click='saveGuruProfile()'>
-          Save
-        </button>
-      </div>
-  </ion-header-bar>
-
-  <div class="tabs home-request-tabs-top tabs-top">
-      <a class="tab-item uppercase ng-class:{'blue-bg white-text':!profile.showCredibility, 'opacity-1-2':profile.showCredibility}" ng-click='profile.showCredibility = false;'>
-        Profile <span class='align-left semibold opacity-4-5' ng-if="user.current_profile_percent">&nbsp;&nbsp;-&nbsp;&nbsp;{{user.current_profile_percent}}%</span>
-      </a>
-      <a class="tab-item uppercase ng-class:{'blue-bg white-text':profile.showCredibility, 'opacity-1-2':!profile.showCredibility}" ng-click='profile.showCredibility = true;'>
-        Credibility <span class='align-left semibold opacity-4-5' ng-if="user.current_credibility_percent >= 0">&nbsp;&nbsp;-&nbsp;&nbsp;{{user.current_credibility_percent}}%</span>
-      </a>
-  </div>
-   <div class="tabs home-request-tabs-top tabs-top white-text bg-edit-mode center hide ng-class:{'show':root.vars.profile.edit_mode}" style='height:44px'>
-    Edit Mode: Tap any component to edit!
-  </div>
-
-<ion-content class='white-bg standard-bg guru-profile-content has-header' style='bottom:50px; top:88px;' scroll="false">
-
-    <div class='pure-g-c flex-column flex-space-between full-height' ng-show='!profile.showCredibility'>
-      <ion-scroll>
-      <ion-slide-box class='guru-profile-slide-box'>
-        <ion-slide style='min-height:200px;'>
-          <div class='profile-banner-bg full-height' ng-style='{"background-image":"url({{img_base}}./img/profile/library.png)"}'>
-          </div>
-            <div class='pure-g-c flex-column j-center guru-profile-img-wrapper full-width relative'>
-              <div class='pure-u-1'>
-                <div class='pure-g'>
-                  <div class='pure-u-1-2'>
-                    <div class='padding-1em' style='padding-left:2em;'>
-                      <a id="E2E-editProfile-editPhoto" ng-click='root.vars.profile.edit_mode && showActionSheetProfilePhoto()'>
-                        <img id = "E2E-editProfile-imgUrl" class='pure-img profile-img sidebar-img guru-profile-img inline'  ng-src='{{user.profile_url}}'/>
-                      </a>
-                    </div>
-                    <div ng-include="img_base 'templates/ratings.components.guru.html'">
-                    </div>
-                  </div>
-
-                  <div class='pure-u-1-2 relative' style='padding-top:1em;'>
-                    <div class='center no-margin'>
-                      <a id="E2E-editProfile-editName" ng-click='root.vars.profile.edit_mode && showPopupEditName()'>
-                        <h1 class='title light uppercase margin-half'>{{user.name.split(' ')[0] ' ' user.name.split(' ')[1][0].toUpperCase()}}.</h1>
-                      </a>
-                      <a id="E2E-editProfile-editSchool"  ng-click='root.vars.profile.edit_mode && goToUniversity()'>
-                        <h5 id = "E2E-schoolName" class='white-text bold no-margin uppercase' value={{user.university.title}}>
-                          {{user.university.title}}
-                        </h5>
-                      </a>
-
-                      <a id="E2E-editProfile-editMajor"  ng-click='root.vars.profile.edit_mode && transitionToMajor()'>
-                        <h5 class='uppercase guru-profile-major-text light no-margin hide ng-class:{"show":user.majors.length > 0}'>
-                          {{user.majors[0].name}}
-                        </h5>
-                        <h5 style='padding-top:0.5em;' class='uppercase semibold no-margin blue hide ng-class:{"show":root.vars.profile.edit_mode && user.majors.length === 0}'>
-                          add a major
-                        </h5>
-                      </a>
-                      <a ng-click='root.vars.profile.edit_mode && showMaxHourlyClicked()'>
-                        <div class='container relative max-hourly-container'>
-                          <h1 class='uppercase light bold' style='margin-top:8px;'>
-                            ${{selectedOption.id}} <span class='profile-15m-text'>/ hour</span>
-                          </h1>
-                          <select ng-show='root.vars.profile.edit_mode' ng-change='maxHourlyOnChange()' id='max-hourly-select' ng-model="selectedOption" ng-options="option.label for option in maxHourlyOptions track by option.id" class='absolute'></select>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </ion-slide>
-        <ion-slide style='width:100% !important;'>
-              <div class='profile-banner-bg full-height' ng-style='{"background-image":"url({{img_base}}./img/profile/library.png)"}'>
-              </div>
-                <div class='pure-g-c flex-column j-center guru-profile-img-wrapper full-width relative'>
-                  <a class='full-width hide ng-class:{"show":!root.vars.profile.edit_mode || !profile.intro_edit_mode}' ng-click='editGuruIntro()'>
-                    <div class='pure-u-1 padding-3em center hide ng-class:{"show":!root.vars.profile.edit_mode}'>
-                        <p class='white-text regular'> {{user.guru_introduction || 'Click edit mode to add an intro'}} </p>
-                    </div>
-                    <div class='pure-u-1 padding-3em center hide ng-class:{"show":root.vars.profile.edit_mode && !profile.intro_edit_mode}'>
-                        <p class='white-text regular'> {{user.guru_introduction || '\nTap me to edit text'}} </p>
-                    </div>
-                  </a>
-                  <div class='pure-u-1 white-text center hide ng-class:{"show":root.vars.profile.edit_mode && profile.intro_edit_mode}' >
-
-                      <textarea placeholder='tell us about yourself' ng-model='user.guru_introduction'id='guru-introduction-text' class='full-width transparent-bg center regular' rows="6"></textarea>
-                      <div class='pure-u-1 full-width absolute' style="left:0;">
-                        <a ng-click='saveGuruIntroduction()' style='min-height:2.5em; line-height:2.5em;' nav-direction='forward' class='button button-full transparent-bg button-footer white-text uppercase no-margin'>Done</a>
-                      </div>
-                  </div>
-              </div>
-
-        </ion-slide>
-      </ion-slide-box>
-
-      <div class='profile-statistics-wrapper padding-1em' style='border-bottom: 1px solid rgba(0,0,0,0.4);' ng-show='user.student_sessions.length || user.response_rate'>
-        <ion-scroll>
-        <div class='pure-g' style='margin-top:15px;' >
-
-              <div class='pure-u-1-3 center'>
-                <div class='no-margin center padding-half' style='border-right:1px solid rgba(0,0,0,0.1);'>
-                  <h1 class='no-margin' style='font-size:250%;'>
-                    {{user.student_sessions.length}}
-                  </h1>
-                  <h5 class='opacity-3-4 no-margin semibold' style='font-size:86%; margin-top:0.7em; opacity:0.5'>
-                    sessions
-                  </h5>
-                </div>
-              </div>
-              <div class='pure-u-1-3 center' style='border-right:1px solid rgba(0,0,0,0.1);'>
-                <div class=' no-margin center padding-half'>
-                  <h1 class='no-margin' style='font-size:250%;'>
-                    {{user.response_rate || 0 '%'}}
-                  </h1>
-                  <h5 class='opacity-3-4 no-margin semibold' style='font-size:86%; margin-top:0.7em; opacity:0.5'>
-                    response rate
-                  </h5>
-                </div>
-              </div>
-              <div class='pure-u-1-3 center'>
-                <div class='no-margin center padding-half'>
-                  <h1 class='no-margin' style='font-size:250%;'>
-                    <1hr
-                  </h1>
-                  <h5 class='opacity-3-4 no-margin semibold' style='font-size:86%; margin-top:0.7em; opacity:0.5'>
-                    last active
-                  </h5>
-                </div>
-              </div>
-        </div>
-      </div>
-       <div class='pure-g-c flex-column j-center center'>
-
-        <div class='pure-g'>
-          <a id="E2E-editProfile-editCourse" class='pure-u-1 center' ng-click='root.vars.profile.edit_mode && transitionToGuruCourses()'>
-            <div class='pure-u-1 padding-half light-border-bottom'>
-              <div class='pure-g'>
-                  <h4 class='semibold uppercase flex-item-c' style='color:rgba(0,0,0,0.3)'>
-                    My Courses
-                  </h4>
-                <div class='pure-u-1'>
-                  <div class='pure-g'>
-                    <div class='pure-u-1 course-tag-wrapper'>
-                      <span style='font-size:100%;' class='course-tag uppercase' ng-repeat='guru_course in user.guru_courses'>{{guru_course.short_name}}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-
-          <div class='pure-u-1 light-border-bottom'>
-            <div class='pure-g'>
-              <div class='pure-u-1-2 padding-half inline align-left'>
-                <div class='attribute-card'>
-                    <div class="title-container mdl-card--expand grey-bg center">
-                      <h5 class="title white-text uppercase semibold">Late night friendly</h5>
-                    </div>
-                    <div id="E2E-editProfile-editLateNight" class="card-body center relative late-night-container">
-                      <h2 class='opacity-1-2' style='font-size:150%'>
-                        I'm up until <br> <strong> {{selectedOptionLateNight.name}} </strong>
-                      </h2>
-                      <select ng-show='root.vars.profile.edit_mode' ng-change='lateNightOnChange()' id='late-night-select' ng-model="selectedOptionLateNight" ng-options="option.name for option in lateNightMappingOptions track by option.id" class='absolute full-width full-height'></select>
-                    </div>
-                </div>
-              </div>
-              <div class='pure-u-1-2 padding-half'>
-                <a class='attribute-card' ng-click='root.vars.profile.edit_mode && transitionToGuruExperiences()'>
-                    <div class="title-container mdl-card--expand grey-bg center">
-                      <h5 class="title white-text uppercase semibold padding-horizontal-only padding-1em">Teaching Experience</h5>
-                    </div>
-                    <div class="card-body">
-                      <h2 class='opacity-1-2' style='font-size:150%'>
-                        <div class="hide ng-class:{'show':user.guru_experiences.length > 0}" ng-repeat='experience in user.guru_experiences'>{{experience.name}} - {{experience.years}} years</div>
-                        <div class='uppercase semibold no-margin blue hide ng-class:{"show":user.guru_experiences.length === 0}'>
-                          Add an experience
-                        </div>
-                      </h2>
-                    </div>
-                </a>
-              </div>
-              <div class='pure-u-1-2 padding-half inline'>
-                <a class='attribute-card' ng-click='root.vars.profile.edit_mode && transitionToGuruRemote()'>
-                    <div class="title-container mdl-card--expand grey-bg center">
-                      <h5 class="title white-text uppercase semibold padding-horizontal-only padding-1em">Remote Friendly</h5>
-                    </div>
-                    <div class="card-body">
-                      <h2 class='opacity-1-2' style='font-size:150%' ng-show="user.skype_friendly || user.facetime_friendly || user.hangouts_friendly || user.messenger_friendly || user.phone_friendly || user.text_friendly || user.email_friendly">
-                        <div class='hide ng-class:{"show":user.skype_friendly}'> Skype </div>
-                        <div class='hide ng-class:{"show":user.facetime_friendly}'> FaceTime </div>
-                        <div class='hide ng-class:{"show":user.hangouts_friendly}'> Hangouts </div>
-                        <div class='hide ng-class:{"show":user.messenger_friendly}'> Instant Chat </div>
-                        <div class='hide ng-class:{"show":user.phone_friendly}'> Phone Call </div>
-                        <div class='hide ng-class:{"show":user.text_friendly}'> Text Msg </div>
-                        <div class='hide ng-class:{"show":user.email_friendly}'> Email </div>
-                      </h2>
-                      <h2 class='opacity-1-2' style='font-size:150%;' ng-show='!(user.skype_friendly || user.facetime_friendly || user.hangouts_friendly || user.messenger_friendly || user.phone_friendly || user.text_friendly || user.email_friendly)'>
-                        <div> In-person only </div>
-                      </h2>
-                    </div>
-                </a>
-              </div>
-              <div class='pure-u-1-2 padding-half'>
-                <a class='attribute-card' ng-click='root.vars.profile.edit_mode && transitionToGuruLanguages()'>
-                    <div class="title-container mdl-card--expand grey-bg center">
-                      <h5 class="title white-text uppercase semibold padding-horizontal-only padding-1em">Spoken Languages</h5>
-                    </div>
-                    <div class="card-body">
-                      <h2 class='opacity-1-2' style='font-size:150%'>
-                        <div ng-repeat='language in user.guru_languages'>{{language.name}}</div>
-                        <div class='uppercase semibold no-margin blue hide ng-class:{"show":user.guru_languages.length === 0}'>
-                          Add a language
-                        </div>
-                      </h2>
-                    </div>
-                </div>
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </ion-scroll>
-</ion-scroll>
-  <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
-  <input type='file' id='file-input-guru-add-transcript' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
-  <div class='full-height windows-top-margin' ng-show='profile.showCredibility' style='top:88px;'>
-    <div ng-include="img_base 'templates/guru.credibility.components.html'" class='full-height'>
-    </div>
-  </div>
-
-</ion-content>
-
-<div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
-  <a class="tab-item" id='home-button' href='#/guru' nav-direction='home'>
-    <img class='pure-img icon' ng-src='{{img_base}}./img/request/house-icon-outline.svg'></i>
-  </a>
-  <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
-    <i class='icon ion-person blue'> </i>
-  </a>
-  <a class="tab-item" id='ranking-tab-button' nav-direction='swap' href='#/guru-ranking'>
-    <i class='icon ion-connection-bars'> </i>
-  </a>
-  <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
-    <img class='pure-img icon' ng-src='{{img_base}}./img/settings-tab-guru.svg'/>
-  </a>
-</div>
-
-
-</ion-view>
- -->

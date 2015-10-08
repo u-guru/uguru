@@ -128,9 +128,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         resolve: {
           loadCache: function($templateCache) {
             $templateCache.get(BASE + 'templates/university.html');
-          },
-          deviceInfo: function(DeviceService) {
-            return DeviceService.getPlatform();
           }
         },
         controller: 'AddUniversityCtrl'
