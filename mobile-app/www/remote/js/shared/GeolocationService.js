@@ -1,5 +1,5 @@
 angular.module('uguru.root.services')
-.service('Geolocation',
+.factory('Geolocation',
     [
     '$rootScope',
     '$timeout',
@@ -13,16 +13,17 @@ function Geolocation($rootScope, $timeout, University,
   var scope;
   var isLocated = null;
 
-  var isLocationActive = false;
-  var isLocationGiven = false;
+  var settings = {
+    isActive: false,
+    isAllowed: null
+  }
   var coordinates = {
     lat: null,
     lon: null
   };
 
   var deviceGPS = {
-    isLocationActive: isLocationActive,
-    isLocationGiven: isLocationGiven,
+    settings: settings,
     coordinates: coordinates,
     sortByLocation: sortByLocation,
     sortByDistance: sortByDistance,
@@ -69,31 +70,29 @@ function Geolocation($rootScope, $timeout, University,
       if (scope) {
         scope.nearestResults = nearestResults;
         scope.user.last_position = position.coords;
-        scope.isLocationActive = true;
-        scope.isLocationGiven = true;
-        isLocationActive = true;
-        isLocationGiven = true;
         scope.loader.hide();
       }
-      return nearestResults;
+
+      settings.isActive = true;
+      settings.isAllowed = true;
+
       //$window.localStorage['nearest-universities'] = JSON.stringify(scope.universities);
     }
     function geoError(error) {
+        console.log("geolocationError: " + error);
         switch(error.code) {
           case 1: // PERMISSION_DENIED
             alert('Sorry! Please enable your GPS settings.');
-            scope.isLocationGiven = false;
-            scope.isLocationActive = false;
-            isLocationGiven = false;
-            isLocationActive = false;
+            settings.isActive = false;
+            settings.isAllowed = false;
             break;
           case 2: // POSITION_UNAVAILABLE
             alert('Sorry! Please check your GPS signal.');
-            scope.isLocationGiven = false;
+            settings.isActive = false;
             break;
           case 3: // TIMEOUT
             alert('Sorry! Please check your GPS signal.');
-            scope.isLocationGiven = false;
+            settings.isActive = false;
             break;
         }
 
@@ -109,6 +108,7 @@ function Geolocation($rootScope, $timeout, University,
                                     list[i].latitude, list[i].longitude);
 
       list[i].miles = numberFormatter.format(Math.round(list[i].rawMiles));
+      //console.log(i + '. ' + list[i].name + ' : ' + list[i].miles + ' miles');
 
     }
     // ASK HURSHAL ABOUT THIS
@@ -121,10 +121,15 @@ function Geolocation($rootScope, $timeout, University,
     //   item.miles = numberFormatter.format(Math.round(item.rawMiles));
     // }
 
-    $rootScope.$apply(function() {
-     list.sort(compareDistance); 
-     return;
-    });
+
+      return list.sort(compareDistance); 
+
+    
+
+    // $rootScope.$apply(function() {
+    //  list.sort(compareDistance); 
+    //  return;
+    // });
   }
 
   function compareDistance(a, b) {
