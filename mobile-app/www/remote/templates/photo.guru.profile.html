@@ -29,11 +29,11 @@
 		<nav id="profile-nav">
 			<hr/>
 			<ul class="ugrid-2">
-				<li><a class="active" href="#">Skills</a></li>
-				<li><a href="#">Gallery</a></li>
+				<li><a href="#">Skills</a></li>
+				<li><a class="active" href="#">Gallery</a></li>
 			</ul>
 		</nav>
-		<div id="profile-skills" class="profile-slide">
+		<div id="profile-skills" class="profile-slide" hidden>
 			<hr/>
 			<section>
 				<h1>Specialties</h1>
@@ -65,6 +65,23 @@
 					<li>STUDIO 6</li>
 					<li>PHOTO 122</li>
 				</ul>
+			</section>
+		</div>
+		<div id="profile-gallery" class="profile-slide">
+			<section>
+				<img ng-src="{{img_base}}./img/sample/1.jpeg" alt=""/>
+				<div class="gallery-desc">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</div>
+			</section>
+			<section>
+				<img ng-src="{{img_base}}./img/sample/2.jpeg" alt=""/>
+			</section>
+			<section>
+				<img ng-src="{{img_base}}./img/sample/3.jpeg" alt=""/>
+			</section>
+			<section>
+				<img ng-src="{{img_base}}./img/sample/4.jpeg" alt=""/>
 			</section>
 		</div>
 		<button id="book-guru" class="fixed bottom-0 full-x bg-charcoal-90p caps semibold">Book Guru</button>
