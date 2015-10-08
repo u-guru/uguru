@@ -205,9 +205,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   //$scope.isLocationActive = false;
   //$scope.isLocationGiven = null; // null if getGPS not called, false if not given, true if lat/lon
-
+  $scope.isLocationActive = Geolocation.isLocationActive;
   $scope.toggleLocationIconAppearance = function() {
-
+    $scope.isLocationActive = !$scope.isLocationActive;
     // get GPS if we haven't attempted it
     if (Geolocation.isLocationGiven === null) {
       getGPS();

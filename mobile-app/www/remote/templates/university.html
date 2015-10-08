@@ -54,6 +54,7 @@
   			            		<span class="school-state">{{university.state}}</span>
   			            		<span class='school-distance txt-lake' ng-if='university.miles <= 300'>{{university.miles}} mi</span>
   			            		<span class='school-distance txt-lake' ng-if='university.miles > 300'>hella far</span>
+                        <span class='school-distance txt-lake' ng-if='university.miles === undefined'>undefined</span>
   			            	</i>
   			            </b>
   					</span>
