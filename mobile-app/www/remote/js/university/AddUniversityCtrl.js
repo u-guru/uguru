@@ -253,7 +253,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           $scope.universities = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universities);
           $scope.universistiesSorted = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
         // },0);
-          $scope.$apply();
+          //$scope.$apply();
+          $timeout(function() {
+            $scope.universityInput.value += "";
+          }, 0);
+          
       }
     }
     );

@@ -89,9 +89,9 @@ angular.module('uguru.util.controllers')
       }
       $timeout(function() {
         var email_input = document.getElementById('email-input')
-          if (email_input) {
-            email_input.focus();
-          }
+          // if (email_input) {
+          //   email_input.focus();
+          // }
       }, 500)
       $timeout(function() {
         $scope.loader.hide();
@@ -105,9 +105,9 @@ angular.module('uguru.util.controllers')
       $scope.loader.show();
       $timeout(function() {
         var email_input = document.getElementById('email-input')
-          if (email_input) {
-            email_input.focus();
-          }
+          // if (email_input) {
+          //   email_input.focus();
+          // }
       }, 500)
       $timeout(function() {
         $scope.loader.hide();
@@ -127,16 +127,16 @@ angular.module('uguru.util.controllers')
 
         if (!$scope.root.vars.loginMode) {
         var first_name_input = document.getElementById('first-name-input')
-          if (first_name_input) {
-            first_name_input.focus();
+          // if (first_name_input) {
+          //   first_name_input.focus();
 
-          }
+          // }
         } else {
           var email_input = document.getElementById('email-input')
-          if (email_input) {
-            email_input.focus();
+          // if (email_input) {
+          //   email_input.focus();
 
-          }
+          // }
         }
 
       }, 250)
@@ -1098,12 +1098,12 @@ angular.module('uguru.util.controllers')
       if (!$scope.signupForm.email || !$scope.signupForm.email.length) {
         $scope.success.show(0,1000,'Please enter your email');
 
-        $timeout(function() {
-          var emailInput = document.getElementById('email-input')
-          if (emailInput) {
-            emailInput.focus();
-          }
-        }, 1250)
+        // $timeout(function() {
+        //   var emailInput = document.getElementById('email-input')
+        //   if (emailInput) {
+        //     emailInput.focus();
+        //   }
+        // }, 1250)
 
         return false;
       }
@@ -1112,12 +1112,12 @@ angular.module('uguru.util.controllers')
       if (!validateEmail($scope.signupForm.email)) {
         $scope.success.show(0,1000,'Please enter a valid email');
         $scope.signupForm.email = '';
-        $timeout(function() {
-          var emailInput = document.getElementById('email-input');
-          if (emailInput) {
-            emailInput.focus();
-          }
-        }, 1250)
+        // $timeout(function() {
+        //   var emailInput = document.getElementById('email-input');
+        //   if (emailInput) {
+        //     emailInput.focus();
+        //   }
+        // }, 1250)
 
         return false;
       } else {
@@ -1127,12 +1127,12 @@ angular.module('uguru.util.controllers')
       if (!$scope.signupForm.password) {
         $scope.success.show(0,1000,'Please enter a password');
 
-        $timeout(function() {
-          var passwordInput = document.getElementById('password-input');
-          if (passwordInput) {
-            passwordInput.focus();
-          }
-        }, 1250);
+        // $timeout(function() {
+        //   var passwordInput = document.getElementById('password-input');
+        //   if (passwordInput) {
+        //     passwordInput.focus();
+        //   }
+        // }, 1250);
 
         return false;
       } else {
@@ -1152,13 +1152,8 @@ angular.module('uguru.util.controllers')
 
       if (!formDict.full_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
-        document.getElementsByName('signup-name')[0].focus();
+        // document.getElementsByName('signup-name')[0].focus();
 
-        var shake = document.getElementById('input_first')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
         return false;
       } else {
         var nameComponents = $scope.signupForm.full_name.split(' ')
@@ -1173,13 +1168,7 @@ angular.module('uguru.util.controllers')
 
       if (!formDict.last_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
-        document.getElementsByName('signup-last-name')[0].focus();
-
-        var shake = document.getElementById('input_last')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
+        // document.getElementsByName('signup-last-name')[0].focus();
         return false;
       } else {
         $scope.user.last_name = $scope.signupForm.last_name;
@@ -1187,13 +1176,7 @@ angular.module('uguru.util.controllers')
 
       if (!formDict.email || !Utilities.validateEmail(formDict.email)) {
         $scope.success.show(0,2000,'Please enter a valid email.');
-        document.getElementsByName('signup-email')[0].focus();
-
-        var shake = document.getElementById('input_email')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
+        // document.getElementsByName('signup-email')[0].focus();
         return false;
       } else {
         $scope.user.email = $scope.signupForm.email;
@@ -1202,13 +1185,7 @@ angular.module('uguru.util.controllers')
       if (!formDict.password) {
         $scope.success.show(0,2000,'Please enter a valid password.');
         $scope.user.password = $scope.signupForm.password;
-        document.getElementsByName('signup-password')[0].focus();
-
-        var shake = document.getElementById('input_password')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
+        // document.getElementsByName('signup-password')[0].focus();
         return false;
       } else {
         $scope.user.password = $scope.signupForm.password;
@@ -1264,9 +1241,9 @@ angular.module('uguru.util.controllers')
             $scope.success.show(0, 1000, 'Incorrect username or password');
             $timeout(function() {
               var passwordInput = document.getElementById('password-input')
-              if (passwordInput) {
-                passwordInput.focus();
-              }
+              // if (passwordInput) {
+              //   passwordInput.focus();
+              // }
             }, 1250)
         }
       });
