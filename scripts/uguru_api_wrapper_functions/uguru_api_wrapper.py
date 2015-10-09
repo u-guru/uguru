@@ -1,12 +1,12 @@
 import requests,json
 import sys
-empty_array_dict = {}
+
 first_api = 'http://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3/universities/us_news'
 requests = requests.get(first_api).text
 school_information = json.loads(requests)
 school_name = {}
+empty_array_dict = {}
 outer_array = []
-second_array = []
 for items in school_information:
 	index1 = 0
 	index2 = 0
@@ -22,7 +22,7 @@ for items in school_information:
 	array = []
 	each_item_array = []
 	missing_field_dict = {}
-	new_field = {}
+
 	field['banner_url'] = items['banner_url']
 	if field['banner_url'] == None:
 		name1 = "Banner_URL"
@@ -51,9 +51,9 @@ for items in school_information:
 		each_item_array.append(name4)
 	field['num_emails'] = items['num_emails']
 	if field['num_emails'] == 0:
-		#name5 = "num_emails"
+		name5 = "num_emails"
 		index5 = 8	
-	#	each_item_array.append(name5)
+		each_item_array.append(name5)
 
 	field['population'] = items['population']
 	if field['population'] == 0:
@@ -68,36 +68,34 @@ for items in school_information:
 
 	field['num_depts'] = items['num_depts']
 	if field['num_depts'] == 0:
-		#name8 = "Num_depts"
+		name8 = "Num_depts"
 		index9 = 8
-		#each_item_array.append(name8)
+		each_item_array.append(name8)
 	field['num_courses'] = items['num_courses']
 	if field['num_courses'] == 0:
-		#name9 = "Num_courses"
+		name9 = "Num_courses"
 		index10 = 8
-		#each_item_array.append(name9)
+		each_item_array.append(name9)
 
 	field['school_name'] = items['name']
-
-	if items['num_depts'] == 0 and items['num_courses'] == 0 and items['num_emails'] == 0:
-		pass
-	elif each_item_array:
+	if items['banner_url'] == None:	
+		new_field = {}
 		new_field['name'] = items['name']
 		new_field['id'] = items['id']
 		new_field['missing_fields'] = each_item_array
 
+
 		total =  index1 + index2 + index3 + index4 + index5 +  index6 + index7 + index8 + index9 + index10
-		total_count =  total
-		array.append(new_field)
+		total_count = items['name'] + ' | ' + str(total)
+		
+		array.append(field)
 		
 		empty_array_dict[total_count] = new_field
-		item_info  = {}
-		item_info['school_info'] = empty_array_dict
-		first_array = []
-		first_array.append(item_info)
+		
+
 		with open('school_data.json','wb') as outfile:
-			json.dump(first_array,outfile,indent=4, sort_keys = True)
+			json.dump(empty_array_dict,outfile,indent=4)
 
 
- 
-	
+		 
+			
