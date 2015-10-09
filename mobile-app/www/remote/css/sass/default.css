@@ -1006,12 +1006,27 @@ header {
     header[class*="bg-white"] svg path {
       stroke: #40484B !important; }
 
-.verified span svg {
-  display: inline !important;
-  width: 20px;
-  height: 20px; }
-  .verified span svg path:first-child {
-    fill: #50A5DD; }
+.verified {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+  .verified span svg {
+    display: inline-block !important;
+    margin-left: 5px;
+    width: 20px;
+    height: 20px; }
+    .verified span svg path:first-child {
+      fill: #50A5DD; }
 
 .section-header, .section-header-dark {
   padding: 10px;
