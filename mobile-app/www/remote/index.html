@@ -236,6 +236,17 @@
       console.log(getMobileOperatingSystem());
 
     </script>
+    <script>
+     +function(l,y,t,i,c,s) {
+         l['LocalyticsGlobal'] = i;
+         l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
+         l[i].t = +new Date;
+         (s = y.createElement(t)).type = 'text/javascript';
+         s.src = 'lib/localytics/localytics.js';
+         (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
+
+     }(window, document, 'script', 'll');
+    </script>
 
     <!-- <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>-->
 

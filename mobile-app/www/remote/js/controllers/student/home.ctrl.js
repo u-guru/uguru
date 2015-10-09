@@ -123,9 +123,6 @@ angular.module('uguru.student.controllers', [])
             $scope.verbModal.hide();
         }
 
-        $timeout(function() {
-            AnimationService.initSlide();
-        }, 500);
         $scope.goToBecomeGuru = function() {
 
 
@@ -200,14 +197,14 @@ angular.module('uguru.student.controllers', [])
                  anchor: new google.maps.Point(0,0),
                  strokeWeight: 0,
                  scale: 1/2,
-                 latitude: $scope.user.university.latitude,
-                 longitude: $scope.user.university.longitude,
+                 latitude: ($scope.user.university && $scope.user.university.latitude) || 0,
+                 longitude: ($scope.user.university && $scope.user.university.longitude) || 0,
                  labelClass: 'student-home-map-label'
             }
 
             var mapOptions = {
-                "latitude": $scope.user.university.latitude,
-                "longitude": $scope.user.university.longitude,
+                "latitude": ($scope.user.university && $scope.user.university.latitude) || 0,
+                "longitude": ($scope.user.university && $scope.user.university.longitude) || 0,
                 "saturation": -100,
                 "elemId": "student-home-map-container",
                 "lightness": -5,
@@ -249,11 +246,9 @@ angular.module('uguru.student.controllers', [])
                 checkOnboardingStatus();
             }, 1000);
 
-
             // $timeout(function() {
             //     $scope.launchRequestModal();
             // }, 1000);
-
 
         });
 
