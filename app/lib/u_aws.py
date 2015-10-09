@@ -34,11 +34,17 @@ def get_details_file():
 	pass
 
 ## Takes a static URL && uploads it 
-## Make sure the API has 
-def store_file_from_url(image_url):
-	## may need third party library, but check if aws.py API allows you to do that
+## Returns the url
+## The URL MUST BE 
+## ---> https://
+## ---> public, so we can open it && it works on incognito chrome
+def store_file_from_url(image_url, permissions):
+	# Define the main part in pillow and return it here
+	# from u_pillow import ... 
 	pass
 
+## Takes a local file URL && uploads it to amazon s3
 def store_file(_file, bucket):
+	## Use pillow library for this
 	pass
 
