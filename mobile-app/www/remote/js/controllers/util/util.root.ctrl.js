@@ -58,8 +58,8 @@ angular.module('uguru.util.controllers')
 
         $scope.isLocalServer = LOCAL || false;
 
-        $scope.window = {       
-            width: document.querySelector('body').getBoundingClientRect().width        
+        $scope.window = {
+            width: document.querySelector('body').getBoundingClientRect().width
         }
 
 
@@ -190,8 +190,8 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.toggleRightSideMenu = function() {
-            console.log('this is called');
             $ionicSideMenuDelegate.toggleRight();
+            console.log("TOGGLE RIGHT");
             $timeout(function() {
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
             }, 250);
@@ -418,7 +418,7 @@ angular.module('uguru.util.controllers')
             }, false);
 
             document.addEventListener("online", function() {
-                // is this desktop only? 
+                // is this desktop only?
                 if (!$scope.platform.web)
                 {
                     return;
@@ -486,7 +486,7 @@ angular.module('uguru.util.controllers')
                 $scope.loader.hide();
             }, 1000);
 
-        } 
+        }
         else if ($scope.user && $scope.user.university_id) {
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');

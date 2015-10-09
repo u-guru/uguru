@@ -77,8 +77,8 @@ function DeviceService($cordovaNgCardIO,
 
     var userAgent = navigator.userAgent;
     console.log("userAgent: " + userAgent);
-    
-    if (isMobile() ) {
+
+     if(userAgent.indexOf('wv')!==-1) {
       onDeviceReady(scope);
     }
 
@@ -86,7 +86,7 @@ function DeviceService($cordovaNgCardIO,
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
-    
+
 		//checkUpdates();
 
     //Ugh --> they overroad the native js OnDOMContentLoaded ...

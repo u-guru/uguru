@@ -17,10 +17,11 @@ angular.module('uguru.guru.controllers', [])
   '$ionicBackdrop',
   '$ionicViewSwitcher',
   '$ionicActionSheet',
+  'RankingService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet)     {
+  $ionicActionSheet, RankingService)     {
 
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
@@ -85,6 +86,24 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           }
         }
 
+
+        var getIonicSideMenuOpenRatio = function() {
+            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+            return openRatio;
+        }
+
+        var isSideMenuOpen = function(ratio) {
+            if (!ratio && ratio !== -1) {
+                $scope.sideMenuActive = false;
+            } else {
+                $timeout(function() {
+                    $scope.sideMenuActive = true;
+                }, 250)
+            }
+        }
+
+        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+
         $scope.launchGuruRankingPopup = function() {
 
           var homeCenterComponent = document.getElementById('guru-home');
@@ -124,6 +143,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               }
           });
           circle.text = document.getElementById('percentile-ranking');
+          RankingService.guruHomeProgressCircle = circle;
           return circle;
 
         }
@@ -188,8 +208,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.initializeProgressBars = function() {
-          var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar');
-          animateProgressCircle(guruRankingCircle, $scope.user.guru_ranking, true);
+          var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+          animateProgressCircle(guruRankingCircle, $scope.user.current_guru_ranking);
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
           animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent || 60);
@@ -199,6 +219,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           var guruHourlyLine = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
           animateProgressLine(guruHourlyLine, $scope.user.current_hourly || 80);
+
         }
 
         var initGuruRankingCircleProgress = function() {
@@ -209,32 +230,59 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return document.querySelectorAll('.progressbar-text').length;
         }
 
+        var checkIsFirstTimeGuruMode = function(appOnboardingObj) {
+          console.log('checking...');
+            if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.guruWelcome) {
+                console.log ('it is the first itme..');
+                appOnboardingObj = {
+                    guruWelcome: true
+                }
+                $localstorage.setObject('appOnboarding', appOnboardingObj);
+                $scope.launchWelcomeGuruPopup();
+            } else {
+              console.log(appOnboardingObj);
+            }
+        }
+
 
         $scope.$on('$ionicView.beforeEnter', function() {
 
-          console.log($scope.user);
-
             if (!haveProgressBarsBeenInitialized()) {
               $timeout(function() {
+
+                //show it after the progress is complete
                 $scope.initializeProgressBars();
+
               }, 500)
             }
 
+            var appOnboardingObj = $localstorage.getObject('appOnboarding');
+            
+            if (!haveProgressBarsBeenInitialized) {
+              checkIsFirstTimeGuruMode(appOnboardingObj);
+            } else {
+
+              // wait til the bar is loaded
+              $timeout(function() {
+                checkIsFirstTimeGuruMode(appOnboardingObj);
+              }, 5000)
+
+            }
         });
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
-        // $scope.$on('$ionicView.enter', function() {
-        //   $timeout(function() {
-        //       $scope.launchGuruRankingPopup();
+        $scope.$on('$ionicView.enter', function() {
 
-        //       $timeout(function() {
-        //         var guruRankingPopupCircle = initGuruRankProgress('#guru-ranking-popup-progress-bar', '#2B3234','#69B3A5');
+          $timeout(function() {
+            //commented out until it's 100% so won't get in the way of other branches pulling mine.
+            
+            if (RankingService.recentlyUpdated || RankingService.updateRanking($scope.user)) {
+              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
+            }
 
-        //         animateProgressCircle(guruRankingPopupCircle, 75);
-        //       }, 1000 )
+          }, 1000)
 
-        //   }, 1000)
-        // }, 1000)
+        })
 
 
 

@@ -1207,6 +1207,70 @@ section {
 	}
 }
 
+// STUDENT COURSES MODAL
+.student-courses-view {
+	#course {
+		background: white;
+		header {
+			color: $charcoal;
+			background: $bakery-bg;
+			svg {
+				path {
+					stroke: $charcoal;
+				}
+			}
+			.onboarding-search {
+				.clear-search-input {
+					position: absolute;
+				    right: 0;
+				    top: 20px;
+				    right: 10px;
+				    color: rgba($charcoal,.7);
+				    padding: 0px;
+				}
+				input {
+					border-bottom: 1px solid rgba($charcoal,.5);
+					color: $charcoal;
+					@include placeholder {
+						color: rgba($charcoal,.5);
+					}
+				}
+				input:active, input:focus {
+					border-bottom-color: $charcoal;
+					@include placeholder {
+						color: $charcoal;
+					}
+				}
+				&:before {
+					background: url(../../img/svg/search-dark.svg) no-repeat center center/cover,
+								url(/static/remote/img/svg/search-dark.svg) center/cover no-repeat;
+				}
+			}
+		}
+	}
+	#courses-list {
+		ul {
+			li {
+				label {
+					background: $smoke;
+					color: $charcoal;
+					border-color: $campus;
+				}
+				input:checked + label {
+					background: $campus;
+					border-color: rgba(white,.4)!important;
+				}
+				input:active + label {
+					background: rgba($campus,.2);
+				}
+				input:checked:active + label {
+					background: $campus;
+				}
+			}
+		}
+	}
+}
+
 
 /* ---------- SIDEBAR & MENUS */
 // SIDEBAR
@@ -2093,7 +2157,6 @@ section {
 
 // COURSES
 .courses-view {
-	background: $charcoal;
 	header {
 		&::before {
 			background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
@@ -2110,8 +2173,6 @@ section {
 					display: block;
 					width: 100%;
 					padding: 15px 20px;
-					background: rgba(white,.1);
-					border-color: $campus;
 					font-size: 18px;
 					font-weight: 400;
 					line-height: 24px;
@@ -2140,16 +2201,35 @@ section {
 					cursor: pointer;
 				}
 				input:checked + label {
-					background: $campus;
-					border-color: white!important;
 					color: inherit!important;
 					font-weight: 600;
+				}
+				input:checked:active + label {
+					@include opacity(.75);
+				}
+			}
+		}
+	}
+}
+.courses-view:not(.student-courses-view) {
+	#course {
+		background: $charcoal;
+	}
+	#courses-list {
+		ul {
+			li {
+				label {
+					background: rgba(white,.1);
+					border-color: $campus;
+				}
+				input:checked + label {
+					background: $campus;
+					border-color: white!important;
 				}
 				input:active + label {
 					background: rgba(white,.2);
 				}
 				input:checked:active + label {
-					@include opacity(.75);
 					background: $campus;
 				}
 			}
@@ -3001,6 +3081,7 @@ section {
 						z-index: 2;
 					}
 					svg {
+						@include transition(.15s ease-in-out);
 						display: block;
 						position: absolute;
 						z-index: 1;
@@ -3009,12 +3090,22 @@ section {
 						width: 100%;
 						height: 100%;
 						path {
+							@include transition(.15s ease-in-out);
 							@include opacity(.2);
 							fill: none;
 							stroke: $charcoal;
 							stroke-width: 3px;
 							stroke-linecap: round;
 							stroke-linejoin: round;
+						}
+					}
+				}
+				a.active, a:active, a:hover {
+					svg {
+						background: rgba($charcoal,.2);
+						path {
+							@include opacity(.4);
+							stroke: $bakery;
 						}
 					}
 				}

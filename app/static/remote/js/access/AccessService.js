@@ -1,8 +1,11 @@
 angular
 	.module('uguru.util.controllers')
-	.factory('AccessService', AccessService);
+	.factory('AccessService', [
+		'$localstorage',
+		AccessService
+		]);
 
-function AccessService() {
+function AccessService($localstorage) {
 
 	var genericAccessCode = 'cool';
 
@@ -11,9 +14,19 @@ function AccessService() {
 	}
 
 	function validate(code) {
-		console.log("code entered: " + code);
-		return code === genericAccessCode;
-	}
+		if(code !== undefined) {
+			console.log("code entered: " + code);
+			if(code===genericAccessCode) {
+				$localstorage.set("access", "true");
+				return true;
+			} else return false;
 
+		} else {
+			var storedAccess = JSON.parse($localstorage.get("access", "false"));
+			console.log("storedAccess: " + storedAccess);
+			return storedAccess;
+		}
+	
+	}
 
 }

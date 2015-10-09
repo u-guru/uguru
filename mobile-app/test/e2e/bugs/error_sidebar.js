@@ -90,8 +90,13 @@ describe('#Error Test Flow : Sidemenu test',function()
 		it('Close Side',function()
 		{
 			browser.executeScript("arguments[0].click();", element(by.id('side-menu-left-overlay')).getWebElement());
+			element(by.id('side-menu-left-overlay')).click();
 		});	
-		
+		it('Close Side',function()
+		{
+			element.all(by.css('[ng-click="toggleRightSideMenu()"]')).last().click();
+
+		});	
 		it('wait side',function()
 		{
 			element(by.css('.view-container')).getLocation().then(function(value)
