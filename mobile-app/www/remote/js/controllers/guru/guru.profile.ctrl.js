@@ -22,6 +22,10 @@ angular.module('uguru.guru.controllers')
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook, uTracker, University) {
 
+    $scope.input = {
+      email: ''
+    };
+
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
@@ -41,11 +45,11 @@ angular.module('uguru.guru.controllers')
                   return re.test(email);
     }
 
-    var validateEmailAndSend = function() {
+    $scope.validateEmailAndSend = function(inputEmail) {
 
       var editEmailInput = document.getElementById('user-confirm-email-input')
 
-      if (!editEmailInput.value) {
+      if (!validateEmail(inputEmail)) {
         alert('Please enter a valid email');
         return;
       }
@@ -553,7 +557,7 @@ angular.module('uguru.guru.controllers')
 
           uguruPopupSaveLink.addEventListener("click", function(event) {
 
-              validateEmailAndSend()
+              $scope.validateEmailAndSend($scope.input.email);
 
           })
 

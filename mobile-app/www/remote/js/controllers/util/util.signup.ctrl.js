@@ -919,7 +919,7 @@ angular.module('uguru.util.controllers')
                   var postSuccessCallback = function() {
                     $scope.fbLoginSuccessAlreadyShown = true;
                     $scope.loader.showSuccess('Login Successful!', 10000);
-                    $scope.ionicSideMenuDelegate.toggleRight();
+                    $ionicSideMenuDelegate.toggleRight();
                     $timeout(function() {
                       $scope.loader.setSuccessText('Syncing profile info...');
                     }, 2500);
@@ -1263,8 +1263,8 @@ angular.module('uguru.util.controllers')
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
           $timeout(function() {
-            if ($scope.ionicSideMenuDelegate.isOpen()) {
-              $scope.ionicSideMenuDelegate.toggleRight();
+            if ($ionicSideMenuDelegate.isOpen()) {
+              $ionicSideMenuDelegate.toggleRight();
             }
           }, 500)
           $scope.loader.showSuccess('Login Successful!', 2500);
