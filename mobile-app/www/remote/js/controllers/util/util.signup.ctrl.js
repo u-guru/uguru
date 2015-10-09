@@ -23,11 +23,12 @@ angular.module('uguru.util.controllers')
   'Support',
   '$ionicPlatform',
   'InAppBrowser',
+  'Utilities',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, $ionicPlatform, InAppBrowser) {
+  Camera, Support, $ionicPlatform, InAppBrowser, Utilities) {
 
 
 // Implement a section for modals here
@@ -1149,11 +1150,6 @@ angular.module('uguru.util.controllers')
     $scope.validateSignupForm = function() {
       var formDict = $scope.signupForm;
 
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
-
       if (!formDict.full_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-name')[0].focus();
@@ -1189,20 +1185,8 @@ angular.module('uguru.util.controllers')
         $scope.user.last_name = $scope.signupForm.last_name;
       }
 
-      if (!formDict.email) {
-        $scope.success.show(0,2000,'Please fill in all fields!');
-        document.getElementsByName('signup-email')[0].focus();
-
-        var shake = document.getElementById('input_email')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
-        return false;
-      }
-
-      if (!validateEmail(formDict.email)) {
-        $scope.success.show(0,2000,'Please fill in all fields!');
+      if (!formDict.email || !Utilities.validateEmail(formDict.email)) {
+        $scope.success.show(0,2000,'Please enter a valid email.');
         document.getElementsByName('signup-email')[0].focus();
 
         var shake = document.getElementById('input_email')
@@ -1216,7 +1200,7 @@ angular.module('uguru.util.controllers')
       }
 
       if (!formDict.password) {
-        $scope.success.show(0,2000,'Please fill in all fields!');
+        $scope.success.show(0,2000,'Please enter a valid password.');
         $scope.user.password = $scope.signupForm.password;
         document.getElementsByName('signup-password')[0].focus();
 

@@ -29,13 +29,14 @@ angular.module('uguru.util.controllers')
     'Utilities',
     'Category',
     'DownloadService',
+    'PopupService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
         $cordovaSplashscreen, $timeout, Geolocation,
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
-         Utilities, Category, DownloadService) {
+         Utilities, Category, DownloadService, PopupService) {
 
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
@@ -62,6 +63,37 @@ angular.module('uguru.util.controllers')
             width: document.querySelector('body').getBoundingClientRect().width        
         }
 
+        $scope.user = {};
+
+        $scope.popupInput = {
+            emailConfirm: '',
+            phoneConfirm: '',
+            codeConfirm: '',
+            editName: '',
+            editEmail: '',
+            editPhone: '',
+            editPasswordOld: '',
+            editPasswordNew: ''
+        };
+
+        $scope.popup = {
+            email_confirm: getButtonLabel('emailConfirm'),
+            phone_confirm: getButtonLabel('phoneConfirm')
+        }
+
+        function getButtonLabel(popup) {
+            switch(popup) {
+                case 'emailConfirm':
+                        if($scope.user.school_email_token) return 'Send Confirmation';
+                        else return 'Resend Confirmation';
+                    break;
+                case 'phoneConfirm':
+                        if($scope.user.phone_email_token) return 'Send';
+                        else return 'Verify';
+                    break;
+                default: break;
+            }
+        }
 
         //how to make platform ready...
         $scope.user = User.getLocal();
@@ -383,6 +415,8 @@ angular.module('uguru.util.controllers')
 
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
+
+            PopupService.init();
             DownloadService.testNetworkSpeed();
             DeviceService.readyDevice($scope);
             $scope.platform.mobile = DeviceService.isMobile();
