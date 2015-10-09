@@ -122,7 +122,7 @@ def lastActiveTime(insta_username):
 	import time
 	last_active = 'https://api.instagram.com/v1/users/'+insta_username+'/media/recent/?access_token='+access_token
 	response = requests.get(last_active).text
-	load_json_obj = json.loads(response)['data']
+	load_json_obj = json.loads(response)['data']hing about
 	for time_info in load_json_obj:
 		python_date_time = time.strftime("%D %H:%M", time.localtime(int(time_info['created_time'])))
 		return python_date_time
@@ -130,12 +130,9 @@ def lastActiveTime(insta_username):
 ### [SAVE FOR LAST] Save this one for last: CHALLENGING
 ### Get me an array of all the instagram followrs for one post
 def getUserFollowers(insta_username, count=20):
-	user_followers = 'https://api.instagram.com/v1/users/'+insta_username+'?access_token='+access_token
+	user_followers = 'https://api.instagram.com/v1/users/'+insta_username+'/followed-by?access_token='+access_token+'&'+count
 	response = requests.get(user_followers).text
 	load_json_obj = json.loads(response)['data']
-	for items in load_json_obj:
-		followed_by = items['followed_by']
-		follows = items['follow']
-		return followed_by,follows
+	return load_json_obj
 
 
