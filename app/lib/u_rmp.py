@@ -1,6 +1,12 @@
 
-### Searches rate my professor
+import requests
+from bs4 import BeautifulSoup
+
+first_api_call = 'http://search.mtvnservices.com/typeahead/suggest/?solrformat=true&rows=1000&callback=jQuery111003018739989493042_1444415545511&q=*+&defType=edismax&bq=schoolname_sort_s%3A%22UC+%22%5E1000&qf=schoolname_autosuggest&bf=pow(total_number_of_ratings_i%2C1.9)&sort=score+desc&siteName=rmp&rows=5100&group=off&group.field=content_type_s&group.limit=20&fq=content_type_s%3ASCHOOL'
+response = requests.get(first_api_call).text
+print response
 def getProfessorsForUniversityRMP(university_name):
+	
 	pass
 
 def getRatingsFromProfessor(professor_rmp_id):

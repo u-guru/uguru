@@ -2,17 +2,13 @@ import upwork, httplib2, requests, urlparse, dryscrape
 from urlparse import urlparse, parse_qs
 import sys, pprint, json
 
-class DevNull:
-	def write(self,msg):
-		pass
-
-
 
 
 httplib2.Http(".cache", disable_ssl_certificate_validation=True)
 key = '8945fabd1900de9746d74e5782d9b623'
 secret = '918aeab388eeb19d'
 client = upwork.Client(key,secret)
+
 authorize_url =  client.auth.get_authorize_url()
 print authorize_url
 check_in = requests.get(authorize_url)
@@ -52,7 +48,6 @@ def get_submission_ids():
 				json.dump(big_array,submission_id,indent = 4)
 			print "Id's are saved!"
 			return big_array
-
 
 
 
