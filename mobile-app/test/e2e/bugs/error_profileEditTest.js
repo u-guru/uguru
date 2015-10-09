@@ -8,7 +8,7 @@
 // var Account= require('../side/accountPageObject.js');
 // var Sidebar= require('../side/sidebarPageObject.js');
 
-describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is applied to the profile page',function()
+describe('#Error Test Flow : Edit mode is activated ',function()
 {
 	// var university = new University();
  //    var access  = new Access();
@@ -204,16 +204,6 @@ describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is
 			expect(element(by.id('btn-save-profile')).isPresent()).toBe(false,"Save Button Support to not present");
 		});
 	});
-	describe('Check data from becomeGuru is applied to profile',function()
-	{
-		it('Check Major has something',function()
-		{
-			var objList = element.all(by.css('#profile-major li'));
-			objList.then(function(items)
-			{
-				expect(items.length>1).toBe(true,"Nothing is Add to profile");
-			});
-		});		
-	});
+	
 
 });

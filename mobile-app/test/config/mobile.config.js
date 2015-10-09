@@ -240,7 +240,7 @@ exports.config = {
                   bugs : [
                             // // '../e2e/bugs/error_universitylist.js', //doesn't need anymore
                             // '../e2e/bugs/error_universityScroll.js',
-                            '../e2e/bugs/error_gps.js',
+                            // '../e2e/bugs/error_gps.js',
                             // '../e2e/bugs/error_majorScroll.js',
                             // '../e2e/bugs/error_majorSearch.js',
                             //   '../e2e/bugs/error_courseList.js',
@@ -256,7 +256,9 @@ exports.config = {
                             //  '../e2e/bugs/error_phone.js', 
                             //   '../e2e/bugs/error_QAsupport.js', 
                             //   '../e2e/bugs/error_profilePhoto.js', 
-                                                          
+                            //   // '../e2e/bugs/error_profileName.js',  // incomplicated 
+                              '../e2e/bugs/error_BecomeGuruToProfile.js', 
+
 
                           ]
 

@@ -1,8 +1,6 @@
 
-describe('#Error Test Flow : Major + Course has no data && Mutiple #guru-tab-bar elements 	',function()
+describe('#Error Test Flow : Error message on sign up',function()
 {
-	
-
 
 	afterAll(function()
 	   {
@@ -120,7 +118,7 @@ describe('#Error Test Flow : Major + Course has no data && Mutiple #guru-tab-bar
 		// var account = new Account();
 		// var sidebar = new Sidebar();
 
-		it('Launch Profile',function()
+		it('Launch profile',function()
 		{
 			browser.wait(EC.elementToBeClickable(element(by.id('btn-edit-profile'))),4000);
 	 		element(by.id('btn-edit-profile')).click();	
@@ -129,17 +127,17 @@ describe('#Error Test Flow : Major + Course has no data && Mutiple #guru-tab-bar
 		describe("Sign up with Email",function()
 		{
 			
-			it('Enter Name : ',function()
+			it('Enter name : ',function()
 			{
 				account.enterName('jason');
 			});
 
 			it('Enter Email : ',function()
 			{
-				account.enterEmail();
+				account.enterEmail('wertf');
 			});
 
-			it('Enter Password : ',function()
+			it('Enter password : ',function()
 			{
 				account.enterPassword('test');
 			});
@@ -148,68 +146,11 @@ describe('#Error Test Flow : Major + Course has no data && Mutiple #guru-tab-bar
 			{
 			    account.CreateAccount();
 			});
-			it('check Sign up successful',function()
+			it('Check Check Message',function()
 			{
-				account.CheckAccountMessage("Account Successfully Created");
+				account.CheckAccountMessage("Please fill valid Email ");
 			})
 
-			it('Check Side Menu is not present',function()
-			{
-				expect(true).toBe(false,'Incompleted yet');
-				// var side = element(by.css('.menu.menu-right'));
-				// // side.isDisplayed().then(function(value)
-				// // {
-				// // 	if(value == true)
-				// // 	{
-				// // 		expect(value).toBe(false,"Side Menus shouldn't display");
-				// // 		sidebar.FindSideButton("STUDENT MODE");
-				// // 		element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).click();
-				// // 		element(by.css('.view-container')).click();
-				// // 	}	
-				// // });
-				// var settingsLink = element.all(by.css('ion-view'));
-				// browser.sleep(5000);
-				// settingsLink.then(function(items)
-				// {
-				// 	expect(items.length).toBe(0);
-				// 	// browser.wait(EC.elementToBeClickable(items[2]), 5000); //wait for the element to become clickable
-				// 	browser.wait(EC.visibilityOf(items[3]), 5000); //wait for the element to become clickable
-				// 	items[3].click();
-				// });
-				// browser.sleep(10000);
-			});
-			
 		});	
 	});
-
-	describe('Check photo upload',function()
-	{
-		it('Click profile tab',function()
-		{
-			guru.OpenProfile();
-		});		
-
-		it('Check Edit is disabled',function()
-		{
-			guruprofile.CheckEditModeNotActived();
-			this.EditModeButton.isPresent().then(function(value)
-			{
-				if(value === true)
-					guruprofile.ActiveEditMode();
-			});
-		});
-
-		it('Upload photo',function()
-		{
-			guruprofile.UploadPhoto('small');
-		});
-
-		it('Check photo',function()
-		{
-			guruprofile.checkImgIsUpdated();
-		});
-
-	});
-	
-
 });

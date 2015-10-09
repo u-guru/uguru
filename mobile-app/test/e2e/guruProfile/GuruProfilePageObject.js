@@ -2,6 +2,14 @@ var GuruProfile = function()
 {
 	this.photo = element(by.id('profile-icon'));
 	this.photoImg = element(by.id('guru-profile-img'));
+	this.ProfileName = element(by.id('profile-name'));
+
+	//List 
+	var majorList = element.all(by.css('#profile-major li'));
+	var courseList = element.all(by.css('#profile-courses li'));
+
+
+
 	//Buttons
 	this.AddCourse = element(by.css('#profile-courses button'));
 	this.AddMajor = element(by.css('#profile-major button'));
@@ -24,7 +32,10 @@ var GuruProfile = function()
 	// this.ModelClose = element(by.css('.modal-backdrop.active .header-nav-back'));
 	// this.ModelClose = element(by.css('.modal-backdrop.active .header-close'));
 
-
+	this.getProfileName = function()
+	{
+		return this.ProfileName.getText();
+	};	
 	this.ActiveEditMode = function()
 	{
 		this.EditModeButton.click();
@@ -39,6 +50,8 @@ var GuruProfile = function()
 	{
 		this.SaveButton.click();
 	};
+
+
 	this.UploadPhoto = function (size)
 	{
 	   doc.uploadPhoto('file-input-guru-edit-profile',size);
@@ -50,6 +63,17 @@ var GuruProfile = function()
 			expect(value).not.toBe("https://graph.facebook.com/10152573868267292/picture?width=100&height=100","Photo Is not upload");
 		});
 	};
+
+	this.countMajor =function()
+	{
+		return majorList.count();
+	}
+
+	this.countCourse = function()
+	{
+		return courseList.count();
+	}
+
 	this.OpenModal = function(name)
 	{
 		switch(name)
