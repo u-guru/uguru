@@ -18,16 +18,17 @@ angular.module('uguru.guru.controllers')
   '$cordovaFacebook',
   'uTracker',
   'University',
+  'RankingService',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
-  $ionicActionSheet, $cordovaFacebook, uTracker, University) {
+  $ionicActionSheet, $cordovaFacebook, uTracker, University, RankingService) {
 
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
     // credibility only variable
     $scope.activeTabIndex = 0;
-    $scope.profile.edit_mode = true;
+    $scope.profile.edit_mode = false;
 
 
     // $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
@@ -339,7 +340,6 @@ angular.module('uguru.guru.controllers')
     $scope.connectWithFacebook = function() {
       $scope.loader.show();
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
-        alert('is successful');
         var successCallback = function() {
           $scope.loader.hide();
           $scope.loader.showSuccess('FB Account Saved', 2000);
@@ -738,6 +738,18 @@ angular.module('uguru.guru.controllers')
 
       }
     }
+
+    $scope.$on('$ionicView.enter', function() {
+          
+          $timeout(function() {
+            
+            if (RankingService.recentlyUpdated || RankingService.updateRanking($scope.user)) {
+              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
+            }
+
+          }, 1000)
+
+    })
 
 
   }

@@ -14,7 +14,6 @@ angular.module('uguru.util.controllers')
   'DownloadService',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
-  'PerformanceService',
   'ThrottleService',
   AccessController
   ]);
@@ -22,11 +21,14 @@ angular.module('uguru.util.controllers')
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-  $ionicSlideBoxDelegate, PerformanceService, ThrottleService) {
+  $ionicSlideBoxDelegate, ThrottleService) {
 
-  DeviceService.readyDevice();
+  // if(AccessService.validate()){
+  //   $timeout(function() {
+  //     $ionicSlideBoxDelegate.next();
+  //   }, 0);  
+  // }
 
-  PerformanceService.testNetworkSpeed();
 
   // var list = UniversityMatcher.list;
   // for (var i=0; i<10; i++) {

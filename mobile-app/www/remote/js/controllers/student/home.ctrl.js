@@ -25,7 +25,7 @@ angular.module('uguru.student.controllers', [])
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService) {
 
-        $ionicSideMenuDelegate.canDragContent(true);
+        $ionicSideMenuDelegate.canDragContent(false);
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/verb.home.modal.html', {
             scope: $scope,
@@ -48,6 +48,27 @@ angular.module('uguru.student.controllers', [])
             $scope.taskVerbModal = modal;
         });
 
+         $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.taskVerbModal = modal;
+        });
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruCoursesModal = modal;
+        })
+
+        $scope.launchStudentCoursesModal = function() {
+          $scope.guruCoursesModal.show();
+          $timeout(function() {
+            $scope.guruCoursesInput = document.querySelector('#course-input-2');
+          }, 250)
+        }
+
         $scope.launchTaskVerbModal = function() {
             $timeout(function() {
                 $scope.closeVerbModal();
@@ -68,7 +89,6 @@ angular.module('uguru.student.controllers', [])
             var openRatio = $ionicSideMenuDelegate.getOpenRatio();
             return openRatio;
         }
-
         var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
                 $scope.sideMenuActive = false;
@@ -78,7 +98,6 @@ angular.module('uguru.student.controllers', [])
                 }, 250)
             }
         }
-
         $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
 
@@ -111,7 +130,7 @@ angular.module('uguru.student.controllers', [])
 
 
             //uTracker.track(tracker, 'Become Guru');
-            
+
             //$ionicViewSwitcher.nextDirection('none');
 
 
@@ -119,7 +138,7 @@ angular.module('uguru.student.controllers', [])
                 $state.go('^.become-guru');
                 AnimationService.slide('left');
             }, 0);
-            
+
         }
 
 

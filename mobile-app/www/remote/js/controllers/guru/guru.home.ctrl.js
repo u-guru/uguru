@@ -31,7 +31,7 @@ angular.module('uguru.guru.controllers')
  	University, $templateCache, $ionicHistory, Popup, $popover, Popover,
   $ionicBackdrop, User, Camera, $cordovaPush, $ionicViewSwitcher, $cordovaStatusbar,
   $ionicPlatform) {
-  console.log($scope.user)
+  //console.log($scope.user)
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;

@@ -29,13 +29,10 @@ body {
 
 body.platform-ios ul li.active, body.platform-ios ul li.activated {
   background: rgba(255, 255, 255, 0.2); }
-
 body.platform-ios ul li ::selection {
   background: rgba(255, 255, 255, 0.1); }
-
 body.platform-ios ul li a.active, body.platform-ios ul li a.activated {
   background: rgba(255, 255, 255, 0.2); }
-
 body.platform-ios ul li a:hover, body.platform-ios ul li .list .list-item a:hover {
   background: rgba(255, 255, 255, 0.1); }
 
@@ -48,16 +45,13 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
-
 .uguru-view .request#request header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
-
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
-
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -93,10 +87,8 @@ section {
     transform: rotate(45deg);
     width: 30px;
     height: 30px; }
-
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
-
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -117,7 +109,6 @@ section {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
-
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -188,7 +179,6 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
-
 @media screen and (max-width: 320px) {
   .uguru-view body {
     font-size: 20px; }
@@ -444,7 +434,6 @@ section {
 
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
-
 .terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px; }
@@ -513,10 +502,8 @@ section {
   #experience-modal .main textarea {
     font-size: 20px;
     height: 100%; } }
-
 .signup-modal h1 + h1 {
   margin-top: 0; }
-
 .signup-modal #account-form {
   height: calc(100% - 50px);
   padding: 15px; }
@@ -545,7 +532,6 @@ section {
     #account-form input {
       margin-top: 20px !important;
       font-size: 18px !important; } }
-
 .terms-modal {
   color: #2B3234; }
   .terms-modal h3 {
@@ -569,7 +555,6 @@ section {
 
 .faq-modal header.bg-charcoal {
   z-index: 1000 !important; }
-
 .faq-modal iframe {
   min-height: 100%;
   width: 100%; }
@@ -657,7 +642,6 @@ section {
           stroke-width: 9px;
           stroke-linecap: round;
           stroke-linejoin: round; }
-
 .request-modal #request-subcategories {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -780,7 +764,6 @@ section {
             stroke-width: 9px;
             stroke-linecap: round;
             stroke-linejoin: round; }
-
 .request-modal .request-content {
   height: calc(100% - 50px);
   padding-bottom: 64px;
@@ -1124,7 +1107,6 @@ section {
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
-
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -1216,31 +1198,24 @@ section {
       width: 100%;
       height: 100%;
       background: url(../../img/schools.jpg) center center/cover; } }
-
 .guru-mode .list {
   background: #40484B; }
-
 .guru-mode .list-item.active, .guru-mode .list-item.activated {
   background: #8A9EA3; }
-
 .guru-mode .list-item .list-item-icon svg path, .guru-mode .list-item .list-item-icon svg circle {
   stroke: #fff; }
-
 .guru-mode .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
-
 .guru-mode .list-item-agenda {
   background: white;
   color: #2B3234; }
   .guru-mode .list-item-agenda.active, .guru-mode .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
-
 .guru-mode .list-item-mode {
   background: rgba(138, 158, 163, 0.75); }
 
 .student-mode .list {
   background: white; }
-
 .student-mode .list-item {
   color: #40484B; }
   .student-mode .list-item .list-item-icon svg path {
@@ -1250,19 +1225,16 @@ section {
     color: white; }
     .student-mode .list-item.activated svg path, .student-mode .list-item.active svg path {
       stroke: white; }
-
 .student-mode .list-item-profile {
   background: #50A5DD;
   color: white; }
   .student-mode .list-item-profile .list-item-icon svg circle {
     stroke: white; }
-
 .student-mode .list-item-agenda {
   background: #40484B;
   color: white; }
   .student-mode .list-item-agenda:active, .student-mode .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
-
 .student-mode .list-item-mode {
   background: #50A5DD;
   color: white; }
@@ -1675,11 +1647,9 @@ section {
   .home-view #student-home #home-content #trending ul li button {
     width: 100px !important;
     height: 100px !important; } }
-
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search input {
   width: calc(100% - 25px); }
-
 .onboarding progress, .onboarding .progress {
   position: absolute;
   top: 0;
@@ -1698,24 +1668,18 @@ section {
     width: 95%; }
   .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"] {
     width: 86%; }
-
 .onboarding header h1:not(header .header-nav a h1) {
   text-align: center; }
-
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
-
 .onboarding#demographic header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
-
 .onboarding#demographic header h1 {
   font-size: 24px; }
-
 .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
-
 .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1853,7 +1817,6 @@ section {
         border-color: rgba(80, 165, 221, 0.1); }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
-
 .onboarding#start {
   background: #40484B; }
   .onboarding#start #start-container {
@@ -2356,9 +2319,7 @@ section {
       width: 50%; }
       .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-child(1), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-child(2) {
         border-top: 0; }
-      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(2),
-      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(3):nth-child(odd),
-      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(2), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(3):nth-child(odd), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
         border-bottom: 0; }
       .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
         display: block; }
@@ -2433,13 +2394,10 @@ section {
     width: 50%; }
     .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-child(1), .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-child(2) {
       border-top: 0; }
-    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(2),
-    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(3):nth-child(odd),
-    .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(2), .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(3):nth-child(odd), .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
       border-bottom: 0; }
     .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
       display: block; } }
-
 .photo-guru-profile-view {
   color: #2B3234; }
   .photo-guru-profile-view a {
@@ -2925,7 +2883,6 @@ section {
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
   position: relative; }
-
 .credibility-view #credit-slider {
   position: absolute;
   bottom: 0;
@@ -3049,7 +3006,6 @@ section {
       color: #50A5DD; }
       .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
         background: #50A5DD; }
-
 .credibility-view #credibility-content-wrapper {
   position: relative;
   background: #40484B;
@@ -3112,7 +3068,6 @@ section {
         height: 60px; }
   .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body p {
     font-size: 22px; } }
-
 @media screen and (min-width: 414px) {
   .credibility-view #credit-slider ul li {
     font-size: 18px; }
@@ -3122,10 +3077,8 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
-
 .guru-view header::before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
-
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -3226,10 +3179,8 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
-
 .guru-view .tip-container h2 {
   font-size: 22px; }
-
 .guru-view .tip-container p {
   margin-top: 10px;
   font-size: 18px; }
@@ -3243,7 +3194,6 @@ section {
     transform: none; }
   .guru-view #guru-ranking #guru-stats .stats-bar {
     margin-bottom: 9px; } }
-
 @media screen and (min-width: 414px) {
   .guru-view #guru-ranking > div {
     -webkit-transform: scale(1.2);
@@ -3251,7 +3201,6 @@ section {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2); } }
-
 /* ---------- OFFLINE */
 #offline {
   -ms-box-orient: horizontal;
@@ -3356,7 +3305,6 @@ section {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0); } }
-
 @-moz-keyframes phone-hover {
   0% {
     -webkit-transform: translateY(0);
@@ -3376,7 +3324,6 @@ section {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0); } }
-
 @-ms-keyframes phone-hover {
   0% {
     -webkit-transform: translateY(0);
@@ -3396,7 +3343,6 @@ section {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0); } }
-
 @keyframes phone-hover {
   0% {
     -webkit-transform: translateY(0);
@@ -3416,7 +3362,6 @@ section {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0); } }
-
 @-webkit-keyframes shadow-hover {
   0% {
     -webkit-transform: scale(0.9);
@@ -3436,7 +3381,6 @@ section {
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
     transform: scale(0.9); } }
-
 @-moz-keyframes shadow-hover {
   0% {
     -webkit-transform: scale(0.9);
@@ -3456,7 +3400,6 @@ section {
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
     transform: scale(0.9); } }
-
 @-ms-keyframes shadow-hover {
   0% {
     -webkit-transform: scale(0.9);
@@ -3476,7 +3419,6 @@ section {
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
     transform: scale(0.9); } }
-
 @keyframes shadow-hover {
   0% {
     -webkit-transform: scale(0.9);
@@ -3496,7 +3438,6 @@ section {
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
     transform: scale(0.9); } }
-
 @-webkit-keyframes sweat-roll {
   0% {
     -webkit-transform: translateY(5px);
@@ -3516,7 +3457,6 @@ section {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
-
 @-moz-keyframes sweat-roll {
   0% {
     -webkit-transform: translateY(5px);
@@ -3536,7 +3476,6 @@ section {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
-
 @-ms-keyframes sweat-roll {
   0% {
     -webkit-transform: translateY(5px);
@@ -3556,7 +3495,6 @@ section {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
-
 @keyframes sweat-roll {
   0% {
     -webkit-transform: translateY(5px);
@@ -3576,7 +3514,6 @@ section {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
-
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
@@ -3626,3 +3563,5 @@ section {
   position: absolute;
   right: 10px;
   top: 34%; }
+
+/*# sourceMappingURL=style.css.map */

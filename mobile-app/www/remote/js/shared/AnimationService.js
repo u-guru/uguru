@@ -133,18 +133,18 @@ function AnimationService(DeviceService, $timeout, uTracker, $state) {
 
 			var pane = document.querySelectorAll('body')[0];
 			
-				pane.style.transition = '.5s';
+				pane.style.transition = '.400s';
 				pane.style.transform = 'rotateY(90deg)';
 
 				$timeout(function() {
-					pane.style.transition = '0s';
+					pane.style.transition = '0.00s';
 					pane.style.transform = 'rotateY(-90deg)';
 					$state.go(target);
 					$timeout(function() {
-						pane.style.transition = '.5s';
+						pane.style.transition = '.400s';
 						pane.style.transform = 'rotateY(0deg)';
-					}, 50);
-				}, 550);
+					}, 40);
+				}, 440);
 
 		//}
 	}
