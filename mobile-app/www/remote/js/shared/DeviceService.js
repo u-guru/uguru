@@ -77,7 +77,8 @@ function DeviceService($cordovaNgCardIO,
     var userAgent = navigator.userAgent;
     console.log("userAgent: " + userAgent);
     
-    if (isMobile() ) {
+    if (userAgent.indexOf('wv') || userAgent.indexOf('iPhone')) {
+      console.log("detected mobile app");
       onDeviceReady(scope);
     }
 
