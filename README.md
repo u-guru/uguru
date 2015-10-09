@@ -1,3 +1,6 @@
+**Run Locally**
+- % honcho start -f ProcfileDev
+
 **First Time Setup**
 - % sudo easy_install pip
 
@@ -23,9 +26,6 @@
 - % createuser uguru -d -s -P
 - Enter twice to confirm password: uguru
 - % createdb -U uguru -E utf-8 -O uguru uguru_db
-
-**Run Locally**
-- % honcho start -f ProcfileDev
 
 **Run From Python Shell**
 - % (optionally) honcho run python (to jump into a python shell with the app's envirmonment)
