@@ -2772,6 +2772,11 @@ section {
             position: relative;
             z-index: 2; }
           .bakery-guru-profile-view #profile-nav ul li a svg {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
             display: block;
             position: absolute;
             z-index: 1;
@@ -2780,6 +2785,11 @@ section {
             width: 100%;
             height: 100%; }
             .bakery-guru-profile-view #profile-nav ul li a svg path {
+              -webkit-transition: all 0.15s ease-in-out;
+              -o-transition: all 0.15s ease-in-out;
+              -ms-transition: all 0.15s ease-in-out;
+              -moz-transition: all 0.15s ease-in-out;
+              transition: all 0.15s ease-in-out;
               filter: alpha(opacity=20);
               opacity: 0.2;
               fill: none;
@@ -2787,6 +2797,12 @@ section {
               stroke-width: 3px;
               stroke-linecap: round;
               stroke-linejoin: round; }
+        .bakery-guru-profile-view #profile-nav ul li a.active svg, .bakery-guru-profile-view #profile-nav ul li a:active svg, .bakery-guru-profile-view #profile-nav ul li a:hover svg {
+          background: rgba(43, 50, 52, 0.2); }
+          .bakery-guru-profile-view #profile-nav ul li a.active svg path, .bakery-guru-profile-view #profile-nav ul li a:active svg path, .bakery-guru-profile-view #profile-nav ul li a:hover svg path {
+            filter: alpha(opacity=40);
+            opacity: 0.4;
+            stroke: #F04F54; }
   .bakery-guru-profile-view #info #info-content {
     height: calc(100% - 50px); }
     .bakery-guru-profile-view #info #info-content #info-map {

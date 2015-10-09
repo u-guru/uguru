@@ -3001,6 +3001,7 @@ section {
 						z-index: 2;
 					}
 					svg {
+						@include transition(.15s ease-in-out);
 						display: block;
 						position: absolute;
 						z-index: 1;
@@ -3009,12 +3010,22 @@ section {
 						width: 100%;
 						height: 100%;
 						path {
+							@include transition(.15s ease-in-out);
 							@include opacity(.2);
 							fill: none;
 							stroke: $charcoal;
 							stroke-width: 3px;
 							stroke-linecap: round;
 							stroke-linejoin: round;
+						}
+					}
+				}
+				a.active, a:active, a:hover {
+					svg {
+						background: rgba($charcoal,.2);
+						path {
+							@include opacity(.4);
+							stroke: $bakery;
 						}
 					}
 				}
