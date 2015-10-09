@@ -252,6 +252,7 @@ gulp.task('scripts', function() {
       'lib/card/card.js',
       // 'cordova.js',
       // 'plugins/*/www/*.js',
+      "js/shared/stats.js",
       "js/main.js",
       "js/factories/LocalStorage.js",
       "js/factories/University.js",
