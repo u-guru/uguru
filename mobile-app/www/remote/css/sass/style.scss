@@ -463,7 +463,8 @@ section {
 }
 
 // EXPERIENCE MODAL
-#experience-modal {
+#experience-modal,
+#guru-introduction-modal {
 	position: absolute;
 	top: 0;
 	.main {
@@ -483,7 +484,7 @@ section {
 				text-align: right;
 			}
 		}
-		#exp-input {
+		#exp-input, #guru-intro-input {
 			height: calc(100% - 194px);
 		}
 		#exp-input.removable {
@@ -3728,6 +3729,12 @@ section {
 
 .slider-pager {
 	display: none;
+}
+
+.guru-introduction-slide-box, .guru-tip-of-day-slide-box {
+	.slider-pager {
+		display:block;
+	}
 }
 
 .content {

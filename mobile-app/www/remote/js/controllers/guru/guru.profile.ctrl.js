@@ -266,6 +266,39 @@ angular.module('uguru.guru.controllers')
       });
     }
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.introduction.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruIntroductionModal = modal;
+        })
+
+    $scope.launchGuruIntroductionModal = function() {
+      $scope.guruIntroductionModal.show();
+    }
+
+
+    $scope.launchAddGuruExperienceModal = function() {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.introduction.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            if (experience) {
+              $scope.experience = experience;
+              $scope.experience_index = index;
+            } else {
+              $scope.experience = {
+                name: '',
+                description: '',
+                years: 1
+              }
+            }
+            $scope.guruExperiencesModal = modal;
+            $scope.guruExperiencesModal.show();
+      });
+    }
+
     $scope.launchMajorModal = function() {
       $scope.loader.show();
       $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
