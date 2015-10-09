@@ -48,6 +48,27 @@ angular.module('uguru.student.controllers', [])
             $scope.taskVerbModal = modal;
         });
 
+         $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.taskVerbModal = modal;
+        });
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruCoursesModal = modal;
+        })
+
+        $scope.launchStudentCoursesModal = function() {
+          $scope.guruCoursesModal.show();
+          $timeout(function() {
+            $scope.guruCoursesInput = document.querySelector('#course-input-2');
+          }, 250)
+        }
+
         $scope.launchTaskVerbModal = function() {
             $timeout(function() {
                 $scope.closeVerbModal();
@@ -109,7 +130,7 @@ angular.module('uguru.student.controllers', [])
 
 
             //uTracker.track(tracker, 'Become Guru');
-            
+
             //$ionicViewSwitcher.nextDirection('none');
 
 
@@ -117,7 +138,7 @@ angular.module('uguru.student.controllers', [])
                 $state.go('^.become-guru');
                 AnimationService.slide('left');
             }, 0);
-            
+
         }
 
 
