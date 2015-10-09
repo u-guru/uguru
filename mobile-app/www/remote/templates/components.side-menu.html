@@ -5,7 +5,7 @@
 
 	<ion-item class='list-item list-item-profile'>
 		<span class="list-item-icon" ng-if='user.id'>
-			<img class='sidebar-img-source' id='sidebar-img-photo' src='{{user.profile_url}}'/>
+			<img class='sidebar-img-source' id='sidebar-img-photo' ng-src='{{user.profile_url}}'/>
 
 		</span>
 		<span class="list-item-detail" ng-if='user.id' id='student-sidebar-profile'>

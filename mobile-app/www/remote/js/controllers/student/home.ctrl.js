@@ -123,9 +123,6 @@ angular.module('uguru.student.controllers', [])
             $scope.verbModal.hide();
         }
 
-        $timeout(function() {
-            AnimationService.initSlide();
-        }, 500);
         $scope.goToBecomeGuru = function() {
 
 
@@ -249,10 +246,6 @@ angular.module('uguru.student.controllers', [])
                 checkOnboardingStatus();
             }, 1000);
 
-
-            // $timeout(function() {
-            //     $scope.launchRequestModal();
-            // }, 1000);
 
 
         });
