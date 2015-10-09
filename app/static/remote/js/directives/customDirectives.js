@@ -3,15 +3,22 @@ angular.module('uguru.directives', []);
     angular.module('uguru.directives')
 
 
-    .directive('onFinishedRender', function($timeout) {
+    .directive('onFinishedRender', function($timeout, PerformanceService) {
       return {
         restrict: 'A',
         link: function(scope, element, attr) {
-          if(scope.$first || scope.$last) {
-            $timeout(function() {
 
-              scope.$emit(attr.onFinishedRender);
-            })
+          var startTime = Date.now();
+
+          if(scope.$last) {
+            $timeout(function() {
+              var endTime = Date.now();
+              var duration = endTime - startTime;
+
+              //console.log(attr.onFinishedRender + " duration: " + duration);
+              PerformanceService.setListResponseTime(duration);
+              //scope.$emit(attr.onFinishedRender);
+            }, 0);
           }
         }
       }
