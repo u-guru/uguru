@@ -257,8 +257,8 @@ exports.config = {
                             //   '../e2e/bugs/error_QAsupport.js', 
                             //   '../e2e/bugs/error_profilePhoto.js', 
                             //   // '../e2e/bugs/error_profileName.js',  // incomplicated 
-                              '../e2e/bugs/error_BecomeGuruToProfile.js', 
-
+                            // '../e2e/bugs/error_BecomeGuruToProfile.js', 
+                            '../e2e/bugs/error_sidebar.js', 
 
                           ]
 

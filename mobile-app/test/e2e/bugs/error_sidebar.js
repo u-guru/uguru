@@ -5,20 +5,16 @@
 
 // var Home= require('../home/homePageObject.js');
 
-describe('#Error Test Flow : Edit mode is activated + No data from BecomeGuru is applied to the profile page',function()
+describe('#Error Test Flow : Sidemenu test',function()
 {
 	// var university = new University();
  //    var access  = new Access();
 	// var major = new Major();
 	// var home = new Home();
 
-	beforeAll(function()
+	afterAll(function()
 	{
-        // browser.get("http://localhost:8100/#/");
-browser.manage().deleteAllCookies();
-         browser.refresh();
-        // if(startButton.isPresent() === false)
-            // browser.get("http://"+localhost+":8100/#/home");
+   		doc.ResetAll();
 	});
     describe('@Workflow : access page', function () {
 
@@ -59,11 +55,6 @@ browser.manage().deleteAllCookies();
 				home.CheckPopUpIsShown()
 			});
 
-			it('select a major',function()
-			{
-				major.SelectMajor(0);
-			});
-
 			it('Close welcome logo',function()
 			{
 				home.CloseThePopUp();
@@ -72,54 +63,42 @@ browser.manage().deleteAllCookies();
 
 	});
 
-	describe('@Workflow : Open sidemenu and login',function()
+	describe('@Workflow : Open sidemenu and Close',function()
 	{
-		var sideMenuButton= element(by.css('.bg-charcoal'));
-		var names = ['FAQ','TERMS','SUPPORT','SIGN UP','LOGIN'];
 
-		it("Check the side menu",function()
+	
+		it('Open Side',function()
 		{
-	  		browser.wait(EC.elementToBeClickable(sideMenuButton),3000);
-			sideMenuButton.click();
-	        browser.wait(EC.visibilityOf(sideMenuList),3000);
-	        expect(sideMenuList.isDisplayed()).toBe(true);
+			sidebar.ToggleSideMenu('on');
 		});
-	});
-		describe("Check All buttons is clickalbe",function()
+		it('wait side',function()
+		{
+			browser.sleep(4000)
+		});	
+		it('Close Side',function()
+		{
+			// sidebar.ToggleSideMenu('on');
+			// browser.executeScript('arguments[0].scrollIntoView()', items[index].getWebElement());
+			browser.executeScript("arguments[0].click();", element(by.css('.view-container')).getWebElement());
+
+		});	
+		it('Close Side',function()
+		{
+			browser.executeScript("arguments[0].click();", element(by.tagName('ion-side-menu-content')).getWebElement());
+		});	
+		
+		it('Close Side',function()
+		{
+			browser.executeScript("arguments[0].click();", element(by.id('side-menu-left-overlay')).getWebElement());
+		});	
+		
+		it('wait side',function()
+		{
+			element(by.css('.view-container')).getLocation().then(function(value)
 			{
-				var close = element.all(by.css('.modal-backdrop.active .icon.ion-chevron-down')).last();
-				// var names = ['FAQ','TERMS','SUPPORT','SIgn Up','LOGIN'];
-				for (var i = 0 ;i < 5 ;++ i)
-				{
-			       (function(index,name) {
-				       	describe(name,function(){})
-				       	{
-			    			it("Open "+ name+ " Section",function()
-							{
-			    				doc.checkItemDisplay(name,true,'click');
-							});
-			    			if (i < 2 )
-				    			it('[Not Working] Cehc Page Can Scroll down',function()
-				    			{
-				    				doc.drag(element(by.css('.modal-backdrop.active ion-content')),0,200);
-				    			})
-							it('Check it popup with Right Page',function()
-							{
-								if(name ==="SIGN UP"||name ==="LOGIN")
-									expect(element(by.css('.modal-backdrop.active')).getText()).toContain("JUST A FEW MORE DETAILS.");
-								else
-									expect(element(by.css('.modal-backdrop.active')).getText()).toContain(name);
-							});
-							it('Close '+name + ' Page',function()
-							{
-								if(name ==="SIGN UP"||name ==="LOGIN")
-									element.all(by.css('.modal-backdrop.active .header-nav')).click();
-								else
-									close.click();
-							});
-				       	}
-		    			
-		    	    })(i,names[i]);
-				}
+				console.log(value);
 			});
+			browser.sleep(4000)
+		});	
+	});
 });

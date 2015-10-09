@@ -143,6 +143,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               }
           });
           circle.text = document.getElementById('percentile-ranking');
+          RankingService.guruHomeProgressCircle = circle;
           return circle;
 
         }
@@ -231,7 +232,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         var checkIsFirstTimeGuruMode = function(appOnboardingObj) {
           console.log('checking...');
-            if (!appOnboardingObj || appOnboardingObj === {} || appOnboardingObj.guruWelcome) {
+            if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.guruWelcome) {
                 console.log ('it is the first itme..');
                 appOnboardingObj = {
                     guruWelcome: true
@@ -251,25 +252,33 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
                 //show it after the progress is complete
                 $scope.initializeProgressBars();
-              
+
               }, 500)
             }
 
             var appOnboardingObj = $localstorage.getObject('appOnboarding');
-            $timeout(function() {
+            
+            if (!haveProgressBarsBeenInitialized) {
               checkIsFirstTimeGuruMode(appOnboardingObj);
-            }, 5000)
+            } else {
 
+              // wait til the bar is loaded
+              $timeout(function() {
+                checkIsFirstTimeGuruMode(appOnboardingObj);
+              }, 5000)
+
+            }
         });
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
-          
+
           $timeout(function() {
             //commented out until it's 100% so won't get in the way of other branches pulling mine.
-            // if (RankingService.recentlyUpdated) {
-            //   RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
-            // }
+            
+            if (RankingService.recentlyUpdated || RankingService.updateRanking($scope.user)) {
+              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
+            }
 
           }, 1000)
 

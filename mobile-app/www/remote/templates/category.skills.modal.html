@@ -2,7 +2,7 @@
     <section id='skill-list' class='onboarding'>
         <div id="skills-list" class="onboarding-list">
             <div>
-                <ul class='list checklist-{{active_category._class}}' style='height:calc(61px * {{active_category.subcategories.length}});'>
+                <ul class='list checklist-{{active_category.hex_color.split("-")[1]}}' style='height:calc(61px * {{active_category.subcategories.length}});'>
                     <li ng-repeat='subcategory in active_category.subcategories'class='ng-class:{"active":subcategory.active}'>
                         <span>
                             <label>{{subcategory.name}}</label>

@@ -21,7 +21,6 @@ angular.module('uguru.util.controllers')
       $scope.user.majors = [];
     }
 
-
     $scope.keyboard_force_off = false;
 
     $scope.search_text = {
@@ -179,8 +178,7 @@ angular.module('uguru.util.controllers')
     }
 
     //$scope.majors = University.majors || getMajorsForUniversityId();
-
-    $scope.majors = University.majors || getMajorsBecomeGuru();
+    $scope.majors = (University.majors && University.majors.length) || getMajorsBecomeGuru();
     $scope.removeUserMajorsFromMaster();
 
     // $timeout(function() {$scope.removeEmptyMajors();}, 1000)

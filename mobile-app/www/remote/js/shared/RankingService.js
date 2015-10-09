@@ -5,7 +5,8 @@ angular
 		]);
 
 function RankingService() {
-  var isInit, progressCircle, recentlyUpdated;
+  var isInit, progressCircle, recentlyUpdated, 
+  guruHomeProgressCircle, calcCredibility, calcProfile;
   var options = {};
 	
 	return {
@@ -13,19 +14,22 @@ function RankingService() {
 		calcCredibility: calcCredibility,
 		calcProfile: calcProfile,
 		showPopover: showPopover,
+    updateRanking: updateRanking,
 		recentlyUpdated: recentlyUpdated,
     isInit: isInit,
     progressCircle: progressCircle,
+    guruHomeProgressCircle: guruHomeProgressCircle,
     updateRanking: updateRanking,
     options:options
 	}
 
 	function showPopover(start, end) {
-		var homeCenterComponent = document.getElementById('guru-home');
+    var homeCenterComponent = document.getElementById('guru-home');
         var uguruPopup = document.getElementById('guru-ranking-popup');
        	var reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
             function (modal){
               modal.classList.add('show');
+              recentlyUpdated = false;
               setTimeout(function() {
               	var spanPreviousInput = document.querySelector('#previous-guru-ranking');
                 var spanCurrentInput = document.querySelector('#current-guru-ranking');
@@ -89,39 +93,42 @@ function RankingService() {
 	}
 
 	function updateRanking(user) {
-    RankingService.options.previousGuruRanking = user.current_guru_ranking;
-    RankingService.options.currentGuruRanking = calcRanking(user);
-    if (RankingService.options.previousGuruRanking !== RankingService.options.currentGuruRanking) {
-      RankingService.recentlyUpdated = true;
+    this.options.previousGuruRanking = Math.round(user.current_guru_ranking, 2);
+    this.options.currentGuruRanking = Math.round(calcRanking(user), 2);
+    console.log('updating ranking...');
+    console.log('Previous:' + this.options.previousGuruRanking + ' Current:' + this.options.currentGuruRanking);
+    if (this.options.previousGuruRanking !== this.options.currentGuruRanking) {
+      if (guruHomeProgressCircle) {
+        guruHomeProgressCircle.set(this.options.currentGuruRanking);
+      }
+      recentlyUpdated = true;
+      user.current_guru_ranking = this.options.currentGuruRanking;
     }
   }
 
   function calcRanking(user) {
-        var base = 25; //40%
-        var num_items = 5;
+        var base = 25; 
         var max_points = 100;
-        var guru_ranking;
-
-        if (user.default_transfer_card) {
-            base += 6
-        }
+        
         if (user.current_credibility_percent) {
-            base += ((user.current_credibility_percent / 100.0) * 16);
+            newCredibility = Math.round((calcCredibility(user) / 400.0), 2);
+            console.log('credibility', newCredibility)
+            base += newCredibility;
         }
         if (user.current_profile_percent) {
-            base += ((user.current_profile_percent / 100.0) * 22);
+            newProfile = Math.round(calcProfile(user), 2)
+            console.log('profile', newProfile / 2);
+            base += Math.round((newProfile / 2), 2);
         }
-        if (user.push_notifications || user.text_notifications) {
-            base += 20;
+        // cant ever get a hundo (unless premium ;) LOL
+        if (base === 100) {
+          base = 99;
         }
-        if (user.deposit_confirmed) {
-            base += 11;
-        }
-        return base - 1;
+        return base;
     }
 
 	function calcCredibility(user) {
-        var base = 0; //40%
+        var base = 0; 
         var num_items = 5;
         var default_item_weight = 20;
         var max_points = 100;
@@ -132,7 +139,7 @@ function RankingService() {
         if (user.transcript_file && user.transcript_file.url && user.transcript_file.url.length) {
             base += default_item_weight;
         }
-        if (user.tutoring_platforms_description) {
+        if (user.guru_experiences.length) {
             base += default_item_weight;
         }
         if (user.school_email_confirmed) {
@@ -147,42 +154,55 @@ function RankingService() {
 
 	function calcProfile(user) {
         var default_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100";
-        var base = 60; //40%
-        var num_items = 8;
+        var base = 0; //40%
+        var num_items = 10;
         var default_item_weight = 10;
-        // var mini_item_weight = 2;
-        var max_points = 170; //base (60) + (9 * 10) + (3 * 10)
+        var max_points = 100;
+
+        // 1. university (Freebie)
+        // 2. name (Freebie)
+        // 3. Profile photo x2 
+        // 4. Guru Courses 
+        // 5. Departments
+        // 6 Previous experiences
+        // 7. Skills x2 (x1 for one category)
+        // 8. Languages
 
         if (!user.is_a_guru) {
             return 0;
         }
 
-        if (user.profile_url && (user.profile_url !== default_url)) {
-            base += (2 * default_item_weight);
+        if (user.name && user.name.length) {
+          base += default_item_weight;
         }
-        if (user.university_id && user.university.title) {
+
+        if (user.university && user.university_id) {
+          base += default_item_weight;
+        }
+
+        if (user.profile_url && (user.profile_url !== default_url)) {
+          base += (2* default_item_weight);      
+        }
+        if (user.guru_courses && user.guru_courses.length > 0) {
             base += default_item_weight;
         }
         if (user.majors && user.majors.length) {
-            base += default_item_weight
-        }
-        if (user.guru_courses && user.guru_courses.length) {
-            base += (2 * default_item_weight)
-        }
-        if (user.skype_friendly || user.facetime_friendly || user.hangouts_friendly || user.messenger_friendly || user.phone_friendly || user.text_friendly || user.email_friendly) {
-            base += default_item_weight;
-        }
-        if (user.guru_languages && user.guru_languages.length) {
             base += default_item_weight;
         }
         if (user.guru_experiences && user.guru_experiences.length) {
-            base += (2 * default_item_weight)
-        }
-        if (user.guru_introduction && user.guru_introduction.length) {
             base += default_item_weight;
         }
+        if (user.categories && user.categories.length >= 2) {
+            base += (2*default_item_weight);
+        } else if (user.categories && user.categories.length === 1) {
+            base += default_item_weight;
+        }
+        if (user.guru_languages && user.guru_languages.length) {
+            base += default_item_weight
+        }
+        
         var percentage = parseInt((base  / (max_points * 1.0)) * 100);
-
+        //update the home credibility progress if it exists
         return percentage;
     }
 

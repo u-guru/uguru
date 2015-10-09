@@ -28,14 +28,14 @@ angular.module('uguru.util.controllers')
     'DeviceService',
     'Utilities',
     'Category',
-    'PerformanceService',
+    'DownloadService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
         $cordovaSplashscreen, $timeout, Geolocation,
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
-         Utilities, Category, PerformanceService) {
+         Utilities, Category, DownloadService) {
 
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
@@ -57,6 +57,10 @@ angular.module('uguru.util.controllers')
         }, 101);
 
         $scope.isLocalServer = LOCAL || false;
+
+        $scope.window = {       
+            width: document.querySelector('body').getBoundingClientRect().width        
+        }
 
 
         //how to make platform ready...
@@ -162,6 +166,7 @@ angular.module('uguru.util.controllers')
             if (skipShowAlert || confirm('Are you sure you want to log out?')) {
                   $scope.loader.show();
                   $localstorage.setObject('user', []);
+                  $localstorage.set('access', false);
                   $localstorage.setObject('appOnboarding', null);
                   // $scope.user = null;;
                   $ionicHistory.clearCache();
@@ -169,6 +174,10 @@ angular.module('uguru.util.controllers')
                   //toggle in the middle
                   $timeout(function() {
                         $scope.user = User.getLocal();
+                        $scope.user.majors = [];
+                        $scope.user.university = null;
+                        $scope.user.university_id = null;
+                        $scope.user.guru_courses = null;
                         $scope.user.updateAttr = User.updateAttrUser;
                         $scope.user.createObj = User.createObj;
                         $scope.user.updateObj = User.updateObj;
@@ -379,6 +388,7 @@ angular.module('uguru.util.controllers')
 
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
+            DownloadService.testNetworkSpeed();
             DeviceService.readyDevice($scope);
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
@@ -403,7 +413,7 @@ angular.module('uguru.util.controllers')
             document.addEventListener("resume", function() {
                 console.log('device is resuming....');
 
-                PerformanceService.testNetworkSpeed();
+                DownloadService.testNetworkSpeed();
                 DeviceService.checkUpdates();
             }, false);
 

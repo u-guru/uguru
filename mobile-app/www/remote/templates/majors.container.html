@@ -22,7 +22,14 @@
             </a>
         </div>
     </header>
-    <header ng-if='guruMajorModal.isShown();' class='third flex-center-wrap'>
+    <header ng-if='guruMajorModal.isShown();' class='third flex-center'>
+        <div class="header-nav">
+            <a class="header-down" ng-click="guruMajorModal.hide()">
+                <svg viewBox="0 0 100 100">
+                    <path d="M14,32 L50,68 L86,32"></path>
+                </svg>
+            </a>
+        </div>
         <h1 class="text-center">Edit Majors</h1>
         <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
             <input type="search" placeholder="My major is..." ng-model="search_text.major" />

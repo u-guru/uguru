@@ -48,6 +48,13 @@ angular.module('uguru.student.controllers', [])
             $scope.taskVerbModal = modal;
         });
 
+        $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.studentCoursesModal = modal;
+        })
+
         $scope.launchTaskVerbModal = function() {
             $timeout(function() {
                 $scope.closeVerbModal();
@@ -61,6 +68,13 @@ angular.module('uguru.student.controllers', [])
 
         $scope.launchVerbModal = function() {
             $scope.verbModal.show();
+        }
+
+        $scope.launchStudentCoursesModal = function() {
+          $scope.studentCoursesModal.show();
+          $timeout(function() {
+            $scope.studentCoursesInput = document.querySelector('#course-input-2');
+          }, 250)
         }
 
         //UGH I HATE MY LIFE FUCK YOU IONIC

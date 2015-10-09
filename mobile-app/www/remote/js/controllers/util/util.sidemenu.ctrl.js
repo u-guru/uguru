@@ -27,12 +27,13 @@ angular.module('uguru.util.controllers')
   'UniversityMatcher',
   'AnimationService',
   'uTracker',
+  '$window',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService, uTracker) {
+  AnimationService, uTracker, $window) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
@@ -741,7 +742,7 @@ angular.module('uguru.util.controllers')
         User.clearAttr({}, $scope.user.id).then(function(user) {
           $scope.loader.hide();
           $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
-          $scope.logoutUser();
+          $scope.logoutUser(true);
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
           $state.go('^.university');
@@ -760,14 +761,15 @@ angular.module('uguru.util.controllers')
 
       $scope.loader.show();
 
+      $timeout(function() {
+          $scope.loader.hide();
+        }, 500)
 
 
-        AnimationService.flip();
+
+        AnimationService.flip('^.guru');
 
         $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
-        $timeout(function() {
-          $scope.loader.hide();
-        }, 1000)
 
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
@@ -776,7 +778,6 @@ angular.module('uguru.util.controllers')
           }
         }, 500)
 
-        $state.go('^.guru');
     }
 
     $scope.goToStudent = function() {

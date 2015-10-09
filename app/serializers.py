@@ -536,6 +536,8 @@ TagSerializer = {
 DepartmentSerializer = {
     'id': fields.Integer,
     'name': fields.String,
+    'short_name': fields.String,
+    'variations': fields.String,
     'abbr': fields.String,
     'code': fields.String,
     'title': fields.String,

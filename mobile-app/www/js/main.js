@@ -52,13 +52,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ugur
 
       if ($cordovaNetwork.isOnline()) {
         console.log('device is online..going straight to the app ');
-        //navigator.splashscreen.show();
+        if (navigator.splashscreen) {
+          navigator.splashscreen.show();
+        }
 
         // window.location = "http://192.168.42.66:5000/app/production/";
         window.location = "https://www.uguru.me/app/production/";
-
-        console.log('this is to test whether things are logged after window.location');
-
 
         // if (platform === "ios") {
         //   console.log('redirecting to local ios...');

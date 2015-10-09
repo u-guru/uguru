@@ -1,11 +1,11 @@
 <ion-view class='uguru-view guru-view bg-charcoal'>
-
-<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'>
-</a>
-<div class="toast" hidden>
-	<span>School email unverified</span>
-	<div class="progress white-round m10top">
-		<span style="width: 50%"></span>
+<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
+<div class="toast">
+	<div>
+		<span>Tap to verify your school email</span>
+		<div class="progress white-round m10top">
+			<span style="width: 50%"></span>
+		</div>
 	</div>
 </div>
 <section id="guru-home" class="request full-xy student-home">
@@ -77,4 +77,3 @@
 
  <div ng-if='launchWelcomeGuruPopup' ng-click='closeWelcomePopup()' class='uguru-popup guru-mode' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.guru.popup.html'"> </div>
 </ion-view>
-
