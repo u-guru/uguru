@@ -2474,6 +2474,9 @@ section {
     .photo-guru-profile-view #profile-gallery section img {
       display: block;
       width: 100%; }
+    .photo-guru-profile-view #profile-gallery section p {
+      padding-bottom: 13px;
+      margin: 0; }
     .photo-guru-profile-view #profile-gallery section .gallery-desc {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -2502,10 +2505,364 @@ section {
       font-size: 16px;
       font-weight: 400;
       line-height: 1.25; }
+      .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags {
+        padding-top: 2px;
+        font-size: 14px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          width: 100%; }
+          .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li {
+            padding-right: 7px; }
+            .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a {
+              filter: alpha(opacity=75);
+              opacity: 0.75;
+              color: white !important; }
+              .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a::before {
+                content: "#"; }
+              .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a.active, .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a:active {
+                filter: alpha(opacity=100);
+                opacity: 1; }
+      .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc {
+        filter: alpha(opacity=75);
+        opacity: 0.75;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        width: 100%;
+        padding-top: 2px;
+        color: white;
+        font-size: 14px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span {
+          line-height: 20px; }
+          .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span svg {
+            display: block;
+            width: 20px;
+            height: 20px; }
+            .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span svg path {
+              stroke: white;
+              fill: none;
+              stroke-width: 5px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+    .photo-guru-profile-view #profile-gallery section .gallery-desc:not(.active), .photo-guru-profile-view #profile-gallery section .gallery-desc.active + .gallery-info {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      display: none; }
+    .photo-guru-profile-view #profile-gallery section .gallery-info, .photo-guru-profile-view #profile-gallery section .gallery-photo {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: absolute;
+      display: block;
+      bottom: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      padding: 0; }
+      .photo-guru-profile-view #profile-gallery section .gallery-info svg, .photo-guru-profile-view #profile-gallery section .gallery-photo svg {
+        display: block;
+        width: 50px;
+        height: 50px;
+        padding: 5px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-info svg path, .photo-guru-profile-view #profile-gallery section .gallery-photo svg path {
+          fill: none;
+          stroke-width: 5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+    .photo-guru-profile-view #profile-gallery section .gallery-info {
+      background: rgba(43, 50, 52, 0.8); }
+      .photo-guru-profile-view #profile-gallery section .gallery-info svg path {
+        stroke: white; }
+    .photo-guru-profile-view #profile-gallery section .gallery-photo {
+      background: rgba(255, 255, 255, 0.8); }
+      .photo-guru-profile-view #profile-gallery section .gallery-photo svg path {
+        stroke: #2B3234; }
   .photo-guru-profile-view #book-guru.activated {
     filter: alpha(opacity=100);
     opacity: 1;
     background: #2B3234 !important; }
+
+.bakery-guru-profile-view {
+  color: #40484B;
+  background: #FFFDFA; }
+  .bakery-guru-profile-view header {
+    background: #F04F54; }
+    .bakery-guru-profile-view header h1 {
+      color: white;
+      font-weight: 900; }
+  .bakery-guru-profile-view #profile, .bakery-guru-profile-view #menu, .bakery-guru-profile-view #info {
+    height: 100% !important; }
+  .bakery-guru-profile-view #profile-banner {
+    width: 100%;
+    height: 50%;
+    background: url(../../img/bakery-guru-banner.png) center center/cover; }
+  .bakery-guru-profile-view #profile-desc {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    padding: 0;
+    top: 0;
+    left: 0;
+    background: rgba(43, 50, 52, 0.05); }
+    .bakery-guru-profile-view #profile-desc #profile-list ul {
+      text-align: left;
+      padding: 30px; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
+        padding-left: 0;
+        color: white;
+        font-size: 32px;
+        font-weight: 900; }
+        .bakery-guru-profile-view #profile-desc #profile-list ul #profile-name h1.verified svg path:first-child {
+          fill: #F04F54; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-blurb {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.25;
+        padding: 5px 0; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-contact {
+        padding: 10px 0 5px; }
+        .bakery-guru-profile-view #profile-desc #profile-list ul #profile-contact button {
+          background: #F04F54;
+          border-color: #F04F54;
+          color: white;
+          font-weight: 700 !important; }
+  .bakery-guru-profile-view #profile-promo {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 25%;
+    padding: 15px; }
+    .bakery-guru-profile-view #profile-promo p {
+      margin: 0;
+      font-weight: 400; }
+    .bakery-guru-profile-view #profile-promo a {
+      display: block;
+      padding-top: 15px;
+      color: #F04F54;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase; }
+  .bakery-guru-profile-view #profile-nav {
+    height: 25%; }
+    .bakery-guru-profile-view #profile-nav ul {
+      height: 100%;
+      padding: 1px; }
+      .bakery-guru-profile-view #profile-nav ul li {
+        position: relative;
+        height: 100%;
+        padding: 1px; }
+        .bakery-guru-profile-view #profile-nav ul li a {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          background: #F04F54;
+          color: white;
+          font-size: 24px;
+          font-weight: 900;
+          text-align: center; }
+          .bakery-guru-profile-view #profile-nav ul li a span {
+            position: relative;
+            z-index: 2; }
+          .bakery-guru-profile-view #profile-nav ul li a svg {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; }
+            .bakery-guru-profile-view #profile-nav ul li a svg path {
+              filter: alpha(opacity=20);
+              opacity: 0.2;
+              fill: none;
+              stroke: #2B3234;
+              stroke-width: 3px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+  .bakery-guru-profile-view #info #info-content {
+    height: calc(100% - 50px); }
+    .bakery-guru-profile-view #info #info-content #info-map {
+      height: 40%;
+      background: url(../../img/map-small.png) center center/cover;
+      -webkit-filter: grayscale(0.5);
+      filter: grayscale(0.5); }
+    .bakery-guru-profile-view #info #info-content #info-directions, .bakery-guru-profile-view #info #info-content #info-hours {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      height: 30%; }
+      .bakery-guru-profile-view #info #info-content #info-directions svg, .bakery-guru-profile-view #info #info-content #info-hours svg {
+        display: block;
+        margin-left: 8px;
+        margin-top: 8px;
+        width: 50px;
+        height: 50px; }
+        .bakery-guru-profile-view #info #info-content #info-directions svg path, .bakery-guru-profile-view #info #info-content #info-hours svg path {
+          fill: none;
+          stroke: #F04F54;
+          stroke-width: 5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+      .bakery-guru-profile-view #info #info-content #info-directions div:last-child h1, .bakery-guru-profile-view #info #info-content #info-hours div:last-child h1 {
+        font-size: 24px;
+        font-weight: 900;
+        margin-top: 8px;
+        margin-left: 8px;
+        line-height: 50px;
+        text-transform: uppercase; }
+    .bakery-guru-profile-view #info #info-content #info-hours {
+      border-top: 1px solid #F04F54; }
+  .bakery-guru-profile-view #menu #menu-content {
+    height: calc(100% - 50px);
+    overflow-y: auto; }
+    .bakery-guru-profile-view #menu #menu-content ul {
+      height: 100%;
+      padding: 1px; }
+      .bakery-guru-profile-view #menu #menu-content ul li {
+        height: 25%;
+        padding: 1px; }
+        .bakery-guru-profile-view #menu #menu-content ul li a {
+          -webkit-transition: all 0.15s ease-in-out;
+          -o-transition: all 0.15s ease-in-out;
+          -ms-transition: all 0.15s ease-in-out;
+          -moz-transition: all 0.15s ease-in-out;
+          transition: all 0.15s ease-in-out;
+          display: block;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background-size: cover; }
+          .bakery-guru-profile-view #menu #menu-content ul li a span {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(240, 79, 84, 0.8);
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase; }
+        .bakery-guru-profile-view #menu #menu-content ul li a.active span, .bakery-guru-profile-view #menu #menu-content ul li a:active span, .bakery-guru-profile-view #menu #menu-content ul li a:hover span {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        .bakery-guru-profile-view #menu #menu-content ul li .menu-desc {
+          display: none;
+          text-align: center; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc img {
+            display: block;
+            width: 100%; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc h1 {
+            padding: 15px 15px 0;
+            color: #F04F54;
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc p {
+            margin: 10px 15px 15px;
+            font-weight: 400; }
+        .bakery-guru-profile-view #menu #menu-content ul li.active {
+          width: 100%;
+          height: auto; }
+          .bakery-guru-profile-view #menu #menu-content ul li.active a {
+            display: none; }
+          .bakery-guru-profile-view #menu #menu-content ul li.active .menu-desc {
+            display: block; }
+        .bakery-guru-profile-view #menu #menu-content ul li.inactive a {
+          filter: alpha(opacity=50);
+          opacity: 0.5; }
+        .bakery-guru-profile-view #menu #menu-content ul li.inactive a.active, .bakery-guru-profile-view #menu #menu-content ul li.inactive a:active, .bakery-guru-profile-view #menu #menu-content ul li.inactive a:hover {
+          filter: alpha(opacity=100);
+          opacity: 1; }
 
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {

@@ -252,7 +252,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
                 //show it after the progress is complete
                 $scope.initializeProgressBars();
-              
+
               }, 500)
             }
 
@@ -272,7 +272,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
-          
+
           $timeout(function() {
             //commented out until it's 100% so won't get in the way of other branches pulling mine.
             

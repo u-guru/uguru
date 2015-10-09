@@ -7,6 +7,7 @@ var FIRST_PAGE='^.' + _startpage;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
+// var REST_URL = 'http://192.168.12.130:5000'
 
 var BASE = '';
 var img_base = '';
@@ -37,7 +38,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   DeviceService, uTracker) {
 
   uTracker.init(tracker);
- 
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -51,7 +52,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     });
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
-  
+
   $ionicConfigProvider.views.transition('none');
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
@@ -74,8 +75,20 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
+        controller: 'AddUniversityCtrl',
+        resolve: {
+          deviceInfo: function(DeviceService) {
+            return DeviceService.getPlatform();
+          }
+        },
         controller: 'AddUniversityCtrl'
   }).
+
+  state('privacy', {
+        url:'/privacy',
+        templateUrl: BASE + 'templates/privacy-terms.modal.html'
+  }).
+
   state('root.university-container', {
         url: '/university-container',
         templateUrl: BASE + 'templates/university.container.html',
@@ -156,7 +169,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   state('root.become-guru.photography', {
         url:'/photography',
-        templateUrl: BASE + 'templates/category.skills.modal.html'    
+        templateUrl: BASE + 'templates/category.skills.modal.html'
   }).
   state('root.courses', {
         url: '/courses',
@@ -250,7 +263,3 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 
 });
-
-
-
-

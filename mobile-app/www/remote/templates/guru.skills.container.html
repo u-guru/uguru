@@ -29,7 +29,7 @@
     <div id="skills-list" class="onboarding-list">
         <ul class='list list-item-half flex-wrap'>
             <li ng-repeat='category in categories' style='background:url({{categories_img_base + category.background_url}})'>
-                <a class='skill-item-link bg-{{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
+                <a class='skill-item-link bg-{{category.hex_color.split("-")[1]}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
                     <img='background:url({{category.icon_url}})'>
                         <div>
                             <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
