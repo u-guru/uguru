@@ -49,7 +49,7 @@ angular.module('uguru.guru.controllers')
       uTracker.track(tracker, 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
       $state.go('^.home');
-      AnimationService.slide('right');
+      //AnimationService.slide('right');
     }
 
     $scope.removeUserGuruCoursesFromMasterCourses = function() {

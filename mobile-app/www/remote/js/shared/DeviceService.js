@@ -106,7 +106,6 @@ function DeviceService($cordovaNgCardIO,
     }
 
 		if(isMobile()) {
-      Geolocation.getLocation(scope);
 
 	 		var mobileOS = getPlatform().toLowerCase();
 		  	switch(mobileOS) {
@@ -114,6 +113,7 @@ function DeviceService($cordovaNgCardIO,
 		  			iOSService.ready();
 			  		break;
 		  		case "android":
+            Geolocation.getLocation(scope);
 		  			AndroidService.ready();
 		  			break;
 	  			case "windows":

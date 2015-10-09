@@ -51,7 +51,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   
-  $ionicConfigProvider.views.transition('none');
+  $ionicConfigProvider.views.transition('platform');
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(true);
