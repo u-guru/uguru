@@ -250,9 +250,9 @@ angular.module('uguru.student.controllers', [])
             }, 1000);
 
 
-            $timeout(function() {
-                $scope.launchStudentCoursesModal();
-            }, 1000);
+            // $timeout(function() {
+            //     $scope.launchRequestModal();
+            // }, 1000);
 
 
         });

@@ -2285,6 +2285,7 @@ section {
           -o-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           width: 100px;
+          font-weight: 700;
           text-align: center;
           text-transform: uppercase; }
       .guru-profile-view #profile-desc #profile-icon a.active, .guru-profile-view #profile-desc #profile-icon a.activated, .guru-profile-view #profile-desc #profile-icon a:active {
