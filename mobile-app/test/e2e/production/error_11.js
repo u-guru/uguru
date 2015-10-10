@@ -90,14 +90,44 @@ describe('#11 Error Test Flow :  Category is not empty ',function()
 
 	});
 
-	describe('Category page check data not empty', function () {
-		// var category = new Category();
-		it('Check Skill Exist',function()
+		for (var i = 1 ; i< 8 ; ++i)
 		{
-			category.SkillIsExist();
-		})
-	});
+	        (function(index,title) {
+		        describe('Click the category #'+index,function()
+		        {
+		        	var count = 0;
+		        	it('Check category title back To DeFault Name',function()
+		        	{
+		        		category.CheckTitleIsMatch("SELECT CATEGORY")
+		        	});
+	        		it('Open a Category',function()
+					{
+						category.SelectSkill(index);
+					});
+	        		
+					it('Check element exist',function()
+					{
+						category.SkillIsExist();
+					});
+					it('click all the skills ',function()
+					{
+				        category.EnableAllSKills(index);
+				        ++count;
+					});
 
+	        		it('close a Category',function()
+	        		{
+						category.clickCanvas (100,50)
+	        		})
+	        		// check which index
+	        		it('check select',function()
+	        		{
+				     // element.all(by.css(str)).then(function (items) {
+				     	category.CountSelectSKill(count,index);
+	        		});
+				});
+	        })(i,CategoryName[i]);
+		}
 
 
 });

@@ -1,4 +1,4 @@
-describe('#7 Error Test Flow : Search Course error',function()
+describe('#7 Error Test Flow : Search Major list and data',function()
 {
  	afterAll(function()
     {
@@ -53,14 +53,17 @@ describe('#7 Error Test Flow : Search Course error',function()
 
 	});
 
-	describe('@Workflow : Major page', function () {
+	describe(' Major list and data test', function () {
 		// var major = new Major();
 
 		it ('Start becomeGuru process',function()
 		{
 			major.BeginBecomeGuru();
 		});
-
+		it('check Major list is not empty',function()
+		{
+			major.CheckMajorListNotEmpty();
+		});
 		it('Search : chem',function()
 		{
 			major.SearchMajorName('chinese');

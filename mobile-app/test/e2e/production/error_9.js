@@ -77,7 +77,10 @@ describe('#9 Error Test Flow : Search Course error',function()
 
 		describe('Check Data & Go Next Section',function()
 		{
-
+			it('check courses list is not empty',function()
+			{
+				course.CheckCourseListNotEmpty();
+			});
 			it('Search : CS',function()
 			{
 				course.SearchCourseName('CS');

@@ -6,18 +6,18 @@ describe('#5 Error Test Flow : University GPS List',function()
 	});
 
     describe('@Workflow : access page', function () {
-    	 it('Json test',function()
-    	 	{
-	    	 		   browser.getCapabilities().then(function (caps) {
-	              var platformName = caps.caps_.platformName;
-	              expect(platformName).toBe('android');
-	              if(platformName != 'android')
-	              {
-	                browser.wait(EC.visibilityOf(this.GPSButton),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
-	                this.GPSButton.click();
-	              }   
-	          });
-    	 	});
+    	 // it('Json test',function()
+    	 // 	{
+	    	//  		   browser.getCapabilities().then(function (caps) {
+	     //          var platformName = caps.caps_.platformName;
+	     //          expect(platformName).toBe('android');
+	     //          if(platformName != 'android')
+	     //          {
+	     //            browser.wait(EC.visibilityOf(this.GPSButton),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
+	     //            this.GPSButton.click();
+	     //          }   
+	     //      });
+    	 // 	});
 		 it('Send key : cool',function()
           {
                 access.EnterAccessCode('cool');
