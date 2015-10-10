@@ -9,12 +9,15 @@ angular
   'Geolocation',
   'University',
   'Version',
+  '$ionicHistory',
+  '$templateCache',
+  '$localstorage',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
 	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
-  University, Version) {
+  University, Version, $ionicHistory, $templateCache, $localstorage) {
 
 	return {
 		readyDevice: readyDevice,
