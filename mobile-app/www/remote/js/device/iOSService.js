@@ -8,12 +8,13 @@ angular
 	'Geolocation',
 	'Settings',
 	'Popup',
+	'$timeout',
 
 	iOSService
 	]);
 
 function iOSService($rootScope, $state, $localstorage, $cordovaPush,
-  Geolocation, Settings, Popup) {
+  Geolocation, Settings, Popup, $timeout) {
 
 	return {
 		ready: ready,
@@ -37,7 +38,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 	function showStatusBar() {
 		if(window.StatusBar) {
-			StatusBar.overlaysWebView(false);
+			StatusBar.overlaysWebView(true);
 			StatusBar.styleLightContent();
 			StatusBar.hide();
 		}

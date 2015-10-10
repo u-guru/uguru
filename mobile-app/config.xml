@@ -7,7 +7,7 @@
   <author email="samir@uguru.me" href="http://uguru.me">
       Uguru team
     </author>
-  <content src="index.html"/>
+  <content src="http://192.168.42.78:8100" original-src="remote/local.index.html"/>
   <access origin="*"/>
   <allow-navigation href="http://*/*"/>
   <preference name="orientation" value="portrait"/>
@@ -19,6 +19,7 @@
   <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
   <preference name="StatusBarOverlaysWebView" value="true"/>
   <preference name="StatusBarStyle" value="lightcontent"/>
+  <preference name="CrosswalkAnimatable" value="true"/>
   <platform name="android">
     <preference name="Fullscreen" value="false"/>
     <preference name="android-windowSoftInputMode" value="adjustPan"/>

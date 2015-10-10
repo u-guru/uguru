@@ -82,6 +82,7 @@ function DeviceService($cordovaNgCardIO,
     var userAgent = navigator.userAgent;
     console.log("userAgent: " + userAgent);
 
+
       if(userAgent.indexOf('wv')!==-1) {
         onDeviceReady(scope);
       }
@@ -90,12 +91,16 @@ function DeviceService($cordovaNgCardIO,
           navigator.splashscreen.hide();
       }
 
+      if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
+        console.log("detected mobile app");
+        onDeviceReady(scope);
+      } else {
+        console.log("did not detect mobile app");
+      }
 	}
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
-
-		//checkUpdates();
 
     //Ugh --> they overroad the native js OnDOMContentLoaded ...
     ionic.DomUtil.ready(function(){
@@ -112,14 +117,13 @@ function DeviceService($cordovaNgCardIO,
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
 
-      //the delay is for preventing the lag
+      //the delay is for preventing components from rendering on the first go
       $timeout(function() {
         navigator.splashscreen.show();
       }, 2000)
     }
 
 		if(isMobile()) {
-      Geolocation.getLocation(scope);
 
 	 		var mobileOS = getPlatform().toLowerCase();
 		  	switch(mobileOS) {
@@ -127,6 +131,7 @@ function DeviceService($cordovaNgCardIO,
 		  			iOSService.ready();
 			  		break;
 		  		case "android":
+            Geolocation.getLocation(scope);
 		  			AndroidService.ready();
 		  			break;
 	  			case "windows":
