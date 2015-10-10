@@ -13,7 +13,7 @@ from lib.api_utils import json_response
 from pprint import pprint
 
 
-APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31', 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3']
+APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d34', 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4']
 
 @auth.verify_password
 def verify_password(email, password):
@@ -2617,6 +2617,7 @@ class AdminViewUniversitiesListAllDistribution(restful.Resource):
             if uni.population: result_dict['population'] += 1
             if uni.school_color_one: result_dict['school_color_one'] += 1
             if uni.num_emails: result_dict['num_emails'] += 1
+            if uni.banner_url: result_dict['banner_url'] += 1
 
         return json.dumps(result_dict, indent=4, sort_keys=True), 200
 
@@ -2931,7 +2932,7 @@ class AdminUniversityCourseView(restful.Resource):
         abort(404)
 
 class AdminOneUniversityView(restful.Resource):
-    
+
     @marshal_with(AdminUniversitySerializer)
     def get(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -3054,7 +3055,7 @@ class AdminOneUniversityView(restful.Resource):
 class AdminUniversityView(restful.Resource):
     @marshal_with(AdminUniversitySerializer)
     def get(self, auth_token, uni_id):
-        
+
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
