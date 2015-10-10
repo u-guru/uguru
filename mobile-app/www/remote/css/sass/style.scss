@@ -1546,19 +1546,10 @@ section {
 		@include flex;
 		@include flex-wrap;
 		@include flex-bottom;
-		height: calc(100% - 127px);
+		height: 70%;
 		svg {
 			display: block;
-			max-height: 60%;
-		}
-		#access-title {
-			width: 100%;
-			h1 {
-				text-align: center;
-				font-size: 48px;
-				font-weight: 900;
-				letter-spacing: 1px;
-			}
+			max-height: 70%;
 		}
 	}
 	#access-code {
@@ -2491,6 +2482,7 @@ section {
 				h1 {
 					@include center-xy;
 					width: 100px;
+					font-weight: 700;
 					text-align: center;
 					text-transform: uppercase;
 				}
