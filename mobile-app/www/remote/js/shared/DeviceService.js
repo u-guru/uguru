@@ -82,9 +82,13 @@ function DeviceService($cordovaNgCardIO,
     var userAgent = navigator.userAgent;
     console.log("userAgent: " + userAgent);
 
-     if(userAgent.indexOf('wv')!==-1) {
-      onDeviceReady(scope);
-    }
+      if(userAgent.indexOf('wv')!==-1) {
+        onDeviceReady(scope);
+      }
+
+      if (navigator.splashscreen && navigator.splashscreen.hide) {
+          navigator.splashscreen.hide();
+      }
 
 	}
 
