@@ -24,11 +24,14 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	function ready() {
 
 		showStatusBar();
+		hide(hideSplashScreen(1000));
 
 		if(cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			cordova.plugins.Keyboard.disableScroll(true);
 		}
+
+
 
 	}
 
@@ -38,6 +41,26 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 			StatusBar.styleLightContent();
 			StatusBar.hide();
 		}
+	}
+
+	function hideSplashScreen(delay) {
+		delay = delay || 0;
+
+		$timeout(function() {
+			if (navigator.splashscreen && navigator.splashscreen.hide) {
+            	navigator.splashscreen.hide();
+        	}
+		}, delay)
+	}
+
+	function showSplashScreen() {
+		delay = delay || 0;
+
+		$timeout(function() {
+			if (navigator.splashscreen && navigator.splashscreen.show) {
+            	navigator.splashscreen.show();
+        	}
+		}, delay)
 	}
 
 	function enableGPS() {
