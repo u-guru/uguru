@@ -300,7 +300,7 @@ var global = function() {
       else
         var temp = Math.floor((Math.random() * (items.length-1)));
        
-        browser.wait(EC.elementToBeClickable( items[temp]),2000,'wait too long to get item clickable');
+        browser.wait(EC.elementToBeClickable( items[temp]),4000,'wait too long to get item clickable');
         items[temp].click();
         // console.log(items.length)
     });

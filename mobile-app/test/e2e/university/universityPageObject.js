@@ -79,6 +79,8 @@ var University = function() {
          //      }   
          //  });
          this.GPSButton.click();
+         doc.waitLoading();
+
     };
     this.checkGPSColor = function(toggle)
     {
@@ -120,7 +122,6 @@ var University = function() {
           //           expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
                 
           //   });
-          doc.waitLoading();
           browser.wait(EC.visibilityOf(this.OutputOfMillage.last()),3000);
           this.OutputOfMillage.then(function(items)
           {

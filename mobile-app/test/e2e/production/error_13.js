@@ -1,4 +1,4 @@
-describe('#13 Error Test Flow :Become Guru data is applied to new account after sign up',function()
+describe('[Incompleted]#13 Error Test Flow :Become Guru data is applied to new account after sign up',function()
 {
  	afterAll(function()
     {
@@ -61,11 +61,6 @@ describe('#13 Error Test Flow :Become Guru data is applied to new account after 
 			major.BeginBecomeGuru();
 		});
 
-		it('select a major',function()
-		{
-			major.SelectMajor(0);
-		});
-
 		it('Next slide',function()
 		{
 			major.GoToCoursePage();
@@ -96,6 +91,7 @@ describe('#13 Error Test Flow :Become Guru data is applied to new account after 
 		{
 			category.GoToPhotoPage();
 		});
+
 	});
 
 
@@ -104,7 +100,7 @@ describe('#13 Error Test Flow :Become Guru data is applied to new account after 
 
 		it('Waiting to received the message',function()
 		{
-			photo.UploadPhoto('small');
+			// photo.UploadPhoto('small');
 			photo.NextPage();
 		});
 		// it('Upload Photo',function()

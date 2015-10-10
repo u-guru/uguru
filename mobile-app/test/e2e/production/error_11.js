@@ -92,10 +92,10 @@ describe('#11 Error Test Flow :  Category is not empty ',function()
 
 	describe('Category page check data not empty', function () {
 		// var category = new Category();
-		it('Next page',function()
+		it('Check Skill Exist',function()
 		{
-			category.GoToPhotoPage();
-		});
+			category.SkillIsExist();
+		})
 	});
 
 
