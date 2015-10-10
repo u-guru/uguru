@@ -24,7 +24,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	function ready() {
 
 		showStatusBar();
-		hide(hideSplashScreen(1000));
+		hideSplashScreen(1000);
 
 		if(cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -47,7 +47,9 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		delay = delay || 0;
 
 		$timeout(function() {
+			console.log('hidding splash screen')
 			if (navigator.splashscreen && navigator.splashscreen.hide) {
+				console.log('splash screen detected');
             	navigator.splashscreen.hide();
         	}
 		}, delay)
