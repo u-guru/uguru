@@ -119,12 +119,12 @@ angular.module('uguru.util.controllers')
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
             University.getMajors(uni_id).then(function(majors){
-                console.log(majors.length, 'found', uni_id);
+                console.log(majors.length, 'majors found', uni_id);
                 majors = majors.plain()
 
                 University.majors = majors;
 
-                $localstorage.setObject('universityMajors', majors)
+                // $localstorage.setObject('universityMajors', majors)
 
                 if (callback) {
                     callback(majors);
@@ -142,7 +142,7 @@ angular.module('uguru.util.controllers')
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
-                $localstorage.setObject('categories', Category.categories);
+                // $localstorage.setObject('categories', Category.categories);
                 console.log('categories loaded', Category.categories);
 
                 callback && callback(Category.categories);
@@ -159,12 +159,6 @@ angular.module('uguru.util.controllers')
             console.log(University.majors.length, 'majors loaded');
         }
 
-        if ($scope.user.university_id && !University.majors) {
-            console.log('University courses not local, requesting now..');
-            $scope.getMajorsForUniversityId($scope.user.university_id);
-        } else {
-            console.log(University.courses.length, 'courses loaded');
-        }
 
         if (!Category.categories || Category.categories.length === 0) {
             console.log('Categories not local, loading now..')
@@ -177,7 +171,7 @@ angular.module('uguru.util.controllers')
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
                 //NICKTODO --> set this localstorage or static file?
-                $localstorage.setObject('universityCourses', courses.plain())
+                // $localstorage.setObject('universityCourses', courses.plain())
                 console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
             },
             function() {
