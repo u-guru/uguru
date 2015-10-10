@@ -111,7 +111,11 @@ function DeviceService($cordovaNgCardIO,
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
-      navigator.splashscreen.show();
+
+      //the delay is for preventing the lag
+      $timeout(function() {
+        navigator.splashscreen.show();
+      }, 2000)
     }
 
 		if(isMobile()) {
