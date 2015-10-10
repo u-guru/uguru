@@ -10,11 +10,10 @@
     <div class='content-wrapper'>
 	    <div class="content-body">
 	        <h2>Edit Your Email</h2>
-	        <input class="input-ghost-dark full-x m15top" type='email' id='user-confirm-email-input'/>
+	        <input class="input-ghost-dark full-x m15top" type='email' ng-model='popupInput.email' id='user-confirm-email-input'/>
 	    </div>
 	    <div class="content-footer">
-	        <button ng-if='!user.school_email_token' class='bg-lake white-text semibold' id='confirm-email-save-popup-link'>Send Confirmation</button>
-			<button ng-if='user.school_email_token' class='bg-lake white-text semibold' id='confirm-email-save-popup-link'>Resend Confirmation</button>
+	        <button class='bg-lake white-text semibold submit' id='confirm-email-save-popup-link'>{{popup.email_confirm}}</button>
 	    </div>
     </div>
 </div>

@@ -28,8 +28,9 @@ angular.module('uguru.util.controllers')
     }
 
 
-    //$scope.categories = Utilities.sortArrObjByKey(Category.categories, 'name');
-    
+
+
+
     $scope.active_category = {name:'Select category', active:false};
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
@@ -39,31 +40,34 @@ angular.module('uguru.util.controllers')
         $scope.categorySkillsModal = modal;
     });
 
-    $scope.onSwipeDown = function() {
-      alert('user swiped down')
-    }
-    $scope.onDragDown = function() {
-      alert('user swiped down')
-    }
 
     $scope.launchCategoryModal = function(category) {
 
       if($scope.active_category!==category){
         $scope.active_category = category;
-        updateMainBackground(category.bg_url);
+        extension = $scope.guruSkillsModal.isShown() && '-2';
+        updateMainBackground($scope.categories_img_base + category.background_url, extension);
       }
 
       uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name
       });
       $scope.active_category.active = true;
-      $scope.categorySkillsModal.show();  
-      
+      $scope.categorySkillsModal.show();
+
     }
 
-    var updateMainBackground = function(url) {
-      var headerElem = document.getElementById('category-skills');
-      cssString = "#category-skills:before {background: url(" + url + ") no-repeat center center/cover !important;}";
+    $scope.hideCategorySkillsModal = function() {
+      $scope.categorySkillsModal.hide();
+      $timeout(function() {
+        $scope.active_category = {name:'Select category', active:false};
+      }, 500);
+    }
+
+    var updateMainBackground = function(url, extension) {
+      extension = extension || '';
+      var headerElem = document.getElementById('category-skills' + extension);
+      cssString = "#category-skills" + extension + ":before {background: url(" + url + ") no-repeat center center/cover !important;}";
 
       style = document.createElement('style');
       style.type = 'text/css';
@@ -77,9 +81,16 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.$on('modal.hidden', function() {
+      if ($scope.guruSkillsModal && $scope.guruSkillsModal.isShown()) {
+        $scope.active_category = {name:'Select category', active:false};
+
+      }
+    })
+
     $scope.skillsModalDrag = function(e) {
       if (e.gesture.deltaY > 175) {
-        $scope.categorySkillsModal.hide();
+        $scope.hideCategorySkillsModal();
       }
     }
 
@@ -96,42 +107,22 @@ angular.module('uguru.util.controllers')
       return guruCategoryCourses;
     }
 
-    // $scope.updateCategoryCount = function(category, subcategory, index) {
+    $scope.updateCategoryCount = function(category, subcategory, index) {
 
-    //   category.active_subcategories += 1;
-    //   Category.categories = $scope.categories;
-    //   $localstorage.setObject('categories', $scope.categories);
+      category.active_subcategories += 1;
+      Category.categories = $scope.categories;
+      $localstorage.setObject('categories', $scope.categories);
 
-    //   if (subcategory.active) {
-    //     addGuruSubcategory(subcategory);
-    //   }
-    //   //set to false
-    //   else {
-    //     removeGuruSubcategory(subcategory);
-    //   }
-    // }
-
-    $scope.updateCategoryCount = function(category, skill, index) {
-      if (category.name === 'Academic Courses'
-        && confirm('Are you sure? This will remove ' + skill.name + ' from your courses'))
-      {
-        guru_courses = $scope.user.guru_courses;
-        category.skills.splice(index, index + 1);
-        for (var i = 0; i < $scope.user.guru_courses.length; i ++) {
-          var guru_course = guru_courses[i];
-          if (skill.id === guru_course.id) {
-            $scope.user.guru_courses.splice(i, i+1);
-          }
-        }
-        skill.active = false;
-        category.active_skills_count += skill.active ? 1 : -1;
-        return;
-    } else {
-      category.active_skills_count += skill.active ? 1 : -1;
-      $scope.user.categories[category.db_name][skill.name] = skill.active;
-      $localstorage.setObject('user', $scope.user);
+      if (subcategory.active) {
+        addGuruSubcategory(subcategory);
+      }
+      //set to false
+      else {
+        removeGuruSubcategory(subcategory);
+      }
     }
-  }
+
+
 
 
     var addGuruSubcategory = function(subcategory) {

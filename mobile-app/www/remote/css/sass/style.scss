@@ -3763,10 +3763,23 @@ section {
 	display: none;
 }
 
-.guru-introduction-slide-box, .guru-tip-of-day-slide-box {
-	.slider-pager {
-		display:block;
+#guru-home-content  {
+	.guru-introduction-slide-box {
+
+		.slider-pager {
+			display:block;
+		}
+
 	}
+	.guru-tip-of-day-slide-box {
+
+		.slider-pager {
+			display:block;
+			margin-bottom:25%;
+		}
+
+	}
+
 }
 
 .content {
@@ -3820,4 +3833,21 @@ section {
 	position: absolute;
     right: 10px;
     top: 34%;
+}
+
+//platform specific ios
+body.platform-ios {
+	background-color:transparent;
+	background:transparent;
+	ion-side-menus.root-ion-side-menus.view {
+		background-color:transparent;
+		.home-view {
+			background-color: white;
+			background:white;
+			padding-top:20px;
+			section, #student-home-map-container {
+				top:20px !important;
+			}
+		}
+	}
 }

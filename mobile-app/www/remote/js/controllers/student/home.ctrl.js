@@ -132,8 +132,9 @@ angular.module('uguru.student.controllers', [])
 
 
             $timeout(function() {
+                $ionicViewSwitcher.nextDirection('forward');
                 $state.go('^.become-guru');
-                AnimationService.slide('left');
+                //AnimationService.slide('left');
             }, 0);
 
         }

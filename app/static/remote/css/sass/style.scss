@@ -463,7 +463,8 @@ section {
 }
 
 // EXPERIENCE MODAL
-#experience-modal {
+#experience-modal,
+#guru-introduction-modal {
 	position: absolute;
 	top: 0;
 	.main {
@@ -483,7 +484,7 @@ section {
 				text-align: right;
 			}
 		}
-		#exp-input {
+		#exp-input, #guru-intro-input {
 			height: calc(100% - 194px);
 		}
 		#exp-input.removable {
@@ -1545,19 +1546,10 @@ section {
 		@include flex;
 		@include flex-wrap;
 		@include flex-bottom;
-		height: calc(100% - 127px);
+		height: 70%;
 		svg {
 			display: block;
-			max-height: 60%;
-		}
-		#access-title {
-			width: 100%;
-			h1 {
-				text-align: center;
-				font-size: 48px;
-				font-weight: 900;
-				letter-spacing: 1px;
-			}
+			max-height: 70%;
 		}
 	}
 	#access-code {
@@ -2490,6 +2482,7 @@ section {
 				h1 {
 					@include center-xy;
 					width: 100px;
+					font-weight: 700;
 					text-align: center;
 					text-transform: uppercase;
 				}
@@ -3730,6 +3723,12 @@ section {
 	display: none;
 }
 
+.guru-introduction-slide-box, .guru-tip-of-day-slide-box {
+	.slider-pager {
+		display:block;
+	}
+}
+
 .content {
 	height: 100%;
 	&.footer-exists {
@@ -3781,4 +3780,21 @@ section {
 	position: absolute;
     right: 10px;
     top: 34%;
+}
+
+//platform specific ios
+body.platform-ios {
+	background-color:transparent;
+	background:transparent;
+	ion-side-menus.root-ion-side-menus.view {
+		background-color:transparent;
+		.home-view {
+			background-color: white;
+			background:white;
+			padding-top:20px;
+			section, #student-home-map-container {
+				top:20px !important;
+			}
+		}
+	}
 }

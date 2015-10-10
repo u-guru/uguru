@@ -8,11 +8,16 @@ angular
   '$timeout',
   'Geolocation',
   'University',
+  'Version',
+  '$ionicHistory',
+  '$templateCache',
+  '$localstorage',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
-	AndroidService, iOSService, WindowsService, $timeout, Geolocation, University) {
+	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
+  University, Version, $ionicHistory, $templateCache, $localstorage) {
 
 	return {
 		readyDevice: readyDevice,
@@ -23,6 +28,7 @@ function DeviceService($cordovaNgCardIO,
     getUUID: getUUID,
 		isMobile: isMobile,
 		isWeb: isWeb,
+    isAndroidDevice: isAndroidDevice,
     ios: iOSService,
     getInfo: getInfo,
     checkUpdates: checkUpdates
@@ -31,6 +37,11 @@ function DeviceService($cordovaNgCardIO,
 	function isMobile() {
 		return ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone();
 	}
+
+  function isAndroidDevice() {
+    console.log(navigator.userAgent);
+    return ionic.Platform.isAndroid();
+  }
 
 	function isWeb() {
 		return !isMobile();
@@ -75,18 +86,26 @@ function DeviceService($cordovaNgCardIO,
 	function readyDevice(scope) {
 
     var userAgent = navigator.userAgent;
-    console.log("userAgent: " + userAgent);
 
-     if(userAgent.indexOf('wv')!==-1) {
-      onDeviceReady(scope);
-    }
 
+      if(userAgent.indexOf('wv')!==-1) {
+        onDeviceReady(scope);
+      }
+
+      if (navigator.splashscreen && navigator.splashscreen.hide) {
+          navigator.splashscreen.hide();
+      }
+
+      if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
+        console.log("detected mobile app");
+        onDeviceReady(scope);
+      } else {
+        console.log("did not detect mobile app");
+      }
 	}
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
-
-		//checkUpdates();
 
     //Ugh --> they overroad the native js OnDOMContentLoaded ...
     ionic.DomUtil.ready(function(){
@@ -102,11 +121,14 @@ function DeviceService($cordovaNgCardIO,
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
-      navigator.splashscreen.show();
+
+      //the delay is for preventing components from rendering on the first go
+      $timeout(function() {
+        navigator.splashscreen.show();
+      }, 2000)
     }
 
 		if(isMobile()) {
-      Geolocation.getLocation(scope);
 
 	 		var mobileOS = getPlatform().toLowerCase();
 		  	switch(mobileOS) {
@@ -114,6 +136,7 @@ function DeviceService($cordovaNgCardIO,
 		  			iOSService.ready();
 			  		break;
 		  		case "android":
+            Geolocation.getLocation(scope);
 		  			AndroidService.ready();
 		  			break;
 	  			case "windows":

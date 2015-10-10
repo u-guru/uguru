@@ -15,7 +15,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  REST_URL = "http://localhost:5000"
+  REST_URL = "http://192.168.42.78:5000"
 
 } else {
   img_base = '/static/'
@@ -53,7 +53,13 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  $ionicConfigProvider.views.transition('none');
+  // if (ionic.Platform.isAndroid()) {
+  //   $ionicConfigProvider.scrolling.jsScrolling(false);
+  // }
+
+  //ASK-NICK: what does this mean?
+  $ionicConfigProvider.views.transition('platform');
+
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(true);
