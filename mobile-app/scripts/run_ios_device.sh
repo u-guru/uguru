@@ -5,6 +5,7 @@ echo "Removing facebook connect plugin"
 cordova plugins rm com.phonegap.plugins.facebookconnect
 cordova plugins rm org.apache.cordova.file
 cordova plugins rm org.apache.cordova.file-transfer
+cordova plugins rm cordova-plugin-crosswalk-webview
 echo "Add ios..."
 cordova platform add ios
 echo "IOS Platform added successfully"

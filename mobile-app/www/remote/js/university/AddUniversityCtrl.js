@@ -256,7 +256,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           //$scope.$apply();
           $timeout(function() {
             $scope.universityInput.value += "";
+            $timeout(function() {
+              $scope.universityInput.value += "";
+            }, 500);
           }, 0);
+
           
       }
     }

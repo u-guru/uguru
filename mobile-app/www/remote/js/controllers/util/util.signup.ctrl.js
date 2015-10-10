@@ -318,7 +318,7 @@ angular.module('uguru.util.controllers')
       $scope.inputPopup = $ionicPopup.show({
           template: template,
           title: 'Change your password',
-          subTitle: 'Must be longer than 6 characters',
+          subTitle: 'Must be at least 6 characters.',
           scope: $scope,
           buttons: [
             { text: 'Cancel' },
@@ -327,13 +327,13 @@ angular.module('uguru.util.controllers')
               type: 'button-positive',
               onTap: function(e) {
 
-                if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 7) {
+                if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 6) {
                   alert('Please fill in all fields');
                   return;
                 }
 
-                if ($scope.data.new_password.length < 7) {
-                  alert('Please create a password longer than 6 characters');
+                if ($scope.data.new_password.length < 6) {
+                  alert('Please create a password with at least 6 characters.');
                   return;
                 }
 

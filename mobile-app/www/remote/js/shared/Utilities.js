@@ -227,7 +227,7 @@ function Utilities($rootScope, Settings) {
 
 	function validatePassword(password) {
 		if(password!==null) {
-			return password.length>=7;
+			return password.length>=6;
 		} else return false;
 	}
 
