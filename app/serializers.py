@@ -489,7 +489,7 @@ AdminUniversitySerializer = {
     'school_color_one': fields.String,
     'website': fields.String,
     'school_mascot_name': fields.String,
-    'school_local_name': fields.String,
+    'school_casual_name': fields.String,
     'us_news_ranking': fields.String,
     'latitude': fields.Float,
     'longitude': fields.Float,

@@ -590,6 +590,7 @@ class University(Base):
     school_color_one = Column(String)
     school_color_two = Column(String)
     school_logo_image_url = Column(String)
+    variations = Column(String)
 
     school_casual_name = Column(String)
     school_mascot_name = Column(String)
