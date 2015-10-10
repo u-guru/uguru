@@ -573,6 +573,7 @@ class University(Base):
     num_majors = Column(Integer, default =0)
     num_emails = Column(Integer, default =0)
     banner_url = Column(String)
+    seal_url = Column(String)
 
     ready_to_launch = Column(Boolean)
     is_targetted = Column(Boolean, default=False)
@@ -810,7 +811,7 @@ class Department(Base):
         if self.code:
             return "<Department'%s', '%s'>" %\
               (str(self.id), str(self.code))
-        return "EMPTY DEPARTMENT with %s courses" % len(self.courses) 
+        return "EMPTY DEPARTMENT with %s courses" % len(self.courses)
 
 
 
