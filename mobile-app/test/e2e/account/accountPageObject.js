@@ -79,6 +79,12 @@ var Account = function()
 	{
 		doc.socialButton(0,"Login"); 	
 	};
+
+	this.SwitchLoginMode = function()
+	{
+		doc.socialButton(3,"Or Login"); 	
+	};
+
 	this.CheckAccountMessage = function(str)
 	{
 		doc.checkMsg(str);

@@ -259,8 +259,12 @@ exports.config = {
                             //   // '../e2e/bugs/error_profileName.js',  // incomplicated 
                             // '../e2e/bugs/error_BecomeGuruToProfile.js', 
                             '../e2e/bugs/error_sidebar.js', 
+                          ],
+      production_error  :[
+                            
+                          '../e2e/production/error_9.js',
 
-                          ]
+                         ]
 
         },
         // restartBrowserBetweenTests: true,

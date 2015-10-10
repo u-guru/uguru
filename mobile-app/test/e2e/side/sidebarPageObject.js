@@ -16,7 +16,8 @@ var Sidebar = function() {
 	this.EditPasswordWrapper =  element(by.id('edit-password-uguru-popup'));
 	//Modal
 	this.Modal = element(by.css('.modal-backdrop.active'));
-	this.CloseModalButton = element.all(by.css('.modal-backdrop.active .header-nav'));
+	// this.CloseModalButton = element.all(by.css('.modal-backdrop.active .header-nav'));
+	this.CloseModalButton = element.all(by.css('[ng-click="toggleRightSideMenu()"]')).last();
 
 
 	 this.CheckPopUpIsShown = function()

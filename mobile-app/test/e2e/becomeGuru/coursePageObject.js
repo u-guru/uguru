@@ -4,7 +4,7 @@ var Course = function()
 	this.CourseTitle = element(by.css('#course .third'));
 	this.CourseList = element.all(by.css('#courses-list li:not(.ng-hide)'));
 	this.SelectCourse = element.all(by.repeater('course in user.guru_courses'));
-	this.InputModel = 'course_search_text';
+	this.InputModel = 'search_text.course';
 	this.nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
 
 

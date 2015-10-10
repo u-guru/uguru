@@ -29,36 +29,46 @@ var global = function() {
     });
   }
   /***********************************************************
+  *
+  *
+  *
+  ************************************************************/
+  this.ScrollPage = function(ele)
+  {
+      browser.executeScript('arguments[0].scrollIntoView()', ele.getWebElement());
+  }
+  /***********************************************************
   * slideView 
   * arg : index the page you awnna swipe
   * desc: swip the page to left or right.
   ************************************************************/
   this.slideView = function(index,direction,tagName)
   {
-    var xV = 0
+    var xV = -300;
     var yV = 0;
     var num =0;
     if (direction === 'left')
     {
-      xV = -200;
+      xV = -300;
       num = 1
     }
     else if (direction === 'right')
     {
       num = - 1
-      xV =  200;
+      xV =  300;
     }
       var ele = element.all(by.tagName("ion-slide"));
-    if (tagName != null)
-      ele = element.all(by.css('#request-content'));
+    // if (tagName != null)
+    //   ele = element.all(by.css('#request-content'));
     ele.then(function(items)
     {
-        console.log("slides :"+ items.length)
+        console.log("slides :"+ items.length);
+        browser.sleep(5000);
         browser.wait(EC.visibilityOf(items[index]),3000);
         browser.actions().
         dragAndDrop(items[index], {x: xV, y: yV}).
         perform();
-        browser.wait(EC.visibilityOf(items[index+num]),3000);
+        // browser.wait(EC.visibilityOf(items[index+num]),3000);
     }); 
   }
   /***********************************************************
@@ -140,7 +150,7 @@ var global = function() {
   {
     var spin = element(by.id("circle"));
     browser.wait(EC.presenceOf(spin),3000, "No loading spin is shown");
-    browser.wait(EC.stalenessOf(spin),3000, "Loading spin is not disappeared");
+    browser.wait(EC.invisibilityOf(spin),3000, "Loading spin is not disappeared");
   };
   /**********************************************************
   *checkMsg 
@@ -290,7 +300,7 @@ var global = function() {
       else
         var temp = Math.floor((Math.random() * (items.length-1)));
        
-        browser.wait(EC.elementToBeClickable( items[temp]),2000);
+        browser.wait(EC.elementToBeClickable( items[temp]),2000,'wait too long to get item clickable');
         items[temp].click();
         // console.log(items.length)
     });
@@ -422,6 +432,7 @@ var global = function() {
       var path = require('path');
       var fileToUpload = '../'+size+'.jpg';
       var absolutePath = path.resolve(__dirname, fileToUpload);
+      // expect(absolutePath).toBe('HI');
       element(by.id(name)).sendKeys(absolutePath);
   }
   /***********************************************************************

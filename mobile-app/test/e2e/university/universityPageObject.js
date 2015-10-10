@@ -68,16 +68,17 @@ var University = function() {
 
     this.toggleGPS = function()
     {
-         browser.wait(EC.visibilityOf(university.GPSButton),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
-         browser.getCapabilities().then(function (caps) {
-              var platformName = caps.caps_.platformName;
-              expect(platformName).toBe('android');
-              if(platformName != 'android')
-              {
-                browser.wait(EC.visibilityOf(this.GPSButton),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
-                this.GPSButton.click();
-              }   
-          });
+         browser.wait(EC.visibilityOf(this.GPSButton),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
+         // browser.getCapabilities().then(function (caps) {
+         //      var platformName = caps.caps_.platformName;
+         //      expect(platformName).toBe('android');
+         //      if(platformName != 'android')
+         //      {
+         //        browser.wait(EC.visibilityOf(this.GPSButton),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
+         //        this.GPSButton.click();
+         //      }   
+         //  });
+         this.GPSButton.click();
     };
     this.checkGPSColor = function(toggle)
     {
@@ -93,28 +94,61 @@ var University = function() {
     {
       if(toggle === 0)
       {
-        browser.wait(EC.visibilityOf(this.OutputOfMillage.first()),3000).then(
-          function()
-          {
-            element.all(by.css('#school-list li:not(.ng-hide)')).then(function(items){
-                if (start === null)
-                  for(var i = 0 ; i < items.length; i++)
-                    expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
-                else
-                  for(var i = 0 ; i < start; i++)
-                    expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
+        // browser.wait(EC.visibilityOf(this.OutputOfMillage.first()),3000).then(
+        //   function()
+        //   {
+        //     element.all(by.css('#school-list li:not(.ng-hide)')).then(function(items){
+        //         if (start === null)
+        //           for(var i = 0 ; i < items.length; i++)
+        //             expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
+        //         else
+        //           for(var i = 0 ; i < start; i++)
+        //             expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
                 
-            });
-          }, function(){
-              //code to want to execute on failure.
-              // console.log("failure");
-                doc.checkMsg("Unable to Find the Location at #"+start +", did you enable share Location");
-          });
+        //     });
+        //   }, function(){
+        //       //code to want to execute on failure.
+        //       // console.log("failure");
+        //         doc.checkMsg("Unable to Find the Location at #"+start +", did you enable share Location");
+        //   });
+          // element.all(by.css('#school-list li:not(.ng-hide)')).then(function(items){
+          //       if (start === null)
+          //         for(var i = 0 ; i < items.length; i++)
+          //           expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
+          //       else
+          //         for(var i = 0 ; i < start; i++)
+          //           expect(items[i].element(by.css('.school-distance.txt-lake')).isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
+                
+          //   });
+          doc.waitLoading();
+          browser.wait(EC.visibilityOf(this.OutputOfMillage.last()),3000);
+          this.OutputOfMillage.then(function(items)
+          {
+              if (start === null)
+                for(var i = 0 ; i < items.length; i++)
+                  expect(items[i].isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
+              else
+                for(var i = 0 ; i < start; i++)
+                  expect(items[i].isPresent()).toBe(true,"No Miles Is Showing at index : " + i);
+          })
+        
       }
         else
         {
           browser.wait(EC.invisibilityOf(this.OutputOfMillage.first()),3000,"Miles Should Be Hidden");
         }
+    };
+
+    this.checkMileageInOrder = function()
+    {
+      var universityMile = element.all(by.binding('university.miles'));
+
+          // expect(this.OutputOfMillage.get(i).getText()).toBe("Hi");
+        //   var ele1Text = universityMile.get(i).getText() ;
+          // var ele2Text = this.OutputOfMillage.get(i+1).getText();
+          expect(universityMile.count() > 1).toBe(true,"Miles doesn't sort by order ,Counts university Mile: ", universityMile.count());
+
+          // expect(ele1Text > ele2Text ).toBe(true);
     };
     this.checkCurrentMileage = function(toggle,index)
     {

@@ -32,6 +32,7 @@ var GuruProfile = function()
 	// this.ModelClose = element(by.css('.modal-backdrop.active .header-nav-back'));
 	// this.ModelClose = element(by.css('.modal-backdrop.active .header-close'));
 
+
 	this.getProfileName = function()
 	{
 		return this.ProfileName.getText();

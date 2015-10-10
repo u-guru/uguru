@@ -85,6 +85,7 @@ var Major = function()
 
 	 this.SelectMajorHasRightName = function(total,index,name)
 	 {
+	 	expect(this.CheckMarkMajor.first().isPresent()).toBe(true,'No Check Mark is found');
  		this.CheckMarkMajor.then(function (items) {
  	        expect(items.length).toBe(total);
  			expect(items[index].getText()).toContain(name);
@@ -123,10 +124,12 @@ var Major = function()
      {
      	doc.setInput(name,0,this.InputModel);
      };
+
      this.IsMajorSearchBarEmpty = function()
      {
      	doc.setInput("",0,this.InputModel);
      };
+
      this.ClearSearchBar = function()
      {
      	doc.setInput("",0,this.InputModel,true);
