@@ -18,10 +18,12 @@ angular.module('uguru.guru.controllers')
   'University',
   'uTracker',
   'AnimationService',
+  'Category',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window, University, uTracker, AnimationService) {
+    $ionicViewSwitcher, $window, University, uTracker, AnimationService,
+    Category) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -108,7 +110,7 @@ angular.module('uguru.guru.controllers')
       if (index === 0) {
 
         uTracker.track(tracker, 'Become Guru: Majors');
-        
+
         $ionicSideMenuDelegate.canDragContent(false);
       }
 
@@ -123,7 +125,7 @@ angular.module('uguru.guru.controllers')
       if (index === 2) {
 
         uTracker.track(tracker, 'Become Guru: Skills');
-        $ionicSideMenuDelegate.canDragContent(true);        
+        $ionicSideMenuDelegate.canDragContent(true);
       }
 
       if (index === 3) {
@@ -137,7 +139,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.onDragLeft = function() {
-      
+
       $ionicSideMenuDelegate.canDragContent(false);
       $ionicSlideBoxDelegate.enableSlide(false);
 
@@ -145,7 +147,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.onDragRight = function() {
-      
+
       if ($scope.activeSlideIndex === 0) {
         $ionicSideMenuDelegate.canDragContent(false);
         $ionicSlideBoxDelegate.enableSlide(false);
@@ -154,9 +156,9 @@ angular.module('uguru.guru.controllers')
       return;
     }
     $scope.onDragLeft = function() {
-      
+
       if ($scope.activeSlideIndex === 0) {
-        $ionicSlideBoxDelegate.enableSlide(true);      
+        $ionicSlideBoxDelegate.enableSlide(true);
       }
     }
 
@@ -230,10 +232,28 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.beforeEnter', function() {
       // if (!$scope.data.majors) {
+      $timeout(function() {
 
-      //   $scope.getMajorsForUniversityId($scope.user.university.id);
-      //   $scope.getCoursesForUniversityId($scope.user.university.id);
+        if (!University.majors) {
+          University.courses = $scope.getMajorsForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
+          $scope.majors = University.majors;
+        }
 
+        if (!University.courses) {
+              University.courses = $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
+              $scope.courses = University.courses;
+        }
+          //   $scope.getCoursesForUniversityId($scope.user.university.id);
+
+
+        var updateScope = function(categories) {
+            $scope.categories = categories;
+        }
+        if (!Category.categories) {
+          $scope.categories = Category.categories || $scope.getCategories(updateScope) || [];
+        }
+
+      }, 100)
 
       // }
     })

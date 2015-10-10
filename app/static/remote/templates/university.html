@@ -34,7 +34,7 @@
   			<li class="list-item" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
   				<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
   					<span class="school-icon list-icon-left">
-  						<img image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
+  						<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
   					</span>
   					<span ng-if='!location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
   						<b>

@@ -1681,6 +1681,9 @@ section {
 		}
 		.geolocation-icon {
 			margin-top: 3px;
+		// To add hella space to tap it (its responsive && equalizes)
+			padding: 50px;
+    		margin-right: -50px;
 		}
 	}
 	#school-list, #school-list-modal {
