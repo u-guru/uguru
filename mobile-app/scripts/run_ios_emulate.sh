@@ -18,7 +18,7 @@ cordova plugin add org.apache.cordova.file-transfer@r0.5.0
 
 echo
 echo 'Building device version for ios'
-ionic emulate ios -clr --target='iPhone-5s'
+ios-sim launch platforms/ios/build/emulator/Uguru.app --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-5s, 8.4"
 echo
 # echo 'Running on device... please make sure your device is plugged in'
 # ionic run ios -clr --device

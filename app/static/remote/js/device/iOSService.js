@@ -8,12 +8,13 @@ angular
 	'Geolocation',
 	'Settings',
 	'Popup',
+	'$timeout',
 
 	iOSService
 	]);
 
 function iOSService($rootScope, $state, $localstorage, $cordovaPush,
-  Geolocation, Settings, Popup) {
+  Geolocation, Settings, Popup, $timeout) {
 
 	return {
 		ready: ready,
@@ -23,8 +24,12 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 	function ready() {
 
-		showStatusBar();
+
 		hideSplashScreen(1000);
+		$timeout(function() {
+			showStatusBar();
+		}, 3000)
+
 
 		if(cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -36,10 +41,30 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	}
 
 	function showStatusBar() {
+		console.log('status bar..')
 		if(window.StatusBar) {
-			StatusBar.overlaysWebView(false);
-			StatusBar.styleLightContent();
-			StatusBar.hide();
+			window.StatusBar.show();
+			window.StatusBar.overlaysWebView(true);
+			setStatusBarText('light'); //light
+		}
+	}
+
+	function hideStatusBar() {
+		if (window.StatusBar) {
+			window.StatusBar.hide();
+		}
+	}
+
+	function setStatusBarText(_type) {
+		if(!window.StatusBar) {
+			console.log('no status bar detected');
+			return;
+		}
+		if (_type == 'light') {
+				window.StatusBar.styleLightContent();
+		}
+		else if (_type == 'dark') {
+				window.StatusBar.styleDefault();
 		}
 	}
 
