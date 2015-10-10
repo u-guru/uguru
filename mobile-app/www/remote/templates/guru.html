@@ -3,7 +3,7 @@
 <div class="toast">
 	<div>
 		<span>Tap to verify your school email</span>
-		<div class="progress white-round m10top">
+		<div class="progress white-round m05top">
 			<span style="width: 50%"></span>
 		</div>
 	</div>
@@ -14,12 +14,12 @@
 		<div id="guru-ranking">
 			<div class="ugrid">
 				<div id="guru-chart">
-					<div id='guru-ranking-progress-bar'>
+					<!-- <div id='guru-ranking-progress-bar'>
 						<div id="percentile">
 							<div id="percentile-ranking">{{user.current_guru_ranking}}</div>
 							<div id="percentile-label">Percentile</div>
 						</div>
-          			</div>
+          			</div> -->
 				</div>
 				<div id="guru-stats">
 					<div>
@@ -43,34 +43,39 @@
 	</header>
 	<div id="guru-home-content" class="two-thirds">
 		<h2 class="section-header">Your University Guru Ranking</h2>
+		<button id="btn-launch-profile" class="btn-caps-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!user.id' ng-click='launchSignupModal()'>Launch My Profile</button>
 		<ion-slide-box show-pager='true' class='guru-tip-of-day-slide-box'>
-			<!--Have CSS take over entire remaining space, dont kno whow to quickly--> 
 			<ion-slide>
-			    <div class='tip-container text-center p15xy'>
-			        <h2 class="m05bottom">Tip of the day</h2>
-			        <p>Complete your profile to unlock access to your Guru customizer</p>
-			        <button class='semibold bg-moola full-x'> Add Introduction</button>
+			    <div class='card'>
+					<div class="card-content">
+				        <h2>Tip of the day</h2>
+				        <p>Complete your profile to unlock access to your Guru customizer</p>
+					</div>
+			        <button class='semibold bg-moola full-x'>Add Introduction</button>
 			    </div>
 			</ion-slide>
 			<ion-slide>
-			    <div class='tip-container text-center p15xy'>
-			        <h2 class="m05bottom">Tip of the day</h2>
-			        <p>Complete your profile to unlock access to your Guru customizer</p>
-			        <button class='semibold bg-moola full-x'> Add Introduction</button>
+			    <div class='card'>
+					<div class="card-content">
+				        <h2>Tip of the day</h2>
+				        <p>Complete your profile to unlock access to your Guru customizer</p>
+					</div>
+			        <button class='semibold bg-moola full-x'>Add Introduction</button>
 			    </div>
 			</ion-slide>
 			<ion-slide>
-			    <div class='tip-container text-center p15xy'>
-			        <h2 class="m05bottom">Tip of the day</h2>
-			        <p>Complete your profile to unlock access to your Guru customizer</p>
-			        <button class='semibold bg-moola full-x'> Add Introduction</button>
+			    <div class='card'>
+					<div class="card-content">
+				        <h2>Tip of the day</h2>
+				        <p>Complete your profile to unlock access to your Guru customizer</p>
+					</div>
+			        <button class='semibold bg-moola full-x'>Add Introduction</button>
 			    </div>
 			</ion-slide>
 		</ion-slide-box>
 	</div>
 </section>
 
-<button id="btn-edit-profile" class="btn-caps-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!user.id' ng-click='launchSignupModal()'>Launch My Profile</button>
 
 <div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar' ng-if='user && user.id'>
 	<a class="tab-item active" nav-direction='swap' href='#/guru'>

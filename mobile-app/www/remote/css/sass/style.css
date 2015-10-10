@@ -3192,6 +3192,10 @@ section {
 .guru-view header::before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
 
+.guru-view #guru-home-content {
+  overflow: none !important;
+  padding-bottom: 50px; }
+
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -3293,12 +3297,66 @@ section {
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
 
-.guru-view .tip-container h2 {
-  font-size: 22px; }
+.guru-view .guru-tip-of-day-slide-box {
+  height: calc(100% - 36px); }
+  .guru-view .guru-tip-of-day-slide-box .card {
+    margin: 15px !important;
+    height: calc(100% - 60px);
+    padding: 0 !important;
+    background: #40484B;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center; }
+    .guru-view .guru-tip-of-day-slide-box .card .card-content {
+      padding: 15px;
+      height: calc(100% - 64px); }
+    .guru-view .guru-tip-of-day-slide-box .card h2 {
+      font-size: 24px;
+      font-weight: 600; }
+    .guru-view .guru-tip-of-day-slide-box .card p {
+      margin-top: 10px;
+      font-size: 18px; }
+  .guru-view .guru-tip-of-day-slide-box .slider-pager {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: auto !important;
+    bottom: 15px; }
+    .guru-view .guru-tip-of-day-slide-box .slider-pager span {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center; }
+    .guru-view .guru-tip-of-day-slide-box .slider-pager .icon {
+      font-size: 12px;
+      line-height: 16px; }
 
-.guru-view .tip-container p {
-  margin-top: 10px;
-  font-size: 18px; }
+.guru-view #btn-launch-profile:active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #69B3A5 !important; }
+
+.guru-view #btn-launch-profile + .guru-tip-of-day-slide-box {
+  height: calc(100% - 50px); }
 
 @media screen and (min-height: 540px) {
   .guru-view #guru-ranking > div {
