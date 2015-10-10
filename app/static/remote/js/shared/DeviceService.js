@@ -80,7 +80,6 @@ function DeviceService($cordovaNgCardIO,
 	function readyDevice(scope) {
 
     var userAgent = navigator.userAgent;
-    console.log("userAgent: " + userAgent);
 
 
       if(userAgent.indexOf('wv')!==-1) {

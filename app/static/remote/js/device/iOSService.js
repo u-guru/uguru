@@ -9,12 +9,12 @@ angular
 	'Settings',
 	'Popup',
 	'$timeout',
-
+	'$state',
 	iOSService
 	]);
 
 function iOSService($rootScope, $state, $localstorage, $cordovaPush,
-  Geolocation, Settings, Popup, $timeout) {
+  Geolocation, Settings, Popup, $timeout, $state) {
 
 	return {
 		ready: ready,
@@ -45,7 +45,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		if(window.StatusBar) {
 			window.StatusBar.show();
 			window.StatusBar.overlaysWebView(true);
-			setStatusBarText('light'); //light
+			setStatusBarText($state.current.name); //light
 		}
 	}
 
@@ -55,15 +55,19 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		}
 	}
 
-	function setStatusBarText(_type) {
+	function setStatusBarText(state_name) {
 		if(!window.StatusBar) {
 			console.log('no status bar detected');
 			return;
 		}
-		if (_type == 'light') {
+
+		darkStates = ['root.home'];
+		darkStateIndex = darkStates.indexOf(state_name);
+
+		if (darkStateIndex == -1) {
 				window.StatusBar.styleLightContent();
 		}
-		else if (_type == 'dark') {
+		else {
 				window.StatusBar.styleDefault();
 		}
 	}
