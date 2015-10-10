@@ -18,11 +18,16 @@ angular.module('uguru.guru.controllers', [])
   '$ionicViewSwitcher',
   '$ionicActionSheet',
   'RankingService',
+  'TipService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet, RankingService)     {
+  $ionicActionSheet, RankingService, TipService)     {
 
+  $scope.refreshTipsAndRanking = function(user) {
+    TipService.currentTips = TipService.generateTips(user);
+    RankingService.refreshRanking(user);
+  }
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
@@ -30,7 +35,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicSideMenuDelegate.canDragContent(false);
 
 
-  $scope.tip_of_day = 'Your profile is not complete. Completing your profile will increase your ranking by a lot'
+  if ($scope.user) {
+    TipService.currentTips = TipService.generateTips($scope.user); //mastercopy
+    $scope.guruHomeTips = TipService.currentTips; //local copy
+  }
 
 
   $scope.root.vars.guru_mode = true;
@@ -257,7 +265,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
 
             var appOnboardingObj = $localstorage.getObject('appOnboarding');
-            
+
             if (!haveProgressBarsBeenInitialized) {
               checkIsFirstTimeGuruMode(appOnboardingObj);
             } else {
@@ -270,13 +278,21 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
         });
 
+        $scope.goToStateWithTransition = function(state_name, transition) {
+          $ionicViewSwitcher.nextDirection(transition);
+          $state.go(state_name);
+        }
+
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
 
+          $scope.refreshTipsAndRanking($scope.user);
+
           $timeout(function() {
+
             //commented out until it's 100% so won't get in the way of other branches pulling mine.
-            
-            if (RankingService.recentlyUpdated || RankingService.updateRanking($scope.user)) {
+
+            if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
               RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
             }
 

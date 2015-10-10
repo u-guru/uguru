@@ -92,12 +92,13 @@ class CategoryListView(restful.Resource):
 
         return Category.query.all(), 200
 
+
 class UniversityListView(restful.Resource):
+    @marshal_with(AdminUniversitySerializer)
     def get(self):
-
-        from static.data.universities_efficient import universities_arr
-
-        return json.dumps(universities_arr), 200
+        universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.banner_url != None, University.logo_url != None).all()
+        print universities
+        return universities, 200
 
 class UniversityMajorsView(restful.Resource):
     @marshal_with(DepartmentSerializer)
@@ -2627,6 +2628,7 @@ class AdminViewUniversitiesListPrepared(restful.Resource):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED"
         universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.banner_url != None, University.logo_url != None).all()
+        print universities
         return universities, 200
 
 

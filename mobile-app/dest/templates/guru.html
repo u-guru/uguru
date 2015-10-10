@@ -1,6 +1,6 @@
 <ion-view class='uguru-view guru-view bg-charcoal'>
 <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
-<div class="toast">
+<div class="toast" ng-if='user.current_guru_ranking && user.current_guru_ranking > 40 && !user.school_email_confirmed'>
 	<div>
 		<span>Tap to verify your school email</span>
 		<div class="progress white-round m10top">
@@ -43,9 +43,16 @@
 	</header>
 	<div id="guru-home-content" class="two-thirds">
 		<h2 class="section-header">Your University Guru Ranking</h2>
-		<ion-slide-box show-pager='true' class='guru-tip-of-day-slide-box'>
-			<!--Have CSS take over entire remaining space, dont kno whow to quickly--> 
-			<ion-slide>
+		<ion-slide-box show-pager='true' class='guru-tip-of-day-slide-box' style='height: calc(100% - 86px);'>
+			<!--Have CSS take over entire remaining space, dont kno whow to quickly-->
+			<ion-slide ng-repeat='tip in guruHomeTips' class='full-y relative'>
+			    <div class='tip-container text-center p15xy'>
+			        <h2 class="m05bottom">{{tip.title}}</h2>
+			        <p>{{tip.message}}</p>
+			        <button ng-click='goToStateWithTransition(tip.next_state, tip.transition)' class='semibold bg-moola full-x absolute bottom-0 left-0'> {{tip.action_text}}</button>
+			    </div>
+			</ion-slide>
+			<!-- <ion-slide>
 			    <div class='tip-container text-center p15xy'>
 			        <h2 class="m05bottom">Tip of the day</h2>
 			        <p>Complete your profile to unlock access to your Guru customizer</p>
@@ -58,14 +65,7 @@
 			        <p>Complete your profile to unlock access to your Guru customizer</p>
 			        <button class='semibold bg-moola full-x'> Add Introduction</button>
 			    </div>
-			</ion-slide>
-			<ion-slide>
-			    <div class='tip-container text-center p15xy'>
-			        <h2 class="m05bottom">Tip of the day</h2>
-			        <p>Complete your profile to unlock access to your Guru customizer</p>
-			        <button class='semibold bg-moola full-x'> Add Introduction</button>
-			    </div>
-			</ion-slide>
+			</ion-slide> -->
 		</ion-slide-box>
 	</div>
 </section>

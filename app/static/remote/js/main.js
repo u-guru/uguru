@@ -15,7 +15,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  REST_URL = "http://localhost:5000"
+  REST_URL = "http://192.168.42.78:5000"
 
 } else {
   img_base = '/static/'
