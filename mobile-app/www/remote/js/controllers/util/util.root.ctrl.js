@@ -138,13 +138,14 @@ angular.module('uguru.util.controllers')
         Category.mapActiveToSubcategories(Category.categories, $scope.user);
         $localstorage.setObject('categories', Category.categories);
 
-        $scope.getCategories = function() {
+        $scope.getCategories = function(callback) {
             Category.get().then(function(categories) {
-                Category.categories = categories.plain();
+                Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
                 $localstorage.setObject('categories', Category.categories);
                 console.log('categories loaded', Category.categories);
 
+                callback && callback(Category.categories);
             },
             function() {
                 console.log("Categories NOT successfully loaded");
