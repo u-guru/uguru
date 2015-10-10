@@ -11,13 +11,13 @@ echo "IOS Platform added successfully"
 echo
 echo "Re-adding facebook connect url"
 echo
-cordova -d plugin add ./plugins_stable/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
-cordova -d plugin add ./plugins_stable/org.apache.cordova.file
-cordova -d plugin add ./plugins_stable/org.apache.cordova.file-transfer
+cordova -d plugin add ~/Git/packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+cordova plugin add org.apache.cordova.file@r1.3.3
+cordova plugin add org.apache.cordova.file-transfer@r0.5.0
 
 echo
 echo 'Building device version for ios'
-cordova build ios
+cordova build ios --release
 echo
 # echo 'Running on device... please make sure your device is plugged in'
 # ionic run ios -clr --device

@@ -8,11 +8,13 @@ angular
   '$timeout',
   'Geolocation',
   'University',
+  'Version',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
-	AndroidService, iOSService, WindowsService, $timeout, Geolocation, University) {
+	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
+  University, Version) {
 
 	return {
 		readyDevice: readyDevice,
