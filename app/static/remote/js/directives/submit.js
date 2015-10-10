@@ -21,9 +21,8 @@ angular.module('uguru.directives')
 	}
 
 	return {
-
 		link: link,
 		restrict: 'A'
 	}
 
-})
+});

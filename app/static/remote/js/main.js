@@ -52,7 +52,13 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  $ionicConfigProvider.views.transition('none');
+  // if (ionic.Platform.isAndroid()) {
+  //   $ionicConfigProvider.scrolling.jsScrolling(false);
+  // }
+
+  //ASK-NICK: what does this mean?
+  $ionicConfigProvider.views.transition('platform');
+
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(true);

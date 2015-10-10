@@ -486,7 +486,18 @@ AdminUniversitySerializer = {
     'num_emails': fields.Integer,
     'departments_sanitized': fields.Boolean,
     'courses_sanitized': fields.Boolean,
-    'school_color_one': fields.String
+    'school_color_one': fields.String,
+    'website': fields.String,
+    'school_mascot_name': fields.String,
+    'school_casual_name': fields.String,
+    'us_news_ranking': fields.String,
+    'latitude': fields.Float,
+    'longitude': fields.Float,
+    'forbes_url': fields.String,
+    'seal_url': fields.String,
+    'school_color_one': fields.String,
+    'school_color_two': fields.String,
+    'variations': fields.String
 }
 
 AdminUniversityDeptSerializer = {

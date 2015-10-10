@@ -146,7 +146,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-    
+
 
     $scope.limit = 10;
     $scope.increaseLimit = function() {
@@ -163,6 +163,7 @@ angular.module('uguru.util.controllers')
     }
 
     var getMajorsBecomeGuru = function() {
+      console.log('grabbing majors')
       University.getMajors($scope.user.university_id).then(function(majors) {
 
         University.majors = majors;
@@ -178,8 +179,8 @@ angular.module('uguru.util.controllers')
     }
 
     //$scope.majors = University.majors || getMajorsForUniversityId();
-    $scope.majors = (University.majors && University.majors.length) || getMajorsBecomeGuru();
-    $scope.removeUserMajorsFromMaster();
+    $scope.majors = University.majors || getMajorsBecomeGuru();
+    // $scope.removeUserMajorsFromMaster();
 
     // $timeout(function() {$scope.removeEmptyMajors();}, 1000)
 

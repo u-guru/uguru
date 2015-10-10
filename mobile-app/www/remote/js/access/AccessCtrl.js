@@ -26,7 +26,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   // if(AccessService.validate()){
   //   $timeout(function() {
   //     $ionicSlideBoxDelegate.next();
-  //   }, 0);  
+  //   }, 0);
   // }
 
 
@@ -45,7 +45,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     codeInput: '',
     errorInputMsg: null,
   };
-  
+
 
   $scope.testing = ThrottleService(function() {
     console.log("throttling!!")
@@ -104,6 +104,12 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   };
 
   $scope.accessInputOnFocus = function() {
+
+    //
+
+    if (DeviceService.isAndroidDevice()) {
+      console.log('this is an android device');
+    }
 
     if (DeviceService.isMobile() && !$scope.redeemRecentlyPressed) {
       // cordova.plugins.Keyboard.disableScroll(false);

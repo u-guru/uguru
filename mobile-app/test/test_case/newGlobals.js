@@ -10,7 +10,7 @@ var global = function() {
     browser.manage().deleteAllCookies();
     browser.executeScript('window.sessionStorage.clear();');
     browser.executeScript('window.localStorage.clear();');
-    browser.executeScript('window.location.reload(true);')
+    // browser.executeScript('window.location.reload(true);')
     browser.get("http://"+localhost+":8100/#/university");
   }
   /**********************************************************

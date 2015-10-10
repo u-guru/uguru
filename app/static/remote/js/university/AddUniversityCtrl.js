@@ -25,14 +25,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache, AccessService) {
 
   $scope.storedAccess = !AccessService.validate();
-  
+
   //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
 
   $scope.universitiesSorted = University.getSorted().slice();
-  $scope.universities = University.getSorted().slice();
+  $scope.universities = $scope.universitiesSorted;
 
   $scope.universityInput = {
     value: ''
@@ -104,8 +104,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
   $scope.limit = 10;
+  var totalSchools = $scope.universitiesSorted.length
   $scope.increaseLimit = function() {
-    if($scope.limit < $scope.universities.length) {
+    if($scope.limit < totalSchools) {
       $scope.limit += 10;
       //console.log('limit increased is being called', $scope.limit, $scope.universities.length);
     }
@@ -157,10 +158,22 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           "$University": university.name,
       });
 
-     // $scope.loader.show();
+
+      $scope.loader.showSuccess('Success', 750);
+
+      //timeout to have it be a background thread
+      $timeout(function() {
+
+        $scope.getCourseForUniversityId(university.id);
+        $scope.getMajorsForUniversityId(university.id);
+
+      }, 100);
+
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.universityInput.value = '';
+
+      //fetch the universities
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
@@ -176,7 +189,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         //$timeout(function() {
           // $scope.loader.hide();
           //$ionicViewSwitcher.nextDirection('forward');
-          
+
           // var start = null;
            //$state.go('^.home');
            AnimationService.flip('^.home');
@@ -194,8 +207,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           //   stats.end();
           // }
           // requestAnimationFrame(step);
-            
-        
+
+
         //}, 0);
       }
 
@@ -203,10 +216,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   };
 
-  
+
   $scope.location = Geolocation;
-  
+
   $scope.toggleLocationIconAppearance = function() {
+    console.log("Geolocation.settings.isAllowed: " + Geolocation.settings.isAllowed);
     // get GPS if we haven't attempted it
     if (Geolocation.settings.isAllowed === null) {
       console.log("calling getGPS");
@@ -236,7 +250,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.location.getLocation($scope, $scope.universitiesSorted);
     }, 0);
     //Geolocation.sortByDistance($scope.universitiesSorted);
-    
+
   };
 
   $scope.$watch(
@@ -245,12 +259,21 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       if(newValue) {
         console.log("location coordinates changed " + $scope.location.coordinates.lat + ', ' + $scope.location.coordinates.lon);
         console.log("geolocation coordinates changed " + Geolocation.coordinates.lat + ', ' + Geolocation.coordinates.lon);
-        $timeout(function() {
+        // $timeout(function() {
           console.log("$scope.universitiesSorted.length: " + $scope.universitiesSorted.length);
-          console.log("$scope.universitiesSorted.length: " + $scope.universities.length);
-          $scope.universitiesSorted = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universities);
-          //$scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universities);
-        },0);
+          console.log("$scope.universities.length: " + $scope.universities.length);
+          $scope.universities = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universities);
+          $scope.universistiesSorted = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
+        // },0);
+          //$scope.$apply();
+          $timeout(function() {
+            $scope.universityInput.value += "";
+            $timeout(function() {
+              $scope.universityInput.value += "";
+            }, 500);
+          }, 0);
+
+
       }
     }
     );
@@ -282,7 +305,7 @@ angular.module('uguru.directives')
     var queryPromise = null;
     $timeout(function() {
 
-      $scope.$watch(
+      $scope.$parent.$watch(
         'universityInput.value',
         function(newValue, oldValue) {
 
@@ -291,9 +314,8 @@ angular.module('uguru.directives')
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-              //$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
 
-              $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
             }, 90);
           }
@@ -304,7 +326,7 @@ angular.module('uguru.directives')
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-              $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
             }, 75);
           }
@@ -315,7 +337,7 @@ angular.module('uguru.directives')
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-              $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
             }, 50);
           }
@@ -325,7 +347,7 @@ angular.module('uguru.directives')
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-              $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
 
             }, 50);
@@ -338,6 +360,10 @@ angular.module('uguru.directives')
   }
 
   return {
+    scope: {
+      listScope: '=bindList',
+      source: '=source'
+    },
     link: link,
     restrict: 'A'
   }

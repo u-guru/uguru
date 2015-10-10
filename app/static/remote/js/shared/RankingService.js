@@ -5,21 +5,20 @@ angular
 		]);
 
 function RankingService() {
-  var isInit, progressCircle, recentlyUpdated, 
+  var isInit, progressCircle, recentlyUpdated,
   guruHomeProgressCircle, calcCredibility, calcProfile;
   var options = {};
-	
+
 	return {
 		calcRanking: calcRanking,
 		calcCredibility: calcCredibility,
 		calcProfile: calcProfile,
 		showPopover: showPopover,
-    updateRanking: updateRanking,
+    refreshRanking: refreshRanking,
 		recentlyUpdated: recentlyUpdated,
     isInit: isInit,
     progressCircle: progressCircle,
     guruHomeProgressCircle: guruHomeProgressCircle,
-    updateRanking: updateRanking,
     options:options
 	}
 
@@ -39,7 +38,7 @@ function RankingService() {
               }, 250);
             }
           );
-        
+
         setTimeout(function() {
             var closeGuruRankingPopoverLinks = document.querySelectorAll('.close-guru-ranking-modal-link');
             for (var i = 0; i < closeGuruRankingPopoverLinks.length; i ++) {
@@ -50,7 +49,7 @@ function RankingService() {
                 })
             }
         }, 500)
-        
+
 
 	}
 
@@ -86,13 +85,13 @@ function RankingService() {
                 return
               }
               progressCircle.animate(index / 100, function() {
-                  
+
               });
               index ++
           }, 20);
 	}
 
-	function updateRanking(user) {
+	function refreshRanking(user) {
     this.options.previousGuruRanking = Math.round(user.current_guru_ranking, 2);
     this.options.currentGuruRanking = Math.round(calcRanking(user), 2);
     console.log('updating ranking...');
@@ -107,9 +106,9 @@ function RankingService() {
   }
 
   function calcRanking(user) {
-        var base = 25; 
+        var base = 25;
         var max_points = 100;
-        
+
         if (user.current_credibility_percent) {
             newCredibility = Math.round((calcCredibility(user) / 400.0), 2);
             console.log('credibility', newCredibility)
@@ -128,7 +127,7 @@ function RankingService() {
     }
 
 	function calcCredibility(user) {
-        var base = 0; 
+        var base = 0;
         var num_items = 5;
         var default_item_weight = 20;
         var max_points = 100;
@@ -161,8 +160,8 @@ function RankingService() {
 
         // 1. university (Freebie)
         // 2. name (Freebie)
-        // 3. Profile photo x2 
-        // 4. Guru Courses 
+        // 3. Profile photo x2
+        // 4. Guru Courses
         // 5. Departments
         // 6 Previous experiences
         // 7. Skills x2 (x1 for one category)
@@ -181,7 +180,7 @@ function RankingService() {
         }
 
         if (user.profile_url && (user.profile_url !== default_url)) {
-          base += (2* default_item_weight);      
+          base += (2* default_item_weight);
         }
         if (user.guru_courses && user.guru_courses.length > 0) {
             base += default_item_weight;
@@ -200,7 +199,7 @@ function RankingService() {
         if (user.guru_languages && user.guru_languages.length) {
             base += default_item_weight
         }
-        
+
         var percentage = parseInt((base  / (max_points * 1.0)) * 100);
         //update the home credibility progress if it exists
         return percentage;

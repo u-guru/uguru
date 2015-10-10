@@ -1,190 +1,120 @@
 angular
 .module('sharedServices')
-.factory("RankingService", [
-	RankingService,
+.factory("TipService", [
+	TipService,
 		]);
 
-function RankingService() {
-  var isInit, progressCircle, recentlyUpdated;
-  var options = {};
-	
-	return {
-		calcRanking: calcRanking,
-		calcCredibility: calcCredibility,
-		calcProfile: calcProfile,
-		showPopover: showPopover,
-		recentlyUpdated: recentlyUpdated,
-    isInit: isInit,
-    progressCircle: progressCircle,
-    updateRanking: updateRanking,
-    options:options
+function TipService() {
+    var currentTips = [];
+
+    return {
+		generateTips: generateTips,
+        currentTips: currentTips
 	}
 
-	function showPopover(start, end) {
-		var homeCenterComponent = document.getElementById('guru-home');
-        var uguruPopup = document.getElementById('guru-ranking-popup');
-       	var reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
-            function (modal){
-              modal.classList.add('show');
-              setTimeout(function() {
-              	var spanPreviousInput = document.querySelector('#previous-guru-ranking');
-                var spanCurrentInput = document.querySelector('#current-guru-ranking');
-                spanPreviousInput.innerHTML = Math.round(start, 2) + 'th';
-                spanCurrentInput.innerHTML = Math.round(end, 2) + 'th';
-                initAndAnimateProgress('#guru-ranking-popup-progress-bar', start, end);
-              }, 250);
-            }
-          );
-        
-        setTimeout(function() {
-            var closeGuruRankingPopoverLinks = document.querySelectorAll('.close-guru-ranking-modal-link');
-            for (var i = 0; i < closeGuruRankingPopoverLinks.length; i ++) {
-                var indexLink = closeGuruRankingPopoverLinks[i];
-                indexLink.addEventListener('click', function() {
-                    var uguruPopup = document.getElementById('guru-ranking-popup');
-                    uguruPopup.classList.remove('show');
-                })
-            }
-        }, 500)
-        
+	function generateTips(user) {
+        var activeTips = []
 
-	}
+        var profile_attributes = getUserRemainingProfileAttr(user);
+        var credibility_attributes = getUserRemainingCredibilityAttr(user);
 
-	function initProgress(selector, start) {
-		if (progressCircle) {
-      return progressCircle;
-    }
-    var circle = new ProgressBar.Circle(selector, {
-              color: '#2B3234',
-              strokeWidth: 8,
-              trailWidth: 8,
-              trailColor:'#69B3A5',
-              duration: 1000,
-              text: {
-                  value: '0'
-              },
-              step: function(state, bar) {
-                    var val = (bar.value() * 100).toFixed(0);
-                    bar.setText(val);
-              }
-          });
-		circle.text = document.getElementById('popup-percentile-ranking');
-		circle.set(start / 100.0);
-    progressCircle = circle;
-		return circle;
-	}
-
-	function initAndAnimateProgress(selector, start, end) {
-		var progressCircle = initProgress(selector, start);
-		var index = start
-          setInterval(function() {
-              if (index >= end) {
-                return
-              }
-              progressCircle.animate(index / 100, function() {
-                  
-              });
-              index ++
-          }, 20);
-	}
-
-	function updateRanking(user) {
-    RankingService.options.previousGuruRanking = user.current_guru_ranking;
-    RankingService.options.currentGuruRanking = calcRanking(user);
-    if (RankingService.options.previousGuruRanking !== RankingService.options.currentGuruRanking) {
-      RankingService.recentlyUpdated = true;
-    }
-  }
-
-  function calcRanking(user) {
-        var base = 25; //40%
-        var num_items = 5;
-        var max_points = 100;
-        var guru_ranking;
-
-        if (user.default_transfer_card) {
-            base += 6
+        for (var i = 0; i < profile_attributes.length; i ++) {
+            activeTips.push(createTipObject('Add',profile_attributes[i], 'guru-profile', 'enter', activeTips.length + 1))
         }
-        if (user.current_credibility_percent) {
-            base += ((user.current_credibility_percent / 100.0) * 16);
+
+        for (var j = 0; j < credibility_attributes.length; j ++) {
+            activeTips.push(createTipObject('Verify', credibility_attributes[j], 'guru-credibility', 'enter', activeTips.length + 1))
         }
-        if (user.current_profile_percent) {
-            base += ((user.current_profile_percent / 100.0) * 22);
+
+        if (activeTips.length === 0) {
+            activeTips.push(generateQuote())
+            return activeTips;
         }
-        if (user.push_notifications || user.text_notifications) {
-            base += 20;
-        }
-        if (user.deposit_confirmed) {
-            base += 11;
-        }
-        return base - 1;
+
+        return activeTips.slice(0, 5);
     }
 
-	function calcCredibility(user) {
-        var base = 0; //40%
-        var num_items = 5;
-        var default_item_weight = 20;
-        var max_points = 100;
+    function getUserRemainingCredibilityAttr(user) {
+        var result = [];
 
-        if (user.fb_id) {
-            base += default_item_weight;
-        }
-        if (user.transcript_file && user.transcript_file.url && user.transcript_file.url.length) {
-            base += default_item_weight;
-        }
-        if (user.tutoring_platforms_description) {
-            base += default_item_weight;
-        }
-        if (user.school_email_confirmed) {
-            base += default_item_weight;
-        }
-        if (user.phone_number_confirmed) {
-            base += default_item_weight;
-        }
-        var percentage = parseInt((base  / (max_points * 1.0)) * 100);
-        return percentage;
+        // ask nick - hows this for best practice??
+        !user.fb_id && result.push('profile picture');
+
+        (!user.transcript_file || !user.transcript_file_url) && result.push('transcript')
+
+        !user.guru_experiences.length && result.push('guru experiences');
+
+        !user.school_email_confirmed && result.push('@.edu school email');
+
+        !user.phone_number_confirmed && result.push('telephone number');
+        return result;
     }
 
-	function calcProfile(user) {
-        var default_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100";
-        var base = 60; //40%
-        var num_items = 8;
-        var default_item_weight = 10;
-        // var mini_item_weight = 2;
-        var max_points = 170; //base (60) + (9 * 10) + (3 * 10)
 
-        if (!user.is_a_guru) {
-            return 0;
+    function getUserRemainingProfileAttr(user) {
+        var default_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100';
+        var result = [];
+        if (!user.profile_url || user.profile_url !== default_url) {
+            result.push('profile photo')
         }
 
-        if (user.profile_url && (user.profile_url !== default_url)) {
-            base += (2 * default_item_weight);
+        if (!user.guru_courses || !user.guru_courses.length) {
+            result.push('guru courses')
         }
-        if (user.university_id && user.university.title) {
-            base += default_item_weight;
-        }
-        if (user.majors && user.majors.length) {
-            base += default_item_weight
-        }
-        if (user.guru_courses && user.guru_courses.length) {
-            base += (2 * default_item_weight)
-        }
-        if (user.skype_friendly || user.facetime_friendly || user.hangouts_friendly || user.messenger_friendly || user.phone_friendly || user.text_friendly || user.email_friendly) {
-            base += default_item_weight;
-        }
-        if (user.guru_languages && user.guru_languages.length) {
-            base += default_item_weight;
-        }
-        if (user.guru_experiences && user.guru_experiences.length) {
-            base += (2 * default_item_weight)
-        }
-        if (user.guru_introduction && user.guru_introduction.length) {
-            base += default_item_weight;
-        }
-        var percentage = parseInt((base  / (max_points * 1.0)) * 100);
 
-        return percentage;
+        console.log('user guru skills', user.guru_categories.length);
+        if (!user.guru_categories || !user.guru_categories.length) {
+            result.push('guru skills')
+        }
+
+        if (!user.guru_experiences || !user.guru_experiences.length) {
+            result.push('past guru experiences')
+        }
+
+        if (!user.guru_languages || !user.guru_languages.length) {
+            result.push('spoken languages')
+        }
+
+        if (!user.majors || !user.majors.length) {
+            result.push('majors')
+        }
+        return result
     }
 
+    function createTipObject(verb, attribute, state, transition, tip_index) {
+        var adj = ['ranking', 'personal wealth', 'guru game', 'swag-ness'];
+        randomInt = getRandomInt(adj.length)
+
+        message = 'Fill out your ' + attribute + ' to increase your ' + adj[randomInt] + '!';
+
+        return {
+            'title': 'Tip the ' + tip_index + 'th',
+            'message': message,
+            'next_state': '^.' + state,
+            'action_text': verb + ' my ' + attribute,
+            'transition': transition
+        }
+    }
+
+    function generateQuote() {
+        quotes = [
+            '',
+            '',
+            ''
+        ]
+        var randomInt = getRandomInt(quotes.length)
+
+        return {
+            'message': quotes[randomInt],
+            'action_text': action_text,
+            'state': null,
+            'transition': null,
+        }
+    }
+
+    function getRandomInt(max) {
+        //TODO
+        return 1;
+    }
 
 }
