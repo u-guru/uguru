@@ -3130,7 +3130,7 @@ class AdminUniversityDeptView(restful.Resource):
 
 
 
-    @marshal_with(AdminUniversityDeptSerializer)
+    @marshal_with(AdminUniversitySerializer)
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
@@ -3144,37 +3144,52 @@ class AdminUniversityDeptView(restful.Resource):
 
             print u.name, u.num_depts, u.num_courses
 
+            dept_list_request_json = request.json
+            u_departments = u.departments
+            dept_names = [dept.name for dept in u_departments]
 
-            dept_list_request_json = json.loads(request.json)
-            dept_names = [dept.name for dept in u.departments]
+            if len(dept_list_request_json) == len(u_departments) and u.departments_sanitized and u.courses_sanitized:
+                return "ALREADY COMPLETE", 201
 
-            already_exists_dept = 0
-            for dept_json in dept_list_request_json:
+            count = 0
+            for dept_info in dept_list_request_json:
 
-                if dept_json['name'] in dept_names:
-                    already_exists_dept += 1
+                if dept_info['name'] in dept_names:
                     continue
 
-
-                # pprint(dept_json)
-
-                dept = Department()
-                dept.num_courses = dept_json.get('num_courses')
-                dept.num_popular_courses = dept_json.get('num_popular_courses')
-                dept.abbr = dept_json.get('abbr')
-                dept.source = 'chegg'
-                dept.source_url = dept_json.get('source')
-                dept.university_id = u.id
-                dept.name = dept_json.get('name')
-
-                db_session.add(dept)
+                if dept_info.get('abbr'):
+                    abbr = dept_info.get('abbr')
+                    name = dept_info.get('name')
+                    dept = Department()
+                    dept.university_id = u.id
+                    dept.name = name
+                    dept.abbr = abbr
+                    db_session.add(dept)
+                    db_session.commit()
+                    courses = dept_info.get('courses')
+                    if courses:
+                        for course_info in courses:
+                            course_code = course_info.get('code')
+                            course_name = course_info.get('name')
+                            course_url = course_info.get('course_url')
+                            course = Course()
+                            course.name = course_code
+                            course.full_name = course_name
+                            course.short_name = course_code
+                            course.source_url = course_url
+                            course.department_id = dept.id
+                            course.university_id = u.id
+                            db_session.add(course)
+                        db_session.commit()
 
             u.num_depts = len(u.departments)
-
+            u.num_courses = len(u.courses)
+            u.sanitizeCourses()
+            u.sanitizeDepartments()
             db_session.commit()
 
             # update num depts, update num universities
-            return u.departments, 200
+            return u, 200
 
         return "UNAUTHORIZED", 201
 

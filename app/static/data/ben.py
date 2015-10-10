@@ -2,14 +2,18 @@ import requests, json
 from time import sleep
 
 def uguruAPI(arg='', _json=None, _type='get'):
+	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 	if arg: arg = '/' + arg 
 	BASE_URL = 'https://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3/universities%s' % arg
-	print BASE_URL
+	
 	if _type == 'get':
 		return json.loads(requests.get(BASE_URL).text)
+	
 	if _type =='put':
-		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 		return requests.put(url=BASE_URL, data=json.dumps(_json), headers=headers).text
+	
+	if _type =='post':
+		return requests.post(url=BASE_URL, data=json.dumps(_json), headers=headers).text
 
 ## number of emails > 0, departments are sanitizied, courses are sanitized
 def getMostUpdatedUniversities():
@@ -29,8 +33,13 @@ def getUniversity(uni_id):
 
 def updateUniversity(uni_dict):
 	university = uguruAPI(str(uni_dict['id']), uni_dict, 'put')
-	print university
+	
 	return university
+
+def postDepartments(uni_dict):
+	response = uguruAPI(str(uni_dict['id']) + '/depts', uni_dict, 'post')
+	print response
+	return response
 
 def updateEmailsForMailgun():
 	from data_utils import updateMailgunJsonWithFreshData
