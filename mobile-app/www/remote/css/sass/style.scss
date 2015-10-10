@@ -1545,20 +1545,11 @@ section {
 	#access-logo {
 		@include flex;
 		@include flex-wrap;
-		@include flex-bottom;
-		height: calc(100% - 127px);
+		@include flex-center;
+		height: 80%;
 		svg {
 			display: block;
 			max-height: 60%;
-		}
-		#access-title {
-			width: 100%;
-			h1 {
-				text-align: center;
-				font-size: 48px;
-				font-weight: 900;
-				letter-spacing: 1px;
-			}
 		}
 	}
 	#access-code {
