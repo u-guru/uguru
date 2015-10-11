@@ -7,7 +7,6 @@ var FIRST_PAGE='^.' + _startpage;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
-// var REST_URL = 'http://192.168.12.130:5000'
 
 var BASE = '';
 var img_base = '';
