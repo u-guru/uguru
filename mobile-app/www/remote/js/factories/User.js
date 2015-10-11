@@ -189,7 +189,7 @@ angular.module('uguru.user', [])
         // user.uber_friendly = false;
         // user.summer_15 = false;
 
-        var user_cards = user.cards;
+        var user_cards = user.cards || [];
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
 
