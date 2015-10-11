@@ -164,7 +164,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       //timeout to have it be a background thread
       $timeout(function() {
 
-        $scope.getCourseForUniversityId(university.id);
+        $scope.getCoursesForUniversityId(university.id);
         $scope.getMajorsForUniversityId(university.id);
 
       }, 100);

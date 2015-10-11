@@ -119,12 +119,11 @@ angular.module('uguru.util.controllers')
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
             University.getMajors(uni_id).then(function(majors){
-                console.log(majors.length, 'found', uni_id);
+
+                console.log(majors.length, 'majors found', uni_id);
                 majors = majors.plain()
 
                 University.majors = majors;
-
-                $localstorage.setObject('universityMajors', majors)
 
                 if (callback) {
                     callback(majors);
@@ -135,20 +134,33 @@ angular.module('uguru.util.controllers')
             })
         }
 
-        Category.mapActiveToSubcategories(Category.categories, $scope.user);
-        $localstorage.setObject('categories', Category.categories);
 
         $scope.getCategories = function(callback) {
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
-                $localstorage.setObject('categories', Category.categories);
+                // $localstorage.setObject('categories', Category.categories);
                 console.log('categories loaded', Category.categories);
 
                 callback && callback(Category.categories);
             },
             function() {
                 console.log("Categories NOT successfully loaded");
+            })
+        }
+
+        // Category.mapActiveToSubcategories(Category.categories, $scope.user);
+        // $localstorage.setObject('categories', Category.categories);
+
+        $scope.getCoursesForUniversityId = function(uni_id) {
+            University.getCourses(uni_id).then(function(courses){
+                $scope.data.courses = courses.plain();
+                //NICKTODO --> set this localstorage or static file?
+                // $localstorage.setObject('universityCourses', courses.plain())
+                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
+            },
+            function() {
+                console.log('Universities NOT successfully loaded');
             })
         }
 
@@ -159,12 +171,6 @@ angular.module('uguru.util.controllers')
             console.log(University.majors.length, 'majors loaded');
         }
 
-        if ($scope.user.university_id && !University.majors) {
-            console.log('University courses not local, requesting now..');
-            $scope.getMajorsForUniversityId($scope.user.university_id);
-        } else {
-            console.log(University.courses.length, 'courses loaded');
-        }
 
         if (!Category.categories || Category.categories.length === 0) {
             console.log('Categories not local, loading now..')
@@ -173,11 +179,13 @@ angular.module('uguru.util.controllers')
             console.log(Category.categories.length, 'categories loaded');
         }
 
+<<<<<<< HEAD
+=======
         $scope.getCoursesForUniversityId = function(uni_id) {
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
                 //NICKTODO --> set this localstorage or static file?
-                $localstorage.setObject('universityCourses', courses.plain())
+                // $localstorage.setObject('universityCourses', courses.plain())
                 console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
             },
             function() {
@@ -185,6 +193,7 @@ angular.module('uguru.util.controllers')
             })
         }
 
+>>>>>>> 7dc71a8d42fe2a127b39e92f25784d48bfe1fec7
 
         $scope.rootUser = User;
         $scope.root = RootService;

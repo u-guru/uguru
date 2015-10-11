@@ -230,33 +230,12 @@ angular.module('uguru.guru.controllers')
       progressBarTag.style.width = width + 'px';
     }
 
-    $scope.$on('$ionicView.beforeEnter', function() {
-      // if (!$scope.data.majors) {
-      $timeout(function() {
-
-        if (!University.majors) {
-          University.courses = $scope.getMajorsForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-          $scope.majors = University.majors;
-        }
-
-        if (!University.courses) {
-              University.courses = $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-              $scope.courses = University.courses;
-        }
-          //   $scope.getCoursesForUniversityId($scope.user.university.id);
+    $scope.$on('$ionicView.enter', function() {
 
 
-        var updateScope = function(categories) {
-            $scope.categories = categories;
-        }
-        if (!Category.categories) {
-          $scope.categories = Category.categories || $scope.getCategories(updateScope) || [];
-        }
 
-      }, 100)
+    }, 500)
 
-      // }
-    })
     $scope.$on('$ionicView.afterEnter', function() {
 
       $scope.majorInput = document.getElementById('major-input-1');
