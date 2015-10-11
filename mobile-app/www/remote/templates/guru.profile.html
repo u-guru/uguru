@@ -30,7 +30,10 @@
 										</span>
 									</h1>
 									</li>
-									<li id="profile-school">{{user.university.title}}</li>
+									<li id="profile-school">{{user.university.title}}
+										<a ng-click='launchContactGuruModal()'><i class='icon ion-email'> </i></a>
+
+									</li>
 									<li id="profile-loc">
 										<span id="profile-loc-city">{{user.university.city}}</span>
 										<span id="profile-loc-state">{{user.university.state}}</span>

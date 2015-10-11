@@ -179,8 +179,6 @@ angular.module('uguru.util.controllers')
             console.log(Category.categories.length, 'categories loaded');
         }
 
-<<<<<<< HEAD
-=======
         $scope.getCoursesForUniversityId = function(uni_id) {
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
@@ -192,8 +190,6 @@ angular.module('uguru.util.controllers')
                 console.log('Universities NOT successfully loaded');
             })
         }
-
->>>>>>> 7dc71a8d42fe2a127b39e92f25784d48bfe1fec7
 
         $scope.rootUser = User;
         $scope.root = RootService;

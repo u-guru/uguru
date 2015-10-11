@@ -145,6 +145,8 @@ angular.module('uguru.guru.controllers')
     $scope.initLateNightOptions();
 
 
+
+
     $scope.lateNightOnChange = function() {
       $scope.success.show(0, 750, 'Saved!');
       $timeout(function() {
@@ -225,6 +227,20 @@ angular.module('uguru.guru.controllers')
       }
       $scope.refreshTipsAndRanking($scope.user);
       $scope.user.updateAttr('tutoring_platforms_description', $scope.user, $scope.user.tutoring_platforms_description, successCallback , $scope);
+    }
+
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.contact.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.contactGuruModal = modal
+    });
+
+
+
+    $scope.launchContactGuruModal = function() {
+      $scope.contactGuruModal.show();
     }
 
      $scope.launchAddTutoringPlatformsModal = function(experience) {
