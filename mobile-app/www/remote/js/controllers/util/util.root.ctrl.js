@@ -161,9 +161,7 @@ angular.module('uguru.util.controllers')
                 if (callback) {
                     callback(courses);
                 }
-
-                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
-                console.log(courses.plain().splice(0, 10));
+                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id);
             },
             function() {
                 console.log('Universities NOT successfully loaded');

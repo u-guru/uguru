@@ -183,6 +183,10 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
         "easeInSine"
       );
 
+      //nick we need to do this more
+      if (!cordova || !cordova.plugins) {
+        return;
+      }
       if (cordova.plugins.Keyboard && cordova.plugins.Keyboard.isVisible) {
 
           Velocity(

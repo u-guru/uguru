@@ -42,7 +42,7 @@ function TipService() {
 
         (!user.transcript_file || !user.transcript_file_url) && result.push('transcript')
 
-        !user.guru_experiences.length && result.push('guru experiences');
+        !(user.guru_experiences && user.guru_experiences.length) && result.push('guru experiences');
 
         !user.school_email_confirmed && result.push('@.edu school email');
 
@@ -62,14 +62,13 @@ function TipService() {
             result.push('guru courses')
         }
 
-        console.log('user guru skills', user.guru_categories.length);
         if (!user.guru_categories || !user.guru_categories.length) {
             result.push('guru skills')
         }
 
-        if (!user.guru_experiences || !user.guru_experiences.length) {
-            result.push('past guru experiences')
-        }
+        // if (!user.guru_experiences || !user.guru_experiences.length) {
+        //     result.push('guru experiences')
+        // }
 
         if (!user.guru_languages || !user.guru_languages.length) {
             result.push('spoken languages')

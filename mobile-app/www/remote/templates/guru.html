@@ -1,6 +1,6 @@
 <ion-view class='uguru-view guru-view bg-charcoal'>
 <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
-<div class="toast" ng-if='user.current_guru_ranking && user.current_guru_ranking > 40 && !user.school_email_confirmed'>
+<div class="toast" ng-if='showVerifyToast'>
 	<div>
 		<span>Tap to verify your school email</span>
 		<div class="progress white-round m10top">

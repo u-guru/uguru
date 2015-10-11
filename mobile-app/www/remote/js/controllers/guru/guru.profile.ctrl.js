@@ -271,9 +271,9 @@ angular.module('uguru.guru.controllers')
     }
 
 
-    $scope.launchAddGuruExperienceModal = function() {
+    $scope.launchAddGuruExperienceModal = function(experience) {
 
-      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.introduction.modal.html', {
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
@@ -303,30 +303,54 @@ angular.module('uguru.guru.controllers')
       });
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
+
+    $scope.initModalsAfterEnter = function() {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.guruMajorModal = modal;
-    });
+      });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.courses.modal.html', {
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.courses.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+      }).then(function(modal) {
             $scope.guruCoursesModal = modal;
-    })
+      })
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.skills.modal.html', {
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.skills.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.guruSkillsModal = modal;
-            var updateScope = function(categories) {
+      })
+
+      var updateScope = function(categories) {
               $scope.categories = categories;
-            }
-            $scope.categories = Category.categories || $scope.getCategories(updateScope) || [];
-    })
+      }
+      $scope.categories = Category.categories || $scope.getCategories(updateScope) || [];
+
+
+    }
+
+    var getIonicSideMenuOpenRatio = function() {
+            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+            return openRatio;
+    }
+
+    var isSideMenuOpen = function(ratio) {
+        if (!ratio && ratio !== -1) {
+            $scope.sideMenuActive = false;
+        } else {
+            $timeout(function() {
+                $scope.sideMenuActive = true;
+            }, 250)
+        }
+    }
+
+    $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.languages.modal.html', {
             scope: $scope,
@@ -688,6 +712,7 @@ angular.module('uguru.guru.controllers')
 
 
 
+
     $scope.$on('$ionicView.enter', function() {
 
           $scope.refreshTipsAndRanking($scope.user);
@@ -700,7 +725,15 @@ angular.module('uguru.guru.controllers')
 
           }, 1000)
 
-    })
+    });
+
+    $scope.$on('$ionicView.afterEnter', function() {
+
+      $timeout(function() {
+        $scope.initModalsAfterEnter();
+      }, 500)
+
+    });
 
 
   }
