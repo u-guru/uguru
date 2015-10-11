@@ -54,28 +54,30 @@ function PopupService(Utilities, $timeout, DeviceService) {
 	}
 
 	function attachListeners(popup, callback) {
-
+		
 		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];
-		closeIcon.addEventListener('click', function() {
-			popup.classList.remove('show');
-		});
-
 		var submitButton = popup.querySelectorAll('button.submit')[0];
 
-		if(typeof callback === 'function') {
-			submitButton.addEventListener('click', function() {
-					callback();
-			});
-
-			popup.addEventListener('keyup', function(e) {
-				var key = e.keyCode || e.key || e.which;
-				if (key === 13) {
-					if (DeviceService.isMobile()) {
-					  cordova.plugins.Keyboard.close();
-					}
-					callback();
+		var clickClose = function() {
+			popup.classList.remove('show');
+		};
+		var clickSubmit = function() {
+			callback();
+		};
+		var enterSubmit = function(e) {
+			var key = e.keyCode || e.key || e.which;
+			if (key === 13) {
+				if (DeviceService.isMobile()) {
+				  cordova.plugins.Keyboard.close();
 				}
-			});
+				callback();
+			}
+		};
+
+		closeIcon.addEventListener('click', clickClose);
+		if(typeof callback === 'function') {
+			submitButton.addEventListener('click', clickSubmit);
+			popup.addEventListener('keyup', enterSubmit);
 		}
 
 
@@ -84,7 +86,13 @@ function PopupService(Utilities, $timeout, DeviceService) {
 	function close(popupName) {
 
 		var popup = controller[popupName];
+		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];
+		var submitButton = popup.querySelectorAll('button.submit')[0];
+
 		popup.classList.remove('show');
+		closeIcon.removeEventListener('click', clickClose);
+		submitButton.removeEventListener('click', clickSubmit);
+		popup.removeEventListener('keyup', enterSubmit);
 
 	}
 	
