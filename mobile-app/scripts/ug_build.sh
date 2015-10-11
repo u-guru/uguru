@@ -23,7 +23,7 @@ if [ $# == 1 ];
 		cordova platform add android@4.1
 		cordova plugin add ./plugins_android/specific/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"	
 		cordova build android
-		return
+		
 	fi
 
 	if [ $platform == "ios" ]; then
@@ -42,6 +42,6 @@ if [ $# == 1 ];
 
 fi
 
-exit
+
 
 

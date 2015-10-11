@@ -13,6 +13,7 @@ if [ "$1" == "start" ]; then
 	    printf "\e[0m"
 	    return
 	fi
+	chmod 777 ./scripts/ug_main.sh
 	chmod 777 ./scripts/ug_help.sh
 	chmod 777 ./scripts/ug_build.sh
 	chmod 777 ./scripts/ug_run.sh
