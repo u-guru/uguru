@@ -90,12 +90,11 @@ describe('#11 Error Test Flow :  Category is not empty ',function()
 
 	});
 
-		for (var i = 1 ; i< 8 ; ++i)
+		for (var i = 0 ; i< 8 ; ++i)
 		{
-	        (function(index,title) {
+	        (function(index) {
 		        describe('Click the category #'+index,function()
 		        {
-		        	var count = 0;
 		        	it('Check category title back To DeFault Name',function()
 		        	{
 		        		category.CheckTitleIsMatch("SELECT CATEGORY")
@@ -111,8 +110,8 @@ describe('#11 Error Test Flow :  Category is not empty ',function()
 					});
 					it('click all the skills ',function()
 					{
-				        category.EnableAllSKills(index);
-				        ++count;
+				       count =  category.EnableAllSKills(index);
+				        // ++count;
 					});
 
 	        		it('close a Category',function()
@@ -126,7 +125,7 @@ describe('#11 Error Test Flow :  Category is not empty ',function()
 				     	category.CountSelectSKill(count,index);
 	        		});
 				});
-	        })(i,CategoryName[i]);
+	        })(i);
 		}
 
 

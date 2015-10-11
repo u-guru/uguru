@@ -3,9 +3,9 @@ var Category = function()
 {
 	this.nextStep      = element.all(by.css('[ng-click="nextSlide()"]'));
 	this.Tilte 		   = element(by.css('#category-skills .ng-binding'));
-	this.CategorySkill = element.all(by.repeater('skill in active_category.skills'));
+	this.CategorySkill = element.all(by.repeater('subcategory in active_category.subcategories'));
 	this.EntirePage    = element(by.css(".modal-backdrop.active"));
-	this.ActiveSkills  = element.all(by.binding('category.active_skills_count'))
+	this.ActiveSkills  = element.all(by.binding('category.active_subcategories'))
 	this.nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
 
 	this.CheckTitleIsMatch = function(title)
@@ -31,18 +31,19 @@ var Category = function()
 
 	this.EnableAllSKills = function(index)
 	{
-    	this.CategorySkill.then(function (items)
+    	return this.CategorySkill.then(function (items)
     	{
+    		var count = 0;
     		for (var i = 0 ; i<items.length ; ++i)
     		{
-				if(index != 0)
-				{
-        			items[i].click();
-        			if (index===0)
-						doc.switchAlert();	
-				}
+
+        		items[i].click();
+				++count;
+
     		}
+    		return count;
     	});	
+	
 	};
 	this.clickCanvas = function (toRight, toBottom)
 	 { 

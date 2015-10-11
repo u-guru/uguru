@@ -262,8 +262,8 @@ exports.config = {
                           ],
       production_error  :[
                             
-                          '../e2e/production/error_7.js',
-                          '../e2e/production/error_9.js',
+                          // '../e2e/production/error_7.js',
+                          // '../e2e/production/error_9.js',
                           '../e2e/production/error_11.js',
 
                          ]
