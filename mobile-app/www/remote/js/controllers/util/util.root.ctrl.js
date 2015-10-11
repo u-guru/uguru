@@ -143,6 +143,7 @@ angular.module('uguru.util.controllers')
                 console.log('categories loaded', Category.categories);
 
                 callback && callback(Category.categories);
+
             },
             function() {
                 console.log("Categories NOT successfully loaded");
@@ -152,12 +153,17 @@ angular.module('uguru.util.controllers')
         // Category.mapActiveToSubcategories(Category.categories, $scope.user);
         // $localstorage.setObject('categories', Category.categories);
 
-        $scope.getCoursesForUniversityId = function(uni_id) {
+        $scope.getCoursesForUniversityId = function(uni_id, callback) {
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
-                //NICKTODO --> set this localstorage or static file?
-                // $localstorage.setObject('universityCourses', courses.plain())
+
+                University.courses = courses.plain();
+                if (callback) {
+                    callback(courses);
+                }
+
                 console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
+                console.log(courses.plain().splice(0, 10));
             },
             function() {
                 console.log('Universities NOT successfully loaded');
@@ -165,8 +171,16 @@ angular.module('uguru.util.controllers')
         }
 
         if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-            console.log('University majors not local, requesting now..');
+            console.log('University courses not local, requesting now..');
             $scope.getMajorsForUniversityId($scope.user.university_id);
+        } else {
+            console.log(University.majors.length, 'majors loaded');
+        }
+
+
+        if ($scope.user.university_id && !(University.courses && University.courses.length)) {
+            console.log('University majors not local, requesting now..');
+            $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
         } else {
             console.log(University.majors.length, 'majors loaded');
         }
@@ -179,21 +193,21 @@ angular.module('uguru.util.controllers')
             console.log(Category.categories.length, 'categories loaded');
         }
 
-<<<<<<< HEAD
-=======
+
         $scope.getCoursesForUniversityId = function(uni_id) {
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
+                University.courses = courses.plain();
                 //NICKTODO --> set this localstorage or static file?
                 // $localstorage.setObject('universityCourses', courses.plain())
                 console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
+
             },
             function() {
                 console.log('Universities NOT successfully loaded');
             })
         }
 
->>>>>>> 7dc71a8d42fe2a127b39e92f25784d48bfe1fec7
 
         $scope.rootUser = User;
         $scope.root = RootService;
