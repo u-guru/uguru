@@ -355,19 +355,14 @@ UserSerializer = {
     # 'requests': fields.List(fields.Nested(request_fields)),
     # 'sessions': fields.List(fields.Nested(session_fields)),
     # 'proposals': fields.List(fields.Nested(proposal_fields)),
-<<<<<<< HEAD
     'cards': fields.List(fields.Nested(card_fields)),
     'phone_number': fields.String,
     'phone_number_token': fields.String,
     'phone_number_confirmed': fields.Boolean,
-    # 'student_transactions': fields.List(FilteredList(fields.Raw(attribute='student_transactions'))),
-=======
-    # 'cards': fields.List(fields.Nested(card_fields)),
     'phone_number': fields.String,
     'phone_number_token': fields.String,
     'phone_number_confirmed': fields.Boolean,
     # 'student_transactions': fields.List(fields.Nested(transaction_fields)),
->>>>>>> 27f76380ac89beee6a744839216edd184a877338
     # 'guru_transactions': fields.List(fields.Nested(transaction_fields)),
     # 'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
     'impact_events': fields.List(fields.Nested(event_fields)),

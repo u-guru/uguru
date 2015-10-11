@@ -30,6 +30,19 @@ def remoteRequestSuccessful():
 def remoteRequestSuccessful():
     pass
 
+
+## Home page tests
+## Test Success
+## 1. Send keys cool && trigger enter
+## 2. Does the loader popup
+## 3. Does the success show immediately
+
+## Home page tests
+## Test Success
+## 1. Send keys cool && trigger enter
+## 2. Does the loader popup
+## 3. Does the success show immediately
+
 # q = sess.at_xpath('//*[@name="q"]')
 # q.set(search_term)
 # q.form().submit()
