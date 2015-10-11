@@ -1533,6 +1533,21 @@ section {
 	}
 }
 
+// SLIDER BREADCRUMBS
+.slider-pager {
+	@include flex;
+	@include flex-center;
+	height: auto!important;
+	span {
+		@include flex;
+		@include flex-center;
+	}
+	.icon {
+		font-size: 12px;
+		line-height: 16px;
+	}
+}
+
 
 
 /* ---------- SETTING UP APP */
@@ -1681,6 +1696,9 @@ section {
 		}
 		.geolocation-icon {
 			margin-top: 3px;
+		// To add hella space to tap it (it's responsive & equalizes)
+			padding: 50px;
+    		margin-right: -50px;
 		}
 	}
 	#school-list, #school-list-modal {
@@ -1738,10 +1756,8 @@ section {
 						}
 					}
 				}
-				#{$links} {
-					&.active, &.activated {
-						background: rgba(white,.2);
-					}
+				a:active, a.active, a.activated {
+					background: rgba(white,.2);
 				}
 			}
 		}
@@ -2460,7 +2476,33 @@ section {
 		}
 	}
 	#profile-desc {
-		padding: 15px 0;
+		height: calc(100% / 3);
+		.profile-slider {
+			position: relative;
+			height: 100%;
+			.slider-slide {
+				padding: 15px 0;
+			}
+			#profile-intro {
+				position: relative;
+				margin: 0 15px;
+				height: calc(100% - 30px);
+				div {
+					@include flex;
+					@include flex-center;
+					height: 100%;
+					font-size: 20px;
+					font-weight: 600;
+				}
+				button + div {
+					height: calc(100% - 64px);
+				}
+			}
+			.slider-pager {
+				position: relative;
+				bottom: 30px;
+			}
+		}
 		#profile-icon {
 			@include round;
 			display: block;
@@ -3401,6 +3443,12 @@ section {
 			&.active {
 				display: block;
 			}
+			.semi-opaque {
+				@include opacity(.5);
+			}
+			.semi-opaque:active, .semi-opaque.active {
+				@include opacity(1);
+			}
 			> div {
 				height: 100%;
 				.credit-body {
@@ -3596,31 +3644,30 @@ section {
 			overflow: hidden;
 			text-align: center;
 			.card-content {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
 				padding: 15px;
 				height: calc(100% - 64px);
-			}
-			h2 {
-				font-size: 24px;
-				font-weight: 600;
-			}
-			p {
-				margin-top: 10px;
-				font-size: 18px;
+				svg {
+					display: block;
+					width: 100%;
+					height: 100%;
+					max-height: 70px;
+					margin-bottom: 15px;
+				}
+				h2 {
+					font-size: 28px;
+					font-weight: 600;
+				}
+				p {
+					margin: 10px 0 0;
+					font-size: 22px;
+				}
 			}
 		}
 		.slider-pager {
-			@include flex;
-			@include flex-center;
-			height: auto!important;
 			bottom: 15px;
-			span {
-				@include flex;
-				@include flex-center;
-			}
-			.icon {
-				font-size: 12px;
-				line-height: 16px;
-			}
 		}
 	}
 	#btn-launch-profile:active {
@@ -3758,30 +3805,6 @@ section {
 .smaller-list-font {
 	font-size: 85%;
 }
-
-.slider-pager {
-	display: none;
-}
-
-#guru-home-content  {
-	.guru-introduction-slide-box {
-
-		.slider-pager {
-			display:block;
-		}
-
-	}
-	.guru-tip-of-day-slide-box {
-
-		.slider-pager {
-			display:block;
-			margin-bottom:25%;
-		}
-
-	}
-
-}
-
 .content {
 	height: 100%;
 	&.footer-exists {

@@ -607,6 +607,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
   [class*="black"] * {
     font-weight: 900; }
 
+.bg-transparent {
+  background: transparent !important; }
+
 [class*="bg-white"] {
   background: white;
   color: white; }

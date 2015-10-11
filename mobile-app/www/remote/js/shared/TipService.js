@@ -62,10 +62,10 @@ function TipService() {
             result.push('guru courses')
         }
 
-        console.log('user guru skills', user.guru_categories.length);
-        if (!user.guru_categories || !user.guru_categories.length) {
-            result.push('guru skills')
-        }
+        // console.log('user guru skills', user.guru_categories.length);
+        // if (!user.guru_categories || !user.guru_categories.length) {
+        //     result.push('guru skills')
+        // }
 
         if (!user.guru_experiences || !user.guru_experiences.length) {
             result.push('past guru experiences')

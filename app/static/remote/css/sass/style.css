@@ -1527,7 +1527,9 @@ section {
   .university-view header::before {
     background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
-    margin-top: 3px; }
+    margin-top: 3px;
+    padding: 50px;
+    margin-right: -50px; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
     .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
@@ -3578,8 +3580,11 @@ section {
 .slider-pager {
   display: none; }
 
-.guru-introduction-slide-box .slider-pager, .guru-tip-of-day-slide-box .slider-pager {
+#guru-home-content .guru-introduction-slide-box .slider-pager {
   display: block; }
+#guru-home-content .guru-tip-of-day-slide-box .slider-pager {
+  display: block;
+  margin-bottom: 25%; }
 
 .content {
   height: 100%; }

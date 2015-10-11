@@ -45,10 +45,10 @@ function Geolocation($rootScope, $timeout, University,
   function getLocation(scope, list) {
     if (scope && list) {
       scope.loader.showAmbig();
-      scope = scope;  
+      scope = scope;
       // list = list;
     }
-    
+
     var posOptions = {
       timeout: 3000,
       enableHighAccuracy: false, //may cause high errors if true
@@ -64,9 +64,9 @@ function Geolocation($rootScope, $timeout, University,
       if (list) {
         nearestResults = sortByLocation( position.coords.latitude,
                                   position.coords.longitude,
-                                  list);  
+                                  list);
       }
-      
+
       if (scope) {
         scope.nearestResults = nearestResults;
         scope.user.last_position = position.coords;
@@ -80,6 +80,7 @@ function Geolocation($rootScope, $timeout, University,
     }
     function geoError(error) {
         console.log("geolocationError: " + error);
+        scope.loader.hide();
         switch(error.code) {
           case 1: // PERMISSION_DENIED
             alert('Sorry! Please enable your GPS settings.');
@@ -104,7 +105,7 @@ function Geolocation($rootScope, $timeout, University,
     for(var i=0; i<list.length; i++) {
 
       list[i].rawMiles = Utilities.getDistanceInMiles(
-                                    userLat, userLong, 
+                                    userLat, userLong,
                                     list[i].latitude, list[i].longitude);
 
       list[i].miles = numberFormatter.format(Math.round(list[i].rawMiles));
@@ -115,31 +116,31 @@ function Geolocation($rootScope, $timeout, University,
     // for(var i=0; i<list.length; i++) {
     //   var item = list[i];
     //   item.rawMiles = Utilities.getDistanceInMiles(
-    //                                 userLat, userLong, 
+    //                                 userLat, userLong,
     //                                 item.latitude, item.longitude);
 
     //   item.miles = numberFormatter.format(Math.round(item.rawMiles));
     // }
 
 
-    // return list.sort(compareDistance); 
+    // return list.sort(compareDistance);
 
     // $rootScope.$apply(function() {
-     return list.sort(compareDistance); 
+     return list.sort(compareDistance);
     // });
 
     // try{
     //   console.log("try block");
     //   $rootScope.$apply(function() {
-    //    return list.sort(compareDistance); 
+    //    return list.sort(compareDistance);
     //   });
     // } finally {
     //   console.log("finally block");
     //   $rootScope.$apply(function() {
-    //    return list.sort(compareDistance); 
+    //    return list.sort(compareDistance);
     //   });
     // }
-    
+
   }
 
   function compareDistance(a, b) {

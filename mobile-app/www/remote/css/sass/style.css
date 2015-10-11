@@ -1393,6 +1393,39 @@ section {
   .tabs.student-tabs svg {
     stroke: #40484B; }
 
+.slider-pager {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: auto !important; }
+  .slider-pager span {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
+  .slider-pager .icon {
+    font-size: 12px;
+    line-height: 16px; }
+
 /* ---------- SETTING UP APP */
 .access-view {
   background: #69B3A5; }
@@ -1559,7 +1592,9 @@ section {
   .university-view header::before {
     background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
-    margin-top: 3px; }
+    margin-top: 3px;
+    padding: 50px;
+    margin-right: -50px; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
     .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
@@ -1600,7 +1635,7 @@ section {
         font-size: 12px;
         padding-top: 5px;
         font-weight: 500; }
-  .university-view #school-list ul li a:active.active, .university-view #school-list ul li a:active.activated, .university-view #school-list ul li a:focus.active, .university-view #school-list ul li a:focus.activated, .university-view #school-list ul li a:hover.active, .university-view #school-list ul li a:hover.activated, .university-view #school-list-modal ul li a:active.active, .university-view #school-list-modal ul li a:active.activated, .university-view #school-list-modal ul li a:focus.active, .university-view #school-list-modal ul li a:focus.activated, .university-view #school-list-modal ul li a:hover.active, .university-view #school-list-modal ul li a:hover.activated {
+  .university-view #school-list ul li a:active, .university-view #school-list ul li a.active, .university-view #school-list ul li a.activated, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a.active, .university-view #school-list-modal ul li a.activated {
     background: rgba(255, 255, 255, 0.2); }
 
 .home-view {
@@ -2260,7 +2295,38 @@ section {
           font-weight: 400;
           line-height: 1; }
   .guru-profile-view #profile-desc {
-    padding: 15px 0; }
+    height: calc(100% / 3); }
+    .guru-profile-view #profile-desc .profile-slider {
+      position: relative;
+      height: 100%; }
+      .guru-profile-view #profile-desc .profile-slider .slider-slide {
+        padding: 15px 0; }
+      .guru-profile-view #profile-desc .profile-slider #profile-intro {
+        position: relative;
+        margin: 0 15px;
+        height: calc(100% - 30px); }
+        .guru-profile-view #profile-desc .profile-slider #profile-intro div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          height: 100%;
+          font-size: 20px;
+          font-weight: 600; }
+        .guru-profile-view #profile-desc .profile-slider #profile-intro button + div {
+          height: calc(100% - 64px); }
+      .guru-profile-view #profile-desc .profile-slider .slider-pager {
+        position: relative;
+        bottom: 30px; }
     .guru-profile-view #profile-desc #profile-icon {
       border-radius: 1000px;
       display: block; }
@@ -3127,6 +3193,12 @@ section {
     height: 100%; }
     .credibility-view #credibility-content-wrapper .credit-content-slide.active {
       display: block; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque {
+      filter: alpha(opacity=50);
+      opacity: 0.5; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque:active, .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque.active {
+      filter: alpha(opacity=100);
+      opacity: 1; }
     .credibility-view #credibility-content-wrapper .credit-content-slide > div {
       height: 100%; }
       .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body {
@@ -3308,31 +3380,6 @@ section {
     overflow: hidden;
     text-align: center; }
     .guru-view .guru-tip-of-day-slide-box .card .card-content {
-      padding: 15px;
-      height: calc(100% - 64px); }
-    .guru-view .guru-tip-of-day-slide-box .card h2 {
-      font-size: 24px;
-      font-weight: 600; }
-    .guru-view .guru-tip-of-day-slide-box .card p {
-      margin-top: 10px;
-      font-size: 18px; }
-  .guru-view .guru-tip-of-day-slide-box .slider-pager {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    height: auto !important;
-    bottom: 15px; }
-    .guru-view .guru-tip-of-day-slide-box .slider-pager span {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -3340,15 +3387,31 @@ section {
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
       -webkit-flex-direction: row;
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
       -webkit-justify-content: center;
-      justify-content: center; }
-    .guru-view .guru-tip-of-day-slide-box .slider-pager .icon {
-      font-size: 12px;
-      line-height: 16px; }
+      justify-content: center;
+      padding: 15px;
+      height: calc(100% - 64px); }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 70px;
+        margin-bottom: 15px; }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content h2 {
+        font-size: 28px;
+        font-weight: 600; }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content p {
+        margin: 10px 0 0;
+        font-size: 22px; }
+  .guru-view .guru-tip-of-day-slide-box .slider-pager {
+    bottom: 15px; }
 
 .guru-view #btn-launch-profile:active {
   filter: alpha(opacity=100);
@@ -3704,16 +3767,6 @@ section {
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
-
-.slider-pager {
-  display: none; }
-
-#guru-home-content .guru-introduction-slide-box .slider-pager {
-  display: block; }
-
-#guru-home-content .guru-tip-of-day-slide-box .slider-pager {
-  display: block;
-  margin-bottom: 25%; }
 
 .content {
   height: 100%; }

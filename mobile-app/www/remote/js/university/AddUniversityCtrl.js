@@ -25,7 +25,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache, AccessService) {
 
   $scope.storedAccess = !AccessService.validate();
-  
+
   //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
   uTracker.setUser(tracker, 'localyticsTest');
@@ -158,10 +158,22 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           "$University": university.name,
       });
 
-     // $scope.loader.show();
+
+      $scope.loader.showSuccess('Success', 750);
+
+      //timeout to have it be a background thread
+      $timeout(function() {
+
+        $scope.getCourseForUniversityId(university.id);
+        $scope.getMajorsForUniversityId(university.id);
+
+      }, 100);
+
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.universityInput.value = '';
+
+      //fetch the universities
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
@@ -177,7 +189,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         //$timeout(function() {
           // $scope.loader.hide();
           //$ionicViewSwitcher.nextDirection('forward');
-          
+
           // var start = null;
            //$state.go('^.home');
            AnimationService.flip('^.home');
@@ -195,8 +207,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           //   stats.end();
           // }
           // requestAnimationFrame(step);
-            
-        
+
+
         //}, 0);
       }
 
@@ -204,9 +216,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   };
 
-  
+
   $scope.location = Geolocation;
-  
+
   $scope.toggleLocationIconAppearance = function() {
     console.log("Geolocation.settings.isAllowed: " + Geolocation.settings.isAllowed);
     // get GPS if we haven't attempted it
@@ -238,7 +250,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.location.getLocation($scope, $scope.universitiesSorted);
     }, 0);
     //Geolocation.sortByDistance($scope.universitiesSorted);
-    
+
   };
 
   $scope.$watch(
@@ -261,7 +273,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
             }, 500);
           }, 0);
 
-          
+
       }
     }
     );

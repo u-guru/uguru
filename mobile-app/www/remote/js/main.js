@@ -7,7 +7,6 @@ var FIRST_PAGE='^.' + _startpage;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
-// var REST_URL = 'http://192.168.12.130:5000'
 
 var BASE = '';
 var img_base = '';
@@ -15,7 +14,6 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  //REST_URL = "http://192.168.42.78:5000"
 
 } else {
   img_base = '/static/'
