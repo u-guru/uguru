@@ -36,6 +36,11 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
     line-height: initial;
 }
 
+.icon {
+	font-size: 16px;
+	line-height: 1;
+}
+
 // GRID
 [class*="ugrid-"] {
 	@include listless;
@@ -662,6 +667,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 }
 
 // COLORS
+.bg-transparent {
+	background: transparent!important;
+}
 [class*="bg-white"] {
 	background: white;
 	color: white;
@@ -744,6 +752,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	}
 	&[class*="-90p"] {
 		background: rgba($slate, .9);
+	}
+	&[class*="-important"] {
+		background: $taupe !important;
 	}
 }
 [class*="bg-taupe"] {
@@ -2427,6 +2438,9 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .toast + * header.third {
 	height: calc(100% / 3 + 15px);
+}
+.toast + * .two-thirds {
+	height: calc(100% / 3 * 2 - 15px);
 }
 
 // .chart {

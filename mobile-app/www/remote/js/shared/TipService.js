@@ -62,6 +62,7 @@ function TipService() {
             result.push('guru courses')
         }
 
+
         if (!user.guru_categories || !user.guru_categories.length) {
             result.push('guru skills')
         }

@@ -103,9 +103,6 @@ angular.module('uguru.util.controllers')
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
         $scope.data = {};
-        University.majors = $localstorage.getObject('universityMajors');
-        University.courses = $localstorage.getObject('universityCourses');
-        Category.categories = $localstorage.getObject('categories');
 
         if ($scope.user && $scope.user.id) {
             User.getUserFromServer($scope, null, $state);
@@ -170,23 +167,27 @@ angular.module('uguru.util.controllers')
 
         if ($scope.user.university_id && !(University.majors && University.majors.length)) {
             console.log('University courses not local, requesting now..');
-            $scope.getMajorsForUniversityId($scope.user.university_id);
+            $timeout(function() {
+                $scope.getMajorsForUniversityId($scope.user.university_id);
+            }, 0)
         } else {
             console.log(University.majors.length, 'majors loaded');
         }
-
 
         if ($scope.user.university_id && !(University.courses && University.courses.length)) {
             console.log('University majors not local, requesting now..');
-            $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
+            $timeout(function() {
+                $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
+            }, 0)
         } else {
             console.log(University.majors.length, 'majors loaded');
         }
 
-
         if (!Category.categories || Category.categories.length === 0) {
             console.log('Categories not local, loading now..')
-            $scope.getCategories();
+            $timeout(function() {
+                $scope.getCategories();
+            }, 0)
         } else {
             console.log(Category.categories.length, 'categories loaded');
         }
@@ -205,7 +206,6 @@ angular.module('uguru.util.controllers')
                 console.log('Universities NOT successfully loaded');
             })
         }
-
 
         $scope.rootUser = User;
         $scope.root = RootService;
@@ -280,9 +280,12 @@ angular.module('uguru.util.controllers')
             updateSuccessText: function(text) {
                 $scope.successLoaderText = text || 'loading'
             },
-            hide: function() {
-                $ionicLoading.hide();
-                $scope.root.vars.loaderOn = false;
+            hide: function(delay) {
+                delay = delay || 0;
+                $timeout(function() {
+                    $ionicLoading.hide();
+                    $scope.root.vars.loaderOn = false;
+                }, delay)
             }
         }
 

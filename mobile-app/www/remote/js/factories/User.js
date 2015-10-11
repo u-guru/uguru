@@ -1015,6 +1015,10 @@ angular.module('uguru.user', [])
                 return;
             }
 
+            if (callback) {
+                callback()
+            }
+
             else {
                 // console.log('Fetching user from ', $state.current.name);
             }
@@ -1030,9 +1034,6 @@ angular.module('uguru.user', [])
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
 
-                        if ($scope.loader) {
-                            $scope.loader.hide();
-                        }
 
                         if (callback) {
                             callback($scope);

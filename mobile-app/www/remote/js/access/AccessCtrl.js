@@ -183,8 +183,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
         "easeInSine"
       );
 
-      //nick we need to do this more
-      if (!cordova || !cordova.plugins) {
+    //nick we need to do this more
+      if (typeof cordova == 'undefined') {
         return;
       }
       if (cordova.plugins.Keyboard && cordova.plugins.Keyboard.isVisible) {
