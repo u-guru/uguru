@@ -230,33 +230,22 @@ angular.module('uguru.guru.controllers')
       progressBarTag.style.width = width + 'px';
     }
 
-    $scope.$on('$ionicView.beforeEnter', function() {
-      // if (!$scope.data.majors) {
-      $timeout(function() {
+    $scope.$on('$ionicView.enter', function() {
 
-        if (!University.majors) {
-          University.courses = $scope.getMajorsForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-          $scope.majors = University.majors;
-        }
+      uni_id = ($scope.user.university&& $scope.user.university.id);
+      //fallback --> to make sure courses are always there
+      if (!uni_id && LOCAL) {
+        LOCAL = 2307;
+      }
 
-        if (!University.courses) {
-              University.courses = $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-              $scope.courses = University.courses;
-        }
-          //   $scope.getCoursesForUniversityId($scope.user.university.id);
+      $scope.categories = Category.categories.slice() || $scope.getCategories();
+      console.log($scope.categories.length, 'entering become guru');
+      $scope.majors = University.majors.slice() || $scope.getMajorsForUniversityId(uni_id)
+      console.log($scope.majors.length, 'entering become guru');
+      $scope.courses = University.majors.slice() || $scope.getCoursesForUniversityId(uni_id)
+      console.log($scope.courses.length, 'entering become guru');
 
-
-        var updateScope = function(categories) {
-            $scope.categories = categories;
-        }
-        if (!Category.categories) {
-          $scope.categories = Category.categories || $scope.getCategories(updateScope) || [];
-        }
-
-      }, 100)
-
-      // }
-    })
+    }, 500)
     $scope.$on('$ionicView.afterEnter', function() {
 
       $scope.majorInput = document.getElementById('major-input-1');
