@@ -1223,6 +1223,9 @@ angular.module('uguru.util.controllers')
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
+          if ($scope.user && $scope.user.university && $scope.user.university.id) {
+            MapService.initStudentHomeMap(user);
+          }
           $timeout(function() {
             if ($ionicSideMenuDelegate.isOpen()) {
               $ionicSideMenuDelegate.toggleRight();

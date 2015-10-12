@@ -155,7 +155,7 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.removeUserMajorsFromMaster();
+    // $scope.removeUserMajorsFromMaster();
 
     $scope.clearSearchInput = function() {
       $scope.search_text = '';
@@ -177,12 +177,6 @@ angular.module('uguru.util.controllers')
 
       });
     }
-
-    //$scope.majors = University.majors || getMajorsForUniversityId();
-    $scope.majors = University.majors || getMajorsBecomeGuru();
-    // $scope.removeUserMajorsFromMaster();
-
-    // $timeout(function() {$scope.removeEmptyMajors();}, 1000)
 
   }
 
