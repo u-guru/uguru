@@ -31,6 +31,7 @@ function DeviceService($cordovaNgCardIO,
     isAndroidDevice: isAndroidDevice,
     isAndroidBrowser: isAndroidBrowser,
     isAndroid:isAndroid,
+    isIOS: isIOS,
     ios: iOSService,
     getInfo: getInfo,
     checkUpdates: checkUpdates
@@ -54,6 +55,10 @@ function DeviceService($cordovaNgCardIO,
 
     //needs to be both
     return ionic.Platform.isAndroid() && isWebView;
+  }
+
+  function isIOS() {
+    return ionic.Platform.isIOS();
   }
 
   function isAndroid() {

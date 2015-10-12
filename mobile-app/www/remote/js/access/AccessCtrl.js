@@ -93,14 +93,14 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     $scope.inputFocused = true;
     if (Utilities.cordovaExists && Utilities.keyboardExistsAndVisible) {
 
-      if (DeviceService.ios) {
+      if (DeviceService.isIOS()) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
 
     } else {
 
       //ios w/ keyboard
-      if (DeviceService.ios) {
+      if (DeviceService.isIOS()) {
         window.scrollTo(0, window.innerHeight - 224 - 20);
       } else {
         window.scrollTo(0, window.innerHeight);
