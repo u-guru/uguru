@@ -2432,7 +2432,7 @@ section {
 		}
 	}
 	#profile-desc {
-		height: 45%;
+		height: 41%;
 		.profile-slider {
 			position: relative;
 			height: 100%;
@@ -2724,17 +2724,24 @@ section {
 		}
 	}
 }
+@media screen and (max-height:480px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: 49%;
+		}
+	}
+}
 @media screen and (min-height:667px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 38%;
+			height: 34%;
 		}
 	}
 }
 @media screen and (min-height:736px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: calc(100% / 3);
+			height: 31%;
 		}
 	}
 }
