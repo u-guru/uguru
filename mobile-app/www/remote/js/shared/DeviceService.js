@@ -103,10 +103,10 @@ function DeviceService($cordovaNgCardIO,
       }
     })
 
-    if(navigator.splashscreen) {
-      console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
-      navigator.splashscreen.show();
-    }
+    // if(navigator.splashscreen) {
+    //   console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
+    //   navigator.splashscreen.show();
+    // }
 
 		if(isMobile()) {
 

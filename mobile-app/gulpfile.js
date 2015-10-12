@@ -73,6 +73,10 @@ gulp.task('replace', function() {
         {
           match: /adjustResize/g,
           replacement: 'adjustPan'
+        },
+        {
+          match: /Theme.Black.NoTitleBar/g,
+          replacement: 'Theme.Light.NoTitleBar'
         }
         ]
       }))
