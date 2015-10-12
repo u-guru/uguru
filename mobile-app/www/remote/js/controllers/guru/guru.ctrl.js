@@ -60,39 +60,23 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
 
-
-
-  $ionicModal.fromTemplateUrl(BASE + 'templates/guru.request.incoming.modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.incomingStudentSessionProposal = modal;
-
-    });
-
-
-
-
-
-
-        $scope.launchWelcomeGuruPopup = function() {
-
-          var homeCenterComponent = document.getElementById('guru-home');
-          var uguruPopup = document.getElementById('home-uguru-popup');
-          $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
-            function (modal){
-              modal.classList.add('show');
-            }
-          );
-          $scope.closeWelcomePopup = function() {
-            if ($scope.reverseAnimatePopup) {
-              $scope.reverseAnimatePopup();
-            }
-            var uguruPopup = document.getElementById('home-uguru-popup');
-            uguruPopup.classList.remove('show');
-
-          }
+  $scope.launchWelcomeGuruPopup = function() {
+      var homeCenterComponent = document.getElementById('guru-home');
+      var uguruPopup = document.getElementById('home-uguru-popup');
+      $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
+        function (modal){
+          modal.classList.add('show');
         }
+      );
+      $scope.closeWelcomePopup = function() {
+        if ($scope.reverseAnimatePopup) {
+          $scope.reverseAnimatePopup();
+        }
+        var uguruPopup = document.getElementById('home-uguru-popup');
+        uguruPopup.classList.remove('show');
+
+      }
+    }
 
 
         var getIonicSideMenuOpenRatio = function() {
@@ -215,9 +199,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.privacyModal.show();
         }
 
-        $scope.initializeProgressBars = function() {
-          var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-          animateProgressCircle(guruRankingCircle, $scope.user.current_guru_ranking);
+        $scope.initializeHorizontalProgressBars = function() {
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
           animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent || 60);
@@ -255,15 +237,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.$on('$ionicView.beforeEnter', function() {
 
-            if (!haveProgressBarsBeenInitialized()) {
-              $timeout(function() {
-
-                //show it after the progress is complete
-                $scope.initializeProgressBars();
-
-              }, 500)
-            }
-
             var appOnboardingObj = $localstorage.getObject('appOnboarding');
 
             if (!haveProgressBarsBeenInitialized) {
@@ -279,9 +252,26 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         });
 
         $scope.goToStateWithTransition = function(state_name, transition) {
+          if (!$scope.user.id) {
+            $scope.loader.showAmbig();
+
+            //make it feel like its coming... when really its just signup ;)
+            $timeout(function() {
+              $scope.launchSignupModal();
+              $scope.loader.hide(100);
+            }, 1000)
+            return;
+          }
           $ionicViewSwitcher.nextDirection(transition);
           $state.go(state_name);
         }
+
+        $scope.$on('$ionicView.beforeEnter', function() {
+
+          // value counts up later -- hack for now
+          $scope.showVerifyToast = $scope.user.current_guru_ranking > 40 && !$scope.user.school_email_confirmed;
+
+        })
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
@@ -292,8 +282,22 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
             //commented out until it's 100% so won't get in the way of other branches pulling mine.
 
+
             if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
               RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
+            }
+
+            if (!haveProgressBarsBeenInitialized()) {
+              $timeout(function() {
+
+
+                var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+                animateProgressCircle(guruRankingCircle, $scope.user.current_guru_ranking);
+
+                //show it after the progress is complete
+                $scope.initializeHorizontalProgressBars();
+
+              }, 500)
             }
 
           }, 1000)

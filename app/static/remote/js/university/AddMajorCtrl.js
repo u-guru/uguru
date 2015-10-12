@@ -155,7 +155,7 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.removeUserMajorsFromMaster();
+    // $scope.removeUserMajorsFromMaster();
 
     $scope.clearSearchInput = function() {
       $scope.search_text = '';

@@ -1282,6 +1282,8 @@ section {
 	z-index: 20;
 	position: absolute;
 	right: 0;
+	height: 110%;//due to ios status bar, playing it safe
+    bottom: 0;
 }
 .side-menu-list {
 	position: relative;
@@ -1533,6 +1535,21 @@ section {
 	}
 }
 
+// SLIDER BREADCRUMBS
+.slider-pager {
+	@include flex;
+	@include flex-center;
+	height: auto!important;
+	span {
+		@include flex;
+		@include flex-center;
+	}
+	.icon {
+		font-size: 12px;
+		line-height: 16px;
+	}
+}
+
 
 
 /* ---------- SETTING UP APP */
@@ -1681,7 +1698,7 @@ section {
 		}
 		.geolocation-icon {
 			margin-top: 3px;
-		// To add hella space to tap it (its responsive && equalizes)
+		// To add hella space to tap it (it's responsive & equalizes)
 			padding: 50px;
     		margin-right: -50px;
 		}
@@ -1741,10 +1758,8 @@ section {
 						}
 					}
 				}
-				#{$links} {
-					&.active, &.activated {
-						background: rgba(white,.2);
-					}
+				a:active, a.active, a.activated {
+					background: rgba(white,.2);
 				}
 			}
 		}
@@ -2418,52 +2433,34 @@ section {
 			line-height: 18px;
 		}
 	}
-	#profile-fixed {
-		position: fixed;
-		top: 0;
-		z-index: 9;
-		width: 100%;
-		height: 64px;
-		padding: 13px 0;
-		background: rgba($slate,.95);
-		#profile-fixed-inside {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			#profile-fixed-icon {
-				@include flex;
-				@include flex-center;
-				img {
-					@include round;
-					width: 35px;
-					height: 35px;
-					border: 3px solid rgba(white,.5);
+	#profile-desc {
+		height: 45%;
+		.profile-slider {
+			position: relative;
+			height: 100%;
+			.slider-slide {
+				padding: 15px 0;
+			}
+			#profile-intro {
+				position: relative;
+				margin: 0 15px;
+				height: calc(100% - 30px);
+				div {
+					@include flex;
+					@include flex-center;
+					height: 100%;
+					font-size: 20px;
+					font-weight: 600;
+				}
+				button + div {
+					height: calc(100% - 64px);
 				}
 			}
-			#profile-fixed-name {
-				padding-left: 10px;
-				h1 {
-					font-size: 24px;
-					line-height: 1;
-					text-transform: uppercase;
-					&.verified {
-						svg {
-							width: 16px;
-							height: 16px;
-						}
-					}
-				}
-				p {
-					margin: 0;
-					font-size: 14px;
-					font-weight: 400;
-					line-height: 1;
-				}
+			.slider-pager {
+				position: relative;
+				bottom: 30px;
 			}
 		}
-	}
-	#profile-desc {
-		padding: 15px 0;
 		#profile-icon {
 			@include round;
 			display: block;
@@ -2726,6 +2723,20 @@ section {
 					}
 				}
 			}
+		}
+	}
+}
+@media screen and (min-height:667px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: 38%;
+		}
+	}
+}
+@media screen and (min-height:736px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: calc(100% / 3);
 		}
 	}
 }
@@ -3404,6 +3415,12 @@ section {
 			&.active {
 				display: block;
 			}
+			.semi-opaque {
+				@include opacity(.5);
+			}
+			.semi-opaque:active, .semi-opaque.active {
+				@include opacity(1);
+			}
 			> div {
 				height: 100%;
 				.credit-body {
@@ -3502,6 +3519,10 @@ section {
 			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
 		}
 	}
+	#guru-home-content {
+		overflow: none!important;
+		padding-bottom: 50px;
+	}
 	#guru-ranking {
 		@include flex;
 		@include flex-wrap;
@@ -3584,14 +3605,49 @@ section {
 			}
 		}
 	}
-	.tip-container {
-		h2 {
-			font-size: 22px;
+	.guru-tip-of-day-slide-box {
+		height: calc(100% - 36px);
+		.card {
+			margin: 15px!important;
+			height: calc(100% - 60px);
+			padding: 0!important;
+			background: $slate;
+			border-radius: 5px;
+			overflow: hidden;
+			text-align: center;
+			.card-content {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				padding: 15px;
+				height: calc(100% - 64px);
+				svg {
+					display: block;
+					width: 100%;
+					height: 100%;
+					max-height: 70px;
+					margin-bottom: 15px;
+				}
+				h2 {
+					font-size: 28px;
+					font-weight: 600;
+				}
+				p {
+					margin: 10px 0 0;
+					font-size: 22px;
+				}
+			}
 		}
-		p {
-			margin-top: 10px;
-			font-size: 18px;
+		.slider-pager {
+			bottom: 15px;
 		}
+	}
+	#btn-launch-profile:active {
+		@include opacity(1);
+		background: $shamrock!important;
+	}
+	#btn-launch-profile + .guru-tip-of-day-slide-box {
+		height: calc(100% - 50px);
 	}
 }
 @media screen and (min-height:540px) {
@@ -3721,30 +3777,6 @@ section {
 .smaller-list-font {
 	font-size: 85%;
 }
-
-.slider-pager {
-	display: none;
-}
-
-#guru-home-content  {
-	.guru-introduction-slide-box {
-
-		.slider-pager {
-			display:block;
-		}
-
-	}
-	.guru-tip-of-day-slide-box {
-
-		.slider-pager {
-			display:block;
-			margin-bottom:25%;
-		}
-
-	}
-
-}
-
 .content {
 	height: 100%;
 	&.footer-exists {

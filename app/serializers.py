@@ -293,6 +293,10 @@ relationship_fields['guru'] = fields.Nested(guru_fields)
 relationship_fields['sessions'] = fields.Nested(session_fields)
 
 
+class FilteredList(fields.Raw):
+    def format(self, value):
+        return value[0:5]
+
 
 UserSerializer = {
     'id': fields.Integer,
@@ -348,19 +352,22 @@ UserSerializer = {
     'push_notifications_enabled': fields.Boolean,
     'guru_score': fields.Float,
     'last_position': fields.Nested(position_fields),
-    'requests': fields.List(fields.Nested(request_fields)),
-    'sessions': fields.List(fields.Nested(session_fields)),
-    'proposals': fields.List(fields.Nested(proposal_fields)),
+    # 'requests': fields.List(fields.Nested(request_fields)),
+    # 'sessions': fields.List(fields.Nested(session_fields)),
+    # 'proposals': fields.List(fields.Nested(proposal_fields)),
     'cards': fields.List(fields.Nested(card_fields)),
     'phone_number': fields.String,
     'phone_number_token': fields.String,
     'phone_number_confirmed': fields.Boolean,
-    'student_transactions': fields.List(fields.Nested(transaction_fields)),
-    'guru_transactions': fields.List(fields.Nested(transaction_fields)),
-    'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
+    'phone_number': fields.String,
+    'phone_number_token': fields.String,
+    'phone_number_confirmed': fields.Boolean,
+    # 'student_transactions': fields.List(fields.Nested(transaction_fields)),
+    # 'guru_transactions': fields.List(fields.Nested(transaction_fields)),
+    # 'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
     'impact_events': fields.List(fields.Nested(event_fields)),
-    'guru_relationships': fields.List(fields.Nested(relationship_fields)),
-    'student_relationships': fields.List(fields.Nested(relationship_fields)),
+    # 'guru_relationships': fields.List(fields.Nested(relationship_fields)),
+    # 'student_relationships': fields.List(fields.Nested(relationship_fields)),
     'guru_skills': fields.List(fields.Nested(skill_fields)),
     'estimated_guru_score': fields.Integer,
     'estimated_guru_rank': fields.Integer,

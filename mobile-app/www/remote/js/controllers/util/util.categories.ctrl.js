@@ -33,13 +33,6 @@ angular.module('uguru.util.controllers')
 
     $scope.active_category = {name:'Select category', active:false};
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.categorySkillsModal = modal;
-    });
-
 
     $scope.launchCategoryModal = function(category) {
 
@@ -134,7 +127,6 @@ angular.module('uguru.util.controllers')
     }
 
 
-    $scope.categories =  Category.categories || $scope.getCategories(updateBecomeGuruScope);
 
   }
 

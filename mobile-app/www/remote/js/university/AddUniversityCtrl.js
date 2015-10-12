@@ -113,9 +113,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   }
 
   //back button
-  $scope.goToAccess = function() {
+  $scope.goToAccessAdmin = function() {
     $scope.universityInput.value = '';
-    $ionicSlideBoxDelegate.previous();
+
+    $scope.loader.showAmbig('[ADMIN] Restarting', 1500);
+    $timeout(function() {
+      $ionicSlideBoxDelegate.previous();
+    },0)
   }
 
   $scope.resetUniversities = function() {
@@ -251,7 +255,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     }, 0);
     //Geolocation.sortByDistance($scope.universitiesSorted);
 
-  };
+  }
 
   $scope.$watch(
     'location.coordinates.lat',

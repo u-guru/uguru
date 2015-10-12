@@ -120,6 +120,13 @@ angular.module('uguru.guru.controllers')
 
         $scope.guruCoursesInput = document.getElementById('course-input-1');
         $scope.removeUserGuruCoursesFromMasterCourses()
+
+        var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
+        var addScope = function(courses) {
+          $scope.courses = courses;
+        }
+
+        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
       }
 
       if (index === 2) {
@@ -232,7 +239,8 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.enter', function() {
 
-
+      //since this is the same as entering the slidebox
+      $scope.majors = University.majors || getMajorsBecomeGuru();
 
     }, 500)
 
