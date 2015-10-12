@@ -131,6 +131,7 @@ function DeviceService($cordovaNgCardIO,
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
 
+
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
 
@@ -139,6 +140,12 @@ function DeviceService($cordovaNgCardIO,
         navigator.splashscreen.show();
       }, 2000)
     }
+
+    // if(navigator.splashscreen) {
+    //   console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
+    //   navigator.splashscreen.show();
+    // }
+
 
 		if(isMobile()) {
 

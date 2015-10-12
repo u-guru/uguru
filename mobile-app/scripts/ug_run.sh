@@ -1,18 +1,16 @@
 
 if [ $# == 0 ];
 	then 
-	printf "\n"
-	printf " ug build: Runs livereload for the specified platform along with an optional argument for starting page.\n"
-	printf " To run: ug run <android | ios> \n"
-	printf " Setting a start page: ug run <android | ios> <startpage> \n"
-	printf "\n"
+	printf "\e[0;36m\n"
+	printf "ug run <android|ios> <optional startpage> : Runs livereload for the specified platform along with an optional argument for starting page.\n"
+	printf "\e[0m\n"
 fi
 
 
 if [ $# == 1 ];
 	then platform="$1";
 	printf "\n"
-	printf '\e[0;36m Please make sure to call ug build <platform> before running this command. \n'
+	printf '\e[0;36mPlease make sure to call ug build <platform> before running this command. \n'
 	printf 'Failure to do so will result in an unstable build. \n'
 	printf "\n"
 
