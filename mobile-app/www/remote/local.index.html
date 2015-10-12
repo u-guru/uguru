@@ -62,7 +62,7 @@
                 // Read more here
                 // https://developer.chrome.com/multidevice/user-agent
                 console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
-                var androidWebViewAgents = ['Build/KLP', 'Version', 'wv'];
+                var androidWebViewAgents = ['Build/KLP', 'Version', 'wv', 'Crosswalk'];
                 for (var i = 0; i < androidWebViewAgents.length; i++ ) {
                   var indexUA = androidWebViewAgents[i];
                   if (userAgent.indexOf(indexUA) > -1) {

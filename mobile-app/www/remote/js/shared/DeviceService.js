@@ -157,6 +157,7 @@ function DeviceService($cordovaNgCardIO,
 		// if(typeof callback === 'function') {
 		// 	callback();
 		// }
+    checkUpdates();
 	}
 	function checkUpdates() {
 
