@@ -27,7 +27,10 @@ function Utilities($rootScope, Settings) {
 		validatePhone: validatePhone,
 		validateCode: validateCode,
 		validateName: validateName,
-		validatePassword: validatePassword
+		validatePassword: validatePassword,
+		keyboardExistsAndVisible: keyboardExistsAndVisible,
+		keyboardExists: keyboardExists,
+		cordovaExists: cordovaExists
 	}
 
 	function sortArrObjByKey(arr, key) {
@@ -115,6 +118,18 @@ function Utilities($rootScope, Settings) {
 		var fileName = URI.substring(indexSlash + 1);
 
 		return fileName;
+	}
+
+	function cordovaExists() {
+		return (typeof cordova === 'undefined');
+	}
+
+	function keyboardExists() {
+		return cordovaExists() && cordova.plugins && cordova.plugins.Keyboard;
+	}
+
+	function keyboardExistsAndVisible() {
+		return keyboardExists && cordova.plugins.Keyboard.isVisible;
 	}
 
 	function isElementInViewport (el) {
@@ -209,15 +224,15 @@ function Utilities($rootScope, Settings) {
 	}
 
 	function validatePhone(phone) {
-		var check =	phone.match(/\d/g) 
-		return check!==null && check.length===10;			
+		var check =	phone.match(/\d/g)
+		return check!==null && check.length===10;
 	}
 
 	function validateCode(code) {
 		if(code!==null) {
-			return code.length===4;			
+			return code.length===4;
 		} else return false;
-		
+
 	}
 
 	function validateName(name) {

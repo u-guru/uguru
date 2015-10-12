@@ -120,6 +120,13 @@ angular.module('uguru.guru.controllers')
 
         $scope.guruCoursesInput = document.getElementById('course-input-1');
         $scope.removeUserGuruCoursesFromMasterCourses()
+
+        var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
+        var addScope = function(courses) {
+          $scope.courses = courses;
+        }
+
+        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
       }
 
       if (index === 2) {
@@ -179,7 +186,18 @@ angular.module('uguru.guru.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
 
-    //
+    $scope.initSlideBoxModals = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+      });
+
+
+    }
 
 
 
@@ -229,7 +247,32 @@ angular.module('uguru.guru.controllers')
       var progressBarTag = document.getElementById(elemId);
       progressBarTag.style.width = width + 'px';
     }
-    
+
+    var updateMajorScope = function(majors) {
+      $scope.majors = majors;
+      University.majors = majors;
+    }
+
+    var updateCoursesScope = function(courses) {
+      $scope.courses = courses;
+      University.courses = courses;
+    }
+
+    $scope.$on('$ionicView.beforeEnter', function() {
+
+      //since this is the same as entering the slidebox
+      var universityId = $scope.user.university && $scope.user.university_id || 2307;
+      
+      //adding minor delay so it doesn't get in the delay cycle
+      $timeout(function() {
+        $scope.majors = University.majors || $scope.getMajorsForUniversityId();
+        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
+        $scope.categories = Category.categories || $scope.getCategories();
+        $scope.initSlideBoxModals();
+      }, 500);
+
+    }, 500)
+
     $scope.$on('$ionicView.afterEnter', function() {
 
       $scope.majorInput = document.getElementById('major-input-1');

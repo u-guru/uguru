@@ -249,6 +249,13 @@ def admin_view_campaigns():
         return redirect(url_for('admin_login'))
     return render_template("admin/campaigns.html")
 
+@app.route('/admin/design/banners')
+def admin_design_banners():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.banner_url != None, University.logo_url != None).all()
+    return render_template('admin/design.validate.flickr.html', universities=universities)
+
 @app.route('/admin/campaigns/create/')
 def admin_create():
     if not session.get('admin'):

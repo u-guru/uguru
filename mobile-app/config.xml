@@ -16,10 +16,10 @@
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="local"/>
   <preference name="AutoHideSplashScreen" value="false"/>
+  <preference name="FadeSplashScreen" value="false"/>
   <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
   <preference name="StatusBarOverlaysWebView" value="true"/>
   <preference name="StatusBarStyle" value="lightcontent"/>
-  <preference name="CrosswalkAnimatable" value="true"/>
   <platform name="android">
     <preference name="Fullscreen" value="false"/>
     <preference name="android-windowSoftInputMode" value="adjustPan"/>
@@ -64,9 +64,10 @@
   </platform>
   <platform name="browser">
     <preference name="SplashScreen" value="www/remote/img/uguru_home.png"/>
-    <preference name="SplashScreenDelay" value="10000"/>
+    <preference name="SplashScreenDelay" value="5000"/>
     <preference name="SplashScreenBackgroundColor" value="#FFFFFF"/>
     <preference name="ShowSplashScreen" value="false"/>
+    <preference name="ShowSplashScreenSpinner" value="true"/>
     <preference name="SplashScreenWidth" value="600"/>
     <preference name="SplashScreenHeight" value="300"/>
   </platform>

@@ -1173,7 +1173,9 @@ section {
   height: 100%;
   z-index: 20;
   position: absolute;
-  right: 0; }
+  right: 0;
+  height: 110%;
+  bottom: 0; }
 
 .side-menu-list {
   position: relative;
@@ -1360,6 +1362,39 @@ section {
     stroke: white; }
   .tabs.student-tabs svg {
     stroke: #40484B; }
+
+.slider-pager {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: auto !important; }
+  .slider-pager span {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
+  .slider-pager .icon {
+    font-size: 12px;
+    line-height: 16px; }
 
 /* ---------- SETTING UP APP */
 .access-view {
@@ -1570,7 +1605,7 @@ section {
         font-size: 12px;
         padding-top: 5px;
         font-weight: 500; }
-  .university-view #school-list ul li a:active.active, .university-view #school-list ul li a:active.activated, .university-view #school-list ul li a:focus.active, .university-view #school-list ul li a:focus.activated, .university-view #school-list ul li a:hover.active, .university-view #school-list ul li a:hover.activated, .university-view #school-list-modal ul li a:active.active, .university-view #school-list-modal ul li a:active.activated, .university-view #school-list-modal ul li a:focus.active, .university-view #school-list-modal ul li a:focus.activated, .university-view #school-list-modal ul li a:hover.active, .university-view #school-list-modal ul li a:hover.activated {
+  .university-view #school-list ul li a:active, .university-view #school-list ul li a.active, .university-view #school-list ul li a.activated, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a.active, .university-view #school-list-modal ul li a.activated {
     background: rgba(255, 255, 255, 0.2); }
 
 .home-view {
@@ -2157,66 +2192,39 @@ section {
         fill: none; }
     .guru-profile-view .round span {
       line-height: 18px; }
-  .guru-profile-view #profile-fixed {
-    position: fixed;
-    top: 0;
-    z-index: 9;
-    width: 100%;
-    height: 64px;
-    padding: 13px 0;
-    background: rgba(64, 72, 75, 0.95); }
-    .guru-profile-view #profile-fixed #profile-fixed-inside {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center; }
-      .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-icon {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-icon img {
-          border-radius: 1000px;
-          width: 35px;
-          height: 35px;
-          border: 3px solid rgba(255, 255, 255, 0.5); }
-      .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name {
-        padding-left: 10px; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name h1 {
-          font-size: 24px;
-          line-height: 1;
-          text-transform: uppercase; }
-          .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name h1.verified svg {
-            width: 16px;
-            height: 16px; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name p {
-          margin: 0;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 1; }
   .guru-profile-view #profile-desc {
-    padding: 15px 0; }
+    height: 45%; }
+    .guru-profile-view #profile-desc .profile-slider {
+      position: relative;
+      height: 100%; }
+      .guru-profile-view #profile-desc .profile-slider .slider-slide {
+        padding: 15px 0; }
+      .guru-profile-view #profile-desc .profile-slider #profile-intro {
+        position: relative;
+        margin: 0 15px;
+        height: calc(100% - 30px); }
+        .guru-profile-view #profile-desc .profile-slider #profile-intro div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          height: 100%;
+          font-size: 20px;
+          font-weight: 600; }
+        .guru-profile-view #profile-desc .profile-slider #profile-intro button + div {
+          height: calc(100% - 64px); }
+      .guru-profile-view #profile-desc .profile-slider .slider-pager {
+        position: relative;
+        bottom: 30px; }
     .guru-profile-view #profile-desc #profile-icon {
       border-radius: 1000px;
       display: block; }
@@ -2457,6 +2465,12 @@ section {
       border-bottom: 0; }
     .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
       display: block; } }
+@media screen and (min-height: 667px) {
+  .guru-profile-view #profile-desc {
+    height: 38%; } }
+@media screen and (min-height: 736px) {
+  .guru-profile-view #profile-desc {
+    height: calc(100% / 3); } }
 .photo-guru-profile-view {
   color: #2B3234; }
   .photo-guru-profile-view a {
@@ -3076,6 +3090,12 @@ section {
     height: 100%; }
     .credibility-view #credibility-content-wrapper .credit-content-slide.active {
       display: block; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque {
+      filter: alpha(opacity=50);
+      opacity: 0.5; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque:active, .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque.active {
+      filter: alpha(opacity=100);
+      opacity: 1; }
     .credibility-view #credibility-content-wrapper .credit-content-slide > div {
       height: 100%; }
       .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body {
@@ -3138,6 +3158,9 @@ section {
         height: 70px; } }
 .guru-view header::before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
+.guru-view #guru-home-content {
+  overflow: none !important;
+  padding-bottom: 50px; }
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -3238,11 +3261,55 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
-.guru-view .tip-container h2 {
-  font-size: 22px; }
-.guru-view .tip-container p {
-  margin-top: 10px;
-  font-size: 18px; }
+.guru-view .guru-tip-of-day-slide-box {
+  height: calc(100% - 36px); }
+  .guru-view .guru-tip-of-day-slide-box .card {
+    margin: 15px !important;
+    height: calc(100% - 60px);
+    padding: 0 !important;
+    background: #40484B;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center; }
+    .guru-view .guru-tip-of-day-slide-box .card .card-content {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      padding: 15px;
+      height: calc(100% - 64px); }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 70px;
+        margin-bottom: 15px; }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content h2 {
+        font-size: 28px;
+        font-weight: 600; }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content p {
+        margin: 10px 0 0;
+        font-size: 22px; }
+  .guru-view .guru-tip-of-day-slide-box .slider-pager {
+    bottom: 15px; }
+.guru-view #btn-launch-profile:active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #69B3A5 !important; }
+.guru-view #btn-launch-profile + .guru-tip-of-day-slide-box {
+  height: calc(100% - 50px); }
 
 @media screen and (min-height: 540px) {
   .guru-view #guru-ranking > div {
@@ -3577,15 +3644,6 @@ section {
 .smaller-list-font {
   font-size: 85%; }
 
-.slider-pager {
-  display: none; }
-
-#guru-home-content .guru-introduction-slide-box .slider-pager {
-  display: block; }
-#guru-home-content .guru-tip-of-day-slide-box .slider-pager {
-  display: block;
-  margin-bottom: 25%; }
-
 .content {
   height: 100%; }
   .content.footer-exists {
@@ -3640,5 +3698,9 @@ body.platform-ios {
       padding-top: 20px; }
       body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view section, body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view #student-home-map-container {
         top: 20px !important; }
+
+.android-access-edge-case {
+  bottom: 64px;
+  position: absolute; }
 
 /*# sourceMappingURL=style.css.map */

@@ -22,9 +22,9 @@ angular.module('uguru.util.controllers')
     Category, Utilities) {
 
     if (!img_base || !img_base.length) {
-      categories_img_base = 'remote/';
+      $scope.categories_img_base = 'remote/';
     } else {
-      categories_img_base = img_base + 'remote/';
+      $scope.categories_img_base = img_base + 'remote/';
     }
 
 
@@ -33,19 +33,12 @@ angular.module('uguru.util.controllers')
 
     $scope.active_category = {name:'Select category', active:false};
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.categorySkillsModal = modal;
-    });
-
 
     $scope.launchCategoryModal = function(category) {
 
       if($scope.active_category!==category){
         $scope.active_category = category;
-        extension = $scope.guruSkillsModal.isShown() && '-2';
+        extension = $scope.guruSkillsModal && $scope.guruSkillsModal.isShown() && '-2';
         updateMainBackground($scope.categories_img_base + category.background_url, extension);
       }
 
@@ -82,9 +75,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.$on('modal.hidden', function() {
-      if ($scope.guruSkillsModal && $scope.guruSkillsModal.isShown()) {
+      if ($scope.activeSlideIndex === 2 ) {
         $scope.active_category = {name:'Select category', active:false};
-
       }
     })
 
@@ -133,6 +125,8 @@ angular.module('uguru.util.controllers')
     var removeGuruSubcategory = function(subcategory) {
       $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
     }
+
+
 
   }
 

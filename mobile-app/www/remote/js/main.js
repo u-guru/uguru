@@ -160,7 +160,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.become-guru', {
         url: '/become-guru',
-        templateUrl: BASE + 'templates/become.guru.html',
+        templateUrl:BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
   }).
   state('root.offline', {
