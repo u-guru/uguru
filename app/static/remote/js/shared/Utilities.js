@@ -27,7 +27,10 @@ function Utilities($rootScope, Settings) {
 		validatePhone: validatePhone,
 		validateCode: validateCode,
 		validateName: validateName,
-		validatePassword: validatePassword
+		validatePassword: validatePassword,
+		keyboardExistsAndVisible: keyboardExistsAndVisible,
+		keyboardExists: keyboardExists,
+		cordovaExists: cordovaExists
 	}
 
 	function sortArrObjByKey(arr, key) {

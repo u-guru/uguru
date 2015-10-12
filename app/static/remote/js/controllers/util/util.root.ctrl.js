@@ -41,6 +41,14 @@ angular.module('uguru.util.controllers')
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
+
+
+
+        // if it exists, always show it until we've either updated, or checked for updates recently
+        if (navigator.splashscreen && navigator.splashscreen.show) {
+            navigator.splashscreen.show();
+        }
+
         $scope.LOCAL = LOCAL || false;
         $ionicPlatform.registerBackButtonAction(function(e) {
             var popup = document.querySelectorAll('.uguru-popup.show')[0];

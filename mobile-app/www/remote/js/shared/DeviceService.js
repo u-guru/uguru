@@ -106,15 +106,13 @@ function DeviceService($cordovaNgCardIO,
 
 	function readyDevice(scope) {
 
+
+
     var userAgent = navigator.userAgent;
 
 
       if(userAgent.indexOf('wv')!==-1) {
         onDeviceReady(scope);
-      }
-
-      if (navigator.splashscreen && navigator.splashscreen.hide) {
-          navigator.splashscreen.hide();
       }
 
       if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
@@ -127,18 +125,6 @@ function DeviceService($cordovaNgCardIO,
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
-
-    //Ugh --> they overroad the native js OnDOMContentLoaded ...
-    ionic.DomUtil.ready(function(){
-      if(navigator.splashscreen) {
-
-        //offset is to avoid the sidebar showing last second before
-        $timeout(function() {
-          console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
-          navigator.splashscreen.hide();
-        }, 2000);
-      }
-    })
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
@@ -177,11 +163,20 @@ function DeviceService($cordovaNgCardIO,
     // don't update on local
     if (LOCAL) {
       console.log("running local: skipping over checkUpdates");
+
+        // hide it otherwise it never would on emulators
+       $timeout(function() {
+          if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
+            navigator.splashscreen.hide();
+          }
+        }, 2000)
+
       return;
     }
     console.log("did not detect local, checking for updates");
-    // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-    //local_version = $localstorage.getObject('version');
+
+
+
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
           function(response) {
@@ -224,7 +219,15 @@ function DeviceService($cordovaNgCardIO,
                     window.location.reload(true);
                   }
 
-           	  }
+           	  } else {
+                //the only place where this will
+                $timeout(function() {
+                  if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
+                    navigator.splashscreen.hide();
+                  }
+                }, 2000)
+
+              }
           },
            //connectivity issues
           function(error) {
