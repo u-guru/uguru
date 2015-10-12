@@ -117,6 +117,18 @@ function Utilities($rootScope, Settings) {
 		return fileName;
 	}
 
+	function cordovaExists() {
+		return (typeof cordova === 'undefined');
+	}
+
+	function keyboardExists() {
+		return cordovaExists() && cordova.plugins && cordova.plugins.Keyboard;
+	}
+
+	function keyboardExistsAndVisible() {
+		return keyboardExists && cordova.plugins.Keyboard.isVisible;
+	}
+
 	function isElementInViewport (el) {
 	    var rect = el[0].getBoundingClientRect();
 
@@ -209,15 +221,15 @@ function Utilities($rootScope, Settings) {
 	}
 
 	function validatePhone(phone) {
-		var check =	phone.match(/\d/g) 
-		return check!==null && check.length===10;			
+		var check =	phone.match(/\d/g)
+		return check!==null && check.length===10;
 	}
 
 	function validateCode(code) {
 		if(code!==null) {
-			return code.length===4;			
+			return code.length===4;
 		} else return false;
-		
+
 	}
 
 	function validateName(name) {

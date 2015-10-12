@@ -29,6 +29,8 @@ function DeviceService($cordovaNgCardIO,
 		isMobile: isMobile,
 		isWeb: isWeb,
     isAndroidDevice: isAndroidDevice,
+    isAndroidBrowser: isAndroidBrowser,
+    isAndroid:isAndroid,
     ios: iOSService,
     getInfo: getInfo,
     checkUpdates: checkUpdates
@@ -39,8 +41,27 @@ function DeviceService($cordovaNgCardIO,
 	}
 
   function isAndroidDevice() {
-    console.log(navigator.userAgent);
+    var userAgent = navigator.userAgent;
+    var androidWebViewAgents = ['Build/KLP', 'Version', 'wv'];
+    var isWebView = false;
+    for (var i = 0; i < androidWebViewAgents.length; i++ ) {
+      var indexUA = androidWebViewAgents[i];
+      if (userAgent.indexOf(indexUA) > -1) {
+        isWebView = true;
+      }
+      break;
+    }
+
+    //needs to be both
+    return ionic.Platform.isAndroid() && isWebView;
+  }
+
+  function isAndroid() {
     return ionic.Platform.isAndroid();
+  }
+
+  function isAndroidBrowser() {
+    return !isAndroidDevice() && ionic.Platform.isAndroid();
   }
 
 	function isWeb() {

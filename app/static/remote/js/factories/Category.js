@@ -2,6 +2,7 @@ angular.module('uguru.rest')
 .factory('Category', ['Restangular', function(Restangular) {
     var Category;
     Category = {
+        categories:[],
         get: function() {
             return Restangular
                 .one('categories').get();
