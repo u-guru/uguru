@@ -1,5 +1,5 @@
 <u-slide-box id='access-uni-slide' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university" performance-beacon="remote/img/beacon.png">
-  <u-slide>
+  <u-slide ng-if='storedAccess'>
   	<div ng-include="img_base + BASE + 'templates/access.html'"></div>
   </u-slide>
   <u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
@@ -7,8 +7,8 @@
   <section id="school" class="onboarding" >
   	<header class="third flex-center">
   		<h1>Find Your Community</h1>
-  		<div class="header-nav">
-  	        <a class="header-nav-back" ng-click='goToAccess()'>
+  		<div class="header-nav" ng-if='LOCAL'>
+  	        <a class="header-nav-back" ng-click='goToAccessAdmin()'>
   		        <svg viewBox="0 0 100 100">
   					<path d="M68,86 L32,50 L68,14"></path>
   				</svg>
@@ -19,27 +19,24 @@
   	        <input type="search" id='university-input' class=''
   				placeholder="Search for my university"
   				ng-model="universityInput.value"
-  				ng-keyup="query()"
-  				ng-keydown="query()"
   				ng-focus="universityInputFocused()"
   	        />
   	        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='universityInput.value.length === 0'>
-  				<i class='icon ion-navigate ng-class:{"location-active":isLocationActive}'></i>
+  				<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
   	        </a>
   	        <a class='side-icon' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
   				<i class='icon ion-close-circled text-white'></i>
   	        </a>
   		</div>
   	</header>
-  	<div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
-  		<ul class='list list-half list-item-border'>
-  			<li class="list-item" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+  	<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">
+  		<ul class='list list-item-border'>
+  			<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
   				<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
   					<span class="school-icon list-icon-left">
-  						<img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
-  						<img ng-if='platform.web' ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}'/>
+  						<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
   					</span>
-  					<span ng-if='!isLocationActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+  					<span ng-if='!location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
   						<b>
   							<span class="school-title">{{university.name}}</span>
   							<i>
@@ -48,14 +45,14 @@
   							</i>
   						</b>
   					</span>
-  					<span ng-if='isLocationActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+  					<span ng-if='location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
   			            <b>
   			            	<span class="school-title">{{university.name}}</span>
   			            	<i class='university-subheader'>
   			            		<span class="school-city">{{university.city}},</span>
   			            		<span class="school-state">{{university.state}}</span>
-  			            		<span class='school-distance txt-lake' ng-if='university.miles <= 300'>{{university.miles}} mi</span>
-  			            		<span class='school-distance txt-lake' ng-if='university.miles > 300'>hella far</span>
+  			            		<span class='school-distance txt-lake' ng-if='university.rawMiles <= 300'>{{university.miles}} mi</span>
+  			            		<span class='school-distance txt-lake' ng-if='university.rawMiles > 300'>hella far</span>
   			            	</i>
   			            </b>
   					</span>

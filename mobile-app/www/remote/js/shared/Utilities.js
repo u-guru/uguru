@@ -22,7 +22,16 @@ function Utilities($rootScope, Settings) {
 		sortArrObjByKey: sortArrObjByKey,
 		checkFreeSpace: checkFreeSpace,
 		getFreeSpace: getFreeSpace,
-		clearLoader: clearLoader
+		clearLoader: clearLoader,
+		validateEmail: validateEmail,
+		validatePhone: validatePhone,
+		validateCode: validateCode,
+		validateName: validateName,
+		validatePassword: validatePassword,
+		keyboardExistsAndVisible: keyboardExistsAndVisible,
+		keyboardExists: keyboardExists,
+		cordovaExists: cordovaExists,
+		numberWithCommas: numberWithCommas
 	}
 
 	function sortArrObjByKey(arr, key) {
@@ -99,28 +108,9 @@ function Utilities($rootScope, Settings) {
 			limit: 1000
 		});
 
-		if(id === 'university') matcher.preserveOrder = false;
+		if(id === 'university') matcher.preserveOrder = true;
 
 		return matcher.getMatches(input);
-
-		// var matchedList = [];
-		// // if empty just return the general list back
-		// if (!input) {
-		// 	return list;
-		// }
-		// var inputLowerCase = input.toLowerCase();
-		// for(var i=0; i<list.length; i++) {
-
-		// 	var nameLowerCase = list[i].name.toLowerCase();
-
-		// 	var inputLowerCase = input.toLowerCase();
-
-		// 	if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
-
-		// 		matchedList.push(list[i]);
-		// 	};
-		// }
-		// return matchedList;
 	}
 
 
@@ -129,6 +119,18 @@ function Utilities($rootScope, Settings) {
 		var fileName = URI.substring(indexSlash + 1);
 
 		return fileName;
+	}
+
+	function cordovaExists() {
+		return (typeof cordova === 'undefined');
+	}
+
+	function keyboardExists() {
+		return cordovaExists() && cordova.plugins && cordova.plugins.Keyboard;
+	}
+
+	function keyboardExistsAndVisible() {
+		return keyboardExists && cordova.plugins.Keyboard.isVisible;
 	}
 
 	function isElementInViewport (el) {
@@ -217,7 +219,39 @@ function Utilities($rootScope, Settings) {
 		$rootScope.loader.hide();
 	}
 
+	function validateEmail(email) {
+		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+		return re.test(email);
+	}
 
+	function validatePhone(phone) {
+		var check =	phone.match(/\d/g)
+		return check!==null && check.length===10;
+	}
+
+	function validateCode(code) {
+		if(code!==null) {
+			return code.length===4;
+		} else return false;
+
+	}
+
+	function validateName(name) {
+	   	var re= /^[A-z ]+$/;
+   		return re.test(name);
+	}
+
+	function validatePassword(password) {
+		if(password!==null) {
+			return password.length>=6;
+		} else return false;
+	}
+
+	function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts[0];
+}
 
 }
 

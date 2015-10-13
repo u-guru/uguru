@@ -1,17 +1,17 @@
 
 
-    <ion-slide-box on-slide-changed="slideHasChanged($index)" delegate-handle='become-guru-slide-box' class='become-guru-slidebox-container'>
+    <ion-slide-box can-swipe-back='false' on-slide-changed="slideHasChanged($index)" delegate-handle='become-guru-slide-box' class='become-guru-slidebox-container'>
 
-      <ion-slide>
-        <div ng-include="img_base + BASE + 'templates/become.guru.skills.html'"></div>
-      </ion-slide>
-
-      <ion-slide>
+      <ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
         <div ng-include="img_base + BASE + 'templates/majors.html'"></div>
       </ion-slide>
 
       <ion-slide>
          <div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
+      </ion-slide>
+
+      <ion-slide>
+        <div ng-include="img_base + BASE + 'templates/become.guru.skills.html'"></div>
       </ion-slide>
 
       <!-- <ion-slide>
@@ -23,4 +23,3 @@
       </ion-slide>
 
     </ion-slide-box>
-

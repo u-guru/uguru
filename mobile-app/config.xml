@@ -9,21 +9,26 @@
     </author>
   <content src="remote/local.index.html"/>
   <access origin="*"/>
-  <allow-navigation href="http://*/*"/>
+  <allow-navigation href="*"/>
   <preference name="orientation" value="portrait"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="local"/>
   <preference name="AutoHideSplashScreen" value="false"/>
+  <preference name="FadeSplashScreen" value="false"/>
   <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
   <preference name="StatusBarOverlaysWebView" value="true"/>
   <preference name="StatusBarStyle" value="lightcontent"/>
+  <preference name="CrosswalkAnimatable" value="true"/>
+  <preference name="xwalkVersion" value="14+"/>
+  <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect"/>
+  <preference name="xwalkMode" value="embedded"/>
   <platform name="android">
     <preference name="Fullscreen" value="false"/>
     <preference name="android-windowSoftInputMode" value="adjustPan"/>
     <preference name="SplashScreen" value="screen"/>
-    <preference name="SplashScreenDelay" value="10000"/>
+    <preference name="SplashScreenDelay" value="20000"/>
     <preference name="SplashScreenBackgroundColor" value="#FFFFFF"/>
     <icon density="ldpi" src="icons/android/drawable-ldpi/ic_launcher.png"/>
     <icon density="mdpi" src="icons/android/drawable-mdpi/ic_launcher.png"/>
@@ -63,9 +68,10 @@
   </platform>
   <platform name="browser">
     <preference name="SplashScreen" value="www/remote/img/uguru_home.png"/>
-    <preference name="SplashScreenDelay" value="10000"/>
+    <preference name="SplashScreenDelay" value="5000"/>
     <preference name="SplashScreenBackgroundColor" value="#FFFFFF"/>
     <preference name="ShowSplashScreen" value="false"/>
+    <preference name="ShowSplashScreenSpinner" value="true"/>
     <preference name="SplashScreenWidth" value="600"/>
     <preference name="SplashScreenHeight" value="300"/>
   </platform>

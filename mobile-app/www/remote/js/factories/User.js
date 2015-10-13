@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate', 'Category',
+    '$ionicSideMenuDelegate', 'Category', 'RankingService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category) {
+        $ionicSideMenuDelegate, Category, RankingService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -189,7 +189,7 @@ angular.module('uguru.user', [])
         // user.uber_friendly = false;
         // user.summer_15 = false;
 
-        var user_cards = user.cards;
+        var user_cards = user.cards || [];
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
 
@@ -278,7 +278,7 @@ angular.module('uguru.user', [])
         }
         user.student_avg_rating = calcAverage(student_ratings);
 
-        var student_transactions = user.student_transactions;
+        var student_transactions = user.student_transactions || [];
         MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
         for (var i = 0; i < student_transactions.length; i ++) {
             var utc = Date.parse(student_transactions[0].time_created);
@@ -289,7 +289,7 @@ angular.module('uguru.user', [])
             user.student_transactions[i].student_rate = 5;
         }
 
-        var guru_transactions = user.guru_transactions;
+        var guru_transactions = user.guru_transactions || [];
         for (var i = 0; i < guru_transactions.length; i ++) {
             var utc = Date.parse(guru_transactions[0].time_created);
             var date = new Date(utc);
@@ -300,7 +300,7 @@ angular.module('uguru.user', [])
         }
 
 
-        var transfer_transactions = user.transfer_transactions;
+        var transfer_transactions = user.transfer_transactions || [];
         for (var i = 0; i < transfer_transactions.length; i ++) {
             var utc = Date.parse(transfer_transactions[0].time_created);
             var date = new Date(utc);
@@ -329,7 +329,7 @@ angular.module('uguru.user', [])
 
             var guru_ratings = user.guru_ratings;
             user.guru_avg_rating = calcAverage(guru_ratings);
-            console.log()
+
             if (!user.guru_avg_rating) {
                 user.guru_avg_rating = 0;
             }
@@ -571,9 +571,10 @@ angular.module('uguru.user', [])
         $scope.user.support_tickets = user.support_tickets;
         $scope.user.max_hourly = parseInt(user.max_hourly);
 
-        $scope.user.current_profile_percent = user.current_profile_percent = calcProfileCompleteness(user);
-        $scope.user.current_credibility_percent = user.current_credibility_percent = calcCredibilityCompleteness(user);
-        $scope.user.current_guru_ranking = calcGuruCurrentRanking(user);
+        $scope.user.current_profile_percent = RankingService.calcProfile(user);
+        $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
+        $scope.user.current_guru_ranking = RankingService.calcRanking(user);
+
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
         $scope.user.is_a_guru = !$scope.user.show_become_guru;
@@ -1014,6 +1015,10 @@ angular.module('uguru.user', [])
                 return;
             }
 
+            if (callback) {
+                callback()
+            }
+
             else {
                 // console.log('Fetching user from ', $state.current.name);
             }
@@ -1029,9 +1034,6 @@ angular.module('uguru.user', [])
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
 
-                        if ($scope.loader) {
-                            $scope.loader.hide();
-                        }
 
                         if (callback) {
                             callback($scope);
@@ -1381,7 +1383,7 @@ angular.module('uguru.user', [])
                     .customPUT(JSON.stringify(payload))
                     .then(function(device){
                         console.log('device returned from server');
-                        console.log(JSON.stringify(device));
+                        //console.log(JSON.stringify(device));
                         $scope.user.current_device = device;
                         $scope.user.push_notifications = $scope.user.current_device.push_notif_enabled;
                         console.log('user push notifications are now', $scope.user.push_notifications);

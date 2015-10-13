@@ -1,6 +1,6 @@
 <ion-content class='full-height bg-charcoal' scroll='false' ng-controller='SignupController'>
 <section id="account" class="onboarding full-xy">
-	<header class="flex-center">
+	<header class="third flex-center-wrap">
 		<div class="header-nav">
 			<a class="header-menu" ng-click="signupModal.hide()">
 				<svg viewBox="0 0 100 100">
@@ -8,19 +8,25 @@
 				</svg>
 			</a>
 		</div>
-		<h1 ng-show="!root.vars.loginMode">Sign Up</h1>
-		<h1 ng-show="root.vars.loginMode">Log In</h1>
+		<h1 ng-show="!root.vars.loginMode">Finalize</h1>
+		<h1 ng-show="root.vars.loginMode">Have account?</h1>
+		<ul class="switch ugrid-2">
+			<li>
+				<a ng-click='root.vars.loginMode = true;' class='ng-class:{"selected": root.vars.loginMode}'>Login</a>
+			</li>
+			<li>
+				<a ng-click='root.vars.loginMode = false;' class='ng-class:{"selected": !root.vars.loginMode}'>Sign Up</a>
+			</li>
+		</ul>
 	</header>
 	<div id="account-form" class="onboarding-list bg-slate">
 		<input ng-show='!root.vars.loginMode' id='signup-name'class="input-ghost name-input" ng-model='signupForm.full_name' type="text" placeholder="Name">
 		<input class="input-ghost" id='email-input' ng-model='signupForm.email' type="email" placeholder="Email">
 		<input class="input-ghost" type="password" id='password-input' ng-model='signupForm.password' placeholder="Password">
 		<div id="social-login">
-			<button ng-show='root.vars.loginMode'class="weight-600 bg-shamrock m15bottom" ng-click='loginUser()'>Login</button>
+			<button ng-show='root.vars.loginMode' class="weight-600 bg-shamrock m15bottom" ng-click='loginUser()'>Login</button>
 			<button ng-show='!root.vars.loginMode' class="weight-600 bg-shamrock m15bottom" ng-click='completeSignup()'>Create an Account</button>
-			<button ng-hide='signupForm.full_name || signupForm.full_name.length > 0'class="weight-600 bg-fb m15bottom" ng-click='connectWithFacebook()'>Continue with Facebook</button>
-			<button ng-show="!root.vars.loginMode" class='weight-600 bg-charcoal m15bottom'ng-click='root.vars.loginMode = true;'>Or Login</button>
-			<button ng-show="root.vars.loginMode" class='weight-600 bg-charcoal m15bottom' ng-click='root.vars.loginMode = false;'>Or Create an Account</button>
+			<button ng-hide='signupForm.full_name || signupForm.full_name.length > 0' class="weight-600 bg-fb m15bottom" ng-click='connectWithFacebook()'>Continue with Facebook</button>
 		</div>
 		<a id="tos" ng-click='launchPrivacyModal()' style="margin-top: -15px">Terms &amp; Conditions</a>
 	</div>

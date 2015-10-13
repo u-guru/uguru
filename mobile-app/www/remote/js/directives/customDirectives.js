@@ -15,7 +15,7 @@ angular.module('uguru.directives', []);
               var endTime = Date.now();
               var duration = endTime - startTime;
 
-              console.log(attr.onFinishedRender + " duration: " + duration);
+              //console.log(attr.onFinishedRender + " duration: " + duration);
               PerformanceService.setListResponseTime(duration);
               //scope.$emit(attr.onFinishedRender);
             }, 0);

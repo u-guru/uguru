@@ -2,6 +2,10 @@
 	filter: alpha(opacity=$opacity * 100);
 	opacity: $opacity;
 }
+@mixin opacity-important($opacity) {
+	filter: alpha(opacity=$opacity * 100)!important;
+	opacity: $opacity!important;
+}
 @mixin transition($transition) {
 	-webkit-transition: all $transition;
 	-o-transition: all $transition;
@@ -314,6 +318,9 @@ $orange-mute: #D99675;
 $gold-mute: #E8D3A3;
 $cerise-mute: #C56E9C;
 $eggplant-mute: #907D9E;
+
+$bakery: #F04F54;
+$bakery-bg: #FFFDFA;
 
 $icon-bg: no-repeat center center;
 

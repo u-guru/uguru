@@ -11,7 +11,6 @@ function UniversityMatcher(University, $q) {
 	sortByRank(list);
 	var uniDictionary = null;
 	init();
-	console.log("before the return");
 
 	var cachedInput = null;
 	var cachedDictionary = null;
@@ -59,13 +58,13 @@ function UniversityMatcher(University, $q) {
 	function cachedMatch(input) {
 		var input = input.toLowerCase();
 		if(input.length===0) {
-			// console.log("empty input, returning whole list");
+			console.log("empty input, returning whole list");
 			return list;
 		}
 		// if input is just one letter then we can return the matching list from the uniDictionary
 		// property then we also store that list in a cachedDictionary
 		else if(input.length===1) {
-			// console.log("single letter input: " + input);
+			console.log("single letter input: " + input);
 			cachedInput = input;
 			return uniDictionary[input];
 		}

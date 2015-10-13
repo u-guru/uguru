@@ -573,6 +573,7 @@ class University(Base):
     num_majors = Column(Integer, default =0)
     num_emails = Column(Integer, default =0)
     banner_url = Column(String)
+    seal_url = Column(String)
 
     ready_to_launch = Column(Boolean)
     is_targetted = Column(Boolean, default=False)
@@ -589,6 +590,7 @@ class University(Base):
     school_color_one = Column(String)
     school_color_two = Column(String)
     school_logo_image_url = Column(String)
+    variations = Column(String)
 
     school_casual_name = Column(String)
     school_mascot_name = Column(String)
@@ -796,15 +798,21 @@ class Department(Base):
 
     def __repr__(self):
         if self.title:
-            return "<Department'%r', '%r'>" %\
+            return "<Department'%s', '%s'>" %\
               (str(self.id), str(self.title))
         if self.abbr:
-            return "<Department'%r', '%r'>" %\
+            return "<Department'%s', '%s'>" %\
               (str(self.id), str(self.abbr))
         if self.name:
-            return "<Department'%r', '%r'>" %\
+            return "<Department'%s', '%s'>" %\
               (str(self.id), str(self.name))
-        return "MALFORMED MAJOR", str(self.id)
+        if self.short_name:
+            return "<Department'%s', '%s'>" %\
+              (str(self.id), str(self.short_name))
+        if self.code:
+            return "<Department'%s', '%s'>" %\
+              (str(self.id), str(self.code))
+        return "EMPTY DEPARTMENT with %s courses" % len(self.courses)
 
 
 

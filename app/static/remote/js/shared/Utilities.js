@@ -1,11 +1,12 @@
 angular
 .module('sharedServices')
 .factory("Utilities", [
+	'$rootScope',
 	'Settings',
 	Utilities
 	]);
 
-function Utilities(Settings) {
+function Utilities($rootScope, Settings) {
 
 	return {
 		getNetworkSpeed: getNetworkSpeed,
@@ -18,7 +19,18 @@ function Utilities(Settings) {
 		transitionEndEventName: transitionEndEventName,
 		fireBeforeEnter: fireBeforeEnter,
 		rAF: rAF,
-		sortArrObjByKey: sortArrObjByKey
+		sortArrObjByKey: sortArrObjByKey,
+		checkFreeSpace: checkFreeSpace,
+		getFreeSpace: getFreeSpace,
+		clearLoader: clearLoader,
+		validateEmail: validateEmail,
+		validatePhone: validatePhone,
+		validateCode: validateCode,
+		validateName: validateName,
+		validatePassword: validatePassword,
+		keyboardExistsAndVisible: keyboardExistsAndVisible,
+		keyboardExists: keyboardExists,
+		cordovaExists: cordovaExists
 	}
 
 	function sortArrObjByKey(arr, key) {
@@ -84,26 +96,20 @@ function Utilities(Settings) {
 		}
 	}
 
-	function nickMatcher(input, list) {
-		var matchedList = [];
-		// if empty just return the general list back
-		if (!input) {
-			return list;
-		}
-		var inputLowerCase = input.toLowerCase();
-		for(var i=0; i<list.length; i++) {
-			var elem = list[i];
-			var elemName = elem.name || elem.abbr || elem.title;
-			var nameLowerCase = elemName.toLowerCase();
+	// Pass in an optional ID parameter for specific case handling
+	function nickMatcher(input, list, property, id) {
+		//console.log("list: " + list + " property: " + property + " id: " + id);
+		var matcher = new FastMatcher(list, {
+			selector: property,
+			caseInsensitive: true,
+			preserveOrder: true,
+			anyWord: true,
+			limit: 1000
+		});
 
-			var inputLowerCase = input.toLowerCase();
+		if(id === 'university') matcher.preserveOrder = true;
 
-			if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
-
-				matchedList.push(list[i]);
-			};
-		}
-		return matchedList;
+		return matcher.getMatches(input);
 	}
 
 
@@ -112,6 +118,18 @@ function Utilities(Settings) {
 		var fileName = URI.substring(indexSlash + 1);
 
 		return fileName;
+	}
+
+	function cordovaExists() {
+		return (typeof cordova === 'undefined');
+	}
+
+	function keyboardExists() {
+		return cordovaExists() && cordova.plugins && cordova.plugins.Keyboard;
+	}
+
+	function keyboardExistsAndVisible() {
+		return keyboardExists && cordova.plugins.Keyboard.isVisible;
 	}
 
 	function isElementInViewport (el) {
@@ -160,6 +178,76 @@ function Utilities(Settings) {
 	}
 
 
+	function checkFreeSpace(size) {
+		var size_b = size
+		if(size_b === undefined) size_b = 300,000,000;
+		var free = getFreeSpace(size_b);
+		if (free === false) {
+			console.log("No space available.");
+		}
+		return free;
+	}
 
+	function getFreeSpace(size_b) {
+
+		var size_mb = size_b/1000/1000;
+		cordova.exec(function(result) {
+			var space_mb = result/1000;
+		    //console.log("Free Disk Space: " + space_mb + "mb");
+		    if(space_mb > size_mb) {
+		    	return true;
+		    } else {
+		    	console.log("low on space: " + space_mb + 'mb');
+		    	uTracker.track('Low Disk Space', {
+		    		'$Free_Space': space_mb,
+		    		'$File_Size': size_mb
+		    	});
+		    	return false;
+		    }
+		}, function(error) {
+		    console.log("Error: " + error);
+		    uTracker.track('Callback Error', {
+		    	'$Message': error
+		    });
+		    return false;
+		}, "File", "getFreeDiskSpace", []);
+	}
+
+
+	function clearLoader() {
+		$rootScope.loader.hide();
+	}
+
+	function validateEmail(email) {
+		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+		return re.test(email);
+	}
+
+	function validatePhone(phone) {
+		var check =	phone.match(/\d/g)
+		return check!==null && check.length===10;
+	}
+
+	function validateCode(code) {
+		if(code!==null) {
+			return code.length===4;
+		} else return false;
+
+	}
+
+	function validateName(name) {
+	   	var re= /^[A-z ]+$/;
+   		return re.test(name);
+	}
+
+	function validatePassword(password) {
+		if(password!==null) {
+			return password.length>=6;
+		} else return false;
+	}
 
 }
+
+
+
+

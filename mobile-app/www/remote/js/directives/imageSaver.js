@@ -4,7 +4,7 @@ angular.module('uguru.directives')
 
 		link: function(scope, element, attrs) {
 			if (!scope.platform.mobile) {
-				 console.log('imageSaver unavailable since not on mobile device');
+				 //console.log('imageSaver unavailable since not on mobile device');
 				return;
 			}
 			var assetURL = attrs.ngSrc.toString();
@@ -58,7 +58,7 @@ angular.module('uguru.directives')
 						useSavedFile();
 					},
 					function(error) {
-						console.log("Error downloading image. Code: " + error.code);
+						//console.log("Error downloading image. Code: " + error.code);
 					},
 					// Boolean for trustAllHosts which accepts all security certs and is useful
 					// since Android rejects self-signed security certs.

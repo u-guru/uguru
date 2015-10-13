@@ -15,8 +15,8 @@ angular.module('uguru.directives')
 			case 'courses':
 				model = 'search_text.course';
 				getSource = function() {
-					//return $scope.$parent.originalCourses;
-					return $scope.$parent.generalCourses;
+					return $scope.$parent.coursesSource;
+					//return University.getTargetted()[0].popular_courses;
 				}
 				break;
 		}

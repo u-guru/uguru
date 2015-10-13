@@ -1,0 +1,46 @@
+sim-ios() {
+	gulp replace --env=localdev --page=$1 --ip="$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')"
+	ionic run ios -clr	
+}
+
+run-ios() {
+	gulp replace --env=localdev --page=$1 --ip="$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')"
+	ionic run ios -clr --device
+}
+sim-android() {
+	gulp replace --env=localdev --page=$1 --ip="$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')"
+	ionic run android -clr	
+}
+
+build-android() {
+	rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
+	cordova platform rm android
+	cordova plugin rm com.phonegap.plugins.facebookconnect
+	cordova plugins rm org.apache.cordova.file-transfer
+	cordova plugins rm org.apache.cordova.file
+	cordova platform add android
+	cordova -d plugin add ./plugins_stable/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+	cordova -d plugin add ./plugins_stable/org.apache.cordova.file
+	cordova -d plugin add ./plugins_stable/org.apache.cordova.file-transfer
+	android update project --subprojects --path "platforms/android" --target android-19 --library "CordovaLib"
+	android update project --subprojects --path "platforms/android" --target android-19 --library "com.phonegap.plugins.facebookconnect/Uguru-FacebookLib"
+	cd platforms/android
+	cp local.properties com.phonegap.plugins.facebookconnect/FacebookLib
+	cd ../../
+}
+
+run-android() {
+	gulp replace --env=localdev --page=$1 --ip="$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')"
+	ionic run android -clr --device	
+}
+
+re() {
+	cordova platform rm $1
+	cordova platform add $1
+}
+
+bar-android() {
+	build-android
+	run-android
+}
+

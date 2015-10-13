@@ -29,10 +29,10 @@ function Camera($timeout, DeviceService) {
 
     var cameraOptions = {
       quality: 65,
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: 0,
       sourceType: index,
       allowEdit: false,
-      encodingType: Camera.EncodingType.JPEG,
+      encodingType: 0, // JEPG: 0, PNG: 1
       targetWidth: 500,
       targetHeight: 500,
       // popoverOptions: CameraPopoverOptions,
@@ -57,9 +57,9 @@ function Camera($timeout, DeviceService) {
       formData.append('filename', file_name);
 
       //if user is uploading a transcript
-      // if ($scope.root.vars.profile_url_changed) {
-      //   formData.append('transcript_url', is_transcript);
-      // }
+      if ($scope.root.vars.profile_url_changed) {
+        formData.append('transcript_url', is_transcript);
+      }
       //if user is logged in
       if ($scope.root.vars.profile_url_changed && $scope.user.id) {
         formData.append('profile_url', $scope.user.id);
