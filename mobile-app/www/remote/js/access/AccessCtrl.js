@@ -91,18 +91,24 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   $scope.accessInputOnFocus = function() {
     $scope.inputFocused = true;
+    // this is a device
     if (Utilities.cordovaExists && Utilities.keyboardExistsAndVisible) {
 
-      if (DeviceService.ios) {
+      if (DeviceService.isIOSDevice()) {
+        console.log('ayy');
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(false);
+        window.scrollTo(0, window.innerHeight);
       }
 
     } else {
 
-      //ios w/ keyboard
-      if (DeviceService.ios) {
+      // this is a browser
+      console.log('DEVICE SERVICE OS', DeviceService.ios);
+      if (DeviceService.isIOSDevice()) {
         window.scrollTo(0, window.innerHeight - 224 - 20);
       } else {
+      // this is the case for ios mobile safari or android softkeyboard
         window.scrollTo(0, window.innerHeight);
       }
 
@@ -110,11 +116,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   }
 
-    window.addEventListener('native.keyboardshow', keyboardShowHandler);
+    // window.addEventListener('native.keyboardshow', keyboardShowHandler);
 
-    function keyboardShowHandler(e){
-        alert('Keyboard height is: ' + e.keyboardHeight);
-    }
+    // function keyboardShowHandler(e){
+    //     alert('Keyboard height is: ' + e.keyboardHeight);
+    // }
 
 
   $scope.$on('$ionicView.loaded', function() {

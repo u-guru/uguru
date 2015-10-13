@@ -20,16 +20,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q, 
+  Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, AccessService) {
 
   $scope.storedAccess = !AccessService.validate();
-<<<<<<< HEAD
-=======
 
   $scope.LOCAL = LOCAL;
   //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
->>>>>>> samir-dev
 
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
@@ -187,36 +184,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
       //save university
       var postUniversitySelectedCallback = function() {
-<<<<<<< HEAD
+
         AnimationService.flip('^.home');
-=======
-        //AnimationService.initSlide();
         UniversityMatcher.clearCache();
-        //$timeout(function() {
-          // $scope.loader.hide();
-          //$ionicViewSwitcher.nextDirection('forward');
 
-          // var start = null;
-           //$state.go('^.home');
-           AnimationService.flip('^.home');
-           //AnimationService.slide('left', 'Student Home');
-          // function step(timestamp) {
-          //   stats.begin();
-          //   if (!start) start = timestamp;
-          //   var progress = timestamp - start;
-          //   AnimationService.slide('left');
-          //   //fpsArray.push(stats.getFPS());
-          //   console.log("FPS: " + stats.getFPS());
-          //   if(progress < 300) {
-          //     requestAnimationFrame(step);
-          //   }
-          //   stats.end();
-          // }
-          // requestAnimationFrame(step);
-
-
-        //}, 0);
->>>>>>> samir-dev
+        $ionicViewSwitcher.nextDirection('forward');
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
