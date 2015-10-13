@@ -26,6 +26,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   $scope.storedAccess = !AccessService.validate();
 
+  $scope.LOCAL = LOCAL;
   //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
   uTracker.setUser(tracker, 'localyticsTest');

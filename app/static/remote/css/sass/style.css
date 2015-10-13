@@ -3699,4 +3699,8 @@ body.platform-ios {
       body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view section, body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view #student-home-map-container {
         top: 20px !important; }
 
+.android-access-edge-case {
+  bottom: 64px;
+  position: absolute; }
+
 /*# sourceMappingURL=style.css.map */
