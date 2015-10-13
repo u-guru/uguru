@@ -62,7 +62,7 @@ function DeviceService($cordovaNgCardIO,
     return ionic.Platform.isAndroid() && isWebView;
   }
 
-<<<<<<< HEAD
+
 
   function isIOSDevice() {
     var userAgent = navigator.userAgent;
@@ -72,10 +72,8 @@ function DeviceService($cordovaNgCardIO,
   function isIOSBrowser () {
     return !isIOSDevice() && ionic.Platform.isIOS();
 
+  }
 
-  // this won't identify browser vs desktop
-=======
->>>>>>> 5abde52423ba5e4bee6b40c5a22a9195b14d0adb
   function isIOS() {
     return ionic.Platform.isIOS();
   }
