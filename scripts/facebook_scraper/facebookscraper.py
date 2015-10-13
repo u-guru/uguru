@@ -8,7 +8,7 @@ PASSWORD = ""
 OUTPUT_PATH = "output.json"
 
 # The ID of the group ot scrape
-GROUP_ID = "574916095895510"
+GROUP_ID = "UCBerkeleySummerParties2015"
 
 def initialise_dryscrape_session():
 	# set up a web scraping session
