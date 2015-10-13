@@ -25,7 +25,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	function ready() {
 
 
-		hideSplashScreen(1000);
+		// hideSplashScreen(1000);
 		$timeout(function() {
 			showStatusBar();
 		}, 3000)
@@ -45,7 +45,8 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		if(window.StatusBar) {
 			window.StatusBar.show();
 			window.StatusBar.overlaysWebView(true);
-			setStatusBarText($state.current.name); //light
+			setStatusBarText(); //light
+			['root.home'].roomState 
 		}
 	}
 
@@ -61,7 +62,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 			return;
 		}
 
-		darkStates = ['root.home'];
+		darkStates = 
 		darkStateIndex = darkStates.indexOf(state_name);
 
 		if (darkStateIndex == -1) {

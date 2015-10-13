@@ -23,11 +23,7 @@ angular.module('uguru.util.controllers')
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-<<<<<<< HEAD
-  $ionicSlideBoxDelegate, ThrottleService) {
-=======
   $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate) {
->>>>>>> b3e14582f8b4bb819a0331c1d31280d2a9a4c77b
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
@@ -124,13 +120,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.$on('$ionicView.loaded', function() {
 
     AnimationService.accessInput = document.querySelector("access-code-bar");
-
-  })
-
-  $scope.$on('$ionicView.loaded', function() {
-
-    AnimationService.accessInput = document.querySelector("access-code-bar");
-
 
   })
 
