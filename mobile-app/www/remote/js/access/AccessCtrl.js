@@ -95,7 +95,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     if (Utilities.cordovaExists && Utilities.keyboardExistsAndVisible) {
 
       if (DeviceService.isIOSDevice()) {
-        console.log('ayy');
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(false);
         window.scrollTo(0, window.innerHeight);
@@ -103,8 +102,10 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
     } else {
 
+
       // this is a browser
       console.log('DEVICE SERVICE OS', DeviceService.ios);
+
       if (DeviceService.isIOSDevice()) {
         window.scrollTo(0, window.innerHeight - 224 - 20);
       } else {
