@@ -35,7 +35,6 @@ angular.module('uguru.util.controllers')
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
   AnimationService, uTracker, Utilities, PopupService) {
-
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
@@ -161,7 +160,7 @@ angular.module('uguru.util.controllers')
       //   "fixedPixelsTop"   :   0, // the number of pixels of your fixed header, default 0 (iOS and Android)
       //   "fixedPixelsBottom":   0 // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
       // };
-      
+
       // $state.go('privacy');
       // window.plugins.nativepagetransitions.slide(
       //         options,
@@ -520,7 +519,7 @@ angular.module('uguru.util.controllers')
         User.clearAttr({}, $scope.user.id).then(function(user) {
           $scope.loader.hide();
           $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
-          $scope.logoutUser();
+          $scope.logoutUser(true);
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
           $state.go('^.university');
@@ -539,14 +538,15 @@ angular.module('uguru.util.controllers')
 
       $scope.loader.show();
 
+      $timeout(function() {
+          $scope.loader.hide();
+        }, 500)
 
 
-        AnimationService.flip();
+
+        AnimationService.flip('^.guru');
 
         $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
-        $timeout(function() {
-          $scope.loader.hide();
-        }, 1000)
 
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
@@ -555,7 +555,6 @@ angular.module('uguru.util.controllers')
           }
         }, 500)
 
-        $state.go('^.guru');
     }
 
     $scope.goToStudent = function() {

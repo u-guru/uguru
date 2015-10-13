@@ -31,20 +31,20 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	}
 
 	function initSlide() {
-		if(DeviceService.isMobile()) {
+		if(DeviceService.isMobile() && window.plugins.nativepagetransitions) {
 			window.plugins.nativepagetransitions.slide({
 				"direction": "right",
 				"duration" : 10,
 				"slowdownfactor": 1,
 				"iosdelay": 10,
 				"androiddelay": 10
-			}, successMsg, errorMsg);	
+			}, successMsg, errorMsg);
 		}
-		
+
 	}
 
 	function shakeElem(elem, duration, callback) {
-			
+
 	    Velocity(elem, "transition.expandIn", {duration:duration});
 	    callback && callback();
 	}
@@ -58,7 +58,7 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 			if(direction !== undefined) slideOptions.direction = direction;
 			if(slowdownFactor !== undefined) slideOptions.slowdownFactor = slowdownFactor;
 			if(DeviceService.isMobile()) {
-				
+
 				window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
 				var start = null;
 				var fpsArray = [];
@@ -81,7 +81,7 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 				  	var meanFPS = Math.round(total / (fpsArray.length));
 				  	console.log("meanFPS: " + meanFPS);
 				  	//console.log("fpsArray: " + fpsArray);
-				  	
+
 			  		if(target !== undefined) {
 			  			var performance = 'pass';
 			  			if(meanFPS < 10) performance = 'fail';
@@ -89,24 +89,24 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 			  			  "$Mean_FPS": meanFPS,
 			  			  "$FPS_Array": fpsArray.toString(),
 			  			  "$Performance": performance
-			  			});	
+			  			});
 			  		}
-				  	
+
 				  }
-				  
+
 				}
 				requestAnimationFrame(step);
 				//window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
 			}
 		}
-	
+
 	}
 
 	//customOptions is optional, if none are set then default options will be used
 	function flip(target, customOptions) {
 
 		var pane = document.querySelectorAll('body')[0];
-			
+
 		pane.style.transition = '.400s';
 		pane.style.transform = 'rotateY(90deg)';
 		pane.style.webkitkitTransition = '.400s';

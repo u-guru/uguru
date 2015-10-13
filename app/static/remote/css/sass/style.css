@@ -45,13 +45,7 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
-.uguru-view h1.verified span svg {
-  display: inline !important;
-  width: 20px;
-  height: 20px; }
-  .uguru-view h1.verified span svg path:first-child {
-    fill: #50A5DD; }
-.uguru-view .request#request header:before {
+.uguru-view .request#request header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
@@ -186,21 +180,19 @@ section {
       font-size: 12px;
       line-height: 20px; }
 @media screen and (max-width: 320px) {
-  .uguru-view body, .uguru-view input, .uguru-view button {
+  .uguru-view body {
     font-size: 20px; }
   .uguru-view #start-container {
     font-size: 24px !important; }
   .uguru-view #skills-list a {
     font-size: 16px !important; }
-  .uguru-view #request-button span b {
-    font-size: 18px !important; }
   .uguru-view #skills-list .skill-icon {
     margin-bottom: 10px;
     width: 40px !important;
     height: 40px !important; }
   .uguru-view .input-search-ghost input {
     font-size: 18px; }
-  .uguru-view .input-search-ghost:before {
+  .uguru-view .input-search-ghost::before {
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -335,6 +327,46 @@ section {
         -webkit-flex-flow: row wrap;
         flex-flow: row wrap;
         padding: 0 15px 15px; }
+        .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar {
+          position: relative;
+          width: 150px;
+          height: 150px;
+          margin: 0 auto 10px; }
+          .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar svg path {
+            stroke-linecap: round !important; }
+          .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar .progressbar-text {
+            display: none; }
+          .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+            .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile #popup-percentile-ranking {
+              position: relative;
+              font-size: 44px;
+              font-weight: 600;
+              line-height: 1;
+              text-align: center; }
+              .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile #popup-percentile-ranking::after {
+                content: "th";
+                display: block;
+                position: absolute;
+                top: -1px;
+                right: -1px;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 28px;
+                text-transform: uppercase; }
+            .uguru-popup .uguru-popup-content .content-wrapper .content-body #guru-ranking-popup-progress-bar #popup-percentile #popup-percentile-label {
+              font-size: 12px;
+              font-weight: 400;
+              letter-spacing: 1px;
+              line-height: 15px;
+              text-transform: uppercase; }
         .uguru-popup .uguru-popup-content .content-wrapper .content-body h2 {
           filter: alpha(opacity=90);
           opacity: 0.9;
@@ -441,25 +473,37 @@ section {
         height: 100%;
         overflow: auto; }
 
-#experience-modal {
+#experience-modal,
+#guru-introduction-modal {
   position: absolute;
   top: 0; }
-  #experience-modal .main {
+  #experience-modal .main,
+  #guru-introduction-modal .main {
     height: calc(100% - 50px - 64px); }
-    #experience-modal .main .ugrid-3 {
+    #experience-modal .main .ugrid-3,
+    #guru-introduction-modal .main .ugrid-3 {
       margin-top: -10px;
       padding-bottom: 15px;
       font-size: 16px;
       font-weight: 400; }
-      #experience-modal .main .ugrid-3 li {
+      #experience-modal .main .ugrid-3 li,
+      #guru-introduction-modal .main .ugrid-3 li {
         padding: 0 15px; }
-      #experience-modal .main .ugrid-3 li:nth-child(2) {
+      #experience-modal .main .ugrid-3 li:nth-child(2),
+      #guru-introduction-modal .main .ugrid-3 li:nth-child(2) {
         text-align: center; }
-      #experience-modal .main .ugrid-3 li:nth-child(3) {
+      #experience-modal .main .ugrid-3 li:nth-child(3),
+      #guru-introduction-modal .main .ugrid-3 li:nth-child(3) {
         text-align: right; }
-    #experience-modal .main #exp-input {
+    #experience-modal .main #exp-input, #experience-modal .main #guru-intro-input,
+    #guru-introduction-modal .main #exp-input,
+    #guru-introduction-modal .main #guru-intro-input {
       height: calc(100% - 194px); }
-    #experience-modal .main textarea {
+    #experience-modal .main #exp-input.removable,
+    #guru-introduction-modal .main #exp-input.removable {
+      height: calc(100% - 258px); }
+    #experience-modal .main textarea,
+    #guru-introduction-modal .main textarea {
       font-size: 18px;
       height: 100%;
       resize: none; }
@@ -812,7 +856,7 @@ section {
     padding: 15px;
     border: 2px solid #F1F1F1;
     border-bottom: 0; }
-    .request-modal .request-content .request-loc .request-address:after {
+    .request-modal .request-content .request-loc .request-address::after {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -928,7 +972,7 @@ section {
     .availability-modal section > div {
       height: 100%;
       width: 100%; }
-      .availability-modal section > div:after {
+      .availability-modal section > div::after {
         content: "";
         position: fixed;
         z-index: 10;
@@ -1073,6 +1117,55 @@ section {
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
+.student-courses-view #course {
+  background: white; }
+  .student-courses-view #course header {
+    color: #2B3234;
+    background: #FFFDFA; }
+    .student-courses-view #course header svg path {
+      stroke: #2B3234; }
+    .student-courses-view #course header .onboarding-search .clear-search-input {
+      position: absolute;
+      right: 0;
+      top: 20px;
+      right: 10px;
+      color: rgba(43, 50, 52, 0.7);
+      padding: 0px; }
+    .student-courses-view #course header .onboarding-search input {
+      border-bottom: 1px solid rgba(43, 50, 52, 0.5);
+      color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input::-webkit-input-placeholder {
+        color: rgba(43, 50, 52, 0.5); }
+      .student-courses-view #course header .onboarding-search input:-moz-placeholder {
+        color: rgba(43, 50, 52, 0.5); }
+      .student-courses-view #course header .onboarding-search input::-moz-placeholder {
+        color: rgba(43, 50, 52, 0.5); }
+      .student-courses-view #course header .onboarding-search input:-ms-input-placeholder {
+        color: rgba(43, 50, 52, 0.5); }
+    .student-courses-view #course header .onboarding-search input:active, .student-courses-view #course header .onboarding-search input:focus {
+      border-bottom-color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input:active::-webkit-input-placeholder, .student-courses-view #course header .onboarding-search input:focus::-webkit-input-placeholder {
+        color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input:active:-moz-placeholder, .student-courses-view #course header .onboarding-search input:focus:-moz-placeholder {
+        color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input:active::-moz-placeholder, .student-courses-view #course header .onboarding-search input:focus::-moz-placeholder {
+        color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input:active:-ms-input-placeholder, .student-courses-view #course header .onboarding-search input:focus:-ms-input-placeholder {
+        color: #2B3234; }
+    .student-courses-view #course header .onboarding-search:before {
+      background: url(../../img/svg/search-dark.svg) no-repeat center center/cover, url(/static/remote/img/svg/search-dark.svg) center/cover no-repeat; }
+.student-courses-view #courses-list ul li label {
+  background: #F1F1F1;
+  color: #2B3234;
+  border-color: #8A9EA3; }
+.student-courses-view #courses-list ul li input:checked + label {
+  background: #8A9EA3;
+  border-color: rgba(255, 255, 255, 0.4) !important; }
+.student-courses-view #courses-list ul li input:active + label {
+  background: rgba(138, 158, 163, 0.2); }
+.student-courses-view #courses-list ul li input:checked:active + label {
+  background: #8A9EA3; }
+
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -1080,7 +1173,9 @@ section {
   height: 100%;
   z-index: 20;
   position: absolute;
-  right: 0; }
+  right: 0;
+  height: 110%;
+  bottom: 0; }
 
 .side-menu-list {
   position: relative;
@@ -1154,7 +1249,7 @@ section {
     position: relative;
     height: calc(100% - 384px - 84px);
     text-transform: none; }
-    .side-menu-list .list-item-agenda:before {
+    .side-menu-list .list-item-agenda::before {
       filter: alpha(opacity=30);
       opacity: 0.3;
       content: "";
@@ -1250,6 +1345,9 @@ section {
   border: 0;
   height: 50px;
   line-height: 50px; }
+  .tabs a.activated, .tabs a:active {
+    filter: alpha(opacity=50);
+    opacity: 0.5; }
   .tabs svg {
     width: 100%;
     height: 100%;
@@ -1264,6 +1362,39 @@ section {
     stroke: white; }
   .tabs.student-tabs svg {
     stroke: #40484B; }
+
+.slider-pager {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: auto !important; }
+  .slider-pager span {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
+  .slider-pager .icon {
+    font-size: 12px;
+    line-height: 16px; }
 
 /* ---------- SETTING UP APP */
 .access-view {
@@ -1287,17 +1418,10 @@ section {
     align-items: flex-end;
     -webkit-justify-content: center;
     justify-content: center;
-    height: calc(100% - 127px); }
+    height: 70%; }
     .access-view #access-logo svg {
       display: block;
-      max-height: 60%; }
-    .access-view #access-logo #access-title {
-      width: 100%; }
-      .access-view #access-logo #access-title h1 {
-        text-align: center;
-        font-size: 48px;
-        font-weight: 900;
-        letter-spacing: 1px; }
+      max-height: 70%; }
   .access-view #access-code {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -1435,30 +1559,12 @@ section {
 
 .university-view {
   background: #2B3234; }
-  .university-view header:before {
+  .university-view header::before {
     background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
-    margin-top: 3px; }
-  .university-view header .side-icon {
-    filter: alpha(opacity=100);
-    opacity: 1;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: 12px;
-    z-index: 0; }
-    .university-view header .side-icon .ion-navigate {
-      filter: alpha(opacity=60);
-      opacity: 0.6; }
-    .university-view header .side-icon .ion-navigate.active,
-    .university-view header .side-icon .ion-navigate.activated,
-    .university-view header .side-icon .ion-navigate.location-active {
-      filter: alpha(opacity=100);
-      opacity: 1; }
+    margin-top: 3px;
+    padding: 50px;
+    margin-right: -50px; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
     .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
@@ -1499,7 +1605,7 @@ section {
         font-size: 12px;
         padding-top: 5px;
         font-weight: 500; }
-  .university-view #school-list ul li a:active.active, .university-view #school-list ul li a:active.activated, .university-view #school-list ul li a:focus.active, .university-view #school-list ul li a:focus.activated, .university-view #school-list ul li a:hover.active, .university-view #school-list ul li a:hover.activated, .university-view #school-list-modal ul li a:active.active, .university-view #school-list-modal ul li a:active.activated, .university-view #school-list-modal ul li a:focus.active, .university-view #school-list-modal ul li a:focus.activated, .university-view #school-list-modal ul li a:hover.active, .university-view #school-list-modal ul li a:hover.activated {
+  .university-view #school-list ul li a:active, .university-view #school-list ul li a.active, .university-view #school-list ul li a.activated, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a.active, .university-view #school-list-modal ul li a.activated {
     background: rgba(255, 255, 255, 0.2); }
 
 .home-view {
@@ -1550,7 +1656,8 @@ section {
     -webkit-justify-content: center;
     justify-content: center;
     z-index: 2;
-    height: calc(100% - 150px); }
+    height: calc(100% - 150px);
+    width: 100%; }
     .home-view #student-home #home-content div {
       width: 100%; }
       .home-view #student-home #home-content div button {
@@ -1562,7 +1669,73 @@ section {
         font-weight: 600;
         line-height: 1.2;
         text-transform: uppercase; }
+      .home-view #student-home #home-content div .bg-lake-80p.activated, .home-view #student-home #home-content div .bg-lake-80p:active {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        background: #50A5DD !important; }
+      .home-view #student-home #home-content div .bg-campus-80p.activated, .home-view #student-home #home-content div .bg-campus-80p:active {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        background: #8A9EA3 !important; }
+    .home-view #student-home #home-content.trending-container {
+      height: calc(100% - 130px); }
+    .home-view #student-home #home-content #trending {
+      width: calc(100% - 30px);
+      margin: 15px; }
+      .home-view #student-home #home-content #trending h1 {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 15px;
+        background: rgba(43, 50, 52, 0.9); }
+      .home-view #student-home #home-content #trending ul {
+        margin-top: 2px;
+        background: rgba(255, 255, 255, 0.9); }
+        .home-view #student-home #home-content #trending ul li {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          padding: 15px 0; }
+          .home-view #student-home #home-content #trending ul li button {
+            width: 70px;
+            height: 70px;
+            font-size: 14px;
+            padding: 10px; }
+            .home-view #student-home #home-content #trending ul li button svg path {
+              stroke: white; }
+          .home-view #student-home #home-content #trending ul li button + span {
+            display: block;
+            margin-top: 5px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase; }
+      .home-view #student-home #home-content #trending ul + button {
+        width: 100%;
+        height: 64px;
+        border-radius: 0;
+        margin-top: 2px; }
 
+@media screen and (min-height: 667px) {
+  .home-view #student-home #home-content #trending ul li button {
+    width: 100px !important;
+    height: 100px !important; } }
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search input {
   width: calc(100% - 25px); }
@@ -1589,7 +1762,7 @@ section {
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
-.onboarding#demographic header:before {
+.onboarding#demographic header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
 .onboarding#demographic header h1 {
   font-size: 24px; }
@@ -1699,7 +1872,7 @@ section {
           border-right: 0; }
     .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup {
       left: 0; }
-      .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup:before {
+      .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup::before {
         left: 25%; }
       .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup li a {
         color: #8A9EA3;
@@ -1708,7 +1881,7 @@ section {
         background: rgba(138, 158, 163, 0.05); }
     .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup {
       left: -100%; }
-      .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup:before {
+      .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup::before {
         left: 75%; }
       .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup li a {
         color: #69B3A5;
@@ -1717,7 +1890,7 @@ section {
         background: rgba(105, 179, 165, 0.05); }
     .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup {
       left: 0; }
-      .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup:before {
+      .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup::before {
         left: 25%; }
       .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup li a {
         color: #55A4B7;
@@ -1726,7 +1899,7 @@ section {
         background: rgba(85, 164, 183, 0.05); }
     .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup {
       left: -100%; }
-      .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup:before {
+      .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup::before {
         left: 75%; }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a {
         color: #50A5DD;
@@ -1750,13 +1923,14 @@ section {
 
 .major-view, .language-view {
   background: #2B3234; }
-  .major-view header:before, .language-view header:before {
+  .major-view header::before, .language-view header::before {
     background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }
   .major-view #major-list ul, .major-view #language-list ul, .language-view #major-list ul, .language-view #language-list ul {
     margin-top: 1px; }
     .major-view #major-list ul li a, .major-view #language-list ul li a, .language-view #major-list ul li a, .language-view #language-list ul li a {
       border-color: #8A9EA3;
-      margin-bottom: 1px;
+      margin-bottom: 2px;
+      padding: 0 40px 0 20px;
       font-weight: 400;
       font-size: 20px;
       line-height: 1.2; }
@@ -1782,54 +1956,64 @@ section {
         height: 64px;
         padding: 20px; }
 
-.courses-view {
-  background: #2B3234; }
-  .courses-view header:before {
-    background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
-  .courses-view #courses-list ul {
-    margin: 1px 1px 0; }
-    .courses-view #courses-list ul li {
-      position: relative;
-      border: 1px solid transparent; }
-      .courses-view #courses-list ul li label {
+.courses-view header::before {
+  background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
+.courses-view #courses-list ul {
+  margin: 1px 1px 0; }
+  .courses-view #courses-list ul li {
+    position: relative;
+    border: 1px solid transparent; }
+    .courses-view #courses-list ul li label {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left; }
+      .courses-view #courses-list ul li label span {
         display: block;
         width: 100%;
-        padding: 15px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        border-color: #8A9EA3;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 24px;
-        text-align: left; }
-        .courses-view #courses-list ul li label span {
-          display: block;
-          width: 100%;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis; }
-          .courses-view #courses-list ul li label span:first-child {
-            font-size: 14px;
-            line-height: 1.2; }
-      .courses-view #courses-list ul li input {
-        filter: alpha(opacity=0);
-        opacity: 0;
-        position: absolute;
-        z-index: 99;
-        top: 0;
-        left: 0;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer; }
-      .courses-view #courses-list ul li input:checked + label {
-        background: #8A9EA3;
-        border-color: white !important;
-        color: inherit !important;
-        font-weight: 600; }
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+        .courses-view #courses-list ul li label span:first-child {
+          font-size: 14px;
+          line-height: 1.2; }
+    .courses-view #courses-list ul li input {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      position: absolute;
+      z-index: 99;
+      top: 0;
+      left: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer; }
+    .courses-view #courses-list ul li input:checked + label {
+      color: inherit !important;
+      font-weight: 600; }
+    .courses-view #courses-list ul li input:checked:active + label {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
+
+.courses-view:not(.student-courses-view) #course {
+  background: #2B3234; }
+.courses-view:not(.student-courses-view) #courses-list ul li label {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #8A9EA3; }
+.courses-view:not(.student-courses-view) #courses-list ul li input:checked + label {
+  background: #8A9EA3;
+  border-color: white !important; }
+.courses-view:not(.student-courses-view) #courses-list ul li input:active + label {
+  background: rgba(255, 255, 255, 0.2); }
+.courses-view:not(.student-courses-view) #courses-list ul li input:checked:active + label {
+  background: #8A9EA3; }
 
 .skills-view {
   background: #2B3234; }
-  .skills-view header:before {
+  .skills-view header::before {
     background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
   .skills-view #skills-list ul {
     padding: 1px;
@@ -1875,7 +2059,7 @@ section {
           font-size: 12px;
           line-height: 1.25;
           text-transform: uppercase; }
-    .skills-view #skills-list ul [class*="bg-"]:after {
+    .skills-view #skills-list ul [class*="bg-"]::after {
       filter: alpha(opacity=70);
       opacity: 0.7;
       position: absolute;
@@ -1884,21 +2068,21 @@ section {
       height: 100%;
       left: 0;
       top: 0; }
-    .skills-view #skills-list ul .bg-cerise.important:after {
+    .skills-view #skills-list ul .bg-cerise.important::after {
       background: #DB1988; }
-    .skills-view #skills-list ul .bg-orange.important:after {
+    .skills-view #skills-list ul .bg-orange.important::after {
       background: #E5753C; }
-    .skills-view #skills-list ul .bg-gold.important:after {
+    .skills-view #skills-list ul .bg-gold.important::after {
       background: #F9D57B; }
-    .skills-view #skills-list ul .bg-moola.important:after {
+    .skills-view #skills-list ul .bg-moola.important::after {
       background: #81B566; }
-    .skills-view #skills-list ul .bg-shamrock.important:after {
+    .skills-view #skills-list ul .bg-shamrock.important::after {
       background: #69B3A5; }
-    .skills-view #skills-list ul .bg-azure.important:after {
+    .skills-view #skills-list ul .bg-azure.important::after {
       background: #55A4B7; }
-    .skills-view #skills-list ul .bg-lake.important:after {
+    .skills-view #skills-list ul .bg-lake.important::after {
       background: #50A5DD; }
-    .skills-view #skills-list ul .bg-eggplant.important:after {
+    .skills-view #skills-list ul .bg-eggplant.important::after {
       background: #9A5BC5; }
 
 .photo-view {
@@ -1923,6 +2107,9 @@ section {
     position: relative;
     height: 75%;
     text-align: center; }
+    .photo-view #photo-container #profile-icon a.active, .photo-view #photo-container #profile-icon a.activated, .photo-view #photo-container #profile-icon a:active {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
     .photo-view #photo-container #profile-icon h1 {
       position: absolute;
       top: 50%;
@@ -1960,14 +2147,22 @@ section {
   font-size: 18px; }
   .guru-profile-view #profile {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: calc(100% - 50px); }
   .guru-profile-view #btn-edit-profile, .guru-profile-view #btn-save-profile {
     bottom: 50px !important;
     width: 100%; }
   .guru-profile-view #btn-save-profile button {
     width: 100%; }
+  .guru-profile-view #btn-save-profile:active {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #DB1988 !important; }
+  .guru-profile-view #btn-edit-profile:active {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #69B3A5 !important; }
   .guru-profile-view .round {
-    border-radius: 1000px;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -1982,14 +2177,9 @@ section {
     -webkit-justify-content: center;
     justify-content: center;
     margin: 5px auto;
-    width: auto;
-    height: auto;
-    padding: 5px 10px;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
     line-height: 18px;
-    background: #8A9EA3; }
+    background: #8A9EA3;
+    font-size: 14px; }
     .guru-profile-view .round svg {
       width: 19px;
       height: 18px;
@@ -2002,66 +2192,39 @@ section {
         fill: none; }
     .guru-profile-view .round span {
       line-height: 18px; }
-  .guru-profile-view #profile-fixed {
-    position: fixed;
-    top: 0;
-    z-index: 9;
-    width: 100%;
-    height: 64px;
-    padding: 13px 0;
-    background: rgba(64, 72, 75, 0.95); }
-    .guru-profile-view #profile-fixed #profile-fixed-inside {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center; }
-      .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-icon {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-icon img {
-          border-radius: 1000px;
-          width: 35px;
-          height: 35px;
-          border: 3px solid rgba(255, 255, 255, 0.5); }
-      .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name {
-        padding-left: 10px; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name h1 {
-          font-size: 24px;
-          line-height: 1;
-          text-transform: uppercase; }
-          .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name h1.verified svg {
-            width: 16px;
-            height: 16px; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name p {
-          margin: 0;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 1; }
   .guru-profile-view #profile-desc {
-    padding: 15px 0; }
+    height: 45%; }
+    .guru-profile-view #profile-desc .profile-slider {
+      position: relative;
+      height: 100%; }
+      .guru-profile-view #profile-desc .profile-slider .slider-slide {
+        padding: 15px 0; }
+      .guru-profile-view #profile-desc .profile-slider #profile-intro {
+        position: relative;
+        margin: 0 15px;
+        height: calc(100% - 30px); }
+        .guru-profile-view #profile-desc .profile-slider #profile-intro div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          height: 100%;
+          font-size: 20px;
+          font-weight: 600; }
+        .guru-profile-view #profile-desc .profile-slider #profile-intro button + div {
+          height: calc(100% - 64px); }
+      .guru-profile-view #profile-desc .profile-slider .slider-pager {
+        position: relative;
+        bottom: 30px; }
     .guru-profile-view #profile-desc #profile-icon {
       border-radius: 1000px;
       display: block; }
@@ -2089,8 +2252,12 @@ section {
           -o-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           width: 100px;
+          font-weight: 700;
           text-align: center;
           text-transform: uppercase; }
+      .guru-profile-view #profile-desc #profile-icon a.active, .guru-profile-view #profile-desc #profile-icon a.activated, .guru-profile-view #profile-desc #profile-icon a:active {
+        filter: alpha(opacity=75);
+        opacity: 0.75; }
     .guru-profile-view #profile-desc #profile-list {
       text-align: center; }
       .guru-profile-view #profile-desc #profile-list ul {
@@ -2113,7 +2280,7 @@ section {
           font-weight: 400; }
         .guru-profile-view #profile-desc #profile-list ul #profile-loc {
           font-size: 16px; }
-          .guru-profile-view #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty):after {
+          .guru-profile-view #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty)::after {
             content: ", "; }
     .guru-profile-view #profile-desc #profile-bars #profile-rating {
       list-style: none;
@@ -2145,78 +2312,7 @@ section {
     padding-bottom: 64px; }
     .guru-profile-view #profile-info .profile-inside h1 {
       background: rgba(255, 255, 255, 0.05);
-      color: white; }
-    .guru-profile-view #profile-info .profile-inside li {
-      position: relative; }
-      .guru-profile-view #profile-info .profile-inside li a {
-        position: absolute;
-        right: 0;
-        top: 0; }
-        .guru-profile-view #profile-info .profile-inside li a svg {
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          width: 35px;
-          height: 40px;
-          padding: 10px;
-          stroke: white;
-          stroke-width: 10;
-          stroke-linecap: round;
-          stroke-linejoin: round; }
-    .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li {
-        padding: 10px 15px;
-        width: 50%;
-        font-weight: 600;
-        position: relative; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(1) {
-        background: #50A5DD; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(2) {
-        background: #F9D57B; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(3) {
-        background: #55A4B7; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(4) {
-        background: #E5753C; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(5) {
-        background: #69B3A5; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.courses li:nth-child(6) {
-        background: #DB1988; }
-    .guru-profile-view #profile-info .profile-inside #profile-courses ul.default {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-courses ul.default li {
-        padding: 10px 15px;
-        width: 100%;
-        font-weight: 600; }
-    .guru-profile-view #profile-info .profile-inside h1 {
+      color: white;
       padding: 10px;
       font-size: 14px;
       font-weight: 400;
@@ -2224,12 +2320,293 @@ section {
       text-align: center;
       text-transform: uppercase;
       color: white; }
+    .guru-profile-view #profile-info .profile-inside li {
+      position: relative; }
+      .guru-profile-view #profile-info .profile-inside li .remove {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        right: 0;
+        width: 35px;
+        height: 35px; }
+        .guru-profile-view #profile-info .profile-inside li .remove svg {
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+          width: 35px;
+          height: 35px;
+          padding: 10px;
+          fill: none;
+          stroke: white;
+          stroke-width: 10;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+    .guru-profile-view #profile-info .profile-inside .profile-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      text-align: center;
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid rgba(255, 255, 255, 0.05); }
+      .guru-profile-view #profile-info .profile-inside .profile-list li {
+        width: 100%;
+        font-weight: 600;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.05); }
+        .guru-profile-view #profile-info .profile-inside .profile-list li:first-child {
+          border-top: 0; }
+        .guru-profile-view #profile-info .profile-inside .profile-list li:last-child {
+          border-bottom: 0; }
+        .guru-profile-view #profile-info .profile-inside .profile-list li span {
+          display: block;
+          padding: 10px 15px; }
+      .guru-profile-view #profile-info .profile-inside .profile-list a:active + span, .guru-profile-view #profile-info .profile-inside .profile-list a.active + span {
+        background: rgba(138, 158, 163, 0.5); }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(2) {
+      border-bottom: 0 !important; }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child {
+      display: none; }
+    .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li {
+      width: 50%; }
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-child(1), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-child(2) {
+        border-top: 0; }
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(2), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(3):nth-child(odd), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
+        border-bottom: 0; }
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
+        display: block; }
     .guru-profile-view #profile-info .profile-inside #profile-other > div {
       background: #2B3234; }
-      .guru-profile-view #profile-info .profile-inside #profile-other > div div ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a {
+      text-align: left !important;
+      padding: 10px 15px;
+      background: transparent !important; }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span {
+        padding: 0 !important;
+        font-weight: 300; }
+        .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span h2 {
+          margin-bottom: 2px;
+          font-weight: 600 !important; }
+        .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span svg {
+          -webkit-transform: none;
+          -moz-transform: none;
+          -ms-transform: none;
+          -o-transform: none;
+          transform: none;
+          padding: 0;
+          text-align: right;
+          stroke-width: 3px;
+          fill: none; }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a .list-item-detail {
+        width: calc(100% - 35px); }
+      .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a .list-item-icon {
+        width: 35px; }
+    .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a.active, .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a:active {
+      background: rgba(138, 158, 163, 0.5) !important; }
+    .guru-profile-view #profile-info .profile-inside #profile-other hr {
+      padding: 0;
+      margin: 0;
+      border: 1px solid rgba(255, 255, 255, 0.05); }
+    .guru-profile-view #profile-info .profile-inside .empty {
+      border: 0 !important; }
+      .guru-profile-view #profile-info .profile-inside .empty li {
+        width: 100% !important;
+        font-weight: 300 !important;
+        text-align: center !important;
+        border: 0 !important; }
+        .guru-profile-view #profile-info .profile-inside .empty li span {
+          display: block;
+          padding: 10px 15px;
+          text-align: center; }
+    .guru-profile-view #profile-info .profile-inside .default {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      text-align: center; }
+      .guru-profile-view #profile-info .profile-inside .default li {
+        padding: 10px 15px !important;
+        width: 100% !important;
+        font-weight: 600;
+        border-top: 2px solid rgba(255, 255, 255, 0.05) !important; }
+        .guru-profile-view #profile-info .profile-inside .default li span {
+          padding: 0 !important; }
+
+@media screen and (min-width: 414px) {
+  .guru-profile-view #profile-info .profile-inside .profile-list-half li {
+    width: 50%; }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-child(1), .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-child(2) {
+      border-top: 0; }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(2), .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(3):nth-child(odd), .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
+      border-bottom: 0; }
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
+      display: block; } }
+@media screen and (min-height: 667px) {
+  .guru-profile-view #profile-desc {
+    height: 38%; } }
+@media screen and (min-height: 736px) {
+  .guru-profile-view #profile-desc {
+    height: calc(100% / 3); } }
+.photo-guru-profile-view {
+  color: #2B3234; }
+  .photo-guru-profile-view a {
+    color: #2B3234; }
+  .photo-guru-profile-view hr {
+    margin: 15px;
+    border: 1px solid rgba(117, 117, 117, 0.3) !important; }
+  .photo-guru-profile-view #profile {
+    height: 100% !important;
+    padding-bottom: 64px; }
+  .photo-guru-profile-view #profile-banner {
+    width: 100%;
+    height: 25%;
+    background: url(../../img/photo-guru-banner.png) center center/cover; }
+  .photo-guru-profile-view #profile-desc {
+    padding: 0;
+    margin-top: -50px; }
+    .photo-guru-profile-view #profile-desc #profile-icon img {
+      background: white; }
+    .photo-guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
+      color: #2B3234;
+      font-weight: 700; }
+      .photo-guru-profile-view #profile-desc #profile-list ul #profile-name h1.verified svg path:first-child {
+        fill: #8A9EA3; }
+    .photo-guru-profile-view #profile-desc #profile-list ul #profile-blurb {
+      padding: 5px 15px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25; }
+    .photo-guru-profile-view #profile-desc #profile-list ul #profile-contact {
+      padding: 10px 0 5px; }
+  .photo-guru-profile-view #profile-nav ul {
+    padding: 0 7.5px; }
+    .photo-guru-profile-view #profile-nav ul li {
+      padding: 0 7.5px;
+      text-align: center; }
+      .photo-guru-profile-view #profile-nav ul li a {
+        display: inline-block;
+        padding-bottom: 5px;
+        border-bottom: 3px solid transparent;
+        color: rgba(117, 117, 117, 0.5);
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-transform: uppercase; }
+        .photo-guru-profile-view #profile-nav ul li a.active {
+          color: #2B3234;
+          border-bottom: 3px solid #2B3234; }
+        .photo-guru-profile-view #profile-nav ul li a:active {
+          color: #40484B;
+          border-bottom: 3px solid #40484B; }
+  .photo-guru-profile-view #profile-skills hr {
+    border: 0 solid transparent !important;
+    border-top: 1px solid rgba(117, 117, 117, 0.1) !important; }
+  .photo-guru-profile-view #profile-skills section {
+    text-align: center;
+    text-transform: uppercase; }
+    .photo-guru-profile-view #profile-skills section h1 {
+      padding: 10px 0;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 1px; }
+    .photo-guru-profile-view #profile-skills section ul li {
+      padding: 15px 0;
+      font-weight: 300;
+      font-size: 16px; }
+    .photo-guru-profile-view #profile-skills section:last-child {
+      padding-bottom: 15px; }
+  .photo-guru-profile-view #profile-gallery section {
+    position: relative;
+    margin: 40px 0; }
+    .photo-guru-profile-view #profile-gallery section:first-child {
+      margin-top: 20px; }
+    .photo-guru-profile-view #profile-gallery section img {
+      display: block;
+      width: 100%; }
+    .photo-guru-profile-view #profile-gallery section p {
+      padding-bottom: 13px;
+      margin: 0; }
+    .photo-guru-profile-view #profile-gallery section .gallery-desc {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      background: rgba(43, 50, 52, 0.8);
+      color: white;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25; }
+      .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags {
+        padding-top: 2px;
+        font-size: 14px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          width: 100%; }
+          .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li {
+            padding-right: 7px; }
+            .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a {
+              filter: alpha(opacity=75);
+              opacity: 0.75;
+              color: white !important; }
+              .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a::before {
+                content: "#"; }
+              .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a.active, .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a:active {
+                filter: alpha(opacity=100);
+                opacity: 1; }
+      .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc {
+        filter: alpha(opacity=75);
+        opacity: 0.75;
         -ms-box-orient: horizontal;
         display: -webkit-box;
         display: -moz-box;
@@ -2237,25 +2614,29 @@ section {
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        text-align: center; }
-        .guru-profile-view #profile-info .profile-inside #profile-other > div div ul li {
-          padding: 10px 15px;
-          width: 50%;
-          font-weight: 600; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li {
-      position: relative;
-      width: 100%;
-      font-weight: 200;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.majors li:last-child, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.majors li:last-child {
-        border-bottom: 0; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.default, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.default {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+        -webkit-align-items: center;
+        align-items: center;
+        width: 100%;
+        padding-top: 2px;
+        color: white;
+        font-size: 14px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span {
+          line-height: 20px; }
+          .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span svg {
+            display: block;
+            width: 20px;
+            height: 20px; }
+            .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span svg path {
+              stroke: white;
+              fill: none;
+              stroke-width: 5px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+    .photo-guru-profile-view #profile-gallery section .gallery-desc:not(.active), .photo-guru-profile-view #profile-gallery section .gallery-desc.active + .gallery-info {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      display: none; }
+    .photo-guru-profile-view #profile-gallery section .gallery-info, .photo-guru-profile-view #profile-gallery section .gallery-photo {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -2263,28 +2644,204 @@ section {
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-major div ul.default li, .guru-profile-view #profile-info .profile-inside #profile-other #profile-job div ul.default li {
-        padding: 10px 15px;
-        width: 100%;
-        font-weight: 600; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li {
-      position: relative; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(1) {
-      background: #50A5DD; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(2) {
-      background: #69B3A5; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(3) {
-      background: #55A4B7; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(4) {
-      background: #81B566; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.default {
-      list-style: none;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: absolute;
+      display: block;
+      bottom: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      padding: 0; }
+      .photo-guru-profile-view #profile-gallery section .gallery-info svg, .photo-guru-profile-view #profile-gallery section .gallery-photo svg {
+        display: block;
+        width: 50px;
+        height: 50px;
+        padding: 5px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-info svg path, .photo-guru-profile-view #profile-gallery section .gallery-photo svg path {
+          fill: none;
+          stroke-width: 5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+    .photo-guru-profile-view #profile-gallery section .gallery-info {
+      background: rgba(43, 50, 52, 0.8); }
+      .photo-guru-profile-view #profile-gallery section .gallery-info svg path {
+        stroke: white; }
+    .photo-guru-profile-view #profile-gallery section .gallery-photo {
+      background: rgba(255, 255, 255, 0.8); }
+      .photo-guru-profile-view #profile-gallery section .gallery-photo svg path {
+        stroke: #2B3234; }
+  .photo-guru-profile-view #book-guru.activated {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #2B3234 !important; }
+
+.bakery-guru-profile-view {
+  color: #40484B;
+  background: #FFFDFA; }
+  .bakery-guru-profile-view header {
+    background: #F04F54; }
+    .bakery-guru-profile-view header h1 {
+      color: white;
+      font-weight: 900; }
+  .bakery-guru-profile-view #profile, .bakery-guru-profile-view #menu, .bakery-guru-profile-view #info {
+    height: 100% !important; }
+  .bakery-guru-profile-view #profile-banner {
+    width: 100%;
+    height: 50%;
+    background: url(../../img/bakery-guru-banner.png) center center/cover; }
+  .bakery-guru-profile-view #profile-desc {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    padding: 0;
+    top: 0;
+    left: 0;
+    background: rgba(43, 50, 52, 0.05); }
+    .bakery-guru-profile-view #profile-desc #profile-list ul {
+      text-align: left;
+      padding: 30px; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
+        padding-left: 0;
+        color: white;
+        font-size: 32px;
+        font-weight: 900; }
+        .bakery-guru-profile-view #profile-desc #profile-list ul #profile-name h1.verified svg path:first-child {
+          fill: #F04F54; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-blurb {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.25;
+        padding: 5px 0; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-contact {
+        padding: 10px 0 5px; }
+        .bakery-guru-profile-view #profile-desc #profile-list ul #profile-contact button {
+          background: #F04F54;
+          border-color: #F04F54;
+          color: white;
+          font-weight: 700 !important; }
+  .bakery-guru-profile-view #profile-promo {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 25%;
+    padding: 15px; }
+    .bakery-guru-profile-view #profile-promo p {
       margin: 0;
-      padding: 0;
+      font-weight: 400; }
+    .bakery-guru-profile-view #profile-promo a {
+      display: block;
+      padding-top: 15px;
+      color: #F04F54;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase; }
+  .bakery-guru-profile-view #profile-nav {
+    height: 25%; }
+    .bakery-guru-profile-view #profile-nav ul {
+      height: 100%;
+      padding: 1px; }
+      .bakery-guru-profile-view #profile-nav ul li {
+        position: relative;
+        height: 100%;
+        padding: 1px; }
+        .bakery-guru-profile-view #profile-nav ul li a {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          background: #F04F54;
+          color: white;
+          font-size: 24px;
+          font-weight: 900;
+          text-align: center; }
+          .bakery-guru-profile-view #profile-nav ul li a span {
+            position: relative;
+            z-index: 2; }
+          .bakery-guru-profile-view #profile-nav ul li a svg {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; }
+            .bakery-guru-profile-view #profile-nav ul li a svg path {
+              -webkit-transition: all 0.15s ease-in-out;
+              -o-transition: all 0.15s ease-in-out;
+              -ms-transition: all 0.15s ease-in-out;
+              -moz-transition: all 0.15s ease-in-out;
+              transition: all 0.15s ease-in-out;
+              filter: alpha(opacity=20);
+              opacity: 0.2;
+              fill: none;
+              stroke: #2B3234;
+              stroke-width: 3px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+        .bakery-guru-profile-view #profile-nav ul li a.active svg, .bakery-guru-profile-view #profile-nav ul li a:active svg, .bakery-guru-profile-view #profile-nav ul li a:hover svg {
+          background: rgba(43, 50, 52, 0.2); }
+          .bakery-guru-profile-view #profile-nav ul li a.active svg path, .bakery-guru-profile-view #profile-nav ul li a:active svg path, .bakery-guru-profile-view #profile-nav ul li a:hover svg path {
+            filter: alpha(opacity=40);
+            opacity: 0.4;
+            stroke: #F04F54; }
+  .bakery-guru-profile-view #info #info-content {
+    height: calc(100% - 50px); }
+    .bakery-guru-profile-view #info #info-content #info-map {
+      height: 40%;
+      background: url(../../img/map-small.png) center center/cover;
+      -webkit-filter: grayscale(0.5);
+      filter: grayscale(0.5); }
+    .bakery-guru-profile-view #info #info-content #info-directions, .bakery-guru-profile-view #info #info-content #info-hours {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -2292,43 +2849,109 @@ section {
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-skills div ul.default li {
-        padding: 10px 15px;
-        width: 100%;
-        font-weight: 600; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li {
-      position: relative; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(1) {
-      background: #F9D57B; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(2) {
-      background: #E5753C; }
-    .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.default {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      text-align: center; }
-      .guru-profile-view #profile-info .profile-inside #profile-other #profile-languages div ul.default li {
-        padding: 10px 15px;
-        width: 100%;
-        font-weight: 600; }
-    .guru-profile-view #profile-info .profile-inside #profile-other .empty li {
-      width: 100%;
-      font-weight: 300;
-      text-align: center; }
+      height: 30%; }
+      .bakery-guru-profile-view #info #info-content #info-directions svg, .bakery-guru-profile-view #info #info-content #info-hours svg {
+        display: block;
+        margin-left: 8px;
+        margin-top: 8px;
+        width: 50px;
+        height: 50px; }
+        .bakery-guru-profile-view #info #info-content #info-directions svg path, .bakery-guru-profile-view #info #info-content #info-hours svg path {
+          fill: none;
+          stroke: #F04F54;
+          stroke-width: 5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+      .bakery-guru-profile-view #info #info-content #info-directions div:last-child h1, .bakery-guru-profile-view #info #info-content #info-hours div:last-child h1 {
+        font-size: 24px;
+        font-weight: 900;
+        margin-top: 8px;
+        margin-left: 8px;
+        line-height: 50px;
+        text-transform: uppercase; }
+    .bakery-guru-profile-view #info #info-content #info-hours {
+      border-top: 1px solid #F04F54; }
+  .bakery-guru-profile-view #menu #menu-content {
+    height: calc(100% - 50px);
+    overflow-y: auto; }
+    .bakery-guru-profile-view #menu #menu-content ul {
+      height: 100%;
+      padding: 1px; }
+      .bakery-guru-profile-view #menu #menu-content ul li {
+        height: 25%;
+        padding: 1px; }
+        .bakery-guru-profile-view #menu #menu-content ul li a {
+          -webkit-transition: all 0.15s ease-in-out;
+          -o-transition: all 0.15s ease-in-out;
+          -ms-transition: all 0.15s ease-in-out;
+          -moz-transition: all 0.15s ease-in-out;
+          transition: all 0.15s ease-in-out;
+          display: block;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background-size: cover; }
+          .bakery-guru-profile-view #menu #menu-content ul li a span {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(240, 79, 84, 0.8);
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase; }
+        .bakery-guru-profile-view #menu #menu-content ul li a.active span, .bakery-guru-profile-view #menu #menu-content ul li a:active span, .bakery-guru-profile-view #menu #menu-content ul li a:hover span {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        .bakery-guru-profile-view #menu #menu-content ul li .menu-desc {
+          display: none;
+          text-align: center; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc img {
+            display: block;
+            width: 100%; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc h1 {
+            padding: 15px 15px 0;
+            color: #F04F54;
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc p {
+            margin: 10px 15px 15px;
+            font-weight: 400; }
+        .bakery-guru-profile-view #menu #menu-content ul li.active {
+          width: 100%;
+          height: auto; }
+          .bakery-guru-profile-view #menu #menu-content ul li.active a {
+            display: none; }
+          .bakery-guru-profile-view #menu #menu-content ul li.active .menu-desc {
+            display: block; }
+        .bakery-guru-profile-view #menu #menu-content ul li.inactive a {
+          filter: alpha(opacity=50);
+          opacity: 0.5; }
+        .bakery-guru-profile-view #menu #menu-content ul li.inactive a.active, .bakery-guru-profile-view #menu #menu-content ul li.inactive a:active, .bakery-guru-profile-view #menu #menu-content ul li.inactive a:hover {
+          filter: alpha(opacity=100);
+          opacity: 1; }
 
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
@@ -2403,6 +3026,9 @@ section {
         color: #DB1988; }
         .credibility-view #credit-slider ul li a:active .credit-icon, .credibility-view #credit-slider ul li a:focus .credit-icon, .credibility-view #credit-slider ul li a:hover .credit-icon {
           background: #DB1988; }
+      .credibility-view #credit-slider ul li a.active, .credibility-view #credit-slider ul li a:active {
+        filter: alpha(opacity=75);
+        opacity: 0.75; }
     .credibility-view #credit-slider ul .active#credit-exp a {
       border-bottom: 5px solid #69B3A5;
       color: #69B3A5; }
@@ -2464,6 +3090,12 @@ section {
     height: 100%; }
     .credibility-view #credibility-content-wrapper .credit-content-slide.active {
       display: block; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque {
+      filter: alpha(opacity=50);
+      opacity: 0.5; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque:active, .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque.active {
+      filter: alpha(opacity=100);
+      opacity: 1; }
     .credibility-view #credibility-content-wrapper .credit-content-slide > div {
       height: 100%; }
       .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body {
@@ -2524,8 +3156,11 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
-.guru-view header:before {
+.guru-view header::before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
+.guru-view #guru-home-content {
+  overflow: none !important;
+  padding-bottom: 50px; }
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2595,7 +3230,7 @@ section {
         font-weight: 600;
         line-height: 1;
         text-align: center; }
-        .guru-view #guru-ranking #guru-chart #percentile #percentile-ranking:after {
+        .guru-view #guru-ranking #guru-chart #percentile #percentile-ranking::after {
           content: "th";
           display: block;
           position: absolute;
@@ -2626,11 +3261,55 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
-.guru-view .tip-container h2 {
-  font-size: 22px; }
-.guru-view .tip-container p {
-  margin-top: 10px;
-  font-size: 18px; }
+.guru-view .guru-tip-of-day-slide-box {
+  height: calc(100% - 36px); }
+  .guru-view .guru-tip-of-day-slide-box .card {
+    margin: 15px !important;
+    height: calc(100% - 60px);
+    padding: 0 !important;
+    background: #40484B;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center; }
+    .guru-view .guru-tip-of-day-slide-box .card .card-content {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      padding: 15px;
+      height: calc(100% - 64px); }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 70px;
+        margin-bottom: 15px; }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content h2 {
+        font-size: 28px;
+        font-weight: 600; }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content p {
+        margin: 10px 0 0;
+        font-size: 22px; }
+  .guru-view .guru-tip-of-day-slide-box .slider-pager {
+    bottom: 15px; }
+.guru-view #btn-launch-profile:active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #69B3A5 !important; }
+.guru-view #btn-launch-profile + .guru-tip-of-day-slide-box {
+  height: calc(100% - 50px); }
 
 @media screen and (min-height: 540px) {
   .guru-view #guru-ranking > div {
@@ -2648,12 +3327,322 @@ section {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2); } }
+/* ---------- OFFLINE */
+#offline {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 15px;
+  background: #F1F1F1;
+  color: #2B3234;
+  text-align: center; }
+  #offline > div {
+    width: 100%; }
+  #offline svg {
+    width: 100%;
+    max-width: 75%; }
+    #offline svg #phone {
+      -webkit-animation-name: phone-hover;
+      -moz-animation-name: phone-hover;
+      -o-animation-name: phone-hover;
+      animation-name: phone-hover;
+      -webkit-animation-duration: 2s;
+      -moz-animation-duration: 2s;
+      -o-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-iteration-count: infinite;
+      -o-animation-iteration-count: infinite;
+      animation-iteration-count: infinite; }
+    #offline svg #shadow {
+      -webkit-animation-name: shadow-hover;
+      -moz-animation-name: shadow-hover;
+      -o-animation-name: shadow-hover;
+      animation-name: shadow-hover;
+      -webkit-animation-duration: 2s;
+      -moz-animation-duration: 2s;
+      -o-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-iteration-count: infinite;
+      -o-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-transform: scale(0.98);
+      -moz-transform: scale(0.98);
+      -ms-transform: scale(0.98);
+      -o-transform: scale(0.98);
+      transform: scale(0.98);
+      -webkit-transform-origin: center center;
+      -moz-transform-origin: center center;
+      -ms-transform-origin: center center;
+      -o-transform-origin: center center;
+      transform-origin: center center; }
+    #offline svg #sweat {
+      -webkit-animation-name: sweat-roll;
+      -moz-animation-name: sweat-roll;
+      -o-animation-name: sweat-roll;
+      animation-name: sweat-roll;
+      -webkit-animation-duration: 2s;
+      -moz-animation-duration: 2s;
+      -o-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-iteration-count: infinite;
+      -o-animation-iteration-count: infinite;
+      animation-iteration-count: infinite; }
+  #offline svg + div {
+    margin-top: 30px; }
+    #offline svg + div h1 {
+      font-size: 24px;
+      font-weight: 600; }
+    #offline svg + div p {
+      margin: 10px 0 15px;
+      font-weight: 300; }
+    #offline svg + div button {
+      font-size: 16px;
+      padding: 5px 15px; }
+
+@-webkit-keyframes phone-hover {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); }
+  50% {
+    -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -o-transform: translateY(2px);
+    transform: translateY(2px); }
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); } }
+@-moz-keyframes phone-hover {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); }
+  50% {
+    -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -o-transform: translateY(2px);
+    transform: translateY(2px); }
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); } }
+@-ms-keyframes phone-hover {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); }
+  50% {
+    -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -o-transform: translateY(2px);
+    transform: translateY(2px); }
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); } }
+@keyframes phone-hover {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); }
+  50% {
+    -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -o-transform: translateY(2px);
+    transform: translateY(2px); }
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); } }
+@-webkit-keyframes shadow-hover {
+  0% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); }
+  50% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); } }
+@-moz-keyframes shadow-hover {
+  0% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); }
+  50% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); } }
+@-ms-keyframes shadow-hover {
+  0% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); }
+  50% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); } }
+@keyframes shadow-hover {
+  0% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); }
+  50% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9); } }
+@-webkit-keyframes sweat-roll {
+  0% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px); }
+  50% {
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px); }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px); } }
+@-moz-keyframes sweat-roll {
+  0% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px); }
+  50% {
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px); }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px); } }
+@-ms-keyframes sweat-roll {
+  0% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px); }
+  50% {
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px); }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px); } }
+@keyframes sweat-roll {
+  0% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px); }
+  50% {
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px); }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px); } }
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
-
-.slider-pager {
-  display: none; }
 
 .content {
   height: 100%; }
@@ -2697,5 +3686,21 @@ section {
   position: absolute;
   right: 10px;
   top: 34%; }
+
+body.platform-ios {
+  background-color: transparent;
+  background: transparent; }
+  body.platform-ios ion-side-menus.root-ion-side-menus.view {
+    background-color: transparent; }
+    body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view {
+      background-color: white;
+      background: white;
+      padding-top: 20px; }
+      body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view section, body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view #student-home-map-container {
+        top: 20px !important; }
+
+.android-access-edge-case {
+  bottom: 64px;
+  position: absolute; }
 
 /*# sourceMappingURL=style.css.map */

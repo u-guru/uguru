@@ -25,7 +25,7 @@ var Stats = function () {
 
 			frames ++;
 
-			// interval of frame check
+			// interval of frame check, should be at 10 
 			if ( time > prevTime + 10 ) {
 
 				fps = Math.round( ( frames * 1000 ) / ( time - prevTime ) );

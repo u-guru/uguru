@@ -8,68 +8,60 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'University',
   '$ionicViewSwitcher',
   'Geolocation',
-  'Settings',
   'Utilities',
-  'deviceInfo',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
   'DeviceService',
   'uTracker',
   '$q',
+  'AnimationService',
+  'PerformanceService',
+  '$templateCache',
+  'AccessService',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, uTracker, $q) {
+  Geolocation, Utilities, UniversityMatcher, $ionicSlideBoxDelegate,
+  DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache, AccessService) {
 
-  console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
+  $scope.storedAccess = !AccessService.validate();
+
+  $scope.LOCAL = LOCAL;
+  //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
 
-
-  document.addEventListener("pause", lastSearch, false);
-  document.addEventListener("backbutton", lastSearch, false);
-  function lastSearch() {
-
-    uTracker.track(tracker, "Paused/Back", {
-      "$University_Input": $scope.universityInput.value
-    });
-  }
-
-  $scope.universities = University.getSorted();
-  $scope.isLocationActive = false;
-  $scope.isLocationGiven = null; // null if getGPS not called, false if not given, true if lat/lon
+  $scope.universitiesSorted = University.getSorted().slice();
+  $scope.universities = $scope.universitiesSorted;
 
   $scope.universityInput = {
     value: ''
-  }
+  };
 
-
-
-
+  //only shows back button local
+  $scope.showBackButton = false || LOCAL;
+  // Measure app load times
   var appLoadTime;
   var appStartTime;
-
   $scope.getLoadTime = function() {
-
         appStartTime = Date.now();
-        console.log("appStartTime: " + appStartTime);
+        //console.log("appStartTime: " + appStartTime);
         var time_ms = appStartTime - start_dom_time;
-        var time_s = (time_ms / 1000.0).toPrecision(3)
-        var loadTime = time_s;
-        appLoadTime = loadTime;
+        appLoadTime = (time_ms / 1000.0).toPrecision(3)
         console.log("appLoadTime: " + appLoadTime);
-
+        var performance = 'pass';
+        if (appLoadTime > 5) performance = 'fail';
         uTracker.track(tracker, "App Launch", {
-          "$App_Load_Time": appLoadTime
+          "$App_Load_Time": appLoadTime,
+          "$Performance": performance
         });
-  }
+  };
 
 
-
+  // Measure FPS of access page -> university list transition
   var stopLoop = false;
-  var stats = new Stats();
+  //var stats = new Stats();
 
   $scope.beforeEnter = function() {
     stopLoop = false;
@@ -79,9 +71,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       stats.begin();
       stats.end();
       fpsArray.push(stats.getFPS());
-      console.log("FPS: " + stats.getFPS());
+      //console.log("FPS: " + stats.getFPS());
       if (!stopLoop) {
-        Utilities.rAF(update);
+        requestAnimationFrame(update);
       } else {
         var total = 0;
         for (var i = 0; i < fpsArray.length; i++) {
@@ -91,21 +83,18 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         fpsArray.shift();
         var meanFPS = Math.round(total / (fpsArray.length));
         console.log("meanFPS: " + meanFPS);
-        console.log("fpsArray: " + fpsArray);
-        //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
-        //console.log("fpsValue: " + fpsValue);
-
+        //console.log("fpsArray: " + fpsArray);
+        var performance = 'pass';
+        if(meanFPS < 10) performance = 'fail';
         uTracker.track(tracker, "Entered Access Code", {
           "$Mean_FPS": meanFPS,
-          "$FPS_Array": fpsArray.toString()
+          "$FPS_Array": fpsArray.toString(),
+          "$Performance": performance
         });
-
       }
-
     }
-    Utilities.rAF(update);
+    requestAnimationFrame(update);
   };
-
 
   $scope.afterEnter = function() {
     stopLoop = true;
@@ -113,54 +102,25 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     //console.log("called afterEnter");
   };
 
-    var listResponseTime = 0;
-    var active = true;
-    var listEndTime = 0;
-    $scope.$on('uniListFinished', function() {
 
-      if(active) {
-        if($scope.universityInput.value.length > 0) {
-          listResponseTime = Date.now();
-          console.log("setting listResponseTime: " + listResponseTime);
-          active = false;
-        }
-        else if($scope.universityInput.value.length === 0) {
-          listEndTime = Date.now();
-          console.log("listEndTime: " + listEndTime);
-        }
-      }
-    });
 
-    var measureFPS = true;
-    var inputStartTime = 0;
-    $scope.query = function() {
-      if(measureFPS) {
-        measureFPS = false;
-        inputStartTime = Date.now();
-        $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
-      }
-      else if(!measureFPS) {
-        if($scope.universityInput.value.length===0){
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);
-        }
-        else {
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);
-        }
-      }
+  $scope.limit = 10;
+  var totalSchools = $scope.universitiesSorted.length
+  $scope.increaseLimit = function() {
+    if($scope.limit < totalSchools) {
+      $scope.limit += 10;
+      //console.log('limit increased is being called', $scope.limit, $scope.universities.length);
     }
-
-    $scope.limit = 10;
-    $scope.increaseLimit = function() {
-      if($scope.limit < $scope.universities.length) {
-        $scope.limit += 10;
-        //console.log('limit increased is being called', $scope.limit, $scope.universities.length);
-      }
-    }
+  }
 
   //back button
-  $scope.goToAccess = function() {
+  $scope.goToAccessAdmin = function() {
     $scope.universityInput.value = '';
-    $ionicSlideBoxDelegate.previous();
+
+    $scope.loader.showAmbig('[ADMIN] Restarting', 1500);
+    $timeout(function() {
+      $ionicSlideBoxDelegate.previous();
+    },0)
   }
 
   $scope.resetUniversities = function() {
@@ -176,45 +136,49 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   };
 
 
+
+  // $timeout(function() {
+  //     AnimationService.initSlide();
+  // }, 500);
   $scope.universitySelected = function(university) {
 
-      var searchResponseTime = listResponseTime - inputStartTime;
-      console.log("searchResponseTime: " + searchResponseTime);
+      PerformanceService.sendListResponseTime('University_List');
 
-      var listRenderTime = listEndTime - appStartTime;
-      console.log("listRenderTime: " + listRenderTime);
+      //if user is switching universities
+      if ($scope.user.university_id && university.id !== $scope.user.university_id) {
+        if (confirm('Are you sure? Your current courses will be deactivated')) {
+          uTracker.track(tracker, "University Changed", {
+              "$University": university.name,
+              "$University_Input": $scope.universityInput.value
+          });
+        } else return;
+      } else {
+        uTracker.track(tracker, "University Selected", {
+            "$University": university.name,
+            "$University_Input": $scope.universityInput.value
+        });
+      }
 
-
-      uTracker.track(tracker, "University Selected", {
-          "$University": university.name,
-          "$University_Input": $scope.universityInput.value
-      });
-      uTracker.set(tracker, {
-
-          "$University": university.name,
-          "$Search_Response_Time": searchResponseTime,
-          "$List_Render_Time": listRenderTime
-      });
-
-      // //if user is switching universities
-      // if ($scope.user.university_id
-      //     && university.id !== $scope.user.university_id
-      //     && !confirm('Are you sure? Your current courses will be deactivated'))
-      // {
-      //     return;
-      // }
-
-      uTracker.track(tracker, "University Changed", {
-          "$University": university.name,
-          "$University_Input": $scope.universityInput.value
-      });
       uTracker.set(tracker, {
           "$University": university.name,
       });
-      $scope.loader.show();
+
+
+      $scope.loader.showSuccess('Success', 750);
+
+      //timeout to have it be a background thread
+      $timeout(function() {
+
+        $scope.getCoursesForUniversityId(university.id);
+        $scope.getMajorsForUniversityId(university.id);
+
+      }, 100);
+
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.universityInput.value = '';
+
+      //fetch the universities
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
@@ -223,123 +187,193 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         'university_id': $scope.user.university_id
       };
 
-    $scope.loader.show();
-    $scope.user.university_id = university.id;
-    $scope.user.university = university;
-    $scope.universityInput.value = '';
+      //save university
+      var postUniversitySelectedCallback = function() {
+        //AnimationService.initSlide();
+        UniversityMatcher.clearCache();
+        //$timeout(function() {
+          // $scope.loader.hide();
+          //$ionicViewSwitcher.nextDirection('forward');
 
-    //start fetching majors right now
-    $scope.getMajorsForUniversityId(university.id);
-    $scope.getCoursesForUniversityId(university.id);
+          // var start = null;
+           //$state.go('^.home');
+           AnimationService.flip('^.home');
+           //AnimationService.slide('left', 'Student Home');
+          // function step(timestamp) {
+          //   stats.begin();
+          //   if (!start) start = timestamp;
+          //   var progress = timestamp - start;
+          //   AnimationService.slide('left');
+          //   //fpsArray.push(stats.getFPS());
+          //   console.log("FPS: " + stats.getFPS());
+          //   if(progress < 300) {
+          //     requestAnimationFrame(step);
+          //   }
+          //   stats.end();
+          // }
+          // requestAnimationFrame(step);
 
-    //update user to locat storage
-    $scope.rootUser.updateLocal($scope.user);
 
-    var payload = {
-      'university_id': $scope.user.university_id
-    };
+        //}, 0);
+      }
 
-    //save university
-    var postUniversitySelectedCallback = function() {
-
-      $timeout(function() {
-
-        $scope.loader.hide();
-
-          $ionicViewSwitcher.nextDirection('forward');
-          UniversityMatcher.clearCache();
-          $state.go('^.home')
-      }, 1000);
-
-    }
-
-    $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
 
   };
 
 
-  var isTimeout = false;
-  $scope.toggleLocation = function() {
-    // set isLocationActive to true while calculating so user gets feedback that its been receivede
-
-    if (!isTimeout) {
-      isTimeout = true;
-      getGPS();
-      $timeout(function() {
-        isTimeout = false;
-      }, 4000);
-    } else {
-      console.log("still waiting for $timeout to clear, please try again shortly");
-    }
-  }
-
+  $scope.location = Geolocation;
 
   $scope.toggleLocationIconAppearance = function() {
+    console.log("Geolocation.settings.isAllowed: " + Geolocation.settings.isAllowed);
     // get GPS if we haven't attempted it
-    if ($scope.isLocationGiven === null) {
+    if (Geolocation.settings.isAllowed === null) {
+      console.log("calling getGPS");
       getGPS();
     }
-    else if ($scope.locationGiven === false) {
-      alert('Please enable GPS permissions from your settings.')
+    else if (Geolocation.settings.isAllowed === false) {
+      alert('Please enable GPS permissions from your settings.');
       //reset to null & see if they will do it again
-      $scope.isLocationGiven = null;
+      Geolocation.settings.isAllowed = null;
     }
-    else if ($scope.isLocationGiven) {
-      $scope.isLocationActive = !$scope.isLocationActive;
+    else if (Geolocation.settings.isAllowed) {
+      console.log("toggling location.isActive");
+      Geolocation.settings.isActive = !Geolocation.settings.isActive;
     }
     else {
-      $scope.locationGiven = false;
-      $scope.locationActive = false;
+      Geolocation.settings.isActive = false;;
+      Geolocation.settings.isAllowed = false;
     }
+    // console.log("Geolocation.settings.isAllowed: " + Geolocation.settings.isAllowed);
+    // console.log("Geolocation.settings.isActive: " + Geolocation.settings.isActive);
+    // console.log("$scope.location.isActive: " + $scope.location.settings.isActive);
   }
 
-
   function getGPS() {
-    $scope.isLocationActive = true;
-    Geolocation.getLocation($scope);
-  };
+    Geolocation.settings.isActive = true;
+    $timeout(function() {
+      $scope.location.getLocation($scope, $scope.universitiesSorted);
+    }, 0);
+    //Geolocation.sortByDistance($scope.universitiesSorted);
+
+  }
+
+  $scope.$watch(
+    'location.coordinates.lat',
+    function(newValue, oldValue) {
+      if(newValue) {
+        console.log("location coordinates changed " + $scope.location.coordinates.lat + ', ' + $scope.location.coordinates.lon);
+        console.log("geolocation coordinates changed " + Geolocation.coordinates.lat + ', ' + Geolocation.coordinates.lon);
+        // $timeout(function() {
+          console.log("$scope.universitiesSorted.length: " + $scope.universitiesSorted.length);
+          console.log("$scope.universities.length: " + $scope.universities.length);
+          $scope.universities = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universities);
+          $scope.universistiesSorted = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
+        // },0);
+          //$scope.$apply();
+          $timeout(function() {
+            $scope.universityInput.value += "";
+            $timeout(function() {
+              $scope.universityInput.value += "";
+            }, 500);
+          }, 0);
 
 
-  $scope.$on('$ionicView.loaded', function() {
-    // android doesn't have a special prompt
-    if (DeviceService.getPlatform() === 'android') {
-      getGPS();
+      }
     }
-  });
+    );
 
 
+  // $scope.$on('$ionicView.loaded', function() {
+  //   // android doesn't have a special prompt
+  //   // if (DeviceService.getPlatform() === 'android') {
+  //   //   getGPS();
+  //   // }
+  //   console.log("university view loaded");
+  //   if (Geolocation.settings.isAllowed) {
+  //     $timeout(function() {
+  //       $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
+  //     },0);
+  //   } else {
+  //     console.log("running getGPS() AGAIN");
+  //     getGPS();
 
-
-  // $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.howItWorksModal = modal;
-  //   $scope.howItWorksModal.show();
-  // });
-
-  // $scope.launchHowItWorksModal = function() {
-  //   $scope.howItWorksModal.show();
-  // }
-
-  // $scope.$on('$ionicView.enter', function() {
-  //   $scope.launchHowItWorksModal();
-  // });
-
-  // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.availabilityModal = modal;
-  //   $scope.availabilityModal.show();
-  // });
-
-  // $scope.launchAvailabilityModal = function() {
-  //   $scope.availabilityModal.show();
-  // }
-
-  // $scope.$on('$ionicView.enter', function() {
-  //   $scope.launchAvailabilityModal();
+  //   }
   // });
 
 }
+
+angular.module('uguru.directives')
+.directive('bindList', function($timeout, University, Utilities) {
+
+  function link($scope, element, attributes) {
+    var queryPromise = null;
+    $timeout(function() {
+
+      $scope.$parent.$watch(
+        'universityInput.value',
+        function(newValue, oldValue) {
+
+          if(newValue.length < oldValue.length) {
+            if(queryPromise) {
+              $timeout.cancel(queryPromise);
+            }
+            queryPromise = $timeout(function() {
+
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+              queryPromise = null;
+            }, 90);
+          }
+
+          else if(newValue.length === 1) {
+
+            if(queryPromise) {
+              $timeout.cancel(queryPromise);
+            }
+            queryPromise = $timeout(function() {
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+              queryPromise = null;
+            }, 75);
+          }
+
+          else if(newValue.length === 0) {
+
+            if(queryPromise) {
+              $timeout.cancel(queryPromise);
+            }
+            queryPromise = $timeout(function() {
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+              queryPromise = null;
+            }, 50);
+          }
+
+          else {
+            if(queryPromise) {
+              $timeout.cancel(queryPromise);
+            }
+            queryPromise = $timeout(function() {
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+              queryPromise = null;
+
+            }, 50);
+          }
+        }
+
+      );
+    }, 250);
+
+  }
+
+  return {
+    scope: {
+      listScope: '=bindList',
+      source: '=source'
+    },
+    link: link,
+    restrict: 'A'
+  }
+
+
+});
+
+

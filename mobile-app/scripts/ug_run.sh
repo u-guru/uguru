@@ -1,6 +1,6 @@
 
 if [ $# == 0 ];
-	then 
+	then
 	printf "\e[0;36m\n"
 	printf "ug run <android|ios> <optional startpage> : Runs livereload for the specified platform along with an optional argument for starting page.\n"
 	printf "\e[0m\n"
@@ -24,7 +24,7 @@ if [ $# == 1 ];
 		printf "Running for ${platform} \e[0m\n"
 		# ./scripts/ug_build.sh android
 		gulp replace --env=localdev --page=$startpage --ip="$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')"
-		ionic run android -clr --device	
+		ionic run android -clr --device
 	fi
 
 	if [ $platform == "ios" ]; then

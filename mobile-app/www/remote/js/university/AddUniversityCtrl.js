@@ -24,6 +24,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   AnimationService, PerformanceService, $templateCache, AccessService) {
 
   $scope.storedAccess = !AccessService.validate();
+<<<<<<< HEAD
+=======
+
+  $scope.LOCAL = LOCAL;
+  //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
+>>>>>>> samir-dev
 
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
@@ -110,9 +116,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   }
 
   //back button
-  $scope.goToAccess = function() {
+  $scope.goToAccessAdmin = function() {
     $scope.universityInput.value = '';
-    $ionicSlideBoxDelegate.previous();
+
+    $scope.loader.showAmbig('[ADMIN] Restarting', 1500);
+    $timeout(function() {
+      $ionicSlideBoxDelegate.previous();
+    },0)
   }
 
   $scope.resetUniversities = function() {
@@ -151,10 +161,22 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           "$University": university.name,
       });
 
-     // $scope.loader.show();
+
+      $scope.loader.showSuccess('Success', 750);
+
+      //timeout to have it be a background thread
+      $timeout(function() {
+
+        $scope.getCoursesForUniversityId(university.id);
+        $scope.getMajorsForUniversityId(university.id);
+
+      }, 100);
+
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.universityInput.value = '';
+
+      //fetch the universities
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
@@ -165,16 +187,45 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
       //save university
       var postUniversitySelectedCallback = function() {
+<<<<<<< HEAD
         AnimationService.flip('^.home');
+=======
+        //AnimationService.initSlide();
+        UniversityMatcher.clearCache();
+        //$timeout(function() {
+          // $scope.loader.hide();
+          //$ionicViewSwitcher.nextDirection('forward');
+
+          // var start = null;
+           //$state.go('^.home');
+           AnimationService.flip('^.home');
+           //AnimationService.slide('left', 'Student Home');
+          // function step(timestamp) {
+          //   stats.begin();
+          //   if (!start) start = timestamp;
+          //   var progress = timestamp - start;
+          //   AnimationService.slide('left');
+          //   //fpsArray.push(stats.getFPS());
+          //   console.log("FPS: " + stats.getFPS());
+          //   if(progress < 300) {
+          //     requestAnimationFrame(step);
+          //   }
+          //   stats.end();
+          // }
+          // requestAnimationFrame(step);
+
+
+        //}, 0);
+>>>>>>> samir-dev
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
 
   };
 
-  
+
   $scope.location = Geolocation;
-  
+
   $scope.toggleLocationIconAppearance = function() {
     console.log("Geolocation.settings.isAllowed: " + Geolocation.settings.isAllowed);
     // get GPS if we haven't attempted it
@@ -206,8 +257,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.location.getLocation($scope, $scope.universitiesSorted);
     }, 0);
     //Geolocation.sortByDistance($scope.universitiesSorted);
-    
-  };
+
+  }
 
   $scope.$watch(
     'location.coordinates.lat',
@@ -229,7 +280,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
             }, 500);
           }, 0);
 
-          
+
       }
     }
     );

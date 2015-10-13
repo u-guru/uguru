@@ -6,11 +6,18 @@ angular
 	'iOSService',
 	'WindowsService',
   '$timeout',
+  'Geolocation',
+  'University',
+  'Version',
+  '$ionicHistory',
+  '$templateCache',
+  '$localstorage',
 	DeviceService
 	]);
 
-function DeviceService( $cordovaNgCardIO,
-	AndroidService, iOSService, WindowsService, $timeout) {
+function DeviceService($cordovaNgCardIO,
+	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
+  University, Version, $ionicHistory, $templateCache, $localstorage) {
 
 	return {
 		readyDevice: readyDevice,
@@ -21,25 +28,52 @@ function DeviceService( $cordovaNgCardIO,
     getUUID: getUUID,
 		isMobile: isMobile,
 		isWeb: isWeb,
+    isAndroidDevice: isAndroidDevice,
+    isAndroidBrowser: isAndroidBrowser,
+    isAndroid:isAndroid,
     ios: iOSService,
-    getInfo: getInfo
+    getInfo: getInfo,
+    checkUpdates: checkUpdates
 	}
 
 	function isMobile() {
 		return ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone();
 	}
 
+  function isAndroidDevice() {
+    var userAgent = navigator.userAgent;
+    var androidWebViewAgents = ['Build/KLP', 'Version', 'wv'];
+    var isWebView = false;
+    for (var i = 0; i < androidWebViewAgents.length; i++ ) {
+      var indexUA = androidWebViewAgents[i];
+      if (userAgent.indexOf(indexUA) > -1) {
+        isWebView = true;
+      }
+      break;
+    }
+
+    //needs to be both
+    return ionic.Platform.isAndroid() && isWebView;
+  }
+
+  function isAndroid() {
+    return ionic.Platform.isAndroid();
+  }
+
+  function isAndroidBrowser() {
+    return !isAndroidDevice() && ionic.Platform.isAndroid();
+  }
+
 	function isWeb() {
 		return !isMobile();
 	}
   // returns object
 	function getDevice() {
-		console.log("getDevice() returns: " + ionic.Platform.device());
 		return ionic.Platform.device();
 	}
   // returns string value
   function getPlatform() {
-    console.log("getPlatform() returns: " + ionic.Platform.platform());
+    //console.log("getPlatform() returns: " + ionic.Platform.platform());
     return ionic.Platform.platform();
   }
 
@@ -69,49 +103,37 @@ function DeviceService( $cordovaNgCardIO,
   }
 
 
-  //doesn't work for emulators!
-	function readyDevice(callback) {
-    var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
-    if(app) {
-      console.log("Running on mobile");
 
-      document.addEventListener("deviceready", onDeviceReady);
-    } else {
-      console.log("Detected desktop browser");
-      if (isMobile() && mobileOS) {
-        onDeviceReady();
+	function readyDevice(scope) {
+
+
+
+    var userAgent = navigator.userAgent;
+
+
+      if(userAgent.indexOf('wv')!==-1) {
+        onDeviceReady(scope);
       }
 
-    }
-
+      if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
+        console.log("detected mobile app");
+        onDeviceReady(scope);
+      } else {
+        console.log("did not detect mobile app");
+      }
 	}
 
-	function onDeviceReady(callback) {
-		//checkUpdates();
+	function onDeviceReady(scope) {
+    console.log("DeviceService.onDeviceReady()");
 
+    if(navigator.splashscreen) {
+      console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
 
-
-        //Ugh --> they overroad the native js OnDOMContentLoaded ...
-        ionic.DomUtil.ready(function(){
-          if(navigator.splashscreen) {
-
-            //offset is to avoid the sidebar showing last second before
-            $timeout(function() {
-              console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
-              navigator.splashscreen.hide();
-            }, 3000);
-          }
-        })
-
-        if(navigator.splashscreen) {
-          console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
-          navigator.splashscreen.show();
-        }
-
-        var posOptions = {
-      		timeout: 2000,
-  			enableHighAccuracy: false, //may cause high errors if true
-        }
+      //the delay is for preventing components from rendering on the first go
+      $timeout(function() {
+        navigator.splashscreen.show();
+      }, 2000)
+    }
 
 		if(isMobile()) {
 
@@ -121,6 +143,7 @@ function DeviceService( $cordovaNgCardIO,
 		  			iOSService.ready();
 			  		break;
 		  		case "android":
+            Geolocation.getLocation(scope);
 		  			AndroidService.ready();
 		  			break;
 	  			case "windows":
@@ -131,16 +154,28 @@ function DeviceService( $cordovaNgCardIO,
 		  	console.log("detected platform: " + getPlatform());
 
 		}
-		if(typeof callback === 'function') {
-			callback();
-		}
+		// if(typeof callback === 'function') {
+		// 	callback();
+		// }
 	}
 	function checkUpdates() {
 
     // don't update on local
     if (LOCAL) {
+      console.log("running local: skipping over checkUpdates");
+
+        // hide it otherwise it never would on emulators
+       $timeout(function() {
+          if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
+            navigator.splashscreen.hide();
+          }
+        }, 2000)
+
       return;
     }
+    console.log("did not detect local, checking for updates");
+
+
 
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
@@ -184,7 +219,15 @@ function DeviceService( $cordovaNgCardIO,
                     window.location.reload(true);
                   }
 
-           	  }
+           	  } else {
+                //the only place where this will
+                $timeout(function() {
+                  if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
+                    navigator.splashscreen.hide();
+                  }
+                }, 2000)
+
+              }
           },
            //connectivity issues
           function(error) {

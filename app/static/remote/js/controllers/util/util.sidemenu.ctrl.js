@@ -27,96 +27,18 @@ angular.module('uguru.util.controllers')
   'UniversityMatcher',
   'AnimationService',
   'uTracker',
+  'Utilities',
+  'PopupService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService, uTracker) {
-
+  AnimationService, uTracker, Utilities, PopupService) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
-    //temporary --> Learn resolves && inject properly
-    //** Start University Functions ** //
-    var queryTimeout = false;
-    var emptyTimeout = false;
-    $scope.query = function(input) {
-      if(!queryTimeout) {
-        queryTimeout = true;
-        //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
-        $scope.universities = UniversityMatcher.cachedMatch(input);
-        $timeout(function() {queryTimeout = false;}, 600);
-      }
-      else if(input.length === 0) {
-        if(!emptyTimeout) {
-          emptyTimeout = true;
-          $scope.universities = UniversityMatcher.cachedMatch(input);
-          $timeout(function() {emptyTimeout = false;}, 600);
-        }
-      }
 
-    }
-
-    var schoolList = document.querySelectorAll('#school-list')[0];
-
-    $scope.search_text = '' || ($scope.user.university && $scope.user.university.name);
-    $scope.location = false;
-    $scope.universities = University.getTargetted();
-
-    sortByRank(University.getTargetted());
-    $scope.limit = 10;
-    $scope.increaseLimit = function() {
-      if($scope.limit < $scope.universities.length) {
-        $scope.limit += 10;
-      }
-    }
-
-    function sortByRank(list) {
-      function compareRank(a, b) {
-        if (a.rank < b.rank)
-          return -1;
-        if (a.rank > b.rank)
-          return 1;
-
-        return 0;
-      }
-      return list.sort(compareRank);
-    }
-
-    $scope.universitySelected = function(university, $event) {
-
-      //if user is switching universities
-      if ($scope.user.university_id
-          && university.id !== $scope.user.university_id
-          && !confirm('Are you sure? Your current courses will be deactivated'))
-      {
-          return;
-      }
-
-      $scope.loader.show();
-      $scope.user.university_id = university.id;
-      $scope.user.university = university;
-      $scope.search_text = '';
-
-      //update user to locat storage
-      $scope.rootUser.updateLocal($scope.user);
-
-      var payload = {
-        'university_id': $scope.user.university_id
-      };
-
-      //save university
-      var postUniversitySelectedCallback = function() {
-          $timeout(function() {
-            $scope.loader.hide();
-            $scope.success.show(0, 1000, 'Saved!');
-            UniversityMatcher.clearCache();
-          }, 1000);
-      }
-
-      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
-    }
 
 //use for abstract
     $scope.openAdmin = function() {
@@ -133,6 +55,8 @@ angular.module('uguru.util.controllers')
             $scope.faqModal = modal;
     });
 
+
+
     $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
             scope: $scope,
             animation: 'slide-in-up',
@@ -140,6 +64,10 @@ angular.module('uguru.util.controllers')
     }).then(function(modal) {
         $scope.supportModal = modal;
     });
+
+
+
+
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
             scope: $scope,
@@ -157,24 +85,21 @@ angular.module('uguru.util.controllers')
         $scope.signupModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
+    $scope.initUniversityModal = function() {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
             scope: $scope,
             animation: 'slide-in-up',
             focusFirstInput: false,
-    }).then(function(modal) {
-        $scope.universityModal = modal;
+      }).then(function(modal) {
+          $scope.universityModal = modal;
 
-        uTracker.track(tracker, 'University Modal');
-    });
+          uTracker.track(tracker, 'University Modal');
+      });
 
-    // $scope.$on('modal.shown', function() {
-    //   if ($scope.universityModal.isShown()) {
-    //     $timeout(function() {
-    //       var universityInput = document.querySelector('#university-input')
-    //       universityInput.select();
-    //     }, 100);
-    //   }
-    // });
+    }
+
+    $scope.initUniversityModal();
 
     $scope.launchFAQModal = function() {
 
@@ -184,6 +109,14 @@ angular.module('uguru.util.controllers')
 
     $scope.launchUniversityModal = function() {
       $scope.universityModal.show();
+    }
+
+    $scope.removeLaunchUniversityModal = function() {
+      $scope.universityModal.remove();
+      $timeout(function() {
+        $scope.initUniversityModal();
+      }, 500)
+      //immediately instantiate after ;)
     }
 
     $scope.onTextClick = function ($event) {
@@ -216,8 +149,28 @@ angular.module('uguru.util.controllers')
 
 
       uTracker.track(tracker, 'Privacy Modal');
+
+      // var options = {
+      //   "direction"        : "up", // 'left|right|up|down', default 'left' (which is like 'next')
+      //   "duration"         :  400, // in milliseconds (ms), default 400
+      //   "slowdownfactor"   :   1000, // overlap views (higher number is more) or no overlap (1), default 4
+      //   "iosdelay"         :  60, // ms to wait for the iOS webview to update before animation kicks in, default 60
+      //   "androiddelay"     :  70, // same as above but for Android, default 70
+      //   "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
+      //   "fixedPixelsTop"   :   0, // the number of pixels of your fixed header, default 0 (iOS and Android)
+      //   "fixedPixelsBottom":   0 // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
+      // };
+
+      // $state.go('privacy');
+      // window.plugins.nativepagetransitions.slide(
+      //         options,
+      //         function (msg) {console.log("success: " + msg)}, // called when the animation has finished
+      //         function (msg) {alert("error: " + msg)} // called in case you pass in weird values
+      //       );
+
       $scope.privacyModal.show();
     }
+
 
     $scope.launchSignupModal = function(loginMode) {
       uTracker.track(tracker, 'Signup Modal');
@@ -343,7 +296,7 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
         callbackSuccess = function() {
           $scope.loader.hide();
-          $scope.success.show(0, 1500, 'Saved!');
+          $scope.loader.showSuccess('Saved!', 1500);
         }
 
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
@@ -360,212 +313,81 @@ angular.module('uguru.util.controllers')
 
     }
 
-    var saveEditEmailPopup, closeEditStudentNamePopup;
     $scope.launchEditEmailPopup = function() {
 
-        var homeCenterComponent = document.getElementById('student-sidebar-profile');
-        var uguruPopup = document.getElementById('edit-email-uguru-popup');
-        var editEmailInput = document.getElementById('user-edit-email-input')
-        var uguruPopupCloseLink = document.getElementById('edit-email-close-popup-link');
-        var uguruPopupSaveLink = document.getElementById('edit-email-save-popup-link');
-
-        uguruPopupCloseLink.addEventListener("click", function(event) {
-          var uguruPopup = document.getElementById('edit-email-uguru-popup');
-          uguruPopup.classList.remove('show');
-        })
-
-        uguruPopupSaveLink.addEventListener("click", function(event) {
-          var editEmailInput = document.getElementById('user-edit-email-input')
-
-            if (editEmailInput && editEmailInput.value.length) {
-                $scope.user.email = editEmailInput.value;
-            } else {
-              alert('Please enter your full name');
-              return;
-            }
-            $scope.user.updateAttr('email', $scope.user, $scope.user.email, null, $scope);
-            $scope.success.show(0, 1000, 'Saved!');
-            var uguruPopup = document.getElementById('edit-email-uguru-popup');
-            uguruPopup.classList.remove('show');
-        })
-        //todo learn how to inject inputs in
-        if (editEmailInput) {
-          editEmailInput.value = $scope.user.email;
-        }
-        $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
-          function (modal){
-            modal.classList.add('show');
-          }
-        );
-
-        var closeEditStudentNamePopup = function() {
-
-          var uguruPopup = document.getElementById('edit-email-uguru-popup');
-          uguruPopup.classList.remove('show');
-        }
-
-
-        var saveEditEmailPopup = function() {
-
-            // old school ng-modal was being funky
-            var editEmailInput = document.getElementById('user-edit-email-input')
-
-            if (editEmailInput && editEmailInput.value.length) {
-                $scope.user.email = editEmailInput.value;
-            } else {
-              alert('Please enter your full name');
-              return;
-            }
-            $scope.user.updateAttr('email', $scope.user, $scope.user.email , null, $scope);
-            $scope.success.show(0, 1000, 'Saved!');
-            var uguruPopup = document.getElementById('edit-email-uguru-popup');
-            uguruPopup.classList.remove('show');
-        }
-
+      if($scope.user.email) {
+        $scope.popupInput.editEmail = $scope.user.email;
       }
 
+      PopupService.open('editEmail', callback);
+      function callback() {
+        if (Utilities.validateEmail($scope.popupInput.editEmail)) {
+            $scope.user.email = $scope.popupInput.editEmail
+        } else {
+          alert('Please enter a valid email.');
+          return;
+        }
+        $scope.user.updateAttr('email', $scope.user, $scope.user.email, null, $scope);
+        $scope.loader.showSuccess('Saved!', 1500);
+        PopupService.close('editEmail');
+      }
+    }
 
-    var saveEditPasswordPopup, closeEditPasswordPopup;
     $scope.launchEditPasswordPopup = function() {
 
-        var homeCenterComponent = document.getElementById('student-sidebar-profile');
-        var uguruPopup = document.getElementById('edit-password-uguru-popup');
-        var editPasswordInput = document.getElementById('user-edit-password-input')
-        var editNewPasswordInput = document.getElementById('user-edit-password-input')
-        var uguruPopupCloseLink = document.getElementById('edit-password-close-popup-link');
-        var uguruPopupSaveLink = document.getElementById('edit-password-save-popup-link');
-        uguruPopupCloseLink.addEventListener("click", function(event) {
-          var uguruPopup = document.getElementById('edit-password-close-popup-link');
-          uguruPopup.classList.remove('show');
-        })
-        uguruPopupSaveLink.addEventListener("click", function(event) {
-
-
-
-                var editPasswordInput = document.getElementById('user-edit-password-input');
-                var editNewPasswordInput = document.getElementById('user-edit-password-input')
-
-
-                if (!editPasswordInput.value.length || !editNewPasswordInput.value.length) {
-                      alert('Please fill in all fields');
-                      return;
-                }
-
-                if (editNewPasswordInput.value.length < 7) {
-
-                      alert('Please enter a password longer than 7 characters');
-                      return;
-
-                }
-
-
-                var payload = {
-                    email : $scope.user.email,
-                    new_password : editNewPasswordInput.value,
-                    old_password: editPasswordInput.value
-                }
-
-
-                $scope.loader.show();
-                var successCallback = function() {
-
-                  $scope.loader.hide();
-                  $scope.success.show(0, 1000, 'Password Successfully Changed');
-                  $timeout(function() {
-                    var uguruPopup = document.getElementById('edit-password-uguru-popup');
-                    uguruPopup.classList.remove('show');
-                  }, 500)
-                }
-
-
-                var failureCallback = function(resp) {
-                  $scope.loader.hide();
-                  $scope.success.show(0, 1000, 'Something went wrong ... Please contact support!');
-                  $timeout(function() {
-                    var uguruPopup = document.getElementById('edit-password-uguru-popup');
-                    uguruPopup.classList.remove('show');
-                  }, 500);
-                }
-
-                $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
-
-        })
-
-
-        $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
-          function (modal){
-            modal.classList.add('show');
+      PopupService.open('editPassword', callback);
+      function callback() {
+          if ($scope.popupInput.editPasswordOld.length === 0 && $scope.popupInput.editPasswordNew.length === 0) {
+            alert('Please fill in all fields');
+            return;
           }
-        );
+          else if (Utilities.validatePassword($scope.popupInput.editPasswordNew)) {
+            var payload = {
+                email : $scope.user.email,
+                new_password : $scope.popupInput.editPasswordNew,
+                old_password: $scope.popupInput.editPasswordOld
+            }
 
+            $scope.loader.show();
+            var successCallback = function() {
+              $scope.loader.hide();
+              $scope.loader.showSuccess('Password Successfully Changed', 1500);
+              PopupService.close('editPassword');
+            }
+            var failureCallback = function(resp) {
+              $scope.loader.hide();
+              $scope.loader.showSuccess('Something went wrong ... Please contact support!', 1500);
+              PopupService.close('editPassword');
 
-
+              $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
+            }
+          }
+          else {
+            alert('Please enter a password longer than 6 characters');
+            return;
+          }
       }
+    }
 
-
-
-    var saveEditNamePopup, closeEditStudentNamePopup;
     $scope.launchEditStudentNamePopup = function() {
 
-        var homeCenterComponent = document.getElementById('student-sidebar-profile');
-        var uguruPopup = document.getElementById('edit-name-uguru-popup');
-        var editNameInput = document.getElementById('user-edit-name-input')
-        var uguruPopupCloseLink = document.getElementById('edit-name-close-popup-link');
-        var uguruPopupSaveLink = document.getElementById('edit-name-save-popup-link');
-        uguruPopupCloseLink.addEventListener("click", function(event) {
-          var uguruPopup = document.getElementById('edit-name-uguru-popup');
-          uguruPopup.classList.remove('show');
-        })
-        uguruPopupSaveLink.addEventListener("click", function(event) {
-          var editNameInput = document.getElementById('user-edit-name-input')
-
-            if (editNameInput && editNameInput.value.length) {
-                $scope.user.name = editNameInput.value;
-            } else {
-              alert('Please enter your full name');
-              return;
-            }
-            $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
-            $scope.success.show(0, 1000, 'Saved!');
-            var uguruPopup = document.getElementById('edit-name-uguru-popup');
-            uguruPopup.classList.remove('show');
-        })
-        //todo learn how to inject inputs in
-        if (editNameInput) {
-          editNameInput.value = $scope.user.name;
-        }
-        $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
-          function (modal){
-            modal.classList.add('show');
-          }
-        );
-
-        var closeEditStudentNamePopup = function() {
-          if ($scope.reverseAnimatePopup) {
-            $scope.reverseAnimatePopup();
-          }
-          var uguruPopup = document.getElementById('edit-name-uguru-popup');
-          uguruPopup.classList.remove('show');
-        }
-
-
-        var saveEditNamePopup = function() {
-
-            var editNameInput = document.getElementById('user-edit-name-input')
-
-            if (editNameInput && editNameInput.value.length) {
-                $scope.user.name = editNameInput.value;
-            } else {
-              alert('Please enter your full name');
-              return;
-            }
-            $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
-            $scope.success.show(0, 1000, 'Saved!');
-            var uguruPopup = document.getElementById('edit-name-uguru-popup');
-            uguruPopup.classList.remove('show');
-        }
-
+      if ($scope.user.name) {
+        $scope.popupInput.editName = $scope.user.name;
       }
+
+      PopupService.open('editName', callback);
+      function callback() {
+        if (Utilities.validateName($scope.popupInput.editName)) {
+            $scope.user.name = $scope.popupInput.editName;
+        } else {
+          alert('Please enter your full name');
+          return;
+        }
+        $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
+        $scope.loader.showSuccess('Saved!', 1500);
+        PopupService.close('editName');
+      }
+    }
 
     //settings info
     $scope.editAccountInfoActionSheet = function() {
@@ -697,7 +519,7 @@ angular.module('uguru.util.controllers')
         User.clearAttr({}, $scope.user.id).then(function(user) {
           $scope.loader.hide();
           $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
-          $scope.logoutUser();
+          $scope.logoutUser(true);
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
           $state.go('^.university');
@@ -716,14 +538,15 @@ angular.module('uguru.util.controllers')
 
       $scope.loader.show();
 
+      $timeout(function() {
+          $scope.loader.hide();
+        }, 500)
 
 
-        AnimationService.flip();
+
+        AnimationService.flip('^.guru');
 
         $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
-        $timeout(function() {
-          $scope.loader.hide();
-        }, 1000)
 
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
@@ -732,7 +555,6 @@ angular.module('uguru.util.controllers')
           }
         }, 500)
 
-        $state.go('^.guru');
     }
 
     $scope.goToStudent = function() {

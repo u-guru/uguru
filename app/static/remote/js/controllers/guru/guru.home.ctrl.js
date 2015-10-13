@@ -31,7 +31,7 @@ angular.module('uguru.guru.controllers')
  	University, $templateCache, $ionicHistory, Popup, $popover, Popover,
   $ionicBackdrop, User, Camera, $cordovaPush, $ionicViewSwitcher, $cordovaStatusbar,
   $ionicPlatform) {
-  console.log($scope.user)
+  //console.log($scope.user)
 	$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 	$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom')
 	$scope.base_url =  BASE;
@@ -393,7 +393,7 @@ angular.module('uguru.guru.controllers')
     $scope.logoutUser = function() {
 
 
-      $scope.success.show(0, 2000, 'You have been successfully logged out!')
+      $scope.loader.showSuccess('You have been successfully logged out!', 1500);
       $localstorage.setObject('user', []);
       $scope.user.updateAttr = User.updateAttrUser;
       $scope.user.createObj = User.createObj;
@@ -526,7 +526,7 @@ angular.module('uguru.guru.controllers')
     $scope.submitSupport = function() {
       $scope.supportTicket.user_id = $scope.user.id;
       Support.create($scope.supportTicket).then(function(){
-        $scope.success.show(0, 2000, 'Your support message has been submitted. We will get back to you very soon!');
+        $scope.loader.showSuccess('Your support message has been submitted. We will get back to you very soon!', 2000);
         $scope.supportModal.hide();
       }, function(err) {
         console.log('error from server', err);

@@ -63,22 +63,10 @@ section {
 	* {
 		font-family: $font!important;
 	}
-	h1.verified {
-		span {
-			svg {
-				display: inline!important;
-				width: 20px;
-				height: 20px;
-				path:first-child {
-					fill: $lake;
-				}
-			}
-		}
-	}
 	.request {
 		&#request {
 			header {
-				&:before {
+				&::before {
 					background: url(../images/schools.jpg) no-repeat center center / cover;
 				}
 				.request-header {
@@ -182,7 +170,7 @@ section {
 		}
 	}
 	@media screen and (max-width:320px) {
-		body, input, button {
+		body {
 			font-size: 20px;
 		}
 		#start-container {
@@ -190,9 +178,6 @@ section {
 		}
 		#skills-list a {
 			font-size: 16px!important;
-		}
-		#request-button span b {
-			font-size: 18px!important;
 		}
 		#skills-list .skill-icon {
 			margin-bottom: 10px;
@@ -203,11 +188,11 @@ section {
 			input {
 				font-size: 18px;
 			}
-			&:before {
+			&::before {
 				@include center-y;
 				display: block;
 				background: url(../../img/svg/search.svg) no-repeat center center/cover,
-								url(/static/remote/img/svg/search.svg) center/cover no-repeat;
+							url(/static/remote/img/svg/search.svg) center/cover no-repeat;
 				width: 14px;
 				height: 14px;
 			}
@@ -314,6 +299,48 @@ section {
 				@include flex;
 				@include flex-wrap;
 				padding: 0 15px 15px;
+				#guru-ranking-popup-progress-bar {
+					position: relative;
+					width: 150px;
+					height: 150px;
+					margin: 0 auto 10px;
+					svg {
+						path {
+							stroke-linecap: round!important;
+						}
+					}
+					.progressbar-text {
+						display: none;
+					}
+					#popup-percentile {
+						@include center-xy;
+						#popup-percentile-ranking {
+							position: relative;
+							font-size: 44px;
+							font-weight: 600;
+							line-height: 1;
+							text-align: center;
+							&::after {
+								content: "th";
+								display: block;
+								position: absolute;
+								top: -1px;
+								right: -1px;
+								font-size: 12px;
+								font-weight: 400;
+								line-height: 28px;
+								text-transform: uppercase;
+							}
+						}
+						#popup-percentile-label {
+							font-size: 12px;
+							font-weight: 400;
+							letter-spacing: 1px;
+							line-height: 15px;
+							text-transform: uppercase;
+						}
+					}
+				}
 				h2 {
 					@include opacity(.9);
 					width: 100%;
@@ -436,7 +463,8 @@ section {
 }
 
 // EXPERIENCE MODAL
-#experience-modal {
+#experience-modal,
+#guru-introduction-modal {
 	position: absolute;
 	top: 0;
 	.main {
@@ -456,8 +484,11 @@ section {
 				text-align: right;
 			}
 		}
-		#exp-input {
+		#exp-input, #guru-intro-input {
 			height: calc(100% - 194px);
+		}
+		#exp-input.removable {
+			height: calc(100% - 258px);
 		}
 		textarea {
 			font-size: 18px;
@@ -880,7 +911,7 @@ section {
 				padding: 15px;
 				border: 2px solid $smoke;
 				border-bottom: 0;
-				&:after {
+				&::after {
 					@include center-xy;
 					@include opacity(.15);
 					-webkit-filter: grayscale(1);
@@ -1025,7 +1056,7 @@ section {
 		> div {
 			height: 100%;
 			width: 100%;
-			&:after {
+			&::after {
 				content: "";
 				position: fixed;
 				z-index: 10;
@@ -1177,6 +1208,70 @@ section {
 	}
 }
 
+// STUDENT COURSES MODAL
+.student-courses-view {
+	#course {
+		background: white;
+		header {
+			color: $charcoal;
+			background: $bakery-bg;
+			svg {
+				path {
+					stroke: $charcoal;
+				}
+			}
+			.onboarding-search {
+				.clear-search-input {
+					position: absolute;
+				    right: 0;
+				    top: 20px;
+				    right: 10px;
+				    color: rgba($charcoal,.7);
+				    padding: 0px;
+				}
+				input {
+					border-bottom: 1px solid rgba($charcoal,.5);
+					color: $charcoal;
+					@include placeholder {
+						color: rgba($charcoal,.5);
+					}
+				}
+				input:active, input:focus {
+					border-bottom-color: $charcoal;
+					@include placeholder {
+						color: $charcoal;
+					}
+				}
+				&:before {
+					background: url(../../img/svg/search-dark.svg) no-repeat center center/cover,
+								url(/static/remote/img/svg/search-dark.svg) center/cover no-repeat;
+				}
+			}
+		}
+	}
+	#courses-list {
+		ul {
+			li {
+				label {
+					background: $smoke;
+					color: $charcoal;
+					border-color: $campus;
+				}
+				input:checked + label {
+					background: $campus;
+					border-color: rgba(white,.4)!important;
+				}
+				input:active + label {
+					background: rgba($campus,.2);
+				}
+				input:checked:active + label {
+					background: $campus;
+				}
+			}
+		}
+	}
+}
+
 
 /* ---------- SIDEBAR & MENUS */
 // SIDEBAR
@@ -1187,6 +1282,8 @@ section {
 	z-index: 20;
 	position: absolute;
 	right: 0;
+	height: 110%;//due to ios status bar, playing it safe
+    bottom: 0;
 }
 .side-menu-list {
 	position: relative;
@@ -1267,7 +1364,7 @@ section {
 			position: relative;
 			height: calc(100% - 384px - 84px);
 			text-transform: none;
-			&:before {
+			&::before {
 				@include opacity(.3);
 				content: "";
 				position: absolute;
@@ -1412,6 +1509,9 @@ section {
 	border: 0;
 	height: 50px;
 	line-height: 50px;
+	a.activated, a:active {
+		@include opacity(.5);
+	}
 	svg {
 		width: 100%;
 		height: 100%;
@@ -1435,6 +1535,21 @@ section {
 	}
 }
 
+// SLIDER BREADCRUMBS
+.slider-pager {
+	@include flex;
+	@include flex-center;
+	height: auto!important;
+	span {
+		@include flex;
+		@include flex-center;
+	}
+	.icon {
+		font-size: 12px;
+		line-height: 16px;
+	}
+}
+
 
 
 /* ---------- SETTING UP APP */
@@ -1448,19 +1563,10 @@ section {
 		@include flex;
 		@include flex-wrap;
 		@include flex-bottom;
-		height: calc(100% - 127px);
+		height: 70%;
 		svg {
 			display: block;
-			max-height: 60%;
-		}
-		#access-title {
-			width: 100%;
-			h1 {
-				text-align: center;
-				font-size: 48px;
-				font-weight: 900;
-				letter-spacing: 1px;
-			}
+			max-height: 70%;
 		}
 	}
 	#access-code {
@@ -1586,26 +1692,15 @@ section {
 .university-view {
 	background: $charcoal;
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
 		}
 		.geolocation-icon {
 			margin-top: 3px;
-		}
-		.side-icon {
-			@include opacity(1);
-			@include center-y;
-			right: 12px;
-			z-index: 0;
-			.ion-navigate {
-				@include opacity(.6);
-			}
-			.ion-navigate.active,
-			.ion-navigate.activated,
-			.ion-navigate.location-active {
-				@include opacity(1);
-			}
+		// To add hella space to tap it (it's responsive & equalizes)
+			padding: 50px;
+    		margin-right: -50px;
 		}
 	}
 	#school-list, #school-list-modal {
@@ -1663,10 +1758,8 @@ section {
 						}
 					}
 				}
-				#{$links} {
-					&.active, &.activated {
-						background: rgba(white,.2);
-					}
+				a:active, a.active, a.activated {
+					background: rgba(white,.2);
 				}
 			}
 		}
@@ -1711,6 +1804,7 @@ section {
 			@include flex-center;
 			z-index: 2;
 			height: calc(100% - 150px);
+			width: 100%;
 			div {
 				width: 100%;
 				button {
@@ -1723,11 +1817,88 @@ section {
 					line-height: 1.2;
 					text-transform: uppercase;
 				}
+				.bg-lake-80p.activated, .bg-lake-80p:active {
+					@include opacity(1);
+					background: $lake!important;
+				}
+				.bg-campus-80p.activated, .bg-campus-80p:active {
+					@include opacity(1);
+					background: $campus!important;
+				}
+			}
+			&.trending-container {
+				height: calc(100% - 130px);
+			}
+			#trending {
+				width: calc(100% - 30px);
+				margin: 15px;
+				h1 {
+					font-size: 14px;
+					font-weight: 600;
+					letter-spacing: 1px;
+					text-align: center;
+					text-transform: uppercase;
+					padding: 15px;
+					background: rgba($charcoal,.9);
+				}
+				ul {
+					margin-top: 2px;
+					background: rgba(white,.9);
+					li {
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+						padding: 15px 0;
+						button {
+							width: 70px;
+							height: 70px;
+							font-size: 14px;
+							padding: 10px;
+							svg {
+								path {
+									stroke: white;
+								}
+							}
+						}
+						button + span {
+							display: block;
+							margin-top: 5px;
+							width: 100%;
+							font-size: 14px;
+							font-weight: 600;
+							text-align: center;
+							text-transform: uppercase;
+						}
+					}
+				}
+				ul + button {
+					width: 100%;
+					height: 64px;
+					border-radius: 0;
+					margin-top: 2px;
+				}
 			}
 		}
 	}
 }
-
+@media screen and (min-height:667px) {
+	.home-view {
+		#student-home {
+			#home-content {
+				#trending {
+					ul {
+						li {
+							button {
+								width: 100px!important;
+								height: 100px!important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 
 /* ---------- GURU ONBOARDING */
@@ -1775,7 +1946,7 @@ section {
 	}
 	&#demographic {
 		header {
-			&:before {
+			&::before {
 				background: url(../images/schools.jpg) no-repeat center center / cover;
 			}
 			h1 {
@@ -1866,7 +2037,7 @@ section {
 					&.bg-campus {
 						.demographic-popup {
 							left: 0;
-							&:before {
+							&::before {
 								left: 25%;
 							}
 							li {
@@ -1883,7 +2054,7 @@ section {
 					&.bg-shamrock {
 						.demographic-popup {
 							left: -100%;
-							&:before {
+							&::before {
 								left: 75%;
 							}
 							li {
@@ -1900,7 +2071,7 @@ section {
 					&.bg-azure {
 						.demographic-popup {
 							left: 0;
-							&:before {
+							&::before {
 								left: 25%;
 							}
 							li {
@@ -1917,7 +2088,7 @@ section {
 					&.bg-lake {
 						.demographic-popup {
 							left: -100%;
-							&:before {
+							&::before {
 								left: 75%;
 							}
 							li {
@@ -1951,7 +2122,7 @@ section {
 .major-view, .language-view {
 	background: $charcoal;
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
 		}
@@ -1962,7 +2133,8 @@ section {
 			li {
 				a {
 					border-color: $campus;
-					margin-bottom: 1px;
+					margin-bottom: 2px;
+					padding: 0 40px 0 20px;
 					font-weight: 400;
 					font-size: 20px;
 					line-height: 1.2;
@@ -1995,9 +2167,8 @@ section {
 
 // COURSES
 .courses-view {
-	background: $charcoal;
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
 		}
@@ -2012,8 +2183,6 @@ section {
 					display: block;
 					width: 100%;
 					padding: 15px 20px;
-					background: rgba(white,.1);
-					border-color: $campus;
 					font-size: 18px;
 					font-weight: 400;
 					line-height: 24px;
@@ -2042,10 +2211,36 @@ section {
 					cursor: pointer;
 				}
 				input:checked + label {
-					background: $campus;
-					border-color: white!important;
 					color: inherit!important;
 					font-weight: 600;
+				}
+				input:checked:active + label {
+					@include opacity(.75);
+				}
+			}
+		}
+	}
+}
+.courses-view:not(.student-courses-view) {
+	#course {
+		background: $charcoal;
+	}
+	#courses-list {
+		ul {
+			li {
+				label {
+					background: rgba(white,.1);
+					border-color: $campus;
+				}
+				input:checked + label {
+					background: $campus;
+					border-color: white!important;
+				}
+				input:active + label {
+					background: rgba(white,.2);
+				}
+				input:checked:active + label {
+					background: $campus;
 				}
 			}
 		}
@@ -2056,7 +2251,7 @@ section {
 .skills-view {
 	background: $charcoal;
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
 		}
@@ -2098,7 +2293,7 @@ section {
 					}
 				}
 			}
-			[class*="bg-"]:after {
+			[class*="bg-"]::after {
 				@include opacity(.7);
 				position: absolute;
 				content: "";
@@ -2107,28 +2302,28 @@ section {
 				left: 0;
 				top: 0;
 			}
-			.bg-cerise.important:after {
+			.bg-cerise.important::after {
 				background: $cerise;
 			}
-			.bg-orange.important:after {
+			.bg-orange.important::after {
 				background: $orange;
 			}
-			.bg-gold.important:after {
+			.bg-gold.important::after {
 				background: $gold;
 			}
-			.bg-moola.important:after {
+			.bg-moola.important::after {
 				background: $moola;
 			}
-			.bg-shamrock.important:after {
+			.bg-shamrock.important::after {
 				background: $shamrock;
 			}
-			.bg-azure.important:after {
+			.bg-azure.important::after {
 				background: $azure;
 			}
-			.bg-lake.important:after {
+			.bg-lake.important::after {
 				background: $lake;
 			}
-			.bg-eggplant.important:after {
+			.bg-eggplant.important::after {
 				background: $eggplant;
 			}
 		}
@@ -2164,6 +2359,9 @@ section {
 			position: relative;
 			height: 75%;
 			text-align: center;
+			a.active, a.activated, a:active {
+				@include opacity(.75);
+			}
 			h1 {
 				@include center-xy;
 				z-index: 9;
@@ -2194,6 +2392,7 @@ section {
 	font-size: 18px;
 	#profile {
 		overflow-y: scroll;
+		overflow-x: hidden;
 		height: calc(100% - 50px);
 	}
 	#btn-edit-profile, #btn-save-profile {
@@ -2203,19 +2402,21 @@ section {
 	#btn-save-profile button {
 		width: 100%;
 	}
+	#btn-save-profile:active {
+		@include opacity(1);
+		background: $cerise!important;
+	}
+	#btn-edit-profile:active {
+		@include opacity(1);
+		background: $shamrock!important;
+	}
 	.round {
-		@include round;
 		@include flex;
 		@include flex-center;
 		margin: 5px auto;
-		width: auto;
-		height: auto;
-		padding: 5px 10px;
-		font-size: 14px;
-		font-weight: 600;
-		text-transform: uppercase;
 		line-height: 18px;
 		background: $campus;
+		font-size: 14px;
 		svg {
 			width: 19px;
 			height: 18px;
@@ -2232,52 +2433,34 @@ section {
 			line-height: 18px;
 		}
 	}
-	#profile-fixed {
-		position: fixed;
-		top: 0;
-		z-index: 9;
-		width: 100%;
-		height: 64px;
-		padding: 13px 0;
-		background: rgba($slate,.95);
-		#profile-fixed-inside {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			#profile-fixed-icon {
-				@include flex;
-				@include flex-center;
-				img {
-					@include round;
-					width: 35px;
-					height: 35px;
-					border: 3px solid rgba(white,.5);
+	#profile-desc {
+		height: 45%;
+		.profile-slider {
+			position: relative;
+			height: 100%;
+			.slider-slide {
+				padding: 15px 0;
+			}
+			#profile-intro {
+				position: relative;
+				margin: 0 15px;
+				height: calc(100% - 30px);
+				div {
+					@include flex;
+					@include flex-center;
+					height: 100%;
+					font-size: 20px;
+					font-weight: 600;
+				}
+				button + div {
+					height: calc(100% - 64px);
 				}
 			}
-			#profile-fixed-name {
-				padding-left: 10px;
-				h1 {
-					font-size: 24px;
-					line-height: 1;
-					text-transform: uppercase;
-					&.verified {
-						svg {
-							width: 16px;
-							height: 16px;
-						}
-					}
-				}
-				p {
-					margin: 0;
-					font-size: 14px;
-					font-weight: 400;
-					line-height: 1;
-				}
+			.slider-pager {
+				position: relative;
+				bottom: 30px;
 			}
 		}
-	}
-	#profile-desc {
-		padding: 15px 0;
 		#profile-icon {
 			@include round;
 			display: block;
@@ -2299,9 +2482,13 @@ section {
 				h1 {
 					@include center-xy;
 					width: 100px;
+					font-weight: 700;
 					text-align: center;
 					text-transform: uppercase;
 				}
+			}
+			a.active, a.activated, a:active {
+				@include opacity(.75);
 			}
 		}
 		#profile-list {
@@ -2331,7 +2518,7 @@ section {
 				}
 				#profile-loc {
 					font-size: 16px;
-					#profile-loc-city:not(:empty):after {
+					#profile-loc-city:not(:empty)::after {
 						content: ", "
 					}
 				}
@@ -2361,69 +2548,6 @@ section {
 			h1 {
 				background: rgba(white,.05);
 				color: white;
-			}
-			li {
-				position: relative;
-				a {
-					position: absolute;
-					right: 0;
-					top: 0;
-					svg {
-						@include rotate(45);
-						width: 35px;
-						height: 40px;
-						padding: 10px;
-						stroke: white;
-						stroke-width: 10;
-						stroke-linecap: round;
-						stroke-linejoin: round;
-					}
-				}
-			}
-			#profile-courses {
-				ul.courses {
-					@include listless;
-					@include flex;
-					@include flex-wrap;
-					text-align: center;
-					li {
-						padding: 10px 15px;
-						width: 50%;
-						font-weight: 600;
-						position:relative;
-					}
-					li:nth-child(1){
-						background: $lake;
-					}
-					li:nth-child(2){
-						background: $gold;
-					}
-					li:nth-child(3){
-						background: $azure;
-					}
-					li:nth-child(4){
-						background: $orange;
-					}
-					li:nth-child(5){
-						background: $shamrock;
-					}
-					li:nth-child(6){
-						background: $cerise;
-					}
-				}
-				ul.default {
-					@include listless;
-					@include flex;
-					@include flex-wrap;
-					text-align: center;
-					li {
-						padding: 10px 15px;
-						width: 100%;
-						font-weight: 600;
-					}
-				}
-			}
-			h1 {
 				padding: 10px;
 				font-size: 14px;
 				font-weight: 400;
@@ -2432,112 +2556,685 @@ section {
 				text-transform: uppercase;
 				color: white;
 			}
+			li {
+				position: relative;
+				.remove {
+					@include center-y;
+					right: 0;
+					width: 35px;
+					height: 35px;
+					svg {
+						@include rotate(45);
+						width: 35px;
+						height: 35px;
+						padding: 10px;
+						fill: none;
+						stroke: white;
+						stroke-width: 10;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+				}
+			}
+			.profile-list {
+				@include listless;
+				@include flex;
+				@include flex-wrap;
+				text-align: center;
+				border-left: 1px solid rgba(white,.05);
+				border-right: 1px solid rgba(white,.05);
+				li {
+					width: 100%;
+					font-weight: 600;
+					position: relative;
+					border: 1px solid rgba(white,.05);
+					&:first-child {
+						border-top: 0;
+					}
+					&:last-child {
+						border-bottom: 0;
+					}
+					span {
+						display: block;
+						padding: 10px 15px;
+					}
+				}
+				a:active + span, a.active + span {
+					background: rgba($campus,.5);
+				}
+			}
+			.profile-list-half {
+				li {
+					&:nth-last-child(2) {
+						border-bottom: 0!important;
+					}
+					&:last-child {
+						display: none;
+					}
+				}
+			}
+			.courses.profile-list-half {
+				li {
+					width: 50%;
+					&:nth-child(1), &:nth-child(2) {
+						border-top: 0;
+					}
+					&:nth-last-child(2),
+					&:nth-last-child(3):nth-child(odd),
+					&:last-child:nth-child(even) {
+						border-bottom: 0;
+					}
+					&:last-child:nth-child(even) {
+						display: block;
+					}
+				}
+			}
 			#profile-other {
 				> div {
 					background: $charcoal;
-					div {
-						ul {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							text-align: center;
-							li {
-								padding: 10px 15px;
-								width: 50%;
-								font-weight: 600;
+				}
+				#profile-experiences {
+					a {
+						text-align: left!important;
+						padding: 10px 15px;
+						background: transparent!important;
+						span {
+							padding: 0!important;
+							font-weight: 300;
+							h2 {
+								margin-bottom: 2px;
+								font-weight: 600!important;
 							}
+							svg {
+								@include transform-reset;
+								padding: 0;
+								text-align: right;
+								stroke-width: 3px;
+								fill: none;
+							}
+						}
+						.list-item-detail {
+							width: calc(100% - 35px);
+						}
+						.list-item-icon {
+							width: 35px;
+						}
+					}
+					a.active, a:active {
+						background: rgba($campus,.5)!important;
+					}
+				}
+				hr {
+					padding: 0;
+					margin: 0;
+					border: 1px solid rgba(white, .05);
+				}
+			}
+			.empty {
+				border: 0!important;
+				li {
+					width: 100%!important;
+					font-weight: 300!important;
+					text-align: center!important;
+					border: 0!important;
+					span {
+						display: block;
+						padding: 10px 15px;
+						text-align: center;
+					}
+				}
+			}
+			.default {
+				@include listless;
+				@include flex;
+				@include flex-wrap;
+				text-align: center;
+				li {
+					padding: 10px 15px!important;
+					width: 100%!important;
+					font-weight: 600;
+					border-top: 2px solid rgba(white, .05)!important;
+					span {
+						padding: 0!important;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:414px) {
+	.guru-profile-view {
+		#profile-info {
+			.profile-inside {
+				.profile-list-half {
+					li {
+						width: 50%;
+						&:nth-child(1), &:nth-child(2) {
+							border-top: 0;
+						}
+						&:nth-last-child(2),
+						&:nth-last-child(3):nth-child(odd),
+						&:last-child:nth-child(even) {
+							border-bottom: 0;
+						}
+						&:last-child:nth-child(even) {
+							display: block;
 						}
 					}
 				}
-				#profile-major, #profile-job {
-					div {
-						ul.majors {
-							li {
-								position: relative;
-								width: 100%;
-								font-weight: 200;
-								border-bottom: 1px solid rgba(white, .1);
-								&:last-child {
-									border-bottom: 0;
+			}
+		}
+	}
+}
+@media screen and (min-height:667px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: 38%;
+		}
+	}
+}
+@media screen and (min-height:736px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: calc(100% / 3);
+		}
+	}
+}
+
+// PHOTO GURU PROFILE
+.photo-guru-profile-view {
+	color: $charcoal;
+	a {
+		color: $charcoal;
+	}
+	hr {
+		margin: 15px;
+		border: 1px solid rgba($taupe,.3)!important;
+	}
+	#profile {
+		height: 100%!important;
+		padding-bottom: 64px;
+	}
+	#profile-banner {
+		width: 100%;
+		height: 25%;
+		background: url(../../img/photo-guru-banner.png) center center / cover;
+	}
+	#profile-desc {
+		padding: 0;
+		margin-top: -50px;
+		#profile-icon {
+			img {
+				background: white;
+			}
+		}
+		#profile-list {
+			ul {
+				#profile-name {
+					h1 {
+						color: $charcoal;
+						font-weight: 700;
+						&.verified {
+							svg {
+								path:first-child {
+									fill: $campus;
 								}
 							}
 						}
-						ul.default {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							text-align: center;
-							li {
-								padding: 10px 15px;
-								width: 100%;
-								font-weight: 600;
-							}
-						}
 					}
 				}
-				#profile-skills {
-					div {
-						ul.skills {
-							li {
-								position:relative;
-							}
-							li:nth-child(1){
-								background: $lake;
-							}
-							li:nth-child(2){
-								background: $shamrock;
-							}
-							li:nth-child(3){
-								background: $azure;
-							}
-							li:nth-child(4){
-								background: $moola;
-							}
-						}
-						ul.default {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							text-align: center;
-							li {
-								padding: 10px 15px;
-								width: 100%;
-								font-weight: 600;
-							}
-						}
+				#profile-blurb {
+					padding: 5px 15px;
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 1.25;
+				}
+				#profile-contact {
+					padding: 10px 0 5px;
+				}
+			}
+		}
+	}
+	#profile-nav {
+		ul {
+			padding: 0 7.5px;
+			li {
+				padding: 0 7.5px;
+				text-align: center;
+				a {
+					display: inline-block;
+					padding-bottom: 5px;
+					border-bottom: 3px solid transparent;
+					color: rgba($taupe,.5);
+					font-weight: 600;
+					font-size: 16px;
+					letter-spacing: 1px;
+					text-transform: uppercase;
+					&.active {
+						color: $charcoal;
+						border-bottom: 3px solid $charcoal;
+					}
+					&:active {
+						color: $slate;
+						border-bottom: 3px solid $slate;
 					}
 				}
-				#profile-languages {
-					div {
-						ul.languages {
-							li {
-								position:relative;
-							}
-							li:nth-child(1){
-								background: $gold;
-							}
-							li:nth-child(2){
-								background: $orange;
-							}
-						}
-						ul.default {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							text-align: center;
-							li {
-								padding: 10px 15px;
-								width: 100%;
-								font-weight: 600;
-							}
-						}
-					}
+			}
+		}
+	}
+	#profile-skills {
+		hr {
+			border: 0 solid transparent!important;
+			border-top: 1px solid rgba($taupe,.1)!important;
+		}
+		section {
+			text-align: center;
+			text-transform: uppercase;
+			h1 {
+				padding: 10px 0;
+				font-size: 22px;
+				font-weight: 600;
+				letter-spacing: 1px;
+			}
+			ul {
+				li {
+					padding: 15px 0;
+					font-weight: 300;
+					font-size: 16px;
 				}
-				.empty {
-					li {
+			}
+			&:last-child {
+				padding-bottom: 15px;
+			}
+		}
+	}
+	#profile-gallery {
+		section {
+			position: relative;
+			margin: 40px 0;
+			&:first-child {
+				margin-top: 20px;
+			}
+			img {
+				display: block;
+				width: 100%;
+			}
+			p {
+				padding-bottom: 13px;
+				margin: 0;
+			}
+			.gallery-desc {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				padding: 15px;
+				background: rgba($charcoal,.8);
+				color: white;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 1.25;
+				.gallery-tags {
+					padding-top: 2px;
+					font-size: 14px;
+					ul {
+						@include flex;
+						@include flex-wrap;
 						width: 100%;
-						font-weight: 300;
+						li {
+							padding-right: 7px;
+							a {
+								@include opacity(.75);
+								color: white!important;
+								&::before {
+									content: "#";
+								}
+								&.active, &:active {
+									@include opacity(1);
+								}
+							}
+						}
+					}
+				}
+				.gallery-loc {
+					@include opacity(.75);
+					@include flex;
+					@include flex-center-vertical;
+					width: 100%;
+					padding-top: 2px;
+					color: white;
+					font-size: 14px;
+					span {
+						line-height: 20px;
+						svg {
+							display: block;
+							width: 20px;
+							height: 20px;
+							path {
+								stroke: white;
+								fill: none;
+								stroke-width: 5px;
+								stroke-linecap: round;
+								stroke-linejoin: round;
+							}
+						}
+					}
+				}
+			}
+			.gallery-desc:not(.active), .gallery-desc.active + .gallery-info {
+				@include opacity(0);
+				display: none;
+			}
+			.gallery-info, .gallery-photo {
+				@include flex;
+				@include flex-center;
+				position: absolute;
+				display: block;
+				bottom: 15px;
+				right: 15px;
+				width: 50px;
+				height: 50px;
+				padding: 0;
+				svg {
+					display: block;
+					width: 50px;
+					height: 50px;
+					padding: 5px;
+					path {
+						fill: none;
+						stroke-width: 5px;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+				}
+			}
+			.gallery-info {
+				background: rgba($charcoal,.8);
+				svg {
+					path {
+						stroke: white;
+					}
+				}
+			}
+			.gallery-photo {
+				background: rgba(white,.8);
+				svg {
+					path {
+						stroke: $charcoal;
+					}
+				}
+			}
+		}
+	}
+	#book-guru.activated {
+		@include opacity(1);
+		background: $charcoal!important;
+	}
+}
+
+// BAKERY GURU PROFILE
+.bakery-guru-profile-view {
+	color: $slate;
+	background: $bakery-bg;
+	header {
+		background: $bakery;
+		h1 {
+			color: white;
+			font-weight: 900;
+		}
+	}
+	#profile, #menu, #info {
+		height: 100%!important;
+	}
+	#profile-banner {
+		width: 100%;
+		height: 50%;
+		background: url(../../img/bakery-guru-banner.png) center center / cover;
+	}
+	#profile-desc {
+		@include flex;
+		@include flex-bottom;
+		-webkit-justify-content: flex-start;
+		justify-content: flex-start;
+		position: absolute;
+		width: 100%;
+		height: 50%;
+		padding: 0;
+		top: 0;
+		left: 0;
+		background: rgba($charcoal,.05);
+		#profile-list {
+			ul {
+				text-align: left;
+				padding: 30px;
+				#profile-name {
+					h1 {
+						padding-left: 0;
+						color: white;
+						font-size: 32px;
+						font-weight: 900;
+						&.verified {
+							svg {
+								path:first-child {
+									fill: $bakery;
+								}
+							}
+						}
+					}
+				}
+				#profile-blurb {
+					color: white;
+					font-size: 18px;
+					font-weight: 600;
+					line-height: 1.25;
+					padding: 5px 0;
+				}
+				#profile-contact {
+					padding: 10px 0 5px;
+					button {
+						background: $bakery;
+						border-color: $bakery;
+						color: white;
+						font-weight: 700!important;
+					}
+				}
+			}
+		}
+	}
+	#profile-promo {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		height: 25%;
+		padding: 15px;
+		p {
+			margin: 0;
+			font-weight: 400;
+		}
+		a {
+			display: block;
+			padding-top: 15px;
+			color: $bakery;
+			font-size: 24px;
+			font-weight: 900;
+			text-transform: uppercase;
+		}
+	}
+	#profile-nav {
+		height: 25%;
+		ul {
+			height: 100%;
+			padding: 1px;
+			li {
+				position: relative;
+				height: 100%;
+				padding: 1px;
+				a {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					background: $bakery;
+					color: white;
+					font-size: 24px;
+					font-weight: 900;
+					text-align: center;
+					span {
+						position: relative;
+						z-index: 2;
+					}
+					svg {
+						@include transition(.15s ease-in-out);
+						display: block;
+						position: absolute;
+						z-index: 1;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						path {
+							@include transition(.15s ease-in-out);
+							@include opacity(.2);
+							fill: none;
+							stroke: $charcoal;
+							stroke-width: 3px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
+						}
+					}
+				}
+				a.active, a:active, a:hover {
+					svg {
+						background: rgba($charcoal,.2);
+						path {
+							@include opacity(.4);
+							stroke: $bakery;
+						}
+					}
+				}
+			}
+		}
+	}
+	#info {
+		#info-content {
+			height: calc(100% - 50px);
+			#info-map {
+				height: 40%;
+				background: url(../../img/map-small.png) center center / cover;
+				-webkit-filter: grayscale(.5);
+				filter: grayscale(.5);
+			}
+			#info-directions, #info-hours {
+				@include flex;
+				height: 30%;
+				svg {
+					display: block;
+					margin-left: 8px;
+					margin-top: 8px;
+					width: 50px;
+					height: 50px;
+					path {
+						fill: none;
+						stroke: $bakery;
+						stroke-width: 5px;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+				}
+				div:last-child {
+					h1 {
+						font-size: 24px;
+						font-weight: 900;
+						margin-top: 8px;
+						margin-left: 8px;
+						line-height: 50px;
+						text-transform: uppercase;
+					}
+				}
+			}
+			#info-hours {
+				border-top: 1px solid $bakery;
+			}
+		}
+	}
+	#menu {
+		#menu-content {
+			height: calc(100% - 50px);
+			overflow-y: auto;
+			ul {
+				height: 100%;
+				padding: 1px;
+				li {
+					height: 25%;
+					padding: 1px;
+					a {
+						@include transition(.15s ease-in-out);
+						display: block;
+						position: relative;
+						width: 100%;
+						height: 100%;
+						background-size: cover;
+						span {
+							@include transition(.15s ease-in-out);
+							@include opacity(0);
+							@include flex;
+							@include flex-center;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background: rgba($bakery,.8);
+							font-size: 24px;
+							font-weight: 900;
+							text-transform: uppercase;
+						}
+					}
+					a.active, a:active, a:hover {
+						span {
+							@include opacity(1);
+						}
+					}
+					.menu-desc {
+						display: none;
 						text-align: center;
+						img {
+							display: block;
+							width: 100%;
+						}
+						h1 {
+							padding: 15px 15px 0;
+							color: $bakery;
+							font-size: 32px;
+							font-weight: 900;
+							text-transform: uppercase;
+						}
+						p {
+							margin: 10px 15px 15px;
+							font-weight: 400;
+						}
+					}
+					&.active {
+						width: 100%;
+						height: auto;
+						a {
+							display: none;
+						}
+						.menu-desc {
+							display: block;
+						}
+					}
+					&.inactive {
+						a {
+							@include opacity(.5);
+						}
+						a.active, a:active, a:hover {
+							@include opacity(1);
+						}
 					}
 				}
 			}
@@ -2607,6 +3304,9 @@ section {
 					.credit-icon {
 						background: $cerise;
 					}
+				}
+				a.active, a:active {
+					@include opacity(.75);
 				}
 			}
 			.active {
@@ -2715,6 +3415,12 @@ section {
 			&.active {
 				display: block;
 			}
+			.semi-opaque {
+				@include opacity(.5);
+			}
+			.semi-opaque:active, .semi-opaque.active {
+				@include opacity(1);
+			}
 			> div {
 				height: 100%;
 				.credit-body {
@@ -2809,9 +3515,13 @@ section {
 // GURU RANKING
 .guru-view {
 	header {
-		&:before {
+		&::before {
 			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
 		}
+	}
+	#guru-home-content {
+		overflow: none!important;
+		padding-bottom: 50px;
 	}
 	#guru-ranking {
 		@include flex;
@@ -2854,7 +3564,7 @@ section {
 					line-height: 1;
 					text-align: center;
 
-					&:after {
+					&::after {
 						content: "th";
 						display: block;
 						position: absolute;
@@ -2895,14 +3605,49 @@ section {
 			}
 		}
 	}
-	.tip-container {
-		h2 {
-			font-size: 22px;
+	.guru-tip-of-day-slide-box {
+		height: calc(100% - 36px);
+		.card {
+			margin: 15px!important;
+			height: calc(100% - 60px);
+			padding: 0!important;
+			background: $slate;
+			border-radius: 5px;
+			overflow: hidden;
+			text-align: center;
+			.card-content {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				padding: 15px;
+				height: calc(100% - 64px);
+				svg {
+					display: block;
+					width: 100%;
+					height: 100%;
+					max-height: 70px;
+					margin-bottom: 15px;
+				}
+				h2 {
+					font-size: 28px;
+					font-weight: 600;
+				}
+				p {
+					margin: 10px 0 0;
+					font-size: 22px;
+				}
+			}
 		}
-		p {
-			margin-top: 10px;
-			font-size: 18px;
+		.slider-pager {
+			bottom: 15px;
 		}
+	}
+	#btn-launch-profile:active {
+		@include opacity(1);
+		background: $shamrock!important;
+	}
+	#btn-launch-profile + .guru-tip-of-day-slide-box {
+		height: calc(100% - 50px);
 	}
 }
 @media screen and (min-height:540px) {
@@ -2939,6 +3684,92 @@ section {
 
 
 
+/* ---------- OFFLINE */
+#offline {
+	@include flex;
+	@include flex-center;
+	padding: 15px;
+	background: $smoke;
+	color: $charcoal;
+	text-align: center;
+	> div {
+		width: 100%;
+	}
+	svg {
+		width: 100%;
+		max-width: 75%;
+		#phone {
+			@include animation-name(phone-hover);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
+		}
+		#shadow {
+			@include animation-name(shadow-hover);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
+			@include scale(0.98);
+			@include transform-origin(center center);
+		}
+		#sweat {
+			@include animation-name(sweat-roll);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
+		}
+	}
+	svg + div {
+		margin-top: 30px;
+		h1 {
+			font-size: 24px;
+			font-weight: 600;
+		}
+		p {
+			margin: 10px 0 15px;
+			font-weight: 300;
+		}
+		button {
+			font-size: 16px;
+			padding: 5px 15px;
+		}
+	}
+}
+
+@include keyframes(phone-hover) {
+	0% {
+		@include translate-y(0);
+	}
+	50% {
+		@include translate-y(2px);
+	}
+	100% {
+		@include translate-y(0);
+	}
+}
+
+@include keyframes(shadow-hover) {
+	0% {
+		@include scale(0.9);
+	}
+	50% {
+		@include scale(1);
+	}
+	100% {
+		@include scale(0.9);
+	}
+}
+
+@include keyframes(sweat-roll) {
+	0% {
+		@include translate-y(5px);
+	}
+	50% {
+		@include translate-y(10px);
+	}
+	100% {
+		@include translate-y(5px);
+	}
+}
+
+
 
 
 
@@ -2946,11 +3777,6 @@ section {
 .smaller-list-font {
 	font-size: 85%;
 }
-
-.slider-pager {
-	display: none;
-}
-
 .content {
 	height: 100%;
 	&.footer-exists {
@@ -3002,4 +3828,26 @@ section {
 	position: absolute;
     right: 10px;
     top: 34%;
+}
+
+//platform specific ios
+body.platform-ios {
+	background-color:transparent;
+	background:transparent;
+	ion-side-menus.root-ion-side-menus.view {
+		background-color:transparent;
+		.home-view {
+			background-color: white;
+			background:white;
+			padding-top:20px;
+			section, #student-home-map-container {
+				top:20px !important;
+			}
+		}
+	}
+}
+
+.android-access-edge-case {
+	bottom:64px;
+	position:absolute;
 }

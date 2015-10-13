@@ -8,11 +8,16 @@ angular
   '$timeout',
   'Geolocation',
   'University',
+  'Version',
+  '$ionicHistory',
+  '$templateCache',
+  '$localstorage',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
-	AndroidService, iOSService, WindowsService, $timeout, Geolocation, University) {
+	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
+  University, Version, $ionicHistory, $templateCache, $localstorage) {
 
 	return {
 		readyDevice: readyDevice,
@@ -23,6 +28,9 @@ function DeviceService($cordovaNgCardIO,
     getUUID: getUUID,
 		isMobile: isMobile,
 		isWeb: isWeb,
+    isAndroidDevice: isAndroidDevice,
+    isAndroidBrowser: isAndroidBrowser,
+    isAndroid:isAndroid,
     ios: iOSService,
     getInfo: getInfo,
     checkUpdates: checkUpdates
@@ -31,6 +39,30 @@ function DeviceService($cordovaNgCardIO,
 	function isMobile() {
 		return ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone();
 	}
+
+  function isAndroidDevice() {
+    var userAgent = navigator.userAgent;
+    var androidWebViewAgents = ['Build/KLP', 'Version', 'wv'];
+    var isWebView = false;
+    for (var i = 0; i < androidWebViewAgents.length; i++ ) {
+      var indexUA = androidWebViewAgents[i];
+      if (userAgent.indexOf(indexUA) > -1) {
+        isWebView = true;
+      }
+      break;
+    }
+
+    //needs to be both
+    return ionic.Platform.isAndroid() && isWebView;
+  }
+
+  function isAndroid() {
+    return ionic.Platform.isAndroid();
+  }
+
+  function isAndroidBrowser() {
+    return !isAndroidDevice() && ionic.Platform.isAndroid();
+  }
 
 	function isWeb() {
 		return !isMobile();
@@ -74,39 +106,41 @@ function DeviceService($cordovaNgCardIO,
 
 	function readyDevice(scope) {
 
-    var userAgent = navigator.userAgent;
-    console.log("userAgent: " + userAgent);
-    
-    if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
-      console.log("detected mobile app");
-      onDeviceReady(scope);
-    } else {
-      console.log("did not detect mobile app");
-    }
 
+
+    var userAgent = navigator.userAgent;
+
+
+      if(userAgent.indexOf('wv')!==-1) {
+        onDeviceReady(scope);
+      }
+
+      if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
+        console.log("detected mobile app");
+        onDeviceReady(scope);
+      } else {
+        console.log("did not detect mobile app");
+      }
 	}
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
-    
-		//checkUpdates();
 
-    //Ugh --> they overroad the native js OnDOMContentLoaded ...
-    ionic.DomUtil.ready(function(){
-      if(navigator.splashscreen) {
-
-        //offset is to avoid the sidebar showing last second before
-        $timeout(function() {
-          console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
-          navigator.splashscreen.hide();
-        }, 2000);
-      }
-    })
-
+<<<<<<< HEAD
     // if(navigator.splashscreen) {
     //   console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
     //   navigator.splashscreen.show();
     // }
+=======
+    if(navigator.splashscreen) {
+      console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
+
+      //the delay is for preventing components from rendering on the first go
+      $timeout(function() {
+        navigator.splashscreen.show();
+      }, 2000)
+    }
+>>>>>>> samir-dev
 
 		if(isMobile()) {
 
@@ -136,11 +170,20 @@ function DeviceService($cordovaNgCardIO,
     // don't update on local
     if (LOCAL) {
       console.log("running local: skipping over checkUpdates");
+
+        // hide it otherwise it never would on emulators
+       $timeout(function() {
+          if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
+            navigator.splashscreen.hide();
+          }
+        }, 2000)
+
       return;
     }
     console.log("did not detect local, checking for updates");
-    // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-    //local_version = $localstorage.getObject('version');
+
+
+
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
           function(response) {
@@ -183,7 +226,15 @@ function DeviceService($cordovaNgCardIO,
                     window.location.reload(true);
                   }
 
-           	  }
+           	  } else {
+                //the only place where this will
+                $timeout(function() {
+                  if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
+                    navigator.splashscreen.hide();
+                  }
+                }, 2000)
+
+              }
           },
            //connectivity issues
           function(error) {

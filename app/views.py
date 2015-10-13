@@ -93,10 +93,18 @@ def new_home_page():
 
 @app.route('/faq/')
 def faq():
+    import httpagentparser
+    print httpagentparser.simple_detect(request.user_agent.string)
+    print httpagentparser.detect(request.user_agent.string)
     return render_template("web/pages/faq.html")
 
 @app.route('/faq-only/')
 def faq_body():
+    from flask import request
+    print request.user_agent.platform, request.user_agent.browser
+    import httpagentparser
+    print httpagentparser.simple_detect(request.user_agent.string)
+    print httpagentparser.detect(request.user_agent.string)
     return render_template("web/pages/faq_only.html")
 
 @app.route('/manifest/')
@@ -240,6 +248,13 @@ def admin_view_campaigns():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/campaigns.html")
+
+@app.route('/admin/design/banners')
+def admin_design_banners():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.banner_url != None, University.logo_url != None).all()
+    return render_template('admin/design.validate.flickr.html', universities=universities)
 
 @app.route('/admin/campaigns/create/')
 def admin_create():
@@ -608,13 +623,17 @@ def windows_app():
 @app.route('/app/production/')
 @app.route('/app/')
 def app_route():
+
+    from flask import request
+    print request.user_agent.platform, request.user_agent.browser
+
     version = Version.query.get(1)
     if version and version.ios:
         version = version.ios
     else:
         version = 1
     print '\n\n\n\n\nrequest headers'
-    print request.headers, type(request.headers)
+    # print request.headers, type(request.headers)
     if 'iPad' in str(request.headers) and 'Safari' in str(request.headers):
         return redirect(url_for('itunes_app'))
     if os.environ.get('PRODUCTION'):

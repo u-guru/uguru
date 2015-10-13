@@ -45,12 +45,6 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
-.uguru-view h1.verified span svg {
-  display: inline !important;
-  width: 20px;
-  height: 20px; }
-  .uguru-view h1.verified span svg path:first-child {
-    fill: #50A5DD; }
 .uguru-view .request#request header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
 .uguru-view .request#request header .request-header h1 {
@@ -186,14 +180,12 @@ section {
       font-size: 12px;
       line-height: 20px; }
 @media screen and (max-width: 320px) {
-  .uguru-view body, .uguru-view input, .uguru-view button {
+  .uguru-view body {
     font-size: 20px; }
   .uguru-view #start-container {
     font-size: 24px !important; }
   .uguru-view #skills-list a {
     font-size: 16px !important; }
-  .uguru-view #request-button span b {
-    font-size: 18px !important; }
   .uguru-view #skills-list .skill-icon {
     margin-bottom: 10px;
     width: 40px !important;
@@ -481,25 +473,37 @@ section {
         height: 100%;
         overflow: auto; }
 
-#experience-modal {
+#experience-modal,
+#guru-introduction-modal {
   position: absolute;
   top: 0; }
-  #experience-modal .main {
+  #experience-modal .main,
+  #guru-introduction-modal .main {
     height: calc(100% - 50px - 64px); }
-    #experience-modal .main .ugrid-3 {
+    #experience-modal .main .ugrid-3,
+    #guru-introduction-modal .main .ugrid-3 {
       margin-top: -10px;
       padding-bottom: 15px;
       font-size: 16px;
       font-weight: 400; }
-      #experience-modal .main .ugrid-3 li {
+      #experience-modal .main .ugrid-3 li,
+      #guru-introduction-modal .main .ugrid-3 li {
         padding: 0 15px; }
-      #experience-modal .main .ugrid-3 li:nth-child(2) {
+      #experience-modal .main .ugrid-3 li:nth-child(2),
+      #guru-introduction-modal .main .ugrid-3 li:nth-child(2) {
         text-align: center; }
-      #experience-modal .main .ugrid-3 li:nth-child(3) {
+      #experience-modal .main .ugrid-3 li:nth-child(3),
+      #guru-introduction-modal .main .ugrid-3 li:nth-child(3) {
         text-align: right; }
-    #experience-modal .main #exp-input {
+    #experience-modal .main #exp-input, #experience-modal .main #guru-intro-input,
+    #guru-introduction-modal .main #exp-input,
+    #guru-introduction-modal .main #guru-intro-input {
+      height: calc(100% - 194px); }
+    #experience-modal .main #exp-input.removable,
+    #guru-introduction-modal .main #exp-input.removable {
       height: calc(100% - 258px); }
-    #experience-modal .main textarea {
+    #experience-modal .main textarea,
+    #guru-introduction-modal .main textarea {
       font-size: 18px;
       height: 100%;
       resize: none; }
@@ -1113,6 +1117,55 @@ section {
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
+.student-courses-view #course {
+  background: white; }
+  .student-courses-view #course header {
+    color: #2B3234;
+    background: #FFFDFA; }
+    .student-courses-view #course header svg path {
+      stroke: #2B3234; }
+    .student-courses-view #course header .onboarding-search .clear-search-input {
+      position: absolute;
+      right: 0;
+      top: 20px;
+      right: 10px;
+      color: rgba(43, 50, 52, 0.7);
+      padding: 0px; }
+    .student-courses-view #course header .onboarding-search input {
+      border-bottom: 1px solid rgba(43, 50, 52, 0.5);
+      color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input::-webkit-input-placeholder {
+        color: rgba(43, 50, 52, 0.5); }
+      .student-courses-view #course header .onboarding-search input:-moz-placeholder {
+        color: rgba(43, 50, 52, 0.5); }
+      .student-courses-view #course header .onboarding-search input::-moz-placeholder {
+        color: rgba(43, 50, 52, 0.5); }
+      .student-courses-view #course header .onboarding-search input:-ms-input-placeholder {
+        color: rgba(43, 50, 52, 0.5); }
+    .student-courses-view #course header .onboarding-search input:active, .student-courses-view #course header .onboarding-search input:focus {
+      border-bottom-color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input:active::-webkit-input-placeholder, .student-courses-view #course header .onboarding-search input:focus::-webkit-input-placeholder {
+        color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input:active:-moz-placeholder, .student-courses-view #course header .onboarding-search input:focus:-moz-placeholder {
+        color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input:active::-moz-placeholder, .student-courses-view #course header .onboarding-search input:focus::-moz-placeholder {
+        color: #2B3234; }
+      .student-courses-view #course header .onboarding-search input:active:-ms-input-placeholder, .student-courses-view #course header .onboarding-search input:focus:-ms-input-placeholder {
+        color: #2B3234; }
+    .student-courses-view #course header .onboarding-search:before {
+      background: url(../../img/svg/search-dark.svg) no-repeat center center/cover, url(/static/remote/img/svg/search-dark.svg) center/cover no-repeat; }
+.student-courses-view #courses-list ul li label {
+  background: #F1F1F1;
+  color: #2B3234;
+  border-color: #8A9EA3; }
+.student-courses-view #courses-list ul li input:checked + label {
+  background: #8A9EA3;
+  border-color: rgba(255, 255, 255, 0.4) !important; }
+.student-courses-view #courses-list ul li input:active + label {
+  background: rgba(138, 158, 163, 0.2); }
+.student-courses-view #courses-list ul li input:checked:active + label {
+  background: #8A9EA3; }
+
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -1120,7 +1173,9 @@ section {
   height: 100%;
   z-index: 20;
   position: absolute;
-  right: 0; }
+  right: 0;
+  height: 110%;
+  bottom: 0; }
 
 .side-menu-list {
   position: relative;
@@ -1308,6 +1363,39 @@ section {
   .tabs.student-tabs svg {
     stroke: #40484B; }
 
+.slider-pager {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: auto !important; }
+  .slider-pager span {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
+  .slider-pager .icon {
+    font-size: 12px;
+    line-height: 16px; }
+
 /* ---------- SETTING UP APP */
 .access-view {
   background: #69B3A5; }
@@ -1330,17 +1418,10 @@ section {
     align-items: flex-end;
     -webkit-justify-content: center;
     justify-content: center;
-    height: calc(100% - 127px); }
+    height: 70%; }
     .access-view #access-logo svg {
       display: block;
-      max-height: 60%; }
-    .access-view #access-logo #access-title {
-      width: 100%; }
-      .access-view #access-logo #access-title h1 {
-        text-align: center;
-        font-size: 48px;
-        font-weight: 900;
-        letter-spacing: 1px; }
+      max-height: 70%; }
   .access-view #access-code {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -1481,7 +1562,9 @@ section {
   .university-view header::before {
     background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
-    margin-top: 3px; }
+    margin-top: 3px;
+    padding: 50px;
+    margin-right: -50px; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
     .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
@@ -1522,7 +1605,7 @@ section {
         font-size: 12px;
         padding-top: 5px;
         font-weight: 500; }
-  .university-view #school-list ul li a:active.active, .university-view #school-list ul li a:active.activated, .university-view #school-list ul li a:focus.active, .university-view #school-list ul li a:focus.activated, .university-view #school-list ul li a:hover.active, .university-view #school-list ul li a:hover.activated, .university-view #school-list-modal ul li a:active.active, .university-view #school-list-modal ul li a:active.activated, .university-view #school-list-modal ul li a:focus.active, .university-view #school-list-modal ul li a:focus.activated, .university-view #school-list-modal ul li a:hover.active, .university-view #school-list-modal ul li a:hover.activated {
+  .university-view #school-list ul li a:active, .university-view #school-list ul li a.active, .university-view #school-list ul li a.activated, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a.active, .university-view #school-list-modal ul li a.activated {
     background: rgba(255, 255, 255, 0.2); }
 
 .home-view {
@@ -1873,56 +1956,60 @@ section {
         height: 64px;
         padding: 20px; }
 
-.courses-view {
-  background: #2B3234; }
-  .courses-view header::before {
-    background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
-  .courses-view #courses-list ul {
-    margin: 1px 1px 0; }
-    .courses-view #courses-list ul li {
-      position: relative;
-      border: 1px solid transparent; }
-      .courses-view #courses-list ul li label {
+.courses-view header::before {
+  background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
+.courses-view #courses-list ul {
+  margin: 1px 1px 0; }
+  .courses-view #courses-list ul li {
+    position: relative;
+    border: 1px solid transparent; }
+    .courses-view #courses-list ul li label {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left; }
+      .courses-view #courses-list ul li label span {
         display: block;
         width: 100%;
-        padding: 15px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        border-color: #8A9EA3;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 24px;
-        text-align: left; }
-        .courses-view #courses-list ul li label span {
-          display: block;
-          width: 100%;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis; }
-          .courses-view #courses-list ul li label span:first-child {
-            font-size: 14px;
-            line-height: 1.2; }
-      .courses-view #courses-list ul li input {
-        filter: alpha(opacity=0);
-        opacity: 0;
-        position: absolute;
-        z-index: 99;
-        top: 0;
-        left: 0;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer; }
-      .courses-view #courses-list ul li input:checked + label {
-        background: #8A9EA3;
-        border-color: white !important;
-        color: inherit !important;
-        font-weight: 600; }
-      .courses-view #courses-list ul li input:active + label {
-        background: rgba(255, 255, 255, 0.2); }
-      .courses-view #courses-list ul li input:checked:active + label {
-        filter: alpha(opacity=75);
-        opacity: 0.75;
-        background: #8A9EA3; }
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+        .courses-view #courses-list ul li label span:first-child {
+          font-size: 14px;
+          line-height: 1.2; }
+    .courses-view #courses-list ul li input {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      position: absolute;
+      z-index: 99;
+      top: 0;
+      left: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer; }
+    .courses-view #courses-list ul li input:checked + label {
+      color: inherit !important;
+      font-weight: 600; }
+    .courses-view #courses-list ul li input:checked:active + label {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
+
+.courses-view:not(.student-courses-view) #course {
+  background: #2B3234; }
+.courses-view:not(.student-courses-view) #courses-list ul li label {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #8A9EA3; }
+.courses-view:not(.student-courses-view) #courses-list ul li input:checked + label {
+  background: #8A9EA3;
+  border-color: white !important; }
+.courses-view:not(.student-courses-view) #courses-list ul li input:active + label {
+  background: rgba(255, 255, 255, 0.2); }
+.courses-view:not(.student-courses-view) #courses-list ul li input:checked:active + label {
+  background: #8A9EA3; }
 
 .skills-view {
   background: #2B3234; }
@@ -2091,7 +2178,8 @@ section {
     justify-content: center;
     margin: 5px auto;
     line-height: 18px;
-    background: #8A9EA3; }
+    background: #8A9EA3;
+    font-size: 14px; }
     .guru-profile-view .round svg {
       width: 19px;
       height: 18px;
@@ -2104,66 +2192,39 @@ section {
         fill: none; }
     .guru-profile-view .round span {
       line-height: 18px; }
-  .guru-profile-view #profile-fixed {
-    position: fixed;
-    top: 0;
-    z-index: 9;
-    width: 100%;
-    height: 64px;
-    padding: 13px 0;
-    background: rgba(64, 72, 75, 0.95); }
-    .guru-profile-view #profile-fixed #profile-fixed-inside {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center; }
-      .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-icon {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-icon img {
-          border-radius: 1000px;
-          width: 35px;
-          height: 35px;
-          border: 3px solid rgba(255, 255, 255, 0.5); }
-      .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name {
-        padding-left: 10px; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name h1 {
-          font-size: 24px;
-          line-height: 1;
-          text-transform: uppercase; }
-          .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name h1.verified svg {
-            width: 16px;
-            height: 16px; }
-        .guru-profile-view #profile-fixed #profile-fixed-inside #profile-fixed-name p {
-          margin: 0;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 1; }
   .guru-profile-view #profile-desc {
-    padding: 15px 0; }
+    height: 45%; }
+    .guru-profile-view #profile-desc .profile-slider {
+      position: relative;
+      height: 100%; }
+      .guru-profile-view #profile-desc .profile-slider .slider-slide {
+        padding: 15px 0; }
+      .guru-profile-view #profile-desc .profile-slider #profile-intro {
+        position: relative;
+        margin: 0 15px;
+        height: calc(100% - 30px); }
+        .guru-profile-view #profile-desc .profile-slider #profile-intro div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          height: 100%;
+          font-size: 20px;
+          font-weight: 600; }
+        .guru-profile-view #profile-desc .profile-slider #profile-intro button + div {
+          height: calc(100% - 64px); }
+      .guru-profile-view #profile-desc .profile-slider .slider-pager {
+        position: relative;
+        bottom: 30px; }
     .guru-profile-view #profile-desc #profile-icon {
       border-radius: 1000px;
       display: block; }
@@ -2191,6 +2252,7 @@ section {
           -o-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           width: 100px;
+          font-weight: 700;
           text-align: center;
           text-transform: uppercase; }
       .guru-profile-view #profile-desc #profile-icon a.active, .guru-profile-view #profile-desc #profile-icon a.activated, .guru-profile-view #profile-desc #profile-icon a:active {
@@ -2403,6 +2465,494 @@ section {
       border-bottom: 0; }
     .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
       display: block; } }
+@media screen and (min-height: 667px) {
+  .guru-profile-view #profile-desc {
+    height: 38%; } }
+@media screen and (min-height: 736px) {
+  .guru-profile-view #profile-desc {
+    height: calc(100% / 3); } }
+.photo-guru-profile-view {
+  color: #2B3234; }
+  .photo-guru-profile-view a {
+    color: #2B3234; }
+  .photo-guru-profile-view hr {
+    margin: 15px;
+    border: 1px solid rgba(117, 117, 117, 0.3) !important; }
+  .photo-guru-profile-view #profile {
+    height: 100% !important;
+    padding-bottom: 64px; }
+  .photo-guru-profile-view #profile-banner {
+    width: 100%;
+    height: 25%;
+    background: url(../../img/photo-guru-banner.png) center center/cover; }
+  .photo-guru-profile-view #profile-desc {
+    padding: 0;
+    margin-top: -50px; }
+    .photo-guru-profile-view #profile-desc #profile-icon img {
+      background: white; }
+    .photo-guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
+      color: #2B3234;
+      font-weight: 700; }
+      .photo-guru-profile-view #profile-desc #profile-list ul #profile-name h1.verified svg path:first-child {
+        fill: #8A9EA3; }
+    .photo-guru-profile-view #profile-desc #profile-list ul #profile-blurb {
+      padding: 5px 15px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25; }
+    .photo-guru-profile-view #profile-desc #profile-list ul #profile-contact {
+      padding: 10px 0 5px; }
+  .photo-guru-profile-view #profile-nav ul {
+    padding: 0 7.5px; }
+    .photo-guru-profile-view #profile-nav ul li {
+      padding: 0 7.5px;
+      text-align: center; }
+      .photo-guru-profile-view #profile-nav ul li a {
+        display: inline-block;
+        padding-bottom: 5px;
+        border-bottom: 3px solid transparent;
+        color: rgba(117, 117, 117, 0.5);
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-transform: uppercase; }
+        .photo-guru-profile-view #profile-nav ul li a.active {
+          color: #2B3234;
+          border-bottom: 3px solid #2B3234; }
+        .photo-guru-profile-view #profile-nav ul li a:active {
+          color: #40484B;
+          border-bottom: 3px solid #40484B; }
+  .photo-guru-profile-view #profile-skills hr {
+    border: 0 solid transparent !important;
+    border-top: 1px solid rgba(117, 117, 117, 0.1) !important; }
+  .photo-guru-profile-view #profile-skills section {
+    text-align: center;
+    text-transform: uppercase; }
+    .photo-guru-profile-view #profile-skills section h1 {
+      padding: 10px 0;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 1px; }
+    .photo-guru-profile-view #profile-skills section ul li {
+      padding: 15px 0;
+      font-weight: 300;
+      font-size: 16px; }
+    .photo-guru-profile-view #profile-skills section:last-child {
+      padding-bottom: 15px; }
+  .photo-guru-profile-view #profile-gallery section {
+    position: relative;
+    margin: 40px 0; }
+    .photo-guru-profile-view #profile-gallery section:first-child {
+      margin-top: 20px; }
+    .photo-guru-profile-view #profile-gallery section img {
+      display: block;
+      width: 100%; }
+    .photo-guru-profile-view #profile-gallery section p {
+      padding-bottom: 13px;
+      margin: 0; }
+    .photo-guru-profile-view #profile-gallery section .gallery-desc {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      background: rgba(43, 50, 52, 0.8);
+      color: white;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25; }
+      .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags {
+        padding-top: 2px;
+        font-size: 14px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          width: 100%; }
+          .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li {
+            padding-right: 7px; }
+            .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a {
+              filter: alpha(opacity=75);
+              opacity: 0.75;
+              color: white !important; }
+              .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a::before {
+                content: "#"; }
+              .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a.active, .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-tags ul li a:active {
+                filter: alpha(opacity=100);
+                opacity: 1; }
+      .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc {
+        filter: alpha(opacity=75);
+        opacity: 0.75;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        width: 100%;
+        padding-top: 2px;
+        color: white;
+        font-size: 14px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span {
+          line-height: 20px; }
+          .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span svg {
+            display: block;
+            width: 20px;
+            height: 20px; }
+            .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span svg path {
+              stroke: white;
+              fill: none;
+              stroke-width: 5px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+    .photo-guru-profile-view #profile-gallery section .gallery-desc:not(.active), .photo-guru-profile-view #profile-gallery section .gallery-desc.active + .gallery-info {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      display: none; }
+    .photo-guru-profile-view #profile-gallery section .gallery-info, .photo-guru-profile-view #profile-gallery section .gallery-photo {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: absolute;
+      display: block;
+      bottom: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      padding: 0; }
+      .photo-guru-profile-view #profile-gallery section .gallery-info svg, .photo-guru-profile-view #profile-gallery section .gallery-photo svg {
+        display: block;
+        width: 50px;
+        height: 50px;
+        padding: 5px; }
+        .photo-guru-profile-view #profile-gallery section .gallery-info svg path, .photo-guru-profile-view #profile-gallery section .gallery-photo svg path {
+          fill: none;
+          stroke-width: 5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+    .photo-guru-profile-view #profile-gallery section .gallery-info {
+      background: rgba(43, 50, 52, 0.8); }
+      .photo-guru-profile-view #profile-gallery section .gallery-info svg path {
+        stroke: white; }
+    .photo-guru-profile-view #profile-gallery section .gallery-photo {
+      background: rgba(255, 255, 255, 0.8); }
+      .photo-guru-profile-view #profile-gallery section .gallery-photo svg path {
+        stroke: #2B3234; }
+  .photo-guru-profile-view #book-guru.activated {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #2B3234 !important; }
+
+.bakery-guru-profile-view {
+  color: #40484B;
+  background: #FFFDFA; }
+  .bakery-guru-profile-view header {
+    background: #F04F54; }
+    .bakery-guru-profile-view header h1 {
+      color: white;
+      font-weight: 900; }
+  .bakery-guru-profile-view #profile, .bakery-guru-profile-view #menu, .bakery-guru-profile-view #info {
+    height: 100% !important; }
+  .bakery-guru-profile-view #profile-banner {
+    width: 100%;
+    height: 50%;
+    background: url(../../img/bakery-guru-banner.png) center center/cover; }
+  .bakery-guru-profile-view #profile-desc {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    padding: 0;
+    top: 0;
+    left: 0;
+    background: rgba(43, 50, 52, 0.05); }
+    .bakery-guru-profile-view #profile-desc #profile-list ul {
+      text-align: left;
+      padding: 30px; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
+        padding-left: 0;
+        color: white;
+        font-size: 32px;
+        font-weight: 900; }
+        .bakery-guru-profile-view #profile-desc #profile-list ul #profile-name h1.verified svg path:first-child {
+          fill: #F04F54; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-blurb {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.25;
+        padding: 5px 0; }
+      .bakery-guru-profile-view #profile-desc #profile-list ul #profile-contact {
+        padding: 10px 0 5px; }
+        .bakery-guru-profile-view #profile-desc #profile-list ul #profile-contact button {
+          background: #F04F54;
+          border-color: #F04F54;
+          color: white;
+          font-weight: 700 !important; }
+  .bakery-guru-profile-view #profile-promo {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 25%;
+    padding: 15px; }
+    .bakery-guru-profile-view #profile-promo p {
+      margin: 0;
+      font-weight: 400; }
+    .bakery-guru-profile-view #profile-promo a {
+      display: block;
+      padding-top: 15px;
+      color: #F04F54;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase; }
+  .bakery-guru-profile-view #profile-nav {
+    height: 25%; }
+    .bakery-guru-profile-view #profile-nav ul {
+      height: 100%;
+      padding: 1px; }
+      .bakery-guru-profile-view #profile-nav ul li {
+        position: relative;
+        height: 100%;
+        padding: 1px; }
+        .bakery-guru-profile-view #profile-nav ul li a {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          background: #F04F54;
+          color: white;
+          font-size: 24px;
+          font-weight: 900;
+          text-align: center; }
+          .bakery-guru-profile-view #profile-nav ul li a span {
+            position: relative;
+            z-index: 2; }
+          .bakery-guru-profile-view #profile-nav ul li a svg {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; }
+            .bakery-guru-profile-view #profile-nav ul li a svg path {
+              -webkit-transition: all 0.15s ease-in-out;
+              -o-transition: all 0.15s ease-in-out;
+              -ms-transition: all 0.15s ease-in-out;
+              -moz-transition: all 0.15s ease-in-out;
+              transition: all 0.15s ease-in-out;
+              filter: alpha(opacity=20);
+              opacity: 0.2;
+              fill: none;
+              stroke: #2B3234;
+              stroke-width: 3px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+        .bakery-guru-profile-view #profile-nav ul li a.active svg, .bakery-guru-profile-view #profile-nav ul li a:active svg, .bakery-guru-profile-view #profile-nav ul li a:hover svg {
+          background: rgba(43, 50, 52, 0.2); }
+          .bakery-guru-profile-view #profile-nav ul li a.active svg path, .bakery-guru-profile-view #profile-nav ul li a:active svg path, .bakery-guru-profile-view #profile-nav ul li a:hover svg path {
+            filter: alpha(opacity=40);
+            opacity: 0.4;
+            stroke: #F04F54; }
+  .bakery-guru-profile-view #info #info-content {
+    height: calc(100% - 50px); }
+    .bakery-guru-profile-view #info #info-content #info-map {
+      height: 40%;
+      background: url(../../img/map-small.png) center center/cover;
+      -webkit-filter: grayscale(0.5);
+      filter: grayscale(0.5); }
+    .bakery-guru-profile-view #info #info-content #info-directions, .bakery-guru-profile-view #info #info-content #info-hours {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      height: 30%; }
+      .bakery-guru-profile-view #info #info-content #info-directions svg, .bakery-guru-profile-view #info #info-content #info-hours svg {
+        display: block;
+        margin-left: 8px;
+        margin-top: 8px;
+        width: 50px;
+        height: 50px; }
+        .bakery-guru-profile-view #info #info-content #info-directions svg path, .bakery-guru-profile-view #info #info-content #info-hours svg path {
+          fill: none;
+          stroke: #F04F54;
+          stroke-width: 5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+      .bakery-guru-profile-view #info #info-content #info-directions div:last-child h1, .bakery-guru-profile-view #info #info-content #info-hours div:last-child h1 {
+        font-size: 24px;
+        font-weight: 900;
+        margin-top: 8px;
+        margin-left: 8px;
+        line-height: 50px;
+        text-transform: uppercase; }
+    .bakery-guru-profile-view #info #info-content #info-hours {
+      border-top: 1px solid #F04F54; }
+  .bakery-guru-profile-view #menu #menu-content {
+    height: calc(100% - 50px);
+    overflow-y: auto; }
+    .bakery-guru-profile-view #menu #menu-content ul {
+      height: 100%;
+      padding: 1px; }
+      .bakery-guru-profile-view #menu #menu-content ul li {
+        height: 25%;
+        padding: 1px; }
+        .bakery-guru-profile-view #menu #menu-content ul li a {
+          -webkit-transition: all 0.15s ease-in-out;
+          -o-transition: all 0.15s ease-in-out;
+          -ms-transition: all 0.15s ease-in-out;
+          -moz-transition: all 0.15s ease-in-out;
+          transition: all 0.15s ease-in-out;
+          display: block;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background-size: cover; }
+          .bakery-guru-profile-view #menu #menu-content ul li a span {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(240, 79, 84, 0.8);
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase; }
+        .bakery-guru-profile-view #menu #menu-content ul li a.active span, .bakery-guru-profile-view #menu #menu-content ul li a:active span, .bakery-guru-profile-view #menu #menu-content ul li a:hover span {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        .bakery-guru-profile-view #menu #menu-content ul li .menu-desc {
+          display: none;
+          text-align: center; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc img {
+            display: block;
+            width: 100%; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc h1 {
+            padding: 15px 15px 0;
+            color: #F04F54;
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase; }
+          .bakery-guru-profile-view #menu #menu-content ul li .menu-desc p {
+            margin: 10px 15px 15px;
+            font-weight: 400; }
+        .bakery-guru-profile-view #menu #menu-content ul li.active {
+          width: 100%;
+          height: auto; }
+          .bakery-guru-profile-view #menu #menu-content ul li.active a {
+            display: none; }
+          .bakery-guru-profile-view #menu #menu-content ul li.active .menu-desc {
+            display: block; }
+        .bakery-guru-profile-view #menu #menu-content ul li.inactive a {
+          filter: alpha(opacity=50);
+          opacity: 0.5; }
+        .bakery-guru-profile-view #menu #menu-content ul li.inactive a.active, .bakery-guru-profile-view #menu #menu-content ul li.inactive a:active, .bakery-guru-profile-view #menu #menu-content ul li.inactive a:hover {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
   position: relative; }
@@ -2540,6 +3090,12 @@ section {
     height: 100%; }
     .credibility-view #credibility-content-wrapper .credit-content-slide.active {
       display: block; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque {
+      filter: alpha(opacity=50);
+      opacity: 0.5; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque:active, .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque.active {
+      filter: alpha(opacity=100);
+      opacity: 1; }
     .credibility-view #credibility-content-wrapper .credit-content-slide > div {
       height: 100%; }
       .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body {
@@ -2602,6 +3158,9 @@ section {
         height: 70px; } }
 .guru-view header::before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
+.guru-view #guru-home-content {
+  overflow: none !important;
+  padding-bottom: 50px; }
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2702,11 +3261,55 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
-.guru-view .tip-container h2 {
-  font-size: 22px; }
-.guru-view .tip-container p {
-  margin-top: 10px;
-  font-size: 18px; }
+.guru-view .guru-tip-of-day-slide-box {
+  height: calc(100% - 36px); }
+  .guru-view .guru-tip-of-day-slide-box .card {
+    margin: 15px !important;
+    height: calc(100% - 60px);
+    padding: 0 !important;
+    background: #40484B;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center; }
+    .guru-view .guru-tip-of-day-slide-box .card .card-content {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      padding: 15px;
+      height: calc(100% - 64px); }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 70px;
+        margin-bottom: 15px; }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content h2 {
+        font-size: 28px;
+        font-weight: 600; }
+      .guru-view .guru-tip-of-day-slide-box .card .card-content p {
+        margin: 10px 0 0;
+        font-size: 22px; }
+  .guru-view .guru-tip-of-day-slide-box .slider-pager {
+    bottom: 15px; }
+.guru-view #btn-launch-profile:active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #69B3A5 !important; }
+.guru-view #btn-launch-profile + .guru-tip-of-day-slide-box {
+  height: calc(100% - 50px); }
 
 @media screen and (min-height: 540px) {
   .guru-view #guru-ranking > div {
@@ -3041,9 +3644,6 @@ section {
 .smaller-list-font {
   font-size: 85%; }
 
-.slider-pager {
-  display: none; }
-
 .content {
   height: 100%; }
   .content.footer-exists {
@@ -3086,5 +3686,21 @@ section {
   position: absolute;
   right: 10px;
   top: 34%; }
+
+body.platform-ios {
+  background-color: transparent;
+  background: transparent; }
+  body.platform-ios ion-side-menus.root-ion-side-menus.view {
+    background-color: transparent; }
+    body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view {
+      background-color: white;
+      background: white;
+      padding-top: 20px; }
+      body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view section, body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view #student-home-map-container {
+        top: 20px !important; }
+
+.android-access-edge-case {
+  bottom: 64px;
+  position: absolute; }
 
 /*# sourceMappingURL=style.css.map */

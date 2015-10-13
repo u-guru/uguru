@@ -14,6 +14,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
+  REST_URL = 'http://localhost:5000'
 
 } else {
   img_base = '/static/'
@@ -36,7 +37,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   DeviceService, uTracker) {
 
   uTracker.init(tracker);
- 
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -50,12 +51,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     });
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
-  
+
   // if (ionic.Platform.isAndroid()) {
   //   $ionicConfigProvider.scrolling.jsScrolling(false);
   // }
-  
+
+  //ASK-NICK: what does this mean?
   $ionicConfigProvider.views.transition('platform');
+
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(true);
@@ -77,8 +80,20 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
+        controller: 'AddUniversityCtrl',
+        resolve: {
+          deviceInfo: function(DeviceService) {
+            return DeviceService.getPlatform();
+          }
+        },
         controller: 'AddUniversityCtrl'
   }).
+
+  state('privacy', {
+        url:'/privacy',
+        templateUrl: BASE + 'templates/privacy-terms.modal.html'
+  }).
+
   state('root.university-container', {
         url: '/university-container',
         templateUrl: BASE + 'templates/university.container.html',
@@ -149,7 +164,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.become-guru', {
         url: '/become-guru',
-        templateUrl: BASE + 'templates/become.guru.html',
+        templateUrl:BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
   }).
   state('root.offline', {
@@ -159,7 +174,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   state('root.become-guru.photography', {
         url:'/photography',
-        templateUrl: BASE + 'templates/category.skills.modal.html'    
+        templateUrl: BASE + 'templates/category.skills.modal.html'
   }).
   state('root.courses', {
         url: '/courses',
@@ -253,7 +268,3 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 
 });
-
-
-
-

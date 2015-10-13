@@ -14,9 +14,9 @@ echo
 echo "Adding Android platform"
 cordova platform add android
 echo "Re-adding facebook connect url"
-cordova -d plugin add ./plugins_stable/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
-cordova -d plugin add ./plugins_stable/org.apache.cordova.file
-cordova -d plugin add ./plugins_stable/org.apache.cordova.file-transfer
+cordova -d plugin add ~/Git/packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+cordova plugin add org.apache.cordova.file@r1.3.3
+cordova plugin add org.apache.cordova.file-transfer@r0.5.0
 echo
 echo "Adding extra support for android..."
 android update project --subprojects --path "platforms/android" --target android-19 --library "CordovaLib"
@@ -45,7 +45,7 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore uguru.keystore 
 
 # this throws an error if it tries to look for the zipalign.exe in different android build tools path. just find
 # where it is and copy it into the folder that it was supposrted to be in
-zipalign -v 4 ./platforms/android/ant-build/CordovaApp-release-unsigned.apk ./platforms/android/ant-build/uguru.apk
+ ~/Development/android-sdk-macosx/build-tools/19.1.0/zipalign -v 4 ./platforms/android/ant-build/CordovaApp-release-unsigned.apk ./platforms/android/ant-build/uguru.apk
 
 
 

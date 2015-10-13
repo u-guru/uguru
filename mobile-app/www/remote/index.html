@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"> -->
     <script type="text/javascript">
       var start_dom_time = (new Date()).getTime();
       var _local, _startpage, _ipaddress;
@@ -19,6 +19,13 @@
       var onBodyLoad = function() {
         var bodyLoadTime = calcTimeSinceInit();
         console.log('Body dom load complete, load time:', bodyLoadTime, 'seconds');
+      }
+
+      var injectAndroidMetaContentScript = function() {
+        var meta = document.createElement('meta');
+        meta.httpEquiv = "Content-Security-Policy";
+        meta.content = "default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"
+        document.getElementsByTagName('head')[0].appendChild(meta);
       }
     </script>
     <!-- Begin Inspectlet Embed Code -->
@@ -48,112 +55,10 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <!-- compiled css output
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/ionic.app.css" rel="stylesheet">
-    <link href="css/lib/ionic.contrib.frost.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/angular-strap.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet"> -->
+
 
     <link href="css/app_version.css" rel="stylesheet">
-    <!-- ionic/angularjs js
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
-    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
-    <script src="lib/lodash/dist/lodash.js"></script>
-    <script src="lib/angular-google-maps/angular-google-maps.min.js"></script>
-    <script src="lib/restangular/dist/restangular.js"></script>
-    <script src="lib/angular-local-storage/angular-local-storage.js"></script>
-    <script src="lib/angular-loading-bar/angular-loading-bar.js"></script>
-    <script src="lib/angular-animate/angular-animate.js"></script>
-    <script src="lib/angular-strap/angular-strap.min.js"></script>
-    <script src="lib/angular-strap/angular-strap.tpl.min.js"></script>
-    <script src="lib/angular-payments/angular-payments.js"></script>
-    <script src="lib/ngAutocomplete/ngAutocomplete.js"></script>
-    <script src="lib/ionic/contrib/ionic.contrib.frost.js"></script>
-    -->
 
-
-    <!-- cordova script (this will be a 404 during development) -->
-
-    <!-- uguru app main js
-
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
-    <script src="js/main.js"></script>
-    -->
-
-    <!-- uguru app directives
-    <script type="text/javascript" src="js/directives/angularFastMatcher.js"></script>
-    <script type="text/javascript" src="js/directives/customDirectives.js"></script>
-    -->
-
-    <!-- uguru app factories
-    <script type="text/javascript" src="js/factories/Session.js"></script>
-    <script type="text/javascript" src="js/factories/User.js"></script>
-    <script type="text/javascript" src="js/factories/Device.js"></script>
-    <script type="text/javascript" src="js/factories/University.js"></script>
-    <script type="text/javascript" src="js/factories/Major.js"></script>
-    <script type="text/javascript" src="js/factories/Phone.js"></script>
-    <script type="text/javascript" src="js/factories/Version.js"></script>
-    <script type="text/javascript" src="js/factories/Support.js"></script>
-    <script type="text/javascript" src="js/factories/Course.js"></script>
-    <script type="text/javascript" src="js/factories/Static.js"></script>
-    <script type="text/javascript" src="js/factories/LocalStorage.js"></script>
-    -->
-
-    <!-- student controllers
-    <script type="text/javascript" src="js/controllers/facebook.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/courses.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/bio.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/majors.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/student.home.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/student.request.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/student.guru-profile.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/student.guru-available.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/student.active-session.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/student.request-status.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/student.previous-session-details.ctrl.js"></script> -->
-
-    <!-- guru controllers
-    <script type="text/javascript" src="js/controllers/guru/guru.onboarding.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/guru/guru.home.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/guru/guru.opportunities.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/guru/guru.student-request.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/guru/guru.active-session.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/guru/guru.session-start.ctrl.js"></script>
-
-    <script type="text/javascript" src="js/controllers/util/util.university.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.add-course.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.add-guru-bio.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.add-major.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.add-note.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.request-location.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.signup.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.add-payment.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.contact-guru.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.messages.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.ratings.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.gurubook.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/util/util.studentbook.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/settings/settings.cards.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/settings/settings.notifications.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/settings/settings.transfers.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/settings/settings.profile.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/settings/settings.edit-courses.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/student/settings/settings.transactions.ctrl.js"></script>
-    -->
-    <!-- uguru app services
-    <script type="text/javascript" src="js/services/AuthService.js"></script>
-    <script type="text/javascript" src="js/services/RootService.js"></script>
-    <script type="text/javascript" src="js/services/Popup.js"></script>
-    <script type="text/javascript" src="js/services/Popover.js"></script>
-    <script type="text/javascript" src="js/services/hardware/camera.js"></script>
-    <script type="text/javascript" src="js/services/hardware/push.js"></script>
-    <script type="text/javascript" src="js/services/hardware/location.js"></script>
-    -->
 
     <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
     <!-- Facebook Plugin for web-development -->
@@ -196,10 +101,20 @@
           }
           else if( userAgent.match( /Android/i ) )
           {
+            // Read more here
+            // https://developer.chrome.com/multidevice/user-agent
+            console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
+            var androidWebViewAgents = ['Build/KLP', 'Version', 'wv'];
+            for (var i = 0; i < androidWebViewAgents.length; i++ ) {
+              var indexUA = androidWebViewAgents[i];
+              if (userAgent.indexOf(indexUA) > -1) {
+                injectJs('android.cordova.js');
+                injectCss('android.css');
+                injectAndroidMetaContentScript();
+              }
+              break;
+            }
 
-            console.log('injecting android specific css & js');
-            injectJs('android.cordova.js');
-            injectCss('android.css');
 
             return 'Android';
           }
@@ -235,6 +150,17 @@
 
       console.log(getMobileOperatingSystem());
 
+    </script>
+    <script>
+     +function(l,y,t,i,c,s) {
+         l['LocalyticsGlobal'] = i;
+         l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
+         l[i].t = +new Date;
+         (s = y.createElement(t)).type = 'text/javascript';
+         s.src = 'lib/localytics/localytics.js';
+         (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
+
+     }(window, document, 'script', 'll');
     </script>
 
     <!-- <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>-->

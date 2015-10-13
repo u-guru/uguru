@@ -20,17 +20,25 @@ angular.module('uguru.guru.controllers')
   'University',
   'PopupService',
   'Utilities',
+  'RankingService',
+  'TipService',
+  'Category',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
-  $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities) {
+  $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
+  RankingService, TipService, Category) {
 
+    $scope.refreshTipsAndRanking = function(user) {
+      TipService.currentTips = TipService.generateTips(user);
+      RankingService.refreshRanking(user);
+    }
 
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
     // credibility only variable
     $scope.activeTabIndex = 0;
-    $scope.profile.edit_mode = true;
+    $scope.profile.edit_mode = false;
 
 
     // $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
@@ -50,6 +58,7 @@ angular.module('uguru.guru.controllers')
             var successCallback = function() {
               $scope.loader.showSuccess('Email successfully sent to' + $scope.user.school_email, 2000);
             }
+            $scope.refreshTipsAndRanking($scope.user);
             $scope.user.updateAttr('confirm_school_email', $scope.user, editEmailInput.value, successCallback, $scope);
           }
         }
@@ -81,6 +90,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.saveGuruIntroduction = function() {
       $scope.loader.show();
+      $scope.refreshTipsAndRanking($scope.user);
       $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
       $scope.profile.intro_edit_mode = false;
       $timeout(function() {
@@ -106,7 +116,7 @@ angular.module('uguru.guru.controllers')
         });
         $scope.success.show(0, 2000, (major.code || major.name || major.title || major.abbr) + ' successfully removed');
       }
-
+      $scope.refreshTipsAndRanking($scope.user);
       $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
 
     }
@@ -115,7 +125,7 @@ angular.module('uguru.guru.controllers')
       if (!confirm('Remove ' + subcategory.name + '?')) {
         return;
       }
-
+      $scope.refreshTipsAndRanking($scope.user);
       $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
 
     }
@@ -135,12 +145,15 @@ angular.module('uguru.guru.controllers')
     $scope.initLateNightOptions();
 
 
+
+
     $scope.lateNightOnChange = function() {
       $scope.success.show(0, 750, 'Saved!');
       $timeout(function() {
         var e = document.getElementById("late-night-select");
         e.blur();
         $scope.user.guru_latest_time = e.selectedIndex;
+        $scope.refreshTipsAndRanking($scope.user);
         $scope.user.updateAttr('guru_latest_time', $scope.user, $scope.user.guru_latest_time, null, $scope);
 
       }, 500);
@@ -167,6 +180,7 @@ angular.module('uguru.guru.controllers')
         e.blur();
         var strUser = e.options[e.selectedIndex].text;
         $scope.user.max_hourly = parseInt(strUser);
+        $scope.refreshTipsAndRanking($scope.user);
         $scope.user.updateAttr('max_hourly', $scope.user, $scope.user.max_hourly, null, $scope);
 
         var options = document.getElementsByTagName('option');
@@ -211,7 +225,22 @@ angular.module('uguru.guru.controllers')
         $scope.loader.hide();
         $scope.success.show(0, 1000, 'Saved!');
       }
+      $scope.refreshTipsAndRanking($scope.user);
       $scope.user.updateAttr('tutoring_platforms_description', $scope.user, $scope.user.tutoring_platforms_description, successCallback , $scope);
+    }
+
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.contact.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.contactGuruModal = modal
+    });
+
+
+
+    $scope.launchContactGuruModal = function() {
+      $scope.contactGuruModal.show();
     }
 
      $scope.launchAddTutoringPlatformsModal = function(experience) {
@@ -246,6 +275,39 @@ angular.module('uguru.guru.controllers')
       });
     }
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.introduction.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruIntroductionModal = modal;
+        })
+
+    $scope.launchGuruIntroductionModal = function() {
+      $scope.guruIntroductionModal.show();
+    }
+
+
+    $scope.launchAddGuruExperienceModal = function(experience) {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            if (experience) {
+              $scope.experience = experience;
+              $scope.experience_index = index;
+            } else {
+              $scope.experience = {
+                name: '',
+                description: '',
+                years: 1
+              }
+            }
+            $scope.guruExperiencesModal = modal;
+            $scope.guruExperiencesModal.show();
+      });
+    }
+
     $scope.launchMajorModal = function() {
       $scope.loader.show();
       $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
@@ -257,33 +319,54 @@ angular.module('uguru.guru.controllers')
       });
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
+
+    $scope.initModalsAfterEnter = function() {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.guruMajorModal = modal;
-    });
+      });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.courses.modal.html', {
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.courses.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+      }).then(function(modal) {
             $scope.guruCoursesModal = modal;
-    })
+      })
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.skills.modal.html', {
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.skills.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.guruSkillsModal = modal;
-    })
+      })
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.skills.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.guruSkillsModal = modal;
-    })
+      var updateScope = function(categories) {
+              $scope.categories = categories;
+      }
+      $scope.categories = Category.categories || $scope.getCategories(updateScope) || [];
+
+
+    }
+
+    var getIonicSideMenuOpenRatio = function() {
+            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+            return openRatio;
+    }
+
+    var isSideMenuOpen = function(ratio) {
+        if (!ratio && ratio !== -1) {
+            $scope.sideMenuActive = false;
+        } else {
+            $timeout(function() {
+                $scope.sideMenuActive = true;
+            }, 250)
+        }
+    }
+
+    $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.languages.modal.html', {
             scope: $scope,
@@ -293,6 +376,13 @@ angular.module('uguru.guru.controllers')
     })
 
     $scope.launchGuruSkillsModal = function() {
+
+      if (!img_base || !img_base.length) {
+        $scope.categories_img_base = 'remote/';
+      } else {
+        $scope.categories_img_base = img_base + 'remote/';
+      }
+
       $scope.guruSkillsModal.show();
     }
 
@@ -320,7 +410,6 @@ angular.module('uguru.guru.controllers')
     $scope.connectWithFacebook = function() {
       $scope.loader.show();
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
-        alert('is successful');
         var successCallback = function() {
           $scope.loader.hide();
           $scope.loader.showSuccess('FB Account Saved', 2000);
@@ -332,7 +421,7 @@ angular.module('uguru.guru.controllers')
             $scope.success.show(0, 1000, 'FB Account has another account - please contact support');
           }
         }
-
+        $scope.refreshTipsAndRanking($scope.user);
         $scope.user.updateAttr('fb_id', $scope.user, success.authResponse.accessToken, successCallback , $scope, failureCallback);
       })
     }
@@ -528,6 +617,7 @@ angular.module('uguru.guru.controllers')
       //update server user object
       $scope.loader.show();
       $timeout(function() {
+        $scope.refreshTipsAndRanking($scope.user);
         $scope.user.updateAttr('remove_guru_course', $scope.user, course, null, $scope);
       }, 200);
 
@@ -540,6 +630,7 @@ angular.module('uguru.guru.controllers')
       function callback() {
           if(Utilities.validateEmail($scope.popupInput.emailConfirm)) {
             $scope.user.school_email = $scope.popupInput.emailConfirm;
+            $scope.refreshTipsAndRanking($scope.user);
             $scope.user.updateAttr('confirm_school_email', $scope.user, $scope.popupInput.emailConfirm, null, $scope);
             $scope.loader.showSuccess('Email sent to ' + $scope.popupInput.emailConfirm, 1500);
             PopupService.close('confirmEmail');
@@ -557,10 +648,10 @@ angular.module('uguru.guru.controllers')
           $scope.validateAndSendPhoneConfirmation();
       }
     }
-      
+
 
     $scope.validateAndSendPhoneConfirmation = function() {
-      
+
       //validate
       if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
 
@@ -590,13 +681,14 @@ angular.module('uguru.guru.controllers')
               $scope.success.show(0, 2000, 'Invalid Code - please try again?');
             }
             $scope.user.phone_number = $scope.popupInput.phoneConfirm;
-            
+
             return;
           }
 
           PopupService.close('confirmPhone');
 
           $scope.loader.show();
+          $scope.refreshTipsAndRanking($scope.user);
           $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.codeConfirm, callbackSuccess, $scope);
         } else {
           alert("Please enter a 4 digit code.");
@@ -606,7 +698,7 @@ angular.module('uguru.guru.controllers')
         alert('Please enter valid phone number.');
         return;
       }
-   
+
     }
 
     $scope.resendPhoneConfirmation = function() {
@@ -614,6 +706,7 @@ angular.module('uguru.guru.controllers')
       //validate
       if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
         $scope.user.phone_number = $scope.popupInput.phoneConfirm;
+        $scope.refreshTipsAndRanking($scope.user);
         $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.popupInput.phoneConfirm, null, $scope);
 
         PopupService.close('confirmPhone');
@@ -635,17 +728,28 @@ angular.module('uguru.guru.controllers')
 
 
 
+
     $scope.$on('$ionicView.enter', function() {
-          
+
+          $scope.refreshTipsAndRanking($scope.user);
+
           $timeout(function() {
-            
-            if (RankingService.recentlyUpdated) {
+
+            if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
               RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
             }
 
           }, 1000)
 
-    })
+    });
+
+    $scope.$on('$ionicView.afterEnter', function() {
+
+      $timeout(function() {
+        $scope.initModalsAfterEnter();
+      }, 500)
+
+    });
 
 
   }

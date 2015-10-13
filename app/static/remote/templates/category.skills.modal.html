@@ -2,11 +2,11 @@
     <section id='skill-list' class='onboarding'>
         <div id="skills-list" class="onboarding-list">
             <div>
-                <ul class='list checklist-gold' style='height:calc(61px * {{active_category.subcategories.length}});'>
-                    <li ng-repeat='skill in active_category.subcategories'class='ng-class:{"active":active_category.active}'>
+                <ul class='list checklist-{{active_category.hex_color.split("-")[1]}}' style='height:calc(61px * {{active_category.subcategories.length}});'>
+                    <li ng-repeat='subcategory in active_category.subcategories'class='ng-class:{"active":subcategory.active}'>
                         <span>
-                            <label>{{skill.name}}</label>
-                            <input type="checkbox" ng-model='skill.active'ng-change='updateCategoryCount(active_category, skill, $index)'>
+                            <label>{{subcategory.name}}</label>
+                            <input type="checkbox" ng-model='subcategory.active'ng-change='updateCategoryCount(active_category, subcategory, $index)'>
                             <span class='{{active_category._class}}'></span>
                         </span>
                     </li>

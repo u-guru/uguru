@@ -20,7 +20,11 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="cordova-plugin-whitelist"
+<<<<<<< HEAD
       version="1.1.1-dev">
+=======
+      version="1.0.0">
+>>>>>>> samir-dev
     <name>Whitelist</name>
     <description>Cordova Network Whitelist Plugin</description>
     <license>Apache 2.0</license>
@@ -28,7 +32,10 @@
 
     <engines>
       <engine name="cordova-android" version=">=4.0.0-dev" />
+<<<<<<< HEAD
       <engine name="cordova-ios" version=">=4.0.0-dev" />
+=======
+>>>>>>> samir-dev
     </engines>
 
     <platform name="android">
@@ -45,6 +52,7 @@
             <runs />
         </js-module>
     </platform>
+<<<<<<< HEAD
 
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
@@ -65,4 +73,6 @@
 This plugin is only applicable for the cordova-ios 4.x and cordova-android 4.x platforms. If you have a previous platform version, you do *not* need this plugin since the whitelist will be built in. Consequently, if you are building using the iOS 9 SDK (Xcode 7), you do *not* need this plugin as well since the whitelist used will be built-in to iOS 9 (Application Transport Security, or ATS).
 	</info>
 
+=======
+>>>>>>> samir-dev
 </plugin>

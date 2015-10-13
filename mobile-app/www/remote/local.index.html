@@ -1,6 +1,6 @@
 <!DOCTYPE html><html>
   <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
@@ -24,6 +24,13 @@
         console.log('================')
       }
 
+      var injectAndroidMetaContentScript = function() {
+        var meta = document.createElement('meta');
+        meta.httpEquiv = "Content-Security-Policy";
+        meta.content = "default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
       // console.log(cordova);
 
     </script>
@@ -35,7 +42,7 @@
     <!-- The main css file -->
     <link href="remote/css/sass/default.css" rel="stylesheet">
     <link href="remote/css/sass/style.css" rel="stylesheet">
-    <link href="remote/css/sass/components/map.css" rel="stylesheet">
+  <!--   <link href="remote/css/sass/components/map.css" rel="stylesheet"> -->
 
     <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
@@ -49,7 +56,28 @@
                     console.log('injecting windows specific css & js');
                     injectJs('windows.cordova.js');
                     injectCss('windows.css');
-            } else {
+            }
+            else if( userAgent.match( /Android/i ) )
+              {
+                // Read more here
+                // https://developer.chrome.com/multidevice/user-agent
+                console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
+                var androidWebViewAgents = ['Build/KLP', 'Version', 'wv'];
+                for (var i = 0; i < androidWebViewAgents.length; i++ ) {
+                  var indexUA = androidWebViewAgents[i];
+                  if (userAgent.indexOf(indexUA) > -1) {
+                    console.log('ayy')
+                    injectJs('android.cordova.js');
+                    injectCss('android.css');
+                    injectAndroidMetaContentScript();
+                    break;
+                  }
+                }
+
+
+                return 'Android';
+              }
+            else {
                 console.log('hard to determine identifies');
                 // injectCss('web.css')
                 return 'unknown';
@@ -83,7 +111,7 @@
          (s = y.createElement(t)).type = 'text/javascript';
          s.src = 'remote/lib/localytics/localytics.js';
          (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
-         
+
      }(window, document, 'script', 'll');
  </script>
 
@@ -269,8 +297,9 @@
     <script type="text/javascript" src="remote/js/shared/UniversityMatcher.js"></script>
     <script type="text/javascript" src="remote/js/shared/ThrottleService.js"></script>
     <script type="text/javascript" src="remote/js/shared/RankingService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/TipService.js"></script>
     <script type="text/javascript" src="remote/js/shared/PopupService.js"></script>
-    
+
     <script type="text/javascript" src="remote/js/shared/uTracker.js"></script>
     <script type="text/javascript" src="remote/js/shared/PerformanceService.js"></script>
 
