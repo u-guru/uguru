@@ -1170,6 +1170,16 @@ header {
 		font-weight: 600;
 		text-transform: uppercase;
 	}
+	&.third {
+		h1 {
+			font-size: 22px;
+		}
+		&[class*="header-"] {
+			h1 {
+				font-size: 20px;
+			}
+		}
+	}
 	&:before {
 		@include opacity(.3);
 		content: "";
@@ -1185,6 +1195,19 @@ header {
 		svg {
 			path {
 				stroke: $slate!important;
+			}
+		}
+	}
+}
+
+@media screen and (min-width:375px) {
+	header.third {
+		h1 {
+			font-size: 24px;
+		}
+		&[class*="header-"] {
+			h1 {
+				font-size: 20px;
 			}
 		}
 	}
@@ -1465,7 +1488,7 @@ input[type=text] {
 }
 
 button.disabled {
-	@include opacity(.5);
+	@include opacity(.7);
 }
 
 .input-search-ghost {

@@ -66,16 +66,23 @@
                 for (var i = 0; i < androidWebViewAgents.length; i++ ) {
                   var indexUA = androidWebViewAgents[i];
                   if (userAgent.indexOf(indexUA) > -1) {
-                    console.log('ayy')
                     injectJs('android.cordova.js');
                     injectCss('android.css');
                     injectAndroidMetaContentScript();
                     break;
                   }
                 }
-
-
                 return 'Android';
+              }
+            else if ( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+              {
+
+                injectJs('ios.cordova_plugins.js');
+                injectJs('ios.cordova.js');
+                injectCss('ios.css');
+                // injectJs('/static/remote/cordova.js');
+                return 'iOS';
+
               }
             else {
                 console.log('hard to determine identifies');

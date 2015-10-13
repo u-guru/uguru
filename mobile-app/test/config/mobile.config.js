@@ -25,13 +25,15 @@ exports.config = {
 
            capabilities: {
             browserName: '',
-            app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+             // app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+              app : '/home/twfob/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug-unaligned.apk',
             'appium-version':'1.4.10',
             platformName: 'Android',
             platformVersion: '4.4',
             deviceName: 'Android Emulator',
             // 'autoAcceptAlerts': 'true',
-            autoWebview: true,
+            webviewSupport:true
+
           },
         //   multiCapabilities: 
         //   [

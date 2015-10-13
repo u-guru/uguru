@@ -25,7 +25,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	function ready() {
 
 
-		hideSplashScreen(1000);
+		// hideSplashScreen(1000);
 		$timeout(function() {
 			showStatusBar();
 		}, 3000)
@@ -33,19 +33,20 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 		if(cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-			cordova.plugins.Keyboard.disableScroll(true);
+			// cordova.plugins.Keyboard.disableScroll(true);
 		}
+
 
 
 
 	}
 
 	function showStatusBar() {
-		console.log('status bar..')
 		if(window.StatusBar) {
 			window.StatusBar.show();
 			window.StatusBar.overlaysWebView(true);
-			setStatusBarText($state.current.name); //light
+			setStatusBarText(); //light
+			['root.home'].roomState
 		}
 	}
 

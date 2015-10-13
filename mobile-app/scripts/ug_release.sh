@@ -31,6 +31,7 @@ if [ $# == 1 ];
 	fi
 
 	if [ $platform == "ios" ]; then
+
 		printf "\e[0;36m Compiling production app for $platform \e[0m\n"
 
 		./scripts/ug_build.sh $platform

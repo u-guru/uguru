@@ -45,16 +45,16 @@ angular.module('uguru.util.controllers')
 
 
         // if it exists, always show it until we've either updated, or checked for updates recently
-        if (navigator.splashscreen && navigator.splashscreen.show) {
-            navigator.splashscreen.show();
-        }
+        // if (!LOCAL && navigator.splashscreen && navigator.splashscreen.show) {
+        //     navigator.splashscreen.show();
+        // }
 
         $scope.LOCAL = LOCAL || false;
         $ionicPlatform.registerBackButtonAction(function(e) {
             var popup = document.querySelectorAll('.uguru-popup.show')[0];
             if(popup !== null && popup !== undefined) {
                 console.log("found popup");
-                popup.className = 'uguru-popup';
+                popup.classList.remove('show');
                 e.stopPropagation();
 
                 e.preventDefault();
@@ -291,11 +291,11 @@ angular.module('uguru.util.controllers')
             },
             showAmbig: function(text, duration) {
                 $scope.ambigLoaderText = text || '';
-                duration = duration || null;
+                
                 $ionicLoading.show({
-                    scope:$scope,
+                    scope: $scope,
                     templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
-                    duration: duration
+                    duration: duration || 1000
                 });
                 $scope.root.vars.loaderOn = true;
             },
@@ -471,8 +471,8 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.platform = {
-            mobile: false,
-            web: false
+            mobile: DeviceService.isMobile(),
+            web: DeviceService.isWeb()
         }
 
         document.addEventListener("deviceready", function() {
