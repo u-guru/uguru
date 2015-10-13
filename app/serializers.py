@@ -293,6 +293,10 @@ relationship_fields['guru'] = fields.Nested(guru_fields)
 relationship_fields['sessions'] = fields.Nested(session_fields)
 
 
+class FilteredList(fields.Raw):
+    def format(self, value):
+        return value[0:5]
+
 
 UserSerializer = {
     'id': fields.Integer,
@@ -351,7 +355,10 @@ UserSerializer = {
     # 'requests': fields.List(fields.Nested(request_fields)),
     # 'sessions': fields.List(fields.Nested(session_fields)),
     # 'proposals': fields.List(fields.Nested(proposal_fields)),
-    # 'cards': fields.List(fields.Nested(card_fields)),
+    'cards': fields.List(fields.Nested(card_fields)),
+    'phone_number': fields.String,
+    'phone_number_token': fields.String,
+    'phone_number_confirmed': fields.Boolean,
     'phone_number': fields.String,
     'phone_number_token': fields.String,
     'phone_number_confirmed': fields.Boolean,

@@ -41,7 +41,7 @@ angular.module('uguru.util.controllers')
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
-
+        $scope.LOCAL = LOCAL || false;
         $ionicPlatform.registerBackButtonAction(function(e) {
             var popup = document.querySelectorAll('.uguru-popup.show')[0];
             if(popup !== null && popup !== undefined) {
@@ -259,10 +259,35 @@ angular.module('uguru.util.controllers')
                 });
                 $scope.root.vars.loaderOn = true;
             },
-            showAmbig: function() {
+            customShow: function(velocity_args) {
                 $ionicLoading.show({
                     scope:$scope,
-                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html'
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
+                });
+                $timeout(function() {
+
+                    $scope.root.vars.loaderOn = true;
+                    var loaderContainer = document.querySelector('.loading-container');
+                    var loaderDiv = document.querySelector('.loading-container .loading');
+                    loaderDiv.style.opacity = 0 ; //set it to zero
+                    loaderContainer.className += ' active visible';
+
+                    $timeout(function() {
+                        var cssOptions = {};
+                        var animateOptions = {duration:2000};
+                        var animationName = "transition.bounceIn";
+                        Velocity(loaderDiv, cssOptions, animateOptions, animationName);
+                    }, 500);
+
+                }, 300)
+            },
+            showAmbig: function(text, duration) {
+                $scope.ambigLoaderText = text || '';
+                duration = duration || null;
+                $ionicLoading.show({
+                    scope:$scope,
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
+                    duration: duration
                 });
                 $scope.root.vars.loaderOn = true;
             },
