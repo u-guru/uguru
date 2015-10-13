@@ -9,7 +9,6 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$ionicViewSwitcher',
   'Geolocation',
   'Utilities',
-  'UniversityMatcher',
   '$ionicSlideBoxDelegate',
   'DeviceService',
   'uTracker',
@@ -21,8 +20,8 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Utilities, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache, AccessService) {
+  Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
+  AnimationService, PerformanceService, $templateCache, AccessService) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -136,10 +135,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   };
 
 
-
-  // $timeout(function() {
-  //     AnimationService.initSlide();
-  // }, 500);
   $scope.universitySelected = function(university) {
 
       PerformanceService.sendListResponseTime('University_List');
@@ -189,32 +184,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
       //save university
       var postUniversitySelectedCallback = function() {
-        //AnimationService.initSlide();
+
+        AnimationService.flip('^.home');
         UniversityMatcher.clearCache();
-        //$timeout(function() {
-          // $scope.loader.hide();
-          //$ionicViewSwitcher.nextDirection('forward');
 
-          // var start = null;
-           //$state.go('^.home');
-           AnimationService.flip('^.home');
-           //AnimationService.slide('left', 'Student Home');
-          // function step(timestamp) {
-          //   stats.begin();
-          //   if (!start) start = timestamp;
-          //   var progress = timestamp - start;
-          //   AnimationService.slide('left');
-          //   //fpsArray.push(stats.getFPS());
-          //   console.log("FPS: " + stats.getFPS());
-          //   if(progress < 300) {
-          //     requestAnimationFrame(step);
-          //   }
-          //   stats.end();
-          // }
-          // requestAnimationFrame(step);
-
-
-        //}, 0);
+        $ionicViewSwitcher.nextDirection('forward');
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
@@ -282,24 +256,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
     );
-
-
-  // $scope.$on('$ionicView.loaded', function() {
-  //   // android doesn't have a special prompt
-  //   // if (DeviceService.getPlatform() === 'android') {
-  //   //   getGPS();
-  //   // }
-  //   console.log("university view loaded");
-  //   if (Geolocation.settings.isAllowed) {
-  //     $timeout(function() {
-  //       $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
-  //     },0);
-  //   } else {
-  //     console.log("running getGPS() AGAIN");
-  //     getGPS();
-
-  //   }
-  // });
 
 }
 

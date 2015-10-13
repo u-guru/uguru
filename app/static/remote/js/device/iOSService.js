@@ -33,20 +33,20 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 		if(cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-			cordova.plugins.Keyboard.disableScroll(true);
+			// cordova.plugins.Keyboard.disableScroll(true);
 		}
+
 
 
 
 	}
 
 	function showStatusBar() {
-		console.log('status bar..')
 		if(window.StatusBar) {
 			window.StatusBar.show();
 			window.StatusBar.overlaysWebView(true);
 			setStatusBarText(); //light
-			['root.home'].roomState 
+			['root.home'].roomState
 		}
 	}
 
@@ -62,7 +62,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 			return;
 		}
 
-		darkStates = 
+		darkStates = ['root.home'];
 		darkStateIndex = darkStates.indexOf(state_name);
 
 		if (darkStateIndex == -1) {

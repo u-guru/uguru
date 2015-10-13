@@ -19,7 +19,9 @@ function DeviceService($cordovaNgCardIO,
 	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
   University, Version, $ionicHistory, $templateCache, $localstorage) {
 
-	return {
+  var currentDevice;
+
+  return {
 		readyDevice: readyDevice,
 		getDevice: getDevice,
     getPlatform: getPlatform,
@@ -31,9 +33,12 @@ function DeviceService($cordovaNgCardIO,
     isAndroidDevice: isAndroidDevice,
     isAndroidBrowser: isAndroidBrowser,
     isAndroid:isAndroid,
+    isIOSDevice:isIOSDevice,
+    isIOSBrowser: isIOSBrowser,
     ios: iOSService,
     getInfo: getInfo,
-    checkUpdates: checkUpdates
+    checkUpdates: checkUpdates,
+    currentDevice: currentDevice
 	}
 
 	function isMobile() {
@@ -56,9 +61,20 @@ function DeviceService($cordovaNgCardIO,
     return ionic.Platform.isAndroid() && isWebView;
   }
 
+  function isIOSDevice() {
+    var userAgent = navigator.userAgent;
+    return !(userAgent.toLowerCase().indexOf('safari') > -1);
+  }
+
+  function isIOSBrowser () {
+    return !isIOSDevice() && ionic.Platform.isIOS();
+  }
+
   function isAndroid() {
     return ionic.Platform.isAndroid();
   }
+
+
 
   function isAndroidBrowser() {
     return !isAndroidDevice() && ionic.Platform.isAndroid();
@@ -69,7 +85,9 @@ function DeviceService($cordovaNgCardIO,
 	}
   // returns object
 	function getDevice() {
-		return ionic.Platform.device();
+		currentDevice = ionic.Platform.device();
+    console.log('DEVICE DETAILS', currentDevice.cordova);
+    return currentDevice;
 	}
   // returns string value
   function getPlatform() {
@@ -129,10 +147,8 @@ function DeviceService($cordovaNgCardIO,
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
 
-      //the delay is for preventing components from rendering on the first go
-      $timeout(function() {
-        navigator.splashscreen.show();
-      }, 2000)
+      //always show this until we have checked for updates && there are not any
+      navigator.splashscreen.show();
     }
 
 		if(isMobile()) {
@@ -150,7 +166,7 @@ function DeviceService($cordovaNgCardIO,
 	  				WindowsService.ready();
 	  				break;
 		  	}
-
+        checkUpdates();
 		  	console.log("detected platform: " + getPlatform());
 
 		}

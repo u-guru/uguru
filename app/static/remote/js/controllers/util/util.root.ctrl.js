@@ -54,7 +54,7 @@ angular.module('uguru.util.controllers')
             var popup = document.querySelectorAll('.uguru-popup.show')[0];
             if(popup !== null && popup !== undefined) {
                 console.log("found popup");
-                popup.className = 'uguru-popup';
+                popup.classList.remove('show');
                 e.stopPropagation();
 
                 e.preventDefault();
