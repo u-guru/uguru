@@ -20,8 +20,6 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate, University, Utilities, uTracker, Course) {
 
-    
-    $scope.courses = [];
 
     $scope.search_text = {
       course: ''

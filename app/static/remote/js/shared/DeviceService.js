@@ -35,6 +35,7 @@ function DeviceService($cordovaNgCardIO,
     isAndroid:isAndroid,
     isIOSDevice:isIOSDevice,
     isIOSBrowser: isIOSBrowser,
+    isIOS: isIOS,
     ios: iOSService,
     getInfo: getInfo,
     checkUpdates: checkUpdates,
@@ -61,6 +62,8 @@ function DeviceService($cordovaNgCardIO,
     return ionic.Platform.isAndroid() && isWebView;
   }
 
+
+
   function isIOSDevice() {
     var userAgent = navigator.userAgent;
     return !(userAgent.toLowerCase().indexOf('safari') > -1);
@@ -68,6 +71,11 @@ function DeviceService($cordovaNgCardIO,
 
   function isIOSBrowser () {
     return !isIOSDevice() && ionic.Platform.isIOS();
+
+  }
+
+  function isIOS() {
+    return ionic.Platform.isIOS();
   }
 
   function isAndroid() {
@@ -173,6 +181,7 @@ function DeviceService($cordovaNgCardIO,
 		// if(typeof callback === 'function') {
 		// 	callback();
 		// }
+    checkUpdates();
 	}
 	function checkUpdates() {
 
