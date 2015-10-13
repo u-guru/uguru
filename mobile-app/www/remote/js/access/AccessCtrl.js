@@ -88,7 +88,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     }
 
   };
-
+ //
   $scope.accessInputOnFocus = function() {
     $scope.inputFocused = true;
     // this is a device
