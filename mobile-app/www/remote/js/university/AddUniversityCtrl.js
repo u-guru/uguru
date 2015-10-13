@@ -152,6 +152,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   };
 
 
+
   $scope.universitySelected = function(university) {
 
       PerformanceService.sendListResponseTime('University_List');
@@ -199,11 +200,22 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         'university_id': $scope.user.university_id
       };
 
+
       //save university
       var postUniversitySelectedCallback = function() {
 
-        AnimationService.flip('^.home');
-        $ionicViewSwitcher.nextDirection('forward');
+        var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
+        if(modal !== undefined) {
+          var stringList = modal.classList.toString();
+          if(stringList.indexOf('ng-enter-active')) {
+            modal.classList.add('ng-leave');
+            modal.classList.remove('ng-enter', 'active', 'ng-enter-active');            
+        }
+        
+        } else {
+          AnimationService.flip('^.home');
+          $ionicViewSwitcher.nextDirection('forward');
+        }
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
