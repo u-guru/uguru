@@ -29,12 +29,13 @@ angular.module('uguru.util.controllers')
   'uTracker',
   'Utilities',
   'PopupService',
+  'ModalService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService, uTracker, Utilities, PopupService) {
+  AnimationService, uTracker, Utilities, PopupService, ModalService) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
@@ -108,6 +109,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchUniversityModal = function() {
+      // ModalService.getModal('university');
       $scope.universityModal.show();
     }
 

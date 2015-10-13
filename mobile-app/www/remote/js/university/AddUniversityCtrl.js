@@ -17,11 +17,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'PerformanceService',
   '$templateCache',
   'AccessService',
+  '$ionicModal',
+  'ModalService',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
-  AnimationService, PerformanceService, $templateCache, AccessService) {
+  AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -95,8 +97,23 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     requestAnimationFrame(update);
   };
 
+
+  // function initUniversityModal() {
+  //   $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
+  //         scope: $scope,
+  //         animation: 'slide-in-up',
+  //         focusFirstInput: false,
+  //   }).then(function(modal) {
+  //       $scope.universityModal = modal;
+  //       ModalService.setModal("university", $scope.universityModal);
+
+  //       //uTracker.track(tracker, 'University Modal');
+  //   });
+  // }
+
   $scope.afterEnter = function() {
     stopLoop = true;
+    // initUniversityModal();
     //$timeout(function() {stopLoop = true}, 300);
     //console.log("called afterEnter");
   };
@@ -186,8 +203,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       var postUniversitySelectedCallback = function() {
 
         AnimationService.flip('^.home');
-        UniversityMatcher.clearCache();
-
         $ionicViewSwitcher.nextDirection('forward');
       }
 
