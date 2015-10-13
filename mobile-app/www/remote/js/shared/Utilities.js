@@ -27,7 +27,8 @@ function Utilities($rootScope, Settings) {
 		validatePhone: validatePhone,
 		validateCode: validateCode,
 		validateName: validateName,
-		validatePassword: validatePassword
+		validatePassword: validatePassword,
+		numberWithCommas: numberWithCommas
 	}
 
 	function sortArrObjByKey(arr, key) {
@@ -229,6 +230,12 @@ function Utilities($rootScope, Settings) {
 		if(password!==null) {
 			return password.length>=6;
 		} else return false;
+	}
+
+	function numberWithCommas(x) {
+	    var parts = x.toString().split(".");
+	    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	    return parts[0];
 	}
 
 }

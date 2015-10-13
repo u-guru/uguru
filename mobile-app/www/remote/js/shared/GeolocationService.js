@@ -107,7 +107,8 @@ function Geolocation($rootScope, $timeout, University,
                                     userLat, userLong, 
                                     list[i].latitude, list[i].longitude);
 
-      list[i].miles = numberFormatter.format(Math.round(list[i].rawMiles));
+      list[i].miles = Utilities.numberWithCommas(list[i].rawMiles);
+      // list[i].miles = numberFormatter.format(Math.round(list[i].rawMiles));
       //console.log(i + '. ' + list[i].name + ' : ' + list[i].miles + ' miles');
 
     }

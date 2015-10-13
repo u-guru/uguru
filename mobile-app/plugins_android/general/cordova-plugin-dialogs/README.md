@@ -19,6 +19,8 @@
 
 # cordova-plugin-dialogs
 
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-dialogs.svg)](https://travis-ci.org/apache/cordova-plugin-dialogs)
+
 This plugin provides access to some native dialog UI elements
 via a global `navigator.notification` object.
 
