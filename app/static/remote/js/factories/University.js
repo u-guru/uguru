@@ -1,6 +1,6 @@
 angular.module('uguru.rest', [])
 .factory('University', ['Restangular', function(Restangular) {
-    var University;
+    var University
     University = {
         get: function() {
             return Restangular
@@ -19,7 +19,9 @@ angular.module('uguru.rest', [])
         },
         getSorted: function() {
             return sortByRank(targettedUniversities);
-        }
+        },
+        majors: [],
+        courses: []
 
     };
     return University;

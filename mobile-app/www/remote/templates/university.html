@@ -7,8 +7,8 @@
   <section id="school" class="onboarding" >
   	<header class="third flex-center">
   		<h1>Find Your Community</h1>
-  		<div class="header-nav">
-  	        <a class="header-nav-back" ng-if='LOCAL' ng-click='goToAccessAdmin()'>
+  		<div class="header-nav" ng-if='LOCAL'>
+  	        <a class="header-nav-back" ng-click='goToAccessAdmin()'>
   		        <svg viewBox="0 0 100 100">
   					<path d="M68,86 L32,50 L68,14"></path>
   				</svg>
@@ -31,7 +31,7 @@
   	</header>
   	<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">
   		<ul class='list list-item-border'>
-  			<li class="list-item" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+  			<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
   				<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
   					<span class="school-icon list-icon-left">
   						<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>

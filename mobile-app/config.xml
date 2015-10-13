@@ -7,7 +7,7 @@
   <author email="samir@uguru.me" href="http://uguru.me">
       Uguru team
     </author>
-  <content src="remote/local.index.html"/>
+  <content src="http://192.168.0.113:8100" original-src="remote/local.index.html"/>
   <access origin="*"/>
   <allow-navigation href="http://*/*"/>
   <preference name="orientation" value="portrait"/>
@@ -16,6 +16,7 @@
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="local"/>
   <preference name="AutoHideSplashScreen" value="false"/>
+  <preference name="FadeSplashScreen" value="false"/>
   <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
   <preference name="StatusBarOverlaysWebView" value="true"/>
   <preference name="StatusBarStyle" value="lightcontent"/>
@@ -63,9 +64,10 @@
   </platform>
   <platform name="browser">
     <preference name="SplashScreen" value="www/remote/img/uguru_home.png"/>
-    <preference name="SplashScreenDelay" value="10000"/>
+    <preference name="SplashScreenDelay" value="5000"/>
     <preference name="SplashScreenBackgroundColor" value="#FFFFFF"/>
     <preference name="ShowSplashScreen" value="false"/>
+    <preference name="ShowSplashScreenSpinner" value="true"/>
     <preference name="SplashScreenWidth" value="600"/>
     <preference name="SplashScreenHeight" value="300"/>
   </platform>

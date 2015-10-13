@@ -186,7 +186,18 @@ angular.module('uguru.guru.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
 
-    //
+    $scope.initSlideBoxModals = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+      });
+
+
+    }
 
 
 
@@ -237,10 +248,28 @@ angular.module('uguru.guru.controllers')
       progressBarTag.style.width = width + 'px';
     }
 
-    $scope.$on('$ionicView.enter', function() {
+    var updateMajorScope = function(majors) {
+      $scope.majors = majors;
+      University.majors = majors;
+    }
+
+    var updateCoursesScope = function(courses) {
+      $scope.courses = courses;
+      University.courses = courses;
+    }
+
+    $scope.$on('$ionicView.beforeEnter', function() {
 
       //since this is the same as entering the slidebox
-      $scope.majors = University.majors || getMajorsBecomeGuru();
+      var universityId = $scope.user.university && $scope.user.university_id || 2307;
+      
+      //adding minor delay so it doesn't get in the delay cycle
+      $timeout(function() {
+        $scope.majors = University.majors || $scope.getMajorsForUniversityId();
+        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
+        $scope.categories = Category.categories || $scope.getCategories();
+        $scope.initSlideBoxModals();
+      }, 500);
 
     }, 500)
 
