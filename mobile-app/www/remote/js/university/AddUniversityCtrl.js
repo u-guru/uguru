@@ -118,8 +118,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     $scope.loader.showAmbig('[ADMIN] Restarting', 1500);
     $timeout(function() {
-      $ionicSlideBoxDelegate.previous();
-    },0)
+      $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
+    },0);
   }
 
   $scope.resetUniversities = function() {

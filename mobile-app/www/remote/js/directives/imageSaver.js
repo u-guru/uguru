@@ -4,7 +4,7 @@ angular.module('uguru.directives')
 
 		link: function(scope, element, attrs) {
 			if (!scope.platform.mobile) {
-				 console.log('imageSaver unavailable since not on mobile device');
+				 //console.log('imageSaver unavailable since not on mobile device');
 				return;
 			}
 			var assetURL = attrs.ngSrc.toString();
