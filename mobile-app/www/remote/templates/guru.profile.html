@@ -1,4 +1,5 @@
 <ion-view class='uguru-view profile-view guru-profile-view bg-charcoal'>
+	<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
 	<section id="profile" class='guru-profile'>
 		<div id="profile-desc">
 			<ion-slide-box show-pager="true" class="profile-slider">
@@ -25,9 +26,8 @@
 									</h1>
 								</li>
 								<li id="profile-school">{{user.university.title}}</li>
-								<li id="profile-loc">
-									<span id="profile-loc-city">{{user.university.city}}</span>
-									<span id="profile-loc-state">{{user.university.state}}</span>
+								<li>
+									<a ng-click='launchContactGuruModal()'><i class='icon ion-email'> </i></a>
 								</li>
 							</ul>
 						</nav>

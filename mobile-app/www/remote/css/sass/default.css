@@ -669,6 +669,8 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
     background: rgba(64, 72, 75, 0.8); }
   [class*="bg-slate"][class*="-90p"] {
     background: rgba(64, 72, 75, 0.9); }
+  [class*="bg-slate"][class*="-important"] {
+    background: #757575 !important; }
 
 [class*="bg-taupe"] {
   background: #757575;
@@ -998,6 +1000,10 @@ header {
     line-height: 1;
     font-weight: 600;
     text-transform: uppercase; }
+  header.third h1 {
+    font-size: 22px; }
+  header.third[class*="header-"] h1 {
+    font-size: 20px; }
   header:before {
     filter: alpha(opacity=30);
     opacity: 0.3;

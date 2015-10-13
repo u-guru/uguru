@@ -1,62 +1,51 @@
 <ion-view class='uguru-view profile-view guru-profile-view bg-charcoal'>
+	<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
 	<section id="profile" class='guru-profile'>
 		<div id="profile-desc">
-				<!--CSS to style in pager (just to show how its generated as example)-->
-				<style>
-				#profile-description .slider-pager {
-					display:block;
-				}
-				</style>
-				<ion-slide-box show-pager="true" class='guru-tip-of-day-slide-box'>
-					<ion-slide>
-						<div class="profile-inside">
-							<div id="profile-icon">
-								<img ng-src="{{user.profile_url}}" id='guru-profile-img' ng-if='user.id && user.profile_url && !profile.edit_mode' />
-								<a ng-click='takeProfilePhoto()' ng-if='!user.id || !user.profile_url || profile.edit_mode'>
-									<img ng-src="{{user.profile_url}}" id='guru-profile-img' />
-									<h1 ng-show='user.profile_url'>Edit<br/>Photo</h1>
-								</a>
-							</div>
-							<nav id="profile-list" class='profile-list-slide'>
-								<ul>
-									<li id="profile-name">
-										<!-- SAMIR -only use .verified if the profile is verified
+			<ion-slide-box show-pager="true" class="profile-slider">
+				<ion-slide>
+					<div class="profile-inside">
+						<div id="profile-icon">
+							<img ng-src="{{user.profile_url}}" id='guru-profile-img' ng-if='user.id && user.profile_url && !profile.edit_mode' />
+							<a ng-click='takeProfilePhoto()' ng-if='!user.id || !user.profile_url || profile.edit_mode'>
+								<img ng-src="{{user.profile_url}}" id='guru-profile-img' />
+								<h1 ng-show='user.profile_url'>Edit<br/>Photo</h1>
+							</a>
+						</div>
+						<nav id="profile-list" class='profile-list-slide'>
+							<ul>
+								<li id="profile-name">
+									<!-- SAMIR -only use .verified if the profile is verified
 									<h1 class="verified">
 									-->
-										<h1>
+									<h1>
 										<span class="inline">{{user.name}}</span>
 										<span class="inline">
 											<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 										</span>
 									</h1>
-									</li>
-									<li id="profile-school">{{user.university.title}}</li>
-									<li id="profile-loc">
-										<span id="profile-loc-city">{{user.university.city}}</span>
-										<span id="profile-loc-state">{{user.university.state}}</span>
-									</li>
-								</ul>
-							</nav>
+								</li>
+								<li id="profile-school">{{user.university.title}}</li>
+								<li id="profile-loc">
+									<span id="profile-loc-city">{{user.university.city}}</span>
+									<span id="profile-loc-state">{{user.university.state}}</span>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<div id="profile-intro" class='profile-inside'>
+						<button class='absolute bottom-0 semibold bg-shamrock' ng-if='user.guru_introduction || user.guru_introduction.length' ng-click='launchGuruIntroductionModal()'>Edit Introduction</button>
+						<button class='absolute bottom-0 semibold bg-shamrock' ng-if='!user.guru_introduction || !user.guru_introduction.length' ng-click='launchGuruIntroductionModal()'>Add Introduction</button>
+						<div>
+							<p class='text-center' ng-if='user.guru_introduction && user.guru_introduction.length'>{{user.guru_introduction}}</p>
+							<p class='text-center' ng-if='!user.guru_introduction || !user.guru_introduction.length'>Tell students why you're great!</p>
 						</div>
-						</ion-slide>
-					<ion-slide>
-						<div class='profile-inside full-xy'>
-							<div class='full-xy absolute'>
-								<a ng-click='launchGuruIntroductionModal()' class='full-xy flex-center-wrap'>
-									<div class='bg-campus-50p white-text full-x'>
-										<p class='text-center' ng-if='user.guru_introduction && user.guru_introduction.length'>{{user.guru_introduction}}}}
-										</p>
-										<p class='text-center' ng-if='!user.guru_introduction || !user.guru_introduction.length'>
-											"Tell students why you're great"
-										</p>
-									</div>
-									<button class='semibold bg-moola full-x'> Add Introduction</button>
-								</a>
-							</div>
-						</div>
-					</ion-slide>
-				</ion-slide-box>
-				<!-- <nav id="profile-bars" class='p20xy'>
+					</div>
+				</ion-slide>
+			</ion-slide-box>
+			<!-- <nav id="profile-bars" class='p20xy'>
 				<ul id="profile-rating">
 					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
 					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
@@ -228,7 +217,6 @@
 	</section>
 	<input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none' />
 
-<<<<<<< HEAD
 	<div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar' ng-if='user && user.id'>
 		<a class="tab-item" nav-direction='swap' href='#/guru'>
 			<svg viewBox="0 0 100 100">

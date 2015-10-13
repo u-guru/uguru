@@ -23,20 +23,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
   $ionicSlideBoxDelegate, ThrottleService) {
 
-  // if(AccessService.validate()){
-  //   $timeout(function() {
-  //     $ionicSlideBoxDelegate.next();
-  //   }, 0);
-  // }
-
-
-  // var list = UniversityMatcher.list;
-  // for (var i=0; i<10; i++) {
-  //   var preCache = list[i].seal_url || list[i].forbes_url;
-  //   console.log("preCache: " + preCache);
-  //   DownloadService.downloadFile(preCache);
-  // }
-
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
   $ionicSlideBoxDelegate.enableSlide(false)
@@ -63,9 +49,9 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
         $scope.redeemRecentlyPressed = false;
       }, 500)
     }
-    $scope.loader.showAmbig();
-    if(AccessService.validate(code)){
 
+    if(AccessService.validate(code)){
+      $scope.loader.showAmbig();
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
       $scope.redeemRecentlyPressed = false;
@@ -73,20 +59,23 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
         cordova.plugins.Keyboard.close();
       }
 
+
       $timeout(function() {
         $scope.loader.hide();
-        $scope.loader.showSuccess('Access Granted', 1500);
+        $timeout(function() {
+          $scope.loader.showSuccess('Access Granted', 2500);
+        }, 250)
         $timeout(function() {
           $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-        }, 1000);
-      }, 1500)
+        }, 1500);
+      }, 700)
 
     } else {
       $scope.loader.hide();
       var errorTextElem = document.getElementById('input-error-text')
       errorTextElem.style.opacity = 1;
       errorTextElem.innerHTML = 'Incorrect access code';
-      accessInput.value = '';
+      $scope.access.codeInput = '';
 
       //fadeout after 500 seconds
       var postShakeCallback = function() {
@@ -162,6 +151,13 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       }
   }
 
+  $scope.$on('$ionicView.loaded', function() {
+
+    AnimationService.accessInput = document.querySelector("access-code-bar");
+
+
+  })
+
   $scope.accessInputOnBlur = function(e) {
     if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
       console.log('access Input on Blur prevented');
@@ -183,8 +179,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
         "easeInSine"
       );
 
-      //nick we need to do this more
-      if (!cordova || !cordova.plugins) {
+    //nick we need to do this more
+      if (typeof cordova == 'undefined') {
         return;
       }
       if (cordova.plugins.Keyboard && cordova.plugins.Keyboard.isVisible) {

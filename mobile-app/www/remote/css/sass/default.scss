@@ -753,6 +753,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	&[class*="-90p"] {
 		background: rgba($slate, .9);
 	}
+	&[class*="-important"] {
+		background: $taupe !important;
+	}
 }
 [class*="bg-taupe"] {
 	background: $taupe;
@@ -1166,6 +1169,16 @@ header {
 		line-height: 1;
 		font-weight: 600;
 		text-transform: uppercase;
+	}
+	&.third {
+		h1 {
+			font-size: 22px;
+		}
+		&[class*="header-"] {
+			h1 {
+				font-size: 20px;
+			}
+		}
 	}
 	&:before {
 		@include opacity(.3);
