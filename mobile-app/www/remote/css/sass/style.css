@@ -214,9 +214,6 @@ section {
     background: url(../../img/svg/search.svg) no-repeat center center/cover, url(/static/remote/img/svg/search.svg) center/cover no-repeat;
     width: 14px;
     height: 14px; }
-  .uguru-view .header-nav a h1 {
-    font-size: 18px !important;
-    font-weight: 400 !important; }
   .uguru-view #loading svg {
     max-width: 200px; } }
 
@@ -545,7 +542,7 @@ section {
 
 .signup-modal #account-form {
   height: calc(100% - 50px);
-  padding: 15px; }
+  padding: 0 15px 15px; }
   .signup-modal #account-form input {
     margin: 30px 0 15px;
     font-size: 20px; }
@@ -1383,10 +1380,10 @@ section {
     .action-sheet-wrapper.action-sheet-up .action-sheet-group button {
       padding: 0 10px;
       height: 50px;
-      color: #40484B;
+      color: #40484B !important;
       font-size: 16px;
       font-weight: 600; }
-    .action-sheet-wrapper.action-sheet-up .action-sheet-group button:active {
+    .action-sheet-wrapper.action-sheet-up .action-sheet-group button:active, .action-sheet-wrapper.action-sheet-up .action-sheet-group button.activated {
       background: #F1F1F1; }
     .action-sheet-wrapper.action-sheet-up .action-sheet-group:last-child > *:last-child {
       border-bottom: 0 !important; }
@@ -2192,6 +2189,14 @@ section {
       font-size: 20px;
       font-weight: 700;
       text-transform: uppercase; }
+    .photo-view #photo-container #profile-icon span {
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      height: 80%;
+      max-width: 150px;
+      max-height: 150px;
+      overflow: hidden; }
     .photo-view #photo-container #profile-icon svg, .photo-view #photo-container #profile-icon img {
       border-radius: 1000px;
       position: absolute;
@@ -2259,122 +2264,128 @@ section {
         fill: none; }
     .guru-profile-view .round span {
       line-height: 18px; }
-  .guru-profile-view #profile-desc {
-    height: 41%; }
-    .guru-profile-view #profile-desc .profile-slider {
+  .guru-profile-view #profile-desc .profile-slider {
+    position: relative;
+    height: 100%; }
+    .guru-profile-view #profile-desc .profile-slider .slider-slide {
+      padding: 15px 0; }
+    .guru-profile-view #profile-desc .profile-slider #profile-intro {
       position: relative;
-      height: 100%; }
-      .guru-profile-view #profile-desc .profile-slider .slider-slide {
-        padding: 15px 0; }
-      .guru-profile-view #profile-desc .profile-slider #profile-intro {
-        position: relative;
-        margin: 0 15px;
-        height: calc(100% - 30px); }
-        .guru-profile-view #profile-desc .profile-slider #profile-intro div {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          height: 100%;
-          font-size: 20px;
-          font-weight: 600; }
-        .guru-profile-view #profile-desc .profile-slider #profile-intro button + div {
-          height: calc(100% - 64px); }
-      .guru-profile-view #profile-desc .profile-slider .slider-pager {
-        position: relative;
-        bottom: 30px; }
-    .guru-profile-view #profile-desc #profile-icon {
+      margin: 0 15px;
+      height: calc(100% - 30px); }
+      .guru-profile-view #profile-desc .profile-slider #profile-intro div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 20px;
+        font-weight: 600; }
+      .guru-profile-view #profile-desc .profile-slider #profile-intro button + div {
+        height: calc(100% - 64px); }
+    .guru-profile-view #profile-desc .profile-slider .slider-pager {
+      position: relative;
+      bottom: 30px; }
+  .guru-profile-view #profile-desc #profile-icon {
+    border-radius: 1000px;
+    display: block; }
+    .guru-profile-view #profile-desc #profile-icon span {
+      display: block;
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      overflow: hidden; }
+    .guru-profile-view #profile-desc #profile-icon img {
       border-radius: 1000px;
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      height: 100px;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.5); }
+    .guru-profile-view #profile-desc #profile-icon a {
+      position: relative;
       display: block; }
-      .guru-profile-view #profile-desc #profile-icon img {
-        border-radius: 1000px;
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 100px;
-        padding: 5px;
-        background: rgba(255, 255, 255, 0.5); }
-      .guru-profile-view #profile-desc #profile-icon a {
-        position: relative;
-        display: block; }
-        .guru-profile-view #profile-desc #profile-icon a img {
-          filter: alpha(opacity=50);
-          opacity: 0.5; }
-        .guru-profile-view #profile-desc #profile-icon a h1 {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-          width: 100px;
-          font-weight: 700;
-          text-align: center;
-          text-transform: uppercase; }
-      .guru-profile-view #profile-desc #profile-icon a.active, .guru-profile-view #profile-desc #profile-icon a.activated, .guru-profile-view #profile-desc #profile-icon a:active {
-        filter: alpha(opacity=75);
-        opacity: 0.75; }
-    .guru-profile-view #profile-desc #profile-list {
-      text-align: center; }
-      .guru-profile-view #profile-desc #profile-list ul {
-        list-style: none;
-        margin: 0;
-        padding: 0; }
-        .guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
-          margin-top: 10px;
-          padding: 0 10px 3px;
-          color: white;
-          font-size: 28px;
-          font-weight: 600;
-          line-height: 1;
-          text-transform: uppercase; }
-          .guru-profile-view #profile-desc #profile-list ul #profile-name h1 span:last-child svg {
-            display: none; }
-        .guru-profile-view #profile-desc #profile-list ul #profile-school {
-          margin-bottom: 3px;
-          font-size: 20px;
-          font-weight: 400; }
-        .guru-profile-view #profile-desc #profile-list ul #profile-loc {
-          font-size: 16px; }
-          .guru-profile-view #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty)::after {
-            content: ", "; }
-    .guru-profile-view #profile-desc #profile-bars #profile-rating {
+      .guru-profile-view #profile-desc #profile-icon a img {
+        filter: alpha(opacity=50);
+        opacity: 0.5; }
+      .guru-profile-view #profile-desc #profile-icon a h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase; }
+    .guru-profile-view #profile-desc #profile-icon a.active, .guru-profile-view #profile-desc #profile-icon a.activated, .guru-profile-view #profile-desc #profile-icon a:active {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
+  .guru-profile-view #profile-desc #profile-list {
+    text-align: center; }
+    .guru-profile-view #profile-desc #profile-list ul {
       list-style: none;
       margin: 0;
-      padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
+      padding: 0; }
+      .guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
+        margin-top: 10px;
+        padding: 0 10px 3px;
+        color: white;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1;
+        text-transform: uppercase; }
+        .guru-profile-view #profile-desc #profile-list ul #profile-name h1 span:last-child svg {
+          display: none; }
+      .guru-profile-view #profile-desc #profile-list ul #profile-school {
+        margin-bottom: 3px;
+        font-size: 20px;
+        font-weight: 400; }
+      .guru-profile-view #profile-desc #profile-list ul #profile-contact {
+        margin: 15px 0; }
+      .guru-profile-view #profile-desc #profile-list ul #profile-loc {
+        font-size: 16px; }
+        .guru-profile-view #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty)::after {
+          content: ", "; }
+  .guru-profile-view #profile-desc #profile-bars #profile-rating {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 75px;
+    padding: 20px;
+    margin: 15px 0;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 24px; }
+    .guru-profile-view #profile-desc #profile-bars #profile-rating li {
       width: 100%;
-      height: 75px;
-      padding: 20px;
-      margin: 15px 0;
-      background: rgba(255, 255, 255, 0.1);
-      font-size: 24px; }
-      .guru-profile-view #profile-desc #profile-bars #profile-rating li {
-        width: 100%;
-        text-align: center; }
+      text-align: center; }
   .guru-profile-view #profile-info .profile-inside {
     padding-bottom: 64px; }
     .guru-profile-view #profile-info .profile-inside h1 {
@@ -2537,17 +2548,20 @@ section {
     .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
       display: block; } }
 
-@media screen and (max-height: 480px) {
+.guru-profile-view #profile-desc {
+  height: 64.5%; }
+
+@media screen and (min-height: 568px) {
   .guru-profile-view #profile-desc {
-    height: 49%; } }
+    height: 53%; } }
 
 @media screen and (min-height: 667px) {
   .guru-profile-view #profile-desc {
-    height: 34%; } }
+    height: 45%; } }
 
 @media screen and (min-height: 736px) {
   .guru-profile-view #profile-desc {
-    height: 31%; } }
+    height: 41%; } }
 
 .photo-guru-profile-view {
   color: #2B3234; }
@@ -3387,6 +3401,8 @@ section {
       .guru-view .guru-tip-of-day-slide-box .card .card-content p {
         margin: 10px 0 0;
         font-size: 18px; }
+    .guru-view .guru-tip-of-day-slide-box .card button {
+      border-radius: 0 0 5px 5px; }
   .guru-view .guru-tip-of-day-slide-box .slider-pager {
     bottom: 15px; }
 

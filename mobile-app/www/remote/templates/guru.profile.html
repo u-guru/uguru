@@ -6,9 +6,9 @@
 				<ion-slide>
 					<div class="profile-inside">
 						<div id="profile-icon">
-							<img ng-src="{{user.profile_url}}" id='guru-profile-img' ng-if='user.id && user.profile_url && !profile.edit_mode' />
+							<span><img ng-src="{{user.profile_url}}" id='guru-profile-img' ng-if='user.id && user.profile_url && !profile.edit_mode' /></span>
 							<a ng-click='takeProfilePhoto()' ng-if='!user.id || !user.profile_url || profile.edit_mode'>
-								<img ng-src="{{user.profile_url}}" id='guru-profile-img' />
+								<span><img ng-src="{{user.profile_url}}" id='guru-profile-img' /></span>
 								<h1 ng-show='user.profile_url'>Edit<br/>Photo</h1>
 							</a>
 						</div>
@@ -26,8 +26,8 @@
 									</h1>
 								</li>
 								<li id="profile-school">{{user.university.title}}</li>
-								<li>
-									<a ng-click='launchContactGuruModal()'><i class='icon ion-email'> </i></a>
+								<li id="profile-contact">
+									<button class="btn-ghost-white" ng-click='launchContactGuruModal()'>Contact</button>
 								</li>
 							</ul>
 						</nav>

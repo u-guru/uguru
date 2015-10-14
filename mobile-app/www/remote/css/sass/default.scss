@@ -1174,10 +1174,10 @@ header {
 		h1 {
 			font-size: 22px;
 		}
-		&[class*="header-"] {
-			h1 {
-				font-size: 20px;
-			}
+	}
+	&.third:not(.flex-center-wrap), &.third:not(.flex-center), .header-nav {
+		h1 {
+			font-size: 20px;
 		}
 	}
 	&:before {
@@ -1201,13 +1201,15 @@ header {
 }
 
 @media screen and (min-width:375px) {
-	header.third {
-		h1 {
-			font-size: 24px;
-		}
-		&[class*="header-"] {
+	header {
+		&.third {
 			h1 {
-				font-size: 20px;
+				font-size: 24px;
+			}
+		}
+		&.third:not(.flex-center-wrap), &.third:not(.flex-center), .header-nav {
+			h1 {
+				font-size: 20px!important;
 			}
 		}
 	}
