@@ -257,9 +257,9 @@ angular.module('uguru.guru.controllers')
 
       //adding minor delay so it doesn't get in the delay cycle
       $timeout(function() {
-        $scope.majors = University.majors || University.getGeneral();
-        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
-        $scope.categories = Category.categories || $scope.getCategories();
+        // $scope.majors = University.majors.slice() || University.getGeneral();
+        // $scope.courses = University.courses.slice() || $scope.getCoursesForUniversityId();
+        // $scope.categories = Category.categories.slice() || $scope.getCategories();
       }, 500);
 
     }, 500)
