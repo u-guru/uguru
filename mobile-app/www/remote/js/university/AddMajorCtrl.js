@@ -78,26 +78,20 @@ angular.module('uguru.util.controllers')
 
       console.log("index: " + index);
 
-      $timeout(function() {
-        $scope.loader.show();
-      }, 250)
 
-      //t == 0
-      $timeout(function() {
-        console.log("length: " + $scope.majorsSource.length);
-        $scope.majorsSource.splice(index, 1);
-        console.log("length: " + $scope.majorsSource.length);
+      $scope.loader.show();
 
-        $timeout(function() {
-          $scope.search_text.major = "   ";
-        },0);
+      $scope.majorsSource.splice(index, 1);
+      $scope.user.majors.push(major);
+
+      $timeout(function() {
+        $scope.search_text.major = "   ";
+      },0);
+      
+      $timeout(function() {
+        $scope.search_text.major = "";
+      }, 10);
         
-        $timeout(function() {
-          $scope.search_text.major = "";
-        }, 10);
-        $scope.user.majors.push(major);
-      }, 250)
-
 
       // t == 1
       $timeout(function() {
