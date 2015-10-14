@@ -45,6 +45,7 @@ angular.module('uguru.util.controllers')
       var removedMajor = $scope.user.majors.splice(index,1).slice();
       
       $scope.majorsSource.unshift(major);
+      
       $timeout(function() {
         $scope.search_text.major = "   ";
       },0);
