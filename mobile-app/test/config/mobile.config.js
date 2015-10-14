@@ -3,7 +3,7 @@ exports.config = {
     framework: 'jasmine2',
 
      // baseUrl: 'http://10.0.0.2:8000/',
-     baseUrl: 'http://192.168.56.101:5555/',
+     baseUrl: 'http://192.168.56.109:5555/',
 
     //appium port has to be 4723
       // seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -25,8 +25,8 @@ exports.config = {
 
            capabilities: {
             browserName: '',
-             // app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
-              app : '/home/twfob/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug-unaligned.apk',
+             app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+              // app : '/home/twfob/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug-unaligned.apk',
             'appium-version':'1.4.10',
             platformName: 'Android',
             platformVersion: '4.4',

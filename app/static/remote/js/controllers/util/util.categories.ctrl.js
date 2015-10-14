@@ -35,7 +35,8 @@ angular.module('uguru.util.controllers')
 
 
     $scope.launchCategoryModal = function(category) {
-
+      console.log('active_category', $scope.active_category);
+      console.log('category', category);
       if($scope.active_category!==category){
         $scope.active_category = category;
         extension = $scope.guruSkillsModal && $scope.guruSkillsModal.isShown() && '-2';
@@ -45,7 +46,10 @@ angular.module('uguru.util.controllers')
       uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name
       });
+      console.log('post active_category');
+      console.log('active_category', $scope.active_category);
       $scope.active_category.active = true;
+
       $scope.categorySkillsModal.show();
 
     }
@@ -80,11 +84,29 @@ angular.module('uguru.util.controllers')
       }
     })
 
+    $scope.$on('modal.hidden', function() {
+      if ($scope.activeSlideIndex === 2 ) {
+        $scope.active_category = {name:'Select category', active:false};
+      }
+    })
+
     $scope.skillsModalDrag = function(e) {
       if (e.gesture.deltaY > 175) {
         $scope.hideCategorySkillsModal();
       }
     }
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+    });
+
+
+
+
+
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
@@ -115,6 +137,12 @@ angular.module('uguru.util.controllers')
     }
 
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+    }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+    });
 
 
     var addGuruSubcategory = function(subcategory) {
