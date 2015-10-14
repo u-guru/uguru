@@ -3,13 +3,12 @@ angular.module('uguru.directives')
 	return {
 
 		link: function(scope, element, attrs) {
-			if (!scope.platform.mobile) {
+			if (!scope.platform.mobile || typeof cordova == "undefined" ) {
 				 //console.log('imageSaver unavailable since not on mobile device');
 				return;
 			}
 			var assetURL = attrs.ngSrc.toString();
 		 	//console.log("Current ngSrc value: " + assetURL);
-			
 			var directory = cordova.file.dataDirectory;
 			// if(attrs.imageSaver === 'cache' || !Utilities.checkFreeSpace() ) {
 			// 	directory = cordova.file.cacheDirectory;
