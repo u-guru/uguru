@@ -42,6 +42,10 @@ angular.module('uguru.guru.controllers')
       return guruCategoryCourses;
     }
 
+    $scope.majors = University.majors.slice() || University.getGeneral();
+    $scope.courses = University.courses.slice() || $scope.getCoursesForUniversityId();
+    $scope.categories = Category.categories.slice() || $scope.getCategories();
+
     $scope.nextSlide = function() {
       $ionicSlideBoxDelegate.next();
     }
@@ -256,11 +260,6 @@ angular.module('uguru.guru.controllers')
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
 
       //adding minor delay so it doesn't get in the delay cycle
-      $timeout(function() {
-        $scope.majors = University.majors || University.getGeneral();
-        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
-        $scope.categories = Category.categories || $scope.getCategories();
-      }, 500);
 
     }, 500)
 
