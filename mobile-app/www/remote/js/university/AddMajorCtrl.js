@@ -167,6 +167,7 @@ angular.module('uguru.util.controllers')
       University.getMajors($scope.user.university_id).then(function(majors) {
 
         University.majors = majors;
+        $scope.majorsSource = majors.plain()
         $scope.majors = majors.plain();
         $localstorage.setObject('universityMajors', majors.plain())
 

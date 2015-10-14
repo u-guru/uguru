@@ -210,15 +210,24 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           if(stringList.indexOf('ng-enter-active')) {
             modal.classList.add('ng-leave');
             modal.classList.remove('ng-enter', 'active', 'ng-enter-active');            
+            $ionicSlideBoxDelegate.update();
         }
         
         } else {
           AnimationService.flip('^.home');
           $ionicViewSwitcher.nextDirection('forward');
+          $timeout(function() {
+            console.log("cleaning up access/university slidebox");
+            $scope.$destroy;
+            document.querySelectorAll('#access-uni-slide')[0].remove();
+          }, 1000);
+          
         }
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+      console.log("will this reach?");
+
 
   };
 

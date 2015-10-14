@@ -89,6 +89,8 @@ angular.module('uguru.util.controllers')
             phone_confirm: getButtonLabel('phoneConfirm')
         }
 
+
+
         function getButtonLabel(popup) {
             switch(popup) {
                 case 'emailConfirm':
@@ -123,11 +125,13 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
+            console.log("university id: " + uni_id);
             University.getMajors(uni_id).then(function(majors){
 
                 console.log(majors.length, 'majors found', uni_id);
                 majors = majors.plain()
 
+                $scope.user.majors = majors;
                 University.majors = majors;
 
                 if (callback) {
@@ -135,6 +139,7 @@ angular.module('uguru.util.controllers')
                 }
             },
             function() {
+                $scope.user.majors = [{name: "Unable to retrieve school majors."}];
                 console.log('Universities NOT successfully loaded');
             })
         }

@@ -19,11 +19,12 @@ angular.module('uguru.guru.controllers')
   'uTracker',
   'AnimationService',
   'Category',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category) {
+    Category, $ionicSlideBoxDelegate) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -50,6 +51,7 @@ angular.module('uguru.guru.controllers')
 
       uTracker.track(tracker, 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
+      $ionicSlideBoxDelegate.update();
       $state.go('^.home');
       //AnimationService.slide('right');
     }
@@ -265,9 +267,9 @@ angular.module('uguru.guru.controllers')
       
       //adding minor delay so it doesn't get in the delay cycle
       $timeout(function() {
-        $scope.majors = University.majors || $scope.getMajorsForUniversityId();
-        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
-        $scope.categories = Category.categories || $scope.getCategories();
+        // $scope.majors = University.majors || $scope.getMajorsForUniversityId();
+        // $scope.courses = University.courses || $scope.getCoursesForUniversityId();
+        // $scope.categories = Category.categories || $scope.getCategories();
         $scope.initSlideBoxModals();
       }, 500);
 

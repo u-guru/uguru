@@ -30,12 +30,13 @@ angular.module('uguru.util.controllers')
   'Utilities',
   'PopupService',
   'ModalService',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService, uTracker, Utilities, PopupService, ModalService) {
+  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
