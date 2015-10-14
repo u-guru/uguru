@@ -199,7 +199,7 @@ angular.module('uguru.util.controllers')
       University.getMajors($scope.user.university_id).then(function(courses) {
 
         courses = courses.plain();
-
+        $scope.coursesSource = courses;
         $scope.courses = courses;
         University.courses = courses;
         $localstorage.setObject('universityCourses', courses.plain())

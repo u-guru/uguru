@@ -19,11 +19,13 @@ angular.module('uguru.guru.controllers')
   'uTracker',
   'AnimationService',
   'Category',
+  '$ionicSlideBoxDelegate',
+  'DeviceService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category) {
+    Category, $ionicSlideBoxDelegate, DeviceService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -50,6 +52,7 @@ angular.module('uguru.guru.controllers')
 
       uTracker.track(tracker, 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
+      $ionicSlideBoxDelegate.update();
       $state.go('^.home');
       //AnimationService.slide('right');
     }
@@ -119,14 +122,6 @@ angular.module('uguru.guru.controllers')
         uTracker.track(tracker, 'Become Guru: Courses');
 
         $scope.guruCoursesInput = document.getElementById('course-input-1');
-        $scope.removeUserGuruCoursesFromMasterCourses()
-
-        var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
-        var addScope = function(courses) {
-          $scope.courses = courses;
-        }
-
-        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
       }
 
       if (index === 2) {
@@ -184,6 +179,20 @@ angular.module('uguru.guru.controllers')
     }
 
     $ionicSideMenuDelegate.canDragContent(false);
+
+
+    $scope.initSlideBoxModals = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+      });
+
+
+    }
 
 
     var injectClassIntoElement = function(e) {
@@ -248,11 +257,16 @@ angular.module('uguru.guru.controllers')
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
 
+      if (DeviceService.isIOSDevice()) {
+        DeviceService.ios.setStatusBarText($state.current.name);
+      }
+
       //adding minor delay so it doesn't get in the delay cycle
       $timeout(function() {
-        $scope.majors = University.majors || University.getGeneral();
-        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
-        $scope.categories = Category.categories || $scope.getCategories();
+        // $scope.majors = University.majors || $scope.getMajorsForUniversityId();
+        // $scope.courses = University.courses || $scope.getCoursesForUniversityId();
+        // $scope.categories = Category.categories || $scope.getCategories();
+        $scope.initSlideBoxModals();
       }, 500);
 
     }, 500)

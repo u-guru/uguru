@@ -88,7 +88,7 @@ function TipService() {
         message = 'Fill out your ' + attribute + ' to increase your ' + adj[randomInt] + '!';
 
         return {
-            'title': 'Tip the ' + tip_index + 'th',
+            'title': 'Tip #' + tip_index,
             'message': message,
             'next_state': '^.' + state,
             'action_text': verb + ' my ' + attribute,

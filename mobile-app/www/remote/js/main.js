@@ -6,13 +6,22 @@ var FIRST_PAGE='^.' + _startpage;
 // isAdmin = true;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
-var REST_URL = 'http://www.uguru.me'
+var REST_URL = 'https://www.uguru.me';
 
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
+<<<<<<< HEAD
   BASE = 'remote/';
   BASE_URL = _ipaddress;
+=======
+
+  // REST_URL = 'http://uguru.me';
+  BASE = 'remote/';
+  BASE_URL = _ipaddress;
+  REST_URL = 'http://192.168.0.115:5000'
+
+>>>>>>> 8548af7a705bc3130ed1f9144ed3d2854d827b41
 } else {
   img_base = '/static/'
 }
