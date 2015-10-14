@@ -8,16 +8,15 @@ angular.module('uguru.directives')
 		switch(attr.bindInput){
 			case 'majors':
 				model = 'search_text.major';
-				getSource = function() {
-					return University.majors;
-				}
+
+				$scope.source = University.majors;
 				break;
 			case 'courses':
 				model = 'search_text.course';
-				getSource = function() {
-					return $scope.$parent.coursesSource;
-					//return University.getTargetted()[0].popular_courses;
-				}
+				// getSource = function() {
+				// 	return $scope.$parent.coursesSource;
+				// 	//return University.getTargetted()[0].popular_courses;
+				// }
 				break;
 		}
 
@@ -31,7 +30,7 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, getSource(), 'name');
+			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
 			      queryPromise = null;
 			    }, 90);
 			  }
@@ -42,7 +41,7 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, getSource(), 'name');
+			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
 			      queryPromise = null;
 			    }, 50);
 			  }
@@ -52,7 +51,7 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, getSource(), 'name');
+			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
 			      queryPromise = null;
 
 			    }, 50);
@@ -63,7 +62,8 @@ angular.module('uguru.directives')
 
 	return {
 		scope: {
-			listScope: '=bindInput'
+			listScope: '=bindInput',
+			source: '=source'
 		},
 		link: link,
 		restrict: 'A'

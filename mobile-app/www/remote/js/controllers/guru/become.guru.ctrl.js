@@ -19,11 +19,12 @@ angular.module('uguru.guru.controllers')
   'uTracker',
   'AnimationService',
   'Category',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category) {
+    Category, $ionicSlideBoxDelegate) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -42,10 +43,6 @@ angular.module('uguru.guru.controllers')
       return guruCategoryCourses;
     }
 
-    $scope.majors = University.majors.slice() || University.getGeneral();
-    $scope.courses = University.courses.slice() || $scope.getCoursesForUniversityId();
-    $scope.categories = Category.categories.slice() || $scope.getCategories();
-
     $scope.nextSlide = function() {
       $ionicSlideBoxDelegate.next();
     }
@@ -54,6 +51,7 @@ angular.module('uguru.guru.controllers')
 
       uTracker.track(tracker, 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
+      $ionicSlideBoxDelegate.update();
       $state.go('^.home');
       //AnimationService.slide('right');
     }
@@ -190,6 +188,21 @@ angular.module('uguru.guru.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
 
+    $scope.initSlideBoxModals = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+      });
+
+
+    }
+
+
+
     var injectClassIntoElement = function(e) {
       element = e.target
       console.log(element.className);
@@ -247,19 +260,18 @@ angular.module('uguru.guru.controllers')
       University.courses = courses;
     }
 
-    $scope.$on('$ionicView.enter', function() {
-
-      $timeout(function() {
-        $scope.loader.hide();
-      }, 2000)
-    });
-
     $scope.$on('$ionicView.beforeEnter', function() {
 
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
 
       //adding minor delay so it doesn't get in the delay cycle
+      $timeout(function() {
+        // $scope.majors = University.majors || $scope.getMajorsForUniversityId();
+        // $scope.courses = University.courses || $scope.getCoursesForUniversityId();
+        // $scope.categories = Category.categories || $scope.getCategories();
+        $scope.initSlideBoxModals();
+      }, 500);
 
     }, 500)
 
