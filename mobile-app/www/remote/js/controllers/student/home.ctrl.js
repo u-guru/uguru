@@ -21,12 +21,15 @@ angular.module('uguru.student.controllers', [])
     'AnimationService',
     'MapService',
     '$ionicSlideBoxDelegate',
+    'DeviceService',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-        $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate) {
+        $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
+        DeviceService) {
 
         $ionicSideMenuDelegate.canDragContent(false);
+
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/verb.home.modal.html', {
             scope: $scope,
@@ -180,7 +183,7 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.initStudentHomeMap = function() {
-            // MapService.initStudentHomeMap($scope.user);
+            MapService.initStudentHomeMap($scope.user);
         }
 
         console.log($scope.user);
@@ -192,6 +195,14 @@ angular.module('uguru.student.controllers', [])
                 $timeout(function() {
                     $scope.initStudentHomeMap();
                 }, 1000)
+            }
+
+        })
+
+        $scope.$on('$ionicView.beforeEnter', function() {
+
+            if (DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarText($state.current.name);
             }
 
         })

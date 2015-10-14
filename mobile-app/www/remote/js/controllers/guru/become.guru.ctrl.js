@@ -20,11 +20,12 @@ angular.module('uguru.guru.controllers')
   'AnimationService',
   'Category',
   '$ionicSlideBoxDelegate',
+  'DeviceService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category, $ionicSlideBoxDelegate) {
+    Category, $ionicSlideBoxDelegate, DeviceService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -121,14 +122,6 @@ angular.module('uguru.guru.controllers')
         uTracker.track(tracker, 'Become Guru: Courses');
 
         $scope.guruCoursesInput = document.getElementById('course-input-1');
-        $scope.removeUserGuruCoursesFromMasterCourses()
-
-        var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
-        var addScope = function(courses) {
-          $scope.courses = courses;
-        }
-
-        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
       }
 
       if (index === 2) {
@@ -202,7 +195,6 @@ angular.module('uguru.guru.controllers')
     }
 
 
-
     var injectClassIntoElement = function(e) {
       element = e.target
       console.log(element.className);
@@ -264,6 +256,10 @@ angular.module('uguru.guru.controllers')
 
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
+
+      if (DeviceService.isIOSDevice()) {
+        DeviceService.ios.setStatusBarText($state.current.name);
+      }
 
       //adding minor delay so it doesn't get in the delay cycle
       $timeout(function() {

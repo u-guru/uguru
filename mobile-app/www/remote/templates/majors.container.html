@@ -52,7 +52,7 @@
                 </svg>
             </li>
 
-            <li bind-input='majors' class="major-item major-business" ng-repeat='major in majors | limitTo: limit'>
+            <li bind-input='majors' class="major-item major-business" ng-repeat='major in majors'>
                 <a ng-click='majorSelected(major, $index)'>
                 {{major.title || major.name ||major.code || major.abbr || major.title}}</a>
             </li>
