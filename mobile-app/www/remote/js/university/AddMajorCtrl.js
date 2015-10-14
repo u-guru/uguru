@@ -81,7 +81,16 @@ angular.module('uguru.util.controllers')
 
       $scope.loader.show();
 
-      $scope.majorsSource.splice(index, 1);
+      for(var i=0; i < $scope.majorsSource.length; i++) {
+        if($scope.majorsSource[i] === major) {
+          console.log("found a match to remove!");
+          $scope.majorsSource.splice(i, 1);
+        }
+      }
+    
+      //$scope.majorsSource.splice(index, 150);
+
+
       $scope.user.majors.push(major);
 
       $timeout(function() {
