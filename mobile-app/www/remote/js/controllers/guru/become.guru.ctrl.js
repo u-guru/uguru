@@ -77,7 +77,6 @@ angular.module('uguru.guru.controllers')
 
       }
 
-
     }
 
 
@@ -121,7 +120,7 @@ angular.module('uguru.guru.controllers')
         uTracker.track(tracker, 'Become Guru: Courses');
 
         $scope.guruCoursesInput = document.getElementById('course-input-1');
-        $scope.removeUserGuruCoursesFromMasterCourses()
+        //$scope.removeUserGuruCoursesFromMasterCourses()
 
         var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
         var addScope = function(courses) {
