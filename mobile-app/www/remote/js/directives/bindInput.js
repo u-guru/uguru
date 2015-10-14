@@ -25,7 +25,7 @@ angular.module('uguru.directives')
 		$scope.$parent.$watch(
 			model,
 			function(newValue, oldValue) {
-				// console.log("its changed!");
+				 console.log("its changed!");
 
 			  if(newValue.length < oldValue.length) {
 			    if(queryPromise) {
@@ -53,7 +53,12 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
+		    		try{
+	    				$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);		
+		    		} catch(err) {
+		    			console.log("fastmatcher slice error (most likely due to not being loaded yet): " + err)
+		    		}
+			      
 			      queryPromise = null;
 
 			    }, 50);

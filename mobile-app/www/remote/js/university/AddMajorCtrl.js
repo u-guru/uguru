@@ -42,9 +42,16 @@ angular.module('uguru.util.controllers')
 
       var majorName = major.title || major.name || major.abbr || major.code;
 
-      var removedMajor = $scope.user.majors.splice(index,1);
+      var removedMajor = $scope.user.majors.splice(index,1).slice();
       
-      $scope.majors.unshift(removedMajor);
+      $scope.majorsSource.unshift(major);
+      $timeout(function() {
+        $scope.search_text.major = "   ";
+      },0);
+      
+      $timeout(function() {
+        $scope.search_text.major = "";
+      }, 10);
 
       var confirmCallback = function() {
 
@@ -69,7 +76,7 @@ angular.module('uguru.util.controllers')
 
     $scope.majorSelected = function(major, index) {
 
-
+      console.log("index: " + index);
 
       $timeout(function() {
         $scope.loader.show();
@@ -77,10 +84,17 @@ angular.module('uguru.util.controllers')
 
       //t == 0
       $timeout(function() {
-        $scope.majors.splice(index, 1);
-      }, 250)
+        console.log("length: " + $scope.majorsSource.length);
+        $scope.majorsSource.splice(index, 1);
+        console.log("length: " + $scope.majorsSource.length);
 
-      $timeout(function() {
+        $timeout(function() {
+          $scope.search_text.major = "   ";
+        },0);
+        
+        $timeout(function() {
+          $scope.search_text.major = "";
+        }, 10);
         $scope.user.majors.push(major);
       }, 250)
 
@@ -88,8 +102,7 @@ angular.module('uguru.util.controllers')
       // t == 1
       $timeout(function() {
         $scope.loader.hide();
-        $scope.search_text.major = '';
-      }, 1250);
+      }, 1000);
 
       //update the server
 
@@ -102,57 +115,9 @@ angular.module('uguru.util.controllers')
     }
 
 
-    $scope.removeUserMajorsFromMaster = function() {
-      var majorIndicesToSlice = [];
-      if ($scope.majors && $scope.user.majors) {
-        for (var i = 0; i < $scope.majors.length; i ++) {
-          var indexMajor = $scope.majors[i];
-          for (var j = 0; j < $scope.user.majors.length; j++) {
-            userMajor  = $scope.user.majors[j];
-            if (indexMajor.id === userMajor.id)
-              majorIndicesToSlice.push(i);
-          }
-        }
-        // tricky plz ask;
-        var offset = 0;
-        for (var i = 0; i < majorIndicesToSlice.length; i++) {
-          $scope.majors.splice(i - offset, i - offset + 1);
-          offset++;
-        }
-
-      }
-    }
-
-    $scope.removeEmptyMajors = function() {
-      var majorIndicesToSlice = [];
-      if ($scope.majors && $scope.majors.length) {
-        for (var i = 0; i < $scope.majors.length; i ++) {
-            var indexMajor = $scope.majors[i];
-            if ((!indexMajor.name) && (!indexMajor.title) && (!indexMajor.abbr)) {
-              console.log('adding', i, indexMajor);
-              majorIndicesToSlice.push(i);
-            }
-          }
-        }
-        console.log('emptyMajors', majorIndicesToSlice.length, $scope.majors.length)
-        // tricky plz ask;
-        var offset = 0;
-        for (var j = 0; j < majorIndicesToSlice.length; j++) {
-          indexToRemove = majorIndicesToSlice[j]
-          // console.log(indexToRemove, $scope.majors[indexToRemove])
-          $scope.majors.splice(indexToRemove - offset, 1);
-          offset++;
-        }
-        console.log('new length', $scope.majors.length)
-
-      }
-
-
-
-
     $scope.limit = 10;
     $scope.increaseLimit = function() {
-      if($scope.majors && $scope.limit < $scope.majors.length) {
+      if($scope.majors && $scope.limit < $scope.majorsSource.length) {
         $scope.limit += 10;
       }
     }
@@ -160,7 +125,7 @@ angular.module('uguru.util.controllers')
     // $scope.removeUserMajorsFromMaster();
 
     $scope.clearSearchInput = function() {
-      $scope.search_text = '';
+      $scope.search_text.major = '';
     }
 
     var getMajorsBecomeGuru = function() {
@@ -191,6 +156,54 @@ angular.module('uguru.util.controllers')
 
   }
 
+
+
+
+//========Do we need this stuff?============
+
+
+    // $scope.removeUserMajorsFromMaster = function() {
+    //   var majorIndicesToSlice = [];
+    //   if ($scope.majors && $scope.user.majors) {
+    //     for (var i = 0; i < $scope.majors.length; i ++) {
+    //       var indexMajor = $scope.majors[i];
+    //       for (var j = 0; j < $scope.user.majors.length; j++) {
+    //         userMajor  = $scope.user.majors[j];
+    //         if (indexMajor.id === userMajor.id)
+    //           majorIndicesToSlice.push(i);
+    //       }
+    //     }
+    //     // tricky plz ask;
+    //     var offset = 0;
+    //     for (var i = 0; i < majorIndicesToSlice.length; i++) {
+    //       $scope.majors.splice(i - offset, i - offset + 1);
+    //       offset++;
+    //     }
+
+    //   }
+    // }
+    // $scope.removeEmptyMajors = function() {
+    //   var majorIndicesToSlice = [];
+    //   if ($scope.majors && $scope.majors.length) {
+    //     for (var i = 0; i < $scope.majors.length; i ++) {
+    //         var indexMajor = $scope.majors[i];
+    //         if ((!indexMajor.name) && (!indexMajor.title) && (!indexMajor.abbr)) {
+    //           console.log('adding', i, indexMajor);
+    //           majorIndicesToSlice.push(i);
+    //         }
+    //       }
+    //     }
+    //     console.log('emptyMajors', majorIndicesToSlice.length, $scope.majors.length)
+    //     // tricky plz ask;
+    //     var offset = 0;
+    //     for (var j = 0; j < majorIndicesToSlice.length; j++) {
+    //       indexToRemove = majorIndicesToSlice[j]
+    //       // console.log(indexToRemove, $scope.majors[indexToRemove])
+    //       $scope.majors.splice(indexToRemove - offset, 1);
+    //       offset++;
+    //     }
+    //     console.log('new length', $scope.majors.length)
+    //   }
 
 ])
 

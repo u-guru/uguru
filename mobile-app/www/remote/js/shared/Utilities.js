@@ -102,7 +102,6 @@ function Utilities($rootScope, Settings) {
 		//console.log("list: " + list + " property: " + property + " id: " + id);
 
 		if (id && id.indexOf('major')) {
-			console.log("setting major selectors");
 			property = ['title', 'name', 'abbr', 'code'];
 		}
 
