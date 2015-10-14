@@ -96,13 +96,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-      }).then(function(modal) {
-          $scope.categorySkillsModal = modal;
-    });
-
 
 
 

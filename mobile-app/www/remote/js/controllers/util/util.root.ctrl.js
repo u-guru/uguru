@@ -141,6 +141,7 @@ angular.module('uguru.util.controllers')
 
 
         $scope.getCategories = function(callback) {
+            console.log('retrieving majors for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
@@ -159,6 +160,7 @@ angular.module('uguru.util.controllers')
         // $localstorage.setObject('categories', Category.categories);
 
         $scope.getCoursesForUniversityId = function(uni_id, callback) {
+            console.log('retrieving courses for university');
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
 
@@ -291,7 +293,7 @@ angular.module('uguru.util.controllers')
             },
             showAmbig: function(text, duration) {
                 $scope.ambigLoaderText = text || '';
-                
+
                 $ionicLoading.show({
                     scope: $scope,
                     templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',

@@ -243,6 +243,13 @@ angular.module('uguru.guru.controllers')
       University.courses = courses;
     }
 
+    $scope.$on('$ionicView.enter', function() {
+
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 2000)
+    });
+
     $scope.$on('$ionicView.beforeEnter', function() {
 
       //since this is the same as entering the slidebox

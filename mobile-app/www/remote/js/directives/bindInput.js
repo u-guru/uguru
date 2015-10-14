@@ -9,7 +9,7 @@ angular.module('uguru.directives')
 			case 'majors':
 				model = 'search_text.major';
 				getSource = function() {
-					return Major.getGeneral();
+					return University.majors;
 				}
 				break;
 			case 'courses':

@@ -129,9 +129,11 @@ angular.module('uguru.student.controllers', [])
             //uTracker.track(tracker, 'Become Guru');
 
             //$ionicViewSwitcher.nextDirection('none');
-
-            $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.become-guru')
+            $scope.loader.showAmbig();
+            $timeout(function() {
+                $ionicViewSwitcher.nextDirection('forward');
+                $state.go('^.become-guru')
+            }, 1000);
 
         }
 
@@ -171,7 +173,7 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.initStudentHomeMap = function() {
-            MapService.initStudentHomeMap($scope.user);
+            // MapService.initStudentHomeMap($scope.user);
         }
 
         console.log($scope.user);

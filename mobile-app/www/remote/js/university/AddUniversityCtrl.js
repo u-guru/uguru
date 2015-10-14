@@ -185,10 +185,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       //save university
       var postUniversitySelectedCallback = function() {
 
-        AnimationService.flip('^.home');
-        UniversityMatcher.clearCache();
+        // AnimationService.flip('^.home');
+        // UniversityMatcher.clearCache();
 
         $ionicViewSwitcher.nextDirection('forward');
+
+        $state.go('^.home');
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
