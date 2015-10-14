@@ -38,6 +38,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.platform.android = DeviceService.isAndroid();
 
 
+  $scope.testAlert = function() {
+    confirm("Can you click on me?");
+  }
+
+
   $scope.checkAccessCode = function(code) {
 
     if ($scope.keyboardExists && !$scope.redeemRecentlyPressed) {

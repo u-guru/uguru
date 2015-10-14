@@ -26,7 +26,6 @@
 * Change ID to cordova-plugin-whitelist rather than reverse-DNS-style
 * Tweak CSP examples in README
 * CB-8660 remove extra commas from package.json
-<<<<<<< HEAD
 
 ### 1.1.0 (Jun 17, 2015)
 * CB-9128 cordova-plugin-whitelist documentation translation: cordova-plugin-whitelist
@@ -35,5 +34,3 @@
 * CB-9089 - iOS whitelist plugin does not compile
 * CB-9090 - Enable whitelist plugin for cordova-ios 4.0.0
 * Fixed error in Content-Security-Policy example
-=======
->>>>>>> samir-dev
