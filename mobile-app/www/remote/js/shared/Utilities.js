@@ -100,6 +100,13 @@ function Utilities($rootScope, Settings) {
 	// Pass in an optional ID parameter for specific case handling
 	function nickMatcher(input, list, property, id) {
 		//console.log("list: " + list + " property: " + property + " id: " + id);
+
+		if (id && id.indexOf('major')) {
+			console.log("setting major selectors");
+			property = ['title', 'name', 'abbr', 'code'];
+		}
+
+
 		var matcher = new FastMatcher(list, {
 			selector: property,
 			caseInsensitive: true,

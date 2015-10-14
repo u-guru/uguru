@@ -40,15 +40,18 @@ angular.module('uguru.util.controllers')
         return;
       }
 
+      var majorName = major.title || major.name || major.abbr || major.code;
+
       var removedMajor = $scope.user.majors.splice(index,1);
-      $scope.majors.push(removedMajor);
+      
+      $scope.majors.unshift(removedMajor);
 
       var confirmCallback = function() {
 
         uTracker.track(tracker, 'Major Removed', {
-          '$Major': major.name
+          '$Major': majorName
         });
-        $scope.loader.showSuccess(major.name + ' successfully removed', 2000);
+        $scope.loader.showSuccess(majorName + ' successfully removed', 2000);
       }
 
 
@@ -77,6 +80,9 @@ angular.module('uguru.util.controllers')
         $scope.majors.splice(index, 1);
       }, 250)
 
+      $timeout(function() {
+        $scope.user.majors.push(major);
+      }, 250)
 
 
       // t == 1
@@ -84,10 +90,6 @@ angular.module('uguru.util.controllers')
         $scope.loader.hide();
         $scope.search_text.major = '';
       }, 1250);
-
-      if ($scope.majorInput && $scope.majorInput.value) {
-        $scope.majorInput.value = '';
-      }
 
       //update the server
 
@@ -159,7 +161,6 @@ angular.module('uguru.util.controllers')
 
     $scope.clearSearchInput = function() {
       $scope.search_text = '';
-      $scope.query('');
     }
 
     var getMajorsBecomeGuru = function() {
@@ -167,8 +168,16 @@ angular.module('uguru.util.controllers')
       University.getMajors($scope.user.university_id).then(function(majors) {
 
         University.majors = majors;
-        $scope.majorsSource = majors.plain()
-        $scope.majors = majors.plain();
+        $scope.majorsSource = majors.plain().slice();
+        $scope.majors = majors.plain().slice();
+        // for (var major in $scope.majorsSource) {
+        //   major['universalName'] = major.title || major.name || major.abbr || major.code;
+        // }
+        // for (var major in $scope.majors) {
+
+        //   major['universalName'] = major.title || major.name || major.abbr || major.code;
+        //   console.log("major.universalName: " + major.universalName + " major.title: "  + major.title + " major.name: " + major.name + " major.abbr: " + major.abbr + " major.code: " + major.code);
+        // }
         $localstorage.setObject('universityMajors', majors.plain())
 
 
@@ -178,6 +187,7 @@ angular.module('uguru.util.controllers')
 
       });
     }
+    getMajorsBecomeGuru();
 
   }
 
