@@ -130,6 +130,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/guru.experiences.container.html',
     controller: 'ExperiencesController'
   }).
+  state('root.cards', {
+        url: '/cards',
+        templateUrl: BASE + 'templates/cards.html',
+        controller: 'CardListController'
+  }).
   state('root.payments', {
         url: '/payments:cardObj',
         templateUrl: BASE + 'templates/payments.html',
