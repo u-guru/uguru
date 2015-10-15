@@ -11,17 +11,8 @@ var REST_URL = 'https://www.uguru.me';
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
-<<<<<<< HEAD
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-=======
-
-  // REST_URL = 'http://uguru.me';
-  BASE = 'remote/';
-  BASE_URL = _ipaddress;
-  REST_URL = 'http://192.168.0.115:5000'
-
->>>>>>> 8548af7a705bc3130ed1f9144ed3d2854d827b41
 } else {
   img_base = '/static/'
 }
@@ -66,7 +57,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(true);
+  $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -107,7 +98,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.majors-container', {
         url: '/majors-container',
         templateUrl: BASE + 'templates/majors.container.html',
-        controller: 'AddMajorController'
+        controller: 'AddMajorController',
   }).
   state('root.guru-courses-container', {
         url: '/guru-courses-container',

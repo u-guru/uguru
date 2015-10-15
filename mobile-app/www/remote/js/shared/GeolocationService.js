@@ -100,7 +100,7 @@ function Geolocation($rootScope, $timeout, University,
   }
 
   function sortByLocation(userLat, userLong, list) {
-    var numberFormatter = new Intl.NumberFormat();
+    
     for(var i=0; i<list.length; i++) {
 
       list[i].rawMiles = Utilities.getDistanceInMiles(

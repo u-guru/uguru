@@ -31,12 +31,13 @@ angular.module('uguru.util.controllers')
   'PopupService',
   'ModalService',
   '$ionicSlideBoxDelegate',
+  'InAppBrowser',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate) {
+  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate, InAppBrowser) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
@@ -141,6 +142,9 @@ angular.module('uguru.util.controllers')
     $scope.launchSupportModal = function() {
 
       uTracker.track(tracker, 'Support Modal');
+
+      //InAppBrowser.openSupport();
+
       $scope.supportModal.show();
       $timeout(function() {
         initSupportChatEnterHandler()

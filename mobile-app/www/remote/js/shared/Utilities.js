@@ -18,6 +18,7 @@ function Utilities($rootScope, Settings) {
 		isElementInViewport: isElementInViewport,
 		transitionEndEventName: transitionEndEventName,
 		fireBeforeEnter: fireBeforeEnter,
+		fireSchoolChange: fireSchoolChange,
 		rAF: rAF,
 		sortArrObjByKey: sortArrObjByKey,
 		checkFreeSpace: checkFreeSpace,
@@ -100,6 +101,12 @@ function Utilities($rootScope, Settings) {
 	// Pass in an optional ID parameter for specific case handling
 	function nickMatcher(input, list, property, id) {
 		//console.log("list: " + list + " property: " + property + " id: " + id);
+
+		if (id && id.indexOf('major')) {
+			property = ['title', 'name', 'abbr', 'code'];
+		}
+
+
 		var matcher = new FastMatcher(list, {
 			selector: property,
 			caseInsensitive: true,
@@ -166,6 +173,12 @@ function Utilities($rootScope, Settings) {
 
 	function fireBeforeEnter() {
 		return BeforeEnterEvent;
+	}
+
+	var SchoolChangeEvent = new CustomEvent('schoolChange');
+
+	function fireSchoolChange() {
+		return SchoolChangeEvent;
 	}
 
 	function rAF() {

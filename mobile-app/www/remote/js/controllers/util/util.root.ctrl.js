@@ -131,7 +131,6 @@ angular.module('uguru.util.controllers')
                 console.log(majors.length, 'majors found', uni_id);
                 majors = majors.plain()
 
-                $scope.user.majors = majors;
                 University.majors = majors;
 
                 if (callback) {
@@ -139,7 +138,7 @@ angular.module('uguru.util.controllers')
                 }
             },
             function() {
-                $scope.user.majors = [{name: "Unable to retrieve school majors."}];
+                //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
                 console.log('Universities NOT successfully loaded');
             })
         }
@@ -151,7 +150,7 @@ angular.module('uguru.util.controllers')
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
                 // $localstorage.setObject('categories', Category.categories);
-                console.log('categories loaded', Category.categories);
+                //console.log('categories loaded', Category.categories);
 
                 callback && callback(Category.categories);
 

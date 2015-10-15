@@ -1,15 +1,18 @@
 angular.module('uguru.directives')
-.directive('bindInput', function($timeout, Utilities, Major, Course, University) {
+.directive('bindInput', function($timeout, Utilities, Major, Course, University, $parse) {
 
 	function link($scope, elem, attr) {
 
 		var model, getSource;
-
+		//var handler = $parse(attr.onSchoolChange);
 		switch(attr.bindInput){
 			case 'majors':
 				model = 'search_text.major';
 
-				$scope.source = University.majors;
+				//$scope.source = University.majors;
+				// getSource = function() {
+				// }
+
 				break;
 			case 'courses':
 				model = 'search_text.course';
@@ -24,13 +27,14 @@ angular.module('uguru.directives')
 		$scope.$parent.$watch(
 			model,
 			function(newValue, oldValue) {
+				 console.log("its changed!");
 
 			  if(newValue.length < oldValue.length) {
 			    if(queryPromise) {
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
 			      queryPromise = null;
 			    }, 90);
 			  }
@@ -41,7 +45,7 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
 			      queryPromise = null;
 			    }, 50);
 			  }
@@ -51,7 +55,12 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+		    		try{
+	    				$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);		
+		    		} catch(err) {
+		    			console.log("fastmatcher slice error (most likely due to not being loaded yet): " + err)
+		    		}
+			      
 			      queryPromise = null;
 
 			    }, 50);
@@ -63,7 +72,8 @@ angular.module('uguru.directives')
 	return {
 		scope: {
 			listScope: '=bindInput',
-			source: '=source'
+			source: '=source',
+			onSchoolChange: '=onSchoolChange'
 		},
 		link: link,
 		restrict: 'A'

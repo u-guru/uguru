@@ -653,6 +653,7 @@ angular.module('uguru.guru.controllers')
     $scope.validateAndSendPhoneConfirmation = function() {
 
       //validate
+      console.log("test",$scope.popupInput.phoneConfirm);
       if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
 
         $scope.user.phone_number = $scope.popupInput.phoneConfirm;
