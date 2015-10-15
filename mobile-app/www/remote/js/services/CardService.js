@@ -49,7 +49,9 @@ function CardService($localstorage) {
 		for (var j = 0; j < localCardArr.length; j++) {
 			var indexCard = localCardArr[j];
 			var userIndexCard = user_cards[j]
-			indexCard.className += ' jp-card-' + userIndexCard.card_type.toLowerCase() + ' jp-card-identified';
+			if (!(indexCard.className.indexOf('jp-card-identified') > -1)) {
+				indexCard.className += ' jp-card-' + userIndexCard.card_type.toLowerCase() + ' jp-card-identified';
+			}
 		}
 	}
 

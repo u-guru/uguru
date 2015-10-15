@@ -654,6 +654,9 @@ section {
     font-size: 20px;
     height: 100%; } }
 
+.jp-card-front::before {
+  background-image: none !important; }
+
 .signup-modal header .switch {
   position: absolute;
   bottom: 0;

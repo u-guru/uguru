@@ -659,6 +659,13 @@ section {
 	}
 }
 
+// CARD MODAL
+.jp-card-front {
+	&::before {
+		background-image: none!important;
+	}
+}
+
 // ACCOUNT MODAL
 .signup-modal {
 	header {
