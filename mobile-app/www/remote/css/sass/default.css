@@ -5,7 +5,8 @@
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  -ms-overflow-style: none; }
 
 *:focus {
   outline: none; }
@@ -1002,7 +1003,7 @@ header {
     text-transform: uppercase; }
   header.third h1 {
     font-size: 22px; }
-  header.third:not(.flex-center-wrap) h1, header.third:not(.flex-center) h1, header .header-nav h1 {
+  header.third:not(.flex-center-wrap) h1, header .header-nav h1 {
     font-size: 20px; }
   header:before {
     filter: alpha(opacity=30);
@@ -1022,7 +1023,7 @@ header {
 @media screen and (min-width: 375px) {
   header.third h1 {
     font-size: 24px; }
-  header.third:not(.flex-center-wrap) h1, header.third:not(.flex-center) h1, header .header-nav h1 {
+  header.third:not(.flex-center-wrap) h1, header .header-nav h1 {
     font-size: 20px !important; } }
 
 .verified {

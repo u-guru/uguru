@@ -749,9 +749,9 @@ angular.module('uguru.guru.controllers')
         $scope.initModalsAfterEnter();
       }, 500)
 
-      $timeout(function() {
-          $scope.contactGuruModal.show();
-      }, 1000);
+    //   $timeout(function() {
+    //       $scope.contactGuruModal.show();
+    //   }, 1000);
 
     });
 

@@ -617,7 +617,7 @@ section {
   top: 0; }
   #experience-modal .main,
   #guru-introduction-modal .main {
-    height: calc(100% - 50px - 64px); }
+    height: calc(100% - 114px); }
     #experience-modal .main .ugrid-3,
     #guru-introduction-modal .main .ugrid-3 {
       margin-top: -10px;
@@ -633,13 +633,16 @@ section {
       #experience-modal .main .ugrid-3 li:nth-child(3),
       #guru-introduction-modal .main .ugrid-3 li:nth-child(3) {
         text-align: right; }
+    #experience-modal .main input[type=range],
+    #guru-introduction-modal .main input[type=range] {
+      height: 50px; }
     #experience-modal .main #exp-input,
     #experience-modal .main #guru-intro-input,
     #guru-introduction-modal .main #exp-input, #guru-introduction-modal .main #guru-intro-input {
-      height: calc(100% - 194px); }
+      height: calc(100% - 203px); }
     #experience-modal .main #exp-input.removable,
     #guru-introduction-modal .main #exp-input.removable {
-      height: calc(100% - 258px); }
+      height: calc(100% - 267px); }
     #experience-modal .main textarea,
     #guru-introduction-modal .main textarea {
       font-size: 18px;
@@ -936,8 +939,7 @@ section {
             stroke-linejoin: round; }
 
 .request-modal .request-content {
-  height: calc(100% - 50px);
-  padding-bottom: 64px;
+  height: calc(100% - 114px);
   overflow: auto;
   font-weight: 300; }
   .request-modal .request-content input:not([type="text"]) {
@@ -1003,6 +1005,7 @@ section {
       .request-modal .request-content .request-loc ul li label {
         display: block;
         width: 100%;
+        font-size: 18px;
         line-height: 46px; }
       .request-modal .request-content .request-loc ul li input:not(:checked) + label {
         color: rgba(64, 72, 75, 0.5);
@@ -1342,6 +1345,9 @@ section {
   right: 0;
   height: 110%;
   bottom: 0; }
+
+.menu {
+  max-width: 80% !important; }
 
 .side-menu-list {
   position: relative;

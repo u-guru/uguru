@@ -8,6 +8,7 @@
 	-moz-backface-visibility: hidden;
 	-o-backface-visibility: hidden;
 	backface-visibility: hidden;
+    -ms-overflow-style: none;
 }
 *:focus {
 	outline: none;
@@ -1175,7 +1176,7 @@ header {
 			font-size: 22px;
 		}
 	}
-	&.third:not(.flex-center-wrap), &.third:not(.flex-center), .header-nav {
+	&.third:not(.flex-center-wrap), .header-nav {
 		h1 {
 			font-size: 20px;
 		}
@@ -1207,7 +1208,7 @@ header {
 				font-size: 24px;
 			}
 		}
-		&.third:not(.flex-center-wrap), &.third:not(.flex-center), .header-nav {
+		&.third:not(.flex-center-wrap), .header-nav {
 			h1 {
 				font-size: 20px!important;
 			}
