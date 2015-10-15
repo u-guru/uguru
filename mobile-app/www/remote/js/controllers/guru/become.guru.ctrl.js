@@ -21,11 +21,13 @@ angular.module('uguru.guru.controllers')
   'Category',
   '$ionicSlideBoxDelegate',
   'DeviceService',
+  'Utilities',
+  '$interval',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category, $ionicSlideBoxDelegate, DeviceService) {
+    Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -57,59 +59,22 @@ angular.module('uguru.guru.controllers')
       //AnimationService.slide('right');
     }
 
-    $scope.removeUserGuruCoursesFromMasterCourses = function() {
-
-      var guruIndicesToSlice = [];
-      if ($scope.courses && $scope.user.guru_courses) {
-        for (var i = 0; i < $scope.courses.length; i ++) {
-          var indexCourse = $scope.courses[i];
-          for (var j = 0; j < $scope.user.guru_courses.length; j++) {
-            guru_course  = $scope.user.guru_courses[j];
-            if (index_course.id === guru_course.id)
-              guruIndicesToSlice.push(i);
-          }
-        }
-        // tricky plz ask;
-        var offset = 0;
-        for (var i = 0; i < guruIndicesToSlice.length; i++) {
-          $scope.guru_courses.splice(i - offset, i - offset + 1);
-          offset++;
-        }
-
-      }
-
-    }
-
 
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.previous();
     }
-
-    $scope.major_input=  {search_text:'', majors:$scope.root.vars.majors};
-
-    $scope.getCoursesFromServer = function() {
-            University.getCourses(2732).then(
-                  function(courses) {
-                      $scope.loader.hide();
-
-                      $localstorage.setObject('courses', courses);
-                      $scope.root.vars.courses = courses;
-                      $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
-
-                },
-                  function(error) {
-                      console.log('Courses NOT successfully loaded');
-                      console.log(error);
-                      alert('Something went wrong - please contact support for further, quick assistance!')
-                }
-        );
-      }
 
     $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
 
       if (index === 0) {
+
+        // var majorsList = document.querySelectorAll('#major-list');
+        
+        // if (Utilities.isElementInViewport(majorsList)) {
+
+        // }
 
         uTracker.track(tracker, 'Become Guru: Majors');
 
@@ -119,17 +84,49 @@ angular.module('uguru.guru.controllers')
       if (index === 1) {
 
         uTracker.track(tracker, 'Become Guru: Courses');
+        console.log("inside courses slide");
+        $scope.$emit('refreshCourses');
 
-        $scope.guruCoursesInput = document.getElementById('course-input-1');
+        var majorsList = document.querySelectorAll('#courses-list');
+        //console.log("majorsList: " + majorsList);
+        $timeout(function() {
 
-        //$scope.removeUserGuruCoursesFromMasterCourses()
+          if (Utilities.isElementInViewport(majorsList)) {
 
-        var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
-        var addScope = function(courses) {
-          $scope.courses = courses;
-        }
+            //console.log("majorsList is now inside!");
+            var items = majorsList[0].querySelectorAll('ul li');
+            //console.log("items.length: " + items.length);
+            if (items.length === 0) {
+              $scope.loader.showAmbig('Fetching courses...', 60000);
 
-        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
+              var startLoader = $interval(function() {
+                console.log("checking if courses are loaded...");
+                var items = majorsList[0].querySelectorAll('ul li');
+                console.log("items.length: " + items.length);
+                if (items.length !== 0) {
+                  console.log("stopping loader");
+                  $scope.loader.hide();
+                  stopLoader();
+                }
+              }, 1000);
+
+              function stopLoader() {
+                $interval.cancel(startLoader);
+              }
+
+            }
+          }
+
+
+        }, 400);
+
+
+        // var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
+        // var addScope = function(courses) {
+        //   $scope.courses = courses;
+        // }
+
+        // $scope.courses = University.courses || $scope.getCoursesForUniversityId();
 
       }
 
@@ -216,31 +213,6 @@ angular.module('uguru.guru.controllers')
       }
     }
 
-    $scope.initiateSkillEventListeners = function() {
-
-      var skill_elements = document.getElementsByClassName("skill-tag");
-
-      for (var i = 0 ; i < skill_elements.length ; i++) {
-        var element = skill_elements[i];
-        ionic.onGesture('tap', injectClassIntoElement, element, {});
-      }
-
-      var major_elements = document.getElementsByClassName("major-tag");
-
-      for (var j = 0 ; j < major_elements.length ; j++) {
-        var major_element = major_elements[j];
-        ionic.onGesture('tap', injectClassIntoElement, major_element, {});
-      }
-
-      var course_elements = document.getElementsByClassName("popular-course-tag");
-
-      for (var k = 0 ; k < course_elements.length ; k++) {
-        var course_element = course_elements[k];
-        ionic.onGesture('tap', injectClassIntoElement, course_element, {});
-      }
-
-    }
-
     var incrementProgressBar = function(elemId, value) {
       console.log(document.querySelector('#become-guru-progress'));
       document.querySelector('#become-guru-progress').setAttribute("value", value);
@@ -251,15 +223,6 @@ angular.module('uguru.guru.controllers')
       progressBarTag.style.width = width + 'px';
     }
 
-    var updateMajorScope = function(majors) {
-      $scope.majors = majors;
-      University.majors = majors;
-    }
-
-    var updateCoursesScope = function(courses) {
-      $scope.courses = courses;
-      University.courses = courses;
-    }
 
     $scope.$on('$ionicView.beforeEnter', function() {
 
@@ -280,14 +243,66 @@ angular.module('uguru.guru.controllers')
 
     }, 500)
 
-    $scope.$on('$ionicView.afterEnter', function() {
-
-      $scope.majorInput = document.getElementById('major-input-1');
-
-    })
-
 
   }
+
+
+
+  //======Do we need this?=======
+
+  // $scope.getCoursesFromServer = function() {
+  //         University.getCourses(2732).then(
+  //               function(courses) {
+  //                   $scope.loader.hide();
+
+  //                   $localstorage.setObject('courses', courses);
+  //                   $scope.root.vars.courses = courses;
+  //                   $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
+
+  //             },
+  //               function(error) {
+  //                   console.log('Courses NOT successfully loaded');
+  //                   console.log(error);
+  //                   alert('Something went wrong - please contact support for further, quick assistance!')
+  //             }
+  //     );
+  // }
+
+  // var updateMajorScope = function(majors) {
+  //   $scope.majors = majors;
+  //   University.majors = majors;
+  // }
+
+  // var updateCoursesScope = function(courses) {
+  //   $scope.courses = courses;
+  //   University.courses = courses;
+  // }
+
+
+  // $scope.initiateSkillEventListeners = function() {
+
+  //   var skill_elements = document.getElementsByClassName("skill-tag");
+
+  //   for (var i = 0 ; i < skill_elements.length ; i++) {
+  //     var element = skill_elements[i];
+  //     ionic.onGesture('tap', injectClassIntoElement, element, {});
+  //   }
+
+  //   var major_elements = document.getElementsByClassName("major-tag");
+
+  //   for (var j = 0 ; j < major_elements.length ; j++) {
+  //     var major_element = major_elements[j];
+  //     ionic.onGesture('tap', injectClassIntoElement, major_element, {});
+  //   }
+
+  //   var course_elements = document.getElementsByClassName("popular-course-tag");
+
+  //   for (var k = 0 ; k < course_elements.length ; k++) {
+  //     var course_element = course_elements[k];
+  //     ionic.onGesture('tap', injectClassIntoElement, course_element, {});
+  //   }
+
+  // }
 
 
 ])

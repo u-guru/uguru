@@ -43,7 +43,7 @@
 
 
 
-    <div id="major-list" bind-input='majors' source='majorsSource' buffered-scroll='increaseLimit()' class="onboarding-list">
+    <div id="major-list" bind-input='majors' source='majorsSource' class="onboarding-list">
         <ul class="list list-item-border no-icon">
             <li ng-if="user.majors.length > 0 && search_text.major.length === 0" class="major-item selected" ng-repeat='major in user.majors'>
                 <a ng-click='removeMajor(major, $index)'>{{major.title || major.name || major.abbr || major.code}}</a>
@@ -52,9 +52,9 @@
                 </svg>
             </li>
 
-            <li class="major-item major-business" ng-repeat='major in majors | limitTo: limit'>
+            <li class="major-item major-business" ng-repeat='major in majors | limitTo: 10 track by major.id'>
 
-                <a ng-click='majorSelected(major, $index)'>
+                <a ng-click='majorSelected(major)'>
                     <!-- {{major.universalName}}</a> -->
                 {{major.title || major.name || major.abbr || major.code}}</a>
             </li>

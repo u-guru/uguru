@@ -44,24 +44,18 @@ angular.module('uguru.util.controllers')
         return;
       }
 
-      var removedMajor = $scope.user.majors.splice(index,1).slice();
-      
+      $scope.user.majors.splice(index,1)
       $scope.majorsSource.unshift(major);
       
-      $timeout(function() {
-        $scope.search_text.major = "   ";
-      },0);
       
-      $timeout(function() {
-        $scope.search_text.major = "";
-      }, 10);
 
       var confirmCallback = function() {
 
         uTracker.track(tracker, 'Major Removed', {
           '$Major': majorName
         });
-        $scope.loader.showSuccess(majorName + ' successfully removed', 2000);
+        refreshMajors();
+        //$scope.loader.showSuccess(majorName + ' successfully removed', 1200);
       }
 
 
@@ -74,15 +68,20 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.majorSelected = function(major, index) {
+    $scope.majorSelected = function(major) {
 
       var majorName = major.title || major.name || major.abbr || major.code;
 
-      $scope.loader.show();
+      // for(var i=0; i < $scope.majorsSource.length; i++) {
+      //   if($scope.majorsSource[i] === major) {
+      //     console.log("transferring major from source to user!");
+      //     $scope.majorsSource.splice(i, 1);
+      //   }
+      // }
 
       for(var i=0; i < $scope.majorsSource.length; i++) {
-        if($scope.majorsSource[i] === major) {
-          console.log("found a match to remove!");
+        if($scope.majorsSource[i].id === major.id) {
+          console.log("transferring major from source to user");
           $scope.majorsSource.splice(i, 1);
         }
       }
@@ -90,10 +89,6 @@ angular.module('uguru.util.controllers')
       $scope.user.majors.push(major);
 
       refreshMajors();
-
-      $timeout(function() {
-        $scope.loader.hide();
-      }, 1000);
 
       //update the server
 
@@ -120,15 +115,17 @@ angular.module('uguru.util.controllers')
 
     var getMajorsBecomeGuru = function() {
       console.log('grabbing majors')
+
+
+
+      $scope.search_text.major = '';
+      //$scope.loader.showAmbig("Fetching majors...", 60000);
       University.getMajors($scope.user.university_id).then(function(majors) {
 
-        $scope.loader.hide();
+        //$scope.loader.hide();
         University.majors = majors;
         $scope.majorsSource = majors.plain().slice();
 
-
-        // Ensures no duplicate majors if the user goes back to home and then back to major list.
-        // Not yet optimized for performance, but it works.
         $timeout(function() {
           for(var j = 0; j < $scope.user.majors.length; j++) {
             for(var k = 0; k < $scope.majorsSource.length; k++) {
@@ -152,25 +149,44 @@ angular.module('uguru.util.controllers')
       });
     }
 
-    $scope.university = $scope.user.university_id;
-    getMajorsBecomeGuru();
-
+    if(!$scope.majorsSource) {
+      getMajorsBecomeGuru();  
+    }
+    
 
     $rootScope.$on('schoolChange', function(event) {
-      console.log("heard schoolChange event!");
+      console.log("majors: heard schoolChange event!");
+      $scope.user.majors.splice(0, $scope.user.majors.length);
       getMajorsBecomeGuru();
       refreshMajors();
     });
 
 
     function refreshMajors() {
+      // $timeout(function() {
+      //   $scope.search_text.major = '   ';
+      // },0);
+      // $timeout(function() {
+      //   $scope.search_text.major = '';
+      // },0);
+
       $timeout(function() {
-        $scope.search_text.major = '   ';
-      },0);
-      
-      $timeout(function() {
+        $scope.search_text.major += ' ';
         $scope.search_text.major = '';
-      }, 10);
+        try {
+          $scope.majors = Utilities.nickMatcher('', $scope.majorsSource, 'name', 'major');  
+        } catch(err) {
+          console.log("fastmatcher slice error (threw from inside MajorCtrl, probably due to trying to load too fast): " + err)
+        }
+        
+      }, 0)
+
+
+      $timeout(function() {
+        $scope.search_text.major += ' ';
+        $scope.search_text.major = '';
+      }, 250);
+      
     }
 
 

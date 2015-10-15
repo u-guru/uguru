@@ -4,22 +4,15 @@ angular.module('uguru.directives')
 	function link($scope, elem, attr) {
 
 		var model, getSource;
-		//var handler = $parse(attr.onSchoolChange);
+
 		switch(attr.bindInput){
 			case 'majors':
 				model = 'search_text.major';
 
-				//$scope.source = University.majors;
-				// getSource = function() {
-				// }
-
 				break;
 			case 'courses':
 				model = 'search_text.course';
-				// getSource = function() {
-				// 	return $scope.$parent.coursesSource;
-				// 	//return University.getTargetted()[0].popular_courses;
-				// }
+
 				break;
 		}
 
@@ -34,7 +27,12 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
+			      try {
+			      	$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);	
+			      } catch(err) {
+			      	console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+			      }
+			      
 			      queryPromise = null;
 			    }, 90);
 			  }
@@ -45,7 +43,12 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
+		    		try{
+		    			$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
+		    		} catch(err) {
+		    			console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school): " + err);
+		    		}
+			      
 			      queryPromise = null;
 			    }, 50);
 			  }
@@ -58,7 +61,7 @@ angular.module('uguru.directives')
 		    		try{
 	    				$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);		
 		    		} catch(err) {
-		    			console.log("fastmatcher slice error (most likely due to not being loaded yet): " + err)
+		    			console.log("fastmatcher slice error (most likely due to not being loaded yet): " + err);
 		    		}
 			      
 			      queryPromise = null;
@@ -72,8 +75,7 @@ angular.module('uguru.directives')
 	return {
 		scope: {
 			listScope: '=bindInput',
-			source: '=source',
-			onSchoolChange: '=onSchoolChange'
+			source: '=source'
 		},
 		link: link,
 		restrict: 'A'
