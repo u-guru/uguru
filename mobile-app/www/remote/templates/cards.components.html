@@ -15,8 +15,8 @@
         <ul class="list flex-center-wrap absolute full-y" style='overflow-y:scroll;'>
           <li ng-repeat='card in user_cards'>
 
-                <a ng-click='editCurrentCard(card)' class='full-x card-wrapper-{{card.id}} p40xy'>
-                </a>
+                <div ng-click='editCurrentCard(card)' class='full-x card-wrapper-{{card.id}}'>
+                </div>
                 <form class='form-wrapper-{{card.id}}'></form>
           </li>
         </ul>

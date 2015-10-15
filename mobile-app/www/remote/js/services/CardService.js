@@ -18,11 +18,17 @@ function CardService($localstorage) {
 		var values = {
 			name: options.name,
 			expiry: '**/**',
-			number: '**** **** **** ' +options.card_last4
+			number: options.card_last4 &&  '**** **** **** ' + options.card_last4
 		}
-		var formSelectors = {
-			numberInput: 'input#card-input-' + options.id,
-			expiryInput: 'input#expiry-input-' + options.id,
+
+		var formSelectors;
+
+
+		if (options.card_number) {
+			formSelectors = {
+				numberInput: 'input#card-input-' + options.id,
+				expiryInput: 'input#expiry-input-' + options.id,
+			}
 		}
 
 		var placeholders = {
@@ -32,13 +38,23 @@ function CardService($localstorage) {
 	        cvc: '•••'
 		}
 
+		var card_wrapper;
+		var form_wrapper;
+		if (selector) {
+			card_wrapper = '.card-modal-wrapper-' + options.id;
+			form_wrapper = '.form-modal-wrapper-' + options.id;
+		} else {
+			card_wrapper = '.card-wrapper-' + options.id;
+			form_wrapper = '.form-wrapper-' + options.id;
+		}
+
 		var cardJSObj = new Card({
 			form: '.form-wrapper-' + options.id,
-			container: '.card-wrapper-' + options.id,
+			container: card_wrapper,
 			values: values,
-			formSelectors: formSelectors,
 			placeholders: placeholders,
-			formatting: true
+			formatting: true,
+			formSelectors: formSelectors
 		})
 		localCardArr = cardJSObj.$card;
 		return cardJSObj;
@@ -61,7 +77,7 @@ function CardService($localstorage) {
 			name: name,
 			card_last4: card_last4,
 			id: id,
-			type:type
+			card_type:type
 		}
 	}
 

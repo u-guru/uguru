@@ -25,62 +25,66 @@
 
     $scope.editCard = {card_number: '', id:0, card_type:'', exp_date:''};
 
-    $scope.$on('$ionicView.afterEnter', function() {
+    $scope.$on('$ionicView.loaded', function() {
 
-      $timeout(function() {
-        
-          var user_cards = $scope.user_cards;
+      var user_cards = $scope.user_cards;
 
-          for (var i =0; i < user_cards.length; i++) {
+      setTimeout(function(){
 
-            var indexCard = user_cards[i]
+        for (var i =0; i < user_cards.length; i++) {
 
-                cardObj = CardService.userCardObj($scope.user.name, indexCard.card_last4, indexCard.id, indexCard.card_type)
-                CardService.initCardView('', cardObj);
+        var indexCard = user_cards[i]
 
-              $timeout(function() {
-                CardService.instatiateAllCards($scope.user_cards);
-              }, 1000)
-          }
-        
-      }, 1000)
+            cardObj = CardService.userCardObj($scope.user.name, indexCard.card_last4, indexCard.id, indexCard.card_type)
+            CardService.initCardView('', cardObj);
+
+          $timeout(function() {
+            CardService.instatiateAllCards($scope.user_cards);
+          }, 1000)
+        }
+
+      }, 2000)
     })
 
     $scope.editCurrentCard = function(card) {
       $scope.editCard = card;
       $scope.editCard.card_number = '**** **** **** ' + card.card_last4;
       $scope.editCard.exp_date = '** / **';
-      $scope.launchEditCardModal(card);
+      $scope.launchEditCardModal($scope.editCard);
     }
 
 
-     $ionicModal.fromTemplateUrl(BASE + 'templates/add-card.modal.html', {
+
+
+
+      $scope.launchEditCardModal = function(edit_card) {
+        $ionicModal.fromTemplateUrl(BASE + 'templates/add-card.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
-      }).then(function(modal) {
-          $scope.editCardModal = modal;
-      });
-
-
-      $scope.launchEditCardModal = function(card) {
-        $scope.editCard = card || $scope.editCard;
-        $scope.editCardModal.show();
+        }).then(function(modal) {
+            $scope.editCardModal = modal;
+            $scope.editCard = edit_card || $scope.editCard;
+            $scope.editCardModal.show();
+        });
       }
 
       $scope.$on('modal.shown', function() {
         $timeout(function() {
 
 
+          console.log($scope.editCard);
+
           cardObj = CardService.userCardObj($scope.user.name, $scope.editCard.card_last4, $scope.editCard.id, $scope.editCard.card_type)
+          console.log(cardObj);
           CardService.initCardView('card-modal-wrapper', cardObj);
 
-          if ($scope.editCard.id) {
-            $timeout(function() {
-              CardService.instatiateAllCards([$scope.editCard]);
-            }, 500)
-          }
+          // if ($scope.editCard.id) {
+          //   $timeout(function() {
+          //     CardService.instatiateAllCards([$scope.editCard]);
+          //   }, 500)
+          // }
 
-        }, 100);
+        }, 1000);
       });
 
   }
