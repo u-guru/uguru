@@ -207,7 +207,7 @@ angular.module('uguru.util.controllers')
         
         $localstorage.setObject('universityCourses', courses.plain())
 
-        console.log("$scope.courses: " + $scope.courses);
+        console.log("$scope.courses.length: " + $scope.courses.length);
       },function(err) {
 
         alert('Something went wrong... Please contact support!');
@@ -216,6 +216,9 @@ angular.module('uguru.util.controllers')
     }
 
     getCoursesBecomeGuru();
+
+
+    
 
     $scope.afterEnter = function() {
       console.log("afterEnter works!");

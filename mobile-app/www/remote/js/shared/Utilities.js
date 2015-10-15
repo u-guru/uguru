@@ -18,6 +18,7 @@ function Utilities($rootScope, Settings) {
 		isElementInViewport: isElementInViewport,
 		transitionEndEventName: transitionEndEventName,
 		fireBeforeEnter: fireBeforeEnter,
+		fireSchoolChange: fireSchoolChange,
 		rAF: rAF,
 		sortArrObjByKey: sortArrObjByKey,
 		checkFreeSpace: checkFreeSpace,
@@ -172,6 +173,12 @@ function Utilities($rootScope, Settings) {
 
 	function fireBeforeEnter() {
 		return BeforeEnterEvent;
+	}
+
+	var SchoolChangeEvent = new CustomEvent('schoolChange');
+
+	function fireSchoolChange() {
+		return SchoolChangeEvent;
 	}
 
 	function rAF() {

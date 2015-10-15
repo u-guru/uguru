@@ -3,6 +3,7 @@ angular.module('uguru.util.controllers')
 .controller('AddMajorController', [
 
   //All imported packages go here
+  '$rootScope',
   '$scope',
   '$state',
   '$timeout',
@@ -13,7 +14,7 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   'uTracker',
   'University',
-  function($scope, $state, $timeout,
+  function($rootScope, $scope, $state, $timeout,
   $q, Major, $ionicSideMenuDelegate, Utilities,
   $localstorage, uTracker, University) {
 
@@ -132,23 +133,18 @@ angular.module('uguru.util.controllers')
       $scope.search_text.major = '';
     }
 
+
     var getMajorsBecomeGuru = function() {
       console.log('grabbing majors')
       University.getMajors($scope.user.university_id).then(function(majors) {
 
+        $scope.loader.hide();
         University.majors = majors;
         $scope.majorsSource = majors.plain().slice();
         $scope.majors = majors.plain().slice();
-        // for (var major in $scope.majorsSource) {
-        //   major['universalName'] = major.title || major.name || major.abbr || major.code;
-        // }
-        // for (var major in $scope.majors) {
 
-        //   major['universalName'] = major.title || major.name || major.abbr || major.code;
-        //   console.log("major.universalName: " + major.universalName + " major.title: "  + major.title + " major.name: " + major.name + " major.abbr: " + major.abbr + " major.code: " + major.code);
-        // }
         $localstorage.setObject('universityMajors', majors.plain())
-
+        refreshMajors();
 
       },function(err) {
 
@@ -156,7 +152,56 @@ angular.module('uguru.util.controllers')
 
       });
     }
+
+    $scope.university = $scope.user.university_id;
     getMajorsBecomeGuru();
+
+
+    // var majorList = document.querySelectorAll('.uguru-view.major-view.pane')[0];
+    // majorList.addEventListener('schoolChange', function() {
+    //   console.log("heard schoolChange event!");  
+    //   getMajorsBecomeGuru();
+    // });
+
+    $rootScope.$on('schoolChange', function(event) {
+      console.log("heard schoolChange event!");
+      getMajorsBecomeGuru();
+      refreshMajors();
+    });
+
+    $scope.afterEnter = function() {
+      console.log("entered into majors slide!");
+      refreshMajors();
+    };
+
+    $scope.$on('$viewContentLoaded', 
+    function(event){
+      console.log("viewContentLoaded");
+      refershMajors();
+    });
+
+    // $scope.$watch(
+    //   'university',
+    //   function(newValue, oldValue) {
+    //     console.log("oldValue: " + oldValue);
+    //     console.log("newValue: " + newValue);
+    //     console.log("$scope.$watch inside addMajors");
+    //     $scope.university = newValue;
+        
+    //     getMajorsBecomeGuru();    
+    //   }
+    // );
+
+    function refreshMajors() {
+      $timeout(function() {
+        $scope.search_text.major = "   ";
+      },10);
+      
+      $timeout(function() {
+        $scope.search_text.major = "";
+      }, 100);
+    }
+
 
   }
 

@@ -1,16 +1,17 @@
 angular.module('uguru.directives')
-.directive('bindInput', function($timeout, Utilities, Major, Course, University) {
+.directive('bindInput', function($timeout, Utilities, Major, Course, University, $parse) {
 
 	function link($scope, elem, attr) {
 
 		var model, getSource;
-
+		//var handler = $parse(attr.onSchoolChange);
 		switch(attr.bindInput){
 			case 'majors':
 				model = 'search_text.major';
 				//$scope.source = University.majors;
 				// getSource = function() {
 				// }
+
 				break;
 			case 'courses':
 				model = 'search_text.course';
@@ -70,7 +71,8 @@ angular.module('uguru.directives')
 	return {
 		scope: {
 			listScope: '=bindInput',
-			source: '=source'
+			source: '=source',
+			onSchoolChange: '=onSchoolChange'
 		},
 		link: link,
 		restrict: 'A'
