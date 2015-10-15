@@ -143,7 +143,7 @@ angular.module('uguru.util.controllers')
 
       uTracker.track(tracker, 'Support Modal');
 
-      InAppBrowser.openSupport();
+      //InAppBrowser.openSupport();
 
       $scope.supportModal.show();
       $timeout(function() {
