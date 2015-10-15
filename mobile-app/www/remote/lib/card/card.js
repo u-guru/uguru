@@ -1036,6 +1036,7 @@ QJ.append = function(el, toAppend) {
       return _results;
     })();
   }
+
   return el.insertAdjacentHTML('beforeend', toAppend);
 };
 
