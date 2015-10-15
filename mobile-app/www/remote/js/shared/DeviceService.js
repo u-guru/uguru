@@ -20,8 +20,12 @@ function DeviceService($cordovaNgCardIO,
   University, Version, $ionicHistory, $templateCache, $localstorage) {
 
   var currentDevice;
+  var firstTime = true;
+
 
   return {
+    isFirstTime: isFirstTime,
+
 		readyDevice: readyDevice,
 		getDevice: getDevice,
     getPlatform: getPlatform,
@@ -41,6 +45,16 @@ function DeviceService($cordovaNgCardIO,
     checkUpdates: checkUpdates,
     currentDevice: currentDevice
 	}
+
+  function isFirstTime() {
+    console.log("isFirstTime");
+
+    if(firstTime) {
+      firstTime = false;
+      return true;
+    } else return false;
+
+  }
 
 	function isMobile() {
 		return ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone();

@@ -37,11 +37,12 @@ angular.module('uguru.util.controllers')
 
 
     $scope.removeMajor = function(major, index) {
-      if (!confirm('Remove ' + major.name + '?')) {
-        return;
-      }
 
       var majorName = major.title || major.name || major.abbr || major.code;
+
+      if (!confirm('Remove ' + majorName + '?')) {
+        return;
+      }
 
       var removedMajor = $scope.user.majors.splice(index,1).slice();
       
@@ -73,13 +74,9 @@ angular.module('uguru.util.controllers')
 
     }
 
-    // t == 2 --> update local regardless of server
-
-
     $scope.majorSelected = function(major, index) {
 
-      console.log("index: " + index);
-
+      var majorName = major.title || major.name || major.abbr || major.code;
 
       $scope.loader.show();
 
@@ -89,22 +86,11 @@ angular.module('uguru.util.controllers')
           $scope.majorsSource.splice(i, 1);
         }
       }
-    
-      //$scope.majorsSource.splice(index, 150);
-
-
+  
       $scope.user.majors.push(major);
 
-      $timeout(function() {
-        $scope.search_text.major = "   ";
-      },0);
-      
-      $timeout(function() {
-        $scope.search_text.major = "";
-      }, 10);
-        
+      refreshMajors();
 
-      // t == 1
       $timeout(function() {
         $scope.loader.hide();
       }, 1000);
@@ -112,7 +98,7 @@ angular.module('uguru.util.controllers')
       //update the server
 
       uTracker.track(tracker, 'Major Added', {
-        '$Major': major.name
+        '$Major': majorName
       });
 
       $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
@@ -127,8 +113,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    // $scope.removeUserMajorsFromMaster();
-
     $scope.clearSearchInput = function() {
       $scope.search_text.major = '';
     }
@@ -141,15 +125,30 @@ angular.module('uguru.util.controllers')
         $scope.loader.hide();
         University.majors = majors;
         $scope.majorsSource = majors.plain().slice();
-        $scope.majors = majors.plain().slice();
 
+
+        // Ensures no duplicate majors if the user goes back to home and then back to major list.
+        // Not yet optimized for performance, but it works.
+        $timeout(function() {
+          for(var j = 0; j < $scope.user.majors.length; j++) {
+            for(var k = 0; k < $scope.majorsSource.length; k++) {
+              if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
+                console.log("Deleting duplicate major found.");
+                  $scope.majorsSource.splice(k, 1);
+              }
+            }
+          }
+          refreshMajors();
+
+        }, 400);
+        
+
+        
         $localstorage.setObject('universityMajors', majors.plain())
         refreshMajors();
 
       },function(err) {
-
         alert('Something went wrong... Please contact support!');
-
       });
     }
 
@@ -157,102 +156,26 @@ angular.module('uguru.util.controllers')
     getMajorsBecomeGuru();
 
 
-    // var majorList = document.querySelectorAll('.uguru-view.major-view.pane')[0];
-    // majorList.addEventListener('schoolChange', function() {
-    //   console.log("heard schoolChange event!");  
-    //   getMajorsBecomeGuru();
-    // });
-
     $rootScope.$on('schoolChange', function(event) {
       console.log("heard schoolChange event!");
       getMajorsBecomeGuru();
       refreshMajors();
     });
 
-    // $scope.afterEnter = function() {
-    //   console.log("entered into majors slide!");
-    //   refreshMajors();
-    // };
-
-    // $scope.$on('$viewContentLoaded', 
-    // function(event){
-    //   console.log("viewContentLoaded");
-    //   refershMajors();
-    // });
-
-    // $scope.$watch(
-    //   'university',
-    //   function(newValue, oldValue) {
-    //     console.log("oldValue: " + oldValue);
-    //     console.log("newValue: " + newValue);
-    //     console.log("$scope.$watch inside addMajors");
-    //     $scope.university = newValue;
-        
-    //     getMajorsBecomeGuru();    
-    //   }
-    // );
 
     function refreshMajors() {
       $timeout(function() {
-        $scope.search_text.major = "   ";
+        $scope.search_text.major = '   ';
       },0);
       
       $timeout(function() {
-        $scope.search_text.major = "";
+        $scope.search_text.major = '';
       }, 10);
     }
 
 
   }
 
-
-
-
-//========Do we need this stuff?============
-
-
-    // $scope.removeUserMajorsFromMaster = function() {
-    //   var majorIndicesToSlice = [];
-    //   if ($scope.majors && $scope.user.majors) {
-    //     for (var i = 0; i < $scope.majors.length; i ++) {
-    //       var indexMajor = $scope.majors[i];
-    //       for (var j = 0; j < $scope.user.majors.length; j++) {
-    //         userMajor  = $scope.user.majors[j];
-    //         if (indexMajor.id === userMajor.id)
-    //           majorIndicesToSlice.push(i);
-    //       }
-    //     }
-    //     // tricky plz ask;
-    //     var offset = 0;
-    //     for (var i = 0; i < majorIndicesToSlice.length; i++) {
-    //       $scope.majors.splice(i - offset, i - offset + 1);
-    //       offset++;
-    //     }
-
-    //   }
-    // }
-    // $scope.removeEmptyMajors = function() {
-    //   var majorIndicesToSlice = [];
-    //   if ($scope.majors && $scope.majors.length) {
-    //     for (var i = 0; i < $scope.majors.length; i ++) {
-    //         var indexMajor = $scope.majors[i];
-    //         if ((!indexMajor.name) && (!indexMajor.title) && (!indexMajor.abbr)) {
-    //           console.log('adding', i, indexMajor);
-    //           majorIndicesToSlice.push(i);
-    //         }
-    //       }
-    //     }
-    //     console.log('emptyMajors', majorIndicesToSlice.length, $scope.majors.length)
-    //     // tricky plz ask;
-    //     var offset = 0;
-    //     for (var j = 0; j < majorIndicesToSlice.length; j++) {
-    //       indexToRemove = majorIndicesToSlice[j]
-    //       // console.log(indexToRemove, $scope.majors[indexToRemove])
-    //       $scope.majors.splice(indexToRemove - offset, 1);
-    //       offset++;
-    //     }
-    //     console.log('new length', $scope.majors.length)
-    //   }
 
 ])
 

@@ -230,8 +230,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
           $ionicViewSwitcher.nextDirection('forward');
           $timeout(function() {
             console.log("cleaning up access/university slidebox");
+            var accessUni = document.querySelectorAll('#access-uni-slide')[0]
+            if(accessUni) accessUni.remove();
             $scope.$destroy;
-            document.querySelectorAll('#access-uni-slide')[0].remove();
           }, 1000);
 
         }
