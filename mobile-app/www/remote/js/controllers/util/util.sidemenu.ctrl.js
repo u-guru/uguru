@@ -31,16 +31,22 @@ angular.module('uguru.util.controllers')
   'PopupService',
   'ModalService',
   '$ionicSlideBoxDelegate',
+  'AdminService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate) {
+  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate,
+  AdminService) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
 
+    $scope.launchAdminActionSheet = function() {
+      var showPopup = AdminService.showActionSheet($scope);
+      AdminService.closeAttachActionSheet = showPopup();
+    };
 
 //use for abstract
     $scope.openAdmin = function() {
