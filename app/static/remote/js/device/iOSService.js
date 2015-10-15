@@ -19,7 +19,8 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	return {
 		ready: ready,
 		showStatusBar: showStatusBar,
-		enableGPS: enableGPS
+		enableGPS: enableGPS,
+		setStatusBarText:setStatusBarText
 	}
 
 	function ready() {
@@ -45,8 +46,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		if(window.StatusBar) {
 			window.StatusBar.show();
 			window.StatusBar.overlaysWebView(true);
-			setStatusBarText(); //light
-			['root.home'].roomState
+			setStatusBarText($state.current.name); //light
 		}
 	}
 

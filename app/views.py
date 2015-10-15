@@ -132,6 +132,10 @@ def team():
     team_members = [admin_info[key] for key in admin_info.keys() if not key == 'investors@uguru.me']
     return render_template("web/pages/team.html", team_members=team_members)
 
+@app.route('/support/')
+def team():
+    return render_template("web/pages/support.html")
+
 @app.route('/staging/profile')
 def profile_page():
     return render_template("web/profile.html")

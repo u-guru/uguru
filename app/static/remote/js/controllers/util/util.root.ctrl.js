@@ -89,6 +89,8 @@ angular.module('uguru.util.controllers')
             phone_confirm: getButtonLabel('phoneConfirm')
         }
 
+
+
         function getButtonLabel(popup) {
             switch(popup) {
                 case 'emailConfirm':
@@ -123,11 +125,13 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
+            console.log("university id: " + uni_id);
             University.getMajors(uni_id).then(function(majors){
 
                 console.log(majors.length, 'majors found', uni_id);
                 majors = majors.plain()
 
+                $scope.user.majors = majors;
                 University.majors = majors;
 
                 if (callback) {
@@ -135,12 +139,14 @@ angular.module('uguru.util.controllers')
                 }
             },
             function() {
+                $scope.user.majors = [{name: "Unable to retrieve school majors."}];
                 console.log('Universities NOT successfully loaded');
             })
         }
 
 
         $scope.getCategories = function(callback) {
+            console.log('retrieving majors for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
@@ -159,6 +165,7 @@ angular.module('uguru.util.controllers')
         // $localstorage.setObject('categories', Category.categories);
 
         $scope.getCoursesForUniversityId = function(uni_id, callback) {
+            console.log('retrieving courses for university');
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
 
@@ -291,7 +298,7 @@ angular.module('uguru.util.controllers')
             },
             showAmbig: function(text, duration) {
                 $scope.ambigLoaderText = text || '';
-                
+
                 $ionicLoading.show({
                     scope: $scope,
                     templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',

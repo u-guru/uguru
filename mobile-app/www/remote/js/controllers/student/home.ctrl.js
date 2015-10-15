@@ -20,12 +20,16 @@ angular.module('uguru.student.controllers', [])
     'uTracker',
     'AnimationService',
     'MapService',
+    '$ionicSlideBoxDelegate',
+    'DeviceService',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-        $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService) {
+        $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
+        DeviceService) {
 
         $ionicSideMenuDelegate.canDragContent(false);
+
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/verb.home.modal.html', {
             scope: $scope,
@@ -78,6 +82,7 @@ angular.module('uguru.student.controllers', [])
 
         $scope.hideTaskVerbModal = function() {
             $scope.taskVerbModal.hide();
+            $ionicSlideBoxDelegate.update();
         }
 
         $scope.launchVerbModal = function() {
@@ -87,15 +92,18 @@ angular.module('uguru.student.controllers', [])
         //UGH I HATE MY LIFE FUCK YOU IONIC
         var getIonicSideMenuOpenRatio = function() {
             var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+            $ionicSlideBoxDelegate.update();
             return openRatio;
         }
         var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
                 $scope.sideMenuActive = false;
+                $ionicSlideBoxDelegate.update();
             } else {
                 $timeout(function() {
                     $scope.sideMenuActive = true;
                 }, 250)
+                $ionicSlideBoxDelegate.update();
             }
         }
         $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
@@ -116,22 +124,26 @@ angular.module('uguru.student.controllers', [])
 
         $scope.closeRequestModal = function() {
             $scope.requestModal.hide();
+            $ionicSlideBoxDelegate.update();
         }
 
 
         $scope.closeVerbModal = function() {
             $scope.verbModal.hide();
+            $ionicSlideBoxDelegate.update();
         }
 
         $scope.goToBecomeGuru = function() {
-
+            $ionicSlideBoxDelegate.update();
 
             //uTracker.track(tracker, 'Become Guru');
 
             //$ionicViewSwitcher.nextDirection('none');
 
-            $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.become-guru')
+            $timeout(function() {
+                $ionicViewSwitcher.nextDirection('forward');
+                $state.go('^.become-guru')
+            }, 30);
 
         }
 
@@ -153,7 +165,7 @@ angular.module('uguru.student.controllers', [])
                 }
                 var uguruPopup = document.getElementById('home-uguru-popup');
                 uguruPopup.classList.remove('show');
-
+                $ionicSlideBoxDelegate.update();
             }
         }
 
@@ -187,6 +199,14 @@ angular.module('uguru.student.controllers', [])
 
         })
 
+        $scope.$on('$ionicView.beforeEnter', function() {
+
+            if (DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarText($state.current.name);
+            }
+
+        })
+
         $scope.$on('$ionicView.enter', function() {
 
             $scope.loader.hide();
@@ -200,6 +220,7 @@ angular.module('uguru.student.controllers', [])
             $timeout(function() {
                 checkOnboardingStatus();
             }, 1000);
+            $ionicSlideBoxDelegate.update();
 
             // $timeout(function() {
             //     $scope.launchRequestModal();

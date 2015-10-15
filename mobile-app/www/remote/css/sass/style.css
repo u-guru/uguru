@@ -3825,6 +3825,10 @@ body.platform-ios {
       padding-top: 20px; }
       body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view section, body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view #student-home-map-container {
         top: 20px !important; }
+  body.platform-ios .header-nav,
+  body.platform-ios .close-popup-link,
+  body.platform-ios #guru-home h1 {
+    padding-top: 20px; }
 
 .android-access-edge-case {
   bottom: 64px;
