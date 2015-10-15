@@ -25,6 +25,10 @@ angular.module('uguru.util.controllers')
       $scope.user.guru_courses = [];
     }
 
+    $scope.clearSearchInput = function() {
+      $scope.search_text.course = '';
+    }
+
     $scope.courses = [];
 
     $scope.search_text = {
