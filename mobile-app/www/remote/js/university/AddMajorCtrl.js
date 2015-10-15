@@ -169,16 +169,16 @@ angular.module('uguru.util.controllers')
       refreshMajors();
     });
 
-    $scope.afterEnter = function() {
-      console.log("entered into majors slide!");
-      refreshMajors();
-    };
+    // $scope.afterEnter = function() {
+    //   console.log("entered into majors slide!");
+    //   refreshMajors();
+    // };
 
-    $scope.$on('$viewContentLoaded', 
-    function(event){
-      console.log("viewContentLoaded");
-      refershMajors();
-    });
+    // $scope.$on('$viewContentLoaded', 
+    // function(event){
+    //   console.log("viewContentLoaded");
+    //   refershMajors();
+    // });
 
     // $scope.$watch(
     //   'university',
@@ -195,11 +195,11 @@ angular.module('uguru.util.controllers')
     function refreshMajors() {
       $timeout(function() {
         $scope.search_text.major = "   ";
-      },10);
+      },0);
       
       $timeout(function() {
         $scope.search_text.major = "";
-      }, 100);
+      }, 10);
     }
 
 

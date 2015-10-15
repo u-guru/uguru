@@ -103,14 +103,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/majors-container',
         templateUrl: BASE + 'templates/majors.container.html',
         controller: 'AddMajorController',
-        onEnter: function($timeout, $scope) {
-          $timeout(function() {
-            $scope.search_text.major = '  ';
-          }, 50);
-          $timeout(function() {
-            $scope.search_text.major = '';
-          }, 250);
-        }
   }).
   state('root.guru-courses-container', {
         url: '/guru-courses-container',
