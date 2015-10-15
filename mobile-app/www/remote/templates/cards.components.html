@@ -12,14 +12,14 @@
 
     </header>
     <div class='main'>
-        <ul class="list flex-center-wrap absolute" style='overflow-y:scroll;'>
+        <ul class="list flex-center-wrap absolute full-y" style='overflow-y:scroll;'>
           <li ng-repeat='card in user.cards'>
 
-              <div class='full-x card-wrapper-{{card.id}} p40xy'>
-              </div>
-              <form class='form-wrapper-{{card.id}}'></form>
+                <a ng-click='editCurrentCard(card)' class='full-x card-wrapper-{{card.id}} p40xy'>
+                </a>
+                <form class='form-wrapper-{{card.id}}'></form>
           </li>
         </ul>
-        <button style='z-index:10'class='bg-campus semibold absolute full-x bottom-0' href="#/edit-card">Add Card</button>
+        <button style='z-index:10'class='bg-campus semibold absolute full-x bottom-0' ng-click='launchEditCardModal()' >Add Card</button>
     </div>
-  </section>
+</section>
