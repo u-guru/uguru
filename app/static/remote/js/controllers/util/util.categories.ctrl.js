@@ -28,40 +28,43 @@ angular.module('uguru.util.controllers')
     }
 
 
-    $scope.categories = Utilities.sortArrObjByKey(Category.categories, 'name');
+
+
+
     $scope.active_category = {name:'Select category', active:false};
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.categorySkillsModal = modal;
-    });
-
-    $scope.onSwipeDown = function() {
-      alert('user swiped down')
-    }
-    $scope.onDragDown = function() {
-      alert('user swiped down')
-    }
 
     $scope.launchCategoryModal = function(category) {
-
+      console.log('active_category', $scope.active_category);
+      console.log('category', category);
       if($scope.active_category!==category){
         $scope.active_category = category;
-        updateMainBackground($scope.categories_img_base + category.background_url);
+        extension = $scope.guruSkillsModal && $scope.guruSkillsModal.isShown() && '-2';
+        updateMainBackground($scope.categories_img_base + category.background_url, extension);
       }
 
       uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name
       });
+      console.log('post active_category');
+      console.log('active_category', $scope.active_category);
       $scope.active_category.active = true;
+
       $scope.categorySkillsModal.show();
+
     }
 
-    var updateMainBackground = function(url) {
-      var headerElem = document.getElementById('category-skills');
-      cssString = "#category-skills:before {background: url(" + url + ") no-repeat center center/cover !important;}";
+    $scope.hideCategorySkillsModal = function() {
+      $scope.categorySkillsModal.hide();
+      $timeout(function() {
+        $scope.active_category = {name:'Select category', active:false};
+      }, 500);
+    }
+
+    var updateMainBackground = function(url, extension) {
+      extension = extension || '';
+      var headerElem = document.getElementById('category-skills' + extension);
+      cssString = "#category-skills" + extension + ":before {background: url(" + url + ") no-repeat center center/cover !important;}";
 
       style = document.createElement('style');
       style.type = 'text/css';
@@ -75,11 +78,28 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.$on('modal.hidden', function() {
+      if ($scope.activeSlideIndex === 2 ) {
+        $scope.active_category = {name:'Select category', active:false};
+      }
+    })
+
+    $scope.$on('modal.hidden', function() {
+      if ($scope.activeSlideIndex === 2 ) {
+        $scope.active_category = {name:'Select category', active:false};
+      }
+    })
+
     $scope.skillsModalDrag = function(e) {
       if (e.gesture.deltaY > 175) {
-        $scope.categorySkillsModal.hide();
+        $scope.hideCategorySkillsModal();
       }
     }
+
+
+
+
+
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
@@ -107,125 +127,27 @@ angular.module('uguru.util.controllers')
       else {
         removeGuruSubcategory(subcategory);
       }
-
-
     }
+
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+    }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+    });
+
+
     var addGuruSubcategory = function(subcategory) {
       $scope.user.updateAttr('add_guru_subcategory', $scope.user, subcategory, null, $scope);
     }
+
 
     var removeGuruSubcategory = function(subcategory) {
       $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
     }
 
-
-    // $scope.static.categories = [
-    //   {
-    //     name: 'Academic Courses',
-    //     db_name: 'academic',
-    //     _class: 'bg-cerise',
-    //     active:true,
-    //     active_skills_count:0,
-    //     skills: mapGuruCoursesToCategoriesObj($scope.user.guru_courses),
-    //     bg_url: categories_img_base +'./img/categories/bg/academic.jpg',
-    //     icon_url: categories_img_base + './img/categories/icon/academic.svg'
-    //   },
-    //   {
-    //     name: 'Freelancing',
-    //     db_name: 'freelancing',
-    //     _class: 'bg-orange',
-    //     active: false,
-    //     active_skills_count:0,
-    //     skills: ["Design", "Interview Help", "Resume Building", "Skill Building",
-    //     "Website Building", "Professional Writing", "Programming Questions", "Internship Mentorship",
-    //     "Beauty & Grooming"],
-    //     bg_url: categories_img_base +'./img/categories/bg/consulting.jpg',
-    //     icon_url: categories_img_base + './img/categories/icon/consulting-small.svg'
-    //   },
-    //   {
-    //     name: 'Baking',
-    //     _class: 'bg-gold',
-    //     db_name:'baking',
-    //     active: false,
-    //     active_skills_count:0,
-    //     skills: ["Cake", "Cupcakes", "Donuts", "Coffee", "Flan", "Cookies", "Brownies"],
-    //     bg_url: categories_img_base +'./img/categories/bg/baking.jpg',
-    //     icon_url: categories_img_base + './img/categories/icon/baking-small.svg'
-    //   },
-    //   {
-    //     name: 'Photography',
-    //     db_name:'photography',
-    //     _class: 'bg-moola',
-    //     active: false,
-    //     active_skills_count:0,
-    //     skills: ["Graduation Photos", "Professional Headshots", "Athletic & Action Images", "Outdoor & Scenery"],
-    //     bg_url: categories_img_base +'./img/categories/bg/photography.jpg',
-    //     icon_url: categories_img_base + './img/categories/icon/photography-small.svg'
-    //   },
-    //   {
-    //     name: 'Household',
-    //     _class: 'bg-shamrock',
-    //     db_name:'household',
-    //     active: false,
-    //     active_skills_count:0,
-    //     skills: ["Laundry", "Vacuuming", "House Cleaning", "Dishes", "Build Ikea Furniture"],
-    //     bg_url: categories_img_base +'./img/categories/bg/household.jpg',
-    //     icon_url: categories_img_base + './img/categories/icon/household-small.svg'
-    //   },
-    //   {
-    //     name: 'Technology & IT',
-    //     db_name:'tech',
-    //     _class: 'bg-azure',
-    //     active: false,
-    //     active_skills_count:0,
-    //     skills: ["Wifi setup", "Phone Screen Repair", "Computer Repair", "Virus Removal", "Software Setup"],
-    //     bg_url: categories_img_base +'./img/categories/bg/tech.jpg',
-    //     icon_url: categories_img_base + './img/categories/icon/technology-small.svg'
-    //   },
-    //   {
-    //     name: 'Sports & Muscle',
-    //     db_name:'sports',
-    //     _class: 'bg-lake',
-    //     active: false,
-    //     active_skills_count:0,
-    //     skills: ["Moving Help", "Team Sports", "Personal Trainer", "Weight Training", "Yoga", "Cardio Activities"],
-    //     bg_url: categories_img_base +'./img/categories/bg/sports.jpg',
-    //     icon_url: categories_img_base + './img/categories/icon/sports-small.svg'
-    //   },
-    //   {
-    //     name: 'On-demand Delivery',
-    //     db_name:'delivery',
-    //     _class: 'bg-eggplant',
-    //     active: false,
-    //     active_skills_count:0,
-    //     skills: ["Food Delivery",
-    //     "Car Sharing", "Truck Borrow", "Walgreens Run", "Chipotle, etc Run", "School Supplies",
-    //     "Late Night Snack/Coffee"],
-    //     bg_url: categories_img_base +'./img/categories/bg/delivery.jpg',
-    //     icon_url: categories_img_base + './img/categories/icon/delivery-small.svg'
-    //   }
-    // ];
-
-    //temporary --> will send objects from server eventually
-    var convertSkillsToClientObj = function(categories) {
-      var allButFirstCategories = categories.slice(1, categories.length);
-      for (var i = 0; i < allButFirstCategories.length; i ++) {
-        category = allButFirstCategories[i];
-        skillsObjArr = [];
-        for (var j = 0; j < category.skills.length; j++) {
-          var skill = category.skills[j];
-          skillsObjArr.push({
-            name: skill,
-            active: false
-          })
-        }
-        category.skills = skillsObjArr;
-      }
-    }
-
-    //temporary --> will send objects from server eventually
-
-    // convertSkillsToClientObj($scope.static.categories);
+    $scope.categories = Category.categories;
 
   }
 

@@ -23,11 +23,12 @@ angular.module('uguru.util.controllers')
   'Support',
   '$ionicPlatform',
   'InAppBrowser',
+  'Utilities',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, $ionicPlatform, InAppBrowser) {
+  Camera, Support, $ionicPlatform, InAppBrowser, Utilities) {
 
 
 // Implement a section for modals here
@@ -88,9 +89,9 @@ angular.module('uguru.util.controllers')
       }
       $timeout(function() {
         var email_input = document.getElementById('email-input')
-          if (email_input) {
-            email_input.focus();
-          }
+          // if (email_input) {
+          //   email_input.focus();
+          // }
       }, 500)
       $timeout(function() {
         $scope.loader.hide();
@@ -104,9 +105,9 @@ angular.module('uguru.util.controllers')
       $scope.loader.show();
       $timeout(function() {
         var email_input = document.getElementById('email-input')
-          if (email_input) {
-            email_input.focus();
-          }
+          // if (email_input) {
+          //   email_input.focus();
+          // }
       }, 500)
       $timeout(function() {
         $scope.loader.hide();
@@ -126,16 +127,16 @@ angular.module('uguru.util.controllers')
 
         if (!$scope.root.vars.loginMode) {
         var first_name_input = document.getElementById('first-name-input')
-          if (first_name_input) {
-            first_name_input.focus();
+          // if (first_name_input) {
+          //   first_name_input.focus();
 
-          }
+          // }
         } else {
           var email_input = document.getElementById('email-input')
-          if (email_input) {
-            email_input.focus();
+          // if (email_input) {
+          //   email_input.focus();
 
-          }
+          // }
         }
 
       }, 250)
@@ -317,7 +318,7 @@ angular.module('uguru.util.controllers')
       $scope.inputPopup = $ionicPopup.show({
           template: template,
           title: 'Change your password',
-          subTitle: 'Must be longer than 6 characters',
+          subTitle: 'Must be at least 6 characters.',
           scope: $scope,
           buttons: [
             { text: 'Cancel' },
@@ -326,13 +327,13 @@ angular.module('uguru.util.controllers')
               type: 'button-positive',
               onTap: function(e) {
 
-                if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 7) {
+                if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 6) {
                   alert('Please fill in all fields');
                   return;
                 }
 
-                if ($scope.data.new_password.length < 7) {
-                  alert('Please create a password longer than 6 characters');
+                if ($scope.data.new_password.length < 6) {
+                  alert('Please create a password with at least 6 characters.');
                   return;
                 }
 
@@ -919,7 +920,7 @@ angular.module('uguru.util.controllers')
                   var postSuccessCallback = function() {
                     $scope.fbLoginSuccessAlreadyShown = true;
                     $scope.loader.showSuccess('Login Successful!', 10000);
-                    $scope.ionicSideMenuDelegate.toggleRight();
+                    $ionicSideMenuDelegate.toggleRight();
                     $timeout(function() {
                       $scope.loader.setSuccessText('Syncing profile info...');
                     }, 2500);
@@ -1097,12 +1098,12 @@ angular.module('uguru.util.controllers')
       if (!$scope.signupForm.email || !$scope.signupForm.email.length) {
         $scope.success.show(0,1000,'Please enter your email');
 
-        $timeout(function() {
-          var emailInput = document.getElementById('email-input')
-          if (emailInput) {
-            emailInput.focus();
-          }
-        }, 1250)
+        // $timeout(function() {
+        //   var emailInput = document.getElementById('email-input')
+        //   if (emailInput) {
+        //     emailInput.focus();
+        //   }
+        // }, 1250)
 
         return false;
       }
@@ -1111,12 +1112,12 @@ angular.module('uguru.util.controllers')
       if (!validateEmail($scope.signupForm.email)) {
         $scope.success.show(0,1000,'Please enter a valid email');
         $scope.signupForm.email = '';
-        $timeout(function() {
-          var emailInput = document.getElementById('email-input');
-          if (emailInput) {
-            emailInput.focus();
-          }
-        }, 1250)
+        // $timeout(function() {
+        //   var emailInput = document.getElementById('email-input');
+        //   if (emailInput) {
+        //     emailInput.focus();
+        //   }
+        // }, 1250)
 
         return false;
       } else {
@@ -1126,12 +1127,12 @@ angular.module('uguru.util.controllers')
       if (!$scope.signupForm.password) {
         $scope.success.show(0,1000,'Please enter a password');
 
-        $timeout(function() {
-          var passwordInput = document.getElementById('password-input');
-          if (passwordInput) {
-            passwordInput.focus();
-          }
-        }, 1250);
+        // $timeout(function() {
+        //   var passwordInput = document.getElementById('password-input');
+        //   if (passwordInput) {
+        //     passwordInput.focus();
+        //   }
+        // }, 1250);
 
         return false;
       } else {
@@ -1149,20 +1150,10 @@ angular.module('uguru.util.controllers')
     $scope.validateSignupForm = function() {
       var formDict = $scope.signupForm;
 
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
-
       if (!formDict.full_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
-        document.getElementsByName('signup-name')[0].focus();
+        // document.getElementsByName('signup-name')[0].focus();
 
-        var shake = document.getElementById('input_first')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
         return false;
       } else {
         var nameComponents = $scope.signupForm.full_name.split(' ')
@@ -1177,54 +1168,24 @@ angular.module('uguru.util.controllers')
 
       if (!formDict.last_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
-        document.getElementsByName('signup-last-name')[0].focus();
-
-        var shake = document.getElementById('input_last')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
+        // document.getElementsByName('signup-last-name')[0].focus();
         return false;
       } else {
         $scope.user.last_name = $scope.signupForm.last_name;
       }
 
-      if (!formDict.email) {
-        $scope.success.show(0,2000,'Please fill in all fields!');
-        document.getElementsByName('signup-email')[0].focus();
-
-        var shake = document.getElementById('input_email')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
-        return false;
-      }
-
-      if (!validateEmail(formDict.email)) {
-        $scope.success.show(0,2000,'Please fill in all fields!');
-        document.getElementsByName('signup-email')[0].focus();
-
-        var shake = document.getElementById('input_email')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
+      if (!formDict.email || !Utilities.validateEmail(formDict.email)) {
+        $scope.success.show(0,2000,'Please enter a valid email.');
+        // document.getElementsByName('signup-email')[0].focus();
         return false;
       } else {
         $scope.user.email = $scope.signupForm.email;
       }
 
       if (!formDict.password) {
-        $scope.success.show(0,2000,'Please fill in all fields!');
+        $scope.success.show(0,2000,'Please enter a valid password.');
         $scope.user.password = $scope.signupForm.password;
-        document.getElementsByName('signup-password')[0].focus();
-
-        var shake = document.getElementById('input_password')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
+        // document.getElementsByName('signup-password')[0].focus();
         return false;
       } else {
         $scope.user.password = $scope.signupForm.password;
@@ -1262,9 +1223,12 @@ angular.module('uguru.util.controllers')
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
+          if ($scope.user && $scope.user.university && $scope.user.university.id) {
+            MapService.initStudentHomeMap(user);
+          }
           $timeout(function() {
-            if ($scope.ionicSideMenuDelegate.isOpen()) {
-              $scope.ionicSideMenuDelegate.toggleRight();
+            if ($ionicSideMenuDelegate.isOpen()) {
+              $ionicSideMenuDelegate.toggleRight();
             }
           }, 500)
           $scope.loader.showSuccess('Login Successful!', 2500);
@@ -1280,9 +1244,9 @@ angular.module('uguru.util.controllers')
             $scope.success.show(0, 1000, 'Incorrect username or password');
             $timeout(function() {
               var passwordInput = document.getElementById('password-input')
-              if (passwordInput) {
-                passwordInput.focus();
-              }
+              // if (passwordInput) {
+              //   passwordInput.focus();
+              // }
             }, 1250)
         }
       });

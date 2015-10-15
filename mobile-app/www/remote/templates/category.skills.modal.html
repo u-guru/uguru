@@ -2,8 +2,8 @@
     <section id='skill-list' class='onboarding'>
         <div id="skills-list" class="onboarding-list">
             <div>
-                <ul class='list checklist-{{active_category._class}}' style='height:calc(61px * {{active_category.subcategories.length}});'>
-                    <li ng-repeat='subcategory in active_category.subcategories'class='ng-class:{"active":subcategory.active}'>
+                <ul class='list checklist-{{active_category.hex_color}}' style='height:calc(61px * {{active_category.subcategories.length}});'>
+                    <li ng-repeat='subcategory in active_category.subcategories'>
                         <span>
                             <label>{{subcategory.name}}</label>
                             <input type="checkbox" ng-model='subcategory.active'ng-change='updateCategoryCount(active_category, subcategory, $index)'>

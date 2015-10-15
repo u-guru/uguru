@@ -8,16 +8,19 @@ angular
 function AccessService($localstorage) {
 
 	var genericAccessCode = 'cool';
-
+	var accessInput;
 	return {
-		validate: validate
+		validate: validate,
+		accessInput: accessInput
 	}
 
 	function validate(code) {
 		if(code !== undefined) {
 			console.log("code entered: " + code);
 			if(code===genericAccessCode) {
-				$localstorage.set("access", "true");
+				if (!LOCAL) {
+					$localstorage.set("access", "true");
+				}
 				return true;
 			} else return false;
 
@@ -26,7 +29,7 @@ function AccessService($localstorage) {
 			console.log("storedAccess: " + storedAccess);
 			return storedAccess;
 		}
-	
+
 	}
 
 }

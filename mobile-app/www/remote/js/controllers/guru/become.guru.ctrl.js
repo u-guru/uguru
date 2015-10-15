@@ -18,10 +18,14 @@ angular.module('uguru.guru.controllers')
   'University',
   'uTracker',
   'AnimationService',
+  'Category',
+  '$ionicSlideBoxDelegate',
+  'DeviceService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window, University, uTracker, AnimationService) {
+    $ionicViewSwitcher, $window, University, uTracker, AnimationService,
+    Category, $ionicSlideBoxDelegate, DeviceService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -48,8 +52,9 @@ angular.module('uguru.guru.controllers')
 
       uTracker.track(tracker, 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
+      $ionicSlideBoxDelegate.update();
       $state.go('^.home');
-      AnimationService.slide('right');
+      //AnimationService.slide('right');
     }
 
     $scope.removeUserGuruCoursesFromMasterCourses = function() {
@@ -72,7 +77,6 @@ angular.module('uguru.guru.controllers')
         }
 
       }
-
 
     }
 
@@ -108,7 +112,7 @@ angular.module('uguru.guru.controllers')
       if (index === 0) {
 
         uTracker.track(tracker, 'Become Guru: Majors');
-        
+
         $ionicSideMenuDelegate.canDragContent(false);
       }
 
@@ -117,13 +121,20 @@ angular.module('uguru.guru.controllers')
         uTracker.track(tracker, 'Become Guru: Courses');
 
         $scope.guruCoursesInput = document.getElementById('course-input-1');
-        $scope.removeUserGuruCoursesFromMasterCourses()
+
+
+        var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
+        var addScope = function(courses) {
+          $scope.courses = courses;
+        }
+
+        $scope.courses = University.courses || $scope.getCoursesForUniversityId();
       }
 
       if (index === 2) {
 
         uTracker.track(tracker, 'Become Guru: Skills');
-        $ionicSideMenuDelegate.canDragContent(true);        
+        $ionicSideMenuDelegate.canDragContent(true);
       }
 
       if (index === 3) {
@@ -137,7 +148,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.onDragLeft = function() {
-      
+
       $ionicSideMenuDelegate.canDragContent(false);
       $ionicSlideBoxDelegate.enableSlide(false);
 
@@ -145,7 +156,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.onDragRight = function() {
-      
+
       if ($scope.activeSlideIndex === 0) {
         $ionicSideMenuDelegate.canDragContent(false);
         $ionicSlideBoxDelegate.enableSlide(false);
@@ -154,9 +165,9 @@ angular.module('uguru.guru.controllers')
       return;
     }
     $scope.onDragLeft = function() {
-      
+
       if ($scope.activeSlideIndex === 0) {
-        $ionicSlideBoxDelegate.enableSlide(true);      
+        $ionicSlideBoxDelegate.enableSlide(true);
       }
     }
 
@@ -177,8 +188,18 @@ angular.module('uguru.guru.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
 
-    //
+    $scope.initSlideBoxModals = function() {
 
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+      });
+
+
+    }
 
 
     var injectClassIntoElement = function(e) {
@@ -228,15 +249,35 @@ angular.module('uguru.guru.controllers')
       progressBarTag.style.width = width + 'px';
     }
 
+    var updateMajorScope = function(majors) {
+      $scope.majors = majors;
+      University.majors = majors;
+    }
+
+    var updateCoursesScope = function(courses) {
+      $scope.courses = courses;
+      University.courses = courses;
+    }
+
     $scope.$on('$ionicView.beforeEnter', function() {
-      // if (!$scope.data.majors) {
 
-      //   $scope.getMajorsForUniversityId($scope.user.university.id);
-      //   $scope.getCoursesForUniversityId($scope.user.university.id);
+      //since this is the same as entering the slidebox
+      var universityId = $scope.user.university && $scope.user.university_id || 2307;
 
+      if (DeviceService.isIOSDevice()) {
+        DeviceService.ios.setStatusBarText($state.current.name);
+      }
 
-      // }
-    })
+      //adding minor delay so it doesn't get in the delay cycle
+      $timeout(function() {
+        // $scope.majors = University.majors || $scope.getMajorsForUniversityId();
+        // $scope.courses = University.courses || $scope.getCoursesForUniversityId();
+        // $scope.categories = Category.categories || $scope.getCategories();
+        $scope.initSlideBoxModals();
+      }, 500);
+
+    }, 500)
+
     $scope.$on('$ionicView.afterEnter', function() {
 
       $scope.majorInput = document.getElementById('major-input-1');

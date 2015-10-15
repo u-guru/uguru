@@ -10,7 +10,8 @@ function DownloadService(Utilities, uTracker, DeviceService) {
 
 	return {
 		downloadFile: downloadFile,
-		deleteFile: deleteFile
+		deleteFile: deleteFile,
+		testNetworkSpeed: testNetworkSpeed
 	}
 
 	function deleteFile(URL) {
@@ -94,6 +95,11 @@ function DownloadService(Utilities, uTracker, DeviceService) {
 				// Not recomemended for production use.
 				true);
 		}
+	}
+
+	function testNetworkSpeed() {
+		//console.log("testing network speed...");
+		downloadFile("https://placeimg.com/800/800/nature");
 	}
 
 

@@ -128,9 +128,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         resolve: {
           loadCache: function($templateCache) {
             $templateCache.get(BASE + 'templates/university.html');
-          },
-          deviceInfo: function(DeviceService) {
-            return DeviceService.getPlatform();
           }
         },
         controller: 'AddUniversityCtrl'
@@ -179,11 +176,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         url: '/home',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
-  }).
-  state('root.guru', {
-        url: '/guru',
-        templateUrl: BASE + 'templates/guru.html',
-        controller: 'GuruController'
   }).
   state('root.cashout', {
         url: '/cashout',
@@ -239,6 +231,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         url: '/guru-tasks',
         templateUrl: BASE + 'templates/guru.tasks.html',
         controller: 'GuruTaskController'
+  }).
+  state('root.guru', {
+        url: '/guru',
+        templateUrl: BASE + 'templates/guru.html',
+        controller: 'GuruController'
   }).
   state('root.guru-profile', {
         url: '/guru-profile',

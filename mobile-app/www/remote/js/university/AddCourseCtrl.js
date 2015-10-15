@@ -20,7 +20,15 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate, University, Utilities, uTracker, Course) {
 
-    
+
+    if (!$scope.user.guru_courses) {
+      $scope.user.guru_courses = [];
+    }
+
+    $scope.clearSearchInput = function() {
+      $scope.search_text.course = '';
+    }
+
     $scope.courses = [];
 
     $scope.search_text = {
@@ -44,11 +52,6 @@ angular.module('uguru.util.controllers')
           $scope.loader.hide();
         }, 500)
       }
-    }
-
-
-    $scope.query = function(input) {
-      $scope.courses = Utilities.nickMatcher(input, University.courses);
     }
 
 
@@ -78,7 +81,15 @@ angular.module('uguru.util.controllers')
 
 
       var removedCourse = $scope.user.guru_courses.splice(index, 1);
-      $scope.courses.push(removedCourse);
+      $scope.coursesSource.unshift(course);
+
+      $timeout(function() {
+        $scope.search_text.course = "   ";
+      },0);
+
+      $timeout(function() {
+        $scope.search_text.course = "";
+      }, 10);
 
 
       var confirmCallback = function() {
@@ -120,8 +131,6 @@ angular.module('uguru.util.controllers')
     $scope.addSelectedStudentCourse = function(course, input_text, $index) {
 
 
-
-
       $scope.search_text.course = '';
 
       //set the course text to what it should be
@@ -140,40 +149,35 @@ angular.module('uguru.util.controllers')
 
     $scope.addSelectedGuruCourse = function(course, input_text, index) {
 
-      $timeout(function() {
-        $scope.loader.show();
-      }, 250)
+      $scope.loader.show();
 
-      //set the variable to this
-      $timeout(function() {
-        if (index < 40) {
-          var removedCourseFromMain = $scope.courses.splice(index, 1);
-        } else {
-          var removedCourseFromMain = $scope.courses.splice(index, 1);
+      for(var i=0; i < $scope.coursesSource.length; i++) {
+        if($scope.coursesSource[i] === course) {
+          console.log("found a match to remove!");
+          $scope.coursesSource.splice(i, 1);
         }
+      }
 
+      $scope.user.guru_courses.push(course);
+      $localstorage.setObject('user', $scope.user);
+      //only if user has signed in
+      if ($scope.user.id) {
+        //adds to database for user
+        $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
+      } //
+
+      $timeout(function() {
+        $scope.search_text.course = "   ";
+      },0);
+      $timeout(function() {
+        $scope.search_text.course = "";
+      }, 10);
+
+      $timeout(function() {
         $scope.loader.hide()
-        $scope.search_text.course = '';
       }, 500)
 
 
-      $timeout(function() {
-        if (!$scope.user.guru_courses) {
-          $scope.user.guru_courses = [];
-        }
-      })
-
-      $timeout(function() {
-
-          $scope.user.guru_courses.push(course);
-          $localstorage.setObject('user', $scope.user);
-          //only if user has signed in
-            if ($scope.user.id) {
-              //adds to database for user
-              $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
-            } //
-
-          }, 750)
 
 
       uTracker.track(tracker, 'Course Guru Added', {
@@ -182,6 +186,7 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.courses && $scope.limit < $scope.courses.length) {
         $scope.limit += 10;
@@ -193,20 +198,21 @@ angular.module('uguru.util.controllers')
       $scope.user.guru_courses = [];
     }
 
-    $scope.guruCourseInput = document.getElementById('guru-course-input');
-    $scope.studentCourseInput = document.getElementById('student-course-input');
+
+    //$scope.studentCourseInput = document.getElementById('student-course-input');
 
 
     var getCoursesBecomeGuru = function() {
-      University.getMajors($scope.user.university_id).then(function(courses) {
+      University.getCourses($scope.user.university_id).then(function(courses) {
 
-        courses = courses.plain();
-
-        $scope.courses = courses;
+        // courses = courses.plain();
         University.courses = courses;
+        $scope.coursesSource = courses.plain().slice();
+        $scope.courses = courses.plain().slice();
+
         $localstorage.setObject('universityCourses', courses.plain())
 
-        console.log("$scope.courses: " + $scope.courses);
+        console.log("$scope.courses.length: " + $scope.courses.length);
       },function(err) {
 
         alert('Something went wrong... Please contact support!');
@@ -214,12 +220,14 @@ angular.module('uguru.util.controllers')
       });
     }
 
+    getCoursesBecomeGuru();
 
 
-    $scope.courses = University.courses || getCoursesBecomeGuru();
 
-    $scope.coursesSource = University.courses || getCoursesBecomeGuru();
-    //console.log($scope.courses.slice(0, 10));
+
+    $scope.afterEnter = function() {
+      console.log("afterEnter works!");
+    };
 
   }
 

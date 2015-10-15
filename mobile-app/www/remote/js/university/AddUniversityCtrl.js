@@ -2,6 +2,7 @@ angular.module('uguru.util.controllers', ['sharedServices'])
 .controller('AddUniversityCtrl', [
 
   //All imported packages go here
+  '$rootScope',
   '$scope',
   '$state',
   '$timeout',
@@ -9,7 +10,6 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$ionicViewSwitcher',
   'Geolocation',
   'Utilities',
-  'UniversityMatcher',
   '$ionicSlideBoxDelegate',
   'DeviceService',
   'uTracker',
@@ -18,21 +18,26 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'PerformanceService',
   '$templateCache',
   'AccessService',
+  '$ionicModal',
+  'ModalService',
+  '$controller',
   AddUniversityCtrl]);
 
-function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Utilities, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache, AccessService) {
+function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
+  Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
+  AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService,
+  $controller) {
 
   $scope.storedAccess = !AccessService.validate();
-  
+
+  $scope.LOCAL = LOCAL;
   //console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
 
   $scope.universitiesSorted = University.getSorted().slice();
-  $scope.universities = University.getSorted().slice();
+  $scope.universities = $scope.universitiesSorted;
 
   $scope.universityInput = {
     value: ''
@@ -95,8 +100,23 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     requestAnimationFrame(update);
   };
 
+
+  // function initUniversityModal() {
+  //   $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
+  //         scope: $scope,
+  //         animation: 'slide-in-up',
+  //         focusFirstInput: false,
+  //   }).then(function(modal) {
+  //       $scope.universityModal = modal;
+  //       ModalService.setModal("university", $scope.universityModal);
+
+  //       //uTracker.track(tracker, 'University Modal');
+  //   });
+  // }
+
   $scope.afterEnter = function() {
     stopLoop = true;
+    // initUniversityModal();
     //$timeout(function() {stopLoop = true}, 300);
     //console.log("called afterEnter");
   };
@@ -104,17 +124,22 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
   $scope.limit = 10;
+  var totalSchools = $scope.universitiesSorted.length
   $scope.increaseLimit = function() {
-    if($scope.limit < $scope.universities.length) {
+    if($scope.limit < totalSchools) {
       $scope.limit += 10;
       //console.log('limit increased is being called', $scope.limit, $scope.universities.length);
     }
   }
 
   //back button
-  $scope.goToAccess = function() {
+  $scope.goToAccessAdmin = function() {
     $scope.universityInput.value = '';
-    $ionicSlideBoxDelegate.previous();
+
+    $scope.loader.showAmbig('[ADMIN] Restarting', 1500);
+    $timeout(function() {
+      $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
+    },0);
   }
 
   $scope.resetUniversities = function() {
@@ -131,9 +156,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
 
-  // $timeout(function() {
-  //     AnimationService.initSlide();
-  // }, 500);
   $scope.universitySelected = function(university) {
 
       PerformanceService.sendListResponseTime('University_List');
@@ -157,10 +179,22 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           "$University": university.name,
       });
 
-     // $scope.loader.show();
+
+      $scope.loader.showSuccess('Success', 750);
+
+      //timeout to have it be a background thread
+      $timeout(function() {
+
+        $scope.getCoursesForUniversityId(university.id);
+        $scope.getMajorsForUniversityId(university.id);
+
+      }, 100);
+
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.universityInput.value = '';
+
+      //fetch the universities
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
@@ -169,43 +203,51 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         'university_id': $scope.user.university_id
       };
 
+
       //save university
       var postUniversitySelectedCallback = function() {
-        //AnimationService.initSlide();
-        UniversityMatcher.clearCache();
-        //$timeout(function() {
-          // $scope.loader.hide();
-          //$ionicViewSwitcher.nextDirection('forward');
-          
-          // var start = null;
-           //$state.go('^.home');
-           AnimationService.flip('^.home');
-           //AnimationService.slide('left', 'Student Home');
-          // function step(timestamp) {
-          //   stats.begin();
-          //   if (!start) start = timestamp;
-          //   var progress = timestamp - start;
-          //   AnimationService.slide('left');
-          //   //fpsArray.push(stats.getFPS());
-          //   console.log("FPS: " + stats.getFPS());
-          //   if(progress < 300) {
-          //     requestAnimationFrame(step);
-          //   }
-          //   stats.end();
-          // }
-          // requestAnimationFrame(step);
+
+
+        var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
+        if(modal !== undefined) {
+          var stringList = modal.classList.toString();
+          if(stringList.indexOf('ng-enter-active')) {
+            modal.classList.add('ng-leave');
+            modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
+            $ionicSlideBoxDelegate.update();
+
             
-        
-        //}, 0);
+
+            $timeout(function() {
+              console.log("broadcasting schoolChange!");
+              $rootScope.$emit('schoolChange');  
+            }, 0);
+            
+        }
+
+        } else {
+          AnimationService.flip('^.home');
+          $ionicViewSwitcher.nextDirection('forward');
+          $timeout(function() {
+            console.log("cleaning up access/university slidebox");
+            $scope.$destroy;
+            document.querySelectorAll('#access-uni-slide')[0].remove();
+          }, 1000);
+
+        }
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+      console.log("will this reach?");
+
 
   };
 
-  
+
   $scope.location = Geolocation;
+
   $scope.toggleLocationIconAppearance = function() {
+    console.log("Geolocation.settings.isAllowed: " + Geolocation.settings.isAllowed);
     // get GPS if we haven't attempted it
     if (Geolocation.settings.isAllowed === null) {
       console.log("calling getGPS");
@@ -235,8 +277,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.location.getLocation($scope, $scope.universitiesSorted);
     }, 0);
     //Geolocation.sortByDistance($scope.universitiesSorted);
-    
-  };
+
+  }
 
   $scope.$watch(
     'location.coordinates.lat',
@@ -244,33 +286,24 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       if(newValue) {
         console.log("location coordinates changed " + $scope.location.coordinates.lat + ', ' + $scope.location.coordinates.lon);
         console.log("geolocation coordinates changed " + Geolocation.coordinates.lat + ', ' + Geolocation.coordinates.lon);
-        $timeout(function() {
+        // $timeout(function() {
           console.log("$scope.universitiesSorted.length: " + $scope.universitiesSorted.length);
-          console.log("$scope.universitiesSorted.length: " + $scope.universities.length);
-          $scope.universitiesSorted = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universities);
-          //$scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universities);
-        },0);
+          console.log("$scope.universities.length: " + $scope.universities.length);
+          $scope.universities = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universities);
+          $scope.universistiesSorted = $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
+        // },0);
+          //$scope.$apply();
+          $timeout(function() {
+            $scope.universityInput.value += "";
+            $timeout(function() {
+              $scope.universityInput.value += "";
+            }, 500);
+          }, 0);
+
+
       }
     }
     );
-
-
-  // $scope.$on('$ionicView.loaded', function() {
-  //   // android doesn't have a special prompt
-  //   // if (DeviceService.getPlatform() === 'android') {
-  //   //   getGPS();
-  //   // }
-  //   console.log("university view loaded");
-  //   if (Geolocation.settings.isAllowed) {
-  //     $timeout(function() {
-  //       $scope.location.sortByLocation(Geolocation.coordinates.lat, Geolocation.coordinates.lon, $scope.universitiesSorted);
-  //     },0);
-  //   } else {
-  //     console.log("running getGPS() AGAIN");
-  //     getGPS();
-
-  //   }
-  // });
 
 }
 
@@ -281,7 +314,7 @@ angular.module('uguru.directives')
     var queryPromise = null;
     $timeout(function() {
 
-      $scope.$watch(
+      $scope.$parent.$watch(
         'universityInput.value',
         function(newValue, oldValue) {
 
@@ -290,9 +323,8 @@ angular.module('uguru.directives')
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-              //$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
 
-              $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
             }, 90);
           }
@@ -303,7 +335,7 @@ angular.module('uguru.directives')
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-              $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
             }, 75);
           }
@@ -314,7 +346,7 @@ angular.module('uguru.directives')
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-              $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
             }, 50);
           }
@@ -324,7 +356,7 @@ angular.module('uguru.directives')
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-              $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
+              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
 
             }, 50);
@@ -337,6 +369,10 @@ angular.module('uguru.directives')
   }
 
   return {
+    scope: {
+      listScope: '=bindList',
+      source: '=source'
+    },
     link: link,
     restrict: 'A'
   }

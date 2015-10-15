@@ -1,0 +1,54 @@
+<ion-modal-view class='bg-charcoal'>
+	<section id="guru-introduction-modal" class='full-xy'>
+		<header>
+			<div class='header-nav'>
+				<a class="header-close" ng-click="contactGuruModal.hide()">
+					<svg viewBox="0 0 100 100">
+						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+					</svg>
+				</a>
+			</div>
+			<h1 class="text-center">Communication Methods</h1>
+		</header>
+		<div class='main'>
+			    <ul class="list checklist-gold">
+				    <li>
+				        <span>
+					        <label>Telephone</label>
+					        <input type="checkbox" ng-change='updateCommunicationMethod("phone", user.phone_friendly)' ng-model='user.email_friendly'/><span></span>
+					    </span>
+				    </li>
+				    <li>
+				        <span>
+					        <label>Skype/Facetime/Video Chat</label>
+					        <input type="checkbox" ng-change='updateCommunicationMethod("skype", user.skype_friendly)' ng-model='user.skype_friendly'/>
+							<span></span>
+						</span>
+				    </li>
+				    <li>
+				        <span>
+					        <label>"FB Messenger / Live Chat</label>
+					        <input type="checkbox" ng-change='updateCommunicationMethod("messenger", user.messenger_friendly")' ng-model='user.messenger_friendly'/>
+					        <span></span>
+					    </span>
+				    </li>
+				    <li>
+				        <span>
+					        <label>SMS / MMS</label>
+					        <input type="checkbox" ng-change='updateCommunicationMethod("text", user.text_friendly)' ng-model='user.text_friendly'/>
+					        <span></span>
+					    </span>
+				    </li>
+				    <li>
+				        <span>
+					        <label>In Person</label>
+					        <input type="checkbox" ng-change='updateCommunicationMethod("personal", user.person_friendly)' ng-model='user.person_friendly'/><span></span>
+					    </span>
+
+				    </li>
+				</ul>
+		</div>
+		<button class='bg-campus semibold' ng-click='contactGuruModal.hide()'>Save</button>
+	</section>
+
+</ion-modal-view>

@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate', 'Category', 'RankingService',
+    '$ionicSideMenuDelegate', 'Category', 'RankingService', 'AdminService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category, RankingService) {
+        $ionicSideMenuDelegate, Category, RankingService, AdminService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -189,7 +189,7 @@ angular.module('uguru.user', [])
         // user.uber_friendly = false;
         // user.summer_15 = false;
 
-        var user_cards = user.cards;
+        var user_cards = user.cards || [];
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
 
@@ -278,7 +278,7 @@ angular.module('uguru.user', [])
         }
         user.student_avg_rating = calcAverage(student_ratings);
 
-        var student_transactions = user.student_transactions;
+        var student_transactions = user.student_transactions || [];
         MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
         for (var i = 0; i < student_transactions.length; i ++) {
             var utc = Date.parse(student_transactions[0].time_created);
@@ -289,7 +289,7 @@ angular.module('uguru.user', [])
             user.student_transactions[i].student_rate = 5;
         }
 
-        var guru_transactions = user.guru_transactions;
+        var guru_transactions = user.guru_transactions || [];
         for (var i = 0; i < guru_transactions.length; i ++) {
             var utc = Date.parse(guru_transactions[0].time_created);
             var date = new Date(utc);
@@ -300,7 +300,7 @@ angular.module('uguru.user', [])
         }
 
 
-        var transfer_transactions = user.transfer_transactions;
+        var transfer_transactions = user.transfer_transactions || [];
         for (var i = 0; i < transfer_transactions.length; i ++) {
             var utc = Date.parse(transfer_transactions[0].time_created);
             var date = new Date(utc);
@@ -329,7 +329,7 @@ angular.module('uguru.user', [])
 
             var guru_ratings = user.guru_ratings;
             user.guru_avg_rating = calcAverage(guru_ratings);
-            
+
             if (!user.guru_avg_rating) {
                 user.guru_avg_rating = 0;
             }
@@ -500,7 +500,13 @@ angular.module('uguru.user', [])
         $scope.user.current_hourly = user.current_hourly;
         $scope.user.previous_proposals = user.previous_proposals;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
+
         $scope.user.is_admin = user.is_admin;
+        if (!$scope.user.is_admin) {
+            AdminService = {};
+        }
+
+
         $scope.user.active_questions = user.active_questions;
         $scope.user.active_tasks = user.active_tasks;
         $scope.user.guru_skills = user.guru_skills;
@@ -574,7 +580,7 @@ angular.module('uguru.user', [])
         $scope.user.current_profile_percent = RankingService.calcProfile(user);
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
-        
+
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
         $scope.user.is_a_guru = !$scope.user.show_become_guru;
@@ -1015,6 +1021,10 @@ angular.module('uguru.user', [])
                 return;
             }
 
+            if (callback) {
+                callback()
+            }
+
             else {
                 // console.log('Fetching user from ', $state.current.name);
             }
@@ -1030,9 +1040,6 @@ angular.module('uguru.user', [])
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
 
-                        if ($scope.loader) {
-                            $scope.loader.hide();
-                        }
 
                         if (callback) {
                             callback($scope);

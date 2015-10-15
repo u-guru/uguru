@@ -28,24 +28,50 @@ angular.module('uguru.util.controllers')
     'DeviceService',
     'Utilities',
     'Category',
-    'PerformanceService',
+    'DownloadService',
+    'PopupService',
+    'KeyboardService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
         $cordovaSplashscreen, $timeout, Geolocation,
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
-         Utilities, Category, PerformanceService) {
+         Utilities, Category, DownloadService, PopupService,
+         KeyboardService) {
 
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
 
+        window.addEventListener('native.keyboardshow', keyboardShowHandler);
+        function keyboardShowHandler(e){
+            console.log('native hardware keyboard is shown');
+            KeyboardService.setDeviceKeyboardState(true);
+            $scope.keyboardOpen = true;
+        }
+
+
+        window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
+        function keyboardHideHandler(e){
+            console.log('native hardware keyboard is hidden');
+            KeyboardService.setDeviceKeyboardState(false);
+            $scope.keyboardOpen = false;
+        }
+
+
+        // if it exists, always show it until we've either updated, or checked for updates recently
+        // if (!LOCAL && navigator.splashscreen && navigator.splashscreen.show) {
+        //     navigator.splashscreen.show();
+        // }
+
+        $scope.LOCAL = LOCAL || false;
         $ionicPlatform.registerBackButtonAction(function(e) {
             var popup = document.querySelectorAll('.uguru-popup.show')[0];
             if(popup !== null && popup !== undefined) {
                 console.log("found popup");
-                popup.className = 'uguru-popup';
+                popup.classList.remove('show');
                 e.stopPropagation();
 
                 e.preventDefault();
@@ -58,22 +84,54 @@ angular.module('uguru.util.controllers')
 
         $scope.isLocalServer = LOCAL || false;
 
-        $scope.window = {       
-            width: document.querySelector('body').getBoundingClientRect().width        
+        $scope.window = {
+            width: document.querySelector('body').getBoundingClientRect().width
+        }
+
+        $scope.user = {};
+
+        $scope.popupInput = {
+            emailConfirm: '',
+            phoneConfirm: '',
+            codeConfirm: '',
+            editName: '',
+            editEmail: '',
+            editPhone: '',
+            editPasswordOld: '',
+            editPasswordNew: ''
+        };
+
+        $scope.popup = {
+            email_confirm: getButtonLabel('emailConfirm'),
+            phone_confirm: getButtonLabel('phoneConfirm')
         }
 
 
+
+        function getButtonLabel(popup) {
+            switch(popup) {
+                case 'emailConfirm':
+                        if($scope.user.school_email_token) return 'Send Confirmation';
+                        else return 'Resend Confirmation';
+                    break;
+                case 'phoneConfirm':
+                        if($scope.user.phone_email_token) return 'Send';
+                        else return 'Verify';
+                    break;
+                default: break;
+            }
+        }
+
         //how to make platform ready...
         $scope.user = User.getLocal();
+        $scope.user.is_admin = typeof LOCAL !== "undefined";
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
         $scope.user.updateObj = User.updateObj;
+        $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
         $scope.data = {};
-        University.majors = $localstorage.getObject('universityMajors');
-        University.courses = $localstorage.getObject('universityCourses');
-        Category.categories = $localstorage.getObject('categories');
 
         if ($scope.user && $scope.user.id) {
             User.getUserFromServer($scope, null, $state);
@@ -86,32 +144,34 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
+            console.log("university id: " + uni_id);
             University.getMajors(uni_id).then(function(majors){
-                console.log(majors.length, 'found', uni_id);
+
+                console.log(majors.length, 'majors found', uni_id);
                 majors = majors.plain()
 
                 University.majors = majors;
-
-                $localstorage.setObject('universityMajors', majors)
 
                 if (callback) {
                     callback(majors);
                 }
             },
             function() {
+                //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
                 console.log('Universities NOT successfully loaded');
             })
         }
 
-        Category.mapActiveToSubcategories(Category.categories, $scope.user);
-        $localstorage.setObject('categories', Category.categories);
 
-        $scope.getCategories = function() {
+        $scope.getCategories = function(callback) {
+            console.log('retrieving majors for id');
             Category.get().then(function(categories) {
-                Category.categories = categories.plain();
+                Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
-                $localstorage.setObject('categories', Category.categories);
-                console.log('categories loaded', Category.categories);
+                // $localstorage.setObject('categories', Category.categories);
+                //console.log('categories loaded', Category.categories);
+
+                callback && callback(Category.categories);
 
             },
             function() {
@@ -119,39 +179,66 @@ angular.module('uguru.util.controllers')
             })
         }
 
-        if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-            console.log('University majors not local, requesting now..');
-            $scope.getMajorsForUniversityId($scope.user.university_id);
-        } else {
-            console.log(University.majors.length, 'majors loaded');
-        }
+        // Category.mapActiveToSubcategories(Category.categories, $scope.user);
+        // $localstorage.setObject('categories', Category.categories);
 
-        if ($scope.user.university_id && !University.majors) {
-            console.log('University courses not local, requesting now..');
-            $scope.getMajorsForUniversityId($scope.user.university_id);
-        } else {
-            console.log(University.courses.length, 'courses loaded');
-        }
-
-        if (!Category.categories || Category.categories.length === 0) {
-            console.log('Categories not local, loading now..')
-            $scope.getCategories();
-        } else {
-            console.log(Category.categories.length, 'categories loaded');
-        }
-
-        $scope.getCoursesForUniversityId = function(uni_id) {
+        $scope.getCoursesForUniversityId = function(uni_id, callback) {
+            console.log('retrieving courses for university');
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
-                //NICKTODO --> set this localstorage or static file?
-                $localstorage.setObject('universityCourses', courses.plain())
-                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
+
+                University.courses = courses.plain();
+                if (callback) {
+                    callback(courses);
+                }
+                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id);
             },
             function() {
                 console.log('Universities NOT successfully loaded');
             })
         }
 
+        if ($scope.user.university_id && !(University.majors && University.majors.length)) {
+            console.log('University courses not local, requesting now..');
+            $timeout(function() {
+                $scope.getMajorsForUniversityId($scope.user.university_id);
+            }, 0)
+        } else {
+            console.log(University.majors.length, 'majors loaded');
+        }
+
+        if ($scope.user.university_id && !(University.courses && University.courses.length)) {
+            console.log('University majors not local, requesting now..');
+            $timeout(function() {
+                $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
+            }, 0)
+        } else {
+            console.log(University.majors.length, 'majors loaded');
+        }
+
+        if (!Category.categories || Category.categories.length === 0) {
+            console.log('Categories not local, loading now..')
+            $timeout(function() {
+                $scope.getCategories();
+            }, 0)
+        } else {
+            console.log(Category.categories.length, 'categories loaded');
+        }
+
+
+        $scope.getCoursesForUniversityId = function(uni_id) {
+            University.getCourses(uni_id).then(function(courses){
+                $scope.data.courses = courses.plain();
+                University.courses = courses.plain();
+                //NICKTODO --> set this localstorage or static file?
+                // $localstorage.setObject('universityCourses', courses.plain())
+                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
+
+            },
+            function() {
+                console.log('Universities NOT successfully loaded');
+            })
+        }
 
         $scope.rootUser = User;
         $scope.root = RootService;
@@ -190,7 +277,6 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.toggleRightSideMenu = function() {
-            console.log('this is called');
             $ionicSideMenuDelegate.toggleRight();
             $timeout(function() {
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
@@ -206,10 +292,35 @@ angular.module('uguru.util.controllers')
                 });
                 $scope.root.vars.loaderOn = true;
             },
-            showAmbig: function() {
+            customShow: function(velocity_args) {
                 $ionicLoading.show({
                     scope:$scope,
-                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html'
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
+                });
+                $timeout(function() {
+
+                    $scope.root.vars.loaderOn = true;
+                    var loaderContainer = document.querySelector('.loading-container');
+                    var loaderDiv = document.querySelector('.loading-container .loading');
+                    loaderDiv.style.opacity = 0 ; //set it to zero
+                    loaderContainer.className += ' active visible';
+
+                    $timeout(function() {
+                        var cssOptions = {};
+                        var animateOptions = {duration:2000};
+                        var animationName = "transition.bounceIn";
+                        Velocity(loaderDiv, cssOptions, animateOptions, animationName);
+                    }, 500);
+
+                }, 300)
+            },
+            showAmbig: function(text, duration) {
+                $scope.ambigLoaderText = text || '';
+
+                $ionicLoading.show({
+                    scope: $scope,
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
+                    duration: duration || 1000
                 });
                 $scope.root.vars.loaderOn = true;
             },
@@ -227,9 +338,12 @@ angular.module('uguru.util.controllers')
             updateSuccessText: function(text) {
                 $scope.successLoaderText = text || 'loading'
             },
-            hide: function() {
-                $ionicLoading.hide();
-                $scope.root.vars.loaderOn = false;
+            hide: function(delay) {
+                delay = delay || 0;
+                $timeout(function() {
+                    $ionicLoading.hide();
+                    $scope.root.vars.loaderOn = false;
+                }, delay)
             }
         }
 
@@ -382,12 +496,15 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.platform = {
-            mobile: false,
-            web: false
+            mobile: DeviceService.isMobile(),
+            web: DeviceService.isWeb()
         }
 
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
+
+            PopupService.init();
+            DownloadService.testNetworkSpeed();
             DeviceService.readyDevice($scope);
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
@@ -412,12 +529,12 @@ angular.module('uguru.util.controllers')
             document.addEventListener("resume", function() {
                 console.log('device is resuming....');
 
-                PerformanceService.testNetworkSpeed();
+                DownloadService.testNetworkSpeed();
                 DeviceService.checkUpdates();
             }, false);
 
             document.addEventListener("online", function() {
-                // is this desktop only? 
+                // is this desktop only?
                 if (!$scope.platform.web)
                 {
                     return;
@@ -485,7 +602,7 @@ angular.module('uguru.util.controllers')
                 $scope.loader.hide();
             }, 1000);
 
-        } 
+        }
         else if ($scope.user && $scope.user.university_id) {
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');

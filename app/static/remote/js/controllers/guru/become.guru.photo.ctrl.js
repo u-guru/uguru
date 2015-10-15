@@ -29,7 +29,7 @@ angular.module('uguru.guru.controllers')
       uTracker.track(tracker, 'Guru Mode', {
         '$Photo_Method': 'Camera'
       });
-      $scope.success.show(0, 2000, "Awesome! You're all set.");
+      $scope.loader.showSuccess("Awesome! You're all set.", 2000);
       $ionicViewSwitcher.nextDirection('forward');
       $timeout(function() {
         $state.go('^.guru');
@@ -42,7 +42,7 @@ angular.module('uguru.guru.controllers')
       uTracker.track(tracker, 'Guru Mode', {
         '$Photo_Method': 'Library'
       });
-      $scope.success.show(0, 2000, "Awesome! You're all set.");
+      $scope.loader.showSuccess("Awesome! You're all set", 3000);
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.guru');
     }
@@ -82,6 +82,13 @@ angular.module('uguru.guru.controllers')
         element.click();
       }
     }
+
+    $scope.$on('$ionicView.enter', function() {
+      $scope.user.is_a_guru = true;
+      $localstorage.setObject('user', $scope.user);
+      $scope.user.updateAttr('is_a_guru', $scope.user, true, null, $scope);
+
+    })
 
     $scope.userPhotoList = [];
     $scope.samplePhotoList = [{src: '/img/onboarding/profile1.jpg'},
@@ -124,7 +131,7 @@ angular.module('uguru.guru.controllers')
         formData.append('filename', name);
 
 
-        $scope.success.show(0, 1500, 'Saving...');
+        $scope.loader.showSuccess('Saving...', 1500);
         $timeout(function() {
           $scope.user.createObj($scope.user, 'files', formData, $scope, takePhotoCallbackSuccess);
         }, 500);
