@@ -1,3 +1,4 @@
 var _local = "true";
-var _startpage = "cards";
+var _startpage = "home";
 var _ipaddress = "192.168.0.115";
+

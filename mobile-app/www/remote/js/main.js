@@ -62,7 +62,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(true);
+  $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -103,7 +103,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.majors-container', {
         url: '/majors-container',
         templateUrl: BASE + 'templates/majors.container.html',
-        controller: 'AddMajorController'
+        controller: 'AddMajorController',
   }).
   state('root.guru-courses-container', {
         url: '/guru-courses-container',

@@ -30,18 +30,35 @@ angular.module('uguru.util.controllers')
     'Category',
     'DownloadService',
     'PopupService',
+    'KeyboardService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
         $cordovaSplashscreen, $timeout, Geolocation,
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
-         Utilities, Category, DownloadService, PopupService) {
+         Utilities, Category, DownloadService, PopupService,
+         KeyboardService) {
 
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
 
+        window.addEventListener('native.keyboardshow', keyboardShowHandler);
+        function keyboardShowHandler(e){
+            console.log('native hardware keyboard is shown');
+            KeyboardService.setDeviceKeyboardState(true);
+            $scope.keyboardOpen = true;
+        }
+
+
+        window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
+        function keyboardHideHandler(e){
+            console.log('native hardware keyboard is hidden');
+            KeyboardService.setDeviceKeyboardState(false);
+            $scope.keyboardOpen = false;
+        }
 
 
         // if it exists, always show it until we've either updated, or checked for updates recently
@@ -131,7 +148,6 @@ angular.module('uguru.util.controllers')
                 console.log(majors.length, 'majors found', uni_id);
                 majors = majors.plain()
 
-                $scope.user.majors = majors;
                 University.majors = majors;
 
                 if (callback) {
@@ -139,7 +155,7 @@ angular.module('uguru.util.controllers')
                 }
             },
             function() {
-                $scope.user.majors = [{name: "Unable to retrieve school majors."}];
+                //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
                 console.log('Universities NOT successfully loaded');
             })
         }
@@ -151,7 +167,7 @@ angular.module('uguru.util.controllers')
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
                 // $localstorage.setObject('categories', Category.categories);
-                console.log('categories loaded', Category.categories);
+                //console.log('categories loaded', Category.categories);
 
                 callback && callback(Category.categories);
 

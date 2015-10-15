@@ -1,4 +1,4 @@
-<section id="course" class="onboarding">
+<section id="course" class="onboarding" u-after-enter='afterEnter()'>
 	<header class="third flex-center" ng-if='!guruCoursesModal.isShown() && !(profile && profile.edit_mode);'>
 		<h1 class="text-center">Add Courses</h1>
 		<div class="header-nav">
@@ -34,9 +34,9 @@
 			</div>
 		</div>
 	</header>
-	<div id="courses-list" class="onboarding-list" buffered-scroll='increaseLimit()' ng-init='limit = 20'>
+	<div id="courses-list" class="onboarding-list" bind-input='courses' source='coursesSource' buffered-scroll='increaseLimit()' >
 		<ul class='list list-item-border'>
-			<li ng-show='guruCoursesInput.value.length === 0' ng-repeat='course in user.guru_courses track by $index' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+			<li  ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
 				<input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>
 				<!--Label below is temporary-->
 				<label ng-if='!course.title'>{{course.name}}</label>
@@ -48,7 +48,7 @@
 					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
 				</svg>
 			</li>
-			<li bind-input='courses' source='coursesSource' ng-repeat='course in courses track by $index| limitTo: limit' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
+			<li ng-repeat='course in courses | limitTo: limit' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
 				<input type="checkbox">
 				<label ng-if='!course.title'>{{course.name}}</label>
 				<label ng-if='course.title'>
