@@ -1,5 +1,5 @@
 angular.module('uguru.directives')
-.directive('submit', function ($parse) {
+.directive('submit', function ($parse, DeviceService) {
 
 	function link ($scope, element, attr) {
 
@@ -11,7 +11,7 @@ angular.module('uguru.directives')
 			var key = e.keyCode || e.key || e.which;
 			if (key === 13) {
 
-				if ($scope.platform.mobile) {
+				if (DeviceService.doesCordovaExist()) {
 				  cordova.plugins.Keyboard.close();
 				}
 				$scope.$apply(function() {

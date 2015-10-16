@@ -31,17 +31,24 @@ angular.module('uguru.util.controllers')
   'PopupService',
   'ModalService',
   '$ionicSlideBoxDelegate',
+  'AdminService',
   'InAppBrowser',
+  'DeviceService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate, InAppBrowser) {
+  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate,
+  AdminService, InAppBrowser, DeviceService) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
 
+    $scope.launchAdminActionSheet = function() {
+      var showPopup = AdminService.showActionSheet($scope);
+      AdminService.closeAttachActionSheet = showPopup();
+    };
 
 //use for abstract
     $scope.openAdmin = function() {
@@ -143,13 +150,20 @@ angular.module('uguru.util.controllers')
 
       uTracker.track(tracker, 'Support Modal');
 
-      //InAppBrowser.openSupport();
+      var isDevice = DeviceService.doesCordovaExist();
 
-      $scope.supportModal.show();
-      $timeout(function() {
-        initSupportChatEnterHandler()
-      }, 500);
-      $scope.init
+      if (!isDevice) {
+        $scope.supportModal.show();
+      } else {
+        InAppBrowser.openSupport();
+      }
+
+
+      // $scope.supportModal.show();
+      // $timeout(function() {
+      //   initSupportChatEnterHandler()
+      // }, 500);
+      // $scope.init
     }
 
     $scope.launchPrivacyModal = function() {

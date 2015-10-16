@@ -59,11 +59,11 @@ angular.module('uguru.directives')
 			    }
 			    queryPromise = $timeout(function() {
 		    		try{
-	    				$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);		
+	    				$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
 		    		} catch(err) {
 		    			console.log("fastmatcher slice error (most likely due to not being loaded yet): " + err);
 		    		}
-			      
+
 			      queryPromise = null;
 
 			    }, 50);

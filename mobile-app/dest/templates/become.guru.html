@@ -2,11 +2,11 @@
 
     <ion-slide-box can-swipe-back='false' on-slide-changed="slideHasChanged($index)" delegate-handle='become-guru-slide-box' class='become-guru-slidebox-container'>
 
-      <ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
-        <div ng-include="img_base + BASE + 'templates/majors.html'"></div>
+      <ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()" ng-controller='AddMajorController'>
+        <div ng-include="img_base + BASE + 'templates/majors.html'" ></div>
       </ion-slide>
 
-      <ion-slide>
+      <ion-slide ng-controller='CoursesController'>
          <div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
       </ion-slide>
 
@@ -14,12 +14,14 @@
         <div ng-include="img_base + BASE + 'templates/become.guru.skills.html'"></div>
       </ion-slide>
 
-      <!-- <ion-slide>
-         <div ng-include="img_base + BASE + 'templates/become.guru.start.html'"></div>
-      </ion-slide> -->
-
-      <ion-slide>
+      <ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()" >
         <div ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></div>
       </ion-slide>
 
     </ion-slide-box>
+
+
+
+    <!-- <ion-slide>
+       <div ng-include="img_base + BASE + 'templates/become.guru.start.html'"></div>
+    </ion-slide> -->

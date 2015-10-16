@@ -11,11 +11,8 @@ var REST_URL = 'https://www.uguru.me';
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
-
-  // REST_URL = 'http://uguru.me';
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  REST_URL = 'http://192.168.0.115:5000'
 
 } else {
   img_base = '/static/'
@@ -38,7 +35,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   DeviceService, uTracker) {
 
   uTracker.init(tracker);
-
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -61,8 +57,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $ionicConfigProvider.views.transition('platform');
 
   $ionicConfigProvider.tabs.position("bottom");
-  $ionicConfigProvider.views.maxCache(20);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(true);
+  $ionicConfigProvider.views.maxCache(10);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -103,7 +99,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.majors-container', {
         url: '/majors-container',
         templateUrl: BASE + 'templates/majors.container.html',
-        controller: 'AddMajorController'
+        controller: 'AddMajorController',
   }).
   state('root.guru-courses-container', {
         url: '/guru-courses-container',
@@ -253,11 +249,19 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
           throw "Test error";
         }
   }).
-  // state('root.access', {
-  //       url: '/access',
-  //       templateUrl: BASE + 'templates/access.html',
-  //       controller: 'AccessController'
-  // }).
+  state('root.admin', {
+    url: '/admin',
+    template: '<h1> Yay youre admin -- redirecting...</h1>',
+    controller: function($scope, $state, $timeout) {
+      if ($scope.user) {
+        $scope.user.is_admin = true;
+        $scope.user.updateAttr('is_admin', $scope.user, true, null, $scope);
+        $timeout(function() {
+          $state.go('^.home');
+        }, 500);
+      }
+    }
+  }).
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'

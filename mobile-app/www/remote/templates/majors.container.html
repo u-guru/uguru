@@ -1,5 +1,5 @@
 <section can-swipe-back='false'id="major" class="onboarding charcoal-bg full-xy">
-    <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
+    <header class="third flex-center-wrap ng-class:{'compressed-search':keyboardOpen}" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
         <h1 class="text-center">Select your major</h1>
         <div class="header-nav">
             <a class="header-nav-back" ng-click='goBackToStudentHome()'>
@@ -9,20 +9,22 @@
                 <h1>Home</h1>
             </a>
             <a class="header-nav-next" ng-click='nextSlide()'>
-                <h1>Courses</h1>
+
+                <h1 class='ng-class:{"some-class-here":true || evaluateSomeFunction() }'>Courses</h1>
                 <svg viewBox="0 0 100 100">
                     <path d="M32,86 L68,50 L32,14"></path>
                 </svg>
             </a>
         </div>
         <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+
             <input submit='fastSelectMajor()' type="search" id='major-input-1' class='' placeholder="My major is..." ng-model="search_text.major"/>
             <a ng-if='search_text.major.length > 0' ng-click='clearSearchInput();' class="major-input-close side-icon">
                 <i class='icon ion-close-circled'> </i>
             </a>
         </div>
     </header>
-    <header ng-if='guruMajorModal.isShown();' class='third flex-center'>
+    <header ng-if='guruMajorModal.isShown();' class="third flex-center ng-class:{'compressed-search':!keyboardOpen}">
         <div class="header-nav">
             <a class="header-down" ng-click="guruMajorModal.hide()">
                 <svg viewBox="0 0 100 100">
@@ -33,7 +35,7 @@
         <h1 class="text-center">Edit Majors</h1>
         <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
             <input type="search" placeholder="My major is..." ng-model="search_text.major" />
-            <a ng-click='clearSearchInput();' class="major-input-close side-icon">
+            <a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.major.length > 0'>
                 <i class='icon ion-close-circled'> </i>
             </a>
         </div>
@@ -52,10 +54,10 @@
                 </svg>
             </li>
 
+
             <li class="major-item major-business" ng-repeat='major in majors | limitTo: 10 track by major.id'>
 
                 <a ng-click='majorSelected(major)'>
-                    <!-- {{major.universalName}}</a> -->
                 {{major.title || major.name || major.abbr || major.code}}</a>
             </li>
         </ul>

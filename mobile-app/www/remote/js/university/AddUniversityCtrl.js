@@ -166,7 +166,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
           $timeout(function() {
             console.log("broadcasting schoolChange!");
-            $rootScope.$emit('schoolChange');  
+            $rootScope.$emit('schoolChange');
           }, 0);
 
           uTracker.track(tracker, "University Changed", {
@@ -222,13 +222,13 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
             modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
             $ionicSlideBoxDelegate.update();
 
-            
+
 
             // $timeout(function() {
             //   console.log("broadcasting schoolChange!");
-            //   $rootScope.$emit('schoolChange');  
+            //   $rootScope.$emit('schoolChange');
             // }, 0);
-            
+
         }
 
         } else {
@@ -249,7 +249,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   };
 
-
+  // interesting... in a good way
   $scope.location = Geolocation;
 
   $scope.toggleLocationIconAppearance = function() {

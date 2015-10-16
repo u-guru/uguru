@@ -56,6 +56,10 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.clearSearchInput = function() {
+      $scope.search_text = '';
+    }
+
     $scope.$on('$ionicView.enter', function() {
 
 

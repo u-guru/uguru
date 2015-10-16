@@ -147,7 +147,7 @@ angular.module('uguru.util.controllers')
       $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
     }
 
-
+    $scope.categories = Category.categories;
 
   }
 
