@@ -7,10 +7,10 @@
         <div id='student-home-map-container'></div>
         <div id="home-content" class="trending-container">
             <div ng-if='!user.is_a_guru'>
-	            <button class="home-button bg-lake-80p" ng-click='launchRequestModal()'>Request<br/>Help</button>
+	            <button class="home-button bg-lake-80p" thr-click='launchRequestModal()'>Request<br/>Help</button>
 	        </div>
 	        <div ng-if='!user.is_a_guru'>
-				<button class="home-button bg-campus-80p" ng-click='goToBecomeGuru()'>Become<br/>a Guru</button>
+				<button class="home-button bg-campus-80p" thr-click='goToBecomeGuru()'>Become<br/>a Guru</button>
 	        </div>
 	        <div id="trending" ng-if='user.is_a_guru'>
 		        <h1>Trending at your school</h1>

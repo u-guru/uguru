@@ -101,10 +101,7 @@ def faq():
 @app.route('/faq-only/')
 def faq_body():
     from flask import request
-    print request.user_agent.platform, request.user_agent.browser
-    import httpagentparser
-    print httpagentparser.simple_detect(request.user_agent.string)
-    print httpagentparser.detect(request.user_agent.string)
+
     return render_template("web/pages/faq_only.html")
 
 @app.route('/manifest/')
@@ -132,9 +129,9 @@ def team():
     team_members = [admin_info[key] for key in admin_info.keys() if not key == 'investors@uguru.me']
     return render_template("web/pages/team.html", team_members=team_members)
 
-@app.route('/support/')
+@app.route('/support-only/')
 def team():
-    return render_template("web/pages/support.html")
+    return render_template("web/pages/support_only.html")
 
 @app.route('/staging/profile')
 def profile_page():

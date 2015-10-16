@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="/static/web/css/grids-min.css"/>
     <link rel="stylesheet" href="/static/web/css/grids-responsive-min.css"/>
     <script src="/static/web/js/lib/modernizr.js"></script>
+
     {% block header_scripts %}
+    <link rel="stylesheet" href="/static/web/css/default.css"/>
     <link rel="stylesheet" href="/static/web/css/style.css"/>
     {% endblock %}
     <link rel="stylesheet" href="/static/web/css/responsive.css"/>
-    <link rel="stylesheet" href="/static/web/css/default.css"/>
+
     <link rel="stylesheet" href="/static/web/css/menu.css"/>
     <link rel="stylesheet" href="/static/web/css/samir.css"/>
     <link rel="stylesheet" href="/static/web/css/animate.css"/>
@@ -31,12 +33,14 @@
 </head>
 <body id="{% block pagetype %}{% endblock %}">
 
+{% if 'faq-only' not in request.url %}
 <script>
     var bodyLoadingDiv = document.createElement('div');
     bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
     document.body.appendChild(bodyLoadingDiv);
-    bodyLoadingDiv.innerHTML = '<div><span class="logo"> {% include "web/components/logo-white.svg"%} </span><span class="loader"> {% include "web/components/svg-loader.svg"%} </span></div>'
+    bodyLoadingDiv.innerHTML = '<div><span class="logo"> {% include "web/components/logo-white.svg"|string%}' + ' </span><span class="loader"> {% include "web/components/svg-loader.svg"%} </span></div>'
 </script>
+{% endif %}
 <header id="top">
     <nav id="top-menu">
         <ul>
@@ -77,26 +81,19 @@
 <script src="/static/web/js/lib/jquery.min.js"></script>
 <script src="/static/web/js/lib/plugins.js"></script>
 <script src="/static/web/js/lib/parallax.min.js"></script>
+{% if 'faq-only' not in request.url %}
 <script src="/static/web/js/main.js"></script>
+
 <script src="/static/web/js/lib/velocity.js"></script>
 <!-- <script src="/static/web/js/lib/hammer.min.js"></script> -->
 <!-- <script src="/static/web/js/lib/jquery.hammer.js"></script> -->
 <!-- <script src="/static/web/js/carousel.js"></script> -->
-
-<script>
-    // hammerOptions = {}
-    // bodyHammerObj = $('body').hammer(hammerOptions)
-    // bodyHammerObj.on("pan swipe", function(ev) {
-    //     console.log(ev);
-    //     console.log(ev.type +" gesture detected.");
-    // });
-
-</script>
 <!--start animation scripts-->
 <script src="/static/web/js/lib/cta.min.js"></script>
 <!-- end animation scripts-->
 <script src="/static/web/js/components/modal.js"></script>
 <script src="/static/web/js/lib/uguru-animate.js"></script>
+{% endif %}
 {% block footer_scripts %}
 {% endblock %}
 <script>
