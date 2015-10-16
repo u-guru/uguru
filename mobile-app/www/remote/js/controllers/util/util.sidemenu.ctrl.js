@@ -34,13 +34,14 @@ angular.module('uguru.util.controllers')
   'AdminService',
   'InAppBrowser',
   'DeviceService',
+  'ModalService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
   AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate,
-  AdminService, InAppBrowser, DeviceService) {
+  AdminService, InAppBrowser, DeviceService, ModalService) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
@@ -65,8 +66,6 @@ angular.module('uguru.util.controllers')
             $scope.faqModal = modal;
     });
 
-
-
     $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
             scope: $scope,
             animation: 'slide-in-up',
@@ -74,9 +73,6 @@ angular.module('uguru.util.controllers')
     }).then(function(modal) {
         $scope.supportModal = modal;
     });
-
-
-
 
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
@@ -113,8 +109,10 @@ angular.module('uguru.util.controllers')
 
     $scope.launchFAQModal = function() {
 
-      uTracker.track(tracker, 'FAQ Modal');
-      $scope.faqModal.show();
+      ModalService.open('faq');
+
+      // uTracker.track(tracker, 'FAQ Modal');
+      // $scope.faqModal.show();
     }
 
     $scope.launchUniversityModal = function() {
@@ -509,7 +507,11 @@ angular.module('uguru.util.controllers')
               if (index === 1) {
                 $scope.closeAttachActionSheet();
                 $scope.loader.show();
-                $scope.launchUniversityModal();
+                console.log("checking");
+                $timeout(function() {
+                  $scope.launchUniversityModal();
+                }, 0);
+                
                 $timeout(function() {
                   $scope.loader.hide();
                 }, 500);
