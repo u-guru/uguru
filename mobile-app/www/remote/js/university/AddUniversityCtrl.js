@@ -163,6 +163,12 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
         if (confirm('Are you sure? Your current courses will be deactivated')) {
+
+          $timeout(function() {
+            console.log("broadcasting schoolChange!");
+            $rootScope.$emit('schoolChange');  
+          }, 0);
+
           uTracker.track(tracker, "University Changed", {
               "$University": university.name,
               "$University_Input": $scope.universityInput.value
@@ -180,7 +186,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       });
 
 
-      $scope.loader.showSuccess('Success', 750);
+      //$scope.loader.showSuccess('Success', 750);
 
       //timeout to have it be a background thread
       $timeout(function() {
@@ -218,10 +224,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
             
 
-            $timeout(function() {
-              console.log("broadcasting schoolChange!");
-              $rootScope.$emit('schoolChange');  
-            }, 0);
+            // $timeout(function() {
+            //   console.log("broadcasting schoolChange!");
+            //   $rootScope.$emit('schoolChange');  
+            // }, 0);
             
         }
 

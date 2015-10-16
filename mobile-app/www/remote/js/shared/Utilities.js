@@ -106,6 +106,9 @@ function Utilities($rootScope, Settings) {
 			property = ['title', 'name', 'abbr', 'code'];
 		}
 
+		if (id && id.indexOf('course')) {
+			property = ['title', 'name'];
+		}
 
 		var matcher = new FastMatcher(list, {
 			selector: property,
