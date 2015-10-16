@@ -96,12 +96,11 @@ function Geolocation($rootScope, $timeout, University,
             settings.isActive = false;
             break;
         }
-
     }
   }
 
   function sortByLocation(userLat, userLong, list) {
-    var numberFormatter = new Intl.NumberFormat();
+    
     for(var i=0; i<list.length; i++) {
 
       list[i].rawMiles = Utilities.getDistanceInMiles(

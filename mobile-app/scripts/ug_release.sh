@@ -24,7 +24,6 @@ if [ $# == 1 ];
 
 		jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore uguru.keystore ./platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk uguru
 		zipalign -v 4 ./platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-x86.apk
-
 		printf '\e[0;36mOkay to ignore warning about several entries not being validated. \n'
 		printf ' Crosswalk builds out two separate apks for devices that use either x86 or armv7 processors for compatibility with all devices. \n'
 		printf ' Be sure to submit both apks to the play store! \e[0m\n'

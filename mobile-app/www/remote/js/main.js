@@ -11,11 +11,8 @@ var REST_URL = 'https://www.uguru.me';
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
-
-  // REST_URL = 'http://uguru.me';
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  REST_URL = 'http://192.168.0.115:5000'
 
 } else {
   img_base = '/static/'
@@ -38,7 +35,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   DeviceService, uTracker) {
 
   uTracker.init(tracker);
-
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -61,7 +57,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $ionicConfigProvider.views.transition('platform');
 
   $ionicConfigProvider.tabs.position("bottom");
-  $ionicConfigProvider.views.maxCache(20);  //Default is 10
+  $ionicConfigProvider.views.maxCache(10);  //Default is 10
   $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');

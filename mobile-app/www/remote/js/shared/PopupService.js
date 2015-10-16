@@ -60,6 +60,9 @@ function PopupService(Utilities, $timeout, DeviceService) {
 
 		var clickClose = function() {
 			popup.classList.remove('show');
+			closeIcon.removeEventListener('click', clickClose);
+			submitButton.removeEventListener('click', clickSubmit);
+			popup.removeEventListener('keyup', enterSubmit);
 		};
 		var clickSubmit = function() {
 			callback();
@@ -75,6 +78,7 @@ function PopupService(Utilities, $timeout, DeviceService) {
 		};
 
 		closeIcon.addEventListener('click', clickClose);
+		
 		if(typeof callback === 'function') {
 			submitButton.addEventListener('click', clickSubmit);
 			popup.addEventListener('keyup', enterSubmit);

@@ -642,7 +642,6 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.confirmPhonePopup = function() {
-
       PopupService.open('confirmPhone', callback);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();
@@ -651,7 +650,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.validateAndSendPhoneConfirmation = function() {
-
+      console.log("Confirm")
       //validate
       if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
 
@@ -696,9 +695,9 @@ angular.module('uguru.guru.controllers')
 
       } else {
         alert('Please enter valid phone number.');
+        
         return;
       }
-
     }
 
     $scope.resendPhoneConfirmation = function() {
