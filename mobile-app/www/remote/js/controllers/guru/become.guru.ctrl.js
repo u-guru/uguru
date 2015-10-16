@@ -3,6 +3,7 @@ angular.module('uguru.guru.controllers')
 .controller('BecomeGuruController', [
 
   //All imported packages go here
+  '$rootScope',
   '$scope',
   '$state',
   '$timeout',
@@ -23,7 +24,7 @@ angular.module('uguru.guru.controllers')
   'DeviceService',
   'Utilities',
   '$interval',
-  function($scope, $state, $timeout, $localstorage, $ionicPlatform,
+  function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
@@ -85,7 +86,6 @@ angular.module('uguru.guru.controllers')
 
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");
-        $scope.$emit('refreshCourses');
 
         var majorsList = document.querySelectorAll('#courses-list');
         //console.log("majorsList: " + majorsList);
@@ -97,6 +97,7 @@ angular.module('uguru.guru.controllers')
             var items = majorsList[0].querySelectorAll('ul li');
             //console.log("items.length: " + items.length);
             if (items.length === 0) {
+              $rootScope.$emit('refreshCourses');
               $scope.loader.showAmbig('Fetching courses...', 60000);
 
               var startLoader = $interval(function() {

@@ -213,7 +213,14 @@ angular.module('uguru.util.controllers')
     }
 
     if(!$scope.coursesSource) {
-      getCoursesBecomeGuru();  
+      if($scope.data.courses) {
+        console.log("setting coursesSource with root scope data");
+        // $scope.coursesSource = $scope.data.courses;
+      } else {
+        console.log("couldn't find course data thru root scope, so calling manually via CourseCtrl");
+        getCoursesBecomeGuru();    
+      }
+      
     }
 
     
@@ -225,8 +232,9 @@ angular.module('uguru.util.controllers')
       refreshCourses();
     });
 
-    $scope.$on('refreshCourses', function(event) {
+    $rootScope.$on('refreshCourses', function(event) {
       console.log("courses: heard refreshCourses event!");
+      getCoursesBecomeGuru();
       refreshCourses();
     });
 

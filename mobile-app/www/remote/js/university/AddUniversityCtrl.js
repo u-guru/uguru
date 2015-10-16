@@ -224,10 +224,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
             
 
-            $timeout(function() {
-              console.log("broadcasting schoolChange!");
-              $rootScope.$emit('schoolChange');  
-            }, 0);
+            // $timeout(function() {
+            //   console.log("broadcasting schoolChange!");
+            //   $rootScope.$emit('schoolChange');  
+            // }, 0);
             
         }
 
