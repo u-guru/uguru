@@ -1,5 +1,5 @@
 angular.module('uguru.directives')
-.directive('bindInput', function($timeout, Utilities, Major, Course, University) {
+.directive('bindInput', function($timeout, Utilities, Major, Course, University, $parse) {
 
 	function link($scope, elem, attr) {
 
@@ -9,14 +9,10 @@ angular.module('uguru.directives')
 			case 'majors':
 				model = 'search_text.major';
 
-				$scope.source = University.majors;
 				break;
 			case 'courses':
 				model = 'search_text.course';
-				// getSource = function() {
-				// 	return $scope.$parent.coursesSource;
-				// 	//return University.getTargetted()[0].popular_courses;
-				// }
+
 				break;
 		}
 
@@ -24,13 +20,19 @@ angular.module('uguru.directives')
 		$scope.$parent.$watch(
 			model,
 			function(newValue, oldValue) {
+				 console.log("its changed!");
 
 			  if(newValue.length < oldValue.length) {
 			    if(queryPromise) {
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+			      try {
+			      	$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);	
+			      } catch(err) {
+			      	console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+			      }
+			      
 			      queryPromise = null;
 			    }, 90);
 			  }
@@ -41,7 +43,12 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+		    		try{
+		    			$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
+		    		} catch(err) {
+		    			console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school): " + err);
+		    		}
+			      
 			      queryPromise = null;
 			    }, 50);
 			  }
@@ -51,7 +58,12 @@ angular.module('uguru.directives')
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
-			      $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+		    		try{
+	    				$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name', model);
+		    		} catch(err) {
+		    			console.log("fastmatcher slice error (most likely due to not being loaded yet): " + err);
+		    		}
+
 			      queryPromise = null;
 
 			    }, 50);

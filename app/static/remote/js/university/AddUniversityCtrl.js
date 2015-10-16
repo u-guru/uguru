@@ -2,6 +2,7 @@ angular.module('uguru.util.controllers', ['sharedServices'])
 .controller('AddUniversityCtrl', [
 
   //All imported packages go here
+  '$rootScope',
   '$scope',
   '$state',
   '$timeout',
@@ -19,11 +20,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'AccessService',
   '$ionicModal',
   'ModalService',
+  '$controller',
   AddUniversityCtrl]);
 
-function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
+function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
-  AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService) {
+  AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService,
+  $controller) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -160,6 +163,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
         if (confirm('Are you sure? Your current courses will be deactivated')) {
+
+          $timeout(function() {
+            console.log("broadcasting schoolChange!");
+            $rootScope.$emit('schoolChange');  
+          }, 0);
+
           uTracker.track(tracker, "University Changed", {
               "$University": university.name,
               "$University_Input": $scope.universityInput.value
@@ -177,7 +186,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       });
 
 
-      $scope.loader.showSuccess('Success', 750);
+      //$scope.loader.showSuccess('Success', 750);
 
       //timeout to have it be a background thread
       $timeout(function() {
@@ -212,6 +221,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
             modal.classList.add('ng-leave');
             modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
             $ionicSlideBoxDelegate.update();
+
+            
+
+            // $timeout(function() {
+            //   console.log("broadcasting schoolChange!");
+            //   $rootScope.$emit('schoolChange');  
+            // }, 0);
+            
         }
 
         } else {
@@ -219,13 +236,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           $ionicViewSwitcher.nextDirection('forward');
           $timeout(function() {
             console.log("cleaning up access/university slidebox");
+            var accessUni = document.querySelectorAll('#access-uni-slide')[0]
+            if(accessUni) accessUni.remove();
             $scope.$destroy;
-            document.querySelectorAll('#access-uni-slide')[0].remove();
           }, 1000);
 
         }
       }
-
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
       console.log("will this reach?");
 
@@ -368,5 +385,3 @@ angular.module('uguru.directives')
 
 
 });
-
-

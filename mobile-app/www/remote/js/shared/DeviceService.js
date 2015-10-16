@@ -29,6 +29,7 @@ function DeviceService($cordovaNgCardIO,
 
 		readyDevice: readyDevice,
 		getDevice: getDevice,
+    doesCordovaExist: doesCordovaExist,
     getPlatform: getPlatform,
     getModel: getModel,
     getVersion: getVersion,
@@ -109,9 +110,13 @@ function DeviceService($cordovaNgCardIO,
   // returns object
 	function getDevice() {
 		currentDevice = ionic.Platform.device();
-    console.log('DEVICE DETAILS', currentDevice.cordova);
     return currentDevice;
 	}
+
+  function doesCordovaExist() {
+    return Object.keys(ionic.Platform.device()).length > 0;
+  }
+
   // returns string value
   function getPlatform() {
     //console.log("getPlatform() returns: " + ionic.Platform.platform());
@@ -166,6 +171,7 @@ function DeviceService($cordovaNgCardIO,
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
+    console.log("Cordova File Plugin is ready: " + cordova.file);
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
@@ -198,10 +204,10 @@ function DeviceService($cordovaNgCardIO,
 		// }
     checkUpdates();
 	}
-	function checkUpdates() {
+	function checkUpdates(url) {
 
     // don't update on local
-    if (LOCAL) {
+    if (LOCAL && !url) {
       console.log("running local: skipping over checkUpdates");
 
         // hide it otherwise it never would on emulators
@@ -215,7 +221,8 @@ function DeviceService($cordovaNgCardIO,
     }
     console.log("did not detect local, checking for updates");
 
-
+      //set BASE_URL to prompted one
+      BASE_URL =  url || BASE_URL
 
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version

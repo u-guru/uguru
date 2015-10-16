@@ -46,8 +46,8 @@ angular.module('uguru.util.controllers')
 
       $scope.user.majors.splice(index,1)
       $scope.majorsSource.unshift(major);
-      
-      
+
+
 
       var confirmCallback = function() {
 
@@ -72,10 +72,10 @@ angular.module('uguru.util.controllers')
 
 
     $scope.fastSelectMajor = function() {
-      
+
       var majorsList = document.querySelectorAll('#major-list');
       var items = majorsList[0].querySelectorAll('ul li a');
-      
+
       console.log("items.length: " + items.length);
 
       if (items.length === 1) {
@@ -83,10 +83,10 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           angular.element(items[0]).triggerHandler('click');
         }, 0);
-        
+
       } else {
         console.log("ignoring since more than one majors in the source list");
-      } 
+      }
     }
 
 
@@ -100,7 +100,7 @@ angular.module('uguru.util.controllers')
           $scope.majorsSource.splice(i, 1);
         }
       }
-  
+
       $scope.user.majors.push(major);
 
       refreshMajors();
@@ -153,9 +153,9 @@ angular.module('uguru.util.controllers')
           refreshMajors();
 
         }, 400);
-        
 
-        
+
+
         $localstorage.setObject('universityMajors', majors.plain())
         refreshMajors();
 
@@ -165,9 +165,9 @@ angular.module('uguru.util.controllers')
     }
 
     if(!$scope.majorsSource) {
-      getMajorsBecomeGuru();  
+      getMajorsBecomeGuru();
     }
-    
+
 
     $rootScope.$on('schoolChange', function(event) {
       console.log("majors: heard schoolChange event!");
@@ -180,22 +180,17 @@ angular.module('uguru.util.controllers')
 
 
     function refreshMajors() {
-      // $timeout(function() {
-      //   $scope.search_text.major = '   ';
-      // },0);
-      // $timeout(function() {
-      //   $scope.search_text.major = '';
-      // },0);
+
 
       $timeout(function() {
         $scope.search_text.major += ' ';
         $scope.search_text.major = '';
         try {
-          $scope.majors = Utilities.nickMatcher('', $scope.majorsSource, 'name', 'major');  
+          $scope.majors = Utilities.nickMatcher('', $scope.majorsSource, 'name', 'major');
         } catch(err) {
           console.log("fastmatcher slice error (threw from inside MajorCtrl, probably due to trying to load too fast): " + err)
         }
-        
+
       }, 0)
 
 
@@ -203,7 +198,7 @@ angular.module('uguru.util.controllers')
         $scope.search_text.major += ' ';
         $scope.search_text.major = '';
         try {
-          $scope.majors = Utilities.nickMatcher('', $scope.majorsSource, 'name', 'major');  
+          $scope.majors = Utilities.nickMatcher('', $scope.majorsSource, 'name', 'major');
         } catch(err) {
           console.log("fastmatcher slice error (threw from inside MajorCtrl, probably due to trying to load too fast): " + err)
         }
@@ -212,7 +207,7 @@ angular.module('uguru.util.controllers')
       if (!$scope.$$phase) { // check if digest already in progress
         $scope.$apply(); // launch digest;
       }
-      
+
     }
 
 

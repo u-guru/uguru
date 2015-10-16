@@ -249,11 +249,19 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
           throw "Test error";
         }
   }).
-  // state('root.access', {
-  //       url: '/access',
-  //       templateUrl: BASE + 'templates/access.html',
-  //       controller: 'AccessController'
-  // }).
+  state('root.admin', {
+    url: '/admin',
+    template: '<h1> Yay youre admin -- redirecting...</h1>',
+    controller: function($scope, $state, $timeout) {
+      if ($scope.user) {
+        $scope.user.is_admin = true;
+        $scope.user.updateAttr('is_admin', $scope.user, true, null, $scope);
+        $timeout(function() {
+          $state.go('^.home');
+        }, 500);
+      }
+    }
+  }).
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'

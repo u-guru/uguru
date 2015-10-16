@@ -24,11 +24,14 @@ angular.module('uguru.util.controllers')
   '$ionicPlatform',
   'InAppBrowser',
   'Utilities',
+  'MapService',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, $ionicPlatform, InAppBrowser, Utilities) {
+  Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
+  MapService, $ionicSlideBoxDelegate) {
 
 
 // Implement a section for modals here
@@ -133,10 +136,7 @@ angular.module('uguru.util.controllers')
           // }
         } else {
           var email_input = document.getElementById('email-input')
-          // if (email_input) {
-          //   email_input.focus();
 
-          // }
         }
 
       }, 250)
@@ -326,7 +326,6 @@ angular.module('uguru.util.controllers')
               text: '<b>Save</b>',
               type: 'button-positive',
               onTap: function(e) {
-
                 if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 6) {
                   alert('Please fill in all fields');
                   return;
@@ -336,26 +335,34 @@ angular.module('uguru.util.controllers')
                   alert('Please create a password with at least 6 characters.');
                   return;
                 }
+                else
+                {
+                  if ($scope.data.new_password.length < 7)
+                  {
+                    alert('Please create a password longer than 6 characters');
+                    return;
+                  }
+                  else
+                  {
+                     var successCallback = function() {
+                      $scope.inputPopup.close();
+                      $timeout(function() {
+                        $scope.success.show(0, 1000, 'Saved!');
+                      }, 500);
+                      }
 
-                var successCallback = function() {
-                  $scope.inputPopup.close();
-                  $timeout(function() {
-                    $scope.success.show(0, 1000, 'Saved!');
-                  }, 500);
+                    var failureCallback = function() {
+                      alert('Incorrect Password - try again?');
+                    }
+
+                    var payload = {
+                      email : $scope.user.email,
+                      new_password : $scope.data.new_password,
+                      old_password: $scope.data.old_password
+                    }
+                     $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
+                  }
                 }
-
-                var failureCallback = function() {
-                  alert('Incorrect Password - try again?');
-                }
-
-                var payload = {
-                  email : $scope.user.email,
-                  new_password : $scope.data.new_password,
-                  old_password: $scope.data.old_password
-                }
-
-                $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
-
               }
             }
           ]
@@ -369,7 +376,7 @@ angular.module('uguru.util.controllers')
       $scope.data = {name:$scope.user.name};
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          template: '<input id="E2E-editName" value = {{data.name}} style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
           title: 'Change your try identity',
           subTitle: 'Try not to troll too hard',
           scope: $scope,
@@ -979,7 +986,7 @@ angular.module('uguru.util.controllers')
         $scope.facebookResponseReceived = true;
         $scope.loader.hide();
         $scope.error = error;
-        console.log('FB CONNECT FAILED...');
+        console.error('FB CONNECT FAILED...');
         console.log('Error from logging from facebook:' + JSON.stringify(error));
         $scope.success.show(0, 1500, 'Something weird happened.. Please contact support!');
         $cordovaFacebook.logout();
@@ -1216,16 +1223,13 @@ angular.module('uguru.util.controllers')
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.loginPayload.current_device_id = $scope.user.current_device.id;
       }
-
+      $scope.loader.showAmbig();
       User.login($scope.loginPayload).then(function(user) {
         //
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
-          if ($scope.user && $scope.user.university && $scope.user.university.id) {
-            MapService.initStudentHomeMap(user);
-          }
           $timeout(function() {
             if ($ionicSideMenuDelegate.isOpen()) {
               $ionicSideMenuDelegate.toggleRight();
@@ -1235,6 +1239,12 @@ angular.module('uguru.util.controllers')
 
           if ($scope.signupModal.isShown()) {
             $scope.signupModal.hide();
+            $timeout(function() {
+              if ($scope.user && $scope.user.university && $scope.user.university.id) {
+                MapService.initStudentHomeMap(user);
+              }
+              $ionicSlideBoxDelegate.update();
+            }, 250);
           }
 
 
@@ -1284,11 +1294,7 @@ angular.module('uguru.util.controllers')
               $scope.signupModal.hide();
           }
 
-          //let them see their profile information is synced
-          $timeout(function(){
-            $ionicSideMenuDelegate.toggleRight();
-            $scope.loader.hide();
-          }, 1000)
+
 
       },
       function(err){

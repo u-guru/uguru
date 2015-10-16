@@ -24,11 +24,14 @@ angular.module('uguru.util.controllers')
   '$ionicPlatform',
   'InAppBrowser',
   'Utilities',
+  'MapService',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, $ionicPlatform, InAppBrowser, Utilities) {
+  Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
+  MapService, $ionicSlideBoxDelegate) {
 
 
 // Implement a section for modals here
@@ -133,10 +136,7 @@ angular.module('uguru.util.controllers')
           // }
         } else {
           var email_input = document.getElementById('email-input')
-          // if (email_input) {
-          //   email_input.focus();
 
-          // }
         }
 
       }, 250)
@@ -341,7 +341,7 @@ angular.module('uguru.util.controllers')
                   {
                     alert('Please create a password longer than 6 characters');
                     return;
-                  } 
+                  }
                   else
                   {
                      var successCallback = function() {
@@ -1223,16 +1223,13 @@ angular.module('uguru.util.controllers')
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.loginPayload.current_device_id = $scope.user.current_device.id;
       }
-
+      $scope.loader.showAmbig();
       User.login($scope.loginPayload).then(function(user) {
         //
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
-          if ($scope.user && $scope.user.university && $scope.user.university.id) {
-            MapService.initStudentHomeMap(user);
-          }
           $timeout(function() {
             if ($ionicSideMenuDelegate.isOpen()) {
               $ionicSideMenuDelegate.toggleRight();
@@ -1242,6 +1239,12 @@ angular.module('uguru.util.controllers')
 
           if ($scope.signupModal.isShown()) {
             $scope.signupModal.hide();
+            $timeout(function() {
+              if ($scope.user && $scope.user.university && $scope.user.university.id) {
+                MapService.initStudentHomeMap(user);
+              }
+              $ionicSlideBoxDelegate.update();
+            }, 250);
           }
 
 
@@ -1291,12 +1294,7 @@ angular.module('uguru.util.controllers')
               $scope.signupModal.hide();
           }
 
-          //let them see their profile information is synced
-          // Hide For E2E used
-          // $timeout(function(){
-          //   $ionicSideMenuDelegate.toggleRight();
-          //   $scope.loader.hide();
-          // }, 1000)
+
 
       },
       function(err){

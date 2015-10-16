@@ -57,7 +57,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
       $scope.redeemRecentlyPressed = false;
-      if ($scope.platform.mobile) {
+      if (DeviceService.doesCordovaExist()) {
         cordova.plugins.Keyboard.close();
       }
 
@@ -65,12 +65,12 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $timeout(function() {
         $scope.loader.hide();
         $timeout(function() {
-          $scope.loader.showSuccess('Access Granted', 2500);
+          $scope.loader.showSuccess('Access Granted', 2000);
         }, 250)
         $timeout(function() {
           $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
         }, 1500);
-      }, 700)
+      }, 500)
 
     } else {
       $scope.loader.hide();

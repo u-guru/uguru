@@ -1,0 +1,25 @@
+<section class='full-xy'>
+    <header class="third flex-center" ng-if='!guruSkillsModal.isShown()'>
+        <h1>My Cards</h1>
+        <div class="header-nav">
+            <a class="header-nav-back" ng-click='previousSlide()'>
+                <svg viewBox="0 0 100 100">
+                    <path d="M68,86 L32,50 L68,14"></path>
+                </svg>
+                <h1>&nbsp;</h1>
+            </a>
+        </div>
+
+    </header>
+    <div class='main'>
+        <ul class="list flex-center-wrap absolute" style='overflow-y:scroll;'>
+          <li ng-repeat='card in user.cards'>
+
+              <div class='full-x card-wrapper-{{card.id}} p40xy'>
+              </div>
+              <form class='form-wrapper-{{card.id}}'></form>
+          </li>
+        </ul>
+        <button style='z-index:10'class='bg-campus semibold absolute full-x bottom-0' href="#/edit-card">Add Card</button>
+    </div>
+  </section>

@@ -1,5 +1,5 @@
 <section id="course" class="onboarding" u-after-enter='afterEnter()'>
-	<header class="third flex-center" ng-if='!guruCoursesModal.isShown() && !(profile && profile.edit_mode);'>
+	<header class="third flex-center ng-class:{'compressed-search':keyboardOpen}" ng-if='!guruCoursesModal.isShown() && !(profile && profile.edit_mode);'>
 		<h1 class="text-center">Add Courses</h1>
 		<div class="header-nav">
 			<a class="header-nav-back" ng-click='previousSlide()'>
@@ -17,10 +17,12 @@
 		</div>
 		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
 			<input type="search" id='course-input-1' placeholder="My courses are..." ng-model="search_text.course">
-			<a ng-if='search_text.course.length > 0' ng-click='clearSearchInput();' class="course-input-close side-icon">
-			    <i class='icon ion-close-circled'> </i>
-			</a>
+			<a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.course.length > 0'>
+                <i class='icon ion-close-circled'> </i>
+            </a>
+
 		</div>
+
 	</header>
 	<header ng-if='guruCoursesModal.isShown() || (profile && profile.edit_mode);' class='third flex-center'>
 		<div class="header-nav">
@@ -32,12 +34,11 @@
 		</div>
 		<h1 class="text-center">Add Courses</h1>
 		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-			<div>
 				<input type="search" id='course-input-2' placeholder="My courses are..." ng-model="search_text.course">
+
 				<a ng-if='search_text.course.length > 0' ng-click='clearSearchInput();' class="course-input-close side-icon">
 				    <i class='icon ion-close-circled'> </i>
 				</a>
-			</div>
 		</div>
 	</header>
 	<div id="courses-list" bind-input='courses' source='coursesSource' class="onboarding-list" >
