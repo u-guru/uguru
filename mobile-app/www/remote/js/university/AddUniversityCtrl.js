@@ -282,7 +282,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     $timeout(function() {
       $scope.location.getLocation($scope, $scope.universitiesSorted);
     }, 0);
-    //Geolocation.sortByDistance($scope.universitiesSorted);
+    Geolocation.sortByDistance($scope.universitiesSorted);
 
   }
 
