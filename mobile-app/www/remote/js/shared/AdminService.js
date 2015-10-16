@@ -7,10 +7,12 @@ angular.module('sharedServices')
     '$timeout',
     '$ionicSideMenuDelegate',
     '$state',
+    'DeviceService',
 	AdminService
 	]);
 
-function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $timeout, $ionicSideMenuDelegate, $state) {
+function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $timeout,
+    $ionicSideMenuDelegate, $state, DeviceService) {
 
 	var adminActionSheet;
     var closeAttachActionSheet;
