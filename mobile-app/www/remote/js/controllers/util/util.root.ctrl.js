@@ -484,7 +484,6 @@ angular.module('uguru.util.controllers')
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
 
-            ModalService.init();
             PopupService.init();
             DownloadService.testNetworkSpeed();
             DeviceService.readyDevice($scope);

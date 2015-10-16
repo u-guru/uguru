@@ -26,12 +26,13 @@ angular.module('uguru.util.controllers')
   'Utilities',
   'MapService',
   '$ionicSlideBoxDelegate',
+  'ModalService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
-  MapService, $ionicSlideBoxDelegate) {
+  MapService, $ionicSlideBoxDelegate, ModalService) {
 
 
 // Implement a section for modals here
@@ -1290,8 +1291,8 @@ angular.module('uguru.util.controllers')
             $scope.loader.showSuccess('Account Successfully Created', 2500);
           }
 
-          if ($scope.signupModal.isShown()) {
-              $scope.signupModal.hide();
+          if (ModalService.isOpen('signup')) {
+              ModalService.close('signup');
           }
 
 
