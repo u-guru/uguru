@@ -127,6 +127,7 @@ angular.module('uguru.util.controllers')
         $scope.user.is_admin = typeof LOCAL !== "undefined";
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
+        $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
         $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};

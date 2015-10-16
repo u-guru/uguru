@@ -56,16 +56,16 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
         //true by default, false if logout
         logout = true && logout;
 
-
+        var tempUni, tempUniId;
         if (!university) {
             $scope.user.university_id  = null;
             $scope.user.university = null;
         }   else {
-            tempUniValue = $scope.user.university_id;
+            tempUniId = $scope.user.university_id;
             tempUni = $scope.user.university;
         }
         $scope.loader.show();
-        $scope.user.User.clearAttr({}, $scope.user.id).then(function(user) {
+        $scope.user.clearAttr($scope.user, $scope.user.id).then(function(user) {
           $scope.loader.hide();
           $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
 
@@ -75,11 +75,12 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
             $scope.user.university = null;
           } else {
             $scope.user.university = tempUni;
-            $scope.user.university = tempUniValue;
+            $scope.user.university_id = tempUniId;
+            $scope.user.updateAttr('university_id', $scope.user, $scope.user.university, null, $scope);
           }
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
-          $state.go('^.university');
+          closeAttachActionSheet
         },
 
         function(err) {
@@ -92,6 +93,11 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
     }
 
     function handleAdminSheetButtonClick(scope, index) {
+        // hack
+        scope = adminScope;
+        console.log('adminScope', scope);
+        console.log('passedInScope', scope);
+
         switch(index){
                 case 0:
                     $timeout(function() {
@@ -103,8 +109,10 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
                     break;
 
                 case 1:
-                    if (!scope.user || !scope.user.id) {
+                    console.log(scope.user);
+                    if (scope.user && scope.user.id) {
                         resetCache(scope, true, false);
+                        $state.go('^.home');
                         return;
                     } else {
                         alert('Sorry! You need to be logged in to this');
@@ -112,17 +120,37 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
                     break;
 
                 case 2:
-                    if (!scope.user || !scope.user.id) {
-                        alert('Sorry! You need to be logged in to this');
+                    if (scope.user && scope.user.id) {
+                        resetCache(scope, false, false);
+                        scope.loader.show();
+                        $timeout(function() {
+                            $ionicSideMenuDelegate.toggleRight();
+                        }, 500);
+                        $timeout(function() {
+                            $state.go('^.home');
+                            scope.loader.hide();
+                        }, 1000)
                         return;
                     } else {
-                        resetCache(scope, false, false);
+                        alert('Sorry! You need to be logged in to this');
                         return;
                     }
                     break;
 
                 case 3:
-                    if (!scope.user || !scope.user.id) {
+                    if (scope.user || scope.user.id) {
+
+                        resetCache(scope, false, true);
+                        scope.loader.show();
+                        $timeout(function() {
+                            $ionicSideMenuDelegate.toggleRight();
+                        }, 500);
+                        $timeout(function() {
+                            $state.go('^.home');
+                            scope.loader.hide();
+                        }, 1000)
+
+
                         alert('Sorry! You need to be logged in to this');
                         return;
                     } else {
@@ -140,7 +168,7 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
                     break;
                 case 6:
                     url = prompt("Please enter URL to update from", "http://192.168.0.103:5000/app/")
-                    DeviceService.update(url);
+                    DeviceService.checkUpdates(url);
                     break;
 
         }
