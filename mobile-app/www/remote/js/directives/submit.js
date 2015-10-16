@@ -7,6 +7,7 @@ angular.module('uguru.directives')
 		var handler = $parse(attr.submit);
 
 		function exec(e) {
+
 			var key = e.keyCode || e.key || e.which;
 			if (key === 13) {
 
@@ -17,6 +18,8 @@ angular.module('uguru.directives')
 				handler($scope);
 				});
 			}
+			e.stopPropagation();
+			e.preventDefault();
 		}
 	}
 
