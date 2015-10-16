@@ -32,8 +32,6 @@ angular.module('uguru.guru.controllers')
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
-    $scope.search_text = '';
-
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
       for (var i = 0; i < guru_courses.length; i++) {
@@ -82,19 +80,19 @@ angular.module('uguru.guru.controllers')
         $ionicSideMenuDelegate.canDragContent(false);
       }
 
-      if (index === 1) {
+      else if (index === 1) {
 
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");
 
-        var majorsList = document.querySelectorAll('#courses-list');
+        var coursesList = document.querySelectorAll('#courses-list');
         //console.log("majorsList: " + majorsList);
         $timeout(function() {
 
-          if (Utilities.isElementInViewport(majorsList)) {
+          if (Utilities.isElementInViewport(coursesList)) {
 
             //console.log("majorsList is now inside!");
-            var items = majorsList[0].querySelectorAll('ul li');
+            var items = coursesList[0].querySelectorAll('ul li');
             //console.log("items.length: " + items.length);
             if (items.length === 0) {
               $rootScope.$emit('refreshCourses');
@@ -102,7 +100,7 @@ angular.module('uguru.guru.controllers')
 
               var startLoader = $interval(function() {
                 console.log("checking if courses are loaded...");
-                var items = majorsList[0].querySelectorAll('ul li');
+                var items = coursesList[0].querySelectorAll('ul li');
                 console.log("items.length: " + items.length);
                 if (items.length !== 0) {
                   console.log("stopping loader");
@@ -114,33 +112,21 @@ angular.module('uguru.guru.controllers')
               function stopLoader() {
                 $interval.cancel(startLoader);
               }
-
             }
           }
-
-
-        }, 400);
-
-
-        // var currentUniversityId = ($scope.user.university && $scope.user.university.id) || 2307;
-        // var addScope = function(courses) {
-        //   $scope.courses = courses;
-        // }
-
-        // $scope.courses = University.courses || $scope.getCoursesForUniversityId();
-
+        }, 1000);
       }
 
-      if (index === 2) {
+      else if (index === 2) {
 
         uTracker.track(tracker, 'Become Guru: Skills');
         $ionicSideMenuDelegate.canDragContent(true);
       }
 
-      if (index === 3) {
+      else if (index === 3) {
 
         uTracker.track(tracker, 'Become Guru: Photo');
-        $ionicSideMenuDelegate.canDragContent(true);
+        $ionicSideMenuDelegate.canDragContent(false);
       }
        else {
         $ionicSideMenuDelegate.canDragContent(true);
@@ -149,8 +135,14 @@ angular.module('uguru.guru.controllers')
 
     $scope.onDragLeft = function() {
 
-      $ionicSideMenuDelegate.canDragContent(false);
-      $ionicSlideBoxDelegate.enableSlide(false);
+      if ($scope.activeSlideIndex === 0) {
+        $ionicSideMenuDelegate.canDragContent(true);
+        $ionicSlideBoxDelegate.enableSlide(true);
+      }
+      if ($scope.activeSlideIndex === 3) {
+        $ionicSideMenuDelegate.canDragContent(false);
+        $ionicSlideBoxDelegate.enableSlide(false);
+      }
 
       return;
     }
@@ -161,15 +153,19 @@ angular.module('uguru.guru.controllers')
         $ionicSideMenuDelegate.canDragContent(false);
         $ionicSlideBoxDelegate.enableSlide(false);
       }
+      if ($scope.activeSlideIndex === 3) {
+        $ionicSideMenuDelegate.canDragContent(true);
+        $ionicSlideBoxDelegate.enableSlide(true);
+      }
 
       return;
     }
-    $scope.onDragLeft = function() {
+    // $scope.onDragLeft = function() {
 
-      if ($scope.activeSlideIndex === 0) {
-        $ionicSlideBoxDelegate.enableSlide(true);
-      }
-    }
+    //   if ($scope.activeSlideIndex === 0) {
+    //     $ionicSlideBoxDelegate.enableSlide(true);
+    //   }
+    // }
 
     $scope.goToUniversity = function() {
 
