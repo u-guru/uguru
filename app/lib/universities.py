@@ -14,13 +14,24 @@ def filterPrepared(universities_arr):
 
 
 ## Returns all universities that are prepared && have more than X emails
-def filterPreparedWithEmails(universities_arr):
-
+def filterPreparedWithEmails(universities_arr, num=1000):
+    print 
     def isPreparedWithEmails(u):
-        pass
+        return (u.courses_sanitized \
+            and u.departments_sanitized \
+            and u.banner_url \
+            and u.logo_url
+            and u.num_emails > 1000
+            )
+    sortedUniversities = sorted([u for u in universities_arr if isPreparedWithEmails(u)], key=lambda k:k.num_emails, reverse=True)
+    return sortedUniversities
 
-    return []
-
+def filterStudentsWithBalance(students_arr, num=100):
+    def hasBalanceGreaterThan(student, num):
+        return (student.total_earned > num)
+    
+    students = [student for student in students_arr if hasBalanceGreaterThan(student, num)]
+    return students
 
 ## Returns number of total courses @ university using
 ## num_courses fields
@@ -29,7 +40,7 @@ def getTotalCourses(universities_arr):
 
 ## Returns number of total departments @ university using
 ## num_courses fields
-def getTotalCourses(universities_arr):
+def getTotalDepartments(universities_arr):
     pass
 
 

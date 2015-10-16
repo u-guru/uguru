@@ -169,29 +169,37 @@ def admin_statistics_universities():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
 
-    from lib.universities import filterPrepared
+    from lib.universities import filterPrepared, filterPreparedWithEmails
 
     ## Queries database for all universities
     universities = University.query.all()
 
-
     prepared_universities = filterPrepared(universities)
+    prepared_with_emails_universities = filterPreparedWithEmails(universities)
 
     ## Together --> print list of prepared (top 50)
     ## Together --> hyperlink top (top 50)
 
     return render_template("admin/admin.stats.universities.html", \
         universities = universities, \
-        prepared_universities=prepared_universities)
+        prepared_universities=prepared_universities,
+        prepared_with_emails_universities=prepared_with_emails_universities)
+
 
 @app.route('/admin/stats/universities/<uni_id>')
 def admin_statistics_one_university(uni_id):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
 
-        ### Together
+    university = University.query.get(uni_id)
 
-    return render_template("Hello World")
+    from lib.universities import filterStudentsWithBalance
+
+    students_with_balances = filterStudentsWithBalance(university.students)
+    print len(students_with_balances)
+    print students_with_balances
+    return render_template("admin/admin.stats.one.university.html", \
+        university=university, s_balances=students_with_balances)
     # university = University.query.all()
 
 
@@ -213,8 +221,9 @@ def admin_instragram_results(query):
 
     return render_template("Hello World")
 
+# 
 @app.route('/admin/search/instagram')
-def admin_statistics_one_university(uni_id):
+def admin_instagram(uni_id):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
 
@@ -223,11 +232,52 @@ def admin_statistics_one_university(uni_id):
 
     return render_template("Hello World")
 
-
-@app.route('/admin/search/monoprice')
+#Step 1--> create a route 
+@app.route('/admin/search/monoprice/')
+# Step 2 --> ADd a function definition
 def admin_search_monoprice():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
+
+    #step 3 --> Import necessary wrapper
+    #copy your wrapper into app/lib/
+    from lib.monoprice_wrapper import queryMonoprice as query
+
+
+    # Step 4 --> call the results
+    query_str = "iPhone lightning cable"
+    results_dict = query(query_str)
+    from pprint import pprint
+    pprint(results_dict)
+    ## TODO GET the number of stars
+    ## TODO GET THE TITLE
+    ## TODO GET THE IMAGE_URL
+    ## 
+
+    results_arr = [ results_dict[key] for key in results_dict.keys() ]
+
+    # Step 5 --> render the dictionary in a presentable format
+    
+    return render_template("admin/admin.monoprice.query.html", query_results=results_arr, query_str=query_str)
+
+
+@app.route('/admin/search/monoprice/productid')
+def items_info_monoprice():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    from lib.monoprice_wrapper import queryMonoprice as query
+    from lib.monoprice_wrapper import AddItemToCart
+    query_str = "iPhone lightning cable"
+    results_dict = query(query_str)
+    from pprint import pprint
+    pprint(results_dict)
+    results_arr = [results_dict[key] for key in results_dict.keys()]
+    print results_arr
+
+  #  results_append = AddItemToCart('1',results_arr['product_id'])
+    return render_template("admin/admin.monoprice.additem.html")
+
+
 
 @app.route('/admin/localytics')
 def admin_localytics():

@@ -56,8 +56,8 @@
             <div class="col-lg-6 col-md-6 col-xs-12">
               <div class="small-box bg-gray">
                 <div class="inner">
-                  <h3>{{total_courses|length}}</h3>
-                  <p>Total # Courses</p>
+                  <h3>{{prepared_with_emails_universities|length}}</h3>
+                  <p>Total # Universities with Emails < 1000</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-document"></i>
@@ -91,21 +91,25 @@
                     <table class="table no-margin">
                       <thead>
                         <tr>
-                          <th >US News</th>
-                          <th style='text-align:center;'>University</th>
-                          <th >Population</th>
+                          <th >ID</th>
+                          <th >University Name</th>
+                          <th style='text-align:center;'># Emails</th>
+                          <th >Ranking</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {% for university in target_universities %}
+                        {% for university in prepared_with_emails_universities %}
                         <tr>
                           <td>
-                            {{university['rank']}}
+                            {{university.id}}
                           </td>
-                          <td><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.name}}&nbsp;&nbsp;
-                            <a href='/admin/flickr/{{university.id}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
+                          <td>
+                            {{university.name}}
                           </td>
-                          <td>{{university['population']}}</td>
+                          <td><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.num_emails}}&nbsp;&nbsp;
+                            <a href='/admin/stats/universities/{{university.id}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
+                          </td>
+                          <td>{{university.us_news_ranking}}</td>
                         </tr>
                         {% endfor %}
                       </tbody>
