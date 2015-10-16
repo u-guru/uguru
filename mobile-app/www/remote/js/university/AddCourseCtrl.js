@@ -81,19 +81,8 @@ angular.module('uguru.util.controllers')
 
       $scope.user.guru_courses.splice(index, 1)
       $scope.coursesSource.unshift(course);
-<<<<<<< HEAD
-
-      $timeout(function() {
-        $scope.search_text.course = "   ";
-      },0);
-
-      $timeout(function() {
-        $scope.search_text.course = "";
-      }, 10);
-=======
 
       refreshCourses();
->>>>>>> 9006447aaf5af714b96100f3514f3056e3d8794f
 
 
       var confirmCallback = function() {
@@ -183,17 +172,7 @@ angular.module('uguru.util.controllers')
     }
 
 
-<<<<<<< HEAD
-    if (!$scope.user.guru_courses) {
-      $scope.user.guru_courses = [];
-    }
 
-
-    //$scope.studentCourseInput = document.getElementById('student-course-input');
-=======
-    // var coursesList = document.querySelectorAll('#courses-list');
-    // Utilities.isElementInViewport()
->>>>>>> 9006447aaf5af714b96100f3514f3056e3d8794f
 
 
     var getCoursesBecomeGuru = function() {
@@ -204,12 +183,7 @@ angular.module('uguru.util.controllers')
 
         University.courses = courses;
         $scope.coursesSource = courses.plain().slice();
-<<<<<<< HEAD
-        $scope.courses = courses.plain().slice();
 
-        $localstorage.setObject('universityCourses', courses.plain())
-=======
-        //$scope.courses = courses.plain().slice();
 
         $timeout(function() {
           for(var j = 0; j < $scope.user.guru_courses.length; j++) {
@@ -224,7 +198,6 @@ angular.module('uguru.util.controllers')
 
         }, 400);
 
->>>>>>> 9006447aaf5af714b96100f3514f3056e3d8794f
 
         $localstorage.setObject('universityCourses', courses.plain());
         refreshCourses();
@@ -265,14 +238,9 @@ angular.module('uguru.util.controllers')
     });
 
 
-<<<<<<< HEAD
 
-=======
     function refreshCourses() {
-      // $timeout(function() {
-      //   $scope.search_text.course = '   ';
-      //   $scope.search_text.course = '';
-      // },0);
+
 
       $timeout(function() {
         $scope.search_text.course += ' ';
@@ -285,23 +253,7 @@ angular.module('uguru.util.controllers')
 
       }, 0)
 
-      // $timeout(function() {
-      //   for(var j = 0; j < $scope.user.guru_courses.length; j++) {
-      //     for(var k = 0; k < $scope.coursesSource.length; k++) {
-      //       if($scope.coursesSource[k].id === $scope.user.guru_courses[j].id) {
-      //         console.log("Deleting duplicate course found.");
-      //           $scope.coursesSource.splice(k, 1);
-      //       }
-      //     }
-      //   }
-      //   refreshCourses();
-
-      // }, 400);
-
-
     }
-
->>>>>>> 9006447aaf5af714b96100f3514f3056e3d8794f
 
     $scope.afterEnter = function() {
       console.log("afterEnter works!");

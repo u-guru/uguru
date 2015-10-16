@@ -29,7 +29,7 @@ function PopupService(Utilities, $timeout, DeviceService) {
 		 };
 
 	}, 1000);
-	
+
 
 	return {
 		init: init,
@@ -53,18 +53,19 @@ function PopupService(Utilities, $timeout, DeviceService) {
 		attachListeners(popup, callback);
 	}
 
+	var clickClose, clickSubmit, closeIcon, submitButton, enterSubmit
 	function attachListeners(popup, callback) {
-		
+
 		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];
 		var submitButton = popup.querySelectorAll('button.submit')[0];
 
-		var clickClose = function() {
+		clickClose = function() {
 			popup.classList.remove('show');
 			closeIcon.removeEventListener('click', clickClose);
 			submitButton.removeEventListener('click', clickSubmit);
 			popup.removeEventListener('keyup', enterSubmit);
 		};
-		var clickSubmit = function() {
+		clickSubmit = function() {
 			callback();
 		};
 		var enterSubmit = function(e) {
@@ -78,7 +79,7 @@ function PopupService(Utilities, $timeout, DeviceService) {
 		};
 
 		closeIcon.addEventListener('click', clickClose);
-		
+
 		if(typeof callback === 'function') {
 			submitButton.addEventListener('click', clickSubmit);
 			popup.addEventListener('keyup', enterSubmit);
@@ -99,7 +100,7 @@ function PopupService(Utilities, $timeout, DeviceService) {
 		popup.removeEventListener('keyup', enterSubmit);
 
 	}
-	
+
 
 
 

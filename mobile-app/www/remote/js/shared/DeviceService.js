@@ -29,6 +29,7 @@ function DeviceService($cordovaNgCardIO,
 
 		readyDevice: readyDevice,
 		getDevice: getDevice,
+    doesCordovaExist: doesCordovaExist,
     getPlatform: getPlatform,
     getModel: getModel,
     getVersion: getVersion,
@@ -109,9 +110,13 @@ function DeviceService($cordovaNgCardIO,
   // returns object
 	function getDevice() {
 		currentDevice = ionic.Platform.device();
-    console.log('DEVICE DETAILS', currentDevice.cordova);
     return currentDevice;
 	}
+
+  function doesCordovaExist() {
+    return Object.keys(ionic.Platform.device()).length > 0;
+  }
+
   // returns string value
   function getPlatform() {
     //console.log("getPlatform() returns: " + ionic.Platform.platform());

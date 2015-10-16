@@ -54,15 +54,10 @@
                 </svg>
             </li>
 
-<<<<<<< HEAD
-            <li class="major-item major-business" ng-repeat='major in majors | limitTo: limit'>
-                <a ng-click='majorSelected(major, $index)'>
-=======
+
             <li class="major-item major-business" ng-repeat='major in majors | limitTo: 10 track by major.id'>
 
                 <a ng-click='majorSelected(major)'>
->>>>>>> 9006447aaf5af714b96100f3514f3056e3d8794f
-                    <!-- {{major.universalName}}</a> -->
                 {{major.title || major.name || major.abbr || major.code}}</a>
             </li>
         </ul>

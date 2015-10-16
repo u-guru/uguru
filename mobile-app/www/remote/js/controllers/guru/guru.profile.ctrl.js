@@ -23,10 +23,13 @@ angular.module('uguru.guru.controllers')
   'RankingService',
   'TipService',
   'Category',
+  '$ionicSlideBoxDelegate',
+  'DeviceService',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
-  RankingService, TipService, Category) {
+  RankingService, TipService, Category, $ionicSlideBoxDelegate,
+  DeviceService) {
 
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
@@ -240,7 +243,9 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.launchContactGuruModal = function() {
-      $scope.contactGuruModal.show();
+      if ($scope.profile.edit_mode) {
+        $scope.contactGuruModal.show();
+      }
     }
 
      $scope.launchAddTutoringPlatformsModal = function(experience) {
@@ -510,7 +515,7 @@ angular.module('uguru.guru.controllers')
     $scope.takeProfilePhoto = function(index) {
 
 
-      if ($scope.platform.mobile) {
+      if (DeviceService.doesCordovaExist() && $scope.platform.mobile) {
         $scope.root.vars.profile_url_changed = true;
         Camera.takePicture($scope, index, true);
       } else {
@@ -695,7 +700,7 @@ angular.module('uguru.guru.controllers')
 
       } else {
         alert('Please enter valid phone number.');
-        
+
         return;
       }
     }
@@ -725,11 +730,14 @@ angular.module('uguru.guru.controllers')
     }
 
 
+    $scope.$on('$ionicView.beforeEnter', function() {
 
+
+    })
 
 
     $scope.$on('$ionicView.enter', function() {
-
+          $ionicSlideBoxDelegate.update();
           $scope.refreshTipsAndRanking($scope.user);
 
           $timeout(function() {
@@ -743,10 +751,12 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
-
+      $ionicSlideBoxDelegate.update();
       $timeout(function() {
         $scope.initModalsAfterEnter();
       }, 500)
+
+
 
     });
 

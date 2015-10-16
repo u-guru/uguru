@@ -34,7 +34,7 @@ function Geolocation($rootScope, $timeout, University,
   return deviceGPS;
 
   function enableGPS(device) {
-    if (device==='ios') {
+    if (DeviceService.doesCordovaExist() && isIOSDevice()) {
       iOSService.enableGPS();
     }
     else {
@@ -49,8 +49,9 @@ function Geolocation($rootScope, $timeout, University,
       // list = list;
     }
 
+    // @nicknaky we should have this within the {{Platform}}Service.js (i.e. ios)
     var posOptions = {
-      timeout: 3000,
+      timeout: 7000,
       enableHighAccuracy: false, //may cause high errors if true
     }
     return navigator.geolocation.getCurrentPosition(geoSuccess, geoError, posOptions);
@@ -83,6 +84,7 @@ function Geolocation($rootScope, $timeout, University,
         scope.loader.hide();
         switch(error.code) {
           case 1: // PERMISSION_DENIED
+
             alert('Sorry! Please enable your GPS settings.');
             settings.isActive = false;
             settings.isAllowed = false;
@@ -100,7 +102,7 @@ function Geolocation($rootScope, $timeout, University,
   }
 
   function sortByLocation(userLat, userLong, list) {
-    
+
     for(var i=0; i<list.length; i++) {
 
       list[i].rawMiles = Utilities.getDistanceInMiles(

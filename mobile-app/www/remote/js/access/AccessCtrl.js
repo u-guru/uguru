@@ -57,7 +57,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
       $scope.redeemRecentlyPressed = false;
-      if ($scope.platform.mobile) {
+      if (DeviceService.doesCordovaExist()) {
         cordova.plugins.Keyboard.close();
       }
 

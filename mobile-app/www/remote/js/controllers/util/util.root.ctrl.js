@@ -168,9 +168,8 @@ angular.module('uguru.util.controllers')
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
-                // $localstorage.setObject('categories', Category.categories);
-                //console.log('categories loaded', Category.categories);
 
+                $scope.categories = Category.categories.slice();
                 callback && callback(Category.categories);
 
             },
@@ -179,15 +178,10 @@ angular.module('uguru.util.controllers')
             })
         }
 
-        // Category.mapActiveToSubcategories(Category.categories, $scope.user);
-        // $localstorage.setObject('categories', Category.categories);
-
         $scope.getCoursesForUniversityId = function(uni_id) {
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
                 University.courses = courses.plain();
-                //NICKTODO --> set this localstorage or static file?
-                // $localstorage.setObject('universityCourses', courses.plain())
                 console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
 
             },
@@ -197,21 +191,6 @@ angular.module('uguru.util.controllers')
         };
 
 
-        // $scope.getCoursesForUniversityId = function(uni_id, callback) {
-        //     console.log('retrieving courses for university');
-        //     University.getCourses(uni_id).then(function(courses){
-        //         $scope.data.courses = courses.plain();
-
-        //         University.courses = courses.plain();
-        //         if (callback) {
-        //             callback(courses);
-        //         }
-        //         console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id);
-        //     },
-        //     function() {
-        //         console.log('Universities NOT successfully loaded');
-        //     })
-        // }
 
         if ($scope.user.university_id && !(University.majors && University.majors.length)) {
             console.log('University courses not local, requesting now..');
