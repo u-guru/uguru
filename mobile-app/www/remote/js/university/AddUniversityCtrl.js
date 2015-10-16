@@ -243,7 +243,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
         }
       }
-
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
       console.log("will this reach?");
 
@@ -386,5 +385,3 @@ angular.module('uguru.directives')
 
 
 });
-
-

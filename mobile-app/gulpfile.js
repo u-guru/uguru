@@ -22,10 +22,8 @@ var rename = require('gulp-rename');
 var gutil = require('gulp-util');
 var karma = require('karma').server;
 var preprocess = require('gulp-preprocess');
-
 var replace = require('gulp-replace-task');
 var fs = require('fs');
-
 /**
  * Parse arguments
  */

@@ -11,8 +11,6 @@ var REST_URL = 'https://www.uguru.me';
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
-
-  // REST_URL = 'http://uguru.me';
   BASE = 'remote/';
   BASE_URL = _ipaddress;
 
@@ -37,7 +35,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   DeviceService, uTracker) {
 
   uTracker.init(tracker);
-
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,

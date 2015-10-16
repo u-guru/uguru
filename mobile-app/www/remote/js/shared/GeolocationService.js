@@ -96,7 +96,6 @@ function Geolocation($rootScope, $timeout, University,
             settings.isActive = false;
             break;
         }
-
     }
   }
 
