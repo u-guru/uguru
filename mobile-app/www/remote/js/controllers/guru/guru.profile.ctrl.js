@@ -407,6 +407,16 @@ angular.module('uguru.guru.controllers')
       }, 250)
     }
 
+    $scope.closeContactGuruModal = function()
+    {
+        $scope.contactGuruModal.hide();
+         $ionicSlideBoxDelegate.update();
+    };
+
+
+
+
+
     $scope.connectWithFacebook = function() {
       $scope.loader.show();
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
