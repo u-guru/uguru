@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate', 'Category', 'RankingService',
+    '$ionicSideMenuDelegate', 'Category', 'RankingService', 'AdminService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category, RankingService) {
+        $ionicSideMenuDelegate, Category, RankingService, AdminService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -500,7 +500,13 @@ angular.module('uguru.user', [])
         $scope.user.current_hourly = user.current_hourly;
         $scope.user.previous_proposals = user.previous_proposals;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
+
         $scope.user.is_admin = user.is_admin;
+        if (!$scope.user.is_admin) {
+            AdminService = {};
+        }
+
+
         $scope.user.active_questions = user.active_questions;
         $scope.user.active_tasks = user.active_tasks;
         $scope.user.guru_skills = user.guru_skills;
@@ -621,7 +627,8 @@ angular.module('uguru.user', [])
             'all_positions', 'active_sessions', 'student_sessions',
             'guru_sessions', 'conversations', 'devices', 'gurus',
             'cards', 'requests', 'student_ratings', 'guru_ratings',
-            'student_courses', 'cashout_cards'
+            'student_courses', 'cashout_cards', 'guru_skills', 'guru_courses',
+            'guru_languages', 'student_courses', 'departments'
         ];
         for (var index = 0; index < properties.length; index++) {
             var property = properties[index];
@@ -1410,7 +1417,7 @@ angular.module('uguru.user', [])
         },
         clearAttrUser: function(payload, $scope) {
 
-            User.clearAttr(payload, user.id).then(function(user) {
+            User.clearAttr(payload, $scope.user.id).then(function(user) {
 
                 var processed_user = processResults(user.plain());
 

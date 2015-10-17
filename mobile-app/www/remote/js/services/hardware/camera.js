@@ -30,6 +30,7 @@ function Camera($timeout, DeviceService) {
     var cameraOptions = {
       quality: 65,
       destinationType: 0,
+      mediaType: 0, // Picture: 0, Video: 1, Both: 2
       sourceType: index,
       allowEdit: false,
       encodingType: 0, // JEPG: 0, PNG: 1
@@ -39,9 +40,18 @@ function Camera($timeout, DeviceService) {
       saveToPhotoAlbum: false
     };
 
+    console.log("inside Camera: takePictre();")
     navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 
     function cameraSuccess(imageData) {
+
+      console.log("imageData: " + imageData);
+      console.log("blah blah blah");
+      console.log("blah blah blah");
+      console.log("blah blah blah");
+      console.log("blah blah blah");
+      console.log("blah blah blah");
+      console.log("blah blah blah");
 
       if (elemId) {
         var image = document.getElementById(elemId);
@@ -72,7 +82,7 @@ function Camera($timeout, DeviceService) {
       }, 500)
     }
 
-    function cameraError(message) {
+    function cameraError(err) {
       console.log(err);
       if ('No camera available' === err) {
         alert('Sorry! It appears that there is no Camera or Photo Library Accessible. Please contact support.');

@@ -30,18 +30,36 @@ angular.module('uguru.util.controllers')
     'Category',
     'DownloadService',
     'PopupService',
+    'KeyboardService',
+    'ModalService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
         $cordovaSplashscreen, $timeout, Geolocation,
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
-         Utilities, Category, DownloadService, PopupService) {
+         Utilities, Category, DownloadService, PopupService,
+         KeyboardService, ModalService) {
 
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
 
+        window.addEventListener('native.keyboardshow', keyboardShowHandler);
+        function keyboardShowHandler(e){
+            console.log('native hardware keyboard is shown');
+            KeyboardService.setDeviceKeyboardState(true);
+            $scope.keyboardOpen = true;
+        }
+
+
+        window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
+        function keyboardHideHandler(e){
+            console.log('native hardware keyboard is hidden');
+            KeyboardService.setDeviceKeyboardState(false);
+            $scope.keyboardOpen = false;
+        }
 
 
         // if it exists, always show it until we've either updated, or checked for updates recently
@@ -107,9 +125,12 @@ angular.module('uguru.util.controllers')
 
         //how to make platform ready...
         $scope.user = User.getLocal();
+        $scope.user.is_admin = typeof LOCAL !== "undefined";
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
+        $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
+        $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
         $scope.data = {};
@@ -149,9 +170,8 @@ angular.module('uguru.util.controllers')
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
-                // $localstorage.setObject('categories', Category.categories);
-                //console.log('categories loaded', Category.categories);
 
+                $scope.categories = Category.categories.slice();
                 callback && callback(Category.categories);
 
             },
@@ -160,24 +180,19 @@ angular.module('uguru.util.controllers')
             })
         }
 
-        // Category.mapActiveToSubcategories(Category.categories, $scope.user);
-        // $localstorage.setObject('categories', Category.categories);
-
-        $scope.getCoursesForUniversityId = function(uni_id, callback) {
-            console.log('retrieving courses for university');
+        $scope.getCoursesForUniversityId = function(uni_id) {
             University.getCourses(uni_id).then(function(courses){
                 $scope.data.courses = courses.plain();
-
                 University.courses = courses.plain();
-                if (callback) {
-                    callback(courses);
-                }
-                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id);
+                console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
+
             },
             function() {
                 console.log('Universities NOT successfully loaded');
             })
-        }
+        };
+
+
 
         if ($scope.user.university_id && !(University.majors && University.majors.length)) {
             console.log('University courses not local, requesting now..');
@@ -206,20 +221,6 @@ angular.module('uguru.util.controllers')
             console.log(Category.categories.length, 'categories loaded');
         }
 
-
-        $scope.getCoursesForUniversityId = function(uni_id) {
-            University.getCourses(uni_id).then(function(courses){
-                $scope.data.courses = courses.plain();
-                University.courses = courses.plain();
-                //NICKTODO --> set this localstorage or static file?
-                // $localstorage.setObject('universityCourses', courses.plain())
-                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
-
-            },
-            function() {
-                console.log('Universities NOT successfully loaded');
-            })
-        }
 
         $scope.rootUser = User;
         $scope.root = RootService;
