@@ -51,8 +51,9 @@ function Geolocation($rootScope, $timeout, University,
 
     // @nicknaky we should have this within the {{Platform}}Service.js (i.e. ios)
     var posOptions = {
-      timeout: 7000,
+      timeout: 30000, // 30 seconds, if they 
       enableHighAccuracy: false, //may cause high errors if true
+      maximumAge: 3600000 // Accepts a cached position as long as it was within 1 hour
     }
     return navigator.geolocation.getCurrentPosition(geoSuccess, geoError, posOptions);
 
@@ -80,12 +81,12 @@ function Geolocation($rootScope, $timeout, University,
       //$window.localStorage['nearest-universities'] = JSON.stringify(scope.universities);
     }
     function geoError(error) {
-        console.log("geolocationError: " + error);
+        console.log("geolocationError: " + error.code);
         scope.loader.hide();
         switch(error.code) {
           case 1: // PERMISSION_DENIED
 
-            alert('Sorry! Please enable your GPS settings.');
+            alert('Sorry! Please enable GPS permissions from your settings.');
             settings.isActive = false;
             settings.isAllowed = false;
             break;
@@ -112,35 +113,8 @@ function Geolocation($rootScope, $timeout, University,
       list[i].miles = Utilities.numberWithCommas(list[i].rawMiles);
 
     }
-    // ASK HURSHAL ABOUT THIS
-    // for(var i=0; i<list.length; i++) {
-    //   var item = list[i];
-    //   item.rawMiles = Utilities.getDistanceInMiles(
-    //                                 userLat, userLong,
-    //                                 item.latitude, item.longitude);
 
-    //   item.miles = numberFormatter.format(Math.round(item.rawMiles));
-    // }
-
-
-    // return list.sort(compareDistance);
-
-    // $rootScope.$apply(function() {
-     return list.sort(compareDistance);
-    // });
-
-    // try{
-    //   console.log("try block");
-    //   $rootScope.$apply(function() {
-    //    return list.sort(compareDistance);
-    //   });
-    // } finally {
-    //   console.log("finally block");
-    //   $rootScope.$apply(function() {
-    //    return list.sort(compareDistance);
-    //   });
-    // }
-
+    return list.sort(compareDistance);
   }
 
   function compareDistance(a, b) {

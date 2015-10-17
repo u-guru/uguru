@@ -11,7 +11,7 @@ function UniversityFilterCtrl($scope, UniversityMatcher) {
 
 	$scope.isExcludedByFilter = applySearchFilter();
 	$scope.$watch(
-	  "universityInput.value", 
+	  "search_text.university", 
 	  function(newValue, oldValue) {
 	  	//console.log("watching changes");
 	    if (newValue === oldValue) {
@@ -23,7 +23,7 @@ function UniversityFilterCtrl($scope, UniversityMatcher) {
 	);
 	function applySearchFilter() {
 		
-		var filter = $scope.universityInput.value.toLowerCase();
+		var filter = $scope.search_text.university.toLowerCase();
 		var check = null;
 
 		if(filter.length === 0) {
@@ -53,7 +53,7 @@ function UniversityFilterCtrl($scope, UniversityMatcher) {
 
 	// $scope.isExcludedByFilter = applySearchFilter();
 	// $scope.$watch(
-	//   "universityInput.value", 
+	//   "search_text.university", 
 	//   function(newValue, oldValue) {
 	//   	//console.log("watching changes");
 	//     if (newValue === oldValue) {
@@ -63,7 +63,7 @@ function UniversityFilterCtrl($scope, UniversityMatcher) {
 	//   }
 	// );
 	// function applySearchFilter() {
-	//   var filter = $scope.universityInput.value.toLowerCase();
+	//   var filter = $scope.search_text.university.toLowerCase();
 	//   var name = $scope.university.name.toLowerCase();
 	//   var isSubstring = ( name.indexOf(filter) !== -1 );
 
