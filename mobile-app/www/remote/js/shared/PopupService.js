@@ -22,10 +22,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 
 	function open(popupName, callback) {
 		$timeout(function() {
-
 			var popup = controller[popupName];
-			console.log("source: " + source);
-			console.log(source);
 			cta(source, popup, {duration:0},
 				function(modal) {
 					modal.classList.add('show');
@@ -40,6 +37,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 	function attachListeners(popup, callback) {
 
 		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];
+		var submitClose = popup.querySelectorAll('button.submit-close')[0];
 		var submitButton = popup.querySelectorAll('button.submit')[0];
 
 		clickClose = function() {
@@ -47,6 +45,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			closeIcon.removeEventListener('click', clickClose);
 			// Wrapping this in a try block since some popups won't have these
 			try {
+				submitClose.removeEventListener('click', clickClose);
 				submitButton.removeEventListener('click', clickSubmit);
 				popup.removeEventListener('keyup', enterSubmit);	
 			} catch(err) {
@@ -68,6 +67,9 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		};
 
 		closeIcon.addEventListener('click', clickClose);
+		if(submitClose !== undefined) {
+			submitClose.addEventListener('click', clickClose);
+		}
 
 		if(typeof callback === 'function') {
 			submitButton.addEventListener('click', clickSubmit);
@@ -86,6 +88,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		closeIcon.removeEventListener('click', clickClose);
 		// Wrapping this in a try block since some popups won't have these
 		try {
+			submitClose.removeEventListener('click', clickClose);
 			submitButton.removeEventListener('click', clickSubmit);
 			popup.removeEventListener('keyup', enterSubmit);	
 		} catch(err) {
