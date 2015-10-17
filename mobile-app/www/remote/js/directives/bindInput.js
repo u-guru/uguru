@@ -21,8 +21,17 @@ angular.module('uguru.directives')
 		$scope.$parent.$watch(
 			refreshModel,
 			function(newValue, oldValue) {
-
 				
+				if(newValue === 'update') {
+					console.log("heard something from " + refreshModel + "!");
+					$timeout(function() {
+						try {
+							$scope.listScope = Utilities.nickMatcher('', $scope.source, 'name', model);	
+						} catch(err) {
+							console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+						}
+					}, 0);
+				}
 
 			}
 		);

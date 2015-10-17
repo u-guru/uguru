@@ -172,13 +172,16 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       //$scope.loader.showSuccess('Success', 750);
 
-      //timeout to have it be a background thread
+      University.majors = [];
+      University.courses = [];
       $timeout(function() {
 
         $scope.getCoursesForUniversityId(university.id);
         $scope.getMajorsForUniversityId(university.id);
 
-      }, 100);
+      }, 50);
+
+      University.selectedID = university.id;
 
       $scope.user.university_id = university.id;
       $scope.user.university = university;

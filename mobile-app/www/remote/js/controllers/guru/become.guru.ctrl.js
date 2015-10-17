@@ -96,7 +96,7 @@ angular.module('uguru.guru.controllers')
               }
             }
           }
-        }, 1500)
+        }, 500)
 
         $ionicSideMenuDelegate.canDragContent(false);
       }
@@ -134,7 +134,7 @@ angular.module('uguru.guru.controllers')
               }
             }
           }
-        }, 1000);
+        }, 500);
       }
 
       else if (index === 2) {

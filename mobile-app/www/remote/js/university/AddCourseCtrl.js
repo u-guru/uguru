@@ -29,6 +29,20 @@ angular.module('uguru.util.controllers')
     $scope.search_text = {
       course: ''
     };
+
+    $scope.refresh = {
+      courses: ''
+    };
+
+    function updateDOM() {
+      $timeout(function() {
+        $scope.refresh.courses = 'update';  
+      }, 0);
+      $timeout(function() {
+        $scope.refresh.courses = '';  
+      }, 0);
+    }
+
     $scope.alwaysTrue = true;
     $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
@@ -82,7 +96,8 @@ angular.module('uguru.util.controllers')
       $scope.user.guru_courses.splice(index, 1)
       $scope.coursesSource.unshift(course);
 
-      refreshCourses();
+      updateDOM();
+      
 
 
       var confirmCallback = function() {
@@ -147,7 +162,10 @@ angular.module('uguru.util.controllers')
         }
       }
       $scope.user.guru_courses.push(course);
-      refreshCourses();
+
+      $scope.search_text.course = '';
+      updateDOM();
+      
 
       uTracker.track(tracker, 'Course Guru Added', {
         '$Course': course.name
@@ -171,19 +189,13 @@ angular.module('uguru.util.controllers')
       }
     }
 
-
-
-
-
     var getCoursesBecomeGuru = function() {
 
       $scope.search_text.course = '';
-      //$scope.loader.showAmbig("Fetching courses...", 60000);
-      University.getCourses($scope.user.university_id).then(function(courses) {
 
-        University.courses = courses;
-        $scope.coursesSource = courses.plain().slice();
-
+      if (University.courses.length > 0) {
+        
+        $scope.coursesSource = University.courses.slice();
 
         $timeout(function() {
           for(var j = 0; j < $scope.user.guru_courses.length; j++) {
@@ -194,13 +206,38 @@ angular.module('uguru.util.controllers')
               }
             }
           }
-          refreshCourses();
+          updateDOM();
+
+        }, 400);
+
+        return;
+      }
+
+
+      //$scope.loader.showAmbig("Fetching courses...", 60000);
+      University.getCourses($scope.user.university_id).then(function(courses) {
+
+        University.courses = courses;
+        $scope.coursesSource = courses.plain().slice();
+
+        $timeout(function() {
+          for(var j = 0; j < $scope.user.guru_courses.length; j++) {
+            for(var k = 0; k < $scope.coursesSource.length; k++) {
+              if($scope.coursesSource[k].id === $scope.user.guru_courses[j].id) {
+                console.log("Deleting duplicate course found.");
+                  $scope.coursesSource.splice(k, 1);
+              }
+            }
+          }
+          updateDOM();
+          
 
         }, 400);
 
 
         $localstorage.setObject('universityCourses', courses.plain());
-        refreshCourses();
+        
+
         //$scope.loader.hide();
 
         console.log("$scope.coursesSources.length: " + $scope.coursesSource.length);
@@ -228,35 +265,17 @@ angular.module('uguru.util.controllers')
       console.log("courses: heard schoolChange event!");
       $scope.user.guru_courses.splice(0, $scope.user.guru_courses.length);
       getCoursesBecomeGuru();
-      refreshCourses();
+
     });
 
     $rootScope.$on('refreshCourses', function(event) {
       console.log("courses: heard refreshCourses event!");
       getCoursesBecomeGuru();
-      refreshCourses();
+
     });
 
-    $scope.refresh = {
-      courses: ''
-    };
+    
 
-
-    function refreshCourses() {
-
-
-      $timeout(function() {
-        $scope.search_text.course += ' ';
-        $scope.search_text.course = '';
-        try {
-          $scope.courses = Utilities.nickMatcher('', $scope.coursesSource, 'name', 'course');
-        } catch (err) {
-          console.log("fastmatcher slice error (threw from inside CoruseCtrl, probably due to trying to load too fast): " + err)
-        }
-
-      }, 0)
-
-    }
 
     $scope.afterEnter = function() {
       console.log("afterEnter works!");
