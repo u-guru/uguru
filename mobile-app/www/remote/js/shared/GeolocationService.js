@@ -42,12 +42,12 @@ function Geolocation($rootScope, $timeout, University,
     }
   }
 
-  function getLocation(scope, list) {
-    if (scope && list) {
-      scope.loader.showAmbig();
-      scope = scope;
-      // list = list;
-    }
+  function getLocation(scope, list, callback) {
+    // if (scope && list) {
+    //   scope.loader.showAmbig();
+    //   scope = scope;
+    //   // list = list;
+    // }
 
     // @nicknaky we should have this within the {{Platform}}Service.js (i.e. ios)
     var posOptions = {
@@ -62,18 +62,21 @@ function Geolocation($rootScope, $timeout, University,
       coordinates.lon = position.coords.longitude;
       console.log('location found!', position.coords.latitude, position.coords.longitude);
       isLocated = true;
-      var nearestResults = [];
+      
       if (list) {
-        nearestResults = sortByLocation( position.coords.latitude,
+        sortByLocation( position.coords.latitude,
                                   position.coords.longitude,
                                   list);
       }
-
-      if (scope) {
-        scope.nearestResults = nearestResults;
-        scope.user.last_position = position.coords;
-        scope.loader.hide();
+      if (callback) {
+        callback(list);
       }
+
+      // if (scope) {
+      //   //scope.nearestResults = nearestResults;
+      //   scope.user.last_position = position.coords;
+      //   scope.loader.hide();
+      // }
 
       settings.isActive = true;
       settings.isAllowed = true;
@@ -104,6 +107,10 @@ function Geolocation($rootScope, $timeout, University,
 
   function sortByLocation(userLat, userLong, list) {
 
+    
+    console.table(list[0]);
+    
+
     for(var i=0; i<list.length; i++) {
 
       list[i].rawMiles = Utilities.getDistanceInMiles(
@@ -113,8 +120,12 @@ function Geolocation($rootScope, $timeout, University,
       list[i].miles = Utilities.numberWithCommas(list[i].rawMiles);
 
     }
-
-    return list.sort(compareDistance);
+    list.sort(compareDistance);
+    deviceGPS.settings.isActive = true;
+    
+    console.table(list[0]);
+    
+    return list
   }
 
   function compareDistance(a, b) {
