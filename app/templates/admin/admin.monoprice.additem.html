@@ -15,8 +15,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Monoprice Query Page
-            <small>Search && Buy with One Click -- literally</small>
+            Product Information
+            <small>Brief Product Information</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
@@ -39,31 +39,31 @@
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div><!-- /.box-header -->
+                             
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table no-margin">
                       <thead>
                         <tr>
+                          <th >Product Name</th>
+                          <th style='text-align:center;'>Product Price</th>
                           <th >Product ID</th>
-                          <th style='text-align:center;'>Item Description</th>
-                          <th >Item Price</th>
-                          <th >Average ratings</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for item_obj in query_results %}
                         <tr>
                           <td>
-                            {{item_obj['product_id']}}
+                            {{item_obj['item_title']}}
                           </td>
                           <td><img src='{{item_obj["image_url"]}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{item_obj['item_title']}}&nbsp;&nbsp;
-                            <a href='{{#}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
+                            <a href='#' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
                           </td>
                           <td>
-                            ${{item_obj['price']}}
+                            ${{item_obj['item_price']}}
                           </td>
                           <td>
-                            {{item_obj['avg_ratings']}}
+                            {{item_obj['product_id']}}
                           </td>
 
                         </tr>

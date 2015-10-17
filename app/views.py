@@ -247,36 +247,31 @@ def admin_search_monoprice():
     # Step 4 --> call the results
     query_str = "iPhone lightning cable"
     results_dict = query(query_str)
+    results_dict_json = open('mono_price.json')
+    load_as_json_obj = json.load(results_dict_json)
     from pprint import pprint
-    pprint(results_dict)
-    ## TODO GET the number of stars
-    ## TODO GET THE TITLE
-    ## TODO GET THE IMAGE_URL
-    ## 
-
-    results_arr = [ results_dict[key] for key in results_dict.keys() ]
-
-    # Step 5 --> render the dictionary in a presentable format
-    
+    pprint(load_as_json_obj)
+    results_arr = [ load_as_json_obj[key] for key in load_as_json_obj.keys() ]
     return render_template("admin/admin.monoprice.query.html", query_results=results_arr, query_str=query_str)
 
-
-@app.route('/admin/search/monoprice/productid')
-def items_info_monoprice():
+@app.route('/admin/search/monoprice/<product_id>')
+# ERROR # 1: BEFORE: def items_info_monoprice():
+# ERROR # 2: AFTER: def items_info_monoprice(productid):
+def items_info_monoprice(product_id):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     from lib.monoprice_wrapper import queryMonoprice as query
     from lib.monoprice_wrapper import AddItemToCart
-    query_str = "iPhone lightning cable"
-    results_dict = query(query_str)
-    from pprint import pprint
-    pprint(results_dict)
-    results_arr = [results_dict[key] for key in results_dict.keys()]
-    print results_arr
-
-  #  results_append = AddItemToCart('1',results_arr['product_id'])
-    return render_template("admin/admin.monoprice.additem.html")
-
+    AddItemToCart(1,str(product_id))
+    #cart_info = AddItemToCart(1, str(product_id))
+    #print cart_info
+    # productid = [ results_dict[key] for key in results_dict.keys()]
+    # for items in results_arr:
+    #     productid = items['product_id']
+    #     # ERROR 2: After:  --> break 
+    #     # ERROR 2: Before: --> return productid"
+    #     return productid
+    return render_template("admin/admin.monoprice.additem.html",query_results=results_arr, query_str=query_str, product_id=product_id)
 
 
 @app.route('/admin/localytics')
