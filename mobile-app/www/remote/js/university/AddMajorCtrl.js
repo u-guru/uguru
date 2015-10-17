@@ -177,7 +177,9 @@ angular.module('uguru.util.controllers')
     });
 
 
-
+    $scope.refresh = {
+      majors: ''
+    };
 
     function refreshMajors() {
 

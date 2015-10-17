@@ -8,13 +8,24 @@ angular.module('uguru.directives')
 		switch(attr.bindInput){
 			case 'majors':
 				model = 'search_text.major';
+				refreshModel = 'refresh.majors';
 
 				break;
 			case 'courses':
 				model = 'search_text.course';
+				refreshModel = 'refresh.courses';
 
 				break;
 		}
+
+		$scope.$parent.$watch(
+			refreshModel,
+			function(newValue, oldValue) {
+
+				
+
+			}
+		);
 
 		var queryPromise = null;
 		$scope.$parent.$watch(

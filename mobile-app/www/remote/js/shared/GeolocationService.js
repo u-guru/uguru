@@ -1,16 +1,13 @@
 angular.module('uguru.root.services')
-.factory('Geolocation',
-    [
-    '$rootScope',
+.factory('Geolocation', [
     '$timeout',
     'University',
     'Utilities',
     'Settings',
     Geolocation]);
 
-function Geolocation($rootScope, $timeout, University,
-  Utilities, Settings) {
-  var scope;
+function Geolocation($timeout, University, Utilities, Settings) {
+  
   var isLocated = null;
 
   var settings = {
@@ -26,7 +23,6 @@ function Geolocation($rootScope, $timeout, University,
     settings: settings,
     coordinates: coordinates,
     sortByLocation: sortByLocation,
-    sortByDistance: sortByDistance,
     enableGPS: enableGPS,
     getLocation: getLocation
   };
@@ -43,15 +39,8 @@ function Geolocation($rootScope, $timeout, University,
   }
 
   function getLocation(scope, list, callback) {
-    // if (scope && list) {
-    //   scope.loader.showAmbig();
-    //   scope = scope;
-    //   // list = list;
-    // }
 
-    // @nicknaky we should have this within the {{Platform}}Service.js (i.e. ios)
     var posOptions = {
-      timeout: 30000, // 30 seconds, if they 
       enableHighAccuracy: false, //may cause high errors if true
       maximumAge: 3600000 // Accepts a cached position as long as it was within 1 hour
     }
@@ -72,20 +61,14 @@ function Geolocation($rootScope, $timeout, University,
         callback(list);
       }
 
-      // if (scope) {
-      //   //scope.nearestResults = nearestResults;
-      //   scope.user.last_position = position.coords;
-      //   scope.loader.hide();
-      // }
-
       settings.isActive = true;
       settings.isAllowed = true;
 
-      //$window.localStorage['nearest-universities'] = JSON.stringify(scope.universities);
+      
     }
     function geoError(error) {
         console.log("geolocationError: " + error.code);
-        scope.loader.hide();
+
         switch(error.code) {
           case 1: // PERMISSION_DENIED
 
@@ -105,11 +88,7 @@ function Geolocation($rootScope, $timeout, University,
     }
   }
 
-  function sortByLocation(userLat, userLong, list) {
-
-    
-    console.table(list[0]);
-    
+  function sortByLocation(userLat, userLong, list) {    
 
     for(var i=0; i<list.length; i++) {
 
@@ -123,8 +102,6 @@ function Geolocation($rootScope, $timeout, University,
     list.sort(compareDistance);
     deviceGPS.settings.isActive = true;
     
-    console.table(list[0]);
-    
     return list
   }
 
@@ -136,10 +113,6 @@ function Geolocation($rootScope, $timeout, University,
     return 0;
   }
 
-  function sortByDistance(list) {
-    return list.sort(compareDistance);
-
-  }
 
 
 

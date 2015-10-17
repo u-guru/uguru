@@ -237,6 +237,9 @@ angular.module('uguru.util.controllers')
       refreshCourses();
     });
 
+    $scope.refresh = {
+      courses: ''
+    };
 
 
     function refreshCourses() {
