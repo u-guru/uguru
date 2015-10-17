@@ -2,55 +2,38 @@ angular.module('sharedServices')
 .factory("PopupService", [
 	'Utilities',
 	'$timeout',
+	'$ionicSlideBoxDelegate',
 	'DeviceService',
 	PopupService
 	]);
 
-function PopupService(Utilities, $timeout, DeviceService) {
+function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService) {
 
-	var controller, source, editName, editEmail, editPassword, confirmPhone, confirmEmail, ranking;
-	$timeout(function() {
-		source = document.getElementById('root-nav');
-
-		 editName = document.getElementById('edit-name-uguru-popup');
-		 editEmail = document.getElementById('edit-email-uguru-popup');
-		 editPassword = document.getElementById('edit-password-uguru-popup');
-		 confirmPhone = document.getElementById('confirm-phone-uguru-popup');
-		 confirmEmail = document.getElementById('confirm-email-uguru-popup');
-		 ranking = document.getElementById('guru-ranking-popup');
-
-		 controller = {
-		 	editName: editName,
-		 	editEmail: editEmail,
-		 	editPassword: editPassword,
-		 	confirmPhone: confirmPhone,
-		 	confirmEmail: confirmEmail,
-		 	ranking: ranking
-		 };
-
-	}, 1000);
-
-
+	var controller = {};
+	var localPopup, source, editName, editEmail, editPassword, confirmPhone, confirmEmail, ranking;
+	
 	return {
+		initDefaults: initDefaults,
 		init: init,
 		open: open,
 		attachListeners: attachListeners,
 		close: close
 	}
 
-	function init() {
-		console.log("initializing PopupService");
-	}
-
 	function open(popupName, callback) {
-		var popup = controller[popupName];
+		$timeout(function() {
 
-		cta(source, popup, {duration:0},
-			function(modal) {
-				modal.classList.add('show');
-			});
+			var popup = controller[popupName];
+			console.log("source: " + source);
+			console.log(source);
+			cta(source, popup, {duration:0},
+				function(modal) {
+					modal.classList.add('show');
+				});
 
-		attachListeners(popup, callback);
+			attachListeners(popup, callback);
+
+		}, 0);	
 	}
 
 	var clickClose, clickSubmit, closeIcon, submitButton, enterSubmit
@@ -62,8 +45,13 @@ function PopupService(Utilities, $timeout, DeviceService) {
 		clickClose = function() {
 			popup.classList.remove('show');
 			closeIcon.removeEventListener('click', clickClose);
-			submitButton.removeEventListener('click', clickSubmit);
-			popup.removeEventListener('keyup', enterSubmit);
+			// Wrapping this in a try block since some popups won't have these
+			try {
+				submitButton.removeEventListener('click', clickSubmit);
+				popup.removeEventListener('keyup', enterSubmit);	
+			} catch(err) {
+			}
+			$ionicSlideBoxDelegate.update();
 		};
 		clickSubmit = function() {
 			callback();
@@ -76,6 +64,7 @@ function PopupService(Utilities, $timeout, DeviceService) {
 				}
 				callback();
 			}
+			$ionicSlideBoxDelegate.update();
 		};
 
 		closeIcon.addEventListener('click', clickClose);
@@ -84,7 +73,6 @@ function PopupService(Utilities, $timeout, DeviceService) {
 			submitButton.addEventListener('click', clickSubmit);
 			popup.addEventListener('keyup', enterSubmit);
 		}
-
 
 	}
 
@@ -96,17 +84,48 @@ function PopupService(Utilities, $timeout, DeviceService) {
 
 		popup.classList.remove('show');
 		closeIcon.removeEventListener('click', clickClose);
-		submitButton.removeEventListener('click', clickSubmit);
-		popup.removeEventListener('keyup', enterSubmit);
+		// Wrapping this in a try block since some popups won't have these
+		try {
+			submitButton.removeEventListener('click', clickSubmit);
+			popup.removeEventListener('keyup', enterSubmit);	
+		} catch(err) {
+		}
+		$ionicSlideBoxDelegate.update();
 
 	}
 
 
+	function init(popupName, elemId) {
+		source = document.getElementById('root-nav');
+		localPopup = document.getElementById(elemId);
+		controller[popupName] = localPopup;
+	}
+
+	function initDefaults() {
+		console.log("initializing PopupService");
+		$timeout(function() {
+			source = document.getElementById('root-nav');
+			editName = document.getElementById('edit-name-uguru-popup');
+			editEmail = document.getElementById('edit-email-uguru-popup');
+			editPassword = document.getElementById('edit-password-uguru-popup');
+			confirmPhone = document.getElementById('confirm-phone-uguru-popup');
+			confirmEmail = document.getElementById('confirm-email-uguru-popup');
+			ranking = document.getElementById('guru-ranking-popup');
+ 
+		 	controller.editName = editName,
+		 	controller.editEmail = editEmail,
+		 	controller.editPassword = editPassword,
+		 	controller.confirmPhone = confirmPhone,
+		 	controller.confirmEmail = confirmEmail,
+		 	controller.ranking = ranking
 
 
-};
+		}, 1000);
+	}
 
 
+
+}
 
 
 

@@ -22,11 +22,12 @@ angular.module('uguru.student.controllers', [])
     'MapService',
     '$ionicSlideBoxDelegate',
     'DeviceService',
+    'PopupService',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
-        DeviceService) {
+        DeviceService, PopupService) {
 
         $ionicSideMenuDelegate.canDragContent(false);
 
@@ -150,35 +151,39 @@ angular.module('uguru.student.controllers', [])
 
         $scope.launchWelcomeStudentPopup = function() {
 
-            var homeCenterComponent = document.getElementById('home-content');
-            var uguruPopup = document.getElementById('home-uguru-popup');
-            $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {
-                    duration: 1
-                },
-                function(modal) {
-                    modal.classList.add('show');
-                }
-            );
-            $scope.closeWelcomePopup = function() {
-                if ($scope.reverseAnimatePopup) {
-                    $scope.reverseAnimatePopup();
-                }
-                var uguruPopup = document.getElementById('home-uguru-popup');
-                uguruPopup.classList.remove('show');
-                $ionicSlideBoxDelegate.update();
-            }
+
+            PopupService.init('welcome', 'home-uguru-popup');
+            PopupService.open('welcome');
+
+            // var homeCenterComponent = document.getElementById('home-content');
+            // var uguruPopup = document.getElementById('home-uguru-popup');
+            // $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {
+            //         duration: 1
+            //     },
+            //     function(modal) {
+            //         modal.classList.add('show');
+            //     }
+            // );
+            // $scope.closeWelcomePopup = function() {
+            //     if ($scope.reverseAnimatePopup) {
+            //         $scope.reverseAnimatePopup();
+            //     }
+            //     var uguruPopup = document.getElementById('home-uguru-popup');
+            //     uguruPopup.classList.remove('show');
+            //     $ionicSlideBoxDelegate.update();
+            // }
         }
 
         var checkOnboardingStatus = function() {
-
+$scope.launchWelcomeStudentPopup();
             var appOnboardingObj = $localstorage.getObject('appOnboarding');
 
             if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.studentWelcome) {
                 appOnboardingObj = {
                     studentWelcome: true
                 }
+                // $scope.launchWelcomeStudentPopup();
                 $localstorage.setObject('appOnboarding', appOnboardingObj);
-                $scope.launchWelcomeStudentPopup();
             }
         }
 
@@ -219,7 +224,7 @@ angular.module('uguru.student.controllers', [])
             }
             $timeout(function() {
                 checkOnboardingStatus();
-            }, 1000);
+            }, 600);
             $ionicSlideBoxDelegate.update();
 
             // $timeout(function() {
