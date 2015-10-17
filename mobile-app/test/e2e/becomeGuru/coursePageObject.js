@@ -3,9 +3,11 @@ var Course = function()
 {
 	this.CourseTitle = element(by.css('#course .third'));
 	this.CourseList = element.all(by.css('#courses-list li:not(.ng-hide)'));
+	this.DefaultCourse = element.all(by.repeater('course in courses | limitTo: 10 track by course.id'));
 	this.SelectCourse = element.all(by.repeater('course in user.guru_courses'));
 	this.InputModel = 'search_text.course';
 	this.nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
+	this.PreviousStep = element.all(by.css('[ng-click="previousSlide()"]'));
 
 
 	this.CheckIsAtCoursePage = function()
@@ -16,7 +18,10 @@ var Course = function()
 	{
 		doc.checkLists('courses-list','course.name');
 	};
-
+	this.CheckDefaultCourseNotEmpty =function()
+	{
+		expect(this.CourseList.count() ).not.toBe(0,"[#course-list] should not be empty")
+	}
 	this.CheckCourseListNotEmpty =function()
 	{
 		// expect(this.CourseList.isPresent()).toBe(true,"[#course-list] should not be empty");
@@ -93,8 +98,16 @@ var Course = function()
      {
      	this.nextStep.then(function(items)
  		{
- 			expect(items[1].getText()).toBe('PHOTO')
+ 			expect(items[1].getText()).toBe('SKILLS')
  			items[1].click();
+ 		});
+     };
+     this.GoPreviousPage =function()
+     {
+     	this.PreviousStep.then(function(items)
+ 		{
+ 			expect(items[0].getText()).toBe('MAJORS')
+ 			items[0].click();
  		});
      };
   

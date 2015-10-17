@@ -11,8 +11,9 @@ var Major = function()
 	 this.backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
 	 this.MajorCloseIcon = element(by.css('major-input-close side-icon'));
 
-	 var nextStep = element(by.css('[ng-click="nextSlide()"]'));
-	 //var backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
+	 // var nextStep = element(by.css('[ng-click="nextSlide()"]'));
+	 	this.nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
+
 	 var ele = element.all(by.tagName("ion-slide"));
 
 	 this.MajorInputClearIconClick= function()
@@ -102,12 +103,18 @@ var Major = function()
 
 	 this.CancelBecomeGuruProcess = function()
 	 {
-		backStep.click();
+		this.backStep.click();
 	 };
 
 	 this.GoToCoursePage = function()
 	 {
-	 	nextStep.click();
+	 	// browser.wait(EC.presenceOf(this.nextStep),3000);
+	 	// this.nextStep.click();
+    	this.nextStep.then(function(items)
+		{
+			expect(items[0].getText()).toBe('COURSES')
+			items[0].click();
+		});
 	 };
 	 this.CheckMajorContainNameByOrder = function(name,index) {
 	    doc.checkLists("major-list","major.name",name,index)
