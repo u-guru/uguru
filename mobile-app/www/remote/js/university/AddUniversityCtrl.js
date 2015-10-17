@@ -21,12 +21,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$ionicModal',
   'ModalService',
   '$controller',
+  'ModalService',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService,
-  $controller) {
+  $controller, ModalService) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -134,6 +135,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     }
   };
 
+  $scope.closeModal = function(modalName) {
+    ModalService.close(modalName);
+  }
 
 
   $scope.universitySelected = function(university) {
@@ -275,9 +279,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       $scope.search_text.university = '';
     }, 1);
 
-    if (!$scope.$$phase) { // check if digest already in progress
-      $scope.$apply(); // launch digest;
-    }
+    // if (!$scope.$$phase) { // check if digest already in progress
+    //   $scope.$apply(); // launch digest;
+    // }
 
 
   }

@@ -11,39 +11,57 @@ angular.module('sharedServices')
 
 function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, $ionicModal) {
 
-	var controller = {
-		faq: null,
-		support: null,
-		privacy: null,
-		signup: null
-	}
-
-	var options = {
-		animation: 'slide-in-up',
-		focusFirstInput: false
-	}
+	var controller = {};
+	var faq, support, privacy, signup, university;
 
 	return {
+		initDefaults: initDefaults,
 		init: init,
 		setModal: setModal,
 		getModal: getModal,
 		open: open,
-		close: close
+		close: close,
+		isOpen: isOpen
+	}
+
+	function isOpen(modalName) {
+		var modal = controller[modalName];
+		return modal.isShown();
 	}
 
 	function open(modalName) {
+		console.log("opening " + modalName);
 		var modal = controller[modalName]; 
 		uTracker.track(tracker, modalName + ' modal');
 		$timeout(function() {
 			modal.show();
 		}, 0);
-		
+		//attachListeners(modal);
 	}
 
 	function close(modalName) {
+		console.log("closing " + modalName);
+		if(cordova.plugins.Keyboard) {
+			cordova.plugins.Keyboard.close();
+		}
 		$timeout(function() {
 			controller[modalName].hide();
 		}, 0);
+
+	}
+
+	var clickClose;
+	function attachListeners(modal) {
+
+		console.log("modal: " + modal);
+		var closeLink = modal.getElementsByClassName('header-down')[0];
+
+		clickClose = function() {
+			modal.removeEventListener(clickClose);
+			modal.hide();
+		}
+		
+		modal.addEventListener('click', clickClose);
 	}
 
 
@@ -55,24 +73,60 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		return controller[key];
 	}
 
-	function init() {
+	function init(modalName, $scope) {
+
+		var options = {
+			scope: $scope,
+			animation: 'slide-in-up',
+			focusFirstInput: false	
+		}
+		switch (modalName) {
+			case 'university':
+				$ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', options).then(function(modal) {
+				    university = modal;
+				    controller.university = university;
+				});
+				break;
+			default: break;
+		}
+		
+
+	}
+
+	function initDefaults($scope) {
+
+		var options = {
+			scope: $scope,
+			animation: 'slide-in-up',
+			focusFirstInput: false	
+		}
 
 		$ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', options).then(function(modal) {
-		        controller.faq = modal;
+		    faq = modal;
 		});
 
 		$ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', options).then(function(modal) {
-		    controller.support = modal;
+		    support = modal;
 		});
 
 
 		$ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', options).then(function(modal) {
-		    controller.privacy = modal;
+		    privacy = modal;
 		});
 
 		$ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', options).then(function(modal) {
-		    controller.signup = modal;
+		    signup = modal;
 		});	
+
+		$timeout(function() {
+				controller.faq= faq,
+				controller.support = support,
+				controller.privacy = privacy,
+				controller.signup = signup
+
+		}, 3000);
+
+		
 	}
 	
 
