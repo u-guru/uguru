@@ -243,7 +243,8 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.launchContactGuruModal = function() {
-      if ($scope.profile.edit_mode) {
+      
+      if (!$scope.profile.edit_mode) {
         $scope.contactGuruModal.show();
       }
     }

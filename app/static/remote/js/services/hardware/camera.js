@@ -28,24 +28,24 @@ function Camera($timeout, DeviceService) {
     }
 
     var cameraOptions = {
-      quality: 65,
+      quality: 30,
       destinationType: 1,
       mediaType: 0, // Picture: 0, Video: 1, Both: 2
       sourceType: index,
       allowEdit: false,
       encodingType: 0, // JEPG: 0, PNG: 1
-      targetWidth: 200,
-      targetHeight: 200,
+      targetWidth: 50,
+      targetHeight: 50,
       // popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false
     };
-
+    navigator.camera.cleanup()
     console.log("inside Camera: takePictre();")
     navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 
     function cameraSuccess(imageData) {
-
-      console.log("imageData: " + imageData);
+      navigator.camera.cleanup()
+      // console.log("imageData: " + imageData);
 
       if (elemId) {
         var image = document.getElementById(elemId);

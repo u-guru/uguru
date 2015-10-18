@@ -260,14 +260,13 @@ angular.module('uguru.directives')
   function link($scope, element, attributes) {
     var queryPromise = null;
     $timeout(function() {
-  
+
       $scope.$parent.$watch(
         'refresh.universities',
         function(newValue, oldValue) {
-          console.log("heard something!");
-  
-          if(newValue === 'zzzz') {
-  
+          console.log("heard something!", newValue, oldValue);
+          if(newValue === 'zzzz' && DeviceService.isAndroidDevice()) {
+
               Geolocation.getLocation($scope, $scope.source, function(results) {
                 $timeout(function() {
                   $scope.listScope = results;
@@ -281,7 +280,7 @@ angular.module('uguru.directives')
       $scope.$parent.$watch(
         'search_text.university',
         function(newValue, oldValue) {
-   
+
           if(newValue.length < oldValue.length) {
             if(queryPromise) {
               $timeout.cancel(queryPromise);

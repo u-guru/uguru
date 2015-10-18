@@ -1316,7 +1316,12 @@ button.disabled {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    right: 12px;
+    right: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+
     z-index: 0; }
     .input-search-ghost .side-icon .ion-navigate {
       filter: alpha(opacity=60);

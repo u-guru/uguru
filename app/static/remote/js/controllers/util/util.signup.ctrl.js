@@ -37,6 +37,13 @@ angular.module('uguru.util.controllers')
 
 // Implement a section for modals here
 
+    $scope.openModal = function(modalName) {
+     ModalService.open(modalName, $scope);
+    };
+
+    $scope.closeModal = function(modalName) {
+     ModalService.close(modalName);
+    };
 
 
 // ==========================
@@ -56,12 +63,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.attemptToResetPassword = function() {
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
 
-      if (!validateEmail($scope.signupForm.email)) {
+      if (!Utilities.validateEmail($scope.signupForm.email)) {
         alert('Please enter valid email');
         return;
       }
@@ -628,21 +631,6 @@ angular.module('uguru.util.controllers')
       }, 750);
     }
 
-    $scope.launchFAQModal = function() {
-      var url = 'https://www.uguru.me/faq/';
-      var title = 'Uguru FAQ';
-      InAppBrowser.open(url, title);
-    };
-
-
-    $scope.launchPrivacyPolicy = function() {
-      var url = 'https://www.uguru.me/manifest/';
-      var title = 'Uguru Manifest';
-      InAppBrowser.open(url, title);
-    };
-
-
-
     $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -1098,11 +1086,6 @@ angular.module('uguru.util.controllers')
 
     $scope.validateLoginForm = function() {
 
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
-
       if (!$scope.signupForm.email || !$scope.signupForm.email.length) {
         $scope.success.show(0,1000,'Please enter your email');
 
@@ -1117,7 +1100,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-      if (!validateEmail($scope.signupForm.email)) {
+      if (!Utilities.validateEmail($scope.signupForm.email)) {
         $scope.success.show(0,1000,'Please enter a valid email');
         $scope.signupForm.email = '';
         // $timeout(function() {
@@ -1165,6 +1148,10 @@ angular.module('uguru.util.controllers')
         return false;
       } else {
         var nameComponents = $scope.signupForm.full_name.split(' ')
+        if(nameComponents.length < 2) {
+          $scope.success.show(0,2000,'Please make sure all fields are valid!');
+          return false;
+        }
         var first_name = nameComponents[0];
         var last_name = nameComponents[nameComponents.length - 1];
         $scope.signupForm.first_name = first_name;
