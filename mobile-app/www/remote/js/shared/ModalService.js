@@ -41,6 +41,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 
 	function close(modalName) {
 		console.log("closing " + modalName);
+
 		if(DeviceService.doesCordovaExist() && cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.close();
 		}

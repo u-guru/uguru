@@ -110,12 +110,13 @@ angular.module('uguru.guru.controllers')
 
         $timeout(function() {
           if (Utilities.isElementInViewport(coursesList)) {
+            
 
             var items = coursesList[0].querySelectorAll('ul li');
 
             if (items.length === 0) {
               $rootScope.$emit('refreshCourses');
-              $scope.loader.showAmbig('Fetching courses...', 60000);
+              $scope.loader.showAmbig('Fetching courses...', 10000);
 
               var startScanner = $interval(function() {
                 console.log("checking if courses are loaded...");
@@ -131,6 +132,8 @@ angular.module('uguru.guru.controllers')
 
               function stopLoader() {
                 $interval.cancel(startScanner);
+                // Display a message about being unable to fetch data and possibly a button to attempt to reconnect.
+
               }
             }
           }

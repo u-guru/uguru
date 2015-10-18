@@ -149,14 +149,16 @@ angular.module('uguru.util.controllers')
             console.log("university id: " + uni_id);
             University.getMajors(uni_id).then(function(majors){
 
-                console.log(majors.length, 'majors found', uni_id);
-                majors = majors.plain()
+                $timeout(function() {
+                    console.log(majors.length, 'majors found', uni_id);
+                    majors = majors.plain()
+                    University.majors = majors;
 
-                University.majors = majors;
-
-                if (callback) {
-                    callback(majors);
-                }
+                    if (callback) {
+                        callback(majors);
+                    }
+                }, 0);
+                
             },
             function() {
                 //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
@@ -182,10 +184,11 @@ angular.module('uguru.util.controllers')
 
         $scope.getCoursesForUniversityId = function(uni_id) {
             University.getCourses(uni_id).then(function(courses){
-                $scope.data.courses = courses.plain();
-                University.courses = courses.plain();
-                console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
-
+                $timeout(function() {
+                    $scope.data.courses = courses.plain();
+                    University.courses = courses.plain();
+                    console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
+                }, 0);
             },
             function() {
                 console.log('Universities NOT successfully loaded');
@@ -331,6 +334,7 @@ angular.module('uguru.util.controllers')
                 $scope.successLoaderText = text || 'loading'
             },
             hide: function(delay) {
+                $scope.ambigLoaderText = '';
                 delay = delay || 0;
                 $timeout(function() {
                     $ionicLoading.hide();
@@ -495,7 +499,7 @@ angular.module('uguru.util.controllers')
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
 
-            PopupService.init();
+            PopupService.initDefaults();
             DownloadService.testNetworkSpeed();
             DeviceService.readyDevice($scope);
             $scope.platform.mobile = DeviceService.isMobile();

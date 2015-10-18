@@ -43,11 +43,11 @@ angular.module('uguru.util.controllers')
     };
 
 
-    function setMajorFocus(target) {
-      if ($scope.search_text.major.length === 0 && !$scope.keyboard_force_off) {
-        document.getElementById("major-input").focus();
-      }
-    };
+    // function setMajorFocus(target) {
+    //   if ($scope.search_text.major.length === 0 && !$scope.keyboard_force_off) {
+    //     document.getElementById("major-input").focus();
+    //   }
+    // };
 
 
     $scope.removeMajor = function(major, index) {
