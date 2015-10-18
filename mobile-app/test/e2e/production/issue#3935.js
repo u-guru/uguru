@@ -1,9 +1,5 @@
 describe('#3935 Bugs Check Test',function()
 {
-	afterAll(function()
-	{
-   		doc.ResetAll();
-	});
 
     describe('@Workflow : Pre-Student Page + Close Welcome Pop', function () {
 

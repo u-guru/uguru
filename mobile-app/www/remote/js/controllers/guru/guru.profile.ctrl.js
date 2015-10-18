@@ -637,7 +637,22 @@ angular.module('uguru.guru.controllers')
       }, 200);
 
     }
-
+    $scope.removeGuruSkill = function(skill,index)
+    {
+       console.log(skill);
+      // console.log("Check usr guru :", $scope.user.guru_subcategories);
+        if (!confirm('Remove ' + skill.name + '?')) {
+          return;
+        }
+      // delete from local
+       $scope.user.guru_subcategories.splice(index, 1);
+       // update server 
+       $scope.loader.show();
+       $timeout(function() {
+         $scope.refreshTipsAndRanking($scope.user);
+         $scope.user.updateAttr('remove_guru_subcategory', $scope.user, skill, null, $scope);
+       }, 200);
+    }
 
     $scope.launchConfirmEmailPopup = function() {
 

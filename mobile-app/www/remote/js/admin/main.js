@@ -1,4 +1,4 @@
-var LOCAL = false; //local to the 8100 codebasebirbirs
+var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.university';
 
 var img_base;
@@ -13,17 +13,7 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.103:8100';
-  //BASE_URL = 'http://192.168.42.124:8100';
-
-
-  //REST_URL = "http://localhost:5000"
-
-  // BASE_URL = 'http://192.168.1.43:8100';
-
-  //BASE_URL = 'http://192.168.43.155:8100';
-
-
+  BASE_URL = 'http://192.168.0.111:8100';
 } else {
   img_base = '/static/'
 }
