@@ -110,6 +110,7 @@ angular.module('uguru.guru.controllers')
 
         $timeout(function() {
           if (Utilities.isElementInViewport(coursesList)) {
+            console.log("courselist slidebox in viewport?");
 
             var items = coursesList[0].querySelectorAll('ul li');
 

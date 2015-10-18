@@ -37,6 +37,13 @@ angular.module('uguru.util.controllers')
 
 // Implement a section for modals here
 
+    $scope.openModal = function(modalName) {
+     ModalService.open(modalName, $scope);
+    };
+
+    $scope.closeModal = function(modalName) {
+     ModalService.close(modalName);
+    };
 
 
 // ==========================
@@ -1165,6 +1172,10 @@ angular.module('uguru.util.controllers')
         return false;
       } else {
         var nameComponents = $scope.signupForm.full_name.split(' ')
+        if(nameComponents.length < 2) {
+          $scope.success.show(0,2000,'Please make sure all fields are valid!');
+          return false;
+        }
         var first_name = nameComponents[0];
         var last_name = nameComponents[nameComponents.length - 1];
         $scope.signupForm.first_name = first_name;

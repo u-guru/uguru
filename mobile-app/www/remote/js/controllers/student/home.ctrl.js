@@ -150,39 +150,19 @@ angular.module('uguru.student.controllers', [])
 
 
         $scope.launchWelcomeStudentPopup = function() {
-
-
             PopupService.init('welcome', 'home-uguru-popup');
             PopupService.open('welcome');
-
-            // var homeCenterComponent = document.getElementById('home-content');
-            // var uguruPopup = document.getElementById('home-uguru-popup');
-            // $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {
-            //         duration: 1
-            //     },
-            //     function(modal) {
-            //         modal.classList.add('show');
-            //     }
-            // );
-            // $scope.closeWelcomePopup = function() {
-            //     if ($scope.reverseAnimatePopup) {
-            //         $scope.reverseAnimatePopup();
-            //     }
-            //     var uguruPopup = document.getElementById('home-uguru-popup');
-            //     uguruPopup.classList.remove('show');
-            //     $ionicSlideBoxDelegate.update();
-            // }
         }
 
         var checkOnboardingStatus = function() {
-$scope.launchWelcomeStudentPopup();
+
             var appOnboardingObj = $localstorage.getObject('appOnboarding');
 
             if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.studentWelcome) {
                 appOnboardingObj = {
                     studentWelcome: true
                 }
-                // $scope.launchWelcomeStudentPopup();
+                $scope.launchWelcomeStudentPopup();
                 $localstorage.setObject('appOnboarding', appOnboardingObj);
             }
         }

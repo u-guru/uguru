@@ -320,6 +320,7 @@ angular.module('uguru.util.controllers')
                 $scope.successLoaderText = text || 'loading'
             },
             hide: function(delay) {
+                $scope.ambigLoaderText = '';
                 delay = delay || 0;
                 $timeout(function() {
                     $ionicLoading.hide();
