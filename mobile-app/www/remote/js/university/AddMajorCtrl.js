@@ -18,6 +18,20 @@ angular.module('uguru.util.controllers')
   $q, Major, $ionicSideMenuDelegate, Utilities,
   $localstorage, uTracker, University) {
 
+
+    $scope.refresh = {
+      majors: ''
+    };
+
+    function updateDOM() {
+      $timeout(function() {
+        $scope.refresh.majors = 'update';  
+      }, 0);
+      $timeout(function() {
+        $scope.refresh.majors = '';  
+      }, 0);
+    }
+
     if (!$scope.user.majors) {
       $scope.user.majors = [];
     }
@@ -54,7 +68,9 @@ angular.module('uguru.util.controllers')
         uTracker.track(tracker, 'Major Removed', {
           '$Major': majorName
         });
-        refreshMajors();
+
+        updateDOM();
+        
         //$scope.loader.showSuccess(majorName + ' successfully removed', 1200);
       }
 
@@ -67,9 +83,6 @@ angular.module('uguru.util.controllers')
       }, 200);
 
     }
-
-
-
 
     $scope.fastSelectMajor = function() {
 
@@ -103,14 +116,14 @@ angular.module('uguru.util.controllers')
 
       $scope.user.majors.push(major);
 
-      refreshMajors();
+      $scope.search_text.major = '';
 
-      //update the server
+      updateDOM();
+
 
       uTracker.track(tracker, 'Major Added', {
         '$Major': majorName
       });
-
       $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
     }
@@ -130,15 +143,32 @@ angular.module('uguru.util.controllers')
 
     var getMajorsBecomeGuru = function() {
       console.log('grabbing majors')
-
-
-
       $scope.search_text.major = '';
+
+      if (University.majors.length > 0) {
+        
+        $scope.majorsSource = University.majors.slice();
+
+        $timeout(function() {
+          for(var j = 0; j < $scope.user.majors.length; j++) {
+            for(var k = 0; k < $scope.majorsSource.length; k++) {
+              if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
+                console.log("Deleting duplicate major found.");
+                  $scope.majorsSource.splice(k, 1);
+              }
+            }
+          }
+          updateDOM();
+
+        }, 400);
+
+        return;
+      }
       //$scope.loader.showAmbig("Fetching majors...", 60000);
       University.getMajors($scope.user.university_id).then(function(majors) {
 
         //$scope.loader.hide();
-        University.majors = majors;
+        University.majors = majors.plain();
         $scope.majorsSource = majors.plain().slice();
 
         $timeout(function() {
@@ -150,14 +180,11 @@ angular.module('uguru.util.controllers')
               }
             }
           }
-          refreshMajors();
+          updateDOM();
 
         }, 400);
 
-
-
-        $localstorage.setObject('universityMajors', majors.plain())
-        refreshMajors();
+        $localstorage.setObject('universityMajors', majors.plain());
 
       },function(err) {
         alert('Something went wrong... Please contact support!');
@@ -173,42 +200,10 @@ angular.module('uguru.util.controllers')
       console.log("majors: heard schoolChange event!");
       $scope.user.majors.splice(0, $scope.user.majors.length);
       getMajorsBecomeGuru();
-      refreshMajors();
+    
     });
 
 
-
-
-    function refreshMajors() {
-
-
-      $timeout(function() {
-        $scope.search_text.major += ' ';
-        $scope.search_text.major = '';
-        try {
-          $scope.majors = Utilities.nickMatcher('', $scope.majorsSource, 'name', 'major');
-        } catch(err) {
-          console.log("fastmatcher slice error (threw from inside MajorCtrl, probably due to trying to load too fast): " + err)
-        }
-
-      }, 0)
-
-
-      $timeout(function() {
-        $scope.search_text.major += ' ';
-        $scope.search_text.major = '';
-        try {
-          $scope.majors = Utilities.nickMatcher('', $scope.majorsSource, 'name', 'major');
-        } catch(err) {
-          console.log("fastmatcher slice error (threw from inside MajorCtrl, probably due to trying to load too fast): " + err)
-        }
-      }, 250);
-
-      if (!$scope.$$phase) { // check if digest already in progress
-        $scope.$apply(); // launch digest;
-      }
-
-    }
 
 
   }

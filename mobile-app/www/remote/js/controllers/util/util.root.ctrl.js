@@ -306,6 +306,16 @@ angular.module('uguru.util.controllers')
                 });
                 $scope.root.vars.loaderOn = true;
             },
+            showFailure: function(text, duration) {
+                $scope.ambigLoaderText = text || '';
+
+                $ionicLoading.show({
+                    scope: $scope,
+                    templateUrl: BASE + 'templates/u.loader.failure.svg.html',
+                    duration: duration || 1000
+                });
+                $scope.root.vars.loaderOn = true;
+            },
             showSuccess: function(text, duration) {
 
                 $scope.successLoaderText = text || '';

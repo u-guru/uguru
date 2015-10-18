@@ -172,13 +172,16 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       //$scope.loader.showSuccess('Success', 750);
 
-      //timeout to have it be a background thread
+      University.majors = [];
+      University.courses = [];
       $timeout(function() {
 
         $scope.getCoursesForUniversityId(university.id);
         $scope.getMajorsForUniversityId(university.id);
 
-      }, 100);
+      }, 50);
+
+      University.selectedID = university.id;
 
       $scope.user.university_id = university.id;
       $scope.user.university = university;
@@ -204,10 +207,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
             modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
             $ionicSlideBoxDelegate.update();
 
-            // $timeout(function() {
-            //   console.log("broadcasting schoolChange!");
-            //   $rootScope.$emit('schoolChange');
-            // }, 0);
         }
 
         } else {
@@ -228,13 +227,15 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   // interesting... in a good way
   $scope.location = Geolocation;
 
+  $scope.refresh = {
+    universities: ''
+  }
+
   $scope.toggleLocationIconAppearance = function() {
-    //console.log("location.settings.isActive: " + $scope.location.settings.isActive);
-    //console.log("Geolocation.settings.isActive: " + Geolocation.settings.isActive);
-    
+
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
-      console.log("calling getGPS");
-      getGPS();
+      console.log("refreshing universities for location!");
+      $scope.refresh.universities = 'zzzz';
     }
     else if (Geolocation.settings.isAllowed) {
       console.log("toggling location.isActive");
@@ -246,66 +247,46 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     }
   }
 
-  function getGPS() {
-    Geolocation.settings.isActive = true;
-    $scope.location.getLocation($scope, $scope.universitiesSorted);
-  }
-
-  $scope.$watch(
-    'location.coordinates.lat',
-    function(newValue, oldValue) {
-      if(newValue) {    
-          $scope.universities = $scope.location.sortByLocation($scope.location.coordinates.lat, $scope.location.coordinates.lon, $scope.universitiesSorted);
-          refreshUniversities();
-      }
-    }
-  );
-
-  $scope.$watch(
-    'location.settings.isActive',
-    function(newValue, oldValue) {
-      if(newValue) {    
-          $scope.universities = $scope.location.sortByLocation($scope.location.coordinates.lat, $scope.location.coordinates.lon, $scope.universitiesSorted);
-          console.log("calling refresh from location toggling");
-          refreshUniversities();
-      }
-    }
-  );
-
-  function refreshUniversities() {
-
-    $scope.search_text.university += ' ';
-    $timeout(function() {
-      $scope.search_text.university = '';
-    }, 1);
-
-    // if (!$scope.$$phase) { // check if digest already in progress
-    //   $scope.$apply(); // launch digest;
-    // }
-
-
+  if(DeviceService.isAndroid) {
+    $scope.refresh.universities = 'zzzz';
   }
 
 
 }
 
 angular.module('uguru.directives')
-.directive('bindList', function($timeout, University, Utilities) {
+.directive('bindList', function($timeout, University, Utilities, Geolocation) {
 
   function link($scope, element, attributes) {
     var queryPromise = null;
     $timeout(function() {
+  
+      $scope.$parent.$watch(
+        'refresh.universities',
+        function(newValue, oldValue) {
+          console.log("heard something!");
+  
+          if(newValue === 'zzzz') {
+  
+              Geolocation.getLocation($scope, $scope.source, function(results) {
+                $timeout(function() {
+                  $scope.listScope = results;
+                }, 0);
+              });
+
+          }
+        }
+      );
 
       $scope.$parent.$watch(
         'search_text.university',
         function(newValue, oldValue) {
-
+   
           if(newValue.length < oldValue.length) {
             if(queryPromise) {
               $timeout.cancel(queryPromise);
             }
             queryPromise = $timeout(function() {
-
               $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
               queryPromise = null;
             }, 90);

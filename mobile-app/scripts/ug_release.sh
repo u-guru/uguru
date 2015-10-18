@@ -20,7 +20,7 @@ if [ $# == 1 ];
 		build-android
 		cordova build android --release
 		jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore uguru.keystore ./platforms/android/build/outputs/apk/android-x86-release-unsigned.apk uguru
-		zipalign -v 4 ./platforms/android/build/outputs/apk/android-x86-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-x86.apk
+		./platforms/android/build/outputs/apk/android-x86-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-x86.apk
 
 		jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore uguru.keystore ./platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk uguru
 		~/Development/android-sdk-macosx/build-tools/19.1.0/zipalign  -v 4 ./platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-x86.apk
