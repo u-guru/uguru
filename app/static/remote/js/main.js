@@ -14,6 +14,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
+  REST_URL = 'http://10.37.129.2:5000'
 
 } else {
   img_base = '/static/'
@@ -33,9 +34,12 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $state, $ionicHistory,
    Version, $rootScope,
   $templateCache, Device, User,
-  DeviceService, uTracker) {
+  DeviceService, uTracker, $injector) {
 
   uTracker.init(tracker);
+  Github = $injector.get("Github");
+  Github.init();
+  Github.setExceptionToGithubIssue(false);
 
 })
 
@@ -51,14 +55,12 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-
   $provide.decorator("$exceptionHandler", function($delegate, $injector) {
 
     return function(exception, cause) {
 
       Github = $injector.get("Github");
 
-      Github.setExceptionToGithubIssue(true);
       Github.exceptionToGHIssue(exception, cause);
 
       $delegate(exception, cause);

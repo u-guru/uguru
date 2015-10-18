@@ -32,6 +32,7 @@ angular.module('uguru.util.controllers')
     'PopupService',
     'KeyboardService',
     'ModalService',
+    'Github',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -39,7 +40,7 @@ angular.module('uguru.util.controllers')
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
-         KeyboardService, ModalService) {
+         KeyboardService, ModalService, Github) {
 
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
@@ -51,7 +52,6 @@ angular.module('uguru.util.controllers')
             KeyboardService.setDeviceKeyboardState(true);
             $scope.keyboardOpen = true;
         }
-
 
         window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
