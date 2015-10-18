@@ -9,12 +9,11 @@ angular.module('uguru.directives')
 			case 'majors':
 				model = 'search_text.major';
 				refreshModel = 'refresh.majors';
-
 				break;
+
 			case 'courses':
 				model = 'search_text.course';
 				refreshModel = 'refresh.courses';
-
 				break;
 		}
 

@@ -63,12 +63,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.attemptToResetPassword = function() {
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
 
-      if (!validateEmail($scope.signupForm.email)) {
+      if (!Utilities.validateEmail($scope.signupForm.email)) {
         alert('Please enter valid email');
         return;
       }
@@ -635,21 +631,6 @@ angular.module('uguru.util.controllers')
       }, 750);
     }
 
-    $scope.launchFAQModal = function() {
-      var url = 'https://www.uguru.me/faq/';
-      var title = 'Uguru FAQ';
-      InAppBrowser.open(url, title);
-    };
-
-
-    $scope.launchPrivacyPolicy = function() {
-      var url = 'https://www.uguru.me/manifest/';
-      var title = 'Uguru Manifest';
-      InAppBrowser.open(url, title);
-    };
-
-
-
     $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -1105,11 +1086,6 @@ angular.module('uguru.util.controllers')
 
     $scope.validateLoginForm = function() {
 
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
-
       if (!$scope.signupForm.email || !$scope.signupForm.email.length) {
         $scope.success.show(0,1000,'Please enter your email');
 
@@ -1124,7 +1100,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-      if (!validateEmail($scope.signupForm.email)) {
+      if (!Utilities.validateEmail($scope.signupForm.email)) {
         $scope.success.show(0,1000,'Please enter a valid email');
         $scope.signupForm.email = '';
         // $timeout(function() {

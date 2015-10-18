@@ -78,12 +78,6 @@ angular.module('uguru.util.controllers')
       $scope.progress = (input_text.length > 0);
     }
 
-    $scope.focusCourseInput = function () {
-      var input = document.getElementById('guru-course-input');
-      if (input) {
-        input.focus();
-      }
-    }
 
     $scope.removeGuruCourseAndUpdate = function(course, index) {
 
