@@ -36,10 +36,10 @@ angular.module('uguru.util.controllers')
 
     function updateDOM() {
       $timeout(function() {
-        $scope.refresh.courses = 'update';  
+        $scope.refresh.courses = 'update';
       }, 0);
       $timeout(function() {
-        $scope.refresh.courses = '';  
+        $scope.refresh.courses = '';
       }, 0);
     }
 
@@ -91,7 +91,7 @@ angular.module('uguru.util.controllers')
       $scope.coursesSource.unshift(course);
 
       updateDOM();
-      
+
 
 
       var confirmCallback = function() {
@@ -159,7 +159,7 @@ angular.module('uguru.util.controllers')
 
       $scope.search_text.course = '';
       updateDOM();
-      
+
 
       uTracker.track(tracker, 'Course Guru Added', {
         '$Course': course.name
@@ -188,7 +188,7 @@ angular.module('uguru.util.controllers')
       $scope.search_text.course = '';
 
       if (University.courses.length > 0) {
-        
+
         $scope.coursesSource = University.courses.slice();
 
         $timeout(function() {
@@ -224,20 +224,28 @@ angular.module('uguru.util.controllers')
             }
           }
           updateDOM();
-          
+
 
         }, 400);
 
 
         $localstorage.setObject('universityCourses', courses.plain());
-        
+
 
         //$scope.loader.hide();
 
         console.log("$scope.coursesSources.length: " + $scope.coursesSource.length);
       },function(err) {
 
-        alert('Something went wrong... Please contact support!');
+        if ($scope.defaultFallbackPlan) {
+          $scope.defaultFallbackPlan(err);
+        } else {
+          if (!$scope.root.vars.processRedirect) {
+            $scope.root.vars.processRedirect = true;
+            alert('Something went wrong... Please contact support!');
+          }
+          $state.go('^.university');
+        }
 
       });
     }
@@ -268,7 +276,7 @@ angular.module('uguru.util.controllers')
 
     });
 
-    
+
 
 
     $scope.afterEnter = function() {

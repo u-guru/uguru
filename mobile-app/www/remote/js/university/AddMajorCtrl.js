@@ -25,10 +25,10 @@ angular.module('uguru.util.controllers')
 
     function updateDOM() {
       $timeout(function() {
-        $scope.refresh.majors = 'update';  
+        $scope.refresh.majors = 'update';
       }, 0);
       $timeout(function() {
-        $scope.refresh.majors = '';  
+        $scope.refresh.majors = '';
       }, 0);
     }
 
@@ -70,7 +70,7 @@ angular.module('uguru.util.controllers')
         });
 
         updateDOM();
-        
+
         //$scope.loader.showSuccess(majorName + ' successfully removed', 1200);
       }
 
@@ -146,7 +146,7 @@ angular.module('uguru.util.controllers')
       $scope.search_text.major = '';
 
       if (University.majors.length > 0) {
-        
+
         $scope.majorsSource = University.majors.slice();
 
         $timeout(function() {
@@ -187,7 +187,19 @@ angular.module('uguru.util.controllers')
         $localstorage.setObject('universityMajors', majors.plain());
 
       },function(err) {
-        alert('Something went wrong... Please contact support!');
+        if ($scope.defaultFallbackPlan) {
+          $scope.defaultFallbackPlan(err);
+        } else {
+          if (!$scope.root.vars.processRedirect) {
+            alert('Something went wrong... Please contact support!');
+          } else {
+            $scope.root.vars.processRedirect = true;
+            $timeout(function() {
+              $scope.root.vars.processRedirect = false;
+            }, 2000);
+          }
+          $state.go('^.university');
+        }
       });
     }
 
@@ -200,7 +212,7 @@ angular.module('uguru.util.controllers')
       console.log("majors: heard schoolChange event!");
       $scope.user.majors.splice(0, $scope.user.majors.length);
       getMajorsBecomeGuru();
-    
+
     });
 
 

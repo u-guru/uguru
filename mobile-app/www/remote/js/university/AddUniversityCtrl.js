@@ -255,7 +255,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 }
 
 angular.module('uguru.directives')
-.directive('bindList', function($timeout, University, Utilities, Geolocation) {
+.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService) {
 
   function link($scope, element, attributes) {
     var queryPromise = null;

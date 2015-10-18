@@ -23,7 +23,8 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
 	return {
 		showActionSheet:showActionSheet,
         closeAttachActionSheet:closeAttachActionSheet,
-        adminScope:adminScope
+        adminScope:adminScope,
+        setDefaultCoursesAndMajors: setDefaultCoursesAndMajors
 	}
 
 
@@ -81,7 +82,7 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
           }
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
-          closeAttachActionSheet
+          closeAttachActionSheet && closeAttachActionSheet();
         },
 
         function(err) {
@@ -91,6 +92,20 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
         )
       }
 
+    }
+
+    function setDefaultCoursesAndMajors($scope) {
+        var university = {id: 2307};
+        $scope.user.university = university;
+        $scope.loader.showAmbig();
+        $timeout(function() {
+            $scope.getMajorsForUniversityId(university.id);
+            $scope.getCoursesForUniversityId(university.id);
+            var successCallback = function() {
+                $scope.loader.hide();
+            }
+            $scope.getCategories(successCallback);
+        }, 100)
     }
 
     function handleAdminSheetButtonClick(scope, index) {
