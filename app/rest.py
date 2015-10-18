@@ -2765,10 +2765,17 @@ class AdminViewGithubIssues(restful.Resource):
         labels = request.json.get('labels')
         title = request.json.get('title')
         body = request.json.get('body')
+        print request.json
+        if request.json.get('create_issue'):
+            from app.lib.github_client import init_github, create_issue
+            g_repo = init_github()
+            issue = create_issue(g_repo, labels, title, body)
 
-        from app.lib.github_client import init_github, create_issue
-        g_repo = init_github()
-        issue = create_issue(g_repo, labels, title, body)
+        if request.json.get('send_email'):
+            from app.emails import send_errors_email
+            email_address = request.json.get('default_email')
+            body = title + '\n\n' + body
+            send_errors_email(body, client_only=True, default_email=email_address)
 
         return jsonify(success=True)
 
@@ -2858,8 +2865,11 @@ class AdminUniversityAddRecipientsView(restful.Resource):
 
 class GithubIssueView(restful.Resource):
     def post(self):
+        print request.json
+        issue_title = 'JS PRODUCTION ERROR:'
+        if request.json.get('issue_title'):
+            issue_title += request.json.get('issue_title')
 
-        issue_title = 'JS PRODUCTION ERROR:' + request.json.get('issue_title')
         issue_body = request.json.get('issue_body')
         device_details = request.json.get('device_info')
         user_details = request.json.get('user_details')
@@ -2880,8 +2890,10 @@ class GithubIssueView(restful.Resource):
         from lib.github_client import init_github, create_issue
         from emails import send_errors_email
         gh = init_github('uguru')
-        create_issue(gh, issues_arr, issue_title, issue_body)
-        send_errors_email(issue_body, True)
+        if request.json.get('create_issue'):
+            create_issue(gh, issues_arr, issue_title, issue_body)
+        if request.json.get('send_email'):
+            send_errors_email(issue_body, True, request.json.get('default_email'))
         return jsonify(success=[True])
 
 
