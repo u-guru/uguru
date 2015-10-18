@@ -58,7 +58,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
       Github = $injector.get("Github");
 
-      Github.setExceptionToGithubIssue(false);
+      Github.setExceptionToGithubIssue(true);
       Github.exceptionToGHIssue(exception, cause);
 
       $delegate(exception, cause);

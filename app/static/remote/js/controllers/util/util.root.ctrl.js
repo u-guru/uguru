@@ -31,6 +31,7 @@ angular.module('uguru.util.controllers')
     'DownloadService',
     'PopupService',
     'KeyboardService',
+    'ModalService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -38,7 +39,7 @@ angular.module('uguru.util.controllers')
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
-         KeyboardService) {
+         KeyboardService, ModalService) {
 
         //DeviceService.readyDevice();
         // console.log('1. checking for app updates\n');
@@ -127,6 +128,7 @@ angular.module('uguru.util.controllers')
         $scope.user.is_admin = typeof LOCAL !== "undefined";
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
+        $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
         $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
