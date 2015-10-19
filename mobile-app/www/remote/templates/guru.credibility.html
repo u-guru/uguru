@@ -190,7 +190,7 @@
 				<div ng-if='user.guru_experiences && user.guru_experiences.length > 0'>
 					<h1 class="section-header">Your Guru Experiences</h1>
 					<ul class="credit-body list with-icon">
-						<li ng-repeat='experience in user.guru_experiences'>
+						<li ng-repeat='experience in user.guru_experiences | orderBy:"-id":true'>
 							<a ng-click='launchAddGuruExperienceModal(experience)'>
 								<span class="list-item-detail">
                                 <h2>{{experience.name}}</h2>

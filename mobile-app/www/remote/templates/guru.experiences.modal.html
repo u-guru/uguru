@@ -30,7 +30,9 @@
 			</div>
 			<button class='bg-slate semibold' ng-if="experience && experience.id" ng-click='removeGuruExperience(experience, experience_index)'>Remove</button>
 		</div>
-		<button class='bg-campus semibold' ng-click='saveGuruExperience()'>Save</button>
+		<button class='bg-campus semibold' ng-if=" !(experience && experience.id)" ng-click='saveGuruExperience()'>Save</button>
+		<button class='bg-campus semibold' ng-if="experience && experience.id" ng-click='saveGuruExperience()'>Update</button>
+
 	</section>
 
 </ion-modal-view>
