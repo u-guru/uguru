@@ -53,7 +53,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }).then(function(modal) {
           $scope.signupModal = modal;
   });
-  console.log('TEST',$scope.guru_mode,$scope.user, $scope.user.id);
+  // console.log('TEST',$scope.guru_mode,$scope.user, $scope.user.id);
 
   $scope.launchSignupModal = function() {
       $scope.signupModal.show();

@@ -638,24 +638,24 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.removeGuruCourseAndUpdate = function(course, index) {
+      console.log("TAP");
+      // var removedCourse = $scope.user.guru_courses.splice(index, 1);
 
-      var removedCourse = $scope.user.guru_courses.splice(index, 1);
+      // $scope.loader.show();
+      // $timeout(function() {
+      //   $scope.loader.hide();
+      //   $scope.loader.showSuccess(course.name + ' successfully removed', 2000);
+      // }, 700)
 
-      $scope.loader.show();
-      $timeout(function() {
-        $scope.loader.hide();
-        $scope.loader.showSuccess(course.name + ' successfully removed', 2000);
-      }, 700)
+      // //update local user object
+      // $localstorage.setObject('user', $scope.user);
 
-      //update local user object
-      $localstorage.setObject('user', $scope.user);
-
-      //update server user object
-      $scope.loader.show();
-      $timeout(function() {
-        $scope.refreshTipsAndRanking($scope.user);
-        $scope.user.updateAttr('remove_guru_course', $scope.user, course, null, $scope);
-      }, 200);
+      // //update server user object
+      // $scope.loader.show();
+      // $timeout(function() {
+      //   $scope.refreshTipsAndRanking($scope.user);
+      //   $scope.user.updateAttr('remove_guru_course', $scope.user, course, null, $scope);
+      // }, 200);
 
     }
 
