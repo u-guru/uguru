@@ -233,9 +233,9 @@ def admin_instagram(uni_id):
     return render_template("Hello World")
 
 #Step 1--> create a route 
-@app.route('/admin/search/monoprice/')
+@app.route('/admin/search/monoprice/<query_str>')
 # Step 2 --> ADd a function definition
-def admin_search_monoprice():
+def admin_search_monoprice(query_str):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
 
@@ -245,33 +245,37 @@ def admin_search_monoprice():
 
 
     # Step 4 --> call the results
-    query_str = "iPhone lightning cable"
     results_dict = query(query_str)
     results_dict_json = open('mono_price.json')
     load_as_json_obj = json.load(results_dict_json)
     from pprint import pprint
-    pprint(load_as_json_obj)
-    results_arr = [ load_as_json_obj[key] for key in load_as_json_obj.keys() ]
+    #pprint(load_as_json_obj)
+    results_arr = [ load_as_json_obj[key] for key in load_as_json_obj.keys()]
     return render_template("admin/admin.monoprice.query.html", query_results=results_arr, query_str=query_str)
 
-@app.route('/admin/search/monoprice/<product_id>')
+@app.route('/admin/search/monoprice/cart')
 # ERROR # 1: BEFORE: def items_info_monoprice():
 # ERROR # 2: AFTER: def items_info_monoprice(productid):
-def items_info_monoprice(product_id):
+def items_info_monoprice():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
-    from lib.monoprice_wrapper import queryMonoprice as query
     from lib.monoprice_wrapper import AddItemToCart
-    AddItemToCart(1,str(product_id))
-    #cart_info = AddItemToCart(1, str(product_id))
-    #print cart_info
-    # productid = [ results_dict[key] for key in results_dict.keys()]
-    # for items in results_arr:
-    #     productid = items['product_id']
-    #     # ERROR 2: After:  --> break 
-    #     # ERROR 2: Before: --> return productid"
-    #     return productid
-    return render_template("admin/admin.monoprice.additem.html",query_results=results_arr, query_str=query_str, product_id=product_id)
+    from lib.monoprice_wrapper import getCartItems
+    getCartItems()
+    AddItemToCart(1, str(product_id))
+    each_items = open('each_page_items.json')
+    load_as_json_obj = json.load(each_items)
+    return render_template("admin/admin.monoprice.additem.html",item_list=load_as_json_obj,product_id=product_id)
+
+@app.route('/admin/search/monoprice/<product_id>/confirmation')
+def confirmation_page(product_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    from lib.monoprice_wrapper import getCartItems
+    getCartItems()
+    final_information = open('final_information.json')
+    load_as_json_obj = json.load(final_information)
+    return render_template("admin/admin.monoprice.confirmation.html",final_item_list=load_as_json_obj)
 
 
 @app.route('/admin/localytics')

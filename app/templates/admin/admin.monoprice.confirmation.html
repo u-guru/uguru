@@ -38,7 +38,8 @@
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
-                </div><!-- /.box-header -->    
+                </div><!-- /.box-header -->
+                             
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table no-margin">
@@ -47,23 +48,25 @@
                           <th >Product Name</th>
                           <th style='text-align:center;'>Purchase Button</th>
                           <th >Product Price</th>
-                       
+                          <th >Product ID</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for item_obj in item_list %}
-                       
+                        {% for item_id in result_info_arr %}
                         <tr>
                           <td>
-                            {{item_obj['item_name']}}
+                            {{item_id['product_id']}}
                           </td>
                           <td><img src='{{item_obj["image_url"]}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{item_obj['item_title']}}&nbsp;&nbsp;
-                            <a href='/admin/search/monoprice/product_id/confirmation' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
+                            <a href='#' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
                           </td>
                           <td>
                             {{item_obj['item_price']}}
                           </td>
-                  
+                          <td>
+                            {{item_id['product_id']}}
+                          </td>
                         </tr>
                         {% endfor %}
                       </tbody>
@@ -73,18 +76,15 @@
               </div>
             </div>
             <div class='col-md-6'>
-              {% for item_id in result_info_arr %}
               <div class="box box-info">
                 <div class="box-header with-border">
-
-                  <h3 class="box-title">Product ID {{item_id["product_id"]}}</h3>
+                  <h3 class="box-title">Universities Left</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div><!-- /.box-header -->
               </div>
-              {% endfor %}
             </div>
           </div>
 
