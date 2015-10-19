@@ -101,10 +101,7 @@ def faq():
 @app.route('/faq-only/')
 def faq_body():
     from flask import request
-    print request.user_agent.platform, request.user_agent.browser
-    import httpagentparser
-    print httpagentparser.simple_detect(request.user_agent.string)
-    print httpagentparser.detect(request.user_agent.string)
+
     return render_template("web/pages/faq_only.html")
 
 @app.route('/manifest/')
@@ -132,9 +129,9 @@ def team():
     team_members = [admin_info[key] for key in admin_info.keys() if not key == 'investors@uguru.me']
     return render_template("web/pages/team.html", team_members=team_members)
 
-@app.route('/support/')
+@app.route('/support-only/')
 def team():
-    return render_template("web/pages/support.html")
+    return render_template("web/pages/support_only.html")
 
 @app.route('/staging/profile')
 def profile_page():
@@ -167,49 +164,72 @@ def admin_stats_campaigns():
 def admin_statistics_universities():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
-    # test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
-    # regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
-    import json
-    uni_targetted_arr = json.load(open('app/static/data/fa15_targetted.json'))
 
-    all_university_arr = json.load(open('app/static/data/fa15_all.json'))
+    from lib.universities import filterPrepared
 
-    all_targetted_names = [uni['name'] for uni in uni_targetted_arr]
-    remaining_unis = [uni for uni in all_university_arr if uni['name'] not in all_targetted_names]
-    for u in remaining_unis:
-        fields_remaining = ""
-        if not u.get('latitude'):
-            fields_remaining += 'lat/long '
-        if not u.get('fa15_start'):
-            fields_remaining += 'fa15_start '
-        if not u.get('logo_url'):
-            fields_remaining += 'logo_url '
-        if not u.get('school_color_one'):
-            fields_remaining += 'school_colors '
-        if not u.get('population'):
-            fields_remaining += 'population '
-        u['fields_remaining'] = fields_remaining
+    ## Queries database for all universities
+    universities = University.query.all()
 
-    # latitudes = [uni for uni in remaining_unis if uni.get('latitude')]
-    # populations = [uni for uni in remaining_unis if uni.get('population')]
-    # banner_urls = [uni for uni in remaining_unis if uni.get('banner_url')]
-    # logo_urls = [uni for uni in remaining_unis if uni.get('logo_url')]
-    # school_colors = [uni for uni in remaining_unis if uni.get('school_color')]
-    # fa_starts = [uni for uni in remaining_unis if uni.get('fa15_start')]
-    # uni_length = len(all_university_arr)
 
-    # stats = {
-    #     'latitude': (len(latitudes) / uni_length) * 100,
-    #     'population': (len(populations) / uni_length) * 100,
-    #     'logo_url': (len(logo_urls) / uni_length) * 100,
-    #     'banner_urls': (len(banner_urls) / uni_length) * 100,
-    #     'school_colors': (len(school_colors) / uni_length) * 100,
-    #     'fa15_start': (len(fa_starts) / uni_length) * 100
-    # }
-    uni_targetted_arr = sorted(uni_targetted_arr, key=lambda k:k['rank'])
-    remaining_unis = sorted(remaining_unis, key=lambda k:k['rank'])
-    return render_template("admin/admin.stats.universities.html",
-        target_universities=uni_targetted_arr, remainder_universities=remaining_unis)
+    prepared_universities = filterPrepared(universities)
+
+    ## Together --> print list of prepared (top 50)
+    ## Together --> hyperlink top (top 50)
+
+    return render_template("admin/admin.stats.universities.html", \
+        universities = universities, \
+        prepared_universities=prepared_universities)
+
+@app.route('/admin/stats/universities/<uni_id>')
+def admin_statistics_one_university(uni_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+        ### Together
+
+    return render_template("Hello World")
+    # university = University.query.all()
+
+
+    # prepared_universities = filterPrepared(universities)
+
+@app.route('/admin/search/instagram')
+def admin_instagram_search(uni_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+        ### Together
+
+    return render_template("Hello World")
+
+@app.route('/admin/search/results/<query>')
+def admin_instragram_results(query):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    return render_template("Hello World")
+
+@app.route('/admin/search/instagram')
+def admin_statistics_one_university(uni_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+        ### Together
+        ### Together --> create menu bar
+
+    return render_template("Hello World")
+
+
+@app.route('/admin/search/monoprice')
+def admin_search_monoprice():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+@app.route('/admin/localytics')
+def admin_localytics():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
 
 ###############
 ## Investors ##

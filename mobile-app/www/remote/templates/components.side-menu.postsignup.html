@@ -16,7 +16,7 @@
                 <div class='white-bg' style='margin-top:35%; padding-top:20%; padding-bottom:5%;'>
                   <div class='pure-u-1 regular'>
                     <div ng-show='user && user.id'>
-                      <h1 class='light regular-text no-margin'>
+                      <h1 id="E2E-Name" class='light regular-text no-margin'>
                         {{user.name.split(' ')[0].toUpperCase()}} {{user.name.split(' ')[1][0].toUpperCase()}}.
                       </h1>
                     </div>
@@ -32,7 +32,7 @@
                     </div>
                   </div>
                   <div class='pure-u-1 padding-half opacity-3-4' style='font-size:80%;'>
-                    <div class='white-space-normal uppercase semibold'>{{user.university.title}}</div>
+                    <div class='white-space-normal uppercase semibold'id = 'E2E-uniTitle' value = {{user.university.title}} >{{user.university.title}}</div>
                   </div>
                   <!-- <div class='pure-u-1' style='font-size:80%; opacity:1' ng-show='!user.majors || user.majors.length === 0'>
                     <a class='white-space-normal uppercase light blue full-width' ng-click='transitionToMajor()'> + add your major(s)</a>
@@ -67,11 +67,11 @@
                         <img class='pure-img absolute' ng-src='{{img_base}}./img/settings/become-guru-outline.svg' style='height:120%; top:0;'>
                         Become a Guru
                       </button>
-                      <button class='button button-full button-black micro-text item-avatar-left relative' ng-show='user && user.is_a_guru && !root.vars.guru_mode' style='padding-left:3em; height:50px;' ng-click='goToGuru()'>
+                      <button id='E2E-switchUguru'class='button button-full button-black micro-text item-avatar-left relative' ng-show='user && user.is_a_guru && !root.vars.guru_mode' style='padding-left:3em; height:50px;' ng-click='goToGuru()'>
                         <img class='pure-img absolute' ng-src='{{img_base}}./img/settings/become-guru-outline.svg' style='height:60px; top:10%;'>
                         Switch to Guru Mode
                       </button>
-                      <button class='button button-full button-footer light-blue-bg micro-text relative white' ng-show='user && user.is_a_guru && root.vars.guru_mode' style='height:50px;' ng-click='goToStudent()'>
+                      <button id='E2E-switchStudent'class='button button-full button-footer light-blue-bg micro-text relative white' ng-show='user && user.is_a_guru && root.vars.guru_mode' style='height:50px;' ng-click='goToStudent()'>
                         Switch to Student Mode
                       </button>
                      </div>

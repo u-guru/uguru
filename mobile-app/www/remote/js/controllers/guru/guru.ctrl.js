@@ -19,10 +19,11 @@ angular.module('uguru.guru.controllers', [])
   '$ionicActionSheet',
   'RankingService',
   'TipService',
+  '$ionicSlideBoxDelegate',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet, RankingService, TipService)     {
+  $ionicActionSheet, RankingService, TipService, $ionicSlideBoxDelegate)     {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
@@ -235,7 +236,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
 
-        $scope.$on('$ionicView.beforeEnter', function() {
+        $scope.$on('$ionicView.afterEnter', function() {
 
             var appOnboardingObj = $localstorage.getObject('appOnboarding');
 
@@ -277,6 +278,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.$on('$ionicView.enter', function() {
 
           $scope.refreshTipsAndRanking($scope.user);
+          $ionicSlideBoxDelegate.update();
 
           $timeout(function() {
 

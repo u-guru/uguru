@@ -31,16 +31,26 @@ angular.module('uguru.util.controllers')
   'PopupService',
   'ModalService',
   '$ionicSlideBoxDelegate',
+  'AdminService',
+  'InAppBrowser',
+  'DeviceService',
+  'ModalService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate) {
+  AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate,
+  AdminService, InAppBrowser, DeviceService, ModalService) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
+    ModalService.initDefaults($scope);
 
+    $scope.launchAdminActionSheet = function() {
+      var showPopup = AdminService.showActionSheet($scope);
+      AdminService.closeAttachActionSheet = showPopup();
+    };
 
 //use for abstract
     $scope.openAdmin = function() {
@@ -49,15 +59,6 @@ angular.module('uguru.util.controllers')
 
 
     // pre-render these immediately
-    $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up',
-            focusFirstInput: false,
-    }).then(function(modal) {
-            $scope.faqModal = modal;
-    });
-
-
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
             scope: $scope,
@@ -68,59 +69,21 @@ angular.module('uguru.util.controllers')
     });
 
 
+    ModalService.init('university', $scope);
 
+    $scope.openModal = function(modalName) {
+      ModalService.open(modalName, $scope);
+    };
 
-
-    $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up',
-            focusFirstInput: false,
-    }).then(function(modal) {
-        $scope.privacyModal = modal;
-    });
-
-    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up',
-            focusFirstInput: false,
-    }).then(function(modal) {
-        $scope.signupModal = modal;
-    });
-
-    $scope.initUniversityModal = function() {
-
-      $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up',
-            focusFirstInput: false,
-      }).then(function(modal) {
-          $scope.universityModal = modal;
-
-          uTracker.track(tracker, 'University Modal');
-      });
-
+    $scope.openLoginModal = function() {
+      $scope.root.vars.loginMode = true;
+      $scope.openModal('login');
     }
 
-    $scope.initUniversityModal();
+    $scope.closeModal = function(modalName) {
+      ModalService.close(modalName);
+    };
 
-    $scope.launchFAQModal = function() {
-
-      uTracker.track(tracker, 'FAQ Modal');
-      $scope.faqModal.show();
-    }
-
-    $scope.launchUniversityModal = function() {
-      // ModalService.getModal('university');
-      $scope.universityModal.show();
-    }
-
-    $scope.removeLaunchUniversityModal = function() {
-      $scope.universityModal.remove();
-      $timeout(function() {
-        $scope.initUniversityModal();
-      }, 500)
-      //immediately instantiate after ;)
-    }
 
     $scope.onTextClick = function ($event) {
       if (event.target && event.target.value.length) {
@@ -141,55 +104,35 @@ angular.module('uguru.util.controllers')
     $scope.launchSupportModal = function() {
 
       uTracker.track(tracker, 'Support Modal');
+
+      // nick --> this works right now the other one doesn't on ios -- playing it safe
       $scope.supportModal.show();
-      $timeout(function() {
-        initSupportChatEnterHandler()
-      }, 500);
-      $scope.init
-    }
 
-    $scope.launchPrivacyModal = function() {
+      // var isDevice = DeviceService.doesCordovaExist();
+
+      // if (!isDevice) {
+      //   $scope.supportModal.show();
+      // } else {
+      //   InAppBrowser.openSupport();
+      // }
 
 
-      uTracker.track(tracker, 'Privacy Modal');
-
-      // var options = {
-      //   "direction"        : "up", // 'left|right|up|down', default 'left' (which is like 'next')
-      //   "duration"         :  400, // in milliseconds (ms), default 400
-      //   "slowdownfactor"   :   1000, // overlap views (higher number is more) or no overlap (1), default 4
-      //   "iosdelay"         :  60, // ms to wait for the iOS webview to update before animation kicks in, default 60
-      //   "androiddelay"     :  70, // same as above but for Android, default 70
-      //   "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
-      //   "fixedPixelsTop"   :   0, // the number of pixels of your fixed header, default 0 (iOS and Android)
-      //   "fixedPixelsBottom":   0 // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
-      // };
-
-      // $state.go('privacy');
-      // window.plugins.nativepagetransitions.slide(
-      //         options,
-      //         function (msg) {console.log("success: " + msg)}, // called when the animation has finished
-      //         function (msg) {alert("error: " + msg)} // called in case you pass in weird values
-      //       );
-
-      $scope.privacyModal.show();
+      // $scope.supportModal.show();
+      // $timeout(function() {
+      //   initSupportChatEnterHandler()
+      // }, 500);
+      // $scope.init
     }
 
 
-    $scope.launchSignupModal = function(loginMode) {
-      uTracker.track(tracker, 'Signup Modal');
-      if (loginMode)  {
-        $scope.root.vars.loginMode = true;
-      }
-      $scope.signupModal.show();
-    }
+
+
+
 
     $scope.attemptToResetPassword = function() {
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
 
-      if (!validateEmail($scope.signupForm.email)) {
+
+      if (!Utilities.validateEmail($scope.signupForm.email)) {
         alert('Please enter valid email');
         return;
       }
@@ -359,6 +302,7 @@ angular.module('uguru.util.controllers')
             }
             var failureCallback = function(resp) {
               $scope.loader.hide();
+              $scope.defaultFallbackPlan(resp);
               $scope.loader.showSuccess('Something went wrong ... Please contact support!', 1500);
               PopupService.close('editPassword');
 
@@ -491,7 +435,11 @@ angular.module('uguru.util.controllers')
               if (index === 1) {
                 $scope.closeAttachActionSheet();
                 $scope.loader.show();
-                $scope.launchUniversityModal();
+                console.log("checking");
+                $timeout(function() {
+                  $scope.launchUniversityModal();
+                }, 0);
+
                 $timeout(function() {
                   $scope.loader.hide();
                 }, 500);

@@ -28,20 +28,24 @@ function Camera($timeout, DeviceService) {
     }
 
     var cameraOptions = {
-      quality: 65,
-      destinationType: 0,
+      quality: 30,
+      destinationType: 1,
+      mediaType: 0, // Picture: 0, Video: 1, Both: 2
       sourceType: index,
       allowEdit: false,
       encodingType: 0, // JEPG: 0, PNG: 1
-      targetWidth: 500,
-      targetHeight: 500,
+      targetWidth: 50,
+      targetHeight: 50,
       // popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false
     };
-
+    navigator.camera.cleanup()
+    console.log("inside Camera: takePictre();")
     navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 
     function cameraSuccess(imageData) {
+      navigator.camera.cleanup()
+      // console.log("imageData: " + imageData);
 
       if (elemId) {
         var image = document.getElementById(elemId);
@@ -67,12 +71,21 @@ function Camera($timeout, DeviceService) {
 
       $scope.loader.showSuccess('Saving...', 2000);
 
+      var callback_success = function() {
+        $scope.loader.showSuccess("Photo Successfully Saved");
+      }
+
+      var callback_failure = function() {
+        $scope.loader.showSuccess("Something went wrong... Please contact support");
+      }
+
       $timeout(function() {
-        $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
+
+        $scope.user.createObj($scope.user, 'files', formData, $scope, callback_success, callback_failure);
       }, 500)
     }
 
-    function cameraError(message) {
+    function cameraError(err) {
       console.log(err);
       if ('No camera available' === err) {
         alert('Sorry! It appears that there is no Camera or Photo Library Accessible. Please contact support.');

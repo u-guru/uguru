@@ -6,16 +6,15 @@ var FIRST_PAGE='^.' + _startpage;
 // isAdmin = true;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
-var REST_URL = 'https://www.uguru.me';
+var REST_URL = 'https://www.uguru.me'
 
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
 
-  // REST_URL = 'http://uguru.me';
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  REST_URL = 'http://192.168.0.115:5000'
+  REST_URL = 'http://10.37.129.2:5000'
 
 } else {
   img_base = '/static/'
@@ -35,9 +34,12 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $state, $ionicHistory,
    Version, $rootScope,
   $templateCache, Device, User,
-  DeviceService, uTracker) {
+  DeviceService, uTracker, $injector) {
 
   uTracker.init(tracker);
+  Github = $injector.get("Github");
+  Github.init();
+  Github.setExceptionToGithubIssue(false);
 
 })
 
@@ -53,16 +55,26 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  // if (ionic.Platform.isAndroid()) {
-  //   $ionicConfigProvider.scrolling.jsScrolling(false);
-  // }
+  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+
+    return function(exception, cause) {
+
+      Github = $injector.get("Github");
+
+      Github.exceptionToGHIssue(exception, cause);
+
+      $delegate(exception, cause);
+
+    };
+
+  })
 
   //ASK-NICK: what does this mean?
   $ionicConfigProvider.views.transition('platform');
 
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(false);
+  $ionicConfigProvider.views.forwardCache(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -103,7 +115,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.majors-container', {
         url: '/majors-container',
         templateUrl: BASE + 'templates/majors.container.html',
-        controller: 'AddMajorController',
+        controller: 'AddMajorController'
   }).
   state('root.guru-courses-container', {
         url: '/guru-courses-container',
@@ -165,7 +177,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.become-guru', {
         url: '/become-guru',
-        templateUrl:BASE + 'templates/become.guru.html',
+        templateUrl: BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
   }).
   state('root.offline', {

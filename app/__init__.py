@@ -68,12 +68,11 @@ manager.add_command('db', MigrateCommand)
 # Allows cross-origin. Allows us to host local server on different ports & share resources
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Origin, Content-Type, Content-Type, Accept, Authorization, X-Request-With')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     response.headers["X-Frame-Options"] = "ALLOW"
-    response.headers.add("X-Frame-Options", "Allow-From https://trello.com/b/8zend7RA")
     response.headers.add('Access-Control-Allow-Credentials', True)
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 from app import rest, models, emails, views

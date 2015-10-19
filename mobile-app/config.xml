@@ -30,6 +30,9 @@
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="20000"/>
     <preference name="SplashScreenBackgroundColor" value="#FFFFFF"/>
+    <feature name="Camera">
+      <param name="android-package" value="org.apache.cordova.camera.CameraLauncher"/>
+    </feature>
     <icon density="ldpi" src="icons/android/drawable-ldpi/ic_launcher.png"/>
     <icon density="mdpi" src="icons/android/drawable-mdpi/ic_launcher.png"/>
     <icon density="hdpi" src="icons/android/drawable-hdpi/ic_launcher.png"/>

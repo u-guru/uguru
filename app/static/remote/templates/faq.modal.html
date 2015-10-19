@@ -5,12 +5,13 @@
 			display: none;
 			visibility: hidden;
 		}
+
 	}
 </style>
 <section class="full-xy">
 	<header class="bg-charcoal white">
 		<div class="header-nav">
-			<a class="header-down" ng-click="faqModal.hide()">
+			<a class="header-down" ng-click="closeModal('faq')">
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"></path>
 				</svg>
@@ -19,8 +20,7 @@
 		<h1 class="text-center">Uguru FAQs</h1>
 	</header>
 	<ion-content class='white-bg' scroll='false'>
-		<iframe name="Uguru FAQ" ng-if='isLocalServer' ng-src="http://192.168.42.78:5000/faq-only/"></iframe>
-		<iframe name="Uguru FAQ" ng-if='!isLocalServer' ng-src="https://uguru.me/faq-only/"></iframe>
+		<iframe name="Uguru FAQ" ng-src="https://www.uguru.me/faq-only/"></iframe>
 	</ion-content>
 </section>
 </ion-modal-view>

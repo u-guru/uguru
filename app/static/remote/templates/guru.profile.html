@@ -13,7 +13,7 @@
 							</a>
 						</div>
 						<nav id="profile-list" class='profile-list-slide'>
-							<ul>
+							<ul class='relative'>
 								<li id="profile-name">
 									<!-- SAMIR -only use .verified if the profile is verified
 									<h1 class="verified">
@@ -26,8 +26,8 @@
 									</h1>
 								</li>
 								<li id="profile-school">{{user.university.title}}</li>
-								<li>
-									<a ng-click='launchContactGuruModal()'><i class='icon ion-email'> </i></a>
+								<li class='absolute right-0'>
+									<a class='absolute right-0' ng-click='launchContactGuruModal()'><i class='icon ion-email'> </i></a>
 								</li>
 							</ul>
 						</nav>
@@ -214,7 +214,7 @@
 		<button id="btn-save-profile" class="btn-fixed semibold bottom-0 left-0 save-button bg-cerise-90p ng-class:{'relative':profile.edit_mode}" ng-click='saveGuruProfile()' ng-if='profile.edit_mode'>Save</button>
 
 	</section>
-	<input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none' />
+	<input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed_profile(this)" style='display:none' />
 
 	<div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar' ng-if='user && user.id'>
 		<a class="tab-item" nav-direction='swap' href='#/guru'>

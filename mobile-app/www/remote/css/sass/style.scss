@@ -1156,8 +1156,8 @@ section {
 					left: 0;
 					width: 200%;
 					height: 200%;
-					background: url(../../img/map.png) center center / cover,
-								url(/static/remote/img/map.png) center center / cover;
+					background: url(../../img/map-small.png) center center / cover,
+								url(/static/remote/img/map-small.png) center center / cover;
 				}
 				> span {
 					display: block;
@@ -1526,6 +1526,7 @@ section {
 	height: 100%;
 	z-index: 20;
 	.list {
+		@include flex-column;
 		height: 100%;
 	}
 	.list-item {
@@ -1533,6 +1534,10 @@ section {
 		font-size: 18px;
 		font-weight: 600;
 		text-transform: uppercase;
+		//Gabrielle -- added this so we can so more items;
+		&.settings-item {
+			height:10%;
+		}
 		.list-item-icon {
 			height: 64px;
 			width: 64px;
@@ -1592,6 +1597,7 @@ section {
 }
 @media screen and (min-height:540px) {
 	.side-menu-list {
+
 		.list-item-profile {
 			height: 84px;
 		}
@@ -1935,8 +1941,8 @@ section {
 		.geolocation-icon {
 			margin-top: 3px;
 		// To add hella space to tap it (it's responsive & equalizes)
-			padding: 50px;
-    		margin-right: -50px;
+			padding: 30px;
+    		margin-right: -30px;
 		}
 	}
 	#school-list, #school-list-modal {
@@ -4161,3 +4167,4 @@ body.platform-ios {
 	bottom:64px;
 	position:absolute;
 }
+
