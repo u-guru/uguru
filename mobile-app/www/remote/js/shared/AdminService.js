@@ -8,11 +8,12 @@ angular.module('sharedServices')
     '$ionicSideMenuDelegate',
     '$state',
     'DeviceService',
+    'Github',
 	AdminService
 	]);
 
 function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $timeout,
-    $ionicSideMenuDelegate, $state, DeviceService) {
+    $ionicSideMenuDelegate, $state, DeviceService, Github) {
 
 	var adminActionSheet;
     var closeAttachActionSheet;
@@ -22,7 +23,8 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
 	return {
 		showActionSheet:showActionSheet,
         closeAttachActionSheet:closeAttachActionSheet,
-        adminScope:adminScope
+        adminScope:adminScope,
+        setDefaultCoursesAndMajors: setDefaultCoursesAndMajors
 	}
 
 
@@ -80,7 +82,7 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
           }
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
-          closeAttachActionSheet
+          closeAttachActionSheet && closeAttachActionSheet();
         },
 
         function(err) {
@@ -92,10 +94,23 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
 
     }
 
+    function setDefaultCoursesAndMajors($scope) {
+        var university = {id: 2307};
+        $scope.user.university = university;
+        $scope.loader.showAmbig();
+        $timeout(function() {
+            $scope.getMajorsForUniversityId(university.id);
+            $scope.getCoursesForUniversityId(university.id);
+            var successCallback = function() {
+                $scope.loader.hide();
+            }
+            $scope.getCategories(successCallback);
+        }, 100)
+    }
+
     function handleAdminSheetButtonClick(scope, index) {
         // hack
         scope = adminScope;
-        console.log('adminScope', scope);
         console.log('passedInScope', scope);
 
         switch(index){
@@ -160,14 +175,18 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
                     break;
 
                 case 4:
-                    alert('Coming Later Today');
+
+                    alert("WARNING: You are turning on GH traceback issues", Github.getExceptionToGithubIssue(), "Continue?");
+                    Github.setExceptionToGithubIssue(true)
+                    console.log('setExceptionToGithubIssue', Github.getExceptionToGithubIssue())
                     break;
 
                 case 5:
-                    alert('Coming Later Today');
+                    alert("WARNING: You are turning OFF GH traceback issues", Github.getExceptionToGithubIssue());
                     break;
                 case 6:
                     url = prompt("Please enter URL to update from", "http://192.168.0.103:5000/app/")
+                    Github.setExceptionToGithubIssue(false)
                     DeviceService.checkUpdates(url);
                     break;
 

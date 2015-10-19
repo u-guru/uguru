@@ -116,15 +116,17 @@ angular.module('uguru.util.controllers')
 
     $scope.updateCategoryCount = function(category, subcategory, index) {
 
-      category.active_subcategories += 1;
+      
       Category.categories = $scope.categories;
       $localstorage.setObject('categories', $scope.categories);
 
       if (subcategory.active) {
+        category.active_subcategories += 1;
         addGuruSubcategory(subcategory);
       }
       //set to false
       else {
+        category.active_subcategories -= 1;
         removeGuruSubcategory(subcategory);
       }
     }

@@ -4,7 +4,7 @@
 			<header class="third flex-center bg-charcoal">
 				<h1>Edit University</h1>
 				<div class="header-nav">
-					<a class="header-down" ng-click="universityModal.hide()">
+					<a class="header-down" ng-click="closeModal('university')">
 						<svg viewBox="0 0 100 100">
 							<path d="M14,32 L50,68 L86,32"></path>
 						</svg>
@@ -12,11 +12,11 @@
 				</div>
 				
 				<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-					<input type="search" value="{{user.university.title}}" class='' id='university-input' placeholder="Search for my university" ng-model="universityInput.value" ng-click="onTextClick($event)" />
-			        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='universityInput.value.length === 0'>
+					<input type="search" value="{{user.university.title}}" class='' id='university-input' placeholder="Search for my university" ng-model="search_text.university" ng-click="onTextClick($event)" />
+			        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
 						<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
 			        </a>
-			        <a class='side-icon' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
+			        <a class='side-icon' ng-click='resetUniversities()' ng-if='search_text.university.length'>
 						<i class='icon ion-close-circled text-white'></i>
 			        </a>
 				</div>

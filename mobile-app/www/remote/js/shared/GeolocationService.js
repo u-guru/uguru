@@ -1,16 +1,13 @@
 angular.module('uguru.root.services')
-.factory('Geolocation',
-    [
-    '$rootScope',
+.factory('Geolocation', [
     '$timeout',
     'University',
     'Utilities',
     'Settings',
     Geolocation]);
 
-function Geolocation($rootScope, $timeout, University,
-  Utilities, Settings) {
-  var scope;
+function Geolocation($timeout, University, Utilities, Settings) {
+  
   var isLocated = null;
 
   var settings = {
@@ -26,7 +23,6 @@ function Geolocation($rootScope, $timeout, University,
     settings: settings,
     coordinates: coordinates,
     sortByLocation: sortByLocation,
-    sortByDistance: sortByDistance,
     enableGPS: enableGPS,
     getLocation: getLocation
   };
@@ -42,16 +38,9 @@ function Geolocation($rootScope, $timeout, University,
     }
   }
 
-  function getLocation(scope, list) {
-    if (scope && list) {
-      scope.loader.showAmbig();
-      scope = scope;
-      // list = list;
-    }
+  function getLocation(scope, list, callback) {
 
-    // @nicknaky we should have this within the {{Platform}}Service.js (i.e. ios)
     var posOptions = {
-      timeout: 30000, // 30 seconds, if they 
       enableHighAccuracy: false, //may cause high errors if true
       maximumAge: 3600000 // Accepts a cached position as long as it was within 1 hour
     }
@@ -62,27 +51,24 @@ function Geolocation($rootScope, $timeout, University,
       coordinates.lon = position.coords.longitude;
       console.log('location found!', position.coords.latitude, position.coords.longitude);
       isLocated = true;
-      var nearestResults = [];
+      
       if (list) {
-        nearestResults = sortByLocation( position.coords.latitude,
+        sortByLocation( position.coords.latitude,
                                   position.coords.longitude,
                                   list);
       }
-
-      if (scope) {
-        scope.nearestResults = nearestResults;
-        scope.user.last_position = position.coords;
-        scope.loader.hide();
+      if (callback) {
+        callback(list);
       }
 
       settings.isActive = true;
       settings.isAllowed = true;
 
-      //$window.localStorage['nearest-universities'] = JSON.stringify(scope.universities);
+      
     }
     function geoError(error) {
         console.log("geolocationError: " + error.code);
-        scope.loader.hide();
+
         switch(error.code) {
           case 1: // PERMISSION_DENIED
 
@@ -102,7 +88,7 @@ function Geolocation($rootScope, $timeout, University,
     }
   }
 
-  function sortByLocation(userLat, userLong, list) {
+  function sortByLocation(userLat, userLong, list) {    
 
     for(var i=0; i<list.length; i++) {
 
@@ -113,8 +99,10 @@ function Geolocation($rootScope, $timeout, University,
       list[i].miles = Utilities.numberWithCommas(list[i].rawMiles);
 
     }
-
-    return list.sort(compareDistance);
+    list.sort(compareDistance);
+    deviceGPS.settings.isActive = true;
+    
+    return list
   }
 
   function compareDistance(a, b) {
@@ -125,10 +113,6 @@ function Geolocation($rootScope, $timeout, University,
     return 0;
   }
 
-  function sortByDistance(list) {
-    return list.sort(compareDistance);
-
-  }
 
 
 

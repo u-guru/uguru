@@ -3,6 +3,7 @@ angular.module('uguru.rest', [])
     var University;
     var majors = [];
     var courses = [];
+    var selectedID = null;
     University = {
         get: function() {
             return Restangular
@@ -25,7 +26,8 @@ angular.module('uguru.rest', [])
         majors: majors,
         courses: majors,
         hasNoMajors:hasNoMajors,
-        hasNoCourses:hasNoCourses
+        hasNoCourses:hasNoCourses,
+        selectedID: selectedID
 
     };
     return University;

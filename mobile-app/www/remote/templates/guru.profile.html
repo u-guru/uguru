@@ -13,7 +13,7 @@
 							</a>
 						</div>
 						<nav id="profile-list" class='profile-list-slide'>
-							<ul>
+							<ul class='relative'>
 								<li id="profile-name">
 									<!-- SAMIR -only use .verified if the profile is verified
 									<h1 class="verified">
@@ -26,8 +26,8 @@
 									</h1>
 								</li>
 								<li id="profile-school">{{user.university.title}}</li>
-								<li>
-									<a ng-click='launchContactGuruModal()'><i class='icon ion-email'> </i></a>
+								<li class='absolute right-0'>
+									<a class='absolute right-0' ng-click='launchContactGuruModal()'><i class='icon ion-email'> </i></a>
 								</li>
 							</ul>
 						</nav>

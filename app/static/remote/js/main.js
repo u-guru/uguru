@@ -6,11 +6,12 @@ var FIRST_PAGE='^.' + _startpage;
 // isAdmin = true;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
-var REST_URL = 'https://www.uguru.me';
+var REST_URL = 'https://www.uguru.me'
 
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
+
   BASE = 'remote/';
   BASE_URL = _ipaddress;
 
@@ -35,6 +36,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   DeviceService, uTracker) {
 
   uTracker.init(tracker);
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -49,16 +51,28 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  // if (ionic.Platform.isAndroid()) {
-  //   $ionicConfigProvider.scrolling.jsScrolling(false);
-  // }
+
+  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+
+    return function(exception, cause) {
+
+      Github = $injector.get("Github");
+
+      Github.setExceptionToGithubIssue(true);
+      Github.exceptionToGHIssue(exception, cause);
+
+      $delegate(exception, cause);
+
+    };
+
+  })
 
   //ASK-NICK: what does this mean?
   $ionicConfigProvider.views.transition('platform');
 
   $ionicConfigProvider.tabs.position("bottom");
-  $ionicConfigProvider.views.maxCache(10);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(false);
+  $ionicConfigProvider.views.maxCache(20);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -99,7 +113,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.majors-container', {
         url: '/majors-container',
         templateUrl: BASE + 'templates/majors.container.html',
-        controller: 'AddMajorController',
+        controller: 'AddMajorController'
   }).
   state('root.guru-courses-container', {
         url: '/guru-courses-container',
@@ -161,7 +175,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.become-guru', {
         url: '/become-guru',
-        templateUrl:BASE + 'templates/become.guru.html',
+        templateUrl: BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
   }).
   state('root.offline', {
@@ -249,19 +263,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
           throw "Test error";
         }
   }).
-  state('root.admin', {
-    url: '/admin',
-    template: '<h1> Yay youre admin -- redirecting...</h1>',
-    controller: function($scope, $state, $timeout) {
-      if ($scope.user) {
-        $scope.user.is_admin = true;
-        $scope.user.updateAttr('is_admin', $scope.user, true, null, $scope);
-        $timeout(function() {
-          $state.go('^.home');
-        }, 500);
-      }
-    }
-  }).
+  // state('root.access', {
+  //       url: '/access',
+  //       templateUrl: BASE + 'templates/access.html',
+  //       controller: 'AccessController'
+  // }).
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'

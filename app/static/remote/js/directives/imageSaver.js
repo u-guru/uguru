@@ -3,13 +3,21 @@ angular.module('uguru.directives')
 	return {
 
 		link: function(scope, element, attrs) {
-			if (!scope.platform.mobile || typeof cordova == "undefined" ) {
+			if (!scope.platform.mobile || typeof cordova == "undefined") {
 				 //console.log('imageSaver unavailable since not on mobile device');
 				return;
 			}
 			var assetURL = attrs.ngSrc.toString();
-		 	//console.log("Current ngSrc value: " + assetURL);
-			var directory = cordova.file.dataDirectory;
+		 	
+			var directory = null;
+
+			try {
+				directory = cordova.file.dataDirectory;	
+			} catch(err) {
+				//console.log('Turning off imageSaver since deviceReady did not load in time.');
+				return;
+			}
+			
 			// if(attrs.imageSaver === 'cache' || !Utilities.checkFreeSpace() ) {
 			// 	directory = cordova.file.cacheDirectory;
 			// }
