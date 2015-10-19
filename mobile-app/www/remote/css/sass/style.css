@@ -449,6 +449,45 @@ section {
 .contacting-modal {
   background: white; }
 
+#cards {
+  height: calc(100% - 114px); }
+  #cards ul {
+    height: 100%;
+    overflow: auto;
+    padding: 0 7.5px 7.5px; }
+    #cards ul li {
+      height: calc(100% / 3);
+      padding: 7.5px; }
+      #cards ul li:first-child {
+        padding-top: 0; }
+      #cards ul li * {
+        box-shadow: none !important;
+        text-shadow: none !important; }
+  #cards button {
+    z-index: 10; }
+  #cards .jp-card.jp-card-visa.jp-card-identified .jp-card-front::before,
+  #cards .jp-card.jp-card-visa.jp-card-identified .jp-card-back::before {
+    background: #9A5BC5 !important; }
+  #cards .jp-card.jp-card-discover.jp-card-identified .jp-card-front::before,
+  #cards .jp-card.jp-card-discover.jp-card-identified .jp-card-back::before {
+    background: #8A9EA3 !important; }
+  #cards .jp-card.jp-card-discover.jp-card-identified .jp-card-front::after {
+    background: #E5753C !important;
+    box-shadow: none !important; }
+  #cards .jp-card.jp-card-mastercard.jp-card-identified .jp-card-front::before,
+  #cards .jp-card.jp-card-mastercard.jp-card-identified .jp-card-back::before {
+    background: #55A4B7 !important; }
+  #cards .card-list-item {
+    width: 100%; }
+
+#edit-cards {
+  height: calc(100% - 114px); }
+  #edit-cards .jp-card .jp-card-front,
+  #edit-cards .jp-card .jp-card-back {
+    background: #757575 !important; }
+  #edit-cards .card-modal-wrapper-0 {
+    padding: 0 15px 15px; }
+
 #contact-type {
   height: calc(100% - 114px); }
   #contact-type #contact-type-list {

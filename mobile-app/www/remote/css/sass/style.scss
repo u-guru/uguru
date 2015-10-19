@@ -441,6 +441,59 @@ section {
 	background: white;
 }
 
+// CARDS MODAL
+#cards {
+	height: calc(100% - 114px);
+	ul {
+		height: 100%;
+		overflow: auto;
+		padding: 0 7.5px 7.5px;
+		li {
+			height: calc(100% / 3);
+			padding: 7.5px;
+			&:first-child {
+				padding-top: 0;
+			}
+			* {
+				box-shadow: none!important;
+				text-shadow: none!important;
+			}
+		}
+	}
+	button {
+		z-index: 10;
+	}
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-back::before {
+		background: $eggplant!important;
+	}
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-back::before {
+		background: $campus!important;
+	}
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::after {
+		background: $orange!important;
+		box-shadow: none!important;
+	}
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-back::before {
+		background: $azure!important;
+	}
+	.card-list-item {
+		width: 100%;
+	}
+}
+#edit-cards {
+	height: calc(100% - 114px);
+	.jp-card .jp-card-front,
+	.jp-card .jp-card-back {
+		background: $taupe!important;
+	}
+	.card-modal-wrapper-0 {
+		padding: 0 15px 15px;
+	}
+}
+
 // GURU CONTACT TYPES MODAL
 #contact-type {
 	height: calc(100% - 114px);
