@@ -243,7 +243,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.launchContactGuruModal = function() {
-      
+
       if (!$scope.profile.edit_mode) {
         $scope.contactGuruModal.show();
       }
@@ -769,8 +769,6 @@ angular.module('uguru.guru.controllers')
       $timeout(function() {
         $scope.initModalsAfterEnter();
       }, 500)
-
-
 
     });
 

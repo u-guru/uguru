@@ -29,10 +29,13 @@ body {
 
 body.platform-ios ul li.active, body.platform-ios ul li.activated {
   background: rgba(255, 255, 255, 0.2); }
+
 body.platform-ios ul li ::selection {
   background: rgba(255, 255, 255, 0.1); }
+
 body.platform-ios ul li a.active, body.platform-ios ul li a.activated {
   background: rgba(255, 255, 255, 0.2); }
+
 body.platform-ios ul li a:hover, body.platform-ios ul li .list .list-item a:hover {
   background: rgba(255, 255, 255, 0.1); }
 
@@ -45,13 +48,16 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
+
 .uguru-view .request#request header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
+
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
+
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -87,8 +93,10 @@ section {
     transform: rotate(45deg);
     width: 30px;
     height: 30px; }
+
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
+
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -109,6 +117,7 @@ section {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
+
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -179,6 +188,7 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
+
 @media screen and (max-width: 320px) {
   .uguru-view body {
     font-size: 20px; }
@@ -204,9 +214,6 @@ section {
     background: url(../../img/svg/search.svg) no-repeat center center/cover, url(/static/remote/img/svg/search.svg) center/cover no-repeat;
     width: 14px;
     height: 14px; }
-  .uguru-view .header-nav a h1 {
-    font-size: 18px !important;
-    font-weight: 400 !important; }
   .uguru-view #loading svg {
     max-width: 200px; } }
 
@@ -434,9 +441,140 @@ section {
 
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
+
 .terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px; }
+
+.contacting-modal {
+  background: white; }
+
+#contact-type {
+  height: calc(100% - 114px); }
+  #contact-type #contact-type-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: 100%;
+    padding: 0 1px 1px; }
+    #contact-type #contact-type-list li {
+      position: relative;
+      padding: 1px;
+      width: 50%;
+      height: calc(100% / 3); }
+      #contact-type #contact-type-list li > div {
+        display: block;
+        width: 100%;
+        height: 100%; }
+        #contact-type #contact-type-list li > div input {
+          filter: alpha(opacity=0);
+          opacity: 0;
+          display: block;
+          position: absolute;
+          z-index: 9;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          cursor: pointer; }
+        #contact-type #contact-type-list li > div input + span {
+          display: block;
+          width: 100%;
+          height: 100%; }
+          #contact-type #contact-type-list li > div input + span label {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 15px 0 40%;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            background: #40484B; }
+            #contact-type #contact-type-list li > div input + span label svg {
+              display: none;
+              width: 100%;
+              fill: none;
+              stroke: white;
+              stroke-width: 4px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+            #contact-type #contact-type-list li > div input + span label span {
+              display: block; }
+          #contact-type #contact-type-list li > div input + span > span {
+            filter: alpha(opacity=50);
+            opacity: 0.5;
+            display: block;
+            position: absolute;
+            bottom: 1px;
+            left: 1px;
+            width: calc(100% - 2px);
+            height: 40%;
+            background: rgba(255, 255, 255, 0.4) url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center/40px 40px; }
+        #contact-type #contact-type-list li > div input:checked + span span {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+      #contact-type #contact-type-list li:nth-child(1) > div input:checked + span label {
+        background: #81B566; }
+      #contact-type #contact-type-list li:nth-child(2) > div input:checked + span label {
+        background: #69B3A5; }
+      #contact-type #contact-type-list li:nth-child(3) > div input:checked + span label {
+        background: #50A5DD; }
+      #contact-type #contact-type-list li:nth-child(4) > div input:checked + span label {
+        background: #55A4B7; }
+      #contact-type #contact-type-list li:nth-child(5) > div input:checked + span label {
+        background: #8A9EA3; }
+      #contact-type #contact-type-list li:nth-child(6) > div input:checked + span label {
+        background: #9A5BC5; }
+      #contact-type #contact-type-list li:nth-child(1), #contact-type #contact-type-list li:nth-child(2) {
+        padding-top: 0; }
+
+@media screen and (min-height: 568px) {
+  #contact-type #contact-type-list li > div input + span label {
+    padding: 15px 0 30%;
+    font-size: 16px; }
+    #contact-type #contact-type-list li > div input + span label svg {
+      display: block;
+      height: calc(100% - 37px); }
+    #contact-type #contact-type-list li > div input + span label span {
+      padding-bottom: 15px; }
+  #contact-type #contact-type-list li > div input + span > span {
+    height: 30%;
+    background-size: 30px 30px; } }
+
+@media screen and (min-height: 667px) {
+  #contact-type #contact-type-list li > div input + span label {
+    padding: 15px 0 40%;
+    font-size: 20px; }
+    #contact-type #contact-type-list li > div input + span label svg {
+      height: calc(100% - 43px); }
+  #contact-type #contact-type-list li > div input + span > span {
+    height: 40%;
+    background-size: 40px 40px; } }
 
 .category-skills-modal {
   top: calc(100% / 3);
@@ -479,7 +617,7 @@ section {
   top: 0; }
   #experience-modal .main,
   #guru-introduction-modal .main {
-    height: calc(100% - 50px - 64px); }
+    height: calc(100% - 114px); }
     #experience-modal .main .ugrid-3,
     #guru-introduction-modal .main .ugrid-3 {
       margin-top: -10px;
@@ -495,13 +633,16 @@ section {
       #experience-modal .main .ugrid-3 li:nth-child(3),
       #guru-introduction-modal .main .ugrid-3 li:nth-child(3) {
         text-align: right; }
-    #experience-modal .main #exp-input, #experience-modal .main #guru-intro-input,
-    #guru-introduction-modal .main #exp-input,
-    #guru-introduction-modal .main #guru-intro-input {
-      height: calc(100% - 194px); }
+    #experience-modal .main input[type=range],
+    #guru-introduction-modal .main input[type=range] {
+      height: 50px; }
+    #experience-modal .main #exp-input,
+    #experience-modal .main #guru-intro-input,
+    #guru-introduction-modal .main #exp-input, #guru-introduction-modal .main #guru-intro-input {
+      height: calc(100% - 203px); }
     #experience-modal .main #exp-input.removable,
     #guru-introduction-modal .main #exp-input.removable {
-      height: calc(100% - 258px); }
+      height: calc(100% - 267px); }
     #experience-modal .main textarea,
     #guru-introduction-modal .main textarea {
       font-size: 18px;
@@ -512,6 +653,10 @@ section {
   #experience-modal .main textarea {
     font-size: 20px;
     height: 100%; } }
+
+.jp-card-front::before {
+  background-image: none !important; }
+
 .signup-modal header .switch {
   position: absolute;
   bottom: 0;
@@ -527,11 +672,13 @@ section {
       text-align: center; }
     .signup-modal header .switch li .selected {
       border-bottom-color: #69B3A5; }
+
 .signup-modal h1 + h1 {
   margin-top: 0; }
+
 .signup-modal #account-form {
   height: calc(100% - 50px);
-  padding: 15px; }
+  padding: 0 15px 15px; }
   .signup-modal #account-form input {
     margin: 30px 0 15px;
     font-size: 20px; }
@@ -558,6 +705,7 @@ section {
     #account-form input {
       margin-top: 20px !important;
       font-size: 18px !important; } }
+
 .terms-modal {
   color: #2B3234; }
   .terms-modal h3 {
@@ -581,6 +729,7 @@ section {
 
 .faq-modal header.bg-charcoal {
   z-index: 1000 !important; }
+
 .faq-modal iframe {
   min-height: 100%;
   width: 100%; }
@@ -668,6 +817,7 @@ section {
           stroke-width: 9px;
           stroke-linecap: round;
           stroke-linejoin: round; }
+
 .request-modal #request-subcategories {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -790,9 +940,9 @@ section {
             stroke-width: 9px;
             stroke-linecap: round;
             stroke-linejoin: round; }
+
 .request-modal .request-content {
-  height: calc(100% - 50px);
-  padding-bottom: 64px;
+  height: calc(100% - 114px);
   overflow: auto;
   font-weight: 300; }
   .request-modal .request-content input:not([type="text"]) {
@@ -858,6 +1008,7 @@ section {
       .request-modal .request-content .request-loc ul li label {
         display: block;
         width: 100%;
+        font-size: 18px;
         line-height: 46px; }
       .request-modal .request-content .request-loc ul li input:not(:checked) + label {
         color: rgba(64, 72, 75, 0.5);
@@ -1133,6 +1284,7 @@ section {
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
+
 .student-courses-view #course {
   background: white; }
   .student-courses-view #course header {
@@ -1170,15 +1322,19 @@ section {
         color: #2B3234; }
     .student-courses-view #course header .onboarding-search:before {
       background: url(../../img/svg/search-dark.svg) no-repeat center center/cover, url(/static/remote/img/svg/search-dark.svg) center/cover no-repeat; }
+
 .student-courses-view #courses-list ul li label {
   background: #F1F1F1;
   color: #2B3234;
   border-color: #8A9EA3; }
+
 .student-courses-view #courses-list ul li input:checked + label {
   background: #8A9EA3;
   border-color: rgba(255, 255, 255, 0.4) !important; }
+
 .student-courses-view #courses-list ul li input:active + label {
   background: rgba(138, 158, 163, 0.2); }
+
 .student-courses-view #courses-list ul li input:checked:active + label {
   background: #8A9EA3; }
 
@@ -1192,6 +1348,9 @@ section {
   right: 0;
   height: 110%;
   bottom: 0; }
+
+.menu {
+  max-width: 80% !important; }
 
 .side-menu-list {
   position: relative;
@@ -1290,24 +1449,31 @@ section {
       width: 100%;
       height: 100%;
       background: url(../../img/schools.jpg) center center/cover; } }
+
 .guru-mode .list {
   background: #40484B; }
+
 .guru-mode .list-item.active, .guru-mode .list-item.activated {
   background: #8A9EA3; }
+
 .guru-mode .list-item .list-item-icon svg path, .guru-mode .list-item .list-item-icon svg circle {
   stroke: #fff; }
+
 .guru-mode .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
+
 .guru-mode .list-item-agenda {
   background: white;
   color: #2B3234; }
   .guru-mode .list-item-agenda.active, .guru-mode .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
+
 .guru-mode .list-item-mode {
   background: rgba(138, 158, 163, 0.75); }
 
 .student-mode .list {
   background: white; }
+
 .student-mode .list-item {
   color: #40484B; }
   .student-mode .list-item .list-item-icon svg path {
@@ -1317,16 +1483,19 @@ section {
     color: white; }
     .student-mode .list-item.activated svg path, .student-mode .list-item.active svg path {
       stroke: white; }
+
 .student-mode .list-item-profile {
   background: #50A5DD;
   color: white; }
   .student-mode .list-item-profile .list-item-icon svg circle {
     stroke: white; }
+
 .student-mode .list-item-agenda {
   background: #40484B;
   color: white; }
   .student-mode .list-item-agenda:active, .student-mode .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
+
 .student-mode .list-item-mode {
   background: #50A5DD;
   color: white; }
@@ -1364,10 +1533,10 @@ section {
     .action-sheet-wrapper.action-sheet-up .action-sheet-group button {
       padding: 0 10px;
       height: 50px;
-      color: #40484B;
+      color: #40484B !important;
       font-size: 16px;
       font-weight: 600; }
-    .action-sheet-wrapper.action-sheet-up .action-sheet-group button:active {
+    .action-sheet-wrapper.action-sheet-up .action-sheet-group button:active, .action-sheet-wrapper.action-sheet-up .action-sheet-group button.activated {
       background: #F1F1F1; }
     .action-sheet-wrapper.action-sheet-up .action-sheet-group:last-child > *:last-child {
       border-bottom: 0 !important; }
@@ -1770,9 +1939,11 @@ section {
   .home-view #student-home #home-content #trending ul li button {
     width: 100px !important;
     height: 100px !important; } }
+
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search input {
   width: calc(100% - 25px); }
+
 .onboarding progress, .onboarding .progress {
   position: absolute;
   top: 0;
@@ -1791,18 +1962,24 @@ section {
     width: 95%; }
   .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"] {
     width: 86%; }
+
 .onboarding header h1:not(header .header-nav a h1) {
   text-align: center; }
+
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
+
 .onboarding#demographic header::before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
+
 .onboarding#demographic header h1 {
   font-size: 24px; }
+
 .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
+
 .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1940,6 +2117,7 @@ section {
         border-color: rgba(80, 165, 221, 0.1); }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
+
 .onboarding#start {
   background: #40484B; }
   .onboarding#start #start-container {
@@ -1992,6 +2170,7 @@ section {
 
 .courses-view header::before {
   background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
+
 .courses-view #courses-list ul {
   margin: 1px 1px 0; }
   .courses-view #courses-list ul li {
@@ -2034,14 +2213,18 @@ section {
 
 .courses-view:not(.student-courses-view) #course {
   background: #2B3234; }
+
 .courses-view:not(.student-courses-view) #courses-list ul li label {
   background: rgba(255, 255, 255, 0.1);
   border-color: #8A9EA3; }
+
 .courses-view:not(.student-courses-view) #courses-list ul li input:checked + label {
   background: #8A9EA3;
   border-color: white !important; }
+
 .courses-view:not(.student-courses-view) #courses-list ul li input:active + label {
   background: rgba(255, 255, 255, 0.2); }
+
 .courses-view:not(.student-courses-view) #courses-list ul li input:checked:active + label {
   background: #8A9EA3; }
 
@@ -2159,6 +2342,14 @@ section {
       font-size: 20px;
       font-weight: 700;
       text-transform: uppercase; }
+    .photo-view #photo-container #profile-icon span {
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      height: 80%;
+      max-width: 150px;
+      max-height: 150px;
+      overflow: hidden; }
     .photo-view #photo-container #profile-icon svg, .photo-view #photo-container #profile-icon img {
       border-radius: 1000px;
       position: absolute;
@@ -2226,122 +2417,128 @@ section {
         fill: none; }
     .guru-profile-view .round span {
       line-height: 18px; }
-  .guru-profile-view #profile-desc {
-    height: 41%; }
-    .guru-profile-view #profile-desc .profile-slider {
+  .guru-profile-view #profile-desc .profile-slider {
+    position: relative;
+    height: 100%; }
+    .guru-profile-view #profile-desc .profile-slider .slider-slide {
+      padding: 15px 0; }
+    .guru-profile-view #profile-desc .profile-slider #profile-intro {
       position: relative;
-      height: 100%; }
-      .guru-profile-view #profile-desc .profile-slider .slider-slide {
-        padding: 15px 0; }
-      .guru-profile-view #profile-desc .profile-slider #profile-intro {
-        position: relative;
-        margin: 0 15px;
-        height: calc(100% - 30px); }
-        .guru-profile-view #profile-desc .profile-slider #profile-intro div {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          height: 100%;
-          font-size: 20px;
-          font-weight: 600; }
-        .guru-profile-view #profile-desc .profile-slider #profile-intro button + div {
-          height: calc(100% - 64px); }
-      .guru-profile-view #profile-desc .profile-slider .slider-pager {
-        position: relative;
-        bottom: 30px; }
-    .guru-profile-view #profile-desc #profile-icon {
+      margin: 0 15px;
+      height: calc(100% - 30px); }
+      .guru-profile-view #profile-desc .profile-slider #profile-intro div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 20px;
+        font-weight: 600; }
+      .guru-profile-view #profile-desc .profile-slider #profile-intro button + div {
+        height: calc(100% - 64px); }
+    .guru-profile-view #profile-desc .profile-slider .slider-pager {
+      position: relative;
+      bottom: 30px; }
+  .guru-profile-view #profile-desc #profile-icon {
+    border-radius: 1000px;
+    display: block; }
+    .guru-profile-view #profile-desc #profile-icon span {
+      display: block;
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      overflow: hidden; }
+    .guru-profile-view #profile-desc #profile-icon img {
       border-radius: 1000px;
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      height: 100px;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.5); }
+    .guru-profile-view #profile-desc #profile-icon a {
+      position: relative;
       display: block; }
-      .guru-profile-view #profile-desc #profile-icon img {
-        border-radius: 1000px;
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 100px;
-        padding: 5px;
-        background: rgba(255, 255, 255, 0.5); }
-      .guru-profile-view #profile-desc #profile-icon a {
-        position: relative;
-        display: block; }
-        .guru-profile-view #profile-desc #profile-icon a img {
-          filter: alpha(opacity=50);
-          opacity: 0.5; }
-        .guru-profile-view #profile-desc #profile-icon a h1 {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-          width: 100px;
-          font-weight: 700;
-          text-align: center;
-          text-transform: uppercase; }
-      .guru-profile-view #profile-desc #profile-icon a.active, .guru-profile-view #profile-desc #profile-icon a.activated, .guru-profile-view #profile-desc #profile-icon a:active {
-        filter: alpha(opacity=75);
-        opacity: 0.75; }
-    .guru-profile-view #profile-desc #profile-list {
-      text-align: center; }
-      .guru-profile-view #profile-desc #profile-list ul {
-        list-style: none;
-        margin: 0;
-        padding: 0; }
-        .guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
-          margin-top: 10px;
-          padding: 0 10px 3px;
-          color: white;
-          font-size: 28px;
-          font-weight: 600;
-          line-height: 1;
-          text-transform: uppercase; }
-          .guru-profile-view #profile-desc #profile-list ul #profile-name h1 span:last-child svg {
-            display: none; }
-        .guru-profile-view #profile-desc #profile-list ul #profile-school {
-          margin-bottom: 3px;
-          font-size: 20px;
-          font-weight: 400; }
-        .guru-profile-view #profile-desc #profile-list ul #profile-loc {
-          font-size: 16px; }
-          .guru-profile-view #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty)::after {
-            content: ", "; }
-    .guru-profile-view #profile-desc #profile-bars #profile-rating {
+      .guru-profile-view #profile-desc #profile-icon a img {
+        filter: alpha(opacity=50);
+        opacity: 0.5; }
+      .guru-profile-view #profile-desc #profile-icon a h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase; }
+    .guru-profile-view #profile-desc #profile-icon a.active, .guru-profile-view #profile-desc #profile-icon a.activated, .guru-profile-view #profile-desc #profile-icon a:active {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
+  .guru-profile-view #profile-desc #profile-list {
+    text-align: center; }
+    .guru-profile-view #profile-desc #profile-list ul {
       list-style: none;
       margin: 0;
-      padding: 0;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
+      padding: 0; }
+      .guru-profile-view #profile-desc #profile-list ul #profile-name h1 {
+        margin-top: 10px;
+        padding: 0 10px 3px;
+        color: white;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1;
+        text-transform: uppercase; }
+        .guru-profile-view #profile-desc #profile-list ul #profile-name h1 span:last-child svg {
+          display: none; }
+      .guru-profile-view #profile-desc #profile-list ul #profile-school {
+        margin-bottom: 3px;
+        font-size: 20px;
+        font-weight: 400; }
+      .guru-profile-view #profile-desc #profile-list ul #profile-contact {
+        margin: 15px 0; }
+      .guru-profile-view #profile-desc #profile-list ul #profile-loc {
+        font-size: 16px; }
+        .guru-profile-view #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty)::after {
+          content: ", "; }
+  .guru-profile-view #profile-desc #profile-bars #profile-rating {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 75px;
+    padding: 20px;
+    margin: 15px 0;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 24px; }
+    .guru-profile-view #profile-desc #profile-bars #profile-rating li {
       width: 100%;
-      height: 75px;
-      padding: 20px;
-      margin: 15px 0;
-      background: rgba(255, 255, 255, 0.1);
-      font-size: 24px; }
-      .guru-profile-view #profile-desc #profile-bars #profile-rating li {
-        width: 100%;
-        text-align: center; }
+      text-align: center; }
   .guru-profile-view #profile-info .profile-inside {
     padding-bottom: 64px; }
     .guru-profile-view #profile-info .profile-inside h1 {
@@ -2420,7 +2617,9 @@ section {
       width: 50%; }
       .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-child(1), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-child(2) {
         border-top: 0; }
-      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(2), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(3):nth-child(odd), .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(2),
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:nth-last-child(3):nth-child(odd),
+      .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
         border-bottom: 0; }
       .guru-profile-view #profile-info .profile-inside .courses.profile-list-half li:last-child:nth-child(even) {
         display: block; }
@@ -2495,19 +2694,28 @@ section {
     width: 50%; }
     .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-child(1), .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-child(2) {
       border-top: 0; }
-    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(2), .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(3):nth-child(odd), .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(2),
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:nth-last-child(3):nth-child(odd),
+    .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
       border-bottom: 0; }
     .guru-profile-view #profile-info .profile-inside .profile-list-half li:last-child:nth-child(even) {
       display: block; } }
-@media screen and (max-height: 480px) {
+
+.guru-profile-view #profile-desc {
+  height: 64.5%; }
+
+@media screen and (min-height: 568px) {
   .guru-profile-view #profile-desc {
-    height: 49%; } }
+    height: 53%; } }
+
 @media screen and (min-height: 667px) {
   .guru-profile-view #profile-desc {
-    height: 34%; } }
+    height: 45%; } }
+
 @media screen and (min-height: 736px) {
   .guru-profile-view #profile-desc {
-    height: 31%; } }
+    height: 41%; } }
+
 .photo-guru-profile-view {
   color: #2B3234; }
   .photo-guru-profile-view a {
@@ -2993,6 +3201,7 @@ section {
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
   position: relative; }
+
 .credibility-view #credit-slider {
   position: absolute;
   bottom: 0;
@@ -3116,6 +3325,7 @@ section {
       color: #50A5DD; }
       .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
         background: #50A5DD; }
+
 .credibility-view #credibility-content-wrapper {
   position: relative;
   background: #40484B;
@@ -3184,6 +3394,7 @@ section {
         height: 60px; }
   .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body p {
     font-size: 22px; } }
+
 @media screen and (min-width: 414px) {
   .credibility-view #credit-slider ul li {
     font-size: 18px; }
@@ -3193,11 +3404,14 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
+
 .guru-view header::before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
+
 .guru-view #guru-home-content {
   overflow: none !important;
   padding-bottom: 50px; }
+
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -3298,6 +3512,7 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
+
 .guru-view .guru-tip-of-day-slide-box {
   height: calc(100% - 36px); }
   .guru-view .guru-tip-of-day-slide-box .card {
@@ -3339,12 +3554,16 @@ section {
       .guru-view .guru-tip-of-day-slide-box .card .card-content p {
         margin: 10px 0 0;
         font-size: 18px; }
+    .guru-view .guru-tip-of-day-slide-box .card button {
+      border-radius: 0 0 5px 5px; }
   .guru-view .guru-tip-of-day-slide-box .slider-pager {
     bottom: 15px; }
+
 .guru-view #btn-launch-profile:active {
   filter: alpha(opacity=100);
   opacity: 1;
   background: #69B3A5 !important; }
+
 .guru-view #btn-launch-profile + .guru-tip-of-day-slide-box {
   height: calc(100% - 50px); }
 
@@ -3357,14 +3576,17 @@ section {
     transform: none; }
   .guru-view #guru-ranking #guru-stats .stats-bar {
     margin-bottom: 9px; } }
+
 @media screen and (min-height: 568px) {
   .guru-view .guru-tip-of-day-slide-box .card .card-content h2 {
     font-size: 28px; }
   .guru-view .guru-tip-of-day-slide-box .card .card-content p {
     font-size: 22px; } }
+
 @media screen and (min-height: 640px) {
   .guru-view .guru-tip-of-day-slide-box .card .card-content svg {
     display: block; } }
+
 @media screen and (min-width: 414px) {
   .guru-view #guru-ranking > div {
     -webkit-transform: scale(1.2);
@@ -3372,6 +3594,7 @@ section {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2); } }
+
 /* ---------- OFFLINE */
 #offline {
   -ms-box-orient: horizontal;
@@ -3476,6 +3699,7 @@ section {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0); } }
+
 @-moz-keyframes phone-hover {
   0% {
     -webkit-transform: translateY(0);
@@ -3495,6 +3719,7 @@ section {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0); } }
+
 @-ms-keyframes phone-hover {
   0% {
     -webkit-transform: translateY(0);
@@ -3514,6 +3739,7 @@ section {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0); } }
+
 @keyframes phone-hover {
   0% {
     -webkit-transform: translateY(0);
@@ -3533,6 +3759,7 @@ section {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0); } }
+
 @-webkit-keyframes shadow-hover {
   0% {
     -webkit-transform: scale(0.9);
@@ -3552,6 +3779,7 @@ section {
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
     transform: scale(0.9); } }
+
 @-moz-keyframes shadow-hover {
   0% {
     -webkit-transform: scale(0.9);
@@ -3571,6 +3799,7 @@ section {
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
     transform: scale(0.9); } }
+
 @-ms-keyframes shadow-hover {
   0% {
     -webkit-transform: scale(0.9);
@@ -3590,6 +3819,7 @@ section {
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
     transform: scale(0.9); } }
+
 @keyframes shadow-hover {
   0% {
     -webkit-transform: scale(0.9);
@@ -3609,6 +3839,7 @@ section {
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
     transform: scale(0.9); } }
+
 @-webkit-keyframes sweat-roll {
   0% {
     -webkit-transform: translateY(5px);
@@ -3628,6 +3859,7 @@ section {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
+
 @-moz-keyframes sweat-roll {
   0% {
     -webkit-transform: translateY(5px);
@@ -3647,6 +3879,7 @@ section {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
+
 @-ms-keyframes sweat-roll {
   0% {
     -webkit-transform: translateY(5px);
@@ -3666,6 +3899,7 @@ section {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
+
 @keyframes sweat-roll {
   0% {
     -webkit-transform: translateY(5px);
@@ -3685,6 +3919,7 @@ section {
     -ms-transform: translateY(5px);
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
+
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
@@ -3751,5 +3986,3 @@ body.platform-ios {
 .android-access-edge-case {
   bottom: 64px;
   position: absolute; }
-
-/*# sourceMappingURL=style.css.map */

@@ -14,7 +14,6 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  REST_URL = 'http://10.37.129.2:5000'
 
 } else {
   img_base = '/static/'
@@ -141,6 +140,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/guru-experiences',
     templateUrl: BASE + 'templates/guru.experiences.container.html',
     controller: 'ExperiencesController'
+  }).
+  state('root.cards', {
+        url: '/cards',
+        templateUrl: BASE + 'templates/cards.html',
+        controller: 'CardListController'
   }).
   state('root.payments', {
         url: '/payments:cardObj',
