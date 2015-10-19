@@ -270,7 +270,6 @@ angular.module('uguru.util.controllers')
 
         $scope.defaultFallbackPlan = function(err) {
             // no university.id && no courses && no majors after attempt to load
-
             if (!LOCAL && !$scope.user.university_id && !$scope.user.university) {
                 $state.go("^.university");
                 alert('Something went wrong... Please contact support!' + $state.current.name);

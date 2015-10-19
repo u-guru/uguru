@@ -123,6 +123,26 @@ angular.module('uguru.guru.controllers')
       $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
 
     }
+    $scope.removeGuruSkill = function(skill,index)
+    {
+        if (!confirm('Remove ' + skill.name + '?')) {
+          return;
+        }
+      // delete from local
+       $scope.user.guru_subcategories.splice(index, 1);
+
+       // update server 
+       $scope.loader.show();
+
+       var confirmCallback = function() {
+         $scope.success.show(0, 2000, skill.name+ ' successfully removed');
+       }
+
+       // $timeout(function() {
+       $scope.refreshTipsAndRanking($scope.user);
+       $scope.user.updateAttr('remove_guru_subcategory', $scope.user, skill, confirmCallback, $scope);
+       // }, 200);
+    }
 
     $scope.removeGuruSubcategory = function(subcategory) {
       if (!confirm('Remove ' + subcategory.name + '?')) {
@@ -637,22 +657,6 @@ angular.module('uguru.guru.controllers')
         $scope.user.updateAttr('remove_guru_course', $scope.user, course, null, $scope);
       }, 200);
 
-    }
-    $scope.removeGuruSkill = function(skill,index)
-    {
-       console.log(skill);
-      // console.log("Check usr guru :", $scope.user.guru_subcategories);
-        if (!confirm('Remove ' + skill.name + '?')) {
-          return;
-        }
-      // delete from local
-       $scope.user.guru_subcategories.splice(index, 1);
-       // update server 
-       $scope.loader.show();
-       $timeout(function() {
-         $scope.refreshTipsAndRanking($scope.user);
-         $scope.user.updateAttr('remove_guru_subcategory', $scope.user, skill, null, $scope);
-       }, 200);
     }
 
     $scope.launchConfirmEmailPopup = function() {
