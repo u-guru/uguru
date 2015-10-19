@@ -42,9 +42,27 @@ angular.module('uguru.util.controllers')
          Utilities, Category, DownloadService, PopupService,
          KeyboardService, ModalService, Github) {
 
-        //DeviceService.readyDevice();
-        // console.log('1. checking for app updates\n');
-        // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
+        var bodyRect = document.querySelector('body').getBoundingClientRect();
+        var windowHeight = bodyRect.width;
+        var windowWidth = bodyRect.height;
+
+        $scope.window = {
+            width:windowWidth,
+            height:windowHeight
+        }
+
+        // GABRIELLE gTODO: Define these values
+        var desktopHeightLimit = 1000;
+        var desktopWidthLimit= 1000;
+
+        var isDesktopMode = function(height, width) {
+            console.log('CURRENT SCREEN HEIGHT', height, width);
+            return height > desktopHeightLimit && width > desktopWidthLimit;
+        }
+
+        $scope.desktopMode = isDesktopMode(windowHeight, windowWidth);
+
+        console.log('DesktopMode', $scope.desktopMode);
 
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
@@ -84,10 +102,6 @@ angular.module('uguru.util.controllers')
         }, 101);
 
         $scope.isLocalServer = LOCAL || false;
-
-        $scope.window = {
-            width: document.querySelector('body').getBoundingClientRect().width
-        }
 
         $scope.user = {};
 
