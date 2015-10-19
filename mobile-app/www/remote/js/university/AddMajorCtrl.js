@@ -19,6 +19,8 @@ angular.module('uguru.util.controllers')
   $localstorage, uTracker, University) {
 
 
+
+
     $scope.refresh = {
       majors: ''
     };

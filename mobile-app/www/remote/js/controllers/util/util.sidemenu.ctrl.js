@@ -75,6 +75,11 @@ angular.module('uguru.util.controllers')
       ModalService.open(modalName, $scope);
     };
 
+    $scope.openLoginModal = function() {
+      $scope.root.vars.loginMode = true;
+      $scope.openModal('login');
+    }
+
     $scope.closeModal = function(modalName) {
       ModalService.close(modalName);
     };
