@@ -25,6 +25,61 @@ from mixpanel import Mixpanel
 mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 
 
+################
+## Bens Views ##
+################
+
+@app.route('/admin/stats/universities/')
+def admin_statistics_universities():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    from lib.universities import filterPrepared, filterPreparedWithEmails, calcAndSortedPrepared
+
+    ## Queries database for all universities
+    universities = University.query.all()
+
+    ## Some old universities dont have ids
+    universities = [university for university in universities if university.id]
+
+    ## Prepared information dictionary w/ missing fields
+    final_universities, prepared_info = calcAndSortedPrepared(universities)
+
+    full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100]
+    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 80]
+    shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50]
+    dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
+    atleast_fifty_universities = full_prepared_universities + eighty_prepared_universities + shitty_prepared_universities
+    return render_template("admin/admin.stats.universities.html", \
+        universities = universities, \
+        prepared_universities=final_universities,
+        prepared_info_dict=prepared_info,
+        full_prepared_universities=full_prepared_universities,
+        eighty_prepared_universities=eighty_prepared_universities,
+        shitty_prepared_universities=shitty_prepared_universities,
+        atleast_fifty_universities=atleast_fifty_universities)
+
+
+@app.route('/admin/stats/universities/<uni_id>')
+def admin_statistics_one_university(uni_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    university = University.query.get(uni_id)
+
+    from lib.universities import filterStudentsWithBalance
+
+    students_with_balances = filterStudentsWithBalance(university.students)
+    print len(students_with_balances)
+    print students_with_balances
+    return render_template("admin/admin.stats.one.university.html", \
+        university=university, s_balances=students_with_balances)
+    # university = University.query.all()
+
+
+    # prepared_universities = filterPrepared(universities)
+
+
 ###############
 ## NEW ADMIN ##
 ###############
@@ -164,46 +219,7 @@ def admin_stats_campaigns():
     return render_template("admin/admin.stats.campaigns.html", university_arr=results_arr, sum=_sum, \
         remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
 
-@app.route('/admin/stats/universities/')
-def admin_statistics_universities():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
 
-    from lib.universities import filterPrepared, filterPreparedWithEmails
-
-    ## Queries database for all universities
-    universities = University.query.all()
-
-    prepared_universities = filterPrepared(universities)
-    prepared_with_emails_universities = filterPreparedWithEmails(universities)
-
-    ## Together --> print list of prepared (top 50)
-    ## Together --> hyperlink top (top 50)
-
-    return render_template("admin/admin.stats.universities.html", \
-        universities = universities, \
-        prepared_universities=prepared_universities,
-        prepared_with_emails_universities=prepared_with_emails_universities)
-
-
-@app.route('/admin/stats/universities/<uni_id>')
-def admin_statistics_one_university(uni_id):
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-
-    university = University.query.get(uni_id)
-
-    from lib.universities import filterStudentsWithBalance
-
-    students_with_balances = filterStudentsWithBalance(university.students)
-    print len(students_with_balances)
-    print students_with_balances
-    return render_template("admin/admin.stats.one.university.html", \
-        university=university, s_balances=students_with_balances)
-    # university = University.query.all()
-
-
-    # prepared_universities = filterPrepared(universities)
 
 @app.route('/admin/search/instagram')
 def admin_instagram_search(uni_id):
@@ -221,7 +237,7 @@ def admin_instragram_results(query):
 
     return render_template("Hello World")
 
-# 
+#
 @app.route('/admin/search/instagram')
 def admin_instagram(uni_id):
     if not session.get('admin'):
@@ -231,6 +247,7 @@ def admin_instagram(uni_id):
         ### Together --> create menu bar
 
     return render_template("Hello World")
+
 
 #Step 1--> create a route 
 @app.route('/admin/search/monoprice/<query_str>')
@@ -249,8 +266,19 @@ def admin_search_monoprice(query_str):
     results_dict_json = open('mono_price.json')
     load_as_json_obj = json.load(results_dict_json)
     from pprint import pprint
+
     #pprint(load_as_json_obj)
     results_arr = [ load_as_json_obj[key] for key in load_as_json_obj.keys()]
+    pprint(results_dict)
+    ## TODO GET the number of stars
+    ## TODO GET THE TITLE
+    ## TODO GET THE IMAGE_URL
+    ##
+
+    results_arr = [ results_dict[key] for key in results_dict.keys() ]
+
+    # Step 5 --> render the dictionary in a presentable format
+
     return render_template("admin/admin.monoprice.query.html", query_results=results_arr, query_str=query_str)
 
 @app.route('/admin/search/monoprice/cart')
@@ -501,7 +529,7 @@ def admin_team_calendar():
 def lte_theme():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
-    return redirect("/static/admin/index2.html")
+    return redirect("/static/admin/index.html")
 
 
 @app.route('/admin/bugs/')
@@ -531,7 +559,7 @@ def admin_logout():
 
 
 # from static.data.ben import getAllUsNewsUniversities
-    
+
 
 @app.route('/admin/universities/ben/stats/<arg>')
 def ben_stats(arg=None):
@@ -553,19 +581,19 @@ def ben_stats(arg=None):
         return json.dumps(result)
     # else:
     #     return json.dumps(result_dict, indent=4)
-    
+
 
 
 @app.route('/admin/ben/flickr/<uni_name>')
 def flickr_ben_admin(uni_name):
     def html_image_string(url):
         return '<img src="%s" alt="Smiley face" height="auto" width="%s">' % (url, '100%')
-    from lib.flickr_wrapper import parse_flickr_response, search_university_response_api, process_returned_photos    
+    from lib.flickr_wrapper import parse_flickr_response, search_university_response_api, process_returned_photos
 
     flickrResponse = search_university_response_api(tags='Panorama', text=uni_name, all_or='all')
     arr = process_returned_photos(parse_flickr_response(flickrResponse))
     urls = [html_image_string(item['url']) for item in arr][0:5]
-    
+
     html_strings_of_imgs = " ".join(urls)
 
     return html_strings_of_imgs
