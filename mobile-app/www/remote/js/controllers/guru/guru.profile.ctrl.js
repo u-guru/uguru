@@ -528,7 +528,8 @@ angular.module('uguru.guru.controllers')
 
       if (DeviceService.doesCordovaExist() && $scope.platform.mobile) {
         $scope.root.vars.profile_url_changed = true;
-        Camera.takePicture($scope, index, true);
+        var elemId = 'guru-profile-img';
+        Camera.takePicture($scope, index, elemId);
       } else {
         var element = document.getElementById('file-input-guru-edit-profile')
         element.click();
@@ -541,7 +542,7 @@ angular.module('uguru.guru.controllers')
 
 
       if ($scope.platform.mobile) {
-        Camera.takePicture($scope, index, true, $scope.user.id);
+        Camera.takePicture($scope, index, $scope.user.id);
       } else {
         var element = document.getElementById('file-input-guru-add-transcript');
         element.click();

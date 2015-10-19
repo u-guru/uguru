@@ -29,8 +29,17 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		return modal.isShown();
 	}
 
-	function open(modalName) {
+	function open(modalName, $scope) {
 		console.log("opening " + modalName);
+
+		if(modalName === 'login') {
+			modalName = 'signup';
+			$scope.root.vars.loginMode = true;
+		}
+		else if (modalName === 'signup') {
+			$scope.root.vars.loginMode = false;	
+		}
+
 		var modal = controller[modalName];
 		uTracker.track(tracker, modalName + ' modal');
 		$timeout(function() {
