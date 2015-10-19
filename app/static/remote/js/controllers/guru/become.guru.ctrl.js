@@ -69,9 +69,34 @@ angular.module('uguru.guru.controllers')
 
       if (index === 0) {
 
-
-
         uTracker.track(tracker, 'Become Guru: Majors');
+        console.log("inside majors slide");
+
+        var majorsList = document.querySelectorAll('#major-list');
+        
+        $timeout(function() {
+          if (Utilities.isElementInViewport(majorsList)) {
+            var majors = majorsList[0].querySelectorAll('ul li');
+            if(majors.length === 0) {
+              $scope.loader.showAmbig('Fetching majors...', 10000);
+
+              var startScanner = $interval(function() {
+                console.log("Waiting for majors to load...");
+                var majors = majorsList[0].querySelectorAll('ul li');
+
+                if (majors.length !== 0) {
+                  console.log("stopping loader");
+                  $scope.loader.hide();
+                  stopLoader();
+                }
+              }, 1000)
+
+              function stopLoader() {
+                $interval.cancel(startScanner);
+              }
+            }
+          }
+        }, 500)
 
         $ionicSideMenuDelegate.canDragContent(false);
       }
@@ -81,24 +106,19 @@ angular.module('uguru.guru.controllers')
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");
 
-
-        $scope.guruCoursesInput = document.getElementById('course-input-1');
-
         var coursesList = document.querySelectorAll('#courses-list');
 
         $timeout(function() {
-
-
           if (Utilities.isElementInViewport(coursesList)) {
-
+            
 
             var items = coursesList[0].querySelectorAll('ul li');
 
             if (items.length === 0) {
               $rootScope.$emit('refreshCourses');
-              $scope.loader.showAmbig('Fetching courses...', 60000);
+              $scope.loader.showAmbig('Fetching courses...', 10000);
 
-              var startLoader = $interval(function() {
+              var startScanner = $interval(function() {
                 console.log("checking if courses are loaded...");
                 var items = coursesList[0].querySelectorAll('ul li');
                 console.log("items.length: " + items.length);
@@ -111,11 +131,13 @@ angular.module('uguru.guru.controllers')
 
 
               function stopLoader() {
-                $interval.cancel(startLoader);
+                $interval.cancel(startScanner);
+                // Display a message about being unable to fetch data and possibly a button to attempt to reconnect.
+
               }
             }
           }
-        }, 1000);
+        }, 500);
       }
 
       else if (index === 2) {

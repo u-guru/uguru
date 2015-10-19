@@ -627,7 +627,8 @@ angular.module('uguru.user', [])
             'all_positions', 'active_sessions', 'student_sessions',
             'guru_sessions', 'conversations', 'devices', 'gurus',
             'cards', 'requests', 'student_ratings', 'guru_ratings',
-            'student_courses', 'cashout_cards'
+            'student_courses', 'cashout_cards', 'guru_skills', 'guru_courses',
+            'guru_languages', 'student_courses', 'departments'
         ];
         for (var index = 0; index < properties.length; index++) {
             var property = properties[index];
@@ -1055,24 +1056,7 @@ angular.module('uguru.user', [])
                             $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
                          }
 
-                        // if ($scope.user && $scope.root.vars.guru_mode && $scope.user.active_guru_sessions
-                        //     && ($scope.user.active_guru_sessions.length > 0 || $scope.user.pending_student_ratings.length > 0)
-                        //     && $scope.launchPendingActions) {
 
-
-
-                        //       $scope.launchPendingActions();
-
-                        // }
-
-                        // if ($scope.user && !$scope.root.vars.guru_mode
-                        //     && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)
-                        //     && $scope.launchPendingActions) {
-
-
-                        //       $scope.launchPendingActions();
-
-                        // }
 
                     }
 
@@ -1416,7 +1400,7 @@ angular.module('uguru.user', [])
         },
         clearAttrUser: function(payload, $scope) {
 
-            User.clearAttr(payload, user.id).then(function(user) {
+            User.clearAttr(payload, $scope.user.id).then(function(user) {
 
                 var processed_user = processResults(user.plain());
 

@@ -627,7 +627,8 @@ angular.module('uguru.user', [])
             'all_positions', 'active_sessions', 'student_sessions',
             'guru_sessions', 'conversations', 'devices', 'gurus',
             'cards', 'requests', 'student_ratings', 'guru_ratings',
-            'student_courses', 'cashout_cards'
+            'student_courses', 'cashout_cards', 'guru_skills', 'guru_courses',
+            'guru_languages', 'student_courses', 'departments'
         ];
         for (var index = 0; index < properties.length; index++) {
             var property = properties[index];
@@ -1416,7 +1417,7 @@ angular.module('uguru.user', [])
         },
         clearAttrUser: function(payload, $scope) {
 
-            User.clearAttr(payload, user.id).then(function(user) {
+            User.clearAttr(payload, $scope.user.id).then(function(user) {
 
                 var processed_user = processResults(user.plain());
 

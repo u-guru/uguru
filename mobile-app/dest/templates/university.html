@@ -5,7 +5,8 @@
   <u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
   <ion-view class='uguru-view university-view' >
   <section id="school" class="onboarding" >
-  	<header class="third flex-center ng-class:{'compressed-search':keyboardOpen}">
+  	<header class="third flex-center">
+      <!-- <header class="third flex-center ng-class:{'compressed-search':keyboardOpen}"> -->
   		<h1>Find Your Community</h1>
   		<div class="header-nav" ng-if='LOCAL'>
   	        <a class="header-nav-back" ng-click='goToAccessAdmin()'>
@@ -16,15 +17,15 @@
   			</a>
   		</div>
   		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-  	        <input type="search" id='university-input' class=''
-  				placeholder="Search for my university"
-  				ng-model="universityInput.value"
-  				ng-focus="universityInputFocused()"
+            <input type="search" id='university-input' class=''
+          placeholder="Search for my university"
+  				ng-model="search_text.university"
+          
   	        />
-  	        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='universityInput.value.length === 0'>
+  	        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
   				<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
   	        </a>
-  	        <a class='side-icon' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
+  	        <a class='side-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
   				<i class='icon ion-close-circled text-white'></i>
   	        </a>
   		</div>
@@ -32,7 +33,7 @@
   	<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">
   		<ul class='list list-item-border'>
   			<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
-  				<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
+  				<a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
   					<span class="school-icon list-icon-left">
   						<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
   					</span>

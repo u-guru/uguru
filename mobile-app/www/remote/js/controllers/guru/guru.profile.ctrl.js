@@ -301,7 +301,7 @@ angular.module('uguru.guru.controllers')
         }).then(function(modal) {
             if (experience) {
               $scope.experience = experience;
-              $scope.experience_index = index;
+              // $scope.experience_index = index;
             } else {
               $scope.experience = {
                 name: '',
@@ -412,6 +412,16 @@ angular.module('uguru.guru.controllers')
         $scope.languageInput = document.querySelector('#language-input')
       }, 250)
     }
+
+    $scope.closeContactGuruModal = function()
+    {
+        $scope.contactGuruModal.hide();
+         $ionicSlideBoxDelegate.update();
+    };
+
+
+
+
 
     $scope.connectWithFacebook = function() {
       $scope.loader.show();
@@ -642,6 +652,8 @@ angular.module('uguru.guru.controllers')
             PopupService.close('confirmEmail');
           } else {
             alert("Please enter a valid email.");
+             $scope.popupInput.emailConfirm = "";
+            return;
           }
       }
     }
@@ -701,7 +713,7 @@ angular.module('uguru.guru.controllers')
 
       } else {
         alert('Please enter valid phone number.');
-
+        // $scope.popupInput.phoneConfirm = "";
         return;
       }
     }
@@ -724,6 +736,7 @@ angular.module('uguru.guru.controllers')
 
       } else {
         alert('Please enter valid phone number');
+        $scope.popupInput.phoneConfirm = "";
         return;
       }
 

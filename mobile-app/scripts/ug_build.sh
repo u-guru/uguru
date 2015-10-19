@@ -64,6 +64,8 @@ if [ $# == 1 ];
 		cordova plugin add cordova-plugin-splashscreen@1.0.0
 
 		cordova platform add ios@3.8
+		# NICK -- plz leave this here for me!
+		# cordova plugin add ~/Git/packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 		cordova plugin add /Users/nlmac/Git/uguru/mobile-app/plugins_ios/specific/phonegap-facebook-plugin/ --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 		printf '\e[0;36mOpening xCode project and giving back control... \e[0m\n'
 		printf '\e[0;36mMake sure to set the correct signing identity and build with xCode. \e[0m\n'

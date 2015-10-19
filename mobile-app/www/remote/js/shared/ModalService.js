@@ -31,7 +31,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 
 	function open(modalName) {
 		console.log("opening " + modalName);
-		var modal = controller[modalName]; 
+		var modal = controller[modalName];
 		uTracker.track(tracker, modalName + ' modal');
 		$timeout(function() {
 			modal.show();
@@ -42,8 +42,8 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 	function close(modalName) {
 		console.log("closing " + modalName);
 
-		if(DeviceService.doesCordovaExist() && typeof window.cordova.plugins.Keyboard !== 'undefined') {
-			window.cordova.plugins.Keyboard.close();
+		if(DeviceService.doesCordovaExist() && cordova.plugins.Keyboard) {
+			cordova.plugins.Keyboard.close();
 		}
 		$timeout(function() {
 			controller[modalName].hide();
@@ -61,7 +61,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 			modal.removeEventListener(clickClose);
 			modal.hide();
 		}
-		
+
 		modal.addEventListener('click', clickClose);
 	}
 
@@ -79,7 +79,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		var options = {
 			scope: $scope,
 			animation: 'slide-in-up',
-			focusFirstInput: false	
+			focusFirstInput: false
 		}
 		switch (modalName) {
 			case 'university':
@@ -90,7 +90,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 				break;
 			default: break;
 		}
-		
+
 
 	}
 
@@ -99,7 +99,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		var options = {
 			scope: $scope,
 			animation: 'slide-in-up',
-			focusFirstInput: false	
+			focusFirstInput: false
 		}
 
 		$ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', options).then(function(modal) {
@@ -117,7 +117,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 
 		$ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', options).then(function(modal) {
 		    signup = modal;
-		});	
+		});
 
 		$timeout(function() {
 				controller.faq= faq,
@@ -127,9 +127,9 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 
 		}, 3000);
 
-		
+
 	}
-	
+
 
 
 

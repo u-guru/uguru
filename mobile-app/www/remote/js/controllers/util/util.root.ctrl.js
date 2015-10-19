@@ -128,6 +128,7 @@ angular.module('uguru.util.controllers')
         $scope.user.is_admin = typeof LOCAL !== "undefined";
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
+        $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
         $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
@@ -157,7 +158,7 @@ angular.module('uguru.util.controllers')
                         callback(majors);
                     }
                 }, 0);
-                
+
             },
             function() {
                 //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
@@ -267,7 +268,36 @@ angular.module('uguru.util.controllers')
             }, 250);
         };
 
+        $scope.defaultFallbackPlan = function(err) {
+            // no university.id && no courses && no majors after attempt to load
 
+            if (!LOCAL && !$scope.user.university_id && !$scope.user.university) {
+                $state.go("^.university");
+                alert('Something went wrong... Please contact support!' + $state.current.name);
+            }
+
+            if (LOCAL && !$scope.user.university_id && !$scope.user.university_id && $scope.user.id) {
+                if (confirm('No courses or majors because you refreshed. Click OK to default to Berkeley, or cancel to go back to access.')) {
+                    AdminServices.setDefaultCoursesAndMajors(scope);
+                    $state.go('^.home');
+                }
+            } else {
+                if (!$scope.root.vars.processRedirect) {
+                    alert('No courses or majors because you refreshed. Redirecting...');
+                    $scope.loader.showAmbig();
+                    $scope.root.vars.processRedirect = true;
+                    $timeout(function() {
+                      $scope.root.vars.processRedirect = false;
+                      $scope.loader.hide();
+                      $scope.loader.showSuccess('Process Complete', 2000);
+                    }, 2000);
+                }
+                $state.go('^.university');
+            }
+
+        }
+
+        // TODO-REFACTOR
         $scope.loader = {
             show: function() {
                 $ionicLoading.show({
@@ -304,6 +334,16 @@ angular.module('uguru.util.controllers')
                 $ionicLoading.show({
                     scope: $scope,
                     templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
+                    duration: duration || 1000
+                });
+                $scope.root.vars.loaderOn = true;
+            },
+            showFailure: function(text, duration) {
+                $scope.ambigLoaderText = text || '';
+
+                $ionicLoading.show({
+                    scope: $scope,
+                    templateUrl: BASE + 'templates/u.loader.failure.svg.html',
                     duration: duration || 1000
                 });
                 $scope.root.vars.loaderOn = true;

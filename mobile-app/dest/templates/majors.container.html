@@ -1,5 +1,5 @@
 <section can-swipe-back='false'id="major" class="onboarding charcoal-bg full-xy">
-    <header class="third flex-center-wrap ng-class:{'compressed-search':keyboardOpen}" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
+    <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
         <h1 class="text-center">Select your major</h1>
         <div class="header-nav">
             <a class="header-nav-back" ng-click='goBackToStudentHome()'>
@@ -24,7 +24,7 @@
             </a>
         </div>
     </header>
-    <header ng-if='guruMajorModal.isShown();' class="third flex-center ng-class:{'compressed-search':!keyboardOpen}">
+    <header ng-if='guruMajorModal.isShown();' class="third flex-center">
         <div class="header-nav">
             <a class="header-down" ng-click="guruMajorModal.hide()">
                 <svg viewBox="0 0 100 100">

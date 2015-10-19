@@ -6,10 +6,20 @@ angular.module('uguru.directives')
 		angular.element(element).bind('click', callback);
 
 		function callback(e) {
-			var input = element[0].querySelector('input');
-			$timeout(function() {
-				input.focus();
-			}, 0);
+			if(element[0].tagName === 'input') {
+				$timeout(function() {
+					element[0].focus();
+				}, 0);
+				e.preventDefault();
+
+			} else {
+				var input = element[0].querySelector('input');
+				$timeout(function() {
+					input.focus();
+				}, 0);
+				e.preventDefault();	
+			}
+			
 			
 		}
 	}

@@ -100,13 +100,16 @@ angular.module('uguru.util.controllers')
 
       uTracker.track(tracker, 'Support Modal');
 
-      var isDevice = DeviceService.doesCordovaExist();
+      // nick --> this works right now the other one doesn't on ios -- playing it safe
+      $scope.supportModal.show();
 
-      if (!isDevice) {
-        $scope.supportModal.show();
-      } else {
-        InAppBrowser.openSupport();
-      }
+      // var isDevice = DeviceService.doesCordovaExist();
+
+      // if (!isDevice) {
+      //   $scope.supportModal.show();
+      // } else {
+      //   InAppBrowser.openSupport();
+      // }
 
 
       // $scope.supportModal.show();
@@ -119,10 +122,10 @@ angular.module('uguru.util.controllers')
 
 
 
-    
+
 
     $scope.attemptToResetPassword = function() {
-      
+
 
       if (!Utilities.validateEmail($scope.signupForm.email)) {
         alert('Please enter valid email');
@@ -294,6 +297,7 @@ angular.module('uguru.util.controllers')
             }
             var failureCallback = function(resp) {
               $scope.loader.hide();
+              $scope.defaultFallbackPlan(resp);
               $scope.loader.showSuccess('Something went wrong ... Please contact support!', 1500);
               PopupService.close('editPassword');
 
@@ -430,7 +434,7 @@ angular.module('uguru.util.controllers')
                 $timeout(function() {
                   $scope.launchUniversityModal();
                 }, 0);
-                
+
                 $timeout(function() {
                   $scope.loader.hide();
                 }, 500);

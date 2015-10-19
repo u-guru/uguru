@@ -1580,7 +1580,10 @@ section {
     background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
     margin-top: 3px;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     margin-right: -50px; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
