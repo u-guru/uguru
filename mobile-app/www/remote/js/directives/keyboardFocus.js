@@ -1,12 +1,16 @@
 angular.module('uguru.directives')
-.directive('keyboardFocus', function (DeviceService) {
+.directive('keyboardFocus', function (DeviceService, $timeout) {
 
 	function link ($scope, element, attr) {
 
-		angular.element(element).bind('click', exec);
+		angular.element(element).bind('click', callback);
 
-		function exec(e) {
-			element.focus();
+		function callback(e) {
+			var input = element[0].querySelector('input');
+			$timeout(function() {
+				input.focus();
+			}, 0);
+			
 		}
 	}
 
