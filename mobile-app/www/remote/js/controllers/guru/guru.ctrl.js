@@ -8,7 +8,6 @@ angular.module('uguru.guru.controllers', [])
   '$state',
   '$ionicPlatform',
   '$cordovaStatusbar',
-  '$ionicModal',
   '$timeout',
   '$q',
   'University',
@@ -19,12 +18,14 @@ angular.module('uguru.guru.controllers', [])
   '$ionicActionSheet',
   'RankingService',
   'TipService',
+  'ModalService',
+  'PopupService',
   '$ionicSlideBoxDelegate',
   'ModalService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
-  $ionicModal, $timeout, $q, University, $localstorage,
+  $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet, RankingService, TipService, $ionicSlideBoxDelegate,ModalService)     {
+  $ionicActionSheet, RankingService, TipService, ModalService, PopupService, $ionicSlideBoxDelegate) {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
@@ -48,77 +49,57 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.page = {guru_ranking: 0};
   $scope.user.guru_ranking = $scope.user.guru_ranking || 75;
 
-  $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
-          scope: $scope,
-          animation: 'slide-in-up'
-      }).then(function(modal) {
-          $scope.signupModal = modal;
-  });
-  // console.log('TEST',$scope.guru_mode,$scope.user, $scope.user.id);
 
-  $scope.launchSignupModal = function() {
-      // $scope.signupModal.show();
-      ModalService.open('signup', $scope);
-
-
-  }
-
+  $scope.openModal = function(modalName) {
+    ModalService.open(modalName, $scope);
+  };
 
 
   $scope.launchWelcomeGuruPopup = function() {
-      var homeCenterComponent = document.getElementById('guru-home');
-      var uguruPopup = document.getElementById('home-uguru-popup');
-      $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
-        function (modal){
-          modal.classList.add('show');
-        }
-      );
-      $scope.closeWelcomePopup = function() {
-        if ($scope.reverseAnimatePopup) {
-          $scope.reverseAnimatePopup();
-        }
-        var uguruPopup = document.getElementById('home-uguru-popup');
-        uguruPopup.classList.remove('show');
 
+    PopupService.init('welcomeGuru', 'home-uguru-popup');
+    PopupService.open('welcomeGuru');
+  }
+
+
+      var getIonicSideMenuOpenRatio = function() {
+          var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+          return openRatio;
       }
-    }
 
-
-        var getIonicSideMenuOpenRatio = function() {
-            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            return openRatio;
-        }
-
-        var isSideMenuOpen = function(ratio) {
-            if (!ratio && ratio !== -1) {
-                $scope.sideMenuActive = false;
-            } else {
-                $timeout(function() {
-                    $scope.sideMenuActive = true;
-                }, 250)
-            }
-        }
-
-        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
-
-        $scope.launchGuruRankingPopup = function() {
-
-          var homeCenterComponent = document.getElementById('guru-home');
-          var uguruPopup = document.getElementById('guru-ranking-popup');
-          $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
-            function (modal){
-              modal.classList.add('show');
-            }
-          );
-          $scope.closeWelcomePopup = function() {
-            if ($scope.reverseAnimatePopup) {
-              $scope.reverseAnimatePopup();
-            }
-            var uguruPopup = document.getElementById('guru-ranking-popup');
-            uguruPopup.classList.remove('show');
-
+      var isSideMenuOpen = function(ratio) {
+          if (!ratio && ratio !== -1) {
+              $scope.sideMenuActive = false;
+          } else {
+              $timeout(function() {
+                  $scope.sideMenuActive = true;
+              }, 250)
           }
-        }
+      }
+
+      $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+
+
+        // $scope.launchGuruRankingPopup = function() {
+
+
+
+        //   var homeCenterComponent = document.getElementById('guru-home');
+        //   var uguruPopup = document.getElementById('guru-ranking-popup');
+        //   $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
+        //     function (modal){
+        //       modal.classList.add('show');
+        //     }
+        //   );
+        //   $scope.closeWelcomePopup = function() {
+        //     if ($scope.reverseAnimatePopup) {
+        //       $scope.reverseAnimatePopup();
+        //     }
+        //     var uguruPopup = document.getElementById('guru-ranking-popup');
+        //     uguruPopup.classList.remove('show');
+
+        //   }
+        // }
 
         var initGuruRankProgress = function(selector, color, fillColor, setValue) {
           var circle = new ProgressBar.Circle(selector, {
@@ -192,18 +173,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return line;
         }
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up',
-            focusFirstInput: false,
-        }).then(function(modal) {
-            $scope.privacyModal = modal;
-        });
-
-        $scope.launchPrivacyModal = function() {
-          $scope.privacyModal.show();
-        }
-
         $scope.initializeHorizontalProgressBars = function() {
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
@@ -217,9 +186,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         }
 
-        var initGuruRankingCircleProgress = function() {
-
-        }
 
         var haveProgressBarsBeenInitialized = function() {
           return document.querySelectorAll('.progressbar-text').length;
@@ -240,29 +206,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
 
-        $scope.$on('$ionicView.afterEnter', function() {
-
-            var appOnboardingObj = $localstorage.getObject('appOnboarding');
-
-            if (!haveProgressBarsBeenInitialized) {
-              checkIsFirstTimeGuruMode(appOnboardingObj);
-            } else {
-
-              // wait til the bar is loaded
-              $timeout(function() {
-                checkIsFirstTimeGuruMode(appOnboardingObj);
-              }, 5000)
-
-            }
-        });
-
         $scope.goToStateWithTransition = function(state_name, transition) {
           if (!$scope.user.id) {
             $scope.loader.showAmbig();
 
             //make it feel like its coming... when really its just signup ;)
             $timeout(function() {
-              $scope.launchSignupModal();
+              $scope.openModal('signup');
               $scope.loader.hide(100);
             }, 1000)
             return;
@@ -284,6 +234,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.refreshTipsAndRanking($scope.user);
           $ionicSlideBoxDelegate.update();
 
+          var appOnboardingObj = $localstorage.getObject('appOnboarding');
+
           $timeout(function() {
 
             //commented out until it's 100% so won't get in the way of other branches pulling mine.
@@ -303,12 +255,31 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 //show it after the progress is complete
                 $scope.initializeHorizontalProgressBars();
 
+                checkIsFirstTimeGuruMode(appOnboardingObj);
+
               }, 500)
             }
 
           }, 1000)
 
         })
+
+        // $scope.$on('$ionicView.afterEnter', function() {
+
+        //     var appOnboardingObj = $localstorage.getObject('appOnboarding');
+
+        //     if (!haveProgressBarsBeenInitialized) {
+        //       checkIsFirstTimeGuruMode(appOnboardingObj);
+        //     } else {
+
+        //       // wait til the bar is loaded
+        //       $timeout(function() {
+        //         checkIsFirstTimeGuruMode(appOnboardingObj);
+        //       }, 5000)
+
+        //     }
+        // });
+
 
 
 

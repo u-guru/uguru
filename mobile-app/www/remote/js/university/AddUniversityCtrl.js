@@ -125,14 +125,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.resetUniversities = function() {
     $scope.search_text.university = '';
-    // if ($scope.isLocationActive) {
-    //   var userLat = $scope.user.last_position.latitude;
-    //   var userLong = $scope.user.last_position.longitude;
-    //   console.log("lat and long: " + userLat + ", " + userLong);
-    //   $scope.universities = Geolocation.sortByLocation(userLat, userLong, University.getTargetted());
-    // } else {
-    //   $scope.universities = University.getSorted();
-    // }
   };
 
   $scope.closeModal = function(modalName) {

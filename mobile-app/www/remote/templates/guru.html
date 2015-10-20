@@ -43,7 +43,7 @@
 	</header>
 	<div id="guru-home-content" class="two-thirds">
 		<h2 class="section-header">Your University Guru Ranking</h2>
-		<button id="btn-launch-profile" class="btn-caps-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!user.id' ng-click='launchSignupModal()'>Launch My Site</button>
+		<button id="btn-launch-profile" class="btn-caps-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!user.id' ng-click="openModal('signup')">Launch My Site</button>
 		<ion-slide-box show-pager='true' class='guru-tip-of-day-slide-box'>
 			<!--Have CSS take over entire remaining space, dont kno whow to quickly-->
 			<ion-slide ng-repeat='tip in guruHomeTips'>
@@ -88,5 +88,5 @@
 	</a>
 </div>
 
- <div ng-if='launchWelcomeGuruPopup' ng-click='closeWelcomePopup()' class='uguru-popup guru-mode' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.guru.popup.html'"> </div>
+ <div class='uguru-popup ' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.guru.popup.html'"> </div>
 </ion-view>

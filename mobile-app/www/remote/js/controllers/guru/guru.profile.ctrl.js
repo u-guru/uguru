@@ -31,6 +31,8 @@ angular.module('uguru.guru.controllers')
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
   DeviceService) {
 
+    PopupService.initDefaults();
+
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
