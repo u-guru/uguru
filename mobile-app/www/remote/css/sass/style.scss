@@ -1481,7 +1481,7 @@ section {
 			}
 		}
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			li {
 				label {
@@ -1945,7 +1945,7 @@ section {
     		margin-right: -30px;
 		}
 	}
-	#school-list, #school-list-modal {
+	#school-list.onboarding-list, #school-list-modal {
 		ul {
 			li {
 				a {
@@ -2375,7 +2375,7 @@ section {
 						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
 		}
 	}
-	#major-list, #language-list {
+	#major-list.onboarding-list, #language-list {
 		ul {
 			margin-top: 1px;
 			li {

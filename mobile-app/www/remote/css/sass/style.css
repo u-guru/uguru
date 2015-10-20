@@ -1851,22 +1851,22 @@ section {
   background: url(../../img/svg/search-dark.svg) no-repeat center center/cover, url(/static/remote/img/svg/search-dark.svg) center/cover no-repeat;
 }
 
-.student-courses-view #courses-list ul li label {
+.student-courses-view #courses-list.onboarding-list ul li label {
   background: #F1F1F1;
   color: #2B3234;
   border-color: #8A9EA3;
 }
 
-.student-courses-view #courses-list ul li input:checked + label {
+.student-courses-view #courses-list.onboarding-list ul li input:checked + label {
   background: #8A9EA3;
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-.student-courses-view #courses-list ul li input:active + label {
+.student-courses-view #courses-list.onboarding-list ul li input:active + label {
   background: rgba(138, 158, 163, 0.2);
 }
 
-.student-courses-view #courses-list ul li input:checked:active + label {
+.student-courses-view #courses-list.onboarding-list ul li input:checked:active + label {
   background: #8A9EA3;
 }
 
@@ -2450,11 +2450,11 @@ section {
   margin-right: -30px;
 }
 
-.university-view #school-list ul li a, .university-view #school-list-modal ul li a {
+.university-view #school-list.onboarding-list ul li a, .university-view #school-list-modal ul li a {
   font-weight: 300;
 }
 
-.university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
+.university-view #school-list.onboarding-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
   border-radius: 1000px;
   border: 0 !important;
   margin: 10px;
@@ -2463,30 +2463,30 @@ section {
   background: white;
 }
 
-.university-view #school-list ul li a .school-name, .university-view #school-list-modal ul li a .school-name {
+.university-view #school-list.onboarding-list ul li a .school-name, .university-view #school-list-modal ul li a .school-name {
   display: block;
   width: calc(100% - 69px);
   padding-right: 5px;
 }
 
-.university-view #school-list ul li a .school-name b, .university-view #school-list ul li a .school-name i, .university-view #school-list-modal ul li a .school-name b, .university-view #school-list-modal ul li a .school-name i {
+.university-view #school-list.onboarding-list ul li a .school-name b, .university-view #school-list.onboarding-list ul li a .school-name i, .university-view #school-list-modal ul li a .school-name b, .university-view #school-list-modal ul li a .school-name i {
   display: block;
   width: 100%;
   line-height: 1.2;
 }
 
-.university-view #school-list ul li a .school-name b, .university-view #school-list-modal ul li a .school-name b {
+.university-view #school-list.onboarding-list ul li a .school-name b, .university-view #school-list-modal ul li a .school-name b {
   font-size: 20px;
   font-weight: 400;
 }
 
-.university-view #school-list ul li a .school-name i, .university-view #school-list-modal ul li a .school-name i {
+.university-view #school-list.onboarding-list ul li a .school-name i, .university-view #school-list-modal ul li a .school-name i {
   font-size: 16px;
   font-style: normal;
   font-weight: 300;
 }
 
-.university-view #school-list ul li a .school-name .school-title, .university-view #school-list-modal ul li a .school-name .school-title {
+.university-view #school-list.onboarding-list ul li a .school-name .school-title, .university-view #school-list-modal ul li a .school-name .school-title {
   display: block;
   width: 100%;
   overflow: hidden;
@@ -2494,15 +2494,15 @@ section {
   text-overflow: ellipsis;
 }
 
-.university-view #school-list ul li a .school-name .school-city, .university-view #school-list-modal ul li a .school-name .school-city {
+.university-view #school-list.onboarding-list ul li a .school-name .school-city, .university-view #school-list-modal ul li a .school-name .school-city {
   text-transform: capitalize;
 }
 
-.university-view #school-list ul li a .school-name .school-state, .university-view #school-list-modal ul li a .school-name .school-state {
+.university-view #school-list.onboarding-list ul li a .school-name .school-state, .university-view #school-list-modal ul li a .school-name .school-state {
   text-transform: uppercase;
 }
 
-.university-view #school-list ul li a .school-name .school-distance, .university-view #school-list-modal ul li a .school-name .school-distance {
+.university-view #school-list.onboarding-list ul li a .school-name .school-distance, .university-view #school-list-modal ul li a .school-name .school-distance {
   float: right;
   bottom: 0;
   font-size: 12px;
@@ -2510,7 +2510,7 @@ section {
   font-weight: 500;
 }
 
-.university-view #school-list ul li a:active, .university-view #school-list ul li a.active, .university-view #school-list ul li a.activated, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a.active, .university-view #school-list-modal ul li a.activated {
+.university-view #school-list.onboarding-list ul li a:active, .university-view #school-list.onboarding-list ul li a.active, .university-view #school-list.onboarding-list ul li a.activated, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a.active, .university-view #school-list-modal ul li a.activated {
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -2976,11 +2976,11 @@ section {
   background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
 }
 
-.major-view #major-list ul, .major-view #language-list ul, .language-view #major-list ul, .language-view #language-list ul {
+.major-view #major-list.onboarding-list ul, .major-view #language-list ul, .language-view #major-list.onboarding-list ul, .language-view #language-list ul {
   margin-top: 1px;
 }
 
-.major-view #major-list ul li a, .major-view #language-list ul li a, .language-view #major-list ul li a, .language-view #language-list ul li a {
+.major-view #major-list.onboarding-list ul li a, .major-view #language-list ul li a, .language-view #major-list.onboarding-list ul li a, .language-view #language-list ul li a {
   border-color: #8A9EA3;
   margin-bottom: 2px;
   padding: 0 40px 0 20px;
@@ -2989,22 +2989,22 @@ section {
   line-height: 1.2;
 }
 
-.major-view #major-list ul li a:active.active, .major-view #major-list ul li a:active.activated, .major-view #major-list ul li a:focus.active, .major-view #major-list ul li a:focus.activated, .major-view #major-list ul li a:hover.active, .major-view #major-list ul li a:hover.activated, .major-view #language-list ul li a:active.active, .major-view #language-list ul li a:active.activated, .major-view #language-list ul li a:focus.active, .major-view #language-list ul li a:focus.activated, .major-view #language-list ul li a:hover.active, .major-view #language-list ul li a:hover.activated, .language-view #major-list ul li a:active.active, .language-view #major-list ul li a:active.activated, .language-view #major-list ul li a:focus.active, .language-view #major-list ul li a:focus.activated, .language-view #major-list ul li a:hover.active, .language-view #major-list ul li a:hover.activated, .language-view #language-list ul li a:active.active, .language-view #language-list ul li a:active.activated, .language-view #language-list ul li a:focus.active, .language-view #language-list ul li a:focus.activated, .language-view #language-list ul li a:hover.active, .language-view #language-list ul li a:hover.activated {
+.major-view #major-list.onboarding-list ul li a:active.active, .major-view #major-list.onboarding-list ul li a:active.activated, .major-view #major-list.onboarding-list ul li a:focus.active, .major-view #major-list.onboarding-list ul li a:focus.activated, .major-view #major-list.onboarding-list ul li a:hover.active, .major-view #major-list.onboarding-list ul li a:hover.activated, .major-view #language-list ul li a:active.active, .major-view #language-list ul li a:active.activated, .major-view #language-list ul li a:focus.active, .major-view #language-list ul li a:focus.activated, .major-view #language-list ul li a:hover.active, .major-view #language-list ul li a:hover.activated, .language-view #major-list.onboarding-list ul li a:active.active, .language-view #major-list.onboarding-list ul li a:active.activated, .language-view #major-list.onboarding-list ul li a:focus.active, .language-view #major-list.onboarding-list ul li a:focus.activated, .language-view #major-list.onboarding-list ul li a:hover.active, .language-view #major-list.onboarding-list ul li a:hover.activated, .language-view #language-list ul li a:active.active, .language-view #language-list ul li a:active.activated, .language-view #language-list ul li a:focus.active, .language-view #language-list ul li a:focus.activated, .language-view #language-list ul li a:hover.active, .language-view #language-list ul li a:hover.activated {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.major-view #major-list ul li.selected, .major-view #language-list ul li.selected, .language-view #major-list ul li.selected, .language-view #language-list ul li.selected {
+.major-view #major-list.onboarding-list ul li.selected, .major-view #language-list ul li.selected, .language-view #major-list.onboarding-list ul li.selected, .language-view #language-list ul li.selected {
   position: relative;
 }
 
-.major-view #major-list ul li.selected a, .major-view #language-list ul li.selected a, .language-view #major-list ul li.selected a, .language-view #language-list ul li.selected a {
+.major-view #major-list.onboarding-list ul li.selected a, .major-view #language-list ul li.selected a, .language-view #major-list.onboarding-list ul li.selected a, .language-view #language-list ul li.selected a {
   border-color: white !important;
   color: inherit !important;
   font-weight: 600;
   background: #8A9EA3;
 }
 
-.major-view #major-list ul li.selected svg, .major-view #language-list ul li.selected svg, .language-view #major-list ul li.selected svg, .language-view #language-list ul li.selected svg {
+.major-view #major-list.onboarding-list ul li.selected svg, .major-view #language-list ul li.selected svg, .language-view #major-list.onboarding-list ul li.selected svg, .language-view #language-list ul li.selected svg {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);

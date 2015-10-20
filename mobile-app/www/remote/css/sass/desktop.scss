@@ -5,6 +5,13 @@
 	width: 100%;
 	height: 100%;
 	background: $charcoal;
+	#main-logo {
+		@include center-x;
+		top: 30px;
+		display: block;
+		height: 50px;
+		width: 50px;
+	}
 	nav {
 		height: 64px;
 		background: $bakery;
@@ -14,7 +21,12 @@
 		}
 	}
 	.main {
+		padding: 15px;
 		height: calc(100% - 64px);
+		&.default {
+			width: 100%;
+			max-width: 1200px;
+		}
 	}
 }
 
@@ -272,34 +284,71 @@
 
 /* ---------- LOGIN */
 #desktop-login {
+	.main {
+		background: $smoke;
+		.desktop-forms-container {
+			> div {
+				background: white;
+			}
+			.explore {
+				background: $shamrock;
+				font-weight: 600;
+			}
+		}
+	}
+	aside {
+		&::after {
+			background: url(../../img/temp-login.jpg) no-repeat center center,
+						url(/static/remote/img/temp-login.jpg) no-repeat center center;
+		}
+	}
+}
+#desktop-signup {
+	z-index: 9;
+	.main {
+		background: $charcoal;
+		.desktop-forms-container {
+			> div {
+				background: rgba($slate,.2);
+			}
+		}
+	}
+	aside {
+		&::after {
+			background: url(../../img/temp-signup.jpg) no-repeat center center,
+						url(/static/remote/img/temp-signup.jpg) no-repeat center center;
+		}
+	}
+}
+.desktop-forms {
 	@include flex;
 	.main {
 		@include flex;
 		@include flex-center;
 		height: 100%;
 		width: 75%;
-		background: $smoke;
-		#desktop-login-container {
+		.desktop-forms-container {
 			width: 40%;
-			padding: 30px;
-			background: white;
-			h1 {
-				color: $shamrock;
-				font-size: 36px;
-				font-weight: 600;
-				text-align: center;
-			}
-			.desktop-login-buttons {
-				@include flex;
-				-webkit-justify-content: flex-end;
-				justify-content: flex-end;
-				button {
-					margin: 15px 0 0 15px;
-					height: auto;
-					width: auto;
-					padding: 10px 15px;
-					font-size: 16px;
+			> div {
+				padding: 30px;
+				h1 {
+					color: $shamrock;
+					font-size: 36px;
 					font-weight: 600;
+					text-align: center;
+				}
+				.desktop-login-buttons {
+					@include flex;
+					-webkit-justify-content: flex-end;
+					justify-content: flex-end;
+					button {
+						margin: 15px 0 0 15px;
+						height: auto;
+						width: auto;
+						padding: 10px 15px;
+						font-size: 16px;
+						font-weight: 600;
+					}
 				}
 			}
 		}
@@ -311,6 +360,12 @@
 		height: 100%;
 		width: 25%;
 		overflow: hidden;
+		svg {
+			@include center-x;
+			top: 5%;
+			width: 75px;
+			height: 75px;
+		}
 		div {
 			position: relative;
 			z-index: 9;
@@ -336,8 +391,151 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: url(../../img/login-temp.jpg) no-repeat center center,
-						url(/static/remote/img/login-temp.jpg) no-repeat center center;
+		}
+	}
+}
+
+/* ---------- DESKTOP LISTS */
+.desktop-search {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	.main {
+		height: auto;
+		form {
+			input {
+				color: white;
+				height: 64px;
+			}
+			input, label {
+				font-size: 36px;
+			}
+			label {
+				top: 6px;
+			}
+			label.active {
+				font-size: 24px;
+			}
+		}
+		.desktop-search-list {
+			.desktop-card-list {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				margin: 0 -15px;
+				li {
+					width: 25%;
+					padding: 15px;
+					a {
+						@include transition(.15s ease-in-out);
+						display: block;
+						position: relative;
+						background: rgba(white,.25);
+						border-bottom: 10px solid;
+						border-radius: 2px;
+						overflow: hidden;
+						cursor: pointer;
+						* {
+							@include transition(.15s ease-in-out);
+							cursor: pointer;
+						}
+						.list-item-overlay {
+							@include opacity(0);
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+						}
+						&:hover {
+							.list-item-overlay {
+								@include opacity(.9);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- GURU ONBOARDING */
+.desktop-guru-onboarding {
+	.main {
+		.desktop-search-list {
+			.desktop-card-list {
+				li {
+					a {
+						@include flex;
+						@include flex-center;
+						height: 150px;
+						padding: 15px;
+						font-weight: 600;
+						line-height: 1.25;
+						text-align: center;
+						&:hover {
+							background: $campus;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- UNIVERSITY */
+#desktop-university {
+	.main {
+		.desktop-search-list {
+			.desktop-card-list {
+				li {
+					a {
+						.school-icon {
+							@include round;
+							display: block;
+							margin: 0 auto;
+							padding: 15px 15px 10px;
+							width: 90px;
+							height: 85px;
+						}
+						img {
+							@include round;
+							display: block;
+							width: 60px;
+							height: 60px;
+							background: white;
+						}
+						.school-name {
+							display: block;
+							padding: 0 15px 15px;
+							text-align: center!important;
+							.school-title {
+								@include flex;
+								@include flex-bottom;
+								margin-bottom: 3px;
+								font-size: 20px;
+								font-weight: 600;
+								line-height: 1.25;
+								height: 50px;
+							}
+							.school-location {
+								display: block;
+								font-size: 14px;
+								font-weight: 400;
+								text-align: center!important;
+								.school-city {
+									text-transform: capitalize;
+								}
+								.school-state {
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
