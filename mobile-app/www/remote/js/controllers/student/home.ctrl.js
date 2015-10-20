@@ -39,26 +39,19 @@ angular.module('uguru.student.controllers', [])
             $scope.verbModal = modal;
         });
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/contacting.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.contactingModal = modal;
-        });
+        // $ionicModal.fromTemplateUrl(BASE + 'templates/contacting.modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        // }).then(function(modal) {
+        //     $scope.contactingModal = modal;
+        // });
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.taskVerbModal = modal;
-        });
-
-         $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.taskVerbModal = modal;
-        });
+        // $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        // }).then(function(modal) {
+        //     $scope.taskVerbModal = modal;
+        // });
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
             scope: $scope,
@@ -74,12 +67,12 @@ angular.module('uguru.student.controllers', [])
           }, 250)
         }
 
-        $scope.launchTaskVerbModal = function() {
-            $timeout(function() {
-                $scope.closeVerbModal();
-            }, 500);
-            $scope.taskVerbModal.show();
-        }
+        // $scope.launchTaskVerbModal = function() {
+        //     $timeout(function() {
+        //         $scope.closeVerbModal();
+        //     }, 500);
+        //     $scope.taskVerbModal.show();
+        // }
 
         $scope.hideTaskVerbModal = function() {
             $scope.taskVerbModal.hide();
@@ -150,8 +143,8 @@ angular.module('uguru.student.controllers', [])
 
 
         $scope.launchWelcomeStudentPopup = function() {
-            PopupService.init('welcome', 'home-uguru-popup');
-            PopupService.open('welcome');
+            PopupService.init('welcomeStudent', 'home-uguru-popup');
+            PopupService.open('welcomeStudent');
         }
 
         var checkOnboardingStatus = function() {
@@ -204,7 +197,7 @@ angular.module('uguru.student.controllers', [])
             }
             $timeout(function() {
                 checkOnboardingStatus();
-            }, 600);
+            }, 500);
             $ionicSlideBoxDelegate.update();
 
             // $timeout(function() {

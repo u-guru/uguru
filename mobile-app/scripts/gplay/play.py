@@ -120,7 +120,10 @@ def main():
   try:
 
     if '-u' in args[1:]:
-      upload_apk(service)
+      print "Uploading x87 device version... Make take a while"
+      upload_apk(service, DEFAULT_PACKAGE_NAME, DEFAULT_FILE_PATH, 'uguru-x86-signed.apk')
+      print "Uploading armv7 device version... Make take a while"
+      upload_apk(service, DEFAULT_PACKAGE_NAME, DEFAULT_FILE_PATH, 'uguru-armv7-signed.apk')
     if '-l' in args[1:]:
       list_apks(service, DEFAULT_PACKAGE_NAME)
 

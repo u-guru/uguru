@@ -15,7 +15,7 @@ if [ $# == 1 ];
 
 	if [ $platform == 'android' ]; then
 		printf "\e[0;36mBuilding for $platform \e[0m\n"
-		cordova platform rm ios
+		# cordova platform rm ios
 		cordova platform rm android
 		rm -rf plugins/com.phonegap.plugins.facebookconnect
 		rm -rf plugins/*
