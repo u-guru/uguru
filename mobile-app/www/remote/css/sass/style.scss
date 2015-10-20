@@ -2421,7 +2421,7 @@ section {
 						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
 		}
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			margin: 1px 1px 0;
 			li {
@@ -2473,7 +2473,7 @@ section {
 	#course {
 		background: $charcoal;
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			li {
 				label {

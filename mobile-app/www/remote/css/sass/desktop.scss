@@ -472,11 +472,67 @@
 						@include flex-center;
 						height: 150px;
 						padding: 15px;
+						border-bottom: 10px solid rgba(white,.3);
 						font-weight: 600;
 						line-height: 1.25;
 						text-align: center;
 						&:hover {
 							background: $campus;
+						}
+					}
+					a svg, label svg {
+						@include center-xy;
+						width: 100%;
+						height: 100%;
+						padding: 30px;
+						background: rgba($campus,.8);
+						border-radius: 2px;
+						path {
+							fill: none;
+							stroke: white;
+							stroke-width: 8px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
+						}
+					}
+				}
+				.selected {
+					a {
+						border-color: white;
+					}
+				}
+			}
+		}
+	}
+}
+// COURSES
+#desktop-courses {
+	.main {
+		.desktop-search-list {
+			.desktop-card-list {
+				li {
+					.name-only {
+						span {
+							@include flex;
+							@include flex-center;
+							height: 100%;
+						}
+					}
+					a {
+						font-size: 20px;
+						text-align: center;
+						span {
+							display: block;
+							width: 100%;
+							text-align: center;
+						}
+						.course-name {
+							font-size: 14px;
+						}
+						.course-title {
+							@include flex;
+							@include flex-center;
+							height: 84px;
 						}
 					}
 				}

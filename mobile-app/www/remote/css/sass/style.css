@@ -3022,16 +3022,16 @@ section {
   background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
 }
 
-.courses-view #courses-list ul {
+.courses-view #courses-list.onboarding-list ul {
   margin: 1px 1px 0;
 }
 
-.courses-view #courses-list ul li {
+.courses-view #courses-list.onboarding-list ul li {
   position: relative;
   border: 1px solid transparent;
 }
 
-.courses-view #courses-list ul li label {
+.courses-view #courses-list.onboarding-list ul li label {
   display: block;
   width: 100%;
   padding: 15px 20px;
@@ -3041,7 +3041,7 @@ section {
   text-align: left;
 }
 
-.courses-view #courses-list ul li label span {
+.courses-view #courses-list.onboarding-list ul li label span {
   display: block;
   width: 100%;
   overflow: hidden;
@@ -3049,12 +3049,12 @@ section {
   text-overflow: ellipsis;
 }
 
-.courses-view #courses-list ul li label span:first-child {
+.courses-view #courses-list.onboarding-list ul li label span:first-child {
   font-size: 14px;
   line-height: 1.2;
 }
 
-.courses-view #courses-list ul li input {
+.courses-view #courses-list.onboarding-list ul li input {
   filter: alpha(opacity=0);
   opacity: 0;
   position: absolute;
@@ -3067,12 +3067,12 @@ section {
   cursor: pointer;
 }
 
-.courses-view #courses-list ul li input:checked + label {
+.courses-view #courses-list.onboarding-list ul li input:checked + label {
   color: inherit !important;
   font-weight: 600;
 }
 
-.courses-view #courses-list ul li input:checked:active + label {
+.courses-view #courses-list.onboarding-list ul li input:checked:active + label {
   filter: alpha(opacity=75);
   opacity: 0.75;
 }
@@ -3081,21 +3081,21 @@ section {
   background: #2B3234;
 }
 
-.courses-view:not(.student-courses-view) #courses-list ul li label {
+.courses-view:not(.student-courses-view) #courses-list.onboarding-list ul li label {
   background: rgba(255, 255, 255, 0.1);
   border-color: #8A9EA3;
 }
 
-.courses-view:not(.student-courses-view) #courses-list ul li input:checked + label {
+.courses-view:not(.student-courses-view) #courses-list.onboarding-list ul li input:checked + label {
   background: #8A9EA3;
   border-color: white !important;
 }
 
-.courses-view:not(.student-courses-view) #courses-list ul li input:active + label {
+.courses-view:not(.student-courses-view) #courses-list.onboarding-list ul li input:active + label {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.courses-view:not(.student-courses-view) #courses-list ul li input:checked:active + label {
+.courses-view:not(.student-courses-view) #courses-list.onboarding-list ul li input:checked:active + label {
   background: #8A9EA3;
 }
 
