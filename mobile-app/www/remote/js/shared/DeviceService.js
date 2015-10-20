@@ -13,12 +13,13 @@ angular
   '$ionicHistory',
   '$templateCache',
   '$localstorage',
+  'PushService',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
 	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
-  University, Version, $ionicHistory, $templateCache, $localstorage) {
+  University, Version, $ionicHistory, $templateCache, $localstorage, PushService) {
 
   var currentDevice;
   var firstTime = true;
@@ -190,6 +191,9 @@ function DeviceService($cordovaNgCardIO,
 		  		case "android":
             Geolocation.getLocation(scope);
 		  			AndroidService.ready();
+            if(doesCordovaExist()) {
+              PushService.init();
+            }
 		  			break;
 	  			case "windows":
 	  				WindowsService.ready();

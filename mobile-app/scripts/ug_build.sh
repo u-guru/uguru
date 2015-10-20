@@ -35,9 +35,32 @@ if [ $# == 1 ];
 		# cordova plugin add cordova-plugin-geolocation
 		# cordova plugin add cordova-plugin-splashscreen@1.0.0
 
+		printf "\e[0;36mInstalling and configuring the Android Support Libray v13 for Facebook and Push plugins... \e[0m\n"
+
+		# rm -f ./plugins_android/specific/phonegap-plugin-push/src/android/libs/gcm.jar
+		# rm -f ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/libs/android-support-v4
+		# # cp -f ./plugins_android/specific/android-support-v13.jar ./plugins_android/specific/phonegap-plugin-push/src/android/libs/
+		# cp -f ./plugins_android/specific/android-support-v13.jar ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/libs/
+
+		
+		# cp -f ./plugins_android/specific/fb_settings/AndroidManifest.xml ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/
+		# cp -f ./plugins_android/specific/fb_settings/build.gradle ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/
+		# cp -f ./plugins_android/specific/fb_settings/project.properties ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/
+
+		# cp -f ./plugins_android/specific/push_settings/plugin.xml ./plugins_android/specific/phonegap-plugin-push/plugin.xml
+
 
 		cordova platform add android@4.1
-		cordova plugin add ./plugins_android/specific/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+
+		cordova plugin add ./plugins_android/specific/phonegap-plugin-push
+		
+		# cordova plugin add https://github.com/uofmmike/PushPlugin
+		
+		cordova plugin add ./plugins_android/specific/phonegap-facebook-plugin --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+
+
+		# cp plugins_android/specific/build-extras.gradle platforms/android/
+
 		cordova build android
 
 	fi

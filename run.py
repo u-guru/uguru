@@ -14,4 +14,4 @@ else:
 if __name__ == '__main__':
 
 	# manager.run()
-    app.run(host='10.37.129.2', port=5000)
+    app.run(host='192.168.12.159', port=5000)

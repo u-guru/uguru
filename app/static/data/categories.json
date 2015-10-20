@@ -2,31 +2,22 @@
     "Academic": {
         "background_url": "./img/categories/bg/academic.jpg", 
         "description": "", 
-        "hex_color": "cerise", 
+        "hex_color": "bg-cerise", 
         "icon_url": "./img/categories/icon/academic.svg", 
         "id": 5, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 0, 
+        "num_gurus": 3, 
         "num_subcategories": 4, 
         "subcategories": [
-            {
-                "description": "", 
-                "icon_url": null, 
-                "id": 25, 
-                "is_active": false, 
-                "is_approved": false, 
-                "name": "In Person", 
-                "num_gurus": 0
-            }, 
             {
                 "description": "", 
                 "icon_url": null, 
                 "id": 26, 
                 "is_active": false, 
                 "is_approved": false, 
-                "name": "Remote (Video Chat)", 
-                "num_gurus": 0
+                "name": "In Person", 
+                "num_gurus": 3
             }, 
             {
                 "description": "", 
@@ -34,8 +25,8 @@
                 "id": 27, 
                 "is_active": false, 
                 "is_approved": false, 
-                "name": "Q&A", 
-                "num_gurus": 0
+                "name": "Remote (Video Chat)", 
+                "num_gurus": 3
             }, 
             {
                 "description": "", 
@@ -43,48 +34,39 @@
                 "id": 28, 
                 "is_active": false, 
                 "is_approved": false, 
+                "name": "Q&A", 
+                "num_gurus": 3
+            }, 
+            {
+                "description": "", 
+                "icon_url": null, 
+                "id": 29, 
+                "is_active": false, 
+                "is_approved": false, 
                 "name": "Office Hours", 
-                "num_gurus": 0
+                "num_gurus": 2
             }
         ]
     }, 
     "Baking": {
         "background_url": "./img/categories/bg/baking.jpg", 
         "description": "", 
-        "hex_color": "gold", 
+        "hex_color": "bg-gold", 
         "icon_url": "./img/categories/icon/baking-small.svg", 
         "id": 2, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 0, 
+        "num_gurus": 6, 
         "num_subcategories": 7, 
         "subcategories": [
-            {
-                "description": "", 
-                "icon_url": null, 
-                "id": 6, 
-                "is_active": false, 
-                "is_approved": false, 
-                "name": "Cake", 
-                "num_gurus": 0
-            }, 
-            {
-                "description": "", 
-                "icon_url": null, 
-                "id": 7, 
-                "is_active": false, 
-                "is_approved": false, 
-                "name": "Cupcakes", 
-                "num_gurus": 0
-            }, 
             {
                 "description": "", 
                 "icon_url": null, 
                 "id": 8, 
                 "is_active": false, 
                 "is_approved": false, 
-                "name": "Donuts", 
-                "num_gurus": 0
+                "name": "Cake", 
+                "num_gurus": 4
             }, 
             {
                 "description": "", 
@@ -92,13 +74,31 @@
                 "id": 9, 
                 "is_active": false, 
                 "is_approved": false, 
-                "name": "Coffee", 
-                "num_gurus": 0
+                "name": "Cupcakes", 
+                "num_gurus": 5
             }, 
             {
                 "description": "", 
                 "icon_url": null, 
                 "id": 10, 
+                "is_active": false, 
+                "is_approved": false, 
+                "name": "Donuts", 
+                "num_gurus": 5
+            }, 
+            {
+                "description": "", 
+                "icon_url": null, 
+                "id": 11, 
+                "is_active": false, 
+                "is_approved": false, 
+                "name": "Coffee", 
+                "num_gurus": 4
+            }, 
+            {
+                "description": "", 
+                "icon_url": null, 
+                "id": 12, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Flan", 
@@ -107,16 +107,16 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 11, 
+                "id": 13, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cookies", 
-                "num_gurus": 0
+                "num_gurus": 1
             }, 
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 12, 
+                "id": 14, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Brownies", 
@@ -125,38 +125,38 @@
         ]
     }, 
     "Delivery": {
-        "background_url": "./img/categories/bg/delivery.jpg", 
+        "background_url": "./img/categories/bg/tech.jpg", 
         "description": "", 
-        "hex_color": "eggplant", 
-        "icon_url": "./img/categories/icon/delivery-small.svg", 
-        "id": 4, 
+        "hex_color": "bg-azure", 
+        "icon_url": "./img/categories/icon/technology-small.svg", 
+        "id": 1, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 0, 
+        "num_gurus": 1, 
         "num_subcategories": 7, 
         "subcategories": [
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 18, 
+                "id": 1, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Food Delivery", 
-                "num_gurus": 0
+                "num_gurus": 1
             }, 
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 19, 
+                "id": 2, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Car Sharing", 
-                "num_gurus": 0
+                "num_gurus": 1
             }, 
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 20, 
+                "id": 3, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Truck Borrow", 
@@ -165,7 +165,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 21, 
+                "id": 4, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Walgreens Run", 
@@ -174,7 +174,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 22, 
+                "id": 5, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Chipotle, etc Run", 
@@ -183,7 +183,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 23, 
+                "id": 6, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "School Supplies", 
@@ -192,7 +192,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 24, 
+                "id": 7, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Late Night Snack/Coffee", 
@@ -201,72 +201,72 @@
         ]
     }, 
     "Household": {
-        "background_url": "./img/categories/bg/household.jpg", 
+        "background_url": "./img/categories/bg/sports.jpg", 
         "description": "", 
-        "hex_color": "shamrock", 
-        "icon_url": "./img/categories/icon/household-small.svg", 
-        "id": 3, 
+        "hex_color": "bg-lake", 
+        "icon_url": "./img/categories/icon/sports-small.svg", 
+        "id": 7, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 0, 
+        "num_gurus": 4, 
         "num_subcategories": 5, 
         "subcategories": [
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 13, 
+                "id": 39, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Laundry", 
-                "num_gurus": 0
+                "num_gurus": 3
             }, 
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 14, 
+                "id": 40, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Vacuuming", 
-                "num_gurus": 0
+                "num_gurus": 2
             }, 
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 15, 
+                "id": 41, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "House Cleaning", 
-                "num_gurus": 0
+                "num_gurus": 3
             }, 
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 16, 
+                "id": 42, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Dishes", 
-                "num_gurus": 0
+                "num_gurus": 1
             }, 
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 17, 
+                "id": 43, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Build Ikea Furniture", 
-                "num_gurus": 0
+                "num_gurus": 1
             }
         ]
     }, 
     "Photography": {
         "background_url": "./img/categories/bg/photography.jpg", 
         "description": "", 
-        "hex_color": "moola", 
+        "hex_color": "bg-moola", 
         "icon_url": "./img/categories/icon/photography-small.svg", 
         "id": 8, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 0, 
+        "num_gurus": 1, 
         "num_subcategories": 4, 
         "subcategories": [
             {
@@ -285,7 +285,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Professional Headshots", 
-                "num_gurus": 0
+                "num_gurus": 1
             }, 
             {
                 "description": "", 
@@ -303,14 +303,14 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Outdoor & Scenery", 
-                "num_gurus": 0
+                "num_gurus": 1
             }
         ]
     }, 
     "Services": {
         "background_url": "./img/categories/bg/consulting.jpg", 
         "description": "", 
-        "hex_color": "orange", 
+        "hex_color": "bg-orange", 
         "icon_url": "./img/categories/icon/consulting-small.svg", 
         "id": 6, 
         "is_active": true, 
@@ -321,7 +321,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 29, 
+                "id": 30, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Design", 
@@ -330,7 +330,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 30, 
+                "id": 31, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Interview Help", 
@@ -339,7 +339,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 31, 
+                "id": 32, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Resume Building", 
@@ -348,7 +348,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 32, 
+                "id": 33, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Skill Building", 
@@ -357,7 +357,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 33, 
+                "id": 34, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Website Building", 
@@ -366,7 +366,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 34, 
+                "id": 35, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Professional Writing", 
@@ -375,7 +375,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 35, 
+                "id": 36, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Programming Questions", 
@@ -384,7 +384,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 36, 
+                "id": 37, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Internship Mentorship", 
@@ -393,7 +393,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 37, 
+                "id": 38, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Beauty & Grooming", 
@@ -402,11 +402,11 @@
         ]
     }, 
     "Sports & Muscle": {
-        "background_url": "./img/categories/bg/sports.jpg", 
+        "background_url": "./img/categories/bg/household.jpg", 
         "description": "", 
-        "hex_color": "lake", 
-        "icon_url": "./img/categories/icon/sports-small.svg", 
-        "id": 7, 
+        "hex_color": "bg-shamrock", 
+        "icon_url": "./img/categories/icon/household-small.svg", 
+        "id": 3, 
         "is_active": true, 
         "is_approved": true, 
         "num_gurus": 0, 
@@ -415,7 +415,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 38, 
+                "id": 15, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Moving Help", 
@@ -424,7 +424,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 39, 
+                "id": 16, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Team Sports", 
@@ -433,7 +433,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 40, 
+                "id": 17, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Personal Trainer", 
@@ -442,7 +442,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 41, 
+                "id": 18, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Weight Training", 
@@ -451,7 +451,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 42, 
+                "id": 19, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Yoga", 
@@ -460,7 +460,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 43, 
+                "id": 20, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cardio Activities", 
@@ -469,11 +469,11 @@
         ]
     }, 
     "Technology & IT": {
-        "background_url": "./img/categories/bg/tech.jpg", 
+        "background_url": "./img/categories/bg/delivery.jpg", 
         "description": "", 
-        "hex_color": "azure", 
-        "icon_url": "./img/categories/icon/technology-small.svg", 
-        "id": 1, 
+        "hex_color": "bg-eggplant", 
+        "icon_url": "./img/categories/icon/delivery-small.svg", 
+        "id": 4, 
         "is_active": true, 
         "is_approved": true, 
         "num_gurus": 0, 
@@ -482,7 +482,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 1, 
+                "id": 21, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Wifi setup", 
@@ -491,7 +491,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 2, 
+                "id": 22, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Phone Screen Repair", 
@@ -500,7 +500,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 3, 
+                "id": 23, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Computer Repair", 
@@ -509,7 +509,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 4, 
+                "id": 24, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Virus Removal", 
@@ -518,7 +518,7 @@
             {
                 "description": "", 
                 "icon_url": null, 
-                "id": 5, 
+                "id": 25, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Software Setup", 
