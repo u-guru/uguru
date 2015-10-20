@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
-.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate', 'Category', 'RankingService', 'AdminService',
+.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
+    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category, RankingService, AdminService) {
+        $ionicSideMenuDelegate, Category, RankingService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -502,9 +502,9 @@ angular.module('uguru.user', [])
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
 
         $scope.user.is_admin = user.is_admin;
-        if (!$scope.user.is_admin) {
-            AdminService = {};
-        }
+        // if (!$scope.user.is_admin) {
+        //     var AdminService = {};
+        // }
 
 
         $scope.user.active_questions = user.active_questions;

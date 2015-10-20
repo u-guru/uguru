@@ -265,13 +265,15 @@ gulp.task('scripts', function() {
       "js/services/*.js",
       "js/services/hardware/*.js",
       "js/shared/GeolocationService.js",
+
+      "js/shared/DeviceService.js", //first shared service
+      "js/shared/Settings.js",
+      "js/shared/Utilities.js",
       "!js/shared/*LogService.js",
-      "js/shared/DeviceService.js",
       "js/shared/uTracker.js",
       "js/shared/RankingService.js",
       "js/shared/TipService.js",
       "js/shared/Settings.js",
-      "js/shared/Utilities.js",
       "js/directives/*.js",
       "js/device/*.js",
       "js/shared/*.js",

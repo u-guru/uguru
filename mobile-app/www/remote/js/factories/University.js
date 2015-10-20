@@ -20,6 +20,19 @@ angular.module('uguru.rest', [])
         getTargetted: function() {
             return targettedUniversities;
         },
+        getTargettedAccessCodes: function(){
+            var allAccessCodes = [];
+            var targettedUniversitiesCopy = targettedUniversities.slice();
+            for (var i = 0 ; i < targettedUniversitiesCopy.length; i++) {
+                indexTargetAccess = targettedUniversitiesCopy[i].school_mascot_name;
+                if (indexTargetAccess && indexTargetAccess.length) {
+                    var formattedCode = (indexTargetAccess + '2015').replace(" ", "").replace(" ", "").toLowerCase();
+                    allAccessCodes.push(formattedCode);
+                }
+            }
+            console.log(allAccessCodes.length, 'access codes found');
+            return allAccessCodes;
+        },
         getSorted: function() {
             return sortByRank(targettedUniversities);
         },

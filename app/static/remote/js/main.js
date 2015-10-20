@@ -33,9 +33,12 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $state, $ionicHistory,
    Version, $rootScope,
   $templateCache, Device, User,
-  DeviceService, uTracker) {
+  DeviceService, uTracker, $injector) {
 
   uTracker.init(tracker);
+  Github = $injector.get("Github");
+  Github.init();
+  Github.setExceptionToGithubIssue(false);
 
 })
 
@@ -51,14 +54,12 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-
   $provide.decorator("$exceptionHandler", function($delegate, $injector) {
 
     return function(exception, cause) {
 
       Github = $injector.get("Github");
 
-      Github.setExceptionToGithubIssue(true);
       Github.exceptionToGHIssue(exception, cause);
 
       $delegate(exception, cause);
@@ -139,6 +140,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/guru-experiences',
     templateUrl: BASE + 'templates/guru.experiences.container.html',
     controller: 'ExperiencesController'
+  }).
+  state('root.cards', {
+        url: '/cards',
+        templateUrl: BASE + 'templates/cards.html',
+        controller: 'CardListController'
   }).
   state('root.payments', {
         url: '/payments:cardObj',

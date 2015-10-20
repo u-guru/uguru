@@ -1225,8 +1225,8 @@ angular.module('uguru.util.controllers')
           }, 500)
           $scope.loader.showSuccess('Login Successful!', 2500);
 
-          if ($scope.signupModal.isShown()) {
-            $scope.signupModal.hide();
+          if (ModalService.isOpen('signup')) {
+            ModalService.close('signup');
             $timeout(function() {
               if ($scope.user && $scope.user.university && $scope.user.university.id) {
                 MapService.initStudentHomeMap(user);

@@ -45,6 +45,7 @@ angular.module('uguru.util.controllers')
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
+    PopupService.initDefaults();
     ModalService.initDefaults($scope);
 
     $scope.launchAdminActionSheet = function() {
@@ -75,6 +76,11 @@ angular.module('uguru.util.controllers')
       ModalService.open(modalName, $scope);
     };
 
+    $scope.openLoginModal = function() {
+      $scope.root.vars.loginMode = true;
+      $scope.openModal('login');
+    }
+
     $scope.closeModal = function(modalName) {
       ModalService.close(modalName);
     };
@@ -100,13 +106,16 @@ angular.module('uguru.util.controllers')
 
       uTracker.track(tracker, 'Support Modal');
 
-      var isDevice = DeviceService.doesCordovaExist();
+      // nick --> this works right now the other one doesn't on ios -- playing it safe
+      $scope.supportModal.show();
 
-      if (!isDevice) {
-        $scope.supportModal.show();
-      } else {
-        InAppBrowser.openSupport();
-      }
+      // var isDevice = DeviceService.doesCordovaExist();
+
+      // if (!isDevice) {
+      //   $scope.supportModal.show();
+      // } else {
+      //   InAppBrowser.openSupport();
+      // }
 
 
       // $scope.supportModal.show();
@@ -119,10 +128,10 @@ angular.module('uguru.util.controllers')
 
 
 
-    
+
 
     $scope.attemptToResetPassword = function() {
-      
+
 
       if (!Utilities.validateEmail($scope.signupForm.email)) {
         alert('Please enter valid email');
@@ -294,6 +303,7 @@ angular.module('uguru.util.controllers')
             }
             var failureCallback = function(resp) {
               $scope.loader.hide();
+              $scope.defaultFallbackPlan(resp);
               $scope.loader.showSuccess('Something went wrong ... Please contact support!', 1500);
               PopupService.close('editPassword');
 
@@ -428,9 +438,9 @@ angular.module('uguru.util.controllers')
                 $scope.loader.show();
                 console.log("checking");
                 $timeout(function() {
-                  $scope.launchUniversityModal();
+                  $scope.openModal('university');
                 }, 0);
-                
+
                 $timeout(function() {
                   $scope.loader.hide();
                 }, 500);

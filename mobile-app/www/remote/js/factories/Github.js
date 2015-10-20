@@ -1,22 +1,66 @@
 angular.module('uguru.rest')
 .factory('Github', ['Restangular', '$localstorage', function(Restangular, $localstorage) {
-    var Github;
-    var exceptionToGHIssue;
-    Github = {
-        post: function(gh_payload) {
+    // var Github;
+    var sendToGH;
+    var defaultGHEmail = 'samir@uguru.me';
+    var sendToEmail;
+    return {
+        post: post,
+        setExceptionToGithubIssue: setExceptionToGithubIssue,
+        getExceptionToGithubIssue: getExceptionToGithubIssue,
+        setExceptionToEmail: setExceptionToEmail,
+        testSendGHIssue: testSendGHIssue,
+        exceptionToGHIssue: exceptionToGHIssue,
+        getExceptionToEmail: getExceptionToEmail,
+        getExceptionToDefaultEmail: getExceptionToDefaultEmail,
+        init: init,
+        toggleExceptionToEmail: toggleExceptionToEmail,
+        toggleExceptionToGithubIssue: toggleExceptionToGithubIssue
+    }
+        function post(gh_payload) {
             return Restangular
                 .one('github')
                 .customPOST(JSON.stringify(gh_payload));
-        },
-        setExceptionToGithubIssue: function(bool) {
-        	exceptionToGHIssue = bool;
-        	return exceptionToGHIssue;
-        },
-        getExceptionToGithubIssue: function() {
-        	return exceptionToGHIssue;
-        },
-        exceptionToGHIssue: function(exception, cause) {
-        	this.setExceptionToGithubIssue(false);
+        }
+        function init() {
+            sendToGH = false;
+            sendToEmail = false;
+            console.log(sendToGH, sendToEmail);
+        }
+        function setExceptionToGithubIssue(bool) {
+        	sendToGH = bool;
+        	return sendToGH;
+        }
+        function testSendGHIssue() {
+            throw 42;
+        }
+        function setExceptionToEmail(bool, email) {
+            sendToEmail = bool;
+            defaultGHEmail = email || defaultGHEmail;
+            return sendToEmail;
+        }
+        function getExceptionToEmail() {
+            console.log(sendToEmail)
+            return sendToEmail;
+        }
+        function getExceptionToDefaultEmail() {
+            return defaultGHEmail;
+        }
+        function toggleExceptionToEmail() {
+            bool = !getExceptionToEmail();
+            setExceptionToEmail(bool);
+            console.log('Default Email:', defaultGHEmail, 'Val:', bool);
+            return bool;
+        }
+        function toggleExceptionToGithubIssue() {
+            bool = !getExceptionToGithubIssue();
+            setExceptionToGithubIssue(bool);
+            console.log('Create GH Issues from Exceptions:', bool);
+        }
+        function getExceptionToGithubIssue() {
+        	return sendToGH;
+        }
+        function exceptionToGHIssue(exception, cause) {
         	var gh_title;
 		    if (exception.message) {
 		        gh_title =  '"' +  exception.message;
@@ -34,13 +78,13 @@ angular.module('uguru.rest')
 		    }
 		    var gh_body = '*Line*: ' + exception.line + '\n' + '*Column*: ' + exception.column + '\n*File*: ' + exception.location + '\n*File URL*: ' + exception.sourceURL + '\n\n*Message*: ' + exception.message + ', where the cause is _' + JSON.stringify(cause) + '_\n\n*Exception Type*: ' + exception.name + '\n\n*Full Error Object*: \n\n' + JSON.stringify(exception) + '\n\n\n*Full Stack Trace*: \n\n' + exception.stack;
 		    var user = $localstorage.getObject("user");
-		    var user_info = {
-		        id: user.id,
-		        name: user.name,
-		        guru_courses: user.guru_courses,
-		        devices: user.devices,
-		        age: user.time_created,
-		        last_updated: user.last_active
+            var user_info = {
+		        id: user && user.id,
+		        name: user && user.name,
+		        guru_courses: user && user.guru_courses && user.guru_courses.length,
+		        devices: user && user.devices,
+		        age: user && user.time_created,
+		        last_updated: user &&  user.last_active
 		      }
 		    var device_details = {
 		                ios: ionic.Platform.isIOS(),
@@ -56,13 +100,14 @@ angular.module('uguru.rest')
 		        issue_body: gh_body,
 		        user_agent: navigator.userAgent,
 		        user_details: user_info,
-		        device_info: device_details
+		        device_info: device_details,
+                default_email: defaultGHEmail,
+                send_email:sendToEmail,
+                create_issue:sendToGH
 		   	}
-		   	console.log(ghObj);
-		    console.log("Logging GH Issues, getExceptionToGithubIssue");
-		    if (exceptionToGHIssue) {
-
-			    post(ghObj).then(
+            sendToGH = getExceptionToGithubIssue()
+		    if (sendToGH || sendToEmail) {
+                post(ghObj).then(
 			        function(response) {
 			          console.log(response);
 			        },
@@ -70,10 +115,8 @@ angular.module('uguru.rest')
 			          console.log(JSON.stringify(err));
 			        }
 		    	)
-
 		    }
         }
-
     }
-    return Github;
-}]);
+
+]);
