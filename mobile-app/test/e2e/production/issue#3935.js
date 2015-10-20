@@ -282,11 +282,14 @@ describe('#3935 Bugs Check Test',function()
     		it('',function(){});
     	});	
     });
-    it("Check Error Console message",function()
-    	{
-		   browser.manage().logs().get('browser').then(function(browserLogs) {
-			  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
-		   });
-    	});
-
+    // it("Check Error Console message",function()
+    // 	{
+	
+    // 	});
+    afterEach(function()
+    {
+    	   browser.manage().logs().get('browser').then(function(browserLogs) {
+    		  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
+    	   });
+    });
 });
