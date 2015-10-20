@@ -98,7 +98,7 @@ var Course = function()
      {
      	this.nextStep.then(function(items)
  		{
- 			expect(items[1].getText()).toBe('SKILLS')
+ 			expect(items[1].getText()).toBe('NEXT')
  			items[1].click();
  		});
      };
@@ -106,7 +106,7 @@ var Course = function()
      {
      	this.PreviousStep.then(function(items)
  		{
- 			expect(items[0].getText()).toBe('MAJORS')
+ 			expect(items[0].getText()).toBe('BACK')
  			items[0].click();
  		});
      };

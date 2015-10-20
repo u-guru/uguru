@@ -112,7 +112,7 @@ var Major = function()
 	 	// this.nextStep.click();
     	this.nextStep.then(function(items)
 		{
-			expect(items[0].getText()).toBe('COURSES')
+			expect(items[0].getText()).toBe('NEXT')
 			items[0].click();
 		});
 	 };
