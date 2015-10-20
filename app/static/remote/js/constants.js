@@ -1,3 +1,7 @@
 var _local = "true";
 var _startpage = "university";
+<<<<<<< HEAD
 var _ipaddress = "192.168.0.106";
+=======
+var _ipaddress = "192.168.0.102:8100";
+>>>>>>> master

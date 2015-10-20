@@ -173,7 +173,7 @@ angular.module('uguru.student.controllers', [])
             if (!$scope.mapInitialized && !MapService.studentHomeMap) {
                 $scope.mapInitialized = true;
                 $timeout(function() {
-                    $scope.initStudentHomeMap();
+                    // $scope.initStudentHomeMap();
                 }, 1000)
             }
             $timeout(function() {

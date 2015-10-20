@@ -14,6 +14,10 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
+<<<<<<< HEAD
+=======
+  REST_URL = 'http://localhost:5000'
+>>>>>>> master
 
 } else {
   img_base = '/static/'
