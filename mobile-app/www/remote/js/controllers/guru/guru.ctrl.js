@@ -20,10 +20,11 @@ angular.module('uguru.guru.controllers', [])
   'RankingService',
   'TipService',
   '$ionicSlideBoxDelegate',
+  'ModalService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet, RankingService, TipService, $ionicSlideBoxDelegate)     {
+  $ionicActionSheet, RankingService, TipService, $ionicSlideBoxDelegate,ModalService)     {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
@@ -56,7 +57,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   // console.log('TEST',$scope.guru_mode,$scope.user, $scope.user.id);
 
   $scope.launchSignupModal = function() {
-      $scope.signupModal.show();
+      // $scope.signupModal.show();
+      ModalService.open('signup', $scope);
+
+
   }
 
 
