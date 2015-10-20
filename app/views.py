@@ -45,11 +45,12 @@ def admin_statistics_universities():
     ## Prepared information dictionary w/ missing fields
     final_universities, prepared_info = calcAndSortedPrepared(universities)
 
-    full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100]
-    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 80]
+    full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
+    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 90 and prepared_info[university.id]['percentage'] < 100 and university.school_mascot_name == None ]
     shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50]
     dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
-    atleast_fifty_universities = full_prepared_universities + eighty_prepared_universities + shitty_prepared_universities
+    atleast_fifty_universities = eighty_prepared_universities #+ shitty_prepared_universities 
+    
     return render_template("admin/admin.stats.universities.html", \
         universities = universities, \
         prepared_universities=final_universities,
@@ -260,8 +261,8 @@ def admin_search_monoprice(query_str):
     #copy your wrapper into app/lib/
     from lib.monoprice_wrapper import queryMonoprice as query
 
-
-    # Step 4 --> call the results
+ 
+# Step 4 --> call the results
     results_dict = query(query_str)
     results_dict_json = open('mono_price.json')
     load_as_json_obj = json.load(results_dict_json)
@@ -270,41 +271,26 @@ def admin_search_monoprice(query_str):
     #pprint(load_as_json_obj)
     results_arr = [ load_as_json_obj[key] for key in load_as_json_obj.keys()]
     pprint(results_dict)
-    ## TODO GET the number of stars
-    ## TODO GET THE TITLE
-    ## TODO GET THE IMAGE_URL
-    ##
 
-    results_arr = [ results_dict[key] for key in results_dict.keys() ]
+   # results_arr = [ results_dict[key] for key in results_dict.keys() ]
+
 
     # Step 5 --> render the dictionary in a presentable format
 
     return render_template("admin/admin.monoprice.query.html", query_results=results_arr, query_str=query_str)
 
+@app.route('/admin/search/monoprice/<product_id>')
+def AddItemsToCart(product_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin.monoprice.additem.html", product_id = str(product_id))
+
 @app.route('/admin/search/monoprice/cart')
-# ERROR # 1: BEFORE: def items_info_monoprice():
-# ERROR # 2: AFTER: def items_info_monoprice(productid):
-def items_info_monoprice():
+def AddItemsToCart():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     from lib.monoprice_wrapper import AddItemToCart
-    from lib.monoprice_wrapper import getCartItems
-    getCartItems()
-    AddItemToCart(1, str(product_id))
-    each_items = open('each_page_items.json')
-    load_as_json_obj = json.load(each_items)
-    return render_template("admin/admin.monoprice.additem.html",item_list=load_as_json_obj,product_id=product_id)
-
-@app.route('/admin/search/monoprice/<product_id>/confirmation')
-def confirmation_page(product_id):
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    from lib.monoprice_wrapper import getCartItems
-    getCartItems()
-    final_information = open('final_information.json')
-    load_as_json_obj = json.load(final_information)
-    return render_template("admin/admin.monoprice.confirmation.html",final_item_list=load_as_json_obj)
-
+    AddItemToCart(1,str(product_id))
 
 @app.route('/admin/localytics')
 def admin_localytics():

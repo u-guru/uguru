@@ -39,6 +39,7 @@ def calcAndSortedPrepared(universities):
     for university in universities:
         percentage, missing_fields = calcPreparedScore(university)
         prepared_info[university.id] = {'percentage': int(percentage * 100), 'missing':missing_fields}
+
     universities = sorted(universities, key=lambda uni:prepared_info[uni.id]['percentage'], reverse=True)
     print len(universities)
     return universities, prepared_info
@@ -136,6 +137,10 @@ def calcPreparedScore(university):
         if university.banner_url:
             total += 1
         else:
-            missing_fields.append('banner_url')
+            missing_fields.append('banner_url')    
+       
         percentage = float(total) / total_fields
+        percentange_single_int = int(percentage * 100) 
+        
+
         return percentage, missing_fields

@@ -4,7 +4,7 @@ from time import sleep
 def uguruAPI(arg='', _json=None, _type='get'):
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 	if arg: arg = '/' + arg 
-	BASE_URL = 'https://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e3/universities%s' % arg
+	BASE_URL = 'http://localhost:5000/admin/stats/universities%s' % arg
 	
 	if _type == 'get':
 		return json.loads(requests.get(BASE_URL).text)
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     	getUniversity(args[2])
 
     if args[1] in ['update-one', '-uo']:
-    	updateUniversity({'id':2732, 'num_emails':10 })
+    	updateUniversity({'id':381, 'school_mascot_name':'the Pilgrim' })
 
     if args[1] in ['update-emails', '-ue']:
 		updateEmailsForMailgun()    	

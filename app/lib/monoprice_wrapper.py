@@ -34,10 +34,12 @@ def queryMonoprice(query, save_json=True):
 			title = info.findAll('font')
 			span = avg_ratings_parse.findAll('span')
 			for items,title_text,span_parse in zip(a_link,title,span):
+				
 				review_info = items['href']
 				if "#Revi" in review_info:
 					pass
 				else:
+
 					#print review_info
 					item_dictionary['item_title'] = title_text.text
 					item_dictionary['item_url'] = items['href']
@@ -49,7 +51,7 @@ def queryMonoprice(query, save_json=True):
 					item_dictionary['image_url'] = 'http://images.monoprice.com/productmediumimages/' + item_dictionary['product_id'] + "1"+ ".jpg"
 					item_dictionary['avg_ratings'] = str(span_parse).split('hawk-rated')[-1].replace('\"> </span>','')
 					output_dict[ratings] = item_dictionary
-
+						
 				with open('mono_price.json','wb') as outfile:
 					json.dump(output_dict,outfile,indent=4, sort_keys=True)
 
@@ -67,7 +69,7 @@ def removeFromCart(product_id):
 	pass
 
 
-def getCartItems(each_item_arr=False):
+def getCartItems():
 	get_items = {}
 	arr = []
 	add_item_api_url = 'http://www.monoprice.com/MiniCart/RemoveItem'
@@ -75,6 +77,7 @@ def getCartItems(each_item_arr=False):
 	convert_to_json = json.loads(response)
 	get_items['item_count'] = convert_to_json['itemCount']
 	get_items['sub_total'] = convert_to_json['subTotal']
+	print get_items
 	soup = BeautifulSoup(convert_to_json['miniCart'])
 	item_name = soup.findAll('a')
 	item_price = soup.findAll('span','itemPrice')
@@ -87,11 +90,12 @@ def getCartItems(each_item_arr=False):
 		with open('each_page_items.json','wb') as outfile:
 			json.dump(each_page_items,outfile,indent=4)
 	arr.append(get_items)
+	print arr
 	with open('final_information.json','wb') as outfile:
 		json.dump(arr,outfile,indent=4)
-	return arr
+	#return arr
 
-
+getCartItems()
 
 
 def loginToMonoPrice(email_address,password):
@@ -112,7 +116,6 @@ loginToMonoPrice('bendrumm095@gmail.com','123123123vb')
 def fill_in_last_form_1(cookies):
 	payload = {'step': 'step 1'}
 	update_last_step = session.post('https://www.monoprice.com/checkout/updatelaststep',data=payload,cookies = cookies_file).text
-	print "Hello"
 fill_in_last_form_1(cookies=cookies_file)
 
 

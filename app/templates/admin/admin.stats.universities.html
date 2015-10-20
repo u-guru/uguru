@@ -100,6 +100,7 @@
                       </thead>
                       <tbody>
                         {% for university in atleast_fifty_universities %}
+
                         <tr>
                           <td>{{university.id}}
                             <a href='/admin/stats/universities/{{university.id}}' target='_blank'></span>
@@ -142,6 +143,7 @@
                           </td>
                         </tr>
                         {% endfor %}
+                      
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->
