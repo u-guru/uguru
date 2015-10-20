@@ -150,8 +150,8 @@ angular.module('uguru.student.controllers', [])
 
 
         $scope.launchWelcomeStudentPopup = function() {
-            PopupService.init('welcome', 'home-uguru-popup');
-            PopupService.open('welcome');
+            PopupService.init('welcomeStudent', 'home-uguru-popup');
+            PopupService.open('welcomeStudent');
         }
 
         var checkOnboardingStatus = function() {
@@ -204,7 +204,7 @@ angular.module('uguru.student.controllers', [])
             }
             $timeout(function() {
                 checkOnboardingStatus();
-            }, 600);
+            }, 500);
             $ionicSlideBoxDelegate.update();
 
             // $timeout(function() {
