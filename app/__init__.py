@@ -32,6 +32,8 @@ app.config.from_object('config')
 # flask-restful
 api = restful.Api(app)
 
+CORS(app)
+
 # flask_becrypt
 flask_bcrypt = Bcrypt(app)
 

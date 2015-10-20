@@ -6,7 +6,7 @@ import os
 
 
 if os.environ.get('DATABASE_URL'):
-    app.debug = True
+    app.debug = False
 else:
     app.debug = True
 
