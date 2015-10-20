@@ -78,13 +78,14 @@ angular.module('uguru.guru.controllers')
           if (Utilities.isElementInViewport(majorsList)) {
             var majors = majorsList[0].querySelectorAll('ul li');
             if(majors.length === 0) {
-              $scope.loader.showAmbig('Fetching majors...', 10000);
-
+              var timer = 10;
+              $scope.loader.showAmbig('Fetching majors...', (timer * 1000));
+              var counter = 0;
               var startScanner = $interval(function() {
                 console.log("Waiting for majors to load...");
                 var majors = majorsList[0].querySelectorAll('ul li');
-
-                if (majors.length !== 0) {
+                counter++;
+                if (majors.length !== 0 || counter === timer) {
                   console.log("stopping loader");
                   $scope.loader.hide();
                   stopLoader();
@@ -116,13 +117,15 @@ angular.module('uguru.guru.controllers')
 
             if (items.length === 0) {
               $rootScope.$emit('refreshCourses');
-              $scope.loader.showAmbig('Fetching courses...', 10000);
-
+              var timer = 10;
+              $scope.loader.showAmbig('Fetching courses...', (timer * 1000));
+              var counter = 0;
               var startScanner = $interval(function() {
                 console.log("checking if courses are loaded...");
                 var items = coursesList[0].querySelectorAll('ul li');
                 console.log("items.length: " + items.length);
-                if (items.length !== 0) {
+                counter++;
+                if (items.length !== 0 || counter === timer) {
                   console.log("stopping loader");
                   $scope.loader.hide();
                   stopLoader();
@@ -141,6 +144,12 @@ angular.module('uguru.guru.controllers')
       }
 
       else if (index === 2) {
+
+        try {
+          $interval.cancel(startScanner)
+        } catch (err) {
+          console.log("Error in canceling interval startScanner: " + err);
+        }
 
         uTracker.track(tracker, 'Become Guru: Skills');
         $ionicSideMenuDelegate.canDragContent(true);

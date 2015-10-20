@@ -23,6 +23,9 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 	function open(popupName, callback) {
 		$timeout(function() {
 			var popup = controller[popupName];
+			if (typeof source !== 'element') {
+				source = document.getElementById('root-nav');
+			}
 			cta(source, popup, {duration:0},
 				function(modal) {
 					modal.classList.add('show');
@@ -99,7 +102,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 
 
 	function init(popupName, elemId) {
-		source = document.getElementById('root-nav');
+		//source = document.getElementById('root-nav');
 		localPopup = document.getElementById(elemId);
 		controller[popupName] = localPopup;
 	}

@@ -16,7 +16,7 @@
                 </svg>
             </a>
         </div>
-        <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+        <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy" keyboard-focus>
 
             <input submit='fastSelectMajor()' type="search" id='major-input-1' class='' placeholder="My major is..." ng-model="search_text.major"/>
             <a ng-if='search_text.major.length > 0' ng-click='clearSearchInput();' class="major-input-close side-icon">
@@ -33,7 +33,7 @@
             </a>
         </div>
         <h1 class="text-center">Edit Majors</h1>
-        <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+        <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy" keyboard-focus>
             <input type="search" placeholder="My major is..." ng-model="search_text.major" />
             <a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.major.length > 0'>
                 <i class='icon ion-close-circled'> </i>

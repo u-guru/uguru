@@ -32,33 +32,7 @@ angular.module('uguru.student.controllers', [])
         $ionicSideMenuDelegate.canDragContent(false);
 
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/verb.home.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.verbModal = modal;
-        });
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/contacting.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.contactingModal = modal;
-        });
-
-        $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.taskVerbModal = modal;
-        });
-
-         $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.taskVerbModal = modal;
-        });
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
             scope: $scope,
@@ -150,8 +124,8 @@ angular.module('uguru.student.controllers', [])
 
 
         $scope.launchWelcomeStudentPopup = function() {
-            PopupService.init('welcome', 'home-uguru-popup');
-            PopupService.open('welcome');
+            PopupService.init('welcomeStudent', 'home-uguru-popup');
+            PopupService.open('welcomeStudent');
         }
 
         var checkOnboardingStatus = function() {
@@ -204,12 +178,10 @@ angular.module('uguru.student.controllers', [])
             }
             $timeout(function() {
                 checkOnboardingStatus();
-            }, 600);
+            }, 500);
             $ionicSlideBoxDelegate.update();
 
-            // $timeout(function() {
-            //     $scope.launchRequestModal();
-            // }, 1000);
+
 
         });
 

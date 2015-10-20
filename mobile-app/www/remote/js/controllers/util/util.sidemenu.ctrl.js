@@ -45,6 +45,7 @@ angular.module('uguru.util.controllers')
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
+    PopupService.initDefaults();
     ModalService.initDefaults($scope);
 
     $scope.launchAdminActionSheet = function() {
@@ -437,7 +438,7 @@ angular.module('uguru.util.controllers')
                 $scope.loader.show();
                 console.log("checking");
                 $timeout(function() {
-                  $scope.launchUniversityModal();
+                  $scope.openModal('university');
                 }, 0);
 
                 $timeout(function() {
