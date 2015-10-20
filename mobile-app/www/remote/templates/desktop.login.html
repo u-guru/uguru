@@ -1,0 +1,37 @@
+<ion-view class='uguru-view desktop-login-view bg-charcoal'>
+	<main id='desktop-login' class="desktop-mode">
+		<div class="main">
+			<div id="desktop-login-container" ng-show="!root.vars.loginMode">
+				<h1>Create Account</h1>
+				<form>
+            		<div class="input-field">
+            			<input id="name" type="text" class="validate">
+            			<label for="first_name">Name</label>
+            		</div>
+            		<div class="input-field">
+            			<input id="email" type="email" class="validate">
+            			<label for="email">Email</label>
+            		</div>
+            		<div class="input-field">
+            			<input id="password" type="password" class="validate">
+            			<label for="password">Password</label>
+            		</div>
+					<!-- radio input for remember me -->
+					<div class="desktop-login-buttons">
+						<button class="bg-fb caps">Login with Facebook</button>
+						<button class="bg-shamrock caps">Sign up</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<aside>
+			<div>
+				<h1>Got an account?</h1>
+				<p>That’s awesome! You can login by clicking on
+the button below. To skip this next time, you can ask
+us to remember your login credentials.</p>
+				<button class="btn-ghost-white">Login</button>
+			</div>
+		</aside>
+	</main>
+</ion-view>

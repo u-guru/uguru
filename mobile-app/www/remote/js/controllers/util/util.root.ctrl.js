@@ -41,26 +41,35 @@ angular.module('uguru.util.controllers')
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
          KeyboardService, ModalService, Github) {
-
-        var bodyRect = document.querySelector('body').getBoundingClientRect();
-        var windowHeight = bodyRect.width;
-        var windowWidth = bodyRect.height;
-
+            
+            
+        var bodyRect;
+        var windowHeight;
+        var windowWidth;
+        var initHeight = function() {
+            bodyRect = document.querySelector('body').getBoundingClientRect();
+            windowHeight = bodyRect.width;
+            windowWidth = bodyRect.height;
+        }
+    
+        initHeight();
         $scope.window = {
             width:windowWidth,
             height:windowHeight
         }
 
-        // GABRIELLE gTODO: Define these values
-        var desktopHeightLimit = 1000;
-        var desktopWidthLimit= 1000;
+        // GABRIELLE TODO: Define these values
+        var desktopHeightLimit = 700;
+        var desktopWidthLimit= 700;
 
-        var isDesktopMode = function(height, width) {
-            console.log('CURRENT SCREEN HEIGHT', height, width);
+        $scope.isDesktopMode = function(height, width) {
+            initHeight(); 
+            height = height || windowHeight;
+            width = width || windowWidth;
             return height > desktopHeightLimit && width > desktopWidthLimit;
         }
 
-        $scope.desktopMode = isDesktopMode(windowHeight, windowWidth);
+        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
 
         console.log('DesktopMode', $scope.desktopMode);
 
@@ -284,7 +293,7 @@ angular.module('uguru.util.controllers')
 
         $scope.defaultFallbackPlan = function(err) {
             // no university.id && no courses && no majors after attempt to load
-
+            return;
             if (!LOCAL && !$scope.user.university_id && !$scope.user.university) {
                 $state.go("^.university");
                 alert('Something went wrong... Please contact support!' + $state.current.name);

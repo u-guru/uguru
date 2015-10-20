@@ -20,6 +20,13 @@
 	-moz-transition: $type $transition;
 	transition: $type $transition;
 }
+@mixin transition-none {
+	-webkit-transition: none!important;
+	-o-transition: none!important;
+	-ms-transition: none!important;
+	-moz-transition: none!important;
+	transition: none!important;
+}
 @mixin round {
 	border-radius: 1000px;
 }
@@ -232,6 +239,13 @@
 	-o-transform: scale($scale);
 	transform: scale($scale);
 }
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
 @mixin transform-reset {
 	-webkit-transform: none;
 	-moz-transform: none;
@@ -301,6 +315,12 @@
 	animation-name: $name;
 }
 
+@mixin box-sizing {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 $links: 'a:active, a:focus, a:hover';
 $buttons: 'button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover';
 
@@ -338,4 +358,4 @@ $bakery-bg: #FFFDFA;
 
 $icon-bg: no-repeat center center;
 
-$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif!important;
