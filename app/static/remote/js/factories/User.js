@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
-.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate', 'Category', 'RankingService', 'AdminService',
+.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
+    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category, RankingService, AdminService) {
+        $ionicSideMenuDelegate, Category, RankingService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -502,9 +502,9 @@ angular.module('uguru.user', [])
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
 
         $scope.user.is_admin = user.is_admin;
-        if (!$scope.user.is_admin) {
-            AdminService = {};
-        }
+        // if (!$scope.user.is_admin) {
+        //     var AdminService = {};
+        // }
 
 
         $scope.user.active_questions = user.active_questions;
@@ -1056,24 +1056,7 @@ angular.module('uguru.user', [])
                             $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
                          }
 
-                        // if ($scope.user && $scope.root.vars.guru_mode && $scope.user.active_guru_sessions
-                        //     && ($scope.user.active_guru_sessions.length > 0 || $scope.user.pending_student_ratings.length > 0)
-                        //     && $scope.launchPendingActions) {
 
-
-
-                        //       $scope.launchPendingActions();
-
-                        // }
-
-                        // if ($scope.user && !$scope.root.vars.guru_mode
-                        //     && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)
-                        //     && $scope.launchPendingActions) {
-
-
-                        //       $scope.launchPendingActions();
-
-                        // }
 
                     }
 

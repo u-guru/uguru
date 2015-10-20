@@ -12,18 +12,22 @@ angular.module('sharedServices')
 	AdminService
 	]);
 
-function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $timeout,
-    $ionicSideMenuDelegate, $state, DeviceService, Github) {
+function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
+    $ionicSideMenuDelegate, $state, DeviceService) {
 
 	var adminActionSheet;
     var closeAttachActionSheet;
     var adminActionSheetOptions;
     var adminScope;
+    var currentActionSheet;
+
+
 
 	return {
 		showActionSheet:showActionSheet,
         closeAttachActionSheet:closeAttachActionSheet,
         adminScope:adminScope,
+        currentActionSheet: currentActionSheet,
         setDefaultCoursesAndMajors: setDefaultCoursesAndMajors
 	}
 
@@ -33,17 +37,34 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
     	deviceKeyboardOpen = bool;
     }
 
+    function reinitializeAdminActionSheet() {
+        setTimeout(
+            function() {
+                showActionSheet(adminScope)();
+                adminScope.loader.hide();
+            }
+        , 2000)
+    }
+
     function showActionSheet(scope) {
         adminScope = scope;
         initialize(scope);
         return function() {
-            return $ionicActionSheet.show(adminActionSheetOptions);
+            currentActionSheet = $ionicActionSheet.show(adminActionSheetOptions);
+            return currentActionSheet;
         }
     }
 
     function initialize(scope) {
+        adminScope = scope;
+        adminScope.options = {
+            sendExceptionEmail: Github.getExceptionToEmail(),
+            sendExceptionGH: Github.getExceptionToGithubIssue(),
+            defaultSendEmail: Github.getExceptionToDefaultEmail()
+        }
+        console.log("Admin Exception Options:\n", adminScope.options);
         adminActionSheetOptions = {
-            buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Turn on GH Issues'}, {text:'Turn on GH Emails'}, {text:'Update App from..'}],
+            buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }, {text:'Default Email : <strong>' + adminScope.options.defaultSendEmail +'</strong>' }, {text:'Test Exception Options'}, {text:'Update App from..'}],
             buttonClicked: function(index) {
                 handleAdminSheetButtonClick(adminScope, index);
             }
@@ -110,8 +131,6 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
 
     function handleAdminSheetButtonClick(scope, index) {
         // hack
-        scope = adminScope;
-        console.log('passedInScope', scope);
 
         switch(index){
                 case 0:
@@ -176,15 +195,38 @@ function AdminService($localstorage, $ionicActionSheet, Github, DeviceService, $
 
                 case 4:
 
-                    alert("WARNING: You are turning on GH traceback issues", Github.getExceptionToGithubIssue(), "Continue?");
-                    Github.setExceptionToGithubIssue(true)
-                    console.log('setExceptionToGithubIssue', Github.getExceptionToGithubIssue())
+                    currentVal = Github.getExceptionToGithubIssue();
+
+                    if (confirm('Set Github Issue Creation to ' + !currentVal + '?')) {
+                        Github.toggleExceptionToGithubIssue();
+                        adminScope.options.sendExceptionGH = Github.getExceptionToGithubIssue();
+                        console.log('setExceptionToGithubIssue', adminScope.options.sendExceptionGH)
+                        adminScope.loader.showSuccess('Github Issue Creation set to ' +  adminScope.options.sendExceptionGH)
+                        reinitializeAdminActionSheet()
+                        currentActionSheet();
+                    }
                     break;
 
                 case 5:
-                    alert("WARNING: You are turning OFF GH traceback issues", Github.getExceptionToGithubIssue());
+                    currentVal = Github.getExceptionToEmail();
+                    if (confirm('Set Exception Emails to ' + !currentVal + '?')) {
+                        Github.toggleExceptionToEmail()
+                        adminScope.options.sendExceptionEmail = Github.getExceptionToEmail();
+                        console.log('setExceptionToGithubEmail', adminScope.options.sendExceptionEmail)
+                        adminScope.loader.showSuccess('Exception email Creation set to ' +  adminScope.options.sendExceptionEmail)
+                        reinitializeAdminActionSheet()
+                        currentActionSheet();
+                    }
                     break;
                 case 6:
+                    adminScope.options.defaultSendEmail = prompt("Verify sender email or change", adminScope.options.defaultSendEmail)
+                    break;
+                case 7:
+                    if (confirm('Throw a fake exception with current options?')) {
+                        Github.testSendGHIssue();
+                        adminScope.loader.showSuccess('Check GH Issues and/or ' + adminScope.options.defaultSendEmail, 2000);
+                    }
+                case 8:
                     url = prompt("Please enter URL to update from", "http://192.168.0.103:5000/app/")
                     Github.setExceptionToGithubIssue(false)
                     DeviceService.checkUpdates(url);

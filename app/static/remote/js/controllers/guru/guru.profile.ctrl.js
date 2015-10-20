@@ -31,6 +31,8 @@ angular.module('uguru.guru.controllers')
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
   DeviceService) {
 
+    PopupService.initDefaults();
+
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
@@ -243,7 +245,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.launchContactGuruModal = function() {
-      
+
       if (!$scope.profile.edit_mode) {
         $scope.contactGuruModal.show();
       }
@@ -528,7 +530,8 @@ angular.module('uguru.guru.controllers')
 
       if (DeviceService.doesCordovaExist() && $scope.platform.mobile) {
         $scope.root.vars.profile_url_changed = true;
-        Camera.takePicture($scope, index, true);
+        var elemId = 'guru-profile-img';
+        Camera.takePicture($scope, index, elemId);
       } else {
         var element = document.getElementById('file-input-guru-edit-profile')
         element.click();
@@ -541,7 +544,7 @@ angular.module('uguru.guru.controllers')
 
 
       if ($scope.platform.mobile) {
-        Camera.takePicture($scope, index, true, $scope.user.id);
+        Camera.takePicture($scope, index, $scope.user.id);
       } else {
         var element = document.getElementById('file-input-guru-add-transcript');
         element.click();
@@ -769,8 +772,6 @@ angular.module('uguru.guru.controllers')
       $timeout(function() {
         $scope.initModalsAfterEnter();
       }, 500)
-
-
 
     });
 

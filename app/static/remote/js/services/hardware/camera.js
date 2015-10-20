@@ -29,7 +29,7 @@ function Camera($timeout, DeviceService) {
 
     var cameraOptions = {
       quality: 30,
-      destinationType: 1,
+      destinationType: 0,
       mediaType: 0, // Picture: 0, Video: 1, Both: 2
       sourceType: index,
       allowEdit: false,
@@ -39,7 +39,7 @@ function Camera($timeout, DeviceService) {
       // popoverOptions: CameraPopoverOptions,
       saveToPhotoAlbum: false
     };
-    navigator.camera.cleanup()
+    
     console.log("inside Camera: takePictre();")
     navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 
@@ -62,7 +62,12 @@ function Camera($timeout, DeviceService) {
 
       //if user is uploading a transcript
       if ($scope.root.vars.profile_url_changed) {
-        formData.append('transcript_url', is_transcript);
+        try {
+          formData.append('transcript_url', is_transcript);  
+        } catch (err) {
+          console.log("is_transcript: " + err);
+        }
+        
       }
       //if user is logged in
       if ($scope.root.vars.profile_url_changed && $scope.user.id) {

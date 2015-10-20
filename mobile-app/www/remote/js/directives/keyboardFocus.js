@@ -17,10 +17,10 @@ angular.module('uguru.directives')
 				$timeout(function() {
 					input.focus();
 				}, 0);
-				e.preventDefault();	
+				e.preventDefault();
 			}
-			
-			
+
+
 		}
 	}
 

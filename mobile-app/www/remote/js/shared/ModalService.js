@@ -128,11 +128,14 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		    signup = modal;
 		});
 
+
+
 		$timeout(function() {
 				controller.faq= faq,
 				controller.support = support,
 				controller.privacy = privacy,
-				controller.signup = signup
+				controller.signup = signup,
+				controller.login = signup
 
 		}, 3000);
 

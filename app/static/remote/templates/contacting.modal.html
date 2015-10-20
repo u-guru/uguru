@@ -1,3 +1,24 @@
+<!-- <ion-modal-view class='contacting-modal'>
+    <ul class='ugrid-5'>
+        <li>
+            <img ng-src='{{img_base}}./img/verbs/question.svg'/>
+        </li>
+        <li>
+            <img ng-src='{{img_base}}./img/verbs/session.svg' />
+        </li>
+        <li>
+            <img ng-src='{{img_base}}./img/verbs/guru.svg' />
+        </li>
+        <li>
+            <li ng-src='{{img_base}}./img/verbs/wheel.svg' />
+        </li>
+        <li>
+            <img ng-src='{{img_base}}./img/verbs/specific.svg' />
+        </li>
+    </ul>
+</ion-modal-view> -->
+
+<!--
 <ion-modal-view class='contacting-modal'>
   <ion-content class='white-text dark-bg' scroll='false' >
       <div class='pure-g-c flex-column flex-space-between'>
@@ -6,22 +27,22 @@
         <div id="E2E-submit" class='flex-item-c'>
 
           <div class='pure-g icon-row'>
-                <div class='pure-u-1-5 padding-half'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/question.svg'/>
+                <div>
+                  <img ng-src='{{img_base}}./img/verbs/question.svg'/>
                 </div>
-                <div class='pure-u-1-5 padding-half'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/session.svg' />
-                </div>
-
-                <div class='pure-u-1-5 padding-half'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/guru.svg' />
+                <div>
+                  <img ng-src='{{img_base}}./img/verbs/session.svg' />
                 </div>
 
-                <div class='pure-u-1-5 padding-half' >
-                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/wheel.svg' />
+                <div>
+                  <img ng-src='{{img_base}}./img/verbs/guru.svg' />
                 </div>
-                <div class='pure-u-1-5 padding-half'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/specific.svg' />
+
+                <div >
+                  <img ng-src='{{img_base}}./img/verbs/wheel.svg' />
+                </div>
+                <div>
+                  <img ng-src='{{img_base}}./img/verbs/specific.svg' />
                 </div>
           </div>
 
@@ -52,8 +73,6 @@
               <ion-list>
 
                 <ion-item class='item-icon-right request-card-item'>
-                <!-- <ion-item class='item-avatar item-icon-right request-card-item'> -->
-                  <!-- <img class='pure-img' ng-src='{{img_base}}./img/verbs/session.svg' /> -->
                   <div class='request-card-content'>
                     <p class='course-text'>
                       <span ng-show='root.vars.request.type.session || root.vars.request.type.question'>
@@ -66,24 +85,19 @@
                     </p>
                     <p class='location-text' ng-show='root.vars.request.type.session'> {{root.vars.request.address}}</p>
                   </div>
-                  <!-- <i class='icon ion-chevron-right icon-small'> </i> -->
                 </ion-item>
 
                 <ion-item class='item-wrap-text'>
-                <!-- <ion-item class='item-avatar item-wrap-text'> -->
                   <p class='request-description' ng-show='root.vars.request.type.session'>
 
-                    <!-- required -->
                     <strong> {{root.vars.request.calendar.weekday}}
                     </strong>
 
-                    <!-- not all have calendars -->
                     <span class='calendar-availability-contact' ng-show='root.vars.request.calendar.formatted_start_time'>
                        between <strong>{{root.vars.request.calendar.formatted_start_time}} & {{root.vars.request.calendar.formatted_end_time}}</strong>
                     </span>
 
 
-                    <!-- required -->
                     for <strong>3.5 hours</strong>.
 
                      <span ng-show="root.vars.request.description">
@@ -117,10 +131,8 @@
                 </ion-item>
 
                 <ion-item class='item-wrap-text item-icon-left' ng-show='root.vars.request.tags.length > 0' style='padding:12px 0px 10px 44px;'>
-                    <!-- <div class='pure-g'> -->
                       <img style='margin-top: 4%; 'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' ng-src='{{img_base}}./img/icons/tags.svg'/>
                       <p class='blue'><span class='inline'ng-repeat='tag in root.vars.request.tags'>#{{tag}}</span></p>
-                    <!-- </div> -->
                 </ion-item>
 
                 <ion-item class='item-wrap-text item-icon-left' ng-show='root.vars.request.type.task'>
@@ -176,3 +188,4 @@
       </div>
   </ion-content>
 </ion-modal-view>
+-->

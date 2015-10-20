@@ -1,6 +1,10 @@
-<ion-view class='uguru-view credibility-view bg-charcoal'>
+<ion-view class='uguru-view credibility-view bg-charcoal' >
 	<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
-	<section id="credibility">
+	<section id='credibility' ng-if='desktopMode' class='bg-white full-xy absolute'>
+		<h1> Desktop mode </h1>
+
+	</section>
+	<section id="credibility" ng-if='!desktopMode'>
 		<header class="bg-charcoal third">
 			<h1 class="text-center">Increase Credibility</h1>
 			<nav id="credit-slider">

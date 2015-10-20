@@ -5,7 +5,8 @@
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  -ms-overflow-style: none; }
 
 *:focus {
   outline: none; }
@@ -340,6 +341,12 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 
 .third {
   height: calc(100% / 3); }
+
+.fourth {
+  height: calc(100%/4); }
+
+.fifth {
+  height: calc(100%/5); }
 
 .two-thirds {
   height: calc(100% / 3 * 2);
@@ -937,7 +944,7 @@ header {
     text-transform: uppercase; }
   header.third h1 {
     font-size: 22px; }
-  header.third[class*="header-"] h1 {
+  header.third:not(.flex-center-wrap) h1, header .header-nav h1 {
     font-size: 20px; }
   header:before {
     filter: alpha(opacity=30);
@@ -957,8 +964,8 @@ header {
 @media screen and (min-width: 375px) {
   header.third h1 {
     font-size: 24px; }
-  header.third[class*="header-"] h1 {
-    font-size: 20px; } }
+  header.third:not(.flex-center-wrap) h1, header .header-nav h1 {
+    font-size: 20px !important; } }
 .verified {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1316,12 +1323,7 @@ button.disabled {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    right: 2px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-bottom: 10px;
-
+    right: 12px;
     z-index: 0; }
     .input-search-ghost .side-icon .ion-navigate {
       filter: alpha(opacity=60);

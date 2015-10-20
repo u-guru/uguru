@@ -75,7 +75,7 @@ function DeviceService($cordovaNgCardIO,
     }
 
     //needs to be both
-    return ionic.Platform.isAndroid() && isWebView;
+    return doesCordovaExist() && ionic.Platform.isAndroid() && isWebView;
   }
 
 

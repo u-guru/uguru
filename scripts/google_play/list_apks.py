@@ -1,3 +1,5 @@
+##
+
 from apiclient.discovery import build
 import httplib2, argparse
 from oauth2client import client
@@ -34,9 +36,10 @@ def list_apks(service, package_name):
   for apk in apks_result['apks']:
     print '#%i. versionCode: %s, binary.sha1: %s' % (index,
         apk['versionCode'], apk['binary']['sha1'])
+    index += 1
 
 def upload_apk(service, package_name=DEFAULT_PACKAGE_NAME,
-  apk_file_path=DEFAULT_FILE_PATH, filename='uguru-x86.apk'):
+  apk_file_path=DEFAULT_FILE_PATH, filename='uguru-x86-signed.apk'):
 
   apk_file = apk_file_path + '/' + filename
 
@@ -51,9 +54,10 @@ def upload_apk(service, package_name=DEFAULT_PACKAGE_NAME,
     ).execute()
 
   print ('Uploaded .. here are the details\n')
-  print ("size:", apk_response['binary']['body_size'])
+  print ("All fields", apk_response['binary'].keys())
+  # print ("size:", apk_response['binary']['body_size'])
   # print ("public_url:", apk_response['binary']['uri'])
-  print ("other fields", apk_response['binary'].keys())
+
 
   track_response = service.edits().tracks().update(
     editId=edit_id,
@@ -63,17 +67,17 @@ def upload_apk(service, package_name=DEFAULT_PACKAGE_NAME,
 
 
   print 'Response received .. here are the details\n'
-  print "size:", apk_response['binary']['body_size']
-  # print "public_url:", apk_response['binary']['uri']
   print "other fields", apk_response['binary'].keys()
+  # print "size:", apk_response['binary']['body_size']
+  # print "public_url:", apk_response['binary']['uri']
+
 
   commit_request = service.edits().commit(
         editId=edit_id, packageName=package_name).execute()
 
   print 'Commit request\n'
   print "All fields", apk_response['binary'].keys()
-
-  print 'Edit "%s" has been committed' % (commit_request['id'])
+  # print 'Edit "%s" has been committed' % (commit_request['id'])
 
 
 def update_description(service):
@@ -107,14 +111,20 @@ def init_android_api_connection():
 
 def main():
 
+  import sys
 
   service = init_android_api_connection()
 
-  upload_apk(service)
+  args = sys.argv
 
   try:
 
-      upload_apk(service, apk_file)
+    if '-u' in args[1:]:
+      upload_apk(service)
+    if '-l' in args[1:]:
+      list_apks(service, DEFAULT_PACKAGE_NAME)
+
+
 
   except client.AccessTokenRefreshError:
     print ('The credentials have been revoked or expired, please re-run the '

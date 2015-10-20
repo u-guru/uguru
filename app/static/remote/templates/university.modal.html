@@ -1,7 +1,7 @@
 <ion-modal-view class='uguru-view bg-charcoal university-view' >
 	<ion-view>
 		  <section id="school" class="onboarding"  ng-controller='AddUniversityCtrl'>
-			<header class="third flex-center bg-charcoal">
+			<header class="third flex-center-wrap bg-charcoal">
 				<h1>Edit University</h1>
 				<div class="header-nav">
 					<a class="header-down" ng-click="closeModal('university')">
@@ -11,8 +11,8 @@
 					</a>
 				</div>
 				
-				<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-					<input type="search" value="{{user.university.title}}" class='' id='university-input' placeholder="Search for my university" ng-model="search_text.university" ng-click="onTextClick($event)" />
+				<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy" keyboard-focus>
+					<input type="search" value="{{user.university.title}}" class='' id='university-input' placeholder="Search for my university" ng-model="search_text.university" />
 			        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
 						<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
 			        </a>

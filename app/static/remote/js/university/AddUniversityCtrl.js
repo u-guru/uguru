@@ -125,14 +125,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.resetUniversities = function() {
     $scope.search_text.university = '';
-    if ($scope.isLocationActive) {
-      var userLat = $scope.user.last_position.latitude;
-      var userLong = $scope.user.last_position.longitude;
-      console.log("lat and long: " + userLat + ", " + userLong);
-      $scope.universities = Geolocation.sortByLocation(userLat, userLong, University.getTargetted());
-    } else {
-      $scope.universities = University.getSorted();
-    }
   };
 
   $scope.closeModal = function(modalName) {
@@ -235,7 +227,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
       console.log("refreshing universities for location!");
-      $scope.refresh.universities = 'zzzz';
+      $scope.refresh.universities = 'update';
     }
     else if (Geolocation.settings.isAllowed) {
       console.log("toggling location.isActive");
@@ -247,15 +239,15 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     }
   }
 
-  if(DeviceService.isAndroid) {
-    $scope.refresh.universities = 'zzzz';
+  if(DeviceService.isAndroid()) {
+    $scope.refresh.universities = 'update';
   }
 
 
 }
 
 angular.module('uguru.directives')
-.directive('bindList', function($timeout, University, Utilities, Geolocation) {
+.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService) {
 
   function link($scope, element, attributes) {
     var queryPromise = null;
@@ -265,7 +257,7 @@ angular.module('uguru.directives')
         'refresh.universities',
         function(newValue, oldValue) {
           console.log("heard something!", newValue, oldValue);
-          if(newValue === 'zzzz' && DeviceService.isAndroidDevice()) {
+          if(newValue === 'update' ) {
 
               Geolocation.getLocation($scope, $scope.source, function(results) {
                 $timeout(function() {

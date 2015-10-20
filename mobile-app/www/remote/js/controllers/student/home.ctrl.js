@@ -32,33 +32,6 @@ angular.module('uguru.student.controllers', [])
         $ionicSideMenuDelegate.canDragContent(false);
 
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/verb.home.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.verbModal = modal;
-        });
-
-        $ionicModal.fromTemplateUrl(BASE + 'templates/contacting.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.contactingModal = modal;
-        });
-
-        $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.taskVerbModal = modal;
-        });
-
-         $ionicModal.fromTemplateUrl(BASE + 'templates/task_verbs.home.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.taskVerbModal = modal;
-        });
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
             scope: $scope,
@@ -74,12 +47,12 @@ angular.module('uguru.student.controllers', [])
           }, 250)
         }
 
-        $scope.launchTaskVerbModal = function() {
-            $timeout(function() {
-                $scope.closeVerbModal();
-            }, 500);
-            $scope.taskVerbModal.show();
-        }
+        // $scope.launchTaskVerbModal = function() {
+        //     $timeout(function() {
+        //         $scope.closeVerbModal();
+        //     }, 500);
+        //     $scope.taskVerbModal.show();
+        // }
 
         $scope.hideTaskVerbModal = function() {
             $scope.taskVerbModal.hide();
@@ -207,9 +180,7 @@ angular.module('uguru.student.controllers', [])
             }, 500);
             $ionicSlideBoxDelegate.update();
 
-            // $timeout(function() {
-            //     $scope.launchRequestModal();
-            // }, 1000);
+
 
         });
 

@@ -171,13 +171,14 @@ def send_web_reminder_email(email, subject, message):
     return result
 
 
-def send_errors_email(body, client_only=False):
+def send_errors_email(body, client_only=False, default_email='samir@uguru.me'):
     email_subject = 'Uguru Production Server Error'
     if client_only:
         email_subject = 'Uguru Production Client Error'
     email_content = body
+
     receiver_info = [{
-            'email':'samir@uguru.me',
+            'email':default_email,
             'name':'Uguru Tech Support',
             'type': 'to'
     }]
