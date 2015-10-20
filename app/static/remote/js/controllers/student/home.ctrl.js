@@ -33,7 +33,6 @@ angular.module('uguru.student.controllers', [])
 
 
 
-
         $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -48,12 +47,12 @@ angular.module('uguru.student.controllers', [])
           }, 250)
         }
 
-        $scope.launchTaskVerbModal = function() {
-            $timeout(function() {
-                $scope.closeVerbModal();
-            }, 500);
-            $scope.taskVerbModal.show();
-        }
+        // $scope.launchTaskVerbModal = function() {
+        //     $timeout(function() {
+        //         $scope.closeVerbModal();
+        //     }, 500);
+        //     $scope.taskVerbModal.show();
+        // }
 
         $scope.hideTaskVerbModal = function() {
             $scope.taskVerbModal.hide();

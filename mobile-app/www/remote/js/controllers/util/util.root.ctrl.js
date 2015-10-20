@@ -197,6 +197,9 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.getCoursesForUniversityId = function(uni_id) {
+            if (!uni_id) {
+                return;
+            }
             University.getCourses(uni_id).then(function(courses){
                 $timeout(function() {
                     $scope.data.courses = courses.plain();

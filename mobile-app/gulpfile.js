@@ -284,9 +284,8 @@ gulp.task('scripts', function() {
       "js/controllers/student/*.js",
       "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
-      // "js/controllers/student/settings/*.js",
-      // "js/controllers/util/util.university.ctrl.js",
-      "js/controllers/util/*.js",
+      "js/controllers/util/*js",
+      // "js/controllers/util/*.js",
       // "js/controllers/onboarding/onboarding.request-location.ctrl.js",
       // "js/controllers/onboarding/*.js"
       ], { cwd: 'www/remote' })
