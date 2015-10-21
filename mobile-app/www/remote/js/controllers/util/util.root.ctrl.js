@@ -58,7 +58,7 @@ angular.module('uguru.util.controllers')
             height:windowHeight
         }
 
-        console.log($scope.window);
+        console.log('Window size', $scope.window);
 
         // GABRIELLE TODO: Define these values
         var desktopHeightLimit = 700;
