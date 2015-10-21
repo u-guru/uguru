@@ -7,7 +7,7 @@ huge_arr = []
  
  
  
-with open('SUNY_TECH.json') as datafile:
+with open('suny_tech_data.json') as datafile:
         json_data_file = json.load(datafile)
         for email in json_data_file:
                 dictionary = {}
