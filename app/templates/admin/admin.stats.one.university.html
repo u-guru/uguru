@@ -15,8 +15,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
+
+            <!-- An example of wasting time doing formatting lol -- not our job -->
+            <img src='{{university.logo_url}}' height="40" width="40">
+            <!-- The nbsp; are required spaces -->
+            &nbsp;&nbsp;&nbsp;
             {{university.name}}
-            <small>How many we have left to polish</small>
+            <small><strong> {{university.city}}, {{university.state}}</strong></small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
@@ -29,7 +34,15 @@
         <section class="content">
 
           <div class='row'>
-            <img src='{{university.banner_url}}' style="height:350px; width:100%; padding:20px;">
+            <div class='col-md-8'>
+              <a href='/admin/stats/universities/{{university.id}}/flickr_options/' target='_blank'>
+                <img src='{{university.banner_url}}'  style="max-height:200px; height:auto; width:100%; padding:20px;">
+              </a>
+            </div>
+            <div class='col-md-4'>
+              <!-- this map verifies that the latitude && longitude are correct! -->
+              <img style="-webkit-user-select: none; cursor: zoom-in;" src="https://maps.googleapis.com/maps/api/staticmap?center=({{university.latitude}}, {{university.longitude}})&amp;parameters&amp;size=300x200&amp;zoom=14" style='width:100%; max-height:200px;'>
+            </div>
           </div>
           <div class="row">
             <div class="col-md-4">
@@ -37,7 +50,11 @@
               <div class="small-box bg-olive">
                 <div class="inner">
                   <h3>{{university.num_courses}}</h3>
-                  <p># of courses </p>
+                  {% if university.courses_sanitized %}
+                  <p>Courses <strong> are sanitized </strong> </p>
+                  {% else %}
+                  <p>Courses <strong> are not sanitized </strong> </p>
+                  {% endif %}
                 </div>
                 <div class="icon">
                   <i class="ion ion-document"></i>
@@ -48,7 +65,11 @@
               <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3>{{university.num_depts}}</h3>
-                  <p># Departments</p>
+                  {% if university.departments_sanitized %}
+                  <p>Departments <strong> are sanitized </strong> </p>
+                  {% else %}
+                  <p>Departments <strong> are not sanitized </strong> </p>
+                  {% endif %}
                 </div>
                 <div class="icon">
                   <i class="ion ion-document"></i>
@@ -68,13 +89,51 @@
             </div>
           </div>
           <div class='row'>
+            <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Important <strong> {{university.name}} </strong> fields</h3>
+                  <div class="box-tools pull-right">
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <tbody>
+                        <!-- Each row represents one column in database -->
+                        <tr>
+                          <td>Casual Name</td>
+                          <td>{{university.school_casual_name}}</td>
+                        </tr>
+                        <tr>
+                          <td>Mascot Name</td>
+                          <td>{{university.school_mascot_name}}</td>
+                        </tr>
+                        <tr>
+                          <td>School Color(s)</td>
+                          <td>
+                            <small style="background-color:{{university.school_color_one}}; color:white; font-size:20px; font-weight:bold; padding:5px 20px" >
+                                {{university.school_color_one}}</small>
+
+                            {% if university.school_color_two %}
+
+                                <small style="background-color:{{university.school_color_two}}; color:white; font-size:20px; font-weight:bold; padding:5px 20px" >
+                                {{university.school_color_two}}</small>
+
+                            {% endif %}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+          </div>
+          <div class='row'>
             <div class='col-md-6'>
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Students @ {{university.name}}</h3>
+                  <h3 class="box-title">Courses Sample</h3>
                   <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
@@ -82,21 +141,28 @@
                     <table class="table no-margin">
                       <thead>
                         <tr>
-                          <th >Student Name</th>
-                          <th style='text-align:center;'>Student Email</th>
-                          <th >Balance</th>
+                          <th >ID</th>
+                          <th >Short Name</th>
+                          <th >Title</th>
+                          <th>Dept</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {% for student in s_balances %}
+                        {% for course in university.courses[:50] %}
                         <tr>
                           <td>
-                            {{student.name}}
+                            {{course.id}}
                           </td>
-                          <td><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{student.email}}&nbsp;&nbsp;
-                            <a href='#' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
+                          <td>
+                            {{course.short_name}}
                           </td>
-                          <td>{{student.total_earned}}</td>
+                          <td>
+                            {{course.full_name}}
+                          </td>
+                          <td>
+                            <!--If this is empty, this is a red flag, we will get back to this later-->
+                            {{course.department.abbr}} {{course.department.code}} {{course.department.short_name}}
+                          </td>
                         </tr>
                         {% endfor %}
                       </tbody>
@@ -108,12 +174,42 @@
             <div class='col-md-6'>
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Universities Left</h3>
+                  <h3 class="box-title">Departments Sample</h3>
                   <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th >ID</th>
+                          <th >Short Name</th>
+                          <th >Title</th>
+                          <th>Dept</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for department in university.departments[:50] %}
+
+                        <!-- See models.py, line 764 departments -->
+                        <!-- As lonas they have one field, we are good. But we will need to map i.e CNM to its actual value really soon (Center of New Media). A good way to do this is. Query google {{university.name}}, {{department.title}}-->
+                        <tr>
+                          <td>
+                            {{department.id}}
+                          </td>
+                          <td>
+                            {{department.code}}
+                          </td>
+                          <td>
+                            {{department.abbr}}
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
               </div>
             </div>
           </div>

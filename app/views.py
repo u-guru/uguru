@@ -60,6 +60,61 @@ def admin_statistics_universities():
         shitty_prepared_universities=shitty_prepared_universities,
         atleast_fifty_universities=atleast_fifty_universities)
 
+## have the intuition that if something is funky -- chances are, its something super small,
+## like a grammer error, a TYPO ;)
+@app.route('/admin/stats/universities/uni_id/flickr_options/set_url/<url>/')
+def admin_statistics_get_flickr_urls_unique(uni_id, url):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    u = University.query.get(uni_id)
+    print url
+    u.banner_url = url
+
+    print u.banner_url
+    # try:
+    #     db_session.commit()
+    # except:
+    #     db_session.rollback()
+    #     raise
+
+    formatted_str = "%s has updated its banner url to %" % (u.name, u.banner_url)
+    return formatted_str
+
+@app.route('/admin/stats/universities/<uni_id>/flickr_options/')
+## IF SOMETHING IS FUNKY --> Most likely your forgot to rename the function definition of the view
+def admin_statistics_get_flickr_urls(uni_id):
+    print "it gets here"
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    university = University.query.get(uni_id)
+
+    ## if more than two nested functions, it should be in an external file in app/lib/
+
+    # this function will return an image, if you click it .. it will automatically set the university to that ;)
+    def html_image_string_links(url):
+        url = url.replace("http://", "").replace("https://", "")
+        ## Quotes mindfuck -- try to understand this later -- it should work
+        link_beginning = '<a href="/admin/stats/universities/2307/flickr_options/set_url/' + url + '/' + '">'
+        print link_beginning
+        link_ending = '</a>'
+        return '%s<img src="%s" alt="Smiley face" style="max-width:300px; height:auto; margin: 0 auto; position:absolute\;"> %s' % (link_beginning, url, link_ending)
+
+    def getFlickerBanners(university,size=20):
+        from lib.flickr_wrapper import parse_flickr_response, search_university_response_api, process_returned_photos
+
+        flickrResponse = search_university_response_api(tags='Panorama', text=university.name, all_or='all')
+        arr = process_returned_photos(parse_flickr_response(flickrResponse))
+        urls = [html_image_string_links(item['url']) for item in arr]
+        html_strings_of_imgs = " ".join(urls)
+        return html_strings_of_imgs
+
+    html_strings_of_imgs = getFlickerBanners(university)
+
+
+    ## notice, this has no template! We are just returning the strings
+    return html_strings_of_imgs
+
 
 @app.route('/admin/stats/universities/<uni_id>')
 def admin_statistics_one_university(uni_id):
@@ -68,17 +123,11 @@ def admin_statistics_one_university(uni_id):
 
     university = University.query.get(uni_id)
 
-    from lib.universities import filterStudentsWithBalance
+    ## Take the time to clean up old code, even if its not yours ;)
 
-    students_with_balances = filterStudentsWithBalance(university.students)
-    print len(students_with_balances)
-    print students_with_balances
+
     return render_template("admin/admin.stats.one.university.html", \
-        university=university, s_balances=students_with_balances)
-    # university = University.query.all()
-
-
-    # prepared_universities = filterPrepared(universities)
+        university=university)
 
 
 ###############

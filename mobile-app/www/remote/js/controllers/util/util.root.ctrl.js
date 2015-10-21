@@ -42,27 +42,36 @@ angular.module('uguru.util.controllers')
          Utilities, Category, DownloadService, PopupService,
          KeyboardService, ModalService, Github) {
 
-        var bodyRect = document.querySelector('body').getBoundingClientRect();
-        var windowHeight = bodyRect.width;
-        var windowWidth = bodyRect.height;
 
+        var bodyRect;
+        var windowHeight;
+        var windowWidth;
+        var initHeight = function() {
+            bodyRect = document.querySelector('body').getBoundingClientRect();
+            windowHeight = bodyRect.height;
+            windowWidth = bodyRect.width;
+        }
+
+        initHeight();
         $scope.window = {
             width:windowWidth,
             height:windowHeight
         }
 
-        // GABRIELLE gTODO: Define these values
-        var desktopHeightLimit = 1000;
-        var desktopWidthLimit= 1000;
+        console.log($scope.window);
 
-        var isDesktopMode = function(height, width) {
-            console.log('CURRENT SCREEN HEIGHT', height, width);
+        // GABRIELLE TODO: Define these values
+        var desktopHeightLimit = 700;
+        var desktopWidthLimit= 700;
+
+        $scope.isDesktopMode = function(height, width) {
+            initHeight();
+            height = height || windowHeight;
+            width = width || windowWidth;
             return height > desktopHeightLimit && width > desktopWidthLimit;
         }
 
-        $scope.desktopMode = isDesktopMode(windowHeight, windowWidth);
-
-        console.log('DesktopMode', $scope.desktopMode);
+        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
 
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
@@ -284,8 +293,6 @@ angular.module('uguru.util.controllers')
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
             }, 250);
         };
-
-
 
         // TODO-REFACTOR
         $scope.loader = {
