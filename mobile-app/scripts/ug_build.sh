@@ -38,14 +38,18 @@ if [ $# == 1 ];
 
 		cordova plugin add cordova-plugin-keepe-cardio
 
+		cordova plugin add cordova-plugin-x-socialsharing
+		cordova plugin add cordova-plugin-calendar
 
-		printf "\e[0;36mInstalling and configuring the Android Support Libray v13 for Facebook and Push plugins... \e[0m\n"
+		
+		# cordova plugin add de.appplant.cordova.plugin.badge
+		cordova plugin add cordova-plugin-appavailability
+		cordova plugin add https://github.com/nicknaky/de.appplant.cordova.plugin.badge
 
 		# rm -f ./plugins_android/specific/phonegap-plugin-push/src/android/libs/gcm.jar
 		# rm -f ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/libs/android-support-v4
 		# # cp -f ./plugins_android/specific/android-support-v13.jar ./plugins_android/specific/phonegap-plugin-push/src/android/libs/
 		# cp -f ./plugins_android/specific/android-support-v13.jar ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/libs/
-
 		
 		# cp -f ./plugins_android/specific/fb_settings/AndroidManifest.xml ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/
 		# cp -f ./plugins_android/specific/fb_settings/build.gradle ./plugins_android/specific/phonegap-facebook-plugin-master/platforms/android/FacebookLib/
@@ -55,7 +59,7 @@ if [ $# == 1 ];
 
 
 		cordova platform add android@4.1
-
+		printf "\e[0;36mInstalling and configuring the Android Support Libray v13 for Facebook and Push plugins... \e[0m\n"
 
 		# cordova plugin add ./plugins_android/specific/phonegap-plugin-push
 		cordova plugin add https://github.com/nicknaky/phonegap-plugin-push
