@@ -265,13 +265,15 @@ gulp.task('scripts', function() {
       "js/services/*.js",
       "js/services/hardware/*.js",
       "js/shared/GeolocationService.js",
+
+      "js/shared/DeviceService.js", //first shared service
+      "js/shared/Settings.js",
+      "js/shared/Utilities.js",
       "!js/shared/*LogService.js",
-      "js/shared/DeviceService.js",
       "js/shared/uTracker.js",
       "js/shared/RankingService.js",
       "js/shared/TipService.js",
       "js/shared/Settings.js",
-      "js/shared/Utilities.js",
       "js/directives/*.js",
       "js/device/*.js",
       "js/shared/*.js",
@@ -282,9 +284,8 @@ gulp.task('scripts', function() {
       "js/controllers/student/*.js",
       "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
-      // "js/controllers/student/settings/*.js",
-      // "js/controllers/util/util.university.ctrl.js",
-      "js/controllers/util/*.js",
+      "js/controllers/util/*js",
+      // "js/controllers/util/*.js",
       // "js/controllers/onboarding/onboarding.request-location.ctrl.js",
       // "js/controllers/onboarding/*.js"
       ], { cwd: 'www/remote' })

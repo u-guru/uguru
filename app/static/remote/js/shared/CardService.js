@@ -1,9 +1,8 @@
-angular
-	.module('uguru.util.controllers')
-	.factory('CardService', [
-		'$localstorage',
-		CardService
-		]);
+angular.module('sharedServices')
+.factory('CardService', [
+	"$localstorage",
+	CardService
+	]);
 
 function CardService($localstorage) {
 	var localCardArr = [];

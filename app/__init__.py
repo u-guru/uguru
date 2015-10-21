@@ -7,6 +7,7 @@ from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.restful import reqparse, Api
 from flask.ext.bcrypt import Bcrypt
 from flask.ext.httpauth import HTTPBasicAuth
+from flask.ext.cors import CORS
 from flask.ext.compress import Compress
 import logging
 from logging.handlers import SMTPHandler
