@@ -46,10 +46,10 @@ def admin_statistics_universities():
     final_universities, prepared_info = calcAndSortedPrepared(universities)
 
     full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
-    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 90 and prepared_info[university.id]['percentage'] < 100 and university.school_mascot_name == None ]
-    shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50]
+    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 80 and prepared_info[university.id]['percentage'] < 100 and prepared_info[university.id]['percentage'] >= 80 and university.school_mascot_name == None ]
+    shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50 and prepared_info[university.id]['percentage'] < 80]
     dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
-    atleast_fifty_universities = eighty_prepared_universities #+ shitty_prepared_universities
+    atleast_fifty_universities = eighty_prepared_universities + shitty_prepared_universities
 
     return render_template("admin/admin.stats.universities.html", \
         universities = universities, \
@@ -115,6 +115,29 @@ def admin_statistics_get_flickr_urls(uni_id):
     ## notice, this has no template! We are just returning the strings
     return html_strings_of_imgs
 
+
+@app.route('/admin/ben/data-todo/')
+def ben_data_todo():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    todo_items = [
+        "Pick one missing field to modify - i.e. (school_mascot_name)",
+        "Write necessary script(s) to apply it. Input must be university, output must include university_id && missing field",
+        "Test that it works & will increase the total # significantly (or more significant than the other fields",
+        "Calculate the total # of schools expected to be prepared",
+        "Run it locally",
+        "Let Samir know that you have another script ready",
+        "If Samir approves, run it with production server",
+        "Pull production server && update your local one",
+        "Repeat."
+    ]
+
+
+    todo_items_indexed = ["#%s: %s<br><br>" % (todo_items.index(item) + 1, item) for item in todo_items]
+
+
+    return "".join(todo_items_indexed)
 
 @app.route('/admin/stats/universities/<uni_id>')
 def admin_statistics_one_university(uni_id):
