@@ -49,8 +49,8 @@ def admin_statistics_universities():
     eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 90 and prepared_info[university.id]['percentage'] < 100 and university.school_mascot_name == None ]
     shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50]
     dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
-    atleast_fifty_universities = eighty_prepared_universities #+ shitty_prepared_universities 
-    
+    atleast_fifty_universities = eighty_prepared_universities #+ shitty_prepared_universities
+
     return render_template("admin/admin.stats.universities.html", \
         universities = universities, \
         prepared_universities=final_universities,
@@ -247,9 +247,7 @@ def admin_instagram(uni_id):
     return render_template("Hello World")
 
 
-#Step 1--> create a route 
 @app.route('/admin/search/monoprice/<query_str>')
-# Step 2 --> ADd a function definition
 def admin_search_monoprice(query_str):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
@@ -258,7 +256,42 @@ def admin_search_monoprice(query_str):
     #copy your wrapper into app/lib/
     from lib.monoprice_wrapper import queryMonoprice as query
 
- 
+
+# Step 4 --> call the results
+    results_dict = query(query_str)
+    results_dict_json = open('mono_price.json')
+    load_as_json_obj = json.load(results_dict_json)
+    from pprint import pprint
+
+    #pprint(load_as_json_obj)
+    results_arr = [ load_as_json_obj[key] for key in load_as_json_obj.keys()]
+    pprint(results_dict)
+
+   # results_arr = [ results_dict[key] for key in results_dict.keys() ]
+
+
+    # Step 5 --> render the dictionary in a presentable format
+
+    return render_template("admin/admin.monoprice.query.html", query_results=results_arr, query_str=query_str)
+
+@app.route('/admin/search/monoprice/<product_id>')
+def AddItemsToCart(product_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin.monoprice.additem.html", product_id = str(product_id))
+
+@app.route('/admin/search/monoprice/cart')
+def AddItemsToCart():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    from lib.monoprice_wrapper import AddItemToCart
+    AddItemToCart(1,str(product_id))
+
+    #step 3 --> Import necessary wrapper
+    #copy your wrapper into app/lib/
+    from lib.monoprice_wrapper import queryMonoprice as query
+
+
 # Step 4 --> call the results
     results_dict = query(query_str)
     results_dict_json = open('mono_price.json')

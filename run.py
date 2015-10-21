@@ -14,8 +14,4 @@ else:
 if __name__ == '__main__':
 
 	manager.run()
-<<<<<<< HEAD
     # app.run(host='10.37.129.2', port=5000)
-=======
-    # app.run(host='localhost', port=5000)
->>>>>>> ben-dev
