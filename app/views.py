@@ -129,7 +129,7 @@ def ben_data_todo():
         "Run it locally",
         "Let Samir know that you have another script ready. Ready means that: <br> <br> <b>1. You know the <u>EXACT</u> # of schools prepared after you run this with https://www.uguru.me <br>2. You have already run it locally && are 100% confident it works<br></b>",
         "If Samir approves, run it with production server",
-        "Pull production server && update your local one <br><br> <i> Cut && paste this into your terminal w/o outside quotes </i><br><br> >>   heroku pg:backups capture --app uguru-rest <br><br> >> curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` <br><br> >> pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump'",
+        "Pull production server && update your local one <br><br> <i> Cut && paste this into your terminal w/o outside quotes </i><br><br> >>   heroku pg:backups capture --app uguru-rest <br><br> >> curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` <br><br> >> pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump",
         "Cleanup your code - if you have any questions where things should be organized ask -- if i dont reply, move on.",
         "Repeat."
     ]
