@@ -47,12 +47,9 @@ if [ $# == 1 ];
 		cordova plugin add https://github.com/Uguru/phonegap-plugin-push
 		cordova plugin add https://github.com/Uguru/phonegap-facebook-plugin.git --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 		
-<<<<<<< HEAD
-		# cordova plugin add ./plugins_android/specific/phonegap-facebook-plugin --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
-		cordova plugin add https://github.com/nicknaky/phonegap-facebook-plugin.git --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+		
+		cordova plugin add https://github.com/Uguru/phonegap-facebook-plugin.git --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 
-=======
->>>>>>> 0c8e3e5... updated ios scripts
 		# cp plugins_android/specific/build-extras.gradle platforms/android/
 
 		cordova build android
