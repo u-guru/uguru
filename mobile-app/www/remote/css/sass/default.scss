@@ -1906,7 +1906,7 @@ button.disabled {
 }
 
 // PROGRESS BARS
-progress, [class*="progress"] {
+progress, div[class*="progress"] {
 	@include transition(.15s ease-in-out);
 	@include appearance;
 	width: 100%;

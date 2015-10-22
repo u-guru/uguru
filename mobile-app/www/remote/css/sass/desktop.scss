@@ -28,6 +28,47 @@
 			max-width: 1200px;
 		}
 	}
+	.progress-bottom {
+		@include center-x;
+		bottom: 0;
+		height: 128px;
+		width: 960px;
+		background: $bakery;
+		.progress {
+			border-radius: 0;
+			&::-webkit-progress-value, span {
+				border-radius: 0 1000px 1000px 0;
+			}
+			&::-moz-progress-bar {
+				border-radius: 0 1000px 1000px 0;
+			}
+		}
+		div:last-child {
+			@include flex;
+			@include flex-center;
+			padding: 15px;
+			height: calc(100% - 10px);
+			> span {
+				width: 50%;
+				font-size: 32px;
+				font-weight: 600;
+				&:first-child {
+					@include flex;
+					@include flex-center-vertical;
+					img {
+						@include round;
+						margin-right: 15px;
+						display: inline-block;
+						width: 64px;
+						height: 64px;
+					}
+				}
+				&:last-child {
+					text-align: right;
+				}
+			}
+		}
+	}
 }
 
 /* ---------- CREDIBILITY */
@@ -61,11 +102,7 @@
 					width: 100px;
 					height: 100px;
 					path {
-						fill: none;
-						stroke: white;
-						stroke-width: 3px;
-						stroke-linecap: round;
-						stroke-linejoin: round; 
+						@include svg-stroke(white, 3);
 					}
 				}
 			}
@@ -112,11 +149,7 @@
 						width: 32px;
 						height: 32px;
 						path {
-							fill: none;
-							stroke: white;
-							stroke-width: 8px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
+							@include svg-stroke(white, 8);
 						}
 					}
 				}
@@ -136,52 +169,8 @@
 					height: 40px;
 					margin-bottom: 5px;
 					path {
-						fill: none;
-						stroke: rgba($taupe,.5);
-						stroke-width: 8px;
-						stroke-linecap: round;
-						stroke-linejoin: round;
+						@include svg-stroke(rgba($taupe,.5), 8);
 					}
-				}
-			}
-		}
-	}
-	#credit-progress {
-		@include center-x;
-		bottom: 0;
-		height: 128px;
-		width: 960px;
-		background: $bakery;
-		.progress {
-			border-radius: 0;
-			&::-webkit-progress-value, span {
-				border-radius: 0 1000px 1000px 0;
-			}
-			&::-moz-progress-bar {
-				border-radius: 0 1000px 1000px 0;
-			}
-		}
-		div:last-child {
-			@include flex;
-			@include flex-center;
-			padding: 15px;
-			height: calc(100% - 10px);
-			> span {
-				width: 50%;
-				font-weight: 600;
-				&:first-child {
-					@include flex;
-					@include flex-center-vertical;
-					img {
-						@include round;
-						margin-right: 15px;
-						display: inline-block;
-						width: 64px;
-						height: 64px;
-					}
-				}
-				&:last-child {
-					text-align: right;
 				}
 			}
 		}
@@ -202,7 +191,7 @@
 					width: 100%;
 					height: 300px;
 					background: $taupe;
-					border-radius: 5px;
+					border-radius: 2px;
 					overflow: hidden;
 					&::before {
 						@include transition(.15s ease-in-out);
@@ -215,7 +204,7 @@
 						left: 0;
 						width: 100%;
 						height: 100%;
-						border-radius: 5px;
+						border-radius: 2px;
 						background: white;
 					}
 					&:hover {
@@ -232,17 +221,13 @@
 						width: 100%;
 						height: 20px;
 						background: $slate;
-						border-radius: 0 0 5px 5px;
+						border-radius: 0 0 2px 2px;
 					}
 					svg {
 						width: 150px;
 						height: 150px;
 						path {
-							fill: none;
-							stroke: white;
-							stroke-width: 3px;
-							stroke-linecap: round;
-							stroke-linejoin: round; 
+							@include svg-stroke(white, 3);
 						}
 					}
 					span {
@@ -257,7 +242,6 @@
 					}
 				}
 				&.complete {
-					@include opacity(.4);
 					a::after {
 						background: white;
 					}
@@ -488,11 +472,7 @@
 						background: rgba($campus,.8);
 						border-radius: 2px;
 						path {
-							fill: none;
-							stroke: white;
-							stroke-width: 8px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
+							@include svg-stroke(white, 8);
 						}
 					}
 				}
@@ -588,6 +568,94 @@
 									text-transform: uppercase;
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/* ---------- UNIVERSITY */
+#desktop-guru-onboarding {
+	@include flex;
+	@include flex-center;
+	.main {
+		height: auto;
+		.header {
+			text-align: center;
+			h1 {
+				font-size: 64px;
+				font-weight: 900;
+				text-transform: uppercase;
+			}
+			h2 {
+				font-size: 28px;
+				font-weight: 300;
+			}
+		}
+		#guru-onboarding-grid {
+			margin: 60px -15px;
+			li {
+				position: relative;
+				padding: 15px;
+				&:nth-child(1) a {
+					background: $moola;
+				}
+				&:nth-child(2) a {
+					background: $shamrock;
+				}
+				&:nth-child(3) a {
+					background: $azure;
+				}
+				&:nth-child(4) a {
+					background: $lake;
+				}
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					height: 270px;
+					border-radius: 2px;
+					> svg {
+						@include svg-stroke(white, 3);
+						@include opacity(0);
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						padding: 30px;
+						z-index: -10;
+					}
+					&.complete {
+						> svg {
+							@include opacity(1);
+							z-index: 99;
+						}
+						> span {
+							@include opacity(.2);
+						}
+					}
+					> span {
+						display: block;
+						span {
+							display: block;
+						}
+						span:first-child {
+							svg {
+								height: 175px;
+								width: 100%;
+								path {
+									 @include svg-stroke(white, 2);
+								}
+							}
+						}
+						span:last-child {
+							padding-bottom: 40px;
+							font-size: 28px;
+							font-weight: 700;
+							text-align: center;
 						}
 					}
 				}
