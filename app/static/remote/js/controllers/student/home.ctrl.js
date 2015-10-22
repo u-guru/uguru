@@ -69,16 +69,30 @@ angular.module('uguru.student.controllers', [])
             $ionicSlideBoxDelegate.update();
             return openRatio;
         }
+
+        var setStatusBarDarkText = function() {
+            if (DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarText($state.current.name);
+            }
+        }
+
+        var setStatusBarLightText = function() {
+
+            if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                if (window.StatusBar) {
+                  window.StatusBar.styleLightContent();
+                }
+            }
+
+        }
+
         var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
                 $scope.sideMenuActive = false;
                 $ionicSlideBoxDelegate.update();
+                setStatusBarDarkText();
             } else {
-                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
-                    if (window.StatusBar) {
-                      window.StatusBar.styleLightContent();
-                    }
-                }
+                setStatusBarLightText();
 
                 $timeout(function() {
                     $scope.sideMenuActive = true;

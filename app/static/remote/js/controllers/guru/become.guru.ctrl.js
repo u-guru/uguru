@@ -24,11 +24,13 @@ angular.module('uguru.guru.controllers')
   'DeviceService',
   'Utilities',
   '$interval',
+  'KeyboardService',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval) {
+    Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval,
+    KeyboardService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -57,7 +59,15 @@ angular.module('uguru.guru.controllers')
       $state.go('^.home');
       //AnimationService.slide('right');
     }
+    var clearAllSearchInputs = function() {
+      var inputs = document.querySelectorAll('input');
+      console.log(inputs.length, 'found');
+      for (var i = 0; i < inputs.length; i ++) {
+        var currentIndexInput = inputs[i];
+        currentIndexInput.value = '';
+      }
 
+    }
 
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.previous();
@@ -68,6 +78,7 @@ angular.module('uguru.guru.controllers')
       $scope.activeSlideIndex = index;
 
       KeyboardService.closeKeyboardIfExists();
+      clearAllSearchInputs();
 
       if (index === 0) {
 
