@@ -109,7 +109,10 @@ angular.module('uguru.util.controllers')
       // nick --> this works right now the other one doesn't on ios -- playing it safe
       $scope.supportModal.show();
 
-      // var isDevice = DeviceService.doesCordovaExist();
+      var isDevice = DeviceService.doesCordovaExist();
+      if (isDevice && DeviceService.isIOSDevice()) {
+        window.StatusBar && window.StatusBar.styleLightContent();
+      }
 
       // if (!isDevice) {
       //   $scope.supportModal.show();
