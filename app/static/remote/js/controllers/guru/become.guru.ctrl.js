@@ -73,7 +73,7 @@ angular.module('uguru.guru.controllers')
         console.log("inside majors slide");
 
         var majorsList = document.querySelectorAll('#major-list');
-        
+
         $timeout(function() {
           if (Utilities.isElementInViewport(majorsList)) {
             var majors = majorsList[0].querySelectorAll('ul li');
@@ -111,7 +111,7 @@ angular.module('uguru.guru.controllers')
 
         $timeout(function() {
           if (Utilities.isElementInViewport(coursesList)) {
-            
+
 
             var items = coursesList[0].querySelectorAll('ul li');
 
@@ -254,7 +254,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.$on('$ionicView.beforeEnter', function() {
-
+      $ionicSlideBoxDelegate.update();
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
 

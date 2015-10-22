@@ -220,7 +220,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.$on('$ionicView.beforeEnter', function() {
-
+          console.log($scope.user);
           // value counts up later -- hack for now
           $scope.showVerifyToast = $scope.user.current_guru_ranking > 40 && !$scope.user.school_email_confirmed;
 

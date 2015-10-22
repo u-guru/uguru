@@ -441,6 +441,59 @@ section {
 	background: white;
 }
 
+// CARDS MODAL
+#cards {
+	height: calc(100% - 114px);
+	ul {
+		height: 100%;
+		overflow: auto;
+		padding: 0 7.5px 7.5px;
+		li {
+			height: calc(100% / 3);
+			padding: 7.5px;
+			&:first-child {
+				padding-top: 0;
+			}
+			* {
+				box-shadow: none!important;
+				text-shadow: none!important;
+			}
+		}
+	}
+	button {
+		z-index: 10;
+	}
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-back::before {
+		background: $eggplant!important;
+	}
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-back::before {
+		background: $campus!important;
+	}
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::after {
+		background: $orange!important;
+		box-shadow: none!important;
+	}
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-back::before {
+		background: $azure!important;
+	}
+	.card-list-item {
+		width: 100%;
+	}
+}
+#edit-cards {
+	height: calc(100% - 114px);
+	.jp-card .jp-card-front,
+	.jp-card .jp-card-back {
+		background: $taupe!important;
+	}
+	.card-modal-wrapper-0 {
+		padding: 0 15px 15px;
+	}
+}
+
 // GURU CONTACT TYPES MODAL
 #contact-type {
 	height: calc(100% - 114px);
@@ -1428,7 +1481,7 @@ section {
 			}
 		}
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			li {
 				label {
@@ -1892,7 +1945,7 @@ section {
     		margin-right: -30px;
 		}
 	}
-	#school-list, #school-list-modal {
+	#school-list.onboarding-list, #school-list-modal {
 		ul {
 			li {
 				a {
@@ -2322,7 +2375,7 @@ section {
 						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
 		}
 	}
-	#major-list, #language-list {
+	#major-list.onboarding-list, #language-list {
 		ul {
 			margin-top: 1px;
 			li {
@@ -2368,7 +2421,7 @@ section {
 						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
 		}
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			margin: 1px 1px 0;
 			li {
@@ -2420,7 +2473,7 @@ section {
 	#course {
 		background: $charcoal;
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			li {
 				label {
@@ -4114,4 +4167,3 @@ body.platform-ios {
 	bottom:64px;
 	position:absolute;
 }
-

@@ -393,7 +393,7 @@ class User(Base):
             raise
 
     def add_guru_subcategories(self, subcategory_ids):
-        for subcategory_id in subcategory_id:
+        for subcategory_id in subcategory_ids:
             self.add_guru_subcategory(subcategory_id)
 
         try:
