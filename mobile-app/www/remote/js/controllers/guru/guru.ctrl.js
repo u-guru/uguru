@@ -42,6 +42,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $scope.guruHomeTips = TipService.currentTips; //local copy
   }
 
+  ModalService.init('signup', $scope);
+
+  $scope.closeModal = function(modalName) {
+    ModalService.close(modalName);
+  };
+
 
   $scope.root.vars.guru_mode = true;
   $scope.guru_mode = true;
@@ -70,6 +76,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               $scope.sideMenuActive = false;
           } else {
               $timeout(function() {
+
+                  if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                    if (window.StatusBar) {
+                      window.StatusBar.styleLightContent();
+                    }
+                  }
+
                   $scope.sideMenuActive = true;
               }, 250)
           }

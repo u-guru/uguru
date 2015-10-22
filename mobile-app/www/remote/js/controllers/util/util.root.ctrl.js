@@ -347,7 +347,7 @@ angular.module('uguru.util.controllers')
                 });
                 $scope.root.vars.loaderOn = true;
             },
-            showSuccess: function(text, duration) {
+            showSuccess: function(text, duration, callback) {
 
                 $scope.successLoaderText = text || '';
 
@@ -357,6 +357,7 @@ angular.module('uguru.util.controllers')
                     duration: duration || 1000
                 });
                 $scope.root.vars.loaderOn = true;
+                callback && callback();
             },
             updateSuccessText: function(text) {
                 $scope.successLoaderText = text || 'loading'

@@ -1254,6 +1254,9 @@ angular.module('uguru.util.controllers')
 
 
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
+        if (ModalService.isOpen('signup')) {
+              ModalService.close('signup');
+          }
         return;
       }
 

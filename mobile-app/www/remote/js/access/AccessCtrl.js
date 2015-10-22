@@ -106,6 +106,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         window.scrollTo(0, window.innerHeight);
+
       }
 
     } else {

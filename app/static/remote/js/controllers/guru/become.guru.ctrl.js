@@ -67,10 +67,11 @@ angular.module('uguru.guru.controllers')
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
 
+      KeyboardService.closeKeyboardIfExists();
+
       if (index === 0) {
 
         uTracker.track(tracker, 'Become Guru: Majors');
-        console.log("inside majors slide");
 
         var majorsList = document.querySelectorAll('#major-list');
 

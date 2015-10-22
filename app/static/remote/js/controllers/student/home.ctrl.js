@@ -74,6 +74,12 @@ angular.module('uguru.student.controllers', [])
                 $scope.sideMenuActive = false;
                 $ionicSlideBoxDelegate.update();
             } else {
+                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                    if (window.StatusBar) {
+                      window.StatusBar.styleLightContent();
+                    }
+                }
+
                 $timeout(function() {
                     $scope.sideMenuActive = true;
                 }, 250)
