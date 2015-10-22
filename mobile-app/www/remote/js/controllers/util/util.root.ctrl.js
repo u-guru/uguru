@@ -529,8 +529,10 @@ angular.module('uguru.util.controllers')
             console.log('device is ready from the root controller');
 
             PopupService.initDefaults();
-            DownloadService.testNetworkSpeed();
             DeviceService.readyDevice($scope);
+            setTimeout(function() {
+                DownloadService.testNetworkSpeed();
+            }, 1000)
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
 
