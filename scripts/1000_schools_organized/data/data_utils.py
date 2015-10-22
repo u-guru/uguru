@@ -208,11 +208,12 @@ def get_all_university():
     for uni_arr in universities:
         print uni_arr['name']
 
+
 if __name__ == '__main__':
     import sys
     args = sys.argv
 
-    get_all_university()
+    #get_all_university()
 
     if args[1] in ['targetted', '-t']:
         countTargetted()

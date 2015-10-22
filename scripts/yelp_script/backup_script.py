@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import os.path
 import os
 
-store_data_together_array = []
+
 consumer_key = 'J6G3zEBCox3lUfKCcJBLDA'
 consumer_secret = 'oXcvu0rV8NFvSMoRgf_FGZf-72Y'
 token = 'So3cdsVQ-4zB0AAD8MF9VnuDF7XFsihw'
@@ -14,7 +14,7 @@ yelp_api = YelpAPI(consumer_key, consumer_secret, token, token_secret)
 
 output = 'yelp_school_data.json'
 
-
+location_dict = {}
 city_info = []
 with open('fa15_final.json') as data_file:
 	data_info = json.load(data_file)
@@ -24,14 +24,14 @@ with open('fa15_final.json') as data_file:
 		city_info.append(cities)
 
 # def get_school_data_information(city_info):
-city_array = []
-for loop_cities in city_info[0:2]:
-	dictionary = {}
-	search_results = yelp_api.search_query(location = loop_cities)
-	dictionary['business_information:'] = search_results
-	city_array.append(dictionary)
-	with open(output,'wb') as outfile:
-		json.dump(city_array,outfile,indent=4)		
+# city_array = []
+# for loop_cities in city_info:
+# 	dictionary = {}
+# 	search_results = yelp_api.search_query(location = loop_cities)
+# 	dictionary['business_information:'] = search_results
+# 	city_array.append(dictionary)
+# 	with open(output,'wb') as outfile:
+# 		json.dump(city_array,outfile,indent=4)		
 
 def sort_array_of_dictionaries(array,sorter):
 	return sorted(array,key=lambda k: float(k[sorter])) 		
@@ -44,6 +44,7 @@ with open(output) as data_file:
 		for yelp_url in main_wrapper_json:
 			url_http = yelp_url['mobile_url']
 			key_value_dict = {}
+			store_data_together_array = []
 			location = yelp_url['location']['city']
 			soupify_obj = BeautifulSoup(requests.get(url_http).text)
 			try:
@@ -74,43 +75,36 @@ with open(output) as data_file:
 					business_name = second_soupify_request.find('div', attrs  = {'class':'column column-alpha '}).findAll('h1')
 					for business_name_info in business_name:
 						main_value_business = business_name_info.string.replace("Menu for", "").replace('\n','').strip()
-					for menu_detailed_info  in second_page_main_wrapper:
-						try:
+						for menu_detailed_info  in second_page_main_wrapper:
+							try:
 
-		
-							item_price = menu_detailed_info.findAll('li', attrs = {'class':'menu-item-price-amount'})
-							item_name = menu_detailed_info.find('div', attrs = {'class':'menu-item-details'}).findAll('h3')
-							item_description = menu_detailed_info.findAll('p', attrs = {'class':'menu-item-details-description'})
-						#	business_name_info = menu_detailed_info.find('div', attrs = {'class':'column column-alpha'}).string
-							for item_name_text, item_price_text,item_description_text in zip(item_price,item_name,item_description):
-								item_name_text_info = item_name_text.string
-								if item_name_text_info:
-
-									menu_dict = {}
-									menu_dict['additonal_information'] = business_external_url_array
-									item_price = item_name_text_info.replace('\n','').strip() # 
-									menu_dict['item_name'] = item_price_text.text.replace('\n','').strip()
-									menu_dict['food_descrption'] = item_description_text.text.replace('\n','').strip()
-									try:
-										menu_dict['item_price']= sort_array_of_dictionaries(store_data_together_array,item_price)
-									except KeyError:
-										continue
-									store_data_together_array.append(menu_dict)
-
-		
-
-						except AttributeError:
-							continue
 			
-				
-				key_value_dict[location]=store_data_together_array
-				store_data_together_array = []
-				# output_file = "yelp/" + school_name + "/" 
-				# if not os.path.isdir(output_file):
-				# 	os.makedirs(output_file)
+								item_price = menu_detailed_info.findAll('li', attrs = {'class':'menu-item-price-amount'})
+								item_name = menu_detailed_info.find('div', attrs = {'class':'menu-item-details'}).findAll('h3')
+								item_description = menu_detailed_info.findAll('p', attrs = {'class':'menu-item-details-description'})
+							#	business_name_info = menu_detailed_info.find('div', attrs = {'class':'column column-alpha'}).string
+								for item_name_text, item_price_text,item_description_text in zip(item_price,item_name,item_description):
+									item_name_text_info = item_name_text.string
+									if item_name_text_info:
+										menu_dict = {}
+										menu_dict['additonal_information'] = business_external_url_array
+										menu_dict['item_price'] = item_name_text_info.replace('\n','').strip()
+										menu_dict['item_name'] = item_price_text.text.replace('\n','').strip()
+										menu_dict['food_descrption'] = item_description_text.text.replace('\n','').strip()
+										
+										store_data_together_array.append(menu_dict)
+										location_dict[main_value_business] = store_data_together_array
 
-				with open("yelp" + "/"  + location + ".json",'wb') as outfile:
-					json.dump(key_value_dict,outfile,indent=4)
+			
+
+							except AttributeError:
+								continue
+				
+				
+		key_value_dict[location]=store_data_together_array
+		location_dict = {}
+		with open("yelp" + "/"  + location + ".json",'wb') as outfile:
+			json.dump(key_value_dict,outfile,indent=4)
 	
 		# with open(output_file,'wb') as outfile:
 		# 		json.dump(key_value_dict,outfile,indent=4)			
