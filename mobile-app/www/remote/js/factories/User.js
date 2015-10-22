@@ -628,7 +628,7 @@ angular.module('uguru.user', [])
             'guru_sessions', 'conversations', 'devices', 'gurus',
             'cards', 'requests', 'student_ratings', 'guru_ratings',
             'student_courses', 'cashout_cards', 'guru_skills', 'guru_courses',
-            'guru_languages', 'student_courses', 'departments'
+            'guru_languages', 'student_courses', 'departments', 'guru_categories', 'guru_subcategories'
         ];
         for (var index = 0; index < properties.length; index++) {
             var property = properties[index];

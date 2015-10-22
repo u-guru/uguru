@@ -196,8 +196,10 @@ angular.module('uguru.util.controllers')
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
 
+
                 $scope.categories = Category.categories.slice();
                 callback && callback(Category.categories);
+                console.log($scope.categories.length, 'categories loaded');
 
             },
             function() {
