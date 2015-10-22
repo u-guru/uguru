@@ -148,7 +148,7 @@ angular.module('uguru.util.controllers')
 
         //how to make platform ready...
         $scope.user = User.getLocal();
-        $scope.user.is_admin = typeof LOCAL !== "undefined";
+        $scope.user.is_admin = typeof LOCAL !== "undefined" && LOCAL;
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
         $scope.user.clearAttr = User.clearAttr;
