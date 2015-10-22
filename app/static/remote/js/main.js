@@ -14,7 +14,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  REST_URL = "http://192.168.0.114:5000"
+  // REST_URL = "http://192.168.0.114:5000"
 
 } else {
   img_base = '/static/'
@@ -39,7 +39,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   uTracker.init(tracker);
   Github = $injector.get("Github");
   Github.init();
-  Github.setExceptionToGithubIssue(true);
+  Github.setExceptionToGithubIssue(false);
 
 })
 
@@ -70,7 +70,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(true);
+  $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
