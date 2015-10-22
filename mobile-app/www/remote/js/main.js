@@ -91,6 +91,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
   }).
+
+
+  state('root.inappmap', {
+        url: '/inappmap',
+        templateUrl: BASE + 'templates/inappmap.html',
+        controller: 'InAppMapController'
+  }).
+
+
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',

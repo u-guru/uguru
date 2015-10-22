@@ -18,7 +18,7 @@ function DownloadService(Utilities, uTracker, DeviceService) {
 		if(DeviceService.isMobile()) {
 			var fileName = Utilities.getFileName(URL.toString());
 			var directory = cordova.file.dataDirectory;
-			var filePath = dircetory + fileName;
+			var filePath = directory + fileName;
 			window.resolveLocalFileSystemURL(filePath, fileSuccess, fileError);
 			function fileSuccess(fileEntry) {
 				fileEntry.remove(removeSuccess, removeError);

@@ -12,11 +12,12 @@ angular.module('sharedServices')
     'CalendarService',
     'BadgeService',
     'AppAvailability',
+    'MediaService',
 	AdminService
 	]);
 
-function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
-    $ionicSideMenuDelegate, $state, Github) {
+function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout, $ionicSideMenuDelegate, 
+    $state, Github, CardReader, SocialSharing, CalendarService, BadgeService, AppAvailability, MediaService) {
 
 
 	var adminActionSheet;
@@ -68,7 +69,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
         }
         console.log("Admin Exception Options:\n", adminScope.options);
         adminActionSheetOptions = {
-            buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }, {text:'Default Email : <strong>' + adminScope.options.defaultSendEmail +'</strong>' }, {text:'Test Exception Options'}, {text:'Update App from..'}, {text: 'Card Reader'}, {text: 'Share the secret'}, {text: 'Open Calendar'}, {text: 'Display Badge Count'}, {text: 'Clear Badge Count'}, {text: 'Check FB App Availability'}],
+            buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }, {text:'Default Email : <strong>' + adminScope.options.defaultSendEmail +'</strong>' }, {text:'Test Exception Options'}, {text:'Update App from..'}, {text: 'Card Reader'}, {text: 'Share the secret'}, {text: 'Open Calendar'}, {text: 'Display Badge Count'}, {text: 'Clear Badge Count'}, {text: 'Check FB App Availability'}, {text: 'Record Audio (5s)'}, {text: 'Play Audio'}, {text:'Display google maps in app'}],
             buttonClicked: function(index) {
                 handleAdminSheetButtonClick(adminScope, index);
             }
@@ -269,6 +270,23 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                 case 14:
                     if(DeviceService.doesCordovaExist()) {
                         AppAvailability.checkFb(); // Works on Android, IOS
+                    }  
+                    break;
+                case 15:
+                    if(DeviceService.doesCordovaExist()) {
+                        MediaService.recordAudio();
+                    }  
+                    break;
+
+                case 16:
+                    if(DeviceService.doesCordovaExist()) {
+                        MediaSerivce.playAudio();   
+                    }  
+                    break;
+
+                case 17:
+                    if(DeviceService.doesCordovaExist()) {
+                       $state.go('^.inappmap');
                     }  
                     break;
 
