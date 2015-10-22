@@ -2,10 +2,10 @@ angular.module('sharedServices')
 .factory("AdminService", [
 	'$localstorage',
     '$ionicActionSheet',
+    'DeviceService',
     '$timeout',
     '$ionicSideMenuDelegate',
     '$state',
-    'DeviceService',
     'Github',
     'CardReader',
     'SocialSharing',
@@ -15,8 +15,9 @@ angular.module('sharedServices')
 	AdminService
 	]);
 
-function AdminService($localstorage, $ionicActionSheet, $timeout,
-    $ionicSideMenuDelegate, $state, DeviceService, GitHub, CardReader, SocialSharing, CalendarService, BadgeService, AppAvailability) {
+function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
+    $ionicSideMenuDelegate, $state, Github) {
+
 
 	var adminActionSheet;
     var closeAttachActionSheet;

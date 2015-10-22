@@ -237,15 +237,7 @@ angular.module('uguru.util.controllers')
         console.log("$scope.coursesSources.length: " + $scope.coursesSource.length);
       },function(err) {
 
-        if ($scope.defaultFallbackPlan) {
-          $scope.defaultFallbackPlan(err);
-        } else {
-          if (!$scope.root.vars.processRedirect) {
-            $scope.root.vars.processRedirect = true;
-            alert('Something went wrong... Please contact support!');
-          }
-          $state.go('^.university');
-        }
+        console.log("MAJORS NOT FOUND",err);
 
       });
     }

@@ -189,19 +189,7 @@ angular.module('uguru.util.controllers')
         $localstorage.setObject('universityMajors', majors.plain());
 
       },function(err) {
-        if ($scope.defaultFallbackPlan) {
-          $scope.defaultFallbackPlan(err);
-        } else {
-          if (!$scope.root.vars.processRedirect) {
-            alert('Something went wrong... Please contact support!');
-          } else {
-            $scope.root.vars.processRedirect = true;
-            $timeout(function() {
-              $scope.root.vars.processRedirect = false;
-            }, 2000);
-          }
-          $state.go('^.university');
-        }
+        console.log("MAJORS NOT FOUND",err);
       });
     }
 

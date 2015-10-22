@@ -14,9 +14,9 @@ apns_client = APNs(cert_file='app/lib/certs/PushUguruCert.pem', key_file='app/li
 ### Edge Test Push Cases:
 ### 1. User has multiple devices (they receive all of them)
 
-# def send_windows_notification(message, user_mpns_token):
-#     toast = MPNSToast()
-#     toast.send(user_mpns_token, {"text1": message})
+def send_windows_notification(message, user_mpns_token):
+    toast = MPNSToast()
+    toast.send(user_mpns_token, {"text1": message})
 
 
 def send_ios_notification(message, user_apns_token):

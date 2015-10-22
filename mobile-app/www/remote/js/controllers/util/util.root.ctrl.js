@@ -42,27 +42,36 @@ angular.module('uguru.util.controllers')
          Utilities, Category, DownloadService, PopupService,
          KeyboardService, ModalService, Github) {
 
-        var bodyRect = document.querySelector('body').getBoundingClientRect();
-        var windowHeight = bodyRect.width;
-        var windowWidth = bodyRect.height;
 
+        var bodyRect;
+        var windowHeight;
+        var windowWidth;
+        var initHeight = function() {
+            bodyRect = document.querySelector('body').getBoundingClientRect();
+            windowHeight = bodyRect.height;
+            windowWidth = bodyRect.width;
+        }
+
+        initHeight();
         $scope.window = {
             width:windowWidth,
             height:windowHeight
         }
 
-        // GABRIELLE gTODO: Define these values
-        var desktopHeightLimit = 1000;
-        var desktopWidthLimit= 1000;
+        console.log('Window size', $scope.window);
 
-        var isDesktopMode = function(height, width) {
-            console.log('CURRENT SCREEN HEIGHT', height, width);
+        // GABRIELLE TODO: Define these values
+        var desktopHeightLimit = 700;
+        var desktopWidthLimit= 700;
+
+        $scope.isDesktopMode = function(height, width) {
+            initHeight();
+            height = height || windowHeight;
+            width = width || windowWidth;
             return height > desktopHeightLimit && width > desktopWidthLimit;
         }
 
-        $scope.desktopMode = isDesktopMode(windowHeight, windowWidth);
-
-        console.log('DesktopMode', $scope.desktopMode);
+        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
 
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
@@ -197,6 +206,9 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.getCoursesForUniversityId = function(uni_id) {
+            if (!uni_id) {
+                return;
+            }
             University.getCourses(uni_id).then(function(courses){
                 $timeout(function() {
                     $scope.data.courses = courses.plain();
@@ -281,34 +293,6 @@ angular.module('uguru.util.controllers')
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
             }, 250);
         };
-
-        $scope.defaultFallbackPlan = function(err) {
-            // no university.id && no courses && no majors after attempt to load
-            if (!LOCAL && !$scope.user.university_id && !$scope.user.university) {
-                $state.go("^.university");
-                alert('Something went wrong... Please contact support!' + $state.current.name);
-            }
-
-            if (LOCAL && !$scope.user.university_id && !$scope.user.university_id && $scope.user.id) {
-                if (confirm('No courses or majors because you refreshed. Click OK to default to Berkeley, or cancel to go back to access.')) {
-                    AdminServices.setDefaultCoursesAndMajors(scope);
-                    $state.go('^.home');
-                }
-            } else {
-                if (!$scope.root.vars.processRedirect) {
-                    alert('No courses or majors because you refreshed. Redirecting...');
-                    $scope.loader.showAmbig();
-                    $scope.root.vars.processRedirect = true;
-                    $timeout(function() {
-                      $scope.root.vars.processRedirect = false;
-                      $scope.loader.hide();
-                      $scope.loader.showSuccess('Process Complete', 2000);
-                    }, 2000);
-                }
-                $state.go('^.university');
-            }
-
-        }
 
         // TODO-REFACTOR
         $scope.loader = {

@@ -17,13 +17,15 @@ angular.module('uguru.util.controllers')
   'ThrottleService',
   'Utilities',
   '$ionicScrollDelegate',
+  'CordovaPushWrapper',
   AccessController
   ]);
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-  $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate) {
+  $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate,
+  CordovaPushWrapper) {
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
@@ -127,6 +129,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.$on('$ionicView.loaded', function() {
 
     AnimationService.accessInput = document.querySelector("access-code-bar");
+    CordovaPushWrapper.registerDevice($scope)
 
   })
 

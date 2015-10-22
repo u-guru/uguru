@@ -14,6 +14,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
+  // REST_URL = "http://localhost:5000"
 
   //REST_URL = 'http://192.168.12.159:5000';
 
@@ -27,7 +28,7 @@ var stats = new Stats();
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
-  'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
+  'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
 
 
@@ -47,14 +48,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider,
+  $ionicConfigProvider, $compileProvider,
   $provide) {
 
-  uiGmapGoogleMapApiProvider.configure({
-        //    key: 'your api key',
-        v: '3.17',
-        libraries: 'places'
-    });
+
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
@@ -135,6 +132,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/guru-remote',
     templateUrl: BASE + 'templates/guru.remote.html',
     controller: 'GuruRemoteController'
+  }).
+  state('root.desktop-login', {
+    url:'/desktop-login',
+    templateUrl: BASE + 'templates/desktop.login.html'
   }).
   state('root.guru-languages', {
     url:'/guru-languages',

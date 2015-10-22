@@ -33,12 +33,12 @@ angular.module('uguru.student.controllers', [])
 
 
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.guruCoursesModal = modal;
-        })
+        // $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        // }).then(function(modal) {
+        //     $scope.guruCoursesModal = modal;
+        // })
 
         $scope.launchStudentCoursesModal = function() {
           $scope.guruCoursesModal.show();
@@ -83,12 +83,12 @@ angular.module('uguru.student.controllers', [])
         $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.requestModal = modal;
-        });
+        // $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        // }).then(function(modal) {
+        //     $scope.requestModal = modal;
+        // });
 
         $scope.launchRequestModal = function(index, verb_index) {
 
@@ -165,6 +165,11 @@ angular.module('uguru.student.controllers', [])
 
         })
 
+        $scope.$on('$ionicView.afterEnter', function() {
+            console.log('after enter');
+            $ionicSlideBoxDelegate.update();
+        });
+
         $scope.$on('$ionicView.enter', function() {
 
             $scope.loader.hide();
@@ -172,14 +177,12 @@ angular.module('uguru.student.controllers', [])
             if (!$scope.mapInitialized && !MapService.studentHomeMap) {
                 $scope.mapInitialized = true;
                 $timeout(function() {
-                    $scope.initStudentHomeMap();
+                    // $scope.initStudentHomeMap();
                 }, 1000)
             }
             $timeout(function() {
                 checkOnboardingStatus();
             }, 500);
-            $ionicSlideBoxDelegate.update();
-
 
 
         });
