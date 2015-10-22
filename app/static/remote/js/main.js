@@ -39,7 +39,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   uTracker.init(tracker);
   Github = $injector.get("Github");
   Github.init();
-  Github.setExceptionToGithubIssue(false);
+  Github.setExceptionToGithubIssue(true);
 
 })
 
