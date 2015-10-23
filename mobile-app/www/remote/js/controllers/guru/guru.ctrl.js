@@ -21,16 +21,19 @@ angular.module('uguru.guru.controllers', [])
   'ModalService',
   'PopupService',
   '$ionicSlideBoxDelegate',
-  'ModalService',
+  'DeviceService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet, RankingService, TipService, ModalService, PopupService, $ionicSlideBoxDelegate) {
+  $ionicActionSheet, RankingService, TipService, ModalService, PopupService,
+  $ionicSlideBoxDelegate, DeviceService) {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
     RankingService.refreshRanking(user);
   }
+
+
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
@@ -42,6 +45,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     TipService.currentTips = TipService.generateTips($scope.user); //mastercopy
     $scope.guruHomeTips = TipService.currentTips; //local copy
   }
+
+  ModalService.init('signup', $scope);
+
+  $scope.closeModal = function(modalName) {
+    ModalService.close(modalName);
+  };
 
 
   $scope.root.vars.guru_mode = true;
@@ -72,6 +81,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               $scope.sideMenuActive = false;
           } else {
               $timeout(function() {
+
+                  if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                    if (window.StatusBar) {
+                      window.StatusBar.styleLightContent();
+                    }
+                  }
+
                   $scope.sideMenuActive = true;
               }, 250)
           }
@@ -222,15 +238,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.$on('$ionicView.beforeEnter', function() {
-
+          console.log($scope.user);
+          $scope.sideMenuActive = false;
+          // postponed to later
           // value counts up later -- hack for now
-          $scope.showVerifyToast = $scope.user.current_guru_ranking > 40 && !$scope.user.school_email_confirmed;
+          // $scope.showVerifyToast = $scope.user.current_guru_ranking > 40 && !$scope.user.school_email_confirmed;
 
         })
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
-
+          $scope.sideMenuActive = false;
           $scope.refreshTipsAndRanking($scope.user);
           $ionicSlideBoxDelegate.update();
 

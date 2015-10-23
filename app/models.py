@@ -373,6 +373,72 @@ class User(Base):
                 return True
         return False
 
+    def add_majors(self, major_ids):
+        for major_id in major_ids:
+            self.add_major(major_id)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def add_guru_courses(self, course_ids):
+        for course_id in course_ids:
+            self.add_guru_course(course_id)
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def add_guru_subcategories(self, subcategory_ids):
+        for subcategory_id in subcategory_ids:
+            self.add_guru_subcategory(subcategory_id)
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+
+    def set_profile_url(self, profile_url):
+        self.profile_url = profile_url
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def add_guru_subcategory(self, subcategory_id):
+        subcategory = Subcategory.query.get(subcategory_id)
+        if subcategory:
+            self.guru_subcategories.append(subcategory)
+
+            if subcategory.category not in self.guru_categories:
+                self.guru_categories.append(subcategory.category)
+
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+
+
+    def add_guru_course(self, course_id):
+        c = Course.query.get(int(course_id))
+        self.guru_courses.append(c)
+        db_session.commit()
+
+
+    def add_major(self, major_id):
+        major_obj = Department.query.get(int(major_id))
+        self.departments.append(major_obj)
+        db_session.commit()
+
+
+
     @staticmethod
     def generate_referral_code(name):
         first_name = name.split(" ")[0]

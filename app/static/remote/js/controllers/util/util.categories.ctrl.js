@@ -116,7 +116,7 @@ angular.module('uguru.util.controllers')
 
     $scope.updateCategoryCount = function(category, subcategory, index) {
 
-      
+
       Category.categories = $scope.categories;
       $localstorage.setObject('categories', $scope.categories);
 
@@ -129,6 +129,7 @@ angular.module('uguru.util.controllers')
         category.active_subcategories -= 1;
         removeGuruSubcategory(subcategory);
       }
+
     }
 
 
@@ -141,12 +142,32 @@ angular.module('uguru.util.controllers')
 
 
     var addGuruSubcategory = function(subcategory) {
-      $scope.user.updateAttr('add_guru_subcategory', $scope.user, subcategory, null, $scope);
+      if ($scope.user.id) {
+        $scope.user.updateAttr('add_guru_subcategory', $scope.user, subcategory, null, $scope);
+      } else {
+        if (!$scope.user.guru_subcategories) {
+          $scope.user.guru_subcategories = [];
+        }
+        console.log(subcategory.name, 'added to user list');
+        $scope.user.guru_subcategories.push(subcategory);
+      }
     }
 
 
     var removeGuruSubcategory = function(subcategory) {
-      $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
+      if ($scope.user.id) {
+        $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
+      } else {
+
+        var guru_subcategories = $scope.user.guru_subcategories.slice();
+        for (var i = 0; i < guru_subcategories; i++) {
+          if (guru_subcategories[i].id === subcategory.id) {
+            $scope.user.guru_subcategories.splice(i, 1);
+            console.log(subcategory.name, 'removed from user list');
+          }
+        }
+
+      }
     }
 
     $scope.categories = Category.categories;

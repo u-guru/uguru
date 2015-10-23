@@ -371,12 +371,15 @@ angular.module('uguru.guru.controllers')
             $scope.guruSkillsModal = modal;
       })
 
-      var updateScope = function(categories) {
+      var updateCategoriesToScope = function(categories) {
               $scope.categories = categories;
       }
-      $scope.categories = Category.categories || $scope.getCategories(updateScope) || [];
+      $scope.categories = Category.categories || $scope.getCategories(updateCategoriesToScope) || [];
 
-
+      var updateCoursesToScope = function(guru_courses) {
+        $scope.courses = guru_courses;
+      }
+      $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
     }
 
     var getIonicSideMenuOpenRatio = function() {
@@ -792,6 +795,7 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
+      console.log(University.courses.length, 'courses in universities');
       $ionicSlideBoxDelegate.update();
       $timeout(function() {
         $scope.initModalsAfterEnter();
