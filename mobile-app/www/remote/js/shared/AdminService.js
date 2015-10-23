@@ -282,7 +282,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
 
                 case 16:
                     if(DeviceService.doesCordovaExist()) {
-                        MediaSerivce.playAudio();   
+                        MediaService.playAudio();   
                     }  
                     break;
 

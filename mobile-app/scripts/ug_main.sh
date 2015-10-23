@@ -38,6 +38,7 @@
 	    	npm install -g cordova@5.0.0
 	    	npm install -g ionic@1.3.2
 	    	printf "\e[0;36mInstallation finished.\n"
+	    	printf "\e[0m"
 	    	return
     	fi
 

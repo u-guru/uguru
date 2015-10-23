@@ -31,12 +31,13 @@ function MediaService(DeviceService, $interval) {
     var fileName = "myRecording" + format;
     testName = fileName;
     var directory = cordova.file.dataDirectory;
-    var filePath = dircetory + fileName;
-
+    var filePath = directory + fileName;
+    console.log("filePath: " + filePath);
     var mediaRec = new Media(filePath,
         // success callback
         function() {
             console.log("recordAudio():Audio Success");
+            console.log("filePath: " + filePath);
         },
 
         // error callback
@@ -66,11 +67,11 @@ function MediaService(DeviceService, $interval) {
     //TODO: SHOULD REMOVE THESE AND UNCOMMENT THE LINE ABOVE ONCE TESTING IS COMPLETED
     console.log("testName: " + testName);
     var filePath = directory + testName;
-
-    window.resolveLocalFileSystemURL(filePath, fileSuccess, fileError);
-    function fileSuccess(fileEntry) {
-
-      var media = new Media(filePath,
+    console.log("filePath: " + filePath);
+    // window.resolveLocalFileSystemURL(filePath, fileSuccess, fileError);
+    // function fileSuccess(fileEntry) {
+      var url = "http://download.wavetlan.com/SVV/Media/HTTP/MP3/Helix_Mobile_Producer/HelixMobileProducer_test1_MPEG2_Mono_CBR_40kbps_16000Hz.mp3";
+      var media = new Media(url,
         function() {
           console.log("playAudio() success!");
         },
@@ -81,11 +82,12 @@ function MediaService(DeviceService, $interval) {
 
       media.play();
 
-    }
+    // }
 
-    function fileError() {
-      console.log("Could not find " + fileName);
-    }
+    // function fileError(err) {
+    //   console.log("ERROR: " + err);
+    //   console.log(err);
+    // }
 
   }
 
