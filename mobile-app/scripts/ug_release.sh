@@ -33,14 +33,14 @@ if [ $# == 1 ];
 	if [ $platform == "ios" ]; then
 		printf "\e[0;36mCompiling production app for $platform \e[0m\n"
 
-		./scripts/ug_build.sh $platform
+		# ./scripts/ug_build.sh $platform
 
 
 		printf "\e[0;36mCompiling production apk for $platform \e[0m\n"
-		./scripts/ug_build.sh $platform
-		build-ios
+		# ./scripts/ug_build.sh $platform
+		# build-ios
 		cordova platform add ios@3.8
-		cordova build ios --release
+		cordova build ios --release --device
 		printf '\e[0;36mOpening xCode project and giving back control... \e[0m\n'
 		printf '\e[0;36mMake sure to set the correct signing identity and build with xCode. \e[0m\n'
 		printf '\e[0;36mFor xCode 7+: Make sure to disable "ENABLE_BITCODE" in build settings. \e[0m\n'
