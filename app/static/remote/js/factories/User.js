@@ -1173,7 +1173,7 @@ angular.module('uguru.user', [])
                             }
                             else if ($scope.root.vars.profile_url_changed) {
                                 $scope.root.vars.profile_url_changed = false;
-                                $scope.user.profile_url = file.plain();
+                                $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);
                             }
                             else if ($scope.root.vars.transcript_url_changed) {

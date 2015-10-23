@@ -207,7 +207,7 @@ angular.module('uguru.util.controllers')
             })
         }
 
-        $scope.getCoursesForUniversityId = function(uni_id) {
+        $scope.getCoursesForUniversityId = function(uni_id, callback) {
             if (!uni_id) {
                 return;
             }
@@ -216,6 +216,7 @@ angular.module('uguru.util.controllers')
                     $scope.data.courses = courses.plain();
                     University.courses = courses.plain();
                     console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
+                    callback && callback();
                 }, 0);
             },
             function() {
@@ -226,7 +227,7 @@ angular.module('uguru.util.controllers')
 
 
         if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-            console.log('University courses not local, requesting now..');
+            console.log('University majors not local, requesting now..');
             $timeout(function() {
                 $scope.getMajorsForUniversityId($scope.user.university_id);
             }, 0)
@@ -235,12 +236,12 @@ angular.module('uguru.util.controllers')
         }
 
         if ($scope.user.university_id && !(University.courses && University.courses.length)) {
-            console.log('University majors not local, requesting now..');
+            console.log('University courses not local, requesting now..');
             $timeout(function() {
                 $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
             }, 0)
         } else {
-            console.log(University.majors.length, 'majors loaded');
+            console.log(University.courses.length, 'majors loaded');
         }
 
         if (!Category.categories || Category.categories.length === 0) {

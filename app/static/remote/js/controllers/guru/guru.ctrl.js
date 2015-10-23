@@ -21,15 +21,22 @@ angular.module('uguru.guru.controllers', [])
   'ModalService',
   'PopupService',
   '$ionicSlideBoxDelegate',
+  'DeviceService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet, RankingService, TipService, ModalService, PopupService, $ionicSlideBoxDelegate) {
+  $ionicActionSheet, RankingService, TipService, ModalService, PopupService,
+  $ionicSlideBoxDelegate, DeviceService) {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
     RankingService.refreshRanking(user);
   }
+
+  setTimeout(function() {
+    console.log('Rendering guru profile', University.courses.length);
+    console.log('Rendering guru majors', University.majors.length);
+  }, 1500);
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
@@ -234,14 +241,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.$on('$ionicView.beforeEnter', function() {
           console.log($scope.user);
+          $scope.sideMenuActive = false;
+          // postponed to later
           // value counts up later -- hack for now
-          $scope.showVerifyToast = $scope.user.current_guru_ranking > 40 && !$scope.user.school_email_confirmed;
+          // $scope.showVerifyToast = $scope.user.current_guru_ranking > 40 && !$scope.user.school_email_confirmed;
 
         })
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
-
+          $scope.sideMenuActive = false;
           $scope.refreshTipsAndRanking($scope.user);
           $ionicSlideBoxDelegate.update();
 
