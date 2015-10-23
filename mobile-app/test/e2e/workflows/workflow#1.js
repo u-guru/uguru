@@ -170,10 +170,9 @@ describe('#3935 Bugs Check Test',function()
  		it('Check major/course/skill are added',function()
 		{
 
-			expect(guruprofile.countMajor()).not.toBe(0,"No major list is updated to new account");
-			expect(guruprofile.countCourse()).not.toBe(0,"No course list is updated to new account");
-			expect(guruprofile.countSkill()).not.toBe(0,"No skill list is updated to new account");
-			browser.sleep(10000);
+			expect(guruprofile.countMajor()).toBeGreaterThan(0,"No major list is updated to new account");
+			expect(guruprofile.countCourse()).toBeGreaterThan(0,"No course list is updated to new account");
+			expect(guruprofile.countSkill()).toBeGreaterThan(0,"No skill list is updated to new account");
 		});
 
     });
