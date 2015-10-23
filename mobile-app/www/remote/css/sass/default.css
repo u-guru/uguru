@@ -1615,7 +1615,7 @@ button.round {
   text-transform: uppercase;
 }
 
-button.active, button.activated {
+button.active, button.activated, button:active, button:hover, button:focus {
   filter: alpha(opacity=75);
   opacity: 0.75;
 }
@@ -1637,7 +1637,7 @@ button.active, button.activated {
   color: #2B3234;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-charcoal"].activated, [class*="btn-ghost"][class*="btn-ghost-charcoal"]:active {
+[class*="btn-ghost"][class*="btn-ghost-charcoal"].activated, [class*="btn-ghost"][class*="btn-ghost-charcoal"]:active, [class*="btn-ghost"][class*="btn-ghost-charcoal"]:hover, [class*="btn-ghost"][class*="btn-ghost-charcoal"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #2B3234;
@@ -1649,7 +1649,7 @@ button.active, button.activated {
   color: #40484B;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-slate"].activated, [class*="btn-ghost"][class*="btn-ghost-slate"]:active {
+[class*="btn-ghost"][class*="btn-ghost-slate"].activated, [class*="btn-ghost"][class*="btn-ghost-slate"]:active, [class*="btn-ghost"][class*="btn-ghost-slate"]:hover, [class*="btn-ghost"][class*="btn-ghost-slate"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #40484B;
@@ -1661,7 +1661,7 @@ button.active, button.activated {
   color: #757575;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-taupe"].activated, [class*="btn-ghost"][class*="btn-ghost-taupe"]:active {
+[class*="btn-ghost"][class*="btn-ghost-taupe"].activated, [class*="btn-ghost"][class*="btn-ghost-taupe"]:active, [class*="btn-ghost"][class*="btn-ghost-taupe"]:hover, [class*="btn-ghost"][class*="btn-ghost-taupe"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #757575;
@@ -1673,7 +1673,7 @@ button.active, button.activated {
   color: #F1F1F1;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-smoke"].activated, [class*="btn-ghost"][class*="btn-ghost-smoke"]:active {
+[class*="btn-ghost"][class*="btn-ghost-smoke"].activated, [class*="btn-ghost"][class*="btn-ghost-smoke"]:active, [class*="btn-ghost"][class*="btn-ghost-smoke"]:hover, [class*="btn-ghost"][class*="btn-ghost-smoke"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #F1F1F1;
@@ -1685,7 +1685,7 @@ button.active, button.activated {
   color: white;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-white"].activated, [class*="btn-ghost"][class*="btn-ghost-white"]:active {
+[class*="btn-ghost"][class*="btn-ghost-white"].activated, [class*="btn-ghost"][class*="btn-ghost-white"]:active, [class*="btn-ghost"][class*="btn-ghost-white"]:hover, [class*="btn-ghost"][class*="btn-ghost-white"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid white;
@@ -1697,7 +1697,7 @@ button.active, button.activated {
   color: #DB1988;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-cerise"].activated, [class*="btn-ghost"][class*="btn-ghost-cerise"]:active {
+[class*="btn-ghost"][class*="btn-ghost-cerise"].activated, [class*="btn-ghost"][class*="btn-ghost-cerise"]:active, [class*="btn-ghost"][class*="btn-ghost-cerise"]:hover, [class*="btn-ghost"][class*="btn-ghost-cerise"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #DB1988;
@@ -1709,7 +1709,7 @@ button.active, button.activated {
   color: #E5753C;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-orange"].activated, [class*="btn-ghost"][class*="btn-ghost-orange"]:active {
+[class*="btn-ghost"][class*="btn-ghost-orange"].activated, [class*="btn-ghost"][class*="btn-ghost-orange"]:active, [class*="btn-ghost"][class*="btn-ghost-orange"]:hover, [class*="btn-ghost"][class*="btn-ghost-orange"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #E5753C;
@@ -1721,7 +1721,7 @@ button.active, button.activated {
   color: #F9D57B;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-gold"].activated, [class*="btn-ghost"][class*="btn-ghost-gold"]:active {
+[class*="btn-ghost"][class*="btn-ghost-gold"].activated, [class*="btn-ghost"][class*="btn-ghost-gold"]:active, [class*="btn-ghost"][class*="btn-ghost-gold"]:hover, [class*="btn-ghost"][class*="btn-ghost-gold"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #F9D57B;
@@ -1733,7 +1733,7 @@ button.active, button.activated {
   color: #81B566;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-moola"].activated, [class*="btn-ghost"][class*="btn-ghost-moola"]:active {
+[class*="btn-ghost"][class*="btn-ghost-moola"].activated, [class*="btn-ghost"][class*="btn-ghost-moola"]:active, [class*="btn-ghost"][class*="btn-ghost-moola"]:hover, [class*="btn-ghost"][class*="btn-ghost-moola"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #81B566;
@@ -1745,7 +1745,7 @@ button.active, button.activated {
   color: #69B3A5;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-shamrock"].activated, [class*="btn-ghost"][class*="btn-ghost-shamrock"]:active {
+[class*="btn-ghost"][class*="btn-ghost-shamrock"].activated, [class*="btn-ghost"][class*="btn-ghost-shamrock"]:active, [class*="btn-ghost"][class*="btn-ghost-shamrock"]:hover, [class*="btn-ghost"][class*="btn-ghost-shamrock"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #69B3A5;
@@ -1757,7 +1757,7 @@ button.active, button.activated {
   color: #50A5DD;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-lake"].activated, [class*="btn-ghost"][class*="btn-ghost-lake"]:active {
+[class*="btn-ghost"][class*="btn-ghost-lake"].activated, [class*="btn-ghost"][class*="btn-ghost-lake"]:active, [class*="btn-ghost"][class*="btn-ghost-lake"]:hover, [class*="btn-ghost"][class*="btn-ghost-lake"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #50A5DD;
@@ -1769,7 +1769,7 @@ button.active, button.activated {
   color: #55A4B7;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-azure"].activated, [class*="btn-ghost"][class*="btn-ghost-azure"]:active {
+[class*="btn-ghost"][class*="btn-ghost-azure"].activated, [class*="btn-ghost"][class*="btn-ghost-azure"]:active, [class*="btn-ghost"][class*="btn-ghost-azure"]:hover, [class*="btn-ghost"][class*="btn-ghost-azure"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #55A4B7;
@@ -1781,7 +1781,7 @@ button.active, button.activated {
   color: #9A5BC5;
 }
 
-[class*="btn-ghost"][class*="btn-ghost-eggplant"].activated, [class*="btn-ghost"][class*="btn-ghost-eggplant"]:active {
+[class*="btn-ghost"][class*="btn-ghost-eggplant"].activated, [class*="btn-ghost"][class*="btn-ghost-eggplant"]:active, [class*="btn-ghost"][class*="btn-ghost-eggplant"]:hover, [class*="btn-ghost"][class*="btn-ghost-eggplant"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   border: 2px solid #9A5BC5;
