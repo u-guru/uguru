@@ -69,7 +69,7 @@ def get_logo_url_for_university(name):
     return
 
 
-### Tries running y
+## Tries running
 def check_efficiency(problem_number):
     uni_arr = get_all_universities_metadata()
     sample_universities = choose_random_100_universities(uni_arr)
