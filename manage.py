@@ -37,7 +37,7 @@ if arg == 'ios_push':
     from app.lib.push_notif import *
     if len(sys.argv) > 3:
         message = sys.argv[2]
-        device_token = sys.arg[3]
+        device_token = sys.argv[3]
         send_ios_notification(message, device_token)
     else:
         print "Please pass in message && device token"
@@ -46,7 +46,7 @@ if arg == 'windows_push':
     from app.lib.push_notif import *
     if len(sys.argv) > 3:
         message = sys.argv[2]
-        device_token = sys.arg[3]
+        device_token = sys.argv[3]
         send_windows_notification(message, device_token)
     else:
         print "Please pass in message && device token"
@@ -56,7 +56,7 @@ if arg == 'android_push':
     from app.lib.push_notif import *
     if len(sys.argv) > 3:
         message = sys.argv[2]
-        device_token = sys.arg[3]
+        device_token = sys.argv[3]
         send_android_notification(message, device_token)
     else:
         print "Please pass in message && device token"

@@ -14,6 +14,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
+  // REST_URL = "http://192.168.0.114:5000"
 
 } else {
   img_base = '/static/'
@@ -69,7 +70,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(true);
+  $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -126,6 +127,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/guru-remote',
     templateUrl: BASE + 'templates/guru.remote.html',
     controller: 'GuruRemoteController'
+  }).
+  state('root.desktop-login', {
+    url:'/desktop-login',
+    templateUrl: BASE + 'templates/desktop.login.html'
   }).
   state('root.guru-languages', {
     url:'/guru-languages',

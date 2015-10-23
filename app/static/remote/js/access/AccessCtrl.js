@@ -17,13 +17,15 @@ angular.module('uguru.util.controllers')
   'ThrottleService',
   'Utilities',
   '$ionicScrollDelegate',
+  'CordovaPushWrapper',
   AccessController
   ]);
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-  $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate) {
+  $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate,
+  CordovaPushWrapper) {
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
@@ -36,7 +38,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
   $scope.platform.android = DeviceService.isAndroid();
-
+  $scope.root.vars.guru_mode =false;
 
   $scope.testAlert = function() {
     confirm("Can you click on me?");
@@ -103,8 +105,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       if (DeviceService.isIOSDevice()) {
 
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        cordova.plugins.Keyboard.disableScroll(false);
         window.scrollTo(0, window.innerHeight);
+
       }
 
     } else {
@@ -127,6 +129,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.$on('$ionicView.loaded', function() {
 
     AnimationService.accessInput = document.querySelector("access-code-bar");
+    CordovaPushWrapper.registerDevice($scope)
 
   })
 

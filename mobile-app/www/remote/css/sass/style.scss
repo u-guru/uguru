@@ -4106,10 +4106,19 @@ body.platform-ios {
 			}
 		}
 	}
+	.modal-wrapper header,
 	.header-nav,
 	.close-popup-link,
 	#guru-home h1 {
 		padding-top:20px;
+	}
+	.modal-wrapper {
+		iframe {
+			height:calc(100% - 70px) !important;
+		}
+		.support-modal ion-content {
+			margin-top:70px;
+		}
 	}
 }
 

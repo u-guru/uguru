@@ -69,11 +69,31 @@ angular.module('uguru.student.controllers', [])
             $ionicSlideBoxDelegate.update();
             return openRatio;
         }
+
+        var setStatusBarDarkText = function() {
+            if (DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarText($state.current.name);
+            }
+        }
+
+        var setStatusBarLightText = function() {
+
+            if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                if (window.StatusBar) {
+                  window.StatusBar.styleLightContent();
+                }
+            }
+
+        }
+
         var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
                 $scope.sideMenuActive = false;
                 $ionicSlideBoxDelegate.update();
+                setStatusBarDarkText();
             } else {
+                setStatusBarLightText();
+
                 $timeout(function() {
                     $scope.sideMenuActive = true;
                 }, 250)
@@ -148,12 +168,12 @@ angular.module('uguru.student.controllers', [])
         $scope.$on('$ionicView.loaded', function() {
 
             $scope.root.vars.guru_mode = false;
-            if (!$scope.mapInitialized) {
-                $scope.mapInitialized = true;
-                $timeout(function() {
-                    $scope.initStudentHomeMap();
-                }, 1000)
-            }
+            // if (!$scope.mapInitialized) {
+            //     $scope.mapInitialized = true;
+            //     $timeout(function() {
+            //         $scope.initStudentHomeMap();
+            //     }, 1000)
+            // }
 
         })
 

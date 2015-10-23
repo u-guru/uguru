@@ -25,6 +25,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 	}
 
 	function isOpen(modalName) {
+
 		var modal = controller[modalName];
 		return modal.isShown();
 	}
@@ -32,12 +33,18 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 	function open(modalName, $scope) {
 		console.log("opening " + modalName);
 
+		if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+			if (window.StatusBar) {
+				window.StatusBar.styleLightContent();
+			}
+		}
+
 		if(modalName === 'login') {
 			modalName = 'signup';
 			$scope.root.vars.loginMode = true;
 		}
 		else if (modalName === 'signup') {
-			$scope.root.vars.loginMode = false;	
+			$scope.root.vars.loginMode = false;
 		}
 
 		var modal = controller[modalName];
