@@ -93,7 +93,7 @@ if [ $# == 1 ];
 
 		cordova platform add ios@3.8
 		
-		printf "\e[0;36mInstalling and configuring the Android Support Libray v13 for Facebook and Push plugins... \e[0m\n"
+		printf "\e[0;36mSetting up compatibility for the Facebook and Push plugins... \e[0m\n"
 
 		cordova plugin add https://github.com/Uguru/phonegap-plugin-push
 		cordova plugin add https://github.com/Uguru/phonegap-facebook-plugin.git --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
