@@ -145,7 +145,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
           if ($state.current.name === 'root.home' && $ionicSideMenuDelegate.isOpen()) {
             $scope.user.university = university;
-            MapService.initStudentHomeMap($scope.user);
+            MapService.initStudentHomeMap($scope);
             $scope.loader.showAmbig("Saving...", 1000);
             $timeout(function() {
               $scope.loader.hide();

@@ -1,6 +1,6 @@
 
 if [ $# == 0 ];
-	then 
+	then
 	printf "\n"
 	printf '\e[0;36m push <> : Generates production build and publishes to the app store.  Currently unavailable. \n'
 	printf "\n"
@@ -26,6 +26,7 @@ if [ $# == 1 ];
 	if [ $platform == "ios" ]; then
 		./scripts/ug_build.sh ios
 		./scripts/ug_release.sh ios
+		./scripts/ug_push ios
 		# ============================================
 
 		# Insert Apple Devloper API here
