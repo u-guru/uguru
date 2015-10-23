@@ -445,22 +445,22 @@ var global = function() {
       element(by.css('.uguru-popup.high-z-index.sidebar-popup.show input')).clear();
       element(by.css('.uguru-popup.high-z-index.sidebar-popup.show input')).sendKeys(option1);
       element(by.css('.uguru-popup.high-z-index.sidebar-popup.show button')).click();
-      if(option1 != 123456789 || option1 != 'jason@sjsu.edu')
-          browser.wait(function() {
-            return browser.switchTo().alert().then(
-                function() 
-                {
-                   expect(browser.switchTo().alert().getText()).toContain("Please enter valid");
-                   browser.switchTo().alert().accept();
+      // if(option1 != 123456789 || option1 != 'jason@sjsu.edu')
+      //     browser.wait(function() {
+      //       return browser.switchTo().alert().then(
+      //           function() 
+      //           {
+      //              expect(browser.switchTo().alert().getText()).toContain("Please enter valid");
+      //              browser.switchTo().alert().accept();
 
-                 return true;
-                }, 
-                function()
-                 {
-                  return false;
-                 }
-            );
-        },3000,"Input-value should not be passed");
+      //            return true;
+      //           }, 
+      //           function()
+      //            {
+      //             return false;
+      //            }
+      //       );
+      //   },3000,"Input-value should not be passed");
       // else if(option1 === 'close')
       // {
       //   element(by.css('.uguru-popup.high-z-index.sidebar-popup.show a')).click();

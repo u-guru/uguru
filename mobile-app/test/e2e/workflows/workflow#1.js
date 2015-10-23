@@ -284,9 +284,11 @@ describe('Long Workflow Test',function()
 		var groupButton = ['transcript','Facebook','number','Email','Item']
 		it('Open Creditability',function()
 		 {
-			guru.OpenCredibility();
+		 	// browser.get("http://"+localhost+":8100/#/guru-credibility");
+    		guru.OpenCredibility();
+
 		 });
-		for(var i = 2; i < 5 ; ++ i)
+		for(var i = 0; i < 5 ; ++ i)
 		{
 			(function(index,title,buttonName)
 			{
@@ -306,7 +308,7 @@ describe('Long Workflow Test',function()
 								// 	if (index != 0 )
 								// 		items[index].click();
 								// });
-								credibility.OpenOptionsButton();
+								credibility.OpenOptionsButton(index);
 							});
 				   		
 			   		  		switch(index) 
@@ -314,13 +316,7 @@ describe('Long Workflow Test',function()
 			   		  		    case 0:
 			   		  		    	describe('Photo Upload Test',function()
 			   		  		    	{
-			   		  		    		it('Upload a large Photo',function()
-			   		  		    		{
-			   		  		    			// expect(true).toBe(false,"Not Completed Yet");
-			   		  		    			doc.uploadPhoto("file-input-guru-add-transcript","large");
-			   		  		    			doc.checkMsg("Saved!");
-
-			   		  		    		});
+			   		 
 			   		  		    		it('upload a small Photo',function()
 			   		  		    		{
 			   		  		    			// expect(true).toBe(false,"Not Completed Yet");
@@ -361,10 +357,10 @@ describe('Long Workflow Test',function()
 	  		       		  		    describe('Email Test',function()
 	  		       		  		    {
 
-  	           		  		    		it('Enter Email : 123456789',function()
+  	           		  		    		it('Enter Email : jason@sjsu.edu',function()
 	  	           		  		    	{
 		       		  	        			 doc.openWrapper('jason@sjsu.edu');
-		       		  	        			 doc.checkMsg('Saved!');
+		       		  	        			 doc.checkMsg('Email sent to jason@sjsu.edu');
 	  	           		  		    	});
 	  		       		  		    });
 			   		  		    	break;
@@ -407,7 +403,7 @@ describe('Long Workflow Test',function()
 	  		    	   		  		    	it('Save info',function()
 	  		    	   		  		    	{
 	  		    								element(by.css('.modal-backdrop.active button')).click()
-	  		    								doc.checkMsg('Saved');
+	  		    								doc.checkMsg('Guru Guy saved!');
 	  		    	   		  		    	});
 	  		    	   		  		    	it('Check Experience Is Added',function()
   		    	   		  		    		{
@@ -419,13 +415,13 @@ describe('Long Workflow Test',function()
   		       		  		}
 					});
 
-					it('Check Creditability inscreasing : '+(index+1)*20+' %',function()
-					{
-						// expect(true).toBe(false,"Not Completed Yet");
-				 		doc.tabBar('guru-tab-bar',0)
-			 			expect(CredValue.getText()).toContain((index+1)*20,"Incorrect % of Creditability");
-						browser.get("http://"+localhost+":8100/#/guru-credibility");		
-					});	
+					// it('Check Creditability inscreasing : '+(index+1)*20+' %',function()
+					// {
+					// 	// expect(true).toBe(false,"Not Completed Yet");
+				 // 		doc.tabBar('guru-tab-bar',0)
+			 	// 		expect(CredValue.getText()).toContain((index+1)*20,"Incorrect % of Creditability");
+					// 	browser.get("http://"+localhost+":8100/#/guru-credibility");		
+					// });	
 
 				});
 				
