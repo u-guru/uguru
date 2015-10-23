@@ -1,4 +1,4 @@
-var IP = '192.168.0.111'
+var IP = '192.168.0.109'
 exports.config = {
     framework: 'jasmine2',
      seleniumAddress: 'http://localhost:4444/wd/hub',

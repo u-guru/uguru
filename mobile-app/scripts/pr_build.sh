@@ -20,7 +20,8 @@ cordova plugin add https://github.com/Uguru/org.apache.cordova.file
 cordova plugin add https://github.com/Uguru/org.apache.cordova.file-transfer
 cordova plugin add https://github.com/apache/cordova-plugin-geolocation
 cordova plugin add https://github.com/Uguru/org.apache.cordova.splashscreen
-cordova plugin add https://github.com/apache/cordova-plugin-media
+cordova plugin add https://bitbucket.org/uguru-nick/media-plugin-protractor-compat
+# cordova plugin add https://github.com/apache/cordova-plugin-media
 cordova plugin add https://github.com/vkeepe/card.io
 cordova plugin add https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
 cordova plugin add https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin

@@ -38,6 +38,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $templateCache, Device, User,
   DeviceService, uTracker, $injector) {
 
+  $ionicPlatform.ready(function() {
+  });
+
   uTracker.init(tracker);
   Github = $injector.get("Github");
   Github.init();
