@@ -155,7 +155,7 @@ describe('#3935 Bugs Check Test',function()
 			{
 			    account.CreateAccount();
 			});
-			it('check Sign up successful',function()
+			it('check Sign up successful -- INCONSISTANT',function()
 			{
 				account.CheckAccountMessage("Account Successfully Created");
 			});
