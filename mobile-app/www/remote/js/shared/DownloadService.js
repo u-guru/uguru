@@ -18,7 +18,7 @@ function DownloadService(Utilities, uTracker, DeviceService) {
 		if(DeviceService.isMobile()) {
 			var fileName = Utilities.getFileName(URL.toString());
 			var directory = cordova.file.dataDirectory;
-			var filePath = dircetory + fileName;
+			var filePath = directory + fileName;
 			window.resolveLocalFileSystemURL(filePath, fileSuccess, fileError);
 			function fileSuccess(fileEntry) {
 				fileEntry.remove(removeSuccess, removeError);
@@ -41,7 +41,13 @@ function DownloadService(Utilities, uTracker, DeviceService) {
 		if(DeviceService.isMobile()) {
 			var fileURL = URL.toString();
 			//console.log("fileURL: " + fileURL);
-			var directory = cordova.file.dataDirectory;
+			directory = null;
+			try {
+				directory = cordova.file.dataDirectory;	
+			} catch(err) {
+				//console.log('Turning off imageSaver since deviceReady did not load in time.');
+				return;
+			}
 			var fileName = Utilities.getFileName(fileURL);
 			//console.log("fileName: " + fileName);
 			var filePath = directory + fileName;

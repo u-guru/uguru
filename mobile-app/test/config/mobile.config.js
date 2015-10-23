@@ -1,4 +1,5 @@
 "use strict";
+var IP = '192.168.0.109'
 exports.config = {
     framework: 'jasmine2',
 
@@ -25,7 +26,10 @@ exports.config = {
 
            capabilities: {
             browserName: '',
-             app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+             //app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+             app : '/Users/Jason-work/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+
+
               // app : '/home/twfob/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug-unaligned.apk',
             'appium-version':'1.4.10',
             platformName: 'Android',
@@ -49,7 +53,8 @@ exports.config = {
         specs:
 
         [
-          '../test_case/mobileTest/access.js'
+          // '../test_case/mobileTest/access.js'
+          '../e2e/workflows/workflow#*.js',    
 
 
         ],
@@ -349,10 +354,11 @@ exports.config = {
 
 
             global.EC  = protractor.ExpectedConditions;
-            global.localhost = '192.168.0.111'
-            browser.manage().deleteAllCookies();
-            browser.executeScript('window.sessionStorage.clear();');
-            browser.executeScript('window.localStorage.clear();');
+            global.localhost = IP
+
+            // browser.manage().deleteAllCookies();
+            // browser.executeScript('window.sessionStorage.clear();');
+            // browser.executeScript('window.localStorage.clear();');
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
              // browser.get("http://localhost:8100/#/")

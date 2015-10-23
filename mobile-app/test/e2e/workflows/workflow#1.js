@@ -255,25 +255,25 @@ describe('Long Workflow Test',function()
 			expect(guruprofile.countSkill()).toBeGreaterThan(0,"No skill list is updated to new account");
 		});
 
-   //  	describe('Go to GuruProfile -> Edit mode-> Add course Modal-> completed add course -> remove courses , random show this error', function () {
-			// it('active edit mode',function()
-			// {
-			// 	guruprofile.ActiveEditMode();
-			// });
-			// it('Open Edit mode',function()
-			// {
-			// 	guruprofile.OpenModal('course');
-			// });
-   //  		it('Open Add course model',function()
-			// {
-			// 	course.SelectCourse(0);
-			// });
-   //  		it('close Modal',function()
-   //  		{
-   //  			guruprofile.CloseModal();
-   //  		});
+    	describe('Go to GuruProfile -> Edit mode-> Add course Modal-> completed add course -> remove courses , random show this error', function () {
+			it('active edit mode',function()
+			{
+				guruprofile.ActiveEditMode();
+			});
+			it('Open Edit mode',function()
+			{
+				guruprofile.OpenModal('course');
+			});
+    		it('Open Add course model',function()
+			{
+				course.SelectCourse(0);
+			});
+    		it('close Modal',function()
+    		{
+    			guruprofile.CloseModal();
+    		});
 
-   //  	});	
+    	});	
     });
   
 	// describe("Check all Creditability Page",function()

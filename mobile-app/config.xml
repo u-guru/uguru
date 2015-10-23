@@ -20,7 +20,10 @@
   <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
   <preference name="StatusBarOverlaysWebView" value="true"/>
   <preference name="StatusBarStyle" value="lightcontent"/>
-  <preference name="CrosswalkAnimatable" value="true"/>
+  <preference name="CrosswalkAnimatable" value="false"/>
+  <preference name="xwalkVersion" value="14+"/>
+  <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect"/>
+  <preference name="xwalkMode" value="embedded"/>
   <platform name="android">
     <preference name="Fullscreen" value="false"/>
     <preference name="android-windowSoftInputMode" value="adjustPan"/>

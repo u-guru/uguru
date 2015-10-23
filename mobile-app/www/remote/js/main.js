@@ -16,6 +16,8 @@ if (LOCAL) {
   BASE_URL = _ipaddress;
   // REST_URL = "http://192.168.0.114:5000"
 
+  //REST_URL = 'http://192.168.12.159:5000';
+
 } else {
   img_base = '/static/'
 }
@@ -40,6 +42,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   Github = $injector.get("Github");
   Github.init();
   Github.setExceptionToGithubIssue(false);
+
+
 
 })
 
@@ -66,6 +70,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   })
 
   //ASK-NICK: what does this mean?
+  //NICK-SAYS: it means use native style animations whenever we rely on ionic animations. (ios styles for ios, android for android)
   $ionicConfigProvider.views.transition('platform');
 
   $ionicConfigProvider.tabs.position("bottom");
@@ -86,6 +91,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
   }).
+
+
+  state('root.inappmap', {
+        url: '/inappmap',
+        templateUrl: BASE + 'templates/inappmap.html',
+        controller: 'InAppMapController'
+  }).
+
+
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
