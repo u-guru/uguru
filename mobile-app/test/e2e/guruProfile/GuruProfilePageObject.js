@@ -5,9 +5,10 @@ var GuruProfile = function()
 	this.ProfileName = element(by.id('profile-name'));
 
 	//List 
-	var majorList = element.all(by.css('#profile-major li'));
-	var courseList = element.all(by.css('#profile-courses li'));
-
+	this.majorList = element.all(by.css('#profile-major li span'));
+	this.courseList = element.all(by.css('#profile-courses li span'));
+	this.skillList = element.all(by.css('#profile-skills li span'));
+	this.skillListRemoveButton = element.all(by.css('#profile-skills li a'));
 
 
 	//Buttons
@@ -67,14 +68,18 @@ var GuruProfile = function()
 
 	this.countMajor =function()
 	{
-		return majorList.count();
+		return this.majorList.count();
 	}
 
 	this.countCourse = function()
 	{
-		return courseList.count();
+		return this.courseList.count();
 	}
 
+	this.countSkill = function()
+	{
+		return this.skillList.count();
+	}
 	this.OpenModal = function(name)
 	{
 		switch(name)
@@ -119,6 +124,17 @@ var GuruProfile = function()
 			items[0].click();
 		});
 	};
+
+	this.deleteAllSkillsInProfile = function()
+	{
+		this.skillListRemoveButton.then(function(items)
+		{	
+			for (var i = 0 ;items.length ; ++i) {
+				items[i].click();
+			}	
+		})
+	};
+
 };
 
 module.exports = new GuruProfile();

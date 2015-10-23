@@ -2056,7 +2056,9 @@ class UserNewView(restful.Resource):
     def post(self):
 
         fb_user = email_user = None
-        print request.json
+        guru_courses_json = majors_json = guru_subcategories_json = []
+
+
         if request.json.get('email'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 
@@ -2122,6 +2124,32 @@ class UserNewView(restful.Resource):
 
         db_session.add(user)
         db_session.commit()
+
+        majors_json = request.json.get('majors')
+        if majors_json:
+            major_ids = [major.get('id') for major in majors_json]
+            user.add_majors(major_ids)
+            db_session.commit()
+            print user.name, 'has', len(user.departments), 'majors'
+
+        guru_courses_json = request.json.get('guru_courses')
+        if  guru_courses_json:
+            guru_course_ids = [guru_course.get('id') for guru_course in guru_courses_json]
+            user.add_guru_courses(guru_course_ids)
+            db_session.commit()
+            print user.name, 'has', len(user.guru_courses), 'guru courses'
+
+        guru_subcategories_json = request.json.get('guru_subcategories')
+        if  guru_subcategories_json:
+            guru_subcategories_ids = [guru_subcategory.get('id') for guru_subcategory in guru_subcategories_json]
+            user.add_guru_subcategories(guru_subcategories_ids)
+            db_session.commit()
+            print user.name, 'has', len(user.guru_subcategories), 'subcategories'
+
+
+        if request.json.get('profile_url'):
+            user.set_profile_url(request.json.get('profile_url'))
+            db_session.commit()
 
         if device:
             user.current_device = device

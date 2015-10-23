@@ -42,27 +42,36 @@ angular.module('uguru.util.controllers')
          Utilities, Category, DownloadService, PopupService,
          KeyboardService, ModalService, Github) {
 
-        var bodyRect = document.querySelector('body').getBoundingClientRect();
-        var windowHeight = bodyRect.width;
-        var windowWidth = bodyRect.height;
 
+        var bodyRect;
+        var windowHeight;
+        var windowWidth;
+        var initHeight = function() {
+            bodyRect = document.querySelector('body').getBoundingClientRect();
+            windowHeight = bodyRect.height;
+            windowWidth = bodyRect.width;
+        }
+
+        initHeight();
         $scope.window = {
             width:windowWidth,
             height:windowHeight
         }
 
-        // GABRIELLE gTODO: Define these values
-        var desktopHeightLimit = 1000;
-        var desktopWidthLimit= 1000;
+        console.log('Window size', $scope.window);
 
-        var isDesktopMode = function(height, width) {
-            console.log('CURRENT SCREEN HEIGHT', height, width);
+        // GABRIELLE TODO: Define these values
+        var desktopHeightLimit = 700;
+        var desktopWidthLimit= 700;
+
+        $scope.isDesktopMode = function(height, width) {
+            initHeight();
+            height = height || windowHeight;
+            width = width || windowWidth;
             return height > desktopHeightLimit && width > desktopWidthLimit;
         }
 
-        $scope.desktopMode = isDesktopMode(windowHeight, windowWidth);
-
-        console.log('DesktopMode', $scope.desktopMode);
+        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
 
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
@@ -139,7 +148,7 @@ angular.module('uguru.util.controllers')
 
         //how to make platform ready...
         $scope.user = User.getLocal();
-        $scope.user.is_admin = typeof LOCAL !== "undefined";
+        $scope.user.is_admin = typeof LOCAL !== "undefined" && LOCAL;
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
         $scope.user.clearAttr = User.clearAttr;
@@ -187,8 +196,10 @@ angular.module('uguru.util.controllers')
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
 
+
                 $scope.categories = Category.categories.slice();
                 callback && callback(Category.categories);
+                console.log($scope.categories.length, 'categories loaded');
 
             },
             function() {
@@ -196,7 +207,7 @@ angular.module('uguru.util.controllers')
             })
         }
 
-        $scope.getCoursesForUniversityId = function(uni_id) {
+        $scope.getCoursesForUniversityId = function(uni_id, callback) {
             if (!uni_id) {
                 return;
             }
@@ -205,6 +216,7 @@ angular.module('uguru.util.controllers')
                     $scope.data.courses = courses.plain();
                     University.courses = courses.plain();
                     console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
+                    callback && callback();
                 }, 0);
             },
             function() {
@@ -215,7 +227,7 @@ angular.module('uguru.util.controllers')
 
 
         if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-            console.log('University courses not local, requesting now..');
+            console.log('University majors not local, requesting now..');
             $timeout(function() {
                 $scope.getMajorsForUniversityId($scope.user.university_id);
             }, 0)
@@ -224,12 +236,12 @@ angular.module('uguru.util.controllers')
         }
 
         if ($scope.user.university_id && !(University.courses && University.courses.length)) {
-            console.log('University majors not local, requesting now..');
+            console.log('University courses not local, requesting now..');
             $timeout(function() {
                 $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
             }, 0)
         } else {
-            console.log(University.majors.length, 'majors loaded');
+            console.log(University.courses.length, 'majors loaded');
         }
 
         if (!Category.categories || Category.categories.length === 0) {
@@ -285,10 +297,15 @@ angular.module('uguru.util.controllers')
             }, 250);
         };
 
-
-
         // TODO-REFACTOR
         $scope.loader = {
+            showMsg: function(message, delay, duration) {
+                $ionicLoading.show({
+                    template: '<span id="E2E-msg" class="capitalized">' + message + '</span>',
+                    duration: duration || 2000,
+                    delay:delay
+                })
+            },
             show: function() {
                 $ionicLoading.show({
 
@@ -338,7 +355,7 @@ angular.module('uguru.util.controllers')
                 });
                 $scope.root.vars.loaderOn = true;
             },
-            showSuccess: function(text, duration) {
+            showSuccess: function(text, duration, callback) {
 
                 $scope.successLoaderText = text || '';
 
@@ -348,6 +365,7 @@ angular.module('uguru.util.controllers')
                     duration: duration || 1000
                 });
                 $scope.root.vars.loaderOn = true;
+                callback && callback();
             },
             updateSuccessText: function(text) {
                 $scope.successLoaderText = text || 'loading'
@@ -519,8 +537,10 @@ angular.module('uguru.util.controllers')
             console.log('device is ready from the root controller');
 
             PopupService.initDefaults();
-            DownloadService.testNetworkSpeed();
             DeviceService.readyDevice($scope);
+            setTimeout(function() {
+                DownloadService.testNetworkSpeed();
+            }, 1000)
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
 

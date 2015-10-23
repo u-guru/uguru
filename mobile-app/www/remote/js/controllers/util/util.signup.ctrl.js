@@ -1237,6 +1237,7 @@ angular.module('uguru.util.controllers')
 
 
       }, function(err) {
+        $scope.loader.showMsg('Incorrect username or password', 1000);
         if (err.status === 401) {
             $scope.signupForm.password = '';
             $scope.success.show(0, 1000, 'Incorrect username or password');
@@ -1254,14 +1255,21 @@ angular.module('uguru.util.controllers')
 
 
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
+        if (ModalService.isOpen('signup')) {
+              ModalService.close('signup');
+          }
         return;
       }
 
-      $scope.signupForm.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
+      // $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
+      $scope.user.email = $scope.signupForm.email;
+      $scope.user.password = $scope.signupForm.password;
+      $scope.user.name = $scope.signupForm.full_name
 
-      $scope.signupForm.student_courses = $scope.user.student_courses;
-      $scope.signupForm.university_id = $scope.user.university_id;
-      $scope.signupForm.current_device = $scope.user.current_device;
+
+      $scope.user.university_id = $scope.user.university_id;
+
+      console.log('USER BEFORE SIGNING UP', $scope.user);
 
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.signupForm.current_device_id = $scope.user.current_device.id;
@@ -1269,7 +1277,7 @@ angular.module('uguru.util.controllers')
 
       $scope.signupForm.guru_mode = false;
       $scope.loader.show();
-      User.create($scope.signupForm).then(function(user) {
+      User.create($scope.user).then(function(user) {
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;

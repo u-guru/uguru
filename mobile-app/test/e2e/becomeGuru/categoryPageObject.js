@@ -64,7 +64,7 @@ var Category = function()
     {
     	this.nextStep.then(function(items)
 		{
-			expect(items[2].getText()).toBe('PHOTO')
+			expect(items[2].getText()).toBe('NEXT')
 			items[2].click();
 		});
     };

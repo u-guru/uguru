@@ -2021,7 +2021,7 @@ section {
 				}
 			}
 		}
-		#student-home-map-container {
+		#student-home-map-container, #student-home-default-map-container {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -4156,14 +4156,31 @@ body.platform-ios {
 			}
 		}
 	}
+	.modal-wrapper header,
 	.header-nav,
 	.close-popup-link,
 	#guru-home h1 {
 		padding-top:20px;
+	}
+	.modal-wrapper {
+		iframe {
+			height:calc(100% - 70px) !important;
+		}
+		.support-modal ion-content {
+			margin-top:70px;
+		}
 	}
 }
 
 .android-access-edge-case {
 	bottom:64px;
 	position:absolute;
+}
+
+.onboarding-search {
+	padding: 0 10px;
+}
+
+#university-input {
+	margin: 10px 0px;
 }

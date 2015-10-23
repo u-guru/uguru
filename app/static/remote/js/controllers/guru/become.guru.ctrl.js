@@ -24,11 +24,13 @@ angular.module('uguru.guru.controllers')
   'DeviceService',
   'Utilities',
   '$interval',
+  'KeyboardService',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval) {
+    Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval,
+    KeyboardService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -57,7 +59,15 @@ angular.module('uguru.guru.controllers')
       $state.go('^.home');
       //AnimationService.slide('right');
     }
+    var clearAllSearchInputs = function() {
+      var inputs = document.querySelectorAll('input');
+      console.log(inputs.length, 'found');
+      for (var i = 0; i < inputs.length; i ++) {
+        var currentIndexInput = inputs[i];
+        currentIndexInput.value = '';
+      }
 
+    }
 
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.previous();
@@ -67,13 +77,15 @@ angular.module('uguru.guru.controllers')
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
 
+      KeyboardService.closeKeyboardIfExists();
+      clearAllSearchInputs();
+
       if (index === 0) {
 
         uTracker.track(tracker, 'Become Guru: Majors');
-        console.log("inside majors slide");
 
         var majorsList = document.querySelectorAll('#major-list');
-        
+
         $timeout(function() {
           if (Utilities.isElementInViewport(majorsList)) {
             var majors = majorsList[0].querySelectorAll('ul li');
@@ -111,7 +123,7 @@ angular.module('uguru.guru.controllers')
 
         $timeout(function() {
           if (Utilities.isElementInViewport(coursesList)) {
-            
+
 
             var items = coursesList[0].querySelectorAll('ul li');
 
@@ -254,7 +266,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.$on('$ionicView.beforeEnter', function() {
-
+      $ionicSlideBoxDelegate.update();
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
 

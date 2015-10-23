@@ -6,7 +6,7 @@ var Sidebar = function() {
 	this.sideMenuList = element(by.css('.side-menu-list.with-icon'))
 	this.UguruPopup = element(by.id('home-uguru-popup'))
 	this.CloseButtonOfPopUp = element.all(by.css('[ng-click="closeWelcomePopup()"]')).first()
-	this.CloseSideMenu = element(by.css('[ng-click="toggleRightSideMenu()"]'));
+	this.CloseSideMenu = element.all(by.css('[ng-click="toggleRightSideMenu()"]')).last();
 	this.ActionSheetOptions = element.all(by.repeater('b in buttons'));
 	this.textarea = element(by.tagName('textarea'));
 	this.emoIcon = element(by.css(".intercom-composer-emoji-button"));
@@ -17,8 +17,9 @@ var Sidebar = function() {
 	//Modal
 	this.Modal = element(by.css('.modal-backdrop.active'));
 	// this.CloseModalButton = element.all(by.css('.modal-backdrop.active .header-nav'));
-	this.CloseModalButton = element.all(by.css('[ng-click="toggleRightSideMenu()"]')).last();
-
+	// this.CloseModalButton = element.all(by.css('[ng-click="toggleRightSideMenu()"]')).last();
+	this.CloseModalButton = element(by.css('.modal-backdrop.active .header-down'));
+	this.FAQitem = element.all(by.css('#faq dl'))
 
 	 this.CheckPopUpIsShown = function()
 	 {
@@ -101,6 +102,7 @@ var Sidebar = function() {
 
 	 this.OpenFAQModal = function()
 	 {
+	 	doc.checkItemDisplay("FAQ",true,'click');
 
 	 };
 
@@ -134,6 +136,14 @@ var Sidebar = function() {
 	 	expect(this.Modal.isPresent()).toBe(true,"No Modal Is Active");
 	 	expect(element(by.css('.modal-backdrop.active')).getText()).toContain(name);
 	 };
+
+ 	this.ScrollFAQListTo =function(index)
+     	{
+     		expect(this.FAQitem.count()).toBe(10);
+     		this.FAQitem.then(function (items) {
+    			browser.executeScript('arguments[0].scrollIntoView()', items[index].getWebElement());
+     		});
+     	};
 	
 }
 module.exports = new Sidebar();

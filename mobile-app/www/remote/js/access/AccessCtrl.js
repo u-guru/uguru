@@ -38,7 +38,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
   $scope.platform.android = DeviceService.isAndroid();
-
+  $scope.root.vars.guru_mode =false;
 
   $scope.testAlert = function() {
     confirm("Can you click on me?");
@@ -105,8 +105,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       if (DeviceService.isIOSDevice()) {
 
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        cordova.plugins.Keyboard.disableScroll(false);
         window.scrollTo(0, window.innerHeight);
+
       }
 
     } else {

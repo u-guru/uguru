@@ -32,7 +32,7 @@ exports.config = {
             platformVersion: '4.4',
             deviceName: 'Android Emulator',
             // 'autoAcceptAlerts': 'true',
-            webviewSupport:true
+            autoWebview:true
 
           },
         //   multiCapabilities: 
@@ -266,8 +266,8 @@ exports.config = {
                             
                           // '../e2e/production/error_7.js',
                           // '../e2e/production/error_9.js',
-                          '../e2e/production/error_11.js',
-
+                          // '../e2e/production/error_11.js',
+                          '../e2e/production/issue#3935.js',
                          ]
 
         },
@@ -277,15 +277,15 @@ exports.config = {
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
                           showColors: true,
-                          defaultTimeoutInterval: 400000,
+                          defaultTimeoutInterval: 4000000,
                           isVerbose: true,
                           silent: true
                           ,
                           print: function() {}
 
                           },
-        getPageTimeout: 10000,
-        allScriptsTimeout: 400000,
+        getPageTimeout: 4000000,
+        allScriptsTimeout: 4000000,
         onPrepare: function () {
            var wd = require('wd'),
                    protractor = require('protractor'),
@@ -349,7 +349,10 @@ exports.config = {
 
 
             global.EC  = protractor.ExpectedConditions;
-            global.localhost = '192.168.0.109'
+            global.localhost = '192.168.0.111'
+            browser.manage().deleteAllCookies();
+            browser.executeScript('window.sessionStorage.clear();');
+            browser.executeScript('window.localStorage.clear();');
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
              // browser.get("http://localhost:8100/#/")

@@ -1,4 +1,3 @@
-
 <u-slide-box id='access-uni-slide' class='full-y' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university" ng-show='!isDesktopMode()'>
 	<u-slide ng-if='storedAccess'>
 		<div ng-include="img_base + BASE + 'templates/access.html'"></div>
@@ -16,7 +15,7 @@
 							<h1>&nbsp;</h1>
 						</a>
 					</div>
-					<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+					<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x">
 						<input type="search" id='university-input' class='' placeholder="Search for my university" ng-model="search_text.university" />
 						<a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
 							<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
