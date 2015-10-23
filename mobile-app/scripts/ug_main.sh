@@ -31,6 +31,8 @@
 
 	    if [ "$1" == "setup" ]; then
 	    	printf "\e[0;36mInstalling Cordova and Ionic for production...\n"
+	    	rm -rf plugins/*
+			rm -rf platforms/*
 	    	npm uninstall -g cordova
 	    	npm uninstall -g ionic
 	    	npm install -g cordova@5.0.0
