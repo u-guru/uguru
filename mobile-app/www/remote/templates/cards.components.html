@@ -9,17 +9,14 @@
                 <h1>&nbsp;</h1>
             </a>
         </div>
-
     </header>
-    <div class='main'>
-        <ul class="list flex-center-wrap absolute" style='overflow-y:scroll;'>
-          <li ng-repeat='card in user.cards'>
-
-              <div class='full-x card-wrapper-{{card.id}} p40xy'>
-              </div>
-              <form class='form-wrapper-{{card.id}}'></form>
+    <div id="cards" class='main'>
+        <ul id="card-list" class="list flex-center-wrap">
+          <li ng-repeat='card in user_cards'>
+                <div ng-click='editCurrentCard(card)' class='card-list-item card-wrapper-{{card.id}}'></div>
+                <form class='form-wrapper-{{card.id}}'></form>
           </li>
         </ul>
-        <button style='z-index:10'class='bg-campus semibold absolute full-x bottom-0' href="#/edit-card">Add Card</button>
+        <button class='bg-cerise semibold absolute full-x bottom-0' ng-click='launchEditCardModal()'>Add Card</button>
     </div>
-  </section>
+</section>

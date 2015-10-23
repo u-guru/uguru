@@ -1,15 +1,26 @@
 angular.module('uguru.directives')
-.directive('imageSaver', function (Utilities, $localstorage) {
+.directive('imageSaver', function (Utilities, $localstorage, DeviceService) {
 	return {
 
 		link: function(scope, element, attrs) {
-			if (!scope.platform.mobile || typeof cordova == "undefined" ) {
+			if (!DeviceService.isMobile() || typeof cordova == "undefined") {
 				 //console.log('imageSaver unavailable since not on mobile device');
 				return;
 			}
 			var assetURL = attrs.ngSrc.toString();
-		 	//console.log("Current ngSrc value: " + assetURL);
-			var directory = cordova.file.dataDirectory;
+			
+		 	//var assetURL = attrs.imageSaver.toString();
+		 	//console.log("assetURL: " + assetURL);
+
+			var directory = null;
+
+			try {
+				directory = cordova.file.dataDirectory;	
+			} catch(err) {
+				//console.log('Turning off imageSaver since deviceReady did not load in time.');
+				return;
+			}
+			
 			// if(attrs.imageSaver === 'cache' || !Utilities.checkFreeSpace() ) {
 			// 	directory = cordova.file.cacheDirectory;
 			// }
@@ -57,6 +68,7 @@ angular.module('uguru.directives')
 						useSavedFile();
 					},
 					function(error) {
+						attrs.$set('ng-src', assetURL);
 						//console.log("Error downloading image. Code: " + error.code);
 					},
 					// Boolean for trustAllHosts which accepts all security certs and is useful

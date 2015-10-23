@@ -17,13 +17,15 @@ angular.module('uguru.util.controllers')
   'ThrottleService',
   'Utilities',
   '$ionicScrollDelegate',
+  'CordovaPushWrapper',
   AccessController
   ]);
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-  $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate) {
+  $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate,
+  CordovaPushWrapper) {
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
@@ -57,7 +59,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
       $scope.redeemRecentlyPressed = false;
-      if ($scope.platform.mobile) {
+      if (DeviceService.doesCordovaExist()) {
         cordova.plugins.Keyboard.close();
       }
 
@@ -65,12 +67,12 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $timeout(function() {
         $scope.loader.hide();
         $timeout(function() {
-          $scope.loader.showSuccess('Access Granted', 2500);
+          $scope.loader.showSuccess('Access Granted', 2000);
         }, 250)
         $timeout(function() {
           $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
         }, 1500);
-      }, 700)
+      }, 500)
 
     } else {
       $scope.loader.hide();
@@ -122,16 +124,12 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   }
 
-    // window.addEventListener('native.keyboardshow', keyboardShowHandler);
-
-    // function keyboardShowHandler(e){
-    //     alert('Keyboard height is: ' + e.keyboardHeight);
-    // }
 
 
   $scope.$on('$ionicView.loaded', function() {
 
     AnimationService.accessInput = document.querySelector("access-code-bar");
+    CordovaPushWrapper.registerDevice($scope)
 
   })
 

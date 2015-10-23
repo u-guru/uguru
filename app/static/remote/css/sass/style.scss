@@ -197,12 +197,6 @@ section {
 				height: 14px;
 			}
 		}
-		.header-nav a {
-			h1 {
-				font-size: 18px!important;
-				font-weight: 400!important;
-			}
-		}
 		#loading svg {
 			max-width: 200px;
 		}
@@ -442,6 +436,160 @@ section {
 	}
 }
 
+// CONTACTING MODAL
+.contacting-modal {
+	background: white;
+}
+
+// GURU CONTACT TYPES MODAL
+#contact-type {
+	height: calc(100% - 114px);
+	#contact-type-list {
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		height: 100%;
+		padding: 0 1px 1px;
+		li {
+			position: relative;
+			padding: 1px;
+			width: 50%;
+			height: calc(100% / 3);
+			> div {
+				display: block;
+				width: 100%;
+				height: 100%;
+				input {
+					@include opacity(0);
+					display: block;
+					position: absolute;
+					z-index: 9;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				input + span {
+					display: block;
+					width: 100%;
+					height: 100%;
+					label {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						width: 100%;
+						height: 100%;
+						padding: 15px 0 40%;
+						font-size: 18px;
+						font-weight: 600;
+						text-align: center;
+						background: $slate;
+						svg {
+							display: none;
+							width: 100%;
+							fill: none;
+							stroke: white;
+							stroke-width: 4px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
+						}
+						span {
+							display: block;
+						}
+					}
+					> span {
+						@include opacity(.5);
+						display: block;
+						position: absolute;
+						bottom: 1px;
+						left: 1px;
+						width: calc(100% - 2px);
+						height: 40%;
+					    background: rgba(white,.4) url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center / 40px 40px;
+					}
+				}
+				input:checked + span {
+					span {
+						@include opacity(1);
+					}
+				}
+			}
+			&:nth-child(1) > div input:checked + span label {
+				background: $moola;
+			}
+			&:nth-child(2) > div input:checked + span label {
+				background: $shamrock;
+			}
+			&:nth-child(3) > div input:checked + span label {
+				background: $lake;
+			}
+			&:nth-child(4) > div input:checked + span label {
+				background: $azure;
+			}
+			&:nth-child(5) > div input:checked + span label {
+				background: $campus;
+			}
+			&:nth-child(6) > div input:checked + span label {
+				background: $eggplant;
+			}
+			&:nth-child(1), &:nth-child(2) {
+				padding-top: 0;
+			}
+		}
+	}
+}
+@media screen and (min-height:568px) {
+	#contact-type {
+		#contact-type-list {
+			li {
+				> div {
+					input + span {
+						label {
+							padding: 15px 0 30%;
+							font-size: 16px;
+							svg {
+								display: block;
+								height: calc(100% - 37px);
+							}
+							span {
+								padding-bottom: 15px;
+							}
+						}
+						> span {
+							height: 30%;
+							background-size: 30px 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:667px) {
+	#contact-type {
+		#contact-type-list {
+			li {
+				> div {
+					input + span {
+						label {
+							padding: 15px 0 40%;
+							font-size: 20px;
+							svg {
+								height: calc(100% - 43px);
+							}
+						}
+						> span {
+							height: 40%;
+							background-size: 40px 40px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // SKILLS MODAL
 .category-skills-modal {
 	top: calc(100% / 3);
@@ -468,7 +616,7 @@ section {
 	position: absolute;
 	top: 0;
 	.main {
-		height: calc(100% - 50px - 64px);
+		height: calc(100% - 114px);
 		.ugrid-3 {
 			margin-top: -10px;
 			padding-bottom: 15px;
@@ -484,11 +632,14 @@ section {
 				text-align: right;
 			}
 		}
+		input[type=range] {
+			height: 50px;
+		}
 		#exp-input, #guru-intro-input {
-			height: calc(100% - 194px);
+			height: calc(100% - 203px);
 		}
 		#exp-input.removable {
-			height: calc(100% - 258px);
+			height: calc(100% - 267px);
 		}
 		textarea {
 			font-size: 18px;
@@ -505,6 +656,13 @@ section {
 				height: 100%;
 			}
 		}
+	}
+}
+
+// CARD MODAL
+.jp-card-front {
+	&::before {
+		background-image: none!important;
 	}
 }
 
@@ -536,7 +694,7 @@ section {
 	}
 	#account-form {
 		height: calc(100% - 50px);
-		padding: 15px;
+		padding: 0 15px 15px;
 		input {
 			margin: 30px 0 15px;
 			font-size: 20px;
@@ -830,8 +988,7 @@ section {
 	}
 	// FORM
 	.request-content {
-		height: calc(100% - 50px);
-		padding-bottom: 64px;
+		height: calc(100% - 114px);
 		overflow: auto;
 		font-weight: 300;
 		input:not([type="text"]) {
@@ -913,6 +1070,7 @@ section {
 					label {
 						display: block;
 						width: 100%;
+						font-size: 18px;
 						line-height: 46px;
 					}
 					input:not(:checked) + label {
@@ -945,8 +1103,8 @@ section {
 					left: 0;
 					width: 200%;
 					height: 200%;
-					background: url(../../img/map.png) center center / cover,
-								url(/static/remote/img/map.png) center center / cover;
+					background: url(../../img/map-small.png) center center / cover,
+								url(/static/remote/img/map-small.png) center center / cover;
 				}
 				> span {
 					display: block;
@@ -1306,12 +1464,16 @@ section {
 	height: 110%;//due to ios status bar, playing it safe
     bottom: 0;
 }
+.menu {
+	max-width: 80%!important;
+}
 .side-menu-list {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	z-index: 20;
 	.list {
+		@include flex-column;
 		height: 100%;
 	}
 	.list-item {
@@ -1319,6 +1481,10 @@ section {
 		font-size: 18px;
 		font-weight: 600;
 		text-transform: uppercase;
+		//Gabrielle -- added this so we can so more items;
+		&.settings-item {
+			height:10%;
+		}
 		.list-item-icon {
 			height: 64px;
 			width: 64px;
@@ -1378,6 +1544,7 @@ section {
 }
 @media screen and (min-height:540px) {
 	.side-menu-list {
+
 		.list-item-profile {
 			height: 84px;
 		}
@@ -1511,11 +1678,11 @@ section {
 		button {
 			padding: 0 10px;
 			height: 50px;
-			color: $slate;
+			color: $slate!important;
 			font-size: 16px;
 			font-weight: 600;
 		}
-		button:active {
+		button:active, button.activated {
 			background: $smoke;
 		}
 		&:last-child {
@@ -1721,8 +1888,8 @@ section {
 		.geolocation-icon {
 			margin-top: 3px;
 		// To add hella space to tap it (it's responsive & equalizes)
-			padding: 50px;
-    		margin-right: -50px;
+			padding: 30px;
+    		margin-right: -30px;
 		}
 	}
 	#school-list, #school-list-modal {
@@ -2399,6 +2566,15 @@ section {
 				font-weight: 700;
 				text-transform: uppercase;
 			}
+			span {
+				display: block;
+				margin: 0 auto;
+				width: 80%;
+				height: 80%;
+				max-width: 150px;
+				max-height: 150px;
+				overflow: hidden;
+			}
 			svg, img {
 				@include round;
 				@include center-xy;
@@ -2462,7 +2638,6 @@ section {
 		}
 	}
 	#profile-desc {
-		height: 41%;
 		.profile-slider {
 			position: relative;
 			height: 100%;
@@ -2492,12 +2667,19 @@ section {
 		#profile-icon {
 			@include round;
 			display: block;
+			span {
+				display: block;
+				margin: 0 auto;
+				width: 100px;
+				height: 100px;
+				overflow: hidden;
+			}
 			img {
 				@include round;
 				display: block;
 				margin: 0 auto;
 				width: 100%;
-				max-width: 100px;
+				height: 100px;
 				padding: 5px;
 				background: rgba(white, .5);
 			}
@@ -2543,6 +2725,9 @@ section {
 					margin-bottom: 3px;
 					font-size: 20px;
 					font-weight: 400;
+				}
+				#profile-contact {
+					margin: 15px 0;
 				}
 				#profile-loc {
 					font-size: 16px;
@@ -2754,24 +2939,30 @@ section {
 		}
 	}
 }
-@media screen and (max-height:480px) {
+
+.guru-profile-view {
+	#profile-desc {
+		height: 64.5%;
+	}
+}
+@media screen and (min-height:568px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 49%;
+			height: 53%;
 		}
 	}
 }
 @media screen and (min-height:667px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 34%;
+			height: 45%;
 		}
 	}
 }
 @media screen and (min-height:736px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 31%;
+			height: 41%;
 		}
 	}
 }
@@ -3672,6 +3863,9 @@ section {
 					font-size: 18px;
 				}
 			}
+			button {
+				border-radius: 0 0 5px 5px;
+			}
 		}
 		.slider-pager {
 			bottom: 15px;
@@ -3920,3 +4114,4 @@ body.platform-ios {
 	bottom:64px;
 	position:absolute;
 }
+

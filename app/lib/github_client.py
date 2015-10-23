@@ -34,23 +34,21 @@ def remove_attr_from_labels(labels):
     stripped_labels = []
     for label in labels:
         #see if it's a special label
-        if 'urgency' in label.name.lower() or 'contributor' in label.name.lower() \
-        or 'resolved' in label.name.lower():
-            continue
-        else:
-            stripped_labels.append(label)
+        if 'critical' in label.name.lower() or 'resolved' in label.name.lower():
+             stripped_labels.append(label)
+
     return stripped_labels
 
 def get_severity_from_labels(labels):
     for label in labels:
-        if 'urgency' in label.name.lower():
+        if 'critical' in label.name.lower():
             return label.name.split(':')[1]
     return 0
 
 def get_contributor_from_labels(labels):
-    for label in labels:
-        if 'contibutor' in label.name.lower():
-            return label.name.split(':')[1]
+    # for label in labels:
+    #     if 'contibutor' in label.name.lower():
+    #         return label.name.split(':')[1]
     return 'Samir'
 
 def issue_to_json(issue):
@@ -97,8 +95,10 @@ def get_label_by_name(repo, name):
     return repo.get_label(name=name)
 
 def create_issue(repo, labels, title, body):
-    label_objs = [get_label_by_name(repo, label) for label in labels]
-    new_issue = repo.create_issue(title=title, body=body, labels=label_objs)
+    # label_objs = [get_label_by_name(repo, label) for label in labels]
+    # label_objs = [label.name for label in label if 'critical' in label.name.lower()]
+    labels = [get_label_by_name(repo, 'CRITICAL')]
+    new_issue = repo.create_issue(title=title, body=body, labels=labels)
     return repo
 
 def get_labels(repo):

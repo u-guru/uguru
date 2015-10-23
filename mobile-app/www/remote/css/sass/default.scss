@@ -8,6 +8,7 @@
 	-moz-backface-visibility: hidden;
 	-o-backface-visibility: hidden;
 	backface-visibility: hidden;
+    -ms-overflow-style: none;
 }
 *:focus {
 	outline: none;
@@ -438,6 +439,15 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .third {
 	height: calc(100% / 3);
 }
+
+.fourth {
+	height:calc(100%/4);
+}
+
+.fifth {
+	height: calc(100%/5);
+}
+
 .two-thirds {
 	height: calc(100% / 3 * 2);
 	overflow: auto;
@@ -1174,10 +1184,10 @@ header {
 		h1 {
 			font-size: 22px;
 		}
-		&[class*="header-"] {
-			h1 {
-				font-size: 20px;
-			}
+	}
+	&.third:not(.flex-center-wrap), .header-nav {
+		h1 {
+			font-size: 20px;
 		}
 	}
 	&:before {
@@ -1201,13 +1211,15 @@ header {
 }
 
 @media screen and (min-width:375px) {
-	header.third {
-		h1 {
-			font-size: 24px;
-		}
-		&[class*="header-"] {
+	header {
+		&.third {
 			h1 {
-				font-size: 20px;
+				font-size: 24px;
+			}
+		}
+		&.third:not(.flex-center-wrap), .header-nav {
+			h1 {
+				font-size: 20px!important;
 			}
 		}
 	}

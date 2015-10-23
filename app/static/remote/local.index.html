@@ -1,7 +1,7 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
   <head>
 
-<!--     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
 
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -124,7 +124,6 @@
      }(window, document, 'script', 'll');
  </script>
 
-
     <script src="remote/lib/windows/winstore-jscompat.js"></script>
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
 
@@ -201,7 +200,6 @@
     <script id="templates/root.html" type="text/ng-template">
 
     </script>
-
     <script src="remote/js/constants.js"></script>
     <!-- uguru app main js -->
     <script src="remote/js/main.js"></script>
@@ -217,6 +215,7 @@
     <script type="text/javascript" src="remote/js/directives/bindInput.js"></script>
     <script type="text/javascript" src="remote/js/directives/throttle.js"></script>
     <script type="text/javascript" src="remote/js/directives/submit.js"></script>
+    <script type="text/javascript" src="remote/js/directives/keyboardfocus.js"></script>
 
     <!-- uguru app factories-->
     <script type="text/javascript" src="remote/js/factories/Session.js"></script>
@@ -309,10 +308,14 @@
     <script type="text/javascript" src="remote/js/shared/RankingService.js"></script>
     <script type="text/javascript" src="remote/js/shared/TipService.js"></script>
     <script type="text/javascript" src="remote/js/shared/PopupService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CardService.js"></script>
     <script type="text/javascript" src="remote/js/shared/ModalService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/KeyboardService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CameraService.js"></script>
 
     <script type="text/javascript" src="remote/js/shared/uTracker.js"></script>
     <script type="text/javascript" src="remote/js/shared/PerformanceService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/AdminService.js"></script>
 
     <!-- Specific Device Services, still under SharedService module -->
     <script type="text/javascript" src="remote/js/device/AndroidService.js"></script>
@@ -349,6 +352,10 @@
     <!-- Access Component -->
     <script type="text/javascript" src="remote/js/access/AccessService.js"></script>
     <script type="text/javascript" src="remote/js/access/AccessCtrl.js"></script>
+    <!-- Card component -->
+
+    <script type="text/javascript" src="remote/js/controllers/util/CardList.ctrl.js"></script>
+
 
 
   </head>

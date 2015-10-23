@@ -49,11 +49,12 @@ def admin_statistics_universities():
     final_universities, prepared_info = calcAndSortedPrepared(universities)
 
     full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
-    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 90 and prepared_info[university.id]['percentage'] < 100 and university.logo_url == None ]
-    shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50]
-    dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
-    atleast_fifty_universities = eighty_prepared_universities #+ shitty_prepared_universities 
     
+    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 90 and prepared_info[university.id]['percentage'] < 100 and prepared_info[university.id]['percentage'] >= 80 and university.school_mascot_name == None ]
+    shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50 and prepared_info[university.id]['percentage'] < 80]
+    dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
+    atleast_fifty_universities = eighty_prepared_universities + shitty_prepared_universities
+
     return render_template("admin/admin.stats.universities.html", \
         universities = universities, \
         prepared_universities=final_universities,
@@ -63,6 +64,85 @@ def admin_statistics_universities():
         shitty_prepared_universities=shitty_prepared_universities,
         atleast_fifty_universities=atleast_fifty_universities)
 
+## have the intuition that if something is funky -- chances are, its something super small,
+## like a grammer error, a TYPO ;)
+@app.route('/admin/stats/universities/uni_id/flickr_options/set_url/<url>/')
+def admin_statistics_get_flickr_urls_unique(uni_id, url):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    u = University.query.get(uni_id)
+    print url
+    u.banner_url = url
+
+    print u.banner_url
+    # try:
+    #     db_session.commit()
+    # except:
+    #     db_session.rollback()
+    #     raise
+
+    formatted_str = "%s has updated its banner url to %" % (u.name, u.banner_url)
+    return formatted_str
+
+@app.route('/admin/stats/universities/<uni_id>/flickr_options/')
+## IF SOMETHING IS FUNKY --> Most likely your forgot to rename the function definition of the view
+def admin_statistics_get_flickr_urls(uni_id):
+    print "it gets here"
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    university = University.query.get(uni_id)
+
+    ## if more than two nested functions, it should be in an external file in app/lib/
+
+    # this function will return an image, if you click it .. it will automatically set the university to that ;)
+    def html_image_string_links(url):
+        url = url.replace("http://", "").replace("https://", "")
+        ## Quotes mindfuck -- try to understand this later -- it should work
+        link_beginning = '<a href="/admin/stats/universities/2307/flickr_options/set_url/' + url + '/' + '">'
+        print link_beginning
+        link_ending = '</a>'
+        return '%s<img src="%s" alt="Smiley face" style="max-width:300px; height:auto; margin: 0 auto; position:absolute\;"> %s' % (link_beginning, url, link_ending)
+
+    def getFlickerBanners(university,size=20):
+        from lib.flickr_wrapper import parse_flickr_response, search_university_response_api, process_returned_photos
+
+        flickrResponse = search_university_response_api(tags='Panorama', text=university.name, all_or='all')
+        arr = process_returned_photos(parse_flickr_response(flickrResponse))
+        urls = [html_image_string_links(item['url']) for item in arr]
+        html_strings_of_imgs = " ".join(urls)
+        return html_strings_of_imgs
+
+    html_strings_of_imgs = getFlickerBanners(university)
+
+
+    ## notice, this has no template! We are just returning the strings
+    return html_strings_of_imgs
+
+
+@app.route('/admin/ben/data-todo/')
+def ben_data_todo():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    todo_items = [
+        "Pick one missing field to modify - i.e. (school_mascot_name)",
+        "Write necessary script(s) to apply it. Input must be university, output must include university_id && missing field <br> <br> &nbsp; { <br> &nbsp;&nbsp;&nbsp; 'id': 2307, <br> &nbsp;&nbsp;&nbsp; 'school_mascot_name': 'golden bears'<br> &nbsp; } <br><br>",
+        "Test that it works & will increase the total # significantly (or more significant than the other fields",
+        "Calculate the total # of schools expected to be prepared",
+        "Run it locally",
+        "Let Samir know that you have another script ready. Ready means that: <br> <br> <b>1. You know the <u>EXACT</u> # of schools prepared after you run this with https://www.uguru.me <br>2. You have already run it locally && are 100% confident it works<br></b>",
+        "If Samir approves, run it with production server",
+        "Pull production server && update your local one <br><br> <i> Cut && paste this into your terminal w/o outside quotes </i><br><br> >>   heroku pg:backups capture --app uguru-rest <br><br> >> curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` <br><br> >> pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump",
+        "Cleanup your code - if you have any questions where things should be organized ask -- if i dont reply, move on.",
+        "Repeat."
+    ]
+
+
+    todo_items_indexed = ["#%s: %s<br><br>" % (todo_items.index(item) + 1, item) for item in todo_items]
+
+
+    return "".join(todo_items_indexed)
 
 @app.route('/admin/stats/universities/<uni_id>')
 def admin_statistics_one_university(uni_id):
@@ -71,17 +151,11 @@ def admin_statistics_one_university(uni_id):
 
     university = University.query.get(uni_id)
 
-    from lib.universities import filterStudentsWithBalance
+    ## Take the time to clean up old code, even if its not yours ;)
 
-    students_with_balances = filterStudentsWithBalance(university.students)
-    print len(students_with_balances)
-    print students_with_balances
+
     return render_template("admin/admin.stats.one.university.html", \
-        university=university, s_balances=students_with_balances)
-    # university = University.query.all()
-
-
-    # prepared_universities = filterPrepared(universities)
+        university=university)
 
 
 ###############
@@ -161,10 +235,7 @@ def faq():
 @app.route('/faq-only/')
 def faq_body():
     from flask import request
-    print request.user_agent.platform, request.user_agent.browser
-    import httpagentparser
-    print httpagentparser.simple_detect(request.user_agent.string)
-    print httpagentparser.detect(request.user_agent.string)
+
     return render_template("web/pages/faq_only.html")
 
 @app.route('/manifest/')
@@ -192,9 +263,9 @@ def team():
     team_members = [admin_info[key] for key in admin_info.keys() if not key == 'investors@uguru.me']
     return render_template("web/pages/team.html", team_members=team_members)
 
-@app.route('/support/')
+@app.route('/support-only/')
 def team():
-    return render_template("web/pages/support.html")
+    return render_template("web/pages/support_only.html")
 
 @app.route('/staging/profile')
 def profile_page():
@@ -253,9 +324,7 @@ def admin_instagram(uni_id):
     return render_template("Hello World")
 
 
-#Step 1--> create a route 
 @app.route('/admin/search/monoprice/<query_str>')
-# Step 2 --> ADd a function definition
 def admin_search_monoprice(query_str):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
@@ -264,7 +333,42 @@ def admin_search_monoprice(query_str):
     #copy your wrapper into app/lib/
     from lib.monoprice_wrapper import queryMonoprice as query
 
- 
+
+# Step 4 --> call the results
+    results_dict = query(query_str)
+    results_dict_json = open('mono_price.json')
+    load_as_json_obj = json.load(results_dict_json)
+    from pprint import pprint
+
+    #pprint(load_as_json_obj)
+    results_arr = [ load_as_json_obj[key] for key in load_as_json_obj.keys()]
+    pprint(results_dict)
+
+   # results_arr = [ results_dict[key] for key in results_dict.keys() ]
+
+
+    # Step 5 --> render the dictionary in a presentable format
+
+    return render_template("admin/admin.monoprice.query.html", query_results=results_arr, query_str=query_str)
+
+@app.route('/admin/search/monoprice/<product_id>')
+def AddItemsToCart(product_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin.monoprice.additem.html", product_id = str(product_id))
+
+@app.route('/admin/search/monoprice/cart')
+def AddItemsToCart():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    from lib.monoprice_wrapper import AddItemToCart
+    AddItemToCart(1,str(product_id))
+
+    #step 3 --> Import necessary wrapper
+    #copy your wrapper into app/lib/
+    from lib.monoprice_wrapper import queryMonoprice as query
+
+
 # Step 4 --> call the results
     results_dict = query(query_str)
     results_dict_json = open('mono_price.json')

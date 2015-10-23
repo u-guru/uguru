@@ -24,15 +24,26 @@ angular.module('uguru.util.controllers')
   '$ionicPlatform',
   'InAppBrowser',
   'Utilities',
+  'MapService',
+  '$ionicSlideBoxDelegate',
+  'ModalService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, $ionicPlatform, InAppBrowser, Utilities) {
+  Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
+  MapService, $ionicSlideBoxDelegate, ModalService) {
 
 
 // Implement a section for modals here
 
+    $scope.openModal = function(modalName) {
+     ModalService.open(modalName, $scope);
+    };
+
+    $scope.closeModal = function(modalName) {
+     ModalService.close(modalName);
+    };
 
 
 // ==========================
@@ -52,12 +63,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.attemptToResetPassword = function() {
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
 
-      if (!validateEmail($scope.signupForm.email)) {
+      if (!Utilities.validateEmail($scope.signupForm.email)) {
         alert('Please enter valid email');
         return;
       }
@@ -133,10 +140,7 @@ angular.module('uguru.util.controllers')
           // }
         } else {
           var email_input = document.getElementById('email-input')
-          // if (email_input) {
-          //   email_input.focus();
 
-          // }
         }
 
       }, 250)
@@ -326,7 +330,6 @@ angular.module('uguru.util.controllers')
               text: '<b>Save</b>',
               type: 'button-positive',
               onTap: function(e) {
-
                 if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 6) {
                   alert('Please fill in all fields');
                   return;
@@ -336,26 +339,34 @@ angular.module('uguru.util.controllers')
                   alert('Please create a password with at least 6 characters.');
                   return;
                 }
+                else
+                {
+                  if ($scope.data.new_password.length < 7)
+                  {
+                    alert('Please create a password longer than 6 characters');
+                    return;
+                  }
+                  else
+                  {
+                     var successCallback = function() {
+                      $scope.inputPopup.close();
+                      $timeout(function() {
+                        $scope.success.show(0, 1000, 'Saved!');
+                      }, 500);
+                      }
 
-                var successCallback = function() {
-                  $scope.inputPopup.close();
-                  $timeout(function() {
-                    $scope.success.show(0, 1000, 'Saved!');
-                  }, 500);
+                    var failureCallback = function() {
+                      alert('Incorrect Password - try again?');
+                    }
+
+                    var payload = {
+                      email : $scope.user.email,
+                      new_password : $scope.data.new_password,
+                      old_password: $scope.data.old_password
+                    }
+                     $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
+                  }
                 }
-
-                var failureCallback = function() {
-                  alert('Incorrect Password - try again?');
-                }
-
-                var payload = {
-                  email : $scope.user.email,
-                  new_password : $scope.data.new_password,
-                  old_password: $scope.data.old_password
-                }
-
-                $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
-
               }
             }
           ]
@@ -369,7 +380,7 @@ angular.module('uguru.util.controllers')
       $scope.data = {name:$scope.user.name};
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          template: '<input id="E2E-editName" value = {{data.name}} style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
           title: 'Change your try identity',
           subTitle: 'Try not to troll too hard',
           scope: $scope,
@@ -619,21 +630,6 @@ angular.module('uguru.util.controllers')
         $scope.loader.hide();
       }, 750);
     }
-
-    $scope.launchFAQModal = function() {
-      var url = 'https://www.uguru.me/faq/';
-      var title = 'Uguru FAQ';
-      InAppBrowser.open(url, title);
-    };
-
-
-    $scope.launchPrivacyPolicy = function() {
-      var url = 'https://www.uguru.me/manifest/';
-      var title = 'Uguru Manifest';
-      InAppBrowser.open(url, title);
-    };
-
-
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
         scope: $scope,
@@ -979,7 +975,7 @@ angular.module('uguru.util.controllers')
         $scope.facebookResponseReceived = true;
         $scope.loader.hide();
         $scope.error = error;
-        console.log('FB CONNECT FAILED...');
+        console.error('FB CONNECT FAILED...');
         console.log('Error from logging from facebook:' + JSON.stringify(error));
         $scope.success.show(0, 1500, 'Something weird happened.. Please contact support!');
         $cordovaFacebook.logout();
@@ -1090,11 +1086,6 @@ angular.module('uguru.util.controllers')
 
     $scope.validateLoginForm = function() {
 
-      function validateEmail(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-      }
-
       if (!$scope.signupForm.email || !$scope.signupForm.email.length) {
         $scope.success.show(0,1000,'Please enter your email');
 
@@ -1109,7 +1100,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-      if (!validateEmail($scope.signupForm.email)) {
+      if (!Utilities.validateEmail($scope.signupForm.email)) {
         $scope.success.show(0,1000,'Please enter a valid email');
         $scope.signupForm.email = '';
         // $timeout(function() {
@@ -1157,6 +1148,10 @@ angular.module('uguru.util.controllers')
         return false;
       } else {
         var nameComponents = $scope.signupForm.full_name.split(' ')
+        if(nameComponents.length < 2) {
+          $scope.success.show(0,2000,'Please make sure all fields are valid!');
+          return false;
+        }
         var first_name = nameComponents[0];
         var last_name = nameComponents[nameComponents.length - 1];
         $scope.signupForm.first_name = first_name;
@@ -1216,16 +1211,13 @@ angular.module('uguru.util.controllers')
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.loginPayload.current_device_id = $scope.user.current_device.id;
       }
-
+      $scope.loader.showAmbig();
       User.login($scope.loginPayload).then(function(user) {
         //
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
-          if ($scope.user && $scope.user.university && $scope.user.university.id) {
-            MapService.initStudentHomeMap(user);
-          }
           $timeout(function() {
             if ($ionicSideMenuDelegate.isOpen()) {
               $ionicSideMenuDelegate.toggleRight();
@@ -1233,8 +1225,14 @@ angular.module('uguru.util.controllers')
           }, 500)
           $scope.loader.showSuccess('Login Successful!', 2500);
 
-          if ($scope.signupModal.isShown()) {
-            $scope.signupModal.hide();
+          if (ModalService.isOpen('signup')) {
+            ModalService.close('signup');
+            $timeout(function() {
+              if ($scope.user && $scope.user.university && $scope.user.university.id) {
+                MapService.initStudentHomeMap(user);
+              }
+              $ionicSlideBoxDelegate.update();
+            }, 250);
           }
 
 
@@ -1280,15 +1278,11 @@ angular.module('uguru.util.controllers')
             $scope.loader.showSuccess('Account Successfully Created', 2500);
           }
 
-          if ($scope.signupModal.isShown()) {
-              $scope.signupModal.hide();
+          if (ModalService.isOpen('signup')) {
+              ModalService.close('signup');
           }
 
-          //let them see their profile information is synced
-          $timeout(function(){
-            $ionicSideMenuDelegate.toggleRight();
-            $scope.loader.hide();
-          }, 1000)
+
 
       },
       function(err){

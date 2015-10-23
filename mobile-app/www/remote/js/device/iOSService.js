@@ -32,7 +32,8 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		}, 3000)
 
 
-		if(cordova.plugins.Keyboard) {
+
+		if( cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			// cordova.plugins.Keyboard.disableScroll(true);
 		}

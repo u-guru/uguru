@@ -7,6 +7,7 @@ from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.restful import reqparse, Api
 from flask.ext.bcrypt import Bcrypt
 from flask.ext.httpauth import HTTPBasicAuth
+from flask.ext.cors import CORS
 from flask.ext.compress import Compress
 import logging
 from logging.handlers import SMTPHandler
@@ -31,6 +32,8 @@ app.config.from_object('config')
 
 # flask-restful
 api = restful.Api(app)
+
+CORS(app)
 
 # flask_becrypt
 flask_bcrypt = Bcrypt(app)
@@ -68,12 +71,11 @@ manager.add_command('db', MigrateCommand)
 # Allows cross-origin. Allows us to host local server on different ports & share resources
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Origin, Content-Type, Content-Type, Accept, Authorization, X-Request-With')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     response.headers["X-Frame-Options"] = "ALLOW"
-    response.headers.add("X-Frame-Options", "Allow-From https://trello.com/b/8zend7RA")
     response.headers.add('Access-Control-Allow-Credentials', True)
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 from app import rest, models, emails, views

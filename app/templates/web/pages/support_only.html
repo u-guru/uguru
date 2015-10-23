@@ -1,0 +1,73 @@
+{% extends 'web/layout/base.html' %}
+
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/style.css"/>
+<style>
+	#intercom-conversation {
+		position:absolute !important;
+		width:100% !important;
+	}
+	#intercom-container .intercom-sheet-header {
+		display:none;
+	}
+	.intercom-composer-textarea {
+		width:70% !important;
+	}
+	.intercom-composer-send-button {
+		display: inline-block !important;
+    	margin-right: 12% !important;
+	}
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section id="main">
+	<ul class='carousel'>
+
+	{% include 'web/pages/home/search-pane.html' %}
+
+	</ul>
+</section>
+{% endblock %}
+
+{% block footer_scripts %}
+<!-- start Samir's scripts -->
+<script src="/static/web/js/lib/typeahead.min.js"></script>
+<script src="/static/web/js/lib/fastmatcher.js"></script>
+<script src="/static/web/js/lib/handlebars.js"></script>
+
+<script src="/static/web/js/lib/jquery.flip.min.js"></script>
+<script src="/static/web/js/lib/phonenumber.js"></script>
+<script src="/static/web/js/lib/hammer.js"></script>
+<script src="/static/web/js/carousel.js"></script>
+<script src="/static/web/js/utils.js"></script>
+<!--<script src="/static/web/js/lib/countup.min.js"></script>-->
+<script>
+launchIntercomeSetActive = function() {return};
+var launchIntercomSetActive = function() {
+    if ($('#intercom-launcher').length) {
+        console.log('setting intercom to active..');
+        // $('#intercom-container').addClass('active');
+        // $('#intercom-container').css('display', 'block');
+        setTimeout(function() {
+        	$('.top-link-chat, #link-support').trigger('click');
+        }, 3000)
+        $('.top-link-chat, #link-support').trigger('click');
+	    } else {
+	        console.log('intercome still does not exist.. trying again');
+	        setTimeout(function() {
+	            launchIntercomSetActive();
+	        }, 1000)
+	    }
+	}
+	launchIntercomSetActive();
+
+</script>
+
+{% include 'web/pages/js/index.js' %}
+{% include 'web/snippets/search.js' %}
+{% endblock %}
