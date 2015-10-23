@@ -7,6 +7,7 @@ var Access = function()
 	 this.load= element(by.id('E2E-spinner'))
 	 this.back = element(by.css('[ng-click="goToAccess()"]'))
 	 this.listOfCase =  doc.generateRandomString(["","1"],5,"cool")
+	 this.IncorrectAccess = element(by.id('input-error-text'));
 	 this.chekAccessIsEmpty = function()
 	 {
 	 	doc.setInput("",0,this.InputModel);
@@ -35,10 +36,10 @@ var Access = function()
 	 	}
 	 	else
 	 	{	
-	 		browser.wait(EC.visibilityOf(startButton.element(by.tagName("p"))),800);
-	 		startButton.element(by.tagName("p")).getText().then(function(value)
+	 		browser.wait(EC.visibilityOf(this.IncorrectAccess),800);
+	 		this.IncorrectAccess.getText().then(function(value)
 	 		{
-	 			expect(value).toBe("Incorrect access code");
+	 			expect(value).toBe("INCORRECT ACCESS CODE");
 	 		});	
 	 	}
 	 	

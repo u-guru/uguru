@@ -40,7 +40,7 @@ var Guru = function() {
 
 	this.OpenCredibility = function()
 	{
-		doc.tabBar('guru-tab-bar',2);
+		doc.tabBar('guru-tab-bar-2',2);
 	};
 	
 	this.OpenSideMenu =  function()
