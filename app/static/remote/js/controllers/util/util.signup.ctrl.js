@@ -1237,14 +1237,12 @@ angular.module('uguru.util.controllers')
 
 
       }, function(err) {
+        $scope.loader.showMsg('Incorrect username or password', 1000, 2000);
         if (err.status === 401) {
             $scope.signupForm.password = '';
             $scope.success.show(0, 1000, 'Incorrect username or password');
             $timeout(function() {
               var passwordInput = document.getElementById('password-input')
-              // if (passwordInput) {
-              //   passwordInput.focus();
-              // }
             }, 1250)
         }
       });

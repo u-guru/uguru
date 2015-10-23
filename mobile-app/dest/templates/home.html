@@ -4,7 +4,14 @@
         <header>
             <h1 class="text-center">Student Home</h1>
         </header>
-        <div id='student-home-map-container'></div>
+
+        <div id='student-home-default-map-container' ng-if='!universityMapRendered'>
+            <img src="{{img_base}}./img/default_map.png" class='full-xy absolute'> </img>
+
+        </div>
+        <div id='student-home-map-container'>
+
+        </div>
         <div id="home-content" class="trending-container">
             <div ng-if='!user.is_a_guru'>
 	            <button class="home-button bg-lake-80p" thr-click='launchRequestModal()'>Request<br/>Help</button>

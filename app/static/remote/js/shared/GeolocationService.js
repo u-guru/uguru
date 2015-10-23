@@ -7,7 +7,7 @@ angular.module('uguru.root.services')
     Geolocation]);
 
 function Geolocation($timeout, University, Utilities, Settings) {
-  
+
   var isLocated = null;
 
   var settings = {
@@ -39,7 +39,6 @@ function Geolocation($timeout, University, Utilities, Settings) {
   }
 
   function getLocation(scope, list, callback) {
-
     var posOptions = {
       enableHighAccuracy: false, //may cause high errors if true
       maximumAge: 3600000 // Accepts a cached position as long as it was within 1 hour
@@ -51,7 +50,7 @@ function Geolocation($timeout, University, Utilities, Settings) {
       coordinates.lon = position.coords.longitude;
       console.log('location found!', position.coords.latitude, position.coords.longitude);
       isLocated = true;
-      
+
       if (list) {
         sortByLocation( position.coords.latitude,
                                   position.coords.longitude,
@@ -64,7 +63,7 @@ function Geolocation($timeout, University, Utilities, Settings) {
       settings.isActive = true;
       settings.isAllowed = true;
 
-      
+
     }
     function geoError(error) {
         console.log("geolocationError: " + error.code);
@@ -88,7 +87,7 @@ function Geolocation($timeout, University, Utilities, Settings) {
     }
   }
 
-  function sortByLocation(userLat, userLong, list) {    
+  function sortByLocation(userLat, userLong, list) {
 
     for(var i=0; i<list.length; i++) {
 
@@ -101,7 +100,7 @@ function Geolocation($timeout, University, Utilities, Settings) {
     }
     list.sort(compareDistance);
     deviceGPS.settings.isActive = true;
-    
+
     return list
   }
 

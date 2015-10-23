@@ -245,9 +245,11 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
       console.log("refreshing universities for location!");
       $scope.refresh.universities = 'update';
+      $scope.loader.showAmbig();
     }
     else if (Geolocation.settings.isAllowed) {
       console.log("toggling location.isActive");
+      $scope.loader.hide()
       Geolocation.settings.isActive = !Geolocation.settings.isActive;
     }
     else {
@@ -342,7 +344,7 @@ angular.module('uguru.directives')
   return {
     scope: {
       listScope: '=bindList',
-      source: '=source'
+      source: '=source',
     },
     link: link,
     restrict: 'A'
