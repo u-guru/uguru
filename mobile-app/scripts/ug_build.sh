@@ -43,6 +43,8 @@ if [ $# == 1 ];
 
 		cordova plugin add ~/Git/uguru-plugins/plugin.google.maps/ --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
 
+		cordova plugin add cordova-plugin-x-toast
+
 		cordova plugin add https://github.com/Uguru/de.appplant.cordova.plugin.badge
 
 		cordova platform add android@4.1
@@ -51,7 +53,8 @@ if [ $# == 1 ];
 		cordova plugin add https://github.com/Uguru/phonegap-plugin-push
 		cordova plugin add https://github.com/Uguru/phonegap-facebook-plugin.git --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 
-		# cp plugins_android/specific/build-extras.gradle platforms/android/
+		printf "\e[0;36mCoping over build-extras.gradle... \e[0m\n"
+		cp build-extras.gradle platforms/android/
 
 		cordova build android
 
@@ -84,6 +87,8 @@ if [ $# == 1 ];
 		cordova plugin add cordova-plugin-appavailability
 		cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
 
+		cordova plugin add cordova-plugin-x-toast
+
 		cordova plugin add https://github.com/Uguru/de.appplant.cordova.plugin.badge
 
 		cordova platform add ios@3.8
@@ -92,10 +97,12 @@ if [ $# == 1 ];
 
 		cordova plugin add https://github.com/Uguru/phonegap-plugin-push
 		cordova plugin add https://github.com/Uguru/phonegap-facebook-plugin.git --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
-
+		printf '\n'
 		printf '\e[0;36mOpening xCode project and giving back control... \e[0m\n'
-		printf '\e[0;36mMake sure to set the correct signing identity and build with xCode. \e[0m\n'
+		printf '\e[0;36mMake sure to follow the steps below in order for the app to compile correctly. \e[0m\n'
+		printf '\e[0;36mNavigate to the Capabilities tab and turn on Push Notifications. \e[0m\n'
 		printf '\e[0;36mFor xCode 7+: Make sure to disable "ENABLE_BITCODE" in build settings. \e[0m\n'
+		printf '\e[0;36mSet the correct signing identity and build with xCode. \e[0m\n'
 		open ./platforms/ios/Uguru.xcodeproj
 	fi
 

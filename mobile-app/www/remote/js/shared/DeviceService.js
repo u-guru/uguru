@@ -184,6 +184,9 @@ function DeviceService($cordovaNgCardIO,
 		if(isMobile()) {
 
 	 		var mobileOS = getPlatform().toLowerCase();
+      if(doesCordovaExist()) {
+        PushService.init();
+      }
 		  	switch(mobileOS) {
 		  		case "ios":
 		  			iOSService.ready();
@@ -191,9 +194,6 @@ function DeviceService($cordovaNgCardIO,
 		  		case "android":
             Geolocation.getLocation(scope);
 		  			AndroidService.ready();
-            if(doesCordovaExist()) {
-              PushService.init();
-            }
 		  			break;
 	  			case "windows":
 	  				WindowsService.ready();

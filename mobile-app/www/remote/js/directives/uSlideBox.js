@@ -137,7 +137,7 @@ function($parse, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $ion
     }
   };
 })
-.directive('uAfterEnter', function($parse, Utilities) {
+.directive('uAfterEnter', function($parse, Utilities, $timeout) {
   return {
     link: function($scope, element, attrs) {
       
@@ -147,25 +147,31 @@ function($parse, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $ion
       angular.element(element).bind(transitionEnd, function(){
 
         if(Utilities.isElementInViewport(element)) {
-          $scope.$apply(function() {
+          $timeout(function() {
             handler($scope);
-          });
+          }, 0);
+          // $scope.$apply(function() {
+          //   handler($scope);
+          // });
         }
         
       });
     }
   }
 })
-.directive('uBeforeEnter', function($parse, Utilities) {
+.directive('uBeforeEnter', function($parse, Utilities, $timeout) {
   return {
     link: function($scope, element, attr) {
           
       var handler = $parse(attr.uBeforeEnter);
 
       angular.element(element).bind("beforeEnter", function() {
-          $scope.$apply(function() {
-            handler($scope);
-          });
+        $timeout(function() {
+          handler($scope);
+        }, 0);
+        // $scope.$apply(function() {
+        //   handler($scope);
+        // });
       });
     } 
   }

@@ -286,7 +286,10 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
 
                 case 17:
                     if(DeviceService.doesCordovaExist()) {
-                       $state.go('^.inappmap');
+                        $timeout(function() {
+                            $ionicSideMenuDelegate.toggleRight();
+                        }, 0);
+                        $state.go('^.inappmap');
                     }  
                     break;
 

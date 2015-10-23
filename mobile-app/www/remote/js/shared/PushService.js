@@ -38,7 +38,7 @@ var push = null;
       push = PushNotification.init({ 
           "android": androidSettings,
           "ios": IOSSettings, 
-          "windows": windowSettings 
+          "windows": windowsSettings 
       });
 
 
