@@ -39,9 +39,9 @@ if [ $# == 1 ];
 		cordova plugin add cordova-plugin-x-socialsharing
 		cordova plugin add cordova-plugin-calendar
 		cordova plugin add cordova-plugin-appavailability
-		# cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
+		cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
 
-		cordova plugin add ~/Git/uguru-plugins/plugin.google.maps/ --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
+		# cordova plugin add ~/Git/uguru-plugins/plugin.google.maps/ --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
 
 		cordova plugin add cordova-plugin-x-toast
 
