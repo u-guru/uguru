@@ -34,7 +34,7 @@ angular.module('uguru.util.controllers')
   'AdminService',
   'InAppBrowser',
   'DeviceService',
-  'ModalService',
+  'ModalService', //do we need another one?
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,

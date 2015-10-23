@@ -33,10 +33,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   }
 
-  setTimeout(function() {
-    console.log('Rendering guru profile', University.courses.length);
-    console.log('Rendering guru majors', University.majors.length);
-  }, 1500);
+
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
@@ -60,6 +57,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.guru_mode = true;
   $scope.page = {guru_ranking: 0};
   $scope.user.guru_ranking = $scope.user.guru_ranking || 75;
+
 
   $scope.openModal = function(modalName) {
     ModalService.open(modalName, $scope);

@@ -765,6 +765,12 @@ angular.module('uguru.user', [])
                         'add_guru_subcategory': true
                   }
               }
+              if (arg === 'remove_guru_subcategory') {
+                  return {
+                        subcategory: obj,
+                        'remove_guru_subcategory': true
+                  }
+              }
               if (arg === 'impact_event') {
                 return {
                     event_id: obj,

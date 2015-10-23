@@ -168,12 +168,12 @@ angular.module('uguru.student.controllers', [])
         $scope.$on('$ionicView.loaded', function() {
 
             $scope.root.vars.guru_mode = false;
-            if (!$scope.mapInitialized) {
-                $scope.mapInitialized = true;
-                $timeout(function() {
-                    $scope.initStudentHomeMap();
-                }, 1000)
-            }
+            // if (!$scope.mapInitialized) {
+            //     $scope.mapInitialized = true;
+            //     $timeout(function() {
+            //         $scope.initStudentHomeMap();
+            //     }, 1000)
+            // }
 
         })
 
