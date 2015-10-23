@@ -10,7 +10,7 @@ var Photo = function()
 	this.UploadPhoto = function (size)
 	{
 	   doc.uploadPhoto('file-input-web',size);
-	   doc.checkMsg("Awesome! You're all set.");
+	   doc.checkMsg("Awesome! You're all set");
 	};
 
 	this.NextPage =function()

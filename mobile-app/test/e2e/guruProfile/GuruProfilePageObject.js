@@ -5,9 +5,9 @@ var GuruProfile = function()
 	this.ProfileName = element(by.id('profile-name'));
 
 	//List 
-	this.majorList = element.all(by.css('#profile-major li'));
-	this.courseList = element.all(by.css('#profile-courses li'));
-	this.skillList = element.all(by.css('#profile-skills li'));
+	this.majorList = element.all(by.css('#profile-major li span'));
+	this.courseList = element.all(by.css('#profile-courses li span'));
+	this.skillList = element.all(by.css('#profile-skills li span'));
 	this.skillListRemoveButton = element.all(by.css('#profile-skills li a'));
 
 

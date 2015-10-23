@@ -293,14 +293,12 @@ var global = function() {
 
 
      str = name+' li:not(.ng-hide)';
-
      element.all(by.css(str)).then(function (items) {
       if (random != null)      
         var temp = random;
       else
         var temp = Math.floor((Math.random() * (items.length-1)));
-       
-        browser.wait(EC.elementToBeClickable( items[temp]),4000,'wait too long to get item clickable');
+       // browser.wait(EC.elementToBeClickable( items[temp]),5000,'wait too long to get item clickable');
         items[temp].click();
         // console.log(items.length)
     });
