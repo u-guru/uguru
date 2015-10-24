@@ -14,7 +14,7 @@ from time import sleep
 ### gets arr of most updated university data
 def get_all_universities_metadata():
     import requests, json
-    arr = json.loads(requests.get('https://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4/universities').text)
+    arr = json.loads(requests.get('http://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4/universities').text)
     return arr
 
 def choose_random_100_universities(uni_arr):
@@ -59,18 +59,87 @@ def random_func_2(elem):
 
 ## DO NOT CHANGE THE NAME OF THIS FUNCTION
 def get_mascot_name_for_university(name):
+    import wikipedia,requests
+    from bs4 import BeautifulSoup
+    
+    arr = []
+    search = wikipedia.page(str(name))
+    url = search.url
+    response = requests.get(url).text
+    soup = BeautifulSoup(response)
+    mascot = soup.findAll('th',text="Mascot")
+    for items in mascot:
+        mascot = {}
+        mascot['mascot_name'] = items.nextSibling.nextSibling.text
+        arr.append(mascot)
 
-    ## If you do not find a mascot, return none
-    return
+    
+    if arr:
+        print arr
+        return arr
+    else:
+        return None
+     
 
 ## 3
 def get_logo_url_for_university(name):
-    ## If you do not find a mascot, return none
-    return
+    # import dryscrape,json
+    # from bs4 import BeautifulSoup
+    # small_arr = []
+    # output_dict = {}
+    # sess = dryscrape.Session(base_url = 'http://google.com')
+    # sess.set_attribute('auto_load_images', False)
+    # sess.visit('/')
+    # with_mascot = name + ' ' + "mascot"
+    # q = sess.at_xpath('//*[@name="q"]')
+    # q.set(with_mascot)
+    # q.form().submit()
+    # sess.render('google_search.png')
+    # html_page = sess.body()
+    # soup = BeautifulSoup(html_page)
+    # main_wrapper = soup.findAll('img')
+    # arr_info = []
+    # for items_info in main_wrapper:
+    #     final_output_arr = {}
+    #     img_url  = items_info['src']
+    #     arr_info.append(img_url)
+    #     final_output_arr['logo_url'] = arr_info
+    #     output_dict[name] = final_output_arr
+    # if output_dict:
+    #     return output_dict
+    # else:
+    #     return None
+    import dryscrape
+    from bs4 import BeautifulSoup
+    from time import sleep
+    arr = []
+    sess = dryscrape.Session(base_url = 'http://google.com')
+    sess.set_attribute('auto_load_images', False)
+    sess.visit('https://www.google.com/imghp')
+
+  
+    mascot_name = name + ' ' + "Logo"
+    
+    q = sess.at_xpath('//*[@name="q"]')
+    sleep(2)
+    q.set(mascot_name)
+    q.form().submit()
+    sleep(2)
+    sess.render('google_image.png')
+    html_page = sess.body()
+    soup = BeautifulSoup(html_page)
+    logo_url = {}
+    logo_url['image_url'] = soup.findAll('img')[0]['src']
+    arr.append(logo_url)
+    if arr:
+        print arr
+        return arr
+    else:
+        return None
 
 
-### Tries running y
 def check_efficiency(problem_number):
+    import wikipedia
     uni_arr = get_all_universities_metadata()
     sample_universities = choose_random_100_universities(uni_arr)
     print len(sample_universities), 'universities sampled'
@@ -78,18 +147,29 @@ def check_efficiency(problem_number):
     total_count = 100
     total_success = 0
     for uni in sample_universities:
-        university_name = uni['name']
-        sleep(1)
-        if problem_number == 2:
-            mascot_name = get_mascot_name_for_university(university_name)
-            if mascot_name:
-                total_success += 1
+        try:
+            try:
+                university_name = uni['name']
+                sleep(1)
+                if problem_number == 2:
+                    mascot_name = get_mascot_name_for_university(university_name)
+                    #print mascot_name
+                    if mascot_name:
+                        total_success += 1
+                    else:
+                        print university_name
+            except wikipedia.exceptions.DisambiguationError:
+                continue
+        except wikipedia.exceptions.PageError:
+            continue
             # else continue since we didnt find it
 
         if problem_number == 3:
             logo_url = get_logo_url_for_university(university_name)
             if logo_url:
                 total_success += 1
+            else:
+                print university_name
             # else continue since we didnt find it
 
     print "#%s percentage: %s percent" % (problem_number, float(total_success) / total_count)
