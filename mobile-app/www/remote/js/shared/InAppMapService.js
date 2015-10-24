@@ -50,10 +50,13 @@ function InAppMapService(University, $timeout) {
 // 	lng: -78.6820946
 // }
 
-// stan = {
-// 	lat: 37.4274745,
-// 	lng: -122.169719
-// }
+stan = {
+	lat: 37.4274745,
+	lng: -122.169719
+}
+		console.log("compare");
+		console.log(typeof lat);
+		console.log(typeof stan.lat)
 
 		map.animateCamera({
 		  target: {
@@ -70,7 +73,7 @@ function InAppMapService(University, $timeout) {
 		// mapButton.display = 'none';
 
 		var sideMenu = document.getElementsByTagName('ion-side-menu')[0];
-		sideMenu.style.width = 0;
+		sideMenu.style.width = 0 + 'px';
 
   }, 500);
 
