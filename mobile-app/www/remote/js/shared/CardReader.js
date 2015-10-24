@@ -26,15 +26,20 @@ function CardReader() {
       "zip"
     ];
 
-    var onCardIOComplete = function(response) {
+    function onCardIOComplete(response) {
       console.log("card.io scan complete");
-      for (var i = 0, len = cardIOResponseFields.length; i < len; i++) {
-        var field = cardIOResponseFields[i];
-        console.log(field + ": " + response[field]);
+      try {
+        for (var i = 0, len = cardIOResponseFields.length; i < len; i++) {
+          var field = cardIOResponseFields[i];
+          console.log(field + ": " + response[field]);
+        }  
+      } catch(err) {
+        console.log("caught error, most likely user canceling the card reader: " + err);
       }
+      
     };
 
-    var onCardIOCancel = function() {
+    function onCardIOCancel() {
       console.log("card.io scan cancelled");
     };
 
@@ -51,7 +56,7 @@ function CardReader() {
                 "zip": true,
                 "suppressManual": false,
                 "suppressConfirm": false,
-                "hideLogo": false
+                "hideLogo": true
             },
             onCardIOComplete,
             onCardIOCancel
@@ -60,6 +65,7 @@ function CardReader() {
       };
 
     CardIO.canScan(onCardIOCheck);
+
 
   }
 
