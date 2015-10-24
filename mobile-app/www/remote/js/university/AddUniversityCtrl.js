@@ -22,12 +22,14 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'ModalService',
   '$controller',
   'ModalService',
+  'MapService',
+  '$ionicSideMenuDelegate',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService,
-  $controller, ModalService) {
+  $controller, ModalService, MapService, $ionicSideMenuDelegate) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -144,6 +146,21 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
         if (confirm('Are you sure? Your current courses will be deactivated')) {
 
+
+          if ($state.current.name === 'root.home' && $ionicSideMenuDelegate.isOpen()) {
+            $scope.user.university = university;
+            MapService.initStudentHomeMap($scope.user);
+            $scope.loader.showAmbig("Saving...", 1000);
+            $timeout(function() {
+              $scope.loader.hide();
+              $scope.loader.showSuccess('University changed!', 2000);
+            }, 1000)
+
+            $timeout(function() {
+              $ionicSideMenuDelegate.toggleRight();
+            }, 1250)
+          }
+
           $timeout(function() {
             console.log("broadcasting schoolChange!");
             $rootScope.$emit('schoolChange');
@@ -177,7 +194,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       }, 50);
 
-      University.selectedID = university.id;
+      University.selected = university;
 
       $scope.user.university_id = university.id;
       $scope.user.university = university;

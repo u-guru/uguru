@@ -2,7 +2,7 @@
 var University = function() {
 
     //Elements
-    this.InputModel = "universityInput.value";
+    this.InputModel = "search_text.university";
     this.SchoolList = element.all(by.css('#school-list li:not(.ng-hide)'));
     this.AccessInput = element(by.id("access-code-bar"));
     this.RedeemButton = element(by.id("access-start"));

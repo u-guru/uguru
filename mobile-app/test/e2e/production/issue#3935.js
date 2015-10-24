@@ -144,16 +144,8 @@ describe('#3935 Bugs Check Test',function()
 		       count =  category.EnableAllSKills(5);
 		        // ++count;
 			});
-			it('unclick all the skills',function()
-			{
-		       count =  category.EnableAllSKills(5);
-		        // ++count;
-			});
-			it('click all the skills #4',function()
-			{
-		       count =  category.EnableAllSKills(4);
-		        // ++count;
-			});
+    
+		
     		it('close a Category',function()
     		{
 				category.clickCanvas (100,50)
@@ -201,7 +193,8 @@ describe('#3935 Bugs Check Test',function()
 			
 			it('Enter Name : ',function()
 			{
-				account.enterName('jason');
+				account.enterName('jason huang');
+
 			});
 
 			it('Enter Email : ',function()
@@ -237,25 +230,25 @@ describe('#3935 Bugs Check Test',function()
     	describe('Become Guru - > Finish the process -> sign up with new Email account -> nothing from becomeGuru is applied to new account', function () {
     		it('Check major/course/skill are added',function()
     		{
-    			expect(guruprofile.countMajor()).not.toBe(0,"No major list is updated to new account");
-    			expect(guruprofile.countCourse()).not.toBe(0,"No course list is updated to new account");
-    			expect(guruprofile.countSkill()).not.toBe(0,"No skill list is updated to new account");
+    			expect(guruprofile.countMajor()-1).not.toBe(0,"No major list is updated to new account");
+    			expect(guruprofile.countCourse()-1).not.toBe(0,"No course list is updated to new account");
+    			expect(guruprofile.countSkill()-1).not.toBe(0,"No skill list is updated to new account");
 
     		});
     	});
 
     	describe('Go to GuruProfile -> Edit mode-> Add course Modal-> completed add course -> remove courses , random show this error', function () {
-    		it('Open Add course model',function()
-    			{
-    				guruprofile.OpenModal('course');
-    			});
+			it('Open Add course model',function()
+			{
+				guruprofile.OpenModal('course');
+			});
     		it('Open Add course model',function()
 			{
 				course.SelectCourse(0);
 			});
     		it('close Modal',function()
     		{
-    			course.CloseModal();
+    			guruprofile.CloseModal();
     		});
 
     	});	
@@ -266,16 +259,12 @@ describe('#3935 Bugs Check Test',function()
 			});
 
     	});	
-    	describe('Go to GuruProfile -> Edit mode-> unable to delete the skills', function () {
-    		it('delete all skills',function()
+    	describe('[Require manual test ]Go to GuruProfile -> Edit mode-> unable to delete the skills', function () {
+    		it('',function()
 			{
-				guruprofile.deleteAllSkillsInProfile();
+				expect(true).toBe(false,"Alert dialog doesn't work");
 			});
-			it('Check empty',function()
-			{
-				expect(guruprofile.countSkill()).toBe(0,"No skill list is updated to new account");
-
-			})
+			
     	});	
     });
   
@@ -293,11 +282,14 @@ describe('#3935 Bugs Check Test',function()
     		it('',function(){});
     	});	
     });
-    it("Check Error Console message",function()
-    	{
-		   browser.manage().logs().get('browser').then(function(browserLogs) {
-			  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
-		   });
-    	});
-
+    // it("Check Error Console message",function()
+    // 	{
+	
+    // 	});
+    afterEach(function()
+    {
+    	   browser.manage().logs().get('browser').then(function(browserLogs) {
+    		  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
+    	   });
+    });
 });

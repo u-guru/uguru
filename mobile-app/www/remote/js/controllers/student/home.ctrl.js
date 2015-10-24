@@ -32,6 +32,21 @@ angular.module('uguru.student.controllers', [])
         $ionicSideMenuDelegate.canDragContent(false);
 
 
+        // console.log("loading inapp map controller!");
+        
+
+
+        // // Initialize the map view
+        // var map = plugin.google.maps.Map.getMap();
+
+        // map.setDiv(div);
+
+        // map.setVisible(false);
+        
+        // Wait until the map is ready status.
+        // map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+
+
 
         // $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
         //     scope: $scope,
@@ -69,11 +84,31 @@ angular.module('uguru.student.controllers', [])
             $ionicSlideBoxDelegate.update();
             return openRatio;
         }
+
+        var setStatusBarDarkText = function() {
+            if (DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarText($state.current.name);
+            }
+        }
+
+        var setStatusBarLightText = function() {
+
+            if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                if (window.StatusBar) {
+                  window.StatusBar.styleLightContent();
+                }
+            }
+
+        }
+
         var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
                 $scope.sideMenuActive = false;
                 $ionicSlideBoxDelegate.update();
+                setStatusBarDarkText();
             } else {
+                setStatusBarLightText();
+
                 $timeout(function() {
                     $scope.sideMenuActive = true;
                 }, 250)
@@ -148,12 +183,12 @@ angular.module('uguru.student.controllers', [])
         $scope.$on('$ionicView.loaded', function() {
 
             $scope.root.vars.guru_mode = false;
-            if (!$scope.mapInitialized) {
-                $scope.mapInitialized = true;
-                $timeout(function() {
-                    $scope.initStudentHomeMap();
-                }, 1000)
-            }
+            // if (!$scope.mapInitialized) {
+            //     $scope.mapInitialized = true;
+            //     $timeout(function() {
+            //         $scope.initStudentHomeMap();
+            //     }, 1000)
+            // }
 
         })
 
@@ -163,11 +198,16 @@ angular.module('uguru.student.controllers', [])
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
 
+
+
         })
 
         $scope.$on('$ionicView.afterEnter', function() {
             console.log('after enter');
             $ionicSlideBoxDelegate.update();
+
+
+
         });
 
         $scope.$on('$ionicView.enter', function() {

@@ -32,6 +32,7 @@ angular.module('uguru.guru.controllers')
       $scope.loader.showSuccess("Awesome! You're all set.", 2000);
       $ionicViewSwitcher.nextDirection('forward');
       $timeout(function() {
+        $scope.root.vars.guru_mode = true;
         $state.go('^.guru');
       }, 700)
     }

@@ -11,7 +11,8 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
 	var deviceKeyboardExists = false;
 	var deviceKeyboardOpen = false;
 	return {
-		setDeviceKeyboardState:setDeviceKeyboardState
+		setDeviceKeyboardState:setDeviceKeyboardState,
+        closeKeyboardIfExists: closeKeyboardIfExists
 	}
 
 
@@ -20,7 +21,9 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
     	deviceKeyboardOpen = bool;
     }
 
-
+    function closeKeyboardIfExists() {
+        DeviceService.doesCordovaExist() && cordova.plugins.Keyboard && cordova.plugins.Keyboard.close();
+    }
 
 
 };

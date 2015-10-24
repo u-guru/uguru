@@ -35,7 +35,7 @@ var Guru = function() {
 
 	this.OpenProfile = function()
 	{
-		doc.tabBar('guru-tab-bar',1);
+		doc.tabBar('guru-tab-bar-1',1);
 	};
 
 	this.OpenCredibility = function()

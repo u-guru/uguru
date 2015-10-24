@@ -1,0 +1,597 @@
+@import 'mixin';
+
+.desktop-mode {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: $charcoal;
+	#main-logo {
+		@include center-x;
+		top: 30px;
+		display: block;
+		height: 50px;
+		width: 50px;
+	}
+	nav {
+		height: 64px;
+		background: $bakery;
+		svg {
+			height: 100%;
+			padding: 20px 15px 15px;
+		}
+	}
+	.main {
+		padding: 15px;
+		height: calc(100% - 64px);
+		&.default {
+			width: 100%;
+			max-width: 1200px;
+		}
+	}
+}
+
+/* ---------- CREDIBILITY */
+#desktop-credibility {
+	#credit-complete {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		z-index: 99;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba($charcoal, .9);
+		.credit-complete-inside {
+			@include flex;
+			-webkit-justify-content: center;
+			justify-content: center;
+		}
+		aside {
+			@include flex;
+			@include flex-wrap;
+			-webkit-justify-content: flex-end;
+			justify-content: flex-end;
+			max-width: 200px;
+			.icon {
+				width: 100px;
+				height: 100px;
+				background: $moola;
+				border-radius: 2px;
+				svg {
+					width: 100px;
+					height: 100px;
+					path {
+						fill: none;
+						stroke: white;
+						stroke-width: 3px;
+						stroke-linecap: round;
+						stroke-linejoin: round; 
+					}
+				}
+			}
+			.chip {
+				@include flex;
+				@include flex-center;
+				max-width: 200px;
+				height: 72px;
+				line-height: 18px;
+				text-align: center;
+				svg {
+					left: 75%;
+				}
+			}
+			a {
+				display: block;
+				padding-top: 5px;
+				font-size: 14px;
+				font-weight: 600;
+				text-align: center;
+			}
+		}
+		main {
+			margin-left: 60px;
+			height: 200px;
+			width: 800px;
+			> div:first-child {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				h1, a {
+					display: block;
+					width: 50%;
+				}
+				h1 {
+					padding-bottom: 5px;
+					font-size: 32px;
+					font-weight: 900;
+				}
+				a {
+					text-align: right;
+					svg {
+						@include rotate(45);
+						width: 32px;
+						height: 32px;
+						path {
+							fill: none;
+							stroke: white;
+							stroke-width: 8px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
+						}
+					}
+				}
+			}
+			> div:last-child {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: calc(100% - 43px);
+				background: white;
+				color: rgba($taupe,.5);
+				font-weight: 700;
+				text-align: center;
+				border: 5px dashed;
+				svg {
+					width: 100%;
+					height: 40px;
+					margin-bottom: 5px;
+					path {
+						fill: none;
+						stroke: rgba($taupe,.5);
+						stroke-width: 8px;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+				}
+			}
+		}
+	}
+	#credit-progress {
+		@include center-x;
+		bottom: 0;
+		height: 128px;
+		width: 960px;
+		background: $bakery;
+		.progress {
+			border-radius: 0;
+			&::-webkit-progress-value, span {
+				border-radius: 0 1000px 1000px 0;
+			}
+			&::-moz-progress-bar {
+				border-radius: 0 1000px 1000px 0;
+			}
+		}
+		div:last-child {
+			@include flex;
+			@include flex-center;
+			padding: 15px;
+			height: calc(100% - 10px);
+			> span {
+				width: 50%;
+				font-weight: 600;
+				&:first-child {
+					@include flex;
+					@include flex-center-vertical;
+					img {
+						@include round;
+						margin-right: 15px;
+						display: inline-block;
+						width: 64px;
+						height: 64px;
+					}
+				}
+				&:last-child {
+					text-align: right;
+				}
+			}
+		}
+	}
+	.main {
+		@include flex;
+		@include flex-center;
+		height: calc(100% - 64px - 128px);
+		ul {
+			width: 1020px;
+			li {
+				padding: 30px;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					width: 100%;
+					height: 300px;
+					background: $taupe;
+					border-radius: 5px;
+					overflow: hidden;
+					&::before {
+						@include transition(.15s ease-in-out);
+						@include opacity(0);
+						content: "";
+						display: block;
+						position: absolute;
+						z-index: 2;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border-radius: 5px;
+						background: white;
+					}
+					&:hover {
+						&::before {
+							@include opacity(.2);
+						}
+					}
+					&::after {
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 20px;
+						background: $slate;
+						border-radius: 0 0 5px 5px;
+					}
+					svg {
+						width: 150px;
+						height: 150px;
+						path {
+							fill: none;
+							stroke: white;
+							stroke-width: 3px;
+							stroke-linecap: round;
+							stroke-linejoin: round; 
+						}
+					}
+					span {
+						display: block;
+						position: absolute;
+						bottom: 20px;
+						left: 0;
+						width: 100%;
+						padding: 15px;
+						font-weight: 600;
+						text-align: center;
+					}
+				}
+				&.complete {
+					@include opacity(.4);
+					a::after {
+						background: white;
+					}
+				}
+				&#credit-grid-grades a {
+					background: $moola;
+				}
+				&#credit-grid-fb a {
+					background: $facebook;
+				}
+				&#credit-grid-phone a {
+					background: $eggplant;
+				}
+				&#credit-grid-email a {
+					background: $lake;
+				}
+				&#credit-grid-exp a {
+					background: $shamrock;
+				}
+			}
+		}
+	}
+}
+
+/* ---------- LOGIN */
+#desktop-login {
+	.main {
+		background: $smoke;
+		.desktop-forms-container {
+			> div {
+				background: white;
+			}
+			.explore {
+				background: $shamrock;
+				font-weight: 600;
+			}
+		}
+	}
+	aside {
+		&::after {
+			background: url(../../img/temp-login.jpg) no-repeat center center,
+						url(/static/remote/img/temp-login.jpg) no-repeat center center;
+		}
+	}
+}
+#desktop-signup {
+	z-index: 9;
+	.main {
+		background: $charcoal;
+		.desktop-forms-container {
+			> div {
+				background: rgba($slate,.2);
+			}
+		}
+	}
+	aside {
+		&::after {
+			background: url(../../img/temp-signup.jpg) no-repeat center center,
+						url(/static/remote/img/temp-signup.jpg) no-repeat center center;
+		}
+	}
+}
+.desktop-forms {
+	@include flex;
+	.main {
+		@include flex;
+		@include flex-center;
+		height: 100%;
+		width: 75%;
+		.desktop-forms-container {
+			width: 40%;
+			> div {
+				padding: 30px;
+				h1 {
+					color: $shamrock;
+					font-size: 36px;
+					font-weight: 600;
+					text-align: center;
+				}
+				.desktop-login-buttons {
+					@include flex;
+					-webkit-justify-content: flex-end;
+					justify-content: flex-end;
+					button {
+						margin: 15px 0 0 15px;
+						height: auto;
+						width: auto;
+						padding: 10px 15px;
+						font-size: 16px;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
+	aside {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		height: 100%;
+		width: 25%;
+		overflow: hidden;
+		svg {
+			@include center-x;
+			top: 5%;
+			width: 75px;
+			height: 75px;
+		}
+		div {
+			position: relative;
+			z-index: 9;
+			width: 75%;
+			text-align: center!important;
+			h1 {
+				font-size: 24px;
+				font-weight: 600;
+			}
+			p {
+				padding: 10px 0;
+				font-size: 18px;
+				font-weight: 400;
+				line-height: 1.5!important;
+			}
+		}
+		&::after {
+			@include opacity(.75);
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+/* ---------- DESKTOP LISTS */
+.desktop-search {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	.main {
+		height: auto;
+		form {
+			input {
+				color: white;
+				height: 64px;
+			}
+			input, label {
+				font-size: 36px;
+			}
+			label {
+				top: 6px;
+			}
+			label.active {
+				font-size: 24px;
+			}
+		}
+		.desktop-search-list {
+			.desktop-card-list {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				margin: 0 -15px;
+				li {
+					width: 25%;
+					padding: 15px;
+					a {
+						@include transition(.15s ease-in-out);
+						display: block;
+						position: relative;
+						background: rgba(white,.25);
+						border-bottom: 10px solid;
+						border-radius: 2px;
+						overflow: hidden;
+						cursor: pointer;
+						* {
+							@include transition(.15s ease-in-out);
+							cursor: pointer;
+						}
+						.list-item-overlay {
+							@include opacity(0);
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+						}
+						&:hover {
+							.list-item-overlay {
+								@include opacity(.9);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- GURU ONBOARDING */
+.desktop-guru-onboarding {
+	.main {
+		.desktop-search-list {
+			.desktop-card-list {
+				li {
+					a {
+						@include flex;
+						@include flex-center;
+						height: 150px;
+						padding: 15px;
+						border-bottom: 10px solid rgba(white,.3);
+						font-weight: 600;
+						line-height: 1.25;
+						text-align: center;
+						&:hover {
+							background: $campus;
+						}
+					}
+					a svg, label svg {
+						@include center-xy;
+						width: 100%;
+						height: 100%;
+						padding: 30px;
+						background: rgba($campus,.8);
+						border-radius: 2px;
+						path {
+							fill: none;
+							stroke: white;
+							stroke-width: 8px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
+						}
+					}
+				}
+				.selected {
+					a {
+						border-color: white;
+					}
+				}
+			}
+		}
+	}
+}
+// COURSES
+#desktop-courses {
+	.main {
+		.desktop-search-list {
+			.desktop-card-list {
+				li {
+					.name-only {
+						span {
+							@include flex;
+							@include flex-center;
+							height: 100%;
+						}
+					}
+					a {
+						font-size: 20px;
+						text-align: center;
+						span {
+							display: block;
+							width: 100%;
+							text-align: center;
+						}
+						.course-name {
+							font-size: 14px;
+						}
+						.course-title {
+							@include flex;
+							@include flex-center;
+							height: 84px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- UNIVERSITY */
+#desktop-university {
+	.main {
+		.desktop-search-list {
+			.desktop-card-list {
+				li {
+					a {
+						.school-icon {
+							@include round;
+							display: block;
+							margin: 0 auto;
+							padding: 15px 15px 10px;
+							width: 90px;
+							height: 85px;
+						}
+						img {
+							@include round;
+							display: block;
+							width: 60px;
+							height: 60px;
+							background: white;
+						}
+						.school-name {
+							display: block;
+							padding: 0 15px 15px;
+							text-align: center!important;
+							.school-title {
+								@include flex;
+								@include flex-bottom;
+								margin-bottom: 3px;
+								font-size: 20px;
+								font-weight: 600;
+								line-height: 1.25;
+								height: 50px;
+							}
+							.school-location {
+								display: block;
+								font-size: 14px;
+								font-weight: 400;
+								text-align: center!important;
+								.school-city {
+									text-transform: capitalize;
+								}
+								.school-state {
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

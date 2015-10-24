@@ -48,13 +48,21 @@
 <!--<script src="/static/web/js/lib/countup.min.js"></script>-->
 <script>
 launchIntercomeSetActive = function() {return};
+//override default value
+var onDomLoadSuccess = function() {
+    setTimeout(function() {
+        bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
+    }, 3500);
+}
+
 var launchIntercomSetActive = function() {
     if ($('#intercom-launcher').length) {
         console.log('setting intercom to active..');
         // $('#intercom-container').addClass('active');
         // $('#intercom-container').css('display', 'block');
         setTimeout(function() {
-        	$('.top-link-chat, #link-support').trigger('click');
+        	bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
+            $('.top-link-chat, #link-support').trigger('click');
         }, 3000)
         $('.top-link-chat, #link-support').trigger('click');
 	    } else {

@@ -155,7 +155,9 @@ function DeviceService($cordovaNgCardIO,
 
 
     var userAgent = navigator.userAgent;
-
+      if (doesCordovaExist()) {
+        onDeviceReady(scope);
+      }
 
       if(userAgent.indexOf('wv')!==-1) {
         onDeviceReady(scope);

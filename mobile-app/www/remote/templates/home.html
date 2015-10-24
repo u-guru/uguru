@@ -1,4 +1,5 @@
 <ion-view class='uguru-view home-view'>
+
     <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
     <section id="student-home" class="request full-xy student-home">
         <header>
@@ -6,6 +7,18 @@
         </header>
         <div id='student-home-map-container'></div>
         <div id="home-content" class="trending-container">
+
+
+
+
+    		<!-- <h3>In App Google Maps Plugin</h3> -->
+    	   <div style="width:100%;height:500px;position:absolute"  id="map_canvas_home"></div>
+    	   <!-- <button id="mapButton" ng-click='displayMap()'>Display Map</button> -->
+
+
+
+
+
             <div ng-if='!user.is_a_guru'>
 	            <button class="home-button bg-lake-80p" thr-click='launchRequestModal()'>Request<br/>Help</button>
 	        </div>
