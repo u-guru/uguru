@@ -7,6 +7,7 @@
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
   -ms-overflow-style: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 *:focus {

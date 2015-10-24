@@ -32,7 +32,8 @@
 		@include center-x;
 		bottom: 0;
 		height: 128px;
-		width: 960px;
+		width: 100%;
+		max-width: 960px;
 		background: $gabrielle;
 		.progress {
 			border-radius: 0;
@@ -179,17 +180,21 @@
 		@include flex;
 		@include flex-center;
 		height: calc(100% - 64px - 128px);
+		padding: 7.5px;
 		ul {
-			width: 1020px;
+			width: 100%;
+			height: 100%;
 			li {
-				padding: 30px;
+				padding: 7.5px;
+				height: 50%;
+				max-height: 325px;
 				a {
 					@include flex;
 					@include flex-wrap;
 					@include flex-center;
 					position: relative;
 					width: 100%;
-					height: 300px;
+					height: 100%;
 					background: $taupe;
 					border-radius: 2px;
 					overflow: hidden;
@@ -224,8 +229,8 @@
 						border-radius: 0 0 2px 2px;
 					}
 					svg {
-						width: 150px;
-						height: 150px;
+						width: 50%;
+						height: 50%;
 						path {
 							@include svg-stroke(white, 3);
 						}
@@ -265,9 +270,35 @@
 		}
 	}
 }
+@media screen and (min-width:960px) {
+	#desktop-credibility {
+		.main {
+			ul {
+				max-width: 975px;
+			}
+		}
+	}
+}
+@media screen and (min-height:857px) {
+	#desktop-credibility {
+		.main {
+			ul {
+				height: auto;
+				li {
+					height: 310px;
+				}
+			}
+		}
+	}
+}
 
 /* ---------- LOGIN */
 #desktop-login {
+	#main-logo {
+		path {
+			fill: $shamrock!important;
+		}
+	}
 	.main {
 		background: $smoke;
 		.desktop-forms-container {
@@ -282,8 +313,8 @@
 	}
 	aside {
 		&::after {
-			background: url(../../img/temp-login.jpg) no-repeat center center,
-						url(/static/remote/img/temp-login.jpg) no-repeat center center;
+			background: url(../../img/temp-login.jpg) no-repeat center center / cover,
+						url(/static/remote/img/temp-login.jpg) no-repeat center center / cover;
 		}
 	}
 }
@@ -299,8 +330,8 @@
 	}
 	aside {
 		&::after {
-			background: url(../../img/temp-signup.jpg) no-repeat center center,
-						url(/static/remote/img/temp-signup.jpg) no-repeat center center;
+			background: url(../../img/temp-signup.jpg) no-repeat center center / cover,
+						url(/static/remote/img/temp-signup.jpg) no-repeat center center / cover;
 		}
 	}
 }
@@ -310,9 +341,10 @@
 		@include flex;
 		@include flex-center;
 		height: 100%;
-		width: 75%;
+		width: 100%;
 		.desktop-forms-container {
-			width: 40%;
+			width: 100%;
+			max-width: 600px;
 			> div {
 				padding: 30px;
 				h1 {
@@ -320,6 +352,19 @@
 					font-size: 36px;
 					font-weight: 600;
 					text-align: center;
+				}
+				p {
+					color: $slate;
+					font-size: 18px;
+					font-weight: 400;
+					text-align: center;
+					margin-top: 5px;
+					a {
+						color: $shamrock;
+					}
+					a:active, a:focus, a:hover, a.active, a.activated {
+						color: $taupe;
+					}
 				}
 				.desktop-login-buttons {
 					@include flex;
@@ -338,11 +383,10 @@
 		}
 	}
 	aside {
-		@include flex;
 		@include flex-center;
+		display: none;
 		position: relative;
 		height: 100%;
-		width: 25%;
 		overflow: hidden;
 		svg {
 			@include center-x;
@@ -378,6 +422,35 @@
 		}
 	}
 }
+@media screen and (min-width:1280px) {
+	.desktop-forms {
+		#main-logo {
+			display: none!important;
+		}
+		.main {
+			width: 70%;
+			.desktop-forms-container {
+				p {
+					display: none;
+				}
+			}
+		}
+		aside {
+			@include flex;
+			width: 30%;
+		}
+	}
+}
+@media screen and (min-width:1440px) {
+	.desktop-forms {
+		.main {
+			width: 75%;
+		}
+		aside {
+			width: 25%;
+		}
+	}
+}
 
 /* ---------- DESKTOP LISTS */
 .desktop-search {
@@ -406,10 +479,10 @@
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
-				margin: 0 -15px;
+				margin: 0 -7.5px;
 				li {
-					width: 25%;
-					padding: 15px;
+					width: calc(100% / 3);
+					padding: 7.5px;
 					a {
 						@include transition(.15s ease-in-out);
 						display: block;
@@ -444,6 +517,31 @@
 		}
 	}
 }
+@media screen and (min-width:1024px) {
+	.desktop-search {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					margin: 0 -15px;
+					li {
+						width: 25%;
+						padding: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	.desktop-search {
+		@include flex-bottom;
+	}
+}
+@media screen and (min-height:800px) {
+	.desktop-search {
+		@include flex-center;
+	}
+}
 
 /* ---------- GURU ONBOARDING */
 .desktop-guru-onboarding {
@@ -451,12 +549,15 @@
 		.desktop-search-list {
 			.desktop-card-list {
 				li {
+					display: none;
 					a {
 						@include flex;
+						@include flex-wrap;
 						@include flex-center;
-						height: 150px;
+						height: 64px;
 						padding: 15px;
 						border-bottom: 10px solid rgba(white,.3);
+						font-size: 16px;
 						font-weight: 600;
 						line-height: 1.25;
 						text-align: center;
@@ -468,13 +569,17 @@
 						@include center-xy;
 						width: 100%;
 						height: 100%;
-						padding: 30px;
 						background: rgba($campus,.8);
 						border-radius: 2px;
 						path {
 							@include svg-stroke(white, 8);
 						}
 					}
+				}
+				li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4),
+				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8),
+				li:nth-child(9), li:nth-child(10), li:nth-child(11), li:nth-child(12) {
+					display: block;
 				}
 				.selected {
 					a {
@@ -485,6 +590,78 @@
 		}
 	}
 }
+@media screen and (min-height:750px) and (min-width: 820px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 84px;
+							font-size: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 100px;
+						}
+						a svg, label svg {
+							padding: 15px;
+						}
+					}
+					li:nth-child(13), li:nth-child(14), li:nth-child(15), li:nth-child(16) {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:952px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 125px;
+							font-size: 24px;
+						}
+						a svg, label svg {
+							padding: 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // COURSES
 #desktop-courses {
 	.main {
@@ -499,20 +676,37 @@
 						}
 					}
 					a {
-						font-size: 20px;
+						font-size: 20px!important;
 						text-align: center;
 						span {
 							display: block;
 							width: 100%;
 							text-align: center;
 						}
-						.course-name {
-							font-size: 14px;
-						}
 						.course-title {
-							@include flex;
-							@include flex-center;
-							height: 84px;
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	#desktop-courses {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.course-name {
+								font-size: 14px!important;
+							}
+							.course-title {
+								@include flex;
+								@include flex-center;
+								height: 84px;
+							}
 						}
 					}
 				}
@@ -530,31 +724,33 @@
 					a {
 						.school-icon {
 							@include round;
-							display: block;
-							margin: 0 auto;
-							padding: 15px 15px 10px;
-							width: 90px;
-							height: 85px;
+							display: none;
+							margin: 0 auto -5px;
+							padding: 15px 15px 0;
+							width: 80px;
+							height: 65px;
 						}
 						img {
 							@include round;
 							display: block;
-							width: 60px;
-							height: 60px;
+							width: 50px;
+							height: 50px;
 							background: white;
 						}
 						.school-name {
 							display: block;
-							padding: 0 15px 15px;
+							padding: 15px;
 							text-align: center!important;
 							.school-title {
-								@include flex;
-								@include flex-bottom;
+								display: block;
+								width: 100%;
 								margin-bottom: 3px;
-								font-size: 20px;
+								font-size: 18px;
 								font-weight: 600;
 								line-height: 1.25;
-								height: 50px;
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis;
 							}
 							.school-location {
 								display: block;
@@ -575,7 +771,67 @@
 		}
 	}
 }
-/* ---------- UNIVERSITY */
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-icon {
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:800px) and (min-width:1280px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-icon {
+								width: 100px;
+								height: 85px;
+							}
+							img {
+								display: block;
+								width: 70px;
+								height: 70px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:1024px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-name {
+								.school-title {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- GURU ONBOARDING */
 #desktop-guru-onboarding {
 	@include flex;
 	@include flex-center;
@@ -584,20 +840,20 @@
 		.header {
 			text-align: center;
 			h1 {
-				font-size: 64px;
+				font-size: 36px;
 				font-weight: 900;
 				text-transform: uppercase;
 			}
 			h2 {
-				font-size: 28px;
+				font-size: 24px;
 				font-weight: 300;
 			}
 		}
 		#guru-onboarding-grid {
-			margin: 60px -15px;
+			margin: 15px -7.5px;
 			li {
 				position: relative;
-				padding: 15px;
+				padding: 7.5px;
 				&:nth-child(1) a {
 					background: $moola;
 				}
@@ -615,7 +871,7 @@
 					@include flex-wrap;
 					@include flex-center;
 					position: relative;
-					height: 270px;
+					max-height: 270px;
 					border-radius: 2px;
 					> svg {
 						@include svg-stroke(white, 3);
@@ -652,10 +908,109 @@
 							}
 						}
 						span:last-child {
-							padding-bottom: 40px;
-							font-size: 28px;
+							margin-top: -20px;
+							padding-bottom: 15px;
+							font-size: 20px;
 							font-weight: 700;
 							text-align: center;
+						}
+					}
+				}
+			}
+		}
+		#guru-onboarding-progress {
+			padding-top: 25px;
+			.progress {
+				position: relative;
+				overflow: visible;
+				height: 10px;
+				ul {
+					@include center-y;
+					@include flex;
+					@include flex-center;
+					left: 0;
+					width: 100%;
+					li {
+						width: 25%;
+						span {
+							@include flex;
+							@include flex-center;
+							margin: 0 auto;
+							width: 70px;
+							height: 70px;
+							background: white;
+							font-size: 36px;
+							font-weight: 900;
+							border: 5px solid;
+						}
+						&:nth-child(1) span {
+							color: $moola;
+							border-color: $moola;
+						}
+						&:nth-child(2) span {
+							color: $shamrock;
+							border-color: $shamrock;
+						}
+						&:nth-child(3) span {
+							color: $azure;
+							border-color: $azure;
+						}
+						&:nth-child(4) span {
+							color: $lake;
+							border-color: $lake;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:800px) {
+	#desktop-guru-onboarding {
+		.main {
+			.header {
+				h1 {
+					font-size: 64px;
+				}
+				h2 {
+					font-size: 28px;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:980px) {
+	#desktop-guru-onboarding {
+		.main {
+			#guru-onboarding-grid {
+				li {
+					a {
+						> span {
+							span:last-child {
+								margin-top: -10px;
+								padding-bottom: 30px;
+								font-size: 28px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:850px) {
+	#desktop-guru-onboarding {
+		.main {
+			#guru-onboarding-grid {
+				margin-top: 60px;
+				margin-bottom: 60px;
+				li {
+					a {
+						height: 270px;
+						> span {
+							span:last-child {
+								margin-top: 0;
+							}
 						}
 					}
 				}
@@ -669,6 +1024,21 @@
 	@include flex;
 	@include flex-center;
 	background: $charcoal;
+	button {
+		&.activated, &:active, &:hover, &:focus {
+			color: $gabrielle!important;
+		}
+	}
+	#guru-profile-edit {
+		@include flex;
+		@include flex-center;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 64px;
+		background: $gabrielle;
+	}
 	#profile {
 		@include flex;
 		@include flex-center;
@@ -686,11 +1056,6 @@
 			height: 100%;
 			padding: 15px;
 			background: $gabrielle;
-			button {
-				&.activated, &:active, &:hover, &:focus {
-					color: $gabrielle!important;
-				}
-			}
 			#profile-icon {
 				@include round;
 				margin: 15px auto;

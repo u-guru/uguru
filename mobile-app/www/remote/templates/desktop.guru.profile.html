@@ -1,5 +1,6 @@
 <ion-view class='uguru-view desktop-guru-profile-view bg-charcoal'>
 	<main id='desktop-guru-profile' class="desktop-forms desktop-mode">
+		<nav class="absolute top-0 left-0 full-x" ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div id="profile">
 			<div id="profile-desc">
 				<div class="profile-inside">
@@ -195,5 +196,9 @@
 				</div>
 			</div>
 		</div>
+		<footer id="guru-profile-edit">
+			<button id="btn-edit-profile" class="btn-ghost-white" ng-if='!profile.edit_mode' ng-click='profile.edit_mode = true;'>Edit Profile</button>
+			<button id="btn-save-profile" class="btn-ghost-white" ng-click='saveGuruProfile()' ng-if='profile.edit_mode'>Save Profile</button>
+		</footer>
 	</main>
 </ion-view>

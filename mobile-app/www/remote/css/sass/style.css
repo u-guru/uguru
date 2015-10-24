@@ -239,10 +239,10 @@ section {
   .uguru-view #start-container {
     font-size: 24px !important;
   }
-  .uguru-view #skills-list a {
+  .uguru-view #skills-list.onboarding-list a {
     font-size: 16px !important;
   }
-  .uguru-view #skills-list .skill-icon {
+  .uguru-view #skills-list.onboarding-list .skill-icon {
     margin-bottom: 10px;
     width: 40px !important;
     height: 40px !important;
@@ -3106,17 +3106,17 @@ section {
   background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
 }
 
-.skills-view #skills-list ul {
+.skills-view #skills-list.onboarding-list ul {
   padding: 1px;
   height: 100%;
 }
 
-.skills-view #skills-list ul li {
+.skills-view #skills-list.onboarding-list ul li {
   height: 25%;
   border: 1px solid #2B3234;
 }
 
-.skills-view #skills-list ul li a {
+.skills-view #skills-list.onboarding-list ul li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3143,26 +3143,26 @@ section {
   text-align: center;
 }
 
-.skills-view #skills-list ul li a div {
+.skills-view #skills-list.onboarding-list ul li a div {
   position: relative;
   z-index: 9;
 }
 
-.skills-view #skills-list ul li a .skill-label {
+.skills-view #skills-list.onboarding-list ul li a .skill-label {
   display: block;
   width: 100%;
   font-weight: 600;
   line-height: 1.25;
 }
 
-.skills-view #skills-list ul li a .skill-count {
+.skills-view #skills-list.onboarding-list ul li a .skill-count {
   display: block;
   font-size: 12px;
   line-height: 1.25;
   text-transform: uppercase;
 }
 
-.skills-view #skills-list ul [class*="bg-"]::after {
+.skills-view #skills-list.onboarding-list ul [class*="bg-"]::after {
   filter: alpha(opacity=70);
   opacity: 0.7;
   position: absolute;
@@ -3173,35 +3173,35 @@ section {
   top: 0;
 }
 
-.skills-view #skills-list ul .bg-cerise.important::after {
+.skills-view #skills-list.onboarding-list ul .bg-cerise.important::after {
   background: #DB1988;
 }
 
-.skills-view #skills-list ul .bg-orange.important::after {
+.skills-view #skills-list.onboarding-list ul .bg-orange.important::after {
   background: #E5753C;
 }
 
-.skills-view #skills-list ul .bg-gold.important::after {
+.skills-view #skills-list.onboarding-list ul .bg-gold.important::after {
   background: #F9D57B;
 }
 
-.skills-view #skills-list ul .bg-moola.important::after {
+.skills-view #skills-list.onboarding-list ul .bg-moola.important::after {
   background: #81B566;
 }
 
-.skills-view #skills-list ul .bg-shamrock.important::after {
+.skills-view #skills-list.onboarding-list ul .bg-shamrock.important::after {
   background: #69B3A5;
 }
 
-.skills-view #skills-list ul .bg-azure.important::after {
+.skills-view #skills-list.onboarding-list ul .bg-azure.important::after {
   background: #55A4B7;
 }
 
-.skills-view #skills-list ul .bg-lake.important::after {
+.skills-view #skills-list.onboarding-list ul .bg-lake.important::after {
   background: #50A5DD;
 }
 
-.skills-view #skills-list ul .bg-eggplant.important::after {
+.skills-view #skills-list.onboarding-list ul .bg-eggplant.important::after {
   background: #9A5BC5;
 }
 

@@ -176,10 +176,10 @@ section {
 		#start-container {
 			font-size: 24px!important;
 		}
-		#skills-list a {
+		#skills-list.onboarding-list a {
 			font-size: 16px!important;
 		}
-		#skills-list .skill-icon {
+		#skills-list.onboarding-list  .skill-icon {
 			margin-bottom: 10px;
 			width: 40px!important;
 			height: 40px!important;
@@ -2484,7 +2484,7 @@ section {
 						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
 		}
 	}
-	#skills-list {
+	#skills-list.onboarding-list  {
 		ul {
 			padding: 1px;
 			height: 100%;

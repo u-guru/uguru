@@ -61,8 +61,8 @@ angular.module('uguru.util.controllers')
         console.log('Window size', $scope.window);
 
         // GABRIELLE TODO: Define these values
-        var desktopHeightLimit = 700;
-        var desktopWidthLimit= 700;
+        var desktopHeightLimit = 699;
+        var desktopWidthLimit= 767;
 
         $scope.isDesktopMode = function(height, width) {
             initHeight();
@@ -206,6 +206,12 @@ angular.module('uguru.util.controllers')
                 console.log("Categories NOT successfully loaded");
             })
         }
+        
+        var categoriesCallback = function(categories) {
+            $scope.categories = categories;
+        }
+
+        $scope.getCategories(categoriesCallback)
 
         $scope.getCoursesForUniversityId = function(uni_id, callback) {
             if (!uni_id) {

@@ -1,3 +1,3 @@
 var _local = "true";
-var _startpage = "desktop-guru-profile";
-var _ipaddress = "192.168.0.115";
+var _startpage = "become-guru";
+var _ipaddress = "192.168.0.114";
