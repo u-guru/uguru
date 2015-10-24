@@ -10,8 +10,8 @@
 						</svg>
 					</a>
 				</div>
-				
-				<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy" keyboard-focus>
+
+				<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x" keyboard-focus>
 					<input type="search" value="{{user.university.title}}" class='' id='university-input' placeholder="Search for my university" ng-model="search_text.university" />
 			        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
 						<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
@@ -20,7 +20,7 @@
 						<i class='icon ion-close-circled text-white'></i>
 			        </a>
 				</div>
-			</header>	
+			</header>
 			<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
 				<ul class='list list-item-border'>
 					<li class="list-item " ng-repeat='university in universities | limitTo: limit'>
@@ -52,7 +52,7 @@
 					</li>
 				</ul>
 			</div>
-			
+
 		</section>
 	</ion-view>
 </ion-modal-view>

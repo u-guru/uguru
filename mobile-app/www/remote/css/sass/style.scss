@@ -2001,7 +2001,7 @@ section {
 				}
 			}
 		}
-		#student-home-map-container {
+		#student-home-map-container, #student-home-default-map-container {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -4125,4 +4125,12 @@ body.platform-ios {
 .android-access-edge-case {
 	bottom:64px;
 	position:absolute;
+}
+
+.onboarding-search {
+	padding: 0 10px;
+}
+
+#university-input {
+	margin: 10px 0px;
 }
