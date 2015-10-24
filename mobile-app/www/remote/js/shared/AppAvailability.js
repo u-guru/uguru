@@ -19,12 +19,12 @@ function AppAvailability(DeviceService) {
 
     var scheme;
 
-    if(DeviceService.isAndroid) {
+    if(DeviceService.isAndroid()) {
       scheme = "com.facebook.katana";
 
     }
 
-    if(DeviceService.IOS) {
+    if(DeviceService.isIOS()) {
       scheme = "fb://"
       
     }

@@ -3,17 +3,17 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
 
-         // capabilities: {
-         //         'browserName': 'chrome'
-         // },
-          multiCapabilities: [
-          {'browserName': 'chrome'},
-          {'browserName': 'firefox'},
-          // {'browserName': 'phantomjs'}
-        ],
-        // specs: [
-        //  //     '../test_case/Release_One_Web/homepage/*'
+         capabilities: {
+                 'browserName': 'chrome'
+         },
+        //   multiCapabilities: [
+        //   {'browserName': 'chrome'},
+        //   {'browserName': 'firefox'},
+        //   // {'browserName': 'phantomjs'}
         // ],
+        specs: [
+             'e2e/production/workflow#1.js'
+        ],
         // suites:
         // {
         //   // search :     ['../test_case/Release_One_Web/homepage/search_box.js'],
@@ -88,6 +88,9 @@ exports.config = {
             global.dv = browser.driver;
             global.EC = protractor.ExpectedConditions;
             global.web =require('./Release_One_Web/global.po.js');
+            global.home =require('./e2e/PageObjects/homePageObject.js');
+            dv.get('http://uguru.me');
+
             global.isAngularSite = function(flag){
                 browser.ignoreSynchronization = !flag;
             };
