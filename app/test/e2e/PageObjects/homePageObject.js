@@ -15,24 +15,68 @@ var Home = function()
 		dv.wait(EC.visibilityOf(this.FirstSchool),4000)
 		this.FirstSchool.click();
 	}
-	this.checkImgSize = function (element,width,height)
+	// this.checkImgSize = function (element,width,height)
+	// {
+
+	// 	element.getSize().then(function(size)
+	// 	{
+	// 		expect(size.width).toBe(width,"Width not match");
+	// 		expect(size.height).toBe(height,"Height not match");
+	// 	});
+
+
+	// }
+
+	this.checkImgSize = function (ele1,ele2,ratio)
 	{
 
-		element.getSize().then(function(size)
+
+		ele2.getSize().then(function(size)
 		{
-			expect(size.width).toBe(width,"Width not match");
-			expect(size.height).toBe(height,"Height not match");
+			var innerW = size.width * ratio;
+			var innerH = size.height * ratio;
+
+			ele1.getSize().then(function(value)
+			{
+				expect(value.width).toBe(innerW,"ele1 width should equal ele2 width* "+ratio*100+"%");
+				expect(value.height).toBe(innerH,"ele1 height should equal ele2 height* "+ratio*100+"%");
+			});
+
 		});
 
-
 	}
-	this.checkLocation = function (element,x,y)
+	this.checkLocationX= function (ele1,ele2)
 	{
 
-		element.getLocation().then(function(loc)
+		// element.getLocation().then(function(loc)
+		// {
+		// 	expect(loc.x).toBe(x,"x not match");
+		// 	expect(loc.y).toBe(y,"y not match");
+		// });
+		ele2.getLocation().then(function(loc)
 		{
-			expect(loc.x).toBe(x,"x not match");
-			expect(loc.y).toBe(y,"y not match");
+			var rightX = loc.x;
+			
+			ele1.getLocation().then(function(value)
+			{
+				expect(value.x).toBe(rightX,"ele1.x is not at the same position of ele2");
+			});
+
+		});
+
+	}
+	this.checkLocationY= function (ele1,ele2)
+	{
+
+		ele2.getLocation().then(function(loc)
+		{
+			var rightY = loc.y;
+			
+			ele1.getLocation().then(function(value)
+			{
+				expect(value.y).toBe(rightY,"ele1.y is not at the same position of ele2");
+			});
+
 		});
 
 	}
