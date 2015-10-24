@@ -69,6 +69,14 @@ def get_logo_url_for_university(name):
     return
 
 
+## 4
+def get_school_color_for_university(name):
+    return
+
+### 5
+## --> go filter out the logos
+## --> Go filter out the major abbreviatations
+
 ## Tries running
 def check_efficiency(problem_number):
     uni_arr = get_all_universities_metadata()
@@ -91,6 +99,12 @@ def check_efficiency(problem_number):
             if logo_url:
                 total_success += 1
             # else continue since we didnt find it
+
+        if problem_number == 4:
+            logo_url = get_school_color_for_university(university_name)
+            if logo_url:
+                total_success += 1
+
 
     print "#%s percentage: %s percent" % (problem_number, float(total_success) / total_count)
 
