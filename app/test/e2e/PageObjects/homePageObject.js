@@ -35,7 +35,6 @@ var Home = function()
 			expect(loc.y).toBe(y,"y not match");
 		});
 
-
 	}
 };
 
