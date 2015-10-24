@@ -309,10 +309,10 @@ exports.config = {
             // browser.executeScript('window.localStorage.clear();');
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
-            browser.driver.manage().window().setSize(1600, 900);
+            browser.driver.manage().window().setSize(414, 736);
 
-            // browser.get("http://"+localhost+":8100/#/");
-            browser.get("https://www.uguru.me/app")
+            browser.get("http://"+localhost+":8100/#/");
+                         // browser.get("http://localhost:8100/#/")
 
             browser.sleep(3000);
 
