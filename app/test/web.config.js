@@ -12,7 +12,10 @@ exports.config = {
         //   // {'browserName': 'phantomjs'}
         // ],
         specs: [
-             'e2e/production/workflow#1.js'
+             'e2e/production/workflow#1.js',
+             'e2e/production/workflow#2.js',
+             'e2e/production/workflow#3.js'
+
         ],
         // suites:
         // {
@@ -89,7 +92,9 @@ exports.config = {
             global.EC = protractor.ExpectedConditions;
             global.web =require('./Release_One_Web/global.po.js');
             global.home =require('./e2e/PageObjects/homePageObject.js');
-            dv.get('http://uguru.me');
+            global.support =require('./e2e/PageObjects/supportPageObject.js');
+
+            dv.get('http://www.uguru.me/');
 
             global.isAngularSite = function(flag){
                 browser.ignoreSynchronization = !flag;

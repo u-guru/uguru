@@ -56,5 +56,10 @@ describe('HomePage', function () {
 		home.checkLocationY($('#search-results-close-link'),$('#home-modal-close-link'));
 
 	});
-
+	afterEach(function()
+	{
+		   browser.manage().logs().get('browser').then(function(browserLogs) {
+			  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
+		   });
+	});
 });

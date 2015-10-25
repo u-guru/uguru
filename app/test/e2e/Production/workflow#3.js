@@ -1,6 +1,6 @@
 // var UguruHomepage = require('./homepage.po.js');
 
-describe('Chat Support', function () {
+describe('FAQ/Manifest', function () {
     // var UguruHomepage = new AngularHomepage();
     // var SchoolInput = dv.findElement(by.id('search-bar'));
 	// it("Go Homepage",function()
@@ -14,15 +14,16 @@ describe('Chat Support', function () {
       isAngularSite(false);
 
     });
-    it('open Chat',function()
+    it('Go to FAQ',function()
     {
 		// home.SearchSchool('berkeley');
-		support.OpenSupport();
+        dv.get('http://www.uguru.me/faq/');
+
     });
 	
-	it ('Send message',function()
+	it ('Check element is not display',function()
 	{
-		support.sendMessage('HIIIII E2E')
+		expect($('#side-menu-links').isPresent()).toBe(false);
 	});
 	afterEach(function()
 	{
