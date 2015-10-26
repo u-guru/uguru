@@ -2956,6 +2956,17 @@ class AdminDevicePushTestView(restful.Resource):
 
         return jsonify(success=[True])
 
+class AdminUniversityPopularCourseView(restful.Resource):
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def get(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        university = University.query.get(uni_id)
+        if university:
+            return university.popular_courses
+        abort(404)
+
 class AdminUniversityCourseView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -3315,6 +3326,7 @@ api.add_resource(AdminUserView, '/api/admin/users/')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/courses')
+api.add_resource(AdminUniversityPopularCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/popular_courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')

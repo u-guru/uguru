@@ -46,7 +46,7 @@ def admin_statistics_universities():
     final_universities, prepared_info = calcAndSortedPrepared(universities)
 
     full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
-    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 80 and prepared_info[university.id]['percentage'] < 100 and prepared_info[university.id]['percentage'] >= 80 and university.school_mascot_name == None ]
+    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 80 and prepared_info[university.id]['percentage'] < 100 and prepared_info[university.id]['percentage'] >= 80]
     shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50 and prepared_info[university.id]['percentage'] < 80]
     dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
     atleast_fifty_universities = eighty_prepared_universities + shitty_prepared_universities
