@@ -9,6 +9,7 @@
 	-o-backface-visibility: hidden;
 	backface-visibility: hidden;
     -ms-overflow-style: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 *:focus {
 	outline: none;
@@ -1285,7 +1286,7 @@ button.round {
 	font-weight: 600;
 	text-transform: uppercase;
 }
-button.active, button.activated {
+button.active, button.activated, button:active, button:hover, button:focus {
 	@include opacity(.75);
 }
 
@@ -1302,7 +1303,7 @@ button.active, button.activated {
 	text-transform: uppercase;
 	&[class*="btn-ghost-charcoal"] {
 		color: $charcoal;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $charcoal;
 			background: $charcoal;
@@ -1311,7 +1312,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-slate"] {
 		color: $slate;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $slate;
 			background: $slate;
@@ -1320,7 +1321,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-taupe"] {
 		color: $taupe;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $taupe;
 			background: $taupe;
@@ -1329,7 +1330,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-smoke"] {
 		color: $smoke;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $smoke;
 			background: $smoke;
@@ -1338,7 +1339,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-white"] {
 		color: white;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid white;
 			background: white;
@@ -1347,7 +1348,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-cerise"] {
 		color: $cerise;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $cerise;
 			background: $cerise;
@@ -1356,7 +1357,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-orange"] {
 		color: $orange;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $orange;
 			background: $orange;
@@ -1365,7 +1366,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-gold"] {
 		color: $gold;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $gold;
 			background: $gold;
@@ -1374,7 +1375,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-moola"] {
 		color: $moola;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $moola;
 			background: $moola;
@@ -1383,7 +1384,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-shamrock"] {
 		color: $shamrock;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $shamrock;
 			background: $shamrock;
@@ -1392,7 +1393,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-lake"] {
 		color: $lake;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $lake;
 			background: $lake;
@@ -1401,7 +1402,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-azure"] {
 		color: $azure;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $azure;
 			background: $azure;
@@ -1410,7 +1411,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-eggplant"] {
 		color: $eggplant;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $eggplant;
 			background: $eggplant;
@@ -1906,7 +1907,7 @@ button.disabled {
 }
 
 // PROGRESS BARS
-progress, [class*="progress"] {
+progress, div[class*="progress"] {
 	@include transition(.15s ease-in-out);
 	@include appearance;
 	width: 100%;

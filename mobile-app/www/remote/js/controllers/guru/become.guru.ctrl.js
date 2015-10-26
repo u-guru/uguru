@@ -156,7 +156,8 @@ angular.module('uguru.guru.controllers')
       }
 
       else if (index === 2) {
-
+          $ionicSlideBoxDelegate.update();
+          $scope.categories = Category.categories;
         try {
           $interval.cancel(startScanner)
         } catch (err) {
@@ -263,19 +264,25 @@ angular.module('uguru.guru.controllers')
       var progressBarTag = document.getElementById(elemId);
       progressBarTag.style.width = width + 'px';
     }
+    
+    // $scope.$on('$ionicView.loaded', function() {
+    
+    // }, 500);
 
-
-    $scope.$on('$ionicView.beforeEnter', function() {
+    $scope.$on('$ionicView.enter', function() {
+      $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
+      setTimeout(function(){
+          $ionicSlideBoxDelegate.slide(2);
+      }, 1000)
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
-
       if (DeviceService.isIOSDevice()) {
         DeviceService.ios.setStatusBarText($state.current.name);
       }
 
       $timeout(function() {
-
+          
         $scope.initSlideBoxModals();
       }, 500);
 
