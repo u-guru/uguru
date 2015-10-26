@@ -2973,6 +2973,43 @@ class AdminUniversityCourseView(restful.Resource):
             return university.courses
         abort(404)
 
+
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def put(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+        university = University.query.get(uni_id)
+
+        courses = request.json
+        print len(courses)
+        if not request.json:
+            abort(404)
+
+        ## create local version so don't have to query everytime
+        university_courses = university.courses
+
+        def getDbCourse(_id, university_courses):
+            for course in university_courses:
+                if course.id == _id:
+                    return course
+
+        amount_skipped = 0
+        for course in courses:
+            if course.get('id'):
+                course_id = course.get('id')
+                db_course = getDbCourse(course_id, university_courses)
+                if db_course and db_course.id:
+                    db_course.is_popular = True
+                    print db_course.short_name, course.get('short_name'), 'is now popular'
+                else:
+                    amount_skipped += 1
+        print "%s courses out of %s processed & popularized"% (len(courses) - amount_skipped, len(courses))
+
+        return university.popular_courses
+
+
+
+
 class AdminOneUniversityView(restful.Resource):
 
     @marshal_with(AdminUniversitySerializer)
