@@ -3008,12 +3008,21 @@ class AdminUniversityCourseView(restful.Resource):
         for course in courses:
             if course.get('id'):
                 course_id = course.get('id')
-                db_course = getDbCourse(course_id, university_courses)
+                db_course = getDbCourse(int(course_id), university_courses)
                 if db_course and db_course.id:
                     db_course.is_popular = True
+                    if not db_course.short_name:
+                        db_course.short_name = course.get('short_name')
+                    if not db_course.name:
+                        db_course.name = course.get('name')
+                    db_course.times_mentioned = course.get('frequency')
+                    if course.get('pc_variations'):
+                        db_course.variations = " ".join(course.get('pc_variations'))
                     print db_course.short_name, course.get('short_name'), 'is now popular'
                 else:
                     amount_skipped += 1
+        
+        db_session.commit()
         print "%s courses out of %s processed & popularized"% (len(courses) - amount_skipped, len(courses))
 
         return university.popular_courses
