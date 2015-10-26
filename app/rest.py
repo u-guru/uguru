@@ -107,6 +107,15 @@ class UniversityMajorsView(restful.Resource):
         departments = u.departments
         return departments, 200
 
+class UniversityPopularCoursesView(restful.Resource):
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def get(self, _id):
+        u = University.query.get(_id)
+        if not u:
+            abort(404)
+        else:
+            return u.popular_courses, 200
+
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
     def get(self, _id):
@@ -3021,7 +3030,7 @@ class AdminUniversityCourseView(restful.Resource):
                     print db_course.short_name, course.get('short_name'), 'is now popular'
                 else:
                     amount_skipped += 1
-        
+
         db_session.commit()
         print "%s courses out of %s processed & popularized"% (len(courses) - amount_skipped, len(courses))
 
@@ -3320,6 +3329,7 @@ api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(CategoryListView, '/api/v1/categories')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses')
+api.add_resource(UniversityPopularCoursesView, '/api/v1/universities/<int:_id>/popular_courses')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')
