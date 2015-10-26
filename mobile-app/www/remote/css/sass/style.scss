@@ -176,10 +176,10 @@ section {
 		#start-container {
 			font-size: 24px!important;
 		}
-		#skills-list a {
+		#skills-list.onboarding-list a {
 			font-size: 16px!important;
 		}
-		#skills-list .skill-icon {
+		#skills-list.onboarding-list  .skill-icon {
 			margin-bottom: 10px;
 			width: 40px!important;
 			height: 40px!important;
@@ -539,13 +539,9 @@ section {
 						text-align: center;
 						background: $slate;
 						svg {
+							@include svg-stroke(white, 4);
 							display: none;
 							width: 100%;
-							fill: none;
-							stroke: white;
-							stroke-width: 4px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
 						}
 						span {
 							display: block;
@@ -1175,11 +1171,7 @@ section {
 						width: auto;
 						height: 100%;
 						path {
-							fill: none;
-							stroke: $lake;
-							stroke-width: 5px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
+							@include svg-stroke($lake, 5);
 						}
 					}
 				}
@@ -1550,10 +1542,7 @@ section {
 				padding: 15px;
 				width: auto;
 				path, circle {
-					fill: none;
-					stroke-width: 4px;
-					stroke-linecap: round;
-					stroke-linejoin: round;
+					@include svg-stroke-width(3);
 				}
 				circle {
 					stroke-dasharray: 3px, 10px;
@@ -1755,15 +1744,10 @@ section {
 		@include opacity(.5);
 	}
 	svg {
+		@include svg-stroke(white, 4);
 		width: 100%;
 		height: 100%;
 		padding: 8px;
-		fill: none;
-		fill-rule: evenodd;
-		stroke: white;
-		stroke-width: 4px;
-		stroke-linecap: round;
-		stroke-linejoin: round;
 	}
 	&.guru-tabs {
 		svg {
@@ -1842,12 +1826,8 @@ section {
 		margin: 0 auto;
 		height: 50px;
 		svg {
+			@include svg-stroke(white, 6);
 			height: 100%;
-			fill: none;
-			stroke: white;
-			stroke-width: 6px;
-			stroke-linecap: round;
-			stroke-linejoin: round;
 		}
 	}
 	button {
@@ -2504,7 +2484,7 @@ section {
 						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
 		}
 	}
-	#skills-list {
+	#skills-list.onboarding-list  {
 		ul {
 			padding: 1px;
 			height: 100%;
@@ -2679,11 +2659,7 @@ section {
 			height: 18px;
 			padding-right: 5px;
 			path {
-				stroke: white;
-				stroke-width: 10;
-				stroke-linecap: round;
-				stroke-linejoin: round;
-				fill: none;
+				@include svg-stroke(white, 10);
 			}
 		}
 		span {
@@ -2830,15 +2806,11 @@ section {
 					width: 35px;
 					height: 35px;
 					svg {
+						@include svg-stroke(white, 10);
 						@include rotate(45);
 						width: 35px;
 						height: 35px;
 						padding: 10px;
-						fill: none;
-						stroke: white;
-						stroke-width: 10;
-						stroke-linecap: round;
-						stroke-linejoin: round;
 					}
 				}
 			}
@@ -2912,11 +2884,10 @@ section {
 								font-weight: 600!important;
 							}
 							svg {
+								@include svg-stroke-width(3);
 								@include transform-reset;
 								padding: 0;
 								text-align: right;
-								stroke-width: 3px;
-								fill: none;
 							}
 						}
 						.list-item-detail {
@@ -3194,11 +3165,7 @@ section {
 							width: 20px;
 							height: 20px;
 							path {
-								stroke: white;
-								fill: none;
-								stroke-width: 5px;
-								stroke-linecap: round;
-								stroke-linejoin: round;
+								@include svg-stroke(white, 5);
 							}
 						}
 					}
@@ -3224,10 +3191,7 @@ section {
 					height: 50px;
 					padding: 5px;
 					path {
-						fill: none;
-						stroke-width: 5px;
-						stroke-linecap: round;
-						stroke-linejoin: round;
+						@include svg-stroke-width(5);
 					}
 				}
 			}
@@ -3376,13 +3340,9 @@ section {
 						width: 100%;
 						height: 100%;
 						path {
+							@include svg-stroke($charcoal, 3);
 							@include transition(.15s ease-in-out);
 							@include opacity(.2);
-							fill: none;
-							stroke: $charcoal;
-							stroke-width: 3px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
 						}
 					}
 				}
@@ -3417,11 +3377,7 @@ section {
 					width: 50px;
 					height: 50px;
 					path {
-						fill: none;
-						stroke: $bakery;
-						stroke-width: 5px;
-						stroke-linecap: round;
-						stroke-linejoin: round;
+						@include svg-stroke($bakery, 5);
 					}
 				}
 				div:last-child {
@@ -3565,12 +3521,7 @@ section {
 						height: 50px;
 						background: $slate;
 						svg {
-							stroke-linejoin: round;
-							stroke-linecap: round;
-							stroke-width: 4px;
-							stroke: white;
-							fill-rule: even-odd;
-							fill: none;
+							@include svg-stroke(white, 4);
 							width: 100%;
 							height: 100%;
 							padding: 8px;
@@ -3731,9 +3682,8 @@ section {
 								}
 							}
 							svg {
-								fill: none;
+								@include svg-stroke-width(3);
 								padding: 15px;
-								stroke-width: 3px;
 							}
 						}
 					}

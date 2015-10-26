@@ -170,7 +170,7 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.categories = Category.categories;
+    
 
   }
 
