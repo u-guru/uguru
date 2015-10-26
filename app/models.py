@@ -623,7 +623,6 @@ class University(Base):
         )
 
     popular_courses = relationship("Course",
-        uselist = False,
         primaryjoin = "(Course.university_id==University.id) & "\
                         "(Course.is_popular==True)")
 
