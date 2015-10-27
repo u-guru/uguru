@@ -73,8 +73,8 @@ gulp.task('replace', function() {
           replacement: 'adjustPan'
         },
         {
-          match: /Theme.Black.NoTitleBar/g,
-          replacement: 'Theme.Light.NoTitleBar'
+          match: /android:theme="@android:style\/Theme.Black.NoTitleBar/g,
+          replacement: 'android:theme="@android:style/Theme.Translucent.NoTitleBar'
         }
         ]
       }))

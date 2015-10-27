@@ -272,9 +272,9 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.enter', function() {
       $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
-      setTimeout(function(){
-          $ionicSlideBoxDelegate.slide(2);
-      }, 1000)
+    //   setTimeout(function(){
+    //       $ionicSlideBoxDelegate.slide(3);
+    //   }, 1500)
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
       if (DeviceService.isIOSDevice()) {

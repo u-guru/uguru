@@ -36,7 +36,11 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   $scope.LOCAL = LOCAL;
 
   uTracker.setUser(tracker, 'localyticsTest');
-  uTracker.sendDevice(tracker);
+  if(DeviceService.isMobile()) {
+    var deviceObject = DeviceService.getDevice();
+    uTracker.sendDevice(tracker, deviceObject);  
+  }
+  
 
   $scope.universitiesSorted = University.getSorted().slice();
   $scope.universities = $scope.universitiesSorted;
@@ -190,7 +194,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       }, 50);
 
-      University.selectedID = university.id;
+      University.selected = university;
 
       $scope.user.university_id = university.id;
       $scope.user.university = university;

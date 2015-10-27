@@ -296,7 +296,19 @@ angular.module('uguru.util.controllers')
             }
         }
 
+        sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * .80; 
+
         $scope.toggleRightSideMenu = function() {
+            console.log("sideMenuWidth should be: " + sideMenuWidth);
+            var sideMenu = document.querySelectorAll('ion-side-menu')[0];
+
+            if (sideMenu.style.width === (sideMenuWidth + 'px')) {
+                sideMenu.style.width = 0 + 'px';
+            } else {
+                sideMenu.style.width = sideMenuWidth + 'px';    
+            }
+            
+
             $ionicSideMenuDelegate.toggleRight();
             $timeout(function() {
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();

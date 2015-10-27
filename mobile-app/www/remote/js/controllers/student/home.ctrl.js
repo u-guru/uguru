@@ -31,7 +31,9 @@ angular.module('uguru.student.controllers', [])
 
         $ionicSideMenuDelegate.canDragContent(false);
 
+
         var universityColor = $scope.user.university.school_color_one;
+
 
         // $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
         //     scope: $scope,
@@ -164,7 +166,7 @@ angular.module('uguru.student.controllers', [])
             var mapRenderCallback = function() {
                 $scope.universityMapRendered = true;
             }
-            MapService.initStudentHomeMap($scope, mapRenderCallback);
+            // MapService.initStudentHomeMap($scope, mapRenderCallback);
         }
 
 
@@ -174,7 +176,7 @@ angular.module('uguru.student.controllers', [])
             if (!$scope.mapInitialized) {
                 $scope.mapInitialized = true;
                 $timeout(function() {
-                    $scope.initStudentHomeMap();
+                    // $scope.initStudentHomeMap();
                 }, 1000)
             }
 
@@ -186,23 +188,28 @@ angular.module('uguru.student.controllers', [])
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
 
+
+
         })
 
         $scope.$on('$ionicView.afterEnter', function() {
             console.log('after enter');
             $ionicSlideBoxDelegate.update();
+
+
+
         });
 
         $scope.$on('$ionicView.enter', function() {
 
             $scope.loader.hide();
 
-            if (!$scope.mapInitialized && !MapService.studentHomeMap) {
-                $scope.mapInitialized = true;
-                $timeout(function() {
-                    $scope.initStudentHomeMap();
-                }, 1000)
-            }
+            // if (!$scope.mapInitialized && !MapService.studentHomeMap) {
+            //     $scope.mapInitialized = true;
+            //     $timeout(function() {
+            //         $scope.initStudentHomeMap();
+            //     }, 1000)
+            // }
             $timeout(function() {
                 checkOnboardingStatus();
             }, 500);

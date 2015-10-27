@@ -166,7 +166,9 @@ angular.module('uguru.util.controllers')
           $scope.closeLocationModal();
         }
 
-        $scope.$apply();
+        $timeout(function() {
+
+        }, 0);
       }
 
     $scope.queryGooglePlacesOnKeyPress = function() {

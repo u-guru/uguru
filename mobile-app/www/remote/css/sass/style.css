@@ -741,7 +741,6 @@ section {
   background: rgba(255, 255, 255, 0.4) url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center/40px 40px;
 }
 
-<<<<<<< HEAD
 #contact-type #contact-type-list li > div input:checked + span span {
   filter: alpha(opacity=100);
   opacity: 1;
@@ -792,131 +791,6 @@ section {
     background-size: 30px 30px;
   }
 }
-=======
-.home-view {
-  background: white; }
-  .home-view #student-home header {
-    background: rgba(255, 255, 255, 0.75);
-    color: #40484B; }
-    .home-view #student-home header svg path {
-      stroke: #40484B !important; }
-  .home-view #student-home #student-home-map-container, .home-view #student-home #student-home-default-map-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -1;
-    width: 100%;
-    height: 100%; }
-    .home-view #student-home #student-home-map-container div, .home-view #student-home #student-home-default-map-container div {
-      top: -10%;
-      left: -10%;
-      width: 120% !important;
-      height: 120% !important; }
-      .home-view #student-home #student-home-map-container div .student-home-map-label, .home-view #student-home #student-home-default-map-container div .student-home-map-label {
-        display: none !important; }
-  .home-view #student-home #home-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    z-index: 2;
-    height: calc(100% - 150px);
-    width: 100%; }
-    .home-view #student-home #home-content div {
-      width: 100%; }
-      .home-view #student-home #home-content div button {
-        border-radius: 1000px;
-        display: block;
-        margin: 0 auto;
-        width: 150px;
-        height: 150px;
-        font-weight: 600;
-        line-height: 1.2;
-        text-transform: uppercase; }
-      .home-view #student-home #home-content div .bg-lake-80p.activated, .home-view #student-home #home-content div .bg-lake-80p:active {
-        filter: alpha(opacity=100);
-        opacity: 1;
-        background: #50A5DD !important; }
-      .home-view #student-home #home-content div .bg-campus-80p.activated, .home-view #student-home #home-content div .bg-campus-80p:active {
-        filter: alpha(opacity=100);
-        opacity: 1;
-        background: #8A9EA3 !important; }
-    .home-view #student-home #home-content.trending-container {
-      height: calc(100% - 130px); }
-    .home-view #student-home #home-content #trending {
-      width: calc(100% - 30px);
-      margin: 15px; }
-      .home-view #student-home #home-content #trending h1 {
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-align: center;
-        text-transform: uppercase;
-        padding: 15px;
-        background: rgba(43, 50, 52, 0.9); }
-      .home-view #student-home #home-content #trending ul {
-        margin-top: 2px;
-        background: rgba(255, 255, 255, 0.9); }
-        .home-view #student-home #home-content #trending ul li {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          -ms-flex-flow: row wrap;
-          -webkit-flex-flow: row wrap;
-          flex-flow: row wrap;
-          padding: 15px 0; }
-          .home-view #student-home #home-content #trending ul li button {
-            width: 70px;
-            height: 70px;
-            font-size: 14px;
-            padding: 10px; }
-            .home-view #student-home #home-content #trending ul li button svg path {
-              stroke: white; }
-          .home-view #student-home #home-content #trending ul li button + span {
-            display: block;
-            margin-top: 5px;
-            width: 100%;
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            text-transform: uppercase; }
-      .home-view #student-home #home-content #trending ul + button {
-        width: 100%;
-        height: 64px;
-        border-radius: 0;
-        margin-top: 2px; }
->>>>>>> 2050dbfef718e47cb9e231758a9bfe1fdb6c19c4
 
 @media screen and (min-height: 667px) {
   #contact-type #contact-type-list li > div input + span label {
@@ -2652,7 +2526,7 @@ section {
   stroke: #40484B !important;
 }
 
-.home-view #student-home #student-home-map-container {
+.home-view #student-home #student-home-map-container, .home-view #student-home #student-home-default-map-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -2662,14 +2536,14 @@ section {
   height: 100%;
 }
 
-.home-view #student-home #student-home-map-container div {
+.home-view #student-home #student-home-map-container div, .home-view #student-home #student-home-default-map-container div {
   top: -10%;
   left: -10%;
   width: 120% !important;
   height: 120% !important;
 }
 
-.home-view #student-home #student-home-map-container div .student-home-map-label {
+.home-view #student-home #student-home-map-container div .student-home-map-label, .home-view #student-home #student-home-default-map-container div .student-home-map-label {
   display: none !important;
 }
 
@@ -5608,17 +5482,13 @@ body.platform-ios .modal-wrapper .support-modal ion-content {
 
 .android-access-edge-case {
   bottom: 64px;
-<<<<<<< HEAD
   position: absolute;
 }
-=======
-  position: absolute; }
 
 .onboarding-search {
-  padding: 0 10px; }
+  padding: 0 10px;
+}
 
 #university-input {
-  margin: 10px 0px; }
-
-/*# sourceMappingURL=style.css.map */
->>>>>>> 2050dbfef718e47cb9e231758a9bfe1fdb6c19c4
+  margin: 10px 0px;
+}

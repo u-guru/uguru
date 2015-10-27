@@ -7,11 +7,20 @@ angular.module('sharedServices')
     '$ionicSideMenuDelegate',
     '$state',
     'Github',
+    'CardReader',
+    'SocialSharing',
+    'CalendarService',
+    'BadgeService',
+    'AppAvailability',
+    'MediaService',
+    'ToastService',
 	AdminService
 	]);
 
-function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
-    $ionicSideMenuDelegate, $state, Github) {
+function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout, $ionicSideMenuDelegate, 
+    $state, Github, CardReader, SocialSharing, CalendarService, BadgeService, AppAvailability, MediaService,
+    ToastService) {
+
 
 	var adminActionSheet;
     var closeAttachActionSheet;
@@ -62,7 +71,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
         }
         console.log("Admin Exception Options:\n", adminScope.options);
         adminActionSheetOptions = {
-            buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }, {text:'Default Email : <strong>' + adminScope.options.defaultSendEmail +'</strong>' }, {text:'Test Exception Options'}, {text:'Update App from..'}],
+            buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }, {text:'Default Email : <strong>' + adminScope.options.defaultSendEmail +'</strong>' }, {text:'Test Exception Options'}, {text:'Update App from..'}, {text: 'Card Reader'}, {text: 'Share the secret'}, {text: 'Open Calendar'}, {text: 'Display Badge Count'}, {text: 'Clear Badge Count'}, {text: 'Check FB App Availability'}, {text: 'Record Audio (5s)'}, {text: 'Play Audio'}, {text:'Display google maps in app'}, {text: 'Display a toast'}],
             buttonClicked: function(index) {
                 handleAdminSheetButtonClick(adminScope, index);
             }
@@ -229,6 +238,69 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                     Github.setExceptionToGithubIssue(false)
                     DeviceService.checkUpdates(url);
                     break;
+
+                case 9:
+                    if(DeviceService.doesCordovaExist()) {
+                        CardReader.open(); //Only works on Android and IOS
+                    }
+                    break;
+
+                case 10:
+                    if(DeviceService.doesCordovaExist()) {
+                        SocialSharing.open(); //Works on Android, IOS, and Windows. However IOS may be limited to only apps approved by Apple (facebook, twitter, etc.)
+                    }
+                    break;
+
+                case 11:
+                    if(DeviceService.doesCordovaExist()) {
+                        CalendarService.open(); // Works on Android, IOS
+                    }
+                    break;
+
+                case 12:
+                    if(DeviceService.doesCordovaExist()) {
+                        BadgeService.set(5); // Works on Android, IOS, Windows, Amazon
+                    }
+                    break;                
+                    
+                case 13:
+                    if(DeviceService.doesCordovaExist()) {
+                        BadgeService.clear(); // Works on Android, IOS, Windows, Amazon
+                    }
+                    break;
+
+                case 14:
+                    if(DeviceService.doesCordovaExist()) {
+                        AppAvailability.checkFb(); // Works on Android, IOS
+                    }  
+                    break;
+                case 15:
+                    if(DeviceService.doesCordovaExist()) {
+                        MediaService.recordAudio();
+                    }  
+                    break;
+
+                case 16:
+                    if(DeviceService.doesCordovaExist()) {
+                        MediaService.playAudio();   
+                    }  
+                    break;
+
+                case 17:
+                    if(DeviceService.doesCordovaExist()) {
+                        $timeout(function() {
+                            $ionicSideMenuDelegate.toggleRight();
+                        }, 0);
+                        $state.go('^.inappmap');
+                    }  
+                    break;
+
+                case 18:
+                    if(DeviceService.doesCordovaExist()) {
+                        ToastService.show("Nick is so cool!", 'short', 'bottom');
+                    }
+                    break;
+
 
         }
 

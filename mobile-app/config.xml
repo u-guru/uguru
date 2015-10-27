@@ -7,7 +7,7 @@
   <author email="samir@uguru.me" href="http://uguru.me">
       Uguru team
     </author>
-  <content src="index.html"/>
+  <content src="remote/local.index.html"/>
   <access origin="*"/>
   <allow-navigation href="*"/>
   <preference name="orientation" value="portrait"/>
@@ -20,13 +20,15 @@
   <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
   <preference name="StatusBarOverlaysWebView" value="true"/>
   <preference name="StatusBarStyle" value="lightcontent"/>
-  <preference name="CrosswalkAnimatable" value="true"/>
+  <preference name="CrosswalkAnimatable" value="false"/>
+  <preference name="xwalkVersion" value="14+"/>
+  <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect"/>
+  <preference name="xwalkMode" value="embedded"/>
   <platform name="android">
     <preference name="Fullscreen" value="false"/>
     <preference name="android-windowSoftInputMode" value="adjustPan"/>
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="20000"/>
-    <preference name="SplashScreenBackgroundColor" value="#FFFFFF"/>
     <feature name="Camera">
       <param name="android-package" value="org.apache.cordova.camera.CameraLauncher"/>
     </feature>
