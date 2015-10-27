@@ -147,9 +147,10 @@ angular.module('uguru.util.controllers')
       console.log('grabbing majors')
       $scope.search_text.major = '';
 
-      if (University.majors.length > 0) {
+      // if (University.majors.length > 0) {
 
         $scope.majorsSource = University.majors.slice();
+        console.log("majors length: " + $scope.majorsSource.length);
 
         $timeout(function() {
           for(var j = 0; j < $scope.user.majors.length; j++) {
@@ -165,32 +166,32 @@ angular.module('uguru.util.controllers')
         }, 400);
 
         return;
-      }
+      // }
       //$scope.loader.showAmbig("Fetching majors...", 60000);
-      University.getMajors($scope.user.university_id).then(function(majors) {
+      // University.getMajors($scope.user.university_id).then(function(majors) {
 
-        //$scope.loader.hide();
-        University.majors = majors.plain();
-        $scope.majorsSource = majors.plain().slice();
+      //   //$scope.loader.hide();
+      //   University.majors = majors.plain();
+      //   $scope.majorsSource = majors.plain().slice();
 
-        $timeout(function() {
-          for(var j = 0; j < $scope.user.majors.length; j++) {
-            for(var k = 0; k < $scope.majorsSource.length; k++) {
-              if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
-                console.log("Deleting duplicate major found.");
-                  $scope.majorsSource.splice(k, 1);
-              }
-            }
-          }
-          updateDOM();
+      //   $timeout(function() {
+      //     for(var j = 0; j < $scope.user.majors.length; j++) {
+      //       for(var k = 0; k < $scope.majorsSource.length; k++) {
+      //         if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
+      //           console.log("Deleting duplicate major found.");
+      //             $scope.majorsSource.splice(k, 1);
+      //         }
+      //       }
+      //     }
+      //     updateDOM();
 
-        }, 400);
+      //   }, 400);
 
-        $localstorage.setObject('universityMajors', majors.plain());
+      //   $localstorage.setObject('universityMajors', majors.plain());
 
-      },function(err) {
-        console.log("MAJORS NOT FOUND",err);
-      });
+      // },function(err) {
+      //   console.log("MAJORS NOT FOUND",err);
+      // });
     }
 
     if(!$scope.majorsSource) {

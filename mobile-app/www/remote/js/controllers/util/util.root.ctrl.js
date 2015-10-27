@@ -220,29 +220,28 @@ angular.module('uguru.util.controllers')
                 }, 0);
             },
             function() {
-                console.log('Universities NOT successfully loaded');
+                console.log('Courses NOT successfully loaded');
             })
         };
 
 
+        // if ($scope.user.university_id && !(University.majors && University.majors.length)) {
+        //     console.log('University majors not local, requesting now..');
+        //     $timeout(function() {
+        //         $scope.getMajorsForUniversityId($scope.user.university_id);
+        //     }, 0)
+        // } else {
+        //     console.log(University.majors.length, 'majors loaded');
+        // }
 
-        if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-            console.log('University majors not local, requesting now..');
-            $timeout(function() {
-                $scope.getMajorsForUniversityId($scope.user.university_id);
-            }, 0)
-        } else {
-            console.log(University.majors.length, 'majors loaded');
-        }
-
-        if ($scope.user.university_id && !(University.courses && University.courses.length)) {
-            console.log('University courses not local, requesting now..');
-            $timeout(function() {
-                $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-            }, 0)
-        } else {
-            console.log(University.courses.length, 'majors loaded');
-        }
+        // if ($scope.user.university_id && !(University.courses && University.courses.length)) {
+        //     console.log('University courses not local, requesting now..');
+        //     // $timeout(function() {
+        //     //     $scope.getPopularCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
+        //     // }, 0);
+        // } else {
+        //     console.log(University.courses.length, 'majors loaded');
+        // }
 
         if (!Category.categories || Category.categories.length === 0) {
             console.log('Categories not local, loading now..')

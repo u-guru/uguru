@@ -1,11 +1,72 @@
 angular.module('uguru.rest', [])
-.factory('University', ['Restangular', function(Restangular) {
+.factory('University', [
+    '$rootScope',
+    'Restangular', 
+    'cordovaHTTP',
+    '$timeout',
+    function($rootScope, Restangular, cordovaHTTP, $timeout) {
     var University;
     var majors = [];
     var courses = [];
-    var selectedID = null;
+    var popularCourses = [];
     var selected = {};
     University = {
+
+        bgGet: function() {
+
+            cordovaHTTP.get("https://www.uguru.me/api/v1/universities", {
+
+            }, {}, function(response) {
+                console.log(response.status);
+            }, function(response) {
+                console.error(response.error);
+            });
+        },
+
+        bgGetMajors: function(uni_id) {
+            $timeout(function() {
+                var url = "https://www.uguru.me/api/v1/universities/" + uni_id + "/departments";
+                console.log("calling background getMajors: " + url);
+                cordovaHTTP.get(url, {}, {}).then(function(response) {
+                    console.log("bg majors success below!");
+                    majors = response.data;
+                    console.log(response.data);
+                    console.log("major success length: " + majors.length);
+                    $timeout(function() {
+                      console.log("broadcasting schoolChange!");
+                      $rootScope.$emit('schoolChange');
+                    }, 0);
+
+                }, function(response) {
+                    console.log("error in  majors background call");
+                    console.error(response.error);
+                });
+            }, 0);
+            
+        },
+
+        bgGetPopularCourses: function(uni_id) {
+            $timeout(function() {
+                var url = "https://www.uguru.me/api/v1/universities/" + uni_id + "/popular_courses";
+                console.log("calling background getPopularCourses: " + url);
+                cordovaHTTP.get(url, {}, {}).then(function(response) {
+                    popularCourses = response.data;
+                    console.log("bg pop courses success below!");
+                    console.log(response.data);
+                    console.log("pop courses success length: " + popularCourses.length);
+                    $timeout(function() {
+                      console.log("broadcasting schoolChange!");
+                      $rootScope.$emit('schoolChange');
+                    }, 0);
+
+                }, function(response) {
+                    console.log("error in courses background call");
+                    console.error(response.error);
+                });
+            }, 0);
+            
+        },
+
         get: function() {
             return Restangular
                 .one('universities').get();
@@ -13,6 +74,10 @@ angular.module('uguru.rest', [])
         getMajors: function(uni_id) {
             return Restangular
                 .one('universities', uni_id).customGET('departments');
+        },
+        getPopularCourses: function(uni_id) {
+            return Restangular
+                .one('universities', uni_id).customGET('popular_courses');
         },
         getCourses: function(uni_id) {
             return Restangular
@@ -38,10 +103,10 @@ angular.module('uguru.rest', [])
             return sortByRank(targettedUniversities);
         },
         majors: majors,
-        courses: majors,
+        courses: courses,
+        popularCourses: popularCourses,
         hasNoMajors:hasNoMajors,
         hasNoCourses:hasNoCourses,
-        selectedID: selectedID,
         selected: selected
 
     };

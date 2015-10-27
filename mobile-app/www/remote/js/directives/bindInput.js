@@ -15,7 +15,7 @@ angular.module('uguru.directives')
 			case 'courses':
 				model = 'search_text.course';
 				refreshModel = 'refresh.courses';
-				property = ['title', 'name'];
+				property = ['title', 'name', 'variations'];
 				break;
 		}
 

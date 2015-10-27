@@ -187,9 +187,10 @@ angular.module('uguru.util.controllers')
 
       $scope.search_text.course = '';
 
-      if (University.courses.length > 0) {
+      // if (University.popularCourses.length > 0) {
 
-        $scope.coursesSource = University.courses.slice();
+        $scope.coursesSource = University.popularCourses.slice();
+        console.log("courses length: " + $scope.coursesSource.length);
 
         $timeout(function() {
           for(var j = 0; j < $scope.user.guru_courses.length; j++) {
@@ -205,44 +206,67 @@ angular.module('uguru.util.controllers')
         }, 400);
 
         return;
-      }
+      
+      // } else {
+
+        // University.getPopularCourses(University.selected.id).then(function(courses) {
+
+        //     University.popularCourses = courses.plain();
+        //     $scope.coursesSource = courses.plain().slice();
+
+        //     $timeout(function() {
+        //       for (var j = 0; j < $scope.user.guru_courses.length; j++) {
+        //         for (var k = 0; k < $scope.coursesSource.length; k++) {
+        //           if ($scope.coursesSource[k].id === $scope.user.guru_courses[j].id) {
+        //             console.log("Deleting duplicate course found.");
+        //             $scope.coursesSource.splice(k, 1);
+        //           }
+        //         }
+        //       }
+        //       updateDOM();
+            
+        //     }, 400); 
+
+        //     $localstorage.setObject('universityCourses', courses.plain());
+        //     console.log("$scope.coursesSource.length: " + $scope.coursesSource.length);
+        // }, function(err) {
+        //   console.log("Courses not found: " + err);
+        // });
+
+      // }
 
 
-      //$scope.loader.showAmbig("Fetching courses...", 60000);
-      University.getCourses($scope.user.university_id).then(function(courses) {
+      // //$scope.loader.showAmbig("Fetching courses...", 60000);
+      // University.getCourses($scope.user.university_id).then(function(courses) {
 
-        University.courses = courses;
-        $scope.coursesSource = courses.plain().slice();
+      //   University.courses = courses;
+      //   $scope.coursesSource = courses.plain().slice();
 
-        $timeout(function() {
-          for(var j = 0; j < $scope.user.guru_courses.length; j++) {
-            for(var k = 0; k < $scope.coursesSource.length; k++) {
-              if($scope.coursesSource[k].id === $scope.user.guru_courses[j].id) {
-                console.log("Deleting duplicate course found.");
-                  $scope.coursesSource.splice(k, 1);
-              }
-            }
-          }
-          updateDOM();
+      //   $timeout(function() {
+      //     for(var j = 0; j < $scope.user.guru_courses.length; j++) {
+      //       for(var k = 0; k < $scope.coursesSource.length; k++) {
+      //         if($scope.coursesSource[k].id === $scope.user.guru_courses[j].id) {
+      //           console.log("Deleting duplicate course found.");
+      //             $scope.coursesSource.splice(k, 1);
+      //         }
+      //       }
+      //     }
+      //     updateDOM();
 
+      //   }, 400);
 
-        }, 400);
+      //   $localstorage.setObject('universityCourses', courses.plain());
+      //   //$scope.loader.hide();
+      //   console.log("$scope.coursesSources.length: " + $scope.coursesSource.length);
+      // },function(err) {
 
+      //   console.log("COURSES NOT FOUND",err);
 
-        $localstorage.setObject('universityCourses', courses.plain());
-
-
-        //$scope.loader.hide();
-
-        console.log("$scope.coursesSources.length: " + $scope.coursesSource.length);
-      },function(err) {
-
-        console.log("MAJORS NOT FOUND",err);
-
-      });
+      // });
     }
 
     if(!$scope.coursesSource) {
+
       if($scope.data.courses) {
         console.log("setting coursesSource with root scope data");
         // $scope.coursesSource = $scope.data.courses;

@@ -39,6 +39,9 @@ if [ $# == 1 ];
 		cordova plugin add cordova-plugin-calendar
 		cordova plugin add cordova-plugin-appavailability
 		cordova plugin add cordova-plugin-x-toast
+		
+		cordova plugin add https://github.com/wymsee/cordova-HTTP.git
+
 		cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"		
 		cordova plugin add https://bitbucket.org/uguru-nick/de.appplant.cordova.plugin.badge
 
@@ -54,7 +57,6 @@ if [ $# == 1 ];
 		cp ./build_settings_android/MainActivity.java platforms/android/src/com/beta/college/Uguru/
 
 		printf "\e[0;36mFinished building. \e[0m\n"
-		return
 
 	fi
 

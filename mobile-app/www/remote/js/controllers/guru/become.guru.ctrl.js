@@ -81,6 +81,10 @@ angular.module('uguru.guru.controllers')
       clearAllSearchInputs();
 
       if (index === 0) {
+        $timeout(function() {
+          console.log("broadcasting schoolChange!");
+          $rootScope.$emit('schoolChange');
+        }, 0);
 
         uTracker.track(tracker, 'Become Guru: Majors');
 
@@ -115,6 +119,10 @@ angular.module('uguru.guru.controllers')
       }
 
       else if (index === 1) {
+        $timeout(function() {
+          console.log("broadcasting schoolChange!");
+          $rootScope.$emit('schoolChange');
+        }, 0);
 
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");

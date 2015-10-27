@@ -161,10 +161,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
             }, 1250)
           }
 
-          $timeout(function() {
-            console.log("broadcasting schoolChange!");
-            $rootScope.$emit('schoolChange');
-          }, 0);
+          // $timeout(function() {
+          //   console.log("broadcasting schoolChange!");
+          //   $rootScope.$emit('schoolChange');
+          // }, 0);
 
           uTracker.track(tracker, "University Changed", {
               "$University": university.name,
@@ -187,12 +187,25 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       University.majors = [];
       University.courses = [];
-      $timeout(function() {
+      University.popularCourses = [];
 
-        $scope.getCoursesForUniversityId(university.id);
-        $scope.getMajorsForUniversityId(university.id);
 
-      }, 50);
+      University.bgGetMajors(university.id);
+      University.bgGetPopularCourses(university.id);
+
+      // $timeout(function() {
+        
+      //   University.getPopularCourses(university.id).then(function(courses) {
+      //     University.popularCourses = courses.plain();
+      //     console.log(courses.plain().length + ' popular courses retrieved for university_id: ' + university.id)
+
+      //   }, function(err) {
+      //     console.log("Error loading popular courses: " + err);
+      //   });
+
+      //   // $scope.getMajorsForUniversityId(university.id);
+
+      // }, 50);
 
       University.selected = university;
 
