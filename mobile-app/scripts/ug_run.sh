@@ -7,7 +7,7 @@ if [ $# == 0 ];
 fi
 
 
-if [ $# == 1 ];
+if [ $# -ge 1 ];
 	then platform="$1";
 	printf "\n"
 	printf '\e[0;36mPlease make sure to call ug build <platform> before running this command. \n'
