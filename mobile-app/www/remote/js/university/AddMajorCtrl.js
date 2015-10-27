@@ -193,19 +193,25 @@ angular.module('uguru.util.controllers')
       });
     }
 
-    if(!$scope.majorsSource) {
-      getMajorsBecomeGuru();
-    }
+    $timeout(function() {
+
+      $scope.majors = [];
+      if(!$scope.majorsSource) {
+        $timeout(function() {
+          getMajorsBecomeGuru();
+        }, 500)
+      }
 
 
-    $rootScope.$on('schoolChange', function(event) {
-      console.log("majors: heard schoolChange event!");
-      $scope.user.majors.splice(0, $scope.user.majors.length);
-      getMajorsBecomeGuru();
+      $rootScope.$on('schoolChange', function(event) {
+        console.log("majors: heard schoolChange event!");
+        $timeout(function() {
+          $scope.user.majors.splice(0, $scope.user.majors.length);
+          getMajorsBecomeGuru();
+        }, 500)
+      });
 
-    });
-
-
+    }, 1250);
 
 
   }

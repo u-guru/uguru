@@ -128,6 +128,7 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.goToBecomeGuru = function() {
+            $scope.loader.showAmbig();
             $ionicSlideBoxDelegate.update();
 
             //uTracker.track(tracker, 'Become Guru');
@@ -173,9 +174,9 @@ angular.module('uguru.student.controllers', [])
             $scope.root.vars.guru_mode = false;
             if (!$scope.mapInitialized) {
                 $scope.mapInitialized = true;
-                $timeout(function() {
-                    $scope.initStudentHomeMap();
-                }, 1000)
+                // $timeout(function() {
+                //     $scope.initStudentHomeMap();
+                // }, 1000)
             }
 
         })
@@ -197,12 +198,12 @@ angular.module('uguru.student.controllers', [])
 
             $scope.loader.hide();
 
-            if (!$scope.mapInitialized && !MapService.studentHomeMap) {
-                $scope.mapInitialized = true;
-                $timeout(function() {
-                    $scope.initStudentHomeMap();
-                }, 1000)
-            }
+            // if (!$scope.mapInitialized && !MapService.studentHomeMap) {
+            //     $scope.mapInitialized = true;
+            //     $timeout(function() {
+            //         $scope.initStudentHomeMap();
+            //     }, 1000)
+            // }
             $timeout(function() {
                 checkOnboardingStatus();
             }, 500);

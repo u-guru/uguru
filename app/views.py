@@ -417,6 +417,18 @@ def admin_view_campaigns_product():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.product.html")
 
+@app.route('/admin/competition/')
+def admin_competition_team():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin.investors.competition.html")
+
+@app.route('/admin/biz-model/')
+def admin_business_model():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin.investors.business-model.html")
+
 @app.route('/admin/i/competition/')
 def admin_investors_competition():
     if not session.get('admin'):
@@ -499,17 +511,17 @@ def admin_requests():
     return render_template('admin/student.requests.html', requests=student_requests[::-1])
 
 
-@app.route('/admin/campaigns/scheduled/')
-def admin_scheduled():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    return render_template("admin/scheduled-campaigns.html")
+# @app.route('/admin/campaigns/scheduled/')
+# def admin_scheduled():
+#     if not session.get('admin'):
+#         return redirect(url_for('admin_login'))
+#     return render_template("admin/scheduled-campaigns.html")
 
-@app.route('/admin/campaigns/<campaign_name>/')
-def admin_one_campaign(campaign_name):
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    return render_template("admin/one_campaign.html", tag_name=campaign_name)
+# @app.route('/admin/campaigns/<campaign_name>/')
+# def admin_one_campaign(campaign_name):
+#     if not session.get('admin'):
+#         return redirect(url_for('admin_login'))
+#     return render_template("admin/one_campaign.html", tag_name=campaign_name)
 
 @app.route('/admin/coming-soon/')
 def admin_coming_soon():
@@ -573,20 +585,6 @@ def admin_expectations():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.team-expectations.html", team=[])
-
-@app.route('/admin/team/project/')
-def admin_team():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    return render_template("admin/team-project-items.html", team=[])
-
-# @app.route('/admin/team/action/')
-# def admin_team():
-#     if not session.get('admin'):
-#         return redirect(url_for('admin_login'))
-#     return render_template("admin/team-action-items.html", team=[])
-
-
 
 @app.route('/admin/design/guidelines/')
 def admin_design_guidelines():

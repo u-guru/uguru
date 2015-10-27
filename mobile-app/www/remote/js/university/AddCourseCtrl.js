@@ -242,31 +242,44 @@ angular.module('uguru.util.controllers')
       });
     }
 
-    if(!$scope.coursesSource) {
-      if($scope.data.courses) {
-        console.log("setting coursesSource with root scope data");
-        // $scope.coursesSource = $scope.data.courses;
-      } else {
-        console.log("couldn't find course data thru root scope, so calling manually via CourseCtrl");
-        getCoursesBecomeGuru();
-      }
-
-    }
 
 
 
-    $rootScope.$on('schoolChange', function(event) {
-      console.log("courses: heard schoolChange event!");
-      $scope.user.guru_courses.splice(0, $scope.user.guru_courses.length);
-      getCoursesBecomeGuru();
+    $timeout(function() {
 
-    });
+      if(!$scope.coursesSource) {
+          if($scope.data.courses) {
+            console.log("setting coursesSource with root scope data");
+            // $scope.coursesSource = $scope.data.courses;
+          } else {
+            console.log("couldn't find course data thru root scope, so calling manually via CourseCtrl");
+            $timeout(function() {
+              getCoursesBecomeGuru();
+            }, 500)
+          }
 
-    $rootScope.$on('refreshCourses', function(event) {
-      console.log("courses: heard refreshCourses event!");
-      getCoursesBecomeGuru();
+        }
 
-    });
+
+
+      $rootScope.$on('schoolChange', function(event) {
+
+          $scope.user.guru_courses.splice(0, $scope.user.guru_courses.length);
+
+          getCoursesBecomeGuru();
+
+      });
+
+      $rootScope.$on('refreshCourses', function(event) {
+        console.log("courses: heard refreshCourses event!");
+        $timeout(function() {
+          getCoursesBecomeGuru();
+        }, 500);
+
+      });
+
+
+    }, 0);
 
 
 

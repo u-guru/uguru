@@ -28,13 +28,20 @@ if [ $# == 1 ];
 		./scripts/ug_release.sh ios
 		# ugbi --> install the necessary cordova plugins
 		# ugbri --> build a release version
-		# cd ../platforms/ios
-		# fastlane init --> initialize fastlane repository
-		## -- may need to open xcode && sign provision profile
-		# gym -- builds to ipad file
-		# cert --creates
-		# deliver
-		# ============================================
+		cd platforms/ios
+		fastlane init
+		# y
+		# y
+		# com.Uguru.Uguru
+		# makhani@berkeley.edu
+		# y --> setup deliver
+		# n
+		# cert
+		# gym -i Z3H2887UC4.cer -e AppStore_com.Uguru.Uguru.mobileprovision
+
+		#
+		# todo
+		#
 
 		# Insert Apple Devloper API here
 
