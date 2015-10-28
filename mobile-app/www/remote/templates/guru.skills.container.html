@@ -1,4 +1,23 @@
-<section id="skill" class="onboarding full-xy">
+<main id="desktop-skills" class="desktop-mode desktop-search desktop-guru-onboarding" ng-show='isDesktopMode()'>
+	<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+	<div class="main default">
+		<div id="skills-list" class="desktop-search-list">
+			<ul class='desktop-card-list'>
+    			<li ng-repeat='category in categories'>
+    				<a class='skill-item-link bg-{{category.hex_color.split("-")[1]}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)' style='background-image :url({{categories_img_base + category.background_url}})'>
+                        <div>
+                            <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
+                            <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
+                            <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
+                        </div>
+                    </a>
+    			</li>
+			</ul>
+		</div>
+    </div>
+</main>
+
+<section id="skill" class="onboarding full-xy" ng-show='!isDesktopMode()'>
     <header id="category-skills" class="third flex-center" ng-if='!guruSkillsModal.isShown()'>
         <div class="header-nav">
             <a class="header-nav-back" ng-click='previousSlide()'>
@@ -30,12 +49,12 @@
         <ul class='list list-item-half flex-wrap'>
             <li ng-repeat='category in categories' style='background:url({{categories_img_base + category.background_url}})'>
                 <a class='skill-item-link bg-{{category.hex_color.split("-")[1]}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
-                    <img='background:url({{category.icon_url}})'>
-                        <div>
-                            <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
-                            <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
-                            <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
-                        </div>
+                    <img='background:url({{category.icon_url}})'/>
+                    <div>
+                        <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
+                        <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
+                        <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
+                    </div>
                 </a>
             </li>
         </ul>

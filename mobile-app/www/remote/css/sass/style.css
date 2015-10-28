@@ -189,9 +189,9 @@ section {
     font-size: 20px; }
   .uguru-view #start-container {
     font-size: 24px !important; }
-  .uguru-view #skills-list a {
+  .uguru-view #skills-list.onboarding-list a {
     font-size: 16px !important; }
-  .uguru-view #skills-list .skill-icon {
+  .uguru-view #skills-list.onboarding-list .skill-icon {
     margin-bottom: 10px;
     width: 40px !important;
     height: 40px !important; }
@@ -549,13 +549,13 @@ section {
             text-align: center;
             background: #40484B; }
             #contact-type #contact-type-list li > div input + span label svg {
-              display: none;
-              width: 100%;
               fill: none;
               stroke: white;
               stroke-width: 4px;
               stroke-linecap: round;
-              stroke-linejoin: round; }
+              stroke-linejoin: round;
+              display: none;
+              width: 100%; }
             #contact-type #contact-type-list li > div input + span label span {
               display: block; }
           #contact-type #contact-type-list li > div input + span > span {
@@ -1409,7 +1409,7 @@ section {
         width: auto; }
         .side-menu-list .list-item .list-item-icon svg path, .side-menu-list .list-item .list-item-icon svg circle {
           fill: none;
-          stroke-width: 4px;
+          stroke-width: 3px;
           stroke-linecap: round;
           stroke-linejoin: round; }
         .side-menu-list .list-item .list-item-icon svg circle {
@@ -1558,15 +1558,14 @@ section {
     filter: alpha(opacity=50);
     opacity: 0.5; }
   .tabs svg {
-    width: 100%;
-    height: 100%;
-    padding: 8px;
     fill: none;
-    fill-rule: evenodd;
     stroke: white;
     stroke-width: 4px;
     stroke-linecap: round;
-    stroke-linejoin: round; }
+    stroke-linejoin: round;
+    width: 100%;
+    height: 100%;
+    padding: 8px; }
   .tabs.guru-tabs svg {
     stroke: white; }
   .tabs.student-tabs svg {
@@ -1666,12 +1665,12 @@ section {
     margin: 0 auto;
     height: 50px; }
     .how-it-works-view .header-up svg {
-      height: 100%;
       fill: none;
       stroke: white;
       stroke-width: 6px;
       stroke-linecap: round;
-      stroke-linejoin: round; }
+      stroke-linejoin: round;
+      height: 100%; }
   .how-it-works-view button {
     bottom: 0;
     background: rgba(255, 255, 255, 0.1); }
@@ -1824,7 +1823,7 @@ section {
     color: #40484B; }
     .home-view #student-home header svg path {
       stroke: #40484B !important; }
-  .home-view #student-home #student-home-map-container {
+  .home-view #student-home #student-home-map-container, .home-view #student-home #student-home-default-map-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -1832,12 +1831,12 @@ section {
     z-index: -1;
     width: 100%;
     height: 100%; }
-    .home-view #student-home #student-home-map-container div {
+    .home-view #student-home #student-home-map-container div, .home-view #student-home #student-home-default-map-container div {
       top: -10%;
       left: -10%;
       width: 120% !important;
       height: 120% !important; }
-      .home-view #student-home #student-home-map-container div .student-home-map-label {
+      .home-view #student-home #student-home-map-container div .student-home-map-label, .home-view #student-home #student-home-default-map-container div .student-home-map-label {
         display: none !important; }
   .home-view #student-home #home-content {
     position: absolute;
@@ -2227,13 +2226,13 @@ section {
   background: #2B3234; }
   .skills-view header::before {
     background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
-  .skills-view #skills-list ul {
+  .skills-view #skills-list.onboarding-list ul {
     padding: 1px;
     height: 100%; }
-    .skills-view #skills-list ul li {
+    .skills-view #skills-list.onboarding-list ul li {
       height: 25%;
       border: 1px solid #2B3234; }
-      .skills-view #skills-list ul li a {
+      .skills-view #skills-list.onboarding-list ul li a {
         -ms-box-orient: horizontal;
         display: -webkit-box;
         display: -moz-box;
@@ -2258,20 +2257,20 @@ section {
         font-weight: 400;
         line-height: 24px;
         text-align: center; }
-        .skills-view #skills-list ul li a div {
+        .skills-view #skills-list.onboarding-list ul li a div {
           position: relative;
           z-index: 9; }
-        .skills-view #skills-list ul li a .skill-label {
+        .skills-view #skills-list.onboarding-list ul li a .skill-label {
           display: block;
           width: 100%;
           font-weight: 600;
           line-height: 1.25; }
-        .skills-view #skills-list ul li a .skill-count {
+        .skills-view #skills-list.onboarding-list ul li a .skill-count {
           display: block;
           font-size: 12px;
           line-height: 1.25;
           text-transform: uppercase; }
-    .skills-view #skills-list ul [class*="bg-"]::after {
+    .skills-view #skills-list.onboarding-list ul [class*="bg-"]::after {
       filter: alpha(opacity=70);
       opacity: 0.7;
       position: absolute;
@@ -2280,21 +2279,21 @@ section {
       height: 100%;
       left: 0;
       top: 0; }
-    .skills-view #skills-list ul .bg-cerise.important::after {
+    .skills-view #skills-list.onboarding-list ul .bg-cerise.important::after {
       background: #DB1988; }
-    .skills-view #skills-list ul .bg-orange.important::after {
+    .skills-view #skills-list.onboarding-list ul .bg-orange.important::after {
       background: #E5753C; }
-    .skills-view #skills-list ul .bg-gold.important::after {
+    .skills-view #skills-list.onboarding-list ul .bg-gold.important::after {
       background: #F9D57B; }
-    .skills-view #skills-list ul .bg-moola.important::after {
+    .skills-view #skills-list.onboarding-list ul .bg-moola.important::after {
       background: #81B566; }
-    .skills-view #skills-list ul .bg-shamrock.important::after {
+    .skills-view #skills-list.onboarding-list ul .bg-shamrock.important::after {
       background: #69B3A5; }
-    .skills-view #skills-list ul .bg-azure.important::after {
+    .skills-view #skills-list.onboarding-list ul .bg-azure.important::after {
       background: #55A4B7; }
-    .skills-view #skills-list ul .bg-lake.important::after {
+    .skills-view #skills-list.onboarding-list ul .bg-lake.important::after {
       background: #50A5DD; }
-    .skills-view #skills-list ul .bg-eggplant.important::after {
+    .skills-view #skills-list.onboarding-list ul .bg-eggplant.important::after {
       background: #9A5BC5; }
 
 .photo-view {
@@ -2405,11 +2404,11 @@ section {
       height: 18px;
       padding-right: 5px; }
       .guru-profile-view .round svg path {
+        fill: none;
         stroke: white;
-        stroke-width: 10;
+        stroke-width: 10px;
         stroke-linecap: round;
-        stroke-linejoin: round;
-        fill: none; }
+        stroke-linejoin: round; }
     .guru-profile-view .round span {
       line-height: 18px; }
   .guru-profile-view #profile-desc .profile-slider {
@@ -2560,6 +2559,11 @@ section {
         width: 35px;
         height: 35px; }
         .guru-profile-view #profile-info .profile-inside li .remove svg {
+          fill: none;
+          stroke: white;
+          stroke-width: 10px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
           -webkit-transform: rotate(45deg);
           -moz-transform: rotate(45deg);
           -ms-transform: rotate(45deg);
@@ -2567,12 +2571,7 @@ section {
           transform: rotate(45deg);
           width: 35px;
           height: 35px;
-          padding: 10px;
-          fill: none;
-          stroke: white;
-          stroke-width: 10;
-          stroke-linecap: round;
-          stroke-linejoin: round; }
+          padding: 10px; }
     .guru-profile-view #profile-info .profile-inside .profile-list {
       list-style: none;
       margin: 0;
@@ -2629,15 +2628,17 @@ section {
           margin-bottom: 2px;
           font-weight: 600 !important; }
         .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a span svg {
+          fill: none;
+          stroke-width: 3px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
           -webkit-transform: none;
           -moz-transform: none;
           -ms-transform: none;
           -o-transform: none;
           transform: none;
           padding: 0;
-          text-align: right;
-          stroke-width: 3px;
-          fill: none; }
+          text-align: right; }
       .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a .list-item-detail {
         width: calc(100% - 35px); }
       .guru-profile-view #profile-info .profile-inside #profile-other #profile-experiences a .list-item-icon {
@@ -2859,8 +2860,8 @@ section {
             width: 20px;
             height: 20px; }
             .photo-guru-profile-view #profile-gallery section .gallery-desc .gallery-loc span svg path {
-              stroke: white;
               fill: none;
+              stroke: white;
               stroke-width: 5px;
               stroke-linecap: round;
               stroke-linejoin: round; }
@@ -3048,18 +3049,18 @@ section {
             width: 100%;
             height: 100%; }
             .bakery-guru-profile-view #profile-nav ul li a svg path {
+              fill: none;
+              stroke: #2B3234;
+              stroke-width: 3px;
+              stroke-linecap: round;
+              stroke-linejoin: round;
               -webkit-transition: all 0.15s ease-in-out;
               -o-transition: all 0.15s ease-in-out;
               -ms-transition: all 0.15s ease-in-out;
               -moz-transition: all 0.15s ease-in-out;
               transition: all 0.15s ease-in-out;
               filter: alpha(opacity=20);
-              opacity: 0.2;
-              fill: none;
-              stroke: #2B3234;
-              stroke-width: 3px;
-              stroke-linecap: round;
-              stroke-linejoin: round; }
+              opacity: 0.2; }
         .bakery-guru-profile-view #profile-nav ul li a.active svg, .bakery-guru-profile-view #profile-nav ul li a:active svg, .bakery-guru-profile-view #profile-nav ul li a:hover svg {
           background: rgba(43, 50, 52, 0.2); }
           .bakery-guru-profile-view #profile-nav ul li a.active svg path, .bakery-guru-profile-view #profile-nav ul li a:active svg path, .bakery-guru-profile-view #profile-nav ul li a:hover svg path {
@@ -3244,12 +3245,11 @@ section {
           height: 50px;
           background: #40484B; }
           .credibility-view #credit-slider ul li a .credit-icon svg {
-            stroke-linejoin: round;
-            stroke-linecap: round;
-            stroke-width: 4px;
-            stroke: white;
-            fill-rule: even-odd;
             fill: none;
+            stroke: white;
+            stroke-width: 4px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
             width: 100%;
             height: 100%;
             padding: 8px; }
@@ -3366,8 +3366,10 @@ section {
             font-weight: 400; }
           .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body li a svg {
             fill: none;
-            padding: 15px;
-            stroke-width: 3px; }
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            padding: 15px; }
 
 @media screen and (min-width: 375px) {
   .credibility-view #credit-slider ul li {
@@ -3953,5 +3955,11 @@ body.platform-ios {
 .android-access-edge-case {
   bottom: 64px;
   position: absolute; }
+
+.onboarding-search {
+  padding: 0 10px; }
+
+#university-input {
+  margin: 10px 0px; }
 
 /*# sourceMappingURL=style.css.map */

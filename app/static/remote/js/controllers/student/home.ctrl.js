@@ -31,7 +31,7 @@ angular.module('uguru.student.controllers', [])
 
         $ionicSideMenuDelegate.canDragContent(false);
 
-
+        var universityColor = $scope.user.university.school_color_one;
 
         // $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
         //     scope: $scope,
@@ -161,10 +161,13 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.initStudentHomeMap = function() {
-            MapService.initStudentHomeMap($scope.user);
+            var mapRenderCallback = function() {
+                $scope.universityMapRendered = true;
+            }
+            MapService.initStudentHomeMap($scope, mapRenderCallback);
         }
 
-        console.log($scope.user);
+
         $scope.$on('$ionicView.loaded', function() {
 
             $scope.root.vars.guru_mode = false;
@@ -178,7 +181,7 @@ angular.module('uguru.student.controllers', [])
         })
 
         $scope.$on('$ionicView.beforeEnter', function() {
-
+            $scope.universityMapRendered = false;
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
@@ -197,7 +200,7 @@ angular.module('uguru.student.controllers', [])
             if (!$scope.mapInitialized && !MapService.studentHomeMap) {
                 $scope.mapInitialized = true;
                 $timeout(function() {
-                    // $scope.initStudentHomeMap();
+                    $scope.initStudentHomeMap();
                 }, 1000)
             }
             $timeout(function() {

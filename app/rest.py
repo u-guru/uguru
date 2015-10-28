@@ -107,6 +107,15 @@ class UniversityMajorsView(restful.Resource):
         departments = u.departments
         return departments, 200
 
+class UniversityPopularCoursesView(restful.Resource):
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def get(self, _id):
+        u = University.query.get(_id)
+        if not u:
+            abort(404)
+        else:
+            return u.popular_courses, 200
+
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
     def get(self, _id):
@@ -2956,6 +2965,17 @@ class AdminDevicePushTestView(restful.Resource):
 
         return jsonify(success=[True])
 
+class AdminUniversityPopularCourseView(restful.Resource):
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def get(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        university = University.query.get(uni_id)
+        if university:
+            return university.popular_courses
+        abort(404)
+
 class AdminUniversityCourseView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -2972,6 +2992,52 @@ class AdminUniversityCourseView(restful.Resource):
         if university:
             return university.courses
         abort(404)
+
+
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def put(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+        university = University.query.get(uni_id)
+
+        courses = request.json
+        print len(courses)
+        if not request.json:
+            abort(404)
+
+        ## create local version so don't have to query everytime
+        university_courses = university.courses
+
+        def getDbCourse(_id, university_courses):
+            for course in university_courses:
+                if course.id == _id:
+                    return course
+
+        amount_skipped = 0
+        for course in courses:
+            if course.get('id'):
+                course_id = course.get('id')
+                db_course = getDbCourse(int(course_id), university_courses)
+                if db_course and db_course.id:
+                    db_course.is_popular = True
+                    if not db_course.short_name:
+                        db_course.short_name = course.get('short_name')
+                    if not db_course.name:
+                        db_course.name = course.get('name')
+                    db_course.times_mentioned = course.get('frequency')
+                    if course.get('pc_variations'):
+                        db_course.variations = " ".join(course.get('pc_variations'))
+                    print db_course.short_name, course.get('short_name'), 'is now popular'
+                else:
+                    amount_skipped += 1
+
+        db_session.commit()
+        print "%s courses out of %s processed & popularized"% (len(courses) - amount_skipped, len(courses))
+
+        return university.popular_courses
+
+
+
 
 class AdminOneUniversityView(restful.Resource):
 
@@ -3263,6 +3329,7 @@ api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(CategoryListView, '/api/v1/categories')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses')
+api.add_resource(UniversityPopularCoursesView, '/api/v1/universities/<int:_id>/popular_courses')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')
@@ -3278,6 +3345,7 @@ api.add_resource(AdminUserView, '/api/admin/users/')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/courses')
+api.add_resource(AdminUniversityPopularCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/popular_courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')

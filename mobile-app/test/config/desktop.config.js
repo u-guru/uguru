@@ -1,3 +1,4 @@
+<<<<<<< HEAD:mobile-app/test/config/desktop.config.js
 var IP = '192.168.0.101'
 // var str = ['1920x1080','1366x768','1280x1024','1280x800' ,'1024x768', '1440x900', '1600x900', '1680x1050', '1920x1200', '1360x768','320×480','320×568','375×667','414×736']
 var str = ['426x320','320×480','320×568','375×667','414×736','470x320']
@@ -18,6 +19,9 @@ for(var i = 0 ; i < str.length; ++ i)
 
 var device = 'desktop'
 
+=======
+var IP = '192.168.0.113'
+>>>>>>> 4aa967f5479119b1b93e4d30b346a328a52e3990:mobile-app/test/config/web.config.js
 exports.config = {
     framework: 'jasmine2',
      seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -44,31 +48,35 @@ exports.config = {
         //   // search :     ['../test_case/Release_One_Web/homepage/search_box.js'],
         //    // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
         //   //team : '../test_case/Release_One_Web/team/team.js',
-          
+
         // },
         specs:
         [
+<<<<<<< HEAD:mobile-app/test/config/desktop.config.js
           // '../e2e/workflows/workflow#*.js',    
           '../e2e/desktop/access/accesscode.js',    
 
+=======
+          '../e2e/workflows/workflow#*.js',
+>>>>>>> 4aa967f5479119b1b93e4d30b346a328a52e3990:mobile-app/test/config/web.config.js
         ],
           suites:
         {
             access: ['../e2e/access/*Spec.js'],
-            
+
             university: [
                          '../test_case/mobileTest/workflows/access.js',
                          '../e2e/university/universitySpec.js'
                         ],
-            home : 
+            home :
                   [
                     '../test_case/mobileTest/workflows/access.js',
-                    '../test_case/mobileTest/workflows/university.js', 
+                    '../test_case/mobileTest/workflows/university.js',
                     '../e2e/workflows/home.js',
                   ],
             sign:   [
                    '../test_case/mobileTest/workflows/access.js',
-                   '../test_case/mobileTest/workflows/university.js', 
+                   '../test_case/mobileTest/workflows/university.js',
                    // '../test_case/mobileTest/sidemenu/sidemenu.js',
                       // '../test_case/mobileTest/guruProfile/home.js',
                       '../test_case/mobileTest/sidemenu/signup.js'
@@ -76,35 +84,35 @@ exports.config = {
 
             side:   [
                       // '../test_case/mobileTest/workflows/access.js',
-                      // '../test_case/mobileTest/workflows/university.js', 
+                      // '../test_case/mobileTest/workflows/university.js',
                       '../test_case/mobileTest/sidemenu/sidemenu.js'
                     ],
 
             major:  [
                       '../test_case/mobileTest/workflows/access.js',
-                      '../test_case/mobileTest/workflows/university.js', 
+                      '../test_case/mobileTest/workflows/university.js',
                       '../e2e/becomeGuru/majorSpec.js'
                     ],
             alert:  [
-        
+
                       '../e2e/alertTest.js'
                     ],
-            course: [ 
+            course: [
                         '../test_case/mobileTest/workflows/access.js',
-                        '../test_case/mobileTest/workflows/university.js', 
+                        '../test_case/mobileTest/workflows/university.js',
                         '../e2e/workflows/major.js',
                         '../e2e/becomeGuru/courseSpec.js',
                     ],
             category:[
                         '../test_case/mobileTest/workflows/access.js',
-                        '../test_case/mobileTest/workflows/university.js', 
+                        '../test_case/mobileTest/workflows/university.js',
                         '../e2e/workflows/major.js',
                         '../e2e/workflows/course.js',
                         '../e2e/becomeGuru/categorySpec.js'
                      ],
              photo:[
                           '../test_case/mobileTest/workflows/access.js',
-                          '../test_case/mobileTest/workflows/university.js', 
+                          '../test_case/mobileTest/workflows/university.js',
                           '../e2e/workflows/major.js',
                           '../e2e/workflows/course.js',
                           '../e2e/workflows/category.js',
@@ -112,7 +120,7 @@ exports.config = {
                     ],
               guruHome:[
                           // '../test_case/mobileTest/workflows/access.js',
-                          // '../test_case/mobileTest/workflows/university.js', 
+                          // '../test_case/mobileTest/workflows/university.js',
                           //  '../e2e/workflows/home.js',
                           //  '../e2e/workflows/major.js',
                           //  '../e2e/workflows/course.js',
@@ -125,7 +133,7 @@ exports.config = {
                      ],
              credit:[
                          // '../test_case/mobileTest/workflows/access.js',
-                         // '../test_case/mobileTest/workflows/university.js', 
+                         // '../test_case/mobileTest/workflows/university.js',
                          // '../test_case/mobileTest/workflows/major.js',
                          // '../test_case/mobileTest/workflows/course.js',
                          // '../test_case/mobileTest/workflows/category.js',
@@ -134,7 +142,7 @@ exports.config = {
                     ],
              editGuru:[
                          // '../test_case/mobileTest/workflows/access.js',
-                         // '../test_case/mobileTest/workflows/university.js', 
+                         // '../test_case/mobileTest/workflows/university.js',
                          // '../test_case/mobileTest/workflows/major.js',
                          // '../test_case/mobileTest/workflows/course.js',
                          // '../test_case/mobileTest/workflows/category.js',
@@ -161,7 +169,7 @@ exports.config = {
                       '../test_case/mobileTest/guruProfile/editProfile.js',
                       '../test_case/mobileTest/guruProfile/creditibility.js'
                     ],
-              mobile : 
+              mobile :
                        [
                            '../e2e/access/*Spec.js',
                            '../e2e/university/*Spec.js',
@@ -177,7 +185,7 @@ exports.config = {
                        ],
                work_A : [
                            '../test_case/mobileTest/workflows/access.js',
-                           '../test_case/mobileTest/workflows/university.js', 
+                           '../test_case/mobileTest/workflows/university.js',
                            '../e2e/workflows/home.js',
                            '../e2e/workflows/side.js',
                            '../e2e/workflows/editUniversity.js',
@@ -188,7 +196,7 @@ exports.config = {
                        ],
                 work_C_sign : [
                            '../e2e/workflows/access.js',
-                           '../test_case/mobileTest/workflows/university.js', 
+                           '../test_case/mobileTest/workflows/university.js',
                            '../e2e/workflows/home.js',
                            '../e2e/workflows/side.js',
                            '../e2e/workflows/SignAtSidebar.js',
@@ -205,7 +213,7 @@ exports.config = {
                        ],
                  work_C_log : [
                             '../e2e/workflows/access.js',
-                            '../test_case/mobileTest/workflows/university.js', 
+                            '../test_case/mobileTest/workflows/university.js',
                             '../e2e/workflows/home.js',
                             '../e2e/workflows/side.js',
                             '../e2e/workflows/LoginAtSidebar.js',
@@ -222,7 +230,7 @@ exports.config = {
                         ],
                  work_D : [
                             '../e2e/workflows/access.js',
-                            '../test_case/mobileTest/workflows/university.js', 
+                            '../test_case/mobileTest/workflows/university.js',
                             '../e2e/workflows/home.js',
                             '../e2e/workflows/side.js',
                             '../e2e/workflows/SignAtSidebar.js',
@@ -246,23 +254,23 @@ exports.config = {
                             // '../e2e/bugs/error_majorSearch.js',
                             //   '../e2e/bugs/error_courseList.js',
                             // '../e2e/bugs/error_profileEditTest.js',
-                            // // '../e2e/bugs/error_guruProfileButton.js', //imcomplicated 
+                            // // '../e2e/bugs/error_guruProfileButton.js', //imcomplicated
                             // '../e2e/bugs/error_sideFacebookButton.js',
                             // '../e2e/bugs/error_editPassword.js',
                             // '../e2e/bugs/error_loginNewAccount.js',
-                            // '../e2e/bugs/error_loginExistAccount.js', 
+                            // '../e2e/bugs/error_loginExistAccount.js',
                             // // '../e2e/bugs/error_GPSalertAfterLogoff.js', // prob doesn't need
-                            //    '../e2e/bugs/error_guruProfileMajorCourse.js', //imcomplicated 
-                            //  '../e2e/bugs/error_scrollAddSkill.js', 
-                            //  '../e2e/bugs/error_phone.js', 
-                            //   '../e2e/bugs/error_QAsupport.js', 
-                            //   '../e2e/bugs/error_profilePhoto.js', 
-                            //   // '../e2e/bugs/error_profileName.js',  // incomplicated 
-                            // '../e2e/bugs/error_BecomeGuruToProfile.js', 
-                            // // '../e2e/bugs/error_sidebar.js', 
+                            //    '../e2e/bugs/error_guruProfileMajorCourse.js', //imcomplicated
+                            //  '../e2e/bugs/error_scrollAddSkill.js',
+                            //  '../e2e/bugs/error_phone.js',
+                            //   '../e2e/bugs/error_QAsupport.js',
+                            //   '../e2e/bugs/error_profilePhoto.js',
+                            //   // '../e2e/bugs/error_profileName.js',  // incomplicated
+                            // '../e2e/bugs/error_BecomeGuruToProfile.js',
+                            // // '../e2e/bugs/error_sidebar.js',
                           ],
       production_error  :[
-                            
+
                           // '../e2e/production/error_7.js',
                           // '../e2e/production/error_9.js',
                           // '../e2e/production/error_11.js',
@@ -352,5 +360,5 @@ exports.config = {
 
         }
 
-        
+
 };

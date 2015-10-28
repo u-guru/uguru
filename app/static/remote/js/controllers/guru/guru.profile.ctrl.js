@@ -125,6 +125,26 @@ angular.module('uguru.guru.controllers')
       $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
 
     }
+    $scope.removeGuruSkill = function(skill,index)
+    {
+        if (!confirm('Remove ' + skill.name + '?')) {
+          return;
+        }
+      // delete from local
+       $scope.user.guru_subcategories.splice(index, 1);
+
+       // update server 
+       $scope.loader.show();
+
+       var confirmCallback = function() {
+         $scope.success.show(0, 2000, skill.name+ ' successfully removed');
+       }
+
+       // $timeout(function() {
+       $scope.refreshTipsAndRanking($scope.user);
+       $scope.user.updateAttr('remove_guru_subcategory', $scope.user, skill, confirmCallback, $scope);
+       // }, 200);
+    }
 
     $scope.removeGuruSubcategory = function(subcategory) {
       if (!confirm('Remove ' + subcategory.name + '?')) {
@@ -625,6 +645,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.removeGuruCourseAndUpdate = function(course, index) {
 
+      if (!confirm('Remove ' + course.name + '?')) {
+        return;
+      }
+
+
       var removedCourse = $scope.user.guru_courses.splice(index, 1);
 
       $scope.loader.show();
@@ -644,7 +669,6 @@ angular.module('uguru.guru.controllers')
       }, 200);
 
     }
-
 
     $scope.launchConfirmEmailPopup = function() {
 

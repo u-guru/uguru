@@ -321,6 +321,20 @@
 	box-sizing: border-box;
 }
 
+@mixin svg-stroke($stroke, $width) {
+	fill: none;
+	stroke: $stroke;
+	stroke-width: $width+px;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+@mixin svg-stroke-width($width) {
+	fill: none;
+	stroke-width: $width+px;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
 $links: 'a:active, a:focus, a:hover';
 $buttons: 'button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover';
 
@@ -355,6 +369,8 @@ $eggplant-mute: #907D9E;
 
 $bakery: #F04F54;
 $bakery-bg: #FFFDFA;
+
+$gabrielle: #958B8E;
 
 $icon-bg: no-repeat center center;
 

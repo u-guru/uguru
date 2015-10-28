@@ -38,7 +38,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
   $scope.platform.android = DeviceService.isAndroid();
-
+  $scope.root.vars.guru_mode =false;
 
   $scope.testAlert = function() {
     confirm("Can you click on me?");
