@@ -30,7 +30,7 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ################
 
 @app.route('/admin/stats/universities/')
-def admin_statistics_universities():
+def admin_statistics_universities_new():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
 
@@ -81,39 +81,30 @@ def admin_statistics_get_flickr_urls_unique(uni_id, url):
     formatted_str = "%s has updated its banner url to %" % (u.name, u.banner_url)
     return formatted_str
 
-@app.route('/admin/stats/universities/<uni_id>/flickr_options/')
-## IF SOMETHING IS FUNKY --> Most likely your forgot to rename the function definition of the view
-def admin_statistics_get_flickr_urls(uni_id):
-    print "it gets here"
+@app.route('/admin/stats/universities/<uni_id>/logo_options/')
+def admin_statistics_get_logo_urls(uni_id):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     university = University.query.get(uni_id)
 
-    ## if more than two nested functions, it should be in an external file in app/lib/
 
-    # this function will return an image, if you click it .. it will automatically set the university to that ;)
-    def html_image_string_links(url):
-        url = url.replace("http://", "").replace("https://", "")
-        ## Quotes mindfuck -- try to understand this later -- it should work
-        link_beginning = '<a href="/admin/stats/universities/2307/flickr_options/set_url/' + url + '/' + '">'
-        print link_beginning
-        link_ending = '</a>'
-        return '%s<img src="%s" alt="Smiley face" style="max-width:300px; height:auto; margin: 0 auto; position:absolute\;"> %s' % (link_beginning, url, link_ending)
 
-    def getFlickerBanners(university,size=20):
-        from lib.flickr_wrapper import parse_flickr_response, search_university_response_api, process_returned_photos
+@app.route('/admin/stats/universities/<uni_id>/flickr_options/')
+def admin_statistics_get_flickr_urls(uni_id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    university = University.query.get(uni_id)
 
-        flickrResponse = search_university_response_api(tags='Panorama', text=university.name, all_or='all')
-        arr = process_returned_photos(parse_flickr_response(flickrResponse))
-        urls = [html_image_string_links(item['url']) for item in arr]
-        html_strings_of_imgs = " ".join(urls)
-        return html_strings_of_imgs
-
-    html_strings_of_imgs = getFlickerBanners(university)
-
+    from lib.flickr_wrapper import *
+    flickr_response = str(search_university_response_api(text=university.name))
+    photos_arr = parse_flickr_response(flickr_response)
+    processed_arr = process_returned_photos(photos_arr)
+    flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)[:20]
+    print len(flickr_arr)
 
     ## notice, this has no template! We are just returning the strings
-    return html_strings_of_imgs
+    return render_template("admin/admin.stats.one.university.flickr.html", \
+        flickr_arr=flickr_arr, university=university)
 
 
 @app.route('/admin/ben/data-todo/')
@@ -139,6 +130,13 @@ def ben_data_todo():
 
 
     return "".join(todo_items_indexed)
+
+@app.route('/admin/stats/remaining')
+def admin_stats_remaining():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin-coming-soon.html")
+
 
 @app.route('/admin/stats/universities/<uni_id>')
 def admin_statistics_one_university(uni_id):
