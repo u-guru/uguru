@@ -1,87 +1,99 @@
 angular.module('uguru.rest', [])
-.factory('University', [
-    '$rootScope',
-    'Restangular', 
-    'cordovaHTTP',
-    '$timeout',
-    function($rootScope, Restangular, cordovaHTTP, $timeout) {
+.factory('University', ['Restangular', '$timeout', '$localstorage', 'uTracker', 
+    function(Restangular, $timeout, $localstorage, uTracker) {
     var University;
-    var majors = [];
-    var courses = [];
-    var popularCourses = [];
+    var source = {
+        majors: [],
+        courses: [],
+        popularCourses: []
+    }
+    var selectedID = null;
     var selected = {};
     University = {
-
-        bgGet: function() {
-
-            cordovaHTTP.get("https://www.uguru.me/api/v1/universities", {
-
-            }, {}, function(response) {
-                console.log(response.status);
-            }, function(response) {
-                console.error(response.error);
-            });
-        },
-
-        bgGetMajors: function(uni_id) {
+        refresh: function() {
             $timeout(function() {
-                var url = "https://www.uguru.me/api/v1/universities/" + uni_id + "/departments";
-                console.log("calling background getMajors: " + url);
-                cordovaHTTP.get(url, {}, {}).then(function(response) {
-                    console.log("bg majors success below!");
-                    majors = response.data;
-                    console.log(response.data);
-                    console.log("major success length: " + majors.length);
-                    $timeout(function() {
-                      console.log("broadcasting schoolChange!");
-                      $rootScope.$emit('schoolChange');
-                    }, 0);
-
-                }, function(response) {
-                    console.log("error in  majors background call");
-                    console.error(response.error);
-                });
+                source.majors.push({});
+                source.courses.push({});
+                
             }, 0);
-            
-        },
-
-        bgGetPopularCourses: function(uni_id) {
             $timeout(function() {
-                var url = "https://www.uguru.me/api/v1/universities/" + uni_id + "/popular_courses";
-                console.log("calling background getPopularCourses: " + url);
-                cordovaHTTP.get(url, {}, {}).then(function(response) {
-                    popularCourses = response.data;
-                    console.log("bg pop courses success below!");
-                    console.log(response.data);
-                    console.log("pop courses success length: " + popularCourses.length);
-                    $timeout(function() {
-                      console.log("broadcasting schoolChange!");
-                      $rootScope.$emit('schoolChange');
-                    }, 0);
-
-                }, function(response) {
-                    console.log("error in courses background call");
-                    console.error(response.error);
-                });
-            }, 0);
-            
+                source.majors.pop();
+                source.courses.pop();
+            }, 300);
         },
-
+        clearSelected: function() {
+            $timeout(function() {
+                source.majors = [];
+                source.courses = [];
+            }, 0);
+        },
         get: function() {
             return Restangular
                 .one('universities').get();
         },
         getMajors: function(uni_id) {
-            return Restangular
-                .one('universities', uni_id).customGET('departments');
+            $timeout(function() {
+                return Restangular
+                    .one('universities', uni_id).customGET('departments').then(function(response) {
+                        $timeout(function() {
+                            console.log("Success in getMajors()");
+                            source.majors = response.plain();
+                            $timeout(function() {
+                                $localstorage.set(uni_id + ' majors', source.majors);
+                                uTracker.track(tracker, {
+                                    '$Downloaded_Majors': uni_id
+                                });
+                            }, 1000);
+                            console.log("length of majors in callback: " + source.majors.length);
+                        }, 0);
+                        
+                    }, function(err) {
+                        console.log("Error getting majors: " + err);
+                    });
+            }, 0);
+            
         },
         getPopularCourses: function(uni_id) {
-            return Restangular
-                .one('universities', uni_id).customGET('popular_courses');
-        },
+             return $timeout(function() {
+                  Restangular
+                     .one('universities', uni_id).customGET('popular_courses').then(function(response) {
+                         $timeout(function() {
+                             console.log("Success in getPopularCourses()");
+                             source.popularCourses = response.plain();
+                             $timeout(function() {
+                                 $localstorage.set(uni_id + ' popularCourses', source.popularCourses);
+                                 uTracker.track(tracker, {
+                                     '$Downloaded_PopularCourses': uni_id
+                                 });
+                             }, 1000);
+                             console.log("length of popular courses in callback: " + source.popularCourses.length);    
+                         }, 0);
+                         
+                     }, function(err) {
+                         console.log("Error getting popularCourses: " + err);
+                     });
+             }, 0);
+         },
         getCourses: function(uni_id) {
-            return Restangular
-                .one('universities', uni_id).customGET('courses');
+            return $timeout(function() {
+                 Restangular
+                    .one('universities', uni_id).customGET('courses').then(function(response) {
+                        $timeout(function() {
+                            console.log("Success in getCourses()");
+                            source.courses = response.plain();
+                            $timeout(function() {
+                                $localstorage.set(uni_id + ' courses', source.courses);
+                                uTracker.track(tracker, {
+                                    '$Downloaded_Courses': uni_id
+                                });
+                            }, 1000);
+                            console.log("length of courses in callback: " + source.courses.length);    
+                        }, 3500);
+                        
+                    }, function(err) {
+                        console.log("Error getting courses: " + err);
+                    });
+            }, 0);
         },
         getTargetted: function() {
             return targettedUniversities;
@@ -102,9 +114,9 @@ angular.module('uguru.rest', [])
         getSorted: function() {
             return sortByRank(targettedUniversities);
         },
-        majors: majors,
-        courses: courses,
-        popularCourses: popularCourses,
+        // majors: majors,
+        // courses: courses,
+        source: source,
         hasNoMajors:hasNoMajors,
         hasNoCourses:hasNoCourses,
         selected: selected

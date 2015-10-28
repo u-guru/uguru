@@ -19,20 +19,41 @@ angular.module('uguru.util.controllers')
   $localstorage, uTracker, University) {
 
 
-
+    $scope.source = University.source;
 
     $scope.refresh = {
-      majors: ''
+      majors: '',
+      majorsLength: $scope.source.majors.length
     };
 
     function updateDOM() {
       $timeout(function() {
-        $scope.refresh.majors = 'update';
+        
+        $scope.source = University.source;
+
+        if ($scope.source.majors.length > 0) {
+            for(var j = 0; j < $scope.user.majors.length; j++) {
+              for(var k = 0; k < $scope.source.majors.length; k++) {
+                if($scope.source.majors[k].id === $scope.user.majors[j].id) {
+                  console.log("Deleting duplicate major found.");
+                  $scope.source.majors.splice(k, 1);
+                }
+              }
+            }
+        }
+
+        $scope.refresh.majorsLength = $scope.source.majors.length;
+        University.refresh();
       }, 0);
-      $timeout(function() {
-        $scope.refresh.majors = '';
-      }, 0);
+      
+      // $timeout(function() {
+      //   $scope.refresh.majors = 'update';
+      // }, 0);
+      // $timeout(function() {
+      //   $scope.refresh.majors = '';
+      // }, 0);
     }
+    updateDOM();
 
     if (!$scope.user.majors) {
       $scope.user.majors = [];
@@ -61,8 +82,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.user.majors.splice(index,1)
-      $scope.majorsSource.unshift(major);
-
+      $scope.source.majors.unshift(major);
 
 
       var confirmCallback = function() {
@@ -75,7 +95,6 @@ angular.module('uguru.util.controllers')
 
         //$scope.loader.showSuccess(majorName + ' successfully removed', 1200);
       }
-
 
       $localstorage.setObject('user', $scope.user);
 
@@ -109,10 +128,10 @@ angular.module('uguru.util.controllers')
 
       var majorName = major.title || major.name || major.abbr || major.code;
 
-      for(var i=0; i < $scope.majorsSource.length; i++) {
-        if($scope.majorsSource[i].id === major.id) {
+      for(var i=0; i < $scope.source.majors.length; i++) {
+        if($scope.source.majors[i].id === major.id) {
           console.log("transferring major from source to user");
-          $scope.majorsSource.splice(i, 1);
+          $scope.source.majors.splice(i, 1);
         }
       }
 
@@ -133,39 +152,26 @@ angular.module('uguru.util.controllers')
 
     $scope.limit = 10;
     $scope.increaseLimit = function() {
-      if($scope.majors && $scope.limit < $scope.majorsSource.length) {
+      if($scope.majors && $scope.limit < $scope.source.majors.length) {
         $scope.limit += 10;
       }
     }
 
     $scope.clearSearchInput = function() {
       $scope.search_text.major = '';
+      console.log("length of majors: " + $scope.source.majors.length);
     }
 
 
-    var getMajorsBecomeGuru = function() {
-      console.log('grabbing majors')
-      $scope.search_text.major = '';
+    // var getMajorsBecomeGuru = function() {
 
-      // if (University.majors.length > 0) {
 
-        $scope.majorsSource = University.majors.slice();
-        console.log("majors length: " + $scope.majorsSource.length);
+    //   $scope.source.getMajors(University.selected.id);
 
-        $timeout(function() {
-          for(var j = 0; j < $scope.user.majors.length; j++) {
-            for(var k = 0; k < $scope.majorsSource.length; k++) {
-              if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
-                console.log("Deleting duplicate major found.");
-                  $scope.majorsSource.splice(k, 1);
-              }
-            }
-          }
-          updateDOM();
+    //   console.log("Grabbing majors...");
+    //   $scope.search_text.major = '';
 
-        }, 400);
 
-        return;
       // }
       //$scope.loader.showAmbig("Fetching majors...", 60000);
       // University.getMajors($scope.user.university_id).then(function(majors) {
@@ -192,19 +198,84 @@ angular.module('uguru.util.controllers')
       // },function(err) {
       //   console.log("MAJORS NOT FOUND",err);
       // });
-    }
+    
+    //   // $scope.source.majors = University.majors;
+    //   // console.log("length of source.majors: " + $scope.source.majors.length)
+    //   // console.log("index 0: " + $scope.source.majors[0].name);
 
-    if(!$scope.majorsSource) {
-      getMajorsBecomeGuru();
-    }
+    //   $timeout(function() {
+    //     updateDOM();
+    //   }, 0);
+
+    // }
 
 
-    $rootScope.$on('schoolChange', function(event) {
-      console.log("majors: heard schoolChange event!");
-      $scope.user.majors.splice(0, $scope.user.majors.length);
-      getMajorsBecomeGuru();
+    // var getMajorsBecomeGuru = function() {
+    //   console.log('grabbing majors')
+    //   $scope.search_text.major = '';
 
-    });
+      // if (University.majors.length > 0) {
+
+
+      //   $scope.majorsSource = University.majors.slice();
+
+      //   $timeout(function() {
+      //     for(var j = 0; j < $scope.user.majors.length; j++) {
+      //       for(var k = 0; k < $scope.majorsSource.length; k++) {
+      //         if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
+      //           console.log("Deleting duplicate major found.");
+      //             $scope.majorsSource.splice(k, 1);
+      //         }
+      //       }
+      //     }
+      //     updateDOM();
+
+      //   }, 400);
+
+      //   return;
+      // }
+    //   //$scope.loader.showAmbig("Fetching majors...", 60000);
+    //   University.getMajors($scope.user.university_id).then(function(majors) {
+
+    //     //$scope.loader.hide();
+    //     University.majors = majors.plain();
+    //     $scope.majorsSource = majors.plain().slice();
+
+    //     $timeout(function() {
+    //       for(var j = 0; j < $scope.user.majors.length; j++) {
+    //         for(var k = 0; k < $scope.majorsSource.length; k++) {
+    //           if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
+    //             console.log("Deleting duplicate major found.");
+    //               $scope.majorsSource.splice(k, 1);
+    //           }
+    //         }
+    //       }
+    //       updateDOM();
+
+    //     }, 400);
+
+    //     $localstorage.setObject('universityMajors', majors.plain());
+
+    //   },function(err) {
+    //     console.log("MAJORS NOT FOUND",err);
+    //   });
+    // }
+
+    // if(!$scope.majorsSource) {
+    //   getMajorsBecomeGuru();
+    // }
+
+    // $timeout(function() {
+
+    //   $rootScope.$on('schoolChange', function(event) {
+    //     console.log("majors: heard schoolChange event!");
+    //     $scope.user.majors.splice(0, $scope.user.majors.length);
+    //     getMajorsBecomeGuru();
+
+    //   });
+
+    // }, 0);
+    
 
 
 

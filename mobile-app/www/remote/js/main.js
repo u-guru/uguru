@@ -48,10 +48,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $ionicConfigProvider, $compileProvider,
-  $provide) {
+  $ionicConfigProvider, $compileProvider, $provide, $httpProvider) {
 
 
+  $httpProvider.useApplyAsync(true);
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 

@@ -140,7 +140,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.universitySelected = function(university) {
 
+    $timeout(function() {
       PerformanceService.sendListResponseTime('University_List');
+    }, 0);
+      
 
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
@@ -149,7 +152,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
           if ($state.current.name === 'root.home' && $ionicSideMenuDelegate.isOpen()) {
             $scope.user.university = university;
-            MapService.initStudentHomeMap($scope.user);
+            // MapService.initStudentHomeMap($scope.user);
             $scope.loader.showAmbig("Saving...", 1000);
             $timeout(function() {
               $scope.loader.hide();
@@ -185,27 +188,16 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       //$scope.loader.showSuccess('Success', 750);
 
-      University.majors = [];
-      University.courses = [];
-      University.popularCourses = [];
+      University.clearSelected();
+      // University.majors = [];
+      // University.courses = [];
 
+      // $scope.getCoursesForUniversityId(university.id);
+      // $scope.getMajorsForUniversityId(university.id);
+      
+      University.getMajors(university.id);
+      University.getCourses(university.id);
 
-      University.bgGetMajors(university.id);
-      University.bgGetPopularCourses(university.id);
-
-      // $timeout(function() {
-        
-      //   University.getPopularCourses(university.id).then(function(courses) {
-      //     University.popularCourses = courses.plain();
-      //     console.log(courses.plain().length + ' popular courses retrieved for university_id: ' + university.id)
-
-      //   }, function(err) {
-      //     console.log("Error loading popular courses: " + err);
-      //   });
-
-      //   // $scope.getMajorsForUniversityId(university.id);
-
-      // }, 50);
 
       University.selected = university;
 
@@ -216,7 +208,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       //fetch the universities
 
       //update user to locat storage
-      $scope.rootUser.updateLocal($scope.user);
+      $timeout(function() {
+        $scope.rootUser.updateLocal($scope.user);
+      }, 0);
+      
 
       var payload = {
         'university_id': $scope.user.university_id
@@ -247,7 +242,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
         }
       }
-      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+      $timeout(function() {
+        $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+      }, 0);
+      
   };
 
   // interesting... in a good way

@@ -58,7 +58,7 @@ stan = {
 		console.log(typeof lat);
 		console.log(typeof stan.lat)
 
-		map.animateCamera({
+		map.moveCamera({
 		  target: {
 		    lat: 37.4274745,
 		    lng: -122.169719

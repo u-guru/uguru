@@ -152,7 +152,7 @@ angular.module('uguru.student.controllers', [])
             $timeout(function() {
                 $ionicViewSwitcher.nextDirection('forward');
                 $state.go('^.become-guru')
-            }, 30);
+            }, 0);
 
         }
 
@@ -175,9 +175,9 @@ angular.module('uguru.student.controllers', [])
             }
         }
 
-        $scope.initStudentHomeMap = function() {
-            MapService.initStudentHomeMap($scope.user);
-        }
+        // $scope.initStudentHomeMap = function() {
+        //     MapService.initStudentHomeMap($scope.user);
+        // }
 
         console.log($scope.user);
         $scope.$on('$ionicView.loaded', function() {
@@ -202,30 +202,27 @@ angular.module('uguru.student.controllers', [])
 
         })
 
-        $scope.$on('$ionicView.afterEnter', function() {
-            console.log('after enter');
-            $ionicSlideBoxDelegate.update();
+        // $scope.$on('$ionicView.afterEnter', function() {
+        //     console.log('after enter');
+        //     $ionicSlideBoxDelegate.update();
+        // });
+
+        // $scope.$on('$ionicView.enter', function() {
+
+        //     $scope.loader.hide();
+
+        //     if (!$scope.mapInitialized && !MapService.studentHomeMap) {
+        //         $scope.mapInitialized = true;
+        //         $timeout(function() {
+        //             // $scope.initStudentHomeMap();
+        //         }, 1000)
+        //     }
+        //     $timeout(function() {
+        //         checkOnboardingStatus();
+        //     }, 500);
 
 
-
-        });
-
-        $scope.$on('$ionicView.enter', function() {
-
-            $scope.loader.hide();
-
-            if (!$scope.mapInitialized && !MapService.studentHomeMap) {
-                $scope.mapInitialized = true;
-                $timeout(function() {
-                    // $scope.initStudentHomeMap();
-                }, 1000)
-            }
-            $timeout(function() {
-                checkOnboardingStatus();
-            }, 500);
-
-
-        });
+        // });
 
     }
 

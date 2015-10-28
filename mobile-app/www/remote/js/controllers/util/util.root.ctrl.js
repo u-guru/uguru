@@ -168,30 +168,30 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
         }
 
-        $scope.getMajorsForUniversityId = function(uni_id, callback) {
-            console.log("university id: " + uni_id);
-            University.getMajors(uni_id).then(function(majors){
+        // $scope.getMajorsForUniversityId = function(uni_id, callback) {
+        //     console.log("university id: " + uni_id);
+        //     University.getMajors(uni_id).then(function(majors){
 
-                $timeout(function() {
-                    console.log(majors.length, 'majors found', uni_id);
-                    majors = majors.plain()
-                    University.majors = majors;
+        //         $timeout(function() {
+        //             console.log(majors.length, 'majors found', uni_id);
+        //             majors = majors.plain()
+        //             University.majors = majors;
 
-                    if (callback) {
-                        callback(majors);
-                    }
-                }, 0);
+        //             if (callback) {
+        //                 callback(majors);
+        //             }
+        //         }, 0);
 
-            },
-            function() {
-                //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
-                console.log('Universities NOT successfully loaded');
-            })
-        }
+        //     },
+        //     function() {
+        //         //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
+        //         console.log('Universities NOT successfully loaded');
+        //     })
+        // }
 
 
         $scope.getCategories = function(callback) {
-            console.log('retrieving majors for id');
+            console.log('retrieving categories for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
                 Category.mapActiveToSubcategories(Category.categories, $scope.user);
@@ -207,6 +207,7 @@ angular.module('uguru.util.controllers')
             })
         }
 
+<<<<<<< ef20c7b69751f0afc85fa922691a391382a0440b
         $scope.getCoursesForUniversityId = function(uni_id, callback) {
             if (!uni_id) {
                 return;
@@ -224,6 +225,25 @@ angular.module('uguru.util.controllers')
             })
         };
 
+        // $scope.getCoursesForUniversityId = function(uni_id, callback) {
+        //     if (!uni_id) {
+        //         return;
+        //     }
+        //     University.getCourses(uni_id).then(function(courses){
+        //         $timeout(function() {
+        //             $scope.data.courses = courses.plain();
+        //             University.courses = courses.plain();
+        //             console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
+        //             callback && callback();
+        //         }, 0);
+        //     },
+        //     function() {
+        //         console.log('Universities NOT successfully loaded');
+        //     })
+        // };
+
+
+
 
         // if ($scope.user.university_id && !(University.majors && University.majors.length)) {
         //     console.log('University majors not local, requesting now..');
@@ -236,9 +256,15 @@ angular.module('uguru.util.controllers')
 
         // if ($scope.user.university_id && !(University.courses && University.courses.length)) {
         //     console.log('University courses not local, requesting now..');
+
         //     // $timeout(function() {
         //     //     $scope.getPopularCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
         //     // }, 0);
+
+        //     $timeout(function() {
+        //         $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
+        //     }, 0)
+
         // } else {
         //     console.log(University.courses.length, 'majors loaded');
         // }

@@ -8,14 +8,16 @@ angular.module('uguru.directives')
 		switch(attr.bindInput){
 			case 'majors':
 				model = 'search_text.major';
-				refreshModel = 'refresh.majors';
+				refreshModel = 'refresh.majorsLength';
 				property = ['title', 'name', 'abbr', 'code'];
 				break;
 
 			case 'courses':
 				model = 'search_text.course';
-				refreshModel = 'refresh.courses';
+
+				refreshModel = 'refresh.coursesLength';
 				property = ['title', 'name', 'variations'];
+
 				break;
 		}
 
@@ -23,6 +25,17 @@ angular.module('uguru.directives')
 			refreshModel,
 			function(newValue, oldValue) {
 				
+				
+					console.log("heard something from " + refreshModel + "!");
+					$timeout(function() {
+						try {
+							$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);	
+						} catch(err) {
+							console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+						}
+					}, 0);
+				
+
 				if(newValue === 'update') {
 					console.log("heard something from " + refreshModel + "!");
 					$timeout(function() {

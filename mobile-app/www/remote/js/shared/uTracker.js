@@ -1,10 +1,11 @@
 angular.module('sharedServices')
 .factory('uTracker', [
+	'$timeout',
 	uTracker
 	]);
 
 // TODO: we'll need to find a way to hold/queue the current events and fire for later
-function uTracker() {
+function uTracker($timeout) {
 
 	var mixpanel, localytics;
 	var trackers = 	[
@@ -136,10 +137,14 @@ function uTracker() {
 		if(!LOCAL) {
 			switch(tracker) {
 				case 'mp':
-					mixpanel.track(event, data);
+					$timeout(function() {
+						mixpanel.track(event, data);
+					}, 300);
 					break;
-				case 'lo': 
-					ll('tagEvent', event, data);
+				case 'lo':
+					$timeout(function() {
+						ll('tagEvent', event, data);
+					}, 300); 
 					break;
 				case 'ga': break;
 				case 'hp': break;
