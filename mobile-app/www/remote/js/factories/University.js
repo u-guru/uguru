@@ -6,7 +6,7 @@ angular.module('uguru.rest', [])
         majors: [],
         courses: [],
         popularCourses: []
-    }
+    };
     var selectedID = null;
     var selected = {};
     University = {

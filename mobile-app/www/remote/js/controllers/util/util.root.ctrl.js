@@ -207,23 +207,7 @@ angular.module('uguru.util.controllers')
             })
         }
 
-<<<<<<< ef20c7b69751f0afc85fa922691a391382a0440b
-        $scope.getCoursesForUniversityId = function(uni_id, callback) {
-            if (!uni_id) {
-                return;
-            }
-            University.getCourses(uni_id).then(function(courses){
-                $timeout(function() {
-                    $scope.data.courses = courses.plain();
-                    University.courses = courses.plain();
-                    console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
-                    callback && callback();
-                }, 0);
-            },
-            function() {
-                console.log('Courses NOT successfully loaded');
-            })
-        };
+
 
         // $scope.getCoursesForUniversityId = function(uni_id, callback) {
         //     if (!uni_id) {
