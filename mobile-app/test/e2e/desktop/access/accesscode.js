@@ -1,4 +1,4 @@
-describe('Long Workflow Test',function()
+describe('Invalid access code test',function()
 {
 	var ListOfCode =  doc.generateRandomString(["","1"],3,"cool")
 
@@ -432,14 +432,14 @@ describe('Long Workflow Test',function()
 		
 	});
 
-    // it("Check Error Console message",function()
-    // 	{
+    it("Check Error Console message",function()
+    	{
 	
-    // 	});
-    // afterEach(function()
-    // {
-    // 	   browser.manage().logs().get('browser').then(function(browserLogs) {
-    // 		  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
-    // 	   });
-    // });
+    	});
+    afterEach(function()
+    {
+    	   browser.manage().logs().get('browser').then(function(browserLogs) {
+    		  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
+    	   });
+    });
 });

@@ -1,3 +1,5 @@
+
+
 exports.config = {
     framework: 'jasmine2',
     seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -9,6 +11,8 @@ exports.config = {
         //   multiCapabilities: [
         //   {'browserName': 'chrome'},
         //   {'browserName': 'firefox'},
+        //   {'browserName': 'safari'},
+
         //   // {'browserName': 'phantomjs'}
         // ],
         specs: [

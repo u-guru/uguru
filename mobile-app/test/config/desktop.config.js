@@ -1,4 +1,16 @@
 var IP = '192.168.0.111'
+// var str = ['1920x1080','1366x768','1280x1024','1280x800' ,'1024x768', '1440x900', '1600x900', '1680x1050', '1920x1200', '1360x768','320×480','320×568','375×667','414×736']
+// var getSize = function (str) {
+//     // body...
+//     var resloution = {
+//         x : null,
+//         y : null
+//     }
+//     str.split("x")
+// }
+var screenSizes = {}
+var device = 'desktop'
+
 exports.config = {
     framework: 'jasmine2',
      seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -9,7 +21,13 @@ exports.config = {
          // },
           multiCapabilities: [
           {'browserName': 'chrome'},
-          {'browserName': 'safari'} 
+          {'browserName': 'safari'} ,
+          {'browserName': 'firefox'},
+          // {
+          //  'browserName': 'phantomjs'
+          //  'phantomjs.binary.path': require('phantomjs').path,
+          //  'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+          // }
            ],
         // specs: [
         //  //     '../test_case/Release_One_Web/homepage/*'
@@ -303,6 +321,7 @@ exports.config = {
 
             global.EC  = protractor.ExpectedConditions;
             global.localhost = IP
+            global.device = device
             // browser.manage().deleteAllCookies();
             // browser.executeScript('window.sessionStorage.clear();');
             // browser.executeScript('window.localStorage.clear();');
