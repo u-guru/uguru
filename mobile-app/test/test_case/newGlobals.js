@@ -11,7 +11,7 @@ var global = function() {
     browser.executeScript('window.sessionStorage.clear();');
     browser.executeScript('window.localStorage.clear();');
     // browser.executeScript('window.location.reload(true);')
-    browser.get("http://"+localhost+":8100/#/university");
+    // browser.get("http://"+localhost+":8100/#/university");
   }
   /**********************************************************
   *
@@ -291,7 +291,6 @@ var global = function() {
     var length;
     var str ;
 
-
      str = name+' li:not(.ng-hide)';
      element.all(by.css(str)).then(function (items) {
       if (random != null)      
@@ -300,7 +299,7 @@ var global = function() {
         var temp = Math.floor((Math.random() * (items.length-1)));
        // browser.wait(EC.elementToBeClickable( items[temp]),5000,'wait too long to get item clickable');
         items[temp].click();
-        // console.log(items.length)
+        // console.log(items.length,temp)
     });
   }
   /**********************************************

@@ -3,7 +3,7 @@ var Access = function()
 {
 	 this.InputModel = "access.codeInput";
 	 this.accessInput = element(by.tagName("input"));
-	 this.RedeemButton = element(by.id("access-start"));
+	 this.RedeemButton = element(by.id("redeem-button"));
 	 this.load= element(by.id('E2E-spinner'))
 	 this.back = element(by.css('[ng-click="goToAccess()"]'))
 	 this.listOfCase =  doc.generateRandomString(["","1"],5,"cool")

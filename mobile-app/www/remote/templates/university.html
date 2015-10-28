@@ -71,7 +71,7 @@
                 <label for="university-input">search for my university</label>
             </div>
         </form>
-        <div id="school-list" class="desktop-search-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()'>
+        <div id="desktop-school-list" class="desktop-search-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()'>
             <ul class='desktop-card-list'>
                 <li ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
                     <a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>

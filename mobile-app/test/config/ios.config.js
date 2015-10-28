@@ -1,60 +1,37 @@
 "use strict";
-var IP = '192.168.0.109'
+var IP = '192.168.0.110'
+var device = 'IOS'
 exports.config = {
     framework: 'jasmine2',
 
      // baseUrl: 'http://10.0.0.2:8000/',
-     baseUrl: 'http://192.168.56.109:5555/',
+     // baseUrl: 'http://192.168.56.109:5555/',
 
     //appium port has to be 4723
       // seleniumAddress: 'http://localhost:4444/wd/hub',
      seleniumAddress: 'http://localhost:4723/wd/hub',
 
-         // capabilities: {
-         //         'browserName': 'chrome',
-         //         // 'chromeOptions': {'args': ['show-fps-counter=true']}
-         // },
-
-
-          //  capabilities: {
-          //   browserName: 'chrome',
-          //   'appium-version': '1.4.10',
-          //   platformName: 'Android',
-          //    platformVersion: '4.4.4',
-          //   deviceName: 'Android Emulator',
-          // },
-
-           capabilities: {
+         //iphone 5s jason settings
+         // ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+         capabilities: {
             browserName: '',
-             //app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
-             app : '/Users/Jason-work/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
-
-
-              // app : '/home/twfob/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug-unaligned.apk',
-            'appium-version':'1.4.10',
-            platformName: 'Android',
-            platformVersion: '4.4',
-            deviceName: 'Android Emulator',
-            // 'autoAcceptAlerts': 'true',
-            autoWebview:true
-
-          },
-        //   multiCapabilities: 
-        //   [
-         
-        //  {'browserName': 'chrome'},
-        //  {
-        //   'browserName': 'firefox'
-        //   // Additional spec files to be run on this capability only.
-        
-        //  }
-        //   // {'browserName': 'phantomjs'}
+          'appium-version': '1.4.13',
+          app: '/Users/Jason-work/Git/uguru/mobile-app/platforms/ios/build/device/uguru.app',
+          platformName: 'iOS',
+            bundleId: 'com.beta.college.Uguru',
+            udid: 'ae0e73324f34a167a19b912f3f22af2f74bc0936',
+            platformVersion: '8.2',
+            deviceName: "Chun-Hsiang's iPhone (8.2) [ae0e73324f34a167a19b912f3f22af2f74bc0936]",
+            autoWebview: 'true',
+            autoAcceptAlerts : 'true',
+            noReset : 'true',
+        },
 
         specs:
 
         [
-          // '../test_case/mobileTest/access.js'
-          '../e2e/workflows/workflow#*.js',    
+          // '../e2e/workflows//access.js',
+          '../e2e/ios/workflows/workflow#*.js',    
 
 
         ],
@@ -355,6 +332,7 @@ exports.config = {
 
             global.EC  = protractor.ExpectedConditions;
             global.localhost = IP
+            global.device = device
 
             // browser.manage().deleteAllCookies();
             // browser.executeScript('window.sessionStorage.clear();');

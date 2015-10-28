@@ -1,31 +1,35 @@
-var IP = '192.168.0.111'
+"use strict";
+var IP = '192.168.0.110'
 exports.config = {
     framework: 'jasmine2',
-     seleniumAddress: 'http://localhost:4444/wd/hub',
+
+     // baseUrl: 'http://10.0.0.2:8000/',
+     // baseUrl: 'http://192.168.56.109:5555/',
+        seleniumAddress: 'http://localhost:4723/wd/hub',
+         capabilities: {
+          browserName: '',
+           //app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+           app : '/Users/Jason-work/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
 
 
-         // capabilities: {
-         //     'browserName': 'chrome'
-         // },
-          multiCapabilities: [
-          {'browserName': 'chrome'},
-          {'browserName': 'safari'} 
-           ],
-        // specs: [
-        //  //     '../test_case/Release_One_Web/homepage/*'
-        // ],
-        // suites:
-        // {
-        //   // search :     ['../test_case/Release_One_Web/homepage/search_box.js'],
-        //    // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
-        //   //team : '../test_case/Release_One_Web/team/team.js',
-          
-        // },
-          specs:
+            // app : '/home/twfob/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug-unaligned.apk',
+          'appium-version':'1.4.10',
+          platformName: 'Android',
+          platformVersion: '4.4',
+          deviceName: 'Android Emulator',
+          // 'autoAcceptAlerts': 'true',
+          autoWebview:true
+
+        },
+        specs:
+
         [
+          // '../e2e/workflows//access.js',
           '../e2e/workflows/workflow#*.js',    
+
+
         ],
-          suites:
+        suites:
         {
             access: ['../e2e/access/*Spec.js'],
             
@@ -243,22 +247,28 @@ exports.config = {
                          ]
 
         },
-        // resultJsonOutputFile: '../test_case/Release_One_Web/result.json',
+        // restartBrowserBetweenTests: true,
         rootElement: "[ng-app]" ,
+
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
                           showColors: true,
-                          defaultTimeoutInterval: 400000,
+                          defaultTimeoutInterval: 4000000,
                           isVerbose: true,
                           silent: true
                           ,
                           print: function() {}
 
                           },
-        // getPageTimeout: 10000,
-         allScriptsTimeout: 5000,
+        getPageTimeout: 4000000,
+        allScriptsTimeout: 4000000,
         onPrepare: function () {
-           var SpecReporter = require('jasmine-spec-reporter');
+           var wd = require('wd'),
+                   protractor = require('protractor'),
+                    wdBridge = require('wd-bridge')(protractor, wd);
+                   wdBridge.initFromProtractor(exports.config);
+
+            var SpecReporter = require('jasmine-spec-reporter');
             // var webdriver = require('selenium-webdriver');
 
             // add jasmine spec reporter
@@ -284,6 +294,16 @@ exports.config = {
                     customProcessors: []
                 }));
 
+
+// var webdriver = require('selenium-webdriver'),
+//     By = require('selenium-webdriver').By,
+//     until = require('selenium-webdriver').until;
+
+// var driver = new webdriver.Builder()
+//     .forBrowser('chrome')
+//     .build();
+
+    
             protractor.get = require('../test_case/globals.js').globals;
             protractor.run = require('../test_case/globals.js').run;
 
@@ -301,21 +321,20 @@ exports.config = {
             global.photo = require('../e2e/becomeGuru/photoPageObject.js');
             global.sidebar= require('../e2e/side/sidebarPageObject.js');
 
+
+
+
             global.EC  = protractor.ExpectedConditions;
             global.localhost = IP
-            // browser.manage().deleteAllCookies();
+
+            browser.manage().deleteAllCookies();
             // browser.executeScript('window.sessionStorage.clear();');
             // browser.executeScript('window.localStorage.clear();');
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
-            browser.driver.manage().window().setSize(414, 736);
-
-            browser.get("http://"+localhost+":8100/#/");
-                         // browser.get("http://localhost:8100/#/")
-
-            browser.sleep(3000);
+             // browser.get("http://localhost:8100/#/")
+            // browser.sleep(3000);
 
         }
-
         
 };

@@ -36,6 +36,7 @@ var University = function() {
 
     this.SelectSchool =function(specificIndex)
     {
+      
       if (specificIndex == null)
         doc.newPickList('#school-list')
       else

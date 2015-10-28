@@ -2,12 +2,24 @@ describe('Long Workflow Test',function()
 {
 	var ListOfCode =  doc.generateRandomString(["","1"],3,"cool")
 
-	beforeAll(function()
+	afterAll(function()
 	{
 		doc.ResetAll();
 	});
     describe('@Workflow : Pre-Student Page + Close Welcome Pop', function () {
-
+		
+		// it("Enter Access Code : cool ",function()
+		// {
+		// 	access.EnterAccessCode('cool')
+		// });
+		// it('Press enter',function()
+		// {
+		// 	access.RedeemClick();
+		// });
+		// it("Check Successed",function()
+		// {
+		// 	access.CheckMessage("Access Granted");
+		// });
       	for( i = 0; i < ListOfCode.length; ++ i)
       	{
               (function(code) {
@@ -53,7 +65,9 @@ describe('Long Workflow Test',function()
 
           it("Sekect a university",function()
           {
-          	university.SelectSchool();
+          	// university.SelectSchool(2)
+          	// IOS Only
+          	element.all(by.css('#school-list li a')).get(0).click();
           });
 
           describe('Welcome uguru logo pop',function()
@@ -125,9 +139,15 @@ describe('Long Workflow Test',function()
 		describe('Major', function () {
 			it('Pick A major',function()
 			{
-				major.SelectMajor(11);
+				// major.SelectMajor(11);
+				element.all(by.css('#major-list li a')).get(11).click()
+
 			});
-		
+			it('Switch Alert',function()
+			{
+				element.all(by.css('#major-list li a')).get(11).click()
+
+			});
 			it('Next slide',function()
 			{
 				major.GoToCoursePage();
@@ -146,51 +166,52 @@ describe('Long Workflow Test',function()
 			});
 		});	
 	
-	var CategoryName = ['Academic','BAKING','DELIVERY','HOUSEHOLD','PHOTOGRAPHY','SERVICES','Sports & Muscle','TECHNOLOGY & IT']
-		describe("Category",function () {
-			for (var i = 0 ; i< 8 ; ++i)
-			{
-		        (function(index,title) {
-			        describe('Click the category #'+index,function()
-			        {
-			        	var count;
-			        	it('Check category title back To DeFault Name',function()
-			        	{
-			        		category.CheckTitleIsMatch("SELECT CATEGORY")
-			        	});
-		        		it('Open a Category',function()
-						{
-							category.SelectSkill(index);
-						});
-		        		it('Check Category Title : '+title ,function()
-		        		{
-		        			category.CheckTitleIsMatch(title.toUpperCase());
-		        		})
+	// var CategoryName = ['Academic','BAKING','DELIVERY','HOUSEHOLD','PHOTOGRAPHY','SERVICES','Sports & Muscle','TECHNOLOGY & IT']
+	// 	describe("Category",function () {
+	// 		for (var i = 0 ; i< 1 ; ++i)
+	// 		{
+	// 	        (function(index,title) {
+	// 		        describe('Click the category #'+index,function()
+	// 		        {
+	// 		        	var count;
+	// 		        	it('Check category title back To DeFault Name',function()
+	// 		        	{
+	// 		        		category.CheckTitleIsMatch("SELECT CATEGORY")
+	// 		        	});
+	// 	        		it('Open a Category',function()
+	// 					{
+	// 						// category.SelectSkill(index);
+	// 						// element.all(by.css('#skills-list li a')).get(index).click()
+	// 					});
+	// 	        		it('Check Category Title : '+title ,function()
+	// 	        		{
+	// 	        			category.CheckTitleIsMatch(title.toUpperCase());
+	// 	        		})
 
-						it('Check element exist',function()
-						{
-							category.SkillIsExist();
-						});
-						it('click all the skills ',function()
-						{
-					        count = category.EnableAllSKills(index);
-						});
+	// 					it('Check element exist',function()
+	// 					{
+	// 						category.SkillIsExist();
+	// 					});
+	// 					it('click all the skills ',function()
+	// 					{
+	// 				        count = category.EnableAllSKills(index);
+	// 					});
 
-		        		it('close a Category',function()
-		        		{
-							category.clickCanvas (100,50)
-		        		})
-		        		// check which index
-		        		it('check select',function()
-		        		{
-					     // element.all(by.css(str)).then(function (items) {
-					     	category.CountSelectSKill(count,index);
-		        		});
-					});
-		        })(i,CategoryName[i]);
-			}
+	// 	        		it('close a Category',function()
+	// 	        		{
+	// 						category.clickCanvas (100,50)
+	// 	        		})
+	// 	        		// check which index
+	// 	        		it('check select',function()
+	// 	        		{
+	// 				     // element.all(by.css(str)).then(function (items) {
+	// 				     	category.CountSelectSKill(count,index);
+	// 	        		});
+	// 				});
+	// 	        })(i,CategoryName[i]);
+	// 		}
 
-		});
+	// 	});
 		
 		describe('Camera auto quit after taking picture at @sam1rm dev , in @f230536 the app restarted', function () {	    	
 			it('Next page',function()
@@ -199,8 +220,8 @@ describe('Long Workflow Test',function()
     		});
 			it('Waiting to received the message',function()
 			{
-				 photo.UploadPhoto('small');
-				//photo.NextPage();
+				 // photo.UploadPhoto('small');
+				photo.NextPage();
 			});
 		});	
 		
@@ -434,13 +455,10 @@ describe('Long Workflow Test',function()
 		
 	});
 
-    // it("Check Error Console message",function()
-    // 	{
-	
-    // 	});
+  
     // afterEach(function()
     // {
-    // 	   browser.manage().logs().get('browser').then(function(browserLogs) {
+    // 	   browser.manage().logs().get('client').then(function(browserLogs) {
     // 		  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
     // 	   });
     // });
