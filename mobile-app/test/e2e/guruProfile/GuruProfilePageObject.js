@@ -26,7 +26,7 @@ var GuruProfile = function()
 	//Modal Element
 	this.ModalPage = element(by.css('.modal-backdrop.active'));
 	this.ModalTitle = element(by.css('.modal-backdrop.active .text-center'));
-	this.ModalCloseElement = element.all(by.css('.modal-backdrop.active a'));
+	this.ModalCloseElement = element.all(by.css('.modal-backdrop.active section a'));
 	this.ModalSkill = element.all(by.repeater('skill in active_category.skills'))
 	this.ModalLists  = element.all(by.css('.modal-backdrop.active li'));
 	// this.ModelClose = element(by.css('.modal-backdrop.active .header-down'));
@@ -85,22 +85,27 @@ var GuruProfile = function()
 		switch(name)
 		{
 			case 'course':
+				  doc.ScrollPage(this.AddCourse)
 				this.AddCourse.click();
 				break;
 
 			case 'major' :
+				doc.ScrollPage(this.AddMajor)
 				this.AddMajor.click();
 				break;
 
 			case 'skill' :	
+				doc.ScrollPage(this.AddSkill)
 				this.AddSkill.click();
 				break;
 
 			case 'language':	
+				doc.ScrollPage(this.AddLanguage)
 				this.AddLanguage.click();
 				break;
 
 			case 'experience':	
+				doc.ScrollPage(this.AddExperience)
 				this.AddExperience.click();
 				break;
 		};

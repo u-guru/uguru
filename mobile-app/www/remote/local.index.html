@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
   <head>
 
     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
@@ -296,6 +297,7 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/InAppMapController.js"></script>
 
     <!--  Admin Controllers -->
     <!-- <script type="text/javascript" src="remote/js/admin/AdminCtrl.js"></script> -->
@@ -318,6 +320,16 @@
     <script type="text/javascript" src="remote/js/shared/ModalService.js"></script>
     <script type="text/javascript" src="remote/js/shared/KeyboardService.js"></script>
     <script type="text/javascript" src="remote/js/shared/CameraService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/PushService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/InAppMapService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/MediaService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CardReader.js"></script>
+    <script type="text/javascript" src="remote/js/shared/SocialSharing.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CalendarService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/BadgeService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/AppAvailability.js"></script>
+    <script type="text/javascript" src="remote/js/shared/ToastService.js"></script>
+
 
     <script type="text/javascript" src="remote/js/shared/uTracker.js"></script>
     <script type="text/javascript" src="remote/js/shared/PerformanceService.js"></script>
@@ -378,11 +390,4 @@
           });
     </script>
   </body>
-
-
-    <!--
-      The views will be rendered in the <ion-nav-view> directive below
-      Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
-    -->
 </html>

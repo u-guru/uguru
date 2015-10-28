@@ -60,11 +60,13 @@ var launchIntercomSetActive = function() {
         console.log('setting intercom to active..');
         // $('#intercom-container').addClass('active');
         // $('#intercom-container').css('display', 'block');
-        setTimeout(function() {
-        	bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
-            $('.top-link-chat, #link-support').trigger('click');
-        }, 3000)
+        // setTimeout(function() {
+        // 	bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
+        //     $('.top-link-chat, #link-support').trigger('click');
+        // }, 3000)
         $('.top-link-chat, #link-support').trigger('click');
+        // $('.intercom-launcher-button').trigger('click');
+
 	    } else {
 	        console.log('intercome still does not exist.. trying again');
 	        setTimeout(function() {

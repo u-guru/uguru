@@ -375,8 +375,7 @@ angular.module('uguru.util.controllers')
     // //                 $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
 
     // //                 $timeout(function() {
-    // //                   $scope.$apply();
-    // //                 }, 1000);
+    // //                 }, 0);
     // //               } else {
     // //                 $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
     // //               }
@@ -389,7 +388,9 @@ angular.module('uguru.util.controllers')
     // //               var showUniversityListViewNearest = function($scope, $state) {
     // //                 $scope.loader.hide();
     // //                 $scope.view = 2;
-    // //                 $scope.$apply();
+    // //                 $timeout(function() {
+
+    //                    },0);
     // //               }
 
     // //               var nearestUniversityCallback = function() {
@@ -651,8 +652,7 @@ angular.module('uguru.util.controllers')
     //             $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
 
     //             $timeout(function() {
-    //               $scope.$apply();
-    //             }, 1000);
+    //             }, 0);
     //           } else {
     //             if ($scope.request._type === 0 || $scope.request._type === 2) {
     //               $scope.getAddressfromGeolocation(position.coords.latitude, position.coords.longitude);
@@ -832,7 +832,9 @@ angular.module('uguru.util.controllers')
     //       $scope.closeLocationModal();
     //     }
 
-    //     $scope.$apply();
+    //     $timeout(function() {
+
+    //      }, 0);
     //   }
 
     //   $scope.submitRequest = function() {

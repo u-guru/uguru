@@ -36,11 +36,11 @@ var Category = function()
     		var count = 0;
     		for (var i = 0 ; i<items.length ; ++i)
     		{
-
         		items[i].click();
 				++count;
 
     		}
+    		expect(items.length).toBe(count);
     		return count;
     	});	
 	

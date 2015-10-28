@@ -24,7 +24,7 @@ if [ $# == 1 ];
 		printf "Running for ${platform} \e[0m\n"
 		# ./scripts/ug_build.sh android
 		gulp replace --env=localdev --page=$startpage --ip="$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')"
-		ionic run android -clr --device
+		ionic run android -clr --device --gradleArg=-q
 	fi
 
 	if [ $platform == "ios" ]; then

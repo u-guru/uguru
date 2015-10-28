@@ -15,15 +15,21 @@ angular.module('uguru.directives')
 				$timeout.cancel(promise);
 				promise = $timeout(function throttleTimeout() {
 					last = now;
-					$scope.$apply(function() {
-					  handler($scope);
-					});
+					$timeout(function() {
+						handler($scope);
+					}, 0);
+					// $scope.$apply(function() {
+					//   handler($scope);
+					// });
 				}, threshhold);
 			} else {
 				last = now;
-				$scope.$apply(function() {
-				  handler($scope);
-				});
+				$timeout(function() {
+					handler($scope);
+				}, 0);
+				// $scope.$apply(function() {
+				//   handler($scope);
+				// });
 			}
 		}
 	}

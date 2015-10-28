@@ -258,7 +258,7 @@ def team():
     return render_template("web/pages/team.html", team_members=team_members)
 
 @app.route('/support-only/')
-def team():
+def support_only():
     return render_template("web/pages/support_only.html")
 
 @app.route('/staging/profile')
