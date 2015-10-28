@@ -1,14 +1,21 @@
-var IP = '192.168.0.111'
+var IP = '192.168.0.101'
 // var str = ['1920x1080','1366x768','1280x1024','1280x800' ,'1024x768', '1440x900', '1600x900', '1680x1050', '1920x1200', '1360x768','320×480','320×568','375×667','414×736']
-// var getSize = function (str) {
-//     // body...
-//     var resloution = {
-//         x : null,
-//         y : null
-//     }
-//     str.split("x")
-// }
-var screenSizes = {}
+var str = ['426x320','320×480','320×568','375×667','414×736','470x320']
+
+var getSize = function (str) {
+    // body...
+    var resloution = {
+        width : 0,
+        height : 0
+    }
+    resloution.width = parseInt(str.split("x")[0])
+    resloution.height = parseInt(str.split("x")[1])
+  return resloution
+}
+var screenSizes = []
+for(var i = 0 ; i < str.length; ++ i)
+  screenSizes.push(str[i]);
+
 var device = 'desktop'
 
 exports.config = {
@@ -21,8 +28,8 @@ exports.config = {
          // },
           multiCapabilities: [
           {'browserName': 'chrome'},
-          {'browserName': 'safari'} ,
-          {'browserName': 'firefox'},
+          // {'browserName': 'safari'} ,
+          // {'browserName': 'firefox'},
           // {
           //  'browserName': 'phantomjs'
           //  'phantomjs.binary.path': require('phantomjs').path,
@@ -39,9 +46,11 @@ exports.config = {
         //   //team : '../test_case/Release_One_Web/team/team.js',
           
         // },
-          specs:
+        specs:
         [
-          '../e2e/workflows/workflow#*.js',    
+          // '../e2e/workflows/workflow#*.js',    
+          '../e2e/desktop/access/accesscode.js',    
+
         ],
           suites:
         {
@@ -261,6 +270,12 @@ exports.config = {
                          ]
 
         },
+        params: {
+                  screenSize : {
+                                  w : 320,
+                                  h : 426
+                               }
+                },
         // resultJsonOutputFile: '../test_case/Release_One_Web/result.json',
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
@@ -322,12 +337,13 @@ exports.config = {
             global.EC  = protractor.ExpectedConditions;
             global.localhost = IP
             global.device = device
+            global.screenlist = screenSizes
+
             // browser.manage().deleteAllCookies();
             // browser.executeScript('window.sessionStorage.clear();');
             // browser.executeScript('window.localStorage.clear();');
-            // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
-            // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
-            browser.driver.manage().window().setSize(414, 736);
+            console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
+            browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
 
             browser.get("http://"+localhost+":8100/#/");
                          // browser.get("http://localhost:8100/#/")
