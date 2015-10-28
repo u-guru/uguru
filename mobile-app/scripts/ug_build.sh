@@ -98,6 +98,7 @@ if [ $# == 1 ];
 		printf '\e[0;36mNavigate to the Capabilities tab and turn on Push Notifications. \e[0m\n'
 		printf '\e[0;36mFor xCode 7+: Make sure to disable "ENABLE_BITCODE" in build settings. \e[0m\n'
 		printf '\e[0;36mSet the correct signing identity and build with xCode. \e[0m\n'
+		printf "\e[0;36mIf using Nick's account then set bundle ID to: com.beta.college.Uguru \e[0m\n"
 		open ./platforms/ios/Uguru.xcodeproj
 	fi
 
