@@ -1,4 +1,3 @@
-<<<<<<< HEAD:mobile-app/test/config/desktop.config.js
 var IP = '192.168.0.101'
 // var str = ['1920x1080','1366x768','1280x1024','1280x800' ,'1024x768', '1440x900', '1600x900', '1680x1050', '1920x1200', '1360x768','320×480','320×568','375×667','414×736']
 var str = ['426x320','320×480','320×568','375×667','414×736','470x320']
@@ -19,10 +18,13 @@ for(var i = 0 ; i < str.length; ++ i)
 
 var device = 'desktop'
 
-=======
-var IP = '192.168.0.113'
->>>>>>> 4aa967f5479119b1b93e4d30b346a328a52e3990:mobile-app/test/config/web.config.js
 exports.config = {
+     params: {
+                screenSize : {
+                                w : 414,
+                                h : 736
+                             }
+              },
     framework: 'jasmine2',
      seleniumAddress: 'http://localhost:4444/wd/hub',
 
@@ -52,13 +54,8 @@ exports.config = {
         // },
         specs:
         [
-<<<<<<< HEAD:mobile-app/test/config/desktop.config.js
-          // '../e2e/workflows/workflow#*.js',    
-          '../e2e/desktop/access/accesscode.js',    
-
-=======
-          '../e2e/workflows/workflow#*.js',
->>>>>>> 4aa967f5479119b1b93e4d30b346a328a52e3990:mobile-app/test/config/web.config.js
+          '../e2e/desktop/workflow#3.js',    
+          // '../e2e/desktop/access/checkAccessOverlay.js',    
         ],
           suites:
         {
@@ -278,12 +275,7 @@ exports.config = {
                          ]
 
         },
-        params: {
-                  screenSize : {
-                                  w : 320,
-                                  h : 426
-                               }
-                },
+   
         // resultJsonOutputFile: '../test_case/Release_One_Web/result.json',
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
