@@ -1,4 +1,4 @@
-var IP = '192.168.0.113'
+var IP = '192.168.0.107'
 // var str = ['1920x1080','1366x768','1280x1024','1280x800' ,'1024x768', '1440x900', '1600x900', '1680x1050', '1920x1200', '1360x768','320×480','320×568','375×667','414×736']
 // var getSize = function (str) {
 //     // body...
@@ -326,7 +326,9 @@ exports.config = {
             // browser.executeScript('window.localStorage.clear();');
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
-            browser.driver.manage().window().setSize(414, 736);
+
+            //Samir Set windows size
+            browser.driver.manage().window().setSize(1600, 1050);
 
             browser.get("http://"+localhost+":8100/#/");
                          // browser.get("http://localhost:8100/#/")
