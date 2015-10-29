@@ -74,7 +74,7 @@ gulp.task('replace', function() {
         },
         {
           match: /android:theme="@android:style\/Theme.Black.NoTitleBar/g,
-          replacement: 'android:theme="@android:style/Theme.Light.NoTitleBar'
+          replacement: 'android:theme="@android:style/Theme.Translucent.NoTitleBar'
         }
         ]
       }))

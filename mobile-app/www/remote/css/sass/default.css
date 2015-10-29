@@ -1371,26 +1371,26 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
   background: #517fa4;
 }
 
-header {
+header:not(.desktop-header) {
   min-height: 50px;
   position: relative;
 }
 
-header * {
+header:not(.desktop-header) * {
   z-index: 9;
 }
 
-header.compressed-search {
+header:not(.desktop-header).compressed-search {
   height: 50px !important;
 }
 
-header.compressed-search .header-nav, header.compressed-search h1, header.compressed-search *[class*="header"] {
+header:not(.desktop-header).compressed-search .header-nav, header:not(.desktop-header).compressed-search h1, header:not(.desktop-header).compressed-search *[class*="header"] {
   filter: alpha(opacity=0);
   opacity: 0;
   height: 0;
 }
 
-header .header-nav {
+header:not(.desktop-header) .header-nav {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1408,7 +1408,7 @@ header .header-nav {
   z-index: 11;
 }
 
-header .header-nav a {
+header:not(.desktop-header) .header-nav a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1420,19 +1420,19 @@ header .header-nav a {
   height: 50px;
 }
 
-header .header-nav a h1 {
+header:not(.desktop-header) .header-nav a h1 {
   width: 100%;
   text-align: left;
   padding: 15px 0;
 }
 
-header .header-nav a svg {
+header:not(.desktop-header) .header-nav a svg {
   width: 28px;
   height: 28px;
   margin: 0 8px;
 }
 
-header .header-nav a svg path {
+header:not(.desktop-header) .header-nav a svg path {
   fill: none;
   stroke: white;
   stroke-width: 7px;
@@ -1440,16 +1440,16 @@ header .header-nav a svg path {
   stroke-linejoin: round;
 }
 
-header .header-nav a.active, header .header-nav a:active {
+header:not(.desktop-header) .header-nav a.active, header:not(.desktop-header) .header-nav a:active {
   filter: alpha(opacity=75);
   opacity: 0.75;
 }
 
-header .header-nav .header-nav-next h1 {
+header:not(.desktop-header) .header-nav .header-nav-next h1 {
   text-align: right;
 }
 
-header .header-nav-back, header .header-down {
+header:not(.desktop-header) .header-nav-back, header:not(.desktop-header) .header-down {
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -1458,7 +1458,7 @@ header .header-nav-back, header .header-down {
   justify-content: flex-start;
 }
 
-header .header-close, header .header-menu, header .header-nav-next, header .header-up {
+header:not(.desktop-header) .header-close, header:not(.desktop-header) .header-menu, header:not(.desktop-header) .header-nav-next, header:not(.desktop-header) .header-up {
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -1467,27 +1467,27 @@ header .header-close, header .header-menu, header .header-nav-next, header .head
   justify-content: flex-end;
 }
 
-header .header-close h1:only-child, header .header-menu h1:only-child, header .header-nav-next h1:only-child, header .header-up h1:only-child {
+header:not(.desktop-header) .header-close h1:only-child, header:not(.desktop-header) .header-menu h1:only-child, header:not(.desktop-header) .header-nav-next h1:only-child, header:not(.desktop-header) .header-up h1:only-child {
   padding: 0 15px;
 }
 
-header .header-close, header .header-menu, header .header-down, header .header-up {
+header:not(.desktop-header) .header-close, header:not(.desktop-header) .header-menu, header:not(.desktop-header) .header-down, header:not(.desktop-header) .header-up {
   width: 100% !important;
 }
 
-header .header-close.half, header .header-menu.half, header .header-down.half, header .header-up.half {
+header:not(.desktop-header) .header-close.half, header:not(.desktop-header) .header-menu.half, header:not(.desktop-header) .header-down.half, header:not(.desktop-header) .header-up.half {
   width: 50% !important;
 }
 
-header .header-close svg, header .header-menu svg, header .header-down svg, header .header-up svg {
+header:not(.desktop-header) .header-close svg, header:not(.desktop-header) .header-menu svg, header:not(.desktop-header) .header-down svg, header:not(.desktop-header) .header-up svg {
   padding: 4px 0;
 }
 
-header .header-menu svg {
+header:not(.desktop-header) .header-menu svg {
   padding: 4px !important;
 }
 
-header .header-close svg {
+header:not(.desktop-header) .header-close svg {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -1495,7 +1495,7 @@ header .header-close svg {
   transform: rotate(45deg);
 }
 
-header h1 {
+header:not(.desktop-header) h1 {
   position: relative;
   padding: 15px;
   font-size: 20px;
@@ -1504,15 +1504,15 @@ header h1 {
   text-transform: uppercase;
 }
 
-header.third h1 {
+header:not(.desktop-header).third h1 {
   font-size: 22px;
 }
 
-header.third:not(.flex-center-wrap) h1, header .header-nav h1 {
+header:not(.desktop-header).third:not(.flex-center-wrap) h1, header:not(.desktop-header) .header-nav h1 {
   font-size: 20px;
 }
 
-header:before {
+header:not(.desktop-header):before {
   filter: alpha(opacity=30);
   opacity: 0.3;
   content: "";
@@ -1524,11 +1524,11 @@ header:before {
   height: 100%;
 }
 
-header[class*="bg-white"] {
+header:not(.desktop-header)[class*="bg-white"] {
   color: #40484B;
 }
 
-header[class*="bg-white"] svg path {
+header:not(.desktop-header)[class*="bg-white"] svg path {
   stroke: #40484B !important;
 }
 

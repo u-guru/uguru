@@ -137,6 +137,12 @@ def admin_stats_remaining():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
 
+@app.route('/admin/')
+@app.route('/admin/team/action-items')
+def admin_milestones_tasks():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/team-action-items.html")
 
 @app.route('/admin/stats/universities/<uni_id>')
 def admin_statistics_one_university(uni_id):
@@ -187,7 +193,7 @@ def admin_login():
         session.pop('error')
 
     if session.get('admin'):
-        return redirect(url_for('admin_team_calendar'))
+        return redirect(url_for('admin_milestones_tasks'))
 
     return render_template("admin/login.html", error=error)
 
@@ -602,7 +608,6 @@ def admin_dev_api():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.development.api.html")
 
-@app.route('/admin/')
 @app.route('/admin/team/')
 @app.route('/admin/team/calendar/')
 def admin_team_calendar():
@@ -850,6 +855,16 @@ def android_app():
 @app.route('/windows/app/')
 def windows_app():
     return redirect('https://www.windowsphone.com/en-us/store/app/uguru/8df574bc-cbdd-4d6c-af3f-a7b2fe259494')
+
+@app.route('/apps/gpa/')
+def app_route_gpa():
+    import os
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/gpa-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/remote/index.html')
 
 @app.route('/production/app/')
 @app.route('/app/production/')

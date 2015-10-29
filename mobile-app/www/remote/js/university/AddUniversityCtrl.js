@@ -194,7 +194,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       }, 50);
 
-      University.selectedID = university.id;
+      University.selected = university;
 
       $scope.user.university_id = university.id;
       $scope.user.university = university;

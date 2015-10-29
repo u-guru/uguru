@@ -194,7 +194,10 @@ angular.module('uguru.util.controllers')
             console.log('retrieving majors for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
-                Category.mapActiveToSubcategories(Category.categories, $scope.user);
+
+                if ($scope.user && $scope.user.id) {
+                    Category.mapActiveToSubcategories(Category.categories, $scope.user);
+                }
 
 
                 $scope.categories = Category.categories.slice();
@@ -206,7 +209,7 @@ angular.module('uguru.util.controllers')
                 console.log("Categories NOT successfully loaded");
             })
         }
-        
+
         var categoriesCallback = function(categories) {
             $scope.categories = categories;
         }
@@ -296,7 +299,19 @@ angular.module('uguru.util.controllers')
             }
         }
 
+        sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * .80;
+
         $scope.toggleRightSideMenu = function() {
+            console.log("sideMenuWidth should be: " + sideMenuWidth);
+            var sideMenu = document.querySelectorAll('ion-side-menu')[0];
+
+            if (sideMenu.style.width === (sideMenuWidth + 'px')) {
+                sideMenu.style.width = 0 + 'px';
+            } else {
+                sideMenu.style.width = sideMenuWidth + 'px';
+            }
+
+
             $ionicSideMenuDelegate.toggleRight();
             $timeout(function() {
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();

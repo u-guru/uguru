@@ -1,5 +1,5 @@
 <u-slide-box id='access-uni-slide' class='full-y' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university">
-	<u-slide ng-if='storedAccess' ng-show='!isDesktopMode()'>
+	<u-slide ng-if='storedAccess'>
 		<div ng-include="img_base + BASE + 'templates/access.html'"></div>
 	</u-slide>
 	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
