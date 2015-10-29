@@ -1,0 +1,65 @@
+<ion-modal-view  hide-nav-bar='true' class='uguru-view signup-modal bg-charcoal'>
+
+<ion-content class='full-height bg-charcoal' scroll='false'>
+<section id="account" class="onboarding full-xy">
+
+
+	<header class="third flex-center">
+		<h1 class="text-center">Add Courses</h1>
+		<div class="header-nav">
+			<a class="header-nav-back" ng-click='closeModal("course")'>
+				<svg viewBox="0 0 100 100">
+					<path d="M14,32 L50,68 L86,32"></path>
+				</svg>
+				<h1>Back</h1>
+			</a>
+			
+		</div>
+		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy" keyboard-focus>
+			<input type="search" id='course-input-1' placeholder="Search Courses" ng-model="search_text.course">
+			<a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.course.length > 0'>
+                <i class='icon ion-close-circled'> </i>
+            </a>
+		</div>
+	</header>
+
+	<style>
+	.grade-button {
+		border: solid 1px black;
+	}
+	</style>
+
+	<div id="grade-options" style="display:flex;">
+		<button class="grade-button" >A</button>
+		<button class="grade-button">B</button>
+		<button class="grade-button">C</button>
+		<button class="grade-button">D</button>
+		<button class="grade-button">F</button>
+
+	</div>
+
+
+	<div id="account-form" class="onboarding-list bg-slate">
+		<div class="relative full-x">
+			<input id='signup-name'class="input-ghost name-input" type="number"  placeholder="Credits" >
+			
+		</div>
+		<div class="relative full-x">
+			<
+			<input class="input-ghost" id='email-input'  type="number" placeholder="Year">
+			
+		</div>
+		<div class="relative full-x">
+			<input class="input-ghost" type="password" id='password-input' type="number" placeholder="Session">
+			
+		</div>
+		
+		<div id="social-login">
+			<button class="weight-600 bg-shamrock m15bottom" ng-click='submitCourse()'>Submit</button>
+		</div>
+		
+	</div>
+</section>
+</ion-content>
+
+</ion-modal-view>

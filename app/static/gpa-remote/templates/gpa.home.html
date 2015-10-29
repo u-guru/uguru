@@ -1,0 +1,28 @@
+<ion-view class='uguru-view home-view'>
+    <!-- <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a> -->
+    <section id="student-home" class="request full-xy student-home">
+        <header>
+            <h1 class="text-center">GPA Calculator</h1>
+        </header>
+
+        <div id='student-home-map-container'>
+        </div>
+
+        <div class="trending-container">
+        	<h1 class="text-center bg-lake-80p">{{averageGPA}}</h1>
+        	<h1 class="text-center bg-lake-80p">{{slogan}}</h1>
+        </div>
+
+        <div id="home-content" class="trending-container">
+            
+	            <button class="home-button bg-lake-80p" thr-click="openModal('course')">Add Courses</button>
+	        
+
+        </div>
+    </section>
+
+
+
+    <!-- Make this into a directive -->
+    <div class='uguru-popup' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.popup.html'"> </div>
+</ion-view>

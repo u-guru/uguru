@@ -5,9 +5,13 @@ var uguruPrioritizedTeamBoards;
 var total_sum = 0;
 var total_items_complete= 0;
 var total_lists = 0;
+var memberDict = {};
+var projectLookup = {};
+var currentMember;
 
 
     var getAllActiveBoards = function(organization_id) {
+
        Trello.get("organizations/"+ organization_id + "/boards", function(boards) {
         uguruPrioritizedTeamBoards = boards;
         starredBoards = processAllPrioritizedBoards(uguruPrioritizedTeamBoards);
@@ -17,11 +21,30 @@ var total_lists = 0;
     }
 
 
-    // var generateTodoList = function() {
-    //   "<ul class="todo-list">
+    var getTotalChecklistItems = function (board_id) {
+      Trello.get('boards/' + board_id + '/' + 'cards', {"filter": "visible", "checkItemStates":true, "checklists":"all"}, function(cards) {
+        index = 0;
+        var allCheckItems = [];
+        sum_complete = 0;
+        sum_incomplete = 0
+        for (var i =0 ; i <cards.length; i++) {
+          var indexCard = cards[i]
+          if (indexCard.checklists && indexCard.checklists.length) {
+            var indexCheckItems = indexCard.checklists[0].checkItems;
+            for (var j =0 ; j < indexCheckItems.length; j++) {
+              var item = indexCheckItems[j];
+              if (item.state === "incomplete") {
+                sum_incomplete += 1;
+              } else {
+                sum_complete += 1;
+              }
+            }
 
-    //   </ul>"
-    // }
+          }
+        }
+        console.log(sum_complete, sum_incomplete);
+      });
+    }
 
     var processAllPrioritizedBoards = function(boards) {
       var starredBoards = []
@@ -29,7 +52,8 @@ var total_lists = 0;
         var indexBoard = boards[i];
         if (indexBoard.starred && !indexBoard.closed) {
           starredBoards.push(indexBoard);
-          console.log(indexBoard);
+          console.log('this board is starred', indexBoard.id);
+          getTotalChecklistItems(indexBoard.id);
 
           var processListsCallback = function(lists) {
             total_lists = lists.length;
@@ -55,33 +79,53 @@ var total_lists = 0;
     }
 
     var processMembers = function(board_id, member) {
+      memberDict[member.fullName] = {
+        id: member.id,
+        tasks: {completed:0, remaining:0},
+        projects:{}
+      };
       Trello.get("boards/" + board_id + '/members/' + member.id + '/cards', {list_fields: "all", list:"true", checklists:"all"}, function(cards) {
-        console.log('members complete from processing', cards);
         sum = 0;
-        var allItems = []
+        var allItems = [];
+
           correct = 0;
           for (var i =0; i < cards.length; i ++) {
+            memberDict[member.fullName].projects[cards[i].list.name] = true;
+            // console.log(cards[i].list.name);
             card_checklists = cards[i].checklists;
             for (var j = 0; j < card_checklists.length; j++) {
               checklist = card_checklists[j].checkItems;
               for (var k = 0; k < checklist.length; k++) {
+                checklist[k].project = cards[i].list.name;
                 allItems.push(checklist[k]);
                 if (checklist[k].state === "complete") {
                   correct += 1;
+                  memberDict[member.fullName].tasks.completed += 1;
+                } else {
+                  memberDict[member.fullName].tasks.remaining += 1;
                 }
               }
               sum += checklist.length;
             }
           }
+          console.log(memberDict[member.fullName].projects, memberDict[member.fullName].tasks.completed, memberDict[member.fullName].tasks.remaining);
           totalTodos = sum;
           totalCompleted = correct;
+
           var todoListDiv = createCreateTodoListDiv(member, totalTodos, totalCompleted, allItems)
 
-          $('#members-container').append(todoListDiv);
-          setTimeout(function() {
-            console.log('initiating the iCheck plugin');
-            initiCheckPlugin();
-          }, 1000);
+            console.log(member.fullName)
+            if (member.id !== currentMember.id) {
+              $('#members-container').append(todoListDiv);
+            } else {
+              $('#current-members-container').append(todoListDiv);
+            }
+
+            setTimeout(function() {
+              initiCheckPlugin();
+
+            }, 1000);
+
       })
     }
 
@@ -102,10 +146,8 @@ var total_lists = 0;
 
       $(".todo-list").todolist({
         onCheck: function (ele) {
-          console.log("The element has been checked")
         },
         onUncheck: function (ele) {
-          console.log("The element has been unchecked")
         }
       });
 
@@ -114,9 +156,7 @@ var total_lists = 0;
     var initAndAppendDayProject = function(project_name, total_items, total_complete, index) {
       var div = createDayProjectDiv(project_name, total_items, total_complete, index);
       $('#projects-wrapper').append(div);
-      console.log($('#projects-wrapper').children().length, total_lists)
         if ($('#projects-wrapper').children().length === total_lists) {
-          console.log('creating full day div...', total_sum);
           var div = createFullDayDiv(total_sum);
           $("#full-progress-wrapper .col-md-12").append(div);
         }
@@ -124,7 +164,8 @@ var total_lists = 0;
 
     var colors = ['olive', 'teal', 'maroon', 'orange', 'navy'];
     var chooseRandomDivColor = function(index) {
-      return colors[index]
+      var projectColor = colors[index]
+      return projectColor
     }
 
     function getRandomizer(bottom, top) {
@@ -143,6 +184,7 @@ var total_lists = 0;
       total_sum += total_items;
       var percentage;
       var randomColor = chooseRandomDivColor(index);
+      projectLookup[project_name] = randomColor;
       if (total_complete == 0) {
         percentage = 0;
       } else {
@@ -157,9 +199,10 @@ var total_lists = 0;
 
 
     var createTodoListItemElem = function(checkItem, localColor) {
-      console.log(checkItem);
-      return $('<li><span class="handle"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i>\
-        </span><input type="checkbox" value="" name=""><span class="text">' + checkItem.name + '</span></li>')
+
+      var projectDiv = '<small class="label bg-' + projectLookup[checkItem.project]  +'" style="position:absolute; right:5%; font-size:14px;"></i>'+checkItem.project+'</small>'
+      return $('<li style="position:relative; width:100%;"><span class="handle"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i>\
+        </span><input type="checkbox" value="" name=""><span class="text">' + checkItem.name + projectDiv + '</span></li>')
     }
 
     var createCreateTodoListDiv = function(member, total_items, correct, items_arr) {
@@ -167,7 +210,6 @@ var total_lists = 0;
       var divElem = $('<div class="col-md-6 member-todo" style="min-height:250px;"><div class="box-body"></div></div>');
 
       var ulElem = $('<ul class="todo-list"></ul>');
-      console.log(items_arr);
       for (var i = 0; i < items_arr.length; i++) {
         ulElem.append(createTodoListItemElem(items_arr[i]));
       }
@@ -175,6 +217,8 @@ var total_lists = 0;
 
       $(divElem).prepend($('<div class="body-header"><h3 style="text-align:center;">' + member.fullName +'</h3></div>'));
       $(divElem).children('.box-body:first').append(ulElem);
+
+
       return $(divElem);
 
     }
@@ -210,7 +254,6 @@ var total_lists = 0;
     var getBoardMembers = function(arr_boards) {
       firstBoard = 0;
       Trello.get("organizations/" + organization_id + '/members', function(members) {
-        console.log('members', members);
        });
     }
 
@@ -221,7 +264,7 @@ var total_lists = 0;
     getAllActiveBoards(DEFAULT_UGURU_ORG_API_KEY);
 
     Trello.members.get("me", function(member){
-        console.log('ALL ABOUT ME', member);
+        currentMember = member;
         $("#fullName").text(member.fullName);
 
         var $cards = $("<div>")
