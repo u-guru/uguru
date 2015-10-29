@@ -33,6 +33,7 @@ angular.module('uguru.util.controllers')
     'KeyboardService',
     'ModalService',
     'Github',
+    'LoadingService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -40,7 +41,7 @@ angular.module('uguru.util.controllers')
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
-         KeyboardService, ModalService, Github) {
+         KeyboardService, ModalService, Github, LoadingService) {
 
 
         var bodyRect;
@@ -210,7 +211,7 @@ angular.module('uguru.util.controllers')
 
         $scope.logoutUser = function(skipShowAlert) {
             if (skipShowAlert || confirm('Are you sure you want to log out?')) {
-                  $scope.loader.show();
+                  LoadingService.show();
                   $localstorage.setObject('user', []);
                   $localstorage.set('access', false);
                   $localstorage.setObject('appOnboarding', null);
@@ -228,7 +229,7 @@ angular.module('uguru.util.controllers')
                         $scope.user.createObj = User.createObj;
                         $scope.user.updateObj = User.updateObj;
                         $scope.root.vars.settings = {icons : {profile : true}};
-                        $scope.loader.showSuccess('You have been successfully logged out!', 2500);
+                        LoadingService.showSuccess('You have been successfully logged out!', 2500);
                         $state.go('^.university');
                         $ionicSideMenuDelegate.toggleRight();
                   }, 1000);
@@ -449,11 +450,11 @@ angular.module('uguru.util.controllers')
                     return;
                 }
 
-                $scope.loader.showSuccess('Connection Detected', 2000);
+                LoadingService.showSuccess('Connection Detected', 2000);
                 $scope.transitionOfflineToOnline = true;
                 $timeout(function() {
                     if ($scope.transitionOfflineToOnline) {
-                        $scope.loader.showAmbig();
+                        LoadingService.showAmbig();
                         // fuck it if it hasn't been set false they are probably offline
                         $timeout(function() {
                             $state.go('^.offline');
@@ -462,7 +463,7 @@ angular.module('uguru.util.controllers')
                 }, 2000);
                 var transitionToOnline = function() {
                     $timeout(function() {
-                        $scope.loader.hide();
+                        LoadingService.hide();
                         $scope.transitionOfflineToOnline = null;
                     }, 1000);
                     if ($scope.user && $scope.root.vars.guru_mode) {
@@ -478,10 +479,10 @@ angular.module('uguru.util.controllers')
             document.addEventListener("offline", function() {
 
                 $scope.checkIfOnline = function() {
-                    $scope.loader.showAmbig();
+                    LoadingService.showAmbig();
                     $timeout(function() {
                         //purposely showing the old one --> need to refactor to loader.fail..
-                        $scope.loader.hide();
+                        LoadingService.hide();
                         alert('Sorry - no connect detected! We miss you!');
                     }, 2000);
                 };
@@ -499,7 +500,7 @@ angular.module('uguru.util.controllers')
         //if previous in guru mode
         if ($scope.user && $scope.user.guru_mode) {
 
-            $scope.loader.show();
+            LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {
                 $state.go('^.' + _startpage);
@@ -508,12 +509,12 @@ angular.module('uguru.util.controllers')
             }
 
             $timeout(function() {
-                $scope.loader.hide();
+                LoadingService.hide();
             }, 1000);
 
         }
         else if ($scope.user && $scope.user.university_id) {
-            $scope.loader.show();
+            LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {
                 $state.go('^.' + _startpage);
@@ -521,7 +522,7 @@ angular.module('uguru.util.controllers')
                 $state.go('^.home');
             }
             $timeout(function() {
-                $scope.loader.hide();
+                LoadingService.hide();
             }, 1000);
         }
 

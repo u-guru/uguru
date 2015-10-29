@@ -12,14 +12,15 @@ angular.module('uguru.onboarding.controllers')
     '$ionicPlatform',
     '$cordovaStatusbar',
     '$cordovaPreferences',
+    'LoadingService',
   function($scope, $state, $timeout, $localstorage,
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-     $ionicPlatform, $cordovaStatusbar, $cordovaPreferences) {
+     $ionicPlatform, $cordovaStatusbar, $cordovaPreferences, LoadingService) {
 
 
 
     var failureCallback = function($scope, $state) {
-        $scope.loader.hide();
+        LoadingService.hide();
         //mixpanel track
         mixpanel.track("Onboarding.prompt");
       $state.go('^.prompt-location');
@@ -37,7 +38,7 @@ angular.module('uguru.onboarding.controllers')
     }
 
     var callbackSuccess = function($scope, $state) {
-        $scope.loader.hide();
+        LoadingService.hide();
         //mixpanel track
         mixpanel.track("Onboarding.nearest");
       $state.go('^.onboarding-nearest-university');
@@ -46,7 +47,7 @@ angular.module('uguru.onboarding.controllers')
     $scope.togglePersonGuru = function() {
       //if user is ios.. prompt
 
-      // $scope.loader.show();
+      // LoadingService.show();
 
       if ($scope.platform.ios || !$scope.platform.mobile) {
 
@@ -197,8 +198,8 @@ angular.module('uguru.onboarding.controllers')
     });
 
     $timeout(function() {
-      if ($scope.loader) {
-        $scope.loader.hide();
+      if (LoadingService) {
+        LoadingService.hide();
       }
     }, 500);
 }]);

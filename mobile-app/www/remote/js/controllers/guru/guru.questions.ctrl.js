@@ -17,10 +17,11 @@ angular.module('uguru.guru.controllers')
   '$ionicBackdrop',
   '$ionicActionSheet',
   'Camera',
+  'LoadingService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicActionSheet,
-  Camera)     {
+  Camera, LoadingService)     {
 
     $scope.file_index = 0;
 
@@ -54,7 +55,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         // $scope.user.pending_proposals.push(proposalObj);
 
-        $scope.loader.show();
+        LoadingService.show();
 
         $state.go('^.guru');
 
@@ -64,7 +65,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         var successCallback = function() {
           $timeout(function() {
 
-              $scope.loader.hide();
+              LoadingService.hide();
               $scope.questionsModal.remove();
 
           }, 1000)

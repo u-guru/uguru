@@ -14,9 +14,10 @@ angular.module('uguru.guru.controllers')
   'Geolocation',
   '$ionicHistory',
   '$cordovaActionSheet',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
-  Geolocation, $ionicHistory, $cordovaActionSheet) {
+  Geolocation, $ionicHistory, $cordovaActionSheet, LoadingService) {
 
     $scope.session = JSON.parse($stateParams.sessionObj);
     $scope.set_timer_mode = false;
@@ -251,12 +252,12 @@ angular.module('uguru.guru.controllers')
 
         var updateObjCallback = function() {
           $scope.root.vars.check_for_ratings_modal = true;
-          $scope.loader.hide();
+          LoadingService.hide();
             //Mixpanel Track
           mixpanel.track("Giri.home");
           $state.go('^.guru-home');
         }
-        $scope.loader.show();
+        LoadingService.show();
         $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, updateObjCallback);
     }
 

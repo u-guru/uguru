@@ -14,9 +14,10 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   'uTracker',
   'University',
+  'LoadingService',
   function($rootScope, $scope, $state, $timeout,
   $q, Major, $ionicSideMenuDelegate, Utilities,
-  $localstorage, uTracker, University) {
+  $localstorage, uTracker, University, LoadingService) {
 
 
     $scope.source = University.source;
@@ -87,7 +88,7 @@ angular.module('uguru.util.controllers')
 
         updateDOM();
 
-        //$scope.loader.showSuccess(majorName + ' successfully removed', 1200);
+        //LoadingService.showSuccess(majorName + ' successfully removed', 1200);
       };
 
       $localstorage.setObject('user', $scope.user);

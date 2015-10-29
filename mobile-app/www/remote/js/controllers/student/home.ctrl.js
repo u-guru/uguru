@@ -23,11 +23,12 @@ angular.module('uguru.student.controllers', [])
     '$ionicSlideBoxDelegate',
     'DeviceService',
     'PopupService',
+    'LoadingService',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
-        DeviceService, PopupService) {
+        DeviceService, PopupService, LoadingService) {
 
         $ionicSideMenuDelegate.canDragContent(false);
 
@@ -209,7 +210,7 @@ angular.module('uguru.student.controllers', [])
 
         // $scope.$on('$ionicView.enter', function() {
 
-        //     $scope.loader.hide();
+        //     LoadingService.hide();
 
         //     if (!$scope.mapInitialized && !MapService.studentHomeMap) {
         //         $scope.mapInitialized = true;

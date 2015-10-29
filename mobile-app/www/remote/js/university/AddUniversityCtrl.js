@@ -23,12 +23,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$controller',
   'MapService',
   '$ionicSideMenuDelegate',
+  'LoadingService',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService,
-  $controller, MapService, $ionicSideMenuDelegate) {
+  $controller, MapService, $ionicSideMenuDelegate, LoadingService) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -122,7 +123,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   $scope.goToAccessAdmin = function() {
     $scope.search_text.university = '';
 
-    $scope.loader.showAmbig('[ADMIN] Restarting', 1500);
+    LoadingService.showAmbig('[ADMIN] Restarting', 1500);
     $timeout(function() {
       $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
     },0);
@@ -152,15 +153,15 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
           if ($state.current.name === 'root.home' && $ionicSideMenuDelegate.isOpen()) {
             $scope.user.university = university;
             // MapService.initStudentHomeMap($scope.user);
-            $scope.loader.showAmbig("Saving...", 1000);
+            LoadingService.showAmbig("Saving...", 1000);
             $timeout(function() {
-              $scope.loader.hide();
-              $scope.loader.showSuccess('University changed!', 2000);
-            }, 1000)
+              LoadingService.hide();
+              LoadingService.showSuccess('University changed!', 2000);
+            }, 1000);
 
             $timeout(function() {
               $ionicSideMenuDelegate.toggleRight();
-            }, 1250)
+            }, 1250);
           }
 
           // $timeout(function() {
@@ -185,7 +186,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       });
 
 
-      //$scope.loader.showSuccess('Success', 750);
+      //LoadingService.showSuccess('Success', 750);
 
       University.clearSelected();
       // University.majors = [];
@@ -360,7 +361,7 @@ angular.module('uguru.directives')
     },
     link: link,
     restrict: 'A'
-  }
+  };
 
 
 });

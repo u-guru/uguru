@@ -22,16 +22,17 @@ angular.module('uguru.guru.controllers', [])
   'PopupService',
   '$ionicSlideBoxDelegate',
   'DeviceService',
+  'LoadingService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet, RankingService, TipService, ModalService, PopupService,
-  $ionicSlideBoxDelegate, DeviceService) {
+  $ionicSlideBoxDelegate, DeviceService, LoadingService) {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
     RankingService.refreshRanking(user);
-  }
+  };
 
 
 
@@ -224,12 +225,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.goToStateWithTransition = function(state_name, transition) {
           if (!$scope.user.id) {
-            $scope.loader.showAmbig();
+            LoadingService.showAmbig();
 
             //make it feel like its coming... when really its just signup ;)
             $timeout(function() {
               $scope.openModal('signup');
-              $scope.loader.hide(100);
+              LoadingService.hide(100);
             }, 1000)
             return;
           }

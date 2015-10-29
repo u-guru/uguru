@@ -17,9 +17,10 @@ angular.module('uguru.util.controllers')
   'Utilities',
   'uTracker',
   'Course',
+  'LoadingService',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate, University, Utilities, uTracker, Course) {
+    $ionicSideMenuDelegate, University, Utilities, uTracker, Course, LoadingService) {
 
 
     if (!$scope.user.guru_courses) {
@@ -75,10 +76,10 @@ angular.module('uguru.util.controllers')
 
     $scope.swipeRightGoBack = function() {
       if (confirm('Exit become guru process?')) {
-        $scope.loader.show();
+        LoadingService.show();
         $ionicSideMenuDelegate.toggleRight();
         $timeout(function() {
-          $scope.loader.hide();
+          LoadingService.hide();
         }, 500);
       }
     };
@@ -119,7 +120,7 @@ angular.module('uguru.util.controllers')
         uTracker.track(tracker, 'Course Guru Removed', {
           '$Course': course.name
         });
-        //$scope.loader.showSuccess(course.name + ' successfully removed', 1200);
+        //LoadingService.showSuccess(course.name + ' successfully removed', 1200);
       };
 
       $localstorage.setObject('user', $scope.user);

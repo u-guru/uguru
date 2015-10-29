@@ -13,9 +13,10 @@ angular.module('uguru.guru.controllers')
   '$cordovaKeyboard',
   'University',
   '$ionicSideMenuDelegate',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $q,
-  $cordovaKeyboard, University, $ionicSideMenuDelegate) {
+  $cordovaKeyboard, University, $ionicSideMenuDelegate, LoadingService) {
 
     $scope.hangoutsFriendlyChanged = function() {
       $scope.user.updateAttr('hangouts_friendly', $scope.user, $scope.user.hangouts_friendly, null, $scope);
@@ -49,11 +50,11 @@ angular.module('uguru.guru.controllers')
         if (is_saved) {
           $scope.success.show(0, 1500);
         } else {
-          $scope.loader.show();
+          LoadingService.show();
         }
 
         $timeout(function() {
-          $scope.loader.hide();
+          LoadingService.hide();
         }, 500);
 
         $state.go('^.guru-profile');

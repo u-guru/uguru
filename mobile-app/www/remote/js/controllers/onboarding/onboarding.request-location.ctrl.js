@@ -12,19 +12,20 @@ angular.module('uguru.onboarding.controllers', [])
     '$cordovaGeolocation',
     '$ionicPlatform',
     '$cordovaStatusbar',
+    'LoadingService',
   function($scope, $state, $timeout, $localstorage,
      Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-     $ionicPlatform, $rootScope) {
+     $ionicPlatform, $rootScope, LoadingService) {
 
     var failureCallback = function($scope, $state) {
-        $scope.loader.hide();
+        LoadingService.hide();
         //mixpanel track
         mixpanel.track("Onboarding.prompt");
       $state.go('^.prompt-location');
     }
 
     var callbackSuccess = function($scope, $state) {
-        $scope.loader.hide();
+        LoadingService.hide();
         //mixpanel track
         mixpanel.track("Onboarding.nearest");
         $state.go('^.onboarding-nearest-university');

@@ -11,8 +11,9 @@ angular.module('uguru.util.controllers')
   '$compile',
   '$ionicHistory',
   '$cordovaGeolocation',
+  'LoadingService,'
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $compile, $ionicHistory, $cordovaGeolocation) {
+ 	$ionicModal, $compile, $ionicHistory, $cordovaGeolocation, LoadingService) {
 
 
     $scope.goBackToRequests = function() {
@@ -176,14 +177,14 @@ angular.module('uguru.util.controllers')
       $cordovaGeolocation.getCurrentPosition(posOptions).then(function( position) {
 
         //typical find GPS & show
-          $scope.loader.hide();
+          LoadingService.hide();
           $scope.user.last_position = position.coords;
           $scope.requestPosition = position;
           $scope.showGoogleMap();
       }, function(error) {
 
           //show & let them know we couldn't find it
-          $scope.loader.hide()
+          LoadingService.hide()
           console.log(JSON.stringify(error));
           $scope.requestPosition = { coords: { latitude: $scope.user.university.latitude, longitude: $scope.user.university.longitude}};
           $scope.success.show(0, 2000, "Sorry! We couldn't detect a strong enough GPS signal.");

@@ -12,7 +12,6 @@ angular.module('uguru.guru.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
-  '$ionicPlatform',
   '$ionicSlideBoxDelegate',
   '$ionicViewSwitcher',
   '$window',
@@ -20,17 +19,15 @@ angular.module('uguru.guru.controllers')
   'uTracker',
   'AnimationService',
   'Category',
-  '$ionicSlideBoxDelegate',
   'DeviceService',
   'Utilities',
   '$interval',
   'KeyboardService',
+  'LoadingService',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval,
-    KeyboardService) {
+    $ionicSlideBoxDelegate, $ionicViewSwitcher, $window, University, uTracker, AnimationService,
+    Category,DeviceService, Utilities, $interval, KeyboardService, LoadingService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -100,7 +97,7 @@ angular.module('uguru.guru.controllers')
             var majors = majorsList[0].querySelectorAll('ul li');
             if(majors.length === 0) {
               var timer = 10;
-              $scope.loader.showAmbig('Fetching majors...', (timer * 1000));
+              LoadingService.showAmbig('Fetching majors...', (timer * 1000));
               var counter = 0;
               var startScanner = $interval(function() {
                 University.refresh();
@@ -109,7 +106,7 @@ angular.module('uguru.guru.controllers')
                 counter++;
                 if (majors.length !== 0 || counter === timer) {
                   console.log("stopping loader");
-                  $scope.loader.hide();
+                  LoadingService.hide();
                   stopLoader();
                 }
               }, 1000)
@@ -145,7 +142,7 @@ angular.module('uguru.guru.controllers')
               $rootScope.$emit('refreshCourses');
               $rootScope.$emit('loadCourses');
               var timer = 10;
-              $scope.loader.showAmbig('Fetching courses...', (timer * 1000));
+              LoadingService.showAmbig('Fetching courses...', (timer * 1000));
               var counter = 0;
               var startScanner = $interval(function() {
                 
@@ -156,7 +153,7 @@ angular.module('uguru.guru.controllers')
                 counter++;
                 if (items.length !== 0 || counter === timer) {
                   console.log("stopping loader");
-                  $scope.loader.hide();
+                  LoadingService.hide();
                   stopLoader();
                 }
               }, 1000);

@@ -173,16 +173,16 @@ function DeviceService($cordovaNgCardIO,
       });
       
 
-      if(userAgent.indexOf('wv')!==-1) {
-        onDeviceReady(scope);
-      }
+      // if(userAgent.indexOf('wv')!==-1) {
+      //   onDeviceReady(scope);
+      // }
 
-      if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
-        console.log("detected mobile app");
-        onDeviceReady(scope);
-      } else {
-        console.log("did not detect mobile app");
-      }
+      // if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
+      //   console.log("detected mobile app");
+      //   onDeviceReady(scope);
+      // } else {
+      //   console.log("did not detect mobile app");
+      // }
 	}
 
 	function onDeviceReady(scope) {

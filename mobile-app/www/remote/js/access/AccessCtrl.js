@@ -10,7 +10,6 @@ angular.module('uguru.util.controllers')
   'AnimationService',
   '$templateCache',
   '$ionicSideMenuDelegate',
-  'DeviceService',
   'DownloadService',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
@@ -23,13 +22,13 @@ angular.module('uguru.util.controllers')
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
-  $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
+  $templateCache, $ionicSideMenuDelegate, DownloadService, UniversityMatcher,
   $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate,
   CordovaPushWrapper) {
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
-  $ionicSlideBoxDelegate.enableSlide(false)
+  $ionicSlideBoxDelegate.enableSlide(false);
 
   $scope.access = {
     codeInput: '',
@@ -42,7 +41,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   $scope.testAlert = function() {
     confirm("Can you click on me?");
-  }
+  };
 
 
   $scope.checkAccessCode = function(code) {
@@ -51,11 +50,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $scope.redeemRecentlyPressed = true;
       $timeout(function() {
         $scope.redeemRecentlyPressed = false;
-      }, 500)
+      }, 500);
     }
 
     if(AccessService.validate(code)){
-      $scope.loader.showAmbig();
+      LoadingService.showAmbig();
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
       $scope.redeemRecentlyPressed = false;
@@ -65,18 +64,18 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
       $timeout(function() {
-        $scope.loader.hide();
+        LoadingService.hide();
         $timeout(function() {
-          $scope.loader.showSuccess('Access Granted', 2000);
-        }, 250)
+          LoadingService.showSuccess('Access Granted', 2000);
+        }, 250);
         $timeout(function() {
           $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
         }, 1500);
-      }, 500)
+      }, 500);
 
     } else {
-      $scope.loader.hide();
-      var errorTextElem = document.getElementById('input-error-text')
+      LoadingService.hide();
+      var errorTextElem = document.getElementById('input-error-text');
       errorTextElem.style.opacity = 1;
       errorTextElem.innerHTML = 'Incorrect access code';
       $scope.access.codeInput = '';
@@ -84,10 +83,10 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       //fadeout after 500 seconds
       var postShakeCallback = function() {
             setTimeout(function() {
-              $scope.loader.hide();
+              LoadingService.hide();
               AnimationService.fadeOutElem(errorTextElem, 1000);
             }, 1500);
-      }
+      };
 
 
       AnimationService.shakeElem(errorTextElem, 500, postShakeCallback);
@@ -122,16 +121,16 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
     }
 
-  }
+  };
 
 
 
   $scope.$on('$ionicView.loaded', function() {
 
     AnimationService.accessInput = document.querySelector("access-code-bar");
-    CordovaPushWrapper.registerDevice($scope)
+    CordovaPushWrapper.registerDevice($scope);
 
-  })
+  });
 
   $scope.accessInputOnBlur = function(e) {
     $scope.inputFocused = false;
