@@ -154,6 +154,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/desktop-guru-profile',
     templateUrl: BASE + 'templates/desktop.guru.profile.html'
   }).
+  state('root.desktop-settings', {
+    url:'/desktop-settings',
+    templateUrl: BASE + 'templates/desktop.settings.html'
+  }).
   state('root.guru-languages', {
     url:'/guru-languages',
     templateUrl: BASE + 'templates/guru.languages.container.html',
