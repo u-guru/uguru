@@ -43,7 +43,6 @@ var startRenderMainProgress = false;
 
           }
         }
-        console.log(sum_complete, sum_incomplete);
       });
     }
 
@@ -94,13 +93,14 @@ var startRenderMainProgress = false;
             memberDict[member.fullName].projects[cards[i].list.name] = true;
             // console.log(cards[i].list.name);
             card_checklists = cards[i].checklists;
-            console.log(card_checklists[0])
             for (var j = 0; j < card_checklists.length; j++) {
               checklist = card_checklists[j].checkItems;
               for (var k = 0; k < checklist.length; k++) {
+                checklist[k].checklist_id = card_checklists[j].id;
                 checklist[k].card_index = k;
                 checklist[k].card = cards[i].name;
                 checklist[k].project = cards[i].list.name;
+                checklist[k].value = checklist[k].state === "complete";
                 allItems.push(checklist[k]);
                 if (checklist[k].state === "complete") {
                   correct += 1;
@@ -179,12 +179,32 @@ var startRenderMainProgress = false;
       });
 
       $(".todo-list").todolist({
+
         onCheck: function (ele) {
+          var successCallback = function() {
+            window.location.replace(location.href);
+          }
+          var checkItemId = this.context.className.split('-')[3];
+          var checkListId = this.context.className.split('-')[2];
+          var checkItemName = this.context.className.split('-')[1];
+          updateTrelloChecklist(checkListId, checkItemId, true, checkItemName, successCallback)
         },
         onUncheck: function (ele) {
+          var successCallback = function() {
+            window.location.replace(location.href);
+          }
+          var checkItemId = this.context.className.split('-')[3];
+          var checkListId = this.context.className.split('-')[2];
+          var checkItemName = this.context.className.split('-')[1];
+          updateTrelloChecklist(checkListId, checkItemId, false, checkItemName, successCallback)
         }
       });
 
+    }
+
+    var updateTrelloChecklist = function(checklistId, checkItemId, val, _name, successCallback) {
+      Trello.delete("/checklists/" + checklistId + "/checkItems/" + checkItemId, {}, successCallback);
+      Trello.post("/checklists/" + checklistId + "/checkItems", {checked:val, name:_name}, successCallback);
     }
 
     var initAndAppendDayProject = function(project_name, total_items, total_complete, index) {
@@ -224,19 +244,27 @@ var startRenderMainProgress = false;
       } else {
         percentage = Math.round(floatNum * 100);
       }
-      var div = $('<div class="col-md-4"><div class="info-box bg-' + randomColor +'"><span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span><div class="info-box-content"><span style="font-size:24px; font-weight:700;text-transform:uppercase;"class="info-box-text">\
-        ' + project_name +'</span><span class="info-box-number">' + percentage + '%</span><div class="progress">\
-        <div class="progress-bar" style="width: ' +  percentage + '%"></div></div><span class="progress-description"><strong>\
-        ' + total_complete + '/' + total_items + '</strong> completed</span></div><!-- /.info-box-content --></div> </div>');
+
+
+
+      var div = $("<div class='row'><div class='col-md-12'><div class='clearfix'><span class='pull-left'><h4><small class='label check-item-label bg-" + randomColor +"'>"+ project_name + " </small> &nbsp;&nbsp;&nbsp;<strong style='text-transform:uppercase;position:absolute; left:7px; padding:10px; color:"+randomColor+"; font-weight:700;'>" +  total_complete +' of ' + total_items  +"</strong></h4></span><small class='pull-right' style='font-size:18px; right:10%; top:3.5%;'>" +percentage +"%</small></div><div class='progress xs'><div class='progress-bar progress-bar-green bg-" + randomColor + "' id='total-progress-percent' style=' width:" + percentage+"% ;'></div></div></div>");
+
+      // var div = $('<div class="col-md-4"><div class="info-box bg-' + randomColor +'"><span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span><div class="info-box-content"><span style="font-size:24px; font-weight:700;text-transform:uppercase;"class="info-box-text">\
+      //   ' + project_name +'</span><span class="info-box-number">' + percentage + '%</span><div class="progress">\
+      //   <div class="progress-bar" style="width: ' +  percentage + '%"></div></div><span class="progress-description"><strong>\
+      //   ' + total_complete + '/' + total_items + '</strong> completed</span></div><!-- /.info-box-content --></div> </div>');
       return div;
     }
 
 
     var createTodoListItemElem = function(checkItem, localColor) {
-
+      var checkVal = "";
+      if (checkItem.value) {
+        checkVal = "checked";
+      }
       var projectDiv = '<small class="label check-item-label hide bg-' + projectLookup[checkItem.project]  +'" style="position:absolute; right:5%; font-size:14px;"></i>'+checkItem.project+'</small>'
       return $('<li style="position:relative; width:100%;"><span class="handle"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i>\
-        </span><input type="checkbox" value="" name=""><span style="padding-right:15%; overflow:wrap;">&nbsp;&nbsp;&nbsp;<strong>' + checkItem.card + '</strong><br><span class="text">' + checkItem.name + projectDiv + '</span></span></li>')
+        </span><input class="check-' + checkItem.name + '-' + checkItem.checklist_id + '-' + checkItem.id + '" type="checkbox" value="" name="" '+  checkVal + '><span style="padding-right:15%; overflow:wrap;">&nbsp;&nbsp;&nbsp;<strong>' + checkItem.card + '</strong><br><span class="text">' + checkItem.name + projectDiv + '</span></span></li>')
     }
 
     var createCreateTodoListDiv = function(member, total_items, correct, items_arr) {
@@ -344,7 +372,11 @@ var startRenderMainProgress = false;
 
       Trello.authorize({
             type: "popup",
-            success: onAuthorize
+            success: onAuthorize,
+            scope: {
+              read: true,
+              write: true
+            }
       })
 
     }
