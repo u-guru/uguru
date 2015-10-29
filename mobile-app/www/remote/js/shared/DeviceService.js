@@ -14,12 +14,13 @@ angular
   '$templateCache',
   '$localstorage',
   'PushService',
+  'uTracker',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
 	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
-  University, Version, $ionicHistory, $templateCache, $localstorage, PushService) {
+  University, Version, $ionicHistory, $templateCache, $localstorage, PushService, uTracker) {
 
   var currentDevice;
   var firstTime = true;
@@ -39,15 +40,15 @@ function DeviceService($cordovaNgCardIO,
 		isWeb: isWeb,
     isAndroidDevice: isAndroidDevice,
     isAndroidBrowser: isAndroidBrowser,
-    isAndroid:isAndroid,
-    isIOSDevice:isIOSDevice,
+    isAndroid: isAndroid,
+    isIOSDevice: isIOSDevice,
     isIOSBrowser: isIOSBrowser,
     isIOS: isIOS,
     ios: iOSService,
     getInfo: getInfo,
     checkUpdates: checkUpdates,
     currentDevice: currentDevice
-	}
+	};
 
   function isFirstTime() {
     console.log("isFirstTime");
@@ -150,15 +151,27 @@ function DeviceService($cordovaNgCardIO,
   }
 
 
+  function sendPlatform() {
+
+    if(doesCordovaExist) {
+      return getPlatform();
+    }
+    else {
+      return navigator.userAgent;
+    }
+
+  }
 
 	function readyDevice(scope) {
-
-
 
     var userAgent = navigator.userAgent;
       if (doesCordovaExist()) {
         onDeviceReady(scope);
       }
+      uTracker.track(tracker, {
+        "$Platform": sendPlatform()
+      });
+      
 
       if(userAgent.indexOf('wv')!==-1) {
         onDeviceReady(scope);
@@ -223,14 +236,14 @@ function DeviceService($cordovaNgCardIO,
           if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
             navigator.splashscreen.hide();
           }
-        }, 2000)
+        }, 2000);
 
       return;
     }
     console.log("did not detect local, checking for updates");
 
       //set BASE_URL to prompted one
-      BASE_URL =  url || BASE_URL
+      BASE_URL =  url || BASE_URL;
 
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
@@ -280,7 +293,7 @@ function DeviceService($cordovaNgCardIO,
                   if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
                     navigator.splashscreen.hide();
                   }
-                }, 2000)
+                }, 2000);
 
               }
           },

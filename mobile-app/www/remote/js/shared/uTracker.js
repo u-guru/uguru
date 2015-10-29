@@ -13,7 +13,7 @@ function uTracker($timeout) {
 					'lo', // localytics
 					'ga', // google analytics
 					'hp'  // heap analytics
-					]
+					];
 
 	// https://mixpanel.com/help/questions/articles/how-many-data-points-do-i-have
 	// mixpanel data limits: only consumes data points for sending events. Setting user properties
@@ -25,7 +25,7 @@ function uTracker($timeout) {
 	var defaultTokens = {
 		mp: "cfe34825db9361e6c1d1a16a2b269b07",
 		lo: "e5f4bf9fa4b0cfa312def57-c65b66fe-66bf-11e5-0c2c-00deb82fd81f"
-	}
+	};
 
 	return {
 		init: init,
@@ -98,7 +98,7 @@ function uTracker($timeout) {
 						//     '$Device_Version': DeviceService.getVersion()
 						//     //'$Network_State': navigator.connection.type || 'undefined'
 						// }
-					)
+					);
 					break;
 				case 'lo': 
 					//ll('setCustomDimension', 0, )

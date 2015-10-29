@@ -50,13 +50,13 @@ angular.module('uguru.util.controllers')
             bodyRect = document.querySelector('body').getBoundingClientRect();
             windowHeight = bodyRect.height;
             windowWidth = bodyRect.width;
-        }
+        };
 
         initHeight();
         $scope.window = {
             width:windowWidth,
             height:windowHeight
-        }
+        };
 
         console.log('Window size', $scope.window);
 
@@ -69,7 +69,7 @@ angular.module('uguru.util.controllers')
             height = height || windowHeight;
             width = width || windowWidth;
             return height > desktopHeightLimit && width > desktopWidthLimit;
-        }
+        };
 
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
 
@@ -128,7 +128,7 @@ angular.module('uguru.util.controllers')
         $scope.popup = {
             email_confirm: getButtonLabel('emailConfirm'),
             phone_confirm: getButtonLabel('phoneConfirm')
-        }
+        };
 
 
 
@@ -163,31 +163,11 @@ angular.module('uguru.util.controllers')
         }
 
         if (LOCAL) {
-            $scope.img_base = 'remote/'
+            $scope.img_base = 'remote/';
         } else {
             $scope.img_base = '';
         }
 
-        // $scope.getMajorsForUniversityId = function(uni_id, callback) {
-        //     console.log("university id: " + uni_id);
-        //     University.getMajors(uni_id).then(function(majors){
-
-        //         $timeout(function() {
-        //             console.log(majors.length, 'majors found', uni_id);
-        //             majors = majors.plain()
-        //             University.majors = majors;
-
-        //             if (callback) {
-        //                 callback(majors);
-        //             }
-        //         }, 0);
-
-        //     },
-        //     function() {
-        //         //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
-        //         console.log('Universities NOT successfully loaded');
-        //     })
-        // }
 
 
         $scope.getCategories = function(callback) {
@@ -204,60 +184,16 @@ angular.module('uguru.util.controllers')
             },
             function() {
                 console.log("Categories NOT successfully loaded");
-            })
-        }
+            });
+        };
 
 
-
-        // $scope.getCoursesForUniversityId = function(uni_id, callback) {
-        //     if (!uni_id) {
-        //         return;
-        //     }
-        //     University.getCourses(uni_id).then(function(courses){
-        //         $timeout(function() {
-        //             $scope.data.courses = courses.plain();
-        //             University.courses = courses.plain();
-        //             console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
-        //             callback && callback();
-        //         }, 0);
-        //     },
-        //     function() {
-        //         console.log('Universities NOT successfully loaded');
-        //     })
-        // };
-
-
-
-
-        // if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-        //     console.log('University majors not local, requesting now..');
-        //     $timeout(function() {
-        //         $scope.getMajorsForUniversityId($scope.user.university_id);
-        //     }, 0)
-        // } else {
-        //     console.log(University.majors.length, 'majors loaded');
-        // }
-
-        // if ($scope.user.university_id && !(University.courses && University.courses.length)) {
-        //     console.log('University courses not local, requesting now..');
-
-        //     // $timeout(function() {
-        //     //     $scope.getPopularCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-        //     // }, 0);
-
-        //     $timeout(function() {
-        //         $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-        //     }, 0)
-
-        // } else {
-        //     console.log(University.courses.length, 'majors loaded');
-        // }
 
         if (!Category.categories || Category.categories.length === 0) {
-            console.log('Categories not local, loading now..')
+            console.log('Categories not local, loading now..');
             $timeout(function() {
                 $scope.getCategories();
-            }, 0)
+            }, 0);
         } else {
             console.log(Category.categories.length, 'categories loaded');
         }
@@ -297,9 +233,9 @@ angular.module('uguru.util.controllers')
                         $ionicSideMenuDelegate.toggleRight();
                   }, 1000);
             }
-        }
+        };
 
-        sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * .80; 
+        sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * 0.80; 
 
         $scope.toggleRightSideMenu = function() {
             console.log("sideMenuWidth should be: " + sideMenuWidth);
@@ -347,7 +283,7 @@ angular.module('uguru.util.controllers')
                         Velocity(loaderDiv, cssOptions, animateOptions, animationName);
                     }, 500);
 
-                }, 300)
+                }, 300);
             },
             showAmbig: function(text, duration) {
                 $scope.ambigLoaderText = text || '';
@@ -382,7 +318,7 @@ angular.module('uguru.util.controllers')
                 callback && callback();
             },
             updateSuccessText: function(text) {
-                $scope.successLoaderText = text || 'loading'
+                $scope.successLoaderText = text || 'loading';
             },
             hide: function(delay) {
                 $scope.ambigLoaderText = '';
@@ -390,9 +326,9 @@ angular.module('uguru.util.controllers')
                 $timeout(function() {
                     $ionicLoading.hide();
                     $scope.root.vars.loaderOn = false;
-                }, delay)
+                }, delay);
             }
-        }
+        };
 
         $scope.doRefresh = function(repeat) {
             $scope.root.vars.user_refresh = true;
@@ -405,7 +341,7 @@ angular.module('uguru.util.controllers')
                     $scope.root.vars.user_refresh = false;
                 }
             }
-        }
+        };
 
 
         $scope.togglePaymentSideBarView = function() {
@@ -414,22 +350,21 @@ angular.module('uguru.util.controllers')
             if ($scope.root.vars.show_price_fields) {
                 $timeout(function() {
 
+                    var sidebarInput = document.getElementById('card-input');
+
                     if ($scope.root.vars.price_modal_shown) {
                         $scope.root.vars.price_modal_shown = false;
-                        var sidebar_input = document.getElementById('card-input');
-                        document.getElementsByClassName('sidebar-card-input')
 
-                        sidebar_input.focus();
+                        sidebarInput.focus();
 
                     } else {
-                        var sidebar_input = document.getElementById('card-input');
-
-                        sidebar_input.focus();
+                        sidebarInput.focus();
                     }
 
                 }, 1000);
             }
-        }
+        };
+
         $scope.requestPushNotifications = function() {
 
             if (!$scope.user.push_notifications) {
@@ -437,7 +372,7 @@ angular.module('uguru.util.controllers')
 
                 payload = {
                     'push_notifications': false
-                }
+                };
                 $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 return;
             }
@@ -446,11 +381,11 @@ angular.module('uguru.util.controllers')
                 "badge": true,
                 "sound": true,
                 "alert": true,
-            }
+            };
 
             $cordovaPush.register(iosConfig).then(function(deviceToken) {
                 // Success -- send deviceToken to server, and store for future use
-                console.log("deviceToken: " + deviceToken)
+                console.log("deviceToken: " + deviceToken);
 
                 console.log("Register success " + deviceToken);
 
@@ -465,7 +400,7 @@ angular.module('uguru.util.controllers')
                     payload = {
                         'push_notifications': true,
                         'push_notifications_enabled': true
-                    }
+                    };
                     $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 }
 
@@ -475,7 +410,7 @@ angular.module('uguru.util.controllers')
                 payload = {
                     'push_notifications': false,
                     'push_notifications_enabled': false
-                }
+                };
                 $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 alert('Please turn your Push Notifications ON in your settings.');
             });
@@ -491,7 +426,7 @@ angular.module('uguru.util.controllers')
             }
             arr = new Array(num);
             return arr;
-        }
+        };
 
         $scope.getGrayNumber = function(num) {
             if (!num) {
@@ -502,7 +437,7 @@ angular.module('uguru.util.controllers')
             }
             arr = new Array(5 - num);
             return arr;
-        }
+        };
 
         $scope.checkCourses = function() {
             var is_courses_loaded = $scope.root.vars && $scope.root.vars.courses && $scope.root.vars.courses.length > 0;
@@ -524,7 +459,7 @@ angular.module('uguru.util.controllers')
                     return;
                 }
             }
-        }
+        };
 
         $scope.success = {
             show: function(delay, duration, message) {
@@ -540,12 +475,12 @@ angular.module('uguru.util.controllers')
             hide: function() {
                 $ionicLoading.hide();
             }
-        }
+        };
 
         $scope.platform = {
             mobile: DeviceService.isMobile(),
             web: DeviceService.isWeb()
-        }
+        };
 
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
@@ -554,7 +489,7 @@ angular.module('uguru.util.controllers')
             DeviceService.readyDevice($scope);
             setTimeout(function() {
                 DownloadService.testNetworkSpeed();
-            }, 1000)
+            }, 1000);
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
 
@@ -589,7 +524,7 @@ angular.module('uguru.util.controllers')
                     return;
                 }
 
-                $scope.loader.showSuccess('Connection Detected', 2000)
+                $scope.loader.showSuccess('Connection Detected', 2000);
                 $scope.transitionOfflineToOnline = true;
                 $timeout(function() {
                     if ($scope.transitionOfflineToOnline) {
@@ -597,12 +532,12 @@ angular.module('uguru.util.controllers')
                         // fuck it if it hasn't been set false they are probably offline
                         $timeout(function() {
                             $state.go('^.offline');
-                        }, 5000)
+                        }, 5000);
                     }
-                }, 2000)
+                }, 2000);
                 var transitionToOnline = function() {
                     $timeout(function() {
-                        $scope.loader.hide()
+                        $scope.loader.hide();
                         $scope.transitionOfflineToOnline = null;
                     }, 1000);
                     if ($scope.user && $scope.root.vars.guru_mode) {
@@ -610,7 +545,7 @@ angular.module('uguru.util.controllers')
                     } else {
                         $state.go('^.home');
                     }
-                }
+                };
                 User.getUserFromServer($scope, transitionToOnline, $state);
 
             }, false);
@@ -623,8 +558,8 @@ angular.module('uguru.util.controllers')
                         //purposely showing the old one --> need to refactor to loader.fail..
                         $scope.loader.hide();
                         alert('Sorry - no connect detected! We miss you!');
-                    }, 2000)
-                }
+                    }, 2000);
+                };
 
                 $state.go('^.offline');
 
@@ -644,7 +579,7 @@ angular.module('uguru.util.controllers')
             if (LOCAL) {
                 $state.go('^.' + _startpage);
             } else {
-                $state.go('^.guru')
+                $state.go('^.guru');
             }
 
             $timeout(function() {
