@@ -18,6 +18,9 @@ if [ $# == 1 ];
 		cordova platform rm ios
 		cordova platform rm android		
 		rm -rf plugins/*
+		cp -f ./build_settings_universal/config.xml ./
+		cp -f ./build_settings_universal/constants.js ./www/js/
+		cp -f ./build_settings_universal/constants.js ./www/remote/js/
 
 		cordova plugin add ionic-plugin-keyboard
 		cordova plugin add cordova-plugin-camera
@@ -65,6 +68,9 @@ if [ $# == 1 ];
 		cordova platform rm android
 		cordova platform rm ios
 		rm -rf plugins/*
+		cp -f ./build_settings_universal/config.xml ./
+		cp -f ./build_settings_universal/constants.js ./www/js/
+		cp -f ./build_settings_universal/constants.js ./www/remote/js/
 		
 		cordova plugin add ionic-plugin-keyboard
 		cordova plugin add cordova-plugin-camera
