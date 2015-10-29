@@ -8,6 +8,7 @@ var total_lists = 0;
 var memberDict = {};
 var projectLookup = {};
 var currentMember;
+var startRenderMainProgress = false;
 
 
     var getAllActiveBoards = function(organization_id) {
@@ -93,9 +94,12 @@ var currentMember;
             memberDict[member.fullName].projects[cards[i].list.name] = true;
             // console.log(cards[i].list.name);
             card_checklists = cards[i].checklists;
+            console.log(card_checklists[0])
             for (var j = 0; j < card_checklists.length; j++) {
               checklist = card_checklists[j].checkItems;
               for (var k = 0; k < checklist.length; k++) {
+                checklist[k].card_index = k;
+                checklist[k].card = cards[i].name;
                 checklist[k].project = cards[i].list.name;
                 allItems.push(checklist[k]);
                 if (checklist[k].state === "complete") {
@@ -123,11 +127,41 @@ var currentMember;
 
             setTimeout(function() {
               initiCheckPlugin();
-
             }, 1000);
+            setTimeout(function() {
+              showLabels();
+            }, 2000);
 
       })
     }
+
+    var showLabels = function() {
+
+      var allCheckLabels = document.querySelectorAll('small.check-item-label');
+      for (var i =0 ; i < allCheckLabels.length; i++) {
+        allCheckLabels[i].className += ' show';
+
+        var projectName = allCheckLabels[i].innerHTML;
+        allCheckLabels[i].className += ' bg-' + projectLookup[projectName];
+        if (!startRenderMainProgress) {
+          showMainProgress()
+          startRenderMainProgress = true;
+        }
+
+      }
+
+    }
+
+    var showMainProgress = function() {
+      var progressText = document.querySelector('#total-progress-percent-txt')
+      if (!progressText || !progressText.innerHTML.length) {
+        var percentage = (total_items_complete / total_sum) * 100;
+        $('#total-progress-percent-txt').html(percentage + '%').css('font-size','24px');
+        $('#total-progress-percent').css('width', percentage + '%');
+      }
+    }
+
+
 
     var initiCheckPlugin = function() {
 
@@ -162,7 +196,7 @@ var currentMember;
         }
     }
 
-    var colors = ['olive', 'teal', 'maroon', 'orange', 'navy'];
+    var colors = ['olive', 'teal', 'maroon', 'orange', 'navy', 'black'];
     var chooseRandomDivColor = function(index) {
       var projectColor = colors[index]
       return projectColor
@@ -200,9 +234,9 @@ var currentMember;
 
     var createTodoListItemElem = function(checkItem, localColor) {
 
-      var projectDiv = '<small class="label bg-' + projectLookup[checkItem.project]  +'" style="position:absolute; right:5%; font-size:14px;"></i>'+checkItem.project+'</small>'
+      var projectDiv = '<small class="label check-item-label hide bg-' + projectLookup[checkItem.project]  +'" style="position:absolute; right:5%; font-size:14px;"></i>'+checkItem.project+'</small>'
       return $('<li style="position:relative; width:100%;"><span class="handle"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i>\
-        </span><input type="checkbox" value="" name=""><span class="text">' + checkItem.name + projectDiv + '</span></li>')
+        </span><input type="checkbox" value="" name=""><span style="padding-right:15%; overflow:wrap;">&nbsp;&nbsp;&nbsp;<strong>' + checkItem.card + '</strong><br><span class="text">' + checkItem.name + projectDiv + '</span></span></li>')
     }
 
     var createCreateTodoListDiv = function(member, total_items, correct, items_arr) {

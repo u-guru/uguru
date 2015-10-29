@@ -5,6 +5,18 @@
 
 <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 <link href="/static/admin/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
+<style>
+  .hide {
+    display:none;
+  }
+  .show {
+    display:block !important;
+  }
+  small.check-item-label {
+    top:15px !important;
+    font-size:14px !important;
+  }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -13,19 +25,84 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Weekly Team Projects<br>
+            Daily Progress<br>
           </h1>
           <ol class="breadcrumb">
             <li><a href="/admin/"><i class="fa fa-dashboard"></i> Home </a></li>
             <li>Team</li>
-            <li>Weekly Team Projects</li>
+            <li>Daily Progress</li>
           </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
+            <div class=''>
+              <div class="box box-solid bg-green-gradient">
+                <div class="box-header">
+                  <i class="fa fa-check"></i>
+                  <h3 class="box-title">Current Progress</h3>
+                  <!-- tools box -->
+                  <div class="pull-right box-tools">
+                    <button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div><!-- /. tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <!--The calendar -->
+                  <div id="calendar" style="width: 100%"></div>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-black">
+                  <div class="row">
+                    <div class='col-md-12'>
+                      <div class="clearfix">
+                        <span class="pull-left"><h4>Cumulative</h4></span>
+                        <small class="pull-right" id='total-progress-percent-txt'></small>
+                      </div>
+                      <div class="progress lg">
+                        <div class="progress-bar progress-bar-green" id='total-progress-percent' style="width: 90%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                 <!--  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="clearfix">
+                        <span class="pull-left">Task #1</span>
+                        <small class="pull-right">90%</small>
+                      </div>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-green" style="width: 90%;"></div>
+                      </div>
+
+                      <div class="clearfix">
+                        <span class="pull-left">Task #2</span>
+                        <small class="pull-right">70%</small>
+                      </div>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="clearfix">
+                        <span class="pull-left">Task #3</span>
+                        <small class="pull-right">60%</small>
+                      </div>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-green" style="width: 60%;"></div>
+                      </div>
+
+                      <div class="clearfix">
+                        <span class="pull-left">Task #4</span>
+                        <small class="pull-right">40%</small>
+                      </div>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
+                      </div>
+                    </div>
+                  </div><!-- /.row -->
+                </div>
+              </div>
+            </div>
             <div class='projects-div row' style='padding:0 5%'>
-              <h1 style='text-align:center;'> Day Projects </h1>
               <div id='full-progress-wrapper' class='row'>
 
               </div>
