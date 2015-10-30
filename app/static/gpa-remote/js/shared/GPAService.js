@@ -9,14 +9,22 @@ function GPAService() {
 	var totalGradePoints = 0;
 	var totalUnits = 0;
   
-  var averageGPA = totalGradePoints / totalUnits;
-
   var addedCourses = [];
+  
+
+  var averageGPA = 0;
+  var semesters = [];
+
+  var overall = {
+    averageGPA: averageGPA,
+    semesters: semesters
+
+  };
 
 
   return {
 
-    calcGPA: calcGPA,
+    overall: overall,
     addCourse: addCourse,
     getCumulativeGPA: getCumulativeGPA,
     getSemesterGPA: getSemesterGPA
@@ -68,9 +76,31 @@ function GPAService() {
     totalGradePoints += course.points;
     totalUnits += course.units;
 
+    console.log("Successfully added course in GPAService!");
+    console.log("totalGradePoints: " + totalGradePoints);
+    console.log("totalUnits: " + totalUnits);
+
+    overall.averageGPA = totalGradePoints / totalUnits;
+    console.log("overall.averageGPA: " + overall.averageGPA);
 
 
+    var semester = {
+      name: course.semester
+    };
 
+    // check for only unique semesters
+    var addSemester = true;
+    for (var i = 0; i<overall.semesters.length; i++ ){
+
+      if (overall.semesters[i].name === semester.name) {
+        addSemester = false;
+      }
+    }
+    if (addSemester) {
+      console.log("adding semester: " + semester.name);
+      overall.semesters.push(semester);  
+    }
+    
   }
 
 

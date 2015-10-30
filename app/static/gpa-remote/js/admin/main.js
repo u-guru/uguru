@@ -13,7 +13,7 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.111:8100';
+  BASE_URL = 'http://192.168.0.108:8100';
 } else {
   img_base = '/static/'
 }

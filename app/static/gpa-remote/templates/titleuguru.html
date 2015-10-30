@@ -1,10 +1,14 @@
 <ion-view class='uguru-view access-view full-xy' ion-scroll='false' style='overflow:hidden;' ng-controller='IntroController' cache-view='!LOCAL'>
+	<section class="full-xy bg-shamrock flex-center">
+		<h1 class="caps weight-700 text-center">A Uguru Side Project</h1>
 
-
-<h1>Title Uguru</h1>
-
-<button ng-click="prevSlide()"> Prev Slide </button>
-<button ng-click="nextSlide()"> Next Slide </button>
-
-
+		<ul class="absolute left-0 full-x ugrid-2 p15x" style="bottom: 30px;">
+			<li class="p15x">
+				<button class="bg-white txt-shamrock semibold caps" ng-click="prevSlide()"> Prev </button>
+			</li>
+			<li class="p15x">
+				<button class="bg-white txt-shamrock semibold caps" ng-click="nextSlide()"> Next </button>
+			</li>
+		</ul>
+	</section>
 </ion-view>

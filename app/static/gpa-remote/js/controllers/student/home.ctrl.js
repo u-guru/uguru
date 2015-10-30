@@ -33,12 +33,12 @@ angular.module('uguru.student.controllers', [])
 
         var universityColor = $scope.user.university.school_color_one;
 
-        // $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
-        //     scope: $scope,
-        //     animation: 'slide-in-up'
-        // }).then(function(modal) {
-        //     $scope.guruCoursesModal = modal;
-        // })
+        $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruCoursesModal = modal;
+        })
 
         $scope.launchStudentCoursesModal = function() {
           $scope.guruCoursesModal.show();
@@ -47,12 +47,6 @@ angular.module('uguru.student.controllers', [])
           }, 250)
         }
 
-        // $scope.launchTaskVerbModal = function() {
-        //     $timeout(function() {
-        //         $scope.closeVerbModal();
-        //     }, 500);
-        //     $scope.taskVerbModal.show();
-        // }
 
         $scope.hideTaskVerbModal = function() {
             $scope.taskVerbModal.hide();
@@ -103,12 +97,6 @@ angular.module('uguru.student.controllers', [])
         $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
 
-        // $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
-        //     scope: $scope,
-        //     animation: 'slide-in-up'
-        // }).then(function(modal) {
-        //     $scope.requestModal = modal;
-        // });
 
         $scope.launchRequestModal = function(index, verb_index) {
 
@@ -131,9 +119,6 @@ angular.module('uguru.student.controllers', [])
             $scope.loader.showAmbig();
             $ionicSlideBoxDelegate.update();
 
-            //uTracker.track(tracker, 'Become Guru');
-
-            //$ionicViewSwitcher.nextDirection('none');
 
             $timeout(function() {
                 $ionicViewSwitcher.nextDirection('forward');
@@ -174,9 +159,7 @@ angular.module('uguru.student.controllers', [])
             $scope.root.vars.guru_mode = false;
             if (!$scope.mapInitialized) {
                 $scope.mapInitialized = true;
-                // $timeout(function() {
-                //     $scope.initStudentHomeMap();
-                // }, 1000)
+
             }
 
         })
@@ -198,12 +181,6 @@ angular.module('uguru.student.controllers', [])
 
             $scope.loader.hide();
 
-            // if (!$scope.mapInitialized && !MapService.studentHomeMap) {
-            //     $scope.mapInitialized = true;
-            //     $timeout(function() {
-            //         $scope.initStudentHomeMap();
-            //     }, 1000)
-            // }
             $timeout(function() {
                 checkOnboardingStatus();
             }, 500);
