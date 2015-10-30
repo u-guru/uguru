@@ -13,7 +13,7 @@ angular.module('uguru.util.controllers')
   '$ionicGesture',
   '$cordovaGeolocation',
   '$ionicSideMenuDelegate',
-  'LoadingService,'
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation,
     $ionicSideMenuDelegate, LoadingService) {

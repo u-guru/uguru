@@ -34,15 +34,14 @@ angular.module('uguru.util.controllers')
   'AdminService',
   'InAppBrowser',
   'DeviceService',
-  'LoadingService'
-  'ModalService', //do we need another one?
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
   AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate,
-  AdminService, InAppBrowser, DeviceService, LoadingService, ModalService) {
+  AdminService, InAppBrowser, DeviceService, LoadingService) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
@@ -57,7 +56,7 @@ angular.module('uguru.util.controllers')
 //use for abstract
     $scope.openAdmin = function() {
       $state.go('admin.admin-home');
-    }
+    };
 
 
     // pre-render these immediately
@@ -80,7 +79,7 @@ angular.module('uguru.util.controllers')
     $scope.openLoginModal = function() {
       $scope.root.vars.loginMode = true;
       $scope.openModal('login');
-    }
+    };
 
     $scope.closeModal = function(modalName) {
       ModalService.close(modalName);
@@ -95,13 +94,13 @@ angular.module('uguru.util.controllers')
 
     var initSupportChatEnterHandler = function() {
 
-      var chatInputEnterButton = document.querySelectorAll('.intercom-composer-send-button')[0]
+      var chatInputEnterButton = document.querySelectorAll('.intercom-composer-send-button')[0];
       if (chatInputEnterButton) {
         console.log(chatInputEnterButton);
         chatInputEnterButton.click();
       }
 
-    }
+    };
 
     $scope.launchSupportModal = function() {
 
@@ -127,7 +126,7 @@ angular.module('uguru.util.controllers')
       //   initSupportChatEnterHandler()
       // }, 500);
       // $scope.init
-    }
+    };
 
 
 
@@ -146,20 +145,20 @@ angular.module('uguru.util.controllers')
           LoadingService.hide();
           alert("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!');
           $scope.signupForm.email = '';
-      }
+      };
 
       var failureCallback = function(err) {
         if (err && err.status === 404) {
           alert('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?');
         }
-      }
+      };
 
       $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
       LoadingService.show();
       $timeout(function() {
         $scope.toggleBackToLoginMode();
-      }, 500)
-    }
+      }, 500);
+    };
 
     $scope.toggleResetModeFromLogin = function() {
       $scope.root.vars.loginMode = false;
@@ -168,15 +167,15 @@ angular.module('uguru.util.controllers')
         $scope.headerText = 'Reset Password';
       }
       $timeout(function() {
-        var email_input = document.getElementById('email-input')
+        var email_input = document.getElementById('email-input');
           if (email_input) {
             email_input.focus();
           }
-      }, 500)
+      }, 500);
       $timeout(function() {
         LoadingService.hide();
       }, 750);
-    }
+    };
 
     $scope.showActionSheetProfilePhoto = function() {
 
@@ -189,7 +188,7 @@ angular.module('uguru.util.controllers')
 
       var options = [{ text: 'Choose from Library' }];
       if ($scope.platform.mobile) {
-        options.push({text: 'Take a Photo'})
+        options.push({text: 'Take a Photo'});
       }
 
      // Show the action sheet
@@ -207,7 +206,7 @@ angular.module('uguru.util.controllers')
           }, 500);
        }
      });
-    }
+    };
 
     $scope.takePhoto = function(index) {
 
@@ -215,10 +214,10 @@ angular.module('uguru.util.controllers')
       if ($scope.platform.mobile) {
         Camera.takePicture($scope, index, 'sidebar-img-photo', true);
       } else {
-        var element = document.getElementById('file-input-web-sidebar')
+        var element = document.getElementById('file-input-web-sidebar');
         element.click();
       }
-    }
+    };
 
     $scope.file_changed = function(element) {
         var photofile = element.files[0];
@@ -248,7 +247,7 @@ angular.module('uguru.util.controllers')
         callbackSuccess = function() {
           LoadingService.hide();
           LoadingService.showSuccess('Saved!', 1500);
-        }
+        };
 
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
@@ -262,7 +261,7 @@ angular.module('uguru.util.controllers')
         $ionicBackdrop.retain();
       }
 
-    }
+    };
 
     $scope.launchEditEmailPopup = function() {
 
@@ -273,7 +272,7 @@ angular.module('uguru.util.controllers')
       PopupService.open('editEmail', callback);
       function callback() {
         if (Utilities.validateEmail($scope.popupInput.editEmail)) {
-            $scope.user.email = $scope.popupInput.editEmail
+            $scope.user.email = $scope.popupInput.editEmail;
         } else {
           alert('Please enter a valid email.');
           return;
@@ -282,7 +281,7 @@ angular.module('uguru.util.controllers')
         LoadingService.showSuccess('Saved!', 1500);
         PopupService.close('editEmail');
       }
-    }
+    };
 
     $scope.launchEditPasswordPopup = function() {
 
@@ -297,14 +296,14 @@ angular.module('uguru.util.controllers')
                 email : $scope.user.email,
                 new_password : $scope.popupInput.editPasswordNew,
                 old_password: $scope.popupInput.editPasswordOld
-            }
+            };
 
             LoadingService.show();
             var successCallback = function() {
               LoadingService.hide();
               LoadingService.showSuccess('Password Successfully Changed', 1500);
               PopupService.close('editPassword');
-            }
+            };
             var failureCallback = function(resp) {
               LoadingService.hide();
               $scope.defaultFallbackPlan(resp);
@@ -312,14 +311,14 @@ angular.module('uguru.util.controllers')
               PopupService.close('editPassword');
 
               $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
-            }
+            };
           }
           else {
             alert('Please enter a password longer than 6 characters');
             return;
           }
       }
-    }
+    };
 
     $scope.launchEditStudentNamePopup = function() {
 
@@ -339,7 +338,7 @@ angular.module('uguru.util.controllers')
         LoadingService.showSuccess('Saved!', 1500);
         PopupService.close('editName');
       }
-    }
+    };
 
     //settings info
     $scope.editAccountInfoActionSheet = function() {
@@ -359,7 +358,7 @@ angular.module('uguru.util.controllers')
                 $scope.closeAttachActionSheet();
             },
             buttonClicked: function(index) {
-              console.log('ayy this should"ved fired NOT')
+              console.log('ayy this should"ved fired NOT');
               // fire profile photo
               if (index === 0) {
                 $scope.closeAttachActionSheet();
@@ -369,10 +368,10 @@ angular.module('uguru.util.controllers')
               }
 
               if (index === 1) {
-                console.log('ayy this should"ved fired')
+                console.log('ayy this should"ved fired');
                 $scope.closeAttachActionSheet();
                 $timeout(function() {
-                  $scope.launchEditEmailPopup()
+                  $scope.launchEditEmailPopup();
                 }, 500);
 
               }
@@ -388,29 +387,29 @@ angular.module('uguru.util.controllers')
             }
       });
 
-    }
+    };
 
 
 
     $scope.transitionToUniversity = function() {
       $state.go('^.university-container');
-    }
+    };
 
     $scope.transitionToMajor = function() {
       $state.go('^.majors-container');
-    }
+    };
 
     $scope.goToMajorPage = function() {
 
       $scope.closeAttachActionSheet();
           LoadingService.show();
-          $scope.transitionToMajor()
+          $scope.transitionToMajor();
           $timeout(function() {
           LoadingService.hide();
           $ionicSideMenuDelegate.toggleRight();
       }, 1000);
 
-    }
+    };
 
     $scope.showStudentEditActionSheet = function() {
 
@@ -461,7 +460,7 @@ angular.module('uguru.util.controllers')
 
             }
       });
-    }
+    };
 
 
 
@@ -485,9 +484,9 @@ angular.module('uguru.util.controllers')
           console.log(err);
           alert('Something went wrong - please contact Samir');
         }
-        )
+        );
       }
-    }
+    };
 
 
     $scope.goToGuru = function() {
@@ -496,7 +495,7 @@ angular.module('uguru.util.controllers')
 
       $timeout(function() {
           LoadingService.hide();
-        }, 500)
+        }, 500);
 
 
 
@@ -509,9 +508,9 @@ angular.module('uguru.util.controllers')
           if ($ionicSideMenuDelegate.isOpen()) {
             $ionicSideMenuDelegate.toggleRight();
           }
-        }, 500)
+        }, 500);
 
-    }
+    };
 
     $scope.goToStudent = function() {
 
@@ -524,17 +523,17 @@ angular.module('uguru.util.controllers')
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
       $timeout(function() {
         LoadingService.hide();
-      }, 1000)
+      }, 1000);
 
       $timeout(function() {
         $scope.root.vars.guru_mode = false;
         if ($ionicSideMenuDelegate.isOpen()) {
           $ionicSideMenuDelegate.toggleRight();
         }
-      }, 500)
+      }, 500);
 
       $state.go('^.home');
-    }
+    };
 
     $scope.showComingSoon = function() {
       $scope.progress_active = true;
@@ -543,7 +542,7 @@ angular.module('uguru.util.controllers')
             $cordovaProgress.hide();
             $scope.progress_active = false;
           }, 1000);
-    }
+    };
 
 
   }

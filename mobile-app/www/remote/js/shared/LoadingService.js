@@ -1,11 +1,13 @@
 angular
-	.module('sharedServices')
-	.factory('LoadingService', [
-		'$scope',
-		'$ionicLoading',
-		LoadingService]);
+.module('sharedServices')
+.factory('LoadingService', [
+	'$rootScope',
+	'$ionicLoading',
+    '$timeout',
+	LoadingService
+    ]);
 
-function LoadingService($scope, $ionicLoading) {
+function LoadingService($rootScope, $ionicLoading, $timeout) {
 
 	return {
 		show: show,
@@ -23,10 +25,10 @@ function LoadingService($scope, $ionicLoading) {
     }
 
     function showAmbig(text, duration) {
-        $scope.ambigLoaderText = text || '';
+        $rootScope.ambigLoaderText = text || '';
 
         $ionicLoading.show({
-            scope: $scope,
+            scope: $rootScope,
             templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
             duration: duration || 1000
         });
@@ -34,10 +36,10 @@ function LoadingService($scope, $ionicLoading) {
     }
 
     function showFailure(text, duration) {
-        $scope.ambigLoaderText = text || '';
+        $rootScope.ambigLoaderText = text || '';
 
         $ionicLoading.show({
-            scope: $scope,
+            scope: $rootScope,
             templateUrl: BASE + 'templates/u.loader.failure.svg.html',
             duration: duration || 1000
         });
@@ -46,10 +48,10 @@ function LoadingService($scope, $ionicLoading) {
 
     function showSuccess(text, duration, callback) {
 
-        $scope.successLoaderText = text || '';
+        $rootScope.successLoaderText = text || '';
 
         $ionicLoading.show({
-            scope: $scope,
+            scope: $rootScope,
             templateUrl: BASE + 'templates/u.loader.success.svg.html',
             duration: duration || 1000
         });
@@ -60,11 +62,11 @@ function LoadingService($scope, $ionicLoading) {
     }
 
     function updateSuccessText(text) {
-        $scope.successLoaderText = text || 'loading';
+        $rootScope.successLoaderText = text || 'loading';
     }
 
     function hide(delay) {
-        $scope.ambigLoaderText = '';
+        $rootScope.ambigLoaderText = '';
         delay = delay || 0;
         $timeout(function() {
             $ionicLoading.hide();
