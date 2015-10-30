@@ -26,7 +26,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			if (typeof source !== 'element') {
 				source = document.getElementById('root-nav');
 			}
-			cta(source, popup, {duration:0},
+			cta(source, popup, 'ion-view', {duration:0},
 				function(modal) {
 					modal.classList.add('show');
 				});
