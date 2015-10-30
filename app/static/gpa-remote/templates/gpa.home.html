@@ -25,7 +25,7 @@
 				<h2 ng-if="overall.averageGPA">{{slogan()}}</h2>
 			</div>
 
-			<div id="home-add" ng-if="overall.averageGPA">
+			<div id="home-add" ng-if="!overall.averageGPA">
 				<div>
 					<button class="home-button bg-azure" thr-click="openModal('course')">
 						<svg viewBox="0 0 100 100">
@@ -36,14 +36,7 @@
 				</div>
 			</div>
 
-			<!-- <div class="semester-container" ng-if="overall.averageGPA">
-				<ul class="semester-list">
-					<li class="semester-item" ng-repeat="semester in overall.semesters">
-						<div>{{semester.name}}</div>
-					</li>
-				</ul>
-			</div> -->
-			<div id="home-courses">
+			<div id="home-courses" ng-if="overall.averageGPA">
 				<ul class="semester-list">
 					<li class="semester-item">
 						<div>
@@ -86,7 +79,7 @@
 					</li>
 				</ul>
 			</div>
-			
+
 		</div>
 	</section>
 

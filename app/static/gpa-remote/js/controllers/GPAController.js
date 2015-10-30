@@ -10,7 +10,7 @@ function GPAController($scope, ModalService, GPAService) {
 
 
 	$scope.overall = GPAService.overall;
-	$scope.overall.averageGPA = 5;
+	// $scope.overall.averageGPA = 5;
 
 	$scope.slogan = function() {
 

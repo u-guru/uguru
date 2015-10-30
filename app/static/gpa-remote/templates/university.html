@@ -57,9 +57,7 @@
 					</div>
 					<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x">
 						<input type="search" id='university-input' class='' placeholder="Search for my university" ng-model="search_text.university" />
-						<a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
-							<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
-						</a>
+
 						<a class='side-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
 							<i class='icon ion-close-circled text-white'></i>
 						</a>
