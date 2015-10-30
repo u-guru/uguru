@@ -39,6 +39,33 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.platform.android = DeviceService.isAndroid();
   $scope.root.vars.guru_mode =false;
 
+
+  var e1 = document.querySelector('.top');
+  var e2 = document.querySelector('.bottom');
+
+  e1.addEventListener('click', function() {
+    console.log("clicked"); 
+    cta(e1, e2, 'ion-view', {
+       relativeToWindow: true
+    }, function() {
+      // e2.style.visibility = 'visible';
+    });
+
+  });
+
+
+  $scope.testCTA = function() {
+    console.log("clicked testCTA()");
+
+    var e1 = document.querySelector('#redeem-button');
+    var e2 = document.querySelector('#access-logo');
+
+    cta(e1, e2, {
+      relativeToWindow: true
+    });
+
+  };
+
   $scope.testAlert = function() {
     confirm("Can you click on me?");
   };
