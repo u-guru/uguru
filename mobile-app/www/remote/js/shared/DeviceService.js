@@ -46,8 +46,12 @@ function DeviceService($cordovaNgCardIO,
     ios: iOSService,
     getInfo: getInfo,
     checkUpdates: checkUpdates,
-    currentDevice: currentDevice
-	}
+    currentDevice: currentDevice,
+    isFirefoxBrowser: isFirefoxBrowser,
+    isChromeBrowser: isChromeBrowser,
+    isIEBrowser: isIEBrowser,
+    isSafariBrowser: isSafariBrowser
+	};
 
   function isFirstTime() {
     console.log("isFirstTime");
@@ -90,6 +94,31 @@ function DeviceService($cordovaNgCardIO,
     return !isIOSDevice() && ionic.Platform.isIOS();
 
   }
+
+  function isFirefoxBrowser() {
+    if (getBrowser().name === 'Firefox') {
+      return true;
+    } else return false;
+  }
+
+  function isChromeBrowser() {
+    if (getBrowser().name === 'Chrome') {
+      return true;
+    } else return false; 
+  }
+
+  function isIEBrowser() {
+    if (getBrowser().name === 'IE') {
+      return true;
+    } else return false; 
+  }
+
+  function isSafariBrowser() {
+    if (getBrowser().name === 'Safari') {
+      return true;
+    } else return false;  
+  }
+
 
   function isIOS() {
     return ionic.Platform.isIOS();
@@ -160,15 +189,13 @@ function DeviceService($cordovaNgCardIO,
         onDeviceReady(scope);
       }
 
-      if(userAgent.indexOf('wv')!==-1) {
-        onDeviceReady(scope);
-      }
-
-      if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
-        console.log("detected mobile app");
-        onDeviceReady(scope);
-      } else {
-        console.log("did not detect mobile app");
+      else {
+        var browser = getBrowser();
+        var device = getDevice();
+        uTracker.track(tracker, 'device', {
+          "$Browser": browser,
+          "$Device": device
+        });
       }
 	}
 
