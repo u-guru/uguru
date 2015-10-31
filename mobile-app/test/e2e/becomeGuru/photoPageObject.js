@@ -15,8 +15,9 @@ var Photo = function()
 
 	this.NextPage =function()
 	{
+		browser.wait(EC.visibilityOf(this.FinishStep),4000);
 		this.FinishStep.click();
-		browser.wait(EC.invisibilityOf(this.FinishStep),5000,"Doesn't go to next page")
+		// browser.wait(EC.invisibilityOf(this.FinishStep),5000,"Doesn't go to next page")
 	};
 	this.CheckSamplePhotoExist =function()
 	{

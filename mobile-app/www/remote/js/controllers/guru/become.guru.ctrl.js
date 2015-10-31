@@ -73,6 +73,8 @@ angular.module('uguru.guru.controllers')
       $ionicSlideBoxDelegate.previous();
     }
 
+
+
     $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
@@ -81,6 +83,10 @@ angular.module('uguru.guru.controllers')
       clearAllSearchInputs();
 
       if (index === 0) {
+
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 500)
 
         uTracker.track(tracker, 'Become Guru: Majors');
 
@@ -118,6 +124,8 @@ angular.module('uguru.guru.controllers')
 
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");
+
+        $scope.init
 
         var coursesList = document.querySelectorAll('#courses-list');
 
@@ -232,12 +240,12 @@ angular.module('uguru.guru.controllers')
     $scope.initSlideBoxModals = function() {
 
 
-      $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-      }).then(function(modal) {
-          $scope.categorySkillsModal = modal;
-      });
+      // $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+      //       scope: $scope,
+      //       animation: 'slide-in-up'
+      // }).then(function(modal) {
+      //     $scope.categorySkillsModal = modal;
+      // });
 
 
     }
@@ -264,27 +272,32 @@ angular.module('uguru.guru.controllers')
       var progressBarTag = document.getElementById(elemId);
       progressBarTag.style.width = width + 'px';
     }
-    
+
     // $scope.$on('$ionicView.loaded', function() {
-    
+
     // }, 500);
+
+    $scope.$on('$ionicView.beforeEnter', function() {
+      $scope.majors = [];
+      console.log('majors set to [[');
+    })
 
     $scope.$on('$ionicView.enter', function() {
       $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
-    //   setTimeout(function(){
-    //       $ionicSlideBoxDelegate.slide(3);
-    //   }, 1500)
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
       if (DeviceService.isIOSDevice()) {
         DeviceService.ios.setStatusBarText($state.current.name);
       }
 
-      $timeout(function() {
-          
-        $scope.initSlideBoxModals();
-      }, 500);
+
+      // $scope.loader.hide();
+
+      // $timeout(function() {
+
+      //   $scope.initSlideBoxModals();
+      // }, 500);
 
     }, 500)
 

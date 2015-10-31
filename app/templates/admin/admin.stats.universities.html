@@ -112,7 +112,9 @@
                             </a>
                           </td>
                           <td>
-                            {{university.name}}
+                            <a href='/admin/stats/universities/{{university.id}}' target='_blank'>
+                              {{university.name}}
+                            </a>
                           </td>
                           <td>
                             {{university.us_news_ranking}}
@@ -143,7 +145,7 @@
                           </td>
                         </tr>
                         {% endfor %}
-                      
+
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->

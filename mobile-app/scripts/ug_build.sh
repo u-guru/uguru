@@ -16,7 +16,10 @@ if [ $# == 1 ];
 	if [ $platform == 'android' ]; then
 		printf "\e[0;36mBuilding for $platform \e[0m\n"
 		cordova platform rm ios
-		cordova platform rm android		
+
+		cordova platform rm android
+
+		rm -rf plugins/com.phonegap.plugins.facebookconnect
 		rm -rf plugins/*
 
 		cordova plugin add ionic-plugin-keyboard
@@ -63,7 +66,7 @@ if [ $# == 1 ];
 		cordova platform rm android
 		cordova platform rm ios
 		rm -rf plugins/*
-		
+
 		cordova plugin add ionic-plugin-keyboard
 		cordova plugin add cordova-plugin-camera
 		cordova plugin add cordova-plugin-device
@@ -85,7 +88,7 @@ if [ $# == 1 ];
 		cordova plugin add https://bitbucket.org/uguru-nick/de.appplant.cordova.plugin.badge
 
 		cordova platform add ios@3.8
-		
+
 		printf "\e[0;36mSetting up compatibility for the Facebook and Push plugins... \e[0m\n"
 
 		cordova plugin add https://bitbucket.org/uguru-nick/phonegap-plugin-push

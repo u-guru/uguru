@@ -18,22 +18,26 @@
     <link rel="stylesheet" href="/static/web/css/style.css"/>
     {% endblock %}
     <link rel="stylesheet" href="/static/web/css/responsive.css"/>
+    <link rel="stylesheet" href="/static/web/css/jason.css"/>
 
     <link rel="stylesheet" href="/static/web/css/menu.css"/>
     <link rel="stylesheet" href="/static/web/css/samir.css"/>
     <link rel="stylesheet" href="/static/web/css/animate.css"/>
     <link rel="stylesheet" href="/static/web/css/material.components.css"/>
     <link rel="stylesheet" href="/static/web/css/ionicons.min.css"/>
+    {% if ( request.path != '/support-only/' and request.path != '/faq-only/') %}
 
     <script>
         document.addEventListener("DOMContentLoaded", function(e) {
                 onDomLoadSuccess();
         });
     </script>
+    {% endif %}
+
 </head>
 <body id="{% block pagetype %}{% endblock %}">
 
-{% if 'faq-only' not in request.url %}
+{% if ( request.path != '/support-only/' and request.path != '/faq-only/') %}
 <script>
     var bodyLoadingDiv = document.createElement('div');
     bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
@@ -41,6 +45,7 @@
     bodyLoadingDiv.innerHTML = '<div><span class="logo"> {% include "web/components/logo-white.svg"|string%}' + ' </span><span class="loader"> {% include "web/components/svg-loader.svg"%} </span></div>'
 </script>
 {% endif %}
+
 <header id="top">
     <nav id="top-menu">
         <ul>
@@ -63,11 +68,13 @@
         </ul>
     </nav>
 </header>
+{% if request.path != '/support-only/' %}
 
 {% include 'web/layout/menu.html' %}
 
 {% block content %}
 {% endblock %}
+{% endif %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 <script>

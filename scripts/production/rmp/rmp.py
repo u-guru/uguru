@@ -231,6 +231,8 @@ def secondAttemptGetRmpUniversityId(uni_obj):
                 ## enhancement # 7
                 for response in response_arr:
                     if uni_obj['city'].lower() == city or uni_obj['state'].lower() == state:
+                        uni_obj['rmp_school_id'] = True
+                        uni_obj['rmp_name']
                         print 'FOUND w/ CITY. We matched <%s>, in %s, %s\n\n\n' % (school_name, city, state)
 
                         uni_obj['rmp_name'] = response['schoolname_s']
@@ -258,17 +260,19 @@ def secondAttemptGetRmpUniversities(arr):
     index = 0
     error_unis = []
     error_count = 0
-    for uni in arr:
-        if uni.get('rmp_uni_id'):
-            continue
-        error_uni = uni
+    for uni in arr[0:10]:
+        # if uni.get('rmp_uni_id'):
+        #     continue
+        error_uni = []
         name = error_uni['name']
         error_count = 0
         result = getRmpUniversityId(error_uni['name'])
         print result
         if result:
             success += 1
+            print result
         else:
+            continue
             # print "trying a simpler query...\n\n"
             # enhancement #5 --> what if i want to store the results?
             results_exist, results = secondAttemptGetRmpUniversityId(error_uni)

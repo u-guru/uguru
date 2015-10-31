@@ -11,7 +11,7 @@ var global = function() {
     browser.executeScript('window.sessionStorage.clear();');
     browser.executeScript('window.localStorage.clear();');
     // browser.executeScript('window.location.reload(true);')
-    browser.get("http://"+localhost+":8100/#/university");
+    // browser.get("http://"+localhost+":8100/#/university");
   }
   /**********************************************************
   *
@@ -291,7 +291,6 @@ var global = function() {
     var length;
     var str ;
 
-
      str = name+' li:not(.ng-hide)';
      element.all(by.css(str)).then(function (items) {
       if (random != null)      
@@ -300,7 +299,7 @@ var global = function() {
         var temp = Math.floor((Math.random() * (items.length-1)));
        // browser.wait(EC.elementToBeClickable( items[temp]),5000,'wait too long to get item clickable');
         items[temp].click();
-        // console.log(items.length)
+        // console.log(items.length,temp)
     });
   }
   /**********************************************
@@ -445,22 +444,22 @@ var global = function() {
       element(by.css('.uguru-popup.high-z-index.sidebar-popup.show input')).clear();
       element(by.css('.uguru-popup.high-z-index.sidebar-popup.show input')).sendKeys(option1);
       element(by.css('.uguru-popup.high-z-index.sidebar-popup.show button')).click();
-      if(option1 != 123456789 || option1 != 'jason@sjsu.edu')
-          browser.wait(function() {
-            return browser.switchTo().alert().then(
-                function() 
-                {
-                   expect(browser.switchTo().alert().getText()).toContain("Please enter valid");
-                   browser.switchTo().alert().accept();
+      // if(option1 != 123456789 || option1 != 'jason@sjsu.edu')
+      //     browser.wait(function() {
+      //       return browser.switchTo().alert().then(
+      //           function() 
+      //           {
+      //              expect(browser.switchTo().alert().getText()).toContain("Please enter valid");
+      //              browser.switchTo().alert().accept();
 
-                 return true;
-                }, 
-                function()
-                 {
-                  return false;
-                 }
-            );
-        },3000,"Input-value should not be passed");
+      //            return true;
+      //           }, 
+      //           function()
+      //            {
+      //             return false;
+      //            }
+      //       );
+      //   },3000,"Input-value should not be passed");
       // else if(option1 === 'close')
       // {
       //   element(by.css('.uguru-popup.high-z-index.sidebar-popup.show a')).click();

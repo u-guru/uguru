@@ -12,7 +12,7 @@ SUBMISSION_TYPES = ['alpha', 'beta', 'production', 'rollout']
 DEFAULT_PACKAGE_NAME = 'com.beta.college.Uguru'
 DEFAULT_TRACK = SUBMISSION_TYPES[0]
 DEFAULT_DESCRIPTION = {'fullDescription': 'Uguru empowers college students to have access to on-demand academic support from their own peers. In this version, students can request for popular courses and ultimately meet with a guru who has aced the same EXACT course within minutes and only 1-2 blocks away. We are also testing the market for other services college students have found exciting, which include household chores, skilled specialties (baking, photography), and much, much more.', 'shortDescription': 'An affordable marketplace for college students to make side cash teaching peers.','title': 'Uguru - College Marketplace'}
-DEFAULT_FILE_PATH = '../../mobile-app/platforms/android/build/outputs/apk/'
+DEFAULT_FILE_PATH = '../../platforms/android/build/outputs/apk'
 
 def init_args_flags():
   argparser = argparse.ArgumentParser(add_help=False)
@@ -39,7 +39,7 @@ def list_apks(service, package_name):
     index += 1
 
 def upload_apk(service, package_name=DEFAULT_PACKAGE_NAME,
-  apk_file_path=DEFAULT_FILE_PATH, filename='uguru-x86-signed.apk'):
+  apk_file_path=DEFAULT_FILE_PATH, track=DEFAULT_TRACK, filename='uguru-x86-signed.apk'):
 
   apk_file = apk_file_path + '/' + filename
 
@@ -61,7 +61,7 @@ def upload_apk(service, package_name=DEFAULT_PACKAGE_NAME,
 
   track_response = service.edits().tracks().update(
     editId=edit_id,
-    track=DEFAULT_TRACK,
+    track=track,
     packageName=package_name,
     body={u'versionCodes': [apk_response['versionCode']]}).execute()
 
@@ -119,11 +119,14 @@ def main():
 
   try:
 
+    if 'help' in args[1:]:
+      print "\nHere are are all available commands\n\n"
+      print "-u, upload -b[beta] -a[alpha] -p[production]  --- [apk file name] ## Assumes it's located in path:\n%s" % DEFAULT_FILE_PATH
     if '-u' in args[1:]:
       print "Uploading x87 device version... Make take a while"
-      upload_apk(service, DEFAULT_PACKAGE_NAME, DEFAULT_FILE_PATH, 'uguru-x86-signed.apk')
+      upload_apk(service, DEFAULT_PACKAGE_NAME, DEFAULT_FILE_PATH, DEFAULT_TRACK, 'uguru-x86-signed.apk')
       print "Uploading armv7 device version... Make take a while"
-      upload_apk(service, DEFAULT_PACKAGE_NAME, DEFAULT_FILE_PATH, 'uguru-armv7-signed.apk')
+      upload_apk(service, DEFAULT_PACKAGE_NAME, DEFAULT_FILE_PATH, DEFAULT_TRACK, 'uguru-armv7-signed.apk')
     if '-l' in args[1:]:
       list_apks(service, DEFAULT_PACKAGE_NAME)
 

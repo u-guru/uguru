@@ -8,7 +8,7 @@
 					<br/>Help</button>
 			</div>
 			<div class="before-guru" ng-if='!user.is_a_guru'>
-				<button class="home-button bg-campus-80p" thr-click='goToBecomeGuru()'>Become
+				<button class="home-button bg-campus-80p" thr-click='goToDesktopBecomeGuru()'>Become
 					<br/>a Guru</button>
 			</div>
 			<div id="trending" ng-if='user.is_a_guru'>
@@ -37,13 +37,13 @@
 			</div>
         </div>
     </main>
-    
+
 	<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
 	<section id="student-home" class="request full-xy student-home" ng-show='!isDesktopMode()'>
 		<header>
 			<h1 class="text-center">Student Home</h1>
 		</header>
-		<div id='student-home-map-container'></div>
+		<div id='student-home-map-container' ng-if='!isDesktopMode()'></div>
 		<div style="width:100%;height:100%;" id="map_canvas_home">
 			<div id="home-content" class="trending-container">
 				<div ng-if='!user.is_a_guru'>
@@ -81,7 +81,7 @@
 			</div>
 		</div>
 	</section>
-    
+
 	<div class="tabs tabs-icon-only student-tabs bg-white-75p" id='guru-tab-bar' ng-show='!isDesktopMode()'>
 		<a class="tab-item active" nav-direction='swap' href='#/home'>
 			<svg viewBox="0 0 100 100">

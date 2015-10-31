@@ -16,7 +16,7 @@ if (LOCAL) {
   BASE_URL = _ipaddress;
   // REST_URL = "http://192.168.0.114:5000"
 
-  //REST_URL = 'http://192.168.12.159:5000';
+  // REST_URL = 'https://192.168.0.104:5000';
 
 } else {
   img_base = '/static/'
@@ -37,6 +37,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
    Version, $rootScope,
   $templateCache, Device, User,
   DeviceService, uTracker, $injector) {
+
+  $ionicPlatform.ready(function() {
+  });
 
   uTracker.init(tracker);
   Github = $injector.get("Github");
@@ -146,8 +149,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/desktop-login',
     templateUrl: BASE + 'templates/desktop.login.html'
   }).
-  state('root.desktop-guru-onboarding', {
-    url:'/desktop-guru-onboarding',
+  state('root.desktop-become-guru', {
+    url:'/desktop-become-guru',
     templateUrl: BASE + 'templates/desktop.guru.onboarding.html'
   }).
   state('root.desktop-guru-profile', {
