@@ -7,39 +7,29 @@ angular.module('uguru.util.controllers')
     '$state',
     '$localstorage',
     'User',
-    'RootService',
     'Version',
     '$ionicHistory',
     '$templateCache',
     '$ionicLoading',
     '$rootScope',
-    'CordovaPushWrapper',
     '$cordovaPush',
     'University',
     '$cordovaSplashscreen',
     '$timeout',
-    'Geolocation',
     '$ionicSideMenuDelegate',
     '$ionicViewSwitcher',
-    'Major',
-    'Skill',
-    'Profession',
-    '$cordovaNgCardIO',
     'DeviceService',
     'Utilities',
-    'Category',
     'DownloadService',
     'PopupService',
     'KeyboardService',
     'ModalService',
     'Github',
-    function($ionicPlatform, $scope, $state, $localstorage, User,
-        RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
-        CordovaPushWrapper, $cordovaPush, University,
-        $cordovaSplashscreen, $timeout, Geolocation,
-        $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
-        Skill, Profession, $cordovaNgCardIO, DeviceService,
-         Utilities, Category, DownloadService, PopupService,
+    function($ionicPlatform, $scope, $state, $localstorage, User, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
+        $cordovaPush, University,
+        $cordovaSplashscreen, $timeout,
+        $ionicSideMenuDelegate, $ionicViewSwitcher, DeviceService,
+         Utilities, DownloadService, PopupService,
          KeyboardService, ModalService, Github) {
 
 
@@ -189,30 +179,6 @@ angular.module('uguru.util.controllers')
             })
         }
 
-
-        $scope.getCategories = function(callback) {
-            console.log('retrieving majors for id');
-            Category.get().then(function(categories) {
-                Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
-                Category.mapActiveToSubcategories(Category.categories, $scope.user);
-
-
-                $scope.categories = Category.categories.slice();
-                callback && callback(Category.categories);
-                console.log($scope.categories.length, 'categories loaded');
-
-            },
-            function() {
-                console.log("Categories NOT successfully loaded");
-            })
-        }
-        
-        var categoriesCallback = function(categories) {
-            $scope.categories = categories;
-        }
-
-        $scope.getCategories(categoriesCallback)
-
         $scope.getCoursesForUniversityId = function(uni_id, callback) {
             if (!uni_id) {
                 return;
@@ -250,18 +216,9 @@ angular.module('uguru.util.controllers')
             console.log(University.courses.length, 'majors loaded');
         }
 
-        if (!Category.categories || Category.categories.length === 0) {
-            console.log('Categories not local, loading now..')
-            $timeout(function() {
-                $scope.getCategories();
-            }, 0)
-        } else {
-            console.log(Category.categories.length, 'categories loaded');
-        }
-
 
         $scope.rootUser = User;
-        $scope.root = RootService;
+        $scope.root = {};
         $scope.root.vars = {};
         $scope.root.vars.remote_cache = [];
         $scope.root.vars.onboarding = false;
@@ -635,7 +592,7 @@ angular.module('uguru.util.controllers')
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {
                 $state.go('^.' + _startpage);
-            
+
 
 
         }
@@ -643,8 +600,8 @@ angular.module('uguru.util.controllers')
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
                 $state.go('^.' + _startpage);
-            
-            
+
+
         }
         }
 

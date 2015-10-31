@@ -5,16 +5,12 @@ angular
   '$state',
   '$localstorage',
 	'$cordovaPush',
-	'Geolocation',
   'University',
-  'Major',
-  'Skill',
-  'Profession',
 	WindowsService
 	]);
 
-function WindowsService($rootScope, $state, $localstorage, $cordovaPush, 
-  Geolocation, University, Major, Skill, Profession) {
+function WindowsService($rootScope, $state, $localstorage, $cordovaPush,
+   University) {
 
 	return {
 		ready: ready
@@ -22,7 +18,7 @@ function WindowsService($rootScope, $state, $localstorage, $cordovaPush,
 
 	function ready() {
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
-	
+
 	    if ($cordovaPush) {
 	        console.log('we are updating the push notifications on windows device');
 	        $cordovaPush.register(channelHandler, errorHandler, {

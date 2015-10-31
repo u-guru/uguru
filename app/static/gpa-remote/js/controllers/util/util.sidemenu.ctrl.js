@@ -19,7 +19,6 @@ angular.module('uguru.util.controllers')
   '$ionicHistory',
   '$ionicActionSheet',
   '$ionicPopup',
-  'Camera',
   'Support',
   'University',
   '$ionicPlatform',
@@ -39,7 +38,7 @@ angular.module('uguru.util.controllers')
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
+  Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
   AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate,
   AdminService, InAppBrowser, DeviceService, ModalService) {
     $scope.root.vars.show_account_fields = false;

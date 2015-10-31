@@ -19,7 +19,6 @@ angular.module('uguru.util.controllers')
   '$ionicHistory',
   '$ionicActionSheet',
   '$ionicPopup',
-  'Camera',
   'Support',
   '$ionicPlatform',
   'InAppBrowser',
@@ -31,7 +30,7 @@ angular.module('uguru.util.controllers')
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
+  Support, $ionicPlatform, InAppBrowser, Utilities,
   MapService, $ionicSlideBoxDelegate, ModalService) {
 
 

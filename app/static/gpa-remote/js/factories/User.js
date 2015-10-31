@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
-    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService',
-    function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category, RankingService) {
+    '$ionicSideMenuDelegate', 'RankingService',
+    function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory,
+        $ionicSideMenuDelegate) {
     var User;
 
     var defineProperty = function(obj, name, value) {

@@ -8,7 +8,6 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$timeout',
   'University',
   '$ionicViewSwitcher',
-  'Geolocation',
   'Utilities',
   '$ionicSlideBoxDelegate',
   'DeviceService',
@@ -25,10 +24,10 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
+  Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, $ionicModal,
   $controller, ModalService, MapService, $ionicSideMenuDelegate) {
- 
+
 
 
   $scope.nextSlide = function() {
@@ -187,33 +186,12 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     universities: ''
   };
 
-  // $scope.toggleLocationIconAppearance = function() {
-
-  //   if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
-  //     console.log("refreshing universities for location!");
-  //     $scope.refresh.universities = 'update';
-  //     $scope.loader.showAmbig();
-  //   }
-  //   else if (Geolocation.settings.isAllowed) {
-  //     console.log("toggling location.isActive");
-  //     $scope.loader.hide()
-  //     Geolocation.settings.isActive = !Geolocation.settings.isActive;
-  //   }
-  //   else {
-  //     Geolocation.settings.isActive = false;;
-  //     Geolocation.settings.isAllowed = false;
-  //   }
-  // }
-
-  // if(DeviceService.isAndroid()) {
-  //   $scope.refresh.universities = 'update';
-  // }
 
 
 }
 
 angular.module('uguru.directives')
-.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService) {
+.directive('bindList', function($timeout, University, Utilities, DeviceService) {
 
   function link($scope, element, attributes) {
     var queryPromise = null;
@@ -225,11 +203,11 @@ angular.module('uguru.directives')
           console.log("heard something!", newValue, oldValue);
           if(newValue === 'update' ) {
 
-              Geolocation.getLocation($scope, $scope.source, function(results) {
-                $timeout(function() {
-                  $scope.listScope = results;
-                }, 0);
-              });
+              // Geolocation.getLocation($scope, $scope.source, function(results) {
+              //   $timeout(function() {
+              //     $scope.listScope = results;
+              //   }, 0);
+              // });
 
           }
         }

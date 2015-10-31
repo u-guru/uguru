@@ -441,262 +441,58 @@ section {
 	width: 100%;
 	height: 100%;
 	z-index: 20;
+	button {
+		background: darken($azure, 15%);
+	}
 	.list {
 		@include flex-column;
 		height: 100%;
+		background: white;
+		color: $azure;
 	}
 	.list-item {
+		position: relative;
 		height: 64px;
 		font-size: 18px;
 		font-weight: 600;
 		text-transform: uppercase;
-		//Gabrielle -- added this so we can so more items;
-		&.settings-item {
-			height:10%;
-		}
-		.list-item-icon {
-			height: 64px;
-			width: 64px;
-			img {
-				@include round;
-				width: 34px;
-				height: 34px;
-			}
-			svg {
-				padding: 15px;
-				width: auto;
-				path, circle {
-					@include svg-stroke-width(3);
-				}
-				circle {
-					stroke-dasharray: 3px, 10px;
-				}
-			}
+		color: $azure;
+		text-align: left;
+		&.active, &.activated {
+			background: rgba($azure, .2);
 		}
 		.list-item-detail {
+			display: block;
+			width: 100%;
+			text-align: left;
+			padding: 0 15px;
+		}
+		input {
+			@include center-y;
+			right: 0;
 			padding: 0;
-		}
-	}
-	.list-item-profile {
-		@include flex-wrap;
-		@include flex-center;
-		height: calc(100% - 384px);
-		.list-item-detail {
-			span {
-				display: block;
-			}
-			.student-profile-name {
-				font-weight: 700;
-				padding-bottom: 2px;
-			}
-			.student-profile-school {
-				line-height: 1.2;
-			}
-			span:first-child {
-				font-size: 20px!important;
-			}
-			span:last-child {
-				font-size: 14px!important;
-			}
-			h3 {
-				font-size: 16px!important;
-				line-height: 1.2;
-			}
-		}
-	}
-	.list-item-agenda {
-		display: none;
-	}
-}
-@media screen and (min-height:540px) {
-	.side-menu-list {
-
-		.list-item-profile {
-			height: 84px;
-		}
-		.list-item-agenda {
-			@include flex;
-			position: relative;
-			height: calc(100% - 384px - 84px);
-			text-transform: none;
-			&::before {
-				@include opacity(.3);
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: url(../../img/schools.jpg) center center / cover;
-			}
-		}
-	}
-}
-
-// SIDEBAR GURU MODE
-.guru-mode {
-	.list {
-		background: $slate;
-	}
-	.list-item {
-		&.active, &.activated {
-			background: $campus;
-		}
-		.list-item-icon {
-			svg {
-				path, circle {
-					stroke: #fff;
-				}
-			}
-		}
-	}
-	.list-item-profile {
-		background: rgba($campus, .75);
-	}
-	.list-item-agenda {
-		background: white;
-		color: $charcoal;
-		&.active, &.activated {
-			background: rgba(white, .9);
-		}
-	}
-	.list-item-mode {
-		background: rgba($campus, .75);
-	}
-}
-
-// SIDEBAR STUDENT MODE
-.student-mode {
-	.list {
-		background: white;
-	}
-	.list-item {
-		color: $slate;
-		.list-item-icon {
-			svg {
-				path {
-					stroke: $slate;
-				}
-			}
-		}
-		&.activated, &.active {
-			background: rgba($lake, .75);
-			color: white;
-			svg {
-				path {
-					stroke: white;
-				}
-			}
-		}
-	}
-	.list-item-profile {
-		background: $lake;
-		color: white;
-		.list-item-icon {
-			svg {
-				circle {
-					stroke: white;
-				}
-			}
-		}
-	}
-	.list-item-agenda {
-		background: $slate;
-		color: white;
-		&:active, &:hover {
-			background: rgba($slate, .9);
-		}
-	}
-	.list-item-mode {
-		background: $lake;
-		color: white;
-		.list-item-icon {
-			svg {
-				path {
-					stroke: white;
-				}
-			}
-		}
-	}
-}
-
-// ACTION SHEET
-.action-sheet-wrapper.action-sheet-up {
-	background: white;
-	.action-sheet-title {
-		@include flex;
-		@include flex-center;
-		padding: 0 10px;
-		font-size: inherit;
-		height: 50px;
-		span {
-			color: $lake;
+			display: block;
+			width: 50px;
+			text-align: right;
+			color: darken($azure, 15%);
 			font-size: 18px;
-			text-transform: none!important;
-		}
-	}
-	.action-sheet-group {
-		margin: 0!important;
-		button, div {
-			border: 0!important;
-			border-bottom: 1px solid $smoke!important;
-		}
-		button {
-			padding: 0 10px;
-			height: 50px;
-			color: $slate!important;
-			font-size: 16px;
-			font-weight: 600;
-		}
-		button:active, button.activated {
-			background: $smoke;
-		}
-		&:last-child {
-			> *:last-child {
-				border-bottom: 0!important;
+			font-weight: 900;
+			@include placeholder {
+				color: rgba($taupe,.5);
 			}
 		}
 	}
-}
-
-// TAB BAR
-.tabs {
-	border: 0;
-	height: 50px;
-	line-height: 50px;
-	a.activated, a:active {
-		@include opacity(.5);
-	}
-	svg {
-		@include svg-stroke(white, 4);
-		width: 100%;
-		height: 100%;
-		padding: 8px;
-	}
-	&.guru-tabs {
-		svg {
-			stroke: white;
+	.list-item-title {
+		-webkit-align-items: flex-start;
+		align-items: flex-start;
+		background: darken($azure, 15%);
+		color: white!important;
+		height: 200px!important;
+		.list-item-detail {
+			padding-top: 15px;
+			text-align: center;
+			text-transform: uppercase;
 		}
-	}
-	&.student-tabs {
-		svg {
-			stroke: $slate;
-		}
-	}
-}
-
-// SLIDER BREADCRUMBS
-.slider-pager {
-	@include flex;
-	@include flex-center;
-	height: auto!important;
-	span {
-		@include flex;
-		@include flex-center;
-	}
-	.icon {
-		font-size: 12px;
-		line-height: 16px;
 	}
 }
 
@@ -739,24 +535,67 @@ section {
 
 // UNIVERSITY
 .university-view {
-	background: $charcoal;
-	header {
+	background: white;
+	header:not(.desktop-header).third:not(.flex-center-wrap), header {
+		background: lighten($azure, 40%);
+		svg {
+			path {
+				stroke: $azure!important;
+			}
+		}
 		&::before {
-			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
-						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
+			@include opacity(.1);
+			background: url(../../img/hall.jpg) no-repeat center center / cover;
+		}
+		h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			color: $azure;
 		}
 		.geolocation-icon {
 			margin-top: 3px;
-		// To add hella space to tap it (it's responsive & equalizes)
+			// To add hella space to tap it (it's responsive & equalizes)
 			padding: 30px;
     		margin-right: -30px;
+		}
+		.side-icon {
+			color: $azure;
+		}
+		.input-search-ghost {
+			.clear-search-input {
+			    color: rgba($azure,.7);
+			}
+			input {
+				border-bottom: 1px solid rgba($azure,.5);
+				color: $azure;
+				@include placeholder {
+					color: rgba($azure,.5);
+				}
+			}
+			input:active, input:focus {
+				border-bottom-color: $azure;
+				@include placeholder {
+					color: $azure;
+				}
+			}
+			&:before {
+				background: url(../../img/svg/search-azure.svg) no-repeat center center/cover;
+			}
 		}
 	}
 	#school-list.onboarding-list, #school-list-modal {
 		ul {
 			li {
+				margin-left: 1px;
+				margin-right: 1px;
+				width: calc(100% - 2px);
+				&:first-child {
+					margin-top: 1px;
+				}
 				a {
+					background: $azure;
 					font-weight: 300;
+					border: 0;
 					.school-icon {
 						img {
 							@include round;
@@ -807,8 +646,13 @@ section {
 						}
 					}
 				}
-				a:active, a.active, a.activated {
-					background: rgba(white,.2);
+				a:hover {
+					background: $smoke;
+					color: $azure;
+				}
+				a:focus, a:active, a.active, a.activated {
+					background: rgba($azure, .2);
+					color: $azure;
 				}
 			}
 		}
@@ -839,21 +683,41 @@ section {
 
 
 
-
+/* ---------- TITLE */
+.title-view {
+	img {
+		display: block;
+		width: 100%;
+	}
+	button:hover {
+		background: rgba(white,.8);
+	}
+	button:active, button:focus {
+		background: rgba(white,.4);
+	}
+}
 
 
 
 /* ---------- HOME */
 #home-container {
 	#home-gpa {
-		padding: 15px;
-		#home-overall-gpa {
+		h1, h2 {
 			color: $azure;
+		}
+	}
+	.gpa-container {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		padding: 15px;
+		height: 45%;
+		.gpa {
 			font-size: 160px;
 			font-weight: 600;
+			line-height: 1;
 		}
 		h2 {
-			color: $azure;
 			font-weight: 600;
 		}
 	}
@@ -869,12 +733,23 @@ section {
 			width: 100px;
 			height: 100px;
 			padding: 10px;
-			border: 3px solid white;
 			svg {
 				@include svg-stroke(white, 4);
 				display: block;
 				width: 100%;
 				height: 100%;
+			}
+		}
+		button:hover {
+			background: white;
+			svg {
+				stroke: $azure;
+			}
+		}
+		button:active, button:focus {
+			background: darken($azure, 10%);
+			svg {
+				stroke: white;
 			}
 		}
 		span {
@@ -886,13 +761,86 @@ section {
 		}
 	}
 	#home-courses {
+		position: absolute;
+		bottom: 0;
+		left: 0;
 		width: 100%;
+		max-height: 60%;
+		overflow: auto;
 		.semester-list {
 			width: 100%;
 			.semester-item {
 				background: rgba($azure,.5);
+				.header-close {
+					@include flex-center;
+					display: none;
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 50px;
+					height: 50px;
+					svg {
+						@include rotate(45);
+						width: 28px;
+						height: 28px;
+						path {
+							fill: none;
+							stroke: white;
+							stroke-width: 7px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
+						}
+					}
+				}
+				&:not(.active) {
+					ul {
+						height: 0;
+						overflow: hidden;
+						padding-bottom: 1px;
+					}
+				}
+				.gpa-container {
+					display: none;
+				}
+				&.selected {
+					position: fixed;
+					top: 0;
+					left: 0;
+					z-index: 13;
+					width: 100%;
+					height: 100%;
+					background: lighten($azure, 25%);
+					.header-close {
+						@include flex;
+					}
+					.section-header {
+						height: auto;
+						padding: 15px;
+						font-size: 20px;
+						font-weight: 600;
+						letter-spacing: 0;
+					}
+					.gpa-container {
+						@include flex;
+						padding-bottom: 45px;
+					}
+				}
+				&:not(.selected) {
+					.gpa-container {
+						height: 0;
+						overflow: hidden;
+					}
+					ul {
+						li {
+							display: none;
+						}
+						li:nth-child(1), li:nth-child(2) {
+							display: block;
+						}
+					}
+				}
 				div {
-					h2 {
+					.section-header {
 						background: $azure;
 					}
 					ul {
@@ -915,7 +863,7 @@ section {
 								position: absolute;
 								top: 5px;
 								right: 5px;
-								width: 68px;
+								width: 58px;
 								height: 58px;
 								background: rgba($azure, .75);
 								span {
@@ -929,7 +877,7 @@ section {
 								.semester-course-grade {
 									top: 0;
 									padding-top: 10px;
-									font-size: 24px;
+									font-size: 32px;
 								}
 								.semester-course-credits {
 									bottom: 0;
@@ -961,7 +909,54 @@ section {
 		font-weight: 900;
 		text-transform: uppercase;
 	}
+	.onboarding-search {
+		input {
+			width: calc(100% - 25px);
+		}
+		input + div {
+			display: none;
+			position: fixed;
+			width: 100%;
+			background: $azure;
+			li {
+				position: relative;
+				margin-top: 15px;
+			}
+			input {
+				border: 0!important;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 99;
+				width: 100%;
+				height: 100%;
+			}
+			label {
+			    display: block;
+			    width: calc(100% - 30px);
+			    padding: 15px;
+				background: white;
+				color: $azure;
+				font-weight: 600;
+				font-size: 20px;
+				span {
+					display: block;
+					&:first-child {
+						font-size: 14px;
+					}
+				}
+			}
+			input:hover + label, input:focus + label, input:active + label, input.active + label, input.activated + label {
+				background: rgba(white,.5);
+				color: white;
+			}
+		}
+		input:focus + div {
+			display: block;
+		}
+	}
 }
+
 #grade-options {
 	@include flex;
 	width: 100%;
@@ -1039,11 +1034,15 @@ section {
 /* ---------- DEMOGRAPHIC */
 #demographic {
 	header {
+		background: lighten($azure, 40%);
 		&::before {
-			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
+			@include opacity(.1);
+			background: url(../../img/hall.jpg) no-repeat center center / cover;
 		}
 		h1 {
-			font-size: 24px;
+			font-size: 28px!important;
+			text-transform: lowercase;
+			color: $azure;
 		}
 	}
 	#demo-grid {
@@ -1064,9 +1063,6 @@ section {
 					height: 100%;
 					background: none;
 				}
-				#{$links} {
-					background: none;
-				}
 				&.demo-hs a {
 					background: lighten($azure, 25%);
 				}
@@ -1078,6 +1074,14 @@ section {
 				}
 				&.demo-parent a {
 					background: darken($azure, 20%);
+				}
+				a:hover {
+					background: $smoke!important;
+					color: $azure!important;
+				}
+				a:active, a:focus {
+					background: white!important;
+					color: $azure!important;
 				}
 			}
 		}

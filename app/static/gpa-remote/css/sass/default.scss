@@ -1163,6 +1163,11 @@ header:not(.desktop-header) {
 			padding: 4px 0;
 		}
 	}
+	.header-close {
+		svg {
+			padding: 0!important;
+		}
+	}
 	.header-menu {
 		svg {
 			padding: 4px!important;

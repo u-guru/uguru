@@ -1,4 +1,4 @@
-angular.module('uguru.guru.controllers')
+angular.module('gpa.controllers')
 .controller('GPAController', [
 	'$scope',
 	'ModalService',
@@ -105,7 +105,11 @@ function GPAController($scope, ModalService, GPAService) {
 	};
 
 // ===================================================================
-
+// $scope.$on('$ionicView.enter', function() {
+//
+//     ModalService.open('course', $scope);
+//
+// });
 
 
 }

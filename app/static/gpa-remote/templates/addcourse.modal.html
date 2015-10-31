@@ -11,10 +11,68 @@
 					</a>
 				</div>
 				<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15x" keyboard-focus>
-					<input type="search" id='course-input-1' placeholder="Search Courses" ng-model="search_text.course">
 					<a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.course.length > 0'>
 						<i class='icon ion-close-circled'> </i>
 					</a>
+					<input type="search" id='course-input-1' placeholder="Search Courses" ng-model="search_text.course">
+					<div>
+						<ul>
+							<li>
+								<input type="checkbox"/>
+								<label>
+									<span class="course-name">ART101</span>
+									<span class="course-title">Introduction to Art</span>
+								</label>
+							</li>
+							<li>
+								<input type="checkbox"/>
+								<label>
+									<span class="course-name">ART101</span>
+									<span class="course-title">Introduction to Art</span>
+								</label>
+							</li>
+							<li>
+								<input type="checkbox"/>
+								<label>
+									<span class="course-name">ART101</span>
+									<span class="course-title">Introduction to Art</span>
+								</label>
+							</li>
+							<li>
+								<input type="checkbox"/>
+								<label>
+									<span class="course-name">ART101</span>
+									<span class="course-title">Introduction to Art</span>
+								</label>
+							</li>
+							<li>
+								<input type="checkbox"/>
+								<label>
+									<span class="course-name">ART101</span>
+									<span class="course-title">Introduction to Art</span>
+								</label>
+							</li>
+							<li>
+								<input type="checkbox"/>
+								<label>
+									<span class="course-name">ART101</span>
+									<span class="course-title">Introduction to Art</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+					<!-- <div bind-input='courses' source='coursesSource'>
+						<ul>
+							<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+								<input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>
+								<label ng-if='!course.title'>{{course.name}}</label>
+								<label ng-if='course.title'>
+									<span class="course-name">{{course.name}}</span>
+									<span class="course-title">{{course.title}}</span>
+								</label>
+							</li>
+						</ul>
+					</div> -->
 				</div>
 			</header>
 			<ul id="grade-options">

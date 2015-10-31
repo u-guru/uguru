@@ -25,9 +25,8 @@ var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
-  'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
+  'ngAnimate', 'angular-velocity', 'uguru.util.controllers','uguru.rest', 'uguru.user',
+  'ionic.device', 'sharedServices', 'uguru.directives', 'uguru.version', 'gpa.controllers'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -43,7 +42,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 })
 
-.config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
+.config(function($stateProvider, $urlRouterProvider, RestangularProvider,
   $ionicConfigProvider, $compileProvider,
   $provide) {
 
@@ -95,11 +94,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('privacy', {
         url:'/privacy',
         templateUrl: BASE + 'templates/privacy-terms.modal.html'
-  }).
-  state('root.home', {
-        url: '/home',
-        templateUrl: BASE + 'templates/home.html',
-        controller: 'HomeController'
   }).
   state('root.gpa-home', {
         url: '/gpa-home',
