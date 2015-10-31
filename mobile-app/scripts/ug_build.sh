@@ -1,4 +1,4 @@
-
+#!/bin/bash
 if [ $# == 0 ];
 	then
 	printf "\e[0;36m\n"
@@ -18,9 +18,9 @@ if [ $# == 1 ];
 		cordova platform rm ios
 		cordova platform rm android		
 		rm -rf plugins/*
-		cp -f ./build_settings_universal/config.xml ./
-		cp -f ./build_settings_universal/constants.js ./www/js/
-		cp -f ./build_settings_universal/constants.js ./www/remote/js/
+		# cp -f ./build_settings_universal/config.xml ./
+		# cp -f ./build_settings_universal/constants.js ./www/js/
+		# cp -f ./build_settings_universal/constants.js ./www/remote/js/
 
 		cordova plugin add ionic-plugin-keyboard
 		cordova plugin add cordova-plugin-camera
@@ -43,15 +43,15 @@ if [ $# == 1 ];
 		cordova plugin add cordova-plugin-appavailability
 		cordova plugin add cordova-plugin-x-toast
 		
-		cordova plugin add https://github.com/wymsee/cordova-HTTP.git
+		# cordova plugin add https://github.com/wymsee/cordova-HTTP.git
 
 		cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"		
-		cordova plugin add https://bitbucket.org/uguru-nick/de.appplant.cordova.plugin.badge
+		# cordova plugin add https://bitbucket.org/uguru-nick/de.appplant.cordova.plugin.badge
 
 		cordova platform add android@4.1
 		printf "\e[0;36mInstalling and configuring the Android Support Libray v13 for Facebook and Push plugins... \e[0m\n"
-		cordova plugin add https://bitbucket.org/uguru-nick/phonegap-plugin-push
-		cordova plugin add https://bitbucket.org/uguru-nick/phonegap-facebook-plugin --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+		# cordova plugin add https://bitbucket.org/uguru-nick/phonegap-plugin-push
+		# cordova plugin add https://bitbucket.org/uguru-nick/phonegap-facebook-plugin --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 
 		printf "\e[0;36mCopying over build-extras.gradle... \e[0m\n"
 		cp ./build_settings_android/build-extras.gradle platforms/android/

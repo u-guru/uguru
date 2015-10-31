@@ -13,7 +13,7 @@ var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = _ipaddress;
+  // BASE_URL = _ipaddress;
   // REST_URL = "http://192.168.0.114:5000"
 
   //REST_URL = 'http://192.168.12.159:5000';

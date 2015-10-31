@@ -66,6 +66,9 @@ stan = {
 		  zoom: 15
 		});
 
+
+var iconURL = img_base + BASE + 'pictures/';
+
 		map.addMarker({
 		  'position': {
 		  	lat: 37.4274745,

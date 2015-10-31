@@ -1,4 +1,4 @@
-
+#!/bin/bash
 if [ $# == 0 ];
 	then
 	printf "\e[0;36m\n"
@@ -23,9 +23,9 @@ if [ $# -ge 1 ];
 	if [ $platform == 'android' ]; then
 		printf "Running for ${platform} \e[0m\n"
 
-		cp -f ./build_settings_universal/config.xml ./
-		cp -f ./build_settings_universal/constants.js ./www/js/
-		cp -f ./build_settings_universal/constants.js ./www/remote/js/
+		# cp -f ./build_settings_universal/config.xml ./
+		# cp -f ./build_settings_universal/constants.js ./www/js/
+		# cp -f ./build_settings_universal/constants.js ./www/remote/js/
 		# ./scripts/ug_build.sh android
 		gulp replace --env=localdev --page=$startpage --ip="$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')"
 		ionic run android -clr --device -- --gradleArg=-q

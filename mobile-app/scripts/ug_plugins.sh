@@ -1,4 +1,4 @@
-
+#!/bin/bash
 if [ $# == 0 ];	then 
 	printf "\n"
 	printf '\e[0;36mplugins <add | rm > <android | ios> <plugin-path> : Installs or uninstalls the specified plugin based on relative file path or URL. Must also specify the target platform. \n'

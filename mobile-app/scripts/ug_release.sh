@@ -1,4 +1,4 @@
-
+#!/bin/bash
 if [ $# == 0 ];
 	then
 	printf "\e[0;36m\n"
