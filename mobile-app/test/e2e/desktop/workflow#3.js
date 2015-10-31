@@ -54,36 +54,138 @@ describe('User Workflow Test : Check Term, FAQ , Support',function()
     {
     	it('Open Sidebar',function()
     	{
-    		sidebar.ToggleSideMenu('on');
+    		side.ToggleSideMenu('on');
     	});
-    		describe('FAQ',function()
-    		{    		    	
-    		    	it('Open FAQ',function()
-    		    	{
-    		    		sidebar.OpenFAQModal();
-    		    	});
-    		  
-    	    		it('Close FAQ',function()
-    	    		{
-    	    			sidebar.CloseModal();
-    	    		});
-    		});
-    		describe('SUPPORT',function()
-    		{    		  
-    	    	  	it('Open SUPPORT',function()
-    		    	{
-    		    		sidebar.OpenSupportModal();
-    		    	});
-    		    	it('check element is visialbe',function()
-    		    	{
-    		    		browser.wait(EC.visibilityOf(sidebar.SubmitButton),5000);
-    		    		expect(sidebar.SubmitButton.isDisplayed()).toBe(true);
-    		    	})
-    	    		it('Close SUPPORT',function()
-    	    		{
-    	    			sidebar.CloseModal();
-    	    		});
-    		});
+      //       describe('TERM',function()
+      //       {                   
+      //               it('Open TERM',function()
+      //               {
+      //                   // sidebar.OpenFAQModal();
+      //                   side.OpenSibarItem('TERM');
+      //               });
+      //              it('check element is visialbe',function()
+      //               {
+      //                   side.isModalActive(); 
+      //               })
+      //               it('Close TERM',function()
+      //               {
+      //                   side.CloseTheModal();
+      //               });
+      //       });
+    		// describe('FAQ',function()
+    		// {    		    	
+    		//     	it('Open FAQ',function()
+    		//     	{
+    		//     		// sidebar.OpenFAQModal();
+      //                   side.OpenSibarItem('FAQ');
+    		//     	});
+		    //        it('check element is visialbe',function()
+      //               {
+      //                   side.isModalActive(); 
+      //               })
+    	 //    		it('Close FAQ',function()
+    	 //    		{
+    	 //    			side.CloseTheModal();
+    	 //    		});
+    		// });
+    		// describe('SUPPORT',function()
+    		// {    		  
+    	 //    	  	it('Open SUPPORT',function()
+    		//     	{
+    		//     		// sidebar.OpenSupportModal();
+      //                   side.OpenSibarItem('support');
+
+    		//     	});
+    		//     	it('check element is visialbe',function()
+    		//     	{
+    		//                         side.isModalActive(); 
+    		//     	})
+    	 //    		it('Close SUPPORT',function()
+    	 //    		{
+    	 //    			side.CloseTheModal();
+    	 //    		});
+    		// });
+      //       describe('Signup',function()
+      //       {             
+      //               it('Open Signup',function()
+      //               {
+      //                   // sidebar.OpenSupportModal();
+      //                   side.OpenSibarItem('signup');
+
+      //               });
+      //               it('check element is visialbe',function()
+      //               {
+      //                   side.isModalActive();
+
+      //               })
+      //               it('Close signup',function()
+      //               {
+      //                   side.CloseTheModal();
+      //               });
+      //       });
+
+            describe('Login',function()
+            {             
+                it('Open Login',function()
+                {
+                    // sidebar.OpenSupportModal();
+                    side.OpenSibarItem('login');
+
+                });
+                it('check element is visialbe',function()
+                {
+                   side.isModalActive();
+                })
+
+                it('Enter Email  ',function()
+                {
+                    account.enterEmail('jason@sjsu.edu');
+                });
+
+                it('Enter Password : ',function()
+                {
+                    account.enterPassword('test');
+                });
+
+                it('Login',function()
+                {
+                    account.LoginAccount();
+                });
+                it('Toggle side on',function()
+                {
+                    side.ToggleSideMenu('on');
+
+                });
+            });
+
+            describe('Setting check Pop Up',function()
+            {
+                  it('Open setting',function()
+                  {
+                      // sidebar.OpenSupportModal();
+                      side.OpenSibarItem('settings');
+                  });
+                  describe("Check popup in account information",function()
+                  {
+                        it('Open Account infor',function()
+                        {
+                            // sidebar.OpenSupportModal();
+                            side.OpenActionSheet('Account Information');
+                        });                
+                        it('Open popup',function()
+                        {
+                            side.OpenActionSheet('edit name');
+                        })
+                        it('Edit Name',function()
+                        {
+                            side.setPopValue('name',"HEHHE HHEHEH");
+                        });
+                        it('close popup',function()
+                        {
+                            side.closePopup();
+                        });
+                    });
+            });
     });
-	
+	   
 });
