@@ -1,4 +1,4 @@
-describe('User Workflow Test : Check Term, FAQ , Support',function()
+describe('User Workflow Test : Check Term, FAQ , Support, Popups is able to open',function()
 {
 	var ListOfCode =  doc.generateRandomString(["","1"],3,"cool")
    afterEach(function()
@@ -36,17 +36,17 @@ describe('User Workflow Test : Check Term, FAQ , Support',function()
           	university.SelectSchool(11);
           });
 
-          describe('Welcome uguru logo pop',function()
+          describe('Welcome uguru logo pop,IF FAILED PLEASE USE THE SAME MEHTOD AS OTHER POPUP SERVICE',function()
 			{
 				it('Check welcome logo pop up ',function()
 				{
-					browser.waitForAngular();
-					home.CheckPopUpIsShown()
+					side.waitPopUpIsShown();
+
 				});
 
 				it('Close welcome logo',function()
 				{
-					home.CloseThePopUp();
+					side.closePopup();
 				});	
 			});
     });	
@@ -56,75 +56,75 @@ describe('User Workflow Test : Check Term, FAQ , Support',function()
     	{
     		side.ToggleSideMenu('on');
     	});
-      //       describe('TERM',function()
-      //       {                   
-      //               it('Open TERM',function()
-      //               {
-      //                   // sidebar.OpenFAQModal();
-      //                   side.OpenSibarItem('TERM');
-      //               });
-      //              it('check element is visialbe',function()
-      //               {
-      //                   side.isModalActive(); 
-      //               })
-      //               it('Close TERM',function()
-      //               {
-      //                   side.CloseTheModal();
-      //               });
-      //       });
-    		// describe('FAQ',function()
-    		// {    		    	
-    		//     	it('Open FAQ',function()
-    		//     	{
-    		//     		// sidebar.OpenFAQModal();
-      //                   side.OpenSibarItem('FAQ');
-    		//     	});
-		    //        it('check element is visialbe',function()
-      //               {
-      //                   side.isModalActive(); 
-      //               })
-    	 //    		it('Close FAQ',function()
-    	 //    		{
-    	 //    			side.CloseTheModal();
-    	 //    		});
-    		// });
-    		// describe('SUPPORT',function()
-    		// {    		  
-    	 //    	  	it('Open SUPPORT',function()
-    		//     	{
-    		//     		// sidebar.OpenSupportModal();
-      //                   side.OpenSibarItem('support');
+            describe('TERM',function()
+            {                   
+                    it('Open TERM',function()
+                    {
+                        // sidebar.OpenFAQModal();
+                        side.OpenSibarItem('TERM');
+                    });
+                   it('check element is visialbe',function()
+                    {
+                        side.isModalActive(); 
+                    })
+                    it('Close TERM',function()
+                    {
+                        side.CloseTheModal();
+                    });
+            });
+    		describe('FAQ',function()
+    		{    		    	
+    		    	it('Open FAQ',function()
+    		    	{
+    		    		// sidebar.OpenFAQModal();
+                        side.OpenSibarItem('FAQ');
+    		    	});
+		           it('check element is visialbe',function()
+                    {
+                        side.isModalActive(); 
+                    })
+    	    		it('Close FAQ',function()
+    	    		{
+    	    			side.CloseTheModal();
+    	    		});
+    		});
+    		describe('SUPPORT',function()
+    		{    		  
+    	    	  	it('Open SUPPORT',function()
+    		    	{
+    		    		// sidebar.OpenSupportModal();
+                        side.OpenSibarItem('support');
 
-    		//     	});
-    		//     	it('check element is visialbe',function()
-    		//     	{
-    		//                         side.isModalActive(); 
-    		//     	})
-    	 //    		it('Close SUPPORT',function()
-    	 //    		{
-    	 //    			side.CloseTheModal();
-    	 //    		});
-    		// });
-      //       describe('Signup',function()
-      //       {             
-      //               it('Open Signup',function()
-      //               {
-      //                   // sidebar.OpenSupportModal();
-      //                   side.OpenSibarItem('signup');
+    		    	});
+    		    	it('check element is visialbe',function()
+    		    	{
+    		                        side.isModalActive(); 
+    		    	})
+    	    		it('Close SUPPORT',function()
+    	    		{
+    	    			side.CloseTheModal();
+    	    		});
+    		});
+            describe('Signup',function()
+            {             
+                    it('Open Signup',function()
+                    {
+                        // sidebar.OpenSupportModal();
+                        side.OpenSibarItem('signup');
 
-      //               });
-      //               it('check element is visialbe',function()
-      //               {
-      //                   side.isModalActive();
+                    });
+                    it('check element is visialbe',function()
+                    {
+                        side.isModalActive();
 
-      //               })
-      //               it('Close signup',function()
-      //               {
-      //                   side.CloseTheModal();
-      //               });
-      //       });
+                    })
+                    it('Close signup, if does not pass, THAT MEAN YOU GUYS DIDN"T USE CORRECT CSS[.header-down]',function()
+                    {
+                        side.CloseTheModal();
+                    });
+            });
 
-            describe('Login',function()
+            describe('Open Login and Login account',function()
             {             
                 it('Open Login',function()
                 {
@@ -158,15 +158,17 @@ describe('User Workflow Test : Check Term, FAQ , Support',function()
                 });
             });
 
+
             describe('Setting check Pop Up',function()
             {
-                  it('Open setting',function()
+                 
+                  describe("Check popup : name",function()
                   {
-                      // sidebar.OpenSupportModal();
-                      side.OpenSibarItem('settings');
-                  });
-                  describe("Check popup in account information",function()
-                  {
+                        it('Open setting',function()
+                        {
+                            // sidebar.OpenSupportModal();
+                            side.OpenSibarItem('settings');
+                        });
                         it('Open Account infor',function()
                         {
                             // sidebar.OpenSupportModal();
@@ -176,7 +178,7 @@ describe('User Workflow Test : Check Term, FAQ , Support',function()
                         {
                             side.OpenActionSheet('edit name');
                         })
-                        it('Edit Name',function()
+                        it('Edit email',function()
                         {
                             side.setPopValue('name',"HEHHE HHEHEH");
                         });
@@ -184,8 +186,64 @@ describe('User Workflow Test : Check Term, FAQ , Support',function()
                         {
                             side.closePopup();
                         });
-                    });
-            });
+                });
+
+                describe("Check popup : email",function()
+                {
+                      it('Open setting',function()
+                      {
+                          // sidebar.OpenSupportModal();
+                          side.OpenSibarItem('settings');
+                      });
+                      it('Open Account infor',function()
+                      {
+                          // sidebar.OpenSupportModal();
+                          side.OpenActionSheet('Account Information');
+                      });                
+                      it('Open popup',function()
+                      {
+                          side.OpenActionSheet('edit email');
+                      })
+                      it('Edit email',function()
+                      {
+                          side.setPopValue('email',"jason@uguru.me");
+                      });
+                      it('close popup',function()
+                      {
+                          side.closePopup();
+                      });
+                });
+
+                describe("Check popup : password",function()
+                {
+                      it('Open setting',function()
+                      {
+                          // sidebar.OpenSupportModal();
+                          side.OpenSibarItem('settings');
+                      });
+                      it('Open Account infor',function()
+                      {
+                          // sidebar.OpenSupportModal();
+                          side.OpenActionSheet('Account Information');
+                      });                
+                      it('Open popup',function()
+                      {
+                          side.OpenActionSheet('edit password');
+                      })
+                      it('Edit Old',function()
+                      {
+                          side.setPopValue('old',"test");
+                      });
+                      it('Edit New',function()
+                      {
+                          side.setPopValue('new',"test");
+                      });
+                      it('close popup',function()
+                      {
+                          side.closePopup();
+                      });
+                });
+        });
     });
 	   
 });

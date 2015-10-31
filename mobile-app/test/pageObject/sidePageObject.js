@@ -9,7 +9,9 @@ var Side = function() {
   this.ActionList = $$('.action-sheet button');
   //Pop Element 
   this.PopupElement= element(by.id('home-uguru-popup'));
-  this.CloseButtonOfPopUp = $('.uguru-popup.high-z-index.sidebar-popup .show')
+  this.CloseButtonOfPopUp = $('.uguru-popup.high-z-index.sidebar-popup.show .close-popup-link');
+  this.SubmitPopup =$('.uguru-popup.high-z-index.sidebar-popup.show .semibold.bg-cerise.white-text.submit');
+  this.PopUp = $('.uguru-popup.high-z-index.sidebar-popup.show')
   this.popinputName = $('[ng-model="popupInput.editName"]'); 
   this.popinputEmail = $('[ng-model="popupInput.editEmail"]'); 
   this.popinputPassOld = $('[ng-model="popupInput.editPasswordOld"]'); 
@@ -21,12 +23,15 @@ var Side = function() {
   //Pop
   this.setPopValue = function(name,value)
   {
+    browser.wait(EC.visibilityOf(this.PopUp),5000);
     switch(name)
     {
       case 'name':
+        this.popinputName.clear();
         this.popinputName.sendKeys(value);
         break;
       case 'email':
+        this.popinputEmail.clear();
         this.popinputEmail.sendKeys(value);
         break;
       case 'new':
@@ -37,7 +42,10 @@ var Side = function() {
         break;
     }
   };
-
+   this.waitPopUpIsShown = function()
+   {
+      browser.wait(EC.visibilityOf(this.PopUp),5000);
+   };
   this.SubmitPopup = function()
   {
     this.SubmitPop().click();
@@ -55,7 +63,8 @@ var Side = function() {
 
    this.closePopup = function()
    {
-     this.closeWrapper.click();
+
+     this.CloseButtonOfPopUp.click();
    };
 
   //Modal
