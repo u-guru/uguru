@@ -8,13 +8,14 @@
 		<div ng-include="img_base + BASE + 'templates/titlegpa.html'"></div>
 	</u-slide>
 
+
 	<u-slide >
 		<div ng-include="img_base + BASE + 'templates/demographics.html'"></div>
 	</u-slide>
 
 	<u-slide>
 		<ion-view class='uguru-view university-view'>
-			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='isDesktopMode()'>
+			<main id="desktop-university" class="desktop-mode desktop-search" ng-show='isDesktopMode()'>
 			    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 			    <div class="main default">
 			        <form>
@@ -44,7 +45,7 @@
 			        </div>
 			    </div>
 			</main>
-			<section id="school" class="onboarding" ng-if='!isDesktopMode()'>
+			<section id="school" class="onboarding" ng-show='!isDesktopMode()'>
 				<header class="third flex-center">
 					<h1>Find Your Community</h1>
 					<div class="header-nav" ng-if='LOCAL'>

@@ -1315,14 +1315,14 @@ label {
 		// Invalid Input Style
 		&.invalid,
 		&:focus.invalid {
-			border-bottom: 1px solid $bakery;
-			box-shadow: 0 1px 0 0 $bakery;
+			border-bottom: 1px solid $cerise;
+			box-shadow: 0 1px 0 0 $cerise;
 		}
 		// Custom Error message
 		&.invalid + label:after,
 		&:focus.invalid + label:after {
 			content: attr(data-error);
-			color: $bakery;
+			color: $cerise;
 			opacity: 1;
 		}
 		// Form Message Shared Styles

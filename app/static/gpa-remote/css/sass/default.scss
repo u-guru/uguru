@@ -1093,7 +1093,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 }
 
 // HEADERS
-header:not(.desktop-header) {
+header {
 	min-height: 50px;
 	position: relative;
 	* {
