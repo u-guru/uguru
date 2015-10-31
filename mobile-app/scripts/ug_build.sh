@@ -25,7 +25,7 @@ if [ $# == 1 ];
 		cordova plugin add ionic-plugin-keyboard
 		cordova plugin add cordova-plugin-camera
 		cordova plugin add https://bitbucket.org/uguru-nick/crosswalk-plugin
-		# cordova plugin add cordova-plugin-crosswalk-webview
+		
 		cordova plugin add cordova-plugin-device
 		cordova plugin add cordova-plugin-dialogs
 		cordova plugin add cordova-plugin-inappbrowser
