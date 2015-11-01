@@ -25,43 +25,24 @@ angular.module('uguru.util.controllers')
     'KeyboardService',
     'ModalService',
     'Github',
+    'WindowService',
+    'TransitionService',
     function($ionicPlatform, $scope, $state, $localstorage, User, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         $cordovaPush, University,
         $cordovaSplashscreen, $timeout,
         $ionicSideMenuDelegate, $ionicViewSwitcher, DeviceService,
          Utilities, DownloadService, PopupService,
-         KeyboardService, ModalService, Github) {
+         KeyboardService, ModalService, Github, WindowService,
+         TransitionService) {
 
 
-        var bodyRect;
-        var windowHeight;
-        var windowWidth;
-        var initHeight = function() {
-            bodyRect = document.querySelector('body').getBoundingClientRect();
-            windowHeight = bodyRect.height;
-            windowWidth = bodyRect.width;
-        }
+        sideMenuElem = window.document.querySelector('ion-side-menu-content');
+        TransitionService.initListener(sideMenuElem);
 
-        initHeight();
-        $scope.window = {
-            width:windowWidth,
-            height:windowHeight
-        }
 
-        console.log('Window size', $scope.window);
 
-        // GABRIELLE TODO: Define these values
-        var desktopHeightLimit = 699;
-        var desktopWidthLimit= 767;
-
-        $scope.isDesktopMode = function(height, width) {
-            initHeight();
-            height = height || windowHeight;
-            width = width || windowWidth;
-            return height > desktopHeightLimit && width > desktopWidthLimit;
-        }
-
-        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
+        $scope.window = WindowService.initWindowObj()
+        $scope.desktopMode = WindowService.isDesktopMode();
 
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
@@ -69,6 +50,8 @@ angular.module('uguru.util.controllers')
             KeyboardService.setDeviceKeyboardState(true);
             $scope.keyboardOpen = true;
         }
+
+
 
         window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
@@ -143,6 +126,7 @@ angular.module('uguru.util.controllers')
         $scope.user.createObj = User.createObj;
         $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
+        $scope.user.grades = $scope.user.grades || [];
         $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
@@ -248,13 +232,13 @@ angular.module('uguru.util.controllers')
                         $scope.root.vars.settings = {icons : {profile : true}};
                         $scope.loader.showSuccess('You have been successfully logged out!', 2500);
                         // $state.go('^.university');
-                        $ionicSideMenuDelegate.toggleRight();
+                        $ionicSideMenuDelegate.toggleLeft();
                   }, 1000);
             }
         }
 
-        $scope.toggleRightSideMenu = function() {
-            $ionicSideMenuDelegate.toggleRight();
+        $scope.toggleLeftSideMenu = function() {
+            $ionicSideMenuDelegate.toggleLeft();
             $timeout(function() {
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
             }, 250);

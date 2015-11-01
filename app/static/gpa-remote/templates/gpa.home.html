@@ -1,9 +1,9 @@
 <ion-view class='uguru-view home-view bg-azure'>
-	<!-- <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a> -->
+	<a id='side-menu-left-overlay' ng-click='toggleLeftSideMenu()' class="active hide-opacity hide-display"></a>
 	<section id="gpa-home" class="full-xy student-home bg-smoke">
 		<header class="bg-azure">
             <div class="header-nav">
-    			<a class="header-nav-back" ng-click='toggleRightSideMenu()'>
+    			<a class="header-nav-back" ng-click='toggleLeftSideMenu()'>
     				<svg viewBox="0 0 100 100">
     					<path d="M77.7071855,34.003249 C72.1666671,24.4442603 61.8219498,18.0006703 50,18.0000001 L50,8 L50,18 L49.9981554,18 C38.1779324,18 27.8332606,24.4437373 22.2927152,34.0031916 L22.2927152,34.0031916 L13.626933,29 L22.2927152,34.0031916 C19.5635175,38.7120495 17.9999998,44.1769094 17.9999998,50 C17.9999998,55.8230906 19.5635175,61.2879505 22.2927152,65.9968084 L13.626933,71 L22.2927152,65.9968084 C27.8332606,75.5562627 38.1779324,82 49.9981554,82 L50,92 L50,82 C61.8219498,81.9993298 72.1666671,75.5557397 77.7071855,65.996751 L86.373067,71 L77.7071855,65.996751 C80.4364952,61.2879061 82.0000002,55.823067 82.0000002,50 C82.0000002,44.176933 80.4364952,38.7120939 77.7071855,34.003249 L86.373067,29 L77.7071855,34.003249 Z M49.9989624,68 C40.0749409,68 31.9999999,59.925059 31.9999999,50 C31.9999999,40.074941 40.0749409,32 49.9989624,32 C59.9250591,32 68.0000001,40.074941 68.0000001,50 C68.0000001,59.925059 59.9250591,68 49.9989624,68 L49.9989624,68 L49.9989624,68 Z"></path>
     				</svg>
@@ -21,13 +21,13 @@
 			<div id="home-gpa" class="gpa-container">
 				<div>
 					<h1 id="home-overall-gpa" class="gpa" ng-if="overall.averageGPA">{{overall.averageGPA | number: 1}}</h1>
-					<h1 id="home-overall-gpa" class="gpa">4.0</h2>
+					<h1 id="home-overall-gpa" ng-if="!overall.averageGPA" class="gpa">4.0</h2>
 					<h2 ng-if="!overall.averageGPA">Quick, enter some courses in to get&nbsp;started!</h1>
 					<h2 ng-if="overall.averageGPA">{{slogan()}}</h2>
 				</div>
 			</div>
 
-			<div id="home-add" ng-if="overall.averageGPA">
+			<div id="home-add" ng-if="!overall.averageGPA">
 				<div>
 					<button class="home-button bg-azure" thr-click="openModal('course')">
 						<svg viewBox="0 0 100 100">
@@ -38,7 +38,7 @@
 				</div>
 			</div>
 
-			<div id="home-courses" ng-if="!overall.averageGPA">
+			<div id="home-courses" ng-if="overall.averageGPA">
 				<ul class="semester-list">
 					<li class="semester-item active">
 						<div>
@@ -179,5 +179,5 @@
 	</section>
 
 	<!-- Make this into a directive -->
-	<div class='uguru-popup' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.gpa.html'"> </div>
+	<div class='uguru-popup' id='gpa-home-popup' ng-include="img_base + 'templates/welcome.gpa.html'"> </div>
 </ion-view>

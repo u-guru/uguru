@@ -423,9 +423,9 @@ section {
 
 /* ---------- SIDEBAR & MENUS */
 // SIDEBAR
-#side-menu-left-overlay.active {
+#side-menu-left-overlay {
 	background: rgba($charcoal, .8);
-	width: 20%;
+	width: 100%;
 	height: 100%;
 	z-index: 20;
 	position: absolute;
@@ -1092,3 +1092,4 @@ section {
 #intercom-container {
 	display:none !important;
 }
+

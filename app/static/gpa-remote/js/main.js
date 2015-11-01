@@ -112,4 +112,22 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $urlRouterProvider.otherwise('/' + _startpage);
 
 
-});
+}).directive('scrollDetector', function($window, $ionicScrollDelegate) {
+  return {
+    restrict : 'A',
+
+    link: function(scope, element, attrs) {
+
+      var scrollableElement = element;
+      console.log('scrollableElement');
+      console.log(scrollableElement);
+      element.on('scroll', function() {
+        console.log('Scrolled');
+        console.log(element.prop( 'offsetTop' ));
+        var scrollView = $ionicScrollDelegate.getScrollView(scrollableElement);
+        console.log('Scroll view');
+        console.log(scrollView);
+      });
+    }
+  };
+})

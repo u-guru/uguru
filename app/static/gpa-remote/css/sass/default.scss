@@ -388,6 +388,14 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	@include opacity(1);
 }
 
+.hide-display {
+	display:none;
+}
+
+.show-display {
+	display:block;
+}
+
 .absolute {
     position: absolute!important;
 }
