@@ -29,6 +29,9 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## Bens Views ##
 ################
 
+
+
+
 @app.route('/admin/stats/universities/')
 def admin_statistics_universities_new():
     if not session.get('admin'):
@@ -46,7 +49,7 @@ def admin_statistics_universities_new():
     final_universities, prepared_info = calcAndSortedPrepared(universities)
 
     full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
-    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 80 and prepared_info[university.id]['percentage'] < 100 and prepared_info[university.id]['percentage'] >= 80]
+    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 90 and prepared_info[university.id]['percentage'] < 100 and prepared_info[university.id]['percentage'] >= 80 and university.school_mascot_name == None ]
     shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50 and prepared_info[university.id]['percentage'] < 80]
     dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
     atleast_fifty_universities = eighty_prepared_universities + shitty_prepared_universities
@@ -807,6 +810,20 @@ def one_university_mobile(name):
             , email=email)
     else:
         return redirect(url_for('app_flex'))
+
+@app.route('/admin/stats/universities/<uni_id>/<uni_name>')
+def get_logo_url(uni_id,uni_name):
+
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    # def html_image_string(urls):
+    #     return '<img src="%s" alt="Smiley face" height="auto" width="%s">' % (urls, '100%')
+
+    university = University.query.get(uni_id)
+    from college_logo import scrape_logo_url_from_google
+    arr = scrape_logo_url_from_google(uni_name)
+
+
 
 @app.route('/u/<name>/<_id>/', methods=["GET"])
 def one_university(name, _id):
