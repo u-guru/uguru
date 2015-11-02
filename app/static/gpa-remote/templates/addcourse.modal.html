@@ -10,57 +10,12 @@
 						</svg>
 					</a>
 				</div>
-				<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15x" keyboard-focus>
+				<div ng-if='!selectedCourse' class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15x" keyboard-focus>
 					<a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.course.length > 0'>
 						<i class='icon ion-close-circled'> </i>
 					</a>
 					<input type="search" id='course-input-1' placeholder="Search Courses" ng-model="search_text.course">
-					<div>
-						<ul>
-							<li>
-								<input type="checkbox"/>
-								<label>
-									<span class="course-name">ART101</span>
-									<span class="course-title">Introduction to Art</span>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<label>
-									<span class="course-name">ART101</span>
-									<span class="course-title">Introduction to Art</span>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<label>
-									<span class="course-name">ART101</span>
-									<span class="course-title">Introduction to Art</span>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<label>
-									<span class="course-name">ART101</span>
-									<span class="course-title">Introduction to Art</span>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<label>
-									<span class="course-name">ART101</span>
-									<span class="course-title">Introduction to Art</span>
-								</label>
-							</li>
-							<li>
-								<input type="checkbox"/>
-								<label>
-									<span class="course-name">ART101</span>
-									<span class="course-title">Introduction to Art</span>
-								</label>
-							</li>
-						</ul>
-					</div>
+
 					<!-- <div bind-input='courses' source='coursesSource'>
 						<ul>
 							<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
@@ -75,7 +30,17 @@
 					</div> -->
 				</div>
 			</header>
-			<ul id="grade-options">
+			<div class='onboarding-search-container' ng-show='search_text.course && search_text.course.length'>
+						<ul class='full-xy absolute bg-azure'>
+							<li  thr-click='selectCourse(course)' ng-repeat='course in courses | filter:search_text.course'>
+								<label>
+									<span class="course-name">{{course.name}}</span>
+									<span class="course-title" ng-if='course.title'>{{course.title}}</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+			<ul id="grade-options" ng-show='!search_text.course || search_text.course.length == 0'>
 				<li>
 					<svg viewBox="0 0 100 100">
 						<rect fill="none" x="0" y="0" width="100" height="100"></rect>
@@ -114,21 +79,28 @@
 			</ul>
 
 			<ul class="course-input-form">
+				<li ng-show='selectedCourse' class='relative'>
+					<h1>Course</h1>
+					<input type="text" ng-model="selectedCourse.name" style='margin-right:7.5%;'/>
+					<a ng-click='resetSelectedCourse()' class="absolute major-input-close side-icon" ng-if='selectedCourse' style='z-index:10000;'>
+						<i class='icon ion-close-circled'> </i>
+					</a>
+				</li>
 				<li>
 					<h1>Units</h1>
-					<input type="text" ng-model="course.units" placeholder="4">
+					<input type="text" ng-model="course.units" placeholder="4"/>
 				</li>
 				<li>
 					<h1>Year</h1>
-					<input type="text" ng-model="course.year" placeholder="2015">
+					<input type="text" ng-model="course.year" placeholder="2015"/>
 				</li>
 				<li>
 					<h1>Semester</h1>
-					<input type="text" ng-model="course.semester" placeholder="Winter">
+					<input type="text" ng-model="course.semester" placeholder="Winter"/>
 				</li>
 			</ul>
 
-			<button ng-click='submitCourse()'>Submit</button>
+			<button ng-show='!search_text.course || search_text.course.length == 0' ng-click='submitCourse()'>Submit</button>
 		</section>
 	</ion-content>
 </ion-modal-view>

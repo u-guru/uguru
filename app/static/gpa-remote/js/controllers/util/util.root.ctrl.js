@@ -39,6 +39,9 @@ angular.module('uguru.util.controllers')
         sideMenuElem = window.document.querySelector('ion-side-menu-content');
         TransitionService.initListener(sideMenuElem);
 
+        $scope.selectCourse = function(course) {
+            $scope.selectedCourse = course;
+        }
 
 
         $scope.window = WindowService.initWindowObj()
@@ -172,6 +175,7 @@ angular.module('uguru.util.controllers')
                     $scope.data.courses = courses.plain();
                     University.courses = courses.plain();
                     console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
+                    $scope.courses = University.courses;
                     callback && callback();
                 }, 0);
             },
@@ -197,7 +201,7 @@ angular.module('uguru.util.controllers')
                 $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
             }, 0)
         } else {
-            console.log(University.courses.length, 'majors loaded');
+            console.log(University.courses.length, 'courses loaded');
         }
 
 

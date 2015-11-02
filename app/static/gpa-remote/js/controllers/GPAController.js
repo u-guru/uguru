@@ -8,11 +8,13 @@ angular.module('gpa.controllers')
 	'StorageService',
 	'PopupService',
 	'TransitionService',
+	'University',
 	GPAController]);
 
 
 function GPAController($scope, ModalService, GPAService, $localstorage,
-	$timeout, StorageService, PopupService, TransitionService) {
+	$timeout, StorageService, PopupService, TransitionService,
+	University) {
 
 
 	$scope.slogan = function() {
@@ -39,7 +41,8 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	ModalService.init('course', $scope);
 
 	$scope.search_text = {
-		course: ''
+		course: '',
+		selected_course: null
 	};
 
 	$scope.course = {
@@ -74,6 +77,8 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	};
 
+
+
 	$scope.submitCourse = function() {
 
 		if ($scope.search_text.course !== '' &&
@@ -103,6 +108,12 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		}
 
 	};
+
+	$scope.selectCourse = function(course) {
+		$scope.selectedCourse = course;
+		$scope.search_text.course = '';
+		$scope.search_text.selected_course = course;
+	}
 
 	$scope.setGrade = function(grade) {
 		selectedGrade = grade;

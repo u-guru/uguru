@@ -4,13 +4,13 @@ angular
   '$rootScope',
   '$state',
   '$localstorage',
+	'$cordovaPush',
   'University',
-  'LoadingService',
 	WindowsService
 	]);
 
-function WindowsService($rootScope, $state, $localstorage,
-   University, LoadingService) {
+function WindowsService($rootScope, $state, $localstorage, $cordovaPush,
+   University) {
 
 	return {
 		ready: ready

@@ -39,7 +39,8 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	ModalService.init('course', $scope);
 
 	$scope.search_text = {
-		course: ''
+		course: '',
+		selected_course: null,
 	};
 
 	$scope.course = {
@@ -56,6 +57,13 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		$scope.search_text.course = '';
 	};
 
+	$scope.selectedCourse = null;
+
+	$scope.selectCourse = function(course) {
+		$scope.selectedCourse = course;
+		$scope.search_text.course = null;
+	}
+
 	$scope.openModal = function(modalName) {
 		// console.log("opening modal: " + modalName);
 		if (modalName == 'course' && (!$scope.user.university || !$scope.user.university.name)) {
@@ -68,6 +76,11 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	};
 
+	$scope.resetSelectedCourse = function() {
+		$scope.search_text = {course: ''};
+		$scope.selectedCourse = null;
+	}
+
 	$scope.closeModal = function(modalName) {
 		// console.log("closing modal: " + modalName);
 		ModalService.close(modalName);
@@ -76,14 +89,15 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.submitCourse = function() {
 
-		if ($scope.search_text.course !== '' &&
+		if ($scope.selectedCourse &&
 			selectedGrade !== '' &&
 			$scope.course.units !== '' &&
 			$scope.course.year !== '' &&
 			$scope.course.semester !== '') {
 
 			$scope.course.grade = selectedGrade;
-			$scope.course.name = $scope.search_text;
+			$scope.course.name = $scope.selectedCourse.name;
+			$scope.course.id = $scope.selectedCourse.id;
 
 
 			GPAService.addCourse($scope.course);

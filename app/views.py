@@ -876,12 +876,18 @@ def windows_app():
 @app.route('/apps/gpa/')
 def app_route_gpa():
     import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
         return redirect('https://www.uguru.me/static/gpa-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
-        return redirect('/static/gpa-remote/index.html')
+        return redirect('http://localhost:5000/static/gpa-remote/index.html?version=' + str(version) + str(02323))
+        # return redirect('/static/gpa-remote/index.html')
 
 @app.route('/production/app/')
 @app.route('/app/production/')
