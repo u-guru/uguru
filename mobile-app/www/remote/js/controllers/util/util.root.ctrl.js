@@ -62,8 +62,8 @@ angular.module('uguru.util.controllers')
         console.log('Window size', $scope.window);
 
         // GABRIELLE TODO: Define these values
-        var desktopHeightLimit = 700;
-        var desktopWidthLimit= 700;
+        var desktopHeightLimit = 699;
+        var desktopWidthLimit= 767;
 
         $scope.isDesktopMode = function(height, width) {
             initHeight();
@@ -175,7 +175,10 @@ angular.module('uguru.util.controllers')
             console.log('retrieving categories for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
-                Category.mapActiveToSubcategories(Category.categories, $scope.user);
+
+                if ($scope.user && $scope.user.id) {
+                    Category.mapActiveToSubcategories(Category.categories, $scope.user);
+                }
 
 
                 $scope.categories = Category.categories.slice();
@@ -185,7 +188,9 @@ angular.module('uguru.util.controllers')
             },
             function() {
                 console.log("Categories NOT successfully loaded");
+
             });
+
         };
 
 
@@ -236,7 +241,9 @@ angular.module('uguru.util.controllers')
             }
         };
 
+
         sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * 0.80; 
+
 
         $scope.toggleRightSideMenu = function() {
             console.log("sideMenuWidth should be: " + sideMenuWidth);
@@ -245,16 +252,15 @@ angular.module('uguru.util.controllers')
             if (sideMenu.style.width === (sideMenuWidth + 'px')) {
                 sideMenu.style.width = 0 + 'px';
             } else {
-                sideMenu.style.width = sideMenuWidth + 'px';    
+                sideMenu.style.width = sideMenuWidth + 'px';
             }
-            
+
 
             $ionicSideMenuDelegate.toggleRight();
             $timeout(function() {
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
             }, 250);
         };
-
 
         $scope.doRefresh = function(repeat) {
             $scope.root.vars.user_refresh = true;

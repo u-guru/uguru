@@ -75,6 +75,8 @@ angular.module('uguru.guru.controllers')
       $ionicSlideBoxDelegate.previous();
     }
 
+
+
     $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
@@ -87,6 +89,10 @@ angular.module('uguru.guru.controllers')
           console.log("broadcasting schoolChange!");
           $rootScope.$emit('schoolChange');
         }, 0);
+
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 500)
 
         uTracker.track(tracker, 'Become Guru: Majors');
 
@@ -130,6 +136,8 @@ angular.module('uguru.guru.controllers')
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");
 
+        $scope.init
+
         var coursesList = document.querySelectorAll('#courses-list');
 
         $timeout(function() {
@@ -170,7 +178,8 @@ angular.module('uguru.guru.controllers')
       }
 
       else if (index === 2) {
-
+          $ionicSlideBoxDelegate.update();
+          $scope.categories = Category.categories;
         try {
           $interval.cancel(startScanner)
         } catch (err) {
@@ -245,12 +254,12 @@ angular.module('uguru.guru.controllers')
     $scope.initSlideBoxModals = function() {
 
 
-      $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-      }).then(function(modal) {
-          $scope.categorySkillsModal = modal;
-      });
+      // $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+      //       scope: $scope,
+      //       animation: 'slide-in-up'
+      // }).then(function(modal) {
+      //     $scope.categorySkillsModal = modal;
+      // });
 
 
     }
@@ -299,6 +308,7 @@ angular.module('uguru.guru.controllers')
 
     //     $scope.initSlideBoxModals();
     //   }, 500);
+
 
     // }, 500)
 

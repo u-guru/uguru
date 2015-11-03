@@ -104,7 +104,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       LoadingService.hide();
       var errorTextElem = document.getElementById('input-error-text');
       errorTextElem.style.opacity = 1;
-      errorTextElem.innerHTML = 'Incorrect access code';
+      errorTextElem.innerHTML = 'Incorrect access code!';
       $scope.access.codeInput = '';
 
       //fadeout after 500 seconds

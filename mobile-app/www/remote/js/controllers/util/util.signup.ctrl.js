@@ -1238,6 +1238,7 @@ angular.module('uguru.util.controllers')
 
 
       }, function(err) {
+        $scope.loader.showMsg('Incorrect username or password', 1000);
         if (err.status === 401) {
             $scope.signupForm.password = '';
             $scope.success.show(0, 1000, 'Incorrect username or password');

@@ -1,10 +1,19 @@
-var defaultMapStyles = [
+var returnSubtleUniversityMap = function(school_obj) {
+    return [
+    {
+        "featureType": 'administrative.locality',
+        "elementType": 'labels.text.fill',
+        "stylers": [{
+            "color": school_obj.school_color_one
+        }]
+
+    },
     {
         "featureType": "administrative",
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#737373"
+                "color": school_obj.school_color_one,
             }
         ]
     },
@@ -31,7 +40,7 @@ var defaultMapStyles = [
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#ebebeb"
+                "color": school_obj.school_color_one,
             }
         ]
     },
@@ -40,7 +49,8 @@ var defaultMapStyles = [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "on"
+                "visibility": "on",
+                "color": school_obj.school_color_one,
             }
         ]
     },
@@ -115,7 +125,7 @@ var defaultMapStyles = [
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": school_obj.school_color_one,
             }
         ]
     },
@@ -137,3 +147,5 @@ var defaultMapStyles = [
         ]
     }
 ]
+
+}

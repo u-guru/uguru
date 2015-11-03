@@ -153,6 +153,7 @@ angular.module('uguru.util.controllers')
 
     $scope.clearSearchInput = function() {
       $scope.search_text.major = '';
+
       console.log("length of majors: " + $scope.source.majors.length);
     };
 

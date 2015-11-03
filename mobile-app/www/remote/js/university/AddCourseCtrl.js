@@ -191,6 +191,7 @@ angular.module('uguru.util.controllers')
       }
     };
 
+
     $scope.afterEnter = function() {
       console.log("afterEnter works!");
     };

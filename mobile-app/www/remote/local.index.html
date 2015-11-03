@@ -45,9 +45,12 @@
 
     <!-- The main css file -->
     <link href="remote/css/sass/default.css" rel="stylesheet">
-    <!-- <link href="remote/css/sass/material.css" rel="stylesheet"> -->
+    <link href="remote/css/sass/material.css" rel="stylesheet">
     <link href="remote/css/sass/style.css" rel="stylesheet">
     <link href="remote/css/sass/desktop.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="remote/js/materialize.min.js"></script>
 
 
     <!--   <link href="remote/css/sass/components/map.css" rel="stylesheet"> -->
@@ -146,7 +149,9 @@
    <script src='remote/lib/angular-google-maps/angular-google-maps.min.js'></script>
  -->
 
+
     <script type="text/javascript" src="remote/lib/cta/cta.min.js"></script>
+    <script src='remote/lib/angular-google-maps/google-marker-with-labels.js'></script>
 
 
     <script src="remote/lib/restangular/dist/restangular.js"></script>
@@ -159,12 +164,13 @@
     <script src="remote/lib/angular-payments/angular-payments.js"></script>
     <script src="remote/lib/progressbar/progressbar.min.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
-    <script src="remote/lib/angular-google-maps/ion-google-place.js"></script>
+
     <script src="remote/lib/velocity/velocity.min.js"></script>
     <script src="remote/lib/velocity/velocity.ui.min.js"></script>
     <script src="remote/lib/velocity/angular-velocity.min.js"></script>
     <script src="remote/lib/fastMatcher.js"></script>
     <script src="remote/lib/d3/d3.min.js"></script>
+    <script src="remote/lib/d3/ua-parser.min.js"></script>
 
     <script src="remote/lib/localytics/localytics.js"></script>
 
@@ -399,7 +405,7 @@
       map.showDialog();
     }
     </script>
-    
+
 
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()">

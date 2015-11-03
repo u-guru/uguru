@@ -17,14 +17,12 @@ if [ $# == 1 ];
 	if [ $platform == 'android' ]; then
 		printf "\e[0;36mCompiling production apk for $platform \e[0m\n"
 		./scripts/ug_build.sh $platform
-		build-android
+
 		cordova build android --release
 		jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore uguru.keystore ./platforms/android/build/outputs/apk/android-x86-release-unsigned.apk uguru
-		./platforms/android/build/outputs/apk/android-x86-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-x86.apk
-
 		jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore uguru.keystore ./platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk uguru
-		~/Development/android-sdk-macosx/build-tools/19.1.0/zipalign  -v 4 ./platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-armv7-signed.apk
-		~/Development/android-sdk-macosx/build-tools/19.1.0/zipalign  -v 4 ./platforms/android/build/outputs/apk/android-x86-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-x86-signed.apk
+		./build_settings_android/zipalign -v 4 ./platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-armv7-signed.apk
+		./build_settings_android/zipalign -v 4 ./platforms/android/build/outputs/apk/android-x86-release-unsigned.apk ./platforms/android/build/outputs/apk/uguru-x86-signed.apk
 		printf '\e[0;36mOkay to ignore warning about several entries not being validated. \n'
 		printf ' Crosswalk builds out two separate apks for devices that use either x86 or armv7 processors for compatibility with all devices. \n'
 		printf ' Be sure to submit both apks to the play store! \e[0m\n'
@@ -33,14 +31,14 @@ if [ $# == 1 ];
 	if [ $platform == "ios" ]; then
 		printf "\e[0;36mCompiling production app for $platform \e[0m\n"
 
-		./scripts/ug_build.sh $platform
+		# ./scripts/ug_build.sh $platform
 
 
 		printf "\e[0;36mCompiling production apk for $platform \e[0m\n"
-		./scripts/ug_build.sh $platform
-		build-ios
+		# ./scripts/ug_build.sh $platform
+		# build-ios
 		cordova platform add ios@3.8
-		cordova build ios --release
+		cordova build ios --release --device
 		printf '\e[0;36mOpening xCode project and giving back control... \e[0m\n'
 		printf '\e[0;36mMake sure to set the correct signing identity and build with xCode. \e[0m\n'
 		printf '\e[0;36mFor xCode 7+: Make sure to disable "ENABLE_BITCODE" in build settings. \e[0m\n'

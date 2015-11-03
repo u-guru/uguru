@@ -299,6 +299,13 @@ angular.module('uguru.util.controllers')
 
         // TODO-REFACTOR
         $scope.loader = {
+            showMsg: function(message, delay, duration) {
+                $ionicLoading.show({
+                    template: '<span id="E2E-msg" class="capitalized">' + message + '</span>',
+                    duration: duration || 2000,
+                    delay:delay
+                })
+            },
             show: function() {
                 $ionicLoading.show({
 
