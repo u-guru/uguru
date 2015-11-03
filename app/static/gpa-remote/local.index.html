@@ -75,11 +75,10 @@
               }
             else if ( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
               {
+                console.log('ios detected');
+                injectJs('remote/ios.cordova_plugins.js');
+                injectJs('remote/ios.cordova.js');
 
-                injectJs('ios.cordova_plugins.js');
-                injectJs('ios.cordova.js');
-                injectCss('ios.css');
-                // injectJs('/static/remote/cordova.js');
                 return 'iOS';
 
               }

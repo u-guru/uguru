@@ -886,7 +886,7 @@ def app_route_gpa():
         return redirect('https://www.uguru.me/static/gpa-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
-        return redirect('http://localhost:5000/static/gpa-remote/index.html?version=' + str(version) + str(02323))
+        return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
         # return redirect('/static/gpa-remote/index.html')
 
 @app.route('/production/app/')
