@@ -113,9 +113,6 @@ var labelsMap = {
                 checklist[k].card = cards[i].name;
                 checklist[k].project = cards[i].list.name;
                 checklist[k].value = checklist[k].state === "complete";
-                // if (member.fullName === 'Samir') {
-                //   console.log(checklist[k].name, checklist[k], checklist[k].label_names);
-                // }
                 allItems.push(checklist[k]);
                 if (checklist[k].state === "complete") {
                   correct += 1;
@@ -130,19 +127,8 @@ var labelsMap = {
           totalTodos = sum;
           totalCompleted = correct;
 
-          allItems.sort(function(item_one, item_two) {
-              if (item_one.labels.length && item_two.labels.length) {
-                if (item_one.label_name_strings.indexOf('Morning Skills')) {
-                  return 1;
-                } else {
-                  return -1;
-                }
-              }
-              return 1;
-          })
-          if (member.fullName === 'Samir') {
-            console.log(allItems);
-          }
+
+
 
 
           //         console.log(checklist[k].name, checklist[k], checklist[k].label_names);

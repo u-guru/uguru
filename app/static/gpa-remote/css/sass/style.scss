@@ -46,11 +46,35 @@ body.platform-ios {
 			 background: rgba(255, 255, 255, 0.1);
 		}
 	}
+
+	ion-view.uguru-view, ion-modal-view ion-content {
+		padding-top:20px;
+	}
+	ion-view.uguru-view.demographic-view {
+		padding-top:0px;
+	}
+	.university-view .header-nav {
+		padding-top:20px;
+	}
 }
 
 
-section {
+section, main {
 	height: 100%;
+}
+main, #top-bar, .desktop-only, .desktop-search {
+	display: none;
+}
+@media screen and (min-width:700px) and (min-height:575px) {
+	main, .desktop-only, .desktop-search {
+		@include flex;
+	}
+	#top-bar {
+		display: block;
+	}
+	main + section, .mobile-only {
+		display: none!important;
+	}
 }
 .view-container {
 	position: inherit;
@@ -421,6 +445,15 @@ section {
 	}
 }
 
+@media screen and (min-width:700px) and (min-height:575px) {
+	.modal {
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+}
+
 /* ---------- SIDEBAR & MENUS */
 // SIDEBAR
 #side-menu-left-overlay {
@@ -552,34 +585,29 @@ section {
 			text-transform: lowercase;
 			color: $azure;
 		}
-		.geolocation-icon {
-			margin-top: 3px;
-			// To add hella space to tap it (it's responsive & equalizes)
-			padding: 30px;
-    		margin-right: -30px;
-		}
+		// .geolocation-icon {
+		// 	margin-top: 3px;
+		// 	// To add hella space to tap it (it's responsive & equalizes)
+		// 	padding: 30px;
+    	// 	margin-right: -30px;
+		// }
 		.side-icon {
 			color: $azure;
 		}
-		.input-search-ghost {
-			.clear-search-input {
-			    color: rgba($azure,.7);
+		.onboarding-search {
+			&::before {
+				display: none;
 			}
-			input {
-				border-bottom: 1px solid rgba($azure,.5);
-				color: $azure;
-				@include placeholder {
-					color: rgba($azure,.5);
+			.input-field {
+				margin-top: 0;
+				* {
+					color: $azure!important;
+					border-color: $azure!important;
+					outline-color: $azure!important;
 				}
-			}
-			input:active, input:focus {
-				border-bottom-color: $azure;
-				@include placeholder {
-					color: $azure;
+				input {
+					margin: 0;
 				}
-			}
-			&:before {
-				background: url(../../img/svg/search-azure.svg) no-repeat center center/cover;
 			}
 		}
 	}
@@ -663,11 +691,6 @@ section {
 /* ---------- GURU ONBOARDING */
 // ONBOARDING
 .onboarding {
-	.onboarding-search {
-		input {
-			width: calc(100% - 25px);
-		}
-	}
 	header {
 		h1:not(header .header-nav a h1) {
 			text-align: center;
@@ -688,14 +711,37 @@ section {
 	img {
 		display: block;
 		width: 100%;
+		max-width: 414px;
+		margin: 0 auto;
 	}
-	button:hover {
-		background: rgba(white,.8);
+	ul {
+		@include center-x;
+		bottom: 30px;
+		width: 100%;
+		max-width: 414px;
+		padding: 0 15px;
+		li {
+			padding: 0 15px;
+			button:hover {
+				background: rgba(white,.8);
+			}
+			button:active, button:focus {
+				background: rgba(white,.4);
+			}
+		}
 	}
-	button:active, button:focus {
-		background: rgba(white,.4);
+	@media screen and (min-width:400px) and (min-height:700px) {
+		h1 {
+			font-size: 32px!important;
+		}
+	}
+	@media screen and (min-width:800px) and (min-height:700px) {
+		h1 {
+			font-size: 48px!important;
+		}
 	}
 }
+
 
 
 
@@ -767,6 +813,47 @@ section {
 		width: 100%;
 		max-height: 60%;
 		overflow: auto;
+		#semester-slider {
+			display: none;
+			background: rgba($azure,.6);
+			ul {
+				@include flex;
+				@include flex-center;
+				max-width: 1200px;
+				margin: 0 auto;
+				li {
+					a {
+						@include flex;
+						@include flex-center;
+						width: 128px;
+						height: 90px;
+						color: rgba(white,.5);
+						font-size: 20px;
+						font-weight: 600;
+						line-height: 1.2;
+						text-transform: uppercase;
+						&:not(.nav) {
+							border-top: 5px solid transparent;
+							border-bottom: 5px solid transparent;
+						}
+						svg {
+							@include svg-stroke(rgba(white,.5), 7);
+							width: 50px;
+						}
+						&:hover, &:active, &:focus, &.active {
+							color: white;
+							border-bottom-color: white;
+							svg {
+								stroke: white;
+							}
+						}
+						&.active {
+							font-weight: 900;
+						}
+					}
+				}
+			}
+		}
 		.semester-list {
 			width: 100%;
 			.semester-item {
@@ -858,7 +945,7 @@ section {
 								font-weight: 600;
 								text-align: left;
 							}
-							> span {
+							.mobile-only {
 								display: block;
 								position: absolute;
 								top: 5px;
@@ -892,10 +979,83 @@ section {
 		}
 	}
 }
+@media screen and (min-width:700px) and (min-height:575px) {
+	#home-container {
+		margin-top: 64px;
+		height: calc(100% - 64px)!important;
+		#home-gpa {
+			height: 35%;
+			div {
+				margin-top: -2%;
+			}
+		}
+		#home-courses {
+			height: 65%;
+			max-height: 65%;
+			overflow: hidden;
+			position: static;
+			#semester-slider {
+				display: block;
+			}
+			.semester-list {
+				background: $azure;
+				height: calc(100% - 90px);
+				.semester-item {
+					background: none;
+					&:not(.active) {
+						display: none;
+					}
+					.section-header {
+						display: none;
+					}
+					div {
+						ul {
+							@include flex;
+							@include flex-wrap;
+							max-width: 1230px;
+							margin: 0 auto;
+							padding: 15px 0;
+							li {
+								display: block!important;
+								width: calc(100% / 3 - 30px);
+								margin: 15px;
+								padding: 0;
+								border-radius: 2px;
+								overflow: hidden;
+								h3 {
+									padding: 15px 15px 0;
+									text-align: center;
+								}
+								h3 + span {
+									@include opacity(.5);
+									display: block;
+									padding-bottom: 15px;
+									font-size: 18px;
+									font-weight: 900;
+									text-align: center;
+									text-transform: uppercase;
+								}
+								div {
+									@include flex-center;
+									background: rgba($azure,.5);
+									padding: 15px;
+									color: white;
+									font-size: 36px;
+									font-weight: 900;
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 /* ---------- GRADE MODAL */
 .add-modal {
-	#add-course {
+	section {
 		header {
 			height: calc(100% / 6);
 		}
@@ -910,11 +1070,12 @@ section {
 		text-transform: uppercase;
 	}
 	.onboarding-search-container {
-		li {
+		ul {
+			li {
 				position: relative;
 				margin-top: 15px;
 			}
-		label {
+			label {
 			    display: block;
 			    width: calc(100% - 30px);
 			    padding: 15px;
@@ -928,43 +1089,36 @@ section {
 					&:first-child {
 						font-size: 14px;
 					}
+					&:only-child {
+						font-size: 20px;
+					}
 				}
 			}
+		}
 	}
 	.onboarding-search {
-		input {
-			width: calc(100% - 25px);
+		&::before {
+			display: none;
 		}
-		input + div {
-			// display: none;
-			position: fixed;
-			width: 100%;
-			background: $azure;
-			li {
-				position: relative;
-				margin-top: 15px;
+		.input-field {
+			* {
+				color: white!important;
+				border-color: white!important;
+				outline-color: white!important;
 			}
 			input {
-				border: 0!important;
-				position: absolute;
-				top: 0;
-				left: 0;
-				z-index: 99;
-				width: 100%;
-				height: 100%;
-			}
-
-			input:hover + label, input:focus + label, input:active + label, input.active + label, input.activated + label {
-				background: rgba(white,.5);
-				color: white;
+				padding-right: 20px;
 			}
 		}
-		// input:focus + div {
-		// 	display: block;
-		// }
+		&#course-selected {
+			.input-field {
+				input, input::-webkit-placeholder {
+					font-weight: 900!important;
+				}
+			}
+		}
 	}
 }
-
 #grade-options {
 	@include flex;
 	width: 100%;
@@ -1043,9 +1197,91 @@ section {
 		}
 	}
 }
+@media screen and (min-width:700px) and (min-height:575px) {
+	.add-modal {
+		section {
+			position: static;
+			max-width: 830px;
+			margin: 0 auto;
+			button {
+				position: static;
+				margin: 0 15px;
+				width: calc(100% - 30px)!important;
+			}
+			header {
+				max-width: 830px;
+				height: 156px!important;
+				h1 {
+					display: none;
+				}
+				.header-nav {
+					top: 15px;
+					height: 36px!important;
+					.header-close {
+						height: 36px!important;
+						svg {
+							width: 36px!important;
+							height: 36px!important;
+						}
+					}
+				}
+				.onboarding-search {
+					&::before {
+						display: none;
+					}
+					.input-field {
+						* {
+							color: white!important;
+							border-color: white!important;
+							outline-color: white!important;
+						}
+						input {
+							height: 64px;
+							width: 100%;
+						}
+						input, label {
+							font-size: 36px;
+						}
+						label {
+							top: 6px;
+						}
+						label.active {
+							font-size: 24px;
+						}
+					}
+				}
+			}
+			.onboarding-search-container {
+				margin-top: -15px;
+				ul {
+					@include flex;
+					@include flex-wrap;
+					padding: 7.5px;
+					width: 830px!important;
+					li {
+						width: calc(100% / 3);
+						margin: 0;
+						label {
+							width: auto;
+							margin: 7.5px!important;
+						}
+					}
+				}
+			}
+			#grade-options {
+				margin-top: -15px;
+				label {
+					font-size: 64px;
+					font-weight: 900!important;
+				}
+			}
+		}
+	}
+}
 
 /* ---------- DEMOGRAPHIC */
 #demographic {
+	background: $smoke;
 	header {
 		background: lighten($azure, 40%);
 		&::before {
@@ -1069,12 +1305,19 @@ section {
 				height: 50%;
 				font-weight: 600;
 				a {
-					@include flex;
-					@include flex-center;
-					@include flex-wrap;
+					display: block;
+					position: relative;
 					width: 100%;
 					height: 100%;
 					background: none;
+					svg {
+						width: 100%;
+					}
+					span {
+						@include center-xy;
+						width: 100%;
+						text-align: center;
+					}
 				}
 				&.demo-hs a {
 					background: lighten($azure, 25%);
@@ -1089,7 +1332,7 @@ section {
 					background: darken($azure, 20%);
 				}
 				a:hover {
-					background: $smoke!important;
+					background: lighten($azure, 37%)!important;
 					color: $azure!important;
 				}
 				a:active, a:focus {
@@ -1099,6 +1342,48 @@ section {
 			}
 		}
 	}
+	@media screen and (min-width:700px) and (min-height:575px) {
+		header {
+			display: block;
+			height: calc(100% - 445px);
+			background: none;
+			h1 {
+				@include flex;
+				@include flex-center;
+				padding: 0;
+				width: 100%;
+				height: 50%;
+			}
+			&:before {
+				display: none;
+			}
+		}
+		#demo-grid {
+			@include center-xy;
+			height: auto;
+			width: 490px;
+			height: 490px;
+			ul {
+				padding: 15px;
+				li {
+					height: 230px;
+					width: 230px;
+					padding: 15px;
+				}
+			}
+		}
+	}
+	@media screen and (min-width:960px) {
+		header {
+			height: calc(100% - 230px);
+			h1 {
+				font-size: 48px!important;
+			}
+		}
+		#demo-grid {
+			width: 100%;
+		}
+	}
 }
 
 
@@ -1106,3 +1391,7 @@ section {
 	display:none !important;
 }
 
+
+.university-close-icon {
+	z-index:100 !important;
+}

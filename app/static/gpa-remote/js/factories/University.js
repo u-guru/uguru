@@ -15,7 +15,7 @@ angular.module('uguru.rest', [])
         },
         getCourses: function(uni_id) {
             return Restangular
-                .one('universities', uni_id).customGET('courses');
+                .one('universities', uni_id).customGET('popular_courses');
         },
         getTargetted: function() {
             return targettedUniversities;

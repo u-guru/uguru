@@ -33,6 +33,11 @@
         document.getElementsByTagName('head')[0].appendChild(meta);
       }
 
+      function injectJquery() {
+            (function(){function l(u,i){
+            var d=document;if(!d.getElementById(i)){var s=d.createElement('script');s.src=u;s.id=i;d.body.appendChild(s);}}l('http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js','jquery')})();
+        }
+
       // console.log(cordova);
 
     </script>
@@ -43,11 +48,15 @@
 
     <!-- The main css file -->
     <link href="remote/css/sass/default.css" rel="stylesheet">
+    <link href="remote/css/sass/desktop.css" rel="stylesheet">
     <link href="remote/css/sass/material.css" rel="stylesheet">
     <link href="remote/css/sass/style.css" rel="stylesheet">
 
+    <!-- DO NOT REMOVE BEFORE TELLING GABRIELLE -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="remote/js/materialize.min.js"></script>
 
-     <script>
+    <script>
     WINDOWS = null;
     function getMobileOperatingSystem() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -76,8 +85,8 @@
             else if ( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
               {
                 console.log('ios detected');
-                injectJs('remote/ios.cordova_plugins.js');
-                injectJs('remote/ios.cordova.js');
+                // injectJs('remote/ios.cordova_plugins.js');
+                // injectJs('remote/ios.cordova.js');
 
                 return 'iOS';
 

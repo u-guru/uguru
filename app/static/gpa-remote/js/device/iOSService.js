@@ -17,7 +17,9 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	return {
 		ready: ready,
 		showStatusBar: showStatusBar,
-		setStatusBarText:setStatusBarText
+		setStatusBarText:setStatusBarText,
+		setStatusBarLightText: setStatusBarLightText,
+		setStatusBarDarkText: setStatusBarDarkText,
 	}
 
 	function ready() {
@@ -32,7 +34,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 		if( cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-			cordova.plugins.Keyboard.disableScroll(false);
+			cordova.plugins.Keyboard.disableScroll(true);
 			// cordova.plugins.Keyboard.disableScroll(true);
 		}
 
@@ -55,13 +57,29 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		}
 	}
 
+	function setStatusBarLightText() {
+		if(!window.StatusBar) {
+			console.log('no status bar detected');
+			return;
+		}
+		window.StatusBar.styleLightContent();
+	}
+
+	function setStatusBarDarkText() {
+		if(!window.StatusBar) {
+			console.log('no status bar detected');
+			return;
+		}
+		window.StatusBar.styleDefault();
+	}
+
 	function setStatusBarText(state_name) {
 		if(!window.StatusBar) {
 			console.log('no status bar detected');
 			return;
 		}
 
-		darkStates = ['root.home'];
+		darkStates = ['root.intro-2'];
 		darkStateIndex = darkStates.indexOf(state_name);
 
 		if (darkStateIndex == -1) {

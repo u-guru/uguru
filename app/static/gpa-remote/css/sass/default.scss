@@ -1561,7 +1561,7 @@ button.disabled {
 	.side-icon {
 		@include opacity(1);
 		@include center-y;
-		right: 12px;
+		right: 15px;
 		z-index: 0;
 		.ion-navigate {
 			@include opacity(.6);

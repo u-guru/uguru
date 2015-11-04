@@ -120,19 +120,19 @@
 @mixin flex {
 	-ms-box-orient: horizontal;
 	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -moz-flex;
 	display: -webkit-flex;
+	display: -moz-box;
+	display: -moz-flex;
+	display: -ms-flexbox;
 	display: flex;
 }
 @mixin flex-column {
 	-ms-box-orient: horizontal;
 	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -moz-flex;
 	display: -webkit-flex;
+	display: -moz-box;
+	display: -moz-flex;
+	display: -ms-flexbox;
 	display: flex;
 	flex-direction: column;
 	-webkit-flex-direction:column;

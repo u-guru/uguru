@@ -30,6 +30,29 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ################
 
 
+@app.route('/admin/stats/universities/info')
+def admin_statistics_universities_info():
+    return render_template("admin/admin.stats.universities.info.html")
+
+
+@app.route('/admin/stats/universities/complete')
+def admin_statistics_universities_completed():
+    from lib.universities import filterPrepared, filterPreparedWithEmails, calcAndSortedPrepared
+
+    ## Queries database for all universities
+    universities = University.query.all()
+
+    ## Some old universities dont have ids
+    universities = [university for university in universities if university.id]
+
+    ## Prepared information dictionary w/ missing fields
+    final_universities, prepared_info = calcAndSortedPrepared(universities)
+
+    full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
+    universities = full_prepared_universities
+    universities = sorted(universities, key=lambda k:k.us_news_ranking)
+    return render_template("admin/admin.stats.universities.complete.html", \
+        universities = universities)
 
 
 @app.route('/admin/stats/universities/')

@@ -32,7 +32,8 @@ function GPAService() {
     getSemesterGPA: getSemesterGPA,
     syncCoursesFromCache: syncCoursesFromCache,
     getAllCourses: getAllCourses,
-    init: init
+    init: init,
+    recalcSemesterStats:recalcSemesterStats
 
 
   };
@@ -46,9 +47,10 @@ function GPAService() {
       // if semester doesn't exist
       if (semesterNames.indexOf(indexSemesterName) < 0) {
         semesterNames.push(indexSemesterName);
-        console.log('init semester obj', initSemesterObj(indexGrade));
         semesterDict[indexSemesterName] = initSemesterObj(indexGrade);
+        console.log('init deemster obj', semesterDict[indexSemesterName]);
       } else {
+        indexGrade
         semesterDict[indexSemesterName]['grades'].push(indexGrade);
         recalcSemesterStats(indexSemesterName);
       }
@@ -56,6 +58,11 @@ function GPAService() {
     semesterArr = semesterDictToArr();
     averageGPA = calcGPAFromSemesterArr(semesterArr);
     averageGPA.toFixed(1);
+
+    overall.averageGPA = averageGPA;
+    console.log(semesterArr);
+    overall.semesterArr = semesterArr;
+    return overall;
   }
 
   function semesterDictToArr() {
@@ -80,6 +87,7 @@ function GPAService() {
         semester_units += parseInt(indexGrade.units);
       }
     }
+    console.log('preGPA calc', total_points, semester_units);
     return total_points / semester_units;
   }
 
@@ -93,11 +101,12 @@ function GPAService() {
 
     for (var i = 0; i < semester_grades.length; i++) {
       var indexGrade = semester_grades[i];
-      total_points += indexGrade.points;
+      total_points += indexGrade.units * reverseGradeLookup(indexGrade.grade);
       max_units += indexGrade.units;
     }
+    console.log(total_points, max_units);
 
-    semester.gpa = gradeLookup(total_points / max_units);
+    semester.gpa = (total_points / max_units).toFixed(1);
     semester.avg_letter_grade = reverseGradeLookup(semester.gpa);
     semester.total_points = total_points
 
@@ -107,9 +116,9 @@ function GPAService() {
 
     return {
           year: gradeObj.year,
-          total_points: gradeObj.points,
+          total_points: gradeObj.units * reverseGradeLookup(gradeObj.grade),
           grades: [gradeObj],
-          gpa: reverseGradeLookup(gradeObj.grade),
+          gpa: reverseGradeLookup(gradeObj.grade).toFixed(1),
           avg_letter_grade:gradeObj.grade,
           semester: gradeObj.semester
     }
@@ -197,8 +206,6 @@ function GPAService() {
     totalUnits += course.units;
 
     overall.averageGPA = totalGradePoints / totalUnits;
-    console.log("overall.averageGPA: " + overall.averageGPA);
-
 
     var semester = {
       name: course.semester

@@ -90,7 +90,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/university.html',
         controller: 'AddUniversityCtrl'
   }).
-
   state('privacy', {
         url:'/privacy',
         templateUrl: BASE + 'templates/privacy-terms.modal.html'
@@ -103,12 +102,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.offline', {
         url: '/offline',
         templateUrl: BASE + 'templates/offline.html',
-  }).
-  state('root.courses', {
-        url: '/courses',
-        templateUrl: BASE + 'templates/courses.html',
-        controller: 'CoursesController'
-  });
+  })
   $urlRouterProvider.otherwise('/' + _startpage);
 
 

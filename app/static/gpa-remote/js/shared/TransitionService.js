@@ -35,13 +35,18 @@ function TransitionService() {
 		}
 
 		elemFuncDict[elem.id].push(func);
-		console.log(elemFuncDict[elem.id]);
 	}
 
 	function runFunctionsForEvent(e) {
-		console.log(e.id, 'just went through a', e.type, 'event:', e);
+
+
 		var elem = e.target;
 		oneElemFunctionArr = elemFuncDict[elem.id];
+
+		if (!oneElemFunctionArr || !oneElemFunctionArr.length) {
+			return;
+		}
+		console.log(e.id, 'just went through a', e.type, 'event:', e);
 		for (var i = 0; i < oneElemFunctionArr.length; i++) {
 			indexFunction = oneElemFunctionArr[i];
 			indexFunction();

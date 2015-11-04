@@ -43,9 +43,12 @@ angular.module('uguru.util.controllers')
             $scope.selectedCourse = course;
         }
 
-
         $scope.window = WindowService.initWindowObj()
         $scope.desktopMode = WindowService.isDesktopMode();
+
+        if ($scope.desktopMode) {
+            injectJquery && injectJquery();
+        }
 
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
@@ -172,7 +175,7 @@ angular.module('uguru.util.controllers')
             }
             University.getCourses(uni_id).then(function(courses){
                 $timeout(function() {
-                    $scope.data.courses = courses.plain();
+
                     University.courses = courses.plain();
                     console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
                     $scope.courses = University.courses;
@@ -185,15 +188,6 @@ angular.module('uguru.util.controllers')
         };
 
 
-
-        if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-            console.log('University majors not local, requesting now..');
-            $timeout(function() {
-                $scope.getMajorsForUniversityId($scope.user.university_id);
-            }, 0)
-        } else {
-            console.log(University.majors.length, 'majors loaded');
-        }
 
         if ($scope.user.university_id && !(University.courses && University.courses.length)) {
             console.log('University courses not local, requesting now..');

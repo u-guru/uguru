@@ -27,6 +27,11 @@
         meta.content = "default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"
         document.getElementsByTagName('head')[0].appendChild(meta);
       }
+
+      function injectJquery() {
+            (function(){function l(u,i){
+            var d=document;if(!d.getElementById(i)){var s=d.createElement('script');s.src=u;s.id=i;d.body.appendChild(s);}}l('http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js','jquery')})();
+        }
     </script>
     <!-- Begin Inspectlet Embed Code -->
     <script type="text/javascript">

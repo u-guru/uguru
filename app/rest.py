@@ -114,7 +114,10 @@ class UniversityPopularCoursesView(restful.Resource):
         if not u:
             abort(404)
         else:
-            return u.popular_courses, 200
+            courses = u.popular_courses
+            if not courses:
+                courses = u.courses
+            return courses, 200
 
 class UniversityFoodView(restful.Resource):
     def get(self, _id):

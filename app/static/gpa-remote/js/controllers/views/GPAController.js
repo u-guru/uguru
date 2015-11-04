@@ -8,12 +8,33 @@ angular.module('gpa.controllers')
 	'StorageService',
 	'PopupService',
 	'TransitionService',
+	'DeviceService',
 	GPAController]);
 
 
 function GPAController($scope, ModalService, GPAService, $localstorage,
-	$timeout, StorageService, PopupService, TransitionService) {
+	$timeout, StorageService, PopupService, TransitionService, DeviceService) {
 
+	$scope.toggleHeader = function(index) {
+		if ($scope.data.headerSelected === index && !$scope.transitioning) {
+			console.log ('needs to change');
+			$scope.data.headerSelected = null;
+			$scope.data.headerActive = 0;
+			$scope.transitioning = true;
+			$timeout(function() {
+				$scope.transitioning = false;
+			}, 500)
+		} else if (!$scope.transitioning) {
+			console.log('toggleHeader 2,', index);
+			$scope.data.headerSelected = index;
+			$scope.data.headerActive = index;
+		}
+	}
+
+	$scope.data = {
+    	headerSelected: null,
+    	headerActive: 0,
+  	}
 
 	$scope.slogan = function() {
 
@@ -64,14 +85,17 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		$scope.search_text.course = null;
 	}
 
-	$scope.openModal = function(modalName) {
+	$scope.openModal = function(modalName, course) {
 		// console.log("opening modal: " + modalName);
 		if (modalName == 'course' && (!$scope.user.university || !$scope.user.university.name)) {
 			ModalService.open('university', $scope);
 			return
 		}
 
-
+		if (course) {
+			$scope.course = course;
+			$scope.selectedCourse = course;
+		}
 		ModalService.open(modalName, $scope);
 
 	};
@@ -100,7 +124,8 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.course.id = $scope.selectedCourse.id;
 
 
-			GPAService.addCourse($scope.course);
+
+			// GPAService.addCourse($scope.course);
 
 			//save to local storage
 
@@ -148,8 +173,16 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	}
 
 	var initBeforeEnterActions = function() {
-		GPAService.init($scope.user.grades);
+		$scope.overall = GPAService.init($scope.user.grades);
 		initSidebarGPAHomeTransition();
+		setIOSStatusBarToLightText();
+		console.log($scope.overall.averageGPA);
+	}
+
+	var setIOSStatusBarToLightText = function() {
+		if (DeviceService.isIOSDevice()) {
+            DeviceService.ios.setStatusBarLightText();
+        }
 	}
 
 
