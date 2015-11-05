@@ -937,6 +937,12 @@ def app_route():
         return redirect('/static/remote/index.html')
         # return redirect('http://localhost:8100/')
 
+@app.route('/localhost/')
+@app.route('/admin/localhost/')
+def admin_localhost():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return redirect('http://localhost:8100')
 
 def check_admin_password(email, password):
     from app.lib.admin import admin_info
