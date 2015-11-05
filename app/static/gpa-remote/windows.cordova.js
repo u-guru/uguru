@@ -1,5 +1,5 @@
-// Platform: wp8
-// b0463746dd842818c1f08560e998ec847460596c
+﻿// Platform: wp8
+// b4af1c5ec477dd98cd651932ea6df6d46705d7f9
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -19,7 +19,7 @@
  under the License.
 */
 ;(function() {
-var PLATFORM_VERSION_BUILD_LABEL = '3.8.1';
+var PLATFORM_VERSION_BUILD_LABEL = '3.8.0';
 // file: src/scripts/require.js
 
 /*jshint -W079 */
@@ -101,14 +101,11 @@ if (typeof module === "object" && typeof require === "function") {
 // file: src/cordova.js
 define("cordova", function(require, exports, module) {
 
-if(window.cordova){
-    throw new Error("cordova already defined");
-}
+if ("cordova" in window) { throw new Error("cordova already defined"); };
 
 
 var channel = require('cordova/channel');
 var platform = require('cordova/platform');
-
 
 /**
  * Intercept calls to addEventListener + removeEventListener and handle deviceready,
@@ -1350,7 +1347,7 @@ function handlePluginsObject(path, moduleList, finishPluginLoading) {
 function findCordovaPath() {
     var path = null;
     var scripts = document.getElementsByTagName('script');
-    var term = '/windows.cordova.js';
+    var term = '/cordova.js';
     for (var n = scripts.length-1; n>-1; n--) {
         var src = scripts[n].src.replace(/\?.*$/, ''); // Strip any query param (CB-6007).
         if (src.indexOf(term) == (src.length - term.length)) {

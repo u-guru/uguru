@@ -125,7 +125,7 @@ def admin_statistics_get_flickr_urls(uni_id):
     flickr_response = str(search_university_response_api(text=university.name))
     photos_arr = parse_flickr_response(flickr_response)
     processed_arr = process_returned_photos(photos_arr)
-    flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)[:20]
+    flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)
     print len(flickr_arr)
 
     ## notice, this has no template! We are just returning the strings

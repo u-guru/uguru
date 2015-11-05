@@ -1,4 +1,4 @@
-cordova.define("org.apache.cordova.splashscreen.SplashScreen", function(require, exports, module) { /*
+cordova.define("org.apache.cordova.file.FileUploadResult", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -19,17 +19,13 @@ cordova.define("org.apache.cordova.splashscreen.SplashScreen", function(require,
  *
 */
 
-var exec = require('cordova/exec');
-
-var splashscreen = {
-    show:function() {
-        exec(null, null, "SplashScreen", "show", []);
-    },
-    hide:function() {
-        exec(null, null, "SplashScreen", "hide", []);
-    }
-};
-
-module.exports = splashscreen;
-
+/**
+ * FileUploadResult
+ * @constructor
+ */
+module.exports = function FileUploadResult(size, code, content) {
+	this.bytesSent = size;
+	this.responseCode = code;
+	this.response = content;
+ };
 });

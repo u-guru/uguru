@@ -1,4 +1,4 @@
-cordova.define("org.apache.cordova.splashscreen.SplashScreen", function(require, exports, module) { /*
+cordova.define("org.apache.cordova.file.FileSystem", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -19,17 +19,32 @@ cordova.define("org.apache.cordova.splashscreen.SplashScreen", function(require,
  *
 */
 
-var exec = require('cordova/exec');
+var DirectoryEntry = require('./DirectoryEntry');
 
-var splashscreen = {
-    show:function() {
-        exec(null, null, "SplashScreen", "show", []);
-    },
-    hide:function() {
-        exec(null, null, "SplashScreen", "hide", []);
+/**
+ * An interface representing a file system
+ *
+ * @constructor
+ * {DOMString} name the unique name of the file system (readonly)
+ * {DirectoryEntry} root directory of the file system (readonly)
+ */
+var FileSystem = function(name, root) {
+    this.name = name;
+    if (root) {
+        this.root = new DirectoryEntry(root.name, root.fullPath, this, root.nativeURL);
+    } else {
+        this.root = new DirectoryEntry(this.name, '/', this);
     }
 };
 
-module.exports = splashscreen;
+FileSystem.prototype.__format__ = function(fullPath) {
+    return fullPath;
+};
+
+FileSystem.prototype.toJSON = function() {
+    return "<FileSystem: " + this.name + ">";
+};
+
+module.exports = FileSystem;
 
 });

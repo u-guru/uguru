@@ -1,4 +1,4 @@
-cordova.define("org.apache.cordova.splashscreen.SplashScreen", function(require, exports, module) { /*
+cordova.define("cordova-plugin-network-information.Connection", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -19,17 +19,18 @@ cordova.define("org.apache.cordova.splashscreen.SplashScreen", function(require,
  *
 */
 
-var exec = require('cordova/exec');
-
-var splashscreen = {
-    show:function() {
-        exec(null, null, "SplashScreen", "show", []);
-    },
-    hide:function() {
-        exec(null, null, "SplashScreen", "hide", []);
-    }
+/**
+ * Network status
+ */
+module.exports = {
+        UNKNOWN: "unknown",
+        ETHERNET: "ethernet",
+        WIFI: "wifi",
+        CELL_2G: "2g",
+        CELL_3G: "3g",
+        CELL_4G: "4g",
+        CELL:"cellular",
+        NONE: "none"
 };
-
-module.exports = splashscreen;
 
 });

@@ -1,4 +1,4 @@
-cordova.define("org.apache.cordova.splashscreen.SplashScreen", function(require, exports, module) { /*
+cordova.define("org.apache.cordova.file.Flags", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -19,17 +19,20 @@ cordova.define("org.apache.cordova.splashscreen.SplashScreen", function(require,
  *
 */
 
-var exec = require('cordova/exec');
+/**
+ * Supplies arguments to methods that lookup or create files and directories.
+ *
+ * @param create
+ *            {boolean} file or directory if it doesn't exist
+ * @param exclusive
+ *            {boolean} used with create; if true the command will fail if
+ *            target path exists
+ */
+function Flags(create, exclusive) {
+    this.create = create || false;
+    this.exclusive = exclusive || false;
+}
 
-var splashscreen = {
-    show:function() {
-        exec(null, null, "SplashScreen", "show", []);
-    },
-    hide:function() {
-        exec(null, null, "SplashScreen", "hide", []);
-    }
-};
-
-module.exports = splashscreen;
+module.exports = Flags;
 
 });
