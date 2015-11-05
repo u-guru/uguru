@@ -19,7 +19,7 @@ function WindowsService($rootScope, $state, $localstorage, $cordovaPush,
 	function ready() {
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
 
-	    if ($cordovaPush) {
+	    if (false && $cordovaPush) {
 	        console.log('we are updating the push notifications on windows device');
 	        $cordovaPush.register(channelHandler, errorHandler, {
 	            "channelName": "123723560",
