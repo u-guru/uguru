@@ -1,0 +1,70 @@
+{% extends 'web/layout/base.html' %}
+
+{% block title_text %}
+Uguru Home
+{% endblock %}
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/style.css"/>
+{% endblock %}
+
+{% block logo %}
+    <img id="top-mobile-logo" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+    {% include "web/components/logo-banner.svg" %}
+    <img id="top-school-logo" src="/static/web/svg/logo-shamrock.svg" alt="uguru"/>
+{% endblock %}
+{% block content %}
+
+<div id="mobile-start">
+    <!-- Mobile Version-->
+</div>
+<div id="banner"></div>
+
+
+<section id="main full-xy">
+
+    <!-- Demo purpose only-->
+    <style>
+        .temp {
+            position:absolute;
+            bottom:0;
+            left:0;
+            right:0;
+            height:200px;
+            width:200px;
+            background-color:black;
+        }
+
+        .temp.full {
+            height:100%;
+            width:100%;
+            z-index:1000;
+            display:none;
+        }
+    </style>
+
+
+    <!-- Desktop Version-->
+    <a id='temp-1' class='temp'>
+    </a>
+    <div id='temp-2' class='temp full'>
+
+    </div>
+</section>
+{% endblock %}
+
+{% block footer_scripts %}
+{% include 'web/pages/js/index.js' %}
+{% include 'web/snippets/search.js' %}
+{% endblock %}
+<script>
+
+    var smallBlackBox = document.querySelector('#temp-1');
+
+    var largeBlackBox = document.querySelector('#temp-2');
+    console.log(smallBlackBox, largeBlackBox)
+
+    smallBlackBox.addEventListener('click', function() {
+        console.log('this works');
+        cta(smallBlackBox, largeBlackBox);
+    })
+</script>
