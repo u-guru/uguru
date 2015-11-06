@@ -283,6 +283,10 @@ def team_profiles(name):
 
     return render_template("web/user-profile.html", member=member_dict)
 
+@app.route('/power-ups/')
+def power_ups():
+    return render_template("web/pages/power-ups.html")
+
 @app.route('/team/')
 def team():
     from lib.admin import admin_info
