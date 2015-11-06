@@ -26,6 +26,13 @@ angular.module('ionic.utils', [])
     get: function(key, defaultValue) {
       return $window.localStorage[key] || defaultValue;
     },
+    //Returns # of keys
+    getLength:function() {
+      return $window.localStorage.length;
+    },
+    clear: function() {
+      return $window.localStorage.clear();
+    },
     setObject: function(key, value) {
       if(isLocalStorageSupported)
       $window.localStorage[key] = JSON.stringify(value);

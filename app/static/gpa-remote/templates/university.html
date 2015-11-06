@@ -1,26 +1,33 @@
-<u-slide-box id='intro-slide-box' class='full-y' disable-scroll='true' >
+<u-slide-box id='intro-slide-box' class='full-y' disable-scroll='true' on-slide-changed='onIntroSlideChanged($index)'>
 
-	<u-slide >
-		<div ng-include="img_base + BASE + 'templates/titleuguru.html'"></div>
-	</u-slide>
-
-	<u-slide >
-		<div ng-include="img_base + BASE + 'templates/titlegpa.html'"></div>
-	</u-slide>
-
-
-	<u-slide >
-		<div ng-include="img_base + BASE + 'templates/demographics.html'"></div>
+	<u-slide>
+		<div class='bg-shamrock' ng-include="img_base + BASE + 'templates/titleuguru.html'"></div>
 	</u-slide>
 
 	<u-slide>
+		<div ng-include="img_base + BASE + 'templates/titlegpa.html'"></div>
+	</u-slide>
+<<<<<<< HEAD
+
+
+	<u-slide >
+=======
+	<u-slide>
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
+		<div ng-include="img_base + BASE + 'templates/demographics.html'"></div>
+	</u-slide>
+	<u-slide>
 		<ion-view class='uguru-view university-view'>
+<<<<<<< HEAD
 			<main id="desktop-university" class="desktop-mode desktop-search" ng-show='isDesktopMode()'>
 			    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+=======
+			<main id="desktop-university" class="desktop-mode desktop-search">
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 			    <div class="main default">
 			        <form>
 			            <div class="input-field">
-			                <input id="university-input" type="text" ng-model="search_text.university">
+			                <input name="university-input" id="university-input" type="text" ng-model="search_text.university">
 			                <label for="university-input">search for my university</label>
 			            </div>
 			        </form>
@@ -45,7 +52,11 @@
 			        </div>
 			    </div>
 			</main>
+<<<<<<< HEAD
 			<section id="school" class="onboarding" ng-show='!isDesktopMode()'>
+=======
+			<section id="school" class="onboarding">
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 				<header class="third flex-center">
 					<h1>Find Your Community</h1>
 					<div class="header-nav" ng-if='LOCAL'>
@@ -56,14 +67,16 @@
 							<h1>&nbsp;</h1>
 						</a>
 					</div>
-					<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x">
-						<input type="search" id='university-input' class='' placeholder="Search for my university" ng-model="search_text.university" />
-						<a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
-							<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
+					<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15xy">
+						<a class='side-icon university-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
+							<i class='icon ion-close-circled'></i>
 						</a>
-						<a class='side-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
-							<i class='icon ion-close-circled text-white'></i>
-						</a>
+						<form >
+							<div class="input-field" >
+								<input type="text" name="university-input"  id='university-input' class='' ng-model="search_text.university" />
+								<label  for="university-input">search for my universitys</label>
+							</div>
+						</form>
 					</div>
 				</header>
 				<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">

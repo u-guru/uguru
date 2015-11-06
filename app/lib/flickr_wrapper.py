@@ -12,7 +12,8 @@ def generate_flickr_url(farm_id, server_id, photo_id, secret):
     return "https://farm%s.staticflickr.com/%s/%s_%s_z.jpg" %(farm_id, server_id, photo_id, secret)
 
 
-def search_university_response_api(tags='panorama', text="UC Berkeley", all_or='all'):
+def search_university_response_api(tags=['panorama', 'campus','outdoors'], text="UC Berkeley", all_or='any'):
+    print text
     response = flickr.photos.search(
         api_key=FLICKR_API_KEY,
         # geo_context=2,
@@ -30,7 +31,7 @@ def search_university_response_api(tags='panorama', text="UC Berkeley", all_or='
     # with open('flickr_response.json','wb') as outfile:
     #     json.dump(response,outfile,indent=4)
     return response
-    
+
 
 def parse_flickr_response(flickr_response):
     parsed_flickr_response = flickr_response.split('jsonFlickrApi(')[1].split('"})')[0] + '"}'
@@ -39,7 +40,7 @@ def parse_flickr_response(flickr_response):
         json.dump(photos_arr['photos']['photo'],outfile,indent=4)
     # print photos_arr['photos']['photo']
     return photos_arr['photos']['photo']
-    
+
 def process_returned_photos(photos_arr):
     result_photos = []
     for photo_obj in photos_arr:
@@ -55,7 +56,7 @@ def process_returned_photos(photos_arr):
     return result_photos
 
 # empty_array_dict = {}
-  
+
 # if __name__ == "__main__":
 #     name = json.load(open('school_without_banner.json'))
 #     for items in name:
@@ -63,13 +64,13 @@ def process_returned_photos(photos_arr):
 #         search_university_response_api(text=name)
 #         parse_flickr_response(flickr_response=json.load(open('flickr_response.json')))
 #         process_returned_photos(photos_arr=json.load(open('parsed_flickr_response.json')))
-   
+
 
 #         empty_array_dict[name] = array
 #         array = []
 #         with open('school_flickr_url.json','wb') as outfile:
 #             json.dump(empty_array_dict,outfile,indent=4)
- 
+
 
 # print len(processed_arr)
 

@@ -9,6 +9,10 @@ var memberDict = {};
 var projectLookup = {};
 var currentMember;
 var startRenderMainProgress = false;
+var labelsMap = {
+  'urgent': 'red',
+  'Morning Skills': 'yellow'
+}
 
 
     var getAllActiveBoards = function(organization_id) {
@@ -23,7 +27,7 @@ var startRenderMainProgress = false;
 
 
     var getTotalChecklistItems = function (board_id) {
-      Trello.get('boards/' + board_id + '/' + 'cards', {"filter": "visible", "checkItemStates":true, "checklists":"all"}, function(cards) {
+      Trello.get('boards/' + board_id + '/' + 'cards', {"filter": "visible", "checkItemStates":true, "checklists":"all", "fields":"labels"}, function(cards) {
         index = 0;
         var allCheckItems = [];
         sum_complete = 0;
@@ -52,7 +56,6 @@ var startRenderMainProgress = false;
         var indexBoard = boards[i];
         if (indexBoard.starred && !indexBoard.closed) {
           starredBoards.push(indexBoard);
-          console.log('this board is starred', indexBoard.id);
           getTotalChecklistItems(indexBoard.id);
 
           var processListsCallback = function(lists) {
@@ -78,6 +81,8 @@ var startRenderMainProgress = false;
 
     }
 
+
+
     var processMembers = function(board_id, member) {
       memberDict[member.fullName] = {
         id: member.id,
@@ -89,15 +94,22 @@ var startRenderMainProgress = false;
         var allItems = [];
 
           correct = 0;
+          //
           for (var i =0; i < cards.length; i ++) {
             memberDict[member.fullName].projects[cards[i].list.name] = true;
-            // console.log(cards[i].list.name);
             card_checklists = cards[i].checklists;
+            // iterate through cards
             for (var j = 0; j < card_checklists.length; j++) {
               checklist = card_checklists[j].checkItems;
+              checklist.sort(function(item_one, item_two) {
+                  return !(item_one.pos <= item_two.pos);
+              })
               for (var k = 0; k < checklist.length; k++) {
                 checklist[k].checklist_id = card_checklists[j].id;
                 checklist[k].card_index = k;
+                checklist[k].labels = cards[i].labels;
+                checklist[k].label_names = checklist[k].labels.slice().map(function(label) {return label.name});
+                checklist[k].label_name_strings = checklist[k].label_names.join(" ");
                 checklist[k].card = cards[i].name;
                 checklist[k].project = cards[i].list.name;
                 checklist[k].value = checklist[k].state === "complete";
@@ -112,13 +124,18 @@ var startRenderMainProgress = false;
               sum += checklist.length;
             }
           }
-          console.log(memberDict[member.fullName].projects, memberDict[member.fullName].tasks.completed, memberDict[member.fullName].tasks.remaining);
           totalTodos = sum;
           totalCompleted = correct;
 
+
+
+
+
+          //         console.log(checklist[k].name, checklist[k], checklist[k].label_names);
+          // }
+
           var todoListDiv = createCreateTodoListDiv(member, totalTodos, totalCompleted, allItems)
 
-            console.log(member.fullName)
             if (member.id !== currentMember.id) {
               $('#members-container').append(todoListDiv);
             } else {
@@ -131,6 +148,9 @@ var startRenderMainProgress = false;
             setTimeout(function() {
               showLabels();
             }, 2000);
+            setTimeout(function() {
+              $('.box-footer').css('display', 'none');
+            }, 4000);
 
       })
     }
@@ -155,9 +175,10 @@ var startRenderMainProgress = false;
     var showMainProgress = function() {
       var progressText = document.querySelector('#total-progress-percent-txt')
       if (!progressText || !progressText.innerHTML.length) {
-        var percentage = (total_items_complete / total_sum) * 100;
+        var percentage = ((total_items_complete / total_sum) * 100).toFixed(1);
         $('#total-progress-percent-txt').html(percentage + '%').css('font-size','24px');
         $('#total-progress-percent').css('width', percentage + '%');
+        $('h3.box-title').html('Current Progress:<strong>   ' + percentage + '%<strong>');
       }
     }
 
@@ -262,7 +283,18 @@ var startRenderMainProgress = false;
       if (checkItem.value) {
         checkVal = "checked";
       }
-      var projectDiv = '<small class="label check-item-label hide bg-' + projectLookup[checkItem.project]  +'" style="position:absolute; right:5%; font-size:14px;"></i>'+checkItem.project+'</small>'
+      var label_str = ''
+      if (checkItem.labels.length) {
+        label_str = '<span style="position:absolute;right:5%;font-size:10px;">';
+        for (var i = 0; i < checkItem.label_names.length; i ++) {
+          indexLabel = checkItem.label_names[i];
+          label_str += '<small style="display:inline-block !important; padding: 2px 6px;" class="check-item-label hide bg-' + [indexLabel] + '">' + indexLabel + '</small>'
+        }
+        label_str += '</span>'
+      }
+
+
+      var projectDiv = label_str + '<small class="label check-item-label hide bg-' + projectLookup[checkItem.project]  +'" style="position:absolute; right:5%; margin-top:-2%;font-size:14px;"></i>'+checkItem.project+'</small>'
       return $('<li style="position:relative; width:100%;"><span class="handle"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i>\
         </span><input class="check-' + checkItem.name + '-' + checkItem.checklist_id + '-' + checkItem.id + '" type="checkbox" value="" name="" '+  checkVal + '><span style="padding-right:15%; overflow:wrap;">&nbsp;&nbsp;&nbsp;<strong>' + checkItem.card + '</strong><br><span class="text">' + checkItem.name + projectDiv + '</span></span></li>')
     }

@@ -5,22 +5,21 @@ angular
 	'$state',
 	'$localstorage',
 	'$cordovaPush',
-	'Geolocation',
 	'Settings',
-	'Popup',
 	'$timeout',
 	'$state',
 	iOSService
 	]);
 
 function iOSService($rootScope, $state, $localstorage, $cordovaPush,
-  Geolocation, Settings, Popup, $timeout, $state) {
+  Settings, $timeout, $state) {
 
 	return {
 		ready: ready,
 		showStatusBar: showStatusBar,
-		enableGPS: enableGPS,
-		setStatusBarText:setStatusBarText
+		setStatusBarText:setStatusBarText,
+		setStatusBarLightText: setStatusBarLightText,
+		setStatusBarDarkText: setStatusBarDarkText,
 	}
 
 	function ready() {
@@ -35,7 +34,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 		if( cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-			cordova.plugins.Keyboard.disableScroll(false);
+			cordova.plugins.Keyboard.disableScroll(true);
 			// cordova.plugins.Keyboard.disableScroll(true);
 		}
 
@@ -58,13 +57,29 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		}
 	}
 
+	function setStatusBarLightText() {
+		if(!window.StatusBar) {
+			console.log('no status bar detected');
+			return;
+		}
+		window.StatusBar.styleLightContent();
+	}
+
+	function setStatusBarDarkText() {
+		if(!window.StatusBar) {
+			console.log('no status bar detected');
+			return;
+		}
+		window.StatusBar.styleDefault();
+	}
+
 	function setStatusBarText(state_name) {
 		if(!window.StatusBar) {
 			console.log('no status bar detected');
 			return;
 		}
 
-		darkStates = ['root.home'];
+		darkStates = ['root.intro-2'];
 		darkStateIndex = darkStates.indexOf(state_name);
 
 		if (darkStateIndex == -1) {
@@ -97,30 +112,6 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		}, delay)
 	}
 
-	function enableGPS() {
-	    if (!Settings.get('locationMode')) {
-	      Popup.options.show($rootScope, {
-	        header: 'Mind if we use your location?',
-	        body: 'uGuru uses your location to match you up with students on campus.',
-	        positiveBtnText: 'SURE',
-	        negativeBtnText: 'NO THANKS',
-	        delay: 500,
-	        onFailure: function() {
-	          console.log('failed to get device location');
-	          Settings.location = false;
-	          // UNCOMMENT
-	          // if ($state.current.name !== 'root.onboarding-location') {
-	          //   $scope.user.updateObj($scope.user, 'devices', $scope.user.current_device, $scope);
-	          // }
-	          // failureCallback($scope, $state);
-	        },
-	        onSuccess: function() {
-	          console.log('succeeded in getting device location');
-	          Settings.location = true;
-	          Geolocation.getCurrentPosition();
-	        },
-	      })
-	    }
-	}
+
 
 }

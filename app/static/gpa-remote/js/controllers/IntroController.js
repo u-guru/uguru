@@ -1,4 +1,4 @@
-angular.module('uguru.guru.controllers')
+angular.module('gpa.controllers', [])
 .controller('IntroController', [
 	IntroController]);
 

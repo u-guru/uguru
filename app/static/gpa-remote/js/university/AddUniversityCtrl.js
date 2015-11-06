@@ -8,7 +8,6 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$timeout',
   'University',
   '$ionicViewSwitcher',
-  'Geolocation',
   'Utilities',
   '$ionicSlideBoxDelegate',
   'DeviceService',
@@ -25,11 +24,9 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
+  Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, $ionicModal,
   $controller, ModalService, MapService, $ionicSideMenuDelegate) {
- 
-
 
   $scope.nextSlide = function() {
     $ionicSlideBoxDelegate.next();
@@ -38,6 +35,13 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   $scope.prevSlide = function() {
     $ionicSlideBoxDelegate.previous();
   };
+
+  $scope.focusUniversityInput = function() {
+    var universityInput = document.querySelector('#university-input');
+    if (universityInput) {
+      universityInput.focus();
+    }
+  }
 
   $scope.LOCAL = LOCAL;
 
@@ -67,7 +71,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   //   $scope.search_text.university = '';
 
   //   $scope.loader.showAmbig('[ADMIN] Restarting', 1500);
-  //   $timeout(function() {
+  //   $timeout(function() {r
   //     $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
   //   },0);
   // }
@@ -79,6 +83,18 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   $scope.closeModal = function(modalName) {
     ModalService.close(modalName);
   };
+
+  $scope.onIntroSlideChanged = function(index) {
+    console.log('slide changed to', index);
+    if (DeviceService.isIOSDevice()) {
+      if (index === 2 || index === 3) {
+        DeviceService.ios.setStatusBarDarkText();
+
+      } else {
+        DeviceService.ios.setStatusBarLightText();
+      }
+    }
+  }
 
 
   $scope.universitySelected = function(university) {
@@ -135,7 +151,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
         $scope.getCoursesForUniversityId(university.id);
         $scope.getMajorsForUniversityId(university.id);
 
-      }, 50);
+      }, 1500);
 
       University.selectedID = university.id;
 
@@ -154,6 +170,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       //save university
       var postUniversitySelectedCallback = function() {
+
+        if (DeviceService.isIOSDevice()) {
+            DeviceService.ios.setStatusBarLightText();
+        }
 
         var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
         if(modal !== undefined) {
@@ -187,33 +207,12 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     universities: ''
   };
 
-  // $scope.toggleLocationIconAppearance = function() {
-
-  //   if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
-  //     console.log("refreshing universities for location!");
-  //     $scope.refresh.universities = 'update';
-  //     $scope.loader.showAmbig();
-  //   }
-  //   else if (Geolocation.settings.isAllowed) {
-  //     console.log("toggling location.isActive");
-  //     $scope.loader.hide()
-  //     Geolocation.settings.isActive = !Geolocation.settings.isActive;
-  //   }
-  //   else {
-  //     Geolocation.settings.isActive = false;;
-  //     Geolocation.settings.isAllowed = false;
-  //   }
-  // }
-
-  // if(DeviceService.isAndroid()) {
-  //   $scope.refresh.universities = 'update';
-  // }
 
 
 }
 
 angular.module('uguru.directives')
-.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService) {
+.directive('bindList', function($timeout, University, Utilities, DeviceService) {
 
   function link($scope, element, attributes) {
     var queryPromise = null;
@@ -225,11 +224,11 @@ angular.module('uguru.directives')
           console.log("heard something!", newValue, oldValue);
           if(newValue === 'update' ) {
 
-              Geolocation.getLocation($scope, $scope.source, function(results) {
-                $timeout(function() {
-                  $scope.listScope = results;
-                }, 0);
-              });
+              // Geolocation.getLocation($scope, $scope.source, function(results) {
+              //   $timeout(function() {
+              //     $scope.listScope = results;
+              //   }, 0);
+              // });
 
           }
         }
@@ -238,7 +237,7 @@ angular.module('uguru.directives')
       $scope.$parent.$watch(
         'search_text.university',
         function(newValue, oldValue) {
-
+          if (!newValue || !oldValue) return;
           if(newValue.length < oldValue.length) {
             if(queryPromise) {
               $timeout.cancel(queryPromise);

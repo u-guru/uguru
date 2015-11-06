@@ -2,12 +2,10 @@
 angular
 .module('sharedServices', ['ionic'])
 .factory("DeviceService", [
-	'$cordovaNgCardIO',
 	'AndroidService',
 	'iOSService',
 	'WindowsService',
   '$timeout',
-  'Geolocation',
   'University',
   'Version',
   '$ionicHistory',
@@ -16,8 +14,7 @@ angular
 	DeviceService
 	]);
 
-function DeviceService($cordovaNgCardIO,
-	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
+function DeviceService(AndroidService, iOSService, WindowsService, $timeout,
   University, Version, $ionicHistory, $templateCache, $localstorage) {
 
   var currentDevice;

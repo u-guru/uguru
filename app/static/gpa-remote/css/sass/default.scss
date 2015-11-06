@@ -388,6 +388,14 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	@include opacity(1);
 }
 
+.hide-display {
+	display:none;
+}
+
+.show-display {
+	display:block;
+}
+
 .absolute {
     position: absolute!important;
 }
@@ -1163,6 +1171,11 @@ header {
 			padding: 4px 0;
 		}
 	}
+	.header-close {
+		svg {
+			padding: 0!important;
+		}
+	}
 	.header-menu {
 		svg {
 			padding: 4px!important;
@@ -1548,7 +1561,7 @@ button.disabled {
 	.side-icon {
 		@include opacity(1);
 		@include center-y;
-		right: 12px;
+		right: 15px;
 		z-index: 0;
 		.ion-navigate {
 			@include opacity(.6);

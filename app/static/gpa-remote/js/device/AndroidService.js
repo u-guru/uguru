@@ -4,16 +4,12 @@ angular
   '$rootScope',
   '$state',
 	'$cordovaPush',
-	'Geolocation',
   'University',
-  'Major',
-  'Skill',
-  'Profession',
 	AndroidService
 	]);
 
 function AndroidService($rootScope, $state, $cordovaPush,
-  Geolocation, University, Major, Skill, Profession) {
+  University) {
 
 	return {
 		ready: ready

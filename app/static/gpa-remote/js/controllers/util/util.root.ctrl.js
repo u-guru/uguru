@@ -7,71 +7,48 @@ angular.module('uguru.util.controllers')
     '$state',
     '$localstorage',
     'User',
-    'RootService',
     'Version',
     '$ionicHistory',
     '$templateCache',
     '$ionicLoading',
     '$rootScope',
-    'CordovaPushWrapper',
     '$cordovaPush',
     'University',
     '$cordovaSplashscreen',
     '$timeout',
-    'Geolocation',
     '$ionicSideMenuDelegate',
     '$ionicViewSwitcher',
-    'Major',
-    'Skill',
-    'Profession',
-    '$cordovaNgCardIO',
     'DeviceService',
     'Utilities',
-    'Category',
     'DownloadService',
     'PopupService',
     'KeyboardService',
     'ModalService',
     'Github',
-    function($ionicPlatform, $scope, $state, $localstorage, User,
-        RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
-        CordovaPushWrapper, $cordovaPush, University,
-        $cordovaSplashscreen, $timeout, Geolocation,
-        $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
-        Skill, Profession, $cordovaNgCardIO, DeviceService,
-         Utilities, Category, DownloadService, PopupService,
-         KeyboardService, ModalService, Github) {
+    'WindowService',
+    'TransitionService',
+    function($ionicPlatform, $scope, $state, $localstorage, User, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
+        $cordovaPush, University,
+        $cordovaSplashscreen, $timeout,
+        $ionicSideMenuDelegate, $ionicViewSwitcher, DeviceService,
+         Utilities, DownloadService, PopupService,
+         KeyboardService, ModalService, Github, WindowService,
+         TransitionService) {
 
 
-        var bodyRect;
-        var windowHeight;
-        var windowWidth;
-        var initHeight = function() {
-            bodyRect = document.querySelector('body').getBoundingClientRect();
-            windowHeight = bodyRect.height;
-            windowWidth = bodyRect.width;
+        sideMenuElem = window.document.querySelector('ion-side-menu-content');
+        TransitionService.initListener(sideMenuElem);
+
+        $scope.selectCourse = function(course) {
+            $scope.selectedCourse = course;
         }
 
-        initHeight();
-        $scope.window = {
-            width:windowWidth,
-            height:windowHeight
+        $scope.window = WindowService.initWindowObj()
+        $scope.desktopMode = WindowService.isDesktopMode();
+
+        if ($scope.desktopMode) {
+            injectJquery && injectJquery();
         }
-
-        console.log('Window size', $scope.window);
-
-        // GABRIELLE TODO: Define these values
-        var desktopHeightLimit = 699;
-        var desktopWidthLimit= 767;
-
-        $scope.isDesktopMode = function(height, width) {
-            initHeight();
-            height = height || windowHeight;
-            width = width || windowWidth;
-            return height > desktopHeightLimit && width > desktopWidthLimit;
-        }
-
-        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
 
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
@@ -79,6 +56,8 @@ angular.module('uguru.util.controllers')
             KeyboardService.setDeviceKeyboardState(true);
             $scope.keyboardOpen = true;
         }
+
+
 
         window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
@@ -153,6 +132,7 @@ angular.module('uguru.util.controllers')
         $scope.user.createObj = User.createObj;
         $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
+        $scope.user.grades = $scope.user.grades || [];
         $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
@@ -189,39 +169,16 @@ angular.module('uguru.util.controllers')
             })
         }
 
-
-        $scope.getCategories = function(callback) {
-            console.log('retrieving majors for id');
-            Category.get().then(function(categories) {
-                Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
-                Category.mapActiveToSubcategories(Category.categories, $scope.user);
-
-
-                $scope.categories = Category.categories.slice();
-                callback && callback(Category.categories);
-                console.log($scope.categories.length, 'categories loaded');
-
-            },
-            function() {
-                console.log("Categories NOT successfully loaded");
-            })
-        }
-        
-        var categoriesCallback = function(categories) {
-            $scope.categories = categories;
-        }
-
-        $scope.getCategories(categoriesCallback)
-
         $scope.getCoursesForUniversityId = function(uni_id, callback) {
             if (!uni_id) {
                 return;
             }
             University.getCourses(uni_id).then(function(courses){
                 $timeout(function() {
-                    $scope.data.courses = courses.plain();
+
                     University.courses = courses.plain();
                     console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
+                    $scope.courses = University.courses;
                     callback && callback();
                 }, 0);
             },
@@ -232,36 +189,18 @@ angular.module('uguru.util.controllers')
 
 
 
-        if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-            console.log('University majors not local, requesting now..');
-            $timeout(function() {
-                $scope.getMajorsForUniversityId($scope.user.university_id);
-            }, 0)
-        } else {
-            console.log(University.majors.length, 'majors loaded');
-        }
-
         if ($scope.user.university_id && !(University.courses && University.courses.length)) {
             console.log('University courses not local, requesting now..');
             $timeout(function() {
                 $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
             }, 0)
         } else {
-            console.log(University.courses.length, 'majors loaded');
-        }
-
-        if (!Category.categories || Category.categories.length === 0) {
-            console.log('Categories not local, loading now..')
-            $timeout(function() {
-                $scope.getCategories();
-            }, 0)
-        } else {
-            console.log(Category.categories.length, 'categories loaded');
+            console.log(University.courses.length, 'courses loaded');
         }
 
 
         $scope.rootUser = User;
-        $scope.root = RootService;
+        $scope.root = {};
         $scope.root.vars = {};
         $scope.root.vars.remote_cache = [];
         $scope.root.vars.onboarding = false;
@@ -291,13 +230,13 @@ angular.module('uguru.util.controllers')
                         $scope.root.vars.settings = {icons : {profile : true}};
                         $scope.loader.showSuccess('You have been successfully logged out!', 2500);
                         // $state.go('^.university');
-                        $ionicSideMenuDelegate.toggleRight();
+                        $ionicSideMenuDelegate.toggleLeft();
                   }, 1000);
             }
         }
 
-        $scope.toggleRightSideMenu = function() {
-            $ionicSideMenuDelegate.toggleRight();
+        $scope.toggleLeftSideMenu = function() {
+            $ionicSideMenuDelegate.toggleLeft();
             $timeout(function() {
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
             }, 250);
@@ -635,7 +574,7 @@ angular.module('uguru.util.controllers')
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {
                 $state.go('^.' + _startpage);
-            
+
 
 
         }
@@ -643,8 +582,8 @@ angular.module('uguru.util.controllers')
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
                 $state.go('^.' + _startpage);
-            
-            
+
+
         }
         }
 

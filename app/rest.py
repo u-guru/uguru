@@ -114,7 +114,24 @@ class UniversityPopularCoursesView(restful.Resource):
         if not u:
             abort(404)
         else:
-            return u.popular_courses, 200
+            courses = u.popular_courses
+            if not courses:
+                courses = u.courses
+            return courses, 200
+
+class UniversityFoodView(restful.Resource):
+    def get(self, _id):
+        import json
+        file = open('app/static/data/food_router.json')
+
+        university_food_dict = json.load(file)
+        university_food_url = university_food_dict.get(str(_id))
+
+        if not university_food_url:
+            return json.dumps({"error": "Food URL does not exist for university id %s" % _id}), 422
+
+        return json.dumps({"food_url":university_food_url}), 200
+
 
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
@@ -131,8 +148,6 @@ class UniversityCoursesView(restful.Resource):
             return u.courses, 200
         else:
             return university_courses, 200
-
-
         # from static.data.berkeley_courses import courses
 
 class OneDeviceView(restful.Resource):
@@ -3331,6 +3346,7 @@ api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departmen
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses')
 api.add_resource(UniversityPopularCoursesView, '/api/v1/universities/<int:_id>/popular_courses')
 api.add_resource(MajorListView, '/api/v1/majors')
+api.add_resource(UniversityFoodView, '/api/v1/universities/<int:_id>/food_url')
 api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')
 api.add_resource(ProfessionListView, '/api/v1/professions')

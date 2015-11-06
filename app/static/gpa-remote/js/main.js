@@ -25,9 +25,8 @@ var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
-  'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
+  'ngAnimate', 'angular-velocity', 'uguru.util.controllers','uguru.rest', 'uguru.user',
+  'ionic.device', 'sharedServices', 'uguru.directives', 'uguru.version', 'gpa.controllers'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -43,7 +42,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 })
 
-.config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
+.config(function($stateProvider, $urlRouterProvider, RestangularProvider,
   $ionicConfigProvider, $compileProvider,
   $provide) {
 
@@ -91,11 +90,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/university.html',
         controller: 'AddUniversityCtrl'
   }).
-
   state('privacy', {
         url:'/privacy',
         templateUrl: BASE + 'templates/privacy-terms.modal.html'
   }).
+<<<<<<< HEAD
 
   state('root.university-container', {
         url: '/university-container',
@@ -159,6 +158,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).
+=======
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
   state('root.gpa-home', {
         url: '/gpa-home',
         templateUrl: BASE + 'templates/gpa.home.html',
@@ -195,6 +196,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.offline', {
         url: '/offline',
         templateUrl: BASE + 'templates/offline.html',
+<<<<<<< HEAD
   }).
 
   state('root.become-guru.photography', {
@@ -289,7 +291,28 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 
 
+=======
+  })
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
   $urlRouterProvider.otherwise('/' + _startpage);
 
 
-});
+}).directive('scrollDetector', function($window, $ionicScrollDelegate) {
+  return {
+    restrict : 'A',
+
+    link: function(scope, element, attrs) {
+
+      var scrollableElement = element;
+      console.log('scrollableElement');
+      console.log(scrollableElement);
+      element.on('scroll', function() {
+        console.log('Scrolled');
+        console.log(element.prop( 'offsetTop' ));
+        var scrollView = $ionicScrollDelegate.getScrollView(scrollableElement);
+        console.log('Scroll view');
+        console.log(scrollView);
+      });
+    }
+  };
+})

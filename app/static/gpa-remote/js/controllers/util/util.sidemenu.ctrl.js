@@ -1,6 +1,6 @@
 angular.module('uguru.util.controllers')
 
-.controller('SideMenuController', [
+.controller('SidebarController', [
 
   //All imported packages go here
   '$scope',
@@ -19,7 +19,6 @@ angular.module('uguru.util.controllers')
   '$ionicHistory',
   '$ionicActionSheet',
   '$ionicPopup',
-  'Camera',
   'Support',
   'University',
   '$ionicPlatform',
@@ -39,7 +38,7 @@ angular.module('uguru.util.controllers')
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
+  Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
   AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate,
   AdminService, InAppBrowser, DeviceService, ModalService) {
     $scope.root.vars.show_account_fields = false;
@@ -323,7 +322,7 @@ angular.module('uguru.util.controllers')
     $scope.launchEditStudentNamePopup = function() {
 
       if ($scope.user.name) {
-        $scope.popupInput.editName = $scope.user.name;
+        $scope.popupInput.editName = $scoped.user.name;
       }
 
       PopupService.open('editName', callback);
@@ -406,7 +405,7 @@ angular.module('uguru.util.controllers')
           $scope.transitionToMajor()
           $timeout(function() {
           $scope.loader.hide();
-          $ionicSideMenuDelegate.toggleRight();
+          $ionicSideMenuDelegate.toggleLeft();
       }, 1000);
 
     }
@@ -441,6 +440,7 @@ angular.module('uguru.util.controllers')
                 $scope.loader.show();
                 console.log("checking");
                 $timeout(function() {
+                  $scope.search_text = university.name;
                   $scope.openModal('university');
                 }, 0);
 
@@ -506,7 +506,7 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
           if ($ionicSideMenuDelegate.isOpen()) {
-            $ionicSideMenuDelegate.toggleRight();
+            $ionicSideMenuDelegate.toggleLeft();
           }
         }, 500)
 
@@ -528,7 +528,7 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         $scope.root.vars.guru_mode = false;
         if ($ionicSideMenuDelegate.isOpen()) {
-          $ionicSideMenuDelegate.toggleRight();
+          $ionicSideMenuDelegate.toggleLeft();
         }
       }, 500)
 
