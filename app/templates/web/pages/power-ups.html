@@ -22,9 +22,10 @@ Uguru Home
 
 <section id="main full-xy">
 
-    <!-- Demo purpose only-->
+    <!-- GABRIELLE: either add to style or create cta.scss (your call)-->
     <style>
-        .temp {
+        /*REMOVE THIS*/
+        .cta-box {
             position:absolute;
             bottom:0;
             left:0;
@@ -33,23 +34,25 @@ Uguru Home
             width:200px;
             background-color:black;
         }
-
-        .temp.full.show {
+        /*END MUST REMOVE*/
+        .cta-modal.full.show {
             opacity:1;
             visibility: visible;
         }
 
-        .temp.full {
+        .cta-modal.full {
             height:100%;
             width:100%;
             z-index:1000;
+            position:absolute;
             opacity:0;
             visibility: hidden;
+            background-color: black;
         }
         .white {
             color:white;
         }
-        #temp-2 a.close-button {
+        .cta-modal a.cta-modal-close {
             position:absolute;
             bottom:0;
             padding:20px;
@@ -58,36 +61,24 @@ Uguru Home
     </style>
 
 
-    <!-- Desktop Version-->
-    <a id='temp-1' class='temp'>
+    <!-- Demo Version-->
+    <a class='cta-box'>
     </a>
-    <div id='temp-2' class='temp full'>
-        <a class='close-button white' id='close-button'>
+    <div  class='cta-modal full'>
+        <a class='cta-modal-close white'>
             Close button
         </a>
     </div>
+    <!-- End Demo -->
 </section>
 {% endblock %}
 
 {% block footer_scripts %}
 {% include 'web/pages/js/index.js' %}
 {% include 'web/snippets/search.js' %}
-<script>
-
-    var smallBlackBox = document.querySelector('#temp-1');
-
-    var largeBlackBox = document.querySelector('#temp-2');
-
-    smallBlackBox.addEventListener('click', function() {
-
-        var closeCTAModal = cta(smallBlackBox, largeBlackBox, function() {
-            largeBlackBox.classList.add('show');
-            document.querySelector('#close-button').addEventListener('click', function() {
-                largeBlackBox.classList.remove('show');
-                console.log('closing..')
-                closeCTAModal();
-            })
-        });
-    })
-</script>
+{% include 'web/snippets/u.cta.js' %}
+<!-- //Rules
+    // Each box must have class ='cta-box'
+    // Each modal must have class ='cta-modal'
+    // Each modal close link must have class ='cta-modal-close' -->
 {% endblock %}
