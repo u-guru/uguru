@@ -1,5 +1,6 @@
 <script>
 function addEventListenerToCTABox(box_elem, modal_elem) {
+    console.log('this was clicked');
     box_elem.addEventListener('click', function() {
 
         var closeCTAModal = cta(box_elem, modal_elem, function() {

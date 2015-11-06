@@ -1,0 +1,137 @@
+@import 'mixin';
+
+body {
+	background: $smoke;
+}
+
+#page-powerups {
+	#main {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		> ul {
+			max-width: 1200px;
+			margin: 15px;
+			> li {
+				@include box-sizing;
+				padding: 15px;
+				> div {
+					position: relative;
+					color: white;
+					svg.box-filler {
+						display: block;
+						width: 100%;
+						height: auto;
+					}
+					svg.powerup-icon {
+						@include center-xy;
+						width: 150px;
+						height: 150px;
+					}
+					h3 {
+						@include box-sizing;
+						@include center-x;
+						display: block;
+						top: 0;
+						margin: 0;
+						padding: 15px;
+						width: 100%;
+						font-size: 32px;
+						font-weight: 600;
+						text-align: center;
+						text-transform: lowercase;
+					}
+					.powerup-links {
+						@include center-x;
+						@include flex;
+						@include flex-center;
+						display: block;
+						bottom: 0;
+						padding: 15px;
+						width: 100%;
+						> ul {
+							@include listless;
+							@include flex;
+							@include flex-center;
+							width: auto;
+							> li {
+								padding: 0 7.5px;
+								a {
+									display: block;
+									width: 48px;
+									height: 48px;
+									svg {
+										width: 100%;
+										height: 100%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			#guru-gpa {
+				svg.box-filler {
+					background: $azure;
+				}
+			}
+			#guru-food {
+				svg.box-filler {
+					background: $auburn;
+				}
+			}
+			#guru-sound {
+				svg.box-filler {
+					background: $eggplant;
+				}
+			}
+			#guru-transit {
+				svg.box-filler {
+					background: $moola;
+				}
+			}
+			#guru-focus {
+				svg.box-filler {
+					background: $campus;
+				}
+			}
+			#guru-suggest {
+				svg.box-filler {
+					background: $shamrock;
+				}
+			}
+		}
+	}
+}
+
+#top {
+	#top-logo-standalone {
+		margin: 10px auto!important;
+		width: 42px;
+		height: 42px;
+	}
+	.btn-ghost {
+		color: $slate!important;
+		border-color: $slate!important;
+		&:hover, &:focus, &:active {
+			color: white!important;
+			background: $slate!important;
+		}
+	}
+}
+#intercom-container .intercom-launcher-button {
+	border: 2px solid $slate!important;
+	&:after {
+		color: $slate!important;
+	}
+	&:hover, &:active, &:focus {
+		background: $slate!important;
+		&:after {
+			color: white!important;
+		}
+	}
+}

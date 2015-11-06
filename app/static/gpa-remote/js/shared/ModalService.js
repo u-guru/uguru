@@ -22,7 +22,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		open: open,
 		close: close,
 		isOpen: isOpen
-	};
+	}
 
 	function isOpen(modalName) {
 

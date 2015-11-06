@@ -2,6 +2,14 @@ angular.module('gpa.controllers')
 .controller('GPAController', [
 	'$scope',
 	'ModalService',
+<<<<<<< HEAD
+	GPAController]);
+
+
+function GPAController($scope, ModalService) {
+
+
+=======
 	'GPAService',
 	'$localstorage',
 	'$timeout',
@@ -40,26 +48,27 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	ModalService.init('course', $scope);
 
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 	$scope.search_text = {
 		course: '',
 		selected_course: null
 	};
 
-	$scope.course = {
-		name: '',
-		grade: '',
-		units: '',
-		year: '',
-		semester: ''
-	};
-
-	var selectedGrade = '';
-
 	$scope.clearSearchInput = function() {
 		$scope.search_text.course = '';
 	};
 
+	$scope.averageGPA = "4.0";
+
+	$scope.slogan = "Great Start!";
+
+	ModalService.init('course', $scope);
+
+
 	$scope.openModal = function(modalName) {
+<<<<<<< HEAD
+		console.log("opening modal: " + modalName);
+=======
 		// console.log("opening modal: " + modalName);
 		if (modalName == 'course' && (!$scope.user.university || !$scope.user.university.name)) {
 			ModalService.open('university', $scope);
@@ -67,12 +76,13 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		}
 
 
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 		ModalService.open(modalName, $scope);
 
 	};
 
 	$scope.closeModal = function(modalName) {
-		// console.log("closing modal: " + modalName);
+		console.log("closing modal: " + modalName);
 		ModalService.close(modalName);
 
 	};
@@ -81,6 +91,11 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.submitCourse = function() {
 
+<<<<<<< HEAD
+
+	};
+
+=======
 		if ($scope.search_text.course !== '' &&
 			selectedGrade !== '' &&
 			$scope.course.units !== '' &&
@@ -194,4 +209,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 
 
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 
+}

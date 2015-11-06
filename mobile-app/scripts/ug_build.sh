@@ -57,7 +57,7 @@ if [ $# == 1 ];
 		cp ./build_settings_android/MainActivity.java platforms/android/src/com/beta/college/Uguru/
 
 		printf "\e[0;36mFinished building. \e[0m\n"
-		return
+
 
 	fi
 

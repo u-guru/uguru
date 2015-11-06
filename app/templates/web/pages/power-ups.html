@@ -1,16 +1,19 @@
 {% extends 'web/layout/base.html' %}
+{% block pagetype %}page-powerups{% endblock %}
 
 {% block title_text %}
 Uguru Home
 {% endblock %}
 {% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/default.css"/>
 <link rel="stylesheet" href="/static/web/css/style.css"/>
+{% endblock %}
+{% block powerups_scripts %}
+<link rel="stylesheet" href="/static/web/css/powerups.css"/>
 {% endblock %}
 
 {% block logo %}
-    <img id="top-mobile-logo" src="/static/web/svg/logo-white.svg" alt="uguru"/>
-    {% include "web/components/logo-banner.svg" %}
-    <img id="top-school-logo" src="/static/web/svg/logo-shamrock.svg" alt="uguru"/>
+    <img id="top-logo-standalone" src="/static/web/svg/logo-slate.svg" alt="uguru"/>
 {% endblock %}
 {% block content %}
 
@@ -25,27 +28,26 @@ Uguru Home
     <!-- GABRIELLE: either add to style or create cta.scss (your call)-->
     <style>
         /*REMOVE THIS*/
-        .cta-box {
+        /*.cta-box {
             position:absolute;
             bottom:0;
             left:0;
             right:0;
-            height:200px;
-            width:200px;
-            background-color:black;
-        }
+        }*/
         /*END MUST REMOVE*/
-        .cta-modal.full.show {
+        .cta-modal.show {
             opacity:1;
             visibility: visible;
         }
 
-        .cta-modal.full {
+        .cta-modal {
             height:100%;
             width:100%;
             z-index:1000;
             position:absolute;
             opacity:0;
+            top:0;
+            left:0;
             visibility: hidden;
             background-color: black;
         }
@@ -62,15 +64,211 @@ Uguru Home
 
 
     <!-- Demo Version-->
-    <a class='cta-box'>
+   <!--  <a class='cta-box'>
     </a>
     <div  class='cta-modal full'>
         <a class='cta-modal-close white'>
             Close button
         </a>
-    </div>
+    </div> -->
     <!-- End Demo -->
+
+<!-- Mobile Version-->
+<!-- <div id="mobile-start"></div> -->
+
+
+<section id="main">
+    <ul class="ugrid-3">
+        <li id="guru-gpa" class='cta-box'>
+            <div>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                <svg class="powerup-icon" viewBox="0 0 100 100">
+                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                </svg>
+                <h3>GPA Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-food" class='cta-box'>
+            <div>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                <svg class="powerup-icon" viewBox="0 0 100 100">
+                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                </svg>
+                <h3>Food Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-sound" class='cta-box'>
+            <div>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                <svg class="powerup-icon" viewBox="0 0 100 100">
+                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                </svg>
+                <h3>Sound Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-transit" class='cta-box'>
+            <div>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                <svg class="powerup-icon" viewBox="0 0 100 100">
+                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                </svg>
+                <h3>Transit Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-focus" class='cta-box'>
+            <div>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                <svg class="powerup-icon" viewBox="0 0 100 100">
+                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                </svg>
+                <h3>Focus Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-suggest" class='cta-box'>
+            <div>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                <svg class="powerup-icon" viewBox="0 0 100 100">
+                    <circle fill="#FFFFFF" fill-opacity="0.5" cx="50" cy="50" r="50"></circle>
+                </svg>
+                <h3>Suggest one!</h3>
+            </div>
+        </li>
+    </ul>
+
 </section>
+
+    <div class='cta-modal'>
+        <a class='cta-modal-close white'>
+            Close button
+        </a>
+    </div>
+    <div class='cta-modal'>
+        <a class='cta-modal-close white'>
+            Close button
+        </a>
+    </div>
+    <div class='cta-modal'>
+        <a class='cta-modal-close white'>
+            Close button
+        </a>
+    </div>
+    <div class='cta-modal'>
+        <a class='cta-modal-close white'>
+            Close button
+        </a>
+    </div>
+    <div class='cta-modal'>
+        <a class='cta-modal-close white'>
+            Close button
+        </a>
+    </div>
+    <div class='cta-modal'>
+        <a class='cta-modal-close white'>
+            Close button
+        </a>
+    </div>
 {% endblock %}
 
 {% block footer_scripts %}

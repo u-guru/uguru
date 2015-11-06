@@ -80,6 +80,8 @@ main, #top-bar, .desktop-only, .desktop-search {
 	position: inherit;
 }
 
+
+
 /* ---------- MISCELLANEOUS */
 .uguru-view {
 	* {
@@ -445,6 +447,19 @@ main, #top-bar, .desktop-only, .desktop-search {
 	}
 }
 
+<<<<<<< HEAD
+// MODAL STYLES
+.terms-modal, .faq-modal, .support-modal {
+	header {
+		h1 {
+			color: white;
+		}
+	}
+	ion-content {
+		height: calc(100% - 50px);
+		margin-top: 50px;
+	}
+=======
 @media screen and (min-width:700px) and (min-height:575px) {
 	.modal {
 		top: 0;
@@ -465,10 +480,350 @@ main, #top-bar, .desktop-only, .desktop-search {
 	right: 0;
 	height: 110%;//due to ios status bar, playing it safe
     bottom: 0;
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 }
-.menu {
-	max-width: 80%!important;
+
+// CONTACTING MODAL
+.contacting-modal {
+	background: white;
 }
+<<<<<<< HEAD
+
+// CARDS MODAL
+#cards {
+	height: calc(100% - 114px);
+	ul {
+		height: 100%;
+		overflow: auto;
+		padding: 0 7.5px 7.5px;
+		li {
+			height: calc(100% / 3);
+			padding: 7.5px;
+			&:first-child {
+				padding-top: 0;
+			}
+			* {
+				box-shadow: none!important;
+				text-shadow: none!important;
+			}
+		}
+	}
+	button {
+		z-index: 10;
+	}
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-back::before {
+		background: $eggplant!important;
+	}
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-back::before {
+		background: $campus!important;
+	}
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::after {
+		background: $orange!important;
+		box-shadow: none!important;
+	}
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-back::before {
+		background: $azure!important;
+	}
+	.card-list-item {
+		width: 100%;
+	}
+}
+#edit-cards {
+	height: calc(100% - 114px);
+	.jp-card .jp-card-front,
+	.jp-card .jp-card-back {
+		background: $taupe!important;
+	}
+	.card-modal-wrapper-0 {
+		padding: 0 15px 15px;
+	}
+}
+
+// GURU CONTACT TYPES MODAL
+#contact-type {
+	height: calc(100% - 114px);
+	#contact-type-list {
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		height: 100%;
+		padding: 0 1px 1px;
+		li {
+			position: relative;
+			padding: 1px;
+			width: 50%;
+			height: calc(100% / 3);
+			> div {
+				display: block;
+				width: 100%;
+				height: 100%;
+				input {
+					@include opacity(0);
+					display: block;
+					position: absolute;
+					z-index: 9;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				input + span {
+					display: block;
+					width: 100%;
+					height: 100%;
+					label {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						width: 100%;
+						height: 100%;
+						padding: 15px 0 40%;
+						font-size: 18px;
+						font-weight: 600;
+						text-align: center;
+						background: $slate;
+						svg {
+							@include svg-stroke(white, 4);
+							display: none;
+							width: 100%;
+						}
+						span {
+							display: block;
+						}
+					}
+					> span {
+						@include opacity(.5);
+						display: block;
+						position: absolute;
+						bottom: 1px;
+						left: 1px;
+						width: calc(100% - 2px);
+						height: 40%;
+					    background: rgba(white,.4) url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center / 40px 40px;
+					}
+				}
+				input:checked + span {
+					span {
+						@include opacity(1);
+					}
+				}
+			}
+			&:nth-child(1) > div input:checked + span label {
+				background: $moola;
+			}
+			&:nth-child(2) > div input:checked + span label {
+				background: $shamrock;
+			}
+			&:nth-child(3) > div input:checked + span label {
+				background: $lake;
+			}
+			&:nth-child(4) > div input:checked + span label {
+				background: $azure;
+			}
+			&:nth-child(5) > div input:checked + span label {
+				background: $campus;
+			}
+			&:nth-child(6) > div input:checked + span label {
+				background: $eggplant;
+			}
+			&:nth-child(1), &:nth-child(2) {
+				padding-top: 0;
+			}
+		}
+	}
+}
+@media screen and (min-height:568px) {
+	#contact-type {
+		#contact-type-list {
+			li {
+				> div {
+					input + span {
+						label {
+							padding: 15px 0 30%;
+							font-size: 16px;
+							svg {
+								display: block;
+								height: calc(100% - 37px);
+							}
+							span {
+								padding-bottom: 15px;
+							}
+						}
+						> span {
+							height: 30%;
+							background-size: 30px 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:667px) {
+	#contact-type {
+		#contact-type-list {
+			li {
+				> div {
+					input + span {
+						label {
+							padding: 15px 0 40%;
+							font-size: 20px;
+							svg {
+								height: calc(100% - 43px);
+							}
+						}
+						> span {
+							height: 40%;
+							background-size: 40px 40px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// SKILLS MODAL
+.category-skills-modal {
+	top: calc(100% / 3);
+	overflow: visible;
+	.onboarding-list {
+		margin-top: -30px;
+		height: calc(100% / 3 * 2 + 30px);
+		overflow: none!important;
+		> div {
+			@include tri-down(15, white, 0, 0);
+			background: $smoke;
+			height: calc(100% - 30px);
+			ul {
+				height: 100%;
+				overflow: auto;
+			}
+		}
+	}
+}
+
+// EXPERIENCE MODAL
+#experience-modal,
+#guru-introduction-modal {
+	position: absolute;
+	top: 0;
+	.main {
+		height: calc(100% - 114px);
+		.ugrid-3 {
+			margin-top: -10px;
+			padding-bottom: 15px;
+			font-size: 16px;
+			font-weight: 400;
+			li {
+				padding: 0 15px;
+			}
+			li:nth-child(2) {
+				text-align: center;
+			}
+			li:nth-child(3) {
+				text-align: right;
+			}
+		}
+		input[type=range] {
+			height: 50px;
+		}
+		#exp-input, #guru-intro-input {
+			height: calc(100% - 203px);
+		}
+		#exp-input.removable {
+			height: calc(100% - 267px);
+		}
+		textarea {
+			font-size: 18px;
+			height: 100%;
+			resize:none;
+		}
+	}
+}
+@media screen and (min-width:375px) {
+	#experience-modal {
+		.main {
+			textarea {
+				font-size: 20px;
+				height: 100%;
+			}
+		}
+	}
+}
+
+// CARD MODAL
+.jp-card-front {
+	&::before {
+		background-image: none!important;
+	}
+}
+
+// ACCOUNT MODAL
+.signup-modal {
+	header {
+		.switch {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			li {
+				padding: 0 15px;
+				a {
+					display: block;
+					padding: 15px 0;
+					border-bottom: 5px solid transparent;
+					font-weight: 600;
+					text-align: center;
+				}
+				.selected {
+					border-bottom-color: $shamrock;
+				}
+			}
+		}
+	}
+	h1 + h1 {
+		margin-top: 0;
+	}
+	#account-form {
+		height: calc(100% - 50px);
+		padding: 0 15px 15px;
+		input {
+			margin: 30px 0 15px;
+			font-size: 20px;
+		}
+		#tos {
+			@include opacity(.6);
+			display: block;
+			color: white;
+			font-size: 14px;
+			font-weight: 700;
+			letter-spacing: 1px;
+			line-height: 1;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		#tos:active, #tos:focus {
+			color: $shamrock;
+		}
+		#social-login {
+			margin-top: 30px;
+			margin-bottom:20px;
+		}
+	}
+}
+
+@media screen and (max-width:320px) {
+	#account-form {
+		padding-top: 0!important;
+		input {
+			margin-top: 20px!important;
+			font-size: 18px!important;
+=======
 .side-menu-list {
 	position: relative;
 	width: 100%;
@@ -525,31 +880,195 @@ main, #top-bar, .desktop-only, .desktop-search {
 			padding-top: 15px;
 			text-align: center;
 			text-transform: uppercase;
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 		}
 	}
 }
 
-
-
-/* ---------- SETTING UP APP */
-// ACCESS
-.access-view {
-	background: $shamrock;
-	#access-data {
-		height: calc(100% - 64px);
+<<<<<<< HEAD
+// TERMS & PRIVACY MODAL
+.terms-modal {
+	color: $charcoal;
+	h3 {
+		font-size: 20px;
 	}
-	#access-logo {
-		@include flex;
-		@include flex-wrap;
-		@include flex-bottom;
-		height: 70%;
-		svg {
-			display: block;
-			max-height: 70%;
+	h4 {
+		font-size: 16px;
+		line-height: 1.25;
+	}
+    p, ol, ul {
+        font-size: 14px;
+        margin: 10px 0px;
+        line-height: 1.25;
+    }
+    h4 + p {
+	    margin-top: 5px;
+    }
+    ol {
+	    padding-left: 15px;
+	    list-style: decimal;
+    }
+	ion-content {
+		div {
+			padding-bottom: 15px!important;
+			&:last-child {
+				padding-bottom: 0!important;
+			}
 		}
 	}
-	#access-code {
+}
+
+// FAQ MODAL
+.faq-modal {
+    header.bg-charcoal {
+        z-index: 1000!important;
+    }
+    iframe {
+        min-height: 100%;
+        width: 100%;
+        header#top {
+            display: none!important;
+        }
+    }
+}
+=======
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
+
+// UNIVERSITY MODAL
+.university-modal {
+	.onboarding-search {
+		input {
+			width: calc(100% - 25px);
+		}
+	}
+}
+
+// REQUESTS MODAL
+.request-modal {
+	// CATEGORIES
+	#request-categories {
 		@include flex;
+		@include flex-wrap;
+		height: calc(100% - 50px);
+		li {
+			position: relative;
+			width: 50%;
+			height: 25%;
+			&:first-child {
+				width: 100%;
+			}
+			.select-category {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				width: 100%;
+				height: 100%;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				> span {
+					span {
+						display: block;
+						text-align: center;
+						&:first-child {
+							margin: -15px auto 0;
+							width: 60px;
+							height: 60px;
+							svg {
+								path {
+									stroke: white;
+									stroke-width: 2.5px;
+									stroke-linecap: round;
+									stroke-linejoin: round;
+								}
+							}
+						}
+						@media screen and (min-height:568px) {
+							&:first-child {
+								width: 75px;
+								height: 75px;
+							}
+						}
+						&:last-child {
+							margin: 10px auto 0;
+						}
+					}
+				}
+			}
+			.follow-category {
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 34px;
+				height: 34px;
+				border-bottom-left-radius: 1000px;
+				svg {
+					display: block;
+					position: absolute;
+					top: 4px;
+					right: 4px;
+					width: 20px;
+					height: 20px;
+					path {
+						stroke: white;
+						stroke-width: 9px;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+				}
+			}
+		}
+	}
+	// SUBCATEGORIES
+	#request-subcategories {
+		@include flex;
+<<<<<<< HEAD
+		@include flex-wrap;
+		height: calc(100% - 50px);
+		.request-category {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			height: calc(100% / 3);
+			width: 100%;
+			font-size: 20px;
+			> span {
+				span {
+					display: block;
+					text-align: center;
+					&:nth-child(1) {
+						margin: -15px auto 0;
+						width: 50px;
+						height: 50px;
+						svg {
+							path {
+								stroke: white;
+								stroke-width: 2.5px;
+								stroke-linecap: round;
+								stroke-linejoin: round;
+							}
+						}
+					}
+					@media screen and (min-height:568px) {
+						&:nth-child(1) {
+							width: 60px;
+							height: 60px;
+						}
+					}
+					&:nth-child(2) {
+						margin: 10px auto 0;
+						font-weight: 600;
+						text-transform: uppercase;
+					}
+				}
+				p {
+					margin: 5px 0 0;
+					padding: 0 15px;
+					font-weight: 400;
+					font-size: 14px;
+					text-align: center;
+=======
 		@include flex-center;
 	}
 	#access-start {
@@ -607,13 +1126,25 @@ main, #top-bar, .desktop-only, .desktop-search {
 				}
 				input {
 					margin: 0;
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 				}
 			}
 		}
-	}
-	#school-list.onboarding-list, #school-list-modal {
-		ul {
+		.request-subcategories {
+			height: calc(100% / 3 * 2);
+			width: 100%;
+			overflow: auto;
 			li {
+<<<<<<< HEAD
+				position: relative;
+				height: 40%;
+				width: 100%;
+				padding: 15px 15px 0;
+				&:nth-child(1) {
+					.select-subcategory {
+						background: url(../../img/subcategories/session.png) center center / cover,
+									url(/static/remote/img/subcategories/session.png) center center / cover;
+=======
 				margin-left: 1px;
 				margin-right: 1px;
 				width: calc(100% - 2px);
@@ -624,6 +1155,972 @@ main, #top-bar, .desktop-only, .desktop-search {
 					background: $azure;
 					font-weight: 300;
 					border: 0;
+					.school-icon {
+						img {
+							@include round;
+							border: 0!important;
+							margin: 10px;
+							width: 44px;
+							height: 44px;
+							background: white;
+						}
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
+					}
+				}
+				&:nth-child(2) {
+					.select-subcategory {
+						background: url(../../img/subcategories/question.png) center center / cover,
+									url(/static/remote/img/subcategories/question.png) center center / cover;
+					}
+				}
+				&:nth-child(3) {
+					.select-subcategory {
+						background: url(../../img/subcategories/homework.png) center center / cover,
+									url(/static/remote/img/subcategories/homework.png) center center / cover;
+					}
+				}
+				&:nth-child(4) {
+					padding-bottom: 15px;
+					.select-subcategory {
+						background: url(../../img/subcategories/study.png) center center / cover,
+									url(/static/remote/img/subcategories/study.png) center center / cover;
+					}
+				}
+				.select-subcategory {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					> span {
+						display: block;
+						font-size: 20px;
+						font-weight: 600;
+						text-align: center;
+					}
+				}
+				.follow-subcategory {
+					display: block;
+					position: absolute;
+					top: 15px;
+					right: 15px;
+					width: 34px;
+					height: 34px;
+					border-bottom-left-radius: 1000px;
+					background: rgba(white,.2);
+					svg {
+						display: block;
+						position: absolute;
+						top: 4px;
+						right: 4px;
+						width: 20px;
+						height: 20px;
+						path {
+							stroke: white;
+							stroke-width: 9px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
+						}
+					}
+				}
+			}
+		}
+	}
+	// FORM
+	.request-content {
+		height: calc(100% - 114px);
+		overflow: auto;
+		font-weight: 300;
+		input:not([type="text"]) {
+			cursor: pointer;
+		}
+		input[type="text"], textarea {
+			@include appearance;
+			display: block;
+			border-radius: 0;
+			background: white;
+			width: 100%;
+			border: 2px solid $smoke;
+			border-top: 0;
+			border-bottom: 0;
+			color: $slate;
+			font-size: 18px;
+			font-weight: 300;
+			&::-ms-expand {
+			    display: none;
+			}
+			&::-webkit-input-placeholder {
+				font-weight: 300!important;
+				color: rgba($slate, .5);
+			}
+			&:-moz-placeholder {
+				font-weight: 300!important;
+				color: rgba($slate, .5);
+			}
+			&::-moz-placeholder {
+				font-weight: 300!important;
+				color: rgba($slate, .5);
+			}
+			&:-ms-input-placeholder {
+				font-weight: 300!important;
+				color: rgba($slate, .5);
+			}
+			&:focus {
+				&::-webkit-input-placeholder {
+					color: $slate;
+				}
+				&:-moz-placeholder {
+					color: $slate;
+				}
+				&::-moz-placeholder {
+					color: $slate;
+				}
+				&:-ms-input-placeholder {
+					color: $slate;
+				}
+			}
+		}
+		.request-course {
+			input {
+				font-size: 24px;
+				font-weight: 600;
+			}
+		}
+		.request-loc {
+			ul {
+				border-left: 1px solid $smoke;
+				border-right: 1px solid $smoke;
+				li {
+					position: relative;
+					border-left: 1px solid $smoke;
+					border-right: 1px solid $smoke;
+					input[type="radio"] {
+						@include opacity(0);
+						position: absolute;
+						z-index: 9;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border-radius: 0;
+					}
+					div {
+						width: 100%;
+					}
+					label {
+						display: block;
+						width: 100%;
+						font-size: 18px;
+						line-height: 46px;
+					}
+					input:not(:checked) + label {
+						color: rgba($slate, .5);
+						background: white;
+						font-weight: 400;
+					}
+					input:checked + label {
+						background: $lake;
+						color: white;
+						font-weight: 600;
+					}
+				}
+			}
+			.request-address {
+				position: relative;
+				padding: 15px;
+				border: 2px solid $smoke;
+				border-bottom: 0;
+				&::after {
+					@include center-xy;
+					@include opacity(.15);
+					-webkit-filter: grayscale(1);
+					filter: grayscale(1);
+					content: "";
+					display: block;
+					position: absolute;
+					z-index: -1;
+					top: 0;
+					left: 0;
+					width: 200%;
+					height: 200%;
+					background: url(../../img/map-small.png) center center / cover,
+								url(/static/remote/img/map-small.png) center center / cover;
+				}
+				> span {
+					display: block;
+					width: 100%;
+					border: 0;
+					font-size: 18px;
+					font-weight: 600;
+					line-height: 1.2;
+					text-align: center;
+				}
+				.request-address-icon {
+					margin-top: -6px;
+					height: 40px;
+					svg {
+						width: auto;
+						height: 100%;
+						path {
+							@include svg-stroke($lake, 5);
+						}
+					}
+				}
+			}
+		}
+		.request-time {
+			.request-time-urgent {
+				li {
+					border-left: 2px solid $smoke;
+					border-right: 2px solid $smoke;
+					> span {
+						border-bottom: 2px solid $smoke;
+						height: 48px;
+						label {
+							width: calc(100% - 46px);
+							padding: 0 15px;
+							font-weight: 600;
+						}
+						input + span {
+							width: 46px;
+							height: 46px;
+							background-size: 30px 30px;
+						}
+						input:not(:checked) + span {
+							background-color: #f8f8f8;
+						}
+					}
+				}
+			}
+			.request-time-needed, .request-time-avail {
+				border-left: 2px solid $smoke;
+				border-right: 2px solid $smoke;
+				h2 {
+					font-weight: 600;
+				}
+			}
+			.request-time-needed {
+				ul {
+					border-top: 1px solid $smoke;
+					border-bottom: 1px solid $smoke;
+					li {
+						position: relative;
+						border: 1px solid $smoke;
+						&:first-child {
+							border-left: 0;
+						}
+						&:last-child {
+							border-right: 0;
+						}
+						input {
+							@include opacity(0);
+							position: absolute;
+							z-index: 9;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							border-radius: 0!important;
+						}
+						div {
+							padding: 5px 0;
+							font-size: 12px;
+							font-weight: 600;
+							line-height: 1.2;
+							text-align: center;
+							text-transform: uppercase;
+							h1 {
+								font-size: 24px;
+								font-weight: 400;
+							}
+						}
+						input:not(:checked) + div {
+							color: rgba($slate, .5);
+						}
+						input:checked + div {
+							background: $lake;
+							color: white;
+							font-weight: 700;
+							h1 {
+								font-weight: 600;
+							}
+						}
+					}
+				}
+			}
+		}
+		.request-desc {
+			textarea {
+				font-weight: 600;
+				border-bottom: 2px solid $smoke;
+				height: 150px;
+				width: 100%;
+			}
+		}
+		.picker {
+			border-top: 2px solid $smoke;
+		}
+	}
+}
+
+// AVAILABILITY MODAL
+.availability-modal {
+	background: $slate;
+	section {
+		height: calc(100% - 50px);
+		> div {
+			height: 100%;
+			width: 100%;
+			&::after {
+				content: "";
+				position: fixed;
+				z-index: 10;
+				border-right: 2px solid rgba(white,.1);
+				left: 0;
+				top: 50px;
+				width: calc(10% + 6px);
+				height: 35px;
+				background: $slate;
+			}
+		}
+	}
+	.avail-times {
+		position: fixed;
+		z-index: 9;
+		width: calc(10% + 6px);
+		height: calc(100% - 50px);
+		padding-top: 36px;
+		overflow-y: auto;
+		ul {
+			display: table;
+			width: 100%;
+			height: calc(100% / 12);
+			li {
+				display: table-cell;
+				border: 1px solid rgba(white,.1);
+				border-right: 2px solid rgba(white,.1);
+				background: $slate;
+				border-left: 0;
+				font-size: 12px;
+				width: 100%;
+				height: 100%;
+				span {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					text-align: right;
+					background: rgba(white,.05);
+				}
+			}
+		}
+		ul:last-child {
+			li {
+				border-bottom: 2px solid rgba(white,.1);
+			}
+		}
+	}
+	.avail-days {
+		position: fixed;
+		z-index: 9;
+		padding-left: calc(10% + 5px);
+		width: 100%;
+		height: 37px;
+		background: $slate;
+		overflow-x: auto;
+		border-bottom: 2px solid rgba(white,.1);
+		ul {
+			display: table;
+			height: 37px;
+			li {
+				display: table-cell;
+				width: 100%;
+				height: 100%;
+				border-left: 1px solid rgba(white,.1);
+				border-right: 1px solid rgba(white,.1);
+				font-size: 14px;
+				font-weight: 600;
+				text-transform: uppercase;
+				span {
+					@include flex;
+					@include flex-center;
+					width: 80px;
+					height: 100%;
+					text-align: center;
+					background: rgba(white,.05);
+				}
+			}
+			li:last-child {
+				border-right: 2px solid rgba(white,.1);
+			}
+		}
+	}
+	.avail-hours {
+		position: fixed;
+		margin-left: calc(10% + 5px);
+		height: calc(100% - 50px);
+		padding-top: 36px;
+		width: calc(90% - 5px);
+		overflow-x: auto;
+		ul {
+			display: table;
+			height: calc(100% / 12);
+			li {
+				display: table-cell;
+				position: relative;
+				border: 1px solid rgba(white,.1);
+				width: 100%;
+				height: 100%;
+				input {
+					@include opacity(0);
+					border-radius: 0;
+					position: absolute;
+					z-index: 11;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				input:checked + span {
+					background: $campus;
+				}
+				span {
+					@include flex;
+					@include flex-center;
+					text-align: center;
+					width: 80px;
+					height: 100%;
+				}
+			}
+			li:last-child {
+				border-right: 2px solid rgba(white,.1);
+			}
+		}
+		ul:last-child {
+			li {
+				border-bottom: 2px solid rgba(white,.1);
+			}
+		}
+	}
+}
+
+@media screen and (min-width:375px) {
+	.request-modal {
+		.request-content {
+			.request-time {
+				.request-time-needed {
+					ul {
+						li {
+							div {
+								padding: 10px 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// STUDENT COURSES MODAL
+.student-courses-view {
+	#course {
+		background: white;
+		header {
+			color: $charcoal;
+			background: $bakery-bg;
+			svg {
+				path {
+					stroke: $charcoal;
+				}
+			}
+			.onboarding-search {
+				.clear-search-input {
+					position: absolute;
+				    right: 0;
+				    top: 20px;
+				    right: 10px;
+				    color: rgba($charcoal,.7);
+				    padding: 0px;
+				}
+				input {
+					border-bottom: 1px solid rgba($charcoal,.5);
+					color: $charcoal;
+					@include placeholder {
+						color: rgba($charcoal,.5);
+					}
+				}
+				input:active, input:focus {
+					border-bottom-color: $charcoal;
+					@include placeholder {
+						color: $charcoal;
+					}
+				}
+				&:before {
+					background: url(../../img/svg/search-dark.svg) no-repeat center center/cover,
+								url(/static/remote/img/svg/search-dark.svg) center/cover no-repeat;
+				}
+			}
+		}
+	}
+	#courses-list.onboarding-list {
+		ul {
+			li {
+				label {
+					background: $smoke;
+					color: $charcoal;
+					border-color: $campus;
+				}
+				input:checked + label {
+					background: $campus;
+					border-color: rgba(white,.4)!important;
+				}
+				input:active + label {
+					background: rgba($campus,.2);
+				}
+				input:checked:active + label {
+					background: $campus;
+				}
+			}
+		}
+	}
+}
+
+
+/* ---------- SIDEBAR & MENUS */
+// SIDEBAR
+#side-menu-left-overlay.active {
+	background: rgba($charcoal, .8);
+	width: 20%;
+	height: 100%;
+	z-index: 20;
+	position: absolute;
+	right: 0;
+	height: 110%;//due to ios status bar, playing it safe
+    bottom: 0;
+}
+.menu {
+	max-width: 80%!important;
+}
+.side-menu-list {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+	.list {
+		@include flex-column;
+		height: 100%;
+	}
+	.list-item {
+		height: 64px;
+		font-size: 18px;
+		font-weight: 600;
+		text-transform: uppercase;
+		//Gabrielle -- added this so we can so more items;
+		&.settings-item {
+			height:10%;
+		}
+		.list-item-icon {
+			height: 64px;
+			width: 64px;
+			img {
+				@include round;
+				width: 34px;
+				height: 34px;
+			}
+			svg {
+				padding: 15px;
+				width: auto;
+				path, circle {
+					@include svg-stroke-width(3);
+				}
+				circle {
+					stroke-dasharray: 3px, 10px;
+				}
+			}
+		}
+		.list-item-detail {
+			padding: 0;
+		}
+	}
+	.list-item-profile {
+		@include flex-wrap;
+		@include flex-center;
+		height: calc(100% - 384px);
+		.list-item-detail {
+			span {
+				display: block;
+			}
+			.student-profile-name {
+				font-weight: 700;
+				padding-bottom: 2px;
+			}
+			.student-profile-school {
+				line-height: 1.2;
+			}
+			span:first-child {
+				font-size: 20px!important;
+			}
+			span:last-child {
+				font-size: 14px!important;
+			}
+			h3 {
+				font-size: 16px!important;
+				line-height: 1.2;
+			}
+		}
+	}
+	.list-item-agenda {
+		display: none;
+	}
+}
+@media screen and (min-height:540px) {
+	.side-menu-list {
+
+		.list-item-profile {
+			height: 84px;
+		}
+		.list-item-agenda {
+			@include flex;
+			position: relative;
+			height: calc(100% - 384px - 84px);
+			text-transform: none;
+			&::before {
+				@include opacity(.3);
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url(../../img/schools.jpg) center center / cover;
+			}
+		}
+	}
+}
+
+// SIDEBAR GURU MODE
+.guru-mode {
+	.list {
+		background: $slate;
+	}
+	.list-item {
+		&.active, &.activated {
+			background: $campus;
+		}
+		.list-item-icon {
+			svg {
+				path, circle {
+					stroke: #fff;
+				}
+			}
+		}
+	}
+	.list-item-profile {
+		background: rgba($campus, .75);
+	}
+	.list-item-agenda {
+		background: white;
+		color: $charcoal;
+		&.active, &.activated {
+			background: rgba(white, .9);
+		}
+	}
+	.list-item-mode {
+		background: rgba($campus, .75);
+	}
+}
+
+// SIDEBAR STUDENT MODE
+.student-mode {
+	.list {
+		background: white;
+	}
+	.list-item {
+		color: $slate;
+		.list-item-icon {
+			svg {
+				path {
+					stroke: $slate;
+				}
+			}
+		}
+		&.activated, &.active {
+			background: rgba($lake, .75);
+			color: white;
+			svg {
+				path {
+					stroke: white;
+				}
+			}
+		}
+	}
+	.list-item-profile {
+		background: $lake;
+		color: white;
+		.list-item-icon {
+			svg {
+				circle {
+					stroke: white;
+				}
+			}
+		}
+	}
+	.list-item-agenda {
+		background: $slate;
+		color: white;
+		&:active, &:hover {
+			background: rgba($slate, .9);
+		}
+	}
+	.list-item-mode {
+		background: $lake;
+		color: white;
+		.list-item-icon {
+			svg {
+				path {
+					stroke: white;
+				}
+			}
+		}
+	}
+}
+
+// ACTION SHEET
+.action-sheet-wrapper.action-sheet-up {
+	background: white;
+	.action-sheet-title {
+		@include flex;
+		@include flex-center;
+		padding: 0 10px;
+		font-size: inherit;
+		height: 50px;
+		span {
+			color: $lake;
+			font-size: 18px;
+			text-transform: none!important;
+		}
+	}
+	.action-sheet-group {
+		margin: 0!important;
+		button, div {
+			border: 0!important;
+			border-bottom: 1px solid $smoke!important;
+		}
+		button {
+			padding: 0 10px;
+			height: 50px;
+			color: $slate!important;
+			font-size: 16px;
+			font-weight: 600;
+		}
+		button:active, button.activated {
+			background: $smoke;
+		}
+		&:last-child {
+			> *:last-child {
+				border-bottom: 0!important;
+			}
+		}
+	}
+}
+
+// TAB BAR
+.tabs {
+	border: 0;
+	height: 50px;
+	line-height: 50px;
+	a.activated, a:active {
+		@include opacity(.5);
+	}
+	svg {
+		@include svg-stroke(white, 4);
+		width: 100%;
+		height: 100%;
+		padding: 8px;
+	}
+	&.guru-tabs {
+		svg {
+			stroke: white;
+		}
+	}
+	&.student-tabs {
+		svg {
+			stroke: $slate;
+		}
+	}
+}
+
+// SLIDER BREADCRUMBS
+.slider-pager {
+	@include flex;
+	@include flex-center;
+	height: auto!important;
+	span {
+		@include flex;
+		@include flex-center;
+	}
+	.icon {
+		font-size: 12px;
+		line-height: 16px;
+	}
+}
+
+
+
+/* ---------- SETTING UP APP */
+// ACCESS
+.access-view {
+	background: $shamrock;
+	#access-data {
+		height: calc(100% - 64px);
+	}
+	#access-logo {
+		@include flex;
+		@include flex-wrap;
+		@include flex-bottom;
+		height: 70%;
+		svg {
+			display: block;
+			max-height: 70%;
+		}
+	}
+	#access-code {
+		@include flex;
+		@include flex-center;
+	}
+	#access-start {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	p {
+		margin: 0 0 15px;
+		font-size: smaller;
+	}
+	button:active {
+		background: rgba($charcoal,.7);
+	}
+}
+
+// HOW IT WORKS
+.how-it-works-view {
+	background: $charcoal;
+	height: 100%;
+	header {
+		padding-top: 20px;
+		height: 50px;
+	}
+	.header-up {
+		display: block;
+		margin: 0 auto;
+		height: 50px;
+		svg {
+			@include svg-stroke(white, 6);
+			height: 100%;
+		}
+	}
+	button {
+		bottom: 0;
+		background: rgba(white,.1);
+	}
+	button:active {
+		background: rgba(white,.4);
+	}
+	#how-cards-container {
+		height: calc(100% - 50px - 64px);
+		width: 100%;
+		overflow-y: hidden;
+		overflow-x: auto;
+		.breadcrumbs {
+			position: fixed;
+			width: 100%;
+			margin-top: 10%;
+		}
+	}
+	#how-cards {
+		@include listless;
+		@include flex;
+		padding-top: 15%;
+		box-sizing: content-box;
+		height: 70%;
+		width: 600%;
+		.how-card {
+			width: 100%;
+			height: 100%;
+			.how-card-media, .how-card-desc {
+				margin: 0 30px;
+				width: calc(100% - 60px);
+			}
+			.how-card-media {
+				position: relative;
+				border-radius: 10px 10px 0 0;
+				height: 70%;
+				h1 {
+					text-align: center;
+					font-size: 20px;
+					font-weight: 600;
+					line-height: 50px;
+				}
+				div {
+					@include flex;
+					@include flex-center;
+					position: absolute;
+					width: 100%;
+					height: calc(100% - 50px);
+					padding: 15px;
+					svg {
+						height: 100%;
+						width: auto;
+					}
+					&.bottom-0 {
+						padding-bottom: 25px;
+					}
+					&.top-0 {
+						padding-top: 25px;
+					}
+				}
+			}
+			.how-card-desc {
+				@include flex;
+				@include flex-center;
+				border-radius: 0 0 10px 10px;
+				padding: 15px;
+				background: white;
+				height: 30%;
+				color: $charcoal;
+				p {
+					margin: 0;
+					font-size: 16px;
+					font-weight: 400;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+// UNIVERSITY
+.university-view {
+	background: $charcoal;
+	header {
+		&::before {
+			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
+		}
+		.geolocation-icon {
+			margin-top: 3px;
+		// To add hella space to tap it (it's responsive & equalizes)
+			padding: 30px;
+    		margin-right: -30px;
+		}
+	}
+	#school-list.onboarding-list, #school-list-modal {
+		ul {
+			li {
+				a {
+					font-weight: 300;
 					.school-icon {
 						img {
 							@include round;
@@ -674,6 +2171,1871 @@ main, #top-bar, .desktop-only, .desktop-search {
 						}
 					}
 				}
+				a:active, a.active, a.activated {
+					background: rgba(white,.2);
+				}
+			}
+		}
+	}
+}
+
+// STUDENT HOME
+.home-view {
+	background: white;
+	#student-home {
+		header {
+			background: rgba(white, .75);
+			color: $slate;
+			svg {
+				path {
+					stroke: $slate!important;
+				}
+			}
+		}
+		#student-home-map-container, #student-home-default-map-container {
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+			div {
+				top: -10%;
+				left: -10%;
+				width: 120%!important;
+				height: 120%!important;
+				.student-home-map-label {
+					display: none!important;
+				}
+			}
+		}
+		#home-content {
+			@include center-xy;
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			z-index: 2;
+			height: calc(100% - 150px);
+			width: 100%;
+			div {
+				width: 100%;
+				button {
+					@include round;
+					display: block;
+					margin: 0 auto;
+					width: 150px;
+					height: 150px;
+					font-weight: 600;
+					line-height: 1.2;
+					text-transform: uppercase;
+				}
+				.bg-lake-80p.activated, .bg-lake-80p:active {
+					@include opacity(1);
+					background: $lake!important;
+				}
+				.bg-campus-80p.activated, .bg-campus-80p:active {
+					@include opacity(1);
+					background: $campus!important;
+				}
+			}
+			&.trending-container {
+				height: calc(100% - 130px);
+			}
+			#trending {
+				width: calc(100% - 30px);
+				margin: 15px;
+				h1 {
+					font-size: 14px;
+					font-weight: 600;
+					letter-spacing: 1px;
+					text-align: center;
+					text-transform: uppercase;
+					padding: 15px;
+					background: rgba($charcoal,.9);
+				}
+				ul {
+					margin-top: 2px;
+					background: rgba(white,.9);
+					li {
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+						padding: 15px 0;
+						button {
+							width: 70px;
+							height: 70px;
+							font-size: 14px;
+							padding: 10px;
+							svg {
+								path {
+									stroke: white;
+								}
+							}
+						}
+						button + span {
+							display: block;
+							margin-top: 5px;
+							width: 100%;
+							font-size: 14px;
+							font-weight: 600;
+							text-align: center;
+							text-transform: uppercase;
+						}
+					}
+				}
+				ul + button {
+					width: 100%;
+					height: 64px;
+					border-radius: 0;
+					margin-top: 2px;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:667px) {
+	.home-view {
+		#student-home {
+			#home-content {
+				div {
+					button {
+						width: 200px;
+						height: 200px;
+					}
+				}
+				#trending {
+					ul {
+						li {
+							button {
+								width: 100px!important;
+								height: 100px!important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* ---------- GURU ONBOARDING */
+// ONBOARDING
+.onboarding {
+	.onboarding-search {
+		input {
+			width: calc(100% - 25px);
+		}
+	}
+	progress, .progress {
+		position: absolute;
+		top: 0;
+		z-index: 9;
+		span[data-value="2"] {
+			width: 2%;
+		}
+		span[data-value="30"] {
+			width: 25%;
+		}
+		span[data-value="50"] {
+			width: 40%;
+		}
+		span[data-value="80"] {
+			width: 80%;
+		}
+		span[data-value="85"] {
+			width: 85%;
+		}
+		span[data-value="95"] {
+			width: 95%;
+		}
+		span[data-value="99"] {
+			width: 86%;
+		}
+	}
+	header {
+		h1:not(header .header-nav a h1) {
+			text-align: center;
+		}
+	}
+	.onboarding-list {
+		height: calc(100% / 3 * 2);
+		overflow: auto;
+	}
+	&#demographic {
+		header {
+			&::before {
+				background: url(../images/schools.jpg) no-repeat center center / cover;
+			}
+			h1 {
+				font-size: 24px;
+			}
+		}
+		#demographic-grid {
+			> ul {
+				> li:not(.active) {
+					@include opacity(.3);
+				}
+			}
+			ul {
+				@include flex;
+				@include flex-center;
+				@include flex-wrap;
+				height: 100%;
+				li {
+					position: relative;
+					height: 50%;
+					font-weight: 600;
+					a {
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+						width: 100%;
+						height: 100%;
+						background: none;
+						.demographic-icon {
+							span {
+								@include round;
+								display: block;
+								margin: 0 auto 10px;
+								width: 60px;
+								height: 60px;
+								background: rgba(white,.4);
+							}
+						}
+					}
+					#{$links} {
+						background: none;
+					}
+					.demographic-popup {
+						@include tri-down(15, white, 0, 0);
+						position: absolute;
+						z-index: 9;
+						bottom: -100%;
+						background: white;
+						height: 100%;
+						width: 200%;
+						ul {
+							li {
+								a {
+									border: 1px solid;
+								}
+							}
+							li:nth-child(1) {
+								padding: 5px 0 0 5px;
+								a {
+									border-top: 0;
+									border-left: 0;
+								}
+							}
+							li:nth-child(2) {
+								padding: 5px 5px 0 0;
+								a {
+									border-top: 0;
+									border-right: 0;
+								}
+							}
+							li:nth-child(3) {
+								padding: 0 0 5px 5px;
+								a {
+									border-bottom: 0;
+									border-left: 0;
+								}
+							}
+							li:nth-child(4) {
+								padding: 0 5px 5px 0;
+								a {
+									border-bottom: 0;
+									border-right: 0;
+								}
+							}
+
+						}
+					}
+					&.bg-campus {
+						.demographic-popup {
+							left: 0;
+							&::before {
+								left: 25%;
+							}
+							li {
+								a {
+									color: $campus;
+									border-color: rgba($campus, .1);
+								}
+								#{$links} {
+									background: rgba($campus, .05);
+								}
+							}
+						}
+					}
+					&.bg-shamrock {
+						.demographic-popup {
+							left: -100%;
+							&::before {
+								left: 75%;
+							}
+							li {
+								a {
+									color: $shamrock;
+									border-color: rgba($shamrock, .1);
+								}
+								#{$links} {
+									background: rgba($shamrock, .05);
+								}
+							}
+						}
+					}
+					&.bg-azure {
+						.demographic-popup {
+							left: 0;
+							&::before {
+								left: 25%;
+							}
+							li {
+								a {
+									color: $azure;
+									border-color: rgba($azure, .1);
+								}
+								#{$links} {
+									background: rgba($azure, .05);
+								}
+							}
+						}
+					}
+					&.bg-lake {
+						.demographic-popup {
+							left: -100%;
+							&::before {
+								left: 75%;
+							}
+							li {
+								a {
+									color: $lake;
+									border-color: rgba($lake, .1);
+								}
+								#{$links} {
+									background: rgba($lake, .05);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&#start {
+		background: $slate;
+		#start-container {
+			@include center-y;
+			padding-bottom: 64px;
+			color: $shamrock;
+			font-size: 28px;
+			text-align: center;
+		}
+	}
+}
+
+// MAJOR
+.major-view, .language-view {
+	background: $charcoal;
+	header {
+		&::before {
+			background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
+		}
+	}
+	#major-list.onboarding-list, #language-list {
+		ul {
+			margin-top: 1px;
+			li {
+				a {
+					border-color: $campus;
+					margin-bottom: 2px;
+					padding: 0 40px 0 20px;
+					font-weight: 400;
+					font-size: 20px;
+					line-height: 1.2;
+				}
+				#{$links} {
+					&.active, &.activated {
+						background: rgba(white,.2);
+					}
+				}
+				&.selected  {
+					position: relative;
+					a {
+						border-color: white!important;
+						color: inherit!important;
+						font-weight: 600;
+						background: $campus;
+					}
+					svg {
+						@include center-y;
+						right: 0;
+						width: 64px;
+						height: 64px;
+						padding: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// COURSES
+.courses-view {
+	header {
+		&::before {
+			background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
+		}
+	}
+	#courses-list.onboarding-list {
+		ul {
+			margin: 1px 1px 0;
+			li {
+				position: relative;
+				border: 1px solid transparent;
+				label {
+					display: block;
+					width: 100%;
+					padding: 15px 20px;
+					font-size: 18px;
+					font-weight: 400;
+					line-height: 24px;
+					text-align: left;
+					span {
+						display: block;
+						width: 100%;
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						&:first-child {
+							font-size: 14px;
+							line-height: 1.2;
+						}
+					}
+				}
+				input {
+					@include opacity(0);
+					position: absolute;
+					z-index: 99;
+					top: 0;
+					left: 0;
+					margin: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				input:checked + label {
+					color: inherit!important;
+					font-weight: 600;
+				}
+				input:checked:active + label {
+					@include opacity(.75);
+				}
+			}
+		}
+	}
+}
+.courses-view:not(.student-courses-view) {
+	#course {
+		background: $charcoal;
+	}
+	#courses-list.onboarding-list {
+		ul {
+			li {
+				label {
+					background: rgba(white,.1);
+					border-color: $campus;
+				}
+				input:checked + label {
+					background: $campus;
+					border-color: white!important;
+				}
+				input:active + label {
+					background: rgba(white,.2);
+				}
+				input:checked:active + label {
+					background: $campus;
+				}
+			}
+		}
+	}
+}
+
+// SKILLS
+.skills-view {
+	background: $charcoal;
+	header {
+		&::before {
+			background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
+		}
+	}
+	#skills-list.onboarding-list  {
+		ul {
+			padding: 1px;
+			height: 100%;
+			li {
+				height: 25%;
+				border: 1px solid $charcoal;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					margin-bottom: 0;
+					background-color: rgba($charcoal,.5);
+					height: 100%;
+					font-size: 18px;
+					font-weight: 400;
+					line-height: 24px;
+					text-align: center;
+					div {
+						position: relative;
+						z-index: 9;
+					}
+					.skill-label {
+						display: block;
+						width: 100%;
+						font-weight: 600;
+						line-height: 1.25;
+					}
+					.skill-count {
+						display: block;
+						font-size: 12px;
+						line-height: 1.25;
+						text-transform: uppercase;
+					}
+				}
+			}
+			[class*="bg-"]::after {
+				@include opacity(.7);
+				position: absolute;
+				content: "";
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+			}
+			.bg-cerise.important::after {
+				background: $cerise;
+			}
+			.bg-orange.important::after {
+				background: $orange;
+			}
+			.bg-gold.important::after {
+				background: $gold;
+			}
+			.bg-moola.important::after {
+				background: $moola;
+			}
+			.bg-shamrock.important::after {
+				background: $shamrock;
+			}
+			.bg-azure.important::after {
+				background: $azure;
+			}
+			.bg-lake.important::after {
+				background: $lake;
+			}
+			.bg-eggplant.important::after {
+				background: $eggplant;
+			}
+		}
+	}
+}
+
+// PHOTO
+.photo-view {
+	background: $charcoal;
+	h1.text-center {
+		line-height: 1.2!important;
+	}
+	#photo-list {
+		position: absolute;
+		bottom: 0;
+		padding: 1px;
+		p {
+			font-size: 14px;
+			text-align: center;
+			font-weight: 400;
+			opacity: 0.5;
+		}
+		li {
+			padding: 1px;
+			img {
+				display: block;
+				max-width: 100%;
+			}
+		}
+	}
+	#photo-container {
+		#profile-icon {
+			position: relative;
+			height: 75%;
+			text-align: center;
+			a.active, a.activated, a:active {
+				@include opacity(.75);
+			}
+			h1 {
+				@include center-xy;
+				z-index: 9;
+				margin: 0;
+				border: 0;
+				font-size: 20px;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+			span {
+				display: block;
+				margin: 0 auto;
+				width: 80%;
+				height: 80%;
+				max-width: 150px;
+				max-height: 150px;
+				overflow: hidden;
+			}
+			svg, img {
+				@include round;
+				@include center-xy;
+				@include opacity(.5);
+				width: 80%;
+				height: 80%;
+				max-width: 150px;
+				max-height: 150px;
+			}
+		}
+	}
+}
+
+
+
+/* ---------- GURU PROFILE */
+// GURU PROFILE
+.guru-profile-view {
+	font-size: 18px;
+	#profile {
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: calc(100% - 50px);
+	}
+	#btn-edit-profile, #btn-save-profile {
+		bottom: 50px!important;
+		width: 100%;
+	}
+	#btn-save-profile button {
+		width: 100%;
+	}
+	#btn-save-profile:active {
+		@include opacity(1);
+		background: $cerise!important;
+	}
+	#btn-edit-profile:active {
+		@include opacity(1);
+		background: $shamrock!important;
+	}
+	.round {
+		@include flex;
+		@include flex-center;
+		margin: 5px auto;
+		line-height: 18px;
+		background: $campus;
+		font-size: 14px;
+		svg {
+			width: 19px;
+			height: 18px;
+			padding-right: 5px;
+			path {
+				@include svg-stroke(white, 10);
+			}
+		}
+		span {
+			line-height: 18px;
+		}
+	}
+	#profile-desc {
+		.profile-slider {
+			position: relative;
+			height: 100%;
+			.slider-slide {
+				padding: 15px 0;
+			}
+			#profile-intro {
+				position: relative;
+				margin: 0 15px;
+				height: calc(100% - 30px);
+				div {
+					@include flex;
+					@include flex-center;
+					height: 100%;
+					font-size: 20px;
+					font-weight: 600;
+				}
+				button + div {
+					height: calc(100% - 64px);
+				}
+			}
+			.slider-pager {
+				position: relative;
+				bottom: 30px;
+			}
+		}
+		#profile-icon {
+			@include round;
+			display: block;
+			span {
+				display: block;
+				margin: 0 auto;
+				width: 100px;
+				height: 100px;
+				overflow: hidden;
+			}
+			img {
+				@include round;
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				height: 100px;
+				padding: 5px;
+				background: rgba(white, .5);
+			}
+			a {
+				position: relative;
+				display: block;
+				img {
+					@include opacity(.5);
+				}
+				h1 {
+					@include center-xy;
+					width: 100px;
+					font-weight: 700;
+					text-align: center;
+					text-transform: uppercase;
+				}
+			}
+			a.active, a.activated, a:active {
+				@include opacity(.75);
+			}
+		}
+		#profile-list {
+			text-align: center;
+			ul {
+				@include listless;
+				#profile-name {
+					h1 {
+						margin-top: 10px;
+						padding: 0 10px 3px;
+						color: white;
+						font-size: 28px;
+						font-weight: 600;
+						line-height: 1;
+						text-transform: uppercase;
+						span:last-child {
+							svg {
+								display: none;
+							}
+						}
+					}
+				}
+				#profile-school {
+					margin-bottom: 3px;
+					font-size: 20px;
+					font-weight: 400;
+				}
+				#profile-contact {
+					margin: 15px 0;
+				}
+				#profile-loc {
+					font-size: 16px;
+					#profile-loc-city:not(:empty)::after {
+						content: ", "
+					}
+				}
+			}
+		}
+		#profile-bars {
+			#profile-rating {
+				@include listless;
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: 75px;
+				padding: 20px;
+				margin: 15px 0;
+				background: rgba(white, .1);
+				font-size: 24px;
+				li {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+	}
+	#profile-info {
+		.profile-inside {
+			padding-bottom: 64px;
+			h1 {
+				background: rgba(white,.05);
+				color: white;
+				padding: 10px;
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 2px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
+			}
+			li {
+				position: relative;
+				.remove {
+					@include center-y;
+					right: 0;
+					width: 35px;
+					height: 35px;
+					svg {
+						@include svg-stroke(white, 10);
+						@include rotate(45);
+						width: 35px;
+						height: 35px;
+						padding: 10px;
+					}
+				}
+			}
+			.profile-list {
+				@include listless;
+				@include flex;
+				@include flex-wrap;
+				text-align: center;
+				border-left: 1px solid rgba(white,.05);
+				border-right: 1px solid rgba(white,.05);
+				li {
+					width: 100%;
+					font-weight: 600;
+					position: relative;
+					border: 1px solid rgba(white,.05);
+					&:first-child {
+						border-top: 0;
+					}
+					&:last-child {
+						border-bottom: 0;
+					}
+					span {
+						display: block;
+						padding: 10px 15px;
+					}
+				}
+				a:active + span, a.active + span {
+					background: rgba($campus,.5);
+				}
+			}
+			.profile-list-half {
+				li {
+					&:nth-last-child(2) {
+						border-bottom: 0!important;
+					}
+					&:last-child {
+						display: none;
+					}
+				}
+			}
+			.courses.profile-list-half {
+				li {
+					width: 50%;
+					&:nth-child(1), &:nth-child(2) {
+						border-top: 0;
+					}
+					&:nth-last-child(2),
+					&:nth-last-child(3):nth-child(odd),
+					&:last-child:nth-child(even) {
+						border-bottom: 0;
+					}
+					&:last-child:nth-child(even) {
+						display: block;
+					}
+				}
+			}
+			#profile-other {
+				> div {
+					background: $charcoal;
+				}
+				#profile-experiences {
+					a {
+						text-align: left!important;
+						padding: 10px 15px;
+						background: transparent!important;
+						span {
+							padding: 0!important;
+							font-weight: 300;
+							h2 {
+								margin-bottom: 2px;
+								font-weight: 600!important;
+							}
+							svg {
+								@include svg-stroke-width(3);
+								@include transform-reset;
+								padding: 0;
+								text-align: right;
+							}
+						}
+						.list-item-detail {
+							width: calc(100% - 35px);
+						}
+						.list-item-icon {
+							width: 35px;
+						}
+					}
+					a.active, a:active {
+						background: rgba($campus,.5)!important;
+					}
+				}
+				hr {
+					padding: 0;
+					margin: 0;
+					border: 1px solid rgba(white, .05);
+				}
+			}
+			.empty {
+				border: 0!important;
+				li {
+					width: 100%!important;
+					font-weight: 300!important;
+					text-align: center!important;
+					border: 0!important;
+					span {
+						display: block;
+						padding: 10px 15px;
+						text-align: center;
+					}
+				}
+			}
+			.default {
+				@include listless;
+				@include flex;
+				@include flex-wrap;
+				text-align: center;
+				li {
+					padding: 10px 15px!important;
+					width: 100%!important;
+					font-weight: 600;
+					border-top: 2px solid rgba(white, .05)!important;
+					span {
+						padding: 0!important;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:414px) {
+	.guru-profile-view {
+		#profile-info {
+			.profile-inside {
+				.profile-list-half {
+					li {
+						width: 50%;
+						&:nth-child(1), &:nth-child(2) {
+							border-top: 0;
+						}
+						&:nth-last-child(2),
+						&:nth-last-child(3):nth-child(odd),
+						&:last-child:nth-child(even) {
+							border-bottom: 0;
+						}
+						&:last-child:nth-child(even) {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.guru-profile-view {
+	#profile-desc {
+		height: 64.5%;
+	}
+}
+@media screen and (min-height:568px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: 53%;
+		}
+	}
+}
+@media screen and (min-height:667px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: 45%;
+		}
+	}
+}
+@media screen and (min-height:736px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: 41%;
+		}
+	}
+}
+
+// PHOTO GURU PROFILE
+.photo-guru-profile-view {
+	color: $charcoal;
+	a {
+		color: $charcoal;
+	}
+	hr {
+		margin: 15px;
+		border: 1px solid rgba($taupe,.3)!important;
+	}
+	#profile {
+		height: 100%!important;
+		padding-bottom: 64px;
+	}
+	#profile-banner {
+		width: 100%;
+		height: 25%;
+		background: url(../../img/photo-guru-banner.png) center center / cover;
+	}
+	#profile-desc {
+		padding: 0;
+		margin-top: -50px;
+		#profile-icon {
+			img {
+				background: white;
+			}
+		}
+		#profile-list {
+			ul {
+				#profile-name {
+					h1 {
+						color: $charcoal;
+						font-weight: 700;
+						&.verified {
+							svg {
+								path:first-child {
+									fill: $campus;
+								}
+							}
+						}
+					}
+				}
+				#profile-blurb {
+					padding: 5px 15px;
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 1.25;
+				}
+				#profile-contact {
+					padding: 10px 0 5px;
+				}
+			}
+		}
+	}
+	#profile-nav {
+		ul {
+			padding: 0 7.5px;
+			li {
+				padding: 0 7.5px;
+				text-align: center;
+				a {
+					display: inline-block;
+					padding-bottom: 5px;
+					border-bottom: 3px solid transparent;
+					color: rgba($taupe,.5);
+					font-weight: 600;
+					font-size: 16px;
+					letter-spacing: 1px;
+					text-transform: uppercase;
+					&.active {
+						color: $charcoal;
+						border-bottom: 3px solid $charcoal;
+					}
+					&:active {
+						color: $slate;
+						border-bottom: 3px solid $slate;
+					}
+				}
+			}
+		}
+	}
+	#profile-skills {
+		hr {
+			border: 0 solid transparent!important;
+			border-top: 1px solid rgba($taupe,.1)!important;
+		}
+		section {
+			text-align: center;
+			text-transform: uppercase;
+			h1 {
+				padding: 10px 0;
+				font-size: 22px;
+				font-weight: 600;
+				letter-spacing: 1px;
+			}
+			ul {
+				li {
+					padding: 15px 0;
+					font-weight: 300;
+					font-size: 16px;
+				}
+			}
+			&:last-child {
+				padding-bottom: 15px;
+			}
+		}
+	}
+	#profile-gallery {
+		section {
+			position: relative;
+			margin: 40px 0;
+			&:first-child {
+				margin-top: 20px;
+			}
+			img {
+				display: block;
+				width: 100%;
+			}
+			p {
+				padding-bottom: 13px;
+				margin: 0;
+			}
+			.gallery-desc {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				padding: 15px;
+				background: rgba($charcoal,.8);
+				color: white;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 1.25;
+				.gallery-tags {
+					padding-top: 2px;
+					font-size: 14px;
+					ul {
+						@include flex;
+						@include flex-wrap;
+						width: 100%;
+						li {
+							padding-right: 7px;
+							a {
+								@include opacity(.75);
+								color: white!important;
+								&::before {
+									content: "#";
+								}
+								&.active, &:active {
+									@include opacity(1);
+								}
+							}
+						}
+					}
+				}
+				.gallery-loc {
+					@include opacity(.75);
+					@include flex;
+					@include flex-center-vertical;
+					width: 100%;
+					padding-top: 2px;
+					color: white;
+					font-size: 14px;
+					span {
+						line-height: 20px;
+						svg {
+							display: block;
+							width: 20px;
+							height: 20px;
+							path {
+								@include svg-stroke(white, 5);
+							}
+						}
+					}
+				}
+			}
+			.gallery-desc:not(.active), .gallery-desc.active + .gallery-info {
+				@include opacity(0);
+				display: none;
+			}
+			.gallery-info, .gallery-photo {
+				@include flex;
+				@include flex-center;
+				position: absolute;
+				display: block;
+				bottom: 15px;
+				right: 15px;
+				width: 50px;
+				height: 50px;
+				padding: 0;
+				svg {
+					display: block;
+					width: 50px;
+					height: 50px;
+					padding: 5px;
+					path {
+						@include svg-stroke-width(5);
+					}
+				}
+			}
+			.gallery-info {
+				background: rgba($charcoal,.8);
+				svg {
+					path {
+						stroke: white;
+					}
+				}
+			}
+			.gallery-photo {
+				background: rgba(white,.8);
+				svg {
+					path {
+						stroke: $charcoal;
+					}
+				}
+			}
+		}
+	}
+	#book-guru.activated {
+		@include opacity(1);
+		background: $charcoal!important;
+	}
+}
+
+// BAKERY GURU PROFILE
+.bakery-guru-profile-view {
+	color: $slate;
+	background: $bakery-bg;
+	header {
+		background: $bakery;
+		h1 {
+			color: white;
+			font-weight: 900;
+		}
+	}
+	#profile, #menu, #info {
+		height: 100%!important;
+	}
+	#profile-banner {
+		width: 100%;
+		height: 50%;
+		background: url(../../img/bakery-guru-banner.png) center center / cover;
+	}
+	#profile-desc {
+		@include flex;
+		@include flex-bottom;
+		-webkit-justify-content: flex-start;
+		justify-content: flex-start;
+		position: absolute;
+		width: 100%;
+		height: 50%;
+		padding: 0;
+		top: 0;
+		left: 0;
+		background: rgba($charcoal,.05);
+		#profile-list {
+			ul {
+				text-align: left;
+				padding: 30px;
+				#profile-name {
+					h1 {
+						padding-left: 0;
+						color: white;
+						font-size: 32px;
+						font-weight: 900;
+						&.verified {
+							svg {
+								path:first-child {
+									fill: $bakery;
+								}
+							}
+						}
+					}
+				}
+				#profile-blurb {
+					color: white;
+					font-size: 18px;
+					font-weight: 600;
+					line-height: 1.25;
+					padding: 5px 0;
+				}
+				#profile-contact {
+					padding: 10px 0 5px;
+					button {
+						background: $bakery;
+						border-color: $bakery;
+						color: white;
+						font-weight: 700!important;
+					}
+				}
+			}
+		}
+	}
+	#profile-promo {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		height: 25%;
+		padding: 15px;
+		p {
+			margin: 0;
+			font-weight: 400;
+		}
+		a {
+			display: block;
+			padding-top: 15px;
+			color: $bakery;
+			font-size: 24px;
+			font-weight: 900;
+			text-transform: uppercase;
+		}
+	}
+	#profile-nav {
+		height: 25%;
+		ul {
+			height: 100%;
+			padding: 1px;
+			li {
+				position: relative;
+				height: 100%;
+				padding: 1px;
+				a {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					background: $bakery;
+					color: white;
+					font-size: 24px;
+					font-weight: 900;
+					text-align: center;
+					span {
+						position: relative;
+						z-index: 2;
+					}
+					svg {
+						@include transition(.15s ease-in-out);
+						display: block;
+						position: absolute;
+						z-index: 1;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						path {
+							@include svg-stroke($charcoal, 3);
+							@include transition(.15s ease-in-out);
+							@include opacity(.2);
+						}
+					}
+				}
+				a.active, a:active, a:hover {
+					svg {
+						background: rgba($charcoal,.2);
+						path {
+							@include opacity(.4);
+							stroke: $bakery;
+						}
+					}
+				}
+			}
+		}
+	}
+	#info {
+		#info-content {
+			height: calc(100% - 50px);
+			#info-map {
+				height: 40%;
+				background: url(../../img/map-small.png) center center / cover;
+				-webkit-filter: grayscale(.5);
+				filter: grayscale(.5);
+			}
+			#info-directions, #info-hours {
+				@include flex;
+				height: 30%;
+				svg {
+					display: block;
+					margin-left: 8px;
+					margin-top: 8px;
+					width: 50px;
+					height: 50px;
+					path {
+						@include svg-stroke($bakery, 5);
+					}
+				}
+				div:last-child {
+					h1 {
+						font-size: 24px;
+						font-weight: 900;
+						margin-top: 8px;
+						margin-left: 8px;
+						line-height: 50px;
+						text-transform: uppercase;
+					}
+				}
+			}
+			#info-hours {
+				border-top: 1px solid $bakery;
+			}
+		}
+	}
+	#menu {
+		#menu-content {
+			height: calc(100% - 50px);
+			overflow-y: auto;
+			ul {
+				height: 100%;
+				padding: 1px;
+				li {
+					height: 25%;
+					padding: 1px;
+					a {
+						@include transition(.15s ease-in-out);
+						display: block;
+						position: relative;
+						width: 100%;
+						height: 100%;
+						background-size: cover;
+						span {
+							@include transition(.15s ease-in-out);
+							@include opacity(0);
+							@include flex;
+							@include flex-center;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background: rgba($bakery,.8);
+							font-size: 24px;
+							font-weight: 900;
+							text-transform: uppercase;
+						}
+					}
+					a.active, a:active, a:hover {
+						span {
+							@include opacity(1);
+						}
+					}
+					.menu-desc {
+						display: none;
+						text-align: center;
+						img {
+							display: block;
+							width: 100%;
+						}
+						h1 {
+							padding: 15px 15px 0;
+							color: $bakery;
+							font-size: 32px;
+							font-weight: 900;
+							text-transform: uppercase;
+						}
+						p {
+							margin: 10px 15px 15px;
+							font-weight: 400;
+						}
+					}
+					&.active {
+						width: 100%;
+						height: auto;
+						a {
+							display: none;
+						}
+						.menu-desc {
+							display: block;
+						}
+					}
+					&.inactive {
+						a {
+							@include opacity(.5);
+						}
+						a.active, a:active, a:hover {
+							@include opacity(1);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+/* ---------- CREDIBILITY & RANKING */
+// CREDIBILITY
+.credibility-view {
+	header {
+		position: relative;
+	}
+	#credit-slider {
+		position: absolute;
+		bottom: 0;
+		height: calc(100% - 50px);
+		width: 100%;
+		ul {
+			@include listless;
+			@include flex;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			overflow-x: auto;
+			li {
+				font-size: 14px;
+				font-weight: 400;
+				width: 100%;
+				text-align: center;
+				a {
+					display: block;
+					width: 92px;
+					padding-bottom: 10px;
+					border-bottom: 5px solid transparent;
+					color: white;
+					.credit-label {
+						font-weight: 400;
+					}
+					.credit-icon {
+						@include round;
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+						margin: 0 auto 10px;
+						width: 50px;
+						height: 50px;
+						background: $slate;
+						svg {
+							@include svg-stroke(white, 4);
+							width: 100%;
+							height: 100%;
+							padding: 8px;
+						}
+					}
+				}
+				#{$links} {
+					border-bottom: 5px solid $cerise;
+					color: $cerise;
+					.credit-icon {
+						background: $cerise;
+					}
+				}
+				a.active, a:active {
+					@include opacity(.75);
+				}
+			}
+			.active {
+				&#credit-exp {
+					a {
+						border-bottom: 5px solid $shamrock;
+						color: $shamrock;
+						.credit-icon {
+							background: $shamrock;
+						}
+					}
+				}
+				&#credit-grades {
+					a {
+						border-bottom: 5px solid $moola;
+						color: $moola;
+						.credit-icon {
+							background: $moola;
+						}
+					}
+				}
+				&#credit-fb {
+					a {
+						border-bottom: 5px solid $facebook-light;
+						color: $facebook-light;
+						.credit-icon {
+							background: $facebook-light;
+						}
+					}
+				}
+				&#credit-phone {
+					a {
+						border-bottom: 5px solid $eggplant;
+						color: $eggplant;
+						.credit-icon {
+							background: $eggplant;
+						}
+					}
+				}
+				&#credit-email {
+					a {
+						border-bottom: 5px solid $lake;
+						color: $lake;
+						.credit-icon {
+							background: $lake;
+						}
+					}
+				}
+			}
+			#credit-exp {
+				#{$links} {
+					border-bottom: 5px solid $shamrock;
+					color: $shamrock;
+					.credit-icon {
+						background: $shamrock;
+					}
+				}
+			}
+			#credit-grades {
+				#{$links} {
+					border-bottom: 5px solid $moola;
+					color: $moola;
+					.credit-icon {
+						background: $moola;
+					}
+				}
+			}
+			#credit-fb {
+				#{$links} {
+					border-bottom: 5px solid $facebook-light;
+					color: $facebook-light;
+					.credit-icon {
+						background: $facebook-light;
+					}
+				}
+			}
+			#credit-phone {
+				#{$links} {
+					border-bottom: 5px solid $eggplant;
+					color: $eggplant;
+					.credit-icon {
+						background: $eggplant;
+					}
+				}
+			}
+			#credit-email {
+				#{$links} {
+					border-bottom: 5px solid $lake;
+					color: $lake;
+					.credit-icon {
+						background: $lake;
+					}
+				}
+			}
+		}
+	}
+	#credibility-content-wrapper {
+		position: relative;
+		background: $slate;
+		height: calc(100% / 3 * 2);
+		text-align: center;
+		.credit-content-slide {
+			display: none;
+			width: 100%;
+			height: 100%;
+			&.active {
+				display: block;
+			}
+			.semi-opaque {
+				@include opacity(.5);
+			}
+			.semi-opaque:active, .semi-opaque.active {
+				@include opacity(1);
+			}
+			> div {
+				height: 100%;
+				.credit-body {
+					height: calc(100% - 34px - 64px - 50px);
+					&:not(ul) {
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+					}
+					p {
+						margin: 0;
+						padding: 15px;
+						font-size: 20px;
+					}
+					li {
+						display: block;
+						text-align: left;
+						height: 65px;
+						a {
+							.list-item-detail {
+								h2 {
+									font-size: 20px;
+									font-weight: 600;
+								}
+								span {
+									display: block;
+									font-size: 16px;
+									font-weight: 400;
+								}
+							}
+							svg {
+								@include svg-stroke-width(3);
+								padding: 15px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:375px) {
+	.credibility-view {
+		#credit-slider {
+			ul {
+				li {
+					font-size: 16px;
+					a {
+						width: 108px;
+						.credit-icon {
+							width: 60px;
+							height: 60px;
+						}
+					}
+				}
+			}
+		}
+		#credibility-content-wrapper {
+			.credit-content-slide  {
+				> div {
+					.credit-body {
+						p {
+							font-size: 22px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:414px) {
+	.credibility-view {
+		#credit-slider {
+			ul {
+				li {
+					font-size: 18px;
+					a {
+						display: block;
+						width: 118px;
+						.credit-icon {
+							width: 70px;
+							height: 70px;
+						}
+					}
+				}
+<<<<<<< HEAD
+			}
+		}
+	}
+}
+
+// GURU RANKING
+.guru-view {
+	header {
+		&::before {
+			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
+		}
+	}
+	#guru-home-content {
+		overflow: none!important;
+		padding-bottom: 50px;
+	}
+	#guru-ranking {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		position: relative;
+		z-index: 9;
+		width: 100%;
+		height: calc(100% - 20px);
+		margin-top: -20px;
+		padding: 0 30px;
+		> div {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			-webkit-transform: scale(.8);
+			-moz-transform: scale(.8);
+			-ms-transform: scale(.8);
+			-o-transform: scale(.8);
+			transform: scale(.8);
+		}
+		.progressbar-text {
+			display: none;
+		}
+		svg {
+			@include round;
+			* {
+				stroke-linecap: round;
+			}
+		}
+		#guru-chart {
+			position: relative;
+			width: 130px;
+			#percentile {
+				@include center-xy;
+				#percentile-ranking {
+					position: relative;
+					font-size: 44px;
+					font-weight: 600;
+					line-height: 1;
+					text-align: center;
+
+					&::after {
+						content: "th";
+						display: block;
+						position: absolute;
+						top: -1px;
+						right: -1px;
+						font-size: 12px;
+						font-weight: 400;
+						line-height: 28px;
+						text-transform: uppercase;
+					}
+				}
+				#percentile-label {
+					font-size: 12px;
+					font-weight: 400;
+					letter-spacing: 1px;
+					line-height: 15px;
+					text-transform: uppercase;
+				}
+			}
+		}
+		#guru-stats {
+			padding-left: 30px;
+			width: calc(100% - 130px);
+			h2 {
+				margin: 0 0 5px;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+			.stats-bar {
+				line-height: 10px;
+				font-size: 10px;
+				height: 10px;
+				margin-bottom: 7px;
+				svg {
+					height: 10px;
+				}
+			}
+		}
+	}
+	.guru-tip-of-day-slide-box {
+		height: calc(100% - 36px);
+		.card {
+			margin: 15px!important;
+			height: calc(100% - 60px);
+			padding: 0!important;
+			background: $slate;
+			border-radius: 5px;
+			overflow: hidden;
+=======
 				a:hover {
 					background: $smoke;
 					color: $azure;
@@ -693,13 +4055,76 @@ main, #top-bar, .desktop-only, .desktop-search {
 .onboarding {
 	header {
 		h1:not(header .header-nav a h1) {
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 			text-align: center;
+			.card-content {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				padding: 15px;
+				height: calc(100% - 64px);
+				svg {
+					display: none;
+					width: 100%;
+					height: 100%;
+					max-height: 70px;
+					margin-bottom: 15px;
+				}
+				h2 {
+					font-size: 24px;
+					font-weight: 600;
+				}
+				p {
+					margin: 10px 0 0;
+					font-size: 18px;
+				}
+			}
+			button {
+				border-radius: 0 0 5px 5px;
+			}
+		}
+		.slider-pager {
+			bottom: 15px;
 		}
 	}
-	.onboarding-list {
-		height: calc(100% / 3 * 2);
-		overflow: auto;
+	#btn-launch-profile:active {
+		@include opacity(1);
+		background: $shamrock!important;
 	}
+<<<<<<< HEAD
+	#btn-launch-profile + .guru-tip-of-day-slide-box {
+		height: calc(100% - 50px);
+	}
+}
+@media screen and (min-height:540px) {
+	.guru-view {
+		#guru-ranking {
+			> div {
+				-webkit-transform: none;
+				-moz-transform: none;
+				-ms-transform: none;
+				-o-transform: none;
+				transform: none;
+			}
+			#guru-stats {
+				.stats-bar {
+					margin-bottom: 9px;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:568px) {
+	.guru-view {
+		.guru-tip-of-day-slide-box {
+			.card {
+				.card-content {
+					h2 {
+						font-size: 28px;
+					}
+					p {
+						font-size: 22px;
+=======
 }
 
 
@@ -973,12 +4398,25 @@ main, #top-bar, .desktop-only, .desktop-search {
 								}
 							}
 						}
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 					}
 				}
 			}
 		}
 	}
 }
+<<<<<<< HEAD
+@media screen and (min-height:640px) {
+	.guru-view {
+		.guru-tip-of-day-slide-box {
+			.card {
+				.card-content {
+					svg {
+						display: block;
+					}
+				}
+			}
+=======
 @media screen and (min-width:700px) and (min-height:575px) {
 	#home-container {
 		margin-top: 64px;
@@ -1058,16 +4496,21 @@ main, #top-bar, .desktop-only, .desktop-search {
 	section {
 		header {
 			height: calc(100% / 6);
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 		}
 	}
-	button {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		background: white;
-		color: $azure;
-		font-weight: 900;
-		text-transform: uppercase;
+}
+@media screen and (min-width:414px) {
+	.guru-view {
+		#guru-ranking {
+			> div {
+				-webkit-transform: scale(1.2);
+				-moz-transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-o-transform: scale(1.2);
+				transform: scale(1.2);
+			}
+		}
 	}
 	.onboarding-search-container {
 		ul {
@@ -1119,49 +4562,45 @@ main, #top-bar, .desktop-only, .desktop-search {
 		}
 	}
 }
-#grade-options {
+
+
+
+/* ---------- OFFLINE */
+#offline {
 	@include flex;
-	width: 100%;
-	padding: 15px 7.5px;
-	li {
-		position: relative;
-		margin: 0 7.5px;
-		width: 20%;
-		svg {
-			position: relative;
-			z-index: -1;
-			display: block;
-			width: 100%;
-			height: 100%;
+	@include flex-center;
+	padding: 15px;
+	background: $smoke;
+	color: $charcoal;
+	text-align: center;
+	> div {
+		width: 100%;
+	}
+	svg {
+		width: 100%;
+		max-width: 75%;
+		#phone {
+			@include animation-name(phone-hover);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
 		}
-		input {
-			@include opacity(0);
-			position: absolute;
-			z-index: 99;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			cursor: pointer;
+		#shadow {
+			@include animation-name(shadow-hover);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
+			@include scale(0.98);
+			@include transform-origin(center center);
 		}
-		label {
-			@include flex;
-			@include flex-center;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: white;
-			color: $azure;
-			font-size: 24px;
-			font-weight: 600;
-		}
-		input:checked + label {
-			background: rgba(white,.5);
-			color: white;
+		#sweat {
+			@include animation-name(sweat-roll);
+			@include animation-duration(2s);
+			@include animation-iteration-count(infinite);
 		}
 	}
+<<<<<<< HEAD
+	svg + div {
+		margin-top: 30px;
+=======
 }
 .course-input-form {
 	padding: 0 15px;
@@ -1180,20 +4619,18 @@ main, #top-bar, .desktop-only, .desktop-search {
     		width: auto;
     		top: 33%;
 		}
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 		h1 {
-			font-weight: 600;
-			line-height: 34px;
-			text-transform: uppercase;
-		}
-		input {
-			background: transparent;
 			font-size: 24px;
-			font-weight: 900;
-			text-align: right;
-			color: white;
-			@include placeholder {
-				color: rgba(white,.5);
-			}
+			font-weight: 600;
+		}
+		p {
+			margin: 10px 0 15px;
+			font-weight: 300;
+		}
+		button {
+			font-size: 16px;
+			padding: 5px 15px;
 		}
 	}
 }
@@ -1279,6 +4716,117 @@ main, #top-bar, .desktop-only, .desktop-search {
 	}
 }
 
+<<<<<<< HEAD
+@include keyframes(phone-hover) {
+	0% {
+		@include translate-y(0);
+	}
+	50% {
+		@include translate-y(2px);
+	}
+	100% {
+		@include translate-y(0);
+	}
+}
+
+@include keyframes(shadow-hover) {
+	0% {
+		@include scale(0.9);
+	}
+	50% {
+		@include scale(1);
+	}
+	100% {
+		@include scale(0.9);
+	}
+}
+
+@include keyframes(sweat-roll) {
+	0% {
+		@include translate-y(5px);
+	}
+	50% {
+		@include translate-y(10px);
+	}
+	100% {
+		@include translate-y(5px);
+	}
+}
+
+
+
+
+
+/* ---------- SAMIR */
+.smaller-list-font {
+	font-size: 85%;
+}
+.content {
+	height: 100%;
+	&.footer-exists {
+		padding-bottom: 64px;
+	}
+}
+
+/**Hide intercom shit**/
+#intercom-launcher {
+	display:none !important;
+}
+
+.intercom-parent-container {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	height: 100%;
+	margin-top: -54px;
+}
+
+.stats-small {
+	font-size: 12px;
+	font-weight: 700;
+	margin: 0.66em;
+	text-transform: uppercase;
+}
+
+.stats-large {
+	font-size: 36px;
+	font-weight: 700;
+}
+
+.uguru-view.faq-modal {
+    background-color:whitesmoke !important;
+    z-index: 1000;
+    header {
+        overflow:hidden;
+    }
+    background-color:white;
+    .ion-chevron-down {
+        position:absolute;
+        top:10px;
+        left:10px;
+    }
+}
+
+/*Resume samir hacks*/
+.major-input-close {
+	position: absolute;
+    right: 10px;
+    top: 34%;
+}
+
+//platform specific ios
+body.platform-ios {
+	background-color:transparent;
+	background:transparent;
+	ion-side-menus.root-ion-side-menus.view {
+		background-color:transparent;
+		.home-view {
+			background-color: white;
+			background:white;
+			padding-top:20px;
+			section, #student-home-map-container {
+				top:20px !important;
+=======
 /* ---------- DEMOGRAPHIC */
 #demographic {
 	background: $smoke;
@@ -1378,15 +4926,42 @@ main, #top-bar, .desktop-only, .desktop-search {
 			height: calc(100% - 230px);
 			h1 {
 				font-size: 48px!important;
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 			}
 		}
 		#demo-grid {
 			width: 100%;
 		}
 	}
+	.modal-wrapper header,
+	.header-nav,
+	.close-popup-link,
+	#guru-home h1 {
+		padding-top:20px;
+	}
+	.modal-wrapper {
+		iframe {
+			height:calc(100% - 70px) !important;
+		}
+		.support-modal ion-content {
+			margin-top:70px;
+		}
+	}
 }
 
+.android-access-edge-case {
+	bottom:64px;
+	position:absolute;
+}
 
+<<<<<<< HEAD
+.onboarding-search {
+	padding: 0 10px;
+}
+
+#university-input {
+	margin: 10px 0px;
+=======
 #intercom-container {
 	display:none !important;
 }
@@ -1394,4 +4969,5 @@ main, #top-bar, .desktop-only, .desktop-search {
 
 .university-close-icon {
 	z-index:100 !important;
+>>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 }
