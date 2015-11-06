@@ -1,0 +1,33 @@
+@import 'mixin';
+
+body {
+	background: $smoke;
+}
+
+#top {
+	#top-logo-standalone {
+		margin: 10px auto!important;
+		width: 42px;
+		height: 42px;
+	}
+	.btn-ghost {
+		color: $slate!important;
+		border-color: $slate!important;
+		&:hover, &:focus, &:active {
+			color: white!important;
+			background: $slate!important;
+		}
+	}
+}
+#intercom-container .intercom-launcher-button {
+	border: 2px solid $slate!important;
+	&:after {
+		color: $slate!important;
+	}
+	&:hover, &:active, &:focus {
+		background: $slate!important;
+		&:after {
+			color: white!important;
+		}
+	}
+}
