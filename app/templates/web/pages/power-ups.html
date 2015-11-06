@@ -1,0 +1,90 @@
+{% extends 'web/layout/base.html' %}
+{% block pagetype %}page-powerups{% endblock %}
+
+{% block title_text %}
+Uguru Home
+{% endblock %}
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/style.css"/>
+{% endblock %}
+{% block powerups_scripts %}
+<link rel="stylesheet" href="/static/web/css/powerups.css"/>
+{% endblock %}
+
+{% block logo %}
+    <img id="top-logo-standalone" src="/static/web/svg/logo-slate.svg" alt="uguru"/>
+{% endblock %}
+{% block content %}
+<!-- Mobile Version-->
+<!-- <div id="mobile-start"></div> -->
+
+
+<section id="main full-xy">
+    <!-- Demo purpose only-->
+    <style>
+        .temp {
+            position:absolute;
+            bottom:0;
+            left:0;
+            right:0;
+            height:200px;
+            width:200px;
+            background-color:black;
+        }
+
+        .temp.full.show {
+            opacity:1;
+            visibility: visible;
+        }
+
+        .temp.full {
+            height:100%;
+            width:100%;
+            z-index:1000;
+            opacity:0;
+            visibility: hidden;
+        }
+        .white {
+            color:white;
+        }
+        #temp-2 a.close-button {
+            position:absolute;
+            bottom:0;
+            padding:20px;
+            right:0;
+        }
+    </style>
+
+
+    <!-- Desktop Version-->
+    <a id='temp-1' class='temp'>
+    </a>
+    <div id='temp-2' class='temp full'>
+        <a class='close-button white' id='close-button'>
+            Close button
+        </a>
+    </div>
+
+</section>
+{% endblock %}
+
+{% block footer_scripts %}
+<script>
+
+    var smallBlackBox = document.querySelector('#temp-1');
+
+    var largeBlackBox = document.querySelector('#temp-2');
+
+    smallBlackBox.addEventListener('click', function() {
+
+        var closeCTAModal = cta(smallBlackBox, largeBlackBox, function() {
+            largeBlackBox.classList.add('show');
+            document.querySelector('#close-button').addEventListener('click', function() {
+                largeBlackBox.classList.remove('show');
+                console.log('closing..')
+                closeCTAModal();
+            })
+        });
+    })
+</script>
+{% endblock %}

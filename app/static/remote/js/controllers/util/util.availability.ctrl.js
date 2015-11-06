@@ -327,7 +327,6 @@ angular.module('uguru.util.controllers')
         $scope.request.calendar_edit = true;
         window.location.hash = '';
       }
-      $scope.$apply();
     }
 
     $scope.formatMinutes = function(minutes) {

@@ -12,12 +12,142 @@
 		height: 50px;
 		width: 50px;
 	}
-	nav {
-		height: 64px;
-		background: $bakery;
-		svg {
+	.desktop-header {
+		@include center-x;
+		@include flex;
+		top: 30px;
+		height: 50px;
+		width: 100%;
+		max-width: 1200px;
+		a {
+			display: block;
+			width: 50%;
 			height: 100%;
-			padding: 20px 15px 15px;
+			svg {
+				@include svg-stroke(white, 5);
+				height: 100%;
+				width: auto;
+			}
+			&:last-child {
+				text-align: right;
+			}
+		}
+	}
+	#top-bar {
+		height: 64px;
+		background: $gabrielle;
+		padding: 0 15px;
+		div {
+			@include flex;
+			@include flex-center-vertical;
+			position: relative;
+			margin: 0 auto;
+			width: 100%;
+			max-width: 1200px;
+			height: 100%;
+			#top-logo {
+				display: block;
+				width: calc(100% - 64px - 90px);
+				height: 100%;
+				svg {
+					height: 100%;
+					padding: 20px 0 15px;
+				}
+			}
+			#top-settings {
+				@include flex;
+				@include flex-center;
+				width: 90px;
+				height: 64px;
+				img {
+					@include round;
+					width: 40px;
+					height: 40px;
+					border: 3px solid white;
+				}
+				svg {
+					@include svg-stroke(white, 14);
+					width: 50px;
+					height: 50px;
+					padding: 15px;
+				}
+			}
+			#top-request {
+				display: block;
+				width: 64px;
+				height: 64px;
+				background: rgba(white,.3);
+				svg {
+					@include svg-stroke(white, 8);
+					width: 100%;
+					height: 100%;
+					padding: 15px;
+				}
+			}
+			#top-menu-links {
+				position: absolute;
+				z-index: 999;
+				right: 64px;
+				top: 64px;
+				background: $gabrielle;
+				height: 0;
+				overflow: hidden;
+				&.active {
+					height: auto;
+					overflow: visible;
+				}
+				ul {
+					background: rgba(white,.3);
+					min-width: 250px;
+					li {
+						a {
+							@include flex;
+							@include flex-center;
+							padding: 15px;
+							height: 50px;
+							font-size: 18px;
+							font-weight: 600;
+							text-transform: uppercase;
+							span {
+								display: block;
+								text-align: left;
+								width: calc(100% - 35px);
+							}
+							svg {
+								@include svg-stroke(white, 5);
+								display: block;
+								padding: 5px;
+								height: 50px;
+								width: 50px;
+								margin-right: -15px;
+							}
+							&:hover, &:active, &:focus {
+								background: white;
+								span {
+									color: $gabrielle;
+								}
+								svg {
+									stroke: $gabrielle;
+								}
+							}
+						}
+						&:last-child {
+							a {
+								background: rgba(white,.75);
+								span {
+									color: $gabrielle;
+								}
+								svg {
+									stroke: $gabrielle;
+								}
+							}
+							&:hover, &:active, &:focus {
+								background: white;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	.main {
@@ -26,6 +156,48 @@
 		&.default {
 			width: 100%;
 			max-width: 1200px;
+		}
+	}
+	.progress-bottom {
+		@include center-x;
+		bottom: 0;
+		height: 128px;
+		width: 100%;
+		max-width: 960px;
+		background: $gabrielle;
+		.progress {
+			border-radius: 0;
+			&::-webkit-progress-value, span {
+				border-radius: 0 1000px 1000px 0;
+			}
+			&::-moz-progress-bar {
+				border-radius: 0 1000px 1000px 0;
+			}
+		}
+		div:last-child {
+			@include flex;
+			@include flex-center;
+			padding: 15px;
+			height: calc(100% - 10px);
+			> span {
+				width: 50%;
+				font-size: 32px;
+				font-weight: 600;
+				&:first-child {
+					@include flex;
+					@include flex-center-vertical;
+					img {
+						@include round;
+						margin-right: 15px;
+						display: inline-block;
+						width: 64px;
+						height: 64px;
+					}
+				}
+				&:last-child {
+					text-align: right;
+				}
+			}
 		}
 	}
 }
@@ -61,11 +233,7 @@
 					width: 100px;
 					height: 100px;
 					path {
-						fill: none;
-						stroke: white;
-						stroke-width: 3px;
-						stroke-linecap: round;
-						stroke-linejoin: round; 
+						@include svg-stroke(white, 3);
 					}
 				}
 			}
@@ -112,11 +280,7 @@
 						width: 32px;
 						height: 32px;
 						path {
-							fill: none;
-							stroke: white;
-							stroke-width: 8px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
+							@include svg-stroke(white, 8);
 						}
 					}
 				}
@@ -136,52 +300,8 @@
 					height: 40px;
 					margin-bottom: 5px;
 					path {
-						fill: none;
-						stroke: rgba($taupe,.5);
-						stroke-width: 8px;
-						stroke-linecap: round;
-						stroke-linejoin: round;
+						@include svg-stroke(rgba($taupe,.5), 8);
 					}
-				}
-			}
-		}
-	}
-	#credit-progress {
-		@include center-x;
-		bottom: 0;
-		height: 128px;
-		width: 960px;
-		background: $bakery;
-		.progress {
-			border-radius: 0;
-			&::-webkit-progress-value, span {
-				border-radius: 0 1000px 1000px 0;
-			}
-			&::-moz-progress-bar {
-				border-radius: 0 1000px 1000px 0;
-			}
-		}
-		div:last-child {
-			@include flex;
-			@include flex-center;
-			padding: 15px;
-			height: calc(100% - 10px);
-			> span {
-				width: 50%;
-				font-weight: 600;
-				&:first-child {
-					@include flex;
-					@include flex-center-vertical;
-					img {
-						@include round;
-						margin-right: 15px;
-						display: inline-block;
-						width: 64px;
-						height: 64px;
-					}
-				}
-				&:last-child {
-					text-align: right;
 				}
 			}
 		}
@@ -190,19 +310,23 @@
 		@include flex;
 		@include flex-center;
 		height: calc(100% - 64px - 128px);
+		padding: 7.5px;
 		ul {
-			width: 1020px;
+			width: 100%;
+			height: 100%;
 			li {
-				padding: 30px;
+				padding: 7.5px;
+				height: 50%;
+				max-height: 325px;
 				a {
 					@include flex;
 					@include flex-wrap;
 					@include flex-center;
 					position: relative;
 					width: 100%;
-					height: 300px;
+					height: 100%;
 					background: $taupe;
-					border-radius: 5px;
+					border-radius: 2px;
 					overflow: hidden;
 					&::before {
 						@include transition(.15s ease-in-out);
@@ -215,7 +339,7 @@
 						left: 0;
 						width: 100%;
 						height: 100%;
-						border-radius: 5px;
+						border-radius: 2px;
 						background: white;
 					}
 					&:hover {
@@ -232,17 +356,13 @@
 						width: 100%;
 						height: 20px;
 						background: $slate;
-						border-radius: 0 0 5px 5px;
+						border-radius: 0 0 2px 2px;
 					}
 					svg {
-						width: 150px;
-						height: 150px;
+						width: 50%;
+						height: 50%;
 						path {
-							fill: none;
-							stroke: white;
-							stroke-width: 3px;
-							stroke-linecap: round;
-							stroke-linejoin: round; 
+							@include svg-stroke(white, 3);
 						}
 					}
 					span {
@@ -257,7 +377,6 @@
 					}
 				}
 				&.complete {
-					@include opacity(.4);
 					a::after {
 						background: white;
 					}
@@ -281,9 +400,35 @@
 		}
 	}
 }
+@media screen and (min-width:960px) {
+	#desktop-credibility {
+		.main {
+			ul {
+				max-width: 975px;
+			}
+		}
+	}
+}
+@media screen and (min-height:857px) {
+	#desktop-credibility {
+		.main {
+			ul {
+				height: auto;
+				li {
+					height: 310px;
+				}
+			}
+		}
+	}
+}
 
 /* ---------- LOGIN */
 #desktop-login {
+	#main-logo {
+		path {
+			fill: $shamrock!important;
+		}
+	}
 	.main {
 		background: $smoke;
 		.desktop-forms-container {
@@ -298,8 +443,8 @@
 	}
 	aside {
 		&::after {
-			background: url(../../img/temp-login.jpg) no-repeat center center,
-						url(/static/remote/img/temp-login.jpg) no-repeat center center;
+			background: url(../../img/temp-login.jpg) no-repeat center center / cover,
+						url(/static/remote/img/temp-login.jpg) no-repeat center center / cover;
 		}
 	}
 }
@@ -315,8 +460,8 @@
 	}
 	aside {
 		&::after {
-			background: url(../../img/temp-signup.jpg) no-repeat center center,
-						url(/static/remote/img/temp-signup.jpg) no-repeat center center;
+			background: url(../../img/temp-signup.jpg) no-repeat center center / cover,
+						url(/static/remote/img/temp-signup.jpg) no-repeat center center / cover;
 		}
 	}
 }
@@ -326,9 +471,10 @@
 		@include flex;
 		@include flex-center;
 		height: 100%;
-		width: 75%;
+		width: 100%;
 		.desktop-forms-container {
-			width: 40%;
+			width: 100%;
+			max-width: 600px;
 			> div {
 				padding: 30px;
 				h1 {
@@ -336,6 +482,19 @@
 					font-size: 36px;
 					font-weight: 600;
 					text-align: center;
+				}
+				p {
+					color: $slate;
+					font-size: 18px;
+					font-weight: 400;
+					text-align: center;
+					margin-top: 5px;
+					a {
+						color: $shamrock;
+					}
+					a:active, a:focus, a:hover, a.active, a.activated {
+						color: $taupe;
+					}
 				}
 				.desktop-login-buttons {
 					@include flex;
@@ -354,11 +513,10 @@
 		}
 	}
 	aside {
-		@include flex;
 		@include flex-center;
+		display: none;
 		position: relative;
 		height: 100%;
-		width: 25%;
 		overflow: hidden;
 		svg {
 			@include center-x;
@@ -394,6 +552,35 @@
 		}
 	}
 }
+@media screen and (min-width:1280px) {
+	.desktop-forms {
+		#main-logo {
+			display: none!important;
+		}
+		.main {
+			width: 70%;
+			.desktop-forms-container {
+				p {
+					display: none;
+				}
+			}
+		}
+		aside {
+			@include flex;
+			width: 30%;
+		}
+	}
+}
+@media screen and (min-width:1440px) {
+	.desktop-forms {
+		.main {
+			width: 75%;
+		}
+		aside {
+			width: 25%;
+		}
+	}
+}
 
 /* ---------- DESKTOP LISTS */
 .desktop-search {
@@ -422,10 +609,10 @@
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
-				margin: 0 -15px;
+				margin: 0 -7.5px;
 				li {
-					width: 25%;
-					padding: 15px;
+					width: calc(100% / 3);
+					padding: 7.5px;
 					a {
 						@include transition(.15s ease-in-out);
 						display: block;
@@ -460,6 +647,31 @@
 		}
 	}
 }
+@media screen and (min-width:1024px) {
+	.desktop-search {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					margin: 0 -15px;
+					li {
+						width: 25%;
+						padding: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	.desktop-search {
+		@include flex-bottom;
+	}
+}
+@media screen and (min-height:800px) {
+	.desktop-search {
+		@include flex-center;
+	}
+}
 
 /* ---------- GURU ONBOARDING */
 .desktop-guru-onboarding {
@@ -467,12 +679,15 @@
 		.desktop-search-list {
 			.desktop-card-list {
 				li {
+					display: none;
 					a {
 						@include flex;
+						@include flex-wrap;
 						@include flex-center;
-						height: 150px;
+						height: 84px;
 						padding: 15px;
 						border-bottom: 10px solid rgba(white,.3);
+						font-size: 16px;
 						font-weight: 600;
 						line-height: 1.25;
 						text-align: center;
@@ -484,17 +699,17 @@
 						@include center-xy;
 						width: 100%;
 						height: 100%;
-						padding: 30px;
 						background: rgba($campus,.8);
 						border-radius: 2px;
 						path {
-							fill: none;
-							stroke: white;
-							stroke-width: 8px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
+							@include svg-stroke(white, 8);
 						}
 					}
+				}
+				li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4),
+				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8),
+				li:nth-child(9), li:nth-child(10), li:nth-child(11), li:nth-child(12) {
+					display: block;
 				}
 				.selected {
 					a {
@@ -505,6 +720,77 @@
 		}
 	}
 }
+@media screen and (min-height:750px) and (min-width: 820px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							font-size: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 100px;
+						}
+						a svg, label svg {
+							padding: 15px;
+						}
+					}
+					li:nth-child(13), li:nth-child(14), li:nth-child(15), li:nth-child(16) {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:952px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 125px;
+							font-size: 24px;
+						}
+						a svg, label svg {
+							padding: 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // COURSES
 #desktop-courses {
 	.main {
@@ -519,20 +805,349 @@
 						}
 					}
 					a {
-						font-size: 20px;
+						font-size: 20px!important;
 						text-align: center;
 						span {
 							display: block;
 							width: 100%;
 							text-align: center;
 						}
-						.course-name {
-							font-size: 14px;
-						}
 						.course-title {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	#desktop-courses {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.course-name {
+								font-size: 14px!important;
+							}
+							.course-title {
+								@include flex;
+								@include flex-center;
+								height: 84px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// SKILLS
+#desktop-skills {
+	@include flex-center;
+	padding-top: 50px;
+	.main {
+		#skills-list {
+			.desktop-card-list {
+				li {
+					.skill-item-content {
+						display: none;
+						background: $charcoal;
+						h1 {
+							text-align: center;
+							font-size: 64px;
+							font-weight: 900;
+							text-transform: lowercase;
+							margin-bottom: 30px;
+						}
+						ul {
+							@include listless;
 							@include flex;
+							@include flex-wrap;
 							@include flex-center;
-							height: 84px;
+							margin: -15px;
+							li {
+								position: relative;
+								width: 25%;
+								text-align: center;
+								label {
+									@include flex;
+									@include flex-center;
+									background: $slate;
+									color: white;
+									font-size: 24px;
+									font-weight: 600;
+									height: 84px;
+									border-bottom: 10px solid;
+									border-radius: 2px;
+									overflow: hidden;
+									svg {
+										@include opacity(0);
+										background: none;
+										width: calc(100% - 30px);
+										height: calc(100% - 30px);
+									}
+								}
+								input {
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									z-index: 9;
+									&:checked + label {
+										border-bottom-color: white!important;
+										color: rgba(white,.3);
+										svg {
+											@include opacity(1);
+										}
+									}
+								}
+							}
+						}
+					}
+					.skill-item-info {
+						border-radius: 2px;
+						overflow: hidden;
+						a {
+							height: 100px;
+							background-color: rgba($charcoal,.5);
+							div {
+								position: relative;
+								z-index: 99;
+								span {
+									display: block;
+									&.skill-label {
+										font-size: 24px;
+									}
+									&.skill-count {
+										font-size: 18px;
+									}
+								}
+							}
+						}
+						[class*="bg-"]::after {
+							@include opacity(.7);
+							position: absolute;
+							content: "";
+							width: 100%;
+							height: 100%;
+							left: 0;
+							top: 0;
+							border-radius: 2px;
+							overflow: hidden;
+						}
+						.important {
+							border-bottom-color: rgba(white,.8);
+						}
+						.bg-cerise.important::after {
+							background: $cerise;
+						}
+						.bg-orange.important::after {
+							background: $orange;
+						}
+						.bg-gold.important::after {
+							background: $gold;
+						}
+						.bg-moola.important::after {
+							background: $moola;
+						}
+						.bg-shamrock.important::after {
+							background: $shamrock;
+						}
+						.bg-azure.important::after {
+							background: $azure;
+						}
+						.bg-lake.important::after {
+							background: $lake;
+						}
+						.bg-eggplant.important::after {
+							background: $eggplant;
+						}
+					}
+					&.not-selected {
+						display: none;
+					}
+					&.selected {
+						@include center-xy;
+						width: 100%;
+						max-width: 1200px;
+						height: auto!important;
+						border: 0;
+						&::after, .skill-item-info {
+							display: none;
+						}
+						.skill-item-content {
+							display: block;
+						}
+					}
+					&:nth-child(1) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $cerise;
+									}
+									input:checked + label {
+										background: $cerise;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(2) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $orange;
+									}
+									input:checked + label {
+										background: $orange;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(3) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $gold;
+									}
+									input:checked + label {
+										background: $gold;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(4) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $moola;
+									}
+									input:checked + label {
+										background: $moola;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(5) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $shamrock;
+									}
+									input:checked + label {
+										background: $shamrock;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(6) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $azure;
+									}
+									input:checked + label {
+										background: $azure;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(7) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $lake;
+									}
+									input:checked + label {
+										background: $lake;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(8) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $eggplant;
+									}
+									input:checked + label {
+										background: $eggplant;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	#desktop-skills {
+		.main {
+			#skills-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 150px!important;
+						}
+						label {
+							height: 100px!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:952px) {
+	#desktop-skills {
+		padding-top: 0;
+		.main {
+			#skills-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 175px!important;
+						}
+						label {
+							height: 125px!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	#desktop-skills {
+		.main {
+			#skills-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 250px!important;
+						}
+						label {
+							height: 150px!important;
 						}
 					}
 				}
@@ -550,31 +1165,33 @@
 					a {
 						.school-icon {
 							@include round;
-							display: block;
-							margin: 0 auto;
-							padding: 15px 15px 10px;
-							width: 90px;
-							height: 85px;
+							display: none;
+							margin: 0 auto -5px;
+							padding: 15px 15px 0;
+							width: 80px;
+							height: 65px;
 						}
 						img {
 							@include round;
 							display: block;
-							width: 60px;
-							height: 60px;
+							width: 50px;
+							height: 50px;
 							background: white;
 						}
 						.school-name {
 							display: block;
-							padding: 0 15px 15px;
+							padding: 15px;
 							text-align: center!important;
 							.school-title {
-								@include flex;
-								@include flex-bottom;
+								display: block;
+								width: 100%;
 								margin-bottom: 3px;
-								font-size: 20px;
+								font-size: 18px;
 								font-weight: 600;
 								line-height: 1.25;
-								height: 50px;
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis;
 							}
 							.school-location {
 								display: block;
@@ -590,6 +1207,758 @@
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-icon {
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:800px) and (min-width:1280px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-icon {
+								width: 100px;
+								height: 85px;
+							}
+							img {
+								display: block;
+								width: 70px;
+								height: 70px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:1024px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-name {
+								.school-title {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- GURU ONBOARDING */
+#desktop-guru-onboarding {
+	@include flex;
+	@include flex-center;
+	.main {
+		height: auto;
+		.header {
+			text-align: center;
+			h1 {
+				font-size: 36px;
+				font-weight: 900;
+				text-transform: uppercase;
+			}
+			h2 {
+				font-size: 24px;
+				font-weight: 300;
+			}
+		}
+		#guru-onboarding-grid {
+			margin: 15px -7.5px;
+			li {
+				position: relative;
+				padding: 7.5px;
+				&:nth-child(1) a {
+					background: $moola;
+				}
+				&:nth-child(2) a {
+					background: $shamrock;
+				}
+				&:nth-child(3) a {
+					background: $azure;
+				}
+				&:nth-child(4) a {
+					background: $lake;
+				}
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					max-height: 270px;
+					border-radius: 2px;
+					> svg {
+						@include svg-stroke(white, 3);
+						@include opacity(0);
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						padding: 30px;
+						z-index: -10;
+					}
+					&.complete {
+						> svg {
+							@include opacity(1);
+							z-index: 99;
+						}
+						> span {
+							@include opacity(.2);
+						}
+					}
+					> span {
+						display: block;
+						span {
+							display: block;
+						}
+						span:first-child {
+							svg {
+								height: 175px;
+								width: 100%;
+								path {
+									 @include svg-stroke(white, 2);
+								}
+							}
+						}
+						span:last-child {
+							margin-top: -20px;
+							padding-bottom: 15px;
+							font-size: 20px;
+							font-weight: 700;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+		#guru-onboarding-progress {
+			padding-top: 25px;
+			.progress {
+				position: relative;
+				overflow: visible;
+				height: 10px;
+				ul {
+					@include center-y;
+					@include flex;
+					@include flex-center;
+					left: 0;
+					width: 100%;
+					li {
+						width: 25%;
+						span {
+							@include flex;
+							@include flex-center;
+							margin: 0 auto;
+							width: 70px;
+							height: 70px;
+							background: white;
+							font-size: 36px;
+							font-weight: 900;
+							border: 5px solid;
+						}
+						&:nth-child(1) span {
+							color: $moola;
+							border-color: $moola;
+						}
+						&:nth-child(2) span {
+							color: $shamrock;
+							border-color: $shamrock;
+						}
+						&:nth-child(3) span {
+							color: $azure;
+							border-color: $azure;
+						}
+						&:nth-child(4) span {
+							color: $lake;
+							border-color: $lake;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:800px) {
+	#desktop-guru-onboarding {
+		.main {
+			.header {
+				h1 {
+					font-size: 64px;
+				}
+				h2 {
+					font-size: 28px;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:980px) {
+	#desktop-guru-onboarding {
+		.main {
+			#guru-onboarding-grid {
+				li {
+					a {
+						> span {
+							span:last-child {
+								margin-top: -10px;
+								padding-bottom: 30px;
+								font-size: 28px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:850px) {
+	#desktop-guru-onboarding {
+		.main {
+			#guru-onboarding-grid {
+				margin-top: 60px;
+				margin-bottom: 60px;
+				li {
+					a {
+						height: 270px;
+						> span {
+							span:last-child {
+								margin-top: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- GURU PROFILE */
+#desktop-guru-profile {
+	@include flex;
+	@include flex-center;
+	background: $charcoal;
+	button {
+		&.activated, &:active, &:hover, &:focus {
+			color: $gabrielle!important;
+		}
+	}
+	#guru-profile-edit {
+		@include flex;
+		@include flex-center;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 64px;
+		background: $gabrielle;
+	}
+	#profile {
+		@include flex;
+		@include flex-center;
+		width: 100%;
+		max-width: 1200px;
+		height: 100%;
+		max-height: 700px;
+		background: rgba(white, .05s);
+		border-radius: 2px;
+		overflow: hidden;
+		#profile-desc {
+			@include flex;
+			@include flex-center;
+			width: calc(100% / 3);
+			height: 100%;
+			padding: 15px;
+			background: $gabrielle;
+			#profile-icon {
+				@include round;
+				margin: 15px auto;
+				display: block;
+				span {
+					display: block;
+					margin: 0 auto;
+					width: 100px;
+					height: 100px;
+					overflow: hidden;
+				}
+				img {
+					@include round;
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					height: 100px;
+					padding: 5px;
+					background: rgba(white, .5);
+				}
+				a {
+					position: relative;
+					display: block;
+					img {
+						@include opacity(.5);
+					}
+					h1 {
+						@include center-xy;
+						width: 100px;
+						font-weight: 700;
+						text-align: center;
+						text-transform: uppercase;
+					}
+				}
+				a.active, a.activated, a:active {
+					@include opacity(.75);
+				}
+			}
+			#profile-list {
+				text-align: center;
+				ul {
+					@include listless;
+					#profile-name {
+						h1 {
+							margin-top: 10px;
+							padding: 0 10px 3px;
+							color: white;
+							font-size: 28px;
+							font-weight: 600;
+							line-height: 1;
+							text-transform: uppercase;
+							span:last-child {
+								svg {
+									display: none;
+								}
+							}
+						}
+					}
+					#profile-school {
+						margin-bottom: 3px;
+						font-size: 20px;
+						font-weight: 400;
+						line-height: 1.2;
+					}
+					#profile-contact, #profile-intro {
+						margin: 15px 0;
+					}
+					#profile-intro {
+						position: relative;
+						&::after {
+							content: "\201D";
+							position: absolute;
+							display: block;
+							top: -15px;
+							right: 0;
+							color: rgba(white, .15);
+							font-size: 250px;
+							line-height: .8;
+						}
+					}
+					#profile-loc {
+						font-size: 16px;
+						#profile-loc-city:not(:empty)::after {
+							content: ", "
+						}
+					}
+				}
+			}
+		}
+		#profile-info {
+			width: calc(100% / 3 * 2);
+			height: 100%;
+			overflow: auto;
+			font-weight: 600;
+			font-size: 18px;
+			text-transform: uppercase;
+			h1 {
+				background: rgba($gabrielle,.4);
+				color: white;
+				padding: 10px;
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 2px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
+			}
+			svg {
+				@include svg-stroke(white, 3);
+			}
+			ul {
+				@include flex;
+				@include flex-wrap;
+				border-left: 1px solid rgba($gabrielle,.4);
+				border-right: 1px solid rgba($gabrielle,.4);
+				li {
+					width: 50%;
+					text-align: center;
+					padding: 15px;
+					border: 1px solid rgba($gabrielle,.4);
+					&:nth-last-child(2) {
+						border-bottom: 0!important;
+					}
+					&:last-child {
+						display: none;
+					}
+					&:nth-child(1), &:nth-child(2) {
+						border-top: 0;
+					}
+					&:nth-last-child(2),
+					&:nth-last-child(3):nth-child(odd),
+					&:last-child:nth-child(even) {
+						border-bottom: 0;
+					}
+					&:last-child:nth-child(even) {
+						display: block;
+					}
+				}
+			}
+			#profile-experiences {
+				ul {
+					li {
+						a {
+							height: auto;
+							background: none;
+						}
+					}
+				}
+			}
+			#profile-languages {
+				border-bottom: 2px solid rgba($gabrielle,.4);
+			}
+		}
+	}
+}
+
+/* ---------- ACCESS */
+#desktop-access {
+	@include flex;
+	@include flex-center;
+	background: $shamrock;
+	.main {
+		background: rgba(white,.2);
+		width: 100%;
+		max-width: 600px;
+		height: auto;
+		padding: 0;
+		#desktop-access-code {
+			padding: 30px;
+			svg {
+				height: 50px;
+				width: 100%;
+			}
+		}
+		#input-error-text {
+			text-align: center;
+			font-weight: 600;
+			padding: 15px 0;
+		}
+		#desktop-access-code-bar {
+			width: 100%;
+			text-align: center;
+		}
+	}
+}
+
+/* ---------- STUDENT HOME */
+#desktop-student-home {
+	background: $smoke;
+	.main {
+		@include flex;
+		@include flex-center;
+		.before-guru {
+			button {
+				@include round;
+				display: block;
+				margin: 15px;
+				width: 200px;
+				height: 200px;
+				font-weight: 600;
+				line-height: 1.2;
+				text-transform: uppercase;
+			}
+			.bg-lake-80p.activated, .bg-lake-80p:active {
+				@include opacity(1);
+				background: $lake!important;
+			}
+			.bg-campus-80p.activated, .bg-campus-80p:active {
+				@include opacity(1);
+				background: $campus!important;
+			}
+		}
+		#trending {
+			background: white;
+			h1 {
+				padding: 30px 15px 15px;
+				color: $slate;
+				font-size: 36px;
+				font-weight: 600;
+				text-align: center;
+			}
+			ul {
+				padding: 0 15px 30px;
+				button {
+					@include round;
+					display: block;
+					margin: 15px;
+					width: 150px;
+					height: 150px;
+					padding: 15px;
+					font-weight: 600;
+					line-height: 1.2;
+					text-transform: uppercase;
+					svg {
+						path {
+							stroke: white;
+						}
+					}
+				}
+				span  {
+					display: block;
+					font-weight: 600;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+/* ---------- UPLOAD PHOTO */
+#desktop-upload-photo {
+	@include flex;
+	@include flex-center;
+	.main {
+		@include flex;
+		@include flex-center;
+		#profile-icon {
+			position: relative;
+			h1 {
+				@include center-xy;
+				width: 100%;
+				padding: 15px;
+				margin-top: 0!important;
+				font-weight: 900;
+				text-align: center;
+				text-transform: uppercase;
+			}
+			img {
+				@include round;
+				@include opacity(.3);
+				width: 300px;
+				height: 300px;
+			}
+		}
+		#photo-list {
+			@include center-x;
+			bottom: 15px;
+			img {
+				max-width: 100px;
+			}
+		}
+	}
+}
+
+/* ---------- GURU HOME */
+#desktop-home {
+	.main {
+		h1 {
+			width: 100%;
+			padding: 10px;
+			background: white;
+			font-size: 14px;
+			font-weight: 600;
+			letter-spacing: 2px;
+			text-align: center;
+			text-transform: uppercase;
+			color: $gabrielle;
+		}
+		> div {
+			width: 100%;
+			max-width: 500px;
+			background: rgba($gabrielle,.5);
+			margin: 0 auto 15px;
+		}
+		#desktop-tips {
+			.guru-tip-of-day-slide-box {
+				height: auto;
+				padding-bottom: 30px;
+			}
+			.slider-pager {
+				bottom: 14px;
+			}
+			.card {
+				background: $gabrielle;
+			}
+			button {
+				background: white!important;
+				color: $gabrielle!important;
+			}
+		}
+		#desktop-ranking {
+			position: relative;
+			z-index: 9;
+			> div {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				padding: 15px;
+				width: 100%;
+				> div {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+				}
+			}
+			.progressbar-text {
+				display: none;
+			}
+			svg {
+				@include round;
+				display: block;
+				* {
+					stroke-linecap: round;
+				}
+			}
+			#guru-chart {
+				position: relative;
+				width: 50%;
+				height: 130px;
+				svg {
+					width: 130px;
+					height: 130px;
+				}
+				#percentile {
+					@include center-xy;
+					#percentile-ranking {
+						position: relative;
+						font-size: 44px;
+						font-weight: 600;
+						line-height: 1;
+						text-align: center;
+						&::after {
+							content: "th";
+							display: block;
+							position: absolute;
+							top: -1px;
+							right: -1px;
+							font-size: 12px;
+							font-weight: 400;
+							line-height: 28px;
+							text-transform: uppercase;
+						}
+					}
+					#percentile-label {
+						font-size: 12px;
+						font-weight: 400;
+						letter-spacing: 1px;
+						line-height: 15px;
+						text-transform: uppercase;
+					}
+				}
+			}
+			#guru-stats {
+				width: 50%;
+				h2 {
+					margin: 0 0 5px;
+					font-size: 16px;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+				.stats-bar {
+					line-height: 10px;
+					font-size: 10px;
+					height: 10px;
+					margin-bottom: 7px;
+					svg {
+						height: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- SETTINGS */
+#desktop-settings {
+	.main {
+		margin: 0 auto;
+		h1 {
+			text-align: center;
+			font-size: 64px;
+			font-weight: 900;
+			text-transform: lowercase;
+			margin-bottom: 30px;
+		}
+		input {
+			color: white!important;
+		}
+		> div {
+			max-width: 500px;
+			margin: 0 auto;
+			> button {
+				display: block;
+				margin: 0 auto;
+				width: calc(100% / 3);
+			}
+			ul {
+				@include flex;
+				@include flex-center-vertical;
+				width: 100%;
+				li {
+					&:first-child {
+						width: 100px;
+					}
+					&:last-child {
+						width: calc(100% - 100px);
+						text-align: right;
+					}
+				}
+			}
+			img {
+				@include round;
+				margin: 15px 0;
+			}
+			h2 {
+				font-weight: 600;
+			}
+			.input-field {
+				margin-top: 0;
+				margin-bottom: 30px;
+				input:focus:not([readonly]) {
+					border-bottom: 1px solid $gabrielle!important;
+					box-shadow: 0 1px 0 0 $gabrielle!important;
+				}
+				label:after {
+					width: 500px;
+				}
+			}
+			.ugrid-2 {
+				margin: 0 -15px;
+				> div {
+					padding: 0 15px;
 				}
 			}
 		}

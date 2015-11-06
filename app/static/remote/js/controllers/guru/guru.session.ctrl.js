@@ -327,10 +327,6 @@ angular.module('uguru.guru.controllers')
         $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, callbackSuccess);
 
 
-        // $timeout(function(){
-
-        //   $scope.$apply();
-        // }, 1000);
       }
 
       var dialog = {

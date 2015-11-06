@@ -16,6 +16,8 @@ if (LOCAL) {
   BASE_URL = _ipaddress;
   // REST_URL = "http://192.168.0.114:5000"
 
+  // REST_URL = 'https://192.168.0.104:5000';
+
 } else {
   img_base = '/static/'
 }
@@ -36,10 +38,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $templateCache, Device, User,
   DeviceService, uTracker, $injector) {
 
+  $ionicPlatform.ready(function() {
+  });
+
   uTracker.init(tracker);
   Github = $injector.get("Github");
   Github.init();
   Github.setExceptionToGithubIssue(false);
+
+
 
 })
 
@@ -66,6 +73,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   })
 
   //ASK-NICK: what does this mean?
+  //NICK-SAYS: it means use native style animations whenever we rely on ionic animations. (ios styles for ios, android for android)
   $ionicConfigProvider.views.transition('platform');
 
   $ionicConfigProvider.tabs.position("bottom");
@@ -86,6 +94,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
   }).
+
+
+  state('root.inappmap', {
+        url: '/inappmap',
+        templateUrl: BASE + 'templates/inappmap.html',
+        controller: 'InAppMapController'
+  }).
+
+
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
@@ -131,6 +148,18 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.desktop-login', {
     url:'/desktop-login',
     templateUrl: BASE + 'templates/desktop.login.html'
+  }).
+  state('root.desktop-become-guru', {
+    url:'/desktop-become-guru',
+    templateUrl: BASE + 'templates/desktop.guru.onboarding.html'
+  }).
+  state('root.desktop-guru-profile', {
+    url:'/desktop-guru-profile',
+    templateUrl: BASE + 'templates/desktop.guru.profile.html'
+  }).
+  state('root.desktop-settings', {
+    url:'/desktop-settings',
+    templateUrl: BASE + 'templates/desktop.settings.html'
   }).
   state('root.guru-languages', {
     url:'/guru-languages',

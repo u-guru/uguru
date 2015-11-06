@@ -6,7 +6,7 @@
                     <li ng-repeat='subcategory in active_category.subcategories'>
                         <span>
                             <label>{{subcategory.name}}</label>
-                            <input type="checkbox" ng-model='subcategory.active'ng-change='updateCategoryCount(active_category, subcategory, $index)'>
+                            <input type="checkbox" ng-model='subcategory.active' ng-change='updateCategoryCount(active_category, subcategory, $index)'>
                             <span class='{{active_category._class}}'></span>
                         </span>
                     </li>
