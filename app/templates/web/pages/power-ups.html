@@ -34,11 +34,26 @@ Uguru Home
             background-color:black;
         }
 
+        .temp.full.show {
+            opacity:1;
+            visibility: visible;
+        }
+
         .temp.full {
             height:100%;
             width:100%;
             z-index:1000;
-            display:none;
+            opacity:0;
+            visibility: hidden;
+        }
+        .white {
+            color:white;
+        }
+        #temp-2 a.close-button {
+            position:absolute;
+            bottom:0;
+            padding:20px;
+            right:0;
         }
     </style>
 
@@ -47,7 +62,9 @@ Uguru Home
     <a id='temp-1' class='temp'>
     </a>
     <div id='temp-2' class='temp full'>
-
+        <a class='close-button white' id='close-button'>
+            Close button
+        </a>
     </div>
 </section>
 {% endblock %}
@@ -55,16 +72,22 @@ Uguru Home
 {% block footer_scripts %}
 {% include 'web/pages/js/index.js' %}
 {% include 'web/snippets/search.js' %}
-{% endblock %}
 <script>
 
     var smallBlackBox = document.querySelector('#temp-1');
 
     var largeBlackBox = document.querySelector('#temp-2');
-    console.log(smallBlackBox, largeBlackBox)
 
     smallBlackBox.addEventListener('click', function() {
-        console.log('this works');
-        cta(smallBlackBox, largeBlackBox);
+
+        var closeCTAModal = cta(smallBlackBox, largeBlackBox, function() {
+            largeBlackBox.classList.add('show');
+            document.querySelector('#close-button').addEventListener('click', function() {
+                largeBlackBox.classList.remove('show');
+                console.log('closing..')
+                closeCTAModal();
+            })
+        });
     })
 </script>
+{% endblock %}
