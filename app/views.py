@@ -896,6 +896,21 @@ def android_app():
 def windows_app():
     return redirect('https://www.windowsphone.com/en-us/store/app/uguru/8df574bc-cbdd-4d6c-af3f-a7b2fe259494')
 
+@app.route('/apps/grub/')
+def app_route_grub():
+    import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/grub-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/grub-remote/index.html?version=' + str(version) + str(02323))
+
 @app.route('/apps/gpa/')
 def app_route_gpa():
     import os
