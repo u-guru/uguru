@@ -8,12 +8,6 @@ function GPAService() {
 
 	var totalGradePoints = 0;
 	var totalUnits = 0;
-<<<<<<< HEAD
-  
-  var averageGPA = totalGradePoints / totalUnits;
-
-  var addedCourses = [];
-=======
 
   var addedCourses = [];
 
@@ -27,12 +21,11 @@ function GPAService() {
     averageGPA: averageGPA,
     semesterArr: semesterArr
   };
->>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 
 
   return {
 
-    calcGPA: calcGPA,
+    overall: overall,
     addCourse: addCourse,
     semesterArr: semesterArr,
     getCumulativeGPA: getCumulativeGPA,
@@ -212,11 +205,6 @@ function GPAService() {
     totalGradePoints += course.points;
     totalUnits += course.units;
 
-<<<<<<< HEAD
-
-
-
-=======
     overall.averageGPA = totalGradePoints / totalUnits;
 
     var semester = {
@@ -236,7 +224,6 @@ function GPAService() {
       overall.semesters.push(semester);
     }
 
->>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
   }
 
 

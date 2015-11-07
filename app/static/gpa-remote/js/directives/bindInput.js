@@ -1,5 +1,5 @@
 angular.module('uguru.directives')
-.directive('bindInput', function($timeout, Utilities, Course, University, $parse) {
+.directive('bindInput', function($timeout, Utilities, Major, Course, University, $parse) {
 
 	function link($scope, elem, attr) {
 
@@ -8,26 +8,39 @@ angular.module('uguru.directives')
 		switch(attr.bindInput){
 			case 'majors':
 				model = 'search_text.major';
-				refreshModel = 'refresh.majors';
+				refreshModel = 'refresh.majorsLength';
 				property = ['title', 'name', 'abbr', 'code'];
 				break;
 
 			case 'courses':
 				model = 'search_text.course';
-				refreshModel = 'refresh.courses';
-				property = ['title', 'name'];
+
+				refreshModel = 'refresh.coursesLength';
+				property = ['title', 'name', 'variations'];
+
 				break;
 		}
 
 		$scope.$parent.$watch(
 			refreshModel,
 			function(newValue, oldValue) {
+				
+				
+					console.log("heard something from " + refreshModel + "!");
+					$timeout(function() {
+						try {
+							$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);	
+						} catch(err) {
+							console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+						}
+					}, 0);
+				
 
 				if(newValue === 'update') {
 					console.log("heard something from " + refreshModel + "!");
 					$timeout(function() {
 						try {
-							$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);
+							$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);	
 						} catch(err) {
 							console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
 						}
@@ -49,11 +62,11 @@ angular.module('uguru.directives')
 			    }
 			    queryPromise = $timeout(function() {
 			      try {
-			      	$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, property, model);
+			      	$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, property, model);	
 			      } catch(err) {
 			      	console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
 			      }
-
+			      
 			      queryPromise = null;
 			    }, 90);
 			  }
@@ -69,7 +82,7 @@ angular.module('uguru.directives')
 		    		} catch(err) {
 		    			console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school): " + err);
 		    		}
-
+			      
 			      queryPromise = null;
 			    }, 50);
 			  }

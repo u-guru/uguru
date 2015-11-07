@@ -14,7 +14,6 @@ angular.module('gpa.controllers')
 
 function GPAController($scope, ModalService, GPAService, $localstorage,
 	$timeout, StorageService, PopupService, TransitionService, DeviceService) {
-
 	$scope.toggleHeader = function(index) {
 		if ($scope.data.headerSelected === index && !$scope.transitioning) {
 			console.log ('needs to change');
@@ -124,17 +123,20 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.course.id = $scope.selectedCourse.id;
 
 
-
-			// GPAService.addCourse($scope.course);
-
-			//save to local storage
-
 			$scope.user.grades.push($scope.course);
+
 			$localstorage.setObject('user', $scope.user);
 
 			selectedGrade = '';
 			$scope.search_text.course = '';
-			$scope.closeModal('course');
+
+			$scope.overall = GPAService.init($scope.user.grades);
+
+			$timeout(function() {
+				$scope.closeModal('course');
+			}, 750);
+
+			LoadingService.loadAndShowSuccess(0, 1500, 'Recalculating...', $scope);
 		}
 		 else {
 		 	$scope.loader.showMsg('Please make sure all fields are valid.')
@@ -176,7 +178,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		$scope.overall = GPAService.init($scope.user.grades);
 		initSidebarGPAHomeTransition();
 		setIOSStatusBarToLightText();
-		console.log($scope.overall.averageGPA);
 	}
 
 	var setIOSStatusBarToLightText = function() {

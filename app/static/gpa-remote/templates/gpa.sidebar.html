@@ -9,11 +9,11 @@
 		</ion-item>
 		<ion-item class='list-item settings-item'>
 			<span class="list-item-detail">Default Units</span>
-			<input type="number" placeholder="4"/>
+			<input type="number" ng-change='defaultUnitsValChanged()' placeholder="4" ng-model='user.settings.default_units'/>
 		</ion-item>
 		<ion-item class='list-item settings-item'>
 			<span class="list-item-detail">Section</span>
-			<input type="number" placeholder="2"/>
+			<input ng-change='defaultUnitsValChanged()'type="number" ng-model='user.settings.num_sessions' placeholder="2"/>
 		</ion-item>
 		<ion-item class='list-item settings-item' ng-click='clearStorage()'>
 			<span class="list-item-detail">Clear Courses</span>
