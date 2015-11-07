@@ -6,7 +6,7 @@ var FIRST_PAGE='^.' +  _startpage;
 
 // isAdmin = true;
 
-// var BASE_URL = 'https://www.uguru.me/production/app/';
+var BASE_URL = 'https://www.uguru.me/apps/grub/';
 var REST_URL = 'https://www.uguru.me';
 
 var BASE = '';
