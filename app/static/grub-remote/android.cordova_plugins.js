@@ -224,6 +224,21 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.network-information/www/network.js",
+        "id": "org.apache.cordova.network-information.network",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.network-information/www/Connection.js",
+        "id": "org.apache.cordova.network-information.Connection",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
         "id": "org.apache.cordova.splashscreen.SplashScreen",
         "clobbers": [
@@ -258,6 +273,7 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "1.0.7",
     "org.apache.cordova.file": "1.3.3",
     "org.apache.cordova.file-transfer": "0.5.0",
+    "org.apache.cordova.network-information": "0.2.14",
     "org.apache.cordova.splashscreen": "1.0.0",
     "plugin.google.maps": "1.3.4",
     "phonegap-facebook-plugin": "0.12.0"
