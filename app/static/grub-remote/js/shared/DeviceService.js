@@ -102,21 +102,21 @@ function DeviceService(AndroidService, iOSService, WindowsService, $timeout,
   function isChromeBrowser() {
     if (getBrowser().name === 'Chrome') {
       return true;
-    } else return false; 
+    } else return false;
   }
 
   function isIEBrowser() {
     if (getBrowser().name === 'IE') {
       return true;
-    } else return false; 
+    } else return false;
   }
 
   function isSafariBrowser() {
     if (getBrowser().name === 'Safari') {
       return true;
-    } else return false;  
+    } else return false;
   }
-  
+
 
   function isIOS() {
     return ionic.Platform.isIOS();
@@ -182,21 +182,21 @@ function DeviceService(AndroidService, iOSService, WindowsService, $timeout,
 
 
 
-    // var userAgent = navigator.userAgent;
-    //   if (doesCordovaExist()) {
-    //     onDeviceReady(scope);
-    //   }
+    var userAgent = navigator.userAgent;
+      if (doesCordovaExist()) {
+        onDeviceReady(scope);
+      }
 
-    //   if(userAgent.indexOf('wv')!==-1) {
-    //     onDeviceReady(scope);
-    //   }
+      if(userAgent.indexOf('wv')!==-1) {
+        onDeviceReady(scope);
+      }
 
-    //   if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
-    //     console.log("detected mobile app");
-    //     onDeviceReady(scope);
-    //   } else {
-    //     console.log("did not detect mobile app");
-    //   }
+      if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
+        console.log("detected mobile app");
+        onDeviceReady(scope);
+      } else {
+        console.log("did not detect mobile app");
+      }
 	}
 
 	function onDeviceReady(scope) {
