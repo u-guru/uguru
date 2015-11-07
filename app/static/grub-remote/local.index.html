@@ -272,13 +272,13 @@
 
     <!-- Intro Controller -->
     <script type="text/javascript" src="remote/js/controllers/IntroController.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/GPAController.js"></script>
+
 
     <!-- Food Controllers -->
     <script type="text/javascript" src="remote/js/food/GrubHomeCtrl.js"></script>
     <script type="text/javascript" src="remote/js/food/GrubDetailsCtrl.js"></script>
     <script type="text/javascript" src="remote/js/food/GrubFiltersCtrl.js"></script>
-    
+
     <script type="text/javascript" src="remote/js/food/restaurants.js"></script>
 
 
@@ -296,7 +296,6 @@
     <script type="text/javascript" src="remote/js/shared/InAppBrowser.js"></script>
     <script type="text/javascript" src="remote/js/shared/UniversityMatcher.js"></script>
     <script type="text/javascript" src="remote/js/shared/ThrottleService.js"></script>
-    <script type="text/javascript" src="remote/js/shared/RankingService.js"></script>
     <script type="text/javascript" src="remote/js/shared/TipService.js"></script>
     <script type="text/javascript" src="remote/js/shared/PopupService.js"></script>
     <script type="text/javascript" src="remote/js/shared/CardService.js"></script>
@@ -340,22 +339,22 @@
             var div = document.getElementById("map_canvas_index");
             map = plugin.google.maps.Map.getMap(div);
             // map.setDiv(div);
-            map.remove();    
+            map.remove();
         } catch(e) {
             console.log("try catch error in local.index script for loading inapp google maps. Ignore if running on desktop.");
         }
-        
+
 
     });
-    
+
     </script>
 
 
 </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()" >
-    
-    
-    
+
+
+
 
     <ui-view></ui-view>
 

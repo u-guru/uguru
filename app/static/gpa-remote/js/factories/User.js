@@ -1,6 +1,6 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
-    '$ionicSideMenuDelegate', 'RankingService',
+    '$ionicSideMenuDelegate',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory,
         $ionicSideMenuDelegate) {
     var User;
