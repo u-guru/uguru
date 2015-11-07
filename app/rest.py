@@ -119,20 +119,6 @@ class UniversityPopularCoursesView(restful.Resource):
                 courses = u.courses
             return courses, 200
 
-class UniversityFoodView(restful.Resource):
-    def get(self, _id):
-        import json
-        file = open('app/static/data/food_router.json')
-
-        university_food_dict = json.load(file)
-        university_food_url = university_food_dict.get(str(_id))
-
-        if not university_food_url:
-            return json.dumps({"error": "Food URL does not exist for university id %s" % _id}), 422
-
-        return json.dumps({"food_url":university_food_url}), 200
-
-
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
     def get(self, _id):
@@ -2780,7 +2766,48 @@ class AdminViewGithubLabels(restful.Resource):
 
         pass
 
+class UniversityFoodView(restful.Resource):
+    def get(self, _id):
+        import json
+        file = open('app/static/data/food_router.json')
 
+        university_food_dict = json.load(file)
+        university_food_url = university_food_dict.get(str(_id))
+
+        if not university_food_url:
+            return json.dumps({"error": "Food URL does not exist for university id %s" % _id}), 422
+
+        return json.dumps({"food_url":university_food_url}), 200
+
+
+class MusicPlayerPlayListView(restful.Resource):
+
+    #get all issues + labels
+    def get(self, auth_token):
+        from app.lib.soundcloud_wrapper import uSoundCloudGetPlaylistQuery
+
+        if not request.json:
+            abort(404)
+
+        song_name = request.json.get('song_name')
+        artist_name = request.json.get('artist_name')
+
+        if not song_name and not artist_name:
+            abort(404)
+
+        print 'querying %s by %s' % (song_name, artist_name)
+        playlist_arr = uSoundCloudGetPlaylistQuery(song_name, artist_name)
+        return json.dumps(playlist_arr, indent=4), 200
+
+
+class TransitGuruTransitData(restful.Resource):
+    def get(self, auth_token):
+        from app.lib.transit_wrapper import getRealTimeTransitData
+
+        transit_arr = getRealTimeTransitData()
+        if not transit_arr:
+            abort(404)
+        return json.dumps(transit_arr, indent=4), 200
 
 
 class AdminViewGithubIssues(restful.Resource):
@@ -3353,7 +3380,8 @@ api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
 api.add_resource(GithubIssueView, '/api/v1/github')
 api.add_resource(HomeSubscribeView, '/api/v1/web/home/subscribe')
-
+api.add_resource(TransitGuruTransitData, '/api/v1/<string:auth_token>/transit')
+api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')

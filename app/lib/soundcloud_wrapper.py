@@ -27,26 +27,57 @@ def tracksToJson(tracks):
     return json_arr
 
 
-def tracksJsonToMiniTracksJson(tracks_json):
+def tracksJsonToMiniTracksJson(tracks_json, provider='soundcloud'):
+    json_arr = []
     for track_json in tracks_json:
-        trackJsonToMiniTrackJson(track_json)
+        if track_json.get('stream_url'):
+            json_arr.append(trackJsonToMiniTrackJson(track_json))
+    return json_arr
 
-def trackJsonToMiniTrackJson(track_json):
-    pass
+def trackJsonToMiniTrackJson(track_json, provider='soundcloud'):
+    return {
+        'tags': track_json.get('tag_list'),
+        str(provider + '_uri') : track_json.get('uri'),
+        'length': processMs(track_json.get('duration')),
+        'providers': [
+            {
+                'name': 'soundcloud',
+                'quality': 1,
+                'stream_url': track_json.get('stream_url') + '?client_id=' + CLIENT_ID,
+                'provider_img': providers.get(provider)['svg_logo'],
+            }
+        ],
+        'album_url': track_json.get('artwork_url'),
+        'likes': track_json.get('favoritings_count'),
+        'name': track_json.get('title'),
+        'genre': track_json.get('genre'),
+        'play_count': track_json.get('playback_count'),
+        'artist_name':track_json.get('user').get('username')
+    }
 
+providers = {
+    'soundcloud': {'svg_logo': 'https://upload.wikimedia.org/wikipedia/en/9/92/SoundCloud_logo.svg'}
+}
 
+def processMs(milliseconds):
+    try:
+        minutes = milliseconds/60000
+        seconds = milliseconds/1000
+        leftover_seconds = seconds - minutes * 60
+        return {
+                'milliseconds': milliseconds,
+                'seconds':  leftover_seconds,
+                'minutes': minutes,
+                'total_seconds':  seconds
+        }
+    except:
+        return
 
 
 def trackToJson(track):
     return {
-                # 'artist':track.label_name,
-                # 'release_info': {
-                #     'year': track.release_year,
-                #     'month': track.release_month
-                # },
                 'name': track.title,
                 'stream_url': track.stream_url + '?client_id=' + CLIENT_ID ,
-                # 'download_url': track.download_url + '?client_id=' + CLIENT_ID,
                 'tags': track.tag_list.split(" "),
                 'track_type': track.track_type,
                 'length': {
@@ -79,7 +110,7 @@ def getTopPlaylistsFromQuery(song_name=None, artist_name=None):
 def uSoundCloudGetPlaylistQuery(song_name, artist_name):
     playlists = getTopPlaylistsFromQuery(song_name=None, artist_name=artist_name)
     for playlist in playlists:
-        return playlist.tracks
+        return tracksJsonToMiniTracksJson(playlist.tracks)
 
 
 # {
@@ -110,9 +141,5 @@ def uSoundCloudGetPlaylistQuery(song_name, artist_name):
 #         'stream_url': 'http://
 #     }
 
-from pprint import pprint
-tracks_json = uSoundCloudGetPlaylistQuery(song_name='drill time', artist_name='slim jesus')
-pprint(tracks_json)
-print
-print len(tracks_json), 'found'
+
 
