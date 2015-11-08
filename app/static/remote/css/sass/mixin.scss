@@ -2,6 +2,10 @@
 	filter: alpha(opacity=$opacity * 100);
 	opacity: $opacity;
 }
+@mixin opacity-important($opacity) {
+	filter: alpha(opacity=$opacity * 100)!important;
+	opacity: $opacity!important;
+}
 @mixin transition($transition) {
 	-webkit-transition: all $transition;
 	-o-transition: all $transition;
@@ -15,6 +19,13 @@
 	-ms-transition: $type $transition;
 	-moz-transition: $type $transition;
 	transition: $type $transition;
+}
+@mixin transition-none {
+	-webkit-transition: none!important;
+	-o-transition: none!important;
+	-ms-transition: none!important;
+	-moz-transition: none!important;
+	transition: none!important;
 }
 @mixin round {
 	border-radius: 1000px;
@@ -115,6 +126,20 @@
 	display: -webkit-flex;
 	display: flex;
 }
+@mixin flex-column {
+	-ms-box-orient: horizontal;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: column;
+	-webkit-flex-direction:column;
+	-moz-flex-direction:column;
+	-o-flex-direction:column;
+	-ms-flex-direction:column;
+}
 @mixin flex-wrap {
 	-ms-flex-flow: row wrap;
 	-webkit-flex-flow: row wrap;
@@ -214,6 +239,13 @@
 	-o-transform: scale($scale);
 	transform: scale($scale);
 }
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
 @mixin transform-reset {
 	-webkit-transform: none;
 	-moz-transform: none;
@@ -283,6 +315,26 @@
 	animation-name: $name;
 }
 
+@mixin box-sizing {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin svg-stroke($stroke, $width) {
+	fill: none;
+	stroke: $stroke;
+	stroke-width: $width+px;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+@mixin svg-stroke-width($width) {
+	fill: none;
+	stroke-width: $width+px;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
 $links: 'a:active, a:focus, a:hover';
 $buttons: 'button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover';
 
@@ -300,6 +352,7 @@ $azure: #55A4B7;
 $orange: #E5753C;
 $gold: #F9D57B;
 $eggplant: #9A5BC5;
+$auburn: #F04F54;
 
 $facebook: #3b5998;
 $facebook-light: #6279B1;
@@ -318,6 +371,8 @@ $eggplant-mute: #907D9E;
 $bakery: #F04F54;
 $bakery-bg: #FFFDFA;
 
+$gabrielle: #958B8E;
+
 $icon-bg: no-repeat center center;
 
-$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif!important;

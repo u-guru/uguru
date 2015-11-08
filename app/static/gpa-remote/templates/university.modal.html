@@ -1,0 +1,96 @@
+<ion-modal-view class='uguru-view university-view' >
+	<ion-view>
+		<main id="desktop-university" class="desktop-mode desktop-search">
+			<header class="desktop-header">
+				<a class="header-down" ng-click="closeModal('university')">
+					<svg viewBox="0 0 100 100">
+						<path d="M14,32 L50,68 L86,32"></path>
+					</svg>
+				</a>
+			</header>
+			<div class="main default">
+				<form>
+					<div class="input-field">
+						<input name="university-input" id="university-input" type="text" ng-model="search_text.university">
+						<label for="university-input">search for my university</label>
+					</div>
+				</form>
+				<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
+					<ul class='desktop-card-list'>
+						<li ng-repeat='university in universities | limitTo: limit'>
+							<a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
+								<span class="list-item-overlay" style="background:{{university.school_color_one}}"></span>
+								<span class="school-icon">
+									<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" alt="" />
+								</span>
+								<span class="school-name">
+									<span class="school-title">{{university.name}}</span>
+									<span class="school-location">
+										<span class="school-city">{{university.city}},</span>
+										<span class="school-state">{{university.state}}</span>
+									</span>
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+
+		<section id="school" class="onboarding"  ng-controller='AddUniversityCtrl'>
+			<header class="third flex-center-wrap">
+				<h1>Edit University</h1>
+				<div class="header-nav">
+					<a class="header-down" ng-click="closeModal('university')">
+						<svg viewBox="0 0 100 100">
+							<path d="M14,32 L50,68 L86,32"></path>
+						</svg>
+					</a>
+				</div>
+				<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15xy" keyboard-focus>
+					<a class='side-icon' ng-click='resetUniversities()' ng-if='search_text.university.length'>
+						<i class='icon ion-close-circled'></i>
+					</a>
+					<form>
+						<div class="input-field">
+							<input type="text" name="university-input" id='university-input' class='' ng-model="search_text.university" />
+							<label for="university-input">search for my university</label>
+						</div>
+					</form>
+				</div>
+			</header>
+			<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
+				<ul class='list list-item-border'>
+					<li class="list-item " ng-repeat='university in universities | limitTo: limit'>
+						<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
+							<span class="school-icon list-icon-left">
+								<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
+							</span>
+							<span ng-if='!location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+		  						<b>
+		  							<span class="school-title">{{university.name}}</span>
+		  							<i>
+		  								<span class="school-city">{{university.city}},</span>
+		  								<span class="school-state">{{university.state}}</span>
+		  							</i>
+		  						</b>
+		  					</span>
+		  					<span ng-if='location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+		  			            <b>
+		  			            	<span class="school-title">{{university.name}}</span>
+		  			            	<i class='university-subheader'>
+		  			            		<span class="school-city">{{university.city}},</span>
+		  			            		<span class="school-state">{{university.state}}</span>
+		  			            		<span class='school-distance txt-lake' ng-if='university.rawMiles <= 300'>{{university.miles}} mi</span>
+		  			            		<span class='school-distance txt-lake' ng-if='university.rawMiles > 300'>hella far</span>
+		  			            	</i>
+		  			            </b>
+		  					</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+		</section>
+	</ion-view>
+</ion-modal-view>

@@ -35,7 +35,8 @@ angular.module('uguru.util.controllers')
 
 
     $scope.launchCategoryModal = function(category) {
-
+      console.log('active_category', $scope.active_category);
+      console.log('category', category);
       if($scope.active_category!==category){
         $scope.active_category = category;
         extension = $scope.guruSkillsModal && $scope.guruSkillsModal.isShown() && '-2';
@@ -45,7 +46,10 @@ angular.module('uguru.util.controllers')
       uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name
       });
+      console.log('post active_category');
+      console.log('active_category', $scope.active_category);
       $scope.active_category.active = true;
+
       $scope.categorySkillsModal.show();
 
     }
@@ -80,11 +84,22 @@ angular.module('uguru.util.controllers')
       }
     })
 
+    $scope.$on('modal.hidden', function() {
+      if ($scope.activeSlideIndex === 2 ) {
+        $scope.active_category = {name:'Select category', active:false};
+      }
+    })
+
     $scope.skillsModalDrag = function(e) {
       if (e.gesture.deltaY > 175) {
         $scope.hideCategorySkillsModal();
       }
     }
+
+
+
+
+
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
@@ -101,32 +116,61 @@ angular.module('uguru.util.controllers')
 
     $scope.updateCategoryCount = function(category, subcategory, index) {
 
-      category.active_subcategories += 1;
+
       Category.categories = $scope.categories;
       $localstorage.setObject('categories', $scope.categories);
 
       if (subcategory.active) {
+        category.active_subcategories += 1;
         addGuruSubcategory(subcategory);
       }
       //set to false
       else {
+        category.active_subcategories -= 1;
         removeGuruSubcategory(subcategory);
+      }
+
+    }
+
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+    }).then(function(modal) {
+          $scope.categorySkillsModal = modal;
+    });
+
+
+    var addGuruSubcategory = function(subcategory) {
+      if ($scope.user.id) {
+        $scope.user.updateAttr('add_guru_subcategory', $scope.user, subcategory, null, $scope);
+      } else {
+        if (!$scope.user.guru_subcategories) {
+          $scope.user.guru_subcategories = [];
+        }
+        console.log(subcategory.name, 'added to user list');
+        $scope.user.guru_subcategories.push(subcategory);
       }
     }
 
 
-
-
-    var addGuruSubcategory = function(subcategory) {
-      $scope.user.updateAttr('add_guru_subcategory', $scope.user, subcategory, null, $scope);
-    }
-
-
     var removeGuruSubcategory = function(subcategory) {
-      $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
+      if ($scope.user.id) {
+        $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
+      } else {
+
+        var guru_subcategories = $scope.user.guru_subcategories.slice();
+        for (var i = 0; i < guru_subcategories; i++) {
+          if (guru_subcategories[i].id === subcategory.id) {
+            $scope.user.guru_subcategories.splice(i, 1);
+            console.log(subcategory.name, 'removed from user list');
+          }
+        }
+
+      }
     }
 
-
+    
 
   }
 

@@ -1,0 +1,248 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+
+      <div class="content-wrapper" style="min-height: 918px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+
+            <!-- An example of wasting time doing formatting lol -- not our job -->
+            <img src='{{university.logo_url}}' height="40" width="40">
+            <!-- The nbsp; are required spaces -->
+            &nbsp;&nbsp;&nbsp;
+            {{university.name}}
+            <small><strong> {{university.city}}, {{university.state}}</strong></small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
+            <li>Stats</li>
+            <li class="active">Devices</li>
+          </ol>
+        </section>
+
+
+          <div class='row'>
+            <div class='col-md-8'>
+              <a href='/admin/stats/universities/{{university.id}}/flickr_options/' target='_blank'>
+                <img src='{{university.banner_url}}'  style="max-height:200px; height:auto; width:100%; padding:20px;">
+              </a>
+            </div>
+            <div class='col-md-4'>
+              <!-- this map verifies that the latitude && longitude are correct! -->
+              <img style="-webkit-user-select: none; cursor: zoom-in;" src="https://maps.googleapis.com/maps/api/staticmap?center=({{university.latitude}}, {{university.longitude}})&amp;parameters&amp;size=300x200&amp;zoom=14" style='width:100%; max-height:200px;'>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <!-- small box -->
+              <div class="small-box bg-olive">
+                <div class="inner">
+                  <h3>{{university.num_courses}}</h3>
+                  {% if university.courses_sanitized %}
+                  <p>Courses <strong> are sanitized </strong> </p>
+                  {% else %}
+                  <p>Courses <strong> are not sanitized </strong> </p>
+                  {% endif %}
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-md-4">
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>{{university.num_depts}}</h3>
+                  {% if university.departments_sanitized %}
+                  <p>Departments <strong> are sanitized </strong> </p>
+                  {% else %}
+                  <p>Departments <strong> are not sanitized </strong> </p>
+                  {% endif %}
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="small-box bg-gray">
+                <div class="inner">
+                  <h3>{{university.us_news_ranking}}</h3>
+                  <p># Ranked</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Important <strong> {{university.name}} </strong> fields</h3>
+                  <div class="box-tools pull-right">
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <tbody>
+                        <!-- Each row represents one column in database -->
+                        <tr>
+                          <td>Casual Name</td>
+                          <td>{{university.school_casual_name}}</td>
+                        </tr>
+                        <tr>
+                          <td>Mascot Name</td>
+                          <td>{{university.school_mascot_name}}</td>
+                        </tr>
+                        <tr>
+                          <td>School Color(s)</td>
+                          <td>
+                            <small style="background-color:{{university.school_color_one}}; color:white; font-size:20px; font-weight:bold; padding:5px 20px" >
+                                {{university.school_color_one}}</small>
+
+                            {% if university.school_color_two %}
+
+                                <small style="background-color:{{university.school_color_two}}; color:white; font-size:20px; font-weight:bold; padding:5px 20px" >
+                                {{university.school_color_two}}</small>
+
+                            {% endif %}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Courses Sample</h3>
+                  <div class="box-tools pull-right">
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th >ID</th>
+                          <th >Short Name</th>
+                          <th >Title</th>
+                          <th>Dept</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for course in university.courses[:50] %}
+                        <tr>
+                          <td>
+                            {{course.id}}
+                          </td>
+                          <td>
+                            {{course.short_name}}
+                          </td>
+                          <td>
+                            {{course.full_name}}
+                          </td>
+                          <td>
+                            <!--If this is empty, this is a red flag, we will get back to this later-->
+                            {{course.department.abbr}} {{course.department.code}} {{course.department.short_name}}
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Departments Sample</h3>
+                  <div class="box-tools pull-right">
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th >ID</th>
+                          <th >Short Name</th>
+                          <th >Title</th>
+                          <th>Dept</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for department in university.departments[:50] %}
+
+                        <!-- See models.py, line 764 departments -->
+                        <!-- As lonas they have one field, we are good. But we will need to map i.e CNM to its actual value really soon (Center of New Media). A good way to do this is. Query google {{university.name}}, {{department.title}}-->
+                        <tr>
+                          <td>
+                            {{department.id}}
+                          </td>
+                          <td>
+                            {{department.code}}
+                          </td>
+                          <td>
+                            {{department.abbr}}
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
+<script>
+  var testDevicePushToken = function(device_id) {
+    BASE_URL = "/api/admin/";
+    auth_token = "fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6";
+
+    $.ajax({
+      url: BASE_URL + auth_token + "/devices/" + device_id.toString() + '/push_test' ,
+      type: 'POST',
+      dataType: 'json',
+      data: {},
+      success: function(resp){
+        alert("Check yo phone");
+      },
+      error: function(err){
+        alert("Error tell Samir!");
+        console.log(err);
+      }
+    });
+  }
+</script>
+
+{% endblock %}

@@ -32,7 +32,6 @@ angular.module('uguru.root.services')
             }
 
             $cordovaPush.register(config).then(function (result) {
-
                 console.log("Register success " + result);
                 console.log(JSON.stringify(result));
 

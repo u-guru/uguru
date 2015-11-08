@@ -1,4 +1,57 @@
-<section id="course" class="onboarding">
+<main id="desktop-courses" class="desktop-mode desktop-search desktop-guru-onboarding" ng-show='isDesktopMode()'>
+    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+	<header class="desktop-header">
+		<a ng-click='previousSlide()'>
+			<svg viewBox="0 0 100 100">
+				<path d="M68,86 L32,50 L68,14"></path>
+			</svg>
+		</a>
+		<a ng-click='nextSlide()'>
+			<svg viewBox="0 0 100 100">
+				<path d="M32,86 L68,50 L32,14"></path>
+			</svg>
+		</a>
+	</header>
+    <div class="main default">
+        <form>
+            <div class="input-field">
+                <input id='course-input-1' type="text" ng-model="search_text.course">
+                <label for="course-input-1">search courses</label>
+            </div>
+        </form>
+        <div id="courses-list" class="desktop-search-list" bind-input='courses' source='coursesSource'>
+            <ul class='desktop-card-list'>
+				<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+					<a class="name-only" ng-if='!course.title'>
+						<svg viewBox="0 0 100 100">
+							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+						</svg>
+						<span>{{course.name}}</span>
+					</a>
+					<a ng-if='course.title'>
+						<svg viewBox="0 0 100 100">
+							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+						</svg>
+						<span class="course-name">{{course.name}}</span>
+						<span class="course-title">{{course.title}}</span>
+					</a>
+				</li>
+                <li ng-repeat='course in courses | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
+					<a class="name-only" ng-if='!course.title'
+						<span>{{course.name}}</span>
+					</a>
+					<a ng-if='course.title'>
+						<span>
+							<span class="course-name">{{course.name}}</span>
+							<span class="course-title">{{course.title}}</span>
+						</span>
+					</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<section id="course" class="onboarding" u-after-enter='afterEnter()' ng-show='!isDesktopMode()'>
 	<header class="third flex-center" ng-if='!guruCoursesModal.isShown() && !(profile && profile.edit_mode);'>
 		<h1 class="text-center">Add Courses</h1>
 		<div class="header-nav">
@@ -6,17 +59,20 @@
 				<svg viewBox="0 0 100 100">
 					<path d="M68,86 L32,50 L68,14"></path>
 				</svg>
-				<h1>Majors</h1>
+				<h1>Back</h1>
 			</a>
 			<a class="header-nav-next" ng-click='nextSlide()'>
-				<h1>Skills</h1>
+				<h1>Next</h1>
 				<svg viewBox="0 0 100 100">
 					<path d="M32,86 L68,50 L32,14"></path>
 				</svg>
 			</a>
 		</div>
-		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy" keyboard-focus>
 			<input type="search" id='course-input-1' placeholder="My courses are..." ng-model="search_text.course">
+			<a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.course.length > 0'>
+                <i class='icon ion-close-circled'> </i>
+            </a>
 		</div>
 	</header>
 	<header ng-if='guruCoursesModal.isShown() || (profile && profile.edit_mode);' class='third flex-center'>
@@ -28,28 +84,26 @@
 			</a>
 		</div>
 		<h1 class="text-center">Add Courses</h1>
-		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-			<div>
+		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy" keyboard-focus>
 				<input type="search" id='course-input-2' placeholder="My courses are..." ng-model="search_text.course">
-			</div>
+
+				<a ng-if='search_text.course.length > 0' ng-click='clearSearchInput();' class="course-input-close side-icon">
+				    <i class='icon ion-close-circled'> </i>
+				</a>
 		</div>
 	</header>
-	<div id="courses-list" class="onboarding-list" buffered-scroll='increaseLimit()' ng-init='limit = 20'>
-		<ul class='list list-item-border'>
-			<li ng-show='guruCoursesInput.value.length === 0' ng-repeat='course in user.guru_courses track by $index' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+	<div id="courses-list" bind-input='courses' source='coursesSource' class="onboarding-list" >
+		<ul class='list list-item-border no-icon'>
+			<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
 				<input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>
-				<!--Label below is temporary-->
 				<label ng-if='!course.title'>{{course.name}}</label>
 				<label ng-if='course.title'>
 					<span class="course-name">{{course.name}}</span>
 					<span class="course-title">{{course.title}}</span>
 				</label>
-				<svg viewBox="0 0 100 100">
-					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-				</svg>
 			</li>
-			<li ng-repeat='course in courses track by $index| limitTo: limit' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
-				<input type="checkbox">
+			<li ng-repeat='course in courses | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
+				<!-- <input type="checkbox"> -->
 				<label ng-if='!course.title'>{{course.name}}</label>
 				<label ng-if='course.title'>
 					<span class="course-name">{{course.name}}</span>

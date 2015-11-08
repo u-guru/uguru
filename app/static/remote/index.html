@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <script type="text/javascript">
       var start_dom_time = (new Date()).getTime();
       var _local, _startpage, _ipaddress;
@@ -94,10 +94,17 @@
 
             injectJs('ios.cordova_plugins.js');
             injectJs('ios.cordova.js');
-            injectCss('ios.css');
+            // injectCss('ios.css');
             // injectJs('/static/remote/cordova.js');
             return 'iOS';
 
+          }
+          else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || (!(window.ActiveXObject) && "ActiveXObject" in window) || "ActiveXObject" in window) {
+            console.log('injecting windows specific css & js');
+            injectJs('windows.cordova.js');
+            injectCss('windows.css');
+            WINDOWS = true;
+            return 'Windows'
           }
           else if( userAgent.match( /Android/i ) )
           {
@@ -117,13 +124,6 @@
 
 
             return 'Android';
-          }
-          else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || (!(window.ActiveXObject) && "ActiveXObject" in window) || "ActiveXObject" in window) {
-            console.log('injecting windows specific css & js');
-            injectJs('windows.cordova.js');
-            injectCss('windows.css');
-            WINDOWS = true;
-            return 'Windows'
           }
           else
           {

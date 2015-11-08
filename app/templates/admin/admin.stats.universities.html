@@ -32,10 +32,10 @@
           <div class="row">
             <div class="col-lg-6 col-md-6 col-xs-12">
               <!-- small box -->
-              <div class="small-box bg-olive">
+              <div class="small-box bg-black">
                 <div class="inner">
-                  <h3>{{target_universities|length}}</h3>
-                  <p>Total #of Targetted Universities</p>
+                  <h3>{{universities|length}}</h3>
+                  <p>Total #of Universities</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-document"></i>
@@ -43,10 +43,32 @@
               </div>
             </div><!-- ./col -->
             <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>{{full_prepared_universities|length}}</h3>
+                  <p>Universities > 100%</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>{{remainder_universities|length}}</h3>
-                  <p>Total Unfinished Universities</p>
+                  <h3>{{eighty_prepared_universities|length}}</h3>
+                  <p>Universities > 80%</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3>{{shitty_prepared_universities|length}}</h3>
+                  <p>Universities > 50%</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-document"></i>
@@ -55,10 +77,10 @@
             </div>
           </div>
           <div class='row'>
-            <div class='col-md-6'>
+            <div class='col-md-12'>
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Upcoming Targeted Large Universities</h3>
+                  <h3 class="box-title">Upcoming Targetted Large Universities</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -69,30 +91,70 @@
                     <table class="table no-margin">
                       <thead>
                         <tr>
-                          <th >US News</th>
-                          <th style='text-align:center;'>University</th>
-                          <th >Population</th>
+                          <th >ID</th>
+                          <th >University Name</th>
+                          <th >US News Ranking</th>
+                          <th style='text-align:center;'>Percent Complete</th>
+                          <th >Missing Fields</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {% for university in target_universities %}
+                        {% for university in atleast_fifty_universities %}
+
                         <tr>
+                          <td>{{university.id}}
+                            <a href='/admin/stats/universities/{{university.id}}' target='_blank'></span>
+                              {% if university.logo_url %}
+                              <img src='{{university.logo_url}}' height="30" width="30">
+                              {% elif university.seal_url %}
+                              <img src='{{university.seal_url}}' height="30" width="30">
+                              {% endif %}
+                            </a>
+                          </td>
                           <td>
-                            {{university['rank']}}
+                            <a href='/admin/stats/universities/{{university.id}}' target='_blank'>
+                              {{university.name}}
+                            </a>
                           </td>
-                          <td><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.name}}&nbsp;&nbsp;
-                            <a href='/admin/flickr/{{university.id}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
+                          <td>
+                            {{university.us_news_ranking}}
                           </td>
-                          <td>{{university['population']}}</td>
+                          <td>
+                            {% set percent = prepared_info_dict[university.id]['percentage']%}
+
+                            {% if percent == 100 %}
+
+                              <span class="badge bg-green">{{prepared_info_dict[university.id]['percentage']}}%</span>
+
+                            {% elif percent > 80 %}
+
+                              <span class="badge bg-yellow">{{prepared_info_dict[university.id]['percentage']}}%</span>
+
+                            {% else %}
+
+                            <span class="badge bg-red">{{prepared_info_dict[university.id]['percentage']}}%</span>
+
+                            {% endif %}
+
+                          </td>
+                          <td>
+                            {% for missing_tag in prepared_info_dict[university.id]['missing'] %}
+                              <small class="label label-danger">
+                                {{missing_tag}}</small>
+                            {% endfor %}
+                          </td>
                         </tr>
                         {% endfor %}
+
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->
                 </div><!-- /.box-body -->
               </div>
             </div>
-            <div class='col-md-6'>
+          </div>
+          <div class='row'>
+            <div class='col-md-12'>
               <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Universities Left</h3>

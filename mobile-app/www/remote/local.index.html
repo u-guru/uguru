@@ -1,5 +1,8 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
   <head>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
 
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -41,8 +44,13 @@
 
     <!-- The main css file -->
     <link href="remote/css/sass/default.css" rel="stylesheet">
+    <link href="remote/css/sass/material.css" rel="stylesheet">
+    <link href="remote/css/sass/desktop.css" rel="stylesheet">
     <link href="remote/css/sass/style.css" rel="stylesheet">
-  <!--   <link href="remote/css/sass/components/map.css" rel="stylesheet"> -->
+
+
+
+    <!--   <link href="remote/css/sass/components/map.css" rel="stylesheet"> -->
 
     <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
@@ -66,16 +74,23 @@
                 for (var i = 0; i < androidWebViewAgents.length; i++ ) {
                   var indexUA = androidWebViewAgents[i];
                   if (userAgent.indexOf(indexUA) > -1) {
-                    console.log('ayy')
                     injectJs('android.cordova.js');
                     injectCss('android.css');
                     injectAndroidMetaContentScript();
                     break;
                   }
                 }
-
-
                 return 'Android';
+              }
+            else if ( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+              {
+
+                injectJs('ios.cordova_plugins.js');
+                injectJs('ios.cordova.js');
+                injectCss('ios.css');
+                // injectJs('/static/remote/cordova.js');
+                return 'iOS';
+
               }
             else {
                 console.log('hard to determine identifies');
@@ -115,23 +130,28 @@
      }(window, document, 'script', 'll');
  </script>
 
-
     <script src="remote/lib/windows/winstore-jscompat.js"></script>
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
 
 
 
     <script src="lib/lodash/dist/lodash.js"></script>
-    <script src='remote/lib/angular-google-maps/angular-google-maps.min.js'></script>
+   <!--
+
+    <script src="remote/lib/angular-google-maps/ion-google-place.js"></script>
+
+   -->
+   <script src='remote/lib/angular-google-maps/default-map-styles.js'></script>
+
     <script src='remote/lib/spinningwheel/spinning-wheel.min.js'></script>
     <!-- <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script> -->
+
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script src='remote/lib/angular-google-maps/default-map-styles.js'></script>
-    <script src='remote/lib/angular-google-maps/google-marker-with-labels.js'></script>
+
     <script type="text/javascript" src="remote/lib/cta/cta.min.js"></script>
+    <script src='remote/lib/angular-google-maps/google-marker-with-labels.js'></script>
 
 
-    <!--<script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script> -->
     <script src="remote/lib/restangular/dist/restangular.js"></script>
     <script src="remote/lib/interact/interact.min.js"></script>
     <script src="remote/lib/angular-local-storage/angular-local-storage.js"></script>
@@ -142,7 +162,7 @@
     <script src="remote/lib/angular-payments/angular-payments.js"></script>
     <script src="remote/lib/progressbar/progressbar.min.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
-    <script src="remote/lib/angular-google-maps/ion-google-place.js"></script>
+
     <script src="remote/lib/velocity/velocity.min.js"></script>
     <script src="remote/lib/velocity/velocity.ui.min.js"></script>
     <script src="remote/lib/velocity/angular-velocity.min.js"></script>
@@ -192,13 +212,13 @@
     <script id="templates/root.html" type="text/ng-template">
 
     </script>
-
     <script src="remote/js/constants.js"></script>
     <!-- uguru app main js -->
     <script src="remote/js/main.js"></script>
 
 
-    <!-- uguru app directives -->
+
+
     <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
     <script type="text/javascript" src="remote/js/directives/bufferedScroll.js"></script>
@@ -207,6 +227,7 @@
     <script type="text/javascript" src="remote/js/directives/bindInput.js"></script>
     <script type="text/javascript" src="remote/js/directives/throttle.js"></script>
     <script type="text/javascript" src="remote/js/directives/submit.js"></script>
+    <script type="text/javascript" src="remote/js/directives/keyboardfocus.js"></script>
 
     <!-- uguru app factories-->
     <script type="text/javascript" src="remote/js/factories/Session.js"></script>
@@ -281,6 +302,7 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/InAppMapController.js"></script>
 
     <!--  Admin Controllers -->
     <!-- <script type="text/javascript" src="remote/js/admin/AdminCtrl.js"></script> -->
@@ -299,9 +321,24 @@
     <script type="text/javascript" src="remote/js/shared/RankingService.js"></script>
     <script type="text/javascript" src="remote/js/shared/TipService.js"></script>
     <script type="text/javascript" src="remote/js/shared/PopupService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CardService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/ModalService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/KeyboardService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CameraService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/PushService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/InAppMapService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/MediaService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CardReader.js"></script>
+    <script type="text/javascript" src="remote/js/shared/SocialSharing.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CalendarService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/BadgeService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/AppAvailability.js"></script>
+    <script type="text/javascript" src="remote/js/shared/ToastService.js"></script>
+
 
     <script type="text/javascript" src="remote/js/shared/uTracker.js"></script>
     <script type="text/javascript" src="remote/js/shared/PerformanceService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/AdminService.js"></script>
 
     <!-- Specific Device Services, still under SharedService module -->
     <script type="text/javascript" src="remote/js/device/AndroidService.js"></script>
@@ -338,10 +375,41 @@
     <!-- Access Component -->
     <script type="text/javascript" src="remote/js/access/AccessService.js"></script>
     <script type="text/javascript" src="remote/js/access/AccessCtrl.js"></script>
+    <!-- Card component -->
+    <script type="text/javascript" src="remote/js/controllers/util/CardList.ctrl.js"></script>
+
+
+
+    <script type="text/javascript">
+    var map;
+    document.addEventListener("deviceready", function() {
+      var div = document.getElementById("map_canvas");
+      console.log("in app map is ready!");
+      // Initialize the map view
+      map = plugin.google.maps.Map.getMap(div);
+
+      // Wait until the map is ready status.
+      map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+    }, false);
+
+    function onMapReady() {
+      var button = document.getElementById("button");
+      button.addEventListener("click", onBtnClicked, false);
+    }
+
+    function onBtnClicked() {
+      map.showDialog();
+    }
+    </script>
 
 
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()">
+
+    <h3>In App Google Maps Plugin</h3>
+   <div style="width:100%;height:400px" id="map_canvas"></div>
+   <button id="button">Full Screen</button>
+
 
     <ui-view></ui-view>
 
@@ -354,11 +422,4 @@
           });
     </script>
   </body>
-
-
-    <!--
-      The views will be rendered in the <ion-nav-view> directive below
-      Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
-    -->
 </html>

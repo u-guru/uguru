@@ -1,0 +1,129 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+
+      <div class="content-wrapper" style="min-height: 918px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Universities Stats
+            <small>How many we have left to polish</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
+            <li>Stats</li>
+            <li class="active">Info</li>
+          </ol>
+        </section>
+
+
+        <section class="content">
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upcoming Targetted Large Universities</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>Field Name</th>
+                          <th >Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td>Name</td>
+                          <td>--</td>
+                        </tr>
+                        <tr>
+                          <td>City, State</td>
+                          <td>--</td>
+                        </tr>
+                        <tr>
+                          <td>Latitude, Longitude</td>
+                          <td>--</td>
+                        </tr>
+                        <tr>
+                          <td>Banner URL</td>
+                          <td>Flickr high-res + low-res photo</td>
+                        </tr>
+                        <tr>
+                          <td>Majors + Sanitized</td>
+                          <td>Scraped, validated</td>
+                        </tr>
+                        <tr>
+                          <td>Courses + Sanitized</td>
+                          <td>Scraped, validated</td>
+                        </tr>
+                        <tr>
+                          <td> Popular Courses </td>
+                          <td> Scraped, & Validated </td>
+                        </tr>
+                        <tr>
+                          <td>School Color</td>
+                          <td>Main two school colors (at least one)</td>
+                        </tr>
+                        <tr>
+                          <td>Logo URL</td>
+                          <td>High Res Logo URL (preferably SVG)</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
+<script>
+  var testDevicePushToken = function(device_id) {
+    BASE_URL = "/api/admin/";
+    auth_token = "fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6";
+
+    $.ajax({
+      url: BASE_URL + auth_token + "/devices/" + device_id.toString() + '/push_test' ,
+      type: 'POST',
+      dataType: 'json',
+      data: {},
+      success: function(resp){
+        alert("Check yo phone");
+      },
+      error: function(err){
+        alert("Error tell Samir!");
+        console.log(err);
+      }
+    });
+  }
+</script>
+
+{% endblock %}

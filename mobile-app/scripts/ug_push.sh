@@ -1,6 +1,6 @@
 
 if [ $# == 0 ];
-	then 
+	then
 	printf "\n"
 	printf '\e[0;36m push <> : Generates production build and publishes to the app store.  Currently unavailable. \n'
 	printf "\n"
@@ -26,7 +26,22 @@ if [ $# == 1 ];
 	if [ $platform == "ios" ]; then
 		./scripts/ug_build.sh ios
 		./scripts/ug_release.sh ios
-		# ============================================
+		# ugbi --> install the necessary cordova plugins
+		# ugbri --> build a release version
+		cd platforms/ios
+		fastlane init
+		# y
+		# y
+		# com.Uguru.Uguru
+		# makhani@berkeley.edu
+		# y --> setup deliver
+		# n
+		# cert
+		# gym -i Z3H2887UC4.cer -e AppStore_com.Uguru.Uguru.mobileprovision
+
+		#
+		# todo
+		#
 
 		# Insert Apple Devloper API here
 

@@ -4,6 +4,7 @@
 !app/static/data/*.json
 !app/static/data/categories.json
 !app/static/data/init_categories.json
+!app/static/gpa-remote/css/*css
 .elasticbeanstalk/
 venv
 app.db
@@ -109,8 +110,10 @@ run.py
 # to avoid IP mismatches
 *constants*.js
 
+
 # since sass > .css & .css merge conflicts are for n00bz
 *.css
+
 *mobile.config.js
 constants*.js
 scripts/*json
@@ -120,3 +123,4 @@ mobile-app/packages/*
 mobile-app/node_modules/*
 mobile-app/plugins/*
 mobile-app/stable_plugins/*
+latest.dump

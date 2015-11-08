@@ -1,6 +1,6 @@
 angular.module('uguru.user', [])
-.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate', 'Category', 'RankingService',
+.factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
+    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
         $ionicSideMenuDelegate, Category, RankingService) {
     var User;
@@ -500,7 +500,13 @@ angular.module('uguru.user', [])
         $scope.user.current_hourly = user.current_hourly;
         $scope.user.previous_proposals = user.previous_proposals;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
+
         $scope.user.is_admin = user.is_admin;
+        // if (!$scope.user.is_admin) {
+        //     var AdminService = {};
+        // }
+
+
         $scope.user.active_questions = user.active_questions;
         $scope.user.active_tasks = user.active_tasks;
         $scope.user.guru_skills = user.guru_skills;
@@ -621,7 +627,8 @@ angular.module('uguru.user', [])
             'all_positions', 'active_sessions', 'student_sessions',
             'guru_sessions', 'conversations', 'devices', 'gurus',
             'cards', 'requests', 'student_ratings', 'guru_ratings',
-            'student_courses', 'cashout_cards'
+            'student_courses', 'cashout_cards', 'guru_skills', 'guru_courses',
+            'guru_languages', 'student_courses', 'departments', 'guru_categories', 'guru_subcategories'
         ];
         for (var index = 0; index < properties.length; index++) {
             var property = properties[index];
@@ -756,6 +763,12 @@ angular.module('uguru.user', [])
                   return {
                         subcategory: obj,
                         'add_guru_subcategory': true
+                  }
+              }
+              if (arg === 'remove_guru_subcategory') {
+                  return {
+                        subcategory: obj,
+                        'remove_guru_subcategory': true
                   }
               }
               if (arg === 'impact_event') {
@@ -1049,24 +1062,7 @@ angular.module('uguru.user', [])
                             $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
                          }
 
-                        // if ($scope.user && $scope.root.vars.guru_mode && $scope.user.active_guru_sessions
-                        //     && ($scope.user.active_guru_sessions.length > 0 || $scope.user.pending_student_ratings.length > 0)
-                        //     && $scope.launchPendingActions) {
 
-
-
-                        //       $scope.launchPendingActions();
-
-                        // }
-
-                        // if ($scope.user && !$scope.root.vars.guru_mode
-                        //     && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)
-                        //     && $scope.launchPendingActions) {
-
-
-                        //       $scope.launchPendingActions();
-
-                        // }
 
                     }
 
@@ -1183,7 +1179,7 @@ angular.module('uguru.user', [])
                             }
                             else if ($scope.root.vars.profile_url_changed) {
                                 $scope.root.vars.profile_url_changed = false;
-                                $scope.user.profile_url = file.plain();
+                                $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);
                             }
                             else if ($scope.root.vars.transcript_url_changed) {
@@ -1410,7 +1406,7 @@ angular.module('uguru.user', [])
         },
         clearAttrUser: function(payload, $scope) {
 
-            User.clearAttr(payload, user.id).then(function(user) {
+            User.clearAttr(payload, $scope.user.id).then(function(user) {
 
                 var processed_user = processResults(user.plain());
 

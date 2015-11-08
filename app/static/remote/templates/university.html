@@ -1,67 +1,93 @@
-<u-slide-box id='access-uni-slide' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university" performance-beacon="remote/img/beacon.png">
-  <u-slide ng-if='storedAccess'>
-  	<div ng-include="img_base + BASE + 'templates/access.html'"></div>
-  </u-slide>
-  <u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
-  <ion-view class='uguru-view university-view' >
-  <section id="school" class="onboarding" >
-  	<header class="third flex-center">
-  		<h1>Find Your Community</h1>
-  		<div class="header-nav" ng-if='LOCAL'>
-  	        <a class="header-nav-back" ng-click='goToAccessAdmin()'>
-  		        <svg viewBox="0 0 100 100">
-  					<path d="M68,86 L32,50 L68,14"></path>
-  				</svg>
-  				<h1>&nbsp;</h1>
-  			</a>
-  		</div>
-  		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-  	        <input type="search" id='university-input' class=''
-  				placeholder="Search for my university"
-  				ng-model="universityInput.value"
-  				ng-focus="universityInputFocused()"
-  	        />
-  	        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='universityInput.value.length === 0'>
-  				<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
-  	        </a>
-  	        <a class='side-icon' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
-  				<i class='icon ion-close-circled text-white'></i>
-  	        </a>
-  		</div>
-  	</header>
-  	<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">
-  		<ul class='list list-item-border'>
-  			<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
-  				<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
-  					<span class="school-icon list-icon-left">
-  						<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
-  					</span>
-  					<span ng-if='!location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-  						<b>
-  							<span class="school-title">{{university.name}}</span>
-  							<i>
-  								<span class="school-city">{{university.city}},</span>
-  								<span class="school-state">{{university.state}}</span>
-  							</i>
-  						</b>
-  					</span>
-  					<span ng-if='location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-  			            <b>
-  			            	<span class="school-title">{{university.name}}</span>
-  			            	<i class='university-subheader'>
-  			            		<span class="school-city">{{university.city}},</span>
-  			            		<span class="school-state">{{university.state}}</span>
-  			            		<span class='school-distance txt-lake' ng-if='university.rawMiles <= 300'>{{university.miles}} mi</span>
-  			            		<span class='school-distance txt-lake' ng-if='university.rawMiles > 300'>hella far</span>
-  			            	</i>
-  			            </b>
-  					</span>
-  				</a>
-  			</li>
-  		</ul>
-  	</div>
-  </section>
-  </ion-view>
-  </u-slide>
+<u-slide-box id='access-uni-slide' class='full-y' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university">
+	<u-slide ng-if='storedAccess'>
+		<div ng-include="img_base + BASE + 'templates/access.html'"></div>
+	</u-slide>
+	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
+		<ion-view class='uguru-view university-view'>
+			<main id="desktop-university" class="desktop-mode desktop-search" ng-show='isDesktopMode()'>
+			    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+			    <div class="main default">
+			        <form>
+			            <div class="input-field">
+			                <input id="university-input" type="text" ng-model="search_text.university">
+			                <label for="university-input">search for my university</label>
+			            </div>
+			        </form>
+			        <div id="school-list" class="desktop-search-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()'>
+			            <ul class='desktop-card-list'>
+			                <li ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+			                    <a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
+			                        <span class="list-item-overlay" style="background:{{university.school_color_one}}"></span>
+			                        <span class="school-icon">
+			                            <img image-saver ng-src="{{ university.seal_url || university.logo_url}}" alt="" />
+			                        </span>
+			                        <span class="school-name">
+			                            <span class="school-title">{{university.name}}</span>
+			                            <span class="school-location">
+			                                <span class="school-city">{{university.city}},</span>
+			                                <span class="school-state">{{university.state}}</span>
+			                            </span>
+			                        </span>
+			                    </a>
+			                </li>
+			            </ul>
+			        </div>
+			    </div>
+			</main>
+			<section id="school" class="onboarding" ng-show='!isDesktopMode()'>
+				<header class="third flex-center">
+					<h1>Find Your Community</h1>
+					<div class="header-nav" ng-if='LOCAL'>
+						<a class="header-nav-back" ng-click='goToAccessAdmin()'>
+							<svg viewBox="0 0 100 100">
+								<path d="M68,86 L32,50 L68,14"></path>
+							</svg>
+							<h1>&nbsp;</h1>
+						</a>
+					</div>
+					<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x">
+						<input type="search" id='university-input' class='' placeholder="Search for my university" ng-model="search_text.university" />
+						<a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
+							<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
+						</a>
+						<a class='side-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
+							<i class='icon ion-close-circled text-white'></i>
+						</a>
+					</div>
+				</header>
+				<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">
+					<ul class='list list-item-border'>
+						<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+							<a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
+								<span class="school-icon list-icon-left">
+									<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt="" />
+								</span>
+								<span ng-if='!location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+									<b>
+  							            <span class="school-title">{{university.name}}</span>
+              							<i>
+              								<span class="school-city">{{university.city}},</span>
+              								<span class="school-state">{{university.state}}</span>
+              							</i>
+              						</b>
+								</span>
+								<span ng-if='location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+									<b>
+              			            	<span class="school-title">{{university.name}}</span>
+              			            	<i class='university-subheader'>
+              			            		<span class="school-city">{{university.city}},</span>
+              			            		<span class="school-state">{{university.state}}</span>
+              			            		<span class='school-distance txt-lake' ng-if='university.rawMiles <= 300'>{{university.miles}} mi</span>
+              			            		<span class='school-distance txt-lake' ng-if='university.rawMiles > 300'>hella far</span>
+              			            	</i>
+              			            </b>
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</ion-view>
+	</u-slide>
 
 </u-slide-box>

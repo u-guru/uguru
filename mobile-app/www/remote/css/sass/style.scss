@@ -176,10 +176,10 @@ section {
 		#start-container {
 			font-size: 24px!important;
 		}
-		#skills-list a {
+		#skills-list.onboarding-list a {
 			font-size: 16px!important;
 		}
-		#skills-list .skill-icon {
+		#skills-list.onboarding-list  .skill-icon {
 			margin-bottom: 10px;
 			width: 40px!important;
 			height: 40px!important;
@@ -195,12 +195,6 @@ section {
 							url(/static/remote/img/svg/search.svg) center/cover no-repeat;
 				width: 14px;
 				height: 14px;
-			}
-		}
-		.header-nav a {
-			h1 {
-				font-size: 18px!important;
-				font-weight: 400!important;
 			}
 		}
 		#loading svg {
@@ -442,6 +436,209 @@ section {
 	}
 }
 
+// CONTACTING MODAL
+.contacting-modal {
+	background: white;
+}
+
+// CARDS MODAL
+#cards {
+	height: calc(100% - 114px);
+	ul {
+		height: 100%;
+		overflow: auto;
+		padding: 0 7.5px 7.5px;
+		li {
+			height: calc(100% / 3);
+			padding: 7.5px;
+			&:first-child {
+				padding-top: 0;
+			}
+			* {
+				box-shadow: none!important;
+				text-shadow: none!important;
+			}
+		}
+	}
+	button {
+		z-index: 10;
+	}
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-back::before {
+		background: $eggplant!important;
+	}
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-back::before {
+		background: $campus!important;
+	}
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::after {
+		background: $orange!important;
+		box-shadow: none!important;
+	}
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front::before,
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-back::before {
+		background: $azure!important;
+	}
+	.card-list-item {
+		width: 100%;
+	}
+}
+#edit-cards {
+	height: calc(100% - 114px);
+	.jp-card .jp-card-front,
+	.jp-card .jp-card-back {
+		background: $taupe!important;
+	}
+	.card-modal-wrapper-0 {
+		padding: 0 15px 15px;
+	}
+}
+
+// GURU CONTACT TYPES MODAL
+#contact-type {
+	height: calc(100% - 114px);
+	#contact-type-list {
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		height: 100%;
+		padding: 0 1px 1px;
+		li {
+			position: relative;
+			padding: 1px;
+			width: 50%;
+			height: calc(100% / 3);
+			> div {
+				display: block;
+				width: 100%;
+				height: 100%;
+				input {
+					@include opacity(0);
+					display: block;
+					position: absolute;
+					z-index: 9;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				input + span {
+					display: block;
+					width: 100%;
+					height: 100%;
+					label {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						width: 100%;
+						height: 100%;
+						padding: 15px 0 40%;
+						font-size: 18px;
+						font-weight: 600;
+						text-align: center;
+						background: $slate;
+						svg {
+							@include svg-stroke(white, 4);
+							display: none;
+							width: 100%;
+						}
+						span {
+							display: block;
+						}
+					}
+					> span {
+						@include opacity(.5);
+						display: block;
+						position: absolute;
+						bottom: 1px;
+						left: 1px;
+						width: calc(100% - 2px);
+						height: 40%;
+					    background: rgba(white,.4) url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center / 40px 40px;
+					}
+				}
+				input:checked + span {
+					span {
+						@include opacity(1);
+					}
+				}
+			}
+			&:nth-child(1) > div input:checked + span label {
+				background: $moola;
+			}
+			&:nth-child(2) > div input:checked + span label {
+				background: $shamrock;
+			}
+			&:nth-child(3) > div input:checked + span label {
+				background: $lake;
+			}
+			&:nth-child(4) > div input:checked + span label {
+				background: $azure;
+			}
+			&:nth-child(5) > div input:checked + span label {
+				background: $campus;
+			}
+			&:nth-child(6) > div input:checked + span label {
+				background: $eggplant;
+			}
+			&:nth-child(1), &:nth-child(2) {
+				padding-top: 0;
+			}
+		}
+	}
+}
+@media screen and (min-height:568px) {
+	#contact-type {
+		#contact-type-list {
+			li {
+				> div {
+					input + span {
+						label {
+							padding: 15px 0 30%;
+							font-size: 16px;
+							svg {
+								display: block;
+								height: calc(100% - 37px);
+							}
+							span {
+								padding-bottom: 15px;
+							}
+						}
+						> span {
+							height: 30%;
+							background-size: 30px 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:667px) {
+	#contact-type {
+		#contact-type-list {
+			li {
+				> div {
+					input + span {
+						label {
+							padding: 15px 0 40%;
+							font-size: 20px;
+							svg {
+								height: calc(100% - 43px);
+							}
+						}
+						> span {
+							height: 40%;
+							background-size: 40px 40px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // SKILLS MODAL
 .category-skills-modal {
 	top: calc(100% / 3);
@@ -468,7 +665,7 @@ section {
 	position: absolute;
 	top: 0;
 	.main {
-		height: calc(100% - 50px - 64px);
+		height: calc(100% - 114px);
 		.ugrid-3 {
 			margin-top: -10px;
 			padding-bottom: 15px;
@@ -484,11 +681,14 @@ section {
 				text-align: right;
 			}
 		}
+		input[type=range] {
+			height: 50px;
+		}
 		#exp-input, #guru-intro-input {
-			height: calc(100% - 194px);
+			height: calc(100% - 203px);
 		}
 		#exp-input.removable {
-			height: calc(100% - 258px);
+			height: calc(100% - 267px);
 		}
 		textarea {
 			font-size: 18px;
@@ -508,19 +708,48 @@ section {
 	}
 }
 
+// CARD MODAL
+.jp-card-front {
+	&::before {
+		background-image: none!important;
+	}
+}
+
 // ACCOUNT MODAL
 .signup-modal {
+	header {
+		.switch {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			li {
+				padding: 0 15px;
+				a {
+					display: block;
+					padding: 15px 0;
+					border-bottom: 5px solid transparent;
+					font-weight: 600;
+					text-align: center;
+				}
+				.selected {
+					border-bottom-color: $shamrock;
+				}
+			}
+		}
+	}
 	h1 + h1 {
 		margin-top: 0;
 	}
 	#account-form {
 		height: calc(100% - 50px);
-		padding: 15px;
+		padding: 0 15px 15px;
 		input {
 			margin: 30px 0 15px;
 			font-size: 20px;
 		}
 		#tos {
+			@include opacity(.6);
 			display: block;
 			color: white;
 			font-size: 14px;
@@ -529,7 +758,6 @@ section {
 			line-height: 1;
 			text-align: center;
 			text-transform: uppercase;
-			opacity: 0.6;
 		}
 		#tos:active, #tos:focus {
 			color: $shamrock;
@@ -809,8 +1037,7 @@ section {
 	}
 	// FORM
 	.request-content {
-		height: calc(100% - 50px);
-		padding-bottom: 64px;
+		height: calc(100% - 114px);
 		overflow: auto;
 		font-weight: 300;
 		input:not([type="text"]) {
@@ -892,6 +1119,7 @@ section {
 					label {
 						display: block;
 						width: 100%;
+						font-size: 18px;
 						line-height: 46px;
 					}
 					input:not(:checked) + label {
@@ -924,8 +1152,8 @@ section {
 					left: 0;
 					width: 200%;
 					height: 200%;
-					background: url(../../img/map.png) center center / cover,
-								url(/static/remote/img/map.png) center center / cover;
+					background: url(../../img/map-small.png) center center / cover,
+								url(/static/remote/img/map-small.png) center center / cover;
 				}
 				> span {
 					display: block;
@@ -943,11 +1171,7 @@ section {
 						width: auto;
 						height: 100%;
 						path {
-							fill: none;
-							stroke: $lake;
-							stroke-width: 5px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
+							@include svg-stroke($lake, 5);
 						}
 					}
 				}
@@ -1249,7 +1473,7 @@ section {
 			}
 		}
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			li {
 				label {
@@ -1285,12 +1509,16 @@ section {
 	height: 110%;//due to ios status bar, playing it safe
     bottom: 0;
 }
+.menu {
+	max-width: 80%!important;
+}
 .side-menu-list {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	z-index: 20;
 	.list {
+		@include flex-column;
 		height: 100%;
 	}
 	.list-item {
@@ -1298,6 +1526,10 @@ section {
 		font-size: 18px;
 		font-weight: 600;
 		text-transform: uppercase;
+		//Gabrielle -- added this so we can so more items;
+		&.settings-item {
+			height:10%;
+		}
 		.list-item-icon {
 			height: 64px;
 			width: 64px;
@@ -1310,9 +1542,7 @@ section {
 				padding: 15px;
 				width: auto;
 				path, circle {
-					stroke-width: 4px;
-					stroke-linecap: round;
-					stroke-linejoin: round;
+					@include svg-stroke-width(3);
 				}
 				circle {
 					stroke-dasharray: 3px, 10px;
@@ -1356,6 +1586,7 @@ section {
 }
 @media screen and (min-height:540px) {
 	.side-menu-list {
+
 		.list-item-profile {
 			height: 84px;
 		}
@@ -1489,11 +1720,11 @@ section {
 		button {
 			padding: 0 10px;
 			height: 50px;
-			color: $slate;
+			color: $slate!important;
 			font-size: 16px;
 			font-weight: 600;
 		}
-		button:active {
+		button:active, button.activated {
 			background: $smoke;
 		}
 		&:last-child {
@@ -1513,15 +1744,10 @@ section {
 		@include opacity(.5);
 	}
 	svg {
+		@include svg-stroke(white, 4);
 		width: 100%;
 		height: 100%;
 		padding: 8px;
-		fill: none;
-		fill-rule: evenodd;
-		stroke: white;
-		stroke-width: 4px;
-		stroke-linecap: round;
-		stroke-linejoin: round;
 	}
 	&.guru-tabs {
 		svg {
@@ -1583,7 +1809,7 @@ section {
 		font-size: smaller;
 	}
 	button:active {
-		background: rgba($charcoal,.3);
+		background: rgba($charcoal,.7);
 	}
 }
 
@@ -1600,12 +1826,8 @@ section {
 		margin: 0 auto;
 		height: 50px;
 		svg {
+			@include svg-stroke(white, 6);
 			height: 100%;
-			fill: none;
-			stroke: white;
-			stroke-width: 6px;
-			stroke-linecap: round;
-			stroke-linejoin: round;
 		}
 	}
 	button {
@@ -1699,11 +1921,11 @@ section {
 		.geolocation-icon {
 			margin-top: 3px;
 		// To add hella space to tap it (it's responsive & equalizes)
-			padding: 50px;
-    		margin-right: -50px;
+			padding: 30px;
+    		margin-right: -30px;
 		}
 	}
-	#school-list, #school-list-modal {
+	#school-list.onboarding-list, #school-list-modal {
 		ul {
 			li {
 				a {
@@ -1779,7 +2001,7 @@ section {
 				}
 			}
 		}
-		#student-home-map-container {
+		#student-home-map-container, #student-home-default-map-container {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -1885,6 +2107,12 @@ section {
 	.home-view {
 		#student-home {
 			#home-content {
+				div {
+					button {
+						width: 200px;
+						height: 200px;
+					}
+				}
 				#trending {
 					ul {
 						li {
@@ -2127,7 +2355,7 @@ section {
 						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
 		}
 	}
-	#major-list, #language-list {
+	#major-list.onboarding-list, #language-list {
 		ul {
 			margin-top: 1px;
 			li {
@@ -2173,7 +2401,7 @@ section {
 						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
 		}
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			margin: 1px 1px 0;
 			li {
@@ -2225,7 +2453,7 @@ section {
 	#course {
 		background: $charcoal;
 	}
-	#courses-list {
+	#courses-list.onboarding-list {
 		ul {
 			li {
 				label {
@@ -2256,7 +2484,7 @@ section {
 						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
 		}
 	}
-	#skills-list {
+	#skills-list.onboarding-list  {
 		ul {
 			padding: 1px;
 			height: 100%;
@@ -2371,6 +2599,15 @@ section {
 				font-weight: 700;
 				text-transform: uppercase;
 			}
+			span {
+				display: block;
+				margin: 0 auto;
+				width: 80%;
+				height: 80%;
+				max-width: 150px;
+				max-height: 150px;
+				overflow: hidden;
+			}
 			svg, img {
 				@include round;
 				@include center-xy;
@@ -2422,11 +2659,7 @@ section {
 			height: 18px;
 			padding-right: 5px;
 			path {
-				stroke: white;
-				stroke-width: 10;
-				stroke-linecap: round;
-				stroke-linejoin: round;
-				fill: none;
+				@include svg-stroke(white, 10);
 			}
 		}
 		span {
@@ -2434,7 +2667,6 @@ section {
 		}
 	}
 	#profile-desc {
-		height: 45%;
 		.profile-slider {
 			position: relative;
 			height: 100%;
@@ -2464,12 +2696,19 @@ section {
 		#profile-icon {
 			@include round;
 			display: block;
+			span {
+				display: block;
+				margin: 0 auto;
+				width: 100px;
+				height: 100px;
+				overflow: hidden;
+			}
 			img {
 				@include round;
 				display: block;
 				margin: 0 auto;
 				width: 100%;
-				max-width: 100px;
+				height: 100px;
 				padding: 5px;
 				background: rgba(white, .5);
 			}
@@ -2515,6 +2754,9 @@ section {
 					margin-bottom: 3px;
 					font-size: 20px;
 					font-weight: 400;
+				}
+				#profile-contact {
+					margin: 15px 0;
 				}
 				#profile-loc {
 					font-size: 16px;
@@ -2564,15 +2806,11 @@ section {
 					width: 35px;
 					height: 35px;
 					svg {
+						@include svg-stroke(white, 10);
 						@include rotate(45);
 						width: 35px;
 						height: 35px;
 						padding: 10px;
-						fill: none;
-						stroke: white;
-						stroke-width: 10;
-						stroke-linecap: round;
-						stroke-linejoin: round;
 					}
 				}
 			}
@@ -2646,11 +2884,10 @@ section {
 								font-weight: 600!important;
 							}
 							svg {
+								@include svg-stroke-width(3);
 								@include transform-reset;
 								padding: 0;
 								text-align: right;
-								stroke-width: 3px;
-								fill: none;
 							}
 						}
 						.list-item-detail {
@@ -2726,17 +2963,30 @@ section {
 		}
 	}
 }
+
+.guru-profile-view {
+	#profile-desc {
+		height: 64.5%;
+	}
+}
+@media screen and (min-height:568px) {
+	.guru-profile-view {
+		#profile-desc {
+			height: 53%;
+		}
+	}
+}
 @media screen and (min-height:667px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 38%;
+			height: 45%;
 		}
 	}
 }
 @media screen and (min-height:736px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: calc(100% / 3);
+			height: 41%;
 		}
 	}
 }
@@ -2915,11 +3165,7 @@ section {
 							width: 20px;
 							height: 20px;
 							path {
-								stroke: white;
-								fill: none;
-								stroke-width: 5px;
-								stroke-linecap: round;
-								stroke-linejoin: round;
+								@include svg-stroke(white, 5);
 							}
 						}
 					}
@@ -2945,10 +3191,7 @@ section {
 					height: 50px;
 					padding: 5px;
 					path {
-						fill: none;
-						stroke-width: 5px;
-						stroke-linecap: round;
-						stroke-linejoin: round;
+						@include svg-stroke-width(5);
 					}
 				}
 			}
@@ -3097,13 +3340,9 @@ section {
 						width: 100%;
 						height: 100%;
 						path {
+							@include svg-stroke($charcoal, 3);
 							@include transition(.15s ease-in-out);
 							@include opacity(.2);
-							fill: none;
-							stroke: $charcoal;
-							stroke-width: 3px;
-							stroke-linecap: round;
-							stroke-linejoin: round;
 						}
 					}
 				}
@@ -3138,11 +3377,7 @@ section {
 					width: 50px;
 					height: 50px;
 					path {
-						fill: none;
-						stroke: $bakery;
-						stroke-width: 5px;
-						stroke-linecap: round;
-						stroke-linejoin: round;
+						@include svg-stroke($bakery, 5);
 					}
 				}
 				div:last-child {
@@ -3286,12 +3521,7 @@ section {
 						height: 50px;
 						background: $slate;
 						svg {
-							stroke-linejoin: round;
-							stroke-linecap: round;
-							stroke-width: 4px;
-							stroke: white;
-							fill-rule: even-odd;
-							fill: none;
+							@include svg-stroke(white, 4);
 							width: 100%;
 							height: 100%;
 							padding: 8px;
@@ -3452,9 +3682,8 @@ section {
 								}
 							}
 							svg {
-								fill: none;
+								@include svg-stroke-width(3);
 								padding: 15px;
-								stroke-width: 3px;
 							}
 						}
 					}
@@ -3622,20 +3851,23 @@ section {
 				padding: 15px;
 				height: calc(100% - 64px);
 				svg {
-					display: block;
+					display: none;
 					width: 100%;
 					height: 100%;
 					max-height: 70px;
 					margin-bottom: 15px;
 				}
 				h2 {
-					font-size: 28px;
+					font-size: 24px;
 					font-weight: 600;
 				}
 				p {
 					margin: 10px 0 0;
-					font-size: 22px;
+					font-size: 18px;
 				}
+			}
+			button {
+				border-radius: 0 0 5px 5px;
 			}
 		}
 		.slider-pager {
@@ -3663,6 +3895,35 @@ section {
 			#guru-stats {
 				.stats-bar {
 					margin-bottom: 9px;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:568px) {
+	.guru-view {
+		.guru-tip-of-day-slide-box {
+			.card {
+				.card-content {
+					h2 {
+						font-size: 28px;
+					}
+					p {
+						font-size: 22px;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:640px) {
+	.guru-view {
+		.guru-tip-of-day-slide-box {
+			.card {
+				.card-content {
+					svg {
+						display: block;
+					}
 				}
 			}
 		}
@@ -3845,9 +4106,34 @@ body.platform-ios {
 			}
 		}
 	}
+	ion-content {
+		padding-top:20px;
+	}
+	.modal-wrapper header,
+	.header-nav,
+	.close-popup-link,
+	#guru-home h1 {
+		padding-top:20px;
+	}
+	.modal-wrapper {
+		iframe {
+			height:calc(100% - 70px) !important;
+		}
+		.support-modal ion-content {
+			margin-top:70px;
+		}
+	}
 }
 
 .android-access-edge-case {
 	bottom:64px;
 	position:absolute;
+}
+
+.onboarding-search {
+	padding: 0 10px;
+}
+
+#university-input {
+	margin: 10px 0px;
 }

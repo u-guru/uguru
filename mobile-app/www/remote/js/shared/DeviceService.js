@@ -1,3 +1,4 @@
+
 angular
 .module('sharedServices', ['ionic'])
 .factory("DeviceService", [
@@ -12,16 +13,24 @@ angular
   '$ionicHistory',
   '$templateCache',
   '$localstorage',
+  'PushService',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
 	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
-  University, Version, $ionicHistory, $templateCache, $localstorage) {
+  University, Version, $ionicHistory, $templateCache, $localstorage, PushService) {
 
-	return {
+  var currentDevice;
+  var firstTime = true;
+
+
+  return {
+    isFirstTime: isFirstTime,
+
 		readyDevice: readyDevice,
 		getDevice: getDevice,
+    doesCordovaExist: doesCordovaExist,
     getPlatform: getPlatform,
     getModel: getModel,
     getVersion: getVersion,
@@ -31,11 +40,24 @@ function DeviceService($cordovaNgCardIO,
     isAndroidDevice: isAndroidDevice,
     isAndroidBrowser: isAndroidBrowser,
     isAndroid:isAndroid,
+    isIOSDevice:isIOSDevice,
+    isIOSBrowser: isIOSBrowser,
     isIOS: isIOS,
     ios: iOSService,
     getInfo: getInfo,
-    checkUpdates: checkUpdates
+    checkUpdates: checkUpdates,
+    currentDevice: currentDevice
 	}
+
+  function isFirstTime() {
+    console.log("isFirstTime");
+
+    if(firstTime) {
+      firstTime = false;
+      return true;
+    } else return false;
+
+  }
 
 	function isMobile() {
 		return ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone();
@@ -54,7 +76,19 @@ function DeviceService($cordovaNgCardIO,
     }
 
     //needs to be both
-    return ionic.Platform.isAndroid() && isWebView;
+    return doesCordovaExist() && ionic.Platform.isAndroid() && isWebView;
+  }
+
+
+
+  function isIOSDevice() {
+    var userAgent = navigator.userAgent;
+    return !(userAgent.toLowerCase().indexOf('safari') > -1);
+  }
+
+  function isIOSBrowser () {
+    return !isIOSDevice() && ionic.Platform.isIOS();
+
   }
 
   function isIOS() {
@@ -65,6 +99,8 @@ function DeviceService($cordovaNgCardIO,
     return ionic.Platform.isAndroid();
   }
 
+
+
   function isAndroidBrowser() {
     return !isAndroidDevice() && ionic.Platform.isAndroid();
   }
@@ -74,8 +110,14 @@ function DeviceService($cordovaNgCardIO,
 	}
   // returns object
 	function getDevice() {
-		return ionic.Platform.device();
+		currentDevice = ionic.Platform.device();
+    return currentDevice;
 	}
+
+  function doesCordovaExist() {
+    return Object.keys(ionic.Platform.device()).length > 0;
+  }
+
   // returns string value
   function getPlatform() {
     //console.log("getPlatform() returns: " + ionic.Platform.platform());
@@ -114,7 +156,9 @@ function DeviceService($cordovaNgCardIO,
 
 
     var userAgent = navigator.userAgent;
-
+      if (doesCordovaExist()) {
+        onDeviceReady(scope);
+      }
 
       if(userAgent.indexOf('wv')!==-1) {
         onDeviceReady(scope);
@@ -130,26 +174,24 @@ function DeviceService($cordovaNgCardIO,
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
+    console.log("Cordova File Plugin is ready: " + cordova.file);
+    console.log("Cordova Badge Plugin is ready: " + cordova.plugins.notification.badge);
+    console.log("Cordova Media Plugin is ready: " + Media);
 
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
 
-      //the delay is for preventing components from rendering on the first go
-      $timeout(function() {
-        navigator.splashscreen.show();
-      }, 2000)
+      //always show this until we have checked for updates && there are not any
+      navigator.splashscreen.show();
     }
-
-    // if(navigator.splashscreen) {
-    //   console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
-    //   navigator.splashscreen.show();
-    // }
-
 
 		if(isMobile()) {
 
 	 		var mobileOS = getPlatform().toLowerCase();
+      if(doesCordovaExist()) {
+        PushService.init();
+      }
 		  	switch(mobileOS) {
 		  		case "ios":
 		  			iOSService.ready();
@@ -162,7 +204,7 @@ function DeviceService($cordovaNgCardIO,
 	  				WindowsService.ready();
 	  				break;
 		  	}
-
+        checkUpdates();
 		  	console.log("detected platform: " + getPlatform());
 
 		}
@@ -171,10 +213,10 @@ function DeviceService($cordovaNgCardIO,
 		// }
     checkUpdates();
 	}
-	function checkUpdates() {
+	function checkUpdates(url) {
 
     // don't update on local
-    if (LOCAL) {
+    if (LOCAL && !url) {
       console.log("running local: skipping over checkUpdates");
 
         // hide it otherwise it never would on emulators
@@ -188,7 +230,8 @@ function DeviceService($cordovaNgCardIO,
     }
     console.log("did not detect local, checking for updates");
 
-
+      //set BASE_URL to prompted one
+      BASE_URL =  url || BASE_URL
 
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version

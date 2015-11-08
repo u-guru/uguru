@@ -18,6 +18,7 @@ function Utilities($rootScope, Settings) {
 		isElementInViewport: isElementInViewport,
 		transitionEndEventName: transitionEndEventName,
 		fireBeforeEnter: fireBeforeEnter,
+		fireSchoolChange: fireSchoolChange,
 		rAF: rAF,
 		sortArrObjByKey: sortArrObjByKey,
 		checkFreeSpace: checkFreeSpace,
@@ -30,7 +31,8 @@ function Utilities($rootScope, Settings) {
 		validatePassword: validatePassword,
 		keyboardExistsAndVisible: keyboardExistsAndVisible,
 		keyboardExists: keyboardExists,
-		cordovaExists: cordovaExists
+		cordovaExists: cordovaExists,
+		numberWithCommas: numberWithCommas
 	}
 
 	function sortArrObjByKey(arr, key) {
@@ -98,7 +100,7 @@ function Utilities($rootScope, Settings) {
 
 	// Pass in an optional ID parameter for specific case handling
 	function nickMatcher(input, list, property, id) {
-		//console.log("list: " + list + " property: " + property + " id: " + id);
+
 		var matcher = new FastMatcher(list, {
 			selector: property,
 			caseInsensitive: true,
@@ -165,6 +167,12 @@ function Utilities($rootScope, Settings) {
 
 	function fireBeforeEnter() {
 		return BeforeEnterEvent;
+	}
+
+	var SchoolChangeEvent = new CustomEvent('schoolChange');
+
+	function fireSchoolChange() {
+		return SchoolChangeEvent;
 	}
 
 	function rAF() {
@@ -245,6 +253,12 @@ function Utilities($rootScope, Settings) {
 			return password.length>=6;
 		} else return false;
 	}
+
+	function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts[0];
+}
 
 }
 

@@ -13,7 +13,7 @@ function MapService() {
 	}
 
 
-	function initMap(options) {
+	function initMap(options, callback) {
 
 		function initialize() {
 
@@ -81,10 +81,17 @@ function MapService() {
 			 	map.setCenter(center);
 		});
 
+        google.maps.event.addListenerOnce(studentHomeMap, 'idle', function(){
+            setTimeout(function() {
+                callback && callback();
+            }, 1000);
+        });
+
 	}
 
-	function initStudentHomeMap(user) {
-		var drop = {
+	function initStudentHomeMap(scope, callback) {
+		var user = scope.user
+        var drop = {
                  title: "",
                  fillColor: "#69B3A5",
                  fillOpacity: 1,
@@ -123,10 +130,11 @@ function MapService() {
                 "scrollwheel": false,
                 "icons": [drop, guru],
                 "title": "Student Home Map",
-                styles: defaultMapStyles //see lib/angular-google-maps/default-map-styles.js
+                // styles: returnCateredUniversityMap(user.university),
+                styles: returnSubtleUniversityMap(user.university) //see lib/angular-google-maps/default-map-styles.js
             }
 
-            initMap(mapOptions);
+            initMap(mapOptions, callback);
 	}
 
 }

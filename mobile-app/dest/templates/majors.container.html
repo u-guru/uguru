@@ -1,60 +1,95 @@
-<section can-swipe-back='false'id="major" class="onboarding charcoal-bg full-xy">
-    <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
-        <h1 class="text-center">Select your major</h1>
-        <div class="header-nav">
-            <a class="header-nav-back" ng-click='goBackToStudentHome()'>
-                <svg viewBox="0 0 100 100">
-                    <path d="M68,86 L32,50 L68,14"></path>
-                </svg>
-                <h1>Home</h1>
-            </a>
-            <a class="header-nav-next" ng-click='nextSlide()'>
-                <h1>Courses</h1>
-                <svg viewBox="0 0 100 100">
-                    <path d="M32,86 L68,50 L32,14"></path>
-                </svg>
-            </a>
-        </div>
-        <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-            <input type="search" id='major-input-1' class='' placeholder="My major is..." ng-model="search_text.major"/>
-            <a ng-click='clearSearchInput();' class="major-input-close side-icon">
-                <i class='icon ion-close-circled'> </i>
-            </a>
-        </div>
-    </header>
-    <header ng-if='guruMajorModal.isShown();' class='third flex-center'>
-        <div class="header-nav">
-            <a class="header-down" ng-click="guruMajorModal.hide()">
-                <svg viewBox="0 0 100 100">
-                    <path d="M14,32 L50,68 L86,32"></path>
-                </svg>
-            </a>
-        </div>
-        <h1 class="text-center">Edit Majors</h1>
-        <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-            <input type="search" placeholder="My major is..." ng-model="search_text.major" />
-            <a ng-click='clearSearchInput();' class="major-input-close side-icon">
-                <i class='icon ion-close-circled'> </i>
-            </a>
-        </div>
-    </header>
-
-
-
-
-
-    <div id="major-list" buffered-scroll='increaseLimit()' class="onboarding-list">
-        <ul class="list list-item-border no-icon">
-            <li ng-if="majorInput.value.length === 0 && user.majors.length > 0" class="major-item selected" ng-repeat='major in user.majors'>
-                <a ng-click='removeMajor(major, $index)'>{{major.title || major.name || major.abbr || major.code}}</a>
-                <svg viewBox="0 0 100 100">
-                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-                </svg>
-            </li>
-            <li bind-input-list='search_text.major' class="major-item major-business" ng-repeat='major in majors | limitTo: limit'>
-                <a ng-click='majorSelected(major, $index)'>
-                {{major.title || major.name ||major.code || major.abbr || major.title}}</a>
-            </li>
-        </ul>
-    </div>
+<main id="desktop-majors" class="desktop-mode desktop-search desktop-guru-onboarding" ng-show='isDesktopMode()'>
+	<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+	<header class="desktop-header">
+		<a ng-click='goBackToStudentHome()'>
+			<svg viewBox="0 0 100 100">
+				<path d="M68,86 L32,50 L68,14"></path>
+			</svg>
+		</a>
+		<a ng-click='nextSlide()'>
+			<svg viewBox="0 0 100 100">
+				<path d="M32,86 L68,50 L32,14"></path>
+			</svg>
+		</a>
+	</header>
+	<div class="main default">
+		<form>
+			<div class="input-field">
+				<input submit='fastSelectMajor()' type="text" id='major-input-1' ng-model="search_text.major">
+				<label for="major-input-1">search majors</label>
+			</div>
+		</form>
+		<div id="major-list" class="desktop-search-list" bind-input='majors' source='majorsSource'>
+			<ul class='desktop-card-list'>
+    			<li ng-if="user.majors.length > 0 && search_text.major.length === 0" class="major-item selected" ng-repeat='major in user.majors track by major.id'>
+    				<a ng-click='removeMajor(major, $index)'>
+                        {{major.title || major.name || major.abbr || major.code}}
+        				<svg viewBox="0 0 100 100">
+        					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+        				</svg>
+                    </a>
+    			</li>
+    			<li class="major-item" ng-repeat='major in majors | limitTo: 10 track by major.id'>
+    				<a ng-click='majorSelected(major)'>
+                        {{major.title || major.name || major.abbr || major.code}}
+                    </a>
+    			</li>
+			</ul>
+		</div>
+	</div>
+</main>
+<section can-swipe-back='false' id="major" class="onboarding charcoal-bg full-xy" ng-show='!isDesktopMode()'>
+	<header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
+		<h1 class="text-center">Select your major</h1>
+		<div class="header-nav">
+			<a class="header-nav-back" ng-click='goBackToStudentHome()'>
+				<svg viewBox="0 0 100 100">
+					<path d="M68,86 L32,50 L68,14"></path>
+				</svg>
+				<h1>Home</h1>
+			</a>
+			<a class="header-nav-next" ng-click='nextSlide()'>
+				<h1 class='ng-class:{"some-class-here":true || evaluateSomeFunction() }'>Next</h1>
+				<svg viewBox="0 0 100 100">
+					<path d="M32,86 L68,50 L32,14"></path>
+				</svg>
+			</a>
+		</div>
+		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+			<input submit='fastSelectMajor()' type="search" id='major-input-1' class='' placeholder="My major is..." ng-model="search_text.major" />
+			<a ng-if='search_text.major.length > 0' ng-click='clearSearchInput();' class="major-input-close side-icon">
+				<i class='icon ion-close-circled'> </i>
+			</a>
+		</div>
+	</header>
+	<header ng-if='guruMajorModal.isShown();' class="third flex-center">
+		<div class="header-nav">
+			<a class="header-down" ng-click="guruMajorModal.hide()">
+				<svg viewBox="0 0 100 100">
+					<path d="M14,32 L50,68 L86,32"></path>
+				</svg>
+			</a>
+		</div>
+		<h1 class="text-center">Edit Majors</h1>
+		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+			<input type="search" placeholder="My major is..." ng-model="search_text.major" />
+			<a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.major.length > 0'>
+				<i class='icon ion-close-circled'> </i>
+			</a>
+		</div>
+	</header>
+	<div id="major-list" bind-input='majors' source='majorsSource' class="onboarding-list">
+		<ul class="list list-item-border no-icon">
+			<li ng-if="user.majors.length > 0 && search_text.major.length === 0" class="major-item selected" ng-repeat='major in user.majors track by major.id'>
+				<a ng-click='removeMajor(major, $index)'>{{major.title || major.name || major.abbr || major.code}}</a>
+				<svg viewBox="0 0 100 100">
+					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+				</svg>
+			</li>
+			<li class="major-item" ng-repeat='major in majors | limitTo: 10 track by major.id'>
+				<a ng-click='majorSelected(major)'>
+                {{major.title || major.name || major.abbr || major.code}}</a>
+			</li>
+		</ul>
+	</div>
 </section>

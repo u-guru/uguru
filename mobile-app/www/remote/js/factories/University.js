@@ -1,6 +1,10 @@
 angular.module('uguru.rest', [])
 .factory('University', ['Restangular', function(Restangular) {
-    var University
+    var University;
+    var majors = [];
+    var courses = [];
+    var selectedID = null;
+    var selected = {};
     University = {
         get: function() {
             return Restangular
@@ -17,11 +21,28 @@ angular.module('uguru.rest', [])
         getTargetted: function() {
             return targettedUniversities;
         },
+        getTargettedAccessCodes: function(){
+            var allAccessCodes = [];
+            var targettedUniversitiesCopy = targettedUniversities.slice();
+            for (var i = 0 ; i < targettedUniversitiesCopy.length; i++) {
+                indexTargetAccess = targettedUniversitiesCopy[i].school_mascot_name;
+                if (indexTargetAccess && indexTargetAccess.length) {
+                    var formattedCode = (indexTargetAccess + '2015').replace(" ", "").replace(" ", "").toLowerCase();
+                    allAccessCodes.push(formattedCode);
+                }
+            }
+            console.log(allAccessCodes.length, 'access codes found');
+            return allAccessCodes;
+        },
         getSorted: function() {
             return sortByRank(targettedUniversities);
         },
-        majors: [],
-        courses: []
+        majors: majors,
+        courses: majors,
+        hasNoMajors:hasNoMajors,
+        hasNoCourses:hasNoCourses,
+        selectedID: selectedID,
+        selected: selected
 
     };
     return University;
@@ -36,6 +57,14 @@ function sortByRank(list) {
     return 0;
   }
   return list.sort(compareRank);
+}
+
+function hasNoCourses(list) {
+    return University.courses.length === 0;
+}
+
+function hasNoMajors(list) {
+    return University.majors.length === 0;
 }
 
 var targettedUniversities = [
@@ -1247,7 +1276,7 @@ var targettedUniversities = [
         "forbes_url": null,
         "id": 1056,
         "latitude": "34.126615",
-        "logo_url": "http://i.forbesimg.com/media/lists/colleges/occidental-college_50x50.jpg",
+        "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Occidental_College_Seal_-_Transparent.png/64px-Occidental_College_Seal_-_Transparent.png",
         "longitude": "-118.212392",
         "name": "Occidental College",
         "num_courses": 1057,
@@ -1258,7 +1287,7 @@ var targettedUniversities = [
         "school_color_two": "black",
         "school_local_name": null,
         "school_mascot_name": "Oswald the Tiger",
-        "seal_url": "//upload.wikimedia.org/wikipedia/en/thumb/8/81/Seal-OccidentalCollege.png/200px-Seal-OccidentalCollege.png",
+        "seal_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Occidental_College_Seal_-_Transparent.png/64px-Occidental_College_Seal_-_Transparent.png",
         "state": "CA",
         "us_news_ranking": 80,
         "variations": null,

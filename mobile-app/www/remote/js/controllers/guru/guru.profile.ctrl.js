@@ -23,10 +23,15 @@ angular.module('uguru.guru.controllers')
   'RankingService',
   'TipService',
   'Category',
+  '$ionicSlideBoxDelegate',
+  'DeviceService',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
-  RankingService, TipService, Category) {
+  RankingService, TipService, Category, $ionicSlideBoxDelegate,
+  DeviceService) {
+
+    PopupService.initDefaults();
 
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
@@ -119,6 +124,26 @@ angular.module('uguru.guru.controllers')
       $scope.refreshTipsAndRanking($scope.user);
       $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
 
+    }
+    $scope.removeGuruSkill = function(skill,index)
+    {
+        if (!confirm('Remove ' + skill.name + '?')) {
+          return;
+        }
+      // delete from local
+       $scope.user.guru_subcategories.splice(index, 1);
+
+       // update server 
+       $scope.loader.show();
+
+       var confirmCallback = function() {
+         $scope.success.show(0, 2000, skill.name+ ' successfully removed');
+       }
+
+       // $timeout(function() {
+       $scope.refreshTipsAndRanking($scope.user);
+       $scope.user.updateAttr('remove_guru_subcategory', $scope.user, skill, confirmCallback, $scope);
+       // }, 200);
     }
 
     $scope.removeGuruSubcategory = function(subcategory) {
@@ -240,7 +265,10 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.launchContactGuruModal = function() {
-      $scope.contactGuruModal.show();
+
+      if (!$scope.profile.edit_mode) {
+        $scope.contactGuruModal.show();
+      }
     }
 
      $scope.launchAddTutoringPlatformsModal = function(experience) {
@@ -295,7 +323,7 @@ angular.module('uguru.guru.controllers')
         }).then(function(modal) {
             if (experience) {
               $scope.experience = experience;
-              $scope.experience_index = index;
+              // $scope.experience_index = index;
             } else {
               $scope.experience = {
                 name: '',
@@ -343,12 +371,15 @@ angular.module('uguru.guru.controllers')
             $scope.guruSkillsModal = modal;
       })
 
-      var updateScope = function(categories) {
+      var updateCategoriesToScope = function(categories) {
               $scope.categories = categories;
       }
-      $scope.categories = Category.categories || $scope.getCategories(updateScope) || [];
+      $scope.categories = Category.categories || $scope.getCategories(updateCategoriesToScope) || [];
 
-
+      var updateCoursesToScope = function(guru_courses) {
+        $scope.courses = guru_courses;
+      }
+      $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
     }
 
     var getIonicSideMenuOpenRatio = function() {
@@ -406,6 +437,16 @@ angular.module('uguru.guru.controllers')
         $scope.languageInput = document.querySelector('#language-input')
       }, 250)
     }
+
+    $scope.closeContactGuruModal = function()
+    {
+        $scope.contactGuruModal.hide();
+         $ionicSlideBoxDelegate.update();
+    };
+
+
+
+
 
     $scope.connectWithFacebook = function() {
       $scope.loader.show();
@@ -510,9 +551,10 @@ angular.module('uguru.guru.controllers')
     $scope.takeProfilePhoto = function(index) {
 
 
-      if ($scope.platform.mobile) {
+      if (DeviceService.doesCordovaExist() && $scope.platform.mobile) {
         $scope.root.vars.profile_url_changed = true;
-        Camera.takePicture($scope, index, true);
+        var elemId = 'guru-profile-img';
+        Camera.takePicture($scope, index, elemId);
       } else {
         var element = document.getElementById('file-input-guru-edit-profile')
         element.click();
@@ -525,7 +567,7 @@ angular.module('uguru.guru.controllers')
 
 
       if ($scope.platform.mobile) {
-        Camera.takePicture($scope, index, true, $scope.user.id);
+        Camera.takePicture($scope, index, $scope.user.id);
       } else {
         var element = document.getElementById('file-input-guru-add-transcript');
         element.click();
@@ -603,6 +645,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.removeGuruCourseAndUpdate = function(course, index) {
 
+      if (!confirm('Remove ' + course.name + '?')) {
+        return;
+      }
+
+
       var removedCourse = $scope.user.guru_courses.splice(index, 1);
 
       $scope.loader.show();
@@ -623,7 +670,6 @@ angular.module('uguru.guru.controllers')
 
     }
 
-
     $scope.launchConfirmEmailPopup = function() {
 
       PopupService.open('confirmEmail', callback);
@@ -636,13 +682,14 @@ angular.module('uguru.guru.controllers')
             PopupService.close('confirmEmail');
           } else {
             alert("Please enter a valid email.");
+             $scope.popupInput.emailConfirm = "";
+            return;
           }
       }
     }
 
 
     $scope.confirmPhonePopup = function() {
-
       PopupService.open('confirmPhone', callback);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();
@@ -651,7 +698,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.validateAndSendPhoneConfirmation = function() {
-
+      console.log("Confirm")
       //validate
       if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
 
@@ -696,9 +743,9 @@ angular.module('uguru.guru.controllers')
 
       } else {
         alert('Please enter valid phone number.');
+        // $scope.popupInput.phoneConfirm = "";
         return;
       }
-
     }
 
     $scope.resendPhoneConfirmation = function() {
@@ -719,6 +766,7 @@ angular.module('uguru.guru.controllers')
 
       } else {
         alert('Please enter valid phone number');
+        $scope.popupInput.phoneConfirm = "";
         return;
       }
 
@@ -726,11 +774,14 @@ angular.module('uguru.guru.controllers')
     }
 
 
+    $scope.$on('$ionicView.beforeEnter', function() {
 
+
+    })
 
 
     $scope.$on('$ionicView.enter', function() {
-
+          $ionicSlideBoxDelegate.update();
           $scope.refreshTipsAndRanking($scope.user);
 
           $timeout(function() {
@@ -744,7 +795,8 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
-
+      console.log(University.courses.length, 'courses in universities');
+      $ionicSlideBoxDelegate.update();
       $timeout(function() {
         $scope.initModalsAfterEnter();
       }, 500)

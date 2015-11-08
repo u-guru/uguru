@@ -1,5 +1,5 @@
 angular.module('uguru.directives')
-.directive('submit', function ($parse) {
+.directive('submit', function ($parse, DeviceService, $timeout) {
 
 	function link ($scope, element, attr) {
 
@@ -7,16 +7,22 @@ angular.module('uguru.directives')
 		var handler = $parse(attr.submit);
 
 		function exec(e) {
+
 			var key = e.keyCode || e.key || e.which;
 			if (key === 13) {
 
-				if ($scope.platform.mobile) {
+				if (DeviceService.doesCordovaExist()) {
 				  cordova.plugins.Keyboard.close();
 				}
-				$scope.$apply(function() {
-				handler($scope);
-				});
+				$timeout(function() {
+					handler($scope);
+				}, 0);
+				// $scope.$apply(function() {
+				// handler($scope);
+				// });
 			}
+			e.stopPropagation();
+			e.preventDefault();
 		}
 	}
 

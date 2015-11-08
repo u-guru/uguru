@@ -19,29 +19,32 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	return {
 		ready: ready,
 		showStatusBar: showStatusBar,
-		enableGPS: enableGPS
+		enableGPS: enableGPS,
+		setStatusBarText:setStatusBarText
 	}
 
 	function ready() {
 
 
-		hideSplashScreen(1000);
+		// hideSplashScreen(1000);
 		$timeout(function() {
 			showStatusBar();
 		}, 3000)
 
 
-		if(cordova.plugins.Keyboard) {
+
+		if( cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-			cordova.plugins.Keyboard.disableScroll(true);
+			cordova.plugins.Keyboard.disableScroll(false);
+			// cordova.plugins.Keyboard.disableScroll(true);
 		}
+
 
 
 
 	}
 
 	function showStatusBar() {
-		console.log('status bar..')
 		if(window.StatusBar) {
 			window.StatusBar.show();
 			window.StatusBar.overlaysWebView(true);

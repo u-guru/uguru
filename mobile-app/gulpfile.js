@@ -22,10 +22,8 @@ var rename = require('gulp-rename');
 var gutil = require('gulp-util');
 var karma = require('karma').server;
 var preprocess = require('gulp-preprocess');
-
 var replace = require('gulp-replace-task');
 var fs = require('fs');
-
 /**
  * Parse arguments
  */
@@ -75,8 +73,8 @@ gulp.task('replace', function() {
           replacement: 'adjustPan'
         },
         {
-          match: /Theme.Black.NoTitleBar/g,
-          replacement: 'Theme.Light.NoTitleBar'
+          match: /android:theme="@android:style\/Theme.Black.NoTitleBar/g,
+          replacement: 'android:theme="@android:style/Theme.Translucent.NoTitleBar'
         }
         ]
       }))
@@ -165,16 +163,14 @@ gulp.task('styles', function() {
                 { style: 'expanded' };
   var cssStream1 = gulp.src('www/remote/css/ionic.app.min.css');
   var cssStream2 = gulp.src('www/remote/css/sass/default.css');
-  var cssStream3 = gulp.src('www/remote/css/sass/style.css');
-  var cssStream4 = gulp.src('www/remote/css/sass/views/modals.css');
-  // var cssStream5 = gulp.src('www/remote/css/sass/views/guru-profile.css');
-  var cssStream6 = gulp.src('www/remote/css/sass/ios.css');
-  var cssStream7 = gulp.src('www/remote/css/sass/components/map.css');
+  var cssStream3 = gulp.src('www/remote/css/sass/material.css');
+  var cssStream4 = gulp.src('www/remote/css/sass/desktop.css');
+  var cssStream5 = gulp.src('www/remote/css/sass/style.css');
 
 
 
   return streamqueue({ objectMode: true }, cssStream1, cssStream2, cssStream3,
-    cssStream4, cssStream6, cssStream7).pipe(plugins.concat('main.css'))
+    cssStream4, cssStream5).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -267,13 +263,15 @@ gulp.task('scripts', function() {
       "js/services/*.js",
       "js/services/hardware/*.js",
       "js/shared/GeolocationService.js",
+
+      "js/shared/DeviceService.js", //first shared service
+      "js/shared/Settings.js",
+      "js/shared/Utilities.js",
       "!js/shared/*LogService.js",
-      "js/shared/DeviceService.js",
       "js/shared/uTracker.js",
       "js/shared/RankingService.js",
       "js/shared/TipService.js",
       "js/shared/Settings.js",
-      "js/shared/Utilities.js",
       "js/directives/*.js",
       "js/device/*.js",
       "js/shared/*.js",
@@ -284,9 +282,8 @@ gulp.task('scripts', function() {
       "js/controllers/student/*.js",
       "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
-      // "js/controllers/student/settings/*.js",
-      // "js/controllers/util/util.university.ctrl.js",
-      "js/controllers/util/*.js",
+      "js/controllers/util/*js",
+      // "js/controllers/util/*.js",
       // "js/controllers/onboarding/onboarding.request-location.ctrl.js",
       // "js/controllers/onboarding/*.js"
       ], { cwd: 'www/remote' })

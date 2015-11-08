@@ -107,6 +107,18 @@ class UniversityMajorsView(restful.Resource):
         departments = u.departments
         return departments, 200
 
+class UniversityPopularCoursesView(restful.Resource):
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def get(self, _id):
+        u = University.query.get(_id)
+        if not u:
+            abort(404)
+        else:
+            courses = u.popular_courses
+            if not courses:
+                courses = u.courses
+            return courses, 200
+
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
     def get(self, _id):
@@ -122,8 +134,6 @@ class UniversityCoursesView(restful.Resource):
             return u.courses, 200
         else:
             return university_courses, 200
-
-
         # from static.data.berkeley_courses import courses
 
 class OneDeviceView(restful.Resource):
@@ -2056,7 +2066,9 @@ class UserNewView(restful.Resource):
     def post(self):
 
         fb_user = email_user = None
-        print request.json
+        guru_courses_json = majors_json = guru_subcategories_json = []
+
+
         if request.json.get('email'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 
@@ -2122,6 +2134,32 @@ class UserNewView(restful.Resource):
 
         db_session.add(user)
         db_session.commit()
+
+        majors_json = request.json.get('majors')
+        if majors_json:
+            major_ids = [major.get('id') for major in majors_json]
+            user.add_majors(major_ids)
+            db_session.commit()
+            print user.name, 'has', len(user.departments), 'majors'
+
+        guru_courses_json = request.json.get('guru_courses')
+        if  guru_courses_json:
+            guru_course_ids = [guru_course.get('id') for guru_course in guru_courses_json]
+            user.add_guru_courses(guru_course_ids)
+            db_session.commit()
+            print user.name, 'has', len(user.guru_courses), 'guru courses'
+
+        guru_subcategories_json = request.json.get('guru_subcategories')
+        if  guru_subcategories_json:
+            guru_subcategories_ids = [guru_subcategory.get('id') for guru_subcategory in guru_subcategories_json]
+            user.add_guru_subcategories(guru_subcategories_ids)
+            db_session.commit()
+            print user.name, 'has', len(user.guru_subcategories), 'subcategories'
+
+
+        if request.json.get('profile_url'):
+            user.set_profile_url(request.json.get('profile_url'))
+            db_session.commit()
 
         if device:
             user.current_device = device
@@ -2728,7 +2766,48 @@ class AdminViewGithubLabels(restful.Resource):
 
         pass
 
+class UniversityFoodView(restful.Resource):
+    def get(self, _id):
+        import json
+        file = open('app/static/data/food_router.json')
 
+        university_food_dict = json.load(file)
+        university_food_url = university_food_dict.get(str(_id))
+
+        if not university_food_url:
+            return json.dumps({"error": "Food URL does not exist for university id %s" % _id}), 422
+
+        return json.dumps({"food_url":university_food_url}), 200
+
+
+class MusicPlayerPlayListView(restful.Resource):
+
+    #get all issues + labels
+    def get(self, auth_token):
+        from app.lib.soundcloud_wrapper import uSoundCloudGetPlaylistQuery
+
+        if not request.json:
+            abort(404)
+
+        song_name = request.json.get('song_name')
+        artist_name = request.json.get('artist_name')
+
+        if not song_name and not artist_name:
+            abort(404)
+
+        print 'querying %s by %s' % (song_name, artist_name)
+        playlist_arr = uSoundCloudGetPlaylistQuery(song_name, artist_name)
+        return json.dumps(playlist_arr, indent=4), 200
+
+
+class TransitGuruTransitData(restful.Resource):
+    def get(self, auth_token):
+        from app.lib.transit_wrapper import getRealTimeTransitData
+
+        transit_arr = getRealTimeTransitData()
+        if not transit_arr:
+            abort(404)
+        return json.dumps(transit_arr, indent=4), 200
 
 
 class AdminViewGithubIssues(restful.Resource):
@@ -2765,10 +2844,17 @@ class AdminViewGithubIssues(restful.Resource):
         labels = request.json.get('labels')
         title = request.json.get('title')
         body = request.json.get('body')
+        print request.json
+        if request.json.get('create_issue'):
+            from app.lib.github_client import init_github, create_issue
+            g_repo = init_github()
+            issue = create_issue(g_repo, labels, title, body)
 
-        from app.lib.github_client import init_github, create_issue
-        g_repo = init_github()
-        issue = create_issue(g_repo, labels, title, body)
+        if request.json.get('send_email'):
+            from app.emails import send_errors_email
+            email_address = request.json.get('default_email')
+            body = title + '\n\n' + body
+            send_errors_email(body, client_only=True, default_email=email_address)
 
         return jsonify(success=True)
 
@@ -2858,8 +2944,11 @@ class AdminUniversityAddRecipientsView(restful.Resource):
 
 class GithubIssueView(restful.Resource):
     def post(self):
+        print request.json
+        issue_title = 'JS PRODUCTION ERROR:'
+        if request.json.get('issue_title'):
+            issue_title += request.json.get('issue_title')
 
-        issue_title = 'JS PRODUCTION ERROR:' + request.json.get('issue_title')
         issue_body = request.json.get('issue_body')
         device_details = request.json.get('device_info')
         user_details = request.json.get('user_details')
@@ -2880,8 +2969,10 @@ class GithubIssueView(restful.Resource):
         from lib.github_client import init_github, create_issue
         from emails import send_errors_email
         gh = init_github('uguru')
-        create_issue(gh, issues_arr, issue_title, issue_body)
-        send_errors_email(issue_body, True)
+        if request.json.get('create_issue'):
+            create_issue(gh, issues_arr, issue_title, issue_body)
+        if request.json.get('send_email'):
+            send_errors_email(issue_body, True, request.json.get('default_email'))
         return jsonify(success=[True])
 
 
@@ -2916,6 +3007,17 @@ class AdminDevicePushTestView(restful.Resource):
 
         return jsonify(success=[True])
 
+class AdminUniversityPopularCourseView(restful.Resource):
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def get(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        university = University.query.get(uni_id)
+        if university:
+            return university.popular_courses
+        abort(404)
+
 class AdminUniversityCourseView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -2932,6 +3034,52 @@ class AdminUniversityCourseView(restful.Resource):
         if university:
             return university.courses
         abort(404)
+
+
+    @marshal_with(AdminUniversityDeptCourseSerializer)
+    def put(self, auth_token, uni_id):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+        university = University.query.get(uni_id)
+
+        courses = request.json
+        print len(courses)
+        if not request.json:
+            abort(404)
+
+        ## create local version so don't have to query everytime
+        university_courses = university.courses
+
+        def getDbCourse(_id, university_courses):
+            for course in university_courses:
+                if course.id == _id:
+                    return course
+
+        amount_skipped = 0
+        for course in courses:
+            if course.get('id'):
+                course_id = course.get('id')
+                db_course = getDbCourse(int(course_id), university_courses)
+                if db_course and db_course.id:
+                    db_course.is_popular = True
+                    if not db_course.short_name:
+                        db_course.short_name = course.get('short_name')
+                    if not db_course.name:
+                        db_course.name = course.get('name')
+                    db_course.times_mentioned = course.get('frequency')
+                    if course.get('pc_variations'):
+                        db_course.variations = " ".join(course.get('pc_variations'))
+                    print db_course.short_name, course.get('short_name'), 'is now popular'
+                else:
+                    amount_skipped += 1
+
+        db_session.commit()
+        print "%s courses out of %s processed & popularized"% (len(courses) - amount_skipped, len(courses))
+
+        return university.popular_courses
+
+
+
 
 class AdminOneUniversityView(restful.Resource):
 
@@ -3223,14 +3371,17 @@ api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(CategoryListView, '/api/v1/categories')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses')
+api.add_resource(UniversityPopularCoursesView, '/api/v1/universities/<int:_id>/popular_courses')
 api.add_resource(MajorListView, '/api/v1/majors')
+api.add_resource(UniversityFoodView, '/api/v1/universities/<int:_id>/food_url')
 api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')
 api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
 api.add_resource(GithubIssueView, '/api/v1/github')
 api.add_resource(HomeSubscribeView, '/api/v1/web/home/subscribe')
-
+api.add_resource(TransitGuruTransitData, '/api/v1/<string:auth_token>/transit')
+api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')
@@ -3238,6 +3389,7 @@ api.add_resource(AdminUserView, '/api/admin/users/')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/courses')
+api.add_resource(AdminUniversityPopularCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/popular_courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')

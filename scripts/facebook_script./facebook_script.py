@@ -4,7 +4,6 @@ from dryscrape.mixins import HtmlParsingMixin
 
 
 USERNAME = "raisethehell_biplov@yahoo.com"
-PASSWORD = "5102217320vb"
 output_path = "output.json"
 GROUP_ID = "calhacks2attendees"
 huge_arr = []

@@ -1,11 +1,10 @@
 angular.module('sharedServices')
 .factory('uTracker', [
-	'DeviceService',
 	uTracker
 	]);
 
 // TODO: we'll need to find a way to hold/queue the current events and fire for later
-function uTracker(DeviceService) {
+function uTracker() {
 
 	var mixpanel, localytics;
 	var trackers = 	[
@@ -40,7 +39,7 @@ function uTracker(DeviceService) {
 	// This sets the API token for the analytics provider
 
 	function init(tracker, token) {
-		if(DeviceService.isMobile() && !LOCAL) {
+		if(!LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					console.log("initializing mixpanel tracking: " + defaultTokens.mp);
@@ -65,7 +64,7 @@ function uTracker(DeviceService) {
 	// This sets the unique userID for the analytics provider
 
 	function setUser(tracker, userID) {
-		if(DeviceService.isMobile() && !LOCAL) {
+		if(!LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					//DeviceService.getUUID();
@@ -82,21 +81,22 @@ function uTracker(DeviceService) {
 		} else return;
 	}
 
-	function sendDevice(tracker) {
-		if(DeviceService.isMobile() && !LOCAL) {
+	function sendDevice(tracker, deviceObject) {
+		if(!LOCAL) {
 			switch(tracker) {
 				case 'mp':
-					var deviceUUID = DeviceService.getUUID;
-					if (deviceUUID === null || deviceUUID === undefined) deviceUUID = 'undefined';
+					// var deviceUUID = DeviceService.getUUID;
+					// if (deviceUUID === null || deviceUUID === undefined) deviceUUID = 'undefined';
 					mixpanel.people.set(
-						{
-						    "$last_login": new Date(),
-						    '$Device_UUID': DeviceService.getUUID(),
-						    '$Device_Model': DeviceService.getModel(),
-						    '$Device_Platform': DeviceService.getPlatform(),
-						    '$Device_Version': DeviceService.getVersion()
-						    //'$Network_State': navigator.connection.type || 'undefined'
-						}
+						deviceObject
+						// {
+						//     "$last_login": new Date(),
+						//     '$Device_UUID': DeviceService.getUUID(),
+						//     '$Device_Model': DeviceService.getModel(),
+						//     '$Device_Platform': DeviceService.getPlatform(),
+						//     '$Device_Version': DeviceService.getVersion()
+						//     //'$Network_State': navigator.connection.type || 'undefined'
+						// }
 					)
 					break;
 				case 'lo': 
@@ -113,7 +113,7 @@ function uTracker(DeviceService) {
 	// Can be pass in either a key-value pair, or an entire object
 	function set(tracker, data) {
 
-		if(DeviceService.isMobile() && !LOCAL) {
+		if(!LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					if(typeof data === 'object') {
@@ -133,7 +133,7 @@ function uTracker(DeviceService) {
 	// Additional key-value pairs can be passed in as a data object
 
 	function track(tracker, event, data) {
-		if(DeviceService.isMobile() && !LOCAL) {
+		if(!LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					mixpanel.track(event, data);

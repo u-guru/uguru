@@ -17,13 +17,15 @@ angular.module('uguru.util.controllers')
   'ThrottleService',
   'Utilities',
   '$ionicScrollDelegate',
+  'CordovaPushWrapper',
   AccessController
   ]);
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-  $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate) {
+  $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate,
+  CordovaPushWrapper) {
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
@@ -36,6 +38,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
   $scope.platform.android = DeviceService.isAndroid();
+  $scope.root.vars.guru_mode =false;
+
+  $scope.testAlert = function() {
+    confirm("Can you click on me?");
+  }
 
 
   $scope.checkAccessCode = function(code) {
@@ -52,7 +59,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
       $scope.redeemRecentlyPressed = false;
-      if ($scope.platform.mobile) {
+      if (DeviceService.doesCordovaExist()) {
         cordova.plugins.Keyboard.close();
       }
 
@@ -60,18 +67,18 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $timeout(function() {
         $scope.loader.hide();
         $timeout(function() {
-          $scope.loader.showSuccess('Access Granted', 2500);
+          $scope.loader.showSuccess('Access Granted', 2000);
         }, 250)
         $timeout(function() {
           $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
         }, 1500);
-      }, 700)
+      }, 500)
 
     } else {
       $scope.loader.hide();
       var errorTextElem = document.getElementById('input-error-text')
       errorTextElem.style.opacity = 1;
-      errorTextElem.innerHTML = 'Incorrect access code';
+      errorTextElem.innerHTML = 'Incorrect access code!';
       $scope.access.codeInput = '';
 
       //fadeout after 500 seconds
@@ -88,21 +95,28 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     }
 
   };
-
+ ////
   $scope.accessInputOnFocus = function() {
     $scope.inputFocused = true;
+    // this is a device
     if (Utilities.cordovaExists && Utilities.keyboardExistsAndVisible) {
 
-      if (DeviceService.isIOS()) {
+
+      if (DeviceService.isIOSDevice()) {
+
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        window.scrollTo(0, window.innerHeight);
+
       }
 
     } else {
 
-      //ios w/ keyboard
-      if (DeviceService.isIOS()) {
+
+
+      if (DeviceService.isIOSDevice()) {
         window.scrollTo(0, window.innerHeight - 224 - 20);
       } else {
+      // this is the case for ios mobile safari or android softkeyboard
         window.scrollTo(0, window.innerHeight);
       }
 
@@ -110,16 +124,12 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   }
 
-    window.addEventListener('native.keyboardshow', keyboardShowHandler);
-
-    function keyboardShowHandler(e){
-        alert('Keyboard height is: ' + e.keyboardHeight);
-    }
 
 
   $scope.$on('$ionicView.loaded', function() {
 
     AnimationService.accessInput = document.querySelector("access-code-bar");
+    CordovaPushWrapper.registerDevice($scope)
 
   })
 

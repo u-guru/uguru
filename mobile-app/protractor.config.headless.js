@@ -10,13 +10,13 @@ exports.config = {
                  * Can be used to specify the phantomjs binary path.
                  * This can generally be ommitted if you installed phantomjs globally.
                  */
-                'phantomjs.binary.path': require('phantomjs').path,
+                'phantomjs.binary.path': require('phantomjs').path
 
                 /*
                  * Command line args to pass to ghostdriver, phantomjs's browser driver.
                  * See https://github.com/detro/ghostdriver#faq
                  */
-                'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+                // 'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
          },
         specs: [
                // 'www/remote/tests/e2e/globals.js',
@@ -28,10 +28,22 @@ exports.config = {
           //      'www/remote/tests/e2e/question_test.js'
               //'www/remote/tests/e2e/university_test.js'
              // 'www/remote/tests/e2e/task_test.js'
-             'www/remote/tests/e2e/onboarding_test.js'
+                 'www/remote/tests/e2e/onboarding_test.js',
+                'www/remote/tests/e2e/sign_test.js',
+                'www/remote/tests/e2e/setting_test.js'
 
 
         ],
+        suites:
+        {
+          //onboarding
+          o :'www/remote/tests/e2e/onboarding_test.js',
+          //sign
+          l :'www/remote/tests/e2e/sign_test.js',
+          //Setting
+          s :'www/remote/tests/e2e/setting_test.js'
+
+        },
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
