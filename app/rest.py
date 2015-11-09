@@ -3267,8 +3267,12 @@ class AdminUniversityDeptCoursesView(restful.Resource):
                 d.num_courses = len(d.courses)
             u.num_courses = len(u.courses)
             u.num_popular_courses = len(u.popular_courses)
+            db_session.commit()
 
-            return d.courses, 200
+            if d:
+                return d.courses, 200
+            else:
+                return u.popular_courses
 
         return "UNAUTHORIZED", 201
 
