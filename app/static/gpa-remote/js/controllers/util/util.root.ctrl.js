@@ -134,6 +134,8 @@ angular.module('uguru.util.controllers')
         $scope.user.updateObj = User.updateObj;
         $scope.user.grades = $scope.user.grades || [];
         $scope.user.User = User;
+
+        $scope.user.settings = $scope.user.settings || {default_units: 4, num_sessions:2 };
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
         $scope.data = {};

@@ -119,20 +119,6 @@ class UniversityPopularCoursesView(restful.Resource):
                 courses = u.courses
             return courses, 200
 
-class UniversityFoodView(restful.Resource):
-    def get(self, _id):
-        import json
-        file = open('app/static/data/food_router.json')
-
-        university_food_dict = json.load(file)
-        university_food_url = university_food_dict.get(str(_id))
-
-        if not university_food_url:
-            return json.dumps({"error": "Food URL does not exist for university id %s" % _id}), 422
-
-        return json.dumps({"food_url":university_food_url}), 200
-
-
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
     def get(self, _id):
@@ -2780,7 +2766,48 @@ class AdminViewGithubLabels(restful.Resource):
 
         pass
 
+class UniversityFoodView(restful.Resource):
+    def get(self, _id):
+        import json
+        file = open('app/static/data/food_router.json')
 
+        university_food_dict = json.load(file)
+        university_food_url = university_food_dict.get(str(_id))
+
+        if not university_food_url:
+            return json.dumps({"error": "Food URL does not exist for university id %s" % _id}), 422
+
+        return json.dumps({"food_url":university_food_url}), 200
+
+
+class MusicPlayerPlayListView(restful.Resource):
+
+    #get all issues + labels
+    def get(self, auth_token):
+        from app.lib.soundcloud_wrapper import uSoundCloudGetPlaylistQuery
+
+        if not request.json:
+            abort(404)
+
+        song_name = request.json.get('song_name')
+        artist_name = request.json.get('artist_name')
+
+        if not song_name and not artist_name:
+            abort(404)
+
+        print 'querying %s by %s' % (song_name, artist_name)
+        playlist_arr = uSoundCloudGetPlaylistQuery(song_name, artist_name)
+        return json.dumps(playlist_arr, indent=4), 200
+
+
+class TransitGuruTransitData(restful.Resource):
+    def get(self, auth_token):
+        from app.lib.transit_wrapper import getRealTimeTransitData
+
+        transit_arr = getRealTimeTransitData()
+        if not transit_arr:
+            abort(404)
+        return json.dumps(transit_arr, indent=4), 200
 
 
 class AdminViewGithubIssues(restful.Resource):
@@ -3208,22 +3235,25 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
             d = Department.query.get(dept_id)
             if not d:
-                return "MISSING DATA", 202
+                print "MISSING DATA", 202
 
             # parse the response
-            course_list_json = json.loads(request.json)
+            course_list_json = request.json
             course_names = [course.name for course in u.courses]
 
             already_exists_course = 0
             for course_json in course_list_json:
-                if course_json['name'] in course_names:
+                if course_json.get('code') in course_names:
+                    print 'skipping %s' % course_json['name']
                     already_exists_course += 1
                     continue
 
                 course = Course()
-                course.department_id = d.id
+                if d:
+                    course.department_id = d.id
                 course.university_id = u.id
                 # course.variations = "|".join(course_json.get('variations'))
+                course.times_mentioned = course_json.get('frequency')
                 course.is_popular = course_json.get('is_popular')
                 course.source_url = course_json.get('course_url')
                 course.short_name = course_json.get('code')
@@ -3233,10 +3263,16 @@ class AdminUniversityDeptCoursesView(restful.Resource):
                 db_session.add(course)
 
             db_session.commit()
-            d.num_courses = len(d.courses)
+            if d:
+                d.num_courses = len(d.courses)
             u.num_courses = len(u.courses)
+            u.num_popular_courses = len(u.popular_courses)
+            db_session.commit()
 
-            return d.courses, 200
+            if d:
+                return d.courses, 200
+            else:
+                return u.popular_courses
 
         return "UNAUTHORIZED", 201
 
@@ -3353,7 +3389,8 @@ api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
 api.add_resource(GithubIssueView, '/api/v1/github')
 api.add_resource(HomeSubscribeView, '/api/v1/web/home/subscribe')
-
+api.add_resource(TransitGuruTransitData, '/api/v1/<string:auth_token>/transit')
+api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')

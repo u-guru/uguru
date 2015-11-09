@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+  <head>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <script type="text/javascript">
+      var start_dom_time = Date.now();
+      var deviceReadyLoadTime;
+      var bodyLoadTime;
+      var calcTimeSinceInit = function() {
+        if (start_dom_time) {
+            var current_time = (new Date()).getTime();
+            var time_ms = current_time - start_dom_time;
+            var time_s = (time_ms / 1000.0).toPrecision(3)
+            var loadTime = time_s;
+            return loadTime
+        }
+      }
+      var onBodyLoad = function() {
+        var bodyLoadTime = calcTimeSinceInit();
+        console.log('================')
+        console.log('Body dom load complete, load time:', bodyLoadTime, 'seconds');
+        console.log('================')
+      }
+
+      // var injectAndroidMetaContentScript = function() {
+      //   var meta = document.createElement('meta');
+      //   meta.httpEquiv = "Content-Security-Policy";
+      //   meta.content = "default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"
+      //   document.getElementsByTagName('head')[0].appendChild(meta);
+      // }
+
+      // console.log(cordova);
+
+    </script>
+
+    <!-- ARCHIVE To get rid of soon! -->
+    <link href="remote/css/ionic.app.min.css" rel="stylesheet">
+
+
+    <!-- The main css file -->
+    <link href="remote/css/sass/material.css" rel="stylesheet">
+    <link href="remote/css/sass/default.css" rel="stylesheet">
+    <link href="remote/css/sass/desktop.css" rel="stylesheet">
+    <link href="remote/css/sass/style.css" rel="stylesheet">
+
+    <!-- DO NOT REMOVE BEFORE TELLING GABRIELLE -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="remote/js/materialize.min.js"></script>
+
+
+    <link href="remote/css/nick.css" rel="stylesheet">
+
+     <script>
+    // WINDOWS = null;
+    // function getMobileOperatingSystem() {
+    //     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    //         if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+    //                 console.log('injecting windows specific css & js');
+    //                 injectJs('windows.cordova.js');
+    //                 injectCss('windows.css');
+    //         }
+    //         else if( userAgent.match( /Android/i ) )
+    //           {
+    //             // Read more here
+    //             // https://developer.chrome.com/multidevice/user-agent
+    //             console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
+    //             var androidWebViewAgents = ['Build/KLP', 'Version', 'wv', 'Crosswalk'];
+    //             for (var i = 0; i < androidWebViewAgents.length; i++ ) {
+    //               var indexUA = androidWebViewAgents[i];
+    //               if (userAgent.indexOf(indexUA) > -1) {
+    //                 injectJs('android.cordova.js');
+    //                 // injectCss('android.css');
+    //                 injectAndroidMetaContentScript();
+    //                 break;
+    //               }
+    //             }
+    //             return 'Android';
+    //           }
+    //         else if ( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+    //           {
+
+    //             injectJs('ios.cordova_plugins.js');
+    //             injectJs('ios.cordova.js');
+    //             injectCss('ios.css');
+    //             // injectJs('/static/remote/cordova.js');
+    //             return 'iOS';
+
+    //           }
+    //         else {
+    //             console.log('hard to determine identifies');
+    //             // injectCss('web.css')
+    //             return 'unknown';
+    //         }
+    // }
+
+    // function injectJs(link) {
+    //   var scr = document.createElement('script');
+    //   scr.type="text/javascript";
+    //   scr.src=link;
+    //   document.getElementsByTagName('head')[0].appendChild(scr);
+    // }
+
+    // function injectCss(file) {
+    // var link = document.createElement("link");
+    // link.href = file;
+    // link.type = "text/css";
+    // link.rel = "stylesheet";
+    // document.getElementsByTagName("head")[0].appendChild(link);
+    // }
+
+    // getMobileOperatingSystem();
+    </script>
+
+
+ <script>
+     +function(l,y,t,i,c,s) {
+         l['LocalyticsGlobal'] = i;
+         l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
+         l[i].t = +new Date;
+         (s = y.createElement(t)).type = 'text/javascript';
+         s.src = 'remote/lib/localytics/localytics.js';
+         (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
+
+     }(window, document, 'script', 'll');
+ </script>
+
+    <script src="remote/lib/windows/winstore-jscompat.js"></script>
+    <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
+
+
+
+    <script src="lib/lodash/dist/lodash.js"></script>
+
+    <script type="text/javascript" src="remote/lib/cta/cta.min.js"></script>
+
+
+    <script src="remote/lib/restangular/dist/restangular.js"></script>
+    <script src="remote/lib/angular-animate/angular-animate.js"></script>
+    <script src="remote/lib/angular-payments/angular-payments.js"></script>
+    <script src="remote/lib/progressbar/progressbar.min.js"></script>
+    <script src="remote/lib/velocity/velocity.min.js"></script>
+    <script src="remote/lib/velocity/velocity.ui.min.js"></script>
+    <script src="remote/lib/velocity/angular-velocity.min.js"></script>
+    <script src="remote/lib/fastMatcher.js"></script>
+    <script src="remote/lib/d3/d3.min.js"></script>
+    <script src="remote/lib/ua-parser.min.js"></script>
+    <script src="remote/lib/angular-google-maps/angular-simple-logger.min.js"></script>
+    <script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script>
+
+
+    <script src="remote/lib/localytics/localytics.js"></script>
+
+    <!-- Facebook Plugin for web-development -->
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1416375518604557',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.0',
+          status: false
+        });
+      }
+  </script>
+
+   <script type="text/javascript" src="remote/js/shared/stats.js"></script>
+    <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
+    <script type="text/javascript" src="remote/lib/facebook/facebookConnectPlugin.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <script id="templates/root.html" type="text/ng-template">
+
+    </script>
+    <script src="remote/js/constants.js"></script>
+    <!-- uguru app main js -->
+    <script src="remote/js/main.js"></script>
+
+
+
+
+    <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
+    <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
+    <script type="text/javascript" src="remote/js/directives/bufferedScroll.js"></script>
+    <script type="text/javascript" src="remote/js/directives/imageSaver.js"></script>
+    <script type="text/javascript" src="remote/js/directives/uSlideBox.js"></script>
+    <script type="text/javascript" src="remote/js/directives/bindInput.js"></script>
+    <script type="text/javascript" src="remote/js/directives/throttle.js"></script>
+    <script type="text/javascript" src="remote/js/directives/submit.js"></script>
+    <script type="text/javascript" src="remote/js/directives/keyboardfocus.js"></script>
+    <script type="text/javascript" src="remote/js/directives/NickSideMenu.js"></script>
+
+    <!-- uguru app factories-->
+
+    <script type="text/javascript" src="remote/js/factories/User.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Device.js"></script>
+    <script type="text/javascript" src="remote/js/factories/University.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Version.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Support.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Course.js"></script>
+    <script type="text/javascript" src="remote/js/factories/LocalStorage.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Github.js"></script>
+    <script type="text/javascript" src="remote/js/factories/Food.js"></script>
+
+    <!-- uguru app services -->
+    <script type="text/javascript" src="remote/js/services/RootService.js"></script>
+
+
+     <script type="text/javascript" src="remote/js/controllers/student/home.ctrl.js"></script>
+    <!-- Uguru student controller-->
+    <script type="text/javascript" src="remote/js/controllers/student/student.request.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.request-guru-type.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.request-session-length.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.guru-profile.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.guru-available.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.active-session.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.request-status.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.previous-session-details.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.contact-method.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.home.sessions.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.session.ctrl.js"></script>
+
+
+     <script type="text/javascript" src="remote/js/controllers/guru/guru.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.opportunities.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.student-request.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.active-session.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.session-start.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.proposal-details.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.verification.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.edit-profile.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.profile.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.confirm-proposal.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.session.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/become.guru.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/become.guru.photo.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.cashout.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.ranking.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.task.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.profile.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.bill-student.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.remote.ctrl.js"></script>
+
+    <!--      New Uguru Student Controllers -->
+
+
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.questions.ctrl.js"></script>
+
+    <script type="text/javascript" src="remote/js/university/AddUniversityCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/university/UniversityFilterCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/university/AddMajorCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/university/AddCourseCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
+
+
+
+
+    <!-- Intro Controller -->
+    <script type="text/javascript" src="remote/js/controllers/IntroController.js"></script>
+
+
+    <!-- Food Controllers -->
+    <script type="text/javascript" src="remote/js/food/GrubHomeCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/food/GrubDetailsCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/food/GrubFiltersCtrl.js"></script>
+
+    <script type="text/javascript" src="remote/js/food/restaurants.js"></script>
+
+
+    <!--  Admin Controllers -->
+    <!-- <script type="text/javascript" src="remote/js/admin/AdminCtrl.js"></script> -->
+
+    <!-- Shared Services module, initiated in DeviceService -->
+    <script type="text/javascript" src="remote/js/shared/DeviceService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/Utilities.js"></script>
+    <script type="text/javascript" src="remote/js/shared/LoadingService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/AnimationService.js"></script>
+    <!-- <script type="text/javascript" src="remote/js/shared/MapService.js"></script> -->
+    <script type="text/javascript" src="remote/js/shared/Settings.js"></script>
+    <script type="text/javascript" src="remote/js/shared/DownloadService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/InAppBrowser.js"></script>
+    <script type="text/javascript" src="remote/js/shared/UniversityMatcher.js"></script>
+    <script type="text/javascript" src="remote/js/shared/ThrottleService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/TipService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/PopupService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CardService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/ModalService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/KeyboardService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/GeolocationService.js"></script>
+
+    <script type="text/javascript" src="remote/js/shared/uTracker.js"></script>
+    <script type="text/javascript" src="remote/js/shared/PerformanceService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/AdminService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/GPAService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/InAppMapService.js"></script>
+
+    <!-- Specific Device Services, still under SharedService module -->
+    <script type="text/javascript" src="remote/js/device/AndroidService.js"></script>
+    <script type="text/javascript" src="remote/js/device/WindowsService.js"></script>
+    <script type="text/javascript" src="remote/js/device/iOSService.js"></script>
+
+
+    <script type="text/javascript" src="remote/js/controllers/util/util.signup.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.sidemenu.ctrl.js"></script>
+
+
+    <script type="text/javascript" src="remote/js/controllers/util/util.root.ctrl.js"></script>
+
+    <!-- Access Component -->
+    <script type="text/javascript" src="remote/js/access/AccessService.js"></script>
+    <script type="text/javascript" src="remote/js/access/AccessCtrl.js"></script>
+    <!-- Card component -->
+
+    <script type="text/javascript" src="remote/js/controllers/util/CardList.ctrl.js"></script>
+
+
+    <script type="text/javascript">
+
+    // THIS PLUGIN REQUIRES US TO INITIALIZE IN INDEX.HTML REGARDLESS IF WE NEED IT. THEREFORE WE CAN JUST REMOVE IT AFTERWARDS.
+    document.addEventListener("deviceready", function() {
+
+        try {
+            console.log("map_canvas_index being set");
+            var div = document.getElementById("map_canvas_index");
+            map = plugin.google.maps.Map.getMap(div);
+            // map.setDiv(div);
+            map.remove();
+        } catch(e) {
+            console.log("try catch error in local.index script for loading inapp google maps. Ignore if running on desktop.");
+        }
+
+
+    });
+
+    </script>
+
+
+</head>
+  <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()" >
+
+
+
+
+    <ui-view></ui-view>
+
+    <div id="map_canvas_index"></div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+        <script>
+          WebFont.load({
+            google: {
+              families: ['Source Sans Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic']
+            }
+          });
+    </script>
+  </body>
+
+</html>

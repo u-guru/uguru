@@ -1,0 +1,560 @@
+@import 'mixin';
+
+#top-bar {
+	position: relative;
+    z-index: 9;
+	height: 64px;
+	background: $auburn;
+	padding: 0 15px;
+	div {
+		@include flex;
+		@include flex-center-vertical;
+		position: relative;
+		margin: 0 auto;
+		width: 100%;
+		max-width: 1200px;
+		height: 100%;
+		div {
+			position: relative;
+			z-index: 10;
+			background: $auburn;
+		}
+		#top-logo {
+			@include flex;
+			@include flex-center-vertical;
+			width: calc(100% - 64px);
+			height: 100%;
+			font-size: 36px;
+			font-weight: 900;
+			text-transform: lowercase;
+			svg, span {
+				display: block;
+				height: 100%;
+				padding: 20px 0 15px;
+			}
+			svg:last-child {
+				@include svg-stroke(white, 14);
+				width: 50px;
+				height: 50px;
+				padding: 15px;
+			}
+		}
+		#top-request {
+			display: block;
+			width: 64px;
+			height: 64px;
+			background: rgba(white,.3);
+			svg {
+				@include svg-stroke(white, 8);
+				width: 100%;
+				height: 100%;
+				padding: 15px;
+			}
+		}
+		#top-menu-links {
+			@include transition(.15s ease-in-out);
+			@include opacity(0);
+			@include translate-y(-500px);
+			position: absolute;
+			z-index: 8;
+			left: 0;
+			top: 64px;
+			background: rgba(darken($auburn,20%),.8);
+			&.active {
+				@include opacity(1);
+				@include translate-y(0);
+				max-height: 1000px;
+				overflow: visible;
+			}
+			ul {
+				min-width: 250px;
+				li {
+					position: relative;
+					a {
+						@include flex-center;
+					}
+					span {
+						@include flex-center-vertical;
+					}
+					input {
+						@include center-y;
+						right: 0;
+						padding: 0;
+						display: block;
+						width: 50px;
+						background: transparent;
+						color: white;
+						font-size: 18px;
+						font-weight: 900;
+						text-align: right;
+						@include placeholder {
+							color: rgba(white,.5);
+						}
+					}
+					a, span {
+						@include flex;
+						padding: 15px;
+						height: 50px;
+						font-size: 18px;
+						font-weight: 600;
+						text-transform: uppercase;
+						span {
+							display: block;
+							text-align: left;
+							width: calc(100% - 35px);
+						}
+						svg {
+							@include svg-stroke(white, 5);
+							display: block;
+							padding: 5px;
+							height: 50px;
+							width: 50px;
+							margin-right: -15px;
+						}
+						&:hover, &:active, &:focus {
+							background: white;
+							color: $auburn;
+							+ input {
+								color: darken($auburn, 15%);
+								@include placeholder {
+									color: rgba($auburn,.5);
+								}
+							}
+							span {
+								color: $auburn;
+							}
+							svg {
+								stroke: $auburn;
+							}
+						}
+					}
+					&:last-child {
+						a {
+							background: rgba(white,.75);
+							span {
+								color: $auburn;
+							}
+							svg {
+								stroke: $auburn;
+							}
+						}
+						&:hover, &:active, &:focus {
+							background: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.desktop-mode {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: $smoke;
+	#main-logo {
+		@include center-x;
+		top: 30px;
+		display: block;
+		height: 50px;
+		width: 50px;
+		path {
+			fill: $auburn;
+		}
+	}
+	.desktop-header {
+		@include center-x;
+		@include flex;
+		top: 30px;
+		height: 50px;
+		width: 100%;
+		max-width: 1200px;
+		background: none;
+		a {
+			display: block;
+			// width: 50%;
+			height: 100%;
+			svg {
+				@include svg-stroke(white, 5);
+				height: 100%;
+				width: auto;
+			}
+			&:last-child {
+				text-align: right;
+			}
+		}
+	}
+	.main {
+		padding: 15px;
+		height: calc(100% - 64px);
+		&.default {
+			width: 100%;
+			max-width: 1200px;
+		}
+	}
+	.progress-bottom {
+		@include center-x;
+		bottom: 0;
+		height: 128px;
+		width: 100%;
+		max-width: 960px;
+		background: $gabrielle;
+		.progress {
+			border-radius: 0;
+			&::-webkit-progress-value, span {
+				border-radius: 0 1000px 1000px 0;
+			}
+			&::-moz-progress-bar {
+				border-radius: 0 1000px 1000px 0;
+			}
+		}
+		div:last-child {
+			@include flex;
+			@include flex-center;
+			padding: 15px;
+			height: calc(100% - 10px);
+			> span {
+				width: 50%;
+				font-size: 32px;
+				font-weight: 600;
+				&:first-child {
+					@include flex;
+					@include flex-center-vertical;
+					img {
+						@include round;
+						margin-right: 15px;
+						display: inline-block;
+						width: 64px;
+						height: 64px;
+					}
+				}
+				&:last-child {
+					text-align: right;
+				}
+			}
+		}
+	}
+}
+
+/* ---------- DESKTOP LISTS */
+.desktop-search {
+	@include flex-wrap;
+	@include flex-center;
+	.main {
+		height: auto;
+		form {
+			* {
+				border-color: $auburn!important;
+				outline-color: $auburn!important;
+			}
+			input {
+				height: 64px;
+			}
+			input, label {
+				color: $auburn!important;
+				font-size: 36px;
+			}
+			label {
+				top: 6px;
+			}
+			label.active {
+				font-size: 24px;
+			}
+		}
+		.desktop-search-list {
+			.desktop-card-list {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				margin: 0 -7.5px;
+				li {
+					width: calc(100% / 3);
+					padding: 7.5px;
+					a {
+						display: block;
+						position: relative;
+						background: white;
+						border-bottom: 10px solid;
+						border-radius: 2px;
+						overflow: hidden;
+						cursor: pointer;
+						color: $taupe;
+						* {
+							cursor: pointer;
+						}
+						.list-item-overlay {
+							@include opacity(0);
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+						}
+						&:hover {
+							color: white;
+							.list-item-overlay {
+								@include opacity(.9);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:1024px) {
+	.desktop-search {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					margin: 0 -15px;
+					li {
+						width: 25%;
+						padding: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- GURU ONBOARDING */
+.desktop-guru-onboarding {
+	.main {
+		.desktop-search-list {
+			.desktop-card-list {
+				li {
+					display: none;
+					a {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						height: 84px;
+						padding: 15px;
+						border-bottom: 10px solid rgba(white,.3);
+						font-size: 16px;
+						font-weight: 600;
+						line-height: 1.25;
+						text-align: center;
+						&:hover {
+							background: $auburn;
+						}
+					}
+					a svg, label svg {
+						@include center-xy;
+						width: 100%;
+						height: 100%;
+						background: rgba($auburn,.8);
+						border-radius: 2px;
+						path {
+							@include svg-stroke(white, 8);
+						}
+					}
+				}
+				li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4),
+				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8),
+				li:nth-child(9), li:nth-child(10), li:nth-child(11), li:nth-child(12) {
+					display: block;
+				}
+				.selected {
+					a {
+						border-color: white;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 820px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							font-size: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 100px;
+						}
+						a svg, label svg {
+							padding: 15px;
+						}
+					}
+					li:nth-child(13), li:nth-child(14), li:nth-child(15), li:nth-child(16) {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:952px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 125px;
+							font-size: 24px;
+						}
+						a svg, label svg {
+							padding: 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- UNIVERSITY */
+#desktop-university {
+	.main {
+		.desktop-search-list {
+			.desktop-card-list {
+				li {
+					a {
+						.school-icon {
+							@include round;
+							display: none;
+							position: relative;
+							z-index: 999999;
+							margin: 0 auto -5px;
+							padding: 15px 15px 0;
+							width: 80px;
+							height: 65px;
+						}
+						img {
+							@include round;
+							display: block;
+							width: 50px;
+							height: 50px;
+							background: white;
+						}
+						.school-name {
+							display: block;
+							position: relative;
+							z-index: 999999;
+							padding: 15px;
+							text-align: center!important;
+							.school-title {
+								display: block;
+								width: 100%;
+								margin-bottom: 3px;
+								font-size: 18px;
+								font-weight: 600;
+								line-height: 1.25;
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis;
+							}
+							.school-location {
+								display: block;
+								font-size: 14px;
+								font-weight: 400;
+								text-align: center!important;
+								.school-city {
+									text-transform: capitalize;
+								}
+								.school-state {
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-icon {
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:800px) and (min-width:1280px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-icon {
+								width: 100px;
+								height: 85px;
+							}
+							img {
+								display: block;
+								width: 70px;
+								height: 70px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:1024px) {
+	#desktop-university {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							.school-name {
+								.school-title {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

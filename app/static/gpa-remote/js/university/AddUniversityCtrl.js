@@ -120,10 +120,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
             }, 1250);
           }
 
-          $timeout(function() {
-            console.log("broadcasting schoolChange!");
-            $rootScope.$emit('schoolChange');
-          }, 0);
+          // $timeout(function() {
+          //   console.log("broadcasting schoolChange!");
+          //   $rootScope.$emit('schoolChange');
+          // }, 0);
 
           uTracker.track(tracker, "University Changed", {
               "$University": university.name,

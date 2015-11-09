@@ -1,0 +1,59 @@
+<u-slide-box id='intro-slide-box' class='full-y' disable-scroll='true'>
+
+	<u-slide class=" text-center p15xy">
+		<div>
+			<!-- <h1 class="p15bottom txt-white">Please wait we build an awesome playlist for you.</h1> -->
+			<ul class='display-flex'>
+				<li class="p15x"><button class="bg-white txt-eggplant" ng-click="prevSlide()">Prev</button></li>
+				<li class="p15x"><button class="bg-white txt-eggplant" ng-click="nextSlide()">Next</button></li>
+			</ul>
+		</div>
+
+
+		<div>
+			<div id="loader-container">
+			  <!-- <p id="loadingText">Building Playlist</p> -->
+			</div>
+			<div class="p15bottom text-center txt-white loading-caption">Please wait we build an awesome playlist for you.</div>	
+		</div>
+		
+
+	</u-slide>
+
+
+	<u-slide class="flex-center-wrap text-center p15xy">
+		<div>
+			<h1 class="p15bottom txt-white">Current Playlist</h1>
+			<ul>
+				<li class="p15x"><button class="bg-white txt-eggplant" ng-click="goToIntro()">Back</button></li>
+			</ul>
+		</div>
+
+		<audio id="audioPlayer"></audio>
+
+		<div>
+			<h1> Now Playing</h1>
+			<img ng-src="{{currentTrack.artwork_url}}"/>
+			<div>{{currentTrack.title}} </div>
+
+		</div>
+
+		<progress id="seekbar" value="0" max="1" style="width:400px;"></progress>
+
+		<div class="player-controls-container">
+			<button ng-click="player.prev()" >Fav</button>
+			<button ng-hide='player.isPlaying' ng-click="player.play()" >Play</button>
+			<button ng-show='player.isPlaying' ng-click="player.pause()" >Pause</button>
+			<!-- <button ng-click="player.stop()" >Stop</button> -->
+			<button ng-click="player.next()" >Next</button>
+
+		</div>
+
+
+
+	</u-slide>
+
+
+
+
+</u-slide-box>

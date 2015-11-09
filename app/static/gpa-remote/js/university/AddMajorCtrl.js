@@ -14,25 +14,41 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   'uTracker',
   'University',
+  'LoadingService',
   function($rootScope, $scope, $state, $timeout,
   $q, Major, $ionicSideMenuDelegate, Utilities,
-  $localstorage, uTracker, University) {
+  $localstorage, uTracker, University, LoadingService) {
 
 
-
+    $scope.source = University.source;
 
     $scope.refresh = {
-      majors: ''
+      majors: '',
+      majorsLength: $scope.source.majors.length
     };
 
     function updateDOM() {
       $timeout(function() {
-        $scope.refresh.majors = 'update';
+        
+        $scope.source = University.source;
+
+        if ($scope.source.majors.length > 0) {
+            for(var j = 0; j < $scope.user.majors.length; j++) {
+              for(var k = 0; k < $scope.source.majors.length; k++) {
+                if($scope.source.majors[k].id === $scope.user.majors[j].id) {
+                  console.log("Deleting duplicate major found.");
+                  $scope.source.majors.splice(k, 1);
+                }
+              }
+            }
+        }
+
+        $scope.refresh.majorsLength = $scope.source.majors.length;
+        University.refresh();
       }, 0);
-      $timeout(function() {
-        $scope.refresh.majors = '';
-      }, 0);
+      
     }
+    updateDOM();
 
     if (!$scope.user.majors) {
       $scope.user.majors = [];
@@ -60,9 +76,8 @@ angular.module('uguru.util.controllers')
         return;
       }
 
-      $scope.user.majors.splice(index,1)
-      $scope.majorsSource.unshift(major);
-
+      $scope.user.majors.splice(index,1);
+      $scope.source.majors.unshift(major);
 
 
       var confirmCallback = function() {
@@ -73,9 +88,8 @@ angular.module('uguru.util.controllers')
 
         updateDOM();
 
-        //$scope.loader.showSuccess(majorName + ' successfully removed', 1200);
-      }
-
+        //LoadingService.showSuccess(majorName + ' successfully removed', 1200);
+      };
 
       $localstorage.setObject('user', $scope.user);
 
@@ -84,7 +98,7 @@ angular.module('uguru.util.controllers')
         $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
       }, 200);
 
-    }
+    };
 
     $scope.fastSelectMajor = function() {
 
@@ -102,17 +116,17 @@ angular.module('uguru.util.controllers')
       } else {
         console.log("ignoring since more than one majors in the source list");
       }
-    }
+    };
 
 
     $scope.majorSelected = function(major) {
 
       var majorName = major.title || major.name || major.abbr || major.code;
 
-      for(var i=0; i < $scope.majorsSource.length; i++) {
-        if($scope.majorsSource[i].id === major.id) {
+      for(var i=0; i < $scope.source.majors.length; i++) {
+        if($scope.source.majors[i].id === major.id) {
           console.log("transferring major from source to user");
-          $scope.majorsSource.splice(i, 1);
+          $scope.source.majors.splice(i, 1);
         }
       }
 
@@ -122,102 +136,33 @@ angular.module('uguru.util.controllers')
 
       updateDOM();
 
-
       uTracker.track(tracker, 'Major Added', {
         '$Major': majorName
       });
       $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
-    }
+    };
 
 
     $scope.limit = 10;
     $scope.increaseLimit = function() {
-      if($scope.majors && $scope.limit < $scope.majorsSource.length) {
+      if($scope.majors && $scope.limit < $scope.source.majors.length) {
         $scope.limit += 10;
       }
-    }
+    };
 
     $scope.clearSearchInput = function() {
       $scope.search_text.major = '';
-    }
 
+      console.log("length of majors: " + $scope.source.majors.length);
+    };
 
-    var getMajorsBecomeGuru = function() {
-      console.log('grabbing majors')
-      $scope.search_text.major = '';
-
-      if (University.majors.length > 0) {
-
-        $scope.majorsSource = University.majors.slice();
-
-        $timeout(function() {
-          for(var j = 0; j < $scope.user.majors.length; j++) {
-            for(var k = 0; k < $scope.majorsSource.length; k++) {
-              if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
-                console.log("Deleting duplicate major found.");
-                  $scope.majorsSource.splice(k, 1);
-              }
-            }
-          }
-          updateDOM();
-
-        }, 400);
-
-        return;
-      }
-      //$scope.loader.showAmbig("Fetching majors...", 60000);
-      University.getMajors($scope.user.university_id).then(function(majors) {
-
-        //$scope.loader.hide();
-        University.majors = majors.plain();
-        $scope.majorsSource = majors.plain().slice();
-
-        $timeout(function() {
-          for(var j = 0; j < $scope.user.majors.length; j++) {
-            for(var k = 0; k < $scope.majorsSource.length; k++) {
-              if($scope.majorsSource[k].id === $scope.user.majors[j].id) {
-                console.log("Deleting duplicate major found.");
-                  $scope.majorsSource.splice(k, 1);
-              }
-            }
-          }
-          updateDOM();
-
-        }, 400);
-
-        $localstorage.setObject('universityMajors', majors.plain());
-
-      },function(err) {
-        console.log("MAJORS NOT FOUND",err);
-      });
-    }
-
-    $timeout(function() {
-
-      $scope.majors = [];
-      if(!$scope.majorsSource) {
-        $timeout(function() {
-          getMajorsBecomeGuru();
-        }, 500)
-      }
-
-
-      $rootScope.$on('schoolChange', function(event) {
-        console.log("majors: heard schoolChange event!");
-        $timeout(function() {
-          $scope.user.majors.splice(0, $scope.user.majors.length);
-          getMajorsBecomeGuru();
-        }, 500)
-      });
-
-    }, 1250);
 
 
   }
 
 
-])
+]);
 
 
 

@@ -900,6 +900,51 @@ def android_app():
 def windows_app():
     return redirect('https://www.windowsphone.com/en-us/store/app/uguru/8df574bc-cbdd-4d6c-af3f-a7b2fe259494')
 
+@app.route('/apps/transit/')
+def app_route_transit():
+    import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/transit-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/transit-remote/index.html?version=' + str(version) + str(02323))
+
+@app.route('/apps/sound/')
+def app_route_sound():
+    import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/sound-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/sound-remote/index.html?version=' + str(version) + str(02323))
+
+@app.route('/apps/grub/')
+def app_route_grub():
+    import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/grub-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/grub-remote/index.html?version=' + str(version) + str(02323))
+
 @app.route('/apps/gpa/')
 def app_route_gpa():
     import os
@@ -929,10 +974,6 @@ def app_route():
         version = version.ios
     else:
         version = 1
-    print '\n\n\n\n\nrequest headers'
-    # print request.headers, type(request.headers)
-    if 'iPad' in str(request.headers) and 'Safari' in str(request.headers):
-        return redirect(url_for('itunes_app'))
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
         return redirect('https://www.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
@@ -944,8 +985,6 @@ def app_route():
 @app.route('/localhost/')
 @app.route('/admin/localhost/')
 def admin_localhost():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
     return redirect('http://localhost:8100')
 
 def check_admin_password(email, password):

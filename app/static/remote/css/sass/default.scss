@@ -9,6 +9,7 @@
 	-o-backface-visibility: hidden;
 	backface-visibility: hidden;
     -ms-overflow-style: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 *:focus {
 	outline: none;
@@ -35,6 +36,15 @@ em {
 input[type=search], input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], textarea {
     height: initial;
     line-height: initial;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .icon {
@@ -546,6 +556,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .txt-campus {
 	color: $campus!important;
 }
+.txt-auburn {
+	color: $auburn!important;
+}
 .txt-cerise {
 	color: $cerise!important;
 }
@@ -851,6 +864,34 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 		background: rgba($campus, .9);
 	}
 }
+[class*="bg-auburn"] {
+	background: $auburn;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($auburn, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($auburn, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($auburn, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($auburn, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($auburn, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($auburn, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($auburn, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($auburn, .9);
+	}
+}
 [class*="bg-cerise"] {
 	background: $cerise;
 	color: white;
@@ -1092,7 +1133,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 }
 
 // HEADERS
-header {
+header:not(.desktop-header) {
 	min-height: 50px;
 	position: relative;
 	* {
@@ -1160,6 +1201,11 @@ header {
 		}
 		svg {
 			padding: 4px 0;
+		}
+	}
+	.header-close {
+		svg {
+			padding: 0!important;
 		}
 	}
 	.header-menu {
@@ -1285,7 +1331,7 @@ button.round {
 	font-weight: 600;
 	text-transform: uppercase;
 }
-button.active, button.activated {
+button.active, button.activated, button:active, button:hover, button:focus {
 	@include opacity(.75);
 }
 
@@ -1302,7 +1348,7 @@ button.active, button.activated {
 	text-transform: uppercase;
 	&[class*="btn-ghost-charcoal"] {
 		color: $charcoal;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $charcoal;
 			background: $charcoal;
@@ -1311,7 +1357,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-slate"] {
 		color: $slate;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $slate;
 			background: $slate;
@@ -1320,7 +1366,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-taupe"] {
 		color: $taupe;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $taupe;
 			background: $taupe;
@@ -1329,7 +1375,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-smoke"] {
 		color: $smoke;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $smoke;
 			background: $smoke;
@@ -1338,16 +1384,25 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-white"] {
 		color: white;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid white;
 			background: white;
 			color: $charcoal;
 		}
 	}
+	&[class*="btn-ghost-auburn"] {
+		color: $auburn;
+		&.activated, &:active, &:hover, &:focus {
+			@include opacity(1);
+			border: 2px solid $auburn;
+			background: $auburn;
+			color: white;
+		}
+	}
 	&[class*="btn-ghost-cerise"] {
 		color: $cerise;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $cerise;
 			background: $cerise;
@@ -1356,7 +1411,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-orange"] {
 		color: $orange;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $orange;
 			background: $orange;
@@ -1365,7 +1420,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-gold"] {
 		color: $gold;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $gold;
 			background: $gold;
@@ -1374,7 +1429,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-moola"] {
 		color: $moola;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $moola;
 			background: $moola;
@@ -1383,7 +1438,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-shamrock"] {
 		color: $shamrock;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $shamrock;
 			background: $shamrock;
@@ -1392,7 +1447,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-lake"] {
 		color: $lake;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $lake;
 			background: $lake;
@@ -1401,7 +1456,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-azure"] {
 		color: $azure;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $azure;
 			background: $azure;
@@ -1410,7 +1465,7 @@ button.active, button.activated {
 	}
 	&[class*="btn-ghost-eggplant"] {
 		color: $eggplant;
-		&.activated, &:active {
+		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $eggplant;
 			background: $eggplant;
@@ -1693,6 +1748,16 @@ button.disabled {
 		}
 	}
 }
+.checklist-auburn,
+.checklist-bg-auburn {
+	li {
+		> span {
+			input:checked + span {
+			    background-color: $auburn !important;
+			}
+		}
+	}
+}
 .checklist-cerise,
 .checklist-bg-cerise {
 	li {
@@ -1819,6 +1884,13 @@ button.disabled {
 		}
 	}
 }
+.highlight-auburn {
+	li {
+		input:checked + label {
+		    background-color: $auburn;
+		}
+	}
+}
 .highlight-cerise {
 	li {
 		input:checked + label {
@@ -1906,7 +1978,7 @@ button.disabled {
 }
 
 // PROGRESS BARS
-progress, [class*="progress"] {
+progress, div[class*="progress"] {
 	@include transition(.15s ease-in-out);
 	@include appearance;
 	width: 100%;
@@ -2018,6 +2090,11 @@ progress, [class*="progress"] {
 			background: $eggplant;
 		}
 	}
+	&[class*="bg-auburn"] {
+		&::-webkit-progress-bar {
+			background: $auburn;
+		}
+	}
 	&[class*="bg-cerise"] {
 		&::-webkit-progress-bar {
 			background: $cerise;
@@ -2111,6 +2188,14 @@ progress, [class*="progress"] {
 		}
 		&::-moz-progress-bar {
 			background: $eggplant;
+		}
+	}
+	&[class*="txt-auburn"] {
+		&::-webkit-progress-value, span {
+			background: $auburn;
+		}
+		&::-moz-progress-bar {
+			background: $auburn;
 		}
 	}
 	&[class*="txt-cerise"] {

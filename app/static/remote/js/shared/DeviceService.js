@@ -13,12 +13,13 @@ angular
   '$ionicHistory',
   '$templateCache',
   '$localstorage',
+  'PushService',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
 	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
-  University, Version, $ionicHistory, $templateCache, $localstorage) {
+  University, Version, $ionicHistory, $templateCache, $localstorage, PushService) {
 
   var currentDevice;
   var firstTime = true;
@@ -174,6 +175,8 @@ function DeviceService($cordovaNgCardIO,
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
     console.log("Cordova File Plugin is ready: " + cordova.file);
+    console.log("Cordova Badge Plugin is ready: " + cordova.plugins.notification.badge);
+    console.log("Cordova Media Plugin is ready: " + Media);
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
@@ -185,6 +188,9 @@ function DeviceService($cordovaNgCardIO,
 		if(isMobile()) {
 
 	 		var mobileOS = getPlatform().toLowerCase();
+      if(doesCordovaExist()) {
+        PushService.init();
+      }
 		  	switch(mobileOS) {
 		  		case "ios":
 		  			iOSService.ready();

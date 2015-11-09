@@ -568,3 +568,24 @@ Uguru Home
     // Each modal must have class ='cta-modal'
     // Each modal close link must have class ='cta-modal-close' -->
 {% endblock %}
+
+{% block footer_scripts %}
+<script>
+
+    var smallBlackBox = document.querySelector('#temp-1');
+
+    var largeBlackBox = document.querySelector('#temp-2');
+
+    smallBlackBox.addEventListener('click', function() {
+
+        var closeCTAModal = cta(smallBlackBox, largeBlackBox, function() {
+            largeBlackBox.classList.add('show');
+            document.querySelector('#close-button').addEventListener('click', function() {
+                largeBlackBox.classList.remove('show');
+                console.log('closing..')
+                closeCTAModal();
+            })
+        });
+    })
+</script>
+{% endblock %}

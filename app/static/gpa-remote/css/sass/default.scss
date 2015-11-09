@@ -38,6 +38,15 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
     line-height: initial;
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .icon {
 	font-size: 16px;
 	line-height: 1;
@@ -555,6 +564,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .txt-campus {
 	color: $campus!important;
 }
+.txt-auburn {
+	color: $auburn!important;
+}
 .txt-cerise {
 	color: $cerise!important;
 }
@@ -860,6 +872,34 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 		background: rgba($campus, .9);
 	}
 }
+[class*="bg-auburn"] {
+	background: $auburn;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($auburn, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($auburn, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($auburn, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($auburn, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($auburn, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($auburn, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($auburn, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($auburn, .9);
+	}
+}
 [class*="bg-cerise"] {
 	background: $cerise;
 	color: white;
@@ -1101,7 +1141,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 }
 
 // HEADERS
-header {
+header:not(.desktop-header) {
 	min-height: 50px;
 	position: relative;
 	* {
@@ -1359,6 +1399,15 @@ button.active, button.activated, button:active, button:hover, button:focus {
 			color: $charcoal;
 		}
 	}
+	&[class*="btn-ghost-auburn"] {
+		color: $auburn;
+		&.activated, &:active, &:hover, &:focus {
+			@include opacity(1);
+			border: 2px solid $auburn;
+			background: $auburn;
+			color: white;
+		}
+	}
 	&[class*="btn-ghost-cerise"] {
 		color: $cerise;
 		&.activated, &:active, &:hover, &:focus {
@@ -1561,7 +1610,7 @@ button.disabled {
 	.side-icon {
 		@include opacity(1);
 		@include center-y;
-		right: 15px;
+		right: 12px;
 		z-index: 0;
 		.ion-navigate {
 			@include opacity(.6);
@@ -1707,6 +1756,16 @@ button.disabled {
 		}
 	}
 }
+.checklist-auburn,
+.checklist-bg-auburn {
+	li {
+		> span {
+			input:checked + span {
+			    background-color: $auburn !important;
+			}
+		}
+	}
+}
 .checklist-cerise,
 .checklist-bg-cerise {
 	li {
@@ -1830,6 +1889,13 @@ button.disabled {
 		}
 		input:checked + label {
 			background: $azure;
+		}
+	}
+}
+.highlight-auburn {
+	li {
+		input:checked + label {
+		    background-color: $auburn;
 		}
 	}
 }
@@ -2032,6 +2098,11 @@ progress, div[class*="progress"] {
 			background: $eggplant;
 		}
 	}
+	&[class*="bg-auburn"] {
+		&::-webkit-progress-bar {
+			background: $auburn;
+		}
+	}
 	&[class*="bg-cerise"] {
 		&::-webkit-progress-bar {
 			background: $cerise;
@@ -2125,6 +2196,14 @@ progress, div[class*="progress"] {
 		}
 		&::-moz-progress-bar {
 			background: $eggplant;
+		}
+	}
+	&[class*="txt-auburn"] {
+		&::-webkit-progress-value, span {
+			background: $auburn;
+		}
+		&::-moz-progress-bar {
+			background: $auburn;
 		}
 	}
 	&[class*="txt-cerise"] {
