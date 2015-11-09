@@ -3243,7 +3243,8 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
             already_exists_course = 0
             for course_json in course_list_json:
-                if course_json['name'] in course_names:
+                if course_json.get('code') in course_names:
+                    print 'skipping %s' % course_json['name']
                     already_exists_course += 1
                     continue
 
@@ -3252,6 +3253,7 @@ class AdminUniversityDeptCoursesView(restful.Resource):
                     course.department_id = d.id
                 course.university_id = u.id
                 # course.variations = "|".join(course_json.get('variations'))
+                course.times_mentioned = course_json.get('frequency')
                 course.is_popular = course_json.get('is_popular')
                 course.source_url = course_json.get('course_url')
                 course.short_name = course_json.get('code')
