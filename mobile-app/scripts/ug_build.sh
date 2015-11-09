@@ -78,21 +78,21 @@ if [ $# == 1 ];
 		cordova plugin add cordova-plugin-file-transfer@0.5.0
 		cordova plugin add cordova-plugin-geolocation
 		cordova plugin add cordova-plugin-splashscreen@1.0.0
-		# cordova plugin add cordova-plugin-media
-		# cordova plugin add cordova-plugin-keepe-cardio
-		# cordova plugin add cordova-plugin-x-socialsharing
-		# cordova plugin add cordova-plugin-calendar
-		# cordova plugin add cordova-plugin-appavailability
-		# cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
-		# cordova plugin add cordova-plugin-x-toast
-		# cordova plugin add https://bitbucket.org/uguru-nick/de.appplant.cordova.plugin.badge
+		cordova plugin add cordova-plugin-media
+		cordova plugin add cordova-plugin-keepe-cardio
+		cordova plugin add cordova-plugin-x-socialsharing
+		cordova plugin add cordova-plugin-calendar
+		cordova plugin add cordova-plugin-appavailability
+		cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
+		cordova plugin add cordova-plugin-x-toast
+		cordova plugin add https://bitbucket.org/uguru-nick/de.appplant.cordova.plugin.badge
 
 		cordova platform add ios@3.8
 
 
 		printf "\e[0;36mSetting up compatibility for the Facebook and Push plugins... \e[0m\n"
 
-		# cordova plugin add https://bitbucket.org/uguru-nick/phonegap-plugin-push
+		cordova plugin add https://bitbucket.org/uguru-nick/phonegap-plugin-push
 		cordova plugin add https://bitbucket.org/uguru-nick/phonegap-facebook-plugin --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 		printf '\n'
 

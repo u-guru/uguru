@@ -3235,22 +3235,25 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
             d = Department.query.get(dept_id)
             if not d:
-                return "MISSING DATA", 202
+                print "MISSING DATA", 202
 
             # parse the response
-            course_list_json = json.loads(request.json)
+            course_list_json = request.json
             course_names = [course.name for course in u.courses]
 
             already_exists_course = 0
             for course_json in course_list_json:
-                if course_json['name'] in course_names:
+                if course_json.get('code') in course_names:
+                    print 'skipping %s' % course_json['name']
                     already_exists_course += 1
                     continue
 
                 course = Course()
-                course.department_id = d.id
+                if d:
+                    course.department_id = d.id
                 course.university_id = u.id
                 # course.variations = "|".join(course_json.get('variations'))
+                course.times_mentioned = course_json.get('frequency')
                 course.is_popular = course_json.get('is_popular')
                 course.source_url = course_json.get('course_url')
                 course.short_name = course_json.get('code')
@@ -3260,10 +3263,16 @@ class AdminUniversityDeptCoursesView(restful.Resource):
                 db_session.add(course)
 
             db_session.commit()
-            d.num_courses = len(d.courses)
+            if d:
+                d.num_courses = len(d.courses)
             u.num_courses = len(u.courses)
+            u.num_popular_courses = len(u.popular_courses)
+            db_session.commit()
 
-            return d.courses, 200
+            if d:
+                return d.courses, 200
+            else:
+                return u.popular_courses
 
         return "UNAUTHORIZED", 201
 

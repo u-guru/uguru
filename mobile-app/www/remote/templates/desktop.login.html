@@ -1,28 +1,37 @@
 <ion-view class='uguru-view desktop-login-view bg-charcoal'>
-	<main id='desktop-login' class="desktop-forms desktop-mode">
+	<main id='desktop-login' class="desktop-forms desktop-mode" ng-show='!root.vars.loginMode'>
 		<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
-		<div class="main">
-			<div class="desktop-forms-container" ng-show="!root.vars.loginMode">
+		<div class="main" ng-show='!root.vars.loginMode'>
+			<div class="desktop-forms-container">
 				<div>
 					<h1>Create Account</h1>
-					<p>Got an account? You can login by clicking <a href="#">here</a>.</p>
+					<p>Got an account? You can login by clicking <a ng-click='root.vars.loginMode = true;'>here</a>.</p>
 					<form>
 	            		<div class="input-field">
-	            			<input id="name" type="text" class="validate">
-	            			<label for="name">Name</label>
+	            			<input id="name" ng-model='signupForm.full_name' type="text" class="validate" autocomplete="off">
+	            			<label class='ng-class:{"hide": signupForm.full_name.length}' for="name">Name</label>
+	            			<a ng-show="!root.vars.loginMode && signupForm.full_name.length" ng-click='signupForm.full_name = "";' class="desktop-input-close-icon side-icon">
+								<i class='icon ion-close-circled'> </i>
+							</a>
+	            		</div>
+	            		<div class="input-field relative">
+	            			<input ng-model='signupForm.email' autocomplete="off" id="email" type="text" class="validate">
+	            			<label for="email" class='ng-class:{"hide": signupForm.email.length}'>Email</label>
+	            			<a ng-show="!root.vars.loginMode && signupForm.email.length" ng-click='signupForm.email = "";' class="desktop-input-close-icon side-icon">
+								<i class='icon ion-close-circled'> </i>
+							</a>
 	            		</div>
 	            		<div class="input-field">
-	            			<input id="email" type="email" class="validate">
-	            			<label for="email">Email</label>
-	            		</div>
-	            		<div class="input-field">
-	            			<input id="password" type="password" class="validate">
-	            			<label for="password">Password</label>
+	            			<input autocomplete="off" ng-model='signupForm.password' id="password" type="password" class="validate">
+	            			<label  class='ng-class:{"hide": signupForm.password.length}' for="password">Password</label>
+	            			<a ng-show="!root.vars.loginMode && signupForm.password.length" ng-click='signupForm.password = "";' class="desktop-input-close-icon side-icon">
+								<i class='icon ion-close-circled'> </i>
+							</a>
 	            		</div>
 						<!-- radio input for remember me -->
 						<div class="desktop-login-buttons">
-							<button class="bg-fb caps">Login with Facebook</button>
-							<button class="bg-shamrock caps">Sign up</button>
+							<button class="bg-fb caps" ng-click='connectWithFacebook()'>Login with Facebook</button>
+							<button class="bg-shamrock caps" ng-click='completeSignup()'>Sign up</button>
 						</div>
 					</form>
 				</div>
@@ -38,7 +47,7 @@
 			</div>
 		</aside>
 	</main>
-	<main id='desktop-signup' class="desktop-forms desktop-mode hide">
+	<main id='desktop-signup' class="desktop-forms desktop-mode" ng-show='root.vars.loginMode'>
 		<aside>
 			<span ng-include="img_base + BASE + 'templates/svg/main-logo-static.html'"></span>
 			<div>
@@ -48,23 +57,29 @@
 			</div>
 		</aside>
 		<div class="main">
-			<div class="desktop-forms-container" ng-show="!root.vars.loginMode">
-				<div>
+			<div class="desktop-forms-container" ng-show="root.vars.loginMode">
+				<div style='background:white;'>
 					<h1>Login</h1>
-					<p>Want an account? You can sign up by clicking <a href="#">here</a>.</p>
+					<p>Want an account? You can sign up by clicking <a ng-click='root.vars.loginMode = false;'>here</a>.</p>
 					<form>
-	            		<div class="input-field">
-	            			<input id="email" type="email" class="validate">
-	            			<label for="email">Email</label>
+	            		<div class="input-field relative">
+	            			<input ng-model='signupForm.email' autocomplete="off" id="email" type="text" class="validate">
+	            			<label for="email" class='ng-class:{"hide": signupForm.email.length}'>Email</label>
+	            			<a ng-show="root.vars.loginMode && signupForm.email.length" ng-click='signupForm.email = "";' class="desktop-input-close-icon side-icon">
+								<i class='icon ion-close-circled'> </i>
+							</a>
 	            		</div>
 	            		<div class="input-field">
-	            			<input id="password" type="password" class="validate">
-	            			<label for="password">Password</label>
+	            			<input autocomplete="off" ng-model='signupForm.password' id="password" type="password" class="validate">
+	            			<label  class='ng-class:{"hide": signupForm.password.length}' for="password">Password</label>
+	            			<a ng-show="root.vars.loginMode && signupForm.password.length" ng-click='signupForm.password = "";' class="desktop-input-close-icon side-icon">
+								<i class='icon ion-close-circled'> </i>
+							</a>
 	            		</div>
 						<!-- radio input for remember me -->
 						<div class="desktop-login-buttons">
-							<button class="bg-fb caps">Login with Facebook</button>
-							<button class="bg-shamrock caps">Login</button>
+							<button ng-click='connectWithFacebook()' class="bg-fb caps">Login with Facebook</button>
+							<button class="bg-shamrock caps" ng-click='loginUser()'>Login</button>
 						</div>
 					</form>
 				</div>

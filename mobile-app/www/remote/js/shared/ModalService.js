@@ -131,9 +131,11 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		    privacy = modal;
 		});
 
-		$ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', options).then(function(modal) {
-		    signup = modal;
-		});
+		if (!$scope.desktopMode) {
+			$ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', options).then(function(modal) {
+		    	signup = modal;
+			});
+		}
 
 
 

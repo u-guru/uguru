@@ -4,13 +4,16 @@
 	</u-slide>
 	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
 		<ion-view class='uguru-view university-view'>
-			<main id="desktop-university" class="desktop-mode desktop-search" ng-show='isDesktopMode()'>
+			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='isDesktopMode()'>
 			    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 			    <div class="main default">
 			        <form>
 			            <div class="input-field">
 			                <input id="university-input" type="text" ng-model="search_text.university">
-			                <label for="university-input">search for my university</label>
+			                <label class="ng-class:{'hide': search_text.university.length}"for="university-input">search for my university</label>
+			                <a class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
+								<i class='icon ion-close-circled text-white'></i>
+							</a>
 			            </div>
 			        </form>
 			        <div id="school-list" class="desktop-search-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()'>
@@ -22,7 +25,10 @@
 			                            <img image-saver ng-src="{{ university.seal_url || university.logo_url}}" alt="" />
 			                        </span>
 			                        <span class="school-name">
-			                            <span class="school-title">{{university.name}}</span>
+			                            <span class='school-title'> {{university.name}}</span>
+			                            <!-- <span ng-if="university.name.length <= 16 || !university.school_casual_name" class="school-title">{{university.name}}</span> -->
+			                            <!-- Samir Will come back to this -->
+			                            <!-- <span ng-if="university.name.length > 16 &&  university.school_casual_name" class="school-title">{{university.school_casual_name}}</span> -->
 			                            <span class="school-location">
 			                                <span class="school-city">{{university.city}},</span>
 			                                <span class="school-state">{{university.state}}</span>

@@ -1964,3 +1964,21 @@
 		}
 	}
 }
+
+// start samir css 11/9
+.desktop-input-close-icon {
+	position:absolute;
+	right:10px;
+	top:50%;
+}
+// End samir-css
+
+.desktop-nav-back {
+	svg {
+		-webkit-transform: rotate(45deg);
+	    -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	    -o-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	}
+}

@@ -153,6 +153,7 @@ angular.module('uguru.util.controllers')
         $scope.user.createObj = User.createObj;
         $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
+        $scope.user.profile_url = $scope.user.profile_url || "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
         $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};

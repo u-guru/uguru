@@ -28,7 +28,7 @@ var stats = new Stats();
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
-  'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services',
+  'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
 
 
@@ -159,7 +159,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.desktop-settings', {
     url:'/desktop-settings',
-    templateUrl: BASE + 'templates/desktop.settings.html'
+    templateUrl: BASE + 'templates/desktop.settings.html',
+    controller: "DesktopSettingsController"
   }).
   state('root.guru-languages', {
     url:'/guru-languages',

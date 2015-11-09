@@ -443,6 +443,9 @@ angular.module('uguru.user', [])
         $scope.user.id = user.id;
         $scope.user.name = user.name;
         $scope.user.profile_url = user.profile_url;
+        if ($scope.user.profile_url === 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100') {
+            $scope.user.profile_url = img_base + BASE + "img/avatar.svg";
+        }
         $scope.user.is_a_guru = user.is_a_guru;
         $scope.user.guru_mode = user.guru_mode;
         $scope.user.gender = user.gender;
@@ -1436,6 +1439,9 @@ angular.module('uguru.user', [])
               if (success_callback) {
                 success_callback();
               }
+              if (failure_callback) {
+                failure_callback();
+              }
               return
             }
 
@@ -1453,10 +1459,11 @@ angular.module('uguru.user', [])
                     delegateActionsFromProcessedUser($scope);
                     $localstorage.setObject('user', $scope.user);
                 }
-
+                console.log(user);
                 if (success_callback) {
                     success_callback();
                 }
+
             }, function(err){
                 if (failure_callback) {
                     failure_callback(err);
