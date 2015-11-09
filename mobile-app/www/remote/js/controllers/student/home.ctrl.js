@@ -185,9 +185,10 @@ angular.module('uguru.student.controllers', [])
 
 
         $scope.$on('$ionicView.loaded', function() {
-
+            console.log('loading');
             $scope.root.vars.guru_mode = false;
             if (!$scope.mapInitialized) {
+                console.log('initializing map from load');
                 $scope.mapInitialized = true;
 
                 $timeout(function() {
@@ -211,18 +212,17 @@ angular.module('uguru.student.controllers', [])
         $scope.$on('$ionicView.afterEnter', function() {
             console.log('after enter');
             $ionicSlideBoxDelegate.update();
-
-
-
         });
 
         $scope.$on('$ionicView.enter', function() {
 
-            $scope.loader.hide();
 
+            console.log('enter');
             if (!$scope.mapInitialized && !MapService.studentHomeMap) {
                 $scope.mapInitialized = true;
+                console.log('initializing map from load');
                 $timeout(function() {
+                    console.log('initializing map');
                     $scope.initStudentHomeMap();
                 }, 1000)
             }

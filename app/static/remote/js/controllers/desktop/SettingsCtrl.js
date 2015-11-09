@@ -1,6 +1,6 @@
-angular.module('uguru.util.controllers')
+angular.module('uguru.desktop.controllers', [])
 
-.controller('SideMenuController', [
+.controller('DesktopSettingsController', [
 
   //All imported packages go here
   '$scope',
@@ -52,7 +52,7 @@ angular.module('uguru.util.controllers')
       var showPopup = AdminService.showActionSheet($scope);
       AdminService.closeAttachActionSheet = showPopup();
     };
-
+    console.log('sup');
 //use for abstract
     $scope.openAdmin = function() {
       $state.go('admin.admin-home');

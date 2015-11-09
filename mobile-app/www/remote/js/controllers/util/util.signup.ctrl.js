@@ -48,6 +48,10 @@ angular.module('uguru.util.controllers')
 
 // ==========================
 
+    if ($scope.user.id) {
+      $scope.loader.showAmbig('Redirecting to home...', 2000);
+      $state.go('^.home');
+    }
 
     $scope.root.vars.show_account_fields = false;
     $scope.headerText = 'Sign Up';
@@ -1149,7 +1153,7 @@ angular.module('uguru.util.controllers')
       } else {
         var nameComponents = $scope.signupForm.full_name.split(' ')
         if(nameComponents.length < 2) {
-          $scope.success.show(0,2000,'Please make sure all fields are valid!');
+          $scope.success.show(0,2000,'Please enter both first and last name!');
           return false;
         }
         var first_name = nameComponents[0];
@@ -1255,7 +1259,7 @@ angular.module('uguru.util.controllers')
 
 
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
-        if (ModalService.isOpen('signup')) {
+        if (!$scope.isDesktopMode() && ModalService.isOpen('signup')) {
               ModalService.close('signup');
           }
         return;
@@ -1286,8 +1290,14 @@ angular.module('uguru.util.controllers')
             $scope.loader.showSuccess('Account Successfully Created', 2500);
           }
 
+
+
           if (ModalService.isOpen('signup')) {
               ModalService.close('signup');
+          }
+
+          if ($scope.isDesktopMode) {
+            $state.go('^.home');
           }
 
 
@@ -1304,7 +1314,7 @@ angular.module('uguru.util.controllers')
       });
 
     }
-
+    console.log($scope.user)
     $scope.showComingSoon = function() {
       $scope.progress_active = true;
           $cordovaProgress.showText(false, "Coming Soon!", 'center');
@@ -1350,6 +1360,8 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
+
+    $scope.root.vars.loginMode = false;
 
 
   }

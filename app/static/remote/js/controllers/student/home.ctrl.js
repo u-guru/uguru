@@ -35,12 +35,18 @@ angular.module('uguru.student.controllers', [])
         var universityColor = $scope.user.university.school_color_one;
 
 
-        // $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
-        //     scope: $scope,
-        //     animation: 'slide-in-up'
-        // }).then(function(modal) {
-        //     $scope.guruCoursesModal = modal;
-        // })
+
+        //todo create service
+        function initDesktopFunctions() {
+            $scope.showDesktopSettings = false;
+            $scope.toggleDesktopSettings = function() {
+                $scope.showDesktopSettings = !$scope.showDesktopSettings;
+            }
+        }
+
+        if ($scope.isDesktopMode()) {
+            initDesktopFunctions()
+        }
 
         $scope.launchStudentCoursesModal = function() {
           $scope.guruCoursesModal.show();

@@ -1,6 +1,6 @@
-angular.module('uguru.util.controllers')
+angular.module('uguru.desktop.controllers', [])
 
-.controller('SideMenuController', [
+.controller('DesktopSettingsController', [
 
   //All imported packages go here
   '$scope',
@@ -48,15 +48,12 @@ angular.module('uguru.util.controllers')
     PopupService.initDefaults();
     ModalService.initDefaults($scope);
 
-    $scope.launchAdminActionSheet = function() {
-      var showPopup = AdminService.showActionSheet($scope);
-      AdminService.closeAttachActionSheet = showPopup();
-    };
-
-//use for abstract
-    $scope.openAdmin = function() {
-      $state.go('admin.admin-home');
-    }
+    //link
+    //default photo --> not my profile
+    //upload & save photo
+    //edit email && password
+    //edit university (modal)
+    //loading service
 
     function initDesktopDefaults() {
       $scope.page = {
@@ -73,7 +70,7 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    if ($scope.isDesktopMode) {
+    if ($scope.desktopMode) {
       initDesktopDefaults();
     }
     // pre-render these immediately
@@ -86,6 +83,11 @@ angular.module('uguru.util.controllers')
         $scope.supportModal = modal;
     });
 
+
+    $scope.showDesktopSettings = false;
+    $scope.toggleDesktopSettings = function() {
+        $scope.showDesktopSettings = !$scope.showDesktopSettings;
+    }
 
     ModalService.init('university', $scope);
 
@@ -131,18 +133,7 @@ angular.module('uguru.util.controllers')
         window.StatusBar && window.StatusBar.styleLightContent();
       }
 
-      // if (!isDevice) {
-      //   $scope.supportModal.show();
-      // } else {
-      //   InAppBrowser.openSupport();
-      // }
 
-
-      // $scope.supportModal.show();
-      // $timeout(function() {
-      //   initSupportChatEnterHandler()
-      // }, 500);
-      // $scope.init
     }
 
 
@@ -196,8 +187,6 @@ angular.module('uguru.util.controllers')
 
     $scope.showActionSheetProfilePhoto = function() {
 
-      //desktop only
-      //NICK-REFACTOR
       if (!$scope.platform.mobile) {
           $scope.takePhoto(0);
           return;
@@ -225,15 +214,9 @@ angular.module('uguru.util.controllers')
      });
     }
 
-    $scope.takePhoto = function(index) {
-
-
-      if ($scope.platform.mobile) {
-        Camera.takePicture($scope, index, 'sidebar-img-photo', true);
-      } else {
-        var element = document.getElementById('file-input-web-sidebar')
-        element.click();
-      }
+    $scope.uploadDesktopPhoto = function(index) {
+      var element = document.getElementById('file-input-web-sidebar')
+      element.click();
     }
 
     $scope.file_changed = function(element) {
@@ -242,7 +225,7 @@ angular.module('uguru.util.controllers')
         var reader = new FileReader();
 
 
-        var image = document.getElementById('become-guru-profile');
+        var image = document.getElementById('desktop-settings-profile-img');
 
         reader.onload = function(e) {
             $scope.user.profile_url = e.target.result;
@@ -286,7 +269,6 @@ angular.module('uguru.util.controllers')
         $scope.popupInput.editEmail = $scope.user.email;
       }
 
-      PopupService.open('editEmail', callback);
       function callback() {
         if (Utilities.validateEmail($scope.popupInput.editEmail)) {
             $scope.user.email = $scope.popupInput.editEmail
@@ -298,13 +280,20 @@ angular.module('uguru.util.controllers')
         $scope.loader.showSuccess('Saved!', 1500);
         PopupService.close('editEmail');
       }
+      PopupService.open('editEmail', callback);
     }
+
+    $scope.saveSettings = function() {
+      $scope.loader.showSuccess('Saved!', 1500);
+    }
+
 
     $scope.launchEditPasswordPopup = function() {
 
-      PopupService.open('editPassword', callback);
       function callback() {
+        console.log('callback pressed');
           if ($scope.popupInput.editPasswordOld.length === 0 && $scope.popupInput.editPasswordNew.length === 0) {
+
             alert('Please fill in all fields');
             return;
           }
@@ -314,27 +303,37 @@ angular.module('uguru.util.controllers')
                 new_password : $scope.popupInput.editPasswordNew,
                 old_password: $scope.popupInput.editPasswordOld
             }
-
-            $scope.loader.show();
+            console.log(payload);
             var successCallback = function() {
-              $scope.loader.hide();
-              $scope.loader.showSuccess('Password Successfully Changed', 1500);
               PopupService.close('editPassword');
+              $scope.loader.hide();
+              $timeout(function() {
+                $scope.loader.showSuccess('Password Successfully Changed', 1500);
+              }, 500)
+
             }
             var failureCallback = function(resp) {
               $scope.loader.hide();
-              $scope.defaultFallbackPlan(resp);
-              $scope.loader.showSuccess('Something went wrong ... Please contact support!', 1500);
+              $scope.popupInput.editPasswordOld = null;
+              $scope.popupInput.editPasswordNew = '';
               PopupService.close('editPassword');
+              $timeout(function() {
+                $scope.loader.showMsg('Incorrect old password', 0, 2000);
+                $timeout(function() {
+                  $scope.launchEditPasswordPopup();
+                }, 1500)
+              }, 500);
 
-              $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
             }
+            $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
+            $scope.loader.show();
           }
           else {
             alert('Please enter a password longer than 6 characters');
             return;
           }
       }
+      PopupService.open('editPassword', callback);
     }
 
     $scope.launchEditStudentNamePopup = function() {
@@ -356,6 +355,8 @@ angular.module('uguru.util.controllers')
         PopupService.close('editName');
       }
     }
+
+
 
     //settings info
     $scope.editAccountInfoActionSheet = function() {

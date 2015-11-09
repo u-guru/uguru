@@ -11,7 +11,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 
 	var controller = {};
 	var localPopup, source, editName, editEmail, editPassword, confirmPhone, confirmEmail, ranking;
-	
+
 	return {
 		initDefaults: initDefaults,
 		init: init,
@@ -33,7 +33,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 
 			attachListeners(popup, callback);
 
-		}, 0);	
+		}, 0);
 	}
 
 	var clickClose, clickSubmit, closeIcon, submitButton, enterSubmit
@@ -50,7 +50,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			try {
 				submitClose.removeEventListener('click', clickClose);
 				submitButton.removeEventListener('click', clickSubmit);
-				popup.removeEventListener('keyup', enterSubmit);	
+				popup.removeEventListener('keyup', enterSubmit);
 			} catch(err) {
 			}
 			$ionicSlideBoxDelegate.update();
@@ -93,7 +93,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		try {
 			submitClose.removeEventListener('click', clickClose);
 			submitButton.removeEventListener('click', clickSubmit);
-			popup.removeEventListener('keyup', enterSubmit);	
+			popup.removeEventListener('keyup', enterSubmit);
 		} catch(err) {
 		}
 		$ionicSlideBoxDelegate.update();
@@ -117,7 +117,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			confirmPhone = document.getElementById('confirm-phone-uguru-popup');
 			confirmEmail = document.getElementById('confirm-email-uguru-popup');
 			ranking = document.getElementById('guru-ranking-popup');
- 
+
 		 	controller.editName = editName,
 		 	controller.editEmail = editEmail,
 		 	controller.editPassword = editPassword,

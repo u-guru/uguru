@@ -283,6 +283,8 @@ gulp.task('scripts', function() {
       "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
       "js/controllers/util/*js",
+      "js/controllers/desktop/SettingsCtrl.js",
+      "js/controllers/desktop/*",
       // "js/controllers/util/*.js",
       // "js/controllers/onboarding/onboarding.request-location.ctrl.js",
       // "js/controllers/onboarding/*.js"

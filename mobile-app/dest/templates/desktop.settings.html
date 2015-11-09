@@ -1,6 +1,6 @@
-<ion-view class='uguru-view guru-view'>
+<ion-view class='uguru-view guru-view settings-view bg-charcoal'>
 	<main id='desktop-settings' class="desktop-mode" ng-show='isDesktopMode()'>
-		<nav ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default">
 			<h1>Settings</h1>
 			<div>
@@ -18,14 +18,14 @@
 				<div>
 					<h2>Name</h2>
 					<div class="input-field">
-						<input class="validate" type="text" placeholder="{{user.name}}"/>
+						<input class="validate" type="text" placeholder="{{user.name}}" ng-model='user.name'/>
 					</div>
 				</div>
 				<div class="ugrid-2">
 					<div>
 						<h2>Email</h2>
 						<div class="input-field">
-							<input name="email" class="validate" type='email' placeholder="mail@gabriellew.ee"/>
+							<input name="email" class="validate" type='email' placeholder="username@school.edu" ng-model="user.email"/>
 							<label for="email" data-error="Please use a valid email address">&nbsp;</label>
 						</div>
 					</div>

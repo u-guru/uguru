@@ -59,7 +59,7 @@
 				@include flex-center;
 				width: 90px;
 				height: 64px;
-				img {
+				img, img.profile-url {
 					@include round;
 					width: 40px;
 					height: 40px;
@@ -476,6 +476,7 @@
 			width: 100%;
 			max-width: 600px;
 			> div {
+				background: white;
 				padding: 30px;
 				h1 {
 					color: $shamrock;
@@ -1971,6 +1972,13 @@
 	right:10px;
 	top:50%;
 }
+
+.desktop-login-view  {
+	.desktop-input-close-icon {
+		color:rgba($slate,0.2);
+		top:30%;
+	}
+}
 // End samir-css
 
 .desktop-nav-back {
@@ -1982,3 +1990,45 @@
 	    transform: rotate(45deg);
 	}
 }
+
+.desktop-mode {
+	#desktop-student-home-map-container, #student-home-default-map-container {
+			position: absolute !important;
+			top: 0 !important;
+			left: 0 !important;
+			overflow: hidden !important;
+			z-index: 0 !important;
+			width: calc(100%) !important;
+			height: calc(100% - 64px) !important;
+		}
+	.main {
+		z-index:1 !important;
+		background:transparent;
+	}
+}
+
+//all component overrides
+//@gabriellewee I injected desktop-view into body if desktop
+.desktop-view {
+	ion-modal-view {
+		width: 100%;
+    	height: calc(100% - 64px);
+    	left: 0;
+    	top: 64px;
+	}
+	.uguru-popup-content {
+		width:33% !important;
+	}
+}
+
+.desktop-view.platform-ios {
+	ion-modal-view {
+		top:84px;
+		height: calc(100% - 84px);
+		width:100%;
+	}
+	header, .header-nav {
+		padding-top:0px !important;
+	}
+}
+//end component overrides
