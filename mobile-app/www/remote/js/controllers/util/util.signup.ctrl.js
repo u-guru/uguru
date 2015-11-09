@@ -1297,6 +1297,7 @@ angular.module('uguru.util.controllers')
           }
 
           if ($scope.isDesktopMode) {
+            console.log("desktop??")
             $state.go('^.home');
           }
 
