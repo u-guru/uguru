@@ -3238,7 +3238,7 @@ class AdminUniversityDeptCoursesView(restful.Resource):
                 print "MISSING DATA", 202
 
             # parse the response
-            course_list_json = json.loads(request.json)
+            course_list_json = request.json
             course_names = [course.name for course in u.courses]
 
             already_exists_course = 0
