@@ -3235,7 +3235,7 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
             d = Department.query.get(dept_id)
             if not d:
-                return "MISSING DATA", 202
+                print "MISSING DATA", 202
 
             # parse the response
             course_list_json = json.loads(request.json)
@@ -3248,7 +3248,8 @@ class AdminUniversityDeptCoursesView(restful.Resource):
                     continue
 
                 course = Course()
-                course.department_id = d.id
+                if d:
+                    course.department_id = d.id
                 course.university_id = u.id
                 # course.variations = "|".join(course_json.get('variations'))
                 course.is_popular = course_json.get('is_popular')
@@ -3260,8 +3261,10 @@ class AdminUniversityDeptCoursesView(restful.Resource):
                 db_session.add(course)
 
             db_session.commit()
-            d.num_courses = len(d.courses)
+            if d:
+                d.num_courses = len(d.courses)
             u.num_courses = len(u.courses)
+            u.num_popular_courses = len(u.popular_courses)
 
             return d.courses, 200
 

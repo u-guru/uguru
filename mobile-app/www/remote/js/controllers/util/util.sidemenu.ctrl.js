@@ -58,7 +58,24 @@ angular.module('uguru.util.controllers')
       $state.go('admin.admin-home');
     }
 
+    function initDesktopDefaults() {
+      $scope.page = {
+        url: $state.current.name
+      }
+      $scope.desktopGoBack = function() {
+        $ionicViewSwitcher.nextDirection('enter');
+        if ($scope.root.vars.guru_mode) {
+          $state.go('^.guru');
+        } else {
+          $state.go('^.home');
+        }
 
+      }
+    }
+
+    if ($scope.isDesktopMode) {
+      initDesktopDefaults();
+    }
     // pre-render these immediately
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {

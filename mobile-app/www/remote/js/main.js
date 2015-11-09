@@ -159,7 +159,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.desktop-settings', {
     url:'/desktop-settings',
-    templateUrl: BASE + 'templates/desktop.settings.html'
+    templateUrl: BASE + 'templates/desktop.settings.html',
+    controller: "SideMenuController"
+
   }).
   state('root.guru-languages', {
     url:'/guru-languages',
