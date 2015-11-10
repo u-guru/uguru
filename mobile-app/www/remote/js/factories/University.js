@@ -33,24 +33,25 @@ angular.module('uguru.rest', [])
         },
         getMajors: function(uni_id) {
             // $timeout(function() {
-                return Restangular
-                    .one('universities', uni_id).customGET('departments').then(function(response) {
+                return $timeout(function() { Restangular
+                    .one('universities', uni_id).customGET('departments').then(
+
+                    function(response) {
+
+                        console.log("Success in getMajors()");
+                        source.majors = response.plain();
                         $timeout(function() {
-                            console.log("Success in getMajors()");
-                            source.majors = response.plain();
-                            $timeout(function() {
-                                $localstorage.set(uni_id + ' majors', source.majors);
-                                uTracker.track(tracker, {
-                                    '$Downloaded_Majors': uni_id
-                                });
-                            }, 1000);
-                            console.log("length of majors in callback: " + source.majors.length);
-                        }, 0);
+                            $localstorage.set(uni_id + ' majors', source.majors);
+                            uTracker.track(tracker, {
+                                '$Downloaded_Majors': uni_id
+                            });
+                        }, 1000);
+                        console.log("length of majors in callback: " + source.majors.length);
 
                     }, function(err) {
                         console.log("Error getting majors: " + err);
                     });
-            // }, 0);
+            }, 0);
 
         },
         getPopularCourses: function(uni_id) {
@@ -78,17 +79,15 @@ angular.module('uguru.rest', [])
             return $timeout(function() {
                  Restangular
                     .one('universities', uni_id).customGET('courses').then(function(response) {
-                        $timeout(function() {
-                            console.log("Success in getCourses()");
-                            source.courses = response.plain();
-                            $timeout(function() {
-                                $localstorage.set(uni_id + ' courses', source.courses);
-                                uTracker.track(tracker, {
-                                    '$Downloaded_Courses': uni_id
-                                });
-                            }, 1000);
-                            console.log("length of courses in callback: " + source.courses.length);
-                        }, 3500);
+                        console.log("Success in getCourses()");
+                        source.courses = response.plain();
+                        // $timeout(function() {
+                            $localstorage.set(uni_id + ' courses', source.courses);
+                            uTracker.track(tracker, {
+                                '$Downloaded_Courses': uni_id
+                            });
+                        // }, 1000);
+                        console.log("length of courses in callback: " + source.courses.length);
 
                     }, function(err) {
                         console.log("Error getting courses: " + err);

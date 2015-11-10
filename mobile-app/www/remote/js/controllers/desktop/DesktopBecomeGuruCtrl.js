@@ -57,8 +57,24 @@ angular.module('uguru.desktop.controllers')
     function addEventListenerToCTABox(box_elem, modal_elem, index) {
         box_elem.addEventListener('click', function() {
           if (index === 0) {
-            $scope.initMajors();
+            $timeout(function() {
+              $scope.initMajors();
+            }, 1500)
           }
+
+
+          if (index === 1) {
+            $timeout(function() {
+              $scope.initCourses();
+            }, 1500);
+          }
+
+          if (index === 2) {
+              Category.mapActiveToSubcategories(Category.categories, $scope.user);
+              $scope.categories = Category.categories;
+              console.log($scope.user);
+          }
+
             var closeCTAModal = cta(box_elem, modal_elem, function() {
                 modal_elem.classList.add('show');
                 console.log(modal_elem.querySelector('.cta-modal-close'));
@@ -109,7 +125,10 @@ angular.module('uguru.desktop.controllers')
 
     $scope.initMajors = function() {
 
+      $scope.source = University.source;
+
       var majorsList = document.querySelectorAll('#major-list');
+      $rootScope.$emit('schoolChange');
 
         $timeout(function() {
           if (Utilities.isElementInViewport(majorsList)) {
@@ -138,7 +157,47 @@ angular.module('uguru.desktop.controllers')
 
     }
 
+    $scope.initCourses = function() {
+      $scope.source = University.source;
+      console.log($scope.source.courses);
+      $rootScope.$emit('refreshCourses');
+      var coursesList = document.querySelectorAll('#courses-list');
 
+        $timeout(function() {
+          if (Utilities.isElementInViewport(coursesList)) {
+
+
+            var items = coursesList[0].querySelectorAll('ul li');
+
+            if (items.length === 0) {
+              $rootScope.$emit('refreshCourses');
+              var timer = 10;
+              LoadingService.showAmbig('Fetching courses...', (timer * 1000));
+              var counter = 0;
+              var startScanner = $interval(function() {
+                University.refresh();
+                console.log("checking if courses are loaded...");
+                var items = coursesList[0].querySelectorAll('ul li');
+                console.log("items.length: " + items.length);
+                counter++;
+                if (items.length !== 0 || counter === timer) {
+                  console.log("stopping loader");
+                  LoadingService.hide();
+                  stopLoader();
+                }
+              }, 1000);
+
+
+              function stopLoader() {
+                $interval.cancel(startScanner);
+                // Display a message about being unable to fetch data and possibly a button to attempt to reconnect.
+
+              }
+            }
+          }
+        }, 500);
+
+    }
 
     $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
@@ -167,40 +226,7 @@ angular.module('uguru.desktop.controllers')
 
         $scope.init
 
-        var coursesList = document.querySelectorAll('#courses-list');
 
-        $timeout(function() {
-          if (Utilities.isElementInViewport(coursesList)) {
-
-
-            var items = coursesList[0].querySelectorAll('ul li');
-
-            if (items.length === 0) {
-              $rootScope.$emit('refreshCourses');
-              var timer = 10;
-              $scope.loader.showAmbig('Fetching courses...', (timer * 1000));
-              var counter = 0;
-              var startScanner = $interval(function() {
-                console.log("checking if courses are loaded...");
-                var items = coursesList[0].querySelectorAll('ul li');
-                console.log("items.length: " + items.length);
-                counter++;
-                if (items.length !== 0 || counter === timer) {
-                  console.log("stopping loader");
-                  $scope.loader.hide();
-                  stopLoader();
-                }
-              }, 1000);
-
-
-              function stopLoader() {
-                $interval.cancel(startScanner);
-                // Display a message about being unable to fetch data and possibly a button to attempt to reconnect.
-
-              }
-            }
-          }
-        }, 500);
       }
 
       else if (index === 2) {

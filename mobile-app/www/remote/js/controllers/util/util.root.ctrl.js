@@ -179,38 +179,12 @@ angular.module('uguru.util.controllers')
             if (!uni_id) {
                 return;
             }
-            University.getCourses(uni_id).then(function(courses){
-                $timeout(function() {
-                    $scope.data.courses = courses.plain();
-                    University.courses = courses.plain();
-                    console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
-                    callback && callback();
-                }, 0);
-            },
-            function() {
-                console.log('Universities NOT successfully loaded');
-            })
+            University.getCourses(uni_id);
         };
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
             console.log("university id: " + uni_id);
-            University.getMajors(uni_id).then(function(majors){
-
-                $timeout(function() {
-                    console.log(majors.length, 'majors found', uni_id);
-                    majors = majors.plain()
-                    University.majors = majors;
-
-                    if (callback) {
-                        callback(majors);
-                    }
-                }, 0);
-
-            },
-            function() {
-                //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
-                console.log('Universities NOT successfully loaded');
-            })
+            University.getMajors(uni_id);
         }
 
         $scope.getCategories = function(callback) {
@@ -320,7 +294,7 @@ angular.module('uguru.util.controllers')
             console.log(Category.categories.length, 'categories loaded');
         }
 
-        if ($scope.user.university_id && !(University.majors && University.majors.length)) {
+        if ($scope.user.university_id && !(University.source.majors && University.source.majors.length)) {
             console.log('University majors not local, requesting now..');
             $timeout(function() {
                 $scope.getMajorsForUniversityId($scope.user.university_id);
@@ -335,7 +309,7 @@ angular.module('uguru.util.controllers')
                 $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
             }, 0)
         } else {
-            console.log(University.source.courses.length, 'majors loaded');
+            console.log(University.source.courses.length, 'courses loaded');
         }
 
 

@@ -24,20 +24,16 @@ angular.module('uguru.directives')
 		$scope.$parent.$watch(
 			refreshModel,
 			function(newValue, oldValue) {
-// <<<<<<< HEAD
-// =======
 
+				console.log("heard something from " + refreshModel + "!");
+				$timeout(function() {
+					try {
+						$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);
+					} catch(err) {
+						console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+					}
+				}, 0);
 
-// 					console.log("heard something from " + refreshModel + "!");
-// 					$timeout(function() {
-// 						try {
-// 							$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);
-// 						} catch(err) {
-// 							console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
-// 						}
-// 					}, 0);
-
-// >>>>>>> 7997eaaa0772d22308a043260f3ef5497460f415
 
 				if(newValue === 'update') {
 					console.log("heard something from " + refreshModel + "!");
@@ -58,9 +54,6 @@ angular.module('uguru.directives')
 			model,
 			function(newValue, oldValue) {
 				 // console.log("its changed!");
-				if (!newValue || !oldValue) {
-					return;
-				}
 			  if(newValue.length < oldValue.length) {
 			    if(queryPromise) {
 			      $timeout.cancel(queryPromise);

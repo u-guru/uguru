@@ -23,20 +23,22 @@ angular.module('uguru.util.controllers')
     $ionicSideMenuDelegate, University, Utilities, uTracker, Course, LoadingService) {
 
 
+    $scope.source = University.source;
+
     if (!$scope.user.guru_courses) {
       $scope.user.guru_courses = [];
     }
 
-    $scope.source = {
-      courses: []
-    };
+    // $scope.source = {
+    //   courses: []
+    // };
 
     $rootScope.$on('loadCourses', function() {
       console.log("heard loadCourses!");
       // $scope.source.courses = null;
-      $scope.source = University.source;  
+      $scope.source = University.source;
     });
-    
+
 
     $scope.search_text = {
       course: ''
@@ -196,7 +198,7 @@ angular.module('uguru.util.controllers')
       console.log("afterEnter works!");
     };
 
-        
+
 
   }
 

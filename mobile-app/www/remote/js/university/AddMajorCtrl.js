@@ -19,7 +19,7 @@ angular.module('uguru.util.controllers')
   $q, Major, $ionicSideMenuDelegate, Utilities,
   $localstorage, uTracker, University, LoadingService) {
 
-
+    console.log('starting university majors');
     $scope.source = University.source;
 
     $scope.refresh = {
@@ -29,7 +29,7 @@ angular.module('uguru.util.controllers')
 
     function updateDOM() {
       $timeout(function() {
-        
+
         $scope.source = University.source;
 
         if ($scope.source.majors.length > 0) {
@@ -46,7 +46,7 @@ angular.module('uguru.util.controllers')
         $scope.refresh.majorsLength = $scope.source.majors.length;
         University.refresh();
       }, 0);
-      
+
     }
     updateDOM();
 
