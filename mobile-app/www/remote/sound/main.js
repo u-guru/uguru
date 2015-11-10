@@ -2,7 +2,15 @@ function defaultErrorCallback(e) {
     console.log(e);
 }
 
-angular.module('sound-guru', ['ionic', 'base64', 'authentication', 'musicplayer'])
+var BASE = '';
+var LOCAL = true;
+
+if (LOCAL) {
+
+  BASE = 'remote/';
+}
+
+angular.module('sound-guru', ['ionic', 'base64', 'authentication', 'musicplayer', 'ionic.utils'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -39,23 +47,23 @@ angular.module('sound-guru', ['ionic', 'base64', 'authentication', 'musicplayer'
 
   .state('intro', {
     url: '/intro',
-    templateUrl: 'intro/intro.html',
+    templateUrl: BASE + 'sound/intro/intro.html',
     controller: 'IntroCtrl'
   })
 
-  .state('home', {
-    url: '/',
-    templateUrl: 'templates/music.home.html',
-    controller: 'MusicHomeCtrl'
-  })
+  // .state('home', {
+  //   url: '/',
+  //   templateUrl: BASE + 'templates/music.home.html',
+  //   controller: 'MusicHomeCtrl'
+  // })
 
   .state('playlist', {
     url: '/playlist/:genre',
     params: {
       'genre': null
     },
-    templateUrl: 'templates/playlist.html',
-    controller: 'PlaylistCtrl'
+    templateUrl: BASE + 'sound/player/player.html',
+    controller: 'PlayerCtrl'
   })
 
   ;

@@ -1,5 +1,5 @@
-angular.module('music-draft')
-.controller('PlaylistCtrl', [
+angular.module('sound-guru')
+.controller('PlayerCtrl', [
 	'$scope',
 	'OauthService',
 	'$location',
@@ -9,10 +9,10 @@ angular.module('music-draft')
 	'$ionicSlideBoxDelegate',
 	'$stateParams',
 	'Utilities',
-	PlaylistCtrl]);
+	PlayerCtrl]);
 
 
-function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $state, 
+function PlayerCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $state, 
 	$ionicSlideBoxDelegate, $stateParams, Utilities) {
 
 
