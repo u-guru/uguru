@@ -35,7 +35,39 @@ angular.module('uguru.desktop.controllers')
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
-    $scope.progressWidth = 25;
+    $scope.progressWidth = 12.5;
+
+    var calculateProgress = function($scope) {
+
+      if ($scope.user.majors.length) {
+        $scope.progressWidth += 12.5;
+      }
+
+      if ($scope.user.guru_courses.length) {
+        $scope.progressWidth += 25;
+      }
+
+      if ($scope.user.guru_subcategories.length) {
+        $scope.progressWidth += 25;
+      }
+
+      if ($scope.user.profile_url && ($scope.user.profile_url.indexOf('avatar.svg') < 0)) {
+        $scope.progressWidth += 25;
+      }
+
+      function callbackSuccess() {
+        $scope.goToGuruMode();
+      }
+
+      if ($scope.progressWidth) {
+        LoadingService.showSuccess("Your initial profile is complete!", 1500, callbackSuccess)
+      }
+
+    }
+
+
+
+
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
@@ -78,6 +110,7 @@ angular.module('uguru.desktop.controllers')
             var closeCTAModal = cta(box_elem, modal_elem, function() {
                 modal_elem.classList.add('show');
                 console.log(modal_elem.querySelector('.cta-modal-close'));
+                calculateProgress($scope);
                 setTimeout(function() {
 
                   modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
@@ -85,7 +118,7 @@ angular.module('uguru.desktop.controllers')
                     closeCTAModal();
                   })
 
-                }, 2000)
+                }, 1000)
             });
         });
     }
@@ -342,6 +375,9 @@ angular.module('uguru.desktop.controllers')
     $scope.$on('$ionicView.enter', function() {
       $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
+      $timeout(function() {
+        calculateProgress($scope);
+      }, 1000)
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
       if (DeviceService.isIOSDevice()) {

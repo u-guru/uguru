@@ -153,7 +153,7 @@ angular.module('uguru.guru.controllers')
               LoadingService.showAmbig('Fetching courses...', (timer * 1000));
               var counter = 0;
               var startScanner = $interval(function() {
-                
+
                 University.refresh();
                 console.log("checking if courses are loaded...");
                 var items = coursesList[0].querySelectorAll('ul li');
@@ -227,12 +227,6 @@ angular.module('uguru.guru.controllers')
 
       return;
     }
-    // $scope.onDragLeft = function() {
-
-    //   if ($scope.activeSlideIndex === 0) {
-    //     $ionicSlideBoxDelegate.enableSlide(true);
-    //   }
-    // }
 
     $scope.goToUniversity = function() {
 
@@ -251,42 +245,6 @@ angular.module('uguru.guru.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
 
-    $scope.initSlideBoxModals = function() {
-
-
-      // $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
-      //       scope: $scope,
-      //       animation: 'slide-in-up'
-      // }).then(function(modal) {
-      //     $scope.categorySkillsModal = modal;
-      // });
-
-
-    }
-
-
-    // var injectClassIntoElement = function(e) {
-    //   element = e.target
-    //   console.log(element.className);
-    //   if (element.className.indexOf('selected') === -1) {
-    //     element.className += " animated pulse";
-    //     $scope.tempElement = element;
-    //     $timeout(function() {
-    //       $scope.tempElement.className += ' selected';
-    //     }, 500);
-    //   }
-    // }
-
-    // var incrementProgressBar = function(elemId, value) {
-    //   console.log(document.querySelector('#become-guru-progress'));
-    //   document.querySelector('#become-guru-progress').setAttribute("value", value);
-    // }
-
-    // var initProgressBar = function(elemId,width, value) {
-    //   var progressBarTag = document.getElementById(elemId);
-    //   progressBarTag.style.width = width + 'px';
-    // }
-
     $scope.$on('$ionicView.afterEnter', function() {
         $timeout(function() {
 
@@ -295,22 +253,7 @@ angular.module('uguru.guru.controllers')
     });
 
 
-    // $scope.$on('$ionicView.beforeEnter', function() {
-    //   $ionicSlideBoxDelegate.update();
-    //   //since this is the same as entering the slidebox
-    //   var universityId = $scope.user.university && $scope.user.university_id || 2307;
 
-    //   if (DeviceService.isIOSDevice()) {
-    //     DeviceService.ios.setStatusBarText($state.current.name);
-    //   }
-
-    //   $timeout(function() {
-
-    //     $scope.initSlideBoxModals();
-    //   }, 500);
-
-
-    // }, 500)
 
 
   }
