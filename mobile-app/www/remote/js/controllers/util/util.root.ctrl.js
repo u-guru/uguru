@@ -72,7 +72,9 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
-
+        if ($scope.desktopMode) {
+            document.body.classList.add('desktop-view');
+        }
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
             console.log('native hardware keyboard is shown');
@@ -153,6 +155,10 @@ angular.module('uguru.util.controllers')
         $scope.user.createObj = User.createObj;
         $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
+
+        if ($scope.user.profile_url === 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100') {
+            $scope.user.profile_url = img_base + BASE + "img/avatar.svg";
+        }
         $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
@@ -194,7 +200,10 @@ angular.module('uguru.util.controllers')
             console.log('retrieving majors for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
-                Category.mapActiveToSubcategories(Category.categories, $scope.user);
+
+                if ($scope.user && $scope.user.id) {
+                    Category.mapActiveToSubcategories(Category.categories, $scope.user);
+                }
 
 
                 $scope.categories = Category.categories.slice();
@@ -206,7 +215,7 @@ angular.module('uguru.util.controllers')
                 console.log("Categories NOT successfully loaded");
             })
         }
-        
+
         var categoriesCallback = function(categories) {
             $scope.categories = categories;
         }
@@ -296,7 +305,19 @@ angular.module('uguru.util.controllers')
             }
         }
 
+        sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * .80;
+
         $scope.toggleRightSideMenu = function() {
+            console.log("sideMenuWidth should be: " + sideMenuWidth);
+            var sideMenu = document.querySelectorAll('ion-side-menu')[0];
+
+            if (sideMenu.style.width === (sideMenuWidth + 'px')) {
+                sideMenu.style.width = 0 + 'px';
+            } else {
+                sideMenu.style.width = sideMenuWidth + 'px';
+            }
+
+
             $ionicSideMenuDelegate.toggleRight();
             $timeout(function() {
                 $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();

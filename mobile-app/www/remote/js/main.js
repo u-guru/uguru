@@ -1,5 +1,5 @@
 
-var LOCAL = _local || false; //local to the 8100 codebasebirbirs
+var LOCAL = _local || true; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
 
@@ -28,7 +28,7 @@ var stats = new Stats();
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
-  'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services',
+  'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
 
 
@@ -147,15 +147,21 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.desktop-login', {
     url:'/desktop-login',
-    templateUrl: BASE + 'templates/desktop.login.html'
+    templateUrl: BASE + 'templates/desktop.login.html',
+    controller: 'SignupController'
   }).
-  state('root.desktop-guru-onboarding', {
-    url:'/desktop-guru-onboarding',
+  state('root.desktop-become-guru', {
+    url:'/desktop-become-guru',
     templateUrl: BASE + 'templates/desktop.guru.onboarding.html'
   }).
   state('root.desktop-guru-profile', {
     url:'/desktop-guru-profile',
     templateUrl: BASE + 'templates/desktop.guru.profile.html'
+  }).
+  state('root.desktop-settings', {
+    url:'/desktop-settings',
+    templateUrl: BASE + 'templates/desktop.settings.html',
+    controller: "DesktopSettingsController"
   }).
   state('root.guru-languages', {
     url:'/guru-languages',

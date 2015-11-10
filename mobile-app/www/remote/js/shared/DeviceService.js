@@ -175,6 +175,8 @@ function DeviceService($cordovaNgCardIO,
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
     console.log("Cordova File Plugin is ready: " + cordova.file);
+    console.log("Cordova Badge Plugin is ready: " + cordova.plugins.notification.badge);
+    console.log("Cordova Media Plugin is ready: " + Media);
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');

@@ -12,12 +12,142 @@
 		height: 50px;
 		width: 50px;
 	}
+	.desktop-header {
+		@include center-x;
+		@include flex;
+		top: 30px;
+		height: 50px;
+		width: 100%;
+		max-width: 1200px;
+		a {
+			display: block;
+			width: 50%;
+			height: 100%;
+			svg {
+				@include svg-stroke(white, 5);
+				height: 100%;
+				width: auto;
+			}
+			&:last-child {
+				text-align: right;
+			}
+		}
+	}
 	#top-bar {
 		height: 64px;
 		background: $gabrielle;
-		svg {
+		padding: 0 15px;
+		div {
+			@include flex;
+			@include flex-center-vertical;
+			position: relative;
+			margin: 0 auto;
+			width: 100%;
+			max-width: 1200px;
 			height: 100%;
-			padding: 20px 15px 15px;
+			#top-logo {
+				display: block;
+				width: calc(100% - 64px - 90px);
+				height: 100%;
+				svg {
+					height: 100%;
+					padding: 20px 0 15px;
+				}
+			}
+			#top-settings {
+				@include flex;
+				@include flex-center;
+				width: 90px;
+				height: 64px;
+				img, img.profile-url {
+					@include round;
+					width: 40px;
+					height: 40px;
+					border: 3px solid white;
+				}
+				svg {
+					@include svg-stroke(white, 14);
+					width: 50px;
+					height: 50px;
+					padding: 15px;
+				}
+			}
+			#top-request {
+				display: block;
+				width: 64px;
+				height: 64px;
+				background: rgba(white,.3);
+				svg {
+					@include svg-stroke(white, 8);
+					width: 100%;
+					height: 100%;
+					padding: 15px;
+				}
+			}
+			#top-menu-links {
+				position: absolute;
+				z-index: 999;
+				right: 64px;
+				top: 64px;
+				background: $gabrielle;
+				height: 0;
+				overflow: hidden;
+				&.active {
+					height: auto;
+					overflow: visible;
+				}
+				ul {
+					background: rgba(white,.3);
+					min-width: 250px;
+					li {
+						a {
+							@include flex;
+							@include flex-center;
+							padding: 15px;
+							height: 50px;
+							font-size: 18px;
+							font-weight: 600;
+							text-transform: uppercase;
+							span {
+								display: block;
+								text-align: left;
+								width: calc(100% - 35px);
+							}
+							svg {
+								@include svg-stroke(white, 5);
+								display: block;
+								padding: 5px;
+								height: 50px;
+								width: 50px;
+								margin-right: -15px;
+							}
+							&:hover, &:active, &:focus {
+								background: white;
+								span {
+									color: $gabrielle;
+								}
+								svg {
+									stroke: $gabrielle;
+								}
+							}
+						}
+						&:last-child {
+							a {
+								background: rgba(white,.75);
+								span {
+									color: $gabrielle;
+								}
+								svg {
+									stroke: $gabrielle;
+								}
+							}
+							&:hover, &:active, &:focus {
+								background: white;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	.main {
@@ -346,6 +476,7 @@
 			width: 100%;
 			max-width: 600px;
 			> div {
+				background: white;
 				padding: 30px;
 				h1 {
 					color: $shamrock;
@@ -554,7 +685,7 @@
 						@include flex;
 						@include flex-wrap;
 						@include flex-center;
-						height: 64px;
+						height: 84px;
 						padding: 15px;
 						border-bottom: 10px solid rgba(white,.3);
 						font-size: 16px;
@@ -597,7 +728,6 @@
 				.desktop-card-list {
 					li {
 						a {
-							height: 84px;
 							font-size: 20px;
 						}
 					}
@@ -707,6 +837,318 @@
 								@include flex-center;
 								height: 84px;
 							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// SKILLS
+#desktop-skills {
+	@include flex-center;
+	padding-top: 50px;
+	.main {
+		#skills-list {
+			.desktop-card-list {
+				li {
+					.skill-item-content {
+						display: none;
+						background: $charcoal;
+						h1 {
+							text-align: center;
+							font-size: 64px;
+							font-weight: 900;
+							text-transform: lowercase;
+							margin-bottom: 30px;
+						}
+						ul {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							margin: -15px;
+							li {
+								position: relative;
+								width: 25%;
+								text-align: center;
+								label {
+									@include flex;
+									@include flex-center;
+									background: $slate;
+									color: white;
+									font-size: 24px;
+									font-weight: 600;
+									height: 84px;
+									border-bottom: 10px solid;
+									border-radius: 2px;
+									overflow: hidden;
+									svg {
+										@include opacity(0);
+										background: none;
+										width: calc(100% - 30px);
+										height: calc(100% - 30px);
+									}
+								}
+								input {
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									z-index: 9;
+									&:checked + label {
+										border-bottom-color: white!important;
+										color: rgba(white,.3);
+										svg {
+											@include opacity(1);
+										}
+									}
+								}
+							}
+						}
+					}
+					.skill-item-info {
+						border-radius: 2px;
+						overflow: hidden;
+						a {
+							height: 100px;
+							background-color: rgba($charcoal,.5);
+							div {
+								position: relative;
+								z-index: 99;
+								span {
+									display: block;
+									&.skill-label {
+										font-size: 24px;
+									}
+									&.skill-count {
+										font-size: 18px;
+									}
+								}
+							}
+						}
+						[class*="bg-"]::after {
+							@include opacity(.7);
+							position: absolute;
+							content: "";
+							width: 100%;
+							height: 100%;
+							left: 0;
+							top: 0;
+							border-radius: 2px;
+							overflow: hidden;
+						}
+						.important {
+							border-bottom-color: rgba(white,.8);
+						}
+						.bg-cerise.important::after {
+							background: $cerise;
+						}
+						.bg-orange.important::after {
+							background: $orange;
+						}
+						.bg-gold.important::after {
+							background: $gold;
+						}
+						.bg-moola.important::after {
+							background: $moola;
+						}
+						.bg-shamrock.important::after {
+							background: $shamrock;
+						}
+						.bg-azure.important::after {
+							background: $azure;
+						}
+						.bg-lake.important::after {
+							background: $lake;
+						}
+						.bg-eggplant.important::after {
+							background: $eggplant;
+						}
+					}
+					&.not-selected {
+						display: none;
+					}
+					&.selected {
+						@include center-xy;
+						width: 100%;
+						max-width: 1200px;
+						height: auto!important;
+						border: 0;
+						&::after, .skill-item-info {
+							display: none;
+						}
+						.skill-item-content {
+							display: block;
+						}
+					}
+					&:nth-child(1) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $cerise;
+									}
+									input:checked + label {
+										background: $cerise;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(2) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $orange;
+									}
+									input:checked + label {
+										background: $orange;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(3) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $gold;
+									}
+									input:checked + label {
+										background: $gold;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(4) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $moola;
+									}
+									input:checked + label {
+										background: $moola;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(5) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $shamrock;
+									}
+									input:checked + label {
+										background: $shamrock;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(6) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $azure;
+									}
+									input:checked + label {
+										background: $azure;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(7) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $lake;
+									}
+									input:checked + label {
+										background: $lake;
+									}
+								}
+							}
+						}
+					}
+					&:nth-child(8) {
+						.skill-item-content {
+							ul {
+								li {
+									label {
+										border-bottom-color: $eggplant;
+									}
+									input:checked + label {
+										background: $eggplant;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	#desktop-skills {
+		.main {
+			#skills-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 150px!important;
+						}
+						label {
+							height: 100px!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:952px) {
+	#desktop-skills {
+		padding-top: 0;
+		.main {
+			#skills-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 175px!important;
+						}
+						label {
+							height: 125px!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	#desktop-skills {
+		.main {
+			#skills-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 250px!important;
+						}
+						label {
+							height: 150px!important;
 						}
 					}
 				}
@@ -1211,3 +1653,382 @@
 		}
 	}
 }
+
+/* ---------- ACCESS */
+#desktop-access {
+	@include flex;
+	@include flex-center;
+	background: $shamrock;
+	.main {
+		background: rgba(white,.2);
+		width: 100%;
+		max-width: 600px;
+		height: auto;
+		padding: 0;
+		#desktop-access-code {
+			padding: 30px;
+			svg {
+				height: 50px;
+				width: 100%;
+			}
+		}
+		#input-error-text {
+			text-align: center;
+			font-weight: 600;
+			padding: 15px 0;
+		}
+		#desktop-access-code-bar {
+			width: 100%;
+			text-align: center;
+		}
+	}
+}
+
+/* ---------- STUDENT HOME */
+#desktop-student-home {
+	background: $smoke;
+	.main {
+		@include flex;
+		@include flex-center;
+		.before-guru {
+			button {
+				@include round;
+				display: block;
+				margin: 15px;
+				width: 200px;
+				height: 200px;
+				font-weight: 600;
+				line-height: 1.2;
+				text-transform: uppercase;
+			}
+			.bg-lake-80p.activated, .bg-lake-80p:active {
+				@include opacity(1);
+				background: $lake!important;
+			}
+			.bg-campus-80p.activated, .bg-campus-80p:active {
+				@include opacity(1);
+				background: $campus!important;
+			}
+		}
+		#trending {
+			background: white;
+			h1 {
+				padding: 30px 15px 15px;
+				color: $slate;
+				font-size: 36px;
+				font-weight: 600;
+				text-align: center;
+			}
+			ul {
+				padding: 0 15px 30px;
+				button {
+					@include round;
+					display: block;
+					margin: 15px;
+					width: 150px;
+					height: 150px;
+					padding: 15px;
+					font-weight: 600;
+					line-height: 1.2;
+					text-transform: uppercase;
+					svg {
+						path {
+							stroke: white;
+						}
+					}
+				}
+				span  {
+					display: block;
+					font-weight: 600;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+/* ---------- UPLOAD PHOTO */
+#desktop-upload-photo {
+	@include flex;
+	@include flex-center;
+	.main {
+		@include flex;
+		@include flex-center;
+		#profile-icon {
+			position: relative;
+			h1 {
+				@include center-xy;
+				width: 100%;
+				padding: 15px;
+				margin-top: 0!important;
+				font-weight: 900;
+				text-align: center;
+				text-transform: uppercase;
+			}
+			img {
+				@include round;
+				@include opacity(.3);
+				width: 300px;
+				height: 300px;
+			}
+		}
+		#photo-list {
+			@include center-x;
+			bottom: 15px;
+			img {
+				max-width: 100px;
+			}
+		}
+	}
+}
+
+/* ---------- GURU HOME */
+#desktop-home {
+	.main {
+		h1 {
+			width: 100%;
+			padding: 10px;
+			background: white;
+			font-size: 14px;
+			font-weight: 600;
+			letter-spacing: 2px;
+			text-align: center;
+			text-transform: uppercase;
+			color: $gabrielle;
+		}
+		> div {
+			width: 100%;
+			max-width: 500px;
+			background: rgba($gabrielle,.5);
+			margin: 0 auto 15px;
+		}
+		#desktop-tips {
+			.guru-tip-of-day-slide-box {
+				height: auto;
+				padding-bottom: 30px;
+			}
+			.slider-pager {
+				bottom: 14px;
+			}
+			.card {
+				background: $gabrielle;
+			}
+			button {
+				background: white!important;
+				color: $gabrielle!important;
+			}
+		}
+		#desktop-ranking {
+			position: relative;
+			z-index: 9;
+			> div {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				padding: 15px;
+				width: 100%;
+				> div {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+				}
+			}
+			.progressbar-text {
+				display: none;
+			}
+			svg {
+				@include round;
+				display: block;
+				* {
+					stroke-linecap: round;
+				}
+			}
+			#guru-chart {
+				position: relative;
+				width: 50%;
+				height: 130px;
+				svg {
+					width: 130px;
+					height: 130px;
+				}
+				#percentile {
+					@include center-xy;
+					#percentile-ranking {
+						position: relative;
+						font-size: 44px;
+						font-weight: 600;
+						line-height: 1;
+						text-align: center;
+						&::after {
+							content: "th";
+							display: block;
+							position: absolute;
+							top: -1px;
+							right: -1px;
+							font-size: 12px;
+							font-weight: 400;
+							line-height: 28px;
+							text-transform: uppercase;
+						}
+					}
+					#percentile-label {
+						font-size: 12px;
+						font-weight: 400;
+						letter-spacing: 1px;
+						line-height: 15px;
+						text-transform: uppercase;
+					}
+				}
+			}
+			#guru-stats {
+				width: 50%;
+				h2 {
+					margin: 0 0 5px;
+					font-size: 16px;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+				.stats-bar {
+					line-height: 10px;
+					font-size: 10px;
+					height: 10px;
+					margin-bottom: 7px;
+					svg {
+						height: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- SETTINGS */
+#desktop-settings {
+	.main {
+		margin: 0 auto;
+		h1 {
+			text-align: center;
+			font-size: 64px;
+			font-weight: 900;
+			text-transform: lowercase;
+			margin-bottom: 30px;
+		}
+		input {
+			color: white!important;
+		}
+		> div {
+			max-width: 500px;
+			margin: 0 auto;
+			> button {
+				display: block;
+				margin: 0 auto;
+				width: calc(100% / 3);
+			}
+			ul {
+				@include flex;
+				@include flex-center-vertical;
+				width: 100%;
+				li {
+					&:first-child {
+						width: 100px;
+					}
+					&:last-child {
+						width: calc(100% - 100px);
+						text-align: right;
+					}
+				}
+			}
+			img {
+				@include round;
+				margin: 15px 0;
+			}
+			h2 {
+				font-weight: 600;
+			}
+			.input-field {
+				margin-top: 0;
+				margin-bottom: 30px;
+				input:focus:not([readonly]) {
+					border-bottom: 1px solid $gabrielle!important;
+					box-shadow: 0 1px 0 0 $gabrielle!important;
+				}
+				label:after {
+					width: 500px;
+				}
+			}
+			.ugrid-2 {
+				margin: 0 -15px;
+				> div {
+					padding: 0 15px;
+				}
+			}
+		}
+	}
+}
+
+// start samir css 11/9
+.desktop-input-close-icon {
+	position:absolute;
+	right:10px;
+	top:50%;
+}
+
+.desktop-login-view  {
+	.desktop-input-close-icon {
+		color:rgba($slate,0.2);
+		top:30%;
+	}
+}
+// End samir-css
+
+.desktop-nav-back {
+	svg {
+		-webkit-transform: rotate(45deg);
+	    -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	    -o-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	}
+}
+
+.desktop-mode {
+	#desktop-student-home-map-container, #student-home-default-map-container {
+			position: absolute !important;
+			top: 0 !important;
+			left: 0 !important;
+			overflow: hidden !important;
+			z-index: 0 !important;
+			width: calc(100%) !important;
+			height: calc(100% - 64px) !important;
+		}
+	.main {
+		z-index:1 !important;
+		background:transparent;
+	}
+}
+
+//all component overrides
+//@gabriellewee I injected desktop-view into body if desktop
+.desktop-view {
+	ion-modal-view {
+		width: 100%;
+    	height: calc(100% - 64px);
+    	left: 0;
+    	top: 64px;
+	}
+	.uguru-popup-content {
+		width:33% !important;
+	}
+}
+
+.desktop-view.platform-ios {
+	ion-modal-view {
+		top:84px;
+		height: calc(100% - 84px);
+		width:100%;
+	}
+	header, .header-nav {
+		padding-top:0px !important;
+	}
+}
+//end component overrides

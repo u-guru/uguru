@@ -4,6 +4,7 @@
 !app/static/data/*.json
 !app/static/data/categories.json
 !app/static/data/init_categories.json
+!app/static/gpa-remote/css/*css
 .elasticbeanstalk/
 venv
 app.db

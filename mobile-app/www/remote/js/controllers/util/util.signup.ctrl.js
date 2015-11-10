@@ -48,6 +48,10 @@ angular.module('uguru.util.controllers')
 
 // ==========================
 
+    if ($scope.user.id) {
+      $scope.loader.showAmbig('Redirecting to home...', 2000);
+      $state.go('^.home');
+    }
 
     $scope.root.vars.show_account_fields = false;
     $scope.headerText = 'Sign Up';
@@ -1140,57 +1144,108 @@ angular.module('uguru.util.controllers')
 
     $scope.validateSignupForm = function() {
       var formDict = $scope.signupForm;
-
-      if (!formDict.full_name) {
+      var msg = [];
+      // Check all field empty
+      if(!formDict.full_name || !formDict.email || !formDict.password )
+      {
         $scope.success.show(0,2000,'Please fill in all fields!');
-        // document.getElementsByName('signup-name')[0].focus();
-
         return false;
-      } else {
-        var nameComponents = $scope.signupForm.full_name.split(' ')
-        if(nameComponents.length < 2) {
-          $scope.success.show(0,2000,'Please make sure all fields are valid!');
-          return false;
+      }
+
+      var nameComponents = $scope.signupForm.full_name.split(' ')
+      //Save all invalid message
+      
+      if (nameComponents.length < 2)
+        msg.push('both first and last name')
+      if (!Utilities.validateEmail(formDict.email))
+        msg.push('a valid email')
+      if (formDict.password.length < 6)
+        msg.push('at least  six characters password')
+
+      if(msg.length > 0)
+      {
+        var str = ''
+        for(var i = 0 ; i < msg.length; ++i)
+        {
+          if(msg.length == 1)
+            str += msg[i];
+          else
+          {
+            if(i == msg.length-1)
+              str += 'and ' +msg[i];
+            else
+              str += msg[i]+', ';
+          }
         }
+        $scope.success.show(0,1000 * msg.length,'Please enter '+ str +'!');
+        return false
+      }
+      
+    
         var first_name = nameComponents[0];
         var last_name = nameComponents[nameComponents.length - 1];
+
         $scope.signupForm.first_name = first_name;
         $scope.signupForm.last_name = last_name;
-        $scope.user.first_name = first_name
-        $scope.user.last_name = last_name
+
         $scope.user.name = first_name + ' ' + last_name;
-      }
-
-      if (!formDict.last_name) {
-        $scope.success.show(0,2000,'Please fill in all fields!');
-        // document.getElementsByName('signup-last-name')[0].focus();
-        return false;
-      } else {
+        $scope.user.first_name =  $scope.signupForm.first_name
         $scope.user.last_name = $scope.signupForm.last_name;
-      }
-
-      if (!formDict.email || !Utilities.validateEmail(formDict.email)) {
-        $scope.success.show(0,2000,'Please enter a valid email.');
-        // document.getElementsByName('signup-email')[0].focus();
-        return false;
-      } else {
         $scope.user.email = $scope.signupForm.email;
-      }
-
-      if (!formDict.password) {
-        $scope.success.show(0,2000,'Please enter a valid password.');
         $scope.user.password = $scope.signupForm.password;
-        // document.getElementsByName('signup-password')[0].focus();
-        return false;
-      } else {
-        $scope.user.password = $scope.signupForm.password;
-      }
+        return true
+      
 
-      $scope.user.last_name = $scope.signupForm.last_name;
-      $scope.user.email = $scope.signupForm.email;
-      $scope.user.password = $scope.signupForm.password;
+      // if (!formDict.full_name) {
+      //   $scope.success.show(0,2000,'Please fill in all fields!');
+      //   // document.getElementsByName('signup-name')[0].focus();
 
-      return true;
+      //   return false;
+      // } else {
+      //   var nameComponents = $scope.signupForm.full_name.split(' ')
+      //   if(nameComponents.length < 2) {
+      //     $scope.success.show(0,2000,'Please enter both first and last name!');
+      //     return false;
+      //   }
+      //   var first_name = nameComponents[0];
+      //   var last_name = nameComponents[nameComponents.length - 1];
+      //   $scope.signupForm.first_name = first_name;
+      //   $scope.signupForm.last_name = last_name;
+      //   $scope.user.first_name = first_name
+      //   $scope.user.last_name = last_name
+      //   $scope.user.name = first_name + ' ' + last_name;
+      // }
+
+      // if (!formDict.last_name) {
+      //   $scope.success.show(0,2000,'Please fill in all fields!');
+      //   // document.getElementsByName('signup-last-name')[0].focus();
+      //   return false;
+      // } else {
+      //   $scope.user.last_name = $scope.signupForm.last_name;
+      // }
+
+      // if (!formDict.email || !Utilities.validateEmail(formDict.email)) {
+      //   $scope.success.show(0,2000,'Please enter a valid email.');
+      //   // document.getElementsByName('signup-email')[0].focus();
+      //   return false;
+      // } else {
+      //   $scope.user.email = $scope.signupForm.email;
+      // }
+
+      // if (!formDict.password) {
+      //   $scope.success.show(0,2000,'Please enter a valid password.');
+      //   $scope.user.password = $scope.signupForm.password;
+      //   // document.getElementsByName('signup-password')[0].focus();
+      //   return false;
+      // } else {
+      //   $scope.user.password = $scope.signupForm.password;
+      // }
+
+      // $scope.user.last_name = $scope.signupForm.last_name;
+      // $scope.user.email = $scope.signupForm.email;
+      // $scope.user.password = $scope.signupForm.password;
+
+      // return true;
 
     }
 
@@ -1253,18 +1308,14 @@ angular.module('uguru.util.controllers')
 
     $scope.completeSignup = function() {
 
-
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
-        if (ModalService.isOpen('signup')) {
-              ModalService.close('signup');
-          }
         return;
       }
 
       // $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
-      $scope.user.email = $scope.signupForm.email;
-      $scope.user.password = $scope.signupForm.password;
-      $scope.user.name = $scope.signupForm.full_name
+      // $scope.user.email = $scope.signupForm.email;
+      // $scope.user.password = $scope.signupForm.password;
+      // $scope.user.name = $scope.signupForm.full_name
 
 
       $scope.user.university_id = $scope.user.university_id;
@@ -1286,8 +1337,14 @@ angular.module('uguru.util.controllers')
             $scope.loader.showSuccess('Account Successfully Created', 2500);
           }
 
+
+
           if (ModalService.isOpen('signup')) {
               ModalService.close('signup');
+          }
+
+          if ($scope.isDesktopMode) {
+            $state.go('^.home');
           }
 
 
@@ -1304,7 +1361,7 @@ angular.module('uguru.util.controllers')
       });
 
     }
-
+    console.log($scope.user)
     $scope.showComingSoon = function() {
       $scope.progress_active = true;
           $cordovaProgress.showText(false, "Coming Soon!", 'center');
@@ -1350,6 +1407,8 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
+
+    $scope.root.vars.loginMode = false;
 
 
   }

@@ -1,8 +1,3 @@
-.action-sheet-wrapper{
-    top: 0;
-         overflow: scroll;
- }
-
 /* ---------- DEFAULT STYLES */
 a, a:hover, a:active, a:visited {
   color: white;
@@ -3942,6 +3937,10 @@ body.platform-ios {
       padding-top: 20px; }
       body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view section, body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view #student-home-map-container {
         top: 20px !important; }
+    body.platform-ios ion-side-menus.root-ion-side-menus.view .settings-view nav.main-nav {
+      padding-top: 20px; }
+  body.platform-ios ion-content {
+    padding-top: 20px; }
   body.platform-ios .modal-wrapper header,
   body.platform-ios .header-nav,
   body.platform-ios .close-popup-link,

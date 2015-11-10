@@ -44,9 +44,9 @@ function TipService() {
 
         !(user.guru_experiences && user.guru_experiences.length) && result.push('guru experiences');
 
-        !user.school_email_confirmed && result.push('@.edu school email');
+        !user.school_email_confirmed && result.push('.edu email');
 
-        !user.phone_number_confirmed && result.push('telephone number');
+        !user.phone_number_confirmed && result.push('phone number');
         return result;
     }
 

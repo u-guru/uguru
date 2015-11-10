@@ -887,6 +887,9 @@ button, a[class*=btn] {
 		}
 		#search {
 			display: block;
+			#modal-loader-container {
+				position: absolute!important;
+			}
 			#search-box {
 				position: relative;
 				top: 50%;
@@ -953,6 +956,7 @@ button, a[class*=btn] {
 					padding: 25px 50px;
 					background: $cerise-mute;
 					color: white;
+					text-align: center!important;
 					.search-results-header {
 						margin: 0;
 						font-size: 24px;
@@ -1002,6 +1006,7 @@ button, a[class*=btn] {
 								color: white;
 								b, span {
 									display: block;
+									text-align: center!important;
 								}
 								b {
 									font-size: 60px;

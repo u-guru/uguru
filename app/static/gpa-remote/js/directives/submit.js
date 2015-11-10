@@ -1,0 +1,31 @@
+angular.module('uguru.directives')
+.directive('submit', function ($parse, DeviceService) {
+
+	function link ($scope, element, attr) {
+
+		angular.element(element).bind('keyup', exec);
+		var handler = $parse(attr.submit);
+
+		function exec(e) {
+
+			var key = e.keyCode || e.key || e.which;
+			if (key === 13) {
+
+				if (DeviceService.doesCordovaExist()) {
+				  cordova.plugins.Keyboard.close();
+				}
+				$scope.$apply(function() {
+				handler($scope);
+				});
+			}
+			e.stopPropagation();
+			e.preventDefault();
+		}
+	}
+
+	return {
+		link: link,
+		restrict: 'A'
+	}
+
+});

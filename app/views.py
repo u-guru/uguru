@@ -29,6 +29,32 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## Bens Views ##
 ################
 
+
+@app.route('/admin/stats/universities/info')
+def admin_statistics_universities_info():
+    return render_template("admin/admin.stats.universities.info.html")
+
+
+@app.route('/admin/stats/universities/complete')
+def admin_statistics_universities_completed():
+    from lib.universities import filterPrepared, filterPreparedWithEmails, calcAndSortedPrepared
+
+    ## Queries database for all universities
+    universities = University.query.all()
+
+    ## Some old universities dont have ids
+    universities = [university for university in universities if university.id]
+
+    ## Prepared information dictionary w/ missing fields
+    final_universities, prepared_info = calcAndSortedPrepared(universities)
+
+    full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
+    universities = full_prepared_universities
+    universities = sorted(universities, key=lambda k:k.us_news_ranking)
+    return render_template("admin/admin.stats.universities.complete.html", \
+        universities = universities)
+
+
 @app.route('/admin/stats/universities/')
 def admin_statistics_universities_new():
     if not session.get('admin'):
@@ -46,7 +72,7 @@ def admin_statistics_universities_new():
     final_universities, prepared_info = calcAndSortedPrepared(universities)
 
     full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
-    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 80 and prepared_info[university.id]['percentage'] < 100 and prepared_info[university.id]['percentage'] >= 80]
+    eighty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 90 and prepared_info[university.id]['percentage'] < 100 and prepared_info[university.id]['percentage'] >= 80 and university.school_mascot_name == None ]
     shitty_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] >= 50 and prepared_info[university.id]['percentage'] < 80]
     dont_exist_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] < 50]
     atleast_fifty_universities = eighty_prepared_universities + shitty_prepared_universities
@@ -99,7 +125,7 @@ def admin_statistics_get_flickr_urls(uni_id):
     flickr_response = str(search_university_response_api(text=university.name))
     photos_arr = parse_flickr_response(flickr_response)
     processed_arr = process_returned_photos(photos_arr)
-    flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)[:20]
+    flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)
     print len(flickr_arr)
 
     ## notice, this has no template! We are just returning the strings
@@ -137,6 +163,12 @@ def admin_stats_remaining():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
 
+@app.route('/admin/')
+@app.route('/admin/team/action-items')
+def admin_milestones_tasks():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/team-action-items.html")
 
 @app.route('/admin/stats/universities/<uni_id>')
 def admin_statistics_one_university(uni_id):
@@ -187,7 +219,7 @@ def admin_login():
         session.pop('error')
 
     if session.get('admin'):
-        return redirect(url_for('admin_team_calendar'))
+        return redirect(url_for('admin_milestones_tasks'))
 
     return render_template("admin/login.html", error=error)
 
@@ -602,7 +634,6 @@ def admin_dev_api():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.development.api.html")
 
-@app.route('/admin/')
 @app.route('/admin/team/')
 @app.route('/admin/team/calendar/')
 def admin_team_calendar():
@@ -803,6 +834,20 @@ def one_university_mobile(name):
     else:
         return redirect(url_for('app_flex'))
 
+@app.route('/admin/stats/universities/<uni_id>/<uni_name>')
+def get_logo_url(uni_id,uni_name):
+
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    # def html_image_string(urls):
+    #     return '<img src="%s" alt="Smiley face" height="auto" width="%s">' % (urls, '100%')
+
+    university = University.query.get(uni_id)
+    from college_logo import scrape_logo_url_from_google
+    arr = scrape_logo_url_from_google(uni_name)
+
+
+
 @app.route('/u/<name>/<_id>/', methods=["GET"])
 def one_university(name, _id):
     import random
@@ -851,6 +896,67 @@ def android_app():
 def windows_app():
     return redirect('https://www.windowsphone.com/en-us/store/app/uguru/8df574bc-cbdd-4d6c-af3f-a7b2fe259494')
 
+@app.route('/apps/transit/')
+def app_route_transit():
+    import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/transit-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/transit-remote/index.html?version=' + str(version) + str(02323))
+
+@app.route('/apps/sound/')
+def app_route_sound():
+    import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/sound-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/sound-remote/index.html?version=' + str(version) + str(02323))
+
+@app.route('/apps/grub/')
+def app_route_grub():
+    import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/grub-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/grub-remote/index.html?version=' + str(version) + str(02323))
+
+@app.route('/apps/gpa/')
+def app_route_gpa():
+    import os
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
+    if os.environ.get('PRODUCTION'):
+        print "woohoo we're in production"
+        return redirect('https://www.uguru.me/static/gpa-remote/index.html?version=' + str(version) + str(02323))
+    else:
+        print "aww im local"
+        return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
+        # return redirect('/static/gpa-remote/index.html')
+
 @app.route('/production/app/')
 @app.route('/app/production/')
 @app.route('/app/')
@@ -864,10 +970,6 @@ def app_route():
         version = version.ios
     else:
         version = 1
-    print '\n\n\n\n\nrequest headers'
-    # print request.headers, type(request.headers)
-    if 'iPad' in str(request.headers) and 'Safari' in str(request.headers):
-        return redirect(url_for('itunes_app'))
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
         return redirect('https://www.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
@@ -876,6 +978,10 @@ def app_route():
         return redirect('/static/remote/index.html')
         # return redirect('http://localhost:8100/')
 
+@app.route('/localhost/')
+@app.route('/admin/localhost/')
+def admin_localhost():
+    return redirect('http://localhost:8100')
 
 def check_admin_password(email, password):
     from app.lib.admin import admin_info

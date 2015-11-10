@@ -1,5 +1,17 @@
 <main id="desktop-courses" class="desktop-mode desktop-search desktop-guru-onboarding" ng-show='isDesktopMode()'>
     <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+	<header class="desktop-header">
+		<a ng-click='previousSlide()'>
+			<svg viewBox="0 0 100 100">
+				<path d="M68,86 L32,50 L68,14"></path>
+			</svg>
+		</a>
+		<a ng-click='nextSlide()'>
+			<svg viewBox="0 0 100 100">
+				<path d="M32,86 L68,50 L32,14"></path>
+			</svg>
+		</a>
+	</header>
     <div class="main default">
         <form>
             <div class="input-field">

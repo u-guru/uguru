@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="remote/lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="remote/css/default.css" rel="stylesheet">
+    <link href="remote/css/material.css" rel="stylesheet">
+    <link href="remote/css/style.css" rel="stylesheet">
+    <link href="remote/css/desktop.css" rel="stylesheet">
+
+    <link href="remote/css/nick.css" rel="stylesheet">
+
+    <!-- DO NOT REMOVE BEFORE TELLING GABRIELLE -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="remote/js/materialize.min.js"></script>
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="remote/css/ionic.app.css" rel="stylesheet">
+    -->
+    <script>
+    _local = true;
+    </script>
+    <!-- ionic/angularjs js -->
+    <script src="remote/lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="remote/js/angular-base64.min.js"></script>
+
+    <script src="remote/js/FastMatcher.js"></script>
+
+    <!-- your app's js -->
+    <script src="remote/js/main.js"></script>
+    <script src="remote/js/MusicHomeCtrl.js"></script>
+    <script src="remote/js/IntroCtrl.js"></script>
+    <script src="remote/js/PlaylistCtrl.js"></script>
+
+    <!-- <script src="js/AddUniversityCtrl.js"></script> -->
+
+    <script src="remote/js/OauthService.js"></script>
+    <script src="remote/js/LocalStorage.js"></script>
+    <script src="remote/js/MusicPlayer.js"></script>
+
+    <script src="remote/js/uSlideBox.js"></script>
+    <script src="remote/js/Utilities.js"></script>
+
+
+  </head>
+  <body ng-app="music-draft">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ui-view></ui-view>
+
+  </body>
+</html>

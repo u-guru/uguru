@@ -1991,7 +1991,7 @@ section {
 // STUDENT HOME
 .home-view {
 	background: white;
-	#student-home {
+	#student-home, {
 		header {
 			background: rgba(white, .75);
 			color: $slate;
@@ -4105,6 +4105,12 @@ body.platform-ios {
 				top:20px !important;
 			}
 		}
+		.settings-view nav.main-nav{
+			padding-top:20px;
+		}
+	}
+	ion-content {
+		padding-top:20px;
 	}
 	.modal-wrapper header,
 	.header-nav,
