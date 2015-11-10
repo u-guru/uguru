@@ -237,10 +237,10 @@ function Utilities($rootScope, Settings) {
 	}
 
 	function validateCode(code) {
-		if(code!==null) {
-			return code.length===4;
-		} else return false;
-
+		// if(code!==null) {
+		// 	return code.length===4;
+		// } else return false;
+		return code != null && code.length===4
 	}
 
 	function validateName(name) {

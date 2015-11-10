@@ -11,11 +11,14 @@
 	    <div class="content-body">
 	        <h2>Confirm Phone Number</h2>
 			<input class="input-ghost-dark full-x m15top" type='tel' ng-model='popupInput.phoneConfirm' placeholder='510-121-1242' id='phone-number-input'/>
-			<input class="input-ghost-dark full-x m15top" type="password" pattern="[0-9]*" ng-model='popupInput.code' ng-show='user.phone_number_token' placeholder='confirm code' id='confirm-code-input'/>
+			<input class="input-ghost-dark full-x m15top" type="password" ng-model='popupInput.code' ng-show='user.phone_number_token' placeholder='confirm code' id='confirm-code-input'/>
 	    </div>
 	    <div class="content-footer">
-			<button ng-if='popupInput.phoneConfirm || popupInput.code' class='semibold bg-campus white-text submit' id='send-confirm-code'>{{popup.phone_confirm}}</button>
-			<button ng-if='!popupInput.code' class='semibold bg-campus white-text submit' id='send-confirm-code'>Re-Verify</button>
+			<button class='semibold bg-campus white-text submit' id='send-confirm-code'>
+				 <span ng-if='popupInput.phoneConfirm && popupInput.code' >Verify</span>
+				 <span ng-if='!user.phone_number_token' >Send</span>
+				 <span ng-if='user.phone_number_token && !popupInput.code' >Re-Verify</span>
+			</button>
 		</div>
     </div>
 </div>

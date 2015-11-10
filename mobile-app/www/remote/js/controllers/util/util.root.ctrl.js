@@ -139,7 +139,7 @@ angular.module('uguru.util.controllers')
                         else return 'Resend Confirmation';
                     break;
                 case 'phoneConfirm':
-                        if($scope.user.phone_email_token) return 'Send';
+                        if(!$scope.user.phone_number_token) return 'Send';
                         else return 'Verify';
                     break;
                 default: break;

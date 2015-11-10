@@ -452,7 +452,7 @@ angular.module('uguru.guru.controllers')
       $scope.loader.show();
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         var successCallback = function() {
-          $scope.loader.hide();
+            $scope.loader.hide();
           $scope.loader.showSuccess('FB Account Saved', 2000);
         }
         var failureCallback = function(err) {
@@ -709,92 +709,51 @@ angular.module('uguru.guru.controllers')
       //1. re-verify / verify phone number
       //2. invalid input 
 
-      // if(Utilities.validatePhone($scope.popupInput.phoneConfirm))
-      // {
-      //   $scope.user.phone_number = $scope.popupInput.phoneConfirm;
-          
-      //     if(Utilities.validateCode($scope.popupInput.codeConfirm))
-      //     {
-      //       console.log('verify code confirm');
-      //       var callbackSuccess = function() {
-      //         $scope.loader.hide();
-      //         if ($scope.user.phone_number_confirmed) {
-      //           $scope.success.show(0, 2000, 'Verification Code confirmed!')
-      //         } else {
-      //           $scope.success.show(0, 2000, 'Invalid Code - please try again?');
-      //         }
-      //         $scope.user.phone_number = $scope.popupInput.phoneConfirm;
-      //         return;
-      //       }
-
-      //       PopupService.close('confirmPhone');
-
-      //       $scope.loader.show();
-      //       $scope.refreshTipsAndRanking($scope.user);
-      //       $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.codeConfirm, callbackSuccess, $scope);
-      //     }
-      //     else 
-      //     {
-      //      alert("Please enter a 4 digit code.");
-      //     }
-
-      // };
-      // else
-      // {
-      //    alert('Please fill in all fields');
-      //    return;
-      // };
-      
-
-
-      //validate
-      if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
-        
+      if(Utilities.validatePhone($scope.popupInput.phoneConfirm))
+      {
         $scope.user.phone_number = $scope.popupInput.phoneConfirm;
-
-        // //if user hasn't typed in a token & clicked verify [resend exists]
-        // if ($scope.user.phone_number_token && Utilities.validateCode($scope.popupInput.codeConfirm)) {
-        //   alert('Please enter a 4 digit code');
-        //   return;
-        // }
-
-          //if user hasn't received a token yet & is sending for the first time [resend doesn't exist]
-          if (!$scope.user.phone_number_token) {
-            // $scope.resendPhoneConfirmation();
-            console.log('it gets here part 2');
-            return;
-          }
-
-          //success
-          else if (Utilities.validateCode($scope.popupInput.codeConfirm)) {
-            console.log('it gets here part 3');
+        
+        if(Utilities.validateCode($scope.popupInput.code))
+        {
+          // alert("Find code")
+            console.log('verify code confirm');
             var callbackSuccess = function() {
-              $scope.loader.hide();
-              if ($scope.user.phone_number_confirmed) {
-                $scope.success.show(0, 2000, 'Verification Code confirmed!')
-              } else {
-                $scope.success.show(0, 2000, 'Invalid Code - please try again?');
-              }
-              $scope.user.phone_number = $scope.popupInput.phoneConfirm;
+                if ($scope.user.phone_number_confirmed)
+                   $scope.loader.showMsg('Verification Code confirmed!',0, 2000)
+             }
 
-              return;
+           var failureCallback = function(err) {
+              console.log("Real FAIL")
+              if (!$scope.user.phone_number_confirmed)
+              {
+                $scope.loader.showMsg('Invalid Code - please try again?',0, 2000);
+                $scope.popupInput.code =""
+              }
             }
 
             PopupService.close('confirmPhone');
-
             $scope.loader.show();
             $scope.refreshTipsAndRanking($scope.user);
-            $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.codeConfirm, callbackSuccess, $scope);
-          }
-           else {
-            alert("Please enter a 4 digit code.");
-          }
+            $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.code, callbackSuccess, $scope, failureCallback);
+        }  
+        else
+        {
 
-      } else {
-        alert('Please enter valid phone number.');
-        // $scope.popupInput.phoneConfirm = "";
-        return;
+          if(!$scope.popupInput.code)          
+             $scope.resendPhoneConfirmation();
+            // console.log("Resubmit");
+          else
+            alert("Please enter a 4 digit code.")
+        }
       }
+      else
+      {
+        if(!$scope.popupInput.phoneConfirm)
+          alert('Please fill in all fields')
+        else
+          alert('Please enter valid phone number.')
+      };
+        return;
     }
 
     $scope.resendPhoneConfirmation = function() {
@@ -803,7 +762,11 @@ angular.module('uguru.guru.controllers')
       if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
         $scope.user.phone_number = $scope.popupInput.phoneConfirm;
         $scope.refreshTipsAndRanking($scope.user);
-        $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.popupInput.phoneConfirm, null, $scope);
+        var callbackSuccess = function() {
+               $scope.loader.showMsg('The code has been sent to '+ $scope.popupInput.phoneConfirm,0, 5000);
+         }
+
+        $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.popupInput.phoneConfirm, callbackSuccess, $scope);
 
         PopupService.close('confirmPhone');
         $scope.loader.show();
