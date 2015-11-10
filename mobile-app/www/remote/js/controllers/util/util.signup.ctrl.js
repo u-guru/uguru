@@ -48,9 +48,10 @@ angular.module('uguru.util.controllers')
 
 // ==========================
 
-    if ($scope.user.id) {
-      $scope.loader.showAmbig('Redirecting to home...', 2000);
-      $state.go('^.home');
+    if ($scope.user.id && !$scope.root.vars.guru_mode) {
+        $scope.loader.showAmbig('Redirecting to home...', 2000);
+        $state.go('^.home');
+      
     }
 
     $scope.root.vars.show_account_fields = false;

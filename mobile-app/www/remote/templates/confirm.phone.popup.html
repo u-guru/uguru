@@ -14,7 +14,8 @@
 			<input class="input-ghost-dark full-x m15top" type="password" pattern="[0-9]*" ng-model='popupInput.code' ng-show='user.phone_number_token' placeholder='confirm code' id='confirm-code-input'/>
 	    </div>
 	    <div class="content-footer">
-			<button class='semibold bg-campus white-text submit' id='send-confirm-code'>{{popup.phone_confirm}}</button>
+			<button ng-if='popupInput.phoneConfirm || popupInput.code' class='semibold bg-campus white-text submit' id='send-confirm-code'>{{popup.phone_confirm}}</button>
+			<button ng-if='!popupInput.code' class='semibold bg-campus white-text submit' id='send-confirm-code'>Re-Verify</button>
 		</div>
     </div>
 </div>

@@ -40,24 +40,32 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 	function attachListeners(popup, callback) {
 
 		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];
-		var submitClose = popup.querySelectorAll('button.submit-close')[0];
+		// var submitClose = popup.querySelectorAll('button.submit-close')[0];
 		var submitButton = popup.querySelectorAll('button.submit')[0];
+		// console.log(popup);
+		// console.log(closeIcon);
+		// console.log(submitClose);
+		// console.log(submitButton);
 
 		clickClose = function() {
 			popup.classList.remove('show');
 			closeIcon.removeEventListener('click', clickClose);
 			// Wrapping this in a try block since some popups won't have these
+
 			try {
-				submitClose.removeEventListener('click', clickClose);
+				// submitClose.removeEventListener('click', clickClose);
 				submitButton.removeEventListener('click', clickSubmit);
 				popup.removeEventListener('keyup', enterSubmit);
 			} catch(err) {
+				console.error(err)
 			}
 			$ionicSlideBoxDelegate.update();
 		};
+
 		clickSubmit = function() {
 			callback();
 		};
+		
 		var enterSubmit = function(e) {
 			var key = e.keyCode || e.key || e.which;
 			if (key === 13) {
@@ -70,9 +78,9 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		};
 
 		closeIcon.addEventListener('click', clickClose);
-		if(submitClose !== undefined) {
-			submitClose.addEventListener('click', clickClose);
-		}
+		// if(submitClose !== undefined) {
+		// 	submitClose.addEventListener('click', clickClose);
+		// }
 
 		if(typeof callback === 'function') {
 			submitButton.addEventListener('click', clickSubmit);
