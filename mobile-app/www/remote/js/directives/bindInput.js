@@ -22,12 +22,12 @@ angular.module('uguru.directives')
 		$scope.$parent.$watch(
 			refreshModel,
 			function(newValue, oldValue) {
-				
+
 				if(newValue === 'update') {
 					console.log("heard something from " + refreshModel + "!");
 					$timeout(function() {
 						try {
-							$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);	
+							$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);
 						} catch(err) {
 							console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
 						}
@@ -42,18 +42,20 @@ angular.module('uguru.directives')
 			model,
 			function(newValue, oldValue) {
 				 // console.log("its changed!");
-
+				if (!newValue || !oldValue) {
+					return;
+				}
 			  if(newValue.length < oldValue.length) {
 			    if(queryPromise) {
 			      $timeout.cancel(queryPromise);
 			    }
 			    queryPromise = $timeout(function() {
 			      try {
-			      	$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, property, model);	
+			      	$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, property, model);
 			      } catch(err) {
 			      	console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
 			      }
-			      
+
 			      queryPromise = null;
 			    }, 90);
 			  }
@@ -69,7 +71,7 @@ angular.module('uguru.directives')
 		    		} catch(err) {
 		    			console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school): " + err);
 		    		}
-			      
+
 			      queryPromise = null;
 			    }, 50);
 			  }

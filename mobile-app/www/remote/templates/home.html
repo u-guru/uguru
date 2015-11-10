@@ -8,7 +8,7 @@
 					<br/>Help</button>
 			</div>
 			<div class="before-guru" ng-if='!user.is_a_guru'>
-				<button class="home-button bg-campus-80p" thr-click='goToDesktopBecomeGuru()'>Become
+				<button class="home-button bg-campus-80p" ng-click='goToDesktopBecomeGuru()'>Become
 					<br/>a Guru</button>
 			</div>
 			<div id="trending" ng-if='user.is_a_guru'>

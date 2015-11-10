@@ -53,6 +53,35 @@ angular.module('uguru.desktop.controllers')
       $ionicSlideBoxDelegate.next();
     }
 
+    function addEventListenerToCTABox(box_elem, modal_elem) {
+        box_elem.addEventListener('click', function() {
+
+            var closeCTAModal = cta(box_elem, modal_elem, function() {
+                modal_elem.classList.add('show');
+                console.log(modal_elem.querySelector('.cta-modal-close'));
+                setTimeout(function() {
+
+                  modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
+                    modal_elem.classList.remove('show');
+                    closeCTAModal();
+                  })
+
+                }, 2000)
+            });
+        });
+    }
+
+    function initCTA() {
+        var allCTABoxes = document.querySelectorAll('.cta-box') || [];
+        var allCTAModels = document.querySelectorAll('.cta-modal') || [];
+        for (var i = 0; i < allCTABoxes.length; i++) {
+            var indexCTABox = allCTABoxes[i];
+            var indexCTAModal = allCTAModels[i];
+            addEventListenerToCTABox(indexCTABox, indexCTAModal)
+
+        }
+    }
+
     $scope.goBackToStudentHome = function() {
 
       uTracker.track(tracker, 'Student Home');
@@ -275,15 +304,6 @@ angular.module('uguru.desktop.controllers')
       progressBarTag.style.width = width + 'px';
     }
 
-    // $scope.$on('$ionicView.loaded', function() {
-
-    // }, 500);
-
-    $scope.$on('$ionicView.beforeEnter', function() {
-      $scope.majors = [];
-      console.log('majors set to [[');
-    })
-
     $scope.$on('$ionicView.enter', function() {
       $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
@@ -293,13 +313,10 @@ angular.module('uguru.desktop.controllers')
         DeviceService.ios.setStatusBarText($state.current.name);
       }
 
-
-      // $scope.loader.hide();
-
-      // $timeout(function() {
-
-      //   $scope.initSlideBoxModals();
-      // }, 500);
+      $timeout(function() {
+        initCTA();
+        console.log('initializing cta')
+      }, 1500)
 
     }, 500)
 

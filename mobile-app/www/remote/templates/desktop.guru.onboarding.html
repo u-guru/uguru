@@ -1,4 +1,16 @@
 <ion-view class='uguru-view desktop-guru-onboarding-view bg-charcoal'>
+	<ion-pane class='full-xy hide-display cta-modal bg-cerise'>
+		<div ng-include="img_base + BASE + 'templates/majors.html'"></div>
+	</ion-pane>
+	<ion-pane class='full-xy hide-display cta-modal bg-cerise'>
+		<div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
+	</ion-pane>
+	<ion-pane class='full-xy hide-display cta-modal bg-cerise'>
+		<div ng-include="img_base + BASE + 'templates/become.guru.skills.html'"></div>
+	</ion-pane>
+	<ion-pane class='full-xy hide-display cta-modal bg-cerise'>
+		<div ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></div>
+	</ion-pane>
 	<main id="desktop-guru-onboarding" class="desktop-mode">
 		<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 		<div class="main default">
@@ -7,8 +19,8 @@
 				<h2>You're only a couple steps a way to great success</h2>
 			</div>
 			<ul id="guru-onboarding-grid" class="ugrid-4">
-			<li>
-					<a class="complete" href="#">
+			<li class='cta-box'>
+					<a class='ng-class:{"complete":user.majors.length > 0}' href="#">
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
@@ -22,7 +34,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li class='cta-box'>
 					<a class='ng-class:{"complete":user.guru_courses.length > 0}' href="#">
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
@@ -33,12 +45,12 @@
 								    <path d="M33.7065758,31 L47.7855746,31 L47.7855746,40 L81.9774289,40 C81.9774289,40 79.3999665,37.906 79.3999665,30 C79.3999665,22.094 81.9774289,20 81.9774289,20 L28.6783619,20 C28.6783619,20 26.0677133,22.061 26.0677133,30 C26.0677133,37.939 28.6783619,40 28.6783619,40 L33.7065758,40 L33.7065758,31 L33.7065758,31 Z M80.4056093,70 C80.4056093,62.094 82.9830717,60 82.9830717,60 L26.6670764,60 C26.6670764,60 24.0564277,62.061 24.0564277,70 C24.0564277,77.939 26.6670764,80 26.6670764,80 L82.9830717,80 C82.9830717,80 80.4056093,77.906 80.4056093,70 L80.4056093,70 Z M75.3773954,50 C75.3773954,42.094 77.9548578,40 77.9548578,40 L47.7855746,40 L47.7855746,52 L40.6545617,47.25 L33.7065758,51.827 L33.7065758,40 L16.6106486,40 C16.6106486,40 14,42.061 14,50 C14,57.939 16.6106486,60 16.6106486,60 L77.9548578,60 C77.9548578,60 75.3773954,57.906 75.3773954,50 L75.3773954,50 Z M82.9830717,80 L86,80 L82.9830717,80 Z M84.9943572,20 L81.9774289,20 L84.9943572,20 Z M86,60 L82.9830717,60 L86,60 Z M81.9774289,40 L84.9943572,40 L81.9774289,40 Z M33.7065758,31 L33.7065758,51.827 L40.6545617,47.25 L47.7855746,52 L47.7855746,31 L33.7065758,31 L33.7065758,31 Z"></path>
 								</svg>
 							</span>
-							<span>Add a Course</span>
+							<span>Add Courses</span>
 						</span>
 					</a>
 				</li>
-				<li>
-					<a class='ng-class:{"complete":true || user.subcategories.length > 0}' href="#">
+				<li class='cta-box'>
+					<a class='ng-class:{"complete":user.subcategories.length > 0}' href="#">
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
@@ -52,8 +64,8 @@
 						</span>
 					</a>
 				</li>
-				<li>
-					<a class='ng-class:{"complete":true || user.subcategories.length > 0}' href="#">
+				<li class='cta-box'>
+					<a class='ng-class:{"complete": user.subcategories.length > 0}' href="#">
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
@@ -70,7 +82,7 @@
 			</ul>
 			<div id="guru-onboarding-progress">
 				<div class="progress white-round">
-					<span style="width: {{progressWidth}}%"></span>
+					<span ng-style="{'width': progressWidth + '%'}"></span>
 					<ul>
 						<li><span>1</span></li>
 						<li><span>2</span></li>

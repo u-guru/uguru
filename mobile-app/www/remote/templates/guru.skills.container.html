@@ -1,21 +1,20 @@
 <main id="desktop-skills" class="desktop-mode desktop-search desktop-guru-onboarding" ng-show='isDesktopMode()'>
 	<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 	<header class="desktop-header">
-		<a ng-click='previousSlide()'>
-			<svg viewBox="0 0 100 100">
-				<path d="M68,86 L32,50 L68,14"></path>
-			</svg>
-		</a>
-		<a ng-click='nextSlide()'>
-			<svg viewBox="0 0 100 100">
-				<path d="M32,86 L68,50 L32,14"></path>
-			</svg>
-		</a>
+		<a>
+            <svg>
+            </svg>
+        </a>
+        <a class='cta-modal-close'>
+            <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </a>
 	</header>
 	<div class="main default">
 		<div id="skills-list" class="desktop-search-list">
 			<ul class='desktop-card-list'>
-				<!-- SAMIR 
+				<!-- SAMIR
 					<li> needs to toggle .selected; when li.selected exists, all other <li> elements should have the class .not-selected
 				-->
     			<li ng-repeat='category in categories'>

@@ -2057,3 +2057,22 @@ a.back-icon-settings {
 		width: auto;
 	}
 }
+
+.desktop-guru-onboarding-view {
+	.cta-modal.hide-display {
+		display:none;
+		opacity:0;
+		z-index:1000;
+		&.show {
+			display:block !important;
+			opacity:1 !important;
+		}
+	}
+	.cta-modal-close svg {
+		-webkit-transform: rotate(45deg);
+	    -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	    -o-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	}
+}
