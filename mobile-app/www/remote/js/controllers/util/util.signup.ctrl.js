@@ -1177,7 +1177,7 @@ angular.module('uguru.util.controllers')
               str += msg[i]+', ';
           }
         }
-        $scope.success.show(0,2000,'Please enter '+ str +'!');
+        $scope.success.show(0,1000 * msg.length,'Please enter '+ str +'!');
         return false
       }
       
