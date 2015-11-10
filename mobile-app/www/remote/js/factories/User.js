@@ -1464,6 +1464,10 @@ angular.module('uguru.user', [])
                     success_callback();
                 }
 
+                if (failure_callback) {
+                    failure_callback();
+                }
+                
             }, function(err){
                 if (failure_callback) {
                     failure_callback(err);
