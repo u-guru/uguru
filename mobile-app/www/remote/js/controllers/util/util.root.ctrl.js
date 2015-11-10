@@ -651,7 +651,6 @@ angular.module('uguru.util.controllers')
 
         //if previous in guru mode
         if ($scope.user && $scope.user.guru_mode) {
-
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {

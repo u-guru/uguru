@@ -47,8 +47,9 @@ angular.module('uguru.util.controllers')
 
 
 // ==========================
-
-    if ($scope.user.id) {
+  
+    if ($scope.user.id && !$scope.root.vars.guru_mode) {
+      console.log("WTF");
       $scope.loader.showAmbig('Redirecting to home...', 2000);
       $state.go('^.home');
     }
