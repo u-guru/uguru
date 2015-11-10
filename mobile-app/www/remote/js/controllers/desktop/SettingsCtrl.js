@@ -531,10 +531,7 @@ angular.module('uguru.desktop.controllers', [])
     }
 
     $scope.goToStudent = function() {
-
-
       $scope.loader.show();
-      // AnimationService.flip();
 
       //let the server know the user was on guru mode for the next time app opens
 
@@ -560,6 +557,12 @@ angular.module('uguru.desktop.controllers', [])
             $cordovaProgress.hide();
             $scope.progress_active = false;
           }, 1000);
+    }
+
+    $scope.goToDesktopSettings = function() {
+      $ionicViewSwitcher.nextDirection('enter')
+      $state.go('^.desktop-settings');
+      $scope.showDesktopSettings = false;
     }
 
 

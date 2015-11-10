@@ -1296,7 +1296,7 @@ angular.module('uguru.util.controllers')
               ModalService.close('signup');
           }
 
-          if ($scope.isDesktopMode) {
+          if ($scope.desktopMode) {
             $state.go('^.home');
           }
 

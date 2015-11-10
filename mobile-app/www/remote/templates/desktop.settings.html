@@ -2,6 +2,11 @@
 	<main id='desktop-settings' class="desktop-mode" ng-show='isDesktopMode()'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default">
+			<a ng-click='desktopGoBack()' class='back-icon-settings absolute left-0'>
+				<svg viewBox="0 0 100 100">
+	    				<path d="M68,86 L32,50 L68,14"></path>
+	    		</svg>
+	    	</a>
 			<h1>Settings</h1>
 			<div>
 				<div>

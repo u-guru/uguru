@@ -284,10 +284,9 @@ angular.module('uguru.util.controllers')
                   $localstorage.setObject('user', []);
                   $localstorage.set('access', false);
                   $localstorage.setObject('appOnboarding', null);
-                  // $scope.user = null;;
+
                   $ionicHistory.clearCache();
                   $ionicHistory.clearHistory();
-                  //toggle in the middle
                   $timeout(function() {
                         $scope.user = User.getLocal();
                         $scope.user.majors = [];
@@ -300,7 +299,9 @@ angular.module('uguru.util.controllers')
                         $scope.root.vars.settings = {icons : {profile : true}};
                         $scope.loader.showSuccess('You have been successfully logged out!', 2500);
                         $state.go('^.university');
-                        $ionicSideMenuDelegate.toggleRight();
+                        if (!$scope.desktopMode) {
+                            $ionicSideMenuDelegate.toggleRight();
+                        }
                   }, 1000);
             }
         }
