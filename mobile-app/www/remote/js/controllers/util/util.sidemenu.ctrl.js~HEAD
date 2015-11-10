@@ -94,7 +94,7 @@ angular.module('uguru.util.controllers')
           return;
       }
 
-      $scope.loader.show();
+      LoadingService.show();
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.search_text = '';
@@ -109,7 +109,7 @@ angular.module('uguru.util.controllers')
       //save university
       var postUniversitySelectedCallback = function() {
           $timeout(function() {
-            $scope.loader.hide();
+            LoadingService.hide();
             $scope.success.show(0, 1000, 'Saved!');
             UniversityMatcher.clearCache();
           }, 1000);
@@ -239,7 +239,7 @@ angular.module('uguru.util.controllers')
       }
 
       var successCallback = function() {
-          $scope.loader.hide();
+          LoadingService.hide();
           alert("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!');
           $scope.signupForm.email = '';
       }
@@ -251,7 +251,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
-      $scope.loader.show();
+      LoadingService.show();
       $timeout(function() {
         $scope.toggleBackToLoginMode();
       }, 500)
@@ -270,7 +270,7 @@ angular.module('uguru.util.controllers')
           }
       }, 500)
       $timeout(function() {
-        $scope.loader.hide();
+        LoadingService.hide();
       }, 750);
     }
 
@@ -340,9 +340,9 @@ angular.module('uguru.util.controllers')
 
         $scope.file_index += 1;
 
-        $scope.loader.show();
+        LoadingService.show();
         callbackSuccess = function() {
-          $scope.loader.hide();
+          LoadingService.hide();
           $scope.success.show(0, 1500, 'Saved!');
         }
 
@@ -466,10 +466,10 @@ angular.module('uguru.util.controllers')
                 }
 
 
-                $scope.loader.show();
+                LoadingService.show();
                 var successCallback = function() {
 
-                  $scope.loader.hide();
+                  LoadingService.hide();
                   $scope.success.show(0, 1000, 'Password Successfully Changed');
                   $timeout(function() {
                     var uguruPopup = document.getElementById('edit-password-uguru-popup');
@@ -479,7 +479,7 @@ angular.module('uguru.util.controllers')
 
 
                 var failureCallback = function(resp) {
-                  $scope.loader.hide();
+                  LoadingService.hide();
                   $scope.success.show(0, 1000, 'Something went wrong ... Please contact support!');
                   $timeout(function() {
                     var uguruPopup = document.getElementById('edit-password-uguru-popup');
@@ -629,10 +629,10 @@ angular.module('uguru.util.controllers')
     $scope.goToMajorPage = function() {
 
       $scope.closeAttachActionSheet();
-          $scope.loader.show();
+          LoadingService.show();
           $scope.transitionToMajor()
           $timeout(function() {
-          $scope.loader.hide();
+          LoadingService.hide();
           $ionicSideMenuDelegate.toggleRight();
       }, 1000);
 
@@ -656,28 +656,28 @@ angular.module('uguru.util.controllers')
               // NICK-REFACTOR
               if (index === 0) {
                 $scope.closeAttachActionSheet();
-                $scope.loader.show();
+                LoadingService.show();
                 $timeout(function() {
-                  $scope.loader.hide();
+                  LoadingService.hide();
                   $scope.showActionSheetProfilePhoto();
                 }, 1000);
               }
 
               if (index === 1) {
                 $scope.closeAttachActionSheet();
-                $scope.loader.show();
+                LoadingService.show();
                 $scope.launchUniversityModal();
                 $timeout(function() {
-                  $scope.loader.hide();
+                  LoadingService.hide();
                 }, 500);
               }
 
               if (index === 2) {
                 $scope.closeAttachActionSheet();
-                $scope.loader.show();
+                LoadingService.show();
                 $timeout(function() {
                   $scope.editAccountInfoActionSheet();
-                  $scope.loader.hide();
+                  LoadingService.hide();
                 }, 1000);
               }
 
@@ -690,13 +690,13 @@ angular.module('uguru.util.controllers')
     $scope.resetAccount = function() {
       if (confirm('Are you sure you want to reset your admin account?')) {
 
-        $scope.loader.show();
+        LoadingService.show();
         $scope.user.university_id = null;
         $scope.user.university = null;
-        $scope.loader.show();
+        LoadingService.show();
         User.clearAttr({}, $scope.user.id).then(function(user) {
-          $scope.loader.hide();
-          $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
+          LoadingService.hide();
+          LoadingService.showSuccess(0, 2000,'Admin Account Successfully cleared!');
           $scope.logoutUser();
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
@@ -714,7 +714,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToGuru = function() {
 
-      $scope.loader.show();
+      LoadingService.show();
 
 
 
@@ -722,7 +722,7 @@ angular.module('uguru.util.controllers')
 
         $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
         $timeout(function() {
-          $scope.loader.hide();
+          LoadingService.hide();
         }, 1000)
 
         $timeout(function() {
@@ -738,14 +738,14 @@ angular.module('uguru.util.controllers')
     $scope.goToStudent = function() {
 
 
-      $scope.loader.show();
+      LoadingService.show();
       // AnimationService.flip();
 
       //let the server know the user was on guru mode for the next time app opens
 
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
       $timeout(function() {
-        $scope.loader.hide();
+        LoadingService.hide();
       }, 1000)
 
       $timeout(function() {

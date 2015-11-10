@@ -16,10 +16,11 @@ angular.module('uguru.student.controllers')
   'Restangular',
   '$ionicPlatform',
   '$cordovaActionSheet',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   Geolocation, $cordovaGeolocation, Restangular,
-  $ionicPlatform, $cordovaActionSheet) {
+  $ionicPlatform, $cordovaActionSheet, LoadingService) {
 
     $ionicPlatform.ready(function() {
 
@@ -322,7 +323,7 @@ angular.module('uguru.student.controllers')
         console.log('user is at ' + $scope.user.last_position.latitude + ',' + $scope.user.last_position.longitude);
 
         $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
-        $scope.loader.hide();
+        LoadingService.hide();
 
 
         if ($state.current.name !== 'root.active-student-session') {
@@ -368,11 +369,11 @@ angular.module('uguru.student.controllers')
       $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
       $scope.options = {scrollwheel: false};
 
-      $scope.loader.show();
+      LoadingService.show();
       $timeout(function() {
         $scope.getUserRecentLocation($scope.recursive_delay);
         $timeout(function() {
-          $scope.loader.hide()
+          LoadingService.hide()
         }, 500)
       }, 1000);
 

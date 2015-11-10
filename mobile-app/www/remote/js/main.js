@@ -6,20 +6,20 @@ var FIRST_PAGE='^.' + _startpage;
 // isAdmin = true;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
-var REST_URL = 'https://www.uguru.me'
+var REST_URL = 'https://www.uguru.me';
 
 var BASE = '';
 var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = _ipaddress;
+  // BASE_URL = _ipaddress;
   // REST_URL = "http://192.168.0.114:5000"
 
   // REST_URL = 'https://192.168.0.104:5000';
 
 } else {
-  img_base = '/static/'
+  img_base = '/static/';
 }
 
 var tracker = 'lo';
@@ -51,10 +51,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $ionicConfigProvider, $compileProvider,
-  $provide) {
+  $ionicConfigProvider, $compileProvider, $provide, $httpProvider) {
 
 
+  $httpProvider.useApplyAsync(true);
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
@@ -70,7 +70,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
     };
 
-  })
+  });
 
   //ASK-NICK: what does this mean?
   //NICK-SAYS: it means use native style animations whenever we rely on ionic animations. (ios styles for ios, android for android)
@@ -106,12 +106,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
-        controller: 'AddUniversityCtrl',
-        resolve: {
-          deviceInfo: function(DeviceService) {
-            return DeviceService.getPlatform();
-          }
-        },
         controller: 'AddUniversityCtrl'
   }).
 

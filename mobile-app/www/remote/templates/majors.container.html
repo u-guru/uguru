@@ -1,3 +1,4 @@
+
 <main id="desktop-majors" class="desktop-mode desktop-search desktop-guru-onboarding" ng-if='desktopMode'>
 	<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 	<header class="desktop-header">
@@ -18,7 +19,7 @@
 				<label for="major-input-1">search majors</label>
 			</div>
 		</form>
-		<div id="major-list" class="desktop-search-list" bind-input='majors' source='majorsSource'>
+		<div id="major-list" class="desktop-search-list" bind-input='majors' source='source.majors'>
 			<ul class='desktop-card-list'>
     			<li ng-if="user.majors.length > 0 && search_text.major.length === 0" class="major-item selected" ng-repeat='major in user.majors track by major.id'>
     				<a ng-click='removeMajor(major, $index)'>
@@ -77,7 +78,7 @@
 			</a>
 		</div>
 	</header>
-	<div id="major-list" bind-input='majors' source='majorsSource' class="onboarding-list">
+	<div id="major-list" bind-input='majors' source='source.majors' class="onboarding-list">
 		<ul class="list list-item-border no-icon">
 			<li ng-if="user.majors.length > 0 && search_text.major.length === 0" class="major-item selected" ng-repeat='major in user.majors track by major.id'>
 				<a ng-click='removeMajor(major, $index)'>{{major.title || major.name || major.abbr || major.code}}</a>

@@ -18,7 +18,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		open: open,
 		attachListeners: attachListeners,
 		close: close
-	}
+	};
 
 	function open(popupName, callback) {
 		$timeout(function() {
@@ -26,7 +26,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			if (typeof source !== 'element') {
 				source = document.getElementById('root-nav');
 			}
-			cta(source, popup, {duration:0},
+			cta(source, popup, 'ion-view', {duration:0},
 				function(modal) {
 					modal.classList.add('show');
 				});
@@ -36,7 +36,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		}, 0);
 	}
 
-	var clickClose, clickSubmit, closeIcon, submitButton, enterSubmit
+	var clickClose, clickSubmit, closeIcon, submitButton, enterSubmit;
 	function attachListeners(popup, callback) {
 
 		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];

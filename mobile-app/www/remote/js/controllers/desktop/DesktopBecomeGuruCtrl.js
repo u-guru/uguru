@@ -25,12 +25,13 @@ angular.module('uguru.desktop.controllers')
   'Utilities',
   '$interval',
   'KeyboardService',
+  'LoadingService',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
     Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval,
-    KeyboardService) {
+    KeyboardService, LoadingService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -53,9 +54,11 @@ angular.module('uguru.desktop.controllers')
       $ionicSlideBoxDelegate.next();
     }
 
-    function addEventListenerToCTABox(box_elem, modal_elem) {
+    function addEventListenerToCTABox(box_elem, modal_elem, index) {
         box_elem.addEventListener('click', function() {
-
+          if (index === 0) {
+            $scope.initMajors();
+          }
             var closeCTAModal = cta(box_elem, modal_elem, function() {
                 modal_elem.classList.add('show');
                 console.log(modal_elem.querySelector('.cta-modal-close'));
@@ -77,7 +80,7 @@ angular.module('uguru.desktop.controllers')
         for (var i = 0; i < allCTABoxes.length; i++) {
             var indexCTABox = allCTABoxes[i];
             var indexCTAModal = allCTAModels[i];
-            addEventListenerToCTABox(indexCTABox, indexCTAModal)
+            addEventListenerToCTABox(indexCTABox, indexCTAModal, i)
 
         }
     }
@@ -104,6 +107,37 @@ angular.module('uguru.desktop.controllers')
       $ionicSlideBoxDelegate.previous();
     }
 
+    $scope.initMajors = function() {
+
+      var majorsList = document.querySelectorAll('#major-list');
+
+        $timeout(function() {
+          if (Utilities.isElementInViewport(majorsList)) {
+            var majors = majorsList[0].querySelectorAll('ul li');
+            if(majors.length === 0) {
+              var timer = 10;
+              LoadingService.showAmbig('Fetching majors...', (timer * 1000));
+              var counter = 0;
+              var startScanner = $interval(function() {
+                console.log("Waiting for majors to load...");
+                var majors = majorsList[0].querySelectorAll('ul li');
+                counter++;
+                if (majors.length !== 0 || counter === timer) {
+                  console.log("stopping loader");
+                  LoadingService.hide();
+                  stopLoader();
+                }
+              }, 1000)
+
+              function stopLoader() {
+                $interval.cancel(startScanner);
+              }
+            }
+          }
+        }, 500)
+
+    }
+
 
 
     $scope.activeSlideIndex = 0;
@@ -121,32 +155,7 @@ angular.module('uguru.desktop.controllers')
 
         uTracker.track(tracker, 'Become Guru: Majors');
 
-        var majorsList = document.querySelectorAll('#major-list');
 
-        $timeout(function() {
-          if (Utilities.isElementInViewport(majorsList)) {
-            var majors = majorsList[0].querySelectorAll('ul li');
-            if(majors.length === 0) {
-              var timer = 10;
-              $scope.loader.showAmbig('Fetching majors...', (timer * 1000));
-              var counter = 0;
-              var startScanner = $interval(function() {
-                console.log("Waiting for majors to load...");
-                var majors = majorsList[0].querySelectorAll('ul li');
-                counter++;
-                if (majors.length !== 0 || counter === timer) {
-                  console.log("stopping loader");
-                  $scope.loader.hide();
-                  stopLoader();
-                }
-              }, 1000)
-
-              function stopLoader() {
-                $interval.cancel(startScanner);
-              }
-            }
-          }
-        }, 500)
 
         $ionicSideMenuDelegate.canDragContent(false);
       }

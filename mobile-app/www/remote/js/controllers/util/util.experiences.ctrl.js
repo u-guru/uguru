@@ -12,23 +12,23 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
-
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate) {
+    $ionicSideMenuDelegate, LoadingService) {
 
     $scope.removeGuruExperience = function(experience, index) {
       var removedExperience = $scope.user.guru_experiences.splice(index, 1);
 
       var successCallback = function() {
-        $scope.loader.hide();
-        $scope.loader.showSuccess('Experience removed!', 1500);
+        LoadingService.hide();
+        LoadingService.showSuccess('Experience removed!', 1500);
         if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
           $scope.guruExperiencesModal.remove();
         }
       }
 
-      $scope.loader.show();
+      LoadingService.show();
 
       $scope.user.updateAttr('remove_guru_experience', $scope.user, $scope.experience, successCallback, $scope);
 
@@ -41,14 +41,14 @@ angular.module('uguru.util.controllers')
       }
 
       var successCallback = function() {
-        $scope.loader.hide();
-        $scope.loader.showSuccess($scope.experience.name +'saved!', 1500);
+        LoadingService.hide();
+        LoadingService.showSuccess($scope.experience.name +'saved!', 1500);
         if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
           $scope.guruExperiencesModal.remove();
         }
       }
 
-      $scope.loader.show();
+      LoadingService.show();
 
       if (!$scope.experience.id) {
         $scope.user.updateAttr('add_guru_experience', $scope.user, $scope.experience, successCallback, $scope);

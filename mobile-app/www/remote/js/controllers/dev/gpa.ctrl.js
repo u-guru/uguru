@@ -13,10 +13,10 @@ angular.module('uguru.util.controllers')
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
   '$ionicActionSheet',
-
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate,$ionicActionSheet)
+    $ionicSideMenuDelegate,$ionicActionSheet, LoadingService)
   {
 
     $scope.gpaPage = {gpa:0};
@@ -38,16 +38,16 @@ angular.module('uguru.util.controllers')
         courseName: courseDict.courseName,
         courseGrade: courseDict.courseGrade,
         courseCredit: courseDict.courseCredit
-      }
+      };
 
       $scope.userCourses.push(newCourseObj);
       $localstorage.setObject('userGPACourseList', $scope.userCourses);
       $scope.gpaPage.gpa = calculateGpa($scope.userCourses);
       $scope.tempCourse.courseName = '';
-      $scope.loader.showSuccess('Saved!', 1500);
+      LoadingService.showSuccess('Saved!', 1500);
       $scope.addCourseGPAModal.hide();
 
-    }
+    };
 
     var calculateGpa = function(arrCourses) {
       sum = 0;

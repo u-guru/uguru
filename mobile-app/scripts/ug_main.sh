@@ -1,10 +1,12 @@
+#!/bin/bash
+
 	# For optimal use, create a ug alias function in your bash profile and include the entire contents of this script.
 
 		if [[ "$PWD" != *'mobile-app'* ]]; then
 			printf "\e[0;31m"
 			printf "Please ensure that you are in the /mobile-app/ directory.\n"
 			printf "\e[0m"
-			return
+			exit
 	 	fi
 
 		if [ "$1" == "start" ]; then
@@ -13,7 +15,7 @@
 				printf "\e[0;31mERROR: Could not locate ug scripts.\n"
 			    printf "Please ensure that you are in the /mobile-app/ directory."
 			    printf "\e[0m"
-			    return
+			    exit
 			fi
 			chmod 777 ./scripts/ug_main.sh
 			chmod 777 ./scripts/ug_help.sh
@@ -26,7 +28,7 @@
 			printf "You have successfully installed the ug command line interface. \n"
 			printf "For a list of available commands please refer to the help option (ug help). \n"
 			printf "\e[0m"
-			return
+			exit
 	    fi
 
 	    if [ "$1" == "setup" ]; then
@@ -39,14 +41,14 @@
 	    	npm install -g ionic@1.3.2
 	    	printf "\e[0;36mInstallation finished.\n"
 	    	printf "\e[0m"
-	    	return
+	    	exit
     	fi
 
 	    if [ "$1" != "help" ] && [ "$1" != "start" ] && [ "$1" != "build" ] && [ "$1" != "run" ] && [ "$1" != "release" ] && [ "$1" != "plugins" ] && [ "$1" != "plugins" ]; then
 	    	printf "\e[0;31m\n"
 	    	printf "Command not recognized. Please see \e[0;32mug help\e[0;31m for a list of available commands.\n"
 	    	printf "\e[0m\n"
-	    	return
+	    	exit
 	    fi
 
 		numArgs="$#";

@@ -16,11 +16,11 @@ angular.module('uguru.student.controllers')
   '$ionicScrollDelegate',
   '$cordovaKeyboard',
   '$ionicSideMenuDelegate',
-  '$ionicHistory',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, $ionicActionSheet,
   Restangular, $ionicPlatform,$ionicScrollDelegate, $cordovaKeyboard,
-  $ionicSideMenuDelegate, $ionicHistory) {
+  $ionicSideMenuDelegate, LoadingService) {
 
     $ionicPlatform.ready(function() {
 
@@ -287,7 +287,7 @@ angular.module('uguru.student.controllers')
         current_message.formatted_time = $scope.root.time.since(new Date(current_message.time_created))
       }
       messages.sort($scope.sortMessageComparator);
-      $scope.loader.hide();
+      LoadingService.hide();
       return messages;
     }
 
