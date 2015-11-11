@@ -12,6 +12,11 @@ angular.module('music-draft')
 
 function IntroCtrl($scope, $state, OauthService, $location, MusicPlayer, $ionicSlideBoxDelegate, $timeout) {
 
+	if (LOCAL) {
+            $scope.img_base = 'remote/'
+    } else {
+        $scope.img_base = '';
+    }
 
 	$scope.nextSlide = function() {
 		console.log("clicked nextSlide()");
@@ -56,7 +61,7 @@ function IntroCtrl($scope, $state, OauthService, $location, MusicPlayer, $ionicS
 	    		$timeout(function() {
 	    			// $scope.nextSlide();
 	    		}, 300);
-	    		
+
 	    	});
 	    }
 

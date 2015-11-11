@@ -59,7 +59,7 @@ angular.module('uguru.desktop.controllers')
         $scope.goToGuruMode();
       }
 
-      if ($scope.progressWidth) {
+      if ($scope.progressWidth === 100) {
         LoadingService.showSuccess("Your initial profile is complete!", 1500, callbackSuccess)
       }
     }

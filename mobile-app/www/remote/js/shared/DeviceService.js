@@ -105,19 +105,19 @@ function DeviceService($cordovaNgCardIO,
   function isChromeBrowser() {
     if (getBrowser().name === 'Chrome') {
       return true;
-    } else return false; 
+    } else return false;
   }
 
   function isIEBrowser() {
     if (getBrowser().name === 'IE') {
       return true;
-    } else return false; 
+    } else return false;
   }
 
   function isSafariBrowser() {
     if (getBrowser().name === 'Safari') {
       return true;
-    } else return false;  
+    } else return false;
   }
 
 
@@ -211,8 +211,8 @@ function DeviceService($cordovaNgCardIO,
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
     console.log("Cordova File Plugin is ready: " + cordova.file);
-    console.log("Cordova Badge Plugin is ready: " + cordova.plugins.notification.badge);
-    console.log("Cordova Media Plugin is ready: " + Media);
+    // console.log("Cordova Badge Plugin is ready: " + cordova.plugins.notification.badge);
+    // console.log("Cordova Media Plugin is ready: " + Media);
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
@@ -224,9 +224,9 @@ function DeviceService($cordovaNgCardIO,
 		if(isMobile()) {
 
 	 		var mobileOS = getPlatform().toLowerCase();
-      if(doesCordovaExist()) {
-        PushService.init();
-      }
+      // if(doesCordovaExist()) {
+      //   PushService.init();
+      // }
 		  	switch(mobileOS) {
 		  		case "ios":
 		  			iOSService.ready();

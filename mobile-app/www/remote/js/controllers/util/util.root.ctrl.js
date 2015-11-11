@@ -272,6 +272,88 @@ angular.module('uguru.util.controllers')
             }, 250);
         };
 
+        $scope.loader = {
+            showMsg: function(message, delay, duration) {
+                $ionicLoading.show({
+                    template: '<span id="E2E-msg" class="capitalized">' + message + '</span>',
+                    duration: duration || 2000,
+                    delay:delay
+                })
+            },
+            show: function() {
+                $ionicLoading.show({
+
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html'
+                });
+                $scope.root.vars.loaderOn = true;
+            },
+            customShow: function(velocity_args) {
+                $ionicLoading.show({
+                    scope:$scope,
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
+                });
+                $timeout(function() {
+
+                    $scope.root.vars.loaderOn = true;
+                    var loaderContainer = document.querySelector('.loading-container');
+                    var loaderDiv = document.querySelector('.loading-container .loading');
+                    loaderDiv.style.opacity = 0 ; //set it to zero
+                    loaderContainer.className += ' active visible';
+
+                    $timeout(function() {
+                        var cssOptions = {};
+                        var animateOptions = {duration:2000};
+                        var animationName = "transition.bounceIn";
+                        Velocity(loaderDiv, cssOptions, animateOptions, animationName);
+                    }, 500);
+
+                }, 300)
+            },
+            showAmbig: function(text, duration) {
+                $scope.ambigLoaderText = text || '';
+
+                $ionicLoading.show({
+                    scope: $scope,
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
+                    duration: duration || 1000
+                });
+                $scope.root.vars.loaderOn = true;
+            },
+            showFailure: function(text, duration) {
+                $scope.ambigLoaderText = text || '';
+
+                $ionicLoading.show({
+                    scope: $scope,
+                    templateUrl: BASE + 'templates/u.loader.failure.svg.html',
+                    duration: duration || 1000
+                });
+                $scope.root.vars.loaderOn = true;
+            },
+            showSuccess: function(text, duration, callback) {
+
+                $scope.successLoaderText = text || '';
+
+                $ionicLoading.show({
+                    scope: $scope,
+                    templateUrl: BASE + 'templates/u.loader.success.svg.html',
+                    duration: duration || 1000
+                });
+                $scope.root.vars.loaderOn = true;
+                callback && callback();
+            },
+            updateSuccessText: function(text) {
+                $scope.successLoaderText = text || 'loading'
+            },
+            hide: function(delay) {
+                $scope.ambigLoaderText = '';
+                delay = delay || 0;
+                $timeout(function() {
+                    $ionicLoading.hide();
+                    $scope.root.vars.loaderOn = false;
+                }, delay)
+            }
+        }
+
         $scope.doRefresh = function(repeat) {
             $scope.root.vars.user_refresh = true;
             if ($scope.root.vars.user_refresh || !repeat) {

@@ -114,13 +114,11 @@ button[disabled] {
 	@include opacity(.5);
 }
 button:hover, button:focus {
-	@include opacity(1);
-	background: lighten($eggplant, 37%)!important;
-	color: $eggplant!important;
+	@include opacity(.5);
 }
 button:active, button.activated {
 	@include opacity(1);
-	background: darken($eggplant, 10%)!important;
+	background: rgba(white,.2)!important;
 	color: white!important;
 }
 .scroll {
@@ -142,9 +140,6 @@ button:active, button.activated {
 	height: 100%;
 }
 #intro-slide-box {
-	section {
-		width: 100%;
-	}
 	header {
 		width: 100%;
 		h1.text-center {
@@ -329,7 +324,7 @@ button:active, button.activated {
 			}
 		}
 	}
-	
+
 }
 
 
@@ -805,17 +800,6 @@ button:active, button.activated {
 		}
 	}
 }
-#uguru-title {
-	button:hover, button:focus {
-		background: lighten($shamrock, 37%)!important;
-		color: $shamrock!important;
-	}
-	button:active, button.activated {
-		@include opacity(1);
-		background: darken($shamrock, 10%)!important;
-		color: white!important;
-	}
-}
 
 
 /* ---------- GENRE */
@@ -829,19 +813,18 @@ button:active, button.activated {
 			@include flex-center;
 			@include flex-wrap;
 			height: 100%;
-			padding: 7.5px;
+			padding: 1px;
 			li {
 				position: relative;
 				height: 50%;
 				font-weight: 600;
-				padding: 7.5px;
+				padding: 1px;
 				a {
 					display: block;
 					position: relative;
 					width: 100%;
 					height: 100%;
-					background: white;
-					color: darken($eggplant, 10%);
+					background: desaturate(darken($eggplant, 20%), 30%);
 					svg {
 						width: 100%;
 					}
@@ -856,8 +839,8 @@ button:active, button.activated {
 					color: $eggplant!important;
 				}
 				a:active, a:focus {
-					background: darken($eggplant, 10%)!important;
-					color: white!important;
+					background: white!important;
+					color: $eggplant!important;
 				}
 			}
 		}
@@ -921,7 +904,7 @@ button:active, button.activated {
 
 .player-controls-container {
 	display: flex;
-	
+
 }
 
 .artist-container {
@@ -943,4 +926,3 @@ button:active, button.activated {
 .track-art {
 	width: 80px;
 }
-

@@ -11,8 +11,14 @@ angular.module('music-draft')
 
 function MusicHomeCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $state) {
 
+	if (LOCAL) {
+            $scope.img_base = 'remote/'
+        } else {
+            $scope.img_base = '';
+        }
+
 	$scope.goToIntro = function() {
-		
+
 			$state.go('intro');
 	};
 
@@ -45,7 +51,7 @@ function MusicHomeCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $
 
 //for spotify
 			// for (var i = 0; i<response.data.artists.items.length; i++) {
-			// 	$scope.results.push(response.data.artists.items[i]);	
+			// 	$scope.results.push(response.data.artists.items[i]);
 			// }
 
 		}, defaultErrorCallback);
@@ -105,8 +111,8 @@ function MusicHomeCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $
 			$scope.player.isAvailable = true;
 			$scope.player.isPlaying = true;
 		}, 800);
-		
-		
+
+
 	};
 
 
