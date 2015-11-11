@@ -588,6 +588,9 @@
 	@include flex;
 	@include flex-wrap;
 	@include flex-center;
+	.main:not(.skills-container) {
+		min-height: 520px;
+	}
 	.main {
 		height: auto;
 		form {
@@ -666,6 +669,9 @@
 @media screen and (min-height:750px) and (min-width: 1024px) {
 	.desktop-search {
 		@include flex-bottom;
+		.main:not(.skills-container) {
+			min-height: 644px;
+		}
 	}
 }
 @media screen and (min-height:800px) {
@@ -1460,6 +1466,21 @@
 		}
 	}
 }
+#guru-onboarding-buttons {
+	@include center-x;
+	bottom: 15px;
+	li {
+		padding: 0 7.5px;
+		button {
+			display: inline-block!important;
+			width: 200px!important;
+			font-weight: 600;
+		}
+		&:first-child {
+			text-align: right;
+		}
+	}
+}
 
 /* ---------- GURU PROFILE */
 #desktop-guru-profile {
@@ -1962,6 +1983,18 @@
 					padding: 0 15px;
 				}
 			}
+		}
+	}
+	&.student-mode {
+		background: $smoke;
+		color: $slate!important;
+		border-color: $slate!important;
+		input, label, a, button {
+			color: $slate!important;
+		}
+		button:hover {
+			background: $slate!important;
+			color: white!important;
 		}
 	}
 }
