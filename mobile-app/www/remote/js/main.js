@@ -151,7 +151,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.desktop-guru-profile', {
     url:'/desktop-guru-profile',
-    templateUrl: BASE + 'templates/desktop.guru.profile.html'
+    templateUrl: BASE + 'templates/desktop.guru.profile.html',
+    controller: 'GuruProfileController'
   }).
   state('root.desktop-settings', {
     url:'/desktop-settings',

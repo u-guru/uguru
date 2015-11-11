@@ -516,7 +516,10 @@ angular.module('uguru.guru.controllers')
       $state.go('^.desktop-guru-profile')
     }
 
-
+    $scope.goToDesktopGuruCredibility = function() {
+      $ionicViewSwitcher.nextDirection('enter');
+      $state.go('^.guru-credibility');
+    }
 
     $scope.saveGuruProfile = function() {
       $scope.success.show(0, 1500, 'Profile Successfully Saved');
