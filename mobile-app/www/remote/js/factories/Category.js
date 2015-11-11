@@ -15,25 +15,23 @@ angular.module('uguru.rest')
             if (!user.guru_subcategories || !user.guru_subcategories.length) {
                 return;
             }
-            for (var i = 0; i < user.guru_subcategories.length; i ++) {
-                for (var j = 0; j < categories.length; j ++) {
-
+            // apply user data
+            for(var i = 0 ; i < user.guru_subcategories.length; i++){
+                //loop all list
+                for(var j = 0 ; j < categories.length; j++)
+                {
                     var userSubcategory = user.guru_subcategories[i];
                     var indexCategory = categories[j];
-
-                    if (indexCategory.id === userSubcategory.category.id) {
-                        indexCategory.active_subcategories += 1
+                    // find category id match
+                    if(indexCategory.id === userSubcategory.category.id)
+                    {
+                        indexCategory.active_subcategories += 1;
                         for (var k = 0; k < indexCategory.subcategories.length; k++) {
-                            var indexSubcategory = indexCategory.subcategories[k];
-                            if (indexSubcategory.id === userSubcategory.id) {
-                                indexSubcategory.active = true;
-                            } else {
-                                indexSubcategory.active = false;
-                            }
+                            // var indexSubcategory = indexCategory.subcategories[k];
+                            if (indexCategory.subcategories[k].id === userSubcategory.id) 
+                                indexCategory.subcategories[k].active = true;
                         }
                     }
-
-
                 }
             }
         }
