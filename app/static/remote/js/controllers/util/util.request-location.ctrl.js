@@ -11,13 +11,14 @@ angular.module('uguru.util.controllers')
   '$compile',
   '$ionicHistory',
   '$cordovaGeolocation',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $compile, $ionicHistory, $cordovaGeolocation) {
+ 	$ionicModal, $compile, $ionicHistory, $cordovaGeolocation, LoadingService) {
 
 
     $scope.goBackToRequests = function() {
       $ionicHistory.goBack();
-    }
+    };
 
     $scope.validateForm = function() {
 
@@ -26,7 +27,7 @@ angular.module('uguru.util.controllers')
       } else {
         alert('Please select a location');
       }
-    }
+    };
 
     $scope.refresh_map = false;
     $scope.random  = null;
@@ -41,24 +42,24 @@ angular.module('uguru.util.controllers')
         $scope.root.keyboard.close();
         $timeout(function() {
           $scope.requestMapModal.hide();
-        }, 300)
+        }, 300);
       } else {
         $scope.requestMapModal.hide();
       }
-    }
+    };
 
     $scope.setLocation = function() {
       $scope.root.vars.request.position = $scope.requestPosition;
       $ionicHistory.goBack();
-    }
+    };
 
     $scope.createGoogleLatLng = function(latCoord, longCoord) {
       return new google.maps.LatLng(latCoord, longCoord);
-    }
+    };
 
     $scope.setMarkerPosition = function(marker, latCoord, longCoord) {
       marker.setPosition($scope.createGoogleLatLng(latCoord, longCoord));
-    }
+    };
 
     $scope.getAddressFromLatLng = function(geocoderObj, latCoord, longCoord) {
 
@@ -87,16 +88,16 @@ angular.module('uguru.util.controllers')
           alert('Geocoder failed due to: ' + status);
         }
       });
-    }
+    };
 
     $scope.setMapCenter = function(map, latCoord, longCoord) {
       $scope.map.setCenter($scope.createGoogleLatLng(latCoord, longCoord));
-    }
+    };
 
     $scope.fixInput = function() {
       $timeout(function() {
             container = document.getElementsByClassName('pac-container');
-            console.log(container)
+            console.log(container);
             // disable ionic data tab
             angular.element(container).attr('data-tap-disabled', 'true');
             // leave input field if google-address-entry is selected
@@ -106,7 +107,7 @@ angular.module('uguru.util.controllers')
             });
 
           },1500);
-    }
+    };
 
     $scope.showGoogleMap = function() {
           $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14, control: {} };
@@ -119,7 +120,7 @@ angular.module('uguru.util.controllers')
             initMapCoords = $scope.createGoogleLatLng(
                                 $scope.requestPosition.coords.latitude,
                                 $scope.requestPosition.coords.longitude
-                            )
+                            );
 
             $scope.root.vars.request.location = {latitude: $scope.requestPosition.coords.latitude, longitude: $scope.requestPosition.coords.longitude};
           }
@@ -130,14 +131,14 @@ angular.module('uguru.util.controllers')
             disableDefaultUI: true,
             zoomControl: false,
             // zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
-          }
+          };
 
           actual_map = new google.maps.Map(
                   mapContainer,
                   mapOptions
-          )
+          );
 
-          $scope.actual_map = actual_map
+          $scope.actual_map = actual_map;
 
           $scope.marker = new google.maps.Marker({
             position: initMapCoords,
@@ -159,11 +160,11 @@ angular.module('uguru.util.controllers')
           google.maps.event.addListener($scope.marker, 'dragend', function()
           {
               // $scope.marker.setAnimation(google.maps.Animation.BOUNCE);
-              $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng())
+              $scope.getAddressFromLatLng($scope.geocoder, $scope.marker.getPosition().lat(), $scope.marker.getPosition().lng());
 
 
           });
-    }
+    };
 
     $scope.$on('$ionicView.enter', function() {
 
@@ -171,19 +172,19 @@ angular.module('uguru.util.controllers')
       var posOptions = {
         timeout: 10000,
         enableHighAccuracy: false, //may cause high errors if true
-      }
+      };
 
       $cordovaGeolocation.getCurrentPosition(posOptions).then(function( position) {
 
         //typical find GPS & show
-          $scope.loader.hide();
+          LoadingService.hide();
           $scope.user.last_position = position.coords;
           $scope.requestPosition = position;
           $scope.showGoogleMap();
       }, function(error) {
 
           //show & let them know we couldn't find it
-          $scope.loader.hide()
+          LoadingService.hide();
           console.log(JSON.stringify(error));
           $scope.requestPosition = { coords: { latitude: $scope.user.university.latitude, longitude: $scope.user.university.longitude}};
           $scope.success.show(0, 2000, "Sorry! We couldn't detect a strong enough GPS signal.");
@@ -195,4 +196,4 @@ angular.module('uguru.util.controllers')
   }
 
 
-])
+]);

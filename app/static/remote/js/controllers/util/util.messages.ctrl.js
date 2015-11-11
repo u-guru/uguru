@@ -18,10 +18,11 @@ angular.module('uguru.student.controllers')
   '$ionicHistory',
   '$cordovaStatusbar',
   '$ionicPlatform',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $cordovaProgress,
   $stateParams, $cordovaKeyboard, $ionicScrollDelegate,
-  Restangular, $ionicHistory, $cordovaStatusbar, $ionicPlatform) {
+  Restangular, $ionicHistory, $cordovaStatusbar, $ionicPlatform, LoadingService) {
 
     $scope.hide_footer = false;
     $scope.session = JSON.parse($stateParams.sessionObj);
@@ -83,7 +84,7 @@ angular.module('uguru.student.controllers')
         current_message.formatted_time = $scope.root.time.since(new Date(current_message.time_created))
       }
       messages.sort($scope.sortMessageComparator);
-      $scope.loader.hide();
+      LoadingService.hide();
       return messages;
     }
 
@@ -245,7 +246,7 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      $scope.loader.show();
+      LoadingService.show();
       $scope.messages = $scope.processMessages($scope.session.messages);
 
       $timeout(function() {

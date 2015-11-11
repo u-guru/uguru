@@ -14,12 +14,13 @@ angular
   '$templateCache',
   '$localstorage',
   'PushService',
+  'uTracker',
 	DeviceService
 	]);
 
 function DeviceService($cordovaNgCardIO,
 	AndroidService, iOSService, WindowsService, $timeout, Geolocation,
-  University, Version, $ionicHistory, $templateCache, $localstorage, PushService) {
+  University, Version, $ionicHistory, $templateCache, $localstorage, PushService, uTracker) {
 
   var currentDevice;
   var firstTime = true;
@@ -39,15 +40,19 @@ function DeviceService($cordovaNgCardIO,
 		isWeb: isWeb,
     isAndroidDevice: isAndroidDevice,
     isAndroidBrowser: isAndroidBrowser,
-    isAndroid:isAndroid,
-    isIOSDevice:isIOSDevice,
+    isAndroid: isAndroid,
+    isIOSDevice: isIOSDevice,
     isIOSBrowser: isIOSBrowser,
     isIOS: isIOS,
     ios: iOSService,
     getInfo: getInfo,
     checkUpdates: checkUpdates,
-    currentDevice: currentDevice
-	}
+    currentDevice: currentDevice,
+    isFirefoxBrowser: isFirefoxBrowser,
+    isChromeBrowser: isChromeBrowser,
+    isIEBrowser: isIEBrowser,
+    isSafariBrowser: isSafariBrowser
+	};
 
   function isFirstTime() {
     console.log("isFirstTime");
@@ -90,6 +95,31 @@ function DeviceService($cordovaNgCardIO,
     return !isIOSDevice() && ionic.Platform.isIOS();
 
   }
+
+  function isFirefoxBrowser() {
+    if (getBrowser().name === 'Firefox') {
+      return true;
+    } else return false;
+  }
+
+  function isChromeBrowser() {
+    if (getBrowser().name === 'Chrome') {
+      return true;
+    } else return false;
+  }
+
+  function isIEBrowser() {
+    if (getBrowser().name === 'IE') {
+      return true;
+    } else return false;
+  }
+
+  function isSafariBrowser() {
+    if (getBrowser().name === 'Safari') {
+      return true;
+    } else return false;
+  }
+
 
   function isIOS() {
     return ionic.Platform.isIOS();
@@ -150,33 +180,39 @@ function DeviceService($cordovaNgCardIO,
   }
 
 
+  function sendPlatform() {
+
+    if(doesCordovaExist) {
+      return getPlatform();
+    }
+    else {
+      return navigator.userAgent;
+    }
+
+  }
 
 	function readyDevice(scope) {
-
-
 
     var userAgent = navigator.userAgent;
       if (doesCordovaExist()) {
         onDeviceReady(scope);
       }
 
-      if(userAgent.indexOf('wv')!==-1) {
-        onDeviceReady(scope);
-      }
-
-      if (userAgent.indexOf('wv')===-1 || userAgent.indexOf('iPhone')===-1) {
-        console.log("detected mobile app");
-        onDeviceReady(scope);
-      } else {
-        console.log("did not detect mobile app");
+      else {
+        var browser = getBrowser();
+        var device = getDevice();
+        uTracker.track(tracker, 'device', {
+          "$Browser": browser,
+          "$Device": device
+        });
       }
 	}
 
 	function onDeviceReady(scope) {
     console.log("DeviceService.onDeviceReady()");
     console.log("Cordova File Plugin is ready: " + cordova.file);
-    console.log("Cordova Badge Plugin is ready: " + cordova.plugins.notification.badge);
-    console.log("Cordova Media Plugin is ready: " + Media);
+    // console.log("Cordova Badge Plugin is ready: " + cordova.plugins.notification.badge);
+    // console.log("Cordova Media Plugin is ready: " + Media);
 
     if(navigator.splashscreen) {
       console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
@@ -188,9 +224,9 @@ function DeviceService($cordovaNgCardIO,
 		if(isMobile()) {
 
 	 		var mobileOS = getPlatform().toLowerCase();
-      if(doesCordovaExist()) {
-        PushService.init();
-      }
+      // if(doesCordovaExist()) {
+      //   PushService.init();
+      // }
 		  	switch(mobileOS) {
 		  		case "ios":
 		  			iOSService.ready();
@@ -223,14 +259,14 @@ function DeviceService($cordovaNgCardIO,
           if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
             navigator.splashscreen.hide();
           }
-        }, 2000)
+        }, 2000);
 
       return;
     }
     console.log("did not detect local, checking for updates");
 
       //set BASE_URL to prompted one
-      BASE_URL =  url || BASE_URL
+      BASE_URL =  url || BASE_URL;
 
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
@@ -280,7 +316,7 @@ function DeviceService($cordovaNgCardIO,
                   if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
                     navigator.splashscreen.hide();
                   }
-                }, 2000)
+                }, 2000);
 
               }
           },

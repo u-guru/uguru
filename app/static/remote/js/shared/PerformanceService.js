@@ -16,14 +16,14 @@ function PerformanceService(uTracker, DownloadService) {
 		setListResponseTime: setListResponseTime,
 		sendListResponseTime: sendListResponseTime,
 		sendNetworkInfo: sendNetworkInfo,
-	}
+	};
 
 	function getAppLoadTime() {
 
 		appStartTime = Date.now();
 
 		var time_ms = appStartTime - start_dom_time;
-		var time_s = (time_ms / 1000.0).toPrecision(3)
+		var time_s = (time_ms / 1000.0).toPrecision(3);
 		appLoadTime = time_s;
 		console.log("appLoadTime: " + appLoadTime);
 

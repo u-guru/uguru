@@ -12,8 +12,9 @@ angular.module('uguru.student.controllers')
   '$ionicHistory',
   '$ionicViewSwitcher',
   '$cordovaStatusbar',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher, $cordovaStatusbar) {
+ 	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher, $cordovaStatusbar, LoadingService) {
 
 
 
@@ -133,13 +134,13 @@ angular.module('uguru.student.controllers')
 
         $scope.request.guru_id = $scope.request.guru.id;
         $scope.request.status = 1;
-        $scope.loader.show();
+        LoadingService.show();
         $scope.user.createObj($scope.user, 'sessions', $scope.request, $scope, null);
 
 
         $scope.request.guru_id = $scope.request.guru.id;
         $scope.request.status = 2;
-        $scope.loader.show();
+        LoadingService.show();
         $scope.root.vars.select_bottom_one = true;
         $state.go('^.student-home');
 
@@ -292,17 +293,17 @@ angular.module('uguru.student.controllers')
 
     // $scope.$on('$ionicView.beforeEnter', function() {
     //   console.log('coming in frmo before....')
-    //   $scope.loader.show();
+    //   LoadingService.show();
     // });
 
     // $scope.$on('$ionicView.enter', function() {
 
 
     $scope.$on('$ionicView.enter', function(){
-      $scope.loader.show();
+      LoadingService.show();
       $timeout(function() {
         $scope.showGoogleMap();
-        $scope.loader.hide();
+        LoadingService.hide();
       }, 1000);
     });
 
@@ -342,7 +343,7 @@ angular.module('uguru.student.controllers')
             if (document.getElementsByClassName('gm-style').length === 0) {
               console.log("500-loaded: map hasn't been drawn yet, attempting to redraw");
               $scope.showGoogleMap();
-              $scope.loader.hide();
+              LoadingService.hide();
             }
           }, 500);
 
@@ -350,7 +351,7 @@ angular.module('uguru.student.controllers')
             if (document.getElementsByClassName('gm-style').length === 0) {
               console.log("1000-loaded: map hasn't been drawn yet, attempting to redraw");
               $scope.showGoogleMap();
-              $scope.loader.hide();
+              LoadingService.hide();
             }
           }, 1000);
 
@@ -359,7 +360,7 @@ angular.module('uguru.student.controllers')
             if (document.getElementsByClassName('gm-style').length === 0) {
               console.log("1500-loaded: map hasn't been drawn yet, attempting to redraw");
               $scope.showGoogleMap();
-              $scope.loader.hide();
+              LoadingService.hide();
             }
           }, 1500);
     }

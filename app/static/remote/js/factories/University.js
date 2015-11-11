@@ -1,22 +1,98 @@
 angular.module('uguru.rest', [])
-.factory('University', ['Restangular', function(Restangular) {
+.factory('University', ['Restangular', '$timeout', '$localstorage', 'uTracker',
+    function(Restangular, $timeout, $localstorage, uTracker) {
     var University;
-    var majors = [];
-    var courses = [];
+    var source = {
+        majors: [],
+        courses: [],
+        popularCourses: []
+    };
     var selectedID = null;
     var selected = {};
     University = {
+        refresh: function() {
+            $timeout(function() {
+                source.majors.push({});
+                source.courses.push({});
+
+            }, 0);
+            $timeout(function() {
+                source.majors.pop();
+                source.courses.pop();
+            }, 300);
+        },
+        clearSelected: function() {
+            $timeout(function() {
+                source.majors = [];
+                source.courses = [];
+            }, 0);
+        },
         get: function() {
             return Restangular
                 .one('universities').get();
         },
         getMajors: function(uni_id) {
-            return Restangular
-                .one('universities', uni_id).customGET('departments');
+            // $timeout(function() {
+                return $timeout(function() { Restangular
+                    .one('universities', uni_id).customGET('departments').then(
+
+                    function(response) {
+
+                        console.log("Success in getMajors()");
+                        source.majors = response.plain();
+                        $timeout(function() {
+                            $localstorage.set(uni_id + ' majors', source.majors);
+                            uTracker.track(tracker, {
+                                '$Downloaded_Majors': uni_id
+                            });
+                        }, 1000);
+                        console.log("length of majors in callback: " + source.majors.length);
+
+                    }, function(err) {
+                        console.log("Error getting majors: " + err);
+                    });
+            }, 0);
+
         },
+        getPopularCourses: function(uni_id) {
+             return $timeout(function() {
+                  Restangular
+                     .one('universities', uni_id).customGET('popular_courses').then(function(response) {
+                         $timeout(function() {
+                             console.log("Success in getPopularCourses()");
+                             source.popularCourses = response.plain();
+                             $timeout(function() {
+                                 $localstorage.set(uni_id + ' popularCourses', source.popularCourses);
+                                 uTracker.track(tracker, {
+                                     '$Downloaded_PopularCourses': uni_id
+                                 });
+                             }, 1000);
+                             console.log("length of popular courses in callback: " + source.popularCourses.length);
+                         }, 0);
+
+                     }, function(err) {
+                         console.log("Error getting popularCourses: " + err);
+                     });
+             }, 0);
+         },
         getCourses: function(uni_id) {
-            return Restangular
-                .one('universities', uni_id).customGET('courses');
+            return $timeout(function() {
+                 Restangular
+                    .one('universities', uni_id).customGET('courses').then(function(response) {
+                        console.log("Success in getCourses()");
+                        source.courses = response.plain();
+                        // $timeout(function() {
+                            $localstorage.set(uni_id + ' courses', source.courses);
+                            uTracker.track(tracker, {
+                                '$Downloaded_Courses': uni_id
+                            });
+                        // }, 1000);
+                        console.log("length of courses in callback: " + source.courses.length);
+
+                    }, function(err) {
+                        console.log("Error getting courses: " + err);
+                    });
+            }, 0);
         },
         getTargetted: function() {
             return targettedUniversities;
@@ -37,11 +113,11 @@ angular.module('uguru.rest', [])
         getSorted: function() {
             return sortByRank(targettedUniversities);
         },
-        majors: majors,
-        courses: majors,
+        // majors: majors,
+        // courses: courses,
+        source: source,
         hasNoMajors:hasNoMajors,
         hasNoCourses:hasNoCourses,
-        selectedID: selectedID,
         selected: selected
 
     };

@@ -33,6 +33,7 @@ angular.module('uguru.util.controllers')
     'KeyboardService',
     'ModalService',
     'Github',
+    'LoadingService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -40,7 +41,7 @@ angular.module('uguru.util.controllers')
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
-         KeyboardService, ModalService, Github) {
+         KeyboardService, ModalService, Github, LoadingService) {
 
 
         var bodyRect;
@@ -50,15 +51,14 @@ angular.module('uguru.util.controllers')
             bodyRect = document.querySelector('body').getBoundingClientRect();
             windowHeight = bodyRect.height;
             windowWidth = bodyRect.width;
-        }
+        };
 
         initHeight();
         $scope.window = {
             width:windowWidth,
             height:windowHeight
-        }
+        };
 
-        console.log('Window size', $scope.window);
 
         // GABRIELLE TODO: Define these values
         var desktopHeightLimit = 699;
@@ -69,10 +69,13 @@ angular.module('uguru.util.controllers')
             height = height || windowHeight;
             width = width || windowWidth;
             return height > desktopHeightLimit && width > desktopWidthLimit;
-        }
+        };
 
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
-
+        console.log('originalDesktopMode', $scope.desktopMode);
+        if ($scope.desktopMode) {
+            document.body.classList.add('desktop-view');
+        }
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
             console.log('native hardware keyboard is shown');
@@ -128,9 +131,7 @@ angular.module('uguru.util.controllers')
         $scope.popup = {
             email_confirm: getButtonLabel('emailConfirm'),
             phone_confirm: getButtonLabel('phoneConfirm')
-        }
-
-
+        };
 
         function getButtonLabel(popup) {
             switch(popup) {
@@ -139,7 +140,7 @@ angular.module('uguru.util.controllers')
                         else return 'Resend Confirmation';
                     break;
                 case 'phoneConfirm':
-                        if($scope.user.phone_email_token) return 'Send';
+                        if(!$scope.user.phone_number_token) return 'Send';
                         else return 'Verify';
                     break;
                 default: break;
@@ -153,7 +154,10 @@ angular.module('uguru.util.controllers')
         $scope.user.createObj = User.createObj;
         $scope.user.clearAttr = User.clearAttr;
         $scope.user.updateObj = User.updateObj;
-        $scope.user.profile_url = $scope.user.profile_url || "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
+
+        if ($scope.user.profile_url === 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100') {
+            $scope.user.profile_url = img_base + BASE + "img/avatar.svg";
+        }
         $scope.user.User = User;
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
@@ -161,38 +165,31 @@ angular.module('uguru.util.controllers')
 
         if ($scope.user && $scope.user.id) {
             User.getUserFromServer($scope, null, $state);
+            if($scope.user.phone_number)
+                $scope.popupInput.phoneConfirm = $scope.user.phone_number;
         }
 
+
         if (LOCAL) {
-            $scope.img_base = 'remote/'
+            $scope.img_base = 'remote/';
         } else {
             $scope.img_base = '';
         }
 
+        $scope.getCoursesForUniversityId = function(uni_id, callback) {
+            if (!uni_id) {
+                return;
+            }
+            University.getCourses(uni_id);
+        };
+
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
             console.log("university id: " + uni_id);
-            University.getMajors(uni_id).then(function(majors){
-
-                $timeout(function() {
-                    console.log(majors.length, 'majors found', uni_id);
-                    majors = majors.plain()
-                    University.majors = majors;
-
-                    if (callback) {
-                        callback(majors);
-                    }
-                }, 0);
-
-            },
-            function() {
-                //$scope.university.majors = [{name: "Unable to retrieve school majors."}];
-                console.log('Universities NOT successfully loaded');
-            })
+            University.getMajors(uni_id);
         }
 
-
         $scope.getCategories = function(callback) {
-            console.log('retrieving majors for id');
+            console.log('retrieving categories for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
 
@@ -208,60 +205,13 @@ angular.module('uguru.util.controllers')
             },
             function() {
                 console.log("Categories NOT successfully loaded");
-            })
-        }
 
-        var categoriesCallback = function(categories) {
-            $scope.categories = categories;
-        }
+            });
 
-        $scope.getCategories(categoriesCallback)
-
-        $scope.getCoursesForUniversityId = function(uni_id, callback) {
-            if (!uni_id) {
-                return;
-            }
-            University.getCourses(uni_id).then(function(courses){
-                $timeout(function() {
-                    $scope.data.courses = courses.plain();
-                    University.courses = courses.plain();
-                    console.log(courses.plain().length + ' courses retrieved for university_id: ' + uni_id)
-                    callback && callback();
-                }, 0);
-            },
-            function() {
-                console.log('Universities NOT successfully loaded');
-            })
         };
 
 
 
-        if ($scope.user.university_id && !(University.majors && University.majors.length)) {
-            console.log('University majors not local, requesting now..');
-            $timeout(function() {
-                $scope.getMajorsForUniversityId($scope.user.university_id);
-            }, 0)
-        } else {
-            console.log(University.majors.length, 'majors loaded');
-        }
-
-        if ($scope.user.university_id && !(University.courses && University.courses.length)) {
-            console.log('University courses not local, requesting now..');
-            $timeout(function() {
-                $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-            }, 0)
-        } else {
-            console.log(University.courses.length, 'majors loaded');
-        }
-
-        if (!Category.categories || Category.categories.length === 0) {
-            console.log('Categories not local, loading now..')
-            $timeout(function() {
-                $scope.getCategories();
-            }, 0)
-        } else {
-            console.log(Category.categories.length, 'categories loaded');
-        }
 
 
         $scope.rootUser = User;
@@ -275,14 +225,13 @@ angular.module('uguru.util.controllers')
 
         $scope.logoutUser = function(skipShowAlert) {
             if (skipShowAlert || confirm('Are you sure you want to log out?')) {
-                  $scope.loader.show();
+                  LoadingService.show();
                   $localstorage.setObject('user', []);
                   $localstorage.set('access', false);
                   $localstorage.setObject('appOnboarding', null);
-                  // $scope.user = null;;
+
                   $ionicHistory.clearCache();
                   $ionicHistory.clearHistory();
-                  //toggle in the middle
                   $timeout(function() {
                         $scope.user = User.getLocal();
                         $scope.user.majors = [];
@@ -293,14 +242,18 @@ angular.module('uguru.util.controllers')
                         $scope.user.createObj = User.createObj;
                         $scope.user.updateObj = User.updateObj;
                         $scope.root.vars.settings = {icons : {profile : true}};
-                        $scope.loader.showSuccess('You have been successfully logged out!', 2500);
+                        LoadingService.showSuccess('You have been successfully logged out!', 2500);
                         $state.go('^.university');
-                        $ionicSideMenuDelegate.toggleRight();
+                        if (!$scope.desktopMode) {
+                            $ionicSideMenuDelegate.toggleRight();
+                        }
                   }, 1000);
             }
-        }
+        };
 
-        sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * .80;
+
+        sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * 0.80;
+
 
         $scope.toggleRightSideMenu = function() {
             console.log("sideMenuWidth should be: " + sideMenuWidth);
@@ -319,7 +272,6 @@ angular.module('uguru.util.controllers')
             }, 250);
         };
 
-        // TODO-REFACTOR
         $scope.loader = {
             showMsg: function(message, delay, duration) {
                 $ionicLoading.show({
@@ -413,6 +365,34 @@ angular.module('uguru.util.controllers')
                     $scope.root.vars.user_refresh = false;
                 }
             }
+        };
+
+
+        if (!Category.categories || Category.categories.length === 0) {
+            console.log('Categories not local, loading now..');
+            $timeout(function() {
+                $scope.getCategories();
+            }, 0);
+        } else {
+            console.log(Category.categories.length, 'categories loaded');
+        }
+
+        if ($scope.user.university_id && !(University.source.majors && University.source.majors.length)) {
+            console.log('University majors not local, requesting now..');
+            $timeout(function() {
+                $scope.getMajorsForUniversityId($scope.user.university_id);
+            }, 0)
+        } else {
+            console.log(University.source.majors.length, 'majors loaded');
+        }
+
+        if ($scope.user.university_id && !(University.courses && University.courses.length)) {
+            console.log('University courses not local, requesting now..');
+            $timeout(function() {
+                $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
+            }, 0)
+        } else {
+            console.log(University.source.courses.length, 'courses loaded');
         }
 
 
@@ -422,22 +402,21 @@ angular.module('uguru.util.controllers')
             if ($scope.root.vars.show_price_fields) {
                 $timeout(function() {
 
+                    var sidebarInput = document.getElementById('card-input');
+
                     if ($scope.root.vars.price_modal_shown) {
                         $scope.root.vars.price_modal_shown = false;
-                        var sidebar_input = document.getElementById('card-input');
-                        document.getElementsByClassName('sidebar-card-input')
 
-                        sidebar_input.focus();
+                        sidebarInput.focus();
 
                     } else {
-                        var sidebar_input = document.getElementById('card-input');
-
-                        sidebar_input.focus();
+                        sidebarInput.focus();
                     }
 
                 }, 1000);
             }
-        }
+        };
+
         $scope.requestPushNotifications = function() {
 
             if (!$scope.user.push_notifications) {
@@ -445,7 +424,7 @@ angular.module('uguru.util.controllers')
 
                 payload = {
                     'push_notifications': false
-                }
+                };
                 $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 return;
             }
@@ -454,11 +433,11 @@ angular.module('uguru.util.controllers')
                 "badge": true,
                 "sound": true,
                 "alert": true,
-            }
+            };
 
             $cordovaPush.register(iosConfig).then(function(deviceToken) {
                 // Success -- send deviceToken to server, and store for future use
-                console.log("deviceToken: " + deviceToken)
+                console.log("deviceToken: " + deviceToken);
 
                 console.log("Register success " + deviceToken);
 
@@ -473,7 +452,7 @@ angular.module('uguru.util.controllers')
                     payload = {
                         'push_notifications': true,
                         'push_notifications_enabled': true
-                    }
+                    };
                     $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 }
 
@@ -483,7 +462,7 @@ angular.module('uguru.util.controllers')
                 payload = {
                     'push_notifications': false,
                     'push_notifications_enabled': false
-                }
+                };
                 $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 alert('Please turn your Push Notifications ON in your settings.');
             });
@@ -499,7 +478,7 @@ angular.module('uguru.util.controllers')
             }
             arr = new Array(num);
             return arr;
-        }
+        };
 
         $scope.getGrayNumber = function(num) {
             if (!num) {
@@ -510,7 +489,7 @@ angular.module('uguru.util.controllers')
             }
             arr = new Array(5 - num);
             return arr;
-        }
+        };
 
         $scope.checkCourses = function() {
             var is_courses_loaded = $scope.root.vars && $scope.root.vars.courses && $scope.root.vars.courses.length > 0;
@@ -532,7 +511,7 @@ angular.module('uguru.util.controllers')
                     return;
                 }
             }
-        }
+        };
 
         $scope.success = {
             show: function(delay, duration, message) {
@@ -548,12 +527,12 @@ angular.module('uguru.util.controllers')
             hide: function() {
                 $ionicLoading.hide();
             }
-        }
+        };
 
         $scope.platform = {
             mobile: DeviceService.isMobile(),
             web: DeviceService.isWeb()
-        }
+        };
 
         document.addEventListener("deviceready", function() {
             console.log('device is ready from the root controller');
@@ -562,7 +541,7 @@ angular.module('uguru.util.controllers')
             DeviceService.readyDevice($scope);
             setTimeout(function() {
                 DownloadService.testNetworkSpeed();
-            }, 1000)
+            }, 1000);
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
 
@@ -597,20 +576,20 @@ angular.module('uguru.util.controllers')
                     return;
                 }
 
-                $scope.loader.showSuccess('Connection Detected', 2000)
+                LoadingService.showSuccess('Connection Detected', 2000);
                 $scope.transitionOfflineToOnline = true;
                 $timeout(function() {
                     if ($scope.transitionOfflineToOnline) {
-                        $scope.loader.showAmbig();
+                        LoadingService.showAmbig();
                         // fuck it if it hasn't been set false they are probably offline
                         $timeout(function() {
                             $state.go('^.offline');
-                        }, 5000)
+                        }, 5000);
                     }
-                }, 2000)
+                }, 2000);
                 var transitionToOnline = function() {
                     $timeout(function() {
-                        $scope.loader.hide()
+                        LoadingService.hide();
                         $scope.transitionOfflineToOnline = null;
                     }, 1000);
                     if ($scope.user && $scope.root.vars.guru_mode) {
@@ -618,7 +597,7 @@ angular.module('uguru.util.controllers')
                     } else {
                         $state.go('^.home');
                     }
-                }
+                };
                 User.getUserFromServer($scope, transitionToOnline, $state);
 
             }, false);
@@ -626,13 +605,13 @@ angular.module('uguru.util.controllers')
             document.addEventListener("offline", function() {
 
                 $scope.checkIfOnline = function() {
-                    $scope.loader.showAmbig();
+                    LoadingService.showAmbig();
                     $timeout(function() {
                         //purposely showing the old one --> need to refactor to loader.fail..
-                        $scope.loader.hide();
+                        LoadingService.hide();
                         alert('Sorry - no connect detected! We miss you!');
-                    }, 2000)
-                }
+                    }, 2000);
+                };
 
                 $state.go('^.offline');
 
@@ -647,21 +626,22 @@ angular.module('uguru.util.controllers')
         //if previous in guru mode
         if ($scope.user && $scope.user.guru_mode) {
 
-            $scope.loader.show();
+
+            LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {
                 $state.go('^.' + _startpage);
             } else {
-                $state.go('^.guru')
+                $state.go('^.guru');
             }
 
             $timeout(function() {
-                $scope.loader.hide();
+                LoadingService.hide();
             }, 1000);
 
         }
         else if ($scope.user && $scope.user.university_id) {
-            $scope.loader.show();
+            LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {
                 $state.go('^.' + _startpage);
@@ -669,7 +649,7 @@ angular.module('uguru.util.controllers')
                 $state.go('^.home');
             }
             $timeout(function() {
-                $scope.loader.hide();
+                LoadingService.hide();
             }, 1000);
         }
 

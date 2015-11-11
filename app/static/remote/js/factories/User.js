@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
-    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService',
+    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService', 'LoadingService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category, RankingService) {
+        $ionicSideMenuDelegate, Category, RankingService, LoadingService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -443,6 +443,9 @@ angular.module('uguru.user', [])
         $scope.user.id = user.id;
         $scope.user.name = user.name;
         $scope.user.profile_url = user.profile_url;
+        if ($scope.user.profile_url === 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100') {
+            $scope.user.profile_url = img_base + BASE + "img/avatar.svg";
+        }
         $scope.user.is_a_guru = user.is_a_guru;
         $scope.user.guru_mode = user.guru_mode;
         $scope.user.gender = user.gender;
@@ -578,6 +581,7 @@ angular.module('uguru.user', [])
         $scope.user.max_hourly = parseInt(user.max_hourly);
 
         $scope.user.current_profile_percent = RankingService.calcProfile(user);
+        console.log('\n\nRanking Service calculating\n\n', RankingService.calcCredibility(user));
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
 
@@ -1093,7 +1097,7 @@ angular.module('uguru.user', [])
                         delegateActionsFromProcessedUser($scope);
 
                         // $scope.doRefresh();
-                        $scope.loader.hide();
+                        LoadingService.hide();
 
                         if (callback_success) {
                             callback_success($scope, $state);
@@ -1102,12 +1106,12 @@ angular.module('uguru.user', [])
                     }, function(err){
                         if (err.status === 409 ) {
                             if (callback_success) {
-                                $scope.loader.show();
+                                LoadingService.show();
                                 callback_success($scope);
                                 $scope.closeContactingModal();
                                 alert('already have an active request or question for this course!');
                                 $timeout(function() {
-                                    $scope.loader.hide()
+                                    LoadingService.hide()
                                 }, 3000);
                             }
 
@@ -1195,7 +1199,7 @@ angular.module('uguru.user', [])
                             if (callback_success) {
                                 callback_success($scope, $state);
                                 $timeout(function() {
-                                    $scope.loader.hide();
+                                    LoadingService.hide();
                                 }, 1500);
                             };
 
@@ -1315,7 +1319,7 @@ angular.module('uguru.user', [])
                             callback_success();
                         }
 
-                        $scope.loader.hide();
+                        LoadingService.hide();
 
                     }, function(err){
                     if (err.status === 409 ) {
@@ -1436,6 +1440,9 @@ angular.module('uguru.user', [])
               if (success_callback) {
                 success_callback();
               }
+              if (failure_callback) {
+                failure_callback();
+              }
               return
             }
 
@@ -1453,10 +1460,15 @@ angular.module('uguru.user', [])
                     delegateActionsFromProcessedUser($scope);
                     $localstorage.setObject('user', $scope.user);
                 }
-
+                console.log(user);
                 if (success_callback) {
                     success_callback();
                 }
+
+                if (failure_callback) {
+                    failure_callback();
+                }
+                
             }, function(err){
                 if (failure_callback) {
                     failure_callback(err);

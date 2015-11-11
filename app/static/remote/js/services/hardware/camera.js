@@ -2,10 +2,11 @@ angular.module('uguru.root.services')
 .service('Camera', [
     '$timeout',
     'DeviceService',
+    'LoadingService',
     Camera
     ]);
 
-function Camera($timeout, DeviceService) {
+function Camera($timeout, DeviceService, LoadingService) {
 
   var processFileType = function(file_string) {
     if (file_string.indexOf('image/') !== -1) {
@@ -74,14 +75,14 @@ function Camera($timeout, DeviceService) {
         formData.append('profile_url', $scope.user.id);
       }
 
-      $scope.loader.showSuccess('Saving...', 2000);
+      LoadingService.showSuccess('Saving...', 2000);
 
       var callback_success = function() {
-        $scope.loader.showSuccess("Photo Successfully Saved");
+        LoadingService.showSuccess("Photo Successfully Saved");
       }
 
       var callback_failure = function() {
-        $scope.loader.showSuccess("Something went wrong... Please contact support");
+        LoadingService.showSuccess("Something went wrong... Please contact support");
       }
 
       $timeout(function() {
