@@ -148,7 +148,6 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.addSelectedGuruCourse = function(course) {
-
       for(var i=0; i < $scope.coursesSource.length; i++) {
         if($scope.coursesSource[i].id === course.id) {
           console.log("transferring course from source to user");
