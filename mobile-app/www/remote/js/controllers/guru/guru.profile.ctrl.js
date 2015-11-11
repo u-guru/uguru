@@ -763,24 +763,13 @@ angular.module('uguru.guru.controllers')
 
         if(Utilities.validateCode($scope.popupInput.code))
         {
-          // alert("Find code")
             console.log('verify code confirm');
             var callbackSuccess = function() {
                 if ($scope.user.phone_number_confirmed)
                    $scope.loader.showMsg('Verification Code confirmed!',0, 2000)
              }
 
-<<<<<<< HEAD
-        //success
-        else if (Utilities.validateCode($scope.popupInput.codeConfirm)) {
-          console.log('it gets here part 3');
-          var callbackSuccess = function() {
-            LoadingService.hide();
-            if ($scope.user.phone_number_confirmed) {
-              $scope.success.show(0, 2000, 'Verification Code confirmed!')
-            } else {
-              $scope.success.show(0, 2000, 'Invalid Code - please try again?');
-=======
+
            var failureCallback = function(err) {
               console.log("Real FAIL")
               if (!$scope.user.phone_number_confirmed)
@@ -788,21 +777,8 @@ angular.module('uguru.guru.controllers')
                 $scope.loader.showMsg('Invalid Code - please try again?',0, 2000);
                 $scope.popupInput.code =""
               }
->>>>>>> 9321a11b1c7b0b1546f4ae93a11a9ff56176077a
             }
 
-<<<<<<< HEAD
-            return;
-          }
-
-          PopupService.close('confirmPhone');
-
-          LoadingService.show();
-          $scope.refreshTipsAndRanking($scope.user);
-          $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.codeConfirm, callbackSuccess, $scope);
-        } else {
-          alert("Please enter a 4 digit code.");
-=======
             PopupService.close('confirmPhone');
             $scope.loader.show();
             $scope.refreshTipsAndRanking($scope.user);
@@ -816,7 +792,6 @@ angular.module('uguru.guru.controllers')
             // console.log("Resubmit");
           else
             alert("Please enter a 4 digit code.")
->>>>>>> 9321a11b1c7b0b1546f4ae93a11a9ff56176077a
         }
       }
       else
