@@ -26,11 +26,12 @@ angular.module('uguru.guru.controllers')
   '$ionicSlideBoxDelegate',
   'DeviceService',
   'LoadingService',
+  '$ionicViewSwitcher',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
-  DeviceService, LoadingService) {
+  DeviceService, LoadingService, $ionicViewSwitcher) {
 
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
@@ -509,6 +510,12 @@ angular.module('uguru.guru.controllers')
         LoadingService.hide();
       }, 500);
     }
+
+    $scope.goToDesktopGuruProfile = function() {
+      $ionicViewSwitcher.nextDirection('enter');
+      $state.go('^.desktop-guru-profile')
+    }
+
 
 
     $scope.saveGuruProfile = function() {
