@@ -5,6 +5,7 @@
 Uguru Home
 {% endblock %}
 {% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/default.css"/>
 <link rel="stylesheet" href="/static/web/css/style.css"/>
 {% endblock %}
 {% block powerups_scripts %}
@@ -15,57 +16,557 @@ Uguru Home
     <img id="top-logo-standalone" src="/static/web/svg/logo-slate.svg" alt="uguru"/>
 {% endblock %}
 {% block content %}
-<!-- Mobile Version-->
-<!-- <div id="mobile-start"></div> -->
 
-
-<section id="main full-xy">
-    <!-- Demo purpose only-->
-    <style>
-        .temp {
-            position:absolute;
-            bottom:0;
-            left:0;
-            right:0;
-            height:200px;
-            width:200px;
-            background-color:black;
-        }
-
-        .temp.full.show {
-            opacity:1;
-            visibility: visible;
-        }
-
-        .temp.full {
-            height:100%;
-            width:100%;
-            z-index:1000;
-            opacity:0;
-            visibility: hidden;
-        }
-        .white {
-            color:white;
-        }
-        #temp-2 a.close-button {
-            position:absolute;
-            bottom:0;
-            padding:20px;
-            right:0;
-        }
-    </style>
-
-
-    <!-- Desktop Version-->
-    <a id='temp-1' class='temp'>
-    </a>
-    <div id='temp-2' class='temp full'>
-        <a class='close-button white' id='close-button'>
-            Close button
-        </a>
-    </div>
-
+<section id="main">
+    <ul class="ugrid-3">
+        <li id="guru-gpa" class='cta-box'>
+            <div tabindex>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                {% include "web/components/powerups/gpa.svg"%}
+                <h3>GPA Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-food" class='cta-box'>
+            <div tabindex>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                {% include "web/components/powerups/food.svg"%}
+                <h3>Food Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-sound" class='cta-box'>
+            <div tabindex>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                {% include "web/components/powerups/sound.svg"%}
+                <h3>Sound Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-transit" class='cta-box'>
+            <div tabindex>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                {% include "web/components/powerups/transit.svg"%}
+                <h3>Transit Guru</h3>
+                <div class="powerup-links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li id="guru-focus" class='cta-box'>
+            <div tabindex>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                {% include "web/components/powerups/focus.svg"%}
+                <h3>Focus Guru</h3>
+                <div class="powerup-links">Coming soon!</div>
+            </div>
+        </li>
+        <li id="guru-suggest" class='cta-box'>
+            <div tabindex>
+                <svg class="box-filler" viewBox="0 0 100 100">
+                    <rect fill="none" x="0" y="0" width="100" height="100"></rect>
+                </svg>
+                <svg viewBox="0 0 100 100">
+                	<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z M50,86 C69.882251,86 86,69.882251 86,50 C86,30.117749 69.882251,14 50,14 C30.117749,14 14,30.117749 14,50 C14,69.882251 30.117749,86 50,86 Z" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <h3>Suggest one!</h3>
+            </div>
+        </li>
+    </ul>
 </section>
+
+<div id="cta-gpa" class='cta-modal'>
+    <header>
+        <img id="top-logo-standalone" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+        <h1>GPA Guru</h1>
+    </header>
+    <article>
+        <aside>
+            <div class="mobile">
+                <div class="mobile-top"></div>
+                <div class="mobile-content">
+                    <iframe src="https://www.uguru.me/apps/gpa" width="278" height="494"></iframe>
+                </div>
+                <div class="mobile-bot"></div>
+            </div>
+        </aside>
+        <section>
+            <ul>
+                <li>
+                    <a class="active" href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <footer>
+        <div class="powerup-links">
+            <ul>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <a class='cta-modal-close'>
+        <svg viewBox="0 0 100 100">
+            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+        </svg>
+    </a>
+</div>
+
+<div id="cta-food" class='cta-modal'>
+    <header>
+        <img id="top-logo-standalone" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+        <h1>Food Guru</h1>
+    </header>
+    <article>
+        <aside>
+            <div class="mobile">
+                <div class="mobile-top"></div>
+                <div class="mobile-content">
+                    <iframe src="https://www.uguru.me/apps/gpa" width="278" height="494"></iframe>
+                </div>
+                <div class="mobile-bot"></div>
+            </div>
+        </aside>
+        <section>
+            <ul>
+                <li>
+                    <a class="active" href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <footer>
+        <div class="powerup-links">
+            <ul>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <a class='cta-modal-close'>
+        <svg viewBox="0 0 100 100">
+            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+        </svg>
+    </a>
+</div>
+
+<div id="cta-sound" class='cta-modal'>
+    <header>
+        <img id="top-logo-standalone" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+        <h1>Sound Guru</h1>
+    </header>
+    <article>
+        <aside>
+            <div class="mobile">
+                <div class="mobile-top"></div>
+                <div class="mobile-content">
+                    <iframe src="https://www.uguru.me/apps/gpa" width="278" height="494"></iframe>
+                </div>
+                <div class="mobile-bot"></div>
+            </div>
+        </aside>
+        <section>
+            <ul>
+                <li>
+                    <a class="active" href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <footer>
+        <div class="powerup-links">
+            <ul>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <a class='cta-modal-close'>
+        <svg viewBox="0 0 100 100">
+            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+        </svg>
+    </a>
+</div>
+
+<div id="cta-transit" class='cta-modal'>
+    <header>
+        <img id="top-logo-standalone" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+        <h1>Transit Guru</h1>
+    </header>
+    <article>
+        <aside>
+            <div class="mobile">
+                <div class="mobile-top"></div>
+                <div class="mobile-content">
+                    <iframe src="https://www.uguru.me/apps/gpa" width="278" height="494"></iframe>
+                </div>
+                <div class="mobile-bot"></div>
+            </div>
+        </aside>
+        <section>
+            <ul>
+                <li>
+                    <a class="active" href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <footer>
+        <div class="powerup-links">
+            <ul>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <a class='cta-modal-close'>
+        <svg viewBox="0 0 100 100">
+            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+        </svg>
+    </a>
+</div>
+
+<div id="cta-focus" class='cta-modal'>
+    <header>
+        <img id="top-logo-standalone" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+        <h1>Focus Guru</h1>
+    </header>
+    <article>
+        <aside>
+            <div class="mobile">
+                <div class="mobile-top"></div>
+                <div class="mobile-content">
+                    <iframe src="https://www.uguru.me/apps/gpa" width="278" height="494"></iframe>
+                </div>
+                <div class="mobile-bot"></div>
+            </div>
+        </aside>
+        <section>
+            <ul>
+                <li>
+                    <a class="active" href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                        	<path d="M68,86 L32,50 L68,14"></path>
+                        </svg>
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <footer>
+        <div class="powerup-links">
+            <ul>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M12.5,22.9974722 C12.5,18.5805903 16.0795346,15 20.4907796,15 L79.5092204,15 C83.9224061,15 87.5,18.5874876 87.5,22.9974722 L87.5,62.0025278 C87.5,66.4194097 83.9204654,70 79.5092204,70 L20.4907796,70 C16.0775939,70 12.5,66.4125124 12.5,62.0025278 L12.5,22.9974722 Z M13.5,61 L87,61 M45,70 L45,81 M55,70 L55,81 M31.5,82.5 C31.5,81.1192881 32.6275392,80 33.9995812,80 L66.0004188,80 C67.3808994,80 68.5,81.1096621 68.5,82.5 L68.5,82.5 C68.5,83.8807119 67.3724608,85 66.0004188,85 L33.9995812,85 C32.6191006,85 31.5,83.8903379 31.5,82.5 L31.5,82.5 Z"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <a class='cta-modal-close'>
+        <svg viewBox="0 0 100 100">
+            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+        </svg>
+    </a>
+</div>
+
+<div id="cta-suggest" class='cta-modal'>
+    <header>
+        <img id="top-logo-standalone" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+        <h1>Suggest a Guru</h1>
+    </header>
+    <a class='cta-modal-close'>
+        <svg viewBox="0 0 100 100">
+            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+        </svg>
+    </a>
+</div>
+{% endblock %}
+
+{% block footer_scripts %}
+{% include 'web/pages/js/index.js' %}
+{% include 'web/snippets/search.js' %}
+{% include 'web/snippets/u.cta.js' %}
+<!-- //Rules
+    // Each box must have class ='cta-box'
+    // Each modal must have class ='cta-modal'
+    // Each modal close link must have class ='cta-modal-close' -->
 {% endblock %}
 
 {% block footer_scripts %}
