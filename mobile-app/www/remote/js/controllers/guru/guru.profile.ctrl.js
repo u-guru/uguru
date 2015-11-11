@@ -744,6 +744,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.confirmPhonePopup = function($event) {
+      console.log("EVENT", $event)
       PopupService.open('confirmPhone', callback, $event.target);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();

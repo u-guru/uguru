@@ -259,8 +259,8 @@
 							</p>
 						</div>
 					</div>
-					<button class="semibold bg-eggplant" id='launch-phone-confirm-popup' ng-if='!user.phone_number' ng-click='confirmPhonePopup()'>Add my number</button>
-					<button class="semibold bg-campus" id='launch-phone-confirm-popup' ng-if='user.phone_number && user.phone_number_token' ng-click='confirmPhonePopup()'>Verify Code</button>
+					<button class="semibold bg-eggplant" id='launch-phone-confirm-popup' ng-if='!user.phone_number' ng-click='confirmPhonePopup($event)'>Add my number</button>
+					<button class="semibold bg-campus" id='launch-phone-confirm-popup' ng-if='user.phone_number && user.phone_number_token' ng-click='confirmPhonePopup($event)'>Verify Code</button>
 				</div>
 				<div ng-if='user.phone_number_confirmed' class="bg-eggplant-50p">
 					<h1 class="section-header"><span class="semibold">{{user.phone_number}}</span> is connected!</h1>
@@ -286,7 +286,7 @@
 							</p>
 						</div>
 					</div>
-					<button id='launch-email-confirm-popup' ng-click='launchConfirmEmailPopup()' class="semibold bg-lake">Confirm Your Email</button>
+					<button id='launch-email-confirm-popup' ng-click='launchConfirmEmailPopup($event)' class="semibold bg-lake">Confirm Your Email</button>
 				</div>
 				<div ng-if='user.school_email_confirmed' class="bg-lake-50p">
 					<h1 class="section-header">Your .edu email has been verified</h1>
