@@ -204,17 +204,6 @@ def get_color_of_college(name):
         arr.append(first_split)
 
 
-<<<<<<< HEAD
-## 4
-def get_school_color_for_university(name):
-    return
-
-### 5
-## --> go filter out the logos
-## --> Go filter out the major abbreviatations
-
-## Tries running
-=======
     for items in arr:
         for another_items in items:
             wiki_url = another_items
@@ -311,7 +300,6 @@ def all_600_school():
         school_name_arr.append(name)
     return school_name_arr
 
->>>>>>> 0459360e505b46b13ecdbd93164ffea4261eed0b
 def check_efficiency(problem_number):
     import wikipedia
     import dryscrape
@@ -368,19 +356,10 @@ def check_efficiency(problem_number):
                     print e
                     continue
 
-<<<<<<< HEAD
-        if problem_number == 4:
-            logo_url = get_school_color_for_university(university_name)
-            if logo_url:
-                total_success += 1
-
-
-=======
                 
             except AttributeError:
                 continue            
             
->>>>>>> 0459360e505b46b13ecdbd93164ffea4261eed0b
     print "#%s percentage: %s percent" % (problem_number, float(total_success) / total_count)
 
 

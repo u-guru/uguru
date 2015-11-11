@@ -1,5 +1,5 @@
 
-var LOCAL = _local || false; //local to the 8100 codebasebirbirs
+var LOCAL = _local || true; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
 

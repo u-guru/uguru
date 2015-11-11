@@ -498,7 +498,12 @@ angular.module('uguru.guru.controllers')
         }
         $scope.refreshTipsAndRanking($scope.user);
         $scope.user.updateAttr('fb_id', $scope.user, success.authResponse.accessToken, successCallback , $scope, failureCallback);
-      })
+      }).catch(function(e)
+      {
+        console.log("FAIL");
+        $scope.loader.showMsg('Unable to Connect with Facebook', 0, 1500);
+
+      });
     }
 
     $ionicSideMenuDelegate.canDragContent(false);
@@ -748,24 +753,24 @@ angular.module('uguru.guru.controllers')
 
     $scope.validateAndSendPhoneConfirmation = function() {
       console.log("Confirm")
-      //validate
-      if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
 
+      //1. re-verify / verify phone number
+      //2. invalid input
+
+      if(Utilities.validatePhone($scope.popupInput.phoneConfirm))
+      {
         $scope.user.phone_number = $scope.popupInput.phoneConfirm;
 
-        // //if user hasn't typed in a token & clicked verify [resend exists]
-        // if ($scope.user.phone_number_token && Utilities.validateCode($scope.popupInput.codeConfirm)) {
-        //   alert('Please enter a 4 digit code');
-        //   return;
-        // }
+        if(Utilities.validateCode($scope.popupInput.code))
+        {
+          // alert("Find code")
+            console.log('verify code confirm');
+            var callbackSuccess = function() {
+                if ($scope.user.phone_number_confirmed)
+                   $scope.loader.showMsg('Verification Code confirmed!',0, 2000)
+             }
 
-        //if user hasn't received a token yet & is sending for the first time [resend doesn't exist]
-        if (!$scope.user.phone_number_token) {
-          $scope.resendPhoneConfirmation();
-          console.log('it gets here part 2');
-          return;
-        }
-
+<<<<<<< HEAD
         //success
         else if (Utilities.validateCode($scope.popupInput.codeConfirm)) {
           console.log('it gets here part 3');
@@ -775,9 +780,18 @@ angular.module('uguru.guru.controllers')
               $scope.success.show(0, 2000, 'Verification Code confirmed!')
             } else {
               $scope.success.show(0, 2000, 'Invalid Code - please try again?');
+=======
+           var failureCallback = function(err) {
+              console.log("Real FAIL")
+              if (!$scope.user.phone_number_confirmed)
+              {
+                $scope.loader.showMsg('Invalid Code - please try again?',0, 2000);
+                $scope.popupInput.code =""
+              }
+>>>>>>> 9321a11b1c7b0b1546f4ae93a11a9ff56176077a
             }
-            $scope.user.phone_number = $scope.popupInput.phoneConfirm;
 
+<<<<<<< HEAD
             return;
           }
 
@@ -788,13 +802,31 @@ angular.module('uguru.guru.controllers')
           $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.codeConfirm, callbackSuccess, $scope);
         } else {
           alert("Please enter a 4 digit code.");
+=======
+            PopupService.close('confirmPhone');
+            $scope.loader.show();
+            $scope.refreshTipsAndRanking($scope.user);
+            $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.code, callbackSuccess, $scope, failureCallback);
         }
+        else
+        {
 
-      } else {
-        alert('Please enter valid phone number.');
-        // $scope.popupInput.phoneConfirm = "";
-        return;
+          if(!$scope.popupInput.code)
+             $scope.resendPhoneConfirmation();
+            // console.log("Resubmit");
+          else
+            alert("Please enter a 4 digit code.")
+>>>>>>> 9321a11b1c7b0b1546f4ae93a11a9ff56176077a
+        }
       }
+      else
+      {
+        if(!$scope.popupInput.phoneConfirm)
+          alert('Please fill in all fields')
+        else
+          alert('Please enter valid phone number.')
+      };
+        return;
     }
 
     $scope.resendPhoneConfirmation = function() {
@@ -803,7 +835,11 @@ angular.module('uguru.guru.controllers')
       if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
         $scope.user.phone_number = $scope.popupInput.phoneConfirm;
         $scope.refreshTipsAndRanking($scope.user);
-        $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.popupInput.phoneConfirm, null, $scope);
+        var callbackSuccess = function() {
+               $scope.loader.showMsg('The code has been sent to '+ $scope.popupInput.phoneConfirm,0, 5000);
+         }
+
+        $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.popupInput.phoneConfirm, callbackSuccess, $scope);
 
         PopupService.close('confirmPhone');
         LoadingService.show();

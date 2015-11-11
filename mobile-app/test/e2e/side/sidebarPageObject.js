@@ -20,7 +20,8 @@ var Sidebar = function() {
 	// this.CloseModalButton = element.all(by.css('[ng-click="toggleRightSideMenu()"]')).last();
 	this.CloseModalButton = element(by.css('.modal-backdrop.active .header-down'));
 	this.FAQitem = element.all(by.css('#faq dl'))
-
+	//Support
+	this.SubmitButton  = element(by.css('#intercom-composer'));
 	 this.CheckPopUpIsShown = function()
 	 {
 		browser.wait(EC.visibilityOf(this.UguruPopup),3000);

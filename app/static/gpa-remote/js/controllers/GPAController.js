@@ -2,14 +2,6 @@ angular.module('gpa.controllers')
 .controller('GPAController', [
 	'$scope',
 	'ModalService',
-<<<<<<< HEAD
-	GPAController]);
-
-
-function GPAController($scope, ModalService) {
-
-
-=======
 	'GPAService',
 	'$localstorage',
 	'$timeout',
@@ -48,7 +40,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	ModalService.init('course', $scope);
 
->>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 	$scope.search_text = {
 		course: '',
 		selected_course: null
@@ -66,9 +57,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 
 	$scope.openModal = function(modalName) {
-<<<<<<< HEAD
-		console.log("opening modal: " + modalName);
-=======
 		// console.log("opening modal: " + modalName);
 		if (modalName == 'course' && (!$scope.user.university || !$scope.user.university.name)) {
 			ModalService.open('university', $scope);
@@ -76,7 +64,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		}
 
 
->>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 		ModalService.open(modalName, $scope);
 
 	};
@@ -91,11 +78,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.submitCourse = function() {
 
-<<<<<<< HEAD
-
-	};
-
-=======
 		if ($scope.search_text.course !== '' &&
 			selectedGrade !== '' &&
 			$scope.course.units !== '' &&
@@ -208,7 +190,5 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 
 
-
->>>>>>> aa6d90973137f8b3f1552fa4efcfeb6150d9b925
 
 }

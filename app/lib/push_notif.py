@@ -7,15 +7,9 @@ from gcm import GCM
 ANDROID_API_KEY = "AIzaSyDwyrdLCMru6MrmFZqAjIDEwRsPTON4lPc"
 
 gcm_client = GCM(ANDROID_API_KEY)
-<<<<<<< HEAD
-apns_client = APNs(use_sandbox=True, cert_file='app/lib/certs/push_cert.pem', key_file='app/lib/certs/push_key_no_pass.pem')
-# apns_client = APNs(cert_file='app/lib/certs/PushUguruCert.pem', key_file='app/lib/certs/PushUguruKeyNoPass.pem')
-=======
-
 # apns_client = APNs(use_sandbox=True, cert_file='app/lib/certs/push_cert.pem', key_file='app/lib/certs/push_key_no_pass.pem')
 apns_client = APNs(cert_file='app/lib/certs/PushUguruCert.pem', key_file='app/lib/certs/PushUguruKeyNoPass.pem', use_sandbox=True)
 
->>>>>>> 696b89315999fb634ed01616ece97ca54373766e
 
 ### TODO: SEND TO USERS MULTIPLE DEVICES
 ### Edge Test Push Cases:

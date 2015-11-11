@@ -133,8 +133,6 @@ angular.module('uguru.util.controllers')
             phone_confirm: getButtonLabel('phoneConfirm')
         };
 
-
-
         function getButtonLabel(popup) {
             switch(popup) {
                 case 'emailConfirm':
@@ -142,7 +140,7 @@ angular.module('uguru.util.controllers')
                         else return 'Resend Confirmation';
                     break;
                 case 'phoneConfirm':
-                        if($scope.user.phone_email_token) return 'Send';
+                        if(!$scope.user.phone_number_token) return 'Send';
                         else return 'Verify';
                     break;
                 default: break;
@@ -167,7 +165,10 @@ angular.module('uguru.util.controllers')
 
         if ($scope.user && $scope.user.id) {
             User.getUserFromServer($scope, null, $state);
+            if($scope.user.phone_number)
+                $scope.popupInput.phoneConfirm = $scope.user.phone_number;
         }
+
 
         if (LOCAL) {
             $scope.img_base = 'remote/';
@@ -542,6 +543,7 @@ angular.module('uguru.util.controllers')
 
         //if previous in guru mode
         if ($scope.user && $scope.user.guru_mode) {
+
 
             LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
