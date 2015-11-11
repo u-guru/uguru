@@ -62,7 +62,6 @@ angular.module('uguru.desktop.controllers')
       if ($scope.progressWidth) {
         LoadingService.showSuccess("Your initial profile is complete!", 1500, callbackSuccess)
       }
-
     }
 
 
@@ -322,7 +321,7 @@ angular.module('uguru.desktop.controllers')
     $scope.goToUniversity = function() {
 
       uTracker.track(tracker, 'University List');
-      $state.go('^.university');
+    $state.go('^.university');
     }
 
     $scope.goToGuruMode = function() {
@@ -331,6 +330,7 @@ angular.module('uguru.desktop.controllers')
       $scope.root.vars.guru_mode = true;
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.guru');
+
     }
 
     $ionicSideMenuDelegate.canDragContent(false);

@@ -32,8 +32,6 @@ angular.module('uguru.guru.controllers')
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
   DeviceService, LoadingService) {
 
-    PopupService.initDefaults();
-
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
@@ -53,6 +51,10 @@ angular.module('uguru.guru.controllers')
       $scope.root.vars.profile = false;
     }
 
+    $scope.toggleDesktopTranscript = function() {
+      $scope.showDesktopTranscriptModal = !$scope.showDesktopTranscriptModal;
+    }
+
     $scope.checkStatus = function() {
       $scope.doRefresh();
       LoadingService.showAmbig();
@@ -69,6 +71,36 @@ angular.module('uguru.guru.controllers')
           }
         }
       }, 1500);
+    }
+
+    $scope.credibilityProgress = 0;
+    $scope.credibilityMax = 5;
+    $scope.calcGuruCredibilityProgress = function() {
+
+      $scope.credibilityProgress = 0.0;
+
+      if ($scope.user.transcript_file && $scope.user.transcript_file.url) {
+        $scope.credibilityProgress += 1.0;
+      }
+
+      if ($scope.user.fb_id) {
+        $scope.credibilityProgress += 1;
+      }
+
+      if ($scope.user.phone_number_confirmed) {
+        $scope.credibilityProgress += 1;
+      }
+
+      if ($scope.user.school_email_confirmed) {
+        $scope.credibilityProgress += 1;
+      }
+
+      if ($scope.user.guru_experiences.length) {
+        $scope.credibilityProgress += 1;
+      }
+
+      $scope.credibilityProgress = parseFloat($scope.credibilityProgress);
+
     }
 
     $scope.initHourlyMax = function() {
@@ -134,7 +166,7 @@ angular.module('uguru.guru.controllers')
       // delete from local
        $scope.user.guru_subcategories.splice(index, 1);
 
-       // update server 
+       // update server
        LoadingService.show();
 
        var confirmCallback = function() {
@@ -562,7 +594,10 @@ angular.module('uguru.guru.controllers')
       }
     }
 
-
+    $scope.takeDesktopTranscriptPhoto = function() {
+      var element = document.getElementById('file-input-guru-add-transcript');
+      element.click();
+    }
 
     $scope.takeTranscriptPhoto = function(index) {
 
@@ -634,10 +669,14 @@ angular.module('uguru.guru.controllers')
 
         $scope.file_index += 1;
 
+        if ($scope.desktopMode) {
+            $scope.toggleDesktopTranscript();
+        }
+
         LoadingService.show();
         callbackSuccess = function() {
           LoadingService.hide();
-          $scope.success.show(0, 1500, 'Saved!');
+          LoadingService.showSuccess('Saved!', 1500);
         }
         $scope.root.vars.transcript_url_changed = true;
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
@@ -671,9 +710,7 @@ angular.module('uguru.guru.controllers')
 
     }
 
-    $scope.launchConfirmEmailPopup = function() {
-
-      PopupService.open('confirmEmail', callback);
+    $scope.launchConfirmEmailPopup = function($event) {
       function callback() {
           if(Utilities.validateEmail($scope.popupInput.emailConfirm)) {
             $scope.user.school_email = $scope.popupInput.emailConfirm;
@@ -687,11 +724,12 @@ angular.module('uguru.guru.controllers')
             return;
           }
       }
+      PopupService.open('confirmEmail', callback, $event.target);
     }
 
 
-    $scope.confirmPhonePopup = function() {
-      PopupService.open('confirmPhone', callback);
+    $scope.confirmPhonePopup = function($event) {
+      PopupService.open('confirmPhone', callback, $event.target);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();
       }
@@ -792,16 +830,14 @@ angular.module('uguru.guru.controllers')
             }
 
           }, 1000)
-
+          PopupService.initDefaults();
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
-      console.log(University.courses.length, 'courses in universities');
       $ionicSlideBoxDelegate.update();
       $timeout(function() {
         $scope.initModalsAfterEnter();
       }, 500)
-
     });
 
 

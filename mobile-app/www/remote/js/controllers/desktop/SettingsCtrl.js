@@ -35,13 +35,14 @@ angular.module('uguru.desktop.controllers', [])
   'InAppBrowser',
   'DeviceService',
   'ModalService', //do we need another one?
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
   AnimationService, uTracker, Utilities, PopupService, ModalService, $ionicSlideBoxDelegate,
-  AdminService, InAppBrowser, DeviceService, ModalService) {
+  AdminService, InAppBrowser, DeviceService, ModalService, LoadingService) {
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
@@ -509,45 +510,57 @@ angular.module('uguru.desktop.controllers', [])
 
     $scope.goToGuru = function() {
 
-      $scope.loader.show();
+      LoadingService.showAmbig();
 
       $timeout(function() {
-          $scope.loader.hide();
-        }, 500)
+          LoadingService.hide();
+        }, 1000)
 
-
-
-        AnimationService.flip('^.guru');
 
         $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
 
+        if (!$scope.desktopMode) {
+          $timeout(function() {
+            if ($ionicSideMenuDelegate.isOpen()) {
+              $ionicSideMenuDelegate.toggleRight();
+            }
+          }, 500);
+        }
+
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
-          if ($ionicSideMenuDelegate.isOpen()) {
-            $ionicSideMenuDelegate.toggleRight();
-          }
+          $ionicViewSwitcher.nextDirection('enter');
+          $state.go('^.guru');
         }, 500)
 
     }
 
     $scope.goToStudent = function() {
-      $scope.loader.show();
+      LoadingService.showAmbig();
 
       //let the server know the user was on guru mode for the next time app opens
 
+
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
       $timeout(function() {
-        $scope.loader.hide();
+        LoadingService.hide();
       }, 1000)
 
+      $scope.root.vars.guru_mode = false;
       $timeout(function() {
-        $scope.root.vars.guru_mode = false;
-        if ($ionicSideMenuDelegate.isOpen()) {
-          $ionicSideMenuDelegate.toggleRight();
-        }
+        $ionicViewSwitcher.nextDirection('enter');
+        $state.go('^.home');
       }, 500)
 
-      $state.go('^.home');
+      if (!$scope.desktopMode) {
+
+        $timeout(function() {
+          if ($ionicSideMenuDelegate.isOpen()) {
+            $ionicSideMenuDelegate.toggleRight();
+          }
+        }, 500)
+
+      }
     }
 
     $scope.showComingSoon = function() {

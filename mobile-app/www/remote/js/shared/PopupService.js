@@ -20,16 +20,16 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		close: close
 	};
 
-	function open(popupName, callback) {
+	function open(popupName, callback, targetElem) {
+		console.log('attempting to open', popupName);
 		$timeout(function() {
 			var popup = controller[popupName];
 			if (typeof source !== 'element') {
 				source = document.getElementById('root-nav');
 			}
-			cta(source, popup, 'ion-view', {duration:0},
-				function(modal) {
-					modal.classList.add('show');
-				});
+			cta(targetElem, popup, {}, function(modal) {
+				modal.classList.add('show');
+			})
 
 			attachListeners(popup, callback);
 
@@ -117,14 +117,13 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			confirmPhone = document.getElementById('confirm-phone-uguru-popup');
 			confirmEmail = document.getElementById('confirm-email-uguru-popup');
 			ranking = document.getElementById('guru-ranking-popup');
-
+			console.log('confirmEmail popup', confirmEmail);
 		 	controller.editName = editName,
 		 	controller.editEmail = editEmail,
 		 	controller.editPassword = editPassword,
 		 	controller.confirmPhone = confirmPhone,
 		 	controller.confirmEmail = confirmEmail,
 		 	controller.ranking = ranking
-
 
 		}, 1000);
 	}

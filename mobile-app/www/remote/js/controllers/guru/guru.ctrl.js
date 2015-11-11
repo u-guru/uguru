@@ -58,12 +58,22 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.guru_mode = true;
   $scope.page = {guru_ranking: 0};
   $scope.user.guru_ranking = $scope.user.guru_ranking || 75;
-
+  $scope.showDesktopTranscriptModal = false;
 
   $scope.openModal = function(modalName) {
     ModalService.open(modalName, $scope);
   };
 
+
+  $scope.goToDesktopGuruProfile = function() {
+    $ionicViewSwitcher.nextDirection('enter');
+    $state.go('^.desktop-guru-profile')
+  }
+
+  $scope.goToDesktopGuruCredibility = function() {
+    $ionicViewSwitcher.nextDirection('enter');
+    $state.go('^.guru-credibility');
+  }
 
   $scope.launchWelcomeGuruPopup = function() {
 
@@ -193,7 +203,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.initializeHorizontalProgressBars = function() {
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
-          animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent || 60);
+
+          animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent);
 
           var guruProfileLine = initGuruHorizontalProgress('#guru-profile-progress-bar', 'profile-percent');
           animateProgressLine(guruProfileLine, $scope.user.current_profile_percent || 40);

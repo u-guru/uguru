@@ -178,7 +178,7 @@
 			@include flex;
 			@include flex-center;
 			padding: 15px;
-			height: calc(100% - 10px);
+			height: calc(100% - 30px);
 			> span {
 				width: 50%;
 				font-size: 32px;
@@ -309,7 +309,8 @@
 	.main {
 		@include flex;
 		@include flex-center;
-		height: calc(100% - 64px - 128px);
+		//-50 is for the hacked tab bar (for now);
+		height: calc(100% - 64px - 128px - 50px);
 		padding: 7.5px;
 		ul {
 			width: 100%;
@@ -1475,7 +1476,7 @@
 		@include flex;
 		@include flex-center;
 		position: fixed;
-		bottom: 0;
+		bottom: 64px;
 		left: 0;
 		width: 100%;
 		height: 64px;
@@ -2030,6 +2031,14 @@
 	header, .header-nav {
 		padding-top:0px !important;
 	}
+	.guru-desktop-credibility {
+		padding-top:20px;
+	}
+	#top-menu-background-overlay {
+	    top: 64px;
+	    height: calc(100% - 84px) !important;
+	}
+
 }
 //end component overrides
 
@@ -2084,4 +2093,26 @@ a.back-icon-settings {
 }
 .photo-view .main {
 	height:calc(100% - 140px);
+}
+
+.mode-links {
+	background: rgba(255, 255, 255, 0.75);
+	span {
+		color: #958B8E;
+	}
+	svg {
+		stroke: #958B8E !important;
+	}
+}
+
+
+#desktop-guru-profile #profile {
+	top: 64px;
+	position:absolute;
+	left:0;
+	height:calc(100% - 178px);
+}
+
+#desktop-credibility .progress-bottom {
+	bottom:50px;
 }

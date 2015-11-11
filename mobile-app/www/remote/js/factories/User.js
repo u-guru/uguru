@@ -581,6 +581,7 @@ angular.module('uguru.user', [])
         $scope.user.max_hourly = parseInt(user.max_hourly);
 
         $scope.user.current_profile_percent = RankingService.calcProfile(user);
+        console.log('\n\nRanking Service calculating\n\n', RankingService.calcCredibility(user));
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
 

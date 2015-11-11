@@ -131,7 +131,7 @@ function RankingService() {
         var num_items = 5;
         var default_item_weight = 20;
         var max_points = 100;
-
+        console.log(user);
         if (user.fb_id) {
             base += default_item_weight;
         }

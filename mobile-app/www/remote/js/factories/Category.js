@@ -29,7 +29,6 @@ angular.module('uguru.rest')
                             var indexSubcategory = indexCategory.subcategories[k];
 
                             if (indexSubcategory.id === userSubcategory.id) {
-                                console.log('MATCHED processing', indexSubcategory.name, userSubcategory.name);
                                 categories[j].subcategories[k].active = true;
                             } else {
                                 categories[j].subcategories[k].active = false;

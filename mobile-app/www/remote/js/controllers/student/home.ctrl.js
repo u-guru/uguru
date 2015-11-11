@@ -119,11 +119,11 @@ angular.module('uguru.student.controllers', [])
         //     $scope.requestModal = modal;
         // });
 
-        $scope.launchRequestModal = function(index, verb_index) {
+        // $scope.launchRequestModal = function(index, verb_index) {
 
-            uTracker.track(tracker, 'Request Modal');
-            $scope.requestModal.show();
-        }
+        //     uTracker.track(tracker, 'Request Modal');
+        //     $scope.requestModal.show();
+        // }
 
         $scope.closeRequestModal = function() {
             $scope.requestModal.hide();
