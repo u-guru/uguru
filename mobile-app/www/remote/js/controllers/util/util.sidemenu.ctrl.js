@@ -374,8 +374,8 @@ angular.module('uguru.util.controllers')
             cancel: function() {
                 $scope.closeAttachActionSheet();
             },
-            buttonClicked: function(index) {
-              console.log('ayy this should"ved fired NOT');
+            buttonClicked: function(index,$event) {
+              console.log('ayy this should"ved fired NOT', $event);
               // fire profile photo
               if (index === 0) {
                 $scope.closeAttachActionSheet();
