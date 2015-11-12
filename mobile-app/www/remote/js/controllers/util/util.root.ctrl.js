@@ -66,8 +66,13 @@ angular.module('uguru.util.controllers')
 
         $scope.isDesktopMode = function(height, width) {
             initHeight();
-            height = height || windowHeight;
-            width = width || windowWidth;
+            // height = height || windowHeight;
+            // width = width || windowWidth;
+            height = window.screen.height;
+            width = window.screen.width;
+            // console.log(height, width)
+            // if(!(height > desktopHeightLimit && width > desktopWidthLimit))
+            //     console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
             return height > desktopHeightLimit && width > desktopWidthLimit;
         };
 
