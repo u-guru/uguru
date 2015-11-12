@@ -25,13 +25,13 @@ angular.module('uguru.guru.controllers')
   'Category',
   '$ionicSlideBoxDelegate',
   'DeviceService',
+  'LoadingService',
+  '$ionicViewSwitcher',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
-  DeviceService) {
-
-    PopupService.initDefaults();
+  DeviceService, LoadingService, $ionicViewSwitcher) {
 
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
@@ -52,22 +52,56 @@ angular.module('uguru.guru.controllers')
       $scope.root.vars.profile = false;
     }
 
+    $scope.toggleDesktopTranscript = function() {
+      $scope.showDesktopTranscriptModal = !$scope.showDesktopTranscriptModal;
+    }
+
     $scope.checkStatus = function() {
       $scope.doRefresh();
-      $scope.loader.showAmbig();
+      LoadingService.showAmbig();
       $timeout(function() {
         if ($scope.user.school_email_confirmed) {
-          $scope.loader.showSuccess($scope.user.school_email + ' confirmed', 1500);
+          LoadingService.showSuccess($scope.user.school_email + ' confirmed', 1500);
         } else {
           if (confirm('Resend email to ' + $scope.user.school_email + '?')) {
             var successCallback = function() {
-              $scope.loader.showSuccess('Email successfully sent to' + $scope.user.school_email, 2000);
+              LoadingService.showSuccess('Email successfully sent to' + $scope.user.school_email, 2000);
             }
             $scope.refreshTipsAndRanking($scope.user);
             $scope.user.updateAttr('confirm_school_email', $scope.user, editEmailInput.value, successCallback, $scope);
           }
         }
       }, 1500);
+    }
+
+    $scope.credibilityProgress = 0;
+    $scope.credibilityMax = 5;
+    $scope.calcGuruCredibilityProgress = function() {
+
+      $scope.credibilityProgress = 0.0;
+
+      if ($scope.user.transcript_file && $scope.user.transcript_file.url) {
+        $scope.credibilityProgress += 1.0;
+      }
+
+      if ($scope.user.fb_id) {
+        $scope.credibilityProgress += 1;
+      }
+
+      if ($scope.user.phone_number_confirmed) {
+        $scope.credibilityProgress += 1;
+      }
+
+      if ($scope.user.school_email_confirmed) {
+        $scope.credibilityProgress += 1;
+      }
+
+      if ($scope.user.guru_experiences.length) {
+        $scope.credibilityProgress += 1;
+      }
+
+      $scope.credibilityProgress = parseFloat($scope.credibilityProgress);
+
     }
 
     $scope.initHourlyMax = function() {
@@ -94,13 +128,13 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.saveGuruIntroduction = function() {
-      $scope.loader.show();
+      LoadingService.show();
       $scope.refreshTipsAndRanking($scope.user);
       $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
       $scope.profile.intro_edit_mode = false;
       $timeout(function() {
-        $scope.loader.hide();
-        $scope.loader.showSuccess('Saved!', 1500);
+        LoadingService.hide();
+        LoadingService.showSuccess('Saved!', 1500);
       }, 500);
     }
 
@@ -133,8 +167,8 @@ angular.module('uguru.guru.controllers')
       // delete from local
        $scope.user.guru_subcategories.splice(index, 1);
 
-       // update server 
-       $scope.loader.show();
+       // update server
+       LoadingService.show();
 
        var confirmCallback = function() {
          $scope.success.show(0, 2000, skill.name+ ' successfully removed');
@@ -241,13 +275,13 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.saveTutoringPlatformsAndCloseModal = function() {
-      $scope.loader.show();
+      LoadingService.show();
       $timeout(function() {
         $scope.tutoringPlatformsModal.hide();
       }, 500);
 
       var successCallback = function() {
-        $scope.loader.hide();
+        LoadingService.hide();
         $scope.success.show(0, 1000, 'Saved!');
       }
       $scope.refreshTipsAndRanking($scope.user);
@@ -337,7 +371,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.launchMajorModal = function() {
-      $scope.loader.show();
+      LoadingService.show();
       $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -449,15 +483,14 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.connectWithFacebook = function() {
-      $scope.loader.show();
+      LoadingService.show();
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         var successCallback = function() {
-            $scope.loader.hide();
-          $scope.loader.showSuccess('FB Account Saved', 2000);
+          LoadingService.hide();
+          LoadingService.showSuccess('FB Account Saved', 2000);
         }
         var failureCallback = function(err) {
-          console.log("FAIL")
-          $scope.loader.hide();
+          LoadingService.hide();
           if (err.status === 401) {
             $scope.signupForm.password = '';
             $scope.success.show(0, 1000, 'FB Account has another account - please contact support');
@@ -476,13 +509,22 @@ angular.module('uguru.guru.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.goToUniversity = function() {
-      $scope.loader.show();
+      LoadingService.show();
       $state.go('^.university-container');
       $timeout(function() {
-        $scope.loader.hide();
+        LoadingService.hide();
       }, 500);
     }
 
+    $scope.goToDesktopGuruProfile = function() {
+      $ionicViewSwitcher.nextDirection('enter');
+      $state.go('^.desktop-guru-profile')
+    }
+
+    $scope.goToDesktopGuruCredibility = function() {
+      $ionicViewSwitcher.nextDirection('enter');
+      $state.go('^.guru-credibility');
+    }
 
     $scope.saveGuruProfile = function() {
       $scope.success.show(0, 1500, 'Profile Successfully Saved');
@@ -567,7 +609,10 @@ angular.module('uguru.guru.controllers')
       }
     }
 
-
+    $scope.takeDesktopTranscriptPhoto = function() {
+      var element = document.getElementById('file-input-guru-add-transcript');
+      element.click();
+    }
 
     $scope.takeTranscriptPhoto = function(index) {
 
@@ -604,9 +649,9 @@ angular.module('uguru.guru.controllers')
 
         $scope.file_index += 1;
 
-        $scope.loader.show();
+        LoadingService.show();
         callbackSuccess = function() {
-          $scope.loader.hide();
+          LoadingService.hide();
           $scope.success.show(0, 1500, 'Saved!');
         }
 
@@ -639,10 +684,14 @@ angular.module('uguru.guru.controllers')
 
         $scope.file_index += 1;
 
-        $scope.loader.show();
+        if ($scope.desktopMode) {
+            $scope.toggleDesktopTranscript();
+        }
+
+        LoadingService.show();
         callbackSuccess = function() {
-          $scope.loader.hide();
-          $scope.success.show(0, 1500, 'Saved!');
+          LoadingService.hide();
+          LoadingService.showSuccess('Saved!', 1500);
         }
         $scope.root.vars.transcript_url_changed = true;
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
@@ -658,17 +707,17 @@ angular.module('uguru.guru.controllers')
 
       var removedCourse = $scope.user.guru_courses.splice(index, 1);
 
-      $scope.loader.show();
+      LoadingService.show();
       $timeout(function() {
-        $scope.loader.hide();
-        $scope.loader.showSuccess(course.name + ' successfully removed', 2000);
+        LoadingService.hide();
+        LoadingService.showSuccess(course.name + ' successfully removed', 2000);
       }, 700)
 
       //update local user object
       $localstorage.setObject('user', $scope.user);
 
       //update server user object
-      $scope.loader.show();
+      LoadingService.show();
       $timeout(function() {
         $scope.refreshTipsAndRanking($scope.user);
         $scope.user.updateAttr('remove_guru_course', $scope.user, course, null, $scope);
@@ -676,15 +725,13 @@ angular.module('uguru.guru.controllers')
 
     }
 
-    $scope.launchConfirmEmailPopup = function() {
-
-      PopupService.open('confirmEmail', callback);
+    $scope.launchConfirmEmailPopup = function($event) {
       function callback() {
           if(Utilities.validateEmail($scope.popupInput.emailConfirm)) {
             $scope.user.school_email = $scope.popupInput.emailConfirm;
             $scope.refreshTipsAndRanking($scope.user);
             $scope.user.updateAttr('confirm_school_email', $scope.user, $scope.popupInput.emailConfirm, null, $scope);
-            $scope.loader.showSuccess('Email sent to ' + $scope.popupInput.emailConfirm, 1500);
+            LoadingService.showSuccess('Email sent to ' + $scope.popupInput.emailConfirm, 1500);
             PopupService.close('confirmEmail');
           } else {
             alert("Please enter a valid email.");
@@ -692,11 +739,13 @@ angular.module('uguru.guru.controllers')
             return;
           }
       }
+      PopupService.open('confirmEmail', callback, $event.target);
     }
 
 
-    $scope.confirmPhonePopup = function() {
-      PopupService.open('confirmPhone', callback);
+    $scope.confirmPhonePopup = function($event) {
+      console.log("EVENT", $event.target)
+      PopupService.open('confirmPhone', callback, $event.target);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();
       }
@@ -707,20 +756,20 @@ angular.module('uguru.guru.controllers')
       console.log("Confirm")
 
       //1. re-verify / verify phone number
-      //2. invalid input 
+      //2. invalid input
 
       if(Utilities.validatePhone($scope.popupInput.phoneConfirm))
       {
         $scope.user.phone_number = $scope.popupInput.phoneConfirm;
-        
+
         if(Utilities.validateCode($scope.popupInput.code))
         {
-          // alert("Find code")
             console.log('verify code confirm');
             var callbackSuccess = function() {
                 if ($scope.user.phone_number_confirmed)
                    $scope.loader.showMsg('Verification Code confirmed!',0, 2000)
              }
+
 
            var failureCallback = function(err) {
               console.log("Real FAIL")
@@ -735,11 +784,11 @@ angular.module('uguru.guru.controllers')
             $scope.loader.show();
             $scope.refreshTipsAndRanking($scope.user);
             $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.code, callbackSuccess, $scope, failureCallback);
-        }  
+        }
         else
         {
 
-          if(!$scope.popupInput.code)          
+          if(!$scope.popupInput.code)
              $scope.resendPhoneConfirmation();
             // console.log("Resubmit");
           else
@@ -769,9 +818,9 @@ angular.module('uguru.guru.controllers')
         $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.popupInput.phoneConfirm, callbackSuccess, $scope);
 
         PopupService.close('confirmPhone');
-        $scope.loader.show();
+        LoadingService.show();
         $timeout(function() {
-          $scope.loader.hide();
+          LoadingService.hide();
           var msg = 'New code re-sent to ' + $scope.popupInput.phoneConfirm;
           $scope.success.show(0, 2000, msg);
         }, 1000)
@@ -803,16 +852,14 @@ angular.module('uguru.guru.controllers')
             }
 
           }, 1000)
-
+          PopupService.initDefaults();
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
-      console.log(University.courses.length, 'courses in universities');
       $ionicSlideBoxDelegate.update();
       $timeout(function() {
         $scope.initModalsAfterEnter();
       }, 500)
-
     });
 
 

@@ -11,8 +11,9 @@ angular.module('uguru.guru.controllers')
   '$stateParams',
   '$ionicHistory',
   '$ionicViewSwitcher',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher) {
+ 	$ionicModal, $stateParams, $ionicHistory, $ionicViewSwitcher, LoadingService) {
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/view-files.modal.html', {
       scope: $scope,
@@ -23,7 +24,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.getNumber = function(num) {
         return new Array(num);
-    }
+    };
 
     $scope.proposal = JSON.parse($stateParams.proposalObj);
     $scope.request = $scope.proposal.request;
@@ -143,10 +144,10 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.$on('$ionicView.enter', function(){
-      $scope.loader.show();
+      LoadingService.show();
       $timeout(function() {
         $scope.showGoogleMap();
-        $scope.loader.hide();
+        LoadingService.hide();
       }, 1000);
     });
 

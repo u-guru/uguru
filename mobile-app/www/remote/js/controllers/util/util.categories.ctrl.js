@@ -30,26 +30,23 @@ angular.module('uguru.util.controllers')
     }
 
 
-
-
-
     $scope.active_category = {name:'Select category', active:false};
 
 
+    $scope.showDesktopSubcategories = function (category) {
+      $scope.active_category = category;
+    }
+
     $scope.launchCategoryModal = function(category) {
-      console.log('active_category', $scope.active_category);
-      console.log('category', category);
       if($scope.active_category!==category){
-        $scope.active_category = category;
-        extension = $scope.guruSkillsModal && $scope.guruSkillsModal.isShown() && '-2';
+      $scope.active_category = category;
+      extension = $scope.guruSkillsModal && $scope.guruSkillsModal.isShown() && '-2';
         updateMainBackground($scope.categories_img_base + category.background_url, extension);
       }
 
       uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name
       });
-      console.log('post active_category');
-      console.log('active_category', $scope.active_category);
       $scope.active_category.active = true;
 
       $scope.categorySkillsModal.show();
@@ -176,7 +173,7 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    
+
 
   }
 

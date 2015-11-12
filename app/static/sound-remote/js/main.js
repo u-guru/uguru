@@ -1,7 +1,14 @@
-local = _local || false
-BASE = '';
-if (local) {
+var LOCAL = _local || false;
+_startpage = _startpage || 'intro';
+var FIRST_PAGE='^.' +  _startpage;
+
+var BASE = '';
+var img_base = ''
+if (LOCAL) {
+  img_base = 'remote/'
   BASE = 'remote/';
+} else {
+  var img_base = '/static/';
 }
 
 function defaultErrorCallback(e) {

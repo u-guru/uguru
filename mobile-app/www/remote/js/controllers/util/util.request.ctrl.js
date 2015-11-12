@@ -13,9 +13,10 @@ angular.module('uguru.util.controllers')
   '$ionicGesture',
   '$cordovaGeolocation',
   '$ionicSideMenuDelegate',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation,
-    $ionicSideMenuDelegate) {
+    $ionicSideMenuDelegate, LoadingService) {
 
 
     //   $scope.selectedPriceTable = [0, 1, 2, 5];
@@ -46,9 +47,9 @@ angular.module('uguru.util.controllers')
     //   }
 
     //   $state.go('^.payments');
-    //   $scope.loader.show()
+    //   LoadingService.show()
     //   $timeout(function() {
-    //     $scope.loader.hide()
+    //     LoadingService.hide()
     //     $scope.closeChoosePriceModal();
     //   }, 1000);
 
@@ -344,7 +345,7 @@ angular.module('uguru.util.controllers')
     // //         }
 
 
-    // //         $scope.loader.show();
+    // //         LoadingService.show();
     // //         $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
 
     // //             console.log('location found!', position.coords.latitude, position.coords.longitude);
@@ -383,10 +384,10 @@ angular.module('uguru.util.controllers')
     // //             }
 
     // //             if ($state.current.name === 'root.university') {
-    // //               $scope.loader.show();
+    // //               LoadingService.show();
 
     // //               var showUniversityListViewNearest = function($scope, $state) {
-    // //                 $scope.loader.hide();
+    // //                 LoadingService.hide();
     // //                 $scope.view = 2;
     // //                 $timeout(function() {
 
@@ -414,7 +415,7 @@ angular.module('uguru.util.controllers')
 
     // //       }, function(error) {
     // //           //show & let them know we couldn't find it
-    // //           $scope.loader.hide()
+    // //           LoadingService.hide()
     // //           $scope.user.recent_position = null;
     // //           alert('Sorry! Please check your privacy settings check your GPS signal.');
 
@@ -601,7 +602,7 @@ angular.module('uguru.util.controllers')
     //             }
 
     //             $timeout(function() {
-    //               $scope.loader.hide();
+    //               LoadingService.hide();
     //             }, 1000);
     //           }
     //         }
@@ -622,7 +623,7 @@ angular.module('uguru.util.controllers')
 
 
     //       if (!$scope.requestModalOnlyShown()) {
-    //         $scope.loader.show();
+    //         LoadingService.show();
     //       }
 
 
@@ -661,7 +662,7 @@ angular.module('uguru.util.controllers')
 
     //       }, function(error) {
     //           //show & let them know we couldn't find it
-    //           $scope.loader.hide()
+    //           LoadingService.hide()
     //           $scope.user.recent_position = null;
 
     //           if ($scope.locationModal && $scope.locationModal.isShown()) {
@@ -862,12 +863,12 @@ angular.module('uguru.util.controllers')
 
     //     if (!$scope.user.id) {
     //       $scope.root.vars.pending_request = true;
-    //       $scope.loader.show();
+    //       LoadingService.show();
     //       // $scope.success.show(0, 1500, 'Please create an account first');
     //       $state.go('^.signup')
 
     //       $timeout(function() {
-    //         $scope.loader.hide();
+    //         LoadingService.hide();
     //       }, 600)
 
 

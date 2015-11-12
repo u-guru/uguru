@@ -1,3 +1,4 @@
+#!/bin/bash
 printf '\n'
 printf '\e[0;36m Available Commands \e[0m\n'
 printf '\n'

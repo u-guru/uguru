@@ -13,7 +13,8 @@ var push = null;
   return {
     init: init,
     enable: enable,
-    disable: disable
+    disable: disable,
+    setIOSBadge: setIOSBadge
   }
 
 
@@ -44,6 +45,7 @@ var push = null;
 
       push.on('registration', function(data) {
               // data.registrationId
+              console.log("heard from pushService");
               console.log("registrationId: " + data.registrationId);
               uTracker.track(tracker, "Push Registration", {
                 "$Registration_ID": data.registrationId
@@ -90,4 +92,26 @@ var push = null;
 
   }
 
+
+  function setIOSBadge(number) {
+
+    push.setApplicationIconBadgeNumber(successCallback, errorCallback, number);
+    function successCallback() {
+        console.log("success with push!");
+    }
+    function errorCallback(err) {
+        console.log("error with push: " + err);
+    }
+
+
+  }
+
 }
+
+
+
+
+
+
+
+

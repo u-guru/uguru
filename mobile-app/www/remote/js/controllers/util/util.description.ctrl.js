@@ -12,8 +12,9 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicActionSheet',
   'Camera',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
-    $cordovaKeyboard, $ionicModal,$ionicActionSheet, Camera) {
+    $cordovaKeyboard, $ionicModal,$ionicActionSheet, Camera, LoadingService) {
 
     // $scope.request.attached_files.push({url: ($scope.img_base + './img/stock/stock-1.png')});
     // $scope.request.attached_files.push({url: ($scope.img_base + './img/stock/stock-2.png')});
@@ -27,10 +28,10 @@ angular.module('uguru.util.controllers')
 
         Camera.takePicture($scope, index, true);
       } else {
-        var element = document.getElementById('file-input-web')
+        var element = document.getElementById('file-input-web');
         element.click();
       }
-    }
+    };
 
     $scope.showAttachActionSheet = function() {
 
@@ -169,10 +170,10 @@ angular.module('uguru.util.controllers')
 
         // }, 3000);
 
-      $scope.loader.show();
+      LoadingService.show();
 
       var callbackSuccess = function() {
-        $scope.loader.hide();
+        LoadingService.hide();
       }
 
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);

@@ -22,10 +22,11 @@ angular.module('uguru.student.controllers')
   'User',
   '$ionicViewSwitcher',
   '$ionicSideMenuDelegate',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User, $ionicViewSwitcher, $ionicSideMenuDelegate) {
+  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User, $ionicViewSwitcher, $ionicSideMenuDelegate, LoadingService) {
     $scope.isRequestFormComplete = false;
     //TODO: ADD ACTION BAR W / FILE SUPPORT
     //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM
@@ -342,7 +343,7 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      $scope.loader.show();
+      LoadingService.show();
       console.log($scope.root.vars.request_cache);
       if ($scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]) {
         $scope.root.vars.request = $scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]
@@ -365,7 +366,7 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.$on('$ionicView.enter', function() {
-      $scope.loader.hide();
+      LoadingService.hide();
       $timeout(function() {
         $scope.root.vars.request.price_slider = 0;
       }, 250);
@@ -374,7 +375,7 @@ angular.module('uguru.student.controllers')
     $scope.$on('$ionicView.afterEnter', function(){
       console.log($state.current.name, 'after enter')
       console.log('device', JSON.stringify($scope.user.current_device));
-      $scope.loader.hide();
+      LoadingService.hide();
 
     });
 

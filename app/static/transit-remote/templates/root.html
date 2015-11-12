@@ -1,0 +1,27 @@
+<nick-side-menu>
+	<ul>
+		<li>
+			<a ng-click="selectSettingsOption('editUniversity')">Edit University</a>
+		</li>
+		<li>
+			<a ng-click="selectSettingsOption('locationToggle')">Location</a>
+		</li>
+		<li>
+			<a ng-click="selectSettingsOption('openSupport')">Support</a>
+        </li>
+        <li>
+            <a ng-click="selectSettingsOption('clearSettings')">Clear Settings</a>
+		</li>
+	</ul>
+	<button nick-toggle class='absolute bottom-0 left-0 full-x bg-moola txt-white semibold caps' id='save-button' ng-click='saveSettings()'>Save</button>
+</nick-side-menu>
+
+<ion-side-menus class='root-ion-side-menus'>
+	<ion-side-menu-content class='ion-side-menus-content'>
+		<ion-nav-view id='root-nav' animation="slide-left-right">
+		</ion-nav-view>
+	</ion-side-menu-content>
+	<!--            <ion-side-menu side="left" width='window.width * 0.8'>
+              <div ng-include="'remote/templates/components.gpa-side-menu.html'"></div>
+            </ion-side-menu> -->
+</ion-side-menus>

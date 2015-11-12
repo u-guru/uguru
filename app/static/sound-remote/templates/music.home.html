@@ -1,6 +1,6 @@
 <ion-content class=''>
 
-	
+
 	<iframe id='spotifyPlayer' src="" width="300" height="50" frameborder="0" allowtransparency="true"></iframe>
 
 	<!-- <button ng-click="login('spotify')">Login to Spotify</button> -->
@@ -16,7 +16,7 @@
 	</div>
 
 	<button class="txt-eggplant bg-white fixed bottom-0 left-0 full-x" ng-click="goToIntro()">Back</button>
-	
+
 	<!-- <div class="p15x-p15top">
 		<button class="bg-white txt-eggplant" ng-click="login('soundcloud')">Login to Sound Cloud</button>
 	</div> -->
@@ -35,13 +35,13 @@
 	<div class="p15x-p15bottom">
 		<button class="bg-white txt-eggplant" ng-click="searchArtist('artist')">Search Artist</button>
 	</div>
-		
+
 
 
 	<div class="results-container">
 		<ul class="results-list">
 			<li class="results-item" ng-repeat="artist in results">
-				
+
 				<div class ="artist-container" ng-click="getTracks(artist.id)">
 					<div class='results-name'>{{artist.full_name}}</div>
 					<img ng-src='{{artist.avatar_url}}'/>
@@ -64,8 +64,8 @@
 
 
 
-	
 
 
-	
+
+
 </ion-content>

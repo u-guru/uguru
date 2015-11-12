@@ -12,7 +12,6 @@ angular.module('uguru.guru.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
-  '$ionicPlatform',
   '$ionicSlideBoxDelegate',
   '$ionicViewSwitcher',
   '$window',
@@ -20,17 +19,15 @@ angular.module('uguru.guru.controllers')
   'uTracker',
   'AnimationService',
   'Category',
-  '$ionicSlideBoxDelegate',
   'DeviceService',
   'Utilities',
   '$interval',
   'KeyboardService',
+  'LoadingService',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval,
-    KeyboardService) {
+    $ionicSlideBoxDelegate, $ionicViewSwitcher, $window, University, uTracker, AnimationService,
+    Category,DeviceService, Utilities, $interval, KeyboardService, LoadingService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -57,7 +54,12 @@ angular.module('uguru.guru.controllers')
       $ionicViewSwitcher.nextDirection('back');
       $ionicSlideBoxDelegate.update();
       $state.go('^.home');
-      //AnimationService.slide('right');
+
+      $timeout(function() {
+        // var slidebox = document.querySelectorAll('.become-guru-slidebox-container')[0];
+        // if (slidebox) slidebox.remove();
+        $scope.$destroy;
+      }, 400);
     }
     var clearAllSearchInputs = function() {
       var inputs = document.querySelectorAll('input');
@@ -83,6 +85,10 @@ angular.module('uguru.guru.controllers')
       clearAllSearchInputs();
 
       if (index === 0) {
+        $timeout(function() {
+          console.log("broadcasting schoolChange!");
+          $rootScope.$emit('schoolChange');
+        }, 0);
 
         $timeout(function() {
           $scope.loader.hide();
@@ -97,15 +103,16 @@ angular.module('uguru.guru.controllers')
             var majors = majorsList[0].querySelectorAll('ul li');
             if(majors.length === 0) {
               var timer = 10;
-              $scope.loader.showAmbig('Fetching majors...', (timer * 1000));
+              LoadingService.showAmbig('Fetching majors...', (timer * 1000));
               var counter = 0;
               var startScanner = $interval(function() {
+                University.refresh();
                 console.log("Waiting for majors to load...");
                 var majors = majorsList[0].querySelectorAll('ul li');
                 counter++;
                 if (majors.length !== 0 || counter === timer) {
                   console.log("stopping loader");
-                  $scope.loader.hide();
+                  LoadingService.hide();
                   stopLoader();
                 }
               }, 1000)
@@ -121,6 +128,10 @@ angular.module('uguru.guru.controllers')
       }
 
       else if (index === 1) {
+        $timeout(function() {
+          console.log("broadcasting schoolChange!");
+          $rootScope.$emit('schoolChange');
+        }, 0);
 
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");
@@ -137,17 +148,20 @@ angular.module('uguru.guru.controllers')
 
             if (items.length === 0) {
               $rootScope.$emit('refreshCourses');
+              $rootScope.$emit('loadCourses');
               var timer = 10;
-              $scope.loader.showAmbig('Fetching courses...', (timer * 1000));
+              LoadingService.showAmbig('Fetching courses...', (timer * 1000));
               var counter = 0;
               var startScanner = $interval(function() {
+
+                University.refresh();
                 console.log("checking if courses are loaded...");
                 var items = coursesList[0].querySelectorAll('ul li');
                 console.log("items.length: " + items.length);
                 counter++;
                 if (items.length !== 0 || counter === timer) {
                   console.log("stopping loader");
-                  $scope.loader.hide();
+                  LoadingService.hide();
                   stopLoader();
                 }
               }, 1000);
@@ -213,12 +227,6 @@ angular.module('uguru.guru.controllers')
 
       return;
     }
-    // $scope.onDragLeft = function() {
-
-    //   if ($scope.activeSlideIndex === 0) {
-    //     $ionicSlideBoxDelegate.enableSlide(true);
-    //   }
-    // }
 
     $scope.goToUniversity = function() {
 
@@ -237,69 +245,15 @@ angular.module('uguru.guru.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
 
-    $scope.initSlideBoxModals = function() {
-
-
-      // $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
-      //       scope: $scope,
-      //       animation: 'slide-in-up'
-      // }).then(function(modal) {
-      //     $scope.categorySkillsModal = modal;
-      // });
-
-
-    }
-
-
-    var injectClassIntoElement = function(e) {
-      element = e.target
-      console.log(element.className);
-      if (element.className.indexOf('selected') === -1) {
-        element.className += " animated pulse";
-        $scope.tempElement = element;
+    $scope.$on('$ionicView.afterEnter', function() {
         $timeout(function() {
-          $scope.tempElement.className += ' selected';
+
+          $scope.initSlideBoxModals();
         }, 500);
-      }
-    }
-
-    var incrementProgressBar = function(elemId, value) {
-      console.log(document.querySelector('#become-guru-progress'));
-      document.querySelector('#become-guru-progress').setAttribute("value", value);
-    }
-
-    var initProgressBar = function(elemId,width, value) {
-      var progressBarTag = document.getElementById(elemId);
-      progressBarTag.style.width = width + 'px';
-    }
-
-    // $scope.$on('$ionicView.loaded', function() {
-
-    // }, 500);
-
-    $scope.$on('$ionicView.beforeEnter', function() {
-      $scope.majors = [];
-      console.log('majors set to [[');
-    })
-
-    $scope.$on('$ionicView.enter', function() {
-      $scope.categories = Category.categories;
-      $ionicSlideBoxDelegate.update();
-      //since this is the same as entering the slidebox
-      var universityId = $scope.user.university && $scope.user.university_id || 2307;
-      if (DeviceService.isIOSDevice()) {
-        DeviceService.ios.setStatusBarText($state.current.name);
-      }
+    });
 
 
-      // $scope.loader.hide();
 
-      // $timeout(function() {
-
-      //   $scope.initSlideBoxModals();
-      // }, 500);
-
-    }, 500)
 
 
   }

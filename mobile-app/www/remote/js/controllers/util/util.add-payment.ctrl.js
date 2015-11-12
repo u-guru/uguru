@@ -13,9 +13,10 @@
   '$ionicViewSwitcher',
   '$ionicSideMenuDelegate',
   '$ionicActionSheet',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher,
-  $ionicSideMenuDelegate, $ionicActionSheet) {
+  $ionicSideMenuDelegate, $ionicActionSheet, LoadingService) {
 
     $scope.data = {card_exists: false};
     // console.log();
@@ -32,7 +33,7 @@
       // $scope.root.keyboard.show('card-input', 500);
       $scope.card_details.number = '';
       $scope.card_details.expiry = '';
-    }
+    };
 
     $scope.paymentCardActionSheetOptions = function() {
       var card = $scope.card;
@@ -54,18 +55,18 @@
               if (index === 0) {
                 $scope.closeAttachActionSheet();
                 $scope.removeCard();
-                $scope.loader.show();
+                LoadingService.show();
                 $timeout(function() {
-                  $scope.loader.hide();
+                  LoadingService.hide();
                 }, 750);
               }
 
               if (index === 1) {
                 $scope.closeAttachActionSheet();
                 $scope.setDefault();
-                $scope.loader.show();
+                LoadingService.show();
                 $timeout(function() {
-                  $scope.loader.hide();
+                  LoadingService.hide();
                 }, 750);
               }
             }
@@ -101,12 +102,12 @@
         $ionicHistory.goBack();
       }
       else {
-        $scope.loader.show();
+        LoadingService.show();
         $ionicSideMenuDelegate.toggleRight();
 
         $timeout(function() {
 
-          $scope.loader.hide();
+          LoadingService.hide();
         }, 1000);
 
       }
@@ -149,7 +150,7 @@
     }
 
     $scope.savePayment = function() {
-      $scope.loader.show();
+      LoadingService.show();
       var cardNum = $scope.card_details.number;
       var expMM = $scope.card_details.expiry.split(' / ')[0];
       var expYY = $scope.card_details.expiry.split(' / ')[1];
@@ -159,7 +160,7 @@
       var stripeResponseHandler = function(status, response) {
 
         if (response.error) {
-            $scope.loader.hide();
+            LoadingService.hide();
             $scope.error_msg = true;
             $scope.progress_active = true;
             $scope.success.show(0, 2000, response.error.message);
@@ -200,9 +201,9 @@
             }
             $scope.user.payment_cards.push(cardInfo);
           }
-          $scope.loader.hide();
+          LoadingService.hide();
           $scope.user.cards.push(cardInfo);
-          $scope.loader.show();
+          LoadingService.show();
           console.log(cardInfo)
           var successCallback = function($scope, $state) {
 
@@ -217,7 +218,7 @@
                 if ($scope.choosePriceModal) {
                   $scope.choosePriceModal.show();
                   $timeout(function() {
-                    $scope.loader.hide();
+                    LoadingService.hide();
                   }, 500)
                 }
 
@@ -225,7 +226,7 @@
 
               if ($scope.paymentsModal && $scope.paymentsModal.isShown()) {
                 $scope.paymentsModal.hide();
-                $scope.loader.hide();
+                LoadingService.hide();
               }
 
 
@@ -236,7 +237,7 @@
                 $ionicSideMenuDelegate.toggleRight();
 
                 $timeout(function() {
-                  $scope.loader.hide();
+                  LoadingService.hide();
                 }, 500)
               }
 
@@ -447,7 +448,7 @@
         }
 
         $timeout(function() {
-          $scope.loader.hide();
+          LoadingService.hide();
         }, 250);
 
         var callback;

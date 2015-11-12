@@ -14,12 +14,13 @@ angular.module('sharedServices')
     'AppAvailability',
     'MediaService',
     'ToastService',
+    'LoadingService',
 	AdminService
 	]);
 
 function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout, $ionicSideMenuDelegate, 
     $state, Github, CardReader, SocialSharing, CalendarService, BadgeService, AppAvailability, MediaService,
-    ToastService) {
+    ToastService, LoadingService) {
 
 
 	var adminActionSheet;
@@ -81,7 +82,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
     function resetCache($scope, logout, university) {
         if (confirm('Are you sure you want to reset your admin account?')) {
 
-        $scope.loader.show();
+        LoadingService.show();
 
         //true by default, false if logout
         logout = true && logout;
@@ -94,10 +95,10 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
             tempUniId = $scope.user.university_id;
             tempUni = $scope.user.university;
         }
-        $scope.loader.show();
+        LoadingService.show();
         $scope.user.clearAttr($scope.user, $scope.user.id).then(function(user) {
-          $scope.loader.hide();
-          $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
+          LoadingService.hide();
+          LoadingService.showSuccess(0, 2000,'Admin Account Successfully cleared!');
 
           if (logout) {
             $scope.logoutUser(true);
@@ -125,12 +126,12 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
     function setDefaultCoursesAndMajors($scope) {
         var university = {id: 2307};
         $scope.user.university = university;
-        $scope.loader.showAmbig();
+        LoadingService.showAmbig();
         $timeout(function() {
             $scope.getMajorsForUniversityId(university.id);
             $scope.getCoursesForUniversityId(university.id);
             var successCallback = function() {
-                $scope.loader.hide();
+                LoadingService.hide();
             }
             $scope.getCategories(successCallback);
         }, 100)

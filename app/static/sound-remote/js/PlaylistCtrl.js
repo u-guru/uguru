@@ -12,9 +12,14 @@ angular.module('music-draft')
 	PlaylistCtrl]);
 
 
-function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $state, 
+function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $state,
 	$ionicSlideBoxDelegate, $stateParams, Utilities) {
 
+	if (LOCAL) {
+            $scope.img_base = 'remote/'
+        } else {
+            $scope.img_base = '';
+        }
 
 	var genre = $stateParams.genre;
 	console.log("genre: " + genre);
@@ -33,7 +38,7 @@ function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $s
 		},
 		play: function() {
 			if (Utilities.doesCordovaExist()) {
-				MusicPlayer.play();	
+				MusicPlayer.play();
 			} else {
 				audioElement.play();
 			}
@@ -41,7 +46,7 @@ function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $s
 		},
 		pause: function() {
 			if (Utilities.doesCordovaExist()) {
-				MusicPlayer.pause();	
+				MusicPlayer.pause();
 			} else {
 				audioElement.pause();
 			}
@@ -66,7 +71,7 @@ function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $s
 		console.log(response);
 
 		var results = response.data;
-		
+
 
 		for (var i = 0; i < results.length - 1; i++) {
 			var imgString = results[i].artwork_url;
@@ -83,14 +88,14 @@ function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $s
 		$timeout(function() {
 
 			if (Utilities.doesCordovaExist()) {
-				MusicPlayer.play(OauthService.getStream($scope.currentTrack.stream_url));	
+				MusicPlayer.play(OauthService.getStream($scope.currentTrack.stream_url));
 			} else {
 				audioElement = document.querySelector('#audioPlayer');
 				audioElement.src = OauthService.getStream($scope.currentTrack.stream_url);
 				audioElement.play();
 
 				audioProgress = document.querySelector('#seekbar');
-	
+
 				audioElement.addEventListener('ended', function() {
 					$scope.player.next();
 				});
@@ -101,7 +106,7 @@ function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $s
 
 		}, 3500);
 
-			
+
 
 		$scope.nextSlide();
 
@@ -126,7 +131,7 @@ function PlaylistCtrl($scope, OauthService, $location, MusicPlayer, $timeout, $s
 	};
 
 
-	
+
 }
 
 

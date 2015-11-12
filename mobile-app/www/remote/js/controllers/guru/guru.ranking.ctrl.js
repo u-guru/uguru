@@ -12,17 +12,17 @@ angular.module('uguru.guru.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
-  '$ionicPlatform',
   '$cordovaStatusbar',
   '$ionicViewSwitcher',
   '$ionicActionSheet',
   '$ionicHistory',
   '$ionicPopup',
   'CordovaPushWrapper',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $cordovaStatusbar, $ionicViewSwitcher,
-    $ionicActionSheet, $ionicHistory, $ionicPopup, CordovaPushWrapper) {
+    $cordovaStatusbar, $ionicViewSwitcher,
+    $ionicActionSheet, $ionicHistory, $ionicPopup, CordovaPushWrapper, LoadingService) {
     console.log($scope.user.cards);
     // $scope.data = {
     //   text_notifications:false || $scope.user.text_notifications,
@@ -45,7 +45,7 @@ angular.module('uguru.guru.controllers')
     $scope.goToPayments = function() {
       $scope.root.vars.previous_page_ranking = true;
       $ionicViewSwitcher.nextDirection('forward');
-      $scope.loader.show();
+      LoadingService.show();
       $timeout(function() {
         $state.go('^.payments');
       }, 250)
@@ -93,13 +93,13 @@ angular.module('uguru.guru.controllers')
       }
       var default_card = $scope.user.transfer_cards[0];
       if (confirm("I give Uguru permission to \nbill $10 to " +  default_card.card_type + " **" +  default_card.card_last4)) {
-        $scope.loader.show()
+        LoadingService.show()
         var successCallback = function () {
-          $scope.loader.hide();
+          LoadingService.hide();
           $scope.success.show(500, 1000, "Your payment is successful!");
         }
         var failureFunction = function(err) {
-          $scope.loader.hide();
+          LoadingService.hide();
           if (err.status === 403) {
             $scope.success.show(0, 2000, "There was an error with charging your card. Please contact customer support")
           }
@@ -164,9 +164,9 @@ angular.module('uguru.guru.controllers')
         $scope.data.text_notifications = false;
       } else {
         $scope.data.text_notifications = true;
-        $scope.loader.show();
+        LoadingService.show();
         var successCallback = function() {
-          $scope.loader.hide();
+          LoadingService.hide();
           $scope.success.show(0, 1500, "Saved!");
         }
         $scope.user.updateAttr('text_notifications', $scope.user, true, successCallback, $scope);
@@ -405,7 +405,7 @@ angular.module('uguru.guru.controllers')
                 if ($scope.user.phone_number && $scope.data.token && $scope.data.token.length === 4) {
 
                   var callbackSuccess = function() {
-                    $scope.loader.hide();
+                    LoadingService.hide();
                     if ($scope.user.phone_number_confirmed) {
                       $scope.success.show(0, 2000, 'Verification Code confirmed!')
                     } else {
@@ -414,7 +414,7 @@ angular.module('uguru.guru.controllers')
                     return;
                   }
 
-                  $scope.loader.show();
+                  LoadingService.show();
                   $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.data.token, callbackSuccess, $scope);
 
                 }

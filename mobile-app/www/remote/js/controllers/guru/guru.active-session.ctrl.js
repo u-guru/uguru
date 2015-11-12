@@ -15,14 +15,14 @@ angular.module('uguru.guru.controllers')
   '$cordovaGeolocation',
   'Restangular',
   '$ionicHistory',
-  '$ionicPlatform',
   '$cordovaStatusbar',
   '$cordovaActionSheet',
   '$ionicPlatform',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   Geolocation, $cordovaGeolocation, Restangular, $ionicHistory,
-  $ionicPlatform, $cordovaStatusbar, $cordovaActionSheet, $ionicPlatform) {
+  $cordovaStatusbar, $cordovaActionSheet, $ionicPlatform, LoadingService) {
 
 
     $ionicPlatform.ready(function() {
@@ -323,7 +323,7 @@ angular.module('uguru.guru.controllers')
             console.log($scope.guru_position, $scope.student_position);
             $scope.last_updated = $scope.getCurrentDate();
             $scope.drawGoogleMap($scope.guru_position, $scope.student_position);
-            $scope.loader.hide();
+            LoadingService.hide();
             if ($state.current.name !== 'root.guru-active-session') {
               console.log('do not run background script anymore');
               return;
@@ -497,7 +497,7 @@ angular.module('uguru.guru.controllers')
         console.log('user is at ' + $scope.user.last_position.latitude + ',' + $scope.user.last_position.longitude);
 
         $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
-        $scope.loader.hide();
+        LoadingService.hide();
 
         if ($state.current.name !== 'root.guru-active-session') {
             console.log('do not run background script anymore');

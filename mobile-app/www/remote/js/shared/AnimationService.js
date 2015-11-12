@@ -121,9 +121,7 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 			$ionicViewSwitcher.nextDirection('none');
 			$state.go(target);
 			$timeout(function() {
-				if(target.indexOf('home') !== -1) {
-					InAppMapService.displayMap();
-				}
+				
 				pane.style.transition = '.400s';
 				pane.style.transform = 'rotateY(0deg)';
 				pane.style.webkitTransition = '.400s';

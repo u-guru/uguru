@@ -15,11 +15,11 @@ angular.module('uguru.guru.controllers')
   '$ionicPlatform',
   '$ionicScrollDelegate',
   '$cordovaKeyboard',
-  '$ionicHistory',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, $ionicActionSheet,
   Restangular, $ionicPlatform, $ionicScrollDelegate, $cordovaKeyboard,
-  $ionicHistory) {
+  LoadingService) {
 
 
     $ionicPlatform.ready(function() {
@@ -143,7 +143,7 @@ angular.module('uguru.guru.controllers')
           $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
       }
 
-    }
+    };
 
     $scope.endSession = function() {
       //guru start session
@@ -157,9 +157,9 @@ angular.module('uguru.guru.controllers')
           $scope.session.hours = $scope.timer.hours;
         }
 
-        var sessionPayload = {session: $scope.session}
+        var sessionPayload = {session: $scope.session};
 
-        $scope.loader.show();
+        LoadingService.show();
 
         if ($scope.guruInSessionModal.isShown()) {
             $scope.guruInSessionModal.hide();
@@ -171,13 +171,13 @@ angular.module('uguru.guru.controllers')
 
         $scope.postServerCallback = function() {
 
-          $scope.loader.hide();
+          LoadingService.hide();
 
-        }
+        };
 
         $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope, postServerCallback);
 
-    }
+    };
 
 
 
@@ -313,7 +313,7 @@ angular.module('uguru.guru.controllers')
 
         var sessionPayload = {session: $scope.session}
 
-        $scope.loader.show();
+        LoadingService.show();
 
         var callbackSuccess = function() {
           // $scope.root.vars.launchPendingActions();
@@ -422,7 +422,7 @@ angular.module('uguru.guru.controllers')
         current_message.formatted_time = $scope.root.time.since(new Date(current_message.time_created))
       }
       messages.sort($scope.sortMessageComparator);
-      $scope.loader.hide();
+      LoadingService.hide();
       return messages;
     }
 

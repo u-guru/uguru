@@ -18,10 +18,11 @@
 //   '$cordovaGeolocation',
 //   '$ionicSideMenuDelegate',
 //   '$ionicSlideBoxDelegate',
+//	'LoadingService',
 //   function($scope, $state, $timeout, $localstorage,
 //  	$ionicModal, $cordovaProgress, $q, University,
 //   $cordovaKeyboard, $ionicLoading, $cordovaStatusbar,
-//   $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicSlideBoxDelegate) {
+//   $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicSlideBoxDelegate, LoadingService) {
 
 //     //scope variables
 //     $scope.search_text = '';
@@ -53,7 +54,7 @@
 //           return;
 //       }
 
-//       $scope.loader.show();
+//       LoadingService.show();
 //       $scope.user.university_id = university.id;
 //       $scope.user.university = university;
 //       $scope.search_text = '';
@@ -68,7 +69,7 @@
 //       //save university
 //       var postUniversitySelectedCallback = function() {
 //           $timeout(function() {
-//             $scope.loader.hide();
+//             LoadingService.hide();
 //             $ionicViewSwitcher.nextDirection('forward');
 //               $state.go('^.home')
 //           }, 1000);
@@ -88,17 +89,17 @@
 //         }
 
 //         $scope.search_text ='';
-//         $scope.loader.show();
+//         LoadingService.show();
 //         $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
 
 //             console.log('location found!', position.coords.latitude, position.coords.longitude);
 
 //             if ($state.current.name === 'root.university') {
 //               //show the loader
-//               $scope.loader.show();
+//               LoadingService.show();
 
 //               var successCallback = function() {
-//                 $scope.loader.hide();
+//                 LoadingService.hide();
 //               }
 //                 //grabs the nearest universities
 //                 $scope.nearestUniversities = getNearestUniversity(
@@ -117,7 +118,7 @@
 //           //show & let them know we couldn't find it
 //           //in case android/ios/windows user turned it off
 //           $scope.initialUniversities = $scope.universities;
-//           $scope.loader.hide()
+//           LoadingService.hide()
 //           $scope.user.recent_position = null;
 //           alert('Sorry! Please check your privacy settings check your GPS signal.');
 //       });

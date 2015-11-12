@@ -70,6 +70,9 @@ function MediaService(DeviceService, $interval) {
     console.log("filePath: " + filePath);
     // window.resolveLocalFileSystemURL(filePath, fileSuccess, fileError);
     // function fileSuccess(fileEntry) {
+
+    console.log("playing Audio, if on IOS then the app may appear to have crashed when in reality it is fetching the file");
+    console.log("will need to refactor how this is implemented");
       var url = "http://download.wavetlan.com/SVV/Media/HTTP/MP3/Helix_Mobile_Producer/HelixMobileProducer_test1_MPEG2_Mono_CBR_40kbps_16000Hz.mp3";
       var media = new Media(url,
         function() {

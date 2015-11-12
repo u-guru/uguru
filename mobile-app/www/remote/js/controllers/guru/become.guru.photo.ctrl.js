@@ -12,16 +12,16 @@ angular.module('uguru.guru.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
-  '$ionicPlatform',
   '$cordovaStatusbar',
   '$ionicViewSwitcher',
   '$ionicActionSheet',
   'CameraService',
   'uTracker',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $cordovaStatusbar, $ionicViewSwitcher,
-    $ionicActionSheet, CameraService, uTracker) {
+    $cordovaStatusbar, $ionicViewSwitcher,
+    $ionicActionSheet, CameraService, uTracker, LoadingService) {
 
 
     function takePhotoSuccess() {
@@ -29,12 +29,12 @@ angular.module('uguru.guru.controllers')
       uTracker.track(tracker, 'Guru Mode', {
         '$Photo_Method': 'Camera'
       });
-      $scope.loader.showSuccess("Awesome! You're all set.", 2000);
+      LoadingService.showSuccess("Awesome! You're all set.", 2000);
       $ionicViewSwitcher.nextDirection('forward');
       $timeout(function() {
         $scope.root.vars.guru_mode = true;
         $state.go('^.guru');
-      }, 700)
+      }, 700);
     }
 
 
@@ -43,7 +43,7 @@ angular.module('uguru.guru.controllers')
       uTracker.track(tracker, 'Guru Mode', {
         '$Photo_Method': 'Library'
       });
-      $scope.loader.showSuccess("Awesome! You're all set", 3000);
+      LoadingService.showSuccess("Awesome! You're all set", 3000);
       $timeout(function() {
         $ionicViewSwitcher.nextDirection('forward');
         $state.go('^.guru');
@@ -110,14 +110,14 @@ angular.module('uguru.guru.controllers')
             formData.append('profile_url', $scope.user.id);
           }
 
-          $scope.loader.showSuccess('Saving...', 2000);
+          LoadingService.showSuccess('Saving...', 2000);
 
           // var callback_success = function() {
-          //   $scope.loader.showSuccess("Photo Successfully Saved");
+          //   LoadingService.showSuccess("Photo Successfully Saved");
           // }
 
           var callback_failure = function() {
-            $scope.loader.showSuccess("Something went wrong... Please contact support");
+            LoadingService.showSuccess("Something went wrong... Please contact support");
           }
 
           $timeout(function() {
@@ -178,7 +178,7 @@ angular.module('uguru.guru.controllers')
         name = new Date().getTime().toString();
         formData.append('filename', name);
 
-        $scope.loader.showSuccess('Saving...', 1500);
+        LoadingService.showSuccess('Saving...', 1500);
         $timeout(function() {
           $scope.user.createObj($scope.user, 'files', formData, $scope, uploadPhotoSuccess);
         }, 500);
