@@ -38,6 +38,10 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
     line-height: initial;
 }
 
+a, button, *[ng-click] {
+	cursor: pointer;
+}
+
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

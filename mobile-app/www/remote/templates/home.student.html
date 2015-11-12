@@ -1,5 +1,123 @@
-<script>
-</script>
-<ion-view class='bg-cerise'>
-
+<ion-view class='bg-smoke'>
+	<main id='desktop-student-home' class="desktop-mode" ng-if='isDesktopMode()'>
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<div id='student-home-map-container'></div>
+		<div class="main">
+			<div class="top">
+				<div>
+					<h1>3 New Apps!</h1>
+					<h3>These will make school a breeze.</h3>
+				</div>
+			</div>
+			<div class="student-home-container">
+				<div class="student-home-select">
+					<div>
+						<h2>Need anything? Your peers can help.</h2>
+						<ul>
+							<li>
+								<a>
+									<span>In-person Course Help</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span>Have a Photo Shoot</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span>Late Night Food Delivery</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span>See All Options</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="student-home-apps">
+					<div>
+						<h2>Trending</h2>
+						<ul>
+							<li>
+								<a>
+									<span>Grub Guru</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span>Sound Guru</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span>GPA Guru</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span>Transit Guru</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="student-home-guru">
+					<div>
+						<h2>Need $$$?</h2>
+						<h3>Earn side cash from any below</h3>
+						<div>
+							<ul>
+								<li>
+									<a class="chip bg-cerise">
+										<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+										Course Help
+									</a>
+								</li>
+								<li>
+									<a class="chip bg-lake">
+										<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+										Water Damage Recovery
+									</a>
+								</li>
+								<li>
+									<a class="chip bg-campus">
+										<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+										Rideshare
+									</a>
+								</li>
+								<li>
+									<a class="chip bg-gold">
+										<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+										Bake Sale
+									</a>
+								</li>
+								<li>
+									<a class="chip bg-cerise">
+										<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+										Online Q&amp;A
+									</a>
+								</li>
+								<li>
+									<a class="chip bg-eggplant">
+										<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+										Fitness Training
+									</a>
+								</li>
+								<li>
+									<a class="chip bg-orange">
+										<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+										Interview Prep
+									</a>
+								</li>
+							</ul>
+						</div>
+						<button>Become a Guru</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 </ion-view>

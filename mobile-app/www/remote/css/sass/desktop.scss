@@ -156,6 +156,7 @@
 		&.default {
 			width: 100%;
 			max-width: 1200px;
+			margin: 0 auto;
 		}
 	}
 	.progress-bottom {
@@ -1710,59 +1711,516 @@
 #desktop-student-home {
 	background: $smoke;
 	.main {
-		@include flex;
-		@include flex-center;
-		.before-guru {
-			button {
-				@include round;
+		position: relative;
+		.top {
+			display: none;
+			width: 100%;
+			h1, h3 {
 				display: block;
-				margin: 15px;
-				width: 200px;
-				height: 200px;
-				font-weight: 600;
-				line-height: 1.2;
-				text-transform: uppercase;
-			}
-			.bg-lake-80p.activated, .bg-lake-80p:active {
-				@include opacity(1);
-				background: $lake!important;
-			}
-			.bg-campus-80p.activated, .bg-campus-80p:active {
-				@include opacity(1);
-				background: $campus!important;
-			}
-		}
-		#trending {
-			background: white;
-			h1 {
-				padding: 30px 15px 15px;
-				color: $slate;
-				font-size: 36px;
-				font-weight: 600;
+				color: $taupe;
 				text-align: center;
 			}
-			ul {
-				padding: 0 15px 30px;
-				button {
-					@include round;
-					display: block;
-					margin: 15px;
-					width: 150px;
-					height: 150px;
-					padding: 15px;
-					font-weight: 600;
-					line-height: 1.2;
-					text-transform: uppercase;
-					svg {
-						path {
-							stroke: white;
+			h1 {
+				font-size: 48px;
+				font-weight: 700;
+			}
+			h3 {
+				font-size: 24px;
+				font-weight: 600;
+			}
+		}
+		.student-home-container {
+			@include flex;
+			@include flex-center;
+			@include flex-wrap;
+			width: 100%;
+			height: 100%;
+			> div {
+				height: 50%;
+				> div {
+					background: $gabrielle;
+					height: 100%;
+					h2 {
+						padding: 15px 15px 0;
+						font-size: 36px;
+						font-weight: 600;
+						text-align: center;
+					}
+					ul {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						a, span {
+							display: block;
 						}
 					}
 				}
-				span  {
-					display: block;
+			}
+			.student-home-select {
+				width: 100%;
+				padding-bottom: 7.5px;
+				ul {
+					height: calc(100% - 58px);
+					padding: 0 15px 15px;
+					li {
+						width: 25%;
+						height: 100%;
+						padding: 15px;
+						text-align: center;
+						a {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							overflow: hidden;
+							span {
+								width: 100%;
+								padding: 15px 0;
+								font-size: 22px;
+								font-weight: 700;
+							}
+						}
+						&:not(:last-child) {
+							a {
+								background: white;
+								span {
+									position: absolute;
+									bottom: 0;
+									left: 0;
+								}
+							}
+						}
+						&:last-child {
+							a {
+								background: darken($gabrielle, 10%);
+								span {
+									@include center-xy;
+								}
+							}
+						}
+						&:nth-child(1) a span {
+							background: $cerise;
+						}
+						&:nth-child(2) a span {
+							background: $orange;
+						}
+						&:nth-child(3) a span {
+							background: $campus;
+						}
+						&:nth-child(4) a span {
+							background: darken($gabrielle, 10%);
+						}
+					}
+				}
+			}
+			.student-home-apps {
+				width: calc(100% / 3 * 2);
+				padding: 7.5px 7.5px 0 0;
+				ul {
+					height: calc(100% - 58px);
+					padding: 0 15px 15px;
+					li {
+						width: 25%;
+						height: 100%;
+						padding: 15px;
+						text-align: center;
+						a {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							overflow: hidden;
+							span {
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								width: 100%;
+								padding: 15px 0;
+								font-size: 22px;
+								font-weight: 700;
+								background: rgba($charcoal,.2);
+							}
+						}
+						&:nth-child(1) a {
+							background: $auburn;
+						}
+						&:nth-child(2) a {
+							background: $eggplant;
+						}
+						&:nth-child(3) a {
+							background: $azure;
+						}
+						&:nth-child(4) a {
+							background: $moola;
+						}
+					}
+				}
+			}
+			.student-home-guru {
+				width: calc(100% / 3);
+				padding: 7.5px 0 0 7.5px;
+				h3 {
+					margin-top: 0!important;
 					font-weight: 600;
 					text-align: center;
+				}
+				> div {
+					> div {
+						@include flex;
+						@include flex-center;
+						height: calc(100% - 150px);
+						ul {
+							li {
+								padding: 7.5px;
+								a {
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+					button {
+						background: darken($gabrielle, 10%);
+						font-weight: 600;
+					}
+				}
+			}
+		}
+		// .before-guru {
+		// 	button {
+		// 		@include round;
+		// 		display: block;
+		// 		margin: 15px;
+		// 		width: 200px;
+		// 		height: 200px;
+		// 		font-weight: 600;
+		// 		line-height: 1.2;
+		// 		text-transform: uppercase;
+		// 	}
+		// 	.bg-lake-80p.activated, .bg-lake-80p:active {
+		// 		@include opacity(1);
+		// 		background: $lake!important;
+		// 	}
+		// 	.bg-campus-80p.activated, .bg-campus-80p:active {
+		// 		@include opacity(1);
+		// 		background: $campus!important;
+		// 	}
+		// }
+		// #trending {
+		// 	background: white;
+		// 	h1 {
+		// 		padding: 30px 15px 15px;
+		// 		color: $slate;
+		// 		font-size: 36px;
+		// 		font-weight: 600;
+		// 		text-align: center;
+		// 	}
+		// 	ul {
+		// 		padding: 0 15px 30px;
+		// 		button {
+		// 			@include round;
+		// 			display: block;
+		// 			margin: 15px;
+		// 			width: 150px;
+		// 			height: 150px;
+		// 			padding: 15px;
+		// 			font-weight: 600;
+		// 			line-height: 1.2;
+		// 			text-transform: uppercase;
+		// 			svg {
+		// 				path {
+		// 					stroke: white;
+		// 				}
+		// 			}
+		// 		}
+		// 		span  {
+		// 			display: block;
+		// 			font-weight: 600;
+		// 			text-align: center;
+		// 		}
+		// 	}
+		// }
+	}
+}
+@media screen and (min-height:1000px) {
+	#desktop-student-home {
+		.main {
+			.top {
+				@include flex;
+				@include flex-center;
+				height: 20%;
+			}
+			.student-home-container {
+				height: 80%;
+			}
+		}
+	}
+}
+
+/* ---------- GURU HOME */
+#desktop-guru-home {
+	.main {
+		@include flex;
+		@include flex-center;
+		padding: 0;
+		.guru-home-greeting {
+			@include flex;
+			@include flex-center;
+			width: calc(50% + 80px);
+			height: 100%;
+			div {
+				text-align: center;
+				text-transform: uppercase;
+				h1 {
+					color: $gabrielle;
+					font-size: 40px;
+					font-weight: 700;
+				}
+				.guru-home-notifications {
+					ul {
+						@include flex;
+						@include flex-center;
+						width: 100%;
+						margin-top: 10%;
+						li {
+							padding: 0 15px;
+							a {
+								@include flex;
+								@include flex-center-vertical;
+								span {
+									display: block;
+								}
+								.notification-icon {
+									position: relative;
+									svg {
+										@include round;
+										@include svg-stroke($slate, 5);
+										background: $smoke;
+										width: 64px;
+										height: 64px;
+										padding: 10px;
+									}
+									.notification-number {
+										@include round;
+										@include flex;
+										@include flex-center;
+										position: absolute;
+										top: -15px;
+										right: -15px;
+										width: 40px;
+										height: 40px;
+										background: $gabrielle;
+										border: 3px solid $charcoal;
+										font-size: 18px;
+										font-weight: 600;
+									}
+								}
+								.notification-type {
+									padding-left: 15px;
+									font-weight: 600;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.guru-home-tiles {
+			height: 100%;
+			max-height: 715px;
+			margin-right: -20px;
+			.square {
+				height: 100%;
+			}
+			.square + div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 5;
+				h2, h3 {
+					padding: 15px 0;
+					font-weight: 700;
+					text-transform: uppercase;
+					span {
+						font-weight: 300;
+					}
+				}
+				h3 {
+					padding-bottom: 0;
+					font-size: 20px;
+				}
+				progress {
+					margin: 0 15px;
+					width: calc(100% - 30px);
+				}
+			}
+			> div {
+				width: 100%;
+				height: 50%;
+				text-align: center;
+			}
+			.home-tiles-top {
+				@include flex;
+				@include flex-center;
+				padding-top: 7.5px;
+				padding-left: 10px;
+				.home-tiles-ranking {
+					height: 100%;
+					width: calc(100% / 3 * 2);
+					padding: 7.5px;
+					> div {
+						position: relative;
+						height: 100%;
+						.square {
+							fill: lighten($gabrielle, 15%);
+						}
+						#guru-chart {
+							position: relative;
+							height: calc(100% - 58px);
+							width: 100%;
+							#guru-ranking-progress-bar {
+								height: 100%;
+							}
+							svg {
+								padding: 0 15px 15px;
+								height: 100%;
+								path {
+									stroke-linecap: round;
+								}
+							}
+							#percentile {
+								@include center-xy;
+								#percentile-ranking {
+									position: relative;
+									margin-top: -30px;
+									font-size: 96px;
+									font-weight: 600;
+									line-height: 1;
+									text-align: center;
+									&::after {
+										content: "th";
+										display: block;
+										position: absolute;
+										top: 14px;
+										right: -15px;
+										font-size: 20px;
+										font-weight: 600;
+										line-height: 28px;
+										text-transform: uppercase;
+									}
+								}
+								#percentile-label {
+									font-size: 20px;
+									font-weight: 600;
+									letter-spacing: 1px;
+									line-height: 1.2;
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+				.home-tiles-event {
+					height: 100%;
+					width: calc(100% / 3);
+					padding: 7.5px;
+					> div {
+						position: relative;
+						height: 50%;
+						.square + div {
+							height: calc(100% - 7.5px);
+						}
+						&:first-child {
+							padding-bottom: 7.5px;
+							.square {
+								fill: $gabrielle;
+							}
+							.square + div {
+								svg {
+									@include svg-stroke(white, 2);
+									height: calc(100% - 39px);
+								}
+							}
+						}
+						&:last-child {
+							padding-top: 7.5px;
+							.square {
+								fill: desaturate($gabrielle, 20%);
+							}
+						}
+					}
+				}
+			}
+			.home-tiles-bottom {
+				@include flex;
+				@include flex-center;
+				padding-bottom: 7.5px;
+				padding-left: 10px;
+				.home-tiles-stats {
+					height: 100%;
+					width: calc(100% / 3);
+					padding: 7.5px;
+					> div {
+						position: relative;
+						height: 50%;
+						.square + div {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							height: calc(100% - 7.5px);
+							h3 {
+								padding-top: 0;
+							}
+							progress {
+								vertical-align: 0;
+							}
+						}
+						&:first-child {
+							padding-bottom: 7.5px;
+							.square {
+								fill: saturate($gabrielle, 5%);
+							}
+						}
+						&:last-child {
+							padding-top: 7.5px;
+							.square {
+								fill: desaturate($gabrielle, 20%);
+							}
+							.square + div {
+								top: 7.5px;
+							}
+						}
+					}
+				}
+				.home-tiles-upcoming {
+					height: 100%;
+					width: calc(100% / 3 * 2);
+					padding: 7.5px;
+					> div {
+						position: relative;
+						height: 100%;
+						.square {
+							fill: $gabrielle;
+						}
+						.square + div {
+							ul {
+								padding: 0 15px 15px;
+								font-size: 18px;
+								text-align: left;
+								font-weight: 600;
+								li {
+									margin-bottom: 5px;
+									padding-bottom: 5px;
+									border-bottom: 1px solid white;
+								}
+								span {
+									@include opacity(.5);
+									font-size: 14px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -2121,11 +2579,11 @@ a.back-icon-settings {
 
 .desktop-guru-onboarding {
 	.main.default {
-		min-height:calc(50%);
+		min-height: 50%;
 	}
 }
 .photo-view .main {
-	height:calc(100% - 140px);
+	height: calc(100% - 140px);
 }
 
 .mode-links {
