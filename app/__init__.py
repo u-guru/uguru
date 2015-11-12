@@ -35,9 +35,15 @@ ch.setFormatter(formatter)
 root.addHandler(ch)
 # TODO : Add debug logger
 
+
+
 app = Flask(__name__)
 app.config.from_object('config')
 sslify = SSLify(app)
+
+app.config.update(dict(
+  PREFERRED_URL_SCHEME = 'https'
+))
 
 # flask-restful
 api = restful.Api(app)
