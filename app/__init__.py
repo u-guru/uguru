@@ -11,6 +11,7 @@ from flask.ext.cors import CORS
 from flask.ext.compress import Compress
 import logging
 from logging.handlers import SMTPHandler
+from flask_sslify import SSLify
 
 # import newrelic.agent
 
@@ -29,6 +30,7 @@ root.addHandler(ch)
 
 app = Flask(__name__)
 app.config.from_object('config')
+sslify = SSLify(app)
 
 # flask-restful
 api = restful.Api(app)
@@ -75,7 +77,7 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     response.headers["X-Frame-Options"] = "ALLOW"
     response.headers.add('Access-Control-Allow-Credentials', True)
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    # response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 from app import rest, models, emails, views
