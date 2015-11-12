@@ -19,6 +19,13 @@ from flask_sslify import SSLify
 import logging
 import sys
 
+
+def _force_https(app):
+    def wrapper(environ, start_response):
+        environ['wsgi.url_scheme'] = 'https'
+        return app(environ, start_response)
+    return wrapper
+
 root = logging.getLogger()
 root.setLevel(logging.INFO)
 ch = logging.StreamHandler(sys.stdout)
@@ -34,8 +41,8 @@ sslify = SSLify(app)
 
 # flask-restful
 api = restful.Api(app)
-
-CORS(app)
+_force_https(app)
+# CORS(app)
 
 # flask_becrypt
 flask_bcrypt = Bcrypt(app)
@@ -51,6 +58,7 @@ class MandrillHandler(SMTPHandler):
         # gh = init_github('uguru')
         # create_issue(gh, ['PRODUCTION SERVER ERROR'], 'UGURU PRODUCTION ERROR', self.format(record))
         send_errors_email(self.format(record))
+
 
 
 logger = logging.getLogger()
