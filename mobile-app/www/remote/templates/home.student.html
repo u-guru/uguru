@@ -120,4 +120,30 @@
 			</div>
 		</div>
 	</main>
+	
+    <!-- Step 1: Student request form -->
+    <div class='cta-box p20xy bg-shamrock'>
+
+    </div>
+
+    <div class='cta-modal full-xy bg-cerise' ng-include='student.request.desktop.html'>
+
+    </div>
+    <!-- end student request -->
+
+    <!-- Step 2-->
+    <div ng-include='student.request.desktop.propose-amount.html'>
+
+    </div>
+
+    <!-- Step 3-->
+    <div ng-include='student.request.desktop.add-payment.html'>
+
+    </div>
+
+    <!-- View-only requests -->
+    <div ng-include='student.request.desktop.view-only.html' ng-repeat='request in user.student_requests'>
+
+    </div>
+
 </ion-view>
