@@ -955,10 +955,14 @@ def app_route_gpa():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
+        return redirect(url_for('static', filename='gpa-remote/index.html', _scheme='https'))
+        # return redirect(url_for('static', filename='gpa-remote/index.html'))
+        # return render_template('/gpa-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
-        return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
+        return redirect(url_for('static', filename='gpa-remote/index.html', _scheme='https'))
+        # return render_template('/gpa-remote/index.html')
+        # return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
         # return redirect('/static/gpa-remote/index.html')
 
 @app.route('/production/app/')
