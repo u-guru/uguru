@@ -524,7 +524,8 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
           if ($ionicSideMenuDelegate.isOpen()) {
-            $ionicSideMenuDelegate.toggleRight();
+            // $ionicSideMenuDelegate.toggleRight();
+            $scope.toggleRightSideMenu();
           }
         }, 500);
 
@@ -535,6 +536,10 @@ angular.module('uguru.util.controllers')
 
       LoadingService.show();
       // AnimationService.flip();
+      $timeout(function() {
+          LoadingService.hide();
+        }, 500);
+        AnimationService.flip('^.home');
 
       //let the server know the user was on guru mode for the next time app opens
 
@@ -546,11 +551,12 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         $scope.root.vars.guru_mode = false;
         if ($ionicSideMenuDelegate.isOpen()) {
-          $ionicSideMenuDelegate.toggleRight();
+          // $ionicSideMenuDelegate.toggleRight();
+          $scope.toggleRightSideMenu();
         }
       }, 500);
 
-      $state.go('^.home');
+      // $state.go('^.home');
     };
 
     $scope.showComingSoon = function() {
