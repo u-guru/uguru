@@ -466,9 +466,7 @@ angular.module('uguru.user', [])
         $scope.user.guru_categories = user.guru_categories;
         $scope.user.guru_subcategories = user.guru_subcategories;
 
-        if (Category.categories && Category.categories.length) {
-            Category.mapActiveToSubcategories(Category.categories, $scope.user);
-        }
+
 
         $scope.user.transcript_verified_by_admin = user.transcript_verified_by_admin;
         $scope.user.guru_courses = user.guru_courses;

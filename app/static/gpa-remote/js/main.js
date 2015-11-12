@@ -5,7 +5,7 @@ var FIRST_PAGE='^.' + 'gpa-home';
 
 // isAdmin = true;
 
-var BASE_URL = 'https://www.uguru.me/production/app/';
+var BASE_URL = 'https://www.uguru.me/apps/gpa/';
 var REST_URL = 'https://www.uguru.me';
 
 var BASE = '';
