@@ -3,8 +3,12 @@
 {% block header_scripts %}
 <link rel="stylesheet" href="/static/web/css/style.css"/>
 <style>
+	.intercom-launcher-button{
+   		 visibility: collapse;
+
+	}
 	#intercom-conversation {
-		position:absolute !important;
+		/*position:absolute !important;*/
 		width:100% !important;
 	}
 	#intercom-container .intercom-sheet-header {
@@ -64,8 +68,8 @@ var launchIntercomSetActive = function() {
         // 	bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
         //     $('.top-link-chat, #link-support').trigger('click');
         // }, 3000)
-        $('.top-link-chat, #link-support').trigger('click');
-        // $('.intercom-launcher-button').trigger('click');
+        // $('.top-link-chat, #link-support').trigger('click');
+        $('#intercom-launcher').trigger('click');
 
 	    } else {
 	        console.log('intercome still does not exist.. trying again');
