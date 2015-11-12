@@ -955,7 +955,7 @@ def app_route_gpa():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/gpa-remote/index.html?version=' + str(version) + str(02323))
+        return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
