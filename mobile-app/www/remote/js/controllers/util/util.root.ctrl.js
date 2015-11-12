@@ -254,11 +254,11 @@ angular.module('uguru.util.controllers')
 
         sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * 0.80;
 
-
         $scope.toggleRightSideMenu = function() {
             console.log("sideMenuWidth should be: " + sideMenuWidth);
             var sideMenu = document.querySelectorAll('ion-side-menu')[0];
-
+            var mainMenu = document.querySelectorAll('ion-side-menu-content')[0];
+            console.log("Before",sideMenu.style.width);
             if (sideMenu.style.width === (sideMenuWidth + 'px')) {
                 sideMenu.style.width = 0 + 'px';
             } else {
