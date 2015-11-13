@@ -18,9 +18,9 @@
 					</svg>
 				</a>
 			</div>
-			
+
 			<h1 id='grub-title' class='active'>Grub Guru</h1>
-			
+
 			<div class='noselect filter-button' id='filter-button' ng-controller='GrubFiltersCtrl' ng-click="openFilters()">
 				<svg class="filter-icon" viewBox="0 0 100 100">
 					<path d="M52,77.5 L14,77.5 L52,77.5 C52,77.5 52,77.5 52,77.5 Z M65,77.5 L86,77.5 L65,77.5 C65,77.5 65,77.5 65,77.5 Z M27,50.5 L14,50.5 L27,50.5 C27,50.5 27,50.5 27,50.5 Z M40,50.5 L86,50.5 L40,50.5 C40,50.5 40,50.5 40,50.5 Z M60,23.5 L14,23.5 L60,23.5 C60,23.5 60,23.5 60,23.5 Z M73,23.5 L86,23.5 L73,23.5 C73,23.5 73,23.5 73,23.5 Z"></path>
@@ -42,7 +42,7 @@
 							</li>
 						</ul>
 					</div>
-					
+
 					<div id="filter-trending" class="filter-container">
 						<h2>Trending</h2>
 						<ul class="filter-list">
@@ -57,8 +57,8 @@
 
 		<div id="map_canvas_home">
 			<div class='custom-gmaps-container'>
-				<ui-gmap-google-map ng-if='isBrowser' center='map.center' zoom='map.zoom'>
-					<ui-gmap-marker ng-repeat='restaurant in restaurants' coords="{latitude: restaurant.latitude, longitude: restaurant.longitude}" idkey="restaurant.id" options='restaurant.options'>
+				<ui-gmap-google-map  center='root.vars.map.center' zoom='root.vars.map.zoom'>
+					<ui-gmap-marker ng-repeat='restaurant in restaurants.slice(0,5)' coords="{latitude: restaurant.latitude, longitude: restaurant.longitude}" idkey="$index" options='restaurant.options'>
 					</ui-gmap-marker>
 				</ui-gmap-google-map>
 			</div>
@@ -85,7 +85,7 @@
 								</li>
 							</ul>
 						</div>
-						
+
 						<div id="filter-trending" class="filter-container">
 							<h2>Trending</h2>
 							<ul class="filter-list">

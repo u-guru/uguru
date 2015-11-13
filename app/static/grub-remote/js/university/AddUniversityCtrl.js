@@ -22,12 +22,14 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$ionicSideMenuDelegate',
   'LoadingService',
   'Geolocation',
+  '$localstorage',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, $ionicModal,
-  $controller, ModalService, $ionicSideMenuDelegate, LoadingService, Geolocation) {
+  $controller, ModalService, $ionicSideMenuDelegate, LoadingService, Geolocation,
+  $localstorage) {
 
 
 
@@ -41,6 +43,16 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.LOCAL = LOCAL;
 
+  $scope.slideHasChanged = function(index) {
+
+    console.log('slide has changed to', index);
+    if (index === 3) {
+      initFoodUniversityFilter();
+    }
+
+  }
+
+
   // uTracker.setUser(tracker, 'localyticsTest');
   // uTracker.sendDevice(tracker);
 
@@ -52,7 +64,20 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   };
 
 
+  var initFoodUniversityFilter = function() {
 
+    $scope.returnFoodUniversities = function(value, index, array) {
+
+      // console.log(value, index, array);
+      var idString = value.id + "";
+      if ($scope.universityFoodRouterIds.indexOf(idString) > 0) {
+        return value;
+      }
+
+      return null;
+    }
+
+  }
 
   $scope.limit = 10;
   var totalSchools = $scope.universitiesSorted.length;
@@ -82,8 +107,17 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
 
   $scope.universitySelected = function(university) {
-
+      University.selected = university;
+      $scope.root.vars.map = { center: { latitude: parseFloat(University.selected.latitude), longitude: parseFloat(University.selected.longitude) }, zoom: 14 };
       PerformanceService.sendListResponseTime('University_List');
+      $timeout(function() {
+        console.log('retrieving', university.name, 'food data...')
+        $scope.parseUniversityFoodMenu(university.id, $scope.universityFoodDict);
+      })
+
+      console.log('storing university selected to localstorage');
+      $localstorage.setObject('university', university);
+
 
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
@@ -121,67 +155,50 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       });
 
 
-      //LoadingService.showSuccess('Success', 750);
 
-      University.majors = [];
-      University.courses = [];
-      $timeout(function() {
 
-        // $scope.getCoursesForUniversityId(university.id);
-        // $scope.getMajorsForUniversityId(university.id);
-
-      }, 50);
 
       // University.selectedID = university.id;
       University.selected = university;
-      
 
-      $timeout(function() {
-        console.log("broadcasting schoolChange!");
-        $rootScope.$emit('schoolChange');
-      }, 0);
-      
+
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.search_text.university = '';
 
-      //fetch the universities
-
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
 
-      var payload = {
-        'university_id': $scope.user.university_id
-      };
+      $state.go('^.grub-home');
 
       //save university
-      var postUniversitySelectedCallback = function() {
+      // var postUniversitySelectedCallback = function() {
 
-        var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
-        if(modal !== undefined) {
-          ModalService.close('university');
-          var stringList = modal.classList.toString();
-          if(stringList.indexOf('ng-enter-active')) {
-            // modal.classList.add('ng-leave');
-            // modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
-            // modal.style.visibility = 'hidden';
-            $ionicSlideBoxDelegate.update();
+      //   var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
+      //   if(modal !== undefined) {
+      //     ModalService.close('university');
+      //     var stringList = modal.classList.toString();
+      //     if(stringList.indexOf('ng-enter-active')) {
+      //       // modal.classList.add('ng-leave');
+      //       // modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
+      //       // modal.style.visibility = 'hidden';
+      //       $ionicSlideBoxDelegate.update();
 
-        }
+      //   }
 
-        } else {
-          AnimationService.flip('^.grub-home');
-          $ionicViewSwitcher.nextDirection('forward');
-          $timeout(function() {
-            console.log("cleaning up intro slidebox");
-            var introSlide = document.querySelectorAll('#intro-slide-box')[0];
-            if(introSlide) introSlide.remove();
-            $scope.$destroy;
-          }, 1000);
+      //   } else {
+      //     AnimationService.flip('^.grub-home');
+      //     $ionicViewSwitcher.nextDirection('forward');
+      //     $timeout(function() {
+      //       console.log("cleaning up intro slidebox");
+      //       var introSlide = document.querySelectorAll('#intro-slide-box')[0];
+      //       if(introSlide) introSlide.remove();
+      //       $scope.$destroy;
+      //     }, 1000);
 
-        }
-      }
-      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+      //   }
+      // }
+      // $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
   };
 
   // interesting... in a good way

@@ -575,9 +575,9 @@ angular.module('uguru.user', [])
         $scope.user.support_tickets = user.support_tickets;
         $scope.user.max_hourly = parseInt(user.max_hourly);
 
-        $scope.user.current_profile_percent = RankingService.calcProfile(user);
-        $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
-        $scope.user.current_guru_ranking = RankingService.calcRanking(user);
+        // $scope.user.current_profile_percent = RankingService.calcProfile(user);
+        // $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
+        // $scope.user.current_guru_ranking = RankingService.calcRanking(user);
 
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);

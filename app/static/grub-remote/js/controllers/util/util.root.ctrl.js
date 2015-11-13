@@ -27,33 +27,82 @@ angular.module('uguru.util.controllers')
     'Github',
     'LoadingService',
     'Food',
+    'InAppMapService',
     function($ionicPlatform, $scope, $state, $localstorage, User, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         $cordovaPush, University,
         $cordovaSplashscreen, $timeout,
         $ionicSideMenuDelegate, $ionicViewSwitcher, DeviceService,
          Utilities, DownloadService, PopupService,
-         KeyboardService, ModalService, Github, LoadingService, Food) {
+         KeyboardService, ModalService, Github, LoadingService, Food,
+         InAppMapService) {
+        $scope.root = {vars: {}};
+         // var universityId = 2307;
+        $scope.restaurantsSource = [];
+        // $scope.restaurants = [];
 
-         var universityId = 2307;
-         // Food.getFoodURL(universityId).then(function(data) {
+        function readAndParseJSON(file, callback) {
+            var request = new XMLHttpRequest();
+            request.open('GET', file, true);
+            request.send(null);
+            request.onload = function (e) {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        universities_arr = JSON.parse(request.responseText);
+                        if (callback) {
+                            console.log('calling back');
+                            callback(universities_arr);
+                        }
+                    }
+                }
+            }
+            // if (request.status == 200)
+            //     console.log(Object.keys(request));
 
-         //     // Step 1: Retrieve && get static URL with rest of the data
-         //     var foodUrl = JSON.parse(data).food_url;
-         //     console.log("FOOD URL: ", foodUrl);
-         //     // Step 2: Get all data
-         //     Food.getAllFoodData(url).then(function(data) {
-         //         console.log('WOOHOO WE HAVE DATA:' , data);
-         //     }, function(err) {
-         //         console.log(err);
-         //     })
+            //     console.log(typeof universities_arr)
+            // return universities_arr;
+        }
 
-         //  }, function(err){
+        $scope.getFoodRouter = function(callback) {
+            Food.getFoodURL(10000000).then(function(data) {
 
-         //      // returns custom error of message of why there is no data.
-         //     var errorResponse = JSON.parse(err.data).error;
-         //     //try toggleing it to 2308, will throw an error && print below
-         //     console.log('GET Food Data ERROR:',errorResponse);
-         // });
+        //      // Step 1: Retrieve && get static URL with rest of the data
+             var foodUniversitiesDict = JSON.parse(data);
+
+             $scope.universityFoodDict = foodUniversitiesDict.data;
+             $scope.universityFoodRouterIds = Object.keys(foodUniversitiesDict.data);
+
+                 console.log("FOOD URL: ", foodUniversitiesDict);
+
+
+                if (callback) {
+                    console.log('calling callback');
+                    $scope.parseUniversityFoodMenu(University.selected.id, $scope.universityFoodDict, callback);
+                }
+
+            }, function(err) {
+                console.log(err);
+            })
+        }
+
+        $scope.getFoodRouter();
+
+
+        $scope.parseUniversityFoodMenu = function(uni_id, food_dict, callback) {
+
+            // var successFunction = function(_dict) {
+
+                // console.log('found', $scope.restaurants.length, 'items!');
+
+                // $scope.map = { center: { latitude: 37.8718992, longitude: -122.2585399 }, zoom: 14 };
+
+            //     callback(_dict);
+            // }
+            console.log(food_dict);
+            var foodUrl = food_dict[uni_id + ''];
+
+            readAndParseJSON(foodUrl, callback);
+        }
+
 
 
         ModalService.init('university', $scope);
