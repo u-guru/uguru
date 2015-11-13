@@ -289,6 +289,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/student.messages.html',
         controller: 'StudentMessagesController'
   }).
+  state('root.messaging', {
+        url: '/messaging',
+        templateUrl: BASE + 'templates/messaging.html'
+  }).
   state('root.student-conversations', {
         url: '/student-conversations',
         templateUrl: BASE + 'templates/student.conversations.html'
