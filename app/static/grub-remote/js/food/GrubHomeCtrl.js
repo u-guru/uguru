@@ -228,6 +228,8 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
             }, 1000);
         }
 
+
+
         var callback = function(_dict) {
             // console.log('callback executed');
             // console.log($scope.root.vars.map);

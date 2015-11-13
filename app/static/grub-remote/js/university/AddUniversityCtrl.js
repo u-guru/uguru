@@ -41,6 +41,8 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     $ionicSlideBoxDelegate.previous();
   };
 
+
+
   $scope.LOCAL = LOCAL;
 
   $scope.slideHasChanged = function(index) {
@@ -48,6 +50,12 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     console.log('slide has changed to', index);
     if (index === 3) {
       initFoodUniversityFilter();
+    }
+
+    if (index === 1) {
+      if (DeviceService.doesCordovaExist()) {
+        DeviceService.ios.setStatusBarDarkText();
+      }
     }
 
   }
@@ -87,15 +95,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     }
   };
 
-  //back button
-  // $scope.goToAccessAdmin = function() {
-  //   $scope.search_text.university = '';
-
-  //   LoadingService.showAmbig('[ADMIN] Restarting', 1500);
-  //   $timeout(function() {
-  //     $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
-  //   },0);
-  // }
 
   $scope.resetUniversities = function() {
     $scope.search_text.university = '';
@@ -154,10 +153,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
           "$University": university.name,
       });
 
-
-
-
-
       // University.selectedID = university.id;
       University.selected = university;
 
@@ -168,41 +163,16 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
-
+      LoadingService.showAmbig('Downloading info...', 2500);
+      DeviceService.ios.setStatusBarLightText();
+      $ionicViewSwitcher.nextDirection('enter');
       $state.go('^.grub-home');
-
-      //save university
-      // var postUniversitySelectedCallback = function() {
-
-      //   var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
-      //   if(modal !== undefined) {
-      //     ModalService.close('university');
-      //     var stringList = modal.classList.toString();
-      //     if(stringList.indexOf('ng-enter-active')) {
-      //       // modal.classList.add('ng-leave');
-      //       // modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
-      //       // modal.style.visibility = 'hidden';
-      //       $ionicSlideBoxDelegate.update();
-
-      //   }
-
-      //   } else {
-      //     AnimationService.flip('^.grub-home');
-      //     $ionicViewSwitcher.nextDirection('forward');
-      //     $timeout(function() {
-      //       console.log("cleaning up intro slidebox");
-      //       var introSlide = document.querySelectorAll('#intro-slide-box')[0];
-      //       if(introSlide) introSlide.remove();
-      //       $scope.$destroy;
-      //     }, 1000);
-
-      //   }
-      // }
-      // $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
   };
 
   // interesting... in a good way
   $scope.location = Geolocation;
+
+
 
   $scope.toggleLocationIconAppearance = function() {
 

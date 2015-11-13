@@ -1,8 +1,8 @@
 <ion-slide-box id='intro-slide-box' class='full-y' disable-scroll='true' on-slide-changed='slideHasChanged($index)'>
 
-	<ion-slide >
+	<!-- <ion-slide >
 		<div ng-include="img_base + BASE + 'templates/titleuguru.html'"></div>
-	</ion-slide>
+	</ion-slide> -->
 
 	<ion-slide>
 		<div ng-include="img_base + BASE + 'templates/titlefood.html'"></div>
@@ -51,7 +51,7 @@
 			<section id="school" class="onboarding">
 				<header class="third flex-center">
 					<h1>Find Your Community</h1>
-					<div class="header-nav" ng-if='LOCAL'>
+					<div class="header-nav">
 						<a class="header-nav-back" ng-click='prevSlide()'>
 							<svg viewBox="0 0 100 100">
 								<path d="M68,86 L32,50 L68,14"></path>
@@ -70,8 +70,8 @@
 										<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 									</svg>
 								</i>
-								<input type="text" name="university-input" id='university-input' class='' ng-model="search_text.university" />
-								<label for="university-input">search for my university</label>
+								<input type="text" name="university-input" id='university-input' ng-blur='hideLabel = !search_text.university.length' ng-focus='hideLabel = true;' ng-model="search_text.university" />
+								<label ng-hide='hideLabel' for="university-input">search for my university</label>
 							</div>
 						</form>
 					</div>
