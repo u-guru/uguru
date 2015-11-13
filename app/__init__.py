@@ -48,7 +48,7 @@ app.config.update(dict(
 # flask-restful
 api = restful.Api(app)
 _force_https(app)
-# CORS(app)
+CORS(app)
 
 # flask_becrypt
 flask_bcrypt = Bcrypt(app)
