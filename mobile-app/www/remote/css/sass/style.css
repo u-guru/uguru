@@ -1364,7 +1364,8 @@ section {
   bottom: 0; }
 
 .menu {
-  max-width: 80% !important; }
+  max-width: 80% !important;
+  width: 80% !important; }
 
 .side-menu-list {
   position: relative;
@@ -3950,6 +3951,14 @@ body.platform-ios {
     height: calc(100% - 70px) !important; }
   body.platform-ios .modal-wrapper .support-modal ion-content {
     margin-top: 70px; }
+  body.platform-ios .modal-wrapper .terms-modal header {
+    padding-top: 0px !important; }
+  body.platform-ios .terms-modal header.text-center h1 {
+    padding-top: 20px !important; }
+  body.platform-ios .terms-modal header.text-center .header-nav {
+    padding-top: 0 !important; }
+  body.platform-ios .terms-modal header.text-center a.header-down {
+    padding-top: 10px; }
 
 .android-access-edge-case {
   bottom: 64px;
