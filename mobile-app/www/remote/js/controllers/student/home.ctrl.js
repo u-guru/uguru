@@ -112,18 +112,18 @@ angular.module('uguru.student.controllers', [])
         $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
 
-        // $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
-        //     scope: $scope,
-        //     animation: 'slide-in-up'
-        // }).then(function(modal) {
-        //     $scope.requestModal = modal;
-        // });
+        $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.availabilityModal = modal;
+        });
 
-        // $scope.launchRequestModal = function(index, verb_index) {
+        $scope.launchAvailabilityModal = function(index, verb_index) {
 
-        //     uTracker.track(tracker, 'Request Modal');
-        //     $scope.requestModal.show();
-        // }
+            uTracker.track(tracker, 'Request Modal');
+            $scope.availabilityModal.show();
+        }
 
         $scope.closeRequestModal = function() {
             $scope.requestModal.hide();
@@ -195,6 +195,7 @@ angular.module('uguru.student.controllers', [])
 
                 $timeout(function() {
                     // $scope.initStudentHomeMap();
+                    $scope.launchAvailabilityModal();
                 }, 1000)
 
             }
