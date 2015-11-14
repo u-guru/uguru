@@ -189,7 +189,7 @@ angular.module('uguru.util.controllers')
             if (!uni_id) {
                 return;
             }
-            University.getCourses(uni_id);
+            University.getPopularCourses(uni_id);
         };
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
@@ -220,8 +220,16 @@ angular.module('uguru.util.controllers')
         };
 
 
+        if ($scope.user.university && $scope.user.university_id) {
+             University.getPopularCourses($scope.user.university_id);
+             University.getMajors($scope.user.university_id);
+        }
 
 
+        var saveCategoriesToRootScope = function(categories) {
+            $scope.categories = categories;
+        }
+        $scope.getCategories(saveCategoriesToRootScope)
 
         $scope.rootUser = User;
         $scope.root = RootService;
@@ -264,46 +272,59 @@ angular.module('uguru.util.controllers')
         sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * 0.80;
 
         $scope.toggleRightSideMenu = function() {
+            if (DeviceService.isReady && DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarDarkText();
+            }
+            if (DeviceService.isReady && DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarDarkText();
+            }
+            $ionicSideMenuDelegate.toggleRight();
             console.log("sideMenuWidth should be: " + sideMenuWidth);
             var sideMenu = document.querySelectorAll('ion-side-menu')[0];
             var mainMenu = document.querySelectorAll('ion-side-menu-content')[0];
             console.log("Before",sideMenu.style.width);
             if (sideMenu.style.width === (sideMenuWidth + 'px')) {
+
                 sideMenu.style.width = 0 + 'px';
             } else {
                 sideMenu.style.width = sideMenuWidth + 'px';
+
             }
-
-
-            $ionicSideMenuDelegate.toggleRight();
         };
 
 
 
         var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
+                console.log('status bar is closing');
                 $scope.sideMenuActive = false;
-                $ionicSlideBoxDelegate.update();
+
                 if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
-                    setStatusBarDarkText();
-                }
-            } else {
-                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
-                    setStatusBarLightText();
+
+                    window.StatusBar.styleDefault();
+
                 }
 
-                $timeout(function() {
-                    $scope.sideMenuActive = true;
-                }, 250)
-                $ionicSlideBoxDelegate.update();
+            } else {
+                console.log('status bar is opening');
+                $scope.sideMenuActive = true;
+                // $scope.sideMenuActive = true;
+
+                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+
+                    window.StatusBar.styleLightContent();
+
+                }
+
             }
+            $ionicSlideBoxDelegate.update();
         }
 
 
         //UGH I HATE MY LIFE FUCK YOU IONIC
         var getIonicSideMenuOpenRatio = function() {
+
             var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            $ionicSlideBoxDelegate.update();
             return openRatio;
         }
 
@@ -405,32 +426,6 @@ angular.module('uguru.util.controllers')
         };
 
 
-        if (!Category.categories || Category.categories.length === 0) {
-            console.log('Categories not local, loading now..');
-            $timeout(function() {
-                $scope.getCategories();
-            }, 0);
-        } else {
-            console.log(Category.categories.length, 'categories loaded');
-        }
-
-        if ($scope.user.university_id && !(University.source.majors && University.source.majors.length)) {
-            console.log('University majors not local, requesting now..');
-            $timeout(function() {
-                $scope.getMajorsForUniversityId($scope.user.university_id);
-            }, 0)
-        } else {
-            console.log(University.source.majors.length, 'majors loaded');
-        }
-
-        if ($scope.user.university_id && !(University.courses && University.courses.length)) {
-            console.log('University courses not local, requesting now..');
-            $timeout(function() {
-                $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-            }, 0)
-        } else {
-            console.log(University.source.courses.length, 'courses loaded');
-        }
 
 
         $scope.togglePaymentSideBarView = function() {

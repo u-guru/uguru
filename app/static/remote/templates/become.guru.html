@@ -1,10 +1,10 @@
 <ion-slide-box can-swipe-back='false' on-slide-changed="slideHasChanged($index)" delegate-handle='become-guru-slide-box' class='become-guru-slidebox-container'>
 
-	<ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()" ng-controller='AddMajorController'>
+	<!-- <ion-slide  ng-controller='AddMajorController'>
 		<div ng-include="img_base + BASE + 'templates/majors.html'"></div>
-	</ion-slide>
+	</ion-slide> -->
 
-	<ion-slide ng-controller='CoursesController'>
+	<ion-slide ng-controller='CoursesController' on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
 		<div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
 	</ion-slide>
 

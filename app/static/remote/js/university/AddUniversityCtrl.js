@@ -147,58 +147,22 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
-        if (confirm('Are you sure? Your current courses will be deactivated')) {
-
-
-          if ($state.current.name === 'root.home' && $ionicSideMenuDelegate.isOpen()) {
-            $scope.user.university = university;
-
-            // MapService.initStudentHomeMap($scope.user);
-            LoadingService.showAmbig("Saving...", 1000);
-
-            $timeout(function() {
-              LoadingService.hide();
-              LoadingService.showSuccess('University changed!', 2000);
-            }, 1000);
-
-            $timeout(function() {
-              $ionicSideMenuDelegate.toggleRight();
-            }, 1250);
-          }
-
-          // $timeout(function() {
-          //   console.log("broadcasting schoolChange!");
-          //   $rootScope.$emit('schoolChange');
-          // }, 0);
-
-          uTracker.track(tracker, "University Changed", {
-              "$University": university.name,
-              "$University_Input": $scope.search_text.university
-          });
-        } else return;
-      } else {
-        uTracker.track(tracker, "University Selected", {
-            "$University": university.name,
-            "$University_Input": $scope.search_text.university
-        });
+        if ($scope.user.guru_courses && $scope.user.guru_courses.length && confirm('Are you sure? Your current courses will be deactivated')) {
+          $scope.user.university = university;
+        }
       }
+      $scope.user.university = university;
 
-      uTracker.set(tracker, {
-          "$University": university.name,
-      });
+      LoadingService.showAmbig(null, 1000);
+      $timeout(function() {
+        LoadingService.showSuccess('University changed!', 2000);
+      }, 1250)
 
-
-      //LoadingService.showSuccess('Success', 750);
 
       University.clearSelected();
-      // University.majors = [];
-      // University.courses = [];
-
-      // $scope.getCoursesForUniversityId(university.id);
-      // $scope.getMajorsForUniversityId(university.id);
 
       University.getMajors(university.id);
-      University.getCourses(university.id);
+      University.getPopularCourses(university.id);
 
 
       University.selected = university;
@@ -207,17 +171,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       $scope.user.university = university;
       $scope.search_text.university = '';
 
-      //fetch the universities
-
-      //update user to locat storage
       $timeout(function() {
         $scope.rootUser.updateLocal($scope.user);
       }, 0);
-
-
-      var payload = {
-        'university_id': $scope.user.university_id
-      };
 
       //save university
       var postUniversitySelectedCallback = function() {
@@ -230,8 +186,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
             modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
             $ionicSlideBoxDelegate.update();
 
-        }
-
+          }
         } else {
           AnimationService.flip('^.home');
           $ionicViewSwitcher.nextDirection('forward');
@@ -244,9 +199,16 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
         }
       };
+
+      var payload = {
+        'university_id': university.id
+      }
+
       $timeout(function() {
         $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
       }, 0);
+
+      $scope.closeModal('university');
 
   };
 

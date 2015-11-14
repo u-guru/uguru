@@ -18,7 +18,7 @@ angular.module('sharedServices')
 	AdminService
 	]);
 
-function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout, $ionicSideMenuDelegate, 
+function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout, $ionicSideMenuDelegate,
     $state, Github, CardReader, SocialSharing, CalendarService, BadgeService, AppAvailability, MediaService,
     ToastService, LoadingService) {
 
@@ -240,67 +240,67 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                     DeviceService.checkUpdates(url);
                     break;
 
-                case 9:
-                    if(DeviceService.doesCordovaExist()) {
-                        CardReader.open(); //Only works on Android and IOS
-                    }
-                    break;
+                // case 9:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         CardReader.open(); //Only works on Android and IOS
+                //     }
+                //     break;
 
-                case 10:
-                    if(DeviceService.doesCordovaExist()) {
-                        SocialSharing.open(); //Works on Android, IOS, and Windows. However IOS may be limited to only apps approved by Apple (facebook, twitter, etc.)
-                    }
-                    break;
+                // case 10:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         SocialSharing.open(); //Works on Android, IOS, and Windows. However IOS may be limited to only apps approved by Apple (facebook, twitter, etc.)
+                //     }
+                //     break;
 
-                case 11:
-                    if(DeviceService.doesCordovaExist()) {
-                        CalendarService.open(); // Works on Android, IOS
-                    }
-                    break;
+                // case 11:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         CalendarService.open(); // Works on Android, IOS
+                //     }
+                //     break;
 
-                case 12:
-                    if(DeviceService.doesCordovaExist()) {
-                        BadgeService.set(5); // Works on Android, IOS, Windows, Amazon
-                    }
-                    break;                
-                    
-                case 13:
-                    if(DeviceService.doesCordovaExist()) {
-                        BadgeService.clear(); // Works on Android, IOS, Windows, Amazon
-                    }
-                    break;
+                // case 12:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         BadgeService.set(5); // Works on Android, IOS, Windows, Amazon
+                //     }
+                //     break;
 
-                case 14:
-                    if(DeviceService.doesCordovaExist()) {
-                        AppAvailability.checkFb(); // Works on Android, IOS
-                    }  
-                    break;
-                case 15:
-                    if(DeviceService.doesCordovaExist()) {
-                        MediaService.recordAudio();
-                    }  
-                    break;
+                // case 13:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         BadgeService.clear(); // Works on Android, IOS, Windows, Amazon
+                //     }
+                //     break;
 
-                case 16:
-                    if(DeviceService.doesCordovaExist()) {
-                        MediaService.playAudio();   
-                    }  
-                    break;
+                // case 14:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         AppAvailability.checkFb(); // Works on Android, IOS
+                //     }
+                //     break;
+                // case 15:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         MediaService.recordAudio();
+                //     }
+                //     break;
 
-                case 17:
-                    if(DeviceService.doesCordovaExist()) {
-                        $timeout(function() {
-                            $ionicSideMenuDelegate.toggleRight();
-                        }, 0);
-                        $state.go('^.inappmap');
-                    }  
-                    break;
+                // case 16:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         MediaService.playAudio();
+                //     }
+                //     break;
 
-                case 18:
-                    if(DeviceService.doesCordovaExist()) {
-                        ToastService.show("Nick is so cool!", 'short', 'bottom');
-                    }
-                    break;
+                // case 17:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         $timeout(function() {
+                //             $ionicSideMenuDelegate.toggleRight();
+                //         }, 0);
+                //         $state.go('^.inappmap');
+                //     }
+                //     break;
+
+                // case 18:
+                //     if(DeviceService.doesCordovaExist()) {
+                //         ToastService.show("Nick is so cool!", 'short', 'bottom');
+                //     }
+                //     break;
 
 
         }

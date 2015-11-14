@@ -33,7 +33,7 @@ angular.module('uguru.student.controllers', [])
         $ionicSideMenuDelegate.canDragContent(false);
 
 
-        var universityColor = $scope.user.university.school_color_one;
+        // var universityColor = $scope.user.university.school_color_one;
 
 
         var windowWidth;
@@ -102,18 +102,18 @@ angular.module('uguru.student.controllers', [])
 
         }
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.availabilityModal = modal;
-        });
+        // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        // }).then(function(modal) {
+        //     $scope.availabilityModal = modal;
+        // });
 
-        $scope.launchAvailabilityModal = function(index, verb_index) {
+        // $scope.launchAvailabilityModal = function(index, verb_index) {
 
-            uTracker.track(tracker, 'Request Modal');
-            $scope.availabilityModal.show();
-        }
+        //     uTracker.track(tracker, 'Request Modal');
+        //     $scope.availabilityModal.show();
+        // }
 
         $scope.closeRequestModal = function() {
             $scope.requestModal.hide();
@@ -128,7 +128,7 @@ angular.module('uguru.student.controllers', [])
 
         $scope.goToBecomeGuru = function() {
             $scope.loader.showAmbig();
-            $ionicSlideBoxDelegate.update();
+            // $ionicSlideBoxDelegate.update();
 
             $timeout(function() {
                 $ionicViewSwitcher.nextDirection('forward');
@@ -184,11 +184,15 @@ angular.module('uguru.student.controllers', [])
                 console.log('initializing map from load');
                 $scope.mapInitialized = true;
 
-                // $timeout(function() {
-                //     // $scope.initStudentHomeMap();
-                //     $scope.launchAvailabilityModal();
-                // }, 1000)
+            }
 
+        })
+
+
+
+        $scope.$on('$ionicView.afterLeave', function() {
+            if (DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarLightText();
             }
 
         })
@@ -199,8 +203,6 @@ angular.module('uguru.student.controllers', [])
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
-
-
 
         })
 

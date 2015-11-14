@@ -38,6 +38,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchCategoryModal = function(category) {
+      console.log(category);
       if($scope.active_category!==category){
       $scope.active_category = category;
       extension = $scope.guruSkillsModal && $scope.guruSkillsModal.isShown() && '-2';
@@ -119,6 +120,10 @@ angular.module('uguru.util.controllers')
 
       Category.categories = $scope.categories;
       $localstorage.setObject('categories', $scope.categories);
+
+      if (!category.active_subcategories && category.active_subcategories !== 0) {
+        category.active_subcategories = 0;
+      }
 
       if (subcategory.active) {
         category.active_subcategories += 1;

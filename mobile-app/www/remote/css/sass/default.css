@@ -1554,7 +1554,7 @@ button.disabled {
 .checklist-bg-cerise li > span input:checked + span {
   background-color: #DB1988 !important; }
 
-.checklist-orange .checklist-bg-orange > span input:checked + span,
+.checklist-bg-orange li > span input:checked + span,
 .checklist-orange li > span input:checked + span {
   background-color: #E5753C !important; }
 
