@@ -21,7 +21,7 @@ function readAndParseJSON(file) {
 var initMatcher = function(arr) {
     var matcher = new FastMatcher(arr, {
         // the property, or array of properties, to base matches on
-        selector: ['name', 'city', 'state'],
+        selector: ['name', 'city', 'state', 'variations'],
 
         // duh, what do you think this does?
         caseInsensitive: true,
@@ -130,13 +130,20 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
             popularCourses = popularCourses.slice(0,11);
         }
 
+        popularCoursesParent.style.backgroundColor = uni_data.school_color_one;
+
         for (var i = 0 ; i < popularCourses.length; i ++) {
             var courseNode = document.createElement("li");
             courseNode.innerHTML = popularCourses[i];
             popularCoursesParent.appendChild(courseNode);
+            courseNode.style.backgroundColor = 'inherit';
+            courseNode.style.borderColor = uni_data.school_color_two || 'white';
+            courseNode.style.borderWidth = '1px';
+            courseNode.style.borderStyle = 'solid';
         }
         var courseNode = document.createElement("li");
         courseNode.innerHTML = 'and more';
+        courseNode.style.backgroundColor = 'inherit';
         popularCoursesParent.appendChild(courseNode);
     }
 

@@ -97,6 +97,8 @@ angular.module('uguru.util.controllers')
         //     navigator.splashscreen.show();
         // }
 
+
+
         $scope.LOCAL = LOCAL || false;
         $ionicPlatform.registerBackButtonAction(function(e) {
             var popup = document.querySelectorAll('.uguru-popup.show')[0];

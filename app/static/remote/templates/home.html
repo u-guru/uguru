@@ -45,6 +45,9 @@
         </header>
         <div id='desktop-student-home-map-container' ng-if='!isDesktopMode()'></div>
         <div style="width:100%;height:100%;" id="map_canvas_home">
+            <div class='full-xy absolute top-0 left-0' style='z-index:-1'>
+                <img ng-src="{{img_base}}./img/default_map.png" class='full-xy absolute top-0 left-0'/>
+            </div>
             <div id="home-content" class="trending-container">
                 <div ng-if='!user.is_a_guru'>
                     <button class="home-button bg-lake-80p" thr-click='launchRequestModal()'>Request

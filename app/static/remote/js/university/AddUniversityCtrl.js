@@ -38,9 +38,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   uTracker.setUser(tracker, 'localyticsTest');
   if(DeviceService.isMobile()) {
     var deviceObject = DeviceService.getDevice();
-    uTracker.sendDevice(tracker, deviceObject);  
+    uTracker.sendDevice(tracker, deviceObject);
   }
-  
+
 
   $scope.universitiesSorted = University.getSorted().slice();
   $scope.universities = $scope.universitiesSorted;
@@ -143,7 +143,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     $timeout(function() {
       PerformanceService.sendListResponseTime('University_List');
     }, 0);
-      
+
 
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
@@ -152,7 +152,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
           if ($state.current.name === 'root.home' && $ionicSideMenuDelegate.isOpen()) {
             $scope.user.university = university;
-            
+
             // MapService.initStudentHomeMap($scope.user);
             LoadingService.showAmbig("Saving...", 1000);
 
@@ -196,7 +196,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       // $scope.getCoursesForUniversityId(university.id);
       // $scope.getMajorsForUniversityId(university.id);
-      
+
       University.getMajors(university.id);
       University.getCourses(university.id);
 
@@ -213,7 +213,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       $timeout(function() {
         $scope.rootUser.updateLocal($scope.user);
       }, 0);
-      
+
 
       var payload = {
         'university_id': $scope.user.university_id
@@ -247,7 +247,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       $timeout(function() {
         $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
       }, 0);
-      
+
   };
 
   // interesting... in a good way
@@ -283,7 +283,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 }
 
 angular.module('uguru.directives')
-.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService) {
+.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService, LoadingService) {
 
   function link($scope, element, attributes) {
     var queryPromise = null;
@@ -295,11 +295,13 @@ angular.module('uguru.directives')
           console.log("heard something!", newValue, oldValue);
           if(newValue === 'update' ) {
 
+
+            // LoadingService.showAmbig('Calculating distance...', 2000);
               Geolocation.getLocation($scope, $scope.source, function(results) {
                 $timeout(function() {
                   $scope.listScope = results;
                 }, 0);
-              });
+              }, DeviceService.isIOSDevice());
 
           }
         }

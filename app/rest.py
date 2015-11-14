@@ -96,9 +96,9 @@ class CategoryListView(restful.Resource):
 class UniversityListView(restful.Resource):
     @marshal_with(AdminUniversitySerializer)
     def get(self):
-        universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.banner_url != None, University.logo_url != None).all()
-        print universities
-        return universities, 200
+        from app.static.data.popular_data import getPreparedUniversitiesObj
+        prepared_universities = getPreparedUniversitiesObj(University.query.all())
+        return prepared_universities, 200
 
 class UniversityMajorsView(restful.Resource):
     @marshal_with(DepartmentSerializer)

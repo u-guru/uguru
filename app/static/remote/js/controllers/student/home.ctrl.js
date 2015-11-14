@@ -36,6 +36,18 @@ angular.module('uguru.student.controllers', [])
         var universityColor = $scope.user.university.school_color_one;
 
 
+        var windowWidth;
+        var initHeight = function() {
+            bodyRect = document.querySelector('body').getBoundingClientRect();
+            windowHeight = bodyRect.height;
+            windowWidth = bodyRect.width;
+        };
+
+        initHeight();
+        $scope.window = {
+            width:windowWidth,
+            height:windowHeight
+        };
 
         //todo create service
         function initDesktopFunctions() {
@@ -188,6 +200,7 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.$on('$ionicView.loaded', function() {
+            $ionicSlideBoxDelegate.update();
             $scope.root.vars.guru_mode = false;
             if (!$scope.mapInitialized) {
                 console.log('initializing map from load');
@@ -202,6 +215,7 @@ angular.module('uguru.student.controllers', [])
         })
 
         $scope.$on('$ionicView.beforeEnter', function() {
+            $ionicSlideBoxDelegate.update();
             $scope.universityMapRendered = false;
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
