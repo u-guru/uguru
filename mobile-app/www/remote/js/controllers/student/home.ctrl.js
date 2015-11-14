@@ -128,7 +128,7 @@ angular.module('uguru.student.controllers', [])
 
         $scope.goToBecomeGuru = function() {
             $scope.loader.showAmbig();
-            // $ionicSlideBoxDelegate.update();
+            $ionicSlideBoxDelegate.update();
 
             $timeout(function() {
                 $ionicViewSwitcher.nextDirection('forward');

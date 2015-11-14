@@ -32,7 +32,7 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
             templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
             duration: duration || 1000
         });
-        
+
     }
 
     function showFailure(text, duration) {
@@ -43,11 +43,11 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
             templateUrl: BASE + 'templates/u.loader.failure.svg.html',
             duration: duration || 1000
         });
-        
+
     }
 
     function showSuccess(text, duration, callback) {
-
+        duration = duration || 1000
         $rootScope.successLoaderText = text || '';
 
         $ionicLoading.show({
@@ -55,10 +55,12 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
             templateUrl: BASE + 'templates/u.loader.success.svg.html',
             duration: duration || 1000
         });
-        
+
         if (typeof callback !== 'undefined') {
-    		callback();
-        } 
+    		$timeout(function() {
+                callback();
+            }, duration)
+        }
     }
 
     function updateSuccessText(text) {
@@ -70,7 +72,7 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
         delay = delay || 0;
         $timeout(function() {
             $ionicLoading.hide();
-            
+
         }, delay);
     }
 

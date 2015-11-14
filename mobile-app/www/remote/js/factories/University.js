@@ -54,7 +54,7 @@ angular.module('uguru.rest', [])
             }, 0);
 
         },
-        getPopularCourses: function(uni_id) {
+        getPopularCourses: function(uni_id, scope, callback) {
              return $timeout(function() {
                   Restangular
                      .one('universities', uni_id).customGET('popular_courses').then(function(response) {
@@ -68,6 +68,11 @@ angular.module('uguru.rest', [])
                                  });
                              }, 1000);
                              console.log("length of popular courses in callback: " + source.popularCourses.length);
+
+                             if (scope && callback) {
+                                callback(scope, source.courses.slice());
+                             }
+
                          }, 0);
 
                      }, function(err) {

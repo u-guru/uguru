@@ -96,7 +96,7 @@
 				</a>
 		</div>
 	</header>
-	<div id="courses-list" bind-input='courses' source='source.courses' class="onboarding-list" >
+	<div id="courses-list" class="onboarding-list" >
 		<ul class='list list-item-border no-icon'>
 			<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
 				<input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>

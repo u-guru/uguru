@@ -24,12 +24,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'MapService',
   '$ionicSideMenuDelegate',
   'LoadingService',
+  '$localstorage',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService,
-  $controller, MapService, $ionicSideMenuDelegate, LoadingService) {
+  $controller, MapService, $ionicSideMenuDelegate, LoadingService, $localstorage) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -140,9 +141,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.universitySelected = function(university) {
 
-    $timeout(function() {
-      PerformanceService.sendListResponseTime('University_List');
-    }, 0);
+    // $timeout(function() {
+    //   PerformanceService.sendListResponseTime('University_List');
+    // }, 0);
 
 
       //if user is switching universities
@@ -153,16 +154,21 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       }
       $scope.user.university = university;
 
-      LoadingService.showAmbig(null, 1000);
-      $timeout(function() {
-        LoadingService.showSuccess('University changed!', 2000);
-      }, 1250)
+      // LoadingService.showAmbig(null, 1000);
+      // $timeout(function() {
 
+      // }, 1250)
+      var flipCallback = function() {
+        AnimationService.flip('^.home');
+      }
+
+      LoadingService.showSuccess('Saved!', 1500, flipCallback);
 
       University.clearSelected();
-
-      University.getMajors(university.id);
-      University.getPopularCourses(university.id);
+      $timeout(function() {
+        University.getMajors(university.id);
+        University.getPopularCourses(university.id);
+      }, 1000);
 
 
       University.selected = university;
@@ -172,43 +178,45 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       $scope.search_text.university = '';
 
       $timeout(function() {
-        $scope.rootUser.updateLocal($scope.user);
+        $localstorage.setObject('university', university);
+        $localstorage.setObject('user', $scope.user);
       }, 0);
 
-      //save university
-      var postUniversitySelectedCallback = function() {
+      // //save university
+      // var postUniversitySelectedCallback = function() {
 
-        var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
-        if(modal !== undefined) {
-          var stringList = modal.classList.toString();
-          if(stringList.indexOf('ng-enter-active')) {
-            modal.classList.add('ng-leave');
-            modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
-            $ionicSlideBoxDelegate.update();
+      //   var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
+      //   if(modal !== undefined) {
+      //     var stringList = modal.classList.toString();
+      //     if(stringList.indexOf('ng-enter-active')) {
+      //       modal.classList.add('ng-leave');
+      //       modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
+      //       $ionicSlideBoxDelegate.update();
 
-          }
-        } else {
-          AnimationService.flip('^.home');
-          $ionicViewSwitcher.nextDirection('forward');
-          $timeout(function() {
-            console.log("cleaning up access/university slidebox");
-            var accessUni = document.querySelectorAll('#access-uni-slide')[0];
-            if(accessUni) accessUni.remove();
-            $scope.$destroy();
-          }, 1000);
+      //     }
+      //   } else {
+      //     $ionicViewSwitcher.nextDirection('forward');
+      //     $timeout(function() {
+      //       console.log("cleaning up access/university slidebox");
+      //       var accessUni = document.querySelectorAll('#access-uni-slide')[0];
+      //       if(accessUni) accessUni.remove();
+      //       $scope.$destroy();
+      //     }, 1000);
 
-        }
-      };
+      //   }
+      // };
 
       var payload = {
         'university_id': university.id
       }
 
       $timeout(function() {
-        $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+        $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope);
       }, 0);
 
-      $scope.closeModal('university');
+      if ($state.current.name !== 'root.university') {
+        $scope.closeModal('university');
+      }
 
   };
 

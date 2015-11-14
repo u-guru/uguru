@@ -33,6 +33,20 @@ angular.module('uguru.guru.controllers')
 
     var startScanner;
 
+    $scope.courses = University.source.courses;
+
+    if (!$scope.courses || !$scope.courses.length) {
+      LoadingService.showAmbig("Loading Courses...", 10000);
+      loadingCourseCallback = function(scope, courses) {
+        scope.courses = courses;
+        $timeout(function() {
+          LoadingService.hide();
+        }, 250)
+      }
+
+      University.getPopularCourses($scope.user.university_id, $scope, loadingCourseCallback);
+    }
+
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
       for (var i = 0; i < guru_courses.length; i++) {
@@ -83,7 +97,7 @@ angular.module('uguru.guru.controllers')
       $scope.activeSlideIndex = index;
 
       KeyboardService.closeKeyboardIfExists();
-      clearAllSearchInputs();
+      // clearAllSearchInputs();
 
        if (index === 1) {
 
@@ -150,6 +164,27 @@ angular.module('uguru.guru.controllers')
     }
 
     $ionicSideMenuDelegate.canDragContent(false);
+
+    $scope.$on('$ionicView.enter', function() {
+        $timeout(function() {
+          $ionicSlideBoxDelegate.update();
+        }, 500)
+    });
+
+    $scope.hideLoader = function() {
+      $timeout(function() {
+        console.log('hiding directive loader')
+        LoadingService();
+      }, 1000)
+    }
+
+    // $scope.$on('$ionicView.beforeEnter', function() {
+    //     if (!$scope.root.vars.becomeGuruCached) {
+    //       $scope.root.vars.becomeGuruCached = true;
+    //       console.log('become guru first time cache')
+    //       LoadingService.showAmbig(null, 10000);
+    //     }
+    // });
 
   }
 
