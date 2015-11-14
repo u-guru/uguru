@@ -1,4 +1,4 @@
-<ion-modal-view class='uguru-view faq-modal'>
+<ion-modal-view class='uguru-view faq-modal' onload='LoadingService'>
 <style>
 	.uguru-view.faq-modal {
 		#top-menu {
@@ -20,7 +20,7 @@
 		<h1 class="text-center">Uguru FAQs</h1>
 	</header>
 	<ion-content class='white-bg' scroll='false'>
-		<iframe name="Uguru FAQ" ng-src="https://www.uguru.me/faq-only/"></iframe>
+		<iframe iframe-onload='closeLoader()' name="Uguru FAQ" ng-src="https://www.uguru.me/faq-only/"></iframe>
 	</ion-content>
 </section>
 </ion-modal-view>

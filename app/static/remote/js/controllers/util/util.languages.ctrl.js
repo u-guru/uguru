@@ -25,7 +25,7 @@ angular.module('uguru.util.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.removeGuruLanguageAndUpdate = function(language, index) {
-
+      console.log("WTF");
       $scope.user.guru_languages.splice(index, 1);
 
       var confirmCallback = function() {
@@ -33,7 +33,6 @@ angular.module('uguru.util.controllers')
         $scope.success.show(0, 1000, language.short_name + ' successfully removed');
       }
       LoadingService.show();
-
       $scope.user.updateAttr('remove_guru_language', $scope.user, language, confirmCallback, $scope);
     }
 

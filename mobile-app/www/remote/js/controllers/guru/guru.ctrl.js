@@ -82,29 +82,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   }
 
 
-      var getIonicSideMenuOpenRatio = function() {
-          var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-          return openRatio;
-      }
 
-      var isSideMenuOpen = function(ratio) {
-          if (!ratio && ratio !== -1) {
-              $scope.sideMenuActive = false;
-          } else {
-              $timeout(function() {
-
-                  if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
-                    if (window.StatusBar) {
-                      window.StatusBar.styleLightContent();
-                    }
-                  }
-
-                  $scope.sideMenuActive = true;
-              }, 250)
-          }
-      }
-
-      $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
 
         // $scope.launchGuruRankingPopup = function() {
@@ -249,18 +227,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $state.go(state_name);
         }
 
-        $scope.$on('$ionicView.beforeEnter', function() {
-          console.log($scope.user);
-          $scope.sideMenuActive = false;
-          // postponed to later
-          // value counts up later -- hack for now
-          // $scope.showVerifyToast = $scope.user.current_guru_ranking > 40 && !$scope.user.school_email_confirmed;
-
-        })
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
-          $scope.sideMenuActive = false;
           $scope.refreshTipsAndRanking($scope.user);
           $ionicSlideBoxDelegate.update();
 

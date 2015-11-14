@@ -34,6 +34,7 @@ angular.module('uguru.util.controllers')
     'ModalService',
     'Github',
     'LoadingService',
+    '$ionicSlideBoxDelegate',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -41,7 +42,8 @@ angular.module('uguru.util.controllers')
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
-         KeyboardService, ModalService, Github, LoadingService) {
+         KeyboardService, ModalService, Github, LoadingService,
+         $ionicSlideBoxDelegate) {
 
 
         var bodyRect;
@@ -66,8 +68,13 @@ angular.module('uguru.util.controllers')
 
         $scope.isDesktopMode = function(height, width) {
             initHeight();
-            height = height || windowHeight;
-            width = width || windowWidth;
+            // height = height || windowHeight;
+            // width = width || windowWidth;
+            height = window.screen.height;
+            width = window.screen.width;
+            // console.log(height, width)
+            // if(!(height > desktopHeightLimit && width > desktopWidthLimit))
+            //     console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
             return height > desktopHeightLimit && width > desktopWidthLimit;
         };
 
@@ -256,11 +263,11 @@ angular.module('uguru.util.controllers')
 
         sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * 0.80;
 
-
         $scope.toggleRightSideMenu = function() {
             console.log("sideMenuWidth should be: " + sideMenuWidth);
             var sideMenu = document.querySelectorAll('ion-side-menu')[0];
-
+            var mainMenu = document.querySelectorAll('ion-side-menu-content')[0];
+            console.log("Before",sideMenu.style.width);
             if (sideMenu.style.width === (sideMenuWidth + 'px')) {
                 sideMenu.style.width = 0 + 'px';
             } else {
@@ -269,10 +276,38 @@ angular.module('uguru.util.controllers')
 
 
             $ionicSideMenuDelegate.toggleRight();
-            $timeout(function() {
-                $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
-            }, 250);
         };
+
+
+
+        var isSideMenuOpen = function(ratio) {
+            if (!ratio && ratio !== -1) {
+                $scope.sideMenuActive = false;
+                $ionicSlideBoxDelegate.update();
+                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                    setStatusBarDarkText();
+                }
+            } else {
+                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                    setStatusBarLightText();
+                }
+
+                $timeout(function() {
+                    $scope.sideMenuActive = true;
+                }, 250)
+                $ionicSlideBoxDelegate.update();
+            }
+        }
+
+
+        //UGH I HATE MY LIFE FUCK YOU IONIC
+        var getIonicSideMenuOpenRatio = function() {
+            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+            $ionicSlideBoxDelegate.update();
+            return openRatio;
+        }
+
+        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
         $scope.loader = {
             showMsg: function(message, delay, duration) {

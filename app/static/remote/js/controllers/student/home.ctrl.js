@@ -84,12 +84,7 @@ angular.module('uguru.student.controllers', [])
             $scope.verbModal.show();
         }
 
-        //UGH I HATE MY LIFE FUCK YOU IONIC
-        var getIonicSideMenuOpenRatio = function() {
-            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            $ionicSlideBoxDelegate.update();
-            return openRatio;
-        }
+
 
         var setStatusBarDarkText = function() {
             if (DeviceService.isIOSDevice()) {
@@ -107,35 +102,18 @@ angular.module('uguru.student.controllers', [])
 
         }
 
-        var isSideMenuOpen = function(ratio) {
-            if (!ratio && ratio !== -1) {
-                $scope.sideMenuActive = false;
-                $ionicSlideBoxDelegate.update();
-                setStatusBarDarkText();
-            } else {
-                setStatusBarLightText();
+        $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.availabilityModal = modal;
+        });
 
-                $timeout(function() {
-                    $scope.sideMenuActive = true;
-                }, 250)
-                $ionicSlideBoxDelegate.update();
-            }
+        $scope.launchAvailabilityModal = function(index, verb_index) {
+
+            uTracker.track(tracker, 'Request Modal');
+            $scope.availabilityModal.show();
         }
-        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
-
-
-        // $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
-        //     scope: $scope,
-        //     animation: 'slide-in-up'
-        // }).then(function(modal) {
-        //     $scope.requestModal = modal;
-        // });
-
-        // $scope.launchRequestModal = function(index, verb_index) {
-
-        //     uTracker.track(tracker, 'Request Modal');
-        //     $scope.requestModal.show();
-        // }
 
         $scope.closeRequestModal = function() {
             $scope.requestModal.hide();
@@ -206,9 +184,10 @@ angular.module('uguru.student.controllers', [])
                 console.log('initializing map from load');
                 $scope.mapInitialized = true;
 
-                $timeout(function() {
-                    // $scope.initStudentHomeMap();
-                }, 1000)
+                // $timeout(function() {
+                //     // $scope.initStudentHomeMap();
+                //     $scope.launchAvailabilityModal();
+                // }, 1000)
 
             }
 

@@ -416,22 +416,7 @@ angular.module('uguru.guru.controllers')
       $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
     }
 
-    var getIonicSideMenuOpenRatio = function() {
-            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            return openRatio;
-    }
 
-    var isSideMenuOpen = function(ratio) {
-        if (!ratio && ratio !== -1) {
-            $scope.sideMenuActive = false;
-        } else {
-            $timeout(function() {
-                $scope.sideMenuActive = true;
-            }, 250)
-        }
-    }
-
-    $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.languages.modal.html', {
             scope: $scope,
@@ -744,6 +729,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.confirmPhonePopup = function($event) {
+      console.log("EVENT", $event.target)
       PopupService.open('confirmPhone', callback, $event.target);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();

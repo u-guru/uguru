@@ -17,13 +17,80 @@ angular.module('uguru.util.controllers')
 
     var today = new Date();
     var nextMonthDays = new Date(today.getYear(), today.getMonth(), 0).getDate();
+
+    $scope.weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    $scope.full_weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    $scope.hours = ['12 am', '1 am', '2 am', '3 am', '4 am', '5 am', '6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm',
+                    '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm', '9 pm', '10 pm', '11 pm'];
+    $scope.cssHour = ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm',
+                    '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9 m', '10pm', '11pm'];
+    $scope.dates = [];
+    $scope.currentTime = today.getHours();
+
+
+    console.log("Today : ", today.toString());
+    console.log("current time : ",  today.getHours()-12, ":",today.getMinutes());
+
+    function setDate(currentDay,number)
+    {
+      currentDay.setDate(number);
+      // console.log(currentDay.toString());
+      var day = {
+                  name : $scope.weekdays[(currentDay.getDay())%7],
+                  month: (currentDay.getMonth()+1),
+                  date : currentDay.getDate(),
+                  schedule : initSchedule()
+      }
+      return day
+    }
+ 
+    function initSchedule()
+    {
+      //init empty schedule()
+      var timeline = []
+        for (var i = 0 ; i < $scope.hours.length; ++i)
+        {
+            var time = {
+                hour : $scope.hours[i],
+                isPass : false
+            };
+            timeline.push(time);
+        }
+        return timeline;
+    };
+    function filterPassedTime (schedule)
+    { 
+      var tempSch = schedule;
+      console.log("Wut time : ",tempSch);
+      for (var i = 0 ; i < $scope.currentTime; ++i)
+      {
+        tempSch[i].isPass = true;
+      }
+      console.log("new: ",tempSch);
+
+      return tempSch;
+
+    }
+
+
+    var tempDate = new Date();
+
+    for (var i = tempDate.getDate(), count =0 ; count < 7; ++ i,++count)
+      $scope.dates.push(setDate(tempDate,i))
+    // console.log($scope.dates);
+      $scope.dates[0].schedule= filterPassedTime( $scope.dates[0].schedule);
+
+    console.log("Today : ", today.toString());
+    console.log("Today : ", $scope.dates[0]);
+
+
+
+
+
     $scope.calendarMoversShown = false;
 
     $scope.showDateTabs = false;
-    $scope.weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    $scope.full_weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    $scope.hours = ['12 am', '1 am', '2 am', '3 am', '4 am', '5 am', '6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12pm',
-                    '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm', '9 pm', '10 pm', '11 pm'];
+    
     $scope.calendar = {
 
                         date: {

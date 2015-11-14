@@ -1,6 +1,7 @@
 
 
 <ion-side-menus class='root-ion-side-menus'>
+<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}' ng-show='!desktopMode'></a>
 
           <ion-side-menu-content class='ion-side-menus-content'>
               <ion-nav-view id='root-nav' animation="slide-left-right">
