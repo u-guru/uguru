@@ -1010,8 +1010,6 @@ angular.module('uguru.util.controllers')
 
           //after five seconds and no fb response --> Say something went wrong
           $timeout(function() {
-
-
             if (!$scope.facebookResponseReceived) {
               alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
             }
@@ -1021,10 +1019,6 @@ angular.module('uguru.util.controllers')
         } else {
           $scope.fbAuthNative();
         }
-
-
-
-
     };
 
     $scope.closeSideBar = function() {
@@ -1342,14 +1336,15 @@ angular.module('uguru.util.controllers')
           }
 
 
-
-          if (ModalService.isOpen('signup')) {
+          if (!$scope.isDesktopMode && ModalService.isOpen('signup')) {
               ModalService.close('signup');
           }
-
-          if ($scope.desktopMode) {
+          console.log("Is Guru Mode : ",$scope.user.guru_mode)
+          if ($scope.desktopMode && !$scope.user.guru_mode) {
             $state.go('^.home');
           }
+          else
+            $state.go('^.guru')
 
 
 
@@ -1411,8 +1406,8 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
-    console.log('Log in :',     $scope.root.vars.loginMode )
-    $scope.root.vars.loginMode = false;
+
+    // $scope.root.vars.loginMode = false;
 
 
   }
