@@ -194,16 +194,22 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         var initAndLaunchWelcomePopup = function () {
 
           var openPopover = function() {
-              PopupService.open('welcomeGuru', null, document.querySelector('.guru-tip-of-day-slide-box'));
-            }
 
-            PopupService.init('welcomeGuru', 'home-uguru-popup', openPopover);
+              function callback() {
+                PopupService.close('welcomeGuru');
+              }
+
+              PopupService.open('welcomeGuru', callback, document.querySelector('.guru-tip-of-day-slide-box'));
+
+
+          }
+
+            PopupService.init('welcomeGuru', 'guru-uguru-popup', openPopover);
 
         }
 
-        var checkIsFirstTimeGuruMode = function(appOnboardingObj) {
-
-            if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.guruWelcome) {
+        var checkIsFirstTimeGuruMode = function(is_first_time) {
+            if (is_first_time) {
                 console.log ('it is the first itme..');
                 appOnboardingObj = {
                     guruWelcome: true
@@ -211,7 +217,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
                 $timeout(function() {
                   initAndLaunchWelcomePopup();
-                }, 250);
+                }, 1000);
 
                 $localstorage.setObject('appOnboarding', appOnboardingObj);
 
@@ -241,8 +247,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.refreshTipsAndRanking($scope.user);
           $ionicSlideBoxDelegate.update();
 
-          var appOnboardingObj = $localstorage.getObject('appOnboarding');
-
           $timeout(function() {
 
             //commented out until it's 100% so won't get in the way of other branches pulling mine.
@@ -262,10 +266,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 //show it after the progress is complete
                 $scope.initializeHorizontalProgressBars();
 
-                $timeout(function() {
-                  checkIsFirstTimeGuruMode(appOnboardingObj);
-                }, 500)
-
               }, 500)
             }
 
@@ -273,21 +273,23 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         })
 
-        // $scope.$on('$ionicView.afterEnter', function() {
+        var appOnboardingObj;
+        $scope.$on('$ionicView.afterEnter', function() {
 
-        //     var appOnboardingObj = $localstorage.getObject('appOnboarding');
 
-        //     if (!haveProgressBarsBeenInitialized) {
-        //       checkIsFirstTimeGuruMode(appOnboardingObj);
-        //     } else {
 
-        //       // wait til the bar is loaded
-        //       $timeout(function() {
-        //         checkIsFirstTimeGuruMode(appOnboardingObj);
-        //       }, 5000)
+            $timeout(function() {
+              appOnboardingObj = $localstorage.getObject('appOnboarding');
+            }, 250)
 
-        //     }
-        // });
+              // wait til the bar is loaded
+              $timeout(function() {
+                console.log(appOnboardingObj);
+                if (appOnboardingObj) {
+                  checkIsFirstTimeGuruMode(true);
+                }
+              }, 3000)
+        });
 
 
 

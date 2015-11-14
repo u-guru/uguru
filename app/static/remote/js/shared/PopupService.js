@@ -43,6 +43,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];
 		// var submitClose = popup.querySelectorAll('button.submit-close')[0];
 		var submitButton = popup.querySelectorAll('button.submit')[0];
+		console.log('submit button', submitButton);
 		// console.log(popup);
 		// console.log(closeIcon);
 		// console.log(submitClose);
@@ -72,6 +73,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		// }
 
 		if(typeof callback === 'function') {
+			console.log('is function');
 			submitButton.addEventListener('click', clickSubmit);
 			popup.addEventListener('keyup', enterSubmit);
 		}
@@ -121,7 +123,6 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			confirmPhone = document.getElementById('confirm-phone-uguru-popup');
 			confirmEmail = document.getElementById('confirm-email-uguru-popup');
 			ranking = document.getElementById('guru-ranking-popup');
-			console.log('confirmEmail popup', confirmEmail);
 		 	controller.editName = editName,
 		 	controller.editEmail = editEmail,
 		 	controller.editPassword = editPassword,

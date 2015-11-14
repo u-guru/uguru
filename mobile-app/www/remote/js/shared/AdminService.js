@@ -72,7 +72,8 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
         }
         console.log("Admin Exception Options:\n", adminScope.options);
         adminActionSheetOptions = {
-            buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }, {text:'Default Email : <strong>' + adminScope.options.defaultSendEmail +'</strong>' }, {text:'Test Exception Options'}, {text:'Update App from..'}, {text: 'Card Reader'}, {text: 'Share the secret'}, {text: 'Open Calendar'}, {text: 'Display Badge Count'}, {text: 'Clear Badge Count'}, {text: 'Check FB App Availability'}, {text: 'Record Audio (5s)'}, {text: 'Play Audio'}, {text:'Display google maps in app'}, {text: 'Display a toast'}],
+            buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }] ,
+            // buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }, {text:'Default Email : <strong>' + adminScope.options.defaultSendEmail +'</strong>' }, {text:'Test Exception Options'}, {text:'Update App from..'}, {text: 'Card Reader'}, {text: 'Share the secret'}, {text: 'Open Calendar'}, {text: 'Display Badge Count'}, {text: 'Clear Badge Count'}, {text: 'Check FB App Availability'}, {text: 'Record Audio (5s)'}, {text: 'Play Audio'}, {text:'Display google maps in app'}, {text: 'Display a toast'}],
             buttonClicked: function(index) {
                 handleAdminSheetButtonClick(adminScope, index);
             }
@@ -83,7 +84,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
         if (confirm('Are you sure you want to reset your admin account?')) {
 
         LoadingService.show();
-
+        $localstorage.setObject('appOnboarding', null);
         //true by default, false if logout
         logout = true && logout;
 
@@ -96,10 +97,9 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
             tempUni = $scope.user.university;
         }
         LoadingService.show();
-        $scope.user.clearAttr($scope.user, $scope.user.id).then(function(user) {
-          LoadingService.hide();
+        // $scope.user.clearAttr($scope.user, $scope.user.id).then(function(user) {
           LoadingService.showSuccess(0, 2000,'Admin Account Successfully cleared!');
-
+          window.localStorage.clear();
           if (logout) {
             $scope.logoutUser(true);
             $scope.user.university_id = null;
@@ -112,15 +112,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
           closeAttachActionSheet && closeAttachActionSheet();
-        },
-
-        function(err) {
-          console.log(err);
-          alert('Something went wrong - please contact Samir');
         }
-        )
-      }
-
     }
 
     function setDefaultCoursesAndMajors($scope) {
@@ -152,13 +144,14 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
 
                 case 1:
                     console.log(scope.user);
-                    if (scope.user && scope.user.id) {
-                        resetCache(scope, true, false);
-                        $state.go('^.home');
-                        return;
-                    } else {
-                        alert('Sorry! You need to be logged in to this');
-                    }
+                    resetCache(scope, true, true);
+                    // if (scope.user && scope.user.id) {
+                    //     resetCache(scope, true, false);
+                    //     $state.go('^.home');
+                    //     return;
+                    // } else {
+                    //     alert('Sorry! You need to be logged in to this');
+                    // }
                     break;
 
                 case 2:
