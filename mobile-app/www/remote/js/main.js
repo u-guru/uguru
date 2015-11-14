@@ -159,6 +159,19 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/desktop.settings.html',
     controller: "DesktopSettingsController"
   }).
+  state('root.request', {
+    url:'/request',
+    templateUrl: BASE + 'templates/request.html',
+    controller: "RequestController"
+  }).
+  state('root.request-calendar', {
+    url:'/request-calendar',
+    templateUrl: BASE + 'templates/request-calendar.html'
+  }).
+  state('root.request-price', {
+    url:'/request-price',
+    templateUrl: BASE + 'templates/request-price.html'
+  }).
   state('root.student-home', {
     url:'/student-home',
     templateUrl: BASE + 'templates/home.student.html'

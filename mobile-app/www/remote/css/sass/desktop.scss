@@ -2397,7 +2397,7 @@
 			color: white!important;
 		}
 		> div {
-			max-width: 500px;
+			max-width: 600px;
 			margin: 0 auto;
 			> button {
 				display: block;
@@ -2785,6 +2785,412 @@
 				#messenger-content {
 					.messenger-header {
 						background: $campus;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- REQUESTS */
+#desktop-request {
+	background: $smoke;
+	.main {
+		width: 100%;
+		height: 100%;
+		background: none!important;
+		padding: 0;
+		header {
+			@include flex;
+			@include flex-center;
+			position: relative;
+			height: 25%;
+			background: $taupe;
+			h1 {
+				@include flex;
+				@include flex-center;
+				font-size: 36px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: 0;
+				text-transform: none;
+				.request-category {
+					@include opacity(.5);
+					font-weight: 600;
+					+ span {
+						display: inline-block;
+						padding: 0 10px;
+						svg {
+							@include svg-stroke(white, 16);
+							margin-top: 10px;
+							width: 28px;
+							height: 28px;
+						}
+					}
+				}
+			}
+		}
+		.request-form {
+			@include flex;
+			@include flex-center;
+			max-width: 830px;
+			height: 75%;
+			margin: 0 auto;
+			> div {
+				@include flex;
+				@include flex-wrap;
+				width: 100%;
+				> div {
+					padding: 15px;
+				}
+			}
+			.request-form-map, .request-form-date {
+				width: 50%;
+				height: 150px;
+				> div {
+					@include flex;
+					@include flex-center;
+					background: white;
+					color: $taupe;
+					border: 2px solid $taupe;
+					border-radius: 3px;
+					width: 100%;
+					height: 100%;
+					font-size: 24px;
+					text-align: center;
+					ul {
+						li {
+							h2 {
+								font-size: 22px;
+								font-weight: 700;
+							}
+							> span {
+								font-size: 20px;
+								font-weight: 400;
+							}
+						}
+					}
+				}
+			}
+			.request-form-date {
+				> div {
+					border-left-width: 10px;
+				}
+			}
+			.request-form-desc {
+				width: 100%;
+				position: relative;
+				textarea {
+					resize: none;
+					padding: 15px;
+					font-size: 20px;
+					width: 100%;
+					height: 150px;
+					background: rgba($charcoal,.1);
+					&:focus {
+						background: white;
+					}
+				}
+				progress {
+					vertical-align: 0;
+					margin: 0;
+					padding: 0;
+					position: absolute;
+					z-index: 9;
+					top: 155px;
+					left: 15px;
+					width: calc(100% - 30px);
+					color: $cerise;
+					background: white;
+					&::-webkit-progress-bar {
+						background: white;
+					}
+					&::-webkit-progress-value, span {
+						@include transition(.15s ease-in-out);
+						display: block;
+						height: 100%;
+						border-radius: 0 10px 10px 0;
+						background: $cerise;
+					}
+					&::-moz-progress-bar {
+						@include transition(.15s ease-in-out);
+						border-radius: 0 10px 10px 0;
+						background: $cerise;
+					}
+				}
+				textarea:focus + progress {
+					background: rgba($charcoal,.1);
+					&::-webkit-progress-bar {
+						background: rgba($charcoal,.1);
+					}
+				}
+				button {
+					position: relative;
+					background: $charcoal;
+					padding-left: 74px;
+					font-size: 20px;
+					font-weight: 600;
+					text-align: left;
+					svg {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 64px;
+						height: 64px;
+					}
+				}
+			}
+			.request-form-submit {
+				width: 100%;
+				button {
+					display: block;
+					width: 100%;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+			}
+		}
+		&.bg-cerise {
+			header {
+				background: $cerise;
+			}
+			.request-form {
+				.request-form-map, .request-form-date {
+					> div {
+						color: $cerise;
+						border-color: $cerise;
+					}
+				}
+			}
+			.request-form-submit {
+				button {
+					background: $cerise;
+				}
+			}
+		}
+	}
+}
+// CALENDAR
+#request-calendar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+}
+#desktop-request-calendar {
+	@include flex;
+	@include flex-center;
+	background: rgba($slate,.9)!important;
+	#calendar-container {
+		width: 100%;
+		max-width: 800px;
+		height: 100%;
+		max-height: 500px;
+		background: white;
+		header {
+			background: $charcoal;
+		}
+		#calendar {
+			position: relative;
+			height: calc(100% - 50px);
+			#calendar-header {
+				background: $slate;
+				width: 100%;
+				overflow-x: auto;
+				ul {
+					display: flex;
+					li {
+						width: calc(100% / 7);
+						span {
+							@include flex;
+							@include flex-center;
+							width: 114px;
+							height: 28px;
+							text-align: center;
+							font-size: 16px;
+							font-weight: 600;
+							line-height: 1;
+						}
+					}
+				}
+			}
+			#calendar-side {
+				position: absolute;
+				left: -100px;
+				top: 28px;
+				width: 100px;
+				height: calc(100% - 28px);
+				overflow: auto;
+				ul {
+					height: 100%;
+					li {
+						@include flex;
+						@include flex-center-vertical;
+						-webkit-justify-content: flex-end;
+						justify-content: flex-end;
+						height: calc(100% / 9);
+						color: rgba(white, .6);
+						font-size: 18px;
+						font-weight: 600;
+						padding: 0 15px;
+					}
+				}
+			}
+			#calendar-body {
+				@include flex;
+				width: 100%;
+				padding: 1px;
+				height: calc(100% - 28px);
+				overflow: auto;
+				ul {
+					width: calc(100% / 7);
+					height: 100%;
+					li {
+						width: 114px;
+						height: calc(100% / 9);
+						padding: 1px;
+						a {
+							@include flex;
+							@include flex-center;
+							@include transition(.15s ease-in-out);
+							position: relative;
+							width: 100%;
+							height: 100%;
+							background: $smoke;
+							svg {
+								@include opacity(0);
+								@include transition(.15s ease-in-out);
+							}
+							svg.dashed {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								padding: 3px;
+								rect {
+									width: 100%;
+									height: 100%;
+									fill: none;
+									stroke: white;
+									stroke-width: 3px;
+									stroke-linecap: round;
+									stroke-linejoin: round;
+									stroke-dasharray: 5, 8;
+								}
+							}
+							svg:not(.dashed) {
+								@include svg-stroke(white, 12);
+								width: 20px;
+								height: 20px;
+							}
+							&:hover, &:focus {
+								background: rgba($slate, .4);
+								svg {
+									@include opacity(.6);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// PRICE
+#request-price {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+}
+#desktop-request-price {
+	@include flex;
+	@include flex-center;
+	background: rgba($slate,.9)!important;
+	#price-container {
+		width: 100%;
+		max-width: 800px;
+		height: 100%;
+		max-height: 500px;
+		background: white;
+		text-align: center;
+		h1, h3 {
+			color: $charcoal;
+		}
+		h1 {
+			padding: 15px 15px 0;
+			font-weight: 900;
+			font-size: 32px;
+		}
+		h3 {
+			margin-top: 0;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 0 15px;
+		}
+		ul {
+			@include flex-center-vertical;
+			padding: 15px;
+			height: calc(100% - 141px);
+			li {
+				position: relative;
+				padding: 15px;
+				a {
+					display: block;
+					position: relative;
+					font-size: 48px;
+					font-weight: 600;
+					span, .add {
+						@include center-xy;
+						display: block;
+					}
+					.add {
+						@include svg-stroke(white, 5);
+						width: 80px;
+						height: 80px;
+					}
+					svg {
+						rect {
+							fill: $charcoal;
+						}
+					}
+					&:hover, &:focus, &.active {
+						svg {
+							rect {
+								fill: $moola;
+							}
+						}
+					}
+					&:active {
+						svg {
+							rect {
+								fill: darken($moola, 10%);
+							}
+						}
+					}
+				}
+				&:last-child {
+					.price-fill {
+						display: none;
+						position: absolute;
+						top: 15px;
+						left: 15px;
+						width: calc(100% - 30px);
+						height: calc(100% - 30px);
+						background: white;
+						border: 3px solid $moola;
+						input {
+							@include center-xy;
+							border: 0;
+							background: none;
+							font-size: 48px;
+							font-weight: 600;
+						}
 					}
 				}
 			}
