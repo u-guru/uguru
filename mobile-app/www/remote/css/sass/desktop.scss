@@ -3198,6 +3198,82 @@
 	}
 }
 
+/* ---------- RATING */
+#desktop-rating {
+	.main {
+		@include flex;
+		@include flex-center;
+		> ul {
+			width: 100%;
+			max-width: 800px;
+			text-align: center;
+			li {
+				img {
+					@include round;
+					display: block;
+					margin: 0 auto;
+					max-width: 128px;
+					border: 5px solid white;
+				}
+				h1 {
+					padding-top: 15px;
+					font-size: 40px;
+					font-weight: 900;
+				}
+				svg {
+					width: 70px;
+					height: 70px;
+					fill: mix($gold, $charcoal, 50%);
+					stroke: mix($gold, $charcoal, 50%);
+					stroke-width: 4px;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+				}
+				button {
+					background: $lake;
+					font-weight: 600;
+				}
+				h2 {
+					padding: 30px 0;
+					font-size: 32px;
+					font-weight: 600;
+				}
+				ul {
+					@include flex;
+					@include flex-center;
+					&.rating-charge {
+						padding: 60px 0 30px;
+						border-bottom: 1px solid rgba(white,.5);
+						li {
+							width: 50%;
+							font-weight: 600;
+							&:first-child {
+								color: rgba(white,.6);
+								font-size: 32px;
+							}
+							&:last-child {
+								color: white;
+								font-size: 36px;
+							}
+						}
+					}
+					&.rating-stars {
+						padding-bottom: 30px;
+						li {
+							&:hover, &:focus, &.active, &:active {
+								svg {
+									fill: $gold;
+									stroke: $gold;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // start samir css 11/9
 .desktop-input-close-icon {
 	position:absolute;

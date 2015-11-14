@@ -38,7 +38,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
     line-height: initial;
 }
 
-a, button, *[ng-click] {
+a, button, *[ng-click], *[tabindex] {
 	cursor: pointer;
 }
 

@@ -164,6 +164,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/request.html',
     controller: "RequestController"
   }).
+  state('root.rating', {
+    url:'/rating',
+    templateUrl: BASE + 'templates/rating.html'
+  }).
   state('root.request-calendar', {
     url:'/request-calendar',
     templateUrl: BASE + 'templates/request-calendar.html'
