@@ -24,6 +24,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		console.log('attempting to open', popupName);
 		$timeout(function() {
 			var popup = controller[popupName];
+			console.log('found popup', popup);
 			if (typeof source !== 'element') {
 				source = document.getElementById('root-nav');
 			}
@@ -91,17 +92,23 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			closeIcon.removeEventListener('click', clickClose);
 			submitButton.removeEventListener('click', clickSubmit);
 			popup.removeEventListener('keyup', enterSubmit);
-		} 
+		}
 		catch(err) {
 			console.error(err)
 		}
 		$ionicSlideBoxDelegate.update();
 	}
 
-	function init(popupName, elemId) {
+	function init(popupName, elemId, callback) {
 		//source = document.getElementById('root-nav');
 		localPopup = document.getElementById(elemId);
+		console.log('\n\npopup initialized\n\n', localPopup);
 		controller[popupName] = localPopup;
+
+		if (localPopup && callback) {
+			callback();
+		}
+
 	}
 
 	function initDefaults() {

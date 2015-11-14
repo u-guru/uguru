@@ -75,13 +75,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $state.go('^.guru-credibility');
   }
 
-  $scope.launchWelcomeGuruPopup = function() {
-
-    PopupService.init('welcomeGuru', 'home-uguru-popup');
-    PopupService.open('welcomeGuru');
-  }
-
-
 
 
 
@@ -197,15 +190,31 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return document.querySelectorAll('.progressbar-text').length;
         }
 
+
+        var initAndLaunchWelcomePopup = function () {
+
+          var openPopover = function() {
+              PopupService.open('welcomeGuru', null, document.querySelector('.guru-tip-of-day-slide-box'));
+            }
+
+            PopupService.init('welcomeGuru', 'home-uguru-popup', openPopover);
+
+        }
+
         var checkIsFirstTimeGuruMode = function(appOnboardingObj) {
-          console.log('checking...');
+
             if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.guruWelcome) {
                 console.log ('it is the first itme..');
                 appOnboardingObj = {
                     guruWelcome: true
                 }
+
+                $timeout(function() {
+                  initAndLaunchWelcomePopup();
+                }, 250);
+
                 $localstorage.setObject('appOnboarding', appOnboardingObj);
-                $scope.launchWelcomeGuruPopup();
+
             } else {
               console.log(appOnboardingObj);
             }
@@ -226,7 +235,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $ionicViewSwitcher.nextDirection(transition);
           $state.go(state_name);
         }
-
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
@@ -254,7 +262,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 //show it after the progress is complete
                 $scope.initializeHorizontalProgressBars();
 
-                checkIsFirstTimeGuruMode(appOnboardingObj);
+                $timeout(function() {
+                  checkIsFirstTimeGuruMode(appOnboardingObj);
+                }, 500)
 
               }, 500)
             }
