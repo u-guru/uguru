@@ -443,6 +443,21 @@ angular.module('uguru.guru.controllers')
       }, 250)
     }
 
+    $scope.goToStateWithTransition = function(state_name, transition) {
+          if (!$scope.user.id) {
+            LoadingService.showAmbig();
+
+            //make it feel like its coming... when really its just signup ;)
+            $timeout(function() {
+              $scope.openModal('signup');
+              LoadingService.hide(100);
+            }, 1000)
+            return;
+          }
+          $ionicViewSwitcher.nextDirection(transition);
+          $state.go(state_name);
+        }
+
     $scope.launchGuruMajorsModal = function() {
       $scope.guruMajorModal.show();
       $timeout(function() {

@@ -33,19 +33,22 @@ angular.module('uguru.guru.controllers')
 
     var startScanner;
 
-    $scope.courses = University.source.courses;
+    $timeout(function() {
+      $scope.courses = University.source.courses;
 
-    if (!$scope.courses || !$scope.courses.length) {
-      LoadingService.showAmbig("Loading Courses...", 10000);
-      loadingCourseCallback = function(scope, courses) {
-        scope.courses = courses;
-        $timeout(function() {
-          LoadingService.hide();
-        }, 250)
+      if (!$scope.courses || !$scope.courses.length) {
+        LoadingService.showAmbig("Loading Courses...", 10000);
+        loadingCourseCallback = function(scope, courses) {
+          scope.courses = courses;
+          $timeout(function() {
+            LoadingService.hide();
+          }, 250)
+        }
+
+        University.getPopularCourses($scope.user.university_id, $scope, loadingCourseCallback);
       }
 
-      University.getPopularCourses($scope.user.university_id, $scope, loadingCourseCallback);
-    }
+    }, 50)
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
@@ -166,9 +169,9 @@ angular.module('uguru.guru.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.$on('$ionicView.enter', function() {
-        $timeout(function() {
-          $ionicSlideBoxDelegate.update();
-        }, 500)
+        // $timeout(function() {
+        //   $ionicSlideBoxDelegate.update();
+        // }, 500)
     });
 
     $scope.hideLoader = function() {

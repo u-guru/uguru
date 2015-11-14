@@ -4096,6 +4096,11 @@ section {
 body.platform-ios {
 	background-color:transparent;
 	background:transparent;
+
+	section#guru-home.request.full-xy.student-home {
+		padding-top:10px;
+	}
+
 	ion-side-menus.root-ion-side-menus.view {
 		background-color:transparent;
 		.home-view {

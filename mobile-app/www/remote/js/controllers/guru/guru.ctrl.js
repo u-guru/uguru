@@ -144,6 +144,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 return;
               }
               line.animate(index / 100);
+              if (index === 10) {
+                $scope.showLoaders = true;
+              }
               index ++;
           }, 20);
         }
@@ -175,13 +178,19 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
 
-          animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent);
+          if (!$scope.user.current_credibility_percent) {
+            $scope.user.current_credibility_percent = 0.0;
+          }
+
+          animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent, 0);
 
           var guruProfileLine = initGuruHorizontalProgress('#guru-profile-progress-bar', 'profile-percent');
+
+          $scope.user.current_profile_percent = RankingService.calcProfile($scope.user);
           animateProgressLine(guruProfileLine, $scope.user.current_profile_percent || 40);
 
           var guruHourlyLine = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
-          animateProgressLine(guruHourlyLine, $scope.user.current_hourly || 80);
+          animateProgressLine(guruHourlyLine, $scope.user.current_hourly || 10);
 
         }
 
@@ -284,8 +293,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
               // wait til the bar is loaded
               $timeout(function() {
-                console.log(appOnboardingObj);
-                if (appOnboardingObj) {
+                if (!appOnboardingObj) {
                   checkIsFirstTimeGuruMode(true);
                 }
               }, 3000)
