@@ -1052,7 +1052,10 @@ angular.module('uguru.util.controllers')
 
       }
     }
-
+    $scope.explore = function()
+    {
+      $state.go('^.home');
+    }
     $scope.postFbGraphApiSuccess = function(success, callback) {
 
         $scope.user.first_name = success.first_name;
@@ -1408,7 +1411,7 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
-
+    console.log('Log in :',     $scope.root.vars.loginMode )
     $scope.root.vars.loginMode = false;
 
 

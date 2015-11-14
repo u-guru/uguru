@@ -32,7 +32,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   $scope.access = {
     codeInput: '',
-    errorInputMsg: null,
+    consoleMsg: 'Got an access code?',
   };
 
 
@@ -104,14 +104,18 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       LoadingService.hide();
       var errorTextElem = document.getElementById('input-error-text');
       errorTextElem.style.opacity = 1;
-      errorTextElem.innerHTML = 'Incorrect access code!';
+      // errorTextElem.innerHTML = 'Incorrect access code!';
+
       $scope.access.codeInput = '';
+      $scope.access.consoleMsg ='Incorrect access code!';
 
       //fadeout after 500 seconds
       var postShakeCallback = function() {
             setTimeout(function() {
               LoadingService.hide();
-              AnimationService.fadeOutElem(errorTextElem, 1000);
+              // AnimationService.fadeOutElem(errorTextElem, 1000);
+              $scope.access.consoleMsg ='Got an access code?';
+
             }, 1500);
       };
 
