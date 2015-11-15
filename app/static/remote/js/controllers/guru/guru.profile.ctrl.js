@@ -617,7 +617,7 @@ angular.module('uguru.guru.controllers')
     $scope.takeTranscriptPhoto = function(index) {
 
 
-      if (DeviceService.doesCordovaExist() && $scope.platform.mobile)) {
+      if (DeviceService.doesCordovaExist() && $scope.platform.mobile) {
         Camera.takePicture($scope, index, $scope.user.id);
       } else {
         var element = document.getElementById('file-input-guru-add-transcript');
