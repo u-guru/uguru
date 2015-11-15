@@ -28,15 +28,11 @@ angular.module('uguru.rest')
                         for (var k = 0; k < indexCategory.subcategories.length; k++) {
                             var indexSubcategory = indexCategory.subcategories[k];
 
-                            if (indexSubcategory.id === userSubcategory.id) {
+                            if (indexSubcategory.id === userSubcategory.id) 
                                 categories[j].subcategories[k].active = true;
-                            } else {
-                                categories[j].subcategories[k].active = false;
-                            }
+                         
                         }
                     }
-
-
                 }
             }
         }

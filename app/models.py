@@ -668,6 +668,12 @@ class University(Base):
         u = University.admin_update(University(_id=_id), args_dict)
         return u
 
+    def hasDefaultColorOne(self):
+        return self.school_color_one == '#40484B'
+
+    def hasDefaultColorTwo(self):
+        return self.school_color_two == '#757575'
+
     def sanitizeCourses(self):
         count = 0
         for course in self.courses:

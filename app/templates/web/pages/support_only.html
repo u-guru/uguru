@@ -3,10 +3,19 @@
 {% block header_scripts %}
 <link rel="stylesheet" href="/static/web/css/style.css"/>
 <style>
+	.intercom-launcher-button{
+   		 visibility: collapse;
+
+	}
 	#intercom-conversation {
-		position:absolute !important;
+		/*position:absolute !important;*/
 		width:100% !important;
 	}
+
+    #intercom-composer {
+        width:calc(100%);
+    }
+
 	#intercom-container .intercom-sheet-header {
 		display:none;
 	}
@@ -14,8 +23,9 @@
 		width:70% !important;
 	}
 	.intercom-composer-send-button {
-		display: inline-block !important;
-    	margin-right: 12% !important;
+		/*display: inline-block !important;*/
+    	margin-right: 10% !important;
+        width:10% !important;
 	}
 </style>
 
@@ -64,8 +74,8 @@ var launchIntercomSetActive = function() {
         // 	bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
         //     $('.top-link-chat, #link-support').trigger('click');
         // }, 3000)
-        $('.top-link-chat, #link-support').trigger('click');
-        // $('.intercom-launcher-button').trigger('click');
+        // $('.top-link-chat, #link-support').trigger('click');
+        $('#intercom-launcher').trigger('click');
 
 	    } else {
 	        console.log('intercome still does not exist.. trying again');

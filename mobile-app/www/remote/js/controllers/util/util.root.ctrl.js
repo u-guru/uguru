@@ -34,6 +34,7 @@ angular.module('uguru.util.controllers')
     'ModalService',
     'Github',
     'LoadingService',
+    '$ionicSlideBoxDelegate',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -41,7 +42,8 @@ angular.module('uguru.util.controllers')
         $ionicSideMenuDelegate, $ionicViewSwitcher, Major,
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
-         KeyboardService, ModalService, Github, LoadingService) {
+         KeyboardService, ModalService, Github, LoadingService,
+         $ionicSlideBoxDelegate) {
 
 
         var bodyRect;
@@ -66,8 +68,13 @@ angular.module('uguru.util.controllers')
 
         $scope.isDesktopMode = function(height, width) {
             initHeight();
-            height = height || windowHeight;
-            width = width || windowWidth;
+            // height = height || windowHeight;
+            // width = width || windowWidth;
+            height = window.screen.height;
+            width = window.screen.width;
+            // console.log(height, width)
+            // if(!(height > desktopHeightLimit && width > desktopWidthLimit))
+            //     console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
             return height > desktopHeightLimit && width > desktopWidthLimit;
         };
 
@@ -96,6 +103,8 @@ angular.module('uguru.util.controllers')
         // if (!LOCAL && navigator.splashscreen && navigator.splashscreen.show) {
         //     navigator.splashscreen.show();
         // }
+
+
 
         $scope.LOCAL = LOCAL || false;
         $ionicPlatform.registerBackButtonAction(function(e) {
@@ -180,7 +189,7 @@ angular.module('uguru.util.controllers')
             if (!uni_id) {
                 return;
             }
-            University.getCourses(uni_id);
+            University.getPopularCourses(uni_id);
         };
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
@@ -211,8 +220,16 @@ angular.module('uguru.util.controllers')
         };
 
 
+        if ($scope.user.university && $scope.user.university_id) {
+             University.getPopularCourses($scope.user.university_id);
+             University.getMajors($scope.user.university_id);
+        }
 
 
+        var saveCategoriesToRootScope = function(categories) {
+            $scope.categories = categories;
+        }
+        $scope.getCategories(saveCategoriesToRootScope)
 
         $scope.rootUser = User;
         $scope.root = RootService;
@@ -254,23 +271,64 @@ angular.module('uguru.util.controllers')
 
         sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * 0.80;
 
-
         $scope.toggleRightSideMenu = function() {
+            if (DeviceService.isReady && DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarDarkText();
+            }
+            if (DeviceService.isReady && DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarDarkText();
+            }
+            $ionicSideMenuDelegate.toggleRight();
             console.log("sideMenuWidth should be: " + sideMenuWidth);
             var sideMenu = document.querySelectorAll('ion-side-menu')[0];
-
+            var mainMenu = document.querySelectorAll('ion-side-menu-content')[0];
+            console.log("Before",sideMenu.style.width);
             if (sideMenu.style.width === (sideMenuWidth + 'px')) {
+
                 sideMenu.style.width = 0 + 'px';
             } else {
                 sideMenu.style.width = sideMenuWidth + 'px';
+
             }
-
-
-            $ionicSideMenuDelegate.toggleRight();
-            $timeout(function() {
-                $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
-            }, 250);
         };
+
+
+
+        var isSideMenuOpen = function(ratio) {
+            if (!ratio && ratio !== -1) {
+                console.log('status bar is closing');
+                $scope.sideMenuActive = false;
+
+                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+
+                    window.StatusBar.styleDefault();
+
+                }
+
+            } else {
+                console.log('status bar is opening');
+                $scope.sideMenuActive = true;
+                // $scope.sideMenuActive = true;
+
+                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+
+                    window.StatusBar.styleLightContent();
+
+                }
+
+            }
+            $ionicSlideBoxDelegate.update();
+        }
+
+
+        //UGH I HATE MY LIFE FUCK YOU IONIC
+        var getIonicSideMenuOpenRatio = function() {
+
+            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+            return openRatio;
+        }
+
+        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
         $scope.loader = {
             showMsg: function(message, delay, duration) {
@@ -368,32 +426,6 @@ angular.module('uguru.util.controllers')
         };
 
 
-        if (!Category.categories || Category.categories.length === 0) {
-            console.log('Categories not local, loading now..');
-            $timeout(function() {
-                $scope.getCategories();
-            }, 0);
-        } else {
-            console.log(Category.categories.length, 'categories loaded');
-        }
-
-        if ($scope.user.university_id && !(University.source.majors && University.source.majors.length)) {
-            console.log('University majors not local, requesting now..');
-            $timeout(function() {
-                $scope.getMajorsForUniversityId($scope.user.university_id);
-            }, 0)
-        } else {
-            console.log(University.source.majors.length, 'majors loaded');
-        }
-
-        if ($scope.user.university_id && !(University.courses && University.courses.length)) {
-            console.log('University courses not local, requesting now..');
-            $timeout(function() {
-                $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-            }, 0)
-        } else {
-            console.log(University.source.courses.length, 'courses loaded');
-        }
 
 
         $scope.togglePaymentSideBarView = function() {

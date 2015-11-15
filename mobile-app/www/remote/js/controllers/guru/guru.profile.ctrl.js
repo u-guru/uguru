@@ -416,22 +416,7 @@ angular.module('uguru.guru.controllers')
       $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
     }
 
-    var getIonicSideMenuOpenRatio = function() {
-            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            return openRatio;
-    }
 
-    var isSideMenuOpen = function(ratio) {
-        if (!ratio && ratio !== -1) {
-            $scope.sideMenuActive = false;
-        } else {
-            $timeout(function() {
-                $scope.sideMenuActive = true;
-            }, 250)
-        }
-    }
-
-    $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.languages.modal.html', {
             scope: $scope,
@@ -457,6 +442,21 @@ angular.module('uguru.guru.controllers')
         $scope.guruCoursesInput = document.querySelector('#course-input-2');
       }, 250)
     }
+
+    $scope.goToStateWithTransition = function(state_name, transition) {
+          if (!$scope.user.id) {
+            LoadingService.showAmbig();
+
+            //make it feel like its coming... when really its just signup ;)
+            $timeout(function() {
+              $scope.openModal('signup');
+              LoadingService.hide(100);
+            }, 1000)
+            return;
+          }
+          $ionicViewSwitcher.nextDirection(transition);
+          $state.go(state_name);
+        }
 
     $scope.launchGuruMajorsModal = function() {
       $scope.guruMajorModal.show();
@@ -617,7 +617,7 @@ angular.module('uguru.guru.controllers')
     $scope.takeTranscriptPhoto = function(index) {
 
 
-      if ($scope.platform.mobile) {
+      if (DeviceService.doesCordovaExist() && $scope.platform.mobile) {
         Camera.takePicture($scope, index, $scope.user.id);
       } else {
         var element = document.getElementById('file-input-guru-add-transcript');
@@ -744,6 +744,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.confirmPhonePopup = function($event) {
+      console.log("EVENT", $event.target)
       PopupService.open('confirmPhone', callback, $event.target);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();

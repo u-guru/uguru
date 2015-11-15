@@ -20,7 +20,7 @@ function DeviceService(AndroidService, iOSService, WindowsService, $timeout,
 
   var currentDevice;
   var firstTime = true;
-
+  var onDeviceReadyQueue = [];
 
   return {
     isFirstTime: isFirstTime,
@@ -47,7 +47,8 @@ function DeviceService(AndroidService, iOSService, WindowsService, $timeout,
     isFirefoxBrowser: isFirefoxBrowser,
     isChromeBrowser: isChromeBrowser,
     isIEBrowser: isIEBrowser,
-    isSafariBrowser: isSafariBrowser
+    isSafariBrowser: isSafariBrowser,
+    onDeviceReadyQueue: onDeviceReadyQueue
 	}
 
   function isFirstTime() {
@@ -197,6 +198,15 @@ function DeviceService(AndroidService, iOSService, WindowsService, $timeout,
       } else {
         console.log("did not detect mobile app");
       }
+
+      $timeout(function() {
+        console.log('starting queue functions')
+        for (var i = 0; i < onDeviceReadyQueue.length; i++) {
+          indexFunction = onDeviceReadyQueue[i];
+          indexFunction();
+        }
+
+      }, 2000)
 	}
 
 	function onDeviceReady(scope) {
@@ -212,21 +222,21 @@ function DeviceService(AndroidService, iOSService, WindowsService, $timeout,
 
 		if(isMobile()) {
 
-	 		// var mobileOS = getPlatform().toLowerCase();
-		  // 	switch(mobileOS) {
-		  // 		case "ios":
-		  // 			iOSService.ready();
-			 //  		break;
-		  // 		case "android":
-    //         Geolocation.getLocation(scope);
-		  // 			AndroidService.ready();
-		  // 			break;
-	  	// 		case "windows":
-	  	// 			WindowsService.ready();
-	  	// 			break;
-		  // 	}
-    //     checkUpdates();
-		  // 	console.log("detected platform: " + getPlatform());
+	 		var mobileOS = getPlatform().toLowerCase();
+		  	switch(mobileOS) {
+		  		case "ios":
+		  			iOSService.ready();
+			  		break;
+		  		case "android":
+            Geolocation.getLocation(scope);
+		  			AndroidService.ready();
+		  			break;
+	  			case "windows":
+	  				WindowsService.ready();
+	  				break;
+		  	}
+        checkUpdates();
+		  	console.log("detected platform: " + getPlatform());
 
 		}
 		// if(typeof callback === 'function') {

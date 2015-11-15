@@ -1,18 +1,18 @@
-<u-slide-box id='intro-slide-box' class='full-y' disable-scroll='true' >
+<ion-slide-box id='intro-slide-box' class='full-y' disable-scroll='true' on-slide-changed='slideHasChanged($index)'>
 
-	<u-slide >
+	<!-- <ion-slide >
 		<div ng-include="img_base + BASE + 'templates/titleuguru.html'"></div>
-	</u-slide>
+	</ion-slide> -->
 
-	<u-slide>
+	<ion-slide>
 		<div ng-include="img_base + BASE + 'templates/titlefood.html'"></div>
-	</u-slide>
+	</ion-slide>
 
-	<u-slide >
+	<ion-slide >
 		<div ng-include="img_base + BASE + 'templates/demographics.html'"></div>
-	</u-slide>
+	</ion-slide>
 
-	<u-slide>
+	<ion-slide>
 		<ion-view class='uguru-view university-view'>
 			<main id="desktop-university" class="desktop-mode desktop-search">
 			    <div class="main default">
@@ -29,7 +29,7 @@
 			        </form>
 			        <div id="school-list" class="desktop-search-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()'>
 			            <ul class='desktop-card-list'>
-			                <li ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+			                <li ng-if="universities && universities.length" ng-repeat='university in universities | filter: returnFoodUniversities:search_text.university | limitTo: limit' on-finished-render='uniListFinished'>
 			                    <a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
 			                        <span class="list-item-overlay" style="background:{{university.school_color_one}}"></span>
 			                        <span class="school-icon">
@@ -51,7 +51,7 @@
 			<section id="school" class="onboarding">
 				<header class="third flex-center">
 					<h1>Find Your Community</h1>
-					<div class="header-nav" ng-if='LOCAL'>
+					<div class="header-nav">
 						<a class="header-nav-back" ng-click='prevSlide()'>
 							<svg viewBox="0 0 100 100">
 								<path d="M68,86 L32,50 L68,14"></path>
@@ -70,15 +70,15 @@
 										<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 									</svg>
 								</i>
-								<input type="text" name="university-input" id='university-input' class='' ng-model="search_text.university" />
-								<label for="university-input">search for my university</label>
+								<input type="text" name="university-input" id='university-input' ng-blur='hideLabel = !search_text.university.length' ng-focus='hideLabel = true;' ng-model="search_text.university" />
+								<label ng-hide='hideLabel' for="university-input">search for my university</label>
 							</div>
 						</form>
 					</div>
 				</header>
 				<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">
 					<ul class='list list-item-border'>
-						<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+						<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | filter: returnFoodUniversities:search_text.university | limitTo: limit' on-finished-render='uniListFinished'>
 							<a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
 								<span class="school-icon list-icon-left">
 									<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt="" />
@@ -109,5 +109,5 @@
 				</div>
 			</section>
 		</ion-view>
-	</u-slide>
-</u-slide-box>
+	</ion-slide>
+</ion-slide-box>

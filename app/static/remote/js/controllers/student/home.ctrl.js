@@ -33,9 +33,21 @@ angular.module('uguru.student.controllers', [])
         $ionicSideMenuDelegate.canDragContent(false);
 
 
-        var universityColor = $scope.user.university.school_color_one;
+        // var universityColor = $scope.user.university.school_color_one;
 
 
+        var windowWidth;
+        var initHeight = function() {
+            bodyRect = document.querySelector('body').getBoundingClientRect();
+            windowHeight = bodyRect.height;
+            windowWidth = bodyRect.width;
+        };
+
+        initHeight();
+        $scope.window = {
+            width:windowWidth,
+            height:windowHeight
+        };
 
         //todo create service
         function initDesktopFunctions() {
@@ -72,12 +84,7 @@ angular.module('uguru.student.controllers', [])
             $scope.verbModal.show();
         }
 
-        //UGH I HATE MY LIFE FUCK YOU IONIC
-        var getIonicSideMenuOpenRatio = function() {
-            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            $ionicSlideBoxDelegate.update();
-            return openRatio;
-        }
+
 
         var setStatusBarDarkText = function() {
             if (DeviceService.isIOSDevice()) {
@@ -95,34 +102,17 @@ angular.module('uguru.student.controllers', [])
 
         }
 
-        var isSideMenuOpen = function(ratio) {
-            if (!ratio && ratio !== -1) {
-                $scope.sideMenuActive = false;
-                $ionicSlideBoxDelegate.update();
-                setStatusBarDarkText();
-            } else {
-                setStatusBarLightText();
-
-                $timeout(function() {
-                    $scope.sideMenuActive = true;
-                }, 250)
-                $ionicSlideBoxDelegate.update();
-            }
-        }
-        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
-
-
-        // $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
+        // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
         //     scope: $scope,
         //     animation: 'slide-in-up'
         // }).then(function(modal) {
-        //     $scope.requestModal = modal;
+        //     $scope.availabilityModal = modal;
         // });
 
-        // $scope.launchRequestModal = function(index, verb_index) {
+        // $scope.launchAvailabilityModal = function(index, verb_index) {
 
         //     uTracker.track(tracker, 'Request Modal');
-        //     $scope.requestModal.show();
+        //     $scope.availabilityModal.show();
         // }
 
         $scope.closeRequestModal = function() {
@@ -138,13 +128,9 @@ angular.module('uguru.student.controllers', [])
 
         $scope.goToBecomeGuru = function() {
             $scope.loader.showAmbig();
-            $ionicSlideBoxDelegate.update();
-
-            $timeout(function() {
-                $ionicViewSwitcher.nextDirection('forward');
-                $state.go('^.become-guru')
-            }, 30);
-
+            // $ionicSlideBoxDelegate.update();
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('^.become-guru')
         }
 
         $scope.goToDesktopBecomeGuru = function() {
@@ -188,26 +174,31 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.$on('$ionicView.loaded', function() {
+            $ionicSlideBoxDelegate.update();
             $scope.root.vars.guru_mode = false;
             if (!$scope.mapInitialized) {
                 console.log('initializing map from load');
                 $scope.mapInitialized = true;
 
-                $timeout(function() {
-                    // $scope.initStudentHomeMap();
-                }, 1000)
+            }
 
+        })
+
+
+
+        $scope.$on('$ionicView.afterLeave', function() {
+            if (DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarLightText();
             }
 
         })
 
         $scope.$on('$ionicView.beforeEnter', function() {
+            $ionicSlideBoxDelegate.update();
             $scope.universityMapRendered = false;
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
-
-
 
         })
 

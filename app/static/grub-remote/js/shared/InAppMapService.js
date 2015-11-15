@@ -18,7 +18,7 @@ var map;
   	plotMarkers: plotMarkers,
     moveMap: moveMap,
     updateMap: updateMap
-    
+
   };
 
   function updateMap() {
@@ -30,7 +30,7 @@ var map;
     else {
 
 
-      
+
     }
 
 
@@ -58,7 +58,7 @@ var map;
             }, function(marker) {
 
               if (markers.length === 1) {
-                marker.showInfoWindow();  
+                marker.showInfoWindow();
               }
 
             });
@@ -70,7 +70,7 @@ var map;
       }
 
     }
-    
+
 
 
 
@@ -79,7 +79,7 @@ var map;
   function enlarge() {
   	console.log("calling enlarge()");
 
-    if (DeviceService.doesCordovaExist()) {    
+    if (DeviceService.doesCordovaExist()) {
       document.querySelector('#home-courses').style.visibility = 'hidden';
     	map.showDialog();
 
@@ -113,26 +113,25 @@ var map;
           } catch (e) {
             console.log("try catch caught error during querySelector for map close");
           }
-          
+
         });
     }
     else {
       console.log("desktop mode detected, initializing angular gmaps");
-    
+
 
       var div = document.getElementById("map_canvas_home");
       try {
-        div.style.paddingTop = '0px';  
+        div.style.paddingTop = '0px';
       } catch(e) {
-        
+        console.log('not on mobile device');
       }
-      
 
       var gMaps = document.querySelector('ui-gmap-google-map');
 
 
     }
-      
+
   }
 
   function moveMap(latitude, longitude) {
@@ -149,9 +148,9 @@ var map;
       map.setClickable(false);
     }
     else {
-      
+
     }
-    
+
 
 
   }

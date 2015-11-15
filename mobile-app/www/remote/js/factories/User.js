@@ -763,6 +763,12 @@ angular.module('uguru.user', [])
                         'add_guru_intro': true
                   }
               }
+              if(arg === 'update_guru_subcategories'){
+                return {
+                      subcategory: obj,
+                      'update_guru_subcategories': true
+                }
+              }
               if (arg === 'add_guru_subcategory') {
                   return {
                         subcategory: obj,

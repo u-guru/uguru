@@ -4,13 +4,13 @@ from time import sleep
 def uguruAPI(arg='', _json=None, _type='get'):
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
-	if arg: arg = '/' + arg 
+	if arg: arg = '/' + arg
 	BASE_URL = 'http://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4/universities%s' % arg
 
 	if _type == 'get':
 		print BASE_URL
-		response = requests.get(BASE_URL).text
-		print response
+        response = requests.get(BASE_URL).text
+        return json.loads(response)
 
 
 
@@ -26,9 +26,13 @@ def getMostUpdatedUniversities():
 	print len(university_arr), 'universities prepared'
 	return university_arr
 
+def getPopularCourses(uni_id):
+    url_extension = "%s/popular_courses" % uni_id
+    university_arr = uguruAPI(url_extension)
+    return university_arr
+
 def getAllUsNewsUniversities():
 	university_arr = uguruAPI('us_news')
-	print len(university_arr), 'universities prepared'
 	return university_arr
 
 def getUniversity(uni_id):
@@ -70,7 +74,7 @@ if __name__ == '__main__':
     	getAllwUsNewsUniversities()
 
     if args[1] in ['get-one', '-go']:
-    	
+
     	getUniversity(args[2])
 
 
@@ -85,10 +89,10 @@ if __name__ == '__main__':
     			sleep(2)
      			updateUniversity({'id':str(items_banner['school_id']), 'university_banner':str(items_banner['banner_url'])})
      			print "updating.."
-     		
-			
-    	
-    	#updateUniversity({'id':2554,'university_banner':'https://farm3.staticflickr.com/2273/2036165954_ad762b4dc1_z.jpg'})	
+
+
+
+    	#updateUniversity({'id':2554,'university_banner':'https://farm3.staticflickr.com/2273/2036165954_ad762b4dc1_z.jpg'})
 
     if args[1] in ['update-emails', '-ue']:
 		updateEmailsForMailgun()

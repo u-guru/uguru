@@ -4,9 +4,10 @@ angular.module('uguru.root.services')
     'University',
     'Utilities',
     'Settings',
+    'LoadingService',
     Geolocation]);
 
-function Geolocation($timeout, University, Utilities, Settings) {
+function Geolocation($timeout, University, Utilities, Settings, LoadingService) {
 
   var isLocated = null;
 
@@ -38,11 +39,16 @@ function Geolocation($timeout, University, Utilities, Settings) {
     }
   }
 
-  function getLocation(scope, list, callback) {
+  function getLocation(scope, list, callback, is_ios) {
     var posOptions = {
       enableHighAccuracy: false, //may cause high errors if true
       maximumAge: 3600000 // Accepts a cached position as long as it was within 1 hour
     }
+
+    if (!settings.isAllowed && is_ios) {
+      LoadingService.showAmbig('Calculating distance...', 5000);
+    }
+
     return navigator.geolocation.getCurrentPosition(geoSuccess, geoError, posOptions);
 
     function geoSuccess(position) {
@@ -62,12 +68,12 @@ function Geolocation($timeout, University, Utilities, Settings) {
 
       settings.isActive = true;
       settings.isAllowed = true;
-
+      LoadingService.hide();
 
     }
     function geoError(error) {
         console.log("geolocationError: " + error.code);
-
+        LoadingService.hide();
         switch(error.code) {
           case 1: // PERMISSION_DENIED
 

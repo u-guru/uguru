@@ -20,7 +20,9 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		ready: ready,
 		showStatusBar: showStatusBar,
 		enableGPS: enableGPS,
-		setStatusBarText:setStatusBarText
+		setStatusBarText:setStatusBarText,
+		setStatusBarLightText:setStatusBarLightText,
+		setStatusBarDarkText:setStatusBarDarkText
 	}
 
 	function ready() {
@@ -75,6 +77,22 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		}
 	}
 
+	function setStatusBarLightText() {
+		if(!window.StatusBar) {
+			console.log('no status bar detected');
+			return;
+		}
+		window.StatusBar.styleLightContent();
+	}
+
+	function setStatusBarDarkText() {
+		if(!window.StatusBar) {
+			console.log('no status bar detected');
+			return;
+		}
+		window.StatusBar.styleDefault();
+	}
+
 	function hideSplashScreen(delay) {
 		delay = delay || 0;
 
@@ -99,6 +117,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 	function enableGPS() {
 	    if (!Settings.get('locationMode')) {
+
 	      Popup.options.show($rootScope, {
 	        header: 'Mind if we use your location?',
 	        body: 'uGuru uses your location to match you up with students on campus.',

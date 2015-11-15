@@ -229,6 +229,7 @@
     <script type="text/javascript" src="remote/js/directives/throttle.js"></script>
     <script type="text/javascript" src="remote/js/directives/submit.js"></script>
     <script type="text/javascript" src="remote/js/directives/keyboardfocus.js"></script>
+    <script type="text/javascript" src="remote/js/directives/iFrameOnload.js"></script>
 
     <!-- uguru app factories-->
     <script type="text/javascript" src="remote/js/factories/Session.js"></script>
@@ -383,7 +384,7 @@
     <script type="text/javascript" src="remote/js/controllers/util/CardList.ctrl.js"></script>
 
 
-
+<!--
     <script type="text/javascript">
     var map;
     document.addEventListener("deviceready", function() {
@@ -405,14 +406,14 @@
       map.showDialog();
     }
     </script>
-
+ -->
 
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()">
 
-    <h3>In App Google Maps Plugin</h3>
+    <!-- <h3>In App Google Maps Plugin</h3>
    <div style="width:100%;height:400px" id="map_canvas"></div>
-   <button id="button">Full Screen</button>
+   <button id="button">Full Screen</button> -->
 
 
     <ui-view></ui-view>

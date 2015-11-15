@@ -29,15 +29,28 @@ angular.module('uguru.util.controllers')
       $scope.user.guru_courses = [];
     }
 
-    // $scope.source = {
-    //   courses: []
-    // };
+    $timeout(function() {
+      $scope.courses = University.source.courses;
 
-    $rootScope.$on('loadCourses', function() {
-      console.log("heard loadCourses!");
-      // $scope.source.courses = null;
-      $scope.source = University.source;
-    });
+      if (!$scope.courses || !$scope.courses.length) {
+        LoadingService.showAmbig("Loading Courses...", 10000);
+        loadingCourseCallback = function(scope, courses) {
+          scope.courses = courses;
+          $timeout(function() {
+            LoadingService.hide();
+          }, 250)
+        }
+
+        University.getPopularCourses($scope.user.university_id, $scope, loadingCourseCallback);
+      }
+
+    }, 50)
+
+    // $rootScope.$on('loadCourses', function() {
+    //   console.log("heard loadCourses!");
+    //   // $scope.source.courses = null;
+    //   $scope.source = University.source;
+    // });
 
 
     $scope.search_text = {
@@ -159,6 +172,7 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.addSelectedGuruCourse = function(course) {
+
 
       for(var i=0; i < $scope.source.courses.length; i++) {
         if($scope.source.courses[i].id === course.id) {

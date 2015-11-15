@@ -30,23 +30,23 @@
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
-						<span>{{course.name}}</span>
+						<span>{{course.short_name}}</span>
 					</a>
 					<a ng-if='course.title'>
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
-						<span class="course-name">{{course.name}}</span>
+						<span class="course-name">{{course.short_name}}</span>
 						<span class="course-title">{{course.title}}</span>
 					</a>
 				</li>
                 <li ng-repeat='course in courses | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
 					<a class="name-only" ng-if='!course.title'
-						<span>{{course.name}}</span>
+						<span>{{course.short_name}}</span>
 					</a>
 					<a ng-if='course.title'>
 						<span>
-							<span class="course-name">{{course.name}}</span>
+							<span class="course-name">{{course.short_name}}</span>
 							<span class="course-title">{{course.title}}</span>
 						</span>
 					</a>
@@ -55,11 +55,11 @@
         </div>
     </div>
 </main>
-<section id="course" class="onboarding" u-after-enter='afterEnter()' ng-if='!desktopMode'>
+<section id="course" class="onboarding" ng-if='!desktopMode'>
 	<header class="third flex-center" ng-if='!guruCoursesModal.isShown() && !(profile && profile.edit_mode);'>
 		<h1 class="text-center">Add Courses</h1>
 		<div class="header-nav">
-			<a class="header-nav-back" ng-click='previousSlide()'>
+			<a class="header-nav-back" ng-click='goBackToStudentHome()'>
 				<svg viewBox="0 0 100 100">
 					<path d="M68,86 L32,50 L68,14"></path>
 				</svg>
@@ -96,21 +96,21 @@
 				</a>
 		</div>
 	</header>
-	<div id="courses-list" bind-input='courses' source='source.courses' class="onboarding-list" >
+	<div id="courses-list" class="onboarding-list" >
 		<ul class='list list-item-border no-icon'>
 			<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
 				<input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>
-				<label ng-if='!course.title'>{{course.name}}</label>
+				<label ng-if='course.short_name'>{{course.short_name}}</label>
 				<label ng-if='course.title'>
-					<span class="course-name">{{course.name}}</span>
+					<span class="course-name">{{course.short_name}}</span>
 					<span class="course-title">{{course.title}}</span>
 				</label>
 			</li>
 			<li ng-repeat='course in courses | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
 				<!-- <input type="checkbox"> -->
-				<label ng-if='!course.title'>{{course.name}}</label>
+				<label ng-if='!course.title'>{{course.short_name}}</label>
 				<label ng-if='course.title'>
-					<span class="course-name">{{course.name}}</span>
+					<span class="course-name">{{course.short_name}}</span>
 					<span class="course-title">{{course.title}}</span>
 				</label>
 			</li>

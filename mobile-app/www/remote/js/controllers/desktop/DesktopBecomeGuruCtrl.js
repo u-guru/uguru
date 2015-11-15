@@ -378,6 +378,7 @@ angular.module('uguru.desktop.controllers')
       $timeout(function() {
         calculateProgress($scope);
       }, 1000)
+      console.log('ayy');
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
       if (DeviceService.isIOSDevice()) {

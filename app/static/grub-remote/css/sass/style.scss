@@ -42,10 +42,38 @@ body.platform-ios {
 		a.active, a.activated {
 			background: rgba(white,.2);
 		}
-		a:hover, .list .list-item a:hover {
-			 background: rgba(255, 255, 255, 0.1);
+		// a:hover, .list .list-item a:hover {
+		// 	 background: rgba(255, 255, 255, 0.1);
+		// }
+	}
+
+	section
+	{
+		.full-xy.bg-auburn,
+		.onboarding, header {
+			padding-top:20px;
 		}
 	}
+
+	#food-home {
+		padding-top:20px;
+		header {
+			padding-top:0px;
+		}
+	}
+
+	.modal-backdrop.active{
+		margin-top:20px;
+	}
+
+	.university-view div.header-nav {
+		margin-top:20px;
+	}
+
+	#university-input {
+		padding-left:25px;
+	}
+
 }
 
 

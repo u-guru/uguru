@@ -24,11 +24,12 @@ function DeviceService($cordovaNgCardIO,
 
   var currentDevice;
   var firstTime = true;
+  var isReady = false;
 
 
   return {
     isFirstTime: isFirstTime,
-
+    isReady: isReady,
 		readyDevice: readyDevice,
 		getDevice: getDevice,
     doesCordovaExist: doesCordovaExist,
@@ -192,7 +193,7 @@ function DeviceService($cordovaNgCardIO,
   }
 
 	function readyDevice(scope) {
-
+    isReady = true;
     var userAgent = navigator.userAgent;
       if (doesCordovaExist()) {
         onDeviceReady(scope);

@@ -96,9 +96,9 @@ class CategoryListView(restful.Resource):
 class UniversityListView(restful.Resource):
     @marshal_with(AdminUniversitySerializer)
     def get(self):
-        universities = University.query.filter(University.courses_sanitized == True, University.departments_sanitized == True, University.banner_url != None, University.logo_url != None).all()
-        print universities
-        return universities, 200
+        from app.static.data.popular_data import getPreparedUniversitiesObj
+        prepared_universities = getPreparedUniversitiesObj(University.query.all())
+        return prepared_universities, 200
 
 class UniversityMajorsView(restful.Resource):
     @marshal_with(DepartmentSerializer)
@@ -2772,12 +2772,12 @@ class UniversityFoodView(restful.Resource):
         file = open('app/static/data/food_router.json')
 
         university_food_dict = json.load(file)
-        university_food_url = university_food_dict.get(str(_id))
-
-        if not university_food_url:
+        # university_food_url = university_food_dict.get(str(_id))
+        # print university_food_url
+        if not university_food_dict:
             return json.dumps({"error": "Food URL does not exist for university id %s" % _id}), 422
 
-        return json.dumps({"food_url":university_food_url}), 200
+        return json.dumps({"data":university_food_dict}), 200
 
 
 class MusicPlayerPlayListView(restful.Resource):

@@ -11,12 +11,20 @@ from flask.ext.cors import CORS
 from flask.ext.compress import Compress
 import logging
 from logging.handlers import SMTPHandler
+from flask_sslify import SSLify
 
 # import newrelic.agent
 
 # Logging
 import logging
 import sys
+
+
+def _force_https(app):
+    def wrapper(environ, start_response):
+        environ['wsgi.url_scheme'] = 'https'
+        return app(environ, start_response)
+    return wrapper
 
 root = logging.getLogger()
 root.setLevel(logging.INFO)
@@ -27,12 +35,19 @@ ch.setFormatter(formatter)
 root.addHandler(ch)
 # TODO : Add debug logger
 
+
+
 app = Flask(__name__)
 app.config.from_object('config')
+sslify = SSLify(app)
+
+app.config.update(dict(
+  PREFERRED_URL_SCHEME = 'https'
+))
 
 # flask-restful
 api = restful.Api(app)
-
+_force_https(app)
 CORS(app)
 
 # flask_becrypt
@@ -49,6 +64,7 @@ class MandrillHandler(SMTPHandler):
         # gh = init_github('uguru')
         # create_issue(gh, ['PRODUCTION SERVER ERROR'], 'UGURU PRODUCTION ERROR', self.format(record))
         send_errors_email(self.format(record))
+
 
 
 logger = logging.getLogger()
@@ -73,9 +89,9 @@ manager.add_command('db', MigrateCommand)
 def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Origin, Content-Type, Content-Type, Accept, Authorization, X-Request-With')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    response.headers["X-Frame-Options"] = "ALLOW"
+    # response.headers["X-Frame-Options"] = "ALLOW"
     response.headers.add('Access-Control-Allow-Credentials', True)
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    # response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 from app import rest, models, emails, views

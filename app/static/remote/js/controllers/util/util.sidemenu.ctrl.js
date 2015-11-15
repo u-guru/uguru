@@ -88,10 +88,24 @@ angular.module('uguru.util.controllers')
 
 
     ModalService.init('university', $scope);
+    var sideMenu = document.querySelectorAll('ion-side-menu')[0];
+    sideMenu.style.width = 0 +'px';
 
     $scope.openModal = function(modalName) {
       ModalService.open(modalName, $scope);
     };
+
+    $scope.openModalWithLoader = function(modalName) {
+      ModalService.open(modalName, $scope);
+      LoadingService.showAmbig(null, 3500);
+    }
+
+    $scope.closeLoader = function(time) {
+      time = time || 0;
+      $timeout(function() {
+        LoadingService.hide();
+      }, time)
+    }
 
     $scope.openLoginModal = function() {
       $scope.root.vars.loginMode = true;
@@ -280,13 +294,13 @@ angular.module('uguru.util.controllers')
 
     };
 
-    $scope.launchEditEmailPopup = function() {
+    $scope.launchEditEmailPopup = function(target) {
 
       if($scope.user.email) {
         $scope.popupInput.editEmail = $scope.user.email;
       }
 
-      PopupService.open('editEmail', callback);
+      PopupService.open('editEmail', callback,target);
       function callback() {
         if (Utilities.validateEmail($scope.popupInput.editEmail)) {
             $scope.user.email = $scope.popupInput.editEmail;
@@ -300,9 +314,9 @@ angular.module('uguru.util.controllers')
       }
     };
 
-    $scope.launchEditPasswordPopup = function() {
+    $scope.launchEditPasswordPopup = function(target) {
 
-      PopupService.open('editPassword', callback);
+      PopupService.open('editPassword', callback,target);
       function callback() {
           if ($scope.popupInput.editPasswordOld.length === 0 && $scope.popupInput.editPasswordNew.length === 0) {
             alert('Please fill in all fields');
@@ -337,13 +351,13 @@ angular.module('uguru.util.controllers')
       }
     };
 
-    $scope.launchEditStudentNamePopup = function() {
+    $scope.launchEditStudentNamePopup = function(target) {
 
       if ($scope.user.name) {
         $scope.popupInput.editName = $scope.user.name;
       }
-
-      PopupService.open('editName', callback);
+      // console.log(target)
+      PopupService.open('editName', callback,target);
       function callback() {
         if (Utilities.validateName($scope.popupInput.editName)) {
             $scope.user.name = $scope.popupInput.editName;
@@ -358,8 +372,8 @@ angular.module('uguru.util.controllers')
     };
 
     //settings info
-    $scope.editAccountInfoActionSheet = function() {
-
+    $scope.editAccountInfoActionSheet = function($event) {
+      var target = $event.target;
       var options = [{text: 'Edit Name'},{text: 'Edit Email'}];
       if ($scope.user.fb_id && !$scope.user.password){
         options.push({text: 'Create Password'});
@@ -374,13 +388,13 @@ angular.module('uguru.util.controllers')
             cancel: function() {
                 $scope.closeAttachActionSheet();
             },
-            buttonClicked: function(index) {
+            buttonClicked: function(index,$event) {
               console.log('ayy this should"ved fired NOT');
               // fire profile photo
               if (index === 0) {
                 $scope.closeAttachActionSheet();
                 $timeout(function() {
-                  $scope.launchEditStudentNamePopup();
+                  $scope.launchEditStudentNamePopup(target);
                 }, 500);
               }
 
@@ -388,7 +402,7 @@ angular.module('uguru.util.controllers')
                 console.log('ayy this should"ved fired');
                 $scope.closeAttachActionSheet();
                 $timeout(function() {
-                  $scope.launchEditEmailPopup();
+                  $scope.launchEditEmailPopup(target);
                 }, 500);
 
               }
@@ -396,7 +410,7 @@ angular.module('uguru.util.controllers')
               if (index === 2) {
                 $scope.closeAttachActionSheet();
                 $timeout(function() {
-                  $scope.launchEditPasswordPopup();
+                  $scope.launchEditPasswordPopup(target);
                 }, 500);
 
               }
@@ -428,8 +442,7 @@ angular.module('uguru.util.controllers')
 
     };
 
-    $scope.showStudentEditActionSheet = function() {
-
+    $scope.showStudentEditActionSheet = function($event) {
         var options = [{text: 'Profile Photo'},{text: 'University'}, {text: 'Account Information'}];
 
         // Show the action sheet
@@ -470,7 +483,7 @@ angular.module('uguru.util.controllers')
                 $scope.closeAttachActionSheet();
                 LoadingService.show();
                 $timeout(function() {
-                  $scope.editAccountInfoActionSheet();
+                  $scope.editAccountInfoActionSheet($event);
                   LoadingService.hide();
                 }, 1000);
               }
@@ -523,7 +536,8 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
           if ($ionicSideMenuDelegate.isOpen()) {
-            $ionicSideMenuDelegate.toggleRight();
+            // $ionicSideMenuDelegate.toggleRight();
+            $scope.toggleRightSideMenu();
           }
         }, 500);
 
@@ -534,6 +548,10 @@ angular.module('uguru.util.controllers')
 
       LoadingService.show();
       // AnimationService.flip();
+      $timeout(function() {
+          LoadingService.hide();
+        }, 500);
+        AnimationService.flip('^.home');
 
       //let the server know the user was on guru mode for the next time app opens
 
@@ -545,11 +563,12 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         $scope.root.vars.guru_mode = false;
         if ($ionicSideMenuDelegate.isOpen()) {
-          $ionicSideMenuDelegate.toggleRight();
+          // $ionicSideMenuDelegate.toggleRight();
+          $scope.toggleRightSideMenu();
         }
       }, 500);
 
-      $state.go('^.home');
+      // $state.go('^.home');
     };
 
     $scope.showComingSoon = function() {
