@@ -159,6 +159,43 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/desktop.settings.html',
     controller: "DesktopSettingsController"
   }).
+  state('root.request', {
+    url:'/request',
+    templateUrl: BASE + 'templates/request.html',
+    controller: "RequestController"
+  }).
+  state('root.request-student', {
+    url:'/request-student',
+    templateUrl: BASE + 'templates/request-student.html',
+    controller: "RequestController"
+  }).
+  state('root.request-guru', {
+    url:'/request-guru',
+    templateUrl: BASE + 'templates/request-guru.html',
+    controller: "RequestController"
+  }).
+  state('root.request-categories', {
+    url:'/request-categories',
+    templateUrl: BASE + 'templates/request-categories.html',
+    controller: "RequestController"
+  }).
+  state('root.request-subcategories', {
+    url:'/request-subcategories',
+    templateUrl: BASE + 'templates/request-subcategories.html',
+    controller: "RequestController"
+  }).
+  state('root.rating', {
+    url:'/rating',
+    templateUrl: BASE + 'templates/rating.html'
+  }).
+  state('root.request-calendar', {
+    url:'/request-calendar',
+    templateUrl: BASE + 'templates/request-calendar.html'
+  }).
+  state('root.request-price', {
+    url:'/request-price',
+    templateUrl: BASE + 'templates/request-price.html'
+  }).
   state('root.student-home', {
     url:'/student-home',
     templateUrl: BASE + 'templates/home.student.html'
@@ -288,6 +325,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/messages/:sessionObj',
         templateUrl: BASE + 'templates/student.messages.html',
         controller: 'StudentMessagesController'
+  }).
+  state('root.messaging', {
+        url: '/messaging',
+        templateUrl: BASE + 'templates/messaging.html'
   }).
   state('root.student-conversations', {
         url: '/student-conversations',

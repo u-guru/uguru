@@ -141,11 +141,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.universitySelected = function(university) {
 
-    // $timeout(function() {
-    //   PerformanceService.sendListResponseTime('University_List');
-    // }, 0);
-
-
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
         if ($scope.user.guru_courses && $scope.user.guru_courses.length && confirm('Are you sure? Your current courses will be deactivated')) {
@@ -157,7 +152,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       University.clearSelected();
       $timeout(function() {
         University.getMajors(university.id);
-        University.getPopularCourses(university.id);
+        University.getPopularCourses(university.id, $scope);
       }, 1000);
 
 
@@ -176,20 +171,22 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
         'university_id': university.id
       }
 
+      console.log('current state', $state.current.name);
+      var flipCallback;
+      if ($state.current.name === 'root.university') {
+
+        LoadingService.showSuccess('Saved!', 1500, function() {
+          AnimationService.flip('^.home');
+        });
+      } else {
+        LoadingService.showSuccess('Saved!', 1500, function() {
+          $scope.closeModal('university');
+        });
+      }
+
       $timeout(function() {
         $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope);
       }, 0);
-
-      var flipCallback;
-      if ($state.current.name !== 'root.university') {
-        $scope.closeModal('university');
-      } else {
-        function flipCallback() {
-          AnimationService.flip('^.home');
-        }
-      }
-
-      LoadingService.showSuccess('Saved!', 1500, flipCallback);
 
   };
 

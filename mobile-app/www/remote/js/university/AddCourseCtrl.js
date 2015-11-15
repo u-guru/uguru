@@ -23,14 +23,13 @@ angular.module('uguru.util.controllers')
     $ionicSideMenuDelegate, University, Utilities, uTracker, Course, LoadingService) {
 
 
-    $scope.source = University.source;
+    $scope.courses = University.source.courses;
 
     if (!$scope.user.guru_courses) {
       $scope.user.guru_courses = [];
     }
 
     $timeout(function() {
-      $scope.courses = University.source.courses;
 
       if (!$scope.courses || !$scope.courses.length) {
         LoadingService.showAmbig("Loading Courses...", 10000);
@@ -48,7 +47,7 @@ angular.module('uguru.util.controllers')
 
     // $rootScope.$on('loadCourses', function() {
     //   console.log("heard loadCourses!");
-    //   // $scope.source.courses = null;
+    //   // $scope.courses = null;
     //   $scope.source = University.source;
     // });
 
@@ -57,25 +56,25 @@ angular.module('uguru.util.controllers')
       course: ''
     };
 
-    $scope.refresh = {
-      courses: '',
-      coursesLength: $scope.source.courses.length
-    };
+    // $scope.refresh = {
+    //   courses: '',
+    //   coursesLength: $scope.courses.length
+    // };
 
     function updateDOM() {
-      if ($scope.source.courses.length > 0) {
+      if ($scope.courses.length > 0) {
           for(var j = 0; j < $scope.user.guru_courses.length; j++) {
-            for(var k = 0; k < $scope.source.courses.length; k++) {
-              if($scope.source.courses[k].id === $scope.user.guru_courses[j].id) {
+            for(var k = 0; k < $scope.courses.length; k++) {
+              if($scope.courses[k].id === $scope.user.guru_courses[j].id) {
                 console.log("Duplicate course found, deleting...");
-                $scope.source.courses.splice(k, 1);
+                $scope.courses.splice(k, 1);
               }
             }
           }
       }
 
-      $scope.refresh.coursesLength = $scope.source.courses.length;
-      University.refresh();
+      // $scope.refresh.coursesLength = $scope.courses.length;
+      // University.refresh();
 
     }
 
@@ -124,7 +123,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.user.guru_courses.splice(index, 1);
-      $scope.source.courses.unshift(course);
+      $scope.courses.unshift(course);
 
       updateDOM();
 
@@ -156,7 +155,7 @@ angular.module('uguru.util.controllers')
 
 
       $scope.search_text.course = '';
-
+      $scope.courses.splice($index, 1);
       //set the course text to what it should be
       // $scope.studentCourseInput.value = '';
       // $scope.search_text.course = course.name
@@ -174,12 +173,17 @@ angular.module('uguru.util.controllers')
     $scope.addSelectedGuruCourse = function(course) {
 
 
-      for(var i=0; i < $scope.source.courses.length; i++) {
-        if($scope.source.courses[i].id === course.id) {
+      for(var i=0; i < $scope.courses.length; i++) {
+        if($scope.courses[i].id === course.id) {
           console.log("transferring course from source to user");
-          $scope.source.courses.splice(i, 1);
+          $scope.courses.splice(i, 1);
         }
       }
+
+      if (course.short_name && !course.name) {
+        course.name = course.short_name;
+      }
+
       $scope.user.guru_courses.push(course);
 
       $scope.search_text.course = '';
@@ -202,7 +206,7 @@ angular.module('uguru.util.controllers')
 
     $scope.limit = 10;
     $scope.increaseLimit = function() {
-      if($scope.courses && $scope.limit < $scope.source.courses.length) {
+      if($scope.courses && $scope.limit < $scope.courses.length) {
         $scope.limit += 10;
       }
     };

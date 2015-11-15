@@ -221,8 +221,8 @@ angular.module('uguru.util.controllers')
 
 
         if ($scope.user.university && $scope.user.university_id) {
-             University.getPopularCourses($scope.user.university_id);
-             University.getMajors($scope.user.university_id);
+             University.getPopularCourses($scope.user.university_id, $scope);
+             University.getMajors($scope.user.university_id, $scope);
         }
 
 

@@ -1,0 +1,92 @@
+<ion-view>
+	<main id='desktop-request-student' class="desktop-request desktop-mode" ng-if='isDesktopMode()'>
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<div class="main bg-cerise">
+			<header>
+				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+			</header>
+			<div class="request-form">
+				<div>
+					<div class="request-form-header">
+						<div>
+							<h1><span>{{user.name}}</span> can help!</h1>
+							<h1 class="request-header">
+								<span class="request-category">Academic</span>
+								<span>
+									<svg viewBox="0 0 100 100">
+										<path d="M32,86 L68,50 L32,14"></path>
+									</svg>
+								</span>
+								<span class="request-type">Exam Request Review</span>
+							</h1>
+						</div>
+					</div>
+					<div class="request-form-map">
+						<div>
+							<ul>
+								<li>
+									<h2><span class="request-form-site">Philz Coffee</span> on <span class="request-form-st">Berry Street</span></h2>
+								</li>
+								<li>
+									<span class="request-form-location">San Francisco, CA</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="request-form-date">
+							<div>
+								<ul>
+									<li>
+										<h2 class="request-form-day">Friday, 13 November</h2>
+									</li>
+									<li>
+										<span class="request-form-time">7:30PM - 9:30PM</span></li>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div>
+							<div class="request-form-upload">
+								<div>
+									<div class="input">
+										<h1>Attachments</h1>
+										<ul>
+											<li class="upload-pdf">
+												<svg viewBox="0 0 75 75">
+												    <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+												</svg>
+												<span>PDF</span>
+											</li>
+											<li class="upload-add">
+												<svg viewBox="0 0 75 75">
+												    <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+												</svg>
+												<span>
+													<svg viewBox="0 0 100 100">
+													    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+													</svg>
+												</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="request-form-payment">
+								<div>
+									<a>Payment<br/>Info</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="request-form-submit">
+						<button>Let's go for it!</button>
+						<a>Uh-oh! Cancel</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- <div id="request-calendar" ng-include="img_base + BASE + 'templates/request-calendar.html'"></div> -->
+	<!-- <div id="request-price" ng-include="img_base + BASE + 'templates/request-price.html'"></div> -->
+</ion-view>

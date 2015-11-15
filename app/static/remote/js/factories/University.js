@@ -67,7 +67,11 @@ angular.module('uguru.rest', [])
                                      '$Downloaded_PopularCourses': uni_id
                                  });
                              }, 1000);
-                             console.log("length of popular courses in callback: " + source.popularCourses.length);
+                             console.log("length of popular courses in callback: " + source.courses.length);
+
+                             // if (scope && scope.user.guru_courses && scope.user.guru_courses.length) {
+                             //    source.courses = removeAlreadyAddedCourses(scope.user.guru_courses.slice())
+                             // }
 
                              if (scope && callback) {
                                 callback(scope, source.courses.slice());
@@ -146,6 +150,11 @@ function hasNoCourses(list) {
 
 function hasNoMajors(list) {
     return University.majors.length === 0;
+}
+
+
+function removeAlreadyAddedCourses(user_courses) {
+    console.log('attempting to remove courses');
 }
 
 var targettedUniversities = [

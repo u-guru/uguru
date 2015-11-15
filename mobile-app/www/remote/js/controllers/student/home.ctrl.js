@@ -32,7 +32,7 @@ angular.module('uguru.student.controllers', [])
 
         $ionicSideMenuDelegate.canDragContent(false);
 
-
+        $scope.user.is_a_guru = false;
         // var universityColor = $scope.user.university.school_color_one;
 
 
@@ -133,10 +133,10 @@ angular.module('uguru.student.controllers', [])
             } else {
                 $scope.loader.showAmbig();
                 $ionicViewSwitcher.nextDirection('forward');
-                $state.go('^.become-guru')    
+                $state.go('^.become-guru')
             }
 
-            
+
         }
 
         $scope.goToDesktopBecomeGuru = function() {
