@@ -1,11 +1,12 @@
 <ion-view>
-	<main id='desktop-rating' class="desktop-mode" ng-if='isDesktopMode()'>
+	<main id='desktop-rating' class="desktop-mode student-mode" ng-if='isDesktopMode()'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main">
 			<ul>
 				<li>
-					<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
-					<h1>Completed your session with {{user.name}}!</h1>
+					<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+					<!-- <h1>Completed your session with {{user.name}}!</h1> -->
+					<h1>{{user.name}} completed your session!</h1>
 				</li>
 				<li>
 					<ul class="rating-charge">

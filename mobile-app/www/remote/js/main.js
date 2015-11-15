@@ -164,6 +164,26 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/request.html',
     controller: "RequestController"
   }).
+  state('root.request-student', {
+    url:'/request-student',
+    templateUrl: BASE + 'templates/request-student.html',
+    controller: "RequestController"
+  }).
+  state('root.request-guru', {
+    url:'/request-guru',
+    templateUrl: BASE + 'templates/request-guru.html',
+    controller: "RequestController"
+  }).
+  state('root.request-categories', {
+    url:'/request-categories',
+    templateUrl: BASE + 'templates/request-categories.html',
+    controller: "RequestController"
+  }).
+  state('root.request-subcategories', {
+    url:'/request-subcategories',
+    templateUrl: BASE + 'templates/request-subcategories.html',
+    controller: "RequestController"
+  }).
   state('root.rating', {
     url:'/rating',
     templateUrl: BASE + 'templates/rating.html'
