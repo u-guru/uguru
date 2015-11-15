@@ -89,7 +89,8 @@ angular.module('uguru.util.controllers')
 
     ModalService.init('university', $scope);
     var sideMenu = document.querySelectorAll('ion-side-menu')[0];
-    sideMenu.style.width = 0 +'px';
+    console.log("Set sideMenu width")
+    console.log("Check sideMenu width ", sideMenu.style.width)
 
     $scope.openModal = function(modalName) {
       ModalService.open(modalName, $scope);

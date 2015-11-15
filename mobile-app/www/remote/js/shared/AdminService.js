@@ -81,38 +81,41 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
     }
 
     function resetCache($scope, logout, university) {
-        if (confirm('Are you sure you want to reset your admin account?')) {
+        window.sessionStorage.clear();
+        window.localStorage.clear();
+        window.location.reload(true);
+        // if (confirm('Are you sure you want to reset your admin account?')) {
 
-        LoadingService.show();
-        $localstorage.setObject('appOnboarding', null);
-        //true by default, false if logout
-        logout = true && logout;
+        // LoadingService.show();
+        // $localstorage.setObject('appOnboarding', null);
+        // //true by default, false if logout
+        // logout = true && logout;
 
-        var tempUni, tempUniId;
-        if (!university) {
-            $scope.user.university_id  = null;
-            $scope.user.university = null;
-        }   else {
-            tempUniId = $scope.user.university_id;
-            tempUni = $scope.user.university;
-        }
-        LoadingService.show();
-        // $scope.user.clearAttr($scope.user, $scope.user.id).then(function(user) {
-          LoadingService.showSuccess(0, 2000,'Admin Account Successfully cleared!');
-          window.localStorage.clear();
-          if (logout) {
-            $scope.logoutUser(true);
-            $scope.user.university_id = null;
-            $scope.user.university = null;
-          } else {
-            $scope.user.university = tempUni;
-            $scope.user.university_id = tempUniId;
-            $scope.user.updateAttr('university_id', $scope.user, $scope.user.university, null, $scope);
-          }
-          $localstorage.setObject('user', user.plain());
-          $scope.user = user.plain();
-          closeAttachActionSheet && closeAttachActionSheet();
-        }
+        // var tempUni, tempUniId;
+        // if (!university) {
+        //     $scope.user.university_id  = null;
+        //     $scope.user.university = null;
+        // }   else {
+        //     tempUniId = $scope.user.university_id;
+        //     tempUni = $scope.user.university;
+        // }
+        // LoadingService.show();
+        // // $scope.user.clearAttr($scope.user, $scope.user.id).then(function(user) {
+        //   LoadingService.showSuccess(0, 2000,'Admin Account Successfully cleared!');
+        //   window.localStorage.clear();
+        //   if (logout) {
+        //     $scope.logoutUser(true);
+        //     $scope.user.university_id = null;
+        //     $scope.user.university = null;
+        //   } else {
+        //     $scope.user.university = tempUni;
+        //     $scope.user.university_id = tempUniId;
+        //     $scope.user.updateAttr('university_id', $scope.user, $scope.user.university, null, $scope);
+        //   }
+        //   $localstorage.setObject('user', user.plain());
+        //   $scope.user = user.plain();
+        //   closeAttachActionSheet && closeAttachActionSheet();
+        // }
     }
 
     function setDefaultCoursesAndMajors($scope) {
