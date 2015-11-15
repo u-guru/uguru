@@ -446,7 +446,7 @@ angular.module('uguru.user', [])
         if ($scope.user.profile_url === 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100') {
             $scope.user.profile_url = img_base + BASE + "img/avatar.svg";
         }
-        $scope.user.is_a_guru = user.is_a_guru;
+        $scope.user.is_a_guru = false;
         $scope.user.guru_mode = user.guru_mode;
         $scope.user.gender = user.gender;
         $scope.user.customer_id = user.customer_id;
@@ -581,13 +581,12 @@ angular.module('uguru.user', [])
         $scope.user.max_hourly = parseInt(user.max_hourly);
 
         $scope.user.current_profile_percent = RankingService.calcProfile(user);
-        console.log('\n\nRanking Service calculating\n\n', RankingService.calcCredibility(user));
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
 
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
-        $scope.user.is_a_guru = !$scope.user.show_become_guru;
+        $scope.user.is_a_guru = false && !$scope.user.show_become_guru;
 
         $localstorage.setObject('user', $scope.user);
 
@@ -1474,7 +1473,7 @@ angular.module('uguru.user', [])
                 if (failure_callback) {
                     failure_callback();
                 }
-                
+
             }, function(err){
                 if (failure_callback) {
                     failure_callback(err);

@@ -156,6 +156,7 @@
 		&.default {
 			width: 100%;
 			max-width: 1200px;
+			margin: 0 auto;
 		}
 	}
 	.progress-bottom {
@@ -1710,59 +1711,516 @@
 #desktop-student-home {
 	background: $smoke;
 	.main {
-		@include flex;
-		@include flex-center;
-		.before-guru {
-			button {
-				@include round;
+		position: relative;
+		.top {
+			display: none;
+			width: 100%;
+			h1, h3 {
 				display: block;
-				margin: 15px;
-				width: 200px;
-				height: 200px;
-				font-weight: 600;
-				line-height: 1.2;
-				text-transform: uppercase;
-			}
-			.bg-lake-80p.activated, .bg-lake-80p:active {
-				@include opacity(1);
-				background: $lake!important;
-			}
-			.bg-campus-80p.activated, .bg-campus-80p:active {
-				@include opacity(1);
-				background: $campus!important;
-			}
-		}
-		#trending {
-			background: white;
-			h1 {
-				padding: 30px 15px 15px;
-				color: $slate;
-				font-size: 36px;
-				font-weight: 600;
+				color: $taupe;
 				text-align: center;
 			}
-			ul {
-				padding: 0 15px 30px;
-				button {
-					@include round;
-					display: block;
-					margin: 15px;
-					width: 150px;
-					height: 150px;
-					padding: 15px;
-					font-weight: 600;
-					line-height: 1.2;
-					text-transform: uppercase;
-					svg {
-						path {
-							stroke: white;
+			h1 {
+				font-size: 48px;
+				font-weight: 700;
+			}
+			h3 {
+				font-size: 24px;
+				font-weight: 600;
+			}
+		}
+		.student-home-container {
+			@include flex;
+			@include flex-center;
+			@include flex-wrap;
+			width: 100%;
+			height: 100%;
+			> div {
+				height: 50%;
+				> div {
+					background: $gabrielle;
+					height: 100%;
+					h2 {
+						padding: 15px 15px 0;
+						font-size: 36px;
+						font-weight: 600;
+						text-align: center;
+					}
+					ul {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						a, span {
+							display: block;
 						}
 					}
 				}
-				span  {
-					display: block;
+			}
+			.student-home-select {
+				width: 100%;
+				padding-bottom: 7.5px;
+				ul {
+					height: calc(100% - 58px);
+					padding: 0 15px 15px;
+					li {
+						width: 25%;
+						height: 100%;
+						padding: 15px;
+						text-align: center;
+						a {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							overflow: hidden;
+							span {
+								width: 100%;
+								padding: 15px 0;
+								font-size: 22px;
+								font-weight: 700;
+							}
+						}
+						&:not(:last-child) {
+							a {
+								background: white;
+								span {
+									position: absolute;
+									bottom: 0;
+									left: 0;
+								}
+							}
+						}
+						&:last-child {
+							a {
+								background: darken($gabrielle, 10%);
+								span {
+									@include center-xy;
+								}
+							}
+						}
+						&:nth-child(1) a span {
+							background: $cerise;
+						}
+						&:nth-child(2) a span {
+							background: $orange;
+						}
+						&:nth-child(3) a span {
+							background: $campus;
+						}
+						&:nth-child(4) a span {
+							background: darken($gabrielle, 10%);
+						}
+					}
+				}
+			}
+			.student-home-apps {
+				width: calc(100% / 3 * 2);
+				padding: 7.5px 7.5px 0 0;
+				ul {
+					height: calc(100% - 58px);
+					padding: 0 15px 15px;
+					li {
+						width: 25%;
+						height: 100%;
+						padding: 15px;
+						text-align: center;
+						a {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							overflow: hidden;
+							span {
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								width: 100%;
+								padding: 15px 0;
+								font-size: 22px;
+								font-weight: 700;
+								background: rgba($charcoal,.2);
+							}
+						}
+						&:nth-child(1) a {
+							background: $auburn;
+						}
+						&:nth-child(2) a {
+							background: $eggplant;
+						}
+						&:nth-child(3) a {
+							background: $azure;
+						}
+						&:nth-child(4) a {
+							background: $moola;
+						}
+					}
+				}
+			}
+			.student-home-guru {
+				width: calc(100% / 3);
+				padding: 7.5px 0 0 7.5px;
+				h3 {
+					margin-top: 0!important;
 					font-weight: 600;
 					text-align: center;
+				}
+				> div {
+					> div {
+						@include flex;
+						@include flex-center;
+						height: calc(100% - 150px);
+						ul {
+							li {
+								padding: 7.5px;
+								a {
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+					button {
+						background: darken($gabrielle, 10%);
+						font-weight: 600;
+					}
+				}
+			}
+		}
+		// .before-guru {
+		// 	button {
+		// 		@include round;
+		// 		display: block;
+		// 		margin: 15px;
+		// 		width: 200px;
+		// 		height: 200px;
+		// 		font-weight: 600;
+		// 		line-height: 1.2;
+		// 		text-transform: uppercase;
+		// 	}
+		// 	.bg-lake-80p.activated, .bg-lake-80p:active {
+		// 		@include opacity(1);
+		// 		background: $lake!important;
+		// 	}
+		// 	.bg-campus-80p.activated, .bg-campus-80p:active {
+		// 		@include opacity(1);
+		// 		background: $campus!important;
+		// 	}
+		// }
+		// #trending {
+		// 	background: white;
+		// 	h1 {
+		// 		padding: 30px 15px 15px;
+		// 		color: $slate;
+		// 		font-size: 36px;
+		// 		font-weight: 600;
+		// 		text-align: center;
+		// 	}
+		// 	ul {
+		// 		padding: 0 15px 30px;
+		// 		button {
+		// 			@include round;
+		// 			display: block;
+		// 			margin: 15px;
+		// 			width: 150px;
+		// 			height: 150px;
+		// 			padding: 15px;
+		// 			font-weight: 600;
+		// 			line-height: 1.2;
+		// 			text-transform: uppercase;
+		// 			svg {
+		// 				path {
+		// 					stroke: white;
+		// 				}
+		// 			}
+		// 		}
+		// 		span  {
+		// 			display: block;
+		// 			font-weight: 600;
+		// 			text-align: center;
+		// 		}
+		// 	}
+		// }
+	}
+}
+@media screen and (min-height:1000px) {
+	#desktop-student-home {
+		.main {
+			.top {
+				@include flex;
+				@include flex-center;
+				height: 20%;
+			}
+			.student-home-container {
+				height: 80%;
+			}
+		}
+	}
+}
+
+/* ---------- GURU HOME */
+#desktop-guru-home {
+	.main {
+		@include flex;
+		@include flex-center;
+		padding: 0;
+		.guru-home-greeting {
+			@include flex;
+			@include flex-center;
+			width: calc(50% + 80px);
+			height: 100%;
+			div {
+				text-align: center;
+				text-transform: uppercase;
+				h1 {
+					color: $gabrielle;
+					font-size: 40px;
+					font-weight: 700;
+				}
+				.guru-home-notifications {
+					ul {
+						@include flex;
+						@include flex-center;
+						width: 100%;
+						margin-top: 10%;
+						li {
+							padding: 0 15px;
+							a {
+								@include flex;
+								@include flex-center-vertical;
+								span {
+									display: block;
+								}
+								.notification-icon {
+									position: relative;
+									svg {
+										@include round;
+										@include svg-stroke($slate, 5);
+										background: $smoke;
+										width: 64px;
+										height: 64px;
+										padding: 10px;
+									}
+									.notification-number {
+										@include round;
+										@include flex;
+										@include flex-center;
+										position: absolute;
+										top: -15px;
+										right: -15px;
+										width: 40px;
+										height: 40px;
+										background: $gabrielle;
+										border: 3px solid $charcoal;
+										font-size: 18px;
+										font-weight: 600;
+									}
+								}
+								.notification-type {
+									padding-left: 15px;
+									font-weight: 600;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.guru-home-tiles {
+			height: 100%;
+			max-height: 715px;
+			margin-right: -20px;
+			.square {
+				height: 100%;
+			}
+			.square + div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 5;
+				h2, h3 {
+					padding: 15px 0;
+					font-weight: 700;
+					text-transform: uppercase;
+					span {
+						font-weight: 300;
+					}
+				}
+				h3 {
+					padding-bottom: 0;
+					font-size: 20px;
+				}
+				progress {
+					margin: 0 15px;
+					width: calc(100% - 30px);
+				}
+			}
+			> div {
+				width: 100%;
+				height: 50%;
+				text-align: center;
+			}
+			.home-tiles-top {
+				@include flex;
+				@include flex-center;
+				padding-top: 7.5px;
+				padding-left: 10px;
+				.home-tiles-ranking {
+					height: 100%;
+					width: calc(100% / 3 * 2);
+					padding: 7.5px;
+					> div {
+						position: relative;
+						height: 100%;
+						.square {
+							fill: lighten($gabrielle, 15%);
+						}
+						#guru-chart {
+							position: relative;
+							height: calc(100% - 58px);
+							width: 100%;
+							#guru-ranking-progress-bar {
+								height: 100%;
+							}
+							svg {
+								padding: 0 15px 15px;
+								height: 100%;
+								path {
+									stroke-linecap: round;
+								}
+							}
+							#percentile {
+								@include center-xy;
+								#percentile-ranking {
+									position: relative;
+									margin-top: -30px;
+									font-size: 96px;
+									font-weight: 600;
+									line-height: 1;
+									text-align: center;
+									&::after {
+										content: "th";
+										display: block;
+										position: absolute;
+										top: 14px;
+										right: -15px;
+										font-size: 20px;
+										font-weight: 600;
+										line-height: 28px;
+										text-transform: uppercase;
+									}
+								}
+								#percentile-label {
+									font-size: 20px;
+									font-weight: 600;
+									letter-spacing: 1px;
+									line-height: 1.2;
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+				.home-tiles-event {
+					height: 100%;
+					width: calc(100% / 3);
+					padding: 7.5px;
+					> div {
+						position: relative;
+						height: 50%;
+						.square + div {
+							height: calc(100% - 7.5px);
+						}
+						&:first-child {
+							padding-bottom: 7.5px;
+							.square {
+								fill: $gabrielle;
+							}
+							.square + div {
+								svg {
+									@include svg-stroke(white, 2);
+									height: calc(100% - 39px);
+								}
+							}
+						}
+						&:last-child {
+							padding-top: 7.5px;
+							.square {
+								fill: desaturate($gabrielle, 20%);
+							}
+						}
+					}
+				}
+			}
+			.home-tiles-bottom {
+				@include flex;
+				@include flex-center;
+				padding-bottom: 7.5px;
+				padding-left: 10px;
+				.home-tiles-stats {
+					height: 100%;
+					width: calc(100% / 3);
+					padding: 7.5px;
+					> div {
+						position: relative;
+						height: 50%;
+						.square + div {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							height: calc(100% - 7.5px);
+							h3 {
+								padding-top: 0;
+							}
+							progress {
+								vertical-align: 0;
+							}
+						}
+						&:first-child {
+							padding-bottom: 7.5px;
+							.square {
+								fill: saturate($gabrielle, 5%);
+							}
+						}
+						&:last-child {
+							padding-top: 7.5px;
+							.square {
+								fill: desaturate($gabrielle, 20%);
+							}
+							.square + div {
+								top: 7.5px;
+							}
+						}
+					}
+				}
+				.home-tiles-upcoming {
+					height: 100%;
+					width: calc(100% / 3 * 2);
+					padding: 7.5px;
+					> div {
+						position: relative;
+						height: 100%;
+						.square {
+							fill: $gabrielle;
+						}
+						.square + div {
+							ul {
+								padding: 0 15px 15px;
+								font-size: 18px;
+								text-align: left;
+								font-weight: 600;
+								li {
+									margin-bottom: 5px;
+									padding-bottom: 5px;
+									border-bottom: 1px solid white;
+								}
+								span {
+									@include opacity(.5);
+									font-size: 14px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -1939,7 +2397,7 @@
 			color: white!important;
 		}
 		> div {
-			max-width: 500px;
+			max-width: 600px;
 			margin: 0 auto;
 			> button {
 				display: block;
@@ -1996,6 +2454,1442 @@
 		button:hover {
 			background: $slate!important;
 			color: white!important;
+		}
+	}
+}
+
+/* ---------- MESSAGING */
+#desktop-messaging {
+	background: $slate;
+	.main {
+		padding: 0;
+		#messenger {
+			@include flex;
+			width: 100%;
+			height: 100%;
+			background: $smoke;
+			#messenger-sidebar {
+				position: relative;
+				width: 30%;
+				height: 100%;
+				background: rgba($taupe,.5);
+				h1 {
+					padding: 15px;
+					font-size: 32px;
+					font-weight: 900;
+				}
+				ul {
+					li {
+						font-weight: 400;
+						text-transform: uppercase;
+						a {
+							display: block;
+							padding: 15px;
+							&.active, &:active {
+								background: rgba($smoke,.2);
+							}
+							&:hover, &:focus {
+								background: rgba($smoke,.4);
+							}
+						}
+					}
+				}
+				#messenger-sidebar-search {
+					position: absolute;
+					bottom: 15px;
+					left: 15px;
+					width: calc(100% - 30px);
+					label {
+						@include center-y;
+						left: 15px;
+						svg {
+							@include svg-stroke(rgba($taupe,.5), 8);
+							margin-top: 2px;
+							width: 24px;
+							height: 24px;
+						}
+					}
+					input {
+						@include round;
+						display: block;
+						width: 100%;
+						height: 48px;
+						padding-left: 51px;
+						padding-right: 15px;
+						font-size: 16px;
+						background: $smoke;
+						border: 0;
+						&:active, &:hover, &:focus {
+							background: white;
+							@include placeholder {
+								color: $taupe;
+							}
+						}
+					}
+					label:hover + input {
+						background: white;
+					}
+				}
+			}
+			#messenger-content {
+				width: 70%;
+				height: 100%;
+				.messenger-header {
+					@include flex;
+					@include flex-center-vertical;
+					background: $taupe;
+					width: 100%;
+					h1 {
+						padding: 15px;
+						font-size: 32px;
+						font-weight: 700;
+						width: calc(100% - 72px);
+					}
+					a {
+						@include flex;
+						@include flex-center;
+						width: 68px;
+						height: 68px;
+						svg {
+							@include svg-stroke(white, 7);
+							width: 36px;
+							height: 36px;
+						}
+					}
+					#message-search {
+						position: relative;
+						input {
+							position: absolute;
+							top: 0;
+							left: -200px;
+							width: 200px;
+							height: 100%;
+							background: lighten($smoke, 5%);
+							border: 0;
+							padding-left: 15px;
+							padding-right: 15px;
+							font-size: 20px;
+							&:active, &:hover, &:focus {
+								background: white;
+								@include placeholder {
+									color: $taupe;
+								}
+							}
+						}
+					}
+					#message-nav {
+						a {
+							svg {
+								fill: white;
+							}
+						}
+						div {
+							display: none;
+						}
+					}
+				}
+				#message-container {
+					height: calc(100% - 68px);
+					#messages {
+						padding: 15px;
+						height: calc(100% - 64px);
+						overflow: auto;
+						color: $taupe;
+						font-size: 18px;
+						font-weight: 400;
+						.message-single {
+							@include flex;
+							margin-bottom: 45px;
+							.message-single-icon {
+								img, svg {
+									@include round;
+									width: 50px;
+									height: 50px;
+								}
+								svg {
+									background: $shamrock;
+									padding: 10px;
+									path {
+										fill: white;
+									}
+								}
+							}
+							.message-single-content {
+								@include flex;
+								@include flex-wrap;
+								width: calc(100% - 50px);
+								position: relative;
+								.message-single-info {
+									position: absolute;
+									top: -24px;
+									width: calc(100% - 65px);
+									font-size: 14px;
+									color: darken($taupe, 5%);
+									span:first-child {
+										font-weight: 700;
+									}
+								}
+								.message-single-message {
+									background: white;
+									padding: 10px 15px;
+									margin-bottom: 15px;
+									border-radius: 2px;
+									line-height: 1.3;
+								}
+							}
+							&.left {
+								.message-single-icon {
+									margin-right: 15px;
+								}
+								.message-single-content {
+									padding-right: 65px;
+								}
+							}
+							&.center {
+								@include flex-center-vertical;
+							}
+							&.right {
+								.message-single-icon {
+									margin-left: 15px;
+								}
+								.message-single-content {
+									padding-left: 65px;
+									.message-single-info {
+										text-align: right;
+									}
+									.message-single-message {
+										background: rgba($azure, .1);
+									}
+								}
+							}
+						}
+					}
+					#message-box {
+						position: relative;
+						a {
+							position: absolute;
+							display: block;
+							top: 0;
+							left: 0;
+							width: 64px;
+							height: 64px;
+							svg {
+								@include svg-stroke(rgba($taupe,.4), 4);
+								width: 100%;
+								height: 100%;
+								padding: 8px;
+							}
+						}
+						input {
+							display: block;
+							background: lighten($smoke, 5%);
+							border: 0;
+							width: 100%;
+							height: 64px;
+							padding: 15px 15px 15px 64px;
+							font-size: 18px;
+							&:active, &:hover, &:focus {
+								background: white;
+								@include placeholder {
+									color: $taupe;
+								}
+							}
+						}
+					}
+				}
+			}
+			&.bg-cerise {
+				#messenger-sidebar {
+					background: rgba($cerise, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $cerise;
+					}
+				}
+			}
+			&.bg-orange {
+				#messenger-sidebar {
+					background: rgba($orange, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $orange;
+					}
+				}
+			}
+			&.bg-gold {
+				#messenger-sidebar {
+					background: rgba($gold, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $gold;
+					}
+				}
+			}
+			&.bg-moola {
+				#messenger-sidebar {
+					background: rgba($moola, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $moola;
+					}
+				}
+			}
+			&.bg-shamrock {
+				#messenger-sidebar {
+					background: rgba($shamrock, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $shamrock;
+					}
+				}
+			}
+			&.bg-azure {
+				#messenger-sidebar {
+					background: rgba($azure, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $azure;
+					}
+				}
+			}
+			&.bg-lake {
+				#messenger-sidebar {
+					background: rgba($lake, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $lake;
+					}
+				}
+			}
+			&.bg-eggplant {
+				#messenger-sidebar {
+					background: rgba($eggplant, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $eggplant;
+					}
+				}
+			}
+			&.bg-campus {
+				#messenger-sidebar {
+					background: rgba($campus, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $campus;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- REQUESTS */
+.desktop-request {
+	background: $smoke;
+	.request-header {
+		@include flex;
+		@include flex-center;
+		font-weight: 900;
+		line-height: 1;
+		letter-spacing: 0;
+		text-transform: none;
+		.request-category {
+			@include opacity(.5);
+			font-weight: 600;
+			+ span {
+				display: inline-block;
+			}
+		}
+	}
+	.main {
+		width: 100%;
+		height: 100%;
+		background: none!important;
+		padding: 0;
+		header {
+			@include flex;
+			@include flex-center;
+			position: relative;
+			height: 25%;
+			background: $taupe;
+			.request-header {
+				font-size: 36px;
+				.request-category {
+					+ span {
+						padding: 0 10px;
+						svg {
+							@include svg-stroke(white, 16);
+							margin-top: 10px;
+							width: 28px;
+							height: 28px;
+						}
+					}
+				}
+			}
+		}
+		.request-form {
+			@include flex;
+			@include flex-center;
+			max-width: 830px;
+			height: 75%;
+			margin: 0 auto;
+			> div {
+				@include flex;
+				@include flex-wrap;
+				width: 100%;
+				> div {
+					padding: 15px;
+				}
+			}
+			.request-form-time {
+				width: 100%;
+				ul {
+					@include flex;
+					@include flex-center;
+					color: $taupe;
+					font-size: 24px;
+					font-weight: 600;
+					li {
+						margin: 0 7.5px;
+						&:nth-child(2), &:nth-child(3) {
+							position: relative;
+							span {
+								@include flex;
+								@include flex-center;
+								padding: 15px;
+								background: white;
+								border-radius: 2px;
+							}
+							input {
+								display: inline-block;
+								text-align: right;
+								background: white;
+								border: 0;
+								font-size: 24px;
+								font-weight: 600;
+								color: $taupe;
+								@include placeholder {
+									color: rgba($taupe,.5);
+								}
+							}
+						}
+						&:nth-child(2) {
+							margin-right: 15px;
+							&::after {
+								@include center-y;
+								content: ":";
+								right: -15px;
+							}
+							span {
+								input {
+									max-width: 20px;
+								}
+								&::after {
+									content: "hr";
+									display: inline-block;
+									padding-left: 5px;
+								}
+							}
+						}
+						&:nth-child(3) {
+							span {
+								input {
+									max-width: 30px;
+								}
+								&::after {
+									content: "min";
+									display: inline-block;
+									padding-left: 5px;
+								}
+							}
+						}
+					}
+				}
+			}
+			.request-form-map, .request-form-date {
+				width: 50%;
+				height: 150px;
+				> div {
+					@include flex;
+					@include flex-center;
+					background: white;
+					color: $taupe;
+					border: 2px solid $taupe;
+					border-radius: 3px;
+					width: 100%;
+					height: 100%;
+					font-size: 24px;
+					text-align: center;
+					ul {
+						li {
+							h2 {
+								font-size: 22px;
+								font-weight: 700;
+								line-height: 1.2;
+							}
+							> span {
+								font-size: 20px;
+								font-weight: 400;
+								line-height: 1.2;
+							}
+						}
+					}
+				}
+			}
+			.request-form-date {
+				> div {
+					border-left-width: 10px;
+				}
+			}
+			.request-form-desc {
+				> div {
+					background: white;
+					> div {
+						padding: 15px;
+						height: 112.5px;
+					}
+				}
+			}
+			.request-form-upload {
+				> div {
+					background: $slate;
+					> div {
+						height: 112.5px;
+						ul {
+							@include flex;
+							@include flex-center;
+							padding: 7.5px;
+							li {
+								@include flex;
+								@include flex-center;
+								position: relative;
+								width: 25%;
+								height: 92.5px;
+								padding: 7.5px;
+								text-align: center;
+								> svg {
+									@include svg-stroke(white, 3);
+								}
+								div, > svg {
+									width: 75px;
+									height: 75px;
+								}
+								span {
+									@include center-xy;
+									display: block;
+									color: white;
+									font-size: 24px;
+									font-weight: 700;
+									text-transform: uppercase;
+								}
+								&.upload-img {
+									div {
+										@include opacity(.4);
+										position: relative;
+										border-radius: 7px;
+										background-position: center;
+										background-size: cover;
+									}
+									&::after {
+										@include center-xy;
+										content: "";
+										display: block;
+										width: 75px;
+										height: 75px;
+										border: 3px solid white;
+										border-radius: 7px;
+									}
+								}
+								&.upload-pdf {
+									> svg {
+										fill: $cerise;
+									}
+								}
+								&.upload-add {
+									> svg {
+										fill: $taupe;
+									}
+									span {
+										height: 40px;
+										overflow: hidden;
+										svg {
+											@include svg-stroke(white, 9);
+											width: 40px;
+											height: 40px;
+											overflow: hidden;
+										}
+									}
+								}
+							}
+						}	
+					}
+				}
+			}
+			.request-form-desc, .request-form-upload {
+				width: 50%;
+				padding: 15px;
+				> div {
+					width: 100%;
+					> div {
+						color: $taupe;
+						font-size: 18px;
+						font-weight: 400;
+						line-height: 1.4;
+					}
+					button {
+						background: $taupe;
+						font-weight: 600;
+					}
+					.input + button {
+						height: 48px;
+						font-size: 20px;
+					}
+				}
+			}
+			.request-form-submit {
+				width: 100%;
+				button {
+					display: block;
+					width: 100%;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+			}
+		}
+		&.bg-cerise {
+			header {
+				background: $cerise;
+			}
+			.request-form {
+				.request-form-map, .request-form-date {
+					> div {
+						color: $cerise;
+						border-color: $cerise;
+					}
+				}
+			}
+			.request-form-payment {
+				a {
+					background: $cerise;
+				}
+			}
+			.request-form-submit {
+				button {
+					background: $cerise;
+				}
+			}
+		}
+	}
+}
+// COMMON CLASSES
+.user-icon {
+	@include round;
+	display: block;
+	margin: 0 auto;
+	width: 128px;
+	height: 128px;
+	background-position: center;
+	background-size: cover;
+	border: 5px solid white;
+}
+// CONFIRM
+#desktop-request-student, #desktop-request-guru {
+	header {
+		position: relative;
+		background: $taupe;
+	}
+	.request-form {
+		-webkit-align-items: flex-start;
+		align-items: flex-start;
+		.request-form-header {
+			width: 100%;
+			text-align: center;
+			padding-top: 0;
+			h1 {
+				&:first-child {
+					font-size: 40px;
+					font-weight: 600;
+					span {
+						font-weight: 900;
+					}
+				}
+			}
+			.request-header {
+				margin-top: 0!important;
+				.request-category {
+					+ span {
+						padding: 0 5px;
+						svg {
+							margin-top: 5px;
+							width: 20px;
+							height: 20px;
+						}
+					}
+				}
+			}
+		}
+		.request-form-map {
+			height: 310px;
+			> div {
+				-webkit-align-items: flex-end;
+				align-items: flex-end;
+				ul {
+					color: white;
+					width: 100%;
+					padding: 15px;
+				}
+			}
+		}
+		.request-form-map + div {
+			width: 50%;
+			> div {
+				width: 100%;
+			}
+			.request-form-date {
+				height: 100px;
+			}
+			.request-form-upload {
+				.input {
+					padding-top: 10px;
+					color: white;
+					font-size: 24px;
+					font-weight: 600;
+					text-align: center;
+				}
+			}
+		}
+		.request-form-submit {
+			button {
+				text-transform: none!important;
+			}
+			a {
+				display: block;
+				margin-top: 15px;
+				width: 100%;
+				color: rgba($taupe,.6);
+				font-size: 18px;
+				font-weight: 600;
+				text-align: center;
+			}
+		}
+	}
+}
+#desktop-request-student {
+	header {
+		height: 15%;
+		.user-icon {
+			@include center-x;
+			bottom: -40px;
+			border-color: $smoke;
+		}
+	}
+	.request-form {
+		height: 85%;
+		padding-top: 40px;
+		.request-form-header {
+			h1 {
+				color: $slate;
+			}
+			.request-header {
+				.request-category {
+					+ span {
+						svg {
+							@include svg-stroke($slate, 16);
+						}
+					}
+				}
+			}
+		}
+		.request-form-map {
+			> div {
+				border-color: $slate;
+				ul {
+					background: $slate;
+				}
+			}
+		}
+		.request-form-map + div {
+			.request-form-date + div {
+				@include flex;
+				@include flex-center;
+				margin-top: 30px;
+				height: 150px;
+				.request-form-upload {
+					height: 100%;
+					padding: 0;
+					> div {
+						height: 100%;
+						ul {
+							li {
+								width: 50%;
+							}
+						}
+					}
+				}
+				.request-form-payment {
+					height: 150px;
+					width: 100%;
+					padding-left: 30px;
+					div {
+						width: 100%;
+						height: 100%;
+						a {
+							@include flex;
+							@include flex-center;
+							width: 100%;
+							height: 100%;
+							font-weight: 600;
+							line-height: 1.4;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#desktop-request-guru {
+	.main {
+		background: $charcoal!important;
+	}
+	header {
+		height: 23%;
+		h2 {
+			@include flex;
+			@include flex-center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background: rgba($slate,.8);
+			padding: 15px;
+			font-weight: 600;
+			span:first-child {
+				color: $gabrielle;
+			}
+			span:last-child {
+				font-size: 32px;
+				font-weight: 700;
+			}
+		}
+		div {
+			@include center-x;
+			@include flex;
+			@include flex-center;
+			bottom: -40px;
+		}
+		.user-icon {
+			border-color: $charcoal;
+			&:last-child {
+				margin-left: -24px;
+			}
+		}
+	}
+	.request-form {
+		height: 77%;
+		padding-top: 40px;
+		.request-form-header {
+			h1 {
+				color: white;
+			}
+			.request-header {
+				.request-category {
+					+ span {
+						svg {
+							@include svg-stroke(white, 16);
+						}
+					}
+				}
+			}
+		}
+		.request-form-map {
+			height: 305px;
+			> div {
+				border-color: $gabrielle;
+				ul {
+					background: $gabrielle;
+				}
+			}
+		}
+		.request-form-date {
+			> div {
+				border-color: $gabrielle;
+				color: $gabrielle;
+			}
+		}
+		.request-form-upload {
+			padding: 30px 0 0;
+			.input {
+				height: 145px;
+			}
+		}
+		.request-form-submit {
+			button {
+				background: $moola;
+			}
+		}
+	}
+}
+// CALENDAR
+#request-calendar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+}
+#desktop-request-calendar {
+	@include flex;
+	@include flex-center;
+	background: rgba($slate,.9)!important;
+	#calendar-container {
+		width: 100%;
+		max-width: 800px;
+		height: 100%;
+		max-height: 500px;
+		background: white;
+		header {
+			background: $charcoal;
+		}
+		#calendar {
+			position: relative;
+			height: calc(100% - 50px);
+			#calendar-header {
+				background: $slate;
+				width: 100%;
+				overflow-x: auto;
+				ul {
+					display: flex;
+					li {
+						width: calc(100% / 7);
+						span {
+							@include flex;
+							@include flex-center;
+							width: 114px;
+							height: 28px;
+							text-align: center;
+							font-size: 16px;
+							font-weight: 600;
+							line-height: 1;
+						}
+					}
+				}
+			}
+			#calendar-side {
+				position: absolute;
+				left: -100px;
+				top: 28px;
+				width: 100px;
+				height: calc(100% - 28px);
+				overflow: auto;
+				ul {
+					height: 100%;
+					li {
+						@include flex;
+						@include flex-center-vertical;
+						-webkit-justify-content: flex-end;
+						justify-content: flex-end;
+						height: calc(100% / 9);
+						color: rgba(white, .6);
+						font-size: 18px;
+						font-weight: 600;
+						padding: 0 15px;
+					}
+				}
+			}
+			#calendar-body {
+				@include flex;
+				width: 100%;
+				padding: 1px;
+				height: calc(100% - 28px);
+				overflow: auto;
+				ul {
+					width: calc(100% / 7);
+					height: 100%;
+					li {
+						width: 114px;
+						height: calc(100% / 9);
+						padding: 1px;
+						a {
+							@include flex;
+							@include flex-center;
+							@include transition(.15s ease-in-out);
+							position: relative;
+							width: 100%;
+							height: 100%;
+							background: $smoke;
+							svg {
+								@include opacity(0);
+								@include transition(.15s ease-in-out);
+							}
+							svg.dashed {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								padding: 3px;
+								rect {
+									width: 100%;
+									height: 100%;
+									fill: none;
+									stroke: white;
+									stroke-width: 3px;
+									stroke-linecap: round;
+									stroke-linejoin: round;
+									stroke-dasharray: 5, 8;
+								}
+							}
+							svg:not(.dashed) {
+								@include svg-stroke(white, 12);
+								width: 20px;
+								height: 20px;
+							}
+							&:hover, &:focus {
+								background: rgba($slate, .4);
+								svg {
+									@include opacity(.6);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// PRICE
+#request-price {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+}
+#desktop-request-price {
+	@include flex;
+	@include flex-center;
+	background: rgba($slate,.9)!important;
+	#price-container {
+		width: 100%;
+		max-width: 800px;
+		height: 100%;
+		max-height: 500px;
+		background: white;
+		text-align: center;
+		h1, h3 {
+			color: $charcoal;
+		}
+		h1 {
+			padding: 15px 15px 0;
+			font-weight: 900;
+			font-size: 32px;
+		}
+		h3 {
+			margin-top: 0;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 0 15px;
+		}
+		ul {
+			@include flex-center-vertical;
+			padding: 15px;
+			height: calc(100% - 141px);
+			li {
+				position: relative;
+				padding: 15px;
+				a {
+					display: block;
+					position: relative;
+					font-size: 48px;
+					font-weight: 600;
+					span, .add {
+						@include center-xy;
+						display: block;
+					}
+					.add {
+						@include svg-stroke(white, 5);
+						width: 80px;
+						height: 80px;
+					}
+					svg {
+						rect {
+							fill: $charcoal;
+						}
+					}
+					&:hover, &:focus, &.active {
+						svg {
+							rect {
+								fill: $moola;
+							}
+						}
+					}
+					&:active {
+						svg {
+							rect {
+								fill: darken($moola, 10%);
+							}
+						}
+					}
+				}
+				&:last-child {
+					.price-fill {
+						display: none;
+						position: absolute;
+						top: 15px;
+						left: 15px;
+						width: calc(100% - 30px);
+						height: calc(100% - 30px);
+						background: white;
+						border: 3px solid $moola;
+						input {
+							@include center-xy;
+							border: 0;
+							background: none;
+							font-size: 48px;
+							font-weight: 600;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// CATEGORIES
+.desktop-request-categories {
+	.main {
+		background: $smoke!important;
+		> div:first-child {
+			ul {
+				@include flex;
+				@include flex-center;
+				@include flex-wrap;
+				li {
+					width: 25%;
+				}
+			}
+		}
+	}
+}
+#desktop-request-subcategories {
+	.main {
+		padding: 0;
+		.request-subcategories-content {
+			height: 72%;
+			padding: 15px;
+			.request-subcategories-header {
+				text-align: center;
+				h1 {
+					font-size: 48px;
+					font-weight: 900;
+				}
+				h3 {
+					margin-top: 0!important;
+					font-weight: 600;
+				}
+			}
+			ul {
+				max-width: 1230px;
+				margin: 0 auto;
+				height: calc(100% - 85px);
+				padding-top: 15px;
+				li {
+					height: 50%;
+					padding: 15px;
+					a {
+						display: block;
+						height: 100%;
+						div {
+							height: calc(100% - 50px);
+							background-color: darken($cerise, 10%);
+							background-position: center;
+							background-size: cover;
+						}
+						span {
+							display: block;
+							padding: 15px;
+							background: white;
+							font-size: 20px;
+							font-weight: 600;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+		.request-subcategories-footer {
+			height: 28%;
+			padding: 15px;
+			color: $slate;
+			text-align: center;
+			h2 {
+				font-size: 36px;
+				font-weight: 700;
+			}
+			.request-subcategories-footer-container {
+				@include flex;
+				@include flex-center;
+				position: relative;
+				width: 800px;
+				margin: 15px auto 0;
+				.request-subcategories-footer-nav {
+					svg {
+						@include svg-stroke($slate, 6);
+						padding: 30px;
+						height: 100px;
+						width: 100px;
+					}
+				}
+				.request-subcategories-footer-list {
+					overflow: auto;
+				}
+			}
+			ul {
+				@include flex;
+				li {
+					width: 100px;
+					height: 100px;
+					margin: 0 15px;
+					&:first-child {
+						margin-left: 0;
+					}
+					&:last-child {
+						margin-right: 0;
+					}
+					a {
+						display: block;
+						width: 100px;
+						height: 100%;
+						background: white;
+						div {
+							height: calc(100% - 30px);
+							background-position: center;
+							background-size: cover;
+						}
+						span {
+							display: block;
+							padding: 5px;
+							font-size: 16px;
+							font-weight: 600;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#desktop-request-categories {
+	.main {
+		.request-categories-header {
+			color: $slate;
+			text-align: center;
+			h1 {
+				font-size: 48px;
+				font-weight: 900;
+			}
+			h3 {
+				margin-top: 0!important;
+				font-weight: 600;
+			}
+		}
+		.request-categories-content {
+			@include flex;
+			@include flex-center;
+			max-width: 1030px;
+			margin: 0 auto;
+			height: calc(100% - 85px);
+			ul {
+				li {
+					a {
+						position: relative;
+						width: 100%;
+						height: 100%;
+						.square {
+							fill: none;
+							width: 100%;
+							height: 100%;
+						}
+						svg:not(.square) {
+							@include svg-stroke(white, 2);
+							@include center-x;
+							top: 0;
+							height: calc(100% - 50px);
+						}
+						span {
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							width: 100%;
+							display: block;
+							padding: 15px;
+							background: rgba($charcoal, .4);
+							font-weight: 600;
+							text-align: center;
+						}
+					}
+					&:nth-child(1) a {
+						background: $cerise;
+					}
+					&:nth-child(2) a {
+						background: $orange;
+					}
+					&:nth-child(3) a {
+						background: $gold;
+					}
+					&:nth-child(4) a {
+						background: $moola;
+					}
+					&:nth-child(5) a {
+						background: $lake;
+					}
+					&:nth-child(6) a {
+						background: $eggplant;
+					}
+					&:nth-child(7) a {
+						background: $campus;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- RATING */
+#desktop-rating {
+	&.student-mode {
+		background: $smoke;
+		color: $slate;
+		.main {
+			> ul {
+				li {
+					button {
+						background: lighten($slate, 20%);
+					}
+					svg {
+						fill: mix($gold, $smoke, 50%);
+						stroke: mix($gold, $smoke, 50%);
+					}
+					ul {
+						&.rating-charge {
+							border-bottom: 1px solid rgba($slate,.5);
+							li {
+								&:first-child {
+									color: rgba($slate,.6);
+								}
+								&:last-child {
+									color: $slate;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.guru-mode {
+		.main {
+			background: $charcoal;
+			> ul {
+				li {
+					button {
+						background: $slate;
+					}
+					svg {
+						fill: mix($gold, $charcoal, 50%);
+						stroke: mix($gold, $charcoal, 50%);
+					}
+					ul {
+						&.rating-charge {
+							border-bottom: 1px solid rgba(white,.5);
+							li {
+								&:first-child {
+									color: rgba(white,.6);
+								}
+								&:last-child {
+									color: white;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.main {
+		@include flex;
+		@include flex-center;
+		> ul {
+			width: 100%;
+			max-width: 800px;
+			text-align: center;
+			li {
+				h1 {
+					padding-top: 15px;
+					font-size: 40px;
+					font-weight: 900;
+				}
+				svg {
+					width: 70px;
+					height: 70px;
+					stroke-width: 4px;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+				}
+				button {
+					font-weight: 600;
+					&:hover, &:focus {
+						@include opacity(2);
+						background: darken($lake, 10%);
+					}
+					&:active, &.activated {
+						background: $lake;
+					}
+				}
+				h2 {
+					padding: 30px 0;
+					font-size: 32px;
+					font-weight: 600;
+				}
+				ul {
+					@include flex;
+					@include flex-center;
+					&.rating-charge {
+						padding: 60px 0 30px;
+						li {
+							width: 50%;
+							font-weight: 600;
+							&:first-child {
+								font-size: 32px;
+							}
+							&:last-child {
+								font-size: 36px;
+							}
+						}
+					}
+					&.rating-stars {
+						padding-bottom: 30px;
+						li {
+							&:hover, &:focus, &.active, &:active {
+								svg {
+									fill: $gold;
+									stroke: $gold;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -2121,11 +4015,11 @@ a.back-icon-settings {
 
 .desktop-guru-onboarding {
 	.main.default {
-		min-height:calc(50%);
+		min-height: 50%;
 	}
 }
 .photo-view .main {
-	height:calc(100% - 140px);
+	height: calc(100% - 140px);
 }
 
 .mode-links {

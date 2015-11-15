@@ -3,10 +3,11 @@ angular.module('uguru.root.services')
     '$timeout',
     'DeviceService',
     'LoadingService',
+    '$state',
     Camera
     ]);
 
-function Camera($timeout, DeviceService, LoadingService) {
+function Camera($timeout, DeviceService, LoadingService, $state) {
 
   var processFileType = function(file_string) {
     if (file_string.indexOf('image/') !== -1) {
@@ -62,23 +63,21 @@ function Camera($timeout, DeviceService, LoadingService) {
       formData.append('filename', file_name);
 
       //if user is uploading a transcript
-      if ($scope.root.vars.profile_url_changed) {
-        try {
-          formData.append('transcript_url', is_transcript);  
-        } catch (err) {
-          console.log("is_transcript: " + err);
+      if ($state.current.name === 'root.guru-credibility') {
+        formData.append('transcript_url', $scope.user.id);  
+        LoadingService.showSuccess('Sending...', 2000);
+        $scope.user.transcript_file.url = true;
+        var callback_success = function() {
+          LoadingService.showSuccess("Transcript successfully sent.", 2000);
         }
-        
       }
-      //if user is logged in
-      if ($scope.root.vars.profile_url_changed && $scope.user.id) {
+
+      if ($state.current.name === 'root.guru-profile') {
         formData.append('profile_url', $scope.user.id);
-      }
-
-      LoadingService.showSuccess('Saving...', 2000);
-
-      var callback_success = function() {
-        LoadingService.showSuccess("Photo Successfully Saved");
+        LoadingService.showSuccess('Saving...', 2000);
+        var callback_success = function() {
+          LoadingService.showSuccess("Photo Successfully Saved");
+        }
       }
 
       var callback_failure = function() {
@@ -86,7 +85,6 @@ function Camera($timeout, DeviceService, LoadingService) {
       }
 
       $timeout(function() {
-
         $scope.user.createObj($scope.user, 'files', formData, $scope, callback_success, callback_failure);
       }, 500)
     }

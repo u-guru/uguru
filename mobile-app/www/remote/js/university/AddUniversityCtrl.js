@@ -141,11 +141,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.universitySelected = function(university) {
 
-    // $timeout(function() {
-    //   PerformanceService.sendListResponseTime('University_List');
-    // }, 0);
-
-
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
         if ($scope.user.guru_courses && $scope.user.guru_courses.length && confirm('Are you sure? Your current courses will be deactivated')) {
@@ -154,20 +149,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       }
       $scope.user.university = university;
 
-      // LoadingService.showAmbig(null, 1000);
-      // $timeout(function() {
-
-      // }, 1250)
-      var flipCallback = function() {
-        AnimationService.flip('^.home');
-      }
-
-      LoadingService.showSuccess('Saved!', 1500, flipCallback);
-
       University.clearSelected();
       $timeout(function() {
         University.getMajors(university.id);
-        University.getPopularCourses(university.id);
+        University.getPopularCourses(university.id, $scope);
       }, 1000);
 
 
@@ -182,41 +167,26 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
         $localstorage.setObject('user', $scope.user);
       }, 0);
 
-      // //save university
-      // var postUniversitySelectedCallback = function() {
-
-      //   var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
-      //   if(modal !== undefined) {
-      //     var stringList = modal.classList.toString();
-      //     if(stringList.indexOf('ng-enter-active')) {
-      //       modal.classList.add('ng-leave');
-      //       modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
-      //       $ionicSlideBoxDelegate.update();
-
-      //     }
-      //   } else {
-      //     $ionicViewSwitcher.nextDirection('forward');
-      //     $timeout(function() {
-      //       console.log("cleaning up access/university slidebox");
-      //       var accessUni = document.querySelectorAll('#access-uni-slide')[0];
-      //       if(accessUni) accessUni.remove();
-      //       $scope.$destroy();
-      //     }, 1000);
-
-      //   }
-      // };
-
       var payload = {
         'university_id': university.id
+      }
+
+      console.log('current state', $state.current.name);
+      var flipCallback;
+      if ($state.current.name === 'root.university') {
+
+        LoadingService.showSuccess('Saved!', 1500, function() {
+          AnimationService.flip('^.home');
+        });
+      } else {
+        LoadingService.showSuccess('Saved!', 1500, function() {
+          $scope.closeModal('university');
+        });
       }
 
       $timeout(function() {
         $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope);
       }, 0);
-
-      if ($state.current.name !== 'root.university') {
-        $scope.closeModal('university');
-      }
 
   };
 

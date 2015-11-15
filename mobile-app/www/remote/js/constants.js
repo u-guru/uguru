@@ -1,3 +1,3 @@
 var _local = "true";
-var _startpage = "university";
-var _ipaddress = "192.168.1.209";
+var _startpage = "home";
+var _ipaddress = "192.168.42.66";

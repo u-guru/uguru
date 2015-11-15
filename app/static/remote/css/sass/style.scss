@@ -22,13 +22,13 @@ body {
 	}
 }
 ::-webkit-selection {
-	background: rgba(white,.2);
+	background: rgba($taupe,.3);
 }
 ::-moz-selection {
-	background: rgba(white,.2);
+	background: rgba($taupe,.3);
 }
 ::selection {
-	background: rgba(white,.2);
+	background: rgba($taupe,.3);
 }
 
 body.platform-ios {
@@ -55,8 +55,6 @@ section {
 .view-container {
 	position: inherit;
 }
-
-
 
 /* ---------- MISCELLANEOUS */
 .uguru-view {
@@ -4101,6 +4099,10 @@ body.platform-ios {
 		padding-top:10px;
 	}
 
+	section#credibility {
+		padding-top:20px;
+	}
+
 	ion-side-menus.root-ion-side-menus.view {
 		background-color:transparent;
 		.home-view {
@@ -4175,6 +4177,14 @@ body.platform-ios {
 	}
 }
 
-#credit-slider ul li {
+#credit-slider ul li a, 
+#credit-slider ul li a:hover, {
 	background:none;
+}
+
+#credit-slider ul li::selection,
+#credit-slider ul li.active
+#credit-slider ul li.activated,
+ {
+	background:none !important;
 }
