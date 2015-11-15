@@ -127,10 +127,16 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.goToBecomeGuru = function() {
-            $scope.loader.showAmbig();
-            // $ionicSlideBoxDelegate.update();
-            $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.become-guru')
+            if (!$scope.user.university_id) {
+                alert('Please add a university first!\n Settings > edit university');
+                $scope.toggleRightSideMenu();
+            } else {
+                $scope.loader.showAmbig();
+                $ionicViewSwitcher.nextDirection('forward');
+                $state.go('^.become-guru')    
+            }
+
+            
         }
 
         $scope.goToDesktopBecomeGuru = function() {

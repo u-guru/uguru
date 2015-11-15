@@ -3932,6 +3932,8 @@ body.platform-ios {
   background: transparent; }
   body.platform-ios section#guru-home.request.full-xy.student-home {
     padding-top: 10px; }
+  body.platform-ios section#credibility {
+    padding-top: 20px; }
   body.platform-ios ion-side-menus.root-ion-side-menus.view {
     background-color: transparent; }
     body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view {
@@ -3978,7 +3980,13 @@ body.platform-ios {
 #courses-list ul li label {
   color: white; }
 
-#credit-slider ul li {
+#credit-slider ul li a,
+#credit-slider ul li a:hover {
   background: none; }
+
+#credit-slider ul li::selection,
+#credit-slider ul li.active
+#credit-slider ul li.activated {
+  background: none !important; }
 
 /*# sourceMappingURL=style.css.map */

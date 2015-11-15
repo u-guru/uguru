@@ -32,7 +32,7 @@ angular.module('uguru.guru.controllers')
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
   DeviceService, LoadingService, $ionicViewSwitcher) {
-
+    $scope.user.transcript_file.url = false;
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
@@ -618,7 +618,7 @@ angular.module('uguru.guru.controllers')
 
 
       if (DeviceService.doesCordovaExist() && $scope.platform.mobile) {
-        Camera.takePicture($scope, index, $scope.user.id);
+        Camera.takePicture($scope, index);
       } else {
         var element = document.getElementById('file-input-guru-add-transcript');
         element.click();

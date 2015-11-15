@@ -253,6 +253,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
+          
+          if (DeviceService.isIOSDevice()) {
+            DeviceService.ios.setStatusBarLightText();
+          }
+
           $scope.refreshTipsAndRanking($scope.user);
           $ionicSlideBoxDelegate.update();
 
