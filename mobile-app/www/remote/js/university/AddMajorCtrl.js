@@ -19,7 +19,7 @@ angular.module('uguru.util.controllers')
   $q, Major, $ionicSideMenuDelegate, Utilities,
   $localstorage, uTracker, University, LoadingService) {
 
-    console.log('starting university majors');
+    console.log('starting university majors from', University)
     $scope.source = University.source;
 
     $scope.refresh = {
@@ -42,8 +42,8 @@ angular.module('uguru.util.controllers')
               }
             }
         }
-
         $scope.refresh.majorsLength = $scope.source.majors.length;
+
         University.refresh();
       }, 0);
 
@@ -59,7 +59,6 @@ angular.module('uguru.util.controllers')
     $scope.search_text = {
       major: ''
     };
-
 
     // function setMajorFocus(target) {
     //   if ($scope.search_text.major.length === 0 && !$scope.keyboard_force_off) {

@@ -16,7 +16,7 @@
 		<form>
 			<div class="input-field">
 				<input submit='fastSelectMajor()' type="search" id='major-input-1' ng-model="search_text.major">
-				<label for="major-input-1">search majors</label>
+				<label class="ng-class:{'hide': search_text.major.length}" for="major-input-1">search majors</label>
 			</div>
 		</form>
 		<div id="major-list" class="desktop-search-list" bind-input='majors' source='source.majors'>

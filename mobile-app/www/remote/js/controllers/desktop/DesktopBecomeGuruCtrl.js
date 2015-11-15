@@ -156,7 +156,6 @@ angular.module('uguru.desktop.controllers')
     }
 
     $scope.initMajors = function() {
-
       $scope.source = University.source;
 
       var majorsList = document.querySelectorAll('#major-list');
