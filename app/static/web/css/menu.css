@@ -22,6 +22,35 @@ body {
   width: 100% !important;
 }
 
+#corner-menu-icons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+}
+
+#corner-menu-icons a {
+  padding: 0 15px;
+}
+
+#corner-menu-icons a:first-child {
+  padding-left: 0;
+}
+
+#corner-menu-icons a svg {
+  width: 36px;
+  height: 36px;
+}
+
 #top {
   position: fixed;
   top: 0;
