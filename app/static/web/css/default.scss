@@ -1,5 +1,9 @@
 @import 'mixin';
 
+body {
+	width: 100%!important;
+}
+
 // GRID
 [class*="ugrid-"] {
 	@include listless;

@@ -16,6 +16,10 @@
 	box-shadow: none!important;
 }
 
+body {
+	width: 100%!important;
+}
+
 #top {
 	position: fixed;
 	top: 0;
@@ -25,7 +29,7 @@
 	#top-logo {
 		position: relative;
 		display: block;
-		margin: -10px auto 0;
+		margin: -30px auto 0;
 		text-align: center;
 		svg {
 			@include transition-type(width, .15s ease-in);
@@ -42,14 +46,26 @@
 		box-sizing: border-box;
 		ul {
 			@include listless;
-			display: table;
+			@include flex;
+            @include flex-center;
 			width: 100%;
 			li {
-				display: table-cell;
-				vertical-align: top;
+				@include flex;
+                @include flex-center-vertical;
 				width: 33.33333%;
 				&:last-child {
+                    -webkit-justify-content: flex-end;
+                	justify-content: flex-end;
 					text-align: right;
+                    .top-link-powerups {
+                        display: inline-block;
+                        color: white;
+                        padding: 0 10px;
+                        i {
+                            font-size: 30px;
+                            line-height: 1;
+                        }
+                    }
 				}
 			}
 		}
@@ -439,7 +455,7 @@
 }
 
 .intercom-reset div, .intercom-reset span, .intercom-reset applet, .intercom-reset object, .intercom-reset iframe, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset p, .intercom-reset blockquote, .intercom-reset pre, .intercom-reset a, .intercom-reset abbr, .intercom-reset acronym, .intercom-reset address, .intercom-reset big, .intercom-reset cite, .intercom-reset code, .intercom-reset del, .intercom-reset dfn, .intercom-reset em, .intercom-reset img, .intercom-reset ins, .intercom-reset kbd, .intercom-reset q, .intercom-reset s, .intercom-reset samp, .intercom-reset small, .intercom-reset strike, .intercom-reset strong, .intercom-reset sub, .intercom-reset sup, .intercom-reset tt, .intercom-reset var, .intercom-reset b, .intercom-reset u, .intercom-reset i, .intercom-reset center, .intercom-reset dl, .intercom-reset dt, .intercom-reset dd, .intercom-reset ol, .intercom-reset ul, .intercom-reset li, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset label, .intercom-reset legend, .intercom-reset table, .intercom-reset caption, .intercom-reset tbody, .intercom-reset tfoot, .intercom-reset thead, .intercom-reset tr, .intercom-reset th, .intercom-reset td, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary, .intercom-reset time, .intercom-reset mark, .intercom-reset audio, .intercom-reset video, .intercom-reset button, .intercom-reset textarea, .intercom-reset input, .intercom-reset input[type] {
- 	font-family: $font!important;
+ 	font-family: $font;
 }
 
 .intercom-sheet-header-minimize-button {
@@ -451,8 +467,7 @@
 	}
 	.intercom-launcher {
 	    right: 10px!important;
-	    top: 0!important;
-    	right: 0!important;
+	    bottom: 10px!important;
     }
 	.intercom-launcher-preview {
 		&::before {
@@ -461,8 +476,6 @@
 	}
 	.intercom-launcher-button {
 		@include transition(.15s ease-in);
-    	top: 10px!important;
-		right: 10px!important;
     	z-index: 5!important;
 		border: 2px solid white!important;
 		background: transparent!important;
