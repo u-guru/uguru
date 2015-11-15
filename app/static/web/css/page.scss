@@ -1,6 +1,10 @@
 @import 'mixin';
 @import 'default';
 
+body {
+	width: 100%!important;
+}
+
 * {
 	box-sizing: border-box;
 	-webkit-backface-visibility: hidden;
@@ -87,8 +91,8 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 			width: 5em;
 			height: auto!important;
 		}
-		svg, svg g {
-			fill: $shamrock;
+		svg, svg g, svg path {
+			fill: $shamrock!important;
 		}
 	}
 	.logo {
@@ -345,12 +349,12 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-moola {
 	.body-loading-div {
 		div {
-			svg, svg g {
-				fill: $moola;
+			svg, svg g, svg path {
+				fill: $moola!important;
 			}
 		}
 	}
-	a, h1 {
+	a, h1, #top a i {
 		color: $moola;
 	}
 	#{$links} {
@@ -403,12 +407,12 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-lake {
 	.body-loading-div {
 		div {
-			svg, svg g {
-				fill: $lake;
+			svg, svg g, svg path {
+				fill: $lake!important;
 			}
 		}
 	}
-	a, h1 {
+	a, h1, #top a i {
 		color: $lake;
 	}
 	#{$links} {
@@ -461,12 +465,12 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-eggplant {
 	.body-loading-div {
 		div {
-			svg, svg g {
-				fill: $eggplant;
+			svg, svg g, svg path {
+				fill: $eggplant!important;
 			}
 		}
 	}
-	a, h1 {
+	a, h1, #top a i {
 		color: $eggplant;
 	}
 	#{$links} {
@@ -519,12 +523,12 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-cerise {
 	.body-loading-div {
 		div {
-			svg, svg g {
-				fill: $cerise;
+			svg, svg g, svg path {
+				fill: $cerise!important;
 			}
 		}
 	}
-	a, h1 {
+	a, h1, #top a i {
 		color: $cerise;
 	}
 	#{$links} {

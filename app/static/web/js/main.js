@@ -70,6 +70,7 @@ $(function () {
 
 	$("header .top-link-menu").on("click", function(e) {
 		$(this).hide();
+		$("#corner-menu-icons").hide();
 		$('#side-menu-wrapper, .intercom-launcher-button').addClass('active');
 		$('#side-menu').addClass('active animated slideInLeft').show();
 		$("#full-overlay").addClass("active animated fadeIn");
@@ -88,6 +89,7 @@ $(function () {
 	$("#side-menu .top-link-menu, .top-link-close").on("click", function(e) {
 		$('.intercom-launcher-button').removeClass('active');
 		$("header .top-link-menu").show();
+		$("#corner-menu-icons").show();
 		$('#full-overlay').addClass("animated fadeOut");
 		$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
 		function() {

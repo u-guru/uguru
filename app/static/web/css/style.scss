@@ -1,5 +1,9 @@
 @import 'mixin';
 
+body {
+	width: 100%!important;
+}
+
 * {
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
@@ -181,12 +185,11 @@ button, a[class*=btn] {
 			@include opacity(1);
 		}
 		svg {
-			margin: 0 auto;
 			width: 50%;
 			height: 50%;
 			max-width: 200px;
 			min-width: 80px;
-			margin: 0 auto!important;
+			margin: -10px auto 0!important;
 		}
 		#top-school-logo {
 			@include transition-type(width, .15s ease-in);
