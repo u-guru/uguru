@@ -1251,6 +1251,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.loginUser = function() {
+      $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
@@ -1308,6 +1309,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.completeSignup = function() {
+      $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
 
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
         return;
