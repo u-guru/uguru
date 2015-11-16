@@ -46,6 +46,14 @@ angular.module('uguru.util.controllers')
      ModalService.close(modalName);
     };
 
+    $scope.exploreFirst = function()
+    {
+      console.log('CHECK');
+      if($scope.guru_mode== true)
+        $state.go('^.guru')
+      else
+        $state.go('^.home')
+    }
 
 // ==========================
 
@@ -1410,7 +1418,7 @@ angular.module('uguru.util.controllers')
       password:null
     }
 
-    $scope.root.vars.loginMode = false;
+    // $scope.root.vars.loginMode = false;
 
 
   }
