@@ -1260,7 +1260,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.loginUser = function() {
-      $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
+      if ($scope.signupForm.email)
+        $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
@@ -1326,11 +1327,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.completeSignup = function() {
-      $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
-
+      if ($scope.signupForm.email)
+        $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
         return;
       }
+      
 
       // $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
       // $scope.user.email = $scope.signupForm.email;
