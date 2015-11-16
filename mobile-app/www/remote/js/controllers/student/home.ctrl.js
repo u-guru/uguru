@@ -30,6 +30,12 @@ angular.module('uguru.student.controllers', [])
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
         DeviceService, PopupService, LoadingService) {
 
+        if ($scope.desktopMode) {
+            LoadingService.showAmbig('Redirecting',1000);
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.student-home');
+        }
+
         $ionicSideMenuDelegate.canDragContent(false);
 
         $scope.user.is_a_guru = false;

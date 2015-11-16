@@ -32,7 +32,6 @@ angular.module('uguru.guru.controllers')
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
   DeviceService, LoadingService, $ionicViewSwitcher) {
-    $scope.user.transcript_file.url = false;
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
