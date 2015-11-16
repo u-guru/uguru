@@ -1289,16 +1289,25 @@ angular.module('uguru.util.controllers')
             }
           }, 500)
           LoadingService.showSuccess('Login Successful!', 2500);
-
-          if (ModalService.isOpen('signup')) {
-            ModalService.close('signup');
-            $timeout(function() {
-              if ($scope.user && $scope.user.university && $scope.user.university.id) {
-                MapService.initStudentHomeMap(user);
-              }
-              $ionicSlideBoxDelegate.update();
-            }, 250);
+          if($scope.desktopMode)
+          {
+            if ($scope.user.guru_mode)
+              $state.go('^.guru')
+            else
+              $state.go('^.home')
           }
+          else{
+            if (ModalService.isOpen('signup')) {
+              ModalService.close('signup');
+              $timeout(function() {
+                if ($scope.user && $scope.user.university && $scope.user.university.id) {
+                  MapService.initStudentHomeMap(user);
+                }
+                $ionicSlideBoxDelegate.update();
+              }, 250);
+            }
+          }
+          
 
 
       }, function(err) {      
