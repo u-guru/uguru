@@ -1,10 +1,20 @@
-<ion-view class='bg-charcoal'>
+<ion-view id='desktop-guru-home'class='bg-charcoal'>
+	<ion-pane class='full-xy hide-display cta-modal' hidden>
+		<div ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
+	</ion-pane>
+	<ion-pane class='full-xy hide-display cta-modal bg-cerise' hidden>
+		<div ng-controller='CategoriesController' ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></div>
+	</ion-pane>
+	<ion-pane class='full-xy hide-display cta-modal bg-cerise' hidden>
+		<div ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'"></div>
+	</ion-pane>
+
 	<main id='desktop-guru-home' class="desktop-mode" ng-if='isDesktopMode()'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default flex">
 			<div class="guru-home-greeting">
 				<div>
-					<h1>Hello {{user.name}},<br/>
+					<h1>Hello {{user.name || 'Guru'}},<br/>
 					how are you today?</h1>
 					<div class="guru-home-notifications">
 						<ul>
@@ -14,9 +24,9 @@
 										<svg viewBox="0 0 100 100">
 										    <path d="M20,28.5 C23.3137085,28.5 26,25.8137085 26,22.5 C26,19.1862915 23.3137085,16.5 20,16.5 C16.6862915,16.5 14,19.1862915 14,22.5 C14,25.8137085 16.6862915,28.5 20,28.5 Z M37.5,84.5 L69.5,84.5 M37.5,72.5 L85.5,72.5 M20,84.5 C23.3137085,84.5 26,81.8137085 26,78.5 C26,75.1862915 23.3137085,72.5 20,72.5 C16.6862915,72.5 14,75.1862915 14,78.5 C14,81.8137085 16.6862915,84.5 20,84.5 Z M37.9032258,56.5 L69.9032258,56.5 M37.9032258,44.5 L85.9032258,44.5 M20,56.5 C23.3137085,56.5 26,53.8137085 26,50.5 C26,47.1862915 23.3137085,44.5 20,44.5 C16.6862915,44.5 14,47.1862915 14,50.5 C14,53.8137085 16.6862915,56.5 20,56.5 Z M37.9032258,28.5 L69.9032258,28.5 M37.9032258,16.5 L85.9032258,16.5"></path>
 										</svg>
-										<span class="notification-number">10</span>
+										<span class="notification-number">{{guruHomeTips.length}}</span>
 									</span>
-									<span class="notification-type">Upcoming</span>
+									<span class="notification-type">Ranking Tips</span>
 								</a>
 							</li>
 							<li>
@@ -26,9 +36,9 @@
 										    <path d="M23.2244571,18.0571429 L23.2244571,18.0571429 L78.7755429,18.0571429 C83.3177143,18.0571429 87,21.7445714 87,26.2826286 L87,65.3745143 C87,69.9177143 83.3177143,73.6 78.7755429,73.6 L57.1714286,73.6 L51,85.9428571 L44.8285714,73.6 L23.2244571,73.6 C18.6822857,73.6 15,69.9125714 15,65.3745143 L15,26.2826286 C15,21.7394286 18.6822857,18.0571429 23.2244571,18.0571429 L23.2244571,18.0571429 Z M41.5297982,34.6824321 C42.4218589,32.8711794 43.6406596,31.8521327 45.206031,30.9350464 C46.7714025,30.0179601 48.4869606,29.5594238 50.3527569,29.5594238 C53.1672632,29.5594238 55.5785315,30.5634602 57.5866343,32.5715629 C59.5947371,34.5796657 60.5987734,36.9434993 60.5987734,39.6631345 C60.5987734,42.3827698 59.7212298,44.7149802 57.9661164,46.6598356 C56.2110029,48.6046911 53.0527201,49.7194086 50.4912032,50.0040216 L50.4912032,55.0795946 C50.4912032,55.3958312 50.4934611,56.2811505 50.4934611,56.2811505"></path>
 										    <path d="M50.5,62 L50.5,62.5"></path>
 										</svg>
-										<span class="notification-number">2</span>
+										<span class="notification-number">{{user.students || 0}}</span>
 									</span>
-									<span class="notification-type">Questions</span>
+									<span class="notification-type">Students</span>
 								</a>
 							</li>
 						</ul>
@@ -47,10 +57,10 @@
 								<div id="guru-chart">
 			                        <div id='guru-ranking-progress-bar'>
 			                            <div id="percentile">
-			                                <div id="percentile-ranking">{{user.current_guru_ranking}}</div>
+			                                <div id="percentile-ranking">{{user.current_guru_ranking || 25}}</div>
 			                                <div id="percentile-label">Percentile</div>
 			                            </div>
-										<svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,0.3)" stroke-width="8" fill-opacity="0"></path><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,1)" stroke-width="8" fill-opacity="0" style="stroke-dasharray: 289.067px, 289.067px; stroke-dashoffset: 216.8px;"></path></svg>
+										<svg viewBox="0 0 100 100" ng-if='!user.current_guru_ranking'><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,0.3)" stroke-width="8" fill-opacity="0"></path><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,1)" stroke-width="8" fill-opacity="0" style="stroke-dasharray: 289.067px, 289.067px; stroke-dashoffset: 216.8px;"></path></svg>
 			                        </div>
 			                    </div>
 							</div>
@@ -83,10 +93,10 @@
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div>
+							<div class='cta-box'>
 								<div>
-									<h3>56% <span>Profile</span></h3>
-									<progress class="white-round height-10" max="100" value="56"></progress>
+									<h3><span style='font-weight:bold;' id='credibility-percent'>{{user.current_profile_percent || 40}}</span>% <span>Profile</span></h3>
+									<progress class="white-round height-10" max="100" value="{{user.current_profile_percent || 40}}"></progress>
 								</div>
 							</div>
 						</div>
@@ -94,10 +104,10 @@
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div>
+							<div class='cta-box'>
 								<div>
-									<h3>78% <span>Credibility</span></h3>
-									<progress class="white-round height-10" max="100" value="78"></progress>
+									<h3><span style='font-weight:bold' id='credibility-percent'>{{user.current_credibility_percent || 5}}</span>% <span>Credibility</span></h3>
+									<progress class="white-round height-10" max="100" value="{{user.current_credibility_percent || 5}}"></progress>
 								</div>
 							</div>
 						</div>
@@ -107,28 +117,12 @@
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div>
-								<h2>Upcoming</h2>
+							<div style='overflow:hidden;'>
+								<h2><strong><u>{{guruHomeTips.length}}</u></strong> Ranking Tips</h2>
 								<ul>
-									<li>
-										<h4>Photoshoot with Toni at 3PM</h4>
-										<span>Engineering Quad</span>
-									</li>
-									<li>
-										<h4>Taiwanese practice at 5PM</h4>
-										<span>Language and Cultural Center</span>
-									</li>
-									<li>
-										<h4>Record stats for club basketball</h4>
-										<span>Activities and Recreation Center (ARC)</span>
-									</li>
-									<li>
-										<h4>Title</h4>
-										<span>Subtitle</span>
-									</li>
-									<li>
-										<h4>Academic Guru</h4>
-										<span>Devon Jones</span>
+									<li ng-repeat='tip in guruHomeTips'>
+										<h4>{{tip.title}}</h4>
+										<span>{{tip.message}}</span>
 									</li>
 								</ul>
 							</div>

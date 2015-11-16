@@ -53,7 +53,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 			modal.show();
 		}, 0);
 		//attachListeners(modal);
-		
+
 	}
 
 	function close(modalName) {
