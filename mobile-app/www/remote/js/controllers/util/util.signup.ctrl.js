@@ -1358,12 +1358,15 @@ angular.module('uguru.util.controllers')
 
 
 
-          if (ModalService.isOpen('signup')) {
-              ModalService.close('signup');
-          }
 
           if ($scope.desktopMode) {
             $state.go('^.home');
+          }
+          else
+          {
+            if (ModalService.isOpen('signup')) {
+                ModalService.close('signup');
+            }
           }
 
 
