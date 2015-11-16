@@ -48,8 +48,9 @@ angular.module('uguru.util.controllers')
 
     $scope.exploreFirst = function()
     {
-      console.log('CHECK');
-      if($scope.guru_mode== true)
+      console.log('CHECK,',$scope.root.vars.guru_mode);
+
+      if($scope.root.vars.guru_mode)
         $state.go('^.guru')
       else
         $state.go('^.home')
@@ -1356,11 +1357,11 @@ angular.module('uguru.util.controllers')
             LoadingService.showSuccess('Account Successfully Created', 2500);
           }
 
-
-
-
           if ($scope.desktopMode) {
-            $state.go('^.home');
+            if ($scope.root.vars.guru_mode)
+              $state.go('^.guru')
+            else
+              $state.go('^.home')
           }
           else
           {
