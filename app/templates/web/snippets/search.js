@@ -76,7 +76,7 @@ $("#search-box").slideDown();
             $('#banner').css("background-image", "url(" + 'https://farm8.staticflickr.com/7143/6841501153_7eb07da0c4_b.jpg' + ")");
             $("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/university-of-california-berkeley_50x50.jpg');
             $("#border-inner").css("fill", color);
-            $(".search-results-top, .search-results-gurus").css("background", color);
+            $(".search-results-top, .search-results-gurus, .search-results-courses").css("background", color);
             $("#search-school-name").text("UC BERKELEY");
 
             numGurusElement.innerHTML = '30k+';
@@ -106,7 +106,7 @@ $("#search-box").slideDown();
             $('#banner').css("background-image", "url(" + 'https://farm8.staticflickr.com/7206/6858631913_1fee1210b4_b.jpg' + ")");
             $("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/university-of-florida_50x50.jpg');
             $("#border-inner").css("fill", color);
-            $(".search-results-top, .search-results-gurus").css("background", color);
+            $(".search-results-top, .search-results-gurus, .search-results-courses").css("background", color);
             $("#search-school-name").text("University of Florida");
             numGurusElement.innerHTML = '49k';
             popularCourses = ["SOP2772","PSY2012","PHY2012","SOP3723","PSY2000","ANT2511","ANT2000", "CGS2100",
@@ -132,7 +132,7 @@ $("#search-box").slideDown();
             $('#banner').css("background-image", "url(" + 'http://c2.staticflickr.com/6/5097/5514096962_ee022a89d4_b.jpg' + ")");
             $("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/tufts-university_50x50.jpg');
             $("#border-inner").css("fill", color);
-            $(".search-results-top, .search-results-gurus").css("background", color);
+            $(".search-results-top, .search-results-gurus, .search-results-courses").css("background", color);
             $("#search-school-name").text("Tufts University");
             popularCourses = ["ECON102","MICRO101", "ECON1","EC005", "CHEM01", "CHEM1,2", "PS061","PS0061", "ECON5", "PS189-04", "EC0N2"];
             numGurusElement.innerHTML = '10k';
