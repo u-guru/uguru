@@ -1,8 +1,34 @@
 <ion-slide-box can-swipe-back='false' on-slide-changed="slideHasChanged($index)" delegate-handle='become-guru-slide-box' class='become-guru-slidebox-container'>
-
-	<!-- <ion-slide  ng-controller='AddMajorController'>
+	<!--  <ion-slide ng-controller='AddMajorController'>
+  		 <ion-view class='uguru-view major-view' >
+      		<span ng-include="img_base + BASE + 'templates/majors.container.html'"></span>
+  		</ion-view>
 		<div ng-include="img_base + BASE + 'templates/majors.html'"></div>
 	</ion-slide> -->
+
+	<ion-slide ng-controller='CoursesController' on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
+		<ion-view class='uguru-view courses-view guru-courses-view'>
+			<span ng-include="img_base + BASE + 'templates/guru.courses.container.html'"></span>
+		</ion-view>
+	</ion-slide>
+
+	<ion-slide ng-controller='CategoriesController'>
+		<ion-view class='uguru-view skills-view' >
+		  <!-- <progress value="0" max="100">
+		      <div class="progress"><span data-value="60"></span></div>
+		    </progress> -->
+		    <span ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></span>
+		</ion-view>
+	</ion-slide>
+
+	<ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
+		<div ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></div>
+	</ion-slide>
+
+	<!-- Weird ng-inlude issue -->
+	<!--  <ion-slide  ng-controller='AddMajorController'>
+		<div ng-include="img_base + BASE + 'templates/majors.html'"></div>
+	</ion-slide>
 
 	<ion-slide ng-controller='CoursesController' on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
 		<div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
@@ -14,7 +40,7 @@
 
 	<ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
 		<div ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></div>
-	</ion-slide>
+	</ion-slide> -->
 
 </ion-slide-box>
 

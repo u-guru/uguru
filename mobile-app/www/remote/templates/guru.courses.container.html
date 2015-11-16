@@ -18,21 +18,21 @@
     <div class="main default">
         <form>
             <div class="input-field">
-                <input id='course-input-1' autocomplete="off" type="search" ng-model="search_text.course">
-                <label for="course-input-1">search courses</label>
+                <input id='course-input-1' autocomplete="off" type="search" ng-model="search_text.course" class='bg-charcoal'>
+                <label for="course-input-1" ng-show='!search_text.course.length'>search courses</label>
             </div>
         </form>
 
-        <div id="courses-list" class="desktop-search-list" bind-input='courses' source='source.courses'>
+        <div id="courses-list" class='desktop-search-list'>
             <ul class='desktop-card-list'>
 				<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
-					<a class="name-only" ng-if='!course.title'>
+					<a class="name-only" ng-if='course.name'>
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
-						<span>{{course.short_name}}</span>
+						<span>{{course.name}}</span>
 					</a>
-					<a ng-if='course.title'>
+					<a ng-if='false && course.title'>
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
@@ -40,8 +40,8 @@
 						<span class="course-title">{{course.title}}</span>
 					</a>
 				</li>
-                <li ng-repeat='course in courses | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
-					<a class="name-only" ng-if='!course.title'
+                <li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
+					<a class="name-only">
 						<span>{{course.short_name}}</span>
 					</a>
 					<a ng-if='course.title'>

@@ -70,14 +70,12 @@ angular.module('uguru.util.controllers')
             initHeight();
             // height = height || windowHeight;
             // width = width || windowWidth;
-            height = window.screen.height;
-            width = window.screen.width;
-            // console.log(height, width)
+            height = window.window.innerHeight;
+            width = window.window.innerWidth;
             // if(!(height > desktopHeightLimit && width > desktopWidthLimit))
-            //     console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
+                // console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
             return height > desktopHeightLimit && width > desktopWidthLimit;
         };
-
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
         console.log('originalDesktopMode', $scope.desktopMode);
         if ($scope.desktopMode) {

@@ -26,33 +26,36 @@ angular.module('uguru.desktop.controllers')
   '$interval',
   'KeyboardService',
   'LoadingService',
+  'AnimationService',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
     Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval,
-    KeyboardService, LoadingService) {
+    KeyboardService, LoadingService, AnimationService) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
-    $scope.progressWidth = 12.5;
+    $scope.progressWidth = 16.7;
+
+    $scope.active_category = {name:'Select category', active:false};
+
+    $scope.goBackToUniversities = function() {
+      AnimationService.flip('^.university');
+    }
 
     var calculateProgress = function($scope) {
 
-      if ($scope.user.majors.length) {
-        $scope.progressWidth += 12.5;
-      }
-
       if ($scope.user.guru_courses.length) {
-        $scope.progressWidth += 25;
+        $scope.progressWidth += 33;
       }
 
       if ($scope.user.guru_subcategories.length) {
-        $scope.progressWidth += 25;
+        $scope.progressWidth += 33;
       }
 
       if ($scope.user.profile_url && ($scope.user.profile_url.indexOf('avatar.svg') < 0)) {
-        $scope.progressWidth += 25;
+        $scope.progressWidth += 33;
       }
 
       function callbackSuccess() {
@@ -88,25 +91,21 @@ angular.module('uguru.desktop.controllers')
     function addEventListenerToCTABox(box_elem, modal_elem, index) {
         box_elem.addEventListener('click', function() {
           if (index === 0) {
-            $timeout(function() {
-              $scope.initMajors();
-            }, 1500)
+            // $timeout(function() {
+            //   $scope.initCourses();
+            // }, 1500);
           }
 
 
           if (index === 1) {
-            $timeout(function() {
-              $scope.initCourses();
-            }, 1500);
-          }
-
-          if (index === 2) {
+              console.log(Category.categories);
               Category.mapActiveToSubcategories(Category.categories, $scope.user);
               $scope.categories = Category.categories;
-              console.log($scope.user);
           }
 
             var closeCTAModal = cta(box_elem, modal_elem, function() {
+
+
                 modal_elem.classList.add('show');
                 console.log(modal_elem.querySelector('.cta-modal-close'));
                 calculateProgress($scope);
@@ -155,81 +154,81 @@ angular.module('uguru.desktop.controllers')
       $ionicSlideBoxDelegate.previous();
     }
 
-    $scope.initMajors = function() {
+    // $scope.initMajors = function() {
 
-      $scope.source = University.source;
+    //   $scope.source = University.source;
 
-      var majorsList = document.querySelectorAll('#major-list');
-      $rootScope.$emit('schoolChange');
+    //   var majorsList = document.querySelectorAll('#major-list');
+    //   $rootScope.$emit('schoolChange');
 
-        $timeout(function() {
-          if (Utilities.isElementInViewport(majorsList)) {
-            var majors = majorsList[0].querySelectorAll('ul li');
-            if(majors.length === 0) {
-              var timer = 10;
-              LoadingService.showAmbig('Fetching majors...', (timer * 1000));
-              var counter = 0;
-              var startScanner = $interval(function() {
-                console.log("Waiting for majors to load...");
-                var majors = majorsList[0].querySelectorAll('ul li');
-                counter++;
-                if (majors.length !== 0 || counter === timer) {
-                  console.log("stopping loader");
-                  LoadingService.hide();
-                  stopLoader();
-                }
-              }, 1000)
+    //     $timeout(function() {
+    //       if (Utilities.isElementInViewport(majorsList)) {
+    //         var majors = majorsList[0].querySelectorAll('ul li');
+    //         if(majors.length === 0) {
+    //           var timer = 10;
+    //           LoadingService.showAmbig('Fetching majors...', (timer * 1000));
+    //           var counter = 0;
+    //           var startScanner = $interval(function() {
+    //             console.log("Waiting for majors to load...");
+    //             var majors = majorsList[0].querySelectorAll('ul li');
+    //             counter++;
+    //             if (majors.length !== 0 || counter === timer) {
+    //               console.log("stopping loader");
+    //               LoadingService.hide();
+    //               stopLoader();
+    //             }
+    //           }, 1000)
 
-              function stopLoader() {
-                $interval.cancel(startScanner);
-              }
-            }
-          }
-        }, 500)
+    //           function stopLoader() {
+    //             $interval.cancel(startScanner);
+    //           }
+    //         }
+    //       }
+    //     }, 500)
 
-    }
+    // }
 
-    $scope.initCourses = function() {
-      $scope.source = University.source;
-      console.log($scope.source.courses);
-      $rootScope.$emit('refreshCourses');
-      var coursesList = document.querySelectorAll('#courses-list');
+    // $scope.initCourses = function() {
+    //   $scope.source = University.source;
+    //   console.log($scope.source.courses);
+    //   $rootScope.$emit('refreshCourses');
+    //   var coursesList = document.querySelectorAll('#courses-list');
 
-        $timeout(function() {
-          if (Utilities.isElementInViewport(coursesList)) {
-
-
-            var items = coursesList[0].querySelectorAll('ul li');
-
-            if (items.length === 0) {
-              $rootScope.$emit('refreshCourses');
-              var timer = 10;
-              LoadingService.showAmbig('Fetching courses...', (timer * 1000));
-              var counter = 0;
-              var startScanner = $interval(function() {
-                University.refresh();
-                console.log("checking if courses are loaded...");
-                var items = coursesList[0].querySelectorAll('ul li');
-                console.log("items.length: " + items.length);
-                counter++;
-                if (items.length !== 0 || counter === timer) {
-                  console.log("stopping loader");
-                  LoadingService.hide();
-                  stopLoader();
-                }
-              }, 1000);
+    //     $timeout(function() {
+    //       if (Utilities.isElementInViewport(coursesList)) {
 
 
-              function stopLoader() {
-                $interval.cancel(startScanner);
-                // Display a message about being unable to fetch data and possibly a button to attempt to reconnect.
+    //         var items = coursesList[0].querySelectorAll('ul li');
 
-              }
-            }
-          }
-        }, 500);
+    //         if (items.length === 0) {
+    //           $rootScope.$emit('refreshCourses');
+    //           var timer = 10;
+    //           LoadingService.showAmbig('Fetching courses...', (timer * 1000));
+    //           var counter = 0;
+    //           var startScanner = $interval(function() {
+    //             University.refresh();
+    //             console.log("checking if courses are loaded...");
+    //             var items = coursesList[0].querySelectorAll('ul li');
+    //             console.log("items.length: " + items.length);
+    //             counter++;
+    //             if (items.length !== 0 || counter === timer) {
+    //               console.log("stopping loader");
+    //               LoadingService.hide();
+    //               stopLoader();
+    //             }
+    //           }, 1000);
 
-    }
+
+    //           function stopLoader() {
+    //             $interval.cancel(startScanner);
+    //             // Display a message about being unable to fetch data and possibly a button to attempt to reconnect.
+
+    //           }
+    //         }
+    //       }
+    //     }, 500);
+
+    // }
 
     $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
@@ -329,7 +328,12 @@ angular.module('uguru.desktop.controllers')
       uTracker.track(tracker, 'Guru Mode');
       $scope.root.vars.guru_mode = true;
       $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.guru');
+
+      if ($scope.desktopMode) {
+        $state.go('^.guru-home');
+      } else {
+        $state.go('^.guru');
+      }
 
     }
 

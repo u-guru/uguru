@@ -177,6 +177,11 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
         LoadingService.showSuccess('Saved!', 1500, function() {
           AnimationService.flip('^.home');
+          // if ($scope.desktopMode) {
+          //   AnimationService.flip('^.desktop-become-guru');
+          // } else {
+          //   AnimationService.flip('^.become-guru');
+          // }
         });
       } else {
         LoadingService.showSuccess('Saved!', 1500, function() {

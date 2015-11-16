@@ -1381,7 +1381,7 @@
 					left: 0;
 					width: 100%;
 					li {
-						width: 25%;
+						width: 33%;
 						span {
 							@include flex;
 							@include flex-center;
@@ -3030,7 +3030,7 @@
 									}
 								}
 							}
-						}	
+						}
 					}
 				}
 			}
@@ -4042,4 +4042,26 @@ a.back-icon-settings {
 
 #desktop-credibility .progress-bottom {
 	bottom:50px;
+}
+
+#desktop-courses {
+	.input-field input[type=search]:focus {
+		background-color:$charcoal !important;
+		background-color:$charcoal !important;
+		border-bottom: $slate !important;
+		box-shadow: none;
+		color:white;
+		border-bottom:2px solid white;
+	}
+}
+
+.progressbar-text {
+	display: none !Important;
+}
+
+#desktop-guru-home {
+	ion-pane {
+		opacity:0;
+		visibility: hidden;
+	}
 }
