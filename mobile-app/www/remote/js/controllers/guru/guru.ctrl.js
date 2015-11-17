@@ -34,7 +34,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   };
 
+  var CTA_PARENT = '.guru-home-container';
 
+  var CTA_DICT = {
+    //profile
+    //cta-box-profile
+    //cta-box-credibility
+    //cta-box-transcript
+    //cta-box-messages
+    //cta-box-calendar
+    //cta-boxbalance
+
+  }
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
@@ -76,29 +87,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   }
 
 
-
-
-        // $scope.launchGuruRankingPopup = function() {
-
-
-
-        //   var homeCenterComponent = document.getElementById('guru-home');
-        //   var uguruPopup = document.getElementById('guru-ranking-popup');
-        //   $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
-        //     function (modal){
-        //       modal.classList.add('show');
-        //     }
-        //   );
-        //   $scope.closeWelcomePopup = function() {
-        //     if ($scope.reverseAnimatePopup) {
-        //       $scope.reverseAnimatePopup();
-        //     }
-        //     var uguruPopup = document.getElementById('guru-ranking-popup');
-        //     uguruPopup.classList.remove('show');
-
-        //   }
-        // }
-
         var initGuruRankProgress = function(selector, color, fillColor, setValue) {
           var circle = new ProgressBar.Circle(selector, {
               color: color || "rgba(255,255,255,1)",
@@ -121,8 +109,51 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           circle.text = document.getElementById('percentile-ranking');
           RankingService.guruHomeProgressCircle = circle;
           return circle;
-
         }
+
+            function addEventListenerToCTABox(box_elem, modal_elem, index) {
+                  console.log('adding event listener');
+                  box_elem.addEventListener('click', function() {
+
+                      // var options = {
+                      //   targetShowDuration: 1,
+                      //   duration: 0.5,
+                      //   extraTransitionDuration:0.7,
+                      //   relativeToWindow:false;
+                      // }
+                      var ctaOptions = {
+                        duration:0.3,
+                        extraTransitionDuration:1
+                      }
+                      $timeout(function() {
+                        allCTAModals[index].classList.add('show');
+                      }, 200);
+                      var closeCTAModal = cta(allCTABoxes[index], allCTAModals[index], ctaOptions, function() {
+                          setTimeout(function() {
+                            modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
+                              modal_elem.classList.remove('show');
+                              closeCTAModal();
+                            })
+
+                          }, 1000)
+                      },parent);
+                  });
+              }
+
+              var allCTABoxes;
+              var allCTAModals;
+              function initCTA() {
+                  allCTABoxes = document.querySelectorAll('.cta-box') || [];
+                  allCTAModals = document.querySelectorAll('.cta-modal') || [];
+                  console.log(allCTABoxes.length, allCTAModals.length);
+                  for (var i = 0; i < allCTABoxes.length; i++) {
+                      var indexCTABox = allCTABoxes[i];
+                      var indexCTAModal = allCTAModals[i];
+                      addEventListenerToCTABox(indexCTABox, indexCTAModal, i)
+
+                  }
+              }
+
 
         var animateProgressCircle = function(circle ,percentage) {
           var index = 0
@@ -257,14 +288,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           if (DeviceService.isIOSDevice()) {
             DeviceService.ios.setStatusBarLightText();
           }
+          initCTA();
 
           $scope.refreshTipsAndRanking($scope.user);
           $ionicSlideBoxDelegate.update();
 
           $timeout(function() {
-
-            //commented out until it's 100% so won't get in the way of other branches pulling mine.
-
 
             if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
               RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
@@ -291,8 +320,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         var appOnboardingObj;
         $scope.$on('$ionicView.afterEnter', function() {
-
-
 
             $timeout(function() {
               appOnboardingObj = $localstorage.getObject('appOnboarding');

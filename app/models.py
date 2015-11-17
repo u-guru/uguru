@@ -599,6 +599,7 @@ class University(Base):
     state_short = Column(String)
     zip_code = Column(Integer)
     logo_url = Column(String)
+    svg_url = Column(String)
     last_updated = Column(DateTime)
 
     fa15_start = Column(DateTime)

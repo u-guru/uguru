@@ -43,7 +43,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   }
 
 
-  $scope.universitiesSorted = University.getSorted().slice();
+  $scope.universitiesSorted = University.getTargetted().slice();
   $scope.universities = $scope.universitiesSorted;
 
   $scope.search_text = {

@@ -104,7 +104,7 @@ angular.module('uguru.rest', [])
             }, 0);
         },
         getTargetted: function() {
-            return targettedUniversities;
+            return targettedUniversities.sort(function(a, b){return a.rank-b.rank});;
         },
         getTargettedAccessCodes: function(){
             var allAccessCodes = [];

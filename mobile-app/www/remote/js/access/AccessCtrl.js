@@ -44,7 +44,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   // var e2 = document.querySelector('.bottom');
 
   // e1.addEventListener('click', function() {
-  //   console.log("clicked"); 
+  //   console.log("clicked");
   //   cta(e1, e2, 'ion-view', {
   //      relativeToWindow: true
   //   }, function() {
@@ -136,8 +136,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       }
 
     } else {
-
-
 
       if (DeviceService.isIOSDevice()) {
         window.scrollTo(0, window.innerHeight - 224 - 20);

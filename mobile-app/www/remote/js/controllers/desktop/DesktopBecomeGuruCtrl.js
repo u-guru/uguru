@@ -36,7 +36,7 @@ angular.module('uguru.desktop.controllers')
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
-    $scope.progressWidth = 16.7;
+    $scope.progressWidth = 16.66;
 
     $scope.active_category = {name:'Select category', active:false};
 
@@ -47,22 +47,22 @@ angular.module('uguru.desktop.controllers')
     var calculateProgress = function($scope) {
 
       if ($scope.user.guru_courses.length) {
-        $scope.progressWidth += 33;
+        $scope.progressWidth += 16.66;
       }
 
       if ($scope.user.guru_subcategories.length) {
-        $scope.progressWidth += 33;
+        $scope.progressWidth += 33.3;
       }
 
       if ($scope.user.profile_url && ($scope.user.profile_url.indexOf('avatar.svg') < 0)) {
-        $scope.progressWidth += 33;
+        $scope.progressWidth += 33.3;
       }
 
       function callbackSuccess() {
         $scope.goToGuruMode();
       }
-
-      if ($scope.progressWidth === 100) {
+      console.log($scope.progressWidth);
+      if (Math.round($scope.progressWidth) >= 100) {
         LoadingService.showSuccess("Your initial profile is complete!", 1500, callbackSuccess)
       }
     }
@@ -108,10 +108,10 @@ angular.module('uguru.desktop.controllers')
 
                 modal_elem.classList.add('show');
                 console.log(modal_elem.querySelector('.cta-modal-close'));
-                calculateProgress($scope);
                 setTimeout(function() {
 
                   modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
+                    calculateProgress($scope);
                     modal_elem.classList.remove('show');
                     closeCTAModal();
                   })
@@ -254,8 +254,6 @@ angular.module('uguru.desktop.controllers')
 
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");
-
-        $scope.init
 
 
       }
