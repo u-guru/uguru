@@ -854,7 +854,7 @@ angular.module('uguru.guru.controllers')
       }, 500)
     });
    $scope.$on('modal.hidden', function() {
-      console.error("ion modal leave  guru ctrl")
+      // console.error("ion modal leave  guru ctrl")
       if (DeviceService.doesCordovaExist()) {
         cordova.plugins.Keyboard.close();
       }
