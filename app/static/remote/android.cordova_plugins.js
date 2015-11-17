@@ -258,6 +258,13 @@ module.exports = [
         "clobbers": [
             "window.FileTransfer"
         ]
+    },
+    {
+        "file": "android_plugins/phonegap-facebook-plugin/facebookConnectPlugin.js",
+        "id": "phonegap-facebook-plugin.FacebookConnectPlugin",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
     }
 ];
 module.exports.metadata =
@@ -275,7 +282,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.0.0",
     "ionic-plugin-keyboard": "1.0.7",
     "org.apache.cordova.file": "1.3.3",
-    "org.apache.cordova.file-transfer": "0.5.0"
+    "org.apache.cordova.file-transfer": "0.5.0",
+    "phonegap-facebook-plugin": "0.12.0"
 }
 // BOTTOM OF METADATA
 });
