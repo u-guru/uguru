@@ -88,50 +88,46 @@
     <script>
       WINDOWS = null;
       function getMobileOperatingSystem() {
-          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-          if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
-          {
-
-            injectJs('ios.cordova_plugins.js');
-            injectJs('ios.cordova.js');
-            // injectCss('ios.css');
-            // injectJs('/static/remote/cordova.js');
-            return 'iOS';
-
-          }
-          else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || (!(window.ActiveXObject) && "ActiveXObject" in window) || "ActiveXObject" in window) {
-            console.log('injecting windows specific css & js');
-            injectJs('windows.cordova.js');
-            injectCss('windows.css');
-            WINDOWS = true;
-            return 'Windows'
-          }
-          else if( userAgent.match( /Android/i ) )
-          {
-            // Read more here
-            // https://developer.chrome.com/multidevice/user-agent
-            console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
-            var androidWebViewAgents = ['Build/KLP', 'Version', 'wv'];
-            for (var i = 0; i < androidWebViewAgents.length; i++ ) {
-              var indexUA = androidWebViewAgents[i];
-              if (userAgent.indexOf(indexUA) > -1) {
-                injectJs('android.cordova.js');
-                injectCss('android.css');
-                injectAndroidMetaContentScript();
-              }
-              break;
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            console.log(userAgent);
+            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+                    console.log('injecting windows specific css & js');
+                    injectJs('windows.cordova.js');
+                    injectCss('windows.css');
             }
+            else if( userAgent.match( /Android/i ) )
+              {
+                // Read more here
+                // https://developer.chrome.com/multidevice/user-agent
+                console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
+                var androidWebViewAgents = ['Build/KLP', 'Version', 'wv', 'Crosswalk'];
+                for (var i = 0; i < androidWebViewAgents.length; i++ ) {
+                  var indexUA = androidWebViewAgents[i];
+                  if (userAgent.indexOf(indexUA) > -1) {
+                    injectJs('android.cordova.js');
+                    injectCss('android.css');
+                    injectAndroidMetaContentScript();
+                    break;
+                  }
+                }
+                return 'Android';
+              }
+            else if ( !(userAgent.toLowerCase().indexOf('safari') > -1) )
+              {
 
+                injectJs('ios.cordova_plugins.js');
+                injectJs('ios.cordova.js');
+                injectCss('ios.css');
+                // injectJs('/static/remote/cordova.js');
+                return 'iOS';
 
-            return 'Android';
-          }
-          else
-          {
-            console.log('hard to determine identifies')
-            // injectCss('web.css')
-            return 'unknown';
-          }
-        }
+              }
+            else {
+                console.log('Mobile browser / desktop browser direction!');
+                // injectCss('web.css')
+                return 'unknown';
+            }
+    }
 
       function injectJs(link) {
           var scr = document.createElement('script');
