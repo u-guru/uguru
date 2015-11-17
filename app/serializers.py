@@ -488,6 +488,7 @@ AdminUniversitySerializer = {
     'name': fields.String,
     'logo_url': fields.String,
     'banner_url':fields.String,
+    'svg_url': fields.String,
     'city': fields.String,
     'state': fields.String,
     'population': fields.Integer,
