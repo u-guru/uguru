@@ -40,14 +40,6 @@ admin_info = {
         'university': 'San Jose State',
         'role': 'Quality Guru'
     },
-    'nick@uguru.me': {
-        'name': 'Nick Lam',
-        'profile_url': '/static/web/images/team/nick.png',
-        'about': 'I help make the dishwasher functional',
-        'location': 'San Jose, CA',
-        'university': 'UC Berkeley',
-        'role': 'Tech Guru'
-    },
     'investors@uguru.me': {
         'name': 'Uguru Investor',
         'profile_url': 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'

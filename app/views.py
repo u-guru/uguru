@@ -37,20 +37,9 @@ def admin_statistics_universities_info():
 
 @app.route('/admin/stats/universities/complete')
 def admin_statistics_universities_completed():
-    from lib.universities import filterPrepared, filterPreparedWithEmails, calcAndSortedPrepared
-
-    ## Queries database for all universities
-    universities = University.query.all()
-
-    ## Some old universities dont have ids
-    universities = [university for university in universities if university.id]
-
-    ## Prepared information dictionary w/ missing fields
-    final_universities, prepared_info = calcAndSortedPrepared(universities)
-
-    full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
-    universities = full_prepared_universities
-    universities = sorted(universities, key=lambda k:k.us_news_ranking)
+    import json
+    universities = json.load(open('app/static/data/fa15_targetted.json'))
+    universities = sorted(universities, key=lambda k:k['rank'])
     return render_template("admin/admin.stats.universities.complete.html", \
         universities = universities)
 
@@ -126,7 +115,6 @@ def admin_statistics_get_flickr_urls(uni_id):
     photos_arr = parse_flickr_response(flickr_response)
     processed_arr = process_returned_photos(photos_arr)
     flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)
-    print len(flickr_arr)
 
     ## notice, this has no template! We are just returning the strings
     return render_template("admin/admin.stats.one.university.flickr.html", \
@@ -998,7 +986,7 @@ def check_admin_password(email, password):
     if admin_info.get(email):
         email_user_info = admin_info[email]
         first_name = email_user_info['name'].split(' ')[0].lower()
-        if password == first_name + '-uguru-1':
+        if password == first_name + '-uguru-2':
             return True
     if admin_info.get(email) and (email.lower() == 'investors@uguru.me') and (password == '786-uguru-investor'):
         print 'it works'

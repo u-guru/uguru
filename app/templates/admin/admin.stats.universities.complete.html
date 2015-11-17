@@ -42,6 +42,7 @@
                 </div>
               </div>
             </div><!-- ./col -->
+          </div>
 
           <div class='row'>
             <div class='col-md-12'>
@@ -58,34 +59,30 @@
                     <table class="table no-margin">
                       <thead>
                         <tr>
-                          <th >ID</th>
-                          <th >University Name</th>
-                          <th >Rank</th>
-                          <th> Courses </th>
-                          <th> Popular Courses </th>
-                          <th> Departments </th>
+                          <th>Rank</th>
+                          <th>Name</th>
+                          <th>Courses</th>
+                          <th>Depts</th>
+                          <th>Popular Courses</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for university in universities %}
 
                         <tr>
-                          <td>{{university.id}}
-                            <a href='/admin/stats/universities/{{university.id}}' target='_blank'></span>
-                              {% if university.logo_url %}
-                              <img src='{{university.logo_url}}' height="30" width="30">
-                              {% elif university.seal_url %}
-                              <img src='{{university.seal_url}}' height="30" width="30">
-                              {% endif %}
-                            </a>
-                          </td>
+                          <td>#{{university.rank}} </td>
                           <td>
                             <a href='/admin/stats/universities/{{university.id}}' target='_blank'>
-                              {{university.name}}
+                              {{university.name}} &nbsp;&nbsp; &nbsp;&nbsp;
+                              {% if university.logo_url and  not university.svg_url %}
+                              <img src='{{university.logo_url}}' height="30" width="30">
+                              {% elif university.seal_url and not university.svg_url %}
+                              <img src='{{university.seal_url}}' height="30" width="30">
+                              {% elif university.svg_url %}
+                              <img src='{{university.svg_url}}' height="30" width="30"> &nbsp; &nbsp;
+                              <small class="label label-success"><i class="fa fa-check"></i> SVG</small>
+                              {% endif %}
                             </a>
-                          </td>
-                          <td>
-                            {{university.us_news_ranking}}
                           </td>
                           <td>
                             {{university.num_courses}}

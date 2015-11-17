@@ -30,7 +30,7 @@
           </ol>
         </section>
 
-
+        <section class='content'>
           <div class='row'>
             <div class='col-md-8'>
               <a href='/admin/stats/universities/{{university.id}}/flickr_options/' target='_blank'>
@@ -87,6 +87,7 @@
             </div>
           </div>
           <div class='row'>
+            <div class='col-md-12'>
             <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Important <strong> {{university.name}} </strong> fields</h3>
@@ -120,17 +121,47 @@
                             {% endif %}
                           </td>
                         </tr>
+                        <tr>
+                            <td class='col-xs-4'>
+                              Logo types
+                            </td>
+                            <td>
+                            {% if university.svg_logo %}
+                                <small class='label label-success'> SVG </small>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <img src='{{university.svg_url}}' height="50" width="50">
+                            {% else %}
+                            <small class='label label-danger'> MISSING SVG !!!! </small>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if university.seal_url %}
+                              <small class='label label-warning'> Seal </small>
+                              &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <img src='{{university.seal_url}}' height="50" width="50">
+                                 &nbsp;&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if university.logo_url %}
+                              <small class='label label-warning'> Logo</small>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <img src='{{university.logo_url}}' height="50" width="50">
+                                 &nbsp;&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->
                 </div><!-- /.box-body -->
               </div>
+            </div>
           </div>
           <div class='row'>
             <div class='col-md-6'>
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Courses Sample</h3>
+                  <h3 class="box-title">Courses Sample (total: {{university.num_courses}})</h3>
                   <div class="box-tools pull-right">
                   </div>
                 </div><!-- /.box-header -->
@@ -170,6 +201,45 @@
               </div>
             </div>
             <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Popular Courses (total {{university.popular_courses |length }})</h3>
+                  <div class="box-tools pull-right">
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th >ID</th>
+                          <th >Short Name</th>
+                          <th >Times Mentioned</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for course in university.courses %}
+                        {% if course.is_popular %}
+                          <tr>
+                            <td>
+                              {{course.id}}
+                            </td>
+                            <td>
+                              {{course.short_name}}
+                            </td>
+                            <td>
+                              {{course.times_mentioned}}
+                            </td>
+                          </tr>
+                        {% endif %}
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+            <div class='col-md-12'>
               <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Departments Sample</h3>

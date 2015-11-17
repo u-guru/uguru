@@ -29,14 +29,14 @@ angular.module('uguru.util.controllers')
   'ModalService',
   'LoadingService',
   'AnimationService',
+  'DeviceService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
   MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
-  AnimationService) {
-
+  AnimationService, DeviceService) {
 
 // Implement a section for modals here
 
@@ -1028,24 +1028,35 @@ angular.module('uguru.util.controllers')
 
     $scope.connectWithFacebook = function () {
 
-        LoadingService.show();
+        LoadingService.showAmbig(null, 2000);
+        $timeout(function() {
+          //need to add this to loading service soon
 
 
-        if ($scope.platform.web || $scope.platform.windows || $scope.isWindowsPlatform()) {
-          // $scope.fbAuthNative();
+          //if user is not logged in 10 seconds from now ...
+          if (!$scope.user || !$scope.user.id) {
+            $scope.loader.showMsg('Something went wrong... please contact support@uguru.me', 0, 2500)
+          }
 
-          //after five seconds and no fb response --> Say something went wrong
-          $timeout(function() {
+        }, 7500)
 
-
-            if (!$scope.facebookResponseReceived) {
-              alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
-            }
-          }, 5000);
-
-          $scope.fbAuthBrowser();
-        } else {
+        //if android still doesn't work (didnt have time to check --) lets go ahead and take out the "androidDevice() case below --> have it go to browser"
+        if (DeviceService.isIOSDevice() || DeviceService.isAndroidDevice()) {
           $scope.fbAuthNative();
+
+
+          // LOL THIS IS SO BAD -- MY BAD (Leaving it here just in case there was a reason why... can't think of one now)
+
+          // $timeout(function() {
+          //   if (!$scope.facebookResponseReceived) {
+          //     alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
+          //   }
+          // }, 5000);
+          $scope.fbAuthNative();
+        } else {
+          $scope.fbAuthBrowser();
+          LoadingService.hide();
+
         }
 
 
@@ -1326,10 +1337,10 @@ angular.module('uguru.util.controllers')
               }, 250);
             }
           }
-          
 
 
-      }, function(err) {      
+
+      }, function(err) {
         if (err.status === 401) {
             $scope.signupForm.password = '';
             $scope.success.show(0, 1000, 'Incorrect username or password');
@@ -1349,7 +1360,7 @@ angular.module('uguru.util.controllers')
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
         return;
       }
-      
+
 
       // $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
       // $scope.user.email = $scope.signupForm.email;
