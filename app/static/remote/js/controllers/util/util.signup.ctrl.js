@@ -28,22 +28,28 @@ angular.module('uguru.util.controllers')
   '$ionicSlideBoxDelegate',
   'ModalService',
   'LoadingService',
+  'AnimationService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
-  MapService, $ionicSlideBoxDelegate, ModalService, LoadingService) {
+  MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
+  AnimationService) {
 
 
 // Implement a section for modals here
 
     $scope.openModal = function(modalName) {
-     ModalService.open(modalName, $scope);
+     if (!$scope.desktopMode) {
+      ModalService.open(modalName, $scope);
+     }
     };
 
     $scope.closeModal = function(modalName) {
-     ModalService.close(modalName);
+     if (!$scope.desktopMode) {
+      ModalService.close(modalName);
+     }
     };
 
 
@@ -570,6 +576,11 @@ angular.module('uguru.util.controllers')
       }, 750);
     }
 
+    $scope.goToDesktopBecomeGuru = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.desktop-become-guru');
+    }
+
     $scope.goToBecomeGuru = function() {
       if (!$scope.user || !$scope.user.id) {
         if (confirm('You need to have an account to become a guru. Continue?')) {
@@ -965,9 +976,15 @@ angular.module('uguru.util.controllers')
             LoadingService.showSuccess('Login Successful!', 10000);
             $scope.fbLoginSuccessAlreadyShown = true;
             $timeout(function() {
-              LoadingService.updateSuccessText('Syncing profile info...');
+              LoadingService.updateSuccessText('Syncing profile info...', 1000);
+              if ($scope.desktopMode) {
+                $timeout(function() {
+                  $ionicViewSwitcher.nextDirection('forward');
+                  $state.go('^.guru-home');
+                }, 1250);
+              }
             }, 2500);
-            if ($scope.signupModal && $scope.signupModal.isShown()) {
+            if (!$scope.desktopMode && $scope.signupModal && $scope.signupModal.isShown()) {
               $scope.signupModal.hide();
             }
         }
@@ -1338,14 +1355,17 @@ angular.module('uguru.util.controllers')
             LoadingService.showSuccess('Account Successfully Created', 2500);
           }
 
-
-
-          if (ModalService.isOpen('signup')) {
+          if (!$scope.desktopMode && ModalService.isOpen('signup')) {
               ModalService.close('signup');
           }
 
           if ($scope.desktopMode) {
-            $state.go('^.home');
+            console.log('detecting signup')
+
+            LoadingService.showSuccess('Login Successful', 2500);
+            $state.go('^.guru-home');
+          } else {
+              $state.go('^.home');
           }
 
 
@@ -1378,7 +1398,7 @@ angular.module('uguru.util.controllers')
       $localstorage.removeObject('mobile-web-auth');
       var postFbCheckStatusCallback = function(response) {
         $scope.facebookResponseReceived = true;
-        LoadingService.show();
+        LoadingService.showAmbig();
         var successCallback = function(success) {
           var postSuccessCallback = function() {
             LoadingService.showSuccess('Login Successful!', 10000);
@@ -1411,6 +1431,20 @@ angular.module('uguru.util.controllers')
 
     $scope.root.vars.loginMode = false;
 
+    $scope.$on('$ionicView.enter', function() {
+      if ($scope.user && $scope.user.id && $scope.user.id > 0) {
+        console.log('user is already logged in!');
+        LoadingService.showAmbig('Redirecting...', 2000);
+        $ionicViewSwitcher.nextDirection('forward');
+        $timeout(function() {
+          if ($scope.desktopMode) {
+            $state.go('^.guru-home');
+          } else {
+            $state.go('^.guru');
+          }
+        }, 1250);
+      }
+    });
 
   }
 

@@ -1107,3 +1107,20 @@ nick-side-menu {
 	display:none !important;
 }
 
+
+span.student-review-text {
+	font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.yelp-review-container {
+	font-weight:bold;
+	text-transform:uppercase;
+	span {
+		color: white;
+	    line-height: 0;
+	    margin: 2px;
+	    padding: 2px 4px;
+	    font-size: 10px;
+	}
+}

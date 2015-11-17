@@ -253,7 +253,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
-          
+
           if (DeviceService.isIOSDevice()) {
             DeviceService.ios.setStatusBarLightText();
           }
@@ -278,7 +278,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 animateProgressCircle(guruRankingCircle, $scope.user.current_guru_ranking);
 
                 //show it after the progress is complete
-                $scope.initializeHorizontalProgressBars();
+                if (!$scope.desktopMode) {
+                  $scope.initializeHorizontalProgressBars();
+                }
 
               }, 500)
             }
