@@ -601,7 +601,6 @@ angular.module('uguru.util.controllers')
 
             document.addEventListener("online", function() {
                 // is this desktop only?
-                console.log("HI",!$scope.platform.web)
                 if (!$scope.platform.web)
                 {
                     return;
