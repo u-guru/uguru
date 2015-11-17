@@ -37,11 +37,11 @@ def admin_statistics_universities_info():
 
 @app.route('/admin/stats/universities/complete')
 def admin_statistics_universities_completed():
-    import json
-    universities = json.load(open('app/static/data/fa15_targetted.json'))
-    universities = sorted(universities, key=lambda k:k['rank'])
+    from app.static.data.popular_data import getPreparedUniversitiesObj
+    prepared_universities = sorted(getPreparedUniversitiesObj(University.query.all()), key=lambda k:k.us_news_ranking)
+
     return render_template("admin/admin.stats.universities.complete.html", \
-        universities = universities)
+        universities = prepared_universities)
 
 
 @app.route('/admin/stats/universities/')
@@ -83,7 +83,6 @@ def admin_statistics_get_flickr_urls_unique(uni_id, url):
         return redirect(url_for('admin_login'))
 
     u = University.query.get(uni_id)
-    print url
     u.banner_url = url
 
     print u.banner_url

@@ -126,12 +126,14 @@
                               Logo types
                             </td>
                             <td>
-                            {% if university.svg_logo %}
+                            {% if university.svg_url %}
                                 <small class='label label-success'> SVG </small>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                  <img src='{{university.svg_url}}' height="50" width="50">
                             {% else %}
-                            <small class='label label-danger'> MISSING SVG !!!! </small>
+                            <a class='missing-svg-link' data-attr-university-id='{{university.id}}'>
+                              <small class='label label-danger'> MISSING SVG !!!! </small>
+                            </a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -295,17 +297,35 @@
 <script src="/static/admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
 <script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
 <script>
-  var testDevicePushToken = function(device_id) {
-    BASE_URL = "/api/admin/";
-    auth_token = "fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6";
+  $(document).ready(function() {
+    console.log('document is ready');
+    $('a.missing-svg-link').click(function($event){
+      var university_id = $(this).data().attrUniversityId;
+      var svg_url = prompt("Enter new svg url");
+      if (svg_url) {
+        var payload = {
+          university_id: university_id,
+          svg_url:svg_url
+        }
+        updateUniversitySvgUrl(payload);
+      }
+    })
+  });
 
+  var updateUniversitySvgUrl = function(payload) {
+
+    BASE_URL = "/api/admin/";
+    auth_token = "9c1185a5c5e9fc54612808977ee8f548b2258d34";
+    console.log(payload);
     $.ajax({
-      url: BASE_URL + auth_token + "/devices/" + device_id.toString() + '/push_test' ,
-      type: 'POST',
+      url: BASE_URL + auth_token + "/universities/" + payload.university_id ,
+      type: 'PUT',
       dataType: 'json',
-      data: {},
+      contentType: "application/json",
+      data: JSON.stringify(payload),
       success: function(resp){
-        alert("Check yo phone");
+        alert('university updated!');
+        // window.location.replace('/admin/stats/universities/complete');
       },
       error: function(err){
         alert("Error tell Samir!");

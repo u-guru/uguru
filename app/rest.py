@@ -3165,6 +3165,14 @@ class AdminOneUniversityView(restful.Resource):
                     abort(401)
                 u.logo_url = logo_url
 
+            if 'svg_url' in request.json:
+                svg_url = request.json.get('svg_url')
+                print svg_url
+                if type(svg_url) != str:
+                    abort(401)
+                u.svg_url = svg_url
+
+
             if 'school_color_one' in request.json:
                 school_color_one = request.json.get('school_color_one')
                 if type(school_color_one) != str:
