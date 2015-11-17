@@ -833,15 +833,8 @@ angular.module('uguru.guru.controllers')
 
     }
 
-
-    $scope.$on('$ionicView.beforeEnter', function() {
-
-
-    })
-
-
     $scope.$on('$ionicView.enter', function() {
-          $ionicSlideBoxDelegate.update();
+          // $ionicSlideBoxDelegate.update();
           $scope.refreshTipsAndRanking($scope.user);
 
           $timeout(function() {
@@ -855,11 +848,12 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
-      $ionicSlideBoxDelegate.update();
+      // $ionicSlideBoxDelegate.update();
       $timeout(function() {
         $scope.initModalsAfterEnter();
       }, 500)
     });
+
 
 
   }

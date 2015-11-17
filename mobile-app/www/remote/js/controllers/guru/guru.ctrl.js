@@ -252,15 +252,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
-        $scope.$on('$ionicView.enter', function() {
+        $scope.$on('$ionicView.beforeEnter', function() {
 
           if (DeviceService.isIOSDevice()) {
             DeviceService.ios.setStatusBarLightText();
           }
 
           $scope.refreshTipsAndRanking($scope.user);
+          // Weird this is the one causing the view css issue[Profile photo move to left side in 0.5 sec and move back] at edit guru profile 
           $ionicSlideBoxDelegate.update();
-
+          console.error("ion view enter guru ctrl")
           $timeout(function() {
 
             //commented out until it's 100% so won't get in the way of other branches pulling mine.
@@ -288,11 +289,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           }, 1000)
 
         })
-
+        
         var appOnboardingObj;
         $scope.$on('$ionicView.afterEnter', function() {
-
-
+          // $ionicSlideBoxDelegate.update();
 
             $timeout(function() {
               appOnboardingObj = $localstorage.getObject('appOnboarding');
@@ -305,13 +305,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 }
               }, 3000)
         });
-
-
-
-
-
-
-
+    
   }
 
 ]);
