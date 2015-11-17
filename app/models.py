@@ -130,7 +130,7 @@ class User(Base):
     school_email_token = Column(String)
     school_email_confirmed = Column(Boolean, default = False)
 
-
+    reset_password = Column(Boolean)
 
 
 
