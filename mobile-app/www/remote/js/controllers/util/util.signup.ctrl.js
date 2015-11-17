@@ -52,6 +52,15 @@ angular.module('uguru.util.controllers')
      }
     };
 
+    $scope.exploreFirst = function()
+    {
+      console.log('CHECK,',$scope.root.vars.guru_mode);
+
+      if($scope.root.vars.guru_mode)
+        $state.go('^.guru')
+      else
+        $state.go('^.home')
+    }
 
 // ==========================
 
@@ -1268,6 +1277,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.loginUser = function() {
+      if ($scope.signupForm.email)
+        $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
@@ -1297,20 +1308,28 @@ angular.module('uguru.util.controllers')
             }
           }, 500)
           LoadingService.showSuccess('Login Successful!', 2500);
-
-          if (ModalService.isOpen('signup')) {
-            ModalService.close('signup');
-            $timeout(function() {
-              if ($scope.user && $scope.user.university && $scope.user.university.id) {
-                MapService.initStudentHomeMap(user);
-              }
-              $ionicSlideBoxDelegate.update();
-            }, 250);
+          if($scope.desktopMode)
+          {
+            if ($scope.user.guru_mode)
+              $state.go('^.guru')
+            else
+              $state.go('^.home')
           }
+          else{
+            if (ModalService.isOpen('signup')) {
+              ModalService.close('signup');
+              $timeout(function() {
+                if ($scope.user && $scope.user.university && $scope.user.university.id) {
+                  MapService.initStudentHomeMap(user);
+                }
+                $ionicSlideBoxDelegate.update();
+              }, 250);
+            }
+          }
+          
 
 
-      }, function(err) {
-        $scope.loader.showMsg('Incorrect username or password', 1000);
+      }, function(err) {      
         if (err.status === 401) {
             $scope.signupForm.password = '';
             $scope.success.show(0, 1000, 'Incorrect username or password');
@@ -1325,10 +1344,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.completeSignup = function() {
-
+      if ($scope.signupForm.email)
+        $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
         return;
       }
+      
 
       // $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
       // $scope.user.email = $scope.signupForm.email;
@@ -1354,17 +1375,18 @@ angular.module('uguru.util.controllers')
           if (!$scope.fbLoginSuccessAlreadyShown) {
             LoadingService.showSuccess('Account Successfully Created', 2500);
           }
-
           if (!$scope.desktopMode && ModalService.isOpen('signup')) {
               ModalService.close('signup');
           }
 
           if ($scope.desktopMode) {
             console.log('detecting signup')
-
             LoadingService.showSuccess('Login Successful', 2500);
             $state.go('^.guru-home');
           } else {
+            if($scope.root.vars.guru_mode)
+              $state.go('^.guru');
+            else
               $state.go('^.home');
           }
 
@@ -1429,7 +1451,7 @@ angular.module('uguru.util.controllers')
       password:null
     }
 
-    $scope.root.vars.loginMode = false;
+    // $scope.root.vars.loginMode = false;
 
     $scope.$on('$ionicView.enter', function() {
       if ($scope.user && $scope.user.id && $scope.user.id > 0) {

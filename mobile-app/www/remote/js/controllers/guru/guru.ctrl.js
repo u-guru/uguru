@@ -35,7 +35,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   };
 
   var CTA_PARENT = '.guru-home-container';
-
   var CTA_DICT = {
     //profile
     //cta-box-profile

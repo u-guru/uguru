@@ -22,7 +22,7 @@
 			                    <a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
 			                        <span class="list-item-overlay" style="background:{{university.school_color_one}}"></span>
 			                        <span class="school-icon">
-			                            <img image-saver ng-src="{{ university.seal_url || university.logo_url}}" alt="" />
+			                            <img image-saver ng-src="{{ university.svg_url || university.seal_url || university.logo_url}}" alt="" />
 			                        </span>
 			                        <span class="school-name">
 			                            <span class='school-title'> {{university.name}}</span>
@@ -66,7 +66,7 @@
 						<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
 							<a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
 								<span class="school-icon list-icon-left">
-									<img image-saver ng-src="{{ university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt="" />
+									<img image-saver ng-src="{{ university.svg_url || university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt="" />
 								</span>
 								<span ng-if='!location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
 									<b>

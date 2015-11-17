@@ -176,12 +176,12 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       if ($state.current.name === 'root.university') {
 
         LoadingService.showSuccess('Saved!', 1500, function() {
-
-          if ($scope.desktopMode) {
-            AnimationService.flip('^.desktop-become-guru');
-          } else {
-            AnimationService.flip('^.become-guru');
-          }
+          AnimationService.flip('^.home');
+          // if ($scope.desktopMode) {
+          //   AnimationService.flip('^.desktop-become-guru');
+          // } else {
+          //   AnimationService.flip('^.become-guru');
+          // }
         });
       } else {
         LoadingService.showSuccess('Saved!', 1500, function() {
