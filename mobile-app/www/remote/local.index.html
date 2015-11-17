@@ -61,6 +61,7 @@
     WINDOWS = null;
     function getMobileOperatingSystem() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            console.log(userAgent);
             if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
                     console.log('injecting windows specific css & js');
                     injectJs('windows.cordova.js');
@@ -83,7 +84,7 @@
                 }
                 return 'Android';
               }
-            else if ( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+            else if ( !(userAgent.toLowerCase().indexOf('safari') > -1) )
               {
 
                 injectJs('ios.cordova_plugins.js');
@@ -94,7 +95,7 @@
 
               }
             else {
-                console.log('hard to determine identifies');
+                console.log('Mobile browser / desktop browser direction!');
                 // injectCss('web.css')
                 return 'unknown';
             }
