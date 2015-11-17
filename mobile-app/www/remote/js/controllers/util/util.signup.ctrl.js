@@ -1381,10 +1381,12 @@ angular.module('uguru.util.controllers')
 
           if ($scope.desktopMode) {
             console.log('detecting signup')
-
             LoadingService.showSuccess('Login Successful', 2500);
             $state.go('^.guru-home');
           } else {
+            if($scope.root.vars.guru_mode)
+              $state.go('^.guru');
+            else
               $state.go('^.home');
           }
 
