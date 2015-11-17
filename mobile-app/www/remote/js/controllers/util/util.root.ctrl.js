@@ -95,7 +95,7 @@ angular.module('uguru.util.controllers')
             KeyboardService.setDeviceKeyboardState(false);
             $scope.keyboardOpen = false;
         }
-
+     
 
         // if it exists, always show it until we've either updated, or checked for updates recently
         // if (!LOCAL && navigator.splashscreen && navigator.splashscreen.show) {

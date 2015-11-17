@@ -98,6 +98,9 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		catch(err) {
 			console.error(err)
 		}
+		if (DeviceService.doesCordovaExist()) {
+		  cordova.plugins.Keyboard.close();
+		}
 		$ionicSlideBoxDelegate.update();
 	}
 

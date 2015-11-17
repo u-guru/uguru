@@ -853,9 +853,12 @@ angular.module('uguru.guru.controllers')
         $scope.initModalsAfterEnter();
       }, 500)
     });
-
-
-
+   $scope.$on('modal.hidden', function() {
+      console.error("ion modal leave  guru ctrl")
+      if (DeviceService.doesCordovaExist()) {
+        cordova.plugins.Keyboard.close();
+      }
+    });
   }
 
 ]);
