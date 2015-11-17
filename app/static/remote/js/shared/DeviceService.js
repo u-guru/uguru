@@ -243,7 +243,9 @@ function DeviceService($cordovaNgCardIO,
         checkUpdates();
 		  	console.log("detected platform: " + getPlatform());
 
-		}
+		} else {
+
+    }
 		// if(typeof callback === 'function') {
 		// 	callback();
 		// }
@@ -252,18 +254,18 @@ function DeviceService($cordovaNgCardIO,
 	function checkUpdates(url) {
 
     // don't update on local
-    if (LOCAL && !url) {
-      console.log("running local: skipping over checkUpdates");
+    // if (true || LOCAL && !url) {
+    //   console.log("running local: skipping over checkUpdates");
 
-        // hide it otherwise it never would on emulators
-       $timeout(function() {
-          if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
-            navigator.splashscreen.hide();
-          }
-        }, 2000);
+    //     // hide it otherwise it never would on emulators
+    //    $timeout(function() {
+    //       if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
+    //         navigator.splashscreen.hide();
+    //       }
+    //     }, 2000);
 
-      return;
-    }
+    //   return;
+    // }
     console.log("did not detect local, checking for updates");
 
       //set BASE_URL to prompted one

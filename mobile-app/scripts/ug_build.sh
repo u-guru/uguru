@@ -55,7 +55,7 @@ if [ $# == 1 ];
 		# cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
 		cordova platform add android@4.1
 		# printf "\e[0;36mInstalling and configuring the Android Support Libray v13 for Facebook and Push plugins... \e[0m\n"
-
+		cordova plugin add https://bitbucket.org/uguru-nick/phonegap-facebook-plugin --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 		printf "\e[0;36mCopying over build-extras.gradle... \e[0m\n"
 		cp ./build_settings_android/build-extras.gradle platforms/android/
 		cordova build android -- --gradleArg=-q
