@@ -1,0 +1,204 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+
+      <div class="content-wrapper" style="min-height: 918px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Berkeley users stats
+            <small>OG Users from last year</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
+            <li>Stats</li>
+            <li class="active">Users</li>
+          </ol>
+        </section>
+
+
+        <section class="content">
+
+
+          <div class="row">
+            <div class="col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-black">
+                <div class="inner">
+                  <h3>{{users|length}}</h3>
+                  <p>Total #of Users</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-olive">
+                <div class="inner">
+                  <h3>{{active_users|length}}</h3>
+                  <p>Previously Active Users</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-gray">
+                <div class="inner">
+                  <h3>{{active_gurus|length}}</h3>
+                  <p>Previously Active Users</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+          </div>
+
+          <div class='row'>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Active Student</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Credits</th>
+                          <th>Num Ratings</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for user in active_students[0:50] %}
+
+                        <tr>
+                          <td>#{{user.id}} </td>
+                          <td>
+                            <a href='#' target='_blank'>
+                              {{user.name}} &nbsp;&nbsp; &nbsp;&nbsp;
+                              {% if user.profile_url %}
+                              <img src='{{user.profile_url}}' height="30" width="30">
+                              {% endif %}
+                            </a>
+                          </td>
+                          <td>#{{user.credits}} </td>
+                          <td>#{{user.guru_ratings|length}} </td>
+                        </tr>
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Active Gurus</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Balance</th>
+                          <th>Num ratings</th>
+                          <th>Total Earned</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for user in active_gurus[0:50] %}
+
+                        <tr>
+                          <td>#{{user.id}} </td>
+                          <td>
+                            <a href='#' target='_blank'>
+                              {{user.name}} &nbsp;&nbsp; &nbsp;&nbsp;
+                              {% if user.profile_url %}
+                              <img src='{{user.profile_url}}' height="30" width="30">
+                              {% endif %}
+                            </a>
+                          </td>
+                          <td>
+                            ${{user.balance}}
+                          </td>
+                          <td>
+                            {{user.student_ratings|length}} ratings
+                          </td>
+                          <td>
+                            ${{user.total_earned}}
+                          </td>
+                        </tr>
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+
+      </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
+<script>
+  var testDevicePushToken = function(device_id) {
+    BASE_URL = "/api/admin/";
+    auth_token = "fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6";
+
+    $.ajax({
+      url: BASE_URL + auth_token + "/devices/" + device_id.toString() + '/push_test' ,
+      type: 'POST',
+      dataType: 'json',
+      data: {},
+      success: function(resp){
+        alert("Check yo phone");
+      },
+      error: function(err){
+        alert("Error tell Samir!");
+        console.log(err);
+      }
+    });
+  }
+</script>
+
+{% endblock %}

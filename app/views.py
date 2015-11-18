@@ -43,6 +43,23 @@ def admin_statistics_universities_completed():
     return render_template("admin/admin.stats.universities.complete.html", \
         universities = prepared_universities)
 
+@app.route('/admin/stats/users/universities')
+def admin_statistics_universities_completed():
+    def isActive(user):
+        return user.name and user.profile_url \
+        and user.profile_url != '/static/img/default-photo.jpg' and user.profile_url != fb_url
+
+    def isActiveGuru(user):
+        return user.balance or user.total_earned or user.guru_courses or user.guru_introduction
+
+    fb_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'
+    users = User.query.all()
+    users = [user for user in users if user.university_id == 2307]
+    active_users = [user for user in users if isActive(user)]
+    active_gurus = sorted([user for user in active_users if isActiveGuru(user)], key=lambda user:user.total_earned ,reverse=True)
+    active_students = sorted([user for user in active_users if user.credits], key=lambda user:user.credits ,reverse=True)
+    return render_template("admin/admin.stats.users.universities.html", \
+        users=users, active_users=active_users, active_gurus=active_gurus, active_students=active_students)
 
 @app.route('/admin/stats/universities/')
 def admin_statistics_universities_new():
