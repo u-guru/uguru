@@ -77,6 +77,12 @@
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
+							<div>
+								<a>
+									<h3>My Earnings</h3>
+									<h1 id="home-tiles-earnings"><span>$</span>84</h1>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -86,9 +92,9 @@
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div class='cta-box' style='background:#9b858c;'>
+							<div class='cta-box'>
 								<div>
-									<h3><span style='font-weight:bold;' id='credibility-percent'>{{user.current_profile_percent || 40}}</span>% <span>Profile</span></h3>
+									<h3><span class='credibility-percent'>{{user.current_profile_percent || 40}}%</span> <span>Profile</span></h3>
 									<progress class="white-round height-10" max="100" value="{{user.current_profile_percent || 40}}"></progress>
 								</div>
 							</div>
@@ -99,7 +105,7 @@
 							</svg>
 							<div class='cta-box'>
 								<div>
-									<h3><span style='font-weight:bold' id='credibility-percent'>{{user.current_credibility_percent || 5}}</span>% <span>Credibility</span></h3>
+									<h3><span class='credibility-percent'>{{user.current_credibility_percent || 5}}%</span> <span>Credibility</span></h3>
 									<progress class="white-round height-10" max="100" value="{{user.current_credibility_percent || 5}}"></progress>
 								</div>
 							</div>
@@ -110,14 +116,18 @@
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div style='overflow:hidden;'>
+							<div>
 								<h2><strong><u>{{guruHomeTips.length}}</u></strong> Ranking Tips</h2>
-								<ul>
-									<li ng-repeat='tip in guruHomeTips'>
-										<h4>{{tip.title}}</h4>
-										<span>{{tip.message}}</span>
-									</li>
-								</ul>
+								<ion-slide-box show-pager='true'>
+				                    <ion-slide ng-repeat='tip in guruHomeTips'>
+				                        <div class='card'>
+			                                <div>
+			                                    <h1>{{tip.title}}</h1>
+			                                    <p>{{tip.message}}</p>
+			                                </div>
+				                        </div>
+				                    </ion-slide>
+				                </ion-slide-box>
 							</div>
 						</div>
 					</div>

@@ -1,0 +1,77 @@
+<ion-view>
+	<main id='desktop-billing' class="desktop-mode" ng-if='isDesktopMode()'>
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<div class="main text-center">
+			<h1>Bill Student</h1>
+			<div id="billing-container">
+				<div id="billing-student">
+					<h2>1. Select a Student</h2>
+					<ul id="select-student" class="ugrid-4">
+						<li>
+							<a>
+								<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+								<span>{{user.name}}</span>
+							</a>
+						</li>
+						<li>
+							<a>
+								<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+								<span>{{user.name}}</span>
+							</a>
+						</li>
+						<li>
+							<a>
+								<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+								<span>{{user.name}}</span>
+							</a>
+						</li>
+						<li>
+							<a>
+								<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+								<span>{{user.name}}</span>
+							</a>
+						</li>
+					</ul>
+					<ul id="select-skill" class="ugrid-3">
+						<li>
+							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+							<span>{{user.name}}</span>
+						</li>
+						<li>for</li>
+						<li>
+							<div>
+								<div class="custom-dropdown">
+									<div>
+										<span>CS10</span>
+										<a>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,32 L50,68 L86,32"></path>
+											</svg>
+										</a>
+									</div>
+									<ul>
+										<li>CS10</li>
+										<li>CS20</li>
+										<li>CS30</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="billing-details">
+					<h2>2. Session Details</h2>
+					<ul class="ugrid-2">
+						<li>
+							<h3>Session Time</h3>
+						</li>
+						<li>
+							<h3>Hourly Rate</h3>
+						</li>
+					</ul>
+				</div>
+				<button>Confirm</button>
+			</div>
+		</div>
+	</main>
+</ion-view>

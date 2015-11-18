@@ -1,0 +1,23 @@
+<ion-view>
+	<main id='desktop-timer' class="desktop-mode" ng-if='isDesktopMode()'>
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<div class="main">
+			<div>
+				<h1>You started your session with {{user.name}}.</h1>
+				<div>
+					<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+					<div>
+						<h3>{{user.name}}</h3>
+						<span>Started 1 hour and 30 minutes ago</span>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="timer-visual">
+					<h1>00 : 30</h1>
+				</div>
+				<button>Pause</button>
+			</div>
+		</div>
+	</main>
+</ion-view>
