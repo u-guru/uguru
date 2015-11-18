@@ -1617,6 +1617,9 @@
 			font-weight: 600;
 			font-size: 18px;
 			text-transform: uppercase;
+			a.edit-button {
+				margin: 8px 16px;
+			}
 			h1 {
 				background: rgba($gabrielle,.4);
 				color: white;
@@ -1676,7 +1679,14 @@
 			}
 			#profile-experiences {
 				ul {
+					@include flex;
+					@include flex-wrap;
 					li {
+						width: 100%;
+						text-align: center;
+						padding: 15px;
+						border: 1px solid rgba($gabrielle,.4);
+						position: relative;
 						a {
 							height: auto;
 							background: none;

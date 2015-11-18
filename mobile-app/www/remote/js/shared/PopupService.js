@@ -34,6 +34,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 
 			attachListeners(popup, callback);
 
+
 		}, 0);
 	}
 
@@ -53,7 +54,9 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		};
 
 		clickSubmit = function() {
-			callback();
+			console.log("submit");
+		    callback();
+		    document.getElementsByClassName('.show button.submit').blur()
 		};
 
 		var enterSubmit = function(e) {
@@ -73,7 +76,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		// }
 
 		if(typeof callback === 'function') {
-			console.log('is function');
+			// console.log('ADD');
 			submitButton.addEventListener('click', clickSubmit);
 			popup.addEventListener('keyup', enterSubmit);
 		}
@@ -97,6 +100,9 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		}
 		catch(err) {
 			console.error(err)
+		}
+		if (DeviceService.doesCordovaExist()) {
+		  cordova.plugins.Keyboard.close();
 		}
 		$ionicSlideBoxDelegate.update();
 	}

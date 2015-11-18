@@ -854,15 +854,8 @@ angular.module('uguru.guru.controllers')
 
     }
 
-
-    $scope.$on('$ionicView.beforeEnter', function() {
-
-
-    })
-
-
     $scope.$on('$ionicView.enter', function() {
-          $ionicSlideBoxDelegate.update();
+          // $ionicSlideBoxDelegate.update();
           $scope.refreshTipsAndRanking($scope.user);
 
           $timeout(function() {
@@ -876,6 +869,7 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
+<<<<<<< HEAD
       $ionicSlideBoxDelegate.update();
     });
 
@@ -885,6 +879,19 @@ angular.module('uguru.guru.controllers')
     }, 500)
 
 
+=======
+      // $ionicSlideBoxDelegate.update();
+      $timeout(function() {
+        $scope.initModalsAfterEnter();
+      }, 500)
+    });
+   $scope.$on('modal.hidden', function() {
+      // console.error("ion modal leave  guru ctrl")
+      if (DeviceService.doesCordovaExist()) {
+        cordova.plugins.Keyboard.close();
+      }
+    });
+>>>>>>> 352f97fa743071a5f5bebc90f75fa910eecd645a
   }
 
 ]);

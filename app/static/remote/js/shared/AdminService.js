@@ -151,7 +151,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                     resetCache(scope, true, true);
                     // if (scope.user && scope.user.id) {
                     //     resetCache(scope, true, false);
-                    //     $state.go('^.home');
+                    //     $state.go('^.guru-home');
                     //     return;
                     // } else {
                     //     alert('Sorry! You need to be logged in to this');
@@ -166,7 +166,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                             $ionicSideMenuDelegate.toggleRight();
                         }, 500);
                         $timeout(function() {
-                            $state.go('^.home');
+                            $state.go('^.guru-home');
                             scope.loader.hide();
                         }, 1000)
                         return;
@@ -185,7 +185,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                             $ionicSideMenuDelegate.toggleRight();
                         }, 500);
                         $timeout(function() {
-                            $state.go('^.home');
+                            $state.go('^.guru-home');
                             scope.loader.hide();
                         }, 1000)
 
