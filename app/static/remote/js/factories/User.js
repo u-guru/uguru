@@ -523,7 +523,9 @@ angular.module('uguru.user', [])
         $scope.user.guru_latest_time = user.guru_latest_time;
         $scope.user.hangouts_friendly = user.hangouts_friendly;
         $scope.user.messenger_friendly = user.messenger_friendly;
+        $scope.user.person_friendly = user.person_friendly;
         $scope.user.phone_friendly = user.phone_friendly;
+        $scope.user.person_friendly = user.person_friendly;
         $scope.user.skype_friendly = user.skype_friendly;
         $scope.user.text_friendly = user.text_friendly;
         $scope.user.guru_experiences = user.guru_experiences;

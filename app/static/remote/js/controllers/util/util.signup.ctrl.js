@@ -29,14 +29,14 @@ angular.module('uguru.util.controllers')
   'ModalService',
   'LoadingService',
   'AnimationService',
+  'DeviceService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
   MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
-  AnimationService) {
-
+  AnimationService, DeviceService) {
 
 // Implement a section for modals here
 
@@ -47,11 +47,33 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.closeModal = function(modalName) {
-     if (!$scope.desktopMode) {
+     if (!$scope.desktopMode && !$state.current.name == 'root.university') {
       ModalService.close(modalName);
+     }
+     //case if at the first access page (not within the app)
+     else if (!$scope.desktopMode) {
+      $scope.signupModal.hide();
      }
     };
 
+    $scope.preventSignupAndBackToAccess = function() {
+      $scope.loader.showMsg("Sorry! We are out of signups. <br><br> Please request access code from support on our home page.", 0, 3000);
+      $timeout(function() {
+        LoadingService.showAmbig('Redirecting you back...', 2000, function() {
+          AnimationService.flip('^.university');
+        })
+      }, 3000)
+    }
+
+    $scope.exploreFirst = function()
+    {
+      console.log('CHECK,',$scope.root.vars.guru_mode);
+
+      if($scope.root.vars.guru_mode)
+        $state.go('^.guru')
+      else
+        $state.go('^.home')
+    }
 
 // ==========================
 
@@ -1019,24 +1041,35 @@ angular.module('uguru.util.controllers')
 
     $scope.connectWithFacebook = function () {
 
-        LoadingService.show();
+        LoadingService.showAmbig(null, 2000);
+        $timeout(function() {
+          //need to add this to loading service soon
 
 
-        if ($scope.platform.web || $scope.platform.windows || $scope.isWindowsPlatform()) {
-          // $scope.fbAuthNative();
+          //if user is not logged in 10 seconds from now ...
+          if (!$scope.user || !$scope.user.id) {
+            $scope.loader.showMsg('Something went wrong... please contact support@uguru.me', 0, 2500)
+          }
 
-          //after five seconds and no fb response --> Say something went wrong
-          $timeout(function() {
+        }, 7500)
 
-
-            if (!$scope.facebookResponseReceived) {
-              alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
-            }
-          }, 5000);
-
-          $scope.fbAuthBrowser();
-        } else {
+        //if android still doesn't work (didnt have time to check --) lets go ahead and take out the "androidDevice() case below --> have it go to browser"
+        if (DeviceService.isIOSDevice() || DeviceService.isAndroidDevice()) {
           $scope.fbAuthNative();
+
+
+          // LOL THIS IS SO BAD -- MY BAD (Leaving it here just in case there was a reason why... can't think of one now)
+
+          // $timeout(function() {
+          //   if (!$scope.facebookResponseReceived) {
+          //     alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
+          //   }
+          // }, 5000);
+          $scope.fbAuthNative();
+        } else {
+          $scope.fbAuthBrowser();
+          LoadingService.hide();
+
         }
 
 
@@ -1268,6 +1301,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.loginUser = function() {
+      if ($scope.signupForm.email)
+        $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
@@ -1297,20 +1332,28 @@ angular.module('uguru.util.controllers')
             }
           }, 500)
           LoadingService.showSuccess('Login Successful!', 2500);
-
-          if (ModalService.isOpen('signup')) {
-            ModalService.close('signup');
-            $timeout(function() {
-              if ($scope.user && $scope.user.university && $scope.user.university.id) {
-                MapService.initStudentHomeMap(user);
-              }
-              $ionicSlideBoxDelegate.update();
-            }, 250);
+          if($scope.desktopMode)
+          {
+            if ($scope.user.guru_mode)
+              $state.go('^.guru')
+            else
+              $state.go('^.home')
+          }
+          else{
+            if (ModalService.isOpen('signup')) {
+              ModalService.close('signup');
+              $timeout(function() {
+                if ($scope.user && $scope.user.university && $scope.user.university.id) {
+                  MapService.initStudentHomeMap(user);
+                }
+                $ionicSlideBoxDelegate.update();
+              }, 250);
+            }
           }
 
 
+
       }, function(err) {
-        $scope.loader.showMsg('Incorrect username or password', 1000);
         if (err.status === 401) {
             $scope.signupForm.password = '';
             $scope.success.show(0, 1000, 'Incorrect username or password');
@@ -1325,10 +1368,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.completeSignup = function() {
-
+      if ($scope.signupForm.email)
+        $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
         return;
       }
+
 
       // $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
       // $scope.user.email = $scope.signupForm.email;
@@ -1354,17 +1399,18 @@ angular.module('uguru.util.controllers')
           if (!$scope.fbLoginSuccessAlreadyShown) {
             LoadingService.showSuccess('Account Successfully Created', 2500);
           }
-
           if (!$scope.desktopMode && ModalService.isOpen('signup')) {
               ModalService.close('signup');
           }
 
           if ($scope.desktopMode) {
             console.log('detecting signup')
-
             LoadingService.showSuccess('Login Successful', 2500);
             $state.go('^.guru-home');
           } else {
+            if($scope.root.vars.guru_mode)
+              $state.go('^.guru');
+            else
               $state.go('^.home');
           }
 
@@ -1429,7 +1475,7 @@ angular.module('uguru.util.controllers')
       password:null
     }
 
-    $scope.root.vars.loginMode = false;
+    $scope.root.vars.loginMode = $scope.root.vars.page_cache.login_mode || false;
 
     $scope.$on('$ionicView.enter', function() {
       if ($scope.user && $scope.user.id && $scope.user.id > 0) {

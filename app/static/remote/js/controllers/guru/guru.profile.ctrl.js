@@ -336,6 +336,14 @@ angular.module('uguru.guru.controllers')
       });
     }
 
+    $scope.saveGuruIntroductionModalAndHide = function() {
+      LoadingService.showAmbig(null, 500, function() {
+        $scope.guruIntroductionModal.hide();
+        LoadingService.showSuccess('Introduction Saved', 1500);
+        $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
+      })
+    }
+
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.introduction.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -415,6 +423,11 @@ angular.module('uguru.guru.controllers')
       $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
     }
 
+
+    $scope.updateCommunicationMethod = function(attr_str, bool) {
+      $scope.user.updateAttr(attr_str, $scope.user, bool, null, $scope);
+
+    }
 
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.languages.modal.html', {

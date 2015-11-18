@@ -336,6 +336,22 @@ angular.module('uguru.guru.controllers')
       });
     }
 
+    $scope.saveGuruIntroductionModalAndHide = function() {
+      LoadingService.showAmbig(null, 500, function() {
+        $scope.guruIntroductionModal.hide();
+        LoadingService.showSuccess('Introduction Saved', 1500);
+        $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
+      })
+    }
+
+    $scope.closeAndSaveContactGuruModal = function() {
+      LoadingService.showAmbig(null, 500, function() {
+        $scope.contactGuruModal.hide();
+        LoadingService.showSuccess('Contact Methods Saved', 1500);
+        $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
+      })
+    }
+
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.introduction.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -415,6 +431,10 @@ angular.module('uguru.guru.controllers')
       $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
     }
 
+
+    $scope.updateCommunicationMethod = function(attr_str, bool) {
+      $scope.user.updateAttr(attr_str, $scope.user, bool, null, $scope);
+    }
 
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.languages.modal.html', {
@@ -744,10 +764,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.confirmPhonePopup = function($event) {
       console.log("EVENT", $event.target)
-      PopupService.open('confirmPhone', callback, $event.target);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();
       }
+
+      PopupService.open('confirmPhone', callback, $event.target);
     }
 
 
@@ -848,17 +869,15 @@ angular.module('uguru.guru.controllers')
     });
 
     $scope.$on('$ionicView.afterEnter', function() {
-      // $ionicSlideBoxDelegate.update();
-      $timeout(function() {
-        $scope.initModalsAfterEnter();
-      }, 500)
+      $ionicSlideBoxDelegate.update();
     });
-   $scope.$on('modal.hidden', function() {
-      // console.error("ion modal leave  guru ctrl")
-      if (DeviceService.doesCordovaExist()) {
-        cordova.plugins.Keyboard.close();
-      }
-    });
+
+    $timeout(function() {
+      $scope.calcGuruCredibilityProgress();
+      $scope.initModalsAfterEnter();
+    }, 500)
+
+
   }
 
 ]);

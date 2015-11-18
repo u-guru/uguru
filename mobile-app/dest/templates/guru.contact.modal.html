@@ -14,7 +14,7 @@
 		    <ul id="contact-type-list">
 			    <li>
 			        <div>
-				        <input type="checkbox" ng-change='updateCommunicationMethod("phone", user.phone_friendly)' ng-model='user.phone_friendly'/>
+				        <input type="checkbox" ng-change='updateCommunicationMethod("phone_friendly", user.phone_friendly)' ng-model='user.phone_friendly'/>
 						<span>
 					        <label>
 								<svg viewBox="0 0 100 100">
@@ -28,7 +28,7 @@
 			    </li>
 			    <li>
 			        <div>
-				        <input type="checkbox" ng-change='updateCommunicationMethod("skype", user.skype_friendly)' ng-model='user.skype_friendly'/>
+				        <input type="checkbox" ng-change='updateCommunicationMethod("skype_friendly", user.skype_friendly)' ng-model='user.skype_friendly'/>
 						<span>
 					        <label>
 								<svg viewBox="0 0 100 100">
@@ -42,7 +42,7 @@
 			    </li>
 			    <li>
 			        <div>
-				        <input type="checkbox" ng-change='updateCommunicationMethod("messenger", user.messenger_friendly")' ng-model='user.messenger_friendly'/>
+				        <input type="checkbox" ng-change='updateCommunicationMethod("messenger_friendly", user.messenger_friendly")' ng-model='user.messenger_friendly'/>
 				        <span>
 					        <label>
 								<svg viewBox="0 0 100 100">
@@ -56,7 +56,7 @@
 			    </li>
 			    <li>
 			        <div>
-				        <input type="checkbox" ng-change='updateCommunicationMethod("text", user.text_friendly)' ng-model='user.text_friendly'/>
+				        <input type="checkbox" ng-change='updateCommunicationMethod("text_friendly", user.text_friendly)' ng-model='user.text_friendly'/>
 				        <span>
 					        <label>
 								<svg viewBox="0 0 100 100">
@@ -70,7 +70,7 @@
 			    </li>
 			    <li>
 			        <div>
-				        <input type="checkbox" ng-change='updateCommunicationMethod("email", user.email_friendly)' ng-model='user.email_friendly'/>
+				        <input type="checkbox" ng-change='updateCommunicationMethod("email_friendly", user.email_friendly)' ng-model='user.email_friendly'/>
 						<span>
 					        <label>
 								<svg viewBox="0 0 100 100">
@@ -84,7 +84,7 @@
 			    </li>
 			    <li>
 			        <div>
-				        <input type="checkbox" ng-change='updateCommunicationMethod("personal", user.person_friendly)' ng-model='user.person_friendly'/>
+				        <input type="checkbox" ng-change='updateCommunicationMethod("person_friendly", user.person_friendly)' ng-model='user.person_friendly'/>
 						<span>
 					        <label>
 								<svg viewBox="0 0 100 100">
@@ -98,6 +98,6 @@
 			    </li>
 			</ul>
 		</div>
-		<button class='bg-cerise semibold' ng-click='contactGuruModal.hide()'>Save</button>
+		<button class='bg-cerise semibold' ng-click='closeAndSaveContactGuruModal()'>Save</button>
 	</section>
 </ion-modal-view>

@@ -130,7 +130,7 @@ class User(Base):
     school_email_token = Column(String)
     school_email_confirmed = Column(Boolean, default = False)
 
-
+    reset_password = Column(Boolean)
 
 
 
@@ -287,6 +287,7 @@ class User(Base):
     phone_friendly = Column(Boolean, default = False)
     facetime_friendly = Column(Boolean, default = False)
     messenger_friendly = Column(Boolean, default = False)
+    person_friendly = Column(Boolean, default = False)
     text_friendly = Column(Boolean, default = False)
 
     #referral stuff
@@ -599,6 +600,7 @@ class University(Base):
     state_short = Column(String)
     zip_code = Column(Integer)
     logo_url = Column(String)
+    svg_url = Column(String)
     last_updated = Column(DateTime)
 
     fa15_start = Column(DateTime)

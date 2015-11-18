@@ -267,7 +267,6 @@ angular.module('uguru.guru.controllers')
       document.getElementsByClassName(class_name)[0].classList.remove('active')
       // $event.target.classList.add('active')
     }
-
     $scope.goToIncreaseRanking = function() {
         $ionicViewSwitcher.nextDirection('forward');
         //Mixpanel Track
@@ -498,11 +497,14 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.enter', function(){
       $scope.user.guru_mode = true;
       $scope.root.vars.guru_mode = true;
+
+
       $localstorage.setObject('user', $scope.user);
-      console.log('printing guru stuff', $scope.user.active_proposals);
+
+
       User.getUserFromServer($scope, null, $state);
 
-      //check if user already has push notification token
+      initCTA();
 
     });
 
@@ -511,9 +513,6 @@ angular.module('uguru.guru.controllers')
     });
     $scope.$on('$ionicView.afterEnter', function() {
       LoadingService.hide();
-
-      $scope.checkForRatings();
-
     });
 
 

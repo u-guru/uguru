@@ -37,23 +37,29 @@ def admin_statistics_universities_info():
 
 @app.route('/admin/stats/universities/complete')
 def admin_statistics_universities_completed():
-    from lib.universities import filterPrepared, filterPreparedWithEmails, calcAndSortedPrepared
+    from app.static.data.popular_data import getPreparedUniversitiesObj
+    prepared_universities = sorted(getPreparedUniversitiesObj(University.query.all()), key=lambda k:k.us_news_ranking)
 
-    ## Queries database for all universities
-    universities = University.query.all()
-
-    ## Some old universities dont have ids
-    universities = [university for university in universities if university.id]
-
-    ## Prepared information dictionary w/ missing fields
-    final_universities, prepared_info = calcAndSortedPrepared(universities)
-
-    full_prepared_universities = [university for university in final_universities if prepared_info[university.id]['percentage'] == 100] ##remember to change 90 backt to 80
-    universities = full_prepared_universities
-    universities = sorted(universities, key=lambda k:k.us_news_ranking)
     return render_template("admin/admin.stats.universities.complete.html", \
-        universities = universities)
+        universities = prepared_universities)
 
+@app.route('/admin/stats/users/universities')
+def admin_statistics_universities_completed():
+    def isActive(user):
+        return user.name and user.profile_url \
+        and user.profile_url != '/static/img/default-photo.jpg' and user.profile_url != fb_url
+
+    def isActiveGuru(user):
+        return user.balance or user.total_earned or user.guru_courses or user.guru_introduction
+
+    fb_url = 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'
+    users = User.query.all()
+    users = [user for user in users if user.university_id == 2307]
+    active_users = [user for user in users if isActive(user)]
+    active_gurus = sorted([user for user in active_users if isActiveGuru(user)], key=lambda user:user.total_earned ,reverse=True)
+    active_students = sorted([user for user in active_users if user.credits], key=lambda user:user.credits ,reverse=True)
+    return render_template("admin/admin.stats.users.universities.html", \
+        users=users, active_users=active_users, active_gurus=active_gurus, active_students=active_students)
 
 @app.route('/admin/stats/universities/')
 def admin_statistics_universities_new():
@@ -94,7 +100,6 @@ def admin_statistics_get_flickr_urls_unique(uni_id, url):
         return redirect(url_for('admin_login'))
 
     u = University.query.get(uni_id)
-    print url
     u.banner_url = url
 
     print u.banner_url
@@ -126,7 +131,6 @@ def admin_statistics_get_flickr_urls(uni_id):
     photos_arr = parse_flickr_response(flickr_response)
     processed_arr = process_returned_photos(photos_arr)
     flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)
-    print len(flickr_arr)
 
     ## notice, this has no template! We are just returning the strings
     return render_template("admin/admin.stats.one.university.flickr.html", \
@@ -998,7 +1002,7 @@ def check_admin_password(email, password):
     if admin_info.get(email):
         email_user_info = admin_info[email]
         first_name = email_user_info['name'].split(' ')[0].lower()
-        if password == first_name + '-uguru-1':
+        if password == first_name + '-uguru-2':
             return True
     if admin_info.get(email) and (email.lower() == 'investors@uguru.me') and (password == '786-uguru-investor'):
         print 'it works'

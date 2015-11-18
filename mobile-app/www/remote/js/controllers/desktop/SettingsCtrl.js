@@ -56,6 +56,14 @@ angular.module('uguru.desktop.controllers', [])
     //edit university (modal)
     //loading service
 
+    $scope.resetCache = function() {
+      LoadingService.showAmbig('Resetting Cache..', 1500, function(){
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.university');
+        AdminService.resetCache();
+      })
+    }
+
     function initDesktopDefaults() {
       $scope.page = {
         url: $state.current.name
