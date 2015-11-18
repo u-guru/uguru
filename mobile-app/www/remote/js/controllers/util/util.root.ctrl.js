@@ -62,6 +62,8 @@ angular.module('uguru.util.controllers')
         };
 
 
+
+
         // GABRIELLE TODO: Define these values
         var desktopHeightLimit = 699;
         var desktopWidthLimit= 767;
@@ -232,6 +234,7 @@ angular.module('uguru.util.controllers')
         $scope.rootUser = User;
         $scope.root = RootService;
         $scope.root.vars = {};
+        $scope.root.vars.page_cache = {};
         $scope.root.vars.remote_cache = [];
         $scope.root.vars.onboarding = false;
         $scope.root.vars.request_cache = {};

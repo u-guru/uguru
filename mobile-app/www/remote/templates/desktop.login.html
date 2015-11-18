@@ -35,7 +35,8 @@
 						</div>
 					</form>
 				</div>
-				<button class="explore" ng-click='goToDesktopBecomeGuru()'>Explore first</button>
+				<!-- Removed for this iteration -->
+				<!-- <button class="explore" ng-click='goToDesktopBecomeGuru()'>Explore first</button> -->
 			</div>
 		</div>
 		<aside>
@@ -43,7 +44,7 @@
 			<div>
 				<h1>Got an account?</h1>
 				<p>That’s awesome! You can login by clicking on the button below. To skip this next time, you can ask us to remember your login credentials.</p>
-				<button class="btn-ghost-white">Login</button>
+				<button ng-click='toggleLoginMode()'class="btn-ghost-white">Login</button>
 			</div>
 		</aside>
 	</main>
@@ -53,7 +54,7 @@
 			<div>
 				<h1>Want an account?</h1>
 				<p>That’s awesome! You can sign up by clicking on the button below and filling out a quick form. Be sure to use your .edu email address.</p>
-				<button class="btn-ghost-white">Sign up</button>
+				<button ng-click='preventSignupAndBackToAccess()' class="btn-ghost-white">Sign up</button>
 			</div>
 		</aside>
 		<div class="main">

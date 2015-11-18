@@ -2554,7 +2554,7 @@ section {
         right: 0;
         width: 35px;
         height: 35px; }
-        .guru-profile-view #profile-info .profile-inside li .remove svg {
+        .guru-profile-view #profile-info .profile-inside li .remove svg, .guru-profile-view #profile-info .profile-inside li .remove svg path {
           fill: none;
           stroke: white;
           stroke-width: 10px;

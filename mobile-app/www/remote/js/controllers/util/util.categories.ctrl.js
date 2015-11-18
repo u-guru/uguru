@@ -61,10 +61,14 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.hideCategorySkillsModal = function() {
-      $scope.categorySkillsModal.hide();
-      $timeout(function() {
+      if ($scope.desktopMode) {
         $scope.active_category = {name:'Select category', active:false};
-      }, 500);
+      } else {
+        $scope.categorySkillsModal.hide();
+        $timeout(function() {
+          $scope.active_category = {name:'Select category', active:false};
+        }, 500);
+      }
     }
 
     var updateMainBackground = function(url, extension) {

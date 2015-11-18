@@ -493,6 +493,13 @@ angular.module('uguru.util.controllers')
       });
     };
 
+    $scope.resetCache = function() {
+      AdminService.resetCache();
+      LoadingService.showAmbig('Resetting Cache..', 1500, function(){
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.university');
+      })
+    }
 
 
     $scope.resetAccount = function() {

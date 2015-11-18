@@ -17,6 +17,7 @@ angular.module('uguru.util.controllers')
   'Utilities',
   '$ionicScrollDelegate',
   'CordovaPushWrapper',
+  '$ionicModal',
   AccessController
   ]);
 
@@ -24,7 +25,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DownloadService, UniversityMatcher,
   $ionicSlideBoxDelegate, ThrottleService, Utilities, $ionicScrollDelegate,
-  CordovaPushWrapper) {
+  CordovaPushWrapper, $ionicModal) {
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
@@ -40,36 +41,21 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.root.vars.guru_mode =false;
 
 
-  // var e1 = document.querySelector('.top');
-  // var e2 = document.querySelector('.bottom');
+  $scope.goToLoginFromAccess = function() {
+    $scope.root.vars.page_cache.login_mode = true;
+    if ($scope.desktopMode) {
+      AnimationService.flip('^.desktop-login')
+    } else {
+      $scope.signupModal.show();
+    }
+  }
 
-  // e1.addEventListener('click', function() {
-  //   console.log("clicked");
-  //   cta(e1, e2, 'ion-view', {
-  //      relativeToWindow: true
-  //   }, function() {
-  //     // e2.style.visibility = 'visible';
-  //   });
-
-  // });
-
-
-  // $scope.testCTA = function() {
-  //   console.log("clicked testCTA()");
-
-  //   var e1 = document.querySelector('#redeem-button');
-  //   var e2 = document.querySelector('#access-logo');
-
-  //   cta(e1, e2, {
-  //     relativeToWindow: true
-  //   });
-
-  // };
-
-  $scope.testAlert = function() {
-    confirm("Can you click on me?");
-  };
-
+  $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+  }).then(function(modal) {
+        $scope.signupModal = modal;
+  });
 
   $scope.checkAccessCode = function(code) {
 
@@ -127,7 +113,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     // this is a device
     if (Utilities.cordovaExists && Utilities.keyboardExistsAndVisible) {
 
-
       if (DeviceService.isIOSDevice()) {
 
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -143,7 +128,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       // this is the case for ios mobile safari or android softkeyboard
         window.scrollTo(0, window.innerHeight);
       }
-
     }
 
   };

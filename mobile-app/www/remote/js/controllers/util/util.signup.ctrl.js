@@ -47,10 +47,23 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.closeModal = function(modalName) {
-     if (!$scope.desktopMode) {
+     if (!$scope.desktopMode && !$state.current.name == 'root.university') {
       ModalService.close(modalName);
      }
+     //case if at the first access page (not within the app)
+     else if (!$scope.desktopMode) {
+      $scope.signupModal.hide();
+     }
     };
+
+    $scope.preventSignupAndBackToAccess = function() {
+      $scope.loader.showMsg("Sorry! We are out of signups. <br><br> Please request access code from support on our home page.", 0, 3000);
+      $timeout(function() {
+        LoadingService.showAmbig('Redirecting you back...', 2000, function() {
+          AnimationService.flip('^.university');
+        })
+      }, 3000)
+    }
 
     $scope.exploreFirst = function()
     {
@@ -1462,7 +1475,7 @@ angular.module('uguru.util.controllers')
       password:null
     }
 
-    // $scope.root.vars.loginMode = false;
+    $scope.root.vars.loginMode = $scope.root.vars.page_cache.login_mode || false;
 
     $scope.$on('$ionicView.enter', function() {
       if ($scope.user && $scope.user.id && $scope.user.id > 0) {

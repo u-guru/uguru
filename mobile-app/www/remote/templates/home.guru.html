@@ -3,10 +3,10 @@
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default flex guru-home-container">
 
-			<ion-pane class='full-xy hide-display cta-modal bg-charcoal'  ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.credibility.html'">
+			<ion-pane id='cta-modal-credibility' class='full-xy hide-display cta-modal bg-charcoal'  ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.credibility.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
-			<ion-pane class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
+			<ion-pane id='cta-modal-profile' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -86,7 +86,7 @@
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div class='cta-box' style='background:#9b858c;'>
+							<div id='cta-box-profile' class='cta-box' style='background:#9b858c;'>
 								<div>
 									<h3><span style='font-weight:bold;' id='credibility-percent'>{{user.current_profile_percent || 40}}</span>% <span>Profile</span></h3>
 									<progress class="white-round height-10" max="100" value="{{user.current_profile_percent || 40}}"></progress>
@@ -97,7 +97,7 @@
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div class='cta-box'>
+							<div style='background:#909090;' id='cta-box-credibility' class='cta-box'>
 								<div>
 									<h3><span style='font-weight:bold' id='credibility-percent'>{{user.current_credibility_percent || 5}}</span>% <span>Credibility</span></h3>
 									<progress class="white-round height-10" max="100" value="{{user.current_credibility_percent || 5}}"></progress>

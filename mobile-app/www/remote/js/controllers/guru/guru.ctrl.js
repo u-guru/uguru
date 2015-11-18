@@ -35,16 +35,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   };
 
   var CTA_PARENT = '.guru-home-container';
-  var CTA_DICT = {
-    //profile
-    //cta-box-profile
-    //cta-box-credibility
-    //cta-box-transcript
-    //cta-box-messages
-    //cta-box-calendar
-    //cta-boxbalance
-
-  }
+  var CTA_OPTIONS = {
+        duration:0.5,
+        extraTransitionDuration:1
+    }
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
@@ -84,8 +78,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $ionicViewSwitcher.nextDirection('enter');
     $state.go('^.guru-credibility');
   }
-
-
         var initGuruRankProgress = function(selector, color, fillColor, setValue) {
           var circle = new ProgressBar.Circle(selector, {
               color: color || "rgba(255,255,255,1)",
@@ -110,48 +102,46 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return circle;
         }
 
-            function addEventListenerToCTABox(box_elem, modal_elem, index) {
-                  console.log('adding event listener');
-                  box_elem.addEventListener('click', function() {
+        /*
+        START CTA FUNCTIONS
+        */
+        function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
+            box_elem.addEventListener('click', function() {
+            var modal_elem = document.querySelector('#' + modal_elem_id);
 
-                      // var options = {
-                      //   targetShowDuration: 1,
-                      //   duration: 0.5,
-                      //   extraTransitionDuration:0.7,
-                      //   relativeToWindow:false;
-                      // }
-                      var ctaOptions = {
-                        duration:0.3,
-                        extraTransitionDuration:1
-                      }
-                      $timeout(function() {
-                        allCTAModals[index].classList.add('show');
-                      }, 200);
-                      var closeCTAModal = cta(allCTABoxes[index], allCTAModals[index], ctaOptions, function() {
-                          setTimeout(function() {
-                            modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
-                              modal_elem.classList.remove('show');
-                              closeCTAModal();
-                            })
+            var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
+                $timeout(function() {
+                    modal_elem.classList.add('show');
+                }, 200);
+                  modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
 
-                          }, 1000)
-                      },parent);
+                    //add callbacks here
+                    modal_elem.classList.remove('show');
+                    closeCTAModal();
                   });
-              }
+            }, CTA_PARENT);
+        });
+        }
 
-              var allCTABoxes;
-              var allCTAModals;
-              function initCTA() {
-                  allCTABoxes = document.querySelectorAll('.cta-box') || [];
-                  allCTAModals = document.querySelectorAll('.cta-modal') || [];
-                  console.log(allCTABoxes.length, allCTAModals.length);
-                  for (var i = 0; i < allCTABoxes.length; i++) {
-                      var indexCTABox = allCTABoxes[i];
-                      var indexCTAModal = allCTAModals[i];
-                      addEventListenerToCTABox(indexCTABox, indexCTAModal, i)
+        function initCTA() {
+            var allCTABoxes = document.querySelectorAll('.cta-box') || [];
+            var allCTAModels = document.querySelectorAll('.cta-modal') || [];
+            for (var i = 0; i < allCTABoxes.length; i++) {
+                var indexCTABox = allCTABoxes[i];
+                var indexCTAModalID = getModalCTAElemID(indexCTABox);
+                addEventListenerToCTABox(indexCTABox, indexCTAModalID, i)
 
-                  }
-              }
+            }
+        }
+
+         function getModalCTAElemID(cta_box_elem) {
+            elem_id = cta_box_elem.id;
+            modalID = elem_id.replace('box', 'modal');
+            console.log('\n\nprocessing box --> modal mapping', elem_id, modalID, '\n\n');
+            return modalID;
+        }
+
+        /* END CTA FUNCTIONS*/
 
 
         var animateProgressCircle = function(circle ,percentage) {

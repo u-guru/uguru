@@ -24,7 +24,7 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
         });
     }
 
-    function showAmbig(text, duration) {
+    function showAmbig(text, duration, callback) {
         $rootScope.ambigLoaderText = text || '';
 
         $ionicLoading.show({
@@ -32,6 +32,12 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
             templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
             duration: duration || 1000
         });
+
+        if (typeof callback !== 'undefined') {
+            $timeout(function() {
+                callback();
+            }, duration)
+        }
 
     }
 

@@ -6,6 +6,11 @@
 		<ion-view class='uguru-view university-view'>
 			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='isDesktopMode()'>
 			    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+			    <a ng-click='backToAccess()' class='back-icon-settings absolute left-0 top-0 m10xy'>
+					<svg viewBox="0 0 100 100">
+						<path d="M68,86 L32,50 L68,14"></path>
+					</svg>
+				</a>
 			    <div class="main default">
 			        <form>
 			            <div class="input-field">
