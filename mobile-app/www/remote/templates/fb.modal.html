@@ -8,7 +8,7 @@
 
 	}
 </style>
-<section class="full-xy">
+<section class="full-xy" >
 	<header class="bg-charcoal white">
 		<div class="header-nav">
 			<a class="header-down" ng-click="closeModal('fb')">
@@ -20,7 +20,8 @@
 		<h1 class="text-center">Connect with Facebook</h1>
 	</header>
 	<ion-content class='white-bg' scroll='false'>
-		<iframe iframe-onload='closeLoader()' name="Uguru FAQ" ng-src="https://www.uguru.me/faq-only/"></iframe>
+		<iframe iframe-onload='closeLoader()' name="{{FBurl}}" ng-src="{{FBurl}}"></iframe>
+		
 	</ion-content>
 </section>
 </ion-modal-view>

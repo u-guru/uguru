@@ -131,10 +131,10 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		$ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', options).then(function(modal) {
 		    privacy = modal;
 		});
-		$ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', options).then(function(modal) {
-		    fb = modal;
-		});
-
+		// $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', options).then(function(modal) {
+		//     fb = modal;
+		// });
+		
 		if (!$scope.desktopMode) {
 			$ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', options).then(function(modal) {
 		    	signup = modal;
@@ -144,7 +144,7 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 
 
 		$timeout(function() {
-				controller.fb= fb,
+				// controller.fb= fb,
 				controller.faq= faq,
 				controller.support = support,
 				controller.privacy = privacy,

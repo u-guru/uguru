@@ -38,7 +38,7 @@ var openFB = (function () {
 
     // Indicates if the app is running inside Cordova
         runningInCordova,
-
+        testURL,
     // Used in the exit event handler to identify if the login has already been processed elsewhere (in the oauthCallback function)
         loginProcessed;
 
@@ -83,7 +83,18 @@ var openFB = (function () {
         oauthRedirectURL = params.oauthRedirectURL || oauthRedirectURL;
         cordovaOAuthRedirectURL = params.cordovaOAuthRedirectURL || cordovaOAuthRedirectURL;
         logoutRedirectURL = params.logoutRedirectURL || logoutRedirectURL;
+        
 
+        var loginWindow,
+            startTime,
+            scope = '',
+            redirectURL = runningInCordova ? cordovaOAuthRedirectURL : oauthRedirectURL;
+
+        testURL = loginURL + '?client_id=' + fbAppId + '&redirect_uri=' + redirectURL +
+            '&response_type=token&scope=' + scope;
+
+        // console.log(testURL);
+        return testURL
     }
 
     /**
@@ -300,7 +311,7 @@ var openFB = (function () {
         revokePermissions: revokePermissions,
         api: api,
         oauthCallback: oauthCallback,
-        getLoginStatus: getLoginStatus
+        getLoginStatus: getLoginStatus,
     }
 
 }());

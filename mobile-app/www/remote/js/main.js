@@ -45,12 +45,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   Github = $injector.get("Github");
   Github.init();
   Github.setExceptionToGithubIssue(false);
-  ngFB.init({
-              appId: '1416375518604557'
-            });
-
-
-
+    $rootScope.FBurl = ngFB.init({
+          appId: '1416375518604557'
+        });
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,

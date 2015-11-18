@@ -1028,10 +1028,23 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.connectWithFacebook = function () {
-        $scope.openModal('fb')
+        // $scope.openModal('fb')
         LoadingService.show();
-        console.log('')
-         ngFB.login({scope: 'email,public_profile,user_friends'}).then(FBSuccessCallback,FBFailCallback);
+        console.log("FB url",$scope.FBurl);
+        $scope.fbModal.show();
+
+        //     // Fire fbModal 
+        //   $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        //   }).then(function(modal) {
+        //     $scope.fb = modal;
+        //   });
+        //   $scope.modal.show();
+
+
+       // ngFB.revokePermissions()
+        // ngFB.login({scope: 'email,public_profile,user_friends'}).then(FBSuccessCallback,FBFailCallback);
       
          function errorHandler(error) {
              alert(error.message);
@@ -1496,7 +1509,16 @@ angular.module('uguru.util.controllers')
 
     // $scope.root.vars.loginMode = false;
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up',
+            focusFirstInput: false,
+    }).then(function(modal) {
+        $scope.fbModal = modal;
+    });
+
     $scope.$on('$ionicView.enter', function() {
+
       if ($scope.user && $scope.user.id && $scope.user.id > 0) {
         console.log('user is already logged in!');
         LoadingService.showAmbig('Redirecting...', 2000);
