@@ -36,7 +36,8 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
         closeAttachActionSheet:closeAttachActionSheet,
         adminScope:adminScope,
         currentActionSheet: currentActionSheet,
-        setDefaultCoursesAndMajors: setDefaultCoursesAndMajors
+        setDefaultCoursesAndMajors: setDefaultCoursesAndMajors,
+        resetCache:resetCache
 	}
 
 

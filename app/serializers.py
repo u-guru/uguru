@@ -324,6 +324,7 @@ UserSerializer = {
     'phone_friendly': fields.Boolean,
     'facetime_friendly':fields.Boolean,
     'messenger_friendly': fields.Boolean,
+    'person_friendly': fields.Boolean,
     'text_friendly': fields.Boolean,
     'fb_id': fields.String,
     'password': fields.String,

@@ -344,6 +344,14 @@ angular.module('uguru.guru.controllers')
       })
     }
 
+    $scope.closeAndSaveContactGuruModal = function() {
+      LoadingService.showAmbig(null, 500, function() {
+        $scope.contactGuruModal.hide();
+        LoadingService.showSuccess('Contact Methods Saved', 1500);
+        $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
+      })
+    }
+
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.introduction.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -426,7 +434,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.updateCommunicationMethod = function(attr_str, bool) {
       $scope.user.updateAttr(attr_str, $scope.user, bool, null, $scope);
-
     }
 
 
@@ -757,10 +764,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.confirmPhonePopup = function($event) {
       console.log("EVENT", $event.target)
-      PopupService.open('confirmPhone', callback, $event.target);
       function callback() {
           $scope.validateAndSendPhoneConfirmation();
       }
+
+      PopupService.open('confirmPhone', callback, $event.target);
     }
 
 
@@ -869,10 +877,12 @@ angular.module('uguru.guru.controllers')
 
     $scope.$on('$ionicView.afterEnter', function() {
       $ionicSlideBoxDelegate.update();
-      $timeout(function() {
-        $scope.initModalsAfterEnter();
-      }, 500)
     });
+
+    $timeout(function() {
+      $scope.calcGuruCredibilityProgress();
+      $scope.initModalsAfterEnter();
+    }, 500)
 
 
   }

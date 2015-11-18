@@ -30,7 +30,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			}
 			cta(targetElem, popup, {}, function(modal) {
 				modal.classList.add('show');
-			})
+			}, 'body')
 
 			attachListeners(popup, callback);
 

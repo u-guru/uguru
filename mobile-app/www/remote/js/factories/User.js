@@ -972,6 +972,12 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'person_friendly') {
+                return {
+                    'person_friendly': obj
+                }
+              }
+
               if (arg === 'phone_friendly') {
                 return {
                     'phone_friendly': obj

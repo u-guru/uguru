@@ -62,13 +62,6 @@ angular.module('uguru.guru.controllers')
 	    $scope.addUniversityModal = modal;
 	});
 
-  // $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
-  //     scope: $scope,
-  //     animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //     $scope.signupModal = modal;
-  // });
-
   $ionicModal.fromTemplateUrl(BASE + 'templates/become-guru.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
