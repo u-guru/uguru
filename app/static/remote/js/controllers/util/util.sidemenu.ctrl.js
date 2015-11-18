@@ -64,10 +64,10 @@ angular.module('uguru.util.controllers')
       }
       $scope.desktopGoBack = function() {
         $ionicViewSwitcher.nextDirection('enter');
-        if ($scope.root.vars.guru_mode) {
+        if ($scope.desktopMode) {
+          $state.go('^.guru-home');
+        } else s{
           $state.go('^.guru');
-        } else {
-          $state.go('^.home');
         }
 
       }
@@ -559,7 +559,7 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
           LoadingService.hide();
         }, 500);
-        AnimationService.flip('^.home');
+        AnimationService.flip('^.guru-home');
 
       //let the server know the user was on guru mode for the next time app opens
 

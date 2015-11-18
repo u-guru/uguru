@@ -29,14 +29,14 @@ var stats = new Stats();
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives','ngOpenFB'])
 
 
 .run(function($ionicPlatform, $localstorage,
   $state, $ionicHistory,
    Version, $rootScope,
   $templateCache, Device, User,
-  DeviceService, uTracker, $injector) {
+  DeviceService, uTracker, $injector,ngFB) {
 
   $ionicPlatform.ready(function() {
   });
@@ -45,9 +45,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   Github = $injector.get("Github");
   Github.init();
   Github.setExceptionToGithubIssue(false);
-
-
-
+    $rootScope.FBurl = ngFB.init({
+          appId: '1416375518604557'
+        });
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,

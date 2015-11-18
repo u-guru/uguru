@@ -46,9 +46,9 @@
 			</div>
 			<div id="profile-info">
 				<div class="profile-inside">
-					<div id="profile-courses">
-						<div class='edit-button'> </div>
-						<h1>Courses you can tutor</h1>
+					<div id="profile-courses relative">
+						<a class='edit-button right-0 absolute' ng-show='profile.edit_mode'ng-click='launchGuruCoursesModal()'> Edit </a>
+						<h1>Courses you can Guru</h1>
 						<div>
 							<ul class='courses profile-list profile-list-half'>
 								<li ng-repeat='course in user.guru_courses track by $index'>
@@ -76,7 +76,7 @@
 							</ul>
 						</div>
 					</div>
-					<div id="profile-other">
+					<!-- <div id="profile-other">
 						<div id="profile-major">
 							<h1>Majors</h1>
 							<div>
@@ -104,8 +104,9 @@
 									</li>
 								</ul>
 							</div>
-						</div>
+						</div> -->
 						<div id="profile-experiences">
+							<a class='edit-button right-0 absolute' ng-show='profile.edit_mode'ng-click='launchAddGuruExperienceModal()'> Edit </a>
 							<h1>Experience</h1>
 							<div>
 								<ul class="experience profile-list list with-icon">
@@ -123,10 +124,10 @@
 										</a>
 									</li>
 								</ul>
-								<ul class="empty" ng-if="!user.guru_experiences.length && !profile.edit_mode">
+								<ul class="empty" ng-show="!user.guru_experiences.length && !profile.edit_mode">
 									<li><span><em>No Experience Added</em></span></li>
 								</ul>
-								<ul class='default' ng-if='profile.edit_mode'>
+								<ul class='default' ng-show='profile.edit_mode'>
 									<li class='full-x'>
 										<button class="round" ng-click='launchAddGuruExperienceModal()'>
 											<svg viewBox="0 0 100 100">
@@ -139,6 +140,7 @@
 							</div>
 						</div>
 						<div id="profile-skills">
+							<a class='edit-button right-0 absolute' ng-show='profile.edit_mode'ng-click='launchGuruSkillsModal()'> Edit </a>
 							<h1>Skills</h1>
 							<div>
 								<ul class='skills profile-list profile-list-half'>
@@ -168,6 +170,7 @@
 							</div>
 						</div>
 						<div id="profile-languages">
+							<a class='edit-button right-0 absolute' ng-show='profile.edit_mode'ng-click='launchGuruLanguagesModal()'> Edit </a>
 							<h1>Languages</h1>
 							<div>
 								<ul class='languages profile-list profile-list-half'>

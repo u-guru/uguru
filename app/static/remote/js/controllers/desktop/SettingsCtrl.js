@@ -70,10 +70,10 @@ angular.module('uguru.desktop.controllers', [])
       }
       $scope.desktopGoBack = function() {
         $ionicViewSwitcher.nextDirection('enter');
-        if ($scope.root.vars.guru_mode) {
-          $state.go('^.guru');
+        if ($scope.desktopMode) {
+          $state.go('^.guru-home');
         } else {
-          $state.go('^.home');
+          $state.go('^.guru');
         }
 
       }
@@ -557,7 +557,7 @@ angular.module('uguru.desktop.controllers', [])
       $scope.root.vars.guru_mode = false;
       $timeout(function() {
         $ionicViewSwitcher.nextDirection('enter');
-        $state.go('^.home');
+        $state.go('^.guru-home');
       }, 500)
 
       if (!$scope.desktopMode) {

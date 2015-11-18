@@ -72,7 +72,7 @@ angular.module('uguru.guru.controllers')
       uTracker.track(tracker, 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
       $ionicSlideBoxDelegate.update();
-      $state.go('^.home');
+      $state.go('^.guru-home');
 
       $timeout(function() {
         // var slidebox = document.querySelectorAll('.become-guru-slidebox-container')[0];

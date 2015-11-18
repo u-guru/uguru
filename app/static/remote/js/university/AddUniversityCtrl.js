@@ -175,12 +175,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       }
 
       var flipCallback;
-      var university_msg;
-      if (university.school_mascot_name) {
-        university_msg = 'Loading an awesome ' + university.school_mascot_name + ' experience';
-      } else {
-        university_msg = 'Loading an awesome experience..';
-      }
+      var university_msg = 'Loading an awesome experience..';
 
 
       if ($state.current.name === 'root.university') {

@@ -34,7 +34,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   };
 
-  var CTA_PARENT = '.guru-home-container';
+  var CTA_PARENT_DICT = {
+    'cta-box-profile':'.guru-home-container',
+    'cta-box-credibility':'.guru-home-container'
+  }
+
   var CTA_OPTIONS = {
         duration:0.5,
         extraTransitionDuration:1
@@ -67,7 +71,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.openModal = function(modalName) {
     ModalService.open(modalName, $scope);
   };
-
 
   $scope.goToDesktopGuruProfile = function() {
     $ionicViewSwitcher.nextDirection('enter');
@@ -113,13 +116,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 $timeout(function() {
                     modal_elem.classList.add('show');
                 }, 200);
-                  modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
+                  var close_icon = modal_elem.querySelector('.cta-modal-close');
+                  if (close_icon) {
+                      close_icon.addEventListener('click', function() {
 
-                    //add callbacks here
-                    modal_elem.classList.remove('show');
-                    closeCTAModal();
-                  });
-            }, CTA_PARENT);
+                      //add callbacks here
+                      modal_elem.classList.remove('show');
+                      closeCTAModal();
+                    });
+                  }
+            }, CTA_PARENT_DICT[box_elem.id]);
         });
         }
 
@@ -272,7 +278,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
-        $scope.$on('$ionicView.enter', function() {
+        $scope.$on('$ionicView.beforeEnter', function() {
 
           if (DeviceService.isIOSDevice()) {
             DeviceService.ios.setStatusBarLightText();
@@ -280,8 +286,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           initCTA();
 
           $scope.refreshTipsAndRanking($scope.user);
+          // Weird this is the one causing the view css issue[Profile photo move to left side in 0.5 sec and move back] at edit guru profile
           $ionicSlideBoxDelegate.update();
-
+          // console.error("ion view enter guru ctrl")
           $timeout(function() {
 
             if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
@@ -310,9 +317,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         var appOnboardingObj;
         $scope.$on('$ionicView.afterEnter', function() {
 
-            $timeout(function() {
-              appOnboardingObj = $localstorage.getObject('appOnboarding');
-            }, 250)
+
+              $timeout(function() {
+                appOnboardingObj = $localstorage.getObject('appOnboarding');
+              }, 250)
 
               // wait til the bar is loaded
               $timeout(function() {
@@ -321,12 +329,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 }
               }, 3000)
         });
-
-
-
-
-
-
 
   }
 

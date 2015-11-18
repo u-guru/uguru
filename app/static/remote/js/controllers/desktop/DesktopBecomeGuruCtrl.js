@@ -157,7 +157,7 @@ angular.module('uguru.desktop.controllers')
       uTracker.track(tracker, 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
       $ionicSlideBoxDelegate.update();
-      $state.go('^.home');
+      $state.go('^.guru-home');
       //AnimationService.slide('right');
     }
     var clearAllSearchInputs = function() {
