@@ -144,7 +144,6 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		});
 
 
-
 		$timeout(function() {
 				controller.faq= faq,
 				controller.support = support,

@@ -29,13 +29,14 @@ angular.module('uguru.util.controllers')
   'ModalService',
   'LoadingService',
   'AnimationService',
+  'ngFB',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
   MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
-  AnimationService) {
+  AnimationService,ngFB) {
 
 
 // Implement a section for modals here
@@ -1027,26 +1028,68 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.connectWithFacebook = function () {
-
+        $scope.openModal('fb')
         LoadingService.show();
+        console.log('')
+         ngFB.login({scope: 'email,public_profile,user_friends'}).then(FBSuccessCallback,FBFailCallback);
+      
+         function errorHandler(error) {
+             alert(error.message);
+         }
+         function FBSuccessCallback(response)
+         {
+      
+              alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+
+              // $scope.facebookResponseReceived = true;
+              // $scope.loginInfo = success;
+              LoadingService.hide();
+              // LoadingService.showSuccess('Login Successful!', 10000);
+              // $scope.fbLoginSuccessAlreadyShown = true;
+              // $timeout(function() {
+              //   LoadingService.updateSuccessText('Syncing profile info...', 1000);
+              // }, 2500);
+
+              // if (!$scope.desktopMode && $scope.signupModal && $scope.signupModal.isShown()) {
+              //   $scope.signupModal.hide();
+              // }
+          /*############################
+          SAMIR THIS IS THE PART PRINT THE FB INFO
+          #############################*/
+            ngFB.api({path: '/me'}).then(
+                function(user) {
+                    console.log(JSON.stringify(user));
+                    // $scope.user = user;
+                }, errorHandler);
+            // $scope.facebookApiGetDetails();
+            console.log('Getting Facebook information...huh');
+            // $scope.postFbGraphApiSuccess()
+         }
+         function FBFailCallback(error)
+         {
+          alert(error.message);
+         }
+         function errorHandler(error) {
+             alert(error.message);
+         }
+        // Original 
+        // if ($scope.platform.web || $scope.platform.windows || $scope.isWindowsPlatform()) {
+        //   // $scope.fbAuthNative();
+
+        //   //after five seconds and no fb response --> Say something went wrong
+        //   $timeout(function() {
 
 
-        if ($scope.platform.web || $scope.platform.windows || $scope.isWindowsPlatform()) {
-          // $scope.fbAuthNative();
-
-          //after five seconds and no fb response --> Say something went wrong
-          $timeout(function() {
-
-
-            if (!$scope.facebookResponseReceived) {
-              alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
-            }
-          }, 5000);
-
-          $scope.fbAuthBrowser();
-        } else {
-          $scope.fbAuthNative();
-        }
+        //     if (!$scope.facebookResponseReceived) {
+        //       alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
+        //     }
+        //   }, 5000);
+        //   console.log("CHECK2")
+        //   $scope.fbAuthBrowser();
+        // } else {
+        //   console.log("CHECK")
+        //   $scope.fbAuthNative();
+        // }
 
 
 
