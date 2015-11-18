@@ -3938,13 +3938,12 @@
 		#billing-container {
 			margin-top: 30px;
 			h2 {
-				background: $lake;
+				background: $shamrock;
 				padding: 10px;
 				font-size: 28px;
 				font-weight: 600;
 			}
 			h3 {
-				padding: 15px 0;
 				font-size: 28px;
 				font-weight: 600;
 				text-transform: uppercase;
@@ -3979,7 +3978,63 @@
 				}
 			}
 			#billing-details {
-				
+				> ul {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						&:first-child {
+							h3 {
+								@include flex;
+								@include flex-center;
+								height: 48px;
+								background: lighten($slate, 10%);
+							}
+							> ul {
+								> li {
+									&:nth-child(1), &:nth-child(3) {
+										padding-right: 10px;
+									}
+									&:nth-child(2) {
+										padding-right: 30px;
+									}
+								}
+							}
+						}
+						> ul {
+							@include flex;
+							@include flex-center;
+							> li {
+								font-weight: 600;
+								input {
+									font-size: 32px;
+									font-weight: 700;
+									text-align: center;
+									max-width: 50px;
+									background: lighten($slate, 10%);
+									@include placeholder {
+										color: rgba(white,.5);
+									}
+								}
+								.custom-dropdown {
+									span {
+										width: 96px;
+									}
+								}
+							}
+						}
+						.custom-dropdown {
+							span {
+								width: calc(100% - 48px);
+							}
+							ul {
+								width: 100%;
+								li {
+									width: calc(100% - 48px);
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -3995,14 +4050,14 @@
 			@include flex-center;
 			width: 152px;
 			height: 48px;
-			background: rgba(white,.2);
+			background: lighten($slate, 10%);
 			font-size: 28px;
 			font-weight: 600;
 		}
 		a {
 			svg {
 				@include svg-stroke(white, 5);
-				background: $lake;
+				background: $shamrock;
 				padding: 8px 6px 4px 6px;
 				width: 48px;
 				height: 48px;
@@ -4011,7 +4066,26 @@
 	}
 	> ul {
 		@include center-x;
+		@include opacity(0);
 		width: 200px;
+		height: 0;
+		overflow: hidden;
+		&.active {
+			@include opacity(1);
+			height: auto;
+		}
+		li {
+			width: 152px;
+			background: rgba(lighten($slate, 5%), .9);
+			padding: 15px 0!important;
+			font-weight: 400;
+			&:hover, &:focus {
+				background: rgba(darken($shamrock, 10%),.9);
+			}
+			&:active {
+				background: rgba(lighten($shamrock, 10%),.9);
+			}
+		}
 	}
 }
 
@@ -4250,6 +4324,7 @@
 		@include flex-center;
 		> div {
 			width: 100%;
+			text-align: center;
 		}
 		h1 {
 			font-size: 48px;
@@ -4259,12 +4334,14 @@
 		h1 + div {
 			@include flex;
 			@include flex-center;
-			margin: 15px 0;
+			margin: 15px 0 0;
 			font-weight: 600;
+			text-align: left;
 			.user-icon {
 				margin: 0;
-				width: 96px;
-				height: 96px;
+				width: 84px;
+				height: 84px;
+				border-width: 3px;
 				+ div {
 					margin-left: 15px;
 				}
@@ -4273,6 +4350,20 @@
 				font-size: 32px;
 				font-weight: 600;
 			}
+		}
+		.timer-visual {
+			position: relative;
+			margin: 0 auto;
+			max-width: 350px;
+			h1 {
+				@include center-xy;
+				font-size: 84px;
+			}
+		}
+		button {
+			width: 350px;
+			font-weight: 600;
+			background: darken($gold, 5%);
 		}
 	}
 }

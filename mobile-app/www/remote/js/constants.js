@@ -1,3 +1,3 @@
 var _local = "true";
-var _startpage = "timer";
+var _startpage = "billing";
 var _ipaddress = "192.168.0.100";

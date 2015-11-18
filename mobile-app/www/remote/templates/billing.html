@@ -49,10 +49,10 @@
 											</svg>
 										</a>
 									</div>
-									<ul>
-										<li>CS10</li>
-										<li>CS20</li>
-										<li>CS30</li>
+									<ul class="active">
+										<li tabindex>CS10</li>
+										<li tabindex>CS20</li>
+										<li tabindex>CS30</li>
 									</ul>
 								</div>
 							</div>
@@ -64,13 +64,55 @@
 					<ul class="ugrid-2">
 						<li>
 							<h3>Session Time</h3>
+							<ul>
+								<li><input type="tel" placeholder="0"/></li>
+								<li>hours</li>
+								<li><input type="tel" placeholder="0"/></li>
+								<li>minutes</li>
+							</ul>
 						</li>
 						<li>
-							<h3>Hourly Rate</h3>
+							<div class="custom-dropdown">
+								<div>
+									<span><h3>Hourly Rate</h3></span>
+									<a>
+										<svg viewBox="0 0 100 100">
+											<path d="M14,32 L50,68 L86,32"></path>
+										</svg>
+									</a>
+								</div>
+								<ul class="">
+									<li tabindex>Hourly Rate</li>
+									<li tabindex>Fixed Price</li>
+									<li tabindex>Keep it Free</li>
+								</ul>
+							</div>
+							<ul>
+								<li>
+									<div class="custom-dropdown">
+										<div>
+											<span>$10</span>
+											<a>
+												<svg viewBox="0 0 100 100">
+													<path d="M14,32 L50,68 L86,32"></path>
+												</svg>
+											</a>
+										</div>
+										<ul class="">
+											<li tabindex>$15</li>
+											<li tabindex>$20</li>
+											<li tabindex>$25</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									per hour
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</div>
-				<button>Confirm</button>
+				<button class="bg-shamrock semibold">Confirm</button>
 			</div>
 		</div>
 	</main>
