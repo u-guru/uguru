@@ -30,14 +30,14 @@ angular.module('uguru.util.controllers')
   'LoadingService',
   'AnimationService',
   'DeviceService',
-  'ngFB',
+  // 'ngFB',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
   MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
-  AnimationService, DeviceService, ngFB) {
+  AnimationService, DeviceService) {
 
 // Implement a section for modals here
 
