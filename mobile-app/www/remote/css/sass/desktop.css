@@ -2070,6 +2070,20 @@
   line-height: .8;
 }
 
+#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-intro textarea {
+  background: none;
+  resize: none;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  margin: 10px 0;
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: center;
+}
+
 #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-loc {
   font-size: 16px;
 }
@@ -6275,8 +6289,21 @@
   transform: rotate(45deg);
 }
 
+#desktop-guru-home main#desktop-guru-profile a.cta-modal-close {
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+}
+
+#desktop-guru-home main#desktop-guru-profile footer {
+  position: absolute;
+}
+
 .desktop-guru-onboarding-view
 .skill-item-content.hide-display {
+  filter: alpha(opacity=0);
   opacity: 0;
   visibility: hidden;
   flex-direction: column;
@@ -6284,8 +6311,14 @@
 
 .desktop-guru-onboarding-view
 .skill-item-content.hide-display.show {
-  -webkit-display: flex;
-  display: flex !important;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  filter: alpha(opacity=100);
   opacity: 1;
   visibility: visible;
 }
@@ -6299,15 +6332,20 @@
 
 .desktop-guru-onboarding-view
 .skill-item-content.hide-display.show a svg {
-  height: 50px;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
+  height: 50px;
 }
 
 .skip-button {
   filter: alpha(opacity=50);
   opacity: 0.5;
+}
+
+#cta-modal-profile-contact {
+  top: 25% !important;
+  height: 50% !important;
 }

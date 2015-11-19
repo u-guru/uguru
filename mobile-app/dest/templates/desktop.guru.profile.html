@@ -38,7 +38,9 @@
 							<li>
 								<button class='btn-ghost-white m15top' ng-if='user.guru_introduction || user.guru_introduction.length' ng-click='launchGuruIntroductionModal()'>Edit Introduction</button>
 								<button class='btn-ghost-white m15top' ng-if='!user.guru_introduction || !user.guru_introduction.length' ng-click='launchGuruIntroductionModal()'>Add Introduction</button>
-								<button class='btn-ghost-white m15y' ng-click='launchContactGuruModal()'>Contact</button>
+							</li>
+							<li>
+								<button id='cta-box-profile-contact' class='cta-box btn-ghost-white m15y'>Contact</button>
 							</li>
 						</ul>
 					</nav>
@@ -46,9 +48,12 @@
 			</div>
 			<div id="profile-info">
 				<div class="profile-inside">
-					<div id="profile-courses relative">
-						<a class='edit-button right-0 absolute' ng-show='profile.edit_mode'ng-click='launchGuruCoursesModal()'> Edit </a>
-						<h1>Courses you can Guru</h1>
+					<div id="profile-title">
+						<h1>Profile</h1>
+					</div>
+					<div id="profile-courses">
+						<div class='edit-button' hidden> </div>
+						<h1>Courses you can tutor</h1>
 						<div>
 							<ul class='courses profile-list profile-list-half'>
 								<li ng-repeat='course in user.guru_courses track by $index'>
@@ -238,3 +243,5 @@
 			</svg>
 		</a>
 	</div>
+</ion-view>
+

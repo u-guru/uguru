@@ -103,15 +103,12 @@ node_modules
 mobile-app/platforms
 mobile-app/plugins
 .sass-cache*
-app.css.map
 node_modules*
 *json
 run.py
 
 # to avoid IP mismatches
 *constants*.js
-
-
 
 *mobile.config.js
 constants*.js

@@ -36,7 +36,7 @@ def admin_statistics_universities_info():
 
 
 @app.route('/admin/stats/universities/complete')
-def admin_statistics_universities_completed():
+def admin_statistics_users_completed():
     from app.static.data.popular_data import getPreparedUniversitiesObj
     prepared_universities = sorted(getPreparedUniversitiesObj(University.query.all()), key=lambda k:k.us_news_ranking)
 
@@ -117,8 +117,6 @@ def admin_statistics_get_logo_urls(uni_id):
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     university = University.query.get(uni_id)
-
-
 
 @app.route('/admin/stats/universities/<uni_id>/flickr_options/')
 def admin_statistics_get_flickr_urls(uni_id):
