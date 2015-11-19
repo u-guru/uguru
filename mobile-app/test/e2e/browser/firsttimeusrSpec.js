@@ -156,7 +156,7 @@ describe('Firt time usr Test', function () {
 
       it('Enter Password : ',function()
       {
-        account.enterPassword('test');
+        account.enterPassword('test123');
       });
 
       it('Create account',function()
@@ -166,7 +166,59 @@ describe('Firt time usr Test', function () {
       });
       it('check Sign up successful -- INCONSISTANT',function()
       {
-        account.CheckAccountMessage("Account Successfully Created");
+            doc.checkMsg("Account Successfully Created");
+      });
+      it('check page is guru-home',function()
+      {
+        expect(browser.getCurrentUrl()).toContain('guru-home');
       });
     });
+
+    describe('Edit profile',function()
+    {
+      var editprofile = $('#cta-box-profile')
+      var intro = $('[ng-click="launchGuruIntroductionModal()"]')
+      it ('active editprofile',function()
+      {
+        editprofile.click();
+        browser.wait(EC.visibilityOf($('#desktop-guru-profile')),3000);
+      })
+
+      it('Upload Photo',function()
+      {
+        photo.UploadPhoto('small');
+      });
+      
+      describe('Edit intro',function()
+      {
+        it('open introduction page',function()
+        {
+          intro.click();
+        });
+        
+        it('Enter text for introduction & Save',function()
+        {
+          $('#guru-intro-input textarea').sendKeys("123123123");
+          $('[ng-click="saveGuruIntroductionModalAndHide()"]').click();
+          doc.checkMsg("Introduction Saved");
+        });
+
+        it('Check intro is saved',function()
+        { 
+          expect($('#profile-intro p').getText()).toBe('123123123');
+        });
+      });
+    
+      describe('Contact',function()
+      {
+        
+      });
+
+    })
+    describe('Edit Credibility',function()
+    {
+
+    })
+
+
 });
