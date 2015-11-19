@@ -17,6 +17,7 @@
 		@include flex;
 		top: 30px;
 		height: 50px;
+		padding: 0 10px;
 		width: 100%;
 		max-width: 1280px;
 		a {
@@ -28,7 +29,7 @@
 				height: 100%;
 				width: auto;
 			}
-			&:last-child {
+			&.desktop-header-next {
 				text-align: right;
 			}
 		}
@@ -610,12 +611,26 @@
 	.main {
 		height: auto;
 		form {
+			padding: 0 15px;
 			input {
 				color: white;
 				height: 64px;
 			}
 			input, label {
 				font-size: 36px;
+			}
+			.prefix {
+				svg {
+					@include svg-stroke(white, 7);
+					margin-top: 8px;
+					margin-left: -6px;
+					width: 48px;
+					height: 48px;
+					padding: 6px 12px 6px 0;
+				}
+			}
+			.prefix + input {
+				margin-left: 48px!important;
 			}
 			label {
 				top: 6px;
@@ -625,6 +640,7 @@
 			}
 		}
 		.desktop-search-list {
+			padding: 0 15px;
 			.desktop-card-list {
 				@include flex;
 				@include flex-wrap;
@@ -825,6 +841,7 @@
 							@include flex;
 							@include flex-center;
 							height: 100%;
+							font-size: 32px;
 						}
 					}
 					a {
@@ -932,6 +949,7 @@
 				}
 				li {
 					.skill-item-info {
+						width: 100%;
 						border-radius: 2px;
 						overflow: hidden;
 						a {
@@ -1189,6 +1207,8 @@
 						.school-icon {
 							@include round;
 							display: none;
+							position: relative;
+							z-index: 999999;
 							margin: 0 auto -5px;
 							padding: 15px 15px 0;
 							width: 80px;
@@ -1203,6 +1223,8 @@
 						}
 						.school-name {
 							display: block;
+							position: relative;
+							z-index: 999999;
 							padding: 15px;
 							text-align: center!important;
 							.school-title {
@@ -4547,34 +4569,30 @@
     }
 }
 
-a.back-icon-settings {
-	padding: 20px;
-    top: 13%;
-    width: auto;
-    height: 80px;
-	svg {
-		@include svg-stroke(white, 5);
-		height: 100%;
-		width: auto;
-	}
-}
+// a.back-icon-settings {
+// 	padding: 20px;
+//     top: 13%;
+//     width: auto;
+//     height: 80px;
+// 	svg {
+// 		@include svg-stroke(white, 5);
+// 		height: 100%;
+// 		width: auto;
+// 	}
+// }
 
 .desktop-guru-onboarding-view {
 	.cta-modal.hide-display {
-		display:none;
-		opacity:0;
-		z-index:1000;
+		@include opacity-important(0);
+		display: none;
+		z-index: 1000;
 		&.show {
-			display:block !important;
-			opacity:1 !important;
+			@include opacity-important(1);
+			display: block!important;
 		}
 	}
 	.cta-modal-close svg {
-		-webkit-transform: rotate(45deg);
-	    -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	    -o-transform: rotate(45deg);
-	    transform: rotate(45deg);
+		@include rotate(45);
 	}
 }
 
@@ -4601,43 +4619,26 @@ a.back-icon-settings {
 	bottom: 50px;
 }
 
-#desktop-courses {
-	.input-field input[type=search]:focus {
-		background-color:$charcoal !important;
-		background-color:$charcoal !important;
-		border-bottom: $slate !important;
-		box-shadow: none;
-		color:white;
-		border-bottom:2px solid white;
-	}
-}
-
 .progressbar-text {
 	display: none!important;
 }
 
 #desktop-guru-home {
 	.hide-display.cta-modal.pane {
-		// display:none;
-		opacity:0;
-		position:fixed;
+		@include opacity-important(0);
+		position: fixed;
 		transition: 200ms ease;
 		visibility: hidden;
-		overflow:auto;
-		z-index:1000;
-		background:$charcoal;
+		overflow: auto;
+		z-index: 1000;
+		background: $charcoal;
 		&.show {
-			// display:block !important;
-			opacity:1 !important;
-			visibility:visible;
+			@include opacity-important(1);
+			visibility: visible;
 		}
 	}
 	.cta-modal-close svg {
-		-webkit-transform: rotate(45deg);
-	    -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	    -o-transform: rotate(45deg);
-	    transform: rotate(45deg);
+		@include rotate(45);
 	}
 }
 
@@ -4668,19 +4669,6 @@ a.back-icon-settings {
 
 }
 
-#desktop-courses .main.default .input-field input[type=search] {
-	border-bottom: 1px solid #757575 !important;
-	width:100% !important;
-}
-
 .skip-button {
-	opacity:0.5;
-}
-
-a.cta-modal-close .svg-close {
-	height:50px;
-	top:0;
-	right:0;
-	position:absolute;
-	margin:10px;
+	@include opacity(.5);
 }
