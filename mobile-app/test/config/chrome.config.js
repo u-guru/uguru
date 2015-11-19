@@ -106,7 +106,8 @@ exports.config = {
             console.log( "W : "+ w+ " H :"+h)
             browser.driver.manage().window().setSize(w,h);
 
-            browser.get("http://"+localhost+":5000/static/remote/index.html");
+            // browser.get("http://"+localhost+":5000/static/remote/index.html");
+            browser.get("http://"+localhost+":8100");
             browser.sleep(3000);
 
         }

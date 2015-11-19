@@ -65,17 +65,17 @@ angular.module('uguru.util.controllers')
 
 
         // GABRIELLE TODO: Define these values
-        var desktopHeightLimit = 699;
+        var desktopHeightLimit = 689;
         var desktopWidthLimit= 767;
 
         $scope.isDesktopMode = function(height, width) {
             initHeight();
             // height = height || windowHeight;
             // width = width || windowWidth;
-            height = window.window.innerHeight;
-            width = window.window.innerWidth;
+            height = window.window.outerHeight;
+            width = window.window.outerWidth;
             // if(!(height > desktopHeightLimit && width > desktopWidthLimit))
-                // console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
+                // console.log("CHECK MODE " + height , desktopHeightLimit ,width , desktopWidthLimit);
             return height > desktopHeightLimit && width > desktopWidthLimit;
         };
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);

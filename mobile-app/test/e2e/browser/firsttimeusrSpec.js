@@ -283,7 +283,7 @@ describe('Firt time usr Test', function () {
         it('Go to guru-credibility',function()
         {
           // browser.get("http://"+localhost+":5000/static/remote/index.html#/guru-home");
-          browser.get("http://"+localhost+":5000/static/remote/index.html#/guru-home");
+          // browser.get("http://"+localhost+":5000/static/remote/index.html#/guru-home");
 
           browser.wait(EC.elementToBeClickable( $("#cta-box-credibility")),2000);
         });
