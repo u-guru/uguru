@@ -122,13 +122,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             box_elem.addEventListener('click', function() {
             var modal_elem = document.querySelector('#' + modal_elem_id);
 
-            var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
-
-                if (!$scope.user || !$scope.user.id) {
+               if (!$scope.user || !$scope.user.id) {
                   $scope.loader.showMsg('Please create an account first!', 0, 2000);
                   $scope.toggleDesktopSettings();
                   return;
                 }
+
+            var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
                 // console.log('this triggered');
                 // if (!$scope.user.id && !(box_elem.id.indexOf('signup') > 0)) {
                 //   $scope.launchCTASignup();

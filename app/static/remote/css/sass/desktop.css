@@ -32,6 +32,7 @@
     display: flex;
     top: 30px;
     height: 50px;
+    padding: 0 10px;
     width: 100%;
     max-width: 1280px; }
     .desktop-mode .desktop-header a {
@@ -46,7 +47,7 @@
         stroke-linejoin: round;
         height: 100%;
         width: auto; }
-      .desktop-mode .desktop-header a:last-child {
+      .desktop-mode .desktop-header a.desktop-header-next {
         text-align: right; }
   .desktop-mode #top-bar {
     height: 64px;
@@ -530,6 +531,8 @@
   background: #F1F1F1; }
   #desktop-login .main .desktop-forms-container > div {
     background: white; }
+    #desktop-login .main .desktop-forms-container > div .input-field input {
+      color: white !important; }
   #desktop-login .main .desktop-forms-container .explore {
     background: #69B3A5;
     font-weight: 600; }
@@ -626,6 +629,7 @@
       -ms-transform: translateX(-50%);
       -o-transform: translateX(-50%);
       transform: translateX(-50%);
+      z-index: 9;
       top: 5%;
       width: 75px;
       height: 75px; }
@@ -696,69 +700,86 @@
     min-height: 520px; }
   .desktop-search .main {
     height: auto; }
-    .desktop-search .main form input {
-      color: white;
-      height: 64px; }
-    .desktop-search .main form input, .desktop-search .main form label {
-      font-size: 36px; }
-    .desktop-search .main form label {
-      top: 6px; }
-    .desktop-search .main form label.active {
-      font-size: 24px; }
-    .desktop-search .main .desktop-search-list .desktop-card-list {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      margin: 0 -7.5px; }
-      .desktop-search .main .desktop-search-list .desktop-card-list li {
-        width: calc(100% / 3);
-        padding: 7.5px; }
-        .desktop-search .main .desktop-search-list .desktop-card-list li a {
-          -webkit-transition: all 0.15s ease-in-out;
-          -o-transition: all 0.15s ease-in-out;
-          -ms-transition: all 0.15s ease-in-out;
-          -moz-transition: all 0.15s ease-in-out;
-          transition: all 0.15s ease-in-out;
-          display: block;
-          position: relative;
-          background: rgba(255, 255, 255, 0.25);
-          border-bottom: 10px solid;
-          border-radius: 2px;
-          overflow: hidden;
-          cursor: pointer; }
-          .desktop-search .main .desktop-search-list .desktop-card-list li a * {
+    .desktop-search .main form {
+      padding: 0 15px; }
+      .desktop-search .main form input {
+        color: white;
+        height: 64px; }
+      .desktop-search .main form input, .desktop-search .main form label {
+        font-size: 36px; }
+      .desktop-search .main form .prefix svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 7px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        margin-top: 8px;
+        margin-left: -6px;
+        width: 48px;
+        height: 48px;
+        padding: 6px 12px 6px 0; }
+      .desktop-search .main form .prefix + input {
+        margin-left: 48px !important; }
+      .desktop-search .main form label {
+        top: 6px; }
+      .desktop-search .main form label.active {
+        font-size: 24px; }
+    .desktop-search .main .desktop-search-list {
+      padding: 0 15px; }
+      .desktop-search .main .desktop-search-list .desktop-card-list {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        margin: 0 -7.5px; }
+        .desktop-search .main .desktop-search-list .desktop-card-list li {
+          width: calc(100% / 3);
+          padding: 7.5px; }
+          .desktop-search .main .desktop-search-list .desktop-card-list li a {
             -webkit-transition: all 0.15s ease-in-out;
             -o-transition: all 0.15s ease-in-out;
             -ms-transition: all 0.15s ease-in-out;
             -moz-transition: all 0.15s ease-in-out;
             transition: all 0.15s ease-in-out;
-            cursor: pointer; }
-          .desktop-search .main .desktop-search-list .desktop-card-list li a .list-item-overlay {
-            filter: alpha(opacity=0);
-            opacity: 0;
             display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 2px; }
-          .desktop-search .main .desktop-search-list .desktop-card-list li a:hover .list-item-overlay {
-            filter: alpha(opacity=90);
-            opacity: 0.9; }
+            position: relative;
+            background: rgba(255, 255, 255, 0.25);
+            border-bottom: 10px solid;
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer; }
+            .desktop-search .main .desktop-search-list .desktop-card-list li a * {
+              -webkit-transition: all 0.15s ease-in-out;
+              -o-transition: all 0.15s ease-in-out;
+              -ms-transition: all 0.15s ease-in-out;
+              -moz-transition: all 0.15s ease-in-out;
+              transition: all 0.15s ease-in-out;
+              cursor: pointer; }
+            .desktop-search .main .desktop-search-list .desktop-card-list li a .list-item-overlay {
+              filter: alpha(opacity=0);
+              opacity: 0;
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border-radius: 2px; }
+            .desktop-search .main .desktop-search-list .desktop-card-list li a:hover .list-item-overlay {
+              filter: alpha(opacity=90);
+              opacity: 0.9; }
 
 @media screen and (min-width: 1024px) {
   .desktop-search .main .desktop-search-list .desktop-card-list {
@@ -872,7 +893,8 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  height: 100%; }
+  height: 100%;
+  font-size: 32px; }
 #desktop-courses .main .desktop-search-list .desktop-card-list li a {
   font-size: 20px !important;
   text-align: center; }
@@ -985,6 +1007,7 @@
               filter: alpha(opacity=100);
               opacity: 1; }
   #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info {
+    width: 100%;
     border-radius: 2px;
     overflow: hidden; }
     #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a {
@@ -1101,6 +1124,8 @@
 #desktop-university .main .desktop-search-list .desktop-card-list li a .school-icon {
   border-radius: 1000px;
   display: none;
+  position: relative;
+  z-index: 999999;
   margin: 0 auto -5px;
   padding: 15px 15px 0;
   width: 80px;
@@ -1113,6 +1138,8 @@
   background: white; }
 #desktop-university .main .desktop-search-list .desktop-card-list li a .school-name {
   display: block;
+  position: relative;
+  z-index: 999999;
   padding: 15px;
   text-align: center !important; }
   #desktop-university .main .desktop-search-list .desktop-card-list li a .school-name .school-title {
@@ -1501,6 +1528,18 @@
               color: rgba(255, 255, 255, 0.15);
               font-size: 250px;
               line-height: .8; }
+            #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-intro textarea {
+              background: none;
+              resize: none;
+              width: 100%;
+              height: auto;
+              min-height: 120px;
+              margin: 10px 0;
+              color: white;
+              font-size: 24px;
+              font-weight: 300;
+              line-height: 1.2;
+              text-align: center; }
           #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-loc {
             font-size: 16px; }
             #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty)::after {
@@ -4498,27 +4537,15 @@
     display: block !important;
     opacity: 0.7; }
 
-a.back-icon-settings {
-  padding: 20px;
-  top: 13%;
-  width: auto;
-  height: 80px; }
-  a.back-icon-settings svg {
-    fill: none;
-    stroke: white;
-    stroke-width: 5px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    height: 100%;
-    width: auto; }
-
 .desktop-guru-onboarding-view .cta-modal.hide-display {
+  filter: alpha(opacity=0) !important;
+  opacity: 0 !important;
   display: none;
-  opacity: 0;
   z-index: 1000; }
   .desktop-guru-onboarding-view .cta-modal.hide-display.show {
-    display: block !important;
-    opacity: 1 !important; }
+    filter: alpha(opacity=100) !important;
+    opacity: 1 !important;
+    display: block !important; }
 .desktop-guru-onboarding-view .cta-modal-close svg {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -4542,26 +4569,21 @@ a.back-icon-settings {
 #desktop-credibility .progress-bottom {
   bottom: 50px; }
 
-#desktop-courses .input-field input[type=search]:focus {
-  background-color: #2B3234 !important;
-  background-color: #2B3234 !important;
-  border-bottom: #40484B !important;
-  box-shadow: none;
-  color: white;
-  border-bottom: 2px solid white; }
-
 .progressbar-text {
   display: none !important; }
 
 #desktop-guru-home .hide-display.cta-modal.pane {
-  opacity: 0;
+  filter: alpha(opacity=0) !important;
+  opacity: 0 !important;
   position: fixed;
   transition: 200ms ease;
   visibility: hidden;
   overflow: auto;
-  z-index: 1000;
+  z-index: -1;
   background: #2B3234; }
   #desktop-guru-home .hide-display.cta-modal.pane.show {
+    z-index: 1000;
+    filter: alpha(opacity=100) !important;
     opacity: 1 !important;
     visibility: visible; }
 #desktop-guru-home .cta-modal-close svg {
@@ -4570,28 +4592,31 @@ a.back-icon-settings {
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg); }
-#desktop-guru-home main#desktop-guru-profile {
-  width: 90%;
-  left: 5%;
-  max-height: 820px; }
-  #desktop-guru-home main#desktop-guru-profile a.cta-modal-close {
-    top: 0;
-    right: 0;
-    position: absolute;
-    width: 50px;
-    height: 50px; }
-  #desktop-guru-home main#desktop-guru-profile footer {
-    position: absolute; }
+#desktop-guru-home main#desktop-guru-profile a.cta-modal-close {
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 50px;
+  height: 50px; }
+#desktop-guru-home main#desktop-guru-profile footer {
+  position: absolute; }
 
 .desktop-guru-onboarding-view
 .skill-item-content.hide-display {
+  filter: alpha(opacity=0);
   opacity: 0;
   visibility: hidden;
   flex-direction: column; }
   .desktop-guru-onboarding-view
   .skill-item-content.hide-display.show {
-    -webkit-display: flex;
-    display: flex !important;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    filter: alpha(opacity=100);
     opacity: 1;
     visibility: visible; }
     .desktop-guru-onboarding-view
@@ -4601,29 +4626,15 @@ a.back-icon-settings {
       right: 10px; }
       .desktop-guru-onboarding-view
       .skill-item-content.hide-display.show a svg {
-        height: 50px;
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         -o-transform: rotate(45deg);
-        transform: rotate(45deg); }
-
-#desktop-courses .main.default .input-field input[type=search] {
-  border-bottom: 1px solid #757575 !important;
-  width: 100% !important; }
+        transform: rotate(45deg);
+        height: 50px; }
 
 .skip-button {
+  filter: alpha(opacity=50);
   opacity: 0.5; }
-
-a.cta-modal-close .svg-close {
-  height: 50px;
-  top: 0;
-  right: 0;
-  position: absolute;
-  margin: 10px; }
-
-#cta-modal-profile-contact {
-  top: 25% !important;
-  height: 50% !important; }
 
 /*# sourceMappingURL=desktop.css.map */

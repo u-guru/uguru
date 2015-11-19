@@ -6,14 +6,21 @@
 		<ion-view class='uguru-view university-view'>
 			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='isDesktopMode()'>
 			    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
-			    <a ng-click='backToAccess()' class='back-icon-settings absolute left-0 top-0 m10xy'>
-					<svg viewBox="0 0 100 100">
-						<path d="M68,86 L32,50 L68,14"></path>
-					</svg>
-				</a>
+				<header class="desktop-header">
+					<a class="desktop-header-back" ng-click='backToAccess()'>
+						<svg viewBox="0 0 100 100">
+							<path d="M68,86 L32,50 L68,14"></path>
+						</svg>
+					</a>
+				</header>
 			    <div class="main default">
 			        <form>
 			            <div class="input-field">
+							<i class="material-icons prefix">
+								<svg viewBox="0 0 100 100">
+								    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+								</svg>
+							</i>
 			                <input id="university-input" type="text" ng-model="search_text.university">
 			                <label class="ng-class:{'hide': search_text.university.length}"for="university-input">find my university</label>
 			                <a class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>

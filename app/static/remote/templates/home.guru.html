@@ -10,26 +10,6 @@
 				<!-- <div ></div> -->
 			</ion-pane>
 
-			<ion-pane id='cta-modal-profile-contact' class='full-xy hide-display cta-modal bg-charcoal'>
-			 <div ng-include="img_base + BASE + 'templates/guru.contact.components.	html'"></div>
-				<!-- <div ></div> -->
-			</ion-pane>
-			<ion-pane id='cta-modal-profile-skills' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='CategoriesController' ng-include="img_base + BASE + 'templates/guru.skills.container.html'">
-			</ion-pane>
-			<ion-pane id='cta-modal-profile-courses' class='full-xy hide-display cta-modal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/become.guru.courses.html'">
-			</ion-pane>
-
-			<ion-pane id='cta-modal-profile-experiences' class='full-xy hide-display cta-modal bg-charcoal'>
-
-			 <div ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/guru.courses.container.html'"></div>
-				<!-- <div ></div> -->
-			</ion-pane>
-
-			<ion-pane id='cta-modal-profile-languages' class='full-xy hide-display cta-modal bg-charcoal'>
-			 <div ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
-				<!-- <div ></div> -->
-			</ion-pane>
-
 			<div class="guru-home-greeting">
 				<div>
 					<h1>Hello {{user.name || 'Guru'}},<br/>
