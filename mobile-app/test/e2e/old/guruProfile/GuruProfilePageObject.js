@@ -118,8 +118,8 @@ var GuruProfile = function()
 		switch(name)
 		{
 			case 'course':
-				// browser.wait($('[ng-click="launchGuruCoursesModal()"]'),3000);
-				$('[ng-click="launchGuruCoursesModal()"]').click();
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruCoursesModal()"]')),3000);
+				$('#cta-box-profile-courses').click();
 				break;
 
 			case 'major' :
@@ -127,27 +127,72 @@ var GuruProfile = function()
 				break;
 
 			case 'skill' :	
-				// browser.wait($('[ng-click="launchGuruSkillsModal()"]'),3000);
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruSkillsModal()"]')),3000);
 
-				$('[ng-click="launchGuruSkillsModal()"]').click();
+				$('#cta-box-profile-skills').click();
 				break;
 
 			case 'language':	
-				// browser.wait($('[ng-click="launchGuruLanguagesModal()"]'),3000);
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruLanguagesModal()"]')),3000);
 
-				$('[ng-click="launchGuruLanguagesModal()"]').click();
+				$('#cta-box-profile-languages').click();
 				break;
 
 			case 'experience':	
-				// browser.wait($('[ng-click="launchAddGuruExperienceModal()"]'),3000);
+				// browser.wait(EC.visibilityOf($('[ng-click="launchAddGuruExperienceModal()"]')),3000);
 
-				$('[ng-click="launchAddGuruExperienceModal()"]').click();
+				$('#cta-box-profile-experiences').click();
 				break;
 		};
 
-		browser.wait(EC.visibilityOf(this.ModalPage),3000);
-		expect(this.ModalTitle.getText()).toContain(name.toUpperCase());
+		// browser.wait(EC.visibilityOf(this.ModalPage),3000);
+		// expect(this.ModalTitle.getText()).toContain(name.toUpperCase());
+		browser.sleep(500);
 	};
+
+	this.closeDesktopModal = function(name)
+	{
+		switch(name)
+		{
+			case 'course':
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruCoursesModal()"]')),3000);
+				// $('#cta-box-profile-courses').click();
+				$('#cta-modal-profile-courses  .header-close.cta-modal-close').click();
+
+				break;
+
+			case 'major' :
+				this.AddMajor.click();
+				break;
+
+			case 'skill' :	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruSkillsModal()"]')),3000);
+
+				$('#cta-modal-profile-skills  .header-close.cta-modal-close').click();
+				break;
+
+			case 'language':	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruLanguagesModal()"]')),3000);
+
+				// $('#cta-box-profile-languages').click();
+				$('#cta-modal-profile-languages  .header-close.cta-modal-close').click();
+
+				break;
+
+			case 'experience':	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchAddGuruExperienceModal()"]')),3000);
+
+				// $('#cta-box-profile-experiences').click();
+				$('#cta-modal-profile-experiences  .header-close.cta-modal-close').click();
+
+				break;
+		};
+
+		// browser.wait(EC.visibilityOf(this.ModalPage),3000);
+		// expect(this.ModalTitle.getText()).toContain(name.toUpperCase());
+		browser.sleep(500);
+	};
+
 	this.SelectElement = function(index)
 	{
 		 doc.newPickList('.modal-backdrop.active',index);

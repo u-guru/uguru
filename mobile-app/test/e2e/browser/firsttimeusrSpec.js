@@ -188,7 +188,7 @@ describe('Firt time usr Test', function () {
     {
       var editprofile = $('#cta-box-profile')
       var intro = $('[ng-click="launchGuruIntroductionModal()"]')
-      var contact = $('[ng-click="launchContactGuruModal()"]')
+      var contact = $('#cta-box-profile-contact')
       it ('active editprofile',function()
       {
         editprofile.click();
@@ -216,7 +216,7 @@ describe('Firt time usr Test', function () {
 
         it('Check intro is saved',function()
         { 
-          expect($('#profile-intro p').getText()).toBe('123123123');
+          expect($('#profile-intro textarea').getText()).toBe('123123123');
         });
       });
     
@@ -252,7 +252,7 @@ describe('Firt time usr Test', function () {
 
         for(var i = 0 ; i < str.length ;++ i)
         {
-          (function (title) {
+          (function (title,index) {
               describe('Open '+title+' Modal', function () {
             
               it('Open Modal',function()
@@ -261,23 +261,27 @@ describe('Firt time usr Test', function () {
               });
                 it('close Modal',function()
                 {
-                  guruprofile.CloseModal();
+                  // $$('.header-close.cta-modal-close').get(index+2).click();
+                  // guruprofile.CloseModal();
+                  guruprofile.closeDesktopModal(title);
                 });
 
               }); 
-          })(str[i])
+          })(str[i],i)
         }
          it('save edit mode',function()
         {
-          $('#btn-edit-profile').click();
+          $('#btn-save-profile').click();
         });
       })
       
       it('close Edit profile',function()
       {
-        $('#desktop-guru-profile .cta-modal-close').click();
+        $$('#desktop-guru-profile .cta-modal-close').get(0).click();
+
       });
     })
+
     describe('Edit Credibility',function()
     {
         it('Go to guru-credibility',function()
