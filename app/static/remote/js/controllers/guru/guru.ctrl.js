@@ -36,7 +36,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
   var CTA_PARENT_DICT = {
     'cta-box-profile':'.guru-home-container',
-    'cta-box-credibility':'.guru-home-container'
+    'cta-box-credibility':'.guru-home-container',
+    'cta-box-profile-contact': '.desktop-guru-profile-view',
   }
 
   var CTA_OPTIONS = {
@@ -121,6 +122,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 if (!$scope.user || !$scope.user.id) {
                   $scope.loader.showMsg('Please create an account first!', 0, 2000);
                   $scope.toggleDesktopSettings();
+                  return;
                 }
                 // console.log('this triggered');
                 // if (!$scope.user.id && !(box_elem.id.indexOf('signup') > 0)) {
