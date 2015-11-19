@@ -319,7 +319,7 @@ angular.module('uguru.desktop.controllers')
     }
 
     $scope.$on('$ionicView.enter', function() {
-        document.querySelector('#cta-modal-categories').classList.add('show');
+        // document.querySelector('#cta-modal-categories').classList.add('show');
       $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
       $timeout(function() {
