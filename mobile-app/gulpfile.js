@@ -236,6 +236,7 @@ gulp.task('scripts', function() {
       'lib/stripe/stripe.js',
       'lib/cta/cta*.js',
       'lib/fastMatcher.js',
+      'lib/facebook/*.js',
       'lib/angular-google-maps/angular-google-maps.min.js',
       'http://maps.google.com/maps/api/js?sensor=false',
       'lib/angular-google-maps/google-marker-with-labels.js',

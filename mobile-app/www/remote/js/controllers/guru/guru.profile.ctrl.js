@@ -855,7 +855,6 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.$on('$ionicView.enter', function() {
-          // $ionicSlideBoxDelegate.update();
           $scope.refreshTipsAndRanking($scope.user);
 
           $timeout(function() {
@@ -868,36 +867,25 @@ angular.module('uguru.guru.controllers')
           PopupService.initDefaults();
     });
 
-    $scope.$on('$ionicView.afterEnter', function() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 45d191561c36f6099ff8fc751835d0ae4fab59d4
-      $ionicSlideBoxDelegate.update();
-    });
+ 
 
     $timeout(function() {
       $scope.calcGuruCredibilityProgress();
       $scope.initModalsAfterEnter();
     }, 500)
 
-
-<<<<<<< HEAD
-=======
-=======
       // $ionicSlideBoxDelegate.update();
       $timeout(function() {
         $scope.initModalsAfterEnter();
       }, 500)
     });
-   $scope.$on('modal.hidden', function() {
-      // console.error("ion modal leave  guru ctrl")
-      if (DeviceService.doesCordovaExist()) {
-        cordova.plugins.Keyboard.close();
-      }
-    });
->>>>>>> 352f97fa743071a5f5bebc90f75fa910eecd645a
->>>>>>> 45d191561c36f6099ff8fc751835d0ae4fab59d4
+
+     $scope.$on('modal.hidden', function() {
+        // console.error("ion modal leave  guru ctrl")
+        if (DeviceService.doesCordovaExist()) {
+          cordova.plugins.Keyboard.close();
+        }
+      });
   }
 
 ]);

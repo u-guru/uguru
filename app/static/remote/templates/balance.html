@@ -1,0 +1,63 @@
+<ion-view>
+	<main id='desktop-balance' class="sidebar-layout desktop-mode" ng-if='isDesktopMode()'>
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<div class="main">
+			<aside>
+				<h2>Payment History</h2>
+				<ul class="sidebar-layout-list">
+					<li>
+						<div>
+							<h3>You cashed out to <b>**0092</b></h3>
+							<span>11/13/15</span>
+						</div>
+						<span><span class="chip bg-charcoal">Pending</span></span>
+					</li>
+					<li>
+						<div>
+							<h3>CS10 Session with <b>{{user.name}}</b></h3>
+							<span>11/13/15, 2 hours 12 minutes</span>
+						</div>
+						<span><span class="chip bg-charcoal">$34.00</span></span>
+					</li>
+					<li>
+						<div>
+							<h3>You cashed out to <b>**5342</b></h3>
+							<span>11/09/15</span>
+						</div>
+						<span><span class="chip bg-charcoal">Approved</span></span>
+					</li>
+				</ul>
+			</aside>
+			<div class="text-center">
+				<div>
+					<div>
+						<h1>My Balance</h1>
+						<div id="balance-total"><span>$340.00</span></div>
+					</div>
+					<div class="balance-cards">
+						<h2>Choose Method to Cash Out</h2>
+						<ul class="ugrid-3">
+							<li>
+								<a></a>
+							</li>
+							<li>
+								<a></a>
+							</li>
+							<li>
+								<a>
+									<span>
+										<svg viewBox="0 0 100 100">
+										    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+										<span>Add New</span>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<button class="bg-moola">Cash Out</button>
+			</div>
+		</div>
+	</main>
+</ion-view>

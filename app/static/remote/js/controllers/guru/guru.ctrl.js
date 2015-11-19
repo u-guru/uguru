@@ -50,6 +50,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicSideMenuDelegate.canDragContent(false);
 
 
+  $scope.launchCTASignup = function() {
+    document.getElementById('cta-box-signup').click();
+  }
+
   if ($scope.user) {
     TipService.currentTips = TipService.generateTips($scope.user); //mastercopy
     $scope.guruHomeTips = TipService.currentTips; //local copy
@@ -113,6 +117,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             var modal_elem = document.querySelector('#' + modal_elem_id);
 
             var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
+
+                // console.log('this triggered');
+                // if (!$scope.user.id && !(box_elem.id.indexOf('signup') > 0)) {
+                //   $scope.launchCTASignup();
+                //   return;
+                // }
+
                 $timeout(function() {
                     modal_elem.classList.add('show');
                 }, 200);
@@ -277,13 +288,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $state.go(state_name);
         }
 
+        $scope.$on('$ionicView.enter', function() {
+          initCTA();
+        });
+
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.beforeEnter', function() {
 
           if (DeviceService.isIOSDevice()) {
             DeviceService.ios.setStatusBarLightText();
           }
-          initCTA();
+
 
           $scope.refreshTipsAndRanking($scope.user);
           // Weird this is the one causing the view css issue[Profile photo move to left side in 0.5 sec and move back] at edit guru profile
