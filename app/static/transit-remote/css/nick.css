@@ -1,0 +1,70 @@
+.inactive-grey {
+	opacity: 0.3;
+}
+
+
+.transport-list {
+	display: flex;
+}
+
+.transport-item {
+	width: 100%;
+	background-color: white;
+	padding: 10px;
+	font-weight: 500;
+	border: 1px solid #81B566;
+
+}
+
+
+.commute-list {
+	display: flex;
+}
+
+.commute-item {
+	width: 100%;
+	padding: 10px;
+	font-weight: 500;
+	text-align: center;
+	border: 1px solid #81B566;
+}
+
+/*.route-item:first-child {
+	margin-top: 10px;
+}*/
+
+
+.route-item {
+	padding: 10px;
+	border-bottom: 1px solid grey;
+}
+
+
+
+.route-interval {
+	font-size: 0.8em;
+	padding-top: 5px;
+}
+
+.route-title {
+	width: 100%;
+	text-align: center;	
+}
+
+
+.custom-gmaps-container {
+	position: relative;
+	height: 100%;
+}
+
+.angular-google-map-container { 
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#transparent-div {
+	position: inherit;
+	width: 100%;
+	height: 150%;
+}

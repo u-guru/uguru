@@ -103,17 +103,12 @@ node_modules
 mobile-app/platforms
 mobile-app/plugins
 .sass-cache*
-app.css.map
 node_modules*
 *json
 run.py
 
 # to avoid IP mismatches
 *constants*.js
-
-
-# since sass > .css & .css merge conflicts are for n00bz
-*.css
 
 *mobile.config.js
 constants*.js

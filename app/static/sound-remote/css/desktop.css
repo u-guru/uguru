@@ -1,0 +1,515 @@
+#top-bar {
+  position: relative;
+  z-index: 9;
+  height: 64px;
+  background: #F04F54;
+  padding: 0 15px; }
+  #top-bar div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%; }
+    #top-bar div div {
+      position: relative;
+      z-index: 10;
+      background: #F04F54; }
+    #top-bar div #top-logo {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      width: calc(100% - 64px);
+      height: 100%;
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: lowercase; }
+      #top-bar div #top-logo svg, #top-bar div #top-logo span {
+        display: block;
+        height: 100%;
+        padding: 20px 0 15px; }
+      #top-bar div #top-logo svg:last-child {
+        fill: none;
+        stroke: white;
+        stroke-width: 14px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        width: 50px;
+        height: 50px;
+        padding: 15px; }
+    #top-bar div #top-request {
+      display: block;
+      width: 64px;
+      height: 64px;
+      background: rgba(255, 255, 255, 0.3); }
+      #top-bar div #top-request svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 8px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        width: 100%;
+        height: 100%;
+        padding: 15px; }
+    #top-bar div #top-menu-links {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      -webkit-transform: translateY(-500px);
+      -moz-transform: translateY(-500px);
+      -ms-transform: translateY(-500px);
+      -o-transform: translateY(-500px);
+      transform: translateY(-500px);
+      position: absolute;
+      z-index: 8;
+      left: 0;
+      top: 64px;
+      background: rgba(200, 17, 23, 0.8); }
+      #top-bar div #top-menu-links.active {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0);
+        max-height: 1000px;
+        overflow: visible; }
+      #top-bar div #top-menu-links ul {
+        min-width: 250px; }
+        #top-bar div #top-menu-links ul li {
+          position: relative; }
+          #top-bar div #top-menu-links ul li a {
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center; }
+          #top-bar div #top-menu-links ul li span {
+            -webkit-align-items: center;
+            align-items: center; }
+          #top-bar div #top-menu-links ul li input {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            right: 0;
+            padding: 0;
+            display: block;
+            width: 50px;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+            text-align: right; }
+            #top-bar div #top-menu-links ul li input::-webkit-input-placeholder {
+              color: rgba(255, 255, 255, 0.5); }
+            #top-bar div #top-menu-links ul li input:-moz-placeholder {
+              color: rgba(255, 255, 255, 0.5); }
+            #top-bar div #top-menu-links ul li input::-moz-placeholder {
+              color: rgba(255, 255, 255, 0.5); }
+            #top-bar div #top-menu-links ul li input:-ms-input-placeholder {
+              color: rgba(255, 255, 255, 0.5); }
+          #top-bar div #top-menu-links ul li a, #top-bar div #top-menu-links ul li span {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            padding: 15px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase; }
+            #top-bar div #top-menu-links ul li a span, #top-bar div #top-menu-links ul li span span {
+              display: block;
+              text-align: left;
+              width: calc(100% - 35px); }
+            #top-bar div #top-menu-links ul li a svg, #top-bar div #top-menu-links ul li span svg {
+              fill: none;
+              stroke: white;
+              stroke-width: 5px;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              display: block;
+              padding: 5px;
+              height: 50px;
+              width: 50px;
+              margin-right: -15px; }
+            #top-bar div #top-menu-links ul li a:hover, #top-bar div #top-menu-links ul li a:active, #top-bar div #top-menu-links ul li a:focus, #top-bar div #top-menu-links ul li span:hover, #top-bar div #top-menu-links ul li span:active, #top-bar div #top-menu-links ul li span:focus {
+              background: white;
+              color: #F04F54; }
+              #top-bar div #top-menu-links ul li a:hover + input, #top-bar div #top-menu-links ul li a:active + input, #top-bar div #top-menu-links ul li a:focus + input, #top-bar div #top-menu-links ul li span:hover + input, #top-bar div #top-menu-links ul li span:active + input, #top-bar div #top-menu-links ul li span:focus + input {
+                color: #df1319; }
+                #top-bar div #top-menu-links ul li a:hover + input::-webkit-input-placeholder, #top-bar div #top-menu-links ul li a:active + input::-webkit-input-placeholder, #top-bar div #top-menu-links ul li a:focus + input::-webkit-input-placeholder, #top-bar div #top-menu-links ul li span:hover + input::-webkit-input-placeholder, #top-bar div #top-menu-links ul li span:active + input::-webkit-input-placeholder, #top-bar div #top-menu-links ul li span:focus + input::-webkit-input-placeholder {
+                  color: rgba(240, 79, 84, 0.5); }
+                #top-bar div #top-menu-links ul li a:hover + input:-moz-placeholder, #top-bar div #top-menu-links ul li a:active + input:-moz-placeholder, #top-bar div #top-menu-links ul li a:focus + input:-moz-placeholder, #top-bar div #top-menu-links ul li span:hover + input:-moz-placeholder, #top-bar div #top-menu-links ul li span:active + input:-moz-placeholder, #top-bar div #top-menu-links ul li span:focus + input:-moz-placeholder {
+                  color: rgba(240, 79, 84, 0.5); }
+                #top-bar div #top-menu-links ul li a:hover + input::-moz-placeholder, #top-bar div #top-menu-links ul li a:active + input::-moz-placeholder, #top-bar div #top-menu-links ul li a:focus + input::-moz-placeholder, #top-bar div #top-menu-links ul li span:hover + input::-moz-placeholder, #top-bar div #top-menu-links ul li span:active + input::-moz-placeholder, #top-bar div #top-menu-links ul li span:focus + input::-moz-placeholder {
+                  color: rgba(240, 79, 84, 0.5); }
+                #top-bar div #top-menu-links ul li a:hover + input:-ms-input-placeholder, #top-bar div #top-menu-links ul li a:active + input:-ms-input-placeholder, #top-bar div #top-menu-links ul li a:focus + input:-ms-input-placeholder, #top-bar div #top-menu-links ul li span:hover + input:-ms-input-placeholder, #top-bar div #top-menu-links ul li span:active + input:-ms-input-placeholder, #top-bar div #top-menu-links ul li span:focus + input:-ms-input-placeholder {
+                  color: rgba(240, 79, 84, 0.5); }
+              #top-bar div #top-menu-links ul li a:hover span, #top-bar div #top-menu-links ul li a:active span, #top-bar div #top-menu-links ul li a:focus span, #top-bar div #top-menu-links ul li span:hover span, #top-bar div #top-menu-links ul li span:active span, #top-bar div #top-menu-links ul li span:focus span {
+                color: #F04F54; }
+              #top-bar div #top-menu-links ul li a:hover svg, #top-bar div #top-menu-links ul li a:active svg, #top-bar div #top-menu-links ul li a:focus svg, #top-bar div #top-menu-links ul li span:hover svg, #top-bar div #top-menu-links ul li span:active svg, #top-bar div #top-menu-links ul li span:focus svg {
+                stroke: #F04F54; }
+          #top-bar div #top-menu-links ul li:last-child a {
+            background: rgba(255, 255, 255, 0.75); }
+            #top-bar div #top-menu-links ul li:last-child a span {
+              color: #F04F54; }
+            #top-bar div #top-menu-links ul li:last-child a svg {
+              stroke: #F04F54; }
+          #top-bar div #top-menu-links ul li:last-child:hover, #top-bar div #top-menu-links ul li:last-child:active, #top-bar div #top-menu-links ul li:last-child:focus {
+            background: white; }
+
+.desktop-mode {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #F1F1F1; }
+  .desktop-mode #main-logo {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 30px;
+    display: block;
+    height: 50px;
+    width: 50px; }
+    .desktop-mode #main-logo path {
+      fill: #F04F54; }
+  .desktop-mode .desktop-header {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    top: 30px;
+    height: 50px;
+    width: 100%;
+    max-width: 1200px;
+    background: none; }
+    .desktop-mode .desktop-header a {
+      display: block;
+      height: 100%; }
+      .desktop-mode .desktop-header a svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 5px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        height: 100%;
+        width: auto; }
+      .desktop-mode .desktop-header a:last-child {
+        text-align: right; }
+  .desktop-mode .main {
+    padding: 15px;
+    height: calc(100% - 64px); }
+    .desktop-mode .main.default {
+      width: 100%;
+      max-width: 1200px; }
+  .desktop-mode .progress-bottom {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 0;
+    height: 128px;
+    width: 100%;
+    max-width: 960px;
+    background: #958B8E; }
+    .desktop-mode .progress-bottom .progress {
+      border-radius: 0; }
+      .desktop-mode .progress-bottom .progress::-webkit-progress-value, .desktop-mode .progress-bottom .progress span {
+        border-radius: 0 1000px 1000px 0; }
+      .desktop-mode .progress-bottom .progress::-moz-progress-bar {
+        border-radius: 0 1000px 1000px 0; }
+    .desktop-mode .progress-bottom div:last-child {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      padding: 15px;
+      height: calc(100% - 10px); }
+      .desktop-mode .progress-bottom div:last-child > span {
+        width: 50%;
+        font-size: 32px;
+        font-weight: 600; }
+        .desktop-mode .progress-bottom div:last-child > span:first-child {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center; }
+          .desktop-mode .progress-bottom div:last-child > span:first-child img {
+            border-radius: 1000px;
+            margin-right: 15px;
+            display: inline-block;
+            width: 64px;
+            height: 64px; }
+        .desktop-mode .progress-bottom div:last-child > span:last-child {
+          text-align: right; }
+
+/* ---------- DESKTOP LISTS */
+.desktop-search {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+  .desktop-search .main {
+    height: auto; }
+    .desktop-search .main form * {
+      border-color: #F04F54 !important;
+      outline-color: #F04F54 !important; }
+    .desktop-search .main form input {
+      height: 64px; }
+    .desktop-search .main form input, .desktop-search .main form label {
+      color: #F04F54 !important;
+      font-size: 36px; }
+    .desktop-search .main form label {
+      top: 6px; }
+    .desktop-search .main form label.active {
+      font-size: 24px; }
+    .desktop-search .main .desktop-search-list .desktop-card-list {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      margin: 0 -7.5px; }
+      .desktop-search .main .desktop-search-list .desktop-card-list li {
+        width: calc(100% / 3);
+        padding: 7.5px; }
+        .desktop-search .main .desktop-search-list .desktop-card-list li a {
+          display: block;
+          position: relative;
+          background: white;
+          border-bottom: 10px solid;
+          border-radius: 2px;
+          overflow: hidden;
+          cursor: pointer;
+          color: #757575; }
+          .desktop-search .main .desktop-search-list .desktop-card-list li a * {
+            cursor: pointer; }
+          .desktop-search .main .desktop-search-list .desktop-card-list li a .list-item-overlay {
+            filter: alpha(opacity=0);
+            opacity: 0;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px; }
+          .desktop-search .main .desktop-search-list .desktop-card-list li a:hover {
+            color: white; }
+            .desktop-search .main .desktop-search-list .desktop-card-list li a:hover .list-item-overlay {
+              filter: alpha(opacity=90);
+              opacity: 0.9; }
+
+@media screen and (min-width: 1024px) {
+  .desktop-search .main .desktop-search-list .desktop-card-list {
+    margin: 0 -15px; }
+    .desktop-search .main .desktop-search-list .desktop-card-list li {
+      width: 25%;
+      padding: 15px; } }
+/* ---------- GURU ONBOARDING */
+.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li {
+  display: none; }
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 84px;
+    padding: 15px;
+    border-bottom: 10px solid rgba(255, 255, 255, 0.3);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center; }
+    .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a:hover {
+      background: #F04F54; }
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a svg, .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li label svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: rgba(240, 79, 84, 0.8);
+    border-radius: 2px; }
+    .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a svg path, .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li label svg path {
+      fill: none;
+      stroke: white;
+      stroke-width: 8px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
+.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(1), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(2), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(3), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(4),
+.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(5), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(6), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(7), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(8),
+.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(9), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(10), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(11), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(12) {
+  display: block; }
+.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list .selected a {
+  border-color: white; }
+
+@media screen and (min-height: 750px) and (min-width: 820px) {
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
+    font-size: 20px; } }
+@media screen and (min-height: 750px) and (min-width: 1024px) {
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
+    height: 100px; }
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a svg, .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li label svg {
+    padding: 15px; }
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(13), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(14), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(15), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(16) {
+    display: block; } }
+@media screen and (min-height: 952px) {
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
+    height: 125px;
+    font-size: 24px; }
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a svg, .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li label svg {
+    padding: 30px; } }
+@media screen and (min-height: 1000px) {
+  .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
+    height: 150px; } }
+/* ---------- UNIVERSITY */
+#desktop-university .main .desktop-search-list .desktop-card-list li a .school-icon {
+  border-radius: 1000px;
+  display: none;
+  position: relative;
+  z-index: 999999;
+  margin: 0 auto -5px;
+  padding: 15px 15px 0;
+  width: 80px;
+  height: 65px; }
+#desktop-university .main .desktop-search-list .desktop-card-list li a img {
+  border-radius: 1000px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: white; }
+#desktop-university .main .desktop-search-list .desktop-card-list li a .school-name {
+  display: block;
+  position: relative;
+  z-index: 999999;
+  padding: 15px;
+  text-align: center !important; }
+  #desktop-university .main .desktop-search-list .desktop-card-list li a .school-name .school-title {
+    display: block;
+    width: 100%;
+    margin-bottom: 3px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.25;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  #desktop-university .main .desktop-search-list .desktop-card-list li a .school-name .school-location {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center !important; }
+    #desktop-university .main .desktop-search-list .desktop-card-list li a .school-name .school-location .school-city {
+      text-transform: capitalize; }
+    #desktop-university .main .desktop-search-list .desktop-card-list li a .school-name .school-location .school-state {
+      text-transform: uppercase; }
+
+@media screen and (min-height: 750px) and (min-width: 1024px) {
+  #desktop-university .main .desktop-search-list .desktop-card-list li a .school-icon {
+    display: block; } }
+@media screen and (min-height: 800px) and (min-width: 1280px) {
+  #desktop-university .main .desktop-search-list .desktop-card-list li a .school-icon {
+    width: 100px;
+    height: 85px; }
+  #desktop-university .main .desktop-search-list .desktop-card-list li a img {
+    display: block;
+    width: 70px;
+    height: 70px; } }
+@media screen and (min-width: 1024px) {
+  #desktop-university .main .desktop-search-list .desktop-card-list li a .school-name .school-title {
+    font-size: 20px; } }
+
+/*# sourceMappingURL=desktop.css.map */

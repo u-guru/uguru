@@ -867,12 +867,15 @@ angular.module('uguru.guru.controllers')
           PopupService.initDefaults();
     });
 
-    $scope.$on('$ionicView.afterEnter', function() {
-      // $ionicSlideBoxDelegate.update();
-      $timeout(function() {
-        $scope.initModalsAfterEnter();
-      }, 500)
-    });
+    // $scope.$on('$ionicView.afterEnter', function() {
+    //   $ionicSlideBoxDelegate.update();
+    // });
+
+    $timeout(function() {
+      $scope.calcGuruCredibilityProgress();
+      $scope.initModalsAfterEnter();
+    }, 500)
+
      $scope.$on('modal.hidden', function() {
         // console.error("ion modal leave  guru ctrl")
         if (DeviceService.doesCordovaExist()) {

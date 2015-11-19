@@ -1,0 +1,28 @@
+.custom-gmaps-container {
+	position: relative;
+	height: 100%;
+}
+
+.angular-google-map-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+
+.restaurant-name {
+	width: 100%;
+}
+
+.restaurant-slogan {
+	width: 100%;
+	text-align: right;
+	font-size: 0.7em;
+	font-weight: 600;
+}
+
+#transparent-div {
+	position: inherit;
+	width: 100%;
+	height: 150%;
+}
