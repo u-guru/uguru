@@ -19,7 +19,6 @@ angular.module('uguru.util.controllers')
 
     $scope.removeGuruExperience = function(experience, index) {
       var removedExperience = $scope.user.guru_experiences.splice(index, 1);
-
       var successCallback = function() {
         // LoadingService.hide();
         LoadingService.showSuccess('Experience removed!', 1500);
@@ -28,7 +27,7 @@ angular.module('uguru.util.controllers')
         }
       }
 
-      // LoadingService.show();
+      LoadingService.show();
 
       $scope.user.updateAttr('remove_guru_experience', $scope.user, $scope.experience, successCallback, $scope);
 

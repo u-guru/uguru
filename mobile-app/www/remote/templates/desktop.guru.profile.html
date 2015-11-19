@@ -172,8 +172,8 @@
 							<h1>Experience</h1>
 							<div>
 								<ul class="experience profile-list list with-icon">
-									<li ng-repeat='experience in user.guru_experiences'>
-										<a ng-click='launchAddGuruExperienceModal(experience)'>
+									<li ng-repeat='experience in user.guru_experiences | orderBy:"-id":true'>
+										<a ng-click='launchAddGuruExperienceModal(experience,$index)'>
 											<span class="list-item-detail">
 	                                        <h2>{{experience.name}}</h2>
 	                                        <span>{{experience.years}} years</span>
