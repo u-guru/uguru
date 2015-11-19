@@ -1,6 +1,6 @@
 
 describe('Firt time usr Test', function () {
-  var ListOfCode =  doc.generateRandomString(["","1"],3,"cool")
+  var ListOfCode =  doc.generateRandomString(["","1"],1,"cool")
 
     describe('@Workflow : Pre-Student Page', function () {
 
@@ -47,7 +47,125 @@ describe('Firt time usr Test', function () {
           });
         })
 
-        
+        describe('select courses',function()
+        {
+            var coursepage = $('#cta-modal-courses')
+            it('Open courses',function()
+            {
+              sections.get(0).click();
+            });
+            it('Select course',function()
+            { 
+              browser.wait(EC.visibilityOf(coursepage),3000)
+              course.SelectCourse(0);
+            });
+            it('Select course',function()
+            {
+              course.SelectCourse(1);
+            }); it('Select course',function()
+            {
+              course.SelectCourse(2);
+            });
+            it('Check Select Courses has 3',function()
+            {
+              expect($$('[ng-repeat="course in user.guru_courses"]').count()).toBe(3);
+            }); 
+            it('close course section',function()
+            {
+                coursepage.$('.cta-modal-close').click();
+            });
+        });
+        describe('select category',function()
+        {
+          var categorypage = $('#desktop-skills')
 
+          it('Open category',function()
+          {
+            sections.get(1).click();
+          });
+
+          it('Open a Category',function()
+          {
+            browser.wait(EC.visibilityOf(categorypage),3000)
+
+            // category.SelectSkill(1);
+            $$('[ng-repeat="category in categories"]').get(1).click()
+          });
+
+          it('Select skill',function()
+          {
+             $$('[ng-repeat="category in categories"]').get(1).$$('[ng-repeat = "subcategory in category.subcategories"]').get(2).click()
+             $$('[ng-repeat="category in categories"]').get(1).$$('[ng-repeat = "subcategory in category.subcategories"]').get(1).click()
+
+          })
+
+          it('close skill',function()
+          {
+            $$('[ng-click="hideCategorySkillsModal()"]').get(1).click();
+          });
+
+          it('close a Category',function()
+          {
+            categorypage.$('.cta-modal-close').click();
+          })
+
+        });
+
+        describe('Upload a photo',function()
+        {
+          it('Open category',function()
+          {
+            sections.get(2).click();
+          });
+          it('Upload Photo',function()
+          {
+            photo.UploadPhoto('small');
+          });
+
+        });
+        it('Check A success message is shown',function()
+        {
+          doc.checkMsg("Awesome! You're all set");
+        });
+    });
+
+    describe('Sign up a new account',function()
+    {
+      var setting = $('#top-settings');
+
+      it("Active setting",function()
+      {
+        setting.click();
+      });
+
+      it('Open signup',function()
+      {
+        $$('[href="#/desktop-login"]').get(1).click();
+      });
+
+      it('Enter Name : ',function()
+      {
+        account.enterName('jason huang');
+
+      });
+
+      it('Enter Email : ',function()
+      {
+        account.enterEmail();
+      });
+
+      it('Enter Password : ',function()
+      {
+        account.enterPassword('test');
+      });
+
+      it('Create account',function()
+      {
+          account.CreateAccount();
+      });
+      it('check Sign up successful -- INCONSISTANT',function()
+      {
+        account.CheckAccountMessage("Account Successfully Created");
+      });
     });
 });
