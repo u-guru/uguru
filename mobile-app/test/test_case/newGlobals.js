@@ -483,8 +483,8 @@ var global = function() {
   **************************************************************************************/
   this.connectFB = function (id, pw)
   {
-      element.all(by.css('[ng-click="connectWithFacebook()"]')).first().click();
-      browser.sleep(800);
+      // element.all(by.css('[ng-click="connectWithFacebook()"]')).first().click();
+      // browser.sleep(800);
       //Switch Screen
       browser.getAllWindowHandles().then(function (handles) {
           // switch to the popup

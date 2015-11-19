@@ -272,7 +272,7 @@ angular.module('uguru.desktop.controllers', [])
 
     }
 
-    $scope.launchEditEmailPopup = function() {
+    $scope.launchEditEmailPopup = function($event) {
 
       if($scope.user.email) {
         $scope.popupInput.editEmail = $scope.user.email;
@@ -289,7 +289,7 @@ angular.module('uguru.desktop.controllers', [])
         $scope.loader.showSuccess('Saved!', 1500);
         PopupService.close('editEmail');
       }
-      PopupService.open('editEmail', callback);
+      PopupService.open('editEmail', callback, $event.target);
     }
 
     $scope.saveSettings = function() {
@@ -297,7 +297,7 @@ angular.module('uguru.desktop.controllers', [])
     }
 
 
-    $scope.launchEditPasswordPopup = function() {
+    $scope.launchEditPasswordPopup = function($event) {
 
       function callback() {
         console.log('callback pressed');
@@ -342,16 +342,16 @@ angular.module('uguru.desktop.controllers', [])
             return;
           }
       }
-      PopupService.open('editPassword', callback);
+      PopupService.open('editPassword', callback, $event.target);
     }
 
-    $scope.launchEditStudentNamePopup = function() {
+    $scope.launchEditStudentNamePopup = function($event) {
 
       if ($scope.user.name) {
         $scope.popupInput.editName = $scope.user.name;
       }
 
-      PopupService.open('editName', callback);
+      PopupService.open('editName', callback, $event.target);
       function callback() {
         if (Utilities.validateName($scope.popupInput.editName)) {
             $scope.user.name = $scope.popupInput.editName;

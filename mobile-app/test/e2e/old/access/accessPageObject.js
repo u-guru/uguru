@@ -39,7 +39,7 @@ var Access = function()
 	 		browser.wait(EC.visibilityOf(this.IncorrectAccess),800);
 	 		this.IncorrectAccess.getText().then(function(value)
 	 		{
-	 			expect(value).toBe("INCORRECT ACCESS CODE");
+	 			expect(value).toBe("Incorrect access code!");
 	 		});	
 	 	}
 	 	
