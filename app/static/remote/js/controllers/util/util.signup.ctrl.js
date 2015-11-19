@@ -66,6 +66,12 @@ angular.module('uguru.util.controllers')
       }, 3000)
     }
 
+    $scope.backToAccess = function() {
+      LoadingService.showAmbig(null, 500, function() {
+          AnimationService.flip('^.university');
+      })
+    }
+
     $scope.exploreFirst = function()
     {
       console.log('CHECK,',$scope.root.vars.guru_mode);

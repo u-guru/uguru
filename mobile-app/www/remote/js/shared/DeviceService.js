@@ -89,7 +89,7 @@ function DeviceService($cordovaNgCardIO,
 
   function isIOSDevice() {
     var userAgent = navigator.userAgent;
-    return !(userAgent.toLowerCase().indexOf('safari') > -1);
+    return (!(userAgent.toLowerCase().indexOf('safari') > -1) || userAgent.indexOf('iPad') > 0);
   }
 
   function isIOSBrowser () {

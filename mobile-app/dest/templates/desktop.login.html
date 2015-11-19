@@ -26,6 +26,9 @@
 		</aside>
 		<div class="main">
 			<div class="desktop-forms-container">
+				<a class='cta-modal-close absolute top-0 left-0 m10xy' ng-if='desktopMode && !user.id' ng-click='backToAccess()'>
+					Back
+				</a>
 				<div>
 					<h1>Login</h1>
 					<form>
