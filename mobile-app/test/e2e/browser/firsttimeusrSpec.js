@@ -127,6 +127,10 @@ describe('Firt time usr Test', function () {
         {
           doc.checkMsg("Awesome! You're all set");
         });
+        it('check page is guru-home',function()
+        {
+          expect(browser.getCurrentUrl()).toContain('guru-home');
+        });
     });
 
     describe('Sign up a new account',function()
@@ -135,6 +139,7 @@ describe('Firt time usr Test', function () {
 
       it("Active setting",function()
       {
+
         setting.click();
       });
 
@@ -171,6 +176,11 @@ describe('Firt time usr Test', function () {
       it('check page is guru-home',function()
       {
         expect(browser.getCurrentUrl()).toContain('guru-home');
+      });
+      it("Active setting",function()
+      {
+
+        setting.click();
       });
     });
 
@@ -231,7 +241,7 @@ describe('Firt time usr Test', function () {
           expect($('#guru-introduction-modal').isDisplayed()).toBe(false);
         });
       });
-      var str = ['course','major','language','experience','skill'];
+      var str = ['course','language','experience','skill'];
 
       describe('Major/Course/Category/language',function()
       {
@@ -247,7 +257,7 @@ describe('Firt time usr Test', function () {
             
               it('Open Modal',function()
               {
-                guruprofile.OpenModal(title);
+                guruprofile.OpenDesktopModal(title);
               });
                 it('close Modal',function()
                 {
@@ -268,147 +278,156 @@ describe('Firt time usr Test', function () {
         $('#desktop-guru-profile .cta-modal-close').click();
       });
     })
-    describe('Edit Credibility',function()
-    {
-        it('Go to guru-credibility',function()
-        {
-          // browser.get("http://"+localhost+":5000/static/remote/index.html#/guru-home");
-          browser.wait(EC.elementToBeClickable( $("#cta-box-credibility")),2000);
-        });
+    // describe('Edit Credibility',function()
+    // {
+    //     it('Go to guru-credibility',function()
+    //     {
+    //       // browser.get("http://"+localhost+":5000/static/remote/index.html#/guru-home");
+    //       browser.get("http://"+localhost+":5000/static/remote/index.html#/guru-home");
 
-        it('activate guru-credibility',function()
-        {
-          browser.sleep(800);
-          $("#cta-box-credibility").click()
-          browser.wait(EC.visibilityOf($('#desktop-credibility')),2000)
-        });
+    //       browser.wait(EC.elementToBeClickable( $("#cta-box-credibility")),2000);
+    //     });
 
-            var groupName  = ['TRANSCRIPT','FACEBOOK','PHONE','EMAIL','EXPERIENCE']
-            var groupButton = ['transcript','Facebook','number','Email','Item']
+    //     it('activate guru-credibility',function()
+    //     {
+    //       browser.sleep(800);
+    //       $("#cta-box-credibility").click()
+    //       browser.wait(EC.visibilityOf($('#desktop-credibility')),2000)
+    //     });
 
-            for(var i = 0; i < 5 ; ++ i)
-            {
-              (function(index,title,buttonName)
-              {
-                describe('Test FeAattures : '+title , function()
-                {
-                  it('Click : '+ title,function()
-                  {
-                    // doc.newPickList('credit-slider',index);
-                      doc.newPickList('#credit-grid',index);
-                  });
-                  describe('[ Incompleted ] Check Feattures functional : Add '+ buttonName,function()
-                  {
-                        switch(index) 
-                          {
-                              case 0:
-                                describe('Photo Upload Test',function()
-                                {
+    //         var groupName  = ['TRANSCRIPT','FACEBOOK','PHONE','EMAIL','EXPERIENCE']
+    //         var groupButton = ['transcript','Facebook','number','Email','Item']
+
+    //         for(var i = 0 ; i < 5 ; ++ i)
+    //         {
+    //           (function(index,title,buttonName)
+    //           {
+    //             describe('Test FeAattures : '+title , function()
+    //             {
+    //               it('Click : '+ title,function()
+    //               {
+    //                 // doc.newPickList('credit-slider',index);
+    //                   doc.newPickList('#credit-grid',index);
+    //               });
+    //               describe('[ Incompleted ] Check Feattures functional : Add '+ buttonName,function()
+    //               {
+    //                     switch(index) 
+    //                       {
+    //                           case 0:
+    //                             describe('Photo Upload Test',function()
+    //                             {
                      
-                                  it('upload a small Photo',function()
-                                  {
-                                    // expect(true).toBe(false,"Not Completed Yet");
-                                    doc.uploadPhoto("file-input-guru-add-transcript","small");
-                                    doc.checkMsg("Saved!");
+    //                               it('upload a small Photo',function()
+    //                               {
+    //                                 // expect(true).toBe(false,"Not Completed Yet");
+    //                                 doc.uploadPhoto("file-input-guru-add-transcript","small");
+    //                                 doc.checkMsg("Saved!");
 
-                                  });
+    //                               });
 
-                                });
-                                  break;
-                              case 1:
-                                describe('[Incompleted]Facebook Test',function()
-                                {
-                                  it('Login Facebook',function()
-                                  {
-                                    // expect(true).toBe(false,"Facebook Can't Not Be Test");
-                                    doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");                            
-                                  });
-                                  // it("check message successed",function()
-                                  // {
-                                  //   doc.checkMsg("Saved!");
-                                  // })
-                                });
-                                  break;
-                                case 2:
-                                      describe('Phone Number Test',function()
-                                      {
+    //                             });
+    //                               break;
+    //                           case 1:
+    //                             describe('[Incompleted]Facebook Test',function()
+    //                             {
+    //                               it('Login Facebook',function()
+    //                               {
+    //                                 // expect(true).toBe(false,"Facebook Can't Not Be Test");
+    //                                 doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");                            
+    //                               });
+    //                               // it("check message successed",function()
+    //                               // {
+    //                               //   doc.checkMsg("Saved!");
+    //                               // })
+    //                             });
+    //                               break;
+    //                             case 2:
+    //                                   describe('Phone Number Test',function()
+    //                                   {
                 
-                                        it('Enter Number : 123456789',function()
-                                        {
-                                          // expect(true).toBe(false,"Not Completed Yet,Alert Message");
+    //                                     it('Enter Number : 123456789',function()
+    //                                     {
+    //                                       // expect(true).toBe(false,"Not Completed Yet,Alert Message");
 
-                                           doc.openWrapper('123456789')
-                                           doc.checkMsg('Saved!');
+    //                                        // doc.openWrapper('123456789')
+    //                                        browser.wait(EC.visibilityOf($('.uguru-popup.high-z-index.sidebar-popup.show')),2000);
+    //                                        $('[ng-model="popupInput.phoneConfirm"]').sendKeys("1231231234")
+    //                                        $('.uguru-popup.high-z-index.sidebar-popup.show button').click();
+    //                                        doc.checkMsg('Saved!');
 
-                                        });
-                                      });
-                                  break;
-                              case 3:
-                                    describe('Email Test',function()
-                                    {
+    //                                     });
+    //                                   });
+    //                               break;
+    //                           case 3:
+    //                                 describe('Email Test',function()
+    //                                 {
 
-                                        it('Enter Email : jason@sjsu.edu',function()
-                                        {
-                                         doc.openWrapper('jason@sjsu.edu');
-                                         doc.checkMsg('Email sent to jason@sjsu.edu');
-                                        });
-                                    });
-                                break;
-                              case 4:
-                                    describe('EXPERIENCE Test',function()
-                                    {
+    //                                     it('Enter Email : jason@sjsu.edu',function()
+    //                                     {
+    //                                      // doc.openWrapper('jason@sjsu.edu');
+    //                                      browser.wait(EC.visibilityOf($('.uguru-popup.high-z-index.sidebar-popup.show')),2000);
 
-                                      describe('Valid EXPERIENCE INFO',function()
-                                      {
-                                        it('Title info',function()
-                                        {
-                                                  // expect(true).toBe(false,"Not Completed Yet");
-                                            // doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-                                            element(by.css('.modal-backdrop.active input')).sendKeys("Guru Guy");
-                                        });
-                                        it('[No Working For now] Year of Experience',function()
-                                        {
+    //                                       $('[ng-model="popupInput.emailConfirm"]').sendKeys("jason@sjsu.edu")
+    //                                       $('.uguru-popup.high-z-index.sidebar-popup.show button').click();
+    //                                        doc.checkMsg('Email sent to jason@sjsu.edu');
+    //                                     });
+    //                                 });
+    //                             break;
+    //                           case 4:
+    //                                 describe('EXPERIENCE Test',function()
+    //                                 {
+
+    //                                   describe('Valid EXPERIENCE INFO',function()
+    //                                   {
+    //                                     it('Title info',function()
+    //                                     {
+    //                                               // expect(true).toBe(false,"Not Completed Yet");
+    //                                         // doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+    //                                         element(by.css('.modal-backdrop.active input')).sendKeys("Guru Guy");
+    //                                     });
+    //                                     it('[No Working For now] Year of Experience',function()
+    //                                     {
         
-                                            browser.actions()
-                                              .mouseMove(element(by.css('.modal-backdrop.active input')), {x: 100, y: 0})
-                                              .click()
-                                              .perform();    
-                                              // dragAndDrop(element(by.css('.modal-backdrop.active input')), {x: 200, y: 0}).
-                                              // perform();
-                                        });
-                                        it('Role Description',function()
-                                        {
-                                          //expect(true).toBe(false,"Not Completed Yet");
-                                            element.all(by.css('.input-outline')).last().sendKeys("TEST TEST");
+    //                                         browser.actions()
+    //                                           .mouseMove(element(by.css('.modal-backdrop.active input')), {x: 100, y: 0})
+    //                                           .click()
+    //                                           .perform();    
+    //                                           // dragAndDrop(element(by.css('.modal-backdrop.active input')), {x: 200, y: 0}).
+    //                                           // perform();
+    //                                     });
+    //                                     it('Role Description',function()
+    //                                     {
+    //                                       //expect(true).toBe(false,"Not Completed Yet");
+    //                                         element.all(by.css('.input-outline')).last().sendKeys("TEST TEST");
 
-                                        });
-                                        it('Save info',function()
-                                        {
-                                            element(by.css('.modal-backdrop.active button')).click()
-                                        });
-                                        it('Check Experience Is Saved',function()
-                                        {
-                                            doc.checkMsg('saved!');
-                                        });
-                                      });        
-                                    });
-                                    break;    
-                              }
-                  });
+    //                                     });
+    //                                     it('Save info',function()
+    //                                     {
+    //                                         element(by.css('.modal-backdrop.active button')).click()
+    //                                     });
+    //                                     it('Check Experience Is Saved',function()
+    //                                     {
+    //                                         doc.checkMsg('saved!');
+    //                                     });
+    //                                   });        
+    //                                 });
+    //                                 break;    
+    //                           }
+    //               });
 
-                  // it('Check Creditability inscreasing : '+(index+1)*20+' %',function()
-                  // {
-                  //  // expect(true).toBe(false,"Not Completed Yet");
-                 //     doc.tabBar('guru-tab-bar',0)
-                //    expect(CredValue.getText()).toContain((index+1)*20,"Incorrect % of Creditability");
-                  //  browser.get("http://"+localhost+":8100/#/guru-credibility");    
-                  // });  
+    //               // it('Check Creditability inscreasing : '+(index+1)*20+' %',function()
+    //               // {
+    //               //  // expect(true).toBe(false,"Not Completed Yet");
+    //              //     doc.tabBar('guru-tab-bar',0)
+    //             //    expect(CredValue.getText()).toContain((index+1)*20,"Incorrect % of Creditability");
+    //               //  browser.get("http://"+localhost+":8100/#/guru-credibility");    
+    //               // });  
 
-                });
+    //             });
                 
-                  })(i,groupName[i],groupButton[i]);
-            }
-    })
+    //               })(i,groupName[i],groupButton[i]);
+    //         }
+    // })
 
 
 });

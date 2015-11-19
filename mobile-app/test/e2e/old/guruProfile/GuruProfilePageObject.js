@@ -113,7 +113,41 @@ var GuruProfile = function()
 		browser.wait(EC.visibilityOf(this.ModalPage),3000);
 		expect(this.ModalTitle.getText()).toContain(name.toUpperCase());
 	};
+	this.OpenDesktopModal = function(name)
+	{
+		switch(name)
+		{
+			case 'course':
+				browser.wait($('[ng-click="launchGuruCoursesModal()"]'),3000);
+				$('[ng-click="launchGuruCoursesModal()"]').click();
+				break;
 
+			case 'major' :
+				this.AddMajor.click();
+				break;
+
+			case 'skill' :	
+				browser.wait($('[ng-click="launchGuruSkillsModal()"]'),3000);
+
+				$('[ng-click="launchGuruSkillsModal()"]').click();
+				break;
+
+			case 'language':	
+				browser.wait($('[ng-click="launchGuruLanguagesModal()"]'),3000);
+
+				$('[ng-click="launchGuruLanguagesModal()"]').click();
+				break;
+
+			case 'experience':	
+				browser.wait($('[ng-click="launchAddGuruExperienceModal()"]'),3000);
+
+				$('[ng-click="launchAddGuruExperienceModal()"]').click();
+				break;
+		};
+
+		browser.wait(EC.visibilityOf(this.ModalPage),3000);
+		expect(this.ModalTitle.getText()).toContain(name.toUpperCase());
+	};
 	this.SelectElement = function(index)
 	{
 		 doc.newPickList('.modal-backdrop.active',index);
@@ -128,6 +162,7 @@ var GuruProfile = function()
 		{
 			items[0].click();
 		});
+		browser.wait(EC.stalenessOf(this.ModalPage),3000);
 	};
 
 	this.deleteAllSkillsInProfile = function()
