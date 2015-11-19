@@ -118,11 +118,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
             var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
-                console.log('this triggered');
-                if (!$scope.user.id && !(box_elem.id.indexOf('signup') > 0)) {
-                  $scope.launchCTASignup();
-                  return;
-                }
+                // console.log('this triggered');
+                // if (!$scope.user.id && !(box_elem.id.indexOf('signup') > 0)) {
+                //   $scope.launchCTASignup();
+                //   return;
+                // }
 
                 $timeout(function() {
                     modal_elem.classList.add('show');
