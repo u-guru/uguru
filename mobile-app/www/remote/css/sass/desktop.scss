@@ -32,6 +32,11 @@
 			&.desktop-header-next {
 				text-align: right;
 			}
+			&.desktop-header-close {
+				svg {
+					@include rotate(45);
+				}
+			}
 		}
 	}
 	#top-bar {
@@ -885,68 +890,16 @@
 }
 
 // SKILLS
-#desktop-skills {
+#desktop-skills, .desktop-skills {
 	@include flex-center;
 	padding-top: 50px;
+	.desktop-header {
+		max-width: none!important;
+	}
 	.main {
+		max-width: none!important;
 		#skills-list {
 			.desktop-card-list {
-				.skill-item-content {
-					display: none;
-					background: $charcoal;
-					h1 {
-						text-align: center;
-						font-size: 64px;
-						font-weight: 900;
-						text-transform: lowercase;
-						margin-bottom: 30px;
-					}
-					ul {
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						margin: -15px;
-						li {
-							position: relative;
-							width: 25%;
-							text-align: center;
-							label {
-								@include flex;
-								@include flex-center;
-								background: $slate;
-								color: white;
-								font-size: 24px;
-								font-weight: 600;
-								height: 84px;
-								border-bottom: 10px solid;
-								border-radius: 2px;
-								overflow: hidden;
-								svg {
-									@include opacity(0);
-									background: none;
-									width: calc(100% - 30px);
-									height: calc(100% - 30px);
-								}
-							}
-							input {
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								height: 100%;
-								z-index: 9;
-								&:checked + label {
-									border-bottom-color: white!important;
-									color: rgba(white,.3);
-									svg {
-										@include opacity(1);
-									}
-								}
-							}
-						}
-					}
-				}
 				li {
 					.skill-item-info {
 						width: 100%;
@@ -970,6 +923,7 @@
 							}
 						}
 						[class*="bg-"]::after {
+							@include transition(.15s ease-in-out);
 							@include opacity(.7);
 							position: absolute;
 							content: "";
@@ -980,162 +934,224 @@
 							border-radius: 2px;
 							overflow: hidden;
 						}
-						.important {
+						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
+							&::after {
+								@include opacity(.3);
+							}
+						}
+						.important,
+						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
 							border-bottom-color: rgba(white,.8);
 						}
-						.bg-cerise.important::after {
+						.bg-cerise.important::after,
+						.bg-cerise:hover::after, .bg-cerise:focus::after, .bg-cerise:active::after {
 							background: $cerise;
 						}
-						.bg-orange.important::after {
+						.bg-orange.important::after,
+						.bg-orange:hover::after, .bg-orange:focus::after, .bg-orange:active::after {
 							background: $orange;
 						}
-						.bg-gold.important::after {
+						.bg-gold.important::after,
+						.bg-gold:hover::after, .bg-gold:focus::after, .bg-gold:active::after {
 							background: $gold;
 						}
-						.bg-moola.important::after {
+						.bg-moola.important::after,
+						.bg-moola:hover::after, .bg-moola:focus::after, .bg-moola:active::after {
 							background: $moola;
 						}
-						.bg-shamrock.important::after {
+						.bg-shamrock.important::after,
+						.bg-shamrock:hover::after, .bg-shamrock:focus::after, .bg-shamrock:active::after {
 							background: $shamrock;
 						}
-						.bg-azure.important::after {
+						.bg-azure.important::after,
+						.bg-azure:hover::after, .bg-azure:focus::after, .bg-azure:active::after {
 							background: $azure;
 						}
-						.bg-lake.important::after {
+						.bg-lake.important::after,
+						.bg-lake:hover::after, .bg-lake:focus::after, .bg-lake:active::after {
 							background: $lake;
 						}
-						.bg-eggplant.important::after {
+						.bg-eggplant.important::after,
+						.bg-eggplant:hover::after, .bg-eggplant:focus::after, .bg-eggplant:active::after {
 							background: $eggplant;
 						}
 					}
-					&.not-selected {
-						display: none;
+				}
+			}
+		}
+	}
+}
+.subcategory {
+	background: $charcoal;
+	> div {
+		width: 100%!important;
+	}
+	h1 {
+		text-align: center;
+		font-size: 64px;
+		font-weight: 900;
+		text-transform: lowercase;
+		margin-bottom: 30px;
+	}
+	ul {
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		padding: 15px;
+		li {
+			position: relative;
+			width: 25%;
+			text-align: center;
+			padding: 15px;
+			label {
+				@include flex;
+				@include flex-center;
+				background: $slate;
+				color: white;
+				font-size: 24px;
+				font-weight: 600;
+				height: 84px;
+				border-bottom: 10px solid;
+				border-radius: 2px;
+				overflow: hidden;
+				svg {
+					@include opacity(0);
+					@include center-xy;
+					width: calc(100% - 30px);
+					height: calc(100% - 30px);
+					path {
+						@include svg-stroke(white, 8);
 					}
-					&.selected {
-						@include center-xy;
-						width: 100%;
-						max-width: 1280px;
-						height: auto!important;
-						border: 0;
-						&::after, .skill-item-info {
-							display: none;
-						}
-						.skill-item-content {
-							display: block;
-						}
+				}
+			}
+			input {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9;
+				&:checked + label {
+					border-bottom-color: white!important;
+					color: rgba(white,.3);
+					svg {
+						@include opacity(1);
 					}
-					&:nth-child(1) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $cerise;
-									}
-									input:checked + label {
-										background: $cerise;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(2) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $orange;
-									}
-									input:checked + label {
-										background: $orange;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(3) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $gold;
-									}
-									input:checked + label {
-										background: $gold;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(4) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $moola;
-									}
-									input:checked + label {
-										background: $moola;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(5) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $shamrock;
-									}
-									input:checked + label {
-										background: $shamrock;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(6) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $azure;
-									}
-									input:checked + label {
-										background: $azure;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(7) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $lake;
-									}
-									input:checked + label {
-										background: $lake;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(8) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $eggplant;
-									}
-									input:checked + label {
-										background: $eggplant;
-									}
-								}
-							}
-						}
-					}
+				}
+			}
+		}
+	}
+	&.not-selected, &:not(.selected) {
+		@include opacity(0);
+		display: none;
+	}
+	&.selected {
+		@include opacity(1);
+		@include center-xy;
+		z-index: 99999;
+		width: 100%;
+		height: 100%!important;
+		border: 0;
+		&::after, .skill-item-info {
+			display: none;
+		}
+		.skill-item-content {
+			display: block;
+		}
+	}
+	&:nth-child(1) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $cerise;
+				}
+				input:checked + label {
+					background: $cerise;
+				}
+			}
+		}
+	}
+	&:nth-child(6) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $orange;
+				}
+				input:checked + label {
+					background: $orange;
+				}
+			}
+		}
+	}
+	&:nth-child(2) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $gold;
+				}
+				input:checked + label {
+					background: $gold;
+				}
+			}
+		}
+	}
+	&:nth-child(5) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $moola;
+				}
+				input:checked + label {
+					background: $moola;
+				}
+			}
+		}
+	}
+	&:nth-child(7) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $shamrock;
+				}
+				input:checked + label {
+					background: $shamrock;
+				}
+			}
+		}
+	}
+	&:nth-child(3) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $azure;
+				}
+				input:checked + label {
+					background: $azure;
+				}
+			}
+		}
+	}
+	&:nth-child(4) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $lake;
+				}
+				input:checked + label {
+					background: $lake;
+				}
+			}
+		}
+	}
+	&:nth-child(8) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $eggplant;
+				}
+				input:checked + label {
+					background: $eggplant;
 				}
 			}
 		}
@@ -1150,10 +1166,16 @@
 						a {
 							height: 150px!important;
 						}
-						label {
-							height: 100px!important;
-						}
 					}
+				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 100px!important;
 				}
 			}
 		}
@@ -1169,10 +1191,16 @@
 						a {
 							height: 175px!important;
 						}
-						label {
-							height: 125px!important;
-						}
 					}
+				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 125px!important;
 				}
 			}
 		}
@@ -1187,10 +1215,16 @@
 						a {
 							height: 250px!important;
 						}
-						label {
-							height: 150px!important;
-						}
 					}
+				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 150px!important;
 				}
 			}
 		}
@@ -3715,7 +3749,7 @@
 				}
 			}
 			ul {
-				max-width: 1310px;
+				max-width: 1280px;
 				margin: 0 auto;
 				height: calc(100% - 85px);
 				padding-top: 15px;
@@ -4568,17 +4602,17 @@
 //end component overrides
 
 #top-menu-background-overlay {
+	@include opacity(.7);
+    display: none!important;
 	top: 64px;
-    height: calc(100% - 64px) !important;
     z-index: 10;
-    margin-left: -15px !important;
-    opacity:0;
-    display:none !important;
-    width:100% !important;
-    max-width:100% !important;
+    height: calc(100% - 64px)!important;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-left: -15px!important;
     &.active {
-    	display:block !important;
-    	opacity:0.7;
+		@include opacity(.7);
+    	display: block!important;
     }
 }
 
@@ -4619,12 +4653,12 @@
 }
 
 .mode-links {
-	background: rgba(255, 255, 255, 0.75);
+	background: rgba(white,.75);
 	span {
-		color: #958B8E;
+		color: $gabrielle;
 	}
 	svg {
-		stroke: #958B8E !important;
+		stroke: $gabrielle!important;
 	}
 }
 

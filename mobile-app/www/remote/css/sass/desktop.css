@@ -61,6 +61,14 @@
   text-align: right;
 }
 
+.desktop-mode .desktop-header a.desktop-header-close svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 .desktop-mode #top-bar {
   height: 64px;
   background: #958B8E;
@@ -1222,7 +1230,7 @@
   }
 }
 
-#desktop-skills {
+#desktop-skills, .desktop-skills {
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -1232,12 +1240,128 @@
   padding-top: 50px;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content {
-  display: none;
+#desktop-skills .desktop-header, .desktop-skills .desktop-header {
+  max-width: none !important;
+}
+
+#desktop-skills .main, .desktop-skills .main {
+  max-width: none !important;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info {
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a {
+  height: 100px;
+  background-color: rgba(43, 50, 52, 0.5);
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div {
+  position: relative;
+  z-index: 99;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span {
+  display: block;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label {
+  font-size: 24px;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-count {
+  font-size: 18px;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active::after {
+  filter: alpha(opacity=30);
+  opacity: 0.3;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active {
+  border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after {
+  background: #DB1988;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after {
+  background: #E5753C;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after {
+  background: #F9D57B;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after {
+  background: #81B566;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock.important::after,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock.important::after,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:active::after {
+  background: #69B3A5;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure.important::after,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure.important::after,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:active::after {
+  background: #55A4B7;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake.important::after,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake.important::after,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:active::after {
+  background: #50A5DD;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after,
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after,
+.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after {
+  background: #9A5BC5;
+}
+
+.subcategory {
   background: #2B3234;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content h1 {
+.subcategory > div {
+  width: 100% !important;
+}
+
+.subcategory h1 {
   text-align: center;
   font-size: 64px;
   font-weight: 900;
@@ -1245,7 +1369,7 @@
   margin-bottom: 30px;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content ul {
+.subcategory ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1265,16 +1389,17 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin: -15px;
+  padding: 15px;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content ul li {
+.subcategory ul li {
   position: relative;
   width: 25%;
   text-align: center;
+  padding: 15px;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content ul li label {
+.subcategory ul li label {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1298,115 +1423,9 @@
   overflow: hidden;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content ul li label svg {
+.subcategory ul li label svg {
   filter: alpha(opacity=0);
   opacity: 0;
-  background: none;
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-}
-
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content ul li input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content ul li input:checked + label {
-  border-bottom-color: white !important;
-  color: rgba(255, 255, 255, 0.3);
-}
-
-#desktop-skills .main #skills-list .desktop-card-list .skill-item-content ul li input:checked + label svg {
-  filter: alpha(opacity=100);
-  opacity: 1;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info {
-  width: 100%;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a {
-  height: 100px;
-  background-color: rgba(43, 50, 52, 0.5);
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div {
-  position: relative;
-  z-index: 99;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span {
-  display: block;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label {
-  font-size: 24px;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-count {
-  font-size: 18px;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after {
-  filter: alpha(opacity=70);
-  opacity: 0.7;
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important {
-  border-bottom-color: rgba(255, 255, 255, 0.8);
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after {
-  background: #DB1988;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after {
-  background: #E5753C;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after {
-  background: #F9D57B;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after {
-  background: #81B566;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock.important::after {
-  background: #69B3A5;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure.important::after {
-  background: #55A4B7;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake.important::after {
-  background: #50A5DD;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after {
-  background: #9A5BC5;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li.not-selected {
-  display: none;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li.selected {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1415,81 +1434,129 @@
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 1280px;
-  height: auto !important;
-  border: 0;
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li.selected::after, #desktop-skills .main #skills-list .desktop-card-list li.selected .skill-item-info {
+.subcategory ul li label svg path {
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.subcategory ul li input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+}
+
+.subcategory ul li input:checked + label {
+  border-bottom-color: white !important;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.subcategory ul li input:checked + label svg {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.subcategory.not-selected, .subcategory:not(.selected) {
+  filter: alpha(opacity=0);
+  opacity: 0;
   display: none;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li.selected .skill-item-content {
+.subcategory.selected {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  width: 100%;
+  height: 100% !important;
+  border: 0;
+}
+
+.subcategory.selected::after, .subcategory.selected .skill-item-info {
+  display: none;
+}
+
+.subcategory.selected .skill-item-content {
   display: block;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(1) .skill-item-content ul li label {
+.subcategory:nth-child(1) ul li label {
   border-bottom-color: #DB1988;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(1) .skill-item-content ul li input:checked + label {
+.subcategory:nth-child(1) ul li input:checked + label {
   background: #DB1988;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(2) .skill-item-content ul li label {
+.subcategory:nth-child(6) ul li label {
   border-bottom-color: #E5753C;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(2) .skill-item-content ul li input:checked + label {
+.subcategory:nth-child(6) ul li input:checked + label {
   background: #E5753C;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(3) .skill-item-content ul li label {
+.subcategory:nth-child(2) ul li label {
   border-bottom-color: #F9D57B;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(3) .skill-item-content ul li input:checked + label {
+.subcategory:nth-child(2) ul li input:checked + label {
   background: #F9D57B;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(4) .skill-item-content ul li label {
+.subcategory:nth-child(5) ul li label {
   border-bottom-color: #81B566;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(4) .skill-item-content ul li input:checked + label {
+.subcategory:nth-child(5) ul li input:checked + label {
   background: #81B566;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(5) .skill-item-content ul li label {
+.subcategory:nth-child(7) ul li label {
   border-bottom-color: #69B3A5;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(5) .skill-item-content ul li input:checked + label {
+.subcategory:nth-child(7) ul li input:checked + label {
   background: #69B3A5;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(6) .skill-item-content ul li label {
+.subcategory:nth-child(3) ul li label {
   border-bottom-color: #55A4B7;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(6) .skill-item-content ul li input:checked + label {
+.subcategory:nth-child(3) ul li input:checked + label {
   background: #55A4B7;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(7) .skill-item-content ul li label {
+.subcategory:nth-child(4) ul li label {
   border-bottom-color: #50A5DD;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(7) .skill-item-content ul li input:checked + label {
+.subcategory:nth-child(4) ul li input:checked + label {
   background: #50A5DD;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(8) .skill-item-content ul li label {
+.subcategory:nth-child(8) ul li label {
   border-bottom-color: #9A5BC5;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li:nth-child(8) .skill-item-content ul li input:checked + label {
+.subcategory:nth-child(8) ul li input:checked + label {
   background: #9A5BC5;
 }
 
@@ -1497,7 +1564,7 @@
   #desktop-skills .main #skills-list .desktop-card-list li a {
     height: 150px !important;
   }
-  #desktop-skills .main #skills-list .desktop-card-list li label {
+  .subcategory ul li label {
     height: 100px !important;
   }
 }
@@ -1509,7 +1576,7 @@
   #desktop-skills .main #skills-list .desktop-card-list li a {
     height: 175px !important;
   }
-  #desktop-skills .main #skills-list .desktop-card-list li label {
+  .subcategory ul li label {
     height: 125px !important;
   }
 }
@@ -1518,7 +1585,7 @@
   #desktop-skills .main #skills-list .desktop-card-list li a {
     height: 250px !important;
   }
-  #desktop-skills .main #skills-list .desktop-card-list li label {
+  .subcategory ul li label {
     height: 150px !important;
   }
 }
@@ -5006,7 +5073,7 @@
 }
 
 #desktop-request-subcategories .main .request-subcategories-content ul {
-  max-width: 1310px;
+  max-width: 1280px;
   margin: 0 auto;
   height: calc(100% - 85px);
   padding-top: 15px;
@@ -6200,19 +6267,21 @@
 }
 
 #top-menu-background-overlay {
-  top: 64px;
-  height: calc(100% - 64px) !important;
-  z-index: 10;
-  margin-left: -15px !important;
-  opacity: 0;
+  filter: alpha(opacity=70);
+  opacity: 0.7;
   display: none !important;
+  top: 64px;
+  z-index: 10;
+  height: calc(100% - 64px) !important;
   width: 100% !important;
   max-width: 100% !important;
+  margin-left: -15px !important;
 }
 
 #top-menu-background-overlay.active {
-  display: block !important;
+  filter: alpha(opacity=70);
   opacity: 0.7;
+  display: block !important;
 }
 
 .desktop-guru-onboarding-view .cta-modal.hide-display {
