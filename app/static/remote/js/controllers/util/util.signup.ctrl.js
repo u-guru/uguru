@@ -84,7 +84,7 @@ angular.module('uguru.util.controllers')
 
 // ==========================
 
-    if ($scope.user.id && !$scope.root.vars.guru_mode) {
+    if ($scope.user.id && !$scope.root.vars.guru_mode && !LOCAL) {
       LoadingService.showAmbig('Redirecting to home...', 2000);
       $state.go('^.guru-home');
     }

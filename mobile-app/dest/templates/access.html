@@ -1,5 +1,5 @@
 <ion-view class='uguru-view access-view full-xy overflow-hidden' ion-scroll='false' ng-controller='AccessController' cache-view='!LOCAL'>
-    <main id="desktop-access" class="desktop-mode" ng-if='isDesktopMode()'>
+    <main id="desktop-access" class="desktop-mode" ng-if='desktopMode'>
         <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
         <div class="main">
             <div id="desktop-access-code" ng-init='getLoadTime()'>
@@ -18,7 +18,7 @@
         </div>
     </main>
 
-    <section id="access" class="start" ng-if='!isDesktopMode()'>
+    <section id="access" class="start" ng-if='!desktopMode'>
         <div id="access-data">
             <div id="access-logo" ng-hide='inputFocused && platform.android'>
                 <svg width="372px" height="446px" viewBox="0 0 372 446">

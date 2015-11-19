@@ -329,9 +329,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 animateProgressCircle(guruRankingCircle, $scope.user.current_guru_ranking);
 
                 //show it after the progress is complete
-                if (!$scope.desktopMode) {
-                  $scope.initializeHorizontalProgressBars();
-                }
+                // if (!$scope.desktopMode) {
+                //   $scope.initializeHorizontalProgressBars();
+                // }
 
               }, 500)
             }

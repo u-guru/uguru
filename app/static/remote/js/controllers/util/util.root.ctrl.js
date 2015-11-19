@@ -78,7 +78,7 @@ angular.module('uguru.util.controllers')
                 // console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
             return height > desktopHeightLimit && width > desktopWidthLimit;
         };
-        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
+        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth) && !(navigator.userAgent.indexOf('iPad') > 0);
         console.log('originalDesktopMode', $scope.desktopMode);
         if ($scope.desktopMode) {
             document.body.classList.add('desktop-view');
