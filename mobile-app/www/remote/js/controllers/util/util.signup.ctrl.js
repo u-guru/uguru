@@ -65,7 +65,15 @@ angular.module('uguru.util.controllers')
         })
       }, 3000)
     }
-
+    $scope.switchSignupMode = function() {
+      // if(!$scope.user )
+        if(!$scope.user.university_id){
+          $scope.preventSignupAndBackToAccess();
+        }
+        else{
+          $scope.root.vars.loginMode = false;
+        }
+    }
     $scope.exploreFirst = function()
     {
       console.log('CHECK,',$scope.root.vars.guru_mode);
@@ -1482,7 +1490,7 @@ angular.module('uguru.util.controllers')
 
           if ($scope.desktopMode) {
             console.log('detecting signup')
-            LoadingService.showSuccess('Login Successful', 2500);
+            LoadingService.showSuccess('Account Successfully Created', 2500);
             $state.go('^.guru-home');
           } else {
             $state.go('^.guru');
