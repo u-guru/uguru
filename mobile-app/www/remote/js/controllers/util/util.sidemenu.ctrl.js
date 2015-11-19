@@ -64,10 +64,10 @@ angular.module('uguru.util.controllers')
       }
       $scope.desktopGoBack = function() {
         $ionicViewSwitcher.nextDirection('enter');
-        if ($scope.root.vars.guru_mode) {
-          $state.go('^.guru');
+        if ($scope.desktopMode) {
+          $state.go('^.guru-home');
         } else {
-          $state.go('^.home');
+          $state.go('^.guru');
         }
 
       }
@@ -493,6 +493,13 @@ angular.module('uguru.util.controllers')
       });
     };
 
+    $scope.resetCache = function() {
+      AdminService.resetCache();
+      LoadingService.showAmbig('Resetting Cache..', 1500, function(){
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.university');
+      })
+    }
 
 
     $scope.resetAccount = function() {
@@ -552,7 +559,7 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
           LoadingService.hide();
         }, 500);
-        AnimationService.flip('^.home');
+        AnimationService.flip('^.guru-home');
 
       //let the server know the user was on guru mode for the next time app opens
 

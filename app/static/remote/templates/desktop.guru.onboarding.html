@@ -2,14 +2,11 @@
 	<!-- <ion-pane class='full-xy hide-display cta-modal'>
 		<div ng-controller='AddMajorController' ng-include="img_base + BASE + 'templates/majors.container.html'"></div>
 	</ion-pane> -->
-	<ion-pane class='full-xy hide-display cta-modal'>
-		<div ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
+	<ion-pane id='cta-modal-courses' class='full-xy hide-display cta-modal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/become.guru.courses.html'">
 	</ion-pane>
-	<ion-pane class='full-xy hide-display cta-modal bg-cerise'>
-		<div ng-controller='CategoriesController' ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></div>
+	<ion-pane id='cta-modal-categories' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='CategoriesController' ng-include="img_base + BASE + 'templates/guru.skills.container.html'">
 	</ion-pane>
-	<ion-pane class='full-xy hide-display cta-modal'>
-		<div ng-include="'templates/desktop.guru.profile.html'"></div>
+	<ion-pane id='cta-modal-photo' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='BecomeGuruPhotoController' ng-include="img_base + BASE + 'templates/become.guru.photo.html'">
 	</ion-pane>
 	<main id="desktop-guru-onboarding" class="desktop-mode">
 		<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
@@ -18,6 +15,9 @@
 				<svg viewBox="0 0 100 100">
 						<path d="M68,86 L32,50 L68,14"></path>
 				</svg>
+			</a>
+			<a ng-click='skipBecomeGuruAndGoToGuru()' class='back-icon-settings absolute right-0 top-0 m10xy skip-button'>
+				<h4> Skip </h4>
 			</a>
 			<div class="header">
 				<h1>Become a Guru</h1>
@@ -40,8 +40,8 @@
 					</a>
 				</li> -->
 
-				<li class='cta-box'>
-					<a class='ng-class:{"complete":user.guru_courses.length > 0}' href="#">
+				<li >
+					<a id='cta-box-courses' class='cta-box ng-class:{"complete":user.guru_courses.length > 0}' href="#">
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
@@ -55,8 +55,8 @@
 						</span>
 					</a>
 				</li>
-				<li class='cta-box'>
-					<a class='ng-class:{"complete":user.guru_subcategories.length > 0}' href="#">
+				<li>
+					<a id='cta-box-categories' class='cta-box ng-class:{"complete":user.guru_subcategories.length > 0}' href="#">
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
@@ -70,8 +70,8 @@
 						</span>
 					</a>
 				</li>
-				<li class='cta-box'>
-					<a class='ng-class:{"complete": user.profile_url && user.profile_url.indexOf("avatar.svg") < 0}' href="#">
+				<li >
+					<a id='cta-box-photo' class='cta-box ng-class:{"complete": user.profile_url && user.profile_url.indexOf("avatar.svg") < 0}' href="#">
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
@@ -90,7 +90,7 @@
 			</ul>
 			<div id="guru-onboarding-progress">
 				<div class="progress white-round">
-					<span ng-style="{'width': progressWidth + '%'}"></span>
+					<span style="width:{{progress.width}}"></span>
 					<ul>
 						<li><span>1</span></li>
 						<li><span>2</span></li>

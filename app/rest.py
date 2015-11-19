@@ -611,6 +611,9 @@ class UserOneView(restful.Resource):
         if 'messenger_friendly' in request.json:
             user.messenger_friendly = request.json.get('messenger_friendly')
 
+        if 'person_friendly' in request.json:
+            user.person_friendly = request.json.get('person_friendly')
+
         if 'text_friendly' in request.json:
             user.text_friendly = request.json.get('text_friendly')
 
@@ -3164,6 +3167,14 @@ class AdminOneUniversityView(restful.Resource):
                 if type(logo_url) != str:
                     abort(401)
                 u.logo_url = logo_url
+
+            if 'svg_url' in request.json:
+                svg_url = request.json.get('svg_url')
+                print svg_url
+                if type(svg_url) != str:
+                    abort(401)
+                u.svg_url = svg_url
+
 
             if 'school_color_one' in request.json:
                 school_color_one = request.json.get('school_color_one')

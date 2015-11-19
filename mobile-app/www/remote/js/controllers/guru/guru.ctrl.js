@@ -34,23 +34,25 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   };
 
-  var CTA_PARENT = '.guru-home-container';
-  var CTA_DICT = {
-    //profile
-    //cta-box-profile
-    //cta-box-credibility
-    //cta-box-transcript
-    //cta-box-messages
-    //cta-box-calendar
-    //cta-boxbalance
-
+  var CTA_PARENT_DICT = {
+    'cta-box-profile':'.guru-home-container',
+    'cta-box-credibility':'.guru-home-container'
   }
+
+  var CTA_OPTIONS = {
+        duration:0.5,
+        extraTransitionDuration:1
+    }
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
   $scope.showActive = true;
   $ionicSideMenuDelegate.canDragContent(false);
 
+
+  $scope.launchCTASignup = function() {
+    document.getElementById('cta-box-signup').click();
+  }
 
   if ($scope.user) {
     TipService.currentTips = TipService.generateTips($scope.user); //mastercopy
@@ -74,7 +76,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     ModalService.open(modalName, $scope);
   };
 
-
   $scope.goToDesktopGuruProfile = function() {
     $ionicViewSwitcher.nextDirection('enter');
     $state.go('^.desktop-guru-profile')
@@ -84,8 +85,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $ionicViewSwitcher.nextDirection('enter');
     $state.go('^.guru-credibility');
   }
-
-
         var initGuruRankProgress = function(selector, color, fillColor, setValue) {
           var circle = new ProgressBar.Circle(selector, {
               color: color || "rgba(255,255,255,1)",
@@ -110,48 +109,56 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return circle;
         }
 
-            function addEventListenerToCTABox(box_elem, modal_elem, index) {
-                  console.log('adding event listener');
-                  box_elem.addEventListener('click', function() {
+        /*
+        START CTA FUNCTIONS
+        */
+        function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
+            box_elem.addEventListener('click', function() {
+            var modal_elem = document.querySelector('#' + modal_elem_id);
 
-                      // var options = {
-                      //   targetShowDuration: 1,
-                      //   duration: 0.5,
-                      //   extraTransitionDuration:0.7,
-                      //   relativeToWindow:false;
-                      // }
-                      var ctaOptions = {
-                        duration:0.3,
-                        extraTransitionDuration:1
-                      }
-                      $timeout(function() {
-                        allCTAModals[index].classList.add('show');
-                      }, 200);
-                      var closeCTAModal = cta(allCTABoxes[index], allCTAModals[index], ctaOptions, function() {
-                          setTimeout(function() {
-                            modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
-                              modal_elem.classList.remove('show');
-                              closeCTAModal();
-                            })
+            var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
-                          }, 1000)
-                      },parent);
-                  });
-              }
+                console.log('this triggered');
+                if (!$scope.user.id && !(box_elem.id.indexOf('signup') > 0)) {
+                  $scope.launchCTASignup();
+                  return;
+                }
 
-              var allCTABoxes;
-              var allCTAModals;
-              function initCTA() {
-                  allCTABoxes = document.querySelectorAll('.cta-box') || [];
-                  allCTAModals = document.querySelectorAll('.cta-modal') || [];
-                  console.log(allCTABoxes.length, allCTAModals.length);
-                  for (var i = 0; i < allCTABoxes.length; i++) {
-                      var indexCTABox = allCTABoxes[i];
-                      var indexCTAModal = allCTAModals[i];
-                      addEventListenerToCTABox(indexCTABox, indexCTAModal, i)
+                $timeout(function() {
+                    modal_elem.classList.add('show');
+                }, 200);
+                  var close_icon = modal_elem.querySelector('.cta-modal-close');
+                  if (close_icon) {
+                      close_icon.addEventListener('click', function() {
 
+                      //add callbacks here
+                      modal_elem.classList.remove('show');
+                      closeCTAModal();
+                    });
                   }
-              }
+            }, CTA_PARENT_DICT[box_elem.id]);
+        });
+        }
+
+        function initCTA() {
+            var allCTABoxes = document.querySelectorAll('.cta-box') || [];
+            var allCTAModels = document.querySelectorAll('.cta-modal') || [];
+            for (var i = 0; i < allCTABoxes.length; i++) {
+                var indexCTABox = allCTABoxes[i];
+                var indexCTAModalID = getModalCTAElemID(indexCTABox);
+                addEventListenerToCTABox(indexCTABox, indexCTAModalID, i)
+
+            }
+        }
+
+         function getModalCTAElemID(cta_box_elem) {
+            elem_id = cta_box_elem.id;
+            modalID = elem_id.replace('box', 'modal');
+            console.log('\n\nprocessing box --> modal mapping', elem_id, modalID, '\n\n');
+            return modalID;
+        }
+
+        /* END CTA FUNCTIONS*/
 
 
         var animateProgressCircle = function(circle ,percentage) {
@@ -281,17 +288,22 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $state.go(state_name);
         }
 
-        // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.enter', function() {
+          initCTA();
+        });
+
+        // GABRIELLE UN COMMENT THE SECTION BELOW
+        $scope.$on('$ionicView.beforeEnter', function() {
 
           if (DeviceService.isIOSDevice()) {
             DeviceService.ios.setStatusBarLightText();
           }
-          initCTA();
+
 
           $scope.refreshTipsAndRanking($scope.user);
+          // Weird this is the one causing the view css issue[Profile photo move to left side in 0.5 sec and move back] at edit guru profile
           $ionicSlideBoxDelegate.update();
-
+          // console.error("ion view enter guru ctrl")
           $timeout(function() {
 
             if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
@@ -320,9 +332,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         var appOnboardingObj;
         $scope.$on('$ionicView.afterEnter', function() {
 
-            $timeout(function() {
-              appOnboardingObj = $localstorage.getObject('appOnboarding');
-            }, 250)
+
+              $timeout(function() {
+                appOnboardingObj = $localstorage.getObject('appOnboarding');
+              }, 250)
 
               // wait til the bar is loaded
               $timeout(function() {
@@ -331,12 +344,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 }
               }, 3000)
         });
-
-
-
-
-
-
 
   }
 

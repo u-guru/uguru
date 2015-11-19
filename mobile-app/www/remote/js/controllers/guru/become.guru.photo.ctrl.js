@@ -49,7 +49,7 @@ angular.module('uguru.guru.controllers')
         $state.go('^.guru');
 
       }, 1200);
-      
+
     }
 
     $scope.showAttachActionSheet = function() {
@@ -57,6 +57,13 @@ angular.module('uguru.guru.controllers')
       var options = [{ text: 'Choose from Library' }];
       if ($scope.platform.mobile) {
         options.push({text: 'Take a Photo'})
+      } else {
+
+        //no need to show action bar on desktop
+        if ($scope.desktopMode) {
+          takePhoto(0);
+          return;
+        }
       }
 
      // Show the action sheet
@@ -87,11 +94,11 @@ angular.module('uguru.guru.controllers')
 
         function successCallback(imageData) {
 
-          
+
           var image = document.getElementById('user-instant-photo');
           image.src = 'data:image/jpeg;base64,' + imageData;
           //image.src = imageURI;
-          
+
 
           $scope.photoUploaded = true;
 

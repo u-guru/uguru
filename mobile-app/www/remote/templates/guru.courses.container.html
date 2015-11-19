@@ -18,8 +18,11 @@
     <div class="main default">
         <form>
             <div class="input-field">
-                <input id='course-input-1' autocomplete="off" type="search" ng-model="search_text.course" class='bg-charcoal'>
-                <label for="course-input-1" ng-show='!search_text.course.length'>search courses</label>
+                <input id='course-input-1' autocomplete="off" type="search" ng-model="search_text.course" class='bg-charcoal' ng-focus='hideLabel = true;' ng-blue='hideLabel = false;'>
+                <label for="course-input-1" class='ng-class:{"hide": search_text.course.length || hideLabel}'>search courses</label>
+                <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
+					<i class="icon ion-close-circled text-white"></i>
+				</a>
             </div>
         </form>
 
@@ -101,7 +104,7 @@
 			<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
 				<input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>
 				<label ng-if='!course.short_name && course.name'>{{course.name}}</label>
-				<label ng-if='course.short_name && course.name'>{{course.short_name}}</label>				
+				<label ng-if='course.short_name && course.name'>{{course.short_name}}</label>
 			<!-- 	<label ng-if='course.name && course.title'>
 					<span class="course-name">{{course.short_name}}</span>
 					<span class="course-title">{{course.title}}</span>
@@ -109,8 +112,10 @@
 			</li>
 			<li ng-repeat='course in courses| filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
 				<!-- <input type="checkbox"> -->
-				<label ng-if='!course.short_name && course.name'>{{course.name}}</label>
-				<label ng-if='course.short_name && course.name'>{{course.short_name}}</label>
+				<!-- <label ng-if='!course.short_name && course.name'>{{course.name}}</label> -->
+				<label >{{course.short_name}}</label>		
+				<!-- <label ng-if='!course.short_name && course.name'>{{course.name}}</label> -->
+				<!-- <label ng-if='course.short_name && course.name'>{{course.short_name}}</label> -->
 				<!-- <label ng-if='course.title'>
 					<span class="course-name">{{course.short_name}}</span>
 					<span class="course-title">{{course.title}}</span>

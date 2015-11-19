@@ -444,6 +444,11 @@
 		.desktop-forms-container {
 			> div {
 				background: white;
+				.input-field {
+					input {
+						color: white!important;
+					}
+				}
 			}
 			.explore {
 				background: $shamrock;
@@ -531,6 +536,7 @@
 		overflow: hidden;
 		svg {
 			@include center-x;
+			z-index: 9;
 			top: 5%;
 			width: 75px;
 			height: 75px;
@@ -868,63 +874,63 @@
 	.main {
 		#skills-list {
 			.desktop-card-list {
-				li {
-					.skill-item-content {
-						display: none;
-						background: $charcoal;
-						h1 {
+				.skill-item-content {
+					display: none;
+					background: $charcoal;
+					h1 {
+						text-align: center;
+						font-size: 64px;
+						font-weight: 900;
+						text-transform: lowercase;
+						margin-bottom: 30px;
+					}
+					ul {
+						@include listless;
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						margin: -15px;
+						li {
+							position: relative;
+							width: 25%;
 							text-align: center;
-							font-size: 64px;
-							font-weight: 900;
-							text-transform: lowercase;
-							margin-bottom: 30px;
-						}
-						ul {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							@include flex-center;
-							margin: -15px;
-							li {
-								position: relative;
-								width: 25%;
-								text-align: center;
-								label {
-									@include flex;
-									@include flex-center;
-									background: $slate;
-									color: white;
-									font-size: 24px;
-									font-weight: 600;
-									height: 84px;
-									border-bottom: 10px solid;
-									border-radius: 2px;
-									overflow: hidden;
-									svg {
-										@include opacity(0);
-										background: none;
-										width: calc(100% - 30px);
-										height: calc(100% - 30px);
-									}
+							label {
+								@include flex;
+								@include flex-center;
+								background: $slate;
+								color: white;
+								font-size: 24px;
+								font-weight: 600;
+								height: 84px;
+								border-bottom: 10px solid;
+								border-radius: 2px;
+								overflow: hidden;
+								svg {
+									@include opacity(0);
+									background: none;
+									width: calc(100% - 30px);
+									height: calc(100% - 30px);
 								}
-								input {
-									position: absolute;
-									top: 0;
-									left: 0;
-									width: 100%;
-									height: 100%;
-									z-index: 9;
-									&:checked + label {
-										border-bottom-color: white!important;
-										color: rgba(white,.3);
-										svg {
-											@include opacity(1);
-										}
+							}
+							input {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								z-index: 9;
+								&:checked + label {
+									border-bottom-color: white!important;
+									color: rgba(white,.3);
+									svg {
+										@include opacity(1);
 									}
 								}
 							}
 						}
 					}
+				}
+				li {
 					.skill-item-info {
 						border-radius: 2px;
 						overflow: hidden;
@@ -1625,6 +1631,9 @@
 			font-weight: 600;
 			font-size: 18px;
 			text-transform: uppercase;
+			a.edit-button {
+				margin: 8px 16px;
+			}
 			h1 {
 				background: rgba($gabrielle,.4);
 				color: white;
@@ -1649,6 +1658,20 @@
 					text-align: center;
 					padding: 15px;
 					border: 1px solid rgba($gabrielle,.4);
+					position: relative;
+					.remove {
+						@include center-y;
+						right: 0;
+						width: 35px;
+						height: 35px;
+						svg {
+							@include svg-stroke(white, 10);
+							@include rotate(45);
+							width: 35px;
+							height: 35px;
+							padding: 10px;
+						}
+					}
 					&:nth-last-child(2) {
 						border-bottom: 0!important;
 					}
@@ -1681,7 +1704,14 @@
 			}
 			#profile-experiences {
 				ul {
+					@include flex;
+					@include flex-wrap;
 					li {
+						width: 100%;
+						text-align: center;
+						padding: 15px;
+						border: 1px solid rgba($gabrielle,.4);
+						position: relative;
 						a {
 							height: auto;
 							background: none;
@@ -4609,4 +4639,48 @@ a.back-icon-settings {
 	    -o-transform: rotate(45deg);
 	    transform: rotate(45deg);
 	}
+}
+
+.desktop-guru-onboarding-view
+.skill-item-content.hide-display {
+	opacity:0;
+	visibility:hidden;
+	flex-direction:column;
+	&.show {
+		-webkit-display:flex;
+		display:flex !important;
+		opacity:1;
+		visibility:visible;
+		a {
+			position:absolute;
+			top:10px;
+			right:10px;
+			svg {
+				height:50px;
+				-webkit-transform: rotate(45deg);
+			    -moz-transform: rotate(45deg);
+			    -ms-transform: rotate(45deg);
+			    -o-transform: rotate(45deg);
+			    transform: rotate(45deg);
+			}
+		}
+	}
+
+}
+
+#desktop-courses .main.default .input-field input[type=search] {
+	border-bottom: 1px solid #757575 !important;
+	width:100% !important;
+}
+
+.skip-button {
+	opacity:0.5;
+}
+
+a.cta-modal-close .svg-close {
+	height:50px;
+	top:0;
+	right:0;
+	position:absolute;
+	margin:10px;
 }

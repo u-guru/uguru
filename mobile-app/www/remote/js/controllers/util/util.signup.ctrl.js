@@ -30,13 +30,14 @@ angular.module('uguru.util.controllers')
   'LoadingService',
   'AnimationService',
   'DeviceService',
+  'ngFB',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
   MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
-  AnimationService, DeviceService) {
+  AnimationService, DeviceService, ngFB) {
 
 // Implement a section for modals here
 
@@ -47,10 +48,23 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.closeModal = function(modalName) {
-     if (!$scope.desktopMode) {
+     if (!$scope.desktopMode && !$state.current.name == 'root.university') {
       ModalService.close(modalName);
      }
+     //case if at the first access page (not within the app)
+     else if (!$scope.desktopMode) {
+      $scope.signupModal.hide();
+     }
     };
+
+    $scope.preventSignupAndBackToAccess = function() {
+      $scope.loader.showMsg("Sorry! We are out of signups. <br><br> Please request access code from support on our home page.", 0, 3000);
+      $timeout(function() {
+        LoadingService.showAmbig('Redirecting you back...', 2000, function() {
+          AnimationService.flip('^.university');
+        })
+      }, 3000)
+    }
 
     $scope.exploreFirst = function()
     {
@@ -59,14 +73,14 @@ angular.module('uguru.util.controllers')
       if($scope.root.vars.guru_mode)
         $state.go('^.guru')
       else
-        $state.go('^.home')
+        $state.go('^.guru-home')
     }
 
 // ==========================
 
     if ($scope.user.id && !$scope.root.vars.guru_mode) {
       LoadingService.showAmbig('Redirecting to home...', 2000);
-      $state.go('^.home');
+      $state.go('^.guru-home');
     }
 
     $scope.root.vars.show_account_fields = false;
@@ -198,7 +212,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goBack = function(callback,direction) {
       //part of a request
-      if ($state.current.name === 'root.home') {
+      if ($state.current.name === 'root.guru-home') {
         if ($scope.signupModal && $scope.signupModal.isShown())  {
           $scope.signupModal.hide()
         }
@@ -716,7 +730,7 @@ angular.module('uguru.util.controllers')
 
 
       LoadingService.show();
-      $state.go('^.home');
+      $state.go('^.guru-home');
 
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
 
@@ -742,7 +756,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToStudentMode = function() {
       $scope.root.vars.guru_mode = false;
-      $state.go('^.home');
+      $state.go('^.guru-home');
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
       $timeout(function() {
           $ionicSideMenuDelegate.toggleRight();
@@ -1028,11 +1042,25 @@ angular.module('uguru.util.controllers')
 
     $scope.connectWithFacebook = function () {
 
+
         LoadingService.showAmbig(null, 2000);
         $timeout(function() {
           //need to add this to loading service soon
 
+        // $scope.openModal('fb')
+        LoadingService.show();
+        console.log("FB url",$scope.FBurl);
+        $scope.fbModal.show();
 
+
+        //     // Fire fbModal
+        //   $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        //   }).then(function(modal) {
+        //     $scope.fb = modal;
+        //   });
+        //   $scope.modal.show();
           //if user is not logged in 10 seconds from now ...
           if (!$scope.user || !$scope.user.id) {
             $scope.loader.showMsg('Something went wrong... please contact support@uguru.me', 0, 2500)
@@ -1060,6 +1088,68 @@ angular.module('uguru.util.controllers')
         }
 
 
+       // ngFB.revokePermissions()
+        // ngFB.login({scope: 'email,public_profile,user_friends'}).then(FBSuccessCallback,FBFailCallback);
+
+         // function errorHandler(error) {
+         //     alert(error.message);
+         // }
+         // function FBSuccessCallback(response)
+         // {
+
+         //      alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+
+         //      // $scope.facebookResponseReceived = true;
+         //      // $scope.loginInfo = success;
+         //      LoadingService.hide();
+         //      // LoadingService.showSuccess('Login Successful!', 10000);
+         //      // $scope.fbLoginSuccessAlreadyShown = true;
+         //      // $timeout(function() {
+         //      //   LoadingService.updateSuccessText('Syncing profile info...', 1000);
+         //      // }, 2500);
+
+         //      // if (!$scope.desktopMode && $scope.signupModal && $scope.signupModal.isShown()) {
+         //      //   $scope.signupModal.hide();
+         //      // }
+         //  /*############################
+         //  SAMIR THIS IS THE PART PRINT THE FB INFO
+         //  #############################*/
+         //    ngFB.api({path: '/me'}).then(
+         //        function(user) {
+         //            console.log(JSON.stringify(user));
+         //            // $scope.user = user;
+         //        }, errorHandler);
+         //    // $scope.facebookApiGetDetails();
+         //    console.log('Getting Facebook information...huh');
+         //    // $scope.postFbGraphApiSuccess()
+         // }
+         // function FBFailCallback(error)
+         // {
+         //  alert(error.message);
+         // }
+         // function errorHandler(error) {
+         //     alert(error.message);
+         // }
+        // Original
+        if ($scope.platform.web || $scope.platform.windows || $scope.isWindowsPlatform()) {
+          // $scope.fbAuthNative();
+
+          //after five seconds and no fb response --> Say something went wrong
+          $timeout(function() {
+
+
+            if (!$scope.facebookResponseReceived) {
+              alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
+            }
+          }, 5000);
+          console.log("CHECK2")
+          $scope.fbAuthBrowser();
+        } else {
+          console.log("CHECK")
+          $scope.fbAuthNative();
+        }
+
+
 
 
     };
@@ -1067,7 +1157,7 @@ angular.module('uguru.util.controllers')
     $scope.closeSideBar = function() {
 
 
-      if ($state.current.name === 'root.home') {
+      if ($state.current.name === 'root.guru-home') {
         $ionicSideMenuDelegate.toggleRight()
       }
       else {
@@ -1083,7 +1173,7 @@ angular.module('uguru.util.controllers')
         if ($scope.root.vars.guru_mode) {
           $state.go('^.guru');
         } else {
-          $state.go('^.home');
+          $state.go('^.guru-home');
         }
 
 
@@ -1324,7 +1414,7 @@ angular.module('uguru.util.controllers')
             if ($scope.user.guru_mode)
               $state.go('^.guru')
             else
-              $state.go('^.home')
+              $state.go('^.guru-home')
           }
           else{
             if (ModalService.isOpen('signup')) {
@@ -1395,10 +1485,7 @@ angular.module('uguru.util.controllers')
             LoadingService.showSuccess('Login Successful', 2500);
             $state.go('^.guru-home');
           } else {
-            if($scope.root.vars.guru_mode)
-              $state.go('^.guru');
-            else
-              $state.go('^.home');
+            $state.go('^.guru');
           }
 
 
@@ -1462,9 +1549,18 @@ angular.module('uguru.util.controllers')
       password:null
     }
 
-    // $scope.root.vars.loginMode = false;
+    $scope.root.vars.loginMode = $scope.root.vars.page_cache.login_mode || false;
+
+    // $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
+    //         scope: $scope,
+    //         animation: 'slide-in-up',
+    //         focusFirstInput: false,
+    // }).then(function(modal) {
+    //     $scope.fbModal = modal;
+    // });
 
     $scope.$on('$ionicView.enter', function() {
+
       if ($scope.user && $scope.user.id && $scope.user.id > 0) {
         console.log('user is already logged in!');
         LoadingService.showAmbig('Redirecting...', 2000);

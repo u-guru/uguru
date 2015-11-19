@@ -2804,7 +2804,7 @@ section {
 					right: 0;
 					width: 35px;
 					height: 35px;
-					svg {
+					svg, svg path {
 						@include svg-stroke(white, 10);
 						@include rotate(45);
 						width: 35px;

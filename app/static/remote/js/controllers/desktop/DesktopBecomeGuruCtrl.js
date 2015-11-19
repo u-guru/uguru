@@ -36,40 +36,60 @@ angular.module('uguru.desktop.controllers')
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
-    $scope.progressWidth = 16.7;
+    var CTA_PARENT = '#desktop-guru-onboarding';
+    var CTA_OPTIONS = {
+        duration:0.5,
+        extraTransitionDuration:1
+    }
+
+    $scope.progress = {width:0};
 
     $scope.active_category = {name:'Select category', active:false};
 
     $scope.goBackToUniversities = function() {
+      $timeout(function() {
+        $localstorage.setObject('user', $scope.user);
+      }, 0)
       AnimationService.flip('^.university');
     }
 
-    var calculateProgress = function($scope) {
-
+    $scope.calculateProgress = function() {
+      console.log('running progress again');
+      $scope.progress.width = 16.66;
+      var progressValue = 16.66;
       if ($scope.user.guru_courses.length) {
-        $scope.progressWidth += 33;
+        console.log('user has guru courses');
+        $scope.progress.width += 16.66;
+        progressValue += 16.66;
       }
 
       if ($scope.user.guru_subcategories.length) {
-        $scope.progressWidth += 33;
+        $scope.progress.width += 33.3;
+        progressValue += 33.3;
+        console.log('user has guru subcategories');
       }
 
       if ($scope.user.profile_url && ($scope.user.profile_url.indexOf('avatar.svg') < 0)) {
-        $scope.progressWidth += 33;
+        $scope.progress.width += 33.3;
+        progressValue += 33.3;
       }
 
-      function callbackSuccess() {
-        $scope.goToGuruMode();
+      if (Math.round($scope.progress.width) >= 100) {
+       $scope.completeAndGoToGuru();
       }
-
-      if ($scope.progressWidth === 100) {
-        LoadingService.showSuccess("Your initial profile is complete!", 1500, callbackSuccess)
-      }
+      // $scope.progress.widthValue = $scope.progress.width;
+      $scope.progress.width = $scope.progress.width + '%';
+      return progressValue;
     }
 
-
-
-
+    $scope.completeAndGoToGuru = function() {
+       LoadingService.showAmbig('Saving', 1000, function() {
+          function callbackSuccess() {
+            $scope.goToGuruMode();
+          }
+          LoadingService.showSuccess("Your guru profile is almost complete!", 2500, callbackSuccess)
+      })
+    }
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
@@ -88,36 +108,29 @@ angular.module('uguru.desktop.controllers')
       $ionicSlideBoxDelegate.next();
     }
 
-    function addEventListenerToCTABox(box_elem, modal_elem, index) {
-        box_elem.addEventListener('click', function() {
-          if (index === 0) {
-            // $timeout(function() {
-            //   $scope.initCourses();
-            // }, 1500);
-          }
+    $scope.skipBecomeGuruAndGoToGuru = function() {
+      var progressValue = $scope.calculateProgress();
+      if (progressValue < 66) {
+        $scope.loader.showMsg('Please fill out at least 2/3 to continue!', 0, 2000);
+      } else {
+        $scope.completeAndGoToGuru();
+      }
+    }
 
+    function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
+            box_elem.addEventListener('click', function() {
+            var modal_elem = document.querySelector('#' + modal_elem_id);
 
-          if (index === 1) {
-              console.log(Category.categories);
-              Category.mapActiveToSubcategories(Category.categories, $scope.user);
-              $scope.categories = Category.categories;
-          }
-
-            var closeCTAModal = cta(box_elem, modal_elem, function() {
-
-
-                modal_elem.classList.add('show');
-                console.log(modal_elem.querySelector('.cta-modal-close'));
-                calculateProgress($scope);
-                setTimeout(function() {
-
+            var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
+                $timeout(function() {
+                    modal_elem.classList.add('show');
+                }, 200);
                   modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
+                    $scope.calculateProgress();
                     modal_elem.classList.remove('show');
                     closeCTAModal();
-                  })
-
-                }, 1000)
-            });
+                  });
+            }, CTA_PARENT);
         });
     }
 
@@ -126,10 +139,17 @@ angular.module('uguru.desktop.controllers')
         var allCTAModels = document.querySelectorAll('.cta-modal') || [];
         for (var i = 0; i < allCTABoxes.length; i++) {
             var indexCTABox = allCTABoxes[i];
-            var indexCTAModal = allCTAModels[i];
-            addEventListenerToCTABox(indexCTABox, indexCTAModal, i)
+            var indexCTAModalID = getModalCTAElemID(indexCTABox);
+            addEventListenerToCTABox(indexCTABox, indexCTAModalID, i)
 
         }
+    }
+
+     function getModalCTAElemID(cta_box_elem) {
+        elem_id = cta_box_elem.id;
+        modalID = elem_id.replace('box', 'modal');
+        console.log('\n\nprocessing box --> modal mapping', elem_id, modalID, '\n\n');
+        return modalID;
     }
 
     $scope.goBackToStudentHome = function() {
@@ -137,7 +157,7 @@ angular.module('uguru.desktop.controllers')
       uTracker.track(tracker, 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
       $ionicSlideBoxDelegate.update();
-      $state.go('^.home');
+      $state.go('^.guru-home');
       //AnimationService.slide('right');
     }
     var clearAllSearchInputs = function() {
@@ -153,82 +173,6 @@ angular.module('uguru.desktop.controllers')
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.previous();
     }
-
-    // $scope.initMajors = function() {
-
-    //   $scope.source = University.source;
-
-    //   var majorsList = document.querySelectorAll('#major-list');
-    //   $rootScope.$emit('schoolChange');
-
-    //     $timeout(function() {
-    //       if (Utilities.isElementInViewport(majorsList)) {
-    //         var majors = majorsList[0].querySelectorAll('ul li');
-    //         if(majors.length === 0) {
-    //           var timer = 10;
-    //           LoadingService.showAmbig('Fetching majors...', (timer * 1000));
-    //           var counter = 0;
-    //           var startScanner = $interval(function() {
-    //             console.log("Waiting for majors to load...");
-    //             var majors = majorsList[0].querySelectorAll('ul li');
-    //             counter++;
-    //             if (majors.length !== 0 || counter === timer) {
-    //               console.log("stopping loader");
-    //               LoadingService.hide();
-    //               stopLoader();
-    //             }
-    //           }, 1000)
-
-    //           function stopLoader() {
-    //             $interval.cancel(startScanner);
-    //           }
-    //         }
-    //       }
-    //     }, 500)
-
-    // }
-
-    // $scope.initCourses = function() {
-    //   $scope.source = University.source;
-    //   console.log($scope.source.courses);
-    //   $rootScope.$emit('refreshCourses');
-    //   var coursesList = document.querySelectorAll('#courses-list');
-
-    //     $timeout(function() {
-    //       if (Utilities.isElementInViewport(coursesList)) {
-
-
-    //         var items = coursesList[0].querySelectorAll('ul li');
-
-    //         if (items.length === 0) {
-    //           $rootScope.$emit('refreshCourses');
-    //           var timer = 10;
-    //           LoadingService.showAmbig('Fetching courses...', (timer * 1000));
-    //           var counter = 0;
-    //           var startScanner = $interval(function() {
-    //             University.refresh();
-    //             console.log("checking if courses are loaded...");
-    //             var items = coursesList[0].querySelectorAll('ul li');
-    //             console.log("items.length: " + items.length);
-    //             counter++;
-    //             if (items.length !== 0 || counter === timer) {
-    //               console.log("stopping loader");
-    //               LoadingService.hide();
-    //               stopLoader();
-    //             }
-    //           }, 1000);
-
-
-    //           function stopLoader() {
-    //             $interval.cancel(startScanner);
-    //             // Display a message about being unable to fetch data and possibly a button to attempt to reconnect.
-
-    //           }
-    //         }
-    //       }
-    //     }, 500);
-
-    // }
 
     $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
@@ -254,8 +198,6 @@ angular.module('uguru.desktop.controllers')
 
         uTracker.track(tracker, 'Become Guru: Courses');
         console.log("inside courses slide");
-
-        $scope.init
 
 
       }
@@ -380,7 +322,10 @@ angular.module('uguru.desktop.controllers')
       $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
       $timeout(function() {
-        calculateProgress($scope);
+        $scope.calculateProgress();
+
+        Category.mapActiveToSubcategories(Category.categories, $scope.user);
+        $scope.categories = Category.categories;
       }, 1000)
       console.log('ayy');
       //since this is the same as entering the slidebox
@@ -391,7 +336,6 @@ angular.module('uguru.desktop.controllers')
 
       $timeout(function() {
         initCTA();
-        console.log('initializing cta')
       }, 1500)
 
     }, 500)

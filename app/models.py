@@ -287,6 +287,7 @@ class User(Base):
     phone_friendly = Column(Boolean, default = False)
     facetime_friendly = Column(Boolean, default = False)
     messenger_friendly = Column(Boolean, default = False)
+    person_friendly = Column(Boolean, default = False)
     text_friendly = Column(Boolean, default = False)
 
     #referral stuff

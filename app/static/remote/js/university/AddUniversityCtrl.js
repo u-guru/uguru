@@ -43,7 +43,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   }
 
 
-  $scope.universitiesSorted = University.getSorted().slice();
+  $scope.universitiesSorted = University.getTargetted().slice();
   $scope.universities = $scope.universitiesSorted;
 
   $scope.search_text = {
@@ -68,6 +68,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
           "$Performance": performance
         });
   };
+
+  $scope.backToAccess = function() {
+    $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
+  }
 
 
   // Measure FPS of access page -> university list transition
@@ -143,12 +147,11 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
-        if ($scope.user.guru_courses && $scope.user.guru_courses.length && confirm('Are you sure? Your current courses will be deactivated')) {
+        if ($state.current.name !== 'root.university' && $scope.user.guru_courses && $scope.user.guru_courses.length && confirm('Are you sure? Your current courses will be deactivated')) {
           $scope.user.university = university;
         }
       }
       $scope.user.university = university;
-
       University.clearSelected();
       $timeout(function() {
         University.getMajors(university.id);
@@ -171,12 +174,14 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
         'university_id': university.id
       }
 
-      console.log('current state', $state.current.name);
       var flipCallback;
+      var university_msg = 'Loading an awesome experience..';
+
+
       if ($state.current.name === 'root.university') {
 
-        LoadingService.showSuccess('Saved!', 1500, function() {
-
+        LoadingService.showAmbig(university_msg, 3000, function() {
+          // AnimationService.flip('^.home');
           if ($scope.desktopMode) {
             AnimationService.flip('^.desktop-become-guru');
           } else {
@@ -184,7 +189,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
           }
         });
       } else {
-        LoadingService.showSuccess('Saved!', 1500, function() {
+        LoadingService.showAmbig(university_msg, 3000, function() {
           $scope.closeModal('university');
         });
       }

@@ -56,16 +56,24 @@ angular.module('uguru.desktop.controllers', [])
     //edit university (modal)
     //loading service
 
+    $scope.resetCache = function() {
+      LoadingService.showAmbig('Resetting Cache..', 1500, function(){
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.university');
+        AdminService.resetCache();
+      })
+    }
+
     function initDesktopDefaults() {
       $scope.page = {
         url: $state.current.name
       }
       $scope.desktopGoBack = function() {
         $ionicViewSwitcher.nextDirection('enter');
-        if ($scope.root.vars.guru_mode) {
-          $state.go('^.guru');
+        if ($scope.desktopMode) {
+          $state.go('^.guru-home');
         } else {
-          $state.go('^.home');
+          $state.go('^.guru');
         }
 
       }
@@ -549,7 +557,7 @@ angular.module('uguru.desktop.controllers', [])
       $scope.root.vars.guru_mode = false;
       $timeout(function() {
         $ionicViewSwitcher.nextDirection('enter');
-        $state.go('^.home');
+        $state.go('^.guru-home');
       }, 500)
 
       if (!$scope.desktopMode) {

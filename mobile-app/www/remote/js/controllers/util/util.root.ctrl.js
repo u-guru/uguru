@@ -62,6 +62,8 @@ angular.module('uguru.util.controllers')
         };
 
 
+
+
         // GABRIELLE TODO: Define these values
         var desktopHeightLimit = 699;
         var desktopWidthLimit= 767;
@@ -232,6 +234,7 @@ angular.module('uguru.util.controllers')
         $scope.rootUser = User;
         $scope.root = RootService;
         $scope.root.vars = {};
+        $scope.root.vars.page_cache = {};
         $scope.root.vars.remote_cache = [];
         $scope.root.vars.onboarding = false;
         $scope.root.vars.request_cache = {};
@@ -622,10 +625,10 @@ angular.module('uguru.util.controllers')
                         LoadingService.hide();
                         $scope.transitionOfflineToOnline = null;
                     }, 1000);
-                    if ($scope.user && $scope.root.vars.guru_mode) {
-                        $state.go('^.guru');
+                    if ($scope.desktopMode) {
+                        $state.go('^.guru-home');
                     } else {
-                        $state.go('^.home');
+                        $state.go('^.guru');
                     }
                 };
                 User.getUserFromServer($scope, transitionToOnline, $state);
@@ -676,7 +679,11 @@ angular.module('uguru.util.controllers')
             if (LOCAL) {
                 $state.go('^.' + _startpage);
             } else {
-                $state.go('^.home');
+                if ($scope.desktopMode) {
+                    $state.go('^.guru-home');
+                } else {
+                    $state.go('^.guru');
+                }
             }
             $timeout(function() {
                 LoadingService.hide();
