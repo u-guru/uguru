@@ -249,12 +249,12 @@ function DeviceService($cordovaNgCardIO,
 		// if(typeof callback === 'function') {
 		// 	callback();
 		// }
-    checkUpdates();
+    // checkUpdates();
 	}
 	function checkUpdates(url) {
-
+    return;
     // don't update on local
-    if (true || LOCAL && !url) {
+    if (LOCAL && !url) {
       console.log("running local: skipping over checkUpdates");
 
         // hide it otherwise it never would on emulators
@@ -284,7 +284,7 @@ function DeviceService($cordovaNgCardIO,
                   currentVersion = 1.0;
                   Version.setVersion(1.0);
                 }
-                if (serverVersionNumber != currentVersion) {
+                if (serverVersionNumber !== currentVersion) {
 
                   console.log('versions are different...\n');
 
