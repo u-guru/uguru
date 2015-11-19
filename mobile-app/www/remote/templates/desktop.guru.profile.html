@@ -270,4 +270,6 @@
 			<button id="btn-save-profile" class="btn-ghost-white" ng-click='saveGuruProfile()' ng-if='profile.edit_mode'>Save Profile</button>
 		</footer>
 	</main>
+	<input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed_profile(this)" style='display:none' />
+
 </ion-view>
