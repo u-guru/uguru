@@ -18,7 +18,7 @@
 		top: 30px;
 		height: 50px;
 		width: 100%;
-		max-width: 1200px;
+		max-width: 1280px;
 		a {
 			display: block;
 			width: 50%;
@@ -43,11 +43,11 @@
 			position: relative;
 			margin: 0 auto;
 			width: 100%;
-			max-width: 1200px;
+			max-width: 1280px;
 			height: 100%;
 			#top-logo {
 				display: block;
-				width: calc(100% - 64px - 90px);
+				width: calc(100% - 90px);
 				height: 100%;
 				svg {
 					height: 100%;
@@ -87,7 +87,7 @@
 			#top-menu-links {
 				position: absolute;
 				z-index: 999;
-				right: 64px;
+				right: 0;
 				top: 64px;
 				background: $gabrielle;
 				height: 0;
@@ -149,13 +149,21 @@
 				}
 			}
 		}
+		.top-request-button {
+			#top-logo {
+				width: calc(100% - 90px - 64px);
+			}
+			#top-menu-links {
+				right: 64px;
+			}
+		}
 	}
 	.main {
 		padding: 15px;
 		height: calc(100% - 64px);
 		&.default {
 			width: 100%;
-			max-width: 1200px;
+			max-width: 1280px;
 			margin: 0 auto;
 		}
 	}
@@ -982,7 +990,7 @@
 					&.selected {
 						@include center-xy;
 						width: 100%;
-						max-width: 1200px;
+						max-width: 1280px;
 						height: auto!important;
 						border: 0;
 						&::after, .skill-item-info {
@@ -1498,19 +1506,19 @@
 		@include flex;
 		@include flex-center;
 		position: fixed;
-		bottom: 64px;
+		bottom: 0;
 		left: 0;
 		width: 100%;
 		height: 64px;
-		background: $gabrielle;
+		background: rgba(lighten($gabrielle,10%),.9);
 	}
 	#profile {
 		@include flex;
 		@include flex-center;
 		width: 100%;
-		max-width: 1200px;
 		height: 100%;
-		max-height: 700px;
+		max-width: 1280px;
+		max-height: 800px;
 		background: rgba(white, .05s);
 		border-radius: 2px;
 		overflow: hidden;
@@ -1675,6 +1683,17 @@
 					&:last-child:nth-child(even) {
 						display: block;
 					}
+				}
+			}
+			#profile-title {
+				h1 {
+					background: none;
+					padding: 10px 15px;
+					font-size: 48px;
+					font-weight: 900;
+					letter-spacing: 0;
+					text-align: left;
+					text-transform: none;
 				}
 			}
 			#profile-experiences {
@@ -3655,7 +3674,7 @@
 				}
 			}
 			ul {
-				max-width: 1230px;
+				max-width: 1310px;
 				margin: 0 auto;
 				height: calc(100% - 85px);
 				padding-top: 15px;
@@ -3953,14 +3972,24 @@
 /* ---------- BILLING */
 #desktop-billing {
 	.main {
-		max-width: 800px;
-		margin: 0 auto;
+		@include flex;
+		@include flex-center;
+		padding: 0;
+		> div {
+			width: 100%;
+			height: 100%;
+			max-width: 1280px;
+			max-height: 800px;
+			padding: 15px;
+			background: lighten($charcoal, 5%);
+		}
 		h1 {
 			font-size: 48px;
 			font-weight: 900;
 		}
 		#billing-container {
-			margin-top: 30px;
+			max-width: 800px;
+			margin: 15px auto 0;
 			h2 {
 				background: $shamrock;
 				padding: 10px;
@@ -3984,6 +4013,8 @@
 				}
 				#select-skill {
 					@include flex-center;
+					max-width: 600px;
+					margin: 0 auto;
 					> li:nth-child(2) {
 						font-size: 36px;
 						font-weight: 600;
@@ -4012,6 +4043,7 @@
 								@include flex-center;
 								height: 48px;
 								background: lighten($slate, 10%);
+								margin-bottom: 15px;
 							}
 							> ul {
 								> li {
@@ -4024,9 +4056,27 @@
 								}
 							}
 						}
+						&:last-child {
+							> ul {
+								&:nth-child(1) {
+									padding-right: 10px;
+								}
+							}
+							> .custom-dropdown {
+								margin-bottom: 15px;
+							}
+						}
+						.keep-it-free {
+							@include flex;
+							@include flex-center;
+							height: 58px;
+							padding-top: 5px;
+							font-weight: 400;
+						}
 						> ul {
 							@include flex;
 							@include flex-center;
+							padding-top: 5px;
 							> li {
 								font-weight: 600;
 								input {
@@ -4080,9 +4130,9 @@
 		}
 		a {
 			svg {
-				@include svg-stroke(white, 5);
+				@include svg-stroke(white, 8);
 				background: $shamrock;
-				padding: 8px 6px 4px 6px;
+				padding: 12px 10px 8px 10px;
 				width: 48px;
 				height: 48px;
 			}
@@ -4117,7 +4167,16 @@
 .sidebar-layout {
 	.main {
 		@include flex;
+		@include flex-center;
 		padding: 0;
+		> div {
+			@include flex;
+			width: 100%;
+			height: 100%;
+			max-width: 1280px;
+			max-height: 800px;
+			background: lighten($charcoal, 5%);
+		}
 		aside {
 			width: calc(100% / 3);
 			height: 100%;
@@ -4532,16 +4591,8 @@ a.back-icon-settings {
 	}
 }
 
-
-#desktop-guru-profile #profile {
-	top: 64px;
-	position:absolute;
-	left:0;
-	height:calc(100% - 178px);
-}
-
 #desktop-credibility .progress-bottom {
-	bottom:50px;
+	bottom: 50px;
 }
 
 #desktop-courses {
