@@ -407,6 +407,9 @@ a, button, *[ng-click], *[tabindex] {
 .relative {
     position: relative!important;
 }
+.overflow-hidden {
+	overflow: hidden;
+}
 [class*="fixed"] {
     position: fixed!important;
 }

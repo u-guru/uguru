@@ -1,4 +1,4 @@
-<ion-view class='uguru-view access-view full-xy' ion-scroll='false' style='overflow:hidden;' ng-controller='AccessController' cache-view='!LOCAL'>
+<ion-view class='uguru-view access-view full-xy overflow-hidden' ion-scroll='false' ng-controller='AccessController' cache-view='!LOCAL'>
     <main id="desktop-access" class="desktop-mode" ng-if='isDesktopMode()'>
         <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
         <div class="main">
@@ -11,9 +11,9 @@
             </div>
             <button id='redeem-button' class="btn-caps-bold bg-white-90p txt-shamrock ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" thr-click="checkAccessCode(access.codeInput)">Redeem</button>
             <footer id='access-footer' class='flex-center bottom-0 absolute left-0 p30xy full-x'>
-                    <h3 class='full-x p30xy center'>
-                        <a ng-click='goToLoginFromAccess()' class='white-text'> Have an account? </a>
-                    </h3>
+                <h3 class='full-x p30xy center semibold'>
+                    <a ng-click='goToLoginFromAccess()' class='white-text'>Have an account?</a>
+                </h3>
             </footer>
         </div>
     </main>

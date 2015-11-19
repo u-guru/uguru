@@ -1,58 +1,59 @@
 <main id="desktop-skills" class="desktop-mode desktop-search desktop-guru-onboarding" ng-if='desktopMode'>
 	<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 	<header class="desktop-header">
-		<a>
-            <svg>
-            </svg>
-        </a>
-        <a class='cta-modal-close'>
-            <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+		<a></a>
+        <a class='cta-modal-close desktop-header-next'>
+            <svg viewBox="0 0 100 100">
+                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
             </svg>
         </a>
 	</header>
 	<div class="main default skills-container">
 		<div id="skills-list" class="desktop-search-list">
 			<ul class='desktop-card-list'>
-				<!-- SAMIR
-					<li> needs to toggle .selected; when li.selected exists, all other <li> elements should have the class .not-selected
-				-->
-                <span ng-repeat='category in categories' style='width:25%; padding:15px; display:block;'>
-        			<li style='width:100%; padding:0px;' ng-click='showDesktopSubcategories(category)' class='ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }'>
-    					<div class="skill-item-info" style='background-image :url({{categories_img_base + category.background_url}})'>
-    	    				<a class='skill-item-link bg-{{category.hex_color.split("-")[1]}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
-    	                        <div>
-    	                            <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
-    	                            <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
-    	                            <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
-    	                        </div>
-    	                    </a>
-    					</div>
-        			</li>
-                    <div class="absolute full-xy hide-display skill-item-content flex-center-wrap center-xy ng-class:{'show':category.id == active_category.id}" >
-                        <a ng-click='hideCategorySkillsModal()'>
-                            <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style='height:50px;'>
-                                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </a>
-                        <h1>{{category.name}}</h1>
-                        <ul class='full-x'>
-                            <li ng-repeat='subcategory in category.subcategories'>
-                                <input type="checkbox" ng-model='subcategory.active' ng-change='updateCategoryCount(active_category, subcategory, $index)'/>
-                                <label>
-                                    {{subcategory.name}}
-                                    <svg viewBox="0 0 100 100">
-                                        <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    </svg>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </span>
+    			<li ng-repeat='category in categories' ng-click='showDesktopSubcategories(category)' class='ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }'>
+					<div class="skill-item-info" style='background-image :url({{categories_img_base + category.background_url}})'>
+	    				<a class='skill-item-link bg-{{category.hex_color.split("-")[1]}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
+	                        <div>
+	                            <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
+	                            <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
+	                            <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
+	                        </div>
+	                    </a>
+					</div>
+    			</li>
 			</ul>
 		</div>
     </div>
 </main>
+
+<div>
+	<main class='desktop-skills subcategory desktop-mode desktop-search desktop-guru-onboarding ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
+		<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+		<header class="desktop-header">
+			<a></a>
+			<a class='desktop-header-next desktop-header-close' ng-click='hideCategorySkillsModal()'>
+				<svg viewBox="0 0 100 100">
+					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</header>
+		<div>
+			<h1>{{category.name}}</h1>
+			<ul class="desktop-card-list">
+				<li ng-repeat='subcategory in category.subcategories'>
+					<input type="checkbox" ng-model='subcategory.active' ng-change='updateCategoryCount(active_category, subcategory, $index)'/>
+					<label>
+						{{subcategory.name}}
+						<svg viewBox="0 0 100 100">
+							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+						</svg>
+					</label>
+				</li>
+			</ul>
+		</div>
+	</main>
+</div>
 
 <section id="skill" class="onboarding full-xy" ng-if='!desktopMode'>
     <header id="category-skills" class="third flex-center" ng-if='!guruSkillsModal.isShown()'>

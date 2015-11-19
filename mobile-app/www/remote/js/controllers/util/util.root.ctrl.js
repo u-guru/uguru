@@ -665,7 +665,12 @@ angular.module('uguru.util.controllers')
             if (LOCAL) {
                 $state.go('^.' + _startpage);
             } else {
-                $state.go('^.guru');
+                if ($scope.desktopMode) {
+                    $state.go('^.guru-home');
+                } else {
+                    $state.go('^.guru');
+                }
+
             }
 
             $timeout(function() {

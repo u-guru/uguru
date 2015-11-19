@@ -24,6 +24,10 @@ angular.module('uguru.util.controllers')
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
 
+    $scope.page = {
+      search_text: ''
+    }
+
     $scope.removeGuruLanguageAndUpdate = function(language, index) {
       console.log("WTF");
       $scope.user.guru_languages.splice(index, 1);
@@ -43,10 +47,10 @@ angular.module('uguru.util.controllers')
       $scope.languages.splice($index, 1);
 
       $scope.search_text = null;
-      $scope.languageInput.value = '';
+      // $scope.languageInput.value = '';
 
       //set the course text to what it should be
-      document.getElementById('language-input').value = '';
+      // document.getElementById('language-input').value = '';
 
       $scope.user.guru_languages.push(language);
 

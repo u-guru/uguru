@@ -17,6 +17,7 @@
 		@include flex;
 		top: 30px;
 		height: 50px;
+		padding: 0 10px;
 		width: 100%;
 		max-width: 1280px;
 		a {
@@ -28,8 +29,13 @@
 				height: 100%;
 				width: auto;
 			}
-			&:last-child {
+			&.desktop-header-next {
 				text-align: right;
+			}
+			&.desktop-header-close {
+				svg {
+					@include rotate(45);
+				}
 			}
 		}
 	}
@@ -444,6 +450,11 @@
 		.desktop-forms-container {
 			> div {
 				background: white;
+				.input-field {
+					input {
+						color: white!important;
+					}
+				}
 			}
 			.explore {
 				background: $shamrock;
@@ -531,6 +542,7 @@
 		overflow: hidden;
 		svg {
 			@include center-x;
+			z-index: 9;
 			top: 5%;
 			width: 75px;
 			height: 75px;
@@ -604,12 +616,26 @@
 	.main {
 		height: auto;
 		form {
+			padding: 0 15px;
 			input {
 				color: white;
 				height: 64px;
 			}
 			input, label {
 				font-size: 36px;
+			}
+			.prefix {
+				svg {
+					@include svg-stroke(white, 7);
+					margin-top: 8px;
+					margin-left: -6px;
+					width: 48px;
+					height: 48px;
+					padding: 6px 12px 6px 0;
+				}
+			}
+			.prefix + input {
+				margin-left: 48px!important;
 			}
 			label {
 				top: 6px;
@@ -619,6 +645,7 @@
 			}
 		}
 		.desktop-search-list {
+			padding: 0 15px;
 			.desktop-card-list {
 				@include flex;
 				@include flex-wrap;
@@ -819,6 +846,7 @@
 							@include flex;
 							@include flex-center;
 							height: 100%;
+							font-size: 32px;
 						}
 					}
 					a {
@@ -862,70 +890,19 @@
 }
 
 // SKILLS
-#desktop-skills {
+#desktop-skills, .desktop-skills {
 	@include flex-center;
 	padding-top: 50px;
+	.desktop-header {
+		max-width: none!important;
+	}
 	.main {
+		max-width: none!important;
 		#skills-list {
 			.desktop-card-list {
-				.skill-item-content {
-					display: none;
-					background: $charcoal;
-					h1 {
-						text-align: center;
-						font-size: 64px;
-						font-weight: 900;
-						text-transform: lowercase;
-						margin-bottom: 30px;
-					}
-					ul {
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						margin: -15px;
-						li {
-							position: relative;
-							width: 25%;
-							text-align: center;
-							label {
-								@include flex;
-								@include flex-center;
-								background: $slate;
-								color: white;
-								font-size: 24px;
-								font-weight: 600;
-								height: 84px;
-								border-bottom: 10px solid;
-								border-radius: 2px;
-								overflow: hidden;
-								svg {
-									@include opacity(0);
-									background: none;
-									width: calc(100% - 30px);
-									height: calc(100% - 30px);
-								}
-							}
-							input {
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								height: 100%;
-								z-index: 9;
-								&:checked + label {
-									border-bottom-color: white!important;
-									color: rgba(white,.3);
-									svg {
-										@include opacity(1);
-									}
-								}
-							}
-						}
-					}
-				}
 				li {
 					.skill-item-info {
+						width: 100%;
 						border-radius: 2px;
 						overflow: hidden;
 						a {
@@ -946,6 +923,7 @@
 							}
 						}
 						[class*="bg-"]::after {
+							@include transition(.15s ease-in-out);
 							@include opacity(.7);
 							position: absolute;
 							content: "";
@@ -956,162 +934,224 @@
 							border-radius: 2px;
 							overflow: hidden;
 						}
-						.important {
+						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
+							&::after {
+								@include opacity(.3);
+							}
+						}
+						.important,
+						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
 							border-bottom-color: rgba(white,.8);
 						}
-						.bg-cerise.important::after {
+						.bg-cerise.important::after,
+						.bg-cerise:hover::after, .bg-cerise:focus::after, .bg-cerise:active::after {
 							background: $cerise;
 						}
-						.bg-orange.important::after {
+						.bg-orange.important::after,
+						.bg-orange:hover::after, .bg-orange:focus::after, .bg-orange:active::after {
 							background: $orange;
 						}
-						.bg-gold.important::after {
+						.bg-gold.important::after,
+						.bg-gold:hover::after, .bg-gold:focus::after, .bg-gold:active::after {
 							background: $gold;
 						}
-						.bg-moola.important::after {
+						.bg-moola.important::after,
+						.bg-moola:hover::after, .bg-moola:focus::after, .bg-moola:active::after {
 							background: $moola;
 						}
-						.bg-shamrock.important::after {
+						.bg-shamrock.important::after,
+						.bg-shamrock:hover::after, .bg-shamrock:focus::after, .bg-shamrock:active::after {
 							background: $shamrock;
 						}
-						.bg-azure.important::after {
+						.bg-azure.important::after,
+						.bg-azure:hover::after, .bg-azure:focus::after, .bg-azure:active::after {
 							background: $azure;
 						}
-						.bg-lake.important::after {
+						.bg-lake.important::after,
+						.bg-lake:hover::after, .bg-lake:focus::after, .bg-lake:active::after {
 							background: $lake;
 						}
-						.bg-eggplant.important::after {
+						.bg-eggplant.important::after,
+						.bg-eggplant:hover::after, .bg-eggplant:focus::after, .bg-eggplant:active::after {
 							background: $eggplant;
 						}
 					}
-					&.not-selected {
-						display: none;
+				}
+			}
+		}
+	}
+}
+.subcategory {
+	background: $charcoal;
+	> div {
+		width: 100%!important;
+	}
+	h1 {
+		text-align: center;
+		font-size: 64px;
+		font-weight: 900;
+		text-transform: lowercase;
+		margin-bottom: 30px;
+	}
+	ul {
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		padding: 15px;
+		li {
+			position: relative;
+			width: 25%;
+			text-align: center;
+			padding: 15px;
+			label {
+				@include flex;
+				@include flex-center;
+				background: $slate;
+				color: white;
+				font-size: 24px;
+				font-weight: 600;
+				height: 84px;
+				border-bottom: 10px solid;
+				border-radius: 2px;
+				overflow: hidden;
+				svg {
+					@include opacity(0);
+					@include center-xy;
+					width: calc(100% - 30px);
+					height: calc(100% - 30px);
+					path {
+						@include svg-stroke(white, 8);
 					}
-					&.selected {
-						@include center-xy;
-						width: 100%;
-						max-width: 1280px;
-						height: auto!important;
-						border: 0;
-						&::after, .skill-item-info {
-							display: none;
-						}
-						.skill-item-content {
-							display: block;
-						}
+				}
+			}
+			input {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9;
+				&:checked + label {
+					border-bottom-color: white!important;
+					color: rgba(white,.3);
+					svg {
+						@include opacity(1);
 					}
-					&:nth-child(1) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $cerise;
-									}
-									input:checked + label {
-										background: $cerise;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(2) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $orange;
-									}
-									input:checked + label {
-										background: $orange;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(3) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $gold;
-									}
-									input:checked + label {
-										background: $gold;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(4) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $moola;
-									}
-									input:checked + label {
-										background: $moola;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(5) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $shamrock;
-									}
-									input:checked + label {
-										background: $shamrock;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(6) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $azure;
-									}
-									input:checked + label {
-										background: $azure;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(7) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $lake;
-									}
-									input:checked + label {
-										background: $lake;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(8) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $eggplant;
-									}
-									input:checked + label {
-										background: $eggplant;
-									}
-								}
-							}
-						}
-					}
+				}
+			}
+		}
+	}
+	&.not-selected, &:not(.selected) {
+		@include opacity(0);
+		display: none;
+	}
+	&.selected {
+		@include opacity(1);
+		@include center-xy;
+		z-index: 99999;
+		width: 100%;
+		height: 100%!important;
+		border: 0;
+		&::after, .skill-item-info {
+			display: none;
+		}
+		.skill-item-content {
+			display: block;
+		}
+	}
+	&:nth-child(1) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $cerise;
+				}
+				input:checked + label {
+					background: $cerise;
+				}
+			}
+		}
+	}
+	&:nth-child(6) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $orange;
+				}
+				input:checked + label {
+					background: $orange;
+				}
+			}
+		}
+	}
+	&:nth-child(2) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $gold;
+				}
+				input:checked + label {
+					background: $gold;
+				}
+			}
+		}
+	}
+	&:nth-child(5) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $moola;
+				}
+				input:checked + label {
+					background: $moola;
+				}
+			}
+		}
+	}
+	&:nth-child(7) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $shamrock;
+				}
+				input:checked + label {
+					background: $shamrock;
+				}
+			}
+		}
+	}
+	&:nth-child(3) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $azure;
+				}
+				input:checked + label {
+					background: $azure;
+				}
+			}
+		}
+	}
+	&:nth-child(4) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $lake;
+				}
+				input:checked + label {
+					background: $lake;
+				}
+			}
+		}
+	}
+	&:nth-child(8) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $eggplant;
+				}
+				input:checked + label {
+					background: $eggplant;
 				}
 			}
 		}
@@ -1126,10 +1166,16 @@
 						a {
 							height: 150px!important;
 						}
-						label {
-							height: 100px!important;
-						}
 					}
+				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 100px!important;
 				}
 			}
 		}
@@ -1145,10 +1191,16 @@
 						a {
 							height: 175px!important;
 						}
-						label {
-							height: 125px!important;
-						}
 					}
+				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 125px!important;
 				}
 			}
 		}
@@ -1163,10 +1215,16 @@
 						a {
 							height: 250px!important;
 						}
-						label {
-							height: 150px!important;
-						}
 					}
+				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 150px!important;
 				}
 			}
 		}
@@ -1183,6 +1241,8 @@
 						.school-icon {
 							@include round;
 							display: none;
+							position: relative;
+							z-index: 999999;
 							margin: 0 auto -5px;
 							padding: 15px 15px 0;
 							width: 80px;
@@ -1197,6 +1257,8 @@
 						}
 						.school-name {
 							display: block;
+							position: relative;
+							z-index: 999999;
 							padding: 15px;
 							text-align: center!important;
 							.school-title {
@@ -1607,6 +1669,19 @@
 							color: rgba(white, .15);
 							font-size: 250px;
 							line-height: .8;
+						}
+						textarea {
+							background: none;
+							resize: none;
+							width: 100%;
+							height: auto;
+							min-height: 120px;
+							margin: 10px 0;
+							color: white;
+							font-size: 24px;
+							font-weight: 300;
+							line-height: 1.2;
+							text-align: center;
 						}
 					}
 					#profile-loc {
@@ -3674,7 +3749,7 @@
 				}
 			}
 			ul {
-				max-width: 1310px;
+				max-width: 1280px;
 				margin: 0 auto;
 				height: calc(100% - 85px);
 				padding-top: 15px;
@@ -4527,48 +4602,44 @@
 //end component overrides
 
 #top-menu-background-overlay {
+	@include opacity(.7);
+    display: none!important;
 	top: 64px;
-    height: calc(100% - 64px) !important;
     z-index: 10;
-    margin-left: -15px !important;
-    opacity:0;
-    display:none !important;
-    width:100% !important;
-    max-width:100% !important;
+    height: calc(100% - 64px)!important;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-left: -15px!important;
     &.active {
-    	display:block !important;
-    	opacity:0.7;
+		@include opacity(.7);
+    	display: block!important;
     }
 }
 
-a.back-icon-settings {
-	padding: 20px;
-    top: 13%;
-    width: auto;
-    height: 80px;
-	svg {
-		@include svg-stroke(white, 5);
-		height: 100%;
-		width: auto;
-	}
-}
+// a.back-icon-settings {
+// 	padding: 20px;
+//     top: 13%;
+//     width: auto;
+//     height: 80px;
+// 	svg {
+// 		@include svg-stroke(white, 5);
+// 		height: 100%;
+// 		width: auto;
+// 	}
+// }
 
 .desktop-guru-onboarding-view {
 	.cta-modal.hide-display {
-		display:none;
-		opacity:0;
-		z-index:1000;
+		@include opacity-important(0);
+		display: none;
+		z-index: 1000;
 		&.show {
-			display:block !important;
-			opacity:1 !important;
+			@include opacity-important(1);
+			display: block!important;
 		}
 	}
 	.cta-modal-close svg {
-		-webkit-transform: rotate(45deg);
-	    -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	    -o-transform: rotate(45deg);
-	    transform: rotate(45deg);
+		@include rotate(45);
 	}
 }
 
@@ -4582,28 +4653,17 @@ a.back-icon-settings {
 }
 
 .mode-links {
-	background: rgba(255, 255, 255, 0.75);
+	background: rgba(white,.75);
 	span {
-		color: #958B8E;
+		color: $gabrielle;
 	}
 	svg {
-		stroke: #958B8E !important;
+		stroke: $gabrielle!important;
 	}
 }
 
 #desktop-credibility .progress-bottom {
 	bottom: 50px;
-}
-
-#desktop-courses {
-	.input-field input[type=search]:focus {
-		background-color:$charcoal !important;
-		background-color:$charcoal !important;
-		border-bottom: $slate !important;
-		box-shadow: none;
-		color:white;
-		border-bottom:2px solid white;
-	}
 }
 
 .progressbar-text {
@@ -4612,31 +4672,23 @@ a.back-icon-settings {
 
 #desktop-guru-home {
 	.hide-display.cta-modal.pane {
-		// display:none;
-		opacity:0;
-		position:fixed;
+		@include opacity-important(0);
+		position: fixed;
 		transition: 200ms ease;
 		visibility: hidden;
-		overflow:auto;
-		z-index:1000;
-		background:$charcoal;
+		overflow: auto;
+		z-index:-1;
+		background: $charcoal;
 		&.show {
-			// display:block !important;
-			opacity:1 !important;
-			visibility:visible;
+			z-index: 1000;
+			@include opacity-important(1);
+			visibility: visible;
 		}
 	}
 	.cta-modal-close svg {
-		-webkit-transform: rotate(45deg);
-	    -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	    -o-transform: rotate(45deg);
-	    transform: rotate(45deg);
+		@include rotate(45);
 	}
 	main#desktop-guru-profile {
-		width:90%;
-		left:5%;
-		max-height:820px;
 		a.cta-modal-close {
 			top: 0;
 		    right: 0;
@@ -4652,44 +4704,26 @@ a.back-icon-settings {
 
 .desktop-guru-onboarding-view
 .skill-item-content.hide-display {
-	opacity:0;
-	visibility:hidden;
-	flex-direction:column;
+	@include opacity(0);
+	visibility: hidden;
+	flex-direction: column;
 	&.show {
-		-webkit-display:flex;
-		display:flex !important;
-		opacity:1;
-		visibility:visible;
+		@include flex;
+		@include opacity(1);
+		visibility: visible;
 		a {
-			position:absolute;
-			top:10px;
-			right:10px;
+			position: absolute;
+			top: 10px;
+			right: 10px;
 			svg {
-				height:50px;
-				-webkit-transform: rotate(45deg);
-			    -moz-transform: rotate(45deg);
-			    -ms-transform: rotate(45deg);
-			    -o-transform: rotate(45deg);
-			    transform: rotate(45deg);
+				@include rotate(45);
+				height: 50px;
 			}
 		}
 	}
 
 }
 
-#desktop-courses .main.default .input-field input[type=search] {
-	border-bottom: 1px solid #757575 !important;
-	width:100% !important;
-}
-
 .skip-button {
-	opacity:0.5;
-}
-
-a.cta-modal-close .svg-close {
-	height:50px;
-	top:0;
-	right:0;
-	position:absolute;
-	margin:10px;
+	@include opacity(.5);
 }

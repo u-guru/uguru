@@ -1,12 +1,11 @@
 <ion-view class='uguru-view profile-view guru-profile-view bg-charcoal'>
-<!-- 	<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
- -->	<section id="profile" class='guru-profile'>
+<!-- 	<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a> -->
+	<section id="profile" class='guru-profile'>
 		<div id="profile-desc">
 			<ion-slide-box show-pager="true" class="profile-slider">
 				<ion-slide>
 					<div class="profile-inside">
 						<div id="profile-icon">
-
 							<span ng-if='user.id && user.profile_url && !profile.edit_mode'><img ng-src="{{user.profile_url}}" id='guru-profile-img' ></span>
 							<a ng-click='takeProfilePhoto()' ng-if='!user.id || !user.profile_url || profile.edit_mode'>
 								<span><img ng-src="{{user.profile_url}}" id='guru-profile-img' /></span>
