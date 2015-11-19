@@ -66,7 +66,7 @@ angular.module('uguru.util.controllers')
         $ionicViewSwitcher.nextDirection('enter');
         if ($scope.desktopMode) {
           $state.go('^.guru-home');
-        } else s{
+        } else {
           $state.go('^.guru');
         }
 

@@ -196,6 +196,22 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/request-price',
     templateUrl: BASE + 'templates/request-price.html'
   }).
+  state('root.billing', {
+    url:'/billing',
+    templateUrl: BASE + 'templates/billing.html'
+  }).
+  state('root.balance', {
+    url:'/balance',
+    templateUrl: BASE + 'templates/balance.html'
+  }).
+  state('root.referrals', {
+    url:'/referrals',
+    templateUrl: BASE + 'templates/referrals.html'
+  }).
+  state('root.timer', {
+    url:'/timer',
+    templateUrl: BASE + 'templates/timer.html'
+  }).
   state('root.student-home', {
     url:'/student-home',
     templateUrl: BASE + 'templates/home.student.html'

@@ -2172,6 +2172,20 @@
 							.square {
 								fill: desaturate($gabrielle, 20%);
 							}
+							.square + div {
+								top: 7.5px;
+							}
+							#home-tiles-earnings {
+								@include flex;
+								@include flex-center;
+								font-size: 60px;
+								font-weight: 700;
+								span {
+									font-weight: 600;
+									font-size: 48px;
+									padding-right: 5px;
+								}
+							}
 						}
 					}
 				}
@@ -2195,6 +2209,9 @@
 							height: calc(100% - 7.5px);
 							h3 {
 								padding-top: 0;
+								.credibility-percent {
+									font-weight: 700;
+								}
 							}
 							progress {
 								vertical-align: 0;
@@ -2228,6 +2245,20 @@
 							fill: $gabrielle;
 						}
 						.square + div {
+							.slider {
+								height: calc(100% - 58px);
+								.card {
+									@include flex;
+									@include flex-center;
+									margin: 0 15px;
+									height: calc(100% - 54px);
+									h1 {
+										margin-bottom: 5px;
+										font-size: 36px;
+										font-weight: 600;
+									}
+								}
+							}
 							ul {
 								padding: 0 15px 15px;
 								font-size: 18px;
@@ -3918,6 +3949,449 @@
 	}
 }
 
+
+/* ---------- BILLING */
+#desktop-billing {
+	.main {
+		max-width: 800px;
+		margin: 0 auto;
+		h1 {
+			font-size: 48px;
+			font-weight: 900;
+		}
+		#billing-container {
+			margin-top: 30px;
+			h2 {
+				background: $shamrock;
+				padding: 10px;
+				font-size: 28px;
+				font-weight: 600;
+			}
+			h3 {
+				font-size: 28px;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+			> div {
+				background: $slate;
+			}
+			> * {
+				margin-bottom: 15px;
+			}
+			#billing-student {
+				#select-student {
+					display: none;
+				}
+				#select-skill {
+					@include flex-center;
+					> li:nth-child(2) {
+						font-size: 36px;
+						font-weight: 600;
+					}
+				}
+				ul {
+					.user-icon {
+						margin-top: 30px;
+						margin-bottom: 15px;
+						+ span {
+							display: block;
+							margin-bottom: 30px;
+							font-weight: 600;
+						}
+					}
+				}
+			}
+			#billing-details {
+				> ul {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						&:first-child {
+							h3 {
+								@include flex;
+								@include flex-center;
+								height: 48px;
+								background: lighten($slate, 10%);
+							}
+							> ul {
+								> li {
+									&:nth-child(1), &:nth-child(3) {
+										padding-right: 10px;
+									}
+									&:nth-child(2) {
+										padding-right: 30px;
+									}
+								}
+							}
+						}
+						> ul {
+							@include flex;
+							@include flex-center;
+							> li {
+								font-weight: 600;
+								input {
+									font-size: 32px;
+									font-weight: 700;
+									text-align: center;
+									max-width: 50px;
+									background: lighten($slate, 10%);
+									@include placeholder {
+										color: rgba(white,.5);
+									}
+								}
+								.custom-dropdown {
+									span {
+										width: 96px;
+									}
+								}
+							}
+						}
+						.custom-dropdown {
+							span {
+								width: calc(100% - 48px);
+							}
+							ul {
+								width: 100%;
+								li {
+									width: calc(100% - 48px);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.custom-dropdown {
+	position: relative;
+	> div {
+		@include flex;
+		@include flex-center;
+		span {
+			@include flex;
+			@include flex-center;
+			width: 152px;
+			height: 48px;
+			background: lighten($slate, 10%);
+			font-size: 28px;
+			font-weight: 600;
+		}
+		a {
+			svg {
+				@include svg-stroke(white, 5);
+				background: $shamrock;
+				padding: 8px 6px 4px 6px;
+				width: 48px;
+				height: 48px;
+			}
+		}
+	}
+	> ul {
+		@include center-x;
+		@include opacity(0);
+		width: 200px;
+		height: 0;
+		overflow: hidden;
+		&.active {
+			@include opacity(1);
+			height: auto;
+		}
+		li {
+			width: 152px;
+			background: rgba(lighten($slate, 5%), .9);
+			padding: 15px 0!important;
+			font-weight: 400;
+			&:hover, &:focus {
+				background: rgba(darken($shamrock, 10%),.9);
+			}
+			&:active {
+				background: rgba(lighten($shamrock, 10%),.9);
+			}
+		}
+	}
+}
+
+/* ---------- REFERRALS */
+.sidebar-layout {
+	.main {
+		@include flex;
+		padding: 0;
+		aside {
+			width: calc(100% / 3);
+			height: 100%;
+			h2 {
+				padding: 15px;
+				font-size: 32px;
+				font-weight: 700;
+				text-align: center;
+			}
+			.sidebar-layout-list {
+				margin-top: 15px;
+				height: calc(100% - 232px);
+				overflow: auto;
+				li {
+					@include flex;
+					padding: 15px;
+					border-bottom: 1px solid rgba(white,.4);
+					&:last-child {
+						border-bottom: 0;
+					}
+					.user-icon {
+						width: 60px;
+						height: 60px;
+						border-width: 3px;
+						+ div {
+							padding-left: 15px;
+						}
+					}
+					div {
+						width: calc(100% - 60px);
+						h3, span {
+							font-weight: 400;
+							b {
+								font-weight: 600;
+							}
+						}
+						h3 {
+							font-size: 22px;
+						}
+						span {
+							color: rgba(white,.5);
+							font-size: 18px;
+						}
+					}
+				}
+			}
+		}
+		aside + div {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			width: calc(100% / 3 * 2);
+			height: 100%;
+			h1 {
+				font-size: 48px;
+				font-weight: 900;
+				svg {
+					@include svg-stroke(white, 3);
+					display: block;
+					margin: 0 auto;
+					width: 100px;
+					height: 100px;
+				}
+				+ h2 {
+					margin-top: 0!important;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
+#desktop-referrals {
+	.main {
+		aside {
+			background: $shamrock;
+			#referrals-stats {
+				text-align: center;
+				padding: 1px;
+				li {
+					padding: 1px;
+					div {
+						padding: 15px;
+						background: rgba($charcoal,.6);
+						h1 {
+							font-size: 72px;
+							font-weight: 900;
+						}
+						span {
+							font-size: 18px;
+							font-weight: 400;
+							line-height: 1.2;
+						}
+					}
+				}
+				li:last-child {
+					div {
+						background: rgba(white,.6);
+						color: $charcoal;
+					}
+				}
+			}
+		}
+		aside + div {
+			input {
+				@include flex;
+				@include flex-center;
+				background: rgba(white,.5);
+				height: 84px;
+				text-align: center;
+				margin: 0 auto;
+				font-size: 60px;
+				font-weight: 600;
+				&:hover {
+					background: rgba(white,.8);
+				}
+				&:active, &:focus {
+					background: white;
+				}
+			}
+			h3 {
+				font-size: 32px;
+				font-weight: 700;
+			}
+			#referrals-share {
+				width: 100%;
+				ul {
+					max-width: 700px;
+					margin: 30px auto 0;
+					li {
+						svg {
+							@include round;
+							@include svg-stroke(white, 3);
+							width: 100px;
+							height: 100px;
+							margin: 0 auto;
+							padding: 12px;
+						}
+						&:nth-child(1) svg {
+							background: $lake;
+						}
+						&:nth-child(2) svg {
+							background: $eggplant;
+						}
+						&:nth-child(3) svg {
+							background: $facebook;
+						}
+						&:nth-child(4) svg {
+							background: $twitter;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- BALANCE */
+#desktop-balance {
+	.main {
+		aside {
+			background: $moola;
+		}
+		aside + div {
+			padding: 15px;
+			> div {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				height: calc(100% - 79px);
+				width: 100%;
+				div {
+					width: 100%;
+					#balance-total {
+						@include flex;
+						@include flex-center;
+						margin: 15px 0;
+						padding: 30px;
+						font-size: 96px;
+						font-weight: 900;
+						line-height: 1;
+						background: $slate;
+					}
+					h2 {
+						font-size: 32px;
+						font-weight: 600;
+					}
+					ul {
+						margin: 15px -7.5px 0;
+						li {
+							padding: 7.5px;
+							a {
+								@include flex;
+								@include flex-wrap;
+								@include flex-center;
+								width: 100%;
+								height: 150px;
+								background: $slate;
+								font-weight: 600;
+								svg {
+									@include svg-stroke(white, 4);
+									width: 80px;
+									height: 80px;
+								}
+								span {
+									display: block;
+									span {
+										padding-top: 10px;
+										padding-bottom: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		button {
+			font-weight: 600;
+		}
+	}
+}
+
+/* ---------- TIMER */
+#desktop-timer {
+	.main {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		> div {
+			width: 100%;
+			text-align: center;
+		}
+		h1 {
+			font-size: 48px;
+			font-weight: 900;
+			text-align: center;
+		}
+		h1 + div {
+			@include flex;
+			@include flex-center;
+			margin: 15px 0 0;
+			font-weight: 600;
+			text-align: left;
+			.user-icon {
+				margin: 0;
+				width: 84px;
+				height: 84px;
+				border-width: 3px;
+				+ div {
+					margin-left: 15px;
+				}
+			}
+			h3 {
+				font-size: 32px;
+				font-weight: 600;
+			}
+		}
+		.timer-visual {
+			position: relative;
+			margin: 0 auto;
+			max-width: 350px;
+			h1 {
+				@include center-xy;
+				font-size: 84px;
+			}
+		}
+		button {
+			width: 350px;
+			font-weight: 600;
+			background: darken($gold, 5%);
+		}
+	}
+}
+
 // start samir css 11/9
 .desktop-input-close-icon {
 	position:absolute;
@@ -4082,7 +4556,7 @@ a.back-icon-settings {
 }
 
 .progressbar-text {
-	display: none !Important;
+	display: none!important;
 }
 
 #desktop-guru-home {
