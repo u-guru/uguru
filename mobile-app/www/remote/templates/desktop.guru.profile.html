@@ -52,7 +52,7 @@
 						<h1>Profile</h1>
 					</div>
 					<div id="profile-courses">
-						<div class='edit-button' hidden> </div>
+						<a class='cta-box edit-button right-0 absolute' id='cta-box-profile-courses' ng-show='profile.edit_mode'> Edit </a>
 						<h1>Courses you can tutor</h1>
 						<div>
 							<ul class='courses profile-list profile-list-half'>
@@ -111,7 +111,7 @@
 							</div>
 						</div> -->
 						<div id="profile-experiences">
-							<a class='edit-button right-0 absolute' ng-show='profile.edit_mode'ng-click='launchAddGuruExperienceModal()'> Edit </a>
+							<a id='cta-box-profile-experiences' class='cta-box edit-button right-0 absolute' ng-show='profile.edit_mode'> Edit </a>
 							<h1>Experience</h1>
 							<div>
 								<ul class="experience profile-list list with-icon">
@@ -145,7 +145,7 @@
 							</div>
 						</div>
 						<div id="profile-skills">
-							<a class='edit-button right-0 absolute' ng-show='profile.edit_mode'ng-click='launchGuruSkillsModal()'> Edit </a>
+							<a class='cta-box edit-button right-0 absolute' id='cta-box-profile-skills' ng-show='profile.edit_mode'> Edit </a>
 							<h1>Skills</h1>
 							<div>
 								<ul class='skills profile-list profile-list-half'>
@@ -159,7 +159,7 @@
 									</li>
 									<li></li>
 								</ul>
-								<ul class="empty" ng-if="!user.guru_subcategories.length && !profile.edit_mode">
+								<ul class="empty"  ng-if="!user.guru_subcategories.length && !profile.edit_mode">
 									<li><span><em>No skills added</em></span></li>
 								</ul>
 								<ul class='default' ng-if='profile.edit_mode'>
@@ -175,7 +175,7 @@
 							</div>
 						</div>
 						<div id="profile-languages">
-							<a class='edit-button right-0 absolute' ng-show='profile.edit_mode'ng-click='launchGuruLanguagesModal()'> Edit </a>
+							<a class='cta-box edit-button right-0 absolute' ng-show='profile.edit_mode' id='cta-box-profile-languages'> Edit </a>
 							<h1>Languages</h1>
 							<div>
 								<ul class='languages profile-list profile-list-half'>
@@ -194,7 +194,7 @@
 								</ul>
 								<ul class='default' ng-if='profile.edit_mode'>
 									<li>
-										<button class="round" ng-click='launchGuruLanguagesModal()'>
+										<button class="round">
 											<svg viewBox="0 0 100 100">
 												<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 											</svg>
