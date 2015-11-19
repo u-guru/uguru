@@ -161,7 +161,8 @@ describe('Firt time usr Test', function () {
 
       it('Create account',function()
       {
-          account.CreateAccount();
+          // account.CreateAccount();
+          $('[ng-click="completeSignup()"]').click()
       });
       it('check Sign up successful -- INCONSISTANT',function()
       {
