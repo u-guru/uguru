@@ -844,8 +844,8 @@ if arg =='import':
 
 
 
-        if db_user.guru_ratings and user.get('guru_ratings'):
-            if user.guru_courses and user.student_ratings:
+        if db_user.student_ratings and user.get('guru_ratings'):
+            if db_user.guru_courses:
                 for db_rating in db_user.student_ratings + db_user.guru_ratings:
                     for rating in user.get('guru_ratings'):
                         if rating.get('tutor_rating_description') == db_rating.guru_rating_description:
