@@ -14,8 +14,8 @@ exports.config = {
          },
         specs:
         [
-          // '../e2e/browser/*Spec.js', 
-          '../e2e/browser/iphoneSpec.js', 
+          '../e2e/browser/*Spec.js', 
+          // '../e2e/browser/iphoneSpec.js', 
    
         ],
           suites:
