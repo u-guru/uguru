@@ -23,7 +23,7 @@ exports.config = {
           suites:
         {
             ios  :[
-                  '../e2e/old/workflows/workflow#1.js',    
+                  '../e2e/browser/iphoneSpec.js',    
 
                  ]
           

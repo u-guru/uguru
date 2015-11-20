@@ -106,6 +106,7 @@ describe('Best case Test on mobile size',function()
 			{
 				 // photo.UploadPhoto('small');
 				//photo.NextPage();
+				browser.sleep(500)
 				$('[ng-click="goToGuruMode()"]').click();
 			});
 		});	
@@ -155,35 +156,35 @@ describe('Best case Test on mobile size',function()
     	{
     		guru.OpenProfile();
     	});
- 	// 	it('Check major/course/skill are added',function()
-		// {
+ 		it('Check major/course/skill are added',function()
+		{
 
-		// 	// expect(guruprofile.countMajor()).toBeGreaterThan(0,"No major list is updated to new account");
-		// 	expect(guruprofile.countCourse()).toBeGreaterThan(0,"No course list is updated to new account");
-		// 	expect(guruprofile.countSkill()).toBeGreaterThan(0,"No skill list is updated to new account");
-		// });
-		// it('active edit mode',function()
-		// 	{
-		// 		guruprofile.ActiveEditMode();
-		// 	});
-		// var str = ['course','language','experience','skill'];
-		// for(var i = 0 ; i < str.length ;++ i)
-		// {
-		// 	(function (title) {
-		//     	describe('Open '+title+' Modal', function () {
+			// expect(guruprofile.countMajor()).toBeGreaterThan(0,"No major list is updated to new account");
+			expect(guruprofile.countCourse()).toBeGreaterThan(0,"No course list is updated to new account");
+			expect(guruprofile.countSkill()).toBeGreaterThan(0,"No skill list is updated to new account");
+		});
+		it('active edit mode',function()
+			{
+				guruprofile.ActiveEditMode();
+			});
+		var str = ['course','language','experience','skill'];
+		for(var i = 0 ; i < str.length ;++ i)
+		{
+			(function (title) {
+		    	describe('Open '+title+' Modal', function () {
 				
-		// 			it('Open Modal',function()
-		// 			{
-		// 				guruprofile.OpenModal(title);
-		// 			});
-		//     		it('close Modal',function()
-		//     		{
-		//     			guruprofile.CloseModal();
-		//     		});
+					it('Open Modal',function()
+					{
+						guruprofile.OpenModal(title);
+					});
+		    		it('close Modal',function()
+		    		{
+		    			guruprofile.CloseModal();
+		    		});
 
-		//     	});	
-		// 	})(str[i])
-		// }
+		    	});	
+			})(str[i])
+		}
     });
   
 	describe("Check all Creditability Page",function()
