@@ -43,6 +43,26 @@ def admin_statistics_users_completed():
     return render_template("admin/admin.stats.universities.complete.html", \
         universities = prepared_universities)
 
+@app.route('/admin/stats/universities/complete')
+def admin_statistics_users_completed():
+    from app.static.data.popular_data import getPreparedUniversitiesObj
+    prepared_universities = sorted(getPreparedUniversitiesObj(University.query.all()), key=lambda k:k.us_news_ranking)
+
+    return render_template("admin/admin.stats.universities.complete.html", \
+        universities = prepared_universities)
+
+@app.route('/admin/stats/archive/berkeley/requests')
+def admin_statistics_old_berkeley_requests():
+    import json
+    request_data = json.load(open('app/static/data/berkeley_request_analysis.json'))
+    return render_template("admin/admin.stats.archive.berkeley.requests.html", request_data=request_data)
+
+@app.route('/admin/stats/archive/berkeley/courses')
+def admin_statistics_old_berkeley_courses():
+    import json
+    course_data = json.load(open('app/static/data/berkeley_course_analysis.json'))
+    return render_template("admin/admin.stats.archive.berkeley.courses.html", course_data=course_data)
+
 @app.route('/admin/stats/users/universities')
 def admin_statistics_universities_completed():
     def isActive(user):

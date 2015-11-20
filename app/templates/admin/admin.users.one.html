@@ -65,6 +65,7 @@
               </div>
             </div>
         </div>
+        {% if not user.guru_courses %}
         <div class="row">
             <div class="col-xs-6">
               <!-- small box -->
@@ -91,6 +92,141 @@
               </div>
             </div><!-- ./col -->
           </div>
+        {% else %}
+          <div class="row">
+            <div class="col-xs-3">
+              <!-- small box -->
+              <div class="small-box bg-black">
+                <div class="inner">
+                  <h3>${{user.balance}}</h3>
+                  <p>Current Balance</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-xs-3">
+              <!-- small box -->
+              <div class="small-box bg-gray">
+                <div class="inner">
+                  <h3>${{user.total_earned}}</h3>
+                  <p>Total earned</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-xs-3">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>{{user.year}}<br></h3>
+                  <p>Year</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-xs-3">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h4><strong>{{user.major}}</strong></h4>
+                  <p>Major</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+          </div>
+        {% endif %}
+
+        {% if user.guru_courses %}
+
+        <div class='row'>
+            <div class='col-md-12'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">
+                    {% if user.name %}
+                      {{user.name.split(' ')[0]|title}}'s
+                    {% endif %}
+                    Guru Details</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <tbody>
+                        <tr>
+                          <td> Introduction </td>
+                          <td> {{user.guru_introduction}} </td>
+                        </tr>
+                        <tr>
+                          <td> Courses </td>
+                          <td style='whitespace:nowrap;'> {% for course in user.guru_courses %}
+                                  {% if course.short_name %}
+                                  <label style='margin:5px;' class='label label-success'> {{course.short_name}} </label> &nbsp;&nbsp;
+                                  {% elif course.name %}
+                                  <label style='margin:5px;'class='label label-success'> {{course.name}} </label>&nbsp;&nbsp;
+                                  {% endif %}
+                               {% endfor %}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">
+                    {% if user.name %}
+                      {{user.name.split(' ')[0]|title}}'s
+                    {% endif %}
+                    Guru Experiences</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th> Experience Title </th>
+                          <th> Description </th>
+                          <th> Time Length (Years) </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for exp in user.guru_experiences %}
+                        <tr>
+                          <td> {{exp.name}} </td>
+                          <td> {{exp.description}} </td>
+                          <td> {{exp.years}} </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
+          {% endif %}
 
         <div class='row'>
             <div class='col-md-12'>
@@ -117,11 +253,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                        {% for rating in user.student_ratings %}
+                        {% for rating in user.guru_ratings %}
                         <tr>
                           <td style='text-align:center;'>{{rating.id}}</td>
                           <td style='text-align:center;'>{{rating.student_rating}}, "{{rating.student_rating_description}}"</td>
-                          <td style='text-align:center;'>{{rating.guru_rating}}, {{rating.guru_rating_description}}</td>
+                          <td style='text-align:center;'>{{rating.guru}}, {{rating.guru_rating_description}}</td>
                         </tr>
                         {% endfor %}
                       </tbody>

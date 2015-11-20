@@ -240,6 +240,9 @@ class User(Base):
     estimated_guru_rank = Column(Integer)
     estimated_guru_rank_last_updated = Column(DateTime)
 
+    year = Column(String)
+    major = Column(String)
+
     # conducted every night at midnight
     official_guru_score = Column(Integer)
     official_guru_rank = Column(Integer)

@@ -748,7 +748,127 @@ if arg == 'save_languages':
         json.dump(languages_arr, fp)
     print len(languages_arr), 'saved'
 
+if arg =='import':
+    from app.models import *
+    from app.database import db_session
+    import json, operator
+    from datetime import datetime
+    from collections import Counter
+    user_arr = json.load(open('uguru_old_db3.json'))
 
+    university = University.query.get(2307)
+
+    user_with_skills = [user for user in user_arr if user.get('skills')]
+
+
+    courses = university.courses + university.popular_courses
+
+    course_names = [course.name for course in courses if course.name]
+    course_names_mapped = [course for course in courses if course.name]
+
+    course_short_names = [course.short_name for course in courses if course.short_name]
+    course_short_names_mapped = [course for course in courses if course.short_name]
+
+
+    course_full_names = [course.full_name for course in courses if course.full_name]
+    course_full_names_mapped = [course for course in courses if course.full_name]
+
+    print 'processing %s gurus' % len(user_with_skills)
+    error_users = []
+    index = 0
+    for user in user_with_skills:
+        db_user = User.query.filter_by(email=user.get('email')).first()
+        if not db_user:
+            error_users.append(user)
+            continue
+        if not db_user.guru_courses:
+            user_skills = [skill for skill in user.get('skills') if skill.get('name')]
+            for skill in user_skills:
+                skill_map = skill['name'].replace('.', ' ').upper()
+                if skill_map in course_names:
+
+                    skill_index = course_names.index(skill_map)
+                    course = course_names_mapped[skill_index]
+                    course.is_popular = True
+                    db_user.guru_courses.append(course)
+
+                elif skill_map in course_short_names:
+
+                    skill_index = course_short_names.index(skill_map)
+                    course = course_short_names_mapped[skill_index]
+                    course.is_popular = True
+                    db_user.guru_courses.append(course)
+
+                elif skill_map in course_full_names:
+
+                    skill_index = course_full_names.index(skill_map)
+                    course = course_full_names_mapped[skill_index]
+                    course.is_popular = True
+                    db_user.guru_courses.append(course)
+
+        db_user.phone_number = user.get('phone_number')
+        db_user.text_notifications = user.get('text_notifications')
+        db_user.email_notifications = user.get('email_notifications')
+        db_user.guru_introduction = user.get('guru_introduction')
+        db_user.year = user.get('year')
+        db_user.major = user.get('major')
+
+        if user.get('experiences'):
+            for exp_key in user.get('experiences').keys():
+
+                if user['experiences'][exp_key]:
+
+                    experience = Experience()
+                    experience.university_id = 2307
+                    experience.description = ''
+                    if exp_key == 'slc_tutor':
+                        experience.name = 'SLC Tutor'
+                    elif exp_key == 'res_tutor':
+                        experience.name = 'Res Hall Tutor'
+                    elif exp_key == 'ta_tutor':
+                        experience.name = 'Teaching Assistant'
+                    elif exp_key == 'hkn_tutor':
+                        experience.name = 'HKN Tutor'
+                    elif exp_key == 'hkn_tutor':
+                        experience.name = 'Lab Assistant'
+                    else:
+                        continue
+
+                    experience.years = 1
+                    experience.last_updated = datetime.now()
+                    experience.time_created = datetime.now()
+                    db_session.add(experience)
+                    db_session.commit()
+                    db_user.guru_experiences.append(experience)
+                    db_session.commit()
+
+
+
+        if db_user.guru_ratings and user.get('guru_ratings'):
+            if user.guru_courses and user.student_ratings:
+                for db_rating in db_user.student_ratings + db_user.guru_ratings:
+                    for rating in user.get('guru_ratings'):
+                        if rating.get('tutor_rating_description') == db_rating.guru_rating_description:
+                            db_user.is_a_guru = True
+                            db_rating.guru_id = db_user.id
+                            db_rating.student_id = None
+                            db_rating.guru_rating = rating.get('tutor_rating')
+                            db_rating.guru_rating_description = rating.get('course_name') + ': ' + rating.get('tutor_rating_description')
+                            db_rating.student_rating = rating.get('student_rating')
+                            db_rating.student_rating_description = rating.get('course_name') + ': ' + rating.get('student_rating_description')
+
+                            student = User.query.filter_by(email=rating.get('student_email')).first()
+                            if student:
+                                db_rating.student_id = student.id
+                            db_session.commit()
+
+        index += 1
+        if (index > 0 and index % 50 == 0):
+            print 'PROGRESS: %s/%s' % (index, len(user_with_skills))
+
+    with open('error_users.json', 'wb') as fp:
+        json.dump(error_users, fp, indent = 4)
+    print len(error_users), 'error users'
 
 if arg =='migrate':
 
