@@ -74,7 +74,7 @@ $("#search-box").slideDown();
         if ($(this).is('#search-berkeley')) {
             var color = "rgb(0, 50, 98)";
             $('#banner').css("background-image", "url(" + 'https://farm8.staticflickr.com/7143/6841501153_7eb07da0c4_b.jpg' + ")");
-            $("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/university-of-california-berkeley_50x50.jpg');
+            $("#top-school-logo").attr('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Seal_of_University_of_California%2C_Berkeley.svg/64px-Seal_of_University_of_California%2C_Berkeley.svg.png');
             $("#border-inner").css("fill", color);
             $(".search-results-top, .search-results-gurus, .search-results-courses").css("background", color);
             $("#search-school-name").text("UC BERKELEY");
@@ -104,20 +104,22 @@ $("#search-box").slideDown();
         } else if ($(this).is('#search-florida')) {
             var color = "rgb(255, 74, 0)";
             $('#banner').css("background-image", "url(" + 'https://farm8.staticflickr.com/7206/6858631913_1fee1210b4_b.jpg' + ")");
-            $("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/university-of-florida_50x50.jpg');
+            $("#top-school-logo").attr('src', 'https://upload.wikimedia.org/wikipedia/en/thumb/5/53/University_of_Florida_Seal.png/64px-University_of_Florida_Seal.png');
             $("#border-inner").css("fill", color);
             $(".search-results-top, .search-results-gurus, .search-results-courses").css("background", color);
             $("#search-school-name").text("University of Florida");
+            
             numGurusElement.innerHTML = '49k';
             popularCourses = ["SOP2772","PSY2012","PHY2012","SOP3723","PSY2000","ANT2511","ANT2000", "CGS2100",
             "CGS2100C","CGS3200","CNT3004"];
+            
             for (var i = 0 ; i < popularCourses.length; i ++) {
                 var courseNode = document.createElement("li");
-                courseNode.innerHTML = popularCourses[i];
+                courseNode.innerHTML = "<span class='course'>" + popularCourses[i] + "</span><span class='color' style='background: " + color + "'></span>";
                 popularCoursesParent.appendChild(courseNode);
             }
             var courseNode = document.createElement("li");
-            courseNode.innerHTML = 'and more';
+            courseNode.innerHTML = '<span class="course">and more</span><span class="color" style="background: ' + color + '"></span>';
             popularCoursesParent.appendChild(courseNode);
 
             var successCallback = function() {
@@ -130,19 +132,21 @@ $("#search-box").slideDown();
         } else if ($(this).is('#search-tufts')) {
             var color = "#417dc1";
             $('#banner').css("background-image", "url(" + 'http://c2.staticflickr.com/6/5097/5514096962_ee022a89d4_b.jpg' + ")");
-            $("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/tufts-university_50x50.jpg');
+            $("#top-school-logo").attr('src', 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Tufts_University_seal.svg/64px-Tufts_University_seal.svg.png');
             $("#border-inner").css("fill", color);
             $(".search-results-top, .search-results-gurus, .search-results-courses").css("background", color);
             $("#search-school-name").text("Tufts University");
+            
             popularCourses = ["ECON102","MICRO101", "ECON1","EC005", "CHEM01", "CHEM1,2", "PS061","PS0061", "ECON5", "PS189-04", "EC0N2"];
             numGurusElement.innerHTML = '10k';
+            
             for (var i = 0 ; i < popularCourses.length; i ++) {
                 var courseNode = document.createElement("li");
-                courseNode.innerHTML = popularCourses[i];
+                courseNode.innerHTML = "<span class='course'>" + popularCourses[i] + "</span><span class='color' style='background: " + color + "'></span>";
                 popularCoursesParent.appendChild(courseNode);
             }
             var courseNode = document.createElement("li");
-            courseNode.innerHTML = 'and more';
+            courseNode.innerHTML = '<span class="course">and more</span><span class="color" style="background: ' + color + '"></span>';
             popularCoursesParent.appendChild(courseNode);
 
             var successCallback = function() {
