@@ -19,9 +19,8 @@ angular.module('uguru.util.controllers')
 
     $scope.removeGuruExperience = function(experience, index) {
       var removedExperience = $scope.user.guru_experiences.splice(index, 1);
-
       var successCallback = function() {
-        LoadingService.hide();
+        // LoadingService.hide();
         LoadingService.showSuccess('Experience removed!', 1500);
         if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
           $scope.guruExperiencesModal.remove();
@@ -41,8 +40,9 @@ angular.module('uguru.util.controllers')
       }
 
       var successCallback = function() {
-        LoadingService.hide();
-        LoadingService.showSuccess($scope.experience.name +'saved!', 1500);
+        // LoadingService.hide();
+        // console.error($scope.experience.name +'saved!');
+        LoadingService.showSuccess('Experience : '+$scope.experience.name +' is saved!', 1500);
         if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
           $scope.guruExperiencesModal.remove();
         }

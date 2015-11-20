@@ -15,7 +15,7 @@ angular.module('uguru.user', [])
         Object.defineProperty(obj, name, config);
     }
 
-    var calcAverage = function(ratings_arr) {
+    var calcAverage = function(ratings_arr, is_guru) {
                 if (!ratings_arr) {
                     return;
                 }
@@ -25,13 +25,13 @@ angular.module('uguru.user', [])
                 }
                 result = 0;
                 for (var i = 0; i < ratings_arr.length; i ++) {
-                    if (ratings_arr[i].student_rating || ratings_arr[i].student_rating === 0) {
-                        result += ratings_arr[i].student_rating;
-                    } else {
+                    if (is_guru) {
                         result += ratings_arr[i].guru_rating;
+                    } else {
+                        result += ratings_arr[i].student_rating;
                     }
                 }
-                result = (result / ratings_arr.length).toFixed(2);
+                result = (result / ratings_arr.length)
                 return result;
     }
 
@@ -240,7 +240,7 @@ angular.module('uguru.user', [])
             for (var i = 0; i < student_sessions.length; i ++) {
               var index_session = student_sessions[i];
               if (index_session.status === 0 || index_session.status === 1 || index_session.status === 2) {
-                index_session.guru.guru_avg_rating = parseInt(calcAverage(index_session.guru.guru_ratings));
+                index_session.guru.guru_avg_rating = calcAverage(index_session.guru.guru_ratings, true);
                 user.active_student_sessions.push(index_session);
               } else if (index_session.status === 6 || index_session.status === 7 || index_session.status === 8 ) {
                 user.previous_student_sessions.push(index_session);
@@ -276,7 +276,7 @@ angular.module('uguru.user', [])
               }
             }
         }
-        user.student_avg_rating = calcAverage(student_ratings);
+        user.student_avg_rating = calcAverage(student_ratings, false);
 
         var student_transactions = user.student_transactions || [];
         MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -328,7 +328,7 @@ angular.module('uguru.user', [])
             user.previous_guru_sessions = [];
 
             var guru_ratings = user.guru_ratings;
-            user.guru_avg_rating = calcAverage(guru_ratings);
+            user.guru_avg_rating = calcAverage(guru_ratings, true);
 
             if (!user.guru_avg_rating) {
                 user.guru_avg_rating = 0;
@@ -366,7 +366,7 @@ angular.module('uguru.user', [])
                   var index_session = guru_sessions[i];
                   if (index_session.status === 0 || index_session.status === 1 || index_session.status === 2) {
                     if (index_session.student && index_session.student.student_ratings && index_session.student.student_ratings.length > 0) {
-                        index_session.student.student_avg_rating = parseInt(calcAverage(index_session.student.student_ratings));
+                        index_session.student.student_avg_rating = calcAverage(index_session.student.student_ratings, false);
                     }
                     user.active_guru_sessions.push(index_session);
                   } else if (index_session.status === 6 || index_session.status === 7 || index_session.status === 8 ) {
@@ -442,6 +442,7 @@ angular.module('uguru.user', [])
 
         $scope.user.id = user.id;
         $scope.user.name = user.name;
+        $scope.user.first_name = user.name.split(' ')[0];
         $scope.user.profile_url = user.profile_url;
         if ($scope.user.profile_url === 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100') {
             $scope.user.profile_url = img_base + BASE + "img/avatar.svg";
@@ -497,6 +498,7 @@ angular.module('uguru.user', [])
         $scope.user.course_guru_dict = user.course_guru_dict;
         $scope.user.gurus = user.gurus;
         $scope.user.guru_relationships = user.guru_relationships;
+        $scope.user.student_relationships = user.student_relationships;
         $scope.user.referred_by = user.referred_by;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
@@ -559,14 +561,14 @@ angular.module('uguru.user', [])
         $scope.user.active_student_sessions = user.active_student_sessions;
         $scope.user.previous_student_sessions = user.previous_student_sessions;
         $scope.user.balance = user.balance;
-        $scope.user.total_earned = user.total_earned;
+        $scope.user.total_earned = Math.round(user.total_earned);
         $scope.user.estimated_guru_rank = user.estimated_guru_rank;
         $scope.user.official_guru_rank = user.official_guru_rank;
         $scope.user.estimated_guru_score = user.estimated_guru_score;
         $scope.user.official_guru_score = user.official_guru_score;
         $scope.user.estimated_guru_rank_last_updated = user.estimated_guru_rank_last_updated;
         $scope.user.official_guru_rank_last_updated = user.official_guru_rank_last_updated;
-        $scope.user.guru_avg_rating = user.guru_avg_rating;
+        $scope.user.guru_avg_rating = Math.round(user.guru_avg_rating * 10) / 10;
         $scope.user.student_avg_rating = user.student_avg_rating;
         $scope.user.student_ratings = user.student_ratings;
         $scope.user.guru_ratings = user.guru_ratings;
@@ -585,7 +587,6 @@ angular.module('uguru.user', [])
         $scope.user.current_profile_percent = RankingService.calcProfile(user);
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
-
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
         $scope.user.is_a_guru = false && !$scope.user.show_become_guru;

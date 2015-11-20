@@ -10,13 +10,13 @@
 			</a>
 		</div>
 		<h1 ng-show="!root.vars.loginMode">Finalize</h1>
-		<h1 ng-show="root.vars.loginMode">Have account?</h1>
+		<h1 ng-show="root.vars.loginMode">Have an account?</h1>
 		<ul class="switch ugrid-2">
 			<li>
 				<a ng-click='root.vars.loginMode = true;' class='ng-class:{"selected": root.vars.loginMode}'>Login</a>
 			</li>
 			<li>
-				<a ng-click='root.vars.loginMode = false;' class='ng-class:{"selected": !root.vars.loginMode}'>Sign Up</a>
+				<a ng-click='switchSignupMode()' class='ng-class:{"selected": !root.vars.loginMode}'>Sign Up</a>
 			</li>
 		</ul>
 	</header>

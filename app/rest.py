@@ -2192,6 +2192,11 @@ class UserNewView(restful.Resource):
     @marshal_with(UserSerializer)
     def put(self):
 
+        if request.json.get('admin_token') and request.json.get('user_id'):
+            print request.json
+            user_id = int(request.json.get('user_id'))
+            user = User.query.get(user_id)
+            return user, 200
         if request.json.get('email') and request.json.get('forgot_password'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 
