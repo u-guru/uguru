@@ -98,8 +98,8 @@
               <!-- small box -->
               <div class="small-box bg-black">
                 <div class="inner">
-                  <h3>${{user.balance}}</h3>
-                  <p>Current Balance</p>
+                  <h3>{{"%.1f" % user.average_guru_rating()}} stars</h3>
+                  <p>Average Rating</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-document"></i>
@@ -236,7 +236,12 @@
                     {% if user.name %}
                       {{user.name.split(' ')[0]|title}}'s
                     {% endif %}
-                    Ratings</h3>
+                    {% if user.is_a_guru %}
+                      Received Ratings as a Guru
+                    {% else %}
+                      Ratings Given to Gurus
+                    {% endif %}
+                    </h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -246,20 +251,54 @@
                   <div class="table-responsive">
                     <table class="table no-margin">
                       <thead>
+                        {% if user.is_a_guru %}
                         <tr>
                           <th style='text-align:center;'>ID</th>
-                          <th style='text-align:center;'>She Got</th>
-                          <th style='text-align:center;'>She Gave</th>
+                          <th style='text-align:center;'>{{user.name.split(' ')[0]}} was rated..</th>
+                          <th style='text-align:center;'>{{user.name.split(' ')[0]}} was written</th>
+                          <th style='text-align:center;'>{{user.name.split(' ')[0]}} gave the student</th>
+                          <th style='text-align:center;'>{{user.name.split(' ')[0]}} wrote about the student</th>
+                          <th>Student info</th>
                         </tr>
+                        {% else %}
+                        <tr>
+                          <th style='text-align:center;'>ID</th>
+                          <th style='text-align:center;'>{{user.name.split(' ')[0]}} gave the guru</th>
+                          <th style='text-align:center;'>{{user.name.split(' ')[0]}} wrote about the guru..</th>
+                          <th style='text-align:center;'>{{user.name.split(' ')[0]}} was rated..</th>
+                          <th style='text-align:center;'>{{user.name.split(' ')[0]}} received from the guru..</th>
+                          <th>Guru info</th>
+                        </tr>
+                        {% endif %}
                       </thead>
                       <tbody>
+                      {% if user.is_a_guru %}
                         {% for rating in user.guru_ratings %}
-                        <tr>
-                          <td style='text-align:center;'>{{rating.id}}</td>
-                          <td style='text-align:center;'>{{rating.student_rating}}, "{{rating.student_rating_description}}"</td>
-                          <td style='text-align:center;'>{{rating.guru}}, {{rating.guru_rating_description}}</td>
-                        </tr>
-                        {% endfor %}
+                          <tr>
+                            <td style='text-align:center;'>{{rating.id}}</td>
+                            <td style='text-align:center;'>{{rating.guru_rating}} stars</td>
+                            <td style='text-align:center;'>{{rating.guru_rating_description}}</td>
+                            <td style='text-align:center;'>{{rating.student_rating}}</td>
+                            <td style='text-align:center;'>{{rating.student_rating_description}}</td>
+                            <td style='text-align:center;'><a href='/admin/users/{{rating.student.id}}' target='_blank'><img height='20' width='20'  src='{{rating.student.profile_url}}'/> {{rating.student.name.split(' ')[0]}}</a></td>
+                          </tr>
+                          {% endfor %}
+                        {% else %}
+                          {% for rating in user.student_ratings %}
+                          <tr>
+                            <td style='text-align:center;'>{{rating.id}}</td>
+                            <td style='text-align:center;'>{{rating.guru_rating}} stars</td>
+                            <td style='text-align:center;'>{{rating.guru_rating_description}}</td>
+                            <td style='text-align:center;'>{{rating.student_rating}}</td>
+                            <td style='text-align:center;'>{{rating.student_rating_description}}</td>
+                            {% if rating.guru_id %}
+                              <td style='text-align:center;'><a href='/admin/users/{{rating.guru.id}}' target='_blank'><img height='20' width='20'  src='{{rating.guru.profile_url}}'/> {{rating.guru.name.split(' ')[0]}}</a></td>
+                            {% else %}
+                            <td>NA </td>
+                            {% endif %}
+                          </tr>
+                          {% endfor %}
+                        {% endif %}
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->
@@ -334,6 +373,69 @@
 
                   {% endfor %}
               </div>
+
+              <div class="row">
+
+
+                  {% for relationship in user.student_relationships + user.guru_relationships %}
+                    <div class="col-md-3">
+
+                      <div class="box box-primary direct-chat direct-chat-primary">
+                        <div class="box-header with-border">
+                          {% if user.id == relationship.student.id %}
+                          <h3 class="box-title">{{relationship.guru.name.split(' ')[0]}}</h3>
+                          {% else %}
+                          <h3 class="box-title">{{relationship.student.name.split(' ')[0]}}</h3>
+                          {% endif %}
+                          <div class="box-tools pull-right">
+                            <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="3 New Messages">{{relationship.messages|length}} total msg</span>
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                          </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                          <!-- Conversations are loaded here -->
+                          <div class="direct-chat-messages">
+                              <!-- DIRECT CHAT PRIMARY -->
+                            {% for message in relationship.messages %}
+
+                              {% if message.sender_id != user.id %}
+                                <div class="direct-chat-msg">
+                                  <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-left">{{message.sender.name.split(' ')[0]}}</span>
+                                    <span class="direct-chat-timestamp pull-right">{{message.time_created}}</span>
+                                  </div><!-- /.direct-chat-info -->
+                                  <img class="direct-chat-img" src="{{message.sender.profile_url}}" alt="message user image"><!-- /.direct-chat-img -->
+                                  <div class="direct-chat-text">
+                                    {{message.contents}}
+                                  </div><!-- /.direct-chat-text -->
+                                </div><!-- /.direct-chat-msg -->
+
+                              {% else %}
+
+                                <div class="direct-chat-msg right">
+                                  <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-right">{{user.name.split(' ')[0] }}</span>
+                                    <span class="direct-chat-timestamp pull-left">{{message.time_created}}</span>
+                                  </div><!-- /.direct-chat-info -->
+                                  <img class="direct-chat-img" src="{{user.profile_url}}" alt="message user image"><!-- /.direct-chat-img -->
+                                  <div class="direct-chat-text">
+                                    {{message.contents}}
+                                  </div><!-- /.direct-chat-text -->
+                                </div><!-- /.direct-chat-msg -->
+
+                              {% endif %}
+
+                            {% endfor %}
+                            </div><!--/.direct-chat-messages-->
+                          </div>
+                        </div>
+                      </div>
+                  {% endfor %}
+
+
+
+          </div>
+
 
           </div>
 

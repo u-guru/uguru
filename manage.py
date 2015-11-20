@@ -754,6 +754,7 @@ if arg =='import':
     import json, operator
     from datetime import datetime
     from collections import Counter
+    from dateutil import parser
     user_arr = json.load(open('uguru_old_db3.json'))
 
     university = University.query.get(2307)
@@ -813,7 +814,64 @@ if arg =='import':
         db_user.year = user.get('year')
         db_user.major = user.get('major')
 
-        if user.get('experiences'):
+        # if user has conversations and is a guru
+        if user.get('conversations') and user.get('skills'):
+            all_conversations = user.get('conversations')
+            for convo in all_conversations:
+                convo_guru_id = convo.get('guru_id')
+                message_convos = convo.get('messages')
+                if message_convos and user.get('id') == convo_guru_id:
+                    first_message = message_convos[0]
+                    if not first_message.get('sender_email') or not first_message.get('receiver_email'):
+                        continue
+                    if first_message.get('sender_email') == user.get('email'):
+                        student_email = first_message.get('receiver_email')
+                    else:
+                        student_email = first_message.get('sender_email')
+
+                    student = User.query.filter_by(email=student_email).first()
+                    if not student:
+                        continue
+
+                    if db_user.guru_relationships:
+                        student_ids_relationships = [r.student.id for r in db_user.guru_relationships]
+                        # already relationship exists
+                        if student.id in student_ids_relationships:
+                            continue
+
+
+                    r = Relationship()
+                    r.student_id = student.id
+                    r.guru_id = db_user.id
+                    db_session.add(r)
+                    db_session.commit()
+
+                    ## add messages
+                    for message in message_convos:
+                        if message.get('sender_email') == user.get('email'):
+                            message_sender_id = db_user.id
+                            message_receiver_id = student.id
+                        else:
+                            message_sender_id = student.id
+                            message_receiver_id = db_user.id
+
+                        message_contents = message.get('contents')
+                        message_type = 0
+                        message_time_created = parser.parse(message.get('write_time'))
+
+                        m = Message()
+                        m.sender_id = message_sender_id
+                        m.receiver_id = message_receiver_id
+                        m.contents = message_contents
+                        m._type = message_type
+                        m.time_created = message_time_created
+                        m.relationship_id = r.id
+                        db_session.add(m)
+                        db_session.commit()
+
+
+
+        if user.get('experiences') and not db_user.guru_experiences:
             for exp_key in user.get('experiences').keys():
 
                 if user['experiences'][exp_key]:
@@ -833,7 +891,6 @@ if arg =='import':
                         experience.name = 'Lab Assistant'
                     else:
                         continue
-
                     experience.years = 1
                     experience.last_updated = datetime.now()
                     experience.time_created = datetime.now()
@@ -853,9 +910,9 @@ if arg =='import':
                             db_rating.guru_id = db_user.id
                             db_rating.student_id = None
                             db_rating.guru_rating = rating.get('tutor_rating')
-                            db_rating.guru_rating_description = rating.get('course_name') + ': ' + rating.get('tutor_rating_description')
+                            db_rating.guru_rating_description = rating.get('tutor_rating_description')
                             db_rating.student_rating = rating.get('student_rating')
-                            db_rating.student_rating_description = rating.get('course_name') + ': ' + rating.get('student_rating_description')
+                            db_rating.student_rating_description = rating.get('student_rating_description')
 
                             student = User.query.filter_by(email=rating.get('student_email')).first()
                             if student:

@@ -442,6 +442,28 @@ class User(Base):
         db_session.commit()
 
 
+    def average_guru_rating(self):
+        _sum = 0.0
+        num_ratings = 0.0
+        all_guru_ratings = [rating.guru_rating for rating in self.guru_ratings if rating.guru_rating]
+        num_ratings = num_ratings + len(all_guru_ratings)
+        _sum = _sum + sum(all_guru_ratings)
+        try:
+            return float(_sum / num_ratings)
+        except:
+            return 0.0
+
+    def average_student_rating(self):
+        _sum = 0.0
+        num_ratings = 0.0
+        all_student_ratings = [rating.student_rating for rating in self.student_ratings if rating.student_rating]
+        num_ratings = num_ratings + len(all_student_ratings)
+        _sum = _sum + sum(all_student_ratings)
+        try:
+            return float(_sum / num_ratings)
+        except:
+            return 0.0
+
 
     @staticmethod
     def generate_referral_code(name):
