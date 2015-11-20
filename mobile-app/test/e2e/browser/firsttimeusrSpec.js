@@ -28,12 +28,13 @@ describe('Firt time usr Test', function () {
           } 
         it("Sekect a university",function()
         {
-          university.SelectSchool(0);
+          // university.SelectSchool(0);
+          $$('#school-list li a').get(0).click();
         });
     }); 
     describe('Go Throught Become guru test',function()
     {
-        var sections = $$('#guru-onboarding-grid li')
+        var sections = $$('#guru-onboarding-grid li a')
         describe('check correct url and have 3 sections',function()
         {
 
@@ -57,14 +58,20 @@ describe('Firt time usr Test', function () {
             it('Select course',function()
             { 
               browser.wait(EC.visibilityOf(coursepage),3000)
-              course.SelectCourse(0);
+              // course.SelectCourse(0);
+              $$('#desktop-courses li a').get(0).click()
             });
             it('Select course',function()
             {
-              course.SelectCourse(1);
-            }); it('Select course',function()
+              // course.SelectCourse(1);
+              $$('#desktop-courses li a').get(1).click()
+
+            }); 
+            it('Select course',function()
             {
-              course.SelectCourse(2);
+              // course.SelectCourse(2);
+              $$('#desktop-courses li a').get(2).click()
+
             });
             it('Check Select Courses has 3',function()
             {
@@ -89,18 +96,20 @@ describe('Firt time usr Test', function () {
             browser.wait(EC.visibilityOf(categorypage),3000)
 
             // category.SelectSkill(1);
-            $$('[ng-repeat="category in categories"]').get(1).click()
+            $$('[ng-repeat="category in categories"]').get(0).click()
+
           });
 
           it('Select skill',function()
           {
-             $$('[ng-repeat="category in categories"]').get(1).$$('[ng-repeat = "subcategory in category.subcategories"]').get(2).click()
-             $$('[ng-repeat="category in categories"]').get(1).$$('[ng-repeat = "subcategory in category.subcategories"]').get(1).click()
-
+            // console.log( $$('[ng-repeat="category in categories"]').get(1).$$('[ng-repeat = "subcategory in category.subcategories"] input').counts()); 
+           $$('[ng-repeat = "subcategory in category.subcategories"] input').get(2).click()
+           $$('[ng-repeat = "subcategory in category.subcategories"] input').get(1).click()
           })
 
           it('close skill',function()
           {
+
             $$('[ng-click="hideCategorySkillsModal()"]').get(1).click();
           });
 
@@ -110,19 +119,28 @@ describe('Firt time usr Test', function () {
           })
 
         });
-
-        describe('Upload a photo',function()
+        if(global.browserName == "CHROME")
         {
-          it('Open category',function()
+          describe('Upload a photo',function()
           {
-            sections.get(2).click();
-          });
-          it('Upload Photo',function()
-          {
-            photo.UploadPhoto('small');
-          });
+            it('Open photo',function()
+            {
+              sections.get(2).click();
+            });
+            it('Upload Photo',function()
+            {
+              photo.UploadPhoto('small');
+            });
 
-        });
+          });
+        }
+        else
+        {
+          it('Skip upload',function()
+          {
+            $('[ng-click="skipBecomeGuruAndGoToGuru()"]').click();
+          });
+        }
         it('Check A success message is shown',function()
         {
           doc.checkMsg("Awesome! You're all set");
@@ -231,6 +249,7 @@ describe('Firt time usr Test', function () {
         
         it('select contact ',function()
         {
+          browser.wait(EC.visibilityOf($$('#contact-type-list input')).get(0))
           contactOptions.get(0).click();
           contactOptions.get(3).click();
         });
