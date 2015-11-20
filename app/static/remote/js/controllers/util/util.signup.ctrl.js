@@ -39,6 +39,15 @@ angular.module('uguru.util.controllers')
   MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
   AnimationService, DeviceService) {
 
+    function goGuruMode()
+    {
+      if ($scope.desktopMode) {
+         $state.go('^.guru-home');
+       } 
+      else {
+         $state.go('^.guru');
+       }
+    }
 // Implement a section for modals here
 
     $scope.openModal = function(modalName) {
@@ -61,9 +70,24 @@ angular.module('uguru.util.controllers')
       $scope.loader.showMsg("Sorry! We are out of signups. <br><br> Please request access code from support on our home page.", 0, 3000);
       $timeout(function() {
         LoadingService.showAmbig('Redirecting you back...', 2000, function() {
-          AnimationService.flip('^.university');
+          if ($scope.desktopMode) {
+            AnimationService.flip('^.university');
+          }
+          else{ 
+            $scope.signupModal.hide();
+           }
         })
       }, 3000)
+    }
+    $scope.switchSignupMode = function() {
+      // if(!$scope.user )
+        if(!$scope.user.university_id){
+          $scope.preventSignupAndBackToAccess();
+        }
+        else{
+
+          $scope.root.vars.loginMode = false;
+        }
     }
 
     $scope.backToAccess = function() {
@@ -86,8 +110,8 @@ angular.module('uguru.util.controllers')
 
     if ($scope.user.id && !$scope.root.vars.guru_mode && !LOCAL) {
       LoadingService.showAmbig('Redirecting to home...', 2000);
-      $state.go('^.guru-home');
-    }
+      goGuruMode();
+     }
 
     $scope.root.vars.show_account_fields = false;
     $scope.headerText = 'Sign Up';
@@ -1422,16 +1446,23 @@ angular.module('uguru.util.controllers')
             else
               $state.go('^.guru-home')
           }
-          else{
-            if (ModalService.isOpen('signup')) {
-              ModalService.close('signup');
-              $timeout(function() {
-                if ($scope.user && $scope.user.university && $scope.user.university.id) {
-                  MapService.initStudentHomeMap(user);
-                }
-                $ionicSlideBoxDelegate.update();
-              }, 250);
-            }
+          else
+          {
+
+            // if (ModalService.isOpen('signup')) {
+            //   ModalService.close('signup');
+            //   $timeout(function() {
+            //     if ($scope.user && $scope.user.university && $scope.user.university.id) {
+            //       MapService.initStudentHomeMap(user);
+            //     }
+            //     $ionicSlideBoxDelegate.update();
+            //   }, 250);
+            // }
+            $scope.signupModal.hide();
+            // $state.go('^.guru')
+            if(!$scope.root.vars.guru_mode)
+              AnimationService.flip('^.guru');
+
           }
 
 
@@ -1488,7 +1519,7 @@ angular.module('uguru.util.controllers')
 
           if ($scope.desktopMode) {
             console.log('detecting signup')
-            LoadingService.showSuccess('Login Successful', 2500);
+            LoadingService.showSuccess('Account Successfully Created', 2500);
             $state.go('^.guru-home');
           } else {
             $state.go('^.guru');
@@ -1554,9 +1585,9 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
+    // console.log("CHECK",$scope.root.vars.loginMode);
 
-    $scope.root.vars.loginMode = $scope.root.vars.page_cache.login_mode || false;
-
+    // $scope.root.vars.loginMode = $scope.root.vars.page_cache.login_mode || false;
     // $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
     //         scope: $scope,
     //         animation: 'slide-in-up',

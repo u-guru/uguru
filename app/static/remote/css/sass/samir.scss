@@ -1,117 +1,173 @@
 @import 'mixin';
-a.cta-modal-close svg {
-	height:50px;
+
+// start samir css 11/9
+.desktop-input-close-icon {
+	position:absolute;
+	right:10px;
+	top:50%;
 }
 
-#profile-info {
-	position:relative;
-	ion-pane {
-		position:absolute !important;
-		top:0;
-		left:0;
+.desktop-login-view  {
+	.desktop-input-close-icon {
+		color:rgba($slate,0.2);
+		top:30%;
+	}
+}
+// End samir-css
+
+.desktop-nav-back {
+	svg {
+		-webkit-transform: rotate(45deg);
+	    -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	    -o-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	}
+}
+
+.desktop-mode {
+	#desktop-student-home-map-container, #student-home-default-map-container {
+			position: absolute !important;
+			top: 0 !important;
+			left: 0 !important;
+			overflow: hidden !important;
+			z-index: 0 !important;
+			width: calc(100%) !important;
+			height: calc(100% - 64px) !important;
+		}
+	.main {
+		z-index:1 !important;
+		background:transparent;
+	}
+}
+
+//all component overrides
+//@gabriellewee I injected desktop-view into body if desktop
+.desktop-view {
+	ion-modal-view {
+		width: 100%;
+    	height: calc(100% - 64px);
+    	left: 0;
+    	top: 64px;
+	}
+	.uguru-popup-content {
+		width:33% !important;
+	}
+}
+
+.desktop-view.platform-ios {
+	ion-modal-view {
+		top:84px;
+		height: calc(100% - 84px);
 		width:100%;
-		height:100%;
-		font-size: 18px;
+	}
+	header, .header-nav {
+		padding-top:0px !important;
+	}
+	.guru-desktop-credibility {
+		padding-top:20px;
+	}
+	#top-menu-background-overlay {
+	    top: 64px;
+	    height: calc(100% - 84px) !important;
 	}
 
-	#profile-title {
-		position:relative;
-		a
-		{
-			margin:10px;
-			top:inherit;
-			bottom:0px !important;
-			position:absolute;
-		 	svg {
-				height:50px;
-			}
-		}
-	}
+}
+//end component overrides
 
-	#cta-modal-profile-contact > div:last-child {
-		height:100%;
-	}
+#top-menu-background-overlay {
+	@include opacity(.7);
+    display: none!important;
+	top: 64px;
+    z-index: 10;
+    height: calc(100% - 64px)!important;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-left: -15px!important;
+    &.active {
+		@include opacity(.7);
+    	display: block!important;
+    }
+}
 
-	#cta-modal-profile-languages header {
-		display:block !important;
-	}
-	.cta-modal {
-		header {
-			display:none;
-		}
-		#guru-contact-container {
-			height:calc(100% - 80px) !important;
-			#contact-type
-			{
-				height: calc(100% - 64px);
-				padding:1px;
-				ul#contact-type-list li {
-					padding:0px;
-					label {
-						span {
-							color:white;
-						}
-						svg {
-							height:50px;
-						}
-					}
-				}
-			}
-		}
-	}
-	#experience-modal {
-		height:calc(100% - 80px) !important;
-		bottom:0;
-		top:80px;
-		width:100%;
-		div.main {
-			@include flex-wrap;
-			width:100%;
-			div {
-				width:100%
-			}
-		}
-	}
-	#cta-modal-profile-courses {
-		#desktop-courses {
-			#main-logo
-			{
-				display:none;
-			}
-
-			div.main.default
-			{
-				@include flex-center;
-				@include flex-wrap;
-			}
-		}
-		form {
-			width: 100%!important;
-		}
-		#courses-list {
-			li {
-				border: 0!important;
-			}
-			li:nth-child(9),
-			li:nth-child(10),
-			li:nth-child(11),
-			li:nth-child(12),
-			li:nth-child(13),
-			li:nth-child(14),
-			li:nth-child(15),
-			li:nth-child(16) {
-				display:none !important;
-			}
+.desktop-guru-onboarding-view {
+	.cta-modal.hide-display {
+		@include opacity-important(0);
+		display: none;
+		z-index: 1000;
+		&.show {
+			@include opacity-important(1);
+			display: block!important;
 		}
 	}
 }
 
-#desktop-guru-profile #profile #profile-info .profile-title h1 {
-    background: none;
-    padding: 10px 15px;
-    font-size: 48px;
-    font-weight: 900;
-    letter-spacing: 0;
-    text-align: left;
-    text-transform: none;
+.desktop-guru-onboarding {
+	.main.default {
+		min-height: 50%;
+	}
+}
+.photo-view .main {
+	height: calc(100% - 140px);
+}
+
+.mode-links {
+	background: rgba(white,.75);
+	span {
+		color: $gabrielle;
+	}
+	svg {
+		stroke: $gabrielle!important;
+	}
+}
+
+#desktop-credibility .progress-bottom {
+	bottom: 50px;
+}
+
+.progressbar-text {
+	display: none!important;
+}
+
+#desktop-guru-home {
+	.hide-display.cta-modal.pane {
+		@include opacity-important(0);
+		position: fixed;
+		transition: 200ms ease;
+		visibility: hidden;
+		overflow: auto;
+		z-index:-1;
+		background: $charcoal;
+		&.show {
+			z-index: 1000;
+			@include opacity-important(1);
+			visibility: visible;
+		}
+	}
+}
+
+.desktop-guru-onboarding-view
+.skill-item-content.hide-display {
+	@include opacity(0);
+	visibility: hidden;
+	flex-direction: column;
+	&.show {
+		@include flex;
+		@include opacity(1);
+		visibility: visible;
+		a {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			svg {
+				@include rotate(45);
+				height: 50px;
+			}
+		}
+	}
+
+}
+
+.skip-button {
+	@include opacity(.5);
 }

@@ -36,7 +36,7 @@
                 <div class="inner center" style='text-align:center'>
                   <img style = 'display:inline-block' class='img-circle' height="100" width="100" src='{{user.profile_url}}'></img>
                   <h3>{{user.name}}</h3>
-                  <a href='/admin/users/5325/login' target='_blank' class='btn' style='position:absolute; top: 0; right:0; margin:20px; background-color:white;color:green;'><strong>Login</strong></a>
+                  <a href='/admin/users/{{user.id}}/login' target='_blank' class='btn' style='position:absolute; top: 0; right:0; margin:20px; background-color:white;color:green;'><strong>Login</strong></a>
                   <p><strong>{{user.email}}</strong></p>
                   <p>Studying @ {{user.university.name}},
 

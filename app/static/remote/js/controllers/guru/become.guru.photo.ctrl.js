@@ -24,17 +24,18 @@ angular.module('uguru.guru.controllers')
     $ionicActionSheet, CameraService, uTracker, LoadingService) {
 
 
-    function takePhotoSuccess() {
+   function takePhotoSuccess() {
 
       uTracker.track(tracker, 'Guru Mode', {
         '$Photo_Method': 'Camera'
       });
-      LoadingService.showSuccess("Awesome! You're all set.", 2000);
-      $ionicViewSwitcher.nextDirection('forward');
-      $timeout(function() {
-        $scope.root.vars.guru_mode = true;
-        $state.go('^.guru');
-      }, 700);
+      photoSuccessUpload()
+      // LoadingService.showSuccess("Awesome! You're all set.", 2000);
+      // $ionicViewSwitcher.nextDirection('forward');
+      // $timeout(function() {
+      //   $scope.root.vars.guru_mode = true;
+      //   $state.go('^.guru');
+      // }, 700);
     }
 
 
@@ -43,13 +44,22 @@ angular.module('uguru.guru.controllers')
       uTracker.track(tracker, 'Guru Mode', {
         '$Photo_Method': 'Library'
       });
-      LoadingService.showSuccess("Awesome! You're all set", 3000);
+      photoSuccessUpload()
+      
+    }
+    function photoSuccessUpload()
+    {
+      LoadingService.showSuccess("Awesome! You're all set.", 2000);
+      $ionicViewSwitcher.nextDirection('forward');
       $timeout(function() {
-        $ionicViewSwitcher.nextDirection('forward');
-        $state.go('^.guru');
-
-      }, 1200);
-
+        $scope.root.vars.guru_mode = true;
+        console.log("check desktopMode to see go guru or guru-home",$scope.desktopMode)
+        if ($scope.desktopMode) {
+          $state.go('^.guru-home');
+        } else {
+          $state.go('^.guru');
+        }
+      }, 700);
     }
 
     $scope.showAttachActionSheet = function() {

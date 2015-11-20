@@ -55,6 +55,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.showActive = true;
   $ionicSideMenuDelegate.canDragContent(false);
 
+  var actualRankingValue = $scope.user.guru_ranking;
+  $scope.user.guru_ranking = 0;
 
   $scope.launchCTASignup = function() {
     document.getElementById('cta-box-signup').click();
@@ -165,7 +167,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
          function getModalCTAElemID(cta_box_elem) {
             elem_id = cta_box_elem.id;
             modalID = elem_id.replace('box', 'modal');
-            console.log('\n\nprocessing box --> modal mapping', elem_id, modalID, '\n\n');
+            // console.log('\n\nprocessing box --> modal mapping', elem_id, modalID, '\n\n');
             return modalID;
         }
 
@@ -301,6 +303,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.$on('$ionicView.enter', function() {
           initCTA();
+
+          $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+          $timeout(function() {
+            $scope.user.guru_ranking = actualRankingValue;
+          }, 2500)
+          animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+
         });
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
@@ -325,18 +334,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               $timeout(function() {
 
 
-                var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-                animateProgressCircle(guruRankingCircle, $scope.user.current_guru_ranking);
-
-                //show it after the progress is complete
-                // if (!$scope.desktopMode) {
-                //   $scope.initializeHorizontalProgressBars();
-                // }
+                if (!$scope.desktopMode) {
+                  $scope.initializeHorizontalProgressBars();
+                }
 
               }, 500)
             }
 
           }, 1000)
+
 
         })
 

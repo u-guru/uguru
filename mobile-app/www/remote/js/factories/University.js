@@ -59,7 +59,6 @@ angular.module('uguru.rest', [])
                   Restangular
                      .one('universities', uni_id).customGET('popular_courses').then(function(response) {
                          $timeout(function() {
-                             console.log("Success in getPopularCourses()");
                              source.courses = response.plain();
                              $timeout(function() {
                                  $localstorage.set(uni_id + ' popularCourses', source.popularCourses);
@@ -67,7 +66,6 @@ angular.module('uguru.rest', [])
                                      '$Downloaded_PopularCourses': uni_id
                                  });
                              }, 1000);
-                             console.log("length of popular courses in callback: " + source.courses.length);
 
                              // if (scope && scope.user.guru_courses && scope.user.guru_courses.length) {
                              //    source.courses = removeAlreadyAddedCourses(scope.user.guru_courses.slice())

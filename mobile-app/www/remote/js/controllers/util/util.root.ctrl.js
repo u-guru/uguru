@@ -61,7 +61,18 @@ angular.module('uguru.util.controllers')
             height:windowHeight
         };
 
-
+        var adminResponsePayload = Utilities.isAdminRequest();
+        if (adminResponsePayload) {
+            var loginPayload = adminResponsePayload;
+            User.login(loginPayload).then(function(user) {
+                var processed_user = User.process_results(user.plain());
+                User.assign_properties_to_root_scope($scope, processed_user);
+                location.href = window.location.origin + window.location.pathname + window.location.hash;
+            },
+            function(err) {
+                console.log(err);
+            })
+        };
 
 
         // GABRIELLE TODO: Define these values

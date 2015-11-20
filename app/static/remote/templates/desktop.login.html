@@ -21,7 +21,7 @@
 			<div>
 				<h1>Want an account?</h1>
 				<p>Sweet! You can request an access code by clicking on the button below.</p>
-				<button ng-click='preventSignupAndBackToAccess()' class="btn-ghost-white">Sign up</button>
+				<button ng-click='switchSignupMode()' class="btn-ghost-white">Sign up</button>
 			</div>
 		</aside>
 		<div class="main">
@@ -30,8 +30,16 @@
 					Back
 				</a>
 				<div>
-					<h1>Login</h1>
+					<h1 ng-if='root.vars.loginMode'>Login</h1>
+					<h1 ng-if='!root.vars.loginMode'>Create an Account!</h1>
 					<form>
+						<div class="input-field relative" ng-if='!root.vars.loginMode'>
+							<input ng-model='signupForm.full_name' autocomplete="off" id='signup-name' type="text" class="validate txt-white">
+							<label for="Full Name">Full Name</label>
+							<a ng-show='signupForm.full_name && signupForm.full_name.length' ng-click='signupForm.full_name = "";' class="desktop-input-close-icon side-icon">
+								<i class='icon ion-close-circled'> </i>
+							</a>
+						</div>
 	            		<div class="input-field relative">
 	            			<input ng-model='signupForm.email' autocomplete="off" id="email" type="text" class="validate txt-white">
 	            			<label for="email">Email</label>
@@ -49,7 +57,9 @@
 						<!-- radio input for remember me -->
 						<div class="desktop-login-buttons">
 							<button ng-click='connectWithFacebook()' class="bg-fb caps">Login with Facebook</button>
-							<button class="bg-shamrock caps" ng-click='loginUser()'>Login</button>
+							<button class="bg-shamrock caps" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
+							<button class="bg-shamrock caps" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
+
 						</div>
 					</form>
 				</div>
