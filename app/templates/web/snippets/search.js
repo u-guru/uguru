@@ -68,6 +68,11 @@ $("#search-box").slideDown();
         numGurusElement = document.querySelector('#search-guru-number');
         popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
         popularCoursesParent.innerHTML ='';
+        
+        platformElement = document.querySelector('.start-modal-platforms');
+        platformHeaderElement = document.querySelector('.modal-main-container header');
+        platformSVGElement = document.querySelectorAll('.start-modal-platforms svg path');
+        
         $("#border-outer").css("fill", "white");
         $("#top-school-banner").css("width", "20%");
         $('#top-school-logo').css("width","auto");
@@ -91,6 +96,13 @@ $("#search-box").slideDown();
             var courseNode = document.createElement("li");
             courseNode.innerHTML = '<span class="course">and more</span><span class="color" style="background: ' + color + '"></span>';
             popularCoursesParent.appendChild(courseNode);
+            
+            platformElement.style.backgroundColor = color;
+            platformHeaderElement.style.backgroundColor = color;
+            for (var i = 0; i < platformSVGElement.length; i++) {
+                var indexSVGElem = platformSVGElement[i];
+                indexSVGElem.style.fill = color;
+            }
 
             var successCallback = function() {
                 setTimeout(function() {
@@ -121,6 +133,13 @@ $("#search-box").slideDown();
             var courseNode = document.createElement("li");
             courseNode.innerHTML = '<span class="course">and more</span><span class="color" style="background: ' + color + '"></span>';
             popularCoursesParent.appendChild(courseNode);
+            
+            platformElement.style.backgroundColor = color;
+            platformHeaderElement.style.backgroundColor = color;
+            for (var i = 0; i < platformSVGElement.length; i++) {
+                var indexSVGElem = platformSVGElement[i];
+                indexSVGElem.style.fill = color;
+            }
 
             var successCallback = function() {
                 setTimeout(function() {
@@ -148,6 +167,13 @@ $("#search-box").slideDown();
             var courseNode = document.createElement("li");
             courseNode.innerHTML = '<span class="course">and more</span><span class="color" style="background: ' + color + '"></span>';
             popularCoursesParent.appendChild(courseNode);
+            
+            platformElement.style.backgroundColor = color;
+            platformHeaderElement.style.backgroundColor = color;
+            for (var i = 0; i < platformSVGElement.length; i++) {
+                var indexSVGElem = platformSVGElement[i];
+                indexSVGElem.style.fill = color;
+            }
 
             var successCallback = function() {
                 setTimeout(function() {

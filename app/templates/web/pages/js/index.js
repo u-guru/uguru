@@ -120,7 +120,6 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
     platformElement = document.querySelector('.start-modal-platforms');
     platformHeaderElement = document.querySelector('.modal-main-container header');
     platformSVGElement = document.querySelectorAll('.start-modal-platforms svg path');
-    platformContactElement = document.querySelectorAll('.download-link-wrapper h1');
     numGurusElement = document.querySelector('#search-guru-number');
     searchResultsBackgroundMap = document.querySelector('.search-results-map');
     popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
@@ -191,10 +190,6 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
         platformHeaderElement.style.backgroundColor = uni_data.school_color_one;
     }
 
-    for (var i = 0; i < platformContactElement.length; i++) {
-        var indexContactElem = platformContactElement[i];
-        indexContactElem.style.color = uni_data.school_color_one;
-    }
     for (var i = 0; i < platformSVGElement.length; i++) {
         var indexSVGElem = platformSVGElement[i];
         indexSVGElem.style.fill = uni_data.school_color_one;
