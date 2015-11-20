@@ -4530,8 +4530,6 @@
 				text-align: center;
 			}
 			.sidebar-layout-list {
-				margin-top: 15px;
-				height: calc(100% - 232px);
 				overflow: auto;
 				li {
 					@include flex;
@@ -4563,6 +4561,10 @@
 							color: rgba(white,.5);
 							font-size: 18px;
 						}
+					}
+					.chip {
+						min-width: 60px;
+						text-align: center;
 					}
 				}
 			}
@@ -4620,6 +4622,10 @@
 						color: $charcoal;
 					}
 				}
+			}
+			.sidebar-layout-list {
+				height: calc(100% - 232px);
+				margin-top: 15px;
 			}
 		}
 		aside + div {
@@ -4681,6 +4687,9 @@
 	.main {
 		aside {
 			background: $moola;
+			.sidebar-layout-list {
+				height: calc(100% - 68px);
+			}
 		}
 		aside + div {
 			padding: 15px;
@@ -4794,186 +4803,165 @@
 	}
 }
 
-// start samir css 11/9
-.desktop-input-close-icon {
-	position:absolute;
-	right:10px;
-	top:50%;
-}
-
-.desktop-login-view  {
-	.desktop-input-close-icon {
-		color:rgba($slate,0.2);
-		top:30%;
-	}
-}
-// End samir-css
-
-.desktop-nav-back {
-	svg {
-		-webkit-transform: rotate(45deg);
-	    -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	    -o-transform: rotate(45deg);
-	    transform: rotate(45deg);
-	}
-}
-
-.desktop-mode {
-	#desktop-student-home-map-container, #student-home-default-map-container {
-			position: absolute !important;
-			top: 0 !important;
-			left: 0 !important;
-			overflow: hidden !important;
-			z-index: 0 !important;
-			width: calc(100%) !important;
-			height: calc(100% - 64px) !important;
-		}
+/* ---------- RANKING */
+#desktop-ranking {
 	.main {
-		z-index:1 !important;
-		background:transparent;
-	}
-}
-
-//all component overrides
-//@gabriellewee I injected desktop-view into body if desktop
-.desktop-view {
-	ion-modal-view {
-		width: 100%;
-    	height: calc(100% - 64px);
-    	left: 0;
-    	top: 64px;
-	}
-	.uguru-popup-content {
-		width:33% !important;
-	}
-}
-
-.desktop-view.platform-ios {
-	ion-modal-view {
-		top:84px;
-		height: calc(100% - 84px);
-		width:100%;
-	}
-	header, .header-nav {
-		padding-top:0px !important;
-	}
-	.guru-desktop-credibility {
-		padding-top:20px;
-	}
-	#top-menu-background-overlay {
-	    top: 64px;
-	    height: calc(100% - 84px) !important;
-	}
-
-}
-//end component overrides
-
-#top-menu-background-overlay {
-	@include opacity(.7);
-    display: none!important;
-	top: 64px;
-    z-index: 10;
-    height: calc(100% - 64px)!important;
-    width: 100%!important;
-    max-width: 100%!important;
-    margin-left: -15px!important;
-    &.active {
-		@include opacity(.7);
-    	display: block!important;
-    }
-}
-
-// a.back-icon-settings {
-// 	padding: 20px;
-//     top: 13%;
-//     width: auto;
-//     height: 80px;
-// 	svg {
-// 		@include svg-stroke(white, 5);
-// 		height: 100%;
-// 		width: auto;
-// 	}
-// }
-
-.desktop-guru-onboarding-view {
-	.cta-modal.hide-display {
-		@include opacity-important(0);
-		display: none;
-		z-index: 1000;
-		&.show {
-			@include opacity-important(1);
-			display: block!important;
+		aside {
+			background: $shamrock;
+			.sidebar-layout-list {
+				li {
+					div {
+						width: calc(100% - 40px);
+					}
+					.chip {
+						min-width: 40px;
+					}
+				}
+			}
+			.sidebar-lock {
+				@include svg-stroke(white, 4);
+				width: 100%;
+				height: 80px;
+				+ h2 {
+					padding-top: 0!important;
+				}
+			}
+			.disabled {
+				@include opacity(.7);
+				max-height: calc(100% - 317px);
+				.chip {
+					@include opacity(.7);
+				}
+			}
 		}
-	}
-}
-
-.desktop-guru-onboarding {
-	.main.default {
-		min-height: 50%;
-	}
-}
-.photo-view .main {
-	height: calc(100% - 140px);
-}
-
-.mode-links {
-	background: rgba(white,.75);
-	span {
-		color: $gabrielle;
-	}
-	svg {
-		stroke: $gabrielle!important;
-	}
-}
-
-#desktop-credibility .progress-bottom {
-	bottom: 50px;
-}
-
-.progressbar-text {
-	display: none!important;
-}
-
-#desktop-guru-home {
-	.hide-display.cta-modal.pane {
-		@include opacity-important(0);
-		position: fixed;
-		transition: 200ms ease;
-		visibility: hidden;
-		overflow: auto;
-		z-index:-1;
-		background: $charcoal;
-		&.show {
-			z-index: 1000;
-			@include opacity-important(1);
-			visibility: visible;
-		}
-	}
-}
-
-.desktop-guru-onboarding-view
-.skill-item-content.hide-display {
-	@include opacity(0);
-	visibility: hidden;
-	flex-direction: column;
-	&.show {
-		@include flex;
-		@include opacity(1);
-		visibility: visible;
-		a {
-			position: absolute;
-			top: 10px;
-			right: 10px;
-			svg {
-				@include rotate(45);
-				height: 50px;
+		aside + div {
+			padding: 15px;
+			h1 {
+				width: 100%;
+			}
+			#ranking-primary {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				padding: 15px;
+				li {
+					&:first-child, &:last-child {
+						width: 30%;
+						div {
+							background: $slate;
+							padding: 15px;
+							h2 {
+								font-size: 32px;
+								font-weight: 700;
+							}
+							h3 {
+								font-size: 22px;
+								font-weight: 600;
+							}
+						}
+					}
+					&:nth-child(2) {
+						width: 40%;
+						padding: 0 30px;
+						h3 {
+							padding-top: 15px;
+							font-weight: 700;
+						}
+						#guru-chart {
+							position: relative;
+							height: 100%;
+							width: 100%;
+							#guru-ranking-progress-bar {
+								height: 100%;
+							}
+							svg {
+								height: 100%;
+								path {
+									stroke-linecap: round;
+								}
+							}
+							#percentile {
+								@include center-xy;
+								#percentile-ranking {
+									position: relative;
+									margin-top: -20px;
+									font-size: 96px;
+									font-weight: 600;
+									line-height: 1;
+									text-align: center;
+									&::after {
+										content: "th";
+										display: block;
+										position: absolute;
+										top: 14px;
+										right: -15px;
+										font-size: 20px;
+										font-weight: 600;
+										line-height: 28px;
+										text-transform: uppercase;
+									}
+								}
+								#percentile-label {
+									font-size: 20px;
+									font-weight: 600;
+									letter-spacing: 1px;
+									line-height: 1.2;
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+			}
+			.ugrid-3 {
+				width: 100%;
+				li {
+					padding: 15px;
+				}
+			}
+			#ranking-secondary {
+				li {
+					> div {
+						@include flex;
+						@include flex-center-vertical;
+						text-align: left;
+						background: $shamrock;
+						div {
+							padding: 15px;
+							width: calc(100% - 55px);
+							font-size: 16px;
+							font-weight: 600;
+							h4 {
+								font-size: 28px;
+								font-weight: 900;
+							}
+						}
+						svg {
+							padding-right: 15px;
+							width: 55px;
+							height: 40px;
+							stroke-linecap: round;
+						}
+					}
+				}
+			}
+			#ranking-tertiary {
+				li {
+					> div {
+						background: mix($shamrock, $slate, 20%);
+						padding: 15px;
+						span {
+							display: block;
+							font-size: 20px;
+							font-weight: 600;
+						}
+						h4 {
+							font-size: 28px;
+							font-weight: 900;
+						}
+					}
+				}
 			}
 		}
 	}
-
-}
-
-.skip-button {
-	@include opacity(.5);
 }

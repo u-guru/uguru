@@ -1,109 +1,126 @@
-<ion-view hide-nav-bar='true' class='ranking bg-charcoal'>
-  <header class="bg-shamrock">
-    <h1 class="text-center">Guru Rank</h1>
-  </header>
-  <ion-header-bar class='dark-bg-header'>
-      <!-- <div class="buttons">
-        <button class="button button-clear button-header-link cancel-button" ng-click='goBack()'>Back</button>
-      </div> -->
-      <h1 class="title">Progress &amp; Ranking </h1>
-  </ion-header-bar>
-
-<ion-content class='white-bg standard-bg has-header'>
-
-    <ion-list class='standard-bg'>
-    <ion-toggle ng-change="requestPushNotifications()" ng-model="data.push_notifications" ng-show='platform.mobile' toggle-class="toggle-calm">
-        <p class='no-margin white-space-normal semibold'>
-            Turn on Push Notifications
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
-          Ain't no student got time to wait for emails
-        </p>
-      </ion-toggle>
-
-      <ion-toggle id="E2E-rank-toggle" ng-change="updateTextNotifications()" ng-model="data.text_notifications" ng-show='!platform.mobile' toggle-class="toggle-calm" >
-        <p class='no-margin white-space-normal semibold'>
-            Turn on Text Notifications
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text'  ng-show='!user.phone_number'>
-            Toggle here to add your phone number & confirm
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.phone_number && !user.phone_number_confirmed' ng-click=>
-            Toggle here to confirm your phone number
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text ' ng-show='user.phone_number && user.phone_number_confirmed'>
-            Toggle will be sent to {{user.phone_number}}
-        </p>
-      </ion-toggle>
-      <ion-item id="E2E-rank-profile"href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
-        <p class='no-margin white-space-normal semibold'>
-            Complete your guru profile
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
-            Your guru profile is not complete yet
-        </p>
-        <span class='align-right item-percentage-right'>
-          {{user.current_profile_percent}}%
-        </span>
-      </ion-item>
-      <ion-item  id="E2E-rank-credibilty" href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
-        <p class='no-margin white-space-normal semibold'>
-            Increase your credibility to 100%
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
-            You could be more credible so students trust you
-        </p>
-        <span class='align-right item-percentage-right'>
-          {{user.current_credibility_percent}}%
-        </span>
-      </ion-item>
-      <ion-item ng-click='goToPayments()' style='padding-left: 16px;' class='item item-icon-right ng-class:{"item-checkbox":user.transfer_cards.length}'>
-        <p class='no-margin white-space-normal semibold'>
-            Add Your Bank Info
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='!user.transfer_cards.length'>
-            linking your bank account so we know you're serious about earning $$$
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.transfer_cards.length'>
-            {{user.transfer_cards[0].card_type}} Debit Card **-{{user.transfer_cards[0].card_last4}}
-        </p>
-        <i class='icon icon-small ion-chevron-right opacity-4-5 hide ng-class{"show":!user.transfer_cards.length}'> </i>
-        <label class="checkbox hide ng-class:{'show':user.transfer_cards.length}">
-           <input type="checkbox" checked>
-         </label>
-      </ion-item>
-      <ion-item ng-click='confirmCommitment()' style='padding-left: 16px;' class='item item-icon-right ng-class:{"item-checkbox":user.guru_deposit}'>
-        <p class='no-margin white-space-normal semibold'>
-            Confirm Commitment &amp; Be the 1ST
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='!user.guru_deposit'>
-            Deposit <strong class='regular'> $10 </strong> to confirm full interest. You'll receive it back @ the end of the month.
-        </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.guru_deposit'>
-            You deposited $10 with {{user.transfer_cards[0].card_type}} Debit Card **-{{user.transfer_cards[0].card_last4}}
-        </p>
-        <i class='icon icon-small ion-chevron-right opacity-4-5 hide ng-class{"show":!user.guru_deposit}'> </i>
-        <label class="checkbox hide ng-class:{'show':user.guru_deposit}">
-           <input type="checkbox" checked>
-         </label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-  <div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
-    <a class="tab-item" id='home-button' href='#/guru' nav-direction='home'>
-      <img class='pure-img icon' ng-src='{{img_base}}./img/request/house-icon-outline.svg'></i>
-    </a>
-    <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
-      <i class='icon ion-person'> </i>
-    </a>
-    <!-- <a class="tab-item" id='guru-courses-button' nav-direction='swap' href='#/guru-conversations'>
-      <img class='pure-img icon' ng-src='{{img_base}}./img/request/guru_book_outline.svg'></i>
-    </a> -->
-    <a class="tab-item" id='ranking-tab-button' nav-direction='swap' href='#/guru-ranking'>
-      <i class='icon ion-connection-bars blue'> </i>
-    </a>
-    <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
-      <img class='pure-img icon' ng-src='{{img_base}}./img/settings-tab-guru.svg'/>
-    </a>
-  </div>
+<ion-view>
+	<main id='desktop-ranking' class="sidebar-layout desktop-mode" ng-if='isDesktopMode()'>
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<div class="main">
+			<div>	
+				<aside>
+					<h2>Ways to Increase Your&nbsp;Ranking</h2>
+                    <ul class="sidebar-layout-list">
+						<li>
+							<div>
+								<h3>Refer <b>3</b> students</h3>
+								<span>Increase your ranking to 81st.</span>
+							</div>
+							<span><span class="chip bg-charcoal">+3</span></span>
+						</li>
+                    </ul>
+                    <svg class="sidebar-lock" viewBox="0 0 100 100">
+                    	<path d="M50,87.5 C62.9895515,87.5 73.5196635,76.969888 73.5196635,63.9803365 C73.5196635,50.9907851 62.9895515,40.4606731 50,40.4606731 C37.0104485,40.4606731 26.4803365,50.9907851 26.4803365,63.9803365 C26.4803365,76.969888 37.0104485,87.5 50,87.5 Z M34.5857163,46.5003399 L34.5857163,28.0449531 C34.5857163,19.4597126 41.5427914,12.5 50.1289943,12.5 L50.1289943,12.5 C58.7133097,12.5 65.6722723,19.4625216 65.6722723,28.0449531 L65.6722723,46.5003399 M53.5242697,68.0063373 C56.402904,66.6739601 58.3998798,63.7598469 58.3998798,60.3793149 C58.3998798,55.7401894 54.6391255,51.9794351 50,51.9794351 C45.3608745,51.9794351 41.6001202,55.7401894 41.6001202,60.3793149 C41.6001202,63.8870489 43.7502071,66.8926032 46.8043659,68.1499627 L46.8043659,72.7328614 C46.8043659,74.5965603 48.3086676,76.0980168 50.1643178,76.0980168 C52.0161921,76.0980168 53.5242697,74.5913854 53.5242697,72.7328614 L53.5242697,68.0063373 L53.5242697,68.0063373 Z"></path>
+                    </svg>
+                    <h2>Locked</h2>
+                    <ul class="sidebar-layout-list disabled">
+						<li>
+							<div>
+								<h3>Become top <b>90th</b> percentile</h3>
+								<span>Receive 5 star ratings</span>
+							</div>
+							<span><span class="chip bg-charcoal">+3</span></span>
+						</li>
+						<li>
+							<div>
+								<h3>Increase math hourly to <b>$14</b></h3>
+								<span>Tutor 3 different courses</span>
+							</div>
+							<span><span class="chip bg-charcoal">+2</span></span>
+						</li>
+                        <li>
+                            <div>
+                                <h3>Receive <b>5 star</b> ratings</h3>
+                                <span>A rave review</span>
+                            </div>
+                            <span><span class="chip bg-charcoal">+1</span></span>
+                        </li>
+					</ul>
+                </aside>
+                <div id="ranking-content" class="text-center">
+                    <h1>Your Overall Cal Ranking</h1>
+                    <ul id="ranking-primary">
+                        <li>
+                            <div>
+                                <h3>Average<br/>Hourly Pay</h3>
+                                <h2>$25</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="guru-chart">
+                                <div id='guru-ranking-progress-bar'>
+                                    <div id="percentile">
+                                        <div id="percentile-ranking">{{user.current_guru_ranking || 25}}</div>
+                                        <div id="percentile-label">Percentile</div>
+                                    </div>
+                                    <svg viewBox="0 0 100 100" ng-if='!user.current_guru_ranking'><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,0.3)" stroke-width="8" fill-opacity="0"></path><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,1)" stroke-width="8" fill-opacity="0" style="stroke-dasharray: 289.067px, 289.067px; stroke-dashoffset: 216.8px;"></path></svg>
+                                </div>
+                            </div>
+                            <h3>Top 100 Students</h3>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>Average<br/>Weekly Pay</h3>
+                                <h2>$43</h2>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul id="ranking-secondary" class="ugrid-3">
+                        <li>
+                            <div>
+                                <div>
+                                    <span>Math at Cal</span>
+                                    <h4>35th</h4>
+                                </div>
+                                <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,0.3)" stroke-width="8" fill-opacity="0"></path><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,1)" stroke-width="8" fill-opacity="0" style="stroke-dasharray: 289.067px, 289.067px; stroke-dashoffset: 216.8px;"></path></svg>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <div>
+                                    <span>Bio at Cal</span>
+                                    <h4>67th</h4>
+                                </div>
+                                <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,0.3)" stroke-width="8" fill-opacity="0"></path><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,1)" stroke-width="8" fill-opacity="0" style="stroke-dasharray: 289.067px, 289.067px; stroke-dashoffset: 216.8px;"></path></svg>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <div>
+                                    <span>Math at all US schools</span>
+                                    <h4>1008th</h4>
+                                </div>
+                                <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,0.3)" stroke-width="8" fill-opacity="0"></path><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,1)" stroke-width="8" fill-opacity="0" style="stroke-dasharray: 289.067px, 289.067px; stroke-dashoffset: 216.8px;"></path></svg>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul id="ranking-tertiary" class="ugrid-3">
+                        <li>
+                            <div>
+                                <span>Students This Week</span>
+                                <h4>4</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>Earnings this Month</span>
+                                <h4>$1k</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>Average Session Pay</span>
+                                <h4>$34</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
 </ion-view>
