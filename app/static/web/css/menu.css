@@ -79,10 +79,12 @@ body {
 }
 
 #top #top-menu {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
   z-index: 99999;
   padding: 10px;
-  box-sizing: border-box;
 }
 
 #top #top-menu ul {
@@ -199,13 +201,10 @@ body {
 }
 
 #start-modal h1 {
-  background: #69B3A5;
   color: white;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 2px;
+  font-size: 48px;
+  font-weight: 600;
   text-align: center;
-  text-transform: uppercase;
 }
 
 #start-modal header {
@@ -214,12 +213,7 @@ body {
 
 #start-modal header #home-modal-close-link {
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
+  top: 0;
   right: 10px;
   color: white;
   font-size: 30px;
@@ -248,32 +242,45 @@ body {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  height: calc(60% - 38px);
+  height: calc(60% - 78px);
+  background: #69B3A5;
   text-align: center !important;
 }
 
 #start-modal .start-modal-platforms#start-modal-platforms-mobile li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 33.3333%;
-  padding: 20px;
+  width: 25%;
+  padding: 0 20px 20px;
 }
 
 #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   margin: 0 auto;
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
   max-width: 80px;
   max-height: 80px;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
 }
 
 #start-modal .start-modal-platforms#start-modal-platforms-mobile li a {
-  color: #2B3234;
+  filter: alpha(opacity=90);
+  opacity: 0.9;
+  font-size: 18px;
+  font-weight: 600 !important;
+  color: white;
 }
 
 #start-modal .start-modal-platforms#start-modal-platforms-mobile li a span {
   display: none;
+  font-weight: 600 !important;
 }
 
 #start-modal .start-modal-platforms#start-modal-platforms-mobile li a svg path {
@@ -285,21 +292,22 @@ body {
 }
 
 #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:active, #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:focus, #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:hover {
-  color: #69B3A5;
-}
-
-#start-modal .start-modal-platforms#start-modal-platforms-mobile li a:active svg path, #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:focus svg path, #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:hover svg path {
-  fill: #69B3A5;
+  filter: alpha(opacity=100);
+  opacity: 1;
 }
 
 #start-modal .start-modal-platforms#start-modal-platforms-wear li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 20px;
 }
 
 #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
-  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
+  display: block;
   width: 100%;
   height: auto;
   max-height: 30px;
@@ -323,11 +331,15 @@ body {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
+  width: 100%;
 }
 
 #start-modal .start-modal-link input, #start-modal .start-modal-link button {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
 }
@@ -686,8 +698,10 @@ body {
 }
 
 #menu-icons li {
-  width: calc(100% / 3);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
+  width: calc(100% / 3);
 }
 
 #menu-icons li a {
@@ -742,6 +756,11 @@ body {
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+}
+
+.download-link-wrapper h1 {
+  font-weight: 400 !important;
+  font-size: 20px !important;
 }
 
 .download-link-wrapper #submit-info-loader.svg-container {
