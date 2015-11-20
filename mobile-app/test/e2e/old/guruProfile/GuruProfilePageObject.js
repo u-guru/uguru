@@ -113,6 +113,85 @@ var GuruProfile = function()
 		browser.wait(EC.visibilityOf(this.ModalPage),3000);
 		expect(this.ModalTitle.getText()).toContain(name.toUpperCase());
 	};
+	this.OpenDesktopModal = function(name)
+	{
+		switch(name)
+		{
+			case 'course':
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruCoursesModal()"]')),3000);
+				$('#cta-box-profile-courses').click();
+				break;
+
+			case 'major' :
+				this.AddMajor.click();
+				break;
+
+			case 'skill' :	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruSkillsModal()"]')),3000);
+
+				$('#cta-box-profile-skills').click();
+				break;
+
+			case 'language':	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruLanguagesModal()"]')),3000);
+
+				$('#cta-box-profile-languages').click();
+				break;
+
+			case 'experience':	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchAddGuruExperienceModal()"]')),3000);
+
+				$('#cta-box-profile-experiences').click();
+				break;
+		};
+
+		// browser.wait(EC.visibilityOf(this.ModalPage),3000);
+		// expect(this.ModalTitle.getText()).toContain(name.toUpperCase());
+		browser.sleep(500);
+	};
+
+	this.closeDesktopModal = function(name)
+	{
+		switch(name)
+		{
+			case 'course':
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruCoursesModal()"]')),3000);
+				// $('#cta-box-profile-courses').click();
+				$('#cta-modal-profile-courses  .header-close.cta-modal-close').click();
+
+				break;
+
+			case 'major' :
+				this.AddMajor.click();
+				break;
+
+			case 'skill' :	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruSkillsModal()"]')),3000);
+
+				$('#cta-modal-profile-skills  .header-close.cta-modal-close').click();
+				break;
+
+			case 'language':	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruLanguagesModal()"]')),3000);
+
+				// $('#cta-box-profile-languages').click();
+				$('#cta-modal-profile-languages  .header-close.cta-modal-close').click();
+
+				break;
+
+			case 'experience':	
+				// browser.wait(EC.visibilityOf($('[ng-click="launchAddGuruExperienceModal()"]')),3000);
+
+				// $('#cta-box-profile-experiences').click();
+				$('#cta-modal-profile-experiences  .header-close.cta-modal-close').click();
+
+				break;
+		};
+
+		// browser.wait(EC.visibilityOf(this.ModalPage),3000);
+		// expect(this.ModalTitle.getText()).toContain(name.toUpperCase());
+		browser.sleep(500);
+	};
 
 	this.SelectElement = function(index)
 	{
@@ -128,6 +207,7 @@ var GuruProfile = function()
 		{
 			items[0].click();
 		});
+		browser.wait(EC.stalenessOf(this.ModalPage),3000);
 	};
 
 	this.deleteAllSkillsInProfile = function()

@@ -28,12 +28,13 @@ describe('Firt time usr Test', function () {
           } 
         it("Sekect a university",function()
         {
-          university.SelectSchool(0);
+          // university.SelectSchool(0);
+          $$('#school-list li a').get(0).click();
         });
     }); 
     describe('Go Throught Become guru test',function()
     {
-        var sections = $$('#guru-onboarding-grid li')
+        var sections = $$('#guru-onboarding-grid li a')
         describe('check correct url and have 3 sections',function()
         {
 
@@ -57,14 +58,20 @@ describe('Firt time usr Test', function () {
             it('Select course',function()
             { 
               browser.wait(EC.visibilityOf(coursepage),3000)
-              course.SelectCourse(0);
+              // course.SelectCourse(0);
+              $$('#desktop-courses li a').get(0).click()
             });
             it('Select course',function()
             {
-              course.SelectCourse(1);
-            }); it('Select course',function()
+              // course.SelectCourse(1);
+              $$('#desktop-courses li a').get(1).click()
+
+            }); 
+            it('Select course',function()
             {
-              course.SelectCourse(2);
+              // course.SelectCourse(2);
+              $$('#desktop-courses li a').get(2).click()
+
             });
             it('Check Select Courses has 3',function()
             {
@@ -89,18 +96,20 @@ describe('Firt time usr Test', function () {
             browser.wait(EC.visibilityOf(categorypage),3000)
 
             // category.SelectSkill(1);
-            $$('[ng-repeat="category in categories"]').get(1).click()
+            $$('[ng-repeat="category in categories"]').get(0).click()
+
           });
 
           it('Select skill',function()
           {
-             $$('[ng-repeat="category in categories"]').get(1).$$('[ng-repeat = "subcategory in category.subcategories"]').get(2).click()
-             $$('[ng-repeat="category in categories"]').get(1).$$('[ng-repeat = "subcategory in category.subcategories"]').get(1).click()
-
+            // console.log( $$('[ng-repeat="category in categories"]').get(1).$$('[ng-repeat = "subcategory in category.subcategories"] input').counts()); 
+           $$('[ng-repeat = "subcategory in category.subcategories"] input').get(2).click()
+           $$('[ng-repeat = "subcategory in category.subcategories"] input').get(1).click()
           })
 
           it('close skill',function()
           {
+
             $$('[ng-click="hideCategorySkillsModal()"]').get(1).click();
           });
 
@@ -110,22 +119,35 @@ describe('Firt time usr Test', function () {
           })
 
         });
-
-        describe('Upload a photo',function()
+        if(global.browserName == "CHROME")
         {
-          it('Open category',function()
+          describe('Upload a photo',function()
           {
-            sections.get(2).click();
-          });
-          it('Upload Photo',function()
-          {
-            photo.UploadPhoto('small');
-          });
+            it('Open photo',function()
+            {
+              sections.get(2).click();
+            });
+            it('Upload Photo',function()
+            {
+              photo.UploadPhoto('small');
+            });
 
-        });
+          });
+        }
+        else
+        {
+          it('Skip upload',function()
+          {
+            $('[ng-click="skipBecomeGuruAndGoToGuru()"]').click();
+          });
+        }
         it('Check A success message is shown',function()
         {
           doc.checkMsg("Awesome! You're all set");
+        });
+        it('check page is guru-home',function()
+        {
+          expect(browser.getCurrentUrl()).toContain('guru-home');
         });
     });
 
@@ -135,6 +157,7 @@ describe('Firt time usr Test', function () {
 
       it("Active setting",function()
       {
+
         setting.click();
       });
 
@@ -172,13 +195,18 @@ describe('Firt time usr Test', function () {
       {
         expect(browser.getCurrentUrl()).toContain('guru-home');
       });
+      it("Active setting",function()
+      {
+
+        setting.click();
+      });
     });
 
     describe('Edit profile',function()
     {
       var editprofile = $('#cta-box-profile')
       var intro = $('[ng-click="launchGuruIntroductionModal()"]')
-      var contact = $('[ng-click="launchContactGuruModal()"]')
+      var contact = $('#cta-box-profile-contact')
       it ('active editprofile',function()
       {
         editprofile.click();
@@ -206,7 +234,7 @@ describe('Firt time usr Test', function () {
 
         it('Check intro is saved',function()
         { 
-          expect($('#profile-intro p').getText()).toBe('123123123');
+          expect($('#profile-intro textarea').getText()).toBe('123123123');
         });
       });
     
@@ -221,6 +249,7 @@ describe('Firt time usr Test', function () {
         
         it('select contact ',function()
         {
+          browser.wait(EC.visibilityOf($$('#contact-type-list input')).get(0))
           contactOptions.get(0).click();
           contactOptions.get(3).click();
         });
@@ -231,7 +260,7 @@ describe('Firt time usr Test', function () {
           expect($('#guru-introduction-modal').isDisplayed()).toBe(false);
         });
       });
-      var str = ['course','major','language','experience','skill'];
+      var str = ['course','language','experience','skill'];
 
       describe('Major/Course/Category/language',function()
       {
@@ -242,37 +271,43 @@ describe('Firt time usr Test', function () {
 
         for(var i = 0 ; i < str.length ;++ i)
         {
-          (function (title) {
+          (function (title,index) {
               describe('Open '+title+' Modal', function () {
             
               it('Open Modal',function()
               {
-                guruprofile.OpenModal(title);
+                guruprofile.OpenDesktopModal(title);
               });
                 it('close Modal',function()
                 {
-                  guruprofile.CloseModal();
+                  // $$('.header-close.cta-modal-close').get(index+2).click();
+                  // guruprofile.CloseModal();
+                  guruprofile.closeDesktopModal(title);
                 });
 
               }); 
-          })(str[i])
+          })(str[i],i)
         }
          it('save edit mode',function()
         {
-          $('#btn-edit-profile').click();
+          $('#btn-save-profile').click();
         });
       })
       
       it('close Edit profile',function()
       {
-        $('#desktop-guru-profile .cta-modal-close').click();
+        $$('#desktop-guru-profile .cta-modal-close').get(0).click();
+
       });
     })
+
     describe('Edit Credibility',function()
     {
         it('Go to guru-credibility',function()
         {
           // browser.get("http://"+localhost+":5000/static/remote/index.html#/guru-home");
+          // browser.get("http://"+localhost+":5000/static/remote/index.html#/guru-home");
+
           browser.wait(EC.elementToBeClickable( $("#cta-box-credibility")),2000);
         });
 
@@ -286,7 +321,7 @@ describe('Firt time usr Test', function () {
             var groupName  = ['TRANSCRIPT','FACEBOOK','PHONE','EMAIL','EXPERIENCE']
             var groupButton = ['transcript','Facebook','number','Email','Item']
 
-            for(var i = 0; i < 5 ; ++ i)
+            for(var i = 0 ; i < 5 ; ++ i)
             {
               (function(index,title,buttonName)
               {
@@ -337,7 +372,10 @@ describe('Firt time usr Test', function () {
                                         {
                                           // expect(true).toBe(false,"Not Completed Yet,Alert Message");
 
-                                           doc.openWrapper('123456789')
+                                           // doc.openWrapper('123456789')
+                                           browser.wait(EC.visibilityOf($('.uguru-popup.high-z-index.sidebar-popup.show')),2000);
+                                           $('[ng-model="popupInput.phoneConfirm"]').sendKeys("1231231234")
+                                           $('.uguru-popup.high-z-index.sidebar-popup.show button').click();
                                            doc.checkMsg('Saved!');
 
                                         });
@@ -349,8 +387,12 @@ describe('Firt time usr Test', function () {
 
                                         it('Enter Email : jason@sjsu.edu',function()
                                         {
-                                         doc.openWrapper('jason@sjsu.edu');
-                                         doc.checkMsg('Email sent to jason@sjsu.edu');
+                                         // doc.openWrapper('jason@sjsu.edu');
+                                         browser.wait(EC.visibilityOf($('.uguru-popup.high-z-index.sidebar-popup.show')),2000);
+
+                                          $('[ng-model="popupInput.emailConfirm"]').sendKeys("jason@sjsu.edu")
+                                          $('.uguru-popup.high-z-index.sidebar-popup.show button').click();
+                                           doc.checkMsg('Email sent to jason@sjsu.edu');
                                         });
                                     });
                                 break;

@@ -10,20 +10,14 @@ exports.config = {
 
 
          capabilities: {
-             'browserName': 'chrome'
+             'browserName': 'safari'
          },
         specs:
         [
-          '../e2e/browser/*Spec.js', 
-          // '../e2e/browser/iphoneSpec.js', 
-   
+          '../e2e/browser/*Spec.js',    
         ],
           suites:
         {
-            ios  :[
-                  '../e2e/old/workflows/workflow#1.js',    
-
-                 ]
           
         },
    
