@@ -2,7 +2,7 @@
 	<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 	<header class="desktop-header">
 		<a></a>
-        <a class='cta-modal-close desktop-header-next'>
+        <a class='cta-modal-close desktop-header-next desktop-header-close'>
             <svg viewBox="0 0 100 100">
                 <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
             </svg>
@@ -39,7 +39,10 @@
 			</a>
 		</header>
 		<div>
-			<h1>{{category.name}}</h1>
+			<h1>
+				{{category.name}}
+				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+			</h1>
 			<ul class="desktop-card-list">
 				<li ng-repeat='subcategory in category.subcategories'>
 					<input type="checkbox" ng-model='subcategory.active' ng-change='updateCategoryCount(active_category, subcategory, $index)'/>

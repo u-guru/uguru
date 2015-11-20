@@ -20,11 +20,10 @@
                         <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
                     </svg>
                 </i>
-                <input id='course-input-1' autocomplete="off" type="text" ng-model="search_text.course" class='bg-charcoal' ng-focus='hideLabel = true;' ng-blue='hideLabel = false;'>
-                <label for="course-input-1" class='ng-class:{"hide": search_text.course.length || hideLabel}'>
+                <input id='course-input-1' autocomplete="off" type="text" ng-model="search_text.course" class='bg-charcoal'>
+                <label for="course-input-1">
                     <span ng-show='courses.length'> search among {{courses.length}} popular courses </span>
                     <span ng-hide='courses.length'> search popular courses </span>
-
                 </label>
                 <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
 					<i class="icon ion-close-circled text-white"></i>
