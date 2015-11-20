@@ -3,7 +3,8 @@ var Category = function()
 {
 	this.nextStep      = element.all(by.css('[ng-click="nextSlide()"]'));
 	this.Tilte 		   = element(by.css('#category-skills .ng-binding'));
-	this.CategorySkill = element.all(by.repeater('subcategory in active_category.subcategories'));
+	// this.CategorySkill = element.all(by.repeater('subcategory in active_category.subcategories'));
+	this.CategorySkill = $$('[ng-repeat = "subcategory in active_category.subcategories"] input')
 	this.EntirePage    = element(by.css(".modal-backdrop.active"));
 	this.ActiveSkills  = element.all(by.binding('category.active_subcategories'))
 	this.nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
@@ -16,12 +17,15 @@ var Category = function()
 
 	this.ChooseSkillSection = function()
 	{
-		doc.newPickList('#skills-list',index);
+		// doc.newPickList('#skills-list',index);
+		lib.selectItem($$('#skills-list li a'),index);
+
 	};
 
 	this.SelectSkill = function(index)
 	{
-		doc.newPickList('#skills-list',index);
+		// doc.newPickList('#skills-list',index);
+		lib.selectItem($$('#skills-list li a'),index);
 	};
 
 	this.SkillIsExist = function()

@@ -1,7 +1,10 @@
 
 describe('Firt time usr Test', function () {
   var ListOfCode =  doc.generateRandomString(["","1"],1,"cool")
-
+  beforeAll(function()
+      {
+        doc.ResetAll();
+      });
     describe('@Workflow : Pre-Student Page', function () {
 
         for( i = 0; i < ListOfCode.length; ++ i)
@@ -109,8 +112,7 @@ describe('Firt time usr Test', function () {
 
           it('close skill',function()
           {
-
-            $$('[ng-click="hideCategorySkillsModal()"]').get(1).click();
+            $$('[ng-click="hideCategorySkillsModal()"]').get(0).click();
           });
 
           it('close a Category',function()
@@ -321,7 +323,7 @@ describe('Firt time usr Test', function () {
             var groupName  = ['TRANSCRIPT','FACEBOOK','PHONE','EMAIL','EXPERIENCE']
             var groupButton = ['transcript','Facebook','number','Email','Item']
 
-            for(var i = 0 ; i < 5 ; ++ i)
+            for(var i = 2 ; i < 5 ; ++ i)
             {
               (function(index,title,buttonName)
               {
@@ -330,7 +332,9 @@ describe('Firt time usr Test', function () {
                   it('Click : '+ title,function()
                   {
                     // doc.newPickList('credit-slider',index);
-                      doc.newPickList('#credit-grid',index);
+                      // doc.newPickList('#credit-grid',index);
+                      if(index!=0)
+                        $$('#credit-grid li a').get(index).click();
                   });
                   describe('[ Incompleted ] Check Feattures functional : Add '+ buttonName,function()
                   {

@@ -1,4 +1,4 @@
-describe('Long Workflow Test',function()
+describe('Best case Test on mobile size',function()
 {
 	var ListOfCode =  doc.generateRandomString(["","1"],3,"cool")
 
@@ -31,7 +31,9 @@ describe('Long Workflow Test',function()
 
           it("Sekect a university",function()
           {
-          	university.SelectSchool();
+          	// university.SelectSchool();
+          	$$('#school-list li a').get(0).click();
+
           });
     });	
 	
@@ -40,27 +42,26 @@ describe('Long Workflow Test',function()
 		describe('-> Course', function () {
 			it('Select course',function()
 			{
-				doc.waitLoading();
+				// doc.waitLoading();
 				course.SelectCourse(0);
+				// $$('#courses-list li a').get(0).click();
+
 			});
 			it('Next slide',function()
 			{
-				course.GoToNextPage();
+				// course.GoToNextPage();
+				$$('[ng-click="nextSlide()"]').get(0).click();
 			});
 		});	
 	
 	var CategoryName = ['Academic','BAKING','DELIVERY','HOUSEHOLD','PHOTOGRAPHY','SERVICES','Sports & Muscle','TECHNOLOGY & IT']
 		describe("Category",function () {
-			for (var i = 0 ; i< 8 ; ++i)
+			for (var i = 0 ; i< 1 ; ++i)
 			{
 		        (function(index,title) {
 			        describe('Click the category #'+index,function()
 			        {
 			        	var count;
-			        	it('Check category title back To DeFault Name',function()
-			        	{
-			        		category.CheckTitleIsMatch("SELECT CATEGORY")
-			        	});
 		        		it('Open a Category',function()
 						{
 							category.SelectSkill(index);
@@ -98,20 +99,20 @@ describe('Long Workflow Test',function()
 		describe('Camera auto quit after taking picture at @sam1rm dev , in @f230536 the app restarted', function () {	    	
 			it('Next page',function()
     		{
-    			category.GoToPhotoPage();
+    			// category.GoToPhotoPage();
+    			$$('[ng-click="nextSlide()"]').get(1).click();
     		});
 			it('Waiting to received the message',function()
 			{
-				 photo.UploadPhoto('small');
+				 // photo.UploadPhoto('small');
 				//photo.NextPage();
+				$('[ng-click="goToGuruMode()"]').click();
 			});
 		});	
 		
 	});
 	describe('@Workflow : Sign Up',function()
 	{
-		// var account = new Account();
-		// var sidebar = new Sidebar();
 
 		it('Launch Profile',function()
 		{
@@ -135,7 +136,7 @@ describe('Long Workflow Test',function()
 
 			it('Enter Password : ',function()
 			{
-				account.enterPassword('test');
+				account.enterPassword('test123');
 			});
 
 			it('Create account',function()
@@ -154,35 +155,35 @@ describe('Long Workflow Test',function()
     	{
     		guru.OpenProfile();
     	});
- 		it('Check major/course/skill are added',function()
-		{
+ 	// 	it('Check major/course/skill are added',function()
+		// {
 
-			expect(guruprofile.countMajor()).toBeGreaterThan(0,"No major list is updated to new account");
-			expect(guruprofile.countCourse()).toBeGreaterThan(0,"No course list is updated to new account");
-			expect(guruprofile.countSkill()).toBeGreaterThan(0,"No skill list is updated to new account");
-		});
-		it('active edit mode',function()
-			{
-				guruprofile.ActiveEditMode();
-			});
-		var str = ['course','major','language','experience','skill'];
-		for(var i = 0 ; i < str.length ;++ i)
-		{
-			(function (title) {
-		    	describe('Open '+title+' Modal', function () {
+		// 	// expect(guruprofile.countMajor()).toBeGreaterThan(0,"No major list is updated to new account");
+		// 	expect(guruprofile.countCourse()).toBeGreaterThan(0,"No course list is updated to new account");
+		// 	expect(guruprofile.countSkill()).toBeGreaterThan(0,"No skill list is updated to new account");
+		// });
+		// it('active edit mode',function()
+		// 	{
+		// 		guruprofile.ActiveEditMode();
+		// 	});
+		// var str = ['course','language','experience','skill'];
+		// for(var i = 0 ; i < str.length ;++ i)
+		// {
+		// 	(function (title) {
+		//     	describe('Open '+title+' Modal', function () {
 				
-					it('Open Modal',function()
-					{
-						guruprofile.OpenModal(title);
-					});
-		    		it('close Modal',function()
-		    		{
-		    			guruprofile.CloseModal();
-		    		});
+		// 			it('Open Modal',function()
+		// 			{
+		// 				guruprofile.OpenModal(title);
+		// 			});
+		//     		it('close Modal',function()
+		//     		{
+		//     			guruprofile.CloseModal();
+		//     		});
 
-		    	});	
-			})(str[i])
-		}
+		//     	});	
+		// 	})(str[i])
+		// }
     });
   
 	describe("Check all Creditability Page",function()
@@ -195,13 +196,13 @@ describe('Long Workflow Test',function()
     		guru.OpenCredibility();
 
 		 });
-		for(var i = 0; i < 5 ; ++ i)
+		for(var i = 2; i < 5 ; ++ i)
 		{
 			(function(index,title,buttonName)
 			{
 				describe('Test FeAattures : '+title , function()
 				{
-					it('Click : '+ title,function()
+					it('Select section : '+ title,function()
 					{
 						// doc.newPickList('credit-slider',index);
 						credibility.OpenCredibilityOptions(index);
@@ -239,10 +240,8 @@ describe('Long Workflow Test',function()
 				   		  		    {
 				   		  		    	it('Login Facebook',function()
 				   		  		    	{
-				   		  		    		expect(true).toBe(false,"Facebook Can't Not Be Test");
-											//doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-											//doc.checkMsg("Saved!");
-											;
+				   		  		    		doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");                            
+								
 				   		  		    	});
 				   		  		    });
 			   		  		        break;
@@ -254,9 +253,12 @@ describe('Long Workflow Test',function()
 	  	           		  		    	{
 	  	           		  		    		// expect(true).toBe(false,"Not Completed Yet,Alert Message");
 
-											 doc.openWrapper('123456789')
+											 // doc.openWrapper('123456789')
+											 // doc.checkMsg('Saved!');
+											 browser.wait(EC.visibilityOf($('.uguru-popup.high-z-index.sidebar-popup.show')),2000);
+											 $('[ng-model="popupInput.phoneConfirm"]').sendKeys("1231231234")
+											 $('.uguru-popup.high-z-index.sidebar-popup.show button').click();
 											 doc.checkMsg('Saved!');
-
 	  	           		  		    	});
 	  	           		  		    });
 			   		  	       		break;
@@ -266,8 +268,12 @@ describe('Long Workflow Test',function()
 
   	           		  		    		it('Enter Email : jason@sjsu.edu',function()
 	  	           		  		    	{
-		       		  	        			 doc.openWrapper('jason@sjsu.edu');
-		       		  	        			 doc.checkMsg('Email sent to jason@sjsu.edu');
+		       		  	        		// doc.openWrapper('jason@sjsu.edu');
+		       		  	        		browser.wait(EC.visibilityOf($('.uguru-popup.high-z-index.sidebar-popup.show')),2000);
+
+		       		  	        		 $('[ng-model="popupInput.emailConfirm"]').sendKeys("jason@sjsu.edu")
+		       		  	        		 $('.uguru-popup.high-z-index.sidebar-popup.show button').click();
+		       		  	        		  doc.checkMsg('Email sent to jason@sjsu.edu');
 	  	           		  		    	});
 	  		       		  		    });
 			   		  		    	break;
@@ -285,15 +291,7 @@ describe('Long Workflow Test',function()
   		    		   		  		    	});
 	  		    	   		  		    	it('[No Working For now] Year of Experience',function()
 	  		    	   		  		    	{
-	  		    	   		  		    		// expect(true).toBe(false,"Not Completed Yet");
-	  		    								// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-	  		    					
-  		    								    // browser.touchActions()
-  		    								    // 	.mouseDown(element(by.css('.modal-backdrop.active input')))
-		    								      //   .mouseMove({x: 200, y: 0}) // try different value of x
-		    								      //   .mouseUp()
-		    								      //   .perform();
-
+	  		    
 		    								    browser.actions()
 		    								      .mouseMove(element(by.css('.modal-backdrop.active input')), {x: 100, y: 0})
 		    								      .click()
@@ -310,25 +308,16 @@ describe('Long Workflow Test',function()
 	  		    	   		  		    	it('Save info',function()
 	  		    	   		  		    	{
 	  		    								element(by.css('.modal-backdrop.active button')).click()
-	  		    								doc.checkMsg('Guru Guy saved!');
 	  		    	   		  		    	});
-	  		    	   		  		    	it('Check Experience Is Added',function()
-  		    	   		  		    		{
-  		    	   		  		    			element(by.repeater('experience in user.guru_experiences').isPresent()).toBe(true, "List is not Added Yet");
-  		    	   		  		    		});
+		  		    	   		  		    it('Check Experience Is Saved',function()
+	                                        {
+	                                            doc.checkMsg('saved!');
+	                                        });
 	  		       		  		    	});	  		 
 	  		       		  		    });
 	  		       		  		    break;		
   		       		  		}
 					});
-
-					// it('Check Creditability inscreasing : '+(index+1)*20+' %',function()
-					// {
-					// 	// expect(true).toBe(false,"Not Completed Yet");
-				 // 		doc.tabBar('guru-tab-bar',0)
-			 	// 		expect(CredValue.getText()).toContain((index+1)*20,"Incorrect % of Creditability");
-					// 	browser.get("http://"+localhost+":8100/#/guru-credibility");		
-					// });	
 
 				});
 				
@@ -337,14 +326,4 @@ describe('Long Workflow Test',function()
 		
 	});
 
-    // it("Check Error Console message",function()
-    // 	{
-	
-    // 	});
-    // afterEach(function()
-    // {
-    // 	   browser.manage().logs().get('browser').then(function(browserLogs) {
-    // 		  expect(browserLogs.length == 0).toBe(true,'log: ' + require('util').inspect(browserLogs))
-    // 	   });
-    // });
 });

@@ -78,7 +78,9 @@ var Course = function()
 	};
 	 this.SelectCourse = function(index)
 	 {
-	 	doc.newPickList('#courses-list',index);
+	 	// doc.newPickList('#courses-list',index);
+			lib.selectItem($$('#courses-list li a'),index);
+
 	 };
 
 
