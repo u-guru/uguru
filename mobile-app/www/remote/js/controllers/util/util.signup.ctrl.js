@@ -1454,7 +1454,8 @@ angular.module('uguru.util.controllers')
             // }
             $scope.signupModal.hide();
             // $state.go('^.guru')
-            AnimationService.flip('^.guru');
+            if(!$scope.root.vars.guru_mode)
+              AnimationService.flip('^.guru');
 
           }
 

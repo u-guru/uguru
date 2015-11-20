@@ -850,9 +850,13 @@ angular.module('uguru.guru.controllers')
 
     }
 
+    //Thie is template fix for Modal show and hiden in Sidebar which will cause the slide not update
+    $scope.$on('$ionicView.beforeEnter', function() {
+        $ionicSlideBoxDelegate.update();
+    });
+    
     $scope.$on('$ionicView.enter', function() {
           $scope.refreshTipsAndRanking($scope.user);
-
           $timeout(function() {
 
             if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
@@ -871,6 +875,8 @@ angular.module('uguru.guru.controllers')
 
      $scope.$on('modal.hidden', function() {
         // console.error("ion modal leave  guru ctrl")
+        // $ionicSlideBoxDelegate.update();
+
         if (DeviceService.doesCordovaExist()) {
           cordova.plugins.Keyboard.close();
         }
