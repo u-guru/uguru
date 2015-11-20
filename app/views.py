@@ -542,6 +542,10 @@ def admin_components():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
 
+@app.route('/admin/users/<user_id>/login')
+def login_as_user_admin(user_id):
+    return redirect(url_for('user_admin_login_user', user_id=user_id))
+
 @app.route('/admin/users/<_id>/')
 def admin_users(_id):
     if not session.get('admin'):
@@ -986,6 +990,12 @@ def app_route_gpa():
         # return render_template('/gpa-remote/index.html')
         # return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
         # return redirect('/static/gpa-remote/index.html')
+
+@app.route('/app/<user_id>/')
+def user_admin_login_user(user_id=None):
+    if not session.get('admin') or not user_id:
+        return redirect('/')
+    return redirect('/static/remote/index.html?admin_token=fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6&user_id=' + str(user_id))
 
 @app.route('/production/app/')
 @app.route('/app/production/')
