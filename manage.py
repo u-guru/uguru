@@ -927,8 +927,20 @@ if arg =='import':
         json.dump(error_users, fp, indent = 4)
     print len(error_users), 'error users'
 
+def getStripeStudentCharges():
+    import stripe
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    charges = stripe.Charge.all(limit=100)
+    return charges
+
+def getStripeCustomers():
+    import stripe
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    customers = stripe.Customer.all()
+    return customers
+
 if arg =='link_payments':
-    import json
+    import json, sys
     payment_arr = json.load(open('old_payment_data.json'))
     cashout_ids = []
     payment_ids = []
@@ -936,7 +948,29 @@ if arg =='link_payments':
     count = 0
 
     ## 0. repair all cards for all emails
-            # email --> customer_ids
+        # email --> customer_ids
+
+    # customers = getStripeCustomers()
+    # print len(customers), 'customers'
+    charges = getStripeStudentCharges()
+    print len(charges), 'charges'
+    sys.exit()
+    for payment in payment_arr:
+        student_email = payment.get('student_email')
+        guru_email = payment.get('guru_email')
+
+        if student_email:
+            student = User.query.filter_by(email=student_email).all()
+            if student:
+                count += 1
+
+        if guru_email:
+            guru = User.query.filter_by(email=guru_email).all()
+            if guru:
+                count += 1
+    print count
+    sys.exit()
+
 
     ## 1. Handle all cashouts + cash out cards based on tutor emails
         # Check if they already have one
