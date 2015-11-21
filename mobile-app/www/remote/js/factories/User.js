@@ -35,15 +35,64 @@ angular.module('uguru.user', [])
                 return result;
     }
 
+    var parseRFC822Date = function(rfc_date) {
+        return new Date(Date.parse(rfc_date))
+    }
+
+    var jsDateObjToMessageFormat = function(date) {
+          var date = parseRFC822Date(date);
+          var hours = date.getHours();
+          var minutes = date.getMinutes();
+          var ampm = hours >= 12 ? 'pm' : 'am';
+          hours = hours % 12;
+          hours = hours ? hours : 12; // the hour '0' should be '12'
+          minutes = minutes < 10 ? '0'+minutes : minutes;
+          var strTime = hours + ':' + minutes + ' ' + ampm;
+          return strTime;
+    }
+
+    var formatProfileUrl = function(profile_url) {
+        if (profile_url === '/static/img/default-photo.jpg') {
+            return img_base + BASE + "img/avatar.svg"
+        }
+        return profile_url
+    }
+
     var parseRelationships = function(relationships) {
         for (var i = 0; i < relationships.length; i++) {
             var indexRelationship = relationships[i];
+
+            // parse student name
             var nameSplitArr = indexRelationship.student.name.split(' ');
-            var firstName = nameSplitArr[0];
-            var lastInitial = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+            var firstNameStudent = nameSplitArr[0];
+            var lastInitialStudent = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+            indexRelationship.student.name = firstNameStudent + ' ' + lastInitialStudent;
+            indexRelationship.student.profile_url = formatProfileUrl(indexRelationship.student.profile_url)
+
+            // parse guru name
+            var nameSplitArr = indexRelationship.guru.name.split(' ');
+            var firstNameGuru = nameSplitArr[0];
+            var lastInitialGuru = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+            indexRelationship.guru.name = firstNameGuru + ' ' + lastInitialGuru;
+            indexRelationship.guru.profile_url = formatProfileUrl(indexRelationship.guru.profile_url)
 
 
-            indexRelationship.student.name = firstName + ' ' + lastInitial;
+            if (indexRelationship.messages && indexRelationship.messages.length) {
+                for (var j = 0; j < indexRelationship.messages.length; j++) {
+                    var indexMessage = indexRelationship.messages[j];
+                    indexMessage.time_created = jsDateObjToMessageFormat(indexMessage.time_created);
+                    if (indexMessage.sender.id === indexRelationship.student.id) {
+                        indexMessage.sender.name = indexRelationship.student.name;
+                        indexMessage.sender.profile_url = formatProfileUrl(indexRelationship.student.profile_url);
+                    } else {
+                        indexMessage.sender.name = indexRelationship.guru.name;
+                        indexMessage.sender.profile_url = formatProfileUrl(indexRelationship.guru.profile_url);
+                    }
+
+                }
+            }
+            // indexRelationship.guru.name = firstName + ' ' + lastInitial;
+
         }
         return relationships;
     }

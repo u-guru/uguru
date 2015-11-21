@@ -927,6 +927,155 @@ if arg =='import':
         json.dump(error_users, fp, indent = 4)
     print len(error_users), 'error users'
 
+if arg =='link_payments':
+    import json
+    payment_arr = json.load(open('old_payment_data.json'))
+    cashout_ids = []
+    payment_ids = []
+    session_arr = []
+    count = 0
+
+    ## 0. repair all cards for all emails
+            # email --> customer_ids
+
+    ## 1. Handle all cashouts + cash out cards based on tutor emails
+        # Check if they already have one
+        # email --> debit card
+            # --> create transaction (cash out)
+        # email --> bank account
+            # --> create transaction (cash out)
+
+    for payment in payment_arr:
+        if payment.get('tutor_id') and payment.get('student_id') and payment.get('student_email') and payment.get('tutor_email'):
+
+            student = User.query.filter_by(email=payment.get('student_email')).all()
+            tutor = User.query.filter_by(email=payment.get('tutor_email')).all()
+            relationship_id = None
+            if student and tutor:
+                # 1. find relationship
+                session_arr.append(payment)
+
+            #2. Create a session
+                # - time created
+                # - skill name
+                # - is session is true
+                # - if student, student_id
+                # - if guru, student_id
+                # - if tutor_rate,
+                # - if time_amount
+
+
+
+            # elif tutor and not student:
+            #     count += 1
+            # elif student and not tutor:
+                ## create a transaction
+                ## add card
+
+    ## 3.  For all students without sessions
+        ## for each session -->
+
+
+                # 2. create a transaction
+                # 3.
+
+                ##
+                ## print payment.get('student_email'), student, payment.get('tutor_email'), tutor
+            ## 0. Find relationship
+            ## ---- if not, print
+            ## 1. create a session
+                    # time_created
+                    # guru_id
+                    # student_id
+            ## 2.
+
+        #      "time_amount": 1.0,
+        # "confirmed_tutor_rate": null,
+        # "tutor_confirmed": null,
+        # "num_minutes": null,
+        # "confirmed_payment_id": null,
+        # "time_created": "2014-12-06 17:01:55.595062",
+        # "tutor_email": "chnicoloso@berkeley.edu",
+        # "student_paid_amount": 18.0,
+        # "id": 738,
+        # "skill_id": [
+        #     5886
+        # ],
+        # "stripe_recipient_id": null,
+        # "student_id": 2290,
+        # "student_confirmed": true,
+        # "student_description": "You used $1.0 in credit and were billed $17.0 to your card.",
+        # "tutor_received_amount": 16.2,
+        # "stripe_charge_id": "ch_157FuS228F3k8kGfPpOJCL65",
+        # "status": null,
+        # "refunded": null,
+        # "tutor_id": 1810,
+        # "flag": null,
+        # "skill_name": "SPANISH.4",
+        # "tutor_rate": 18.0,
+        # "credits_used": null,
+        # "confirmed_time_amount": null,
+        # "request_id": 957,
+        # "student_email": "dlecher@berkeley.edu",
+        # "num_hours": null,
+        # "tutor_description": "Earnings from your session with Danielle after 10% fee"
+    print len(session_arr), count
+
+if arg =='link_courses':
+    import json
+    def getPopularCourses(uni_id):
+        university = University.query.get(uni_id)
+        university_courses = university.courses
+        popular_courses = [course for course in university_courses if course.is_popular]
+        print '%s popular courses found for %s' % (len(popular_courses), university.name)
+        return popular_courses
+
+    # num w/o full name
+    def processPopularCourses(courses):
+        popular_courses_with_both = [course for course in courses if course.short_name and course.full_name]
+        popular_courses_with_short_only = [course for course in courses if course.short_name and not course.full_name]
+        return popular_courses_with_short_only
+
+    # links && returns success rate
+    # prints success rate
+    def getUniversityCourseDuplicates(uni_id):
+        from collections import Counter
+        course_name_arr = []
+        for course in University.query.get(uni_id).courses:
+            course_name_arr.append(course.short_name.upper())
+        course_dist = Counter(course_name_arr)
+        duplicate_names = []
+        for key in course_dist:
+            if course_dist[key] >= 2:
+                duplicate_names.append(key)
+        return duplicate_names
+
+    def repair_courses(uni_id):
+
+        popular_courses = getPopularCourses(uni_id)
+        popular_short_name_only = processPopularCourses(popular_courses)
+        duplicate_course_names = getUniversityCourseDuplicates(uni_id)
+
+        found = 0
+        from app.database import db_session
+        university_courses = University.query.get(2307).courses
+        for course in popular_short_name_only:
+            same_courses = [_course for _course in university_courses if _course.short_name.upper() == course.short_name.upper()]
+            for same_course in same_courses:
+                if same_course.short_name and same_course.full_name and not same_course.is_popular and same_course.id != course.id:
+                    found += 1
+                    course.full_name = same_course.full_name
+                    print course.short_name, 'updated with full name', course.full_name
+                    db_session.commit()
+        print "%s popular courses repaired" % found
+
+
+    repair_courses(2307)
+
+
+
+    ## the goal is to link the titles with popular courses
+
 if arg =='migrate':
 
     from app.models import *

@@ -51,7 +51,7 @@
 		height: 64px;
 		background: $gabrielle;
 		padding: 0 15px;
-		div {
+		div:nth-child(2) {
 			@include flex;
 			@include flex-center-vertical;
 			position: relative;
@@ -59,6 +59,19 @@
 			width: 100%;
 			max-width: 1280px;
 			height: 100%;
+			div {
+				@include flex;
+				@include flex-center-vertical;
+				position: relative;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 1280px;
+				height: 100%;
+				&.active {
+					z-index: 13;
+					background: $gabrielle;
+				}
+			}
 			#top-logo {
 				display: block;
 				width: calc(100% - 90px);
@@ -99,15 +112,19 @@
 				}
 			}
 			#top-menu-links {
+				@include transition(.15s ease-in-out);
+				@include translate-y(-500px);
+				@include opacity(0);
 				position: absolute;
-				z-index: 999;
+				z-index: 11;
 				right: 0;
 				top: 64px;
 				background: $gabrielle;
-				height: 0;
 				overflow: hidden;
 				&.active {
-					height: auto;
+					@include transition(.15s ease-in-out);
+					@include translate-y(0);
+					@include opacity(1);
 					overflow: visible;
 				}
 				ul {
@@ -223,6 +240,23 @@
 			}
 		}
 	}
+}
+
+/* ---------- MENU OVERLAY */
+#top-menu-background-overlay {
+	@include transition-type(opacity, .15s ease-in-out);
+	@include opacity(0);
+    z-index: -10;
+	top: 64px;
+    height: calc(100% - 64px)!important;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-left: -15px!important;
+    &.active {
+		@include transition-type(opacity, .15s ease-in-out);
+		@include opacity(.7);
+    	z-index: 10;
+    }
 }
 
 /* ---------- LOGIN */
@@ -1384,6 +1418,13 @@
 /* ---------- MESSAGING */
 #desktop-messaging {
 	background: $slate;
+	.desktop-header {
+		top: 0;
+		height: 64px;
+		padding: 7px 10px;
+		background: $gabrielle;
+		max-width: none;
+	}
 	.main {
 		padding: 0;
 		#messenger {
@@ -1466,32 +1507,43 @@
 						padding: 15px;
 						font-size: 32px;
 						font-weight: 700;
-						width: calc(100% - 72px);
+						width: calc(100% - 336px);
 					}
 					a {
 						@include flex;
 						@include flex-center;
 						width: 68px;
 						height: 68px;
+						background: $taupe;
 						svg {
 							@include svg-stroke(white, 7);
 							width: 36px;
 							height: 36px;
 						}
 					}
+					#{$links} {
+						background: lighten($taupe, 10%);
+					}
 					#message-search {
+						@include flex;
 						position: relative;
+						overflow: hidden;
 						input {
-							position: absolute;
-							top: 0;
-							left: -200px;
+							@include transition(.15s ease-in-out);
+							@include translate-y(200px);
+							@include opacity(0);
 							width: 200px;
-							height: 100%;
+							height: 68px;
 							background: lighten($smoke, 5%);
 							border: 0;
 							padding-left: 15px;
 							padding-right: 15px;
 							font-size: 20px;
+							&.active {
+								@include transition(.15s ease-in-out);
+								@include translate-y(0);
+								@include opacity(1);
+							}
 							&:active, &:hover, &:focus {
 								background: white;
 								@include placeholder {
@@ -1501,13 +1553,60 @@
 						}
 					}
 					#message-nav {
+						position: relative;
+						overflow: hidden;
+						&.active {
+							overflow: visible;
+						}
 						a {
+							position: relative;
+							z-index: 10;
 							svg {
-								fill: white;
+								path {
+									@include transition-type(transform, .15s ease-in-out);
+									&:first-child, &:last-child {
+										@include translate-y(0);
+										@include opacity(1);
+									}
+								}
+								&.active {
+									path {
+										@include transition-type(transform, .15s ease-in-out);
+										&:first-child {
+											@include translate-y(27px);
+											@include opacity(0);
+										}
+										&:last-child {
+											@include translate-y(-27px);
+											@include opacity(0);
+										}
+									}
+								}
 							}
 						}
 						div {
-							display: none;
+							@include transition(.15s ease-in-out);
+							@include opacity(0);
+							@include translate-y(-408px);
+							position: absolute;
+							z-index: 9;
+							top: 68px;
+							right: 0;
+							ul {
+								li {
+									a {
+										background: lighten($taupe, 20%);
+									}
+									#{$links} {
+										background: darken($taupe, 10%);
+									}
+								}
+							}
+							&.active {
+								@include transition(.15s ease-in-out);
+								@include opacity(1);
+								@include translate-y(0);
+							}
 						}
 					}
 				}

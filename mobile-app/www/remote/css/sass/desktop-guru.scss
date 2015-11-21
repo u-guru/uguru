@@ -107,8 +107,7 @@
 	.main {
 		@include flex;
 		@include flex-center;
-		//-50 is for the hacked tab bar (for now);
-		height: calc(100% - 64px - 128px - 50px);
+		height: calc(100% - 128px);
 		padding: 7.5px;
 		ul {
 			width: 100%;
@@ -1346,9 +1345,15 @@
 						.square {
 							fill: lighten($gabrielle, 15%);
 						}
+						.square + div {
+							background: lighten($gabrielle, 15%);
+						}
+						h3 {
+							padding-top: 0;
+						}
 						#guru-chart {
 							position: relative;
-							height: calc(100% - 58px);
+							height: calc(100% - 97px);
 							width: 100%;
 							#guru-ranking-progress-bar {
 								height: 100%;
@@ -1392,7 +1397,7 @@
 						}
 					}
 				}
-				.home-tiles-event {
+				.home-tiles-rating {
 					height: 100%;
 					width: calc(100% / 3);
 					padding: 7.5px;
@@ -1408,6 +1413,7 @@
 								fill: $gabrielle;
 							}
 							.square + div {
+								background: $gabrielle;
 								svg {
 									@include svg-stroke(white, 2);
 									height: calc(100% - 39px);
@@ -1418,11 +1424,12 @@
 								@include flex-center;
 								font-size: 60px;
 								font-weight: 700;
-								span {
-									font-weight: 600;
-									font-size: 48px;
-									padding-right: 5px;
-								}
+							}
+							h5 {
+								@include opacity(.7);
+								font-size: 20px;
+								font-weight: 600;
+								text-transform: uppercase;
 							}
 						}
 						&:last-child {
@@ -1432,17 +1439,18 @@
 							}
 							.square + div {
 								top: 7.5px;
+								background: desaturate($gabrielle, 20%);
 							}
 							#home-tiles-earnings {
 								@include flex;
 								@include flex-center;
 								font-size: 60px;
 								font-weight: 700;
-								span {
-									font-weight: 600;
-									font-size: 48px;
-									padding-right: 5px;
-								}
+								// span {
+								// 	font-weight: 600;
+								// 	font-size: 48px;
+								// 	padding-right: 5px;
+								// }
 							}
 						}
 					}
@@ -1465,6 +1473,11 @@
 							@include flex-wrap;
 							@include flex-center;
 							height: calc(100% - 7.5px);
+							svg {
+								@include svg-stroke(white, 4);
+								width: 60px;
+								height: 60px;
+							}
 							h3 {
 								padding-top: 0;
 								.credibility-percent {
@@ -1480,6 +1493,9 @@
 							.square {
 								fill: saturate($gabrielle, 5%);
 							}
+							.square + div {
+								background: saturate($gabrielle, 5%);
+							}
 						}
 						&:last-child {
 							padding-top: 7.5px;
@@ -1488,6 +1504,7 @@
 							}
 							.square + div {
 								top: 7.5px;
+								background: desaturate($gabrielle, 20%);
 							}
 						}
 					}
@@ -1503,6 +1520,7 @@
 							fill: $gabrielle;
 						}
 						.square + div {
+							background: $gabrielle;
 							.slider {
 								height: calc(100% - 58px);
 								.card {

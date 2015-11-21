@@ -34,6 +34,7 @@ angular.module('uguru.student.controllers')
         $scope.active_relationship = $scope.user.student_relationships[0];
         $scope.root.vars.last_active_relationship = $scope.active_relationship;
       }
+      $scope.active_relationship.msg_nav = false;
     }
 
     $scope.student_search = {
@@ -42,6 +43,10 @@ angular.module('uguru.student.controllers')
 
 
     initActiveRelationships();
+
+    $scope.toggleActiveRelationshipMessageNav = function() {
+      $scope.active_relationship.msg_nav = !$scope.active_relationship.msg_nav;
+    }
 
 
     $scope.sendMessageToServer = function(payload) {
@@ -61,7 +66,10 @@ angular.module('uguru.student.controllers')
     }
 
 
-
+    $scope.setToActiveRelationship = function(relationship) {
+      $scope.active_relationship = relationship;
+      $scope.active_relationship.msg_nav = false;
+    }
 
   }
 
