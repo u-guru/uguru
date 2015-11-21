@@ -1,0 +1,196 @@
+@import 'mixin';
+
+/* ---------- STUDENT HOME */
+#desktop-student-home {
+	background: $smoke;
+	.main {
+		position: relative;
+		.top {
+			display: none;
+			width: 100%;
+			h1, h3 {
+				display: block;
+				color: $taupe;
+				text-align: center;
+			}
+			h1 {
+				font-size: 48px;
+				font-weight: 700;
+			}
+			h3 {
+				font-size: 24px;
+				font-weight: 600;
+			}
+		}
+		.student-home-container {
+			@include flex;
+			@include flex-center;
+			@include flex-wrap;
+			width: 100%;
+			height: 100%;
+			> div {
+				height: 50%;
+				> div {
+					background: $gabrielle;
+					height: 100%;
+					h2 {
+						padding: 15px 15px 0;
+						font-size: 36px;
+						font-weight: 600;
+						text-align: center;
+					}
+					ul {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						a, span {
+							display: block;
+						}
+					}
+				}
+			}
+			.student-home-select {
+				width: 100%;
+				padding-bottom: 7.5px;
+				ul {
+					height: calc(100% - 58px);
+					padding: 0 15px 15px;
+					li {
+						width: 25%;
+						height: 100%;
+						padding: 15px;
+						text-align: center;
+						a {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							overflow: hidden;
+							span {
+								width: 100%;
+								padding: 15px 0;
+								font-size: 22px;
+								font-weight: 700;
+							}
+						}
+						&:not(:last-child) {
+							a {
+								background: white;
+								span {
+									position: absolute;
+									bottom: 0;
+									left: 0;
+								}
+							}
+						}
+						&:last-child {
+							a {
+								background: darken($gabrielle, 10%);
+								span {
+									@include center-xy;
+								}
+							}
+						}
+						&:nth-child(1) a span {
+							background: $cerise;
+						}
+						&:nth-child(2) a span {
+							background: $orange;
+						}
+						&:nth-child(3) a span {
+							background: $campus;
+						}
+						&:nth-child(4) a span {
+							background: darken($gabrielle, 10%);
+						}
+					}
+				}
+			}
+			.student-home-apps {
+				width: calc(100% / 3 * 2);
+				padding: 7.5px 7.5px 0 0;
+				ul {
+					height: calc(100% - 58px);
+					padding: 0 15px 15px;
+					li {
+						width: 25%;
+						height: 100%;
+						padding: 15px;
+						text-align: center;
+						a {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							overflow: hidden;
+							span {
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								width: 100%;
+								padding: 15px 0;
+								font-size: 22px;
+								font-weight: 700;
+								background: rgba($charcoal,.2);
+							}
+						}
+						&:nth-child(1) a {
+							background: $auburn;
+						}
+						&:nth-child(2) a {
+							background: $eggplant;
+						}
+						&:nth-child(3) a {
+							background: $azure;
+						}
+						&:nth-child(4) a {
+							background: $moola;
+						}
+					}
+				}
+			}
+			.student-home-guru {
+				width: calc(100% / 3);
+				padding: 7.5px 0 0 7.5px;
+				h3 {
+					margin-top: 0!important;
+					font-weight: 600;
+					text-align: center;
+				}
+				> div {
+					> div {
+						@include flex;
+						@include flex-center;
+						height: calc(100% - 150px);
+						ul {
+							li {
+								padding: 7.5px;
+								a {
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+					button {
+						background: darken($gabrielle, 10%);
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	#desktop-student-home {
+		.main {
+			.top {
+				@include flex;
+				@include flex-center;
+				height: 20%;
+			}
+			.student-home-container {
+				height: 80%;
+			}
+		}
+	}
+}

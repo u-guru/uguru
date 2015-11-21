@@ -4,7 +4,7 @@
 	</u-slide>
 	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
 		<ion-view class='uguru-view university-view'>
-			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='isDesktopMode()'>
+			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='desktopMode'>
 			    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 				<header class="desktop-header">
 					<a class="desktop-header-back" ng-click='backToAccess()'>
@@ -52,7 +52,7 @@
 			        </div>
 			    </div>
 			</main>
-			<section id="school" class="onboarding" ng-if='!isDesktopMode()'>
+			<section id="school" class="onboarding" ng-if='!desktopMode'>
 				<header class="third flex-center">
 					<h1>Find Your Community</h1>
 					<div class="header-nav" ng-if='LOCAL'>

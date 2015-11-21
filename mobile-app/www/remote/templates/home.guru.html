@@ -9,10 +9,13 @@
 			<ion-pane id='cta-modal-profile' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
+			<ion-pane id='cta-modal-students' class='full-xy hide-display cta-modal bg-charcoal'  ng-include="img_base + BASE + 'templates/messaging.html'">
+				<!-- <div ></div> -->
+			</ion-pane>
 
 			<div class="guru-home-greeting">
 				<div>
-					<h1>Hello {{user.name || 'Guru'}},<br/>
+					<h1>Hello {{user.first_name || 'Guru'}},<br/>
 					how are you today?</h1>
 					<div class="guru-home-notifications">
 						<ul>
@@ -23,15 +26,15 @@
 										</svg>
 										<span class="notification-number">{{guruHomeTips.length}}</span>
 									</span>
-									<span class="notification-type">Ranking Tips</span>
+									<span class="notification-type">Action Items</span>
 								</a>
 							</li>
 							<li>
-								<a>
+								<a id='cta-box-students' class='cta-box'>
 									<span class="notification-icon">
 										<svg viewBox="0 0 100 100"  ng-include="img_base + BASE + 'templates/svg.icon.notification.html'">
 										</svg>
-										<span class="notification-number">{{user.students || 0}}</span>
+										<span class="notification-number">{{user.student_relationships.length || 0}}</span>
 									</span>
 									<span class="notification-type">Students</span>
 								</a>
@@ -52,7 +55,7 @@
 								<div id="guru-chart">
 			                        <div id='guru-ranking-progress-bar'>
 			                            <div id="percentile">
-			                                <div id="percentile-ranking">{{user.current_guru_ranking || 25}}</div>
+			                                <div id="percentile-ranking">{{user.guru_ranking || 25}}</div>
 			                                <div id="percentile-label">Percentile</div>
 			                            </div>
 										<svg viewBox="0 0 100 100" ng-if='!user.current_guru_ranking'><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,0.3)" stroke-width="8" fill-opacity="0"></path><path d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92" stroke="rgba(255,255,255,1)" stroke-width="8" fill-opacity="0" style="stroke-dasharray: 289.067px, 289.067px; stroke-dashoffset: 216.8px;"></path></svg>
@@ -68,10 +71,18 @@
 							</svg>
 							<div>
 								<a>
+									<h3>Avg Rating</h3>
+									<h1 id='home-tiles-ranking'><span></span>{{user.guru_avg_rating}}</i></h1>
+									<h5>{{user.guru_ratings.length}} reviews</h5>
+								</a>
+							</div>
+							<!-- Come back to later -->
+							<!-- <div>
+								<a>
 									<h3>Add Event</h3>
 									<svg viewBox="0 0 100 100"  ng-include="img_base + BASE + 'templates/svg.icon.calendar.html'"> </svg>
 								</a>
-							</div>
+							</div> -->
 						</div>
 						<div>
 							<svg class="square" viewBox="0 0 100 100">
@@ -79,8 +90,8 @@
 							</svg>
 							<div>
 								<a>
-									<h3>My Earnings</h3>
-									<h1 id="home-tiles-earnings"><span>$</span>84</h1>
+									<h3>Total Earned</h3>
+									<h1 id="home-tiles-earnings"><span>$</span>{{user.total_earned}}</h1>
 								</a>
 							</div>
 						</div>
@@ -118,7 +129,7 @@
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
 							<div>
-								<h2><strong><u>{{guruHomeTips.length}}</u></strong> Ranking Tips</h2>
+								<h2><strong><u>{{guruHomeTips.length}}</u></strong> Action Items</h2>
 								<ion-slide-box show-pager='true'>
 				                    <ion-slide ng-repeat='tip in guruHomeTips'>
 				                        <div class='card'>

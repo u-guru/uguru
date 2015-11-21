@@ -129,9 +129,8 @@
                         <tr>
                           <th>ID</th>
                           <th>Name</th>
-                          <th>Balance</th>
-                          <th>Num ratings</th>
                           <th>Total Earned</th>
+                          <th>Num Courses</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -140,7 +139,10 @@
                         <tr>
                           <td>#{{user.id}} </td>
                           <td>
-                            <a href='#' target='_blank'>
+                            ${{user.total_earned}}
+                          </td>
+                          <td>
+                            <a href='/admin/users/{{user.id}}' target='_blank'>
                               {{user.name}} &nbsp;&nbsp; &nbsp;&nbsp;
                               {% if user.profile_url %}
                               <img src='{{user.profile_url}}' height="30" width="30">
@@ -148,13 +150,7 @@
                             </a>
                           </td>
                           <td>
-                            ${{user.balance}}
-                          </td>
-                          <td>
-                            {{user.student_ratings|length}} ratings
-                          </td>
-                          <td>
-                            ${{user.total_earned}}
+                            {{user.guru_courses|length}}
                           </td>
                         </tr>
                         {% endfor %}

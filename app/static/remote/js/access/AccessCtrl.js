@@ -42,7 +42,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
   $scope.goToLoginFromAccess = function() {
-    $scope.root.vars.page_cache.login_mode = true;
+    // $scope.root.vars.page_cache.login_mode = true;
+    $scope.root.vars.loginMode = true
     if ($scope.desktopMode) {
       AnimationService.flip('^.desktop-login')
     } else {

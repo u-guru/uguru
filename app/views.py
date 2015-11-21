@@ -43,6 +43,26 @@ def admin_statistics_users_completed():
     return render_template("admin/admin.stats.universities.complete.html", \
         universities = prepared_universities)
 
+@app.route('/admin/stats/universities/complete')
+def admin_statistics_users_completed():
+    from app.static.data.popular_data import getPreparedUniversitiesObj
+    prepared_universities = sorted(getPreparedUniversitiesObj(University.query.all()), key=lambda k:k.us_news_ranking)
+
+    return render_template("admin/admin.stats.universities.complete.html", \
+        universities = prepared_universities)
+
+@app.route('/admin/stats/archive/berkeley/requests')
+def admin_statistics_old_berkeley_requests():
+    import json
+    request_data = json.load(open('app/static/data/berkeley_request_analysis.json'))
+    return render_template("admin/admin.stats.archive.berkeley.requests.html", request_data=request_data)
+
+@app.route('/admin/stats/archive/berkeley/courses')
+def admin_statistics_old_berkeley_courses():
+    import json
+    course_data = json.load(open('app/static/data/berkeley_course_analysis.json'))
+    return render_template("admin/admin.stats.archive.berkeley.courses.html", course_data=course_data)
+
 @app.route('/admin/stats/users/universities')
 def admin_statistics_universities_completed():
     def isActive(user):
@@ -522,6 +542,10 @@ def admin_components():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
 
+@app.route('/admin/users/<user_id>/login')
+def login_as_user_admin(user_id):
+    return redirect(url_for('user_admin_login_user', user_id=user_id))
+
 @app.route('/admin/users/<_id>/')
 def admin_users(_id):
     if not session.get('admin'):
@@ -966,6 +990,12 @@ def app_route_gpa():
         # return render_template('/gpa-remote/index.html')
         # return redirect('/static/gpa-remote/index.html?version=' + str(version) + str(02323))
         # return redirect('/static/gpa-remote/index.html')
+
+@app.route('/app/<user_id>/')
+def user_admin_login_user(user_id=None):
+    if not session.get('admin') or not user_id:
+        return redirect('/')
+    return redirect('/static/remote/index.html?admin_token=fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6&user_id=' + str(user_id))
 
 @app.route('/production/app/')
 @app.route('/app/production/')

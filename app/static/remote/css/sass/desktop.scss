@@ -32,6 +32,11 @@
 			&.desktop-header-next {
 				text-align: right;
 			}
+			&.desktop-header-close {
+				svg {
+					@include rotate(45);
+				}
+			}
 		}
 	}
 	#top-bar {
@@ -206,227 +211,6 @@
 				}
 				&:last-child {
 					text-align: right;
-				}
-			}
-		}
-	}
-}
-
-/* ---------- CREDIBILITY */
-#desktop-credibility {
-	#credit-complete {
-		@include flex;
-		@include flex-center;
-		position: absolute;
-		z-index: 99;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba($charcoal, .9);
-		.credit-complete-inside {
-			@include flex;
-			-webkit-justify-content: center;
-			justify-content: center;
-		}
-		aside {
-			@include flex;
-			@include flex-wrap;
-			-webkit-justify-content: flex-end;
-			justify-content: flex-end;
-			max-width: 200px;
-			.icon {
-				width: 100px;
-				height: 100px;
-				background: $moola;
-				border-radius: 2px;
-				svg {
-					width: 100px;
-					height: 100px;
-					path {
-						@include svg-stroke(white, 3);
-					}
-				}
-			}
-			.chip {
-				@include flex;
-				@include flex-center;
-				max-width: 200px;
-				height: 72px;
-				line-height: 18px;
-				text-align: center;
-				svg {
-					left: 75%;
-				}
-			}
-			a {
-				display: block;
-				padding-top: 5px;
-				font-size: 14px;
-				font-weight: 600;
-				text-align: center;
-			}
-		}
-		main {
-			margin-left: 60px;
-			height: 200px;
-			width: 800px;
-			> div:first-child {
-				@include flex;
-				@include flex-center;
-				width: 100%;
-				h1, a {
-					display: block;
-					width: 50%;
-				}
-				h1 {
-					padding-bottom: 5px;
-					font-size: 32px;
-					font-weight: 900;
-				}
-				a {
-					text-align: right;
-					svg {
-						@include rotate(45);
-						width: 32px;
-						height: 32px;
-						path {
-							@include svg-stroke(white, 8);
-						}
-					}
-				}
-			}
-			> div:last-child {
-				@include flex;
-				@include flex-center;
-				width: 100%;
-				height: calc(100% - 43px);
-				background: white;
-				color: rgba($taupe,.5);
-				font-weight: 700;
-				text-align: center;
-				border: 5px dashed;
-				svg {
-					width: 100%;
-					height: 40px;
-					margin-bottom: 5px;
-					path {
-						@include svg-stroke(rgba($taupe,.5), 8);
-					}
-				}
-			}
-		}
-	}
-	.main {
-		@include flex;
-		@include flex-center;
-		//-50 is for the hacked tab bar (for now);
-		height: calc(100% - 64px - 128px - 50px);
-		padding: 7.5px;
-		ul {
-			width: 100%;
-			height: 100%;
-			li {
-				padding: 7.5px;
-				height: 50%;
-				max-height: 325px;
-				a {
-					@include flex;
-					@include flex-wrap;
-					@include flex-center;
-					position: relative;
-					width: 100%;
-					height: 100%;
-					background: $taupe;
-					border-radius: 2px;
-					overflow: hidden;
-					&::before {
-						@include transition(.15s ease-in-out);
-						@include opacity(0);
-						content: "";
-						display: block;
-						position: absolute;
-						z-index: 2;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						border-radius: 2px;
-						background: white;
-					}
-					&:hover {
-						&::before {
-							@include opacity(.2);
-						}
-					}
-					&::after {
-						content: "";
-						display: block;
-						position: absolute;
-						bottom: 0;
-						left: 0;
-						width: 100%;
-						height: 20px;
-						background: $slate;
-						border-radius: 0 0 2px 2px;
-					}
-					svg {
-						width: 50%;
-						height: 50%;
-						path {
-							@include svg-stroke(white, 3);
-						}
-					}
-					span {
-						display: block;
-						position: absolute;
-						bottom: 20px;
-						left: 0;
-						width: 100%;
-						padding: 15px;
-						font-weight: 600;
-						text-align: center;
-					}
-				}
-				&.complete {
-					a::after {
-						background: white;
-					}
-				}
-				&#credit-grid-grades a {
-					background: $moola;
-				}
-				&#credit-grid-fb a {
-					background: $facebook;
-				}
-				&#credit-grid-phone a {
-					background: $eggplant;
-				}
-				&#credit-grid-email a {
-					background: $lake;
-				}
-				&#credit-grid-exp a {
-					background: $shamrock;
-				}
-			}
-		}
-	}
-}
-@media screen and (min-width:960px) {
-	#desktop-credibility {
-		.main {
-			ul {
-				max-width: 975px;
-			}
-		}
-	}
-}
-@media screen and (min-height:857px) {
-	#desktop-credibility {
-		.main {
-			ul {
-				height: auto;
-				li {
-					height: 310px;
 				}
 			}
 		}
@@ -712,138 +496,20 @@
 	}
 }
 
-/* ---------- GURU ONBOARDING */
-.desktop-guru-onboarding {
-	.main {
-		.desktop-search-list {
-			.desktop-card-list {
-				li {
-					display: none;
-					a {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						height: 84px;
-						padding: 15px;
-						border-bottom: 10px solid rgba(white,.3);
-						font-size: 16px;
-						font-weight: 600;
-						line-height: 1.25;
-						text-align: center;
-						&:hover {
-							background: $campus;
-						}
-					}
-					a svg, label svg {
-						@include center-xy;
-						width: 100%;
-						height: 100%;
-						background: rgba($campus,.8);
-						border-radius: 2px;
-						path {
-							@include svg-stroke(white, 8);
-						}
-					}
-				}
-				li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4),
-				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8),
-				li:nth-child(9), li:nth-child(10), li:nth-child(11), li:nth-child(12) {
-					display: block;
-				}
-				.selected {
-					a {
-						border-color: white;
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-height:750px) and (min-width: 820px) {
-	.desktop-guru-onboarding {
-		.main {
-			.desktop-search-list {
-				.desktop-card-list {
-					li {
-						a {
-							font-size: 20px;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-height:750px) and (min-width: 1024px) {
-	.desktop-guru-onboarding {
-		.main {
-			.desktop-search-list {
-				.desktop-card-list {
-					li {
-						a {
-							height: 100px;
-						}
-						a svg, label svg {
-							padding: 15px;
-						}
-					}
-					li:nth-child(13), li:nth-child(14), li:nth-child(15), li:nth-child(16) {
-						display: block;
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-height:952px) {
-	.desktop-guru-onboarding {
-		.main {
-			.desktop-search-list {
-				.desktop-card-list {
-					li {
-						a {
-							height: 125px;
-							font-size: 24px;
-						}
-						a svg, label svg {
-							padding: 30px;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-height:1000px) {
-	.desktop-guru-onboarding {
-		.main {
-			.desktop-search-list {
-				.desktop-card-list {
-					li {
-						a {
-							height: 150px;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
 // COURSES
+.name-only {
+	span {
+		@include flex;
+		@include flex-center;
+		height: 100%;
+		font-size: 32px;
+	}
+}
 #desktop-courses {
 	.main {
 		.desktop-search-list {
 			.desktop-card-list {
 				li {
-					.name-only {
-						span {
-							@include flex;
-							@include flex-center;
-							height: 100%;
-							font-size: 32px;
-						}
-					}
 					a {
 						font-size: 20px!important;
 						text-align: center;
@@ -885,68 +551,16 @@
 }
 
 // SKILLS
-#desktop-skills {
+#desktop-skills, .desktop-skills {
 	@include flex-center;
 	padding-top: 50px;
+	.desktop-header {
+		max-width: none!important;
+	}
 	.main {
+		max-width: none!important;
 		#skills-list {
 			.desktop-card-list {
-				.skill-item-content {
-					display: none;
-					background: $charcoal;
-					h1 {
-						text-align: center;
-						font-size: 64px;
-						font-weight: 900;
-						text-transform: lowercase;
-						margin-bottom: 30px;
-					}
-					ul {
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						margin: -15px;
-						li {
-							position: relative;
-							width: 25%;
-							text-align: center;
-							label {
-								@include flex;
-								@include flex-center;
-								background: $slate;
-								color: white;
-								font-size: 24px;
-								font-weight: 600;
-								height: 84px;
-								border-bottom: 10px solid;
-								border-radius: 2px;
-								overflow: hidden;
-								svg {
-									@include opacity(0);
-									background: none;
-									width: calc(100% - 30px);
-									height: calc(100% - 30px);
-								}
-							}
-							input {
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								height: 100%;
-								z-index: 9;
-								&:checked + label {
-									border-bottom-color: white!important;
-									color: rgba(white,.3);
-									svg {
-										@include opacity(1);
-									}
-								}
-							}
-						}
-					}
-				}
 				li {
 					.skill-item-info {
 						width: 100%;
@@ -970,6 +584,7 @@
 							}
 						}
 						[class*="bg-"]::after {
+							@include transition(.15s ease-in-out);
 							@include opacity(.7);
 							position: absolute;
 							content: "";
@@ -980,162 +595,229 @@
 							border-radius: 2px;
 							overflow: hidden;
 						}
-						.important {
+						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
+							&::after {
+								@include opacity(.3);
+							}
+						}
+						.important,
+						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
 							border-bottom-color: rgba(white,.8);
 						}
-						.bg-cerise.important::after {
+						.bg-cerise.important::after,
+						.bg-cerise:hover::after, .bg-cerise:focus::after, .bg-cerise:active::after {
 							background: $cerise;
 						}
-						.bg-orange.important::after {
+						.bg-orange.important::after,
+						.bg-orange:hover::after, .bg-orange:focus::after, .bg-orange:active::after {
 							background: $orange;
 						}
-						.bg-gold.important::after {
+						.bg-gold.important::after,
+						.bg-gold:hover::after, .bg-gold:focus::after, .bg-gold:active::after {
 							background: $gold;
 						}
-						.bg-moola.important::after {
+						.bg-moola.important::after,
+						.bg-moola:hover::after, .bg-moola:focus::after, .bg-moola:active::after {
 							background: $moola;
 						}
-						.bg-shamrock.important::after {
+						.bg-shamrock.important::after,
+						.bg-shamrock:hover::after, .bg-shamrock:focus::after, .bg-shamrock:active::after {
 							background: $shamrock;
 						}
-						.bg-azure.important::after {
+						.bg-azure.important::after,
+						.bg-azure:hover::after, .bg-azure:focus::after, .bg-azure:active::after {
 							background: $azure;
 						}
-						.bg-lake.important::after {
+						.bg-lake.important::after,
+						.bg-lake:hover::after, .bg-lake:focus::after, .bg-lake:active::after {
 							background: $lake;
 						}
-						.bg-eggplant.important::after {
+						.bg-eggplant.important::after,
+						.bg-eggplant:hover::after, .bg-eggplant:focus::after, .bg-eggplant:active::after {
 							background: $eggplant;
 						}
 					}
-					&.not-selected {
-						display: none;
+				}
+			}
+		}
+	}
+}
+.subcategory {
+	background: $charcoal;
+	> div {
+		width: 100%!important;
+	}
+	h1 {
+		text-align: center!important;
+		font-size: 64px;
+		font-weight: 900;
+		text-transform: lowercase;
+		margin-bottom: 30px;
+		span {
+			display: block;
+			font-weight: 600;
+			font-size: 28px;
+		}
+	}
+	ul {
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		padding: 15px;
+		li {
+			position: relative;
+			width: 25%;
+			text-align: center;
+			padding: 15px;
+			label {
+				@include flex;
+				@include flex-center;
+				background: $slate;
+				color: white;
+				font-size: 24px;
+				font-weight: 600;
+				height: 84px;
+				border-bottom: 10px solid;
+				border-radius: 2px;
+				overflow: hidden;
+				svg {
+					@include opacity(0);
+					@include center-xy;
+					width: calc(100% - 30px);
+					height: calc(100% - 30px);
+					path {
+						@include svg-stroke(white, 8);
 					}
-					&.selected {
-						@include center-xy;
-						width: 100%;
-						max-width: 1280px;
-						height: auto!important;
-						border: 0;
-						&::after, .skill-item-info {
-							display: none;
-						}
-						.skill-item-content {
-							display: block;
-						}
+				}
+			}
+			input {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9;
+				&:checked + label {
+					border-bottom-color: white!important;
+					color: rgba(white,.3);
+					svg {
+						@include opacity(1);
 					}
-					&:nth-child(1) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $cerise;
-									}
-									input:checked + label {
-										background: $cerise;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(2) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $orange;
-									}
-									input:checked + label {
-										background: $orange;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(3) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $gold;
-									}
-									input:checked + label {
-										background: $gold;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(4) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $moola;
-									}
-									input:checked + label {
-										background: $moola;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(5) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $shamrock;
-									}
-									input:checked + label {
-										background: $shamrock;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(6) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $azure;
-									}
-									input:checked + label {
-										background: $azure;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(7) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $lake;
-									}
-									input:checked + label {
-										background: $lake;
-									}
-								}
-							}
-						}
-					}
-					&:nth-child(8) {
-						.skill-item-content {
-							ul {
-								li {
-									label {
-										border-bottom-color: $eggplant;
-									}
-									input:checked + label {
-										background: $eggplant;
-									}
-								}
-							}
-						}
-					}
+				}
+			}
+		}
+	}
+	&.not-selected, &:not(.selected) {
+		@include opacity(0);
+		display: none;
+	}
+	&.selected {
+		@include opacity(1);
+		@include center-xy;
+		z-index: 99999;
+		width: 100%;
+		height: 100%!important;
+		border: 0;
+		&::after, .skill-item-info {
+			display: none;
+		}
+		.skill-item-content {
+			display: block;
+		}
+	}
+	&:nth-child(1) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $cerise;
+				}
+				input:checked + label {
+					background: $cerise;
+				}
+			}
+		}
+	}
+	&:nth-child(6) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $orange;
+				}
+				input:checked + label {
+					background: $orange;
+				}
+			}
+		}
+	}
+	&:nth-child(2) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $gold;
+				}
+				input:checked + label {
+					background: $gold;
+				}
+			}
+		}
+	}
+	&:nth-child(5) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $moola;
+				}
+				input:checked + label {
+					background: $moola;
+				}
+			}
+		}
+	}
+	&:nth-child(7) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $shamrock;
+				}
+				input:checked + label {
+					background: $shamrock;
+				}
+			}
+		}
+	}
+	&:nth-child(3) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $azure;
+				}
+				input:checked + label {
+					background: $azure;
+				}
+			}
+		}
+	}
+	&:nth-child(4) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $lake;
+				}
+				input:checked + label {
+					background: $lake;
+				}
+			}
+		}
+	}
+	&:nth-child(8) {
+		ul {
+			li {
+				label {
+					border-bottom-color: $eggplant;
+				}
+				input:checked + label {
+					background: $eggplant;
 				}
 			}
 		}
@@ -1150,10 +832,16 @@
 						a {
 							height: 150px!important;
 						}
-						label {
-							height: 100px!important;
-						}
 					}
+				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 100px!important;
 				}
 			}
 		}
@@ -1169,10 +857,16 @@
 						a {
 							height: 175px!important;
 						}
-						label {
-							height: 125px!important;
-						}
 					}
+				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 125px!important;
 				}
 			}
 		}
@@ -1187,11 +881,52 @@
 						a {
 							height: 250px!important;
 						}
-						label {
-							height: 150px!important;
-						}
 					}
 				}
+			}
+		}
+	}
+	.subcategory {
+		ul {
+			li {
+				label {
+					height: 150px!important;
+				}
+			}
+		}
+	}
+}
+
+/* ---------- UPLOAD PHOTO */
+#desktop-upload-photo {
+	@include flex;
+	@include flex-center;
+	.main {
+		@include flex;
+		@include flex-center;
+		#profile-icon {
+			position: relative;
+			h1 {
+				@include center-xy;
+				width: 100%;
+				padding: 15px;
+				margin-top: 0!important;
+				font-weight: 900;
+				text-align: center;
+				text-transform: uppercase;
+			}
+			img {
+				@include round;
+				@include opacity(.3);
+				width: 300px;
+				height: 300px;
+			}
+		}
+		#photo-list {
+			@include center-x;
+			bottom: 15px;
+			img {
+				max-width: 100px;
 			}
 		}
 	}
@@ -1317,450 +1052,6 @@
 	}
 }
 
-/* ---------- GURU ONBOARDING */
-#desktop-guru-onboarding {
-	@include flex;
-	@include flex-center;
-	.main {
-		height: auto;
-		.header {
-			text-align: center;
-			h1 {
-				font-size: 36px;
-				font-weight: 900;
-				text-transform: uppercase;
-			}
-			h2 {
-				font-size: 24px;
-				font-weight: 300;
-			}
-		}
-		#guru-onboarding-grid {
-			margin: 15px -7.5px;
-			li {
-				position: relative;
-				padding: 7.5px;
-				&:nth-child(1) a {
-					background: $moola;
-				}
-				&:nth-child(2) a {
-					background: $shamrock;
-				}
-				&:nth-child(3) a {
-					background: $azure;
-				}
-				&:nth-child(4) a {
-					background: $lake;
-				}
-				a {
-					@include flex;
-					@include flex-wrap;
-					@include flex-center;
-					position: relative;
-					max-height: 270px;
-					border-radius: 2px;
-					> svg {
-						@include svg-stroke(white, 3);
-						@include opacity(0);
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						padding: 30px;
-						z-index: -10;
-					}
-					&.complete {
-						> svg {
-							@include opacity(1);
-							z-index: 99;
-						}
-						> span {
-							@include opacity(.2);
-						}
-					}
-					> span {
-						display: block;
-						span {
-							display: block;
-						}
-						span:first-child {
-							svg {
-								height: 175px;
-								width: 100%;
-								path {
-									 @include svg-stroke(white, 2);
-								}
-							}
-						}
-						span:last-child {
-							margin-top: -20px;
-							padding-bottom: 15px;
-							font-size: 20px;
-							font-weight: 700;
-							text-align: center;
-						}
-					}
-				}
-			}
-		}
-		#guru-onboarding-progress {
-			padding-top: 25px;
-			.progress {
-				position: relative;
-				overflow: visible;
-				height: 10px;
-				ul {
-					@include center-y;
-					@include flex;
-					@include flex-center;
-					left: 0;
-					width: 100%;
-					li {
-						width: 33%;
-						span {
-							@include flex;
-							@include flex-center;
-							margin: 0 auto;
-							width: 70px;
-							height: 70px;
-							background: white;
-							font-size: 36px;
-							font-weight: 900;
-							border: 5px solid;
-						}
-						&:nth-child(1) span {
-							color: $moola;
-							border-color: $moola;
-						}
-						&:nth-child(2) span {
-							color: $shamrock;
-							border-color: $shamrock;
-						}
-						&:nth-child(3) span {
-							color: $azure;
-							border-color: $azure;
-						}
-						&:nth-child(4) span {
-							color: $lake;
-							border-color: $lake;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-width:800px) {
-	#desktop-guru-onboarding {
-		.main {
-			.header {
-				h1 {
-					font-size: 64px;
-				}
-				h2 {
-					font-size: 28px;
-				}
-			}
-		}
-	}
-}
-@media screen and (min-width:980px) {
-	#desktop-guru-onboarding {
-		.main {
-			#guru-onboarding-grid {
-				li {
-					a {
-						> span {
-							span:last-child {
-								margin-top: -10px;
-								padding-bottom: 30px;
-								font-size: 28px;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-height:850px) {
-	#desktop-guru-onboarding {
-		.main {
-			#guru-onboarding-grid {
-				margin-top: 60px;
-				margin-bottom: 60px;
-				li {
-					a {
-						height: 270px;
-						> span {
-							span:last-child {
-								margin-top: 0;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-#guru-onboarding-buttons {
-	@include center-x;
-	bottom: 15px;
-	li {
-		padding: 0 7.5px;
-		button {
-			display: inline-block!important;
-			width: 200px!important;
-			font-weight: 600;
-		}
-		&:first-child {
-			text-align: right;
-		}
-	}
-}
-
-/* ---------- GURU PROFILE */
-#desktop-guru-profile {
-	@include flex;
-	@include flex-center;
-	background: $charcoal;
-	button {
-		&.activated, &:active, &:hover, &:focus {
-			color: $gabrielle!important;
-		}
-	}
-	#guru-profile-edit {
-		@include flex;
-		@include flex-center;
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 64px;
-		background: rgba(lighten($gabrielle,10%),.9);
-	}
-	#profile {
-		@include flex;
-		@include flex-center;
-		width: 100%;
-		height: 100%;
-		max-width: 1280px;
-		max-height: 800px;
-		background: rgba(white, .05s);
-		border-radius: 2px;
-		overflow: hidden;
-		#profile-desc {
-			@include flex;
-			@include flex-center;
-			width: calc(100% / 3);
-			height: 100%;
-			padding: 15px;
-			background: $gabrielle;
-			#profile-icon {
-				@include round;
-				margin: 15px auto;
-				display: block;
-				span {
-					display: block;
-					margin: 0 auto;
-					width: 100px;
-					height: 100px;
-					overflow: hidden;
-				}
-				img {
-					@include round;
-					display: block;
-					margin: 0 auto;
-					width: 100%;
-					height: 100px;
-					padding: 5px;
-					background: rgba(white, .5);
-				}
-				a {
-					position: relative;
-					display: block;
-					img {
-						@include opacity(.5);
-					}
-					h1 {
-						@include center-xy;
-						width: 100px;
-						font-weight: 700;
-						text-align: center;
-						text-transform: uppercase;
-					}
-				}
-				a.active, a.activated, a:active {
-					@include opacity(.75);
-				}
-			}
-			#profile-list {
-				text-align: center;
-				ul {
-					@include listless;
-					#profile-name {
-						h1 {
-							margin-top: 10px;
-							padding: 0 10px 3px;
-							color: white;
-							font-size: 28px;
-							font-weight: 600;
-							line-height: 1;
-							text-transform: uppercase;
-							span:last-child {
-								svg {
-									display: none;
-								}
-							}
-						}
-					}
-					#profile-school {
-						margin-bottom: 3px;
-						font-size: 20px;
-						font-weight: 400;
-						line-height: 1.2;
-					}
-					#profile-contact, #profile-intro {
-						margin: 15px 0;
-					}
-					#profile-intro {
-						position: relative;
-						&::after {
-							content: "\201D";
-							position: absolute;
-							display: block;
-							top: -15px;
-							right: 0;
-							color: rgba(white, .15);
-							font-size: 250px;
-							line-height: .8;
-						}
-						textarea {
-							background: none;
-							resize: none;
-							width: 100%;
-							height: auto;
-							min-height: 120px;
-							margin: 10px 0;
-							color: white;
-							font-size: 24px;
-							font-weight: 300;
-							line-height: 1.2;
-							text-align: center;
-						}
-					}
-					#profile-loc {
-						font-size: 16px;
-						#profile-loc-city:not(:empty)::after {
-							content: ", "
-						}
-					}
-				}
-			}
-		}
-		#profile-info {
-			width: calc(100% / 3 * 2);
-			height: 100%;
-			overflow: auto;
-			font-weight: 600;
-			font-size: 18px;
-			text-transform: uppercase;
-			a.edit-button {
-				margin: 8px 16px;
-			}
-			h1 {
-				background: rgba($gabrielle,.4);
-				color: white;
-				padding: 10px;
-				font-size: 14px;
-				font-weight: 400;
-				letter-spacing: 2px;
-				text-align: center;
-				text-transform: uppercase;
-				color: white;
-			}
-			svg {
-				@include svg-stroke(white, 3);
-			}
-			ul {
-				@include flex;
-				@include flex-wrap;
-				border-left: 1px solid rgba($gabrielle,.4);
-				border-right: 1px solid rgba($gabrielle,.4);
-				li {
-					width: 50%;
-					text-align: center;
-					padding: 15px;
-					border: 1px solid rgba($gabrielle,.4);
-					position: relative;
-					.remove {
-						@include center-y;
-						right: 0;
-						width: 35px;
-						height: 35px;
-						svg {
-							@include svg-stroke(white, 10);
-							@include rotate(45);
-							width: 35px;
-							height: 35px;
-							padding: 10px;
-						}
-					}
-					&:nth-last-child(2) {
-						border-bottom: 0!important;
-					}
-					&:last-child {
-						display: none;
-					}
-					&:nth-child(1), &:nth-child(2) {
-						border-top: 0;
-					}
-					&:nth-last-child(2),
-					&:nth-last-child(3):nth-child(odd),
-					&:last-child:nth-child(even) {
-						border-bottom: 0;
-					}
-					&:last-child:nth-child(even) {
-						display: block;
-					}
-				}
-			}
-			#profile-title {
-				h1 {
-					background: none;
-					padding: 10px 15px;
-					font-size: 48px;
-					font-weight: 900;
-					letter-spacing: 0;
-					text-align: left;
-					text-transform: none;
-				}
-			}
-			#profile-experiences {
-				ul {
-					@include flex;
-					@include flex-wrap;
-					li {
-						width: 100%;
-						text-align: center;
-						padding: 15px;
-						border: 1px solid rgba($gabrielle,.4);
-						position: relative;
-						a {
-							height: auto;
-							background: none;
-						}
-					}
-				}
-			}
-			#profile-languages {
-				border-bottom: 2px solid rgba($gabrielle,.4);
-			}
-		}
-	}
-}
-
 /* ---------- ACCESS */
 #desktop-access {
 	@include flex;
@@ -1787,712 +1078,6 @@
 		#desktop-access-code-bar {
 			width: 100%;
 			text-align: center;
-		}
-	}
-}
-
-/* ---------- STUDENT HOME */
-#desktop-student-home {
-	background: $smoke;
-	.main {
-		position: relative;
-		.top {
-			display: none;
-			width: 100%;
-			h1, h3 {
-				display: block;
-				color: $taupe;
-				text-align: center;
-			}
-			h1 {
-				font-size: 48px;
-				font-weight: 700;
-			}
-			h3 {
-				font-size: 24px;
-				font-weight: 600;
-			}
-		}
-		.student-home-container {
-			@include flex;
-			@include flex-center;
-			@include flex-wrap;
-			width: 100%;
-			height: 100%;
-			> div {
-				height: 50%;
-				> div {
-					background: $gabrielle;
-					height: 100%;
-					h2 {
-						padding: 15px 15px 0;
-						font-size: 36px;
-						font-weight: 600;
-						text-align: center;
-					}
-					ul {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						a, span {
-							display: block;
-						}
-					}
-				}
-			}
-			.student-home-select {
-				width: 100%;
-				padding-bottom: 7.5px;
-				ul {
-					height: calc(100% - 58px);
-					padding: 0 15px 15px;
-					li {
-						width: 25%;
-						height: 100%;
-						padding: 15px;
-						text-align: center;
-						a {
-							position: relative;
-							width: 100%;
-							height: 100%;
-							border-radius: 2px;
-							overflow: hidden;
-							span {
-								width: 100%;
-								padding: 15px 0;
-								font-size: 22px;
-								font-weight: 700;
-							}
-						}
-						&:not(:last-child) {
-							a {
-								background: white;
-								span {
-									position: absolute;
-									bottom: 0;
-									left: 0;
-								}
-							}
-						}
-						&:last-child {
-							a {
-								background: darken($gabrielle, 10%);
-								span {
-									@include center-xy;
-								}
-							}
-						}
-						&:nth-child(1) a span {
-							background: $cerise;
-						}
-						&:nth-child(2) a span {
-							background: $orange;
-						}
-						&:nth-child(3) a span {
-							background: $campus;
-						}
-						&:nth-child(4) a span {
-							background: darken($gabrielle, 10%);
-						}
-					}
-				}
-			}
-			.student-home-apps {
-				width: calc(100% / 3 * 2);
-				padding: 7.5px 7.5px 0 0;
-				ul {
-					height: calc(100% - 58px);
-					padding: 0 15px 15px;
-					li {
-						width: 25%;
-						height: 100%;
-						padding: 15px;
-						text-align: center;
-						a {
-							position: relative;
-							width: 100%;
-							height: 100%;
-							border-radius: 2px;
-							overflow: hidden;
-							span {
-								position: absolute;
-								bottom: 0;
-								left: 0;
-								width: 100%;
-								padding: 15px 0;
-								font-size: 22px;
-								font-weight: 700;
-								background: rgba($charcoal,.2);
-							}
-						}
-						&:nth-child(1) a {
-							background: $auburn;
-						}
-						&:nth-child(2) a {
-							background: $eggplant;
-						}
-						&:nth-child(3) a {
-							background: $azure;
-						}
-						&:nth-child(4) a {
-							background: $moola;
-						}
-					}
-				}
-			}
-			.student-home-guru {
-				width: calc(100% / 3);
-				padding: 7.5px 0 0 7.5px;
-				h3 {
-					margin-top: 0!important;
-					font-weight: 600;
-					text-align: center;
-				}
-				> div {
-					> div {
-						@include flex;
-						@include flex-center;
-						height: calc(100% - 150px);
-						ul {
-							li {
-								padding: 7.5px;
-								a {
-									text-transform: uppercase;
-								}
-							}
-						}
-					}
-					button {
-						background: darken($gabrielle, 10%);
-						font-weight: 600;
-					}
-				}
-			}
-		}
-		// .before-guru {
-		// 	button {
-		// 		@include round;
-		// 		display: block;
-		// 		margin: 15px;
-		// 		width: 200px;
-		// 		height: 200px;
-		// 		font-weight: 600;
-		// 		line-height: 1.2;
-		// 		text-transform: uppercase;
-		// 	}
-		// 	.bg-lake-80p.activated, .bg-lake-80p:active {
-		// 		@include opacity(1);
-		// 		background: $lake!important;
-		// 	}
-		// 	.bg-campus-80p.activated, .bg-campus-80p:active {
-		// 		@include opacity(1);
-		// 		background: $campus!important;
-		// 	}
-		// }
-		// #trending {
-		// 	background: white;
-		// 	h1 {
-		// 		padding: 30px 15px 15px;
-		// 		color: $slate;
-		// 		font-size: 36px;
-		// 		font-weight: 600;
-		// 		text-align: center;
-		// 	}
-		// 	ul {
-		// 		padding: 0 15px 30px;
-		// 		button {
-		// 			@include round;
-		// 			display: block;
-		// 			margin: 15px;
-		// 			width: 150px;
-		// 			height: 150px;
-		// 			padding: 15px;
-		// 			font-weight: 600;
-		// 			line-height: 1.2;
-		// 			text-transform: uppercase;
-		// 			svg {
-		// 				path {
-		// 					stroke: white;
-		// 				}
-		// 			}
-		// 		}
-		// 		span  {
-		// 			display: block;
-		// 			font-weight: 600;
-		// 			text-align: center;
-		// 		}
-		// 	}
-		// }
-	}
-}
-@media screen and (min-height:1000px) {
-	#desktop-student-home {
-		.main {
-			.top {
-				@include flex;
-				@include flex-center;
-				height: 20%;
-			}
-			.student-home-container {
-				height: 80%;
-			}
-		}
-	}
-}
-
-/* ---------- GURU HOME */
-#desktop-guru-home {
-	.main {
-		@include flex;
-		@include flex-center;
-		padding: 0;
-		.guru-home-greeting {
-			@include flex;
-			@include flex-center;
-			width: calc(50% + 80px);
-			height: 100%;
-			div {
-				text-align: center;
-				text-transform: uppercase;
-				h1 {
-					color: $gabrielle;
-					font-size: 40px;
-					font-weight: 700;
-				}
-				.guru-home-notifications {
-					ul {
-						@include flex;
-						@include flex-center;
-						width: 100%;
-						margin-top: 10%;
-						li {
-							padding: 0 15px;
-							a {
-								@include flex;
-								@include flex-center-vertical;
-								span {
-									display: block;
-								}
-								.notification-icon {
-									position: relative;
-									svg {
-										@include round;
-										@include svg-stroke($slate, 5);
-										background: $smoke;
-										width: 64px;
-										height: 64px;
-										padding: 10px;
-									}
-									.notification-number {
-										@include round;
-										@include flex;
-										@include flex-center;
-										position: absolute;
-										top: -15px;
-										right: -15px;
-										width: 40px;
-										height: 40px;
-										background: $gabrielle;
-										border: 3px solid $charcoal;
-										font-size: 18px;
-										font-weight: 600;
-									}
-								}
-								.notification-type {
-									padding-left: 15px;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		.guru-home-tiles {
-			height: 100%;
-			max-height: 715px;
-			margin-right: -20px;
-			.square {
-				height: 100%;
-			}
-			.square + div {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 5;
-				h2, h3 {
-					padding: 15px 0;
-					font-weight: 700;
-					text-transform: uppercase;
-					span {
-						font-weight: 300;
-					}
-				}
-				h3 {
-					padding-bottom: 0;
-					font-size: 20px;
-				}
-				progress {
-					margin: 0 15px;
-					width: calc(100% - 30px);
-				}
-			}
-			> div {
-				width: 100%;
-				height: 50%;
-				text-align: center;
-			}
-			.home-tiles-top {
-				@include flex;
-				@include flex-center;
-				padding-top: 7.5px;
-				padding-left: 10px;
-				.home-tiles-ranking {
-					height: 100%;
-					width: calc(100% / 3 * 2);
-					padding: 7.5px;
-					> div {
-						position: relative;
-						height: 100%;
-						.square {
-							fill: lighten($gabrielle, 15%);
-						}
-						#guru-chart {
-							position: relative;
-							height: calc(100% - 58px);
-							width: 100%;
-							#guru-ranking-progress-bar {
-								height: 100%;
-							}
-							svg {
-								padding: 0 15px 15px;
-								height: 100%;
-								path {
-									stroke-linecap: round;
-								}
-							}
-							#percentile {
-								@include center-xy;
-								#percentile-ranking {
-									position: relative;
-									margin-top: -30px;
-									font-size: 96px;
-									font-weight: 600;
-									line-height: 1;
-									text-align: center;
-									&::after {
-										content: "th";
-										display: block;
-										position: absolute;
-										top: 14px;
-										right: -15px;
-										font-size: 20px;
-										font-weight: 600;
-										line-height: 28px;
-										text-transform: uppercase;
-									}
-								}
-								#percentile-label {
-									font-size: 20px;
-									font-weight: 600;
-									letter-spacing: 1px;
-									line-height: 1.2;
-									text-transform: uppercase;
-								}
-							}
-						}
-					}
-				}
-				.home-tiles-event {
-					height: 100%;
-					width: calc(100% / 3);
-					padding: 7.5px;
-					> div {
-						position: relative;
-						height: 50%;
-						.square + div {
-							height: calc(100% - 7.5px);
-						}
-						&:first-child {
-							padding-bottom: 7.5px;
-							.square {
-								fill: $gabrielle;
-							}
-							.square + div {
-								svg {
-									@include svg-stroke(white, 2);
-									height: calc(100% - 39px);
-								}
-							}
-						}
-						&:last-child {
-							padding-top: 7.5px;
-							.square {
-								fill: desaturate($gabrielle, 20%);
-							}
-							.square + div {
-								top: 7.5px;
-							}
-							#home-tiles-earnings {
-								@include flex;
-								@include flex-center;
-								font-size: 60px;
-								font-weight: 700;
-								span {
-									font-weight: 600;
-									font-size: 48px;
-									padding-right: 5px;
-								}
-							}
-						}
-					}
-				}
-			}
-			.home-tiles-bottom {
-				@include flex;
-				@include flex-center;
-				padding-bottom: 7.5px;
-				padding-left: 10px;
-				.home-tiles-stats {
-					height: 100%;
-					width: calc(100% / 3);
-					padding: 7.5px;
-					> div {
-						position: relative;
-						height: 50%;
-						.square + div {
-							@include flex;
-							@include flex-wrap;
-							@include flex-center;
-							height: calc(100% - 7.5px);
-							h3 {
-								padding-top: 0;
-								.credibility-percent {
-									font-weight: 700;
-								}
-							}
-							progress {
-								vertical-align: 0;
-							}
-						}
-						&:first-child {
-							padding-bottom: 7.5px;
-							.square {
-								fill: saturate($gabrielle, 5%);
-							}
-						}
-						&:last-child {
-							padding-top: 7.5px;
-							.square {
-								fill: desaturate($gabrielle, 20%);
-							}
-							.square + div {
-								top: 7.5px;
-							}
-						}
-					}
-				}
-				.home-tiles-upcoming {
-					height: 100%;
-					width: calc(100% / 3 * 2);
-					padding: 7.5px;
-					> div {
-						position: relative;
-						height: 100%;
-						.square {
-							fill: $gabrielle;
-						}
-						.square + div {
-							.slider {
-								height: calc(100% - 58px);
-								.card {
-									@include flex;
-									@include flex-center;
-									margin: 0 15px;
-									height: calc(100% - 54px);
-									h1 {
-										margin-bottom: 5px;
-										font-size: 36px;
-										font-weight: 600;
-									}
-								}
-							}
-							ul {
-								padding: 0 15px 15px;
-								font-size: 18px;
-								text-align: left;
-								font-weight: 600;
-								li {
-									margin-bottom: 5px;
-									padding-bottom: 5px;
-									border-bottom: 1px solid white;
-								}
-								span {
-									@include opacity(.5);
-									font-size: 14px;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-/* ---------- UPLOAD PHOTO */
-#desktop-upload-photo {
-	@include flex;
-	@include flex-center;
-	.main {
-		@include flex;
-		@include flex-center;
-		#profile-icon {
-			position: relative;
-			h1 {
-				@include center-xy;
-				width: 100%;
-				padding: 15px;
-				margin-top: 0!important;
-				font-weight: 900;
-				text-align: center;
-				text-transform: uppercase;
-			}
-			img {
-				@include round;
-				@include opacity(.3);
-				width: 300px;
-				height: 300px;
-			}
-		}
-		#photo-list {
-			@include center-x;
-			bottom: 15px;
-			img {
-				max-width: 100px;
-			}
-		}
-	}
-}
-
-/* ---------- GURU HOME */
-#desktop-home {
-	.main {
-		h1 {
-			width: 100%;
-			padding: 10px;
-			background: white;
-			font-size: 14px;
-			font-weight: 600;
-			letter-spacing: 2px;
-			text-align: center;
-			text-transform: uppercase;
-			color: $gabrielle;
-		}
-		> div {
-			width: 100%;
-			max-width: 500px;
-			background: rgba($gabrielle,.5);
-			margin: 0 auto 15px;
-		}
-		#desktop-tips {
-			.guru-tip-of-day-slide-box {
-				height: auto;
-				padding-bottom: 30px;
-			}
-			.slider-pager {
-				bottom: 14px;
-			}
-			.card {
-				background: $gabrielle;
-			}
-			button {
-				background: white!important;
-				color: $gabrielle!important;
-			}
-		}
-		#desktop-ranking {
-			position: relative;
-			z-index: 9;
-			> div {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				padding: 15px;
-				width: 100%;
-				> div {
-					@include flex;
-					@include flex-wrap;
-					@include flex-center;
-				}
-			}
-			.progressbar-text {
-				display: none;
-			}
-			svg {
-				@include round;
-				display: block;
-				* {
-					stroke-linecap: round;
-				}
-			}
-			#guru-chart {
-				position: relative;
-				width: 50%;
-				height: 130px;
-				svg {
-					width: 130px;
-					height: 130px;
-				}
-				#percentile {
-					@include center-xy;
-					#percentile-ranking {
-						position: relative;
-						font-size: 44px;
-						font-weight: 600;
-						line-height: 1;
-						text-align: center;
-						&::after {
-							content: "th";
-							display: block;
-							position: absolute;
-							top: -1px;
-							right: -1px;
-							font-size: 12px;
-							font-weight: 400;
-							line-height: 28px;
-							text-transform: uppercase;
-						}
-					}
-					#percentile-label {
-						font-size: 12px;
-						font-weight: 400;
-						letter-spacing: 1px;
-						line-height: 15px;
-						text-transform: uppercase;
-					}
-				}
-			}
-			#guru-stats {
-				width: 50%;
-				h2 {
-					margin: 0 0 5px;
-					font-size: 16px;
-					font-weight: 600;
-					text-transform: uppercase;
-				}
-				.stats-bar {
-					line-height: 10px;
-					font-size: 10px;
-					height: 10px;
-					margin-bottom: 7px;
-					svg {
-						height: 10px;
-					}
-				}
-			}
 		}
 	}
 }
@@ -3715,7 +2300,7 @@
 				}
 			}
 			ul {
-				max-width: 1310px;
+				max-width: 1280px;
 				margin: 0 auto;
 				height: calc(100% - 85px);
 				padding-top: 15px;
@@ -4009,152 +2594,7 @@
 	}
 }
 
-
-/* ---------- BILLING */
-#desktop-billing {
-	.main {
-		@include flex;
-		@include flex-center;
-		padding: 0;
-		> div {
-			width: 100%;
-			height: 100%;
-			max-width: 1280px;
-			max-height: 800px;
-			padding: 15px;
-			background: lighten($charcoal, 5%);
-		}
-		h1 {
-			font-size: 48px;
-			font-weight: 900;
-		}
-		#billing-container {
-			max-width: 800px;
-			margin: 15px auto 0;
-			h2 {
-				background: $shamrock;
-				padding: 10px;
-				font-size: 28px;
-				font-weight: 600;
-			}
-			h3 {
-				font-size: 28px;
-				font-weight: 600;
-				text-transform: uppercase;
-			}
-			> div {
-				background: $slate;
-			}
-			> * {
-				margin-bottom: 15px;
-			}
-			#billing-student {
-				#select-student {
-					display: none;
-				}
-				#select-skill {
-					@include flex-center;
-					max-width: 600px;
-					margin: 0 auto;
-					> li:nth-child(2) {
-						font-size: 36px;
-						font-weight: 600;
-					}
-				}
-				ul {
-					.user-icon {
-						margin-top: 30px;
-						margin-bottom: 15px;
-						+ span {
-							display: block;
-							margin-bottom: 30px;
-							font-weight: 600;
-						}
-					}
-				}
-			}
-			#billing-details {
-				> ul {
-					padding: 7.5px;
-					li {
-						padding: 7.5px;
-						&:first-child {
-							h3 {
-								@include flex;
-								@include flex-center;
-								height: 48px;
-								background: lighten($slate, 10%);
-								margin-bottom: 15px;
-							}
-							> ul {
-								> li {
-									&:nth-child(1), &:nth-child(3) {
-										padding-right: 10px;
-									}
-									&:nth-child(2) {
-										padding-right: 30px;
-									}
-								}
-							}
-						}
-						&:last-child {
-							> ul {
-								&:nth-child(1) {
-									padding-right: 10px;
-								}
-							}
-							> .custom-dropdown {
-								margin-bottom: 15px;
-							}
-						}
-						.keep-it-free {
-							@include flex;
-							@include flex-center;
-							height: 58px;
-							padding-top: 5px;
-							font-weight: 400;
-						}
-						> ul {
-							@include flex;
-							@include flex-center;
-							padding-top: 5px;
-							> li {
-								font-weight: 600;
-								input {
-									font-size: 32px;
-									font-weight: 700;
-									text-align: center;
-									max-width: 50px;
-									background: lighten($slate, 10%);
-									@include placeholder {
-										color: rgba(white,.5);
-									}
-								}
-								.custom-dropdown {
-									span {
-										width: 96px;
-									}
-								}
-							}
-						}
-						.custom-dropdown {
-							span {
-								width: calc(100% - 48px);
-							}
-							ul {
-								width: 100%;
-								li {
-									width: calc(100% - 48px);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
+/* ---------- CUSTOM DROPDOWN */
 .custom-dropdown {
 	position: relative;
 	> div {
@@ -4200,242 +2640,6 @@
 			&:active {
 				background: rgba(lighten($shamrock, 10%),.9);
 			}
-		}
-	}
-}
-
-/* ---------- REFERRALS */
-.sidebar-layout {
-	.main {
-		@include flex;
-		@include flex-center;
-		padding: 0;
-		> div {
-			@include flex;
-			width: 100%;
-			height: 100%;
-			max-width: 1280px;
-			max-height: 800px;
-			background: lighten($charcoal, 5%);
-		}
-		aside {
-			width: calc(100% / 3);
-			height: 100%;
-			h2 {
-				padding: 15px;
-				font-size: 32px;
-				font-weight: 700;
-				text-align: center;
-			}
-			.sidebar-layout-list {
-				margin-top: 15px;
-				height: calc(100% - 232px);
-				overflow: auto;
-				li {
-					@include flex;
-					padding: 15px;
-					border-bottom: 1px solid rgba(white,.4);
-					&:last-child {
-						border-bottom: 0;
-					}
-					.user-icon {
-						width: 60px;
-						height: 60px;
-						border-width: 3px;
-						+ div {
-							padding-left: 15px;
-						}
-					}
-					div {
-						width: calc(100% - 60px);
-						h3, span {
-							font-weight: 400;
-							b {
-								font-weight: 600;
-							}
-						}
-						h3 {
-							font-size: 22px;
-						}
-						span {
-							color: rgba(white,.5);
-							font-size: 18px;
-						}
-					}
-				}
-			}
-		}
-		aside + div {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			width: calc(100% / 3 * 2);
-			height: 100%;
-			h1 {
-				font-size: 48px;
-				font-weight: 900;
-				svg {
-					@include svg-stroke(white, 3);
-					display: block;
-					margin: 0 auto;
-					width: 100px;
-					height: 100px;
-				}
-				+ h2 {
-					margin-top: 0!important;
-					font-weight: 600;
-				}
-			}
-		}
-	}
-}
-#desktop-referrals {
-	.main {
-		aside {
-			background: $shamrock;
-			#referrals-stats {
-				text-align: center;
-				padding: 1px;
-				li {
-					padding: 1px;
-					div {
-						padding: 15px;
-						background: rgba($charcoal,.6);
-						h1 {
-							font-size: 72px;
-							font-weight: 900;
-						}
-						span {
-							font-size: 18px;
-							font-weight: 400;
-							line-height: 1.2;
-						}
-					}
-				}
-				li:last-child {
-					div {
-						background: rgba(white,.6);
-						color: $charcoal;
-					}
-				}
-			}
-		}
-		aside + div {
-			input {
-				@include flex;
-				@include flex-center;
-				background: rgba(white,.5);
-				height: 84px;
-				text-align: center;
-				margin: 0 auto;
-				font-size: 60px;
-				font-weight: 600;
-				&:hover {
-					background: rgba(white,.8);
-				}
-				&:active, &:focus {
-					background: white;
-				}
-			}
-			h3 {
-				font-size: 32px;
-				font-weight: 700;
-			}
-			#referrals-share {
-				width: 100%;
-				ul {
-					max-width: 700px;
-					margin: 30px auto 0;
-					li {
-						svg {
-							@include round;
-							@include svg-stroke(white, 3);
-							width: 100px;
-							height: 100px;
-							margin: 0 auto;
-							padding: 12px;
-						}
-						&:nth-child(1) svg {
-							background: $lake;
-						}
-						&:nth-child(2) svg {
-							background: $eggplant;
-						}
-						&:nth-child(3) svg {
-							background: $facebook;
-						}
-						&:nth-child(4) svg {
-							background: $twitter;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-/* ---------- BALANCE */
-#desktop-balance {
-	.main {
-		aside {
-			background: $moola;
-		}
-		aside + div {
-			padding: 15px;
-			> div {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				height: calc(100% - 79px);
-				width: 100%;
-				div {
-					width: 100%;
-					#balance-total {
-						@include flex;
-						@include flex-center;
-						margin: 15px 0;
-						padding: 30px;
-						font-size: 96px;
-						font-weight: 900;
-						line-height: 1;
-						background: $slate;
-					}
-					h2 {
-						font-size: 32px;
-						font-weight: 600;
-					}
-					ul {
-						margin: 15px -7.5px 0;
-						li {
-							padding: 7.5px;
-							a {
-								@include flex;
-								@include flex-wrap;
-								@include flex-center;
-								width: 100%;
-								height: 150px;
-								background: $slate;
-								font-weight: 600;
-								svg {
-									@include svg-stroke(white, 4);
-									width: 80px;
-									height: 80px;
-								}
-								span {
-									display: block;
-									span {
-										padding-top: 10px;
-										padding-bottom: 10px;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		button {
-			font-weight: 600;
 		}
 	}
 }
@@ -4490,206 +2694,4 @@
 			background: darken($gold, 5%);
 		}
 	}
-}
-
-// start samir css 11/9
-.desktop-input-close-icon {
-	position:absolute;
-	right:10px;
-	top:50%;
-}
-
-.desktop-login-view  {
-	.desktop-input-close-icon {
-		color:rgba($slate,0.2);
-		top:30%;
-	}
-}
-// End samir-css
-
-.desktop-nav-back {
-	svg {
-		-webkit-transform: rotate(45deg);
-	    -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	    -o-transform: rotate(45deg);
-	    transform: rotate(45deg);
-	}
-}
-
-.desktop-mode {
-	#desktop-student-home-map-container, #student-home-default-map-container {
-			position: absolute !important;
-			top: 0 !important;
-			left: 0 !important;
-			overflow: hidden !important;
-			z-index: 0 !important;
-			width: calc(100%) !important;
-			height: calc(100% - 64px) !important;
-		}
-	.main {
-		z-index:1 !important;
-		background:transparent;
-	}
-}
-
-//all component overrides
-//@gabriellewee I injected desktop-view into body if desktop
-.desktop-view {
-	ion-modal-view {
-		width: 100%;
-    	height: calc(100% - 64px);
-    	left: 0;
-    	top: 64px;
-	}
-	.uguru-popup-content {
-		width:33% !important;
-	}
-}
-
-.desktop-view.platform-ios {
-	ion-modal-view {
-		top:84px;
-		height: calc(100% - 84px);
-		width:100%;
-	}
-	header, .header-nav {
-		padding-top:0px !important;
-	}
-	.guru-desktop-credibility {
-		padding-top:20px;
-	}
-	#top-menu-background-overlay {
-	    top: 64px;
-	    height: calc(100% - 84px) !important;
-	}
-
-}
-//end component overrides
-
-#top-menu-background-overlay {
-	top: 64px;
-    height: calc(100% - 64px) !important;
-    z-index: 10;
-    margin-left: -15px !important;
-    opacity:0;
-    display:none !important;
-    width:100% !important;
-    max-width:100% !important;
-    &.active {
-    	display:block !important;
-    	opacity:0.7;
-    }
-}
-
-// a.back-icon-settings {
-// 	padding: 20px;
-//     top: 13%;
-//     width: auto;
-//     height: 80px;
-// 	svg {
-// 		@include svg-stroke(white, 5);
-// 		height: 100%;
-// 		width: auto;
-// 	}
-// }
-
-.desktop-guru-onboarding-view {
-	.cta-modal.hide-display {
-		@include opacity-important(0);
-		display: none;
-		z-index: 1000;
-		&.show {
-			@include opacity-important(1);
-			display: block!important;
-		}
-	}
-	.cta-modal-close svg {
-		@include rotate(45);
-	}
-}
-
-.desktop-guru-onboarding {
-	.main.default {
-		min-height: 50%;
-	}
-}
-.photo-view .main {
-	height: calc(100% - 140px);
-}
-
-.mode-links {
-	background: rgba(255, 255, 255, 0.75);
-	span {
-		color: #958B8E;
-	}
-	svg {
-		stroke: #958B8E !important;
-	}
-}
-
-#desktop-credibility .progress-bottom {
-	bottom: 50px;
-}
-
-.progressbar-text {
-	display: none!important;
-}
-
-#desktop-guru-home {
-	.hide-display.cta-modal.pane {
-		@include opacity-important(0);
-		position: fixed;
-		transition: 200ms ease;
-		visibility: hidden;
-		overflow: auto;
-		z-index:-1;
-		background: $charcoal;
-		&.show {
-			z-index: 1000;
-			@include opacity-important(1);
-			visibility: visible;
-		}
-	}
-	.cta-modal-close svg {
-		@include rotate(45);
-	}
-	main#desktop-guru-profile {
-		a.cta-modal-close {
-			top: 0;
-		    right: 0;
-		    position: absolute;
-		    width: 50px;
-		    height: 50px;
-		}
-		footer {
-			position:absolute;
-		}
-	}
-}
-
-.desktop-guru-onboarding-view
-.skill-item-content.hide-display {
-	@include opacity(0);
-	visibility: hidden;
-	flex-direction: column;
-	&.show {
-		@include flex;
-		@include opacity(1);
-		visibility: visible;
-		a {
-			position: absolute;
-			top: 10px;
-			right: 10px;
-			svg {
-				@include rotate(45);
-				height: 50px;
-			}
-		}
-	}
-
-}
-
-.skip-button {
-	@include opacity(.5);
 }

@@ -69,16 +69,19 @@ angular.module('uguru.guru.controllers')
 
     $scope.goBackToStudentHome = function() {
 
-      uTracker.track(tracker, 'Student Home');
+      if (confirm('Are you sure? All progress will be lost')) {
+        AnimationService.flip('^.university');
+        return;
+      }
+
       $ionicViewSwitcher.nextDirection('back');
       $ionicSlideBoxDelegate.update();
-      $state.go('^.guru-home');
 
-      $timeout(function() {
-        // var slidebox = document.querySelectorAll('.become-guru-slidebox-container')[0];
-        // if (slidebox) slidebox.remove();
-        $scope.$destroy;
-      }, 400);
+      // $timeout(function() {
+      //   // var slidebox = document.querySelectorAll('.become-guru-slidebox-container')[0];
+      //   // if (slidebox) slidebox.remove();
+      //   $scope.$destroy;
+      // }, 400);
     }
     var clearAllSearchInputs = function() {
       var inputs = document.querySelectorAll('input');

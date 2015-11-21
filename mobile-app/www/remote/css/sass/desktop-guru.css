@@ -1864,6 +1864,30 @@
   height: calc(100% - 39px);
 }
 
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:first-child #home-tiles-ranking {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:first-child #home-tiles-ranking span {
+  font-weight: 600;
+  font-size: 48px;
+  padding-right: 5px;
+}
+
 #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:last-child {
   padding-top: 7.5px;
 }

@@ -270,7 +270,6 @@ angular.module('uguru.desktop.controllers')
       uTracker.track(tracker, 'Guru Mode');
       $scope.root.vars.guru_mode = true;
       $ionicViewSwitcher.nextDirection('forward');
-
       if ($scope.desktopMode) {
         $state.go('^.guru-home');
       } else {
@@ -319,6 +318,7 @@ angular.module('uguru.desktop.controllers')
     }
 
     $scope.$on('$ionicView.enter', function() {
+
       $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
       $timeout(function() {

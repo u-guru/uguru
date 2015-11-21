@@ -1,7 +1,7 @@
 
 var LOCAL = _local || false; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
-// var FIRST_PAGE='^.' + _startpage;
+var FIRST_PAGE='^.' + _startpage;
 
 // isAdmin = true;
 
@@ -14,7 +14,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   // BASE_URL = _ipaddress;
-  // REST_URL = "http://localhost:5000"
+  REST_URL = "http://localhost:5000"
 
   // REST_URL = 'https://192.168.0.104:5000';
 

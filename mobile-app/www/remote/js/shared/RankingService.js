@@ -109,16 +109,16 @@ function RankingService() {
         var base = 25;
         var max_points = 100;
 
-        if (user.current_credibility_percent) {
+        // if (user.current_credibility_percent) {
             newCredibility = Math.round((calcCredibility(user) / 400.0), 2);
             console.log('credibility', newCredibility)
             base += newCredibility;
-        }
-        if (user.current_profile_percent) {
+        // }
+        // if (user.current_profile_percent) {
             newProfile = Math.round(calcProfile(user), 2)
             console.log('profile', newProfile / 2);
             base += Math.round((newProfile / 2), 2);
-        }
+        // }
         // cant ever get a hundo (unless premium ;) LOL
         if (base === 100) {
           base = 99;

@@ -316,7 +316,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.launchAddGuruExperienceModal = function(experience, index) {
-
+      console.error(index);
       $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -335,7 +335,25 @@ angular.module('uguru.guru.controllers')
             $scope.guruExperiencesModal.show();
       });
     }
-
+    // $scope.launchAddGuruExperienceModal = function(experience) {
+    //   $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
+    //         scope: $scope,
+    //         animation: 'slide-in-up'
+    //     }).then(function(modal) {
+    //         if (experience) {
+    //           $scope.experience = experience;
+    //           // $scope.experience_index = index;
+    //         } else {
+    //           $scope.experience = {
+    //             name: '',
+    //             description: '',
+    //             years: 1
+    //           }
+    //         }
+    //         $scope.guruExperiencesModal = modal;
+    //         $scope.guruExperiencesModal.show();
+    //   });
+    // }
     $scope.saveGuruIntroductionModalAndHide = function() {
       LoadingService.showAmbig(null, 500, function() {
         $scope.guruIntroductionModal.hide();
@@ -361,28 +379,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.launchGuruIntroductionModal = function() {
       $scope.guruIntroductionModal.show();
-    }
-
-
-    $scope.launchAddGuruExperienceModal = function(experience) {
-
-      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            if (experience) {
-              $scope.experience = experience;
-              // $scope.experience_index = index;
-            } else {
-              $scope.experience = {
-                name: '',
-                description: '',
-                years: 1
-              }
-            }
-            $scope.guruExperiencesModal = modal;
-            $scope.guruExperiencesModal.show();
-      });
     }
 
     $scope.launchMajorModal = function() {
@@ -854,9 +850,13 @@ angular.module('uguru.guru.controllers')
 
     }
 
+    //Thie is template fix for Modal show and hiden in Sidebar which will cause the slide not update
+    $scope.$on('$ionicView.beforeEnter', function() {
+        $ionicSlideBoxDelegate.update();
+    });
+    
     $scope.$on('$ionicView.enter', function() {
           $scope.refreshTipsAndRanking($scope.user);
-
           $timeout(function() {
 
             if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
@@ -867,9 +867,6 @@ angular.module('uguru.guru.controllers')
           PopupService.initDefaults();
     });
 
-    // $scope.$on('$ionicView.afterEnter', function() {
-    //   $ionicSlideBoxDelegate.update();
-    // });
 
     $timeout(function() {
       $scope.calcGuruCredibilityProgress();
@@ -878,6 +875,8 @@ angular.module('uguru.guru.controllers')
 
      $scope.$on('modal.hidden', function() {
         // console.error("ion modal leave  guru ctrl")
+        // $ionicSlideBoxDelegate.update();
+
         if (DeviceService.doesCordovaExist()) {
           cordova.plugins.Keyboard.close();
         }

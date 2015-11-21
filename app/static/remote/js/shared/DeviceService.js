@@ -89,7 +89,7 @@ function DeviceService($cordovaNgCardIO,
 
   function isIOSDevice() {
     var userAgent = navigator.userAgent;
-    return !(userAgent.toLowerCase().indexOf('safari') > -1);
+    return (!(userAgent.toLowerCase().indexOf('safari') > -1) || userAgent.indexOf('iPad') > 0);
   }
 
   function isIOSBrowser () {
@@ -249,12 +249,11 @@ function DeviceService($cordovaNgCardIO,
 		// if(typeof callback === 'function') {
 		// 	callback();
 		// }
-    checkUpdates();
+    // checkUpdates();
 	}
 	function checkUpdates(url) {
-
     // don't update on local
-    if (true || LOCAL && !url) {
+    if (LOCAL && !url) {
       console.log("running local: skipping over checkUpdates");
 
         // hide it otherwise it never would on emulators
@@ -284,7 +283,7 @@ function DeviceService($cordovaNgCardIO,
                   currentVersion = 1.0;
                   Version.setVersion(1.0);
                 }
-                if (serverVersionNumber != currentVersion) {
+                if (serverVersionNumber !== currentVersion) {
 
                   console.log('versions are different...\n');
 

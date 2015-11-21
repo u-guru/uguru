@@ -61,24 +61,35 @@ angular.module('uguru.util.controllers')
             height:windowHeight
         };
 
-
+        var adminResponsePayload = Utilities.isAdminRequest();
+        if (adminResponsePayload) {
+            var loginPayload = adminResponsePayload;
+            User.login(loginPayload).then(function(user) {
+                var processed_user = User.process_results(user.plain());
+                User.assign_properties_to_root_scope($scope, processed_user);
+                location.href = window.location.origin + window.location.pathname + window.location.hash;
+            },
+            function(err) {
+                console.log(err);
+            })
+        };
 
 
         // GABRIELLE TODO: Define these values
-        var desktopHeightLimit = 699;
+        var desktopHeightLimit = 690;
         var desktopWidthLimit= 767;
 
         $scope.isDesktopMode = function(height, width) {
             initHeight();
             // height = height || windowHeight;
             // width = width || windowWidth;
-            height = window.window.innerHeight;
-            width = window.window.innerWidth;
+            height = window.window.outerHeight;
+            width = window.window.outerWidth;
             // if(!(height > desktopHeightLimit && width > desktopWidthLimit))
-                // console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
-            return height > desktopHeightLimit && width > desktopWidthLimit;
+                // console.log("CHECK MODE " + height , desktopHeightLimit ,width , desktopWidthLimit);
+            return height >= desktopHeightLimit && width >= desktopWidthLimit;
         };
-        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
+        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth) && !(navigator.userAgent.indexOf('iPad') > 0);
         console.log('originalDesktopMode', $scope.desktopMode);
         if ($scope.desktopMode) {
             document.body.classList.add('desktop-view');

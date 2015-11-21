@@ -126,6 +126,15 @@
 	display: -webkit-flex;
 	display: flex;
 }
+@mixin flex-important {
+	-ms-box-orient: horizontal!important;
+	display: -webkit-box!important;
+	display: -moz-box!important;
+	display: -ms-flexbox!important;
+	display: -moz-flex!important;
+	display: -webkit-flex!important;
+	display: flex!important;
+}
 @mixin flex-column {
 	-ms-box-orient: horizontal;
 	display: -webkit-box;
