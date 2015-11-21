@@ -2095,3 +2095,12 @@
 		}
 	}
 }
+
+.message-single.right .message-single-content {
+	-moz-align-items:flex-end;
+	-webkit-align-items:flex-end;
+	align-items:flex-end;
+	-moz-flex-direction:column !important;
+	-webkit-flex-direction:column !important;
+	flex-direction:column !important;
+}

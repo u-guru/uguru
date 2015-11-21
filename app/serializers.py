@@ -291,6 +291,7 @@ relationship_fields = {}
 relationship_fields['student'] = fields.Nested(student_fields)
 relationship_fields['guru'] = fields.Nested(guru_fields)
 relationship_fields['sessions'] = fields.Nested(session_fields)
+relationship_fields['messages'] = fields.Nested(message_fields)
 
 
 class FilteredList(fields.Raw):

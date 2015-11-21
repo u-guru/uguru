@@ -339,9 +339,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'CoursesController'
   }).
   state('root.messages', {
-        url: '/messages/:sessionObj',
+        url: '/messages/',
         templateUrl: BASE + 'templates/student.messages.html',
-        controller: 'StudentMessagesController'
+        controller: 'GuruMessagesController'
   }).
   state('root.messaging', {
         url: '/messaging',

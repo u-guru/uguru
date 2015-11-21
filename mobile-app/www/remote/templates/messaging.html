@@ -1,18 +1,18 @@
 <ion-view class='bottom-0 guru-message-container'>
-	<main id='desktop-messaging' class="desktop-mode" ng-if='isDesktopMode()'>
+	<main id='desktop-messaging' class="desktop-mode" ng-if='desktopMode'>
 		<a class='cta-modal-close absolute right-0 top-0'>
 			<svg viewBox="0 0 100 100" class='svg-close' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
 			</svg>
 		</a>
 		<!-- <nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav> -->
-		<div class="main absolute bottom-0">
+		<div class="main absolute bottom-0 full-x">
 			<div id="messenger">
 				<div id="messenger-sidebar">
-					<h1>Guru Talk</h1>
+					<h1>My Students</h1>
 				<ul>
 
-						<li ng-repeat='relationship in user.student_relationships'>
+						<li ng-repeat='relationship in user.student_relationships|filter:student_search.search_text:strict'>
 							<a>
 								<span class="messenger-icon"><img ng-src='{{relationship.student.profile_url}}'></span>
 								<span class="messenger-label">{{relationship.student.name}}</span>
@@ -25,14 +25,14 @@
 								<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 							</svg>
 						</label>
-						<input name="messenger-sidebar-search" placeholder="Filter"/>
+						<input name="messenger-sidebar-search" ng-model='student_search.search_text'/>
 					</div>
 				</div>
 				<div id="messenger-content">
 					<div class="messenger-header">
-						<h1>{{user.student_relationships[0].student.name}}</h1>
+						<h1>{{active_relationship.student.name}}</h1>
 						<div id="message-search">
-							<input placeholder="Search"/>
+							<input placeholder="Search anything" placeholder="Filter" ng-model='active_relationship.search_text' />
 							<a>
 								<svg viewBox="0 0 100 100">
 								    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
@@ -60,74 +60,42 @@
 						</nav>
 					</div>
 					<div id="message-container">
-						<div id="messages">
+						<ion-scroll id="messages">
+
+							<ion-refresher
+						        pulling-icon="ion-arrow-down-c"
+						        spinner="circles"
+						        on-refresh="doRefresh()">
+					    	</ion-refresher>
 							<div class="message-single message-status left center">
 								<div class='message-single-icon' ng-include="img_base + 'templates/green-guru-svg.html'"> </div>
 								<div class="message-single-content">
 									<div class="message-single-info"></div>
 									<div class="message-single-status">
-										This is the beginning of your message thread with Delivery Guru.
+										This is the beginning of your message thread with <strong>{{user.student_relationships[0].student.name}}</strong>
 									</div>
 								</div>
 							</div>
 
-							<div class="message-single left">
-								<div class='message-single-icon'>
-									<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+							<div ng-repeat='message in user.student_relationships[0].messages|filter:active_relationship.search_text:strict' class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}" >
+								<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
+									<img ng-if='user.profile_url' ng-src='{{message.sender.profile_url}}'/>
 								</div>
 								<div class="message-single-content">
 									<div class="message-single-info">
-										<span>Delivery Guru</span>
-										<span>4:12 PM</span>
+										<span>{{message.sender.name}}</span>
+										<span>{{message.time_created}}</span>
 									</div>
 									<div class="message-single-message">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-									</div>
-									<div class="message-single-message">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+										{{message.contents}}
 									</div>
 								</div>
-							</div>
-
-							<div class="message-single right">
-								<div class="message-single-content">
-									<div class="message-single-info">
-										<span>Me</span>
-										<span>4:12 PM</span>
-									</div>
-									<div class="message-single-message">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-									</div>
-								</div>
-								<div class='message-single-icon'>
+								<div class='message-single-icon' ng-if='message.sender.id === user.id'>
 									<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
 								</div>
 							</div>
 
-							<div class="message-single left">
-								<div class='message-single-icon'>
-									<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
-								</div>
-								<div class="message-single-content">
-									<div class="message-single-info">
-										<span>Delivery Guru</span>
-										<span>4:12 PM</span>
-									</div>
-									<div class="message-single-message">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</div>
-									<div class="message-single-message">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</div>
-									<div class="message-single-message">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</div>
-									<div class="message-single-message">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</div>
-								</div>
-							</div>
-						</div>
+						</ion-scroll>
 						<div id="message-box">
 							<a>
 								<svg viewBox="0 0 100 100">

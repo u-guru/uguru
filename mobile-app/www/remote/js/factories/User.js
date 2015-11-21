@@ -35,6 +35,19 @@ angular.module('uguru.user', [])
                 return result;
     }
 
+    var parseRelationships = function(relationships) {
+        for (var i = 0; i < relationships.length; i++) {
+            var indexRelationship = relationships[i];
+            var nameSplitArr = indexRelationship.student.name.split(' ');
+            var firstName = nameSplitArr[0];
+            var lastInitial = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+
+
+            indexRelationship.student.name = firstName + ' ' + lastInitial;
+        }
+        return relationships;
+    }
+
     var calcProfileCompleteness = function(user) {
         var default_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100";
         var base = 60; //40%
@@ -498,7 +511,7 @@ angular.module('uguru.user', [])
         $scope.user.course_guru_dict = user.course_guru_dict;
         $scope.user.gurus = user.gurus;
         $scope.user.guru_relationships = user.guru_relationships;
-        $scope.user.student_relationships = user.student_relationships;
+        $scope.user.student_relationships = parseRelationships(user.student_relationships);
         $scope.user.referred_by = user.referred_by;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
