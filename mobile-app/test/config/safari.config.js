@@ -1,7 +1,7 @@
 
 var device = 'desktop'
-// var IP = "http://localhost:5000/static/remote/index.html"
- var IP = "http://localhost:8100"
+var IP = "http://localhost:5000/static/remote/index.html"
+ // var IP = "http://localhost:8100"
 
 exports.config = {
      params: {

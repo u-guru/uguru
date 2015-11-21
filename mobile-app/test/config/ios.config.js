@@ -1,6 +1,6 @@
 
-var device = 'desktop'
-// var IP = "http://localhost:5000/static/remote/index.html"
+var device = 'ios'
+// var IP = "http://192.168.0.107:5000/static/remote/index.html"
  var IP = "http://localhost:8100"
 
 exports.config = {
@@ -8,16 +8,28 @@ exports.config = {
                 screenSize : "1600x1050"
               },
     framework: 'jasmine2',
-     seleniumAddress: 'http://localhost:4444/wd/hub',
+        
+         seleniumAddress: 'http://localhost:4723/wd/hub',
 
-
+         //iphone 5s jason settings
+         // ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
          capabilities: {
-             'browserName': 'safari'
-         },
+            browserName: '',
+          'appium-version': '1.4.13',
+          app: '/Users/Jason-work/Git/uguru/mobile-app/platforms/ios/build/device/uguru.app',
+          platformName: 'iOS',
+            bundleId: 'com.beta.college.Uguru',
+            udid: 'ae0e73324f34a167a19b912f3f22af2f74bc0936',
+            platformVersion: '8.2',
+            deviceName: "Chun-Hsiang's iPhone (8.2) [ae0e73324f34a167a19b912f3f22af2f74bc0936]",
+            autoWebview: 'true',
+            autoAcceptAlerts : 'true',
+            noReset : 'true',
+        },
         specs:
         [
-          '../e2e/browser/firsttimeusrSpec.js', 
-          // '../e2e/browser/iphoneSpec.js', 
+          // '../e2e/browser/firsttimeusrSpec.js', 
+          '../e2e/ios/bestCaseSpec.js'
    
         ],
           suites:
@@ -100,21 +112,21 @@ exports.config = {
             // browser.manage().deleteAllCookies();
             // browser.executeScript('window.sessionStorage.clear();');
             // browser.executeScript('window.localStorage.clear();');
-            browser.getCapabilities().then(function(caps)
-              {
-                global.platform = caps.caps_.platform.toUpperCase();
-                global.browserName = caps.caps_.browserName.toUpperCase();
-                // console.log(caps.caps_.platform)
-                // console.log(caps.caps_.browserName)  
-                console.log("Platform : ",global.platform)
-                console.log("BrowserName : ",global.browserName)  
-              });
+            // browser.getCapabilities().then(function(caps)
+            //   {
+            //     global.platform = caps.caps_.platform.toUpperCase();
+            //     global.browserName = caps.caps_.browserName.toUpperCase();
+            //     // console.log(caps.caps_.platform)
+            //     // console.log(caps.caps_.browserName)  
+            //     console.log("Platform : ",global.platform)
+            //     console.log("BrowserName : ",global.browserName)  
+            //   });
             var w =  Number(browser.params.screenSize.split('x')[0])
             var h =  Number(browser.params.screenSize.split('x')[1]) 
             console.log( "W : "+ w+ " H :"+h)
-            browser.driver.manage().window().setSize(w,h);
+            // browser.driver.manage().window().setSize(w,h);
 
-            browser.get(url);
+            // browser.get(url);
             // browser.get("http://"+localhost+":8100");
             // browser.sleep(3000);
 
