@@ -67,7 +67,7 @@
 				width: 100%;
 				max-width: 1280px;
 				height: 100%;
-				&:active {
+				&.active {
 					z-index: 13;
 					background: $gabrielle;
 				}
@@ -1418,6 +1418,13 @@
 /* ---------- MESSAGING */
 #desktop-messaging {
 	background: $slate;
+	.desktop-header {
+		top: 0;
+		height: 64px;
+		padding: 7px 10px;
+		background: $gabrielle;
+		max-width: none;
+	}
 	.main {
 		padding: 0;
 		#messenger {
@@ -1500,32 +1507,43 @@
 						padding: 15px;
 						font-size: 32px;
 						font-weight: 700;
-						width: calc(100% - 72px);
+						width: calc(100% - 336px);
 					}
 					a {
 						@include flex;
 						@include flex-center;
 						width: 68px;
 						height: 68px;
+						background: $taupe;
 						svg {
 							@include svg-stroke(white, 7);
 							width: 36px;
 							height: 36px;
 						}
 					}
+					#{$links} {
+						background: lighten($taupe, 10%);
+					}
 					#message-search {
+						@include flex;
 						position: relative;
+						overflow: hidden;
 						input {
-							position: absolute;
-							top: 0;
-							left: -200px;
+							@include transition(.15s ease-in-out);
+							@include translate-y(200px);
+							@include opacity(0);
 							width: 200px;
-							height: 100%;
+							height: 68px;
 							background: lighten($smoke, 5%);
 							border: 0;
 							padding-left: 15px;
 							padding-right: 15px;
 							font-size: 20px;
+							&.active {
+								@include transition(.15s ease-in-out);
+								@include translate-y(0);
+								@include opacity(1);
+							}
 							&:active, &:hover, &:focus {
 								background: white;
 								@include placeholder {
@@ -1535,13 +1553,60 @@
 						}
 					}
 					#message-nav {
+						position: relative;
+						overflow: hidden;
+						&.active {
+							overflow: visible;
+						}
 						a {
+							position: relative;
+							z-index: 10;
 							svg {
-								fill: white;
+								path {
+									@include transition-type(transform, .15s ease-in-out);
+									&:first-child, &:last-child {
+										@include translate-y(0);
+										@include opacity(1);
+									}
+								}
+								&.active {
+									path {
+										@include transition-type(transform, .15s ease-in-out);
+										&:first-child {
+											@include translate-y(27px);
+											@include opacity(0);
+										}
+										&:last-child {
+											@include translate-y(-27px);
+											@include opacity(0);
+										}
+									}
+								}
 							}
 						}
 						div {
-							display: none;
+							@include transition(.15s ease-in-out);
+							@include opacity(0);
+							@include translate-y(-408px);
+							position: absolute;
+							z-index: 9;
+							top: 68px;
+							right: 0;
+							ul {
+								li {
+									a {
+										background: lighten($taupe, 20%);
+									}
+									#{$links} {
+										background: darken($taupe, 10%);
+									}
+								}
+							}
+							&.active {
+								@include transition(.15s ease-in-out);
+								@include opacity(1);
+								@include translate-y(0);
+							}
 						}
 					}
 				}

@@ -1773,9 +1773,17 @@
   fill: #bab3b5;
 }
 
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div .square + div {
+  background: #bab3b5;
+}
+
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div h3 {
+  padding-top: 0;
+}
+
 #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart {
   position: relative;
-  height: calc(100% - 58px);
+  height: calc(100% - 97px);
   width: 100%;
 }
 
@@ -1832,30 +1840,34 @@
   text-transform: uppercase;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating {
   height: 100%;
   width: calc(100% / 3);
   padding: 7.5px;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div {
   position: relative;
   height: 50%;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div .square + div {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div .square + div {
   height: calc(100% - 7.5px);
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:first-child {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child {
   padding-bottom: 7.5px;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:first-child .square {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square {
   fill: #958B8E;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:first-child .square + div svg {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square + div {
+  background: #958B8E;
+}
+
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square + div svg {
   fill: none;
   stroke: white;
   stroke-width: 2px;
@@ -1864,7 +1876,7 @@
   height: calc(100% - 39px);
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:first-child #home-tiles-ranking {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child #home-tiles-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1882,25 +1894,28 @@
   font-weight: 700;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:first-child #home-tiles-ranking span {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child h5 {
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+  font-size: 20px;
   font-weight: 600;
-  font-size: 48px;
-  padding-right: 5px;
+  text-transform: uppercase;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:last-child {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child {
   padding-top: 7.5px;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:last-child .square {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child .square {
   fill: #909090;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:last-child .square + div {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child .square + div {
   top: 7.5px;
+  background: #909090;
 }
 
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:last-child #home-tiles-earnings {
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child #home-tiles-earnings {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1916,12 +1931,6 @@
   justify-content: center;
   font-size: 60px;
   font-weight: 700;
-}
-
-#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-event > div:last-child #home-tiles-earnings span {
-  font-weight: 600;
-  font-size: 48px;
-  padding-right: 5px;
 }
 
 #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom {
@@ -1973,6 +1982,16 @@
   height: calc(100% - 7.5px);
 }
 
+#desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div .square + div svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 60px;
+  height: 60px;
+}
+
 #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div .square + div h3 {
   padding-top: 0;
 }
@@ -1993,6 +2012,10 @@
   fill: #9b858c;
 }
 
+#desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:first-child .square + div {
+  background: #9b858c;
+}
+
 #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:last-child {
   padding-top: 7.5px;
 }
@@ -2003,6 +2026,7 @@
 
 #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:last-child .square + div {
   top: 7.5px;
+  background: #909090;
 }
 
 #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming {
@@ -2018,6 +2042,10 @@
 
 #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square {
   fill: #958B8E;
+}
+
+#desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div {
+  background: #958B8E;
 }
 
 #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div .slider {
