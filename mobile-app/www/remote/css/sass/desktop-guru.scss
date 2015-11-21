@@ -107,8 +107,7 @@
 	.main {
 		@include flex;
 		@include flex-center;
-		//-50 is for the hacked tab bar (for now);
-		height: calc(100% - 64px - 128px - 50px);
+		height: calc(100% - 128px);
 		padding: 7.5px;
 		ul {
 			width: 100%;

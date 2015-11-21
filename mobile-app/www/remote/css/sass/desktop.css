@@ -115,11 +115,14 @@
   -webkit-align-items: center;
   align-items: center;
   position: relative;
-  z-index: 13;
   margin: 0 auto;
   width: 100%;
   max-width: 1280px;
   height: 100%;
+}
+
+.desktop-mode #top-bar div:nth-child(2) div:active {
+  z-index: 13;
   background: #958B8E;
 }
 
