@@ -37,12 +37,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   var CTA_PARENT_DICT = {
     'cta-box-profile':'.guru-home-container',
     'cta-box-credibility':'.guru-home-container',
+    'cta-box-students': '.guru-home-container',
     'cta-box-profile-contact': '.desktop-guru-profile-view',
     'cta-box-profile-experiences': '.desktop-guru-profile-view',
     'cta-box-profile-languages': '.desktop-guru-profile-view',
     'cta-box-profile-courses': '.desktop-guru-profile-view',
     'cta-box-profile-skills': '.desktop-guru-profile-view',
-
   }
 
   var CTA_OPTIONS = {
