@@ -203,6 +203,7 @@ class User(Base):
     #Guru fields
     is_a_guru = Column(Boolean, default = False)
     guru_mode = Column(Boolean, default = False)
+    is_activated = Column(Boolean, default = False)
     guru_discoverability = Column(Boolean, default = True)
     guru_introduction = Column(String) #TODO: Research sufficient length
     guru_courses = relationship("Course",
