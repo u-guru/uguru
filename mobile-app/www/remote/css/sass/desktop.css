@@ -285,6 +285,23 @@
   stroke: #958B8E;
 }
 
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active svg circle {
+  fill: white;
+}
+
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active svg path {
+  stroke: #958B8E;
+}
+
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:hover svg circle, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:active svg circle, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:focus svg circle {
+  stroke: #958B8E;
+  fill: #958B8E;
+}
+
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:hover svg path, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:active svg path, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:focus svg path {
+  stroke: white;
+}
+
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a {
   background: rgba(255, 255, 255, 0.75);
 }
