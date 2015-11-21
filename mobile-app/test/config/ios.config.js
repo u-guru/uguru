@@ -1,7 +1,7 @@
 
 var device = 'ios'
-// var IP = "http://192.168.0.107:5000/static/remote/index.html"
- var IP = "http://localhost:8100"
+var IP = "http://192.168.0.107:5000/static/remote/index.html"
+ // var IP = "http://localhost:8100"
 
 exports.config = {
      params: {
@@ -126,7 +126,7 @@ exports.config = {
             console.log( "W : "+ w+ " H :"+h)
             // browser.driver.manage().window().setSize(w,h);
 
-            // browser.get(url);
+            browser.get(url);
             // browser.get("http://"+localhost+":8100");
             // browser.sleep(3000);
 

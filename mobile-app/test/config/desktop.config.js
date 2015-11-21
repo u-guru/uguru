@@ -120,7 +120,7 @@ exports.config = {
             var h =  Number(browser.params.screenSize.split('x')[1]) 
             console.log( "W : "+ w+ " H :"+h)
             browser.driver.manage().window().setSize(w,h);
-
+            
             browser.get(url);
             // browser.get("http://"+localhost+":8100");
             // browser.sleep(3000);

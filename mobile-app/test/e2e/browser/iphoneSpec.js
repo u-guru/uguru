@@ -2,7 +2,10 @@ describe('Best case Test on mobile size',function()
 {
 	var ListOfCode =  doc.generateRandomString(["","1"],3,"cool")
 
-
+	afterAll(function()
+	    {
+	      doc.ResetAll();
+	    });
 
     describe('@Workflow : Pre-Student Page + Close Welcome Pop', function () {
 
