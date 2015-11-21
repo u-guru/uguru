@@ -69,6 +69,18 @@
   transform: rotate(45deg);
 }
 
+.desktop-mode .desktop-header .skip-button {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  padding-right: 10px;
+  font-weight: 600;
+}
+
+.desktop-mode .desktop-header .skip-button:hover, .desktop-mode .desktop-header .skip-button:focus, .desktop-mode .desktop-header .skip-button:active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
 .desktop-mode #top-bar {
   height: 64px;
   background: #958B8E;
@@ -553,6 +565,13 @@
 }
 
 /* ---------- DESKTOP LISTS */
+.save-button {
+  display: block;
+  margin: 20px auto 0 !important;
+  min-width: 300px;
+  font-size: 28px !important;
+}
+
 .desktop-search {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -620,6 +639,7 @@
 
 .desktop-search .main .desktop-search-list {
   padding: 0 15px;
+  text-align: center;
 }
 
 .desktop-search .main .desktop-search-list .desktop-card-list {
@@ -681,6 +701,10 @@
   width: 100%;
   height: 100%;
   border-radius: 2px;
+}
+
+.desktop-search .main .desktop-search-list .desktop-card-list li a:hover {
+  border-bottom-color: white !important;
 }
 
 .desktop-search .main .desktop-search-list .desktop-card-list li a:hover .list-item-overlay {
@@ -747,7 +771,6 @@
 }
 
 #desktop-courses .main .desktop-search-list .desktop-card-list li a span {
-  display: block;
   width: 100%;
   text-align: center;
 }
@@ -807,6 +830,34 @@
   background-color: rgba(43, 50, 52, 0.5);
 }
 
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a .skill-count {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  background: white;
+  border-radius: 0 0 0 75%;
+  width: 40px;
+  height: 40px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  font-weight: 900;
+  font-size: 24px;
+}
+
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div {
   position: relative;
   z-index: 99;
@@ -818,10 +869,6 @@
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label {
   font-size: 24px;
-}
-
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-count {
-  font-size: 18px;
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after {
@@ -853,52 +900,68 @@
   border-bottom-color: rgba(255, 255, 255, 0.8);
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after,
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after,
-.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after {
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after {
   background: #DB1988;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after,
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after,
-.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after {
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count {
+  color: #DB1988;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after {
   background: #E5753C;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after,
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after,
-.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after {
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange .skill-count {
+  color: #E5753C;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after {
   background: #F9D57B;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after,
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after,
-.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after {
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold .skill-count {
+  color: #e4bd5d;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after {
   background: #81B566;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock.important::after,
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock.important::after,
-.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:active::after {
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola .skill-count {
+  color: #81B566;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock:active::after {
   background: #69B3A5;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure.important::after,
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure.important::after,
-.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:active::after {
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-shamrock .skill-count {
+  color: #69B3A5;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure:active::after {
   background: #55A4B7;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake.important::after,
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake.important::after,
-.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:active::after {
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-azure .skill-count {
+  color: #55A4B7;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake:active::after {
   background: #50A5DD;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after,
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after,
-.desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after {
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake .skill-count {
+  color: #50A5DD;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after {
   background: #9A5BC5;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant .skill-count {
+  color: #9A5BC5;
 }
 
 .subcategory {
@@ -981,21 +1044,18 @@
   filter: alpha(opacity=0);
   opacity: 0;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  padding: 5px 5px 10px 10px;
+  border-radius: 0 0 0 75%;
+  background: white;
 }
 
 .subcategory ul li label svg path {
   fill: none;
-  stroke: white;
-  stroke-width: 8px;
+  stroke-width: 15px;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -1011,12 +1071,15 @@
 
 .subcategory ul li input:checked + label {
   border-bottom-color: white !important;
-  color: rgba(255, 255, 255, 0.3);
 }
 
 .subcategory ul li input:checked + label svg {
   filter: alpha(opacity=100);
   opacity: 1;
+}
+
+.subcategory ul li input:hover + label, .subcategory ul li input:active + label {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .subcategory.not-selected, .subcategory:not(.selected) {
@@ -1058,6 +1121,22 @@
   background: #DB1988;
 }
 
+.subcategory:nth-child(1) ul li input:checked + label svg path {
+  stroke: #DB1988;
+}
+
+.subcategory:nth-child(1) button:hover, .subcategory:nth-child(1) button:focus {
+  border-color: #DB1988 !important;
+  background: #DB1988 !important;
+  color: white !important;
+}
+
+.subcategory:nth-child(1) button:active {
+  border-color: white !important;
+  background: white !important;
+  color: #DB1988 !important;
+}
+
 .subcategory:nth-child(6) ul li label {
   border-bottom-color: #E5753C;
 }
@@ -1066,12 +1145,44 @@
   background: #E5753C;
 }
 
+.subcategory:nth-child(6) ul li input:checked + label svg path {
+  stroke: #E5753C;
+}
+
+.subcategory:nth-child(6) button:hover, .subcategory:nth-child(6) button:focus {
+  border-color: #E5753C !important;
+  background: #E5753C !important;
+  color: white !important;
+}
+
+.subcategory:nth-child(6) button:active {
+  border-color: white !important;
+  background: white !important;
+  color: #E5753C !important;
+}
+
 .subcategory:nth-child(2) ul li label {
   border-bottom-color: #F9D57B;
 }
 
 .subcategory:nth-child(2) ul li input:checked + label {
-  background: #F9D57B;
+  background: #e4bd5d;
+}
+
+.subcategory:nth-child(2) ul li svg path {
+  stroke: #e4bd5d;
+}
+
+.subcategory:nth-child(2) button:hover, .subcategory:nth-child(2) button:focus {
+  border-color: #e4bd5d !important;
+  background: #e4bd5d !important;
+  color: white !important;
+}
+
+.subcategory:nth-child(2) button:active {
+  border-color: white !important;
+  background: white !important;
+  color: #e4bd5d !important;
 }
 
 .subcategory:nth-child(5) ul li label {
@@ -1082,12 +1193,44 @@
   background: #81B566;
 }
 
+.subcategory:nth-child(5) ul li input:checked + label svg path {
+  stroke: #81B566;
+}
+
+.subcategory:nth-child(5) button:hover, .subcategory:nth-child(5) button:focus {
+  border-color: #81B566 !important;
+  background: #81B566 !important;
+  color: white !important;
+}
+
+.subcategory:nth-child(5) button:active {
+  border-color: white !important;
+  background: white !important;
+  color: #81B566 !important;
+}
+
 .subcategory:nth-child(7) ul li label {
   border-bottom-color: #69B3A5;
 }
 
 .subcategory:nth-child(7) ul li input:checked + label {
   background: #69B3A5;
+}
+
+.subcategory:nth-child(7) ul li input:checked + label svg path {
+  stroke: #69B3A5;
+}
+
+.subcategory:nth-child(7) button:hover, .subcategory:nth-child(7) button:focus {
+  border-color: #69B3A5 !important;
+  background: #69B3A5 !important;
+  color: white !important;
+}
+
+.subcategory:nth-child(7) button:active {
+  border-color: white !important;
+  background: white !important;
+  color: #69B3A5 !important;
 }
 
 .subcategory:nth-child(3) ul li label {
@@ -1098,6 +1241,22 @@
   background: #55A4B7;
 }
 
+.subcategory:nth-child(3) ul li input:checked + label svg path {
+  stroke: #55A4B7;
+}
+
+.subcategory:nth-child(3) button:hover, .subcategory:nth-child(3) button:focus {
+  border-color: #55A4B7 !important;
+  background: #55A4B7 !important;
+  color: white !important;
+}
+
+.subcategory:nth-child(3) button:active {
+  border-color: white !important;
+  background: white !important;
+  color: #55A4B7 !important;
+}
+
 .subcategory:nth-child(4) ul li label {
   border-bottom-color: #50A5DD;
 }
@@ -1106,12 +1265,44 @@
   background: #50A5DD;
 }
 
+.subcategory:nth-child(4) ul li input:checked + label svg path {
+  stroke: #50A5DD;
+}
+
+.subcategory:nth-child(4) button:hover, .subcategory:nth-child(4) button:focus {
+  border-color: #50A5DD !important;
+  background: #50A5DD !important;
+  color: white !important;
+}
+
+.subcategory:nth-child(4) button:active {
+  border-color: white !important;
+  background: white !important;
+  color: #50A5DD !important;
+}
+
 .subcategory:nth-child(8) ul li label {
   border-bottom-color: #9A5BC5;
 }
 
 .subcategory:nth-child(8) ul li input:checked + label {
   background: #9A5BC5;
+}
+
+.subcategory:nth-child(8) ul li input:checked + label svg path {
+  stroke: #9A5BC5;
+}
+
+.subcategory:nth-child(8) button:hover, .subcategory:nth-child(8) button:focus {
+  border-color: #9A5BC5 !important;
+  background: #9A5BC5 !important;
+  color: white !important;
+}
+
+.subcategory:nth-child(8) button:active {
+  border-color: white !important;
+  background: white !important;
+  color: #9A5BC5 !important;
 }
 
 @media screen and (min-height: 750px) and (min-width: 1024px) {

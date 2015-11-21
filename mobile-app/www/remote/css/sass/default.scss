@@ -38,7 +38,8 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
     line-height: initial;
 }
 
-a, button, *[ng-click], *[tabindex] {
+a, button, *[ng-click], *[tabindex], input[type=checkbox] {
+	@include transition(.15s ease-in-out);
 	cursor: pointer;
 }
 
