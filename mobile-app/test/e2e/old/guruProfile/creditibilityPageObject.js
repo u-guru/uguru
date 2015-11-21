@@ -25,7 +25,9 @@ var Credibility = function()
 
 	this.OpenCredibilityOptions = function(index)
 	{
-		doc.newPickList('#credit-slider',index);
+		// doc.newPickList('#credit-slider',index);
+		lib.selectItem($$('#credit-slider li a'),index);
+
 	};
 
 	this.enterInfo = function(str)

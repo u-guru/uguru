@@ -2,10 +2,7 @@ describe('Best case Test on mobile size',function()
 {
 	var ListOfCode =  doc.generateRandomString(["","1"],3,"cool")
 
-	afterAll(function()
-	    {
-	      doc.ResetAll();
-	    });
+
 
     describe('@Workflow : Pre-Student Page + Close Welcome Pop', function () {
 
@@ -57,47 +54,47 @@ describe('Best case Test on mobile size',function()
 			});
 		});	
 	
-	var CategoryName = ['Academic','BAKING','DELIVERY','HOUSEHOLD','PHOTOGRAPHY','SERVICES','Sports & Muscle','TECHNOLOGY & IT']
-		describe("Category",function () {
-			for (var i = 0 ; i< 1 ; ++i)
-			{
-		        (function(index,title) {
-			        describe('Click the category #'+index,function()
-			        {
-			        	var count;
-		        		it('Open a Category',function()
-						{
-							category.SelectSkill(index);
-						});
-		        		it('Check Category Title : '+title ,function()
-		        		{
-		        			category.CheckTitleIsMatch(title.toUpperCase());
-		        		})
+	// var CategoryName = ['Academic','BAKING','DELIVERY','HOUSEHOLD','PHOTOGRAPHY','SERVICES','Sports & Muscle','TECHNOLOGY & IT']
+	// 	describe("Category",function () {
+	// 		for (var i = 0 ; i< 1 ; ++i)
+	// 		{
+	// 	        (function(index,title) {
+	// 		        describe('Click the category #'+index,function()
+	// 		        {
+	// 		        	var count;
+	// 	        		it('Open a Category',function()
+	// 					{
+	// 						category.SelectSkill(index);
+	// 					});
+	// 	        		it('Check Category Title : '+title ,function()
+	// 	        		{
+	// 	        			category.CheckTitleIsMatch(title.toUpperCase());
+	// 	        		})
 
-						it('Check element exist',function()
-						{
-							category.SkillIsExist();
-						});
-						it('click all the skills ',function()
-						{
-					        count = category.EnableAllSKills(index);
-						});
+	// 					it('Check element exist',function()
+	// 					{
+	// 						category.SkillIsExist();
+	// 					});
+	// 					it('click all the skills ',function()
+	// 					{
+	// 				        count = category.EnableAllSKills(index);
+	// 					});
 
-		        		it('close a Category',function()
-		        		{
-							category.clickCanvas (100,50)
-		        		})
-		        		// check which index
-		        		it('check select',function()
-		        		{
-					     // element.all(by.css(str)).then(function (items) {
-					     	category.CountSelectSKill(count,index);
-		        		});
-					});
-		        })(i,CategoryName[i]);
-			}
+	// 	        		it('close a Category',function()
+	// 	        		{
+	// 						category.clickCanvas (100,50)
+	// 	        		})
+	// 	        		// check which index
+	// 	        		it('check select',function()
+	// 	        		{
+	// 				     // element.all(by.css(str)).then(function (items) {
+	// 				     	category.CountSelectSKill(count,index);
+	// 	        		});
+	// 				});
+	// 	        })(i,CategoryName[i]);
+	// 		}
 
-		});
+	// 	});
 		
 		describe('Camera auto quit after taking picture at @sam1rm dev , in @f230536 the app restarted', function () {	    	
 			it('Next page',function()
@@ -115,7 +112,7 @@ describe('Best case Test on mobile size',function()
 		});	
 		
 	});
-	describe('@Workflow : Sign Up',function()
+	describe('[INCONSISTANT- Failed: clear of undefined]@Workflow : Sign Up',function()
 	{
 
 		it('Launch Profile',function()
@@ -147,7 +144,7 @@ describe('Best case Test on mobile size',function()
 			{
 			    account.CreateAccount();
 			});
-			it('check Sign up successful -- INCONSISTANT',function()
+			it('check Sign up successful',function()
 			{
 				account.CheckAccountMessage("Account Successfully Created");
 			});
@@ -293,16 +290,7 @@ describe('Best case Test on mobile size',function()
   		    									// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
   		    									element(by.css('.modal-backdrop.active input')).sendKeys("Guru Guy");
   		    		   		  		    	});
-	  		    	   		  		    	it('[No Working For now] Year of Experience',function()
-	  		    	   		  		    	{
-	  		    
-		    								    browser.actions()
-		    								      .mouseMove(element(by.css('.modal-backdrop.active input')), {x: 100, y: 0})
-		    								      .click()
-		    								      .perform();    
-  		    								    // dragAndDrop(element(by.css('.modal-backdrop.active input')), {x: 200, y: 0}).
-  		    								    // perform();
-	  		    	   		  		    	});
+	  		    	   		  		    	
 	  		    	   		  		    	it('Role Description',function()
 	  		    	   		  		    	{
 	  		    	   		  		    		//expect(true).toBe(false,"Not Completed Yet");

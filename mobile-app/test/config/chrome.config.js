@@ -1,6 +1,8 @@
 
 var device = 'desktop'
-var IP = 'localhost'
+var IP = "http://localhost:5000/static/remote/index.html"
+ // var IP = "http://localhost:8100"
+
 exports.config = {
      params: {
                 screenSize : "1600x1050"
@@ -14,14 +16,14 @@ exports.config = {
          },
         specs:
         [
-          '../e2e/browser/*Spec.js', 
+          '../e2e/browser/firsttimeusrSpec.js', 
           // '../e2e/browser/iphoneSpec.js', 
    
         ],
           suites:
         {
             ios  :[
-                  '../e2e/old/workflows/workflow#1.js',    
+                  '../e2e/browser/iphoneSpec.js',    
 
                  ]
           
@@ -91,7 +93,7 @@ exports.config = {
               global.home= require('../e2e/old/home/homePageObject.js');
               global.photo = require('../e2e/old/becomeGuru/photoPageObject.js');
               global.sidebar= require('../e2e/old/side/sidebarPageObject.js');
-            global.localhost = IP 
+            global.url = IP 
             global.device = device
             // global.screenlist = screenSizes
 
@@ -112,9 +114,9 @@ exports.config = {
             console.log( "W : "+ w+ " H :"+h)
             browser.driver.manage().window().setSize(w,h);
 
-            // browser.get("http://"+localhost+":5000/static/remote/index.html");
-            browser.get("http://"+localhost+":8100");
-            browser.sleep(3000);
+            browser.get(url);
+            // browser.get("http://"+localhost+":8100");
+            // browser.sleep(3000);
 
         }
 
