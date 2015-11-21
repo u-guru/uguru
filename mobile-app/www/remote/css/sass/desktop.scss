@@ -38,6 +38,14 @@
 				}
 			}
 		}
+		.skip-button {
+			@include opacity(.5);
+			padding-right: 10px;
+			font-weight: 600;
+			&:hover, &:focus, &:active {
+				@include opacity(1);
+			}
+		}
 	}
 	#top-bar {
 		height: 64px;
@@ -385,6 +393,12 @@
 }
 
 /* ---------- DESKTOP LISTS */
+.save-button {
+	display: block;
+	margin: 20px auto 0!important;
+	min-width: 300px;
+	font-size: 28px!important;
+}
 .desktop-search {
 	@include flex;
 	@include flex-wrap;
@@ -425,6 +439,7 @@
 		}
 		.desktop-search-list {
 			padding: 0 15px;
+			text-align: center;
 			.desktop-card-list {
 				@include flex;
 				@include flex-wrap;
@@ -457,6 +472,7 @@
 							border-radius: 2px;
 						}
 						&:hover {
+							border-bottom-color: white!important;
 							.list-item-overlay {
 								@include opacity(.9);
 							}
@@ -482,7 +498,7 @@
 		}
 	}
 }
-@media screen and (min-height:750px) and (min-width: 1024px) {
+@media screen and (min-height:750px) and (min-width:1024px) {
 	.desktop-search {
 		@include flex-bottom;
 		.main:not(.skills-container) {
@@ -514,7 +530,6 @@
 						font-size: 20px!important;
 						text-align: center;
 						span {
-							display: block;
 							width: 100%;
 							text-align: center;
 						}
@@ -569,6 +584,22 @@
 						a {
 							height: 100px;
 							background-color: rgba($charcoal,.5);
+							.skill-count {
+								@include flex;
+								@include flex-center;
+								position: absolute;
+								top: 0;
+								right: 0;
+								z-index: 9999;
+								background: white;
+								border-radius: 0 0 0 75%;
+								width: 40px;
+								height: 40px;
+								padding-bottom: 5px;
+							    padding-left: 5px;
+							    font-weight: 900;
+							    font-size: 24px;
+							}
 							div {
 								position: relative;
 								z-index: 99;
@@ -576,9 +607,6 @@
 									display: block;
 									&.skill-label {
 										font-size: 24px;
-									}
-									&.skill-count {
-										font-size: 18px;
 									}
 								}
 							}
@@ -604,37 +632,85 @@
 						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
 							border-bottom-color: rgba(white,.8);
 						}
-						.bg-cerise.important::after,
-						.bg-cerise:hover::after, .bg-cerise:focus::after, .bg-cerise:active::after {
-							background: $cerise;
+						.bg-cerise {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $cerise;
+								}
+							}
+							.skill-count {
+								color: $cerise;
+							}
 						}
-						.bg-orange.important::after,
-						.bg-orange:hover::after, .bg-orange:focus::after, .bg-orange:active::after {
-							background: $orange;
+						.bg-orange {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $orange;
+								}
+							}
+							.skill-count {
+								color: $orange;
+							}
 						}
-						.bg-gold.important::after,
-						.bg-gold:hover::after, .bg-gold:focus::after, .bg-gold:active::after {
-							background: $gold;
+						.bg-gold {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $gold;
+								}
+							}
+							.skill-count {
+								color: desaturate(darken($gold, 10%), 20%);
+							}
 						}
-						.bg-moola.important::after,
-						.bg-moola:hover::after, .bg-moola:focus::after, .bg-moola:active::after {
-							background: $moola;
+						.bg-moola {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $moola;
+								}
+							}
+							.skill-count {
+								color: $moola;
+							}
 						}
-						.bg-shamrock.important::after,
-						.bg-shamrock:hover::after, .bg-shamrock:focus::after, .bg-shamrock:active::after {
-							background: $shamrock;
+						.bg-shamrock {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $shamrock;
+								}
+							}
+							.skill-count {
+								color: $shamrock;
+							}
 						}
-						.bg-azure.important::after,
-						.bg-azure:hover::after, .bg-azure:focus::after, .bg-azure:active::after {
-							background: $azure;
+						.bg-azure {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $azure;
+								}
+							}
+							.skill-count {
+								color: $azure;
+							}
 						}
-						.bg-lake.important::after,
-						.bg-lake:hover::after, .bg-lake:focus::after, .bg-lake:active::after {
-							background: $lake;
+						.bg-lake {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $lake;
+								}
+							}
+							.skill-count {
+								color: $lake;
+							}
 						}
-						.bg-eggplant.important::after,
-						.bg-eggplant:hover::after, .bg-eggplant:focus::after, .bg-eggplant:active::after {
-							background: $eggplant;
+						.bg-eggplant {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $eggplant;
+								}
+							}
+							.skill-count {
+								color: $eggplant;
+							}
 						}
 					}
 				}
@@ -683,11 +759,16 @@
 				overflow: hidden;
 				svg {
 					@include opacity(0);
-					@include center-xy;
-					width: calc(100% - 30px);
-					height: calc(100% - 30px);
+					position: absolute;
+				    top: 15px;
+				    right: 15px;
+				    width: 40px;
+				    height: 40px;
+				    padding: 5px 5px 10px 10px;
+				    border-radius: 0 0 0 75%;
+				    background: white;
 					path {
-						@include svg-stroke(white, 8);
+						@include svg-stroke-width(15);
 					}
 				}
 			}
@@ -698,11 +779,17 @@
 				width: 100%;
 				height: 100%;
 				z-index: 9;
-				&:checked + label {
-					border-bottom-color: white!important;
-					color: rgba(white,.3);
-					svg {
-						@include opacity(1);
+				&:checked {
+					+ label {
+						border-bottom-color: white!important;
+						svg {
+							@include opacity(1);
+						}
+					}
+				}
+				&:hover, &:active {
+					+ label {
+						background: rgba(white, .2);
 					}
 				}
 			}
@@ -734,7 +821,24 @@
 				}
 				input:checked + label {
 					background: $cerise;
+					svg {
+						path {
+							stroke: $cerise;
+						}
+					}
 				}
+			}
+		}
+		button {
+			&:hover, &:focus {
+	   			border-color: $cerise!important;
+	   			background: $cerise!important;
+	   			color: white!important;
+	   		}
+			&:active {
+				border-color: white!important;
+				background: white!important;
+				color: $cerise!important;
 			}
 		}
 	}
@@ -746,7 +850,24 @@
 				}
 				input:checked + label {
 					background: $orange;
+					svg {
+						path {
+							stroke: $orange;
+						}
+					}
 				}
+			}
+		}
+		button {
+			&:hover, &:focus {
+	   			border-color: $orange!important;
+	   			background: $orange!important;
+	   			color: white!important;
+	   		}
+			&:active {
+				border-color: white!important;
+				background: white!important;
+				color: $orange!important;
 			}
 		}
 	}
@@ -757,8 +878,25 @@
 					border-bottom-color: $gold;
 				}
 				input:checked + label {
-					background: $gold;
+					background: desaturate(darken($gold, 10%), 20%);
 				}
+				svg {
+					path {
+						stroke: desaturate(darken($gold, 10%), 20%);
+					}
+				}
+			}
+		}
+		button {
+			&:hover, &:focus {
+	   			border-color: desaturate(darken($gold, 10%), 20%)!important;
+	   			background: desaturate(darken($gold, 10%), 20%)!important;
+	   			color: white!important;
+	   		}
+			&:active {
+				border-color: white!important;
+				background: white!important;
+				color: desaturate(darken($gold, 10%), 20%)!important;
 			}
 		}
 	}
@@ -770,7 +908,24 @@
 				}
 				input:checked + label {
 					background: $moola;
+					svg {
+						path {
+							stroke: $moola;
+						}
+					}
 				}
+			}
+		}
+		button {
+			&:hover, &:focus {
+	   			border-color: $moola!important;
+	   			background: $moola!important;
+	   			color: white!important;
+	   		}
+			&:active {
+				border-color: white!important;
+				background: white!important;
+				color: $moola!important;
 			}
 		}
 	}
@@ -782,7 +937,24 @@
 				}
 				input:checked + label {
 					background: $shamrock;
+					svg {
+						path {
+							stroke: $shamrock;
+						}
+					}
 				}
+			}
+		}
+		button {
+			&:hover, &:focus {
+	   			border-color: $shamrock!important;
+	   			background: $shamrock!important;
+	   			color: white!important;
+	   		}
+			&:active {
+				border-color: white!important;
+				background: white!important;
+				color: $shamrock!important;
 			}
 		}
 	}
@@ -794,7 +966,24 @@
 				}
 				input:checked + label {
 					background: $azure;
+					svg {
+						path {
+							stroke: $azure;
+						}
+					}
 				}
+			}
+		}
+		button {
+			&:hover, &:focus {
+	   			border-color: $azure!important;
+	   			background: $azure!important;
+	   			color: white!important;
+	   		}
+			&:active {
+				border-color: white!important;
+				background: white!important;
+				color: $azure!important;
 			}
 		}
 	}
@@ -806,7 +995,24 @@
 				}
 				input:checked + label {
 					background: $lake;
+					svg {
+						path {
+							stroke: $lake;
+						}
+					}
 				}
+			}
+		}
+		button {
+			&:hover, &:focus {
+	   			border-color: $lake!important;
+	   			background: $lake!important;
+	   			color: white!important;
+	   		}
+			&:active {
+				border-color: white!important;
+				background: white!important;
+				color: $lake!important;
 			}
 		}
 	}
@@ -818,12 +1024,29 @@
 				}
 				input:checked + label {
 					background: $eggplant;
+					svg {
+						path {
+							stroke: $eggplant;
+						}
+					}
 				}
+			}
+		}
+		button {
+			&:hover, &:focus {
+	   			border-color: $eggplant!important;
+	   			background: $eggplant!important;
+	   			color: white!important;
+	   		}
+			&:active {
+				border-color: white!important;
+				background: white!important;
+				color: $eggplant!important;
 			}
 		}
 	}
 }
-@media screen and (min-height:750px) and (min-width: 1024px) {
+@media screen and (min-height:750px) and (min-width:1024px) {
 	#desktop-skills {
 		.main {
 			#skills-list {
@@ -992,7 +1215,7 @@
 		}
 	}
 }
-@media screen and (min-height:750px) and (min-width: 1024px) {
+@media screen and (min-height:750px) and (min-width:1024px) {
 	#desktop-university {
 		.main {
 			.desktop-search-list {
