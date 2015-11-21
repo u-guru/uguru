@@ -71,24 +71,8 @@
 	    top: 64px;
 	    height: calc(100% - 84px) !important;
 	}
-
 }
 //end component overrides
-
-#top-menu-background-overlay {
-	@include opacity(.7);
-    display: none!important;
-	top: 64px;
-    z-index: 10;
-    height: calc(100% - 64px)!important;
-    width: 100%!important;
-    max-width: 100%!important;
-    margin-left: -15px!important;
-    &.active {
-		@include opacity(.7);
-    	display: block!important;
-    }
-}
 
 .desktop-guru-onboarding-view {
 	.cta-modal.hide-display {

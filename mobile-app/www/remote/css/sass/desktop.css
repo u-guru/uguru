@@ -87,7 +87,7 @@
   padding: 0 15px;
 }
 
-.desktop-mode #top-bar div {
+.desktop-mode #top-bar div:nth-child(2) {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -104,18 +104,37 @@
   height: 100%;
 }
 
-.desktop-mode #top-bar div #top-logo {
+.desktop-mode #top-bar div:nth-child(2) div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  position: relative;
+  z-index: 13;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  background: #958B8E;
+}
+
+.desktop-mode #top-bar div:nth-child(2) #top-logo {
   display: block;
   width: calc(100% - 90px);
   height: 100%;
 }
 
-.desktop-mode #top-bar div #top-logo svg {
+.desktop-mode #top-bar div:nth-child(2) #top-logo svg {
   height: 100%;
   padding: 20px 0 15px;
 }
 
-.desktop-mode #top-bar div #top-settings {
+.desktop-mode #top-bar div:nth-child(2) #top-settings {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -133,14 +152,14 @@
   height: 64px;
 }
 
-.desktop-mode #top-bar div #top-settings img, .desktop-mode #top-bar div #top-settings img.profile-url {
+.desktop-mode #top-bar div:nth-child(2) #top-settings img, .desktop-mode #top-bar div:nth-child(2) #top-settings img.profile-url {
   border-radius: 1000px;
   width: 40px;
   height: 40px;
   border: 3px solid white;
 }
 
-.desktop-mode #top-bar div #top-settings svg {
+.desktop-mode #top-bar div:nth-child(2) #top-settings svg {
   fill: none;
   stroke: white;
   stroke-width: 14px;
@@ -151,14 +170,14 @@
   padding: 15px;
 }
 
-.desktop-mode #top-bar div #top-request {
+.desktop-mode #top-bar div:nth-child(2) #top-request {
   display: block;
   width: 64px;
   height: 64px;
   background: rgba(255, 255, 255, 0.3);
 }
 
-.desktop-mode #top-bar div #top-request svg {
+.desktop-mode #top-bar div:nth-child(2) #top-request svg {
   fill: none;
   stroke: white;
   stroke-width: 8px;
@@ -169,27 +188,49 @@
   padding: 15px;
 }
 
-.desktop-mode #top-bar div #top-menu-links {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  -webkit-transform: translateY(-500px);
+  -moz-transform: translateY(-500px);
+  -ms-transform: translateY(-500px);
+  -o-transform: translateY(-500px);
+  transform: translateY(-500px);
+  filter: alpha(opacity=0);
+  opacity: 0;
   position: absolute;
-  z-index: 999;
+  z-index: 11;
   right: 0;
   top: 64px;
   background: #958B8E;
-  height: 0;
   overflow: hidden;
 }
 
-.desktop-mode #top-bar div #top-menu-links.active {
-  height: auto;
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links.active {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  filter: alpha(opacity=100);
+  opacity: 1;
   overflow: visible;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul {
   background: rgba(255, 255, 255, 0.3);
   min-width: 250px;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li a {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -210,13 +251,13 @@
   text-transform: uppercase;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li a span {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a span {
   display: block;
   text-align: left;
   width: calc(100% - 35px);
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li a svg {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a svg {
   fill: none;
   stroke: white;
   stroke-width: 5px;
@@ -229,31 +270,31 @@
   margin-right: -15px;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li a:hover, .desktop-mode #top-bar div #top-menu-links ul li a:active, .desktop-mode #top-bar div #top-menu-links ul li a:focus {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus {
   background: white;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li a:hover span, .desktop-mode #top-bar div #top-menu-links ul li a:active span, .desktop-mode #top-bar div #top-menu-links ul li a:focus span {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
   color: #958B8E;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li a:hover svg, .desktop-mode #top-bar div #top-menu-links ul li a:active svg, .desktop-mode #top-bar div #top-menu-links ul li a:focus svg {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
   stroke: #958B8E;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li:last-child a {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a {
   background: rgba(255, 255, 255, 0.75);
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li:last-child a span {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a span {
   color: #958B8E;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li:last-child a svg {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a svg {
   stroke: #958B8E;
 }
 
-.desktop-mode #top-bar div #top-menu-links ul li:last-child:hover, .desktop-mode #top-bar div #top-menu-links ul li:last-child:active, .desktop-mode #top-bar div #top-menu-links ul li:last-child:focus {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:focus {
   background: white;
 }
 
@@ -349,6 +390,34 @@
 
 .desktop-mode .progress-bottom div:last-child > span:last-child {
   text-align: right;
+}
+
+/* ---------- MENU OVERLAY */
+#top-menu-background-overlay {
+  -webkit-transition: opacity 0.15s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out;
+  -ms-transition: opacity 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  z-index: -10;
+  top: 64px;
+  height: calc(100% - 64px) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: -15px !important;
+}
+
+#top-menu-background-overlay.active {
+  -webkit-transition: opacity 0.15s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out;
+  -ms-transition: opacity 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+  z-index: 10;
 }
 
 /* ---------- LOGIN */

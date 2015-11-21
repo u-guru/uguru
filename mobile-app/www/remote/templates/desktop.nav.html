@@ -4,28 +4,30 @@
 	</div>
 	<!-- <div class="top-request-button"> -->
 	<div>
-		<a id="top-logo">
-			<svg viewBox="0 0 372 104" ng-include="img_base + BASE + 'templates/svg.icon.logo.html'">
-			</svg>
-		</a>
-		<a id="top-settings" class='relative' ng-click='toggleDesktopSettings()'>
-			<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
-			<img class='profile-url' ng-if='!user.profile_url' ng-src='{{img_base + BASE + "img/avatar.svg"}}'/>
-				<svg viewBox="0 0 100 100">
-					<path d="M14,32 L50,68 L86,32"></path>
+		<div>
+			<a id="top-logo">
+				<svg viewBox="0 0 372 104" ng-include="img_base + BASE + 'templates/svg.icon.logo.html'">
 				</svg>
-		</a>
-		<!-- <a id="top-request" ng-if='false'> -->
-		<!-- <a id="top-request">
-			<svg viewBox="0 0 100 100">
-			    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-			</svg>
-		</a> -->
-		<a id='top-request' class='desktop-nav-back' ng-click='desktopGoBack()' ng-if='page && page.url === "root.desktop-settings"'>
-			<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-			    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-			</svg>
-		</a>
+			</a>
+			<a id="top-settings" class='relative' ng-click='toggleDesktopSettings()'>
+				<img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
+				<img class='profile-url' ng-if='!user.profile_url' ng-src='{{img_base + BASE + "img/avatar.svg"}}'/>
+					<svg viewBox="0 0 100 100">
+						<path d="M14,32 L50,68 L86,32"></path>
+					</svg>
+			</a>
+			<!-- <a id="top-request" ng-if='false'> -->
+			<!-- <a id="top-request">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a> -->
+			<a id='top-request' class='desktop-nav-back' ng-click='desktopGoBack()' ng-if='page && page.url === "root.desktop-settings"'>
+				<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</a>
+		</div>
 		<nav id="top-menu-links" class="ng-class:{'active':showDesktopSettings}">
 			<ul>
 				<li hidden>

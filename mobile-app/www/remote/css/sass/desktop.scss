@@ -51,7 +51,7 @@
 		height: 64px;
 		background: $gabrielle;
 		padding: 0 15px;
-		div {
+		div:nth-child(2) {
 			@include flex;
 			@include flex-center-vertical;
 			position: relative;
@@ -59,6 +59,17 @@
 			width: 100%;
 			max-width: 1280px;
 			height: 100%;
+			div {
+				@include flex;
+				@include flex-center-vertical;
+				position: relative;
+				z-index: 13;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 1280px;
+				height: 100%;
+				background: $gabrielle;
+			}
 			#top-logo {
 				display: block;
 				width: calc(100% - 90px);
@@ -99,15 +110,19 @@
 				}
 			}
 			#top-menu-links {
+				@include transition(.15s ease-in-out);
+				@include translate-y(-500px);
+				@include opacity(0);
 				position: absolute;
-				z-index: 999;
+				z-index: 11;
 				right: 0;
 				top: 64px;
 				background: $gabrielle;
-				height: 0;
 				overflow: hidden;
 				&.active {
-					height: auto;
+					@include transition(.15s ease-in-out);
+					@include translate-y(0);
+					@include opacity(1);
 					overflow: visible;
 				}
 				ul {
@@ -223,6 +238,23 @@
 			}
 		}
 	}
+}
+
+/* ---------- MENU OVERLAY */
+#top-menu-background-overlay {
+	@include transition-type(opacity, .15s ease-in-out);
+	@include opacity(0);
+    z-index: -10;
+	top: 64px;
+    height: calc(100% - 64px)!important;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin-left: -15px!important;
+    &.active {
+		@include transition-type(opacity, .15s ease-in-out);
+		@include opacity(.7);
+    	z-index: 10;
+    }
 }
 
 /* ---------- LOGIN */

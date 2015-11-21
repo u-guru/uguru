@@ -62,24 +62,6 @@
   height: calc(100% - 84px) !important;
 }
 
-#top-menu-background-overlay {
-  filter: alpha(opacity=70);
-  opacity: 0.7;
-  display: none !important;
-  top: 64px;
-  z-index: 10;
-  height: calc(100% - 64px) !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin-left: -15px !important;
-}
-
-#top-menu-background-overlay.active {
-  filter: alpha(opacity=70);
-  opacity: 0.7;
-  display: block !important;
-}
-
 .desktop-guru-onboarding-view .cta-modal.hide-display {
   filter: alpha(opacity=0) !important;
   opacity: 0 !important;
