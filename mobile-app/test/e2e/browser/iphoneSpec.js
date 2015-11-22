@@ -329,5 +329,115 @@ describe('Best case Test on mobile size',function()
 		}
 		
 	});
+	describe('User Settings',function()
+	{
+	  it("Active setting",function()
+	  {
+	    var setting = $('#top-settings');
+	    setting.click();
+	    $('[ng-click="goToDesktopSettings()"]').click();
+	  });
 
+	  it('upload photo',function()
+	  {
+	    doc.uploadPhoto('file-input-web-sidebar','small');
+	  });
+	   var activatePopup =  $('.uguru-popup.high-z-index.sidebar-popup.show')
+	    describe('Updtae Name : tony hu',function()
+	    {
+	      it('Open Pop up name',function()
+	      {
+	          $('[ng-click="launchEditStudentNamePopup($event)"]').click();       
+	      })
+	      it('Check pop up is opened',function()
+	      {
+	          browser.wait(EC.visibilityOf(activatePopup),4000);
+	          expect(activatePopup.$('h2').getText()).toContain("NAME");
+	      });
+	      it('enter keys',function()
+	      {
+
+	        $('[ng-model="popupInput.editName"]').clear();
+	        $('[ng-model="popupInput.editName"]').sendKeys("tony hu");
+	        $('#edit-name-save-popup-link').click()
+	      })
+
+	      it('check name has been saved',function()
+	      {
+	        doc.checkMsg('Saved!');
+	        expect($('[ng-model="user.name"]').getAttribute('value')).toBe("Tony Hu");
+	      });
+
+	    });
+
+	    describe('Check Email Popup',function()
+	    {
+	      it('Open Popup',function()
+	      {
+	          $('[ng-click="launchEditEmailPopup($event)"]').click();       
+	      })
+	      it('Check pop up is opened',function()
+	      {
+	          browser.wait(EC.visibilityOf(activatePopup),4000);
+	          expect(activatePopup.$('h2').getText()).toContain("EMAIL");
+	      });
+	      it('Close Popup',function()
+	      {
+	          activatePopup.$('.close-popup-link').click()
+	      });
+	      
+	    });
+
+	     describe('Check enterPassword Popup',function()
+	    {
+	      it('Open Popup',function()
+	      {
+	          $('[ng-click="launchEditPasswordPopup($event)"]').click();       
+	      })
+	      it('Check pop up is opened',function()
+	      {
+	        browser.wait(EC.visibilityOf(activatePopup),4000);
+	        expect(activatePopup.$('h2').getText()).toContain("PASSWORD");
+	      });
+	      it('Close Popup',function()
+	      {
+	        $('.uguru-popup.high-z-index.sidebar-popup.show .close-popup-link').click();
+	      });
+	      
+	    });
+	    describe('Open university modal',function()
+	    {
+	      var modal = $('.modal-backdrop.active');
+	      it('Open modal',function()
+	      {
+	          // browser.wait(EC.visibilityOf($$('.main.default div a').get(3)),4000)
+	          // $$('.main.default div a').get(3).click();     
+	          $('[ng-model="user.university.title"]').click();
+
+	      })
+	      it('Check modal is opened',function()
+	      {
+
+	        browser.wait(EC.visibilityOf(modal),4000);
+	        expect(modal.$('h1').getText()).toContain("UNIVERSITY");
+	      });
+	      it('Select university : Stanfoard',function()
+	      {
+	          modal.$('input').sendKeys('stanford');
+	          $$('#school-list li a').get(0).click();
+	          doc.switchAlert();
+	      });
+	      it('Wait Modal Close & check school is changed',function()
+	      {
+	          doc.checkMsg('Loading an awesome experience..');
+	          expect($('[ng-model="user.university.title"]').getAttribute('value')).toBe("Stanford University");
+	      });
+	    });
+	    it('Save Setting',function()
+	    {
+	      $('[ng-click="saveSettings()"]').click();
+	        doc.checkMsg('Save');
+	        expect(browser.getCurrentUrl()).toContain('guru-home'); 
+	    })
+	});
 });

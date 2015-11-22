@@ -116,7 +116,7 @@ exports.config = {
 
             browser.get(url);
             // browser.get("http://"+localhost+":8100");
-            // browser.sleep(3000);
+            browser.sleep(3000);
 
         }
 
