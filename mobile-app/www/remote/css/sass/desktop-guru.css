@@ -1046,9 +1046,16 @@
       #desktop-guru-profile #experience-modal div.main div {
         width: 100%; }
       #desktop-guru-profile #experience-modal div.main #exp-input {
-        height: calc(100% - 220px) !important; }
+        height: calc(100% - 295px) !important; }
       #desktop-guru-profile #experience-modal div.main .bg-campus-50p {
         background: rgba(149, 139, 142, 0.5) !important; }
+      #desktop-guru-profile #experience-modal div.main ul li {
+        width: calc(100% / 3) !important; }
+        #desktop-guru-profile #experience-modal div.main ul li:first-child {
+          text-align: left !important; }
+        #desktop-guru-profile #experience-modal div.main ul li:last-child {
+          display: block !important;
+          text-align: right !important; }
     #desktop-guru-profile #experience-modal button.bg-campus {
       background: white !important;
       color: #958B8E !important; }

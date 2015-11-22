@@ -1,4 +1,4 @@
-<section id="experience-modal" class='full-xy'>
+<section id="experience-modal" class='full-xy bg-charcoal'>
 	<header>
 		<div class='header-nav'>
 			<a class="header-close cta-modal-close" ng-click="guruExperiencesModal.hide()">
@@ -17,7 +17,9 @@
 			<label>
 				<h1 class="section-header">Years of Experience</h1>
 			</label>
-			<input type="range" class='full-x p15x-p20y' name="volume" min="0" max="10" value="5" ng-model='experience.years'>
+			<!-- BIND -->
+			<!-- change input value from 0-10 -->
+			<input type="range" class='full-x' name="volume" min="0" max="10" value="5" ng-model='experience.years'>
 			<ul class="ugrid-3 exp-years-label">
 				<li>&lsaquo; 1</li>
 				<li>5</li>

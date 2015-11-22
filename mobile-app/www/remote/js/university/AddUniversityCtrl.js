@@ -36,6 +36,23 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.LOCAL = LOCAL;
 
+
+
+  $timeout(function() {
+
+    setInterval(function() {
+      $("#school-list li").velocity("fadeOut", { stagger: 100 });
+    }, 1500)
+    setInterval(function() {
+    $("#school-list li").velocity("fadeIn", { stagger: 100 });
+    }, 2000)
+
+  }, 2000)
+
+
+
+
+
   uTracker.setUser(tracker, 'localyticsTest');
   if(DeviceService.isMobile()) {
     var deviceObject = DeviceService.getDevice();
@@ -49,6 +66,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   $scope.search_text = {
     university: ''
   };
+
 
   //only shows back button local
   $scope.showBackButton = false || LOCAL;
