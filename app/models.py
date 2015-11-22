@@ -2517,13 +2517,22 @@ class Card(Base):
 
     country = Column(String)
     customer_email = Column(String)
+    recipient_email = Column(String)
     exp_month = Column(Integer)
     exp_year = Column(Integer)
     funding = Column(String)
     stripe_card_id = Column(String)
 
+    ## bank fields
+    bank_name = Column(String)
+    bank_currency = Column(String)
+    bank_last4 = Column(String)
+    bank_routing_number = Column(String)
+    stripe_bank_id = Column(String)
+
     is_payment_card = Column(Boolean, default=False)
     is_transfer_card = Column(Boolean, default=False)
+    is_bank_account = Column(Boolean, default=False)
 
     stripe_token = Column(String)
 

@@ -939,6 +939,53 @@ def getStripeCustomers():
     customers = stripe.Customer.all()
     return customers
 
+def updateRecipientCardDetails(recipient_id):
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    recipient = stripe.Recipient.retrieve(recipient_id)
+    from pprint import pprint
+    email = recipient.email
+    result_cards = []
+    if recipient.cards["data"]:
+        for _card in recipient.cards["data"]:
+            card_type = _card['type']
+            # card_country = _card['country']
+            card_exp_month = _card['exp_month']
+            card_exp_year = _card['exp_year']
+            card_id = _card['id']
+            card_last4  = _card['last4']
+            card_is_credit = _card['funding']
+            card_created = datetime.fromtimestamp(int(recipient.created))
+            print "student's  (email:%s) %s %s card: %s expires %s/%s" \
+            % (email, card_type, card_is_credit, card_id, card_exp_month, card_exp_year)
+            result_cards.append({
+                'type': card_type,
+                'last4': card_last4,
+                'is_credit': card_is_credit,
+                'id': card_id,
+                'card_exp_year': card_exp_year,
+                'card_exp_month': card_exp_month,
+                # 'card_country': card_country,
+                'recipient_email': email,
+                'time_created': card_created,
+                'stripe_recipient_id':recipient_id
+                })
+            return result_cards
+    if recipient.active_account and not recipient.cards['data']:
+        return {
+            'bank_name':recipient.active_account['bank_name'],
+            'country':recipient.active_account['country'],
+            'currency':recipient.active_account['currency'],
+            'active': not recipient.active_account['disabled'],
+            'stripe_bank_id': recipient.active_account['id'],
+            'last4': recipient.active_account['last4'],
+            'bank_routing_number': recipient.active_account['routing_number'],
+            'bank_created': datetime.fromtimestamp(int(recipient.created)),
+            'recipient_email': recipient.email,
+            'stripe_recipient_id': recipient.id
+        }
+
 def updateCustomerCardDetails(customer_id):
     import stripe
     from datetime import datetime
@@ -956,7 +1003,7 @@ def updateCustomerCardDetails(customer_id):
         card_id = _card['id']
         card_last4  = _card['last4']
         card_is_credit = _card['funding']
-        card_created = datetime.fromtimestamp(int(_card['created']))
+        card_created = datetime.fromtimestamp(int(customer.created))
         print "student's  (email:%s) %s %s card: %s expires %s/%s" \
         % (email, card_type, card_is_credit, card_id, card_exp_month, card_exp_year)
         result_cards.append({
@@ -979,6 +1026,7 @@ def getCustomerCharges(customer_id):
 if arg =='link_payments':
     import json, sys
     from pprint import pprint
+    import stripe
     payment_arr = json.load(open('old_payment_data.json'))
     cashout_ids = []
     payment_ids = []
@@ -990,24 +1038,16 @@ if arg =='link_payments':
     #3. Create a session
     #4. Get transactions && create them
     #
-    student_email_set = []
-    tutor_email_set = []
-    missing_fields = []
-    all_cards = []
-    student_cards = 0
-    guru_cards = 0
-    for payment in payment_arr:
-        student_email = payment.get('student_email')
-        if student_email and student_email not in student_email_set:
-            student_email_set.append(student_email)
-            student = User.query.filter_by(email=student_email).first()
-            if student and student.name and student.cards:
-                # print '%s has %s cards' % (student.name, len(student.cards))
-
-                student_card_ids = [card.card_last4 for card in student.cards]
-                for card in student.cards:
-                    result_cards = updateCustomerCardDetails(card.stripe_customer_id)
-                    student_cards += 1
+    for card in Card.query.all():
+        if card.stripe_customer_id and (card.user or card.user_id):
+            student = card.user
+            student_card_ids = [__card.card_last4 for __card in student.cards]
+            for _card in student.cards:
+                if _card.stripe_customer_id:
+                    try:
+                        result_cards = updateCustomerCardDetails(_card.stripe_customer_id)
+                    except:
+                        continue
                     for found_card in result_cards:
                         if found_card['last4'] in student_card_ids:
                             index = student_card_ids.index(found_card['last4'])
@@ -1015,11 +1055,12 @@ if arg =='link_payments':
                         else:
                             from app.models import Card
                             student_card = Card()
+                            print 'new card being created'
                             student_card.user_id = student.id
-                            # db_session.add(student_card)
+                            db_session.add(student_card)
 
                         student_card.is_payment_card = True
-                        student_card.customer_id = found_card['customer_id']
+                        student_card.stripe_customer_id = found_card['customer_id']
                         student_card.card_last4 = found_card['last4']
                         student_card.stripe_card_id = found_card['id']
                         student_card.card_type = found_card['type']
@@ -1031,7 +1072,93 @@ if arg =='link_payments':
                         student_card.exp_month = int(found_card['card_exp_month'])
                         student_card.exp_year = int(found_card['card_exp_year'])
 
+                        db_session.commit()
+        if card.stripe_recipient_id and (card.user or card.user_id):
+            guru = card.user
+            guru_card_ids = [__card.card_last4 for __card in guru.cards]
+            for _card in guru.cards:
+                if _card.stripe_recipient_id:
+                    try:
+                        result_bank_cards = updateRecipientCardDetails(_card.stripe_recipient_id)
 
+
+
+
+                        if type(result_bank_cards) == list:
+                            for found_card in result_bank_cards:
+                                if found_card['last4'] in guru_card_ids:
+                                    index = guru_card_ids.index(found_card['last4'])
+                                    guru_card = guru.cards[index]
+                                else:
+                                    from app.models import Card
+                                    guru_card = Card()
+                                    print 'new card being created'
+                                    guru_card.user_id = guru.id
+                                    db_session.add(guru_card)
+                                guru_card.is_transfer_card = True
+                                guru_card.stripe_recipient_id = found_card['stripe_recipient_id']
+                                guru_card.card_last4 = found_card['last4']
+                                guru_card.stripe_card_id = found_card['id']
+                                guru_card.card_type = found_card['type']
+                                guru_card.active = True
+                                guru_card.time_added = found_card['time_created']
+                                guru_card.recipient_email = found_card['recipient_email']
+                                guru_card.funding = found_card['is_credit']
+                                guru_card.exp_month = int(found_card['card_exp_month'])
+                                guru_card.exp_year = int(found_card['card_exp_year'])
+
+                        try:
+                            if type(result_bank_cards) == dict:
+                                found_card = result_bank_cards
+                                if found_card['last4'] in guru_card_ids:
+                                    index = guru_card_ids.index(found_card['last4'])
+                                    guru_card = guru.cards[index]
+                                else:
+                                    from app.models import Card
+                                    guru_card = Card()
+                                    print 'new card being created'
+                                    guru_card.user_id = guru.id
+                                    db_session.add(guru_card)
+                                guru_card.is_bank_account = True
+                                guru_card.stripe_recipient_id = found_card['stripe_recipient_id']
+                                guru_card.card_last4 = found_card['last4']
+                                guru_card.stripe_bank_id = found_card['stripe_bank_id']
+                                guru_card.bank_currency = found_card['currency']
+                                guru_card.active = found_card['active']
+                                # guru_card.country = found_card['card_country']
+                                guru_card.bank_name = found_card['bank_name']
+                                guru_card.brank_routing_number = found_card['bank_routing_number']
+                                guru_card.recipient_email = found_card['recipient_email'],
+                                guru_card.time_added = found_card['bank_created']
+
+                            db_session.commit()
+
+                        except:
+                            raise
+
+                    except stripe.error.InvalidRequestError, e:
+                        continue
+                    except Exception, e:
+                        raise
+
+    # for payment in payment_arr:
+    #     student_email = payment.get('student_email')
+        # if student_email and student_email not in student_email_set:
+        #     student_email_set.append(student_email)
+        #     student = User.query.filter_by(email=student_email).first()
+        #     if student and student.name and student.cards:
+        #         # print '%s has %s cards' % (student.name, len(student.cards))
+
+        #         student_card_ids = [card.card_last4 for card in student.cards]
+
+
+        # guru_email = payment.get('tutor_email')
+        # if guru_email and guru_email not in guru_email_set:
+        #         guru_email_set.append(guru_email)
+        #         guru = User.query.filter_by(email=guru_email).first()
+        #         for card in guru.cards:
+        #             if card.stripe_recipient_id:
+        #                 result_bank_cards = updateRecipientCardDetails(card.stripe_recipient_id)
 
 
 
