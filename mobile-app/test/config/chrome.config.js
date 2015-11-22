@@ -42,7 +42,7 @@ exports.config = {
 
                           },
         // getPageTimeout: 10000,
-         allScriptsTimeout: 10000,
+         allScriptsTimeout: 15000,
 
         onPrepare: function () {
            var SpecReporter = require('jasmine-spec-reporter');

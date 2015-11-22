@@ -331,24 +331,37 @@ describe('Best case Test on mobile size',function()
 	});
 	describe('User Settings',function()
 	{
-	  it("Active setting",function()
+	  it("Toggle Side menu",function()
 	  {
-	    var setting = $('#top-settings');
-	    setting.click();
-	    $('[ng-click="goToDesktopSettings()"]').click();
+	    var side = $('#settings-button');
+	    side.click();
 	  });
 
-	  it('upload photo',function()
+	  describe('Upload photo',function()
 	  {
-	    doc.uploadPhoto('file-input-web-sidebar','small');
+	  	it('upload photo',function()
+	  	{
+	  	  doc.uploadPhoto('file-input-web-sidebar','small');
+	  	});
 	  });
+	
 	   var activatePopup =  $('.uguru-popup.high-z-index.sidebar-popup.show')
+	   var settnigs = $('[ng-click="showStudentEditActionSheet($event)"]');
 	    describe('Updtae Name : tony hu',function()
 	    {
-	      it('Open Pop up name',function()
+	      it('Open Action sheet #1',function()
 	      {
-	          $('[ng-click="launchEditStudentNamePopup($event)"]').click();       
-	      })
+	      	settnigs.click()
+	      });
+
+		  it('Open Action sheet#2',function()
+	      {
+	      	$$('[ng-click="buttonClicked($index)"]').get(2).click();
+	      });
+	  	  it('Choose name Setting',function()
+	        {
+	        	$$('[ng-click="buttonClicked($index)"]').get(0).click();
+	        });
 	      it('Check pop up is opened',function()
 	      {
 	          browser.wait(EC.visibilityOf(activatePopup),4000);
@@ -365,17 +378,26 @@ describe('Best case Test on mobile size',function()
 	      it('check name has been saved',function()
 	      {
 	        doc.checkMsg('Saved!');
-	        expect($('[ng-model="user.name"]').getAttribute('value')).toBe("Tony Hu");
+	        expect($$('#student-sidebar-profile span').get(0).getText()).toBe("Tony H.");
 	      });
 
 	    });
 
 	    describe('Check Email Popup',function()
 	    {
-	      it('Open Popup',function()
+	       it('Open Action sheet #1',function()
 	      {
-	          $('[ng-click="launchEditEmailPopup($event)"]').click();       
-	      })
+	      	settnigs.click()
+	      });
+
+		   it('Open Action sheet#2',function()
+ 	      {
+ 	      	$$('[ng-click="buttonClicked($index)"]').get(2).click();
+ 	      });
+ 	  	  it('Choose name Setting',function()
+ 	        {
+ 	        	$$('[ng-click="buttonClicked($index)"]').get(1).click();
+ 	        });
 	      it('Check pop up is opened',function()
 	      {
 	          browser.wait(EC.visibilityOf(activatePopup),4000);
@@ -390,10 +412,21 @@ describe('Best case Test on mobile size',function()
 
 	     describe('Check enterPassword Popup',function()
 	    {
-	      it('Open Popup',function()
-	      {
-	          $('[ng-click="launchEditPasswordPopup($event)"]').click();       
-	      })
+	        it('Open Action sheet #1',function()
+			{
+				settnigs.click()
+			});
+
+			it('Open Action sheet#2',function()
+			{
+			$$('[ng-click="buttonClicked($index)"]').get(2).click();
+			});
+
+			it('Choose name Setting',function()
+			{
+				$$('[ng-click="buttonClicked($index)"]').get(2).click();
+			});
+
 	      it('Check pop up is opened',function()
 	      {
 	        browser.wait(EC.visibilityOf(activatePopup),4000);
@@ -408,13 +441,15 @@ describe('Best case Test on mobile size',function()
 	    describe('Open university modal',function()
 	    {
 	      var modal = $('.modal-backdrop.active');
-	      it('Open modal',function()
-	      {
-	          // browser.wait(EC.visibilityOf($$('.main.default div a').get(3)),4000)
-	          // $$('.main.default div a').get(3).click();     
-	          $('[ng-model="user.university.title"]').click();
+		     it('Open Action sheet #1',function()
+		    {
+		    	settnigs.click()
+		    });
 
-	      })
+			  it('Open Action sheet#2',function()
+		    {
+		    	$$('[ng-click="buttonClicked($index)"]').get(1).click();
+		    });
 	      it('Check modal is opened',function()
 	      {
 
@@ -425,7 +460,7 @@ describe('Best case Test on mobile size',function()
 	      {
 	          modal.$('input').sendKeys('stanford');
 	          $$('#school-list li a').get(0).click();
-	          doc.switchAlert();
+	          // doc.switchAlert();
 	      });
 	      it('Wait Modal Close & check school is changed',function()
 	      {
@@ -433,11 +468,5 @@ describe('Best case Test on mobile size',function()
 	          expect($('[ng-model="user.university.title"]').getAttribute('value')).toBe("Stanford University");
 	      });
 	    });
-	    it('Save Setting',function()
-	    {
-	      $('[ng-click="saveSettings()"]').click();
-	        doc.checkMsg('Save');
-	        expect(browser.getCurrentUrl()).toContain('guru-home'); 
-	    })
 	});
 });
