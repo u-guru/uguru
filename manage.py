@@ -939,121 +939,102 @@ def getStripeCustomers():
     customers = stripe.Customer.all()
     return customers
 
+def updateCustomerCardDetails(customer_id):
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    customer = stripe.Customer.retrieve(customer_id)
+    if not customer or not customer.email:
+        return
+    email = customer.email
+    result_cards = []
+    for _card in customer.cards["data"]:
+        card_type = _card['type']
+        card_country = _card['country']
+        card_exp_month = _card['exp_month']
+        card_exp_year = _card['exp_year']
+        card_id = _card['id']
+        card_last4  = _card['last4']
+        card_is_credit = _card['funding']
+        card_created = datetime.fromtimestamp(int(_card['created']))
+        print "student's  (email:%s) %s %s card: %s expires %s/%s" \
+        % (email, card_type, card_is_credit, card_id, card_exp_month, card_exp_year)
+        result_cards.append({
+            'type': card_type,
+            'last4': card_last4,
+            'is_credit': card_is_credit,
+            'id': card_id,
+            'card_exp_year': card_exp_year,
+            'card_exp_month': card_exp_month,
+            'card_country': card_country,
+            'customer_email': email,
+            'time_created': card_created,
+            'customer_id':customer_id
+            })
+        return result_cards
+
+def getCustomerCharges(customer_id):
+    pass
+
 if arg =='link_payments':
     import json, sys
+    from pprint import pprint
     payment_arr = json.load(open('old_payment_data.json'))
     cashout_ids = []
     payment_ids = []
     session_arr = []
     count = 0
 
-    ## 0. repair all cards for all emails
-        # email --> customer_ids
-
-    # customers = getStripeCustomers()
-    # print len(customers), 'customers'
-    charges = getStripeStudentCharges()
-    print len(charges), 'charges'
-    sys.exit()
+    #1. Create cards
+    #2. Create bank cards
+    #3. Create a session
+    #4. Get transactions && create them
+    #
+    student_email_set = []
+    tutor_email_set = []
+    missing_fields = []
+    all_cards = []
+    student_cards = 0
+    guru_cards = 0
     for payment in payment_arr:
         student_email = payment.get('student_email')
-        guru_email = payment.get('guru_email')
+        if student_email and student_email not in student_email_set:
+            student_email_set.append(student_email)
+            student = User.query.filter_by(email=student_email).first()
+            if student and student.name and student.cards:
+                # print '%s has %s cards' % (student.name, len(student.cards))
 
-        if student_email:
-            student = User.query.filter_by(email=student_email).all()
-            if student:
-                count += 1
+                student_card_ids = [card.card_last4 for card in student.cards]
+                for card in student.cards:
+                    result_cards = updateCustomerCardDetails(card.stripe_customer_id)
+                    student_cards += 1
+                    for found_card in result_cards:
+                        if found_card['last4'] in student_card_ids:
+                            index = student_card_ids.index(found_card['last4'])
+                            student_card = student.cards[index]
+                        else:
+                            from app.models import Card
+                            student_card = Card()
+                            student_card.user_id = student.id
+                            # db_session.add(student_card)
 
-        if guru_email:
-            guru = User.query.filter_by(email=guru_email).all()
-            if guru:
-                count += 1
-    print count
-    sys.exit()
-
-
-    ## 1. Handle all cashouts + cash out cards based on tutor emails
-        # Check if they already have one
-        # email --> debit card
-            # --> create transaction (cash out)
-        # email --> bank account
-            # --> create transaction (cash out)
-
-    for payment in payment_arr:
-        if payment.get('tutor_id') and payment.get('student_id') and payment.get('student_email') and payment.get('tutor_email'):
-
-            student = User.query.filter_by(email=payment.get('student_email')).all()
-            tutor = User.query.filter_by(email=payment.get('tutor_email')).all()
-            relationship_id = None
-            if student and tutor:
-                # 1. find relationship
-                session_arr.append(payment)
-
-            #2. Create a session
-                # - time created
-                # - skill name
-                # - is session is true
-                # - if student, student_id
-                # - if guru, student_id
-                # - if tutor_rate,
-                # - if time_amount
+                        student_card.is_payment_card = True
+                        student_card.customer_id = found_card['customer_id']
+                        student_card.card_last4 = found_card['last4']
+                        student_card.stripe_card_id = found_card['id']
+                        student_card.card_type = found_card['type']
+                        student_card.active = True
+                        student_card.country = found_card['card_country']
+                        student_card.time_added = found_card['time_created']
+                        student_card.customer_email = found_card['customer_email']
+                        student_card.funding = found_card['is_credit']
+                        student_card.exp_month = int(found_card['card_exp_month'])
+                        student_card.exp_year = int(found_card['card_exp_year'])
 
 
 
-            # elif tutor and not student:
-            #     count += 1
-            # elif student and not tutor:
-                ## create a transaction
-                ## add card
-
-    ## 3.  For all students without sessions
-        ## for each session -->
 
 
-                # 2. create a transaction
-                # 3.
-
-                ##
-                ## print payment.get('student_email'), student, payment.get('tutor_email'), tutor
-            ## 0. Find relationship
-            ## ---- if not, print
-            ## 1. create a session
-                    # time_created
-                    # guru_id
-                    # student_id
-            ## 2.
-
-        #      "time_amount": 1.0,
-        # "confirmed_tutor_rate": null,
-        # "tutor_confirmed": null,
-        # "num_minutes": null,
-        # "confirmed_payment_id": null,
-        # "time_created": "2014-12-06 17:01:55.595062",
-        # "tutor_email": "chnicoloso@berkeley.edu",
-        # "student_paid_amount": 18.0,
-        # "id": 738,
-        # "skill_id": [
-        #     5886
-        # ],
-        # "stripe_recipient_id": null,
-        # "student_id": 2290,
-        # "student_confirmed": true,
-        # "student_description": "You used $1.0 in credit and were billed $17.0 to your card.",
-        # "tutor_received_amount": 16.2,
-        # "stripe_charge_id": "ch_157FuS228F3k8kGfPpOJCL65",
-        # "status": null,
-        # "refunded": null,
-        # "tutor_id": 1810,
-        # "flag": null,
-        # "skill_name": "SPANISH.4",
-        # "tutor_rate": 18.0,
-        # "credits_used": null,
-        # "confirmed_time_amount": null,
-        # "request_id": 957,
-        # "student_email": "dlecher@berkeley.edu",
-        # "num_hours": null,
-        # "tutor_description": "Earnings from your session with Danielle after 10% fee"
-    print len(session_arr), count
 
 if arg =='link_courses':
     import json

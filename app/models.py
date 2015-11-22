@@ -2515,10 +2515,18 @@ class Card(Base):
     card_type = Column(String) #i.e, Visa
     time_added = Column(String)
 
+    country = Column(String)
+    customer_email = Column(String)
+    exp_month = Column(Integer)
+    exp_year = Column(Integer)
+    funding = Column(String)
+    stripe_card_id = Column(String)
+
     is_payment_card = Column(Boolean, default=False)
     is_transfer_card = Column(Boolean, default=False)
 
     stripe_token = Column(String)
+
 
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship("User",
