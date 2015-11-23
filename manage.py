@@ -927,6 +927,396 @@ if arg =='import':
         json.dump(error_users, fp, indent = 4)
     print len(error_users), 'error users'
 
+def getStripeStudentCharges():
+    import stripe
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    charges = stripe.Charge.all(limit=100)
+    return charges
+
+def getStripeCustomers():
+    import stripe
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    customers = stripe.Customer.all()
+    return customers
+
+def updateRecipientCardDetails(recipient_id):
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    recipient = stripe.Recipient.retrieve(recipient_id)
+    from pprint import pprint
+    email = recipient.email
+    result_cards = []
+    if recipient.cards["data"]:
+        for _card in recipient.cards["data"]:
+            card_type = _card['type']
+            # card_country = _card['country']
+            card_exp_month = _card['exp_month']
+            card_exp_year = _card['exp_year']
+            card_id = _card['id']
+            card_last4  = _card['last4']
+            card_is_credit = _card['funding']
+            card_created = datetime.fromtimestamp(int(recipient.created))
+            print "student's  (email:%s) %s %s card: %s expires %s/%s" \
+            % (email, card_type, card_is_credit, card_id, card_exp_month, card_exp_year)
+            result_cards.append({
+                'type': card_type,
+                'last4': card_last4,
+                'is_credit': card_is_credit,
+                'id': card_id,
+                'card_exp_year': card_exp_year,
+                'card_exp_month': card_exp_month,
+                # 'card_country': card_country,
+                'recipient_email': email,
+                'time_created': card_created,
+                'stripe_recipient_id':recipient_id
+                })
+            return result_cards
+    if recipient.active_account and not recipient.cards['data']:
+        return {
+            'bank_name':recipient.active_account['bank_name'],
+            'country':recipient.active_account['country'],
+            'currency':recipient.active_account['currency'],
+            'active': not recipient.active_account['disabled'],
+            'stripe_bank_id': recipient.active_account['id'],
+            'last4': recipient.active_account['last4'],
+            'bank_routing_number': recipient.active_account['routing_number'],
+            'bank_created': datetime.fromtimestamp(int(recipient.created)),
+            'recipient_email': recipient.email,
+            'stripe_recipient_id': recipient.id
+        }
+
+def updateCustomerCardDetails(customer_id):
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    customer = stripe.Customer.retrieve(customer_id)
+    if not customer or not customer.email:
+        return
+    email = customer.email
+    result_cards = []
+    for _card in customer.cards["data"]:
+        card_type = _card['type']
+        card_country = _card['country']
+        card_exp_month = _card['exp_month']
+        card_exp_year = _card['exp_year']
+        card_id = _card['id']
+        card_last4  = _card['last4']
+        card_is_credit = _card['funding']
+        card_created = datetime.fromtimestamp(int(customer.created))
+        print "student's  (email:%s) %s %s card: %s expires %s/%s" \
+        % (email, card_type, card_is_credit, card_id, card_exp_month, card_exp_year)
+        result_cards.append({
+            'type': card_type,
+            'last4': card_last4,
+            'is_credit': card_is_credit,
+            'id': card_id,
+            'card_exp_year': card_exp_year,
+            'card_exp_month': card_exp_month,
+            'card_country': card_country,
+            'customer_email': email,
+            'time_created': card_created,
+            'customer_id':customer_id
+            })
+        return result_cards
+
+def getCustomerCharges(customer_id):
+    pass
+
+if arg =='link_transactions':
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    from app.database import db_session
+    for card in Card.query.all()[0:100]:
+        try:
+            if card.stripe_customer_id and card.user and card.user_id:
+                charges = stripe.Charge.all(customer=card.stripe_customer_id, limit=100)
+                for charge in charges.data:
+                    amount = charge.amount
+                    _id = charge.id
+                    description = charge.description
+                    status = charge.status
+                    card_id = charge.source.id
+                    refunded = charge.refunded
+                    was_paid = charge.paid
+                    customer_id = charge.customer
+                    time_charged = datetime.fromtimestamp(int(charge.created))
+                    print "%s was charged $%s" % (card.user.name.split(' ')[0], amount/100.0)
+
+                    for _card in card.user.cards:
+                        if _card.stripe_card_id == card_id:
+                            user_card_id = _card.id
+                            break
+
+                    def createChargeTransaction(card_id, time_created, student_amount, status \
+                        ,charge_id, user_id, description, refunded):
+                        transaction = Transaction()
+                        transaction.is_session = True
+                        transaction.card_id = card_id
+                        transaction.time_created = time_created
+                        transaction.student_amount = student_amount
+                        transaction.stripe_amount = student_amount
+                        transaction.charge_status = status
+                        transaction.refunded = refunded
+                        transaction.charge_id = charge_id
+                        transaction.student_id = user_id
+                        transaction.description = description
+                        transaction._type = 0
+                        return transaction
+
+                    transaction = createChargeTransaction(user_card_id, time_charged, amount, \
+                        status, _id, card.user.id, description, refunded)
+                    db_session.add(transaction)
+                    db_session.commit()
+
+            if card.stripe_recipient_id and card.user and card.user_id:
+                transfers = stripe.Transfer.all(recipient=card.stripe_recipient_id, limit=100)
+                for transfer in transfers.data:
+                    from pprint import pprint
+                    pprint(transfer)
+                    print "%s was transferred $%s" % (card.user.name.split(' ')[0], transfer.amount / 100.0)
+
+                    amount = transfer.amount
+                    _id = transfer.id
+                    description = transfer.description
+                    status = transfer.status
+                    if transfer.type == "card":
+                        card_id = transfer.card.id
+                    if transfer.type == "bank_account":
+                        card_id = transfer.bank_account.id
+                    if not card_id:
+                        raise
+                    recipient_id = transfer.recipient
+                    time_charged = datetime.fromtimestamp(int(transfer.created))
+                    print "%s was charged $%s" % (card.user.name.split(' ')[0], amount/100.0)
+
+                    for _card in card.user.cards:
+                        if _card.stripe_card_id == card_id:
+                            user_card_id = _card.id
+                            break
+
+                    def createTransferTransaction(card_id, time_created, amount, status \
+                        ,recipient_id, user, description):
+                        transaction = Transaction()
+                        transaction.card_id = card_id
+                        transaction.time_created = time_created
+                        transaction.guru_amount = amount
+                        transaction.stripe_amount = amount
+                        transaction.transfer_status = status
+                        transaction.transfer_id = recipient_id
+                        transaction.guru_id = user.id
+                        transaction.balance_before = user.balance
+                        transaction.balance_after = user.balance + amount
+                        transaction.description = description
+                        transaction._type = 4
+                        return transaction
+
+                    transaction = createTransferTransaction(user_card_id, time_charged, amount,\
+                        status, recipient_id, card.user, description)
+                    db_session.add(transaction)
+                    db_session.commit()
+
+        except stripe.error.InvalidRequestError, e:
+            card.user_id = None
+            db_session.delete(card)
+            db_session.commit()
+
+if arg =='link_payments':
+    import json, sys
+    from pprint import pprint
+    import stripe
+    payment_arr = json.load(open('old_payment_data.json'))
+    cashout_ids = []
+    payment_ids = []
+    session_arr = []
+    count = 0
+
+    #1. Create cards
+    #2. Create bank cards
+    #3. Create a session
+    #4. Get transactions && create them
+    #
+    for card in Card.query.all():
+        if card.stripe_customer_id and (card.user or card.user_id):
+            student = card.user
+            student_card_ids = [__card.card_last4 for __card in student.cards]
+            for _card in student.cards:
+                if _card.stripe_customer_id:
+                    try:
+                        result_cards = updateCustomerCardDetails(_card.stripe_customer_id)
+                    except:
+                        continue
+                    for found_card in result_cards:
+                        if found_card['last4'] in student_card_ids:
+                            index = student_card_ids.index(found_card['last4'])
+                            student_card = student.cards[index]
+                        else:
+                            from app.models import Card
+                            student_card = Card()
+                            print 'new card being created'
+                            student_card.user_id = student.id
+                            db_session.add(student_card)
+
+                        student_card.is_payment_card = True
+                        student_card.stripe_customer_id = found_card['customer_id']
+                        student_card.card_last4 = found_card['last4']
+                        student_card.stripe_card_id = found_card['id']
+                        student_card.card_type = found_card['type']
+                        student_card.active = True
+                        student_card.country = found_card['card_country']
+                        student_card.time_added = found_card['time_created']
+                        student_card.customer_email = found_card['customer_email']
+                        student_card.funding = found_card['is_credit']
+                        student_card.exp_month = int(found_card['card_exp_month'])
+                        student_card.exp_year = int(found_card['card_exp_year'])
+
+                        db_session.commit()
+        if card.stripe_recipient_id and (card.user or card.user_id):
+            guru = card.user
+            guru_card_ids = [__card.card_last4 for __card in guru.cards]
+            for _card in guru.cards:
+                if _card.stripe_recipient_id:
+                    try:
+                        result_bank_cards = updateRecipientCardDetails(_card.stripe_recipient_id)
+
+
+
+
+                        if type(result_bank_cards) == list:
+                            for found_card in result_bank_cards:
+                                if found_card['last4'] in guru_card_ids:
+                                    index = guru_card_ids.index(found_card['last4'])
+                                    guru_card = guru.cards[index]
+                                else:
+                                    from app.models import Card
+                                    guru_card = Card()
+                                    print 'new card being created'
+                                    guru_card.user_id = guru.id
+                                    db_session.add(guru_card)
+                                guru_card.is_transfer_card = True
+                                guru_card.stripe_recipient_id = found_card['stripe_recipient_id']
+                                guru_card.card_last4 = found_card['last4']
+                                guru_card.stripe_card_id = found_card['id']
+                                guru_card.card_type = found_card['type']
+                                guru_card.active = True
+                                guru_card.time_added = found_card['time_created']
+                                guru_card.recipient_email = found_card['recipient_email']
+                                guru_card.funding = found_card['is_credit']
+                                guru_card.exp_month = int(found_card['card_exp_month'])
+                                guru_card.exp_year = int(found_card['card_exp_year'])
+
+                        try:
+                            if type(result_bank_cards) == dict:
+                                found_card = result_bank_cards
+                                if found_card['last4'] in guru_card_ids:
+                                    index = guru_card_ids.index(found_card['last4'])
+                                    guru_card = guru.cards[index]
+                                else:
+                                    from app.models import Card
+                                    guru_card = Card()
+                                    print 'new card being created'
+                                    guru_card.user_id = guru.id
+                                    db_session.add(guru_card)
+                                guru_card.is_bank_account = True
+                                guru_card.stripe_recipient_id = found_card['stripe_recipient_id']
+                                guru_card.card_last4 = found_card['last4']
+                                guru_card.stripe_bank_id = found_card['stripe_bank_id']
+                                guru_card.bank_currency = found_card['currency']
+                                guru_card.active = found_card['active']
+                                # guru_card.country = found_card['card_country']
+                                guru_card.bank_name = found_card['bank_name']
+                                guru_card.brank_routing_number = found_card['bank_routing_number']
+                                guru_card.recipient_email = found_card['recipient_email'],
+                                guru_card.time_added = found_card['bank_created']
+
+                            db_session.commit()
+
+                        except:
+                            raise
+
+                    except stripe.error.InvalidRequestError, e:
+                        continue
+                    except Exception, e:
+                        raise
+
+    # for payment in payment_arr:
+    #     student_email = payment.get('student_email')
+        # if student_email and student_email not in student_email_set:
+        #     student_email_set.append(student_email)
+        #     student = User.query.filter_by(email=student_email).first()
+        #     if student and student.name and student.cards:
+        #         # print '%s has %s cards' % (student.name, len(student.cards))
+
+        #         student_card_ids = [card.card_last4 for card in student.cards]
+
+
+        # guru_email = payment.get('tutor_email')
+        # if guru_email and guru_email not in guru_email_set:
+        #         guru_email_set.append(guru_email)
+        #         guru = User.query.filter_by(email=guru_email).first()
+        #         for card in guru.cards:
+        #             if card.stripe_recipient_id:
+        #                 result_bank_cards = updateRecipientCardDetails(card.stripe_recipient_id)
+
+
+
+
+if arg =='link_courses':
+    import json
+    def getPopularCourses(uni_id):
+        university = University.query.get(uni_id)
+        university_courses = university.courses
+        popular_courses = [course for course in university_courses if course.is_popular]
+        print '%s popular courses found for %s' % (len(popular_courses), university.name)
+        return popular_courses
+
+    # num w/o full name
+    def processPopularCourses(courses):
+        popular_courses_with_both = [course for course in courses if course.short_name and course.full_name]
+        popular_courses_with_short_only = [course for course in courses if course.short_name and not course.full_name]
+        return popular_courses_with_short_only
+
+    # links && returns success rate
+    # prints success rate
+    def getUniversityCourseDuplicates(uni_id):
+        from collections import Counter
+        course_name_arr = []
+        for course in University.query.get(uni_id).courses:
+            course_name_arr.append(course.short_name.upper())
+        course_dist = Counter(course_name_arr)
+        duplicate_names = []
+        for key in course_dist:
+            if course_dist[key] >= 2:
+                duplicate_names.append(key)
+        return duplicate_names
+
+    def repair_courses(uni_id):
+
+        popular_courses = getPopularCourses(uni_id)
+        popular_short_name_only = processPopularCourses(popular_courses)
+        duplicate_course_names = getUniversityCourseDuplicates(uni_id)
+
+        found = 0
+        from app.database import db_session
+        university_courses = University.query.get(2307).courses
+        for course in popular_short_name_only:
+            same_courses = [_course for _course in university_courses if _course.short_name.upper() == course.short_name.upper()]
+            for same_course in same_courses:
+                if same_course.short_name and same_course.full_name and not same_course.is_popular and same_course.id != course.id:
+                    found += 1
+                    course.full_name = same_course.full_name
+                    print course.short_name, 'updated with full name', course.full_name
+                    db_session.commit()
+        print "%s popular courses repaired" % found
+
+
+    repair_courses(2307)
+
+
+
+    ## the goal is to link the titles with popular courses
+
 if arg =='migrate':
 
     from app.models import *

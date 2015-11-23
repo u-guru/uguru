@@ -20,8 +20,8 @@
 
     $scope.data = {card_exists: false};
     // console.log();
-    $scope.user_cards = [{card_last4:'2121',card_type:'Visa', id:1}, {card_last4:'3121',card_type:'Discover', id:2}, {card_last4:'4121',card_type:'Mastercard', id:3}]
-    $scope.user.name = 'Samir Makhani';
+    // $scope.user_cards = [{card_last4:'2121',card_type:'Visa', id:1}, {card_last4:'3121',card_type:'Discover', id:2}, {card_last4:'4121',card_type:'Mastercard', id:3}]
+    // $scope.user.name = 'Samir Makhani';
 
     $scope.editCard = {card_number: '', id:0, card_type:'', exp_date:''};
 
@@ -53,7 +53,21 @@
       $scope.launchEditCardModal($scope.editCard);
     }
 
+    setTimeout(function(){
 
+        for (var i =0; i < $scope.user.transfer_cards.length; i++) {
+
+        var indexCard = $scope.user.transfer_cards[i];
+        console.log('instantiation cards')
+            cardObj = CardService.userCardObj($scope.user.name, indexCard.card_last4, indexCard.id, indexCard.card_type)
+            CardService.initCardView('', cardObj);
+
+          $timeout(function() {
+            CardService.instatiateAllCards($scope.user.transfer_cards);
+          }, 1000)
+        }
+
+      }, 2000)
 
 
 

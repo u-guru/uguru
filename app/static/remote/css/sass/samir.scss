@@ -2,42 +2,32 @@
 
 // start samir css 11/9
 .desktop-input-close-icon {
-	position:absolute;
-	right:10px;
-	top:50%;
+	position: absolute;
+	right: 10px;
+	top: 50%;
 }
 
 .desktop-login-view  {
 	.desktop-input-close-icon {
-		color:rgba($slate,0.2);
-		top:30%;
+		color: rgba($slate,.2);
+		top: 30%;
 	}
 }
 // End samir-css
 
-.desktop-nav-back {
-	svg {
-		-webkit-transform: rotate(45deg);
-	    -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	    -o-transform: rotate(45deg);
-	    transform: rotate(45deg);
-	}
-}
-
 .desktop-mode {
 	#desktop-student-home-map-container, #student-home-default-map-container {
-			position: absolute !important;
-			top: 0 !important;
-			left: 0 !important;
-			overflow: hidden !important;
-			z-index: 0 !important;
-			width: calc(100%) !important;
-			height: calc(100% - 64px) !important;
+			position: absolute!important;
+			top: 0!important;
+			left: 0!important;
+			overflow: hidden!important;
+			z-index: 0!important;
+			width: 100%!important;
+			height: calc(100% - 64px)!important;
 		}
 	.main {
-		z-index:1 !important;
-		background:transparent;
+		z-index: 1!important;
+		background: transparent;
 	}
 }
 
@@ -51,44 +41,28 @@
     	top: 64px;
 	}
 	.uguru-popup-content {
-		width:33% !important;
+		width: 33%!important;
 	}
 }
 
 .desktop-view.platform-ios {
 	ion-modal-view {
-		top:84px;
+		top: 84px;
 		height: calc(100% - 84px);
-		width:100%;
+		width: 100%;
 	}
 	header, .header-nav {
-		padding-top:0px !important;
+		padding-top: 0!important;
 	}
 	.guru-desktop-credibility {
-		padding-top:20px;
+		padding-top: 20px;
 	}
 	#top-menu-background-overlay {
 	    top: 64px;
-	    height: calc(100% - 84px) !important;
+	    height: calc(100% - 84px)!important;
 	}
-
 }
 //end component overrides
-
-#top-menu-background-overlay {
-	@include opacity(.7);
-    display: none!important;
-	top: 64px;
-    z-index: 10;
-    height: calc(100% - 64px)!important;
-    width: 100%!important;
-    max-width: 100%!important;
-    margin-left: -15px!important;
-    &.active {
-		@include opacity(.7);
-    	display: block!important;
-    }
-}
 
 .desktop-guru-onboarding-view {
 	.cta-modal.hide-display {
@@ -119,10 +93,6 @@
 	svg {
 		stroke: $gabrielle!important;
 	}
-}
-
-#desktop-credibility .progress-bottom {
-	bottom: 50px;
 }
 
 .progressbar-text {
@@ -168,6 +138,95 @@
 
 }
 
-.skip-button {
-	@include opacity(.5);
+.guru-message-container .cta-modal-close {
+	z-index:1000;
+	height:50px;
+	width:50px;
+}
+
+#messenger-sidebar img{
+	@include round;
+	width: 50px;
+	height: 50px;
+}
+
+.credit-card-wrapper {
+	.credit-card {
+		position:relative;
+		#visa {
+			float: right;
+    		clear: both;
+		}
+		.card-number {
+		    text-shadow: 1px 1px 0 black, 2px 2px 0 black;
+		    font-family: OCR-A, monospace;
+		    font-size: 14px;
+		    text-align: left;
+		    color: #eee;
+		    position:absolute;
+		    left:10%;
+		    top:50%;
+		}
+		.card-name {
+		    font-size: 10px;
+		    text-align:left;
+		    opacity:0.75;
+		    color:white;
+		    line-height: 2;
+		    font-weight: 700;
+		    position:absolute;
+		    left:10%;
+		    bottom:12.5%;
+		}
+
+		img.card-chip {
+			width: 30px;
+		    position: absolute;
+		    left: 20px;
+		    top: 20%;
+		}
+
+		.valid .group {
+			position:absolute;
+			width:33% !important;
+		    bottom:12.5%;
+		    right:15%;
+		    font-size:10px;
+		    opacity:0.4;
+		    line-height:10px;
+		}
+		.valid .expiry {
+			position:absolute;
+			width:33% !important;
+		    bottom:17.5%;
+		    right:-3%;
+		    font-size:16px;
+		    opacity:0.75;
+		    line-height:10px;
+		    margin-top: 3px;
+		}
+		width: 100%;
+	    height: 100%;
+	    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+	    background-size: 100%;
+	    background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(50%, #282828), color-stop(50%, #141414));
+	    background-image: -moz-linear-gradient(top left, #282828 50%, #141414 50%);
+	    background-image: -webkit-linear-gradient(top left, #282828 50%, #141414 50%);
+	    background-image: linear-gradient(to bottom right, #282828 50%, #141414 50%);
+	    -moz-border-radius: 4px;
+	    -webkit-border-radius: 4px;
+	    border-radius: 4px;
+	    padding: 15px;
+	    color: white;
+	    -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+	    -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+	    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+	    position: relative;
+	}
+
+	.cf:before, .credit-card:before, .cf:after, .credit .credit-card:after {
+    	content: " ";
+    	display: table;
+    }
+
 }

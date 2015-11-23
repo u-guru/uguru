@@ -35,6 +35,72 @@ angular.module('uguru.user', [])
                 return result;
     }
 
+    var parseRFC822Date = function(rfc_date) {
+        return new Date(Date.parse(rfc_date))
+    }
+
+    var jsDateObjToMessageFormat = function(date) {
+          var date = parseRFC822Date(date);
+          var hours = date.getHours();
+          var minutes = date.getMinutes();
+          var ampm = hours >= 12 ? 'pm' : 'am';
+          hours = hours % 12;
+          hours = hours ? hours : 12; // the hour '0' should be '12'
+          minutes = minutes < 10 ? '0'+minutes : minutes;
+          var strTime = hours + ':' + minutes + ' ' + ampm;
+          return strTime;
+    }
+
+    var formatProfileUrl = function(profile_url) {
+        if (profile_url === '/static/img/default-photo.jpg') {
+            return img_base + BASE + "img/avatar.svg"
+        }
+        return profile_url
+    }
+
+    var parseRelationships = function(relationships) {
+        for (var i = 0; i < relationships.length; i++) {
+            var indexRelationship = relationships[i];
+
+            // parse student name
+            if (indexRelationship.student.name) {
+                var nameSplitArr = indexRelationship.student.name.split(' ');
+                var firstNameStudent = nameSplitArr[0];
+                var lastInitialStudent = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+                indexRelationship.student.name = firstNameStudent + ' ' + lastInitialStudent;
+            } else {
+                indexRelationship.student.name = '';
+            }
+            indexRelationship.student.profile_url = formatProfileUrl(indexRelationship.student.profile_url)
+
+            // parse guru name
+            var nameSplitArr = indexRelationship.guru.name.split(' ');
+            var firstNameGuru = nameSplitArr[0];
+            var lastInitialGuru = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+            indexRelationship.guru.name = firstNameGuru + ' ' + lastInitialGuru;
+            indexRelationship.guru.profile_url = formatProfileUrl(indexRelationship.guru.profile_url)
+
+
+            if (indexRelationship.messages && indexRelationship.messages.length) {
+                for (var j = 0; j < indexRelationship.messages.length; j++) {
+                    var indexMessage = indexRelationship.messages[j];
+                    indexMessage.time_created = jsDateObjToMessageFormat(indexMessage.time_created);
+                    if (indexMessage.sender.id === indexRelationship.student.id) {
+                        indexMessage.sender.name = indexRelationship.student.name;
+                        indexMessage.sender.profile_url = formatProfileUrl(indexRelationship.student.profile_url);
+                    } else {
+                        indexMessage.sender.name = indexRelationship.guru.name;
+                        indexMessage.sender.profile_url = formatProfileUrl(indexRelationship.guru.profile_url);
+                    }
+
+                }
+            }
+            // indexRelationship.guru.name = firstName + ' ' + lastInitial;
+
+        }
+        return relationships;
+    }
+
     var calcProfileCompleteness = function(user) {
         var default_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100";
         var base = 60; //40%
@@ -291,11 +357,14 @@ angular.module('uguru.user', [])
 
         var guru_transactions = user.guru_transactions || [];
         for (var i = 0; i < guru_transactions.length; i ++) {
-            var utc = Date.parse(guru_transactions[0].time_created);
+            var utc = Date.parse(guru_transactions[i].time_created);
             var date = new Date(utc);
-            user.guru_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()]}
+            user.guru_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()], year: date.getFullYear()}
             user.guru_transactions[i].student_amount = parseFloat(user.guru_transactions[i].student_amount).toFixed(2);
-            user.guru_transactions[i].guru_amount = parseFloat(user.guru_transactions[i].guru_amount).toFixed(2);
+            user.guru_transactions[i].guru_amount = (parseFloat(user.guru_transactions[i].guru_amount) / 100 ).toFixed(2);
+            if (user.guru_transactions[i].guru_amount == parseInt(user.guru_transactions[i].guru_amount)) {
+                user.guru_transactions[i].guru_amount = parseInt(user.guru_transactions[i].guru_amount);
+            }
             user.guru_transactions[i].guru_rate = 5;
         }
 
@@ -498,8 +567,10 @@ angular.module('uguru.user', [])
         $scope.user.course_guru_dict = user.course_guru_dict;
         $scope.user.gurus = user.gurus;
         $scope.user.guru_relationships = user.guru_relationships;
-        $scope.user.student_relationships = user.student_relationships;
+        $scope.user.student_relationships = parseRelationships(user.student_relationships);
         $scope.user.referred_by = user.referred_by;
+        $scope.user.referral_code = user.referral_code;
+        $scope.user.guru_discoverability = user.guru_discoverability;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
         $scope.user.current_hourly = user.current_hourly;
@@ -787,6 +858,11 @@ angular.module('uguru.user', [])
                 return {
                     event_id: obj,
                     'impact_event': true
+                }
+              }
+              if (arg === 'discoverability') {
+                return {
+                    'discoverability': obj
                 }
               }
               if (arg === 'profile_url') {

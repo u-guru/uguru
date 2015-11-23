@@ -14,15 +14,16 @@
     			<li ng-repeat='category in categories' ng-click='showDesktopSubcategories(category)' class='ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }'>
 					<div class="skill-item-info" style='background-image :url({{categories_img_base + category.background_url}})'>
 	    				<a class='skill-item-link bg-{{category.hex_color.split("-")[1]}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
+							<span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}}</span>
+							<span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}}</span>
 	                        <div>
 	                            <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
-	                            <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
-	                            <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
 	                        </div>
 	                    </a>
 					</div>
     			</li>
 			</ul>
+			<button class="save-button cta-modal-close semibold btn-ghost-white">Save</button>
 		</div>
     </div>
 </main>
@@ -54,6 +55,7 @@
 					</label>
 				</li>
 			</ul>
+			<button class="save-button cta-modal-close semibold btn-ghost-white">Save</button>
 		</div>
 	</main>
 </div>

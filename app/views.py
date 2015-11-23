@@ -995,7 +995,10 @@ def app_route_gpa():
 def user_admin_login_user(user_id=None):
     if not session.get('admin') or not user_id:
         return redirect('/')
-    return redirect('/static/remote/index.html?admin_token=fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6&user_id=' + str(user_id))
+    if os.environ.get('PRODUCTION'):
+        return redirect('/static/remote/index.html?admin_token=fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6&user_id=' + str(user_id))
+    else:
+        return redirect('http://localhost:8100?admin_token=fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6&user_id=' + str(user_id))
 
 @app.route('/production/app/')
 @app.route('/app/production/')

@@ -1,52 +1,49 @@
 <ion-view>
 	<main id='desktop-referrals' class="sidebar-layout desktop-mode" ng-if='isDesktopMode()'>
-		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<header class="desktop-header">
+			<a></a>
+			<a class='cta-modal-close close-button desktop-header-next'>
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</header>
 		<div class="main">
-			<div>	
+			<div>
 				<aside>
 					<h2>Your Referrals</h2>
-					<ul id="referrals-stats" class="ugrid-3">
+					<ul id="referrals-stats" class="ugrid-2">
 						<li>
 							<div>
-								<h1>4</h1>
+								<h1>0</h1>
 								<span>1st Degree<br/>Referrals</span>
 							</div>
 						</li>
 						<li>
 							<div>
-								<h1>43</h1>
+								<h1>0</h1>
 								<span>2nd Degree<br/>Referrals</span>
 							</div>
 						</li>
-						<li>
-							<div>
-								<h1>75</h1>
-								<span>Your Guru<br/>Ranking</span>
-							</div>
+						<li hidden>
 						</li>
 					</ul>
 					<ul class="sidebar-layout-list">
-						<li>
+						<li ng-repeat='referred_user in user.referred_users'>
 							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
 							<div>
 								<h3>You referred <b>{{user.name}}</b>.</h3>
 								<span>He referred <b>4 others</b>.</span>
 							</div>
 						</li>
-						<li>
+						<li ng-if='!user.referred_users || !user.referred_users.length'>
 							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
 							<div>
-								<h3>You referred <b>{{user.name}}</b>.</h3>
-								<span>He referred <b>4 others</b>.</span>
+								<h3> You referred <b>Jon Smith</b>.</h3>
+								<span>He referred <b class='white white-text'>4 others</b>. <strong><br>THIS IS AN EXAMPLE</strong></span>
 							</div>
 						</li>
-						<li>
-							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
-							<div>
-								<h3>You referred <b>{{user.name}}</b>.</h3>
-								<span>He referred <b>4 others</b>.</span>
-							</div>
-						</li>
+
 					</ul>
 				</aside>
 				<div id="referrals-content" class="text-center">
@@ -59,7 +56,7 @@
 						</h1>
 						<h2>Referrals increase your guru ranking. You have <em>3 left</em>!</h2>
 					</div>
-					<input type="text" value="JESELLE143"/>
+					<input type="text" value="{{user.referral_code}}"/>
 					<div id="referrals-share">
 						<h3>Share the Love</h3>
 						<ul class="ugrid-4">

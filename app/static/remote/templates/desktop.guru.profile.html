@@ -44,68 +44,7 @@
 				</div>
 			</div>
 			<div id="profile-info">
-				<ion-pane id='cta-modal-profile-contact' class='full-xy hide-display cta-modal'>
-					<div class="profile-header">
-						<h1>Your Communication Preferences </h1>
-						<a class="cta-modal-close close-button">
-							<svg viewBox="0 0 100 100">
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-						</a>
-					</div>
-					<div ng-include="img_base + BASE + 'templates/guru.contact.components.	html'"></div>
-					<!-- <div ></div> -->
-				</ion-pane>
 
-				<ion-pane id='cta-modal-profile-skills' class='full-xy hide-display cta-modal' ng-controller='CategoriesController'>
-					<div class="profile-header">
-						<h1>Other ways to earn</h1>
-						<a class="cta-modal-close close-button">
-							<svg viewBox="0 0 100 100">
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-						</a>
-					</div>
-					<div ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></div>
-				</ion-pane>
-
-				<ion-pane id='cta-modal-profile-courses' class='full-xy hide-display cta-modal' ng-controller='CoursesController'>
-					<div class="profile-header">
-						<h1>Courses I can Guru</h1>
-						<a class="cta-modal-close close-button">
-							<svg viewBox="0 0 100 100">
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-						</a>
-					</div>
-					<div ng-include="img_base + BASE + 'templates/guru.courses.container.html'">
-					</div>
-				</ion-pane>
-
-				<ion-pane id='cta-modal-profile-experiences' class='full-xy hide-display cta-modal'>
-					<div class='profile-header'>
-						<h1>Your Past Guru Experiences</h1>
-						<a class="cta-modal-close close-button">
-							<svg viewBox="0 0 100 100">
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-						</a>
-					</div>
-					<div ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
-				</ion-pane>
-
-				<ion-pane id='cta-modal-profile-languages' class='full-xy hide-display cta-modal'>
-					<div class='profile-header'>
-						<h1>Native Languages</h1>
-						<a class="cta-modal-close close-button">
-							<svg viewBox="0 0 100 100">
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-						</a>
-					</div>
-					<div ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
-					<!-- <div ></div> -->
-				</ion-pane>
 
 				<div class="profile-inside">
 					<div class="profile-header">
@@ -244,6 +183,68 @@
 							</ul>
 						</div>
 					</div>
+					<ion-pane id='cta-modal-profile-contact' class='full-xy hide-display cta-modal'>
+					<div class="profile-header">
+						<h1>Your Communication Preferences </h1>
+						<a class="cta-modal-close close-button">
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+					</div>
+					<div ng-include="img_base + BASE + 'templates/guru.contact.components.	html'"></div>
+					<!-- <div ></div> -->
+				</ion-pane>
+
+				<ion-pane id='cta-modal-profile-skills' class='full-xy hide-display cta-modal' ng-controller='CategoriesController'>
+					<div class="profile-header">
+						<h1>Other ways to earn</h1>
+						<a class="cta-modal-close close-button">
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+					</div>
+					<div ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></div>
+				</ion-pane>
+
+				<ion-pane id='cta-modal-profile-courses' class='full-xy hide-display cta-modal' ng-controller='CoursesController'>
+					<div class="profile-header">
+						<h1>Courses I can Guru</h1>
+						<a class="cta-modal-close close-button">
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+					</div>
+					<div ng-include="img_base + BASE + 'templates/guru.courses.container.html'">
+					</div>
+				</ion-pane>
+
+				<ion-pane id='cta-modal-profile-experiences' class='full-xy hide-display cta-modal'>
+					<div class='profile-header'>
+						<h1>Your Past Guru Experiences</h1>
+						<a class="cta-modal-close close-button">
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+					</div>
+					<div ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
+				</ion-pane>
+
+				<ion-pane id='cta-modal-profile-languages' class='full-xy hide-display cta-modal'>
+					<div class='profile-header'>
+						<h1>Native Languages</h1>
+						<a class="cta-modal-close close-button">
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+					</div>
+					<div ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
+					<!-- <div ></div> -->
+				</ion-pane>
 				</div>
 			</div>
 		</div>

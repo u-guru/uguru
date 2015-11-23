@@ -16,7 +16,7 @@ if (LOCAL) {
   // BASE_URL = _ipaddress;
   REST_URL = "http://localhost:5000"
 
-  // REST_URL = 'https://192.168.0.104:5000';
+  // REST_URL = 'https://192.168.0.107:5000';
 
 } else {
   img_base = '/static/';
@@ -45,9 +45,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   Github = $injector.get("Github");
   Github.init();
   Github.setExceptionToGithubIssue(false);
-    // $rootScope.FBurl = ngFB.init({
-    //       appId: '1416375518604557'
-    //     });
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -339,9 +336,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'CoursesController'
   }).
   state('root.messages', {
-        url: '/messages/:sessionObj',
+        url: '/messages/',
         templateUrl: BASE + 'templates/student.messages.html',
-        controller: 'StudentMessagesController'
+        controller: 'GuruMessagesController'
   }).
   state('root.messaging', {
         url: '/messaging',

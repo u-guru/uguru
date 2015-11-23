@@ -203,6 +203,7 @@ class User(Base):
     #Guru fields
     is_a_guru = Column(Boolean, default = False)
     guru_mode = Column(Boolean, default = False)
+    is_activated = Column(Boolean, default = False)
     guru_discoverability = Column(Boolean, default = True)
     guru_introduction = Column(String) #TODO: Research sufficient length
     guru_courses = relationship("Course",
@@ -2514,10 +2515,27 @@ class Card(Base):
     card_type = Column(String) #i.e, Visa
     time_added = Column(String)
 
+    country = Column(String)
+    customer_email = Column(String)
+    recipient_email = Column(String)
+    exp_month = Column(Integer)
+    exp_year = Column(Integer)
+    funding = Column(String)
+    stripe_card_id = Column(String)
+
+    ## bank fields
+    bank_name = Column(String)
+    bank_currency = Column(String)
+    bank_last4 = Column(String)
+    bank_routing_number = Column(String)
+    stripe_bank_id = Column(String)
+
     is_payment_card = Column(Boolean, default=False)
     is_transfer_card = Column(Boolean, default=False)
+    is_bank_account = Column(Boolean, default=False)
 
     stripe_token = Column(String)
+
 
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship("User",
@@ -2579,7 +2597,7 @@ class Card(Base):
             raise
         return card
 
-class Transaction(Base):
+class   Transaction(Base):
     __tablename__ = 'transaction'
 
     # Types
@@ -2616,6 +2634,9 @@ class Transaction(Base):
     transfer_id = Column(String)
     refund_id = Column(String)
     balance_transaction_id = Column(String)
+    refunded = Column(Boolean, default=False)
+    description = Column(String)
+
 
     balance_before = Column(Float)
     balance_after = Column(Float)
