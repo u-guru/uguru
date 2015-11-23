@@ -201,9 +201,11 @@ request_fields['selected_proposal'] = fields.Nested(selected_proposal_fields)
 card_fields = {}
 card_fields['time_created'] = fields.DateTime(attribute='time_created')
 card_fields['card_last4'] = fields.String(attribute='card_last4')
+card_fields['bank_last4'] = fields.String(attribute='bank_last4')
 card_fields['card_type'] = fields.String(attribute='card_type')
 card_fields['is_default_payment'] = fields.Boolean(attribute='is_default_payment')
 card_fields['is_default_transfer'] = fields.Boolean(attribute='is_default_transfer')
+card_fields['is_bank_card'] = fields.Boolean(attribute='is_bank_card')
 card_fields['id'] = fields.Integer(attribute='id')
 card_fields['is_payment_card'] = fields.Boolean(attribute='is_payment_card')
 card_fields['is_transfer_card'] = fields.Boolean(attribute='is_transfer_card')
@@ -365,8 +367,8 @@ UserSerializer = {
     'phone_number_token': fields.String,
     'phone_number_confirmed': fields.Boolean,
     # 'student_transactions': fields.List(fields.Nested(transaction_fields)),
-    # 'guru_transactions': fields.List(fields.Nested(transaction_fields)),
-    # 'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
+    'guru_transactions': fields.List(fields.Nested(transaction_fields)),
+    'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
     'impact_events': fields.List(fields.Nested(event_fields)),
     'guru_relationships': fields.List(fields.Nested(relationship_fields)),
     'student_relationships': fields.List(fields.Nested(relationship_fields)),

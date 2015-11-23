@@ -353,11 +353,14 @@ angular.module('uguru.user', [])
 
         var guru_transactions = user.guru_transactions || [];
         for (var i = 0; i < guru_transactions.length; i ++) {
-            var utc = Date.parse(guru_transactions[0].time_created);
+            var utc = Date.parse(guru_transactions[i].time_created);
             var date = new Date(utc);
-            user.guru_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()]}
+            user.guru_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()], year: date.getFullYear()}
             user.guru_transactions[i].student_amount = parseFloat(user.guru_transactions[i].student_amount).toFixed(2);
-            user.guru_transactions[i].guru_amount = parseFloat(user.guru_transactions[i].guru_amount).toFixed(2);
+            user.guru_transactions[i].guru_amount = (parseFloat(user.guru_transactions[i].guru_amount) / 100 ).toFixed(2);
+            if (user.guru_transactions[i].guru_amount == parseInt(user.guru_transactions[i].guru_amount)) {
+                user.guru_transactions[i].guru_amount = parseInt(user.guru_transactions[i].guru_amount);
+            }
             user.guru_transactions[i].guru_rate = 5;
         }
 

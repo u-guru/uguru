@@ -1,17 +1,24 @@
 <ion-view>
-	<main id='desktop-balance' class="sidebar-layout desktop-mode" ng-if='isDesktopMode()'>
-		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+	<main id='desktop-balance' class="sidebar-layout desktop-mode" ng-if='desktopMode'>
+		<header class="desktop-header top-0">
+			<a></a>
+			<a class='cta-modal-close close-button desktop-header-next'>
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</header>
 		<div class="main">
 			<div>
 				<aside>
 					<h2>Payment History</h2>
 					<ul class="sidebar-layout-list">
-						<li>
+						<li ng-repeat='transaction in user.guru_transactions'>
 							<div>
-								<h3>You cashed out to <b>**0092</b></h3>
-								<span>11/13/15</span>
+								<h3>You cashed out <b>${{transaction.guru_amount}}</b> to <b>**{{transaction.card.card_last4}}</b></h3>
+								<span>{{transaction.time.date}} {{transaction.time.month}} {{transaction.time.year}}</span>
 							</div>
-							<span><span class="chip bg-charcoal">Pending</span></span>
+							<span><span class="chip bg-charcoal uppercase" ng-if='transaction.transfer_status'>{{transaction.transfer_status}}</span></span>
 						</li>
 						<li>
 							<div>
@@ -33,13 +40,13 @@
 					<div>
 						<div>
 							<h1>My Balance</h1>
-							<div id="balance-total"><span>$340.00</span></div>
+							<div id="balance-total"><span>${{user.balance || 0}}</span></div>
 						</div>
 						<div class="balance-cards">
 							<h2>Choose Method to Cash Out</h2>
 							<ul class="ugrid-3">
-								<li>
-									<a></a>
+								<li ng-repeat='card in user.cards' ng-if='card.is_transfer_card || card.is_bank_card'>
+									<a>{{card.bank_last4}}</a>
 								</li>
 								<li>
 									<a></a>
