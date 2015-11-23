@@ -1028,21 +1028,95 @@ if arg =='link_transactions':
     from datetime import datetime
     stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
     from app.database import db_session
-    for card in Card.query.all()[0:10]:
+    for card in Card.query.all()[0:100]:
         try:
             if card.stripe_customer_id and card.user and card.user_id:
                 charges = stripe.Charge.all(customer=card.stripe_customer_id, limit=100)
                 for charge in charges.data:
                     amount = charge.amount
-                    refunded = charge.amount_refunded
                     _id = charge.id
                     description = charge.description
                     status = charge.status
                     card_id = charge.source.id
+                    refunded = charge.refunded
                     was_paid = charge.paid
                     customer_id = charge.customer
                     time_charged = datetime.fromtimestamp(int(charge.created))
                     print "%s was charged $%s" % (card.user.name.split(' ')[0], amount/100.0)
+
+                    for _card in card.user.cards:
+                        if _card.stripe_card_id == card_id:
+                            user_card_id = _card.id
+                            break
+
+                    def createChargeTransaction(card_id, time_created, student_amount, status \
+                        ,charge_id, user_id, description, refunded):
+                        transaction = Transaction()
+                        transaction.is_session = True
+                        transaction.card_id = card_id
+                        transaction.time_created = time_created
+                        transaction.student_amount = student_amount
+                        transaction.stripe_amount = student_amount
+                        transaction.charge_status = status
+                        transaction.refunded = refunded
+                        transaction.charge_id = charge_id
+                        transaction.student_id = user_id
+                        transaction.description = description
+                        transaction._type = 0
+                        return transaction
+
+                    transaction = createChargeTransaction(user_card_id, time_charged, amount, \
+                        status, _id, card.user.id, description, refunded)
+                    db_session.add(transaction)
+                    db_session.commit()
+
+            if card.stripe_recipient_id and card.user and card.user_id:
+                transfers = stripe.Transfer.all(recipient=card.stripe_recipient_id, limit=100)
+                for transfer in transfers.data:
+                    from pprint import pprint
+                    pprint(transfer)
+                    print "%s was transferred $%s" % (card.user.name.split(' ')[0], transfer.amount / 100.0)
+
+                    amount = transfer.amount
+                    _id = transfer.id
+                    description = transfer.description
+                    status = transfer.status
+                    if transfer.type == "card":
+                        card_id = transfer.card.id
+                    if transfer.type == "bank_account":
+                        card_id = transfer.bank_account.id
+                    if not card_id:
+                        raise
+                    recipient_id = transfer.recipient
+                    time_charged = datetime.fromtimestamp(int(transfer.created))
+                    print "%s was charged $%s" % (card.user.name.split(' ')[0], amount/100.0)
+
+                    for _card in card.user.cards:
+                        if _card.stripe_card_id == card_id:
+                            user_card_id = _card.id
+                            break
+
+                    def createTransferTransaction(card_id, time_created, amount, status \
+                        ,recipient_id, user, description):
+                        transaction = Transaction()
+                        transaction.card_id = card_id
+                        transaction.time_created = time_created
+                        transaction.guru_amount = amount
+                        transaction.stripe_amount = amount
+                        transaction.transfer_status = status
+                        transaction.transfer_id = recipient_id
+                        transaction.guru_id = user.id
+                        transaction.balance_before = user.balance
+                        transaction.balance_after = user.balance + amount
+                        transaction.description = description
+                        transaction._type = 4
+                        return transaction
+
+                    transaction = createTransferTransaction(user_card_id, time_charged, amount,\
+                        status, recipient_id, card.user, description)
+                    db_session.add(transaction)
+                    db_session.commit()
+
         except stripe.error.InvalidRequestError, e:
             card.user_id = None
             db_session.delete(card)
