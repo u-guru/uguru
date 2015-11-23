@@ -161,6 +161,27 @@
 									stroke: $gabrielle;
 								}
 							}
+							&#top-menu-discover.active {
+								svg {
+									circle {
+										fill: white;
+									}
+									path {
+										stroke: $gabrielle;
+									}
+								}
+								&:hover, &:active, &:focus {
+									svg {
+										circle {
+											stroke: $gabrielle;
+											fill: $gabrielle;
+										}
+										path {
+											stroke: white;
+										}
+									}
+								}
+							}
 						}
 						&:last-child {
 							a {

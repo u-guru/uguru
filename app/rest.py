@@ -608,6 +608,10 @@ class UserOneView(restful.Resource):
         if 'facetime_friendly' in request.json:
             user.facetime_friendly = request.json.get('facetime_friendly')
 
+        if 'discoverability' in request.json:
+            print 'ayy'
+            user.guru_discoverability = request.json.get('guru_discoverability')
+
         if 'messenger_friendly' in request.json:
             user.messenger_friendly = request.json.get('messenger_friendly')
 

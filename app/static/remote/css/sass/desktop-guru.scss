@@ -1097,10 +1097,22 @@
 				width: 100%
 			}
 			#exp-input {
-    			height: calc(100% - 220px)!important;
+    			height: calc(100% - 295px)!important;
 			}
 			.bg-campus-50p {
 				background: rgba($gabrielle,.5)!important;
+			}
+			ul {
+				li {
+					width: calc(100% / 3)!important;
+					&:first-child {
+						text-align: left!important;
+					}
+					&:last-child {
+						display: block!important;
+						text-align: right!important;
+					}
+				}
 			}
 		}
 		button.bg-campus {

@@ -79,6 +79,18 @@ angular.module('uguru.desktop.controllers', [])
       }
     }
 
+    $scope.toggleDiscoverability = function() {
+      $scope.user.guru_discoverability = !$scope.user.guru_discoverability;
+      if ($scope.user.guru_discoverability) {
+        var success_message = 'Discoverability set to ON'
+      } else {
+        var success_message = 'Discoverability set to OFF'
+      }
+      LoadingService.showSuccess(success_message, 2000, function() {
+        $scope.user.updateAttr('discoverability', $scope.user, $scope.user.guru_discoverability, null, $scope);
+      });
+    }
+
     if ($scope.desktopMode) {
       initDesktopDefaults();
     }

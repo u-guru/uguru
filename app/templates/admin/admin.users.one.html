@@ -280,7 +280,13 @@
                             <td style='text-align:center;'>{{rating.guru_rating_description}}</td>
                             <td style='text-align:center;'>{{rating.student_rating}}</td>
                             <td style='text-align:center;'>{{rating.student_rating_description}}</td>
-                            <td style='text-align:center;'><a href='/admin/users/{{rating.student.id}}' target='_blank'><img height='20' width='20'  src='{{rating.student.profile_url}}'/> {{rating.student.name.split(' ')[0]}}</a></td>
+                            <td style='text-align:center;'>
+
+                              {% if rating.student and rating.student.name %}
+                                <a href='/admin/users/{{rating.student.id}}' target='_blank'><img height='20' width='20'  src='{{rating.student.profile_url}}'/> {{rating.student.name.split(' ')[0]}}</a>
+                              {% endif %}
+
+                            </td>
                           </tr>
                           {% endfor %}
                         {% else %}
@@ -385,7 +391,13 @@
                           {% if user.id == relationship.student.id %}
                           <h3 class="box-title">{{relationship.guru.name.split(' ')[0]}}</h3>
                           {% else %}
-                          <h3 class="box-title">{{relationship.student.name.split(' ')[0]}}</h3>
+                          <h3 class="box-title">
+                            {% if relationship.student and relationship.student.name %}
+                              {{relationship.student.name.split(' ')[0]}}
+                            {% else %}
+                              Student deleted account
+                            {% endif %}
+                          </h3>
                           {% endif %}
                           <div class="box-tools pull-right">
                             <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="3 New Messages">{{relationship.messages|length}} total msg</span>
@@ -401,7 +413,12 @@
                               {% if message.sender_id != user.id %}
                                 <div class="direct-chat-msg">
                                   <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">{{message.sender.name.split(' ')[0]}}</span>
+                                    <span class="direct-chat-name pull-left">
+                                      {% if message.sender.name %}
+                                        {{message.sender.name.split(' ')[0]}}
+                                      {% endif %}
+
+                                      </span>
                                     <span class="direct-chat-timestamp pull-right">{{message.time_created}}</span>
                                   </div><!-- /.direct-chat-info -->
                                   <img class="direct-chat-img" src="{{message.sender.profile_url}}" alt="message user image"><!-- /.direct-chat-img -->

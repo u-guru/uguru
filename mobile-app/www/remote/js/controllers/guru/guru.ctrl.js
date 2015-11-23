@@ -44,6 +44,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-profile-languages': '.desktop-guru-profile-view',
     'cta-box-profile-courses': '.desktop-guru-profile-view',
     'cta-box-profile-skills': '.desktop-guru-profile-view',
+    'cta-box-referrals': '.ion-side-menus-content',
   }
 
   var CTA_OPTIONS = {

@@ -318,6 +318,7 @@ UserSerializer = {
     'guru_deposit': fields.Boolean,
     'guru_mode': fields.Boolean,
     'gender': fields.String,
+    'guru_discoverability': fields.Boolean,
     'customer_id': fields.String,
     'recipient_id': fields.String,
     'auth_token': fields.String,

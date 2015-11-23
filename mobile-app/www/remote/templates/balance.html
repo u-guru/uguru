@@ -20,7 +20,7 @@
 							</div>
 							<span><span class="chip bg-charcoal uppercase" ng-if='transaction.transfer_status'>{{transaction.transfer_status}}</span></span>
 						</li>
-						<li>
+						<!-- <li>
 							<div>
 								<h3>CS10 Session with <b>{{user.name}}</b></h3>
 								<span>11/13/15, 2 hours 12 minutes</span>
@@ -33,7 +33,7 @@
 								<span>11/09/15</span>
 							</div>
 							<span><span class="chip bg-charcoal">Approved</span></span>
-						</li>
+						</li> -->
 					</ul>
 				</aside>
 				<div class="text-center">
@@ -45,11 +45,30 @@
 						<div class="balance-cards">
 							<h2>Choose Method to Cash Out</h2>
 							<ul class="ugrid-3">
-								<li ng-repeat='card in user.cards' ng-if='card.is_transfer_card || card.is_bank_card'>
-									<a>{{card.bank_last4}}</a>
-								</li>
-								<li>
-									<a></a>
+								<li ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_card'>
+									<a class='credit-card-wrapper'>
+
+										<div class="credit-card cf">
+										    <img src="http://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" width="80" id="visa">
+										    <img class='card-chip' src="http://alfoart.com/images/golden_credit_card/chip.png" id="chip">
+
+										    <div class="card-number">
+										      **** **** **** {{card.card_last4}}
+										    </div>
+										    <div class="card-name">
+										      {{user.name}}
+										    </div>
+										    <div class="valid">
+										      <div class="group">
+										        Valid<br>
+										        Thru
+										      </div>
+										      <div class="expiry">**/**
+										      </div>
+										    </div>
+										  </div>
+
+									</a>
 								</li>
 								<li>
 									<a>

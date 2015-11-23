@@ -63,10 +63,14 @@ angular.module('uguru.user', [])
             var indexRelationship = relationships[i];
 
             // parse student name
-            var nameSplitArr = indexRelationship.student.name.split(' ');
-            var firstNameStudent = nameSplitArr[0];
-            var lastInitialStudent = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
-            indexRelationship.student.name = firstNameStudent + ' ' + lastInitialStudent;
+            if (indexRelationship.student.name) {
+                var nameSplitArr = indexRelationship.student.name.split(' ');
+                var firstNameStudent = nameSplitArr[0];
+                var lastInitialStudent = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+                indexRelationship.student.name = firstNameStudent + ' ' + lastInitialStudent;
+            } else {
+                indexRelationship.student.name = '';
+            }
             indexRelationship.student.profile_url = formatProfileUrl(indexRelationship.student.profile_url)
 
             // parse guru name
@@ -565,6 +569,8 @@ angular.module('uguru.user', [])
         $scope.user.guru_relationships = user.guru_relationships;
         $scope.user.student_relationships = parseRelationships(user.student_relationships);
         $scope.user.referred_by = user.referred_by;
+        $scope.user.referral_code = user.referral_code;
+        $scope.user.guru_discoverability = user.guru_discoverability;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
         $scope.user.current_hourly = user.current_hourly;
@@ -852,6 +858,11 @@ angular.module('uguru.user', [])
                 return {
                     event_id: obj,
                     'impact_event': true
+                }
+              }
+              if (arg === 'discoverability') {
+                return {
+                    'discoverability': obj
                 }
               }
               if (arg === 'profile_url') {
