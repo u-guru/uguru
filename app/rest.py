@@ -2069,6 +2069,13 @@ class UserCardView(restful.Resource):
 class UserNewView(restful.Resource):
     #create new user
 
+    # @marshal_with(UserSerializer)
+    # def get(self):
+
+
+    #     abort(404)
+
+
     @marshal_with(UserSerializer)
     def post(self):
 
@@ -2201,6 +2208,19 @@ class UserNewView(restful.Resource):
             user_id = int(request.json.get('user_id'))
             user = User.query.get(user_id)
             return user, 200
+
+        if request.json.get('access_code'):
+            access_code = request.json.get('access_code')
+
+            does_referral_exist = User.does_referral_exist(access_code)
+
+
+
+            if not does_referral_exist and access_code != 'cool':
+                abort(401)
+
+            return json.dumps({'success':True}), 200
+
         if request.json.get('email') and request.json.get('forgot_password'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 

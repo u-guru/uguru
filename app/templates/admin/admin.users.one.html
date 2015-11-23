@@ -170,6 +170,10 @@
                           <td> {{user.guru_introduction}} </td>
                         </tr>
                         <tr>
+                          <td> Referral Code </td>
+                          <td> {{user.referral_code}} </td>
+                        </tr>
+                        <tr>
                           <td> Courses </td>
                           <td style='whitespace:nowrap;'> {% for course in user.guru_courses %}
                                   {% if course.short_name %}
