@@ -123,6 +123,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.user.guru_courses.splice(index, 1);
+      console.log("Remove ",course);      
       $scope.courses.unshift(course);
 
       updateDOM();
@@ -171,7 +172,7 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.addSelectedGuruCourse = function(course) {
-
+      console.log("Add course :",course)
 
       for(var i=0; i < $scope.courses.length; i++) {
         if($scope.courses[i].id === course.id) {
@@ -185,7 +186,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.user.guru_courses.push(course);
-
+      // console.log("User courses ", $scope.user.guru_courses)
       $scope.search_text.course = '';
       updateDOM();
 
@@ -197,6 +198,7 @@ angular.module('uguru.util.controllers')
       $localstorage.setObject('user', $scope.user);
       //only if user has signed in
       if ($scope.user.id) {
+        console.log("NOT UPDATE",$scope.user.id)
         //adds to database for user
         $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
       } //
