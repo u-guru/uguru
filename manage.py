@@ -1023,6 +1023,31 @@ def updateCustomerCardDetails(customer_id):
 def getCustomerCharges(customer_id):
     pass
 
+if arg =='link_transactions':
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    from app.database import db_session
+    for card in Card.query.all()[0:10]:
+        try:
+            if card.stripe_customer_id and card.user and card.user_id:
+                charges = stripe.Charge.all(customer=card.stripe_customer_id, limit=100)
+                for charge in charges.data:
+                    amount = charge.amount
+                    refunded = charge.amount_refunded
+                    _id = charge.id
+                    description = charge.description
+                    status = charge.status
+                    card_id = charge.source.id
+                    was_paid = charge.paid
+                    customer_id = charge.customer
+                    time_charged = datetime.fromtimestamp(int(charge.created))
+                    print "%s was charged $%s" % (card.user.name.split(' ')[0], amount/100.0)
+        except stripe.error.InvalidRequestError, e:
+            card.user_id = None
+            db_session.delete(card)
+            db_session.commit()
+
 if arg =='link_payments':
     import json, sys
     from pprint import pprint

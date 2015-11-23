@@ -2597,7 +2597,7 @@ class Card(Base):
             raise
         return card
 
-class Transaction(Base):
+class   Transaction(Base):
     __tablename__ = 'transaction'
 
     # Types
@@ -2634,6 +2634,9 @@ class Transaction(Base):
     transfer_id = Column(String)
     refund_id = Column(String)
     balance_transaction_id = Column(String)
+    refunded = Column(Boolean, default=False)
+    description = Column(String)
+
 
     balance_before = Column(Float)
     balance_after = Column(Float)
