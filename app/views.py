@@ -698,10 +698,9 @@ def admin_development_style():
 
 @app.route('/admin/logout/')
 def admin_logout():
-    if session.get('user'):
-        session.pop('user')
-        session.pop('admin')
-    return redirect(url_for('admin_login'))
+    if session.get('user'): session.pop('user')
+    if session.get('admin'): session.pop('admin')
+    return redirect('/admin/login/')
 
 
 # from static.data.ben import getAllUsNewsUniversities

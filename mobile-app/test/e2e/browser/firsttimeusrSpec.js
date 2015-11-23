@@ -162,7 +162,7 @@ describe('Firt time usr Test', function () {
 
         setting.click();
       });
-
+      
       it('Open signup',function()
       {
         $$('[href="#/desktop-login"]').get(1).click();

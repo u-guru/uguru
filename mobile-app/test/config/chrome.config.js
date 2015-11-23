@@ -22,6 +22,10 @@ exports.config = {
         ],
           suites:
         {
+            referral : [
+                  '../e2e/browser/referralsSpec.js',    
+
+                 ],
             ios  :[
                   '../e2e/browser/iphoneSpec.js',    
 
