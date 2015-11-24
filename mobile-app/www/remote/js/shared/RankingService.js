@@ -138,7 +138,7 @@ function RankingService() {
         if (user.transcript_file && user.transcript_file.url && user.transcript_file.url.length) {
             base += default_item_weight;
         }
-        if (user.guru_experiences.length) {
+        if (user.guru_experiences && user.guru_experiences.length) {
             base += default_item_weight;
         }
         if (user.school_email_confirmed) {

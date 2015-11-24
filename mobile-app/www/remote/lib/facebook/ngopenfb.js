@@ -1,11 +1,3 @@
-/**
- * Angular wrapper for the OpenFB library
- * Allows you to use OpenFB "the Angular way":
- *  - As an Angular service instead of a global object
- *  - Using promises instead of callbacks
- * @author Christophe Coenraets @ccoenraets
- * @version 0.5
- */
 angular.module('ngOpenFB', [])
 
     .factory('ngFB', function ($q, $window) {

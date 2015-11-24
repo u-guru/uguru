@@ -42,7 +42,7 @@
 		<div id="social-login">
 			<button ng-show='root.vars.loginMode' class="weight-600 bg-shamrock m15bottom" ng-click='loginUser()'>Login</button>
 			<button ng-show='!root.vars.loginMode' class="weight-600 bg-shamrock m15bottom" ng-click='completeSignup()'>Create an Account</button>
-			<button ng-hide='signupForm.full_name || signupForm.full_name.length > 0' class="weight-600 bg-fb m15bottom" ng-click='connectWithFacebook()'>Continue with Facebook</button>
+			<button ng-hide='signupForm.full_name || signupForm.full_name.length > 0' class="weight-600 bg-fb m15bottom" ng-click='ngFBlogin()'>Continue with Facebook</button>
 		</div>
 		<a id="tos" ng-click="openModal('privacy')" style="margin-top: -15px">Terms &amp; Conditions</a>
 	</div>

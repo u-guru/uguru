@@ -1446,7 +1446,8 @@
 		background: $gabrielle;
 		max-width: none;
 	}
-	.main {
+	.main,
+	.main.mobile-messages-container {
 		padding: 0;
 		#messenger {
 			@include flex;

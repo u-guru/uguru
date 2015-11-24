@@ -44,6 +44,13 @@ angular.module('uguru.guru.controllers')
     $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/messaging.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.messagesModal = modal;
+    });
+
 
     // $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
 
@@ -854,7 +861,7 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.beforeEnter', function() {
         $ionicSlideBoxDelegate.update();
     });
-    
+
     $scope.$on('$ionicView.enter', function() {
           $scope.refreshTipsAndRanking($scope.user);
           $timeout(function() {

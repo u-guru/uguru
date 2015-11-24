@@ -155,8 +155,8 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       University.clearSelected();
       $timeout(function() {
         University.getMajors(university.id);
-        University.getPopularCourses(university.id, $scope);
-      }, 1000);
+        University.getPopularCourses(university.id);
+      }, 100);
 
 
       University.selected = university;

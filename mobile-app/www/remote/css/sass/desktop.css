@@ -1253,9 +1253,11 @@
     padding: 7px 10px;
     background: #958B8E;
     max-width: none; }
-  #desktop-messaging .main {
+  #desktop-messaging .main,
+  #desktop-messaging .main.mobile-messages-container {
     padding: 0; }
-    #desktop-messaging .main #messenger {
+    #desktop-messaging .main #messenger,
+    #desktop-messaging .main.mobile-messages-container #messenger {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -1266,31 +1268,41 @@
       width: 100%;
       height: 100%;
       background: #F1F1F1; }
-      #desktop-messaging .main #messenger #messenger-sidebar {
+      #desktop-messaging .main #messenger #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar {
         position: relative;
         width: 30%;
         height: 100%;
         background: rgba(117, 117, 117, 0.5); }
-        #desktop-messaging .main #messenger #messenger-sidebar h1 {
+        #desktop-messaging .main #messenger #messenger-sidebar h1,
+        #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar h1 {
           padding: 15px;
           font-size: 32px;
           font-weight: 900; }
-        #desktop-messaging .main #messenger #messenger-sidebar ul li {
+        #desktop-messaging .main #messenger #messenger-sidebar ul li,
+        #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li {
           font-weight: 400;
           text-transform: uppercase; }
-          #desktop-messaging .main #messenger #messenger-sidebar ul li a {
+          #desktop-messaging .main #messenger #messenger-sidebar ul li a,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a {
             display: block;
             padding: 15px; }
-            #desktop-messaging .main #messenger #messenger-sidebar ul li a.active, #desktop-messaging .main #messenger #messenger-sidebar ul li a:active {
+            #desktop-messaging .main #messenger #messenger-sidebar ul li a.active, #desktop-messaging .main #messenger #messenger-sidebar ul li a:active,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a.active,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:active {
               background: rgba(241, 241, 241, 0.2); }
-            #desktop-messaging .main #messenger #messenger-sidebar ul li a:hover, #desktop-messaging .main #messenger #messenger-sidebar ul li a:focus {
+            #desktop-messaging .main #messenger #messenger-sidebar ul li a:hover, #desktop-messaging .main #messenger #messenger-sidebar ul li a:focus,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:hover,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:focus {
               background: rgba(241, 241, 241, 0.4); }
-        #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search {
+        #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search,
+        #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search {
           position: absolute;
           bottom: 15px;
           left: 15px;
           width: calc(100% - 30px); }
-          #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search label {
+          #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search label,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search label {
             position: absolute;
             top: 50%;
             -webkit-transform: translateY(-50%);
@@ -1299,7 +1311,8 @@
             -o-transform: translateY(-50%);
             transform: translateY(-50%);
             left: 15px; }
-            #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search label svg {
+            #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search label svg,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search label svg {
               fill: none;
               stroke: rgba(117, 117, 117, 0.5);
               stroke-width: 8px;
@@ -1308,7 +1321,8 @@
               margin-top: 2px;
               width: 24px;
               height: 24px; }
-          #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input {
+          #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input {
             border-radius: 1000px;
             display: block;
             width: 100%;
@@ -1318,22 +1332,40 @@
             font-size: 16px;
             background: #F1F1F1;
             border: 0; }
-            #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus {
+            #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus {
               background: white; }
-              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-webkit-input-placeholder {
+              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-webkit-input-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active::-webkit-input-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-webkit-input-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-webkit-input-placeholder {
                 color: #757575; }
-              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-moz-placeholder {
+              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-moz-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active:-moz-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-moz-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-moz-placeholder {
                 color: #757575; }
-              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-moz-placeholder {
+              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-moz-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active::-moz-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-moz-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-moz-placeholder {
                 color: #757575; }
-              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-ms-input-placeholder {
+              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-ms-input-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active:-ms-input-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-ms-input-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-ms-input-placeholder {
                 color: #757575; }
-          #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search label:hover + input {
+          #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search label:hover + input,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search label:hover + input {
             background: white; }
-      #desktop-messaging .main #messenger #messenger-content {
+      #desktop-messaging .main #messenger #messenger-content,
+      #desktop-messaging .main.mobile-messages-container #messenger #messenger-content {
         width: 70%;
         height: 100%; }
-        #desktop-messaging .main #messenger #messenger-content .messenger-header {
+        #desktop-messaging .main #messenger #messenger-content .messenger-header,
+        #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header {
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -1345,12 +1377,14 @@
           align-items: center;
           background: #757575;
           width: 100%; }
-          #desktop-messaging .main #messenger #messenger-content .messenger-header h1 {
+          #desktop-messaging .main #messenger #messenger-content .messenger-header h1,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header h1 {
             padding: 15px;
             font-size: 32px;
             font-weight: 700;
             width: calc(100% - 336px); }
-          #desktop-messaging .main #messenger #messenger-content .messenger-header a {
+          #desktop-messaging .main #messenger #messenger-content .messenger-header a,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header a {
             -ms-box-orient: horizontal;
             display: -webkit-box;
             display: -moz-box;
@@ -1367,7 +1401,8 @@
             width: 68px;
             height: 68px;
             background: #757575; }
-            #desktop-messaging .main #messenger #messenger-content .messenger-header a svg {
+            #desktop-messaging .main #messenger #messenger-content .messenger-header a svg,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header a svg {
               fill: none;
               stroke: white;
               stroke-width: 7px;
@@ -1375,9 +1410,13 @@
               stroke-linejoin: round;
               width: 36px;
               height: 36px; }
-          #desktop-messaging .main #messenger #messenger-content .messenger-header a:active, #desktop-messaging .main #messenger #messenger-content .messenger-header a:focus, #desktop-messaging .main #messenger #messenger-content .messenger-header a:hover {
+          #desktop-messaging .main #messenger #messenger-content .messenger-header a:active, #desktop-messaging .main #messenger #messenger-content .messenger-header a:focus, #desktop-messaging .main #messenger #messenger-content .messenger-header a:hover,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header a:active,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header a:focus,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header a:hover {
             background: #8f8f8f; }
-          #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search {
+          #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search {
             -ms-box-orient: horizontal;
             display: -webkit-box;
             display: -moz-box;
@@ -1387,7 +1426,8 @@
             display: flex;
             position: relative;
             overflow: hidden; }
-            #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input {
+            #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input {
               -webkit-transition: all 0.15s ease-in-out;
               -o-transition: all 0.15s ease-in-out;
               -ms-transition: all 0.15s ease-in-out;
@@ -1407,7 +1447,8 @@
               padding-left: 15px;
               padding-right: 15px;
               font-size: 20px; }
-              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input.active {
+              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input.active,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input.active {
                 -webkit-transition: all 0.15s ease-in-out;
                 -o-transition: all 0.15s ease-in-out;
                 -ms-transition: all 0.15s ease-in-out;
@@ -1420,31 +1461,52 @@
                 transform: translateY(0);
                 filter: alpha(opacity=100);
                 opacity: 1; }
-              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus {
+              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:active,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:hover,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:focus {
                 background: white; }
-                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus::-webkit-input-placeholder {
+                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus::-webkit-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:active::-webkit-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:hover::-webkit-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:focus::-webkit-input-placeholder {
                   color: #757575; }
-                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active:-moz-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover:-moz-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus:-moz-placeholder {
+                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active:-moz-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover:-moz-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus:-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:active:-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:hover:-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:focus:-moz-placeholder {
                   color: #757575; }
-                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active::-moz-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover::-moz-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus::-moz-placeholder {
+                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active::-moz-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover::-moz-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus::-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:active::-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:hover::-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:focus::-moz-placeholder {
                   color: #757575; }
-                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus:-ms-input-placeholder {
+                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:active:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:hover:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-search input:focus:-ms-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:active:-ms-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:hover:-ms-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-search input:focus:-ms-input-placeholder {
                   color: #757575; }
-          #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav {
+          #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav {
             position: relative;
             overflow: hidden; }
-            #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav.active {
+            #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav.active,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav.active {
               overflow: visible; }
-            #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a {
+            #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav a {
               position: relative;
               z-index: 10; }
-              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg path {
+              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg path,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav a svg path {
                 -webkit-transition: transform 0.15s ease-in-out;
                 -o-transition: transform 0.15s ease-in-out;
                 -ms-transition: transform 0.15s ease-in-out;
                 -moz-transition: transform 0.15s ease-in-out;
                 transition: transform 0.15s ease-in-out; }
-                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg path:first-child, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg path:last-child {
+                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg path:first-child, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg path:last-child,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav a svg path:first-child,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav a svg path:last-child {
                   -webkit-transform: translateY(0);
                   -moz-transform: translateY(0);
                   -ms-transform: translateY(0);
@@ -1452,13 +1514,15 @@
                   transform: translateY(0);
                   filter: alpha(opacity=100);
                   opacity: 1; }
-              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg.active path {
+              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg.active path,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav a svg.active path {
                 -webkit-transition: transform 0.15s ease-in-out;
                 -o-transition: transform 0.15s ease-in-out;
                 -ms-transition: transform 0.15s ease-in-out;
                 -moz-transition: transform 0.15s ease-in-out;
                 transition: transform 0.15s ease-in-out; }
-                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg.active path:first-child {
+                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg.active path:first-child,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav a svg.active path:first-child {
                   -webkit-transform: translateY(27px);
                   -moz-transform: translateY(27px);
                   -ms-transform: translateY(27px);
@@ -1466,7 +1530,8 @@
                   transform: translateY(27px);
                   filter: alpha(opacity=0);
                   opacity: 0; }
-                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg.active path:last-child {
+                #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav a svg.active path:last-child,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav a svg.active path:last-child {
                   -webkit-transform: translateY(-27px);
                   -moz-transform: translateY(-27px);
                   -ms-transform: translateY(-27px);
@@ -1474,7 +1539,8 @@
                   transform: translateY(-27px);
                   filter: alpha(opacity=0);
                   opacity: 0; }
-            #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div {
+            #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav div {
               -webkit-transition: all 0.15s ease-in-out;
               -o-transition: all 0.15s ease-in-out;
               -ms-transition: all 0.15s ease-in-out;
@@ -1491,11 +1557,16 @@
               z-index: 9;
               top: 68px;
               right: 0; }
-              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div ul li a {
+              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div ul li a,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav div ul li a {
                 background: #a8a8a8; }
-              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div ul li a:active, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div ul li a:focus, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div ul li a:hover {
+              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div ul li a:active, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div ul li a:focus, #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div ul li a:hover,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav div ul li a:active,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav div ul li a:focus,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav div ul li a:hover {
                 background: #5c5c5c; }
-              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div.active {
+              #desktop-messaging .main #messenger #messenger-content .messenger-header #message-nav div.active,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content .messenger-header #message-nav div.active {
                 -webkit-transition: all 0.15s ease-in-out;
                 -o-transition: all 0.15s ease-in-out;
                 -ms-transition: all 0.15s ease-in-out;
@@ -1508,16 +1579,19 @@
                 -ms-transform: translateY(0);
                 -o-transform: translateY(0);
                 transform: translateY(0); }
-        #desktop-messaging .main #messenger #messenger-content #message-container {
+        #desktop-messaging .main #messenger #messenger-content #message-container,
+        #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container {
           height: calc(100% - 68px); }
-          #desktop-messaging .main #messenger #messenger-content #message-container #messages {
+          #desktop-messaging .main #messenger #messenger-content #message-container #messages,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages {
             padding: 15px;
             height: calc(100% - 64px);
             overflow: auto;
             color: #757575;
             font-size: 18px;
             font-weight: 400; }
-            #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single {
+            #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single {
               -ms-box-orient: horizontal;
               display: -webkit-box;
               display: -moz-box;
@@ -1526,16 +1600,21 @@
               display: -webkit-flex;
               display: flex;
               margin-bottom: 45px; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon img, #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg {
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon img, #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-icon img,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg {
                 border-radius: 1000px;
                 width: 50px;
                 height: 50px; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg {
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg {
                 background: #69B3A5;
                 padding: 10px; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg path {
+                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg path,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg path {
                   fill: white; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-content {
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-content,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-content {
                 -ms-box-orient: horizontal;
                 display: -webkit-box;
                 display: -moz-box;
@@ -1548,45 +1627,58 @@
                 flex-flow: row wrap;
                 width: calc(100% - 50px);
                 position: relative; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-info {
+                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-info,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-info {
                   position: absolute;
                   top: -24px;
                   width: calc(100% - 65px);
                   font-size: 14px;
                   color: #686868; }
-                  #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-info span:first-child {
+                  #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-info span:first-child,
+                  #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-info span:first-child {
                     font-weight: 700; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-message {
+                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-message,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-content .message-single-message {
                   background: white;
                   padding: 10px 15px;
                   margin-bottom: 15px;
                   border-radius: 2px;
                   line-height: 1.3; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.left .message-single-icon {
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.left .message-single-icon,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.left .message-single-icon {
                 margin-right: 15px; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.left .message-single-content {
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.left .message-single-content,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.left .message-single-content {
                 padding-right: 65px; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.center {
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.center,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.center {
                 -webkit-align-items: center;
                 align-items: center; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-icon {
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-icon,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.right .message-single-icon {
                 margin-left: 15px; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-content {
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-content,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.right .message-single-content {
                 padding-left: 65px; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-info {
+                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-info,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-info {
                   text-align: right; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-message {
+                #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-message,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-message {
                   background: rgba(85, 164, 183, 0.1); }
-          #desktop-messaging .main #messenger #messenger-content #message-container #message-box {
+          #desktop-messaging .main #messenger #messenger-content #message-container #message-box,
+          #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box {
             position: relative; }
-            #desktop-messaging .main #messenger #messenger-content #message-container #message-box a {
+            #desktop-messaging .main #messenger #messenger-content #message-container #message-box a,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box a {
               position: absolute;
               display: block;
               top: 0;
               left: 0;
               width: 64px;
               height: 64px; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #message-box a svg {
+              #desktop-messaging .main #messenger #messenger-content #message-container #message-box a svg,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box a svg {
                 fill: none;
                 stroke: rgba(117, 117, 117, 0.4);
                 stroke-width: 4px;
@@ -1595,7 +1687,8 @@
                 width: 100%;
                 height: 100%;
                 padding: 8px; }
-            #desktop-messaging .main #messenger #messenger-content #message-container #message-box input {
+            #desktop-messaging .main #messenger #messenger-content #message-container #message-box input,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input {
               display: block;
               background: #fefefe;
               border: 0;
@@ -1603,51 +1696,84 @@
               height: 64px;
               padding: 15px 15px 15px 64px;
               font-size: 18px; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus {
+              #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:active,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:hover,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:focus {
                 background: white; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus::-webkit-input-placeholder {
+                #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus::-webkit-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:active::-webkit-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:hover::-webkit-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:focus::-webkit-input-placeholder {
                   color: #757575; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active:-moz-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover:-moz-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus:-moz-placeholder {
+                #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active:-moz-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover:-moz-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus:-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:active:-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:hover:-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:focus:-moz-placeholder {
                   color: #757575; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active::-moz-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover::-moz-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus::-moz-placeholder {
+                #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active::-moz-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover::-moz-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus::-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:active::-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:hover::-moz-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:focus::-moz-placeholder {
                   color: #757575; }
-                #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus:-ms-input-placeholder {
+                #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:active:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:hover:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-content #message-container #message-box input:focus:-ms-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:active:-ms-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:hover:-ms-input-placeholder,
+                #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:focus:-ms-input-placeholder {
                   color: #757575; }
-      #desktop-messaging .main #messenger.bg-cerise #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-cerise #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-sidebar {
         background: rgba(219, 25, 136, 0.5); }
-      #desktop-messaging .main #messenger.bg-cerise #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-cerise #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-content .messenger-header {
         background: #DB1988; }
-      #desktop-messaging .main #messenger.bg-orange #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-orange #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-orange #messenger-sidebar {
         background: rgba(229, 117, 60, 0.5); }
-      #desktop-messaging .main #messenger.bg-orange #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-orange #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-orange #messenger-content .messenger-header {
         background: #E5753C; }
-      #desktop-messaging .main #messenger.bg-gold #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-gold #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-gold #messenger-sidebar {
         background: rgba(249, 213, 123, 0.5); }
-      #desktop-messaging .main #messenger.bg-gold #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-gold #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-gold #messenger-content .messenger-header {
         background: #F9D57B; }
-      #desktop-messaging .main #messenger.bg-moola #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-moola #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-moola #messenger-sidebar {
         background: rgba(129, 181, 102, 0.5); }
-      #desktop-messaging .main #messenger.bg-moola #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-moola #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-moola #messenger-content .messenger-header {
         background: #81B566; }
-      #desktop-messaging .main #messenger.bg-shamrock #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-shamrock #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-shamrock #messenger-sidebar {
         background: rgba(105, 179, 165, 0.5); }
-      #desktop-messaging .main #messenger.bg-shamrock #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-shamrock #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-shamrock #messenger-content .messenger-header {
         background: #69B3A5; }
-      #desktop-messaging .main #messenger.bg-azure #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-azure #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-azure #messenger-sidebar {
         background: rgba(85, 164, 183, 0.5); }
-      #desktop-messaging .main #messenger.bg-azure #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-azure #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-azure #messenger-content .messenger-header {
         background: #55A4B7; }
-      #desktop-messaging .main #messenger.bg-lake #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-lake #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-lake #messenger-sidebar {
         background: rgba(80, 165, 221, 0.5); }
-      #desktop-messaging .main #messenger.bg-lake #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-lake #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-lake #messenger-content .messenger-header {
         background: #50A5DD; }
-      #desktop-messaging .main #messenger.bg-eggplant #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-eggplant #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-eggplant #messenger-sidebar {
         background: rgba(154, 91, 197, 0.5); }
-      #desktop-messaging .main #messenger.bg-eggplant #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-eggplant #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-eggplant #messenger-content .messenger-header {
         background: #9A5BC5; }
-      #desktop-messaging .main #messenger.bg-campus #messenger-sidebar {
+      #desktop-messaging .main #messenger.bg-campus #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-campus #messenger-sidebar {
         background: rgba(138, 158, 163, 0.5); }
-      #desktop-messaging .main #messenger.bg-campus #messenger-content .messenger-header {
+      #desktop-messaging .main #messenger.bg-campus #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-campus #messenger-content .messenger-header {
         background: #8A9EA3; }
 
 /* ---------- REQUESTS */
