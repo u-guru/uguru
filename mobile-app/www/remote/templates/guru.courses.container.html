@@ -110,7 +110,15 @@
 				<label >{{course.short_name}}</label>
 			</li>
 			<li ng-repeat='course in courses| filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
-				<label >{{course.short_name}}</label>
+				<input type="checkbox">
+				<label ng-if='course.short_name && !course.name'>{{course.short_name}}</label>
+                <label ng-if='course.name'>{{course.name}}</label>
+				<!-- <label ng-if='!course.short_name && course.name'>{{course.name}}</label> -->
+				<!-- <label ng-if='course.short_name && course.name'>{{course.short_name}}</label> -->
+				<!-- <label ng-if='course.title'>
+					<span class="course-name">{{course.short_name}}</span>
+					<span class="course-title">{{course.title}}</span>
+				</label> -->
 			</li>
 		</ul>
 	</div>

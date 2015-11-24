@@ -30,6 +30,7 @@ angular.module('uguru.util.controllers')
   'LoadingService',
   'AnimationService',
   'DeviceService',
+  'ngFB',
   // 'ngFB',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $cordovaProgress, $cordovaFacebook, User,
@@ -37,18 +38,31 @@ angular.module('uguru.util.controllers')
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, $ionicPlatform, InAppBrowser, Utilities,
   MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
-  AnimationService, DeviceService) {
+  AnimationService, DeviceService, ngFB) {
 
     function goGuruMode()
     {
       if ($scope.desktopMode) {
          $state.go('^.guru-home');
-       } 
+       }
       else {
          $state.go('^.guru');
        }
     }
-// Implement a section for modals here
+
+    ngFB.init({appId: '1416375518604557'});
+
+    $scope.ngFBlogin = function() {
+      var callback = function(success) {
+        if (success.status === 'connected' && success.authResponse && success.authResponse.accessToken)
+          var fbToken = success.authResponse.accessToken
+          LoadingService.showSuccess('Facebook Login Successful..', 2000);
+          facebookAuthSuccessCallback(fbToken);
+      }
+        openFB.login(callback, {scope: 'email,public_profile,user_friends'});
+    }
+
+
 
     $scope.openModal = function(modalName) {
      if (!$scope.desktopMode) {
@@ -73,7 +87,7 @@ angular.module('uguru.util.controllers')
           if ($scope.desktopMode) {
             AnimationService.flip('^.university');
           }
-          else{ 
+          else{
             $scope.signupModal.hide();
            }
         })
@@ -1052,11 +1066,17 @@ angular.module('uguru.util.controllers')
         $scope.error = error;
         console.error('FB CONNECT FAILED...');
         console.log('Error from logging from facebook:' + JSON.stringify(error));
-        $scope.success.show(0, 1500, 'Something weird happened.. Please contact support!');
-        $cordovaFacebook.logout();
-        if ($cordovaFacebook) {
-          $cordovaFacebook.logout();
-        }
+        $scope.success.show(0, 1500, 'Something unexpected happened.. Please contact support!');
+        ngFB.logout().then(
+          function() {
+            console.log('Facebook logout successful');
+          },
+          function(err) {
+            console.log("Facebook error from logging out -- couldn't successfully logout");
+            if (err) {
+              console.log('Here is the returned error stringified', JSON.stringify(err));
+            }
+          });
 
         if ($scope.signupModal && $scope.signupModal.isShown()) {
             $scope.signupModal.hide();
@@ -1073,113 +1093,12 @@ angular.module('uguru.util.controllers')
     $scope.connectWithFacebook = function () {
 
 
-        LoadingService.showAmbig(null, 2000);
-        $timeout(function() {
-          //need to add this to loading service soon
 
-        // $scope.openModal('fb')
-        LoadingService.show();
-        console.log("FB url",$scope.FBurl);
-        $scope.fbModal.show();
+          LoadingService.showAmbig(null, 1000);
 
-
-        //     // Fire fbModal
-        //   $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
-        //     scope: $scope,
-        //     animation: 'slide-in-up'
-        //   }).then(function(modal) {
-        //     $scope.fb = modal;
-        //   });
-        //   $scope.modal.show();
-          //if user is not logged in 10 seconds from now ...
-          if (!$scope.user || !$scope.user.id) {
-            $scope.loader.showMsg('Something went wrong... please contact support@uguru.me', 0, 2500)
-          }
-
-        }, 7500)
-
-        //if android still doesn't work (didnt have time to check --) lets go ahead and take out the "androidDevice() case below --> have it go to browser"
-        if (DeviceService.isIOSDevice() || DeviceService.isAndroidDevice()) {
-          $scope.fbAuthNative();
-
-
-          // LOL THIS IS SO BAD -- MY BAD (Leaving it here just in case there was a reason why... can't think of one now)
-
-          // $timeout(function() {
-          //   if (!$scope.facebookResponseReceived) {
-          //     alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
-          //   }
-          // }, 5000);
-          $scope.fbAuthNative();
-        } else {
-          $scope.fbAuthBrowser();
-          LoadingService.hide();
-
-        }
-
-
-       // ngFB.revokePermissions()
-        // ngFB.login({scope: 'email,public_profile,user_friends'}).then(FBSuccessCallback,FBFailCallback);
-
-         // function errorHandler(error) {
-         //     alert(error.message);
-         // }
-         // function FBSuccessCallback(response)
-         // {
-
-         //      alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
-
-         //      // $scope.facebookResponseReceived = true;
-         //      // $scope.loginInfo = success;
-         //      LoadingService.hide();
-         //      // LoadingService.showSuccess('Login Successful!', 10000);
-         //      // $scope.fbLoginSuccessAlreadyShown = true;
-         //      // $timeout(function() {
-         //      //   LoadingService.updateSuccessText('Syncing profile info...', 1000);
-         //      // }, 2500);
-
-         //      // if (!$scope.desktopMode && $scope.signupModal && $scope.signupModal.isShown()) {
-         //      //   $scope.signupModal.hide();
-         //      // }
-         //  /*############################
-         //  SAMIR THIS IS THE PART PRINT THE FB INFO
-         //  #############################*/
-         //    ngFB.api({path: '/me'}).then(
-         //        function(user) {
-         //            console.log(JSON.stringify(user));
-         //            // $scope.user = user;
-         //        }, errorHandler);
-         //    // $scope.facebookApiGetDetails();
-         //    console.log('Getting Facebook information...huh');
-         //    // $scope.postFbGraphApiSuccess()
-         // }
-         // function FBFailCallback(error)
-         // {
-         //  alert(error.message);
-         // }
-         // function errorHandler(error) {
-         //     alert(error.message);
-         // }
-        // Original
-        if ($scope.platform.web || $scope.platform.windows || $scope.isWindowsPlatform()) {
-          // $scope.fbAuthNative();
-
-          //after five seconds and no fb response --> Say something went wrong
           $timeout(function() {
-
-
-            if (!$scope.facebookResponseReceived) {
-              alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
-            }
-          }, 5000);
-          console.log("CHECK2")
-          $scope.fbAuthBrowser();
-        } else {
-          console.log("CHECK")
-          $scope.fbAuthNative();
-        }
-
-
+            $scope.ngFBlogin();
+          }, 500)
 
 
     };
@@ -1239,10 +1158,15 @@ angular.module('uguru.util.controllers')
         $scope.postFbGraphApiSuccess(success, callback)
         console.log('Facebook is success');
       }
-      $cordovaFacebook.api("/me", null).then(successCallback, function (error) {
-        $scope.error = error;
-        console.log(error);
-      });
+
+      ngFB.api({path: '/me'}).then(
+        function(user) {
+            console.log(JSON.stringify(user));
+            successCallback(user)
+        },
+        function(){
+          facebookAuthFailureCallback();
+        });
     };
 
 

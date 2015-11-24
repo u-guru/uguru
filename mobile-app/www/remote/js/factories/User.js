@@ -729,6 +729,9 @@ angular.module('uguru.user', [])
                 .one('user')
                 .customPUT(JSON.stringify(user));
         },
+        checkAccess: function(payload) {
+            return Restangular.one('user').customPUT(JSON.stringify(payload));
+        },
         initUser: function() {
             var newUser = initUser();
             return newUser;

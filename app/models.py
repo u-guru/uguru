@@ -465,6 +465,13 @@ class User(Base):
         except:
             return 0.0
 
+    @staticmethod
+    def does_referral_exist(code):
+        referral_exists = User.query.filter_by(referral_code = code).all()
+        if referral_exists:
+            return True
+        return False
+
 
     @staticmethod
     def generate_referral_code(name):

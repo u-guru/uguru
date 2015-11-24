@@ -3,10 +3,11 @@ angular
 	.factory('AccessService', [
 		'$localstorage',
 		'University',
+		'User',
 		AccessService
 		]);
 
-function AccessService($localstorage, University) {
+function AccessService($localstorage, University, User) {
 
 	var genericAccessCode = 'cool';
 	var universityAccessCodes = University.getTargettedAccessCodes();
@@ -20,22 +21,48 @@ function AccessService($localstorage, University) {
 		return universityAccessCodes.indexOf(code) > -1;
 	}
 
-	function validate(code) {
+	function validate(code, success_func, fail_func) {
 		if(code !== undefined) {
 			console.log("code entered: " + code);
-			if(code===genericAccessCode || isMascotCode(code)) {
-				if (!LOCAL) {
-					$localstorage.set("access", true);
-					$localstorage.set("accessAdmin", true);
-				} else {
 
+
+			payload = {
+				access_code: code
+			}
+
+			User.checkAccess(payload).then(function(data) {
+				// var data = data.plain()
+				if (success_func) {
+					success_func();
 				}
-				return true;
-			} else return false;
+
+			}, function(err) {
+				console.log('SERVER ERR', err);
+				if (err.status === 401) {
+					console.log('invalid access code');
+					fail_func();
+				} else {
+					fail_func();
+				}
+			})
+
+			// if(code===genericAccessCode || isMascotCode(code)) {
+			// 	if (!LOCAL) {
+			// 		$localstorage.set("access", true);
+			// 		$localstorage.set("accessAdmin", true);
+			// 	} else {
+
+			// 	}
+			// 	return true;
+			// } else return false;
 
 		} else {
 			var storedAccess = JSON.parse($localstorage.get("access", "false"));
-			console.log("storedAccess: " + storedAccess);
+
+			if (fail_func) {
+				fail_func();
+			}
+
 			return storedAccess;
 		}
 

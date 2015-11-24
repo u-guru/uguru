@@ -29,7 +29,7 @@ var stats = new Stats();
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -335,9 +335,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/guru-courses.html',
         controller: 'CoursesController'
   }).
-  state('root.messages', {
+  state('root.guru-messages-mobile', {
         url: '/messages/',
-        templateUrl: BASE + 'templates/student.messages.html',
+        templateUrl: BASE + 'templates/messaging.mobile.html',
         controller: 'GuruMessagesController'
   }).
   state('root.messaging', {

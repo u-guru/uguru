@@ -91,7 +91,7 @@
               }
             else if ( !(userAgent.toLowerCase().indexOf('safari') > -1) )
               {
-
+                console.log('woohoo ios');
                 injectJs('ios.cordova_plugins.js');
                 injectJs('ios.cordova.js');
                 injectCss('ios.css');
@@ -168,7 +168,9 @@
     <script src="remote/lib/angular-payments/angular-payments.js"></script>
     <script src="remote/lib/progressbar/progressbar.min.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
-
+    <script src="remote/lib/ngMoment/moment.min.js"></script>
+    <script src="remote/lib/ngMoment/ngMoment.min.js"></script>
+    <script src="remote/lib/ngElastic/elastic.js"></script>
     <script src="remote/lib/velocity/velocity.min.js"></script>
     <script src="remote/lib/velocity/velocity.ui.min.js"></script>
     <script src="remote/lib/velocity/angular-velocity.min.js"></script>
@@ -226,7 +228,8 @@
 
 
 
-
+    <script type="text/javascript" src="remote/lib/facebook/openfb.js"></script>
+    <script type="text/javascript" src="remote/lib/facebook/ngopenfb.js"></script>
     <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
     <script type="text/javascript" src="remote/js/directives/bufferedScroll.js"></script>

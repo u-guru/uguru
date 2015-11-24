@@ -67,47 +67,58 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       }, 500);
     }
 
-    if(AccessService.validate(code)){
-      LoadingService.showAmbig();
-      $scope.access.codeInput = '';
+
+    LoadingService.showAmbig('Verifying', 10000);
+    $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
-      $scope.redeemRecentlyPressed = false;
-      if (DeviceService.doesCordovaExist()) {
+    $scope.redeemRecentlyPressed = false;
+    //clsoe the keyboard
+    if (DeviceService.doesCordovaExist()) {
         cordova.plugins.Keyboard.close();
-      }
+    }
 
 
+    var successCallback = function() {
       $timeout(function() {
-        LoadingService.hide();
-        $timeout(function() {
-          LoadingService.showSuccess('Access Granted', 2000);
-        }, 250);
-        $timeout(function() {
-          $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-        }, 1500);
+          LoadingService.hide();
+          $timeout(function() {
+              LoadingService.showSuccess('Access Granted', 2000);
+            }, 250);
+          $timeout(function() {
+            $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+          }, 1500);
       }, 500);
+    }
 
-    } else {
-      LoadingService.hide();
-      var errorTextElem = document.getElementById('input-error-text');
-      errorTextElem.style.opacity = 1;
-      errorTextElem.innerHTML = 'Incorrect access code!';
-      $scope.access.codeInput = '';
+    var failureCallback = function() {
 
-      //fadeout after 500 seconds
-      var postShakeCallback = function() {
-            setTimeout(function() {
-              LoadingService.hide();
-              AnimationService.fadeOutElem(errorTextElem, 1000);
-            }, 1500);
+        LoadingService.hide();
+          // var errorTextElem = document.getElementById('input-error-text');
+          // errorTextElem.style.opacity = 1;
+          // errorTextElem.innerHTML = 'Incorrect access code!';
+          // $scope.access.codeInput = '';
+
+          //fadeout after 500 seconds
+          // var postShakeCallback = function() {
+          //       setTimeout(function() {
+          //         LoadingService.hide();
+          //         AnimationService.fadeOutElem(errorTextElem, 1000);
+          //       }, 1500);
+        $timeout(function() {
+          $scope.loader.showMsg('Invalid access code, please try again.', 0, 2500);
+        })
       };
 
 
-      AnimationService.shakeElem(errorTextElem, 500, postShakeCallback);
+        // AnimationService.shakeElem(errorTextElem, 500, postShakeCallback);
 
-    }
+
+
+    AccessService.validate(code, successCallback, failureCallback);
+
 
   };
+
  ////
   $scope.accessInputOnFocus = function() {
     $scope.inputFocused = true;

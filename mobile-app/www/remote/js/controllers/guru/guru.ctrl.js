@@ -23,11 +23,12 @@ angular.module('uguru.guru.controllers', [])
   '$ionicSlideBoxDelegate',
   'DeviceService',
   'LoadingService',
+  '$ionicModal',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet, RankingService, TipService, ModalService, PopupService,
-  $ionicSlideBoxDelegate, DeviceService, LoadingService) {
+  $ionicSlideBoxDelegate, DeviceService, LoadingService, $ionicModal) {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
@@ -45,6 +46,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-profile-courses': '.desktop-guru-profile-view',
     'cta-box-profile-skills': '.desktop-guru-profile-view',
     'cta-box-referrals': '.ion-side-menus-content',
+    'cta-box-signup': '.guru-home-container',
   }
 
   var CTA_OPTIONS = {
@@ -56,6 +58,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.root.vars.guru_rank_initialized = false;
   $scope.showActive = true;
   $ionicSideMenuDelegate.canDragContent(false);
+
+  if ($state.current.name === 'root.guru' && $scope.desktopMode) {
+    $state.go('^.guru-home')
+  }
+
+  if ($state.current.name === 'root.guru-home' && !$scope.desktopMode) {
+    $state.go('^.guru')
+  }
 
   var actualRankingValue = $scope.user.guru_ranking;
   $scope.user.guru_ranking = 0;
@@ -127,9 +137,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             var modal_elem = document.querySelector('#' + modal_elem_id);
 
                if (!$scope.user || !$scope.user.id) {
-                  $scope.loader.showMsg('Please create an account first!', 0, 2000);
-                  $scope.toggleDesktopSettings();
-                  return;
+                  $scope.loader.showMsg('Please create an account first!', 0, 500);
+                  box_elem = document.querySelector('#cta-box-signup');
+                  modal_elem = document.querySelector('#cta-modal-signup');
                 }
 
             var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
@@ -226,6 +236,39 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return line;
         }
 
+        $scope.initMobileModals = function() {
+          console.log('initializing modals..');
+          $ionicModal.fromTemplateUrl(BASE + 'templates/referrals.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.referralsModal = modal;
+          });
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/balance.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.balanceModal = modal;
+          });
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/messaging.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.messagesModal = modal;
+          });
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.signupModal = modal;
+          });
+
+
+        }
+
         $scope.initializeHorizontalProgressBars = function() {
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
@@ -248,7 +291,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
         var haveProgressBarsBeenInitialized = function() {
-          return document.querySelectorAll('.progressbar-text').length;
+          return document.querySelectorAll('.progressbar-text').length > 1;
         }
 
 
@@ -303,19 +346,44 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $state.go(state_name);
         }
 
-        $scope.$on('$ionicView.enter', function() {
-          initCTA();
-
-          $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+        $scope.showSignupDialog = function() {
           $timeout(function() {
-            $scope.user.guru_ranking = actualRankingValue;
-          }, 2500)
-          animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+            LoadingService.showAmbig('Creating Account', 1000);
+          }, 500)
+        }
 
+        $scope.$on('$ionicView.enter', function() {
+
+
+          if ($scope.desktopMode) {
+            initCTA();
+          }
+
+
+          if ($scope.desktopMode && !$scope.user.id) {
+            $scope.showSignupDialog()
+          }
+
+
+          if (!$scope.referralsModal) {
+            $scope.initMobileModals();
+          }
+
+          if (!haveProgressBarsBeenInitialized || !$scope.guruRankingCircle) {
+            $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+            $timeout(function() {
+              $scope.user.guru_ranking = actualRankingValue;
+            }, 2500)
+            animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+          }
         });
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.beforeEnter', function() {
+
+          if (!$scope.referralsModal) {
+            $scope.initMobileModals();
+          }
 
           if (DeviceService.isIOSDevice()) {
             DeviceService.ios.setStatusBarLightText();
@@ -350,7 +418,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         var appOnboardingObj;
         $scope.$on('$ionicView.afterEnter', function() {
-
 
               $timeout(function() {
                 appOnboardingObj = $localstorage.getObject('appOnboarding');

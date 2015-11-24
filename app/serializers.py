@@ -290,6 +290,7 @@ rating_fields['session'] = fields.Nested(session_fields)
 rating_fields['transaction'] = fields.Nested(transaction_fields)
 
 relationship_fields = {}
+relationship_fields['id'] = fields.Integer(attribute='id')
 relationship_fields['student'] = fields.Nested(student_fields)
 relationship_fields['guru'] = fields.Nested(guru_fields)
 relationship_fields['sessions'] = fields.Nested(session_fields)
