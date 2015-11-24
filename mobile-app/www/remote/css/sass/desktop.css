@@ -362,7 +362,7 @@
   #desktop-signup aside::after {
     background: url(../../img/temp-signup.jpg) no-repeat center center/cover, url(/static/remote/img/temp-signup.jpg) no-repeat center center/cover; }
 
-.desktop-forms {
+.desktop-forms, .guru-desktop-forms {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -370,7 +370,7 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex; }
-  .desktop-forms .main {
+  .desktop-forms .main, .guru-desktop-forms .main {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -386,28 +386,28 @@
     justify-content: center;
     height: 100%;
     width: 100%; }
-    .desktop-forms .main .desktop-forms-container {
+    .desktop-forms .main .desktop-forms-container, .guru-desktop-forms .main .desktop-forms-container {
       width: 100%;
       max-width: 600px; }
-      .desktop-forms .main .desktop-forms-container > div {
+      .desktop-forms .main .desktop-forms-container > div, .guru-desktop-forms .main .desktop-forms-container > div {
         background: white;
         padding: 30px; }
-        .desktop-forms .main .desktop-forms-container > div h1 {
+        .desktop-forms .main .desktop-forms-container > div h1, .guru-desktop-forms .main .desktop-forms-container > div h1 {
           color: #69B3A5;
           font-size: 36px;
           font-weight: 600;
           text-align: center; }
-        .desktop-forms .main .desktop-forms-container > div p {
+        .desktop-forms .main .desktop-forms-container > div p, .guru-desktop-forms .main .desktop-forms-container > div p {
           color: #40484B;
           font-size: 18px;
           font-weight: 400;
           text-align: center;
           margin-top: 5px; }
-          .desktop-forms .main .desktop-forms-container > div p a {
+          .desktop-forms .main .desktop-forms-container > div p a, .guru-desktop-forms .main .desktop-forms-container > div p a {
             color: #69B3A5; }
-          .desktop-forms .main .desktop-forms-container > div p a:active, .desktop-forms .main .desktop-forms-container > div p a:focus, .desktop-forms .main .desktop-forms-container > div p a:hover, .desktop-forms .main .desktop-forms-container > div p a.active, .desktop-forms .main .desktop-forms-container > div p a.activated {
+          .desktop-forms .main .desktop-forms-container > div p a:active, .desktop-forms .main .desktop-forms-container > div p a:focus, .desktop-forms .main .desktop-forms-container > div p a:hover, .desktop-forms .main .desktop-forms-container > div p a.active, .desktop-forms .main .desktop-forms-container > div p a.activated, .guru-desktop-forms .main .desktop-forms-container > div p a:active, .guru-desktop-forms .main .desktop-forms-container > div p a:focus, .guru-desktop-forms .main .desktop-forms-container > div p a:hover, .guru-desktop-forms .main .desktop-forms-container > div p a.active, .guru-desktop-forms .main .desktop-forms-container > div p a.activated {
             color: #757575; }
-        .desktop-forms .main .desktop-forms-container > div .desktop-login-buttons {
+        .desktop-forms .main .desktop-forms-container > div .desktop-login-buttons, .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons {
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -417,14 +417,16 @@
           display: flex;
           -webkit-justify-content: flex-end;
           justify-content: flex-end; }
-          .desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button {
+          .desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button, .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button {
             margin: 15px 0 0 15px;
             height: auto;
             width: auto;
             padding: 10px 15px;
             font-size: 16px;
             font-weight: 600; }
-  .desktop-forms aside {
+      .desktop-forms .main .desktop-forms-container .desktop-header, .guru-desktop-forms .main .desktop-forms-container .desktop-header {
+        display: none; }
+  .desktop-forms aside, .guru-desktop-forms aside {
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
@@ -435,7 +437,7 @@
     position: relative;
     height: 100%;
     overflow: hidden; }
-    .desktop-forms aside svg {
+    .desktop-forms aside svg, .guru-desktop-forms aside svg {
       position: absolute;
       left: 50%;
       -webkit-transform: translateX(-50%);
@@ -447,20 +449,20 @@
       top: 5%;
       width: 75px;
       height: 75px; }
-    .desktop-forms aside div {
+    .desktop-forms aside div, .guru-desktop-forms aside div {
       position: relative;
       z-index: 9;
       width: 75%;
       text-align: center !important; }
-      .desktop-forms aside div h1 {
+      .desktop-forms aside div h1, .guru-desktop-forms aside div h1 {
         font-size: 24px;
         font-weight: 600; }
-      .desktop-forms aside div p {
+      .desktop-forms aside div p, .guru-desktop-forms aside div p {
         padding: 10px 0;
         font-size: 18px;
         font-weight: 400;
         line-height: 1.5 !important; }
-    .desktop-forms aside::after {
+    .desktop-forms aside::after, .guru-desktop-forms aside::after {
       filter: alpha(opacity=75);
       opacity: 0.75;
       content: "";

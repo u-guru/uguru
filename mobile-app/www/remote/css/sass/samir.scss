@@ -496,3 +496,35 @@ body.platform-ios {
 	}
 }
 
+
+
+#cta-modal-signup {
+	background:rgba(0,0,0,0.7) !important;
+	top:64px;
+	height:calc(100% - 64px);
+	.back-link {
+		display:none;
+	}
+	.cta-modal-close {
+		display:block;
+	}
+	header.desktop-header {
+		display:block;
+		top:0;
+		a.cta-modal-close {
+			display:block;
+			top:0;
+			margin:15px;
+			right:0;
+			position:absolute;
+			width: auto !important;
+		}
+	}
+	#cta-footer-switch-link {
+		display:block;
+		bottom: 20%;
+    	text-align: center;
+    	left: 0;
+	}
+}
+

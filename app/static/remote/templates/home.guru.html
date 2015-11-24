@@ -21,6 +21,12 @@
 				<!-- <div ></div> -->
 			</ion-pane>
 
+			<ion-pane id='cta-modal-signup' class='full-xy hide-display cta-modal'>
+				<div class='full-xy absolute top-0 left-0 guru-desktop-forms'>
+					<div class="main" ng-controller='SignupController' ng-include="img_base + BASE + 'templates/desktop.login.forms.container.html'"></div>
+				</div>
+			</ion-pane>
+
 
 			<div class="guru-home-greeting">
 				<div>
@@ -45,7 +51,7 @@
 										</svg>
 										<span class="notification-number">{{user.student_relationships.length || 0}}</span>
 									</span>
-									<span class="notification-type">Students</span>
+									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Students</span>
 								</a>
 							</li>
 						</ul>

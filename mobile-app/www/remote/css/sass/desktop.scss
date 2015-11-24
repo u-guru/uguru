@@ -328,7 +328,7 @@
 		}
 	}
 }
-.desktop-forms {
+.desktop-forms, .guru-desktop-forms {
 	@include flex;
 	.main {
 		@include flex;
@@ -373,6 +373,9 @@
 						font-weight: 600;
 					}
 				}
+			}
+			.desktop-header {
+				display:none;
 			}
 		}
 	}

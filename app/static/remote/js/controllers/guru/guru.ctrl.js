@@ -46,6 +46,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-profile-courses': '.desktop-guru-profile-view',
     'cta-box-profile-skills': '.desktop-guru-profile-view',
     'cta-box-referrals': '.ion-side-menus-content',
+    'cta-box-signup': '.guru-home-container',
   }
 
   var CTA_OPTIONS = {
@@ -136,9 +137,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             var modal_elem = document.querySelector('#' + modal_elem_id);
 
                if (!$scope.user || !$scope.user.id) {
-                  $scope.loader.showMsg('Please create an account first!', 0, 2000);
-                  $scope.toggleDesktopSettings();
-                  return;
+                  $scope.loader.showMsg('Please create an account first!', 0, 500);
+                  box_elem = document.querySelector('#cta-box-signup');
+                  modal_elem = document.querySelector('#cta-modal-signup');
                 }
 
             var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
@@ -345,12 +346,24 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $state.go(state_name);
         }
 
+        $scope.showSignupDialog = function() {
+          $timeout(function() {
+            LoadingService.showAmbig('Creating Account', 1000);
+          }, 500)
+        }
+
         $scope.$on('$ionicView.enter', function() {
 
 
           if ($scope.desktopMode) {
             initCTA();
           }
+
+
+          if ($scope.desktopMode && !$scope.user.id) {
+            $scope.showSignupDialog()
+          }
+
 
           if (!$scope.referralsModal) {
             $scope.initMobileModals();
