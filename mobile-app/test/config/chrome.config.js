@@ -22,8 +22,11 @@ exports.config = {
         ],
           suites:
         {
-            referral : [
-                  '../e2e/browser/referralsSpec.js',    
+            feature : [
+                  '../e2e/browser/loginSpec.js', 
+                  '../e2e/browser/chatSpec.js',
+                  '../e2e/browser/paymentSpec.js',
+                  '../e2e/browser/referralsSpec.js'
 
                  ],
             ios  :[
