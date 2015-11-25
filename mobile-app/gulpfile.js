@@ -240,6 +240,8 @@ gulp.task('scripts', function() {
       'lib/stripe/stripe.js',
       'lib/cta/cta*.js',
       'lib/fastMatcher.js',
+      'lib/facebook/openfb.js',
+      'lib/facebook/ngopenfb.js',
       'lib/facebook/*.js',
       'lib/ngElastic/*.js',
       'lib/ngMoment/moment.min.js',
