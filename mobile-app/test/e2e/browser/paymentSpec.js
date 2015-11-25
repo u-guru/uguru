@@ -44,7 +44,7 @@ describe('Payment Spec',function ()
 				})
 			})
 		});
-		
+
 		describe("Adding Payment Card - 1",function()
 		{
 			it("+ Add new card",function()
@@ -79,22 +79,58 @@ describe('Payment Spec',function ()
 			{
 				browser.wait(EC.invisibilityOf($('.desktop-forms-container .relative.full-x')),3000);
 			});
+
+			it('check 2 cards are in the list',function()
+			{
+				expect($$('[ng-repeat="card in user.transfer_cards"]').count()).toBe(2);
+			});
 		});
 
-		describe("Edit Payment Card",function()
+		describe("Set #2Card to default",function()
+		{
+			it("Set card",function()
+			{
+				$$('[ng-click="editPayment(card)"]').get(1).click();
+				browser.wait(EC.visibilityOf($('.desktop-forms-container .relative.full-x')),3000);
+			})
+			it('Confirm the payment card has buttons : Edit Default & Delete',function()
+			{
+				expect($('[ng-click="setDefaultTransfer()"]').getText()).toContain('SET DEFAULT')
+				expect($('[ng-click="removeCard()"]').getText()).toContain('DELETE')
+			});
+			it('Set Card#2 to default',function()
+			{
+				$('[ng-click="setDefaultTransfer()"]').click()
+			})
+			it("Check Card#2  has been closed and set to default",function()
+			{
+				browser.wait(EC.invisibilityOf($('.desktop-forms-container .relative.full-x')),3000);
+				expect($$('[ng-repeat="card in user.transfer_cards"]').count()).toBe(2);
+				expect($$('[ng-repeat="card in user.transfer_cards"]').get(1).$('h3').isPresent()).toBe(true);
+			});
+		});
+
+		describe("Delete #1Card",function()
 		{
 			it("+ Edit card",function()
 			{
-				$('[ng-click="editPayment(card)"]').click();
+				$$('[ng-click="editPayment(card)"]').get(0).click();
 				browser.wait(EC.visibilityOf($('.desktop-forms-container .relative.full-x')),3000);
 			})
-			it('Confirm the payment',function()
+			it('Confirm the payment card has buttons : Edit Default & Delete',function()
 			{
-				expect($('[ng-click="savePayment()"]').getText()).toContain('Edit')
+				expect($('[ng-click="setDefaultTransfer()"]').getText()).toContain('SET DEFAULT')
+				expect($('[ng-click="removeCard()"]').getText()).toContain('DELETE')
 			});
-			it("Check Payment has been closed",function()
+			it('Set Card#2 to default',function()
+			{
+				$('[ng-click="removeCard()"]').click()
+			})
+			it("Check Card#1  has been removed",function()
 			{
 				browser.wait(EC.invisibilityOf($('.desktop-forms-container .relative.full-x')),3000);
+				expect($$('[ng-repeat="card in user.transfer_cards"]').count()).toBe(1);
+				expect($$('[ng-repeat="card in user.transfer_cards"]').get(0).$('h3').isPresent()).toBe(true);
 			});
 		});
 		
