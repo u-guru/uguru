@@ -74,6 +74,9 @@
 										  </div>
 
 									</a>
+									<div class='text-center' ng-if='card.is_default_transfer'>
+										<h3 class='p10xy'> <strong class='uppercase txt-shamrock'>Default</strong></h3>
+									</div>
 								</li>
 								<li>
 									<a id='cta-box-payments' class='cta-box'>
@@ -88,7 +91,7 @@
 							</ul>
 						</div>
 					</div>
-					<button class="bg-moola">Cash Out</button>
+					<button class="bg-moola" ng-click='cashoutUser()'>Cash Out</button>
 				</div>
 			</div>
 		</div>

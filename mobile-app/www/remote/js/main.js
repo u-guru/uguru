@@ -197,10 +197,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/billing',
     templateUrl: BASE + 'templates/billing.html'
   }).
-  state('root.balance', {
-    url:'/balance',
-    templateUrl: BASE + 'templates/balance.html'
-  }).
   state('root.referrals', {
     url:'/referrals',
     templateUrl: BASE + 'templates/referrals.html'
