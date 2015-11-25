@@ -136,6 +136,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/guru.remote.html',
     controller: 'GuruRemoteController'
   }).
+  state('root.general', {
+    url:'/general',
+    templateUrl: BASE + 'templates/general.html'
+  }).
   state('root.desktop-login', {
     url:'/desktop-login',
     templateUrl: BASE + 'templates/desktop.login.html',
