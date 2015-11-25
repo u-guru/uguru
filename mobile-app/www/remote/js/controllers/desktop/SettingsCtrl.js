@@ -306,6 +306,9 @@ angular.module('uguru.desktop.controllers', [])
 
     $scope.saveSettings = function() {
       $scope.loader.showSuccess('Saved!', 1500);
+      $ionicViewSwitcher.nextDirection('enter')
+      $state.go('^.guru-home');
+
     }
 
 
