@@ -520,6 +520,9 @@ body.platform-ios {
 			width: auto !important;
 		}
 	}
+	input {
+		color:$charcoal !important;
+	}
 	#cta-footer-switch-link {
 		display:block;
 		bottom: 20%;
@@ -528,3 +531,14 @@ body.platform-ios {
 	}
 }
 
+#cta-modal-payments {
+	height:100%;
+	background:rgba(0,0,0,0.25) !important;
+	input {
+		color: $charcoal !important;
+	}
+	.close-button svg {
+		stroke:$charcoal;
+		width:30px;
+	}
+}

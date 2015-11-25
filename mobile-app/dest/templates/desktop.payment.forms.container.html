@@ -1,0 +1,35 @@
+<div class="desktop-forms-container" style='height:auto;'>
+
+
+                <div class='relative full-x'>
+                    <a class='cta-modal-close close-button desktop-header-next absolute top-0 m10xy right-0'>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                        </svg>
+                    </a>
+                    <h1 ng-if='root.vars.editPaymentMode'>Edit Payment</h1>
+                    <h1 ng-if='!root.vars.editPaymentMode'>Add Payment</h1>
+                    <form>
+                        <div class="input-field relative">
+                            <input ng-model='cardForm.number' autocomplete="off" id="card-number" type="text" class="validate txt-white">
+                            <label for="email" class="ng-class:{'active':cardForm.number.length}">Card Number</label>
+                            <a ng-show="cardForm.number.length" ng-click='cardForm.number = "";' class="desktop-input-close-icon side-icon">
+                                <i class='icon ion-close-circled'> </i>
+                            </a>
+                        </div>
+                        <div class="input-field">
+                            <input autocomplete="off" ng-model='cardForm.exp' id="exp-date" type="text" class="validate txt-white">
+                            <label for="password" class="ng-class:{'active':cardForm.exp.length}">Expiration Date</label>
+                            <a ng-show="cardForm.exp.length" ng-click='cardForm.exp = "";' class="desktop-input-close-icon side-icon">
+                                <i class='icon ion-close-circled'> </i>
+                            </a>
+                        </div>
+                        <!-- radio input for remember me -->
+                        <div class="desktop-login-buttons">
+                            <!-- <button ng-click='connectWithFacebook()' class="bg-fb caps">Login with Facebook</button> -->
+                            <button class="bg-shamrock caps" ng-click='savePayment()'>Add Card</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>

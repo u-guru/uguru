@@ -294,6 +294,23 @@ function Utilities($rootScope, Settings, User) {
     var parts = x.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts[0];
+
+    // // for reference
+    // $scope.fireKeyUpEvent = function() {
+    //   var elem = document.getElementById('card-input');
+    //   var e = document.createEvent("KeyboardEvent");
+    //   e.initEvent("keyup", true, true);
+    //   e.view = window;
+    //   e.altKey = false;
+    //   e.ctrlKey = false;
+    //   e.shiftKey = false;
+    //   e.metaKey = false;
+    //   e.keyCode = 0;
+    //   e.charCode = 'a';
+    //   e.keyCode = 32;
+
+    //   elem.dispatchEvent(e);
+    // }
 }
 
 }

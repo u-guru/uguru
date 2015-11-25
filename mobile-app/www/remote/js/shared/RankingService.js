@@ -191,9 +191,9 @@ function RankingService() {
         if (user.guru_experiences && user.guru_experiences.length) {
             base += default_item_weight;
         }
-        if (user.categories && user.categories.length >= 2) {
+        if (user.subcategories && user.subcategories.length >= 2) {
             base += (2*default_item_weight);
-        } else if (user.categories && user.categories.length === 1) {
+        } else if (user.subcategories && user.subcategories.length === 1) {
             base += default_item_weight;
         }
         if (user.guru_languages && user.guru_languages.length) {
