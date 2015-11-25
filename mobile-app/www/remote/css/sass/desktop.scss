@@ -556,7 +556,9 @@
 @media screen and (min-height:750px) and (min-width:1024px) {
 	.desktop-search {
 		@include flex-bottom;
-		padding-bottom: 30px;
+		&:not(#desktop-university) {
+			padding-bottom: 30px;
+		}
 		.main:not(.skills-container) {
 			min-height: 644px;
 		}

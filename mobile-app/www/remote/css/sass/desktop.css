@@ -83,7 +83,7 @@
 
 .desktop-mode #top-bar {
   height: 64px;
-  background: #958B8E;
+  background: #69B3A5;
   padding: 0 15px;
 }
 
@@ -123,7 +123,7 @@
 
 .desktop-mode #top-bar div:nth-child(2) div.active {
   z-index: 13;
-  background: #958B8E;
+  background: #69B3A5;
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-logo {
@@ -208,7 +208,7 @@
   z-index: 11;
   right: 0;
   top: 64px;
-  background: #958B8E;
+  background: #69B3A5;
   overflow: hidden;
 }
 
@@ -278,11 +278,11 @@
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
-  color: #958B8E;
+  color: #69B3A5;
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
-  stroke: #958B8E;
+  stroke: #69B3A5;
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active svg circle {
@@ -290,12 +290,12 @@
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active svg path {
-  stroke: #958B8E;
+  stroke: #69B3A5;
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:hover svg circle, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:active svg circle, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:focus svg circle {
-  stroke: #958B8E;
-  fill: #958B8E;
+  stroke: #69B3A5;
+  fill: #69B3A5;
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:hover svg path, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:active svg path, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:focus svg path {
@@ -307,11 +307,11 @@
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a span {
-  color: #958B8E;
+  color: #69B3A5;
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a svg {
-  stroke: #958B8E;
+  stroke: #69B3A5;
 }
 
 .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:focus {
@@ -349,7 +349,7 @@
   height: 128px;
   width: 100%;
   max-width: 960px;
-  background: #958B8E;
+  background: #69B3A5;
 }
 
 .desktop-mode .progress-bottom .progress {
@@ -819,6 +819,8 @@
     align-items: flex-end;
     -webkit-justify-content: center;
     justify-content: center;
+  }
+  .desktop-search:not(#desktop-university) {
     padding-bottom: 30px;
   }
   .desktop-search .main:not(.skills-container) {
@@ -1693,8 +1695,8 @@
 }
 
 #desktop-settings .main > div .input-field input:focus:not([readonly]) {
-  border-bottom: 1px solid #958B8E !important;
-  box-shadow: 0 1px 0 0 #958B8E !important;
+  border-bottom: 1px solid #69B3A5 !important;
+  box-shadow: 0 1px 0 0 #69B3A5 !important;
 }
 
 #desktop-settings .main > div .input-field label:after {
@@ -1733,7 +1735,7 @@
   top: 0;
   height: 64px;
   padding: 7px 10px;
-  background: #958B8E;
+  background: #69B3A5;
   max-width: none;
 }
 
@@ -3006,7 +3008,7 @@
 }
 
 #desktop-request-guru header h2 span:first-child {
-  color: #958B8E;
+  color: #69B3A5;
 }
 
 #desktop-request-guru header h2 span:last-child {
@@ -3068,16 +3070,16 @@
 }
 
 #desktop-request-guru .request-form .request-form-map > div {
-  border-color: #958B8E;
+  border-color: #69B3A5;
 }
 
 #desktop-request-guru .request-form .request-form-map > div ul {
-  background: #958B8E;
+  background: #69B3A5;
 }
 
 #desktop-request-guru .request-form .request-form-date > div {
-  border-color: #958B8E;
-  color: #958B8E;
+  border-color: #69B3A5;
+  color: #69B3A5;
 }
 
 #desktop-request-guru .request-form .request-form-upload {

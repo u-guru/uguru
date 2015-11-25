@@ -38,37 +38,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 	$scope.LOCAL = LOCAL;
 
 
-	$timeout(function() {
-		// setInterval(function() {
-		//   $("#school-list li").velocity("fadeOut", { stagger: 100 });
-		// }, 1500)
-		// setInterval(function() {
-		// $("#school-list li").velocity("fadeIn", { stagger: 100 });
-		// }, 2000)
-        $("#desktop-university").children("#main-logo-container, .desktop-header, #university-form").velocity({
-            opacity: 1
-        }, {
-            duration: 400
-        });
-        $("form, #school-list").velocity({
-            opacity: 1
-        }, {
-            duration: 400
-        });
-	}, 800);
-
-	$timeout(function() {
-        $("form, #school-list").velocity({
-            translateY: 0
-        }, {
-            duration: 400
-        });
-	}, 1600);
-    
-    $timeout(function() {
-        $("#school-list li").velocity("transition.slideUpBigIn", { drag: true }).delay(750);
-	}, 2400);
-
 
 
 	uTracker.setUser(tracker, 'localyticsTest');
@@ -149,6 +118,36 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
 	$scope.afterEnter = function() {
 		stopLoop = true;
+        // $timeout(function() {
+        //     // setInterval(function() {
+        //     //   $("#school-list li").velocity("fadeOut", { stagger: 100 });
+        //     // }, 1500)
+        //     // setInterval(function() {
+        //     // $("#school-list li").velocity("fadeIn", { stagger: 100 });
+        //     // }, 2000)
+        //     $("#desktop-university").children("#main-logo-container, .desktop-header, #university-form").velocity({
+        //         opacity: 1
+        //     }, {
+        //         duration: 400
+        //     });
+        //     $("form, #school-list").velocity({
+        //         opacity: 1
+        //     }, {
+        //         duration: 400
+        //     });
+        // }, 800);
+        // 
+        // $timeout(function() {
+        //     $("form, #school-list").velocity({
+        //         translateY: 0
+        //     }, {
+        //         duration: 400
+        //     });
+        // }, 1600);
+        // 
+        // $timeout(function() {
+        //     $("#school-list li").velocity("transition.slideUpBigIn", { drag: true }).delay(750);
+        // }, 2400);
 	};
 
 
