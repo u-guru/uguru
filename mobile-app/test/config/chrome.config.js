@@ -30,7 +30,11 @@ exports.config = {
 
                  ],
             ios  :[
-                  '../e2e/browser/iphoneSpec.js',    
+                  // '../e2e/browser/iphoneSpec.js',    
+                  '../e2e/ios/loginSpec.js',
+                  '../e2e/ios/paymentSpec.js',
+                 '../e2e/ios/referralSpec.js',
+                 '../e2e/ios/chatSpec.js',
 
                  ]
           
@@ -85,10 +89,10 @@ exports.config = {
             // global.home =require('../e2e/components/foodMainPageObject.js');
             // global.gpa =require('../e2e/components/GPAPageObject.js');
             // global.side = require('../e2e/components/sidePageObject.js');
-            // global.account = require('../e2e/components/accountPageObject.js');
+            global.account = require('../e2e/components/accountPageObject.js');
             // global.map = require('../e2e/components/mapPageObject.js');
               global.doc =require('../test_case/newGlobals.js');
-              global.account = require('../e2e/old/account/accountPageObject.js');
+              // global.account = require('../e2e/old/account/accountPageObject.js');
               global.credibility = require('../e2e/old/guruProfile/creditibilityPageObject.js');
               global.guruprofile = require('../e2e/old/guruProfile/GuruProfilePageObject.js');
               global.guru = require('../e2e/old/guruProfile/guruPageObject.js');

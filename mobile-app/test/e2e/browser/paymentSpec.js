@@ -1,4 +1,4 @@
-describe('Referral Spec',function () 
+describe('Payment Spec',function () 
 {
 	// describe('Log in an account',function()
 	// {

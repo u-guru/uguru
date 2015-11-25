@@ -1,9 +1,9 @@
 var Account = function()
 {
 	//Model
-	this.nameModel = $('[ng-model="signupForm.full_name"]');
-	this.emailModel = $('[ng-model="signupForm.email"]');
-	this.passwordModel = $('[ng-model="signupForm.password"]');
+	this.nameModel = $$('[ng-model="signupForm.full_name"]').last();
+	this.emailModel = $$('[ng-model="signupForm.email"]').last();	
+	this.passwordModel = $$('[ng-model="signupForm.password"]').last();
 	this.clearButtons = $$('.relative.full-x a');
 	//Social 
 	this.socialButtons = $$('#social-login button')
@@ -43,7 +43,7 @@ var Account = function()
 	this.enterName = function(str)
 	{
 		// doc.setInput(str,0,	this.nameModel,true);
-		lib.setInput(lthis.nameMode,str);
+		lib.setInput(this.nameModel,str);
 
 	};
 

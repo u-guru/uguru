@@ -125,10 +125,24 @@ var Library = function() {
   *********************************************************************************/
   this.generateRandomEmail =function()
   {
-        var d = new Date();
-        var sec = d.getSeconds();
-        var hr = d.getHours();
-      return Date.UTC(2012,02,30,hr,sec)+'@jason-test.edu';
+       var d = new Date();
+       var sec = d.getSeconds();
+       var hr = d.getHours();
+       var dateObject = new Date();
+
+      var uniqueId =
+               dateObject.getMonth() + '' +
+               dateObject.getDate() + '' +
+               dateObject.getTime();
+     var randomnumber = Math.floor(Math.random() * 9001);
+
+     if (uniqueId.length > 10){
+
+                             uniqueId = uniqueId.substring(0, 10);
+
+     }
+     var uniqueId = parseInt(randomnumber) + parseInt(uniqueId);
+     return uniqueId+'@jason-test.edu';
   }
 
   /*******************************************************************************

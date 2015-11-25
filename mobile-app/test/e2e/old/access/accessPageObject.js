@@ -36,11 +36,12 @@ var Access = function()
 	 	}
 	 	else
 	 	{	
-	 		browser.wait(EC.visibilityOf(this.IncorrectAccess),800);
-	 		this.IncorrectAccess.getText().then(function(value)
-	 		{
-	 			expect(value).toBe("Incorrect access code!");
-	 		});	
+	 		// browser.wait(EC.visibilityOf(this.IncorrectAccess),800);
+	 		// this.IncorrectAccess.getText().then(function(value)
+	 		// {
+	 		// 	expect(value).toBe("Invalid access code, please try again.");
+	 		// });	
+			doc.checkMsg('Invalid access code, please try again.')
 	 	}
 	 	
 	 };

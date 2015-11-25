@@ -187,7 +187,7 @@ describe('Firt time usr Test', function () {
       it('Create account',function()
       {
           // account.CreateAccount();
-          $('[ng-click="completeSignup()"]').click()
+          $$('[ng-click="completeSignup()"]').last().click()
       });
       it('check Sign up successful -- INCONSISTANT',function()
       {
@@ -251,7 +251,7 @@ describe('Firt time usr Test', function () {
         
         it('select contact ',function()
         {
-          browser.wait(EC.visibilityOf($$('#contact-type-list input')).get(0))
+          browser.wait(EC.visibilityOf($('#contact-type')));
           contactOptions.get(0).click();
           contactOptions.get(3).click();
         });
@@ -298,7 +298,7 @@ describe('Firt time usr Test', function () {
       
       it('close Edit profile',function()
       {
-        $$('#desktop-guru-profile .cta-modal-close').get(0).click();
+        $$('#desktop-guru-profile .cta-modal-close.close-button').get(0).click();
 
       });
     })
@@ -466,6 +466,7 @@ describe('Firt time usr Test', function () {
       it("Active setting",function()
       {
         var setting = $('#top-settings');
+        browser.wait(EC.visibilityOf(setting),3000)
         setting.click();
         $('[ng-click="goToDesktopSettings()"]').click();
       });

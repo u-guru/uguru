@@ -158,7 +158,7 @@ var GuruProfile = function()
 			case 'course':
 				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruCoursesModal()"]')),3000);
 				// $('#cta-box-profile-courses').click();
-				$('#cta-modal-profile-courses  .header-close.cta-modal-close').click();
+				$('#cta-modal-profile-courses .cta-modal-close.close-button').click();
 
 				break;
 
@@ -169,14 +169,14 @@ var GuruProfile = function()
 			case 'skill' :	
 				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruSkillsModal()"]')),3000);
 
-				$('#cta-modal-profile-skills  .header-close.cta-modal-close').click();
+				$('#cta-modal-profile-skills .cta-modal-close.close-button').click();
 				break;
 
 			case 'language':	
 				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruLanguagesModal()"]')),3000);
 
 				// $('#cta-box-profile-languages').click();
-				$('#cta-modal-profile-languages  .header-close.cta-modal-close').click();
+				$('#cta-modal-profile-languages .cta-modal-close.close-button').click();
 
 				break;
 
@@ -184,7 +184,7 @@ var GuruProfile = function()
 				// browser.wait(EC.visibilityOf($('[ng-click="launchAddGuruExperienceModal()"]')),3000);
 
 				// $('#cta-box-profile-experiences').click();
-				$('#cta-modal-profile-experiences  .header-close.cta-modal-close').click();
+				$('#cta-modal-profile-experiences .cta-modal-close.close-button').click();
 
 				break;
 		};
