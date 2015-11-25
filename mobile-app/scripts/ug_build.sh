@@ -101,7 +101,7 @@ if [ $# == 1 ];
 
 		cordova plugin add https://github.com/phonegap/phonegap-plugin-push
 		cordova plugin add https://bitbucket.org/uguru-nick/phonegap-facebook-plugin --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
-		cordova plugin add https://github.com/Telerik-Verified-Plugins/AppleWatch
+		# cordova plugin add https://github.com/Telerik-Verified-Plugins/AppleWatch
 		printf '\n'
 		printf '\e[0;36mOpening xCode project and giving back control... \e[0m\n'
 		printf '\e[0;36mMake sure to follow the steps below in order for the app to compile correctly. \e[0m\n'
