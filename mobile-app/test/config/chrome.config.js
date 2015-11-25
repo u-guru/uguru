@@ -29,6 +29,11 @@ exports.config = {
                   // '../e2e/browser/referralsSpec.js'
 
                  ],
+            gmail : [
+
+                 '../e2e/browser/gmailSpec.js', 
+
+            ],
             ios  :[
                   // '../e2e/browser/iphoneSpec.js',    
                   '../e2e/ios/loginSpec.js',
@@ -124,7 +129,8 @@ exports.config = {
             var h =  Number(browser.params.screenSize.split('x')[1]) 
             console.log( "W : "+ w+ " H :"+h)
             browser.driver.manage().window().setSize(w,h);
-
+             global.$ = browser.$;
+            global.$$ = browser.$$;
             browser.get(url);
             // browser.get("http://"+localhost+":8100");
             browser.sleep(3000);

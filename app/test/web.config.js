@@ -102,6 +102,13 @@ exports.config = {
 
             global.isAngularSite = function(flag){
                 browser.ignoreSynchronization = !flag;
+                global.protractor = protractor;
+                global.browser = browser;
+                global.$ = browser.$;
+                global.$$ = browser.$$;
+                global.element = browser.element;     
+                global.dv = browser.driver;
+                global.EC = protractor.ExpectedConditions;
             };
 
         }
