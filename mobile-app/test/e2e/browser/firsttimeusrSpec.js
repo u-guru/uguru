@@ -209,19 +209,38 @@ describe('Firt time usr Test', function () {
       var editprofile = $('#cta-box-profile')
       var intro = $('[ng-click="launchGuruIntroductionModal()"]')
       var contact = $('#cta-box-profile-contact')
+      it('Check % point is 40%',function()
+      {
+        expect($('#cta-box-profile .credibility-percent.ng-binding').getText()).toContain("40");
+      });
       it ('active editprofile',function()
       {
         editprofile.click();
         browser.wait(EC.visibilityOf($('#desktop-guru-profile')),3000);
       })
-
-      it('Upload Photo',function()
+      it('active edit mode',function()
       {
-        photo.UploadPhoto('small');
+        $('#btn-edit-profile').click();
       });
+
+      describe('Upload profile and see % increased',function()
+      {
+        it('Upload Photo',function()
+        {
+          photo.UploadPhoto('small');
+        });
+        CheckProfilePt('60');
+      })
+     
       
       describe('Edit intro',function()
       {
+        it ('active editprofile',function()
+        {
+          editprofile.click();
+          browser.wait(EC.visibilityOf($('#desktop-guru-profile')),3000);
+        })
+
         it('open introduction page',function()
         {
           intro.click();
@@ -238,71 +257,100 @@ describe('Firt time usr Test', function () {
         { 
           expect($('#profile-intro textarea').getText()).toBe('123123123');
         });
+        CheckProfilePt('70');
       });
     
-      describe('Contact',function()
-      {
-        var contactOptions = $$('#contact-type-list input');
-        var contactSave = $$('[ng-click="closeAndSaveContactGuruModal()"]')
-        it('open Contact page',function()
-        {
-          contact.click();
-        });
+      // describe('Contact',function()
+      // {
+      //   var contactOptions = $$('#contact-type-list input');
+      //   var contactSave = $$('[ng-click="closeAndSaveContactGuruModal()"]')
+      //   it('open Contact page',function()
+      //   {
+      //     contact.click();
+      //   });
         
-        it('select contact ',function()
-        {
-          browser.wait(EC.visibilityOf($('#contact-type')));
-          contactOptions.get(0).click();
-          contactOptions.get(3).click();
-        });
+      //   it('select contact ',function()
+      //   {
+      //     browser.wait(EC.visibilityOf($('#contact-type')));
+      //     contactOptions.get(0).click();
+      //     contactOptions.get(3).click();
+      //   });
 
-        it('Saved Contact',function()
-        { 
-          contactSave.click()
-          expect($('#guru-introduction-modal').isDisplayed()).toBe(false);
-        });
-      });
+      //   it('Saved Contact',function()
+      //   { 
+      //     contactSave.click()
+      //     expect($('#guru-introduction-modal').isDisplayed()).toBe(false);
+      //   });
+      // });
       var str = ['course','language','experience','skill'];
 
       describe('Major/Course/Category/language',function()
       {
-        it('active edit mode',function()
+        it('Check Creditability is 0% ',function()
         {
-          $('#btn-edit-profile').click();
+          expect($('#cta-box-credibility .credibility-percent.ng-binding').getText()).toContain(0);
         });
-
         for(var i = 0 ; i < str.length ;++ i)
         {
           (function (title,index) {
-              describe('Open '+title+' Modal', function () {
-            
-              it('Open Modal',function()
-              {
-                guruprofile.OpenDesktopModal(title);
-              });
-                it('close Modal',function()
+              describe('Open '+title+' CTA', function () {
+                it ('active editprofile',function()
+                {
+                  editprofile.click();
+                  browser.wait(EC.visibilityOf($('#desktop-guru-profile')),3000);
+                })
+    
+                it('Open CTA',function()
+                {
+                  guruprofile.OpenDesktopModal(title);
+                });
+                if(index == 1)
+                {
+                  it('Select language',function()
+                  {
+                    browser.wait(EC.visibilityOf($$('[ng-repeat="language in languages | filter:page.search_text:strict | limitTo: limit"]').get(2)),3000);
+                    $$('[ng-repeat="language in languages | filter:page.search_text:strict | limitTo: limit"]').get(2).click()
+                  });
+                }
+
+                it('close CTA',function()
                 {
                   // $$('.header-close.cta-modal-close').get(index+2).click();
                   // guruprofile.CloseModal();
                   guruprofile.closeDesktopModal(title);
                 });
 
+                if(index >= 1)
+                   CheckProfilePt('80')
+                else
+                  CheckProfilePt('70')
+
               }); 
           })(str[i],i)
         }
-         it('save edit mode',function()
-        {
-          $('#btn-save-profile').click();
-        });
+
       })
       
-      it('close Edit profile',function()
-      {
-        $$('#desktop-guru-profile .cta-modal-close.close-button').get(0).click();
+      // it('close Edit profile',function()
+      // {
+      //   $$('#desktop-guru-profile .cta-modal-close.close-button').get(0).click();
 
-      });
-    })
+      // });
+    });
+    function CheckProfilePt(pt)
+    {
+        it('close Edit profile',function()
+        {
+          $$('#desktop-guru-profile .cta-modal-close.close-button').get(0).click();
+          browser.wait(EC.invisibilityOf($('#desktop-guru-profile')),3000);
 
+        });
+        it('Check point increased',function()
+        {
+          expect($('#cta-box-profile .credibility-percent.ng-binding').getText()).toContain(pt);
+        });
+
+    }
     describe('Edit Credibility',function()
     {
         it('Go to guru-credibility',function()
@@ -323,7 +371,7 @@ describe('Firt time usr Test', function () {
             var groupName  = ['TRANSCRIPT','FACEBOOK','PHONE','EMAIL','EXPERIENCE']
             var groupButton = ['transcript','Facebook','number','Email','Item']
 
-            for(var i = 2 ; i < 5 ; ++ i)
+            for(var i = 0 ; i < 5 ; ++ i)
             {
               (function(index,title,buttonName)
               {
@@ -351,7 +399,10 @@ describe('Firt time usr Test', function () {
                                     doc.checkMsg("Saved!");
 
                                   });
-
+                                  it('close Photo',function()
+                                  {
+                                    $$('[ng-click="toggleDesktopTranscript()"]').last().click();
+                                  })
                                 });
                                   break;
                               case 1:
@@ -458,6 +509,17 @@ describe('Firt time usr Test', function () {
         {
           $$('#desktop-credibility .cta-modal-close').get(0).click();
         });
+        
+        it('Check Creditability  %  increased to 60%',function()
+        {
+          expect($('#cta-box-credibility .credibility-percent.ng-binding').getText()).toContain(60);
+        });
+
+        it('Check profile % increased to 90%',function()
+        {
+          expect($('#cta-box-profile .credibility-percent.ng-binding').getText()).toContain(90);
+        });
+
     })
 
 

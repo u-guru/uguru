@@ -156,10 +156,9 @@ var GuruProfile = function()
 		switch(name)
 		{
 			case 'course':
-				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruCoursesModal()"]')),3000);
+				browser.wait(EC.visibilityOf($('#cta-modal-profile-courses .cta-modal-close.close-button')),3000);
 				// $('#cta-box-profile-courses').click();
 				$('#cta-modal-profile-courses .cta-modal-close.close-button').click();
-
 				break;
 
 			case 'major' :
@@ -168,13 +167,13 @@ var GuruProfile = function()
 
 			case 'skill' :	
 				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruSkillsModal()"]')),3000);
-
+				browser.wait(EC.visibilityOf($('#cta-modal-profile-skills .cta-modal-close.close-button')),3000);
 				$('#cta-modal-profile-skills .cta-modal-close.close-button').click();
 				break;
 
 			case 'language':	
 				// browser.wait(EC.visibilityOf($('[ng-click="launchGuruLanguagesModal()"]')),3000);
-
+				browser.wait(EC.visibilityOf($('#cta-modal-profile-languages .cta-modal-close.close-button')),3000);
 				// $('#cta-box-profile-languages').click();
 				$('#cta-modal-profile-languages .cta-modal-close.close-button').click();
 
@@ -182,7 +181,7 @@ var GuruProfile = function()
 
 			case 'experience':	
 				// browser.wait(EC.visibilityOf($('[ng-click="launchAddGuruExperienceModal()"]')),3000);
-
+				browser.wait(EC.visibilityOf($('#cta-modal-profile-experiences .cta-modal-close.close-button')),3000);
 				// $('#cta-box-profile-experiences').click();
 				$('#cta-modal-profile-experiences .cta-modal-close.close-button').click();
 
