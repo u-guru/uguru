@@ -27,7 +27,7 @@ var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'ngAnimate', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB'])
 
@@ -135,6 +135,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/guru-remote',
     templateUrl: BASE + 'templates/guru.remote.html',
     controller: 'GuruRemoteController'
+  }).
+  state('root.general', {
+    url:'/general',
+    templateUrl: BASE + 'templates/general.html'
   }).
   state('root.desktop-login', {
     url:'/desktop-login',
