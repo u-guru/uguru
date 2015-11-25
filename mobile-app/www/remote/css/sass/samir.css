@@ -401,10 +401,21 @@ body.platform-ios .guru-view-mobile
       right: 0;
       position: absolute;
       width: auto !important; }
+  #cta-modal-signup input {
+    color: #2B3234 !important; }
   #cta-modal-signup #cta-footer-switch-link {
     display: block;
     bottom: 20%;
     text-align: center;
     left: 0; }
+
+#cta-modal-payments {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25) !important; }
+  #cta-modal-payments input {
+    color: #2B3234 !important; }
+  #cta-modal-payments .close-button svg {
+    stroke: #2B3234;
+    width: 30px; }
 
 /*# sourceMappingURL=samir.css.map */

@@ -8,7 +8,12 @@
 				</svg>
 			</a>
 		</header>
-		<div class="main">
+		<div class="main" ng-controller='PaymentsController'>
+			<ion-pane id='cta-modal-payments' class='full-xy hide-display cta-modal'>
+				<div class='full-xy absolute top-0 left-0 guru-desktop-forms'>
+					<div class="main flex-wrap-center" ng-include="img_base + BASE + 'templates/desktop.payment.forms.container.html'"></div>
+				</div>
+			</ion-pane>
 			<div>
 				<aside>
 					<h2>Payment History</h2>
@@ -46,7 +51,7 @@
 							<h2>Choose Method to Cash Out</h2>
 							<ul class="ugrid-3">
 								<li ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_card'>
-									<a class='credit-card-wrapper'>
+									<a class='credit-card-wrapper' ng-click='editPayment(card)'>
 
 										<div class="credit-card cf">
 										    <img src="http://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" width="80" id="visa">
@@ -71,7 +76,7 @@
 									</a>
 								</li>
 								<li>
-									<a>
+									<a id='cta-box-payments' class='cta-box'>
 										<span>
 											<svg viewBox="0 0 100 100">
 											    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>

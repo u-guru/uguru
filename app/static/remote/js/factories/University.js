@@ -62,7 +62,6 @@ angular.module('uguru.rest', [])
 
 
                              source.courses = response.plain();
-                             console.log(source.courses);
                              $timeout(function() {
                                  $localstorage.set(uni_id + ' popularCourses', source.popularCourses);
                                  uTracker.track(tracker, {

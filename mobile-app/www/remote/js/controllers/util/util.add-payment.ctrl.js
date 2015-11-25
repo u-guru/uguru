@@ -19,141 +19,34 @@
   $ionicSideMenuDelegate, $ionicActionSheet, LoadingService) {
 
     $scope.data = {card_exists: false};
-    // console.log();
-    $scope.user.cards = [];
-    $scope.user_has_card = $scope.user.cards && $scope.user.cards.length > 0;
-    $scope.card_details = {number: '', expiry:''};
 
-    $scope.clearCard = function() {
+    $scope.cardForm = {number: '', exp:''};
 
-      $scope.card = null;
-      // $scope.cardInput.value = '';
-      // $scope.ccvInput.value = '';
-      // $scope.rootUser.updateLocal($scope.user);
-      // $scope.root.keyboard.show('card-input', 500);
-      $scope.card_details.number = '';
-      $scope.card_details.expiry = '';
-    };
-
-    $scope.paymentCardActionSheetOptions = function() {
-      var card = $scope.card;
-      var options = [{text: 'Remove Card'}];
-      if (!card.is_default_payment && !card.is_default_transfer) {
-        options.push({text: 'Set Default'});
-      }
-        // Show the action sheet
-        $scope.closeAttachActionSheet = $ionicActionSheet.show({
-            buttons: options,
-            // titleText: '<span class="semibold uppercase">Edit Card **-' + card.card_last4 + '</span>',
-            cancelText: 'Cancel',
-            cancel: function() {
-                $scope.closeAttachActionSheet();
-            },
-            buttonClicked: function(index) {
-
-              // fire profile photo
-              if (index === 0) {
-                $scope.closeAttachActionSheet();
-                $scope.removeCard();
-                LoadingService.show();
-                $timeout(function() {
-                  LoadingService.hide();
-                }, 750);
-              }
-
-              if (index === 1) {
-                $scope.closeAttachActionSheet();
-                $scope.setDefault();
-                LoadingService.show();
-                $timeout(function() {
-                  LoadingService.hide();
-                }, 750);
-              }
-            }
-
-      });
+    if ($scope.LOCAL) {
+      $scope.cardForm.number = '4000056655665556';
+      $scope.cardForm.exp = '09 / 2016';
     }
 
 
-    $scope.addPaymentActionBtn = function() {
-      if ($scope.actionButtonText.toLowerCase() === 'save') {
-        $scope.savePayment()
-      } else {
-        $scope.clearCard();
-      }
-      $scope.setActionButtonText();
-    }
+    //1. Add card [x] [ ]
+      // validate card
+      // send to server
+    //2. Remove card [x] [ ]
+      // remove client side
+      // send to server
+    //3. Update default Transfer [x] [ ]
+      // Send card to server
+    //4. Cashout
+      // Update current balance
+      // Create transaction server side
+      // update transaction here
 
-    $scope.setActionButtonText = function() {
-      if (!$scope.card) {
-        $scope.actionButtonText = 'save';
-      } else {
-        $scope.actionButtonText = 'clear';
-      }
-    }
-
-    $scope.goBack = function() {
-
-      if ($scope.paymentsModal) {
-        $ionicHistory.goBack();
-      }
-      else if ($scope.root.vars.previous_page_ranking) {
-        $scope.root.vars.previous_page_ranking = false;
-        $ionicHistory.goBack();
-      }
-      else {
-        LoadingService.show();
-        $ionicSideMenuDelegate.toggleRight();
-
-        $timeout(function() {
-
-          LoadingService.hide();
-        }, 1000);
-
-      }
-
-    }
-
-    $scope.showSuccess = function(msg) {
-        if (!$scope.progress_active)  {
-            $scope.progress_active = true;
-            $cordovaProgress.showSuccess(true, msg);
-            $timeout(function() {
-              $cordovaProgress.hide();
-              $scope.progress_active = false;
-              $ionicHistory.goBack();
-            }, 1000);
-        } else {
-          console.log('Show success cannot be shown because progress bar is already active');
-        }
-    }
-
-    $scope.savePaymentStatic = function() {
-
-      var successCallback = function() {
-        $scope.success.show(0, 2000, 'Your card was successfully added!');
-        $timeout(function() {
-          $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
-        }, 500);
-
-
-      }
-
-      $scope.savePayment(successCallback, null);
-
-    }
-
-    $scope.savePaymentHome = function() {
-
-      $scope.success.show(500, 2000, 'Your card was successfully added!');
-      $ionicSideMenuDelegate.toggleRight();
-    }
-
+    // add card
     $scope.savePayment = function() {
-      LoadingService.show();
-      var cardNum = $scope.card_details.number;
-      var expMM = $scope.card_details.expiry.split(' / ')[0];
-      var expYY = $scope.card_details.expiry.split(' / ')[1];
+      LoadingService.showAmbig('Verifying', 5000);
+      var cardNum = $scope.cardForm.number;
+      var expMM = $scope.cardForm.exp.split(' / ')[0];
+      var expYY = $scope.cardForm.exp.split(' / ')[1];
 
       console.log('new details', cardNum, expMM, expYY);
 
@@ -186,21 +79,22 @@
             card_type: response.card.brand,
           }
 
-          if ($scope.debitCardOnly) {
-            cardInfo.debit_card = true;
-            cardInfo.is_transfer_card = true;
-            if (!$scope.user.transfer_cards) {
-              $scope.user.transfer_cards = [];
-            }
-            $scope.user.transfer_cards.push(cardInfo);
-          } else {
-            cardInfo.card = true;
-            cardInfo.is_payment_card = true;
-            if (!$scope.user.payment_cards) {
-              $scope.user.payment_cards = [];
-            }
-            $scope.user.payment_cards.push(cardInfo);
+          cardInfo.debit_card = true;
+          cardInfo.is_transfer_card = true;
+          if (!$scope.user.transfer_cards) {
+            $scope.user.transfer_cards = [];
           }
+          $scope.user.transfer_cards.push(cardInfo);
+
+          // if ($scope.debitCardOnly) {
+          // } else {
+          //   cardInfo.card = true;
+          //   cardInfo.is_payment_card = true;
+          //   if (!$scope.user.payment_cards) {
+          //     $scope.user.payment_cards = [];
+          //   }
+          //   $scope.user.payment_cards.push(cardInfo);
+          // }
           LoadingService.hide();
           $scope.user.cards.push(cardInfo);
           LoadingService.show();
@@ -270,79 +164,57 @@
       }
 
       $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
-
-      alert('Card Successfully Deleted');
-      $ionicHistory.goBack();
+      LoadingService.showSuccess('Card Successfully Deleted', 2000);
     }
 
+    $scope.editPayment = function(card) {
+      $scope.card = card;
+      $scope.cardForm = {
+        number: '**** **** **** ' + card.card_last4,
+        exp: '** / **'
+      }
+      var paymentModalLink = document.getElementById('cta-modal-payments');
+      var close_elem = document.querySelector('#cta-modal-payments .cta-modal-close');
+      close_elem.addEventListener('click', function() {
+        paymentModalLink.classList.remove('show');
+        if ($scope.LOCAL) {
+          $scope.cardForm.number = '4000056655665556';
+          $scope.cardForm.exp = '09 / 2016';
+        } else {
+          $scope.cardForm = {number: '', exp:''};
+        }
+      });
+      paymentModalLink.classList.add('show');
 
+      // console.log('payment modal link', paymentModalLink);
+      // paymentModalLink.click();
+    }
 
+    $scope.setDefaultTransfer = function() {
 
-
-    $scope.setDefault = function() {
-
-      var cardInfo = {
-        card: {
-          id: $scope.card.id
+      var cardPayload = { card: { id: $scope.card.id, default_transfer:true } }
+      for (var i = 0; i < $scope.user.transfer_cards.length; i++) {
+        if ($scope.card.id != $scope.user.transfer_cards[i].id) {
+          $scope.user.transfer_cards[i].is_default_transfer = false;
         }
       }
 
-      var user_card = $scope.card;
+      cardPayload.default_transfer = true;
+      $scope.user.updateObj($scope.user, 'cards', cardPayload, $scope);
 
-      if ($scope.debitCardOnly) {
-
-          for (var i = 0; i < $scope.user.transfer_cards.length; i++) {
-            if (user_card.id != $scope.user.transfer_cards[i].id) {
-              $scope.user.transfer_cards[i].is_default_transfer = false;
-            }
-          }
-
-          cardInfo.default_transfer = true;
-
-      }
-
-      else {
-
-          for (var i = 0; i < $scope.user.payment_cards.length; i++) {
-              if (user_card.id != $scope.user.payment_cards[i].id) {
-                  $scope.user.payment_cards[i].is_default_payment = false;
-              }
-          }
-          cardInfo.default_payment = true;
-      }
-      $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
-      alert('Card Default Set!');
-      $ionicHistory.goBack();
+      LoadingService.showSuccess('Default set!', 2000);
 
     }
-    $scope.card_already_created = false;
 
 
     $scope.$on('modal.shown', function() {
 
 
-        if ($scope.paymentsModal && $scope.paymentsModal.isShown() && !$scope.card_already_created) {
-          console.log('instantiating');
-          $scope.card_already_created = true;
-          $timeout(function() {
-            $scope.initCardAndFocusInput();
-          }, 750);
-        }
     });
 
 
-    $scope.injectCardPngClass = function() {
 
-    }
 
-    $scope.getCardType = function(number) {
-      return 'visa';
-    }
-
-    $scope.validatedAddCardForm = function(card_num, ccv) {
-      //validated card farm
-      return true;
-    }
 
     var checkInputState = function(event) {
 
@@ -386,102 +258,6 @@
 
             return "";
         }
-
-
-
-
-    $scope.$on('$ionicView.beforeEnter', function(){
-
-
-    });
-
-    $scope.initCardAndFocusInput = function(callback) {
-      var payment_input = document.getElementById('card-input');
-      payment_input.focus();
-
-      var values = {name:$scope.user.name || null};
-      var formSelectors = {
-              numberInput: 'input#card-input',
-              expiryInput: 'input#expiry-input',
-      }
-
-
-
-      if ($scope.root.vars.editCardClicked) {
-        values.number = $scope.card_details.number;
-        values.expiry = '**/**';
-      }
-
-      $scope.card_js = new Card({
-          form: document.querySelector('form'),
-          container: '.card-wrapper',
-          values: values,
-          formSelectors: formSelectors,
-      });
-
-      if (callback) {
-        callback();
-      }
-
-    }
-
-    $scope.fireKeyUpEvent = function() {
-      var elem = document.getElementById('card-input');
-      var e = document.createEvent("KeyboardEvent");
-      e.initEvent("keyup", true, true);
-      e.view = window;
-      e.altKey = false;
-      e.ctrlKey = false;
-      e.shiftKey = false;
-      e.metaKey = false;
-      e.keyCode = 0;
-      e.charCode = 'a';
-      e.keyCode = 32;
-
-      elem.dispatchEvent(e);
-    }
-
-    $scope.$on('$ionicView.enter', function(){
-
-        if ($scope.root.vars.previous_page_ranking) {
-          $scope.debitCardOnly = true;
-        }
-
-        $timeout(function() {
-          LoadingService.hide();
-        }, 250);
-
-        var callback;
-        if ($scope.root.vars.editCardClicked) {
-          $scope.data.card_exists = true;
-
-          $timeout(function() {
-            var callback = function() {
-              $scope.card = JSON.parse($stateParams.cardObj);
-              $scope.card_details.expiry = '** / **';
-              $scope.card_details.number = '****-****-****-' + $scope.card.card_last4;
-              $timeout(function() {
-                $scope.fireKeyUpEvent();
-              }, 750);
-            }
-            $scope.initCardAndFocusInput(callback);
-          }, 500);
-        }
-
-        $timeout(function() {
-          var card_already_created = document.getElementsByClassName('jp-card');
-          if (!card_already_created || !card_already_created.length) {
-            $scope.initCardAndFocusInput(callback);
-          }
-
-        }, 500)
-
-    });
-
-    $scope.$on('$ionicView.leave', function() {
-      console.log('leaving view..');
-      $scope.root.vars.editCardClicked = null;
-    });
 
   }
 
