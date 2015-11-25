@@ -779,6 +779,8 @@ if arg == 'short_name':
             print "VALUE:", ratio_num
             print uni.name, '---', new_short_name
             uni.short_name = new_short_name
+            if new_short_name.lower() not in uni.variations:
+                uni.variations = uni.variations +' ' + new_short_name.lower()
             db_session.commit()
             # else:
             #     print "VALUE:", ratio_num
