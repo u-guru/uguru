@@ -15,13 +15,21 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
 		showFailure: showFailure,
 		showSuccess: showSuccess,
 		updateSuccessText: updateSuccessText,
-		hide: hide
+		hide: hide,
+        showMsg: showMsg
 	};
 
     function show() {
         $ionicLoading.show({
             templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html'
         });
+    }
+
+    function showMsg(message, duration) {
+        $ionicLoading.show({
+            template: '<span id="E2E-msg" class="capitalized">' + message + '</span>',
+            duration: duration || 2000,
+        })
     }
 
     function showAmbig(text, duration, callback) {
