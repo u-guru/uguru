@@ -360,13 +360,14 @@ angular.module('uguru.desktop.controllers', [])
     $scope.launchEditStudentNamePopup = function($event) {
 
       if ($scope.user.name) {
+       
         $scope.popupInput.editName = $scope.user.name;
       }
-
+   
       PopupService.open('editName', callback, $event.target);
       function callback() {
         if (Utilities.validateName($scope.popupInput.editName)) {
-            $scope.user.name = $scope.popupInput.editName;
+            $scope.user.name = toTitleCase($scope.popupInput.editName);
         } else {
           alert('Please enter your full name');
           return;
@@ -376,7 +377,10 @@ angular.module('uguru.desktop.controllers', [])
         PopupService.close('editName');
       }
     }
-
+    function toTitleCase(str)
+    {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
 
 
     //settings info

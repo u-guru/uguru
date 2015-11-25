@@ -285,6 +285,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           var guruProfileLine = initGuruHorizontalProgress('#guru-profile-progress-bar', 'profile-percent');
 
           $scope.user.current_profile_percent = RankingService.calcProfile($scope.user);
+          console.error("Check", $scope.user.current_profile_percent)
           animateProgressLine(guruProfileLine, $scope.user.current_profile_percent || 40);
 
           var guruHourlyLine = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
