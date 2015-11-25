@@ -1,7 +1,7 @@
 
 var device = 'desktop'
-var IP = "http://localhost:5000/static/remote/index.html"
- // var IP = "http://localhost:8100"
+// var IP = "http://localhost:5000/static/remote/index.html"
+ var IP = "http://localhost:8100/#/university"
 
 exports.config = {
      params: {
@@ -24,9 +24,9 @@ exports.config = {
         {
             feature : [
                   '../e2e/browser/loginSpec.js', 
-                  '../e2e/browser/chatSpec.js',
+                  // '../e2e/browser/chatSpec.js',
                   '../e2e/browser/paymentSpec.js',
-                  '../e2e/browser/referralsSpec.js'
+                  // '../e2e/browser/referralsSpec.js'
 
                  ],
             ios  :[

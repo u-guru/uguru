@@ -44,6 +44,41 @@ describe('Payment Spec',function ()
 				})
 			})
 		});
+		describe("Adding Payment Card",function()
+		{
+			it("+ Add new card",function()
+			{
+				$('#cta-box-payments').click();
+				browser.wait(EC.visibilityOf($$('.desktop-forms-container').get(0)),3000);
+			})
+			it('Confirm the payment',function()
+			{
+				$('[ng-click="savePayment()"]').click()
+
+			});
+			it("Check Payment has been closed",function()
+			{
+				browser.wait(EC.invisibilityOf($$('.desktop-forms-container').get(0)),3000);
+			});
+		});
+
+		describe("Edit Payment Card",function()
+		{
+			it("+ Edit card",function()
+			{
+				$('[ng-click="editPayment(card)"]').click();
+				browser.wait(EC.visibilityOf($$('.desktop-forms-container').get(0)),3000);
+			})
+			it('Confirm the payment',function()
+			{
+				expect($('[ng-click="savePayment()"]').getText()).toContain('Edit')
+			});
+			it("Check Payment has been closed",function()
+			{
+				browser.wait(EC.invisibilityOf($$('.desktop-forms-container').get(0)),3000);
+			});
+		});
+		
 		describe('Cash out',function()
 		{
 			it('Check Cashout is not displayed when 0 balance',function()
