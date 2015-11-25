@@ -243,7 +243,13 @@ angular.module('uguru.util.controllers')
         $scope.rootUser = User;
         $scope.root = RootService;
         $scope.root.vars = {};
-        $scope.root.vars.page_cache = {};
+
+        //create indepedent thread since blocking fun
+        $timeout(function() {
+            $scope.root.vars.page_cache = $localstorage.getObject('page_cache') || {};
+        }, 0)
+
+
         $scope.root.vars.remote_cache = [];
         $scope.root.vars.onboarding = false;
         $scope.root.vars.request_cache = {};

@@ -876,8 +876,10 @@ angular.module('uguru.guru.controllers')
 
 
     $timeout(function() {
-      $scope.calcGuruCredibilityProgress();
-      $scope.initModalsAfterEnter();
+      if (!$scope.desktopMode) {
+        $scope.calcGuruCredibilityProgress();
+        $scope.initModalsAfterEnter();
+      }
     }, 500)
 
      $scope.$on('modal.hidden', function() {

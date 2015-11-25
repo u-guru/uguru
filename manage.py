@@ -739,6 +739,57 @@ if arg == 'update_targetted':
         db_session.commit()
     print len(University.query.filter_by(is_targetted=True).all())
 
+def getLongestAcronym(arr):
+    sorted_arr = sorted(arr, key=lambda k:len(k), reverse=True)
+    return sorted_arr[0]
+def findBestMatch(uni_name, wiki_names):
+    uni_name_formatted = uni_name.replace('-', ' ').replace(',', ' ').replace('  ', ' ').lower()
+    current_best_ratio = 0
+    current_best_value = ''
+    for name in wiki_names:
+        wiki_name_formatted = name.replace(',', ' ').replace('-', ' ').replace('  ', ' ').lower()
+        ratio = fuzz.ratio(uni_name_formatted, wiki_name_formatted)
+        if ratio > current_best_ratio:
+            current_best_ratio = ratio
+            current_best_value = name
+    return current_best_value, current_best_ratio
+
+if arg == 'short_name':
+    import json
+    from fuzzywuzzy import fuzz, process
+    previous_university_titles = [university.name for university in University.query.all()]
+    college_dict = json.load(open('app/static/data/college_short_names.json'))
+    wiki_names = college_dict.keys()
+    from app.models import University
+    universities = University.query.all()
+    from app.database import db_session
+    universities = [uni for uni in universities if uni.us_news_ranking and uni.us_news_ranking < 220]
+    count = 0
+    matches = 0
+    reprocess = []
+    for uni in universities:
+        # if len(uni.name) > 22:
+        count += 1
+        uni_name_formatted = uni.name.replace('-', ' ').replace(',', ' ').lower()
+        current_best, ratio_num =  findBestMatch(uni.name, wiki_names)
+        if ratio_num >= 90 and abs(len(uni_name_formatted) - len(current_best)) < 4:
+            matches += 1
+            new_short_name = getLongestAcronym(college_dict[current_best])
+            # print new_short_name
+            print "VALUE:", ratio_num
+            print uni.name, '---', new_short_name
+            uni.short_name = new_short_name
+            db_session.commit()
+            # else:
+            #     print "VALUE:", ratio_num
+            #     print uni.name, '---', current_best
+            #     print
+            #     reprocess.append(uni.name)
+
+    print count, matches
+    print len(reprocess), 'left to go'
+
+
 if arg == 'save_languages':
     languages_arr = []
     for language in Language.query.all():
