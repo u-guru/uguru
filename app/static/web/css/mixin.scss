@@ -33,6 +33,10 @@
 @mixin border-radius($radius) {
 	border-radius: $radius+px;
 }
+@mixin full-xy {
+	width: 100%;
+	height: 100%;
+}
 @mixin center-x {
 	position: absolute;
 	left: 50%;

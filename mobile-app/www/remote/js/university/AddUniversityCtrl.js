@@ -1,31 +1,32 @@
 angular.module('uguru.util.controllers', ['sharedServices'])
-.controller('AddUniversityCtrl', [
+	.controller('AddUniversityCtrl', [
 
-  //All imported packages go here
-  '$rootScope',
-  '$scope',
-  '$state',
-  '$timeout',
-  'University',
-  '$ionicViewSwitcher',
-  'Geolocation',
-  'Utilities',
-  '$ionicSlideBoxDelegate',
-  'DeviceService',
-  'uTracker',
-  '$q',
-  'AnimationService',
-  'PerformanceService',
-  '$templateCache',
-  'AccessService',
-  '$ionicModal',
-  'ModalService',
-  '$controller',
-  'MapService',
-  '$ionicSideMenuDelegate',
-  'LoadingService',
-  '$localstorage',
-  AddUniversityCtrl]);
+		//All imported packages go here
+		'$rootScope',
+		'$scope',
+		'$state',
+		'$timeout',
+		'University',
+		'$ionicViewSwitcher',
+		'Geolocation',
+		'Utilities',
+		'$ionicSlideBoxDelegate',
+		'DeviceService',
+		'uTracker',
+		'$q',
+		'AnimationService',
+		'PerformanceService',
+		'$templateCache',
+		'AccessService',
+		'$ionicModal',
+		'ModalService',
+		'$controller',
+		'MapService',
+		'$ionicSideMenuDelegate',
+		'LoadingService',
+		'$localstorage',
+		AddUniversityCtrl
+	]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
@@ -230,94 +231,89 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   }
 
 
+
 }
 
 angular.module('uguru.directives')
-.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService, LoadingService) {
+	.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService, LoadingService) {
 
-  function link($scope, element, attributes) {
-    var queryPromise = null;
-    $timeout(function() {
+		function link($scope, element, attributes) {
+			var queryPromise = null;
+			$timeout(function() {
 
-      $scope.$parent.$watch(
-        'refresh.universities',
-        function(newValue, oldValue) {
-          console.log("heard something!", newValue, oldValue);
-          if(newValue === 'update' ) {
-
-
-            // LoadingService.showAmbig('Calculating distance...', 2000);
-              Geolocation.getLocation($scope, $scope.source, function(results) {
-                $timeout(function() {
-                  $scope.listScope = results;
-                }, 0);
-              }, DeviceService.isIOSDevice());
-
-          }
-        }
-      );
-
-      $scope.$parent.$watch(
-        'search_text.university',
-        function(newValue, oldValue) {
-
-          if(newValue.length < oldValue.length) {
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 90);
-          }
-
-          else if(newValue.length === 1) {
-
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 75);
-          }
-
-          else if(newValue.length === 0) {
-
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 50);
-          }
-
-          else {
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-
-            }, 50);
-          }
-        }
-
-      );
-    }, 250);
-
-  }
-
-  return {
-    scope: {
-      listScope: '=bindList',
-      source: '=source',
-    },
-    link: link,
-    restrict: 'A'
-  };
+				$scope.$parent.$watch(
+					'refresh.universities',
+					function(newValue, oldValue) {
+						console.log("heard something!", newValue, oldValue);
+						if (newValue === 'update') {
 
 
-});
+							// LoadingService.showAmbig('Calculating distance...', 2000);
+							Geolocation.getLocation($scope, $scope.source, function(results) {
+								$timeout(function() {
+									$scope.listScope = results;
+								}, 0);
+							}, DeviceService.isIOSDevice());
+
+						}
+					}
+				);
+
+				$scope.$parent.$watch(
+					'search_text.university',
+					function(newValue, oldValue) {
+
+						if (newValue.length < oldValue.length) {
+							if (queryPromise) {
+								$timeout.cancel(queryPromise);
+							}
+							queryPromise = $timeout(function() {
+								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+								queryPromise = null;
+							}, 90);
+						} else if (newValue.length === 1) {
+
+							if (queryPromise) {
+								$timeout.cancel(queryPromise);
+							}
+							queryPromise = $timeout(function() {
+								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+								queryPromise = null;
+							}, 75);
+						} else if (newValue.length === 0) {
+
+							if (queryPromise) {
+								$timeout.cancel(queryPromise);
+							}
+							queryPromise = $timeout(function() {
+								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+								queryPromise = null;
+							}, 50);
+						} else {
+							if (queryPromise) {
+								$timeout.cancel(queryPromise);
+							}
+							queryPromise = $timeout(function() {
+								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+								queryPromise = null;
+
+							}, 50);
+						}
+					}
+
+				);
+			}, 250);
+
+		}
+
+		return {
+			scope: {
+				listScope: '=bindList',
+				source: '=source',
+			},
+			link: link,
+			restrict: 'A'
+		};
+
+
+	});

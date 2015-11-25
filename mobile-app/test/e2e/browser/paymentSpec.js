@@ -44,12 +44,13 @@ describe('Payment Spec',function ()
 				})
 			})
 		});
-		describe("Adding Payment Card",function()
+		
+		describe("Adding Payment Card - 1",function()
 		{
 			it("+ Add new card",function()
 			{
 				$('#cta-box-payments').click();
-				browser.wait(EC.visibilityOf($$('.desktop-forms-container').get(0)),3000);
+				browser.wait(EC.visibilityOf($('.desktop-forms-container .relative.full-x')),3000);
 			})
 			it('Confirm the payment',function()
 			{
@@ -58,7 +59,25 @@ describe('Payment Spec',function ()
 			});
 			it("Check Payment has been closed",function()
 			{
-				browser.wait(EC.invisibilityOf($$('.desktop-forms-container').get(0)),3000);
+				browser.wait(EC.invisibilityOf($('.desktop-forms-container .relative.full-x')),3000);
+			});
+		});
+
+		describe("Adding Payment Card - 2",function()
+		{
+			it("+ Add new card",function()
+			{
+				$('#cta-box-payments').click();
+				browser.wait(EC.visibilityOf($('.desktop-forms-container .relative.full-x')),3000);
+			})
+			it('Confirm the payment',function()
+			{
+				$('[ng-click="savePayment()"]').click()
+
+			});
+			it("Check Payment has been closed",function()
+			{
+				browser.wait(EC.invisibilityOf($('.desktop-forms-container .relative.full-x')),3000);
 			});
 		});
 
@@ -67,7 +86,7 @@ describe('Payment Spec',function ()
 			it("+ Edit card",function()
 			{
 				$('[ng-click="editPayment(card)"]').click();
-				browser.wait(EC.visibilityOf($$('.desktop-forms-container').get(0)),3000);
+				browser.wait(EC.visibilityOf($('.desktop-forms-container .relative.full-x')),3000);
 			})
 			it('Confirm the payment',function()
 			{
@@ -75,7 +94,7 @@ describe('Payment Spec',function ()
 			});
 			it("Check Payment has been closed",function()
 			{
-				browser.wait(EC.invisibilityOf($$('.desktop-forms-container').get(0)),3000);
+				browser.wait(EC.invisibilityOf($('.desktop-forms-container .relative.full-x')),3000);
 			});
 		});
 		

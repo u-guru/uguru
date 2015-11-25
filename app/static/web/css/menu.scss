@@ -23,7 +23,7 @@ body {
 // BOTTOM CORNER WHITE ICONS
 #corner-menu-icons {
     @include listless;
-    @include flex;
+    display: none;
     position: fixed;
     bottom: 5px;
     left: 5px;
@@ -53,10 +53,9 @@ body {
 		text-align: center;
 		svg {
 			@include transition-type(width, .15s ease-in);
+            @include full-xy;
 			display: block;
 			margin: 10px auto;
-			width: 100%;
-			height: 100%;
 		}
 	}
 	#top-menu {
@@ -98,10 +97,9 @@ body {
 // OVERLAY
 #full-overlay {
 	@include opacity(0);
+    @include full-xy;
 	position: absolute;
 	z-index: 0;
-	width: 100%;
-	height: 100%;
 	background-color: rgba($charcoal, .5);
 	&.active {
 		@include opacity(1);
@@ -128,11 +126,10 @@ body {
 #start-modal {
 	@include opacity(1);
 	@include center-xy;
+    @include full-xy;
 	display: block;
 	z-index: 1000001;
 	background: transparent;
-	width: 100%;
-	height: 100%;
 	overflow: hidden;
 	&.show {
 	    visibility:  visible;
@@ -266,9 +263,8 @@ body {
                 font-size: 20px!important;
             }
         	#submit-info-loader.svg-container {
+                @include full-xy;
         		display: none;
-        	    width: 100%;
-        	    height: 100%;
         		margin: 0 auto;
         	    text-align: center;
         		&.active {
@@ -432,10 +428,9 @@ body {
 // SIDEBAR MENU
 #side-menu-wrapper {
 	@include opacity(0);
+    @include full-xy;
 	position: fixed;
 	z-index: 0;
-	width: 100%;
-	height: 100%;
 	&.active {
 		@include opacity(1);
 		z-index: 999999999999;
@@ -443,10 +438,9 @@ body {
 }
 #side-menu {
 	@include transition(.15s ease-in);
+    @include full-xy;
 	display: block!important;
 	position: relative;
-	width: 100%;
-	height: 100%;
 	background: rgba($slate,.8);
 	&.animated.slideInLeft,
 	&.animated.slideOutLeft {
@@ -615,7 +609,19 @@ body {
 	}
 }
 
+@media screen and (max-width:48em) {
+    #intercom-container {
+        z-index: -999999!important;
+        .intercom-launcher-button {
+            z-index: -999999!important;
+        }
+    }
+}
+
 @media screen and (min-width:48em) {
+    #corner-menu-icons {
+        @include flex;
+    }
 	#start-modal {
         .modal-main-container {
             .start-modal-platforms {

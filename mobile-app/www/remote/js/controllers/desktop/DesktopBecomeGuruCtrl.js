@@ -36,7 +36,7 @@ angular.module('uguru.desktop.controllers')
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
-    var CTA_PARENT = '#desktop-guru-onboarding';
+    var CTA_PARENT = '#desktop-guru-onboarding div.main';
     var CTA_OPTIONS = {
         duration:0.5,
         extraTransitionDuration:1
@@ -125,11 +125,17 @@ angular.module('uguru.desktop.controllers')
                 $timeout(function() {
                     modal_elem.classList.add('show');
                 }, 200);
-                  modal_elem.querySelector('.cta-modal-close').addEventListener('click', function() {
+
+                var nestedCTACloseButtons = modal_elem.querySelectorAll('.cta-modal-close')
+                for (var j = 0; j < nestedCTACloseButtons.length; j++) {
+                  var indexCTAButton = nestedCTACloseButtons[j];
+
+                  indexCTAButton.addEventListener('click', function() {
                     $scope.calculateProgress();
-                    modal_elem.classList.remove('show');
                     closeCTAModal();
+                    modal_elem.classList.remove('show');
                   });
+                }
             }, CTA_PARENT);
         });
     }

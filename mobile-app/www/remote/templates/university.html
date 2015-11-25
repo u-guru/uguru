@@ -5,8 +5,8 @@
 	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
 		<ion-view class='uguru-view university-view'>
 			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='desktopMode'>
-			    <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
-				<header class="desktop-header">
+			    <span data-velocity id="main-logo-container" ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+				<header data-velocity class="desktop-header">
 					<a class="desktop-header-back" ng-click='backToAccess()'>
 						<svg viewBox="0 0 100 100">
 							<path d="M68,86 L32,50 L68,14"></path>
@@ -14,7 +14,7 @@
 					</a>
 				</header>
 			    <div class="main default">
-			        <form>
+			        <form data-velocity>
 			            <div class="input-field">
 							<i class="material-icons prefix">
 								<svg viewBox="0 0 100 100">
@@ -28,9 +28,9 @@
 							</a>
 			            </div>
 			        </form>
-			        <div id="school-list" class="desktop-search-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()'>
+			        <div data-velocity id="school-list" class="desktop-search-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()'>
 			            <ul class='desktop-card-list'>
-			                <li ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+			                <li data-velocity ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
 			                    <a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
 			                        <span class="list-item-overlay" style="background:{{university.school_color_one}}"></span>
 			                        <span class="school-icon">
@@ -107,6 +107,4 @@
 			</section>
 		</ion-view>
 	</u-slide>
-
-
 </u-slide-box>
