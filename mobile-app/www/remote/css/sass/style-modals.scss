@@ -1395,3 +1395,141 @@
 		}
 	}
 }
+
+// CONVERTED DESKTOP SIDEBAR LIST
+.mobile-mode {
+	.sidebar-layout-list {
+		overflow: auto;
+		li {
+			@include flex;
+			padding: 15px;
+			border-bottom: 1px solid rgba(white,.4);
+			&:last-child {
+				border-bottom: 0;
+			}
+			.user-icon {
+				width: 60px;
+				height: 60px;
+				border-width: 3px;
+				+ div {
+					padding-left: 15px;
+				}
+			}
+			div {
+				width: calc(100% - 60px);
+				h3, span {
+					font-weight: 400;
+					b {
+						font-weight: 600;
+					}
+				}
+				h3 {
+					font-size: 22px;
+				}
+				span {
+					color: rgba(white,.5);
+					font-size: 18px;
+				}
+			}
+			.chip {
+				min-width: 60px;
+				text-align: center;
+			}
+		}
+	}
+}
+
+// REFERRALS
+.mobile-referrals-modal {
+	.referral-code {
+		height: calc(100% / 3 - 50px);
+		background: $slate;
+		div {
+			@include flex;
+			@include flex-center;
+			height: calc(100% - 36px);
+			h1 {
+				background: rgba($charcoal,.6);
+				padding: 5px 15px;
+				font-size: 48px;
+				font-weight: 600;
+			}
+		}
+	}
+	.main {
+		height: calc(100% / 3 * 2)!important;
+		.section-header-dark {
+			background: $shamrock!important;
+		}
+		> div {
+			height: calc(100% - 36px);
+			overflow: auto;
+		}
+		#referrals-stats {
+			text-align: center;
+			padding: 1px;
+			li {
+				padding: 1px;
+				div {
+					padding: 15px;
+					background: rgba($charcoal,.6);
+					h1 {
+						font-size: 72px;
+						font-weight: 900;
+					}
+					span {
+						font-size: 18px;
+						font-weight: 400;
+						line-height: 1.2;
+					}
+				}
+			}
+		}
+	}
+}
+
+// BALANCE
+.mobile-balance-modal {
+	.main {
+		height: calc(100% - 50px)!important;
+		.sidebar-layout-list {
+			height: calc(100% - 166px);
+			overflow: auto;
+			padding-bottom: 64px;
+			li {
+				@include flex;
+				padding: 15px;
+			}
+			span.transaction-date {
+				font-weight: 700;
+				font-size: 16px;
+				opacity: .5;
+			}
+		}
+	}
+	#balance-stats {
+		text-align: center;
+		padding: 1px;
+		li {
+			padding: 1px;
+			div {
+				padding: 15px;
+				min-height: 162px;
+				background: rgba($charcoal,.6);
+				h1 {
+					font-size: 72px;
+					font-weight: 900;
+				}
+				h2 {
+					font-size: 64px;
+					font-weight: 900;
+				}
+				span {
+					font-size: 18px;
+					font-weight: 400;
+					line-height: 1.2;
+				}
+			}
+		}
+	}
+}
