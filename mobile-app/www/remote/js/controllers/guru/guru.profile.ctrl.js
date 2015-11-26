@@ -323,7 +323,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.launchAddGuruExperienceModal = function(experience, index) {
-      console.error(index);
+      // console.error(index);
       $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'

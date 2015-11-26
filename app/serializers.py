@@ -10,6 +10,7 @@ university_fields['city'] = fields.String(attribute='city')
 university_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
 university_fields['latitude'] = fields.Float(attribute='latitude')
 university_fields['longitude'] = fields.Float(attribute='longitude')
+university_fields['short_name'] = fields.String(attribute='short_name')
 
 major_fields = {}
 major_fields['id'] = fields.Integer(attribute='id')

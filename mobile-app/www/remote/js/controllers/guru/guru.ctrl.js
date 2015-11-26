@@ -109,6 +109,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $state.go('^.guru-credibility');
   }
         var initGuruRankProgress = function(selector, color, fillColor, setValue) {
+          if (!$scope.selector) {
+            $scope.selector = selector;
+          } else {
+            return;
+          }
           var circle = new ProgressBar.Circle(selector, {
               color: color || "rgba(255,255,255,1)",
               strokeWidth: 8,
@@ -377,8 +382,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
             $timeout(function() {
               $scope.user.guru_ranking = actualRankingValue;
+              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
             }, 2500)
-            animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
           }
         });
 

@@ -1,244 +1,170 @@
-<style>
-
-	/*#userMessagesView {*/
-
-		/* allows the bar-footer to be elastic /*
-		/* optionally set a max-height */
-		/* maxlength on the textarea will prevent /*
-		/* it from getting too large also */
-		.bar-footer {
-		  overflow: visible !important;
-		}
-
-		.item-input-wrapper textarea {
-			width:100%;
-			border-radius:12px;
-		}
-
-		.bar-footer textarea {
-		  resize: none;
-		  height: 25px;
-		}
-
-		/* fixes an ios bug bear */
-		button.ion-android-send {
-		  padding-top: 2px;
-		}
-
-		/* add this to keep your footer buttons down
-		at the bottom as the textarea resizes */
-		.footer-btn-wrap {
-		  position: relative;
-		  height: 100%;
-		  width: 50px;
-		  top: 7px;
-		}
-
-		.footer-btn {
-		  position: absolute !important;
-		  bottom: 0;
-		}
-
-		img.profile-pic {
-		  width: 40px;
-		  height: 40px;
-		  border-radius: 50%;
-		  position: absolute;
-		  bottom: 10px;
-		}
-
-		img.profile-pic.left {
-		  left: 10px;
-		}
-
-		img.profile-pic.right {
-		  right: 10px;
-		}
-
-		.ion-email {
-		  float: right;
-		  font-size: 32px;
-		  vertical-align: middle;
-		}
-
-		.message {
-		  font-size: 14px;
-		}
-
-		.message-detail {
-		  white-space: nowrap;
-		  font-size: 14px;
-		}
-
-		.bar.item-input-inset .item-input-wrapper input {
-		  width: 100% !important;
-		}
-
-		.message-wrapper {
-		  position: relative;
-		}
-
-		.message-wrapper:last-child {
-		  margin-bottom: 10px;
-		}
-
-		.chat-bubble {
-		  border-radius: 5px;
-		  display: inline-block;
-		  padding: 10px 18px;
-		  position: relative;
-		  margin: 10px;
-		  max-width: 80%;
-		}
-
-		.chat-bubble:before {
-		  content: "\00a0";
-		  display: block;
-		  height: 16px;
-		  width: 9px;
-		  position: absolute;
-		  bottom: -7.5px;
-		}
-
-		.chat-bubble.left {
-		  background-color: #e6e5eb;
-		  float: left;
-		  margin-left: 55px;
-		}
-
-		.chat-bubble.left:before {
-		  background-color: #e6e5eb;
-		  left: 10px;
-		  -webkit-transform: rotate(70deg) skew(5deg);
-		}
-
-		.chat-bubble.right {
-		  background-color: #158ffe;
-		  color: #fff;
-		  float: right;
-		  margin-right: 55px;
-		}
-
-		.chat-bubble.right:before {
-		  background-color: #158ffe;
-		  right: 10px;
-		  -webkit-transform: rotate(118deg) skew(-5deg);
-		}
-
-		.chat-bubble.right a.autolinker {
-		  color: #fff;
-		  font-weight: bold;
-		}
-
-		.user-messages-top-icon {
-		  font-size: 28px;
-		  display: inline-block;
-		  vertical-align: middle;
-		  position: relative;
-		  top: -3px;
-		  right: 5px;
-		}
-
-		.msg-header-username {
-		  display: inline-block;
-		  vertical-align: middle;
-		  position: relative;
-		  top: -3px;
-		}
-
-		input, textarea, .item-input, .item-input-wrapper {
-		  background-color: #f4f4f4 !important;
-		}
-
-		.bold {
-		  font-weight: bold;
-		}
-
-		.cf {
-		  clear: both !important;
-		}
-
-		a.autolinker {
-		  color: #3b88c3;
-		  text-decoration: none;
-		}
+<main id="messenger-content" cache-view="false" class="pane uguru-view guru-view bg-slate guru-view-mobile full-x" nav-view="active">
+	<header>
+		<div class='header-nav'>
+			<a class='header-nav-back mobile-message-options' ng-click='toggleMessageOptions()'>
+				<svg viewBox="0 0 100 100">
+					<path ng-show='!messageOptionsShown' d="M14,23 L86,23"></path>
+					<path d="M14,50 L86,50"></path>
+					<path ng-show='!messageOptionsShown' d="M14,77 L86,77"></path>
+				</svg>
+			</a>
+			<a class="header-nav-close header-close" ng-click="messagesModal.hide()">
+				<svg viewBox="0 0 100 100">
+					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</div>
+		<h1 class="text-center">{{user.name}}</h1>
+		<!-- <h1 class="text-center">{{active_relationship.student.name}}</h1> -->
+	</header>
 
 
-	/*}*/
+	<!-- ngIf: !doneLoading -->
+	<section id='message-container'>
+		<ul id='messenger-subheader' class='ng-class:{"active":messageOptionsShown}'>
+			<li ng-repeat='relationship in user.student_relationships'>
+				<a ng-click='setToActiveRelationship(relationship)' ng-if='relationship.id !== active_relationship.id' class='relative'>
+					<span class='student-photo-container'>
+						<img ng-src="{{relationship.student.profile_url}}" />
+						<span class='guru-name'> {{relationship.student.name || 'NA'}} </span>
+					</span>
+				</a>
+			</li>
+		</ul>
+		<div id='messages' class="scroll">
 
-</style>
+			<div class="message-single left">
+				<div class="message-single-icon">
+					<img src="https://s3.amazonaws.com/uguruprof/eb6fdc36b281b7d5eabf33396c2683a2.jpg">
+				</div>
+				<div class="message-single-content">
+					<div class="message-single-info">
+						<span>Stephanie K.</span>
+						<span>8:09 pm</span>
+					</div>
+					<div class="message-single-message">
+						Hi! Are you available tomorrow morning at 10 or in the evening after 6PM? Thursday and Friday evenings are also free, but I don't know when you're available 
+					</div>
+				</div>
+			</div>
+			<div class="message-single right">
+				<div class="message-single-content">
+					<div class="message-single-info">
+						<span>Me</span>
+						<span>8:38 pm</span>
+					</div>
+					<div class="message-single-message">
+						Hi, any of those times will work for me. Do you need help tomorrow at 10? What location do you prefer?
+					</div>
+				</div>
+				<div class="message-single-icon">
+					<img src="https://s3.amazonaws.com/uguruprof/d6baf65e0b240ce177cf70da146c8dc8.jpg">
+				</div>
+			</div>
+			<div class="message-single right">
+				<div class="message-single-content">
+					<div class="message-single-info">
+						<span>Me</span>
+						<span>8:38 pm</span>
+					</div>
+					<div class="message-single-message">
+						You can also reach me at <span>714-409-4364</span>
+					</div>
+				</div>
+				<div class="message-single-icon">
+					<img src="https://s3.amazonaws.com/uguruprof/d6baf65e0b240ce177cf70da146c8dc8.jpg" class="">
+				</div>
+			</div>
+			<div class="message-single left">
+				<div class="message-single-icon">
+					<img src="https://s3.amazonaws.com/uguruprof/eb6fdc36b281b7d5eabf33396c2683a2.jpg">
+				</div>
+				<div class="message-single-content">
+					<div class="message-single-info">
+						<span>Stephanie K.</span>
+						<span>8:09 pm</span>
+					</div>
+					<div class="message-single-message">
+						Hi! Are you available tomorrow morning at 10 or in the evening after 6PM? Thursday and Friday evenings are also free, but I don't know when you're available 
+					</div>
+				</div>
+			</div>
+			<div class="message-single right">
+				<div class="message-single-content">
+					<div class="message-single-info">
+						<span>Me</span>
+						<span>8:38 pm</span>
+					</div>
+					<div class="message-single-message">
+						Hi, any of those times will work for me. Do you need help tomorrow at 10? What location do you prefer?
+					</div>
+				</div>
+				<div class="message-single-icon">
+					<img src="https://s3.amazonaws.com/uguruprof/d6baf65e0b240ce177cf70da146c8dc8.jpg">
+				</div>
+			</div>
+			<div class="message-single right">
+				<div class="message-single-content">
+					<div class="message-single-info">
+						<span>Me</span>
+						<span>8:38 pm</span>
+					</div>
+					<div class="message-single-message">
+						You can also reach me at <span>714-409-4364</span>
+					</div>
+				</div>
+				<div class="message-single-icon">
+					<img src="https://s3.amazonaws.com/uguruprof/d6baf65e0b240ce177cf70da146c8dc8.jpg" class="">
+				</div>
+			</div>
 
-<main id="messenger-content" cache-view="false" class="pane uguru-view guru-view bg-slate mobguru-view-mobile" nav-view="active" style="width:100% !important;">
-    <header>
-        <div class='header-nav'>
-            <a class="header-close cta-modal-close" ng-click="messagesModal.hide()">
-                <svg viewBox="0 0 100 100">
-                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                </svg>
-            </a>
-            <a class='mobile-message-options' ng-click='toggleMessageOptions()'>
-                <svg viewBox="0 0 100 100">
-                    <path ng-show='!messageOptionsShown' d="M14,23 L86,23"></path>
-                    <path d="M14,50 L86,50"></path>
-                    <path ng-show='!messageOptionsShown' d="M14,77 L86,77"></path>
-                </svg>
-            </a>
-        </div>
-        <h1 class="text-center">{{active_relationship.student.name}}</h1>
-    </header>
 
 
-        <!-- ngIf: !doneLoading -->
-    <section id='message-container'>
-        <div id='messenger-subheader' class='ng-class:{"active":messageOptionsShown}'>
-            <span ng-repeat='relationship in user.student_relationships' class='p5xy'>
-                <a ng-click='setToActiveRelationship(relationship)' ng-if='relationship.id !== active_relationship.id' class='relative'>
-                    <div class='student-photo-container'>
-                        <img class='full-x' ng-src="{{relationship.student.profile_url}}"  /> <br>
-                        <span class='full-x' class='guru-name'> {{relationship.student.name || 'NA'}} </span>
-                    </div>
-                </a>
-            </span>
-        </div>
-        <div id='messages' class="scroll">
+			<!-- ngRepeat: message in messages -->
+			<!-- <div ng-repeat="message in active_relationship.messages" class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}" on-hold="onMessageHold($event, $index, message)">
 
-              <!-- ngRepeat: message in messages --><div ng-repeat="message in active_relationship.messages" class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}" on-hold="onMessageHold($event, $index, message)">
+				<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
+					<img ng-if='user.profile_url' ng-src='{{message.sender.profile_url}}' />
+				</div>
+				<div class="message-single-content">
+					<div class="message-single-info">
+						<span ng-if='message.sender.id !== user.id'>{{message.sender.name}}</span>
+						<span ng-if='message.sender.id === user.id'>Me</span>
+						<span>{{message.time_created}}</span>
+					</div>
+					<div class="message-single-message">
+						{{message.contents}}
+					</div>
+				</div>
+				<div class='message-single-icon' ng-if='message.sender.id === user.id'>
+					<img ng-if='user.profile_url' ng-src='{{user.profile_url}}' />
+				</div>
+			</div> -->
 
-                 <div class='message-single-icon' ng-if='message.sender.id !== user.id'>
-                                        <img ng-if='user.profile_url' ng-src='{{message.sender.profile_url}}'/>
-                                    </div>
-                                    <div class="message-single-content">
-                                        <div class="message-single-info">
-                                            <span ng-if='message.sender.id !== user.id'>{{message.sender.name}}</span>
-                                            <span ng-if='message.sender.id === user.id'>Me</span>
-                                            <span>{{message.time_created}}</span>
-                                        </div>
-                                        <div class="message-single-message">
-                                            {{message.contents}}
-                                        </div>
-                                    </div>
-                                    <div class='message-single-icon' ng-if='message.sender.id === user.id'>
-                                        <img ng-if='user.profile_url' ng-src='{{user.profile_url}}'/>
-                                    </div>
-                </div>
+		</div>
+		<!-- end ngRepeat: message in messages -->
 
-              </div><!-- end ngRepeat: message in messages -->
+		<!-- <div class="scroll-bar scroll-bar-v">
+			<div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 32px, 0px) scaleY(1); height: 988px;"></div>
+		</div> -->
 
-        <div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 32px, 0px) scaleY(1); height: 988px;"></div></div>
+		<form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate="" class="ng-valid-minlength ng-valid-maxlength ng-dirty ng-submitted ng-invalid ng-invalid-required">
+			<ion-footer-bar class="bar-stable item-input-inset message-footer bar bar-footer" keyboard-attach="">
+				<label class="item-input-wrapper">
+					<textarea ng-model="input.message" value="" placeholder="Send {{active_relationship.student.name}} a message..." required="" minlength="1" maxlength="1500" msd-elastic="" class="ng-valid-minlength ng-valid-maxlength ng-touched ng-dirty ng-invalid ng-invalid-required"
+					style="overflow: hidden; word-wrap: break-word; resize: none; height: 20px;"></textarea>
+				</label>
+				<div class="footer-btn-wrap">
+					<button type="submit" ng-disabled="!input.message || input.message === ''" disabled="disabled">
+						<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						    <path d="M40.863416,69.0006669 L19,69.0006669 L49.6939787,14 L80.425686,69.0006669 L58.5612746,69.0006669 L49.7317073,85.6527248 L40.863416,69.0006669 Z M49.7317073,15.3170732 L49.7317073,85.5664621 M49.7317073,14.7032382 L58.6,68.0056713 M49.7317073,15.1365913 L40.8634146,68.4390244" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg>
+					</button>
+				</div>
+			</ion-footer-bar>
+		</form>
 
-          <form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate="" class="ng-valid-minlength ng-valid-maxlength ng-dirty ng-submitted ng-invalid ng-invalid-required">
-              <ion-footer-bar class="bar-stable item-input-inset message-footer bar bar-footer" keyboard-attach="" style="height: 44px;">
-                  <label class="item-input-wrapper">
-                      <textarea ng-model="input.message" value="" placeholder="Send {{active_relationship.student.name}} a message..." required="" minlength="1" maxlength="1500" msd-elastic="" class="ng-valid-minlength ng-valid-maxlength ng-touched ng-dirty ng-invalid ng-invalid-required" style="overflow: hidden; word-wrap: break-word; resize: none; height: 20px;"></textarea>
-                  </label>
-                  <div class="footer-btn-wrap">
-                    <button class="button button-icon icon ion-android-send footer-btn" type="submit" ng-disabled="!input.message || input.message === ''" disabled="disabled">
-                    </button>
-                  </div>
-              </ion-footer-bar>
-          </form>
-
-    </section>
+	</section>
 	<!-- <div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar-1' ng-if='user && user.id' >
 		<a class="tab-item" nav-direction='swap' ui-sref='^.guru'>
 			<svg viewBox="0 0 100 100">

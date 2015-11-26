@@ -166,10 +166,11 @@ function RankingService() {
         // 6 Previous experiences
         // 7. Skills x2 (x1 for one category)
         // 8. Languages
-
-        if (!user.is_a_guru) {
-            return 0;
-        }
+        console.log("CHECK",!user.is_a_guru);
+        // we dont need this .....
+        // if (!user.is_a_guru) {
+        //     return 0;
+        // }
 
         if (user.name && user.name.length) {
           base += default_item_weight;
@@ -202,6 +203,7 @@ function RankingService() {
 
         var percentage = parseInt((base  / (max_points * 1.0)) * 100);
         //update the home credibility progress if it exists
+        console.log(percentage,"%");
         return percentage;
     }
 
