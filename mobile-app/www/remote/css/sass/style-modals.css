@@ -1974,7 +1974,7 @@
 }
 
 body.platform-ios .mobile-messages-container #message-container {
-  height: calc(100% - 120px) !important !important;
+  height: calc(100% - 120px) !important;
 }
 
 /*#userMessagesView {*/
@@ -2007,7 +2007,17 @@ button.ion-android-send {
   position: relative;
   height: 100%;
   width: 50px;
-  top: 7px;
+  top: 0;
+}
+
+.footer-btn-wrap button {
+  height: 100%;
+  padding: 0;
+  background: transparent;
+}
+
+.footer-btn-wrap button svg {
+  height: 100%;
 }
 
 .footer-btn {

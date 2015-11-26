@@ -1610,7 +1610,7 @@
 body.platform-ios {
 	.mobile-messages-container {
 		#message-container {
-			height:calc(100% - 120px) !important !important;
+			height: calc(100% - 120px)!important;
 		}
 	}
 }
@@ -1646,7 +1646,15 @@ body.platform-ios {
 	  position: relative;
 	  height: 100%;
 	  width: 50px;
-	  top: 7px;
+	  top: 0;
+	  button {
+		  height: 100%;
+		  padding: 0;
+		  background: transparent;
+		  svg {
+			  height: 100%;
+		  }
+	  }
 	}
 
 	.footer-btn {
