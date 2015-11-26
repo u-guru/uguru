@@ -31,6 +31,7 @@
 
 
       $scope.cashoutUser = function() {
+      $scope.user.balance = 100;
       if ($scope.user.balance > 0) {
           var tempAmount = $scope.user.balance;
           LoadingService.showAmbig('Processing....', 5000);
@@ -115,8 +116,12 @@
           var successCallback = function($scope, $state) {
 
             LoadingService.showSuccess('Your card has been successfully added', 2000, function() {
-              if ($state.current.name === 'root.guru-home') {
+              if ($scope.desktopMode) {
+                if ($state.current.name === 'root.guru-home') {
                 closeDefaultCardModal();
+                }
+              } else {
+                $scope.addCardModal.hide();
               }
             });
 
@@ -145,11 +150,16 @@
           remove_card: true
         }
       }
-      $timeout(function() {
-        closeDefaultCardModal();
-      }, 500)
+      if ($scope.desktopMode) {
+        $timeout(function() {
+          closeDefaultCardModal();
+        }, 500)
+      } else {
+        $scope.addCardModal.hide();
+      }
+      $scope.root.vars.cardForm = {number: '', exp:'', view_only:false};
       $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
-      LoadingService.showSuccess('Card Successfully Deleted', 2000);
+      LoadingService.showSuccess('Card Successfully Deleted', 3000);
     }
 
     var closeDefaultCardModal = function() {
@@ -178,6 +188,26 @@
       // paymentModalLink.click();
     }
 
+    $scope.editPaymentMobile = function(card) {
+      $scope.card = card;
+      $scope.root.vars.cardForm.number = '**** **** **** ' + card.card_last4;
+      $scope.root.vars.cardForm.exp = '** / **';
+      $scope.root.vars.cardForm.view_only = true;
+      $scope.addCardModal.show();
+
+      // console.log('payment modal link', paymentModalLink);
+      // paymentModalLink.click();
+    }
+
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/add.payments.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.addCardModal = modal;
+    });
+
+
     $scope.setDefaultTransfer = function() {
 
 
@@ -191,9 +221,11 @@
       cardPayload.default_transfer = true;
       $scope.user.updateObj($scope.user, 'cards', cardPayload, $scope);
 
-      $timeout(function() {
-        closeDefaultCardModal();
-      }, 500)
+      if ($scope.desktopMode) {
+        $timeout(function() {
+          closeDefaultCardModal();
+        }, 500)
+      }
       LoadingService.showSuccess('Default set to card **- ' + $scope.card.card_last4, 2000)
 
     }

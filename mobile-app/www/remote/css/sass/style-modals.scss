@@ -1621,6 +1621,10 @@ body.platform-ios {
 	/* optionally set a max-height */
 	/* maxlength on the textarea will prevent /*
 	/* it from getting too large also */
+#desktop-messaging, #messenger-content {
+
+
+
 	.bar-footer {
 	  overflow: visible !important;
 	}
@@ -1778,5 +1782,5 @@ body.platform-ios {
 	  text-decoration: none;
 	}
 
-
+}
 /*}*/

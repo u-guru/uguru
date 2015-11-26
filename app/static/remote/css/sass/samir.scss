@@ -6,25 +6,25 @@
 	right: 10px;
 	top: 50%;
 }
-
-.desktop-login-view  {
+.desktop-login-view {
 	.desktop-input-close-icon {
 		color: rgba($slate,.2);
 		top: 30%;
 	}
 }
-// End samir-css
 
+// End samir-css
 .desktop-mode {
-	#desktop-student-home-map-container, #student-home-default-map-container {
-			position: absolute!important;
-			top: 0!important;
-			left: 0!important;
-			overflow: hidden!important;
-			z-index: 0!important;
-			width: 100%!important;
-			height: calc(100% - 64px)!important;
-		}
+	#desktop-student-home-map-container,
+	#student-home-default-map-container {
+		position: absolute!important;
+		top: 0!important;
+		left: 0!important;
+		overflow: hidden!important;
+		z-index: 0!important;
+		width: 100%!important;
+		height: calc(100% - 64px)!important;
+	}
 	.main {
 		z-index: 1!important;
 		background: transparent;
@@ -36,34 +36,34 @@
 .desktop-view {
 	ion-modal-view {
 		width: 100%;
-    	height: calc(100% - 64px);
-    	left: 0;
-    	top: 64px;
+		height: calc(100% - 64px);
+		left: 0;
+		top: 64px;
 	}
 	.uguru-popup-content {
 		width: 33%!important;
 	}
 }
-
 .desktop-view.platform-ios {
 	ion-modal-view {
 		top: 84px;
 		height: calc(100% - 84px);
 		width: 100%;
 	}
-	header, .header-nav {
-		padding-top: 0!important;
+	header,
+	.header-nav {
+		padding-top: 0 !important;
 	}
 	.guru-desktop-credibility {
 		padding-top: 20px;
 	}
 	#top-menu-background-overlay {
-	    top: 64px;
-	    height: calc(100% - 84px)!important;
+		top: 64px;
+		height: calc(100% - 84px)!important;
 	}
 }
-//end component overrides
 
+//end component overrides
 .desktop-guru-onboarding-view {
 	.cta-modal.hide-display {
 		@include opacity-important(0);
@@ -75,7 +75,6 @@
 		}
 	}
 }
-
 .desktop-guru-onboarding {
 	.main.default {
 		min-height: 50%;
@@ -84,7 +83,6 @@
 .photo-view .main {
 	height: calc(100% - 140px);
 }
-
 .mode-links {
 	background: rgba(white,.75);
 	span {
@@ -94,11 +92,9 @@
 		stroke: $gabrielle!important;
 	}
 }
-
 .progressbar-text {
 	display: none!important;
 }
-
 #desktop-guru-home {
 	.hide-display.cta-modal.pane {
 		@include opacity-important(0);
@@ -106,7 +102,7 @@
 		transition: 200ms ease;
 		visibility: hidden;
 		overflow: auto;
-		z-index:-1;
+		z-index: -1;
 		background: $charcoal;
 		&.show {
 			z-index: 1000;
@@ -115,9 +111,7 @@
 		}
 	}
 }
-
-.desktop-guru-onboarding-view
-.skill-item-content.hide-display {
+.desktop-guru-onboarding-view .skill-item-content.hide-display {
 	@include opacity(0);
 	visibility: hidden;
 	flex-direction: column;
@@ -135,410 +129,168 @@
 			}
 		}
 	}
-
 }
-
-.guru-message-container
-{
-
+.guru-message-container {
 	.cta-modal-close {
-		z-index:1000;
-		height:50px;
-		width:50px;
+		z-index: 1000;
+		height: 50px;
+		width: 50px;
 	}
 }
-
-
-.mobile-messages-container {
-
-	.cta-modal-close {
-		z-index:1000;
-		height:50px;
-		width:50px;
-		position:absolute;
-		max-width:10%;
-	}
-	.mobile-message-options {
-		position:absolute;
-		z-index:1000;
-		height:50px;
-		width:50px;
-		position:absolute;
-		right:0;
-		margin-top:10px;
-		max-width:10%;
-	}
-
-	#message-container {
-		height:calc(100% - 50px - 50px) !important;
-		#messages {
-			height:100% !important;
-		}
-		ion-footer-bar {
-			height:50px !important;
-			background-color: $slate;
-		}
-	}
-
-	#messenger-subheader {
-		top:0px;
-		left:0;
-		min-width:100%;
-		height:64px;
-		display:none;
-		white-space: nowrap;
-		overflow-y: auto;
-		background:$charcoal;
-		&.active {
-			display:block;
-		}
-		div.student-photo-container {
-			width: 50px;
-	    	position: relative;
-	    	height: 64px;
-	    	display: inline-block;
-	    	span {
-	    		position:absolute;
-	    		font-size:12px;
-	    		font-weight:700;
-	    		text-align:center;
-	    		bottom:0;
-	    		left:0;
-	    	}
-		}
-		img {
-		    border-radius: 1000px;
-		    width: 50px;
-		    height: 50px;
-		    padding:5px;
-		}
-	}
-}
-
-#desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-message {
-	background: rgba(85, 164, 183, 1);
-    color: white;
-}
-
-body.platform-ios #message-container {
-	height:calc(100% - 70px - 50px) !important !important;
-}
-
-#messenger-sidebar img{
-	@include round;
-	width: 50px;
-	height: 50px;
-}
-
 .credit-card-wrapper {
 	.credit-card {
-		position:relative;
+		position: relative;
 		#visa {
 			float: right;
-    		clear: both;
+			clear: both;
 		}
 		.card-number {
-		    text-shadow: 1px 1px 0 black, 2px 2px 0 black;
-		    font-family: OCR-A, monospace;
-		    font-size: 14px;
-		    text-align: left;
-		    color: #eee;
-		    position:absolute;
-		    left:10%;
-		    top:50%;
+			text-shadow: 1px 1px 0 black, 2px 2px 0 black;
+			font-family: OCR-A, monospace;
+			font-size: 14px;
+			text-align: left;
+			color: #eee;
+			position: absolute;
+			left: 10%;
+			top: 50%;
 		}
 		.card-name {
-		    font-size: 10px;
-		    text-align:left;
-		    opacity:0.75;
-		    color:white;
-		    line-height: 2;
-		    font-weight: 700;
-		    position:absolute;
-		    left:10%;
-		    bottom:12.5%;
+			font-size: 10px;
+			text-align: left;
+			opacity: .75;
+			color: white;
+			line-height: 2;
+			font-weight: 700;
+			position: absolute;
+			left: 10%;
+			bottom: 12.5%;
 		}
-
 		img.card-chip {
 			width: 30px;
-		    position: absolute;
-		    left: 20px;
-		    top: 20%;
+			position: absolute;
+			left: 20px;
+			top: 20%;
 		}
-
 		.valid .group {
-			position:absolute;
-			width:33% !important;
-		    bottom:12.5%;
-		    right:15%;
-		    font-size:10px;
-		    opacity:0.4;
-		    line-height:10px;
+			position: absolute;
+			width: 33% !important;
+			bottom: 12.5%;
+			right: 15%;
+			font-size: 10px;
+			opacity: .4;
+			line-height: 10px;
 		}
 		.valid .expiry {
-			position:absolute;
-			width:33% !important;
-		    bottom:17.5%;
-		    right:-3%;
-		    font-size:16px;
-		    opacity:0.75;
-		    line-height:10px;
-		    margin-top: 3px;
+			position: absolute;
+			width: 33% !important;
+			bottom: 17.5%;
+			right: -3%;
+			font-size: 16px;
+			opacity: .75;
+			line-height: 10px;
+			margin-top: 3px;
 		}
 		width: 100%;
-	    height: 100%;
-	    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-	    background-size: 100%;
-	    background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(50%, #282828), color-stop(50%, #141414));
-	    background-image: -moz-linear-gradient(top left, #282828 50%, #141414 50%);
-	    background-image: -webkit-linear-gradient(top left, #282828 50%, #141414 50%);
-	    background-image: linear-gradient(to bottom right, #282828 50%, #141414 50%);
-	    -moz-border-radius: 4px;
-	    -webkit-border-radius: 4px;
-	    border-radius: 4px;
-	    padding: 15px;
-	    color: white;
-	    -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-	    -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-	    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-	    position: relative;
+		height: 100%;
+		background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+		background-size: 100%;
+		background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(50%, #282828), color-stop(50%, #141414));
+		background-image: -moz-linear-gradient(top left, #282828 50%, #141414 50%);
+		background-image: -webkit-linear-gradient(top left, #282828 50%, #141414 50%);
+		background-image: linear-gradient(to bottom right, #282828 50%, #141414 50%);
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;
+		padding: 15px;
+		color: white;
+		-moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+		-webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+		box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+		position: relative;
 	}
-
-	.cf:before, .credit-card:before, .cf:after, .credit .credit-card:after {
-    	content: " ";
-    	display: table;
-    }
-
+	.cf:before,
+	.credit-card:before,
+	.cf:after,
+	.credit .credit-card:after {
+		content: " ";
+		display: table;
+	}
 }
-
-.guru-view-mobile
-.header-nav {
+.guru-view-mobile .header-nav {
 	h1.balance-header {
 		padding-right: 15px !important;
 	}
 	svg.referral-icon {
-		padding-left:5px;
+		padding-left: 5px;
 	}
 }
-
-
 body.platform-ios {
 	.mobile-referrals-modal a.header-close,
-	.mobile-balance-modal a.header-close, {
-		padding-top:40px;
+	.mobile-balance-modal a.header-close,
+	 {
+		padding-top: 40px;
 	}
-	.guru-view-mobile
-	.header-nav {
-		padding-top:0px !important;
+	.guru-view-mobile .header-nav {
+		padding-top: 0 !important;
 		h1.balance-header {
 			padding-right: 15px !important;
-			margin-top:5px !important;
+			margin-top: 5px !important;
 		}
-
 		svg.referral-icon {
-			padding:0px;
+			padding: 0;
 		}
 	}
 }
-
-.mobile-referrals-modal {
-	.main {
-		height: calc(2*100%/3) !important;
-    	overflow: auto;
-
-    	ul#referrals-stats {
-			text-align: center;
-			padding: 1px;
-			li {
-				padding: 1px;
-				div {
-					padding: 15px;
-					background: rgba($charcoal,.6);
-					h1 {
-						font-size: 72px;
-						font-weight: 900;
-					}
-					span {
-						font-size: 18px;
-						font-weight: 400;
-						line-height: 1.2;
-					}
-				}
-			}
-			li:last-child {
-				div {
-					background: rgba(white,.6);
-					color: $charcoal;
-				}
-			}
-		}
-
-
-		.sidebar-layout-list {
-				overflow: auto;
-				li {
-					@include flex;
-					padding: 15px;
-					border-bottom: 1px solid rgba(white,.4);
-					&:last-child {
-						border-bottom: 0;
-					}
-					.user-icon {
-						width: 60px;
-						height: 60px;
-						border-width: 3px;
-						+ div {
-							padding-left: 15px;
-						}
-					}
-					div {
-						width: calc(100% - 60px);
-						h3, span {
-							font-weight: 400;
-							b {
-								font-weight: 600;
-							}
-						}
-						h3 {
-							font-size: 22px;
-							padding-right:15%;
-						}
-						span {
-							color: rgba(white,.5);
-							font-size: 18px;
-						}
-					}
-					.chip {
-						min-width: 60px;
-						text-align: center;
-					}
-				}
-			}
-	}
-}
-
-.mobile-balance-modal {
-	h1 {
-		width:100%;
-		text-align: center;
-	}
-	a.header-close {
-		display: inline-block;
-		z-index:1000;
-	    top: 0;
-	    right: 0;
-	    position: absolute;
-	    max-width: 10%;
-	}
-
-	h1.earnings-text {
-		font-size: 64px !important;
-    	top:10%;
-	}
-	.main {
-		height: calc(100% - 114px) !important;
-    	overflow: auto;
-		ul.sidebar-layout-list {
-			background: #81B566;
-			li
-			{
-					-ms-box-orient: horizontal;
-				    display: -webkit-box;
-				    display: -moz-box;
-				    display: -ms-flexbox;
-				    display: -moz-flex;
-				    display: -webkit-flex;
-				    display: flex;
-				    padding: 15px;
-				    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-			}
-			h3 {
-				padding-right:15%;
-			}
-			span.transaction-date {
-				font-weight: 700;
-			    font-size: 16px;
-			    opacity: 0.5;
-			}
-		}
-	}
-
-	ul#balance-stats {
-		text-align: center;
-		padding: 1px;
-		li {
-			padding: 1px;
-			div {
-				padding: 15px;
-				min-height:162px;
-				background: rgba($charcoal,.6);
-				h1 {
-					font-size: 72px;
-					font-weight: 900;
-				}
-				h2 {
-					font-size:64px;
-					font-weight:900;
-				}
-				span {
-					font-size: 18px;
-					font-weight: 400;
-					line-height: 1.2;
-				}
-			}
-		}
-		li:last-child {
-			div {
-				background: rgba(white,.6);
-				color: $charcoal;
-			}
-		}
-	}
-}
-
-
-
 #cta-modal-signup {
-	background:rgba(0,0,0,0.7) !important;
-	top:64px;
-	height:calc(100% - 64px);
+	background: rgba(0,0,0,0.7) !important;
+	top: 64px;
+	height: calc(100% - 64px);
 	.back-link {
-		display:none;
+		display: none;
 	}
 	.cta-modal-close {
-		display:block;
+		display: block;
 	}
 	header.desktop-header {
-		display:block;
-		top:0;
+		display: block;
+		top: 0;
 		a.cta-modal-close {
-			display:block;
-			top:0;
-			margin:15px;
-			right:0;
-			position:absolute;
+			display: block;
+			top: 0;
+			margin: 15px;
+			right: 0;
+			position: absolute;
 			width: auto !important;
 		}
 	}
 	input {
-		color:$charcoal !important;
+		color: $charcoal !important;
 	}
 	#cta-footer-switch-link {
-		display:block;
+		display: block;
 		bottom: 20%;
-    	text-align: center;
-    	left: 0;
+		text-align: center;
+		left: 0;
 	}
 }
-
 #cta-modal-payments {
-	height:100%;
-	background:rgba(0,0,0,0.25) !important;
+	height: 100%;
+	background: rgba(0,0,0,0.25) !important;
 	input {
 		color: $charcoal !important;
 	}
 	.close-button svg {
-		stroke:$charcoal;
-		width:30px;
+		stroke: $charcoal;
+		width: 30px;
 	}
+}
+
+.payments-modal input {
+	background-color:$charcoal !important;
+	background:$charcoal !important;
+}
+
+.desktop-input-close-icon {
+	padding: 10px;
+   	margin: -10px;
 }
