@@ -83,4 +83,4 @@ def getPopularStats():
 
 
 # getPopularStats()
-# generateTargettedJsonFile()
+generateTargettedJsonFile()

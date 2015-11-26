@@ -493,6 +493,7 @@ AdminUniversitySerializer = {
     'num_popular_courses': fields.Integer,
     'num_depts': fields.Integer,
     'name': fields.String,
+    'short_name': fields.String,
     'logo_url': fields.String,
     'banner_url':fields.String,
     'svg_url': fields.String,
