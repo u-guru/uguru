@@ -1237,9 +1237,9 @@ angular.module('uguru.user', [])
                         console.log(JSON.stringify(err));
                         console.log('error...something happened with the server;')
                     });
-            } else if (param === 'transactions') {
+            } else if (param === 'bank_transfer') {
                 Restangular
-                    .one('user', userObj.id).one(param)
+                    .one('user', userObj.id).one('transactions')
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
 
@@ -1248,6 +1248,10 @@ angular.module('uguru.user', [])
                         delegateActionsFromProcessedUser($scope);
 
                         $localstorage.setObject('user', $scope.user);
+
+                        if (callback_success) {
+                            callback_success($scope, $state);
+                        }
 
                     }, function(err){
                         console.log(JSON.stringify(err));

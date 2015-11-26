@@ -50,6 +50,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-payments': '#desktop-balance',
   }
 
+  $scope.launchCtaDict = {};
+
   var CTA_OPTIONS = {
         duration:0.5,
         extraTransitionDuration:1
@@ -107,6 +109,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $state.go('^.guru-credibility');
   }
         var initGuruRankProgress = function(selector, color, fillColor, setValue) {
+          if (!$scope.selector) {
+            $scope.selector = selector;
+          } else {
+            return;
+          }
           var circle = new ProgressBar.Circle(selector, {
               color: color || "rgba(255,255,255,1)",
               strokeWidth: 8,
@@ -134,36 +141,36 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         START CTA FUNCTIONS
         */
         function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
-            box_elem.addEventListener('click', function() {
-            var modal_elem = document.querySelector('#' + modal_elem_id);
+            $scope.launchCtaDict[box_elem.id] = function() {
+                var modal_elem = document.querySelector('#' + modal_elem_id);
 
-               if (!$scope.user || !$scope.user.id) {
-                  $scope.loader.showMsg('Please create an account first!', 0, 500);
-                  box_elem = document.querySelector('#cta-box-signup');
-                  modal_elem = document.querySelector('#cta-modal-signup');
-                }
+                   if (!$scope.user || !$scope.user.id) {
+                      $scope.loader.showMsg('Please create an account first!', 0, 500);
+                      box_elem = document.querySelector('#cta-box-signup');
+                      modal_elem = document.querySelector('#cta-modal-signup');
+                    }
 
-            var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
-                // console.log('this triggered');
-                // if (!$scope.user.id && !(box_elem.id.indexOf('signup') > 0)) {
-                //   $scope.launchCTASignup();
-                //   return;
-                // }
+                var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
-                $timeout(function() {
-                    modal_elem.classList.add('show');
-                }, 200);
-                  var close_icon = modal_elem.querySelector('.cta-modal-close');
-                  if (close_icon) {
-                      close_icon.addEventListener('click', function() {
+                    $timeout(function() {
+                        modal_elem.classList.add('show');
+                    }, 200);
+                      var close_icon = modal_elem.querySelector('.cta-modal-close');
+                      if (close_icon) {
+                          close_icon.addEventListener('click', function() {
 
-                      //add callbacks here
-                      modal_elem.classList.remove('show');
-                      closeCTAModal();
-                    });
-                  }
-            }, CTA_PARENT_DICT[box_elem.id]);
-        });
+                          //add callbacks here
+                          modal_elem.classList.remove('show');
+                          closeCTAModal();
+                        });
+                      }
+                }, CTA_PARENT_DICT[box_elem.id]);
+
+
+
+              }
+
+            box_elem.addEventListener('click', $scope.launchCtaDict[box_elem.id]);
         }
 
         function initCTA() {
@@ -347,12 +354,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $state.go(state_name);
         }
 
-        $scope.showSignupDialog = function() {
-          $timeout(function() {
-            LoadingService.showAmbig('Creating Account', 1000);
-          }, 500)
-        }
-
         $scope.$on('$ionicView.enter', function() {
 
 
@@ -362,11 +363,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
           if ($scope.desktopMode && !$scope.user.id) {
-            $scope.showSignupDialog()
+            $timeout(function() {
+              if (!$scope.root.vars.page_cache.showSignupCTA) {
+                $scope.root.vars.page_cache.showSignupCTA = true;
+                $scope.launchCtaDict['cta-box-signup']();
+                $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
+              }
+            }, 1000)
           }
 
 
-          if (!$scope.referralsModal) {
+          if (!$scope.referralsModal && !$scope.desktopMode) {
             $scope.initMobileModals();
           }
 
@@ -374,15 +381,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
             $timeout(function() {
               $scope.user.guru_ranking = actualRankingValue;
+              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
             }, 2500)
-            animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
           }
         });
 
         // GABRIELLE UN COMMENT THE SECTION BELOW
         $scope.$on('$ionicView.beforeEnter', function() {
 
-          if (!$scope.referralsModal) {
+          if (!$scope.referralsModal && !$scope.desktopMode) {
             $scope.initMobileModals();
           }
 
@@ -396,10 +403,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $ionicSlideBoxDelegate.update();
           // console.error("ion view enter guru ctrl")
           $timeout(function() {
-
-            if (RankingService.recentlyUpdated || RankingService.refreshRanking($scope.user)) {
-              RankingService.showPopover(RankingService.options.previousGuruRanking, RankingService.options.currentGuruRanking);
-            }
 
             if (!haveProgressBarsBeenInitialized()) {
               $timeout(function() {

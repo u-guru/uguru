@@ -2751,6 +2751,7 @@ class   Transaction(Base):
 
         transaction.balance_after = user.balance
 
+        transaction.guru_id = user.id
         transaction.cashout_guru_id = user.id
 
         db_session.add(transaction)

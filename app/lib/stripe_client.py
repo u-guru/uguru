@@ -1,7 +1,7 @@
 import stripe, os
 
 
-stripe.api_key = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 # stripe.api_key = 'sk_test_3PFFx8W4mSRwDaJ4JKkZMKtW'
 
@@ -45,7 +45,7 @@ def create_customer(user, token):
         return str(e.json_body)
 
 def create_recipient(user, token):
-    stripe.api_key = 'sk_test_3PFFx8W4mSRwDaJ4JKkZMKtW'
+
     try:
         stripe_recipient = stripe.Recipient.create(
           description="Recipient for " + str(user.name) + ', ' + str(user.email),

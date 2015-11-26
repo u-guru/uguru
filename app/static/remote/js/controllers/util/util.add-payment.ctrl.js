@@ -28,11 +28,22 @@
     }
 
 
+
+
       $scope.cashoutUser = function() {
       if ($scope.user.balance > 0) {
-          LoadingService.showSuccess('Successfully cashed out', 2000);
-          $scope.user.balance = 0;
-          $localstorage.setObject('user', $scope.user);
+          var tempAmount = $scope.user.balance;
+          LoadingService.showAmbig('Processing....', 5000);
+          var successCallback = function() {
+            LoadingService.showSuccess('Successfully cashed out $' + tempAmount + '!', 3000);
+          }
+
+          var bankTransferPayload = {
+            'bank_transfer': true,
+            'card_id': $scope.user.default_transfer_card.id
+          }
+
+          $scope.user.createObj($scope.user, 'bank_transfer', bankTransferPayload, $scope, successCallback);
         } else {
           LoadingService.showMsg('Sorry! You must have a balance of at least $1 to deposit to your account.', 3500);
         }
