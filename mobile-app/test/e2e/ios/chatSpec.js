@@ -37,7 +37,7 @@ describe('Message Spec',function ()
 	})
 	it('Close Referral',function()
 	{
-		$('.modal-backdrop.active a').click()
+		$('[ng-click="messagesModal.hide()"]').click()
 		browser.wait(EC.stalenessOf($('.modal-backdrop.active')),4000);
 
 	});
