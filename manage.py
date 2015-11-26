@@ -572,34 +572,31 @@ if arg == 'update':
     print v.latest_ios, 'updated to', env
 
 if arg == 'init_admin':
-    admin_accounts = ['makhani.samir@gmail.com', 'hair_lvrxrsl_one@tfbnw.net', 'jason_dhcxgww_huang@tfbnw.net', 'randykm4@gmail.com']
-    u = University.query.filter_by(name='Uguru University').first()
-    m = Major.query.get(91)
+    from hashlib import md5
+    from app.models import User
+    admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    u = University.query.get(2307)
 
     len_universities = len(University.query.all())
 
-
-    if not u:
-        u = University()
-        u.name = 'Uguru University'
-
-        u.id = len_universities + 1000
-        u.majors.append(m)
-        db_session.add(u)
-        db_session.commit()
-
-    for account_email in admin_accounts:
-        user = User.query.filter_by(email=account_email).first()
-        print user.email + ' initiated as admin for ' + u.name
+    for admin_account_tuple in admin_accounts:
+        account_email = admin_account_tuple[0]
+        account_name = admin_account_tuple[1]
+        user = User.query.filter_by(email=account_email.lower()).first()
+        print 'processing %s' % account_email
         if user:
-
-            print m.name, 'added to user major list'
-
-            user.majors.append(m)
             user.university_id = u.id
-            user.is_a_guru = True
+            user.is_admin = True
+            user.name = account_name
+            user.password = md5('launchuguru123').hexdigest()
+            db_session.commit()
+            print "Account for %s successfully updated" % user.email
+        else:
+            user = User(name=account_name, email=account_email, password=md5('launchuguru123').hexdigest())
+            user.university_id = u.id
             user.is_admin = True
             db_session.commit()
+            print "Account for %s successfully created" % user.email
 
 if arg == 'parse_uni':
     from app.lib.wikipedia import *
