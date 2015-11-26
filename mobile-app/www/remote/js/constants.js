@@ -1,4 +1,3 @@
 var _local = "true";
-var _startpage = "messaging";
-var _ipaddress = "192.168.0.103";
-
+var _startpage = "modal-test";
+var _ipaddress = "192.168.42.66";

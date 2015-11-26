@@ -207,7 +207,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.modal-test', {
     url:'/modal-test',
-    templateUrl: BASE + 'templates/messaging.mobile.modal.html'
+    templateUrl: BASE + 'templates/guru.balance.container.html'
   }).
   state('root.timer', {
     url:'/timer',
