@@ -610,7 +610,7 @@ class UserOneView(restful.Resource):
 
         if 'discoverability' in request.json:
             print 'ayy'
-            user.guru_discoverability = request.json.get('guru_discoverability')
+            user.guru_discoverability = request.json.get('discoverability')
 
         if 'messenger_friendly' in request.json:
             user.messenger_friendly = request.json.get('messenger_friendly')
@@ -1386,8 +1386,8 @@ class UserTransactionsView(restful.Resource):
         if not user:
             abort(404)
 
-        if request.json.get('transaction'):
-            print request.json
+        if request.json.get('bank_transfer'):
+
 
             transaction_json = request.json
             selected_card = Card.query.get(transaction_json.get('card_id'))
@@ -2044,6 +2044,8 @@ class UserCardView(restful.Resource):
                 user.get_payment_cards()[0].is_default_payment = True
 
             db_session.commit()
+
+
 
 
         return user, 200

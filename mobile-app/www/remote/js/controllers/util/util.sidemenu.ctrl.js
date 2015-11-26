@@ -192,6 +192,18 @@ angular.module('uguru.util.controllers')
       }, 500);
     };
 
+    $scope.toggleDiscoverability = function() {
+      $scope.user.guru_discoverability = !$scope.user.guru_discoverability;
+      if ($scope.user.guru_discoverability) {
+        var success_message = 'Discoverability set to ON'
+      } else {
+        var success_message = 'Discoverability set to OFF'
+      }
+      LoadingService.showSuccess(success_message, 2000, function() {
+        $scope.user.updateAttr('discoverability', $scope.user, $scope.user.guru_discoverability, null, $scope);
+      });
+    }
+
     $scope.toggleResetModeFromLogin = function() {
       $scope.root.vars.loginMode = false;
       $scope.resetMode = !$scope.root.vars.loginMode;
@@ -314,6 +326,14 @@ angular.module('uguru.util.controllers')
         PopupService.close('editEmail');
       }
     };
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/payments.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.paymentsModal = modal;
+    });
+
 
     $scope.launchEditPasswordPopup = function(target) {
 
@@ -587,7 +607,6 @@ angular.module('uguru.util.controllers')
             $scope.progress_active = false;
           }, 1000);
     };
-
 
   }
 

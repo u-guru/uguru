@@ -308,7 +308,7 @@
     width: 40px;
     height: 40px;
     border-radius: 0 0 0 75%;
-    padding: 5px 5px 10px 10px;
+    padding: 5px 5px 10px 10px !important;
     background: white; }
     .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a svg path, .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li label svg path {
       fill: none;
