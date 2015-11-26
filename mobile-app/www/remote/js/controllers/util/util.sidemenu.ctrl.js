@@ -608,7 +608,6 @@ angular.module('uguru.util.controllers')
           }, 1000);
     };
 
-
   }
 
 

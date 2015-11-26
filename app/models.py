@@ -2730,10 +2730,9 @@ class   Transaction(Base):
         transaction.time_created = datetime.now()
         transaction._type = 1
 
-        user.balance = 100
         transaction.balance_before = user.balance
 
-        stripe_transfer = transfer_funds(user, 100)
+        stripe_transfer = transfer_funds(user, user.balance * 100)
 
         if type(stripe_transfer) is str:
             transaction.stripe_error_string = stripe_transfer
