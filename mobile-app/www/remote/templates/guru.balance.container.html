@@ -1,7 +1,7 @@
-<section id="experience-modal" class='full-xy bg-slate mobile-balance-modal'>
-	<header class="bg-slate flex-center-wrap">
-	    <div class="header-nav">
-	    	<h1 class='bg-charcoal'>My Earnings</h1>
+<section id="experience-modal" class='full-xy bg-slate mobile-mode mobile-balance-modal'>
+	<header class="bg-slate">
+		<h1 class='bg-charcoal full-x text-center'>My Earnings</h1>
+	    <div class="header-nav full-x">
 			<a class="header-close cta-modal-close" ng-click="balanceModal.hide()">
 				<svg viewBox="0 0 100 100">
 					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -25,8 +25,6 @@
 					<span>Current <br> Balance</span>
 				</div>
 			</li>
-			<li hidden="">
-			</li>
     	</ul>
 
 		<ul class="sidebar-layout-list">
@@ -35,11 +33,11 @@
 					<h3>You cashed out <b>${{transaction.guru_amount}}</b> to <b>**{{transaction.card.card_last4}}</b></h3>
 					<span class='transaction-date'>{{transaction.time.date}} {{transaction.time.month}} {{transaction.time.year}}</span>
 				</div>
-				<span><span class="chip bg-charcoal uppercase" ng-if='transaction.transfer_status'>{{transaction.transfer_status}}</span></span>
+				<span><span class="chip bg-moola uppercase" ng-if='transaction.transfer_status'>{{transaction.transfer_status}}</span></span>
 			</li>
 		</ul>
 
 	</div>
-	<button class='bg-shamrock semibold absolute bottom-0' ng-click='cashoutUser()'>Cashout</button>
+	<button class='bg-moola semibold absolute bottom-0' ng-click='cashoutUser()'>Cashout</button>
 
 </section>
