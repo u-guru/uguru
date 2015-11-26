@@ -462,6 +462,10 @@ section {
   background: #69B3A5;
 }
 
+.access-view input {
+  cursor: text;
+}
+
 .access-view #access-data {
   height: calc(100% - 64px);
 }

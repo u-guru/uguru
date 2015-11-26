@@ -1894,6 +1894,7 @@
 /* ---------- BALANCE */
 #desktop-balance {
 	.main {
+		height: 100%!important;
 		aside {
 			background: $moola;
 			.sidebar-layout-list {

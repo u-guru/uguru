@@ -390,6 +390,9 @@ section {
 // ACCESS
 .access-view {
 	background: $shamrock;
+	input {
+		cursor: text;
+	}
 	#access-data {
 		height: calc(100% - 64px);
 	}

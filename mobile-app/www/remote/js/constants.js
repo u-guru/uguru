@@ -1,3 +1,3 @@
 var _local = "true";
-var _startpage = "modal-test";
-var _ipaddress = "192.168.42.66";
+var _startpage = "guru-home";
+var _ipaddress = "192.168.1.111";

@@ -10,8 +10,6 @@
   <content src="remote/local.index.html"/>
   <access origin="*"/>
   <allow-navigation href="*"/>
-  <allow-navigation href="https://*/*" />
-  <allow-navigation href="data:*" />
   <preference name="orientation" value="portrait"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
