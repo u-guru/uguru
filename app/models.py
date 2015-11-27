@@ -673,6 +673,7 @@ class University(Base):
     num_majors = Column(Integer, default =0)
     num_emails = Column(Integer, default =0)
     banner_url = Column(String)
+    banner_url_confirmed = Column(Boolean)
     seal_url = Column(String)
 
     ready_to_launch = Column(Boolean)

@@ -42,8 +42,11 @@ app.config.from_object('config')
 sslify = SSLify(app)
 
 app.config.update(dict(
-  PREFERRED_URL_SCHEME = 'https'
+  PREFERRED_URL_SCHEME = 'https',
 ))
+
+# if not os.environ.get('PRODUCTION'):
+#     app.config.update(SERVER_NAME='samir:5000')
 
 # flask-restful
 api = restful.Api(app)

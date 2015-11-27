@@ -35,6 +35,8 @@ def admin_statistics_universities_info():
     return render_template("admin/admin.stats.universities.info.html")
 
 
+
+
 @app.route('/admin/stats/universities/complete')
 def admin_statistics_users_completed():
     from app.static.data.popular_data import getPreparedUniversitiesObj
@@ -43,12 +45,12 @@ def admin_statistics_users_completed():
     return render_template("admin/admin.stats.universities.complete.html", \
         universities = prepared_universities)
 
-@app.route('/admin/stats/universities/complete')
-def admin_statistics_users_completed():
+@app.route('/admin/stats/universities/complete/banners')
+def admin_statistics_users_complete_banners():
     from app.static.data.popular_data import getPreparedUniversitiesObj
     prepared_universities = sorted(getPreparedUniversitiesObj(University.query.all()), key=lambda k:k.us_news_ranking)
 
-    return render_template("admin/admin.stats.universities.complete.html", \
+    return render_template("admin/admin.stats.universities.banners.html", \
         universities = prepared_universities)
 
 @app.route('/admin/stats/archive/berkeley/requests')
@@ -145,10 +147,10 @@ def admin_statistics_get_flickr_urls(uni_id):
     university = University.query.get(uni_id)
 
     from lib.flickr_wrapper import *
-    flickr_response = str(search_university_response_api(text=university.name))
+    flickr_response = str(search_university_response_api(university))
     photos_arr = parse_flickr_response(flickr_response)
-    processed_arr = process_returned_photos(photos_arr)
-    flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)
+    flickr_arr = process_returned_photos(photos_arr)
+    # flickr_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)
 
     ## notice, this has no template! We are just returning the strings
     return render_template("admin/admin.stats.one.university.flickr.html", \
@@ -265,8 +267,18 @@ def admin_devices():
     return render_template("admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
 
+# @app.route('/', )
+# def static_index(username):
+#     return render_template("web/pages/faq_on.html")
+
+
+
+
+@app.route('/', subdomain="<username>")
+def profile_page_new_view(username):
+    return render_template("web/pages/faq.html")
+
 @app.route('/')
-@app.route('/staging/')
 def new_home_page():
     return render_template("web/index.html")
 
