@@ -615,6 +615,12 @@ class UserOneView(restful.Resource):
         if 'messenger_friendly' in request.json:
             user.messenger_friendly = request.json.get('messenger_friendly')
 
+        if 'referral_code' in request.json:
+            user.referral_code = request.json.get('referral_code')
+
+        if 'profile_code' in request.json:
+            user.profile_code = request.json.get('profile_code')
+
         if 'person_friendly' in request.json:
             user.person_friendly = request.json.get('person_friendly')
 
@@ -1863,6 +1869,53 @@ class UserSessionView(restful.Resource):
 #TODO Bank shit: Cashing_out, transactions from the bank, refunds, Stripe
 #TODO Later Queuing system + task actions for db_commits
 #TODO Later: Images & Files --> S3 Bucket
+
+class UserRelationshipMessageView(restful.Resource):
+    @marshal_with(UserSerializer)
+    def post(self, _id, relationship_id):
+        user = get_user(_id)
+
+        _relationship = Relationship.query.get(relationship_id)
+        if not user or not _relationship:
+            abort(404)
+
+
+        if request.json.get('message'):
+            message_json = request.json.get('message')
+            message = Message.initFromJson(message_json, False)
+
+            _relationship = Relationship.query.get(message.relationship_id)
+
+            #guru sent it
+            if user.id == message.receiver_id:
+
+                #student is the one 'receiving the message'
+                message_receiver = message.sender
+                message_sender = message.receiver
+
+            #student sent it
+            else:
+                #student is the one 'receiving the message'
+                message_receiver = message.receiver
+                message_sender = message.sender
+
+            print message
+            # if message_receiver.push_notifications:
+            #     #send push notification to all student devices
+            #     from app.lib.push_notif import send_message_to_receiver
+            #     send_message_to_receiver(message_sender, message_receiver, message._relationship.sessions[0].request.course)
+
+
+            # # if user.email_notifications and user.email:
+            # #     from app.emails import send_message_to_receiver
+            # #     send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+
+            # if message.receiver.text_notifications and user.phone_number:
+            #     from app.texts import send_message_to_receiver
+            #     send_message_to_receiver(message_sender, message_receiver, message._relationship.sessions[0].request.course)
+
+            return user, 200
+
 
 class UserSessionMessageView(restful.Resource):
 
@@ -3409,6 +3462,7 @@ api.add_resource(UserCardView, '/api/v1/user/<int:user_id>/cards')
 api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')
 api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions')
 api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings')
+api.add_resource(UserRelationshipMessageView, '/api/v1/user/<int:_id>/relationships/<int:relationship_id>/messages')
 api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages')
 api.add_resource(UserSupportMessageView, '/api/v1/user/<int:_id>/support/<int:_support>/messages')
 api.add_resource(OneDeviceView, '/api/v1/device')

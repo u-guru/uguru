@@ -296,6 +296,9 @@ class User(Base):
 
     #referral stuff
     referral_code = Column(String)
+    profile_code = Column(String)
+
+    #profile
 
     transcript_file = relationship("File", uselist=False)
     transcript_verified_by_admin = Column(Boolean, default = False)

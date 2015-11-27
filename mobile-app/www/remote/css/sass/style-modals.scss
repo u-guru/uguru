@@ -1621,9 +1621,20 @@ body.platform-ios {
 	/* optionally set a max-height */
 	/* maxlength on the textarea will prevent /*
 	/* it from getting too large also */
-#desktop-messaging, #messenger-content {
+#desktop-messaging, #messenger-content, .guru-message-container {
 
-
+	#messenger-sidebar ul li a span.messenger-icon img {
+		width:50px;
+		height:50px;
+		border-radius:1000px;
+	}
+	.message-send-button {
+		position: absolute;
+	    background: $shamrock;
+	    width: 10%;
+	    top: 0;
+	    right: 0;
+	}
 
 	.bar-footer {
 	  overflow: visible !important;

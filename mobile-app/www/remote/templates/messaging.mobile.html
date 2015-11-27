@@ -14,8 +14,7 @@
 				</svg>
 			</a>
 		</div>
-		<h1 class="text-center">{{user.name}}</h1>
-		<!-- <h1 class="text-center">{{active_relationship.student.name}}</h1> -->
+		<h1 class="text-center">{{active_relationship.student.name}}</h1>
 	</header>
 
 
@@ -33,95 +32,8 @@
 		</ul>
 		<div id='messages' class="scroll">
 
-			<div class="message-single left">
-				<div class="message-single-icon">
-					<img src="https://s3.amazonaws.com/uguruprof/eb6fdc36b281b7d5eabf33396c2683a2.jpg">
-				</div>
-				<div class="message-single-content">
-					<div class="message-single-info">
-						<span>Stephanie K.</span>
-						<span>8:09 pm</span>
-					</div>
-					<div class="message-single-message">
-						Hi! Are you available tomorrow morning at 10 or in the evening after 6PM? Thursday and Friday evenings are also free, but I don't know when you're available 
-					</div>
-				</div>
-			</div>
-			<div class="message-single right">
-				<div class="message-single-content">
-					<div class="message-single-info">
-						<span>Me</span>
-						<span>8:38 pm</span>
-					</div>
-					<div class="message-single-message">
-						Hi, any of those times will work for me. Do you need help tomorrow at 10? What location do you prefer?
-					</div>
-				</div>
-				<div class="message-single-icon">
-					<img src="https://s3.amazonaws.com/uguruprof/d6baf65e0b240ce177cf70da146c8dc8.jpg">
-				</div>
-			</div>
-			<div class="message-single right">
-				<div class="message-single-content">
-					<div class="message-single-info">
-						<span>Me</span>
-						<span>8:38 pm</span>
-					</div>
-					<div class="message-single-message">
-						You can also reach me at <span>714-409-4364</span>
-					</div>
-				</div>
-				<div class="message-single-icon">
-					<img src="https://s3.amazonaws.com/uguruprof/d6baf65e0b240ce177cf70da146c8dc8.jpg" class="">
-				</div>
-			</div>
-			<div class="message-single left">
-				<div class="message-single-icon">
-					<img src="https://s3.amazonaws.com/uguruprof/eb6fdc36b281b7d5eabf33396c2683a2.jpg">
-				</div>
-				<div class="message-single-content">
-					<div class="message-single-info">
-						<span>Stephanie K.</span>
-						<span>8:09 pm</span>
-					</div>
-					<div class="message-single-message">
-						Hi! Are you available tomorrow morning at 10 or in the evening after 6PM? Thursday and Friday evenings are also free, but I don't know when you're available 
-					</div>
-				</div>
-			</div>
-			<div class="message-single right">
-				<div class="message-single-content">
-					<div class="message-single-info">
-						<span>Me</span>
-						<span>8:38 pm</span>
-					</div>
-					<div class="message-single-message">
-						Hi, any of those times will work for me. Do you need help tomorrow at 10? What location do you prefer?
-					</div>
-				</div>
-				<div class="message-single-icon">
-					<img src="https://s3.amazonaws.com/uguruprof/d6baf65e0b240ce177cf70da146c8dc8.jpg">
-				</div>
-			</div>
-			<div class="message-single right">
-				<div class="message-single-content">
-					<div class="message-single-info">
-						<span>Me</span>
-						<span>8:38 pm</span>
-					</div>
-					<div class="message-single-message">
-						You can also reach me at <span>714-409-4364</span>
-					</div>
-				</div>
-				<div class="message-single-icon">
-					<img src="https://s3.amazonaws.com/uguruprof/d6baf65e0b240ce177cf70da146c8dc8.jpg" class="">
-				</div>
-			</div>
-
-
-
 			<!-- ngRepeat: message in messages -->
-			<!-- <div ng-repeat="message in active_relationship.messages" class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}" on-hold="onMessageHold($event, $index, message)">
+			<div ng-repeat="message in active_relationship.messages" class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}" on-hold="onMessageHold($event, $index, message)">
 
 				<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
 					<img ng-if='user.profile_url' ng-src='{{message.sender.profile_url}}' />
@@ -139,7 +51,7 @@
 				<div class='message-single-icon' ng-if='message.sender.id === user.id'>
 					<img ng-if='user.profile_url' ng-src='{{user.profile_url}}' />
 				</div>
-			</div> -->
+			</div>
 
 		</div>
 		<!-- end ngRepeat: message in messages -->
@@ -151,11 +63,11 @@
 		<form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate="" class="ng-valid-minlength ng-valid-maxlength ng-dirty ng-submitted ng-invalid ng-invalid-required">
 			<ion-footer-bar class="bar-stable item-input-inset message-footer bar bar-footer" keyboard-attach="">
 				<label class="item-input-wrapper">
-					<textarea ng-model="input.message" value="" placeholder="Send {{active_relationship.student.name}} a message..." required="" minlength="1" maxlength="1500" msd-elastic="" class="ng-valid-minlength ng-valid-maxlength ng-touched ng-dirty ng-invalid ng-invalid-required"
+					<textarea ng-model="active_relationship.new_message" value="" placeholder="Send {{active_relationship.student.name}} a message..." required="" minlength="1" maxlength="1500" msd-elastic="" class="ng-valid-minlength ng-valid-maxlength ng-touched ng-dirty ng-invalid ng-invalid-required"
 					style="overflow: hidden; word-wrap: break-word; resize: none; height: 20px;"></textarea>
 				</label>
 				<div class="footer-btn-wrap">
-					<button type="submit" ng-disabled="!input.message || input.message === ''" disabled="disabled">
+					<button type="submit" ng-click='sendMessage(active_relationship.new_message)'>
 						<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						    <path d="M40.863416,69.0006669 L19,69.0006669 L49.6939787,14 L80.425686,69.0006669 L58.5612746,69.0006669 L49.7317073,85.6527248 L40.863416,69.0006669 Z M49.7317073,15.3170732 L49.7317073,85.5664621 M49.7317073,14.7032382 L58.6,68.0056713 M49.7317073,15.1365913 L40.8634146,68.4390244" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
 						</svg>

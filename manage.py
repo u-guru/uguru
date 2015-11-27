@@ -43,6 +43,28 @@ if arg == 'ios_push':
     else:
         print "Please pass in message && device token"
 
+if arg == 'init_profile_codes':
+    from app.models import User
+    from app.database import db_session
+    from random import randint
+    profile_codes = []
+    for user in sorted(User.query.all(), key=lambda k:k.total_earned, reverse=True):
+        if not user.name or user.profile_code:
+            continue
+        user_first_name = user.name.split(' ')[0]
+        if user_first_name.lower() not in profile_codes:
+            user.profile_code = user_first_name
+            db_session.commit()
+            profile_codes.append(user.profile_code)
+        else:
+            user_profile_code = user_first_name + str(randint(0, 100))
+            if user_profile_code in profile_codes:
+                print 'dafuq', user.id, user.name
+                continue
+            user.profile_code = user_profile_code
+            db_session.commit()
+            profile_codes.append(user.profile_code)
+
 if arg == 'windows_push':
     from app.lib.push_notif import *
     if len(sys.argv) > 3:

@@ -49,7 +49,7 @@ def admin_statistics_users_completed():
 def admin_statistics_users_complete_banners():
     from app.static.data.popular_data import getPreparedUniversitiesObj
     prepared_universities = sorted(getPreparedUniversitiesObj(University.query.all()), key=lambda k:k.us_news_ranking)
-
+    prepared_universities = [uni for uni in prepared_universities if not uni.banner_url_confirmed]
     return render_template("admin/admin.stats.universities.banners.html", \
         universities = prepared_universities)
 
@@ -272,11 +272,20 @@ def admin_devices():
 #     return render_template("web/pages/faq_on.html")
 
 
-
-
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
-    return render_template("web/pages/faq.html")
+    user_profile_exists = User.query.filter_by(profile_code=username).all()
+    if not user_profile_exists:
+        return redirect(url_for('faq_body'))
+    from flask import jsonify
+    result_dict = {}
+    for key in user_profile_exists[0].__dict__:
+        val = user_profile_exists[0].__dict__[key]
+        if type(val) not in [str, int, bool, dict, type(None)]:
+            result_dict[key] = str(val)
+        else:
+            result_dict[key] = val
+    return jsonify(result_dict)
 
 @app.route('/')
 def new_home_page():
