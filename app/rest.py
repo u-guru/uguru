@@ -636,9 +636,8 @@ class UserOneView(restful.Resource):
         if 'fb_id' in request.json:
             if not user.fb_id:
                 fb_id = request.json.get('fb_id')
-                previous_user = User.query.filter_by(fb_id=fb_id).all()
                 if user not in previous_user:
-                    user.fb_id = request.json.get('fb_id')
+                    user.fb_id = request.json.get('fb_id ')
                     db_session.commit()
                 else:
                     print "previous user exists"
@@ -650,6 +649,20 @@ class UserOneView(restful.Resource):
 
         if 'guru_mode' in request.json:
             user.guru_mode = request.json.get('guru_mode')
+
+
+        if 'add_guru_calendar_event' in request.json:
+            calendar_event_json = request.json.get('add_calendar_event')
+            if not user.guru_calendar:
+                Calendar.initGuruCalendar(user)
+            Calendar.createGuruOfficeHours(calendar_event_json, user.guru_calendar)
+
+        if 'remove_guru_calendar_event' in request.json:
+            calendar_event_json = request.json.get('remove_guru_calendar_event')
+            calendar_event_id = int(calendar_event_json.get('id'))
+            calendar_event = Calendar_Event.query.get(calendar_event_id)
+            calendar_event.archived = True
+            db_session.commit()
 
         if request.json.get('add_student_course'):
             course = request.json.get('course')
@@ -2203,6 +2216,12 @@ class UserNewView(restful.Resource):
 
         db_session.add(user)
         db_session.commit()
+
+        if request.json.get('access_code_sender_id'):
+            sender_id = int(request.json.get('access_code_sender_id'))
+            sender = User.query.get(sender_id)
+            if sender:
+                Referral.initAndApplyReferral(sender, user)
 
         majors_json = request.json.get('majors')
         if majors_json:

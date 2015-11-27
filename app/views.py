@@ -276,7 +276,7 @@ def admin_devices():
 def profile_page_new_view(username):
     user_profile_exists = User.query.filter_by(profile_code=username).all()
     if not user_profile_exists:
-        return redirect(url_for('faq_body'))
+        return redirect(url_for('new_home_page'))
     from flask import jsonify
     result_dict = {}
     for key in user_profile_exists[0].__dict__:

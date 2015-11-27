@@ -46,6 +46,7 @@ course_fields = {}
 course_fields['id'] = fields.Integer(attribute='id')
 course_fields['name'] = fields.String(attribute='short_name')
 course_fields['title'] = fields.String(attribute='full_name')
+course_fields['short_name'] = fields.String(attribute='short_name')
 
 department_fields = {}
 department_fields['id'] = fields.Integer(attribute='id')
@@ -114,6 +115,14 @@ calendar_event_fields = {}
 calendar_event_fields['id'] = fields.Integer(attribute='id')
 calendar_event_fields['start_time'] = fields.DateTime(attribute='start_time')
 calendar_event_fields['end_time'] = fields.DateTime(attribute='end_time')
+calendar_event_fields['description'] = fields.String(attribute='description')
+calendar_event_fields['title'] = fields.String(attribute='title')
+calendar_event_fields['course'] = fields.Nested(course_fields)
+calendar_event_fields['type'] = fields.String(attribute='_type')
+calendar_event_fields['private'] = fields.Boolean(attribute='private')
+calendar_event_fields['archived'] = fields.Boolean(attribute='archived')
+
+
 
 calendar_fields = {}
 calendar_fields['id'] = fields.Integer(attribute='id')
@@ -298,9 +307,6 @@ relationship_fields['sessions'] = fields.Nested(session_fields)
 relationship_fields['messages'] = fields.Nested(message_fields)
 
 
-class FilteredList(fields.Raw):
-    def format(self, value):
-        return value[0:5]
 
 
 UserSerializer = {
@@ -397,6 +403,8 @@ UserSerializer = {
     'departments': fields.List(fields.Nested(department_fields)),
     'guru_categories': fields.List(fields.Nested(category_fields)),
     'guru_subcategories': fields.List(fields.Nested(user_subcategory_fields)),
+    'guru_calendar': fields.List(fields.Nested(calendar_fields)),
+    'student_calendar': fields.List(fields.Nested(calendar_fields))
 }
 
 DeviceSerializer = {

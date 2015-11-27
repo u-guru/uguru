@@ -114,6 +114,11 @@ resource_tag_table = Table('resource-tag_assoc',
     Column('resource_id', Integer, ForeignKey('resource.id')),
     Column('tag_id', Integer, ForeignKey('tag.id')))
 
+experience_portfolio_items_table = Table('experience-portfolio-items_assoc',
+    Base.metadata,
+    Column('portfolio_item_id', Integer, ForeignKey('portfolio_item.id')),
+    Column('experience_id', Integer, ForeignKey('experience.id')))
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -233,6 +238,17 @@ class User(Base):
         backref = "users"
         )
 
+    student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
+    student_calendar = relationship("Calendar",
+        primaryjoin="Calendar.id==User.student_calendar_id",
+        uselist=False)
+
+
+    guru_calendar_id = Column(Integer, ForeignKey('calendar.id'))
+    guru_calendar = relationship("Calendar",
+        primaryjoin="Calendar.id==User.guru_calendar_id",
+        uselist=False
+        )
 
     current_device = relationship("Device", uselist=False)
 
@@ -306,7 +322,7 @@ class User(Base):
     #referred_by
     referred_by_id = Column(Integer, ForeignKey('user.id'))
     referred_by = relationship("User", uselist=False, remote_side=[id])
-
+    referral_limit = Column(Integer, default=5)
 
     deactivated = Column(Boolean, default=False)
 
@@ -351,6 +367,25 @@ class User(Base):
                 count += 1
         return count
 
+
+
+
+    def updateReferralCounts(self):
+        if self.referrals:
+            self.first_degree_referrals = 0
+            second_degree_count = 0
+            for referral in self.referrals:
+                if referral.receiver:
+                    second_degree_count += len(referral.receiver.referrals)
+            self.second_degree_referrals =second_degree_count
+        else:
+            self.second_degree_referrals = 0
+            self.first_degree_referrals = 0
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
     def num_transfer_cards(self):
         count = 0
         for card in self.cards:
@@ -515,6 +550,20 @@ class Calendar(Base):
     start_day = Column(DateTime)
     number_of_days = Column(Integer)
 
+    @staticmethod
+    def initGuruCalendar(user):
+        c = Calendar()
+        c.time_created = datetime.now()
+        try:
+            db_session.add(c)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        if user:
+            user.guru_calendar_id = c.id
+            db_session.commit()
+
 
     @staticmethod
     def initFromRequest(_request, number_of_days = 2):
@@ -557,14 +606,73 @@ class Calendar_Event(Base):
         backref="calendar_events"
     )
 
+    course_id = Column(Integer, ForeignKey('course.id'))
+    course = relationship("Course",
+        uselist=False,
+        primaryjoin = "Course.id == Calendar_Event.course_id",
+        backref="calendar_events"
+    )
+
     time_created = Column(DateTime)
     is_student = Column(Boolean)
     is_guru = Column(Boolean)
     is_mutual = Column(Boolean)
 
+    title = Column(String)
+    _type = Column(String)
+    description = Column(String)
+    private = Column(Boolean)
+    archived = Column(Boolean, default=False)
+
     start_time = Column(DateTime)
     end_time = Column(DateTime)
     location = Column(String)
+
+    ### Todo
+    ## -- Create one --> many relationship event.attendees (RSVP ability)
+    ## -- Attachments
+    ## -- Position object
+    ## -- create Event Type object for oh hours, etc. String hack for now
+    @staticmethod
+    def createGuruOfficeHours(event_json, calendar):
+
+        db_session.add(calendar_event)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        calendar_event = Calendar_Event()
+
+        calendar_event.start_time = event_json.get('start_time')
+        calendar_event.end_time = event_json.get('end_time')
+
+
+        calendar_event.course_id = event_json.get('course_id')
+        calendar_event.title = event_json.get('title')
+        calendar_event._type = event_json.get('type')
+        calendar_event.private = event_json.get('private')
+        calendar_event.description = event_json.get('description')
+
+        calendar_event.location = event_json.get('location')
+        calendar_event.is_student = event_json.get('is_student')
+        calendar_event.is_guru = event_json.get('is_guru')
+        calendar_event.is_mutual = event_json.get('is_mutual')
+
+        calendar_event.time_created = datetime.now()
+
+        calendar_event.calendar_id = calendar.id
+
+        db_session.add(calendar_event)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        return calendar_event
+
 
     @staticmethod
     def initFromJson(event_json, calendar, day_offset):
@@ -925,6 +1033,9 @@ class Department(Base):
 
 
 
+
+
+
 class Campaign(Base):
     __tablename__ = 'campaign'
     id = Column(Integer, primary_key=True)
@@ -947,6 +1058,7 @@ class Campaign(Base):
         primaryjoin = "University.id == Campaign.university_id",
         backref = "campaigns"
     )
+
 
 
 
@@ -1003,6 +1115,10 @@ class Position(Base):
         return position
 
 
+
+
+
+
 class Resource(Base):
     __tablename__ = 'resource'
 
@@ -1026,7 +1142,15 @@ class Resource(Base):
         primaryjoin="User.id==Resource.contributed_user_id",
         uselist=False)
 
+    description = Column(String)
+    title = Column(String)
 
+
+    portfolio_item_id = Column(Integer, ForeignKey('portfolio_item.id'))
+    portfolio_item = relationship("Portfolio_Item",
+        primaryjoin = "(Portfolio_Item.id==Resource.portfolio_item_id)",
+        uselist=False,
+        backref="resources")
 
     time_uploaded = Column(DateTime)
     times_accessed = Column(Integer)
@@ -1151,6 +1275,7 @@ class Tag(Base):
     resources = relationship("Resource",
         secondary = resource_tag_table,
         backref = backref("tags", lazy="dynamic"))
+
 
 
 
@@ -1907,6 +2032,138 @@ class Device(Base):
         return 'android' in self.platform.lower()
 
 
+class Portfolio_Item(Base):
+    __tablename__ = 'portfolio_item'
+    id = Column(Integer, primary_key=True)
+
+    time_created = Column(DateTime)
+
+    is_custom = Column(Boolean)
+    admin_approved = Column(Boolean, default=False)
+
+    skill_id = Column(Integer, ForeignKey('skill.id'))
+    skill = relationship("Skill", uselist=False)
+
+    course_id = Column(Integer, ForeignKey('course.id'))
+    course = relationship("Course", uselist=False)
+
+    subcategory_id = Column(Integer, ForeignKey('subcategory.id'))
+    subcategory = relationship("Subcategory", uselist=False)
+
+    description = Column(String)
+    title = Column(String)
+
+    avg_rating = Column(Float)
+
+    hourly_price = Column(Float)
+    max_hourly_price = Column(Float)
+
+    unit_price = Column(Float)
+    max_unit_price = Column(Float)
+
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship("User",
+        primaryjoin = "(User.id==Portfolio_Item.user_id)",
+        uselist=False,
+        backref="portfolio_items")
+
+    experiences = relationship("Experience",
+        secondary = experience_portfolio_items_table,
+        backref = backref("portfolio_items", lazy="dynamic")
+        )
+
+    ### user -- create custom portfolio item
+    ###
+
+    @staticmethod
+    def initFromCourse(user, course):
+        pi = Portfolio_Item()
+        pi.title = course.short_name
+        pi.description = course.full_name
+
+        try:
+            db_session.add(pi)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        pi.course_id = course.id
+        pi.user_id = user.id
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def linkGuruResource(self, resource):
+        resource.portfolio_id = self.id
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def linkGuruExperience(self, experience_id):
+        experience = Experience.query.get(experience_id)
+        if experience and experience not in self.experiences:
+            self.experiences.append(experience)
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+    def removeGuruExperience(self, experience_id):
+        for experience in self.experiences:
+            if experience.id == experience_id:
+                self.experiences.remove(experience)
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+                break
+
+    def updateTitle(self, title):
+        self.title = title
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def updateDescription(self, description):
+        self.description = description
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def updateUnitPrice(self, price):
+        if price > self.max_unit_price:
+            self.unit_price = self.max_unit_price
+        else:
+            self.unit_price = price
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def updateHourlyPrice(self, price):
+        if price > self.max_hourly_price:
+            self.hourly_price = self.max_hourly_price
+        else:
+            self.hourly_price = price
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+
 class Rating(Base):
     __tablename__ = 'rating'
     id = Column(Integer, primary_key=True)
@@ -1932,10 +2189,18 @@ class Rating(Base):
 
     transaction = relationship("Transaction", uselist=False, backref="rating")
 
+
+
     is_question = Column(Boolean)
     is_task = Column(Boolean)
     is_session = Column(Boolean)
 
+
+    portfolio_item_id = Column(Integer, ForeignKey('portfolio_item.id'))
+    portfolio_item = relationship("Portfolio_Item",
+        primaryjoin = "(Portfolio_Item.id==Rating.portfolio_item_id)",
+        uselist=False,
+        backref="ratings")
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
@@ -2358,6 +2623,20 @@ class Referral(Base):
     reward = Column(Float)
     details = Column(String)
     time_redeemed = Column(DateTime)
+
+    @staticmethod
+    def initAndApplyReferral(sender, receiver):
+        referral = Referral()
+        referral.sender_id = sender.id
+        referral.receiver_id = receiver.id
+        referral.time_redeemed = datetime.now()
+        receiver.referred_by_id = sender.id
+        try:
+            db_session.add(referral)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     # def __init__(self, sender_id, receiver_id, ):
 
