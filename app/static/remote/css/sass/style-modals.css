@@ -1408,134 +1408,118 @@ body.platform-ios .mobile-messages-container #message-container {
 /* optionally set a max-height */
 /* maxlength on the textarea will prevent /*
 /* it from getting too large also */
-.bar-footer {
-  overflow: visible !important; }
-
-.item-input-wrapper textarea {
-  width: 100%;
-  border-radius: 12px; }
-
-.bar-footer textarea {
-  resize: none;
-  height: 25px; }
-
-/* fixes an ios bug bear */
-button.ion-android-send {
-  padding-top: 2px; }
-
-/* add this to keep your footer buttons down
-at the bottom as the textarea resizes */
-.footer-btn-wrap {
-  position: relative;
-  height: 100%;
-  width: 50px;
-  top: 7px; }
-
-.footer-btn {
-  position: absolute !important;
-  bottom: 0; }
-
-img.profile-pic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 10px; }
-
-img.profile-pic.left {
-  left: 10px; }
-
-img.profile-pic.right {
-  right: 10px; }
-
-.ion-email {
-  float: right;
-  font-size: 32px;
-  vertical-align: middle; }
-
-.message {
-  font-size: 14px; }
-
-.message-detail {
-  white-space: nowrap;
-  font-size: 14px; }
-
-.bar.item-input-inset .item-input-wrapper input {
-  width: 100% !important; }
-
-.message-wrapper {
-  position: relative; }
-
-.message-wrapper:last-child {
-  margin-bottom: 10px; }
-
-.chat-bubble {
-  border-radius: 5px;
-  display: inline-block;
-  padding: 10px 18px;
-  position: relative;
-  margin: 10px;
-  max-width: 80%; }
-
-.chat-bubble:before {
-  content: "\00a0";
-  display: block;
-  height: 16px;
-  width: 9px;
-  position: absolute;
-  bottom: -7.5px; }
-
-.chat-bubble.left {
-  background-color: #F1F1F1;
-  float: left;
-  margin-left: 55px; }
-
-.chat-bubble.left:before {
-  background-color: #F1F1F1;
-  left: 10px;
-  -webkit-transform: rotate(70deg) skew(5deg); }
-
-.chat-bubble.right {
-  background-color: #55A4B7;
-  color: white;
-  float: right;
-  margin-right: 55px; }
-
-.chat-bubble.right:before {
-  background-color: #55A4B7;
-  right: 10px;
-  -webkit-transform: rotate(118deg) skew(-5deg); }
-
-.chat-bubble.right a.autolinker {
-  color: white;
-  font-weight: bold; }
-
-.user-messages-top-icon {
-  font-size: 28px;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  top: -3px;
-  right: 5px; }
-
-.msg-header-username {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  top: -3px; }
-
-input, textarea, .item-input, .item-input-wrapper {
-  background-color: #F1F1F1 !important; }
-
-.bold {
-  font-weight: bold; }
-
-.cf {
-  clear: both !important; }
-
-a.autolinker {
-  color: #55A4B7;
-  text-decoration: none; }
+#desktop-messaging, #messenger-content, .guru-message-container {
+  /* fixes an ios bug bear */
+  /* add this to keep your footer buttons down
+  at the bottom as the textarea resizes */ }
+  #desktop-messaging #messenger-sidebar ul li a span.messenger-icon img, #messenger-content #messenger-sidebar ul li a span.messenger-icon img, .guru-message-container #messenger-sidebar ul li a span.messenger-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 1000px; }
+  #desktop-messaging .message-send-button, #messenger-content .message-send-button, .guru-message-container .message-send-button {
+    position: absolute;
+    background: #69B3A5;
+    width: 10%;
+    top: 0;
+    right: 0; }
+  #desktop-messaging .bar-footer, #messenger-content .bar-footer, .guru-message-container .bar-footer {
+    overflow: visible !important; }
+  #desktop-messaging .item-input-wrapper textarea, #messenger-content .item-input-wrapper textarea, .guru-message-container .item-input-wrapper textarea {
+    width: 100%;
+    border-radius: 12px; }
+  #desktop-messaging .bar-footer textarea, #messenger-content .bar-footer textarea, .guru-message-container .bar-footer textarea {
+    resize: none;
+    height: 25px; }
+  #desktop-messaging button.ion-android-send, #messenger-content button.ion-android-send, .guru-message-container button.ion-android-send {
+    padding-top: 2px; }
+  #desktop-messaging .footer-btn-wrap, #messenger-content .footer-btn-wrap, .guru-message-container .footer-btn-wrap {
+    position: relative;
+    height: 100%;
+    width: 50px;
+    top: 7px; }
+  #desktop-messaging .footer-btn, #messenger-content .footer-btn, .guru-message-container .footer-btn {
+    position: absolute !important;
+    bottom: 0; }
+  #desktop-messaging img.profile-pic, #messenger-content img.profile-pic, .guru-message-container img.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px; }
+  #desktop-messaging img.profile-pic.left, #messenger-content img.profile-pic.left, .guru-message-container img.profile-pic.left {
+    left: 10px; }
+  #desktop-messaging img.profile-pic.right, #messenger-content img.profile-pic.right, .guru-message-container img.profile-pic.right {
+    right: 10px; }
+  #desktop-messaging .ion-email, #messenger-content .ion-email, .guru-message-container .ion-email {
+    float: right;
+    font-size: 32px;
+    vertical-align: middle; }
+  #desktop-messaging .message, #messenger-content .message, .guru-message-container .message {
+    font-size: 14px; }
+  #desktop-messaging .message-detail, #messenger-content .message-detail, .guru-message-container .message-detail {
+    white-space: nowrap;
+    font-size: 14px; }
+  #desktop-messaging .bar.item-input-inset .item-input-wrapper input, #messenger-content .bar.item-input-inset .item-input-wrapper input, .guru-message-container .bar.item-input-inset .item-input-wrapper input {
+    width: 100% !important; }
+  #desktop-messaging .message-wrapper, #messenger-content .message-wrapper, .guru-message-container .message-wrapper {
+    position: relative; }
+  #desktop-messaging .message-wrapper:last-child, #messenger-content .message-wrapper:last-child, .guru-message-container .message-wrapper:last-child {
+    margin-bottom: 10px; }
+  #desktop-messaging .chat-bubble, #messenger-content .chat-bubble, .guru-message-container .chat-bubble {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 18px;
+    position: relative;
+    margin: 10px;
+    max-width: 80%; }
+  #desktop-messaging .chat-bubble:before, #messenger-content .chat-bubble:before, .guru-message-container .chat-bubble:before {
+    content: "\00a0";
+    display: block;
+    height: 16px;
+    width: 9px;
+    position: absolute;
+    bottom: -7.5px; }
+  #desktop-messaging .chat-bubble.left, #messenger-content .chat-bubble.left, .guru-message-container .chat-bubble.left {
+    background-color: #F1F1F1;
+    float: left;
+    margin-left: 55px; }
+  #desktop-messaging .chat-bubble.left:before, #messenger-content .chat-bubble.left:before, .guru-message-container .chat-bubble.left:before {
+    background-color: #F1F1F1;
+    left: 10px;
+    -webkit-transform: rotate(70deg) skew(5deg); }
+  #desktop-messaging .chat-bubble.right, #messenger-content .chat-bubble.right, .guru-message-container .chat-bubble.right {
+    background-color: #55A4B7;
+    color: white;
+    float: right;
+    margin-right: 55px; }
+  #desktop-messaging .chat-bubble.right:before, #messenger-content .chat-bubble.right:before, .guru-message-container .chat-bubble.right:before {
+    background-color: #55A4B7;
+    right: 10px;
+    -webkit-transform: rotate(118deg) skew(-5deg); }
+  #desktop-messaging .chat-bubble.right a.autolinker, #messenger-content .chat-bubble.right a.autolinker, .guru-message-container .chat-bubble.right a.autolinker {
+    color: white;
+    font-weight: bold; }
+  #desktop-messaging .user-messages-top-icon, #messenger-content .user-messages-top-icon, .guru-message-container .user-messages-top-icon {
+    font-size: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+    right: 5px; }
+  #desktop-messaging .msg-header-username, #messenger-content .msg-header-username, .guru-message-container .msg-header-username {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -3px; }
+  #desktop-messaging input, #desktop-messaging textarea, #desktop-messaging .item-input, #desktop-messaging .item-input-wrapper, #messenger-content input, #messenger-content textarea, #messenger-content .item-input, #messenger-content .item-input-wrapper, .guru-message-container input, .guru-message-container textarea, .guru-message-container .item-input, .guru-message-container .item-input-wrapper {
+    background-color: #F1F1F1 !important; }
+  #desktop-messaging .bold, #messenger-content .bold, .guru-message-container .bold {
+    font-weight: bold; }
+  #desktop-messaging .cf, #messenger-content .cf, .guru-message-container .cf {
+    clear: both !important; }
+  #desktop-messaging a.autolinker, #messenger-content a.autolinker, .guru-message-container a.autolinker {
+    color: #55A4B7;
+    text-decoration: none; }
 
 /*}*/
 

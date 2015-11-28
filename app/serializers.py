@@ -306,7 +306,41 @@ relationship_fields['guru'] = fields.Nested(guru_fields)
 relationship_fields['sessions'] = fields.Nested(session_fields)
 relationship_fields['messages'] = fields.Nested(message_fields)
 
+referral_sender_fields = {}
+referral_sender_fields['id'] = fields.Integer(attribute='id')
+referral_sender_fields['name'] = fields.String(attribute='name')
+referral_sender_fields['profile_url'] = fields.String(attribute='profile_url')
+referral_sender_fields['first_degree_referrals'] = fields.Integer(attribute='first_degree_referrals')
+referral_sender_fields['second_degree_referrals'] = fields.Integer(attribute='second_degree_referrals')
+referral_sender_fields['time_created'] = fields.DateTime(attribute='time_created')
 
+referral_receiver_fields = {}
+referral_receiver_fields['id'] = fields.Integer(attribute='id')
+referral_receiver_fields['name'] = fields.String(attribute='name')
+referral_receiver_fields['profile_url'] = fields.String(attribute='profile_url')
+referral_receiver_fields['first_degree_referrals'] = fields.Integer(attribute='first_degree_referrals')
+referral_receiver_fields['second_degree_referrals'] = fields.Integer(attribute='second_degree_referrals')
+referral_receiver_fields['time_created'] = fields.DateTime(attribute='time_created')
+
+
+referral_fields = {}
+referral_fields['id'] = fields.Integer(attribute='id')
+referral_fields['sender'] = fields.Nested(referral_sender_fields)
+referral_fields['receiver'] = fields.Nested(referral_receiver_fields)
+
+portfolio_item_fields = {}
+portfolio_item_fields['time_created'] = fields.DateTime(attribute='time_created')
+portfolio_item_fields['is_custom'] = fields.Boolean(attribute='is_custom')
+portfolio_item_fields['admin_approved'] = fields.Boolean(attribute='admin_approved')
+portfolio_item_fields['course'] = fields.Nested(course_fields)
+portfolio_item_fields['subcategory_fields'] = fields.List(fields.Nested(subcategory_fields))
+portfolio_item_fields['description'] = fields.String(attribute='description')
+portfolio_item_fields['title'] = fields.String(attribute='title')
+portfolio_item_fields['avg_rating'] = fields.Float(attribute='avg_rating')
+portfolio_item_fields['hourly_price'] = fields.Float(attribute='hourly_price')
+portfolio_item_fields['max_hourly_price'] = fields.Float(attribute='max_hourly_price')
+portfolio_item_fields['unit_price'] = fields.Float(attribute='unit_price')
+portfolio_item_fields['max_unit_price'] = fields.Float(attribute='max_unit_price')
 
 
 UserSerializer = {
@@ -404,7 +438,12 @@ UserSerializer = {
     'guru_categories': fields.List(fields.Nested(category_fields)),
     'guru_subcategories': fields.List(fields.Nested(user_subcategory_fields)),
     'guru_calendar': fields.List(fields.Nested(calendar_fields)),
-    'student_calendar': fields.List(fields.Nested(calendar_fields))
+    'student_calendar': fields.List(fields.Nested(calendar_fields)),
+    'portfolio_items': fields.List(fields.Nested(portfolio_item_fields)),
+    'referrals': fields.List(fields.Nested(referral_fields)),
+    'first_degree_referrals': fields.Integer,
+    'second_degree_referrals': fields.Integer,
+
 }
 
 DeviceSerializer = {

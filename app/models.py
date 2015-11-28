@@ -323,6 +323,8 @@ class User(Base):
     referred_by_id = Column(Integer, ForeignKey('user.id'))
     referred_by = relationship("User", uselist=False, remote_side=[id])
     referral_limit = Column(Integer, default=5)
+    first_degree_referrals = Column(Integer, default=0)
+    second_degree_referrals = Column(Integer, default=0)
 
     deactivated = Column(Boolean, default=False)
 
@@ -372,7 +374,7 @@ class User(Base):
 
     def updateReferralCounts(self):
         if self.referrals:
-            self.first_degree_referrals = 0
+            self.first_degree_referrals = len(self.referrals)
             second_degree_count = 0
             for referral in self.referrals:
                 if referral.receiver:
@@ -381,6 +383,12 @@ class User(Base):
         else:
             self.second_degree_referrals = 0
             self.first_degree_referrals = 0
+
+        # update 2nd degree referrals for the guru who helped
+        if self.referred_by and self.referred_by.referrals:
+            self.referred_by.second_degree_referrals += self.first_degree_referrals
+
+
         try:
             db_session.commit()
         except:
@@ -2076,7 +2084,38 @@ class Portfolio_Item(Base):
     ###
 
     @staticmethod
+    def initAllCourses(user):
+        if not user or not user.guru_courses:
+            return
+        for course in user.guru_courses:
+            pi = Portfolio_Item()
+            pi.title = course.short_name
+            pi.description = course.full_name
+            pi.time_created = datetime.now()
+
+            try:
+                db_session.add(pi)
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+    @staticmethod
+    def getPortfolioItemByCourseId(user, course_id):
+        for pi in user.portfolio_items:
+            if pi.course_id == course_id:
+                return pi.course
+
+    @staticmethod
     def initFromCourse(user, course):
+        if not user or not user.guru_courses:
+            return
+
+        portfolo_course_ids = [p.course_id for p in user.portfolio_items]
+
+        if course.id in portfolo_course_ids:
+            return
+
         pi = Portfolio_Item()
         pi.title = course.short_name
         pi.description = course.full_name
@@ -2637,6 +2676,7 @@ class Referral(Base):
         except:
             db_session.rollback()
             raise
+        sender.updateReferralCounts()
 
     # def __init__(self, sender_id, receiver_id, ):
 

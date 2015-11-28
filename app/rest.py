@@ -633,11 +633,29 @@ class UserOneView(restful.Resource):
         if 'profile_url' in request.json:
             user.profile_url = request.json.get('profile_url')
 
+        if 'update_portfolio_item' in request.json:
+            pi_json = request.json.get('update_portfolio_item')
+            pi_id = request.json.get('id')
+            if not pi_id and user.guru_courses and not user.portfolio_items:
+                Portfolio_Item.initAllCourses(user)
+
+            course_id = int(pi_json.get('course_id'))
+            pi = Portfolio_Item.getPortfolioItemByCourseId(course_id)
+            if not pi:
+                abort(404)
+
+            pi.description = pi_json.get('description')
+            pi.hourly_price = pi_json.get('hourly_price')
+            pi.max_hourly_price = pi_json.get('max_hourly_price')
+            pi.unit_price = pi_json.get('unit_price')
+            pi.max_unit_price = pi_json.get('max_unit_price')
+
+
         if 'fb_id' in request.json:
             if not user.fb_id:
                 fb_id = request.json.get('fb_id')
                 if user not in previous_user:
-                    user.fb_id = request.json.get('fb_id ')
+                    user.fb_id = request.json.get('fb_id')
                     db_session.commit()
                 else:
                     print "previous user exists"
