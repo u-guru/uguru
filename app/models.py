@@ -386,7 +386,7 @@ class User(Base):
 
         # update 2nd degree referrals for the guru who helped
         if self.referred_by and self.referred_by.referrals:
-            self.referred_by.second_degree_referrals += self.first_degree_referrals
+            self.referred_by.second_degree_referrals += 1
 
 
         try:

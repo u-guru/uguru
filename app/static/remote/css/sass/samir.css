@@ -248,4 +248,41 @@ body.platform-ios .guru-view-mobile .header-nav {
 #profile-footer-desc {
   font-size: 20px; }
 
+#settings-notifications-list ion-item.active, #settings-notifications-list ion-item:hover, #settings-notifications-list ion-item:active, #settings-notifications-list ion-item:focus {
+  background: none;
+  background-color: none; }
+#settings-notifications-list .list-item-detail {
+  padding-left: 5%; }
+#settings-notifications-list .list-item-icon svg:active, #settings-notifications-list .list-item-icon svg.active, #settings-notifications-list .list-item-icon svg.activated {
+  opacity: 0.5; }
+#settings-notifications-list .list-item-icon svg path.notifications-path {
+  stroke: white; }
+  #settings-notifications-list .list-item-icon svg path.notifications-path.active {
+    stroke: #40484B;
+    width: 5px;
+    opacity: 1; }
+#settings-notifications-list .list-item-icon svg circle.notifications-circle {
+  fill: #40484B; }
+  #settings-notifications-list .list-item-icon svg circle.notifications-circle.active {
+    fill: white;
+    opacity: 1; }
+
+.desktop-notifications-grid-item svg {
+  stroke: #40484B; }
+  .desktop-notifications-grid-item svg path.notifications-path {
+    stroke: white;
+    fill: #2B3234;
+    stroke-width: 4px; }
+    .desktop-notifications-grid-item svg path.notifications-path.active {
+      fill: white;
+      stroke: #2B3234;
+      stroke-width: 8px;
+      width: 5px;
+      opacity: 1; }
+  .desktop-notifications-grid-item svg circle.notifications-circle {
+    fill: #40484B; }
+    .desktop-notifications-grid-item svg circle.notifications-circle.active {
+      fill: white;
+      opacity: 1; }
+
 /*# sourceMappingURL=samir.css.map */

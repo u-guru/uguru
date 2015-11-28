@@ -58,6 +58,17 @@ angular.module('uguru.user', [])
         return profile_url
     }
 
+    var processReferrals = function(referrals) {
+        for (var i = 0; i < referrals.length; i++) {
+            var referralIndex = referrals[i];
+            if (referralIndex.receiver) {
+                referralIndex.receiver.name = referralIndex.receiver.name.split(' ')[0];
+                referralIndex.receiver.name[0] = referralIndex.receiver.name[0].toUpperCase;
+            }
+        }
+        return referrals
+    }
+
     var parseRelationships = function(relationships) {
         for (var i = 0; i < relationships.length; i++) {
             var indexRelationship = relationships[i];
@@ -605,6 +616,10 @@ angular.module('uguru.user', [])
         $scope.user.text_friendly = user.text_friendly;
         $scope.user.guru_experiences = user.guru_experiences;
         $scope.user.guru_languages = user.guru_languages;
+        $scope.user.referrals = processReferrals(user.referrals);
+        $scope.user.first_degree_referrals = user.first_degree_referrals;
+        $scope.user.second_degree_referrals = user.second_degree_referrals;
+        $scope.user.referral_limit = user.referral_limit;
 
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;

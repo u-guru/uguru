@@ -298,3 +298,62 @@ body.platform-ios {
 #profile-footer-desc {
 	font-size:20px;
 }
+
+#settings-notifications-list {
+	ion-item.active, ion-item:hover, ion-item:active, ion-item:focus {
+		background:none;
+		background-color: none;
+	}
+	.list-item-detail {
+		padding-left:5%;
+	}
+	.list-item-icon {
+		svg:active, svg.active, svg.activated {
+			opacity:0.5;
+		}
+	}
+	.list-item-icon svg {
+		path.notifications-path {
+			stroke:white;
+			&.active {
+				stroke:$slate;
+				width:5px;
+				opacity:1;
+			}
+		}
+
+		circle.notifications-circle {
+			fill:$slate;
+			&.active {
+				fill:white;
+				opacity:1;
+			}
+		}
+	}
+}
+
+
+.desktop-notifications-grid-item svg {
+		stroke:$slate;
+		path.notifications-path {
+			stroke:white;
+			fill:$charcoal;
+			stroke-width:4px;
+			&.active {
+				fill:white;
+				stroke:$charcoal;
+				stroke-width:8px;
+				width:5px;
+				opacity:1;
+			}
+		}
+
+		circle.notifications-circle {
+			fill:$slate;
+			&.active {
+
+				fill:white;
+				opacity:1;
+			}
+		}
+	}

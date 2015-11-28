@@ -443,6 +443,7 @@ UserSerializer = {
     'referrals': fields.List(fields.Nested(referral_fields)),
     'first_degree_referrals': fields.Integer,
     'second_degree_referrals': fields.Integer,
+    'referral_limit': fields.Integer,
 
 }
 
