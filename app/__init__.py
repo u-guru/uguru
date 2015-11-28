@@ -45,8 +45,11 @@ app.config.update(dict(
   PREFERRED_URL_SCHEME = 'https',
 ))
 
-# if not os.environ.get('PRODUCTION'):
-#     app.config.update(SERVER_NAME='samir:5000')
+try:
+    if os.environ.get('PRODUCTION'):
+        app.config.update(SERVER_NAME='uguru.me')
+except:
+    print "some shit went wrong on production"
 
 
 # flask-restful
