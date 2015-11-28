@@ -28,7 +28,7 @@
 								</li>
 								<li id="profile-school">{{user.university.title}}</li>
 							</ul>
-							<div style='font-size:14px; padding-bottom:12.5%;' class='absolute bottom-0 left-0 full-x absolute bottom-0 left-0 full-x text-center'>
+							<div  id='public-profile-url' ng-if='user.profile_code' class='absolute bottom-0 left-0 full-x absolute bottom-0 left-0 full-x text-center'>
 								<strong>Public URL</strong>:&nbsp;&nbsp;&nbsp;www.<strong>{{user.profile_code}}</strong>.uguru.me
 							</div>
 						</nav>

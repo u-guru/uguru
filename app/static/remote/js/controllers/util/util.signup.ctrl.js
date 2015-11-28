@@ -148,22 +148,31 @@ angular.module('uguru.util.controllers')
       }
 
       var successCallback = function() {
-          LoadingService.hide();
-          alert("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!');
+          $timeout(function() {
+            LoadingService.showSuccess("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!', 4000);
+          }, 250)
           $scope.signupForm.email = '';
+          $scope.signupForm.full_name = '';
+          $scope.signupForm.password = '';
+          
+          if (!$scope.desktopMode) {
+            $scope.signupModal.hide();
+          } else {
+            $timeout(function() {
+              $scope.backToAccess();
+            }, 1500)
+          }
       }
 
       var failureCallback = function(err) {
-        if (err && err.status === 404) {
-          alert('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?');
-        }
+        console.log('failure allback');
+        LoadingService.showMsg('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?', 3000);
+        $scope.signupForm.email = '';
+        
       }
 
       $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
-      LoadingService.show();
-      $timeout(function() {
-        $scope.toggleBackToLoginMode();
-      }, 500)
+      LoadingService.showAmbig(null, 5000);
     }
 
     $scope.toggleResetModeFromLogin = function() {
@@ -1509,9 +1518,10 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
-    // console.log("CHECK",$scope.root.vars.loginMode);
-
-    // $scope.root.vars.loginMode = $scope.root.vars.page_cache.login_mode || false;
+    
+    $timeout(function() {
+      $scope.root.vars.loginMode = true;
+    })
     // $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
     //         scope: $scope,
     //         animation: 'slide-in-up',

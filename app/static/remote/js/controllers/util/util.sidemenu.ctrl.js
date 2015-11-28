@@ -186,10 +186,7 @@ angular.module('uguru.util.controllers')
       };
 
       $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
-      LoadingService.show();
-      $timeout(function() {
-        $scope.toggleBackToLoginMode();
-      }, 500);
+      LoadingService.showAmbig();
     };
 
     $scope.toggleDiscoverability = function() {
