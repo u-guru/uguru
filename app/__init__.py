@@ -48,6 +48,7 @@ app.config.update(dict(
 ))
 
 app.config.setdefault('MANDRILL_WEBHOOKS_KEY', 'Byu1r2LQpLmaxGvIoydqQw')
+app.config.setdefault('MANDRILL_WEBHOOKS_URL', 'https://uguru-rest-test.herokuapp.com/mandrill')
 
 try:
     if os.environ.get('PRODUCTION'):
