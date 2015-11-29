@@ -1,4 +1,4 @@
-<ion-view id='desktop-guru-home'class='bg-charcoal'>
+<ion-view id='desktop-guru-home'class='bg-charcoal' data-sr-container>
 	<main class="desktop-mode" ng-if='desktopMode'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default flex guru-home-container">
@@ -67,7 +67,7 @@
 			<div class="guru-home-tiles">
 				<div class="home-tiles-top">
 					<div class="home-tiles-ranking">
-						<div>
+						<div data-sr="enter top, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 							    <rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -87,21 +87,21 @@
 							</div>
 						</div>
 					</div>
-					<div class="home-tiles-rating">
-						<div>
+					<div class="home-tiles-rating" >
+						<div data-sr="enter left, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 							    <rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
 							<div>
 								<a>
 									<h3>Avg Rating</h3>
-									<h1 id='home-tiles-ranking'>{{user.guru_avg_rating}}</i></h1>
+									<h1 id='home-tiles-ranking'>{{user.guru_avg_rating}}</h1>
 									<h5>{{user.guru_ratings.length}} reviews</h5>
 								</a>
 							</div>
 
 						</div>
-						<div>
+						<div data-sr="enter left, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -114,9 +114,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="home-tiles-bottom">
-					<div class="home-tiles-stats">
-						<div>
+				<div class="home-tiles-bottom" >
+					<div class="home-tiles-stats" >
+						<div data-sr="enter bottom, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -131,7 +131,7 @@
 								</div>
 							</div>
 						</div>
-						<div>
+						<div data-sr="enter bottom, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -146,7 +146,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="home-tiles-upcoming">
+					<div class="home-tiles-upcoming" data-sr="enter bottom, roll 45deg, over 2s">
 						<div>
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
