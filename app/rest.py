@@ -13,7 +13,7 @@ from lib.api_utils import json_response
 from pprint import pprint
 
 
-APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d34', 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4']
+APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d34', 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4', 'fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6']
 
 @auth.verify_password
 def verify_password(email, password):
@@ -593,6 +593,10 @@ class UserOneView(restful.Resource):
             user.text_notifications = request.json.get('text_notifications')
             print 'coming soon!'
 
+        if 'email_notifications' in request.json:
+            user.email_notifications = request.json.get('email_notifications')
+            print 'coming soon!'
+
         if 'guru_latest_time' in request.json:
             user.guru_latest_time = request.json.get('guru_latest_time')
 
@@ -615,6 +619,12 @@ class UserOneView(restful.Resource):
         if 'messenger_friendly' in request.json:
             user.messenger_friendly = request.json.get('messenger_friendly')
 
+        if 'referral_code' in request.json:
+            user.referral_code = request.json.get('referral_code')
+
+        if 'profile_code' in request.json:
+            user.profile_code = request.json.get('profile_code')
+
         if 'person_friendly' in request.json:
             user.person_friendly = request.json.get('person_friendly')
 
@@ -627,10 +637,27 @@ class UserOneView(restful.Resource):
         if 'profile_url' in request.json:
             user.profile_url = request.json.get('profile_url')
 
+        if 'update_portfolio_item' in request.json:
+            pi_json = request.json.get('update_portfolio_item')
+            pi_id = request.json.get('id')
+            if not pi_id and user.guru_courses and not user.portfolio_items:
+                Portfolio_Item.initAllCourses(user)
+
+            course_id = int(pi_json.get('course_id'))
+            pi = Portfolio_Item.getPortfolioItemByCourseId(course_id)
+            if not pi:
+                abort(404)
+
+            pi.description = pi_json.get('description')
+            pi.hourly_price = pi_json.get('hourly_price')
+            pi.max_hourly_price = pi_json.get('max_hourly_price')
+            pi.unit_price = pi_json.get('unit_price')
+            pi.max_unit_price = pi_json.get('max_unit_price')
+
+
         if 'fb_id' in request.json:
             if not user.fb_id:
                 fb_id = request.json.get('fb_id')
-                previous_user = User.query.filter_by(fb_id=fb_id).all()
                 if user not in previous_user:
                     user.fb_id = request.json.get('fb_id')
                     db_session.commit()
@@ -644,6 +671,20 @@ class UserOneView(restful.Resource):
 
         if 'guru_mode' in request.json:
             user.guru_mode = request.json.get('guru_mode')
+
+
+        if 'add_guru_calendar_event' in request.json:
+            calendar_event_json = request.json.get('add_calendar_event')
+            if not user.guru_calendar:
+                Calendar.initGuruCalendar(user)
+            Calendar.createGuruOfficeHours(calendar_event_json, user.guru_calendar)
+
+        if 'remove_guru_calendar_event' in request.json:
+            calendar_event_json = request.json.get('remove_guru_calendar_event')
+            calendar_event_id = int(calendar_event_json.get('id'))
+            calendar_event = Calendar_Event.query.get(calendar_event_id)
+            calendar_event.archived = True
+            db_session.commit()
 
         if request.json.get('add_student_course'):
             course = request.json.get('course')
@@ -1864,6 +1905,53 @@ class UserSessionView(restful.Resource):
 #TODO Later Queuing system + task actions for db_commits
 #TODO Later: Images & Files --> S3 Bucket
 
+class UserRelationshipMessageView(restful.Resource):
+    @marshal_with(UserSerializer)
+    def post(self, _id, relationship_id):
+        user = get_user(_id)
+
+        _relationship = Relationship.query.get(relationship_id)
+        if not user or not _relationship:
+            abort(404)
+
+
+        if request.json.get('message'):
+            message_json = request.json.get('message')
+            message = Message.initFromJson(message_json, False)
+
+            _relationship = Relationship.query.get(message.relationship_id)
+
+            #guru sent it
+            if user.id == message.receiver_id:
+
+                #student is the one 'receiving the message'
+                message_receiver = message.sender
+                message_sender = message.receiver
+
+            #student sent it
+            else:
+                #student is the one 'receiving the message'
+                message_receiver = message.receiver
+                message_sender = message.sender
+
+            print message
+            # if message_receiver.push_notifications:
+            #     #send push notification to all student devices
+            #     from app.lib.push_notif import send_message_to_receiver
+            #     send_message_to_receiver(message_sender, message_receiver, message._relationship.sessions[0].request.course)
+
+
+            # # if user.email_notifications and user.email:
+            # #     from app.emails import send_message_to_receiver
+            # #     send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+
+            # if message.receiver.text_notifications and user.phone_number:
+            #     from app.texts import send_message_to_receiver
+            #     send_message_to_receiver(message_sender, message_receiver, message._relationship.sessions[0].request.course)
+
+            return user, 200
+
+
 class UserSessionMessageView(restful.Resource):
 
     @marshal_with(SessionSerializer)
@@ -2150,6 +2238,12 @@ class UserNewView(restful.Resource):
 
         db_session.add(user)
         db_session.commit()
+
+        if request.json.get('access_code_sender_id'):
+            sender_id = int(request.json.get('access_code_sender_id'))
+            sender = User.query.get(sender_id)
+            if sender:
+                Referral.initAndApplyReferral(sender, user)
 
         majors_json = request.json.get('majors')
         if majors_json:
@@ -3145,7 +3239,7 @@ class AdminOneUniversityView(restful.Resource):
                 banner_src = request.json.get('university_banner')
                 if type(banner_src) != str:
                     abort(401)
-
+                print banner_src
                 u.banner_url = banner_src
 
 
@@ -3409,6 +3503,7 @@ api.add_resource(UserCardView, '/api/v1/user/<int:user_id>/cards')
 api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')
 api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions')
 api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings')
+api.add_resource(UserRelationshipMessageView, '/api/v1/user/<int:_id>/relationships/<int:relationship_id>/messages')
 api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages')
 api.add_resource(UserSupportMessageView, '/api/v1/user/<int:_id>/support/<int:_support>/messages')
 api.add_resource(OneDeviceView, '/api/v1/device')

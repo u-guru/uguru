@@ -662,6 +662,80 @@
   border-top-color: white;
 }
 
+#experience-modal .main input[type=range]::-moz-range-thumb,
+#guru-introduction-modal .main input[type=range]::-moz-range-thumb {
+  position: relative;
+  border-radius: 0;
+  margin-top: -80px;
+  width: 40px;
+  height: 40px;
+}
+
+#experience-modal .main input[type=range]::-moz-range-thumb:before,
+#guru-introduction-modal .main input[type=range]::-moz-range-thumb:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  content: "0";
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#experience-modal .main input[type=range]::-moz-range-thumb:after,
+#guru-introduction-modal .main input[type=range]::-moz-range-thumb:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: white;
+}
+
+#experience-modal .main input[type=range]::-ms-range-thumb,
+#guru-introduction-modal .main input[type=range]::-ms-range-thumb {
+  position: relative;
+  border-radius: 0;
+  margin-top: -80px;
+  width: 40px;
+  height: 40px;
+}
+
+#experience-modal .main input[type=range]::-ms-range-thumb:before,
+#guru-introduction-modal .main input[type=range]::-ms-range-thumb:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  content: "0";
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#experience-modal .main input[type=range]::-ms-range-thumb:after,
+#guru-introduction-modal .main input[type=range]::-ms-range-thumb:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: white;
+}
+
 #experience-modal .main input[type=range][value="0"]::-webkit-slider-thumb:before,
 #guru-introduction-modal .main input[type=range][value="0"]::-webkit-slider-thumb:before {
   content: "‹ 1";
@@ -1881,10 +1955,10 @@
 		/* optionally set a max-height */
   /* maxlength on the textarea will prevent /*
 		/* it from getting too large also */
-  /* fixes an ios bug bear */
-  /* add this to keep your footer buttons down
-		at the bottom as the textarea resizes */
-  /*}*/
+  /* allows the bar-footer to be elastic /*
+	/* optionally set a max-height */
+  /* maxlength on the textarea will prevent /*
+	/* it from getting too large also */
 }
 
 .mobile-messages-container #messenger-content .header-close {
@@ -1994,38 +2068,62 @@
   border-radius: 12px;
 }
 
-.mobile-messages-container .bar-footer textarea {
+.mobile-messages-container #desktop-messaging, .mobile-messages-container #messenger-content, .mobile-messages-container .guru-message-container {
+  /* fixes an ios bug bear */
+  /* add this to keep your footer buttons down
+		at the bottom as the textarea resizes */
+}
+
+.mobile-messages-container #desktop-messaging #messenger-sidebar ul li a span.messenger-icon img, .mobile-messages-container #messenger-content #messenger-sidebar ul li a span.messenger-icon img, .mobile-messages-container .guru-message-container #messenger-sidebar ul li a span.messenger-icon img {
+  width: 50px;
+  height: 50px;
+  border-radius: 1000px;
+}
+
+.mobile-messages-container #desktop-messaging .message-send-button, .mobile-messages-container #messenger-content .message-send-button, .mobile-messages-container .guru-message-container .message-send-button {
+  position: absolute;
+  background: #69B3A5;
+  width: 10%;
+  top: 0;
+  right: 0;
+}
+
+.mobile-messages-container #desktop-messaging .bar-footer, .mobile-messages-container #messenger-content .bar-footer, .mobile-messages-container .guru-message-container .bar-footer {
+  overflow: visible !important;
+}
+
+.mobile-messages-container #desktop-messaging .bar-footer textarea, .mobile-messages-container #messenger-content .bar-footer textarea, .mobile-messages-container .guru-message-container .bar-footer textarea {
   resize: none;
   height: 25px;
 }
 
-.mobile-messages-container button.ion-android-send {
+.mobile-messages-container #desktop-messaging button.ion-android-send, .mobile-messages-container #messenger-content button.ion-android-send, .mobile-messages-container .guru-message-container button.ion-android-send {
   padding-top: 2px;
 }
 
-.mobile-messages-container .footer-btn-wrap {
+.mobile-messages-container #desktop-messaging .footer-btn-wrap, .mobile-messages-container #messenger-content .footer-btn-wrap, .mobile-messages-container .guru-message-container .footer-btn-wrap {
   position: relative;
   height: 100%;
   width: 50px;
   top: 0;
 }
 
-.mobile-messages-container .footer-btn-wrap button {
+.mobile-messages-container #desktop-messaging .footer-btn-wrap button, .mobile-messages-container #messenger-content .footer-btn-wrap button, .mobile-messages-container .guru-message-container .footer-btn-wrap button {
   height: 100%;
   padding: 0;
   background: transparent;
 }
 
-.mobile-messages-container .footer-btn-wrap button svg {
+.mobile-messages-container #desktop-messaging .footer-btn-wrap button svg, .mobile-messages-container #messenger-content .footer-btn-wrap button svg, .mobile-messages-container .guru-message-container .footer-btn-wrap button svg {
   height: 100%;
 }
 
-.mobile-messages-container .footer-btn {
+.mobile-messages-container #desktop-messaging .footer-btn, .mobile-messages-container #messenger-content .footer-btn, .mobile-messages-container .guru-message-container .footer-btn {
   position: absolute !important;
   bottom: 0;
 }
 
-.mobile-messages-container img.profile-pic {
+.mobile-messages-container #desktop-messaging img.profile-pic, .mobile-messages-container #messenger-content img.profile-pic, .mobile-messages-container .guru-message-container img.profile-pic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -2033,42 +2131,42 @@
   bottom: 10px;
 }
 
-.mobile-messages-container img.profile-pic.left {
+.mobile-messages-container #desktop-messaging img.profile-pic.left, .mobile-messages-container #messenger-content img.profile-pic.left, .mobile-messages-container .guru-message-container img.profile-pic.left {
   left: 10px;
 }
 
-.mobile-messages-container img.profile-pic.right {
+.mobile-messages-container #desktop-messaging img.profile-pic.right, .mobile-messages-container #messenger-content img.profile-pic.right, .mobile-messages-container .guru-message-container img.profile-pic.right {
   right: 10px;
 }
 
-.mobile-messages-container .ion-email {
+.mobile-messages-container #desktop-messaging .ion-email, .mobile-messages-container #messenger-content .ion-email, .mobile-messages-container .guru-message-container .ion-email {
   float: right;
   font-size: 32px;
   vertical-align: middle;
 }
 
-.mobile-messages-container .message {
+.mobile-messages-container #desktop-messaging .message, .mobile-messages-container #messenger-content .message, .mobile-messages-container .guru-message-container .message {
   font-size: 14px;
 }
 
-.mobile-messages-container .message-detail {
+.mobile-messages-container #desktop-messaging .message-detail, .mobile-messages-container #messenger-content .message-detail, .mobile-messages-container .guru-message-container .message-detail {
   white-space: nowrap;
   font-size: 14px;
 }
 
-.mobile-messages-container .bar.item-input-inset .item-input-wrapper input {
+.mobile-messages-container #desktop-messaging .bar.item-input-inset .item-input-wrapper input, .mobile-messages-container #messenger-content .bar.item-input-inset .item-input-wrapper input, .mobile-messages-container .guru-message-container .bar.item-input-inset .item-input-wrapper input {
   width: 100% !important;
 }
 
-.mobile-messages-container .message-wrapper {
+.mobile-messages-container #desktop-messaging .message-wrapper, .mobile-messages-container #messenger-content .message-wrapper, .mobile-messages-container .guru-message-container .message-wrapper {
   position: relative;
 }
 
-.mobile-messages-container .message-wrapper:last-child {
+.mobile-messages-container #desktop-messaging .message-wrapper:last-child, .mobile-messages-container #messenger-content .message-wrapper:last-child, .mobile-messages-container .guru-message-container .message-wrapper:last-child {
   margin-bottom: 10px;
 }
 
-.mobile-messages-container .chat-bubble {
+.mobile-messages-container #desktop-messaging .chat-bubble, .mobile-messages-container #messenger-content .chat-bubble, .mobile-messages-container .guru-message-container .chat-bubble {
   border-radius: 5px;
   display: inline-block;
   padding: 10px 18px;
@@ -2077,7 +2175,7 @@
   max-width: 80%;
 }
 
-.mobile-messages-container .chat-bubble:before {
+.mobile-messages-container #desktop-messaging .chat-bubble:before, .mobile-messages-container #messenger-content .chat-bubble:before, .mobile-messages-container .guru-message-container .chat-bubble:before {
   content: "\00a0";
   display: block;
   height: 16px;
@@ -2086,37 +2184,37 @@
   bottom: -7.5px;
 }
 
-.mobile-messages-container .chat-bubble.left {
+.mobile-messages-container #desktop-messaging .chat-bubble.left, .mobile-messages-container #messenger-content .chat-bubble.left, .mobile-messages-container .guru-message-container .chat-bubble.left {
   background-color: #F1F1F1;
   float: left;
   margin-left: 55px;
 }
 
-.mobile-messages-container .chat-bubble.left:before {
+.mobile-messages-container #desktop-messaging .chat-bubble.left:before, .mobile-messages-container #messenger-content .chat-bubble.left:before, .mobile-messages-container .guru-message-container .chat-bubble.left:before {
   background-color: #F1F1F1;
   left: 10px;
   -webkit-transform: rotate(70deg) skew(5deg);
 }
 
-.mobile-messages-container .chat-bubble.right {
+.mobile-messages-container #desktop-messaging .chat-bubble.right, .mobile-messages-container #messenger-content .chat-bubble.right, .mobile-messages-container .guru-message-container .chat-bubble.right {
   background-color: #55A4B7;
   color: white;
   float: right;
   margin-right: 55px;
 }
 
-.mobile-messages-container .chat-bubble.right:before {
+.mobile-messages-container #desktop-messaging .chat-bubble.right:before, .mobile-messages-container #messenger-content .chat-bubble.right:before, .mobile-messages-container .guru-message-container .chat-bubble.right:before {
   background-color: #55A4B7;
   right: 10px;
   -webkit-transform: rotate(118deg) skew(-5deg);
 }
 
-.mobile-messages-container .chat-bubble.right a.autolinker {
+.mobile-messages-container #desktop-messaging .chat-bubble.right a.autolinker, .mobile-messages-container #messenger-content .chat-bubble.right a.autolinker, .mobile-messages-container .guru-message-container .chat-bubble.right a.autolinker {
   color: white;
   font-weight: bold;
 }
 
-.mobile-messages-container .user-messages-top-icon {
+.mobile-messages-container #desktop-messaging .user-messages-top-icon, .mobile-messages-container #messenger-content .user-messages-top-icon, .mobile-messages-container .guru-message-container .user-messages-top-icon {
   font-size: 28px;
   display: inline-block;
   vertical-align: middle;
@@ -2125,30 +2223,30 @@
   right: 5px;
 }
 
-.mobile-messages-container .msg-header-username {
+.mobile-messages-container #desktop-messaging .msg-header-username, .mobile-messages-container #messenger-content .msg-header-username, .mobile-messages-container .guru-message-container .msg-header-username {
   display: inline-block;
   vertical-align: middle;
   position: relative;
   top: -3px;
 }
 
-.mobile-messages-container input, .mobile-messages-container textarea, .mobile-messages-container .item-input, .mobile-messages-container .item-input-wrapper {
+.mobile-messages-container #desktop-messaging input, .mobile-messages-container #desktop-messaging textarea, .mobile-messages-container #desktop-messaging .item-input, .mobile-messages-container #desktop-messaging .item-input-wrapper, .mobile-messages-container #messenger-content input, .mobile-messages-container #messenger-content textarea, .mobile-messages-container #messenger-content .item-input, .mobile-messages-container #messenger-content .item-input-wrapper, .mobile-messages-container .guru-message-container input, .mobile-messages-container .guru-message-container textarea, .mobile-messages-container .guru-message-container .item-input, .mobile-messages-container .guru-message-container .item-input-wrapper {
   background-color: #F1F1F1 !important;
 }
 
-.mobile-messages-container .bold {
+.mobile-messages-container #desktop-messaging .bold, .mobile-messages-container #messenger-content .bold, .mobile-messages-container .guru-message-container .bold {
   font-weight: bold;
 }
 
-.mobile-messages-container .cf {
+.mobile-messages-container #desktop-messaging .cf, .mobile-messages-container #messenger-content .cf, .mobile-messages-container .guru-message-container .cf {
   clear: both !important;
 }
 
-.mobile-messages-container a.autolinker {
+.mobile-messages-container #desktop-messaging a.autolinker, .mobile-messages-container #messenger-content a.autolinker, .mobile-messages-container .guru-message-container a.autolinker {
   color: #55A4B7;
   text-decoration: none;
 }
 
-body.platform-ios .mobile-messages-container #message-container {
+.mobile-messages-container body.platform-ios .mobile-messages-container #message-container {
   height: calc(100% - 120px) !important;
 }

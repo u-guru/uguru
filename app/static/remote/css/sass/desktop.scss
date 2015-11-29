@@ -1478,10 +1478,10 @@
 						a {
 							display: block;
 							padding: 15px;
-							&.active, &:active {
+							&.active, &:active, &.active {
 								background: rgba($smoke,.2);
 							}
-							&:hover, &:focus {
+							&:hover, &:focus, &.active{
 								background: rgba($smoke,.4);
 							}
 						}
@@ -1512,7 +1512,7 @@
 						font-size: 16px;
 						background: $smoke;
 						border: 0;
-						&:active, &:hover, &:focus {
+						&:active, &:hover, &:focus, &.active {
 							background: white;
 							@include placeholder {
 								color: $taupe;
@@ -1709,7 +1709,7 @@
 										text-align: right;
 									}
 									.message-single-message {
-										background: rgba($azure, .1);
+										background: rgba($azure,.2);
 									}
 								}
 							}

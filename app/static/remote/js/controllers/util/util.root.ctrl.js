@@ -207,10 +207,8 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.getCategories = function(callback) {
-            console.log('retrieving categories for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
-
                 if ($scope.user && $scope.user.id) {
                     Category.mapActiveToSubcategories(Category.categories, $scope.user);
                 }
@@ -218,7 +216,7 @@ angular.module('uguru.util.controllers')
 
                 $scope.categories = Category.categories.slice();
                 callback && callback(Category.categories);
-                console.log($scope.categories.length, 'categories loaded');
+                console.log($scope.categories.length, 'categories loaded', Category.categories);
 
             },
             function() {

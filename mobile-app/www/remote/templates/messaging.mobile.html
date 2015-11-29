@@ -17,8 +17,7 @@
 				</svg>
 			</a>
 		</div>
-		<h1 class="text-center">{{user.name}}</h1>
-		<!-- <h1 class="text-center">{{active_relationship.student.name}}</h1> -->
+		<h1 class="text-center">{{active_relationship.student.name}}</h1>
 	</header>
 
 
@@ -35,6 +34,7 @@
 			</li>
 		</ul>
 		<div id='messages' class="scroll">
+
 			<!-- BIND -->
 			<div id="message-empty-state" class="full-xy flex-center text-center">
 				<p>This is the beginning of your conversation thread with <span>this Guru</span>.</p>
@@ -58,7 +58,6 @@
 					<img ng-if='user.profile_url' ng-src='{{user.profile_url}}' />
 				</div>
 			</div>
-			<!-- end ngRepeat: message in messages -->
 		</div>
 
 		<!-- <div class="scroll-bar scroll-bar-v">
@@ -68,11 +67,11 @@
 		<form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate="" class="ng-valid-minlength ng-valid-maxlength ng-dirty ng-submitted ng-invalid ng-invalid-required">
 			<ion-footer-bar class="bar-stable item-input-inset message-footer bar bar-footer" keyboard-attach="">
 				<label class="item-input-wrapper">
-					<textarea ng-model="input.message" value="" placeholder="Send {{active_relationship.student.name}} a message..." required="" minlength="1" maxlength="1500" msd-elastic="" class="ng-valid-minlength ng-valid-maxlength ng-touched ng-dirty ng-invalid ng-invalid-required"
+					<textarea ng-model="active_relationship.new_message" value="" placeholder="Send {{active_relationship.student.name}} a message..." required="" minlength="1" maxlength="1500" msd-elastic="" class="ng-valid-minlength ng-valid-maxlength ng-touched ng-dirty ng-invalid ng-invalid-required"
 					style="overflow: hidden; word-wrap: break-word; resize: none; height: 20px;"></textarea>
 				</label>
 				<div class="footer-btn-wrap">
-					<button type="submit" ng-disabled="!input.message || input.message === ''" disabled="disabled">
+					<button type="submit" ng-click='sendMessage(active_relationship.new_message)'>
 						<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						    <path d="M40.863416,69.0006669 L19,69.0006669 L49.6939787,14 L80.425686,69.0006669 L58.5612746,69.0006669 L49.7317073,85.6527248 L40.863416,69.0006669 Z M49.7317073,15.3170732 L49.7317073,85.5664621 M49.7317073,14.7032382 L58.6,68.0056713 M49.7317073,15.1365913 L40.8634146,68.4390244" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
 						</svg>

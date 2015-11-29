@@ -47,6 +47,51 @@
 			}
 		}
 	}
+	#support-button {
+		@include round;
+		position: fixed;
+		bottom: 15px;
+		left: 15px;
+		width: 48px;
+		height: 48px;
+		padding: 6px;
+		background: rgba(white, .9);
+		svg {
+			@include svg-stroke($charcoal, 7);
+		}
+		&:before, &:after {
+			@include transition(.15s ease-in-out);
+			@include opacity(0);
+			@include center-y;
+		}
+		&:before {
+			content: "";
+			right: -20px;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+			border-right-color: rgba(white,.9);
+		}
+		&:after {
+			content: "Support";
+			right: -108px;
+			padding: 10px 15px;
+			background: rgba(white,.9);
+			font-size: 14px;
+			font-weight: 600;
+			text-transform: uppercase;
+			color: $slate;
+		}
+		&:hover, &:focus {
+			background: lighten($gabrielle, 10%);
+			&:before, &:after {
+				@include opacity(1);
+			}
+		}
+		&:active {
+			background: $gabrielle;
+		}
+	}
 	#top-bar {
 		height: 64px;
 		background: $gabrielle;
@@ -63,22 +108,104 @@
 				@include flex;
 				@include flex-center-vertical;
 				position: relative;
+				z-index: 13;
+				background: $gabrielle;
 				margin: 0 auto;
 				width: 100%;
 				max-width: 1280px;
 				height: 100%;
-				&.active {
-					z-index: 13;
-					background: $gabrielle;
-				}
+			}
+			a:hover, a:focus {
+				@include opacity(.8);
+			}
+			a:active {
+				@include opacity(.5);
 			}
 			#top-logo {
 				display: block;
-				width: calc(100% - 90px);
+				width: calc(100% - 212px);
 				height: 100%;
 				svg {
 					height: 100%;
 					padding: 20px 0 15px;
+				}
+			}
+			.top-tooltip {
+				@include opacity-important(1);
+				position: relative;
+				height: 64px;
+				width: 64px;
+				&.hide-tooltip {
+					&:before, &:after {
+						display: none;
+					}
+				}
+				&:before, &:after {
+					@include transition(.15s ease-in-out);
+					@include opacity(0);
+					@include center-x;
+					z-index: 10;
+				}
+				&:before {
+					content: "";
+					bottom: 0;
+					width: 0;
+					height: 0;
+					border: 10px solid transparent;
+					border-bottom-color: rgba(white,.9);
+				}
+				&:after {
+					bottom: -40px;
+				    padding: 10px 15px;
+				    background: rgba(white,.9);
+				    font-size: 14px;
+				    font-weight: 600;
+				    text-transform: uppercase;
+				    color: $slate;
+				}
+				&:hover, &:focus {
+					&:before, &:after {
+						@include opacity(1);
+					}
+					svg {
+						@include opacity(.8);
+					}
+				}
+				&:active {
+					svg {
+						@include opacity(.5);
+					}
+				}
+				svg {
+					@include transition(.15s ease-in-out);
+					width: 100%;
+					height: 100%;
+					padding: 12px;
+					path {
+						@include svg-stroke(white, 5);
+					}
+				}
+			}
+			#cta-box-referrals {
+				margin-right: 3px;
+				&:after {
+					content: "Referrals";
+				}
+			}
+			#top-menu-discover {
+				margin-right: -9px;
+				&:after {
+					content: "Visibility";
+				}
+				&.active {
+					svg {
+						circle {
+							fill: white;
+						}
+						path {
+							stroke: $gabrielle;
+						}
+					}
 				}
 			}
 			#top-settings {
@@ -159,27 +286,6 @@
 								}
 								svg {
 									stroke: $gabrielle;
-								}
-							}
-							&#top-menu-discover.active {
-								svg {
-									circle {
-										fill: white;
-									}
-									path {
-										stroke: $gabrielle;
-									}
-								}
-								&:hover, &:active, &:focus {
-									svg {
-										circle {
-											stroke: $gabrielle;
-											fill: $gabrielle;
-										}
-										path {
-											stroke: white;
-										}
-									}
 								}
 							}
 						}
@@ -1478,10 +1584,10 @@
 						a {
 							display: block;
 							padding: 15px;
-							&.active, &:active {
+							&.active, &:active, &.active {
 								background: rgba($smoke,.2);
 							}
-							&:hover, &:focus {
+							&:hover, &:focus, &.active{
 								background: rgba($smoke,.4);
 							}
 						}
@@ -1512,7 +1618,7 @@
 						font-size: 16px;
 						background: $smoke;
 						border: 0;
-						&:active, &:hover, &:focus {
+						&:active, &:hover, &:focus, &.active {
 							background: white;
 							@include placeholder {
 								color: $taupe;

@@ -1,7 +1,7 @@
 <ion-view class='uguru-view desktop-guru-profile-view bg-charcoal'>
 	<main id='desktop-guru-profile' class="desktop-forms desktop-mode">
 		<div id="profile">
-			<div id="profile-desc">
+			<div id="profile-desc" class='relative'>
 				<div class="profile-inside">
 					<div id="profile-icon">
 						<span ng-if='!profile.edit_mode'>
@@ -42,6 +42,7 @@
 						</ul>
 					</nav>
 				</div>
+				<div id='profile-footer-desc' class='p20xy absolute bottom-0 left-0 full-x text-center'><strong>Public URL</strong>:&nbsp;&nbsp;&nbsp;www.<strong>{{user.profile_code}}</strong>.uguru.me</div>
 			</div>
 			<div id="profile-info">
 

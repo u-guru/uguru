@@ -236,13 +236,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               step: function(state, bar) {
                   var val = (bar.value() * 100).toFixed(0);
                   bar.setText(val)
-                  // bar.setText((bar.value() * 100).toFixed(0));
+                // bar.setText((bar.value() * 100).toFixed(0));
               }
 
           });
           line.text = document.getElementById(percentTextId);
           return line;
-        }
+      }
 
         $scope.initMobileModals = function() {
           console.log('initializing modals..');

@@ -1209,4 +1209,318 @@
 .student-courses-view #courses-list.onboarding-list ul li input:checked:active + label {
   background: #8A9EA3; }
 
+.mobile-mode .sidebar-layout-list {
+  overflow: auto; }
+  .mobile-mode .sidebar-layout-list li {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+    .mobile-mode .sidebar-layout-list li:last-child {
+      border-bottom: 0; }
+    .mobile-mode .sidebar-layout-list li .user-icon {
+      width: 60px;
+      height: 60px;
+      border-width: 3px; }
+      .mobile-mode .sidebar-layout-list li .user-icon + div {
+        padding-left: 15px; }
+    .mobile-mode .sidebar-layout-list li div {
+      width: calc(100% - 60px); }
+      .mobile-mode .sidebar-layout-list li div h3, .mobile-mode .sidebar-layout-list li div span {
+        font-weight: 400; }
+        .mobile-mode .sidebar-layout-list li div h3 b, .mobile-mode .sidebar-layout-list li div span b {
+          font-weight: 600; }
+      .mobile-mode .sidebar-layout-list li div h3 {
+        font-size: 22px; }
+      .mobile-mode .sidebar-layout-list li div span {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 18px; }
+    .mobile-mode .sidebar-layout-list li .chip {
+      min-width: 60px;
+      text-align: center; }
+
+.mobile-referrals-modal .referral-code {
+  height: calc(100% / 3 - 50px);
+  background: #40484B; }
+  .mobile-referrals-modal .referral-code div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: calc(100% - 36px); }
+    .mobile-referrals-modal .referral-code div h1 {
+      background: rgba(43, 50, 52, 0.6);
+      padding: 5px 15px;
+      font-size: 48px;
+      font-weight: 600; }
+.mobile-referrals-modal .main {
+  height: calc(100% / 3 * 2) !important; }
+  .mobile-referrals-modal .main .section-header-dark {
+    background: #69B3A5 !important; }
+  .mobile-referrals-modal .main > div {
+    height: calc(100% - 36px);
+    overflow: auto; }
+  .mobile-referrals-modal .main #referrals-stats {
+    text-align: center;
+    padding: 1px; }
+    .mobile-referrals-modal .main #referrals-stats li {
+      padding: 1px; }
+      .mobile-referrals-modal .main #referrals-stats li div {
+        padding: 15px;
+        background: rgba(43, 50, 52, 0.6); }
+        .mobile-referrals-modal .main #referrals-stats li div h1 {
+          font-size: 72px;
+          font-weight: 900; }
+        .mobile-referrals-modal .main #referrals-stats li div span {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.2; }
+
+.mobile-balance-modal .main {
+  height: calc(100% - 50px) !important; }
+  .mobile-balance-modal .main .sidebar-layout-list {
+    height: calc(100% - 166px);
+    overflow: auto;
+    padding-bottom: 64px; }
+    .mobile-balance-modal .main .sidebar-layout-list li {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      padding: 15px; }
+    .mobile-balance-modal .main .sidebar-layout-list span.transaction-date {
+      font-weight: 700;
+      font-size: 16px;
+      opacity: .5; }
+.mobile-balance-modal #balance-stats {
+  text-align: center;
+  padding: 1px; }
+  .mobile-balance-modal #balance-stats li {
+    padding: 1px; }
+    .mobile-balance-modal #balance-stats li div {
+      padding: 15px;
+      min-height: 162px;
+      background: rgba(43, 50, 52, 0.6); }
+      .mobile-balance-modal #balance-stats li div h1 {
+        font-size: 72px;
+        font-weight: 900; }
+      .mobile-balance-modal #balance-stats li div h2 {
+        font-size: 64px;
+        font-weight: 900; }
+      .mobile-balance-modal #balance-stats li div span {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.2; }
+
+.mobile-messages-container #messenger-content .header-close {
+  width: 50% !important; }
+.mobile-messages-container #messenger-subheader {
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 64px;
+  display: none;
+  white-space: nowrap;
+  overflow-y: auto;
+  background: #2B3234; }
+  .mobile-messages-container #messenger-subheader.active {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
+  .mobile-messages-container #messenger-subheader a {
+    display: block;
+    height: 64px; }
+    .mobile-messages-container #messenger-subheader a .student-photo-container {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      height: 100%; }
+      .mobile-messages-container #messenger-subheader a .student-photo-container img {
+        border-radius: 1000px;
+        display: block;
+        margin-top: 5px;
+        width: 36px;
+        height: 36px; }
+      .mobile-messages-container #messenger-subheader a .student-photo-container span {
+        display: block;
+        padding: 0 5px;
+        width: 100%;
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center; }
+.mobile-messages-container #message-container {
+  height: calc(100% - 100px) !important; }
+  .mobile-messages-container #message-container #messages {
+    height: 100% !important;
+    padding-top: 15px; }
+    .mobile-messages-container #message-container #messages .message-single {
+      font-size: 16px; }
+      .mobile-messages-container #message-container #messages .message-single:first-child {
+        margin-top: 15px; }
+      .mobile-messages-container #message-container #messages .message-single.right .message-single-message {
+        background: #8A9EA3 !important;
+        color: white; }
+      .mobile-messages-container #message-container #messages .message-single .message-single-info {
+        color: #a8a8a8 !important; }
+  .mobile-messages-container #message-container ion-footer-bar {
+    height: 50px !important;
+    background: rgba(43, 50, 52, 0.8); }
+
+body.platform-ios .mobile-messages-container #message-container {
+  height: calc(100% - 120px) !important !important; }
+
+/*#userMessagesView {*/
+/* allows the bar-footer to be elastic /*
+/* optionally set a max-height */
+/* maxlength on the textarea will prevent /*
+/* it from getting too large also */
+#desktop-messaging, #messenger-content, .guru-message-container {
+  /* fixes an ios bug bear */
+  /* add this to keep your footer buttons down
+  at the bottom as the textarea resizes */ }
+  #desktop-messaging #messenger-sidebar ul li a span.messenger-icon img, #messenger-content #messenger-sidebar ul li a span.messenger-icon img, .guru-message-container #messenger-sidebar ul li a span.messenger-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 1000px; }
+  #desktop-messaging .message-send-button, #messenger-content .message-send-button, .guru-message-container .message-send-button {
+    position: absolute;
+    background: #69B3A5;
+    width: 10%;
+    top: 0;
+    right: 0; }
+  #desktop-messaging .bar-footer, #messenger-content .bar-footer, .guru-message-container .bar-footer {
+    overflow: visible !important; }
+  #desktop-messaging .item-input-wrapper textarea, #messenger-content .item-input-wrapper textarea, .guru-message-container .item-input-wrapper textarea {
+    width: 100%;
+    border-radius: 12px; }
+  #desktop-messaging .bar-footer textarea, #messenger-content .bar-footer textarea, .guru-message-container .bar-footer textarea {
+    resize: none;
+    height: 25px; }
+  #desktop-messaging button.ion-android-send, #messenger-content button.ion-android-send, .guru-message-container button.ion-android-send {
+    padding-top: 2px; }
+  #desktop-messaging .footer-btn-wrap, #messenger-content .footer-btn-wrap, .guru-message-container .footer-btn-wrap {
+    position: relative;
+    height: 100%;
+    width: 50px;
+    top: 7px; }
+  #desktop-messaging .footer-btn, #messenger-content .footer-btn, .guru-message-container .footer-btn {
+    position: absolute !important;
+    bottom: 0; }
+  #desktop-messaging img.profile-pic, #messenger-content img.profile-pic, .guru-message-container img.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px; }
+  #desktop-messaging img.profile-pic.left, #messenger-content img.profile-pic.left, .guru-message-container img.profile-pic.left {
+    left: 10px; }
+  #desktop-messaging img.profile-pic.right, #messenger-content img.profile-pic.right, .guru-message-container img.profile-pic.right {
+    right: 10px; }
+  #desktop-messaging .ion-email, #messenger-content .ion-email, .guru-message-container .ion-email {
+    float: right;
+    font-size: 32px;
+    vertical-align: middle; }
+  #desktop-messaging .message, #messenger-content .message, .guru-message-container .message {
+    font-size: 14px; }
+  #desktop-messaging .message-detail, #messenger-content .message-detail, .guru-message-container .message-detail {
+    white-space: nowrap;
+    font-size: 14px; }
+  #desktop-messaging .bar.item-input-inset .item-input-wrapper input, #messenger-content .bar.item-input-inset .item-input-wrapper input, .guru-message-container .bar.item-input-inset .item-input-wrapper input {
+    width: 100% !important; }
+  #desktop-messaging .message-wrapper, #messenger-content .message-wrapper, .guru-message-container .message-wrapper {
+    position: relative; }
+  #desktop-messaging .message-wrapper:last-child, #messenger-content .message-wrapper:last-child, .guru-message-container .message-wrapper:last-child {
+    margin-bottom: 10px; }
+  #desktop-messaging .chat-bubble, #messenger-content .chat-bubble, .guru-message-container .chat-bubble {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 18px;
+    position: relative;
+    margin: 10px;
+    max-width: 80%; }
+  #desktop-messaging .chat-bubble:before, #messenger-content .chat-bubble:before, .guru-message-container .chat-bubble:before {
+    content: "\00a0";
+    display: block;
+    height: 16px;
+    width: 9px;
+    position: absolute;
+    bottom: -7.5px; }
+  #desktop-messaging .chat-bubble.left, #messenger-content .chat-bubble.left, .guru-message-container .chat-bubble.left {
+    background-color: #F1F1F1;
+    float: left;
+    margin-left: 55px; }
+  #desktop-messaging .chat-bubble.left:before, #messenger-content .chat-bubble.left:before, .guru-message-container .chat-bubble.left:before {
+    background-color: #F1F1F1;
+    left: 10px;
+    -webkit-transform: rotate(70deg) skew(5deg); }
+  #desktop-messaging .chat-bubble.right, #messenger-content .chat-bubble.right, .guru-message-container .chat-bubble.right {
+    background-color: #55A4B7;
+    color: white;
+    float: right;
+    margin-right: 55px; }
+  #desktop-messaging .chat-bubble.right:before, #messenger-content .chat-bubble.right:before, .guru-message-container .chat-bubble.right:before {
+    background-color: #55A4B7;
+    right: 10px;
+    -webkit-transform: rotate(118deg) skew(-5deg); }
+  #desktop-messaging .chat-bubble.right a.autolinker, #messenger-content .chat-bubble.right a.autolinker, .guru-message-container .chat-bubble.right a.autolinker {
+    color: white;
+    font-weight: bold; }
+  #desktop-messaging .user-messages-top-icon, #messenger-content .user-messages-top-icon, .guru-message-container .user-messages-top-icon {
+    font-size: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+    right: 5px; }
+  #desktop-messaging .msg-header-username, #messenger-content .msg-header-username, .guru-message-container .msg-header-username {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -3px; }
+  #desktop-messaging input, #desktop-messaging textarea, #desktop-messaging .item-input, #desktop-messaging .item-input-wrapper, #messenger-content input, #messenger-content textarea, #messenger-content .item-input, #messenger-content .item-input-wrapper, .guru-message-container input, .guru-message-container textarea, .guru-message-container .item-input, .guru-message-container .item-input-wrapper {
+    background-color: #F1F1F1 !important; }
+  #desktop-messaging .bold, #messenger-content .bold, .guru-message-container .bold {
+    font-weight: bold; }
+  #desktop-messaging .cf, #messenger-content .cf, .guru-message-container .cf {
+    clear: both !important; }
+  #desktop-messaging a.autolinker, #messenger-content a.autolinker, .guru-message-container a.autolinker {
+    color: #55A4B7;
+    text-decoration: none; }
+
+/*}*/
+
 /*# sourceMappingURL=style-modals.css.map */

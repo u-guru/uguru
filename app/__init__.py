@@ -42,8 +42,15 @@ app.config.from_object('config')
 sslify = SSLify(app)
 
 app.config.update(dict(
-  PREFERRED_URL_SCHEME = 'https'
+  PREFERRED_URL_SCHEME = 'https',
 ))
+
+try:
+    if os.environ.get('PRODUCTION'):
+        app.config.update(SERVER_NAME='uguru.me')
+except:
+    print "some shit went wrong on production"
+
 
 # flask-restful
 api = restful.Api(app)

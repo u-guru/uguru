@@ -3,8 +3,6 @@ var LOCAL = _local || false; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
 
-// isAdmin = true;
-
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me';
 
@@ -204,6 +202,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.referrals', {
     url:'/referrals',
     templateUrl: BASE + 'templates/referrals.html'
+  }).
+  state('root.modal-test', {
+    url:'/modal-test',
+    templateUrl: BASE + 'templates/messaging.mobile.modal.html'
   }).
   state('root.timer', {
     url:'/timer',

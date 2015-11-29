@@ -58,6 +58,17 @@ angular.module('uguru.user', [])
         return profile_url
     }
 
+    var processReferrals = function(referrals) {
+        for (var i = 0; i < referrals.length; i++) {
+            var referralIndex = referrals[i];
+            if (referralIndex.receiver) {
+                referralIndex.receiver.name = referralIndex.receiver.name.split(' ')[0];
+                referralIndex.receiver.name[0] = referralIndex.receiver.name[0].toUpperCase;
+            }
+        }
+        return referrals
+    }
+
     var parseRelationships = function(relationships) {
         for (var i = 0; i < relationships.length; i++) {
             var indexRelationship = relationships[i];
@@ -570,6 +581,8 @@ angular.module('uguru.user', [])
         $scope.user.student_relationships = parseRelationships(user.student_relationships);
         $scope.user.referred_by = user.referred_by;
         $scope.user.referral_code = user.referral_code;
+        $scope.user.profile_code = user.profile_code;
+        console.log(user.profile_code);
         $scope.user.guru_discoverability = user.guru_discoverability;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
@@ -603,6 +616,10 @@ angular.module('uguru.user', [])
         $scope.user.text_friendly = user.text_friendly;
         $scope.user.guru_experiences = user.guru_experiences;
         $scope.user.guru_languages = user.guru_languages;
+        $scope.user.referrals = processReferrals(user.referrals);
+        $scope.user.first_degree_referrals = user.first_degree_referrals;
+        $scope.user.second_degree_referrals = user.second_degree_referrals;
+        $scope.user.referral_limit = user.referral_limit;
 
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;
@@ -1070,6 +1087,18 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'referral_code') {
+                return {
+                    'referral_code': obj
+                }
+              }
+
+              if (arg === 'profile_code') {
+                return {
+                    'profile_code': obj
+                }
+              }
+
               if (arg === 'fb_id') {
                 return {
                     'fb_id': obj
@@ -1330,12 +1359,11 @@ angular.module('uguru.user', [])
 
             else if (param === 'messages') {
                 Restangular
-                    .one('user', userObj.id).one('sessions', payload.message.session_id).one(param)
+                    .one('user', userObj.id).one('relationships', payload.message.relationship_id).one(param)
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
                         var processed_user = processResults(user)
                         $localstorage.setObject('user', processed_user);
-                        $scope.$broadcast('scroll.refreshComplete');
                         if (callback_success) {
                             callback_success($scope, processed_user)
                         }

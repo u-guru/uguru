@@ -82,11 +82,11 @@
 }
 
 .mode-links span {
-  color: #958B8E;
+  color: #69B3A5;
 }
 
 .mode-links svg {
-  stroke: #958B8E !important;
+  stroke: #69B3A5 !important;
 }
 
 .progressbar-text {
@@ -165,7 +165,7 @@
   position: relative;
 }
 
-.credit-card-wrapper .credit-card #visa {
+.credit-card-wrapper .credit-card .card-type {
   float: right;
   clear: both;
 }
@@ -310,4 +310,72 @@ body.platform-ios .guru-view-mobile .header-nav svg.referral-icon {
 .payments-modal input {
   background-color: #2B3234 !important;
   background: #2B3234 !important;
+}
+
+.desktop-input-close-icon {
+  padding: 10px;
+  margin: -10px;
+}
+
+#profile-footer-desc {
+  font-size: 20px;
+}
+
+#settings-notifications-list ion-item.active, #settings-notifications-list ion-item:hover, #settings-notifications-list ion-item:active, #settings-notifications-list ion-item:focus {
+  background: none;
+  background-color: none;
+}
+
+#settings-notifications-list .list-item-detail {
+  padding-left: 5%;
+}
+
+#settings-notifications-list .list-item-icon svg:active, #settings-notifications-list .list-item-icon svg.active, #settings-notifications-list .list-item-icon svg.activated {
+  opacity: 0.5;
+}
+
+#settings-notifications-list .list-item-icon svg path.notifications-path {
+  stroke: white;
+}
+
+#settings-notifications-list .list-item-icon svg path.notifications-path.active {
+  stroke: #40484B;
+  width: 5px;
+  opacity: 1;
+}
+
+#settings-notifications-list .list-item-icon svg circle.notifications-circle {
+  fill: #40484B;
+}
+
+#settings-notifications-list .list-item-icon svg circle.notifications-circle.active {
+  fill: white;
+  opacity: 1;
+}
+
+.desktop-notifications-grid-item svg {
+  stroke: #40484B;
+}
+
+.desktop-notifications-grid-item svg path.notifications-path {
+  stroke: white;
+  fill: #2B3234;
+  stroke-width: 4px;
+}
+
+.desktop-notifications-grid-item svg path.notifications-path.active {
+  fill: white;
+  stroke: #2B3234;
+  stroke-width: 8px;
+  width: 5px;
+  opacity: 1;
+}
+
+.desktop-notifications-grid-item svg circle.notifications-circle {
+  fill: #40484B;
+}
+
+.desktop-notifications-grid-item svg circle.notifications-circle.active {
+  fill: white;
+  opacity: 1;
 }

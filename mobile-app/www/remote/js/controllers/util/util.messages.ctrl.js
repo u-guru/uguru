@@ -49,24 +49,6 @@ angular.module('uguru.student.controllers')
 
     $scope.messageOptionsShown = false;
 
-    // // mock acquiring data via $stateParams
-    // $scope.toUser = {
-    //   _id: '534b8e5aaa5e7afc1b23e69b',
-    //   pic: 'http://ionicframework.com/img/docs/venkman.jpg',
-    //   username: 'Venkman'
-    // }
-
-    // // this could be on $rootScope rather than in $stateParams
-    // $scope.user = {
-    //   _id: '534b8fb2aa5e7afc1b23e69c',
-    //   pic: 'http://ionicframework.com/img/docs/mcfly.jpg',
-    //   username: 'Marty'
-    // };
-
-    // $scope.input = {
-    //   message: localStorage['userMessage-' + $scope.toUser._id] || ''
-    // };
-
     var messageCheckTimer;
 
     var viewScroll = $ionicScrollDelegate.$getByHandle('userMessageScroll');
@@ -77,60 +59,98 @@ angular.module('uguru.student.controllers')
     $scope.$on('modal.shown', function() {
       console.log('UserMessages $ionicView.enter');
       initActiveRelationships();
-      // getMessages();
-
-
     });
 
-    $scope.$on('modal.hidden', function() {
-      console.log('leaving UserMessages view, destroying interval');
-      // Make sure that the interval is destroyed
-      if (angular.isDefined(messageCheckTimer)) {
-        $interval.cancel(messageCheckTimer);
-        messageCheckTimer = undefined;
+    // $scope.sendMessage = function (content) {
+
+    //   // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+
+    //   messagePayload.message.class = 'item-avatar-right animated fadeInUp';
+    //   messagePayload.message.profile_url= $scope.user.profile_url;
+    //   messagePayload.message.formatted_time = 'a couple seconds ago';
+    //   $scope.new_message.content = '';
+    //   $scope.messages.push(messagePayload.message);
+    //   // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
+    //   $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 100, true);
+    // }
+
+    // TODO MESSAGE JS
+    var getMessagePayload = function (content) {
+      if ($scope.root.vars.guru_mode) {
+        receiver_id = $scope.active_relationship.student.id;
+      } else {
+        receiver_id = $scope.active_relationship.guru.id;
       }
-    });
+      var payload = {
+        message: {
+          contents: content,
+          relationship_id: $scope.active_relationship.id,
+          receiver_id: receiver_id,
+          sender_id: $scope.user.id,
+        }
+      }
+      return payload;
+    }
+
+    $scope.sendMessageToServer = function(payload, client_success_func) {
+
+        var callbackSuccess = function($scope, processed_user, client_success_func) {
+            if (client_success_func) {
+              client_success_func();
+            }
+        }
+
+        $scope.user.createObj($scope.user, 'messages', payload, $scope, callbackSuccess);
+    }
 
 
-    $scope.sendMessage = function(sendMessageForm) {
-      var message = {
-        toId: $scope.toUser._id,
-        text: $scope.input.message
-      };
+
+
+    $scope.sendMessage = function(msg_contents) {
+
+      //1. validate
+      if (!msg_contents || !msg_contents.length) {
+        //todo shake animation
+        return;
+      }
+
+      //2. Format message payload
+      var messagePayload = getMessagePayload(msg_contents);
+      console.log('#1. Payload for message', messagePayload);
+      var serverSuccessCallback = function() {
+        $scope.active_relationship.new_message = '';
+      }
+
+      $scope.sendMessageToServer(messagePayload, serverSuccessCallback);
 
       // if you do a web service call this will be needed as well as before the viewScroll calls
       // you can't see the effect of this in the browser it needs to be used on a real device
       // for some reason the one time blur event is not firing in the browser but does on devices
-      keepKeyboardOpen();
 
-      //MockService.sendMessage(message).then(function(data) {
-      $scope.input.message = '';
 
-      message._id = new Date().getTime(); // :~)
-      message.date = new Date();
-      message.username = $scope.user.username;
-      message.userId = $scope.user._id;
-      message.pic = $scope.user.picture;
+      if (!$scope.desktopMode) {
 
-      $scope.messages.push(message);
+        // execMobileInputMessageKeyboardActions()
 
-      $timeout(function() {
-        keepKeyboardOpen();
-        viewScroll.scrollBottom(true);
-      }, 0);
-
-      $timeout(function() {
-        $scope.messages.push(MockService.getMockMessage());
-        keepKeyboardOpen();
-        viewScroll.scrollBottom(true);
-      }, 2000);
-
-      //});
+      }
     };
+
+    function execMobileInputMessageKeyboardActions() {
+        keepKeyboardOpen();
+
+        $timeout(function() {
+          keepKeyboardOpen();
+          viewScroll.scrollBottom(true);
+        }, 0);
+
+        $timeout(function() {
+          keepKeyboardOpen();
+          viewScroll.scrollBottom(true);
+        }, 2000);
+    }
 
     // this keeps the keyboard open on a device only after sending a message, it is non obtrusive
     function keepKeyboardOpen() {
-      console.log('keepKeyboardOpen');
       txtInput.one('blur', function() {
         console.log('textarea blur, focus back on it');
         txtInput[0].focus();
@@ -222,21 +242,7 @@ angular.module('uguru.student.controllers')
         }
 
 
-    $scope.sendMessageToServer = function(payload) {
 
-        var callbackSuccess = function($scope, processed_user) {
-            $scope.user.active_student_sessions = processed_user.active_student_sessions;
-            for (var i = 0; i < processed_user.active_student_sessions.length; i++) {
-              if ($scope.session.id === processed_user.active_student_sessions[i].id) {
-                var updated_messages = $scope.processMessages(processed_user.active_student_sessions[i].messages);
-                updated_messages.sort($scope.sortMessageComparator);
-                $scope.messages = updated_messages;
-              }
-            }
-        }
-
-        $scope.user.createObj($scope.user, 'messages', payload, $scope, callbackSuccess);
-    }
 
 
     $scope.setToActiveRelationship = function(relationship) {
@@ -1030,43 +1036,7 @@ angular.module('monospaced.elastic', [])
 
 // ARCHIVE -- do not delete! NEED FOR REFERENCE;
 
-// $scope.sendMessage = function (content) {
-
-    //   // $scope.messages.push({
-    //   //   'contents':content,
-    //   //   'class': 'you', // Try "fadeInUp" if you don't like bounceInUp.
-    //   //   'profile_url': $scope.default_img_one
-    //   // })
-
-    //   // $scope.new_message.content = '';
-
-
-    //   var messagePayload = $scope.getMessagePayload(content);
-    //   $scope.sendMessageToServer(messagePayload);
-
-    //   // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
-
-    //   messagePayload.message.class = 'item-avatar-right animated fadeInUp';
-    //   messagePayload.message.profile_url= $scope.user.profile_url;
-    //   messagePayload.message.formatted_time = 'a couple seconds ago';
-    //   $scope.new_message.content = '';
-    //   $scope.messages.push(messagePayload.message);
-    //   // $ionicScrollDelegate.$getByHandle('message-scroll').scrollBottom();
-    //   $ionicScrollDelegate.$getByHandle('message-scroll').scrollBy(0, 100, true);
-    // }
-
-    // $scope.getMessagePayload = function (content) {
-    //   var payload = {
-    //     message: {
-    //       contents: content,
-    //       relationship_id: $scope.session.relationship_id,
-    //       receiver_id: $scope.session.guru.id,
-    //       sender_id: $scope.user.id,
-    //       session_id: $scope.session.id
-    //     }
-    //   }
-    //   return payload;
-    // }
+//
 
     // $scope.getMessagesFromServer = function(time_between, one_time, callback) {
     //   console.log('getting message from server');

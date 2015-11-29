@@ -334,6 +334,13 @@ angular.module('uguru.util.controllers')
       $scope.paymentsModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/notifications.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.notificationsModal = modal;
+    });
+
 
     $scope.launchEditPasswordPopup = function(target) {
 
@@ -571,6 +578,23 @@ angular.module('uguru.util.controllers')
 
     };
 
+    $scope.toggleEmailNotifications = function() {
+      $scope.user.email_notifications = !$scope.user.email_notifications;
+      $scope.user.updateAttr('email_notifications', $scope.user, $scope.user.email_notifications, null, $scope);
+    }
+
+    $scope.toggleTextNotifications = function() {
+      $scope.user.text_notifications = !$scope.user.text_notifications;
+      $scope.user.updateAttr('text_notifications', $scope.user, $scope.user.text_notifications, null, $scope);
+    }
+
+    $scope.saveNotifications = function() {
+      LoadingService.showSuccess("Saved", 2500);
+      $timeout(function() {
+        $scope.notificationsModal.hide();
+      }, 500)
+    }
+
     $scope.goToStudent = function() {
 
 
@@ -607,7 +631,6 @@ angular.module('uguru.util.controllers')
             $scope.progress_active = false;
           }, 1000);
     };
-
 
   }
 
