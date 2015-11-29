@@ -27,7 +27,7 @@ var stats = new Stats();
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB', 'fox.scrollReveal'])
 
 
 .run(function($ionicPlatform, $localstorage,

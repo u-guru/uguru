@@ -244,6 +244,7 @@ gulp.task('scripts', function() {
       'lib/facebook/ngopenfb.js',
       'lib/facebook/*.js',
       'lib/ngElastic/*.js',
+      'lib/scroll/*.js',
       'lib/ngMoment/moment.min.js',
       'lib/ngMoment/*.js',
       'lib/angular-google-maps/angular-google-maps.min.js',
