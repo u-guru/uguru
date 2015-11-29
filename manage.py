@@ -335,7 +335,7 @@ if arg == 'init_mandrill_wh':
         return mandrill_client.webhooks.add(url=url, events=["open", "click"])
 
 
-    new_webhook_info = createMandrillWebhook(url="https://uguru-rest.herokuapp.com")
+    new_webhook_info = createMandrillWebhook("https://www.uguru.me")
     from pprint import pprint
     pprint(new_webhook_info)
 

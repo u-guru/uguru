@@ -13,6 +13,7 @@ import logging
 from logging.handlers import SMTPHandler
 from flask_sslify import SSLify
 
+from mandrill_webhooks import MandrillWebhooks
 # import newrelic.agent
 
 # Logging
@@ -40,6 +41,7 @@ root.addHandler(ch)
 app = Flask(__name__)
 app.config.from_object('config')
 sslify = SSLify(app)
+mandrill = MandrillWebhooks(app)
 
 app.config.update(dict(
   PREFERRED_URL_SCHEME = 'https',
@@ -90,6 +92,25 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
+
+@mandrill.hook('open')
+def open_event(payload):
+    """This code will be raised when open."""
+    print "Open event received!"
+
+
+@mandrill.hook('*')
+def wildcard(payload, event):
+    """This code will be raised for every event."""
+    print "Event %s received!" % event
+
+
+# You can have more than one function for the same event
+
+@mandrill.hook('open')
+def another_open_event(payload):
+    """This is another event code."""
+    pass
 
 # Allows cross-origin. Allows us to host local server on different ports & share resources
 @app.after_request
