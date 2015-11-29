@@ -84,11 +84,11 @@ def admin_statistics_universities_completed():
 @app.route('/mandrill', methods=['GET', 'POST', 'HEAD'])
 def mandrill_webhook():
     if request.method == 'GET':
-        return '200'
+        return "200"
     if request.method == 'HEAD':
-        return '200'
+        return "200"
     if request.method == 'POST':
-        return '200'
+        return "200"
 
 @app.route('/admin/stats/universities/')
 def admin_statistics_universities_new():
@@ -280,6 +280,8 @@ def profile_page_new_view(username):
     user_profile_exists = User.query.filter_by(profile_code=username).all()
     if not user_profile_exists:
         return redirect(url_for('new_home_page'))
+    if 'mandrill' == username and request.method == 'HEAD' or request.method == "POST":
+        return "200"
     if 'www' == username:
         return render_template("web/index.html")
     return render_template("web/pages/profile.html", user=user_profile_exists[0])
