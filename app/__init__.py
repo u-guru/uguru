@@ -101,34 +101,16 @@ manager.add_command('db', MigrateCommand)
 def wildcard(payload, event):
     print "Receiving %s hook from mandrill.." % event
     from pprint import pprint
+    from datetime import datetime
+    from lib.maxpanel_wrapper import parseMandrillPayloadToMixpanel, createCampaignUserProfile
+
     pprint(payload)
 
     if event == 'open' or event == 'click':
 
-        # https://mandrill.zendesk.com/hc/en-us/articles/205583307-Message-Event-Webhook-format
-        event = payload.get('event') #type open or click
-        _ip = payload.get('ip')
-
-        ## important --> city, country, country_short, long/lat, postal, region + timezone
-        location_dict = payload.get('location')
-
-        # os_family, ua_version, os family, os_name, #from mobile device
-        user_agent = payload.get('user_agent_parsed')
-        is_mobile = payload.get('user_agent_parsed').get('mobile')
-        agent_type = payload.get('Email Client')
-
-        ## Make sure to get email
-        email = payload.get('msg').get('email') ## convert this
-        tag_arr = payload.get('msg').get('tags')
-        opens = payload.get('opens')
-        clicks = payload.get('click')
-
-        msg_state = payload.get('msg').get('state') #sent, rejected, spam, etc.
-
-        mandrill_id = payload.get('_id')
-
-        ## mandrill id
-        metadata = payload.get('metadata')
+        mp_dict = parseMandrillPayloadToMixpanel(payload)
+        response = createCampaignUserProfile(mp_dict['$email'], mp_dict)
+        pprint(response)
 
     return 200
 
