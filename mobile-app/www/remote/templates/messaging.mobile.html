@@ -1,6 +1,8 @@
 <main id="messenger-content" cache-view="false" class="pane uguru-view guru-view bg-slate guru-view-mobile full-x" nav-view="active">
 	<header>
 		<div class='header-nav'>
+			<!-- BIND -->
+			<!-- should be hidden when no other contacts are available -->
 			<a class='header-nav-back mobile-message-options' ng-click='toggleMessageOptions()'>
 				<svg viewBox="0 0 100 100">
 					<path ng-show='!messageOptionsShown' d="M14,23 L86,23"></path>
@@ -8,6 +10,7 @@
 					<path ng-show='!messageOptionsShown' d="M14,77 L86,77"></path>
 				</svg>
 			</a>
+			
 			<a class="header-nav-close header-close" ng-click="messagesModal.hide()">
 				<svg viewBox="0 0 100 100">
 					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -32,9 +35,12 @@
 		</ul>
 		<div id='messages' class="scroll">
 
+			<!-- BIND -->
+			<div id="message-empty-state" class="full-xy flex-center text-center">
+				<p>This is the beginning of your conversation thread with <span>this Guru</span>.</p>
+			</div>
 			<!-- ngRepeat: message in messages -->
 			<div ng-repeat="message in active_relationship.messages" class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}" on-hold="onMessageHold($event, $index, message)">
-
 				<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
 					<img ng-if='user.profile_url' ng-src='{{message.sender.profile_url}}' />
 				</div>
@@ -52,9 +58,7 @@
 					<img ng-if='user.profile_url' ng-src='{{user.profile_url}}' />
 				</div>
 			</div>
-
 		</div>
-		<!-- end ngRepeat: message in messages -->
 
 		<!-- <div class="scroll-bar scroll-bar-v">
 			<div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 32px, 0px) scaleY(1); height: 988px;"></div>
