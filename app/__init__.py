@@ -102,7 +102,7 @@ def wildcard(payload, event):
     print "Receiving %s hook from mandrill.." % event
     from pprint import pprint
     from datetime import datetime
-    from lib.mixpanel import parseMandrillPayloadToMixpanel, createCampaignUserProfile
+    from lib.mixpanel_wrapper import parseMandrillPayloadToMixpanel, createCampaignUserProfile
 
     pprint(payload)
 
