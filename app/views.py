@@ -266,26 +266,16 @@ def admin_devices():
     regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
     return render_template("admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
-
-# @app.route('/', )
-# def static_index(username):
-#     return render_template("web/pages/faq_on.html")
-
+    
 
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
     user_profile_exists = User.query.filter_by(profile_code=username).all()
     if not user_profile_exists:
         return redirect(url_for('new_home_page'))
-    from flask import jsonify
-    result_dict = {}
-    for key in user_profile_exists[0].__dict__:
-        val = user_profile_exists[0].__dict__[key]
-        if type(val) not in [str, int, bool, dict, type(None)]:
-            result_dict[key] = str(val)
-        else:
-            result_dict[key] = val
-    return jsonify(result_dict)
+    if 'www' == subdomain:
+        return render_template("web/index.html")
+    return render_template("web/pages/profile.html", user=user_profile_exists) 
 
 @app.route('/')
 def new_home_page():
@@ -340,9 +330,7 @@ def team():
 def support_only():
     return render_template("web/pages/support_only.html")
 
-@app.route('/staging/profile')
-def profile_page():
-    return render_template("web/profile.html")
+
 
 @app.route('/admin/stats/campaigns/')
 def admin_stats_campaigns():

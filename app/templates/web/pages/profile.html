@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title_text %}  {{user.name.split(' ')[0]|title}}'s Profile  {% endblock %}</title>
+
+    <link rel="shortcut icon" href="/static/web/images/favicon.ico">
+    <link rel="stylesheet" href="/static/web/css/base-min.css"/>
+    <link rel="stylesheet" href="/static/web/css/grids-min.css"/>
+    <link rel="stylesheet" href="/static/web/css/grids-responsive-min.css"/>
+    <script src="/static/web/js/lib/modernizr.js"></script>
+
+    <link rel="stylesheet" href="/static/web/css/default.css"/>
+    <link rel="stylesheet" href="/static/web/css/style.css"/>
+    <link rel="stylesheet" href="/static/web/css/responsive.css"/>
+    <link rel="stylesheet" href="/static/web/css/jason.css"/>
+
+    <link rel="stylesheet" href="/static/web/css/menu.css"/>
+    <link rel="stylesheet" href="/static/web/css/samir.css"/>
+    <link rel="stylesheet" href="/static/web/css/animate.css"/>
+    <link rel="stylesheet" href="/static/web/css/material.components.css"/>
+    <link rel="stylesheet" href="/static/web/css/ionicons.min.css"/>
+    
+    <link href="/static/remote/css/ionic.app.min.css" rel="stylesheet">
+
+
+    <!-- The main css file -->
+    <link href="/static/remote/css/sass/default.css" rel="stylesheet">
+    <link href="/static/remote/css/sass/material.css" rel="stylesheet">
+    <link href="/static/remote/css/sass/desktop.css" rel="stylesheet">
+    <link href="/static/remote/css/sass/desktop-student.css" rel="stylesheet">
+    <link href="/static/remote/css/sass/desktop-guru.css" rel="stylesheet">
+    <link href="/static/remote/css/sass/style.css" rel="stylesheet">
+    <link href="/static/remote/css/sass/style-modals.css" rel="stylesheet">
+    <link href="/static/remote/css/sass/samir.css" rel="stylesheet">
+
+    {% if ( request.path != '/support-only/' and request.path != '/faq-only/') %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(e) {
+                onDomLoadSuccess();
+        });
+    </script>
+    {% endif %}
+
+</head>
+<body id="{% block pagetype %}{% endblock %}">
+
+{% if ( request.path != '/support-only/' and request.path != '/faq-only/') %}
+<script>
+    var bodyLoadingDiv = document.createElement('div');
+    bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
+    document.body.appendChild(bodyLoadingDiv);
+    bodyLoadingDiv.innerHTML = '<div><span class="logo"> {% include "web/components/logo-shamrock.svg"|string%}' + ' </span><span class="loader"> {% include "web/components/svg-loader.svg"%} </span></div>'
+</script>
+<header id="top">
+    <nav id="top-menu">
+        <ul>
+            <li><a id="top-link-menu" class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
+            <li>
+                <a id="top-logo" href="/">
+                    {% block logo %}
+                        <svg width="234px" height="302px" viewBox="0 0 234 302" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path d="M231.82241,80.62 C226.830775,79.541 221.968113,78.674 217.201172,77.988 C207.099007,33.351 166.928137,0 118.891967,0 L113.862044,0 C65.757357,0 25.5320773,33.451 15.5064891,78.197 C11.0005161,78.871 6.40184432,79.708 1.68427607,80.728 C0.599094311,80.97 -0.144512132,82.05 0.0237565344,83.143 L1.81727885,94.799 C1.98554752,95.891 3.01329626,96.963 4.07631089,97.284 C4.07631089,97.284 8.32433903,97.665 8.50268366,102.079 C8.97222377,113.799 10.3113199,123.496 13.0983327,131.215 L13.0983327,202.002 C13.0983327,257.229 58.2044113,302 113.862044,302 L118.891967,302 C121.437157,302 123.961187,301.904 126.459019,301.72 C126.520482,301.716 126.582953,301.713 126.644417,301.708 C128.145736,301.595 129.634964,301.444 131.117139,301.266 C131.319666,301.241 131.524208,301.222 131.726735,301.197 C132.042113,301.157 132.355476,301.108 132.669846,301.066 C133.192788,300.995 133.717746,300.927 134.238674,300.848 C134.997394,300.733 135.752084,300.607 136.505767,300.475 C136.579321,300.462 136.654891,300.452 136.728446,300.438 C138.149157,300.187 139.555762,299.9 140.955314,299.59 C141.186054,299.538 141.418809,299.492 141.648541,299.44 C141.995154,299.36 142.338745,299.272 142.683343,299.189 C143.147845,299.078 143.614362,298.97 144.075842,298.852 C144.231012,298.812 144.384166,298.768 144.539336,298.727 C187.767254,287.47 219.655678,248.438 219.655678,202.002 L219.655678,134.345 C223.309224,126.181 224.961683,115.436 225.497724,102.079 C225.676069,97.665 229.92309,97.284 229.92309,97.284 C230.987112,96.963 232.013853,95.891 232.182122,94.799 L233.976651,83.143 C234.14492,82.05 233.401314,80.97 231.82241,80.62 L231.82241,80.62 L231.82241,80.62 Z M113.862044,6 L118.891967,6 C163.274591,6 200.515369,36.288 210.791849,77.172 C183.556507,74.156 159.296599,77.265 133.043664,83.336 C130.557923,83.91 128.002657,84.516 125.330511,85 L108.669897,85 C105.996743,84.516 103.441478,83.91 100.956744,83.336 C74.3733173,77.189 49.8363199,74.073 21.9198427,77.341 C32.1368744,36.371 69.420979,6 113.862044,6 L113.862044,6 L113.862044,6 Z M116.736717,139.577 C112.269033,139.251 108.629594,135.591 105.816383,135.494 C104.002709,135.288 99.7012782,135.083 99.7012782,135.083 C97.8886116,134.878 96.8699312,133.133 97.8886116,131.695 C103.890866,122.969 106.495504,114.141 107.628042,108.802 C108.920789,102.155 112.57635,101.186 116.736717,101 C116.841508,101.002 116.94529,101.005 117.051088,101.008 C117.155878,101.005 117.260668,101.002 117.365458,101 C121.525825,101.186 125.181386,102.155 126.474133,108.802 C127.606672,114.141 130.21131,122.969 136.213564,131.695 C137.232244,133.133 136.213564,134.878 134.400897,135.083 C134.400897,135.083 130.099466,135.288 128.285792,135.494 C125.473589,135.591 121.833142,139.251 117.365458,139.577 C117.260668,139.6 117.155878,139.598 117.051088,139.595 C116.94529,139.598 116.841508,139.6 116.736717,139.577 M123.211535,192.096 C123.413054,192.064 123.614573,192.03 123.818108,191.994 L123.815085,191.979 C138.302312,189.059 149.286125,179.835 151.924013,168.9 C152.991058,164.55 149.164205,160.853 144.698536,161.635 L92.5241662,170.765 C88.0584971,171.546 85.7349789,176.319 88.2378494,180.045 C94.4849496,189.426 107.984732,194.364 122.604961,192.19 L122.607984,192.206 C122.809503,192.171 123.011023,192.134 123.211535,192.096 M96.3714765,115.254317 C89.9430089,134.076317 79.8680484,147.739317 53.9818788,148.425317 C28.3425705,148.425317 20.8934073,143.791317 17.4897453,114.167317 C17.4897453,94.2943174 16.1748314,82.6603174 54.1995197,82.7303174 C79.8368129,85.1723174 106.729572,84.9293174 96.3714765,115.254317 L96.3714765,115.254317 L96.3714765,115.254317 Z M216.510267,114.167317 C213.106605,143.791317 205.657441,148.425317 180.018133,148.425317 C154.131963,147.739317 144.055995,134.076317 137.628535,115.254317 C127.27044,84.9293174 154.163199,85.1723174 179.800492,82.7303174 C217.824173,82.6603174 216.510267,94.2943174 216.510267,114.167317 L216.510267,114.167317 L216.510267,114.167317 Z" fill="#66B2A4" fill-rule="evenodd"></path>
+                        </svg>
+                    {% endblock %}
+                </a>
+            </li>
+            <li>
+                
+                <a class="top-link-students btn-round btn-ghost" href="/"><span>Home</span></a>
+            </li>
+        </ul>
+    </nav>
+</header>
+{% endif %}
+
+
+{% include 'web/layout/menu.html' %}
+
+<ion-view class='uguru-view desktop-guru-profile-view bg-charcoal'>
+
+  <main id='desktop-guru-profile' class="desktop-forms desktop-mode">
+    <div id="profile">
+      <div id="profile-desc" class='relative'>
+        <div class="profile-inside">
+          <div id="profile-icon">
+            <span>
+              <img src="{{user.profile_url}}" id='guru-profile-img' />
+            </span>
+          </div>
+          <nav id="profile-list" class='profile-list-slide'>
+            <ul class='relative'>
+              <li id="profile-name">
+                <h1>
+                  <span class="inline">{{user.name}}</span>
+                  <span class="inline">
+                    <span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
+                  </span>
+                </h1>
+              </li>
+              <li id="profile-school">{{user.university.title}}</li>
+              <li id="profile-intro">
+                <div>
+                  <textarea disabled>{{user.guru_introduction or 'Add an introduction about your past guru-ing experience'}}</textarea>
+                </div>
+              </li>
+              <li>
+                <button class='btn-ghost-white m15top'>Contact</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div id="profile-info">
+
+
+        <div class="profile-inside">
+          <div class="profile-header">
+            <h1>{{user.name.split(' ')[0]|title}}'s Profile</h1>
+            <a class='cta-modal-close close-button'>
+              <svg viewBox="0 0 100 100">
+                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+              </svg>
+            </a>
+          </div>
+          <div id="profile-courses relative">
+            <h1>Courses you can Guru</h1>
+            <div>
+              <ul class='courses profile-list profile-list-half'>
+                {% for course in user.guru_courses %}
+                <li>
+                  <span>{{course.short_name}}</span>
+                </li>
+                {% endfor %}
+                <li></li>
+              </ul>
+              <ul class="empty" ng-if="!user.guru_courses.length && !profile.edit_mode">
+                <li>
+                  <span>
+                    <em>No courses added</em>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="profile-experiences">
+            <h1>Experience</h1>
+            <div>
+              <ul class="experience profile-list list with-icon">
+                {% for experience in user.guru_experiences %}
+                <li>
+                  <a ng-click='launchAddGuruExperienceModal(experience,$index)'>
+                    <span class="list-item-detail">
+                      <h2>{{experience.name}}</h2>
+                      <span>{{experience.years}} years</span>
+                    </span>
+                    <span class="list-item-icon">
+
+
+
+                      <svg viewBox="0 0 100 100">
+                        <path d="M15.6243489,84.7923176 L19.5509642,73.6399994 L69.794924,23.3911161 L77.0255506,30.6217427 L26.7800007,80.8660212 L15.6243489,84.7923176 Z M13.3333333,87.0833333 L16.6666667,83.75 L13.3333333,87.0833333 L13.3333333,87.0833333 Z M70.8333333,23.75 L73.3350627,21.25 L70.8333333,23.75 L70.8333333,23.75 Z M76.6666667,29.5833333 L79.1666667,27.0833333 L76.6666667,29.5833333 L76.6666667,29.5833333 Z M82.5205606,25.5682252 L85.7479206,28.7955852 C85.7479206,28.7955852 67.7080166,46.8354927 67.5,47.0435059 M75.9393067,32.2348919 L79.1666667,35.4622519 M19.5499992,73.6399994 L26.7800007,80.8700027 L19.5499992,73.6399994 Z M77.7627936,15.0378071 L85.3792239,22.6542374 L81.0085605,27.0249008 L73.3921302,19.4084705 L77.7627936,15.0378071 Z"></path>
+                      </svg>
+                    </span>
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+              <ul class="empty">
+                <li>
+                  <span>
+                    <em>No Experience Added</em>
+                  </span>
+                </li>
+              </ul>
+              <ul class='default' ng-show='profile.edit_mode'>
+                <li class='full-x'>
+                  <button class="round" ng-click='launchAddGuruExperienceModal()'>
+                    <svg viewBox="0 0 100 100">
+                      <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                    <span>Add Experience</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="profile-skills">
+            <h1>Skills</h1>
+            <div>
+              <ul class='skills profile-list profile-list-half'>
+                {% for subcategory in user.guru_subcategories %}
+                <li>
+                  <span class=''>{{subcategory.name}}</span>
+                </li>
+                {% endfor %}
+                <li></li>
+              </ul>
+              <ul class="empty" ng-if="!user.guru_subcategories.length && !profile.edit_mode">
+                <li>
+                  <span>
+                    <em>No skills added</em>
+                  </span>
+                </li>
+              </ul>
+              <ul class='default' ng-if='profile.edit_mode'>
+                <li>
+                  <button class="round" ng-click='launchGuruSkillsModal()'>
+                    <svg viewBox="0 0 100 100">
+                      <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                    <span>Add a skill</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="profile-languages">
+            <h1>Languages</h1>
+            <div>
+              <ul class='languages profile-list profile-list-half'>
+                {% for language in user.guru_languages %}
+                <li >
+                  <span>{{language.name}}</span>
+                </li>
+                {% endfor %}
+                <li></li>
+              </ul>
+              <ul class="empty" >
+                <li>
+                  <span>
+                    <em>No languages added</em>
+                  </span>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </main>
+
+</ion-view>
+
+
+
+<div id="mobile-start">
+  <div id="mobile-inside">
+    <!-- add mobile profile here --> 
+  </div>
+</div>
+
+<ul id='corner-menu-icons' >
+  <li class='m10xy'>
+    <a href='/itunes/app/' target='_blank'>
+    {% include "web/components/platform/apple-white.svg" %}
+    </a>
+  </li>
+  <li class='m10xy'>
+    <a href='/windows/app/' target='_blank'>
+      {% include "web/components/platform/microsoft-white.svg" %}
+    </a>
+  </li>
+  <li class='m10xy'>
+    <a href='/android/app/' target='_blank'>
+      {% include "web/components/platform/play-white.svg" %}
+    </a>
+  </li>
+  <li class='m10xy'>
+    <a href='/desktop/app/' target='_blank'>
+      {% include "web/components/platform/desktop-white.svg" %}
+    </a>
+  </li>
+</ul>
+<a class="bottom-link-students bottom-0 absolute right-0 p20xy"><span>www.<strong>{{user.profile_code}}</strong>.uguru.me</span></a>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Source Sans Pro:200,300,400,600,700,900']
+    }
+  });
+</script>
+
+<script src="/static/web/js/lib/jquery.min.js"></script>
+<script src="/static/web/js/lib/plugins.js"></script>
+<script src="/static/web/js/lib/parallax.min.js"></script>
+<script src="/static/web/js/main.js"></script>
+
+<script src="/static/web/js/lib/velocity.js"></script>
+
+<script src="/static/web/js/lib/cta.min.js"></script>
+<!-- end animation scripts-->
+<script src="/static/web/js/components/modal.js"></script>
+<script src="/static/web/js/lib/uguru-animate.js"></script>
+</body>
+
+</html>
+
