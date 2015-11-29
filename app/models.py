@@ -443,6 +443,9 @@ class User(Base):
             db_session.rollback()
             raise
 
+    def getFirstName(self):
+        return self.name.split(' ')[0].title()
+
     def add_guru_subcategories(self, subcategory_ids):
         for subcategory_id in subcategory_ids:
             self.add_guru_subcategory(subcategory_id)

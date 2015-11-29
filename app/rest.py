@@ -2153,7 +2153,46 @@ class UserCardView(restful.Resource):
 
         return user, 200
 
+class MandrillWebhook(restful.Resource):
+    from pprint import pprint
+    import json
 
+    def post(self, auth_token):
+        from pprint import pprint
+        if request.json:
+            pprint(request.json)
+        return json.dumps({'success':True}), 200
+        # if not auth_token in APPROVED_ADMIN_TOKENS:
+        #     abort(404)
+
+        # if request.json:
+        #     print "RAW JSON \n\n"
+        #     pprint(request.json)
+        #     arr_mandrill_events = json.loads(request.json)
+
+        #     if arr_mandrill_events:
+
+        #         print "\n\n\n\n\n\nProcessed ARR json:\n\n"
+        #         pprint(arr_mandrill_events)
+
+        #         for event_obj in arr_mandrill_events:
+        #             # reference object to do this right
+        #             # https://mandrill.zendesk.com/hc/en-us/articles/205583307-Message-Event-Webhook-format
+        #             event = event_obj.get('event') #type open or click
+        #             _ip = event_obj.get('ip')
+        #             location_dict = event_obj.get('location')
+        #             user_agent_parsed = event_obj.get('user_agent') ## GOLD -->> need to convert this into MP
+        #             email = event_obj.get('msg').get('email') ## convert this
+        #             mandrill_id = event_obj.get('_id')
+        #             tag_arr = event_obj.get('tags')
+        #             metadata = event_obj.get('metadata')
+        #             msg_state = event_obj.get('state') #sent, rejected, spam, etc.
+
+        #             pprint(event)
+
+        #         return json.dumps({'success':True}), 200
+
+        # abort(404)
 
 
 class UserNewView(restful.Resource):
@@ -3530,6 +3569,7 @@ api.add_resource(TransitGuruTransitData, '/api/v1/<string:auth_token>/transit')
 api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
+api.add_resource(MandrillWebhook, '/<string:auth_token>/mandrill-webhook')
 api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')
 api.add_resource(AdminUserView, '/api/admin/users/')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')

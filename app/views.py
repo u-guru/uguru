@@ -29,13 +29,9 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## Bens Views ##
 ################
 
-
 @app.route('/admin/stats/universities/info')
 def admin_statistics_universities_info():
     return render_template("admin/admin.stats.universities.info.html")
-
-
-
 
 @app.route('/admin/stats/universities/complete')
 def admin_statistics_users_completed():
@@ -266,7 +262,7 @@ def admin_devices():
     regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
     return render_template("admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
-    
+
 
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
@@ -275,7 +271,7 @@ def profile_page_new_view(username):
         return redirect(url_for('new_home_page'))
     if 'www' == username:
         return render_template("web/index.html")
-    return render_template("web/pages/profile.html", user=user_profile_exists[0]) 
+    return render_template("web/pages/profile.html", user=user_profile_exists[0])
 
 @app.route('/')
 def new_home_page():

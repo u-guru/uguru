@@ -322,6 +322,25 @@ def print_categories():
         print
 
 
+if arg == 'init_mandrill_wh':
+    import mandrill, os
+
+    MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+
+    def getAllMandrillWebhooks():
+        return mandrill_client.webhooks.list()
+
+    def createMandrillWebhook(url):
+        return mandrill_client.webhooks.add(url=url, events=["open", "click"])
+
+
+    new_webhook_info = createMandrillWebhook(url="https://uguru-rest.herokuapp.com")
+    from pprint import pprint
+    pprint(new_webhook_info)
+
+
+
 def generate_categories_json():
     from app.models import Category
     result_dict = {}
@@ -1492,3 +1511,17 @@ if arg =='migrate':
             # 'skills': get_user_skills(user),
             # 'conversations': get_user_conversations(user),
             # 'payments': get_user_payments(user),
+
+if arg =='mp_init':
+    print 'starting..'
+    admin_emails = ['jason@uguru.me', 'samir@uguru.me', 'jeselle@uguru.me', 'gabrielle@uguru.me']
+    from app.lib.mixpanel_wrapper import create_mp_profile
+    for email in admin_emails:
+        user = User.query.filter_by(email=email).all()
+        if len(user) == 1:
+            user = user[0]
+            response = create_mp_profile(user, ip='70.36.146.107')
+            if response:
+                from pprint import pprint
+                pprint(response)
+

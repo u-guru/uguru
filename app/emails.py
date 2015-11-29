@@ -4,9 +4,9 @@ from models import *
 
 
 
-# MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
-MANDRILL_API_KEY = 'OcPNDCSHlOHoIXnrdKFgeA'
-MANDRILL_API_TEST_KEY = "E3JtFuPUZC466EFpJY9-ag"
+# MANDRILL_API_KEY =
+MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+MANDRILL_API_TEST_KEY = os.environ['MANDRILL_TEST_PASSWORD']
 
 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
 mandrill_test_client = mandrill.Mandrill(MANDRILL_API_TEST_KEY)
@@ -84,7 +84,7 @@ def send_campaign_email(campaign_name, template_name,
             message=message)
 
     else:
-        result = mandrill_client.messages.send_template(
+        result = mandrill_test_client.messages.send_template(
             template_name=template_name,
             template_content=[],
             message=message)
