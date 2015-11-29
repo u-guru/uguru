@@ -106,29 +106,29 @@ def wildcard(payload, event):
     if event == 'open' or event == 'click':
 
         # https://mandrill.zendesk.com/hc/en-us/articles/205583307-Message-Event-Webhook-format
-        event = event_obj.get('event') #type open or click
-        _ip = event_obj.get('ip')
+        event = payload.get('event') #type open or click
+        _ip = payload.get('ip')
 
         ## important --> city, country, country_short, long/lat, postal, region + timezone
-        location_dict = event_obj.get('location')
+        location_dict = payload.get('location')
 
         # os_family, ua_version, os family, os_name, #from mobile device
-        user_agent = event_obj.get('user_agent_parsed')
-        is_mobile = event_obj.get('user_agent_parsed').get('mobile')
-        agent_type = event_obj.get('Email Client')
+        user_agent = payload.get('user_agent_parsed')
+        is_mobile = payload.get('user_agent_parsed').get('mobile')
+        agent_type = payload.get('Email Client')
 
         ## Make sure to get email
-        email = event_obj.get('msg').get('email') ## convert this
-        tag_arr = event_obj.get('msg').get('tags')
-        opens = event_obj.get('opens')
-        clicks = event_obj.get('click')
+        email = payload.get('msg').get('email') ## convert this
+        tag_arr = payload.get('msg').get('tags')
+        opens = payload.get('opens')
+        clicks = payload.get('click')
 
-        msg_state = event_obj.get('msg').get('state') #sent, rejected, spam, etc.
+        msg_state = payload.get('msg').get('state') #sent, rejected, spam, etc.
 
-        mandrill_id = event_obj.get('_id')
+        mandrill_id = payload.get('_id')
 
         ## mandrill id
-        metadata = event_obj.get('metadata')
+        metadata = payload.get('metadata')
 
     return 200
 
