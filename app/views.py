@@ -275,7 +275,7 @@ def profile_page_new_view(username):
         return redirect(url_for('new_home_page'))
     if 'www' == username:
         return render_template("web/index.html")
-    return render_template("web/pages/profile.html", user=user_profile_exists) 
+    return render_template("web/pages/profile.html", user=user_profile_exists[0]) 
 
 @app.route('/')
 def new_home_page():
