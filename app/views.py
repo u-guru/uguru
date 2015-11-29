@@ -79,6 +79,17 @@ def admin_statistics_universities_completed():
     return render_template("admin/admin.stats.users.universities.html", \
         users=users, active_users=active_users, active_gurus=active_gurus, active_students=active_students)
 
+
+
+@app.route('/mandrill', methods=['GET', 'POST', 'HEAD'])
+def mandrill_webhook():
+    if request.method == 'GET':
+        return '200'
+    if request.method == 'HEAD':
+        return '200'
+    if request.method == 'POST':
+        return '200'
+
 @app.route('/admin/stats/universities/')
 def admin_statistics_universities_new():
     if not session.get('admin'):
