@@ -96,27 +96,41 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-@mandrill.hook('open')
-def open_event(payload):
-    """This code will be raised when open."""
-    from pprint import pprint
-    pprint(payload)
-    print "Open event received!"
-
 
 @mandrill.hook('*')
 def wildcard(payload, event):
-    """This code will be raised for every event."""
-    print "Event %s received!" % event
-
-
-# You can have more than one function for the same event
-
-@mandrill.hook('open')
-def another_open_event(payload):
-    """This is another event code."""
+    print "Receiving %s hook from mandrill.." % event
+    from pprint import pprint
     pprint(payload)
-    pass
+
+    if event == 'open' or event == 'click':
+
+        # https://mandrill.zendesk.com/hc/en-us/articles/205583307-Message-Event-Webhook-format
+        event = event_obj.get('event') #type open or click
+        _ip = event_obj.get('ip')
+
+        ## important --> city, country, country_short, long/lat, postal, region + timezone
+        location_dict = event_obj.get('location')
+
+        # os_family, ua_version, os family, os_name, #from mobile device
+        user_agent = event_obj.get('user_agent_parsed')
+        is_mobile = event_obj.get('user_agent_parsed').get('mobile')
+        agent_type = event_obj.get('Email Client')
+
+        ## Make sure to get email
+        email = event_obj.get('msg').get('email') ## convert this
+        tag_arr = event_obj.get('msg').get('tags')
+        opens = event_obj.get('opens')
+        clicks = event_obj.get('click')
+
+        msg_state = event_obj.get('msg').get('state') #sent, rejected, spam, etc.
+
+        mandrill_id = event_obj.get('_id')
+
+        ## mandrill id
+        metadata = event_obj.get('metadata')
+
+    return 200
 
 # Allows cross-origin. Allows us to host local server on different ports & share resources
 @app.after_request
