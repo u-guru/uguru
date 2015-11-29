@@ -47,6 +47,8 @@ app.config.update(dict(
   PREFERRED_URL_SCHEME = 'https',
 ))
 
+app.config.setdefault('MANDRILL_WEBHOOKS_KEY', 'Byu1r2LQpLmaxGvIoydqQw')
+
 try:
     if os.environ.get('PRODUCTION'):
         app.config.update(SERVER_NAME='uguru.me')
@@ -96,6 +98,8 @@ manager.add_command('db', MigrateCommand)
 @mandrill.hook('open')
 def open_event(payload):
     """This code will be raised when open."""
+    from pprint import pprint
+    pprint(payload)
     print "Open event received!"
 
 
@@ -110,6 +114,7 @@ def wildcard(payload, event):
 @mandrill.hook('open')
 def another_open_event(payload):
     """This is another event code."""
+    pprint(payload)
     pass
 
 # Allows cross-origin. Allows us to host local server on different ports & share resources
