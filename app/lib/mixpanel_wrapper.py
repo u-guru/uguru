@@ -27,7 +27,7 @@ def createCampaignUserProfile(unique_id, formatted_dict):
     from pprint import pprint
     formatted_dict['campaign_user'] = True
 
-    formatted_dict['testing'] = isSandBoxMode(unique_id)
+    formatted_dict['testing'] = isSandboxMode(unique_id)
     print "Final formatted dict to send to mixpanel"
     pprint(formatted_dict)
     # response = mp.people_set(unique_id, formatted_dict)
