@@ -3527,7 +3527,7 @@ api.add_resource(TransitGuruTransitData, '/api/v1/<string:auth_token>/transit')
 api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
-api.add_resource(MandrillWebhook, '/<string:auth_token>/mandrill-webhook')
+# api.add_resource(MandrillWebhook, '/<string:auth_token>/mandrill-webhook')
 api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')
 api.add_resource(AdminUserView, '/api/admin/users/')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
