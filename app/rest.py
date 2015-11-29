@@ -2157,6 +2157,12 @@ class MandrillWebhook(restful.Resource):
     from pprint import pprint
     import json
 
+    def head(self, auth_token):
+        from pprint import pprint
+        if request.json:
+            pprint(request.json)
+        return json.dumps({'success':True}), 200
+
     def post(self, auth_token):
         from pprint import pprint
         if request.json:
