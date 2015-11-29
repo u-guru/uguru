@@ -122,8 +122,14 @@
 
 <script>
 
-        console.log('instantiating scroll reveal')
-        window.sr = new scrollReveal();
+    function initParallaxScene2() {
+        //get ID of UL element, which MUST have class 'layer' && data-depth attr (see-example)
+        var earnCategoriesUlElem = document.querySelector('#earn-categories-desktop');
+        if (earnCategoriesUlElem && Parallax) {
+            var parallaxScene2 = new Parallax(earnCategoriesUlElem);
+            console.log('initializing')
+        }
+    }
 
 </script>
 
