@@ -26,8 +26,10 @@
 				<div class='full-xy absolute top-0 left-0 guru-desktop-forms'>
 					<div class="main" ng-controller='SignupController' ng-include="img_base + BASE + 'templates/desktop.login.forms.container.html'"></div>
 					<div class='full-x absolute bottom-25' id='cta-footer-switch-link'>
-		                    <h3 ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode'> <strong>Have an account?</strong> </h3>
-		                    <h3 ng-click='toggleLoginMode()' ng-show='root.vars.loginMode'> <strong>Create an account</strong> </h3>
+		                    <a ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode && !root.vars.forgotPassword'> <strong>Have an account?</strong> </a>
+	                    	<a ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>
+	                    		<strong>Create an account</strong>
+	                    	</a>
 		            </div>
 				</div>
 			</ion-pane>

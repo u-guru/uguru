@@ -273,7 +273,7 @@ def profile_page_new_view(username):
     user_profile_exists = User.query.filter_by(profile_code=username).all()
     if not user_profile_exists:
         return redirect(url_for('new_home_page'))
-    if 'www' == subdomain:
+    if 'www' == username:
         return render_template("web/index.html")
     return render_template("web/pages/profile.html", user=user_profile_exists) 
 

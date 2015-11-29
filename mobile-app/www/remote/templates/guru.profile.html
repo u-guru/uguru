@@ -28,9 +28,9 @@
 								</li>
 								<li id="profile-school">{{user.university.title}}</li>
 							</ul>
-							<div  id='public-profile-url' ng-if='user.profile_code' class='absolute bottom-0 left-0 full-x absolute bottom-0 left-0 full-x text-center'>
+							<a ng-if='user.profile_code' href='https://{{user.profile_code}}.uguru.me' target='_blank' id='public-profile-url' ng-if='user.profile_code' class='absolute bottom-0 left-0 full-x absolute bottom-0 left-0 full-x text-center'>
 								<strong>Public URL</strong>:&nbsp;&nbsp;&nbsp;www.<strong>{{user.profile_code}}</strong>.uguru.me
-							</div>
+							</a>
 						</nav>
 					</div>
 				</ion-slide>
