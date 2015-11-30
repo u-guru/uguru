@@ -183,7 +183,7 @@ def ben_data_todo():
         "Test that it works & will increase the total # significantly (or more significant than the other fields",
         "Calculate the total # of schools expected to be prepared",
         "Run it locally",
-        "Let Samir know that you have another script ready. Ready means that: <br> <br> <b>1. You know the <u>EXACT</u> # of schools prepared after you run this with https://www.uguru.me <br>2. You have already run it locally && are 100% confident it works<br></b>",
+        "Let Samir know that you have another script ready. Ready means that: <br> <br> <b>1. You know the <u>EXACT</u> # of schools prepared after you run this with https://uguru.me <br>2. You have already run it locally && are 100% confident it works<br></b>",
         "If Samir approves, run it with production server",
         "Pull production server && update your local one <br><br> <i> Cut && paste this into your terminal w/o outside quotes </i><br><br> >>   heroku pg:backups capture --app uguru-rest <br><br> >> curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` <br><br> >> pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump",
         "Cleanup your code - if you have any questions where things should be organized ask -- if i dont reply, move on.",
@@ -966,7 +966,7 @@ def app_route_transit():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/transit-remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://uguru.me/static/transit-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/transit-remote/index.html?version=' + str(version) + str(02323))
@@ -981,7 +981,7 @@ def app_route_sound():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/sound-remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://uguru.me/static/sound-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/sound-remote/index.html?version=' + str(version) + str(02323))
@@ -996,7 +996,7 @@ def app_route_grub():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/grub-remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://uguru.me/static/grub-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/grub-remote/index.html?version=' + str(version) + str(02323))
@@ -1054,7 +1054,7 @@ def app_route():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/remote/index.html')
