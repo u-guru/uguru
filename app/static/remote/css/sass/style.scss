@@ -128,7 +128,7 @@ section {
 		text-transform: uppercase;
 		//Gabrielle -- added this so we can so more items;
 		&.settings-item {
-			height:10%;
+			height: 10%;
 		}
 		.list-item-icon {
 			height: 64px;
@@ -146,6 +146,13 @@ section {
 				}
 				circle {
 					stroke-dasharray: 3px, 10px;
+				}
+			}
+		}
+		&#top-menu-discover {
+			svg {
+				circle {
+					stroke-dasharray: 0!important;
 				}
 			}
 		}
@@ -383,6 +390,9 @@ section {
 // ACCESS
 .access-view {
 	background: $shamrock;
+	input {
+		cursor: text;
+	}
 	#access-data {
 		height: calc(100% - 64px);
 	}

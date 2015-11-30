@@ -282,10 +282,9 @@ def profile_page_new_view(username):
         return redirect(url_for('new_home_page'))
     if 'mandrill' == username and request.method == 'HEAD' or request.method == "POST":
         return "200"
-    if 'www' == username:
-        return render_template("web/index.html")
     return render_template("web/pages/profile.html", user=user_profile_exists[0])
 
+@app.route('/', subdomain='www')
 @app.route('/')
 def new_home_page():
     return render_template("web/index.html")
@@ -1020,6 +1019,7 @@ def user_admin_login_user(user_id=None):
 
 @app.route('/production/app/')
 @app.route('/app/production/')
+@app.route('/desktop/app/')
 @app.route('/app/')
 def app_route():
 

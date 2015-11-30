@@ -54,12 +54,12 @@
 						<div class="balance-cards">
 							<h2>Choose Method to Cash Out</h2>
 							<ul class="ugrid-3">
-								<li ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_card'>
+								<li ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account'>
 									<a class='credit-card-wrapper' ng-click='editPayment(card)'>
 										<!-- BIND -->
 										<div id="credit-card-visa" class="credit-card cf">
 											<!-- BIND -->
-											<span class="card-type" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
+											<span class="card-type" ng-include="img_base + BASE + 'templates/cards/mastercard.html'"></span>
 											<div class="card-number">**** **** **** {{card.card_last4}}</div>
 											<div class="card-name">{{user.name}}</div>
 											<div class="valid">

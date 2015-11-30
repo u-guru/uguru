@@ -15,19 +15,25 @@
 				<div>
 					<h1 ng-if='user.total_earned.toString().length < 3'>${{user.total_earned}}</h1>
 					<h2 ng-if='user.total_earned.toString().length >= 3'>${{user.total_earned}}</h2>
-					<span>Total <br> Earned</span>
+					<span>Total <br/> Earned</span>
 				</div>
 			</li>
 			<li>
 				<div>
-					<h1 ng-if='user.total_earned.toString().length < 3'>${{user.balance}}</h1>
+					<h1 ng-if='!user.total_earned.length'>$0</h1>
+					<h1 ng-if='user.total_earned.length && user.total_earned.toString().length < 3'>${{user.balance}}</h1>
 					<h2 ng-if='user.total_earned.toString().length >= 3'>${{user.balance}}</h2>
-					<span>Current <br> Balance</span>
+					<span>Current <br/> Balance</span>
 				</div>
 			</li>
     	</ul>
 
+
 		<ul class="sidebar-layout-list">
+			<!-- BIND -->
+			<li id="balance-empty-state" class="full-xy flex-center">
+				No current transactions.
+			</li>
 			<li ng-repeat='transaction in user.guru_transactions'>
 				<div>
 					<h3>You cashed out <b>${{transaction.guru_amount}}</b> to <b>**{{transaction.card.card_last4}}</b></h3>

@@ -267,6 +267,7 @@ angular.module('uguru.user', [])
         // user.summer_15 = false;
 
         var user_cards = user.cards || [];
+        console.log('processing cards', user.cards);
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
 
@@ -278,7 +279,7 @@ angular.module('uguru.user', [])
                 user.payment_cards.push(card);
             }
             //transfer cards processing
-            if (card.is_transfer_card) {
+            if (card.is_transfer_card || card.is_bank_account) {
                 user.transfer_cards.push(card);
             }
             if (card.is_default_transfer) {

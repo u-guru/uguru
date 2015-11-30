@@ -1062,6 +1062,10 @@ class Campaign(Base):
     sender_email = Column(String)
     sender_name = Column(String)
     mandrill_template_id = Column(String)
+    mandrill_tags = Column(String) # comma separated values
+    templated_args = Column(String)
+
+    directory_based = Column(Boolean)
 
     university_id = Column(Integer, ForeignKey('university.id'))
     university  = relationship("University",
@@ -2320,6 +2324,8 @@ class Email_User(Base):
     signed_up = Column(Boolean, default=False)
     num_clicks = Column(Integer, default = 0)
 
+
+
     def increment_clicks(self):
         self.num_clicks += 1
         try:
@@ -2373,12 +2379,12 @@ class Recipient(Base):
     time_sent = Column(DateTime)
     time_opened = Column(DateTime)
 
-    # batch_id = Column(Integer, ForeignKey('batch.id'))
-    # batch = relationship("Batch",
-    #     uselist = False,
-    #     primaryjoin = "Batch.id == Recipient.batch_id",
-    #     backref = 'recipients'
-    # )
+    campaign_id = Column(Integer, ForeignKey('campaign.id'))
+    campaign = relationship("Campaign",
+        uselist = False,
+        primaryjoin = "Campaign.id == Recipient.campaign_id",
+        backref = 'recipients'
+    )
 
     university_id = Column(Integer, ForeignKey('university.id'))
     university = relationship("University",

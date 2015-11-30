@@ -331,3 +331,14 @@ email_notif_copy = {
     "reset_password": """Hi %s,<br><br> Your re-generated Uguru password is <b>%s</b>.<br><br> If you didn't regenerate your password, please contact support immediately by directly replying to this email.<br><br> Best, <br><br>uGuru Support """
 
 }
+
+
+##
+def create_campaign(campaign_name, university_id=2307, directory_based=True):
+    pass
+
+
+
+def get_all_campaigns(recipients, campaign_name):
+    pass
+
