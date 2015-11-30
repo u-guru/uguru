@@ -3,9 +3,8 @@ var device = 'desktop'
 
 // var IP ="http://192.168.42.66:5000/static/remote/index.html"
 // var IP = "http://localhost:5000/static/remote/index.html"
- // var IP = "http://localhost:8100/#/university"
-var IP = 'https://uguru.me/static/remote/index.html#/'
-
+ var IP = "http://localhost:8100/#/university"
+// var IP = 'https://uguru.me/static/remote/index.html#/'
 exports.config = {
      params: {
                 screenSize : "1600x1050"
@@ -15,8 +14,20 @@ exports.config = {
 
 
          capabilities: {
-             'browserName': 'chrome'
-         },
+          'browserName': 'phantomjs',
+
+          /* 
+           * Can be used to specify the phantomjs binary path.
+           * This can generally be ommitted if you installed phantomjs globally.
+           */
+          'phantomjs.binary.path': require('phantomjs').path,
+
+          /*
+           * Command line args to pass to ghostdriver, phantomjs's browser driver.
+           * See https://github.com/detro/ghostdriver#faq
+           */
+          'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+        },
         specs:
         [
           '../e2e/browser/firsttimeusrSpec.js', 
@@ -131,9 +142,9 @@ exports.config = {
             var w =  Number(browser.params.screenSize.split('x')[0])
             var h =  Number(browser.params.screenSize.split('x')[1]) 
             console.log( "W : "+ w+ " H :"+h)
-            browser.driver.manage().window().setSize(w,h);
-             global.$ = browser.$;
-            global.$$ = browser.$$;
+            // // browser.driver.manage().window().setSize(w,h);
+            //  global.$ = browser.$;
+            // global.$$ = browser.$$;
             browser.get(url);
             // browser.get("http://"+localhost+":8100");
             browser.sleep(3000);

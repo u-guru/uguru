@@ -143,7 +143,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
             $scope.launchCtaDict[box_elem.id] = function() {
                 var modal_elem = document.querySelector('#' + modal_elem_id);
-
                    if (!$scope.user || !$scope.user.id) {
                       $scope.loader.showMsg('Please create an account first!', 0, 500);
                       box_elem = document.querySelector('#cta-box-signup');

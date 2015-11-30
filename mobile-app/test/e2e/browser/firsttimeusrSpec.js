@@ -1,10 +1,10 @@
 
 describe('Firt time usr Test', function () {
   var ListOfCode =  doc.generateRandomString(["","1"],1,"cool")
-  beforeAll(function()
-      {
-        doc.ResetAll();
-      });
+  // beforeAll(function()
+  //     {
+  //       doc.ResetAll();
+  //     });
     describe('@Workflow : Pre-Student Page', function () {
 
         for( i = 0; i < ListOfCode.length; ++ i)

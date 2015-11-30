@@ -46,8 +46,8 @@ describe('Best case Test on mobile size',function()
 			it('Select course',function()
 			{
 				// doc.waitLoading();
-				course.SelectCourse(0);
-				// $$('#courses-list li a').get(0).click();
+				// course.SelectCourse(0);
+				$$('#courses-list li').get(0).click();
 
 			});
 			it('Next slide',function()

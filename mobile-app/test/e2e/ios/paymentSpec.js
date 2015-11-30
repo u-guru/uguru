@@ -38,4 +38,16 @@ describe('Payment Spec',function ()
 		browser.wait(EC.stalenessOf($('.modal-backdrop.active')),4000);
 
 	});
+
+	describe("Add Cards",function()
+	{
+		it('Toggle sidemenu',function()
+		{
+			$$('[ng-click="toggleRightSideMenu()"]').get(0).click();
+		})
+		it("Activate Card ")
+		{
+
+		});
+	})
 })
