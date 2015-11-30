@@ -29,6 +29,13 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## Bens Views ##
 ################
 
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    if 'www' in request.url:
+        return redirect(request.url.replace('www.', ''))
+    return redirect(url_for('new_home_page'))
+
 @app.route('/admin/stats/universities/info')
 def admin_statistics_universities_info():
     return render_template("admin/admin.stats.universities.info.html")
@@ -1018,6 +1025,14 @@ def user_admin_login_user(user_id=None):
         return redirect('/static/remote/index.html?admin_token=fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6&user_id=' + str(user_id))
     else:
         return redirect('http://localhost:8100?admin_token=fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6&user_id=' + str(user_id))
+
+@app.route('/production/app/', subdomain='www')
+@app.route('/app/production/', subdomain='www')
+@app.route('/desktop/app/', subdomain='www')
+@app.route('/app/', subdomain='www')
+def app_route_www():
+    return redirect(url_for('app_route'))
+
 
 @app.route('/production/app/')
 @app.route('/app/production/')
