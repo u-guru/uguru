@@ -284,12 +284,14 @@ def profile_page_new_view(username):
         return "200"
     return render_template("web/pages/profile.html", user=user_profile_exists[0])
 
-@app.route('/', subdomain='www')
+
 @app.route('/')
 def new_home_page():
     return render_template("web/index.html")
 
-
+@app.route('/', subdomain='www')
+def new_home_page_www():
+    return render_template("web/index.html")
 
 
 @app.route('/faq/')
