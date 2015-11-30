@@ -43,6 +43,28 @@ if arg == 'ios_push':
     else:
         print "Please pass in message && device token"
 
+if arg == 'init_profile_codes':
+    from app.models import User
+    from app.database import db_session
+    from random import randint
+    profile_codes = []
+    for user in sorted(User.query.all(), key=lambda k:k.total_earned, reverse=True):
+        if not user.name or user.profile_code:
+            continue
+        user_first_name = user.name.split(' ')[0]
+        if user_first_name.lower() not in profile_codes:
+            user.profile_code = user_first_name
+            db_session.commit()
+            profile_codes.append(user.profile_code)
+        else:
+            user_profile_code = user_first_name + str(randint(0, 100))
+            if user_profile_code in profile_codes:
+                print 'dafuq', user.id, user.name
+                continue
+            user.profile_code = user_profile_code
+            db_session.commit()
+            profile_codes.append(user.profile_code)
+
 if arg == 'windows_push':
     from app.lib.push_notif import *
     if len(sys.argv) > 3:
@@ -298,6 +320,25 @@ def print_categories():
         for subcategory in category.subcategories:
             print '    >>', subcategory.name
         print
+
+
+if arg == 'init_mandrill_wh':
+    import mandrill, os
+
+    MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+
+    def getAllMandrillWebhooks():
+        return mandrill_client.webhooks.list()
+
+    def createMandrillWebhook(url):
+        return mandrill_client.webhooks.add(url=url, events=["open", "click"])
+
+
+    new_webhook_info = createMandrillWebhook("https://www.uguru.me")
+    from pprint import pprint
+    pprint(new_webhook_info)
+
 
 
 def generate_categories_json():
@@ -572,34 +613,31 @@ if arg == 'update':
     print v.latest_ios, 'updated to', env
 
 if arg == 'init_admin':
-    admin_accounts = ['makhani.samir@gmail.com', 'hair_lvrxrsl_one@tfbnw.net', 'jason_dhcxgww_huang@tfbnw.net', 'randykm4@gmail.com']
-    u = University.query.filter_by(name='Uguru University').first()
-    m = Major.query.get(91)
+    from hashlib import md5
+    from app.models import User
+    admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    u = University.query.get(2307)
 
     len_universities = len(University.query.all())
 
-
-    if not u:
-        u = University()
-        u.name = 'Uguru University'
-
-        u.id = len_universities + 1000
-        u.majors.append(m)
-        db_session.add(u)
-        db_session.commit()
-
-    for account_email in admin_accounts:
-        user = User.query.filter_by(email=account_email).first()
-        print user.email + ' initiated as admin for ' + u.name
+    for admin_account_tuple in admin_accounts:
+        account_email = admin_account_tuple[0]
+        account_name = admin_account_tuple[1]
+        user = User.query.filter_by(email=account_email.lower()).first()
+        print 'processing %s' % account_email
         if user:
-
-            print m.name, 'added to user major list'
-
-            user.majors.append(m)
             user.university_id = u.id
-            user.is_a_guru = True
+            user.is_admin = True
+            user.name = account_name
+            user.password = md5('launchuguru123').hexdigest()
+            db_session.commit()
+            print "Account for %s successfully updated" % user.email
+        else:
+            user = User(name=account_name, email=account_email, password=md5('launchuguru123').hexdigest())
+            user.university_id = u.id
             user.is_admin = True
             db_session.commit()
+            print "Account for %s successfully created" % user.email
 
 if arg == 'parse_uni':
     from app.lib.wikipedia import *
@@ -1473,3 +1511,45 @@ if arg =='migrate':
             # 'skills': get_user_skills(user),
             # 'conversations': get_user_conversations(user),
             # 'payments': get_user_payments(user),
+
+if arg =='mp_init':
+    print 'starting..'
+    admin_emails = ['jason@uguru.me', 'samir@uguru.me', 'jeselle@uguru.me', 'gabrielle@uguru.me']
+    from app.lib.mixpanel_wrapper import create_mp_profile
+    for email in admin_emails:
+        user = User.query.filter_by(email=email).all()
+        if len(user) == 1:
+            user = user[0]
+            response = create_mp_profile(user, ip='70.36.146.107')
+            if response:
+                from pprint import pprint
+                pprint(response)
+
+
+
+if arg =='-cc':
+    if not len(sys.argv) >= 5:
+        print 'insufficient args for create campaign arg'
+        sys.exit()
+
+    name = sys.argv[2]
+    university_id = int(sys.argv[3])
+    description = sys.argv[4]
+    from app.models import Campaign
+    c = Campaign.init(name, university_id, description)
+    print '%s successfully created' % c.name
+
+## print campaigns
+if arg =='-pca':
+    all_campaigns = Campaign.query.all()
+    for campaign in all_campaigns:
+        print campaign.id, campaign.name, campaign.description, len(campaign.recipients)
+
+## print campaigns
+if arg =='init_cal_campaign':
+    for u in User.query.all():
+        continue
+
+
+
+

@@ -38,7 +38,7 @@
       #desktop-student-home .main .student-home-container > div {
         height: 50%; }
         #desktop-student-home .main .student-home-container > div > div {
-          background: #958B8E;
+          background: #69B3A5;
           height: 100%; }
           #desktop-student-home .main .student-home-container > div > div h2 {
             padding: 15px 15px 0;
@@ -93,7 +93,7 @@
                 bottom: 0;
                 left: 0; }
             #desktop-student-home .main .student-home-container .student-home-select ul li:last-child a {
-              background: #7c7174; }
+              background: #4e9b8c; }
               #desktop-student-home .main .student-home-container .student-home-select ul li:last-child a span {
                 position: absolute;
                 top: 50%;
@@ -110,7 +110,7 @@
             #desktop-student-home .main .student-home-container .student-home-select ul li:nth-child(3) a span {
               background: #8A9EA3; }
             #desktop-student-home .main .student-home-container .student-home-select ul li:nth-child(4) a span {
-              background: #7c7174; }
+              background: #4e9b8c; }
       #desktop-student-home .main .student-home-container .student-home-apps {
         width: calc(100% / 3 * 2);
         padding: 7.5px 7.5px 0 0; }
@@ -172,7 +172,7 @@
             #desktop-student-home .main .student-home-container .student-home-guru > div > div ul li a {
               text-transform: uppercase; }
         #desktop-student-home .main .student-home-container .student-home-guru > div button {
-          background: #7c7174;
+          background: #4e9b8c;
           font-weight: 600; }
 
 @media screen and (min-height: 1000px) {

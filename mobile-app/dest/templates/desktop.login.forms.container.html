@@ -10,10 +10,11 @@
                     </a>
                 </header>
                 <div>
-                    <h1 ng-if='root.vars.loginMode'>Login</h1>
-                    <h1 ng-if='!root.vars.loginMode'>Create an Account!</h1>
+                    <h1 ng-if='root.vars.forgotPassword'>Forgot Password Form</h1>
+                    <h1 ng-if='root.vars.loginMode && !root.vars.forgotPassword'>Login</h1>
+                    <h1 ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>Create an Account!</h1>
                     <form>
-                        <div class="input-field relative" ng-if='!root.vars.loginMode'>
+                        <div class="input-field relative" ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>
                             <input ng-model='signupForm.full_name' autocomplete="off" id='signup-name' type="text" class="validate txt-white">
                             <label for="Full Name">Full Name</label>
                             <a ng-show='signupForm.full_name && signupForm.full_name.length' ng-click='signupForm.full_name = "";' class="desktop-input-close-icon side-icon">
@@ -27,7 +28,7 @@
                                 <i class='icon ion-close-circled'> </i>
                             </a>
                         </div>
-                        <div class="input-field">
+                        <div class="input-field ng-class:{'hide':root.vars.forgotPassword}">
                             <input autocomplete="off" ng-model='signupForm.password' id="password" type="password" class="validate txt-white">
                             <label for="password">Password</label>
                             <a ng-show="root.vars.loginMode && signupForm.password.length" ng-click='signupForm.password = "";' class="desktop-input-close-icon side-icon">
@@ -36,15 +37,14 @@
                         </div>
                         <!-- radio input for remember me -->
                         <div class="desktop-login-buttons">
-                            <button ng-click='connectWithFacebook()' class="bg-fb caps">Login with Facebook</button>
-                            <button class="bg-shamrock caps" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
-                            <button class="bg-shamrock caps" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
+                            <button ng-click='connectWithFacebook()' class="bg-fb caps ng-class:{'hide':root.vars.forgotPassword}">Login with Facebook</button>
+                            <button class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
+                            <button class="bg-charcoal caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='root.vars.forgotPassword = false;'>Cancel</button>
+                            <button class="bg-shamrock caps hide ng-class:{'show':root.vars.forgotPassword}"  ng-click='attemptToResetPassword()'>Submit</button>
+                            <button class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
 
                         </div>
                     </form>
                 </div>
-            </div>
-            <div class='full-x absolute bottom-25' id='cta-footer-switch-link'>
-                    <h3 ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode'> <strong>Have an account?</strong> </h3>
-                    <h3 ng-click='toggleLoginMode()' ng-show='root.vars.loginMode'> <strong>Create an account</strong> </h3>
+                <a id="forgot-your-password" ng-show='root.vars.loginMode && !root.vars.forgotPassword' ng-click="root.vars.forgotPassword = true;" style='bottom:10%;'><small style='font-size:24px; font-weight:500;'> Forgot Your Password? </small></a>
             </div>

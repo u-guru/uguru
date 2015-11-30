@@ -13,6 +13,7 @@ import logging
 from logging.handlers import SMTPHandler
 from flask_sslify import SSLify
 
+from mandrill_webhooks import MandrillWebhooks
 # import newrelic.agent
 
 # Logging
@@ -40,10 +41,21 @@ root.addHandler(ch)
 app = Flask(__name__)
 app.config.from_object('config')
 sslify = SSLify(app)
+mandrill = MandrillWebhooks(app)
 
 app.config.update(dict(
-  PREFERRED_URL_SCHEME = 'https'
+  PREFERRED_URL_SCHEME = 'https',
 ))
+
+app.config.setdefault('MANDRILL_WEBHOOKS_KEY', 'Byu1r2LQpLmaxGvIoydqQw')
+app.config.setdefault('MANDRILL_WEBHOOKS_URL', 'https://uguru-rest-test.herokuapp.com/mandrill')
+
+try:
+    if os.environ.get('PRODUCTION'):
+        app.config.update(SERVER_NAME='uguru.me')
+except:
+    print "some shit went wrong on production"
+
 
 # flask-restful
 api = restful.Api(app)
@@ -83,6 +95,24 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
+
+
+@mandrill.hook('*')
+def wildcard(payload, event):
+    print "Receiving %s hook from mandrill.." % event
+    from pprint import pprint
+    from datetime import datetime
+    from lib.mixpanel_wrapper import parseMandrillPayloadToMixpanel, createCampaignUserProfile
+
+    pprint(payload)
+
+    if event == 'open' or event == 'click':
+
+        mp_dict = parseMandrillPayloadToMixpanel(payload)
+        response = createCampaignUserProfile(mp_dict['$email'], mp_dict)
+        pprint(response)
+
+    return 200
 
 # Allows cross-origin. Allows us to host local server on different ports & share resources
 @app.after_request

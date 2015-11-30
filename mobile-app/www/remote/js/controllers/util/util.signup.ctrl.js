@@ -105,7 +105,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.backToAccess = function() {
-      LoadingService.showAmbig(null, 500, function() {
+      LoadingService.showAmbig(null, 1000, function() {
           AnimationService.flip('^.university');
       })
     }
@@ -148,22 +148,31 @@ angular.module('uguru.util.controllers')
       }
 
       var successCallback = function() {
-          LoadingService.hide();
-          alert("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!');
+          $timeout(function() {
+            LoadingService.showSuccess("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!', 4000);
+          }, 250)
           $scope.signupForm.email = '';
+          $scope.signupForm.full_name = '';
+          $scope.signupForm.password = '';
+
+          if (!$scope.desktopMode) {
+            $scope.signupModal.hide();
+          } else {
+            $timeout(function() {
+              $scope.backToAccess();
+            }, 1500)
+          }
       }
 
       var failureCallback = function(err) {
-        if (err && err.status === 404) {
-          alert('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?');
-        }
+        console.log('failure allback');
+        LoadingService.showMsg('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?', 3000);
+        $scope.signupForm.email = '';
+
       }
 
       $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
-      LoadingService.show();
-      $timeout(function() {
-        $scope.toggleBackToLoginMode();
-      }, 500)
+      LoadingService.showAmbig(null, 5000);
     }
 
     $scope.toggleResetModeFromLogin = function() {
@@ -1333,7 +1342,7 @@ angular.module('uguru.util.controllers')
 
     $scope.loginUser = function() {
       if ($scope.signupForm.email)
-        $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
+        $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
@@ -1401,6 +1410,27 @@ angular.module('uguru.util.controllers')
               //   passwordInput.focus();
               // }
             }, 1250)
+        } else if (err.status === 404) {
+          $scope.signupForm.password = '';
+          $scope.signupForm.email = '';
+          LoadingService.showMsg('Sorry, your account is currently deactivated. Please contact support@uguru.me for a reactivation code.', 2500, function() {
+
+            if ($state.current.name = 'root.desktop-login') {
+              LoadingService.showAmbig('Redirecting...', 1000);
+              $timeout(function() {
+                if ($scope.desktopMode) {
+                  $scope.backToAccess();
+                }
+              }, 500)
+            } else if ($state.current.name === 'root.university'){
+              if (!$scope.desktopMode && $scope.signupModal.isShown()) {
+                LoadingService.showAmbig(null, 1500);
+                $scope.signupModal.hide();
+              }
+            }
+
+          });
+
         }
       });
     }
@@ -1509,9 +1539,10 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
-    // console.log("CHECK",$scope.root.vars.loginMode);
 
-    // $scope.root.vars.loginMode = $scope.root.vars.page_cache.login_mode || false;
+    $timeout(function() {
+      $scope.root.vars.loginMode = true;
+    })
     // $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
     //         scope: $scope,
     //         animation: 'slide-in-up',

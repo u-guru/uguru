@@ -7,6 +7,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
+
+     <style>
+      [data-sr] {
+        visibility: hidden;
+      }
+    </style>
     <script type="text/javascript">
       var start_dom_time = Date.now();
       var deviceReadyLoadTime;
@@ -52,7 +58,6 @@
     <link href="remote/css/sass/style.css" rel="stylesheet">
     <link href="remote/css/sass/style-modals.css" rel="stylesheet">
     <link href="remote/css/sass/samir.css" rel="stylesheet">
-
     <!-- DO NOT REMOVE BEFORE TELLING GABRIELLE -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="remote/js/materialize.min.js"></script>
@@ -168,6 +173,8 @@
     <script src="remote/lib/angular-payments/angular-payments.js"></script>
     <script src="remote/lib/progressbar/progressbar.min.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
+    
+    
     <script src="remote/lib/ngMoment/moment.min.js"></script>
     <script src="remote/lib/ngMoment/ngMoment.min.js"></script>
     <script src="remote/lib/ngElastic/elastic.js"></script>
@@ -215,6 +222,8 @@
    <script type="text/javascript" src="remote/js/shared/stats.js"></script>
     <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
     <script type="text/javascript" src="remote/lib/facebook/facebookConnectPlugin.js"></script>
+    <script src="remote/lib/scroll/scrollReveal.js"></script>
+        <script src="remote/lib/scroll/fox-scrollReveal.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
     <!-- <script src="lib/facebook/openfb.js"></script>
@@ -395,6 +404,11 @@
     <script type="text/javascript" src="remote/js/controllers/util/CardList.ctrl.js"></script>
 
 
+    <script>
+
+      window.sr = new scrollReveal();
+
+    </script>
 <!--
     <script type="text/javascript">
     var map;

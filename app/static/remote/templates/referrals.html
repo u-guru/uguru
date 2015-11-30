@@ -15,13 +15,13 @@
 					<ul id="referrals-stats" class="ugrid-2">
 						<li>
 							<div>
-								<h1>0</h1>
+								<h1>{{user.first_degree_referrals}}</h1>
 								<span>1st Degree<br/>Referrals</span>
 							</div>
 						</li>
 						<li>
 							<div>
-								<h1>0</h1>
+								<h1>{{user.second_degree_referrals}}</h1>
 								<span>2nd Degree<br/>Referrals</span>
 							</div>
 						</li>
@@ -29,14 +29,14 @@
 						</li>
 					</ul>
 					<ul class="sidebar-layout-list">
-						<li ng-repeat='referred_user in user.referred_users'>
-							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+						<li ng-if='user.referrals' ng-repeat='referred_user in user.referrals'>
+							<span class="user-icon" style="background-image: url({{referred_user.receiver.profile_url}});"></span>
 							<div>
-								<h3>You referred <b>{{user.name}}</b>.</h3>
-								<span>He referred <b>4 others</b>.</span>
+								<h3>You referred <b>{{referred_user.receiver.name}}</b>.</h3>
+								<span>Since then, {{referred_user.receiver.name}} referred <b>{{referred_user.receiver.first_degree_referrals}} others</b>.</span>
 							</div>
 						</li>
-						<li ng-if='!user.referred_users || !user.referred_users.length'>
+						<li ng-if='!user.referrals || !user.referrals.length'>
 							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
 							<div>
 								<h3> You referred <b>Jon Smith</b>.</h3>

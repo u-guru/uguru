@@ -2277,49 +2277,45 @@ input[type=range] {
 		background: white;
 		cursor: pointer;
 	}
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-	@include round;
-	width: 100%;
-	height: 10px;
-	cursor: pointer;
-	background: rgba(white,.2);
-}
-
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: rgba(white,.4);
-}
-
-input[type=range]::-moz-range-track {
-	@include round;
-	width: 100%;
-	height: 10px;
-	cursor: pointer;
-	background: rgba(white,.2);
-}
-
-input[type=range]::-ms-track {
-	width: 100%;
-	height: 10px;
-	cursor: pointer;
-	background: transparent;
-	border: 0;
-	color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-	@include round;
-	background: rgba(white,.3);
-}
-input[type=range]:focus::-ms-fill-lower {
-  background: rgba(white,.5);
-}
-input[type=range]::-ms-fill-upper {
-	@include round;
-	background: rgba(white,.2);
-}
-input[type=range]:focus::-ms-fill-upper {
-	background: rgba(white,.4);
+	&::-webkit-slider-runnable-track {
+		@include round;
+		width: 100%;
+		height: 10px;
+		cursor: pointer;
+		background: rgba(white,.2);
+	}
+	&:focus::-webkit-slider-runnable-track {
+	  background: rgba(white,.4);
+	}
+	&::-moz-range-track {
+		@include round;
+		width: 100%;
+		height: 10px;
+		cursor: pointer;
+		background: rgba(white,.2);
+	}
+	&::-ms-track {
+		width: 100%;
+		height: 10px;
+		cursor: pointer;
+		background: transparent;
+		border: 0;
+		color: transparent;
+	}
+	&::-ms-fill-lower {
+		@include round;
+		background: rgba(white,.3);
+	}
+	&:focus::-ms-fill-lower {
+	  background: rgba(white,.5);
+	}
+	&::-ms-fill-upper {
+		@include round;
+		background: rgba(white,.2);
+	}
+	&:focus::-ms-fill-upper {
+		background: rgba(white,.4);
+	}
 }
 
 // MISC

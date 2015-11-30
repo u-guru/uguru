@@ -1,4 +1,4 @@
-<ion-view id='desktop-guru-home'class='bg-charcoal'>
+<ion-view id='desktop-guru-home'class='bg-charcoal' data-sr-container>
 	<main class="desktop-mode" ng-if='desktopMode'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default flex guru-home-container">
@@ -25,6 +25,12 @@
 			<ion-pane id='cta-modal-signup' class='full-xy hide-display cta-modal'>
 				<div class='full-xy absolute top-0 left-0 guru-desktop-forms'>
 					<div class="main" ng-controller='SignupController' ng-include="img_base + BASE + 'templates/desktop.login.forms.container.html'"></div>
+					<div class='full-x absolute bottom-25' id='cta-footer-switch-link'>
+		                    <a ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode && !root.vars.forgotPassword'> <strong>Have an account?</strong> </a>
+	                    	<a ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>
+	                    		<strong>Create an account</strong>
+	                    	</a>
+		            </div>
 				</div>
 			</ion-pane>
 
@@ -61,7 +67,7 @@
 			<div class="guru-home-tiles">
 				<div class="home-tiles-top">
 					<div class="home-tiles-ranking">
-						<div>
+						<div data-sr="enter top, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 							    <rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -81,27 +87,21 @@
 							</div>
 						</div>
 					</div>
-					<div class="home-tiles-rating">
-						<div>
+					<div class="home-tiles-rating" >
+						<div data-sr="enter left, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 							    <rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
 							<div>
 								<a>
 									<h3>Avg Rating</h3>
-									<h1 id='home-tiles-ranking'>{{user.guru_avg_rating}}</i></h1>
+									<h1 id='home-tiles-ranking'>{{user.guru_avg_rating}}</h1>
 									<h5>{{user.guru_ratings.length}} reviews</h5>
 								</a>
 							</div>
-							<!-- Come back to later -->
-							<!-- <div>
-								<a>
-									<h3>Add Event</h3>
-									<svg viewBox="0 0 100 100"  ng-include="img_base + BASE + 'templates/svg.icon.calendar.html'"> </svg>
-								</a>
-							</div> -->
+
 						</div>
-						<div>
+						<div data-sr="enter left, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -114,9 +114,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="home-tiles-bottom">
-					<div class="home-tiles-stats">
-						<div>
+				<div class="home-tiles-bottom" >
+					<div class="home-tiles-stats" >
+						<div data-sr="enter bottom, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -131,7 +131,7 @@
 								</div>
 							</div>
 						</div>
-						<div>
+						<div data-sr="enter bottom, roll 45deg, over 2s">
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -146,7 +146,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="home-tiles-upcoming">
+					<div class="home-tiles-upcoming" data-sr="enter bottom, roll 45deg, over 2s">
 						<div>
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>

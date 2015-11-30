@@ -131,6 +131,8 @@ section {
           stroke-linejoin: round; }
         .side-menu-list .list-item .list-item-icon svg circle {
           stroke-dasharray: 3px, 10px; }
+    .side-menu-list .list-item#top-menu-discover svg circle {
+      stroke-dasharray: 0 !important; }
     .side-menu-list .list-item .list-item-detail {
       padding: 0; }
   .side-menu-list .list-item-profile {
@@ -324,6 +326,8 @@ section {
 /* ---------- SETTING UP APP */
 .access-view {
   background: #69B3A5; }
+  .access-view input {
+    cursor: text; }
   .access-view #access-data {
     height: calc(100% - 64px); }
   .access-view #access-logo {

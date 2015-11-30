@@ -42,6 +42,30 @@
 						</a>
 					</div>
 				</div>
+				<div class="ugrid-2 p10y">
+					<div class='relative desktop-notifications-grid-item'>
+						<h2>Text Notifications &nbsp;&nbsp;&nbsp;&nbsp;
+						<a class='top-50 absolute full-x'ng-click='toggleTextNotifications()'>
+							<svg viewBox="0 0 100 100" style='height:50px;width:50px;'>
+                                <circle class='notifications-circle ng-class:{"active":user.text_notifications}' cx="50" cy="50" r="36"></circle>
+                                <path class='notifications-path ng-class:{"active":user.text_notifications}' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                            </svg>
+						</a>
+						</h2>
+						<p><small ng-if='user.phone_number'>{{user.phone_number}}</small></p>
+					</div>
+					<div class='relative desktop-notifications-grid-item'>
+						<h2>Email Notifications &nbsp;&nbsp;&nbsp;&nbsp;
+						<a class='top-50 absolute full-x'ng-click='toggleEmailNotifications()'>
+							<svg viewBox="0 0 100 100" style='height:50px; width:50px;'>
+                                <circle class='notifications-circle ng-class:{"active":user.email_notifications}' cx="50" cy="50" r="36"></circle>
+                                <path class='notifications-path ng-class:{"active":user.email_notifications}' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                            </svg>
+						</a>
+						</h2>
+						<p><small>{{user.email}}</small></p>
+					</div>
+				</div>
 				<div>
 					<a ng-click='openModal("university")'>
 						<h2>University</h2>

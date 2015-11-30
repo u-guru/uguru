@@ -63,9 +63,62 @@
       .desktop-mode .desktop-header .skip-button:hover, .desktop-mode .desktop-header .skip-button:focus, .desktop-mode .desktop-header .skip-button:active {
         filter: alpha(opacity=100);
         opacity: 1; }
+  .desktop-mode #support-button {
+    border-radius: 1000px;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    width: 48px;
+    height: 48px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.9); }
+    .desktop-mode #support-button svg {
+      fill: none;
+      stroke: #2B3234;
+      stroke-width: 7px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
+    .desktop-mode #support-button:before, .desktop-mode #support-button:after {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .desktop-mode #support-button:before {
+      content: "";
+      right: -20px;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-right-color: rgba(255, 255, 255, 0.9); }
+    .desktop-mode #support-button:after {
+      content: "Support";
+      right: -108px;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #40484B; }
+    .desktop-mode #support-button:hover, .desktop-mode #support-button:focus {
+      background: #8bc4b9; }
+      .desktop-mode #support-button:hover:before, .desktop-mode #support-button:hover:after, .desktop-mode #support-button:focus:before, .desktop-mode #support-button:focus:after {
+        filter: alpha(opacity=100);
+        opacity: 1; }
+    .desktop-mode #support-button:active {
+      background: #69B3A5; }
   .desktop-mode #top-bar {
     height: 64px;
-    background: #958B8E;
+    background: #69B3A5;
     padding: 0 15px; }
     .desktop-mode #top-bar div:nth-child(2) {
       -ms-box-orient: horizontal;
@@ -93,20 +146,100 @@
         -webkit-align-items: center;
         align-items: center;
         position: relative;
+        z-index: 13;
+        background: #69B3A5;
         margin: 0 auto;
         width: 100%;
         max-width: 1280px;
         height: 100%; }
-        .desktop-mode #top-bar div:nth-child(2) div.active {
-          z-index: 13;
-          background: #958B8E; }
+      .desktop-mode #top-bar div:nth-child(2) a:hover, .desktop-mode #top-bar div:nth-child(2) a:focus {
+        filter: alpha(opacity=80);
+        opacity: 0.8; }
+      .desktop-mode #top-bar div:nth-child(2) a:active {
+        filter: alpha(opacity=50);
+        opacity: 0.5; }
       .desktop-mode #top-bar div:nth-child(2) #top-logo {
         display: block;
-        width: calc(100% - 90px);
+        width: calc(100% - 212px);
         height: 100%; }
         .desktop-mode #top-bar div:nth-child(2) #top-logo svg {
           height: 100%;
           padding: 20px 0 15px; }
+      .desktop-mode #top-bar div:nth-child(2) .top-tooltip {
+        filter: alpha(opacity=100) !important;
+        opacity: 1 !important;
+        position: relative;
+        height: 64px;
+        width: 64px; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip.hide-tooltip:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip.hide-tooltip:after {
+          display: none; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:after {
+          -webkit-transition: all 0.15s ease-in-out;
+          -o-transition: all 0.15s ease-in-out;
+          -ms-transition: all 0.15s ease-in-out;
+          -moz-transition: all 0.15s ease-in-out;
+          transition: all 0.15s ease-in-out;
+          filter: alpha(opacity=0);
+          opacity: 0;
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+          z-index: 10; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:before {
+          content: "";
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border: 10px solid transparent;
+          border-bottom-color: rgba(255, 255, 255, 0.9); }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:after {
+          bottom: -40px;
+          padding: 10px 15px;
+          background: rgba(255, 255, 255, 0.9);
+          font-size: 14px;
+          font-weight: 600;
+          text-transform: uppercase;
+          color: #40484B; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover:after, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus:after {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover svg, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus svg {
+          filter: alpha(opacity=80);
+          opacity: 0.8; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:active svg {
+          filter: alpha(opacity=50);
+          opacity: 0.5; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip svg {
+          -webkit-transition: all 0.15s ease-in-out;
+          -o-transition: all 0.15s ease-in-out;
+          -ms-transition: all 0.15s ease-in-out;
+          -moz-transition: all 0.15s ease-in-out;
+          transition: all 0.15s ease-in-out;
+          width: 100%;
+          height: 100%;
+          padding: 12px; }
+          .desktop-mode #top-bar div:nth-child(2) .top-tooltip svg path {
+            fill: none;
+            stroke: white;
+            stroke-width: 5px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+      .desktop-mode #top-bar div:nth-child(2) #cta-box-referrals {
+        margin-right: 3px; }
+        .desktop-mode #top-bar div:nth-child(2) #cta-box-referrals:after {
+          content: "Referrals"; }
+      .desktop-mode #top-bar div:nth-child(2) #top-menu-discover {
+        margin-right: -9px; }
+        .desktop-mode #top-bar div:nth-child(2) #top-menu-discover:after {
+          content: "Visibility"; }
+        .desktop-mode #top-bar div:nth-child(2) #top-menu-discover.active svg circle {
+          fill: white; }
+        .desktop-mode #top-bar div:nth-child(2) #top-menu-discover.active svg path {
+          stroke: #69B3A5; }
       .desktop-mode #top-bar div:nth-child(2) #top-settings {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -168,7 +301,7 @@
         z-index: 11;
         right: 0;
         top: 64px;
-        background: #958B8E;
+        background: #69B3A5;
         overflow: hidden; }
         .desktop-mode #top-bar div:nth-child(2) #top-menu-links.active {
           -webkit-transition: all 0.15s ease-in-out;
@@ -224,24 +357,15 @@
             .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus {
               background: white; }
               .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
-                color: #958B8E; }
+                color: #69B3A5; }
               .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
-                stroke: #958B8E; }
-            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active svg circle {
-              fill: white; }
-            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active svg path {
-              stroke: #958B8E; }
-            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:hover svg circle, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:active svg circle, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:focus svg circle {
-              stroke: #958B8E;
-              fill: #958B8E; }
-            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:hover svg path, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:active svg path, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:focus svg path {
-              stroke: white; }
+                stroke: #69B3A5; }
           .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a {
             background: rgba(255, 255, 255, 0.75); }
             .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a span {
-              color: #958B8E; }
+              color: #69B3A5; }
             .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a svg {
-              stroke: #958B8E; }
+              stroke: #69B3A5; }
           .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:focus {
             background: white; }
     .desktop-mode #top-bar .top-request-button #top-logo {
@@ -267,7 +391,7 @@
     height: 128px;
     width: 100%;
     max-width: 960px;
-    background: #958B8E; }
+    background: #69B3A5; }
     .desktop-mode .progress-bottom .progress {
       border-radius: 0; }
       .desktop-mode .progress-bottom .progress::-webkit-progress-value, .desktop-mode .progress-bottom .progress span {
@@ -1231,8 +1355,8 @@
       margin-top: 0;
       margin-bottom: 30px; }
       #desktop-settings .main > div .input-field input:focus:not([readonly]) {
-        border-bottom: 1px solid #958B8E !important;
-        box-shadow: 0 1px 0 0 #958B8E !important; }
+        border-bottom: 1px solid #69B3A5 !important;
+        box-shadow: 0 1px 0 0 #69B3A5 !important; }
       #desktop-settings .main > div .input-field label:after {
         width: 500px; }
     #desktop-settings .main > div .ugrid-2 {
@@ -1256,7 +1380,7 @@
     top: 0;
     height: 64px;
     padding: 7px 10px;
-    background: #958B8E;
+    background: #69B3A5;
     max-width: none; }
   #desktop-messaging .main,
   #desktop-messaging .main.mobile-messages-container {
@@ -1292,13 +1416,15 @@
           #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a {
             display: block;
             padding: 15px; }
-            #desktop-messaging .main #messenger #messenger-sidebar ul li a.active, #desktop-messaging .main #messenger #messenger-sidebar ul li a:active,
+            #desktop-messaging .main #messenger #messenger-sidebar ul li a.active, #desktop-messaging .main #messenger #messenger-sidebar ul li a:active, #desktop-messaging .main #messenger #messenger-sidebar ul li a.active,
             #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a.active,
-            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:active {
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:active,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a.active {
               background: rgba(241, 241, 241, 0.2); }
-            #desktop-messaging .main #messenger #messenger-sidebar ul li a:hover, #desktop-messaging .main #messenger #messenger-sidebar ul li a:focus,
+            #desktop-messaging .main #messenger #messenger-sidebar ul li a:hover, #desktop-messaging .main #messenger #messenger-sidebar ul li a:focus, #desktop-messaging .main #messenger #messenger-sidebar ul li a.active,
             #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:hover,
-            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:focus {
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:focus,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a.active {
               background: rgba(241, 241, 241, 0.4); }
         #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search,
         #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search {
@@ -1337,30 +1463,35 @@
             font-size: 16px;
             background: #F1F1F1;
             border: 0; }
-            #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus,
+            #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input.active,
             #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active,
             #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover,
-            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus {
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus,
+            #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input.active {
               background: white; }
-              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-webkit-input-placeholder,
+              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-webkit-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input.active::-webkit-input-placeholder,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active::-webkit-input-placeholder,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-webkit-input-placeholder,
-              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-webkit-input-placeholder {
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-webkit-input-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input.active::-webkit-input-placeholder {
                 color: #757575; }
-              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-moz-placeholder,
+              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input.active:-moz-placeholder,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active:-moz-placeholder,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-moz-placeholder,
-              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-moz-placeholder {
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-moz-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input.active:-moz-placeholder {
                 color: #757575; }
-              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-moz-placeholder,
+              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-moz-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input.active::-moz-placeholder,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active::-moz-placeholder,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover::-moz-placeholder,
-              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-moz-placeholder {
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus::-moz-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input.active::-moz-placeholder {
                 color: #757575; }
-              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-ms-input-placeholder,
+              #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:active:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-ms-input-placeholder, #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search input.active:-ms-input-placeholder,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:active:-ms-input-placeholder,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:hover:-ms-input-placeholder,
-              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-ms-input-placeholder {
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input:focus:-ms-input-placeholder,
+              #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search input.active:-ms-input-placeholder {
                 color: #757575; }
           #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search label:hover + input,
           #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar #messenger-sidebar-search label:hover + input {
@@ -1670,7 +1801,7 @@
                   text-align: right; }
                 #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-message,
                 #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single.right .message-single-content .message-single-message {
-                  background: rgba(85, 164, 183, 0.1); }
+                  background: rgba(85, 164, 183, 0.2); }
           #desktop-messaging .main #messenger #messenger-content #message-container #message-box,
           #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box {
             position: relative; }
@@ -2294,7 +2425,7 @@
     padding: 15px;
     font-weight: 600; }
     #desktop-request-guru header h2 span:first-child {
-      color: #958B8E; }
+      color: #69B3A5; }
     #desktop-request-guru header h2 span:last-child {
       font-size: 32px;
       font-weight: 700; }
@@ -2338,12 +2469,12 @@
   #desktop-request-guru .request-form .request-form-map {
     height: 305px; }
     #desktop-request-guru .request-form .request-form-map > div {
-      border-color: #958B8E; }
+      border-color: #69B3A5; }
       #desktop-request-guru .request-form .request-form-map > div ul {
-        background: #958B8E; }
+        background: #69B3A5; }
   #desktop-request-guru .request-form .request-form-date > div {
-    border-color: #958B8E;
-    color: #958B8E; }
+    border-color: #69B3A5;
+    color: #69B3A5; }
   #desktop-request-guru .request-form .request-form-upload {
     padding: 30px 0 0; }
     #desktop-request-guru .request-form .request-form-upload .input {

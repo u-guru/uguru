@@ -131,8 +131,16 @@ angular.module('uguru.desktop.controllers')
                   var indexCTAButton = nestedCTACloseButtons[j];
 
                   indexCTAButton.addEventListener('click', function() {
+                    if (indexCTAButton.innerHTML && indexCTAButton.innerHTML === "Save") {
+                      LoadingService.showAmbig('Saving...', 1500);
+                      $timeout(function() {
+                        closeCTAModal();
+                      }, 750)
+                    } else {
+                      closeCTAModal();
+                    }
+
                     $scope.calculateProgress();
-                    closeCTAModal();
                     modal_elem.classList.remove('show');
                   });
                 }

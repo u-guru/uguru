@@ -284,7 +284,10 @@ var onTransitionStartCarousel = function(index) {
         $('#top-school-banner').css('opacity', 1);
     }
     if (index === 1) {
-
+        console.log('transitioning to slide 2 -- home page')
+        if (initParallaxScene2) {
+            initParallaxScene2()
+        }
     }
     if (index === 2) {
          /* currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));

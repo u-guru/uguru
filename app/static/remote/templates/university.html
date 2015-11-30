@@ -37,10 +37,8 @@
 			                            <img image-saver ng-src="{{ university.svg_url || university.seal_url || university.logo_url}}" alt="" />
 			                        </span>
 			                        <span class="school-name">
-			                            <span class='school-title'> {{university.name}}</span>
-			                            <!-- <span ng-if="university.name.length <= 16 || !university.school_casual_name" class="school-title">{{university.name}}</span> -->
-			                            <!-- Samir Will come back to this -->
-			                            <!-- <span ng-if="university.name.length > 16 &&  university.school_casual_name" class="school-title">{{university.school_casual_name}}</span> -->
+			                            <span class='school-title' ng-if='university.name.length && (!university.short_name || university.name.length < 24)'> {{university.name}}</span>
+			                            <span class='school-title' ng-if='university.name.length >= 24 && university.short_name.length'> {{university.short_name}}</span>
 			                            <span class="school-location">
 			                                <span class="school-city">{{university.city}},</span>
 			                                <span class="school-state">{{university.state}}</span>
@@ -82,7 +80,8 @@
 								</span>
 								<span ng-if='!location.settings.isActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
 									<b>
-  							            <span class="school-title">{{university.name}}</span>
+  							            <span class='school-title' ng-if='university.name.length && (!university.short_name || university.name.length < 24)'> {{university.name}}</span>
+			                            <span class='school-title' ng-if='university.name.length >= 24 && university.short_name.length'> {{university.short_name}}</span>
               							<i>
               								<span class="school-city">{{university.city}},</span>
               								<span class="school-state">{{university.state}}</span>

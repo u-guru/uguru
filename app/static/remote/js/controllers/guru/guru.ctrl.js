@@ -196,11 +196,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         var animateProgressCircle = function(circle ,percentage) {
           var index = 0
+          value = 0;
           setInterval(function() {
               if (index > percentage) {
                 return
               }
-              circle.animate(index / 100, function() {
+              var value = index / 100
+              if (value >= 50) {
+                return;
+              }
+              circle.animate(value, function() {
                   $scope.page.guru_ranking = index
               });
               index ++
@@ -236,13 +241,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               step: function(state, bar) {
                   var val = (bar.value() * 100).toFixed(0);
                   bar.setText(val)
-                  // bar.setText((bar.value() * 100).toFixed(0));
+                // bar.setText((bar.value() * 100).toFixed(0));
               }
 
           });
           line.text = document.getElementById(percentTextId);
           return line;
-        }
+      }
 
         $scope.initMobileModals = function() {
           console.log('initializing modals..');
@@ -357,84 +362,56 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.$on('$ionicView.enter', function() {
 
 
+          //desktop version
           if ($scope.desktopMode) {
             initCTA();
           }
-
-
+          
+          //desktop version but not loggedd in 
           if ($scope.desktopMode && !$scope.user.id) {
+            $timeout(function() {
+              LoadingService.showAmbig()
+            }, 500)
             $timeout(function() {
               if (!$scope.root.vars.page_cache.showSignupCTA) {
                 $scope.root.vars.page_cache.showSignupCTA = true;
                 $scope.launchCtaDict['cta-box-signup']();
                 $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
               }
-            }, 1000)
+              LoadingService.hide();
+            }, 2000)
           }
 
 
+
+          //mobile mode
           if (!$scope.referralsModal && !$scope.desktopMode) {
             $scope.initMobileModals();
-          }
-
-          if (!haveProgressBarsBeenInitialized || !$scope.guruRankingCircle) {
+            !haveProgressBarsBeenInitialized || $scope.initializeHorizontalProgressBars();
             $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-            $timeout(function() {
-              $scope.user.guru_ranking = actualRankingValue;
-              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
-            }, 2500)
-          }
-        });
-
-        // GABRIELLE UN COMMENT THE SECTION BELOW
-        $scope.$on('$ionicView.beforeEnter', function() {
-
-          if (!$scope.referralsModal && !$scope.desktopMode) {
-            $scope.initMobileModals();
+             animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
           }
 
+          // mobile tech instantiatio
           if (DeviceService.isIOSDevice()) {
             DeviceService.ios.setStatusBarLightText();
           }
 
+        });
 
-          $scope.refreshTipsAndRanking($scope.user);
-          // Weird this is the one causing the view css issue[Profile photo move to left side in 0.5 sec and move back] at edit guru profile
-          $ionicSlideBoxDelegate.update();
-          // console.error("ion view enter guru ctrl")
+        var launchWelcomeToGuruMode = function() {
           $timeout(function() {
-
-            if (!haveProgressBarsBeenInitialized()) {
-              $timeout(function() {
-
-
-                if (!$scope.desktopMode) {
-                  $scope.initializeHorizontalProgressBars();
-                }
-
-              }, 500)
-            }
-
-          }, 1000)
-
-
-        })
+              appOnboardingObj = $localstorage.getObject('appOnboarding');
+              if (!appOnboardingObj) {
+                checkIsFirstTimeGuruMode(true);
+              }
+            }, 250)
+        }
 
         var appOnboardingObj;
         $scope.$on('$ionicView.afterEnter', function() {
 
-              $timeout(function() {
-                appOnboardingObj = $localstorage.getObject('appOnboarding');
-              }, 250)
-
-              // wait til the bar is loaded
-              $timeout(function() {
-                if (!appOnboardingObj) {
-                  checkIsFirstTimeGuruMode(true);
-                }
-              }, 3000)
         });
-
   }
 
 ]);

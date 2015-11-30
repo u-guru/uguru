@@ -3,10 +3,8 @@ var LOCAL = _local || false; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
 
-// isAdmin = true;
-
-var BASE_URL = 'https://www.uguru.me/production/app/';
-var REST_URL = 'https://www.uguru.me';
+var BASE_URL = 'https://uguru.me/production/app/';
+var REST_URL = 'https://uguru.me';
 
 var BASE = '';
 var img_base = '';
@@ -29,7 +27,7 @@ var stats = new Stats();
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB', 'fox.scrollReveal'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -204,6 +202,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.referrals', {
     url:'/referrals',
     templateUrl: BASE + 'templates/referrals.html'
+  }).
+  state('root.modal-test', {
+    url:'/modal-test',
+    templateUrl: BASE + 'templates/guru.balance.container.html'
   }).
   state('root.timer', {
     url:'/timer',
