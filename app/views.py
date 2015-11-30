@@ -37,6 +37,13 @@ def catch_all(path):
     print request.url.replace('sam', '')
     return redirect(url_for('new_home_page'))
 
+@app.route('/', defaults={'path': ''}, subdomain='www')
+@app.route('/<path:path>', subdomain='www')
+def catch_all(path):
+    if 'www.' in request.url:
+        return redirect(request.url.replace('www.', ''))
+    return redirect(url_for('new_home_page'))
+
 @app.route('/admin/stats/universities/info')
 def admin_statistics_universities_info():
     return render_template("admin/admin.stats.universities.info.html")
