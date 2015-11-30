@@ -3255,6 +3255,7 @@ class AdminOneUniversityView(restful.Resource):
                     abort(401)
                 print banner_src
                 u.banner_url = banner_src
+                u.banner_url_confirmed = True
 
 
             if 'latitude' in request.json:

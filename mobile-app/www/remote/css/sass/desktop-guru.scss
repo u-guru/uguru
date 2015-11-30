@@ -1000,10 +1000,10 @@
 							font-weight: 700;
 						}
 						.profile-course-price-edit {
+							padding-top: 52px;
 							&:not(.active) {
 								display: none;
 							}
-							padding-top: 52px;
 							input[type=range] {
 								&::-webkit-slider-thumb {
 									position: relative;
