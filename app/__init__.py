@@ -53,7 +53,6 @@ app.config.setdefault('MANDRILL_WEBHOOKS_URL', 'https://uguru-rest-test.herokuap
 try:
     if os.environ.get('PRODUCTION'):
         app.config.update(SERVER_NAME='uguru.me')
-        app.url_map.default_subdomain = "www"
 except:
     print "some shit went wrong on production"
 
