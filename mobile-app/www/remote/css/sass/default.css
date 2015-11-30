@@ -688,7 +688,7 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 }
 
 .txt-gold {
-  color: #f7cd63 !important;
+  color: #F9D57B !important;
 }
 
 .txt-moola {
@@ -1160,40 +1160,40 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 }
 
 [class*="bg-gold"] {
-  background: #f7cd63;
+  background: #F9D57B;
   color: white;
 }
 
 [class*="bg-gold"][class*="-05p"] {
-  background: rgba(247, 205, 99, 0.05);
+  background: rgba(249, 213, 123, 0.05);
 }
 
 [class*="bg-gold"][class*="-10p"] {
-  background: rgba(247, 205, 99, 0.1);
+  background: rgba(249, 213, 123, 0.1);
 }
 
 [class*="bg-gold"][class*="-20p"] {
-  background: rgba(247, 205, 99, 0.2);
+  background: rgba(249, 213, 123, 0.2);
 }
 
 [class*="bg-gold"][class*="-25p"] {
-  background: rgba(247, 205, 99, 0.25);
+  background: rgba(249, 213, 123, 0.25);
 }
 
 [class*="bg-gold"][class*="-50p"] {
-  background: rgba(247, 205, 99, 0.5);
+  background: rgba(249, 213, 123, 0.5);
 }
 
 [class*="bg-gold"][class*="-75p"] {
-  background: rgba(247, 205, 99, 0.75);
+  background: rgba(249, 213, 123, 0.75);
 }
 
 [class*="bg-gold"][class*="-80p"] {
-  background: rgba(247, 205, 99, 0.8);
+  background: rgba(249, 213, 123, 0.8);
 }
 
 [class*="bg-gold"][class*="-90p"] {
-  background: rgba(247, 205, 99, 0.9);
+  background: rgba(249, 213, 123, 0.9);
 }
 
 [class*="bg-moola"] {
@@ -1827,14 +1827,14 @@ button.active, button.activated, button:active, button:hover, button:focus {
 }
 
 [class*="btn-ghost"][class*="btn-ghost-gold"] {
-  color: #f7cd63;
+  color: #F9D57B;
 }
 
 [class*="btn-ghost"][class*="btn-ghost-gold"].activated, [class*="btn-ghost"][class*="btn-ghost-gold"]:active, [class*="btn-ghost"][class*="btn-ghost-gold"]:hover, [class*="btn-ghost"][class*="btn-ghost-gold"]:focus {
   filter: alpha(opacity=100);
   opacity: 1;
-  border: 2px solid #f7cd63;
-  background: #f7cd63;
+  border: 2px solid #F9D57B;
+  background: #F9D57B;
   color: white;
 }
 
@@ -2426,7 +2426,7 @@ button.disabled {
 
 .checklist-gold li > span input:checked + span,
 .checklist-bg-gold li > span input:checked + span {
-  background-color: #f7cd63;
+  background-color: #F9D57B;
 }
 
 .checklist-moola li > span input:checked + span,
@@ -2528,7 +2528,7 @@ button.disabled {
 }
 
 .highlight-gold li input:checked + label {
-  background-color: #f7cd63;
+  background-color: #F9D57B;
 }
 
 .highlight-moola li input:checked + label {
@@ -2752,7 +2752,7 @@ progress[class*="bg-orange"]::-webkit-progress-bar, div[class*="progress"][class
 }
 
 progress[class*="bg-gold"]::-webkit-progress-bar, div[class*="progress"][class*="bg-gold"]::-webkit-progress-bar {
-  background: #f7cd63;
+  background: #F9D57B;
 }
 
 progress[class*="txt-white"]::-webkit-progress-value, progress[class*="txt-white"] span, div[class*="progress"][class*="txt-white"]::-webkit-progress-value, div[class*="progress"][class*="txt-white"] span {
@@ -2868,11 +2868,11 @@ progress[class*="txt-orange"]::-moz-progress-bar, div[class*="progress"][class*=
 }
 
 progress[class*="txt-gold"]::-webkit-progress-value, progress[class*="txt-gold"] span, div[class*="progress"][class*="txt-gold"]::-webkit-progress-value, div[class*="progress"][class*="txt-gold"] span {
-  background: #f7cd63;
+  background: #F9D57B;
 }
 
 progress[class*="txt-gold"]::-moz-progress-bar, div[class*="progress"][class*="txt-gold"]::-moz-progress-bar {
-  background: #f7cd63;
+  background: #F9D57B;
 }
 
 input[type=range] {
