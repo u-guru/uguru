@@ -1412,8 +1412,8 @@ section {
   top: 0;
 }
 
-.skills-view #skills-list.onboarding-list ul .bg-cerise.important::after {
-  background: #DB1988;
+.skills-view #skills-list.onboarding-list ul .bg-auburn.important::after {
+  background: #F04F54;
 }
 
 .skills-view #skills-list.onboarding-list ul .bg-orange.important::after {
@@ -1440,8 +1440,16 @@ section {
   background: #50A5DD;
 }
 
+.skills-view #skills-list.onboarding-list ul .bg-cobalt.important::after {
+  background: #7872e3;
+}
+
 .skills-view #skills-list.onboarding-list ul .bg-eggplant.important::after {
   background: #9A5BC5;
+}
+
+.skills-view #skills-list.onboarding-list ul .bg-cerise.important::after {
+  background: #DB1988;
 }
 
 .photo-view {

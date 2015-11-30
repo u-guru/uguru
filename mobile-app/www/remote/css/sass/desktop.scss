@@ -800,14 +800,14 @@
 						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
 							border-bottom-color: rgba(white,.8);
 						}
-						.bg-cerise {
+						.bg-auburn {
 							&.important, &:hover, &:focus, &:active {
 								&::after {
-									background: $cerise;
+									background: $auburn;
 								}
 							}
 							.skill-count {
-								color: $cerise;
+								color: $auburn;
 							}
 						}
 						.bg-orange {
@@ -827,7 +827,7 @@
 								}
 							}
 							.skill-count {
-								color: desaturate(darken($gold, 10%), 20%);
+								color: $gold;
 							}
 						}
 						.bg-moola {
@@ -870,6 +870,16 @@
 								color: $lake;
 							}
 						}
+						.bg-cobalt {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $cobalt;
+								}
+							}
+							.skill-count {
+								color: $cobalt;
+							}
+						}
 						.bg-eggplant {
 							&.important, &:hover, &:focus, &:active {
 								&::after {
@@ -878,6 +888,16 @@
 							}
 							.skill-count {
 								color: $eggplant;
+							}
+						}
+						.bg-cerise {
+							&.important, &:hover, &:focus, &:active {
+								&::after {
+									background: $cerise;
+								}
+							}
+							.skill-count {
+								color: $cerise;
 							}
 						}
 					}
@@ -1046,25 +1066,25 @@
 					border-bottom-color: $gold;
 				}
 				input:checked + label {
-					background: desaturate(darken($gold, 10%), 20%);
+					background: $gold;
 				}
 				svg {
 					path {
-						stroke: desaturate(darken($gold, 10%), 20%);
+						stroke: $gold;
 					}
 				}
 			}
 		}
 		button {
 			&:hover, &:focus {
-	   			border-color: desaturate(darken($gold, 10%), 20%)!important;
-	   			background: desaturate(darken($gold, 10%), 20%)!important;
+	   			border-color: $gold!important;
+	   			background: $gold!important;
 	   			color: white!important;
 	   		}
 			&:active {
 				border-color: white!important;
 				background: white!important;
-				color: desaturate(darken($gold, 10%), 20%)!important;
+				color: $gold!important;
 			}
 		}
 	}
@@ -1855,13 +1875,13 @@
 					}
 				}
 			}
-			&.bg-cerise {
+			&.bg-auburn {
 				#messenger-sidebar {
-					background: rgba($cerise, .5);
+					background: rgba($auburn, .5);
 				}
 				#messenger-content {
 					.messenger-header {
-						background: $cerise;
+						background: $auburn;
 					}
 				}
 			}
@@ -1925,6 +1945,16 @@
 					}
 				}
 			}
+			&.bg-cobalt {
+				#messenger-sidebar {
+					background: rgba($cobalt, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $cobalt;
+					}
+				}
+			}
 			&.bg-eggplant {
 				#messenger-sidebar {
 					background: rgba($eggplant, .5);
@@ -1932,6 +1962,16 @@
 				#messenger-content {
 					.messenger-header {
 						background: $eggplant;
+					}
+				}
+			}
+			&.bg-cerise {
+				#messenger-sidebar {
+					background: rgba($cerise, .5);
+				}
+				#messenger-content {
+					.messenger-header {
+						background: $cerise;
 					}
 				}
 			}

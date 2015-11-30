@@ -1163,12 +1163,12 @@
   border-bottom-color: rgba(255, 255, 255, 0.8);
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after {
-  background: #DB1988;
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:active::after {
+  background: #F04F54;
 }
 
-#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count {
-  color: #DB1988;
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn .skill-count {
+  color: #F04F54;
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after {
@@ -1184,7 +1184,7 @@
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold .skill-count {
-  color: #e4bd5d;
+  color: #F9D57B;
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after {
@@ -1219,12 +1219,28 @@
   color: #50A5DD;
 }
 
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:active::after {
+  background: #7872e3;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt .skill-count {
+  color: #7872e3;
+}
+
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after {
   background: #9A5BC5;
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant .skill-count {
   color: #9A5BC5;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after {
+  background: #DB1988;
+}
+
+#desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count {
+  color: #DB1988;
 }
 
 .subcategory {
@@ -1429,23 +1445,23 @@
 }
 
 .subcategory:nth-child(2) ul li input:checked + label {
-  background: #e4bd5d;
+  background: #F9D57B;
 }
 
 .subcategory:nth-child(2) ul li svg path {
-  stroke: #e4bd5d;
+  stroke: #F9D57B;
 }
 
 .subcategory:nth-child(2) button:hover, .subcategory:nth-child(2) button:focus {
-  border-color: #e4bd5d !important;
-  background: #e4bd5d !important;
+  border-color: #F9D57B !important;
+  background: #F9D57B !important;
   color: white !important;
 }
 
 .subcategory:nth-child(2) button:active {
   border-color: white !important;
   background: white !important;
-  color: #e4bd5d !important;
+  color: #F9D57B !important;
 }
 
 .subcategory:nth-child(5) ul li label {
@@ -2524,14 +2540,14 @@
   color: #757575;
 }
 
-#desktop-messaging .main #messenger.bg-cerise #messenger-sidebar,
-#desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-sidebar {
-  background: rgba(219, 25, 136, 0.5);
+#desktop-messaging .main #messenger.bg-auburn #messenger-sidebar,
+#desktop-messaging .main.mobile-messages-container #messenger.bg-auburn #messenger-sidebar {
+  background: rgba(240, 79, 84, 0.5);
 }
 
-#desktop-messaging .main #messenger.bg-cerise #messenger-content .messenger-header,
-#desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-content .messenger-header {
-  background: #DB1988;
+#desktop-messaging .main #messenger.bg-auburn #messenger-content .messenger-header,
+#desktop-messaging .main.mobile-messages-container #messenger.bg-auburn #messenger-content .messenger-header {
+  background: #F04F54;
 }
 
 #desktop-messaging .main #messenger.bg-orange #messenger-sidebar,
@@ -2594,6 +2610,16 @@
   background: #50A5DD;
 }
 
+#desktop-messaging .main #messenger.bg-cobalt #messenger-sidebar,
+#desktop-messaging .main.mobile-messages-container #messenger.bg-cobalt #messenger-sidebar {
+  background: rgba(120, 114, 227, 0.5);
+}
+
+#desktop-messaging .main #messenger.bg-cobalt #messenger-content .messenger-header,
+#desktop-messaging .main.mobile-messages-container #messenger.bg-cobalt #messenger-content .messenger-header {
+  background: #7872e3;
+}
+
 #desktop-messaging .main #messenger.bg-eggplant #messenger-sidebar,
 #desktop-messaging .main.mobile-messages-container #messenger.bg-eggplant #messenger-sidebar {
   background: rgba(154, 91, 197, 0.5);
@@ -2602,6 +2628,16 @@
 #desktop-messaging .main #messenger.bg-eggplant #messenger-content .messenger-header,
 #desktop-messaging .main.mobile-messages-container #messenger.bg-eggplant #messenger-content .messenger-header {
   background: #9A5BC5;
+}
+
+#desktop-messaging .main #messenger.bg-cerise #messenger-sidebar,
+#desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-sidebar {
+  background: rgba(219, 25, 136, 0.5);
+}
+
+#desktop-messaging .main #messenger.bg-cerise #messenger-content .messenger-header,
+#desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-content .messenger-header {
+  background: #DB1988;
 }
 
 #desktop-messaging .main #messenger.bg-campus #messenger-sidebar,

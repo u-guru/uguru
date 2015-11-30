@@ -1141,8 +1141,8 @@ section {
 				left: 0;
 				top: 0;
 			}
-			.bg-cerise.important::after {
-				background: $cerise;
+			.bg-auburn.important::after {
+				background: $auburn;
 			}
 			.bg-orange.important::after {
 				background: $orange;
@@ -1162,8 +1162,14 @@ section {
 			.bg-lake.important::after {
 				background: $lake;
 			}
+			.bg-cobalt.important::after {
+				background: $cobalt;
+			}
 			.bg-eggplant.important::after {
 				background: $eggplant;
+			}
+			.bg-cerise.important::after {
+				background: $cerise;
 			}
 		}
 	}
@@ -1828,9 +1834,9 @@ section {
 // BAKERY GURU PROFILE
 .bakery-guru-profile-view {
 	color: $slate;
-	background: $bakery-bg;
+	background: $beige;
 	header {
-		background: $bakery;
+		background: $auburn;
 		h1 {
 			color: white;
 			font-weight: 900;
@@ -1869,7 +1875,7 @@ section {
 						&.verified {
 							svg {
 								path:first-child {
-									fill: $bakery;
+									fill: $auburn;
 								}
 							}
 						}
@@ -1885,8 +1891,8 @@ section {
 				#profile-contact {
 					padding: 10px 0 5px;
 					button {
-						background: $bakery;
-						border-color: $bakery;
+						background: $auburn;
+						border-color: $auburn;
 						color: white;
 						font-weight: 700!important;
 					}
@@ -1907,7 +1913,7 @@ section {
 		a {
 			display: block;
 			padding-top: 15px;
-			color: $bakery;
+			color: $auburn;
 			font-size: 24px;
 			font-weight: 900;
 			text-transform: uppercase;
@@ -1927,7 +1933,7 @@ section {
 					@include flex-center;
 					width: 100%;
 					height: 100%;
-					background: $bakery;
+					background: $auburn;
 					color: white;
 					font-size: 24px;
 					font-weight: 900;
@@ -1957,7 +1963,7 @@ section {
 						background: rgba($charcoal,.2);
 						path {
 							@include opacity(.4);
-							stroke: $bakery;
+							stroke: $auburn;
 						}
 					}
 				}
@@ -1983,7 +1989,7 @@ section {
 					width: 50px;
 					height: 50px;
 					path {
-						@include svg-stroke($bakery, 5);
+						@include svg-stroke($auburn, 5);
 					}
 				}
 				div:last-child {
@@ -1998,7 +2004,7 @@ section {
 				}
 			}
 			#info-hours {
-				border-top: 1px solid $bakery;
+				border-top: 1px solid $auburn;
 			}
 		}
 	}
@@ -2029,7 +2035,7 @@ section {
 							left: 0;
 							width: 100%;
 							height: 100%;
-							background: rgba($bakery,.8);
+							background: rgba($auburn,.8);
 							font-size: 24px;
 							font-weight: 900;
 							text-transform: uppercase;
@@ -2049,7 +2055,7 @@ section {
 						}
 						h1 {
 							padding: 15px 15px 0;
-							color: $bakery;
+							color: $auburn;
 							font-size: 32px;
 							font-weight: 900;
 							text-transform: uppercase;
