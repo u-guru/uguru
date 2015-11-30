@@ -32,8 +32,9 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    if 'www' in request.url:
+    if 'www.' in request.url:
         return redirect(request.url.replace('www.', ''))
+    print request.url.replace('sam', '')
     return redirect(url_for('new_home_page'))
 
 @app.route('/admin/stats/universities/info')
@@ -285,6 +286,9 @@ def admin_devices():
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
     user_profile_exists = User.query.filter_by(profile_code=username).all()
+    if username == "www":
+        print 'redirecting to ' + request.url.replace("www.", "")
+        return redirect(request.url.replace("www.", ""))
     if not user_profile_exists:
         return redirect(url_for('new_home_page'))
     if 'mandrill' == username and request.method == 'HEAD' or request.method == "POST":
@@ -296,9 +300,9 @@ def profile_page_new_view(username):
 def new_home_page():
     return render_template("web/index.html")
 
-@app.route('/', subdomain='www')
-def new_home_page_www():
-    return render_template("web/index.html")
+# @app.route('/', subdomain='www')
+# def new_home_page_www():
+#     return render_template("web/index.html")
 
 
 @app.route('/faq/')
