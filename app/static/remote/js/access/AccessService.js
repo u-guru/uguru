@@ -31,9 +31,10 @@ function AccessService($localstorage, University, User) {
 			}
 
 			User.checkAccess(payload).then(function(data) {
-				// var data = data.plain()
+				var data = data.plain()
 				if (success_func) {
-					success_func();
+					console.log(data);
+					success_func(data);
 				}
 
 			}, function(err) {

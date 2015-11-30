@@ -2307,12 +2307,25 @@ class UserNewView(restful.Resource):
 
             does_referral_exist = User.does_referral_exist(access_code)
 
-
-
             if not does_referral_exist and access_code != 'cool':
                 abort(401)
 
-            return json.dumps({'success':True}), 200
+            user = does_referral_exist
+
+
+            result_dict = {'success':True}
+            if user and not user.deactivated:
+                user.reactivateUser()
+                result_dict['profile_url'] = user.profile_url
+                result_dict['first_name'] = user.getFirstName()
+                result_dict['name'] = user.getFirstName()
+                result_dict['email'] = user.email
+                print user.name, user.profile_url, user.email
+                result_dict['deactivated'] = True
+
+
+
+            return json.dumps(result_dict), 200
 
         if request.json.get('email') and request.json.get('forgot_password'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
@@ -2344,6 +2357,10 @@ class UserNewView(restful.Resource):
                 ).first()
 
             if email_user:
+
+                if email_user.deactivated:
+                    abort(404)
+                    ### TODO MIXPANEL PLZ
 
                 import uuid
                 email_user.auth_token = uuid.uuid4().hex

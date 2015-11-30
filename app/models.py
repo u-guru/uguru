@@ -353,6 +353,22 @@ class User(Base):
             db_session.rollback()
             raise
 
+    def reactivateUser(self):
+        self.deactivated = False
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def deactivateUser(self):
+        self.deactivated = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
     def create_password(self, password):
         self.password = flask_bcrypt.generate_password_hash(password)
         try:
@@ -517,8 +533,8 @@ class User(Base):
     @staticmethod
     def does_referral_exist(code):
         referral_exists = User.query.filter_by(referral_code = code).all()
-        if referral_exists:
-            return True
+        if referral_exists and len(referral_exists) == 1:
+            return referral_exists[0]
         return False
 
 
@@ -1067,6 +1083,8 @@ class Campaign(Base):
 
     directory_based = Column(Boolean)
 
+    description = Column(String)
+
     university_id = Column(Integer, ForeignKey('university.id'))
     university  = relationship("University",
         uselist = False,
@@ -1075,7 +1093,21 @@ class Campaign(Base):
     )
 
 
-
+    @staticmethod
+    def init(name, university_id, description=None, directory_based=True):
+        c = Campaign()
+        c.description = description
+        c.name = name
+        c.university_id = university_id
+        c.directory_based = directory_based
+        c.time_created = datetime.now()
+        try:
+            db_session.add(c)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return c
 
 
 
@@ -2393,6 +2425,30 @@ class Recipient(Base):
         backref = 'recipients'
     )
     admin_account = Column(Boolean, default = False)
+
+    @staticmethod
+    def init(_dict):
+        r = Recipient()
+        r.university_id = _dict.get('university_id')
+        r.campaign_id = _dict.get('campaign_id')
+        r.admin_account = _dict.get('admin_account')
+        r.time_opened = _dict.get('time_opened')
+        r.time_sent = _dict.get('time_sent')
+        r.fb_id = _dict.get('fb_id')
+        r.title = _dict.get('title')
+        r.major = _dict.get('string')
+        r.name = _dict.get('name')
+        r.first_name = _dict.get('first_name')
+        r.last_name = _dict.get('last_name')
+        r.email = _dict.get('email')
+        try:
+            db_session.add(r)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return r
+
 
 class Skill(Base):
     __tablename__ = 'skill'

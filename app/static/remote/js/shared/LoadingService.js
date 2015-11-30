@@ -25,11 +25,17 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
         });
     }
 
-    function showMsg(message, duration) {
+    function showMsg(message, duration, callback) {
         $ionicLoading.show({
             template: '<span id="E2E-msg" class="capitalized">' + message + '</span>',
             duration: duration || 2000,
-        })
+        });
+
+        if (typeof callback !== 'undefined') {
+            $timeout(function() {
+                callback();
+            }, duration)
+        }
     }
 
     function showAmbig(text, duration, callback) {

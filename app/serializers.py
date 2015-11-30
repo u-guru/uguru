@@ -444,7 +444,7 @@ UserSerializer = {
     'first_degree_referrals': fields.Integer,
     'second_degree_referrals': fields.Integer,
     'referral_limit': fields.Integer,
-
+    'deactivated': fields.Boolean,
 }
 
 DeviceSerializer = {

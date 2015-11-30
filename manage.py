@@ -1525,3 +1525,31 @@ if arg =='mp_init':
                 from pprint import pprint
                 pprint(response)
 
+
+
+if arg =='-cc':
+    if not len(sys.argv) >= 5:
+        print 'insufficient args for create campaign arg'
+        sys.exit()
+
+    name = sys.argv[2]
+    university_id = int(sys.argv[3])
+    description = sys.argv[4]
+    from app.models import Campaign
+    c = Campaign.init(name, university_id, description)
+    print '%s successfully created' % c.name
+
+## print campaigns
+if arg =='-pca':
+    all_campaigns = Campaign.query.all()
+    for campaign in all_campaigns:
+        print campaign.id, campaign.name, campaign.description, len(campaign.recipients)
+
+## print campaigns
+if arg =='init_cal_campaign':
+    for u in User.query.all():
+        continue
+
+
+
+
