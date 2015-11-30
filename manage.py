@@ -1547,8 +1547,20 @@ if arg =='-pca':
 
 ## print campaigns
 if arg =='init_cal_campaign':
+    campaign_dict = {'1':[], '2':[], '3':[]};
     for u in User.query.all():
-        continue
+        if not u.name or u.university_id != 2307:
+            continue
+
+        if u.balance and u.university_id:
+            campaign_dict['1'].append({'first_name': u.getFirstName(), 'id':u.id, 'balance':u.balance,'courses':u.getGuruCourses(), 'email':u.email})
+        if u.total_earned and not u.balance:
+            campaign_dict['2'].append({'first_name': u.getFirstName(), 'id':u.id, 'balance':u.total_earned,'courses':u.getGuruCourses(),  'email':u.email})
+        if not u.total_earned and not u.balance and (u.guru_courses or u.guru_introduction):
+            campaign_dict['3'].append({'first_name': u.getFirstName(), 'id':u.id, 'courses':u.getGuruCourses(), 'email':u.email})
+
+    for key in campaign_dict:
+        print key, len(campaign_dict[key])
 
 
 

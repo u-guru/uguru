@@ -361,6 +361,9 @@ class User(Base):
             db_session.rollback()
             raise
 
+    def getGuruCourses(self):
+        return " ".join([course.short_name for course in self.guru_courses])
+
     def deactivateUser(self):
         self.deactivated = True
         try:
