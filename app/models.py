@@ -2900,8 +2900,15 @@ class Card(Base):
         self.is_cashout_card = is_cashout_card
 
     def __repr__(self):
-        return "<User Card '%r', '%r', '%r', '%r'>" %\
-              (self.id, self.user.name, self.card_type, \
+        card_type = 'NULL'
+        if self.is_transfer_card:
+            card_type = 'Debit Card  --- %s' % self.stripe_recipient_id
+        if self.is_bank_account:
+            card_type = 'Bank Account --- %s' % self.stripe_recipient_id
+        if self.is_payment_card:
+            card_type = 'Payment Card --- %s' % self.stripe_customer_id
+        return "\n<Card #%s: %s\n '%r', '%r', '%r'>\n\n" %\
+              (self.id, card_type, self.user.name, self.card_type, \
                 self.card_last4)
 
     @staticmethod

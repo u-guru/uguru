@@ -278,7 +278,7 @@ angular.module('uguru.user', [])
                 user.payment_cards.push(card);
             }
             //transfer cards processing
-            if (card.is_transfer_card) {
+            if (card.is_transfer_card || card.is_bank_card) {
                 user.transfer_cards.push(card);
             }
             if (card.is_default_transfer) {

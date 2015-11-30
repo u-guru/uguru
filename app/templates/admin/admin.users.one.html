@@ -184,6 +184,19 @@
                                {% endfor %}
                           </td>
                         </tr>
+                        {% if user.cards %}
+                        <tr>
+                          <td> Transfer Cards </td>
+                          <td>
+
+                            {% for card in user.cards %}
+                              <label class='label label-success'> {{card.card_last4}} - {{card.card_type}}
+                              </label>&nbsp;&nbsp;
+                            {% endfor %}
+
+                          </td>
+                        </tr>
+                        {% endif %}
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->
