@@ -168,13 +168,14 @@ gulp.task('styles', function() {
   var cssStream5 = gulp.src('www/remote/css/sass/desktop-student.css');
   var cssStream6 = gulp.src('www/remote/css/sass/desktop-guru.css');
   var cssStream7 = gulp.src('www/remote/css/sass/style.css');
-  var cssStream8 = gulp.src('www/remote/css/sass/style-modals.css');
-  var cssStream9 = gulp.src('www/remote/css/sass/samir.css');
+  var cssStream8 = gulp.src('www/remote/css/sass/style-pf.css');
+  var cssStream9 = gulp.src('www/remote/css/sass/style-modals.css');
+  var cssStream10 = gulp.src('www/remote/css/sass/samir.css');
 
 
 
   return streamqueue({ objectMode: true }, cssStream1, cssStream2, cssStream3,
-    cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9).pipe(plugins.concat('main.css'))
+    cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))

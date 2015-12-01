@@ -272,6 +272,20 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.balanceModal = modal;
           });
 
+          $ionicModal.fromTemplateUrl(BASE + 'templates/profile.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.profileModal = modal;
+          });
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/credibility.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.credibilityModal = modal;
+          });
+
           $ionicModal.fromTemplateUrl(BASE + 'templates/messaging.mobile.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
