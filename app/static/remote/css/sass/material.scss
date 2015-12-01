@@ -1163,7 +1163,7 @@ a.collection-item {
 		@include transform(scale(0));
 		pointer-events: none;
 	}
-	
+
 	// Waves Colors
 	&.waves-light .waves-ripple {
 		background: rgba(white,.45);
@@ -1315,14 +1315,14 @@ label {
 		// Invalid Input Style
 		&.invalid,
 		&:focus.invalid {
-			border-bottom: 1px solid $bakery;
-			box-shadow: 0 1px 0 0 $bakery;
+			border-bottom: 1px solid $gold;
+			box-shadow: 0 1px 0 0 $gold;
 		}
 		// Custom Error message
 		&.invalid + label:after,
 		&:focus.invalid + label:after {
 			content: attr(data-error);
-			color: $bakery;
+			color: $gold;
 			opacity: 1;
 		}
 		// Form Message Shared Styles
@@ -1598,7 +1598,7 @@ form p:last-child {
 			-ms-user-select: none;
 			/* IE10+ */
 		}
-		
+
 		/* checkbox aspect */
 		+ label:before {
 			content: '';
@@ -1793,7 +1793,7 @@ form p:last-child {
 // 	top: -3px;
 // 	transition: left .3s ease, background .3s ease, box-shadow .1s ease;
 // }
-// 
+//
 // // Switch active style
 // input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
 // 	box-shadow: 0 1px 3px 1px rgba($charcoal,.4), 0 0 0 15px transparentize($shamrock,.9);
@@ -1804,7 +1804,7 @@ form p:last-child {
 // .switch label input[type=checkbox]:checked + .lever:after {
 // 	left: 24px;
 // }
-// 
+//
 // // Disabled Styles
 // .switch input[type=checkbox][disabled] + .lever {
 // 	cursor: default;
@@ -1813,7 +1813,7 @@ form p:last-child {
 // .switch label input[type=checkbox][disabled]:checked + .lever:after {
 // 	background: $taupe;
 // }
-// 
+//
 // /***************
 //   Select Field
 // ***************/
@@ -1825,7 +1825,7 @@ form p:last-child {
 // 	input.select-dropdown {
 // 		position: relative;
 // 		cursor: pointer;
-// 		
+//
 // 		// color: $slate;
 // 		background: transparent;
 // 		border: none;
@@ -1861,7 +1861,7 @@ form p:last-child {
 // select.browser-default {
 // 	display: block;
 // }
-// 
+//
 // // Disabled styles
 // select:disabled {
 // 	color: rgba($charcoal,.3);
@@ -1884,7 +1884,7 @@ form p:last-child {
 // 	color: rgba($charcoal,.3);
 // 	background: transparent;
 // }
-// 
+//
 // /*********************
 //       File Input
 // **********************/
@@ -1920,7 +1920,7 @@ form p:last-child {
 // 		filter:alpha(opacity=0);
 // 	}
 // }
-// 
+//
 // /***************
 //       Range
 // ***************/
@@ -1973,7 +1973,7 @@ form p:last-child {
 // input[type=range]:focus {
 // 	outline: none;
 // }
-// 
+//
 // // WebKit
 // input[type=range] {
 // 	-webkit-appearance: none;
@@ -1997,12 +1997,12 @@ form p:last-child {
 // input[type=range]:focus::-webkit-slider-runnable-track {
 // 	background: #ccc;
 // }
-// 
+//
 // // FireFox
 // input[type=range] {
 // 	/* fix for FF unable to apply focus style bug  */
 // 	border: 1px solid white;
-// 	
+//
 // 	/*required for proper track sizing in FF*/
 // }
 // input[type=range]::-moz-range-track {
@@ -2018,7 +2018,7 @@ form p:last-child {
 // 	background: $shamrock;
 // 	margin-top: -5px;
 // }
-// 
+//
 // /*hide the outline behind the border*/
 // input[type=range]:-moz-focusring {
 // 	outline: 1px solid white;
@@ -2027,18 +2027,18 @@ form p:last-child {
 // input[type=range]:focus::-moz-range-track {
 // 	background: #ccc;
 // }
-// 
+//
 // // IE 10+
 // input[type=range]::-ms-track {
 // 	height: 3px;
-// 	
+//
 // 	/*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
 // 	background: transparent;
-// 	
+//
 // 	/*leave room for the larger thumb to overflow with a transparent border */
 // 	border-color: transparent;
 // 	border-width: 6px 0;
-// 	
+//
 // 	/*remove default tick marks*/
 // 	color: transparent;
 // }
@@ -2061,7 +2061,7 @@ form p:last-child {
 // input[type=range]:focus::-ms-fill-upper {
 // 	background: #ccc;
 // }
-// 
+//
 // /***************************
 //    Text Inputs + Textarea
 // ****************************/

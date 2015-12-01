@@ -148,6 +148,8 @@ angular.module('uguru.desktop.controllers')
         });
     }
 
+
+
     function initCTA() {
         var allCTABoxes = document.querySelectorAll('.cta-box') || [];
         var allCTAModels = document.querySelectorAll('.cta-modal') || [];

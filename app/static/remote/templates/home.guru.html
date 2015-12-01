@@ -6,7 +6,7 @@
 			<ion-pane id='cta-modal-credibility' class='full-xy hide-display cta-modal bg-charcoal'  ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.credibility.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
-			<ion-pane id='cta-modal-profile' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
+			<ion-pane id='cta-modal-profile show' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -34,18 +34,41 @@
 				</div>
 			</ion-pane>
 
+			<ion-pane id='cta-modal-support' class='full-xy hide-display cta-modal'>
+				<div class="profile-header">
+					<h1>Uguru Support</h1>
+					<a class="cta-modal-close close-button">
+						<svg viewBox="0 0 100 100">
+							<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+						</svg>
+					</a>
+				</div>
+				<iframe iframe-onload='closeLoader(2000)' class='full-xy' style='height:calc(100% - 100px); width:calc(100% - 100px);'name="Uguru FAQ" ng-src="https://www.uguru.me/support-only/"></iframe>
+			</ion-pane>
+
+
+
 			<div class="guru-home-greeting">
 				<div>
-					<h1>Hello {{user.first_name || 'Guru'}},<br/>
-					how are you today?</h1>
+					<h1>Hello {{user.first_name || 'Guru'}},<br/>how are you today?</h1>
 					<div class="guru-home-notifications">
 						<ul>
 							<li>
-								<a>
+								<a ng-if='false'>
 									<span class="notification-icon">
-										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.ranking.html'">
+										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">
 										</svg>
-										<span class="notification-number">{{guruHomeTips.length}}</span>
+										<!-- BIND -->
+										<span class="notification-number">0</span>
+									</span>
+									<span class="notification-type">Bill Student</span>
+								</a>
+								<a ng-if='false'>
+									<span class="notification-icon">
+										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">
+										</svg>
+										<!-- BIND -->
+										<span class="notification-number">5</span>
 									</span>
 									<span class="notification-type">Action Items</span>
 								</a>
@@ -57,7 +80,7 @@
 										</svg>
 										<span class="notification-number">{{user.student_relationships.length || 0}}</span>
 									</span>
-									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Students</span>
+									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Messages</span>
 								</a>
 							</li>
 						</ul>

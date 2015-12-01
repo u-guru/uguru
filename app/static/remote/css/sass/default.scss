@@ -567,9 +567,6 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .txt-auburn {
 	color: $auburn!important;
 }
-.txt-cerise {
-	color: $cerise!important;
-}
 .txt-orange {
 	color: $orange!important;
 }
@@ -588,8 +585,14 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .txt-lake {
 	color: $lake!important;
 }
+.txt-cobalt {
+	color: $cobalt!important;
+}
 .txt-eggplant {
 	color: $eggplant!important;
+}
+.txt-cerise {
+	color: $cerise!important;
 }
 
 [class*="weight-"] {
@@ -900,34 +903,6 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 		background: rgba($auburn, .9);
 	}
 }
-[class*="bg-cerise"] {
-	background: $cerise;
-	color: white;
-	&[class*="-05p"] {
-		background: rgba($cerise, .05);
-	}
-	&[class*="-10p"] {
-		background: rgba($cerise, .1);
-	}
-	&[class*="-20p"] {
-		background: rgba($cerise, .2);
-	}
-	&[class*="-25p"] {
-		background: rgba($cerise, .25);
-	}
-	&[class*="-50p"] {
-		background: rgba($cerise, .5);
-	}
-	&[class*="-75p"] {
-		background: rgba($cerise, .75);
-	}
-	&[class*="-80p"] {
-		background: rgba($cerise, .8);
-	}
-	&[class*="-90p"] {
-		background: rgba($cerise, .9);
-	}
-}
 [class*="bg-orange"] {
 	background: $orange;
 	color: white;
@@ -1096,6 +1071,34 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 		background: rgba($lake, .9);
 	}
 }
+[class*="bg-cobalt"] {
+	background: $cobalt;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($cobalt, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($cobalt, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($cobalt, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($cobalt, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($cobalt, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($cobalt, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($cobalt, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($cobalt, .9);
+	}
+}
 [class*="bg-eggplant"] {
 	background: $eggplant;
 	color: white;
@@ -1122,6 +1125,34 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	}
 	&[class*="-90p"] {
 		background: rgba($eggplant, .9);
+	}
+}
+[class*="bg-cerise"] {
+	background: $cerise;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($cerise, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($cerise, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($cerise, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($cerise, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($cerise, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($cerise, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($cerise, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($cerise, .9);
 	}
 }
 .bg-fb {
@@ -1408,15 +1439,6 @@ button.active, button.activated, button:active, button:hover, button:focus {
 			color: white;
 		}
 	}
-	&[class*="btn-ghost-cerise"] {
-		color: $cerise;
-		&.activated, &:active, &:hover, &:focus {
-			@include opacity(1);
-			border: 2px solid $cerise;
-			background: $cerise;
-			color: white;
-		}
-	}
 	&[class*="btn-ghost-orange"] {
 		color: $orange;
 		&.activated, &:active, &:hover, &:focus {
@@ -1471,12 +1493,30 @@ button.active, button.activated, button:active, button:hover, button:focus {
 			color: white;
 		}
 	}
+	&[class*="btn-ghost-cobalt"] {
+		color: $cobalt;
+		&.activated, &:active, &:hover, &:focus {
+			@include opacity(1);
+			border: 2px solid $cobalt;
+			background: $cobalt;
+			color: white;
+		}
+	}
 	&[class*="btn-ghost-eggplant"] {
 		color: $eggplant;
 		&.activated, &:active, &:hover, &:focus {
 			@include opacity(1);
 			border: 2px solid $eggplant;
 			background: $eggplant;
+			color: white;
+		}
+	}
+	&[class*="btn-ghost-cerise"] {
+		color: $cerise;
+		&.activated, &:active, &:hover, &:focus {
+			@include opacity(1);
+			border: 2px solid $cerise;
+			background: $cerise;
 			color: white;
 		}
 	}
@@ -1766,16 +1806,6 @@ button.disabled {
 		}
 	}
 }
-.checklist-cerise,
-.checklist-bg-cerise {
-	li {
-		> span {
-			input:checked + span {
-			    background-color: $cerise !important;
-			}
-		}
-	}
-}
 .checklist-bg-orange,
 .checklist-orange {
 	li {
@@ -1836,12 +1866,32 @@ button.disabled {
 		}
 	}
 }
+.checklist-cobalt,
+.checklist-bg-cobalt {
+	li {
+		> span {
+			input:checked + span {
+			    background-color: $cobalt !important;
+			}
+		}
+	}
+}
 .checklist-eggplant,
 .checklist-bg-eggplant {
 	li {
 		> span {
 			input:checked + span {
 			    background-color: $eggplant !important;
+			}
+		}
+	}
+}
+.checklist-cerise,
+.checklist-bg-cerise {
+	li {
+		> span {
+			input:checked + span {
+			    background-color: $cerise !important;
 			}
 		}
 	}
@@ -1899,13 +1949,6 @@ button.disabled {
 		}
 	}
 }
-.highlight-cerise {
-	li {
-		input:checked + label {
-		    background-color: $cerise;
-		}
-	}
-}
 .highlight-orange {
 	li {
 		input:checked + label {
@@ -1948,10 +1991,24 @@ button.disabled {
 		}
 	}
 }
+.highlight-cobalt {
+	li {
+		input:checked + label {
+		    background-color: $cobalt;
+		}
+	}
+}
 .highlight-eggplant {
 	li {
 		input:checked + label {
 		    background-color: $eggplant;
+		}
+	}
+}
+.highlight-cerise {
+	li {
+		input:checked + label {
+		    background-color: $cerise;
 		}
 	}
 }
@@ -2093,19 +2150,24 @@ progress, div[class*="progress"] {
 			background: $lake;
 		}
 	}
+	&[class*="bg-cobalt"] {
+		&::-webkit-progress-bar {
+			background: $cobalt;
+		}
+	}
 	&[class*="bg-eggplant"] {
 		&::-webkit-progress-bar {
 			background: $eggplant;
 		}
 	}
-	&[class*="bg-auburn"] {
-		&::-webkit-progress-bar {
-			background: $auburn;
-		}
-	}
 	&[class*="bg-cerise"] {
 		&::-webkit-progress-bar {
 			background: $cerise;
+		}
+	}
+	&[class*="bg-auburn"] {
+		&::-webkit-progress-bar {
+			background: $auburn;
 		}
 	}
 	&[class*="bg-orange"] {
@@ -2190,6 +2252,14 @@ progress, div[class*="progress"] {
 			background: $lake;
 		}
 	}
+	&[class*="txt-cobalt"] {
+		&::-webkit-progress-value, span {
+			background: $cobalt;
+		}
+		&::-moz-progress-bar {
+			background: $cobalt;
+		}
+	}
 	&[class*="txt-eggplant"] {
 		&::-webkit-progress-value, span {
 			background: $eggplant;
@@ -2198,20 +2268,20 @@ progress, div[class*="progress"] {
 			background: $eggplant;
 		}
 	}
-	&[class*="txt-auburn"] {
-		&::-webkit-progress-value, span {
-			background: $auburn;
-		}
-		&::-moz-progress-bar {
-			background: $auburn;
-		}
-	}
 	&[class*="txt-cerise"] {
 		&::-webkit-progress-value, span {
 			background: $cerise;
 		}
 		&::-moz-progress-bar {
 			background: $cerise;
+		}
+	}
+	&[class*="txt-auburn"] {
+		&::-webkit-progress-value, span {
+			background: $auburn;
+		}
+		&::-moz-progress-bar {
+			background: $auburn;
 		}
 	}
 	&[class*="txt-orange"] {

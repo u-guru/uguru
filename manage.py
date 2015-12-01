@@ -630,12 +630,16 @@ if arg == 'init_admin':
             user.is_admin = True
             user.name = account_name
             user.password = md5('launchuguru123').hexdigest()
+            user.profile_code = account_name.split(' ')[0].lower()
+            user.referral_code = account_name.split(' ')[0].lower()
             db_session.commit()
             print "Account for %s successfully updated" % user.email
         else:
             user = User(name=account_name, email=account_email, password=md5('launchuguru123').hexdigest())
             user.university_id = u.id
             user.is_admin = True
+            user.profile_code = account_name.split(' ')[0].lower()
+            user.referral_code = account_name.split(' ')[0].lower()
             db_session.commit()
             print "Account for %s successfully created" % user.email
 
@@ -1563,15 +1567,13 @@ if arg =='init_campaigns':
 
 if arg == 'update_uni':
     from app.models import University
-    from app.static.data.ben import *
-    universities = University.query.all()
-    universities = [u for u in universities if u.us_news_ranking and u.us_news_ranking < 225]
-    from time import sleep
-    for university in universities:
-        uni_dict = {'university_banner': university.banner_url, 'id': university.id}
-        response = uguruAPI(str(uni_dict['id']), uni_dict, 'put')
-        print university.name, 'updated'
-        sleep(1)
+    result_dict = {}
+    for u in University.query.all():
+        if u.banner_url_confirmed:
+            result_dict[str(u.id)] = {'banner_url': u.banner_url, 'logo_url': u.logo_url}
+    with open('updated_universities.json', 'wb') as fp:
+        json.dump(result_dict, fp, indent = 4)
+
 
 
 

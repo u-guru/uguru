@@ -2114,12 +2114,7 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
-.guru-view header::before {
-  background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
-.guru-view #guru-home-content {
-  overflow: none !important;
-  padding-bottom: 50px; }
-.guru-view #guru-ranking {
+.guru-view header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2127,22 +2122,17 @@ section {
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: relative;
-  z-index: 9;
-  width: 100%;
-  height: calc(100% - 20px);
-  margin-top: -20px;
-  padding: 0 30px; }
-  .guru-view #guru-ranking > div {
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  height: 25%;
+  padding-bottom: 15px;
+  background: #2B3234; }
+  .guru-view header h1 {
+    padding: 15px 15px 5px;
+    font-size: 28px !important;
+    line-height: 1.2;
+    text-transform: none; }
+  .guru-view header .guru-home-notifications ul {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -2153,83 +2143,84 @@ section {
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    -webkit-flex-direction: row;
-    flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-transform: scale(0.8);
-    -moz-transform: scale(0.8);
-    -ms-transform: scale(0.8);
-    -o-transform: scale(0.8);
-    transform: scale(0.8); }
-  .guru-view #guru-ranking .progressbar-text {
-    display: none; }
-  .guru-view #guru-ranking svg {
-    border-radius: 1000px; }
-    .guru-view #guru-ranking svg * {
-      stroke-linecap: round; }
-  .guru-view #guru-ranking #guru-chart {
-    position: relative;
-    width: 130px; }
-    .guru-view #guru-ranking #guru-chart #percentile {
+    width: 100%; }
+    .guru-view header .guru-home-notifications ul li {
+      padding-left: 15px;
+      padding-top: 5px; }
+      .guru-view header .guru-home-notifications ul li a {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center; }
+        .guru-view header .guru-home-notifications ul li a span {
+          display: block; }
+        .guru-view header .guru-home-notifications ul li a .notification-icon {
+          position: relative; }
+          .guru-view header .guru-home-notifications ul li a .notification-icon .notification-number {
+            border-radius: 1000px;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            padding: 0 5px;
+            height: 28px;
+            min-width: 28px;
+            background: #69B3A5;
+            border: 3px solid #2B3234;
+            font-size: 14px;
+            font-weight: 600; }
+        .guru-view header .guru-home-notifications ul li a .notification-type {
+          padding-left: 5px;
+          font-weight: 600;
+          font-size: 20px; }
+.guru-view .main {
+  height: 75%;
+  overflow: auto;
+  background: #40484B; }
+  .guru-view .main .guru-home-tiles {
+    height: 100%;
+    padding: 1px; }
+    .guru-view .main .guru-home-tiles .square {
+      height: 100%; }
+    .guru-view .main .guru-home-tiles .square + div {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%); }
-      .guru-view #guru-ranking #guru-chart #percentile #percentile-ranking {
-        position: relative;
-        font-size: 44px;
-        font-weight: 600;
-        line-height: 1;
-        text-align: center; }
-        .guru-view #guru-ranking #guru-chart #percentile #percentile-ranking::after {
-          content: "th";
-          display: block;
-          position: absolute;
-          top: -1px;
-          right: -1px;
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 28px;
-          text-transform: uppercase; }
-      .guru-view #guru-ranking #guru-chart #percentile #percentile-label {
-        font-size: 12px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        line-height: 15px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      overflow: hidden; }
+      .guru-view .main .guru-home-tiles .square + div h1 {
+        margin: 0 !important; }
+      .guru-view .main .guru-home-tiles .square + div h2, .guru-view .main .guru-home-tiles .square + div h3 {
+        padding: 15px 0;
+        font-weight: 700;
         text-transform: uppercase; }
-  .guru-view #guru-ranking #guru-stats {
-    padding-left: 30px;
-    width: calc(100% - 130px); }
-    .guru-view #guru-ranking #guru-stats h2 {
-      margin: 0 0 5px;
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase; }
-    .guru-view #guru-ranking #guru-stats .stats-bar {
-      line-height: 10px;
-      font-size: 10px;
-      height: 10px;
-      margin-bottom: 7px; }
-      .guru-view #guru-ranking #guru-stats .stats-bar svg {
-        height: 10px; }
-.guru-view .guru-tip-of-day-slide-box {
-  height: calc(100% - 36px); }
-  .guru-view .guru-tip-of-day-slide-box .card {
-    margin: 15px !important;
-    height: calc(100% - 60px);
-    padding: 0 !important;
-    background: #40484B;
-    border-radius: 5px;
-    overflow: hidden;
-    text-align: center; }
-    .guru-view .guru-tip-of-day-slide-box .card .card-content {
+        .guru-view .main .guru-home-tiles .square + div h2 span, .guru-view .main .guru-home-tiles .square + div h3 span {
+          font-weight: 400; }
+      .guru-view .main .guru-home-tiles .square + div h3 {
+        padding-bottom: 0;
+        font-size: 18px; }
+      .guru-view .main .guru-home-tiles .square + div progress {
+        margin: 0 15px;
+        width: calc(100% - 30px); }
+    .guru-view .main .guru-home-tiles > div {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -2237,64 +2228,292 @@ section {
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
       -webkit-flex-direction: row;
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
       -webkit-justify-content: center;
       justify-content: center;
-      padding: 15px;
-      height: calc(100% - 64px); }
-      .guru-view .guru-tip-of-day-slide-box .card .card-content svg {
-        display: none;
-        width: 100%;
+      width: 100%;
+      height: 50%;
+      overflow: hidden;
+      text-align: center; }
+      .guru-view .main .guru-home-tiles > div .home-tiles-ranking {
         height: 100%;
-        max-height: 70px;
-        margin-bottom: 15px; }
-      .guru-view .guru-tip-of-day-slide-box .card .card-content h2 {
-        font-size: 24px;
-        font-weight: 600; }
-      .guru-view .guru-tip-of-day-slide-box .card .card-content p {
-        margin: 10px 0 0;
-        font-size: 18px; }
-    .guru-view .guru-tip-of-day-slide-box .card button {
-      border-radius: 0 0 5px 5px; }
-  .guru-view .guru-tip-of-day-slide-box .slider-pager {
-    bottom: 15px; }
-.guru-view #btn-launch-profile:active {
-  filter: alpha(opacity=100);
-  opacity: 1;
-  background: #69B3A5 !important; }
-.guru-view #btn-launch-profile + .guru-tip-of-day-slide-box {
-  height: calc(100% - 50px); }
+        width: calc(100% / 3 * 2);
+        overflow: hidden;
+        padding: 1px; }
+        .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div {
+          position: relative;
+          height: 100%; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div .square {
+            fill: #9ccdc3; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div .square + div {
+            background: #9ccdc3; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div h3 {
+            padding-top: 0; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart {
+            position: relative;
+            height: calc(100% - 97px);
+            width: 100%; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #guru-ranking-progress-bar {
+              height: 100%; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart svg {
+              padding: 0 15px 15px;
+              height: 100%; }
+              .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart svg path {
+                stroke-linecap: round; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              -webkit-transform: translate(-50%, -50%);
+              -moz-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+              .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking {
+                position: relative;
+                margin-top: -24px;
+                font-size: 52px;
+                font-weight: 600;
+                line-height: 1;
+                text-align: center; }
+                .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking::after {
+                  content: "th";
+                  display: block;
+                  position: absolute;
+                  top: 1px;
+                  right: -2px;
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 28px;
+                  text-transform: uppercase; }
+              .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile #percentile-label {
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                line-height: 1.2;
+                text-transform: uppercase; }
+      .guru-view .main .guru-home-tiles > div .home-tiles-rating {
+        height: 100%;
+        width: calc(100% / 3);
+        padding: 1px; }
+        .guru-view .main .guru-home-tiles > div .home-tiles-rating > div {
+          position: relative;
+          height: 50%; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-rating > div .square + div {
+            height: calc(100% - 1px); }
+          .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child {
+            padding-bottom: 1px; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child .square {
+              fill: #69B3A5; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child .square + div {
+              background: #69B3A5; }
+              .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child .square + div svg {
+                fill: none;
+                stroke: white;
+                stroke-width: 2px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                height: calc(100% - 39px); }
+            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child #home-tiles-ranking {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              font-size: 44px;
+              font-weight: 700; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child h5 {
+              filter: alpha(opacity=70);
+              opacity: 0.7;
+              font-size: 18px;
+              font-weight: 600;
+              text-transform: uppercase; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child {
+            padding-top: 1px; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child .square {
+              fill: #809c97; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child .square + div {
+              top: 1px;
+              background: #809c97; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child #home-tiles-earnings {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              padding-top: 10px !important;
+              font-size: 44px;
+              font-weight: 700; }
+      .guru-view .main .guru-home-tiles > div .home-tiles-stats {
+        height: 100%;
+        width: calc(100% / 3);
+        padding: 1px; }
+        .guru-view .main .guru-home-tiles > div .home-tiles-stats > div {
+          position: relative;
+          height: 50%; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            height: calc(100% - 1px); }
+            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div svg {
+              fill: none;
+              stroke: white;
+              stroke-width: 4px;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              margin-top: -6.25px;
+              width: 50px;
+              height: 50px; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div h3 {
+              padding-top: 0;
+              font-size: 14px; }
+              .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div h3 .credibility-percent {
+                font-weight: 700; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div progress {
+              vertical-align: 0;
+              width: 90px; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:first-child {
+            padding-bottom: 1px; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:first-child .square {
+              fill: #63b9a9; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:first-child .square + div {
+              background: #63b9a9; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:last-child {
+            padding-top: 1px; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:last-child .square {
+              fill: #809c97; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:last-child .square + div {
+              top: 1px;
+              background: #809c97; }
+      .guru-view .main .guru-home-tiles > div .home-tiles-upcoming {
+        height: 100%;
+        width: calc(100% / 3 * 2);
+        padding: 1px; }
+        .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div {
+          position: relative;
+          height: 100%; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square {
+            fill: #69B3A5; }
+          .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div {
+            background: #69B3A5; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider {
+              height: calc(100% - 58px); }
+              .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card {
+                -ms-box-orient: horizontal;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -moz-flex;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: row;
+                flex-direction: row;
+                -webkit-align-items: center;
+                align-items: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                margin: 0 15px;
+                height: calc(100% - 54px); }
+                .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card h1 {
+                  margin-bottom: 5px;
+                  font-size: 28px;
+                  font-weight: 600; }
+                .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card p {
+                  font-size: 20px;
+                  font-weight: 400; }
+            .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div ul {
+              padding: 0 15px 15px;
+              font-size: 18px;
+              text-align: left;
+              font-weight: 600; }
+              .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div ul li {
+                margin-bottom: 5px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid white; }
+              .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div ul span {
+                filter: alpha(opacity=50);
+                opacity: 0.5;
+                font-size: 14px; }
+@media screen and (max-height: 500px) {
+  .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile {
+    -webkit-transform: translate(-50%, -50%) scale(0.7);
+    -moz-transform: translate(-50%, -50%) scale(0.7);
+    -ms-transform: translate(-50%, -50%) scale(0.7);
+    -o-transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.7); } }
+@media screen and (max-height: 650px) {
+  .guru-view header h1 {
+    display: none; }
+  .guru-view .main .guru-home-tiles h2 {
+    font-size: 20px; }
+  .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div h2 {
+    padding-bottom: 5px; }
+  .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart {
+    height: calc(100% - 80px); }
+    .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking {
+      margin-top: -15px; }
+    .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart svg {
+      padding-bottom: 5px; }
+  .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child #home-tiles-ranking {
+    font-size: 36px; }
+  .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child h5 {
+    font-size: 14px; }
+  .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child #home-tiles-earnings {
+    padding-top: 5px !important;
+    font-size: 36px; }
+  .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div svg {
+    fill: none;
+    stroke: white;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin-top: -4.5px;
+    width: 36px;
+    height: 36px; }
+  .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div h3 {
+    font-size: 12px; }
+  .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider {
+    height: calc(100% - 46px); }
+    .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card {
+      height: calc(100% - 42px); }
+      .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card h1 {
+        font-size: 24px; }
+      .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card p {
+        font-size: 18px; } }
 
-@media screen and (min-height: 540px) {
-  .guru-view #guru-ranking > div {
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none; }
-  .guru-view #guru-ranking #guru-stats .stats-bar {
-    margin-bottom: 9px; } }
-@media screen and (min-height: 568px) {
-  .guru-view .guru-tip-of-day-slide-box .card .card-content h2 {
-    font-size: 28px; }
-  .guru-view .guru-tip-of-day-slide-box .card .card-content p {
-    font-size: 22px; } }
-@media screen and (min-height: 640px) {
-  .guru-view .guru-tip-of-day-slide-box .card .card-content svg {
-    display: block; } }
-@media screen and (min-width: 414px) {
-  .guru-view #guru-ranking > div {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    transform: scale(1.2); } }
 /* ---------- OFFLINE */
 #offline {
   -ms-box-orient: horizontal;

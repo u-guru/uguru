@@ -19,7 +19,7 @@
 			</label>
 			<!-- BIND -->
 			<!-- change input value from 0-10 -->
-			<input type="range" class='full-x' name="volume" min="0" max="10" value="5" ng-model='experience.years'>
+			<input type="range" class='full-x' name="volume" min="0" max="10" value="{{experience.years}}" ng-model='experience.years'>
 			<ul class="ugrid-3 exp-years-label">
 				<li>&lsaquo; 1</li>
 				<li>5</li>
@@ -29,7 +29,7 @@
 		<div id="exp-input" class='p15xy bg-campus-50p ng-class:{"removable":experience.id}'>
 			<textarea class='input-outline full-x' placeholder='Role Description' ng-model='experience.description'>{{experience.description}}</textarea>
 		</div>
-		<button class='bg-slate semibold' ng-if="experience && experience.id" ng-click='removeGuruExperience(experience, experience_index)'>Remove</button>
+		<button class='bg-slate semibold' id='guru-experience-remove-button' ng-if="experience && experience.id" ng-click='removeGuruExperience(experience, experience_index)'>Remove</button>
 
 
 	</div>

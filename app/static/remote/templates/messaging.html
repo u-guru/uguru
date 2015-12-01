@@ -19,7 +19,7 @@
 						<li  ng-repeat='relationship in user.student_relationships|filter:student_search.search_text:strict'  ng-click='setToActiveRelationship(relationship)'>
 							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
 								<span class="messenger-icon">
-									<img ng-src='{{relationship.student.profile_url}}'>
+									<img height='50' width='50' style='border-radius:1000px;' ng-src='{{relationship.student.profile_url}}'>
 								</span>
 								<span class="messenger-label">{{relationship.student.name}}</span>
 							</a>
