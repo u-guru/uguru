@@ -2,10 +2,127 @@
 
 /* ---------- PROFILE STYLES */
 .pf-type {
-	header, header.third {
+	header.third {
+		position: relative;
+		overflow: hidden;
 		h1.pf-title {
 			font-size: 28px!important;
 			text-transform: none;
+		}
+		.pf-header-bg {
+			@include blur(50);
+			position: absolute;
+			top: -25%;
+			left: -25%;
+			width: 150%;
+			height: 150%;
+			background-position: center center;
+			background-size: cover;
+		}
+		.pf-banner {
+			position: absolute;
+			top: 0;
+			right: 15px;
+			background: $shamrock;
+			width: 50px;
+			height: 50px;
+			svg {
+				@include svg-stroke(white, 3);
+				position: absolute;
+				top: 5px;
+				padding: 5px;
+				width: 50px;
+				height: 50px;
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				bottom: -20px;
+				left: 0;
+				width: 0;
+				height: 0;
+				border: 25px solid $shamrock;
+				border-top-width: 10px;
+				border-bottom-width: 10px;
+				border-bottom-color: transparent;
+			}
+		}
+		.pf-header {
+			text-align: center;
+			h1 {
+				padding: 5px 0 0;
+				font-size: 24px!important;
+				text-transform: none;
+				&.verified span svg {
+					margin-left: 8px;
+				    width: 24px;
+				    height: 24px;
+				}
+			}
+			.pf-school {
+				margin: 0!important;
+				font-size: 20px;
+			}
+			.user-icon {
+				width: 72px;
+				height: 72px;
+				border-width: 3px;
+			}
+			.pf-rating {
+				margin: 5px auto;
+			}
+			button {
+				padding: 5px 30px;
+			}
+			.pf-header-desc {
+				display: none;
+				margin: 15px 15px 0;
+				font-size: 20px;
+				font-weight: 400;
+				line-height: 1.2;
+			}
+			.pf-url {
+				display: none;
+				@include flex-center;
+				@include center-x;
+				bottom: 30px;
+				font-size: 18px;
+				font-weight: 400;
+				li:first-child {
+					padding: 10px 15px;
+					background: rgba(white,.7);
+					color: $slate;
+					text-transform: lowercase;
+				}
+				li:last-child {
+					button {
+						@include flex;
+						@include flex-center;
+						width: 40px;
+						height: 40px;
+						padding: 5px;
+						background: white;
+						svg {
+							@include svg-stroke-width(5);
+							stroke: $slate;
+							width: 100%;
+							height: 100%;
+						}
+						&:hover, &:focus {
+							background: $slate;
+							svg {
+								stroke: white;
+							}
+						}
+						&:active {
+							background: $charcoal;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+			}
 		}
 		.pf-photo-list {
 			margin-top: 30px;
@@ -392,46 +509,52 @@
 			}
 		}
 	}
-	.pf-tabs {
-		@include flex;
-		background: $charcoal;
-		padding: 0 15px;
-		li {
-			width: 100%;
-			text-align: center;
-			a {
-				border-top: 5px solid transparent;
-				border-bottom: 5px solid transparent;
-				display: block;
-				padding: 15px;
-				font-size: 18px;
-				font-weight: 600;
-				text-transform: uppercase;
-				&.active {
-					border-bottom: 5px solid $shamrock;
-				}
-			}
+	.pf-shop-desc {
+		padding: 15px;
+		text-align: center;
+		h1 {
+			font-size: 32px;
+			font-weight: 600;
+		}
+		p {
+			margin-top: 5px;
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 1.2;
 		}
 	}
 	.pf-list {
 		h1 {
 			background: $shamrock;
 			padding: 5px;
-			font-size: 14px;
+			font-size: 16px;
 			font-weight: 600;
 			letter-spacing: 1px;
 			text-align: center;
 			text-transform: uppercase;
 		}
+		.pf-list-desc {
+			display: none;
+			width: 100%;
+			text-align: left;
+			margin-top: 15px;
+			font-size: 20px;
+			font-weight: 400;
+		}
 		.pf-list-y {
 			margin-top: 2px;
-			li {
+			> li {
 				padding: 15px;
 				background: $charcoal;
 				font-size: 18px;
 				font-weight: 600;
 				&:not(:last-child) {
 					margin-bottom: 2px;
+				}
+				ul {
+					li:last-child {
+						@include opacity(.5);
+					}
 				}
 			}
 		}
@@ -441,17 +564,22 @@
 				background: $charcoal;
 				padding: 6.25px;
 				svg {
-					@include svg-stroke(white, 5);
+					@include svg-stroke(white, 4);
 					width: 100%;
 					height: 50px;
 				}
 			}
 		}
 	}
+	.pf-reviews {
+		h2 {
+			font-weight: 600;
+		}
+	}
 	.pf-select {
 		height: calc(100% / 3 * 2);
 		padding: 7.5px;
-		li {
+		> li {
 			padding: 7.5px;
 			height: 25%;
 			a {
@@ -473,7 +601,7 @@
 		height: calc(100% / 3 * 2 - 64px);
 		overflow: auto;
 		padding: 7.5px;
-		li {
+		> li {
 			padding: 7.5px;
 			position: relative;
 			height: 50%;
@@ -497,7 +625,7 @@
 				background-position: center center;
 				background-size: cover;
 				height: 100%;
-				svg {
+				.pf-check {
 					@include flex;
 					@include flex-center;
 					@include svg-stroke(rgba(white,.5), 10);
@@ -510,7 +638,7 @@
 					height: 40px;
 					padding: 5px 5px 10px 10px;
 				}
-				span {
+				> span {
 					display: block;
 					width: 100%;
 					background: $shamrock;
@@ -518,11 +646,218 @@
 					font-size: 18px;
 					font-weight: 600;
 					text-align: center;
+					.pf-rating {
+						display: none;
+						margin: 10px auto 0;
+						max-width: 120px;
+					}
+					.pf-review-amt {
+						display: none;
+						font-size: 14px;
+						text-transform: uppercase;
+					}
 				}
 			}
 			input:checked + div svg {
 				stroke: $shamrock;
 				background: white;
+			}
+		}
+	}
+	.pf-tabs {
+		background: $charcoal;
+		ul {
+			@include flex;
+			padding: 0 15px;
+			li {
+				width: 100%;
+				text-align: center;
+				a {
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					display: block;
+					padding: 15px;
+					font-size: 18px;
+					font-weight: 600;
+					text-transform: uppercase;
+					&.active {
+						border-bottom: 5px solid $shamrock;
+					}
+				}
+			}
+		}
+	}
+	.pf-tab-item {
+		height: calc(100% / 3 * 2 - 64px);
+		overflow: auto;
+		&:not(.active) {
+			display: none;
+		}
+	}
+	.pf-tab-container {
+		height: calc(100% / 3 * 2);
+		.pf-tab-item {
+			height: calc(100% - 64px);
+		}
+	}
+}
+
+// DESKTOP
+@media screen and (min-width:768px) {
+	.pf-type {
+		section {
+			@include flex;
+		}
+		header.third {
+			width: calc(100% / 3);
+			height: 100%;
+			.pf-header-bg {
+				@include blur(100);
+			}
+			.pf-header {
+				h1 {
+					font-size: 28px!important;
+					margin-bottom: 5px;
+				}
+				.pf-school {
+					font-size: 24px!important;
+				}
+				.pf-rating {
+					max-width: 150px;
+					margin: 10px auto!important;
+				}
+				button {
+					padding: 10px 30px;
+				}
+				.pf-header-desc {
+					display: block;
+				}
+				.pf-url {
+					@include flex;
+				}
+			}
+		}
+		.pf-tabs {
+			ul {
+				max-width: 400px;
+				margin: 0 auto;
+			}
+		}
+		.pf-tab-container {
+			width: calc(100% / 3 * 2);
+			height: 100%;
+		}
+		.pf-checklist {
+			padding: 15px;
+			> li {
+				padding: 15px;
+				div {
+					> span {
+						font-size: 24px;
+						.pf-rating {
+							@include flex;
+						}
+						.pf-review-amt {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+		.pf-shop-desc {
+			padding: 30px;
+			h1 {
+				font-size: 48px;
+			}
+			p {
+				margin-top: 10px;
+				font-size: 24px;
+			}
+			.p15top {
+				padding-top: 30px!important;
+			}
+			.m10top {
+				margin-top: 15px!important;
+			}
+			.pf-list {
+				h1 {
+					font-size: 18px;
+				}
+				.pf-list-desc {
+					display: block;
+				}
+				.pf-list-y {
+					> li {
+						font-size: 24px;
+					}
+				}
+				.pf-list-x {
+					@include flex-center;
+					background: $charcoal;
+					li {
+						max-width: 150px;
+						svg {
+							height: 64px;
+						}
+					}
+				}
+			}
+			.pf-reviews {
+				h2 {
+					font-size: 28px!important;
+				}
+			}
+		}
+	}
+}
+
+// TECH & IT
+.pf-type-tech {
+	header.third {
+		.pf-banner {
+			background: $azure;
+			&:after {
+				border: 25px solid $azure;
+				border-bottom-color: transparent;
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $azure;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $azure;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $azure;
+		}
+	}
+	.pf-checklist {
+		li {
+			div {
+				span {
+					background: $azure;
+				}
+			}
+			input:checked + div svg {
+				stroke: $azure;
 			}
 		}
 	}
