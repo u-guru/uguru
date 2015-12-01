@@ -1560,13 +1560,29 @@ if arg =='init_campaigns':
     print "starting.."
     for u in all_users:
         if not u.name or u.university_id != 2307:
-            u.referral_code = None
-            u.profile_code = None
-            db_session.commit()
-            index += 1
-            if index and index % 100 == 0:
-                print "Update %s of %s complete" % (index, len(all_users))
-            continue
+            if not u.name:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            if not u.referral_code and not u.profile_code:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            if u.name:
+                u.referral_code = None
+                u.profile_code = None
+                db_session.commit()
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            else:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
 
         if u.balance and u.university_id:
             u.referral_code = u.name + str(randint(1, 1000))
