@@ -381,6 +381,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             initCTA();
           }
 
+          if ($scope.desktopMode && !$scope.guruRankingCircle) {
+            $timeout(function () {
+              $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+            }, 2500)
+          }
+
           //desktop version but not loggedd in
           if ($scope.desktopMode && !$scope.user.id) {
             $timeout(function() {
@@ -426,6 +433,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.$on('$ionicView.afterEnter', function() {
 
         });
+
   }
 
 ]);

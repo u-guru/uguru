@@ -46,10 +46,11 @@
 				<div class="text-center">
 					<div>
 						<div>
-							<h1>My Balance</h1>
+							<h1>Current Balance</h1>
 							<div id="balance-total">
 								<span>${{user.balance || 0}}</span>
 							</div>
+							<h4 class='text-center' style='opacity:0.6'>Total Earned:<strong style='font-weight:900'>${{user.total_earned}}</strong></h4>
 						</div>
 						<div class="balance-cards">
 							<h2>Choose Method to Cash Out</h2>
@@ -59,7 +60,9 @@
 										<!-- BIND -->
 										<div id="credit-card-visa" class="credit-card cf">
 											<!-- BIND -->
-											<span class="card-type" ng-include="img_base + BASE + 'templates/cards/mastercard.html'"></span>
+											<span ng-if='(card.is_payment_card || card.is_transfer_card) && card.card_type' class="card-type" ng-include="img_base + BASE + 'templates/cards/{{card.card_type}}.html'"></span>
+											<span ng-if='(card.is_payment_card || card.is_transfer_card) && !card.card_type' class="card-type">Debit Card</span>
+											<span ng-if='card.is_bank_account' class="card-type bg-slate txt-smoke p05xy" style='font-size:16px;'>Bank Account</span>
 											<div class="card-number">**** **** **** {{card.card_last4}}</div>
 											<div class="card-name">{{user.name}}</div>
 											<div class="valid">

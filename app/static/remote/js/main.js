@@ -220,9 +220,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/home.guru.html',
     controller: 'GuruController'
   }).
-  state('root.pf-templates', {
-    url:'/pf-templates',
-    templateUrl: BASE + 'templates/pf.template.html'
+  state('root.profile-public', {
+    url:'/profile-public',
+    templateUrl: BASE + 'templates/profile.public.html'
   }).
   state('root.guru-languages', {
     url:'/guru-languages',

@@ -564,7 +564,7 @@ angular.module('uguru.guru.controllers')
         console.log("FAIL");
         // LoadingService.showMsg('Sorry! This FB account has another account - please contact support', 2000);
         // $scope.loader.showMsg('Unable to Connect with Facebook', 0, 1500);
-        alert('fail')
+        LoadingService.hide();
 
       });
     }
