@@ -6,7 +6,7 @@
 			<ion-pane id='cta-modal-credibility' class='full-xy hide-display cta-modal bg-charcoal'  ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.credibility.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
-			<ion-pane id='cta-modal-profile' class='show full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
+			<ion-pane id='cta-modal-profile' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -36,18 +36,18 @@
 
 			<div class="guru-home-greeting">
 				<div>
-					<h1>Hello {{user.first_name || 'Guru'}},<br/>
-					how are you today?</h1>
+					<h1>Hello {{user.first_name || 'Guru'}},<br/>how are you today?</h1>
 					<div class="guru-home-notifications">
 						<ul>
 							<li>
 								<a>
 									<span class="notification-icon">
-										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.ranking.html'">
+										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">
 										</svg>
-										<span class="notification-number">{{guruHomeTips.length}}</span>
+										<!-- BIND -->
+										<span class="notification-number">0</span>
 									</span>
-									<span class="notification-type">Action Items</span>
+									<span class="notification-type">Bill Student</span>
 								</a>
 							</li>
 							<li>
@@ -57,7 +57,7 @@
 										</svg>
 										<span class="notification-number">{{user.student_relationships.length || 0}}</span>
 									</span>
-									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Students</span>
+									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Messages</span>
 								</a>
 							</li>
 						</ul>

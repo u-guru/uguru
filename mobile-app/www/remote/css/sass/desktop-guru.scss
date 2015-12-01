@@ -1686,12 +1686,12 @@
 								}
 							}
 							a:hover, a:focus {
-								.notification-icon {
+								.notification-icon svg {
 									background: lighten($gabrielle, 10%);
 								}
 							}
 							a:active {
-								.notification-icon {
+								.notification-icon svg {
 									background: $gabrielle;
 								}
 							}

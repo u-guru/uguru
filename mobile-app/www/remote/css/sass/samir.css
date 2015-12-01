@@ -228,14 +228,6 @@
   display: table;
 }
 
-.guru-view-mobile .header-nav h1.balance-header {
-  padding-right: 15px !important;
-}
-
-.guru-view-mobile .header-nav svg.referral-icon {
-  padding-left: 5px;
-}
-
 body.platform-ios .mobile-referrals-modal a.header-close,
 body.platform-ios .mobile-balance-modal a.header-close {
   padding-top: 40px;
@@ -354,40 +346,6 @@ body.platform-ios .guru-view-mobile .header-nav svg.referral-icon {
 }
 
 .desktop-notifications-grid-item svg {
-<<<<<<< HEAD
-  stroke: #40484B; }
-  .desktop-notifications-grid-item svg path.notifications-path {
-    stroke: white;
-    fill: #2B3234;
-    stroke-width: 4px; }
-    .desktop-notifications-grid-item svg path.notifications-path.active {
-      fill: white;
-      stroke: #2B3234;
-      stroke-width: 8px;
-      width: 5px;
-      opacity: 1; }
-  .desktop-notifications-grid-item svg circle.notifications-circle {
-    fill: #40484B; }
-    .desktop-notifications-grid-item svg circle.notifications-circle.active {
-      fill: white;
-      opacity: 1; }
-
-#forgot-your-password {
-  width: 100%;
-  position: absolute;
-  text-align: center;
-  left: 0;
-  font-size: 20px;
-  font-weight: 500;
-  bottom: 4%;
-  opacity: 0.9; }
-
-#public-profile-url {
-  font-size: 14px;
-  padding-bottom: 12.5%; }
-
-/*# sourceMappingURL=samir.css.map */
-=======
   stroke: #40484B;
 }
 
@@ -413,4 +371,19 @@ body.platform-ios .guru-view-mobile .header-nav svg.referral-icon {
   fill: white;
   opacity: 1;
 }
->>>>>>> 70cf96388e0b62a9af288fa31c79aee5740335cb
+
+#forgot-your-password {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  left: 0;
+  font-size: 20px;
+  font-weight: 500;
+  bottom: 4%;
+  opacity: 0.9;
+}
+
+#public-profile-url {
+  font-size: 14px;
+  padding-bottom: 12.5%;
+}

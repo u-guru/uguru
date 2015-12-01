@@ -2036,11 +2036,11 @@
   font-weight: 600;
 }
 
-#desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:hover .notification-icon, #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:focus .notification-icon {
+#desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:hover .notification-icon svg, #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:focus .notification-icon svg {
   background: #8bc4b9;
 }
 
-#desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:active .notification-icon {
+#desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:active .notification-icon svg {
   background: #69B3A5;
 }
 
