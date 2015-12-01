@@ -5,7 +5,7 @@ def uguruAPI(arg='', _json=None, _type='get'):
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 	if arg: arg = '/' + arg
-	BASE_URL = 'http://www.uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4/universities%s' % arg
+	BASE_URL = 'https://uguru.me/api/admin/be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4/universities%s' % arg
 
 	if _type == 'get':
 		print BASE_URL
@@ -15,10 +15,10 @@ def uguruAPI(arg='', _json=None, _type='get'):
 
 
 	if _type =='put':
-		return requests.put(url=BASE_URL, data=json.dumps(_json), headers=headers).text
+		return requests.put(url=BASE_URL, data=json.dumps(_json), headers=headers, verify=False).text
 
 	if _type =='post':
-		return requests.post(url=BASE_URL, data=json.dumps(_json), headers=headers).text
+		return requests.post(url=BASE_URL, data=json.dumps(_json), headers=headers, verify=False).text
 
 ## number of emails > 0, departments are sanitizied, courses are sanitized
 def getMostUpdatedUniversities():

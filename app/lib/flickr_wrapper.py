@@ -27,8 +27,9 @@ def search_university_response_api(university):
 
         ## ones that you can edit
         # tags="college, students, panorama, campus, university, students, building, library, %s, " % (university.name),
-        tag_mode='any',
-        tags=university.name,
+        tag_mode='all',
+        # tags='campus , building',
+        tags=university.name,   
         text=university.name,
 
         # lat=university.latitude,
