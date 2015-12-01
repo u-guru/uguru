@@ -513,7 +513,7 @@ angular.module('uguru.desktop.controllers', [])
       });
     }
 
-
+    $scope.state = $state;
 
     $scope.resetAccount = function() {
       if (confirm('Are you sure you want to reset your admin account?')) {

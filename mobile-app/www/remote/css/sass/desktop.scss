@@ -1117,17 +1117,17 @@
 			}
 		}
 	}
-	&:nth-child(7) {
+	&:nth-child(4) {
 		ul {
 			li {
 				label {
-					border-bottom-color: $shamrock;
+					border-bottom-color: $cobalt;
 				}
 				input:checked + label {
-					background: $shamrock;
+					background: $cobalt;
 					svg {
 						path {
-							stroke: $shamrock;
+							stroke: $cobalt;
 						}
 					}
 				}
@@ -1135,18 +1135,18 @@
 		}
 		button {
 			&:hover, &:focus {
-	   			border-color: $shamrock!important;
-	   			background: $shamrock!important;
+	   			border-color: $cobalt!important;
+	   			background: $cobalt!important;
 	   			color: white!important;
 	   		}
 			&:active {
 				border-color: white!important;
 				background: white!important;
-				color: $shamrock!important;
+				color: $cobalt!important;
 			}
 		}
 	}
-	&:nth-child(3) {
+	&:nth-child(8) {
 		ul {
 			li {
 				label {
@@ -1175,17 +1175,17 @@
 			}
 		}
 	}
-	&:nth-child(4) {
+	&:nth-child(3) {
 		ul {
 			li {
 				label {
-					border-bottom-color: $lake;
+					border-bottom-color: $auburn;
 				}
 				input:checked + label {
-					background: $lake;
+					background: $auburn;
 					svg {
 						path {
-							stroke: $lake;
+							stroke: $auburn;
 						}
 					}
 				}
@@ -1193,18 +1193,18 @@
 		}
 		button {
 			&:hover, &:focus {
-	   			border-color: $lake!important;
-	   			background: $lake!important;
+	   			border-color: $auburn!important;
+	   			background: $auburn!important;
 	   			color: white!important;
 	   		}
 			&:active {
 				border-color: white!important;
 				background: white!important;
-				color: $lake!important;
+				color: $auburn!important;
 			}
 		}
 	}
-	&:nth-child(8) {
+	&:nth-child(7) {
 		ul {
 			li {
 				label {

@@ -150,6 +150,8 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
         if ($state.current.name !== 'root.university' && $scope.user.guru_courses && $scope.user.guru_courses.length && confirm('Are you sure? Your current courses will be deactivated')) {
           $scope.user.university = university;
+        } else {
+          return;
         }
       }
       $scope.user.university = university;
