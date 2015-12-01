@@ -82,6 +82,15 @@
                               <img src='{{university.svg_url}}' height="30" width="30"> &nbsp; &nbsp;
                               <small class="label label-success"><i class="fa fa-check"></i> SVG</small>
                               {% endif %}
+
+
+                              {% if university.banner_url_confirmed %}
+                                <small class="label label-success"><i class="fa fa-check"></i> Banner Confirmed </small>
+                              {% endif %}
+
+                              {% if university.num_emails %}
+                                <small class="label label-danger"><i class="fa fa-check"></i> Has emails! </small>
+                              {% endif %}
                             </a>
                           </td>
                           <td>
