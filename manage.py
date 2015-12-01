@@ -1561,6 +1561,17 @@ if arg =='init_campaigns':
 
 
 
+if arg == 'update_uni':
+    from app.models import University
+    from app.static.data.ben import *
+    universities = University.query.all()
+    universities = [u for u in universities if u.us_news_ranking and u.us_news_ranking < 225]
+    from time import sleep
+    for university in universities:
+        uni_dict = {'university_banner': university.banner_url, 'id': university.id}
+        response = uguruAPI(str(uni_dict['id']), uni_dict, 'put')
+        print university.name, 'updated'
+        sleep(1)
 
 
 
