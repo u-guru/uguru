@@ -1551,19 +1551,49 @@ if arg =='-pca':
 
 ## print campaigns
 if arg =='init_campaigns':
+    from random import randint
+    from app.models import User
+    from app.database import db_session
     campaign_dict = {'1':[], '2':[], '3':[]};
-    for u in User.query.all():
+    all_users = User.query.all()
+    index = 0
+    print "starting.."
+    for u in all_users:
         if not u.name or u.university_id != 2307:
+            u.referral_code = None
+            u.profile_code = None
+            db_session.commit()
+            index += 1
+            if index and index % 100 == 0:
+                print "Update %s of %s complete" % (index, len(all_users))
             continue
 
         if u.balance and u.university_id:
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
             campaign_dict['1'].append({'first_name': u.getFirstName(), 'id':u.id, 'balance':u.balance,'courses':u.getGuruCourses(), 'email':u.email})
-        if u.total_earned and not u.balance:
+        elif u.total_earned and not u.balance:
             campaign_dict['2'].append({'first_name': u.getFirstName(), 'id':u.id, 'balance':u.total_earned,'courses':u.getGuruCourses(),  'email':u.email})
-        if not u.total_earned and not u.balance and (u.guru_courses or u.guru_introduction):
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
+        elif not u.total_earned and not u.balance and (u.guru_courses or u.guru_introduction):
             campaign_dict['3'].append({'first_name': u.getFirstName(), 'id':u.id, 'courses':u.getGuruCourses(), 'email':u.email})
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
+        else:
+            u.referral_code = None
+            u.profile_code = None
+            db_session.commit()
 
-
+        index += 1
+        if index and index % 100 == 0:
+            print "Update %s of %s complete" % (index, len(all_users))
 
 if arg == 'update_uni':
     from app.models import University
