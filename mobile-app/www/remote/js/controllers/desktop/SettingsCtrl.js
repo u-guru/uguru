@@ -79,6 +79,18 @@ angular.module('uguru.desktop.controllers', [])
       }
     }
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.signupModal = modal;
+        });
+
+    $scope.launchSupport = function() {
+      console.log('why isnt this showing')
+      $scope.supportModal.show()
+    }
+
     $scope.toggleDiscoverability = function() {
       $scope.user.guru_discoverability = !$scope.user.guru_discoverability;
       if ($scope.user.guru_discoverability) {

@@ -25,6 +25,12 @@ angular.module('uguru.util.controllers')
         if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
           $scope.guruExperiencesModal.remove();
         }
+        if ($scope.desktopMode) {
+          $timeout(function() {
+            var modalElem = document.querySelector('#cta-modal-profile-experiences');
+            modalElem.classList.remove('show');
+          }, 1000)
+        }
       }
 
       LoadingService.show();
@@ -32,7 +38,7 @@ angular.module('uguru.util.controllers')
       $scope.user.updateAttr('remove_guru_experience', $scope.user, $scope.experience, successCallback, $scope);
 
     }
-    
+
     $scope.saveGuruExperience = function() {
       if (!$scope.experience.name.length ||!$scope.experience.years || !$scope.experience.description.length) {
         $scope.success.show(0, 1500,'Please enter in all fields');
@@ -40,12 +46,26 @@ angular.module('uguru.util.controllers')
       }
 
       var successCallback = function() {
-        // LoadingService.hide();
-        // console.error($scope.experience.name +'saved!');
-        LoadingService.showSuccess('Experience : '+$scope.experience.name +' is saved!', 1500);
-        if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
-          $scope.guruExperiencesModal.remove();
+
+
+        LoadingService.showSuccess('Saved!', 1500);
+
+
+        if ($scope.desktopMode) {
+
+          $timeout(function() {
+            var modalElem = document.querySelector('#cta-modal-profile-experiences');
+            modalElem.classList.remove('show');
+          }, 1000)
+
+        } else {
+
+          if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
+              $scope.guruExperiencesModal.remove();
+          }
+
         }
+
       }
 
       LoadingService.show();

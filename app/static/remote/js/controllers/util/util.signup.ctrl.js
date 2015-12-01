@@ -1372,12 +1372,16 @@ angular.module('uguru.util.controllers')
             }
           }, 500)
           LoadingService.showSuccess('Login Successful!', 2500);
-          if($scope.desktopMode)
+          if ($scope.desktopMode)
           {
-            if ($scope.user.guru_mode)
-              $state.go('^.guru')
-            else
-              $state.go('^.guru-home')
+            if ($state.current.name !== 'root.guru-home'){
+              if ($scope.user.guru_mode)
+                $state.go('^.guru')
+              else
+                $state.go('^.guru-home')
+            } else {
+              document.getElementById('cta-modal-signup').classList.remove('show');
+            }
           }
           else
           {
@@ -1433,6 +1437,19 @@ angular.module('uguru.util.controllers')
 
         }
       });
+    }
+
+    function fireEvent(obj, evt){
+     var fireOnThis = obj;
+     if( document.createEvent ) {
+       var evObj = document.createEvent('MouseEvents');
+       evObj.initEvent( evt, true, false );
+       fireOnThis.dispatchEvent( evObj );
+     }
+      else if( document.createEventObject ) { //IE
+       var evObj = document.createEventObject();
+       fireOnThis.fireEvent( 'on' + evt, evObj );
+     }
     }
 
     $scope.completeSignup = function() {
@@ -1543,13 +1560,7 @@ angular.module('uguru.util.controllers')
     $timeout(function() {
       $scope.root.vars.loginMode = true;
     })
-    // $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
-    //         scope: $scope,
-    //         animation: 'slide-in-up',
-    //         focusFirstInput: false,
-    // }).then(function(modal) {
-    //     $scope.fbModal = modal;
-    // });
+
 
     $scope.$on('$ionicView.enter', function() {
 

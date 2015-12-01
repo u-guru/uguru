@@ -658,7 +658,8 @@ class UserOneView(restful.Resource):
         if 'fb_id' in request.json:
             if not user.fb_id:
                 fb_id = request.json.get('fb_id')
-                if user not in previous_user:
+                previous_user = User.query.filter_by(fb_id=fb_id).all()
+                if previous_user and user not in previous_user:
                     user.fb_id = request.json.get('fb_id')
                     db_session.commit()
                 else:

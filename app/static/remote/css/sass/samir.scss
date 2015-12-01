@@ -207,14 +207,14 @@
 		display: table;
 	}
 }
-.guru-view-mobile .header-nav {
-	h1.balance-header {
-		padding-right: 15px !important;
-	}
-	svg.referral-icon {
-		padding-left: 5px;
-	}
-}
+// .guru-view-mobile .header-nav {
+// 	h1.balance-header {
+// 		padding-right: 15px !important;
+// 	}
+// 	svg.referral-icon {
+// 		padding-left: 5px;
+// 	}
+// }
 body.platform-ios {
 	.mobile-referrals-modal a.header-close,
 	.mobile-balance-modal a.header-close,
@@ -361,6 +361,83 @@ body.platform-ios {
 }
 
 #public-profile-url {
-	font-size:14px; 
-	padding-bottom:12.5%;	
+	font-size:14px;
+	padding-bottom:12.5%;
+}
+
+.dark-shamrock-bg {
+	background-color:#3d796e !important;
+}
+
+.textarea-container {
+	::-webkit-input-placeholder {
+   color: white;
+   font-weight:500;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: red;
+	   font-weight:500;
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: red;
+	   font-weight:500;
+	}
+
+	:-ms-input-placeholder {
+	   color: red;
+	   font-weight:500;
+	}
+}
+
+// .desktop-mode #profile-code-list:after {
+//     content: "tap to launch";
+//     right: -108px;
+//     padding: 10px 15px;
+//     background: rgba(255, 255, 255, 0.9);
+//     font-size: 14px;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     color: #40484B;
+// }
+
+// .desktop-mode #profile-code-list:before {
+//     content: "";
+//     right: -20px;
+//     width: 0;
+//     height: 0;
+//     border: 10px solid transparent;
+//     border-right-color: rgba(255, 255, 255, 0.9);
+// }
+#cta-modal-support {
+	top:64px !important;
+	h1 {
+		background: none !important;
+	    padding: 20px 15px !important;
+	    margin-bottom: 0 !important;
+	    font-size: 48px !important;
+	    font-weight: 900 !important;
+	    letter-spacing: 0 !important;
+	    text-align: center !important;
+	    text-transform: none !important;
+	    color:white;
+	}
+	a.cta-modal-close {
+		width: auto;
+	    position: absolute;
+	    height: 50px;
+	    width: 50px;
+	    right: 0;
+	    top: 0;
+	    margin: 20px;
+	}
+}
+
+ion-pane #experience-modal #guru-experience-remove-button {
+	bottom: 115px;
+    position: absolute;
+    z-index:1000;
+    width: 100%;
+    left: 0;
 }

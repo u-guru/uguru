@@ -46,11 +46,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-profile-courses': '.desktop-guru-profile-view',
     'cta-box-profile-skills': '.desktop-guru-profile-view',
     'cta-box-referrals': '.ion-side-menus-content',
+    'cta-box-support': '.guru-home-container',
     'cta-box-signup': '.guru-home-container',
     'cta-box-payments': '#desktop-balance',
   }
 
   $scope.launchCtaDict = {};
+  $scope.closeCTADict = {};
 
   var CTA_OPTIONS = {
         duration:0.5,
@@ -75,6 +77,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
   $scope.launchCTASignup = function() {
     document.getElementById('cta-box-signup').click();
+  }
+
+ $scope.launchSupport = function() {
+    document.querySelectorAll('.intercom-launcher-button')[0].click();
   }
 
   if ($scope.user) {
@@ -149,6 +155,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                       modal_elem = document.querySelector('#cta-modal-signup');
                     }
 
+
+
+
                 var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
                     $timeout(function() {
@@ -164,8 +173,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                         });
                       }
                 }, CTA_PARENT_DICT[box_elem.id]);
-
-
 
               }
 
@@ -281,6 +288,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         }
 
+        $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.supportModal = modal;
+        });
+
         $scope.initializeHorizontalProgressBars = function() {
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
@@ -366,8 +380,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           if ($scope.desktopMode) {
             initCTA();
           }
-          
-          //desktop version but not loggedd in 
+
+          //desktop version but not loggedd in
           if ($scope.desktopMode && !$scope.user.id) {
             $timeout(function() {
               LoadingService.showAmbig()

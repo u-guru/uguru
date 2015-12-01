@@ -2409,6 +2409,8 @@ class Recipient(Base):
     affiliations = Column(String)
     title = Column(String)
 
+    campaign_args = Column(String)
+
     fb_id = Column(String)
 
     time_sent = Column(DateTime)

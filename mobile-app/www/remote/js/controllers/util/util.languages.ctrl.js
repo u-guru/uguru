@@ -53,14 +53,20 @@ angular.module('uguru.util.controllers')
       // document.getElementById('language-input').value = '';
 
       $scope.user.guru_languages.push(language);
-
-      LoadingService.showSuccess(language.name + ' successfully added', 2000);
       $scope.user.updateAttr('add_guru_language', $scope.user, language, null, $scope);
 
     }
 
     $scope.clearSearchInput = function() {
       $scope.search_text = '';
+    }
+
+    $scope.saveLanguages = function() {
+      if ($scope.desktopMode) {
+          LoadingService.showSuccess('Saved!',2000);
+          var languageModal = document.querySelector('#cta-modal-profile-languages');
+          languageModal.classList.remove('show');
+      }
     }
 
     $scope.$on('$ionicView.enter', function() {
