@@ -961,7 +961,7 @@ def android_app():
 
 @app.route('/windows/app/')
 def windows_app():
-    return redirect('https://www.windowsphone.com/en-us/store/app/uguru/8df574bc-cbdd-4d6c-af3f-a7b2fe259494')
+    return redirect('https://www.microsoft.com/en-us/store/apps/uguru/9nblggh2pgqv')
 
 @app.route('/apps/transit/')
 def app_route_transit():

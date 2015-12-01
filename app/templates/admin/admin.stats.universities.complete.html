@@ -43,12 +43,80 @@
               </div>
             </div><!-- ./col -->
           </div>
-
           <div class='row'>
             <div class='col-md-12'>
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Upcoming Targetted Large Universities</h3>
+                  <h3 class="box-title">Targetted</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive table-striped">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>Rank</th>
+                          <th>Name</th>
+                          <th>Courses</th>
+                          <th>Depts</th>
+                          <th>Popular Courses</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for university in universities %}
+                        {% if university.num_emails %}
+                        <tr>
+                          <td>#{{university.us_news_ranking}} </td>
+                          <td>
+                            <a href='/admin/stats/universities/{{university.id}}' target='_blank'>
+                              {{university.name}} &nbsp;&nbsp; &nbsp;&nbsp;
+                              {% if university.logo_url and  not university.svg_url %}
+                              <img src='{{university.logo_url}}' height="30" width="30">
+                              {% elif university.seal_url and not university.svg_url %}
+                              <img src='{{university.seal_url}}' height="30" width="30">
+                              {% elif university.svg_url %}
+                              <img src='{{university.svg_url}}' height="30" width="30"> &nbsp; &nbsp;
+                              <small class="label label-success"><i class="fa fa-check"></i> SVG</small>
+                              {% endif %}
+
+
+                              {% if university.banner_url_confirmed %}
+                              &nbsp;
+                                <small class="label label-warning"><i class="fa fa-check"></i> Banner Confirmed </small>
+                              {% endif %}
+                              &nbsp;
+                              {% if university.num_emails %}
+                                <small class="label label-danger"><i class="fa fa-check"></i> Has emails! </small>
+                              {% endif %}
+                            </a>
+                          </td>
+                          <td>
+                            {{university.num_courses}}
+                          </td>
+                          <td>
+                            {{university.num_depts}}
+                          </td>
+                          <td>
+                            {{university.num_popular_courses}}
+                          </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upcoming Large Universities</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -68,7 +136,7 @@
                       </thead>
                       <tbody>
                         {% for university in universities %}
-
+                        {% if not (university.svg_url and university.num_emails and university.banner_url_confirmed) and university.population > 20000 %}
                         <tr>
                           <td>#{{university.us_news_ranking}} </td>
                           <td>
@@ -85,9 +153,10 @@
 
 
                               {% if university.banner_url_confirmed %}
-                                <small class="label label-success"><i class="fa fa-check"></i> Banner Confirmed </small>
+                              &nbsp;
+                                <small class="label label-warning"><i class="fa fa-check"></i> Banner Confirmed </small>
                               {% endif %}
-
+                              &nbsp;
                               {% if university.num_emails %}
                                 <small class="label label-danger"><i class="fa fa-check"></i> Has emails! </small>
                               {% endif %}
@@ -103,6 +172,75 @@
                             {{university.num_popular_courses}}
                           </td>
                         </tr>
+                        {% endif %}
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upcoming Smaller Universities</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>Rank</th>
+                          <th>Name</th>
+                          <th>Courses</th>
+                          <th>Depts</th>
+                          <th>Popular Courses</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for university in universities %}
+                        {% if not (university.svg_url and university.num_emails and university.banner_url_confirmed) and university.population < 20000 %}
+                        <tr>
+                          <td>#{{university.us_news_ranking}} </td>
+                          <td>
+                            <a href='/admin/stats/universities/{{university.id}}' target='_blank'>
+                              {{university.name}} &nbsp;&nbsp; &nbsp;&nbsp;
+                              {% if university.logo_url and  not university.svg_url %}
+                              <img src='{{university.logo_url}}' height="30" width="30">
+                              {% elif university.seal_url and not university.svg_url %}
+                              <img src='{{university.seal_url}}' height="30" width="30">
+                              {% elif university.svg_url %}
+                              <img src='{{university.svg_url}}' height="30" width="30"> &nbsp; &nbsp;
+                              <small class="label label-success"><i class="fa fa-check"></i> SVG</small>
+                              {% endif %}
+
+
+                              {% if university.banner_url_confirmed %}
+                              &nbsp;
+                                <small class="label label-warning"><i class="fa fa-check"></i> Banner Confirmed </small>
+                              {% endif %}
+                              &nbsp;
+                              {% if university.num_emails %}
+                                <small class="label label-danger"><i class="fa fa-check"></i> Has emails! </small>
+                              {% endif %}
+                            </a>
+                          </td>
+                          <td>
+                            {{university.num_courses}}
+                          </td>
+                          <td>
+                            {{university.num_depts}}
+                          </td>
+                          <td>
+                            {{university.num_popular_courses}}
+                          </td>
+                        </tr>
+                        {% endif %}
                         {% endfor %}
 
                       </tbody>
