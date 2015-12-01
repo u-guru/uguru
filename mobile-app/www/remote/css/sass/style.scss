@@ -2389,8 +2389,9 @@ section {
 								@include round;
 								@include flex;
 								@include flex-center;
-								width: 28px;
+								padding: 0 5px;
 								height: 28px;
+								min-width: 28px;
 								background: $gabrielle;
 								border: 3px solid $charcoal;
 								font-size: 14px;
@@ -2401,16 +2402,6 @@ section {
 							padding-left: 5px;
 							font-weight: 600;
 							font-size: 20px;
-						}
-					}
-					a:hover, a:focus {
-						.notification-icon svg {
-							background: lighten($gabrielle, 10%);
-						}
-					}
-					a:active {
-						.notification-icon svg {
-							background: $gabrielle;
 						}
 					}
 				}
