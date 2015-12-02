@@ -15,7 +15,7 @@
 						<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 					</span>
 				</h1>
-				<h2 class="pf-school">{{user.university.short_name}}</h2>
+				<h2 class="pf-school">{{user.university.name || user.university.short_name}}</h2>
 				<ul class="pf-rating" data-rating="4" data-half="true">
 					<li>
 						<svg viewBox="0 0 100 100">
@@ -48,13 +48,14 @@
 						</svg>
 					</li>
 				</ul>
+				<div style='margin-top:-15px;margin-bottom:15px;'> <small style='font-weight:700; font-size:16px;' class="uppercase pf-review-amt">{{user.guru_ratings.length}} Reviews</small></div>
 				<button class="btn-ghost-white">Contact</button>
 				<div class="pf-header-desc">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					{{user.guru_introduction}}
 				</div>
 				<ul class="pf-url">
 					<!-- BIND -->
-					<li>{{user.first_name}}.berkeley.uguru.me</li>
+					<li>www.{{user.profile_code}}.uguru.me</li>
 					<li>
 						<button>
 							<svg viewBox="0 0 100 100">
@@ -69,41 +70,46 @@
 			<div class="pf-tabs">
 				<ul>
 					<li>
-						<a class="active">Services</a>
+						<a ng-click='profileTabIndex = 0;' class="ng-class:{'active':profileTabIndex === 0 || !profileTabIndex}">Services</a>
 					</li>
 					<li>
-						<a>About</a>
+						<a <a ng-click='profileTabIndex = 1;' class="ng-class:{'active':profileTabIndex === 1}">About</a>
 					</li>
 				</ul>
 			</div>
 			<!-- BIND -->
-			<div class="pf-shop-desc pf-tab-item">
+			<div class="pf-shop-desc pf-tab-item ng-class:{'active':profileTabIndex === 1}">
 				<h1>{{user.first_name}}'s Shop</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<p>Here's some more information about my experiences.</p>
 				<div class="pf-list p15top">
 					<h1>Experience</h1>
 					<ul class="pf-list-y">
-						<li>
+						<li ng-repeat='experience in user.guru_experiences'>
 							<ul class="ugrid-2">
-								<li class="text-left">Bose Associate</li>
-								<li class="text-right">2 years</li>
+								<li class="text-left">{{experience.name}}</li>
+								<li class="text-right">{{experience.years}} years</li>
 							</ul>
 							<div class="pf-list-desc">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-							</div>
-						</li>
-						<li>
-							<ul class="ugrid-2">
-								<li class="text-left">Cal Web Master</li>
-								<li class="text-right">3 years</li>
-							</ul>
-							<div class="pf-list-desc">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+								{{experience.description}}
 							</div>
 						</li>
 					</ul>
 				</div>
-				<div class="pf-list p15top">
+				<div class="pf-list p15top" ng-if='user.guru_languages'>
+					<h1>Languages</h1>
+					<ul class="pf-list-y">
+						<li ng-repeat='language in user.guru_languages'>
+							<ul class="ugrid-2">
+								<li class="text-left">{{language.name}}</li>
+								<li class="text-right"></li>
+							</ul>
+							<div class="pf-list-desc">
+
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="pf-list p15top" ng-if='false'>
 					<h1>Will Work For</h1>
 					<ul class="pf-list-x ugrid-3">
 						<li>
@@ -124,15 +130,15 @@
 					</ul>
 				</div>
 				<div class="pf-reviews p15top">
-					<h2>4.9 Average Rating</h2>
-					<button class="m10top btn-ghost-white">Read All Reviews</button>
+					<h2>{{user.guru_avg_rating}} Average Rating</h2>
+					<button ng-if='false' class="m10top btn-ghost-white">Read All Reviews</button>
 				</div>
 			</div>
-			<ul class="ugrid-2 pf-checklist pf-tab-item active">
-				<li>
+			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':profileTabIndex === 0 || !profileTabIndex}">
+				<li ng-repeat='course in user.guru_courses'>
 					<div class="pf-check-container">
 						<span>
-							<span>Checklist Item</span>
+							<span>{{course.short_name}}</span>
 							<ul class="pf-rating" data-rating="4" data-half="true">
 								<li>
 									<svg viewBox="0 0 100 100">
@@ -165,127 +171,7 @@
 									</svg>
 								</li>
 							</ul>
-							<span class="pf-review-amt">3 Reviews</span>
-						</span>
-					</div>
-				</li>
-				<li>
-					<div class="pf-check-container">
-						<span>
-							<span>Checklist Item</span>
-							<ul class="pf-rating" data-rating="4" data-half="true">
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-							</ul>
-							<span class="pf-review-amt">3 Reviews</span>
-						</span>
-					</div>
-				</li>
-				<li>
-					<div class="pf-check-container">
-						<span>
-							<span>Checklist Item</span>
-							<ul class="pf-rating" data-rating="4" data-half="true">
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-							</ul>
-							<span class="pf-review-amt">3 Reviews</span>
-						</span>
-					</div>
-				</li>
-				<li>
-					<div class="pf-check-container">
-						<span>
-							<span>Checklist Item</span>
-							<ul class="pf-rating" data-rating="4" data-half="true">
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-							</ul>
-							<span class="pf-review-amt">3 Reviews</span>
+							<span class="pf-review-amt">{{user.guru_avg_rating}} Avg</span>
 						</span>
 					</div>
 				</li>
