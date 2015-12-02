@@ -708,6 +708,12 @@ angular.module('uguru.util.controllers')
             }, 1000);
         }
 
+        if ((!$scope.LOCAL || !LOCAL) && console.log) {
+            console.log = function() {
+                return;
+            }
+        }
+
 
 
     }

@@ -67,6 +67,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   });
 
+
+
   //ASK-NICK: what does this mean?
   //NICK-SAYS: it means use native style animations whenever we rely on ionic animations. (ios styles for ios, android for android)
   $ionicConfigProvider.views.transition('platform');

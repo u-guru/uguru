@@ -4,10 +4,12 @@ angular
 		'$localstorage',
 		'University',
 		'User',
+		'DeviceService',
+		'LoadingService',
 		AccessService
 		]);
 
-function AccessService($localstorage, University, User) {
+function AccessService($localstorage, University, User, DeviceService, LoadingService) {
 
 	var genericAccessCode = 'cool';
 	var universityAccessCodes = University.getTargettedAccessCodes();
@@ -33,14 +35,16 @@ function AccessService($localstorage, University, User) {
 			User.checkAccess(payload).then(function(data) {
 				var data = data.plain()
 				if (success_func) {
-					console.log(data);
-					success_func(data);
+					if (DeviceService.isIOSDevice() || DeviceService.isAndroidDevice()) {
+						LoadingService.showMsg('Sorry! You will need another access code for the mobile apps. Please contact support@uguru.me with your access code included', 5000);
+					} else {
+						success_func(data);
+					}
 				}
 
 			}, function(err) {
 				console.log('SERVER ERR', err);
 				if (err.status === 401) {
-					console.log('invalid access code');
 					fail_func();
 				} else {
 					fail_func();

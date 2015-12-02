@@ -1101,11 +1101,12 @@ class Campaign(Base):
         c = Campaign()
         c.description = description
         c.name = name
-        c.university_id = university_id
         c.directory_based = directory_based
         c.time_created = datetime.now()
         try:
             db_session.add(c)
+            db_session.commit()
+            c.university_id = university_id
             db_session.commit()
         except:
             db_session.rollback()
@@ -2435,7 +2436,6 @@ class Recipient(Base):
     def init(_dict):
         r = Recipient()
         r.university_id = _dict.get('university_id')
-        r.campaign_id = _dict.get('campaign_id')
         r.admin_account = _dict.get('admin_account')
         r.time_opened = _dict.get('time_opened')
         r.time_sent = _dict.get('time_sent')
@@ -2446,8 +2446,11 @@ class Recipient(Base):
         r.first_name = _dict.get('first_name')
         r.last_name = _dict.get('last_name')
         r.email = _dict.get('email')
+        r.campaign_args = _dict.get('campaign_args')
         try:
             db_session.add(r)
+            db_session.commit()
+            r.campaign_id = _dict.get('campaign_id')
             db_session.commit()
         except:
             db_session.rollback()
