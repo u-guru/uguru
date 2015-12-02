@@ -16,10 +16,11 @@ angular.module('uguru.util.controllers')
   'uTracker',
   'Category',
   'Utilities',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate, $ionicGesture, uTracker,
-    Category, Utilities) {
+    Category, Utilities, LoadingService) {
 
 
 
@@ -188,7 +189,21 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    if ($scope.desktopMode) {
 
+        $timeout(function() {
+        document.querySelector('#desktop-skills-save-button').addEventListener('click', function() {
+
+          LoadingService.showSuccess('Saved!', 1500);
+          $timeout(function() {
+            document.querySelector('#cta-modal-profile-skills').classList.remove('show');
+
+          }, 500);
+
+        });
+      }, 1500);
+
+    }
 
   }
 

@@ -270,7 +270,9 @@ angular.module('uguru.user', [])
         console.log('processing cards', user.cards);
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
-
+            if (card.card_type) {
+                card.card_type = card.card_type.toLowerCase();
+            }
             //payment cards processing
             if (card.is_default_payment) {
                 user.default_payment_card = card;

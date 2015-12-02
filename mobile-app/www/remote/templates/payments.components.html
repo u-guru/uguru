@@ -10,9 +10,9 @@
     </div>
   </header>
   <div class='main bg-charcoal full-y'>
-    <div class='bg-charcoal'>
-      <ul class='bg-charcoal'>
-       <li ng-click='setCardMobileToEdit(card)' ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account' class='p20xy'>
+    <div class='bg-slate'>
+      <ul class='bg-slate mobile-cards-container'>
+       <!-- <li ng-click='setCardMobileToEdit(card)' ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account' class='p20xy'>
           <a class='credit-card-wrapper' ng-click='editPaymentMobile(card)'>
 
             <div class="credit-card cf" style='min-height:150px;'>
@@ -37,7 +37,30 @@
                 </div>
               </div>
           </a>
-        </li>
+        </li> -->
+
+        <li ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account'>
+                  <a class='credit-card-wrapper' ng-click='editPaymentMobile(card)'>
+                    <!-- BIND -->
+                    <div id="credit-card-visa" class="credit-card cf">
+                      <!-- BIND -->
+                      <span  ng-if='(card.is_payment_card || card.is_transfer_card) && card.card_type' class="card-type" ng-include="img_base + BASE + 'templates/cards/' + card.card_type + '.html'"></span>
+                      <span ng-if='(card.is_payment_card || card.is_transfer_card) && !card.card_type' class="card-type">Debit Card</span>
+                      <span ng-if='card.is_bank_account' class="card-type bg-slate txt-smoke p05xy" style='font-size:16px;'>Bank Account</span>
+                      <div class="card-number">**** **** **** {{card.card_last4}}</div>
+                      <div class="card-name">{{user.name}}</div>
+                      <div class="valid">
+                        <div class="group">Valid<br/>Thru</div>
+                        <div class="expiry">**/**</div>
+                      </div>
+                    </div>
+                  </a>
+                  <div class='text-center' ng-if='card.is_default_transfer'>
+                    <h3 class='p10xy'>
+                      <strong class='uppercase txt-shamrock'>Default</strong>
+                    </h3>
+                  </div>
+                </li>
 
       </ul>
       <button class='bg-moola semibold absolute bottom-0' ng-click='addCardModal.show()'>Add Card</button>

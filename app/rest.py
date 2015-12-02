@@ -815,12 +815,11 @@ class UserOneView(restful.Resource):
 
         if request.json.get('remove_guru_language'):
             language_json = request.json.get('remove_guru_language')
-            language_id = language_json.get('id')
+            language_id = int(language_json.get('id'))
             language = Language.query.get(language_id)
-            print "NOT WORKING YET"
-            # if language in user.guru_languages:
-            #     user.guru_languages.remove(language)
-            #     db_session.commit()
+            if language in user.guru_languages:
+                user.guru_languages.remove(language)
+                db_session.commit()
 
 
         if request.json.get('remove_guru_course'):
@@ -833,7 +832,12 @@ class UserOneView(restful.Resource):
                 db_session.commit()
             except:
                 db_session.rollback()
-                raise
+                try:
+                    d = db_session.query(guru_courses_table).filter(guru_courses_table.c.user_id == user.id, guru_courses_table.c.course_id == course_id).delete(synchronize_session=False)
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
             # if user in c.gurus:
             #     # c.gurus.remove(user)
             #     from app.models import guru_courses_table

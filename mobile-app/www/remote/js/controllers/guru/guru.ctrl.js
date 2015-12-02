@@ -72,6 +72,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $state.go('^.guru')
   }
 
+  if (!$scope.user.university_id) {
+    LoadingService.showAmbig('No university detected.. redirecting..', 2000);
+    $timeout(function() {
+      $state.go('^.university');
+    }, 1000)
+
+  }
+
   var actualRankingValue = $scope.user.guru_ranking;
   $scope.user.guru_ranking = 0;
 
@@ -79,8 +87,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     document.getElementById('cta-box-signup').click();
   }
 
+ Intercom('hide');
+
  $scope.launchSupport = function() {
-    document.querySelectorAll('.intercom-launcher-button')[0].click();
+    Intercom('boot', {
+        app_id: "yoz6vu28",
+        widget: {"activator": "#Intercom"}
+      })
+    Intercom('show');
+    Intercom('onHide', function() {
+      Intercom('shutdown');
+    })
   }
 
   if ($scope.user) {
@@ -120,6 +137,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           } else {
             return;
           }
+
+          elem = document.querySelector('#guru-ranking-progress-bar')
+          if (elem) {
+            console.log('circle already exists!');
+            return;
+          }
+
           var circle = new ProgressBar.Circle(selector, {
               color: color || "rgba(255,255,255,1)",
               strokeWidth: 8,
@@ -202,6 +226,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
         var animateProgressCircle = function(circle ,percentage) {
+          if (!circle) {
+            return;
+          }
+          $scope.guruRankingCircleInitialized = true;
           var index = 0
           value = 0;
           setInterval(function() {
@@ -396,9 +424,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           }
 
           if ($scope.desktopMode && !$scope.guruRankingCircle) {
+            $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
             $timeout(function () {
-              $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+              if (!$scope.guruRankingCircleInitialized) {
+                animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+              }
             }, 2500)
           }
 
@@ -422,7 +452,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           //mobile mode
           if (!$scope.referralsModal && !$scope.desktopMode) {
             $scope.initMobileModals();
-            !haveProgressBarsBeenInitialized || $scope.initializeHorizontalProgressBars();
             $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
           }
