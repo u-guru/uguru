@@ -82,9 +82,8 @@
 
 
 {% include 'web/layout/menu.html' %}
-
 <ion-view class='uguru-view pf-type pf-type-tech bg-slate'>
-  <section>
+  <section class='absolute' style='top:10%; height:80%'>
     <header class="third flex-center">
       <div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
       <div class="pf-banner">
@@ -100,7 +99,7 @@
             <span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
           </span>
         </h1>
-        <h2 class="pf-school">{{user.university.name || user.university.short_name}}</h2>
+        <h2 class="pf-school">{{user.university.name or user.university.short_name}}</h2>
         <ul class="pf-rating" data-rating="4" data-half="true">
           <li>
             <svg viewBox="0 0 100 100">
@@ -155,7 +154,7 @@
       <div class="pf-tabs">
         <ul>
           <li>
-            <a ng-click='profileTabIndex = 0;' class="ng-class:{'active':profileTabIndex === 0 || !profileTabIndex}">Services</a>
+            <a ng-click='profileTabIndex = 0;' class="active">Services</a>
           </li>
           <li>
             <a <a ng-click='profileTabIndex = 1;' class="ng-class:{'active':profileTabIndex === 1}">About</a>
@@ -169,7 +168,8 @@
         <div class="pf-list p15top">
           <h1>Experience</h1>
           <ul class="pf-list-y">
-            <li ng-repeat='experience in user.guru_experiences'>
+            {% for experience in user.guru_experiences %}
+            <li>
               <ul class="ugrid-2">
                 <li class="text-left">{{experience.name}}</li>
                 <li class="text-right">{{experience.years}} years</li>
@@ -178,12 +178,14 @@
                 {{experience.description}}
               </div>
             </li>
+            {% endfor %}
           </ul>
         </div>
-        <div class="pf-list p15top" ng-if='user.guru_languages'>
+        <div class="pf-list p15top">
           <h1>Languages</h1>
           <ul class="pf-list-y">
-            <li ng-repeat='language in user.guru_languages'>
+            {% for language in user.guru_languages %}
+            <li>
               <ul class="ugrid-2">
                 <li class="text-left">{{language.name}}</li>
                 <li class="text-right"></li>
@@ -192,9 +194,10 @@
 
               </div>
             </li>
+            {% endfor %}
           </ul>
         </div>
-        <div class="pf-list p15top" ng-if='false'>
+        <div class="pf-list p15top">
           <h1>Will Work For</h1>
           <ul class="pf-list-x ugrid-3">
             <li>
@@ -219,8 +222,9 @@
           <button ng-if='false' class="m10top btn-ghost-white">Read All Reviews</button>
         </div>
       </div>
-      <ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':profileTabIndex === 0 || !profileTabIndex}">
-        <li ng-repeat='course in user.guru_courses'>
+      <ul class="ugrid-2 pf-checklist pf-tab-item active">
+        {% for course in user.guru_courses %}
+        <li>
           <div class="pf-check-container">
             <span>
               <span>{{course.short_name}}</span>
@@ -260,11 +264,11 @@
             </span>
           </div>
         </li>
+        {% endfor %}
       </ul>
     </div>
   </section>
 </ion-view>
-
 
 
 

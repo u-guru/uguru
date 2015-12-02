@@ -273,9 +273,9 @@
             return "";
         }
 
-        $timeout(function() {
-          initHandlers();
-        })
+        // $timeout(function() {
+        //   initHandlers();
+        // })
 
   }
 
