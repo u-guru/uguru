@@ -1620,8 +1620,24 @@ if arg == 'update_uni':
     with open('updated_universities.json', 'wb') as fp:
         json.dump(result_dict, fp, indent = 4)
 
+if arg == 'test_campaign':
+    from app.campaigns.guru_campaigns import *
+    test_recipient = {
+        'first_name': 'gabrielle',
+        'email': 'gabrielle@uguru.me',
+        'total_earned': 49, 
+        'balance': 54, 
+        'course_one': 'CS10',
+        'course_two': 'CS70'
+    }
+    html_template, subject = berkeleyCampaignTwoTemplate(test_recipient)
+    print "SUBJECT: %s \n\n" % subject
+    print "CONTENT: \n\n %s \n\n" % html_template
 
 
+    from app.emails import send_campaign_one
+    campaign = Campaign.query.get(4)
+    send_campaign_one([test_recipient], campaign, True)
 
 
 
