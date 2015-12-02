@@ -30,12 +30,36 @@
 
 
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-4">
               <!-- small box -->
               <div class="small-box bg-black">
                 <div class="inner">
-                  <h3>{{campaigns|length}}</h3>
+                  <h3>{{campaign.name}}</h3>
                   <p>Total #of campaign</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-black">
+                <div class="inner">
+                  <h3>{{campaign.recipients|length}}</h3>
+                  <p>Total #of recipients</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-black">
+                <div class="inner">
+                  <h3>{{campaign.university.name}}</h3>
+                  <p>University</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-document"></i>
@@ -47,7 +71,7 @@
             <div class='col-md-12'>
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Automated Campaigns</h3>
+                  <h3 class="box-title">Recipients for Campaign #{{campaign.id}}</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -58,32 +82,19 @@
                     <table class="table no-margin">
                       <thead>
                         <tr>
-                          <th>Campaign #</th>
+                          <th>Id#</th>
                           <th>Name</th>
-                          <th>School</th>
                           <th>Description</th>
                           <th>Mailing List Size</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {% for campaign in campaigns %}
+                        {% for recipient in campaign.recipients%}
                         <tr>
-                          <td>{{campaign.id}} </td>
+                          <td>{{recipient.id}} </td>
+                          <td>{{recipient.first_name}} </td>
                           <td>
-                          <a href='/admin/stats/universities/campaigns/{{campaign.id}}' target='_blank'>
-                            {{campaign.name}} 
-                          </a>
-                          </td>
-                          <td>
-                            <a href='/admin/stats/universities/{{campaign.university.id}}' target='_blank'>
-                              {{campaign.university.name}} &nbsp;&nbsp; &nbsp;&nbsp;
-                            </a>
-                          </td>
-                          <td>
-                            {{campaign.description}}
-                          </td>
-                          <td>
-                            {{campaign.recipients|length}}
+                            {{recipient.campaign_args}}
                           </td>
                         </tr>
                         {% endfor %}

@@ -56,6 +56,17 @@ def admin_statistics_users_completed():
     return render_template("admin/admin.stats.universities.complete.html", \
         universities = prepared_universities)
 
+@app.route('/admin/stats/universities/campaigns')
+def admin_statistics_users_campaigns():
+    campaigns = Campaign.query.all()
+    return render_template("admin/admin.stats.universities.campaign.html", \
+        campaigns=campaigns)
+
+@app.route('/admin/stats/universities/campaigns/<c_id>')
+def admin_stats_campaigns(c_id):
+    campaign = Campaign.query.get(c_id)
+    return render_template("admin/admin.stats.universities.campaign.one.html", campaign=campaign)
+
 @app.route('/admin/stats/universities/complete/banners')
 def admin_statistics_users_complete_banners():
     from app.static.data.popular_data import getPreparedUniversitiesObj
@@ -366,28 +377,28 @@ def support_only():
 
 
 
-@app.route('/admin/stats/campaigns/')
-def admin_stats_campaigns():
-    ### all logic
-    import requests, json
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
+# @app.route('/admin/stats/campaigns/')
+# def admin_stats_campaigns():
+#     ### all logic
+#     import requests, json
+#     if not session.get('admin'):
+#         return redirect(url_for('admin_login'))
 
-    from lib.mailgun import get_all_university_progress
-    results_arr, no_results_arr = get_all_university_progress()
+#     from lib.mailgun import get_all_university_progress
+#     results_arr, no_results_arr = get_all_university_progress()
 
-    from pprint import pprint
-    pprint(results_arr)
+#     from pprint import pprint
+#     pprint(results_arr)
 
-    results_arr = sorted(results_arr, key=lambda u:int(u['rank']))
-    no_results_arr = sorted(no_results_arr, key=lambda u:int(u['rank']))
-    _sum = sum([uni['count'] for uni in results_arr])
-    not_scrapeable = []
+#     results_arr = sorted(results_arr, key=lambda u:int(u['rank']))
+#     no_results_arr = sorted(no_results_arr, key=lambda u:int(u['rank']))
+#     _sum = sum([uni['count'] for uni in results_arr])
+#     not_scrapeable = []
 
-    ### take all the information & inject it into the html
+#     ### take all the information & inject it into the html
 
-    return render_template("admin/admin.stats.campaigns.html", university_arr=results_arr, sum=_sum, \
-        remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
+#     return render_template("admin/admin.stats.campaigns.html", university_arr=results_arr, sum=_sum, \
+#         remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
 
 
 
@@ -907,17 +918,17 @@ def one_university_mobile(name):
     else:
         return redirect(url_for('app_flex'))
 
-@app.route('/admin/stats/universities/<uni_id>/<uni_name>')
-def get_logo_url(uni_id,uni_name):
+# @app.route('/admin/stats/universities/<uni_id>/<uni_name>')
+# def get_logo_url(uni_id,uni_name):
 
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    # def html_image_string(urls):
-    #     return '<img src="%s" alt="Smiley face" height="auto" width="%s">' % (urls, '100%')
+#     if not session.get('admin'):
+#         return redirect(url_for('admin_login'))
+#     # def html_image_string(urls):
+#     #     return '<img src="%s" alt="Smiley face" height="auto" width="%s">' % (urls, '100%')
 
-    university = University.query.get(uni_id)
-    from college_logo import scrape_logo_url_from_google
-    arr = scrape_logo_url_from_google(uni_name)
+#     university = University.query.get(uni_id)
+#     from college_logo import scrape_logo_url_from_google
+#     arr = scrape_logo_url_from_google(uni_name)
 
 
 

@@ -3,7 +3,7 @@ from campaign_utils import convertHTMLtoTextMode
 ### Generates templates to send through mandrill
 
 ## Target audience -> Berkeley gurus w/ total earned
-def berkeleyCampaignOneTemplate(user, most_frequent_course):
+def berkeleyCampaignOneTemplate(recipient, most_frequent_course):
     user_first_name = user.getFirstName().lower()
     subject = "checking in - are you still around %s?" % user_first_name
     html_body = """
@@ -22,5 +22,6 @@ def berkeleyCampaignOneTemplate(user, most_frequent_course):
     Samir
     Chief Guru
     """ % (user_first_name, user.total_earned, user.guru_courses[0], user.guru_courses[1])
+    return html_body, subject
 
 
