@@ -55,8 +55,8 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 
 		clickSubmit = function() {
 			console.log("submit");
-		    callback();
-		    document.getElementsByClassName('.show button.submit').blur()
+		    callback && callback();
+		    // document.getElementsByClassName('.show button.submit').blur()
 		};
 
 		var enterSubmit = function(e) {

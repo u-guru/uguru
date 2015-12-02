@@ -211,7 +211,9 @@ angular.module('uguru.util.controllers')
       }
     };
 
-    $timeout(function() {
+    if ($scope.desktopMode) {
+
+      $timeout(function() {
       document.querySelector('#desktop-courses-save-button').addEventListener('click', function() {
 
         LoadingService.showSuccess('Saved!', 1500);
@@ -220,8 +222,10 @@ angular.module('uguru.util.controllers')
 
         }, 500);
 
-      });
-    }, 1500);
+        });
+      }, 1500);
+
+    }
 
 
   }

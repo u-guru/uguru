@@ -86,9 +86,17 @@ angular.module('uguru.desktop.controllers', [])
           $scope.signupModal = modal;
         });
 
+    Intercom('hide');
     $scope.launchSupport = function() {
-      console.log('why isnt this showing')
-      $scope.supportModal.show()
+
+        Intercom('boot', {
+            app_id: "yoz6vu28",
+            widget: {"activator": "#Intercom"}
+          })
+        Intercom('show');
+        Intercom('onHide', function() {
+          Intercom('shutdown');
+        })
     }
 
     $scope.toggleDiscoverability = function() {

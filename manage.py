@@ -1624,3 +1624,42 @@ if arg == 'update_uni':
 
 
 
+
+# from app.models import Campaign, User, Recipient
+# from app.database import db_session
+# all_users = User.query.all()
+# all_gurus = []
+# processed_gurus = []
+# for user in all_users:
+#     if user.profile_code and user.referral_code:
+#         all_gurus.append(user)
+# campaign = Campaign.init("Berkeley OG Gurus 1", 2307, description="Gurus with total earnings and no balance", directory_based=True)
+# for guru in all_gurus:
+#     if guru.balance and guru.university_id:
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+#         recipients.append(recipient)
+# campaign = Campaign.init("Berkeley OG Gurus 2", 2307, description="Gurus with total earnings but no balance", directory_based=True)
+# for guru in all_gurus:
+#     if guru.total_earned and not guru.balance:
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+#         recipients.append(recipient)
+# for recipient in recipients:
+#     recipient.campaign_id = campaign.id
+# campaign  = Campaign.init("Berkeley OG Gurus 3", 2307, description="Gurus that have added courses or an introduction", directory_based=True)
+# for guru in all_gurus:
+#     if not guru.total_earned and not guru.balance and (guru.guru_courses or guru.guru_introduction):
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+
+# for university in University.query.all():

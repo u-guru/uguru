@@ -441,3 +441,29 @@ ion-pane #experience-modal #guru-experience-remove-button {
     width: 100%;
     left: 0;
 }
+ul.mobile-cards-container li {
+		padding: 7.5px;
+		a {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			width: 80%;
+			left:10%;
+			margin:0 auto;
+			height: 150px;
+			background: $slate;
+			font-weight: 600;
+			svg {
+				@include svg-stroke(white, 4);
+				width: 80px;
+				height: 80px;
+			}
+			span {
+				display: block;
+				span {
+					padding-top: 10px;
+					padding-bottom: 10px;
+				}
+			}
+		}
+	}

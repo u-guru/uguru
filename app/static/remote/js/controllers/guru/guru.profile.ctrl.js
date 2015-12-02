@@ -125,7 +125,7 @@ angular.module('uguru.guru.controllers')
         $scope.credibilityProgress += 1;
       }
 
-      if ($scope.user.guru_experiences.length) {
+      if ($scope.user.guru_experiences && $scope.user.guru_experiences.length) {
         $scope.credibilityProgress += 1;
       }
 

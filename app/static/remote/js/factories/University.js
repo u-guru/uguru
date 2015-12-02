@@ -159,7 +159,7 @@ var targettedUniversities = [
         "school_casual_name": "Cal",
         "school_color_one": "#023360",
         "banner_url": "https://farm3.staticflickr.com/2713/4137418242_97de8940e2_b.jpg",
-        "rank": 37,
+        "rank": 0,
         "id": 2307,
         "city": "Berkeley",
         "num_popular_courses": 1454,

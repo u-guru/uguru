@@ -57,6 +57,13 @@ function RankingService() {
 		if (progressCircle) {
       return progressCircle;
     }
+
+    elem = document.querySelector('#guru-ranking-progress-bar')
+    if (elem) {
+      console.log('circle already exists!');
+      return;
+    }
+
     var circle = new ProgressBar.Circle(selector, {
               color: '#2B3234',
               strokeWidth: 8,

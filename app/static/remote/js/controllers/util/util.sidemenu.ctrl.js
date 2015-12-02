@@ -105,6 +105,7 @@ angular.module('uguru.util.controllers')
       time = time || 0;
       $timeout(function() {
         LoadingService.hide();
+        $scope.loader.hide();
       }, time)
     }
 
@@ -340,7 +341,7 @@ angular.module('uguru.util.controllers')
 
 
     $scope.launchEditPasswordPopup = function(target) {
-
+      //@JASON this doesn't show the LoadingService message cuz of CSS z-index issue
       PopupService.open('editPassword', callback,target);
       function callback() {
           if ($scope.popupInput.editPasswordOld.length === 0 && $scope.popupInput.editPasswordNew.length === 0) {
@@ -354,20 +355,19 @@ angular.module('uguru.util.controllers')
                 old_password: $scope.popupInput.editPasswordOld
             };
 
-            LoadingService.show();
+            LoadingService.showAmbig(null, 5000);
             var successCallback = function() {
               LoadingService.hide();
               LoadingService.showSuccess('Password Successfully Changed', 1500);
               PopupService.close('editPassword');
             };
             var failureCallback = function(resp) {
-              LoadingService.hide();
-              $scope.defaultFallbackPlan(resp);
-              LoadingService.showSuccess('Something went wrong ... Please contact support!', 1500);
-              PopupService.close('editPassword');
-
-              $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
+              alert('Incorrect original password. Please try again or logout & reset your password');
+              // PopupService.close('editPassword');
+              $scope.popupInput.editPasswordNew = '';
+              $scope.popupInput.editPasswordOld = '';
             };
+            $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
           }
           else {
             alert('Please enter a password longer than 6 characters');
