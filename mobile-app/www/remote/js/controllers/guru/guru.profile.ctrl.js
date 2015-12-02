@@ -917,7 +917,6 @@ angular.module('uguru.guru.controllers')
           }, 1000)
           PopupService.initDefaults();
     });
-    $scope.calcGuruCredibilityProgress()
 
     $timeout(function() {
       if (!$scope.desktopMode) {

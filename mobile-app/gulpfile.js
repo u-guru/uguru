@@ -246,6 +246,7 @@ gulp.task('scripts', function() {
       'lib/facebook/*.js',
       'lib/ngElastic/*.js',
       'lib/scroll/scrollReveal.js',
+      'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',
       'lib/scroll/*.js',
       'lib/ngMoment/moment.min.js',
       'lib/ngMoment/*.js',
