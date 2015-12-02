@@ -71,6 +71,14 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   };
 
   $scope.backToAccess = function() {
+    if (mixpanel && mixpanel.track) {
+      mixpanel.track(
+          "Back to access selected",
+          {name: university.name,
+            id:university.id
+          }
+      );
+    }
     $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
   }
 
@@ -154,6 +162,17 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
           return;
         }
       }
+
+
+      if (mixpanel && mixpanel.track) {
+        mixpanel.track(
+            "University selected",
+            {name: university.name,
+              id:university.id
+            }
+        );
+      }
+
       $scope.user.university = university;
       University.clearSelected();
       $timeout(function() {
@@ -211,7 +230,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   };
 
   $scope.toggleLocationIconAppearance = function() {
-
+    if (mixpanel && mixpanel.track) {
+      mixpanel.track("Get GPS Location attempted");
+    }
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
       console.log("refreshing universities for location!");
       $scope.refresh.universities = 'update';
@@ -223,6 +244,11 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       Geolocation.settings.isActive = !Geolocation.settings.isActive;
     }
     else {
+
+      if (mixpanel && mixpanel.track) {
+        mixpanel.track("Location access denied")
+      }
+
       Geolocation.settings.isActive = false;
       Geolocation.settings.isAllowed = false;
     }

@@ -1341,6 +1341,13 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.loginUser = function() {
+      if (mixpanel && mixpanel.track) {
+        mixpanel.track(
+            "Login Attempt",
+            {email: $scope.signupForm.email}
+        );
+      }
+
       if ($scope.signupForm.email)
         $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
@@ -1361,7 +1368,8 @@ angular.module('uguru.util.controllers')
       }
       LoadingService.showAmbig();
       User.login($scope.loginPayload).then(function(user) {
-        //
+        // 
+
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
@@ -1371,6 +1379,17 @@ angular.module('uguru.util.controllers')
               $ionicSideMenuDelegate.toggleRight();
             }
           }, 500)
+
+          if (mixpanel && mixpanel.identify) {
+            if (user.id) {
+              mixpanel.identify(user.id)
+            }
+          }
+
+          if (mixpanel && mixpanel.register) {
+            mixpanel.register($scope.user);
+          }
+          
           LoadingService.showSuccess('Login Successful!', 2500);
           if ($scope.desktopMode)
           {
@@ -1453,6 +1472,14 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.completeSignup = function() {
+
+      if (mixpanel && mixpanel.track) {
+        mixpanel.track(
+            "Signup Attempt",
+            {email: $scope.signupForm.email, name: $scope.signupForm.full_name}
+        );
+      }
+
       if ($scope.signupForm.email)
         $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
@@ -1477,9 +1504,21 @@ angular.module('uguru.util.controllers')
       $scope.signupForm.guru_mode = false;
       LoadingService.show();
       User.create($scope.user).then(function(user) {
+
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
+
+          if (mixpanel && mixpanel.identify) {
+            if (user.id) {
+              mixpanel.identify(user.id)
+            }
+          }
+
+          if (mixpanel && mixpanel.register) {
+            mixpanel.register($scope.user);
+          }
+
           $localstorage.setObject('user', $scope.user);
           if (!$scope.fbLoginSuccessAlreadyShown) {
             LoadingService.showSuccess('Account Successfully Created', 2500);
