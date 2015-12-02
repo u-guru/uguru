@@ -313,6 +313,41 @@ def send_campaign_email_test(campaign_name, template_name,
     subject, sender_email, reply_to_email, sender_title,
     track_opens, track_clicks, important, [r])
 
+def send_campaign_one(recipient, campaign, is_test=False):
+    from campaigns.guru_campaigns import berkeleyCampaignOneTemplate
+    receivers = []
+    for recipient in recipient:
+        receivers.append({
+            'email': recipient.email,
+            'name': recipient.first_name,
+            'type': 'to'
+            })
+    
+    campaign_tag = "campaign-%s" % campaign.id
+    date_tag = "sent-%s-%s-%s" % (datetime.now().day, datetime.now().month, datetime.now().year)
+    
+    if is_test:
+        campaign_tag = 'test-' + campaign_tag
+        date_tag = 'test-' + date_tag
+
+    email_tags = [campaign_tag, date_tag]
+    from_name = 'samir'
+    html_message, subject = berkeleyCampaignOneTemplate(recipient)
+    message = {
+        'subject':subject,
+        'from_email': 'samir@uguru.me',
+        'from_name': from_name,
+        'to': receivers,
+        'important': True,
+        'preserve_recipients': False,
+        'track_opens': True,
+        'tags': email_tags,
+        'html':html_message,
+        'text':html_message.replace('<br>', '').replace('&nbsp;', ' ')
+    }
+    result = mandrill_client.messages.send(message=message)
+    return result
+
 
 email_notif_copy = {
     "student_request": """Make $%s total in %smin helping %s in %s. Swipe for more details & increase response rate""",
