@@ -27,6 +27,12 @@ function AccessService($localstorage, University, User, DeviceService, LoadingSe
 		if(code !== undefined) {
 			console.log("code entered: " + code);
 
+			if (mixpanel && mixpanel.track) {
+				mixpanel.track(
+			    	"Access attempt",
+			    	{"code": code}
+				);
+			}
 
 			payload = {
 				access_code: code

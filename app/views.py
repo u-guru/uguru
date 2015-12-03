@@ -224,6 +224,15 @@ def admin_stats_remaining():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
 
+
+@app.route('/admin/team/accounts/')
+def admin_acounts():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    admin_users = User.query.filter_by(is_admin=True).all()
+
+    return render_template("admin/admin.users.universities.html", admin_users=admin_users)
+
 @app.route('/admin/')
 @app.route('/admin/team/action-items')
 def admin_milestones_tasks():
@@ -331,6 +340,13 @@ def new_home_page():
 # @app.route('/', subdomain='www')
 # def new_home_page_www():
 #     return render_template("web/index.html")
+
+@app.route('/terms/')
+def terms():
+    import httpagentparser
+    print httpagentparser.simple_detect(request.user_agent.string)
+    print httpagentparser.detect(request.user_agent.string)
+    return render_template("web/pages/terms.html")
 
 
 @app.route('/faq/')
