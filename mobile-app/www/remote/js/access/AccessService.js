@@ -35,10 +35,8 @@ function AccessService($localstorage, University, User, DeviceService, LoadingSe
 			User.checkAccess(payload).then(function(data) {
 				var data = data.plain()
 				if (success_func) {
-					if (DeviceService.isIOSDevice() || DeviceService.isAndroidDevice()) {
+					if (DeviceService.isAndroidDevice()) {
 						LoadingService.showMsg('Sorry! You will need another access code for the mobile apps. Please contact support@uguru.me with your access code included', 5000);
-					} else {
-						success_func(data);
 					}
 				}
 

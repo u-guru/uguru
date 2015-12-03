@@ -132,17 +132,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $state.go('^.guru-credibility');
   }
         var initGuruRankProgress = function(selector, color, fillColor, setValue) {
-          if (!$scope.selector) {
-            $scope.selector = selector;
-          } else {
-            return;
-          }
+          // if (!$scope.selector) {
+          //   $scope.selector = selector;
+          // } else {
+          //   return;
+          // }
 
-          elem = document.querySelector('#guru-ranking-progress-bar')
-          if (elem) {
-            console.log('circle already exists!');
-            return;
-          }
+          // elem = document.querySelector('#guru-ranking-progress-bar')
+          // if (elem) {
+          //   console.log('circle already exists!');
+          //   return;
+          // }
 
           var circle = new ProgressBar.Circle(selector, {
               color: color || "rgba(255,255,255,1)",
@@ -450,10 +450,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
           //mobile mode
-          if (!$scope.referralsModal && !$scope.desktopMode) {
+          if (!$scope.desktopMode) {
             $scope.initMobileModals();
-            $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-             animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+            $timeout(function() {
+              $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+            }, 1500)
           }
 
           // mobile tech instantiatio

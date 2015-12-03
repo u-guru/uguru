@@ -44,6 +44,10 @@ def catch_all(path):
         return redirect(request.url.replace('www.', ''))
     return redirect(url_for('new_home_page'))
 
+@app.route('/loading/')
+def loading():
+    return render_template("web/components/guru_loading.html")
+
 @app.route('/admin/stats/universities/info')
 def admin_statistics_universities_info():
     return render_template("admin/admin.stats.universities.info.html")
