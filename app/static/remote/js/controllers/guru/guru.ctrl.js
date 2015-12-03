@@ -415,6 +415,48 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $state.go(state_name);
         }
 
+
+        $scope.showBalanceModal = function() {
+          if ($scope.user && $scope.user.id) {
+            $scope.balanceModal.show()
+          } 
+          else {
+            LoadingService.showMsg('You need an account to do that!', 2500, 
+              function() {
+                  $scope.signupModal.show()
+              }
+            )
+          }
+        }
+
+        $scope.showProfileModal = function() {
+          if ($scope.user && $scope.user.id) {
+            $scope.profileModal.show();
+          } else {
+
+            LoadingService.showMsg('You need an account to do that!', 2500, 
+              function() {
+                  $scope.signupModal.show()
+              }
+            )
+
+          }
+        }
+
+        $scope.showCredibilityModal = function() {
+
+          if ($scope.user && $scope.user.id) {
+            $scope.credibilityModal.show();
+          } else {
+
+            LoadingService.showMsg('You need an account to do that!', 2500, 
+              function() {
+                  $scope.signupModal.show();
+              }
+            )
+          }
+        }
+
         $scope.$on('$ionicView.enter', function() {
 
 
