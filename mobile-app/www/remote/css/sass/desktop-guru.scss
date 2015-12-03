@@ -224,7 +224,34 @@
 .desktop-guru-onboarding {
 	.main {
 		.desktop-search-list {
+			#guru-courses-user-profile {
+				//Samir
+
+				display:flex !important;
+				justify-content: flex-start!important;
+				-webkit-justify-content: flex-start !important;
+
+				li.course-item.selected{
+					width:20% !important;
+					display:block !important;
+					a {
+						height:60px !important;
+						max-height:60px !important;
+						span {
+							font-size:16px;
+							margin-right:25% !important;
+						}
+						svg {
+							path {
+								transform: translate(60px, -25px) rotate(45deg) !important;
+							}
+						}
+					}
+				}
+				//endsamir
+			}
 			.desktop-card-list {
+
 				li {
 					display: none;
 					a {
@@ -1613,6 +1640,7 @@
 						}
 					}
 				}
+				//endsamir
 				li {
 					a, .skill-item-info a {
 						height: 127px!important;
