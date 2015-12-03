@@ -75,8 +75,9 @@ angular.module('uguru.util.controllers')
 
       // $scope.refresh.coursesLength = $scope.courses.length;
       // University.refresh();
-
     }
+
+
 
     $scope.alwaysTrue = true;
     $scope.shouldShowDelete = false;
@@ -123,11 +124,10 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.user.guru_courses.splice(index, 1);
-      $scope.courses.unshift(course);
 
-      updateDOM();
-
-
+      $scope.courses.push(course);
+      $scope.$apply();
+      // updateDOM();
 
       var confirmCallback = function() {
 
@@ -187,7 +187,7 @@ angular.module('uguru.util.controllers')
       $scope.user.guru_courses.push(course);
 
       $scope.search_text.course = '';
-      updateDOM();
+      // updateDOM();
 
 
       uTracker.track(tracker, 'Course Guru Added', {
@@ -211,7 +211,21 @@ angular.module('uguru.util.controllers')
       }
     };
 
+    if ($scope.desktopMode) {
 
+      $timeout(function() {
+      document.querySelector('#desktop-courses-save-button').addEventListener('click', function() {
+
+        LoadingService.showSuccess('Saved!', 1500);
+        $timeout(function() {
+          document.querySelector('#cta-modal-profile-courses').classList.remove('show');
+
+        }, 500);
+
+        });
+      }, 1500);
+
+    }
 
 
   }

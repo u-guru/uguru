@@ -2368,7 +2368,8 @@ section {
 			line-height: 1.2;
 			text-transform: none;
 		}
-		.guru-home-notifications {
+	}
+	.guru-home-notifications {
 			ul {
 				@include flex;
 				@include flex-wrap;
@@ -2406,7 +2407,6 @@ section {
 					}
 				}
 			}
-		}
 	}
 	.main {
 		height: 75%;
@@ -2832,7 +2832,7 @@ section {
 	// 				font-weight: 600;
 	// 				line-height: 1;
 	// 				text-align: center;
-	// 
+	//
 	// 				&::after {
 	// 					content: "th";
 	// 					display: block;

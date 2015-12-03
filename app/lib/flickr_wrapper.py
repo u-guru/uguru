@@ -15,18 +15,25 @@ def generate_flickr_url(farm_id, server_id, photo_id, secret):
 def search_university_response_api(university):
     response = flickr.photos.search(
         api_key=FLICKR_API_KEY,
-        # geo_context=2,
-        # tags="panorama,library, campus, panoramic, banner, landscape, %s " % university.name, #'building', university.city, university.state, university.school_casual_name, university.school_mascot_name],
-        # tags="college, students, panorama, campus, university, students, building, library, %s, " % (university.name),
-        # safe_search=1,
-        tag_mode='any',
-        content_type=1,
-        text=university.name + ' college campus',
         license="4,5,6,7",
+        content_type=1,
+        sort='relevance',
+
+        ###
+        ## university.name
+        ## university.city
+        ## university.state
+        ## university.short_name
+
+        ## ones that you can edit
+        # tags="college, students, panorama, campus, university, students, building, library, %s, " % (university.name),
+        tag_mode='any',
+        tags=university.name,
+        text=university.name,
+
         # lat=university.latitude,
         # lon=university.longitude,
         # radius=100,
-        sort='relevance',
         # has_geo=True,
         extras='description, tags, views',
         format='json')

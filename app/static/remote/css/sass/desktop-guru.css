@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ---------- CREDIBILITY */
 #desktop-credibility #credit-complete {
   -ms-box-orient: horizontal;
@@ -596,7 +597,7 @@
     -moz-transition: none !important;
     transition: none !important; }
   #desktop-guru-profile button.activated, #desktop-guru-profile button:active, #desktop-guru-profile button:hover, #desktop-guru-profile button:focus {
-    color: #958B8E !important; }
+    color: #69B3A5 !important; }
   #desktop-guru-profile #guru-profile-edit {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -617,7 +618,7 @@
     left: 0;
     width: 100%;
     height: 64px;
-    background: rgba(173, 166, 168, 0.9); }
+    background: rgba(139, 196, 185, 0.9); }
   #desktop-guru-profile #profile {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -656,7 +657,7 @@
       width: calc(100% / 3);
       height: 100%;
       padding: 15px;
-      background: #958B8E; }
+      background: #69B3A5; }
       #desktop-guru-profile #profile #profile-desc #profile-icon {
         border-radius: 1000px;
         margin: 15px auto;
@@ -748,6 +749,60 @@
             font-size: 16px; }
             #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-loc #profile-loc-city:not(:empty)::after {
               content: ", "; }
+          #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 400; }
+            #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:first-child {
+              padding: 10px 15px;
+              background: rgba(255, 255, 255, 0.7);
+              color: #3d796e; }
+            #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              width: 40px;
+              height: 40px;
+              padding: 5px;
+              background: white; }
+              #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a svg {
+                fill: none;
+                stroke-width: 5px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke: #3d796e;
+                width: 100%;
+                height: 100%; }
+              #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:hover, #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:focus {
+                background: #4e9b8c; }
+                #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:hover svg, #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:focus svg {
+                  stroke: white; }
+              #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:active {
+                background: #3d796e; }
+                #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:active svg {
+                  stroke: white; }
     #desktop-guru-profile #profile #profile-info {
       position: relative;
       width: calc(100% / 3 * 2);
@@ -761,7 +816,7 @@
       #desktop-guru-profile #profile #profile-info a.edit-button {
         margin: 8px 16px; }
       #desktop-guru-profile #profile #profile-info h1 {
-        background: rgba(149, 139, 142, 0.4);
+        background: rgba(105, 179, 165, 0.4);
         color: white;
         padding: 10px;
         font-size: 14px;
@@ -787,13 +842,13 @@
         -ms-flex-flow: row wrap;
         -webkit-flex-flow: row wrap;
         flex-flow: row wrap;
-        border-left: 1px solid rgba(149, 139, 142, 0.4);
-        border-right: 1px solid rgba(149, 139, 142, 0.4); }
+        border-left: 1px solid rgba(105, 179, 165, 0.4);
+        border-right: 1px solid rgba(105, 179, 165, 0.4); }
         #desktop-guru-profile #profile #profile-info ul li {
           width: 50%;
           text-align: center;
           padding: 15px;
-          border: 1px solid rgba(149, 139, 142, 0.4);
+          border: 1px solid rgba(105, 179, 165, 0.4);
           position: relative; }
           #desktop-guru-profile #profile #profile-info ul li .remove {
             position: absolute;
@@ -822,14 +877,165 @@
               padding: 10px; }
           #desktop-guru-profile #profile #profile-info ul li:nth-last-child(2) {
             border-bottom: 0 !important; }
-          #desktop-guru-profile #profile #profile-info ul li:last-child {
-            display: none; }
           #desktop-guru-profile #profile #profile-info ul li:nth-child(1), #desktop-guru-profile #profile #profile-info ul li:nth-child(2) {
             border-top: 0; }
           #desktop-guru-profile #profile #profile-info ul li:nth-last-child(2), #desktop-guru-profile #profile #profile-info ul li:nth-last-child(3):nth-child(odd), #desktop-guru-profile #profile #profile-info ul li:last-child:nth-child(even) {
             border-bottom: 0; }
           #desktop-guru-profile #profile #profile-info ul li:last-child:nth-child(even) {
             display: block; }
+      #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li h2 {
+        font-size: 28px !important;
+        font-weight: 700 !important; }
+      #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating {
+        width: 30%;
+        margin: 0 auto 10px;
+        border: 0 !important;
+        padding: 0 !important; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating li {
+          display: block !important;
+          width: 20%;
+          border: 0 !important;
+          padding: 0 !important; }
+          #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating li svg {
+            stroke-width: 7px; }
+            #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating li svg polygon:nth-child(2) {
+              filter: alpha(opacity=0);
+              opacity: 0;
+              stroke-width: 0;
+              fill: white; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="1"] li:nth-child(1) svg polygon {
+          fill: white; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2) {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="2"] li:nth-child(1) svg polygon, #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="2"] li:nth-child(2) svg polygon {
+          fill: white; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2) {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="3"] li:nth-child(1) svg polygon, #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="3"] li:nth-child(2) svg polygon, #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="3"] li:nth-child(3) svg polygon {
+          fill: white; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2) {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="4"] li:nth-child(1) svg polygon, #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="4"] li:nth-child(2) svg polygon, #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="4"] li:nth-child(3) svg polygon, #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="4"] li:nth-child(4) svg polygon {
+          fill: white; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2) {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-rating[data-rating="5"] li svg polygon {
+          fill: white; }
+      #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-desc {
+        text-transform: none;
+        margin-bottom: 10px;
+        width: 100%;
+        background: #40484B;
+        resize: none;
+        color: white;
+        font-size: 18px;
+        text-align: center; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-desc[disabled] {
+          background: none; }
+      #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price {
+        font-size: 24px;
+        font-weight: 700; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price.active {
+          display: none; }
+      #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit {
+        padding-top: 52px; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit:not(.active) {
+          display: none; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range]::-webkit-slider-thumb {
+          position: relative;
+          border-radius: 0;
+          margin-top: -64px;
+          width: 36px;
+          height: 36px; }
+          #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range]::-webkit-slider-thumb:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            content: "$5";
+            font-size: 18px;
+            font-weight: 600; }
+          #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range]::-webkit-slider-thumb:after {
+            content: "";
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: -36px;
+            width: 0;
+            height: 0;
+            border: 18px solid transparent;
+            border-top-color: white; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="0"]::-webkit-slider-thumb:before {
+          content: "‹ 1"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="5"]::-webkit-slider-thumb:before {
+          content: "$5"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="6"]::-webkit-slider-thumb:before {
+          content: "$6"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="7"]::-webkit-slider-thumb:before {
+          content: "$7"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="8"]::-webkit-slider-thumb:before {
+          content: "$8"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="9"]::-webkit-slider-thumb:before {
+          content: "$9"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="10"]::-webkit-slider-thumb:before {
+          content: "$10"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="11"]::-webkit-slider-thumb:before {
+          content: "$11"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="12"]::-webkit-slider-thumb:before {
+          content: "$12"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="13"]::-webkit-slider-thumb:before {
+          content: "$13"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="14"]::-webkit-slider-thumb:before {
+          content: "$14"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="15"]::-webkit-slider-thumb:before {
+          content: "$15"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="16"]::-webkit-slider-thumb:before {
+          content: "$16"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="17"]::-webkit-slider-thumb:before {
+          content: "$17"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="18"]::-webkit-slider-thumb:before {
+          content: "$18"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="19"]::-webkit-slider-thumb:before {
+          content: "$19"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="20"]::-webkit-slider-thumb:before {
+          content: "$20"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="21"]::-webkit-slider-thumb:before {
+          content: "$21"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="22"]::-webkit-slider-thumb:before {
+          content: "$22"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="23"]::-webkit-slider-thumb:before {
+          content: "$23"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="24"]::-webkit-slider-thumb:before {
+          content: "$24"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range][value="25"]::-webkit-slider-thumb:before {
+          content: "$25"; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range]::-webkit-slider-runnable-track {
+          height: 5px; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range]::-moz-range-track {
+          height: 5px; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit input[type=range]::-ms-track {
+          height: 5px; }
+        #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit ul {
+          padding: 0;
+          border: 0;
+          margin: 5px 0 0; }
+          #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit ul li {
+            display: block !important;
+            width: calc(100% / 3);
+            padding: 0;
+            border: 0; }
+            #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit ul li:first-child {
+              text-align: left; }
+            #desktop-guru-profile #profile #profile-info #profile-courses .profile-list li .profile-course-price-edit ul li:last-child {
+              text-align: right; }
       #desktop-guru-profile #profile #profile-info #profile-experiences ul {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -845,7 +1051,7 @@
           width: 100%;
           text-align: center;
           padding: 15px;
-          border: 1px solid rgba(149, 139, 142, 0.4);
+          border: 1px solid rgba(105, 179, 165, 0.4);
           position: relative; }
           #desktop-guru-profile #profile #profile-info #profile-experiences ul li a {
             height: auto;
@@ -868,7 +1074,7 @@
           #desktop-guru-profile #profile #profile-info #profile-experiences ul li .list-item-detail {
             width: 100% !important; }
       #desktop-guru-profile #profile #profile-info #profile-languages {
-        border-bottom: 2px solid rgba(149, 139, 142, 0.4); }
+        border-bottom: 2px solid rgba(105, 179, 165, 0.4); }
   #desktop-guru-profile ion-pane {
     position: absolute !important;
     top: 0;
@@ -960,12 +1166,12 @@
             height: 50px; }
     #desktop-guru-profile #guru-contact-container button.bg-cerise {
       background: white !important;
-      color: #958B8E !important; }
+      color: #69B3A5 !important; }
       #desktop-guru-profile #guru-contact-container button.bg-cerise:hover, #desktop-guru-profile #guru-contact-container button.bg-cerise:focus {
-        background: #a1989b !important;
+        background: #7abcaf !important;
         color: white !important; }
       #desktop-guru-profile #guru-contact-container button.bg-cerise:active, #desktop-guru-profile #guru-contact-container button.bg-cerise.activated {
-        background: #7c7174 !important;
+        background: #4e9b8c !important;
         color: white !important; }
   #desktop-guru-profile #cta-modal-profile-contact > div:last-child {
     height: 100%; }
@@ -980,13 +1186,13 @@
     position: absolute;
     left: 0;
     background: white !important;
-    color: #958B8E !important;
+    color: #69B3A5 !important;
     bottom: 140px; }
     #desktop-guru-profile #cta-modal-profile-skills button:hover, #desktop-guru-profile #cta-modal-profile-skills button:focus, #desktop-guru-profile #cta-modal-profile-courses button:hover, #desktop-guru-profile #cta-modal-profile-courses button:focus, #desktop-guru-profile #cta-modal-profile-languages button:hover, #desktop-guru-profile #cta-modal-profile-languages button:focus {
-      background: #a1989b !important;
+      background: #7abcaf !important;
       color: white !important; }
     #desktop-guru-profile #cta-modal-profile-skills button:active, #desktop-guru-profile #cta-modal-profile-skills button.activated, #desktop-guru-profile #cta-modal-profile-courses button:active, #desktop-guru-profile #cta-modal-profile-courses button.activated, #desktop-guru-profile #cta-modal-profile-languages button:active, #desktop-guru-profile #cta-modal-profile-languages button.activated {
-      background: #7c7174 !important;
+      background: #4e9b8c !important;
       color: white !important; }
   #desktop-guru-profile #cta-modal-profile-skills .subcategory button {
     bottom: 64px; }
@@ -1002,15 +1208,17 @@
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap; }
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(9),
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(10),
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(11),
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(12),
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(13),
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(14),
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(15),
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(16),
-  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:last-child:nth-child(even) {
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(9):not(.selected),
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(10):not(.selected),
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(11):not(.selected),
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(12):not(.selected),
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(13):not(.selected),
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(14):not(.selected),
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(15):not(.selected),
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(16):not(.selected),
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:last-child:nth-child(even):not(.selected) {
+    display: none !important; }
+  #desktop-guru-profile #cta-modal-profile-courses #courses-list li:last-child:nth-child(odd):not(.selected) {
     display: none !important; }
   #desktop-guru-profile #cta-modal-profile-languages #desktop-languages #main-logo {
     display: none; }
@@ -1048,7 +1256,7 @@
       #desktop-guru-profile #experience-modal div.main #exp-input {
         height: calc(100% - 295px) !important; }
       #desktop-guru-profile #experience-modal div.main .bg-campus-50p {
-        background: rgba(149, 139, 142, 0.5) !important; }
+        background: rgba(105, 179, 165, 0.5) !important; }
       #desktop-guru-profile #experience-modal div.main ul li {
         width: calc(100% / 3) !important; }
         #desktop-guru-profile #experience-modal div.main ul li:first-child {
@@ -1058,12 +1266,12 @@
           text-align: right !important; }
     #desktop-guru-profile #experience-modal button.bg-campus {
       background: white !important;
-      color: #958B8E !important; }
+      color: #69B3A5 !important; }
       #desktop-guru-profile #experience-modal button.bg-campus:hover, #desktop-guru-profile #experience-modal button.bg-campus:focus {
-        background: #a1989b !important;
+        background: #7abcaf !important;
         color: white !important; }
       #desktop-guru-profile #experience-modal button.bg-campus:active, #desktop-guru-profile #experience-modal button.bg-campus.activated {
-        background: #7c7174 !important;
+        background: #4e9b8c !important;
         color: white !important; }
   #desktop-guru-profile .profile-header h1, #desktop-guru-profile .pane .subcategory h1 {
     background: none !important;
@@ -1105,6 +1313,21 @@
       padding-bottom: 100px !important; }
   #desktop-guru-profile ion-pane #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a {
     height: 147px !important; }
+  #desktop-guru-profile ion-pane .desktop-search-list #guru-courses-user-profile {
+    display: flex !important;
+    justify-content: flex-start !important;
+    -webkit-justify-content: flex-start !important; }
+  #desktop-guru-profile ion-pane .desktop-search-list li.course-item.selected {
+    width: 20% !important;
+    display: block !important; }
+    #desktop-guru-profile ion-pane .desktop-search-list li.course-item.selected a {
+      height: 60px !important;
+      max-height: 60px !important; }
+      #desktop-guru-profile ion-pane .desktop-search-list li.course-item.selected a span {
+        font-size: 16px;
+        margin-right: 25% !important; }
+      #desktop-guru-profile ion-pane .desktop-search-list li.course-item.selected a svg path {
+        transform: translate(60px, -25px) rotate(45deg) !important; }
   #desktop-guru-profile ion-pane .desktop-search-list li a, #desktop-guru-profile ion-pane .desktop-search-list li .skill-item-info a {
     height: 127px !important; }
   #desktop-guru-profile #cta-modal-profile-courses button, #desktop-guru-profile #cta-modal-profile-skills button, #desktop-guru-profile #cta-modal-profile-languages button {
@@ -1167,7 +1390,7 @@
       text-align: center;
       text-transform: uppercase; }
       #desktop-guru-home .main .guru-home-greeting div h1 {
-        color: #958B8E;
+        color: #69B3A5;
         font-size: 40px;
         font-weight: 700; }
       #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul {
@@ -1233,13 +1456,17 @@
                 right: -15px;
                 width: 40px;
                 height: 40px;
-                background: #958B8E;
+                background: #69B3A5;
                 border: 3px solid #2B3234;
                 font-size: 18px;
                 font-weight: 600; }
             #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a .notification-type {
               padding-left: 15px;
               font-weight: 600; }
+          #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:hover .notification-icon svg, #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:focus .notification-icon svg {
+            background: #8bc4b9; }
+          #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:active .notification-icon svg {
+            background: #69B3A5; }
   #desktop-guru-home .main .guru-home-tiles {
     height: 100%;
     max-height: 715px;
@@ -1253,15 +1480,17 @@
       width: 100%;
       height: 100%;
       z-index: 5; }
+      #desktop-guru-home .main .guru-home-tiles .square + div h1 {
+        margin: 0 !important; }
       #desktop-guru-home .main .guru-home-tiles .square + div h2, #desktop-guru-home .main .guru-home-tiles .square + div h3 {
         padding: 15px 0;
         font-weight: 700;
         text-transform: uppercase; }
         #desktop-guru-home .main .guru-home-tiles .square + div h2 span, #desktop-guru-home .main .guru-home-tiles .square + div h3 span {
-          font-weight: 300; }
+          font-weight: 400; }
       #desktop-guru-home .main .guru-home-tiles .square + div h3 {
         padding-bottom: 0;
-        font-size: 20px; }
+        font-size: 18px; }
       #desktop-guru-home .main .guru-home-tiles .square + div progress {
         margin: 0 15px;
         width: calc(100% - 30px); }
@@ -1293,9 +1522,9 @@
           position: relative;
           height: 100%; }
           #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div .square {
-            fill: #bab3b5; }
+            fill: #9ccdc3; }
           #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div .square + div {
-            background: #bab3b5; }
+            background: #9ccdc3; }
           #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div h3 {
             padding-top: 0; }
           #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart {
@@ -1321,7 +1550,7 @@
               #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking {
                 position: relative;
                 margin-top: -30px;
-                font-size: 96px;
+                font-size: 84px;
                 font-weight: 600;
                 line-height: 1;
                 text-align: center; }
@@ -1329,8 +1558,8 @@
                   content: "th";
                   display: block;
                   position: absolute;
-                  top: 14px;
-                  right: -15px;
+                  top: 11px;
+                  right: -10px;
                   font-size: 20px;
                   font-weight: 600;
                   line-height: 28px;
@@ -1353,9 +1582,9 @@
           #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child {
             padding-bottom: 7.5px; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square {
-              fill: #958B8E; }
+              fill: #69B3A5; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square + div {
-              background: #958B8E; }
+              background: #69B3A5; }
               #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square + div svg {
                 fill: none;
                 stroke: white;
@@ -1388,10 +1617,10 @@
           #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child {
             padding-top: 7.5px; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child .square {
-              fill: #909090; }
+              fill: #809c97; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child .square + div {
               top: 7.5px;
-              background: #909090; }
+              background: #809c97; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child #home-tiles-earnings {
               -ms-box-orient: horizontal;
               display: -webkit-box;
@@ -1406,6 +1635,7 @@
               align-items: center;
               -webkit-justify-content: center;
               justify-content: center;
+              padding-top: 13px !important;
               font-size: 60px;
               font-weight: 700; }
     #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom {
@@ -1466,16 +1696,16 @@
           #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:first-child {
             padding-bottom: 7.5px; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:first-child .square {
-              fill: #9b858c; }
+              fill: #63b9a9; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:first-child .square + div {
-              background: #9b858c; }
+              background: #63b9a9; }
           #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:last-child {
             padding-top: 7.5px; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:last-child .square {
-              fill: #909090; }
+              fill: #809c97; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:last-child .square + div {
               top: 7.5px;
-              background: #909090; }
+              background: #809c97; }
       #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming {
         height: 100%;
         width: calc(100% / 3 * 2);
@@ -1484,9 +1714,9 @@
           position: relative;
           height: 100%; }
           #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square {
-            fill: #958B8E; }
+            fill: #69B3A5; }
           #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div {
-            background: #958B8E; }
+            background: #69B3A5; }
             #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div .slider {
               height: calc(100% - 58px); }
               #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div .slider .card {
@@ -1855,96 +2085,113 @@
       background: #00aced; }
 
 /* ---------- BALANCE */
-#desktop-balance .main aside {
-  background: #81B566; }
-  #desktop-balance .main aside .sidebar-layout-list {
-    height: calc(100% - 68px); }
-#desktop-balance .main aside + div {
-  padding: 15px; }
-  #desktop-balance .main aside + div > div {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    height: calc(100% - 79px);
-    width: 100%; }
-    #desktop-balance .main aside + div > div div {
+#desktop-balance .main {
+  height: 100% !important; }
+  #desktop-balance .main aside {
+    background: #81B566; }
+    #desktop-balance .main aside .sidebar-layout-list {
+      height: calc(100% - 68px); }
+  #desktop-balance .main aside + div {
+    padding: 15px; }
+    #desktop-balance .main aside + div > div {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      height: calc(100% - 79px);
       width: 100%; }
-      #desktop-balance .main aside + div > div div #balance-total {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        margin: 15px 0;
-        padding: 30px;
-        font-size: 96px;
-        font-weight: 900;
-        line-height: 1;
-        background: #40484B; }
-      #desktop-balance .main aside + div > div div h2 {
-        font-size: 32px;
-        font-weight: 600; }
-      #desktop-balance .main aside + div > div div ul {
-        margin: 15px -7.5px 0; }
-        #desktop-balance .main aside + div > div div ul li {
-          padding: 7.5px; }
-          #desktop-balance .main aside + div > div div ul li a {
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -ms-flex-flow: row wrap;
-            -webkit-flex-flow: row wrap;
-            flex-flow: row wrap;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            width: 100%;
-            height: 150px;
-            background: #40484B;
-            font-weight: 600; }
-            #desktop-balance .main aside + div > div div ul li a svg {
-              fill: none;
-              stroke: white;
-              stroke-width: 4px;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              width: 80px;
-              height: 80px; }
-            #desktop-balance .main aside + div > div div ul li a span {
-              display: block; }
-              #desktop-balance .main aside + div > div div ul li a span span {
-                padding-top: 10px;
-                padding-bottom: 10px; }
-#desktop-balance .main button {
-  font-weight: 600; }
+      #desktop-balance .main aside + div > div div {
+        width: 100%; }
+        #desktop-balance .main aside + div > div div #balance-total {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          margin: 15px 0;
+          padding: 30px;
+          font-size: 96px;
+          font-weight: 900;
+          line-height: 1;
+          background: #40484B; }
+        #desktop-balance .main aside + div > div div h2 {
+          font-size: 32px;
+          font-weight: 600; }
+        #desktop-balance .main aside + div > div div ul {
+          margin: 15px -7.5px 0; }
+          #desktop-balance .main aside + div > div div ul li {
+            padding: 7.5px; }
+            #desktop-balance .main aside + div > div div ul li a {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              width: 100%;
+              height: 150px;
+              background: #40484B;
+              font-weight: 600; }
+              #desktop-balance .main aside + div > div div ul li a svg {
+                fill: none;
+                stroke: white;
+                stroke-width: 4px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                width: 80px;
+                height: 80px; }
+              #desktop-balance .main aside + div > div div ul li a span {
+                display: block; }
+                #desktop-balance .main aside + div > div div ul li a span span {
+                  padding-top: 10px;
+                  padding-bottom: 10px; }
+  #desktop-balance .main button {
+    font-weight: 600; }
+  #desktop-balance .main .credit-card svg {
+    stroke-width: 0 !important;
+    width: 80px;
+    height: auto; }
+  #desktop-balance .main #credit-card-mastercard {
+    background: #292e2f; }
+  #desktop-balance .main #credit-card-amex {
+    background: #576267; }
+    #desktop-balance .main #credit-card-amex svg {
+      width: 50px;
+      height: 50px; }
+  #desktop-balance .main #credit-card-discover {
+    background: #F1F1F1; }
+    #desktop-balance .main #credit-card-discover * {
+      color: #2B3234 !important; }
 
 /* ---------- RANKING */
 #desktop-ranking .main aside,

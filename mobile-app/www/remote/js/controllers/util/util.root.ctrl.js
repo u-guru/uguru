@@ -266,6 +266,7 @@ angular.module('uguru.util.controllers')
                   $timeout(function() {
                         $scope.user = User.getLocal();
                         $scope.user.majors = [];
+                        $scope.user.guru_subcategories = [];
                         $scope.user.university = null;
                         $scope.user.university_id = null;
                         $scope.user.guru_courses = null;
@@ -706,6 +707,12 @@ angular.module('uguru.util.controllers')
             $timeout(function() {
                 LoadingService.hide();
             }, 1000);
+        }
+
+        if ((!$scope.LOCAL || !LOCAL) && console.log) {
+            console.log = function() {
+                return;
+            }
         }
 
 

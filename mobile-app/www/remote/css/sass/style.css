@@ -3016,7 +3016,7 @@ section {
   text-transform: none;
 }
 
-.guru-view header .guru-home-notifications ul {
+.guru-view .guru-home-notifications ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3032,12 +3032,12 @@ section {
   width: 100%;
 }
 
-.guru-view header .guru-home-notifications ul li {
+.guru-view .guru-home-notifications ul li {
   padding-left: 15px;
   padding-top: 5px;
 }
 
-.guru-view header .guru-home-notifications ul li a {
+.guru-view .guru-home-notifications ul li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3049,15 +3049,15 @@ section {
   align-items: center;
 }
 
-.guru-view header .guru-home-notifications ul li a span {
+.guru-view .guru-home-notifications ul li a span {
   display: block;
 }
 
-.guru-view header .guru-home-notifications ul li a .notification-icon {
+.guru-view .guru-home-notifications ul li a .notification-icon {
   position: relative;
 }
 
-.guru-view header .guru-home-notifications ul li a .notification-icon .notification-number {
+.guru-view .guru-home-notifications ul li a .notification-icon .notification-number {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -3081,7 +3081,7 @@ section {
   font-weight: 600;
 }
 
-.guru-view header .guru-home-notifications ul li a .notification-type {
+.guru-view .guru-home-notifications ul li a .notification-type {
   padding-left: 5px;
   font-weight: 600;
   font-size: 20px;

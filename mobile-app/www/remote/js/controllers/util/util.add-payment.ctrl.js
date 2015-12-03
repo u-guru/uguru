@@ -31,7 +31,6 @@
 
 
       $scope.cashoutUser = function() {
-      $scope.user.balance = 100;
       if ($scope.user.balance > 0) {
           var tempAmount = $scope.user.balance;
           LoadingService.showAmbig('Processing....', 5000);
@@ -273,9 +272,9 @@
             return "";
         }
 
-        $timeout(function() {
-          initHandlers();
-        })
+        // $timeout(function() {
+        //   initHandlers();
+        // })
 
   }
 

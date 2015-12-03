@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .desktop-input-close-icon {
   position: absolute;
   right: 10px;
@@ -61,9 +60,9 @@
 .mode-links {
   background: rgba(255, 255, 255, 0.75); }
   .mode-links span {
-    color: #958B8E; }
+    color: #69B3A5; }
   .mode-links svg {
-    stroke: #958B8E !important; }
+    stroke: #69B3A5 !important; }
 
 .progressbar-text {
   display: none !important; }
@@ -120,30 +119,21 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==");
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(50%, #282828), color-stop(50%, #141414));
-  background-image: -moz-linear-gradient(top left, #282828 50%, #141414 50%);
-  background-image: -webkit-linear-gradient(top left, #282828 50%, #141414 50%);
-  background-image: linear-gradient(to bottom right, #282828 50%, #141414 50%);
-  -moz-border-radius: 4px;
+  background: #2B3234;
   -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   border-radius: 4px;
   padding: 15px;
   color: white;
-  -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
   position: relative; }
-  .credit-card-wrapper .credit-card #visa {
+  .credit-card-wrapper .credit-card .card-type {
     float: right;
     clear: both; }
   .credit-card-wrapper .credit-card .card-number {
-    text-shadow: 1px 1px 0 black, 2px 2px 0 black;
     font-family: OCR-A, monospace;
     font-size: 14px;
     text-align: left;
-    color: #eee;
+    color: #F1F1F1;
     position: absolute;
     left: 10%;
     top: 50%; }
@@ -185,11 +175,6 @@
 .credit-card-wrapper .credit .credit-card:after {
   content: " ";
   display: table; }
-
-.guru-view-mobile .header-nav h1.balance-header {
-  padding-right: 15px !important; }
-.guru-view-mobile .header-nav svg.referral-icon {
-  padding-left: 5px; }
 
 body.platform-ios .mobile-referrals-modal a.header-close,
 body.platform-ios .mobile-balance-modal a.header-close {
@@ -298,5 +283,90 @@ body.platform-ios .guru-view-mobile .header-nav {
 #public-profile-url {
   font-size: 14px;
   padding-bottom: 12.5%; }
+
+.dark-shamrock-bg {
+  background-color: #3d796e !important; }
+
+.textarea-container ::-webkit-input-placeholder {
+  color: white;
+  font-weight: 500; }
+.textarea-container :-moz-placeholder {
+  /* Firefox 18- */
+  color: red;
+  font-weight: 500; }
+.textarea-container ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: red;
+  font-weight: 500; }
+.textarea-container :-ms-input-placeholder {
+  color: red;
+  font-weight: 500; }
+
+#cta-modal-support {
+  top: 64px !important; }
+  #cta-modal-support h1 {
+    background: none !important;
+    padding: 20px 15px !important;
+    margin-bottom: 0 !important;
+    font-size: 48px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0 !important;
+    text-align: center !important;
+    text-transform: none !important;
+    color: white; }
+  #cta-modal-support a.cta-modal-close {
+    width: auto;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    right: 0;
+    top: 0;
+    margin: 20px; }
+
+ion-pane #experience-modal #guru-experience-remove-button {
+  bottom: 115px;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  left: 0; }
+
+ul.mobile-cards-container li {
+  padding: 7.5px; }
+  ul.mobile-cards-container li a {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 80%;
+    left: 10%;
+    margin: 0 auto;
+    height: 150px;
+    background: #40484B;
+    font-weight: 600; }
+    ul.mobile-cards-container li a svg {
+      fill: none;
+      stroke: white;
+      stroke-width: 4px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      width: 80px;
+      height: 80px; }
+    ul.mobile-cards-container li a span {
+      display: block; }
+      ul.mobile-cards-container li a span span {
+        padding-top: 10px;
+        padding-bottom: 10px; }
 
 /*# sourceMappingURL=samir.css.map */

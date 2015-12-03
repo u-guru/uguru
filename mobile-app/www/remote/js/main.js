@@ -3,8 +3,8 @@ var LOCAL = _local || false; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
 
-var BASE_URL = 'https://www.uguru.me/production/app/';
-var REST_URL = 'https://www.uguru.me';
+var BASE_URL = 'https://uguru.me/production/app/';
+var REST_URL = 'https://uguru.me';
 
 var BASE = '';
 var img_base = '';
@@ -66,6 +66,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     };
 
   });
+
+
 
   //ASK-NICK: what does this mean?
   //NICK-SAYS: it means use native style animations whenever we rely on ionic animations. (ios styles for ios, android for android)
@@ -243,6 +245,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.profile-card', {
     url:'/profile-card',
     templateUrl: BASE + 'templates/profile.card.html'
+  }).
+  state('root.color-picker', {
+    url:'/color-picker',
+    templateUrl: BASE + 'templates/color.picker.html'
   }).
   state('root.guru-languages', {
     url:'/guru-languages',

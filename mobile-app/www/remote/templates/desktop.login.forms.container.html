@@ -3,7 +3,7 @@
                     Back
                 </a>
                 <header class="desktop-header hidden">
-                    <a class='cta-modal-close close-button desktop-header-next'>
+                    <a class='cta-modal-close close-button desktop-header-next' id='cta-desktop-signup-close'>
                         <svg viewBox="0 0 100 100">
                             <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                         </svg>
@@ -13,7 +13,7 @@
                     <h1 ng-if='root.vars.forgotPassword'>Forgot Password Form</h1>
                     <h1 ng-if='root.vars.loginMode && !root.vars.forgotPassword'>Login</h1>
                     <h1 ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>Create an Account!</h1>
-                    <form>
+                    <form onkeypress="return event.keyCode != 13;">
                         <div class="input-field relative" ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>
                             <input ng-model='signupForm.full_name' autocomplete="off" id='signup-name' type="text" class="validate txt-white">
                             <label for="Full Name">Full Name</label>

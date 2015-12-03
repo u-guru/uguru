@@ -1783,3 +1783,13 @@ button, a[class*=btn] {
 .intercom-launcher-hovercard {
 	display:none !important;
 }
+
+// add z-index so they are actually clickable
+#corner-menu-icons {
+	z-index:100;
+	li:hover {
+		opacity:0.5;
+		padding:10px;
+		margin:-10px;
+	}
+}

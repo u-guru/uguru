@@ -616,11 +616,13 @@ if arg == 'init_admin':
     from hashlib import md5
     from app.models import User
     admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    admin_emails = [_tuple[0] for _tuple in admin_accounts]
     u = University.query.get(2307)
 
     len_universities = len(University.query.all())
 
     for admin_account_tuple in admin_accounts:
+        continue
         account_email = admin_account_tuple[0]
         account_name = admin_account_tuple[1]
         user = User.query.filter_by(email=account_email.lower()).first()
@@ -630,14 +632,24 @@ if arg == 'init_admin':
             user.is_admin = True
             user.name = account_name
             user.password = md5('launchuguru123').hexdigest()
+            user.profile_code = account_name.split(' ')[0].lower()
+            user.referral_code = account_name.split(' ')[0].lower()
             db_session.commit()
             print "Account for %s successfully updated" % user.email
         else:
             user = User(name=account_name, email=account_email, password=md5('launchuguru123').hexdigest())
             user.university_id = u.id
             user.is_admin = True
+            user.profile_code = account_name.split(' ')[0].lower()
+            user.referral_code = account_name.split(' ')[0].lower()
             db_session.commit()
             print "Account for %s successfully created" % user.email
+    admin_users = User.query.filter_by(is_admin=True).all()
+    for user in admin_users:
+        if user.email.lower() not in admin_emails:
+            print user.email, 'is not an admin'
+            user.is_admin = False
+            db_session.commit()
 
 if arg == 'parse_uni':
     from app.lib.wikipedia import *
@@ -1525,3 +1537,153 @@ if arg =='mp_init':
                 from pprint import pprint
                 pprint(response)
 
+
+
+if arg =='-cc':
+    if not len(sys.argv) >= 5:
+        print 'insufficient args for create campaign arg'
+        sys.exit()
+
+    name = sys.argv[2]
+    university_id = int(sys.argv[3])
+    description = sys.argv[4]
+    from app.models import Campaign
+    c = Campaign.init(name, university_id, description)
+    print '%s successfully created' % c.name
+
+## print campaigns
+if arg =='-pca':
+    all_campaigns = Campaign.query.all()
+    for campaign in all_campaigns:
+        print campaign.id, campaign.name, campaign.description, len(campaign.recipients)
+
+## print campaigns
+if arg =='init_campaigns':
+    from random import randint
+    from app.models import User
+    from app.database import db_session
+    campaign_dict = {'1':[], '2':[], '3':[]};
+    all_users = User.query.all()
+    index = 0
+    print "starting.."
+    for u in all_users:
+        if not u.name or u.university_id != 2307:
+            if not u.name:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            if not u.referral_code and not u.profile_code:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            if u.name:
+                u.referral_code = None
+                u.profile_code = None
+                db_session.commit()
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            else:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+
+        if u.balance and u.university_id:
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
+            campaign_dict['1'].append({'first_name': u.getFirstName(), 'id':u.id, 'balance':u.balance,'courses':u.getGuruCourses(), 'email':u.email})
+        elif u.total_earned and not u.balance:
+            campaign_dict['2'].append({'first_name': u.getFirstName(), 'id':u.id, 'balance':u.total_earned,'courses':u.getGuruCourses(),  'email':u.email})
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
+        elif not u.total_earned and not u.balance and (u.guru_courses or u.guru_introduction):
+            campaign_dict['3'].append({'first_name': u.getFirstName(), 'id':u.id, 'courses':u.getGuruCourses(), 'email':u.email})
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
+        else:
+            u.referral_code = None
+            u.profile_code = None
+            db_session.commit()
+
+        index += 1
+        if index and index % 100 == 0:
+            print "Update %s of %s complete" % (index, len(all_users))
+
+if arg == 'update_uni':
+    from app.models import University
+    result_dict = {}
+    for u in University.query.all():
+        if u.banner_url_confirmed:
+            result_dict[str(u.id)] = {'banner_url': u.banner_url, 'logo_url': u.logo_url}
+    with open('updated_universities.json', 'wb') as fp:
+        json.dump(result_dict, fp, indent = 4)
+
+if arg == 'test_campaign':
+    from app.campaigns.guru_campaigns import *
+    test_recipient = {
+        'first_name': 'gabrielle',
+        'email': 'gabrielle@uguru.me',
+        'total_earned': 49, 
+        'balance': 54, 
+        'course_one': 'CS10',
+        'course_two': 'CS70'
+    }
+    html_template, subject = berkeleyCampaignTwoTemplate(test_recipient)
+    print "SUBJECT: %s \n\n" % subject
+    print "CONTENT: \n\n %s \n\n" % html_template
+
+
+    from app.emails import send_campaign_one
+    campaign = Campaign.query.get(4)
+    send_campaign_one([test_recipient], campaign, True)
+
+
+
+# from app.models import Campaign, User, Recipient
+# from app.database import db_session
+# all_users = User.query.all()
+# all_gurus = []
+# processed_gurus = []
+# for user in all_users:
+#     if user.profile_code and user.referral_code:
+#         all_gurus.append(user)
+# campaign = Campaign.init("Berkeley OG Gurus 1", 2307, description="Gurus with total earnings and no balance", directory_based=True)
+# for guru in all_gurus:
+#     if guru.balance and guru.university_id:
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+#         recipients.append(recipient)
+# campaign = Campaign.init("Berkeley OG Gurus 2", 2307, description="Gurus with total earnings but no balance", directory_based=True)
+# for guru in all_gurus:
+#     if guru.total_earned and not guru.balance:
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+#         recipients.append(recipient)
+# for recipient in recipients:
+#     recipient.campaign_id = campaign.id
+# campaign  = Campaign.init("Berkeley OG Gurus 3", 2307, description="Gurus that have added courses or an introduction", directory_based=True)
+# for guru in all_gurus:
+#     if not guru.total_earned and not guru.balance and (guru.guru_courses or guru.guru_introduction):
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+
+# for university in University.query.all():

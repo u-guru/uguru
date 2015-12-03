@@ -63,9 +63,62 @@
       .desktop-mode .desktop-header .skip-button:hover, .desktop-mode .desktop-header .skip-button:focus, .desktop-mode .desktop-header .skip-button:active {
         filter: alpha(opacity=100);
         opacity: 1; }
+  .desktop-mode #cta-box-support {
+    border-radius: 1000px;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    width: 48px;
+    height: 48px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.9); }
+    .desktop-mode #cta-box-support svg {
+      fill: none;
+      stroke: #2B3234;
+      stroke-width: 7px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
+    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-support:after {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .desktop-mode #cta-box-support:before {
+      content: "";
+      right: -20px;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-right-color: rgba(255, 255, 255, 0.9); }
+    .desktop-mode #cta-box-support:after {
+      content: "Support";
+      right: -108px;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #40484B; }
+    .desktop-mode #cta-box-support:hover, .desktop-mode #cta-box-support:focus {
+      background: #8bc4b9; }
+      .desktop-mode #cta-box-support:hover:before, .desktop-mode #cta-box-support:hover:after, .desktop-mode #cta-box-support:focus:before, .desktop-mode #cta-box-support:focus:after {
+        filter: alpha(opacity=100);
+        opacity: 1; }
+    .desktop-mode #cta-box-support:active {
+      background: #69B3A5; }
   .desktop-mode #top-bar {
     height: 64px;
-    background: #958B8E;
+    background: #69B3A5;
     padding: 0 15px; }
     .desktop-mode #top-bar div:nth-child(2) {
       -ms-box-orient: horizontal;
@@ -93,20 +146,100 @@
         -webkit-align-items: center;
         align-items: center;
         position: relative;
+        z-index: 13;
+        background: #69B3A5;
         margin: 0 auto;
         width: 100%;
         max-width: 1280px;
         height: 100%; }
-        .desktop-mode #top-bar div:nth-child(2) div.active {
-          z-index: 13;
-          background: #958B8E; }
+      .desktop-mode #top-bar div:nth-child(2) a:hover, .desktop-mode #top-bar div:nth-child(2) a:focus {
+        filter: alpha(opacity=80);
+        opacity: 0.8; }
+      .desktop-mode #top-bar div:nth-child(2) a:active {
+        filter: alpha(opacity=50);
+        opacity: 0.5; }
       .desktop-mode #top-bar div:nth-child(2) #top-logo {
         display: block;
-        width: calc(100% - 90px);
+        width: calc(100% - 212px);
         height: 100%; }
         .desktop-mode #top-bar div:nth-child(2) #top-logo svg {
           height: 100%;
           padding: 20px 0 15px; }
+      .desktop-mode #top-bar div:nth-child(2) .top-tooltip {
+        filter: alpha(opacity=100) !important;
+        opacity: 1 !important;
+        position: relative;
+        height: 64px;
+        width: 64px; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip.hide-tooltip:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip.hide-tooltip:after {
+          display: none; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:after {
+          -webkit-transition: all 0.15s ease-in-out;
+          -o-transition: all 0.15s ease-in-out;
+          -ms-transition: all 0.15s ease-in-out;
+          -moz-transition: all 0.15s ease-in-out;
+          transition: all 0.15s ease-in-out;
+          filter: alpha(opacity=0);
+          opacity: 0;
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+          z-index: 10; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:before {
+          content: "";
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border: 10px solid transparent;
+          border-bottom-color: rgba(255, 255, 255, 0.9); }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:after {
+          bottom: -40px;
+          padding: 10px 15px;
+          background: rgba(255, 255, 255, 0.9);
+          font-size: 14px;
+          font-weight: 600;
+          text-transform: uppercase;
+          color: #40484B; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover:after, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus:after {
+          filter: alpha(opacity=100);
+          opacity: 1; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover svg, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus svg {
+          filter: alpha(opacity=80);
+          opacity: 0.8; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip:active svg {
+          filter: alpha(opacity=50);
+          opacity: 0.5; }
+        .desktop-mode #top-bar div:nth-child(2) .top-tooltip svg {
+          -webkit-transition: all 0.15s ease-in-out;
+          -o-transition: all 0.15s ease-in-out;
+          -ms-transition: all 0.15s ease-in-out;
+          -moz-transition: all 0.15s ease-in-out;
+          transition: all 0.15s ease-in-out;
+          width: 100%;
+          height: 100%;
+          padding: 12px; }
+          .desktop-mode #top-bar div:nth-child(2) .top-tooltip svg path {
+            fill: none;
+            stroke: white;
+            stroke-width: 5px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+      .desktop-mode #top-bar div:nth-child(2) #cta-box-referrals {
+        margin-right: 3px; }
+        .desktop-mode #top-bar div:nth-child(2) #cta-box-referrals:after {
+          content: "Referrals"; }
+      .desktop-mode #top-bar div:nth-child(2) #top-menu-discover {
+        margin-right: -9px; }
+        .desktop-mode #top-bar div:nth-child(2) #top-menu-discover:after {
+          content: "Visibility"; }
+        .desktop-mode #top-bar div:nth-child(2) #top-menu-discover.active svg circle {
+          fill: white; }
+        .desktop-mode #top-bar div:nth-child(2) #top-menu-discover.active svg path {
+          stroke: #69B3A5; }
       .desktop-mode #top-bar div:nth-child(2) #top-settings {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -168,7 +301,7 @@
         z-index: 11;
         right: 0;
         top: 64px;
-        background: #958B8E;
+        background: #69B3A5;
         overflow: hidden; }
         .desktop-mode #top-bar div:nth-child(2) #top-menu-links.active {
           -webkit-transition: all 0.15s ease-in-out;
@@ -224,24 +357,15 @@
             .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus {
               background: white; }
               .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
-                color: #958B8E; }
+                color: #69B3A5; }
               .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
-                stroke: #958B8E; }
-            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active svg circle {
-              fill: white; }
-            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active svg path {
-              stroke: #958B8E; }
-            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:hover svg circle, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:active svg circle, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:focus svg circle {
-              stroke: #958B8E;
-              fill: #958B8E; }
-            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:hover svg path, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:active svg path, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a#top-menu-discover.active:focus svg path {
-              stroke: white; }
+                stroke: #69B3A5; }
           .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a {
             background: rgba(255, 255, 255, 0.75); }
             .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a span {
-              color: #958B8E; }
+              color: #69B3A5; }
             .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child a svg {
-              stroke: #958B8E; }
+              stroke: #69B3A5; }
           .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:focus {
             background: white; }
     .desktop-mode #top-bar .top-request-button #top-logo {
@@ -267,7 +391,7 @@
     height: 128px;
     width: 100%;
     max-width: 960px;
-    background: #958B8E; }
+    background: #69B3A5; }
     .desktop-mode .progress-bottom .progress {
       border-radius: 0; }
       .desktop-mode .progress-bottom .progress::-webkit-progress-value, .desktop-mode .progress-bottom .progress span {
@@ -752,10 +876,10 @@
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important,
       .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active {
         border-bottom-color: rgba(255, 255, 255, 0.8); }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after {
-        background: #DB1988; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count {
-        color: #DB1988; }
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn:active::after {
+        background: #F04F54; }
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-auburn .skill-count {
+        color: #F04F54; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange:active::after {
         background: #E5753C; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-orange .skill-count {
@@ -763,7 +887,7 @@
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after {
         background: #F9D57B; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold .skill-count {
-        color: #e4bd5d; }
+        color: #F9D57B; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after {
         background: #81B566; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola .skill-count {
@@ -780,10 +904,18 @@
         background: #50A5DD; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-lake .skill-count {
         color: #50A5DD; }
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt:active::after {
+        background: #7872e3; }
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cobalt .skill-count {
+        color: #7872e3; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant:active::after {
         background: #9A5BC5; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-eggplant .skill-count {
         color: #9A5BC5; }
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after {
+        background: #DB1988; }
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count {
+        color: #DB1988; }
 
 .subcategory {
   background: #2B3234; }
@@ -931,17 +1063,17 @@
   .subcategory:nth-child(2) ul li label {
     border-bottom-color: #F9D57B; }
   .subcategory:nth-child(2) ul li input:checked + label {
-    background: #e4bd5d; }
+    background: #F9D57B; }
   .subcategory:nth-child(2) ul li svg path {
-    stroke: #e4bd5d; }
+    stroke: #F9D57B; }
   .subcategory:nth-child(2) button:hover, .subcategory:nth-child(2) button:focus {
-    border-color: #e4bd5d !important;
-    background: #e4bd5d !important;
+    border-color: #F9D57B !important;
+    background: #F9D57B !important;
     color: white !important; }
   .subcategory:nth-child(2) button:active {
     border-color: white !important;
     background: white !important;
-    color: #e4bd5d !important; }
+    color: #F9D57B !important; }
   .subcategory:nth-child(5) ul li label {
     border-bottom-color: #81B566; }
   .subcategory:nth-child(5) ul li input:checked + label {
@@ -956,59 +1088,59 @@
     border-color: white !important;
     background: white !important;
     color: #81B566 !important; }
-  .subcategory:nth-child(7) ul li label {
-    border-bottom-color: #69B3A5; }
-  .subcategory:nth-child(7) ul li input:checked + label {
-    background: #69B3A5; }
-    .subcategory:nth-child(7) ul li input:checked + label svg path {
-      stroke: #69B3A5; }
-  .subcategory:nth-child(7) button:hover, .subcategory:nth-child(7) button:focus {
-    border-color: #69B3A5 !important;
-    background: #69B3A5 !important;
-    color: white !important; }
-  .subcategory:nth-child(7) button:active {
-    border-color: white !important;
-    background: white !important;
-    color: #69B3A5 !important; }
-  .subcategory:nth-child(3) ul li label {
-    border-bottom-color: #55A4B7; }
-  .subcategory:nth-child(3) ul li input:checked + label {
-    background: #55A4B7; }
-    .subcategory:nth-child(3) ul li input:checked + label svg path {
-      stroke: #55A4B7; }
-  .subcategory:nth-child(3) button:hover, .subcategory:nth-child(3) button:focus {
-    border-color: #55A4B7 !important;
-    background: #55A4B7 !important;
-    color: white !important; }
-  .subcategory:nth-child(3) button:active {
-    border-color: white !important;
-    background: white !important;
-    color: #55A4B7 !important; }
   .subcategory:nth-child(4) ul li label {
-    border-bottom-color: #50A5DD; }
+    border-bottom-color: #7872e3; }
   .subcategory:nth-child(4) ul li input:checked + label {
-    background: #50A5DD; }
+    background: #7872e3; }
     .subcategory:nth-child(4) ul li input:checked + label svg path {
-      stroke: #50A5DD; }
+      stroke: #7872e3; }
   .subcategory:nth-child(4) button:hover, .subcategory:nth-child(4) button:focus {
-    border-color: #50A5DD !important;
-    background: #50A5DD !important;
+    border-color: #7872e3 !important;
+    background: #7872e3 !important;
     color: white !important; }
   .subcategory:nth-child(4) button:active {
     border-color: white !important;
     background: white !important;
-    color: #50A5DD !important; }
+    color: #7872e3 !important; }
   .subcategory:nth-child(8) ul li label {
-    border-bottom-color: #9A5BC5; }
+    border-bottom-color: #55A4B7; }
   .subcategory:nth-child(8) ul li input:checked + label {
-    background: #9A5BC5; }
+    background: #55A4B7; }
     .subcategory:nth-child(8) ul li input:checked + label svg path {
-      stroke: #9A5BC5; }
+      stroke: #55A4B7; }
   .subcategory:nth-child(8) button:hover, .subcategory:nth-child(8) button:focus {
+    border-color: #55A4B7 !important;
+    background: #55A4B7 !important;
+    color: white !important; }
+  .subcategory:nth-child(8) button:active {
+    border-color: white !important;
+    background: white !important;
+    color: #55A4B7 !important; }
+  .subcategory:nth-child(3) ul li label {
+    border-bottom-color: #F04F54; }
+  .subcategory:nth-child(3) ul li input:checked + label {
+    background: #F04F54; }
+    .subcategory:nth-child(3) ul li input:checked + label svg path {
+      stroke: #F04F54; }
+  .subcategory:nth-child(3) button:hover, .subcategory:nth-child(3) button:focus {
+    border-color: #F04F54 !important;
+    background: #F04F54 !important;
+    color: white !important; }
+  .subcategory:nth-child(3) button:active {
+    border-color: white !important;
+    background: white !important;
+    color: #F04F54 !important; }
+  .subcategory:nth-child(7) ul li label {
+    border-bottom-color: #9A5BC5; }
+  .subcategory:nth-child(7) ul li input:checked + label {
+    background: #9A5BC5; }
+    .subcategory:nth-child(7) ul li input:checked + label svg path {
+      stroke: #9A5BC5; }
+  .subcategory:nth-child(7) button:hover, .subcategory:nth-child(7) button:focus {
     border-color: #9A5BC5 !important;
     background: #9A5BC5 !important;
     color: white !important; }
-  .subcategory:nth-child(8) button:active {
+  .subcategory:nth-child(7) button:active {
     border-color: white !important;
     background: white !important;
     color: #9A5BC5 !important; }
@@ -1231,8 +1363,8 @@
       margin-top: 0;
       margin-bottom: 30px; }
       #desktop-settings .main > div .input-field input:focus:not([readonly]) {
-        border-bottom: 1px solid #958B8E !important;
-        box-shadow: 0 1px 0 0 #958B8E !important; }
+        border-bottom: 1px solid #69B3A5 !important;
+        box-shadow: 0 1px 0 0 #69B3A5 !important; }
       #desktop-settings .main > div .input-field label:after {
         width: 500px; }
     #desktop-settings .main > div .ugrid-2 {
@@ -1256,7 +1388,7 @@
     top: 0;
     height: 64px;
     padding: 7px 10px;
-    background: #958B8E;
+    background: #69B3A5;
     max-width: none; }
   #desktop-messaging .main,
   #desktop-messaging .main.mobile-messages-container {
@@ -1733,12 +1865,12 @@
                 #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:hover:-ms-input-placeholder,
                 #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box input:focus:-ms-input-placeholder {
                   color: #757575; }
-      #desktop-messaging .main #messenger.bg-cerise #messenger-sidebar,
-      #desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-sidebar {
-        background: rgba(219, 25, 136, 0.5); }
-      #desktop-messaging .main #messenger.bg-cerise #messenger-content .messenger-header,
-      #desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-content .messenger-header {
-        background: #DB1988; }
+      #desktop-messaging .main #messenger.bg-auburn #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-auburn #messenger-sidebar {
+        background: rgba(240, 79, 84, 0.5); }
+      #desktop-messaging .main #messenger.bg-auburn #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-auburn #messenger-content .messenger-header {
+        background: #F04F54; }
       #desktop-messaging .main #messenger.bg-orange #messenger-sidebar,
       #desktop-messaging .main.mobile-messages-container #messenger.bg-orange #messenger-sidebar {
         background: rgba(229, 117, 60, 0.5); }
@@ -1775,12 +1907,24 @@
       #desktop-messaging .main #messenger.bg-lake #messenger-content .messenger-header,
       #desktop-messaging .main.mobile-messages-container #messenger.bg-lake #messenger-content .messenger-header {
         background: #50A5DD; }
+      #desktop-messaging .main #messenger.bg-cobalt #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-cobalt #messenger-sidebar {
+        background: rgba(120, 114, 227, 0.5); }
+      #desktop-messaging .main #messenger.bg-cobalt #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-cobalt #messenger-content .messenger-header {
+        background: #7872e3; }
       #desktop-messaging .main #messenger.bg-eggplant #messenger-sidebar,
       #desktop-messaging .main.mobile-messages-container #messenger.bg-eggplant #messenger-sidebar {
         background: rgba(154, 91, 197, 0.5); }
       #desktop-messaging .main #messenger.bg-eggplant #messenger-content .messenger-header,
       #desktop-messaging .main.mobile-messages-container #messenger.bg-eggplant #messenger-content .messenger-header {
         background: #9A5BC5; }
+      #desktop-messaging .main #messenger.bg-cerise #messenger-sidebar,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-sidebar {
+        background: rgba(219, 25, 136, 0.5); }
+      #desktop-messaging .main #messenger.bg-cerise #messenger-content .messenger-header,
+      #desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-content .messenger-header {
+        background: #DB1988; }
       #desktop-messaging .main #messenger.bg-campus #messenger-sidebar,
       #desktop-messaging .main.mobile-messages-container #messenger.bg-campus #messenger-sidebar {
         background: rgba(138, 158, 163, 0.5); }
@@ -2301,7 +2445,7 @@
     padding: 15px;
     font-weight: 600; }
     #desktop-request-guru header h2 span:first-child {
-      color: #958B8E; }
+      color: #69B3A5; }
     #desktop-request-guru header h2 span:last-child {
       font-size: 32px;
       font-weight: 700; }
@@ -2345,12 +2489,12 @@
   #desktop-request-guru .request-form .request-form-map {
     height: 305px; }
     #desktop-request-guru .request-form .request-form-map > div {
-      border-color: #958B8E; }
+      border-color: #69B3A5; }
       #desktop-request-guru .request-form .request-form-map > div ul {
-        background: #958B8E; }
+        background: #69B3A5; }
   #desktop-request-guru .request-form .request-form-date > div {
-    border-color: #958B8E;
-    color: #958B8E; }
+    border-color: #69B3A5;
+    color: #69B3A5; }
   #desktop-request-guru .request-form .request-form-upload {
     padding: 30px 0 0; }
     #desktop-request-guru .request-form .request-form-upload .input {

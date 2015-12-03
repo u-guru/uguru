@@ -267,9 +267,12 @@ angular.module('uguru.user', [])
         // user.summer_15 = false;
 
         var user_cards = user.cards || [];
+        console.log('processing cards', user.cards);
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
-
+            if (card.card_type) {
+                card.card_type = card.card_type.toLowerCase();
+            }
             //payment cards processing
             if (card.is_default_payment) {
                 user.default_payment_card = card;
@@ -278,7 +281,7 @@ angular.module('uguru.user', [])
                 user.payment_cards.push(card);
             }
             //transfer cards processing
-            if (card.is_transfer_card) {
+            if (card.is_transfer_card || card.is_bank_account) {
                 user.transfer_cards.push(card);
             }
             if (card.is_default_transfer) {
@@ -523,6 +526,8 @@ angular.module('uguru.user', [])
         $scope.user.id = user.id;
         $scope.user.name = user.name;
         $scope.user.first_name = user.name.split(' ')[0];
+        var user_name_split = user.name.split(' ');
+        $scope.user.profile_name = user.name.split(' ')[0] + ' ' + user_name_split[user_name_split.length - 1][0].toUpperCase() + '.';
         $scope.user.profile_url = user.profile_url;
         if ($scope.user.profile_url === 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100') {
             $scope.user.profile_url = img_base + BASE + "img/avatar.svg";
@@ -1326,7 +1331,7 @@ angular.module('uguru.user', [])
                                 callback_success($scope, $state);
                                 $timeout(function() {
                                     LoadingService.hide();
-                                }, 1500);
+                                }, 4000);
                             };
 
 

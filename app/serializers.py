@@ -215,7 +215,7 @@ card_fields['bank_last4'] = fields.String(attribute='bank_last4')
 card_fields['card_type'] = fields.String(attribute='card_type')
 card_fields['is_default_payment'] = fields.Boolean(attribute='is_default_payment')
 card_fields['is_default_transfer'] = fields.Boolean(attribute='is_default_transfer')
-card_fields['is_bank_card'] = fields.Boolean(attribute='is_bank_card')
+card_fields['is_bank_account'] = fields.Boolean(attribute='is_bank_account')
 card_fields['id'] = fields.Integer(attribute='id')
 card_fields['is_payment_card'] = fields.Boolean(attribute='is_payment_card')
 card_fields['is_transfer_card'] = fields.Boolean(attribute='is_transfer_card')
@@ -444,7 +444,7 @@ UserSerializer = {
     'first_degree_referrals': fields.Integer,
     'second_degree_referrals': fields.Integer,
     'referral_limit': fields.Integer,
-
+    'deactivated': fields.Boolean,
 }
 
 DeviceSerializer = {

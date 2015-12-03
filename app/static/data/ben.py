@@ -18,7 +18,7 @@ def uguruAPI(arg='', _json=None, _type='get'):
 		return requests.put(url=BASE_URL, data=json.dumps(_json), headers=headers).text
 
 	if _type =='post':
-		return requests.post(url=BASE_URL, data=json.dumps(_json), headers=headers).text
+		return requests.post(url=BASE_URL, data=json.dumps(_json), headers=headers, verify=False).text
 
 ## number of emails > 0, departments are sanitizied, courses are sanitized
 def getMostUpdatedUniversities():

@@ -14,13 +14,14 @@
 				</h1>
 				<h2 class="pf-school">{{user.university.short_name}}</h2>
 				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
 				<button class="btn-ghost-white">Contact</button>
 				<div class="pf-header-desc">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 				</div>
 				<ul class="pf-url">
 					<!-- BIND -->
-					<li>{{user.first_name}}.berkeley.uguru.me</li>
+					<li>{{user.profile_code || user.first_name}}.berkeley.uguru.me</li>
 					<li>
 						<button>
 							<svg viewBox="0 0 100 100">
@@ -35,15 +36,15 @@
 			<div class="pf-tabs">
 				<ul>
 					<li>
-						<a class="active">Samples</a>
+						<a ng-click='profileTabIndex = 0;' class="ng-class:{'active':profileTabIndex === 0 || !profileTabIndex}">Samples</a>
 					</li>
 					<li>
-						<a>Info</a>
+						<a ng-click='profileTabIndex = 1;' class="ng-class:{'active':profileTabIndex === 1}">Info</a>
 					</li>
 				</ul>
 			</div>
 			<!-- BIND -->
-			<div class="pf-shop-desc pf-tab-item">
+			<div class="pf-shop-desc pf-tab-item ng-class:{'active':profileTabIndex === 1}">
 				<h1>{{user.first_name}}'s Shop</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				<div class="pf-list p15top">
@@ -93,7 +94,7 @@
 					<button class="m10top btn-ghost-white">Read All Reviews</button>
 				</div>
 			</div>
-			<ul class="ugrid-2 pf-checklist pf-tab-item active">
+			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':profileTabIndex === 0 || !profileTabIndex}">
 				<li class="pf-checklist-full active pf-type-baking" ng-include="img_base + 'templates/profile.modal.bakery.html'"></li>
 				<li>
 					<div class="pf-check-container">

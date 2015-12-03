@@ -353,6 +353,25 @@ class User(Base):
             db_session.rollback()
             raise
 
+    def reactivateUser(self):
+        self.deactivated = False
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def getGuruCourses(self):
+        return " ".join([course.short_name for course in self.guru_courses])
+
+    def deactivateUser(self):
+        self.deactivated = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
     def create_password(self, password):
         self.password = flask_bcrypt.generate_password_hash(password)
         try:
@@ -517,8 +536,8 @@ class User(Base):
     @staticmethod
     def does_referral_exist(code):
         referral_exists = User.query.filter_by(referral_code = code).all()
-        if referral_exists:
-            return True
+        if referral_exists and len(referral_exists) == 1:
+            return referral_exists[0]
         return False
 
 
@@ -1062,6 +1081,12 @@ class Campaign(Base):
     sender_email = Column(String)
     sender_name = Column(String)
     mandrill_template_id = Column(String)
+    mandrill_tags = Column(String) # comma separated values
+    templated_args = Column(String)
+
+    directory_based = Column(Boolean)
+
+    description = Column(String)
 
     university_id = Column(Integer, ForeignKey('university.id'))
     university  = relationship("University",
@@ -1071,7 +1096,22 @@ class Campaign(Base):
     )
 
 
-
+    @staticmethod
+    def init(name, university_id, description=None, directory_based=True):
+        c = Campaign()
+        c.description = description
+        c.name = name
+        c.directory_based = directory_based
+        c.time_created = datetime.now()
+        try:
+            db_session.add(c)
+            db_session.commit()
+            c.university_id = university_id
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return c
 
 
 
@@ -2320,6 +2360,8 @@ class Email_User(Base):
     signed_up = Column(Boolean, default=False)
     num_clicks = Column(Integer, default = 0)
 
+
+
     def increment_clicks(self):
         self.num_clicks += 1
         try:
@@ -2368,17 +2410,19 @@ class Recipient(Base):
     affiliations = Column(String)
     title = Column(String)
 
+    campaign_args = Column(String)
+
     fb_id = Column(String)
 
     time_sent = Column(DateTime)
     time_opened = Column(DateTime)
 
-    # batch_id = Column(Integer, ForeignKey('batch.id'))
-    # batch = relationship("Batch",
-    #     uselist = False,
-    #     primaryjoin = "Batch.id == Recipient.batch_id",
-    #     backref = 'recipients'
-    # )
+    campaign_id = Column(Integer, ForeignKey('campaign.id'))
+    campaign = relationship("Campaign",
+        uselist = False,
+        primaryjoin = "Campaign.id == Recipient.campaign_id",
+        backref = 'recipients'
+    )
 
     university_id = Column(Integer, ForeignKey('university.id'))
     university = relationship("University",
@@ -2387,6 +2431,32 @@ class Recipient(Base):
         backref = 'recipients'
     )
     admin_account = Column(Boolean, default = False)
+
+    @staticmethod
+    def init(_dict):
+        r = Recipient()
+        r.university_id = _dict.get('university_id')
+        r.admin_account = _dict.get('admin_account')
+        r.time_opened = _dict.get('time_opened')
+        r.time_sent = _dict.get('time_sent')
+        r.fb_id = _dict.get('fb_id')
+        r.title = _dict.get('title')
+        r.major = _dict.get('string')
+        r.name = _dict.get('name')
+        r.first_name = _dict.get('first_name')
+        r.last_name = _dict.get('last_name')
+        r.email = _dict.get('email')
+        r.campaign_args = _dict.get('campaign_args')
+        try:
+            db_session.add(r)
+            db_session.commit()
+            r.campaign_id = _dict.get('campaign_id')
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return r
+
 
 class Skill(Base):
     __tablename__ = 'skill'
@@ -2900,8 +2970,15 @@ class Card(Base):
         self.is_cashout_card = is_cashout_card
 
     def __repr__(self):
-        return "<User Card '%r', '%r', '%r', '%r'>" %\
-              (self.id, self.user.name, self.card_type, \
+        card_type = 'NULL'
+        if self.is_transfer_card:
+            card_type = 'Debit Card  --- %s' % self.stripe_recipient_id
+        if self.is_bank_account:
+            card_type = 'Bank Account --- %s' % self.stripe_recipient_id
+        if self.is_payment_card:
+            card_type = 'Payment Card --- %s' % self.stripe_customer_id
+        return "\n<Card #%s: %s\n '%r', '%r', '%r'>\n\n" %\
+              (self.id, card_type, self.user.name, self.card_type, \
                 self.card_last4)
 
     @staticmethod

@@ -51,6 +51,28 @@ angular.module('uguru.guru.controllers')
       $scope.messagesModal = modal;
     });
 
+    $scope.experience = {name:'samir', years:7, description:"i lvoe teaching this so much"};
+
+    $scope.showEditGuruIntro = false;
+
+    $scope.toggleDesktopIntroduction = function() {
+      $scope.showEditGuruIntro = !$scope.showEditGuruIntro;
+
+      console.log('edit mode is currently', $scope.showEditGuruIntro);
+
+      if ($scope.showEditGuruIntro) {
+        var textArea = document.querySelector('#desktop-guru-introduction-textarea')
+        console.log('edit mode is currently', $scope.showEditGuruIntro, textArea);
+        if (textArea) {
+          textArea.focus();
+          textArea.select();
+        }
+      } else {
+        LoadingService.showSuccess('Saved!', 750);
+        $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
+      }
+    }
+
 
     // $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
 
@@ -67,6 +89,7 @@ angular.module('uguru.guru.controllers')
       LoadingService.showAmbig();
       $timeout(function() {
         if ($scope.user.school_email_confirmed) {
+          $scope.calcGuruCredibilityProgress();
           LoadingService.showSuccess($scope.user.school_email + ' confirmed', 1500);
         } else {
           if (confirm('Resend email to ' + $scope.user.school_email + '?')) {
@@ -102,7 +125,7 @@ angular.module('uguru.guru.controllers')
         $scope.credibilityProgress += 1;
       }
 
-      if ($scope.user.guru_experiences.length) {
+      if ($scope.user.guru_experiences && $scope.user.guru_experiences.length) {
         $scope.credibilityProgress += 1;
       }
 
@@ -131,6 +154,12 @@ angular.module('uguru.guru.controllers')
       $timeout(function() {
         textareaIntro.setSelectionRange(0, textareaIntro.value.length);
       }, 100)
+    }
+
+    $scope.editExperienceDesktopMode = function(experience) {
+      $scope.experience = experience;
+      var modalElem = document.querySelector('#cta-modal-profile-experiences');
+      modalElem.classList.add('show');
     }
 
     $scope.saveGuruIntroduction = function() {
@@ -311,6 +340,10 @@ angular.module('uguru.guru.controllers')
       }
     }
 
+    $scope.contactCTAButton = function() {
+      LoadingService.showMsg('Turn on edit below first!', 2000);
+    }
+
      $scope.launchAddTutoringPlatformsModal = function(experience) {
 
       $ionicModal.fromTemplateUrl(BASE + 'templates/guru.tutor-platforms.modal.html', {
@@ -371,10 +404,12 @@ angular.module('uguru.guru.controllers')
 
     $scope.closeAndSaveContactGuruModal = function() {
       LoadingService.showAmbig(null, 500, function() {
-        $scope.contactGuruModal.hide();
         LoadingService.showSuccess('Contact Methods Saved', 1500);
         $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
-      })
+        angular.element('#cta-modal-profile-contact').classList.remove('show');
+      });
+      var elemModal = document.querySelector('#cta-modal-profile-contact');
+      elemModal.classList.remove('show');
     }
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.introduction.modal.html', {
@@ -510,20 +545,26 @@ angular.module('uguru.guru.controllers')
         var successCallback = function() {
           LoadingService.hide();
           LoadingService.showSuccess('FB Account Saved', 2000);
+          $scope.calcGuruCredibilityProgress();
         }
         var failureCallback = function(err) {
-          LoadingService.hide();
+          // LoadingService.hide();
           if (err.status === 401) {
-            $scope.signupForm.password = '';
-            $scope.success.show(0, 1000, 'FB Account has another account - please contact support');
+            if ($scope.signupForm && $scope.signupForm.password) {
+              $scope.signupForm.password = '';
+            }
+            // $scope.success.show(0, 1000, 'FB Account has another account - please contact support');
           }
+          LoadingService.showMsg('Sorry! This FB account has another account - please contact support', 2000);
         }
         $scope.refreshTipsAndRanking($scope.user);
         $scope.user.updateAttr('fb_id', $scope.user, success.authResponse.accessToken, successCallback , $scope, failureCallback);
       }).catch(function(e)
       {
         console.log("FAIL");
-        $scope.loader.showMsg('Unable to Connect with Facebook', 0, 1500);
+        // LoadingService.showMsg('Sorry! This FB account has another account - please contact support', 2000);
+        // $scope.loader.showMsg('Unable to Connect with Facebook', 0, 1500);
+        LoadingService.hide();
 
       });
     }
@@ -673,8 +714,8 @@ angular.module('uguru.guru.controllers')
 
         LoadingService.show();
         callbackSuccess = function() {
-          LoadingService.hide();
-          $scope.success.show(0, 1500, 'Saved!');
+
+          LoadingService.showSuccess("Saved!", 2000)
         }
 
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
@@ -713,9 +754,11 @@ angular.module('uguru.guru.controllers')
         LoadingService.show();
         callbackSuccess = function() {
           LoadingService.hide();
+          $scope.calcGuruCredibilityProgress();
           LoadingService.showSuccess('Saved!', 1500);
         }
         $scope.root.vars.transcript_url_changed = true;
+        $scope.calcGuruCredibilityProgress();
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 
@@ -790,6 +833,7 @@ angular.module('uguru.guru.controllers')
             console.log('verify code confirm');
             var callbackSuccess = function() {
                 if ($scope.user.phone_number_confirmed)
+                  $scope.calcGuruCredibilityProgress();
                    $scope.loader.showMsg('Verification Code confirmed!',0, 2000)
              }
 
@@ -874,7 +918,6 @@ angular.module('uguru.guru.controllers')
           PopupService.initDefaults();
     });
 
-
     $timeout(function() {
       if (!$scope.desktopMode) {
         $scope.calcGuruCredibilityProgress();
@@ -885,7 +928,7 @@ angular.module('uguru.guru.controllers')
      $scope.$on('modal.hidden', function() {
         // console.error("ion modal leave  guru ctrl")
         // $ionicSlideBoxDelegate.update();
-
+        $scope.calcGuruCredibilityProgress();
         if (DeviceService.doesCordovaExist()) {
           cordova.plugins.Keyboard.close();
         }

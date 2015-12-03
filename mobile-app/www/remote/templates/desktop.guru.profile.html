@@ -20,7 +20,7 @@
 						<ul class='relative'>
 							<li id="profile-name">
 								<h1>
-									<span class="inline">{{user.name}}</span>
+									<span class="inline">{{user.profile_name}} </span>
 									<span class="inline">
 										<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 									</span>
@@ -28,38 +28,37 @@
 							</li>
 							<li id="profile-school">{{user.university.title}}</li>
 							<li id="profile-intro">
-								<div>
-									<textarea disabled>{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</textarea>
+								<div class='ng-class:{"textarea-container":!showEditGuruIntro}'>
+									<textarea placeholder="Add a unique intro about yourself" onclick="this.focus();this.select()" id='desktop-guru-introduction-textarea' ng-model='user.guru_introduction' class='ng-class:{"dark-shamrock-bg":showEditGuruIntro}'>{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</textarea>
 								</div>
 							</li>
 							<li>
-								<button class='btn-ghost-white m15top' ng-if='user.guru_introduction || user.guru_introduction.length' ng-click='launchGuruIntroductionModal()'>Edit Introduction</button>
-								<button class='btn-ghost-white m15top' ng-if='!user.guru_introduction || !user.guru_introduction.length' ng-click='launchGuruIntroductionModal()'>Add Introduction</button>
+								<button class='btn-ghost-white m15top ng-class:{"hide":showEditGuruIntro}' ng-if='user.guru_introduction || user.guru_introduction.length' ng-click='toggleDesktopIntroduction()'>Edit Introduction</button>
+								<button class='btn-ghost-white m15top ng-class:{"hide":showEditGuruIntro}' ng-if='!user.guru_introduction || !user.guru_introduction.length' ng-click='toggleDesktopIntroduction()'>Add Introduction</button>
+								<button class='btn-ghost-white m15top' ng-show='showEditGuruIntro'  ng-click='toggleDesktopIntroduction()'>Save</button>
 							</li>
 							<li>
 								<button id='cta-box-profile-contact' class='cta-box btn-ghost-white m15y'>Contact</button>
 							</li>
 							<li id='profile-footer'>
-								<ul>
-									<!-- BIND -->
-									<li>{{user.profile_code}}.berkeley.uguru.me</li>
+								<ul id='profile-code-list'>
+									<li><a style='color:#3d796e !important;' class='txt-shamrock' href='http://{{user.profile_code}}.uguru.me' target='_blank'>&nbsp;&nbsp;&nbsp;www.{{user.profile_code}}.uguru.me &nbsp;&nbsp;&nbsp;</a></li>
 									<li>
-										<button>
-											<svg viewBox="0 0 100 100">
-												<path d="M39.622,33.501 C38.571,38.761 38,44.289 38,50 L62.5,50 C62.5,44.27 61.925,38.725 60.867,33.449 C57.367,33.806 53.734,34 50,34 C46.441,34 42.971,33.826 39.622,33.501 Z M50,34 C53.734,34 57.367,33.806 60.867,33.449 C59.474,26.503 57.23,20.035 54.289,14.263 C52.882,14.096 51.453,14 50,14 C48.732,14 47.48,14.067 46.246,14.195 C43.281,19.999 41.02,26.507 39.622,33.501 C42.971,33.826 46.441,34 50,34 L50,34 Z M79.6093,29.531 C73.8803,21.259 64.7783,15.509 54.2893,14.263 C57.2293,20.035 59.4743,26.503 60.8673,33.449 C67.7573,32.746 74.1123,31.393 79.6093,29.531 L79.6093,29.531 Z M62.5,50 L86,50 C86,42.394 83.635,35.344 79.609,29.531 C74.112,31.393 67.757,32.746 60.867,33.449 C61.925,38.725 62.5,44.27 62.5,50 L62.5,50 Z M39.6221,66.4993 C42.9711,66.1743 46.4411,66.0003 50.0001,66.0003 C53.7341,66.0003 57.3671,66.1943 60.8671,66.5513 C61.9251,61.2753 62.5001,55.7303 62.5001,50.0003 L38.0001,50.0003 C38.0001,55.7113 38.5711,61.2393 39.6221,66.4993 L39.6221,66.4993 Z M46.2464,14.1951 C35.5314,15.3051 26.2174,21.1181 20.3904,29.5311 C26.0184,31.4371 32.5424,32.8131 39.6224,33.5011 C41.0194,26.5071 43.2814,19.9991 46.2464,14.1951 L46.2464,14.1951 Z M39.6221,33.5007 C32.5431,32.8127 26.0181,31.4367 20.3911,29.5307 C16.3651,35.3437 14.0001,42.3937 14.0001,49.9997 L38.0001,49.9997 C38.0001,44.2887 38.5711,38.7607 39.6221,33.5007 L39.6221,33.5007 Z M50,66 C46.441,66 42.971,66.174 39.622,66.499 C41.02,73.493 43.281,80.001 46.246,85.805 C47.48,85.933 48.732,86 50,86 C51.453,86 52.882,85.904 54.289,85.737 C57.23,79.965 59.474,73.497 60.867,66.551 C57.367,66.194 53.734,66 50,66 L50,66 Z M62.5,50 C62.5,55.73 61.925,61.275 60.867,66.551 C67.757,67.254 74.112,68.607 79.609,70.469 C83.635,64.656 86,57.606 86,50 L62.5,50 L62.5,50 Z M54.2893,85.7368 C64.7773,84.4908 73.8803,78.7408 79.6093,70.4688 C74.1123,68.6078 67.7573,67.2538 60.8673,66.5508 C59.4743,73.4968 57.2293,79.9648 54.2893,85.7368 L54.2893,85.7368 Z M20.3907,70.469 C26.2177,78.882 35.5317,84.695 46.2467,85.805 C43.2817,80.001 41.0197,73.493 39.6217,66.499 C32.5427,67.187 26.0177,68.563 20.3907,70.469 L20.3907,70.469 Z M38,50 L14,50 C14,57.606 16.365,64.656 20.391,70.469 C26.018,68.563 32.543,67.187 39.622,66.499 C38.571,61.239 38,55.711 38,50 L38,50 Z"></path>
-											</svg>
-										</button>
+										<a href='http://{{user.profile_code}}.uguru.me' target='_blank' class='bg-white'>
+											<i class='icon ion-arrow-graph-up-right txt-shamrock' style='font-size:35px;'></i>
+										</a>
 									</li>
 								</ul>
 							</li>
 						</ul>
 					</nav>
 				</div>
+
 			</div>
 			<div id="profile-info">
 				<div class="profile-inside">
 					<div class="profile-header">
-						<h1>Profile</h1>
+						<h1>My Profile</h1>
 						<a class='cta-modal-close close-button'>
 							<svg viewBox="0 0 100 100">
 								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -67,7 +66,7 @@
 						</a>
 					</div>
 					<div id="profile-courses" class="relative">
-						<a class='edit-button right-0 absolute cta-box' id='cta-box-profile-courses' ng-show='profile.edit_mode'> Edit </a>
+						<a class='edit-button right-0 absolute cta-box' id='cta-box-profile-courses' ng-show='profile.edit_mode'> Add </a>
 						<h1>Courses You Can Guru</h1>
 						<div>
 							<ul class='courses profile-list profile-list-half'>
@@ -76,7 +75,7 @@
 									<!-- BIND -->
 									<!-- data-rating should be the first whole number for the rating -->
 									<!-- data-half should be true if the rating has a decimal point -->
-									<ul class="profile-course-rating" data-rating="4" data-half="true">
+									<ul class="profile-course-rating" data-rating="4" data-half="true" ng-if='false'>
 										<li>
 											<svg viewBox="0 0 100 100">
 											    <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
@@ -110,10 +109,12 @@
 									</ul>
 									<!-- BIND -->
 									<!-- .active on edit mode -->
-									<textarea class="profile-course-desc" disabled>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</textarea>
+									<textarea ng-if='false' class="profile-course-desc ng-class:{'active':profile.edit_mode}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</textarea>
 									<!-- .active on edit mode -->
-									<h3 class="profile-course-price">$15/hour</h3>
+									<h3 ng-if='false' class="profile-course-price ng-class:{'active':profile.edit_mode}">$15/hour</h3>
 									<!-- .active on edit mode -->
+									<div ng-if='false' class="profile-course-price-edit ng-class:{'active':profile.edit_mode}">
+										<input type="range" class='full-x' name="volume" min="5" max="25" value="15" ng-model='experience.years'>
 									<div class="profile-course-price-edit">
 										<input type="range" class='full-x' name="volume" min="5" max="25" value="15">
 										<ul class="ugrid-3 price-label">
@@ -136,11 +137,11 @@
 					</div>
 					<div id="profile-experiences">
 						<a id='cta-box-profile-experiences' class='cta-box edit-button right-0 absolute' ng-show='profile.edit_mode'> Edit </a>
-						<h1>Experience</h1>
+						<h1>My Past Experiences</h1>
 						<div>
 							<ul class="experience profile-list list with-icon">
-								<li ng-repeat='experience in user.guru_experiences | orderBy:"-id":true'>
-									<a ng-click='launchAddGuruExperienceModal(experience,$index)'>
+								<li ng-repeat='experience in user.guru_experiences'>
+									<a ng-click='editExperienceDesktopMode(experience)'>
 										<span class="list-item-detail">
 											<h2>{{experience.name}}</h2>
 											<span>{{experience.years}} years</span>
@@ -170,7 +171,6 @@
 								<li ng-repeat='subcategory in user.guru_subcategories'>
 									<span class=''>{{subcategory.name}}</span>
 								</li>
-								<li></li>
 							</ul>
 							<ul class="empty" ng-if="!user.guru_subcategories.length && !profile.edit_mode">
 								<li>
@@ -191,19 +191,19 @@
 								</li>
 								<li></li>
 							</ul>
-							<ul class="empty" ng-if="!user.guru_languages.length && !profile.edit_mode">
+							<!-- <ul class="empty" ng-if="!user.guru_languages.length && !profile.edit_mode">
 								<li>
 									<span>
 										<em>No languages added</em>
 									</span>
 								</li>
-							</ul>
+							</ul> -->
 						</div>
 					</div>
 
 					<ion-pane id='cta-modal-profile-contact' class='full-xy hide-display cta-modal'>
 						<div class="profile-header">
-							<h1>Your Communication Preferences </h1>
+							<h1>My Communication Preferences </h1>
 							<a class="cta-modal-close close-button">
 								<svg viewBox="0 0 100 100">
 									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -228,7 +228,7 @@
 
 					<ion-pane id='cta-modal-profile-courses' class='full-xy hide-display cta-modal' ng-controller='CoursesController'>
 						<div class="profile-header">
-							<h1>Courses I can Guru</h1>
+							<h1>{{user.university.short_name || user.university.name}} courses</h1>
 							<a class="cta-modal-close close-button">
 								<svg viewBox="0 0 100 100">
 									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>

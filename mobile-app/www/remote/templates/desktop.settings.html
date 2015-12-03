@@ -1,4 +1,7 @@
 <ion-view class='uguru-view guru-view settings-view'>
+	<a href='#/guru-home' nav-direction="enter" class="cta-modal-close close-button m20xy absolute full-x left-0" style='top:80px; color:white; z-index:1000;'>
+		Back
+	</a>
 	<main id='desktop-settings' class="desktop-mode ng-class{'student-mode':!root.vars.guru_mode}" ng-show='isDesktopMode()'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default">

@@ -29,6 +29,25 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## Bens Views ##
 ################
 
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    if 'www.' in request.url:
+        return redirect(request.url.replace('www.', ''))
+    print request.url.replace('sam', '')
+    return redirect(url_for('new_home_page'))
+
+@app.route('/', defaults={'path': ''}, subdomain='www')
+@app.route('/<path:path>', subdomain='www')
+def catch_all(path):
+    if 'www.' in request.url:
+        return redirect(request.url.replace('www.', ''))
+    return redirect(url_for('new_home_page'))
+
+@app.route('/loading/')
+def loading():
+    return render_template("web/components/guru_loading.html")
+
 @app.route('/admin/stats/universities/info')
 def admin_statistics_universities_info():
     return render_template("admin/admin.stats.universities.info.html")
@@ -40,6 +59,17 @@ def admin_statistics_users_completed():
 
     return render_template("admin/admin.stats.universities.complete.html", \
         universities = prepared_universities)
+
+@app.route('/admin/stats/universities/campaigns')
+def admin_statistics_users_campaigns():
+    campaigns = Campaign.query.all()
+    return render_template("admin/admin.stats.universities.campaign.html", \
+        campaigns=campaigns)
+
+@app.route('/admin/stats/universities/campaigns/<c_id>')
+def admin_stats_campaigns(c_id):
+    campaign = Campaign.query.get(c_id)
+    return render_template("admin/admin.stats.universities.campaign.one.html", campaign=campaign)
 
 @app.route('/admin/stats/universities/complete/banners')
 def admin_statistics_users_complete_banners():
@@ -175,7 +205,7 @@ def ben_data_todo():
         "Test that it works & will increase the total # significantly (or more significant than the other fields",
         "Calculate the total # of schools expected to be prepared",
         "Run it locally",
-        "Let Samir know that you have another script ready. Ready means that: <br> <br> <b>1. You know the <u>EXACT</u> # of schools prepared after you run this with https://www.uguru.me <br>2. You have already run it locally && are 100% confident it works<br></b>",
+        "Let Samir know that you have another script ready. Ready means that: <br> <br> <b>1. You know the <u>EXACT</u> # of schools prepared after you run this with https://uguru.me <br>2. You have already run it locally && are 100% confident it works<br></b>",
         "If Samir approves, run it with production server",
         "Pull production server && update your local one <br><br> <i> Cut && paste this into your terminal w/o outside quotes </i><br><br> >>   heroku pg:backups capture --app uguru-rest <br><br> >> curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` <br><br> >> pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump",
         "Cleanup your code - if you have any questions where things should be organized ask -- if i dont reply, move on.",
@@ -193,6 +223,15 @@ def admin_stats_remaining():
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
+
+
+@app.route('/admin/team/accounts/')
+def admin_acounts():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    admin_users = User.query.filter_by(is_admin=True).all()
+
+    return render_template("admin/admin.users.universities.html", admin_users=admin_users)
 
 @app.route('/admin/')
 @app.route('/admin/team/action-items')
@@ -278,19 +317,36 @@ def admin_devices():
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
     user_profile_exists = User.query.filter_by(profile_code=username).all()
+    if username == "www":
+        print 'redirecting to ' + request.url.replace("www.", "")
+        return redirect(request.url.replace("www.", ""))
     if not user_profile_exists:
         return redirect(url_for('new_home_page'))
     if 'mandrill' == username and request.method == 'HEAD' or request.method == "POST":
         return "200"
-    if 'www' == username:
-        return render_template("web/index.html")
+    return render_template("web/pages/profile.html", user=user_profile_exists[0])
+
+@app.route('/profile/<username>')
+def profile_page_new_view(username):
+    user_profile_exists = User.query.filter_by(profile_code=username).all()
+    if not user_profile_exists:
+        return redirect(url_for('new_home_page'))
     return render_template("web/pages/profile.html", user=user_profile_exists[0])
 
 @app.route('/')
 def new_home_page():
     return render_template("web/index.html")
 
+# @app.route('/', subdomain='www')
+# def new_home_page_www():
+#     return render_template("web/index.html")
 
+@app.route('/terms/')
+def terms():
+    import httpagentparser
+    print httpagentparser.simple_detect(request.user_agent.string)
+    print httpagentparser.detect(request.user_agent.string)
+    return render_template("web/pages/terms.html")
 
 
 @app.route('/faq/')
@@ -341,28 +397,28 @@ def support_only():
 
 
 
-@app.route('/admin/stats/campaigns/')
-def admin_stats_campaigns():
-    ### all logic
-    import requests, json
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
+# @app.route('/admin/stats/campaigns/')
+# def admin_stats_campaigns():
+#     ### all logic
+#     import requests, json
+#     if not session.get('admin'):
+#         return redirect(url_for('admin_login'))
 
-    from lib.mailgun import get_all_university_progress
-    results_arr, no_results_arr = get_all_university_progress()
+#     from lib.mailgun import get_all_university_progress
+#     results_arr, no_results_arr = get_all_university_progress()
 
-    from pprint import pprint
-    pprint(results_arr)
+#     from pprint import pprint
+#     pprint(results_arr)
 
-    results_arr = sorted(results_arr, key=lambda u:int(u['rank']))
-    no_results_arr = sorted(no_results_arr, key=lambda u:int(u['rank']))
-    _sum = sum([uni['count'] for uni in results_arr])
-    not_scrapeable = []
+#     results_arr = sorted(results_arr, key=lambda u:int(u['rank']))
+#     no_results_arr = sorted(no_results_arr, key=lambda u:int(u['rank']))
+#     _sum = sum([uni['count'] for uni in results_arr])
+#     not_scrapeable = []
 
-    ### take all the information & inject it into the html
+#     ### take all the information & inject it into the html
 
-    return render_template("admin/admin.stats.campaigns.html", university_arr=results_arr, sum=_sum, \
-        remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
+#     return render_template("admin/admin.stats.campaigns.html", university_arr=results_arr, sum=_sum, \
+#         remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
 
 
 
@@ -882,17 +938,17 @@ def one_university_mobile(name):
     else:
         return redirect(url_for('app_flex'))
 
-@app.route('/admin/stats/universities/<uni_id>/<uni_name>')
-def get_logo_url(uni_id,uni_name):
+# @app.route('/admin/stats/universities/<uni_id>/<uni_name>')
+# def get_logo_url(uni_id,uni_name):
 
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    # def html_image_string(urls):
-    #     return '<img src="%s" alt="Smiley face" height="auto" width="%s">' % (urls, '100%')
+#     if not session.get('admin'):
+#         return redirect(url_for('admin_login'))
+#     # def html_image_string(urls):
+#     #     return '<img src="%s" alt="Smiley face" height="auto" width="%s">' % (urls, '100%')
 
-    university = University.query.get(uni_id)
-    from college_logo import scrape_logo_url_from_google
-    arr = scrape_logo_url_from_google(uni_name)
+#     university = University.query.get(uni_id)
+#     from college_logo import scrape_logo_url_from_google
+#     arr = scrape_logo_url_from_google(uni_name)
 
 
 
@@ -942,7 +998,7 @@ def android_app():
 
 @app.route('/windows/app/')
 def windows_app():
-    return redirect('https://www.windowsphone.com/en-us/store/app/uguru/8df574bc-cbdd-4d6c-af3f-a7b2fe259494')
+    return redirect('https://www.microsoft.com/en-us/store/apps/uguru/9nblggh2pgqv')
 
 @app.route('/apps/transit/')
 def app_route_transit():
@@ -954,7 +1010,7 @@ def app_route_transit():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/transit-remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://uguru.me/static/transit-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/transit-remote/index.html?version=' + str(version) + str(02323))
@@ -969,7 +1025,7 @@ def app_route_sound():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/sound-remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://uguru.me/static/sound-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/sound-remote/index.html?version=' + str(version) + str(02323))
@@ -984,7 +1040,7 @@ def app_route_grub():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/grub-remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://uguru.me/static/grub-remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/grub-remote/index.html?version=' + str(version) + str(02323))
@@ -1018,8 +1074,17 @@ def user_admin_login_user(user_id=None):
     else:
         return redirect('http://localhost:8100?admin_token=fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6&user_id=' + str(user_id))
 
+@app.route('/production/app/', subdomain='www')
+@app.route('/app/production/', subdomain='www')
+@app.route('/desktop/app/', subdomain='www')
+@app.route('/app/', subdomain='www')
+def app_route_www():
+    return redirect(url_for('app_route'))
+
+
 @app.route('/production/app/')
 @app.route('/app/production/')
+@app.route('/desktop/app/')
 @app.route('/app/')
 def app_route():
 
@@ -1033,7 +1098,7 @@ def app_route():
         version = 1
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('https://www.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         return redirect('/static/remote/index.html')

@@ -224,7 +224,34 @@
 .desktop-guru-onboarding {
 	.main {
 		.desktop-search-list {
+			#guru-courses-user-profile {
+				//Samir
+
+				display:flex !important;
+				justify-content: flex-start!important;
+				-webkit-justify-content: flex-start !important;
+
+				li.course-item.selected{
+					width:20% !important;
+					display:block !important;
+					a {
+						height:60px !important;
+						max-height:60px !important;
+						span {
+							font-size:16px;
+							margin-right:25% !important;
+						}
+						svg {
+							path {
+								transform: translate(60px, -25px) rotate(45deg) !important;
+							}
+						}
+					}
+				}
+				//endsamir
+			}
 			.desktop-card-list {
+
 				li {
 					display: none;
 					a {
@@ -769,7 +796,7 @@
 								color: darken($gabrielle, 20%);
 							}
 							li:last-child {
-								button {
+								a {
 									@include flex;
 									@include flex-center;
 									width: 40px;
@@ -855,9 +882,10 @@
 					&:nth-last-child(2) {
 						border-bottom: 0!important;
 					}
-					&:last-child {
-						display: none;
-					}
+					// @gabrielle -- this hide the whole experiences
+					// &:last-child {
+					// 	display: none;
+					// }
 					&:nth-child(1), &:nth-child(2) {
 						border-top: 0;
 					}
@@ -1433,15 +1461,18 @@
 			}
 		}
 		#courses-list {
-			li:nth-child(9),
-			li:nth-child(10),
-			li:nth-child(11),
-			li:nth-child(12),
-			li:nth-child(13),
-			li:nth-child(14),
-			li:nth-child(15),
-			li:nth-child(16),
-			li:last-child:nth-child(even) {
+			li:nth-child(9):not(.selected),
+			li:nth-child(10):not(.selected),
+			li:nth-child(11):not(.selected),
+			li:nth-child(12):not(.selected),
+			li:nth-child(13):not(.selected),
+			li:nth-child(14):not(.selected),
+			li:nth-child(15):not(.selected),
+			li:nth-child(16):not(.selected),
+			li:last-child:nth-child(even):not(.selected) {
+				display: none!important;
+			}
+			li:last-child:nth-child(odd):not(.selected) {
 				display: none!important;
 			}
 		}
@@ -1581,10 +1612,35 @@
 		ion-pane {
 			#desktop-skills {
 				.main #skills-list .desktop-card-list li .skill-item-info a {
+
 					height: 147px!important;
 				}
 			}
 			.desktop-search-list {
+				//Samir
+				#guru-courses-user-profile {
+					display:flex !important;
+					justify-content: flex-start!important;
+					-webkit-justify-content: flex-start !important;
+				}
+				li.course-item.selected{
+					width:20% !important;
+					display:block !important;
+					a {
+						height:60px !important;
+						max-height:60px !important;
+						span {
+							font-size:16px;
+							margin-right:25% !important;
+						}
+						svg {
+							path {
+								transform: translate(60px, -25px) rotate(45deg) !important;
+							}
+						}
+					}
+				}
+				//endsamir
 				li {
 					a, .skill-item-info a {
 						height: 127px!important;

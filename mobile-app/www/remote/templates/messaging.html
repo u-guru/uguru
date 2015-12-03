@@ -19,7 +19,7 @@
 						<li  ng-repeat='relationship in user.student_relationships|filter:student_search.search_text:strict'  ng-click='setToActiveRelationship(relationship)'>
 							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
 								<span class="messenger-icon">
-									<img ng-src='{{relationship.student.profile_url}}'>
+									<img height='50' width='50' style='border-radius:1000px;' ng-src='{{relationship.student.profile_url}}'>
 								</span>
 								<span class="messenger-label">{{relationship.student.name}}</span>
 							</a>
@@ -38,8 +38,8 @@
 				<div id="messenger-content">
 					<div class="messenger-header">
 						<h1>{{active_relationship.student.name}}</h1>
-						<div id="message-search">
-							<input placeholder="Search anything" placeholder="Filter" ng-model='active_relationship.search_text' class='active' />
+						<div id="message-search" ng-if='false'>
+							<input ng-if='false'placeholder="Search anything" placeholder="Filter" ng-model='active_relationship.search_text' />
 							<!-- BIND -->
 							<a>
 								<svg viewBox="0 0 100 100">
@@ -48,7 +48,7 @@
 							</a>
 						</div>
 						<!-- BIND -->
-						<nav id="message-nav" class="ng-class:{'active':active_relationship.msg_nav}">
+						<nav ng-if='false' id="message-nav" class="ng-class:{'active':active_relationship.msg_nav}">
 							<!-- BIND -->
 							<a ng-click='toggleActiveRelationshipMessageNav()'>
 								<svg class="ng-class:{'active':active_relationship.msg_nav}" viewBox="0 0 100 100">

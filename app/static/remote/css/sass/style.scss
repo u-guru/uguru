@@ -128,7 +128,7 @@ section {
 		text-transform: uppercase;
 		//Gabrielle -- added this so we can so more items;
 		&.settings-item {
-			height:10%;
+			height: 10%;
 		}
 		.list-item-icon {
 			height: 64px;
@@ -146,6 +146,13 @@ section {
 				}
 				circle {
 					stroke-dasharray: 3px, 10px;
+				}
+			}
+		}
+		&#top-menu-discover {
+			svg {
+				circle {
+					stroke-dasharray: 0!important;
 				}
 			}
 		}
@@ -383,6 +390,9 @@ section {
 // ACCESS
 .access-view {
 	background: $shamrock;
+	input {
+		cursor: text;
+	}
 	#access-data {
 		height: calc(100% - 64px);
 	}
@@ -1131,8 +1141,8 @@ section {
 				left: 0;
 				top: 0;
 			}
-			.bg-cerise.important::after {
-				background: $cerise;
+			.bg-auburn.important::after {
+				background: $auburn;
 			}
 			.bg-orange.important::after {
 				background: $orange;
@@ -1152,8 +1162,14 @@ section {
 			.bg-lake.important::after {
 				background: $lake;
 			}
+			.bg-cobalt.important::after {
+				background: $cobalt;
+			}
 			.bg-eggplant.important::after {
 				background: $eggplant;
+			}
+			.bg-cerise.important::after {
+				background: $cerise;
 			}
 		}
 	}
@@ -1818,9 +1834,9 @@ section {
 // BAKERY GURU PROFILE
 .bakery-guru-profile-view {
 	color: $slate;
-	background: $bakery-bg;
+	background: $beige;
 	header {
-		background: $bakery;
+		background: $auburn;
 		h1 {
 			color: white;
 			font-weight: 900;
@@ -1859,7 +1875,7 @@ section {
 						&.verified {
 							svg {
 								path:first-child {
-									fill: $bakery;
+									fill: $auburn;
 								}
 							}
 						}
@@ -1875,8 +1891,8 @@ section {
 				#profile-contact {
 					padding: 10px 0 5px;
 					button {
-						background: $bakery;
-						border-color: $bakery;
+						background: $auburn;
+						border-color: $auburn;
 						color: white;
 						font-weight: 700!important;
 					}
@@ -1897,7 +1913,7 @@ section {
 		a {
 			display: block;
 			padding-top: 15px;
-			color: $bakery;
+			color: $auburn;
 			font-size: 24px;
 			font-weight: 900;
 			text-transform: uppercase;
@@ -1917,7 +1933,7 @@ section {
 					@include flex-center;
 					width: 100%;
 					height: 100%;
-					background: $bakery;
+					background: $auburn;
 					color: white;
 					font-size: 24px;
 					font-weight: 900;
@@ -1947,7 +1963,7 @@ section {
 						background: rgba($charcoal,.2);
 						path {
 							@include opacity(.4);
-							stroke: $bakery;
+							stroke: $auburn;
 						}
 					}
 				}
@@ -1973,7 +1989,7 @@ section {
 					width: 50px;
 					height: 50px;
 					path {
-						@include svg-stroke($bakery, 5);
+						@include svg-stroke($auburn, 5);
 					}
 				}
 				div:last-child {
@@ -1988,7 +2004,7 @@ section {
 				}
 			}
 			#info-hours {
-				border-top: 1px solid $bakery;
+				border-top: 1px solid $auburn;
 			}
 		}
 	}
@@ -2019,7 +2035,7 @@ section {
 							left: 0;
 							width: 100%;
 							height: 100%;
-							background: rgba($bakery,.8);
+							background: rgba($auburn,.8);
 							font-size: 24px;
 							font-weight: 900;
 							text-transform: uppercase;
@@ -2039,7 +2055,7 @@ section {
 						}
 						h1 {
 							padding: 15px 15px 0;
-							color: $bakery;
+							color: $auburn;
 							font-size: 32px;
 							font-weight: 900;
 							text-transform: uppercase;
@@ -2340,204 +2356,632 @@ section {
 // GURU RANKING
 .guru-view {
 	header {
-		&::before {
-			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
-		}
-	}
-	#guru-home-content {
-		overflow: none!important;
-		padding-bottom: 50px;
-	}
-	#guru-ranking {
 		@include flex;
-		@include flex-wrap;
-		@include flex-center;
-		position: relative;
-		z-index: 9;
-		width: 100%;
-		height: calc(100% - 20px);
-		margin-top: -20px;
-		padding: 0 30px;
-		> div {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			-webkit-transform: scale(.8);
-			-moz-transform: scale(.8);
-			-ms-transform: scale(.8);
-			-o-transform: scale(.8);
-			transform: scale(.8);
-		}
-		.progressbar-text {
-			display: none;
-		}
-		svg {
-			@include round;
-			* {
-				stroke-linecap: round;
-			}
-		}
-		#guru-chart {
-			position: relative;
-			width: 130px;
-			#percentile {
-				@include center-xy;
-				#percentile-ranking {
-					position: relative;
-					font-size: 44px;
-					font-weight: 600;
-					line-height: 1;
-					text-align: center;
-
-					&::after {
-						content: "th";
-						display: block;
-						position: absolute;
-						top: -1px;
-						right: -1px;
-						font-size: 12px;
-						font-weight: 400;
-						line-height: 28px;
-						text-transform: uppercase;
-					}
-				}
-				#percentile-label {
-					font-size: 12px;
-					font-weight: 400;
-					letter-spacing: 1px;
-					line-height: 15px;
-					text-transform: uppercase;
-				}
-			}
-		}
-		#guru-stats {
-			padding-left: 30px;
-			width: calc(100% - 130px);
-			h2 {
-				margin: 0 0 5px;
-				font-size: 16px;
-				font-weight: 600;
-				text-transform: uppercase;
-			}
-			.stats-bar {
-				line-height: 10px;
-				font-size: 10px;
-				height: 10px;
-				margin-bottom: 7px;
-				svg {
-					height: 10px;
-				}
-			}
+		-webkit-align-items: flex-end;
+		align-items: flex-end;
+		height: 25%;
+		padding-bottom: 15px;
+		background: $charcoal;
+		h1 {
+			padding: 15px 15px 5px;
+			font-size: 28px!important;
+			line-height: 1.2;
+			text-transform: none;
 		}
 	}
-	.guru-tip-of-day-slide-box {
-		height: calc(100% - 36px);
-		.card {
-			margin: 15px!important;
-			height: calc(100% - 60px);
-			padding: 0!important;
-			background: $slate;
-			border-radius: 5px;
-			overflow: hidden;
-			text-align: center;
-			.card-content {
+	.guru-home-notifications {
+			ul {
 				@include flex;
 				@include flex-wrap;
-				@include flex-center;
-				padding: 15px;
-				height: calc(100% - 64px);
-				svg {
-					display: none;
-					width: 100%;
-					height: 100%;
-					max-height: 70px;
-					margin-bottom: 15px;
+				@include flex-center-vertical;
+				width: 100%;
+				li {
+					padding-left: 15px;
+					padding-top: 5px;
+					a {
+						@include flex;
+						@include flex-center-vertical;
+						span {
+							display: block;
+						}
+						.notification-icon {
+							position: relative;
+							.notification-number {
+								@include round;
+								@include flex;
+								@include flex-center;
+								padding: 0 5px;
+								height: 28px;
+								min-width: 28px;
+								background: $gabrielle;
+								border: 3px solid $charcoal;
+								font-size: 14px;
+								font-weight: 600;
+							}
+						}
+						.notification-type {
+							padding-left: 5px;
+							font-weight: 600;
+							font-size: 20px;
+						}
+					}
 				}
-				h2 {
-					font-size: 24px;
-					font-weight: 600;
+			}
+	}
+	.main {
+		height: 75%;
+		overflow: auto;
+		background: $slate;
+		.guru-home-tiles {
+			height: 100%;
+			padding: 1px;
+			.square {
+				height: 100%;
+			}
+			.square + div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 5;
+				overflow: hidden;
+				h1 {
+					margin: 0!important;
 				}
-				p {
-					margin: 10px 0 0;
+				h2, h3 {
+					padding: 15px 0;
+					font-weight: 700;
+					text-transform: uppercase;
+					span {
+						font-weight: 400;
+					}
+				}
+				h3 {
+					padding-bottom: 0;
 					font-size: 18px;
 				}
+				progress {
+					margin: 0 15px;
+					width: calc(100% - 30px);
+				}
 			}
-			button {
-				border-radius: 0 0 5px 5px;
-			}
-		}
-		.slider-pager {
-			bottom: 15px;
-		}
-	}
-	#btn-launch-profile:active {
-		@include opacity(1);
-		background: $shamrock!important;
-	}
-	#btn-launch-profile + .guru-tip-of-day-slide-box {
-		height: calc(100% - 50px);
-	}
-}
-@media screen and (min-height:540px) {
-	.guru-view {
-		#guru-ranking {
 			> div {
-				-webkit-transform: none;
-				-moz-transform: none;
-				-ms-transform: none;
-				-o-transform: none;
-				transform: none;
-			}
-			#guru-stats {
-				.stats-bar {
-					margin-bottom: 9px;
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: 50%;
+				overflow: hidden;
+				text-align: center;
+				.home-tiles-ranking {
+					height: 100%;
+					width: calc(100% / 3 * 2);
+					overflow: hidden;
+					padding: 1px;
+					> div {
+						position: relative;
+						height: 100%;
+						.square {
+							fill: lighten($gabrielle, 15%);
+						}
+						.square + div {
+							background: lighten($gabrielle, 15%);
+						}
+						h3 {
+							padding-top: 0;
+						}
+						#guru-chart {
+							position: relative;
+							height: calc(100% - 97px);
+							width: 100%;
+							#guru-ranking-progress-bar {
+								height: 100%;
+							}
+							svg {
+								padding: 0 15px 15px;
+								height: 100%;
+								path {
+									stroke-linecap: round;
+								}
+							}
+							#percentile {
+								@include center-xy;
+								#percentile-ranking {
+									position: relative;
+									margin-top: -24px;
+									font-size: 52px;
+									font-weight: 600;
+									line-height: 1;
+									text-align: center;
+									&::after {
+										content: "th";
+										display: block;
+										position: absolute;
+										top: 1px;
+										right: -2px;
+										font-size: 14px;
+										font-weight: 600;
+										line-height: 28px;
+										text-transform: uppercase;
+									}
+								}
+								#percentile-label {
+									font-size: 14px;
+									font-weight: 600;
+									letter-spacing: 1px;
+									line-height: 1.2;
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+				.home-tiles-rating {
+					height: 100%;
+					width: calc(100% / 3);
+					padding: 1px;
+					> div {
+						position: relative;
+						height: 50%;
+						.square + div {
+							height: calc(100% - 1px);
+						}
+						&:first-child {
+							padding-bottom: 1px;
+							.square {
+								fill: $gabrielle;
+							}
+							.square + div {
+								background: $gabrielle;
+								svg {
+									@include svg-stroke(white, 2);
+									height: calc(100% - 39px);
+								}
+							}
+							#home-tiles-ranking {
+								@include flex;
+								@include flex-center;
+								font-size: 44px;
+								font-weight: 700;
+							}
+							h5 {
+								@include opacity(.7);
+								font-size: 18px;
+								font-weight: 600;
+								text-transform: uppercase;
+							}
+						}
+						&:last-child {
+							padding-top: 1px;
+							.square {
+								fill: desaturate($gabrielle, 20%);
+							}
+							.square + div {
+								top: 1px;
+								background: desaturate($gabrielle, 20%);
+							}
+							#home-tiles-earnings {
+								@include flex;
+								@include flex-center;
+								padding-top: 10px!important;
+								font-size: 44px;
+								font-weight: 700;
+								// span {
+								// 	font-weight: 600;
+								// 	font-size: 48px;
+								// 	padding-right: 5px;
+								// }
+							}
+						}
+					}
+				}
+				.home-tiles-stats {
+					height: 100%;
+					width: calc(100% / 3);
+					padding: 1px;
+					> div {
+						position: relative;
+						height: 50%;
+						.square + div {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							height: calc(100% - 1px);
+							svg {
+								@include svg-stroke(white, 4);
+								margin-top: -6.25px;
+								width: 50px;
+								height: 50px;
+							}
+							h3 {
+								padding-top: 0;
+								font-size: 14px;
+								.credibility-percent {
+									font-weight: 700;
+								}
+							}
+							progress {
+								vertical-align: 0;
+								width: 90px;
+							}
+						}
+						&:first-child {
+							padding-bottom: 1px;
+							.square {
+								fill: saturate($gabrielle, 5%);
+							}
+							.square + div {
+								background: saturate($gabrielle, 5%);
+							}
+						}
+						&:last-child {
+							padding-top: 1px;
+							.square {
+								fill: desaturate($gabrielle, 20%);
+							}
+							.square + div {
+								top: 1px;
+								background: desaturate($gabrielle, 20%);
+							}
+						}
+					}
+				}
+				.home-tiles-upcoming {
+					height: 100%;
+					width: calc(100% / 3 * 2);
+					padding: 1px;
+					> div {
+						position: relative;
+						height: 100%;
+						.square {
+							fill: $gabrielle;
+						}
+						.square + div {
+							background: $gabrielle;
+							.slider {
+								height: calc(100% - 58px);
+								.card {
+									@include flex;
+									@include flex-center;
+									margin: 0 15px;
+									height: calc(100% - 54px);
+									h1 {
+										margin-bottom: 5px;
+										font-size: 28px;
+										font-weight: 600;
+									}
+									p {
+										font-size: 20px;
+										font-weight: 400;
+									}
+								}
+							}
+							ul {
+								padding: 0 15px 15px;
+								font-size: 18px;
+								text-align: left;
+								font-weight: 600;
+								li {
+									margin-bottom: 5px;
+									padding-bottom: 5px;
+									border-bottom: 1px solid white;
+								}
+								span {
+									@include opacity(.5);
+									font-size: 14px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
-}
-@media screen and (min-height:568px) {
-	.guru-view {
-		.guru-tip-of-day-slide-box {
-			.card {
-				.card-content {
-					h2 {
-						font-size: 28px;
-					}
-					p {
-						font-size: 22px;
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-height:640px) {
-	.guru-view {
-		.guru-tip-of-day-slide-box {
-			.card {
-				.card-content {
-					svg {
-						display: block;
+	@media screen and (max-height:500px) {
+		.main {
+			.guru-home-tiles {
+				> div {
+					.home-tiles-ranking {
+						> div {
+							#guru-chart {
+								#percentile {
+									-webkit-transform: translate(-50%, -50%) scale(.7);
+								    -moz-transform: translate(-50%, -50%) scale(.7);
+								    -ms-transform: translate(-50%, -50%) scale(.7);
+								    -o-transform: translate(-50%, -50%) scale(.7);
+								    transform: translate(-50%, -50%) scale(.7);
+								}
+							}
+						}
 					}
 				}
 			}
 		}
 	}
-}
-@media screen and (min-width:414px) {
-	.guru-view {
-		#guru-ranking {
-			> div {
-				-webkit-transform: scale(1.2);
-				-moz-transform: scale(1.2);
-				-ms-transform: scale(1.2);
-				-o-transform: scale(1.2);
-				transform: scale(1.2);
+	@media screen and (max-height:650px) {
+		header {
+			h1 {
+				display: none;
+			}
+		}
+		.main {
+			.guru-home-tiles {
+				h2 {
+					font-size: 20px;
+				}
+				> div {
+					.home-tiles-ranking {
+						> div {
+							h2 {
+								padding-bottom: 5px;
+							}
+							#guru-chart {
+								height: calc(100% - 80px);
+								#percentile {
+									#percentile-ranking {
+										margin-top: -15px;
+									}
+								}
+								svg {
+									padding-bottom: 5px;
+								}
+							}
+						}
+					}
+					.home-tiles-rating {
+						> div {
+							&:first-child {
+								#home-tiles-ranking {
+									font-size: 36px;
+								}
+								h5 {
+									font-size: 14px;
+								}
+							}
+							&:last-child {
+								#home-tiles-earnings {
+									padding-top: 5px!important;
+									font-size: 36px;
+								}
+							}
+						}
+					}
+					.home-tiles-stats {
+						> div {
+							.square + div {
+								svg {
+									@include svg-stroke(white, 4);
+									margin-top: -4.5px;
+									width: 36px;
+									height: 36px;
+								}
+								h3 {
+									font-size: 12px;
+								}
+							}
+						}
+					}
+					.home-tiles-upcoming {
+						> div {
+							.square + div {
+								.slider {
+									height: calc(100% - 46px);
+									.card {
+										height: calc(100% - 42px);
+										h1 {
+											font-size: 24px;
+										}
+										p {
+											font-size: 18px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
+	// header {
+	// 	&::before {
+	// 		background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
+	// 	}
+	// }
+	// #guru-home-content {
+	// 	overflow: none!important;
+	// 	padding-bottom: 50px;
+	// }
+	// #guru-ranking {
+	// 	@include flex;
+	// 	@include flex-wrap;
+	// 	@include flex-center;
+	// 	position: relative;
+	// 	z-index: 9;
+	// 	width: 100%;
+	// 	height: calc(100% - 20px);
+	// 	margin-top: -20px;
+	// 	padding: 0 30px;
+	// 	> div {
+	// 		@include flex;
+	// 		@include flex-wrap;
+	// 		@include flex-center;
+	// 		-webkit-transform: scale(.8);
+	// 		-moz-transform: scale(.8);
+	// 		-ms-transform: scale(.8);
+	// 		-o-transform: scale(.8);
+	// 		transform: scale(.8);
+	// 	}
+	// 	.progressbar-text {
+	// 		display: none;
+	// 	}
+	// 	svg {
+	// 		@include round;
+	// 		* {
+	// 			stroke-linecap: round;
+	// 		}
+	// 	}
+	// 	#guru-chart {
+	// 		position: relative;
+	// 		width: 130px;
+	// 		#percentile {
+	// 			@include center-xy;
+	// 			#percentile-ranking {
+	// 				position: relative;
+	// 				font-size: 44px;
+	// 				font-weight: 600;
+	// 				line-height: 1;
+	// 				text-align: center;
+	//
+	// 				&::after {
+	// 					content: "th";
+	// 					display: block;
+	// 					position: absolute;
+	// 					top: -1px;
+	// 					right: -1px;
+	// 					font-size: 12px;
+	// 					font-weight: 400;
+	// 					line-height: 28px;
+	// 					text-transform: uppercase;
+	// 				}
+	// 			}
+	// 			#percentile-label {
+	// 				font-size: 12px;
+	// 				font-weight: 400;
+	// 				letter-spacing: 1px;
+	// 				line-height: 15px;
+	// 				text-transform: uppercase;
+	// 			}
+	// 		}
+	// 	}
+	// 	#guru-stats {
+	// 		padding-left: 30px;
+	// 		width: calc(100% - 130px);
+	// 		h2 {
+	// 			margin: 0 0 5px;
+	// 			font-size: 16px;
+	// 			font-weight: 600;
+	// 			text-transform: uppercase;
+	// 		}
+	// 		.stats-bar {
+	// 			line-height: 10px;
+	// 			font-size: 10px;
+	// 			height: 10px;
+	// 			margin-bottom: 7px;
+	// 			svg {
+	// 				height: 10px;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// .guru-tip-of-day-slide-box {
+	// 	height: calc(100% - 36px);
+	// 	.card {
+	// 		margin: 15px!important;
+	// 		height: calc(100% - 60px);
+	// 		padding: 0!important;
+	// 		background: $slate;
+	// 		border-radius: 5px;
+	// 		overflow: hidden;
+	// 		text-align: center;
+	// 		.card-content {
+	// 			@include flex;
+	// 			@include flex-wrap;
+	// 			@include flex-center;
+	// 			padding: 15px;
+	// 			height: calc(100% - 64px);
+	// 			svg {
+	// 				display: none;
+	// 				width: 100%;
+	// 				height: 100%;
+	// 				max-height: 70px;
+	// 				margin-bottom: 15px;
+	// 			}
+	// 			h2 {
+	// 				font-size: 24px;
+	// 				font-weight: 600;
+	// 			}
+	// 			p {
+	// 				margin: 10px 0 0;
+	// 				font-size: 18px;
+	// 			}
+	// 		}
+	// 		button {
+	// 			border-radius: 0 0 5px 5px;
+	// 		}
+	// 	}
+	// 	.slider-pager {
+	// 		bottom: 15px;
+	// 	}
+	// }
+	// #btn-launch-profile:active {
+	// 	@include opacity(1);
+	// 	background: $shamrock!important;
+	// }
+	// #btn-launch-profile + .guru-tip-of-day-slide-box {
+	// 	height: calc(100% - 50px);
+	// }
 }
+// @media screen and (min-height:540px) {
+// 	.guru-view {
+// 		#guru-ranking {
+// 			> div {
+// 				-webkit-transform: none;
+// 				-moz-transform: none;
+// 				-ms-transform: none;
+// 				-o-transform: none;
+// 				transform: none;
+// 			}
+// 			#guru-stats {
+// 				.stats-bar {
+// 					margin-bottom: 9px;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+// @media screen and (min-height:568px) {
+// 	.guru-view {
+// 		.guru-tip-of-day-slide-box {
+// 			.card {
+// 				.card-content {
+// 					h2 {
+// 						font-size: 28px;
+// 					}
+// 					p {
+// 						font-size: 22px;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+// @media screen and (min-height:640px) {
+// 	.guru-view {
+// 		.guru-tip-of-day-slide-box {
+// 			.card {
+// 				.card-content {
+// 					svg {
+// 						display: block;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+// @media screen and (min-width:414px) {
+// 	.guru-view {
+// 		#guru-ranking {
+// 			> div {
+// 				-webkit-transform: scale(1.2);
+// 				-moz-transform: scale(1.2);
+// 				-ms-transform: scale(1.2);
+// 				-o-transform: scale(1.2);
+// 				transform: scale(1.2);
+// 			}
+// 		}
+// 	}
+// }
 
 
 

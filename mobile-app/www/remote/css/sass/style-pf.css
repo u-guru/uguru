@@ -1,5 +1,12 @@
 @charset "UTF-8";
 /* ---------- PROFILE STYLES */
+.pf-review-amt {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 .pf-rating {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -166,6 +173,7 @@
 
 .pf-type header.third .pf-header h1.verified span svg {
   margin-left: 8px;
+  margin-top: 6px;
   width: 24px;
   height: 24px;
 }
@@ -182,7 +190,12 @@
 }
 
 .pf-type header.third .pf-header .pf-rating {
-  margin: 5px auto;
+  margin: 5px auto 0;
+}
+
+.pf-type header.third .pf-header .pf-review-amt {
+  margin-top: -5px;
+  margin-bottom: 5px;
 }
 
 .pf-type header.third .pf-header button {
@@ -616,6 +629,10 @@
   font-weight: 400;
 }
 
+.pf-type .pf-list .pf-list-desc:empty {
+  margin-top: 0;
+}
+
 .pf-type .pf-list .pf-list-y {
   margin-top: 2px;
 }
@@ -625,6 +642,10 @@
   background: #2B3234;
   font-size: 18px;
   font-weight: 600;
+}
+
+.pf-type .pf-list .pf-list-y > li [data-years]:not([data-years="1"]):after {
+  content: "s";
 }
 
 .pf-type .pf-list .pf-list-y > li:not(:last-child) {
@@ -830,8 +851,6 @@
 
 .pf-type .pf-checklist > li:not(.pf-checklist-full) div > span .pf-review-amt {
   display: none;
-  font-size: 14px;
-  text-transform: uppercase;
 }
 
 .pf-type .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
@@ -925,13 +944,19 @@
   }
   .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-rating {
     max-width: 150px;
-    margin: 10px auto !important;
+    margin: 10px auto 0 !important;
+  }
+  .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-review-amt {
+    font-size: 16px;
+    margin-bottom: 15px;
   }
   .pf-type:not(.pf-modal) > section > header.third .pf-header button {
     padding: 10px 30px;
   }
   .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-header-desc {
     display: block;
+    max-height: 124px;
+    overflow: auto;
   }
   .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-url {
     -ms-box-orient: horizontal;
@@ -1497,6 +1522,13 @@
   font-weight: 600;
 }
 
+.pf-card .pf-card-main h1.verified span svg {
+  margin-left: 8px;
+  margin-top: 6px;
+  width: 24px;
+  height: 24px;
+}
+
 .pf-card .pf-card-main .pf-school {
   margin-top: 0;
   font-size: 20px;
@@ -1510,9 +1542,6 @@
 .pf-card .pf-card-main .pf-review-amt {
   display: block;
   margin-top: -3px;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
 }
 
 .pf-card .pf-card-main .pf-card-thumbs {

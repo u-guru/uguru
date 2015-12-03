@@ -9,7 +9,7 @@ var onDomLoadSuccess = function() {
         setTimeout(function() {
             launchIntercomeSetActive()
         }, 2000);
-	}, 2000);
+	}, 5000);
 }
 
 var launchIntercomeSetActive = function() {

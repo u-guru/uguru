@@ -140,16 +140,15 @@
 .credit-card-wrapper {
 	.credit-card {
 		position: relative;
-		#visa {
+		.card-type {
 			float: right;
 			clear: both;
 		}
 		.card-number {
-			text-shadow: 1px 1px 0 black, 2px 2px 0 black;
 			font-family: OCR-A, monospace;
 			font-size: 14px;
 			text-align: left;
-			color: #eee;
+			color: $smoke;
 			position: absolute;
 			left: 10%;
 			top: 50%;
@@ -192,20 +191,12 @@
 		}
 		width: 100%;
 		height: 100%;
-		background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-		background-size: 100%;
-		background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(50%, #282828), color-stop(50%, #141414));
-		background-image: -moz-linear-gradient(top left, #282828 50%, #141414 50%);
-		background-image: -webkit-linear-gradient(top left, #282828 50%, #141414 50%);
-		background-image: linear-gradient(to bottom right, #282828 50%, #141414 50%);
-		-moz-border-radius: 4px;
+		background: $charcoal;
 		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
 		border-radius: 4px;
 		padding: 15px;
 		color: white;
-		-moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-		-webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-		box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
 		position: relative;
 	}
 	.cf:before,
@@ -216,14 +207,14 @@
 		display: table;
 	}
 }
-.guru-view-mobile .header-nav {
-	h1.balance-header {
-		padding-right: 15px !important;
-	}
-	svg.referral-icon {
-		padding-left: 5px;
-	}
-}
+// .guru-view-mobile .header-nav {
+// 	h1.balance-header {
+// 		padding-right: 15px !important;
+// 	}
+// 	svg.referral-icon {
+// 		padding-left: 5px;
+// 	}
+// }
 body.platform-ios {
 	.mobile-referrals-modal a.header-close,
 	.mobile-balance-modal a.header-close,
@@ -370,6 +361,109 @@ body.platform-ios {
 }
 
 #public-profile-url {
-	font-size:14px; 
-	padding-bottom:12.5%;	
+	font-size:14px;
+	padding-bottom:12.5%;
 }
+
+.dark-shamrock-bg {
+	background-color:#3d796e !important;
+}
+
+.textarea-container {
+	::-webkit-input-placeholder {
+   color: white;
+   font-weight:500;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: red;
+	   font-weight:500;
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: red;
+	   font-weight:500;
+	}
+
+	:-ms-input-placeholder {
+	   color: red;
+	   font-weight:500;
+	}
+}
+
+// .desktop-mode #profile-code-list:after {
+//     content: "tap to launch";
+//     right: -108px;
+//     padding: 10px 15px;
+//     background: rgba(255, 255, 255, 0.9);
+//     font-size: 14px;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     color: #40484B;
+// }
+
+// .desktop-mode #profile-code-list:before {
+//     content: "";
+//     right: -20px;
+//     width: 0;
+//     height: 0;
+//     border: 10px solid transparent;
+//     border-right-color: rgba(255, 255, 255, 0.9);
+// }
+#cta-modal-support {
+	top:64px !important;
+	h1 {
+		background: none !important;
+	    padding: 20px 15px !important;
+	    margin-bottom: 0 !important;
+	    font-size: 48px !important;
+	    font-weight: 900 !important;
+	    letter-spacing: 0 !important;
+	    text-align: center !important;
+	    text-transform: none !important;
+	    color:white;
+	}
+	a.cta-modal-close {
+		width: auto;
+	    position: absolute;
+	    height: 50px;
+	    width: 50px;
+	    right: 0;
+	    top: 0;
+	    margin: 20px;
+	}
+}
+
+ion-pane #experience-modal #guru-experience-remove-button {
+	bottom: 115px;
+    position: absolute;
+    z-index:1000;
+    width: 100%;
+    left: 0;
+}
+ul.mobile-cards-container li {
+		padding: 7.5px;
+		a {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			width: 80%;
+			left:10%;
+			margin:0 auto;
+			height: 150px;
+			background: $slate;
+			font-weight: 600;
+			svg {
+				@include svg-stroke(white, 4);
+				width: 80px;
+				height: 80px;
+			}
+			span {
+				display: block;
+				span {
+					padding-top: 10px;
+					padding-bottom: 10px;
+				}
+			}
+		}
+	}

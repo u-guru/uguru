@@ -26,6 +26,16 @@
         </form>
 
         <div id="language-list" class='desktop-search-list'>
+            <ul class='desktop-card-list' id='guru-courses-user-profile'>
+                <li ng-if="user.guru_languages.length > 0" class="course-item selected" ng-repeat='language in user.guru_languages' ng-click='removeGuruLanguageAndUpdate(language, $index)'>
+                        <a class="name-only" >
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                            </svg>
+                            <span>{{language.name}}</span>
+                        </a>
+                </li>
+            </ul>
             <ul class='desktop-card-list'>
                 <li ng-repeat='language in languages | filter:page.search_text:strict | limitTo: limit'>
 					<a class="name-only" ng-click='addSelectedGuruLanguage(language, $index)'>
@@ -33,7 +43,7 @@
 					</a>
                 </li>
             </ul>
-            <button class="save-button cta-modal-close semibold btn-ghost-white">Save</button>
+            <button ng-click='saveLanguages()' class="save-button cta-modal-close semibold btn-ghost-white">Save</button>
         </div>
     </div>
 </main>

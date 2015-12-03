@@ -968,8 +968,8 @@ label {
   .input-field input[type=search]:focus.invalid,
   .input-field textarea.materialize-textarea.invalid,
   .input-field textarea.materialize-textarea:focus.invalid {
-    border-bottom: 1px solid #F04F54;
-    box-shadow: 0 1px 0 0 #F04F54; }
+    border-bottom: 1px solid #F9D57B;
+    box-shadow: 0 1px 0 0 #F9D57B; }
   .input-field input[type=text].invalid + label:after, .input-field input[type=text]:focus.invalid + label:after,
   .input-field input[type=password].invalid + label:after,
   .input-field input[type=password]:focus.invalid + label:after,
@@ -992,7 +992,7 @@ label {
   .input-field textarea.materialize-textarea.invalid + label:after,
   .input-field textarea.materialize-textarea:focus.invalid + label:after {
     content: attr(data-error);
-    color: #F04F54;
+    color: #F9D57B;
     opacity: 1; }
   .input-field input[type=text] + label:after,
   .input-field input[type=password] + label:after,

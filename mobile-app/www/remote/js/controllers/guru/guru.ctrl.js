@@ -45,12 +45,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-profile-languages': '.desktop-guru-profile-view',
     'cta-box-profile-courses': '.desktop-guru-profile-view',
     'cta-box-profile-skills': '.desktop-guru-profile-view',
-    'cta-box-referrals': '.ion-side-menus-content',
+    'cta-box-referrals': '#desktop-guru-home',
+    'cta-box-support': '.guru-home-container',
     'cta-box-signup': '.guru-home-container',
     'cta-box-payments': '#desktop-balance',
   }
 
   $scope.launchCtaDict = {};
+  $scope.closeCTADict = {};
 
   var CTA_OPTIONS = {
         duration:0.5,
@@ -70,11 +72,32 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $state.go('^.guru')
   }
 
+  if (!$scope.user.university_id) {
+    LoadingService.showAmbig('No university detected.. redirecting..', 2000);
+    $timeout(function() {
+      $state.go('^.university');
+    }, 1000)
+
+  }
+
   var actualRankingValue = $scope.user.guru_ranking;
   $scope.user.guru_ranking = 0;
 
   $scope.launchCTASignup = function() {
     document.getElementById('cta-box-signup').click();
+  }
+
+ Intercom('hide');
+
+ $scope.launchSupport = function() {
+    Intercom('boot', {
+        app_id: "yoz6vu28",
+        widget: {"activator": "#Intercom"}
+      })
+    Intercom('show');
+    Intercom('onHide', function() {
+      Intercom('shutdown');
+    })
   }
 
   if ($scope.user) {
@@ -109,11 +132,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $state.go('^.guru-credibility');
   }
         var initGuruRankProgress = function(selector, color, fillColor, setValue) {
-          if (!$scope.selector) {
-            $scope.selector = selector;
-          } else {
-            return;
-          }
+          // if (!$scope.selector) {
+          //   $scope.selector = selector;
+          // } else {
+          //   return;
+          // }
+
+          // elem = document.querySelector('#guru-ranking-progress-bar')
+          // if (elem) {
+          //   console.log('circle already exists!');
+          //   return;
+          // }
+
           var circle = new ProgressBar.Circle(selector, {
               color: color || "rgba(255,255,255,1)",
               strokeWidth: 8,
@@ -150,6 +180,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                       modal_elem = document.querySelector('#cta-modal-signup');
                     }
 
+
+
+
                 var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
                     $timeout(function() {
@@ -165,8 +198,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                         });
                       }
                 }, CTA_PARENT_DICT[box_elem.id]);
-
-
 
               }
 
@@ -195,6 +226,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
         var animateProgressCircle = function(circle ,percentage) {
+          if (!circle) {
+            return;
+          }
+          $scope.guruRankingCircleInitialized = true;
           var index = 0
           value = 0;
           setInterval(function() {
@@ -265,6 +300,20 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.balanceModal = modal;
           });
 
+          $ionicModal.fromTemplateUrl(BASE + 'templates/profile.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.profileModal = modal;
+          });
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/credibility.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.credibilityModal = modal;
+          });
+
           $ionicModal.fromTemplateUrl(BASE + 'templates/messaging.mobile.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -281,6 +330,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
         }
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.supportModal = modal;
+        });
 
         $scope.initializeHorizontalProgressBars = function() {
 
@@ -359,6 +415,48 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $state.go(state_name);
         }
 
+
+        $scope.showBalanceModal = function() {
+          if ($scope.user && $scope.user.id) {
+            $scope.balanceModal.show()
+          } 
+          else {
+            LoadingService.showMsg('You need an account to do that!', 2500, 
+              function() {
+                  $scope.signupModal.show()
+              }
+            )
+          }
+        }
+
+        $scope.showProfileModal = function() {
+          if ($scope.user && $scope.user.id) {
+            $scope.profileModal.show();
+          } else {
+
+            LoadingService.showMsg('You need an account to do that!', 2500, 
+              function() {
+                  $scope.signupModal.show()
+              }
+            )
+
+          }
+        }
+
+        $scope.showCredibilityModal = function() {
+
+          if ($scope.user && $scope.user.id) {
+            $scope.credibilityModal.show();
+          } else {
+
+            LoadingService.showMsg('You need an account to do that!', 2500, 
+              function() {
+                  $scope.signupModal.show();
+              }
+            )
+          }
+        }
+
         $scope.$on('$ionicView.enter', function() {
 
 
@@ -366,8 +464,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           if ($scope.desktopMode) {
             initCTA();
           }
-          
-          //desktop version but not loggedd in 
+
+          if ($scope.desktopMode && !$scope.guruRankingCircle) {
+            $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+            $timeout(function () {
+              if (!$scope.guruRankingCircleInitialized) {
+                animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+              }
+            }, 2500)
+          }
+
+          //desktop version but not loggedd in
           if ($scope.desktopMode && !$scope.user.id) {
             $timeout(function() {
               LoadingService.showAmbig()
@@ -385,11 +492,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
           //mobile mode
-          if (!$scope.referralsModal && !$scope.desktopMode) {
+          if (!$scope.desktopMode) {
             $scope.initMobileModals();
-            !haveProgressBarsBeenInitialized || $scope.initializeHorizontalProgressBars();
-            $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-             animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+            $timeout(function() {
+              $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+            }, 1500)
           }
 
           // mobile tech instantiatio
@@ -412,6 +520,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.$on('$ionicView.afterEnter', function() {
 
         });
+
   }
 
 ]);

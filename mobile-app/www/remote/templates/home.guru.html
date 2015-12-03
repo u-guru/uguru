@@ -23,9 +23,9 @@
 			</ion-pane>
 
 			<ion-pane id='cta-modal-signup' class='full-xy hide-display cta-modal'>
-				<div class='full-xy absolute top-0 left-0 guru-desktop-forms'>
-					<div class="main" ng-controller='SignupController' ng-include="img_base + BASE + 'templates/desktop.login.forms.container.html'"></div>
-					<div class='full-x absolute bottom-25' id='cta-footer-switch-link'>
+				<div class='full-xy absolute top-0 left-0 guru-desktop-forms' ng-controller='SignupController'>
+					<div class="main"  ng-include="img_base + BASE + 'templates/desktop.login.forms.container.html'"></div>
+					<div class='full-x absolute bottom-25' id='cta-footer-switch-link' style='z-index:1000'>
 		                    <a ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode && !root.vars.forgotPassword'> <strong>Have an account?</strong> </a>
 	                    	<a ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>
 	                    		<strong>Create an account</strong>
@@ -34,13 +34,27 @@
 				</div>
 			</ion-pane>
 
+			<!-- <ion-pane id='cta-modal-support' class='full-xy hide-display cta-modal'>
+				<div class="profile-header">
+					<h1>Uguru Support</h1>
+					<a class="cta-modal-close close-button">
+						<svg viewBox="0 0 100 100">
+							<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+						</svg>
+					</a>
+				</div>
+				<iframe iframe-onload='closeLoader(2000)' class='full-xy' style='height:calc(100% - 100px); width:calc(100% - 100px);'name="Uguru FAQ" ng-src="https://www.uguru.me/support-only/"></iframe>
+			</ion-pane> -->
+
+
+
 			<div class="guru-home-greeting">
 				<div>
 					<h1>Hello {{user.first_name || 'Guru'}},<br/>how are you today?</h1>
 					<div class="guru-home-notifications">
 						<ul>
 							<li>
-								<a>
+								<a ng-if='false'>
 									<span class="notification-icon">
 										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">
 										</svg>
@@ -48,6 +62,15 @@
 										<span class="notification-number">0</span>
 									</span>
 									<span class="notification-type">Bill Student</span>
+								</a>
+								<a ng-if='false'>
+									<span class="notification-icon">
+										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">
+										</svg>
+										<!-- BIND -->
+										<span class="notification-number">5</span>
+									</span>
+									<span class="notification-type">Action Items</span>
 								</a>
 							</li>
 							<li>
@@ -95,7 +118,7 @@
 							<div>
 								<a>
 									<h3>Avg Rating</h3>
-									<h1 id='home-tiles-ranking'>{{user.guru_avg_rating}}</h1>
+									<h1 id='home-tiles-ranking'>{{user.guru_avg_rating || 0}}</h1>
 									<h5>{{user.guru_ratings.length}} reviews</h5>
 								</a>
 							</div>

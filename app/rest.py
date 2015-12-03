@@ -658,7 +658,8 @@ class UserOneView(restful.Resource):
         if 'fb_id' in request.json:
             if not user.fb_id:
                 fb_id = request.json.get('fb_id')
-                if user not in previous_user:
+                previous_user = User.query.filter_by(fb_id=fb_id).all()
+                if previous_user and user not in previous_user:
                     user.fb_id = request.json.get('fb_id')
                     db_session.commit()
                 else:
@@ -814,12 +815,11 @@ class UserOneView(restful.Resource):
 
         if request.json.get('remove_guru_language'):
             language_json = request.json.get('remove_guru_language')
-            language_id = language_json.get('id')
+            language_id = int(language_json.get('id'))
             language = Language.query.get(language_id)
-            print "NOT WORKING YET"
-            # if language in user.guru_languages:
-            #     user.guru_languages.remove(language)
-            #     db_session.commit()
+            if language in user.guru_languages:
+                user.guru_languages.remove(language)
+                db_session.commit()
 
 
         if request.json.get('remove_guru_course'):
@@ -832,7 +832,12 @@ class UserOneView(restful.Resource):
                 db_session.commit()
             except:
                 db_session.rollback()
-                raise
+                try:
+                    d = db_session.query(guru_courses_table).filter(guru_courses_table.c.user_id == user.id, guru_courses_table.c.course_id == course_id).delete(synchronize_session=False)
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
             # if user in c.gurus:
             #     # c.gurus.remove(user)
             #     from app.models import guru_courses_table
@@ -916,12 +921,13 @@ class UserOneView(restful.Resource):
         # # print request.json.get('requests');
         # if not request.json.get('auth_token'):
         #     abort(400)
-
+        print request.json
         user = User.query.get(_id)
         if not user:
             abort(400)
 
         print user
+        from hashlib import md5
 
         # if request.json.get('auth_token') != user.auth_token:
         #     abort(400)
@@ -942,8 +948,15 @@ class UserOneView(restful.Resource):
         user.guru_ratings = []
         user.cards = []
         user.is_a_guru = True
+        user.is_admin = True
+        user.password = md5('launchuguru123').hexdigest()
+        user.profile_code = user.name.split(' ')[0].lower()
+        user.referral_code = user.name.split(' ')[0].lower()
+        
         user.current_hourly = None
         user.university_id = None
+        user.guru_categories = []
+        user.guru_languages = []
         user.phone_number = None
         user.phone_number_token = None
         user.school_email_token = None
@@ -2307,12 +2320,25 @@ class UserNewView(restful.Resource):
 
             does_referral_exist = User.does_referral_exist(access_code)
 
-
-
             if not does_referral_exist and access_code != 'cool':
                 abort(401)
 
-            return json.dumps({'success':True}), 200
+            user = does_referral_exist
+
+
+            result_dict = {'success':True}
+            if user and not user.deactivated:
+                user.reactivateUser()
+                result_dict['profile_url'] = user.profile_url
+                result_dict['first_name'] = user.getFirstName()
+                result_dict['name'] = user.getFirstName()
+                result_dict['email'] = user.email
+                print user.name, user.profile_url, user.email
+                result_dict['deactivated'] = True
+
+
+
+            return json.dumps(result_dict), 200
 
         if request.json.get('email') and request.json.get('forgot_password'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
@@ -2344,6 +2370,10 @@ class UserNewView(restful.Resource):
                 ).first()
 
             if email_user:
+
+                if email_user.deactivated:
+                    abort(404)
+                    ### TODO MIXPANEL PLZ
 
                 import uuid
                 email_user.auth_token = uuid.uuid4().hex
@@ -3238,6 +3268,7 @@ class AdminOneUniversityView(restful.Resource):
                     abort(401)
                 print banner_src
                 u.banner_url = banner_src
+                u.banner_url_confirmed = True
 
 
             if 'latitude' in request.json:
@@ -3558,4 +3589,68 @@ api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/i
 api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels')
 
 
+api.add_resource(UserView, '/api/v1/users', subdomain='www')
+api.add_resource(UserNewView, '/api/v1/user', subdomain='www')
+api.add_resource(UserOneView, '/api/v1/user/<int:_id>', subdomain='www')
+api.add_resource(FileView, '/api/v1/files', subdomain='www')
+api.add_resource(UserRequestView, '/api/v1/user/<int:user_id>/requests', subdomain='www')
+api.add_resource(UserCardView, '/api/v1/user/<int:user_id>/cards', subdomain='www')
+api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions', subdomain='www')
+api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions', subdomain='www')
+api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings', subdomain='www')
+api.add_resource(UserRelationshipMessageView, '/api/v1/user/<int:_id>/relationships/<int:relationship_id>/messages', subdomain='www')
+api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages', subdomain='www')
+api.add_resource(UserSupportMessageView, '/api/v1/user/<int:_id>/support/<int:_support>/messages', subdomain='www')
+api.add_resource(OneDeviceView, '/api/v1/device', subdomain='www')
+api.add_resource(DeviceView, '/api/v1/devices/<int:device_id>', subdomain='www')
+api.add_resource(VersionView, '/api/v1/version', subdomain='www')
+api.add_resource(UserPhoneView, '/api/v1/phone', subdomain='www')
+api.add_resource(SupportView, '/api/v1/support', subdomain='www')
+api.add_resource(SessionView, '/api/v1/sessions', subdomain='www')
+api.add_resource(RankingsView, '/api/v1/rankings', subdomain='www')
+api.add_resource(UniversityListView, '/api/v1/universities', subdomain='www')
+api.add_resource(CategoryListView, '/api/v1/categories', subdomain='www')
+api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments', subdomain='www')
+api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses', subdomain='www')
+api.add_resource(UniversityPopularCoursesView, '/api/v1/universities/<int:_id>/popular_courses', subdomain='www')
+api.add_resource(MajorListView, '/api/v1/majors', subdomain='www')
+api.add_resource(UniversityFoodView, '/api/v1/universities/<int:_id>/food_url', subdomain='www')
+api.add_resource(CourseListView, '/api/v1/courses', subdomain='www')
+api.add_resource(SkillListView, '/api/v1/skills', subdomain='www')
+api.add_resource(ProfessionListView, '/api/v1/professions', subdomain='www')
+api.add_resource(UserEmailView, '/api/v1/user_emails', subdomain='www')
+api.add_resource(GithubIssueView, '/api/v1/github', subdomain='www')
+api.add_resource(HomeSubscribeView, '/api/v1/web/home/subscribe', subdomain='www')
+api.add_resource(TransitGuruTransitData, '/api/v1/<string:auth_token>/transit', subdomain='www')
+api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music', subdomain='www')
+# Admin view, subdomain='www's
+api.add_resource(AdminSessionView, '/api/admin', subdomain='www')
+# api.add_resource(MandrillWebhook, '/<string:auth_token>/mandrill-webhook', subdomain='www')
+api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test', subdomain='www')
+api.add_resource(AdminUserView, '/api/admin/users/', subdomain='www')
+# api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities', subdomain='www')
+api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>', subdomain='www')
+api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/courses', subdomain='www')
+api.add_resource(AdminUniversityPopularCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/popular_courses', subdomain='www')
+api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts', subdomain='www')
+api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses', subdomain='www')
+api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients', subdomain='www')
+api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test', subdomain='www')
+api.add_resource(AdminAppUpdateView, '/api/admin/app/update', subdomain='www')
+api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates', subdomain='www')
+api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns', subdomain='www')
+api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>', subdomain='www')
+api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails', subdomain='www')
+api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users', subdomain='www')
+api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities', subdomain='www')
+api.add_resource(AdminViewUniversitiesListEmails, '/api/admin/<string:auth_token>/universities/emails', subdomain='www')
+api.add_resource(AdminViewUniversitiesListPrepared, '/api/admin/<string:auth_token>/universities/prepared', subdomain='www')
+api.add_resource(AdminViewUniversitiesListAll, '/api/admin/<string:auth_token>/universities/us_news', subdomain='www')
+api.add_resource(AdminViewUniversitiesListAllDistribution, '/api/admin/<string:auth_token>/universities/distribution', subdomain='www')
+api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>', subdomain='www')
+api.add_resource(AdminViewUserAnalytics, '/api/admin/analytics/user', subdomain='www')
 
+# Admin views githu, subdomain='www'b, subdomain='www'
+
+api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/issues', subdomain='www')
+api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels', subdomain='www')

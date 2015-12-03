@@ -79,6 +79,26 @@ angular.module('uguru.desktop.controllers', [])
       }
     }
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.signupModal = modal;
+        });
+
+    Intercom('hide');
+    $scope.launchSupport = function() {
+
+        Intercom('boot', {
+            app_id: "yoz6vu28",
+            widget: {"activator": "#Intercom"}
+          })
+        Intercom('show');
+        Intercom('onHide', function() {
+          Intercom('shutdown');
+        })
+    }
+
     $scope.toggleDiscoverability = function() {
       $scope.user.guru_discoverability = !$scope.user.guru_discoverability;
       if ($scope.user.guru_discoverability) {
@@ -501,7 +521,7 @@ angular.module('uguru.desktop.controllers', [])
       });
     }
 
-
+    $scope.state = $state;
 
     $scope.resetAccount = function() {
       if (confirm('Are you sure you want to reset your admin account?')) {

@@ -3,24 +3,56 @@ from campaign_utils import convertHTMLtoTextMode
 ### Generates templates to send through mandrill
 
 ## Target audience -> Berkeley gurus w/ total earned
-def berkeleyCampaignOneTemplate(user, most_frequent_course):
-    user_first_name = user.getFirstName().lower()
-    subject = "checking in - are you still around %s?" % user_first_name
+def berkeleyCampaignOneTemplate(recipient_dict):
+    user_dict = dict(recipient_dict)
+    first_name = recipient_dict['first_name']   
+    total_earned = recipient_dict['total_earned']
+    balance = recipient_dict['balance']
+    course_one = recipient_dict['course_one']
+    course_two = recipient_dict['course_two']
+    subject = "checking in - are you still around %s?" % first_name.lower()
     html_body = """
-    Hey %s,
+    Hey %s! 
+    <br><br><br>
+    Hope you've been well -- and I could use your help assisting Cal students with %s. Are you still down to tutor this finals season? 
+    <br><br>
+    Also... you still have $%s in your account that you can cash out right now!
+    <br><br>
+    Lmk if you're still interested -- I'll have to give you an access code to reactivate your account.
+    <br><br><br><br>
+    Samir<br>
+    Chief Guru @<a href='https://uguru.me' target='_blank'>uguru</a>
+    <br>
+    <br>
+    send from iphone, iApologize for typos
+    """ % (first_name, course_one, balance)
 
-    Just wanted to personally reach out and thank you for your patience.
-    The next version is ready and we hope you're still around to try it first.
 
-    You'll need a generated access code to reactivate your old account, which
-    is one of the top 100 ranked accounts with $%s dollars earned.
+def berkeleyCampaignTwoTemplate(recipient_dict):
+    user_dict = dict(recipient_dict)
+    first_name = recipient_dict['first_name']   
+    total_earned = recipient_dict['total_earned']
+    balance = recipient_dict['balance']
+    course_one = recipient_dict['course_one']
+    course_two = recipient_dict['course_two']
 
-    Are you still interested in tutoring %s, or %s this finals season?
+    subject = "checking in - are you still around %s?" % first_name.lower()
+    html_body = """
+    Hey %s! 
+    <br><br><br>
+    Hope you've been well -- and I could use your help assisting Cal students with %s. Are you still down to tutor this finals season? 
+    <br><br>
+    With the $%s dollars earned last year on the platform, I feel like you'll do great + you'll need a generated access code to reactivate your old account. 
+    <br><br>
+    lmk if you're still interested. 
+    <br><br><br><br>
+    Samir<br>
+    Chief Guru @<a href='https://uguru.me' target='_blank'>uguru</a>
+    <br>
+    <br>
+    send from iphone, iApologize for typos
+    """ % (first_name, course_one, total_earned)
 
-    Best,
-    --
-    Samir
-    Chief Guru
-    """ % (user_first_name, user.total_earned, user.guru_courses[0], user.guru_courses[1])
 
 
+    return html_body, subject

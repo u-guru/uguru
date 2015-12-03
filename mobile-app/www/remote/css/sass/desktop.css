@@ -81,7 +81,7 @@
   opacity: 1;
 }
 
-.desktop-mode #support-button {
+.desktop-mode #cta-box-support {
   border-radius: 1000px;
   position: fixed;
   bottom: 15px;
@@ -92,7 +92,7 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
-.desktop-mode #support-button svg {
+.desktop-mode #cta-box-support svg {
   fill: none;
   stroke: #2B3234;
   stroke-width: 7px;
@@ -100,7 +100,7 @@
   stroke-linejoin: round;
 }
 
-.desktop-mode #support-button:before, .desktop-mode #support-button:after {
+.desktop-mode #cta-box-support:before, .desktop-mode #cta-box-support:after {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -117,7 +117,7 @@
   transform: translateY(-50%);
 }
 
-.desktop-mode #support-button:before {
+.desktop-mode #cta-box-support:before {
   content: "";
   right: -20px;
   width: 0;
@@ -126,7 +126,7 @@
   border-right-color: rgba(255, 255, 255, 0.9);
 }
 
-.desktop-mode #support-button:after {
+.desktop-mode #cta-box-support:after {
   content: "Support";
   right: -108px;
   padding: 10px 15px;
@@ -137,16 +137,16 @@
   color: #40484B;
 }
 
-.desktop-mode #support-button:hover, .desktop-mode #support-button:focus {
+.desktop-mode #cta-box-support:hover, .desktop-mode #cta-box-support:focus {
   background: #8bc4b9;
 }
 
-.desktop-mode #support-button:hover:before, .desktop-mode #support-button:hover:after, .desktop-mode #support-button:focus:before, .desktop-mode #support-button:focus:after {
+.desktop-mode #cta-box-support:hover:before, .desktop-mode #cta-box-support:hover:after, .desktop-mode #cta-box-support:focus:before, .desktop-mode #cta-box-support:focus:after {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-.desktop-mode #support-button:active {
+.desktop-mode #cta-box-support:active {
   background: #69B3A5;
 }
 

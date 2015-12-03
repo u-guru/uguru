@@ -313,6 +313,87 @@ def send_campaign_email_test(campaign_name, template_name,
     subject, sender_email, reply_to_email, sender_title,
     track_opens, track_clicks, important, [r])
 
+def send_campaign_one(campaign, is_test=False):
+    from campaigns.guru_campaigns import berkeleyCampaignOneTemplate, berkeleyCampaignTwoTemplate
+    receivers = []
+        
+    recipients = Campaign.query.get(campaign.id).recipients
+
+    for recipient in recipient:
+        receivers.append({
+            'email': recipient['email'],
+            'name': recipient['first_name'],
+            'type': 'to'
+            })
+
+    if is_test: 
+        from math import randint
+        receivers = [receivers[randint(0, len(receivers) - 1)]]
+        receivers[0]['email'] = 'samir@uguru.me'
+        campaign_tag = 'test-' + campaign_tag
+        date_tag = 'test-' + date_tag
+    
+    campaign_tag = "campaign-%s" % campaign.id
+    date_tag = "sent-%s-%s-%s" % (datetime.now().day, datetime.now().month, datetime.now().year)
+
+
+    email_tags = [campaign_tag, date_tag]
+    from_name = 'samir'
+    html_message, subject = berkeleyCampaignOneTemplate(recipient)
+    message = {
+        'subject':subject,
+        'from_email': 'samir@uguru.me',
+        'from_name': from_name,
+        'to': receivers,
+        'important': True,
+        'preserve_recipients': False,
+        'track_opens': True,
+        'tags': email_tags,
+        'html':html_message,
+        'text':html_message.replace('<br>', '').replace('&nbsp;', ' ')
+    }
+    result = mandrill_client.messages.send(message=message)
+    return result
+
+def send_campaign_two(campaign, is_test=False):
+    from campaigns.guru_campaigns import berkeleyCampaignTwoTemplate
+    receivers = []
+    recipients = Campaign.query.get(campaign.id).recipients
+
+    for recipient in recipient:
+        receivers.append({
+            'email': recipient['email'],
+            'name': recipient['first_name'],
+            'type': 'to'
+            })
+
+    if is_test: 
+        from math import randint
+        receivers = [receivers[randint(0, len(receivers) - 1)]]
+        receivers[0]['email'] = 'samir@uguru.me'
+        campaign_tag = 'test-' + campaign_tag
+        date_tag = 'test-' + date_tag
+    
+    campaign_tag = "campaign-%s" % campaign.id
+    date_tag = "sent-%s-%s-%s" % (datetime.now().day, datetime.now().month, datetime.now().year)
+
+    email_tags = [campaign_tag, date_tag]
+    from_name = 'samir'
+    html_message, subject = berkeleyCampaignTwoTemplate(recipient)
+    message = {
+        'subject':subject,
+        'from_email': 'samir@uguru.me',
+        'from_name': from_name,
+        'to': receivers,
+        'important': True,
+        'preserve_recipients': False,
+        'track_opens': True,
+        'tags': email_tags,
+        'html':html_message,
+        'text':html_message.replace('<br>', '').replace('&nbsp;', ' ')
+    }
+    result = mandrill_client.messages.send(message=message)
+    return result
 
 email_notif_copy = {
     "student_request": """Make $%s total in %smin helping %s in %s. Swipe for more details & increase response rate""",
@@ -331,3 +412,5 @@ email_notif_copy = {
     "reset_password": """Hi %s,<br><br> Your re-generated Uguru password is <b>%s</b>.<br><br> If you didn't regenerate your password, please contact support immediately by directly replying to this email.<br><br> Best, <br><br>uGuru Support """
 
 }
+
+

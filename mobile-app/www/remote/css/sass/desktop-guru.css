@@ -350,6 +350,31 @@
 }
 
 /* ---------- GURU ONBOARDING */
+.desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile {
+  display: flex !important;
+  justify-content: flex-start !important;
+  -webkit-justify-content: flex-start !important;
+}
+
+.desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile li.course-item.selected {
+  width: 20% !important;
+  display: block !important;
+}
+
+.desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile li.course-item.selected a {
+  height: 60px !important;
+  max-height: 60px !important;
+}
+
+.desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile li.course-item.selected a span {
+  font-size: 16px;
+  margin-right: 25% !important;
+}
+
+.desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile li.course-item.selected a svg path {
+  transform: translate(60px, -25px) rotate(45deg) !important;
+}
+
 .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li {
   display: none;
 }
@@ -1043,7 +1068,7 @@
   color: #3d796e;
 }
 
-#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child button {
+#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1063,7 +1088,7 @@
   background: white;
 }
 
-#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child button svg {
+#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a svg {
   fill: none;
   stroke-width: 5px;
   stroke-linecap: round;
@@ -1073,19 +1098,19 @@
   height: 100%;
 }
 
-#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child button:hover, #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child button:focus {
+#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:hover, #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:focus {
   background: #4e9b8c;
 }
 
-#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child button:hover svg, #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child button:focus svg {
+#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:hover svg, #desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:focus svg {
   stroke: white;
 }
 
-#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child button:active {
+#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:active {
   background: #3d796e;
 }
 
-#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child button:active svg {
+#desktop-guru-profile #profile #profile-desc #profile-list ul #profile-footer ul li:last-child a:active svg {
   stroke: white;
 }
 
@@ -1179,10 +1204,6 @@
 
 #desktop-guru-profile #profile #profile-info ul li:nth-last-child(2) {
   border-bottom: 0 !important;
-}
-
-#desktop-guru-profile #profile #profile-info ul li:last-child {
-  display: none;
 }
 
 #desktop-guru-profile #profile #profile-info ul li:nth-child(1), #desktop-guru-profile #profile #profile-info ul li:nth-child(2) {
@@ -1718,15 +1739,19 @@
   flex-flow: row wrap;
 }
 
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(9),
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(10),
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(11),
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(12),
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(13),
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(14),
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(15),
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(16),
-#desktop-guru-profile #cta-modal-profile-courses #courses-list li:last-child:nth-child(even) {
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(9):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(10):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(11):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(12):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(13):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(14):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(15):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(16):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:last-child:nth-child(even):not(.selected) {
+  display: none !important;
+}
+
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:last-child:nth-child(odd):not(.selected) {
   display: none !important;
 }
 
@@ -1866,6 +1891,26 @@
   }
   #desktop-guru-profile ion-pane #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a {
     height: 147px !important;
+  }
+  #desktop-guru-profile ion-pane .desktop-search-list #guru-courses-user-profile {
+    display: flex !important;
+    justify-content: flex-start !important;
+    -webkit-justify-content: flex-start !important;
+  }
+  #desktop-guru-profile ion-pane .desktop-search-list li.course-item.selected {
+    width: 20% !important;
+    display: block !important;
+  }
+  #desktop-guru-profile ion-pane .desktop-search-list li.course-item.selected a {
+    height: 60px !important;
+    max-height: 60px !important;
+  }
+  #desktop-guru-profile ion-pane .desktop-search-list li.course-item.selected a span {
+    font-size: 16px;
+    margin-right: 25% !important;
+  }
+  #desktop-guru-profile ion-pane .desktop-search-list li.course-item.selected a svg path {
+    transform: translate(60px, -25px) rotate(45deg) !important;
   }
   #desktop-guru-profile ion-pane .desktop-search-list li a, #desktop-guru-profile ion-pane .desktop-search-list li .skill-item-info a {
     height: 127px !important;

@@ -82,7 +82,10 @@ angular.module('uguru.util.controllers')
 
     $scope.preventSignupAndBackToAccess = function() {
       $scope.loader.showMsg("Sorry! We are out of signups. <br><br> Please request access code from support on our home page.", 0, 3000);
+      $scope.signupForm.email = '';
+      $scope.signupForm.password = '';
       $timeout(function() {
+
         LoadingService.showAmbig('Redirecting you back...', 2000, function() {
           if ($scope.desktopMode) {
             AnimationService.flip('^.university');
@@ -105,7 +108,11 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.backToAccess = function() {
-      LoadingService.showAmbig(null, 500, function() {
+      $scope.signupForm.email = '';
+      $scope.signupForm.password = '';
+      $scope.root.vars.loginMode = true;
+      $scope.root.vars.forgotPassword = false;
+      LoadingService.showAmbig(null, 1000, function() {
           AnimationService.flip('^.university');
       })
     }
@@ -154,7 +161,7 @@ angular.module('uguru.util.controllers')
           $scope.signupForm.email = '';
           $scope.signupForm.full_name = '';
           $scope.signupForm.password = '';
-          
+
           if (!$scope.desktopMode) {
             $scope.signupModal.hide();
           } else {
@@ -168,7 +175,7 @@ angular.module('uguru.util.controllers')
         console.log('failure allback');
         LoadingService.showMsg('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?', 3000);
         $scope.signupForm.email = '';
-        
+
       }
 
       $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
@@ -1341,8 +1348,15 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.loginUser = function() {
+      if (mixpanel && mixpanel.track) {
+        mixpanel.track(
+            "Login Attempt",
+            {email: $scope.signupForm.email}
+        );
+      }
+
       if ($scope.signupForm.email)
-        $scope.signupForm.email = $scope.signupForm.email.toLowerCase()
+        $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.validateLoginForm() && !$scope.user.fb_id) {
         return;
       }
@@ -1362,6 +1376,7 @@ angular.module('uguru.util.controllers')
       LoadingService.showAmbig();
       User.login($scope.loginPayload).then(function(user) {
         //
+
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
@@ -1371,13 +1386,28 @@ angular.module('uguru.util.controllers')
               $ionicSideMenuDelegate.toggleRight();
             }
           }, 500)
+
+          if (mixpanel && mixpanel.identify) {
+            if (user.id) {
+              mixpanel.identify(user.id)
+            }
+          }
+
+          if (mixpanel && mixpanel.register) {
+            mixpanel.register($scope.user);
+          }
+
           LoadingService.showSuccess('Login Successful!', 2500);
-          if($scope.desktopMode)
+          if ($scope.desktopMode)
           {
-            if ($scope.user.guru_mode)
-              $state.go('^.guru')
-            else
-              $state.go('^.guru-home')
+            if ($state.current.name !== 'root.guru-home'){
+              if ($scope.user.guru_mode)
+                $state.go('^.guru')
+              else
+                $state.go('^.guru-home')
+            } else {
+              document.getElementById('cta-modal-signup').classList.remove('show');
+            }
           }
           else
           {
@@ -1410,11 +1440,53 @@ angular.module('uguru.util.controllers')
               //   passwordInput.focus();
               // }
             }, 1250)
+        } else if (err.status === 404) {
+          $scope.signupForm.password = '';
+          $scope.signupForm.email = '';
+          LoadingService.showMsg('Sorry, your account is currently deactivated. Please contact support@uguru.me for a reactivation code.', 2500, function() {
+
+            if ($state.current.name = 'root.desktop-login') {
+              LoadingService.showAmbig('Redirecting...', 1000);
+              $timeout(function() {
+                if ($scope.desktopMode) {
+                  $scope.backToAccess();
+                }
+              }, 500)
+            } else if ($state.current.name === 'root.university'){
+              if (!$scope.desktopMode && $scope.signupModal.isShown()) {
+                LoadingService.showAmbig(null, 1500);
+                $scope.signupModal.hide();
+              }
+            }
+
+          });
+
         }
       });
     }
 
+    function fireEvent(obj, evt){
+     var fireOnThis = obj;
+     if( document.createEvent ) {
+       var evObj = document.createEvent('MouseEvents');
+       evObj.initEvent( evt, true, false );
+       fireOnThis.dispatchEvent( evObj );
+     }
+      else if( document.createEventObject ) { //IE
+       var evObj = document.createEventObject();
+       fireOnThis.fireEvent( 'on' + evt, evObj );
+     }
+    }
+
     $scope.completeSignup = function() {
+
+      if (mixpanel && mixpanel.track) {
+        mixpanel.track(
+            "Signup Attempt",
+            {email: $scope.signupForm.email, name: $scope.signupForm.full_name}
+        );
+      }
+
       if ($scope.signupForm.email)
         $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
@@ -1439,9 +1511,21 @@ angular.module('uguru.util.controllers')
       $scope.signupForm.guru_mode = false;
       LoadingService.show();
       User.create($scope.user).then(function(user) {
+
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
+
+          if (mixpanel && mixpanel.identify) {
+            if (user.id) {
+              mixpanel.identify(user.id)
+            }
+          }
+
+          if (mixpanel && mixpanel.register) {
+            mixpanel.register($scope.user);
+          }
+
           $localstorage.setObject('user', $scope.user);
           if (!$scope.fbLoginSuccessAlreadyShown) {
             LoadingService.showSuccess('Account Successfully Created', 2500);
@@ -1518,17 +1602,11 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
-    
+
     $timeout(function() {
       $scope.root.vars.loginMode = true;
     })
-    // $ionicModal.fromTemplateUrl(BASE + 'templates/fb.modal.html', {
-    //         scope: $scope,
-    //         animation: 'slide-in-up',
-    //         focusFirstInput: false,
-    // }).then(function(modal) {
-    //     $scope.fbModal = modal;
-    // });
+
 
     $scope.$on('$ionicView.enter', function() {
 
