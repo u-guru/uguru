@@ -1421,7 +1421,7 @@ section {
 }
 
 .skills-view #skills-list.onboarding-list ul .bg-gold.important::after {
-  background: #F9D57B;
+  background: #F6C64E;
 }
 
 .skills-view #skills-list.onboarding-list ul .bg-moola.important::after {
@@ -1449,7 +1449,7 @@ section {
 }
 
 .skills-view #skills-list.onboarding-list ul .bg-cerise.important::after {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 .photo-view {
@@ -1561,7 +1561,7 @@ section {
 .guru-profile-view #btn-save-profile:active {
   filter: alpha(opacity=100);
   opacity: 1;
-  background: #DB1988 !important;
+  background: #e6389b !important;
 }
 
 .guru-profile-view #btn-edit-profile:active {
@@ -2776,12 +2776,12 @@ section {
 }
 
 .credibility-view #credit-slider ul li a:active, .credibility-view #credit-slider ul li a:focus, .credibility-view #credit-slider ul li a:hover {
-  border-bottom: 5px solid #DB1988;
-  color: #DB1988;
+  border-bottom: 5px solid #e6389b;
+  color: #e6389b;
 }
 
 .credibility-view #credit-slider ul li a:active .credit-icon, .credibility-view #credit-slider ul li a:focus .credit-icon, .credibility-view #credit-slider ul li a:hover .credit-icon {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 .credibility-view #credit-slider ul li a.active, .credibility-view #credit-slider ul li a:active {

@@ -1180,11 +1180,11 @@
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold:active::after {
-  background: #F9D57B;
+  background: #F6C64E;
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-gold .skill-count {
-  color: #F9D57B;
+  color: #F6C64E;
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-moola:active::after {
@@ -1236,11 +1236,11 @@
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise:active::after {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-cerise .skill-count {
-  color: #DB1988;
+  color: #e6389b;
 }
 
 .subcategory {
@@ -1393,27 +1393,27 @@
 }
 
 .subcategory:nth-child(1) ul li label {
-  border-bottom-color: #DB1988;
+  border-bottom-color: #e6389b;
 }
 
 .subcategory:nth-child(1) ul li input:checked + label {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 .subcategory:nth-child(1) ul li input:checked + label svg path {
-  stroke: #DB1988;
+  stroke: #e6389b;
 }
 
 .subcategory:nth-child(1) button:hover, .subcategory:nth-child(1) button:focus {
-  border-color: #DB1988 !important;
-  background: #DB1988 !important;
+  border-color: #e6389b !important;
+  background: #e6389b !important;
   color: white !important;
 }
 
 .subcategory:nth-child(1) button:active {
   border-color: white !important;
   background: white !important;
-  color: #DB1988 !important;
+  color: #e6389b !important;
 }
 
 .subcategory:nth-child(6) ul li label {
@@ -1441,27 +1441,27 @@
 }
 
 .subcategory:nth-child(2) ul li label {
-  border-bottom-color: #F9D57B;
+  border-bottom-color: #F6C64E;
 }
 
 .subcategory:nth-child(2) ul li input:checked + label {
-  background: #F9D57B;
+  background: #F6C64E;
 }
 
 .subcategory:nth-child(2) ul li svg path {
-  stroke: #F9D57B;
+  stroke: #F6C64E;
 }
 
 .subcategory:nth-child(2) button:hover, .subcategory:nth-child(2) button:focus {
-  border-color: #F9D57B !important;
-  background: #F9D57B !important;
+  border-color: #F6C64E !important;
+  background: #F6C64E !important;
   color: white !important;
 }
 
 .subcategory:nth-child(2) button:active {
   border-color: white !important;
   background: white !important;
-  color: #F9D57B !important;
+  color: #F6C64E !important;
 }
 
 .subcategory:nth-child(5) ul li label {
@@ -2562,12 +2562,12 @@
 
 #desktop-messaging .main #messenger.bg-gold #messenger-sidebar,
 #desktop-messaging .main.mobile-messages-container #messenger.bg-gold #messenger-sidebar {
-  background: rgba(249, 213, 123, 0.5);
+  background: rgba(246, 198, 78, 0.5);
 }
 
 #desktop-messaging .main #messenger.bg-gold #messenger-content .messenger-header,
 #desktop-messaging .main.mobile-messages-container #messenger.bg-gold #messenger-content .messenger-header {
-  background: #F9D57B;
+  background: #F6C64E;
 }
 
 #desktop-messaging .main #messenger.bg-moola #messenger-sidebar,
@@ -2632,12 +2632,12 @@
 
 #desktop-messaging .main #messenger.bg-cerise #messenger-sidebar,
 #desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-sidebar {
-  background: rgba(219, 25, 136, 0.5);
+  background: rgba(230, 56, 155, 0.5);
 }
 
 #desktop-messaging .main #messenger.bg-cerise #messenger-content .messenger-header,
 #desktop-messaging .main.mobile-messages-container #messenger.bg-cerise #messenger-content .messenger-header {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 #desktop-messaging .main #messenger.bg-campus #messenger-sidebar,
@@ -3035,7 +3035,7 @@
 }
 
 .desktop-request .main .request-form .request-form-upload > div > div ul li.upload-pdf > svg {
-  fill: #DB1988;
+  fill: #e6389b;
 }
 
 .desktop-request .main .request-form .request-form-upload > div > div ul li.upload-add > svg {
@@ -3096,20 +3096,20 @@
 }
 
 .desktop-request .main.bg-cerise header {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 .desktop-request .main.bg-cerise .request-form .request-form-map > div, .desktop-request .main.bg-cerise .request-form .request-form-date > div {
-  color: #DB1988;
-  border-color: #DB1988;
+  color: #e6389b;
+  border-color: #e6389b;
 }
 
 .desktop-request .main.bg-cerise .request-form-payment a {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 .desktop-request .main.bg-cerise .request-form-submit button {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 .user-icon {
@@ -3843,7 +3843,7 @@
 
 #desktop-request-subcategories .main .request-subcategories-content ul li a div {
   height: calc(100% - 50px);
-  background-color: #ad146c;
+  background-color: #d11a82;
   background-position: center;
   background-size: cover;
 }
@@ -4023,7 +4023,7 @@
 }
 
 #desktop-request-categories .main .request-categories-content ul li:nth-child(1) a {
-  background: #DB1988;
+  background: #e6389b;
 }
 
 #desktop-request-categories .main .request-categories-content ul li:nth-child(2) a {
@@ -4031,7 +4031,7 @@
 }
 
 #desktop-request-categories .main .request-categories-content ul li:nth-child(3) a {
-  background: #F9D57B;
+  background: #F6C64E;
 }
 
 #desktop-request-categories .main .request-categories-content ul li:nth-child(4) a {
@@ -4061,8 +4061,8 @@
 }
 
 #desktop-rating.student-mode .main > ul li svg {
-  fill: #f5e3b6;
-  stroke: #f5e3b6;
+  fill: #f4dca0;
+  stroke: #f4dca0;
 }
 
 #desktop-rating.student-mode .main > ul li ul.rating-charge {
@@ -4086,8 +4086,8 @@
 }
 
 #desktop-rating.guru-mode .main > ul li svg {
-  fill: #928458;
-  stroke: #928458;
+  fill: #917c41;
+  stroke: #917c41;
 }
 
 #desktop-rating.guru-mode .main > ul li ul.rating-charge {
@@ -4196,8 +4196,8 @@
 }
 
 #desktop-rating .main > ul li ul.rating-stars li:hover svg, #desktop-rating .main > ul li ul.rating-stars li:focus svg, #desktop-rating .main > ul li ul.rating-stars li.active svg, #desktop-rating .main > ul li ul.rating-stars li:active svg {
-  fill: #F9D57B;
-  stroke: #F9D57B;
+  fill: #F6C64E;
+  stroke: #F6C64E;
 }
 
 /* ---------- CUSTOM DROPDOWN */
@@ -4377,7 +4377,7 @@
 #desktop-timer .main button {
   width: 350px;
   font-weight: 600;
-  background: #f8cd63;
+  background: #f5be36;
 }
 
 /* ---------- GENERAL */
