@@ -1,6 +1,10 @@
 from mixpanel import Mixpanel
+import os
 
-mp = Mixpanel('a023529351da6a26661d05b4b1bd6758')
+if os.environ.get('PRODUCTION'):
+    mp = Mixpanel('a023529351da6a26661d05b4b1bd6758')
+else:
+    mp = Mixpanel('da5f7f670df85c0a22946a8d6611af83')
 
 def create_mp_profile(user, ip=None):
     init_prof_dict = {
@@ -18,6 +22,8 @@ def create_mp_profile(user, ip=None):
     return response
 
 def isSandboxMode(email):
+    if not email:
+        return True
     if '@uguru.me' in email or 'example' in email or 'test' in email:
         return True
     return False

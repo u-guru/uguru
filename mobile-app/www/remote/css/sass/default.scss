@@ -1750,7 +1750,7 @@ button.disabled {
 }
 
 // CHECKLISTS
-[class*="checklist"] {
+[class*="checklist"]:not([class*="pf-"]) {
 	li {
 		> span {
 			@include flex;
