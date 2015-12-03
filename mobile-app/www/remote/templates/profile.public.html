@@ -19,7 +19,7 @@
 						<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 					</span>
 				</h1>
-				<h2 class="pf-school">{{user.university.name || user.university.short_name}}</h2>
+				<h2 class="pf-school">{{user.university.short_name || user.university.name}}</h2>
 				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
 				<button class="btn-ghost-white">Contact</button>
