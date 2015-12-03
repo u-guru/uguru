@@ -54,9 +54,9 @@ function RankingService() {
 	}
 
 	function initProgress(selector, start) {
-		// if (progressCircle) {
-  //     return progressCircle;
-  //   }
+		if (progressCircle) {
+      return progressCircle;
+    }
 
     elem = document.querySelector('#guru-ranking-progress-bar')
     if (elem) {
