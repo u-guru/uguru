@@ -10,10 +10,10 @@
 		<span class="list-item-detail" ng-if='user.id' id='student-sidebar-profile'>
 			<span class='student-profile-name'>{{user.name.split(' ')[0]}} {{user.name.split(' ')[1][0].toUpperCase()}}.</span>
 			<span class='student-profile-year' ng-if='user.id && user.year && user.university.name'>Sophomore</span>
-			<span class='student-profile-school' ng-if='user.id && !user.year && user.university'>{{user.university.name || user.university.title}}</span>
+			<span class='student-profile-school' ng-if='user.id && !user.year && user.university'>{{user.university.short_name || user.university.name || user.university.title}}</span>
 		</span>
 		<span class="list-item-detail" ng-if='!user.id || (!user.university.name && !user.university.title)'>
-			<h3 class='text-center'>{{user.university.name || user.university.title || 'SETTINGS'}}</h3>
+			<h3 class='text-center'>{{user.university.short_name || user.university.name || user.university.title || 'SETTINGS'}}</h3>
 		</span>
 	</ion-item>
 	<ion-item class='list-item list-item-agenda'></ion-item>

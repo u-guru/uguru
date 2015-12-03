@@ -1,5 +1,11 @@
 @charset "UTF-8";
 /* ---------- PROFILE STYLES */
+.pf-review-amt {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase; }
+
 .pf-rating {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -121,6 +127,7 @@
       text-transform: none; }
       .pf-type header.third .pf-header h1.verified span svg {
         margin-left: 8px;
+        margin-top: 6px;
         width: 24px;
         height: 24px; }
     .pf-type header.third .pf-header .pf-school {
@@ -131,7 +138,10 @@
       height: 72px;
       border-width: 3px; }
     .pf-type header.third .pf-header .pf-rating {
-      margin: 5px auto; }
+      margin: 5px auto 0; }
+    .pf-type header.third .pf-header .pf-review-amt {
+      margin-top: -5px;
+      margin-bottom: 5px; }
     .pf-type header.third .pf-header button {
       padding: 5px 30px; }
     .pf-type header.third .pf-header .pf-header-desc {
@@ -435,6 +445,8 @@
   margin-top: 15px;
   font-size: 20px;
   font-weight: 400; }
+  .pf-type .pf-list .pf-list-desc:empty {
+    margin-top: 0; }
 .pf-type .pf-list .pf-list-y {
   margin-top: 2px; }
   .pf-type .pf-list .pf-list-y > li {
@@ -442,6 +454,8 @@
     background: #2B3234;
     font-size: 18px;
     font-weight: 600; }
+    .pf-type .pf-list .pf-list-y > li [data-years]:not([data-years="1"]):after {
+      content: "s"; }
     .pf-type .pf-list .pf-list-y > li:not(:last-child) {
       margin-bottom: 2px; }
     .pf-type .pf-list .pf-list-y > li ul li:last-child {
@@ -596,9 +610,7 @@
           margin: 10px auto 0;
           max-width: 120px; }
         .pf-type .pf-checklist > li:not(.pf-checklist-full) div > span .pf-review-amt {
-          display: none;
-          font-size: 14px;
-          text-transform: uppercase; }
+          display: none; }
     .pf-type .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
       stroke: #69B3A5;
       background: white; }
@@ -664,11 +676,16 @@
       font-size: 24px !important; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-rating {
       max-width: 150px;
-      margin: 10px auto !important; }
+      margin: 10px auto 0 !important; }
+    .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-review-amt {
+      font-size: 16px;
+      margin-bottom: 15px; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header button {
       padding: 10px 30px; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-header-desc {
-      display: block; }
+      display: block;
+      max-height: 124px;
+      overflow: auto; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-url {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -1092,6 +1109,11 @@
       padding-top: 5px;
       font-size: 28px;
       font-weight: 600; }
+      .pf-card .pf-card-main h1.verified span svg {
+        margin-left: 8px;
+        margin-top: 6px;
+        width: 24px;
+        height: 24px; }
     .pf-card .pf-card-main .pf-school {
       margin-top: 0;
       font-size: 20px;
@@ -1100,10 +1122,7 @@
       margin: 15px auto 0; }
     .pf-card .pf-card-main .pf-review-amt {
       display: block;
-      margin-top: -3px;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase; }
+      margin-top: -3px; }
     .pf-card .pf-card-main .pf-card-thumbs {
       -ms-box-orient: horizontal;
       display: -webkit-box;

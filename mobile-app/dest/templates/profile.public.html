@@ -19,15 +19,19 @@
 						<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 					</span>
 				</h1>
-				<h2 class="pf-school">{{user.university.short_name}}</h2>
+				<h2 class="pf-school">{{user.university.short_name || user.university.name}}</h2>
 				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
+
 				<button class="btn-ghost-white">Contact</button>
 				<div class="pf-header-desc">
 					{{user.guru_introduction}}
 				</div>
 				<ul class="pf-url">
 					<!-- BIND -->
-					<li>{{user.profile_code}}.berkeley.uguru.me</li>
+
+					<li>{{user.profile_code || user.first_name}}.uguru.me</li>
+
 					<li>
 						<button>
 							<svg viewBox="0 0 100 100">
@@ -46,13 +50,16 @@
 					</li>
 					<li>
 						<a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
+
 					</li>
 				</ul>
 			</div>
 			<!-- BIND -->
 			<div class="pf-shop-desc pf-tab-item ng-class:{'active':activeTabIndex === 1}">
-				<h1>{{user.first_name}}'s Shop</h1>
+				<h1>{{user.first_name}}'s Shop</h1
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+
 				<div class="pf-list p15top">
 					<h1>Experience</h1>
 					<ul class="pf-list-y">
@@ -64,10 +71,9 @@
 									<span ng-if='experience.year === 1'>1 year</span>
 									<span ng-if='experience.year === 0'><1 year</span>
 								</li>
+
 							</ul>
-							<div class="pf-list-desc">
-								{{experience.description}}
-							</div>
+							<div class="pf-list-desc">{{experience.description}}</div>
 						</li>
 						<li>
 							<ul class="ugrid-2">
@@ -105,14 +111,17 @@
 					<button class="m10top btn-ghost-white">See Availability</button>
 				</div>
 			</div>
+
 			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
 				<li class="pf-checklist-full active pf-type-household" ng-include="img_base + 'templates/profile.modal.html'"></li>
+
 				<li ng-repeat='course in user.guru_courses'>
 					<div class="pf-check-container">
 						<span>
 							<span>{{course.short_name}}</span>
 							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 							<span class="pf-review-amt">3 Reviews</span>
+
 						</span>
 					</div>
 				</li>
