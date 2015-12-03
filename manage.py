@@ -616,11 +616,13 @@ if arg == 'init_admin':
     from hashlib import md5
     from app.models import User
     admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    admin_emails = [_tuple[0] for _tuple in admin_accounts]
     u = University.query.get(2307)
 
     len_universities = len(University.query.all())
 
     for admin_account_tuple in admin_accounts:
+        continue
         account_email = admin_account_tuple[0]
         account_name = admin_account_tuple[1]
         user = User.query.filter_by(email=account_email.lower()).first()
@@ -642,6 +644,12 @@ if arg == 'init_admin':
             user.referral_code = account_name.split(' ')[0].lower()
             db_session.commit()
             print "Account for %s successfully created" % user.email
+    admin_users = User.query.filter_by(is_admin=True).all()
+    for user in admin_users:
+        if user.email.lower() not in admin_emails:
+            print user.email, 'is not an admin'
+            user.is_admin = False
+            db_session.commit()
 
 if arg == 'parse_uni':
     from app.lib.wikipedia import *

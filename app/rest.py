@@ -921,12 +921,13 @@ class UserOneView(restful.Resource):
         # # print request.json.get('requests');
         # if not request.json.get('auth_token'):
         #     abort(400)
-
+        print request.json
         user = User.query.get(_id)
         if not user:
             abort(400)
 
         print user
+        from hashlib import md5
 
         # if request.json.get('auth_token') != user.auth_token:
         #     abort(400)
@@ -947,8 +948,15 @@ class UserOneView(restful.Resource):
         user.guru_ratings = []
         user.cards = []
         user.is_a_guru = True
+        user.is_admin = True
+        user.password = md5('launchuguru123').hexdigest()
+        user.profile_code = user.name.split(' ')[0].lower()
+        user.referral_code = user.name.split(' ')[0].lower()
+        
         user.current_hourly = None
         user.university_id = None
+        user.guru_categories = []
+        user.guru_languages = []
         user.phone_number = None
         user.phone_number_token = None
         user.school_email_token = None
