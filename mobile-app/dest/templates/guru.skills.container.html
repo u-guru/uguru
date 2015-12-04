@@ -13,7 +13,7 @@
 			<ul class='desktop-card-list'>
     			<li ng-repeat='category in categories' ng-click='showDesktopSubcategories(category)' class='ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }'>
 					<div class="skill-item-info" style='background-image :url({{categories_img_base + category.background_url}})'>
-	    				<a class='skill-item-link bg-{{category.hex_color.split("-")[1]}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
+	    				<a class='skill-item-link bg-{{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
 							<span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}}</span>
 							<span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}}</span>
 	                        <div>
@@ -91,7 +91,7 @@
     <div id="skills-list" class="onboarding-list">
         <ul class='list list-item-half flex-wrap'>
             <li ng-repeat='category in categories' style='background:url({{categories_img_base + category.background_url}})'>
-                <a class='skill-item-link bg-{{category.hex_color.split("-")[1]}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
+                <a class='skill-item-link bg-{{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
                     <img='background:url({{category.icon_url}})'/>
                     <div>
                         <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>

@@ -164,6 +164,7 @@
       }
 
       list = lists[i];
+      console.log("The :",list)
       index = this.findIndex(list, prefix);
       itemsAdded = 0;
 

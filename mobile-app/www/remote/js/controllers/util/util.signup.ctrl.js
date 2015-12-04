@@ -1116,7 +1116,6 @@ angular.module('uguru.util.controllers')
             $scope.ngFBlogin();
           }, 500)
 
-
     };
 
     $scope.closeSideBar = function() {
@@ -1144,7 +1143,10 @@ angular.module('uguru.util.controllers')
 
       }
     }
-
+    $scope.explore = function()
+    {
+      $state.go('^.home');
+    }
     $scope.postFbGraphApiSuccess = function(success, callback) {
 
         $scope.user.first_name = success.first_name;
@@ -1527,21 +1529,25 @@ angular.module('uguru.util.controllers')
           }
 
           $localstorage.setObject('user', $scope.user);
+
           if (!$scope.fbLoginSuccessAlreadyShown) {
             LoadingService.showSuccess('Account Successfully Created', 2500);
           }
+
           if (!$scope.desktopMode && ModalService.isOpen('signup')) {
               ModalService.close('signup');
           }
 
-          if ($scope.desktopMode) {
-            console.log('detecting signup')
-            LoadingService.showSuccess('Account Successfully Created', 2500);
-            $state.go('^.guru-home');
-          } else {
-            $state.go('^.guru');
-          }
-
+            if ($scope.desktopMode) {
+              console.log('detecting signup')
+              LoadingService.showSuccess('Account Successfully Created', 2500);
+              $state.go('^.guru-home');
+            } else {
+              console.log("close modal")
+              $scope.signupModal.hide();
+              $state.go('^.guru');
+            }
+    
 
 
       },

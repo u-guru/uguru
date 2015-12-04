@@ -72,12 +72,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.backToAccess = function() {
     if (mixpanel && mixpanel.track) {
-      mixpanel.track(
-          "Back to access selected",
-          {name: university.name,
-            id:university.id
-          }
-      );
+      mixpanel.track("Back to access selected");
     }
     $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
   }

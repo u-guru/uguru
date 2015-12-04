@@ -7,14 +7,14 @@
 			<div class="pf-banner pf-banner-photography" ng-include="img_base + 'templates/svg/photography.html'"></div>
 			<div class="pf-banner pf-banner-baking" ng-include="img_base + 'templates/svg/baking.html'"></div>
 			<div class="pf-banner pf-banner-household" ng-include="img_base + 'templates/svg/household.html'"></div>
-			<div class="pf-banner pf-banner-delivery" ng-include="img_base + 'templates/svg/delivery.html'"></div>
+			<div class="pf-banner pf-banner-delivery" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></div>
 			<div class="pf-banner pf-banner-freelancing" ng-include="img_base + 'templates/svg/freelancing.html'"></div>
 			<div class="pf-banner pf-banner-athletic" ng-include="img_base + 'templates/svg/athletic.html'"></div>
 			<div class="pf-banner pf-banner-tech" ng-include="img_base + 'templates/svg/tech.html'"></div>
 			<div class="pf-header">
 				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
 				<h1 class="verified">
-					<span class="inline">{{ user.name }}</span>
+					<span class="inline">{{ user.profile_name }}</span>
 					<span class="inline">
 						<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 					</span>
@@ -22,13 +22,16 @@
 				<h2 class="pf-school">{{user.university.short_name || user.university.name}}</h2>
 				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
+
 				<button class="btn-ghost-white">Contact</button>
 				<div class="pf-header-desc">
 					{{user.guru_introduction}}
 				</div>
 				<ul class="pf-url">
 					<!-- BIND -->
+
 					<li>{{user.profile_code || user.first_name}}.uguru.me</li>
+
 					<li>
 						<button>
 							<svg viewBox="0 0 100 100">
@@ -43,44 +46,47 @@
 			<div class="pf-tabs">
 				<ul>
 					<li>
-						<a ng-click='profileTabIndex = 0;' class="ng-class:{'active':profileTabIndex === 0 || !profileTabIndex}">Services</a>
+						<a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
 					</li>
 					<li>
-						<a ng-click='profileTabIndex = 1;' class="ng-class:{'active':profileTabIndex === 1}">About</a>
+						<a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
+
 					</li>
 				</ul>
 			</div>
 			<!-- BIND -->
-			<div class="pf-shop-desc pf-tab-item ng-class:{'active':profileTabIndex === 1}">
-				<h1>{{user.first_name}}'s Shop</h1>
-				<p>Here's some more information about what I do.</p>
+			<div class="pf-shop-desc pf-tab-item ng-class:{'active':activeTabIndex === 1}">
+				<h1>{{user.first_name}}'s Shop</h1
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+
 				<div class="pf-list p15top">
 					<h1>Experience</h1>
 					<ul class="pf-list-y">
 						<li ng-repeat='experience in user.guru_experiences'>
 							<ul class="ugrid-2">
-								<li class="text-left">{{experience.name}}</li>
-								<li class="text-right" data-years="{{experience.years}}">{{experience.years}} year</li>
+								<li class="text-left">{{experience.title}}</li>
+								<li class="text-right">{{experience.years}}
+									<span ng-if='experience.year > 1'>years</span>
+									<span ng-if='experience.year === 1'>1 year</span>
+									<span ng-if='experience.year === 0'><1 year</span>
+								</li>
+
 							</ul>
 							<div class="pf-list-desc">{{experience.description}}</div>
 						</li>
-					</ul>
-				</div>
-				<div class="pf-list p15top" ng-if='user.guru_languages'>
-					<h1>Languages</h1>
-					<ul class="pf-list-y">
-						<li ng-repeat='language in user.guru_languages'>
+						<li>
 							<ul class="ugrid-2">
-								<li class="text-left">{{language.name}}</li>
-								<li class="text-right"></li>
+								<li class="text-left">Cal Web Master</li>
+								<li class="text-right">3 years</li>
 							</ul>
 							<div class="pf-list-desc">
-
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
 							</div>
 						</li>
 					</ul>
 				</div>
-				<div class="pf-list p15top" ng-if='false'>
+				<div class="pf-list p15top">
 					<h1>Will Work For</h1>
 					<ul class="pf-list-x ugrid-3">
 						<li>
@@ -101,48 +107,21 @@
 					</ul>
 				</div>
 				<div class="pf-reviews p15top">
-					<h2>{{user.guru_avg_rating}} Average Rating</h2>
-					<button ng-if='false' class="m10top btn-ghost-white">Read All Reviews</button>
+					<h2>{{user.guru_avg_rating || 0.0}} Average Rating</h2>
+					<button class="m10top btn-ghost-white">See Availability</button>
 				</div>
 			</div>
-			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':profileTabIndex === 0 || !profileTabIndex}">
+
+			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
+				<li class="pf-checklist-full active pf-type-household" ng-include="img_base + 'templates/profile.modal.html'"></li>
+
 				<li ng-repeat='course in user.guru_courses'>
 					<div class="pf-check-container">
 						<span>
 							<span>{{course.short_name}}</span>
-							<ul class="pf-rating" data-rating="4" data-half="true">
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-								<li>
-									<svg viewBox="0 0 100 100">
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-									</svg>
-								</li>
-							</ul>
-							<span class="pf-review-amt">{{user.guru_avg_rating}} Avg Rating</span>
+							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<span class="pf-review-amt">3 Reviews</span>
+
 						</span>
 					</div>
 				</li>

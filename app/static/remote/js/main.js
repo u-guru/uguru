@@ -224,7 +224,32 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.profile-public', {
     url:'/profile-public',
-    templateUrl: BASE + 'templates/profile.public.html'
+    templateUrl: BASE + 'templates/profile.public.html',
+    controller: 'PublicProfileController'
+  }).
+  state('root.profile-public-bakery', {
+    url:'/profile-public-bakery',
+    templateUrl: BASE + 'templates/profile.public.bakery.html'
+  }).
+  state('root.profile-public-photo', {
+    url:'/profile-public-photo',
+    templateUrl: BASE + 'templates/profile.public.photo.html'
+  }).
+  state('root.profile-modal', {
+    url:'/profile-modal',
+    templateUrl: BASE + 'templates/profile.modal.html'
+  }).
+  state('root.profile-modal-bakery', {
+    url:'/profile-modal-bakery',
+    templateUrl: BASE + 'templates/profile.modal.bakery.html'
+  }).
+  state('root.profile-card', {
+    url:'/profile-card',
+    templateUrl: BASE + 'templates/profile.card.html'
+  }).
+  state('root.color-picker', {
+    url:'/color-picker',
+    templateUrl: BASE + 'templates/color.picker.html'
   }).
   state('root.guru-languages', {
     url:'/guru-languages',
@@ -251,18 +276,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).
-  state('root.bakery-guru-profile', {
-        url: '/bakery-guru-profile',
-        templateUrl: BASE + 'templates/bakery.guru.profile.html',
-  }).
-  state('root.photo-guru-profile', {
-        url: '/photo-guru-profile',
-        templateUrl: BASE + 'templates/photo.guru.profile.html',
-  }).
   state('root.guru', {
         url: '/guru',
         templateUrl: BASE + 'templates/guru.html',
         controller: 'GuruController'
+  }).
+  state('root.profiles', {
+        url: '/profiles/:profileId',
+        templateUrl: BASE + 'templates/profile.public.html',
+        controller: 'PublicProfileController'
   }).
   state('root.cashout', {
         url: '/cashout',

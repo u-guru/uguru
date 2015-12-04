@@ -1913,7 +1913,12 @@ section {
   background: #2B3234;
 }
 
-.photo-view h1.text-center {
+.photo-view header.third > h1 {
+  font-size: 28px !important;
+  text-transform: lowercase;
+}
+
+.photo-view header.third h1.text-center {
   line-height: 1.2 !important;
 }
 
@@ -1974,6 +1979,7 @@ section {
   height: 80%;
   max-width: 150px;
   max-height: 150px;
+  border: 5px solid white;
   overflow: hidden;
 }
 
@@ -1993,6 +1999,7 @@ section {
   height: 80%;
   max-width: 150px;
   max-height: 150px;
+  border: 5px solid white;
 }
 
 /* ---------- GURU PROFILE */

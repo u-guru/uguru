@@ -224,7 +224,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.profile-public', {
     url:'/profile-public',
-    templateUrl: BASE + 'templates/profile.public.html'
+    templateUrl: BASE + 'templates/profile.public.html',
+    controller: 'PublicProfileController'
   }).
   state('root.profile-public-bakery', {
     url:'/profile-public-bakery',
@@ -279,6 +280,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/guru',
         templateUrl: BASE + 'templates/guru.html',
         controller: 'GuruController'
+  }).
+  state('root.profiles', {
+        url: '/profiles/:profileId',
+        templateUrl: BASE + 'templates/profile.public.html',
+        controller: 'PublicProfileController'
   }).
   state('root.cashout', {
         url: '/cashout',

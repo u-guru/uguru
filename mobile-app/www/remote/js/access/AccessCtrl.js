@@ -33,7 +33,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   $scope.access = {
     codeInput: '',
-    errorInputMsg: null,
+    consoleMsg: 'Got an access code?',
   };
 
 

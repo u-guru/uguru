@@ -26,7 +26,6 @@ angular.module('uguru.major.ctrl', [])
         $scope.view_title = $scope.majors[0].university + ' ' + $scope.view_title;
         $scope.search_placeholder_text = 'Search from' + ' ' + $scope.majors.length + ' ' +$scope.majors[0].university + ' majors';
     }
-
     $scope.initialMajors = $scope.majors.slice(0,10);
 
     // if (user.university.majors) {

@@ -612,6 +612,80 @@ if arg == 'update':
         env = 'local'
     print v.latest_ios, 'updated to', env
 
+if arg == 'seed_admin':
+    user = User.query.filter_by(email='jeselle@uguru.me').first()
+    from hashlib import md5
+
+    from app.database import db_session
+    from app.models import *
+
+
+    admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    admin_emails = [_tuple[0] for _tuple in admin_accounts]
+    u = University.query.get(2307)
+
+
+    #teston jeselle
+    admin_account = admin_accounts[-1]
+    account_name = admin_account[1]
+
+    # check user exists
+    if not user:
+        print "something is wrong"
+        sys.exit()
+
+
+    # initiate regular profile attributes
+
+    user.fb_id = 'sjd9qdjoiqwjdijwqeidjioad'
+    user.is_admin = True
+    user.name = account_name
+    user.password = md5('launchuguru123').hexdigest()
+    user.profile_code = account_name.split(' ')[0].lower()
+    user.referral_code = account_name.split(' ')[0].lower()
+    user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
+
+    # save changes to local database
+    db_session.commit()
+    # v1.0
+
+    ## Helper functions
+    def createNewFile(user):
+        _file = File()
+        _file.user_id = user.id
+        _file.url = user.profile_url
+        db_session.add(_file)
+        db_session.commit()
+        return _file
+
+    #example of deleting a user's files
+    def deleteAllUserFiles(user):
+        for _file in user.files:
+            _file.user_id = None
+            user.files.remove(_file)
+            db_session.delete(_file)
+            db_session.commit()
+
+
+    user.school_email_confirmed = True
+
+    # before creating a new file, lets deleate any old ones
+    print len(user.files)
+    deleteAllUserFiles(user)
+    transcript_file = createNewFile(user)
+    print len(user.files)
+
+
+    # db_session.commit()
+    # print len(user.files)
+
+
+
+
+    # Goal
+    # --> Create hella shops
+
+
 if arg == 'init_admin':
     from hashlib import md5
     from app.models import User
@@ -1633,8 +1707,8 @@ if arg == 'test_campaign':
     test_recipient = {
         'first_name': 'gabrielle',
         'email': 'gabrielle@uguru.me',
-        'total_earned': 49, 
-        'balance': 54, 
+        'total_earned': 49,
+        'balance': 54,
         'course_one': 'CS10',
         'course_two': 'CS70'
     }

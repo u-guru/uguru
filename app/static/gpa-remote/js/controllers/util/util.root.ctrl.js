@@ -570,7 +570,11 @@ angular.module('uguru.util.controllers')
 
 
         //if previous in guru mode
-        if ($scope.user && $scope.user.guru_mode) {
+        if (window.location.indexOf('/profile/') > 0) {
+            console.log('redirecting...')
+            $state.go('^.profiles');
+        }
+        else if ($scope.user && $scope.user.guru_mode) {
 
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
@@ -585,10 +589,7 @@ angular.module('uguru.util.controllers')
             $ionicViewSwitcher.nextDirection('enter');
                 $state.go('^.' + _startpage);
 
-
         }
-        }
-
 
 
     }

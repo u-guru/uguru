@@ -7,8 +7,8 @@
         <div class="main">
             <div id="desktop-access-code" ng-init='getLoadTime()'>
                 <span ng-include="img_base + BASE + 'templates/svg/logo-title.html'"></span>
-                <p id='input-error-text' class='access-message' ng-if='access.errorInputMsg'>{{access.errorInputMsg}}</p>
-                <p id='input-error-text' class='access-message'>Got an access code?</p>
+                <p id='input-error-text' class='access-message' >{{access.consoleMsg}}</p>
+                <!-- <p id='input-error-text' class='access-message' >Got an access code?</p> -->
                 <input id="desktop-access-code-bar" class='input-outline' ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' type="text" placeholder="Enter your access code"
                 submit='checkAccessCode(access.codeInput)' />
             </div>

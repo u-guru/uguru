@@ -669,9 +669,10 @@ angular.module('uguru.util.controllers')
             }, false);
         });
 
-
-        //if previous in guru mode
-        if ($scope.user && $scope.user.guru_mode) {
+        if (window.location.href.indexOf('/profile/') > 0) {
+            console.log('redirecting...')
+            $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
+        } else if ($scope.user && $scope.user.guru_mode) {
 
 
             LoadingService.show();

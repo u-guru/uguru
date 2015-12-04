@@ -2,12 +2,12 @@
     "Academic": {
         "background_url": "./img/categories/bg/academic.jpg", 
         "description": "Share your wisdom by tutoring courses you've mastered", 
-        "hex_color": "bg-cerise", 
+        "hex_color": "academic", 
         "icon_url": "./img/categories/icon/academic.svg", 
         "id": 5, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 62, 
+        "num_gurus": 101, 
         "num_subcategories": 4, 
         "subcategories": [
             {
@@ -17,7 +17,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "In Person", 
-                "num_gurus": 37
+                "num_gurus": 43
             }, 
             {
                 "description": "Share your wisdom by tutoring courses you've mastered", 
@@ -26,7 +26,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Remote (Video Chat)", 
-                "num_gurus": 59
+                "num_gurus": 98
             }, 
             {
                 "description": "Share your wisdom by tutoring courses you've mastered", 
@@ -35,7 +35,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Q&A", 
-                "num_gurus": 57
+                "num_gurus": 94
             }, 
             {
                 "description": "Share your wisdom by tutoring courses you've mastered", 
@@ -44,14 +44,14 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Office Hours", 
-                "num_gurus": 32
+                "num_gurus": 36
             }
         ]
     }, 
     "Baking": {
         "background_url": "./img/categories/bg/baking.jpg", 
         "description": "Treat your fellow peers with homemade recipes cooked with love", 
-        "hex_color": "bg-gold", 
+        "hex_color": "baking", 
         "icon_url": "./img/categories/icon/baking-small.svg", 
         "id": 2, 
         "is_active": true, 
@@ -66,7 +66,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cake", 
-                "num_gurus": 31
+                "num_gurus": 32
             }, 
             {
                 "description": "Treat your fellow peers with homemade recipes cooked with love", 
@@ -75,7 +75,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cupcakes", 
-                "num_gurus": 48
+                "num_gurus": 49
             }, 
             {
                 "description": "Treat your fellow peers with homemade recipes cooked with love", 
@@ -111,7 +111,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cookies", 
-                "num_gurus": 18
+                "num_gurus": 19
             }, 
             {
                 "description": "Treat your fellow peers with homemade recipes cooked with love", 
@@ -127,12 +127,12 @@
     "Delivery": {
         "background_url": "./img/categories/bg/tech.jpg", 
         "description": "Help other students get what they need on-demand", 
-        "hex_color": "bg-azure", 
+        "hex_color": "delivery", 
         "icon_url": "./img/categories/icon/technology-small.svg", 
         "id": 1, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 21, 
+        "num_gurus": 22, 
         "num_subcategories": 7, 
         "subcategories": [
             {
@@ -203,7 +203,7 @@
     "Household": {
         "background_url": "./img/categories/bg/sports.jpg", 
         "description": "College students can be lazy. Earn by doing simple household chores.", 
-        "hex_color": "bg-lake", 
+        "hex_color": "household", 
         "icon_url": "./img/categories/icon/sports-small.svg", 
         "id": 7, 
         "is_active": true, 
@@ -218,7 +218,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Laundry", 
-                "num_gurus": 21
+                "num_gurus": 22
             }, 
             {
                 "description": "College students can be lazy. Earn by doing simple household chores.", 
@@ -227,7 +227,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Vacuuming", 
-                "num_gurus": 21
+                "num_gurus": 22
             }, 
             {
                 "description": "College students can be lazy. Earn by doing simple household chores.", 
@@ -261,12 +261,12 @@
     "Photography": {
         "background_url": "./img/categories/bg/photography.jpg", 
         "description": "Help your peers look great @ a college-friendly price (Not $100+/hr).", 
-        "hex_color": "bg-moola", 
+        "hex_color": "photography", 
         "icon_url": "./img/categories/icon/photography-small.svg", 
         "id": 8, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 17, 
+        "num_gurus": 18, 
         "num_subcategories": 4, 
         "subcategories": [
             {
@@ -285,7 +285,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Professional Headshots", 
-                "num_gurus": 16
+                "num_gurus": 17
             }, 
             {
                 "description": "Help your peers look great @ a college-friendly price (Not $100+/hr).", 
@@ -294,7 +294,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Athletic & Action Images", 
-                "num_gurus": 15
+                "num_gurus": 16
             }, 
             {
                 "description": "Help your peers look great @ a college-friendly price (Not $100+/hr).", 
@@ -310,7 +310,7 @@
     "Services": {
         "background_url": "./img/categories/bg/consulting.jpg", 
         "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
-        "hex_color": "bg-orange", 
+        "hex_color": "freelancing", 
         "icon_url": "./img/categories/icon/consulting-small.svg", 
         "id": 6, 
         "is_active": true, 
@@ -325,7 +325,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Design", 
-                "num_gurus": 20
+                "num_gurus": 19
             }, 
             {
                 "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
@@ -334,7 +334,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Interview Help", 
-                "num_gurus": 21
+                "num_gurus": 20
             }, 
             {
                 "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
@@ -343,7 +343,7 @@
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Resume Building", 
-                "num_gurus": 21
+                "num_gurus": 19
             }, 
             {
                 "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
@@ -404,7 +404,7 @@
     "Sports & Muscle": {
         "background_url": "./img/categories/bg/household.jpg", 
         "description": "Put your muscles to good use. Your peers could use the extra hand!", 
-        "hex_color": "bg-shamrock", 
+        "hex_color": "athletic", 
         "icon_url": "./img/categories/icon/household-small.svg", 
         "id": 3, 
         "is_active": true, 
@@ -471,7 +471,7 @@
     "Technology & IT": {
         "background_url": "./img/categories/bg/delivery.jpg", 
         "description": "Save the day for peers who don't live & breath tech (yet...).", 
-        "hex_color": "bg-eggplant", 
+        "hex_color": "tech", 
         "icon_url": "./img/categories/icon/delivery-small.svg", 
         "id": 4, 
         "is_active": true, 

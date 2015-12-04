@@ -82,7 +82,10 @@ angular.module('uguru.util.controllers')
 
     $scope.preventSignupAndBackToAccess = function() {
       $scope.loader.showMsg("Sorry! We are out of signups. <br><br> Please request access code from support on our home page.", 0, 3000);
+      $scope.signupForm.email = '';
+      $scope.signupForm.password = '';
       $timeout(function() {
+
         LoadingService.showAmbig('Redirecting you back...', 2000, function() {
           if ($scope.desktopMode) {
             AnimationService.flip('^.university');
@@ -105,6 +108,10 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.backToAccess = function() {
+      $scope.signupForm.email = '';
+      $scope.signupForm.password = '';
+      $scope.root.vars.loginMode = true;
+      $scope.root.vars.forgotPassword = false;
       LoadingService.showAmbig(null, 1000, function() {
           AnimationService.flip('^.university');
       })
@@ -1368,7 +1375,7 @@ angular.module('uguru.util.controllers')
       }
       LoadingService.showAmbig();
       User.login($scope.loginPayload).then(function(user) {
-        // 
+        //
 
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
@@ -1389,7 +1396,7 @@ angular.module('uguru.util.controllers')
           if (mixpanel && mixpanel.register) {
             mixpanel.register($scope.user);
           }
-          
+
           LoadingService.showSuccess('Login Successful!', 2500);
           if ($scope.desktopMode)
           {
