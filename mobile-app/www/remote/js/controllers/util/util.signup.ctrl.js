@@ -1543,7 +1543,6 @@ angular.module('uguru.util.controllers')
               LoadingService.showSuccess('Account Successfully Created', 2500);
               $state.go('^.guru-home');
             } else {
-              console.log("close modal")
               $scope.signupModal.hide();
               $state.go('^.guru');
             }
@@ -1555,7 +1554,8 @@ angular.module('uguru.util.controllers')
         console.log(err);
           LoadingService.hide();
         if (err.status === 409) {
-          alert('Email already exists in our system! Login?')
+          // alert('Email already exists in our system! Login?')
+          LoadingService.showMsg('Incorrect email address or password', 2500);
           $scope.toggleLoginMode();
           $scope.signupForm.password = '';
         }
