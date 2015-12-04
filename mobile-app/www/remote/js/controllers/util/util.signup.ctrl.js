@@ -1529,23 +1529,25 @@ angular.module('uguru.util.controllers')
           }
 
           $localstorage.setObject('user', $scope.user);
+
           if (!$scope.fbLoginSuccessAlreadyShown) {
             LoadingService.showSuccess('Account Successfully Created', 2500);
           }
+
           if (!$scope.desktopMode && ModalService.isOpen('signup')) {
               ModalService.close('signup');
           }
 
-          if ($scope.desktopMode) {
-            console.log('detecting signup')
-            LoadingService.showSuccess('Account Successfully Created', 2500);
-            $state.go('^.guru-home');
-          } else {
-            $state.go('^.guru');
-          }
-          else
-            $state.go('^.guru')
-
+            if ($scope.desktopMode) {
+              console.log('detecting signup')
+              LoadingService.showSuccess('Account Successfully Created', 2500);
+              $state.go('^.guru-home');
+            } else {
+              console.log("close modal")
+              $scope.signupModal.hide();
+              $state.go('^.guru');
+            }
+    
 
 
       },
