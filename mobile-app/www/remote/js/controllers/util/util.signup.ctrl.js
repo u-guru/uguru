@@ -150,7 +150,9 @@ angular.module('uguru.util.controllers')
     $scope.attemptToResetPassword = function() {
 
       if (!Utilities.validateEmail($scope.signupForm.email)) {
-        alert('Please enter valid email');
+        // alert('Please enter valid email');
+        LoadingService.showMsg('Please enter valid email', 0, 3500);
+
         return;
       }
 
@@ -248,12 +250,15 @@ angular.module('uguru.util.controllers')
     $scope.submitSupport = function() {
 
       if (!$scope.support_index) {
-        alert('Please submit one of the 6 support options');
+        // alert('Please submit one of the 6 support options');
+        LoadingService.showMsg('Please submit one of the 6 support options', 0, 3500);
+
         return;
       }
 
       if (!$scope.supportTicket.description || $scope.supportTicket.description.length === 0)  {
-        alert('Please write a message so we can help!');
+        // alert('Please write a message so we can help!');
+        LoadingService.showMsg('Please write a message so we can help!', 0, 3500);
         return;
       }
 
@@ -1543,7 +1548,6 @@ angular.module('uguru.util.controllers')
               LoadingService.showSuccess('Account Successfully Created', 2500);
               $state.go('^.guru-home');
             } else {
-              console.log("close modal")
               $scope.signupModal.hide();
               $state.go('^.guru');
             }
@@ -1553,9 +1557,10 @@ angular.module('uguru.util.controllers')
       },
       function(err){
         console.log(err);
-          LoadingService.hide();
+          // LoadingService.hide();
         if (err.status === 409) {
-          alert('Email already exists in our system! Login?')
+          // alert('Email already exists in our system! Login?')
+          LoadingService.showMsg('Email already exists in our system ! Login?', 0, 3500);
           $scope.toggleLoginMode();
           $scope.signupForm.password = '';
         }
