@@ -1,4 +1,11 @@
 <ion-view class='uguru-view guru-view bg-charcoal guru-view-mobile'>
+	<!-- @samir -->
+	<!-- This is a tip example - if the tip needs to be several lines, add .full-x to .guru-tip -->
+	<div class="guru-tip guru-tip-center" hidden>
+		<div>This is a tip.</div>
+	</div>
+	<!-- -->
+	
 	<section id="mobile-guru-home">
 		<header>
 			<div class="header-nav" ng-if='user && user.id'>
@@ -14,7 +21,8 @@
 		        </a>
 		    </div>
 			<div class='text-center full-x'>
-				<h1 class='show text-center'>Hello {{user.first_name || 'Guru'}}!</h1>
+				<h2 class='show text-center semibold' ng-if="!user.first_name">Hello Guru! Sign up to begin<br/>your user experience.</h2>
+				<h1 class='show text-center' ng-if="user.first_name">Hello {{user.first_name}}!</h1>
 			</div>
 		</header>
 		<div class="main">

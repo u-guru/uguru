@@ -1294,12 +1294,14 @@ section {
 .university-view header.third > h1 {
   font-size: 28px !important;
   text-transform: lowercase;
+  padding-bottom: 30px;
 }
 
 .university-view header.third .geolocation-icon {
-  margin-top: 3px;
+  position: absolute;
+  top: -15px;
+  right: -15px;
   padding: 30px;
-  margin-right: -30px;
 }
 
 .university-view #school-list.onboarding-list ul li a, .university-view #school-list-modal ul li a {
@@ -1541,8 +1543,54 @@ section {
 }
 
 /* ---------- GURU ONBOARDING */
-.onboarding .onboarding-search input {
-  width: calc(100% - 25px);
+.onboarding-steps {
+  position: fixed;
+  z-index: 50;
+  top: calc(100% / 3 - 5px);
+  left: 0;
+  width: 100%;
+  height: 5px;
+}
+
+.onboarding-steps progress {
+  display: block;
+  border-radius: 0 !important;
+  vertical-align: 0;
+  margin: 0;
+}
+
+.onboarding .onboarding-search .input-field .prefix {
+  margin-top: 6px;
+}
+
+.onboarding .onboarding-search .input-field .prefix svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 100%;
+  height: 100%;
+  padding: 11px;
+}
+
+.onboarding .onboarding-search .input-field input {
+  width: calc(100% - 63px) !important;
+}
+
+.onboarding .onboarding-search .input-field input, .onboarding .onboarding-search .input-field label {
+  color: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.onboarding .onboarding-search .input-field input:focus {
+  color: white !important;
+  border-color: white !important;
+}
+
+.onboarding .onboarding-search .input-field .desktop-input-close-icon {
+  right: 15px;
+  margin-top: -20px;
 }
 
 .onboarding progress, .onboarding .progress {
@@ -1665,9 +1713,25 @@ section {
   background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
 }
 
-.courses-view header.third > h1 {
+.courses-view header.third div:not(.header-nav) h1 {
   font-size: 28px !important;
   text-transform: lowercase;
+  padding-bottom: 5px;
+}
+
+.courses-view header.third div:not(.header-nav) h1 + h2 {
+  margin-top: 0;
+  font-size: 20px;
+  padding: 0 15px 30px;
+}
+
+@media screen and (max-height: 568px) {
+  .courses-view header.third div:not(.header-nav) h1 {
+    padding-bottom: 45px;
+  }
+  .courses-view header.third div:not(.header-nav) h1 + h2 {
+    display: none;
+  }
 }
 
 .courses-view #courses-list.onboarding-list ul {
@@ -1755,9 +1819,25 @@ section {
   background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
 }
 
-.skills-view header.third > h1 {
+.skills-view header.third div:not(.header-nav) h1 {
   font-size: 28px !important;
   text-transform: lowercase;
+  padding-bottom: 5px;
+}
+
+.skills-view header.third div:not(.header-nav) h1 + h2 {
+  margin-top: 0;
+  font-size: 20px;
+  padding: 0 15px 15px;
+}
+
+@media screen and (max-height: 568px) {
+  .skills-view header.third div:not(.header-nav) h1 {
+    padding-bottom: 15px;
+  }
+  .skills-view header.third div:not(.header-nav) h1 + h2 {
+    display: none;
+  }
 }
 
 .skills-view #skills-list.onboarding-list ul {
@@ -1913,13 +1993,29 @@ section {
   background: #2B3234;
 }
 
-.photo-view header.third > h1 {
-  font-size: 28px !important;
-  text-transform: lowercase;
-}
-
 .photo-view header.third h1.text-center {
   line-height: 1.2 !important;
+}
+
+.photo-view header.third div:not(.header-nav) h1 {
+  font-size: 28px !important;
+  text-transform: lowercase;
+  padding-bottom: 5px;
+}
+
+.photo-view header.third div:not(.header-nav) h1 + h2 {
+  margin-top: 0;
+  font-size: 20px;
+  padding: 0 15px 15px;
+}
+
+@media screen and (max-height: 568px) {
+  .photo-view header.third div:not(.header-nav) h1 {
+    padding-bottom: 15px;
+  }
+  .photo-view header.third div:not(.header-nav) h1 + h2 {
+    display: none;
+  }
 }
 
 .photo-view #photo-list {
@@ -1979,8 +2075,11 @@ section {
   height: 80%;
   max-width: 150px;
   max-height: 150px;
-  border: 5px solid white;
   overflow: hidden;
+}
+
+.photo-view #photo-container #profile-icon span, .photo-view #photo-container #profile-icon img {
+  border: 5px solid white;
 }
 
 .photo-view #photo-container #profile-icon svg, .photo-view #photo-container #profile-icon img {
@@ -1999,7 +2098,6 @@ section {
   height: 80%;
   max-width: 150px;
   max-height: 150px;
-  border: 5px solid white;
 }
 
 /* ---------- GURU PROFILE */
@@ -4293,7 +4391,56 @@ section {
   letter-spacing: 0 !important;
 }
 
+/* ---------- TOOLTIPS */
+.guru-tip {
+  position: absolute;
+  z-index: 99;
+  padding: 0 15px;
+}
+
+.guru-tip.guru-tip-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.guru-tip div {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 15px;
+  border-radius: 2px;
+  color: #40484B;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.guru-tip div::after {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: -20px;
+  content: "";
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.9);
+}
+
 /* ---------- SAMIR */
+.modal {
+  height: 100% !important;
+}
+
 .smaller-list-font {
   font-size: 85%;
 }
@@ -4413,14 +4560,6 @@ body.platform-ios .terms-modal header.text-center a.header-down {
 .android-access-edge-case {
   bottom: 64px;
   position: absolute;
-}
-
-.onboarding-search {
-  padding: 0 10px;
-}
-
-#university-input {
-  margin: 10px 0;
 }
 
 #side-menu-left-overlay {

@@ -828,18 +828,24 @@
   }
 }
 
-.signup-modal header .switch {
+.signup-modal header.third h1 {
+  font-size: 28px !important;
+  line-height: 1.2;
+  text-transform: lowercase;
+}
+
+.signup-modal header.third .switch {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
 }
 
-.signup-modal header .switch li {
+.signup-modal header.third .switch li {
   padding: 0 15px;
 }
 
-.signup-modal header .switch li a {
+.signup-modal header.third .switch li a {
   display: block;
   padding: 15px 0;
   border-bottom: 5px solid transparent;
@@ -847,7 +853,7 @@
   text-align: center;
 }
 
-.signup-modal header .switch li .selected {
+.signup-modal header.third .switch li .selected {
   border-bottom-color: #69B3A5;
 }
 
@@ -1967,12 +1973,7 @@
   background: rgba(43, 50, 52, 0.6);
 }
 
-.mobile-balance-modal #balance-stats li div h1 {
-  font-size: 72px;
-  font-weight: 900;
-}
-
-.mobile-balance-modal #balance-stats li div h2 {
+.mobile-balance-modal #balance-stats li div h1, .mobile-balance-modal #balance-stats li div h2 {
   font-size: 64px;
   font-weight: 900;
 }

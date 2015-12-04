@@ -76,7 +76,10 @@
                 </svg>
             </a>
         </div>
-        <h1>{{active_category.hex_color || 'Add Skills'}}</h1>
+		<div class="text-center">
+			<h1>{{active_category.hex_color || 'What interests you?'}}</h1>
+			<h2 ng-if="!active_category.hex_color">Select your skills, begin earning cash.</h2>
+		</div>
     </header>
     <!-- <header id="category-skills-2" class="third flex-center" ng-if='guruSkillsModal.isShown()'>
         <div class="header-nav">

@@ -32,7 +32,7 @@
         <div id="courses-list" class='desktop-search-list'>
             <ul class='desktop-card-list hide' id='guru-courses-user-profile'>
                 <li ng-if="user.guru_courses.length > 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
-                        <a class="name-only" ng-if='course.name'>
+                        <a class="name-only" ng-if='course.title'>
                             <svg viewBox="0 0 100 100">
                                 <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                             </svg>
@@ -49,7 +49,7 @@
             </ul>
             <ul class='desktop-card-list'>
                 <li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
-					<a class="name-only">
+					<a class="name-only" ng-if='!course.title'>
 						<span>{{course.short_name}}</span>
 					</a>
 					<a ng-if='course.title'>
@@ -66,7 +66,10 @@
 </main>
 <section id="course" class="onboarding" ng-if='!desktopMode'>
 	<header class="third flex-center" ng-if='!guruCoursesModal.isShown() && !(profile && profile.edit_mode);'>
-		<h1 class="text-center">Edit Courses</h1>
+        <div>
+            <h1 class="text-center">Add Your Courses</h1>
+            <h2>Choose the classes you can tutor.</h2>
+        </div>
 		<div class="header-nav">
 			<a class="header-nav-back" ng-click='goBackToStudentHome()'>
 				<svg viewBox="0 0 100 100">
@@ -81,11 +84,22 @@
 				</svg>
 			</a>
 		</div>
-		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy" keyboard-focus>
-			<input type="search" id='course-input-1' autocomplete="off" placeholder="My courses are..." ng-model="search_text.course">
-			<a ng-click='clearSearchInput();' class="major-input-close side-icon" ng-if='search_text.course.length > 0'>
-                <i class='icon ion-close-circled'> </i>
-            </a>
+		<div class="onboarding-search absolute center-x bottom-0 full-x" keyboard-focus>
+            <div class="input-field">
+                <i class="material-icons prefix">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                    </svg>
+                </i>
+                <input id='course-input-1' autocomplete="off" type="text" ng-model="search_text.course" class='bg-charcoal'>
+                <label for="course-input-1" class="ng-class:{'hide': search_text.course.length}">
+                    <span ng-show='courses.length'> search among {{courses.length}} popular courses </span>
+                    <span ng-hide='courses.length'> search popular courses </span>
+                </label>
+                <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
+					<i class="icon ion-close-circled text-white"></i>
+				</a>
+            </div>
 		</div>
 	</header>
 	<header ng-if='guruCoursesModal.isShown() || (profile && profile.edit_mode);' class='third flex-center'>

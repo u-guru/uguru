@@ -2672,6 +2672,41 @@ progress.white-round::-moz-progress-bar, div[class*="progress"].white-round::-mo
   background: white;
 }
 
+progress.white, div[class*="progress"].white {
+  color: white;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+progress.white::-webkit-progress-bar, div[class*="progress"].white::-webkit-progress-bar {
+  background: transparent;
+}
+
+progress.white::-webkit-progress-value, progress.white span, div[class*="progress"].white::-webkit-progress-value, div[class*="progress"].white span {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  display: block;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 100%;
+  background: white;
+}
+
+progress.white span, div[class*="progress"].white span {
+  width: 0;
+}
+
+progress.white::-moz-progress-bar, div[class*="progress"].white::-moz-progress-bar {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  background: white;
+}
+
 progress.height-10, div[class*="progress"].height-10 {
   height: 10px;
 }

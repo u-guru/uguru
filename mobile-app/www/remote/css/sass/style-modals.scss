@@ -669,7 +669,12 @@
 
 // ACCOUNT MODAL
 .signup-modal {
-	header {
+	header.third {
+		h1 {
+			font-size: 28px!important;
+			line-height: 1.2;
+			text-transform: lowercase;
+		}
 		.switch {
 			position: absolute;
 			bottom: 0;
@@ -1570,11 +1575,7 @@
 				padding: 15px;
 				min-height: 162px;
 				background: rgba($charcoal,.6);
-				h1 {
-					font-size: 72px;
-					font-weight: 900;
-				}
-				h2 {
+				h1, h2 {
 					font-size: 64px;
 					font-weight: 900;
 				}
