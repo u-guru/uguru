@@ -96,6 +96,505 @@ section {
 
 
 
+/* ---------- COLOR PICKER */
+.color-picker {
+	background: white;
+	width: 100%;
+	ul {
+		padding: 5px;
+	}
+	button {
+		height: 52px;
+		font-weight: 600;
+		&:active, &.activated {
+			@include opacity(.3);
+		}
+	}
+	.color-picker-top {
+		@include flex;
+		overflow: auto;
+		li {
+			padding: 5px;
+			a {
+				@include round;
+				@include flex;
+				@include flex-center;
+				width: 36px;
+				height: 36px;
+				padding: 2px;
+				&.active {
+					&:after {
+						@include round;
+						content: "";
+						display: block;
+						width: 100%;
+						height: 100%;
+						border: 2px solid white;
+					}
+				}
+			}
+		}
+	}
+	.color-picker-bottom {
+		@include flex;
+		@include flex-wrap;
+		background: none!important;
+		li {
+			width: calc(100% / 3);
+			padding: 5px;
+			span {
+				display: block;
+				width: 100%;
+				height: 36px;
+			}
+		}
+		&.bg-auburn {
+			+ button {
+				background: $auburn;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($auburn, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($auburn, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($auburn, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($auburn, 5%);
+				}
+				&:nth-child(5) span {
+					background: $auburn;
+				}
+				&:nth-child(6) span {
+					background: darken($auburn, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($auburn, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($auburn, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($auburn, 20%);
+				}
+			}
+		}
+		&.bg-orange {
+			+ button {
+				background: $orange;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($orange, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($orange, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($orange, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($orange, 5%);
+				}
+				&:nth-child(5) span {
+					background: $orange;
+				}
+				&:nth-child(6) span {
+					background: darken($orange, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($orange, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($orange, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($orange, 20%);
+				}
+			}
+		}
+		&.bg-gold {
+			+ button {
+				background: $gold;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($gold, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($gold, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($gold, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($gold, 5%);
+				}
+				&:nth-child(5) span {
+					background: $gold;
+				}
+				&:nth-child(6) span {
+					background: darken($gold, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($gold, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($gold, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($gold, 20%);
+				}
+			}
+		}
+		&.bg-moola {
+			+ button {
+				background: $moola;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($moola, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($moola, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($moola, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($moola, 5%);
+				}
+				&:nth-child(5) span {
+					background: $moola;
+				}
+				&:nth-child(6) span {
+					background: darken($moola, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($moola, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($moola, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($moola, 20%);
+				}
+			}
+		}
+		&.bg-shamrock {
+			+ button {
+				background: $shamrock;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($shamrock, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($shamrock, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($shamrock, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($shamrock, 5%);
+				}
+				&:nth-child(5) span {
+					background: $shamrock;
+				}
+				&:nth-child(6) span {
+					background: darken($shamrock, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($shamrock, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($shamrock, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($shamrock, 20%);
+				}
+			}
+		}
+		&.bg-azure {
+			+ button {
+				background: $azure;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($azure, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($azure, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($azure, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($azure, 5%);
+				}
+				&:nth-child(5) span {
+					background: $azure;
+				}
+				&:nth-child(6) span {
+					background: darken($azure, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($azure, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($azure, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($azure, 20%);
+				}
+			}
+		}
+		&.bg-lake {
+			+ button {
+				background: $lake;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($lake, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($lake, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($lake, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($lake, 5%);
+				}
+				&:nth-child(5) span {
+					background: $lake;
+				}
+				&:nth-child(6) span {
+					background: darken($lake, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($lake, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($lake, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($lake, 20%);
+				}
+			}
+		}
+		&.bg-cobalt {
+			+ button {
+				background: $cobalt;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($cobalt, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($cobalt, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($cobalt, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($cobalt, 5%);
+				}
+				&:nth-child(5) span {
+					background: $cobalt;
+				}
+				&:nth-child(6) span {
+					background: darken($cobalt, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($cobalt, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($cobalt, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($cobalt, 20%);
+				}
+			}
+		}
+		&.bg-eggplant {
+			+ button {
+				background: $eggplant;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($eggplant, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($eggplant, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($eggplant, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($eggplant, 5%);
+				}
+				&:nth-child(5) span {
+					background: $eggplant;
+				}
+				&:nth-child(6) span {
+					background: darken($eggplant, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($eggplant, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($eggplant, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($eggplant, 20%);
+				}
+			}
+		}
+		&.bg-campus {
+			+ button {
+				background: $campus;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($campus, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($campus, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($campus, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($campus, 5%);
+				}
+				&:nth-child(5) span {
+					background: $campus;
+				}
+				&:nth-child(6) span {
+					background: darken($campus, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($campus, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($campus, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($campus, 20%);
+				}
+			}
+		}
+		&.bg-taupe {
+			+ button {
+				background: $taupe;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($taupe, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($taupe, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($taupe, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($taupe, 5%);
+				}
+				&:nth-child(5) span {
+					background: $taupe;
+				}
+				&:nth-child(6) span {
+					background: darken($taupe, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($taupe, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($taupe, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($taupe, 20%);
+				}
+			}
+		}
+		&.bg-slate {
+			+ button {
+				background: $slate;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($slate, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($slate, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($slate, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($slate, 5%);
+				}
+				&:nth-child(5) span {
+					background: $slate;
+				}
+				&:nth-child(6) span {
+					background: darken($slate, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($slate, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($slate, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($slate, 20%);
+				}
+			}
+		}
+		&.bg-charcoal {
+			+ button {
+				background: $charcoal;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($charcoal, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($charcoal, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($charcoal, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($charcoal, 5%);
+				}
+				&:nth-child(5) span {
+					background: $charcoal;
+				}
+				&:nth-child(6) span {
+					background: darken($charcoal, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($charcoal, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($charcoal, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($charcoal, 20%);
+				}
+			}
+		}
+	}
+}
+
+
+
 /* ---------- SIDEBAR & MENUS */
 // SIDEBAR
 #side-menu-left-overlay.active {
@@ -524,14 +1023,18 @@ section {
 // UNIVERSITY
 .university-view {
 	background: $charcoal;
-	header {
+	header.third {
 		&::before {
 			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
 		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+		}
 		.geolocation-icon {
 			margin-top: 3px;
-		// To add hella space to tap it (it's responsive & equalizes)
+			// To add hella space to tap it (it's responsive & equalizes)
 			padding: 30px;
     		margin-right: -30px;
 		}
@@ -783,168 +1286,6 @@ section {
 		height: calc(100% / 3 * 2);
 		overflow: auto;
 	}
-	&#demographic {
-		header {
-			&::before {
-				background: url(../images/schools.jpg) no-repeat center center / cover;
-			}
-			h1 {
-				font-size: 24px;
-			}
-		}
-		#demographic-grid {
-			> ul {
-				> li:not(.active) {
-					@include opacity(.3);
-				}
-			}
-			ul {
-				@include flex;
-				@include flex-center;
-				@include flex-wrap;
-				height: 100%;
-				li {
-					position: relative;
-					height: 50%;
-					font-weight: 600;
-					a {
-						@include flex;
-						@include flex-center;
-						@include flex-wrap;
-						width: 100%;
-						height: 100%;
-						background: none;
-						.demographic-icon {
-							span {
-								@include round;
-								display: block;
-								margin: 0 auto 10px;
-								width: 60px;
-								height: 60px;
-								background: rgba(white,.4);
-							}
-						}
-					}
-					#{$links} {
-						background: none;
-					}
-					.demographic-popup {
-						@include tri-down(15, white, 0, 0);
-						position: absolute;
-						z-index: 9;
-						bottom: -100%;
-						background: white;
-						height: 100%;
-						width: 200%;
-						ul {
-							li {
-								a {
-									border: 1px solid;
-								}
-							}
-							li:nth-child(1) {
-								padding: 5px 0 0 5px;
-								a {
-									border-top: 0;
-									border-left: 0;
-								}
-							}
-							li:nth-child(2) {
-								padding: 5px 5px 0 0;
-								a {
-									border-top: 0;
-									border-right: 0;
-								}
-							}
-							li:nth-child(3) {
-								padding: 0 0 5px 5px;
-								a {
-									border-bottom: 0;
-									border-left: 0;
-								}
-							}
-							li:nth-child(4) {
-								padding: 0 5px 5px 0;
-								a {
-									border-bottom: 0;
-									border-right: 0;
-								}
-							}
-
-						}
-					}
-					&.bg-campus {
-						.demographic-popup {
-							left: 0;
-							&::before {
-								left: 25%;
-							}
-							li {
-								a {
-									color: $campus;
-									border-color: rgba($campus, .1);
-								}
-								#{$links} {
-									background: rgba($campus, .05);
-								}
-							}
-						}
-					}
-					&.bg-shamrock {
-						.demographic-popup {
-							left: -100%;
-							&::before {
-								left: 75%;
-							}
-							li {
-								a {
-									color: $shamrock;
-									border-color: rgba($shamrock, .1);
-								}
-								#{$links} {
-									background: rgba($shamrock, .05);
-								}
-							}
-						}
-					}
-					&.bg-azure {
-						.demographic-popup {
-							left: 0;
-							&::before {
-								left: 25%;
-							}
-							li {
-								a {
-									color: $azure;
-									border-color: rgba($azure, .1);
-								}
-								#{$links} {
-									background: rgba($azure, .05);
-								}
-							}
-						}
-					}
-					&.bg-lake {
-						.demographic-popup {
-							left: -100%;
-							&::before {
-								left: 75%;
-							}
-							li {
-								a {
-									color: $lake;
-									border-color: rgba($lake, .1);
-								}
-								#{$links} {
-									background: rgba($lake, .05);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
 	&#start {
 		background: $slate;
 		#start-container {
@@ -960,10 +1301,14 @@ section {
 // MAJOR
 .major-view, .language-view {
 	background: $charcoal;
-	header {
+	header.third {
 		&::before {
 			background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
+		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
 		}
 	}
 	#major-list.onboarding-list, #language-list {
@@ -1006,10 +1351,14 @@ section {
 
 // COURSES
 .courses-view {
-	header {
+	header.third {
 		&::before {
 			background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
+		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
 		}
 	}
 	#courses-list.onboarding-list {
@@ -1032,7 +1381,7 @@ section {
 						overflow: hidden;
 						white-space: nowrap;
 						text-overflow: ellipsis;
-						&:first-child {
+						&:first-child:not(:only-child) {
 							font-size: 14px;
 							line-height: 1.2;
 						}
@@ -1089,10 +1438,14 @@ section {
 // SKILLS
 .skills-view {
 	background: $charcoal;
-	header {
+	header.third {
 		&::before {
 			background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
+		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
 		}
 	}
 	#skills-list.onboarding-list  {
@@ -1114,25 +1467,33 @@ section {
 					font-weight: 400;
 					line-height: 24px;
 					text-align: center;
-					div {
+					.skill-label {
 						position: relative;
 						z-index: 9;
-					}
-					.skill-label {
 						display: block;
 						width: 100%;
 						font-weight: 600;
 						line-height: 1.25;
 					}
 					.skill-count {
-						display: block;
-						font-size: 12px;
-						line-height: 1.25;
-						text-transform: uppercase;
+						@include flex;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						right: 0;
+						z-index: 9999;
+						background: white;
+						border-radius: 0 0 0 75%;
+						width: 28px;
+					    height: 28px;
+					    padding-bottom: 3px;
+					    padding-left: 3px;
+					    font-weight: 600;
+					    font-size: 18px;
 					}
 				}
 			}
-			[class*="bg-"]::after {
+			[class*="skill-item-bg-"]::after {
 				@include opacity(.7);
 				position: absolute;
 				content: "";
@@ -1141,35 +1502,69 @@ section {
 				left: 0;
 				top: 0;
 			}
-			.bg-auburn.important::after {
-				background: $auburn;
+			.skill-item-bg-delivery.important {
+				.skill-count {
+					color: $auburn!important;
+				}
+				&::after {
+					background: $auburn;
+				}
 			}
-			.bg-orange.important::after {
-				background: $orange;
+			.skill-item-bg-freelancing.important {
+				.skill-count {
+					color: $orange!important;
+				}
+				&::after {
+					background: $orange;
+				}
 			}
-			.bg-gold.important::after {
-				background: $gold;
+			.skill-item-bg-baking.important {
+				.skill-count {
+					color: $gold!important;
+				}
+				&::after {
+					background: $gold;
+				}
 			}
-			.bg-moola.important::after {
-				background: $moola;
+			.skill-item-bg-photography.important {
+				.skill-count {
+					color: $moola!important;
+				}
+				&::after {
+					background: $moola;
+				}
 			}
-			.bg-shamrock.important::after {
-				background: $shamrock;
+			.skill-item-bg-tech.important {
+				.skill-count {
+					color: $azure!important;
+				}
+				&::after {
+					background: $azure;
+				}
 			}
-			.bg-azure.important::after {
-				background: $azure;
+			.skill-item-bg-household.important {
+				.skill-count {
+					color: $cobalt!important;
+				}
+				&::after {
+					background: $cobalt;
+				}
 			}
-			.bg-lake.important::after {
-				background: $lake;
+			.skill-item-bg-athetic.important {
+				.skill-count {
+					color: $eggplant!important;
+				}
+				&::after {
+					background: $eggplant;
+				}
 			}
-			.bg-cobalt.important::after {
-				background: $cobalt;
-			}
-			.bg-eggplant.important::after {
-				background: $eggplant;
-			}
-			.bg-cerise.important::after {
-				background: $cerise;
+			.skill-item-bg-academic.important{
+				.skill-count {
+					color: $cerise!important;
+				}
+				&::after {
+					background: $cerise;
+				}
 			}
 		}
 	}
