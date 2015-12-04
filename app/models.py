@@ -63,6 +63,12 @@ guru_category_table = Table('user-category_assoc',
     Column('category_id', Integer, ForeignKey('category.id'))
     )
 
+guru_currency_table = Table('user-currency.id',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('currency_id', Integer, ForeignKey('currency.id'))
+)
+
 guru_subcategory_table = Table('user-subcategory_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -192,6 +198,13 @@ class User(Base):
         backref= backref('gurus', lazy='dynamic')
     )
 
+    guru_currencies = relationship("Currency",
+        secondary = guru_currency_table,
+        backref=backref('gurus', lazy='dynamic')
+    )
+
+
+
     guru_subcategories = relationship("Subcategory",
         secondary = guru_subcategory_table,
         backref= backref('gurus', lazy='dynamic')
@@ -242,6 +255,7 @@ class User(Base):
     student_calendar = relationship("Calendar",
         primaryjoin="Calendar.id==User.student_calendar_id",
         uselist=False)
+
 
 
     guru_calendar_id = Column(Integer, ForeignKey('calendar.id'))
@@ -329,6 +343,8 @@ class User(Base):
     deactivated = Column(Boolean, default=False)
 
     last_position = relationship("Position", uselist=False)
+
+
 
     guru_latest_time = Column(Integer)
 
@@ -623,6 +639,41 @@ class Calendar(Base):
             raise
         return c
 
+class Shop(Base):
+    __tablename__ = 'shop'
+    id = Column(Integer, primary_key=True)
+
+
+    guru_id = Column(Integer, ForeignKey('user.id'))
+    guru = relationship("User",
+        primaryjoin = "(User.id==Shop.guru_id)",
+                        uselist=False,
+                        backref="guru_shops")
+
+
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship("Category",
+        primaryjoin = "Category.id == Shop.category_id",
+        backref = 'guru_shops'
+        )
+
+
+
+    dark_mode = Column(Boolean, default=True)
+    light_mode = Column(Boolean, default=False)
+
+    banner_url = Column(String)
+    is_featured = Column(Boolean)
+    avg_rating = Column(Float)
+    public_url = Column(String)
+
+
+
+    title = Column(String)
+    description = Column(String)
+
+
+
 
 class Calendar_Event(Base):
 
@@ -642,6 +693,10 @@ class Calendar_Event(Base):
         primaryjoin = "Course.id == Calendar_Event.course_id",
         backref="calendar_events"
     )
+
+
+    # shop_id = Column(Integer, ForeignKey('shop.id'))
+    # shop = relationship("Shop", uselist=False, backref="portfolio_items")
 
     time_created = Column(DateTime)
     is_student = Column(Boolean)
@@ -1115,6 +1170,8 @@ class Campaign(Base):
 
 
 
+
+
 class Position(Base):
     __tablename__ = 'position'
     id = Column(Integer, primary_key=True)
@@ -1182,6 +1239,18 @@ class Resource(Base):
     file_url = Column(String)
     file_size = Column(String)
     handwritten = Boolean(String)
+
+    description = String(Base)
+
+    root_domain_url = Column(String) ## linkedin
+    site_url = Column(String) ## linkedin.com/profile
+    icon_url = Column(String)
+
+    is_tutoring_profile = Column(Boolean, default=False)
+    is_profile = Column(Boolean, default=False)
+    is_url = Column(Boolean, default=False)
+    is_file = Column(Boolean, default=False)
+    is_featured = Column(Boolean, default=False)
 
     course_id = Column(Integer, ForeignKey('course.id'))
     course = relationship("Course",
@@ -1304,6 +1373,10 @@ class Tag(Base):
 
     is_profession = Column(Boolean)
 
+    is_sale_item = Column(Boolean)
+    price = Column(Float)
+    is_ingredient = Column(Boolean)
+
     admin_approved = Column(Boolean, default = False)
 
     creator_id = Column(Integer, ForeignKey('user.id'))
@@ -1326,6 +1399,14 @@ class Tag(Base):
     resources = relationship("Resource",
         secondary = resource_tag_table,
         backref = backref("tags", lazy="dynamic"))
+
+
+
+    portfolio_item_id = Column(Integer, ForeignKey('portfolio_item.id'))
+    portfolio_item = relationship("Portfolio_Item",
+        primaryjoin = "(Portfolio_Item.id==Tag.portfolio_item_id)",
+        uselist=False,
+        backref="tags")
 
 
 
@@ -2112,6 +2193,10 @@ class Portfolio_Item(Base):
     unit_price = Column(Float)
     max_unit_price = Column(Float)
 
+    title = Column(String)
+    description = Column(String)
+
+
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship("User",
         primaryjoin = "(User.id==Portfolio_Item.user_id)",
@@ -2122,6 +2207,14 @@ class Portfolio_Item(Base):
         secondary = experience_portfolio_items_table,
         backref = backref("portfolio_items", lazy="dynamic")
         )
+
+
+    shop_id = Column(Integer, ForeignKey('shop.id'))
+    shop = relationship("Shop",
+        primaryjoin = "(Shop.id==Portfolio_Item.shop_id)",
+        uselist=False,
+        backref="portfolio_items")
+
 
     ### user -- create custom portfolio item
     ###
@@ -2283,6 +2376,8 @@ class Rating(Base):
         primaryjoin = "(Portfolio_Item.id==Rating.portfolio_item_id)",
         uselist=False,
         backref="ratings")
+
+
 
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
@@ -2485,6 +2580,14 @@ class Skill(Base):
     def __repr__(self):
         return "<Skill '%r', '%r'>" %\
               (self.id, self.name)
+
+class Currency(Base):
+    __tablename__ ='currency'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    icon_url = Column(String)
+    is_approved = Column(Boolean, default=False)
 
 
 class Category(Base):
