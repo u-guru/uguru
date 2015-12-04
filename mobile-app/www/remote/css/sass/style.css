@@ -4420,6 +4420,14 @@ section {
 }
 
 .guru-tip div::after {
+  content: "";
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+}
+
+.guru-tip.guru-tip-top div::after {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -4428,12 +4436,43 @@ section {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   top: -20px;
-  content: "";
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
   border-bottom-color: rgba(255, 255, 255, 0.9);
+}
+
+.guru-tip.guru-tip-bottom div::after {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: -20px;
+  border-top-color: rgba(255, 255, 255, 0.9);
+}
+
+.guru-tip.guru-tip-left div::after {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: -20px;
+  border-right-color: rgba(255, 255, 255, 0.9);
+}
+
+.guru-tip.guru-tip-right div::after {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: -20px;
+  border-left-color: rgba(255, 255, 255, 0.9);
 }
 
 /* ---------- SAMIR */

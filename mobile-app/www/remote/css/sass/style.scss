@@ -3253,14 +3253,47 @@ section {
 		font-size: 18px;
 		font-weight: 600;
 		&::after {
-			@include center-x;
-			top: -20px;
 			content: "";
 			bottom: 0;
 			width: 0;
 			height: 0;
 			border: 10px solid transparent;
-			border-bottom-color: rgba(white,.9);
+		}
+	}
+	&.guru-tip-top {
+		div {
+			&::after {
+				@include center-x;
+				top: -20px;
+				border-bottom-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-bottom {
+		div {
+			&::after {
+				@include center-x;
+				top: -20px;
+				border-top-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-left {
+		div {
+			&::after {
+				@include center-y;
+				left: -20px;
+				border-right-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-right {
+		div {
+			&::after {
+				@include center-y;
+				right: -20px;
+				border-left-color: rgba(white,.9);
+			}
 		}
 	}
 }
