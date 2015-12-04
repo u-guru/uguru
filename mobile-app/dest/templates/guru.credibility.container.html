@@ -1,18 +1,14 @@
 <ion-view class='uguru-view guru-desktop-credibility credibility-view bg-charcoal'>
-<!-- 	<a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a> -->
-	<header class="bg-slate">
-		<h1 class='bg-charcoal full-x text-center'>Guru Credibility</h1>
-	    <div class="header-nav full-x">
-			<a class="header-close cta-modal-close" ng-click="credibilityModal.hide()">
-				<svg viewBox="0 0 100 100">
-					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-				</svg>
-			</a>
-		</div>
-	</header>
-
 	<section id="credibility" ng-if='!desktopMode'>
 		<header class="bg-charcoal third">
+			<h1 class='bg-charcoal full-x text-center'>Guru Credibility</h1>
+		    <div class="header-nav full-x">
+				<a class="header-close cta-modal-close" ng-click="credibilityModal.hide()">
+					<svg viewBox="0 0 100 100">
+						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</div>
 			<nav id="credit-slider">
 				<ul>
 					<li id="credit-grades" class="ng-class: {'active': activeTabIndex === 0}">

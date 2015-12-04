@@ -1,7 +1,7 @@
 
 <ion-modal-view class='full-height bg-charcoal' scroll='false' ng-controller='SignupController'>
 <section id="account" class="onboarding full-xy">
-	<header class="third flex-center-wrap">
+	<header class="third flex-center-wrap text-center">
 		<div class="header-nav">
 			<a class="header-down" ng-click="closeModal('signup')">
 				<svg viewBox="0 0 100 100">
@@ -9,8 +9,8 @@
 				</svg>
 			</a>
 		</div>
-		<h1 ng-show="!root.vars.loginMode">Finalize</h1>
-		<h1 ng-show="root.vars.loginMode && !root.vars.forgotPassword">Have an account?</h1>
+		<h1 ng-show="!root.vars.loginMode">Sign up to begin<br/>your guru experience.</h1>
+		<h1 ng-show="root.vars.loginMode && !root.vars.forgotPassword">Welcome back!</h1>
 		<h1 ng-show="root.vars.loginMode && root.vars.forgotPassword">Forgot Your Password?</h1>
 		<ul class="switch ugrid-2">
 			<li>

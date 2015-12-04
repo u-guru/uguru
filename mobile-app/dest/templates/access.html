@@ -7,12 +7,12 @@
         <div class="main">
             <div id="desktop-access-code" ng-init='getLoadTime()'>
                 <span ng-include="img_base + BASE + 'templates/svg/logo-title.html'"></span>
-                <p id='input-error-text' class='access-message' ng-if='access.errorInputMsg'>{{access.errorInputMsg}}</p>
-                <p id='input-error-text' class='access-message'>Got an access code?</p>
+                <p id='input-error-text' class='access-message' >{{access.consoleMsg}}</p>
+                <!-- <p id='input-error-text' class='access-message' >Got an access code?</p> -->
                 <input id="desktop-access-code-bar" class='input-outline' ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' type="text" placeholder="Enter your access code"
                 submit='checkAccessCode(access.codeInput)' />
             </div>
-            <button id='redeem-button' class="btn-caps-bold bg-white-90p txt-shamrock ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" thr-click="checkAccessCode(access.codeInput)">Redeem</button>
+            <button id='redeem-button' class="btn-caps-bold bg-white-90p txt-shamrock ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" thr-click="checkAccessCode(access.codeInput)">Get Started</button>
             <footer id='access-footer' class='flex-center bottom-0 absolute left-0 p30xy full-x'>
                 <h3 class='full-x p30xy center semibold'>
                     <a ng-click='goToLoginFromAccess()' class='white-text'>Have an account?</a>
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div id="access-start" class="text-center full-x" ng-show='access.codeInput.length'>
-            <button id='redeem-button' class="btn-caps-bold bg-white-90p txt-shamrock ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" thr-click="checkAccessCode(access.codeInput)">Redeem</button>
+            <button id='redeem-button' class="btn-caps-bold bg-white-90p txt-shamrock ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" thr-click="checkAccessCode(access.codeInput)">Get Started</button>
         </div>
         <footer id='access-footer' ng-show='!access.codeInput.length' class='flex-center bottom-0 absolute left-0 full-x'>
                 <h6 class='full-x p20xy center'>

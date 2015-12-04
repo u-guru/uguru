@@ -23,7 +23,7 @@ angular.module('uguru.guru.controllers')
     $cordovaStatusbar, $ionicViewSwitcher,
     $ionicActionSheet, CameraService, uTracker, LoadingService) {
 
-
+    $scope.root.vars.becomeGuruRecentlyCompleted = true;
    function takePhotoSuccess() {
 
       uTracker.track(tracker, 'Guru Mode', {
@@ -45,21 +45,20 @@ angular.module('uguru.guru.controllers')
         '$Photo_Method': 'Library'
       });
       photoSuccessUpload()
-      
+
     }
     function photoSuccessUpload()
     {
-      LoadingService.showSuccess("Awesome! You're all set.", 2000);
-      $ionicViewSwitcher.nextDirection('forward');
-      $timeout(function() {
-        $scope.root.vars.guru_mode = true;
-        console.log("check desktopMode to see go guru or guru-home",$scope.desktopMode)
-        if ($scope.desktopMode) {
-          $state.go('^.guru-home');
-        } else {
-          $state.go('^.guru');
-        }
-      }, 700);
+      LoadingService.showSuccess("Awesome! You're all set.", 2000, function() {
+
+        $scope.root.vars.showFinishBecomeGuruButton = true;
+      });
+
+    }
+
+    $scope.goToGuru = function() {
+      $ionicViewSwitcher.nextDirection('forward') ;
+      $state.go('^.guru');
     }
 
     $scope.showAttachActionSheet = function() {

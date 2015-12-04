@@ -136,17 +136,6 @@
     </script>
 
 
- <script>
-     +function(l,y,t,i,c,s) {
-         l['LocalyticsGlobal'] = i;
-         l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
-         l[i].t = +new Date;
-         (s = y.createElement(t)).type = 'text/javascript';
-         s.src = 'remote/lib/localytics/localytics.js';
-         (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
-
-     }(window, document, 'script', 'll');
- </script>
 
     <script src="remote/lib/windows/winstore-jscompat.js"></script>
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
@@ -191,7 +180,7 @@
     <script src="remote/lib/d3/d3.min.js"></script>
     <script src="remote/lib/ua-parser.min.js"></script>
 
-    <script src="remote/lib/localytics/localytics.js"></script>
+
 
 
     <!-- <script src="remote/lib/rAF.js"></script> -->
@@ -342,6 +331,7 @@
     <script type="text/javascript" src="remote/js/shared/DeviceService.js"></script>
     <script type="text/javascript" src="remote/js/shared/Utilities.js"></script>
     <script type="text/javascript" src="remote/js/shared/LoadingService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/TourService.js"></script>
     <script type="text/javascript" src="remote/js/shared/AnimationService.js"></script>
     <script type="text/javascript" src="remote/js/shared/MapService.js"></script>
     <script type="text/javascript" src="remote/js/shared/Settings.js"></script>

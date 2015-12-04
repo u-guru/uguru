@@ -19,7 +19,7 @@ angular.module('uguru.util.controllers')
   $q, Major, $ionicSideMenuDelegate, Utilities,
   $localstorage, uTracker, University, LoadingService) {
 
-    console.log('starting university majors');
+    console.log('starting university majors from', University)
     $scope.source = University.source;
 
     $scope.refresh = {
@@ -27,28 +27,6 @@ angular.module('uguru.util.controllers')
       majorsLength: $scope.source.majors.length
     };
 
-    // function updateDOM() {
-    //   $timeout(function() {
-
-    //     $scope.source = University.source;
-
-    //     if ($scope.source.majors.length > 0) {
-    //         for(var j = 0; j < $scope.user.majors.length; j++) {
-    //           for(var k = 0; k < $scope.source.majors.length; k++) {
-    //             if($scope.source.majors[k].id === $scope.user.majors[j].id) {
-    //               console.log("Deleting duplicate major found.");
-    //               $scope.source.majors.splice(k, 1);
-    //             }
-    //           }
-    //         }
-    //     }
-
-    //     $scope.refresh.majorsLength = $scope.source.majors.length;
-    //     University.refresh();
-    //   }, 0);
-
-    // }
-    // updateDOM();
 
     if (!$scope.user.majors) {
       $scope.user.majors = [];
@@ -59,7 +37,6 @@ angular.module('uguru.util.controllers')
     $scope.search_text = {
       major: ''
     };
-
 
     // function setMajorFocus(target) {
     //   if ($scope.search_text.major.length === 0 && !$scope.keyboard_force_off) {

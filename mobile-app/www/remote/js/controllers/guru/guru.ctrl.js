@@ -24,16 +24,21 @@ angular.module('uguru.guru.controllers', [])
   'DeviceService',
   'LoadingService',
   '$ionicModal',
+  'TourService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet, RankingService, TipService, ModalService, PopupService,
-  $ionicSlideBoxDelegate, DeviceService, LoadingService, $ionicModal) {
+  $ionicSlideBoxDelegate, DeviceService, LoadingService, $ionicModal, TourService) {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
     RankingService.refreshRanking(user);
   };
+
+  // $timeout(function() {
+  //   TourService.initTooltip(null, null, '#cta-box-profile');
+  // }, 1500);
 
   var CTA_PARENT_DICT = {
     'cta-box-profile':'.guru-home-container',
@@ -338,6 +343,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.supportModal = modal;
         });
 
+        $scope.goBackToBecomeGuru = function() {
+          if ($scope.root.vars.becomeGuruRecentlyCompleted) {
+            $ionicViewSwitcher.nextDirection('back');
+            $state.go('^.become-guru')
+          }
+        }
+
         $scope.initializeHorizontalProgressBars = function() {
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
@@ -419,9 +431,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.showBalanceModal = function() {
           if ($scope.user && $scope.user.id) {
             $scope.balanceModal.show()
-          } 
+          }
           else {
-            LoadingService.showMsg('You need an account to do that!', 2500, 
+            LoadingService.showMsg('You need an account to do that!', 2500,
               function() {
                   $scope.signupModal.show()
               }
@@ -433,13 +445,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           if ($scope.user && $scope.user.id) {
             $scope.profileModal.show();
           } else {
-
-            LoadingService.showMsg('You need an account to do that!', 2500, 
-              function() {
-                  $scope.signupModal.show()
-              }
-            )
-
+            LoadingService.showMsg('You need an account to do that!', 2500)
           }
         }
 
@@ -449,11 +455,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.credibilityModal.show();
           } else {
 
-            LoadingService.showMsg('You need an account to do that!', 2500, 
-              function() {
-                  $scope.signupModal.show();
-              }
-            )
+            LoadingService.showMsg('You need an account to do that!', 2500)
           }
         }
 
@@ -493,7 +495,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           //mobile mode
           if (!$scope.desktopMode) {
-            $scope.initMobileModals();
+            $timeout(function() {
+              $scope.initMobileModals();
+            }, 1500)
             $timeout(function() {
               $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
               animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);

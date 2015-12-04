@@ -1,16 +1,10 @@
 <ion-view class='uguru-view guru-view bg-charcoal guru-view-mobile'>
-	<!-- <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}' ng-if='!desktopMode'></a>
-	<div class="toast" ng-if='showVerifyToast'>
-		<div>
-			<span>Tap to verify your school email</span>
-			<div class="progress white-round m05top">
-				<span style="width: 50%"></span>
-			</div>
-		</div>
-	</div> -->
+	<!-- @samir -->
+	<!-- This is a tip example - if the tip needs to be several lines, add .full-x to .guru-tip -->
+
 
 	<section id="mobile-guru-home">
-		<header style='height:calc(25% - 64px);'>
+		<header>
 			<div class="header-nav" ng-if='user && user.id'>
 		        <a class="header-nav-back" ng-click='referralsModal.show()'>
 		            <svg class='referral-icon' viewBox="0 0 100 100">
@@ -24,10 +18,11 @@
 		        </a>
 		    </div>
 			<div class='text-center full-x'>
-				<h1 class='show text-center'>Hello {{user.first_name || 'Guru'}}!</h1>
+				<h2 class='show text-center semibold' ng-if="!user.first_name">Hello Guru! Sign up to begin<br/>your user experience.</h2>
+				<h1 class='show text-center' ng-if="user.first_name">Hello {{user.first_name}}!</h1>
 			</div>
 		</header>
-		<div class="main absolute full-x" style='bottom:64px;'>
+		<div class="main">
 			<div class="guru-home-tiles">
 				<div class="home-tiles-top">
 					<div class="home-tiles-ranking">
@@ -44,6 +39,7 @@
 			                                <div id="percentile-label">Percentile</div>
 			                            </div>
 			                            <!-- @gabrielle SVG gets injected FYI, that's why theres two circles haha-->
+										<!-- @samir it wasn't loading so i put it there as a placeholder until the js was updated :P -->
 			                        </div>
 			                    </div>
 								<!-- BIND -->
@@ -85,7 +81,7 @@
 							</svg>
 
 							<div id='cta-box-profile' class='cta-box' ng-click='showProfileModal()'>
-								<div>
+								<div class='tile-container'>
 									<svg viewBox="0 0 100 100">
 										<path d="M50.0000186,14 C30.1802821,14 14.030417,30.1419103 14.0000373,49.9835145 C13.9861494,59.7785062 17.8513192,69.2750235 24.6069034,76.038418 C31.0239706,82.4616905 39.5485232,86 48.6120989,86 C49.0955707,86 49.5825143,85.9904558 50.072062,85.969632 C70.2181637,85.1444892 86,69.3383625 86,49.9861175 C86,30.142778 69.8510029,14 50.0000186,14 L50.0000186,14 Z M24.18272,74.5721092 C25.26272,65.2447492 30.77792,57.3967492 38.83328,53.6988292 C35.65568,50.7151492 33.65696,46.4911492 33.65696,41.7986692 C33.65696,32.7871492 40.98848,25.4556292 50,25.4556292 C59.01152,25.4556292 66.34304,32.7871492 66.34304,41.7986692 C66.34304,46.4911492 64.34432,50.7151492 61.16672,53.6988292 C69.22208,57.3967492 74.73728,65.2447492 75.81728,74.5721092"></path>
 									</svg>
@@ -132,37 +128,37 @@
 				</div>
 			</div>
 		</div>
-		<div ng-if='user && user.id' class="guru-home-notifications absolute full-x bottom-0 left-0">
-					<ul class='ugrid-2 p15xy text-center'>
-						<li ng-if='false'>
-							<a>
-								<span class="notification-icon">
-									<!-- BIND -->
-									<span class="notification-number">0</span>
-								</span>
-								<span class="notification-type">Bill Student</span>
-							</a>
-						</li>
-						<li>
-							<a>
-								<span class="notification-icon">
-									<!-- BIND -->
-									<span class="notification-number">{{guruHomeTips.length}}</span>
-								</span>
-								<span class="notification-type">Action Items</span>
-							</a>
-						</li>
-						<li>
-							<a id='cta-box-students' class='cta-box' ng-click='messagesModal.show()'>
-								<span class="notification-icon">
-									<span class="notification-number">{{user.student_relationships.length || 0}}</span>
-								</span>
-								<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Students</span>
-							</a>
-						</li>
-					</ul>
+		<div ng-if='user && user.id' class="guru-home-notifications">
+			<ul class='ugrid-2 text-center'>
+				<li ng-if='false'>
+					<a>
+						<span class="notification-icon">
+							<!-- BIND -->
+							<span class="notification-number">0</span>
+						</span>
+						<span class="notification-type">Bill Student</span>
+					</a>
+				</li>
+				<li>
+					<a>
+						<span class="notification-icon">
+							<!-- BIND -->
+							<span class="notification-number">{{guruHomeTips.length}}</span>
+						</span>
+						<span class="notification-type">Action Items</span>
+					</a>
+				</li>
+				<li>
+					<a id='cta-box-students' class='cta-box' ng-click='messagesModal.show()'>
+						<span class="notification-icon">
+							<span class="notification-number">{{user.student_relationships.length || 0}}</span>
+						</span>
+						<span class="notification-type cta-box" id='cta-box-signup'>Messages</span>
+					</a>
+				</li>
+			</ul>
 		</div>
-		<button ng-if='!user || !user.id' ng-click='signupModal.show()' class='bg-white txt-shamrock center-text full-x absolute left-0 bottom-0'>Complete Account</button>
+		<button ng-if='!user || !user.id' ng-click='signupModal.show()' class='bg-white txt-shamrock semibold'>Complete Account</button>
 	</section>
 
 	<!-- <section id="guru-home" class="request full-xy student-home">

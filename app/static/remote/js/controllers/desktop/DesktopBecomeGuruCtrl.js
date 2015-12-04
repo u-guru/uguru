@@ -190,6 +190,7 @@ angular.module('uguru.desktop.controllers')
       $ionicSlideBoxDelegate.previous();
     }
 
+
     $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;

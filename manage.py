@@ -672,8 +672,10 @@ if arg == 'seed_admin':
     # before creating a new file, lets deleate any old ones
     print len(user.files)
     deleteAllUserFiles(user)
+
+
     transcript_file = createNewFile(user)
-    print len(user.files)
+
 
 
     # db_session.commit()
@@ -1761,3 +1763,46 @@ if arg == 'test_campaign':
 #         recipient = Recipient.init(guru_dict)
 
 # for university in University.query.all():
+if arg == 'init_berkeley_course':
+    cal = University.query.get(2307)
+    courses = cal.courses
+    fl_courses = [course for course in courses if course.short_name and course.full_name]
+    non_fl_courses = [course for course in courses if  (course.short_name and not course.full_name) and course.is_popular]
+
+    index = 1
+    for course in non_fl_courses:
+        course.is_popular = None
+        index += 1
+        if index % 50 == 0:
+            db_session.commit()
+            print "Progress %s out of %s" % (index, len(non_fl_courses))
+
+
+    for course in cal.popular_courses:
+        if not course.short_name or not course.full_name:
+            course.is_popular = None
+            db_session.commit()
+
+    print len(cal.popular_courses)
+    count = 0
+    for course in cal.popular_courses:
+        if course.is_popular and course.short_name and course.full_name:
+            count += 1
+            course.num_gurus = len(course.gurus.all())
+            if count % 50 == 0:
+                db_session.commit()
+                print "Progress %s out of %s" % (count, len(cal.popular_courses))
+    print count
+
+    # for course in
+    # unique_keys = []
+    # unique_keys_full = []
+    # for course in sorted(cal.popular_courses, key=lambda k:k.num_gurus, reverse=True):
+    #     first_course_part = course.short_name.split(' ')[0]
+    #     if first_course_part not in unique_keys:
+    #         unique_keys.append(first_course_part)
+    #         unique_keys_full.append((course.short_name, course.full_name))
+    # from pprint import pprint
+    # pprint(unique_keys_full)
+
+

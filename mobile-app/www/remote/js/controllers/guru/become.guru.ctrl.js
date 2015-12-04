@@ -50,6 +50,8 @@ angular.module('uguru.guru.controllers')
 
     }, 50)
 
+
+
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
       for (var i = 0; i < guru_courses.length; i++) {
@@ -96,7 +98,9 @@ angular.module('uguru.guru.controllers')
       $ionicSlideBoxDelegate.previous();
     }
 
-
+    if ($scope.user.profile_url) {
+      $scope.root.vars.showFinishBecomeGuruButton = true;
+    }
 
     $scope.activeSlideIndex = 0;
     $scope.slideHasChanged = function(index) {
@@ -120,6 +124,9 @@ angular.module('uguru.guru.controllers')
 
           uTracker.track(tracker, 'Become Guru: Photo');
           $ionicSideMenuDelegate.canDragContent(false);
+          if ($scope.user.profile_url) {
+            $scope.root.vars.showFinishBecomeGuruButton = true;
+          }
         }
         else {
           $ionicSideMenuDelegate.canDragContent(true);

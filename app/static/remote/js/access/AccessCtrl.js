@@ -33,7 +33,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   $scope.access = {
     codeInput: '',
-    errorInputMsg: null,
+    consoleMsg: 'Got an access code?',
   };
 
 
@@ -109,7 +109,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
           //         AnimationService.fadeOutElem(errorTextElem, 1000);
           //       }, 1500);
         $timeout(function() {
-          $scope.loader.showMsg('Invalid access code, please try again.', 0, 2500);
+          $scope.loader.showMsg('Invalid access code, please try again.', 0, 3500);
         })
       };
 

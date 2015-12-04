@@ -1586,20 +1586,25 @@ button.disabled {
     background-color: #F1F1F1;
     cursor: pointer; }
   [class*="checklist"]:not([class*="pf-"]) li > span input:checked + span {
-    background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center/40px 40px; }
+    background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center/40px 40px;
+    background-color: #757575; }
 
+.checklist-delivery li > span input:checked + span,
 .checklist-auburn li > span input:checked + span,
 .checklist-bg-auburn li > span input:checked + span {
   background-color: #F04F54 !important; }
 
+.checklist-freelancing li > span input:checked + span,
 .checklist-bg-orange li > span input:checked + span,
 .checklist-orange li > span input:checked + span {
   background-color: #E5753C !important; }
 
+.checklist-baking li > span input:checked + span,
 .checklist-gold li > span input:checked + span,
 .checklist-bg-gold li > span input:checked + span {
-  background-color: #F6C64E; }
+  background-color: #F6C64E !important; }
 
+.checklist-photography li > span input:checked + span,
 .checklist-moola li > span input:checked + span,
 .checklist-bg-moola li > span input:checked + span {
   background-color: #81B566 !important; }
@@ -1608,6 +1613,7 @@ button.disabled {
 .checklist-bg-shamrock li > span input:checked + span {
   background-color: #69B3A5 !important; }
 
+.checklist-tech li > span input:checked + span,
 .checklist-azure li > span input:checked + span,
 .checklist-bg-azure li > span input:checked + span {
   background-color: #55A4B7 !important; }
@@ -1616,14 +1622,17 @@ button.disabled {
 .checklist-bg-lake li > span input:checked + span {
   background-color: #50A5DD !important; }
 
+.checklist-household li > span input:checked + span,
 .checklist-cobalt li > span input:checked + span,
 .checklist-bg-cobalt li > span input:checked + span {
   background-color: #7872e3 !important; }
 
+.checklist-athletic li > span input:checked + span,
 .checklist-eggplant li > span input:checked + span,
 .checklist-bg-eggplant li > span input:checked + span {
   background-color: #9A5BC5 !important; }
 
+.checklist-academic li > span input:checked + span,
 .checklist-cerise li > span input:checked + span,
 .checklist-bg-cerise li > span input:checked + span {
   background-color: #e6389b !important; }
@@ -1780,6 +1789,31 @@ progress, div[class*="progress"] {
       -moz-transition: all 0.15s ease-in-out;
       transition: all 0.15s ease-in-out;
       overflow: hidden;
+      background: white; }
+  progress.white, div[class*="progress"].white {
+    color: white;
+    background: rgba(255, 255, 255, 0.4); }
+    progress.white::-webkit-progress-bar, div[class*="progress"].white::-webkit-progress-bar {
+      background: transparent; }
+    progress.white::-webkit-progress-value, progress.white span, div[class*="progress"].white::-webkit-progress-value, div[class*="progress"].white span {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      display: block;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      height: 100%;
+      background: white; }
+    progress.white span, div[class*="progress"].white span {
+      width: 0; }
+    progress.white::-moz-progress-bar, div[class*="progress"].white::-moz-progress-bar {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
       background: white; }
   progress.height-10, div[class*="progress"].height-10 {
     height: 10px; }

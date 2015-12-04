@@ -168,6 +168,8 @@ class User(Base):
     last_active = Column(DateTime)
     time_created = Column(DateTime)
 
+    guru_profile_color = Column(String, default='shamrock')
+
 
     current_hourly = Column(Float, default= 10.0)
     max_hourly = Column(Float)
@@ -2751,6 +2753,7 @@ class Course(Base):
 
 
     variations = Column(String)
+    num_gurus = Column(Integer)
 
     times_mentioned = Column(Integer)
     source = Column(String, default="chegg")

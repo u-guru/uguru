@@ -22,7 +22,7 @@
 								</svg>
 							</i>
 			                <input id="university-input" type="text" ng-model="search_text.university">
-			                <label class="ng-class:{'hide': search_text.university.length}"for="university-input">find my university</label>
+			                <label class="ng-class:{'hide': search_text.university.length}" for="university-input">find your university</label>
 			                <a class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
 								<i class='icon ion-close-circled text-white'></i>
 							</a>
@@ -52,7 +52,7 @@
 			</main>
 			<section id="school" class="onboarding" ng-if='!desktopMode'>
 				<header class="third flex-center">
-					<h1>Find Your Community</h1>
+					<h1>Find Your Campus</h1>
 					<div class="header-nav" ng-if='LOCAL'>
 						<a class="header-nav-back" ng-click='goToAccessAdmin()'>
 							<svg viewBox="0 0 100 100">
@@ -61,14 +61,22 @@
 							<h1>&nbsp;</h1>
 						</a>
 					</div>
-					<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x">
-						<input type="search" id='university-input' class='' placeholder="Search for my university" ng-model="search_text.university" />
-						<a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
-							<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
-						</a>
-						<a class='side-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
-							<i class='icon ion-close-circled text-white'></i>
-						</a>
+					<div class="onboarding-search absolute center-x bottom-0 full-x">
+						<div class="input-field">
+							<i class="material-icons prefix">
+								<svg viewBox="0 0 100 100">
+								    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+								</svg>
+							</i>
+			                <input id="university-input" type="text" ng-model="search_text.university">
+			                <label class="ng-class:{'hide': search_text.university.length}" for="university-input">search for your university</label>
+							<a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
+								<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
+							</a>
+			                <a class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
+								<i class='icon ion-close-circled text-white'></i>
+							</a>
+			            </div>
 					</div>
 				</header>
 				<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">

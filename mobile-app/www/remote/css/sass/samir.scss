@@ -218,9 +218,6 @@
 body.platform-ios {
 	.mobile-referrals-modal a.header-close,
 	.mobile-balance-modal a.header-close,
-	 {
-		padding-top: 40px;
-	}
 	.guru-view-mobile .header-nav {
 		padding-top: 0 !important;
 		h1.balance-header {
@@ -467,3 +464,12 @@ ul.mobile-cards-container li {
 			}
 		}
 	}
+
+#mobile-guru-home .header-nav.header-nav-new-user  {
+	a.header-nav-back {
+
+			top:12px;
+			left:-5px;
+			position:absolute;
+	}
+}

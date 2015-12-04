@@ -76,9 +76,12 @@
                 </svg>
             </a>
         </div>
-        <h1>{{active_category.name}}</h1>
+		<div class="text-center">
+			<h1>{{active_category.hex_color || 'What interests you?'}}</h1>
+			<h2 ng-if="!active_category.hex_color">Select your skills, begin earning cash.</h2>
+		</div>
     </header>
-    <header id="category-skills-2" class="third flex-center" ng-if='guruSkillsModal.isShown()'>
+    <!-- <header id="category-skills-2" class="third flex-center" ng-if='guruSkillsModal.isShown()'>
         <div class="header-nav">
             <a class="header-down" ng-click='guruSkillsModal.hide()'>
                 <svg viewBox="0 0 100 100">
@@ -86,17 +89,17 @@
                 </svg>
             </a>
         </div>
-        <h1 class="text-center">{{active_category.name}}</h1>
-    </header>
+        <h1 class="text-center">{{active_category.hex_color}}</h1>
+    </header> -->
     <div id="skills-list" class="onboarding-list">
         <ul class='list list-item-half flex-wrap'>
             <li ng-repeat='category in categories' style='background:url({{categories_img_base + category.background_url}})'>
-                <a class='skill-item-link bg-{{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
+                <a class='skill-item-link skill-item-bg-{{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
                     <img='background:url({{category.icon_url}})'/>
                     <div>
-                        <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
-                        <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}} selected</span>
-                        <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}} selected</span>
+                        <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.hex_color}}</span>
+                        <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}}</span>
+                        <span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}}</span>
                     </div>
                 </a>
             </li>

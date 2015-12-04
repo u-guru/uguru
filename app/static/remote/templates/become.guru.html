@@ -9,38 +9,27 @@
 	<ion-slide ng-controller='CoursesController' on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
 		<ion-view class='uguru-view courses-view guru-courses-view'>
 			<span ng-include="img_base + BASE + 'templates/guru.courses.container.html'"></span>
+			<div class="onboarding-steps">
+				<progress class="white" max="6" value="1"></progress>
+			</div>
 		</ion-view>
 	</ion-slide>
 
 	<ion-slide ng-controller='CategoriesController'>
 		<ion-view class='uguru-view skills-view' >
-		  <!-- <progress value="0" max="100">
-		      <div class="progress"><span data-value="60"></span></div>
-		    </progress> -->
 		    <span ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></span>
 		</ion-view>
+		<div class="onboarding-steps">
+			<progress class="white-round" max="6" value="3"></progress>
+		</div>
 	</ion-slide>
 
 	<ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
-		<div ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></div>
+		<span ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></span>
+		<div class="onboarding-steps">
+			<progress class="white-round" max="6" value="5"></progress>
+		</div>
 	</ion-slide>
-
-	<!-- Weird ng-inlude issue -->
-	<!--  <ion-slide  ng-controller='AddMajorController'>
-		<div ng-include="img_base + BASE + 'templates/majors.html'"></div>
-	</ion-slide>
-
-	<ion-slide ng-controller='CoursesController' on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
-		<div ng-include="img_base + BASE + 'templates/become.guru.courses.html'"></div>
-	</ion-slide>
-
-	<ion-slide ng-controller='CategoriesController'>
-		<div ng-include="img_base + BASE + 'templates/become.guru.skills.html'"></div>
-	</ion-slide>
-
-	<ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()">
-		<div ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></div>
-	</ion-slide> -->
 
 </ion-slide-box>
 

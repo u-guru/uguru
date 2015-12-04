@@ -24,16 +24,21 @@ angular.module('uguru.guru.controllers', [])
   'DeviceService',
   'LoadingService',
   '$ionicModal',
+  'TourService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet, RankingService, TipService, ModalService, PopupService,
-  $ionicSlideBoxDelegate, DeviceService, LoadingService, $ionicModal) {
+  $ionicSlideBoxDelegate, DeviceService, LoadingService, $ionicModal, TourService) {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
     RankingService.refreshRanking(user);
   };
+
+  // $timeout(function() {
+  //   TourService.initTooltip(null, null, '#cta-box-profile');
+  // }, 1500);
 
   var CTA_PARENT_DICT = {
     'cta-box-profile':'.guru-home-container',
@@ -419,9 +424,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.showBalanceModal = function() {
           if ($scope.user && $scope.user.id) {
             $scope.balanceModal.show()
-          } 
+          }
           else {
-            LoadingService.showMsg('You need an account to do that!', 2500, 
+            LoadingService.showMsg('You need an account to do that!', 2500,
               function() {
                   $scope.signupModal.show()
               }
@@ -434,7 +439,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.profileModal.show();
           } else {
 
-            LoadingService.showMsg('You need an account to do that!', 2500, 
+            LoadingService.showMsg('You need an account to do that!', 2500,
               function() {
                   $scope.signupModal.show()
               }
@@ -449,7 +454,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.credibilityModal.show();
           } else {
 
-            LoadingService.showMsg('You need an account to do that!', 2500, 
+            LoadingService.showMsg('You need an account to do that!', 2500,
               function() {
                   $scope.signupModal.show();
               }

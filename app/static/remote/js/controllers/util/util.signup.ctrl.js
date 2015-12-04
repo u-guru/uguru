@@ -150,7 +150,9 @@ angular.module('uguru.util.controllers')
     $scope.attemptToResetPassword = function() {
 
       if (!Utilities.validateEmail($scope.signupForm.email)) {
-        alert('Please enter valid email');
+        // alert('Please enter valid email');
+        LoadingService.showMsg('Please enter valid email', 0, 3500);
+
         return;
       }
 
@@ -248,12 +250,15 @@ angular.module('uguru.util.controllers')
     $scope.submitSupport = function() {
 
       if (!$scope.support_index) {
-        alert('Please submit one of the 6 support options');
+        // alert('Please submit one of the 6 support options');
+        LoadingService.showMsg('Please submit one of the 6 support options', 0, 3500);
+
         return;
       }
 
       if (!$scope.supportTicket.description || $scope.supportTicket.description.length === 0)  {
-        alert('Please write a message so we can help!');
+        // alert('Please write a message so we can help!');
+        LoadingService.showMsg('Please write a message so we can help!', 0, 3500);
         return;
       }
 
@@ -1116,7 +1121,6 @@ angular.module('uguru.util.controllers')
             $scope.ngFBlogin();
           }, 500)
 
-
     };
 
     $scope.closeSideBar = function() {
@@ -1144,7 +1148,10 @@ angular.module('uguru.util.controllers')
 
       }
     }
-
+    $scope.explore = function()
+    {
+      $state.go('^.home');
+    }
     $scope.postFbGraphApiSuccess = function(success, callback) {
 
         $scope.user.first_name = success.first_name;
@@ -1527,29 +1534,33 @@ angular.module('uguru.util.controllers')
           }
 
           $localstorage.setObject('user', $scope.user);
+
           if (!$scope.fbLoginSuccessAlreadyShown) {
             LoadingService.showSuccess('Account Successfully Created', 2500);
           }
+
           if (!$scope.desktopMode && ModalService.isOpen('signup')) {
               ModalService.close('signup');
           }
 
-          if ($scope.desktopMode) {
-            console.log('detecting signup')
-            LoadingService.showSuccess('Account Successfully Created', 2500);
-            $state.go('^.guru-home');
-          } else {
-            $state.go('^.guru');
-          }
-
+            if ($scope.desktopMode) {
+              console.log('detecting signup')
+              LoadingService.showSuccess('Account Successfully Created', 2500);
+              $state.go('^.guru-home');
+            } else {
+              $scope.signupModal.hide();
+              $state.go('^.guru');
+            }
+    
 
 
       },
       function(err){
         console.log(err);
-          LoadingService.hide();
+          // LoadingService.hide();
         if (err.status === 409) {
-          alert('Email already exists in our system! Login?')
+          // alert('Email already exists in our system! Login?')
+          LoadingService.showMsg('Email already exists in our system ! Login?', 0, 3500);
           $scope.toggleLoginMode();
           $scope.signupForm.password = '';
         }

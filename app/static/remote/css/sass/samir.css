@@ -177,13 +177,16 @@
   display: table; }
 
 body.platform-ios .mobile-referrals-modal a.header-close,
-body.platform-ios .mobile-balance-modal a.header-close {
-  padding-top: 40px; }
+body.platform-ios .mobile-balance-modal a.header-close,
 body.platform-ios .guru-view-mobile .header-nav {
   padding-top: 0 !important; }
+  body.platform-ios .mobile-referrals-modal a.header-close h1.balance-header,
+  body.platform-ios .mobile-balance-modal a.header-close h1.balance-header,
   body.platform-ios .guru-view-mobile .header-nav h1.balance-header {
     padding-right: 15px !important;
     margin-top: 5px !important; }
+  body.platform-ios .mobile-referrals-modal a.header-close svg.referral-icon,
+  body.platform-ios .mobile-balance-modal a.header-close svg.referral-icon,
   body.platform-ios .guru-view-mobile .header-nav svg.referral-icon {
     padding: 0; }
 

@@ -96,6 +96,505 @@ section {
 
 
 
+/* ---------- COLOR PICKER */
+.color-picker {
+	background: white;
+	width: 100%;
+	ul {
+		padding: 5px;
+	}
+	button {
+		height: 52px;
+		font-weight: 600;
+		&:active, &.activated {
+			@include opacity(.3);
+		}
+	}
+	.color-picker-top {
+		@include flex;
+		overflow: auto;
+		li {
+			padding: 5px;
+			a {
+				@include round;
+				@include flex;
+				@include flex-center;
+				width: 36px;
+				height: 36px;
+				padding: 2px;
+				&.active {
+					&:after {
+						@include round;
+						content: "";
+						display: block;
+						width: 100%;
+						height: 100%;
+						border: 2px solid white;
+					}
+				}
+			}
+		}
+	}
+	.color-picker-bottom {
+		@include flex;
+		@include flex-wrap;
+		background: none!important;
+		li {
+			width: calc(100% / 3);
+			padding: 5px;
+			span {
+				display: block;
+				width: 100%;
+				height: 36px;
+			}
+		}
+		&.bg-auburn {
+			+ button {
+				background: $auburn;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($auburn, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($auburn, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($auburn, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($auburn, 5%);
+				}
+				&:nth-child(5) span {
+					background: $auburn;
+				}
+				&:nth-child(6) span {
+					background: darken($auburn, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($auburn, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($auburn, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($auburn, 20%);
+				}
+			}
+		}
+		&.bg-orange {
+			+ button {
+				background: $orange;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($orange, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($orange, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($orange, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($orange, 5%);
+				}
+				&:nth-child(5) span {
+					background: $orange;
+				}
+				&:nth-child(6) span {
+					background: darken($orange, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($orange, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($orange, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($orange, 20%);
+				}
+			}
+		}
+		&.bg-gold {
+			+ button {
+				background: $gold;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($gold, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($gold, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($gold, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($gold, 5%);
+				}
+				&:nth-child(5) span {
+					background: $gold;
+				}
+				&:nth-child(6) span {
+					background: darken($gold, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($gold, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($gold, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($gold, 20%);
+				}
+			}
+		}
+		&.bg-moola {
+			+ button {
+				background: $moola;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($moola, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($moola, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($moola, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($moola, 5%);
+				}
+				&:nth-child(5) span {
+					background: $moola;
+				}
+				&:nth-child(6) span {
+					background: darken($moola, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($moola, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($moola, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($moola, 20%);
+				}
+			}
+		}
+		&.bg-shamrock {
+			+ button {
+				background: $shamrock;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($shamrock, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($shamrock, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($shamrock, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($shamrock, 5%);
+				}
+				&:nth-child(5) span {
+					background: $shamrock;
+				}
+				&:nth-child(6) span {
+					background: darken($shamrock, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($shamrock, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($shamrock, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($shamrock, 20%);
+				}
+			}
+		}
+		&.bg-azure {
+			+ button {
+				background: $azure;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($azure, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($azure, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($azure, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($azure, 5%);
+				}
+				&:nth-child(5) span {
+					background: $azure;
+				}
+				&:nth-child(6) span {
+					background: darken($azure, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($azure, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($azure, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($azure, 20%);
+				}
+			}
+		}
+		&.bg-lake {
+			+ button {
+				background: $lake;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($lake, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($lake, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($lake, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($lake, 5%);
+				}
+				&:nth-child(5) span {
+					background: $lake;
+				}
+				&:nth-child(6) span {
+					background: darken($lake, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($lake, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($lake, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($lake, 20%);
+				}
+			}
+		}
+		&.bg-cobalt {
+			+ button {
+				background: $cobalt;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($cobalt, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($cobalt, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($cobalt, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($cobalt, 5%);
+				}
+				&:nth-child(5) span {
+					background: $cobalt;
+				}
+				&:nth-child(6) span {
+					background: darken($cobalt, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($cobalt, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($cobalt, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($cobalt, 20%);
+				}
+			}
+		}
+		&.bg-eggplant {
+			+ button {
+				background: $eggplant;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($eggplant, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($eggplant, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($eggplant, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($eggplant, 5%);
+				}
+				&:nth-child(5) span {
+					background: $eggplant;
+				}
+				&:nth-child(6) span {
+					background: darken($eggplant, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($eggplant, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($eggplant, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($eggplant, 20%);
+				}
+			}
+		}
+		&.bg-campus {
+			+ button {
+				background: $campus;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($campus, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($campus, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($campus, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($campus, 5%);
+				}
+				&:nth-child(5) span {
+					background: $campus;
+				}
+				&:nth-child(6) span {
+					background: darken($campus, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($campus, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($campus, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($campus, 20%);
+				}
+			}
+		}
+		&.bg-taupe {
+			+ button {
+				background: $taupe;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($taupe, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($taupe, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($taupe, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($taupe, 5%);
+				}
+				&:nth-child(5) span {
+					background: $taupe;
+				}
+				&:nth-child(6) span {
+					background: darken($taupe, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($taupe, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($taupe, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($taupe, 20%);
+				}
+			}
+		}
+		&.bg-slate {
+			+ button {
+				background: $slate;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($slate, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($slate, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($slate, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($slate, 5%);
+				}
+				&:nth-child(5) span {
+					background: $slate;
+				}
+				&:nth-child(6) span {
+					background: darken($slate, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($slate, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($slate, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($slate, 20%);
+				}
+			}
+		}
+		&.bg-charcoal {
+			+ button {
+				background: $charcoal;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($charcoal, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($charcoal, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($charcoal, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($charcoal, 5%);
+				}
+				&:nth-child(5) span {
+					background: $charcoal;
+				}
+				&:nth-child(6) span {
+					background: darken($charcoal, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($charcoal, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($charcoal, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($charcoal, 20%);
+				}
+			}
+		}
+	}
+}
+
+
+
 /* ---------- SIDEBAR & MENUS */
 // SIDEBAR
 #side-menu-left-overlay.active {
@@ -524,16 +1023,21 @@ section {
 // UNIVERSITY
 .university-view {
 	background: $charcoal;
-	header {
+	header.third {
 		&::before {
 			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
 		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			padding-bottom: 30px;
+		}
 		.geolocation-icon {
-			margin-top: 3px;
-		// To add hella space to tap it (it's responsive & equalizes)
+			position: absolute;
+			top: -15px;
+			right: -15px;
 			padding: 30px;
-    		margin-right: -30px;
 		}
 	}
 	#school-list.onboarding-list, #school-list-modal {
@@ -742,11 +1246,51 @@ section {
 
 /* ---------- GURU ONBOARDING */
 // ONBOARDING
+.onboarding-steps {
+	position: fixed;
+	z-index: 50;
+	top: calc(100% / 3 - 5px);
+	left: 0;
+	width: 100%;
+	height: 5px;
+	progress {
+		display: block;
+		border-radius: 0!important;
+		vertical-align: 0;
+		margin: 0;
+	}
+}
 .onboarding {
 	.onboarding-search {
-		input {
-			width: calc(100% - 25px);
+		.input-field {
+			.prefix {
+				margin-top: 6px;
+				svg {
+					@include svg-stroke(white, 5);
+					width: 100%;
+					height: 100%;
+					padding: 11px;
+				}
+			}
+			input {
+				width: calc(100% - 63px)!important;
+			}
+			input, label {
+				color: rgba(white,.6)!important;
+				border-color: rgba(white,.6)!important;
+			}
+			input:focus {
+				color: white!important;
+				border-color: white!important;
+			}
+			.desktop-input-close-icon {
+				right: 15px;
+			    margin-top: -20px;
+			}
 		}
+		// input {
+		// 	width: calc(100% - 25px);
+		// }
 	}
 	progress, .progress {
 		position: absolute;
@@ -783,168 +1327,6 @@ section {
 		height: calc(100% / 3 * 2);
 		overflow: auto;
 	}
-	&#demographic {
-		header {
-			&::before {
-				background: url(../images/schools.jpg) no-repeat center center / cover;
-			}
-			h1 {
-				font-size: 24px;
-			}
-		}
-		#demographic-grid {
-			> ul {
-				> li:not(.active) {
-					@include opacity(.3);
-				}
-			}
-			ul {
-				@include flex;
-				@include flex-center;
-				@include flex-wrap;
-				height: 100%;
-				li {
-					position: relative;
-					height: 50%;
-					font-weight: 600;
-					a {
-						@include flex;
-						@include flex-center;
-						@include flex-wrap;
-						width: 100%;
-						height: 100%;
-						background: none;
-						.demographic-icon {
-							span {
-								@include round;
-								display: block;
-								margin: 0 auto 10px;
-								width: 60px;
-								height: 60px;
-								background: rgba(white,.4);
-							}
-						}
-					}
-					#{$links} {
-						background: none;
-					}
-					.demographic-popup {
-						@include tri-down(15, white, 0, 0);
-						position: absolute;
-						z-index: 9;
-						bottom: -100%;
-						background: white;
-						height: 100%;
-						width: 200%;
-						ul {
-							li {
-								a {
-									border: 1px solid;
-								}
-							}
-							li:nth-child(1) {
-								padding: 5px 0 0 5px;
-								a {
-									border-top: 0;
-									border-left: 0;
-								}
-							}
-							li:nth-child(2) {
-								padding: 5px 5px 0 0;
-								a {
-									border-top: 0;
-									border-right: 0;
-								}
-							}
-							li:nth-child(3) {
-								padding: 0 0 5px 5px;
-								a {
-									border-bottom: 0;
-									border-left: 0;
-								}
-							}
-							li:nth-child(4) {
-								padding: 0 5px 5px 0;
-								a {
-									border-bottom: 0;
-									border-right: 0;
-								}
-							}
-
-						}
-					}
-					&.bg-campus {
-						.demographic-popup {
-							left: 0;
-							&::before {
-								left: 25%;
-							}
-							li {
-								a {
-									color: $campus;
-									border-color: rgba($campus, .1);
-								}
-								#{$links} {
-									background: rgba($campus, .05);
-								}
-							}
-						}
-					}
-					&.bg-shamrock {
-						.demographic-popup {
-							left: -100%;
-							&::before {
-								left: 75%;
-							}
-							li {
-								a {
-									color: $shamrock;
-									border-color: rgba($shamrock, .1);
-								}
-								#{$links} {
-									background: rgba($shamrock, .05);
-								}
-							}
-						}
-					}
-					&.bg-azure {
-						.demographic-popup {
-							left: 0;
-							&::before {
-								left: 25%;
-							}
-							li {
-								a {
-									color: $azure;
-									border-color: rgba($azure, .1);
-								}
-								#{$links} {
-									background: rgba($azure, .05);
-								}
-							}
-						}
-					}
-					&.bg-lake {
-						.demographic-popup {
-							left: -100%;
-							&::before {
-								left: 75%;
-							}
-							li {
-								a {
-									color: $lake;
-									border-color: rgba($lake, .1);
-								}
-								#{$links} {
-									background: rgba($lake, .05);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
 	&#start {
 		background: $slate;
 		#start-container {
@@ -960,10 +1342,14 @@ section {
 // MAJOR
 .major-view, .language-view {
 	background: $charcoal;
-	header {
+	header.third {
 		&::before {
 			background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
+		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
 		}
 	}
 	#major-list.onboarding-list, #language-list {
@@ -1006,10 +1392,30 @@ section {
 
 // COURSES
 .courses-view {
-	header {
+	header.third {
 		&::before {
 			background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
+		}
+		div:not(.header-nav) h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			padding-bottom: 5px;
+			+ h2 {
+				margin-top: 0;
+				font-size: 20px;
+				padding: 0 15px 30px;
+			}
+		}
+	}
+	@media screen and (max-height:568px) {
+		header.third {
+			div:not(.header-nav) h1 {
+				padding-bottom: 45px;
+				+ h2 {
+					display: none;
+				}
+			}
 		}
 	}
 	#courses-list.onboarding-list {
@@ -1032,7 +1438,7 @@ section {
 						overflow: hidden;
 						white-space: nowrap;
 						text-overflow: ellipsis;
-						&:first-child {
+						&:first-child:not(:only-child) {
 							font-size: 14px;
 							line-height: 1.2;
 						}
@@ -1089,10 +1495,30 @@ section {
 // SKILLS
 .skills-view {
 	background: $charcoal;
-	header {
+	header.third {
 		&::before {
 			background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
 						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
+		}
+		div:not(.header-nav) h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			padding-bottom: 5px;
+			+ h2 {
+				margin-top: 0;
+				font-size: 20px;
+				padding: 0 15px 15px;
+			}
+		}
+	}
+	@media screen and (max-height:568px) {
+		header.third {
+			div:not(.header-nav) h1 {
+				padding-bottom: 15px;
+				+ h2 {
+					display: none;
+				}
+			}
 		}
 	}
 	#skills-list.onboarding-list  {
@@ -1114,25 +1540,33 @@ section {
 					font-weight: 400;
 					line-height: 24px;
 					text-align: center;
-					div {
+					.skill-label {
 						position: relative;
 						z-index: 9;
-					}
-					.skill-label {
 						display: block;
 						width: 100%;
 						font-weight: 600;
 						line-height: 1.25;
 					}
 					.skill-count {
-						display: block;
-						font-size: 12px;
-						line-height: 1.25;
-						text-transform: uppercase;
+						@include flex;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						right: 0;
+						z-index: 9999;
+						background: white;
+						border-radius: 0 0 0 75%;
+						width: 28px;
+					    height: 28px;
+					    padding-bottom: 3px;
+					    padding-left: 3px;
+					    font-weight: 600;
+					    font-size: 18px;
 					}
 				}
 			}
-			[class*="bg-"]::after {
+			[class*="skill-item-bg-"]::after {
 				@include opacity(.7);
 				position: absolute;
 				content: "";
@@ -1141,35 +1575,69 @@ section {
 				left: 0;
 				top: 0;
 			}
-			.bg-auburn.important::after {
-				background: $auburn;
+			.skill-item-bg-delivery.important {
+				.skill-count {
+					color: $auburn!important;
+				}
+				&::after {
+					background: $auburn;
+				}
 			}
-			.bg-orange.important::after {
-				background: $orange;
+			.skill-item-bg-freelancing.important {
+				.skill-count {
+					color: $orange!important;
+				}
+				&::after {
+					background: $orange;
+				}
 			}
-			.bg-gold.important::after {
-				background: $gold;
+			.skill-item-bg-baking.important {
+				.skill-count {
+					color: $gold!important;
+				}
+				&::after {
+					background: $gold;
+				}
 			}
-			.bg-moola.important::after {
-				background: $moola;
+			.skill-item-bg-photography.important {
+				.skill-count {
+					color: $moola!important;
+				}
+				&::after {
+					background: $moola;
+				}
 			}
-			.bg-shamrock.important::after {
-				background: $shamrock;
+			.skill-item-bg-tech.important {
+				.skill-count {
+					color: $azure!important;
+				}
+				&::after {
+					background: $azure;
+				}
 			}
-			.bg-azure.important::after {
-				background: $azure;
+			.skill-item-bg-household.important {
+				.skill-count {
+					color: $cobalt!important;
+				}
+				&::after {
+					background: $cobalt;
+				}
 			}
-			.bg-lake.important::after {
-				background: $lake;
+			.skill-item-bg-athetic.important {
+				.skill-count {
+					color: $eggplant!important;
+				}
+				&::after {
+					background: $eggplant;
+				}
 			}
-			.bg-cobalt.important::after {
-				background: $cobalt;
-			}
-			.bg-eggplant.important::after {
-				background: $eggplant;
-			}
-			.bg-cerise.important::after {
-				background: $cerise;
+			.skill-item-bg-academic.important{
+				.skill-count {
+					color: $cerise!important;
+				}
+				&::after {
+					background: $cerise;
+				}
 			}
 		}
 	}
@@ -1178,8 +1646,30 @@ section {
 // PHOTO
 .photo-view {
 	background: $charcoal;
-	h1.text-center {
-		line-height: 1.2!important;
+	header.third {
+		h1.text-center {
+			line-height: 1.2!important;
+		}
+		div:not(.header-nav) h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			padding-bottom: 5px;
+			+ h2 {
+				margin-top: 0;
+				font-size: 20px;
+				padding: 0 15px 15px;
+			}
+		}
+	}
+	@media screen and (max-height:568px) {
+		header.third {
+			div:not(.header-nav) h1 {
+				padding-bottom: 15px;
+				+ h2 {
+					display: none;
+				}
+			}
+		}
 	}
 	#photo-list {
 		position: absolute;
@@ -1225,6 +1715,9 @@ section {
 				max-height: 150px;
 				overflow: hidden;
 			}
+			span, img {
+				border: 5px solid white;
+			}
 			svg, img {
 				@include round;
 				@include center-xy;
@@ -1247,10 +1740,10 @@ section {
 	#profile {
 		overflow-y: scroll;
 		overflow-x: hidden;
-		height: calc(100% - 50px);
+		height: 100%;
 	}
 	#btn-edit-profile, #btn-save-profile {
-		bottom: 50px!important;
+		bottom: 0!important;
 		width: 100%;
 	}
 	#btn-save-profile button {
@@ -1284,7 +1777,7 @@ section {
 		}
 	}
 	#profile-desc {
-		height: 64.5%;
+		height: 50%;
 		.profile-slider {
 			position: relative;
 			height: 100%;
@@ -1294,11 +1787,11 @@ section {
 			#profile-intro {
 				position: relative;
 				margin: 0 15px;
-				height: calc(100% - 30px);
+				height: calc(100% - 20px);
 				div {
 					@include flex;
-					@include flex-center;
-					height: 100%;
+					height: calc(100% - 64px);
+					overflow: auto;
 					font-size: 20px;
 					font-weight: 600;
 				}
@@ -1584,21 +2077,21 @@ section {
 @media screen and (min-height:568px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 53%;
+			height: 41%;
 		}
 	}
 }
 @media screen and (min-height:667px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 45%;
+			height: 35%;
 		}
 	}
 }
 @media screen and (min-height:736px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 41%;
+			height: 31%;
 		}
 	}
 }
@@ -2091,275 +2584,13 @@ section {
 
 
 
-/* ---------- CREDIBILITY & RANKING */
-// CREDIBILITY
-.credibility-view {
-	header {
-		position: relative;
-	}
-	#credit-slider {
-		position: absolute;
-		bottom: 0;
-		height: calc(100% - 50px);
-		width: 100%;
-		ul {
-			@include listless;
-			@include flex;
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			overflow-x: auto;
-			li {
-				font-size: 14px;
-				font-weight: 400;
-				width: 100%;
-				text-align: center;
-				a {
-					display: block;
-					width: 92px;
-					padding-bottom: 10px;
-					border-bottom: 5px solid transparent;
-					color: white;
-					.credit-label {
-						font-weight: 400;
-					}
-					.credit-icon {
-						@include round;
-						@include flex;
-						@include flex-center;
-						@include flex-wrap;
-						margin: 0 auto 10px;
-						width: 50px;
-						height: 50px;
-						background: $slate;
-						svg {
-							@include svg-stroke(white, 4);
-							width: 100%;
-							height: 100%;
-							padding: 8px;
-						}
-					}
-				}
-				#{$links} {
-					border-bottom: 5px solid $cerise;
-					color: $cerise;
-					.credit-icon {
-						background: $cerise;
-					}
-				}
-				a.active, a:active {
-					@include opacity(.75);
-				}
-			}
-			.active {
-				&#credit-exp {
-					a {
-						border-bottom: 5px solid $shamrock;
-						color: $shamrock;
-						.credit-icon {
-							background: $shamrock;
-						}
-					}
-				}
-				&#credit-grades {
-					a {
-						border-bottom: 5px solid $moola;
-						color: $moola;
-						.credit-icon {
-							background: $moola;
-						}
-					}
-				}
-				&#credit-fb {
-					a {
-						border-bottom: 5px solid $facebook-light;
-						color: $facebook-light;
-						.credit-icon {
-							background: $facebook-light;
-						}
-					}
-				}
-				&#credit-phone {
-					a {
-						border-bottom: 5px solid $eggplant;
-						color: $eggplant;
-						.credit-icon {
-							background: $eggplant;
-						}
-					}
-				}
-				&#credit-email {
-					a {
-						border-bottom: 5px solid $lake;
-						color: $lake;
-						.credit-icon {
-							background: $lake;
-						}
-					}
-				}
-			}
-			#credit-exp {
-				#{$links} {
-					border-bottom: 5px solid $shamrock;
-					color: $shamrock;
-					.credit-icon {
-						background: $shamrock;
-					}
-				}
-			}
-			#credit-grades {
-				#{$links} {
-					border-bottom: 5px solid $moola;
-					color: $moola;
-					.credit-icon {
-						background: $moola;
-					}
-				}
-			}
-			#credit-fb {
-				#{$links} {
-					border-bottom: 5px solid $facebook-light;
-					color: $facebook-light;
-					.credit-icon {
-						background: $facebook-light;
-					}
-				}
-			}
-			#credit-phone {
-				#{$links} {
-					border-bottom: 5px solid $eggplant;
-					color: $eggplant;
-					.credit-icon {
-						background: $eggplant;
-					}
-				}
-			}
-			#credit-email {
-				#{$links} {
-					border-bottom: 5px solid $lake;
-					color: $lake;
-					.credit-icon {
-						background: $lake;
-					}
-				}
-			}
-		}
-	}
-	#credibility-content-wrapper {
-		position: relative;
-		background: $slate;
-		height: calc(100% / 3 * 2);
-		text-align: center;
-		.credit-content-slide {
-			display: none;
-			width: 100%;
-			height: 100%;
-			&.active {
-				display: block;
-			}
-			.semi-opaque {
-				@include opacity(.5);
-			}
-			.semi-opaque:active, .semi-opaque.active {
-				@include opacity(1);
-			}
-			> div {
-				height: 100%;
-				.credit-body {
-					height: calc(100% - 34px - 64px - 50px);
-					&:not(ul) {
-						@include flex;
-						@include flex-center;
-						@include flex-wrap;
-					}
-					p {
-						margin: 0;
-						padding: 15px;
-						font-size: 20px;
-					}
-					li {
-						display: block;
-						text-align: left;
-						height: 65px;
-						a {
-							.list-item-detail {
-								h2 {
-									font-size: 20px;
-									font-weight: 600;
-								}
-								span {
-									display: block;
-									font-size: 16px;
-									font-weight: 400;
-								}
-							}
-							svg {
-								@include svg-stroke-width(3);
-								padding: 15px;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-width:375px) {
-	.credibility-view {
-		#credit-slider {
-			ul {
-				li {
-					font-size: 16px;
-					a {
-						width: 108px;
-						.credit-icon {
-							width: 60px;
-							height: 60px;
-						}
-					}
-				}
-			}
-		}
-		#credibility-content-wrapper {
-			.credit-content-slide  {
-				> div {
-					.credit-body {
-						p {
-							font-size: 22px;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-width:414px) {
-	.credibility-view {
-		#credit-slider {
-			ul {
-				li {
-					font-size: 18px;
-					a {
-						display: block;
-						width: 118px;
-						.credit-icon {
-							width: 70px;
-							height: 70px;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-// GURU RANKING
+/* ---------- GURU HOME */
 .guru-view {
 	header {
 		@include flex;
 		-webkit-align-items: flex-end;
 		align-items: flex-end;
-		height: 25%;
+		height: calc(25% - 64px);
 		padding-bottom: 15px;
 		background: $charcoal;
 		h1 {
@@ -2370,43 +2601,45 @@ section {
 		}
 	}
 	.guru-home-notifications {
-			ul {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center-vertical;
-				width: 100%;
-				li {
-					padding-left: 15px;
-					padding-top: 5px;
-					a {
-						@include flex;
-						@include flex-center-vertical;
-						span {
-							display: block;
-						}
-						.notification-icon {
-							position: relative;
-							.notification-number {
-								@include round;
-								@include flex;
-								@include flex-center;
-								padding: 0 5px;
-								height: 28px;
-								min-width: 28px;
-								background: $gabrielle;
-								border: 3px solid $charcoal;
-								font-size: 14px;
-								font-weight: 600;
-							}
-						}
-						.notification-type {
-							padding-left: 5px;
+		ul {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center-vertical;
+			width: 100%;
+			height: 64px;
+			background: white;
+			li {
+				padding: 15px;
+				a {
+					@include flex;
+					@include flex-center;
+					color: $shamrock;
+					span {
+						display: block;
+					}
+					.notification-icon {
+						position: relative;
+						.notification-number {
+							@include round;
+							@include flex;
+							@include flex-center;
+							padding: 0 5px;
+							height: 28px;
+							min-width: 28px;
+							background: $gabrielle;
+							color: white;
+							font-size: 14px;
 							font-weight: 600;
-							font-size: 20px;
 						}
+					}
+					.notification-type {
+						padding-left: 10px;
+						font-weight: 600;
+						font-size: 20px;
 					}
 				}
 			}
+		}
 	}
 	.main {
 		height: 75%;
@@ -2478,6 +2711,8 @@ section {
 								height: 100%;
 							}
 							svg {
+								display: none;
+								margin: 0 auto;
 								padding: 0 15px 15px;
 								height: 100%;
 								path {
@@ -2486,6 +2721,9 @@ section {
 							}
 							#percentile {
 								@include center-xy;
+								+ svg {
+									display: block!important;
+								}
 								#percentile-ranking {
 									position: relative;
 									margin-top: -24px;
@@ -2783,205 +3021,7 @@ section {
 			}
 		}
 	}
-	// header {
-	// 	&::before {
-	// 		background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
-	// 	}
-	// }
-	// #guru-home-content {
-	// 	overflow: none!important;
-	// 	padding-bottom: 50px;
-	// }
-	// #guru-ranking {
-	// 	@include flex;
-	// 	@include flex-wrap;
-	// 	@include flex-center;
-	// 	position: relative;
-	// 	z-index: 9;
-	// 	width: 100%;
-	// 	height: calc(100% - 20px);
-	// 	margin-top: -20px;
-	// 	padding: 0 30px;
-	// 	> div {
-	// 		@include flex;
-	// 		@include flex-wrap;
-	// 		@include flex-center;
-	// 		-webkit-transform: scale(.8);
-	// 		-moz-transform: scale(.8);
-	// 		-ms-transform: scale(.8);
-	// 		-o-transform: scale(.8);
-	// 		transform: scale(.8);
-	// 	}
-	// 	.progressbar-text {
-	// 		display: none;
-	// 	}
-	// 	svg {
-	// 		@include round;
-	// 		* {
-	// 			stroke-linecap: round;
-	// 		}
-	// 	}
-	// 	#guru-chart {
-	// 		position: relative;
-	// 		width: 130px;
-	// 		#percentile {
-	// 			@include center-xy;
-	// 			#percentile-ranking {
-	// 				position: relative;
-	// 				font-size: 44px;
-	// 				font-weight: 600;
-	// 				line-height: 1;
-	// 				text-align: center;
-	//
-	// 				&::after {
-	// 					content: "th";
-	// 					display: block;
-	// 					position: absolute;
-	// 					top: -1px;
-	// 					right: -1px;
-	// 					font-size: 12px;
-	// 					font-weight: 400;
-	// 					line-height: 28px;
-	// 					text-transform: uppercase;
-	// 				}
-	// 			}
-	// 			#percentile-label {
-	// 				font-size: 12px;
-	// 				font-weight: 400;
-	// 				letter-spacing: 1px;
-	// 				line-height: 15px;
-	// 				text-transform: uppercase;
-	// 			}
-	// 		}
-	// 	}
-	// 	#guru-stats {
-	// 		padding-left: 30px;
-	// 		width: calc(100% - 130px);
-	// 		h2 {
-	// 			margin: 0 0 5px;
-	// 			font-size: 16px;
-	// 			font-weight: 600;
-	// 			text-transform: uppercase;
-	// 		}
-	// 		.stats-bar {
-	// 			line-height: 10px;
-	// 			font-size: 10px;
-	// 			height: 10px;
-	// 			margin-bottom: 7px;
-	// 			svg {
-	// 				height: 10px;
-	// 			}
-	// 		}
-	// 	}
-	// }
-	// .guru-tip-of-day-slide-box {
-	// 	height: calc(100% - 36px);
-	// 	.card {
-	// 		margin: 15px!important;
-	// 		height: calc(100% - 60px);
-	// 		padding: 0!important;
-	// 		background: $slate;
-	// 		border-radius: 5px;
-	// 		overflow: hidden;
-	// 		text-align: center;
-	// 		.card-content {
-	// 			@include flex;
-	// 			@include flex-wrap;
-	// 			@include flex-center;
-	// 			padding: 15px;
-	// 			height: calc(100% - 64px);
-	// 			svg {
-	// 				display: none;
-	// 				width: 100%;
-	// 				height: 100%;
-	// 				max-height: 70px;
-	// 				margin-bottom: 15px;
-	// 			}
-	// 			h2 {
-	// 				font-size: 24px;
-	// 				font-weight: 600;
-	// 			}
-	// 			p {
-	// 				margin: 10px 0 0;
-	// 				font-size: 18px;
-	// 			}
-	// 		}
-	// 		button {
-	// 			border-radius: 0 0 5px 5px;
-	// 		}
-	// 	}
-	// 	.slider-pager {
-	// 		bottom: 15px;
-	// 	}
-	// }
-	// #btn-launch-profile:active {
-	// 	@include opacity(1);
-	// 	background: $shamrock!important;
-	// }
-	// #btn-launch-profile + .guru-tip-of-day-slide-box {
-	// 	height: calc(100% - 50px);
-	// }
 }
-// @media screen and (min-height:540px) {
-// 	.guru-view {
-// 		#guru-ranking {
-// 			> div {
-// 				-webkit-transform: none;
-// 				-moz-transform: none;
-// 				-ms-transform: none;
-// 				-o-transform: none;
-// 				transform: none;
-// 			}
-// 			#guru-stats {
-// 				.stats-bar {
-// 					margin-bottom: 9px;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// @media screen and (min-height:568px) {
-// 	.guru-view {
-// 		.guru-tip-of-day-slide-box {
-// 			.card {
-// 				.card-content {
-// 					h2 {
-// 						font-size: 28px;
-// 					}
-// 					p {
-// 						font-size: 22px;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// @media screen and (min-height:640px) {
-// 	.guru-view {
-// 		.guru-tip-of-day-slide-box {
-// 			.card {
-// 				.card-content {
-// 					svg {
-// 						display: block;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// @media screen and (min-width:414px) {
-// 	.guru-view {
-// 		#guru-ranking {
-// 			> div {
-// 				-webkit-transform: scale(1.2);
-// 				-moz-transform: scale(1.2);
-// 				-ms-transform: scale(1.2);
-// 				-o-transform: scale(1.2);
-// 				transform: scale(1.2);
-// 			}
-// 		}
-// 	}
-// }
 
 
 
@@ -3196,7 +3236,75 @@ section {
 
 
 
+/* ---------- TOOLTIPS */
+.guru-tip {
+	position: absolute;
+	z-index: 99;
+	padding: 0 15px;
+	&.guru-tip-center {
+		@include center-xy;
+	}
+	div {
+		position: relative;
+		background: rgba(white,.9);
+		padding: 10px 15px;
+		border-radius: 2px;
+		color: $slate;
+		font-size: 18px;
+		font-weight: 600;
+		&::after {
+			content: "";
+			bottom: 0;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+		}
+	}
+	&.guru-tip-top {
+		div {
+			&::after {
+				@include center-x;
+				top: -20px;
+				border-bottom-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-bottom {
+		div {
+			&::after {
+				@include center-x;
+				top: -20px;
+				border-top-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-left {
+		div {
+			&::after {
+				@include center-y;
+				left: -20px;
+				border-right-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-right {
+		div {
+			&::after {
+				@include center-y;
+				right: -20px;
+				border-left-color: rgba(white,.9);
+			}
+		}
+	}
+}
+
+
+
+
 /* ---------- SAMIR */
+.modal {
+	height: 100%!important;
+}
 .smaller-list-font {
 	font-size: 85%;
 }
@@ -3300,14 +3408,6 @@ body.platform-ios {
 .android-access-edge-case {
 	bottom:64px;
 	position:absolute;
-}
-
-.onboarding-search {
-	padding: 0 10px;
-}
-
-#university-input {
-	margin: 10px 0;
 }
 
 #side-menu-left-overlay {

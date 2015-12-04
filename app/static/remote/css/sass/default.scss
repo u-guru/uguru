@@ -1792,46 +1792,51 @@ button.disabled {
 			}
 			input:checked + span {
 			    background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center / 40px 40px;
+				background-color: $taupe;
 			}
 		}
 	}
 }
+.checklist-delivery,
 .checklist-auburn,
 .checklist-bg-auburn {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $auburn !important;
+			    background-color: $auburn!important;
 			}
 		}
 	}
 }
+.checklist-freelancing,
 .checklist-bg-orange,
 .checklist-orange {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $orange !important;
+			    background-color: $orange!important;
 			}
 		}
 	}
 }
+.checklist-baking,
 .checklist-gold,
 .checklist-bg-gold {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $gold;
+			    background-color: $gold!important;
 			}
 		}
 	}
 }
+.checklist-photography,
 .checklist-moola,
 .checklist-bg-moola {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $moola !important;
+			    background-color: $moola!important;
 			}
 		}
 	}
@@ -1841,17 +1846,18 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $shamrock !important;
+			    background-color: $shamrock!important;
 			}
 		}
 	}
 }
+.checklist-tech,
 .checklist-azure,
 .checklist-bg-azure {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $azure !important;
+			    background-color: $azure!important;
 			}
 		}
 	}
@@ -1861,37 +1867,40 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $lake !important;
+			    background-color: $lake!important;
 			}
 		}
 	}
 }
+.checklist-household,
 .checklist-cobalt,
 .checklist-bg-cobalt {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $cobalt !important;
+			    background-color: $cobalt!important;
 			}
 		}
 	}
 }
+.checklist-athletic,
 .checklist-eggplant,
 .checklist-bg-eggplant {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $eggplant !important;
+			    background-color: $eggplant!important;
 			}
 		}
 	}
 }
+.checklist-academic,
 .checklist-cerise,
 .checklist-bg-cerise {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $cerise !important;
+			    background-color: $cerise!important;
 			}
 		}
 	}
@@ -1901,7 +1910,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $campus !important;
+			    background-color: $campus!important;
 			}
 		}
 	}
@@ -2083,6 +2092,28 @@ progress, div[class*="progress"] {
 			@include round;
 			@include transition(.15s ease-in-out);
 			overflow: hidden;
+			background: white;
+		}
+	}
+	&.white {
+		color: white;
+		background: rgba(white,.4);
+		&::-webkit-progress-bar {
+			background: transparent;
+		}
+		&::-webkit-progress-value, span {
+			@include transition(.15s ease-in-out);
+			display: block;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+			height: 100%;
+			background: white;
+		}
+		span {
+			width: 0;
+		}
+		&::-moz-progress-bar {
+			@include transition(.15s ease-in-out);
 			background: white;
 		}
 	}
