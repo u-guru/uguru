@@ -47,6 +47,7 @@ course_fields['id'] = fields.Integer(attribute='id')
 course_fields['name'] = fields.String(attribute='short_name')
 course_fields['title'] = fields.String(attribute='full_name')
 course_fields['short_name'] = fields.String(attribute='short_name')
+course_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
 
 department_fields = {}
 department_fields['id'] = fields.Integer(attribute='id')
@@ -491,6 +492,8 @@ SessionSerializer = {
 CourseSerializer = {
     'title': fields.String(attribute='full_name'),
     'name': fields.String(attribute='short_name'),
+    'short_name': fields.String(attribute='short_name'),
+    'num_gurus': fields.Integer(attribute='num_gurus'),
     'id': fields.Integer
 }
 
