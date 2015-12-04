@@ -14,15 +14,14 @@
 			<li>
 				<div>
 					<h1 ng-if='user.total_earned.toString().length < 3'>${{user.total_earned}}</h1>
-					<h2 ng-if='user.total_earned.toString().length >= 3'>${{user.total_earned}}</h2>
+					<h1 ng-if='user.total_earned.toString().length >= 3'>${{user.total_earned}}</h1>
 					<span>Total <br/> Earned</span>
 				</div>
 			</li>
 			<li>
 				<div>
 					<h1 ng-if='!user.total_earned.length'>$0</h1>
-					<h1 ng-if='user.total_earned.length && user.total_earned.toString().length < 3'>${{user.balance}}</h1>
-					<h2 ng-if='user.total_earned.toString().length >= 3'>${{user.balance}}</h2>
+					<h1 ng-if='user.total_earned.length && user.total_earned.toString().length'>${{user.balance}}</h1>
 					<span>Current <br/> Balance</span>
 				</div>
 			</li>

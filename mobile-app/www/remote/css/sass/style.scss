@@ -1247,10 +1247,10 @@ section {
 	#profile {
 		overflow-y: scroll;
 		overflow-x: hidden;
-		height: calc(100% - 50px);
+		height: 100%;
 	}
 	#btn-edit-profile, #btn-save-profile {
-		bottom: 50px!important;
+		bottom: 0!important;
 		width: 100%;
 	}
 	#btn-save-profile button {
@@ -1284,7 +1284,7 @@ section {
 		}
 	}
 	#profile-desc {
-		height: 64.5%;
+		height: 50%;
 		.profile-slider {
 			position: relative;
 			height: 100%;
@@ -1294,11 +1294,11 @@ section {
 			#profile-intro {
 				position: relative;
 				margin: 0 15px;
-				height: calc(100% - 30px);
+				height: calc(100% - 20px);
 				div {
 					@include flex;
-					@include flex-center;
-					height: 100%;
+					height: calc(100% - 64px);
+					overflow: auto;
 					font-size: 20px;
 					font-weight: 600;
 				}
@@ -1584,21 +1584,21 @@ section {
 @media screen and (min-height:568px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 53%;
+			height: 41%;
 		}
 	}
 }
 @media screen and (min-height:667px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 45%;
+			height: 35%;
 		}
 	}
 }
 @media screen and (min-height:736px) {
 	.guru-profile-view {
 		#profile-desc {
-			height: 41%;
+			height: 31%;
 		}
 	}
 }
@@ -2091,275 +2091,13 @@ section {
 
 
 
-/* ---------- CREDIBILITY & RANKING */
-// CREDIBILITY
-.credibility-view {
-	header {
-		position: relative;
-	}
-	#credit-slider {
-		position: absolute;
-		bottom: 0;
-		height: calc(100% - 50px);
-		width: 100%;
-		ul {
-			@include listless;
-			@include flex;
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			overflow-x: auto;
-			li {
-				font-size: 14px;
-				font-weight: 400;
-				width: 100%;
-				text-align: center;
-				a {
-					display: block;
-					width: 92px;
-					padding-bottom: 10px;
-					border-bottom: 5px solid transparent;
-					color: white;
-					.credit-label {
-						font-weight: 400;
-					}
-					.credit-icon {
-						@include round;
-						@include flex;
-						@include flex-center;
-						@include flex-wrap;
-						margin: 0 auto 10px;
-						width: 50px;
-						height: 50px;
-						background: $slate;
-						svg {
-							@include svg-stroke(white, 4);
-							width: 100%;
-							height: 100%;
-							padding: 8px;
-						}
-					}
-				}
-				#{$links} {
-					border-bottom: 5px solid $cerise;
-					color: $cerise;
-					.credit-icon {
-						background: $cerise;
-					}
-				}
-				a.active, a:active {
-					@include opacity(.75);
-				}
-			}
-			.active {
-				&#credit-exp {
-					a {
-						border-bottom: 5px solid $shamrock;
-						color: $shamrock;
-						.credit-icon {
-							background: $shamrock;
-						}
-					}
-				}
-				&#credit-grades {
-					a {
-						border-bottom: 5px solid $moola;
-						color: $moola;
-						.credit-icon {
-							background: $moola;
-						}
-					}
-				}
-				&#credit-fb {
-					a {
-						border-bottom: 5px solid $facebook-light;
-						color: $facebook-light;
-						.credit-icon {
-							background: $facebook-light;
-						}
-					}
-				}
-				&#credit-phone {
-					a {
-						border-bottom: 5px solid $eggplant;
-						color: $eggplant;
-						.credit-icon {
-							background: $eggplant;
-						}
-					}
-				}
-				&#credit-email {
-					a {
-						border-bottom: 5px solid $lake;
-						color: $lake;
-						.credit-icon {
-							background: $lake;
-						}
-					}
-				}
-			}
-			#credit-exp {
-				#{$links} {
-					border-bottom: 5px solid $shamrock;
-					color: $shamrock;
-					.credit-icon {
-						background: $shamrock;
-					}
-				}
-			}
-			#credit-grades {
-				#{$links} {
-					border-bottom: 5px solid $moola;
-					color: $moola;
-					.credit-icon {
-						background: $moola;
-					}
-				}
-			}
-			#credit-fb {
-				#{$links} {
-					border-bottom: 5px solid $facebook-light;
-					color: $facebook-light;
-					.credit-icon {
-						background: $facebook-light;
-					}
-				}
-			}
-			#credit-phone {
-				#{$links} {
-					border-bottom: 5px solid $eggplant;
-					color: $eggplant;
-					.credit-icon {
-						background: $eggplant;
-					}
-				}
-			}
-			#credit-email {
-				#{$links} {
-					border-bottom: 5px solid $lake;
-					color: $lake;
-					.credit-icon {
-						background: $lake;
-					}
-				}
-			}
-		}
-	}
-	#credibility-content-wrapper {
-		position: relative;
-		background: $slate;
-		height: calc(100% / 3 * 2);
-		text-align: center;
-		.credit-content-slide {
-			display: none;
-			width: 100%;
-			height: 100%;
-			&.active {
-				display: block;
-			}
-			.semi-opaque {
-				@include opacity(.5);
-			}
-			.semi-opaque:active, .semi-opaque.active {
-				@include opacity(1);
-			}
-			> div {
-				height: 100%;
-				.credit-body {
-					height: calc(100% - 34px - 64px - 50px);
-					&:not(ul) {
-						@include flex;
-						@include flex-center;
-						@include flex-wrap;
-					}
-					p {
-						margin: 0;
-						padding: 15px;
-						font-size: 20px;
-					}
-					li {
-						display: block;
-						text-align: left;
-						height: 65px;
-						a {
-							.list-item-detail {
-								h2 {
-									font-size: 20px;
-									font-weight: 600;
-								}
-								span {
-									display: block;
-									font-size: 16px;
-									font-weight: 400;
-								}
-							}
-							svg {
-								@include svg-stroke-width(3);
-								padding: 15px;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-width:375px) {
-	.credibility-view {
-		#credit-slider {
-			ul {
-				li {
-					font-size: 16px;
-					a {
-						width: 108px;
-						.credit-icon {
-							width: 60px;
-							height: 60px;
-						}
-					}
-				}
-			}
-		}
-		#credibility-content-wrapper {
-			.credit-content-slide  {
-				> div {
-					.credit-body {
-						p {
-							font-size: 22px;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-width:414px) {
-	.credibility-view {
-		#credit-slider {
-			ul {
-				li {
-					font-size: 18px;
-					a {
-						display: block;
-						width: 118px;
-						.credit-icon {
-							width: 70px;
-							height: 70px;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-// GURU RANKING
+/* ---------- GURU HOME */
 .guru-view {
 	header {
 		@include flex;
 		-webkit-align-items: flex-end;
 		align-items: flex-end;
-		height: 25%;
+		height: calc(25% - 64px);
 		padding-bottom: 15px;
 		background: $charcoal;
 		h1 {
@@ -2370,43 +2108,45 @@ section {
 		}
 	}
 	.guru-home-notifications {
-			ul {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center-vertical;
-				width: 100%;
-				li {
-					padding-left: 15px;
-					padding-top: 5px;
-					a {
-						@include flex;
-						@include flex-center-vertical;
-						span {
-							display: block;
-						}
-						.notification-icon {
-							position: relative;
-							.notification-number {
-								@include round;
-								@include flex;
-								@include flex-center;
-								padding: 0 5px;
-								height: 28px;
-								min-width: 28px;
-								background: $gabrielle;
-								border: 3px solid $charcoal;
-								font-size: 14px;
-								font-weight: 600;
-							}
-						}
-						.notification-type {
-							padding-left: 5px;
+		ul {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center-vertical;
+			width: 100%;
+			height: 64px;
+			background: white;
+			li {
+				padding: 15px;
+				a {
+					@include flex;
+					@include flex-center;
+					color: $shamrock;
+					span {
+						display: block;
+					}
+					.notification-icon {
+						position: relative;
+						.notification-number {
+							@include round;
+							@include flex;
+							@include flex-center;
+							padding: 0 5px;
+							height: 28px;
+							min-width: 28px;
+							background: $gabrielle;
+							color: white;
+							font-size: 14px;
 							font-weight: 600;
-							font-size: 20px;
 						}
+					}
+					.notification-type {
+						padding-left: 10px;
+						font-weight: 600;
+						font-size: 20px;
 					}
 				}
 			}
+		}
 	}
 	.main {
 		height: 75%;
@@ -2478,6 +2218,8 @@ section {
 								height: 100%;
 							}
 							svg {
+								display: none;
+								margin: 0 auto;
 								padding: 0 15px 15px;
 								height: 100%;
 								path {
@@ -2486,6 +2228,9 @@ section {
 							}
 							#percentile {
 								@include center-xy;
+								+ svg {
+									display: block!important;
+								}
 								#percentile-ranking {
 									position: relative;
 									margin-top: -24px;
@@ -2783,205 +2528,7 @@ section {
 			}
 		}
 	}
-	// header {
-	// 	&::before {
-	// 		background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover;
-	// 	}
-	// }
-	// #guru-home-content {
-	// 	overflow: none!important;
-	// 	padding-bottom: 50px;
-	// }
-	// #guru-ranking {
-	// 	@include flex;
-	// 	@include flex-wrap;
-	// 	@include flex-center;
-	// 	position: relative;
-	// 	z-index: 9;
-	// 	width: 100%;
-	// 	height: calc(100% - 20px);
-	// 	margin-top: -20px;
-	// 	padding: 0 30px;
-	// 	> div {
-	// 		@include flex;
-	// 		@include flex-wrap;
-	// 		@include flex-center;
-	// 		-webkit-transform: scale(.8);
-	// 		-moz-transform: scale(.8);
-	// 		-ms-transform: scale(.8);
-	// 		-o-transform: scale(.8);
-	// 		transform: scale(.8);
-	// 	}
-	// 	.progressbar-text {
-	// 		display: none;
-	// 	}
-	// 	svg {
-	// 		@include round;
-	// 		* {
-	// 			stroke-linecap: round;
-	// 		}
-	// 	}
-	// 	#guru-chart {
-	// 		position: relative;
-	// 		width: 130px;
-	// 		#percentile {
-	// 			@include center-xy;
-	// 			#percentile-ranking {
-	// 				position: relative;
-	// 				font-size: 44px;
-	// 				font-weight: 600;
-	// 				line-height: 1;
-	// 				text-align: center;
-	//
-	// 				&::after {
-	// 					content: "th";
-	// 					display: block;
-	// 					position: absolute;
-	// 					top: -1px;
-	// 					right: -1px;
-	// 					font-size: 12px;
-	// 					font-weight: 400;
-	// 					line-height: 28px;
-	// 					text-transform: uppercase;
-	// 				}
-	// 			}
-	// 			#percentile-label {
-	// 				font-size: 12px;
-	// 				font-weight: 400;
-	// 				letter-spacing: 1px;
-	// 				line-height: 15px;
-	// 				text-transform: uppercase;
-	// 			}
-	// 		}
-	// 	}
-	// 	#guru-stats {
-	// 		padding-left: 30px;
-	// 		width: calc(100% - 130px);
-	// 		h2 {
-	// 			margin: 0 0 5px;
-	// 			font-size: 16px;
-	// 			font-weight: 600;
-	// 			text-transform: uppercase;
-	// 		}
-	// 		.stats-bar {
-	// 			line-height: 10px;
-	// 			font-size: 10px;
-	// 			height: 10px;
-	// 			margin-bottom: 7px;
-	// 			svg {
-	// 				height: 10px;
-	// 			}
-	// 		}
-	// 	}
-	// }
-	// .guru-tip-of-day-slide-box {
-	// 	height: calc(100% - 36px);
-	// 	.card {
-	// 		margin: 15px!important;
-	// 		height: calc(100% - 60px);
-	// 		padding: 0!important;
-	// 		background: $slate;
-	// 		border-radius: 5px;
-	// 		overflow: hidden;
-	// 		text-align: center;
-	// 		.card-content {
-	// 			@include flex;
-	// 			@include flex-wrap;
-	// 			@include flex-center;
-	// 			padding: 15px;
-	// 			height: calc(100% - 64px);
-	// 			svg {
-	// 				display: none;
-	// 				width: 100%;
-	// 				height: 100%;
-	// 				max-height: 70px;
-	// 				margin-bottom: 15px;
-	// 			}
-	// 			h2 {
-	// 				font-size: 24px;
-	// 				font-weight: 600;
-	// 			}
-	// 			p {
-	// 				margin: 10px 0 0;
-	// 				font-size: 18px;
-	// 			}
-	// 		}
-	// 		button {
-	// 			border-radius: 0 0 5px 5px;
-	// 		}
-	// 	}
-	// 	.slider-pager {
-	// 		bottom: 15px;
-	// 	}
-	// }
-	// #btn-launch-profile:active {
-	// 	@include opacity(1);
-	// 	background: $shamrock!important;
-	// }
-	// #btn-launch-profile + .guru-tip-of-day-slide-box {
-	// 	height: calc(100% - 50px);
-	// }
 }
-// @media screen and (min-height:540px) {
-// 	.guru-view {
-// 		#guru-ranking {
-// 			> div {
-// 				-webkit-transform: none;
-// 				-moz-transform: none;
-// 				-ms-transform: none;
-// 				-o-transform: none;
-// 				transform: none;
-// 			}
-// 			#guru-stats {
-// 				.stats-bar {
-// 					margin-bottom: 9px;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// @media screen and (min-height:568px) {
-// 	.guru-view {
-// 		.guru-tip-of-day-slide-box {
-// 			.card {
-// 				.card-content {
-// 					h2 {
-// 						font-size: 28px;
-// 					}
-// 					p {
-// 						font-size: 22px;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// @media screen and (min-height:640px) {
-// 	.guru-view {
-// 		.guru-tip-of-day-slide-box {
-// 			.card {
-// 				.card-content {
-// 					svg {
-// 						display: block;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// @media screen and (min-width:414px) {
-// 	.guru-view {
-// 		#guru-ranking {
-// 			> div {
-// 				-webkit-transform: scale(1.2);
-// 				-moz-transform: scale(1.2);
-// 				-ms-transform: scale(1.2);
-// 				-o-transform: scale(1.2);
-// 				transform: scale(1.2);
-// 			}
-// 		}
-// 	}
-// }
 
 
 

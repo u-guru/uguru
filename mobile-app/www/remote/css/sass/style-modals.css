@@ -276,23 +276,30 @@
   background: white;
 }
 
-.guru-mode .uguru-popup-content .content-wrapper .content-body h2, .guru-mode .uguru-popup-content .content-wrapper .content-body p {
+.guru-mode .uguru-popup-content .content-wrapper .content-body h2,
+.guru-mode .uguru-popup-content .content-wrapper .content-body p {
   color: white;
 }
 
-#confirm-phone-uguru-popup .svg-logo-wrapper svg, #confirm-phone-uguru-popup button {
+#confirm-phone-uguru-popup .svg-logo-wrapper svg,
+#confirm-phone-uguru-popup button {
   background: #9A5BC5 !important;
 }
 
-#confirm-email-uguru-popup .svg-logo-wrapper svg, #confirm-email-uguru-popup button {
+#confirm-email-uguru-popup .svg-logo-wrapper svg,
+#confirm-email-uguru-popup button {
   background: #50A5DD !important;
 }
 
-.terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
+.terms-modal header h1,
+.faq-modal header h1,
+.support-modal header h1 {
   color: white;
 }
 
-.terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
+.terms-modal ion-content,
+.faq-modal ion-content,
+.support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px;
 }
@@ -505,7 +512,8 @@
   background: #9A5BC5;
 }
 
-#contact-type #contact-type-list li:nth-child(1), #contact-type #contact-type-list li:nth-child(2) {
+#contact-type #contact-type-list li:nth-child(1),
+#contact-type #contact-type-list li:nth-child(2) {
   padding-top: 0;
 }
 
@@ -792,9 +800,13 @@
 }
 
 #experience-modal .main #exp-input,
-#experience-modal .main #guru-intro-input,
-#guru-introduction-modal .main #exp-input, #guru-introduction-modal .main #guru-intro-input {
+#guru-introduction-modal .main #exp-input {
   height: calc(100% - 278px);
+}
+
+#experience-modal .main #guru-intro-input,
+#guru-introduction-modal .main #guru-intro-input {
+  height: 100%;
 }
 
 #experience-modal .main #exp-input.removable,
@@ -866,7 +878,8 @@
   text-transform: uppercase;
 }
 
-.signup-modal #account-form #tos:active, .signup-modal #account-form #tos:focus {
+.signup-modal #account-form #tos:active,
+.signup-modal #account-form #tos:focus {
   color: #69B3A5;
 }
 
@@ -898,7 +911,9 @@
   line-height: 1.25;
 }
 
-.terms-modal p, .terms-modal ol, .terms-modal ul {
+.terms-modal p,
+.terms-modal ol,
+.terms-modal ul {
   font-size: 14px;
   margin: 10px 0;
   line-height: 1.25;
@@ -1130,15 +1145,15 @@
 }
 
 .request-modal #request-subcategories .request-subcategories li:nth-child(1) .select-subcategory {
-  background: url(../../img/subcategories/session.png) center center/cover, url(/static/remote/img/subcategories/session.png) center center/cover;
+  background: url("../../img/subcategories/session.png") center center/cover, url("/static/remote/img/subcategories/session.png") center center/cover;
 }
 
 .request-modal #request-subcategories .request-subcategories li:nth-child(2) .select-subcategory {
-  background: url(../../img/subcategories/question.png) center center/cover, url(/static/remote/img/subcategories/question.png) center center/cover;
+  background: url("../../img/subcategories/question.png") center center/cover, url("/static/remote/img/subcategories/question.png") center center/cover;
 }
 
 .request-modal #request-subcategories .request-subcategories li:nth-child(3) .select-subcategory {
-  background: url(../../img/subcategories/homework.png) center center/cover, url(/static/remote/img/subcategories/homework.png) center center/cover;
+  background: url("../../img/subcategories/homework.png") center center/cover, url("/static/remote/img/subcategories/homework.png") center center/cover;
 }
 
 .request-modal #request-subcategories .request-subcategories li:nth-child(4) {
@@ -1146,7 +1161,7 @@
 }
 
 .request-modal #request-subcategories .request-subcategories li:nth-child(4) .select-subcategory {
-  background: url(../../img/subcategories/study.png) center center/cover, url(/static/remote/img/subcategories/study.png) center center/cover;
+  background: url("../../img/subcategories/study.png") center center/cover, url("/static/remote/img/subcategories/study.png") center center/cover;
 }
 
 .request-modal #request-subcategories .request-subcategories li .select-subcategory {
@@ -1214,7 +1229,8 @@
   cursor: pointer;
 }
 
-.request-modal .request-content input[type="text"], .request-modal .request-content textarea {
+.request-modal .request-content input[type="text"],
+.request-modal .request-content textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1230,43 +1246,52 @@
   font-weight: 300;
 }
 
-.request-modal .request-content input[type="text"]::-ms-expand, .request-modal .request-content textarea::-ms-expand {
+.request-modal .request-content input[type="text"]::-ms-expand,
+.request-modal .request-content textarea::-ms-expand {
   display: none;
 }
 
-.request-modal .request-content input[type="text"]::-webkit-input-placeholder, .request-modal .request-content textarea::-webkit-input-placeholder {
+.request-modal .request-content input[type="text"]::-webkit-input-placeholder,
+.request-modal .request-content textarea::-webkit-input-placeholder {
   font-weight: 300 !important;
   color: rgba(64, 72, 75, 0.5);
 }
 
-.request-modal .request-content input[type="text"]:-moz-placeholder, .request-modal .request-content textarea:-moz-placeholder {
+.request-modal .request-content input[type="text"]:-moz-placeholder,
+.request-modal .request-content textarea:-moz-placeholder {
   font-weight: 300 !important;
   color: rgba(64, 72, 75, 0.5);
 }
 
-.request-modal .request-content input[type="text"]::-moz-placeholder, .request-modal .request-content textarea::-moz-placeholder {
+.request-modal .request-content input[type="text"]::-moz-placeholder,
+.request-modal .request-content textarea::-moz-placeholder {
   font-weight: 300 !important;
   color: rgba(64, 72, 75, 0.5);
 }
 
-.request-modal .request-content input[type="text"]:-ms-input-placeholder, .request-modal .request-content textarea:-ms-input-placeholder {
+.request-modal .request-content input[type="text"]:-ms-input-placeholder,
+.request-modal .request-content textarea:-ms-input-placeholder {
   font-weight: 300 !important;
   color: rgba(64, 72, 75, 0.5);
 }
 
-.request-modal .request-content input[type="text"]:focus::-webkit-input-placeholder, .request-modal .request-content textarea:focus::-webkit-input-placeholder {
+.request-modal .request-content input[type="text"]:focus::-webkit-input-placeholder,
+.request-modal .request-content textarea:focus::-webkit-input-placeholder {
   color: #40484B;
 }
 
-.request-modal .request-content input[type="text"]:focus:-moz-placeholder, .request-modal .request-content textarea:focus:-moz-placeholder {
+.request-modal .request-content input[type="text"]:focus:-moz-placeholder,
+.request-modal .request-content textarea:focus:-moz-placeholder {
   color: #40484B;
 }
 
-.request-modal .request-content input[type="text"]:focus::-moz-placeholder, .request-modal .request-content textarea:focus::-moz-placeholder {
+.request-modal .request-content input[type="text"]:focus::-moz-placeholder,
+.request-modal .request-content textarea:focus::-moz-placeholder {
   color: #40484B;
 }
 
-.request-modal .request-content input[type="text"]:focus:-ms-input-placeholder, .request-modal .request-content textarea:focus:-ms-input-placeholder {
+.request-modal .request-content input[type="text"]:focus:-ms-input-placeholder,
+.request-modal .request-content textarea:focus:-ms-input-placeholder {
   color: #40484B;
 }
 
@@ -1349,7 +1374,7 @@
   left: 0;
   width: 200%;
   height: 200%;
-  background: url(../../img/map-small.png) center center/cover, url(/static/remote/img/map-small.png) center center/cover;
+  background: url("../../img/map-small.png") center center/cover, url("/static/remote/img/map-small.png") center center/cover;
 }
 
 .request-modal .request-content .request-loc .request-address > span {
@@ -1406,12 +1431,14 @@
   background-color: #f8f8f8;
 }
 
-.request-modal .request-content .request-time .request-time-needed, .request-modal .request-content .request-time .request-time-avail {
+.request-modal .request-content .request-time .request-time-needed,
+.request-modal .request-content .request-time .request-time-avail {
   border-left: 2px solid #F1F1F1;
   border-right: 2px solid #F1F1F1;
 }
 
-.request-modal .request-content .request-time .request-time-needed h2, .request-modal .request-content .request-time .request-time-avail h2 {
+.request-modal .request-content .request-time .request-time-needed h2,
+.request-modal .request-content .request-time .request-time-avail h2 {
   font-weight: 600;
 }
 
@@ -1725,28 +1752,33 @@
   color: rgba(43, 50, 52, 0.5);
 }
 
-.student-courses-view #course header .onboarding-search input:active, .student-courses-view #course header .onboarding-search input:focus {
+.student-courses-view #course header .onboarding-search input:active,
+.student-courses-view #course header .onboarding-search input:focus {
   border-bottom-color: #2B3234;
 }
 
-.student-courses-view #course header .onboarding-search input:active::-webkit-input-placeholder, .student-courses-view #course header .onboarding-search input:focus::-webkit-input-placeholder {
+.student-courses-view #course header .onboarding-search input:active::-webkit-input-placeholder,
+.student-courses-view #course header .onboarding-search input:focus::-webkit-input-placeholder {
   color: #2B3234;
 }
 
-.student-courses-view #course header .onboarding-search input:active:-moz-placeholder, .student-courses-view #course header .onboarding-search input:focus:-moz-placeholder {
+.student-courses-view #course header .onboarding-search input:active:-moz-placeholder,
+.student-courses-view #course header .onboarding-search input:focus:-moz-placeholder {
   color: #2B3234;
 }
 
-.student-courses-view #course header .onboarding-search input:active::-moz-placeholder, .student-courses-view #course header .onboarding-search input:focus::-moz-placeholder {
+.student-courses-view #course header .onboarding-search input:active::-moz-placeholder,
+.student-courses-view #course header .onboarding-search input:focus::-moz-placeholder {
   color: #2B3234;
 }
 
-.student-courses-view #course header .onboarding-search input:active:-ms-input-placeholder, .student-courses-view #course header .onboarding-search input:focus:-ms-input-placeholder {
+.student-courses-view #course header .onboarding-search input:active:-ms-input-placeholder,
+.student-courses-view #course header .onboarding-search input:focus:-ms-input-placeholder {
   color: #2B3234;
 }
 
 .student-courses-view #course header .onboarding-search:before {
-  background: url(../../img/svg/search-dark.svg) no-repeat center center/cover, url(/static/remote/img/svg/search-dark.svg) center/cover no-repeat;
+  background: url("../../img/svg/search-dark.svg") no-repeat center center/cover, url("/static/remote/img/svg/search-dark.svg") center/cover no-repeat;
 }
 
 .student-courses-view #courses-list.onboarding-list ul li label {
@@ -1802,11 +1834,13 @@
   width: calc(100% - 60px);
 }
 
-.mobile-mode .sidebar-layout-list li div h3, .mobile-mode .sidebar-layout-list li div span {
+.mobile-mode .sidebar-layout-list li div h3,
+.mobile-mode .sidebar-layout-list li div span {
   font-weight: 400;
 }
 
-.mobile-mode .sidebar-layout-list li div h3 b, .mobile-mode .sidebar-layout-list li div span b {
+.mobile-mode .sidebar-layout-list li div h3 b,
+.mobile-mode .sidebar-layout-list li div span b {
   font-weight: 600;
 }
 
@@ -1949,6 +1983,307 @@
   line-height: 1.2;
 }
 
+.credibility-view header {
+  position: relative;
+}
+
+.credibility-view #credit-slider {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.credibility-view #credit-slider ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.credibility-view #credit-slider ul li {
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+}
+
+.credibility-view #credit-slider ul li a {
+  display: block;
+  width: 92px;
+  padding-bottom: 10px;
+  border-bottom: 5px solid transparent;
+  color: white;
+}
+
+.credibility-view #credit-slider ul li a .credit-label {
+  font-weight: 400;
+}
+
+.credibility-view #credit-slider ul li a .credit-icon {
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin: 0 auto 10px;
+  width: 50px;
+  height: 50px;
+  background: #40484B;
+}
+
+.credibility-view #credit-slider ul li a .credit-icon svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+}
+
+.credibility-view #credit-slider ul li a:active, .credibility-view #credit-slider ul li a:focus, .credibility-view #credit-slider ul li a:hover {
+  border-bottom: 5px solid #e6389b;
+  color: #e6389b;
+}
+
+.credibility-view #credit-slider ul li a:active .credit-icon, .credibility-view #credit-slider ul li a:focus .credit-icon, .credibility-view #credit-slider ul li a:hover .credit-icon {
+  background: #e6389b;
+}
+
+.credibility-view #credit-slider ul li a.active, .credibility-view #credit-slider ul li a:active {
+  filter: alpha(opacity=75);
+  opacity: 0.75;
+}
+
+.credibility-view #credit-slider ul .active#credit-exp a {
+  border-bottom: 5px solid #69B3A5;
+  color: #69B3A5;
+}
+
+.credibility-view #credit-slider ul .active#credit-exp a .credit-icon {
+  background: #69B3A5;
+}
+
+.credibility-view #credit-slider ul .active#credit-grades a {
+  border-bottom: 5px solid #81B566;
+  color: #81B566;
+}
+
+.credibility-view #credit-slider ul .active#credit-grades a .credit-icon {
+  background: #81B566;
+}
+
+.credibility-view #credit-slider ul .active#credit-fb a {
+  border-bottom: 5px solid #6279B1;
+  color: #6279B1;
+}
+
+.credibility-view #credit-slider ul .active#credit-fb a .credit-icon {
+  background: #6279B1;
+}
+
+.credibility-view #credit-slider ul .active#credit-phone a {
+  border-bottom: 5px solid #9A5BC5;
+  color: #9A5BC5;
+}
+
+.credibility-view #credit-slider ul .active#credit-phone a .credit-icon {
+  background: #9A5BC5;
+}
+
+.credibility-view #credit-slider ul .active#credit-email a {
+  border-bottom: 5px solid #50A5DD;
+  color: #50A5DD;
+}
+
+.credibility-view #credit-slider ul .active#credit-email a .credit-icon {
+  background: #50A5DD;
+}
+
+.credibility-view #credit-slider ul #credit-exp a:active, .credibility-view #credit-slider ul #credit-exp a:focus, .credibility-view #credit-slider ul #credit-exp a:hover {
+  border-bottom: 5px solid #69B3A5;
+  color: #69B3A5;
+}
+
+.credibility-view #credit-slider ul #credit-exp a:active .credit-icon, .credibility-view #credit-slider ul #credit-exp a:focus .credit-icon, .credibility-view #credit-slider ul #credit-exp a:hover .credit-icon {
+  background: #69B3A5;
+}
+
+.credibility-view #credit-slider ul #credit-grades a:active, .credibility-view #credit-slider ul #credit-grades a:focus, .credibility-view #credit-slider ul #credit-grades a:hover {
+  border-bottom: 5px solid #81B566;
+  color: #81B566;
+}
+
+.credibility-view #credit-slider ul #credit-grades a:active .credit-icon, .credibility-view #credit-slider ul #credit-grades a:focus .credit-icon, .credibility-view #credit-slider ul #credit-grades a:hover .credit-icon {
+  background: #81B566;
+}
+
+.credibility-view #credit-slider ul #credit-fb a:active, .credibility-view #credit-slider ul #credit-fb a:focus, .credibility-view #credit-slider ul #credit-fb a:hover {
+  border-bottom: 5px solid #6279B1;
+  color: #6279B1;
+}
+
+.credibility-view #credit-slider ul #credit-fb a:active .credit-icon, .credibility-view #credit-slider ul #credit-fb a:focus .credit-icon, .credibility-view #credit-slider ul #credit-fb a:hover .credit-icon {
+  background: #6279B1;
+}
+
+.credibility-view #credit-slider ul #credit-phone a:active, .credibility-view #credit-slider ul #credit-phone a:focus, .credibility-view #credit-slider ul #credit-phone a:hover {
+  border-bottom: 5px solid #9A5BC5;
+  color: #9A5BC5;
+}
+
+.credibility-view #credit-slider ul #credit-phone a:active .credit-icon, .credibility-view #credit-slider ul #credit-phone a:focus .credit-icon, .credibility-view #credit-slider ul #credit-phone a:hover .credit-icon {
+  background: #9A5BC5;
+}
+
+.credibility-view #credit-slider ul #credit-email a:active, .credibility-view #credit-slider ul #credit-email a:focus, .credibility-view #credit-slider ul #credit-email a:hover {
+  border-bottom: 5px solid #50A5DD;
+  color: #50A5DD;
+}
+
+.credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
+  background: #50A5DD;
+}
+
+.credibility-view #credibility-content-wrapper {
+  position: relative;
+  background: #40484B;
+  height: calc(100% / 3 * 2);
+  text-align: center;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide.active {
+  display: block;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque:active, .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque.active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide > div {
+  height: 100%;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body {
+  height: calc(100% - 98px);
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body:not(ul) {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body p {
+  margin: 0;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body li {
+  display: block;
+  text-align: left;
+  height: 65px;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body li a .list-item-detail h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body li a .list-item-detail span {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body li a svg {
+  fill: none;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  padding: 15px;
+}
+
+@media screen and (min-width: 375px) {
+  .credibility-view #credit-slider ul li {
+    font-size: 16px;
+  }
+  .credibility-view #credit-slider ul li a {
+    width: 108px;
+  }
+  .credibility-view #credit-slider ul li a .credit-icon {
+    width: 60px;
+    height: 60px;
+  }
+  .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body p {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  .credibility-view #credit-slider ul li {
+    font-size: 18px;
+  }
+  .credibility-view #credit-slider ul li a {
+    display: block;
+    width: 118px;
+  }
+  .credibility-view #credit-slider ul li a .credit-icon {
+    width: 70px;
+    height: 70px;
+  }
+}
+
 .mobile-messages-container {
   /*#userMessagesView {*/
   /* allows the bar-footer to be elastic /*
@@ -2068,19 +2403,25 @@
   border-radius: 12px;
 }
 
-.mobile-messages-container #desktop-messaging, .mobile-messages-container #messenger-content, .mobile-messages-container .guru-message-container {
+.mobile-messages-container #desktop-messaging,
+.mobile-messages-container #messenger-content,
+.mobile-messages-container .guru-message-container {
   /* fixes an ios bug bear */
   /* add this to keep your footer buttons down
 		at the bottom as the textarea resizes */
 }
 
-.mobile-messages-container #desktop-messaging #messenger-sidebar ul li a span.messenger-icon img, .mobile-messages-container #messenger-content #messenger-sidebar ul li a span.messenger-icon img, .mobile-messages-container .guru-message-container #messenger-sidebar ul li a span.messenger-icon img {
+.mobile-messages-container #desktop-messaging #messenger-sidebar ul li a span.messenger-icon img,
+.mobile-messages-container #messenger-content #messenger-sidebar ul li a span.messenger-icon img,
+.mobile-messages-container .guru-message-container #messenger-sidebar ul li a span.messenger-icon img {
   width: 50px;
   height: 50px;
   border-radius: 1000px;
 }
 
-.mobile-messages-container #desktop-messaging .message-send-button, .mobile-messages-container #messenger-content .message-send-button, .mobile-messages-container .guru-message-container .message-send-button {
+.mobile-messages-container #desktop-messaging .message-send-button,
+.mobile-messages-container #messenger-content .message-send-button,
+.mobile-messages-container .guru-message-container .message-send-button {
   position: absolute;
   background: #69B3A5;
   width: 10%;
@@ -2088,42 +2429,58 @@
   right: 0;
 }
 
-.mobile-messages-container #desktop-messaging .bar-footer, .mobile-messages-container #messenger-content .bar-footer, .mobile-messages-container .guru-message-container .bar-footer {
+.mobile-messages-container #desktop-messaging .bar-footer,
+.mobile-messages-container #messenger-content .bar-footer,
+.mobile-messages-container .guru-message-container .bar-footer {
   overflow: visible !important;
 }
 
-.mobile-messages-container #desktop-messaging .bar-footer textarea, .mobile-messages-container #messenger-content .bar-footer textarea, .mobile-messages-container .guru-message-container .bar-footer textarea {
+.mobile-messages-container #desktop-messaging .bar-footer textarea,
+.mobile-messages-container #messenger-content .bar-footer textarea,
+.mobile-messages-container .guru-message-container .bar-footer textarea {
   resize: none;
   height: 25px;
 }
 
-.mobile-messages-container #desktop-messaging button.ion-android-send, .mobile-messages-container #messenger-content button.ion-android-send, .mobile-messages-container .guru-message-container button.ion-android-send {
+.mobile-messages-container #desktop-messaging button.ion-android-send,
+.mobile-messages-container #messenger-content button.ion-android-send,
+.mobile-messages-container .guru-message-container button.ion-android-send {
   padding-top: 2px;
 }
 
-.mobile-messages-container #desktop-messaging .footer-btn-wrap, .mobile-messages-container #messenger-content .footer-btn-wrap, .mobile-messages-container .guru-message-container .footer-btn-wrap {
+.mobile-messages-container #desktop-messaging .footer-btn-wrap,
+.mobile-messages-container #messenger-content .footer-btn-wrap,
+.mobile-messages-container .guru-message-container .footer-btn-wrap {
   position: relative;
   height: 100%;
   width: 50px;
   top: 0;
 }
 
-.mobile-messages-container #desktop-messaging .footer-btn-wrap button, .mobile-messages-container #messenger-content .footer-btn-wrap button, .mobile-messages-container .guru-message-container .footer-btn-wrap button {
+.mobile-messages-container #desktop-messaging .footer-btn-wrap button,
+.mobile-messages-container #messenger-content .footer-btn-wrap button,
+.mobile-messages-container .guru-message-container .footer-btn-wrap button {
   height: 100%;
   padding: 0;
   background: transparent;
 }
 
-.mobile-messages-container #desktop-messaging .footer-btn-wrap button svg, .mobile-messages-container #messenger-content .footer-btn-wrap button svg, .mobile-messages-container .guru-message-container .footer-btn-wrap button svg {
+.mobile-messages-container #desktop-messaging .footer-btn-wrap button svg,
+.mobile-messages-container #messenger-content .footer-btn-wrap button svg,
+.mobile-messages-container .guru-message-container .footer-btn-wrap button svg {
   height: 100%;
 }
 
-.mobile-messages-container #desktop-messaging .footer-btn, .mobile-messages-container #messenger-content .footer-btn, .mobile-messages-container .guru-message-container .footer-btn {
+.mobile-messages-container #desktop-messaging .footer-btn,
+.mobile-messages-container #messenger-content .footer-btn,
+.mobile-messages-container .guru-message-container .footer-btn {
   position: absolute !important;
   bottom: 0;
 }
 
-.mobile-messages-container #desktop-messaging img.profile-pic, .mobile-messages-container #messenger-content img.profile-pic, .mobile-messages-container .guru-message-container img.profile-pic {
+.mobile-messages-container #desktop-messaging img.profile-pic,
+.mobile-messages-container #messenger-content img.profile-pic,
+.mobile-messages-container .guru-message-container img.profile-pic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -2131,42 +2488,60 @@
   bottom: 10px;
 }
 
-.mobile-messages-container #desktop-messaging img.profile-pic.left, .mobile-messages-container #messenger-content img.profile-pic.left, .mobile-messages-container .guru-message-container img.profile-pic.left {
+.mobile-messages-container #desktop-messaging img.profile-pic.left,
+.mobile-messages-container #messenger-content img.profile-pic.left,
+.mobile-messages-container .guru-message-container img.profile-pic.left {
   left: 10px;
 }
 
-.mobile-messages-container #desktop-messaging img.profile-pic.right, .mobile-messages-container #messenger-content img.profile-pic.right, .mobile-messages-container .guru-message-container img.profile-pic.right {
+.mobile-messages-container #desktop-messaging img.profile-pic.right,
+.mobile-messages-container #messenger-content img.profile-pic.right,
+.mobile-messages-container .guru-message-container img.profile-pic.right {
   right: 10px;
 }
 
-.mobile-messages-container #desktop-messaging .ion-email, .mobile-messages-container #messenger-content .ion-email, .mobile-messages-container .guru-message-container .ion-email {
+.mobile-messages-container #desktop-messaging .ion-email,
+.mobile-messages-container #messenger-content .ion-email,
+.mobile-messages-container .guru-message-container .ion-email {
   float: right;
   font-size: 32px;
   vertical-align: middle;
 }
 
-.mobile-messages-container #desktop-messaging .message, .mobile-messages-container #messenger-content .message, .mobile-messages-container .guru-message-container .message {
+.mobile-messages-container #desktop-messaging .message,
+.mobile-messages-container #messenger-content .message,
+.mobile-messages-container .guru-message-container .message {
   font-size: 14px;
 }
 
-.mobile-messages-container #desktop-messaging .message-detail, .mobile-messages-container #messenger-content .message-detail, .mobile-messages-container .guru-message-container .message-detail {
+.mobile-messages-container #desktop-messaging .message-detail,
+.mobile-messages-container #messenger-content .message-detail,
+.mobile-messages-container .guru-message-container .message-detail {
   white-space: nowrap;
   font-size: 14px;
 }
 
-.mobile-messages-container #desktop-messaging .bar.item-input-inset .item-input-wrapper input, .mobile-messages-container #messenger-content .bar.item-input-inset .item-input-wrapper input, .mobile-messages-container .guru-message-container .bar.item-input-inset .item-input-wrapper input {
+.mobile-messages-container #desktop-messaging .bar.item-input-inset .item-input-wrapper input,
+.mobile-messages-container #messenger-content .bar.item-input-inset .item-input-wrapper input,
+.mobile-messages-container .guru-message-container .bar.item-input-inset .item-input-wrapper input {
   width: 100% !important;
 }
 
-.mobile-messages-container #desktop-messaging .message-wrapper, .mobile-messages-container #messenger-content .message-wrapper, .mobile-messages-container .guru-message-container .message-wrapper {
+.mobile-messages-container #desktop-messaging .message-wrapper,
+.mobile-messages-container #messenger-content .message-wrapper,
+.mobile-messages-container .guru-message-container .message-wrapper {
   position: relative;
 }
 
-.mobile-messages-container #desktop-messaging .message-wrapper:last-child, .mobile-messages-container #messenger-content .message-wrapper:last-child, .mobile-messages-container .guru-message-container .message-wrapper:last-child {
+.mobile-messages-container #desktop-messaging .message-wrapper:last-child,
+.mobile-messages-container #messenger-content .message-wrapper:last-child,
+.mobile-messages-container .guru-message-container .message-wrapper:last-child {
   margin-bottom: 10px;
 }
 
-.mobile-messages-container #desktop-messaging .chat-bubble, .mobile-messages-container #messenger-content .chat-bubble, .mobile-messages-container .guru-message-container .chat-bubble {
+.mobile-messages-container #desktop-messaging .chat-bubble,
+.mobile-messages-container #messenger-content .chat-bubble,
+.mobile-messages-container .guru-message-container .chat-bubble {
   border-radius: 5px;
   display: inline-block;
   padding: 10px 18px;
@@ -2175,7 +2550,9 @@
   max-width: 80%;
 }
 
-.mobile-messages-container #desktop-messaging .chat-bubble:before, .mobile-messages-container #messenger-content .chat-bubble:before, .mobile-messages-container .guru-message-container .chat-bubble:before {
+.mobile-messages-container #desktop-messaging .chat-bubble:before,
+.mobile-messages-container #messenger-content .chat-bubble:before,
+.mobile-messages-container .guru-message-container .chat-bubble:before {
   content: "\00a0";
   display: block;
   height: 16px;
@@ -2184,37 +2561,49 @@
   bottom: -7.5px;
 }
 
-.mobile-messages-container #desktop-messaging .chat-bubble.left, .mobile-messages-container #messenger-content .chat-bubble.left, .mobile-messages-container .guru-message-container .chat-bubble.left {
+.mobile-messages-container #desktop-messaging .chat-bubble.left,
+.mobile-messages-container #messenger-content .chat-bubble.left,
+.mobile-messages-container .guru-message-container .chat-bubble.left {
   background-color: #F1F1F1;
   float: left;
   margin-left: 55px;
 }
 
-.mobile-messages-container #desktop-messaging .chat-bubble.left:before, .mobile-messages-container #messenger-content .chat-bubble.left:before, .mobile-messages-container .guru-message-container .chat-bubble.left:before {
+.mobile-messages-container #desktop-messaging .chat-bubble.left:before,
+.mobile-messages-container #messenger-content .chat-bubble.left:before,
+.mobile-messages-container .guru-message-container .chat-bubble.left:before {
   background-color: #F1F1F1;
   left: 10px;
   -webkit-transform: rotate(70deg) skew(5deg);
 }
 
-.mobile-messages-container #desktop-messaging .chat-bubble.right, .mobile-messages-container #messenger-content .chat-bubble.right, .mobile-messages-container .guru-message-container .chat-bubble.right {
+.mobile-messages-container #desktop-messaging .chat-bubble.right,
+.mobile-messages-container #messenger-content .chat-bubble.right,
+.mobile-messages-container .guru-message-container .chat-bubble.right {
   background-color: #55A4B7;
   color: white;
   float: right;
   margin-right: 55px;
 }
 
-.mobile-messages-container #desktop-messaging .chat-bubble.right:before, .mobile-messages-container #messenger-content .chat-bubble.right:before, .mobile-messages-container .guru-message-container .chat-bubble.right:before {
+.mobile-messages-container #desktop-messaging .chat-bubble.right:before,
+.mobile-messages-container #messenger-content .chat-bubble.right:before,
+.mobile-messages-container .guru-message-container .chat-bubble.right:before {
   background-color: #55A4B7;
   right: 10px;
   -webkit-transform: rotate(118deg) skew(-5deg);
 }
 
-.mobile-messages-container #desktop-messaging .chat-bubble.right a.autolinker, .mobile-messages-container #messenger-content .chat-bubble.right a.autolinker, .mobile-messages-container .guru-message-container .chat-bubble.right a.autolinker {
+.mobile-messages-container #desktop-messaging .chat-bubble.right a.autolinker,
+.mobile-messages-container #messenger-content .chat-bubble.right a.autolinker,
+.mobile-messages-container .guru-message-container .chat-bubble.right a.autolinker {
   color: white;
   font-weight: bold;
 }
 
-.mobile-messages-container #desktop-messaging .user-messages-top-icon, .mobile-messages-container #messenger-content .user-messages-top-icon, .mobile-messages-container .guru-message-container .user-messages-top-icon {
+.mobile-messages-container #desktop-messaging .user-messages-top-icon,
+.mobile-messages-container #messenger-content .user-messages-top-icon,
+.mobile-messages-container .guru-message-container .user-messages-top-icon {
   font-size: 28px;
   display: inline-block;
   vertical-align: middle;
@@ -2223,26 +2612,45 @@
   right: 5px;
 }
 
-.mobile-messages-container #desktop-messaging .msg-header-username, .mobile-messages-container #messenger-content .msg-header-username, .mobile-messages-container .guru-message-container .msg-header-username {
+.mobile-messages-container #desktop-messaging .msg-header-username,
+.mobile-messages-container #messenger-content .msg-header-username,
+.mobile-messages-container .guru-message-container .msg-header-username {
   display: inline-block;
   vertical-align: middle;
   position: relative;
   top: -3px;
 }
 
-.mobile-messages-container #desktop-messaging input, .mobile-messages-container #desktop-messaging textarea, .mobile-messages-container #desktop-messaging .item-input, .mobile-messages-container #desktop-messaging .item-input-wrapper, .mobile-messages-container #messenger-content input, .mobile-messages-container #messenger-content textarea, .mobile-messages-container #messenger-content .item-input, .mobile-messages-container #messenger-content .item-input-wrapper, .mobile-messages-container .guru-message-container input, .mobile-messages-container .guru-message-container textarea, .mobile-messages-container .guru-message-container .item-input, .mobile-messages-container .guru-message-container .item-input-wrapper {
+.mobile-messages-container #desktop-messaging input,
+.mobile-messages-container #desktop-messaging textarea,
+.mobile-messages-container #desktop-messaging .item-input,
+.mobile-messages-container #desktop-messaging .item-input-wrapper,
+.mobile-messages-container #messenger-content input,
+.mobile-messages-container #messenger-content textarea,
+.mobile-messages-container #messenger-content .item-input,
+.mobile-messages-container #messenger-content .item-input-wrapper,
+.mobile-messages-container .guru-message-container input,
+.mobile-messages-container .guru-message-container textarea,
+.mobile-messages-container .guru-message-container .item-input,
+.mobile-messages-container .guru-message-container .item-input-wrapper {
   background-color: #F1F1F1 !important;
 }
 
-.mobile-messages-container #desktop-messaging .bold, .mobile-messages-container #messenger-content .bold, .mobile-messages-container .guru-message-container .bold {
+.mobile-messages-container #desktop-messaging .bold,
+.mobile-messages-container #messenger-content .bold,
+.mobile-messages-container .guru-message-container .bold {
   font-weight: bold;
 }
 
-.mobile-messages-container #desktop-messaging .cf, .mobile-messages-container #messenger-content .cf, .mobile-messages-container .guru-message-container .cf {
+.mobile-messages-container #desktop-messaging .cf,
+.mobile-messages-container #messenger-content .cf,
+.mobile-messages-container .guru-message-container .cf {
   clear: both !important;
 }
 
-.mobile-messages-container #desktop-messaging a.autolinker, .mobile-messages-container #messenger-content a.autolinker, .mobile-messages-container .guru-message-container a.autolinker {
+.mobile-messages-container #desktop-messaging a.autolinker,
+.mobile-messages-container #messenger-content a.autolinker,
+.mobile-messages-container .guru-message-container a.autolinker {
   color: #55A4B7;
   text-decoration: none;
 }
