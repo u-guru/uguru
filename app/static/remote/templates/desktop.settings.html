@@ -1,12 +1,10 @@
 <ion-view class='uguru-view guru-view settings-view'>
-	<main id='desktop-settings' class="desktop-mode student-mode" ng-show='isDesktopMode()'>
+	<a href='#/guru-home' nav-direction="enter" class="cta-modal-close close-button m20xy absolute full-x left-0" style='top:80px; color:white; z-index:1000;'>
+		Back
+	</a>
+	<main id='desktop-settings' class="desktop-mode ng-class{'student-mode':!root.vars.guru_mode}" ng-show='isDesktopMode()'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default">
-			<a ng-click='desktopGoBack()' class='back-icon-settings absolute left-0'>
-				<svg viewBox="0 0 100 100">
-	    				<path d="M68,86 L32,50 L68,14"></path>
-	    		</svg>
-	    	</a>
 			<h1>Settings</h1>
 			<div>
 				<div>
@@ -22,7 +20,7 @@
 				</div>
 				<div>
 					<h2>Name</h2>
-					<a ng-click='launchEditStudentNamePopup()'>
+					<a ng-click='launchEditStudentNamePopup($event)'>
 						<div class="input-field">
 							<input class="validate" type="text" placeholder="{{user.name}}" ng-model='user.name'/>
 						</div>
@@ -31,7 +29,7 @@
 				<div class="ugrid-2">
 					<div>
 						<h2>Email</h2>
-						<a ng-click='launchEditEmailPopup()'>
+						<a ng-click='launchEditEmailPopup($event)'>
 							<div class="input-field">
 								<input name="email" class="validate" type='email' placeholder="username@school.edu" ng-model="user.email"/>
 								<label for="email" data-error="Please use a valid email address">&nbsp;</label>
@@ -40,11 +38,35 @@
 					</div>
 					<div>
 						<h2>Password</h2>
-						<a ng-click='launchEditPasswordPopup()'>
+						<a ng-click='launchEditPasswordPopup($event)'>
 							<div class="input-field">
 								<input class="validate" ng-model='user.password' type="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
 							</div>
 						</a>
+					</div>
+				</div>
+				<div class="ugrid-2 p10y">
+					<div class='relative desktop-notifications-grid-item'>
+						<h2>Text Notifications &nbsp;&nbsp;&nbsp;&nbsp;
+						<a class='top-50 absolute full-x'ng-click='toggleTextNotifications()'>
+							<svg viewBox="0 0 100 100" style='height:50px;width:50px;'>
+                                <circle class='notifications-circle ng-class:{"active":user.text_notifications}' cx="50" cy="50" r="36"></circle>
+                                <path class='notifications-path ng-class:{"active":user.text_notifications}' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                            </svg>
+						</a>
+						</h2>
+						<p><small ng-if='user.phone_number'>{{user.phone_number}}</small></p>
+					</div>
+					<div class='relative desktop-notifications-grid-item'>
+						<h2>Email Notifications &nbsp;&nbsp;&nbsp;&nbsp;
+						<a class='top-50 absolute full-x'ng-click='toggleEmailNotifications()'>
+							<svg viewBox="0 0 100 100" style='height:50px; width:50px;'>
+                                <circle class='notifications-circle ng-class:{"active":user.email_notifications}' cx="50" cy="50" r="36"></circle>
+                                <path class='notifications-path ng-class:{"active":user.email_notifications}' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                            </svg>
+						</a>
+						</h2>
+						<p><small>{{user.email}}</small></p>
 					</div>
 				</div>
 				<div>

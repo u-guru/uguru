@@ -96,6 +96,8 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   };
 
 
+
+
   $scope.resetUniversities = function() {
     $scope.search_text.university = '';
   };
@@ -172,7 +174,13 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   // interesting... in a good way
   $scope.location = Geolocation;
 
+   $scope.$on('$ionicView.enter', function() {
 
+    $timeout(function() {
+      LoadingService.hide();
+    }, 1000);
+
+   });
 
   $scope.toggleLocationIconAppearance = function() {
 
@@ -190,6 +198,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       Geolocation.settings.isActive = false;
       Geolocation.settings.isAllowed = false;
     }
+    LoadingService.hide();
   };
 
   $scope.refresh = {

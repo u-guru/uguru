@@ -117,6 +117,9 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
     searchResultsBgBannerElement = document.querySelector('.search-results-top');
     searchResultsGuruElement = document.querySelector('.search-results-gurus');
     bannerElement = document.querySelector('#banner');
+    platformElement = document.querySelector('.start-modal-platforms');
+    platformHeaderElement = document.querySelector('.modal-main-container header');
+    platformSVGElement = document.querySelectorAll('.start-modal-platforms svg path');
     numGurusElement = document.querySelector('#search-guru-number');
     searchResultsBackgroundMap = document.querySelector('.search-results-map');
     popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
@@ -130,20 +133,15 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
             popularCourses = popularCourses.slice(0,11);
         }
 
-        popularCoursesParent.style.backgroundColor = uni_data.school_color_one;
+        color = uni_data.school_color_one;
 
         for (var i = 0 ; i < popularCourses.length; i ++) {
             var courseNode = document.createElement("li");
-            courseNode.innerHTML = popularCourses[i];
+            courseNode.innerHTML = "<span class='course'>" + popularCourses[i] + "</span><span class='color' style='background: " + color + "'></span>";
             popularCoursesParent.appendChild(courseNode);
-            courseNode.style.backgroundColor = 'inherit';
-            courseNode.style.borderColor = uni_data.school_color_two || 'white';
-            courseNode.style.borderWidth = '1px';
-            courseNode.style.borderStyle = 'solid';
         }
         var courseNode = document.createElement("li");
-        courseNode.innerHTML = 'and more';
-        courseNode.style.backgroundColor = 'inherit';
+        courseNode.innerHTML = '<span class="course">and more</span><span class="color" style="background: ' + color + '"></span>';
         popularCoursesParent.appendChild(courseNode);
     }
 
@@ -185,6 +183,18 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
             searchResultsGuruElement.style.backgroundColor = uni_data.school_color_one;
         }
     }
+    if (platformElement && uni_data.school_color_one) {
+        platformElement.style.backgroundColor = uni_data.school_color_one;
+    }
+    if (platformHeaderElement && uni_data.school_color_one) {
+        platformHeaderElement.style.backgroundColor = uni_data.school_color_one;
+    }
+
+    for (var i = 0; i < platformSVGElement.length; i++) {
+        var indexSVGElem = platformSVGElement[i];
+        indexSVGElem.style.fill = uni_data.school_color_one;
+    }
+    
     //population
     //Map latitude longitude
     if (postSearchCallback) {

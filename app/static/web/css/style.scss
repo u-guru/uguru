@@ -1,5 +1,9 @@
 @import 'mixin';
 
+body {
+	width: 100%!important;
+}
+
 * {
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
@@ -72,12 +76,11 @@ button, a[class*=btn] {
 	@include flex;
 	@include flex-wrap;
 	@include flex-center;
+	@include full-xy;
 	z-index: 100000000000;
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
 	background: white;
 	text-align: center;
 	div {
@@ -102,17 +105,16 @@ button, a[class*=btn] {
 }
 
 #mobile-start {
+	@include full-xy;
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
 	background: $shamrock;
 	#mobile-inside {
+		@include box-sizing;
 		@include center-xy;
 		width: 100%;
 		padding: 62px 20px 20px;
-		box-sizing: border-box;
 		img {
 			display: block;
 			margin: 0 auto;
@@ -147,7 +149,7 @@ button, a[class*=btn] {
 			@include flex-center;
 			padding-top: 10px;
 			li {
-				width: calc(100% / 3);
+				width: 25%;
 				text-align: center;
 				svg {
 					max-height: 50px;
@@ -159,14 +161,13 @@ button, a[class*=btn] {
 }
 
 #banner {
-	@include opacity(0.5);
+	@include box-sizing;
+	@include opacity(.5);
+	@include full-xy;
 	display: none;
 	position: absolute;
 	top: 0;
-	width: 100%;
-	height: 100%;
 	z-index: 0;
-	box-sizing: border-box;
 	background: url("../../../static/web/images/cambridge.jpg") center center / cover;
 }
 
@@ -181,12 +182,11 @@ button, a[class*=btn] {
 			@include opacity(1);
 		}
 		svg {
-			margin: 0 auto;
 			width: 50%;
 			height: 50%;
 			max-width: 200px;
 			min-width: 80px;
-			margin: 0 auto!important;
+			margin: -10px auto 0!important;
 		}
 		#top-school-logo {
 			@include transition-type(width, .15s ease-in);
@@ -227,11 +227,10 @@ button, a[class*=btn] {
 }
 
 #main {
+	@include full-xy;
 	position: absolute;
 	top: 0;
 	margin: 0;
-	height: 100%;
-	width: 100%;
 	overflow-x: hidden;
 	z-index: 10;
 	background: transparent;
@@ -257,20 +256,18 @@ button, a[class*=btn] {
 			display: none;
 		}
 		.inside {
+			@include box-sizing;
 			@include center-xy;
+			@include full-xy;
 			display: table;
-			width: 100%;
-			height: 100%;
-			box-sizing: border-box;
 			color: white;
 			.inside-text {
-				width: 100%;
-				height: 100%;
+				@include full-xy;
 			}
 			h2 {
 				@include flex;
 				@include flex-center;
-				box-sizing: border-box;
+				@include box-sizing;
 				margin: 0;
 				padding: 22px 10px 0;
 				height: 40%;
@@ -305,9 +302,9 @@ button, a[class*=btn] {
 			background: $shamrock;
 		}
 		#search-box, .search-results{
-		    visibility: hidden;
-		    display: none;
-	    }
+			visibility: hidden;
+			display: none;
+		}
 	}
 	#earn {
 		background: $charcoal;
@@ -329,7 +326,7 @@ button, a[class*=btn] {
 			width: 100%;
 			height: 60%;
 			.back {
-				box-sizing: border-box;
+				@include box-sizing;
 				position: absolute;
 				z-index: 999;
 				top: 0;
@@ -487,8 +484,7 @@ button, a[class*=btn] {
 				a {
 					@include flex;
 					@include flex-center;
-					width: 100%;
-					height: 100%;
+					@include full-xy;
 					color: white;
 				}
 				#{$links} {
@@ -502,17 +498,15 @@ button, a[class*=btn] {
 					@include opacity(1);
 					@include flex;
 					@include flex-center;
-					width: 100%;
-					height: 100%;
+					@include full-xy;
 					background: rgba($charcoal, .4);
 				}
 				.work-popup {
+					@include full-xy;
 					display: none;
 					position: absolute;
 					top: 0;
 					left: 0;
-					width: 100%;
-					height: 100%;
 					.work-popup-bg {
 						height: 40%;
 					}
@@ -544,7 +538,7 @@ button, a[class*=btn] {
 							li {
 								@include flex;
 								@include flex-center;
-								box-sizing: border-box;
+								@include box-sizing;
 								height: calc(100% / 3);
 								padding: 0 15px;
 								background: $charcoal;
@@ -561,7 +555,7 @@ button, a[class*=btn] {
 									}
 								}
 								div {
-									box-sizing: border-box;
+									@include box-sizing;
 									padding-left: 15px;
 									width: calc(100% - 54px);
 									h4 {
@@ -698,10 +692,10 @@ button, a[class*=btn] {
 					li {
 						width: 25%;
 						svg {
+							@include box-sizing;
 							height: 70px;
 							width: 100%;
 							padding: 10px;
-							box-sizing: border-box;
 						}
 					}
 					img {
@@ -741,8 +735,8 @@ button, a[class*=btn] {
 	#main {
 		#search {
 			#search-box, .search-results{
-			    visibility: hidden;
-		    }
+				visibility: hidden;
+			}
 		}
 		#start {
 			#start-text {
@@ -904,7 +898,7 @@ button, a[class*=btn] {
 			#search-box, .search-results {
 				@include border-radius(10);
 				@include transition(.15s ease-in);
-				box-sizing: border-box;
+				@include box-sizing;
 				margin-left: 20px;
 				z-index: 999;
 				margin: auto;
@@ -1026,15 +1020,16 @@ button, a[class*=btn] {
 							@include listless;
 							@include flex;
 							@include flex-wrap;
-							width: 100%;
-							height: 100%;
+							@include full-xy;
+							border-bottom-right-radius: 10px!important;
+							overflow: hidden!important;
 							li {
 								@include flex;
 								@include flex-center;
+								@include box-sizing;
 								position: relative;
 								width: 50%;
 								height: calc(100% / 6);
-								box-sizing: border-box;
 								background: white;
 								color: white;
 								font-size: 18px;
@@ -1044,11 +1039,11 @@ button, a[class*=btn] {
 									z-index: 9;
 								}
 								.color {
+									@include full-xy;
 									position: absolute;
 									top: 0;
 									left: 0;
-									width: 100%;
-									height: 100%;
+									background: $shamrock;
 								}
 							}
 							li:nth-child(1) {
@@ -1106,28 +1101,35 @@ button, a[class*=btn] {
 									@include opacity(.5);
 								}
 							}
+							li:nth-child(12) {
+								border-bottom-right-radius: 10px!important;
+								overflow: hidden!important;
+								.color {
+									border-bottom-right-radius: 10px;
+								}
+							}
 						}
 					}
 				}
 				.back {
-				    transform: rotateY(0deg);
-				    backface-visibility: hidden;
-				    transform-style: preserve-3d;
-				    position: absolute;
-				    z-index: 1;
-				    transition: all 0.5s ease-out;
-				    visibility: visible;
-				    overflow: visible;
-				    top: 0px;
+					transform: rotateY(0deg);
+					backface-visibility: hidden;
+					transform-style: preserve-3d;
+					position: absolute;
+					z-index: 1;
+					transition: all 0.5s ease-out;
+					visibility: visible;
+					overflow: visible;
+					top: 0px;
 				}
 			}
 			#search-container {
 				position: relative;
 				input {
+					@include box-sizing;
 					display: block;
 					width: 100%;
 					padding: 20px 30px;
-					box-sizing: border-box;
 					border: 0;
 					border-bottom: 5px solid $shamrock;
 					background: $slate;
@@ -1168,11 +1170,11 @@ button, a[class*=btn] {
 					background: white;
 					width: 100%;
 					.tt-suggestion {
+						@include box-sizing;
 						position: relative!important;
 						display: table!important;
 						width: 100%;
 						cursor: pointer;
-						box-sizing: border-box;
 						border: 1px solid #ddd;
 						border-top: 0;
 						background: white;
@@ -1190,8 +1192,8 @@ button, a[class*=btn] {
 							&:first-child {
 								width: 70px;
 								img {
+									@include box-sizing;
 									display: block;
-									box-sizing: border-box;
 									width: 100%;
 									padding: 10px 10px 10px 20px;
 								}
@@ -1202,13 +1204,12 @@ button, a[class*=btn] {
 						}
 					}
 					.tt-suggestion:after {
+						@include full-xy;
 						content: "";
 						display: block;
 						position: absolute;
 						top: 0;
 						left: 0;
-						width: 100%;
-						height: 100%;
 					}
 					.tt-suggestion:hover:after {
 						background: rgba(0,0,0,.05);
@@ -1223,11 +1224,11 @@ button, a[class*=btn] {
 					position: absolute;
 					width: 100%;
 					li {
+						@include box-sizing;
 						position: relative;
 						display: table;
 						width: 100%;
 						cursor: pointer;
-						box-sizing: border-box;
 						border: 1px solid #ddd;
 						border-top: 0;
 						background: white;
@@ -1245,8 +1246,8 @@ button, a[class*=btn] {
 							&:first-child {
 								width: 70px;
 								img {
+									@include box-sizing;
 									display: block;
-									box-sizing: border-box;
 									width: 100%;
 									padding: 10px 10px 10px 20px;
 								}
@@ -1257,13 +1258,12 @@ button, a[class*=btn] {
 						}
 					}
 					li:after {
+						@include full-xy;
 						content: "";
 						display: block;
 						position: absolute;
 						top: 0;
 						left: 0;
-						width: 100%;
-						height: 100%;
 					}
 					li:hover:after {
 						background: rgba(0,0,0,.05);
@@ -1287,15 +1287,15 @@ button, a[class*=btn] {
 						@include listless;
 						@include flex;
 						@include flex-wrap;
-						box-sizing: border-box;
+						@include box-sizing;
 						width: 100%;
 						max-width: 1500px;
 						height: 60%;
 						padding: 0 10px;
 						.earn-category {
+							@include box-sizing;
 							width: 25%;
 							height: 50%;
-							box-sizing: border-box;
 							position: relative!important;
 							padding: 10px;
 							.earn-category-inside {
@@ -1307,9 +1307,9 @@ button, a[class*=btn] {
 								@include flex-wrap;
 								@include flex-center;
 								@include border-radius(5);
+								@include box-sizing;
 								overflow: hidden;
 								position: relative!important;
-								box-sizing: border-box;
 								background: $slate;
 								padding: 30px 10px;
 								h3 {
@@ -1331,11 +1331,10 @@ button, a[class*=btn] {
 									}
 								}
 								.earn-category-overlay {
+									@include full-xy;
 									position: absolute;
 									top: 0;
 									left: 0;
-									width: 100%;
-									height: 100%;
 									background: rgba($charcoal, .5);
 								}
 							}
@@ -1351,14 +1350,13 @@ button, a[class*=btn] {
 									@include flex;
 									@include flex-wrap;
 									@include flex-center;
-									width: 100%;
-									height: 100%;
+									@include full-xy;
 									box-sizing: border-box!important;
 									li {
 										@include flex;
 										@include flex-wrap;
 										@include flex-center;
-										box-sizing: border-box;
+										@include box-sizing;
 										width: 50%;
 										height: 50%;
 										font-size: 12px;
@@ -1452,7 +1450,7 @@ button, a[class*=btn] {
 				@include center-xy;
 				@include border-radius(10);
 				@include flex;
-				box-sizing: border-box;
+				@include box-sizing;
 				overflow: hidden;
 				width: calc(100% - 40px);
 				max-width: 1000px;
@@ -1778,5 +1776,20 @@ button, a[class*=btn] {
 	.search-results-gurus {
 		-ms-transform: translate(-50%,-85%)!important;
 		transform: translate(-50%,-85%)!important;
+	}
+}
+
+
+.intercom-launcher-hovercard {
+	display:none !important;
+}
+
+// add z-index so they are actually clickable
+#corner-menu-icons {
+	z-index:100;
+	li:hover {
+		opacity:0.5;
+		padding:10px;
+		margin:-10px;
 	}
 }

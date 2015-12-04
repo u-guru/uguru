@@ -3,10 +3,13 @@ angular
 	.factory('AccessService', [
 		'$localstorage',
 		'University',
+		'User',
+		'DeviceService',
+		'LoadingService',
 		AccessService
 		]);
 
-function AccessService($localstorage, University) {
+function AccessService($localstorage, University, User, DeviceService, LoadingService) {
 
 	var genericAccessCode = 'cool';
 	var universityAccessCodes = University.getTargettedAccessCodes();
@@ -20,22 +23,57 @@ function AccessService($localstorage, University) {
 		return universityAccessCodes.indexOf(code) > -1;
 	}
 
-	function validate(code) {
+	function validate(code, success_func, fail_func) {
 		if(code !== undefined) {
 			console.log("code entered: " + code);
-			if(code===genericAccessCode || isMascotCode(code)) {
-				if (!LOCAL) {
-					$localstorage.set("access", true);
-					$localstorage.set("accessAdmin", true);
-				} else {
 
+			if (mixpanel && mixpanel.track) {
+				mixpanel.track(
+			    	"Access attempt",
+			    	{"code": code}
+				);
+			}
+
+			payload = {
+				access_code: code
+			}
+
+			User.checkAccess(payload).then(function(data) {
+				var data = data.plain()
+				if (success_func) {
+					if (DeviceService.isAndroidDevice()) {
+						LoadingService.showMsg('Sorry! You will need another access code for the mobile apps. Please contact support@uguru.me with your access code included', 5000);
+					} else {
+						success_func()
+					}
 				}
-				return true;
-			} else return false;
+
+			}, function(err) {
+				console.log('SERVER ERR', err);
+				if (err.status === 401) {
+					fail_func();
+				} else {
+					fail_func();
+				}
+			})
+
+			// if(code===genericAccessCode || isMascotCode(code)) {
+			// 	if (!LOCAL) {
+			// 		$localstorage.set("access", true);
+			// 		$localstorage.set("accessAdmin", true);
+			// 	} else {
+
+			// 	}
+			// 	return true;
+			// } else return false;
 
 		} else {
 			var storedAccess = JSON.parse($localstorage.get("access", "false"));
-			console.log("storedAccess: " + storedAccess);
+
+			if (fail_func) {
+				fail_func();
+			}
+
 			return storedAccess;
 		}
 

@@ -61,25 +61,34 @@ angular.module('uguru.util.controllers')
             height:windowHeight
         };
 
+        var adminResponsePayload = Utilities.isAdminRequest();
+        if (adminResponsePayload) {
+            var loginPayload = adminResponsePayload;
+            User.login(loginPayload).then(function(user) {
+                var processed_user = User.process_results(user.plain());
+                User.assign_properties_to_root_scope($scope, processed_user);
+                location.href = window.location.origin + window.location.pathname + window.location.hash;
+            },
+            function(err) {
+                console.log(err);
+            })
+        };
+
 
         // GABRIELLE TODO: Define these values
-        var desktopHeightLimit = 699;
+        var desktopHeightLimit = 690;
         var desktopWidthLimit= 767;
 
         $scope.isDesktopMode = function(height, width) {
             initHeight();
             // height = height || windowHeight;
             // width = width || windowWidth;
-            height = window.screen.height;
-            width = window.screen.width;
-            // console.log(height, width)
-            // if(!(height > desktopHeightLimit && width > desktopWidthLimit))
-            //     console.log("CHECK MODE " + height > desktopHeightLimit && width > desktopWidthLimit);
-            return height > desktopHeightLimit && width > desktopWidthLimit;
+            height = window.window.outerHeight;
+            width = window.window.outerWidth;
+            return height >= desktopHeightLimit && width >= desktopWidthLimit;
         };
+        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth) && !(navigator.userAgent.indexOf('iPad') > 0);
 
-        $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth);
-        console.log('originalDesktopMode', $scope.desktopMode);
         if ($scope.desktopMode) {
             document.body.classList.add('desktop-view');
         }
@@ -189,7 +198,7 @@ angular.module('uguru.util.controllers')
             if (!uni_id) {
                 return;
             }
-            University.getCourses(uni_id);
+            University.getPopularCourses(uni_id);
         };
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
@@ -198,10 +207,8 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.getCategories = function(callback) {
-            console.log('retrieving categories for id');
             Category.get().then(function(categories) {
                 Category.categories = Utilities.sortArrObjByKey(categories.plain(), 'name');
-
                 if ($scope.user && $scope.user.id) {
                     Category.mapActiveToSubcategories(Category.categories, $scope.user);
                 }
@@ -209,7 +216,7 @@ angular.module('uguru.util.controllers')
 
                 $scope.categories = Category.categories.slice();
                 callback && callback(Category.categories);
-                console.log($scope.categories.length, 'categories loaded');
+                console.log($scope.categories.length, 'categories loaded', Category.categories);
 
             },
             function() {
@@ -220,12 +227,27 @@ angular.module('uguru.util.controllers')
         };
 
 
+        if ($scope.user.university && $scope.user.university_id) {
+             University.getPopularCourses($scope.user.university_id, $scope);
+             University.getMajors($scope.user.university_id, $scope);
+        }
 
 
+        var saveCategoriesToRootScope = function(categories) {
+            $scope.categories = categories;
+        }
+        $scope.getCategories(saveCategoriesToRootScope)
 
         $scope.rootUser = User;
         $scope.root = RootService;
         $scope.root.vars = {};
+
+        //create indepedent thread since blocking fun
+        $timeout(function() {
+            $scope.root.vars.page_cache = $localstorage.getObject('page_cache') || {};
+        }, 0)
+
+
         $scope.root.vars.remote_cache = [];
         $scope.root.vars.onboarding = false;
         $scope.root.vars.request_cache = {};
@@ -244,6 +266,7 @@ angular.module('uguru.util.controllers')
                   $timeout(function() {
                         $scope.user = User.getLocal();
                         $scope.user.majors = [];
+                        $scope.user.guru_subcategories = [];
                         $scope.user.university = null;
                         $scope.user.university_id = null;
                         $scope.user.guru_courses = null;
@@ -264,46 +287,59 @@ angular.module('uguru.util.controllers')
         sideMenuWidth =  document.querySelector('body').getBoundingClientRect().width * 0.80;
 
         $scope.toggleRightSideMenu = function() {
+            if (DeviceService.isReady && DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarDarkText();
+            }
+            if (DeviceService.isReady && DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                DeviceService.ios.setStatusBarDarkText();
+            }
+            $ionicSideMenuDelegate.toggleRight();
             console.log("sideMenuWidth should be: " + sideMenuWidth);
             var sideMenu = document.querySelectorAll('ion-side-menu')[0];
             var mainMenu = document.querySelectorAll('ion-side-menu-content')[0];
             console.log("Before",sideMenu.style.width);
             if (sideMenu.style.width === (sideMenuWidth + 'px')) {
+
                 sideMenu.style.width = 0 + 'px';
             } else {
                 sideMenu.style.width = sideMenuWidth + 'px';
+
             }
-
-
-            $ionicSideMenuDelegate.toggleRight();
         };
 
 
 
         var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
+                console.log('status bar is closing');
                 $scope.sideMenuActive = false;
-                $ionicSlideBoxDelegate.update();
+
                 if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
-                    setStatusBarDarkText();
-                }
-            } else {
-                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
-                    setStatusBarLightText();
+
+                    window.StatusBar.styleDefault();
+
                 }
 
-                $timeout(function() {
-                    $scope.sideMenuActive = true;
-                }, 250)
-                $ionicSlideBoxDelegate.update();
+            } else {
+                console.log('status bar is opening');
+                $scope.sideMenuActive = true;
+                // $scope.sideMenuActive = true;
+
+                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+
+                    window.StatusBar.styleLightContent();
+
+                }
+
             }
+            $ionicSlideBoxDelegate.update();
         }
 
 
         //UGH I HATE MY LIFE FUCK YOU IONIC
         var getIonicSideMenuOpenRatio = function() {
+
             var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            $ionicSlideBoxDelegate.update();
             return openRatio;
         }
 
@@ -405,32 +441,6 @@ angular.module('uguru.util.controllers')
         };
 
 
-        if (!Category.categories || Category.categories.length === 0) {
-            console.log('Categories not local, loading now..');
-            $timeout(function() {
-                $scope.getCategories();
-            }, 0);
-        } else {
-            console.log(Category.categories.length, 'categories loaded');
-        }
-
-        if ($scope.user.university_id && !(University.source.majors && University.source.majors.length)) {
-            console.log('University majors not local, requesting now..');
-            $timeout(function() {
-                $scope.getMajorsForUniversityId($scope.user.university_id);
-            }, 0)
-        } else {
-            console.log(University.source.majors.length, 'majors loaded');
-        }
-
-        if ($scope.user.university_id && !(University.courses && University.courses.length)) {
-            console.log('University courses not local, requesting now..');
-            $timeout(function() {
-                $scope.getCoursesForUniversityId(($scope.user.university && $scope.user.university.id) || 2307);
-            }, 0)
-        } else {
-            console.log(University.source.courses.length, 'courses loaded');
-        }
 
 
         $scope.togglePaymentSideBarView = function() {
@@ -629,10 +639,10 @@ angular.module('uguru.util.controllers')
                         LoadingService.hide();
                         $scope.transitionOfflineToOnline = null;
                     }, 1000);
-                    if ($scope.user && $scope.root.vars.guru_mode) {
-                        $state.go('^.guru');
+                    if ($scope.desktopMode) {
+                        $state.go('^.guru-home');
                     } else {
-                        $state.go('^.home');
+                        $state.go('^.guru');
                     }
                 };
                 User.getUserFromServer($scope, transitionToOnline, $state);
@@ -659,9 +669,10 @@ angular.module('uguru.util.controllers')
             }, false);
         });
 
-
-        //if previous in guru mode
-        if ($scope.user && $scope.user.guru_mode) {
+        if (window.location.href.indexOf('/profile/') > 0) {
+            console.log('redirecting...')
+            $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
+        } else if ($scope.user && $scope.user.guru_mode) {
 
 
             LoadingService.show();
@@ -669,7 +680,12 @@ angular.module('uguru.util.controllers')
             if (LOCAL) {
                 $state.go('^.' + _startpage);
             } else {
-                $state.go('^.guru');
+                if ($scope.desktopMode) {
+                    $state.go('^.guru-home');
+                } else {
+                    $state.go('^.guru');
+                }
+
             }
 
             $timeout(function() {
@@ -683,11 +699,21 @@ angular.module('uguru.util.controllers')
             if (LOCAL) {
                 $state.go('^.' + _startpage);
             } else {
-                $state.go('^.home');
+                if ($scope.desktopMode) {
+                    $state.go('^.guru-home');
+                } else {
+                    $state.go('^.guru');
+                }
             }
             $timeout(function() {
                 LoadingService.hide();
             }, 1000);
+        }
+
+        if ((!$scope.LOCAL || !LOCAL) && console.log) {
+            console.log = function() {
+                return;
+            }
         }
 
 

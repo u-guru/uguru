@@ -1,22 +1,23 @@
 
-<ion-content class='full-height bg-charcoal' scroll='false' ng-controller='SignupController'>
+<ion-modal-view class='full-height bg-charcoal' scroll='false' ng-controller='SignupController'>
 <section id="account" class="onboarding full-xy">
 	<header class="third flex-center-wrap">
 		<div class="header-nav">
-			<a class="header-menu" ng-click="closeModal('signup')">
+			<a class="header-down" ng-click="closeModal('signup')">
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"></path>
 				</svg>
 			</a>
 		</div>
 		<h1 ng-show="!root.vars.loginMode">Finalize</h1>
-		<h1 ng-show="root.vars.loginMode">Have account?</h1>
+		<h1 ng-show="root.vars.loginMode && !root.vars.forgotPassword">Have an account?</h1>
+		<h1 ng-show="root.vars.loginMode && root.vars.forgotPassword">Forgot Your Password?</h1>
 		<ul class="switch ugrid-2">
 			<li>
 				<a ng-click='root.vars.loginMode = true;' class='ng-class:{"selected": root.vars.loginMode}'>Login</a>
 			</li>
 			<li>
-				<a ng-click='root.vars.loginMode = false;' class='ng-class:{"selected": !root.vars.loginMode}'>Sign Up</a>
+				<a ng-click='switchSignupMode()' class='ng-class:{"selected": !root.vars.loginMode}'>Sign Up</a>
 			</li>
 		</ul>
 	</header>
@@ -33,18 +34,22 @@
 					<i class='icon ion-close-circled'> </i>
 			</a>
 		</div>
-		<div class="relative full-x">
+		<div class="relative full-x" ng-show='!root.vars.forgotPassword'>
 			<input class="input-ghost" type="password" id='password-input' ng-model='signupForm.password' placeholder="Password">
 			<a ng-show='signupForm.password && signupForm.password.length' ng-click='signupForm.password = "";' class="top-0 major-input-close side-icon">
 					<i class='icon ion-close-circled'> </i>
 			</a>
 		</div>
 		<div id="social-login">
-			<button ng-show='root.vars.loginMode' class="weight-600 bg-shamrock m15bottom" ng-click='loginUser()'>Login</button>
+			<button ng-show='root.vars.loginMode && !root.vars.forgotPassword' class="weight-600 bg-shamrock m15bottom" ng-click='loginUser()'>Login</button>
+			<button ng-show='root.vars.loginMode && root.vars.forgotPassword' class="weight-600 bg-shamrock m15bottom" ng-click='attemptToResetPassword()'>Submit</button>
 			<button ng-show='!root.vars.loginMode' class="weight-600 bg-shamrock m15bottom" ng-click='completeSignup()'>Create an Account</button>
-			<button ng-hide='signupForm.full_name || signupForm.full_name.length > 0' class="weight-600 bg-fb m15bottom" ng-click='connectWithFacebook()'>Continue with Facebook</button>
+			<button ng-hide='root.vars.forgotPassword || signupForm.full_name || signupForm.full_name.length > 0' class="weight-600 bg-fb m15bottom" ng-click='ngFBlogin()'>Continue with Facebook</button>
+			<button ng-show='root.vars.forgotPassword' class="weight-600 bg-charcoal m15bottom" ng-click='root.vars.forgotPassword = false;'>Cancel</button>
 		</div>
 		<a id="tos" ng-click="openModal('privacy')" style="margin-top: -15px">Terms &amp; Conditions</a>
+
+		<a id="forgot-your-password" ng-show='root.vars.loginMode && !root.vars.forgotPassword' ng-click="root.vars.forgotPassword = true;" style="margin-top: -15px"><small> Forgot Your Password? </small></a>
 	</div>
 </section>
-</ion-content>
+</ion-modal-view >

@@ -56,19 +56,59 @@ angular.module('uguru.desktop.controllers', [])
     //edit university (modal)
     //loading service
 
+    $scope.resetCache = function() {
+      LoadingService.showAmbig('Resetting Cache..', 1500, function(){
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.university');
+        AdminService.resetCache();
+      })
+    }
+
     function initDesktopDefaults() {
       $scope.page = {
         url: $state.current.name
       }
       $scope.desktopGoBack = function() {
         $ionicViewSwitcher.nextDirection('enter');
-        if ($scope.root.vars.guru_mode) {
-          $state.go('^.guru');
+        if ($scope.desktopMode) {
+          $state.go('^.guru-home');
         } else {
-          $state.go('^.home');
+          $state.go('^.guru');
         }
 
       }
+    }
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.signupModal = modal;
+        });
+
+    Intercom('hide');
+    $scope.launchSupport = function() {
+
+        Intercom('boot', {
+            app_id: "yoz6vu28",
+            widget: {"activator": "#Intercom"}
+          })
+        Intercom('show');
+        Intercom('onHide', function() {
+          Intercom('shutdown');
+        })
+    }
+
+    $scope.toggleDiscoverability = function() {
+      $scope.user.guru_discoverability = !$scope.user.guru_discoverability;
+      if ($scope.user.guru_discoverability) {
+        var success_message = 'Discoverability set to ON'
+      } else {
+        var success_message = 'Discoverability set to OFF'
+      }
+      LoadingService.showSuccess(success_message, 2000, function() {
+        $scope.user.updateAttr('discoverability', $scope.user, $scope.user.guru_discoverability, null, $scope);
+      });
     }
 
     if ($scope.desktopMode) {
@@ -264,7 +304,7 @@ angular.module('uguru.desktop.controllers', [])
 
     }
 
-    $scope.launchEditEmailPopup = function() {
+    $scope.launchEditEmailPopup = function($event) {
 
       if($scope.user.email) {
         $scope.popupInput.editEmail = $scope.user.email;
@@ -281,7 +321,7 @@ angular.module('uguru.desktop.controllers', [])
         $scope.loader.showSuccess('Saved!', 1500);
         PopupService.close('editEmail');
       }
-      PopupService.open('editEmail', callback);
+      PopupService.open('editEmail', callback, $event.target);
     }
 
     $scope.saveSettings = function() {
@@ -289,7 +329,7 @@ angular.module('uguru.desktop.controllers', [])
     }
 
 
-    $scope.launchEditPasswordPopup = function() {
+    $scope.launchEditPasswordPopup = function($event) {
 
       function callback() {
         console.log('callback pressed');
@@ -334,16 +374,16 @@ angular.module('uguru.desktop.controllers', [])
             return;
           }
       }
-      PopupService.open('editPassword', callback);
+      PopupService.open('editPassword', callback, $event.target);
     }
 
-    $scope.launchEditStudentNamePopup = function() {
+    $scope.launchEditStudentNamePopup = function($event) {
 
       if ($scope.user.name) {
         $scope.popupInput.editName = $scope.user.name;
       }
 
-      PopupService.open('editName', callback);
+      PopupService.open('editName', callback, $event.target);
       function callback() {
         if (Utilities.validateName($scope.popupInput.editName)) {
             $scope.user.name = $scope.popupInput.editName;
@@ -481,7 +521,7 @@ angular.module('uguru.desktop.controllers', [])
       });
     }
 
-
+    $scope.state = $state;
 
     $scope.resetAccount = function() {
       if (confirm('Are you sure you want to reset your admin account?')) {
@@ -549,7 +589,7 @@ angular.module('uguru.desktop.controllers', [])
       $scope.root.vars.guru_mode = false;
       $timeout(function() {
         $ionicViewSwitcher.nextDirection('enter');
-        $state.go('^.home');
+        $state.go('^.guru-home');
       }, 500)
 
       if (!$scope.desktopMode) {
@@ -576,6 +616,23 @@ angular.module('uguru.desktop.controllers', [])
       $ionicViewSwitcher.nextDirection('enter')
       $state.go('^.desktop-settings');
       $scope.showDesktopSettings = false;
+    }
+
+    $scope.toggleEmailNotifications = function() {
+      $scope.user.email_notifications = !$scope.user.email_notifications;
+      $scope.user.updateAttr('email_notifications', $scope.user, $scope.user.email_notifications, null, $scope);
+    }
+
+    $scope.toggleTextNotifications = function() {
+      $scope.user.text_notifications = !$scope.user.text_notifications;
+      $scope.user.updateAttr('text_notifications', $scope.user, $scope.user.text_notifications, null, $scope);
+    }
+
+    $scope.saveNotifications = function() {
+      LoadingService.showSuccess("Saved", 2500);
+      $timeout(function() {
+        $scope.notificationsModal.hide();
+      }, 500)
     }
 
 

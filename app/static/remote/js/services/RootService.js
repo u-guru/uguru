@@ -222,7 +222,7 @@ angular.module('uguru.root.services', [])
         goBack: function() {
             console.log('root nav go back was clicked');
             $ionicViewSwitcher.nextDirection('back');
-            $state.go('^.student-home');
+            $state.go('^.guru-home');
         }
     }
 

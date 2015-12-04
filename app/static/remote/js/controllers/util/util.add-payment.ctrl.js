@@ -19,141 +19,56 @@
   $ionicSideMenuDelegate, $ionicActionSheet, LoadingService) {
 
     $scope.data = {card_exists: false};
-    // console.log();
-    $scope.user.cards = [];
-    $scope.user_has_card = $scope.user.cards && $scope.user.cards.length > 0;
-    $scope.card_details = {number: '', expiry:''};
 
-    $scope.clearCard = function() {
+    $scope.root.vars.cardForm = {number: '', exp:'', view_only:false};
 
-      $scope.card = null;
-      // $scope.cardInput.value = '';
-      // $scope.ccvInput.value = '';
-      // $scope.rootUser.updateLocal($scope.user);
-      // $scope.root.keyboard.show('card-input', 500);
-      $scope.card_details.number = '';
-      $scope.card_details.expiry = '';
-    };
-
-    $scope.paymentCardActionSheetOptions = function() {
-      var card = $scope.card;
-      var options = [{text: 'Remove Card'}];
-      if (!card.is_default_payment && !card.is_default_transfer) {
-        options.push({text: 'Set Default'});
-      }
-        // Show the action sheet
-        $scope.closeAttachActionSheet = $ionicActionSheet.show({
-            buttons: options,
-            // titleText: '<span class="semibold uppercase">Edit Card **-' + card.card_last4 + '</span>',
-            cancelText: 'Cancel',
-            cancel: function() {
-                $scope.closeAttachActionSheet();
-            },
-            buttonClicked: function(index) {
-
-              // fire profile photo
-              if (index === 0) {
-                $scope.closeAttachActionSheet();
-                $scope.removeCard();
-                LoadingService.show();
-                $timeout(function() {
-                  LoadingService.hide();
-                }, 750);
-              }
-
-              if (index === 1) {
-                $scope.closeAttachActionSheet();
-                $scope.setDefault();
-                LoadingService.show();
-                $timeout(function() {
-                  LoadingService.hide();
-                }, 750);
-              }
-            }
-
-      });
+    if ($scope.LOCAL) {
+      $scope.root.vars.cardForm.number = '4000056655665556';
+      $scope.root.vars.cardForm.exp = '09 / 2016';
     }
 
 
-    $scope.addPaymentActionBtn = function() {
-      if ($scope.actionButtonText.toLowerCase() === 'save') {
-        $scope.savePayment()
-      } else {
-        $scope.clearCard();
-      }
-      $scope.setActionButtonText();
-    }
 
-    $scope.setActionButtonText = function() {
-      if (!$scope.card) {
-        $scope.actionButtonText = 'save';
-      } else {
-        $scope.actionButtonText = 'clear';
-      }
-    }
 
-    $scope.goBack = function() {
+      $scope.cashoutUser = function() {
+      if ($scope.user.balance > 0) {
+          var tempAmount = $scope.user.balance;
+          LoadingService.showAmbig('Processing....', 5000);
+          var successCallback = function() {
+            LoadingService.showSuccess('Successfully cashed out $' + tempAmount + '!', 3000);
+          }
 
-      if ($scope.paymentsModal) {
-        $ionicHistory.goBack();
-      }
-      else if ($scope.root.vars.previous_page_ranking) {
-        $scope.root.vars.previous_page_ranking = false;
-        $ionicHistory.goBack();
-      }
-      else {
-        LoadingService.show();
-        $ionicSideMenuDelegate.toggleRight();
+          var bankTransferPayload = {
+            'bank_transfer': true,
+            'card_id': $scope.user.default_transfer_card.id
+          }
 
-        $timeout(function() {
-
-          LoadingService.hide();
-        }, 1000);
-
-      }
-
-    }
-
-    $scope.showSuccess = function(msg) {
-        if (!$scope.progress_active)  {
-            $scope.progress_active = true;
-            $cordovaProgress.showSuccess(true, msg);
-            $timeout(function() {
-              $cordovaProgress.hide();
-              $scope.progress_active = false;
-              $ionicHistory.goBack();
-            }, 1000);
+          $scope.user.createObj($scope.user, 'bank_transfer', bankTransferPayload, $scope, successCallback);
         } else {
-          console.log('Show success cannot be shown because progress bar is already active');
+          LoadingService.showMsg('Sorry! You must have a balance of at least $1 to deposit to your account.', 3500);
         }
-    }
-
-    $scope.savePaymentStatic = function() {
-
-      var successCallback = function() {
-        $scope.success.show(0, 2000, 'Your card was successfully added!');
-        $timeout(function() {
-          $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
-        }, 500);
-
-
       }
 
-      $scope.savePayment(successCallback, null);
 
-    }
+    //1. Add card [x] [ ]
+      // validate card
+      // send to server
+    //2. Remove card [x] [ ]
+      // remove client side
+      // send to server
+    //3. Update default Transfer [x] [ ]
+      // Send card to server
+    //4. Cashout
+      // Update current balance
+      // Create transaction server side
+      // update transaction here
 
-    $scope.savePaymentHome = function() {
-
-      $scope.success.show(500, 2000, 'Your card was successfully added!');
-      $ionicSideMenuDelegate.toggleRight();
-    }
-
+    // add card
     $scope.savePayment = function() {
-      LoadingService.show();
-      var cardNum = $scope.card_details.number;
-      var expMM = $scope.card_details.expiry.split(' / ')[0];
-      var expYY = $scope.card_details.expiry.split(' / ')[1];
+      LoadingService.showAmbig('Verifying', 10000);
+      var cardNum = $scope.root.vars.cardForm.number;
+      var expMM = $scope.root.vars.cardForm.exp.split(' / ')[0];
+      var expYY = $scope.root.vars.cardForm.exp.split(' / ')[1];
 
       console.log('new details', cardNum, expMM, expYY);
 
@@ -186,69 +101,35 @@
             card_type: response.card.brand,
           }
 
-          if ($scope.debitCardOnly) {
-            cardInfo.debit_card = true;
-            cardInfo.is_transfer_card = true;
-            if (!$scope.user.transfer_cards) {
-              $scope.user.transfer_cards = [];
-            }
-            $scope.user.transfer_cards.push(cardInfo);
-          } else {
-            cardInfo.card = true;
-            cardInfo.is_payment_card = true;
-            if (!$scope.user.payment_cards) {
-              $scope.user.payment_cards = [];
-            }
-            $scope.user.payment_cards.push(cardInfo);
+          cardInfo.debit_card = true;
+          cardInfo.is_transfer_card = true;
+          if (!$scope.user.transfer_cards) {
+            $scope.user.transfer_cards = [];
           }
-          LoadingService.hide();
+          $scope.user.transfer_cards.push(cardInfo);
+
+
+
           $scope.user.cards.push(cardInfo);
-          LoadingService.show();
-          console.log(cardInfo)
+
           var successCallback = function($scope, $state) {
 
-            $scope.success.show(0, 2000, 'Your card has been successfully added');
-
-              if ($state.current.name === 'root.home') {
-
-
-
-                $scope.closePaymentsModal();
-
-                if ($scope.choosePriceModal) {
-                  $scope.choosePriceModal.show();
-                  $timeout(function() {
-                    LoadingService.hide();
-                  }, 500)
+            LoadingService.showSuccess('Your card has been successfully added', 2000, function() {
+              if ($scope.desktopMode) {
+                if ($state.current.name === 'root.guru-home') {
+                closeDefaultCardModal();
                 }
-
+              } else {
+                $scope.addCardModal.hide();
               }
-
-              if ($scope.paymentsModal && $scope.paymentsModal.isShown()) {
-                $scope.paymentsModal.hide();
-                LoadingService.hide();
-              }
-
-
-
-              // $scope.success.show(0, 2000, 'Your card has been successfully added');
-
-              if ($state.current.name === 'root.payments' && !$scope.root.vars.guru_mode) {
-                $ionicSideMenuDelegate.toggleRight();
-
-                $timeout(function() {
-                  LoadingService.hide();
-                }, 500)
-              }
-
-              if ($state.current.name === 'root.payments' && $scope.root.vars.guru_mode) {
-                $scope.goBack();
-              }
-
+            });
 
           }
+
           $scope.user.createObj($scope.user, 'cards', cardInfo, $scope, successCallback);
-        }
+
+
+         }
     }
 
       Stripe.card.createToken({
@@ -268,80 +149,84 @@
           remove_card: true
         }
       }
-
+      if ($scope.desktopMode) {
+        $timeout(function() {
+          closeDefaultCardModal();
+        }, 500)
+      } else {
+        $scope.addCardModal.hide();
+      }
+      $scope.root.vars.cardForm = {number: '', exp:'', view_only:false};
       $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
+      LoadingService.showSuccess('Card Successfully Deleted', 3000);
+    }
 
-      alert('Card Successfully Deleted');
-      $ionicHistory.goBack();
+    var closeDefaultCardModal = function() {
+        var paymentModalLink = document.getElementById('cta-modal-payments');
+        paymentModalLink.classList.remove('show');
+        if ($scope.LOCAL) {
+          $scope.root.vars.cardForm.number = '4000056655665556';
+          $scope.root.vars.cardForm.exp = '09 / 2016';
+          $scope.root.vars.cardForm.view_only = false;
+        } else {
+          $scope.root.vars.cardForm = {number: '', exp:'', view_only:false};
+        }
+    }
+
+    $scope.editPayment = function(card) {
+      $scope.card = card;
+      var paymentModalLink = document.getElementById('cta-modal-payments');
+      var close_elem = document.querySelector('#cta-modal-payments .cta-modal-close');
+      close_elem.addEventListener('click', closeDefaultCardModal);
+      paymentModalLink.classList.add('show');
+      $scope.root.vars.cardForm.number = '**** **** **** ' + card.card_last4;
+      $scope.root.vars.cardForm.exp = '** / **';
+      $scope.root.vars.cardForm.view_only = true;
+
+      // console.log('payment modal link', paymentModalLink);
+      // paymentModalLink.click();
+    }
+
+    $scope.editPaymentMobile = function(card) {
+      $scope.card = card;
+      $scope.root.vars.cardForm.number = '**** **** **** ' + card.card_last4;
+      $scope.root.vars.cardForm.exp = '** / **';
+      $scope.root.vars.cardForm.view_only = true;
+      $scope.addCardModal.show();
+
+      // console.log('payment modal link', paymentModalLink);
+      // paymentModalLink.click();
     }
 
 
-
-
-
-    $scope.setDefault = function() {
-
-      var cardInfo = {
-        card: {
-          id: $scope.card.id
-        }
-      }
-
-      var user_card = $scope.card;
-
-      if ($scope.debitCardOnly) {
-
-          for (var i = 0; i < $scope.user.transfer_cards.length; i++) {
-            if (user_card.id != $scope.user.transfer_cards[i].id) {
-              $scope.user.transfer_cards[i].is_default_transfer = false;
-            }
-          }
-
-          cardInfo.default_transfer = true;
-
-      }
-
-      else {
-
-          for (var i = 0; i < $scope.user.payment_cards.length; i++) {
-              if (user_card.id != $scope.user.payment_cards[i].id) {
-                  $scope.user.payment_cards[i].is_default_payment = false;
-              }
-          }
-          cardInfo.default_payment = true;
-      }
-      $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
-      alert('Card Default Set!');
-      $ionicHistory.goBack();
-
-    }
-    $scope.card_already_created = false;
-
-
-    $scope.$on('modal.shown', function() {
-
-
-        if ($scope.paymentsModal && $scope.paymentsModal.isShown() && !$scope.card_already_created) {
-          console.log('instantiating');
-          $scope.card_already_created = true;
-          $timeout(function() {
-            $scope.initCardAndFocusInput();
-          }, 750);
-        }
+    $ionicModal.fromTemplateUrl(BASE + 'templates/add.payments.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.addCardModal = modal;
     });
 
 
-    $scope.injectCardPngClass = function() {
+    $scope.setDefaultTransfer = function() {
 
-    }
 
-    $scope.getCardType = function(number) {
-      return 'visa';
-    }
+      var cardPayload = { card: { id: $scope.card.id, default_transfer:true } }
+      for (var i = 0; i < $scope.user.transfer_cards.length; i++) {
+        if ($scope.card.id != $scope.user.transfer_cards[i].id) {
+          $scope.user.transfer_cards[i].is_default_transfer = false;
+        }
+      }
 
-    $scope.validatedAddCardForm = function(card_num, ccv) {
-      //validated card farm
-      return true;
+      cardPayload.default_transfer = true;
+      $scope.user.updateObj($scope.user, 'cards', cardPayload, $scope);
+
+      if ($scope.desktopMode) {
+        $timeout(function() {
+          closeDefaultCardModal();
+        }, 500)
+      }
+      LoadingService.showSuccess('Default set to card **- ' + $scope.card.card_last4, 2000)
+
     }
 
     var checkInputState = function(event) {
@@ -387,103 +272,214 @@
             return "";
         }
 
-
-
-
-    $scope.$on('$ionicView.beforeEnter', function(){
-
-
-    });
-
-    $scope.initCardAndFocusInput = function(callback) {
-      var payment_input = document.getElementById('card-input');
-      payment_input.focus();
-
-      var values = {name:$scope.user.name || null};
-      var formSelectors = {
-              numberInput: 'input#card-input',
-              expiryInput: 'input#expiry-input',
-      }
-
-
-
-      if ($scope.root.vars.editCardClicked) {
-        values.number = $scope.card_details.number;
-        values.expiry = '**/**';
-      }
-
-      $scope.card_js = new Card({
-          form: document.querySelector('form'),
-          container: '.card-wrapper',
-          values: values,
-          formSelectors: formSelectors,
-      });
-
-      if (callback) {
-        callback();
-      }
-
-    }
-
-    $scope.fireKeyUpEvent = function() {
-      var elem = document.getElementById('card-input');
-      var e = document.createEvent("KeyboardEvent");
-      e.initEvent("keyup", true, true);
-      e.view = window;
-      e.altKey = false;
-      e.ctrlKey = false;
-      e.shiftKey = false;
-      e.metaKey = false;
-      e.keyCode = 0;
-      e.charCode = 'a';
-      e.keyCode = 32;
-
-      elem.dispatchEvent(e);
-    }
-
-    $scope.$on('$ionicView.enter', function(){
-
-        if ($scope.root.vars.previous_page_ranking) {
-          $scope.debitCardOnly = true;
-        }
-
-        $timeout(function() {
-          LoadingService.hide();
-        }, 250);
-
-        var callback;
-        if ($scope.root.vars.editCardClicked) {
-          $scope.data.card_exists = true;
-
-          $timeout(function() {
-            var callback = function() {
-              $scope.card = JSON.parse($stateParams.cardObj);
-              $scope.card_details.expiry = '** / **';
-              $scope.card_details.number = '****-****-****-' + $scope.card.card_last4;
-              $timeout(function() {
-                $scope.fireKeyUpEvent();
-              }, 750);
-            }
-            $scope.initCardAndFocusInput(callback);
-          }, 500);
-        }
-
-        $timeout(function() {
-          var card_already_created = document.getElementsByClassName('jp-card');
-          if (!card_already_created || !card_already_created.length) {
-            $scope.initCardAndFocusInput(callback);
-          }
-
-        }, 500)
-
-    });
-
-    $scope.$on('$ionicView.leave', function() {
-      console.log('leaving view..');
-      $scope.root.vars.editCardClicked = null;
-    });
+        // $timeout(function() {
+        //   initHandlers();
+        // })
 
   }
 
 
 ])
+
+//helper functions
+
+var cardLength, cardValue;
+var el = document.getElementById("card-number"),
+  CreditCardTypeExpressions = [{
+    "card-type": "MasterCard",
+    "exp": function(num) {
+      return /^5[1-5]/.test(num);
+    }
+  }, {
+    "card-type": "Visa",
+    "exp": function(num) {
+      return /^4/.test(num);
+    }
+  }, {
+    "card-type": "American Express",
+    "exp": function(num) {
+      return /^3[47]/.test(num);
+    }
+  }, {
+    "card-type": "Discover",
+    "exp": function(num) {
+      return /^6/.test(num);
+    }
+  }],
+  GetCardType = function(num) {
+    for (var i = 0; i < CreditCardTypeExpressions.length; i++) {
+      if (CreditCardTypeExpressions[i]["exp"](num)) {
+        return CreditCardTypeExpressions[i]["card-type"];
+      }
+    }
+  }
+
+var cardLength, cardValue, el;
+var initHandlers = function() {
+
+
+      el = document.getElementById("card-number");
+
+      $("#card-number").on("keydown", function(e) {
+        cardLength = $(this).val().replace(/ /g, "").length;
+        cardValue = $(this).val();
+
+        if (e.keyCode == 8) {
+          if (pos == cardValue.length && cardLength % 4 == 0) {
+            $(this).val(cardValue.slice(0, cardValue.length - 1));
+          }
+          return;
+        } else if (e.keyCode > 57 || e.keyCode == 32) {
+          if (e.keyCode >= 96 && e.keyCode <= 105) {
+            return;
+          }
+          e.preventDefault();
+          return;
+        }
+
+      });
+
+      $("#card-number").on("keyup", function(e) {
+        cardLength = $(this).val().replace(/ /g, "").length;
+        cardValue = $(this).val().replace(/ /g, ""),
+          pos = GetCaretPosition(this),
+          newValue = "";
+
+        if (cardLength >= 15 || e.keyCode < 48 && e.keyCode != 8) {
+          e.preventDefault();
+          return;
+        }
+
+        for (var i = 0; i < cardValue.length; i++) {
+          if (i != 0 && i % 4 == 3) {
+            newValue = newValue + cardValue[i] + " ";
+          } else {
+            newValue = newValue + cardValue[i];
+          }
+        }
+
+        if (pos % 5 == 4) {
+          pos++;
+        } else if (pos % 5 == 0 && e.keyCode == 8) {
+          pos--;
+        }
+
+        $(this).val(newValue);
+
+        setCaretPosition(pos);
+        displayCardIcon($(this));
+
+      });
+
+      $("#exp-date").on("keydown", function(e) {
+        var value = $(this).val(),
+          length = value.length;
+
+        if (e.keyCode == 8) {
+          if (length == 5) {
+            $(this).val($(this).val().slice(0, 1));
+            e.preventDefault();
+            return;
+          }
+        } else if (e.keyCode > 57 || e.keyCode == 32) {
+          if (e.keyCode >= 96 && e.keyCode <= 105) {
+            return;
+          }
+          e.preventDefault();
+          return;
+        }
+      })
+
+      $("#exp-date").on("keyup", function(e) {
+        var value = $(this).val(),
+          length = value.length;
+
+        if (e.keyCode < 48 && e.keyCode != 8) {
+          e.preventDefault();
+          return;
+        }
+
+        value = value.replace(/ /g, "").replace(/\//, "");
+        var newValue = "";
+        for (var i = 0; i < value.length; i++) {
+          if (i == 1) {
+            newValue += value[i] + " / ";
+          } else {
+            newValue += value[i];
+          }
+        }
+        value = newValue;
+
+        if (value.charAt(0) != "0" && parseInt(value) > 1 && parseInt(value) < 10) {
+          value = "0" + value + " / ";
+        }
+
+        $(this).val(value);
+
+      });
+
+  }
+
+
+function setCaretPosition(pos) {
+
+  el.value = el.value;
+  if (el !== null) {
+    if (el.createTextRange) {
+      var range = el.createTextRange();
+      range.move('character', pos);
+      range.select();
+      return true;
+    } else {
+      if (el.selectionStart || el.selectionStart === 0) {
+        el.focus();
+        el.setSelectionRange(pos, pos);
+        return true;
+      } else {
+        el.focus();
+        return false;
+      }
+    }
+  }
+}
+
+function GetCaretPosition() {
+  var CaretPos = 0;
+  // IE Support
+  if (document.selection) {
+
+    el.focus();
+    var Sel = document.selection.createRange();
+
+    Sel.moveStart('character', -el.value.length);
+
+    CaretPos = Sel.text.length;
+  }
+  // Firefox support
+  else if (el.selectionStart || el.selectionStart == '0')
+    CaretPos = el.selectionStart;
+
+  return (CaretPos);
+
+}
+
+function displayCardIcon($el) {
+  switch (GetCardType(cardValue)) {
+    case "MasterCard":
+      $el.css("background", "url(https://www.gcmapp.net/components/payment_v2/MasterCardLogo.gif) no-repeat right");
+      break;
+    case "Visa":
+      $el.css("background", "url(https://www.gcmapp.net/components/payment_v2/VisaLogo.gif) no-repeat right");
+      break;
+    case "American Express":
+      $el.css("background", "url(https://www.gcmapp.net/components/payment_v2/AmExLogo.gif) no-repeat right");
+      break;
+    case "Discover":
+      $el.css("background", "url(https://www.gcmapp.net/components/payment_v2/DiscoverLogo.gif) no-repeat right");
+      break;
+    default:
+      $el.css("background", "none");
+  }
+}
+
+//end helper functions

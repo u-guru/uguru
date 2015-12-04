@@ -1,388 +1,388 @@
 {
     "Academic": {
         "background_url": "./img/categories/bg/academic.jpg", 
-        "description": "", 
-        "hex_color": "bg-cerise", 
+        "description": "Share your wisdom by tutoring courses you've mastered", 
+        "hex_color": "academic", 
         "icon_url": "./img/categories/icon/academic.svg", 
         "id": 5, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 3, 
+        "num_gurus": 101, 
         "num_subcategories": 4, 
         "subcategories": [
             {
-                "description": "", 
+                "description": "Share your wisdom by tutoring courses you've mastered", 
                 "icon_url": null, 
                 "id": 26, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "In Person", 
-                "num_gurus": 3
+                "num_gurus": 43
             }, 
             {
-                "description": "", 
+                "description": "Share your wisdom by tutoring courses you've mastered", 
                 "icon_url": null, 
                 "id": 27, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Remote (Video Chat)", 
-                "num_gurus": 3
+                "num_gurus": 98
             }, 
             {
-                "description": "", 
+                "description": "Share your wisdom by tutoring courses you've mastered", 
                 "icon_url": null, 
                 "id": 28, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Q&A", 
-                "num_gurus": 3
+                "num_gurus": 94
             }, 
             {
-                "description": "", 
+                "description": "Share your wisdom by tutoring courses you've mastered", 
                 "icon_url": null, 
                 "id": 29, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Office Hours", 
-                "num_gurus": 2
+                "num_gurus": 36
             }
         ]
     }, 
     "Baking": {
         "background_url": "./img/categories/bg/baking.jpg", 
-        "description": "", 
-        "hex_color": "bg-gold", 
+        "description": "Treat your fellow peers with homemade recipes cooked with love", 
+        "hex_color": "baking", 
         "icon_url": "./img/categories/icon/baking-small.svg", 
         "id": 2, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 6, 
+        "num_gurus": 57, 
         "num_subcategories": 7, 
         "subcategories": [
             {
-                "description": "", 
+                "description": "Treat your fellow peers with homemade recipes cooked with love", 
                 "icon_url": null, 
                 "id": 8, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cake", 
-                "num_gurus": 4
+                "num_gurus": 32
             }, 
             {
-                "description": "", 
+                "description": "Treat your fellow peers with homemade recipes cooked with love", 
                 "icon_url": null, 
                 "id": 9, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cupcakes", 
-                "num_gurus": 5
+                "num_gurus": 49
             }, 
             {
-                "description": "", 
+                "description": "Treat your fellow peers with homemade recipes cooked with love", 
                 "icon_url": null, 
                 "id": 10, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Donuts", 
-                "num_gurus": 5
+                "num_gurus": 42
             }, 
             {
-                "description": "", 
+                "description": "Treat your fellow peers with homemade recipes cooked with love", 
                 "icon_url": null, 
                 "id": 11, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Coffee", 
-                "num_gurus": 4
+                "num_gurus": 23
             }, 
             {
-                "description": "", 
+                "description": "Treat your fellow peers with homemade recipes cooked with love", 
                 "icon_url": null, 
                 "id": 12, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Flan", 
-                "num_gurus": 0
+                "num_gurus": 17
             }, 
             {
-                "description": "", 
+                "description": "Treat your fellow peers with homemade recipes cooked with love", 
                 "icon_url": null, 
                 "id": 13, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cookies", 
-                "num_gurus": 1
+                "num_gurus": 19
             }, 
             {
-                "description": "", 
+                "description": "Treat your fellow peers with homemade recipes cooked with love", 
                 "icon_url": null, 
                 "id": 14, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Brownies", 
-                "num_gurus": 0
+                "num_gurus": 14
             }
         ]
     }, 
     "Delivery": {
         "background_url": "./img/categories/bg/tech.jpg", 
-        "description": "", 
-        "hex_color": "bg-azure", 
+        "description": "Help other students get what they need on-demand", 
+        "hex_color": "delivery", 
         "icon_url": "./img/categories/icon/technology-small.svg", 
         "id": 1, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 1, 
+        "num_gurus": 22, 
         "num_subcategories": 7, 
         "subcategories": [
             {
-                "description": "", 
+                "description": "Help other students get what they need on-demand", 
                 "icon_url": null, 
                 "id": 1, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Food Delivery", 
-                "num_gurus": 1
+                "num_gurus": 19
             }, 
             {
-                "description": "", 
+                "description": "Help other students get what they need on-demand", 
                 "icon_url": null, 
                 "id": 2, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Car Sharing", 
-                "num_gurus": 1
+                "num_gurus": 18
             }, 
             {
-                "description": "", 
+                "description": "Help other students get what they need on-demand", 
                 "icon_url": null, 
                 "id": 3, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Truck Borrow", 
-                "num_gurus": 0
+                "num_gurus": 17
             }, 
             {
-                "description": "", 
+                "description": "Help other students get what they need on-demand", 
                 "icon_url": null, 
                 "id": 4, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Walgreens Run", 
-                "num_gurus": 0
+                "num_gurus": 17
             }, 
             {
-                "description": "", 
+                "description": "Help other students get what they need on-demand", 
                 "icon_url": null, 
                 "id": 5, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Chipotle, etc Run", 
-                "num_gurus": 0
+                "num_gurus": 16
             }, 
             {
-                "description": "", 
+                "description": "Help other students get what they need on-demand", 
                 "icon_url": null, 
                 "id": 6, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "School Supplies", 
-                "num_gurus": 0
+                "num_gurus": 15
             }, 
             {
-                "description": "", 
+                "description": "Help other students get what they need on-demand", 
                 "icon_url": null, 
                 "id": 7, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Late Night Snack/Coffee", 
-                "num_gurus": 0
+                "num_gurus": 14
             }
         ]
     }, 
     "Household": {
         "background_url": "./img/categories/bg/sports.jpg", 
-        "description": "", 
-        "hex_color": "bg-lake", 
+        "description": "College students can be lazy. Earn by doing simple household chores.", 
+        "hex_color": "household", 
         "icon_url": "./img/categories/icon/sports-small.svg", 
         "id": 7, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 4, 
+        "num_gurus": 27, 
         "num_subcategories": 5, 
         "subcategories": [
             {
-                "description": "", 
+                "description": "College students can be lazy. Earn by doing simple household chores.", 
                 "icon_url": null, 
                 "id": 39, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Laundry", 
-                "num_gurus": 3
+                "num_gurus": 22
             }, 
             {
-                "description": "", 
+                "description": "College students can be lazy. Earn by doing simple household chores.", 
                 "icon_url": null, 
                 "id": 40, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Vacuuming", 
-                "num_gurus": 2
+                "num_gurus": 22
             }, 
             {
-                "description": "", 
+                "description": "College students can be lazy. Earn by doing simple household chores.", 
                 "icon_url": null, 
                 "id": 41, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "House Cleaning", 
-                "num_gurus": 3
+                "num_gurus": 21
             }, 
             {
-                "description": "", 
+                "description": "College students can be lazy. Earn by doing simple household chores.", 
                 "icon_url": null, 
                 "id": 42, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Dishes", 
-                "num_gurus": 1
+                "num_gurus": 17
             }, 
             {
-                "description": "", 
+                "description": "College students can be lazy. Earn by doing simple household chores.", 
                 "icon_url": null, 
                 "id": 43, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Build Ikea Furniture", 
-                "num_gurus": 1
+                "num_gurus": 16
             }
         ]
     }, 
     "Photography": {
         "background_url": "./img/categories/bg/photography.jpg", 
-        "description": "", 
-        "hex_color": "bg-moola", 
+        "description": "Help your peers look great @ a college-friendly price (Not $100+/hr).", 
+        "hex_color": "photography", 
         "icon_url": "./img/categories/icon/photography-small.svg", 
         "id": 8, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 1, 
+        "num_gurus": 18, 
         "num_subcategories": 4, 
         "subcategories": [
             {
-                "description": "", 
+                "description": "Help your peers look great @ a college-friendly price (Not $100+/hr).", 
                 "icon_url": null, 
                 "id": 44, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Graduation Photos", 
-                "num_gurus": 0
+                "num_gurus": 16
             }, 
             {
-                "description": "", 
+                "description": "Help your peers look great @ a college-friendly price (Not $100+/hr).", 
                 "icon_url": null, 
                 "id": 45, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Professional Headshots", 
-                "num_gurus": 1
+                "num_gurus": 17
             }, 
             {
-                "description": "", 
+                "description": "Help your peers look great @ a college-friendly price (Not $100+/hr).", 
                 "icon_url": null, 
                 "id": 46, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Athletic & Action Images", 
-                "num_gurus": 0
+                "num_gurus": 16
             }, 
             {
-                "description": "", 
+                "description": "Help your peers look great @ a college-friendly price (Not $100+/hr).", 
                 "icon_url": null, 
                 "id": 47, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Outdoor & Scenery", 
-                "num_gurus": 1
+                "num_gurus": 16
             }
         ]
     }, 
     "Services": {
         "background_url": "./img/categories/bg/consulting.jpg", 
-        "description": "", 
-        "hex_color": "bg-orange", 
+        "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
+        "hex_color": "freelancing", 
         "icon_url": "./img/categories/icon/consulting-small.svg", 
         "id": 6, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 0, 
+        "num_gurus": 23, 
         "num_subcategories": 9, 
         "subcategories": [
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 30, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Design", 
-                "num_gurus": 0
+                "num_gurus": 19
             }, 
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 31, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Interview Help", 
-                "num_gurus": 0
+                "num_gurus": 20
             }, 
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 32, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Resume Building", 
-                "num_gurus": 0
+                "num_gurus": 19
             }, 
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 33, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Skill Building", 
-                "num_gurus": 0
+                "num_gurus": 19
             }, 
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 34, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Website Building", 
-                "num_gurus": 0
+                "num_gurus": 18
             }, 
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 35, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Professional Writing", 
-                "num_gurus": 0
+                "num_gurus": 20
             }, 
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 36, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Programming Questions", 
-                "num_gurus": 0
+                "num_gurus": 15
             }, 
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 37, 
                 "is_active": false, 
@@ -391,138 +391,138 @@
                 "num_gurus": 0
             }, 
             {
-                "description": "", 
+                "description": "Specialize in something particular? We welcome all types of freelancers and consultants!", 
                 "icon_url": null, 
                 "id": 38, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Beauty & Grooming", 
-                "num_gurus": 0
+                "num_gurus": 1
             }
         ]
     }, 
     "Sports & Muscle": {
         "background_url": "./img/categories/bg/household.jpg", 
-        "description": "", 
-        "hex_color": "bg-shamrock", 
+        "description": "Put your muscles to good use. Your peers could use the extra hand!", 
+        "hex_color": "athletic", 
         "icon_url": "./img/categories/icon/household-small.svg", 
         "id": 3, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 0, 
+        "num_gurus": 14, 
         "num_subcategories": 6, 
         "subcategories": [
             {
-                "description": "", 
+                "description": "Put your muscles to good use. Your peers could use the extra hand!", 
                 "icon_url": null, 
                 "id": 15, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Moving Help", 
-                "num_gurus": 0
+                "num_gurus": 14
             }, 
             {
-                "description": "", 
+                "description": "Put your muscles to good use. Your peers could use the extra hand!", 
                 "icon_url": null, 
                 "id": 16, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Team Sports", 
-                "num_gurus": 0
+                "num_gurus": 14
             }, 
             {
-                "description": "", 
+                "description": "Put your muscles to good use. Your peers could use the extra hand!", 
                 "icon_url": null, 
                 "id": 17, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Personal Trainer", 
-                "num_gurus": 0
+                "num_gurus": 15
             }, 
             {
-                "description": "", 
+                "description": "Put your muscles to good use. Your peers could use the extra hand!", 
                 "icon_url": null, 
                 "id": 18, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Weight Training", 
-                "num_gurus": 0
+                "num_gurus": 14
             }, 
             {
-                "description": "", 
+                "description": "Put your muscles to good use. Your peers could use the extra hand!", 
                 "icon_url": null, 
                 "id": 19, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Yoga", 
-                "num_gurus": 0
+                "num_gurus": 14
             }, 
             {
-                "description": "", 
+                "description": "Put your muscles to good use. Your peers could use the extra hand!", 
                 "icon_url": null, 
                 "id": 20, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Cardio Activities", 
-                "num_gurus": 0
+                "num_gurus": 14
             }
         ]
     }, 
     "Technology & IT": {
         "background_url": "./img/categories/bg/delivery.jpg", 
-        "description": "", 
-        "hex_color": "bg-eggplant", 
+        "description": "Save the day for peers who don't live & breath tech (yet...).", 
+        "hex_color": "tech", 
         "icon_url": "./img/categories/icon/delivery-small.svg", 
         "id": 4, 
         "is_active": true, 
         "is_approved": true, 
-        "num_gurus": 0, 
+        "num_gurus": 18, 
         "num_subcategories": 5, 
         "subcategories": [
             {
-                "description": "", 
+                "description": "Save the day for peers who don't live & breath tech (yet...).", 
                 "icon_url": null, 
                 "id": 21, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Wifi setup", 
-                "num_gurus": 0
+                "num_gurus": 17
             }, 
             {
-                "description": "", 
+                "description": "Save the day for peers who don't live & breath tech (yet...).", 
                 "icon_url": null, 
                 "id": 22, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Phone Screen Repair", 
-                "num_gurus": 0
+                "num_gurus": 17
             }, 
             {
-                "description": "", 
+                "description": "Save the day for peers who don't live & breath tech (yet...).", 
                 "icon_url": null, 
                 "id": 23, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Computer Repair", 
-                "num_gurus": 0
+                "num_gurus": 16
             }, 
             {
-                "description": "", 
+                "description": "Save the day for peers who don't live & breath tech (yet...).", 
                 "icon_url": null, 
                 "id": 24, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Virus Removal", 
-                "num_gurus": 0
+                "num_gurus": 15
             }, 
             {
-                "description": "", 
+                "description": "Save the day for peers who don't live & breath tech (yet...).", 
                 "icon_url": null, 
                 "id": 25, 
                 "is_active": false, 
                 "is_approved": false, 
                 "name": "Software Setup", 
-                "num_gurus": 0
+                "num_gurus": 17
             }
         ]
     }

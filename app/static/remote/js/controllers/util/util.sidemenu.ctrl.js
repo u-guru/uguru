@@ -64,10 +64,10 @@ angular.module('uguru.util.controllers')
       }
       $scope.desktopGoBack = function() {
         $ionicViewSwitcher.nextDirection('enter');
-        if ($scope.root.vars.guru_mode) {
-          $state.go('^.guru');
+        if ($scope.desktopMode) {
+          $state.go('^.guru-home');
         } else {
-          $state.go('^.home');
+          $state.go('^.guru');
         }
 
       }
@@ -89,7 +89,8 @@ angular.module('uguru.util.controllers')
 
     ModalService.init('university', $scope);
     var sideMenu = document.querySelectorAll('ion-side-menu')[0];
-    sideMenu.style.width = 0 +'px';
+    console.log("Set sideMenu width")
+    console.log("Check sideMenu width ", sideMenu.style.width)
 
     $scope.openModal = function(modalName) {
       ModalService.open(modalName, $scope);
@@ -104,6 +105,7 @@ angular.module('uguru.util.controllers')
       time = time || 0;
       $timeout(function() {
         LoadingService.hide();
+        $scope.loader.hide();
       }, time)
     }
 
@@ -185,11 +187,20 @@ angular.module('uguru.util.controllers')
       };
 
       $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
-      LoadingService.show();
-      $timeout(function() {
-        $scope.toggleBackToLoginMode();
-      }, 500);
+      LoadingService.showAmbig();
     };
+
+    $scope.toggleDiscoverability = function() {
+      $scope.user.guru_discoverability = !$scope.user.guru_discoverability;
+      if ($scope.user.guru_discoverability) {
+        var success_message = 'Discoverability set to ON'
+      } else {
+        var success_message = 'Discoverability set to OFF'
+      }
+      LoadingService.showSuccess(success_message, 2000, function() {
+        $scope.user.updateAttr('discoverability', $scope.user, $scope.user.guru_discoverability, null, $scope);
+      });
+    }
 
     $scope.toggleResetModeFromLogin = function() {
       $scope.root.vars.loginMode = false;
@@ -314,8 +325,23 @@ angular.module('uguru.util.controllers')
       }
     };
 
-    $scope.launchEditPasswordPopup = function(target) {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/payments.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.paymentsModal = modal;
+    });
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/notifications.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.notificationsModal = modal;
+    });
+
+
+    $scope.launchEditPasswordPopup = function(target) {
+      //@JASON this doesn't show the LoadingService message cuz of CSS z-index issue
       PopupService.open('editPassword', callback,target);
       function callback() {
           if ($scope.popupInput.editPasswordOld.length === 0 && $scope.popupInput.editPasswordNew.length === 0) {
@@ -329,20 +355,19 @@ angular.module('uguru.util.controllers')
                 old_password: $scope.popupInput.editPasswordOld
             };
 
-            LoadingService.show();
+            LoadingService.showAmbig(null, 5000);
             var successCallback = function() {
               LoadingService.hide();
               LoadingService.showSuccess('Password Successfully Changed', 1500);
               PopupService.close('editPassword');
             };
             var failureCallback = function(resp) {
-              LoadingService.hide();
-              $scope.defaultFallbackPlan(resp);
-              LoadingService.showSuccess('Something went wrong ... Please contact support!', 1500);
-              PopupService.close('editPassword');
-
-              $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
+              alert('Incorrect original password. Please try again or logout & reset your password');
+              // PopupService.close('editPassword');
+              $scope.popupInput.editPasswordNew = '';
+              $scope.popupInput.editPasswordOld = '';
             };
+            $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
           }
           else {
             alert('Please enter a password longer than 6 characters');
@@ -492,6 +517,13 @@ angular.module('uguru.util.controllers')
       });
     };
 
+    $scope.resetCache = function() {
+      AdminService.resetCache();
+      LoadingService.showAmbig('Resetting Cache..', 1500, function(){
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.university');
+      })
+    }
 
 
     $scope.resetAccount = function() {
@@ -543,6 +575,23 @@ angular.module('uguru.util.controllers')
 
     };
 
+    $scope.toggleEmailNotifications = function() {
+      $scope.user.email_notifications = !$scope.user.email_notifications;
+      $scope.user.updateAttr('email_notifications', $scope.user, $scope.user.email_notifications, null, $scope);
+    }
+
+    $scope.toggleTextNotifications = function() {
+      $scope.user.text_notifications = !$scope.user.text_notifications;
+      $scope.user.updateAttr('text_notifications', $scope.user, $scope.user.text_notifications, null, $scope);
+    }
+
+    $scope.saveNotifications = function() {
+      LoadingService.showSuccess("Saved", 2500);
+      $timeout(function() {
+        $scope.notificationsModal.hide();
+      }, 500)
+    }
+
     $scope.goToStudent = function() {
 
 
@@ -551,7 +600,7 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
           LoadingService.hide();
         }, 500);
-        AnimationService.flip('^.home');
+        AnimationService.flip('^.guru-home');
 
       //let the server know the user was on guru mode for the next time app opens
 
@@ -579,7 +628,6 @@ angular.module('uguru.util.controllers')
             $scope.progress_active = false;
           }, 1000);
     };
-
 
   }
 

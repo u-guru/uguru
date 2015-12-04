@@ -1,15 +1,15 @@
-"use strict";
-var IP = '192.168.0.110'
-var device = 'IOS'
+
+var device = 'ios'
+var IP = "http://192.168.0.107:5000/static/remote/index.html"
+ // var IP = "http://localhost:8100"
+
 exports.config = {
+     params: {
+                screenSize : "1600x1050"
+              },
     framework: 'jasmine2',
-
-     // baseUrl: 'http://10.0.0.2:8000/',
-     // baseUrl: 'http://192.168.56.109:5555/',
-
-    //appium port has to be 4723
-      // seleniumAddress: 'http://localhost:4444/wd/hub',
-     seleniumAddress: 'http://localhost:4723/wd/hub',
+        
+         seleniumAddress: 'http://localhost:4723/wd/hub',
 
          //iphone 5s jason settings
          // ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
@@ -26,255 +26,38 @@ exports.config = {
             autoAcceptAlerts : 'true',
             noReset : 'true',
         },
-
         specs:
-
         [
-          // '../e2e/workflows//access.js',
-          '../e2e/ios/workflows/workflow#*.js',    
-
-
+          // '../e2e/browser/firsttimeusrSpec.js', 
+          '../e2e/ios/bestCaseSpec.js'
+   
         ],
-        suites:
+          suites:
         {
-            access: ['../e2e/access/*Spec.js'],
-            
-            university: [
-                         '../test_case/mobileTest/workflows/access.js',
-                         '../e2e/university/universitySpec.js'
-                        ],
-            home : 
-                  [
-                    '../test_case/mobileTest/workflows/access.js',
-                    '../test_case/mobileTest/workflows/university.js', 
-                    '../e2e/workflows/home.js',
-                  ],
-            sign:   [
-                   '../test_case/mobileTest/workflows/access.js',
-                   '../test_case/mobileTest/workflows/university.js', 
-                   // '../test_case/mobileTest/sidemenu/sidemenu.js',
-                      // '../test_case/mobileTest/guruProfile/home.js',
-                      '../test_case/mobileTest/sidemenu/signup.js'
-                    ],
+            ios  :[
+                  '../e2e/browser/iphoneSpec.js',    
 
-            side:   [
-                      // '../test_case/mobileTest/workflows/access.js',
-                      // '../test_case/mobileTest/workflows/university.js', 
-                      '../test_case/mobileTest/sidemenu/sidemenu.js'
-                    ],
-
-            major:  [
-                      '../test_case/mobileTest/workflows/access.js',
-                      '../test_case/mobileTest/workflows/university.js', 
-                      '../e2e/becomeGuru/majorSpec.js'
-                    ],
-            alert:  [
-        
-                      '../e2e/alertTest.js'
-                    ],
-            course: [ 
-                        '../test_case/mobileTest/workflows/access.js',
-                        '../test_case/mobileTest/workflows/university.js', 
-                        '../e2e/workflows/major.js',
-                        '../e2e/becomeGuru/courseSpec.js',
-                    ],
-            category:[
-                        '../test_case/mobileTest/workflows/access.js',
-                        '../test_case/mobileTest/workflows/university.js', 
-                        '../e2e/workflows/major.js',
-                        '../e2e/workflows/course.js',
-                        '../e2e/becomeGuru/categorySpec.js'
-                     ],
-             photo:[
-                          '../test_case/mobileTest/workflows/access.js',
-                          '../test_case/mobileTest/workflows/university.js', 
-                          '../e2e/workflows/major.js',
-                          '../e2e/workflows/course.js',
-                          '../e2e/workflows/category.js',
-                          '../e2e/becomeGuru/photoSpec.js'
-                    ],
-              guruHome:[
-                          // '../test_case/mobileTest/workflows/access.js',
-                          // '../test_case/mobileTest/workflows/university.js', 
-                          //  '../e2e/workflows/home.js',
-                          //  '../e2e/workflows/major.js',
-                          //  '../e2e/workflows/course.js',
-                          //  '../e2e/workflows/category.js',
-                          //  '../e2e/becomeGuru/photoSpec.js',
-                           '../e2e/account/signupSpec.js',
-                           // '../e2e/guruProfile/homeSpec.js',
-
-                          // '../test_case/mobileTest/guruProfile/home.js'
-                     ],
-             credit:[
-                         // '../test_case/mobileTest/workflows/access.js',
-                         // '../test_case/mobileTest/workflows/university.js', 
-                         // '../test_case/mobileTest/workflows/major.js',
-                         // '../test_case/mobileTest/workflows/course.js',
-                         // '../test_case/mobileTest/workflows/category.js',
-                         // '../test_case/mobileTest/workflows/photo.js',
-                         '../test_case/mobileTest/guruProfile/creditibility.js'
-                    ],
-             editGuru:[
-                         // '../test_case/mobileTest/workflows/access.js',
-                         // '../test_case/mobileTest/workflows/university.js', 
-                         // '../test_case/mobileTest/workflows/major.js',
-                         // '../test_case/mobileTest/workflows/course.js',
-                         // '../test_case/mobileTest/workflows/category.js',
-                         // '../test_case/mobileTest/workflows/photo.js',
-                          '../test_case/mobileTest/sidemenu/signup.js',
-                         '../test_case/mobileTest/guruProfile/home.js',
-                         '../test_case/mobileTest/guruProfile/editProfile.js'
-                    ],
-              becomeGuru:[
-                         '../e2e/becomeGuru/majorSpec.js',
-                         '../e2e/becomeGuru/courseSpec.js',
-                         '../e2e/becomeGuru/categorySpec.js',
-                         '../e2e/becomeGuru/photoSpec.js'
-                         ],
-              all : [
-                      '../e2e/access/*Spec.js',
-                      '../e2e/university/*Spec.js',
-                      '../e2e/becomeGuru/major.js',
-                      '../e2e/becomeGuru/course.js',
-                      '../e2e/becomeGuru/category.js',
-                      '../e2e/becomeGuru/photo.js',
-                      '../test_case/mobileTest/guruProfile/home.js',
-                      '../test_case/mobileTest/sidemenu/signup.js',
-                      '../test_case/mobileTest/guruProfile/editProfile.js',
-                      '../test_case/mobileTest/guruProfile/creditibility.js'
-                    ],
-              mobile : 
-                       [
-                           '../e2e/access/*Spec.js',
-                           '../e2e/university/*Spec.js',
-                           '../e2e/workflows/home.js',
-                           '../e2e/becomeGuru/majorSpec.js',
-                           '../e2e/becomeGuru/courseSpec.js',
-                           '../e2e/becomeGuru/categorySpec.js',
-                           '../e2e/becomeGuru/photoSpec.js',
-                           '../test_case/mobileTest/sidemenu/signup.js',
-                           '../test_case/mobileTest/guruProfile/home.js',
-                           '../test_case/mobileTest/guruProfile/editProfile.js',
-                           '../test_case/mobileTest/guruProfile/creditibility.js'
-                       ],
-               work_A : [
-                           '../test_case/mobileTest/workflows/access.js',
-                           '../test_case/mobileTest/workflows/university.js', 
-                           '../e2e/workflows/home.js',
-                           '../e2e/workflows/side.js',
-                           '../e2e/workflows/editUniversity.js',
-                           // '../e2e/becomeGuru/majorSpec.js',
-                           // '../e2e/becomeGuru/courseSpec.js',
-                           // '../e2e/becomeGuru/categorySpec.js',
-                           // '../e2e/becomeGuru/photoSpec.js'
-                       ],
-                work_C_sign : [
-                           '../e2e/workflows/access.js',
-                           '../test_case/mobileTest/workflows/university.js', 
-                           '../e2e/workflows/home.js',
-                           '../e2e/workflows/side.js',
-                           '../e2e/workflows/SignAtSidebar.js',
-                           '../e2e/workflows/major.js',
-                           '../e2e/workflows/course.js',
-                           '../e2e/workflows/category.js',
-                           '../e2e/becomeGuru/photoSpec.js',
-                           '../e2e/side/switchStudentSpec.js',
-                           // '../e2e/becomeGuru/majorSpec.js',
-                           // '../e2e/becomeGuru/courseSpec.js',
-                           // '../e2e/becomeGuru/categorySpec.js',
-                           // '../e2e/becomeGuru/photoSpec.js',
-                           // '../e2e/workflows/side.js'
-                       ],
-                 work_C_log : [
-                            '../e2e/workflows/access.js',
-                            '../test_case/mobileTest/workflows/university.js', 
-                            '../e2e/workflows/home.js',
-                            '../e2e/workflows/side.js',
-                            '../e2e/workflows/LoginAtSidebar.js',
-                            '../e2e/workflows/major.js',
-                            '../e2e/workflows/course.js',
-                            '../e2e/workflows/category.js',
-                            '../e2e/becomeGuru/photoSpec.js',
-                            '../e2e/side/switchStudentSpec.js',
-                            // '../e2e/becomeGuru/majorSpec.js',
-                            // '../e2e/becomeGuru/courseSpec.js',
-                            // '../e2e/becomeGuru/categorySpec.js',
-                            // '../e2e/becomeGuru/photoSpec.js',
-                            // '../e2e/workflows/side.js'
-                        ],
-                 work_D : [
-                            '../e2e/workflows/access.js',
-                            '../test_case/mobileTest/workflows/university.js', 
-                            '../e2e/workflows/home.js',
-                            '../e2e/workflows/side.js',
-                            '../e2e/workflows/SignAtSidebar.js',
-                            '../e2e/workflows/major.js',
-                            '../e2e/workflows/course.js',
-                            '../e2e/workflows/category.js',
-                            '../e2e/becomeGuru/photoSpec.js',
-                            '../e2e/workflows/side.js',
-                            '../e2e/side/switchStudentSpec.js',
-                            // '../e2e/becomeGuru/majorSpec.js',
-                            // '../e2e/becomeGuru/courseSpec.js',
-                            // '../e2e/becomeGuru/categorySpec.js',
-                            // '../e2e/becomeGuru/photoSpec.js',
-                            // '../e2e/workflows/side.js'
-                        ],
-                  bugs : [
-                            // // '../e2e/bugs/error_universitylist.js', //doesn't need anymore
-                            // '../e2e/bugs/error_universityScroll.js',
-                            // '../e2e/bugs/error_gps.js',
-                            // '../e2e/bugs/error_majorScroll.js',
-                            // '../e2e/bugs/error_majorSearch.js',
-                            //   '../e2e/bugs/error_courseList.js',
-                            // '../e2e/bugs/error_profileEditTest.js',
-                            // // '../e2e/bugs/error_guruProfileButton.js', //imcomplicated 
-                            // '../e2e/bugs/error_sideFacebookButton.js',
-                            // '../e2e/bugs/error_editPassword.js',
-                            // '../e2e/bugs/error_loginNewAccount.js',
-                            // '../e2e/bugs/error_loginExistAccount.js', 
-                            // // '../e2e/bugs/error_GPSalertAfterLogoff.js', // prob doesn't need
-                            //    '../e2e/bugs/error_guruProfileMajorCourse.js', //imcomplicated 
-                            //  '../e2e/bugs/error_scrollAddSkill.js', 
-                            //  '../e2e/bugs/error_phone.js', 
-                            //   '../e2e/bugs/error_QAsupport.js', 
-                            //   '../e2e/bugs/error_profilePhoto.js', 
-                            //   // '../e2e/bugs/error_profileName.js',  // incomplicated 
-                            // '../e2e/bugs/error_BecomeGuruToProfile.js', 
-                            // // '../e2e/bugs/error_sidebar.js', 
-                          ],
-      production_error  :[
-                            
-                          // '../e2e/production/error_7.js',
-                          // '../e2e/production/error_9.js',
-                          // '../e2e/production/error_11.js',
-                          '../e2e/production/issue#3935.js',
-                         ]
-
+                 ]
+          
         },
-        // restartBrowserBetweenTests: true,
+   
+        // resultJsonOutputFile: '../test_case/Release_One_Web/result.json',
         rootElement: "[ng-app]" ,
-
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
                           showColors: true,
-                          defaultTimeoutInterval: 4000000,
+                          defaultTimeoutInterval: 400000,
                           isVerbose: true,
                           silent: true
                           ,
                           print: function() {}
 
                           },
-        getPageTimeout: 4000000,
-        allScriptsTimeout: 4000000,
-        onPrepare: function () {
-           var wd = require('wd'),
-                   protractor = require('protractor'),
-                    wdBridge = require('wd-bridge')(protractor, wd);
-                   wdBridge.initFromProtractor(exports.config);
+        // getPageTimeout: 10000,
+         allScriptsTimeout: 10000,
 
-            var SpecReporter = require('jasmine-spec-reporter');
+        onPrepare: function () {
+           var SpecReporter = require('jasmine-spec-reporter');
             // var webdriver = require('selenium-webdriver');
 
             // add jasmine spec reporter
@@ -299,49 +82,55 @@ exports.config = {
                     },
                     customProcessors: []
                 }));
-
-
-// var webdriver = require('selenium-webdriver'),
-//     By = require('selenium-webdriver').By,
-//     until = require('selenium-webdriver').until;
-
-// var driver = new webdriver.Builder()
-//     .forBrowser('chrome')
-//     .build();
-
-    
-            protractor.get = require('../test_case/globals.js').globals;
-            protractor.run = require('../test_case/globals.js').run;
-
-            global.doc =require('../test_case/newGlobals.js');
-            global.account = require('../e2e/account/accountPageObject.js');
-            global.credibility = require('../e2e/guruProfile/creditibilityPageObject.js');
-            global.guruprofile = require('../e2e/guruProfile/GuruProfilePageObject.js');
-            global.guru = require('../e2e/guruProfile/guruPageObject.js');
-            global.university = require('../e2e/university/universityPageObject.js');
-            global.access = require('../e2e/access/accessPageObject.js');
-            global.major = require('../e2e/becomeGuru/majorPageObject.js');
-            global.course = require('../e2e/becomeGuru/coursePageObject.js');
-            global.category = require('../e2e/becomeGuru/categoryPageObject.js');
-            global.home= require('../e2e/home/homePageObject.js');
-            global.photo = require('../e2e/becomeGuru/photoPageObject.js');
-            global.sidebar= require('../e2e/side/sidebarPageObject.js');
-
-
-
-
             global.EC  = protractor.ExpectedConditions;
-            global.localhost = IP
+
+            global.lib = require('../e2e/components/lib.js');
+            // global.demo =require('../e2e/components/DemographicPageObject.js');
+            // global.university =require('../e2e/components/universityPageObject.js');
+            // global.home =require('../e2e/components/foodMainPageObject.js');
+            // global.gpa =require('../e2e/components/GPAPageObject.js');
+            // global.side = require('../e2e/components/sidePageObject.js');
+            // global.account = require('../e2e/components/accountPageObject.js');
+            // global.map = require('../e2e/components/mapPageObject.js');
+              global.doc =require('../test_case/newGlobals.js');
+              global.account = require('../e2e/old/account/accountPageObject.js');
+              global.credibility = require('../e2e/old/guruProfile/creditibilityPageObject.js');
+              global.guruprofile = require('../e2e/old/guruProfile/GuruProfilePageObject.js');
+              global.guru = require('../e2e/old/guruProfile/guruPageObject.js');
+              global.university = require('../e2e/old/university/universityPageObject.js');
+              global.access = require('../e2e/old/access/accessPageObject.js');
+              global.major = require('../e2e/old/becomeGuru/majorPageObject.js');
+              global.course = require('../e2e/old/becomeGuru/coursePageObject.js');
+              global.category = require('../e2e/old/becomeGuru/categoryPageObject.js');
+              global.home= require('../e2e/old/home/homePageObject.js');
+              global.photo = require('../e2e/old/becomeGuru/photoPageObject.js');
+              global.sidebar= require('../e2e/old/side/sidebarPageObject.js');
+            global.url = IP 
             global.device = device
+            // global.screenlist = screenSizes
 
             // browser.manage().deleteAllCookies();
             // browser.executeScript('window.sessionStorage.clear();');
             // browser.executeScript('window.localStorage.clear();');
-            // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
-            // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
-             // browser.get("http://localhost:8100/#/")
+            // browser.getCapabilities().then(function(caps)
+            //   {
+            //     global.platform = caps.caps_.platform.toUpperCase();
+            //     global.browserName = caps.caps_.browserName.toUpperCase();
+            //     // console.log(caps.caps_.platform)
+            //     // console.log(caps.caps_.browserName)  
+            //     console.log("Platform : ",global.platform)
+            //     console.log("BrowserName : ",global.browserName)  
+            //   });
+            var w =  Number(browser.params.screenSize.split('x')[0])
+            var h =  Number(browser.params.screenSize.split('x')[1]) 
+            console.log( "W : "+ w+ " H :"+h)
+            // browser.driver.manage().window().setSize(w,h);
+
+            browser.get(url);
+            // browser.get("http://"+localhost+":8100");
             // browser.sleep(3000);
 
         }
-        
+
+
 };

@@ -12,20 +12,29 @@ def generate_flickr_url(farm_id, server_id, photo_id, secret):
     return "https://farm%s.staticflickr.com/%s/%s_%s_z.jpg" %(farm_id, server_id, photo_id, secret)
 
 
-def search_university_response_api(tags=['panorama', 'campus','outdoors'], text="UC Berkeley", all_or='any'):
-    print text
+def search_university_response_api(university):
     response = flickr.photos.search(
         api_key=FLICKR_API_KEY,
-        # geo_context=2,
-        tags=tags,
-        safe_search=1,
-        tag_mode=all_or,
+        license="4,5,6,7",
         content_type=1,
-        text=text,
-        # lat=university.latitude,You as
-        # lon=university.longitude,
-        # radius=20,
         sort='relevance',
+
+        ###
+        ## university.name
+        ## university.city
+        ## university.state
+        ## university.short_name
+
+        ## ones that you can edit
+        # tags="college, students, panorama, campus, university, students, building, library, %s, " % (university.name),
+        tag_mode='any',
+        tags=university.name,
+        text=university.name,
+
+        # lat=university.latitude,
+        # lon=university.longitude,
+        # radius=100,
+        # has_geo=True,
         extras='description, tags, views',
         format='json')
     # with open('flickr_response.json','wb') as outfile:
@@ -44,13 +53,13 @@ def parse_flickr_response(flickr_response):
 def process_returned_photos(photos_arr):
     result_photos = []
     for photo_obj in photos_arr:
-        if photo_obj['ispublic']:
-            result_photos.append({
-                'title':photo_obj['title'],
-                'url': generate_flickr_url(photo_obj['farm'], photo_obj['server'], photo_obj['id'], photo_obj['secret']),
-                'views': int(photo_obj['views']),
-                'description': photo_obj['description']
-                })
+        # if photo_obj['ispublic']:
+        result_photos.append({
+            'title':photo_obj['title'],
+            'url': generate_flickr_url(photo_obj['farm'], photo_obj['server'], photo_obj['id'], photo_obj['secret']),
+            'views': int(photo_obj['views']),
+            'description': photo_obj['description']
+            })
     # array.append(result_photos)
     # print result_photos
     return result_photos

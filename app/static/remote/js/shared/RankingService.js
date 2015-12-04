@@ -57,6 +57,13 @@ function RankingService() {
 		if (progressCircle) {
       return progressCircle;
     }
+
+    elem = document.querySelector('#guru-ranking-progress-bar')
+    if (elem) {
+      console.log('circle already exists!');
+      return;
+    }
+
     var circle = new ProgressBar.Circle(selector, {
               color: '#2B3234',
               strokeWidth: 8,
@@ -109,16 +116,16 @@ function RankingService() {
         var base = 25;
         var max_points = 100;
 
-        if (user.current_credibility_percent) {
+        // if (user.current_credibility_percent) {
             newCredibility = Math.round((calcCredibility(user) / 400.0), 2);
             console.log('credibility', newCredibility)
             base += newCredibility;
-        }
-        if (user.current_profile_percent) {
+        // }
+        // if (user.current_profile_percent) {
             newProfile = Math.round(calcProfile(user), 2)
             console.log('profile', newProfile / 2);
             base += Math.round((newProfile / 2), 2);
-        }
+        // }
         // cant ever get a hundo (unless premium ;) LOL
         if (base === 100) {
           base = 99;
@@ -138,7 +145,7 @@ function RankingService() {
         if (user.transcript_file && user.transcript_file.url && user.transcript_file.url.length) {
             base += default_item_weight;
         }
-        if (user.guru_experiences.length) {
+        if (user.guru_experiences && user.guru_experiences.length) {
             base += default_item_weight;
         }
         if (user.school_email_confirmed) {
@@ -191,9 +198,9 @@ function RankingService() {
         if (user.guru_experiences && user.guru_experiences.length) {
             base += default_item_weight;
         }
-        if (user.categories && user.categories.length >= 2) {
+        if (user.subcategories && user.subcategories.length >= 2) {
             base += (2*default_item_weight);
-        } else if (user.categories && user.categories.length === 1) {
+        } else if (user.subcategories && user.subcategories.length === 1) {
             base += default_item_weight;
         }
         if (user.guru_languages && user.guru_languages.length) {

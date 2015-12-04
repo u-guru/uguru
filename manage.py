@@ -43,6 +43,28 @@ if arg == 'ios_push':
     else:
         print "Please pass in message && device token"
 
+if arg == 'init_profile_codes':
+    from app.models import User
+    from app.database import db_session
+    from random import randint
+    profile_codes = []
+    for user in sorted(User.query.all(), key=lambda k:k.total_earned, reverse=True):
+        if not user.name or user.profile_code:
+            continue
+        user_first_name = user.name.split(' ')[0]
+        if user_first_name.lower() not in profile_codes:
+            user.profile_code = user_first_name
+            db_session.commit()
+            profile_codes.append(user.profile_code)
+        else:
+            user_profile_code = user_first_name + str(randint(0, 100))
+            if user_profile_code in profile_codes:
+                print 'dafuq', user.id, user.name
+                continue
+            user.profile_code = user_profile_code
+            db_session.commit()
+            profile_codes.append(user.profile_code)
+
 if arg == 'windows_push':
     from app.lib.push_notif import *
     if len(sys.argv) > 3:
@@ -298,6 +320,25 @@ def print_categories():
         for subcategory in category.subcategories:
             print '    >>', subcategory.name
         print
+
+
+if arg == 'init_mandrill_wh':
+    import mandrill, os
+
+    MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+    mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
+
+    def getAllMandrillWebhooks():
+        return mandrill_client.webhooks.list()
+
+    def createMandrillWebhook(url):
+        return mandrill_client.webhooks.add(url=url, events=["open", "click"])
+
+
+    new_webhook_info = createMandrillWebhook("https://www.uguru.me")
+    from pprint import pprint
+    pprint(new_webhook_info)
+
 
 
 def generate_categories_json():
@@ -571,34 +612,117 @@ if arg == 'update':
         env = 'local'
     print v.latest_ios, 'updated to', env
 
+if arg == 'seed_admin':
+    user = User.query.filter_by(email='jeselle@uguru.me').first()
+    from hashlib import md5
+
+    from app.database import db_session
+    from app.models import *
+
+
+    admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    admin_emails = [_tuple[0] for _tuple in admin_accounts]
+    u = University.query.get(2307)
+
+
+    #teston jeselle
+    admin_account = admin_accounts[-1]
+    account_name = admin_account[1]
+
+    # check user exists
+    if not user:
+        print "something is wrong"
+        sys.exit()
+
+
+    # initiate regular profile attributes
+
+    user.fb_id = 'sjd9qdjoiqwjdijwqeidjioad'
+    user.is_admin = True
+    user.name = account_name
+    user.password = md5('launchuguru123').hexdigest()
+    user.profile_code = account_name.split(' ')[0].lower()
+    user.referral_code = account_name.split(' ')[0].lower()
+    user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
+
+    # save changes to local database
+    db_session.commit()
+    # v1.0
+
+    ## Helper functions
+    def createNewFile(user):
+        _file = File()
+        _file.user_id = user.id
+        _file.url = user.profile_url
+        db_session.add(_file)
+        db_session.commit()
+        return _file
+
+    #example of deleting a user's files
+    def deleteAllUserFiles(user):
+        for _file in user.files:
+            _file.user_id = None
+            user.files.remove(_file)
+            db_session.delete(_file)
+            db_session.commit()
+
+
+    user.school_email_confirmed = True
+
+    # before creating a new file, lets deleate any old ones
+    print len(user.files)
+    deleteAllUserFiles(user)
+    transcript_file = createNewFile(user)
+    print len(user.files)
+
+
+    # db_session.commit()
+    # print len(user.files)
+
+
+
+
+    # Goal
+    # --> Create hella shops
+
+
 if arg == 'init_admin':
-    admin_accounts = ['makhani.samir@gmail.com', 'hair_lvrxrsl_one@tfbnw.net', 'jason_dhcxgww_huang@tfbnw.net', 'randykm4@gmail.com']
-    u = University.query.filter_by(name='Uguru University').first()
-    m = Major.query.get(91)
+    from hashlib import md5
+    from app.models import User
+    admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    admin_emails = [_tuple[0] for _tuple in admin_accounts]
+    u = University.query.get(2307)
 
     len_universities = len(University.query.all())
 
-
-    if not u:
-        u = University()
-        u.name = 'Uguru University'
-
-        u.id = len_universities + 1000
-        u.majors.append(m)
-        db_session.add(u)
-        db_session.commit()
-
-    for account_email in admin_accounts:
-        user = User.query.filter_by(email=account_email).first()
-        print user.email + ' initiated as admin for ' + u.name
+    for admin_account_tuple in admin_accounts:
+        continue
+        account_email = admin_account_tuple[0]
+        account_name = admin_account_tuple[1]
+        user = User.query.filter_by(email=account_email.lower()).first()
+        print 'processing %s' % account_email
         if user:
-
-            print m.name, 'added to user major list'
-
-            user.majors.append(m)
             user.university_id = u.id
-            user.is_a_guru = True
             user.is_admin = True
+            user.name = account_name
+            user.password = md5('launchuguru123').hexdigest()
+            user.profile_code = account_name.split(' ')[0].lower()
+            user.referral_code = account_name.split(' ')[0].lower()
+            db_session.commit()
+            print "Account for %s successfully updated" % user.email
+        else:
+            user = User(name=account_name, email=account_email, password=md5('launchuguru123').hexdigest())
+            user.university_id = u.id
+            user.is_admin = True
+            user.profile_code = account_name.split(' ')[0].lower()
+            user.referral_code = account_name.split(' ')[0].lower()
+            db_session.commit()
+            print "Account for %s successfully created" % user.email
+    admin_users = User.query.filter_by(is_admin=True).all()
+    for user in admin_users:
+        if user.email.lower() not in admin_emails:
+            print user.email, 'is not an admin'
+            user.is_admin = False
             db_session.commit()
 
 if arg == 'parse_uni':
@@ -739,6 +863,59 @@ if arg == 'update_targetted':
         db_session.commit()
     print len(University.query.filter_by(is_targetted=True).all())
 
+def getLongestAcronym(arr):
+    sorted_arr = sorted(arr, key=lambda k:len(k), reverse=True)
+    return sorted_arr[0]
+def findBestMatch(uni_name, wiki_names):
+    uni_name_formatted = uni_name.replace('-', ' ').replace(',', ' ').replace('  ', ' ').lower()
+    current_best_ratio = 0
+    current_best_value = ''
+    for name in wiki_names:
+        wiki_name_formatted = name.replace(',', ' ').replace('-', ' ').replace('  ', ' ').lower()
+        ratio = fuzz.ratio(uni_name_formatted, wiki_name_formatted)
+        if ratio > current_best_ratio:
+            current_best_ratio = ratio
+            current_best_value = name
+    return current_best_value, current_best_ratio
+
+if arg == 'short_name':
+    import json
+    from fuzzywuzzy import fuzz, process
+    previous_university_titles = [university.name for university in University.query.all()]
+    college_dict = json.load(open('app/static/data/college_short_names.json'))
+    wiki_names = college_dict.keys()
+    from app.models import University
+    universities = University.query.all()
+    from app.database import db_session
+    universities = [uni for uni in universities if uni.us_news_ranking and uni.us_news_ranking < 220]
+    count = 0
+    matches = 0
+    reprocess = []
+    for uni in universities:
+        # if len(uni.name) > 22:
+        count += 1
+        uni_name_formatted = uni.name.replace('-', ' ').replace(',', ' ').lower()
+        current_best, ratio_num =  findBestMatch(uni.name, wiki_names)
+        if ratio_num >= 90 and abs(len(uni_name_formatted) - len(current_best)) < 4:
+            matches += 1
+            new_short_name = getLongestAcronym(college_dict[current_best])
+            # print new_short_name
+            print "VALUE:", ratio_num
+            print uni.name, '---', new_short_name
+            uni.short_name = new_short_name
+            if new_short_name.lower() not in uni.variations:
+                uni.variations = uni.variations +' ' + new_short_name.lower()
+            db_session.commit()
+            # else:
+            #     print "VALUE:", ratio_num
+            #     print uni.name, '---', current_best
+            #     print
+            #     reprocess.append(uni.name)
+
+    print count, matches
+    print len(reprocess), 'left to go'
+
+
 if arg == 'save_languages':
     languages_arr = []
     for language in Language.query.all():
@@ -748,7 +925,574 @@ if arg == 'save_languages':
         json.dump(languages_arr, fp)
     print len(languages_arr), 'saved'
 
+if arg =='import':
+    from app.models import *
+    from app.database import db_session
+    import json, operator
+    from datetime import datetime
+    from collections import Counter
+    from dateutil import parser
+    user_arr = json.load(open('uguru_old_db3.json'))
 
+    university = University.query.get(2307)
+
+    user_with_skills = [user for user in user_arr if user.get('skills')]
+
+
+    courses = university.courses + university.popular_courses
+
+    course_names = [course.name for course in courses if course.name]
+    course_names_mapped = [course for course in courses if course.name]
+
+    course_short_names = [course.short_name for course in courses if course.short_name]
+    course_short_names_mapped = [course for course in courses if course.short_name]
+
+
+    course_full_names = [course.full_name for course in courses if course.full_name]
+    course_full_names_mapped = [course for course in courses if course.full_name]
+
+    print 'processing %s gurus' % len(user_with_skills)
+    error_users = []
+    index = 0
+    for user in user_with_skills:
+        db_user = User.query.filter_by(email=user.get('email')).first()
+        if not db_user:
+            error_users.append(user)
+            continue
+        if not db_user.guru_courses:
+            user_skills = [skill for skill in user.get('skills') if skill.get('name')]
+            for skill in user_skills:
+                skill_map = skill['name'].replace('.', ' ').upper()
+                if skill_map in course_names:
+
+                    skill_index = course_names.index(skill_map)
+                    course = course_names_mapped[skill_index]
+                    course.is_popular = True
+                    db_user.guru_courses.append(course)
+
+                elif skill_map in course_short_names:
+
+                    skill_index = course_short_names.index(skill_map)
+                    course = course_short_names_mapped[skill_index]
+                    course.is_popular = True
+                    db_user.guru_courses.append(course)
+
+                elif skill_map in course_full_names:
+
+                    skill_index = course_full_names.index(skill_map)
+                    course = course_full_names_mapped[skill_index]
+                    course.is_popular = True
+                    db_user.guru_courses.append(course)
+
+        db_user.phone_number = user.get('phone_number')
+        db_user.text_notifications = user.get('text_notifications')
+        db_user.email_notifications = user.get('email_notifications')
+        db_user.guru_introduction = user.get('guru_introduction')
+        db_user.year = user.get('year')
+        db_user.major = user.get('major')
+
+        # if user has conversations and is a guru
+        if user.get('conversations') and user.get('skills'):
+            all_conversations = user.get('conversations')
+            for convo in all_conversations:
+                convo_guru_id = convo.get('guru_id')
+                message_convos = convo.get('messages')
+                if message_convos and user.get('id') == convo_guru_id:
+                    first_message = message_convos[0]
+                    if not first_message.get('sender_email') or not first_message.get('receiver_email'):
+                        continue
+                    if first_message.get('sender_email') == user.get('email'):
+                        student_email = first_message.get('receiver_email')
+                    else:
+                        student_email = first_message.get('sender_email')
+
+                    student = User.query.filter_by(email=student_email).first()
+                    if not student:
+                        continue
+
+                    if db_user.guru_relationships:
+                        student_ids_relationships = [r.student.id for r in db_user.guru_relationships]
+                        # already relationship exists
+                        if student.id in student_ids_relationships:
+                            continue
+
+
+                    r = Relationship()
+                    r.student_id = student.id
+                    r.guru_id = db_user.id
+                    db_session.add(r)
+                    db_session.commit()
+
+                    ## add messages
+                    for message in message_convos:
+                        if message.get('sender_email') == user.get('email'):
+                            message_sender_id = db_user.id
+                            message_receiver_id = student.id
+                        else:
+                            message_sender_id = student.id
+                            message_receiver_id = db_user.id
+
+                        message_contents = message.get('contents')
+                        message_type = 0
+                        message_time_created = parser.parse(message.get('write_time'))
+
+                        m = Message()
+                        m.sender_id = message_sender_id
+                        m.receiver_id = message_receiver_id
+                        m.contents = message_contents
+                        m._type = message_type
+                        m.time_created = message_time_created
+                        m.relationship_id = r.id
+                        db_session.add(m)
+                        db_session.commit()
+
+
+
+        if user.get('experiences') and not db_user.guru_experiences:
+            for exp_key in user.get('experiences').keys():
+
+                if user['experiences'][exp_key]:
+
+                    experience = Experience()
+                    experience.university_id = 2307
+                    experience.description = ''
+                    if exp_key == 'slc_tutor':
+                        experience.name = 'SLC Tutor'
+                    elif exp_key == 'res_tutor':
+                        experience.name = 'Res Hall Tutor'
+                    elif exp_key == 'ta_tutor':
+                        experience.name = 'Teaching Assistant'
+                    elif exp_key == 'hkn_tutor':
+                        experience.name = 'HKN Tutor'
+                    elif exp_key == 'hkn_tutor':
+                        experience.name = 'Lab Assistant'
+                    else:
+                        continue
+                    experience.years = 1
+                    experience.last_updated = datetime.now()
+                    experience.time_created = datetime.now()
+                    db_session.add(experience)
+                    db_session.commit()
+                    db_user.guru_experiences.append(experience)
+                    db_session.commit()
+
+
+
+        if db_user.student_ratings and user.get('guru_ratings'):
+            if db_user.guru_courses:
+                for db_rating in db_user.student_ratings + db_user.guru_ratings:
+                    for rating in user.get('guru_ratings'):
+                        if rating.get('tutor_rating_description') == db_rating.guru_rating_description:
+                            db_user.is_a_guru = True
+                            db_rating.guru_id = db_user.id
+                            db_rating.student_id = None
+                            db_rating.guru_rating = rating.get('tutor_rating')
+                            db_rating.guru_rating_description = rating.get('tutor_rating_description')
+                            db_rating.student_rating = rating.get('student_rating')
+                            db_rating.student_rating_description = rating.get('student_rating_description')
+
+                            student = User.query.filter_by(email=rating.get('student_email')).first()
+                            if student:
+                                db_rating.student_id = student.id
+                            db_session.commit()
+
+        index += 1
+        if (index > 0 and index % 50 == 0):
+            print 'PROGRESS: %s/%s' % (index, len(user_with_skills))
+
+    with open('error_users.json', 'wb') as fp:
+        json.dump(error_users, fp, indent = 4)
+    print len(error_users), 'error users'
+
+def getStripeStudentCharges():
+    import stripe
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    charges = stripe.Charge.all(limit=100)
+    return charges
+
+def getStripeCustomers():
+    import stripe
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    customers = stripe.Customer.all()
+    return customers
+
+def updateRecipientCardDetails(recipient_id):
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    recipient = stripe.Recipient.retrieve(recipient_id)
+    from pprint import pprint
+    email = recipient.email
+    result_cards = []
+    if recipient.cards["data"]:
+        for _card in recipient.cards["data"]:
+            card_type = _card['type']
+            # card_country = _card['country']
+            card_exp_month = _card['exp_month']
+            card_exp_year = _card['exp_year']
+            card_id = _card['id']
+            card_last4  = _card['last4']
+            card_is_credit = _card['funding']
+            card_created = datetime.fromtimestamp(int(recipient.created))
+            print "student's  (email:%s) %s %s card: %s expires %s/%s" \
+            % (email, card_type, card_is_credit, card_id, card_exp_month, card_exp_year)
+            result_cards.append({
+                'type': card_type,
+                'last4': card_last4,
+                'is_credit': card_is_credit,
+                'id': card_id,
+                'card_exp_year': card_exp_year,
+                'card_exp_month': card_exp_month,
+                # 'card_country': card_country,
+                'recipient_email': email,
+                'time_created': card_created,
+                'stripe_recipient_id':recipient_id
+                })
+            return result_cards
+    if recipient.active_account and not recipient.cards['data']:
+        return {
+            'bank_name':recipient.active_account['bank_name'],
+            'country':recipient.active_account['country'],
+            'currency':recipient.active_account['currency'],
+            'active': not recipient.active_account['disabled'],
+            'stripe_bank_id': recipient.active_account['id'],
+            'last4': recipient.active_account['last4'],
+            'bank_routing_number': recipient.active_account['routing_number'],
+            'bank_created': datetime.fromtimestamp(int(recipient.created)),
+            'recipient_email': recipient.email,
+            'stripe_recipient_id': recipient.id
+        }
+
+def updateCustomerCardDetails(customer_id):
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    customer = stripe.Customer.retrieve(customer_id)
+    if not customer or not customer.email:
+        return
+    email = customer.email
+    result_cards = []
+    for _card in customer.cards["data"]:
+        card_type = _card['type']
+        card_country = _card['country']
+        card_exp_month = _card['exp_month']
+        card_exp_year = _card['exp_year']
+        card_id = _card['id']
+        card_last4  = _card['last4']
+        card_is_credit = _card['funding']
+        card_created = datetime.fromtimestamp(int(customer.created))
+        print "student's  (email:%s) %s %s card: %s expires %s/%s" \
+        % (email, card_type, card_is_credit, card_id, card_exp_month, card_exp_year)
+        result_cards.append({
+            'type': card_type,
+            'last4': card_last4,
+            'is_credit': card_is_credit,
+            'id': card_id,
+            'card_exp_year': card_exp_year,
+            'card_exp_month': card_exp_month,
+            'card_country': card_country,
+            'customer_email': email,
+            'time_created': card_created,
+            'customer_id':customer_id
+            })
+        return result_cards
+
+def getCustomerCharges(customer_id):
+    pass
+
+if arg =='link_transactions':
+    import stripe
+    from datetime import datetime
+    stripe.api_key = "sk_live_j7GdOxeWhZS1pVXCvBqeoBXI"
+    from app.database import db_session
+    for card in Card.query.all()[0:100]:
+        try:
+            if card.stripe_customer_id and card.user and card.user_id:
+                charges = stripe.Charge.all(customer=card.stripe_customer_id, limit=100)
+                for charge in charges.data:
+                    amount = charge.amount
+                    _id = charge.id
+                    description = charge.description
+                    status = charge.status
+                    card_id = charge.source.id
+                    refunded = charge.refunded
+                    was_paid = charge.paid
+                    customer_id = charge.customer
+                    time_charged = datetime.fromtimestamp(int(charge.created))
+                    print "%s was charged $%s" % (card.user.name.split(' ')[0], amount/100.0)
+
+                    for _card in card.user.cards:
+                        if _card.stripe_card_id == card_id:
+                            user_card_id = _card.id
+                            break
+
+                    def createChargeTransaction(card_id, time_created, student_amount, status \
+                        ,charge_id, user_id, description, refunded):
+                        transaction = Transaction()
+                        transaction.is_session = True
+                        transaction.card_id = card_id
+                        transaction.time_created = time_created
+                        transaction.student_amount = student_amount
+                        transaction.stripe_amount = student_amount
+                        transaction.charge_status = status
+                        transaction.refunded = refunded
+                        transaction.charge_id = charge_id
+                        transaction.student_id = user_id
+                        transaction.description = description
+                        transaction._type = 0
+                        return transaction
+
+                    transaction = createChargeTransaction(user_card_id, time_charged, amount, \
+                        status, _id, card.user.id, description, refunded)
+                    db_session.add(transaction)
+                    db_session.commit()
+
+            if card.stripe_recipient_id and card.user and card.user_id:
+                transfers = stripe.Transfer.all(recipient=card.stripe_recipient_id, limit=100)
+                for transfer in transfers.data:
+                    from pprint import pprint
+                    pprint(transfer)
+                    print "%s was transferred $%s" % (card.user.name.split(' ')[0], transfer.amount / 100.0)
+
+                    amount = transfer.amount
+                    _id = transfer.id
+                    description = transfer.description
+                    status = transfer.status
+                    if transfer.type == "card":
+                        card_id = transfer.card.id
+                    if transfer.type == "bank_account":
+                        card_id = transfer.bank_account.id
+                    if not card_id:
+                        raise
+                    recipient_id = transfer.recipient
+                    time_charged = datetime.fromtimestamp(int(transfer.created))
+                    print "%s was charged $%s" % (card.user.name.split(' ')[0], amount/100.0)
+
+                    for _card in card.user.cards:
+                        if _card.stripe_card_id == card_id:
+                            user_card_id = _card.id
+                            break
+
+                    def createTransferTransaction(card_id, time_created, amount, status \
+                        ,recipient_id, user, description):
+                        transaction = Transaction()
+                        transaction.card_id = card_id
+                        transaction.time_created = time_created
+                        transaction.guru_amount = amount
+                        transaction.stripe_amount = amount
+                        transaction.transfer_status = status
+                        transaction.transfer_id = recipient_id
+                        transaction.guru_id = user.id
+                        transaction.balance_before = user.balance
+                        transaction.balance_after = user.balance + amount
+                        transaction.description = description
+                        transaction._type = 4
+                        return transaction
+
+                    transaction = createTransferTransaction(user_card_id, time_charged, amount,\
+                        status, recipient_id, card.user, description)
+                    db_session.add(transaction)
+                    db_session.commit()
+
+        except stripe.error.InvalidRequestError, e:
+            card.user_id = None
+            db_session.delete(card)
+            db_session.commit()
+
+if arg =='link_payments':
+    import json, sys
+    from pprint import pprint
+    import stripe
+    payment_arr = json.load(open('old_payment_data.json'))
+    cashout_ids = []
+    payment_ids = []
+    session_arr = []
+    count = 0
+
+    #1. Create cards
+    #2. Create bank cards
+    #3. Create a session
+    #4. Get transactions && create them
+    #
+    for card in Card.query.all():
+        if card.stripe_customer_id and (card.user or card.user_id):
+            student = card.user
+            student_card_ids = [__card.card_last4 for __card in student.cards]
+            for _card in student.cards:
+                if _card.stripe_customer_id:
+                    try:
+                        result_cards = updateCustomerCardDetails(_card.stripe_customer_id)
+                    except:
+                        continue
+                    for found_card in result_cards:
+                        if found_card['last4'] in student_card_ids:
+                            index = student_card_ids.index(found_card['last4'])
+                            student_card = student.cards[index]
+                        else:
+                            from app.models import Card
+                            student_card = Card()
+                            print 'new card being created'
+                            student_card.user_id = student.id
+                            db_session.add(student_card)
+
+                        student_card.is_payment_card = True
+                        student_card.stripe_customer_id = found_card['customer_id']
+                        student_card.card_last4 = found_card['last4']
+                        student_card.stripe_card_id = found_card['id']
+                        student_card.card_type = found_card['type']
+                        student_card.active = True
+                        student_card.country = found_card['card_country']
+                        student_card.time_added = found_card['time_created']
+                        student_card.customer_email = found_card['customer_email']
+                        student_card.funding = found_card['is_credit']
+                        student_card.exp_month = int(found_card['card_exp_month'])
+                        student_card.exp_year = int(found_card['card_exp_year'])
+
+                        db_session.commit()
+        if card.stripe_recipient_id and (card.user or card.user_id):
+            guru = card.user
+            guru_card_ids = [__card.card_last4 for __card in guru.cards]
+            for _card in guru.cards:
+                if _card.stripe_recipient_id:
+                    try:
+                        result_bank_cards = updateRecipientCardDetails(_card.stripe_recipient_id)
+
+
+
+
+                        if type(result_bank_cards) == list:
+                            for found_card in result_bank_cards:
+                                if found_card['last4'] in guru_card_ids:
+                                    index = guru_card_ids.index(found_card['last4'])
+                                    guru_card = guru.cards[index]
+                                else:
+                                    from app.models import Card
+                                    guru_card = Card()
+                                    print 'new card being created'
+                                    guru_card.user_id = guru.id
+                                    db_session.add(guru_card)
+                                guru_card.is_transfer_card = True
+                                guru_card.stripe_recipient_id = found_card['stripe_recipient_id']
+                                guru_card.card_last4 = found_card['last4']
+                                guru_card.stripe_card_id = found_card['id']
+                                guru_card.card_type = found_card['type']
+                                guru_card.active = True
+                                guru_card.time_added = found_card['time_created']
+                                guru_card.recipient_email = found_card['recipient_email']
+                                guru_card.funding = found_card['is_credit']
+                                guru_card.exp_month = int(found_card['card_exp_month'])
+                                guru_card.exp_year = int(found_card['card_exp_year'])
+
+                        try:
+                            if type(result_bank_cards) == dict:
+                                found_card = result_bank_cards
+                                if found_card['last4'] in guru_card_ids:
+                                    index = guru_card_ids.index(found_card['last4'])
+                                    guru_card = guru.cards[index]
+                                else:
+                                    from app.models import Card
+                                    guru_card = Card()
+                                    print 'new card being created'
+                                    guru_card.user_id = guru.id
+                                    db_session.add(guru_card)
+                                guru_card.is_bank_account = True
+                                guru_card.stripe_recipient_id = found_card['stripe_recipient_id']
+                                guru_card.card_last4 = found_card['last4']
+                                guru_card.stripe_bank_id = found_card['stripe_bank_id']
+                                guru_card.bank_currency = found_card['currency']
+                                guru_card.active = found_card['active']
+                                # guru_card.country = found_card['card_country']
+                                guru_card.bank_name = found_card['bank_name']
+                                guru_card.brank_routing_number = found_card['bank_routing_number']
+                                guru_card.recipient_email = found_card['recipient_email'],
+                                guru_card.time_added = found_card['bank_created']
+
+                            db_session.commit()
+
+                        except:
+                            raise
+
+                    except stripe.error.InvalidRequestError, e:
+                        continue
+                    except Exception, e:
+                        raise
+
+    # for payment in payment_arr:
+    #     student_email = payment.get('student_email')
+        # if student_email and student_email not in student_email_set:
+        #     student_email_set.append(student_email)
+        #     student = User.query.filter_by(email=student_email).first()
+        #     if student and student.name and student.cards:
+        #         # print '%s has %s cards' % (student.name, len(student.cards))
+
+        #         student_card_ids = [card.card_last4 for card in student.cards]
+
+
+        # guru_email = payment.get('tutor_email')
+        # if guru_email and guru_email not in guru_email_set:
+        #         guru_email_set.append(guru_email)
+        #         guru = User.query.filter_by(email=guru_email).first()
+        #         for card in guru.cards:
+        #             if card.stripe_recipient_id:
+        #                 result_bank_cards = updateRecipientCardDetails(card.stripe_recipient_id)
+
+
+
+
+if arg =='link_courses':
+    import json
+    def getPopularCourses(uni_id):
+        university = University.query.get(uni_id)
+        university_courses = university.courses
+        popular_courses = [course for course in university_courses if course.is_popular]
+        print '%s popular courses found for %s' % (len(popular_courses), university.name)
+        return popular_courses
+
+    # num w/o full name
+    def processPopularCourses(courses):
+        popular_courses_with_both = [course for course in courses if course.short_name and course.full_name]
+        popular_courses_with_short_only = [course for course in courses if course.short_name and not course.full_name]
+        return popular_courses_with_short_only
+
+    # links && returns success rate
+    # prints success rate
+    def getUniversityCourseDuplicates(uni_id):
+        from collections import Counter
+        course_name_arr = []
+        for course in University.query.get(uni_id).courses:
+            course_name_arr.append(course.short_name.upper())
+        course_dist = Counter(course_name_arr)
+        duplicate_names = []
+        for key in course_dist:
+            if course_dist[key] >= 2:
+                duplicate_names.append(key)
+        return duplicate_names
+
+    def repair_courses(uni_id):
+
+        popular_courses = getPopularCourses(uni_id)
+        popular_short_name_only = processPopularCourses(popular_courses)
+        duplicate_course_names = getUniversityCourseDuplicates(uni_id)
+
+        found = 0
+        from app.database import db_session
+        university_courses = University.query.get(2307).courses
+        for course in popular_short_name_only:
+            same_courses = [_course for _course in university_courses if _course.short_name.upper() == course.short_name.upper()]
+            for same_course in same_courses:
+                if same_course.short_name and same_course.full_name and not same_course.is_popular and same_course.id != course.id:
+                    found += 1
+                    course.full_name = same_course.full_name
+                    print course.short_name, 'updated with full name', course.full_name
+                    db_session.commit()
+        print "%s popular courses repaired" % found
+
+
+    repair_courses(2307)
+
+
+
+    ## the goal is to link the titles with popular courses
 
 if arg =='migrate':
 
@@ -853,3 +1597,167 @@ if arg =='migrate':
             # 'skills': get_user_skills(user),
             # 'conversations': get_user_conversations(user),
             # 'payments': get_user_payments(user),
+
+if arg =='mp_init':
+    print 'starting..'
+    admin_emails = ['jason@uguru.me', 'samir@uguru.me', 'jeselle@uguru.me', 'gabrielle@uguru.me']
+    from app.lib.mixpanel_wrapper import create_mp_profile
+    for email in admin_emails:
+        user = User.query.filter_by(email=email).all()
+        if len(user) == 1:
+            user = user[0]
+            response = create_mp_profile(user, ip='70.36.146.107')
+            if response:
+                from pprint import pprint
+                pprint(response)
+
+
+
+if arg =='-cc':
+    if not len(sys.argv) >= 5:
+        print 'insufficient args for create campaign arg'
+        sys.exit()
+
+    name = sys.argv[2]
+    university_id = int(sys.argv[3])
+    description = sys.argv[4]
+    from app.models import Campaign
+    c = Campaign.init(name, university_id, description)
+    print '%s successfully created' % c.name
+
+## print campaigns
+if arg =='-pca':
+    all_campaigns = Campaign.query.all()
+    for campaign in all_campaigns:
+        print campaign.id, campaign.name, campaign.description, len(campaign.recipients)
+
+## print campaigns
+if arg =='init_campaigns':
+    from random import randint
+    from app.models import User
+    from app.database import db_session
+    campaign_dict = {'1':[], '2':[], '3':[]};
+    all_users = User.query.all()
+    index = 0
+    print "starting.."
+    for u in all_users:
+        if not u.name or u.university_id != 2307:
+            if not u.name:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            if not u.referral_code and not u.profile_code:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            if u.name:
+                u.referral_code = None
+                u.profile_code = None
+                db_session.commit()
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+            else:
+                index += 1
+                if index and index % 100 == 0:
+                    print "Update %s of %s complete" % (index, len(all_users))
+                continue
+
+        if u.balance and u.university_id:
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
+            campaign_dict['1'].append({'first_name': u.getFirstName(), 'id':u.id, 'balance':u.balance,'courses':u.getGuruCourses(), 'email':u.email})
+        elif u.total_earned and not u.balance:
+            campaign_dict['2'].append({'first_name': u.getFirstName(), 'id':u.id, 'balance':u.total_earned,'courses':u.getGuruCourses(),  'email':u.email})
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
+        elif not u.total_earned and not u.balance and (u.guru_courses or u.guru_introduction):
+            campaign_dict['3'].append({'first_name': u.getFirstName(), 'id':u.id, 'courses':u.getGuruCourses(), 'email':u.email})
+            u.referral_code = u.name + str(randint(1, 1000))
+            u.profile_code = u.name
+            u.deactivated = True
+            db_session.commit()
+        else:
+            u.referral_code = None
+            u.profile_code = None
+            db_session.commit()
+
+        index += 1
+        if index and index % 100 == 0:
+            print "Update %s of %s complete" % (index, len(all_users))
+
+if arg == 'update_uni':
+    from app.models import University
+    result_dict = {}
+    for u in University.query.all():
+        if u.banner_url_confirmed:
+            result_dict[str(u.id)] = {'banner_url': u.banner_url, 'logo_url': u.logo_url}
+    with open('updated_universities.json', 'wb') as fp:
+        json.dump(result_dict, fp, indent = 4)
+
+if arg == 'test_campaign':
+    from app.campaigns.guru_campaigns import *
+    test_recipient = {
+        'first_name': 'gabrielle',
+        'email': 'gabrielle@uguru.me',
+        'total_earned': 49,
+        'balance': 54,
+        'course_one': 'CS10',
+        'course_two': 'CS70'
+    }
+    html_template, subject = berkeleyCampaignTwoTemplate(test_recipient)
+    print "SUBJECT: %s \n\n" % subject
+    print "CONTENT: \n\n %s \n\n" % html_template
+
+
+    from app.emails import send_campaign_one
+    campaign = Campaign.query.get(4)
+    send_campaign_one([test_recipient], campaign, True)
+
+
+
+# from app.models import Campaign, User, Recipient
+# from app.database import db_session
+# all_users = User.query.all()
+# all_gurus = []
+# processed_gurus = []
+# for user in all_users:
+#     if user.profile_code and user.referral_code:
+#         all_gurus.append(user)
+# campaign = Campaign.init("Berkeley OG Gurus 1", 2307, description="Gurus with total earnings and no balance", directory_based=True)
+# for guru in all_gurus:
+#     if guru.balance and guru.university_id:
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+#         recipients.append(recipient)
+# campaign = Campaign.init("Berkeley OG Gurus 2", 2307, description="Gurus with total earnings but no balance", directory_based=True)
+# for guru in all_gurus:
+#     if guru.total_earned and not guru.balance:
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+#         recipients.append(recipient)
+# for recipient in recipients:
+#     recipient.campaign_id = campaign.id
+# campaign  = Campaign.init("Berkeley OG Gurus 3", 2307, description="Gurus that have added courses or an introduction", directory_based=True)
+# for guru in all_gurus:
+#     if not guru.total_earned and not guru.balance and (guru.guru_courses or guru.guru_introduction):
+#         processed_gurus.append(guru)
+#         guru_dict = guru.__dict__
+#         guru_dict['campaign_args'] = str({'first_name': guru.getFirstName(), 'id':guru.id, 'balance':guru.balance,'courses':guru.getGuruCourses(), 'email':guru.email, 'campaign_id': campaign.id})
+#         guru_dict['first_name'] = guru.getFirstName()
+#         recipient = Recipient.init(guru_dict)
+
+# for university in University.query.all():

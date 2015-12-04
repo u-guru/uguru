@@ -22,15 +22,17 @@ angular.module('uguru.rest')
 
                     var userSubcategory = user.guru_subcategories[i];
                     indexCategory = categories_sliced[j];
-
+                    if (!userSubcategory.category || !indexCategory) {
+                        continue;
+                    }
                     if (indexCategory.id === userSubcategory.category.id) {
                         indexCategory.active_subcategories += 1
                         for (var k = 0; k < indexCategory.subcategories.length; k++) {
                             var indexSubcategory = indexCategory.subcategories[k];
 
-                            if (indexSubcategory.id === userSubcategory.id) 
+                            if (indexSubcategory.id === userSubcategory.id)
                                 categories[j].subcategories[k].active = true;
-                         
+
                         }
                     }
                 }

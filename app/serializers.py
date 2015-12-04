@@ -10,6 +10,7 @@ university_fields['city'] = fields.String(attribute='city')
 university_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
 university_fields['latitude'] = fields.Float(attribute='latitude')
 university_fields['longitude'] = fields.Float(attribute='longitude')
+university_fields['short_name'] = fields.String(attribute='short_name')
 
 major_fields = {}
 major_fields['id'] = fields.Integer(attribute='id')
@@ -45,6 +46,7 @@ course_fields = {}
 course_fields['id'] = fields.Integer(attribute='id')
 course_fields['name'] = fields.String(attribute='short_name')
 course_fields['title'] = fields.String(attribute='full_name')
+course_fields['short_name'] = fields.String(attribute='short_name')
 
 department_fields = {}
 department_fields['id'] = fields.Integer(attribute='id')
@@ -113,6 +115,14 @@ calendar_event_fields = {}
 calendar_event_fields['id'] = fields.Integer(attribute='id')
 calendar_event_fields['start_time'] = fields.DateTime(attribute='start_time')
 calendar_event_fields['end_time'] = fields.DateTime(attribute='end_time')
+calendar_event_fields['description'] = fields.String(attribute='description')
+calendar_event_fields['title'] = fields.String(attribute='title')
+calendar_event_fields['course'] = fields.Nested(course_fields)
+calendar_event_fields['type'] = fields.String(attribute='_type')
+calendar_event_fields['private'] = fields.Boolean(attribute='private')
+calendar_event_fields['archived'] = fields.Boolean(attribute='archived')
+
+
 
 calendar_fields = {}
 calendar_fields['id'] = fields.Integer(attribute='id')
@@ -201,9 +211,11 @@ request_fields['selected_proposal'] = fields.Nested(selected_proposal_fields)
 card_fields = {}
 card_fields['time_created'] = fields.DateTime(attribute='time_created')
 card_fields['card_last4'] = fields.String(attribute='card_last4')
+card_fields['bank_last4'] = fields.String(attribute='bank_last4')
 card_fields['card_type'] = fields.String(attribute='card_type')
 card_fields['is_default_payment'] = fields.Boolean(attribute='is_default_payment')
 card_fields['is_default_transfer'] = fields.Boolean(attribute='is_default_transfer')
+card_fields['is_bank_account'] = fields.Boolean(attribute='is_bank_account')
 card_fields['id'] = fields.Integer(attribute='id')
 card_fields['is_payment_card'] = fields.Boolean(attribute='is_payment_card')
 card_fields['is_transfer_card'] = fields.Boolean(attribute='is_transfer_card')
@@ -288,14 +300,47 @@ rating_fields['session'] = fields.Nested(session_fields)
 rating_fields['transaction'] = fields.Nested(transaction_fields)
 
 relationship_fields = {}
+relationship_fields['id'] = fields.Integer(attribute='id')
 relationship_fields['student'] = fields.Nested(student_fields)
 relationship_fields['guru'] = fields.Nested(guru_fields)
 relationship_fields['sessions'] = fields.Nested(session_fields)
+relationship_fields['messages'] = fields.Nested(message_fields)
+
+referral_sender_fields = {}
+referral_sender_fields['id'] = fields.Integer(attribute='id')
+referral_sender_fields['name'] = fields.String(attribute='name')
+referral_sender_fields['profile_url'] = fields.String(attribute='profile_url')
+referral_sender_fields['first_degree_referrals'] = fields.Integer(attribute='first_degree_referrals')
+referral_sender_fields['second_degree_referrals'] = fields.Integer(attribute='second_degree_referrals')
+referral_sender_fields['time_created'] = fields.DateTime(attribute='time_created')
+
+referral_receiver_fields = {}
+referral_receiver_fields['id'] = fields.Integer(attribute='id')
+referral_receiver_fields['name'] = fields.String(attribute='name')
+referral_receiver_fields['profile_url'] = fields.String(attribute='profile_url')
+referral_receiver_fields['first_degree_referrals'] = fields.Integer(attribute='first_degree_referrals')
+referral_receiver_fields['second_degree_referrals'] = fields.Integer(attribute='second_degree_referrals')
+referral_receiver_fields['time_created'] = fields.DateTime(attribute='time_created')
 
 
-class FilteredList(fields.Raw):
-    def format(self, value):
-        return value[0:5]
+referral_fields = {}
+referral_fields['id'] = fields.Integer(attribute='id')
+referral_fields['sender'] = fields.Nested(referral_sender_fields)
+referral_fields['receiver'] = fields.Nested(referral_receiver_fields)
+
+portfolio_item_fields = {}
+portfolio_item_fields['time_created'] = fields.DateTime(attribute='time_created')
+portfolio_item_fields['is_custom'] = fields.Boolean(attribute='is_custom')
+portfolio_item_fields['admin_approved'] = fields.Boolean(attribute='admin_approved')
+portfolio_item_fields['course'] = fields.Nested(course_fields)
+portfolio_item_fields['subcategory_fields'] = fields.List(fields.Nested(subcategory_fields))
+portfolio_item_fields['description'] = fields.String(attribute='description')
+portfolio_item_fields['title'] = fields.String(attribute='title')
+portfolio_item_fields['avg_rating'] = fields.Float(attribute='avg_rating')
+portfolio_item_fields['hourly_price'] = fields.Float(attribute='hourly_price')
+portfolio_item_fields['max_hourly_price'] = fields.Float(attribute='max_hourly_price')
+portfolio_item_fields['unit_price'] = fields.Float(attribute='unit_price')
+portfolio_item_fields['max_unit_price'] = fields.Float(attribute='max_unit_price')
 
 
 UserSerializer = {
@@ -315,6 +360,7 @@ UserSerializer = {
     'guru_deposit': fields.Boolean,
     'guru_mode': fields.Boolean,
     'gender': fields.String,
+    'guru_discoverability': fields.Boolean,
     'customer_id': fields.String,
     'recipient_id': fields.String,
     'auth_token': fields.String,
@@ -324,6 +370,7 @@ UserSerializer = {
     'phone_friendly': fields.Boolean,
     'facetime_friendly':fields.Boolean,
     'messenger_friendly': fields.Boolean,
+    'person_friendly': fields.Boolean,
     'text_friendly': fields.Boolean,
     'fb_id': fields.String,
     'password': fields.String,
@@ -363,11 +410,11 @@ UserSerializer = {
     'phone_number_token': fields.String,
     'phone_number_confirmed': fields.Boolean,
     # 'student_transactions': fields.List(fields.Nested(transaction_fields)),
-    # 'guru_transactions': fields.List(fields.Nested(transaction_fields)),
-    # 'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
+    'guru_transactions': fields.List(fields.Nested(transaction_fields)),
+    'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
     'impact_events': fields.List(fields.Nested(event_fields)),
-    # 'guru_relationships': fields.List(fields.Nested(relationship_fields)),
-    # 'student_relationships': fields.List(fields.Nested(relationship_fields)),
+    'guru_relationships': fields.List(fields.Nested(relationship_fields)),
+    'student_relationships': fields.List(fields.Nested(relationship_fields)),
     'guru_skills': fields.List(fields.Nested(skill_fields)),
     'estimated_guru_score': fields.Integer,
     'estimated_guru_rank': fields.Integer,
@@ -380,6 +427,7 @@ UserSerializer = {
     'guru_score_opportunities': fields.Raw(remove_functions_from_opportunities(GURU_SCORE_OPPORTUNITIES)),
     'current_device': fields.Nested(device_fields),
     'referral_code': fields.String,
+    'profile_code': fields.String,
     'support_tickets': fields.List(fields.Nested(support_fields)),
     'uber_friendly': fields.Boolean,
     'summer_15': fields.Boolean,
@@ -389,6 +437,14 @@ UserSerializer = {
     'departments': fields.List(fields.Nested(department_fields)),
     'guru_categories': fields.List(fields.Nested(category_fields)),
     'guru_subcategories': fields.List(fields.Nested(user_subcategory_fields)),
+    'guru_calendar': fields.List(fields.Nested(calendar_fields)),
+    'student_calendar': fields.List(fields.Nested(calendar_fields)),
+    'portfolio_items': fields.List(fields.Nested(portfolio_item_fields)),
+    'referrals': fields.List(fields.Nested(referral_fields)),
+    'first_degree_referrals': fields.Integer,
+    'second_degree_referrals': fields.Integer,
+    'referral_limit': fields.Integer,
+    'deactivated': fields.Boolean,
 }
 
 DeviceSerializer = {
@@ -486,8 +542,10 @@ AdminUniversitySerializer = {
     'num_popular_courses': fields.Integer,
     'num_depts': fields.Integer,
     'name': fields.String,
+    'short_name': fields.String,
     'logo_url': fields.String,
     'banner_url':fields.String,
+    'svg_url': fields.String,
     'city': fields.String,
     'state': fields.String,
     'population': fields.Integer,

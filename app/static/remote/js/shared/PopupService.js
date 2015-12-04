@@ -24,14 +24,16 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		console.log('attempting to open', popupName);
 		$timeout(function() {
 			var popup = controller[popupName];
+			console.log('found popup', popup);
 			if (typeof source !== 'element') {
 				source = document.getElementById('root-nav');
 			}
 			cta(targetElem, popup, {}, function(modal) {
 				modal.classList.add('show');
-			})
+			}, 'body')
 
 			attachListeners(popup, callback);
+
 
 		}, 0);
 	}
@@ -42,6 +44,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];
 		// var submitClose = popup.querySelectorAll('button.submit-close')[0];
 		var submitButton = popup.querySelectorAll('button.submit')[0];
+		console.log('submit button', submitButton);
 		// console.log(popup);
 		// console.log(closeIcon);
 		// console.log(submitClose);
@@ -51,7 +54,9 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		};
 
 		clickSubmit = function() {
-			callback();
+			console.log("submit");
+		    callback && callback();
+		    // document.getElementsByClassName('.show button.submit').blur()
 		};
 
 		var enterSubmit = function(e) {
@@ -71,6 +76,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		// }
 
 		if(typeof callback === 'function') {
+			// console.log('ADD');
 			submitButton.addEventListener('click', clickSubmit);
 			popup.addEventListener('keyup', enterSubmit);
 		}
@@ -91,17 +97,26 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			closeIcon.removeEventListener('click', clickClose);
 			submitButton.removeEventListener('click', clickSubmit);
 			popup.removeEventListener('keyup', enterSubmit);
-		} 
+		}
 		catch(err) {
 			console.error(err)
+		}
+		if (DeviceService.doesCordovaExist()) {
+		  cordova.plugins.Keyboard.close();
 		}
 		$ionicSlideBoxDelegate.update();
 	}
 
-	function init(popupName, elemId) {
+	function init(popupName, elemId, callback) {
 		//source = document.getElementById('root-nav');
 		localPopup = document.getElementById(elemId);
+		console.log('\n\npopup initialized\n\n', localPopup);
 		controller[popupName] = localPopup;
+
+		if (localPopup && callback) {
+			callback();
+		}
+
 	}
 
 	function initDefaults() {
@@ -114,7 +129,6 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 			confirmPhone = document.getElementById('confirm-phone-uguru-popup');
 			confirmEmail = document.getElementById('confirm-email-uguru-popup');
 			ranking = document.getElementById('guru-ranking-popup');
-			console.log('confirmEmail popup', confirmEmail);
 		 	controller.editName = editName,
 		 	controller.editEmail = editEmail,
 		 	controller.editPassword = editPassword,

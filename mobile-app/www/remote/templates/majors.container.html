@@ -2,10 +2,7 @@
 <main id="desktop-majors" class="desktop-mode desktop-search desktop-guru-onboarding" ng-if='desktopMode'>
 	<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 	<header class="desktop-header">
-		<a>
-			<svg>
-			</svg>
-		</a>
+		<a></a>
 		<a class='cta-modal-close'>
 			<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -15,6 +12,11 @@
 	<div class="main default">
 		<form>
 			<div class="input-field">
+				<i class="material-icons prefix">
+					<svg viewBox="0 0 100 100">
+						<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+					</svg>
+				</i>
 				<input submit='fastSelectMajor()' type="search" id='major-input-1' ng-model="search_text.major">
 				<label class="ng-class:{'hide': search_text.major.length}" for="major-input-1">search majors</label>
 			</div>

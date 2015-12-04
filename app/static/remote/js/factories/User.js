@@ -15,7 +15,7 @@ angular.module('uguru.user', [])
         Object.defineProperty(obj, name, config);
     }
 
-    var calcAverage = function(ratings_arr) {
+    var calcAverage = function(ratings_arr, is_guru) {
                 if (!ratings_arr) {
                     return;
                 }
@@ -25,14 +25,91 @@ angular.module('uguru.user', [])
                 }
                 result = 0;
                 for (var i = 0; i < ratings_arr.length; i ++) {
-                    if (ratings_arr[i].student_rating || ratings_arr[i].student_rating === 0) {
-                        result += ratings_arr[i].student_rating;
-                    } else {
+                    if (is_guru) {
                         result += ratings_arr[i].guru_rating;
+                    } else {
+                        result += ratings_arr[i].student_rating;
                     }
                 }
-                result = (result / ratings_arr.length).toFixed(2);
+                result = (result / ratings_arr.length)
                 return result;
+    }
+
+    var parseRFC822Date = function(rfc_date) {
+        return new Date(Date.parse(rfc_date))
+    }
+
+    var jsDateObjToMessageFormat = function(date) {
+          var date = parseRFC822Date(date);
+          var hours = date.getHours();
+          var minutes = date.getMinutes();
+          var ampm = hours >= 12 ? 'pm' : 'am';
+          hours = hours % 12;
+          hours = hours ? hours : 12; // the hour '0' should be '12'
+          minutes = minutes < 10 ? '0'+minutes : minutes;
+          var strTime = hours + ':' + minutes + ' ' + ampm;
+          return strTime;
+    }
+
+    var formatProfileUrl = function(profile_url) {
+        if (profile_url === '/static/img/default-photo.jpg') {
+            return img_base + BASE + "img/avatar.svg"
+        }
+        return profile_url
+    }
+
+    var processReferrals = function(referrals) {
+        for (var i = 0; i < referrals.length; i++) {
+            var referralIndex = referrals[i];
+            if (referralIndex.receiver) {
+                referralIndex.receiver.name = referralIndex.receiver.name.split(' ')[0];
+                referralIndex.receiver.name[0] = referralIndex.receiver.name[0].toUpperCase;
+            }
+        }
+        return referrals
+    }
+
+    var parseRelationships = function(relationships) {
+        for (var i = 0; i < relationships.length; i++) {
+            var indexRelationship = relationships[i];
+
+            // parse student name
+            if (indexRelationship.student.name) {
+                var nameSplitArr = indexRelationship.student.name.split(' ');
+                var firstNameStudent = nameSplitArr[0];
+                var lastInitialStudent = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+                indexRelationship.student.name = firstNameStudent + ' ' + lastInitialStudent;
+            } else {
+                indexRelationship.student.name = '';
+            }
+            indexRelationship.student.profile_url = formatProfileUrl(indexRelationship.student.profile_url)
+
+            // parse guru name
+            var nameSplitArr = indexRelationship.guru.name.split(' ');
+            var firstNameGuru = nameSplitArr[0];
+            var lastInitialGuru = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+            indexRelationship.guru.name = firstNameGuru + ' ' + lastInitialGuru;
+            indexRelationship.guru.profile_url = formatProfileUrl(indexRelationship.guru.profile_url)
+
+
+            if (indexRelationship.messages && indexRelationship.messages.length) {
+                for (var j = 0; j < indexRelationship.messages.length; j++) {
+                    var indexMessage = indexRelationship.messages[j];
+                    indexMessage.time_created = jsDateObjToMessageFormat(indexMessage.time_created);
+                    if (indexMessage.sender.id === indexRelationship.student.id) {
+                        indexMessage.sender.name = indexRelationship.student.name;
+                        indexMessage.sender.profile_url = formatProfileUrl(indexRelationship.student.profile_url);
+                    } else {
+                        indexMessage.sender.name = indexRelationship.guru.name;
+                        indexMessage.sender.profile_url = formatProfileUrl(indexRelationship.guru.profile_url);
+                    }
+
+                }
+            }
+            // indexRelationship.guru.name = firstName + ' ' + lastInitial;
+
+        }
+        return relationships;
     }
 
     var calcProfileCompleteness = function(user) {
@@ -190,9 +267,12 @@ angular.module('uguru.user', [])
         // user.summer_15 = false;
 
         var user_cards = user.cards || [];
+        console.log('processing cards', user.cards);
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
-
+            if (card.card_type) {
+                card.card_type = card.card_type.toLowerCase();
+            }
             //payment cards processing
             if (card.is_default_payment) {
                 user.default_payment_card = card;
@@ -201,7 +281,7 @@ angular.module('uguru.user', [])
                 user.payment_cards.push(card);
             }
             //transfer cards processing
-            if (card.is_transfer_card) {
+            if (card.is_transfer_card || card.is_bank_account) {
                 user.transfer_cards.push(card);
             }
             if (card.is_default_transfer) {
@@ -240,7 +320,7 @@ angular.module('uguru.user', [])
             for (var i = 0; i < student_sessions.length; i ++) {
               var index_session = student_sessions[i];
               if (index_session.status === 0 || index_session.status === 1 || index_session.status === 2) {
-                index_session.guru.guru_avg_rating = parseInt(calcAverage(index_session.guru.guru_ratings));
+                index_session.guru.guru_avg_rating = calcAverage(index_session.guru.guru_ratings, true);
                 user.active_student_sessions.push(index_session);
               } else if (index_session.status === 6 || index_session.status === 7 || index_session.status === 8 ) {
                 user.previous_student_sessions.push(index_session);
@@ -276,7 +356,7 @@ angular.module('uguru.user', [])
               }
             }
         }
-        user.student_avg_rating = calcAverage(student_ratings);
+        user.student_avg_rating = calcAverage(student_ratings, false);
 
         var student_transactions = user.student_transactions || [];
         MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -291,11 +371,14 @@ angular.module('uguru.user', [])
 
         var guru_transactions = user.guru_transactions || [];
         for (var i = 0; i < guru_transactions.length; i ++) {
-            var utc = Date.parse(guru_transactions[0].time_created);
+            var utc = Date.parse(guru_transactions[i].time_created);
             var date = new Date(utc);
-            user.guru_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()]}
+            user.guru_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()], year: date.getFullYear()}
             user.guru_transactions[i].student_amount = parseFloat(user.guru_transactions[i].student_amount).toFixed(2);
-            user.guru_transactions[i].guru_amount = parseFloat(user.guru_transactions[i].guru_amount).toFixed(2);
+            user.guru_transactions[i].guru_amount = (parseFloat(user.guru_transactions[i].guru_amount) / 100 ).toFixed(2);
+            if (user.guru_transactions[i].guru_amount == parseInt(user.guru_transactions[i].guru_amount)) {
+                user.guru_transactions[i].guru_amount = parseInt(user.guru_transactions[i].guru_amount);
+            }
             user.guru_transactions[i].guru_rate = 5;
         }
 
@@ -328,7 +411,7 @@ angular.module('uguru.user', [])
             user.previous_guru_sessions = [];
 
             var guru_ratings = user.guru_ratings;
-            user.guru_avg_rating = calcAverage(guru_ratings);
+            user.guru_avg_rating = calcAverage(guru_ratings, true);
 
             if (!user.guru_avg_rating) {
                 user.guru_avg_rating = 0;
@@ -366,7 +449,7 @@ angular.module('uguru.user', [])
                   var index_session = guru_sessions[i];
                   if (index_session.status === 0 || index_session.status === 1 || index_session.status === 2) {
                     if (index_session.student && index_session.student.student_ratings && index_session.student.student_ratings.length > 0) {
-                        index_session.student.student_avg_rating = parseInt(calcAverage(index_session.student.student_ratings));
+                        index_session.student.student_avg_rating = calcAverage(index_session.student.student_ratings, false);
                     }
                     user.active_guru_sessions.push(index_session);
                   } else if (index_session.status === 6 || index_session.status === 7 || index_session.status === 8 ) {
@@ -442,11 +525,14 @@ angular.module('uguru.user', [])
 
         $scope.user.id = user.id;
         $scope.user.name = user.name;
+        $scope.user.first_name = user.name.split(' ')[0];
+        var user_name_split = user.name.split(' ');
+        $scope.user.profile_name = user.name.split(' ')[0] + ' ' + user_name_split[user_name_split.length - 1][0].toUpperCase() + '.';
         $scope.user.profile_url = user.profile_url;
         if ($scope.user.profile_url === 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100') {
             $scope.user.profile_url = img_base + BASE + "img/avatar.svg";
         }
-        $scope.user.is_a_guru = user.is_a_guru;
+        $scope.user.is_a_guru = false;
         $scope.user.guru_mode = user.guru_mode;
         $scope.user.gender = user.gender;
         $scope.user.customer_id = user.customer_id;
@@ -497,7 +583,12 @@ angular.module('uguru.user', [])
         $scope.user.course_guru_dict = user.course_guru_dict;
         $scope.user.gurus = user.gurus;
         $scope.user.guru_relationships = user.guru_relationships;
+        $scope.user.student_relationships = parseRelationships(user.student_relationships);
         $scope.user.referred_by = user.referred_by;
+        $scope.user.referral_code = user.referral_code;
+        $scope.user.profile_code = user.profile_code;
+        console.log(user.profile_code);
+        $scope.user.guru_discoverability = user.guru_discoverability;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
         $scope.user.current_hourly = user.current_hourly;
@@ -523,11 +614,17 @@ angular.module('uguru.user', [])
         $scope.user.guru_latest_time = user.guru_latest_time;
         $scope.user.hangouts_friendly = user.hangouts_friendly;
         $scope.user.messenger_friendly = user.messenger_friendly;
+        $scope.user.person_friendly = user.person_friendly;
         $scope.user.phone_friendly = user.phone_friendly;
+        $scope.user.person_friendly = user.person_friendly;
         $scope.user.skype_friendly = user.skype_friendly;
         $scope.user.text_friendly = user.text_friendly;
         $scope.user.guru_experiences = user.guru_experiences;
         $scope.user.guru_languages = user.guru_languages;
+        $scope.user.referrals = processReferrals(user.referrals);
+        $scope.user.first_degree_referrals = user.first_degree_referrals;
+        $scope.user.second_degree_referrals = user.second_degree_referrals;
+        $scope.user.referral_limit = user.referral_limit;
 
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;
@@ -557,14 +654,14 @@ angular.module('uguru.user', [])
         $scope.user.active_student_sessions = user.active_student_sessions;
         $scope.user.previous_student_sessions = user.previous_student_sessions;
         $scope.user.balance = user.balance;
-        $scope.user.total_earned = user.total_earned;
+        $scope.user.total_earned = Math.round(user.total_earned);
         $scope.user.estimated_guru_rank = user.estimated_guru_rank;
         $scope.user.official_guru_rank = user.official_guru_rank;
         $scope.user.estimated_guru_score = user.estimated_guru_score;
         $scope.user.official_guru_score = user.official_guru_score;
         $scope.user.estimated_guru_rank_last_updated = user.estimated_guru_rank_last_updated;
         $scope.user.official_guru_rank_last_updated = user.official_guru_rank_last_updated;
-        $scope.user.guru_avg_rating = user.guru_avg_rating;
+        $scope.user.guru_avg_rating = Math.round(user.guru_avg_rating * 10) / 10;
         $scope.user.student_avg_rating = user.student_avg_rating;
         $scope.user.student_ratings = user.student_ratings;
         $scope.user.guru_ratings = user.guru_ratings;
@@ -581,13 +678,11 @@ angular.module('uguru.user', [])
         $scope.user.max_hourly = parseInt(user.max_hourly);
 
         $scope.user.current_profile_percent = RankingService.calcProfile(user);
-        console.log('\n\nRanking Service calculating\n\n', RankingService.calcCredibility(user));
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
-
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
-        $scope.user.is_a_guru = !$scope.user.show_become_guru;
+        $scope.user.is_a_guru = false && !$scope.user.show_become_guru;
 
         $localstorage.setObject('user', $scope.user);
 
@@ -655,6 +750,9 @@ angular.module('uguru.user', [])
             return Restangular
                 .one('user')
                 .customPUT(JSON.stringify(user));
+        },
+        checkAccess: function(payload) {
+            return Restangular.one('user').customPUT(JSON.stringify(payload));
         },
         initUser: function() {
             var newUser = initUser();
@@ -785,6 +883,11 @@ angular.module('uguru.user', [])
                 return {
                     event_id: obj,
                     'impact_event': true
+                }
+              }
+              if (arg === 'discoverability') {
+                return {
+                    'discoverability': obj
                 }
               }
               if (arg === 'profile_url') {
@@ -971,6 +1074,12 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'person_friendly') {
+                return {
+                    'person_friendly': obj
+                }
+              }
+
               if (arg === 'phone_friendly') {
                 return {
                     'phone_friendly': obj
@@ -980,6 +1089,18 @@ angular.module('uguru.user', [])
               if (arg === 'email_friendly') {
                 return {
                     'email_friendly': obj
+                }
+              }
+
+              if (arg === 'referral_code') {
+                return {
+                    'referral_code': obj
+                }
+              }
+
+              if (arg === 'profile_code') {
+                return {
+                    'profile_code': obj
                 }
               }
 
@@ -1150,9 +1271,9 @@ angular.module('uguru.user', [])
                         console.log(JSON.stringify(err));
                         console.log('error...something happened with the server;')
                     });
-            } else if (param === 'transactions') {
+            } else if (param === 'bank_transfer') {
                 Restangular
-                    .one('user', userObj.id).one(param)
+                    .one('user', userObj.id).one('transactions')
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
 
@@ -1161,6 +1282,10 @@ angular.module('uguru.user', [])
                         delegateActionsFromProcessedUser($scope);
 
                         $localstorage.setObject('user', $scope.user);
+
+                        if (callback_success) {
+                            callback_success($scope, $state);
+                        }
 
                     }, function(err){
                         console.log(JSON.stringify(err));
@@ -1206,7 +1331,7 @@ angular.module('uguru.user', [])
                                 callback_success($scope, $state);
                                 $timeout(function() {
                                     LoadingService.hide();
-                                }, 1500);
+                                }, 4000);
                             };
 
 
@@ -1239,12 +1364,11 @@ angular.module('uguru.user', [])
 
             else if (param === 'messages') {
                 Restangular
-                    .one('user', userObj.id).one('sessions', payload.message.session_id).one(param)
+                    .one('user', userObj.id).one('relationships', payload.message.relationship_id).one(param)
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
                         var processed_user = processResults(user)
                         $localstorage.setObject('user', processed_user);
-                        $scope.$broadcast('scroll.refreshComplete');
                         if (callback_success) {
                             callback_success($scope, processed_user)
                         }
@@ -1474,7 +1598,7 @@ angular.module('uguru.user', [])
                 if (failure_callback) {
                     failure_callback();
                 }
-                
+
             }, function(err){
                 if (failure_callback) {
                     failure_callback(err);

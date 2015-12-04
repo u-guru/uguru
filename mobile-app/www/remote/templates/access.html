@@ -1,5 +1,8 @@
-<ion-view class='uguru-view access-view full-xy' ion-scroll='false' style='overflow:hidden;' ng-controller='AccessController' cache-view='!LOCAL'>
-    <main id="desktop-access" class="desktop-mode" ng-show='isDesktopMode()'>
+<ion-view class='uguru-view access-view full-xy overflow-hidden' ion-scroll='false' ng-controller='AccessController' cache-view='!LOCAL'>
+    <main id="desktop-access" class="desktop-mode" ng-if='desktopMode'>
+        <a class="back-link absolute top-0 left-0 m30xy" ng-if="desktopMode &amp;&amp; !user.id" href='https://www.uguru.me'>
+            Back
+        </a>
         <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
         <div class="main">
             <div id="desktop-access-code" ng-init='getLoadTime()'>
@@ -10,10 +13,15 @@
                 submit='checkAccessCode(access.codeInput)' />
             </div>
             <button id='redeem-button' class="btn-caps-bold bg-white-90p txt-shamrock ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" thr-click="checkAccessCode(access.codeInput)">Redeem</button>
+            <footer id='access-footer' class='flex-center bottom-0 absolute left-0 p30xy full-x'>
+                <h3 class='full-x p30xy center semibold'>
+                    <a ng-click='goToLoginFromAccess()' class='white-text'>Have an account?</a>
+                </h3>
+            </footer>
         </div>
     </main>
 
-    <section id="access" class="start" ng-show='!isDesktopMode()'>
+    <section id="access" class="start" ng-if='!desktopMode'>
         <div id="access-data">
             <div id="access-logo" ng-hide='inputFocused && platform.android'>
                 <svg width="372px" height="446px" viewBox="0 0 372 446">
@@ -24,13 +32,19 @@
                 </svg>
             </div>
             <div id="access-code" class="p20xy full-x flex-column-impt text-center ng-class={'android-access-edge-case':platform.android}" ng-init='getLoadTime()'>
-                <p id='input-error-text' class='block full-x hide-opacity semibold caps ng-class:{"show-opacity":access.errorInputMsg}'>{{access.errorInputMsg}}&nbsp;</p>
+                <p id='input-error-text' class='block full-x hide-opacity semibold caps'>{{access.errorInputMsg}}&nbsp;</p>
                 <input id="access-code-bar" class='input-outline full-x text-center' ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' type="text" placeholder="Enter your access code"
                 submit='checkAccessCode(access.codeInput)' />
             </div>
         </div>
-        <div id="access-start" class="text-center full-x">
+        <div id="access-start" class="text-center full-x" ng-show='access.codeInput.length'>
             <button id='redeem-button' class="btn-caps-bold bg-white-90p txt-shamrock ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" thr-click="checkAccessCode(access.codeInput)">Redeem</button>
         </div>
+        <footer id='access-footer' ng-show='!access.codeInput.length' class='flex-center bottom-0 absolute left-0 full-x'>
+                <h6 class='full-x p20xy center'>
+                    <a ng-click='goToLoginFromAccess()' class='white-text'> Have an account? </a>
+                </h6>
+        </footer>
+
     </section>
 </ion-view>

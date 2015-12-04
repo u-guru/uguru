@@ -1,6 +1,8 @@
 import stripe, os
 
-stripe.api_key = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+
 # stripe.api_key = 'sk_test_3PFFx8W4mSRwDaJ4JKkZMKtW'
 
 def refund_charge(charge_id, amount_cents):
@@ -15,7 +17,6 @@ def create_customer(user, token):
           description="Customer for " + str(user.name) + ', ' + str(user.email),
           source=token
         )
-
         return stripe_customer.id
     except stripe.error.CardError, e:
           # Since it's a decline, stripe.error.CardError will be caught

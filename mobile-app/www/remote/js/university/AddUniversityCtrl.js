@@ -1,35 +1,37 @@
 angular.module('uguru.util.controllers', ['sharedServices'])
-.controller('AddUniversityCtrl', [
+	.controller('AddUniversityCtrl', [
 
-  //All imported packages go here
-  '$rootScope',
-  '$scope',
-  '$state',
-  '$timeout',
-  'University',
-  '$ionicViewSwitcher',
-  'Geolocation',
-  'Utilities',
-  '$ionicSlideBoxDelegate',
-  'DeviceService',
-  'uTracker',
-  '$q',
-  'AnimationService',
-  'PerformanceService',
-  '$templateCache',
-  'AccessService',
-  '$ionicModal',
-  'ModalService',
-  '$controller',
-  'MapService',
-  '$ionicSideMenuDelegate',
-  'LoadingService',
-  AddUniversityCtrl]);
+		//All imported packages go here
+		'$rootScope',
+		'$scope',
+		'$state',
+		'$timeout',
+		'University',
+		'$ionicViewSwitcher',
+		'Geolocation',
+		'Utilities',
+		'$ionicSlideBoxDelegate',
+		'DeviceService',
+		'uTracker',
+		'$q',
+		'AnimationService',
+		'PerformanceService',
+		'$templateCache',
+		'AccessService',
+		'$ionicModal',
+		'ModalService',
+		'$controller',
+		'MapService',
+		'$ionicSideMenuDelegate',
+		'LoadingService',
+		'$localstorage',
+		AddUniversityCtrl
+	]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService,
-  $controller, MapService, $ionicSideMenuDelegate, LoadingService) {
+  $controller, MapService, $ionicSideMenuDelegate, LoadingService, $localstorage) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -42,7 +44,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   }
 
 
-  $scope.universitiesSorted = University.getSorted().slice();
+  $scope.universitiesSorted = University.getTargetted().slice();
   $scope.universities = $scope.universitiesSorted;
 
   $scope.search_text = {
@@ -67,6 +69,13 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
           "$Performance": performance
         });
   };
+
+  $scope.backToAccess = function() {
+    if (mixpanel && mixpanel.track) {
+      mixpanel.track("Back to access selected");
+    }
+    $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
+  }
 
 
   // Measure FPS of access page -> university list transition
@@ -140,65 +149,31 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
   $scope.universitySelected = function(university) {
 
-    $timeout(function() {
-      PerformanceService.sendListResponseTime('University_List');
-    }, 0);
-
-
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
-        if (confirm('Are you sure? Your current courses will be deactivated')) {
-
-
-          if ($state.current.name === 'root.home' && $ionicSideMenuDelegate.isOpen()) {
-            $scope.user.university = university;
-
-            // MapService.initStudentHomeMap($scope.user);
-            LoadingService.showAmbig("Saving...", 1000);
-
-            $timeout(function() {
-              LoadingService.hide();
-              LoadingService.showSuccess('University changed!', 2000);
-            }, 1000);
-
-            $timeout(function() {
-              $ionicSideMenuDelegate.toggleRight();
-            }, 1250);
-          }
-
-          // $timeout(function() {
-          //   console.log("broadcasting schoolChange!");
-          //   $rootScope.$emit('schoolChange');
-          // }, 0);
-
-          uTracker.track(tracker, "University Changed", {
-              "$University": university.name,
-              "$University_Input": $scope.search_text.university
-          });
-        } else return;
-      } else {
-        uTracker.track(tracker, "University Selected", {
-            "$University": university.name,
-            "$University_Input": $scope.search_text.university
-        });
+        if ($state.current.name !== 'root.university' && $scope.user.guru_courses && $scope.user.guru_courses.length && confirm('Are you sure? Your current courses will be deactivated')) {
+          $scope.user.university = university;
+        } else {
+          return;
+        }
       }
 
-      uTracker.set(tracker, {
-          "$University": university.name,
-      });
 
+      if (mixpanel && mixpanel.track) {
+        mixpanel.track(
+            "University selected",
+            {name: university.name,
+              id:university.id
+            }
+        );
+      }
 
-      //LoadingService.showSuccess('Success', 750);
-
+      $scope.user.university = university;
       University.clearSelected();
-      // University.majors = [];
-      // University.courses = [];
-
-      // $scope.getCoursesForUniversityId(university.id);
-      // $scope.getMajorsForUniversityId(university.id);
-
-      University.getMajors(university.id);
-      University.getCourses(university.id);
+      $timeout(function() {
+        University.getMajors(university.id);
+        University.getPopularCourses(university.id);
+      }, 100);
 
 
       University.selected = university;
@@ -207,45 +182,37 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       $scope.user.university = university;
       $scope.search_text.university = '';
 
-      //fetch the universities
-
-      //update user to locat storage
       $timeout(function() {
-        $scope.rootUser.updateLocal($scope.user);
+        $localstorage.setObject('university', university);
+        $localstorage.setObject('user', $scope.user);
       }, 0);
 
-
       var payload = {
-        'university_id': $scope.user.university_id
-      };
+        'university_id': university.id
+      }
 
-      //save university
-      var postUniversitySelectedCallback = function() {
+      var flipCallback;
+      var university_msg = 'Loading an awesome experience..';
 
-        var modal = document.querySelectorAll('ion-modal-view.university-view')[0];
-        if(modal !== undefined) {
-          var stringList = modal.classList.toString();
-          if(stringList.indexOf('ng-enter-active')) {
-            modal.classList.add('ng-leave');
-            modal.classList.remove('ng-enter', 'active', 'ng-enter-active');
-            $ionicSlideBoxDelegate.update();
 
-        }
+      if ($state.current.name === 'root.university') {
 
-        } else {
-          AnimationService.flip('^.home');
-          $ionicViewSwitcher.nextDirection('forward');
-          $timeout(function() {
-            console.log("cleaning up access/university slidebox");
-            var accessUni = document.querySelectorAll('#access-uni-slide')[0];
-            if(accessUni) accessUni.remove();
-            $scope.$destroy();
-          }, 1000);
+        LoadingService.showAmbig(university_msg, 3000, function() {
+          // AnimationService.flip('^.home');
+          if ($scope.desktopMode) {
+            AnimationService.flip('^.desktop-become-guru');
+          } else {
+            AnimationService.flip('^.become-guru');
+          }
+        });
+      } else {
+        LoadingService.showAmbig(university_msg, 3000, function() {
+          $scope.closeModal('university');
+        });
+      }
 
-        }
-      };
       $timeout(function() {
-        $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+        $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope);
       }, 0);
 
   };
@@ -258,7 +225,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   };
 
   $scope.toggleLocationIconAppearance = function() {
-
+    if (mixpanel && mixpanel.track) {
+      mixpanel.track("Get GPS Location attempted");
+    }
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
       console.log("refreshing universities for location!");
       $scope.refresh.universities = 'update';
@@ -270,6 +239,11 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       Geolocation.settings.isActive = !Geolocation.settings.isActive;
     }
     else {
+
+      if (mixpanel && mixpanel.track) {
+        mixpanel.track("Location access denied")
+      }
+
       Geolocation.settings.isActive = false;
       Geolocation.settings.isAllowed = false;
     }
@@ -280,94 +254,89 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   }
 
 
+
 }
 
 angular.module('uguru.directives')
-.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService, LoadingService) {
+	.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService, LoadingService) {
 
-  function link($scope, element, attributes) {
-    var queryPromise = null;
-    $timeout(function() {
+		function link($scope, element, attributes) {
+			var queryPromise = null;
+			$timeout(function() {
 
-      $scope.$parent.$watch(
-        'refresh.universities',
-        function(newValue, oldValue) {
-          console.log("heard something!", newValue, oldValue);
-          if(newValue === 'update' ) {
-
-
-            // LoadingService.showAmbig('Calculating distance...', 2000);
-              Geolocation.getLocation($scope, $scope.source, function(results) {
-                $timeout(function() {
-                  $scope.listScope = results;
-                }, 0);
-              }, DeviceService.isIOSDevice());
-
-          }
-        }
-      );
-
-      $scope.$parent.$watch(
-        'search_text.university',
-        function(newValue, oldValue) {
-
-          if(newValue.length < oldValue.length) {
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 90);
-          }
-
-          else if(newValue.length === 1) {
-
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 75);
-          }
-
-          else if(newValue.length === 0) {
-
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 50);
-          }
-
-          else {
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-
-            }, 50);
-          }
-        }
-
-      );
-    }, 250);
-
-  }
-
-  return {
-    scope: {
-      listScope: '=bindList',
-      source: '=source',
-    },
-    link: link,
-    restrict: 'A'
-  };
+				$scope.$parent.$watch(
+					'refresh.universities',
+					function(newValue, oldValue) {
+						console.log("heard something!", newValue, oldValue);
+						if (newValue === 'update') {
 
 
-});
+							// LoadingService.showAmbig('Calculating distance...', 2000);
+							Geolocation.getLocation($scope, $scope.source, function(results) {
+								$timeout(function() {
+									$scope.listScope = results;
+								}, 0);
+							}, DeviceService.isIOSDevice());
+
+						}
+					}
+				);
+
+				$scope.$parent.$watch(
+					'search_text.university',
+					function(newValue, oldValue) {
+
+						if (newValue.length < oldValue.length) {
+							if (queryPromise) {
+								$timeout.cancel(queryPromise);
+							}
+							queryPromise = $timeout(function() {
+								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+								queryPromise = null;
+							}, 90);
+						} else if (newValue.length === 1) {
+
+							if (queryPromise) {
+								$timeout.cancel(queryPromise);
+							}
+							queryPromise = $timeout(function() {
+								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+								queryPromise = null;
+							}, 75);
+						} else if (newValue.length === 0) {
+
+							if (queryPromise) {
+								$timeout.cancel(queryPromise);
+							}
+							queryPromise = $timeout(function() {
+								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+								queryPromise = null;
+							}, 50);
+						} else {
+							if (queryPromise) {
+								$timeout.cancel(queryPromise);
+							}
+							queryPromise = $timeout(function() {
+								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+								queryPromise = null;
+
+							}, 50);
+						}
+					}
+
+				);
+			}, 250);
+
+		}
+
+		return {
+			scope: {
+				listScope: '=bindList',
+				source: '=source',
+			},
+			link: link,
+			restrict: 'A'
+		};
+
+
+	});

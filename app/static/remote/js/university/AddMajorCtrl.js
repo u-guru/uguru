@@ -27,28 +27,28 @@ angular.module('uguru.util.controllers')
       majorsLength: $scope.source.majors.length
     };
 
-    function updateDOM() {
-      $timeout(function() {
+    // function updateDOM() {
+    //   $timeout(function() {
 
-        $scope.source = University.source;
+    //     $scope.source = University.source;
 
-        if ($scope.source.majors.length > 0) {
-            for(var j = 0; j < $scope.user.majors.length; j++) {
-              for(var k = 0; k < $scope.source.majors.length; k++) {
-                if($scope.source.majors[k].id === $scope.user.majors[j].id) {
-                  console.log("Deleting duplicate major found.");
-                  $scope.source.majors.splice(k, 1);
-                }
-              }
-            }
-        }
+    //     if ($scope.source.majors.length > 0) {
+    //         for(var j = 0; j < $scope.user.majors.length; j++) {
+    //           for(var k = 0; k < $scope.source.majors.length; k++) {
+    //             if($scope.source.majors[k].id === $scope.user.majors[j].id) {
+    //               console.log("Deleting duplicate major found.");
+    //               $scope.source.majors.splice(k, 1);
+    //             }
+    //           }
+    //         }
+    //     }
 
-        $scope.refresh.majorsLength = $scope.source.majors.length;
-        University.refresh();
-      }, 0);
+    //     $scope.refresh.majorsLength = $scope.source.majors.length;
+    //     University.refresh();
+    //   }, 0);
 
-    }
-    updateDOM();
+    // }
+    // updateDOM();
 
     if (!$scope.user.majors) {
       $scope.user.majors = [];

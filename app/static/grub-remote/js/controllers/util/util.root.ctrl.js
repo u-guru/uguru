@@ -38,6 +38,8 @@ angular.module('uguru.util.controllers')
         $scope.root = {vars: {}};
          // var universityId = 2307;
         $scope.restaurantsSource = [];
+
+        $scope.root.vars.markerControl = {};
         // $scope.restaurants = [];
 
         function readAndParseJSON(file, callback) {

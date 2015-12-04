@@ -7,6 +7,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
+
+     <style>
+      [data-sr] {
+        visibility: hidden;
+      }
+    </style>
     <script type="text/javascript">
       var start_dom_time = Date.now();
       var deviceReadyLoadTime;
@@ -39,6 +45,11 @@
 
     </script>
 
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+        mixpanel.init("da5f7f670df85c0a22946a8d6611af83");
+        </script><!-- end Mixpanel -->
+
     <!-- ARCHIVE To get rid of soon! -->
     <link href="remote/css/ionic.app.min.css" rel="stylesheet">
 
@@ -47,13 +58,17 @@
     <link href="remote/css/sass/default.css" rel="stylesheet">
     <link href="remote/css/sass/material.css" rel="stylesheet">
     <link href="remote/css/sass/desktop.css" rel="stylesheet">
+    <link href="remote/css/sass/desktop-student.css" rel="stylesheet">
+    <link href="remote/css/sass/desktop-guru.css" rel="stylesheet">
     <link href="remote/css/sass/style.css" rel="stylesheet">
+    <link href="remote/css/sass/style-pf.css" rel="stylesheet">
+    <link href="remote/css/sass/style-modals.css" rel="stylesheet">
+    <link href="remote/css/sass/samir.css" rel="stylesheet">
+    <!-- DO NOT REMOVE BEFORE TELLING GABRIELLE -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="remote/js/materialize.min.js"></script>
 
-
-
-    <!--   <link href="remote/css/sass/components/map.css" rel="stylesheet"> -->
-
-    <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
+    <!-- <link href="remote/css/sass/components/map.css" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
 
 
@@ -61,6 +76,7 @@
     WINDOWS = null;
     function getMobileOperatingSystem() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            console.log(userAgent);
             if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
                     console.log('injecting windows specific css & js');
                     injectJs('windows.cordova.js');
@@ -75,6 +91,7 @@
                 for (var i = 0; i < androidWebViewAgents.length; i++ ) {
                   var indexUA = androidWebViewAgents[i];
                   if (userAgent.indexOf(indexUA) > -1) {
+                    console.log('\n\nAndroid device detected\n\n');
                     injectJs('android.cordova.js');
                     injectCss('android.css');
                     injectAndroidMetaContentScript();
@@ -83,9 +100,9 @@
                 }
                 return 'Android';
               }
-            else if ( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+            else if ( !(userAgent.toLowerCase().indexOf('safari') > -1) )
               {
-
+                console.log('woohoo ios');
                 injectJs('ios.cordova_plugins.js');
                 injectJs('ios.cordova.js');
                 injectCss('ios.css');
@@ -94,7 +111,7 @@
 
               }
             else {
-                console.log('hard to determine identifies');
+                console.log('Mobile browser / desktop browser direction!');
                 // injectCss('web.css')
                 return 'unknown';
             }
@@ -163,6 +180,10 @@
     <script src="remote/lib/progressbar/progressbar.min.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
 
+
+    <script src="remote/lib/ngMoment/moment.min.js"></script>
+    <script src="remote/lib/ngMoment/ngMoment.min.js"></script>
+    <script src="remote/lib/ngElastic/elastic.js"></script>
     <script src="remote/lib/velocity/velocity.min.js"></script>
     <script src="remote/lib/velocity/velocity.ui.min.js"></script>
     <script src="remote/lib/velocity/angular-velocity.min.js"></script>
@@ -207,9 +228,12 @@
    <script type="text/javascript" src="remote/js/shared/stats.js"></script>
     <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
     <script type="text/javascript" src="remote/lib/facebook/facebookConnectPlugin.js"></script>
+    <script src="remote/lib/scroll/scrollReveal.js"></script>
+        <script src="remote/lib/scroll/fox-scrollReveal.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
-
+    <!-- <script src="lib/facebook/openfb.js"></script>
+    <script src="lib/facebook/ngopenfb.js"></script>-->
     <script id="templates/root.html" type="text/ng-template">
 
     </script>
@@ -219,7 +243,8 @@
 
 
 
-
+    <script type="text/javascript" src="remote/lib/facebook/openfb.js"></script>
+    <script type="text/javascript" src="remote/lib/facebook/ngopenfb.js"></script>
     <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
     <script type="text/javascript" src="remote/js/directives/bufferedScroll.js"></script>
@@ -289,6 +314,7 @@
     <script type="text/javascript" src="remote/js/controllers/guru/guru.ranking.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.task.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.profile.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/public.profile.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.bill-student.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.remote.ctrl.js"></script>
 
@@ -304,6 +330,7 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
+
     <script type="text/javascript" src="remote/js/controllers/desktop/SettingsCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/desktop/DesktopBecomeGuruCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/InAppMapController.js"></script>
@@ -384,6 +411,11 @@
     <script type="text/javascript" src="remote/js/controllers/util/CardList.ctrl.js"></script>
 
 
+    <script>
+
+      window.sr = new scrollReveal();
+
+    </script>
 <!--
     <script type="text/javascript">
     var map;
@@ -411,12 +443,23 @@
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()">
 
-    <h3>In App Google Maps Plugin</h3>
+    <!-- <h3>In App Google Maps Plugin</h3>
    <div style="width:100%;height:400px" id="map_canvas"></div>
-   <button id="button">Full Screen</button>
+   <button id="button">Full Screen</button> -->
 
 
     <ui-view></ui-view>
+    <script>
+      window.intercomSettings = {
+        app_id: "yoz6vu28"
+      };
+    </script>
+    <style>
+    #Intercom {
+        display:none;
+    }
+    </style>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/yoz6vu28';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
         <script>

@@ -13,7 +13,7 @@ from lib.api_utils import json_response
 from pprint import pprint
 
 
-APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d34', 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4']
+APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d34', 'be55666b-b3c0-4e3b-a9ab-afef4ab5d2e4', 'fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6']
 
 @auth.verify_password
 def verify_password(email, password):
@@ -593,6 +593,10 @@ class UserOneView(restful.Resource):
             user.text_notifications = request.json.get('text_notifications')
             print 'coming soon!'
 
+        if 'email_notifications' in request.json:
+            user.email_notifications = request.json.get('email_notifications')
+            print 'coming soon!'
+
         if 'guru_latest_time' in request.json:
             user.guru_latest_time = request.json.get('guru_latest_time')
 
@@ -608,8 +612,21 @@ class UserOneView(restful.Resource):
         if 'facetime_friendly' in request.json:
             user.facetime_friendly = request.json.get('facetime_friendly')
 
+        if 'discoverability' in request.json:
+            print 'ayy'
+            user.guru_discoverability = request.json.get('discoverability')
+
         if 'messenger_friendly' in request.json:
             user.messenger_friendly = request.json.get('messenger_friendly')
+
+        if 'referral_code' in request.json:
+            user.referral_code = request.json.get('referral_code')
+
+        if 'profile_code' in request.json:
+            user.profile_code = request.json.get('profile_code')
+
+        if 'person_friendly' in request.json:
+            user.person_friendly = request.json.get('person_friendly')
 
         if 'text_friendly' in request.json:
             user.text_friendly = request.json.get('text_friendly')
@@ -620,11 +637,29 @@ class UserOneView(restful.Resource):
         if 'profile_url' in request.json:
             user.profile_url = request.json.get('profile_url')
 
+        if 'update_portfolio_item' in request.json:
+            pi_json = request.json.get('update_portfolio_item')
+            pi_id = request.json.get('id')
+            if not pi_id and user.guru_courses and not user.portfolio_items:
+                Portfolio_Item.initAllCourses(user)
+
+            course_id = int(pi_json.get('course_id'))
+            pi = Portfolio_Item.getPortfolioItemByCourseId(course_id)
+            if not pi:
+                abort(404)
+
+            pi.description = pi_json.get('description')
+            pi.hourly_price = pi_json.get('hourly_price')
+            pi.max_hourly_price = pi_json.get('max_hourly_price')
+            pi.unit_price = pi_json.get('unit_price')
+            pi.max_unit_price = pi_json.get('max_unit_price')
+
+
         if 'fb_id' in request.json:
             if not user.fb_id:
                 fb_id = request.json.get('fb_id')
                 previous_user = User.query.filter_by(fb_id=fb_id).all()
-                if user not in previous_user:
+                if previous_user and user not in previous_user:
                     user.fb_id = request.json.get('fb_id')
                     db_session.commit()
                 else:
@@ -637,6 +672,20 @@ class UserOneView(restful.Resource):
 
         if 'guru_mode' in request.json:
             user.guru_mode = request.json.get('guru_mode')
+
+
+        if 'add_guru_calendar_event' in request.json:
+            calendar_event_json = request.json.get('add_calendar_event')
+            if not user.guru_calendar:
+                Calendar.initGuruCalendar(user)
+            Calendar.createGuruOfficeHours(calendar_event_json, user.guru_calendar)
+
+        if 'remove_guru_calendar_event' in request.json:
+            calendar_event_json = request.json.get('remove_guru_calendar_event')
+            calendar_event_id = int(calendar_event_json.get('id'))
+            calendar_event = Calendar_Event.query.get(calendar_event_id)
+            calendar_event.archived = True
+            db_session.commit()
 
         if request.json.get('add_student_course'):
             course = request.json.get('course')
@@ -766,12 +815,11 @@ class UserOneView(restful.Resource):
 
         if request.json.get('remove_guru_language'):
             language_json = request.json.get('remove_guru_language')
-            language_id = language_json.get('id')
+            language_id = int(language_json.get('id'))
             language = Language.query.get(language_id)
-            print "NOT WORKING YET"
-            # if language in user.guru_languages:
-            #     user.guru_languages.remove(language)
-            #     db_session.commit()
+            if language in user.guru_languages:
+                user.guru_languages.remove(language)
+                db_session.commit()
 
 
         if request.json.get('remove_guru_course'):
@@ -784,7 +832,12 @@ class UserOneView(restful.Resource):
                 db_session.commit()
             except:
                 db_session.rollback()
-                raise
+                try:
+                    d = db_session.query(guru_courses_table).filter(guru_courses_table.c.user_id == user.id, guru_courses_table.c.course_id == course_id).delete(synchronize_session=False)
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
             # if user in c.gurus:
             #     # c.gurus.remove(user)
             #     from app.models import guru_courses_table
@@ -868,12 +921,13 @@ class UserOneView(restful.Resource):
         # # print request.json.get('requests');
         # if not request.json.get('auth_token'):
         #     abort(400)
-
+        print request.json
         user = User.query.get(_id)
         if not user:
             abort(400)
 
         print user
+        from hashlib import md5
 
         # if request.json.get('auth_token') != user.auth_token:
         #     abort(400)
@@ -894,8 +948,15 @@ class UserOneView(restful.Resource):
         user.guru_ratings = []
         user.cards = []
         user.is_a_guru = True
+        user.is_admin = True
+        user.password = md5('launchuguru123').hexdigest()
+        user.profile_code = user.name.split(' ')[0].lower()
+        user.referral_code = user.name.split(' ')[0].lower()
+        
         user.current_hourly = None
         user.university_id = None
+        user.guru_categories = []
+        user.guru_languages = []
         user.phone_number = None
         user.phone_number_token = None
         user.school_email_token = None
@@ -1379,8 +1440,8 @@ class UserTransactionsView(restful.Resource):
         if not user:
             abort(404)
 
-        if request.json.get('transaction'):
-            print request.json
+        if request.json.get('bank_transfer'):
+
 
             transaction_json = request.json
             selected_card = Card.query.get(transaction_json.get('card_id'))
@@ -1857,6 +1918,53 @@ class UserSessionView(restful.Resource):
 #TODO Later Queuing system + task actions for db_commits
 #TODO Later: Images & Files --> S3 Bucket
 
+class UserRelationshipMessageView(restful.Resource):
+    @marshal_with(UserSerializer)
+    def post(self, _id, relationship_id):
+        user = get_user(_id)
+
+        _relationship = Relationship.query.get(relationship_id)
+        if not user or not _relationship:
+            abort(404)
+
+
+        if request.json.get('message'):
+            message_json = request.json.get('message')
+            message = Message.initFromJson(message_json, False)
+
+            _relationship = Relationship.query.get(message.relationship_id)
+
+            #guru sent it
+            if user.id == message.receiver_id:
+
+                #student is the one 'receiving the message'
+                message_receiver = message.sender
+                message_sender = message.receiver
+
+            #student sent it
+            else:
+                #student is the one 'receiving the message'
+                message_receiver = message.receiver
+                message_sender = message.sender
+
+            print message
+            # if message_receiver.push_notifications:
+            #     #send push notification to all student devices
+            #     from app.lib.push_notif import send_message_to_receiver
+            #     send_message_to_receiver(message_sender, message_receiver, message._relationship.sessions[0].request.course)
+
+
+            # # if user.email_notifications and user.email:
+            # #     from app.emails import send_message_to_receiver
+            # #     send_message_to_receiver(message.sender, message.receiver, message._relationship.sessions[0].request.course)
+
+            # if message.receiver.text_notifications and user.phone_number:
+            #     from app.texts import send_message_to_receiver
+            #     send_message_to_receiver(message_sender, message_receiver, message._relationship.sessions[0].request.course)
+
+            return user, 200
+
+
 class UserSessionMessageView(restful.Resource):
 
     @marshal_with(SessionSerializer)
@@ -2039,6 +2147,8 @@ class UserCardView(restful.Resource):
             db_session.commit()
 
 
+
+
         return user, 200
 
     @marshal_with(UserSerializer)
@@ -2056,11 +2166,15 @@ class UserCardView(restful.Resource):
 
         return user, 200
 
-
-
-
 class UserNewView(restful.Resource):
     #create new user
+
+    # @marshal_with(UserSerializer)
+    # def get(self):
+
+
+    #     abort(404)
+
 
     @marshal_with(UserSerializer)
     def post(self):
@@ -2135,6 +2249,12 @@ class UserNewView(restful.Resource):
         db_session.add(user)
         db_session.commit()
 
+        if request.json.get('access_code_sender_id'):
+            sender_id = int(request.json.get('access_code_sender_id'))
+            sender = User.query.get(sender_id)
+            if sender:
+                Referral.initAndApplyReferral(sender, user)
+
         majors_json = request.json.get('majors')
         if majors_json:
             major_ids = [major.get('id') for major in majors_json]
@@ -2189,6 +2309,37 @@ class UserNewView(restful.Resource):
     @marshal_with(UserSerializer)
     def put(self):
 
+        if request.json.get('admin_token') and request.json.get('user_id'):
+            print request.json
+            user_id = int(request.json.get('user_id'))
+            user = User.query.get(user_id)
+            return user, 200
+
+        if request.json.get('access_code'):
+            access_code = request.json.get('access_code')
+
+            does_referral_exist = User.does_referral_exist(access_code)
+
+            if not does_referral_exist and access_code != 'cool':
+                abort(401)
+
+            user = does_referral_exist
+
+
+            result_dict = {'success':True}
+            if user and not user.deactivated:
+                user.reactivateUser()
+                result_dict['profile_url'] = user.profile_url
+                result_dict['first_name'] = user.getFirstName()
+                result_dict['name'] = user.getFirstName()
+                result_dict['email'] = user.email
+                print user.name, user.profile_url, user.email
+                result_dict['deactivated'] = True
+
+
+
+            return json.dumps(result_dict), 200
+
         if request.json.get('email') and request.json.get('forgot_password'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 
@@ -2219,6 +2370,10 @@ class UserNewView(restful.Resource):
                 ).first()
 
             if email_user:
+
+                if email_user.deactivated:
+                    abort(404)
+                    ### TODO MIXPANEL PLZ
 
                 import uuid
                 email_user.auth_token = uuid.uuid4().hex
@@ -3111,8 +3266,9 @@ class AdminOneUniversityView(restful.Resource):
                 banner_src = request.json.get('university_banner')
                 if type(banner_src) != str:
                     abort(401)
-
+                print banner_src
                 u.banner_url = banner_src
+                u.banner_url_confirmed = True
 
 
             if 'latitude' in request.json:
@@ -3164,6 +3320,14 @@ class AdminOneUniversityView(restful.Resource):
                 if type(logo_url) != str:
                     abort(401)
                 u.logo_url = logo_url
+
+            if 'svg_url' in request.json:
+                svg_url = request.json.get('svg_url')
+                print svg_url
+                if type(svg_url) != str:
+                    abort(401)
+                u.svg_url = svg_url
+
 
             if 'school_color_one' in request.json:
                 school_color_one = request.json.get('school_color_one')
@@ -3367,6 +3531,7 @@ api.add_resource(UserCardView, '/api/v1/user/<int:user_id>/cards')
 api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions')
 api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions')
 api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings')
+api.add_resource(UserRelationshipMessageView, '/api/v1/user/<int:_id>/relationships/<int:relationship_id>/messages')
 api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages')
 api.add_resource(UserSupportMessageView, '/api/v1/user/<int:_id>/support/<int:_support>/messages')
 api.add_resource(OneDeviceView, '/api/v1/device')
@@ -3393,6 +3558,7 @@ api.add_resource(TransitGuruTransitData, '/api/v1/<string:auth_token>/transit')
 api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
+# api.add_resource(MandrillWebhook, '/<string:auth_token>/mandrill-webhook')
 api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')
 api.add_resource(AdminUserView, '/api/admin/users/')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
@@ -3423,4 +3589,68 @@ api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/i
 api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels')
 
 
+api.add_resource(UserView, '/api/v1/users', subdomain='www')
+api.add_resource(UserNewView, '/api/v1/user', subdomain='www')
+api.add_resource(UserOneView, '/api/v1/user/<int:_id>', subdomain='www')
+api.add_resource(FileView, '/api/v1/files', subdomain='www')
+api.add_resource(UserRequestView, '/api/v1/user/<int:user_id>/requests', subdomain='www')
+api.add_resource(UserCardView, '/api/v1/user/<int:user_id>/cards', subdomain='www')
+api.add_resource(UserSessionView, '/api/v1/user/<int:_id>/sessions', subdomain='www')
+api.add_resource(UserTransactionsView, '/api/v1/user/<int:_id>/transactions', subdomain='www')
+api.add_resource(UserRatingView, '/api/v1/user/<int:_id>/ratings', subdomain='www')
+api.add_resource(UserRelationshipMessageView, '/api/v1/user/<int:_id>/relationships/<int:relationship_id>/messages', subdomain='www')
+api.add_resource(UserSessionMessageView, '/api/v1/user/<int:_id>/sessions/<int:_session>/messages', subdomain='www')
+api.add_resource(UserSupportMessageView, '/api/v1/user/<int:_id>/support/<int:_support>/messages', subdomain='www')
+api.add_resource(OneDeviceView, '/api/v1/device', subdomain='www')
+api.add_resource(DeviceView, '/api/v1/devices/<int:device_id>', subdomain='www')
+api.add_resource(VersionView, '/api/v1/version', subdomain='www')
+api.add_resource(UserPhoneView, '/api/v1/phone', subdomain='www')
+api.add_resource(SupportView, '/api/v1/support', subdomain='www')
+api.add_resource(SessionView, '/api/v1/sessions', subdomain='www')
+api.add_resource(RankingsView, '/api/v1/rankings', subdomain='www')
+api.add_resource(UniversityListView, '/api/v1/universities', subdomain='www')
+api.add_resource(CategoryListView, '/api/v1/categories', subdomain='www')
+api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments', subdomain='www')
+api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses', subdomain='www')
+api.add_resource(UniversityPopularCoursesView, '/api/v1/universities/<int:_id>/popular_courses', subdomain='www')
+api.add_resource(MajorListView, '/api/v1/majors', subdomain='www')
+api.add_resource(UniversityFoodView, '/api/v1/universities/<int:_id>/food_url', subdomain='www')
+api.add_resource(CourseListView, '/api/v1/courses', subdomain='www')
+api.add_resource(SkillListView, '/api/v1/skills', subdomain='www')
+api.add_resource(ProfessionListView, '/api/v1/professions', subdomain='www')
+api.add_resource(UserEmailView, '/api/v1/user_emails', subdomain='www')
+api.add_resource(GithubIssueView, '/api/v1/github', subdomain='www')
+api.add_resource(HomeSubscribeView, '/api/v1/web/home/subscribe', subdomain='www')
+api.add_resource(TransitGuruTransitData, '/api/v1/<string:auth_token>/transit', subdomain='www')
+api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music', subdomain='www')
+# Admin view, subdomain='www's
+api.add_resource(AdminSessionView, '/api/admin', subdomain='www')
+# api.add_resource(MandrillWebhook, '/<string:auth_token>/mandrill-webhook', subdomain='www')
+api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test', subdomain='www')
+api.add_resource(AdminUserView, '/api/admin/users/', subdomain='www')
+# api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities', subdomain='www')
+api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>', subdomain='www')
+api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/courses', subdomain='www')
+api.add_resource(AdminUniversityPopularCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/popular_courses', subdomain='www')
+api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts', subdomain='www')
+api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses', subdomain='www')
+api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients', subdomain='www')
+api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test', subdomain='www')
+api.add_resource(AdminAppUpdateView, '/api/admin/app/update', subdomain='www')
+api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates', subdomain='www')
+api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns', subdomain='www')
+api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>', subdomain='www')
+api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails', subdomain='www')
+api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users', subdomain='www')
+api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities', subdomain='www')
+api.add_resource(AdminViewUniversitiesListEmails, '/api/admin/<string:auth_token>/universities/emails', subdomain='www')
+api.add_resource(AdminViewUniversitiesListPrepared, '/api/admin/<string:auth_token>/universities/prepared', subdomain='www')
+api.add_resource(AdminViewUniversitiesListAll, '/api/admin/<string:auth_token>/universities/us_news', subdomain='www')
+api.add_resource(AdminViewUniversitiesListAllDistribution, '/api/admin/<string:auth_token>/universities/distribution', subdomain='www')
+api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>', subdomain='www')
+api.add_resource(AdminViewUserAnalytics, '/api/admin/analytics/user', subdomain='www')
 
+# Admin views githu, subdomain='www'b, subdomain='www'
+
+api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/issues', subdomain='www')
+api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels', subdomain='www')

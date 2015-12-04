@@ -16,6 +16,30 @@
 	box-shadow: none!important;
 }
 
+body {
+	width: 100%!important;
+}
+
+// BOTTOM CORNER WHITE ICONS
+#corner-menu-icons {
+    @include listless;
+    display: none;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    a {
+        padding: 0 15px;
+        &:first-child {
+            padding-left: 0;
+        }
+        svg {
+            width: 36px;
+            height: 36px;
+        }
+    }
+}
+
+// TOP BAR
 #top {
 	position: fixed;
 	top: 0;
@@ -25,31 +49,42 @@
 	#top-logo {
 		position: relative;
 		display: block;
-		margin: -10px auto 0;
+		margin: -30px auto 0;
 		text-align: center;
 		svg {
 			@include transition-type(width, .15s ease-in);
+            @include full-xy;
 			display: block;
 			margin: 10px auto;
-			width: 100%;
-			height: 100%;
 		}
 	}
 	#top-menu {
+        @include box-sizing;
 		position: relative;
 		z-index: 99999;
 		padding: 10px;
-		box-sizing: border-box;
 		ul {
 			@include listless;
-			display: table;
+			@include flex;
+            @include flex-center;
 			width: 100%;
 			li {
-				display: table-cell;
-				vertical-align: top;
+				@include flex;
+                @include flex-center-vertical;
 				width: 33.33333%;
 				&:last-child {
+                    -webkit-justify-content: flex-end;
+                	justify-content: flex-end;
 					text-align: right;
+                    .top-link-powerups {
+                        display: inline-block;
+                        color: white;
+                        padding: 0 10px;
+                        i {
+                            font-size: 30px;
+                            line-height: 1;
+                        }
+                    }
 				}
 			}
 		}
@@ -59,12 +94,12 @@
 	display: none;
 }
 
+// OVERLAY
 #full-overlay {
 	@include opacity(0);
+    @include full-xy;
 	position: absolute;
 	z-index: 0;
-	width: 100%;
-	height: 100%;
 	background-color: rgba($charcoal, .5);
 	&.active {
 		@include opacity(1);
@@ -82,125 +117,320 @@
 	}
 }
 
+// UNIVERSITY MODAL
+.svg-container {
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
+}
 #start-modal {
 	@include opacity(1);
 	@include center-xy;
+    @include full-xy;
 	display: block;
 	z-index: 1000001;
 	background: transparent;
-	width: 100%;
-	height: 100%;
 	overflow: hidden;
 	&.show {
 	    visibility:  visible;
 	    opacity: 1;
 	}
 	&.active {
+		@include opacity(1);
 	    display: block;
 	}
-	header h1 {
-		padding:10px;
-	}
-	h1 {
-		background: $shamrock;
-		color: white;
-		font-size: 14px;
-		font-weight: 400;
-		letter-spacing: 2px;
-		text-align: center;
-		text-transform: uppercase;
-	}
-	header {
-		position: relative;
-		#home-modal-close-link {
-			@include center-y;
-			right: 10px;
-			color: white;
-			font-size: 30px;
-		}
-	}
-	.start-modal-platforms {
-		@include listless;
-		@include flex;
-		@include flex-center;
-		&#start-modal-platforms-mobile {
-			@include flex-wrap;
-			height: calc(60% - 38px);
-            text-align: center!important;
-			li {
-				box-sizing: border-box;
-				width: 33.3333%;
-				padding: 20px;
-				svg {
-					display: block;
-					margin: 0 auto;
-					box-sizing: border-box;
-					width: 100%;
-					height: 100%;
-					max-width: 80px;
-					max-height: 80px;
-				}
-				a {
-					color: $charcoal;
-					span {
-						display: none;
-					}
-					svg {
-						path {
-							@include transition(.15s ease-in);
-						}
-					}
-				}
-				#{$links} {
-					color: $shamrock;
-					svg {
-						path {
-							fill: $shamrock;
-						}
-					}
-				}
-			}
-		}
-		&#start-modal-platforms-wear {
-			li {
-				box-sizing: border-box;
-				padding: 20px;
-				svg {
-					display: block;
-					box-sizing: border-box;
-					width: 100%;
-					height: auto;
-					max-height: 30px;
-				}
-			}
-		}
-	}
-	input {
-		-webkit-appearance: none;
+    input {
+		@include appearance;
 		border: 0;
 		box-shadow: none;
 		padding: 10px;
 	}
-	.start-modal-link {
-		@include flex;
-		@include flex-wrap;
-		width: 100%;
-		box-sizing: border-box;
-		input, button {
-			box-sizing: border-box;
-			width: 100%;
-		}
-	}
-	&.active {
-		@include opacity(1);
-	}
+    .svg-container {
+        margin: 20% auto 0;
+    }
+    #modal-loader-container {
+        &.active {
+            display: block;
+        }
+        #modal-content-submit {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+    }
+    .modal-main-container {
+        backface-visibility: hidden;
+        background: white;
+        height: 100%;
+        header {
+    		position: relative;
+            h1 {
+                text-align: center;
+                padding: 10px;
+            }
+    		#home-modal-close-link {
+    			position: absolute;
+                top: 0;
+    			right: 10px;
+    			color: white;
+    			font-size: 30px;
+    		}
+    	}
+        > header:first-child {
+            background: $charcoal;
+            h1 {
+                color: white;
+        		font-size: 48px;
+        		font-weight: 600;
+        		text-align: center;
+            }
+        }
+        .start-modal-platforms {
+    		@include listless;
+    		@include flex;
+    		@include flex-center;
+            padding: 0 7%;
+    		&#start-modal-platforms-mobile {
+    			@include flex-wrap;
+    			height: calc(55% - 80px);
+                background: $charcoal;
+                text-align: center!important;
+    			li {
+                    @include flex;
+                    @include flex-wrap;
+                    @include flex-center;
+                    @include box-sizing;
+    				width: 25%;
+                    height: 100%;
+    				padding: 0 15px 15px;
+    				a {
+                        @include opacity(.9);
+                        font-size: 18px;
+                        font-weight: 600!important;
+    					color: white;
+                        svg {
+                            @include box-sizing;
+        					display: block;
+        					margin: 0 auto;
+        					width: calc(100% - 21px);
+        					height: calc(100% - 21px);
+        					max-width: 80px;
+        					max-height: 80px;
+                            background: white;
+                            padding: 30px;
+                            border-radius: 5px;
+                            path {
+                                @include transition(.15s ease-in);
+                                fill: $charcoal;
+                            }
+        				}
+    					span {
+    						display: none;
+                            font-weight: 600!important;
+    					}
+    				}
+    				#{$links} {
+    					@include opacity(1);
+    				}
+    			}
+    		}
+    		&#start-modal-platforms-wear {
+    			li {
+                    @include box-sizing;
+    				padding: 20px;
+    				svg {
+                        @include box-sizing;
+    					display: block;
+    					width: 100%;
+    					height: auto;
+    					max-height: 30px;
+    				}
+    			}
+    		}
+    	}
+        .download-link-wrapper {
+        	position: relative;
+        	height: 45%;
+        	section {
+        		@include flex;
+        		@include flex-wrap;
+        		@include flex-center;
+        	}
+            h1 {
+                color: $charcoal;
+                font-weight: 600!important;
+                font-size: 20px!important;
+            }
+        	#submit-info-loader.svg-container {
+                @include full-xy;
+        		display: none;
+        		margin: 0 auto;
+        	    text-align: center;
+        		&.active {
+        			display: block;
+        		}
+        		svg {
+        			* {
+        				fill: $charcoal!important;
+        			}
+        		}
+        	}
+        	#post-submit-info-wrapper {
+                display: none;
+        		margin: 0 auto;
+        	    text-align: center;
+        	    height: 100%;
+        	    margin-top: 0;
+        	    position: absolute;
+        	    top: 30%;
+        	    width: 100%;
+                color: $charcoal!important;
+        		.message-content {
+        			color: $charcoal;
+        			font-weight: 600;
+        		}
+        		&.active {
+        			display: block;
+        		}
+        		svg {
+                    @include svg-stroke($charcoal, 8);
+                    width: 100%;
+                    height: 100px;
+                }
+        	}
+        	#submit-info-button {
+                @include flex-center;
+        		@include opacity(.5);
+                cursor: pointer;
+        		display: none;
+        		position: absolute;
+        		bottom: 0;
+        		right: 0;
+        		padding: 0 15px;
+        		height: 100%;
+        		color: $charcoal;
+        		font-size: 100%;
+        		font-weight: 600;
+                text-align: center!important;
+        		svg {
+                    @include svg-stroke($charcoal, 8);
+                    width: 40px;
+                    height: 40px;
+        			color: $charcoal;
+                    + span {
+                        display: block;
+                        width: 100%;
+                    }
+        		}
+        		&.active {
+        			@include flex;
+        			background: rgba($charcoal, 0.5);
+                    &.validated {
+                        @include opacity(1);
+            			color: white;
+            			background: rgba($charcoal, 0.75);
+                        svg {
+                            stroke: white;
+                        }
+                        &:hover {
+                            @include opacity(.75);
+                        }
+                    }
+        		}
+        	}
+        	.email-cta-wrapper, .phone-cta-wrapper {
+                @include flex-wrap;
+                @include flex-center-vertical;
+        		display: none;
+        		height: 100%;
+        		cursor: pointer;
+        		&.active {
+        			@include flex;
+        		}
+                > div {
+                    width: 100%;
+                }
+                header {
+                    width: 100%;
+                }
+        	}
+        	.start-modal-link {
+                @include flex;
+        		@include flex-wrap;
+                @include box-sizing;
+        		width: 100%;
+                input, button {
+        			@include box-sizing;
+        			width: 100%;
+        		}
+        		.start-modal-switcher {
+                    @include flex;
+                    @include flex-center;
+                    position: relative;
+                    z-index: 99;
+        			width: 100%;
+                    a {
+                        display: block;
+                        padding: 0 15px;
+                        svg {
+                            @include round;
+                            @include svg-stroke($charcoal, 4);
+                            @include opacity(.8);
+                            width: 45px;
+                            height: 45px;
+                            padding: 5px;
+                            &.active {
+                                stroke: white;
+                                background: $charcoal;
+                            }
+                        }
+                    }
+        		}
+        		.material-text-wrapper {
+        			margin: -5px 0 0;
+        		    text-align: center;
+        			input {
+        				color: $charcoal;
+        				border-bottom: 2px solid rgba($charcoal, .5)!important;
+        				font-size: 120%;
+                        font-weight: 600;
+        				text-align: center;
+                        @include placeholder {
+                            color: rgba($charcoal, .5);
+                            font-weight: 600;
+            				text-align: center;
+                        }
+        			}
+        			label {
+        				position: static;
+        				visibility: hidden;
+        			    color: $charcoal;
+                        &.active#school-email-input-label,
+                        &.active#school-phone-input-label {
+            				@include opacity(.7);
+            			    visibility: visible;
+            			    text-align: center;
+            			    text-transform: lowercase;
+            			}
+        			}
+        		}
+        	}
+        }
+    }
 }
+.front, .back {
+    width: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+// SIDEBAR MENU
 #side-menu-wrapper {
 	@include opacity(0);
+    @include full-xy;
 	position: fixed;
 	z-index: 0;
-	width: 100%;
-	height: 100%;
 	&.active {
 		@include opacity(1);
 		z-index: 999999999999;
@@ -208,10 +438,9 @@
 }
 #side-menu {
 	@include transition(.15s ease-in);
+    @include full-xy;
 	display: block!important;
 	position: relative;
-	width: 100%;
-	height: 100%;
 	background: rgba($slate,.8);
 	&.animated.slideInLeft,
 	&.animated.slideOutLeft {
@@ -251,7 +480,7 @@
 			}
 			#{$links} {
 				background: rgba(white, .1);
-				border-right-color: $taupe;
+				border-right-color: $charcoal;
 			}
 			#link-home:active, #link-home:focus, #link-home:hover {
 				border-right-color: $shamrock;
@@ -294,7 +523,45 @@
 		}
 	}
 }
+#menu-icons {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	li {
+        @include box-sizing;
+		width: calc(100% / 3);
+		a {
+			display: block;
+			text-align: center;
+			svg {
+				width: auto;
+				max-width: 50px;
+				height: 100%;
+				max-height: 50px;
+				path, * {
+					@include transition(.15s ease-in);
+				}
+			}
+		}
+		#{$links} {
+			svg {
+				path, * {
+					fill: $shamrock;
+				}
+			}
+		}
+	}
+}
 
+// FOOTER
+#footer {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	z-index: 9999999999;
+}
+
+// RESPONSIVE STUFF
 @media screen and (min-width:35.5em) {
 	#desktop-start-link, #desktop-chat-link {
 		display: inline-block;
@@ -308,140 +575,123 @@
 	#start-modal {
 		position: relative;
 		border-radius: 10px;
-		.start-modal-platforms {
-			&#start-modal-platforms-mobile {
-				li {
-					svg {
-						max-width: 100px;
-						max-height: 100px;
-					}
-					a {
-						span {
-							display: block;
-							margin-top: 15px;
-							font-weight: 400;
-							line-height: 1.2;
-							h3 {
-								text-transform: uppercase;
-							}
-							small {
-								display: block;
-								margin-top: 5px;
-								font-size: 14px;
-							}
-						}
-					}
-				}
-			}
-			&#start-modal-platforms-wear {
-				display: none;
-			}
-		}
+        .modal-main-container {
+            .start-modal-platforms {
+    			&#start-modal-platforms-mobile {
+    				li {
+    					a {
+                            svg {
+        						max-width: 100px;
+        						max-height: 100px;
+        					}
+    						span {
+    							display: block;
+    							margin-top: 15px;
+    							font-weight: 400;
+    							line-height: 1.2;
+    							h3 {
+    								text-transform: uppercase;
+    							}
+    							small {
+    								display: block;
+    								margin-top: 5px;
+    								font-size: 14px;
+    							}
+    						}
+    					}
+    				}
+    			}
+    			&#start-modal-platforms-wear {
+    				display: none;
+    			}
+    		}
+        }
 	}
 }
 
-#footer {
-	position: fixed;
-	bottom: 10px;
-	left: 10px;
-	z-index: 9999999999;
+@media screen and (max-width:48em) {
+    #intercom-container {
+        z-index: -999999!important;
+        .intercom-launcher-button {
+            z-index: -999999!important;
+        }
+    }
 }
 
 @media screen and (min-width:48em) {
+    #corner-menu-icons {
+        @include flex;
+    }
 	#start-modal {
-		.start-modal-platforms {
-			&#start-modal-platforms-mobile {
-				li {
-					svg {
-						max-width: 120px;
-						max-height: 120px;
-					}
-				}
-			}
-			&#start-modal-platforms-wear {
-				li {
-					svg {
-						max-height: 60px;
-					}
-				}
-			}
-		}
+        .modal-main-container {
+            .start-modal-platforms {
+    			&#start-modal-platforms-mobile {
+    				li {
+    					a {
+                            svg {
+        						max-width: 120px;
+        						max-height: 120px;
+        					}
+                        }
+    				}
+    			}
+    			&#start-modal-platforms-wear {
+    				li {
+    					a {
+                            svg {
+        						max-height: 60px;
+        					}
+                        }
+    				}
+    			}
+    		}
+        }
 	}
 }
 
 @media screen and (min-width:84em) {
 	#start-modal {
-		.start-modal-platforms {
-			&#start-modal-platforms-mobile {
-				li {
-					svg {
-						max-width: 150px;
-						max-height: 150px;
-					}
-				}
-			}
-			&#start-modal-platforms-wear {
-				li {
-					svg {
-						max-height: 100px;
-					}
-				}
-			}
-		}
+        .modal-main-container {
+            .start-modal-platforms {
+                padding: 0 25%;
+    			&#start-modal-platforms-mobile {
+    				li {
+                        width: 50%;
+                        height: 50%;
+    					a {
+                            svg {
+        						max-width: 150px;
+        						max-height: 150px;
+        					}
+                        }
+    				}
+    			}
+    			&#start-modal-platforms-wear {
+    				li {
+    					a {
+                            svg {
+        						max-height: 100px;
+        					}
+                        }
+    				}
+    			}
+    		}
+            .email-cta-wrapper, .phone-cta-wrapper {
+                header {
+                    h1 {
+                        font-size: 24px!important;
+                        padding-bottom: 30px;
+                    }
+                }
+            }
+        }
 	}
 }
 
-#modal-loader-container.active {
-    display: block;
-}
-
-#modal-content,
-#modal-content-submit {
-    display: none;
-}
-
-#modal-content.active,
-#modal-content-submit.active {
-    display: block;
-}
-
-#start-modal .svg-container {
-    margin: 0 auto;
-    text-align: center;
-    height: 100%;
-}
-
-.front, .back {
-    width: auto;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-#modal-loader-container.active {
-    display: block;
-}
-
-#modal-content,
-#modal-content-submit {
-    display: none;
-}
-
-#modal-content.active,
-#modal-content-submit.active {
-    display: block;
-}
-
-#start-modal .svg-container {
-    margin:  0 auto;
-    text-align:  center;
-    height:  100%;
-    margin-top:  20%;
-}
-
+// INTERCOM
 .intercom-reset div, .intercom-reset span, .intercom-reset applet, .intercom-reset object, .intercom-reset iframe, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset p, .intercom-reset blockquote, .intercom-reset pre, .intercom-reset a, .intercom-reset abbr, .intercom-reset acronym, .intercom-reset address, .intercom-reset big, .intercom-reset cite, .intercom-reset code, .intercom-reset del, .intercom-reset dfn, .intercom-reset em, .intercom-reset img, .intercom-reset ins, .intercom-reset kbd, .intercom-reset q, .intercom-reset s, .intercom-reset samp, .intercom-reset small, .intercom-reset strike, .intercom-reset strong, .intercom-reset sub, .intercom-reset sup, .intercom-reset tt, .intercom-reset var, .intercom-reset b, .intercom-reset u, .intercom-reset i, .intercom-reset center, .intercom-reset dl, .intercom-reset dt, .intercom-reset dd, .intercom-reset ol, .intercom-reset ul, .intercom-reset li, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset label, .intercom-reset legend, .intercom-reset table, .intercom-reset caption, .intercom-reset tbody, .intercom-reset tfoot, .intercom-reset thead, .intercom-reset tr, .intercom-reset th, .intercom-reset td, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary, .intercom-reset time, .intercom-reset mark, .intercom-reset audio, .intercom-reset video, .intercom-reset button, .intercom-reset textarea, .intercom-reset input, .intercom-reset input[type] {
- 	font-family: $font!important;
+ 	font-family: $font;
 }
-
 .intercom-sheet-header-minimize-button {
     display: none!important;
 }
@@ -451,8 +701,7 @@
 	}
 	.intercom-launcher {
 	    right: 10px!important;
-	    top: 0!important;
-    	right: 0!important;
+	    bottom: 10px!important;
     }
 	.intercom-launcher-preview {
 		&::before {
@@ -461,8 +710,6 @@
 	}
 	.intercom-launcher-button {
 		@include transition(.15s ease-in);
-    	top: 10px!important;
-		right: 10px!important;
     	z-index: 5!important;
 		border: 2px solid white!important;
 		background: transparent!important;
@@ -506,184 +753,5 @@
 		width: 8px;
 		height: 8px;
 		background: $moola;
-	}
-}
-
-#menu-icons {
-	@include flex;
-	@include flex-wrap;
-	@include flex-center;
-	li {
-		width: calc(100% / 3);
-		box-sizing: border-box;
-		a {
-			display: block;
-			text-align: center;
-			svg {
-				width: auto;
-				max-width: 50px;
-				height: 100%;
-				max-height: 50px;
-				path, * {
-					@include transition(.15s ease-in);
-				}
-			}
-		}
-		#{$links} {
-			svg {
-				path, * {
-					fill: $shamrock;
-				}
-			}
-		}
-	}
-}
-
-.modal-main-container {
-    backface-visibility: hidden;
-    background: white;
-    height: 100%;
-}
-
-.download-link-wrapper {
-	position: relative;
-	height: 40%;
-	section {
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
-	}
-	#submit-info-loader.svg-container {
-		display: none;
-	    width: 100%;
-	    height: 100%;
-		margin: 0 auto;
-	    text-align: center;
-		&.active {
-			display: block;
-		}
-		svg {
-			* {
-				fill: $shamrock;
-			}
-		}
-	}
-	#post-submit-info-wrapper {
-        display: none;
-		margin: 0 auto;
-	    text-align: center;
-	    height: 100%;
-	    margin-top: 0;
-	    position: absolute;
-	    top: 30%;
-	    width: 100%;
-        color: $shamrock!important;
-		.message-content {
-			color: $shamrock;
-			font-weight: 600;
-		}
-		&.active {
-			display: block;
-		}
-		.ion-checkmark {
-			font-size: 200%;
-		}
-	}
-	#submit-info-button {
-		@include opacity(.5);
-		display: none;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		padding: 0 2%;
-		height: calc(100% - 38px);
-		color: $shamrock;
-		font-size: 100%;
-		font-weight: 400;
-        text-align: center!important;
-		.ion-checkmark {
-			color: $shamrock;
-		}
-		&.active.validated .ion-checkmark {
-			color: white;
-		}
-		&.active {
-			@include flex;
-			@include flex-center;
-			background: rgba($shamrock, 0.5);
-		}
-		&.active.validated {
-			@include opacity(1);
-			color: white;
-			background: rgba($shamrock, 0.75);
-		}
-		&.active.validated:hover {
-			@include opacity(.75);
-		}
-	}
-	.email-cta-wrapper, .phone-cta-wrapper {
-		display: none;
-		height: 100%;
-		cursor: pointer;
-		&.active {
-			display: block;
-		}
-	}
-	.start-modal-link {
-		.start-modal-switcher {
-            position: relative;
-            z-index: 99;
-            text-align: center;
-			width: 100%;
-			font-size: 36px;
-			.phone-icon, .mail-icon {
-				@include opacity(.5);
-				padding: 0 10px;
-				&.active {
-					@include opacity(1);
-				}
-			}
-		}
-		.material-text-wrapper {
-			margin: 0;
-		    text-align: center;
-			input {
-				color: $shamrock;
-				border-bottom: 2px solid rgba($shamrock, .5)!important;
-				font-size: 150%;
-				text-align: center;
-			}
-
-			::-webkit-input-placeholder {
-				color:rgba($shamrock, .5);
-				text-align:center;
-			}
-			:-moz-placeholder {
-				color:rgba($shamrock, .5);
-				text-align:center;
-			}
-			::-moz-placeholder {
-				color:rgba($shamrock, .5);
-				text-align:center;
-			}
-			:-ms-input-placeholder {
-				color:rgba($shamrock, .5);
-				text-align:center;
-			}
-
-			label {
-				position: static;
-				visibility: hidden;
-			    color: $shamrock;
-			}
-
-			label.active#school-email-input-label,
-			label.active#school-phone-input-label {
-				@include opacity(.7);
-			    visibility: visible;
-			    text-align: center;
-			    text-transform: lowercase;
-			}
-		}
 	}
 }

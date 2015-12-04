@@ -3,10 +3,8 @@ var LOCAL = _local || false; //local to the 8100 codebasebirbirs
 _startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
 
-// isAdmin = true;
-
-var BASE_URL = 'https://www.uguru.me/production/app/';
-var REST_URL = 'https://www.uguru.me';
+var BASE_URL = 'https://uguru.me/production/app/';
+var REST_URL = 'https://uguru.me';
 
 var BASE = '';
 var img_base = '';
@@ -14,9 +12,9 @@ if (LOCAL) {
 
   BASE = 'remote/';
   // BASE_URL = _ipaddress;
-  // REST_URL = "http://192.168.0.114:5000"
+  REST_URL = "http://localhost:5000"
 
-  // REST_URL = 'https://192.168.0.104:5000';
+  // REST_URL = 'https://192.168.0.107:5000';
 
 } else {
   img_base = '/static/';
@@ -27,9 +25,9 @@ var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'ngAnimate', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB', 'fox.scrollReveal'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -45,9 +43,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   Github = $injector.get("Github");
   Github.init();
   Github.setExceptionToGithubIssue(false);
-
-
-
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -71,6 +66,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     };
 
   });
+
+
 
   //ASK-NICK: what does this mean?
   //NICK-SAYS: it means use native style animations whenever we rely on ionic animations. (ios styles for ios, android for android)
@@ -139,6 +136,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/guru.remote.html',
     controller: 'GuruRemoteController'
   }).
+  state('root.general', {
+    url:'/general',
+    templateUrl: BASE + 'templates/general.html'
+  }).
   state('root.desktop-login', {
     url:'/desktop-login',
     templateUrl: BASE + 'templates/desktop.login.html',
@@ -159,13 +160,96 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/desktop.settings.html',
     controller: "DesktopSettingsController"
   }).
+  state('root.request', {
+    url:'/request',
+    templateUrl: BASE + 'templates/request.html',
+    controller: "RequestController"
+  }).
+  state('root.request-student', {
+    url:'/request-student',
+    templateUrl: BASE + 'templates/request-student.html',
+    controller: "RequestController"
+  }).
+  state('root.request-guru', {
+    url:'/request-guru',
+    templateUrl: BASE + 'templates/request-guru.html',
+    controller: "RequestController"
+  }).
+  state('root.request-categories', {
+    url:'/request-categories',
+    templateUrl: BASE + 'templates/request-categories.html',
+    controller: "RequestController"
+  }).
+  state('root.request-subcategories', {
+    url:'/request-subcategories',
+    templateUrl: BASE + 'templates/request-subcategories.html',
+    controller: "RequestController"
+  }).
+  state('root.rating', {
+    url:'/rating',
+    templateUrl: BASE + 'templates/rating.html'
+  }).
+  state('root.request-calendar', {
+    url:'/request-calendar',
+    templateUrl: BASE + 'templates/request-calendar.html'
+  }).
+  state('root.request-price', {
+    url:'/request-price',
+    templateUrl: BASE + 'templates/request-price.html'
+  }).
+  state('root.billing', {
+    url:'/billing',
+    templateUrl: BASE + 'templates/billing.html'
+  }).
+  state('root.referrals', {
+    url:'/referrals',
+    templateUrl: BASE + 'templates/referrals.html'
+  }).
+  state('root.modal-test', {
+    url:'/modal-test',
+    templateUrl: BASE + 'templates/guru.balance.container.html'
+  }).
+  state('root.timer', {
+    url:'/timer',
+    templateUrl: BASE + 'templates/timer.html'
+  }).
   state('root.student-home', {
     url:'/student-home',
     templateUrl: BASE + 'templates/home.student.html'
   }).
   state('root.guru-home', {
     url:'/guru-home',
-    templateUrl: BASE + 'templates/home.guru.html'
+    templateUrl: BASE + 'templates/home.guru.html',
+    controller: 'GuruController'
+  }).
+  state('root.profile-public', {
+    url:'/profile-public',
+    templateUrl: BASE + 'templates/profile.public.html',
+    controller: 'PublicProfileController'
+  }).
+  state('root.profile-public-bakery', {
+    url:'/profile-public-bakery',
+    templateUrl: BASE + 'templates/profile.public.bakery.html'
+  }).
+  state('root.profile-public-photo', {
+    url:'/profile-public-photo',
+    templateUrl: BASE + 'templates/profile.public.photo.html'
+  }).
+  state('root.profile-modal', {
+    url:'/profile-modal',
+    templateUrl: BASE + 'templates/profile.modal.html'
+  }).
+  state('root.profile-modal-bakery', {
+    url:'/profile-modal-bakery',
+    templateUrl: BASE + 'templates/profile.modal.bakery.html'
+  }).
+  state('root.profile-card', {
+    url:'/profile-card',
+    templateUrl: BASE + 'templates/profile.card.html'
+  }).
+  state('root.color-picker', {
+    url:'/color-picker',
+    templateUrl: BASE + 'templates/color.picker.html'
   }).
   state('root.guru-languages', {
     url:'/guru-languages',
@@ -192,18 +276,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).
-  state('root.bakery-guru-profile', {
-        url: '/bakery-guru-profile',
-        templateUrl: BASE + 'templates/bakery.guru.profile.html',
-  }).
-  state('root.photo-guru-profile', {
-        url: '/photo-guru-profile',
-        templateUrl: BASE + 'templates/photo.guru.profile.html',
-  }).
   state('root.guru', {
         url: '/guru',
         templateUrl: BASE + 'templates/guru.html',
         controller: 'GuruController'
+  }).
+  state('root.profiles', {
+        url: '/profiles/:profileId',
+        templateUrl: BASE + 'templates/profile.public.html',
+        controller: 'PublicProfileController'
   }).
   state('root.cashout', {
         url: '/cashout',
@@ -284,10 +365,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/guru-courses.html',
         controller: 'CoursesController'
   }).
-  state('root.messages', {
-        url: '/messages/:sessionObj',
-        templateUrl: BASE + 'templates/student.messages.html',
-        controller: 'StudentMessagesController'
+  state('root.guru-messages-mobile', {
+        url: '/messages/',
+        templateUrl: BASE + 'templates/messaging.mobile.html',
+        controller: 'GuruMessagesController'
+  }).
+  state('root.messaging', {
+        url: '/messaging',
+        templateUrl: BASE + 'templates/messaging.html'
   }).
   state('root.student-conversations', {
         url: '/student-conversations',

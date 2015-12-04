@@ -24,11 +24,12 @@ function DeviceService($cordovaNgCardIO,
 
   var currentDevice;
   var firstTime = true;
+  var isReady = false;
 
 
   return {
     isFirstTime: isFirstTime,
-
+    isReady: isReady,
 		readyDevice: readyDevice,
 		getDevice: getDevice,
     doesCordovaExist: doesCordovaExist,
@@ -88,7 +89,7 @@ function DeviceService($cordovaNgCardIO,
 
   function isIOSDevice() {
     var userAgent = navigator.userAgent;
-    return !(userAgent.toLowerCase().indexOf('safari') > -1);
+    return (!(userAgent.toLowerCase().indexOf('safari') > -1) || userAgent.indexOf('iPad') > 0);
   }
 
   function isIOSBrowser () {
@@ -192,7 +193,7 @@ function DeviceService($cordovaNgCardIO,
   }
 
 	function readyDevice(scope) {
-
+    isReady = true;
     var userAgent = navigator.userAgent;
       if (doesCordovaExist()) {
         onDeviceReady(scope);
@@ -242,14 +243,15 @@ function DeviceService($cordovaNgCardIO,
         checkUpdates();
 		  	console.log("detected platform: " + getPlatform());
 
-		}
+		} else {
+
+    }
 		// if(typeof callback === 'function') {
 		// 	callback();
 		// }
-    checkUpdates();
+    // checkUpdates();
 	}
 	function checkUpdates(url) {
-
     // don't update on local
     if (LOCAL && !url) {
       console.log("running local: skipping over checkUpdates");
@@ -281,7 +283,7 @@ function DeviceService($cordovaNgCardIO,
                   currentVersion = 1.0;
                   Version.setVersion(1.0);
                 }
-                if (serverVersionNumber != currentVersion) {
+                if (serverVersionNumber !== currentVersion) {
 
                   console.log('versions are different...\n');
 

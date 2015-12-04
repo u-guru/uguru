@@ -1,42 +1,39 @@
- <ion-view hide-nav-bar='true' class='dark-bg'>
-   <div class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
-      <div class="buttons">
-      <button class="button button-clear button-header-link cancel-button button-left" ng-click='backToEditProfile()'>Back</button>
-      </div>
-      <h1 class="title bold">My Experiences</h1>
-      <div class='buttons'>
-        <button style='padding-top:0.1em;'class="button button-clear button-header-link submit-button button-right " id='done-button' ng-click='backToEditProfile(true)'>Save</button>
-      </div>
-  </div>
-  <ion-content class='dark-bg has-header' scroll='false'>
+<section id="experience-modal" class='full-xy bg-charcoal'>
+	<header>
+		<div class='header-nav'>
+			<a class="header-close cta-modal-close" ng-click="guruExperiencesModal.hide()">
+				<svg viewBox="0 0 100 100">
+					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</div>
+		<h1 class="text-center">Guru Experience</h1>
+	</header>
+	<div class='main bg-charcoal'>
+		<div class='p15xy bg-campus-50p'>
+			<input class='input-outline full-x' id='experience-name-input' type="text" ng-model='experience.name' placeholder="Role Title"></input>
+		</div>
+		<div class='exp-years bg-charcoal'>
+			<label>
+				<h1 class="section-header">Years of Experience</h1>
+			</label>
+			<!-- BIND -->
+			<!-- change input value from 0-10 -->
+			<input type="range" class='full-x' name="volume" min="0" max="10" value="{{experience.years}}" ng-model='experience.years'>
+			<ul class="ugrid-3 exp-years-label">
+				<li>&lsaquo; 1</li>
+				<li>5</li>
+				<li>10 +</li>
+			</ul>
+		</div>
+		<div id="exp-input" class='p15xy bg-campus-50p ng-class:{"removable":experience.id}'>
+			<textarea class='input-outline full-x' placeholder='Role Description' ng-model='experience.description'>{{experience.description}}</textarea>
+		</div>
+		<button class='bg-slate semibold' id='guru-experience-remove-button' ng-if="experience && experience.id" ng-click='removeGuruExperience(experience, experience_index)'>Remove</button>
 
-    <div class='pure-g-c flex-column flex-space-between'>
-      <div class='flex-item-c pure-g j-start'>
-        <div class='pure-u-1 full-width'>
-          <ion-list>
-            <!-- <ion-item ng-click='launchAddGuruExperienceModal(experience)'>
-              Lab Assistant
-              <p>
-                7 years
-              </p>
-            </ion-item> -->
-            <ion-item ng-click='launchAddGuruExperienceModal(experience)' ng-repeat='experience in user.guru_experiences'>
-              {{experience.name}}
-              <p>
-                {{experience.years}} years
-              </p>
-            </ion-item>
-          </ion-list>
-        </div>
-      </div>
 
-      <div class='flex-item-c pure-g center j-end'>
-          <div class='pure-u-1 padding-1em' style='padding-left:1em; padding-right:1em; margin-top:0.5em;'>
-            <a ng-click='launchAddGuruExperienceModal()' style='min-height:3.3em; line-height:3.3em;' class='button button-full light-blue-bg button-footer white-text uppercase no-margin'>Add Guru Experience</a>
-          </div>
-      </div>
-    </div>
+	</div>
+	<button class='bg-campus semibold' ng-if=" !(experience && experience.id)" ng-click='saveGuruExperience()'>Save</button>
+	<button class='bg-campus semibold' ng-if="experience && experience.id" ng-click='saveGuruExperience()'>Update</button>
 
-  </ion-content>
-
-</ion-view>
+</section>

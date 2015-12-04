@@ -1,0 +1,101 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+
+      <div class="content-wrapper" style="min-height: 918px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            University Banners
+            <small>@first glance which ones are great</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
+            <li>Stats</li>
+            <li class="active">Devices</li>
+          </ol>
+        </section>
+
+
+        <section class="content">
+
+
+          <div class="row">
+            <div class="col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-black">
+                <div class="inner">
+                  <h3>{{universities|length}}</h3>
+                  <p>Total #of Universities</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+          </div>
+
+          <div class='row'>
+            {% for university in universities %}
+            <div class='col-md-4'>
+              <div class="box box-info" style='max-height:300px;'>
+                <div class="box-header with-border">
+                  <h3 class="box-title">{{university.name}}</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                   <a href='/admin/stats/universities/{{university.id}}/flickr_options/' target='_blank'>
+                    <div style='background:url({{university.banner_url}}); background-size:cover;height:100%;width:100%; max-height:250px; min-height:200px;'> </div>
+                    </a>
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+
+        </section>
+
+      </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
+<script>
+  var testDevicePushToken = function(device_id) {
+    BASE_URL = "/api/admin/";
+    auth_token = "fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6";
+
+    $.ajax({
+      url: BASE_URL + auth_token + "/devices/" + device_id.toString() + '/push_test' ,
+      type: 'POST',
+      dataType: 'json',
+      data: {},
+      success: function(resp){
+        alert("Check yo phone");
+      },
+      error: function(err){
+        alert("Error tell Samir!");
+        console.log(err);
+      }
+    });
+  }
+</script>
+
+{% endblock %}

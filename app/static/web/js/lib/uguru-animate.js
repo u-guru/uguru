@@ -3,9 +3,13 @@ var onDomLoadSuccess = function() {
 	setTimeout(function() {
 		bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
         setTimeout(function() {
+            window.sr = new scrollReveal();
+        }, 500);
+        window.sr = new scrollReveal();
+        setTimeout(function() {
             launchIntercomeSetActive()
         }, 2000);
-	}, 2000);
+	}, 5000);
 }
 
 var launchIntercomeSetActive = function() {

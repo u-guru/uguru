@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"> -->
+
+    <!-- Begin Inspectlet Embed Code -->
+    <script type="text/javascript" id="inspectletjs">
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 1863310177]);
+    (function() {
+    function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+    })();
+    </script>
+    <!-- End Inspectlet Embed Code -->
     <script type="text/javascript">
       var start_dom_time = (new Date()).getTime();
       var _local, _startpage, _ipaddress;
@@ -88,50 +99,48 @@
     <script>
       WINDOWS = null;
       function getMobileOperatingSystem() {
-          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-          if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
-          {
-
-            injectJs('ios.cordova_plugins.js');
-            injectJs('ios.cordova.js');
-            // injectCss('ios.css');
-            // injectJs('/static/remote/cordova.js');
-            return 'iOS';
-
-          }
-          else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || (!(window.ActiveXObject) && "ActiveXObject" in window) || "ActiveXObject" in window) {
-            console.log('injecting windows specific css & js');
-            injectJs('windows.cordova.js');
-            injectCss('windows.css');
-            WINDOWS = true;
-            return 'Windows'
-          }
-          else if( userAgent.match( /Android/i ) )
-          {
-            // Read more here
-            // https://developer.chrome.com/multidevice/user-agent
-            console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
-            var androidWebViewAgents = ['Build/KLP', 'Version', 'wv'];
-            for (var i = 0; i < androidWebViewAgents.length; i++ ) {
-              var indexUA = androidWebViewAgents[i];
-              if (userAgent.indexOf(indexUA) > -1) {
-                injectJs('android.cordova.js');
-                injectCss('android.css');
-                injectAndroidMetaContentScript();
-              }
-              break;
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            console.log(userAgent);
+            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+                    console.log('injecting windows specific css & js');
+                    injectJs('windows.cordova.js');
+                    injectCss('windows.css');
             }
+            else if( userAgent.match( /Android/i ) )
+              {
+                // Read more here
+                // https://developer.chrome.com/multidevice/user-agent
+                console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
+                var androidWebViewAgents = ['Build/KLP', 'Version', 'wv', 'Crosswalk'];
+                for (var i = 0; i < androidWebViewAgents.length; i++ ) {
+                  var indexUA = androidWebViewAgents[i];
+                  if (userAgent.indexOf(indexUA) > -1) {
+                    runningInCordova = true;
+                    injectJs('android.cordova_plugins.js');
+                    injectJs('android.cordova.js');
+                    injectCss('android.css');
+                    injectAndroidMetaContentScript();
+                    break;
+                  }
+                }
+                return 'Android';
+              }
+            else if ( !(userAgent.toLowerCase().indexOf('safari') > -1) || userAgent.indexOf('iPad') > 0 )
+              {
 
+                injectJs('ios.cordova_plugins.js');
+                injectJs('ios.cordova.js');
+                injectCss('ios.css');
+                // injectJs('/static/remote/cordova.js');
+                return 'iOS';
 
-            return 'Android';
-          }
-          else
-          {
-            console.log('hard to determine identifies')
-            // injectCss('web.css')
-            return 'unknown';
-          }
-        }
+              }
+            else {
+                console.log('Mobile browser / desktop browser direction!');
+                // injectCss('web.css')
+                return 'unknown';
+            }
+    }
 
       function injectJs(link) {
           var scr = document.createElement('script');
@@ -172,8 +181,10 @@
     <script src='lib/angular-google-maps/default-map-styles.js'></script>
 
     <script src="js/app.js"></script>
-
-  </head>
+    <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+  mixpanel.init("a023529351da6a26661d05b4b1bd6758");</script><!-- end Mixpanel -->
+    </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="calcBodyLoad()">
     <!--
       The nav bar that will be updated as we navigate between views.
@@ -212,11 +223,24 @@
             </ion-side-menu>
         </ion-side-menus>
 
+              <div class='uguru-popup high-z-index sidebar-popup' ng-click='closeEditNamePopup()' id='edit-name-uguru-popup' ng-include="img_base + 'templates/edit.name.popup.html'"> </div>
+
+              <div class='uguru-popup high-z-index sidebar-popup' ng-click='closeEditPasswordPopup()' id='edit-email-uguru-popup' ng-include="img_base + 'templates/edit.email.popup.html'"> </div>
+
+              <div class='uguru-popup high-z-index sidebar-popup' ng-click='closeEditEmailPopup()' id='edit-password-uguru-popup' ng-include="img_base + 'templates/edit.password.popup.html'"> </div>
+
+              <div class='uguru-popup high-z-index sidebar-popup' ng-click='closeConfirmPhonePopup()' id='confirm-phone-uguru-popup' ng-include="img_base + 'templates/confirm.phone.popup.html'"> </div>
+
+              <div class='uguru-popup high-z-index sidebar-popup' id='confirm-email-uguru-popup' ng-include="img_base + 'templates/confirm.email.popup.html'"> </div>
+
+              <div class='uguru-popup high-z-index sidebar-popup' id='guru-ranking-popup' ng-include="img_base + 'templates/guru.ranking.popup.html'"> </div>
+
     </script>
 
     <script>
       window.intercomSettings = {
-        app_id: "yoz6vu28"
+        app_id: "yoz6vu28",
+        widget: {"activator": "#Intercom"}
       };
     </script>
     <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/yoz6vu28';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>

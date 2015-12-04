@@ -26,7 +26,7 @@
 	-ms-transition: none!important;
 	-moz-transition: none!important;
 	transition: none!important;
-} 
+}
 @mixin round {
 	border-radius: 1000px;
 }
@@ -125,6 +125,15 @@
 	display: -moz-flex;
 	display: -webkit-flex;
 	display: flex;
+}
+@mixin flex-important {
+	-ms-box-orient: horizontal!important;
+	display: -webkit-box!important;
+	display: -moz-box!important;
+	display: -ms-flexbox!important;
+	display: -moz-flex!important;
+	display: -webkit-flex!important;
+	display: flex!important;
 }
 @mixin flex-column {
 	-ms-box-orient: horizontal;
@@ -338,40 +347,36 @@
 $links: 'a:active, a:focus, a:hover';
 $buttons: 'button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover';
 
-$shamrock: #69B3A5;
-$cerise: #DB1988;
 
 $charcoal: #2B3234;
 $slate: #40484B;
 $taupe: #757575;
-$smoke: #F1F1F1;
 $campus: #8A9EA3;
-$moola: #81B566;
-$lake: #50A5DD;
-$azure: #55A4B7;
-$orange: #E5753C;
-$gold: #F9D57B;
-$eggplant: #9A5BC5;
+$smoke: #F1F1F1;
+
 $auburn: #F04F54;
+$orange: #E5753C;
+$gold: #F6C64E;
+$moola: #81B566;
+$shamrock: #69B3A5;
+$azure: #55A4B7;
+$lake: #50A5DD;
+$cobalt: #7872e3;
+$eggplant: #9A5BC5;
+$cerise: #e6389b;
 
 $facebook: #3b5998;
 $facebook-light: #6279B1;
-$twitter: #00aced;
-$linkedin: #007bb6;
 $instagram: #517fa4;
+$linkedin: #007bb6;
+$twitter: #00aced;
 
-$moola-mute: #92AC84;
-$lake-mute: #6F98B5;
-$azure-mute: #7DA7B2;
-$orange-mute: #D99675;
-$gold-mute: #E8D3A3;
-$cerise-mute: #C56E9C;
-$eggplant-mute: #907D9E;
+$beige: #FFFDFA;
 
-$bakery: #F04F54;
-$bakery-bg: #FFFDFA;
+// $gabrielle: #958B8E;
+$gabrielle: $shamrock;
 
-$gabrielle: #958B8E;
+$padding: 15px;
 
 $icon-bg: no-repeat center center;
 

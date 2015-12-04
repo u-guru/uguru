@@ -220,24 +220,59 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 
 
         if (!University.selected) {
-            LoadingService.showAmbig();
+            LoadingService.showAmbig(null, 1000);
             $ionicViewSwitcher.nextDirection('back');
             $state.go('^.intro');
-            $timeout(function() {
-                LoadingService.hide()
-            }, 1000);
+            // $timeout(function() {
+            //     LoadingService.hide()
+            // }, 1000);
         }
 
 
+        var processRatingsFoodListings = function(listings) {
+            var results = [];
+            for (var i = 0; i < listings.length; i ++) {
+                var indexListing = listings[i];
+                if (indexListing.yelp_rating && indexListing.yelp_rating.avg_stars) {
+                    indexListing.yelp_rating.avg_stars = Math.round(indexListing.yelp_rating.avg_stars);
+                    results.push(indexListing);
+                }
+            }
+            return results;
+        }
 
         var callback = function(_dict) {
             // console.log('callback executed');
             // console.log($scope.root.vars.map);
-            console.log(_dict);
+
+            _dict.food_listings = processRatingsFoodListings(_dict.food_listings.slice())
             University.restaurants = _dict.food_listings.slice();
+
+
+
             $scope.restaurants = _dict.food_listings.slice(0, 20);
             $scope.restaurantsSource = _dict.food_listings.slice(0, 20);
+
+
+
             uiGmapGoogleMapApi.then(function(maps) {
+
+                $timeout(function() {
+                    // $scope.map = maps;
+
+                    // console.log($scope.root.vars.map, maps);
+                    var markers = $scope.root.vars.markerControl.getGMarkers();
+                    console.log($scope.root.vars.markerControl);
+                    var bounds = $scope.map.getBounds();
+                    for (var i = 0; i < markers.length; i++) {
+                        bounds.extend(markers[i].getPosition());
+                    }
+                    $scope.map.setCenter(bounds.getCenter());
+                    $scope.map.fitBounds(bounds);
+                    $scope.map.setZoom(map.getZoom() - 1);
+
+                }, 1000)
+
             });
         }
 
