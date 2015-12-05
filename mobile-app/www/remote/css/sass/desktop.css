@@ -34,7 +34,7 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  top: 30px;
+  top: 10px;
   height: 50px;
   padding: 0 10px;
   width: 100%;
@@ -1819,6 +1819,7 @@
 /* ---------- SETTINGS */
 #desktop-settings .main {
   margin: 0 auto;
+  height: calc(100% - 64px);
 }
 
 #desktop-settings .main h1 {
@@ -1833,15 +1834,33 @@
   color: white !important;
 }
 
+#desktop-settings .main .settings-save {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+#desktop-settings .main .settings-save button, #desktop-settings .main .settings-save a {
+  display: block;
+  margin: 0 auto;
+  padding: 15px 30px;
+  width: calc(100% / 3);
+  text-align: center;
+}
+
 #desktop-settings .main > div {
   max-width: 600px;
   margin: 0 auto;
-}
-
-#desktop-settings .main > div > button {
-  display: block;
-  margin: 0 auto;
-  width: calc(100% / 3);
 }
 
 #desktop-settings .main > div ul {
@@ -1895,6 +1914,48 @@
 
 #desktop-settings .main > div .ugrid-2 > div {
   padding: 0 15px;
+}
+
+#desktop-settings .main .desktop-notifications-grid-item {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+#desktop-settings .main .desktop-notifications-grid-item > div:first-child {
+  width: calc(100% - 50px);
+}
+
+#desktop-settings .main .desktop-notifications-grid-item svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 50px;
+  height: 50px;
+}
+
+#desktop-settings .main .desktop-notifications-grid-item svg path.notifications-path {
+  stroke: white;
+}
+
+#desktop-settings .main .desktop-notifications-grid-item svg path.notifications-path.active {
+  stroke: #2B3234;
+}
+
+#desktop-settings .main .desktop-notifications-grid-item svg circle.notifications-circle {
+  fill: #2B3234;
+}
+
+#desktop-settings .main .desktop-notifications-grid-item svg circle.notifications-circle.active {
+  fill: white;
 }
 
 #desktop-settings.student-mode {
@@ -1959,6 +2020,12 @@
   font-weight: 900;
 }
 
+#desktop-messaging .main #messenger #messenger-sidebar ul,
+#desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul {
+  height: calc(100% - 146px);
+  overflow: auto;
+}
+
 #desktop-messaging .main #messenger #messenger-sidebar ul li,
 #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li {
   font-weight: 400;
@@ -1967,7 +2034,15 @@
 
 #desktop-messaging .main #messenger #messenger-sidebar ul li a,
 #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a {
-  display: block;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
   padding: 15px;
 }
 
@@ -1983,6 +2058,27 @@
 #desktop-messaging .main #messenger #messenger-sidebar ul li a.active,
 #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:hover, #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a:focus, #desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a.active {
   background: rgba(241, 241, 241, 0.4);
+}
+
+#desktop-messaging .main #messenger #messenger-sidebar ul li a .messenger-icon,
+#desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a .messenger-icon {
+  border-radius: 1000px;
+  width: 48px;
+  height: 48px;
+  background-position: center center;
+  background-size: cover;
+}
+
+#desktop-messaging .main #messenger #messenger-sidebar ul li a .messenger-label,
+#desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a .messenger-label {
+  width: calc(100% - 48px);
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+#desktop-messaging .main #messenger #messenger-sidebar ul li a.active .messenger-label,
+#desktop-messaging .main.mobile-messages-container #messenger #messenger-sidebar ul li a.active .messenger-label {
+  font-weight: 700;
 }
 
 #desktop-messaging .main #messenger #messenger-sidebar #messenger-sidebar-search,

@@ -6,7 +6,7 @@
 	<!-- <div class="top-request-button"> -->
 	<div>
 		<div class='ng-class:{"active":showDesktopSettings}'>
-			<a id="top-logo">
+			<a id="top-logo" href='#/guru-home'>
 				<svg viewBox="0 0 372 104" ng-include="img_base + BASE + 'templates/svg.icon.logo.html'">
 				</svg>
 			</a>
@@ -28,17 +28,11 @@
 					<path d="M14,32 L50,68 L86,32"></path>
 				</svg>
 			</a>
-			<!-- <a id="top-request" ng-if='false'> -->
 			<!-- <a id="top-request">
 				<svg viewBox="0 0 100 100">
 				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 				</svg>
 			</a> -->
-			<a id='top-request' class='desktop-nav-back' ng-click='desktopGoBack()' ng-if='page && page.url === "root.desktop-settings"'>
-				<svg viewBox="0 0 100 100">
-				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-				</svg>
-			</a>
 		</div>
 		<nav id="top-menu-links" class="ng-class:{'active':showDesktopSettings}">
 			<ul>

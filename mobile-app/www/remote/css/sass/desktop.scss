@@ -15,7 +15,7 @@
 	.desktop-header {
 		@include center-x;
 		@include flex;
-		top: 30px;
+		top: 10px;
 		height: 50px;
 		padding: 0 10px;
 		width: 100%;
@@ -1497,6 +1497,7 @@
 #desktop-settings {
 	.main {
 		margin: 0 auto;
+		height: calc(100% - 64px);
 		h1 {
 			text-align: center;
 			font-size: 64px;
@@ -1507,14 +1508,20 @@
 		input {
 			color: white!important;
 		}
+		.settings-save {
+			@include flex;
+			@include flex-center;
+			button, a {
+				display: block;
+				margin: 0 auto;
+				padding: 15px 30px;
+				width: calc(100% / 3);
+				text-align: center;
+			}
+		}
 		> div {
 			max-width: 600px;
 			margin: 0 auto;
-			> button {
-				display: block;
-				margin: 0 auto;
-				width: calc(100% / 3);
-			}
 			ul {
 				@include flex;
 				@include flex-center-vertical;
@@ -1551,6 +1558,30 @@
 				margin: 0 -15px;
 				> div {
 					padding: 0 15px;
+				}
+			}
+		}
+		.desktop-notifications-grid-item {
+			@include flex;
+			@include flex-center-vertical;
+			> div:first-child {
+				width: calc(100% - 50px);
+			}
+			svg {
+				@include svg-stroke(white, 6);
+				width: 50px;
+				height: 50px;
+				path.notifications-path {
+					stroke: white;
+					&.active {
+						stroke: $charcoal;
+					}
+				}
+				circle.notifications-circle {
+					fill: $charcoal;
+					&.active {
+						fill: white;
+					}
 				}
 			}
 		}
@@ -1598,17 +1629,37 @@
 					font-weight: 900;
 				}
 				ul {
+					height: calc(100% - 146px);
+					overflow: auto;
 					li {
 						font-weight: 400;
 						text-transform: uppercase;
 						a {
-							display: block;
+							@include flex;
+							@include flex-center-vertical;
 							padding: 15px;
 							&.active, &:active, &.active {
 								background: rgba($smoke,.2);
 							}
 							&:hover, &:focus, &.active{
 								background: rgba($smoke,.4);
+							}
+							.messenger-icon {
+								@include round;
+								width: 48px;
+								height: 48px;
+								background-position: center center;
+								background-size: cover;
+							}
+							.messenger-label {
+								width: calc(100% - 48px);
+								padding-left: 15px;
+								font-weight: 600;
+							}
+							&.active {
+								.messenger-label {
+									font-weight: 700;
+								}
 							}
 						}
 					}

@@ -1,30 +1,77 @@
-<div class='pf-type pf-modal pf-type-household bg-slate'>
+<div class='pf-type pf-modal pf-type-photo bg-slate'>
 	<section>
-		<header class="pf-item-header third flex-center">
-			<div class="pf-header-bg"></div>
+		<div class="pf-shop-item-header">
+			<h1>Graduation</h1>
+			<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 			<div class="pf-header-info">
 				<span class="pf-price pf-price-left">$15</span>
-				<div class="pf-photo-nav">
-					<span>1/6 Photos</span>
-					<ul class="pf-photo-breadcrumbs">
-						<li><a class="active"></a></li>
-						<li><a></a></li>
-						<li><a></a></li>
-						<li><a></a></li>
-						<li><a></a></li>
-						<li><a></a></li>
-					</ul>
-				</div>
 			</div>
+		</div>
+		<header class="pf-item-header third flex-center">
+			<div class="pf-header-bg">
+				<img ng-src="{{img_base}}./img/sample/2.jpeg" alt=""/>
+				<div class="pf-photo-desc">
+					<div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<div class="pf-photo-tags">
+							<ul>
+								<li><a class="tag chip bg-white txt-slate">photo</a></li>
+								<li><a class="tag chip bg-white txt-slate">tag</a></li>
+								<li>
+									<a class="location chip bg-white txt-slate">
+										<svg viewBox="0 0 100 100">
+											<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z"></path>
+										</svg>
+										<span>San Francisco, CA</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button class="pf-photo-img">
+						<svg viewBox="0 0 100 100">
+							<path d="M41.0271169,77.7695312 L74.9969009,77.7695312 C78.3179275,77.7695312 79.612528,75.4691426 77.9009946,72.6314693 L60.1121413,43.1380619 C58.397677,40.2955294 55.6256639,40.3003887 53.9141305,43.1380619 L41.030501,64.4987493 L38.3633395,60.0766722 C36.6478321,57.2324103 33.8770088,57.2390917 32.1655313,60.0766722 L24.5930447,72.6316374 C22.8775374,75.4758992 24.1848498,77.7695312 27.5040079,77.7695312 L41.0271169,77.7695312 L41.0271169,77.7695312 Z M22.9957852,15 L77.0042148,15 C81.420165,15 85,18.57869 85,22.9943126 L85,77.0056874 C85,81.4208243 81.420342,85 77.0042148,85 L22.9957852,85 C18.579835,85 15,81.42131 15,77.0056874 L15,22.9943126 C15,18.5791757 18.579658,15 22.9957852,15 Z M28,34 C31.3137085,34 34,31.3137085 34,28 C34,24.6862915 31.3137085,22 28,22 C24.6862915,22 22,24.6862915 22,28 C22,31.3137085 24.6862915,34 28,34 Z"></path>
+						</svg>
+					</button>
+				</div>
+				<button class="pf-photo-info">
+					<svg viewBox="0 0 100 100">
+						<path d="M50,86 C69.882251,86 86,69.882251 86,50 C86,30.117749 69.882251,14 50,14 C30.117749,14 14,30.117749 14,50 C14,69.882251 30.117749,86 50,86 Z M50,40 L50,70 M50,30 L50,31"></path>
+					</svg>
+				</button>
+			</div>
+			<ul class="pf-header-thumbs">
+				<li>
+					<a><img ng-src="{{img_base}}./img/sample/1.jpeg" alt=""/></a>
+				</li>
+				<li>
+					<a><img ng-src="{{img_base}}./img/sample/2.jpeg" alt=""/></a>
+				</li>
+				<li>
+					<a><img ng-src="{{img_base}}./img/sample/3.jpeg" alt=""/></a>
+				</li>
+				<li>
+					<a><img ng-src="{{img_base}}./img/sample/4.jpeg" alt=""/></a>
+				</li>
+				<li>
+					<a><img ng-src="{{img_base}}./img/sample/1.jpeg" alt=""/></a>
+				</li>
+				<li>
+					<a><img ng-src="{{img_base}}./img/sample/2.jpeg" alt=""/></a>
+				</li>
+				<li>
+					<a><img ng-src="{{img_base}}./img/sample/3.jpeg" alt=""/></a>
+				</li>
+				<li>
+					<a><img ng-src="{{img_base}}./img/sample/4.jpeg" alt=""/></a>
+				</li>
+			</ul>
 		</header>
 		<div class="pf-tab-container">
 			<div class="pf-shop-desc pf-shop-item">
-				<div class="pf-shop-item-header">
-					<h1>{{highlighted_item.short_name}}</h1>
-					<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-				</div>
+				<div class="pf-shop-item-header"></div>
 				<p ng-bind-html="highlighted_item.description"></p>
-				<div class="pf-attachments">
+				<!-- <div class="pf-attachments">
 					<h3>Attachments</h3>
 					<ul>
 						<li>
@@ -76,7 +123,7 @@
 							</div>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 			<!-- BIND -->
 			<div class="pf-reviews pf-shop-item">
