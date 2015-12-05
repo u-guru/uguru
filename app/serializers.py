@@ -594,7 +594,11 @@ AdminUniversityDeptCourseSerializer = {
     'full_name': fields.String,
     'is_popular': fields.Boolean,
     'variations': fields.String,
-    'times_mentioned': fields.Integer
+    'times_mentioned': fields.Integer,
+    'department_short': fields.String,
+    'department_long': fields.String,
+    'code': fields.String,
+    'num_gurus': fields.Integer
 }
 
 SkillSerializer = {

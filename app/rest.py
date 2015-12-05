@@ -115,8 +115,10 @@ class UniversityPopularCoursesView(restful.Resource):
             abort(404)
         else:
             courses = u.popular_courses
+            courses = sorted(u.popular_courses, key=lambda k:k.num_gurus,reverse=True)
             if not courses:
-                courses = u.courses
+                course = u.courses
+                courses = sorted(u.courses, key=lambda k:k.num_gurus,reverse=True)
             return courses, 200
 
 class UniversityCoursesView(restful.Resource):
@@ -952,7 +954,7 @@ class UserOneView(restful.Resource):
         user.password = md5('launchuguru123').hexdigest()
         user.profile_code = user.name.split(' ')[0].lower()
         user.referral_code = user.name.split(' ')[0].lower()
-        
+
         user.current_hourly = None
         user.university_id = None
         user.guru_categories = []
