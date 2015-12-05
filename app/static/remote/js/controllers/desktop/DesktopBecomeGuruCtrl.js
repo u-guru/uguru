@@ -82,14 +82,14 @@ angular.module('uguru.desktop.controllers')
       return progressValue;
     }
 
-    $scope.completeAndGoToGuru = function() {
-       LoadingService.showAmbig('Saving', 1000, function() {
-          function callbackSuccess() {
-            $scope.goToGuruMode();
-          }
-          LoadingService.showSuccess("Your guru profile is almost complete!", 2500, callbackSuccess)
-      })
-    }
+    // $scope.completeAndGoToGuru = function() {
+    //    LoadingService.showAmbig('Saving', 1000, function() {
+    //       function callbackSuccess() {
+    //         $scope.goToGuruMode();
+    //       }
+    //       LoadingService.showSuccess("Your guru profile is almost complete!", 2500, callbackSuccess)
+    //   })
+    // }
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
