@@ -69,7 +69,7 @@
 					fill-opacity="0.5" fill="#FFFFFF"></path>
 				</svg>
 			</div>
-			<div id="photo-list">
+			<div id="photo-list" class='ng-class:{"hide":root.vars.showFinishBecomeGuruButton}'>
 				<div class='text-center'>
 					<p ng-if='!user.profile_url'>Some great sample tutor photos</p>
 					<p ng-if='user.profile_url'>Your photo should look like this</p>
@@ -80,6 +80,7 @@
 					</li>
 				</ul>
 			</div>
+            <button  ng-click='goToGuruMode()' class='bg-white txt-shamrock semibold absolute bottom-0 hide ng-class:{"show":root.vars.showFinishBecomeGuruButton}'>Finish</button>
 		</div>
 	</section>
 	<input type='file' accept="image/gif, image/jpeg, image/png" id='file-input-web' onchange="angular.element(this).scope().file_changed(this)" style='display:none' />

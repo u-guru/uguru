@@ -1794,15 +1794,27 @@ if arg == 'init_berkeley_course':
                 print "Progress %s out of %s" % (count, len(cal.popular_courses))
     print count
 
-    # for course in
-    # unique_keys = []
-    # unique_keys_full = []
-    # for course in sorted(cal.popular_courses, key=lambda k:k.num_gurus, reverse=True):
-    #     first_course_part = course.short_name.split(' ')[0]
-    #     if first_course_part not in unique_keys:
-    #         unique_keys.append(first_course_part)
-    #         unique_keys_full.append((course.short_name, course.full_name))
-    # from pprint import pprint
-    # pprint(unique_keys_full)
 
-
+if arg == 'variations_courses':
+    cal = University.query.get(2307)
+    unique_keys = []
+    unique_keys_full = []
+    for course in sorted(cal.popular_courses, key=lambda k:k.num_gurus, reverse=True):
+        first_course_part = course.short_name.split(' ')[0]
+        if first_course_part not in unique_keys:
+            unique_keys.append(first_course_part)
+            unique_keys_full.append({'short_name': course.short_name, 'full_name': course.full_name, 'id': course.id, 'subject_variations': [" ".join(course.short_name.split(" ")[:len(course.short_name.split(' ')) - 1]), ""], "code":course.short_name.split(' ')[-1]})
+    with open('cal_courses_popular.json', 'wb') as fp:
+        json.dump(unique_keys_full, fp, sort_keys = True, indent = 4)
+    
+if arg == 'vc_db':
+    import json
+    arr = json.load(open("cal_courses_popular.json"))
+    for item in arr:
+        variations = item['subject_variations']
+        subject = sorted(variations, key=lambda k:len(k), reverse=True)[0]
+        result = ""
+        for variation in variations:
+            result += ", %s"  % (variation  + " " + item['code'])
+        print "\n\n %s" % item['full_name']
+        print "%s ----> %s" % (subject, result)

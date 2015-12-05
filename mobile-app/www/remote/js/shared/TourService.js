@@ -63,7 +63,7 @@ function TourService($ionicBackdrop) {
 
     function injectBackDrop() {
         var elemDiv = document.createElement('div');
-        elemDiv.style.cssText = 'position:absolute;width:100%;top:0;height:100%;opacity:0.3;z-index:1000;background:#000;';
+        elemDiv.style.cssText = 'position:absolute;width:100%;top:0;height:100%;opacity:0.7;z-index:1000;background:#000;';
         document.body.appendChild(elemDiv);
     }
 

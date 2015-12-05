@@ -44,12 +44,6 @@ angular.module('uguru.guru.controllers')
     $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/messaging.mobile.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.messagesModal = modal;
-    });
 
     $scope.experience = {name:'samir', years:7, description:"i lvoe teaching this so much"};
 
@@ -423,26 +417,26 @@ angular.module('uguru.guru.controllers')
       $scope.guruIntroductionModal.show();
     }
 
-    $scope.launchMajorModal = function() {
-      LoadingService.show();
-      $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.majorModal = modal;
-            $scope.majorModal.show();
-      });
-    }
+    // $scope.launchMajorModal = function() {
+    //   LoadingService.show();
+    //   $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
+    //         scope: $scope,
+    //         animation: 'slide-in-up'
+    //     }).then(function(modal) {
+    //         $scope.majorModal = modal;
+    //         $scope.majorModal.show();
+    //   });
+    // }
 
 
     $scope.initModalsAfterEnter = function() {
 
-      $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.guruMajorModal = modal;
-      });
+      // $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
+      //       scope: $scope,
+      //       animation: 'slide-in-up'
+      //   }).then(function(modal) {
+      //       $scope.guruMajorModal = modal;
+      // });
 
       $ionicModal.fromTemplateUrl(BASE + 'templates/guru.courses.modal.html', {
             scope: $scope,

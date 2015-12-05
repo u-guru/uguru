@@ -343,6 +343,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $scope.supportModal = modal;
         });
 
+        $scope.goBackToBecomeGuru = function() {
+          if ($scope.root.vars.becomeGuruRecentlyCompleted) {
+            $ionicViewSwitcher.nextDirection('back');
+            $state.go('^.become-guru')
+          }
+        }
+
         $scope.initializeHorizontalProgressBars = function() {
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
@@ -438,13 +445,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           if ($scope.user && $scope.user.id) {
             $scope.profileModal.show();
           } else {
-
-            LoadingService.showMsg('You need an account to do that!', 2500,
-              function() {
-                  $scope.signupModal.show()
-              }
-            )
-
+            LoadingService.showMsg('You need an account to do that!', 2500)
           }
         }
 
@@ -454,11 +455,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.credibilityModal.show();
           } else {
 
-            LoadingService.showMsg('You need an account to do that!', 2500,
-              function() {
-                  $scope.signupModal.show();
-              }
-            )
+            LoadingService.showMsg('You need an account to do that!', 2500)
           }
         }
 
@@ -498,7 +495,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           //mobile mode
           if (!$scope.desktopMode) {
-            $scope.initMobileModals();
+            $timeout(function() {
+              $scope.initMobileModals();
+            }, 1500)
             $timeout(function() {
               $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
               animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);

@@ -503,9 +503,7 @@ MajorSerializer = {
     'code': fields.String,
     'title': fields.String,
     'abbr': fields.String
-}
-
-
+}`
 
 UniversitySerializer = {
     'name': fields.String,
