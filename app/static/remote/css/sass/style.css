@@ -3073,11 +3073,11 @@ section {
     letter-spacing: 0 !important; }
 
 /* ---------- TOOLTIPS */
-.guru-tip {
+.guru-tip, .guru-popup {
   position: absolute;
   z-index: 99;
   padding: 0 15px; }
-  .guru-tip.guru-tip-center {
+  .guru-tip.guru-tip-center, .guru-tip.guru-popup-center, .guru-popup.guru-tip-center, .guru-popup.guru-popup-center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -3086,60 +3086,136 @@ section {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-  .guru-tip div {
-    position: relative;
-    background: rgba(255, 255, 255, 0.9);
+  .guru-tip div.with-button, .guru-popup div.with-button {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important; }
+
+.guru-popup {
+  width: 75%;
+  max-width: 250px; }
+  .guru-popup h1 {
+    background: rgba(43, 50, 52, 0.9);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    padding: 10px 15px 0;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center; }
+    .guru-popup h1 + div {
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important; }
+  .guru-popup div {
+    background: rgba(43, 50, 52, 0.9);
     padding: 10px 15px;
+    width: 100%;
     border-radius: 2px;
-    color: #40484B;
+    color: white;
     font-size: 18px;
     font-weight: 600; }
-    .guru-tip div::after {
-      content: "";
-      bottom: 0;
-      width: 0;
-      height: 0;
-      border: 10px solid transparent; }
-  .guru-tip.guru-tip-top div::after {
-    position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-    top: -20px;
-    border-bottom-color: rgba(255, 255, 255, 0.9); }
-  .guru-tip.guru-tip-bottom div::after {
-    position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-    top: -20px;
-    border-top-color: rgba(255, 255, 255, 0.9); }
-  .guru-tip.guru-tip-left div::after {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    left: -20px;
-    border-right-color: rgba(255, 255, 255, 0.9); }
-  .guru-tip.guru-tip-right div::after {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: -20px;
-    border-left-color: rgba(255, 255, 255, 0.9); }
+    .guru-popup div.min-height {
+      min-height: 100px; }
+    .guru-popup div.guru-popup-vertical-center {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center; }
+    .guru-popup div input {
+      display: block;
+      width: 100%;
+      padding: 5px 10px;
+      border: 0; }
+      .guru-popup div input:last-child {
+        margin-bottom: 5px; }
+  .guru-popup button {
+    height: auto;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    background: #add5ce;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    line-height: 1; }
+    .guru-popup button:hover, .guru-popup button:focus {
+      filter: alpha(opacity=100);
+      opacity: 1;
+      background: #69B3A5; }
+    .guru-popup button.activated, .guru-popup button:active {
+      background: #757575; }
+
+.guru-tip div {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 15px;
+  border-radius: 2px;
+  color: #40484B;
+  font-size: 18px;
+  font-weight: 600; }
+  .guru-tip div::after {
+    content: "";
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent; }
+.guru-tip button {
+  height: auto;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #69B3A5;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  line-height: 1; }
+  .guru-tip button:hover, .guru-tip button:focus {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #40484B; }
+  .guru-tip button.activated, .guru-tip button:active {
+    background: #2B3234; }
+.guru-tip.guru-tip-top div::after {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: -20px;
+  border-bottom-color: rgba(255, 255, 255, 0.9); }
+.guru-tip.guru-tip-bottom div::after {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: -20px;
+  border-top-color: rgba(255, 255, 255, 0.9); }
+.guru-tip.guru-tip-left div::after {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: -20px;
+  border-right-color: rgba(255, 255, 255, 0.9); }
+.guru-tip.guru-tip-right div::after {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: -20px;
+  border-left-color: rgba(255, 255, 255, 0.9); }
 
 /* ---------- SAMIR */
 .modal {

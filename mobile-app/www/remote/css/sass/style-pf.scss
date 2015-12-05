@@ -106,6 +106,25 @@
 		}
 	}
 }
+.pf-header-bg {
+	@include blur(50);
+	position: absolute;
+	top: -25%;
+	left: -25%;
+	width: 150%;
+	height: 150%;
+	background-position: center center;
+	background-size: cover;
+}
+.pf-header-color {
+	@include opacity(.2);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: desaturate(darken($shamrock, 20%), 10%);
+}
 .pf-type {
 	header.third {
 		position: relative;
@@ -113,25 +132,6 @@
 		h1.pf-title {
 			font-size: 28px!important;
 			text-transform: none;
-		}
-		.pf-header-bg {
-			@include blur(50);
-			position: absolute;
-			top: -25%;
-			left: -25%;
-			width: 150%;
-			height: 150%;
-			background-position: center center;
-			background-size: cover;
-		}
-		.pf-header-color {
-			@include opacity(.2);
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: desaturate(darken($shamrock, 20%), 10%);
 		}
 		.pf-banner {
 			display: none;
@@ -179,7 +179,7 @@
 			}
 			.pf-school {
 				margin: 0!important;
-				font-size: 20px;
+				font-size: 24px;
 			}
 			.user-icon {
 				width: 72px;
@@ -213,11 +213,13 @@
 				li:first-child {
 					padding: 10px 15px;
 					background: rgba(white,.7);
-					color: $slate;
 					text-transform: lowercase;
+					a {
+						color: $slate;
+					}
 				}
 				li:last-child {
-					button {
+					a {
 						@include flex;
 						@include flex-center;
 						width: 40px;
@@ -316,35 +318,35 @@
 			position: relative;
 			width: 100%;
 			text-align: left;
-			.pf-price {
-				@include center-y;
-				background: $charcoal;
-				font-size: 18px;
-				font-weight: 600;
-				&:after {
-					content: "";
-					position: absolute;
-					top: 0;
-					border: 20px solid $charcoal;
-					border-left-width: 10px!important;
-					border-right-width: 10px!important;
-				}
-				&.pf-price-right {
-					padding: 10px 15px 10px 0;
-					right: 0;
-					&:after {
-						left: -20px;
-						border-left-color: transparent!important;
-					}
-				}
-				&.pf-price-left {
-					padding: 10px 0 10px 15px;
-					left: 0;
-					&:after {
-						right: -20px;
-						border-right-color: transparent!important;
-					}
-				}
+		}
+	}
+	.pf-price {
+		@include center-y;
+		background: $charcoal;
+		font-size: 18px;
+		font-weight: 600;
+		&:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			border: 20px solid $charcoal;
+			border-left-width: 10px!important;
+			border-right-width: 10px!important;
+		}
+		&.pf-price-right {
+			padding: 10px 15px 10px 0;
+			right: 0;
+			&:after {
+				left: -20px;
+				border-left-color: transparent!important;
+			}
+		}
+		&.pf-price-left {
+			padding: 10px 0 10px 15px;
+			left: 0;
+			&:after {
+				right: -20px;
+				border-right-color: transparent!important;
 			}
 		}
 	}
@@ -751,10 +753,11 @@
 		background: $charcoal;
 		ul {
 			@include flex;
-			padding: 0 15px;
+			padding: 0 7.5px;
 			li {
 				width: 100%;
 				text-align: center;
+				padding: 0 7.5px;
 				a {
 					border-top: 5px solid transparent;
 					border-bottom: 5px solid transparent;
@@ -837,6 +840,13 @@
 			height: 100%;
 		}
 	}
+	.pf-modal {
+		.pf-shop-item-header {
+			h1 {
+				font-size: 48px!important;
+			}
+		}
+	}
 	.pf-type {
 		.chip {
 		    height: 36px;
@@ -861,12 +871,16 @@
 					}
 				}
 			}
+			.pf-checklist-full.active:not(.pf-type-photo) {
+				.pf-item-header {
+					height: 256px!important;
+				}
+			}
 			.pf-checklist-full.active {
 				display: block;
 				width: 100%!important;
 				padding: 15px;
 				.pf-item-header {
-					height: 256px!important;
 					background-color: $charcoal;
 				}
 				.pf-tab-container {
@@ -1017,21 +1031,31 @@
 	.pf-tab-container {
 		overflow: auto;
 	}
-	.pf-shop-item {
-		background: $charcoal;
-		padding: 0;
-		.pf-shop-item-header {
-			background: $shamrock;
+	.pf-shop-item-header {
+		position: relative;
+		background: $shamrock;
+		text-align: center;
+		h1 {
+			font-size: 32px;
+			font-weight: 600;
+		}
+		&:not(:empty) {
 			padding: 10px 15px;
-			.pf-rating {
-				margin-top: 3px;
-				max-width: 120px;
-			}
-			+ p {
-				margin: 0;
+		}
+		.pf-rating {
+			margin-top: 3px;
+			max-width: 120px;
+		}
+		+ p {
+			margin: 0;
+			&:not(:empty) {
 				padding: 15px;
 			}
 		}
+	}
+	.pf-shop-item {
+		background: $charcoal;
+		padding: 0;
 		.pf-attachments, .pf-tags, .pf-ingredients {
 			padding: 0 15px 15px;
 			text-align: left;
@@ -1356,10 +1380,8 @@
 				}
 			}
 		}
-		.pf-shop-item {
-			.pf-shop-item-header {
-				background: $cerise;
-			}
+		.pf-shop-item-header {
+			background: $cerise;
 		}
 	}
 	header.third {
@@ -1455,19 +1477,158 @@
 }
 .pf-type-photo {
 	&.pf-modal {
-		header.third.pf-item-header {
-			.pf-header-info {
-				.pf-price {
-					background: $moola;
-					&:after {
-						border-color: $moola;
+		> section {
+			overflow: auto;
+			> header.third.pf-item-header {
+				@include flex-wrap;
+				height: auto!important;
+				.pf-header-bg {
+					height: auto;
+					position: relative;
+					top: auto;
+					left: auto;
+					width: 100%;
+					img {
+						display: block;
+						width: 100%;
+						max-width: 100%;
+					}
+					.pf-photo-desc {
+						@include flex;
+						@include flex-wrap;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						padding: 15px;
+						background: rgba($charcoal,.8);
+						color: white;
+						font-size: 16px;
+						font-weight: 400;
+						line-height: 1.25;
+						@media screen and (min-width:768px) {
+							font-size: 20px;
+						}
+						&:not(.active) {
+							@include opacity(0);
+							display: none;
+						}
+						&.active + .pf-photo-info {
+							@include opacity(0);
+						}
+						.pf-photo-tags {
+							padding-top: 2px;
+							font-size: 14px;
+							ul {
+								@include flex;
+								@include flex-wrap;
+								width: 100%;
+								li {
+									padding-right: 7px;
+									a {
+										@include opacity(.75);
+										&.tag::before {
+											content: "#";
+										}
+										&.location {
+											@include flex;
+											@include flex-center;
+											padding-left: 7.5px;
+											@media screen and (min-width:768px) {
+												padding-left: 13.5px;
+											}
+											svg {
+												width: 20px;
+												height: 20px;
+											}
+										}
+										&.active, &:active {
+											@include opacity(1);
+										}
+									}
+								}
+							}
+						}
+					}
+					button {
+						@include flex;
+						@include flex-center;
+						position: absolute;
+						display: block;
+						bottom: 15px;
+						right: 15px;
+						width: 50px;
+						height: 50px;
+						padding: 0;
+						svg {
+							display: block;
+							width: 50px;
+							height: 50px;
+							padding: 5px;
+							path {
+								@include svg-stroke-width(5);
+							}
+						}
+					}
+					.pf-photo-info {
+						background: rgba($charcoal,.8);
+						svg {
+							path {
+								stroke: white;
+							}
+						}
+					}
+					.pf-photo-img {
+						background: rgba(white,.8);
+						svg {
+							path {
+								stroke: $charcoal;
+							}
+						}
+					}
+				}
+				.pf-header-thumbs {
+					@include flex;
+					background: $charcoal;
+					width: 100%;
+					height: 158px;
+					padding: 7.5px;
+					overflow: auto;
+					@media screen and (max-height:568px) {
+						height: 114px;
+					}
+					li {
+						height: 100%;
+						padding: 7.5px;
+						&:last-child {
+							padding-right: 15px;
+						}
+						a {
+							height: 100%;
+							img {
+								display: block;
+								max-height: 100%;
+							}
+						}
 					}
 				}
 			}
+			.pf-tab-container {
+				height: auto;
+				overflow: visible;
+			}
 		}
-		.pf-shop-item {
-			.pf-shop-item-header {
+		.pf-shop-item-header {
+			background: white;
+			h1 {
+				color: $slate;
+			}
+			.pf-price {
 				background: $moola;
+				&:after {
+					border-color: $moola;
+				}
 			}
 		}
 	}
@@ -1517,11 +1678,12 @@
 		> li:not(.pf-checklist-full) {
 			div {
 				span {
-					background: $moola;
+					background: white;
+					color: $slate;
 				}
 			}
 			input:checked + div svg {
-				stroke: $moola;
+				stroke: white;
 			}
 		}
 	}
@@ -1574,10 +1736,8 @@
 				}
 			}
 		}
-		.pf-shop-item {
-			.pf-shop-item-header {
-				background: $gold;
-			}
+		.pf-shop-item-header {
+			background: $gold;
 		}
 	}
 	header.third {
@@ -1738,10 +1898,8 @@
 				}
 			}
 		}
-		.pf-shop-item {
-			.pf-shop-item-header {
-				background: $cobalt;
-			}
+		.pf-shop-item-header {
+			background: $cobalt;
 		}
 	}
 	header.third {
@@ -1847,10 +2005,8 @@
 				}
 			}
 		}
-		.pf-shop-item {
-			.pf-shop-item-header {
-				background: $auburn;
-			}
+		.pf-shop-item-header {
+			background: $auburn;
 		}
 	}
 	header.third {
@@ -1956,10 +2112,8 @@
 				}
 			}
 		}
-		.pf-shop-item {
-			.pf-shop-item-header {
-				background: $orange;
-			}
+		.pf-shop-item-header {
+			background: $orange;
 		}
 	}
 	header.third {
@@ -2065,10 +2219,8 @@
 				}
 			}
 		}
-		.pf-shop-item {
-			.pf-shop-item-header {
-				background: $eggplant;
-			}
+		.pf-shop-item-header {
+			background: $eggplant;
 		}
 	}
 	header.third {
@@ -2174,10 +2326,8 @@
 				}
 			}
 		}
-		.pf-shop-item {
-			.pf-shop-item-header {
-				background: $azure;
-			}
+		.pf-shop-item-header {
+			background: $azure;
 		}
 	}
 	header.third {

@@ -26,9 +26,12 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
     }
 
     function showMsg(message, duration, callback) {
+        if (duration <= 3000)  {
+            duration = 3000;
+        }
         $ionicLoading.show({
             template: '<span id="E2E-msg" class="capitalized">' + message + '</span>',
-            duration: duration || 2000,
+            duration: duration || 3000,
         });
 
         if (typeof callback !== 'undefined') {
@@ -40,11 +43,13 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
 
     function showAmbig(text, duration, callback) {
         $rootScope.ambigLoaderText = text || '';
-
+        if (text && duration <= 2500) {
+            duration = 2500
+        }
         $ionicLoading.show({
             scope: $rootScope,
             templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html',
-            duration: duration || 1000
+            duration: duration || 2500
         });
 
         if (typeof callback !== 'undefined') {
@@ -61,19 +66,22 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
         $ionicLoading.show({
             scope: $rootScope,
             templateUrl: BASE + 'templates/u.loader.failure.svg.html',
-            duration: duration || 1000
+            duration: duration || 2000
         });
 
     }
 
     function showSuccess(text, duration, callback) {
-        duration = duration || 1000
+        duration = duration || 2000
+        if (duration <= 2000) {
+            duration = 2000;
+        }
         $rootScope.successLoaderText = text || '';
 
         $ionicLoading.show({
             scope: $rootScope,
             templateUrl: BASE + 'templates/u.loader.success.svg.html',
-            duration: duration || 1000
+            duration: duration || 2000
         });
 
         if (typeof callback !== 'undefined') {

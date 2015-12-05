@@ -112,6 +112,7 @@
 		ul {
 			width: 100%;
 			height: 100%;
+			padding: 7.5px;
 			li {
 				padding: 7.5px;
 				height: 50%;
@@ -225,33 +226,23 @@
 	.main {
 		.desktop-search-list {
 			#guru-courses-user-profile {
-				//Samir
-
-				display:flex !important;
+				@include flex;
 				justify-content: flex-start!important;
 				-webkit-justify-content: flex-start !important;
-
 				li.course-item.selected{
-					width:20% !important;
-					display:block !important;
+					width: 25%!important;
+					display: block!important;
 					a {
-						height:60px !important;
-						max-height:60px !important;
+						height: 60px!important;
+						max-height: 60px!important;
 						span {
-							font-size:16px;
-							margin-right:25% !important;
-						}
-						svg {
-							path {
-								transform: translate(60px, -25px) rotate(45deg) !important;
-							}
+							font-size: 20px;
+							text-align: center!important;
 						}
 					}
 				}
-				//endsamir
 			}
 			.desktop-card-list {
-
 				li {
 					display: none;
 					a {
@@ -284,8 +275,7 @@
 					}
 				}
 				li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4),
-				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8),
-				li:nth-child(9), li:nth-child(10), li:nth-child(11), li:nth-child(12) {
+				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8) {
 					display: block;
 				}
 				.selected {
@@ -680,12 +670,19 @@
 		#profile-desc {
 			@include flex;
 			@include flex-center;
+			position: relative;
+			overflow: hidden;
 			width: calc(100% / 3);
 			height: 100%;
 			padding: 15px;
-			background: $gabrielle;
+			background: $slate;
+			.profile-inside {
+				width: 100%;
+			}
 			#profile-icon {
 				@include round;
+				position: relative;
+				z-index: 9;
 				margin: 15px auto;
 				display: block;
 				span {
@@ -724,6 +721,7 @@
 				}
 			}
 			#profile-list {
+				width: 100%;
 				text-align: center;
 				ul {
 					@include listless;
@@ -735,17 +733,11 @@
 							font-size: 28px;
 							font-weight: 600;
 							line-height: 1;
-							text-transform: uppercase;
-							span:last-child {
-								svg {
-									display: none;
-								}
-							}
 						}
 					}
 					#profile-school {
 						margin-bottom: 3px;
-						font-size: 20px;
+						font-size: 24px;
 						font-weight: 400;
 						line-height: 1.2;
 					}
@@ -753,27 +745,15 @@
 						margin: 15px 0;
 					}
 					#profile-intro {
-						position: relative;
-						&::after {
-							content: "\201D";
-							position: absolute;
-							display: block;
-							top: -15px;
-							right: 0;
-							color: rgba(white, .15);
-							font-size: 250px;
-							line-height: .8;
-						}
 						textarea {
 							background: none;
 							resize: none;
 							width: 100%;
 							height: auto;
 							min-height: 120px;
-							margin: 10px 0;
 							color: white;
-							font-size: 24px;
-							font-weight: 300;
+							font-size: 20px;
+							font-weight: 400;
 							line-height: 1.2;
 							text-align: center;
 						}
@@ -793,7 +773,9 @@
 							li:first-child {
 								padding: 10px 15px;
 								background: rgba(white,.7);
-								color: darken($gabrielle, 20%);
+								a {
+									color: $slate;
+								}
 							}
 							li:last-child {
 								a {
@@ -805,7 +787,7 @@
 									background: white;
 									svg {
 										@include svg-stroke-width(5);
-										stroke: darken($gabrielle, 20%);
+										stroke: $gabrielle;
 										width: 100%;
 										height: 100%;
 									}
@@ -866,26 +848,12 @@
 					padding: 15px;
 					border: 1px solid rgba($gabrielle,.4);
 					position: relative;
-					.remove {
-						@include center-y;
-						right: 0;
-						width: 35px;
-						height: 35px;
-						svg {
-							@include svg-stroke(white, 10);
-							@include rotate(45);
-							width: 35px;
-							height: 35px;
-							padding: 10px;
-						}
-					}
 					&:nth-last-child(2) {
 						border-bottom: 0!important;
 					}
-					// @gabrielle -- this hide the whole experiences
-					// &:last-child {
-					// 	display: none;
-					// }
+					&:last-child:nth-child(odd):empty {
+						display: none;
+					}
 					&:nth-child(1), &:nth-child(2) {
 						border-top: 0;
 					}
@@ -896,6 +864,15 @@
 					}
 					&:last-child:nth-child(even) {
 						display: block;
+					}
+				}
+				&.empty {
+					border-bottom: 0!important;
+					li {
+						width: 100%!important;
+						border-bottom: 0!important;
+						font-weight: 400;
+						text-transform: none;
 					}
 				}
 			}
@@ -917,11 +894,12 @@
 								border: 0!important;
 								padding: 0!important;
 								svg {
+									stroke: $gold;
 									stroke-width: 7px;
 									polygon:nth-child(2) {
 										@include opacity(0);
 										stroke-width: 0;
-										fill: white;
+										fill: $gold;
 									}
 								}
 							}
@@ -929,7 +907,7 @@
 								li:nth-child(1) {
 									svg {
 										polygon {
-											fill: white;
+											fill: $gold;
 										}
 									}
 								}
@@ -947,7 +925,7 @@
 								li:nth-child(1), li:nth-child(2) {
 									svg {
 										polygon {
-											fill: white;
+											fill: $gold;
 										}
 									}
 								}
@@ -965,7 +943,7 @@
 								li:nth-child(1), li:nth-child(2), li:nth-child(3) {
 									svg {
 										polygon {
-											fill: white;
+											fill: $gold;
 										}
 									}
 								}
@@ -983,7 +961,7 @@
 								li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4) {
 									svg {
 										polygon {
-											fill: white;
+											fill: $gold;
 										}
 									}
 								}
@@ -1001,7 +979,7 @@
 								li {
 									svg {
 										polygon {
-											fill: white;
+											fill: $gold;
 										}
 									}
 								}
@@ -1312,7 +1290,7 @@
 		.desktop-search-list {
 			li {
 				a {
-					height: 106px!important;
+					height: 102px!important;
 				}
 			}
 		}
@@ -1460,7 +1438,12 @@
 				@include flex-wrap;
 			}
 		}
+		.desktop-card-list {
+			margin-top: -15px!important;
+		}
 		#courses-list {
+			li:nth-child(7):not(.selected),
+			li:nth-child(8):not(.selected),
 			li:nth-child(9):not(.selected),
 			li:nth-child(10):not(.selected),
 			li:nth-child(11):not(.selected),
@@ -1551,7 +1534,6 @@
 			font-size: 48px!important;
 			font-weight: 900!important;
 			letter-spacing: 0!important;
-			text-align: left!important;
 			text-transform: none!important;
 		}
 	}
@@ -1714,6 +1696,7 @@
 								.notification-icon {
 									position: relative;
 									svg {
+										@include transition(.15s ease-in-out);
 										@include round;
 										@include svg-stroke($slate, 5);
 										background: $smoke;
@@ -1939,6 +1922,7 @@
 							@include flex-wrap;
 							@include flex-center;
 							height: calc(100% - 7.5px);
+							cursor: pointer;
 							svg {
 								@include svg-stroke(white, 4);
 								width: 60px;

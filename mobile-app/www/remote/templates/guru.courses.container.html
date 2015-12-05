@@ -30,15 +30,15 @@
         </form>
 
         <div id="courses-list" class='desktop-search-list'>
-            <ul class='desktop-card-list hide' id='guru-courses-user-profile'>
+            <ul class='desktop-card-list' id='guru-courses-user-profile'>
                 <li ng-if="user.guru_courses.length > 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
-                        <a class="name-only" ng-if='course.title'>
+                        <a class="name-only" ng-if='!course.title'>
                             <svg viewBox="0 0 100 100">
-                                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
                             </svg>
                             <span>{{course.name}}</span>
                         </a>
-                        <a ng-if='false && course.title'>
+                        <a ng-if='course.title'>
                             <svg viewBox="0 0 100 100">
                                 <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
                             </svg>

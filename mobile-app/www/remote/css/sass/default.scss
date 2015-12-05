@@ -1310,6 +1310,11 @@ header:not(.desktop-header) {
 	}
 }
 
+h1:not(.verified) {
+	span:nth-child(2) {
+		display: none;
+	}
+}
 .verified {
 	@include flex;
 	@include flex-center;

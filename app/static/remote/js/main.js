@@ -229,11 +229,13 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.profile-public-bakery', {
     url:'/profile-public-bakery',
-    templateUrl: BASE + 'templates/profile.public.bakery.html'
+    templateUrl: BASE + 'templates/profile.public.bakery.html',
+    controller: 'PublicProfileController'
   }).
   state('root.profile-public-photo', {
     url:'/profile-public-photo',
-    templateUrl: BASE + 'templates/profile.public.photo.html'
+    templateUrl: BASE + 'templates/profile.public.photo.html',
+    controller: 'PublicProfileController'
   }).
   state('root.profile-modal', {
     url:'/profile-modal',
@@ -242,6 +244,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.profile-modal-bakery', {
     url:'/profile-modal-bakery',
     templateUrl: BASE + 'templates/profile.modal.bakery.html'
+  }).
+  state('root.profile-modal-photo', {
+    url:'/profile-modal-photo',
+    templateUrl: BASE + 'templates/profile.modal.photo.html'
   }).
   state('root.profile-card', {
     url:'/profile-card',

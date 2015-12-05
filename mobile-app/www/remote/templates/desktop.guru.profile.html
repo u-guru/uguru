@@ -2,6 +2,8 @@
 	<main id='desktop-guru-profile' class="desktop-forms desktop-mode">
 		<div id="profile">
 			<div id="profile-desc" class='relative'>
+				<div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
+				<div class="pf-header-color"></div>
 				<div class="profile-inside">
 					<div id="profile-icon">
 						<span ng-if='!profile.edit_mode'>
@@ -26,7 +28,7 @@
 									</span>
 								</h1>
 							</li>
-							<li id="profile-school">{{user.university.title}}</li>
+							<li id="profile-school">{{user.university.short_name || user.university.name}}</li>
 							<li id="profile-intro">
 								<div class='ng-class:{"textarea-container":!showEditGuruIntro}'>
 									<textarea placeholder="Add a unique intro about yourself" onclick="this.focus();this.select()" id='desktop-guru-introduction-textarea' ng-model='user.guru_introduction' class='ng-class:{"dark-shamrock-bg":showEditGuruIntro}'>{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</textarea>
@@ -42,10 +44,12 @@
 							</li>
 							<li id='profile-footer'>
 								<ul id='profile-code-list'>
-									<li><a style='color:#3d796e !important;' class='txt-shamrock' href='http://{{user.profile_code}}.uguru.me' target='_blank'>&nbsp;&nbsp;&nbsp;www.{{user.profile_code}}.uguru.me &nbsp;&nbsp;&nbsp;</a></li>
+									<li><a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code}}.uguru.me</a></li>
 									<li>
 										<a href='http://{{user.profile_code}}.uguru.me' target='_blank' class='bg-white'>
-											<i class='icon ion-arrow-graph-up-right txt-shamrock' style='font-size:35px;'></i>
+											<svg viewBox="0 0 100 100">
+											    <path d="M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848"></path>
+											</svg>
 										</a>
 									</li>
 								</ul>
@@ -53,7 +57,6 @@
 						</ul>
 					</nav>
 				</div>
-
 			</div>
 			<div id="profile-info">
 				<div class="profile-inside">
@@ -66,7 +69,7 @@
 						</a>
 					</div>
 					<div id="profile-courses" class="relative">
-						<a class='edit-button right-0 absolute cta-box' id='cta-box-profile-courses' ng-show='profile.edit_mode'> Add </a>
+						<a class='edit-button right-0 absolute cta-box' id='cta-box-profile-courses' ng-show='profile.edit_mode'>Edit</a>
 						<h1>Courses You Can Guru</h1>
 						<div>
 							<ul class='courses profile-list profile-list-half'>
@@ -75,38 +78,7 @@
 									<!-- BIND -->
 									<!-- data-rating should be the first whole number for the rating -->
 									<!-- data-half should be true if the rating has a decimal point -->
-									<ul class="profile-course-rating" data-rating="4" data-half="true" ng-if='false'>
-										<li>
-											<svg viewBox="0 0 100 100">
-											    <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-										<li>
-											<svg viewBox="0 0 100 100">
-											    <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-										<li>
-											<svg viewBox="0 0 100 100">
-											    <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-										<li>
-											<svg viewBox="0 0 100 100">
-											    <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-										<li>
-											<svg viewBox="0 0 100 100">
-											    <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-									</ul>
+									<!-- <ul class="profile-course-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'" ng-if='true'></ul> -->
 									<!-- BIND -->
 									<!-- .active on edit mode -->
 									<textarea ng-if='false' class="profile-course-desc ng-class:{'active':profile.edit_mode}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</textarea>
@@ -136,7 +108,7 @@
 						</div>
 					</div>
 					<div id="profile-experiences">
-						<a id='cta-box-profile-experiences' class='cta-box edit-button right-0 absolute' ng-show='profile.edit_mode'> Edit </a>
+						<a id='cta-box-profile-experiences' class='cta-box edit-button right-0 absolute' ng-show='profile.edit_mode'>Add</a>
 						<h1>My Past Experiences</h1>
 						<div>
 							<ul class="experience profile-list list with-icon">
@@ -164,15 +136,16 @@
 						</div>
 					</div>
 					<div id="profile-skills">
-						<a class='cta-box edit-button right-0 absolute' id='cta-box-profile-skills' ng-show='profile.edit_mode'> Edit </a>
+						<a class='cta-box edit-button right-0 absolute' id='cta-box-profile-skills' ng-show='profile.edit_mode'>Edit</a>
 						<h1>Skills</h1>
 						<div>
 							<ul class='skills profile-list profile-list-half'>
 								<li ng-repeat='subcategory in user.guru_subcategories'>
 									<span class=''>{{subcategory.name}}</span>
 								</li>
+								<li></li>
 							</ul>
-							<ul class="empty" ng-if="!user.guru_subcategories.length && !profile.edit_mode">
+							<ul class="empty" ng-if="!user.guru_subcategories.length">
 								<li>
 									<span>
 										<em>No skills added</em>
@@ -182,7 +155,7 @@
 						</div>
 					</div>
 					<div id="profile-languages">
-						<a class='cta-box edit-button right-0 absolute' ng-show='profile.edit_mode' id='cta-box-profile-languages'> Edit </a>
+						<a class='cta-box edit-button right-0 absolute' ng-show='profile.edit_mode' id='cta-box-profile-languages'>Edit</a>
 						<h1>Languages</h1>
 						<div>
 							<ul class='languages profile-list profile-list-half'>
@@ -191,13 +164,13 @@
 								</li>
 								<li></li>
 							</ul>
-							<!-- <ul class="empty" ng-if="!user.guru_languages.length && !profile.edit_mode">
+							<ul class="empty" ng-if="!user.guru_languages.length">
 								<li>
 									<span>
 										<em>No languages added</em>
 									</span>
 								</li>
-							</ul> -->
+							</ul>
 						</div>
 					</div>
 

@@ -795,7 +795,7 @@
 
 // REQUESTS MODAL
 .request-modal {
-	
+
 	// CATEGORIES
 	#request-categories {
 		@include flex;
@@ -871,7 +871,7 @@
 			}
 		}
 	}
-	
+
 	// SUBCATEGORIES
 	#request-subcategories {
 		@include flex;
@@ -992,7 +992,7 @@
 			}
 		}
 	}
-	
+
 	// FORM
 	.request-content {
 		height: calc(100% - 114px);
@@ -1856,6 +1856,14 @@
 		.header-close {
 			width: 50%!important;
 		}
+		header {
+			height: 50px!important;
+			h1 {
+				@include center-xy;
+				font-size: 20px!important;
+				padding: 15px!important;
+			}
+		}
 	}
 	#messenger-subheader {
 		top: 0;
@@ -1959,12 +1967,12 @@
 			resize: none;
 			height: 25px;
 		}
-		
+
 		/* fixes an ios bug bear */
 		button.ion-android-send {
 			padding-top: 2px;
 		}
-		
+
 		/* add this to keep your footer buttons down
 		at the bottom as the textarea resizes */
 		.footer-btn-wrap {
@@ -1973,10 +1981,13 @@
 			width: 50px;
 			top: 0;
 			button {
+				width: 40px;
+				margin-left: 10px;
 				height: 100%;
 				padding: 0;
 				background: transparent;
 				svg {
+					@include svg-stroke(white, 3);
 					height: 100%;
 				}
 			}
@@ -1986,9 +1997,9 @@
 			bottom: 0;
 		}
 		img.profile-pic {
+			@include round;
 			width: 40px;
 			height: 40px;
-			border-radius: 50%;
 			position: absolute;
 			bottom: 10px;
 		}
