@@ -2751,7 +2751,7 @@ class Course(Base):
 
     is_popular = Column(Boolean)
 
-
+    code = Column(String)
     variations = Column(String)
     num_gurus = Column(Integer)
 

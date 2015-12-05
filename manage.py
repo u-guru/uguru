@@ -1794,15 +1794,73 @@ if arg == 'init_berkeley_course':
                 print "Progress %s out of %s" % (count, len(cal.popular_courses))
     print count
 
-    # for course in
-    # unique_keys = []
-    # unique_keys_full = []
-    # for course in sorted(cal.popular_courses, key=lambda k:k.num_gurus, reverse=True):
-    #     first_course_part = course.short_name.split(' ')[0]
-    #     if first_course_part not in unique_keys:
-    #         unique_keys.append(first_course_part)
-    #         unique_keys_full.append((course.short_name, course.full_name))
-    # from pprint import pprint
-    # pprint(unique_keys_full)
+
+if arg == 'variations_courses':
+    cal = University.query.get(2307)
+    unique_keys = []
+    unique_keys_full = []
+    for course in sorted(cal.popular_courses, key=lambda k:k.num_gurus, reverse=True):
+        first_course_part = course.short_name.split(' ')[0]
+        if first_course_part not in unique_keys:
+            unique_keys.append(first_course_part)
+            unique_keys_full.append({'short_name': course.short_name, 'full_name': course.full_name, 'id': course.id, 'subject_variations': [" ".join(course.short_name.split(" ")[:len(course.short_name.split(' ')) - 1]), ""], "code":course.short_name.split(' ')[-1]})
+    with open('cal_courses_popular.json', 'wb') as fp:
+        json.dump(unique_keys_full, fp, sort_keys = True, indent = 4)
+
+if arg == 'vc_db':
+    import json
+    arr = json.load(open("cal_courses_popular.json"))
+    count = 0
+    popular_courses = University.query.get(2307).popular_courses
+    for item in arr:
+        variations = item['subject_variations']
+        mid_variations = [variation for variation in variations if len(variation) > 1]
+        subject = sorted(variations, key=lambda k:len(k), reverse=True)[0]
+        short_subject = sorted(mid_variations, key=lambda k:len(k))[0]
+        result = ""
+        variation_arr = [item['short_name']]
+        for variation in variations:
+            variation_arr.append(variation  + " " + item['code'])
+            variation_arr.append(variation.replace(' ', '').replace('-','') + item['code'])
+        variation_arr.append(item['full_name'])
+        # print item['short_name'], 'variations:'
+        index = 0
+        variation_arr = [f_variant.upper() for f_variant in variation_arr]
+        for f_variant in variation_arr:
+            index += 1
+        #     print "#%s. %s" % (index, f_variant)
+        # print
+        # print
+        course_id = item['id']
+        course = Course.query.get(course_id)
+        course.variations = ", ".join(variation_arr)
+        course.code = item['code'].upper()
+        course.department_long = subject.upper()
+        course.department_short = short_subject.upper()
+        count += 1
+        # db_session.commit()
+
+        for sim_course in popular_courses:
+            if sim_course.id == course.id:
+                continue
+            all_but_last = " ".join(sim_course.short_name.split(' ')[0:len(sim_course.short_name.split(' '))-1])
+            if all_but_last.strip() == course.short_name.replace(course.code, '').strip():
+                sim_course.department_short = course.department_short
+                sim_course.department_long = course.department_long
+                sim_course.code = sim_course.short_name.split(' ')[-1]
+                variation_arr = [sim_course.short_name]
+                for variation in variations:
+                    variation_arr.append(variation  + " " + sim_course.code)
+                    variation_arr.append(variation.replace(' ', '').replace('-','') + sim_course.code)
+                variation_arr.append(sim_course.full_name)
+                variation_arr = [f_variant.upper() for f_variant in variation_arr]
+                sim_course.variations = ", ".join(variation_arr)
+                count += 1
+                if count % 50 == 0:
+                    db_session.commit()
+                    print "Progress %s out of %s" % (count, len(popular_courses))
+    print count
 
 
+        # print "\n\n %s" % item['full_name']
+        # print "%s ----> %s" % (subject, result)
