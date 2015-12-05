@@ -626,7 +626,7 @@ if arg == 'seed_admin':
 
 
     #teston jeselle
-    admin_account = admin_accounts[-1]
+    admin_account = admin_accounts[-2]
     account_name = admin_account[1]
 
     # check user exists
@@ -634,20 +634,6 @@ if arg == 'seed_admin':
         print "something is wrong"
         sys.exit()
 
-
-    # initiate regular profile attributes
-
-    user.fb_id = 'sjd9qdjoiqwjdijwqeidjioad'
-    user.is_admin = True
-    user.name = account_name
-    user.password = md5('launchuguru123').hexdigest()
-    user.profile_code = account_name.split(' ')[0].lower()
-    user.referral_code = account_name.split(' ')[0].lower()
-    user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
-
-    # save changes to local database
-    db_session.commit()
-    # v1.0
 
     ## Helper functions
     def createNewFile(user):
@@ -666,17 +652,45 @@ if arg == 'seed_admin':
             db_session.delete(_file)
             db_session.commit()
 
-
-    user.school_email_confirmed = True
-
-    # before creating a new file, lets deleate any old ones
-    print len(user.files)
     deleteAllUserFiles(user)
 
 
+
+    # before creating a new file, lets deleate any old ones
+    print len(user.files)
+
     transcript_file = createNewFile(user)
 
+    # initiate regular profile attributes
 
+    user.fb_id = 'sjd9qdjoiqwjdijwqeidjioad'
+    user.is_admin = True
+    user.name = account_name
+    user.password = md5('launchuguru123').hexdigest()
+    user.school_email_confirmed = True
+    user.phone_number_confirmed = True
+    user.phone_number = 8135009853
+    user.school_email = 'makhani@berkeley.edu'
+    user.profile_code = account_name.split(' ')[0].lower()
+    user.referral_code = account_name.split(' ')[0].lower()
+    user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
+
+
+    if not user.guru_experiences:
+        user.initExperience('CS10 Tutor', 12, 'i was a cs10 tutor for years')
+        user.initExperience('Bio 1A Lab Assistant', 0, 'i was a bio1A lab assistant for almost one year')
+
+
+
+    # save changes to local database
+    db_session.commit()
+
+    #1. Credibility
+
+
+    #2. Profile
+
+    #3. Send message to student
 
     # db_session.commit()
     # print len(user.files)

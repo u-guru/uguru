@@ -379,6 +379,25 @@ class User(Base):
             db_session.rollback()
             raise
 
+    def initExperience(self, title, years, description):
+        e = Experience()
+        e.title=title
+        e.years = years
+        e.description = description
+        try:
+            db_session.add(e)
+            db_session.commit()
+        except:
+            db_session.rollback()
+
+        e.contributed_user_id = self.id
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+
+
     def getGuruCourses(self):
         return " ".join([course.short_name for course in self.guru_courses])
 
@@ -1320,6 +1339,8 @@ class Experience(Base):
     contributed_user = relationship("User",
         primaryjoin="User.id==Experience.contributed_user_id",
         backref='guru_experiences')
+
+
 
 
 class Stats(Base):

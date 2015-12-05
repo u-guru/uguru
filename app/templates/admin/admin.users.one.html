@@ -145,7 +145,7 @@
           </div>
         {% endif %}
 
-        {% if user.guru_courses %}
+
 
         <div class='row'>
             <div class='col-md-12'>
@@ -168,6 +168,10 @@
                         <tr>
                           <td> Introduction </td>
                           <td> {{user.guru_introduction}} </td>
+                        </tr>
+                        <tr>
+                          <td> School Email </td>
+                          <td> {{user.school_email}} </td>
                         </tr>
                         <tr>
                           <td> Referral Code </td>
@@ -251,7 +255,6 @@
               </div>
             </div>
           </div>
-          {% endif %}
 
         <div class='row'>
             <div class='col-md-12'>
