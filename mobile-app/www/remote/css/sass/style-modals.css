@@ -2301,6 +2301,23 @@
   width: 50% !important;
 }
 
+.mobile-messages-container #messenger-content header {
+  height: 50px !important;
+}
+
+.mobile-messages-container #messenger-content header h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 20px !important;
+  padding: 15px !important;
+}
+
 .mobile-messages-container #messenger-subheader {
   top: 0;
   left: 0;
@@ -2461,6 +2478,8 @@
 .mobile-messages-container #desktop-messaging .footer-btn-wrap button,
 .mobile-messages-container #messenger-content .footer-btn-wrap button,
 .mobile-messages-container .guru-message-container .footer-btn-wrap button {
+  width: 40px;
+  margin-left: 10px;
   height: 100%;
   padding: 0;
   background: transparent;
@@ -2469,6 +2488,11 @@
 .mobile-messages-container #desktop-messaging .footer-btn-wrap button svg,
 .mobile-messages-container #messenger-content .footer-btn-wrap button svg,
 .mobile-messages-container .guru-message-container .footer-btn-wrap button svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   height: 100%;
 }
 
@@ -2482,9 +2506,9 @@
 .mobile-messages-container #desktop-messaging img.profile-pic,
 .mobile-messages-container #messenger-content img.profile-pic,
 .mobile-messages-container .guru-message-container img.profile-pic {
+  border-radius: 1000px;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   position: absolute;
   bottom: 10px;
 }

@@ -1856,6 +1856,14 @@
 		.header-close {
 			width: 50%!important;
 		}
+		header {
+			height: 50px!important;
+			h1 {
+				@include center-xy;
+				font-size: 20px!important;
+				padding: 15px!important;
+			}
+		}
 	}
 	#messenger-subheader {
 		top: 0;
@@ -1973,10 +1981,13 @@
 			width: 50px;
 			top: 0;
 			button {
+				width: 40px;
+				margin-left: 10px;
 				height: 100%;
 				padding: 0;
 				background: transparent;
 				svg {
+					@include svg-stroke(white, 3);
 					height: 100%;
 				}
 			}
@@ -1986,9 +1997,9 @@
 			bottom: 0;
 		}
 		img.profile-pic {
+			@include round;
 			width: 40px;
 			height: 40px;
-			border-radius: 50%;
 			position: absolute;
 			bottom: 10px;
 		}

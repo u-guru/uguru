@@ -352,13 +352,19 @@
 
 /* ---------- GURU ONBOARDING */
 .desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile {
-  display: flex !important;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
   justify-content: flex-start !important;
   -webkit-justify-content: flex-start !important;
 }
 
 .desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile li.course-item.selected {
-  width: 20% !important;
+  width: 25% !important;
   display: block !important;
 }
 
@@ -368,12 +374,8 @@
 }
 
 .desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile li.course-item.selected a span {
-  font-size: 16px;
-  margin-right: 25% !important;
-}
-
-.desktop-guru-onboarding .main .desktop-search-list #guru-courses-user-profile li.course-item.selected a svg path {
-  transform: translate(60px, -25px) rotate(45deg) !important;
+  font-size: 20px;
+  text-align: center !important;
 }
 
 .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li {
@@ -430,8 +432,7 @@
 }
 
 .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(1), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(2), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(3), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(4),
-.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(5), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(6), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(7), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(8),
-.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(9), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(10), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(11), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(12) {
+.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(5), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(6), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(7), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(8) {
   display: block;
 }
 
@@ -1549,7 +1550,7 @@
 }
 
 #desktop-guru-profile ion-pane .desktop-search-list li a {
-  height: 106px !important;
+  height: 102px !important;
 }
 
 #desktop-guru-profile ion-pane .input-field {
@@ -1718,6 +1719,12 @@
   flex-flow: row wrap;
 }
 
+#desktop-guru-profile #cta-modal-profile-courses .desktop-card-list {
+  margin-top: -15px !important;
+}
+
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(7):not(.selected),
+#desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(8):not(.selected),
 #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(9):not(.selected),
 #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(10):not(.selected),
 #desktop-guru-profile #cta-modal-profile-courses #courses-list li:nth-child(11):not(.selected),

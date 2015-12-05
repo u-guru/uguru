@@ -1,14 +1,5 @@
 <ion-view class='bottom-0 guru-message-container'>
 	<main id='desktop-messaging' class="desktop-mode" ng-if='desktopMode'>
-		<header class="desktop-header">
-			<a></a>
-			<a class='cta-modal-close close-button desktop-header-next'>
-				<svg viewBox="0 0 100 100">
-					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-				</svg>
-			</a>
-		</header>
-
 		<div class="main absolute bottom-0 full-x">
 			<div id="messenger">
 				<div id="messenger-sidebar">
@@ -33,7 +24,12 @@
 				</div>
 				<div id="messenger-content">
 					<div class="messenger-header">
-						<h1>{{active_relationship.student.name}}</h1>
+						<h1 class="no-menu">{{active_relationship.student.name}}</h1>
+						<a class='cta-modal-close close-button desktop-header-next'>
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
 						<div id="message-search" ng-if='false'>
 							<input ng-if='false' placeholder="Search anything" placeholder="Filter" ng-model='active_relationship.search_text' />
 							<!-- BIND -->
@@ -113,15 +109,13 @@
 										<div class="message-single-info"></div>
 										<div class="message-single-status">
 											This is the beginning of your message thread with
-											<strong>{{user.active_relationship.student.name}}</strong>
+											<strong>{{active_relationship.student.name}}</strong>
 										</div>
 									</div>
 								</div>
-
-
 								<div ng-repeat='message in active_relationship.messages|filter:active_relationship.search_text:strict' class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}">
 									<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
-										<img ng-if='user.profile_url' ng-src='{{message.sender.profile_url}}' />
+										<span ng-if='user.profile_url' style='background-image: url({{message.sender.profile_url}});' />
 									</div>
 									<div class="message-single-content">
 										<div class="message-single-info">
@@ -134,7 +128,7 @@
 										</div>
 									</div>
 									<div class='message-single-icon' ng-if='message.sender.id === user.id'>
-										<img ng-if='user.profile_url' ng-src='{{user.profile_url}}' />
+										<span ng-if='user.profile_url' style='background-image: url({{user.profile_url}});' />
 									</div>
 								</div>
 							</ion-scroll>
@@ -147,7 +141,11 @@
 								</svg>
 							</a>
 							<input placeholder="Message" ng-model='active_relationship.new_message' />
-							<button ng-click='sendMessage(active_relationship.new_message)' class='message-send-button'>Send</button>
+							<button ng-click='sendMessage(active_relationship.new_message)' class='message-send-button'>
+								<svg viewBox="0 0 100 100">
+								    <path d="M40.863416,69.0006669 L19,69.0006669 L49.6939787,14 L80.425686,69.0006669 L58.5612746,69.0006669 L49.7317073,85.6527248 L40.863416,69.0006669 Z M49.7317073,15.3170732 L49.7317073,85.5664621 M49.7317073,14.7032382 L58.6,68.0056713 M49.7317073,15.1365913 L40.8634146,68.4390244"></path>
+								</svg>
+							</button>
 						</div>
 					</div>
 				</div>

@@ -226,33 +226,23 @@
 	.main {
 		.desktop-search-list {
 			#guru-courses-user-profile {
-				//Samir
-
-				display:flex !important;
+				@include flex;
 				justify-content: flex-start!important;
 				-webkit-justify-content: flex-start !important;
-
 				li.course-item.selected{
-					width:20% !important;
-					display:block !important;
+					width: 25%!important;
+					display: block!important;
 					a {
-						height:60px !important;
-						max-height:60px !important;
+						height: 60px!important;
+						max-height: 60px!important;
 						span {
-							font-size:16px;
-							margin-right:25% !important;
-						}
-						svg {
-							path {
-								transform: translate(60px, -25px) rotate(45deg) !important;
-							}
+							font-size: 20px;
+							text-align: center!important;
 						}
 					}
 				}
-				//endsamir
 			}
 			.desktop-card-list {
-
 				li {
 					display: none;
 					a {
@@ -285,8 +275,7 @@
 					}
 				}
 				li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4),
-				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8),
-				li:nth-child(9), li:nth-child(10), li:nth-child(11), li:nth-child(12) {
+				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8) {
 					display: block;
 				}
 				.selected {
@@ -1301,7 +1290,7 @@
 		.desktop-search-list {
 			li {
 				a {
-					height: 106px!important;
+					height: 102px!important;
 				}
 			}
 		}
@@ -1449,7 +1438,12 @@
 				@include flex-wrap;
 			}
 		}
+		.desktop-card-list {
+			margin-top: -15px!important;
+		}
 		#courses-list {
+			li:nth-child(7):not(.selected),
+			li:nth-child(8):not(.selected),
 			li:nth-child(9):not(.selected),
 			li:nth-child(10):not(.selected),
 			li:nth-child(11):not(.selected),

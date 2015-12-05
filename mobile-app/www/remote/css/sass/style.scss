@@ -3237,13 +3237,78 @@ section {
 
 
 /* ---------- TOOLTIPS */
-.guru-tip {
+.guru-tip, .guru-popup {
 	position: absolute;
 	z-index: 99;
 	padding: 0 15px;
-	&.guru-tip-center {
+	&.guru-tip-center, &.guru-popup-center {
 		@include center-xy;
 	}
+	div.with-button {
+		border-bottom-left-radius: 0!important;
+		border-bottom-right-radius: 0!important;
+	}
+}
+.guru-popup {
+	width: 75%;
+	max-width: 250px;
+	h1 {
+		background: rgba($charcoal,.9);
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		padding: 10px 15px 0;
+		font-size: 20px;
+		font-weight: 600;
+		text-align: center;
+		+ div {
+			border-top-left-radius: 0!important;
+			border-top-right-radius: 0!important;
+		}
+	}
+	div {
+		background: rgba($charcoal,.9);
+		padding: 10px 15px;
+		width: 100%;
+		border-radius: 2px;
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		&.min-height {
+			min-height: 100px;
+		}
+		&.guru-popup-vertical-center {
+			@include flex;
+			@include flex-center-vertical;
+		}
+		input {
+			display: block;
+			width: 100%;
+			padding: 5px 10px;
+			border: 0;
+			&:last-child {
+				margin-bottom: 5px;
+			}
+		}
+	}
+	button {
+		height: auto;
+		padding: 10px 15px;
+		font-size: 18px;
+		font-weight: 600;
+		background: lighten($shamrock, 20%);
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		line-height: 1;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: $shamrock;
+		}
+		&.activated, &:active {
+			background: $taupe;
+		}
+	}
+}
+.guru-tip {
 	div {
 		position: relative;
 		background: rgba(white,.9);
@@ -3258,6 +3323,23 @@ section {
 			width: 0;
 			height: 0;
 			border: 10px solid transparent;
+		}
+	}
+	button {
+		height: auto;
+		padding: 10px 15px;
+		font-size: 18px;
+		font-weight: 600;
+		background: $shamrock;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		line-height: 1;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: $slate;
+		}
+		&.activated, &:active {
+			background: $charcoal;
 		}
 	}
 	&.guru-tip-top {
