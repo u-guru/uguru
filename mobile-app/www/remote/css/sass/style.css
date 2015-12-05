@@ -3250,6 +3250,39 @@ section {
 }
 
 /* ---------- GURU HOME */
+.guru-tiles-warning {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  background: white;
+  border-radius: 0 0 0 75%;
+  width: 40px;
+  height: 40px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  color: #F04F54;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.guru-tiles-warning:not(.active) {
+  display: none;
+}
+
 .guru-view header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -3372,6 +3405,14 @@ section {
   height: 100%;
   z-index: 5;
   overflow: hidden;
+}
+
+.guru-view .main .guru-home-tiles .square + div .guru-tiles-warning {
+  width: 28px;
+  height: 28px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  font-size: 20px;
 }
 
 .guru-view .main .guru-home-tiles .square + div h1 {
