@@ -3026,7 +3026,7 @@ section {
 
 
 /* ---------- OFFLINE */
-#offline {
+#offline, #orientation {
 	@include flex;
 	@include flex-center;
 	padding: 15px;
@@ -3036,9 +3036,49 @@ section {
 	> div {
 		width: 100%;
 	}
+	svg + div {
+		margin-top: 30px;
+		h1 {
+			font-size: 24px;
+			font-weight: 600;
+		}
+		p {
+			margin: 10px 0 15px;
+			font-weight: 300;
+		}
+		button {
+			font-size: 16px;
+			padding: 5px 15px;
+		}
+	}
+}
+#orientation {
+	height: 100%;
+	> div {
+		height: 100%;
+		margin-top: 45px;
+		svg {
+			@include rotate(90);
+			@include animation-name(phone-rotate);
+			@include animation-duration(5s);
+			@include animation-iteration-count(infinite);
+			height: calc(100% - 113px);
+		}
+		svg + div {
+			margin-bottom: 30px;
+			@media screen and (max-width:550px) {
+				h1 {
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+#offline {
 	svg {
 		width: 100%;
 		max-width: 75%;
+		max-height: 480px;
 		#phone {
 			@include animation-name(phone-hover);
 			@include animation-duration(2s);
@@ -3057,20 +3097,16 @@ section {
 			@include animation-iteration-count(infinite);
 		}
 	}
-	svg + div {
-		margin-top: 30px;
-		h1 {
-			font-size: 24px;
-			font-weight: 600;
-		}
-		p {
-			margin: 10px 0 15px;
-			font-weight: 300;
-		}
-		button {
-			font-size: 16px;
-			padding: 5px 15px;
-		}
+}
+@include keyframes(phone-rotate) {
+	0% {
+		@include rotate(90);
+	}
+	50% {
+		@include rotate(0);
+	}
+	100% {
+		@include rotate(0);
 	}
 }
 @include keyframes(phone-hover) {

@@ -3820,7 +3820,7 @@ section {
 }
 
 /* ---------- OFFLINE */
-#offline {
+#offline, #orientation {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3840,13 +3840,73 @@ section {
   text-align: center;
 }
 
-#offline > div {
+#offline > div, #orientation > div {
   width: 100%;
+}
+
+#offline svg + div, #orientation svg + div {
+  margin-top: 30px;
+}
+
+#offline svg + div h1, #orientation svg + div h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#offline svg + div p, #orientation svg + div p {
+  margin: 10px 0 15px;
+  font-weight: 300;
+}
+
+#offline svg + div button, #orientation svg + div button {
+  font-size: 16px;
+  padding: 5px 15px;
+}
+
+#orientation {
+  height: 100%;
+}
+
+#orientation > div {
+  height: 100%;
+  margin-top: 45px;
+}
+
+#orientation > div svg {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-animation-name: phone-rotate;
+  -moz-animation-name: phone-rotate;
+  -o-animation-name: phone-rotate;
+  animation-name: phone-rotate;
+  -webkit-animation-duration: 5s;
+  -moz-animation-duration: 5s;
+  -o-animation-duration: 5s;
+  animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  height: calc(100% - 113px);
+}
+
+#orientation > div svg + div {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 550px) {
+  #orientation > div svg + div h1 {
+    font-size: 20px;
+  }
 }
 
 #offline svg {
   width: 100%;
   max-width: 75%;
+  max-height: 480px;
 }
 
 #offline svg #phone {
@@ -3904,23 +3964,100 @@ section {
   animation-iteration-count: infinite;
 }
 
-#offline svg + div {
-  margin-top: 30px;
+@-webkit-keyframes phone-rotate {
+  0% {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 }
 
-#offline svg + div h1 {
-  font-size: 24px;
-  font-weight: 600;
+@-moz-keyframes phone-rotate {
+  0% {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 }
 
-#offline svg + div p {
-  margin: 10px 0 15px;
-  font-weight: 300;
+@-ms-keyframes phone-rotate {
+  0% {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 }
 
-#offline svg + div button {
-  font-size: 16px;
-  padding: 5px 15px;
+@keyframes phone-rotate {
+  0% {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 }
 
 @-webkit-keyframes phone-hover {
