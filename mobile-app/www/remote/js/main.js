@@ -311,6 +311,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/offline',
         templateUrl: BASE + 'templates/offline.html',
   }).
+  state('root.orientation', {
+        url: '/orientation',
+        templateUrl: BASE + 'templates/orientation.html',
+  }).
 
   state('root.become-guru.photography', {
         url:'/photography',

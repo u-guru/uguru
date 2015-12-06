@@ -36,9 +36,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   };
 
-  // $timeout(function() {
-  //   TourService.initTooltip(null, null, '#cta-box-profile');
-  // }, 1500);
+  $timeout(function() {
+
+    var toolTipArr = [
+      {text: 'This is where you edit your profile', direction:'left', btnText: 'Got it!', selector: "#cta-box-profile"}
+    ]
+    TourService.initTooltipTour(toolTipArr)
+    // TourService.initTooltip(null, null, '#cta-box-profile');
+  }, 1500);
 
   var CTA_PARENT_DICT = {
     'cta-box-profile':'.guru-home-container',

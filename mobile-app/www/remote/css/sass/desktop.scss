@@ -693,6 +693,7 @@
 		font-size: 32px;
 	}
 }
+
 #desktop-courses {
 	.main {
 		.desktop-search-list {
@@ -702,11 +703,15 @@
 						font-size: 20px!important;
 						text-align: center;
 						span {
+							display: block;
 							width: 100%;
 							text-align: center;
-						}
-						.course-title {
-							display: none;
+							span {
+								display: block;
+								&.course-name:not(:only-child) {
+									font-size: 14px!important;
+								}
+							}
 						}
 					}
 				}
@@ -721,13 +726,23 @@
 				.desktop-card-list {
 					li {
 						a {
-							.course-name {
-								font-size: 14px!important;
-							}
-							.course-title {
-								@include flex;
-								@include flex-center;
-								height: 84px;
+							span {
+								span {
+									&.course-name {
+										&:not(:only-child) {
+											font-size: 18px!important;
+										}
+										&:only-child {
+											font-size: 24px!important;
+										}
+									}
+									&.course-title {
+										@include flex;
+										@include flex-center;
+										height: 84px;
+										font-size: 22px!important;
+									}
+								}
 							}
 						}
 					}

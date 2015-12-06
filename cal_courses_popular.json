@@ -1,95 +1,922 @@
 [
     {
-        "code": "1A", "full_name": "Calculus", "id": 126022, "short_name": "MATH 1A", "subject_variations": ["MATH", "Mathematics"
-        ]},{"code": "61A", "full_name": "The Structure and Interpretation of Computer Progra...", "id": 121535, "short_name": "COMPSCI 61A", "subject_variations":                                                                      ["COMPSCI", "Computer Science", "CS", "Comp sci"
-        ]},{"code": "1A", "full_name": "General Chemistry", "id": 120359, "short_name": "CHEM 1A", "subject_variations":                                                                        ["CHEM", "CH", "Chemistry", "Chemist"
-        ]},{"code": "7A", "full_name": "Physics for Scientists and Engineers", "id": 127850, "short_name": "PHYSICS 7A", "subject_variations":                                                                      ["PHYSICS", "Phy", "P", "Phys"
-        ]},{"code": "1A", "full_name": "General Biology Lecture", "id": 120156, "short_name": "BIOLOGY 1A", "subject_variations":                                                                       ["BIOLOGY", "B", "Bio"
-        ]},{"code": "1", "full_name": "Introduction to Economics", "id": 3231987, "short_name": "ECON 1", "subject_variations":                                                                         ["ECON", "Eco", "Economics", "Economy"
-        ]},{"code": "1", "full_name": "Elementary Spanish", "id": 129246, "short_name": "SPANISH 1", "subject_variations":                                                                      ["SPANISH", "Span", "sp", "s"
-        ]},{"code": "100A", "full_name": "Advanced Chinese", "id": 120591, "short_name": "CHINESE 100A", "subject_variations":                                                                      ["CHINESE", "Chin", "ch"
-        ]},{"code": "40", "full_name": "Introduction to Microelectronic Circuits", "id": 122437, "short_name": "EL ENG 40", "subject_variations": [                                                                     "EL ENG", "electrical engineering", "EE"
-        ]},{"code": "103A", "full_name": "Language and Culture", "id": 123468, "short_name": "FRENCH 103A", "subject_variations":                                                                       ["FRENCH", "FR", "F", "Fren"
-        ]},{"code": "101", "full_name": "The History of the English Language", "id": 122714, "short_name": "ENGLISH 101", "subject_variations":                                                                         ["ENGLISH", "Eng", "E"
-        ]},{"code": "7B", "full_name": "The United States from Civil War to Present", "id": 124151, "short_name": "HISTORY 7B", "subject_variations":                                                                       ["HISTORY", "HIS", "H", "HIST", "HISTO"
-        ]},{"code": "1", "full_name": "Introduction to Sociology", "id": 129070, "short_name": "SOCIOL 1", "subject_variations":                                                                        ["SOCIOL", "sociology", "socio", "soc"
-        ]},{"code": "10", "full_name": "Introduction to Human Nutrition", "id": 127305, "short_name": "NUSCTX 10", "subject_variations":                                                                        ["NUSCTX", "nutritional science and toxicology", "NST", "nutri sci"
-        ]},{"code": "102", "full_name": "Survey of the Principles of Biochemistry and Molecu...", "id": 126377, "short_name": "MCELLBI 102", "subject_variations":                                                                      ["MCELLBI", "MCB", "Molecular Cell Biology"
-        ]},{"code": "5", "full_name": "Introduction to International Relations", "id": 128071, "short_name": "POL SCI 5", "subject_variations": [                                                                       "POL SCI", "Political Science", "PS", "Poli Sci", "Polisci", "Polsci"
-        ]},{"code": "131A", "full_name": "Introduction to Probability and Statistics for Life...", "id": 129352, "short_name": "STAT 131A", "subject_variations":                                                                       ["STAT", "Statistics", "ST", "Stats"
-        ]},{"code": "3AC", "full_name": "Introduction to Social/Cultural Anthropology (American Cultures)", "id": 119369, "short_name": "ANTHRO 3AC", "subject_variations":                                                                         ["ANTHRO", "Anth", "Anthropology", "Ant", "Anthrop"
-        ]},{"code": "1A", "full_name": "Elementary Japanese", "id": 124974, "short_name": "JAPAN 1A", "subject_variations":                                                                         ["JAPAN", "Japa", "Jap", "JA"
-        ]},{"code": "201", "full_name": "Production, Industrial Organization, and Regulation...", "id": 118881, "short_name": "A,RESEC 201", "subject_variations": [                                                                        "A,RESEC", "Academic Research"
-        ]},{"code": "4A", "full_name": "Africa: History and Culture", "id": 118914, "short_name": "AFRICAM 4A", "subject_variations":                                                                       ["AFRICAM", "African American Studies", "AAS", "A"
-        ]},{"code": "1A", "full_name": "Elementary Arabic", "id": 119525, "short_name": "ARABIC 1A", "subject_variations":                                                                      ["ARABIC", "Arab", "Ara", "AR"
-        ]},{"code": "100", "full_name": "Classical Theories of Political Economy", "id": 128229, "short_name": "POLECON 100", "subject_variations":                                                                         ["POLECON", "political econ", "political economy", "pol eco", "PE"
-        ]},{"code": "12A", "full_name": "Introduction to Logic", "id": 127744, "short_name": "PHILOS 12A", "subject_variations":                                                                        ["PHILOS", "philosophy", "phil", "ph"
-        ]},{"code": "20A", "full_name": "Basic Musicianship", "id": 126895, "short_name": "MUSIC 20A", "subject_variations":                                                                        ["MUSIC", "mus", "M"
-        ]},{"code": "101A", "full_name": "Microeconomic Analysis for Business Decisions", "id": 129559, "short_name": "UGBA 101A", "subject_variations":                                                                        ["UGBA", "Undergraduate Business Administration"
-        ]},{"code": "1", "full_name": "Introduction to Cognitive Science", "id": 121194, "short_name": "COG SCI 1", "subject_variations": [                                                                     "COG SCI", "Cognitive Science", "CS", "cogscience", "cogsci"
-        ]},{"code": "1", "full_name": "Elementary Italian", "id": 3232519, "short_name": "ITALIAN 1", "subject_variations":                                                                         ["ITALIAN", "ITAL", "ITLA", "Italy"
-        ]},{"code": "C10", "full_name": "Introduction to General Astronomy", "id": 119982, "short_name": "ASTRON C10", "subject_variations":                                                                        ["ASTRON", "Astro", "astr", "astronomy", "gen astro", "genastro"
-        ]},{"code": "104", "full_name": "Engineering Mechanics II", "id": 126620, "short_name": "MEC ENG 104", "subject_variations": [                                                                      "MEC ENG", "mechanical engineering", "meche", "mecheng", "mech eng", "mech-e"
-        ]},{"code": "12", "full_name": "Elementary Portuguese", "id": 128242, "short_name": "PORTUG 12", "subject_variations":                                                                      ["PORTUG", "Port", "por", "portoguese"
-        ]},{"code": "140", "full_name": "Introduction to Chemical Process Analysis", "id": 120760, "short_name": "CHM ENG 140", "subject_variations": [                                                                     "CHM ENG", "chem-e", "cheme", "chem eng", "chemeng", "chemical eng", "chem engineering"
-        ]},{"code": "2", "full_name": "Elementary German 2", "id": 123690, "short_name": "GERMAN 2", "subject_variations":                                                                      ["GERMAN", "G", "germ", "germany", "ge"
-        ]},{"code": "1", "full_name": "Grammar and Vocabulary of Written English", "id": 121302, "short_name": "COLWRIT 1", "subject_variations":                                                                       ["COLWRIT", "college writing", "col writing"
-        ]},{"code": "15", "full_name": "Introduction to Environmental Sciences", "id": 123102, "short_name": "ESPM 15", "subject_variations":                                                                       ["ESPM", "Environmental Sciences", "Envi Sci"
-        ]},{"code": "35AC", "full_name": "Human Biological Variation", "id": 124638, "short_name": "INTEGBI 35AC", "subject_variations":                                                                        ["INTEGBI", "IB", "Integrative Biology", "ibio", "integr bio", "integrative bio", "integbio", "intbio"
-        ]},{"code": "45", "full_name": "Properties of Materials", "id": 122609, "short_name": "ENGIN 45", "subject_variations":                                                                         ["ENGIN", "Engineering", "E", "Engine", "ENG", "ENGI"
-        ]},{"code": "100", "full_name": "Introduction to Comparative Literature", "id": 121379, "short_name": "COM LIT 100", "subject_variations": [                                                                        "COM LIT", "Comparative Literature", "comlit", "comliterature", "comparative lit", "CL"
-        ]},{"code": "110", "full_name": "Introduction to Phonetics and Phonology", "id": 125612, "short_name": "LINGUIS 110", "subject_variations":                                                                         ["LINGUIS", "linguistics", "ling", "lingu", "lingui"
-        ]},{"code": "1", "full_name": "Elementary Russian", "id": 128833, "short_name": "SLAVIC 1", "subject_variations":                                                                       ["SLAVIC", "SLAV","SL", "Russian", "Russ"
-        ]},{"code": "10", "full_name": "An Introduction to Mass Media in America", "id": 126837, "short_name": "MEDIAST 10", "subject_variations":                                                                      ["MEDIAST", "Media studies", "media stud", "me studies", "MS", "mestud"
-        ]},{"code": "100", "full_name": "Plato and Attic Prose", "id": 3231887, "short_name": "GREEK 100", "subject_variations":                                                                        ["GREEK", "GR", "G", "GREE", "GRE"
-        ]},{"code": "1", "full_name": "Elementary Latin", "id": 3231911, "short_name": "LATIN 1", "subject_variations":                                                                         ["LATIN", "LAT", "LA"
-        ]},{"code": "140", "full_name": "Developmental Psychology", "id": 3232138, "short_name": "PSYCH 140", "subject_variations":                                                                         ["PSYCH", "Psyc", "Psychology", "Psycho", "Psy", "ps"
-        ]},{"code": "100A", "full_name": "Fundamentals of Architectural Design", "id": 119562, "short_name": "ARCH 100A", "subject_variations":                                                                         ["ARCH", "Architectural", "architecture", "ar", "archi", "architect", "A"
-        ]},{"code": "10A", "full_name": "Introduction to Greek Civilization", "id": 121059, "short_name": "CLASSIC 10A", "subject_variations":                                                                      ["CLASSIC", "class", "classic"
-        ]},{"code": "140AC", "full_name": "Literacy: Individual and Societal Development", "id": 122226, "short_name": "EDUC 140AC", "subject_variations":                                                                      ["EDUC", "EDU", "education"
-        ]},{"code": "C30", "full_name": "Introduction to Solid Mechanics", "id": 121042, "short_name": "CIV ENG C30", "subject_variations": [                                                                       "CIV ENG", "CIV", "CIV-E", "CE", "civil eng", "civeng", "civil engineering"
-        ]},{"code": "1", "full_name": "Elementary Dutch", "id": 121947, "short_name": "DUTCH 1", "subject_variations":                                                                      ["DUTCH", "DU", "DUT"
-        ]},{"code": "100", "full_name": "Microeconomic Theory with Application to Natural Re...", "id": 122955, "short_name": "ENVECON 100", "subject_variations":                                                                      ["ENVECON", "Environmental Economy", "env econ", "EE", "e-econ", "environ econ"
-        ]},{"code": "R1A", "full_name": "The Craft of Writing - Film Focus", "id": 123423, "short_name": "FILM R1A", "subject_variations":                                                                      ["FILM", "fstud", "film studies", "film stud", "FS"
-        ]},{"code": "20", "full_name": "Rhetorical Interpretation", "id": 128515, "short_name": "RHETOR 20", "subject_variations":                                                                      ["RHETOR", "rhetoric", "rhet", "rhetor"
-        ]},{"code": "101B", "full_name": "Humanities Methods in Ethnic Studies", "id": 123282, "short_name": "ETH STD 101B", "subject_variations": [                                                                        "ETH STD", "Ethnic Studies", "ES"
-        ]},{"code": "100A", "full_name": "Introduction to Social Theory and Cultural Analysis", "id": 124856, "short_name": "ISF 100A", "subject_variations":                                                                       ["ISF", "interdisciplinary studies field", "inter studies", "interstud", "istud"
-        ]},{"code": "162A", "full_name": "Public Health Microbiology", "id": 127512, "short_name": "PB HLTH 162A", "subject_variations": [                                                                      "PB HLTH", "public health", "PH", "p health", "pub health", "pub heal"
-        ]},{"code": "105", "full_name": "Dynamics of Romantic Core Values in East Asian Premodern Literature and Contemporary Film", "id": 121975, "short_name": "EA LANG 105", "subject_variations": [                                                                     "EA LANG", "East Asian Languages and Culture", "EALC", "EALANG", "E ASIAN LANG","Ea ASL"
-        ]},{"code": "176", "full_name": "Chicanos and Health Care", "id": 120544, "short_name": "CHICANO 176", "subject_variations":                                                                        ["CHICANO", "Chicano studies", "CHic", "chic stud", "CS", "chi", "ch studies", "Chi studies"
-        ]},{"code": "146", "full_name": "Cultural Representations of Sexuality", "id": 3231442, "short_name": "LGBT 146", "subject_variations":                                                                         ["LGBT", "lesbian, gay, bisexual, transgender, queer and questioning", "lesbian, gay, bisexual, transgender, queer", "lesbian gay bisexual transgender queer"
-        ]},{"code": "102", "full_name": "Transnational Feminism", "id": 3231702, "short_name": "GWS 102", "subject_variations":                                                                         ["GWS", "Gender woman studies", "gen woman studies", "g woman studies"
-        ]},{"code": "30", "full_name": "The Ocean World", "id": 3231805, "short_name": "GEOG 30", "subject_variations":                                                                         ["GEOG", "geography", "ge", "geograph"
-        ]},{"code": "107", "full_name": "Intermediate Macroeconomic Theory", "id": 3232207, "short_name": "IAS 107", "subject_variations":                                                                      ["IAS", "International and Area Studies", "Inter AS", "Inter area studies"
-        ]},{"code": "C144L", "full_name": "Protein Informatics Laboratory", "id": 120140, "short_name": "BIO ENG C144L", "subject_variations": [                                                                        "BIO ENG", "Bio engineering", "BIOE", "Bio E", "Bio-e", "biological engineering", "biology engineering"
-        ]},{"code": "161", "full_name": "Celtic Linguistics", "id": 120341, "short_name": "CELTIC 161", "subject_variations":                                                                       ["CELTIC", "CL", "CS", "Celt", "celtic studies", "celt stud"
-        ]},{"code": "13", "full_name": "Genetic Revolutions", "id": 127969, "short_name": "PLANTBI 13", "subject_variations":                                                                       ["PLANTBI", "Plant and microbial biology", "PMB", "plant biology", "plantbio", "plant bio"
-        ]},{"code": "101AC", "full_name": "Examining U.S. Cultures in Time", "id": 119324, "short_name": "AMERSTD 101AC", "subject_variations":                                                                         ["AMERSTD", "American studies", "a studies", "american", "am", "Amst"
-        ]},{"code": "161", "full_name": "Operations Research II", "id": 124475, "short_name": "IND ENG 161", "subject_variations": [                                                                        "IND ENG", "Industrial Engineering", "IEOR - industrial engineering and operations research", "indust eng", "in eng"
-        ]},{"code": "114", "full_name": "User Experience Research", "id": 124525, "short_name": "INFO 114", "subject_variations":                                                                       ["INFO", "information", "information school", "school of information"
-        ]},{"code": "20", "full_name": "Perspectives on the Middle East", "id": 125787, "short_name": "M E STU 20", "subject_variations": ["M E STU", "ME", "ME studies", "middle eastern", "middle eastern studies"
-        ]},{"code": "200", "full_name": "Critique in 19th-Century Thought", "id": 121627, "short_name": "CRIT TH 200", "subject_variations": [                                                                      "CRIT TH", "critical theory", "CT", "critical theory", "crit the"
-        ]},{"code": "110", "full_name": "Introduction to Population Analysis", "id": 121829, "short_name": "DEMOG 110", "subject_variations":                                                                       ["DEMOG", "demography", "Demographic","demo", "Dem", "Demogrpah"
-        ]},{"code": "102", "full_name": "Bonding, Crystallography, and Crystal Defects", "id": 125930, "short_name": "MAT SCI 102", "subject_variations": [                                                                     "MAT SCI", "material science", "mat sci", "matsci"
-        ]},{"code": "190", "full_name": "Topics in the Study of Buddhism", "id": 120225, "short_name": "BUDDSTD 190", "subject_variations":                                                                         ["BUDDSTD", "buddhist studies", "b", "buddhism"
-        ]},{"code": "101", "full_name": "Catalan for Advanced Students", "id": 120257, "short_name": "CATALAN 101", "subject_variations":                                                                       ["CATALAN", "CATA", "CA", "CA studies"
-        ]},{"code": "C82", "full_name": "Oceans", "id": 123076, "short_name": "EPS C82", "subject_variations":                                                                      ["EPS", "Oceans", "Earth and planetery science", "earth planetery", "ea planet science", "ep"
-        ]},{"code": "110A", "full_name": "Middle Persian", "id": 124836, "short_name": "IRANIAN 110A", "subject_variations":                                                                        ["IRANIAN", "iran", "irani", "ira"
-        ]},{"code": "10", "full_name": "Introduction to Latin American Studies", "id": 125379, "short_name": "LATAMST 10", "subject_variations":                                                                        ["LATAMST", "latin american studies", "latin american"
-        ]},{"code": "160", "full_name": "Punishment, Culture, and Society", "id": 125546, "short_name": "LEGALST 160", "subject_variations":                                                                        ["LEGALST", "legal studies", "leg studies", "legal s"
-        ]},{"code": "32", "full_name": "Fitness for Life: Physical Adaptations to Exercise", "id": 127835, "short_name": "PHYS ED 32", "subject_variations": [                                                                      "PHYS ED", "physical education"
-        ]},{"code": "101", "full_name": "Introduction to Public Policy Analysis", "id": 128414, "short_name": "PUB POL 101", "subject_variations": [                                                                        "PUB POL", "public policy"
-        ]},{"code": "80B", "full_name": "It's Elementary! Exploring Math with Young Students", "id": 129627, "short_name": "UGIS 80B", "subject_variations":                                                                        ["UGIS", "ungraduate instructor"
-        ]},{"code": "1A", "full_name": "Introductory Filipino", "id": 123366, "short_name": "FILIPN 1A", "subject_variations":                                                                      ["FILIPN", "Filipino", "fil", "filip"
-        ]},{"code": "R1B", "full_name": "Reading and Writing about Visual Experience", "id": 124126, "short_name": "HISTART R1B", "subject_variations":                                                                         ["HISTART", "history of art", "hist art", "art history"
-        ]},{"code": "154", "full_name": "Multi-cultural Conflict Resolution", "id": 127474, "short_name": "PACS 154", "subject_variations":                                                                         ["PACS", "peace and conflict studies"
-        ]},{"code": "1A", "full_name": "Introductory Vietnamese", "id": 129686, "short_name": "VIETNMS 1A", "subject_variations":                                                                       ["VIETNMS", "Vietnamese", "viet", "vietnam", "vietnamese studies", "v studies"
-        ]},{"code": "20A", "full_name": "Introduction to Native American Studies", "id": 127084, "short_name": "NATAMST 20A", "subject_variations":                                                                         ["NATAMST", "native amer studies", "native american studies", "n american studies"
-        ]},{"code": "C52", "full_name": "Introduction to the Study of Buddhism", "id": 128710, "short_name": "S,SEASN C52", "subject_variations": [                                                                     "S,SEASN", "South, south east asian studies", "seasn", "south east asian", "s east asian studies", "se asian"
-        ]},{"code": "1", "full_name": "People and Environmental Design", "id": 122853, "short_name": "ENV DES 1", "subject_variations": [                                                                       "ENV DES", "environmental design", "e design", "environment design"
-        ]},{"code": "1A", "full_name": "Elementary Korean", "id": 125140, "short_name": "KOREAN 1A", "subject_variations":                                                                      ["KOREAN", "kor", "korea","ko", "korean studies"
-        ]},{"code": "162B", "full_name": "History of Persian Literature", "id": 127170, "short_name": "NE STUD 162B", "subject_variations": [                                                                       "NE STUD", "near eastern studies"
-        ]},{"code": "90A", "full_name": "Introductory Topics in Religious Studies", "id": 128469, "short_name": "RELIGST 90A", "subject_variations":                                                                        ["RELIGST", "religious studies", "rs", "r-stud", "r studies", "r stud"
-        ]},{"code": "11", "full_name": "Scene Study and Characterization", "id": 129448, "short_name": "THEATER 11", "subject_variations":                                                                      ["THEATER", "Theater & Performance Studies", "theater and performance"
-        ]},{"code": "8", "full_name": "Introduction to Visual Thinking", "id": 3231506, "short_name": "ART 8", "subject_variations":                                                                        ["ART", "A", "AR"]}
+        "code": "1A", 
+        "full_name": "Calculus", 
+        "id": 126022, 
+        "short_name": "MATH 1A", 
+        "subject_variations": [
+            "MATH", 
+            ""
         ]
+    }, 
+    {
+        "code": "61A", 
+        "full_name": "The Structure and Interpretation of Computer Progra...", 
+        "id": 121535, 
+        "short_name": "COMPSCI 61A", 
+        "subject_variations": [
+            "COMPSCI", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1A", 
+        "full_name": "General Chemistry", 
+        "id": 120359, 
+        "short_name": "CHEM 1A", 
+        "subject_variations": [
+            "CHEM", 
+            ""
+        ]
+    }, 
+    {
+        "code": "7A", 
+        "full_name": "Physics for Scientists and Engineers", 
+        "id": 127850, 
+        "short_name": "PHYSICS 7A", 
+        "subject_variations": [
+            "PHYSICS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1A", 
+        "full_name": "General Biology Lecture", 
+        "id": 120156, 
+        "short_name": "BIOLOGY 1A", 
+        "subject_variations": [
+            "BIOLOGY", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Introduction to Economics", 
+        "id": 3231987, 
+        "short_name": "ECON 1", 
+        "subject_variations": [
+            "ECON", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Elementary Spanish", 
+        "id": 129246, 
+        "short_name": "SPANISH 1", 
+        "subject_variations": [
+            "SPANISH", 
+            ""
+        ]
+    }, 
+    {
+        "code": "100A", 
+        "full_name": "Advanced Chinese", 
+        "id": 120591, 
+        "short_name": "CHINESE 100A", 
+        "subject_variations": [
+            "CHINESE", 
+            ""
+        ]
+    }, 
+    {
+        "code": "40", 
+        "full_name": "Introduction to Microelectronic Circuits", 
+        "id": 122437, 
+        "short_name": "EL ENG 40", 
+        "subject_variations": [
+            "EL ENG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "103A", 
+        "full_name": "Language and Culture", 
+        "id": 123468, 
+        "short_name": "FRENCH 103A", 
+        "subject_variations": [
+            "FRENCH", 
+            ""
+        ]
+    }, 
+    {
+        "code": "101", 
+        "full_name": "The History of the English Language", 
+        "id": 122714, 
+        "short_name": "ENGLISH 101", 
+        "subject_variations": [
+            "ENGLISH", 
+            ""
+        ]
+    }, 
+    {
+        "code": "7B", 
+        "full_name": "The United States from Civil War to Present", 
+        "id": 124151, 
+        "short_name": "HISTORY 7B", 
+        "subject_variations": [
+            "HISTORY", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Introduction to Sociology", 
+        "id": 129070, 
+        "short_name": "SOCIOL 1", 
+        "subject_variations": [
+            "SOCIOL", 
+            ""
+        ]
+    }, 
+    {
+        "code": "10", 
+        "full_name": "Introduction to Human Nutrition", 
+        "id": 127305, 
+        "short_name": "NUSCTX 10", 
+        "subject_variations": [
+            "NUSCTX", 
+            ""
+        ]
+    }, 
+    {
+        "code": "102", 
+        "full_name": "Survey of the Principles of Biochemistry and Molecu...", 
+        "id": 126377, 
+        "short_name": "MCELLBI 102", 
+        "subject_variations": [
+            "MCELLBI", 
+            ""
+        ]
+    }, 
+    {
+        "code": "5", 
+        "full_name": "Introduction to International Relations", 
+        "id": 128071, 
+        "short_name": "POL SCI 5", 
+        "subject_variations": [
+            "POL SCI", 
+            ""
+        ]
+    }, 
+    {
+        "code": "131A", 
+        "full_name": "Introduction to Probability and Statistics for Life...", 
+        "id": 129352, 
+        "short_name": "STAT 131A", 
+        "subject_variations": [
+            "STAT", 
+            ""
+        ]
+    }, 
+    {
+        "code": "3AC", 
+        "full_name": "Introduction to Social/Cultural Anthropology (American Cultures)", 
+        "id": 119369, 
+        "short_name": "ANTHRO 3AC", 
+        "subject_variations": [
+            "ANTHRO", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1A", 
+        "full_name": "Elementary Japanese", 
+        "id": 124974, 
+        "short_name": "JAPAN 1A", 
+        "subject_variations": [
+            "JAPAN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "201", 
+        "full_name": "Production, Industrial Organization, and Regulation...", 
+        "id": 118881, 
+        "short_name": "A,RESEC 201", 
+        "subject_variations": [
+            "A,RESEC", 
+            ""
+        ]
+    }, 
+    {
+        "code": "4A", 
+        "full_name": "Africa: History and Culture", 
+        "id": 118914, 
+        "short_name": "AFRICAM 4A", 
+        "subject_variations": [
+            "AFRICAM", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1A", 
+        "full_name": "Elementary Arabic", 
+        "id": 119525, 
+        "short_name": "ARABIC 1A", 
+        "subject_variations": [
+            "ARABIC", 
+            ""
+        ]
+    }, 
+    {
+        "code": "100", 
+        "full_name": "Classical Theories of Political Economy", 
+        "id": 128229, 
+        "short_name": "POLECON 100", 
+        "subject_variations": [
+            "POLECON", 
+            ""
+        ]
+    }, 
+    {
+        "code": "12A", 
+        "full_name": "Introduction to Logic", 
+        "id": 127744, 
+        "short_name": "PHILOS 12A", 
+        "subject_variations": [
+            "PHILOS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "20A", 
+        "full_name": "Basic Musicianship", 
+        "id": 126895, 
+        "short_name": "MUSIC 20A", 
+        "subject_variations": [
+            "MUSIC", 
+            ""
+        ]
+    }, 
+    {
+        "code": "101A", 
+        "full_name": "Microeconomic Analysis for Business Decisions", 
+        "id": 129559, 
+        "short_name": "UGBA 101A", 
+        "subject_variations": [
+            "UGBA", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Introduction to Cognitive Science", 
+        "id": 121194, 
+        "short_name": "COG SCI 1", 
+        "subject_variations": [
+            "COG SCI", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Elementary Italian", 
+        "id": 3232519, 
+        "short_name": "ITALIAN 1", 
+        "subject_variations": [
+            "ITALIAN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "C10", 
+        "full_name": "Introduction to General Astronomy", 
+        "id": 119982, 
+        "short_name": "ASTRON C10", 
+        "subject_variations": [
+            "ASTRON", 
+            ""
+        ]
+    }, 
+    {
+        "code": "104", 
+        "full_name": "Engineering Mechanics II", 
+        "id": 126620, 
+        "short_name": "MEC ENG 104", 
+        "subject_variations": [
+            "MEC ENG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "12", 
+        "full_name": "Elementary Portuguese", 
+        "id": 128242, 
+        "short_name": "PORTUG 12", 
+        "subject_variations": [
+            "PORTUG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "140", 
+        "full_name": "Introduction to Chemical Process Analysis", 
+        "id": 120760, 
+        "short_name": "CHM ENG 140", 
+        "subject_variations": [
+            "CHM ENG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "2", 
+        "full_name": "Elementary German 2", 
+        "id": 123690, 
+        "short_name": "GERMAN 2", 
+        "subject_variations": [
+            "GERMAN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Grammar and Vocabulary of Written English", 
+        "id": 121302, 
+        "short_name": "COLWRIT 1", 
+        "subject_variations": [
+            "COLWRIT", 
+            ""
+        ]
+    }, 
+    {
+        "code": "15", 
+        "full_name": "Introduction to Environmental Sciences", 
+        "id": 123102, 
+        "short_name": "ESPM 15", 
+        "subject_variations": [
+            "ESPM", 
+            ""
+        ]
+    }, 
+    {
+        "code": "35AC", 
+        "full_name": "Human Biological Variation", 
+        "id": 124638, 
+        "short_name": "INTEGBI 35AC", 
+        "subject_variations": [
+            "INTEGBI", 
+            ""
+        ]
+    }, 
+    {
+        "code": "45", 
+        "full_name": "Properties of Materials", 
+        "id": 122609, 
+        "short_name": "ENGIN 45", 
+        "subject_variations": [
+            "ENGIN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "100", 
+        "full_name": "Introduction to Comparative Literature", 
+        "id": 121379, 
+        "short_name": "COM LIT 100", 
+        "subject_variations": [
+            "COM LIT", 
+            ""
+        ]
+    }, 
+    {
+        "code": "110", 
+        "full_name": "Introduction to Phonetics and Phonology", 
+        "id": 125612, 
+        "short_name": "LINGUIS 110", 
+        "subject_variations": [
+            "LINGUIS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Elementary Russian", 
+        "id": 128833, 
+        "short_name": "SLAVIC 1", 
+        "subject_variations": [
+            "SLAVIC", 
+            ""
+        ]
+    }, 
+    {
+        "code": "10", 
+        "full_name": "An Introduction to Mass Media in America", 
+        "id": 126837, 
+        "short_name": "MEDIAST 10", 
+        "subject_variations": [
+            "MEDIAST", 
+            ""
+        ]
+    }, 
+    {
+        "code": "100", 
+        "full_name": "Plato and Attic Prose", 
+        "id": 3231887, 
+        "short_name": "GREEK 100", 
+        "subject_variations": [
+            "GREEK", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Elementary Latin", 
+        "id": 3231911, 
+        "short_name": "LATIN 1", 
+        "subject_variations": [
+            "LATIN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "140", 
+        "full_name": "Developmental Psychology", 
+        "id": 3232138, 
+        "short_name": "PSYCH 140", 
+        "subject_variations": [
+            "PSYCH", 
+            ""
+        ]
+    }, 
+    {
+        "code": "100A", 
+        "full_name": "Fundamentals of Architectural Design", 
+        "id": 119562, 
+        "short_name": "ARCH 100A", 
+        "subject_variations": [
+            "ARCH", 
+            ""
+        ]
+    }, 
+    {
+        "code": "10A", 
+        "full_name": "Introduction to Greek Civilization", 
+        "id": 121059, 
+        "short_name": "CLASSIC 10A", 
+        "subject_variations": [
+            "CLASSIC", 
+            ""
+        ]
+    }, 
+    {
+        "code": "140AC", 
+        "full_name": "Literacy: Individual and Societal Development", 
+        "id": 122226, 
+        "short_name": "EDUC 140AC", 
+        "subject_variations": [
+            "EDUC", 
+            ""
+        ]
+    }, 
+    {
+        "code": "C30", 
+        "full_name": "Introduction to Solid Mechanics", 
+        "id": 121042, 
+        "short_name": "CIV ENG C30", 
+        "subject_variations": [
+            "CIV ENG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "Elementary Dutch", 
+        "id": 121947, 
+        "short_name": "DUTCH 1", 
+        "subject_variations": [
+            "DUTCH", 
+            ""
+        ]
+    }, 
+    {
+        "code": "100", 
+        "full_name": "Microeconomic Theory with Application to Natural Re...", 
+        "id": 122955, 
+        "short_name": "ENVECON 100", 
+        "subject_variations": [
+            "ENVECON", 
+            ""
+        ]
+    }, 
+    {
+        "code": "R1A", 
+        "full_name": "The Craft of Writing - Film Focus", 
+        "id": 123423, 
+        "short_name": "FILM R1A", 
+        "subject_variations": [
+            "FILM", 
+            ""
+        ]
+    }, 
+    {
+        "code": "20", 
+        "full_name": "Rhetorical Interpretation", 
+        "id": 128515, 
+        "short_name": "RHETOR 20", 
+        "subject_variations": [
+            "RHETOR", 
+            ""
+        ]
+    }, 
+    {
+        "code": "101B", 
+        "full_name": "Humanities Methods in Ethnic Studies", 
+        "id": 123282, 
+        "short_name": "ETH STD 101B", 
+        "subject_variations": [
+            "ETH STD", 
+            ""
+        ]
+    }, 
+    {
+        "code": "100A", 
+        "full_name": "Introduction to Social Theory and Cultural Analysis", 
+        "id": 124856, 
+        "short_name": "ISF 100A", 
+        "subject_variations": [
+            "ISF", 
+            ""
+        ]
+    }, 
+    {
+        "code": "162A", 
+        "full_name": "Public Health Microbiology", 
+        "id": 127512, 
+        "short_name": "PB HLTH 162A", 
+        "subject_variations": [
+            "PB HLTH", 
+            ""
+        ]
+    }, 
+    {
+        "code": "105", 
+        "full_name": "Dynamics of Romantic Core Values in East Asian Premodern Literature and Contemporary Film", 
+        "id": 121975, 
+        "short_name": "EA LANG 105", 
+        "subject_variations": [
+            "EA LANG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "176", 
+        "full_name": "Chicanos and Health Care", 
+        "id": 120544, 
+        "short_name": "CHICANO 176", 
+        "subject_variations": [
+            "CHICANO", 
+            ""
+        ]
+    }, 
+    {
+        "code": "146", 
+        "full_name": "Cultural Representations of Sexuality", 
+        "id": 3231442, 
+        "short_name": "LGBT 146", 
+        "subject_variations": [
+            "LGBT", 
+            ""
+        ]
+    }, 
+    {
+        "code": "102", 
+        "full_name": "Transnational Feminism", 
+        "id": 3231702, 
+        "short_name": "GWS 102", 
+        "subject_variations": [
+            "GWS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "30", 
+        "full_name": "The Ocean World", 
+        "id": 3231805, 
+        "short_name": "GEOG 30", 
+        "subject_variations": [
+            "GEOG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "107", 
+        "full_name": "Intermediate Macroeconomic Theory", 
+        "id": 3232207, 
+        "short_name": "IAS 107", 
+        "subject_variations": [
+            "IAS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "C144L", 
+        "full_name": "Protein Informatics Laboratory", 
+        "id": 120140, 
+        "short_name": "BIO ENG C144L", 
+        "subject_variations": [
+            "BIO ENG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "161", 
+        "full_name": "Celtic Linguistics", 
+        "id": 120341, 
+        "short_name": "CELTIC 161", 
+        "subject_variations": [
+            "CELTIC", 
+            ""
+        ]
+    }, 
+    {
+        "code": "13", 
+        "full_name": "Genetic Revolutions", 
+        "id": 127969, 
+        "short_name": "PLANTBI 13", 
+        "subject_variations": [
+            "PLANTBI", 
+            ""
+        ]
+    }, 
+    {
+        "code": "101AC", 
+        "full_name": "Examining U.S. Cultures in Time", 
+        "id": 119324, 
+        "short_name": "AMERSTD 101AC", 
+        "subject_variations": [
+            "AMERSTD", 
+            ""
+        ]
+    }, 
+    {
+        "code": "161", 
+        "full_name": "Operations Research II", 
+        "id": 124475, 
+        "short_name": "IND ENG 161", 
+        "subject_variations": [
+            "IND ENG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "114", 
+        "full_name": "User Experience Research", 
+        "id": 124525, 
+        "short_name": "INFO 114", 
+        "subject_variations": [
+            "INFO", 
+            ""
+        ]
+    }, 
+    {
+        "code": "20", 
+        "full_name": "Perspectives on the Middle East", 
+        "id": 125787, 
+        "short_name": "M E STU 20", 
+        "subject_variations": [
+            "M E STU", 
+            ""
+        ]
+    }, 
+    {
+        "code": "200", 
+        "full_name": "Critique in 19th-Century Thought", 
+        "id": 121627, 
+        "short_name": "CRIT TH 200", 
+        "subject_variations": [
+            "CRIT TH", 
+            ""
+        ]
+    }, 
+    {
+        "code": "110", 
+        "full_name": "Introduction to Population Analysis", 
+        "id": 121829, 
+        "short_name": "DEMOG 110", 
+        "subject_variations": [
+            "DEMOG", 
+            ""
+        ]
+    }, 
+    {
+        "code": "102", 
+        "full_name": "Bonding, Crystallography, and Crystal Defects", 
+        "id": 125930, 
+        "short_name": "MAT SCI 102", 
+        "subject_variations": [
+            "MAT SCI", 
+            ""
+        ]
+    }, 
+    {
+        "code": "190", 
+        "full_name": "Topics in the Study of Buddhism", 
+        "id": 120225, 
+        "short_name": "BUDDSTD 190", 
+        "subject_variations": [
+            "BUDDSTD", 
+            ""
+        ]
+    }, 
+    {
+        "code": "101", 
+        "full_name": "Catalan for Advanced Students", 
+        "id": 120257, 
+        "short_name": "CATALAN 101", 
+        "subject_variations": [
+            "CATALAN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "C82", 
+        "full_name": "Oceans", 
+        "id": 123076, 
+        "short_name": "EPS C82", 
+        "subject_variations": [
+            "EPS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "110A", 
+        "full_name": "Middle Persian", 
+        "id": 124836, 
+        "short_name": "IRANIAN 110A", 
+        "subject_variations": [
+            "IRANIAN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "10", 
+        "full_name": "Introduction to Latin American Studies", 
+        "id": 125379, 
+        "short_name": "LATAMST 10", 
+        "subject_variations": [
+            "LATAMST", 
+            ""
+        ]
+    }, 
+    {
+        "code": "160", 
+        "full_name": "Punishment, Culture, and Society", 
+        "id": 125546, 
+        "short_name": "LEGALST 160", 
+        "subject_variations": [
+            "LEGALST", 
+            ""
+        ]
+    }, 
+    {
+        "code": "32", 
+        "full_name": "Fitness for Life: Physical Adaptations to Exercise", 
+        "id": 127835, 
+        "short_name": "PHYS ED 32", 
+        "subject_variations": [
+            "PHYS ED", 
+            ""
+        ]
+    }, 
+    {
+        "code": "101", 
+        "full_name": "Introduction to Public Policy Analysis", 
+        "id": 128414, 
+        "short_name": "PUB POL 101", 
+        "subject_variations": [
+            "PUB POL", 
+            ""
+        ]
+    }, 
+    {
+        "code": "80B", 
+        "full_name": "It's Elementary! Exploring Math with Young Students", 
+        "id": 129627, 
+        "short_name": "UGIS 80B", 
+        "subject_variations": [
+            "UGIS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1A", 
+        "full_name": "Introductory Filipino", 
+        "id": 123366, 
+        "short_name": "FILIPN 1A", 
+        "subject_variations": [
+            "FILIPN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "R1B", 
+        "full_name": "Reading and Writing about Visual Experience", 
+        "id": 124126, 
+        "short_name": "HISTART R1B", 
+        "subject_variations": [
+            "HISTART", 
+            ""
+        ]
+    }, 
+    {
+        "code": "154", 
+        "full_name": "Multi-cultural Conflict Resolution", 
+        "id": 127474, 
+        "short_name": "PACS 154", 
+        "subject_variations": [
+            "PACS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1A", 
+        "full_name": "Introductory Vietnamese", 
+        "id": 129686, 
+        "short_name": "VIETNMS 1A", 
+        "subject_variations": [
+            "VIETNMS", 
+            ""
+        ]
+    }, 
+    {
+        "code": "20A", 
+        "full_name": "Introduction to Native American Studies", 
+        "id": 127084, 
+        "short_name": "NATAMST 20A", 
+        "subject_variations": [
+            "NATAMST", 
+            ""
+        ]
+    }, 
+    {
+        "code": "C52", 
+        "full_name": "Introduction to the Study of Buddhism", 
+        "id": 128710, 
+        "short_name": "S,SEASN C52", 
+        "subject_variations": [
+            "S,SEASN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1", 
+        "full_name": "People and Environmental Design", 
+        "id": 122853, 
+        "short_name": "ENV DES 1", 
+        "subject_variations": [
+            "ENV DES", 
+            ""
+        ]
+    }, 
+    {
+        "code": "1A", 
+        "full_name": "Elementary Korean", 
+        "id": 125140, 
+        "short_name": "KOREAN 1A", 
+        "subject_variations": [
+            "KOREAN", 
+            ""
+        ]
+    }, 
+    {
+        "code": "162B", 
+        "full_name": "History of Persian Literature", 
+        "id": 127170, 
+        "short_name": "NE STUD 162B", 
+        "subject_variations": [
+            "NE STUD", 
+            ""
+        ]
+    }, 
+    {
+        "code": "90A", 
+        "full_name": "Introductory Topics in Religious Studies", 
+        "id": 128469, 
+        "short_name": "RELIGST 90A", 
+        "subject_variations": [
+            "RELIGST", 
+            ""
+        ]
+    }, 
+    {
+        "code": "11", 
+        "full_name": "Scene Study and Characterization", 
+        "id": 129448, 
+        "short_name": "THEATER 11", 
+        "subject_variations": [
+            "THEATER", 
+            ""
+        ]
+    }, 
+    {
+        "code": "8", 
+        "full_name": "Introduction to Visual Thinking", 
+        "id": 3231506, 
+        "short_name": "ART 8", 
+        "subject_variations": [
+            "ART", 
+            ""
+        ]
+    }
+]

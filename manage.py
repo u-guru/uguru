@@ -613,7 +613,7 @@ if arg == 'update':
     print v.latest_ios, 'updated to', env
 
 if arg == 'seed_admin':
-    user = User.query.filter_by(email='jeselle@uguru.me').first()
+    user = User.query.filter_by(email='gabrielle@uguru.me').first()
     from hashlib import md5
 
     from app.database import db_session
@@ -626,7 +626,7 @@ if arg == 'seed_admin':
 
 
     #teston jeselle
-    admin_account = admin_accounts[-2]
+    admin_account = admin_accounts[1]
     account_name = admin_account[1]
 
     # check user exists
@@ -670,7 +670,7 @@ if arg == 'seed_admin':
     user.school_email_confirmed = True
     user.phone_number_confirmed = True
     user.phone_number = 8135009853
-    user.school_email = 'makhani@berkeley.edu'
+    user.school_email = 'gabrielle@berkeley.edu'
     user.profile_code = account_name.split(' ')[0].lower()
     user.referral_code = account_name.split(' ')[0].lower()
     user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
@@ -712,7 +712,6 @@ if arg == 'init_admin':
     len_universities = len(University.query.all())
 
     for admin_account_tuple in admin_accounts:
-        continue
         account_email = admin_account_tuple[0]
         account_name = admin_account_tuple[1]
         user = User.query.filter_by(email=account_email.lower()).first()

@@ -1411,7 +1411,7 @@ section {
 	@media screen and (max-height:568px) {
 		header.third {
 			div:not(.header-nav) h1 {
-				padding-bottom: 45px;
+				padding-bottom: 30px;
 				+ h2 {
 					display: none;
 				}
@@ -2585,6 +2585,26 @@ section {
 
 
 /* ---------- GURU HOME */
+.guru-tiles-warning {
+	@include flex;
+	@include flex-center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 9999;
+	background: white;
+	border-radius: 0 0 0 75%;
+	width: 40px;
+	height: 40px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	color: $auburn;
+	font-weight: 900;
+	font-size: 24px;
+	&:not(.active) {
+		display: none;
+	}
+}
 .guru-view {
 	header {
 		@include flex;
@@ -2659,6 +2679,13 @@ section {
 				height: 100%;
 				z-index: 5;
 				overflow: hidden;
+				.guru-tiles-warning {
+					width: 28px;
+					height: 28px;
+					padding-bottom: 3px;
+					padding-left: 3px;
+					font-size: 20px;
+				}
 				h1 {
 					margin: 0!important;
 				}
@@ -3026,7 +3053,7 @@ section {
 
 
 /* ---------- OFFLINE */
-#offline {
+#offline, #orientation {
 	@include flex;
 	@include flex-center;
 	padding: 15px;
@@ -3036,9 +3063,49 @@ section {
 	> div {
 		width: 100%;
 	}
+	svg + div {
+		margin-top: 30px;
+		h1 {
+			font-size: 24px;
+			font-weight: 600;
+		}
+		p {
+			margin: 10px 0 15px;
+			font-weight: 300;
+		}
+		button {
+			font-size: 16px;
+			padding: 5px 15px;
+		}
+	}
+}
+#orientation {
+	height: 100%;
+	> div {
+		height: 100%;
+		margin-top: 45px;
+		svg {
+			@include rotate(90);
+			@include animation-name(phone-rotate);
+			@include animation-duration(5s);
+			@include animation-iteration-count(infinite);
+			height: calc(100% - 113px);
+		}
+		svg + div {
+			margin-bottom: 30px;
+			@media screen and (max-width:550px) {
+				h1 {
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+#offline {
 	svg {
 		width: 100%;
 		max-width: 75%;
+		max-height: 480px;
 		#phone {
 			@include animation-name(phone-hover);
 			@include animation-duration(2s);
@@ -3057,20 +3124,16 @@ section {
 			@include animation-iteration-count(infinite);
 		}
 	}
-	svg + div {
-		margin-top: 30px;
-		h1 {
-			font-size: 24px;
-			font-weight: 600;
-		}
-		p {
-			margin: 10px 0 15px;
-			font-weight: 300;
-		}
-		button {
-			font-size: 16px;
-			padding: 5px 15px;
-		}
+}
+@include keyframes(phone-rotate) {
+	0% {
+		@include rotate(90);
+	}
+	50% {
+		@include rotate(0);
+	}
+	100% {
+		@include rotate(0);
 	}
 }
 @include keyframes(phone-hover) {
@@ -3230,6 +3293,78 @@ section {
 		margin: 15px auto;
 		text-transform: none!important;
 		letter-spacing: 0!important;
+	}
+}
+
+
+
+
+/* ---------- TOAST */
+.guru-toast {
+	@include center-x;
+	position: fixed;
+	z-index: 99;
+	top: 0;
+	width: 100%;
+	max-width: 500px;
+	div {
+		@include flex;
+		@include flex-center-vertical;
+		background: rgba($auburn, .9);
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		height: 64px;
+		padding: 0 15px;
+		span {
+			display: block;
+			width: 100%;
+			padding-right: 15px;
+			line-height: 1;
+		}
+		button {
+			width: auto;
+			&:hover, &:focus {
+				@include opacity(1);
+				background: darken($auburn, 10%);
+				color: white!important;
+			}
+			&.active, &.activated, &:active {
+				@include opacity(1);
+				background: darken($auburn, 20%);
+				color: white!important;
+			}
+		}
+		a {
+			display: block;
+			width: 60px;
+			height: 45px;
+			padding-left: 15px;
+			svg {
+				@include rotate(45);
+				@include svg-stroke(white, 7);
+				width: 100%;
+				height: 100%;
+				circle, path {
+					@include transition(.15s ease-in-out);
+				}
+			}
+			&:hover, &:focus {
+				svg {
+					circle {
+						fill: white;
+					}
+					path {
+						stroke: $auburn;
+					}
+				}
+			}
+		}
+	}
+}
+.main-nav + .desktop-mode {
+	.guru-toast {
+		top: 79px;
 	}
 }
 
