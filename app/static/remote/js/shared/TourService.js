@@ -11,6 +11,7 @@ function TourService($ionicBackdrop) {
     var defaultLocation = 0;
     var toolTipTrackerDict = {}
     var backdrop;
+    var tooltipCount = 0;
 
     var windowRect = document.body.getBoundingClientRect();
 
@@ -42,7 +43,7 @@ function TourService($ionicBackdrop) {
         elemDiv.style.width = tourElemRect.width + 'px';
         elemDiv.style.height = tourElemRect.height + 'px';
 
-        injectBackDrop();
+        backdrop || injectBackDrop();
         var clonedNode = origElem.cloneNode(true);
         clonedNode.style.cssText = window.getComputedStyle(origElem).cssText;
         elemDiv.appendChild(clonedNode);
@@ -55,9 +56,13 @@ function TourService($ionicBackdrop) {
             rectOrig: tourElemRect
         }
 
-        var htmlTipElem = initTipElem(text, btnText, 'left', coords, clonedNode )
+        var htmlTipElem = initTipElem(text, btnText, direction, coords, clonedNode)
         toolTipTrackerDict[elemSelector] = htmlTipElem;
         document.body.appendChild(toolTipTrackerDict[elemSelector])
+    }
+
+    function removeBackdrop() {
+        backdrop.style.cssText ='visibility:hidden; display:none;'
     }
 
     function initTipElem(text, btnText, direction, coords, clonedNode) {
@@ -71,7 +76,11 @@ function TourService($ionicBackdrop) {
         buttonDiv.addEventListener('click', function(e) {
             e.target.parentNode.remove(elemDiv);
             clonedNode.parentNode.remove(clonedNode)
-            backdrop.style.cssText ='visibility:hidden;'
+
+            tooltipCount = tooltipCount - 1;
+            if (!tooltipCount) {
+                removeBackdrop();
+            }
 
         })
         childElemDiv.innerHTML = text;
@@ -87,7 +96,12 @@ function TourService($ionicBackdrop) {
             elemDiv.style.top = coords.rectOrig.top + (coords.rectOrig.height / 2) + 'px';
             elemDiv.style.paddingLeft = coords.rectOrig.width + coords.rectOrig.left + 20 + 'px';
             elemDiv.style.width = 100 + '%';
-            // elemDiv.style.left = '0px';
+        } else if (direction === 'right') {
+            console.log('orig elem rect', coords.rectOrig)
+            elemDiv.style.height = 'auto';
+            elemDiv.style.top = coords.rectOrig.top + (coords.rectOrig.height / 2) + 'px';
+            elemDiv.style.paddingRight = coords.rectOrig.width + 20 + 'px';
+            elemDiv.style.width = 100 + '%';
         }
         elemDiv.style.position = "absolute";
         return elemDiv;
@@ -118,6 +132,7 @@ function TourService($ionicBackdrop) {
             console.log('tooltip options', optionsIndex);
             initTooltip(optionsIndex.text, optionsIndex.btnText, optionsIndex.direction, optionsIndex.selector)
         }
+        tooltipCount = arrTooltipOptions.length;
     }
 
 }

@@ -180,9 +180,7 @@ angular.module('uguru.util.controllers')
         }
       }
 
-      if (course.short_name && !course.name) {
-        course.name = course.short_name;
-      }
+
 
       $scope.user.guru_courses.push(course);
 

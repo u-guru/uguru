@@ -198,14 +198,16 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
       if ($state.current.name === 'root.university') {
 
-        LoadingService.showAmbig(university_msg, 3000, function() {
-          // AnimationService.flip('^.home');
+        LoadingService.showAmbig(university_msg, 1500);
+        $timeout(function() {
+
           if ($scope.desktopMode) {
             AnimationService.flip('^.desktop-become-guru');
           } else {
             AnimationService.flip('^.become-guru');
           }
-        });
+
+        }, 1250);
       } else {
         LoadingService.showAmbig(university_msg, 3000, function() {
           $scope.closeModal('university');
