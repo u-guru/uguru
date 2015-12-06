@@ -241,6 +241,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/profile-modal',
     templateUrl: BASE + 'templates/profile.modal.html'
   }).
+  state('root.profile-modal-edit', {
+    url:'/profile-modal-edit',
+    templateUrl: BASE + 'templates/profile.modal.edit.html'
+  }).
   state('root.profile-modal-bakery', {
     url:'/profile-modal-bakery',
     templateUrl: BASE + 'templates/profile.modal.bakery.html'

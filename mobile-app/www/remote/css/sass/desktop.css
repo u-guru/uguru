@@ -319,6 +319,15 @@
   margin-right: -9px;
 }
 
+.desktop-mode #top-bar div:nth-child(2) #top-menu-discover svg circle {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: #69B3A5;
+}
+
 .desktop-mode #top-bar div:nth-child(2) #top-menu-discover:after {
   content: "Visibility";
 }
@@ -626,11 +635,11 @@
   background: #F1F1F1;
 }
 
-#desktop-login .main .desktop-forms-container > div {
+#desktop-login .main .desktop-forms-container > div, #desktop-login .main .desktop-forms-container > section > div {
   background: white;
 }
 
-#desktop-login .main .desktop-forms-container > div .input-field input {
+#desktop-login .main .desktop-forms-container > div .input-field input, #desktop-login .main .desktop-forms-container > section > div .input-field input {
   color: white !important;
 }
 
@@ -640,7 +649,7 @@
 }
 
 #desktop-login aside::after {
-  background: url(../../img/temp-login.jpg) no-repeat center center/cover, url(/static/remote/img/temp-login.jpg) no-repeat center center/cover;
+  background: url(../../img/login@2x.jpg) no-repeat center center/cover, url(/static/remote/img/login@2x.jpg) no-repeat center center/cover;
 }
 
 #desktop-signup {
@@ -651,12 +660,31 @@
   background: #2B3234;
 }
 
-#desktop-signup .main .desktop-forms-container > div {
+#desktop-signup .main .desktop-forms-container > div, #desktop-signup .main .desktop-forms-container > section > div {
   background: rgba(64, 72, 75, 0.2);
 }
 
+#desktop-signup aside > div {
+  padding-bottom: 150px;
+}
+
 #desktop-signup aside::after {
-  background: url(../../img/temp-signup.jpg) no-repeat center center/cover, url(/static/remote/img/temp-signup.jpg) no-repeat center center/cover;
+  background: url(../../img/login@2x.jpg) no-repeat center center/cover, url(/static/remote/img/login@2x.jpg) no-repeat center center/cover;
+}
+
+.form-link {
+  filter: alpha(opacity=90);
+  opacity: 0.9;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.form-link + .form-link {
+  margin-top: 10px;
 }
 
 .desktop-forms, .guru-desktop-forms {
@@ -692,19 +720,19 @@
   max-width: 600px;
 }
 
-.desktop-forms .main .desktop-forms-container > div, .guru-desktop-forms .main .desktop-forms-container > div {
+.desktop-forms .main .desktop-forms-container > div, .desktop-forms .main .desktop-forms-container > section > div, .guru-desktop-forms .main .desktop-forms-container > div, .guru-desktop-forms .main .desktop-forms-container > section > div {
   background: white;
   padding: 30px;
 }
 
-.desktop-forms .main .desktop-forms-container > div h1, .guru-desktop-forms .main .desktop-forms-container > div h1 {
+.desktop-forms .main .desktop-forms-container > div h1, .desktop-forms .main .desktop-forms-container > section > div h1, .guru-desktop-forms .main .desktop-forms-container > div h1, .guru-desktop-forms .main .desktop-forms-container > section > div h1 {
   color: #69B3A5;
   font-size: 36px;
   font-weight: 600;
   text-align: center;
 }
 
-.desktop-forms .main .desktop-forms-container > div p, .guru-desktop-forms .main .desktop-forms-container > div p {
+.desktop-forms .main .desktop-forms-container > div p, .desktop-forms .main .desktop-forms-container > section > div p, .guru-desktop-forms .main .desktop-forms-container > div p, .guru-desktop-forms .main .desktop-forms-container > section > div p {
   color: #40484B;
   font-size: 18px;
   font-weight: 400;
@@ -712,15 +740,15 @@
   margin-top: 5px;
 }
 
-.desktop-forms .main .desktop-forms-container > div p a, .guru-desktop-forms .main .desktop-forms-container > div p a {
+.desktop-forms .main .desktop-forms-container > div p a, .desktop-forms .main .desktop-forms-container > section > div p a, .guru-desktop-forms .main .desktop-forms-container > div p a, .guru-desktop-forms .main .desktop-forms-container > section > div p a {
   color: #69B3A5;
 }
 
-.desktop-forms .main .desktop-forms-container > div p a:active, .desktop-forms .main .desktop-forms-container > div p a:focus, .desktop-forms .main .desktop-forms-container > div p a:hover, .desktop-forms .main .desktop-forms-container > div p a.active, .desktop-forms .main .desktop-forms-container > div p a.activated, .guru-desktop-forms .main .desktop-forms-container > div p a:active, .guru-desktop-forms .main .desktop-forms-container > div p a:focus, .guru-desktop-forms .main .desktop-forms-container > div p a:hover, .guru-desktop-forms .main .desktop-forms-container > div p a.active, .guru-desktop-forms .main .desktop-forms-container > div p a.activated {
+.desktop-forms .main .desktop-forms-container > div p a:active, .desktop-forms .main .desktop-forms-container > div p a:focus, .desktop-forms .main .desktop-forms-container > div p a:hover, .desktop-forms .main .desktop-forms-container > div p a.active, .desktop-forms .main .desktop-forms-container > div p a.activated, .desktop-forms .main .desktop-forms-container > section > div p a:active, .desktop-forms .main .desktop-forms-container > section > div p a:focus, .desktop-forms .main .desktop-forms-container > section > div p a:hover, .desktop-forms .main .desktop-forms-container > section > div p a.active, .desktop-forms .main .desktop-forms-container > section > div p a.activated, .guru-desktop-forms .main .desktop-forms-container > div p a:active, .guru-desktop-forms .main .desktop-forms-container > div p a:focus, .guru-desktop-forms .main .desktop-forms-container > div p a:hover, .guru-desktop-forms .main .desktop-forms-container > div p a.active, .guru-desktop-forms .main .desktop-forms-container > div p a.activated, .guru-desktop-forms .main .desktop-forms-container > section > div p a:active, .guru-desktop-forms .main .desktop-forms-container > section > div p a:focus, .guru-desktop-forms .main .desktop-forms-container > section > div p a:hover, .guru-desktop-forms .main .desktop-forms-container > section > div p a.active, .guru-desktop-forms .main .desktop-forms-container > section > div p a.activated {
   color: #757575;
 }
 
-.desktop-forms .main .desktop-forms-container > div .desktop-login-buttons, .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons {
+.desktop-forms .main .desktop-forms-container > div .desktop-login-buttons, .desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons, .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons, .guru-desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -732,7 +760,7 @@
   justify-content: flex-end;
 }
 
-.desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button, .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button {
+.desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button, .desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons button, .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button, .guru-desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons button {
   margin: 15px 0 0 15px;
   height: auto;
   width: auto;
