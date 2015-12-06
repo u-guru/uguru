@@ -10,6 +10,7 @@ function TourService($ionicBackdrop) {
     var tooltips = [];
     var defaultLocation = 0;
     var toolTipTrackerDict = {}
+    var backdrop;
 
     var windowRect = document.body.getBoundingClientRect();
 
@@ -70,6 +71,7 @@ function TourService($ionicBackdrop) {
         buttonDiv.addEventListener('click', function(e) {
             e.target.parentNode.remove(elemDiv);
             clonedNode.parentNode.remove(clonedNode)
+            backdrop.style.cssText ='visibility:hidden;'
 
         })
         childElemDiv.innerHTML = text;
@@ -93,6 +95,7 @@ function TourService($ionicBackdrop) {
 
     function injectBackDrop() {
         var elemDiv = document.createElement('div');
+        backdrop = elemDiv;
         elemDiv.style.cssText = 'position:absolute;width:100%;top:0;height:100%;opacity:0.7;z-index:1000;background:#000;';
         document.body.appendChild(elemDiv);
     }
