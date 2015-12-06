@@ -45,10 +45,11 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
 
   $scope.universitiesSorted = University.getTargetted().slice();
-  $scope.universities = $scope.universitiesSorted;
+  $scope.universities = University.getTargetted().slice();;
 
   $scope.search_text = {
-    university: ''
+    university: '',
+    matching: []
   };
 
   //only shows back button local
@@ -257,86 +258,86 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
 }
 
-angular.module('uguru.directives')
-	.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService, LoadingService) {
+// angular.module('uguru.directives')
+// 	.directive('bindList', function($timeout, University, Utilities, Geolocation, DeviceService, LoadingService) {
 
-		function link($scope, element, attributes) {
-			var queryPromise = null;
-			$timeout(function() {
+// 		function link($scope, element, attributes) {
+// 			var queryPromise = null;
+// 			$timeout(function() {
 
-				$scope.$parent.$watch(
-					'refresh.universities',
-					function(newValue, oldValue) {
-						console.log("heard something!", newValue, oldValue);
-						if (newValue === 'update') {
-
-
-							// LoadingService.showAmbig('Calculating distance...', 2000);
-							Geolocation.getLocation($scope, $scope.source, function(results) {
-								$timeout(function() {
-									$scope.listScope = results;
-								}, 0);
-							}, DeviceService.isIOSDevice());
-
-						}
-					}
-				);
-
-				$scope.$parent.$watch(
-					'search_text.university',
-					function(newValue, oldValue) {
-
-						if (newValue.length < oldValue.length) {
-							if (queryPromise) {
-								$timeout.cancel(queryPromise);
-							}
-							queryPromise = $timeout(function() {
-								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-								queryPromise = null;
-							}, 90);
-						} else if (newValue.length === 1) {
-
-							if (queryPromise) {
-								$timeout.cancel(queryPromise);
-							}
-							queryPromise = $timeout(function() {
-								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-								queryPromise = null;
-							}, 75);
-						} else if (newValue.length === 0) {
-
-							if (queryPromise) {
-								$timeout.cancel(queryPromise);
-							}
-							queryPromise = $timeout(function() {
-								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-								queryPromise = null;
-							}, 50);
-						} else {
-							if (queryPromise) {
-								$timeout.cancel(queryPromise);
-							}
-							queryPromise = $timeout(function() {
-								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-								queryPromise = null;
-
-							}, 50);
-						}
-					}
-
-				);
-			}, 250);
-
-		}
-
-		return {
-			scope: {
-				listScope: '=bindList',
-				source: '=source',
-			},
-			link: link,
-			restrict: 'A'
-		};
+// 				$scope.$parent.$watch(
+// 					'refresh.universities',
+// 					function(newValue, oldValue) {
+// 						console.log("heard something!", newValue, oldValue);
+// 						if (newValue === 'update') {
 
 
-	});
+// 							// LoadingService.showAmbig('Calculating distance...', 2000);
+// 							Geolocation.getLocation($scope, $scope.source, function(results) {
+// 								$timeout(function() {
+// 									$scope.listScope = results;
+// 								}, 0);
+// 							}, DeviceService.isIOSDevice());
+
+// 						}
+// 					}
+// 				);
+
+// 				$scope.$parent.$watch(
+// 					'search_text.university',
+// 					function(newValue, oldValue) {
+
+// 						if (newValue.length < oldValue.length) {
+// 							if (queryPromise) {
+// 								$timeout.cancel(queryPromise);
+// 							}
+// 							queryPromise = $timeout(function() {
+// 								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+// 								queryPromise = null;
+// 							}, 90);
+// 						} else if (newValue.length === 1) {
+
+// 							if (queryPromise) {
+// 								$timeout.cancel(queryPromise);
+// 							}
+// 							queryPromise = $timeout(function() {
+// 								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+// 								queryPromise = null;
+// 							}, 75);
+// 						} else if (newValue.length === 0) {
+
+// 							if (queryPromise) {
+// 								$timeout.cancel(queryPromise);
+// 							}
+// 							queryPromise = $timeout(function() {
+// 								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+// 								queryPromise = null;
+// 							}, 50);
+// 						} else {
+// 							if (queryPromise) {
+// 								$timeout.cancel(queryPromise);
+// 							}
+// 							queryPromise = $timeout(function() {
+// 								$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+// 								queryPromise = null;
+
+// 							}, 50);
+// 						}
+// 					}
+
+// 				);
+// 			}, 250);
+
+// 		}
+
+// 		return {
+// 			scope: {
+// 				listScope: '=bindList',
+// 				source: '=source',
+// 			},
+// 			link: link,
+// 			restrict: 'A'
+// 		};
+
+
+// 	});

@@ -1,7 +1,7 @@
 <u-slide-box id='access-uni-slide' class='full-y' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university" cache-view='false'>
-	<u-slide ng-if='storedAccess'>
+	<!-- <u-slide ng-if='storedAccess'>
 		<div ng-include="img_base + BASE + 'templates/access.html'"></div>
-	</u-slide>
+	</u-slide> -->
 	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
 		<ion-view class='uguru-view university-view'>
 			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='desktopMode'>
@@ -50,6 +50,9 @@
 			        </div>
 			    </div>
 			</main>
+
+
+
 			<section id="school" class="onboarding" ng-if='!desktopMode'>
 				<header class="third flex-center">
 					<h1>Find Your Campus</h1>
@@ -68,7 +71,14 @@
 								    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 								</svg>
 							</i>
-			                <input id="university-input" type="text" ng-model="search_text.university">
+			                <input id="university-input" type="text"
+			                fast-matcher
+		                    fast-matcher-source="universities"
+		                    fast-matcher-output="search_text.matching"
+		                    fast-matcher-properties="short_name, name, variations, city, state"
+		                    ng-disabled="!universities || !universities.length"
+		                    ng-model="search_text.university"/>
+
 			                <label class="ng-class:{'hide': search_text.university.length}" for="university-input">search for your university</label>
 							<a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
 								<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
@@ -79,9 +89,10 @@
 			            </div>
 					</div>
 				</header>
-				<div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list">
+				<div id="school-list" class='onboarding-list'>
+				<!-- <div id="school-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()' class="onboarding-list"> -->
 					<ul class='list list-item-border'>
-						<li class="list-item" ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+						<li class="list-item" ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 10 track by university.id'>
 							<a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
 								<span class="school-icon list-icon-left">
 									<img image-saver ng-src="{{ university.svg_url || university.seal_url || university.logo_url}}" style='border:2px solid {{university.school_color_one}}' alt="" />

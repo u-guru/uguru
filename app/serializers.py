@@ -48,6 +48,9 @@ course_fields['name'] = fields.String(attribute='short_name')
 course_fields['title'] = fields.String(attribute='full_name')
 course_fields['short_name'] = fields.String(attribute='short_name')
 course_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
+course_fields['department_short'] = fields.String(attribute='department_short')
+course_fields['department_long'] = fields.String(attribute='department_long')
+course_fields['code'] = fields.String(attribute='code')
 
 department_fields = {}
 department_fields['id'] = fields.Integer(attribute='id')

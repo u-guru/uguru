@@ -91,7 +91,22 @@
                         <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
                     </svg>
                 </i>
-                <input id='course-input-1' autocomplete="off" type="text" ng-model="search_text.course" class='bg-charcoal'>
+                <!-- <input id='course-input-1' autocomplete="off" type="text" ng-model="search_text.course" class='bg-charcoal'> -->
+                <input type="text" name="prefix" class="bg-charcoal"
+                    fast-matcher
+                    fast-matcher-source="courses"
+                    fast-matcher-output="search_text.matching"
+                    fast-matcher-properties="short_name, full_name, variations"
+                    ng-disabled="!courses || !courses.length"
+                    ng-model="search_text.course" />
+
+                    <!--
+                    unused (ng) options
+                    placeholder="{{inputPlaceholder}}"
+                    fast-matcher-index-changed="ctrl.setCurrentBook(index)"
+                    fast-matcher-item-selected="ctrl.selectBook(item)"
+
+                    -->
                 <label for="course-input-1" class="ng-class:{'hide': search_text.course.length}">
                     <span ng-show='courses.length'> search among {{courses.length}} popular courses </span>
                     <span ng-hide='courses.length'> search popular courses </span>
@@ -121,18 +136,14 @@
 	</header>
 	<div id="courses-list" class="onboarding-list" >
 		<ul class='list list-item-border no-icon'>
-			<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected" ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
-				<input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>
-				<label>
-					<span class="course-name">{{course.short_name}}</span>
-					<span class="course-title" ng-if="course.title">{{course.title}}</span>
-				</label>
+			<li ng-if="user.guru_courses.length > 0 && search_text.course.length === 0" class="course-item selected">
+					<a ng-click='removeGuruCourseAndUpdate(course, $index)' ng-repeat='course in user.guru_courses'> <span class="course-name txt-white">{{course.department_short}} {{course.code}} <!-- <input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'> --></span> </a>
 			</li>
 			<li ng-repeat='course in courses| filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
 				<input type="checkbox">
 				<label>
-					<span class="course-name">{{course.short_name}}</span>
-					<span class="course-title" ng-if="course.title">{{course.title}}</span>
+					<span class="course-name">{{course.department_long}} {{course.code}}</span>
+					<span class="course-title" ng-if="course.full_name">{{course.full_name}}</span>
 				</label>
 			</li>
 		</ul>

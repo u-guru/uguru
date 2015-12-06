@@ -24,7 +24,6 @@ angular.module('uguru.util.controllers')
 
 
     $scope.courses = University.source.courses;
-    console.log($scope.courses);
 
     if (!$scope.user.guru_courses) {
       $scope.user.guru_courses = [];
