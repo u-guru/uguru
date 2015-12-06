@@ -109,6 +109,16 @@ def wildcard(payload, event):
     if event == 'open' or event == 'click':
 
         mp_dict = parseMandrillPayloadToMixpanel(payload)
+        unique_identifier = mp_dict.get('$email')
+        if not unique_identifier:
+            unique_identifier = mp_dict.get('$ip')
+        if not unique_identifier:
+            unique_identifier = mp_dict.get('email_id')
+        if not unique_identifier:
+            unique_identifier = mp_dict.get('time_created')
+        if not unique_identifier:
+            from datetime import datetime
+            unique_identifier = str(datetime.now())
         response = createCampaignUserProfile(mp_dict['$email'], mp_dict)
         pprint(response)
 

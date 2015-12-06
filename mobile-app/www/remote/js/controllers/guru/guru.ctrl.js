@@ -36,15 +36,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   };
 
-  $timeout(function() {
+  // $timeout(function() {
 
-    var toolTipArr = [
-      {text: 'This is where you edit your profile', direction:'left', btnText: 'Got it!', selector: "#cta-box-profile"},
-      {text: 'Cash out your hundreds of dollars here', direction:'right', btnText: 'Got it!', selector: "#cta-box-balance"},
-    ]
-    TourService.initTooltipTour(toolTipArr)
-    // TourService.initTooltip(null, null, '#cta-box-profile');
-  }, 1500);
+  //   var toolTipArr = [
+  //     {text: 'This is where you edit your profile', direction:'left', btnText: 'Got it!', selector: "#cta-box-profile"},
+  //     {text: 'Cash out your hundreds of dollars here', direction:'right', btnText: 'Got it!', selector: "#cta-box-balance"},
+  //   ]
+  //   TourService.initTooltipTour(toolTipArr)
+  //   // TourService.initTooltip(null, null, '#cta-box-profile');
+  // }, 1500);
 
   var CTA_PARENT_DICT = {
     'cta-box-profile':'.guru-home-container',
