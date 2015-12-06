@@ -670,6 +670,10 @@
 // ACCOUNT MODAL
 .signup-modal {
 	header.third {
+		&::before {
+			background: url(../../img/login@2x.jpg) no-repeat bottom center / cover,
+						url(/static/remote/img/login@2x.jpg) no-repeat bottom center / cover;
+		}
 		h1 {
 			font-size: 28px!important;
 			line-height: 1.2;
@@ -1845,6 +1849,164 @@
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+// BILLING
+#mobile-billing {
+	.main {
+		height: calc(100% - 50px);
+		overflow: auto;
+	}
+	button {
+		position: absolute;
+		z-index: 99;
+		bottom: 0;
+		left: 0;
+		background: $shamrock;
+		font-weight: 600;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: darken($shamrock, 10%);
+		}
+		&:active, &.activated {
+			background: white;
+			color: $shamrock;
+		}
+	}
+}
+.mobile-billing {
+	padding: 15px 15px 0;
+	&:last-child {
+		padding-bottom: 79px;
+	}
+	&.mobile-session-time {
+		ul {
+			@include flex;
+			@include flex-center;
+			background: lighten($slate, 2%);
+			padding: 15px;
+			font-weight: 600;
+			input {
+				font-size: 32px;
+				font-weight: 700;
+				text-align: center;
+				max-width: 50px;
+				background: lighten($slate, 10%);
+				@include placeholder {
+					color: rgba(white,.5);
+				}
+			}
+			> li {
+				&:nth-child(1), &:nth-child(3) {
+					padding-right: 10px;
+				}
+				&:nth-child(2) {
+					padding-right: 30px;
+				}
+			}
+		}
+	}
+	&.mobile-billing-fix-price {
+		width: 100%;
+		ul {
+			@include flex;
+			@include flex-center;
+			width: 100%;
+			background: lighten($slate, 2%);
+			padding: 15px;
+			font-weight: 600;
+			input {
+				font-size: 32px;
+				font-weight: 700;
+				text-align: center;
+				max-width: 75px;
+				background: lighten($slate, 10%);
+				@include placeholder {
+					color: rgba(white,.5);
+				}
+			}
+			> li {
+				&:nth-child(1), &:nth-child(3) {
+					padding-right: 10px;
+				}
+				&:nth-child(2) {
+					padding-right: 30px;
+				}
+			}
+		}
+	}
+	&.mobile-billing-type {
+		ul {
+			background: lighten($slate, 2%);
+			li {
+				@include flex;
+				@include flex-center-vertical;
+				position: relative;
+				height: 48px;
+				input {
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 99;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				label {
+					@include flex;
+					@include flex-center-vertical;
+					padding: 0 15px;
+					color: white;
+					font-size: 20px;
+					font-weight: 600;
+					> span {
+						&:first-child {
+							@include round;
+							display: block;
+							width: 28px;
+							height: 28px;
+							padding: 5px;
+							background: lighten($slate, 10%);
+						}
+						&:last-child {
+							padding-left: 15px;
+						}
+					}
+				}
+				input:checked + label > span:first-child:before {
+					@include round;
+					content: "";
+					display: block;
+					width: 100%;
+					height: 100%;
+					background: $shamrock;
+				}
+			}
+		}
+	}
+	.custom-dropdown {
+		width: 100%;
+		> div {
+			width: 100%;
+			> span {
+				width: calc(100% - 48px)!important;
+			}
+			a {
+				height: 48px;
+			}
+		}
+		> ul {
+			@include translate-x(0);
+			left: 0;
+			width: calc(100% - 48px);
+			li {
+				width: 100%;
+				padding-left: 15px;
+				padding-right: 15px;
+				text-align: center;
 			}
 		}
 	}

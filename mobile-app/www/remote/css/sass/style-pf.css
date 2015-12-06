@@ -66,7 +66,7 @@
   -o-filter: blur(50px);
   -ms-filter: blur(50px);
   filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='50');
-  position: absolute;
+  position: absolute !important;
   top: -25%;
   left: -25%;
   width: 150%;
@@ -234,59 +234,124 @@
           height: 100%;
           background: #40484B;
           border: 2px solid white;
-          border-radius: 2px; }
-      .pf-type header.third .pf-photo-list ul li:not(:last-child) div {
+          border-radius: 10px; }
+      .pf-type header.third .pf-photo-list ul li div.pf-upload-img {
         background-position: center center;
         background-size: cover; }
-        .pf-type header.third .pf-photo-list ul li:not(:last-child) div svg {
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
+      .pf-type header.third .pf-photo-list ul li div.pf-upload-img a svg, .pf-type header.third .pf-photo-list ul li div.pf-upload-file a svg {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        fill: none;
+        stroke: white;
+        stroke-width: 8px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 25px;
+        height: 25px; }
+      .pf-type header.third .pf-photo-list ul li div.pf-upload-file {
+        border: 0;
+        width: auto;
+        background: none !important; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-file svg.doc-outline {
           fill: none;
           stroke: white;
-          stroke-width: 8px;
+          stroke-width: 1.5px;
           stroke-linecap: round;
           stroke-linejoin: round;
+          height: 100%;
+          fill: #69B3A5; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-pdf svg.doc-outline {
+          fill: none;
+          stroke: white;
+          stroke-width: 1.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          height: 100%;
+          fill: #F04F54; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-doc svg.doc-outline {
+          fill: none;
+          stroke: white;
+          stroke-width: 1.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          height: 100%;
+          fill: #50A5DD; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-sheet svg.doc-outline {
+          fill: none;
+          stroke: white;
+          stroke-width: 1.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          height: 100%;
+          fill: #81B566; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info {
           position: absolute;
-          top: 0;
-          right: 0;
-          width: 25px;
-          height: 25px; }
-      .pf-type header.third .pf-photo-list ul li:last-child div {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 100%;
+          padding: 30px 15px 15px; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info span {
+            display: block;
+            font-weight: 600; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info .doc-name {
+            font-size: 20px; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info .doc-type {
+            font-size: 16px; }
+      .pf-type header.third .pf-photo-list ul li div.pf-upload-add {
+        position: relative;
         border-style: dashed;
         border-color: #69B3A5;
-        background: none; }
-        .pf-type header.third .pf-photo-list ul li:last-child div svg {
-          fill: none;
-          stroke: #69B3A5;
-          stroke-width: 6px;
-          stroke-linecap: round;
-          stroke-linejoin: round;
+        background: none;
+        width: auto; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-add .square {
+          height: 100%;
+          fill: none; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-add a {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
-          height: 30px; }
-        .pf-type header.third .pf-photo-list ul li:last-child div span {
-          display: block;
-          font-size: 18px;
-          font-weight: 600;
-          color: #69B3A5; }
+          height: 100%; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+            fill: none;
+            stroke: #69B3A5;
+            stroke-width: 6px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            width: 100%;
+            height: 30px; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-add a span span {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: #69B3A5; }
 .pf-type .pf-item-header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1023,6 +1088,83 @@
       .pf-modal .pf-reviews > ul > li div p {
         font-size: 18px;
         font-weight: 400; }
+
+.pf-edit button {
+  background: #69B3A5;
+  font-weight: 600; }
+.pf-edit .main {
+  height: calc(100% / 3 * 2 - 64px);
+  overflow: auto;
+  padding: 15px; }
+  .pf-edit .main textarea.input-outline {
+    width: 100%;
+    resize: none;
+    height: 176px;
+    border-color: #576267;
+    background: #4c5559;
+    font-size: 20px;
+    font-weight: 400; }
+    .pf-edit .main textarea.input-outline:focus {
+      border-color: #6f7d82;
+      background: #576267; }
+  .pf-edit .main > div {
+    margin-top: 15px; }
+    .pf-edit .main > div h1 {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 10px; }
+  .pf-edit .main .pf-tag-edit {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap; }
+    .pf-edit .main .pf-tag-edit .chip {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      background: #576267;
+      margin-right: 15px; }
+      .pf-edit .main .pf-tag-edit .chip:hover {
+        background: #637074; }
+      .pf-edit .main .pf-tag-edit .chip svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 10px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        width: 12px;
+        height: 12px;
+        margin-right: 3px; }
+      .pf-edit .main .pf-tag-edit .chip input {
+        background: transparent;
+        border: 0;
+        color: white !important; }
+        .pf-edit .main .pf-tag-edit .chip input::-webkit-input-placeholder {
+          color: white !important; }
+        .pf-edit .main .pf-tag-edit .chip input:-moz-placeholder {
+          color: white !important; }
+        .pf-edit .main .pf-tag-edit .chip input::-moz-placeholder {
+          color: white !important; }
+        .pf-edit .main .pf-tag-edit .chip input:-ms-input-placeholder {
+          color: white !important; }
+  .pf-edit .main .pf-pricing {
+    margin-top: 30px;
+    background: #4c5559;
+    padding: 15px; }
 
 /* ---------- PROFILE CARDS */
 .pf-card-container {

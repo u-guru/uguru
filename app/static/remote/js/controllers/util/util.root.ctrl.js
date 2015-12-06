@@ -544,10 +544,10 @@ angular.module('uguru.util.controllers')
                 $ionicViewSwitcher.nextDirection('fade');
                 $state.go('^.guru-courses');
             } else {
-                $scope.success.show(0, 2000, 'Loading courses. One moment...');
-                $timeout(function() {
-                    $scope.checkCourses();
-                }, 2000);
+                // $scope.success.show(0, 2000, 'Loading courses. One moment...');
+                // $timeout(function() {
+                //     $scope.checkCourses();
+                // }, 2000);
             }
         };
 

@@ -1,5 +1,5 @@
-
 <ion-modal-view class='full-height bg-charcoal' scroll='false' ng-controller='SignupController'>
+
 <section id="account" class="onboarding full-xy">
 	<header class="third flex-center-wrap text-center">
 		<div class="header-nav">
@@ -42,7 +42,7 @@
 		</div>
 		<div id="social-login">
 			<button class="weight-600 bg-shamrock m15bottom hide ng-class:{'show':root.vars.loginMode && !root.vars.forgotPassword}" ng-click='loginUser()'>Login</button>
-			<button class="weight-600 bg-shamrock m15bottom hide ng-class:{'show':root.vars.loginMode && root.vars.forgotPassword'}" ng-click='attemptToResetPassword()'>Submit</button>
+			<button class="weight-600 bg-shamrock m15bottom hide ng-class:{'show':root.vars.loginMode && root.vars.forgotPassword}" ng-click='attemptToResetPassword()'>Submit</button>
 			<button class="weight-600 bg-shamrock m15bottom hide ng-class:{'show': !root.vars.loginMode}" ng-click='completeSignup()'>Create an Account</button>
 			<button class="weight-600 bg-fb m15bottom ng-class:{'hide':root.vars.forgotPassword || signupForm.full_name || signupForm.full_name.length > 0}" ng-click='ngFBlogin()'>Continue with Facebook</button>
 			<button class="weight-600 bg-charcoal m15bottom hide ng-class:{'show':root.vars.forgotPassword}" ng-click='root.vars.forgotPassword = false;'>Cancel</button>

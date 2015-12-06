@@ -6,34 +6,21 @@ angular
     ]);
 
 function TourService($ionicBackdrop) {
-
-    var tooltips = [];
     var defaultLocation = 0;
     var toolTipTrackerDict = {}
     var backdrop;
     var tooltipCount = 0;
-
     var windowRect = document.body.getBoundingClientRect();
-
 	return {
         initTooltip:initTooltip,
         initTooltipTour:initTooltipTour
 	};
-
-
-
     function initTooltip(text, btnText, direction, elemSelector)  {
 
         var origElem = document.querySelector(elemSelector);
         if (!origElem) {
             return;
         }
-
-        var tourElem = cloneElement(origElem);
-        tourElem.setAttribute("style", window.getComputedStyle(origElem).cssText);
-
-
-
         var tourElemRect = origElem.getBoundingClientRect();
         var elemDiv = document.createElement('div');
         elemDiv.style.position = 'absolute';
@@ -60,11 +47,9 @@ function TourService($ionicBackdrop) {
         toolTipTrackerDict[elemSelector] = htmlTipElem;
         document.body.appendChild(toolTipTrackerDict[elemSelector])
     }
-
     function removeBackdrop() {
         backdrop.style.cssText ='visibility:hidden; display:none;'
     }
-
     function initTipElem(text, btnText, direction, coords, clonedNode) {
         var elemDiv = document.createElement('div');
         elemDiv.className = "guru-tip guru-tip-center guru-tip-" + direction;
@@ -106,26 +91,12 @@ function TourService($ionicBackdrop) {
         elemDiv.style.position = "absolute";
         return elemDiv;
     }
-
     function injectBackDrop() {
         var elemDiv = document.createElement('div');
         backdrop = elemDiv;
         elemDiv.style.cssText = 'position:absolute;width:100%;top:0;height:100%;opacity:0.7;z-index:1000;background:#000;';
         document.body.appendChild(elemDiv);
     }
-
-    function cloneElement(element) {
-        // var oldElem = element;
-        var el = element.cloneNode(true); // true == clone descendents too
-
-        var els = element.getElementsByTagName("*");
-        el.setAttribute("style", window.getComputedStyle(element).cssText);
-        for(var i = -1, l = els.length; ++i < l;){
-            els[i].setAttribute("style", window.getComputedStyle(els[i]).cssText);
-        }
-        return el;
-    }
-
     function initTooltipTour(arrTooltipOptions) {
         for (var i = 0; i < arrTooltipOptions.length; i++) {
             var optionsIndex = arrTooltipOptions[i];
@@ -134,5 +105,4 @@ function TourService($ionicBackdrop) {
         }
         tooltipCount = arrTooltipOptions.length;
     }
-
 }

@@ -21,7 +21,6 @@ function TourService($ionicBackdrop) {
         if (!origElem) {
             return;
         }
-
         var tourElemRect = origElem.getBoundingClientRect();
         var elemDiv = document.createElement('div');
         elemDiv.style.position = 'absolute';

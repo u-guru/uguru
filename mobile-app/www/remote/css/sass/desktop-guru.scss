@@ -1661,6 +1661,35 @@
 }
 
 /* ---------- GURU HOME */
+#cta-modal-signup {
+	background: rgba($charcoal,.9) !important;
+	top: 64px;
+	height: calc(100% - 64px);
+	.cta-modal-close {
+		display: block;
+	}
+	header.desktop-header {
+		display: block;
+		top: 0;
+		a.cta-modal-close {
+			display: block;
+			top: 0;
+			margin: 15px;
+			right: 0;
+			position: absolute;
+			width: auto !important;
+		}
+	}
+	input {
+		color: $charcoal !important;
+	}
+	#cta-footer-switch-link {
+		display: block;
+		bottom: 20%;
+		text-align: center;
+		left: 0;
+	}
+}
 #desktop-guru-home {
 	.main {
 		@include flex;

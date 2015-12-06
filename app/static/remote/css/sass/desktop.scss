@@ -198,6 +198,12 @@
 			}
 			#top-menu-discover {
 				margin-right: -9px;
+				svg {
+					circle {
+						@include svg-stroke(white, 5);
+						fill: $gabrielle;
+					}
+				}
 				&:after {
 					content: "Visibility";
 				}
@@ -400,7 +406,7 @@
 	.main {
 		background: $smoke;
 		.desktop-forms-container {
-			> div {
+			> div, > section > div {
 				background: white;
 				.input-field {
 					input {
@@ -416,8 +422,8 @@
 	}
 	aside {
 		&::after {
-			background: url(../../img/temp-login.jpg) no-repeat center center / cover,
-						url(/static/remote/img/temp-login.jpg) no-repeat center center / cover;
+			background: url(../../img/login@2x.jpg) no-repeat center center / cover,
+						url(/static/remote/img/login@2x.jpg) no-repeat center center / cover;
 		}
 	}
 }
@@ -426,16 +432,31 @@
 	.main {
 		background: $charcoal;
 		.desktop-forms-container {
-			> div {
+			> div, > section > div {
 				background: rgba($slate,.2);
 			}
 		}
 	}
 	aside {
-		&::after {
-			background: url(../../img/temp-signup.jpg) no-repeat center center / cover,
-						url(/static/remote/img/temp-signup.jpg) no-repeat center center / cover;
+		> div {
+			padding-bottom: 150px;
 		}
+		&::after {
+			background: url(../../img/login@2x.jpg) no-repeat center center / cover,
+						url(/static/remote/img/login@2x.jpg) no-repeat center center / cover;
+		}
+	}
+}
+.form-link {
+	@include opacity(.9);
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 600;
+	margin-top: 15px;
+	+ .form-link {
+		margin-top: 10px;
 	}
 }
 .desktop-forms, .guru-desktop-forms {
@@ -448,7 +469,7 @@
 		.desktop-forms-container {
 			width: 100%;
 			max-width: 600px;
-			> div {
+			> div, > section > div {
 				background: white;
 				padding: 30px;
 				h1 {

@@ -126,4 +126,123 @@
 			</div>
 		</div>
 	</main>
+	<section id="mobile-billing" class="bg-charcoal" ng-if='!isDesktopMode()'>
+		<header class="text-center bg-slate">
+			<div class="header-nav">
+				<a class="header-down" ng-click="closeModal('signup')">
+					<svg viewBox="0 0 100 100">
+						<path d="M14,32 L50,68 L86,32"></path>
+					</svg>
+				</a>
+			</div>
+			<h1>Bill Student</h1>
+		</header>
+		<div class="main">
+			<div class="mobile-billing">
+				<h1 class="section-header">Select a student</h1>
+				<div>
+					<div class="custom-dropdown">
+						<div>
+							<span>{{user.name}}</span>
+							<a>
+								<svg viewBox="0 0 100 100">
+									<path d="M14,32 L50,68 L86,32"></path>
+								</svg>
+							</a>
+						</div>
+						<ul>
+							<li tabindex>{{user.name}}</li>
+							<li tabindex>{{user.name}}</li>
+							<li tabindex>{{user.name}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="mobile-billing">
+				<h1 class="section-header">Select a course</h1>
+				<div>
+					<div class="custom-dropdown">
+						<div>
+							<span>CS10</span>
+							<a>
+								<svg viewBox="0 0 100 100">
+									<path d="M14,32 L50,68 L86,32"></path>
+								</svg>
+							</a>
+						</div>
+						<ul>
+							<li tabindex>CS10</li>
+							<li tabindex>CS10</li>
+							<li tabindex>CS10</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="mobile-billing mobile-billing-type">
+				<h1 class="section-header">Billing Type</h1>
+				<form>
+					<ul>
+						<li>
+							<input type="radio" name="billing-type" checked/>
+							<label for="billing-type">
+								<span></span>
+								<span>Hourly Rate</span>
+							</label>
+						</li>
+						<li>
+							<input type="radio" name="billing-type"/>
+							<label for="billing-type">
+								<span></span>
+								<span>Fixed Price</span>
+							</label>
+						</li>
+						<li>
+							<input type="radio" name="billing-type"/>
+							<label for="billing-type">
+								<span></span>
+								<span>Keep It Free</span>
+							</label>
+						</li>
+					</ul>
+				</form>
+			</div>
+			<div class="mobile-billing mobile-session-time">
+				<h1 class="section-header">Session Time</h1>
+				<ul>
+					<li><input type="tel" placeholder="0"/></li>
+					<li>hours</li>
+					<li><input type="tel" placeholder="0"/></li>
+					<li>min</li>
+				</ul>
+			</div>
+			<div class="mobile-billing mobile-billing-hour">
+				<h1 class="section-header">Rate Per Hour</h1>
+				<div>
+					<div class="custom-dropdown">
+						<div>
+							<span>$10/hour</span>
+							<a>
+								<svg viewBox="0 0 100 100">
+									<path d="M14,32 L50,68 L86,32"></path>
+								</svg>
+							</a>
+						</div>
+						<ul>
+							<li tabindex>$15/hour</li>
+							<li tabindex>$20/hour</li>
+							<li tabindex>$25/hour</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="mobile-billing mobile-billing-fix-price">
+				<h1 class="section-header">Price</h1>
+				<ul>
+					<li>$</li>
+					<li><input type="tel" placeholder="0"/></li>
+				</ul>
+			</div> -->
+		</div>
+		<button>Confirm</button>
+	</section>
 </ion-view>

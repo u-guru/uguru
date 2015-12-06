@@ -108,7 +108,7 @@
 }
 .pf-header-bg {
 	@include blur(50);
-	position: absolute;
+	position: absolute!important;
 	top: -25%;
 	left: -25%;
 	width: 150%;
@@ -266,42 +266,105 @@
 						height: 100%;
 						background: $slate;
 						border: 2px solid white;
-						border-radius: 2px;
+						border-radius: 10px;
 					}
 				}
-				li:not(:last-child) {
-					div {
+				li {
+					div.pf-upload-img {
 						background-position: center center;
 						background-size: cover;
-						svg {
-							@include rotate(45);
-							@include svg-stroke(white, 8);
-							position: absolute;
-							top: 0;
-							right: 0;
-							width: 25px;
-							height: 25px;
+					}
+					div.pf-upload-img, div.pf-upload-file {
+						a {
+							svg {
+								@include rotate(45);
+								@include svg-stroke(white, 8);
+								position: absolute;
+								top: 5px;
+								left: 5px;
+								width: 25px;
+								height: 25px;
+							}
 						}
 					}
-				}
-				li:last-child {
-					div {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
+					div.pf-upload-file {
+						border: 0;
+						width: auto;
+						background: none!important;
+						svg.doc-outline {
+							@include svg-stroke(white, 1.5);
+							height: 100%;
+							fill: $shamrock;
+						}
+						&.pf-upload-pdf {
+							svg.doc-outline {
+								@include svg-stroke(white, 1.5);
+								height: 100%;
+								fill: $auburn;
+							}
+						}
+						&.pf-upload-doc {
+							svg.doc-outline {
+								@include svg-stroke(white, 1.5);
+								height: 100%;
+								fill: $lake;
+							}
+						}
+						&.pf-upload-sheet {
+							svg.doc-outline {
+								@include svg-stroke(white, 1.5);
+								height: 100%;
+								fill: $moola;
+							}
+						}
+						.doc-info {
+							@include center-xy;
+							width: 100%;
+							padding: 30px 15px 15px;
+							span {
+								display: block;
+								font-weight: 600;
+							}
+							.doc-name {
+								font-size: 20px;
+							}
+							.doc-type {
+								font-size: 16px;
+							}
+						}
+					}
+					div.pf-upload-add {
+						position: relative;
 						border-style: dashed;
 						border-color: $shamrock;
 						background: none;
-						svg {
-							@include svg-stroke($shamrock, 6);
-							width: 100%;
-							height: 30px;
+						width: auto;
+						.square {
+							height: 100%;
+							fill: none;
 						}
-						span {
-							display: block;
-							font-size: 18px;
-							font-weight: 600;
-							color: $shamrock;
+						a {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							span {
+								svg {
+									@include svg-stroke($shamrock, 6);
+									width: 100%;
+									height: 30px;
+								}
+								span {
+									display: block;
+									font-size: 18px;
+									font-weight: 600;
+									color: $shamrock;
+								}
+							}
 						}
 					}
 				}
@@ -1194,6 +1257,74 @@
 					}
 				}
 			}
+		}
+	}
+}
+
+// EDIT
+.pf-edit {
+	button {
+		background: $shamrock;
+		font-weight: 600;
+	}
+	.main {
+		height: calc(100% / 3 * 2 - 64px);
+		overflow: auto;
+		padding: 15px;
+		textarea.input-outline {
+			width: 100%;
+			resize: none;
+			height: 176px;
+			border-color: lighten($slate, 10%);
+			background: lighten($slate, 5%);
+			font-size: 20px;
+			font-weight: 400;
+			&:focus {
+				border-color: lighten($slate, 20%);
+				background: lighten($slate, 10%);
+			}
+		}
+		> div {
+			margin-top: 15px;
+			h1 {
+				font-size: 18px;
+				font-weight: 600;
+				text-align: center;
+				text-transform: uppercase;
+				margin-bottom: 10px;
+			}
+		}
+		.pf-tag-edit {
+			@include flex;
+			@include flex-wrap;
+			.chip {
+				@include flex;
+				@include flex-center-vertical;
+				background: lighten($slate, 10%);
+				margin-right: 15px;
+				&:hover {
+					background: lighten($slate, 15%);
+				}
+				svg {
+					@include svg-stroke(white, 10);
+					width: 12px;
+					height: 12px;
+					margin-right: 3px;
+				}
+				input {
+					background: transparent;
+					border: 0;
+					color: white!important;
+					@include placeholder {
+						color: white!important;
+					}
+				}
+			}
+		}
+		.pf-pricing {
+			margin-top: 30px;
+			background: lighten($slate, 5%);
+			padding: 15px;
 		}
 	}
 }

@@ -418,119 +418,118 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
 
-        $scope.goToStateWithTransition = function(state_name, transition) {
-          if (!$scope.user.id) {
-            LoadingService.showAmbig();
+		$scope.goToStateWithTransition = function(state_name, transition) {
+			if (!$scope.user.id) {
+				LoadingService.showAmbig();
 
-            //make it feel like its coming... when really its just signup ;)
-            $timeout(function() {
-              $scope.openModal('signup');
-              LoadingService.hide(100);
-            }, 1000)
-            return;
-          }
-          $ionicViewSwitcher.nextDirection(transition);
-          $state.go(state_name);
-        }
-
-
-        $scope.showBalanceModal = function() {
-          if ($scope.user && $scope.user.id) {
-            $scope.balanceModal.show()
-          }
-          else {
-            LoadingService.showMsg('You need an account to do that!', 2500,
-              function() {
-                  $scope.signupModal.show()
-              }
-            )
-          }
-        }
-
-        $scope.showProfileModal = function() {
-          if ($scope.user && $scope.user.id) {
-            $scope.profileModal.show();
-          } else {
-            LoadingService.showMsg('You need an account to do that!', 2500)
-          }
-        }
-
-        $scope.showCredibilityModal = function() {
-
-          if ($scope.user && $scope.user.id) {
-            $scope.credibilityModal.show();
-          } else {
-
-            LoadingService.showMsg('You need an account to do that!', 2500)
-          }
-        }
-
-        $scope.$on('$ionicView.enter', function() {
+				//make it feel like its coming... when really its just signup ;)
+				$timeout(function() {
+					$scope.openModal('signup');
+					LoadingService.hide(100);
+				}, 1000)
+				return;
+			}
+			$ionicViewSwitcher.nextDirection(transition);
+			$state.go(state_name);
+		}
 
 
-          //desktop version
-          if ($scope.desktopMode) {
-            initCTA();
-          }
+		$scope.showBalanceModal = function() {
+			if ($scope.user && $scope.user.id) {
+				$scope.balanceModal.show()
+			} else {
+				LoadingService.showMsg('You need an account to do that!', 2500,
+					function() {
+						$scope.signupModal.show()
+					}
+				)
+			}
+		}
 
-          if ($scope.desktopMode && !$scope.guruRankingCircle) {
-            $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-            $timeout(function () {
-              if (!$scope.guruRankingCircleInitialized) {
-                animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
-              }
-            }, 2500)
-          }
+		$scope.showProfileModal = function() {
+			if ($scope.user && $scope.user.id) {
+				$scope.profileModal.show();
+			} else {
+				LoadingService.showMsg('You need an account to do that!', 2500)
+			}
+		}
 
-          //desktop version but not loggedd in
-          if ($scope.desktopMode && !$scope.user.id) {
-            $timeout(function() {
-              LoadingService.showAmbig()
-            }, 500)
-            $timeout(function() {
-              if (!$scope.root.vars.page_cache.showSignupCTA) {
-                $scope.root.vars.page_cache.showSignupCTA = true;
-                $scope.launchCtaDict['cta-box-signup']();
-                $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
-              }
-              LoadingService.hide();
-            }, 2000)
-          }
+		$scope.showCredibilityModal = function() {
+
+			if ($scope.user && $scope.user.id) {
+				$scope.credibilityModal.show();
+			} else {
+
+				LoadingService.showMsg('You need an account to do that!', 2500)
+			}
+		}
+
+		$scope.$on('$ionicView.enter', function() {
 
 
+			//desktop version
+			if ($scope.desktopMode) {
+				initCTA();
+			}
 
-          //mobile mode
-          if (!$scope.desktopMode) {
-            $timeout(function() {
-              $scope.initMobileModals();
-            }, 1500)
-            $timeout(function() {
-              $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
-            }, 1500)
-          }
+			if ($scope.desktopMode && !$scope.guruRankingCircle) {
+				$scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+				$timeout(function() {
+					if (!$scope.guruRankingCircleInitialized) {
+						animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+					}
+				}, 2500)
+			}
 
-          // mobile tech instantiatio
-          if (DeviceService.isIOSDevice()) {
-            DeviceService.ios.setStatusBarLightText();
-          }
+			//desktop version but not loggedd in
+			if ($scope.desktopMode && !$scope.user.id) {
+				$timeout(function() {
+					LoadingService.showAmbig()
+				}, 500)
+				$timeout(function() {
+					if (!$scope.root.vars.page_cache.showSignupCTA) {
+						$scope.root.vars.page_cache.showSignupCTA = true;
+						$scope.launchCtaDict['cta-box-signup']();
+						$localstorage.setObject('page_cache', $scope.root.vars.page_cache);
+					}
+					LoadingService.hide();
+				}, 2000)
+			}
 
-        });
 
-        var launchWelcomeToGuruMode = function() {
-          $timeout(function() {
-              appOnboardingObj = $localstorage.getObject('appOnboarding');
-              if (!appOnboardingObj) {
-                checkIsFirstTimeGuruMode(true);
-              }
-            }, 250)
-        }
 
-        var appOnboardingObj;
-        $scope.$on('$ionicView.afterEnter', function() {
+			//mobile mode
+			if (!$scope.desktopMode) {
+				$timeout(function() {
+					$scope.initMobileModals();
+				}, 1500)
+				$timeout(function() {
+					$scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+					animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+				}, 1500)
+			}
 
-        });
+			// mobile tech instantiatio
+			if (DeviceService.isIOSDevice()) {
+				DeviceService.ios.setStatusBarLightText();
+			}
 
-  }
+		});
+
+		var launchWelcomeToGuruMode = function() {
+			$timeout(function() {
+				appOnboardingObj = $localstorage.getObject('appOnboarding');
+				if (!appOnboardingObj) {
+					checkIsFirstTimeGuruMode(true);
+				}
+			}, 250)
+		}
+
+		var appOnboardingObj;
+		$scope.$on('$ionicView.afterEnter', function() {
+
+		});
+
+	}
 
 ]);
