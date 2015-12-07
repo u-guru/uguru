@@ -3072,19 +3072,19 @@ section {
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
 /* ---------- GENERAL */
-#mobile-general {
+#mobile-general, .mobile-general {
   background: #50A5DD;
   padding: 15px; }
-  #mobile-general h1 {
+  #mobile-general h1, .mobile-general h1 {
     padding-bottom: 15px;
     font-size: 36px;
     font-weight: 600;
     text-align: center; }
-  #mobile-general .general-list {
+  #mobile-general .general-list, .mobile-general .general-list {
     position: relative;
     height: calc(100% - 122px);
     overflow: hidden; }
-    #mobile-general .general-list > li {
+    #mobile-general .general-list > li, .mobile-general .general-list > li {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -3098,7 +3098,7 @@ section {
       width: 100%;
       padding: 15px;
       text-align: center; }
-      #mobile-general .general-list > li:before {
+      #mobile-general .general-list > li:before, .mobile-general .general-list > li:before {
         -webkit-transform: rotate(5deg);
         -moz-transform: rotate(5deg);
         -ms-transform: rotate(5deg);
@@ -3132,9 +3132,9 @@ section {
         font-size: 64px;
         font-weight: 700;
         line-height: 1; }
-      #mobile-general .general-list > li:nth-child(1) {
+      #mobile-general .general-list > li:nth-child(1), .mobile-general .general-list > li:nth-child(1) {
         z-index: 9; }
-      #mobile-general .general-list > li:nth-child(2) {
+      #mobile-general .general-list > li:nth-child(2), .mobile-general .general-list > li:nth-child(2) {
         -webkit-transform-origin: center top;
         -moz-transform-origin: center top;
         -ms-transform-origin: center top;
@@ -3148,7 +3148,7 @@ section {
         margin-top: -15px;
         z-index: 8;
         background: #F1F1F1; }
-      #mobile-general .general-list > li:nth-child(3) {
+      #mobile-general .general-list > li:nth-child(3), .mobile-general .general-list > li:nth-child(3) {
         -webkit-transform-origin: center top;
         -moz-transform-origin: center top;
         -ms-transform-origin: center top;
@@ -3162,7 +3162,7 @@ section {
         margin-top: -30px;
         z-index: 7;
         background: rgba(117, 117, 117, 0.6); }
-      #mobile-general .general-list > li .general-list-icon {
+      #mobile-general .general-list > li .general-list-icon, .mobile-general .general-list > li .general-list-icon {
         border-radius: 1000px;
         display: block;
         margin: 15px auto;
@@ -3170,20 +3170,20 @@ section {
         height: 175px;
         border: 3px solid #50A5DD;
         background: white; }
-        #mobile-general .general-list > li .general-list-icon svg {
+        #mobile-general .general-list > li .general-list-icon svg, .mobile-general .general-list > li .general-list-icon svg {
           width: 100%;
           height: 100%;
           padding: 15px; }
-          #mobile-general .general-list > li .general-list-icon svg path {
+          #mobile-general .general-list > li .general-list-icon svg path, .mobile-general .general-list > li .general-list-icon svg path {
             fill: #50A5DD; }
-      #mobile-general .general-list > li div h3 {
+      #mobile-general .general-list > li div h3, .mobile-general .general-list > li div h3 {
         margin-bottom: 15px;
         font-size: 24px;
         font-weight: 700; }
-      #mobile-general .general-list > li div p {
+      #mobile-general .general-list > li div p, .mobile-general .general-list > li div p {
         font-size: 18px;
         font-weight: 400; }
-      #mobile-general .general-list > li .general-breadcrumbs {
+      #mobile-general .general-list > li .general-breadcrumbs, .mobile-general .general-list > li .general-breadcrumbs {
         -ms-box-orient: horizontal;
         display: -webkit-box;
         display: -moz-box;
@@ -3198,19 +3198,19 @@ section {
         -webkit-justify-content: center;
         justify-content: center;
         padding: 15px 0; }
-        #mobile-general .general-list > li .general-breadcrumbs li {
+        #mobile-general .general-list > li .general-breadcrumbs li, .mobile-general .general-list > li .general-breadcrumbs li {
           border-radius: 1000px;
           border: 2px solid #40484B;
           margin: 0 7.5px; }
-          #mobile-general .general-list > li .general-breadcrumbs li a {
+          #mobile-general .general-list > li .general-breadcrumbs li a, .mobile-general .general-list > li .general-breadcrumbs li a {
             border-radius: 1000px;
             display: block;
             width: 10px;
             height: 10px;
             background: white; }
-            #mobile-general .general-list > li .general-breadcrumbs li a.active {
+            #mobile-general .general-list > li .general-breadcrumbs li a.active, .mobile-general .general-list > li .general-breadcrumbs li a.active {
               background: #50A5DD; }
-  #mobile-general button {
+  #mobile-general button, .mobile-general button {
     display: block;
     margin: 15px auto;
     text-transform: none !important;

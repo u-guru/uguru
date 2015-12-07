@@ -12,6 +12,8 @@ import os
 
 from app import flask_bcrypt
 
+DEFAULT_PROFILE_PHOTO = 'https://www.uguru.me/static/remote/img/avatar.svg';
+
 ####################
 #Association Tables#
 ####################
@@ -133,7 +135,7 @@ class User(Base):
     #FB Login IDs
     name = Column(String)
     email = Column(String, unique=True, nullable=False)
-    profile_url = Column(String, default="https://graph.facebook.com/10152573868267292/picture?width=100&height=100")
+    profile_url = Column(String, default="https://www.uguru.me/static/remote/img/avatar.svg")
 
 
     #credibility confirmation
@@ -379,6 +381,23 @@ class User(Base):
             db_session.rollback()
             raise
 
+    def getGuruRatingsForCourse(self, course_id):
+        course_ratings = []
+        for rating in user.guru_ratings:
+            if rating.portfolio_item and rating.portfolio_item.course_id == course_id \
+            and course not in course_ratings:
+                course_ratings.append(rating)
+
+            elif rating.session and rating.session.course_id and \
+            rating.session.course_id == course_id and course not in course_ratings:
+                course_ratings.append(rating)
+
+            elif rating.request and rating.request.course_id and \
+            rating.request.course_id == course and course not in course_ratings:
+                course_ratings.append(rating)
+
+        return course_ratings
+
     def initExperience(self, title, years, description):
         e = Experience()
         e.title=title
@@ -473,6 +492,27 @@ class User(Base):
 
     def get_transfer_cards(self):
         return [card for card in self.cards if card.is_transfer_card]
+
+    def generateProfileCode(self):
+        from random import randint
+        user_first_name = self.getFirstName()
+
+
+        is_profile_code_taken = User.query.filter_by(profile_code=user_first_name.lower()).all()
+        while True:
+            if not is_profile_code_taken:
+                profile_code = is_profile_code_taken
+                self.profile_code = profile_code
+                break
+            else:
+                profile_code = user_first_name + str(randint(0, 1000))
+                ## keep cycling until generated
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
 
     def request_active(self, course_id, _type):
         for _request in self.requests:
@@ -692,9 +732,45 @@ class Shop(Base):
 
     title = Column(String)
     description = Column(String)
+    @staticmethod
+    def initAcademicShop(user):
+        shop = Shop()
+        shop.dark_mode = True
+        shop.category_id = Category.query.filter_by(name='Academic').all()[0].id
+        shop.is_featured = True
+
+        try:
+            db_session.add(shop)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        if not user.profile_code:
+            user.profile_code = user.generateProfileCode()
 
 
+        shop.profile_url = "https://www.uguru.me/academic/%s" % user.profile_code
+        shop.guru_id = user.id
+        user.guru_shops.append(shop)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
 
+        Calendar_Event.createShopCreationDayEvent(user, shop)
+
+        if user.guru_courses and not shop.portfolio_items:
+            for course in user.guru_courses:
+                guru_ratings_for_course = user.getGuruRatingsForCourse(course.id)
+                Portfolio_Item.initAcademicPortfolioItem(user, shop, course, arr_rating_objs)
+
+        if shop.portfolio_items:
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
 
 class Calendar_Event(Base):
 
@@ -715,6 +791,17 @@ class Calendar_Event(Base):
         backref="calendar_events"
     )
 
+    shop_id = Column(Integer, ForeignKey('shop.id'))
+    shop = relationship("Shop",
+        uselist=False,
+        primaryjoin="Shop.id == Calendar_Event.shop_id",
+        backref="calendar_events")
+
+    portfolio_item_id = Column(Integer, ForeignKey('portfolio_item.id'))
+    portfolio_item = relationship("Portfolio_Item",
+        uselist=False,
+        primaryjoin="Portfolio_Item.id == Calendar_Event.portfolio_item_id",
+        backref="calendar_events")
 
     # shop_id = Column(Integer, ForeignKey('shop.id'))
     # shop = relationship("Shop", uselist=False, backref="portfolio_items")
@@ -734,11 +821,39 @@ class Calendar_Event(Base):
     end_time = Column(DateTime)
     location = Column(String)
 
+    is_day_event = Column(Boolean)
+
     ### Todo
     ## -- Create one --> many relationship event.attendees (RSVP ability)
     ## -- Attachments
     ## -- Position object
     ## -- create Event Type object for oh hours, etc. String hack for now
+
+    @staticmethod
+    def createShopCreationDayEvent(user, shop):
+        ce = Calendar_Event()
+
+        ce.is_guru = True
+        ce.time_created = datetime.now()
+        ce.is_day_event = True
+        ce.private = True
+        ce.title = '%s launched an %s shop' % (user.getFirstName().title(), shop.category.name.lower())
+
+        try:
+            db_session.add(ce)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        try:
+            ce.calendar_id = user.guru_calendar_id
+            ce.shop_id = shop.id
+        except:
+            db_session.rollback()
+            raise
+
+
     @staticmethod
     def createGuruOfficeHours(event_json, calendar):
 
@@ -2210,8 +2325,8 @@ class Portfolio_Item(Base):
 
     avg_rating = Column(Float)
 
-    hourly_price = Column(Float)
-    max_hourly_price = Column(Float)
+    hourly_price = Column(Float, default = 10)
+    max_hourly_price = Column(Float, default = 0)
 
     unit_price = Column(Float)
     max_unit_price = Column(Float)
@@ -2238,6 +2353,38 @@ class Portfolio_Item(Base):
         uselist=False,
         backref="portfolio_items")
 
+    @staticmethod
+    def initAcademicPortfolioItem(user, shop, course, arr_rating_objs):
+        pi = Portfolio_Item()
+        pi.title = "%s's %s Shop" % (user.getFirstName().title(), shop.category.name.title())
+        pi.description = course.full_name
+
+        pi.avg_rating = user.calcCourseSpecificAvgRating(course.id)
+        pi.admin_approved = True
+        pi.time_created = datetime.now()
+        try:
+            db_session.add(pi)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        pi.user_id = user.id
+        pi.shop_id = shop.id
+        pi.course_id = course.id
+
+        rating_sum = 0
+        for rating in arr_rating_objs:
+            rating.portfolio_item_id = pi.id
+            rating_sum += rating.guru_rating
+        avg = float(rating_sum) / (len(arr_rating_objs) * 1.0)
+        if avg > 0:
+            pi.avg_rating = avg
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     ### user -- create custom portfolio item
     ###
@@ -2611,6 +2758,20 @@ class Currency(Base):
     description = Column(String)
     icon_url = Column(String)
     is_approved = Column(Boolean, default=False)
+
+
+    DEFAULT_CURRENCIES = ['Food', 'Money', 'Coffee', 'Giftcards', 'Kitten Time', 'Meal Points', 'Chipotle', 'Dogecoin', 'Concert Tickets', 'Puppy Time', 'Cookies']
+
+    @staticmethod
+    def init(arr_names):
+        currencies = Currency.query.all()
+        if not currencies:
+            for currency in Currency.DEFAULT_CURRENCIES:
+                c = Currency()
+                c.is_approved = True
+                c.name = currency
+                db_session.add(c)
+                db_session.commit()
 
 
 class Category(Base):

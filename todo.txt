@@ -1,0 +1,72 @@
+####
+1. Backend, REST, Serialization
+
+****  When a user is created
+        - migrate & link (relationship_id + course_id from old data && verify)
+            - initiate session + request
+        - PI > resources
+        - PI > tags
+        - create guru office hours
+        - create all shops
+        - link remainder of recipients
+
+**** Serialize (Server + client)
+        - guru_shops
+        - create_guru_shop
+        - currencies
+            - add_currency, remove_currency
+        - calendar_events
+            - create_calendar_event
+            - cancel_calendar_event (archive)
+            - edit_calendar_event
+        - portfolio_items
+            - remove portfolio_item
+            - edit
+            - create
+            -
+
+
+2. Client-side
+        - university specific view
+        - high school college specific view
+
+2.5 Test case coverage
+        - try public URLs for academic shop
+        - try public URLs for calendarshop
+    - Course processing
+    - Image processing
+
+3. Content + data
+    - Icon URLS for "we will work for"
+
+#######################
+Platform Specific Bugs
+#######################
+- iOS white status bar
+    > sidebar
+    > Guru home
+
+
+## Signup modal
+- text-wrap CSS
+### University page
+- white screen transition (get rid of it)
+-show # of courses
+### Become Guru
+- Fix become a Guru
+- show checkmark immediately after course-tapped
+
+### Core Feature
+- White screen transition
+- horizontal course view when selected
+- progress bar missing
+
+# Content
+    > Become a guru
+
+# Guru Home Page
+- onboarding for first time referral w/ tool-tips
+- Welcome guru for the first time
+
+### Sidebar
+- Small bg_url

@@ -670,6 +670,7 @@ if arg == 'seed_admin':
     user.school_email_confirmed = True
     user.phone_number_confirmed = True
     user.phone_number = 8135009853
+    user.guru_introduction = 'alkdjaslkdjaskldjksladjaklsdjlak'
     user.school_email = 'gabrielle@berkeley.edu'
     user.profile_code = account_name.split(' ')[0].lower()
     user.referral_code = account_name.split(' ')[0].lower()
@@ -685,7 +686,97 @@ if arg == 'seed_admin':
     # save changes to local database
     db_session.commit()
 
-    #1. Credibility
+    def getUserDictFromServer(user):
+        import requests, os, json
+        if os.environ.get('PRODUCTION'):
+            url = 'https://www.uguru.me/api/v1/user/%s' % user.id
+        else:
+            url = 'http://localhost:5000/api/v1/user/%s' % user.id
+        _sum = 0
+        user_dict = json.loads(requests.get(url).text)
+        return user_dict
+
+    def checkCredibilityOfUser(user):
+        user_dict = getUserDictFromServer(user)
+        _sum = 0
+        if user_dict.get('fb_id'): _sum += 20
+        if user_dict.get('transcript_file'): _sum += 20
+        if user_dict.get("phone_number_confirmed"): _sum += 20
+        if user_dict.get("guru_experiences") and len(user_dict.get('guru_experiences')) > 0: _sum += 20
+        if user_dict.get('school_email_confirmed'): _sum += 20
+        return _sum
+
+
+
+
+    def selectThreeRandCurrencies(user):
+        currencies = Currency.query.all()
+        num_currencies = len(currencies)
+        from random import randint
+        for _ in range(0,10000):
+            currency = currencies(randint(0, num_currencies))
+            if currency not in user.guru_currencies:
+                user.guru_currencies.append(currency)
+            if len(user.guru_currencies) == 3:
+                db_session.commit()
+                break
+
+    def selectThreeRandLanguages(user):
+        languages = Languages.query.all()
+        num_languages = len(languages)
+        from random import randint
+        for _ in range(0,10000):
+            language = languages(randint(0, num_languages))
+            if language not in user.guru_languages:
+                user.guru_languages.append(language)
+            if len(user.guru_languages) == 3:
+                db_session.commit()
+                break
+
+
+    def initUserDefaults(user):
+        cashCurrency = Currency.query.filter_by(name='Cash').all()[0]
+        if not user.guru_currencies:
+            user.guru_currencies.append(cashCurrency)
+        if not user.guru_calendar:
+            Calendar.initGuruCalendar(user)
+        Shop.initAcademicShop(user)
+
+
+    initUserDefaults(user)
+    def countShopResourceItems():
+        return 0
+
+    def countShopTagItems():
+        return 0
+
+    def countContactMethods(user):
+        return 0
+
+    def profileCompletionUser(user):
+        user_dict = getUserDictFromServer(user)
+        print """ \n
+        # Shops: %s,
+        # Subcategories: %s,
+        # Portfolio Items: %s,
+        # Will work for: %s,
+        # Guru Experiences: %s,
+        # Guru Introduction: %s characters,
+        # Profile Code: %s -- exists,
+        # Contact Methods: %s different methods,
+        # Guru Calendar Events: %s events,
+        # PI Resources: %s different resources,
+        # PI Tags: %s different tags,
+        """ % (len(user.guru_shops), len(user.guru_subcategories), len(user.portfolio_items),\
+            len(user.guru_currencies), len(user.guru_experiences), len(user.guru_introduction), len(user.profile_code),\
+            countContactMethods(user), len(user.guru_calendar.calendar_events), countShopResourceItems(), countShopTagItems())
+
+    def printAllShopsUserCreated(user):
+        pass
+
+    print "credibility percentage %s" % checkCredibilityOfUser(user)
+    print "profile completion percentage %s" % profileCompletionUser(user)
+
 
 
     #2. Profile

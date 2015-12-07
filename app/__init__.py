@@ -112,14 +112,25 @@ def wildcard(payload, event):
         unique_identifier = mp_dict.get('$email')
         if not unique_identifier:
             unique_identifier = mp_dict.get('$ip')
+            mp_dict['$distinct_id'] = unique_identifier
         if not unique_identifier:
             unique_identifier = mp_dict.get('email_id')
+            mp_dict['$distinct_id'] = unique_identifier
         if not unique_identifier:
             unique_identifier = mp_dict.get('time_created')
+            mp_dict['$distinct_id'] = unique_identifier
         if not unique_identifier:
             from datetime import datetime
             unique_identifier = str(datetime.now())
-        response = createCampaignUserProfile(mp_dict['$email'], mp_dict)
+            mp_dict['$distinct_id'] = unique_identifier
+        try:
+            response = createCampaignUserProfile(mp_dict['$email'], mp_dict)
+        except:
+            try:
+                response = createCampaignUserProfile(mp_dict['$distinct_id'], mp_dict)
+            except:
+                print "fuck this nothing is working"
+                pass
         pprint(response)
 
     return 200

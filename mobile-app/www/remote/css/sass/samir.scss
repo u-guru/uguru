@@ -417,3 +417,34 @@ body.platform-ios
 			position:absolute;
 	}
 }
+
+.bad-joke {
+	font-weight:500;
+	margin-top:-5px;
+	margin-bottom:10px;
+	padding:5px;
+	small {
+		font-size:70%;
+	}
+}
+
+#desktop-general{
+
+	#content-sidebar-label {
+		text-align:left;
+	}
+
+	.general-list {
+		height: 86%;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-between;
+	    padding: 30px 0;
+	}
+
+}
+
+
+.show-display {
+	display:block !important;
+}

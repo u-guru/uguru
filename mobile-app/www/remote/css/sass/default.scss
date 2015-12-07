@@ -402,6 +402,10 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	@include opacity(1);
 }
 
+.show-opacity-impt {
+	opacity:1 !important;
+}
+
 .absolute {
     position: absolute!important;
 }
@@ -1014,6 +1018,9 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	&[class*="-90p"] {
 		background: rgba($shamrock, .9);
 	}
+}
+[class*="bg-transparent"] {
+	background: transparent;
 }
 [class*="bg-azure"] {
 	background: $azure;
