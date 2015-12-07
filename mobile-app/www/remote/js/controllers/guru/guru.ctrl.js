@@ -199,11 +199,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.launchCtaDict[box_elem.id] = function() {
                 var modal_elem = document.querySelector('#' + modal_elem_id);
 
-                   // if (!$scope.user || !$scope.user.id) {
-                   //    $scope.loader.showMsg('Please create an account first!', 0, 500);
-                   //    box_elem = document.querySelector('#cta-box-signup');
-                   //    modal_elem = document.querySelector('#cta-modal-signup');
-                   //  }
+                   if (!$scope.user || !$scope.user.id) {
+                      $scope.loader.showMsg('Please create an account first!', 0, 500);
+                      box_elem = document.querySelector('#cta-box-signup');
+                      modal_elem = document.querySelector('#cta-modal-signup');
+                    }
 
 
 
@@ -519,14 +519,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
             $localstorage.setObject('appOnboarding', appOnboardingObj);
           }
-          // $timeout(function() {
-          //   if (!$scope.root.vars.page_cache.showSignupCTA) {
-          //     $scope.root.vars.page_cache.showSignupCTA = true;
-          //     $scope.launchCtaDict['cta-box-signup']();
-          //     $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
-          //   }
-          //   LoadingService.hide();
-          // }, 2000)
+           
+           if (!$scope.user || !$scope.user.id) {
+              $timeout(function() {
+                $scope.root.vars.loginMode = false;
+                if (!$scope.root.vars.page_cache.showSignupCTA) {
+                  $scope.root.vars.page_cache.showSignupCTA = true;
+                  $scope.launchCtaDict['cta-box-signup']();
+                  $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
+                }
+                LoadingService.hide();
+              }, 1500)
+            }
         }
 
       }, 250)
