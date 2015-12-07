@@ -644,6 +644,34 @@ if arg == 'seed_admin':
         db_session.commit()
         return _file
 
+    def selectXRandomCourses(user, x):
+        university_courses = user.university.popular_courses
+        from random import randint
+
+        for _int in range(0, x * 2):
+            course = university_courses[randint(0, len(university_courses))]
+            user.guru_courses.append(course)
+            if len(user.guru_courses) == x:
+                db_session.commit()
+                break
+
+        for course in user.guru_courses:
+            from random import randint
+            x = randint(2, 10)
+            generateXRandomRatingsForCourse(x, user, course)
+
+    def generateXRandomRatingsForCourse(x, user,course):
+        from random import randint
+        for _int in range(0, x):
+            rating = Rating()
+            rating.guru_rating = randint(3, 5)
+            rating.guru_id = user.id
+            rating.course_id = course.id
+            db_session.add(rating)
+            db_session.commit()
+            user.guru_ratings.append(rating)
+            db_session.commit()
+
     #example of deleting a user's files
     def deleteAllUserFiles(user):
         for _file in user.files:
@@ -652,12 +680,58 @@ if arg == 'seed_admin':
             db_session.delete(_file)
             db_session.commit()
 
-    deleteAllUserFiles(user)
+    def clearUserShopsAndItems(user):
+        for shop in user.guru_shops:
+            for item in shop.portfolio_items:
+                item.shop_id = None
+                item.user_id = None
+                user.portfolio_items.remove(item)
+                shop.portfolio_items.remove(item)
+                db_session.delete(item)
+                db_session.commit()
+            shop.user_id = None
+            user.guru_shops.remove(shop)
+            db_session.delete(shop)
+            db_session.commit()
+        for item in user.portfolio_items:
+            item.user_id = None
+            db_session.delete(item)
+            db_session.commit()
 
 
 
-    # before creating a new file, lets deleate any old ones
-    print len(user.files)
+    def clearUserCalendar(user):
+        calendar = user.guru_calendar
+        if calendar:
+            user.guru_calendar.guru_id = None
+            user.guru_calendar = None
+        else:
+            return
+        for event in calendar.calendar_events:
+            event.calendar_id = None
+            db_session.delete(event)
+            db_session.commit()
+        db_session.delete(calendar)
+        user.guru_calendar = None
+        db_session.commit()
+
+    def clearGuruRatings(user):
+        for rating in user.guru_ratings:
+            user.guru_id = None
+            db_session.delete(rating)
+            db_session.commit()
+
+    def clearAccountInfo(user):
+        deleteAllUserFiles(user)
+        clearUserShopsAndItems(user)
+        clearUserCalendar(user)
+        clearGuruRatings(user)
+        user.guru_subcategories = []
+        user.guru_courses = []
+        db_session.commit()
+
+
+    clearAccountInfo(user)
 
     transcript_file = createNewFile(user)
 
@@ -670,12 +744,13 @@ if arg == 'seed_admin':
     user.school_email_confirmed = True
     user.phone_number_confirmed = True
     user.phone_number = 8135009853
+    user.is_a_guru = True
     user.guru_introduction = 'alkdjaslkdjaskldjksladjaklsdjlak'
     user.school_email = 'gabrielle@berkeley.edu'
     user.profile_code = account_name.split(' ')[0].lower()
     user.referral_code = account_name.split(' ')[0].lower()
     user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
-
+    selectXRandomCourses(user, 10)
 
     if not user.guru_experiences:
         user.initExperience('CS10 Tutor', 12, 'i was a cs10 tutor for years')
@@ -721,6 +796,50 @@ if arg == 'seed_admin':
                 db_session.commit()
                 break
 
+
+
+    def getFakeTagsArr(courses):
+        from random import randint
+        result_dict = {}
+        for course in courses:
+            result_dict[course.short_name] = course.full_name.split(' ')
+        return result_dict
+
+    def getFakeResourcesArr(courses):
+        from random import randint
+        result_arr = []
+        file_types = ['gDoc', 'pdf', 'jpeg', 'mp4', 'docx', '.ppt']
+        file_names = ['HW', 'Study Guide', 'Hard Problem #', 'Practice Set']
+        for course in courses:
+            course_resource_dict = {'id':course.id, 'resources':[]}
+            for _int in range(0, 4):
+                rand_file_name = file_names[randint(0, len(file_names) - 1)]
+                rand_file_type = file_types[randint(0, len(file_types) - 1)]
+                course_resource_dict['resources'].append({
+                    'title': course.short_name + ' ' + rand_file_name,
+                    'file_type': rand_file_type,
+                    'description': 'A %s file for a %s %s' % (rand_file_type, course.short_name, rand_file_name),
+                    'site_url': "https://www.dropbox.com/%s.%s" % ((course.short_name + ' ' + rand_file_name).replace(' ', '_').lower(), rand_file_type)
+                    })
+            result_arr.append(course_resource_dict)
+        return result_arr
+    def generateFakeShopData(user):
+        fake_data_dict = {}
+        from random import randint
+        for course in user.guru_courses:
+            fake_data_dict[course.short_name] = {
+                'tags': getFakeTagsArr(user.guru_courses),
+                'resources': getFakeResourcesArr(user.guru_courses),
+                'pricing': {
+                    'unit': randint(3, 10),
+                    'max_unit': randint(10, 20),
+                    'hour': randint(10, 20),
+                    'max_hourly': randint(10, 30),
+                }
+            }
+        return fake_data_dict
+
+
     def selectThreeRandLanguages(user):
         languages = Languages.query.all()
         num_languages = len(languages)
@@ -733,6 +852,9 @@ if arg == 'seed_admin':
                 db_session.commit()
                 break
 
+    for subcategory in Subcategory.query.all():
+        user.guru_subcategories.append(subcategory)
+        db_session.commit()
 
     def initUserDefaults(user):
         cashCurrency = Currency.query.filter_by(name='Cash').all()[0]
@@ -740,42 +862,75 @@ if arg == 'seed_admin':
             user.guru_currencies.append(cashCurrency)
         if not user.guru_calendar:
             Calendar.initGuruCalendar(user)
-        Shop.initAcademicShop(user)
+        fake_data = generateFakeShopData(user)
+        Shop.initAcademicShop(user, fake_data)
 
 
     initUserDefaults(user)
-    def countShopResourceItems():
+    def selectAndShopResourceItems():
         return 0
 
-    def countShopTagItems():
+    def selectAndCountShopTagItems():
         return 0
 
-    def countContactMethods(user):
+    def selectAndCountContactMethods(user):
         return 0
+
+    def shopDetails(user):
+        index = 0
+        for shop in user.guru_shops:
+            index += 1
+            print "\n\n\n"
+            print "###############"
+            print "Shop #%s" % index
+            print "Title: %s" % shop.title
+            print "Description: %s" % shop.description
+            print "# of ShowCase Items: %s" % len(shop.portfolio_items)
+            print "###############"
+            print
+            print "Showcasing %s shop items" % len(shop.portfolio_items)
+            for item in shop.portfolio_items:
+                print
+                print item.title
+                print item.description
+                print item.avg_rating , 'avg rating'
+                print len(item.ratings), 'ratings'
+                print len(item.resources), 'total num resources'
+                print len(item.tags), 'total num tags'
+                print "Hourly Price: %s per hour, w/ max $%s per hour" % (item.hourly_price, item.max_hourly_price)
+                print "Unit Price: %s per unit, w/ max $%s per unit" % (item.unit_price, item.max_unit_price)
+
+
 
     def profileCompletionUser(user):
         user_dict = getUserDictFromServer(user)
-        print """ \n
+        print """ \n\n
+        ######################
+        ## Higher Level Info
+        ######################
         # Shops: %s,
         # Subcategories: %s,
         # Portfolio Items: %s,
         # Will work for: %s,
         # Guru Experiences: %s,
         # Guru Introduction: %s characters,
+        # Guru Courses: %s courses,
         # Profile Code: %s -- exists,
         # Contact Methods: %s different methods,
         # Guru Calendar Events: %s events,
+        # Guru Ratings: %s ratings,
         # PI Resources: %s different resources,
         # PI Tags: %s different tags,
         """ % (len(user.guru_shops), len(user.guru_subcategories), len(user.portfolio_items),\
-            len(user.guru_currencies), len(user.guru_experiences), len(user.guru_introduction), len(user.profile_code),\
-            countContactMethods(user), len(user.guru_calendar.calendar_events), countShopResourceItems(), countShopTagItems())
+            len(user.guru_currencies), len(user.guru_experiences), len(user.guru_introduction), len(user.guru_courses),\
+            len(user.profile_code), selectAndCountContactMethods(user), len(user.guru_calendar.calendar_events), len(user.guru_ratings), selectAndShopResourceItems(), selectAndCountShopTagItems())
 
     def printAllShopsUserCreated(user):
         pass
 
     print "credibility percentage %s" % checkCredibilityOfUser(user)
     print "profile completion percentage %s" % profileCompletionUser(user)
+    print "\n\nAll Shop Info\n\n", shopDetails(user)
 
 
 

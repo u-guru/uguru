@@ -383,7 +383,7 @@ class User(Base):
 
     def getGuruRatingsForCourse(self, course_id):
         course_ratings = []
-        for rating in user.guru_ratings:
+        for rating in self.guru_ratings:
             if rating.portfolio_item and rating.portfolio_item.course_id == course_id \
             and course not in course_ratings:
                 course_ratings.append(rating)
@@ -395,6 +395,10 @@ class User(Base):
             elif rating.request and rating.request.course_id and \
             rating.request.course_id == course and course not in course_ratings:
                 course_ratings.append(rating)
+
+            elif rating.course_id == course_id:
+                course_ratings.append(rating)
+
 
         return course_ratings
 
@@ -733,7 +737,8 @@ class Shop(Base):
     title = Column(String)
     description = Column(String)
     @staticmethod
-    def initAcademicShop(user):
+    def initAcademicShop(user, fake_data=None):
+        print "fake_data", fake_data
         shop = Shop()
         shop.dark_mode = True
         shop.category_id = Category.query.filter_by(name='Academic').all()[0].id
@@ -752,6 +757,10 @@ class Shop(Base):
 
         shop.profile_url = "https://www.uguru.me/academic/%s" % user.profile_code
         shop.guru_id = user.id
+        shop.title = "%s's Academic Shop" % user.getFirstName()
+        if len(user.guru_courses) > 2:
+            shop.description = "Teaching courses like %s, %s, %s" % (user.guru_courses[0].short_name, \
+            user.guru_courses[1].short_name, user.guru_courses[2].short_name )
         user.guru_shops.append(shop)
         try:
             db_session.commit()
@@ -760,10 +769,34 @@ class Shop(Base):
 
         Calendar_Event.createShopCreationDayEvent(user, shop)
 
-        if user.guru_courses and not shop.portfolio_items:
+        if user.guru_courses:
             for course in user.guru_courses:
-                guru_ratings_for_course = user.getGuruRatingsForCourse(course.id)
-                Portfolio_Item.initAcademicPortfolioItem(user, shop, course, arr_rating_objs)
+                course_ids_that_have_portfolios = [pi.course.id for pi in user.portfolio_items if pi.course]
+                if course.id not in course_ids_that_have_portfolios:
+                    guru_ratings_for_course = user.getGuruRatingsForCourse(course.id)
+                    print "course %s not in user's %s portfolio items with %s guru ratings" % (course.short_name, len(user.portfolio_items), len(user.guru_ratings))
+                    pi = Portfolio_Item.initAcademicPortfolioItem(user, shop, course, guru_ratings_for_course)
+                    if fake_data and fake_data.get(course.short_name) and fake_data[course.short_name].get('resources'):
+                        fake_resources_arr = fake_data[course.short_name]['resources']
+                        for resource in fake_resources_arr:
+                            Resource.init(user, pi, course, resource.get('title'), resource.get('description'), resource.get('site_url'), resource.get('file_type'))
+
+                    if fake_data and fake_data.get(course.short_name) and fake_data[course.short_name].get('tags'):
+                        fake_tags_dict = fake_data[course.short_name]['tags']
+                        course_tags = fake_tags_dict[course.short_name]
+                        for tag in course_tags:
+                            Tag.initPortfolioTag(user, pi, course, tag, True)
+
+                    if fake_data and fake_data.get(course.short_name) and fake_data[course.short_name].get('pricing'):
+                        pricing_dict = fake_data[course.short_name].get('pricing')
+                        if pricing_dict.get('unit'):
+                            pi.unit_price = pricing_dict['unit']
+                        if pricing_dict.get('max_unit'):
+                            pi.max_unit_price = pricing_dict['max_unit']
+                        if pricing_dict.get('hourly'):
+                            pi.hourly_price = pricing_dict['hourly']
+                        if pricing_dict.get('max_hourly'):
+                            pi.max_hourly_price = pricing_dict['max_hourly']
 
         if shop.portfolio_items:
             try:
@@ -1425,6 +1458,33 @@ class Resource(Base):
 
     course_string = Column(String)
 
+    @staticmethod
+    def init(user, portfolio_item, course, title, description, url, file_type):
+        r = Resource()
+        r.title = title
+        r.description = description
+        r.site_url = url
+        r.file_type = file_type
+
+        try:
+            db_session.add(r)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        r.contributed_user_id = user.id
+        if portfolio_item:
+            r.portfolio_item_id = portfolio_item.id
+        if course:
+            r.course_id = course.id
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
 
 class Language(Base):
     __tablename__ ='language'
@@ -1547,9 +1607,33 @@ class Tag(Base):
         backref="tags")
 
 
+    @staticmethod
+    def initPortfolioTag(user, portfolio_item, course, name, is_admin=True):
+        t = Tag()
+        t.time_created = datetime.now()
+        t.name = name
+        t.last_referenced = datetime.now()
+        t.admin_approved = is_admin
 
+        try:
+            db_session.add(t)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
+        if user:
+            t.creator_id = user.id
+        if portfolio_item:
+            t.portfolio_item_id = portfolio_item.id
+        if course:
+            t.courses.append(course)
 
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
 
 class Request(Base):
@@ -2356,10 +2440,12 @@ class Portfolio_Item(Base):
     @staticmethod
     def initAcademicPortfolioItem(user, shop, course, arr_rating_objs):
         pi = Portfolio_Item()
-        pi.title = "%s's %s Shop" % (user.getFirstName().title(), shop.category.name.title())
+        if course.department_long and course.code:
+            pi.title = "%s %s" % (course.department_long, course.code)
+        else:
+            pi.title = course.short_name
         pi.description = course.full_name
 
-        pi.avg_rating = user.calcCourseSpecificAvgRating(course.id)
         pi.admin_approved = True
         pi.time_created = datetime.now()
         try:
@@ -2377,14 +2463,18 @@ class Portfolio_Item(Base):
         for rating in arr_rating_objs:
             rating.portfolio_item_id = pi.id
             rating_sum += rating.guru_rating
-        avg = float(rating_sum) / (len(arr_rating_objs) * 1.0)
-        if avg > 0:
-            pi.avg_rating = avg
+        if len(arr_rating_objs):
+            avg = float(rating_sum) / (len(arr_rating_objs) * 1.0)
+            if avg > 0:
+                pi.avg_rating = avg
+        else:
+            pi.avg_rating = 0.0
         try:
             db_session.commit()
         except:
             db_session.rollback()
             raise
+        return pi
 
     ### user -- create custom portfolio item
     ###
@@ -2534,7 +2624,11 @@ class Rating(Base):
 
     transaction = relationship("Transaction", uselist=False, backref="rating")
 
-
+    course_id = Column(Integer, ForeignKey("course.id"))
+    course = relationship("Course",
+        primaryjoin = "(Course.id==Rating.course_id)",
+        uselist=False,
+        backref="guru_ratings")
 
     is_question = Column(Boolean)
     is_task = Column(Boolean)
