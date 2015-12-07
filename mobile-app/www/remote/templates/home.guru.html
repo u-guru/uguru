@@ -11,7 +11,7 @@
 					<a>
 						<svg viewBox="0 0 100 100">
 							<circle cx="50" cy="50" r="36"></circle>
-					        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+							<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
 						</svg>
 					</a>
 				</div>
@@ -21,7 +21,7 @@
 				<!-- <div ></div> -->
 			</ion-pane>
 
-			<ion-pane id='cta-modal-profile' class='show full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
+			<ion-pane id='cta-modal-profile' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/desktop.guru.profile.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -53,9 +53,7 @@
 				</div>
 			</ion-pane>
 			<ion-pane id='cta-modal-tour' class='hide-display cta-modal bg-transparent'>
-				<!-- <div class='full-xy absolute top-0 left-0 guru-desktop-forms'>
-
-				</div> -->
+				<!-- <div class='full-xy absolute top-0 left-0 guru-desktop-forms'></div> -->
 				<div class="uguru-popup show" id='guru-uguru-popup' ng-include="img_base + BASE + 'templates/welcome.guru.popup.html'"></div>
 			</ion-pane>
 
@@ -73,8 +71,7 @@
 
 			<div class="guru-home-greeting">
 				<div>
-					<h1>Hello {{user.first_name || 'Guru'}},
-						<br/>how are you today?</h1>
+					<h1>Hello {{user.first_name || 'Guru'}},<br/>how are you today?</h1>
 					<div class="guru-home-notifications">
 						<ul>
 							<li>
@@ -148,7 +145,6 @@
 									<h5>{{user.guru_ratings.length}} reviews</h5>
 								</a>
 							</div>
-
 						</div>
 						<div>
 							<svg class="square" viewBox="0 0 100 100">
@@ -157,8 +153,7 @@
 							<div id='cta-box-balance' class='cta-box'>
 								<a>
 									<h3>Total Earned</h3>
-									<h1 id="home-tiles-earnings">
-										<span>$</span>{{user.total_earned || 0}}</h1>
+									<h1 id="home-tiles-earnings"><span>$</span>{{user.total_earned || 0}}</h1>
 								</a>
 							</div>
 						</div>
@@ -171,7 +166,7 @@
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
 							<div id='cta-box-profile' class='cta-box'>
-								<div >
+								<div>
 									<span ng-if='!user.id || user.current_profile_percent < 80' class="guru-tiles-warning active">!</span>
 									<svg viewBox="0 0 100 100">
 										<path d="M50.0000186,14 C30.1802821,14 14.030417,30.1419103 14.0000373,49.9835145 C13.9861494,59.7785062 17.8513192,69.2750235 24.6069034,76.038418 C31.0239706,82.4616905 39.5485232,86 48.6120989,86 C49.0955707,86 49.5825143,85.9904558 50.072062,85.969632 C70.2181637,85.1444892 86,69.3383625 86,49.9861175 C86,30.142778 69.8510029,14 50.0000186,14 L50.0000186,14 Z M24.18272,74.5721092 C25.26272,65.2447492 30.77792,57.3967492 38.83328,53.6988292 C35.65568,50.7151492 33.65696,46.4911492 33.65696,41.7986692 C33.65696,32.7871492 40.98848,25.4556292 50,25.4556292 C59.01152,25.4556292 66.34304,32.7871492 66.34304,41.7986692 C66.34304,46.4911492 64.34432,50.7151492 61.16672,53.6988292 C69.22208,57.3967492 74.73728,65.2447492 75.81728,74.5721092"></path>
@@ -209,8 +204,7 @@
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
 							<div>
-								<h2>
-									<strong><u>{{guruHomeTips.length}}</u></strong> Action Items</h2>
+								<h2><strong><u>{{guruHomeTips.length}}</u></strong> Action Items</h2>
 								<ion-slide-box show-pager='true'>
 									<ion-slide ng-repeat='tip in guruHomeTips'>
 										<div class='card'>
