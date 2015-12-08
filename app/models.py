@@ -774,7 +774,7 @@ class Shop(Base):
                 course_ids_that_have_portfolios = [pi.course.id for pi in user.portfolio_items if pi.course]
                 if course.id not in course_ids_that_have_portfolios:
                     guru_ratings_for_course = user.getGuruRatingsForCourse(course.id)
-                    print "course %s not in user's %s portfolio items with %s guru ratings" % (course.short_name, len(user.portfolio_items), len(user.guru_ratings))
+
                     pi = Portfolio_Item.initAcademicPortfolioItem(user, shop, course, guru_ratings_for_course)
                     if fake_data and fake_data.get(course.short_name) and fake_data[course.short_name].get('resources'):
                         fake_resources_arr = fake_data[course.short_name]['resources']
@@ -782,8 +782,7 @@ class Shop(Base):
                             Resource.init(user, pi, course, resource.get('title'), resource.get('description'), resource.get('site_url'), resource.get('file_type'))
 
                     if fake_data and fake_data.get(course.short_name) and fake_data[course.short_name].get('tags'):
-                        fake_tags_dict = fake_data[course.short_name]['tags']
-                        course_tags = fake_tags_dict[course.short_name]
+                        course_tags = fake_data[course.short_name]['tags']
                         for tag in course_tags:
                             Tag.initPortfolioTag(user, pi, course, tag, True)
 
@@ -855,6 +854,15 @@ class Calendar_Event(Base):
     location = Column(String)
 
     is_day_event = Column(Boolean)
+
+    ## Title
+    ## Description
+    ## Attachments
+    ## Location
+    ## start time
+    ## end time
+    ## is public
+
 
     ### Todo
     ## -- Create one --> many relationship event.attendees (RSVP ability)

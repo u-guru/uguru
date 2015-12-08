@@ -27,11 +27,13 @@ angular.module('uguru.guru.controllers')
   'DeviceService',
   'LoadingService',
   '$ionicViewSwitcher',
+  'Currency',
+  'User',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
-  DeviceService, LoadingService, $ionicViewSwitcher) {
+  DeviceService, LoadingService, $ionicViewSwitcher, Currency, User) {
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
@@ -47,6 +49,18 @@ angular.module('uguru.guru.controllers')
     // credibility only variable
     $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
+
+    $timeout(function() {
+      if ($scope.user.academic_shop) {
+        $scope.user.academic_shop.active_portfolio_item = $scope.user.academic_shop.portfolio_items[0];
+      }
+    }, 4000)
+
+
+      $scope.all_currencies = Currency.updateMasterList($scope.user);
+      console.log($scope.all_currencies);
+
+
 
 
     $scope.experience = {name:'samir', years:7, description:"i lvoe teaching this so much"};
@@ -171,6 +185,18 @@ angular.module('uguru.guru.controllers')
       }, 500);
     }
 
+    //TODO --> send error to analytics if no callback
+    $scope.saveGuruIntroductionBehindScenes = function() {
+      User.updateLocal($scope.user);
+      $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
+    }
+
+    $scope.onEnterBlurInput = function($event) {
+      console.log($event);
+      $event.target.blur();
+      alert('shit blurred');
+    }
+
     $scope.saveProfileCode = function() {
       LoadingService.show();
       $scope.refreshTipsAndRanking($scope.user);
@@ -247,7 +273,30 @@ angular.module('uguru.guru.controllers')
     $scope.initLateNightOptions();
 
 
+    $scope.pagePopups = {
+      linkedin: false,
+      fb: false,
+      twitter: false,
+      instagram: false
+    }
 
+    $scope.saveLinkedInUrl = function(url) {
+      LoadingService.showSuccess('Saved!', 2000);
+      $scope.pagePopups.linkedin = false;
+      $scope.updateAttr('public_linkedin_url', $scope.user, $scope.user.public_linkedin_url, null, $scope);
+    }
+
+    $scope.saveFbUrl = function(url) {
+      $scope.updateAttr('public_fb_url', $scope.user, url, $scope.user.public_fb_url, $scope);
+    }
+
+    $scope.saveTwitterUrl = function(url) {
+      $scope.updateAttr('public_twitter_url', $scope.user, url, $scope.user.public_twitter_url, $scope);
+    }
+
+    $scope.saveInstagramUrl = function(url) {
+      $scope.updateAttr('public_instagram_url', $scope.user, url, $scope.user.public_instagram_url, $scope);
+    }
 
     $scope.lateNightOnChange = function() {
       $scope.success.show(0, 750, 'Saved!');
@@ -408,6 +457,18 @@ angular.module('uguru.guru.controllers')
         LoadingService.showSuccess('Introduction Saved', 1500);
         $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
       })
+    }
+
+
+    $scope.updateCurrency = function(currency) {
+      if (currency.active) {
+        currency.active = null;
+        $scope.user.updateAttr('remove_guru_currency', $scope.user, currency, null, $scope) ;
+      } else {
+        currency.active = true;
+        $scope.user.updateAttr('add_guru_currency', $scope.user, currency, null, $scope) ;
+      }
+
     }
 
     $scope.closeAndSaveContactGuruModal = function() {

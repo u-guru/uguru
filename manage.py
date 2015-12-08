@@ -732,8 +732,12 @@ if arg == 'seed_admin':
         clearGuruRatings(user)
         clearGuruExperiences(user)
         user.guru_subcategories = []
-        user.guru_courses = []
-        db_session.commit()
+        try:
+            user.guru_courses = []
+            db_session.commit()
+        except:
+            db_session.rollback()
+
 
 
     clearAccountInfo(user)
@@ -815,29 +819,24 @@ if arg == 'seed_admin':
                 db_session.commit()
                 break
 
-    def getFakeTagsArr(courses):
-        from random import randint
-        result_dict = {}
-        for course in courses:
-            result_dict[course.short_name] = course.full_name.split(' ')
-        return result_dict
+    def getFakeTagsArr(course):
+        return course.full_name.split(' ')
 
-    def getFakeResourcesArr(courses):
+    def getFakeResourcesArr(course):
         from random import randint
         result_arr = []
-        file_types = ['gDoc', 'pdf', 'jpeg', 'mp4', 'docx', '.ppt']
+        file_types = ['gdoc', 'pdf', 'jpeg', 'mp4', 'docx', 'ppt']
         file_names = ['HW', 'Study Guide', 'Hard Problem #', 'Practice Set']
-        for course in courses:
-            course_resource_dict = {'id':course.id, 'resources':[]}
-            for _int in range(0, 4):
-                rand_file_name = file_names[randint(0, len(file_names) - 1)]
-                rand_file_type = file_types[randint(0, len(file_types) - 1)]
-                course_resource_dict['resources'].append({
-                    'title': course.short_name + ' ' + rand_file_name,
-                    'file_type': rand_file_type,
-                    'description': 'A %s file for a %s %s' % (rand_file_type, course.short_name, rand_file_name),
-                    'site_url': "https://www.dropbox.com/%s.%s" % ((course.short_name + ' ' + rand_file_name).replace(' ', '_').lower(), rand_file_type)
-                    })
+        ## add four resources ot this array
+        for _int in range(0, 4):
+            rand_file_name = file_names[randint(0, len(file_names) - 1)]
+            rand_file_type = file_types[randint(0, len(file_types) - 1)]
+            course_resource_dict = {
+                'title': course.short_name + ' ' + rand_file_name,
+                'file_type': rand_file_type,
+                'description': 'A %s file for a %s %s' % (rand_file_type, course.short_name, rand_file_name),
+                'site_url': "https://www.dropbox.com/%s.%s" % ((course.short_name + ' ' + rand_file_name).replace(' ', '_').lower(), rand_file_type)
+            }
             result_arr.append(course_resource_dict)
         return result_arr
     def generateFakeShopData(user):
@@ -845,8 +844,8 @@ if arg == 'seed_admin':
         from random import randint
         for course in user.guru_courses:
             fake_data_dict[course.short_name] = {
-                'tags': getFakeTagsArr(user.guru_courses),
-                'resources': getFakeResourcesArr(user.guru_courses),
+                'tags': getFakeTagsArr(course),
+                'resources': getFakeResourcesArr(course),
                 'pricing': {
                     'unit': randint(3, 10),
                     'max_unit': randint(10, 20),
@@ -907,16 +906,16 @@ if arg == 'seed_admin':
             print "###############"
             print
             print "Showcasing %s shop items" % len(shop.portfolio_items)
-            for item in shop.portfolio_items:
-                print
-                print item.title
-                print item.description
-                print item.avg_rating , 'avg rating'
-                print len(item.ratings), 'ratings'
-                print len(item.resources), 'total num resources'
-                print len(item.tags), 'total num tags'
-                print "Hourly Price: %s per hour, w/ max $%s per hour" % (item.hourly_price, item.max_hourly_price)
-                print "Unit Price: %s per unit, w/ max $%s per unit" % (item.unit_price, item.max_unit_price)
+            # for item in shop.portfolio_items:
+            #     print
+            #     print item.title
+            #     print item.description
+            #     print item.avg_rating , 'avg rating'
+            #     print len(item.ratings), 'ratings'
+            #     print len(item.resources), 'total num resources'
+            #     print len(item.tags), 'total num tags'
+            #     print "Hourly Price: %s per hour, w/ max $%s per hour" % (item.hourly_price, item.max_hourly_price)
+            #     print "Unit Price: %s per unit, w/ max $%s per unit" % (item.unit_price, item.max_unit_price)
 
 
 

@@ -3532,4 +3532,9 @@ body.platform-ios {
 #credit-slider ul li::selection, #credit-slider ul li.active, #credit-slider ul li.activated, #credit-slider ul li a, #credit-slider ul li a:hover {
   background: none !important; }
 
+.pf-character-count {
+  font-size: 12px;
+  font-weight: 500;
+  right: 33px; }
+
 /*# sourceMappingURL=style.css.map */

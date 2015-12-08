@@ -683,7 +683,8 @@
       left: 0;
       padding: 15px;
       font-size: 20px;
-      font-weight: 600; }
+      font-weight: 600;
+      z-index: 100; }
     .pf-type .pf-checklist > li:not(.pf-checklist-full) input {
       filter: alpha(opacity=0);
       opacity: 0;
@@ -1337,6 +1338,58 @@
       font-weight: 700; }
   .pf-modal .pf-shop-item .pf-tags {
     text-align: center; }
+  .pf-modal .pf-shop-item .pf-tags {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 100%; }
+    .pf-modal .pf-shop-item .pf-tags .chip {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      background: #576267;
+      margin-right: 15px; }
+      .pf-modal .pf-shop-item .pf-tags .chip:hover {
+        background: #637074; }
+      .pf-modal .pf-shop-item .pf-tags .chip svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 10px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        width: 12px;
+        height: 12px;
+        margin-right: 3px; }
+      .pf-modal .pf-shop-item .pf-tags .chip input {
+        background: transparent;
+        border: 0;
+        color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input::-webkit-input-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input:-moz-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input::-moz-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input:-ms-input-placeholder {
+          color: white !important; }
   .pf-modal .pf-shop-item .pf-ingredients div .chip {
     margin-top: 5px; }
   .pf-modal .pf-shop-item .pf-attachments ul {
