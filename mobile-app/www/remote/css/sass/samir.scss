@@ -448,3 +448,13 @@ body.platform-ios
 .show-display {
 	display:block !important;
 }
+
+#guru-profile-cta-close {
+
+	z-index: 1000;
+	svg {
+		stroke:white;
+		height:30px;
+		width:30px;
+	}
+}
