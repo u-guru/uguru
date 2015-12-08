@@ -2246,12 +2246,17 @@
 }
 
 #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart svg {
+  display: none;
   padding: 0 15px 15px;
   height: 100%;
 }
 
 #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart svg path {
   stroke-linecap: round;
+}
+
+#desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #percentile + svg {
+  display: inline-block;
 }
 
 #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #percentile {

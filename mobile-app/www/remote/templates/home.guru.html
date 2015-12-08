@@ -4,7 +4,7 @@
 		<div class="main default flex guru-home-container">
 			<!-- @samir -->
 			<!-- This is a toast example -->
-			<div class="guru-toast full-x absolute top-10">
+			<!-- <div class="guru-toast full-x absolute top-10">
 				<div>
 					<span>Please confirm your school email!</span>
 					<button class="chip bg-white txt-auburn">Resend</button>
@@ -15,7 +15,7 @@
 						</svg>
 					</a>
 				</div>
-			</div>
+			</div> -->
 
 			<ion-pane id='cta-modal-credibility' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.credibility.html'">
 				<!-- <div ></div> -->
@@ -37,7 +37,7 @@
 				<!-- <div ></div> -->
 			</ion-pane>
 
-			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/content.general.html'">
+			<ion-pane id='cta-modal-content' class='show full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/content.general.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -52,6 +52,7 @@
 					<div class="main" ng-include="img_base + BASE + 'templates/billing.html'"></div>
 				</div>
 			</ion-pane>
+			
 			<ion-pane id='cta-modal-tour' class='hide-display cta-modal bg-transparent'>
 				<!-- <div class='full-xy absolute top-0 left-0 guru-desktop-forms'></div> -->
 				<div class="uguru-popup show" id='guru-uguru-popup' ng-include="img_base + BASE + 'templates/welcome.guru.popup.html'"></div>

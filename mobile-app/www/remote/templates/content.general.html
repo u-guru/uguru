@@ -11,25 +11,21 @@
 		<div class="main" id='desktop-content'>
 			<div id='content-desc'>
 				<div id="content-sidebar">
-					<h1>Steps to success <br> and student wealth*</h1>
-					<div class='text-center txt-smoke uppercase bad-joke'><small>*about $10</small></div>
-					<ul>
+					<h1>
+						<span>Steps to success<br/>and student wealth*</span>
+						<span class='bad-joke'>*about $10</span>
+					</h1>
+					<ol>
 						<li ng-repeat='section in guideContent|filter:sidebar_input.search_text:strict track by $index'>
-							<a ng-click='sidebar_content.active_section = section;' class='ng-class:{"active":section.sidebar_title === sidebar_content.active_section.sidebar_title}'>
-								<h1 class='full-x text-left' id='content-sidebar-label'>
-										{{$index + 1}}.
-										{{section.sidebar_title}}
-								</h1>
-							</a>
+							<a ng-click='sidebar_content.active_section = section;' class='ng-class:{"active":section.sidebar_title === sidebar_content.active_section.sidebar_title}'>{{section.sidebar_title}}</a>
 						</li>
-					</ul>
+					</ol>
 					<div id="content-sidebar-search" class='left-0 full-x p20xy bg-charcoal bottom-0'>
-						<label for="messenger-sidebar-search">
+						<label for="content-sidebar-search">
 							<svg viewBox="0 0 100 100">
 								<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 							</svg>
 						</label>
-
 						<input name="content-sidebar-search" placeholder="Filter" ng-model='student_search.search_text' />
 					</div>
 				</div>
@@ -41,9 +37,7 @@
 					<li ng-repeat='subsection in sidebar_content.active_section.paragraphs'>
 						<div>
 							<h3 class='txt-charcoal'>{{subsection.subheader}}</h3>
-							<p class='text-charcoal' ng-bind-html="subsection.text">
-
-							</p>
+							<p class='text-charcoal' ng-bind-html="subsection.text"></p>
 						</div>
 					</li>
 				</ol>
