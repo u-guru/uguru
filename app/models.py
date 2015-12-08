@@ -2446,7 +2446,7 @@ class Portfolio_Item(Base):
         backref="portfolio_items")
 
     @staticmethod
-    def initAcademicPortfolioItem(user, shop, course, arr_rating_objs):
+    def initAcademicPortfolioItem(user, shop, course, arr_rating_objs=[]):
         pi = Portfolio_Item()
         if course.department_long and course.code:
             pi.title = "%s %s" % (course.department_long, course.code)

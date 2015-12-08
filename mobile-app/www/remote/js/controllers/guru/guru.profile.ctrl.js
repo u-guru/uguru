@@ -29,15 +29,18 @@ angular.module('uguru.guru.controllers')
   '$ionicViewSwitcher',
   'Currency',
   'User',
+  'PortfolioItem',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
-  DeviceService, LoadingService, $ionicViewSwitcher, Currency, User) {
+  DeviceService, LoadingService, $ionicViewSwitcher, Currency, User, PortfolioItem) {
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
     }
+
+
 
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
@@ -50,22 +53,42 @@ angular.module('uguru.guru.controllers')
     $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
 
-    $timeout(function() {
-      if ($scope.user.academic_shop) {
-        $scope.user.academic_shop.active_portfolio_item = $scope.user.academic_shop.portfolio_items[0];
-      }
-    }, 4000)
 
-
-      $scope.all_currencies = Currency.updateMasterList($scope.user);
-      console.log($scope.all_currencies);
-
-
-
+    $scope.all_currencies = Currency.updateMasterList($scope.user);
 
     $scope.experience = {name:'samir', years:7, description:"i lvoe teaching this so much"};
 
     $scope.showEditGuruIntro = false;
+
+    $scope.bindPortfolioItemObjToScope = function() {
+      $scope.newPortfolioItem = PortfolioItem.initEmpty();
+      PortfolioItem.linkEditModal('#cta-modal-profile-pi-item');
+    }
+
+    $scope.bindPortfolioItemObjToScope();
+
+    $scope.setCourseAndClearInput = function(course) {
+      $scope.newPortfolioItem.course = {
+        id: course.id,
+        short_name: course.short_name,
+        department_long: course.department_long,
+        code: course.code,
+        full_name: course.full_name
+      }
+      var courseInput = document.querySelector('#course-input-1')
+      if (courseInput) {
+        courseInput.value = '';
+      }
+      $scope.searchInputFocus = false;
+    }
+
+    $scope.savePortfolioItem = function(portfolio_item) {
+      if (!PortfolioItem.validateFields(portfolio_item)) {
+        return;
+      }
+      LoadingService.showAmbig('Saving...', 10000);
+      $scope.user.createObj($scope.user, 'add_portfolio_item', portfolio_item , $scope, PortfolioItem.createObjSuccess);
+    }
 
     $scope.toggleDesktopIntroduction = function() {
       $scope.showEditGuruIntro = !$scope.showEditGuruIntro;
@@ -185,6 +208,8 @@ angular.module('uguru.guru.controllers')
       }, 500);
     }
 
+
+
     //TODO --> send error to analytics if no callback
     $scope.saveGuruIntroductionBehindScenes = function() {
       User.updateLocal($scope.user);
@@ -192,9 +217,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.onEnterBlurInput = function($event) {
-      console.log($event);
       $event.target.blur();
-      alert('shit blurred');
     }
 
     $scope.saveProfileCode = function() {
@@ -322,6 +345,17 @@ angular.module('uguru.guru.controllers')
              }
         }
 
+    }
+
+    $scope.focusTag = function() {
+      console.log('input is focused');
+      console.log($scope.newPortfolioItem.tags);
+    }
+
+    $scope.onEnterBlurInput = function($event) {
+      if ($event.keyCode == 13 ||$event.keyCode == 9) {
+        $scope.newPortfolioItem.tags.push($scope.newPortfolioItem.orig_tag);
+      }
     }
 
     $scope.maxHourlyOnChange = function(options) {

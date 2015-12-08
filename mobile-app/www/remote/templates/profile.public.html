@@ -39,7 +39,18 @@
 			<div class="pf-banner pf-banner-athletic" ng-include="img_base + 'templates/svg/athletic.html'"></div>
 			<div class="pf-banner pf-banner-tech" ng-include="img_base + 'templates/svg/tech.html'"></div>
 			<div class="pf-header">
-				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+				<span class="ng-class:{'hide':profile.edit_mode}">
+					<img class='user-icon' ng-src="{{user.profile_url}}" id='guru-profile-img' />
+				</span>
+				<a ng-click='takeProfilePhoto()' class='profile-icon hide ng-class:{"show":profile.edit_mode}'>
+					<span>
+						<img ng-src="{{user.profile_url}}" id='guru-profile-img' />
+					</span>
+					<h1 id='guru-profile-edit-photo-txt'>
+						Edit
+						<br/>Photo
+					</h1>
+				</a>
 				<h1 class="verified">
 					<span class="inline">{{ user.profile_name || 'Nameless Guru' }}</span>
 					<span class="inline">
@@ -52,7 +63,7 @@
 				<!-- <button class="btn-ghost-white">Contact</button> -->
 				<div class='profile-textarea-container relative'>
 					<textarea class="pf-header-desc ng-class:{'hide': profile.edit_mode}" disabled>{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</textarea>
-					<textarea ng-keyup="$event.keyCode == 13 && onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' class="pf-header-desc hide ng-class:{'show': profile.edit_mode}"></textarea>
+					<textarea ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' class="pf-header-desc hide ng-class:{'show': profile.edit_mode}"></textarea>
 					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}' >{{140 - user.guru_introduction.length}}</span>
 				</div>
 				<!-- <ul class="pf-url">
@@ -121,17 +132,7 @@
 						<div ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></div>
 					</ion-pane>
 
-					<ion-pane id='cta-modal-profile-courses' class='full-xy hide-display cta-modal' ng-controller='CoursesController'>
-						<div class="profile-header">
-							<h1>{{user.university.short_name || user.university.name}} courses</h1>
-							<a class="cta-modal-close close-button">
-								<svg viewBox="0 0 100 100">
-									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-								</svg>
-							</a>
-						</div>
-						<div ng-include="img_base + BASE + 'templates/guru.courses.container.html'"></div>
-					</ion-pane>
+
 					<!-- end CTA containers -->
 			<!-- BIND -->
 			<div class="relative pf-shop-desc full-x pf-tab-item ng-class:{'active':activeTabIndex === 1}">
@@ -322,6 +323,7 @@
 			</div>
 
 			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
+
 				<li class="pf-checklist-full active pf-type-{{user.academic_shop.category.hex_color}} hide ng-class:{'show':user.academic_shop.active_portfolio_item}" ng-include="img_base + 'templates/profile.modal.html'"></li>
 
 				<li ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-click='user.academic_shop.active_portfolio_item = portfolio_item;'>
@@ -348,7 +350,7 @@
 
 				<li class="pf-checklist-add">
 					<div class="pf-check-container">
-						<a>
+						<a id='cta-box-profile-pi-item' class='cta-box' ng-click='bindPortfolioItemObjToScope()'>
 							<span class="pf-check-label">
 								<svg viewBox="0 0 100 100">
 									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -359,8 +361,10 @@
 					</div>
 				</li>
 
-				<li class="pf-checklist-full active pf-type-{{user.academic_shop.category.hex_color}} ng-class:{'show': user.academic_shop.edit_portfolio_item}"  ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
+				<li id='cta-modal-profile-pi-item' class="pf-checklist-full full-xy absolute top-0 left-0 cta-modal high-z-index pf-type-{{user.academic_shop.category.hex_color}} ng-class:{'show': user.academic_shop.edit_portfolio_item}"  ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
 			</ul>
+			<!-- <ion-pane id='cta-modal-profile-pi-item' class='guru-cta-profile-container full-xy right-0 hide-display cta-modal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/profile.modal.edit.html'">
+			</ion-pane> -->
 			<div class="pf-edit-pf pf-desktop-edit">
 				<button id="btn-edit-profile" ng-click='profile.edit_mode = true;' class="btn-ghost-white ng-class:{'hide':profile.edit_mode}">Edit</button>
 				<button ng-click='saveGuruProfile()' id='btn-save-profile' class="btn-ghost-white hide ng-class:{'show':profile.edit_mode}">Save</button>

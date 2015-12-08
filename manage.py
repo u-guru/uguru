@@ -648,17 +648,15 @@ if arg == 'seed_admin':
         university_courses = user.university.popular_courses
         from random import randint
 
-        for _int in range(0, x * 2):
-            course = university_courses[randint(0, len(university_courses))]
+        for course in university_courses[0:10]:
             user.guru_courses.append(course)
-            if len(user.guru_courses) == x:
-                db_session.commit()
-                break
+            db_session.commit()
 
         for course in user.guru_courses:
             from random import randint
             x = randint(2, 10)
-            generateXRandomRatingsForCourse(x, user, course)
+            # generateXRandomRatingsForCourse(5, user, course)
+        print len(user.guru_courses), 'courses added'
 
     def generateXRandomRatingsForCourse(x, user,course):
         from random import randint
@@ -812,9 +810,10 @@ if arg == 'seed_admin':
         num_languages = len(languages)
         from random import randint
         for _ in range(0,10000):
-            language = languages(randint(0, num_languages))
+            language = languages[randint(0, num_languages)]
             if language not in user.guru_languages:
                 user.guru_languages.append(language)
+                db_session.commit()
             if len(user.guru_languages) == 3:
                 db_session.commit()
                 break
@@ -856,31 +855,15 @@ if arg == 'seed_admin':
         return fake_data_dict
 
 
-    def selectThreeRandLanguages(user):
-        languages = Language.query.all()
-        num_languages = len(languages)
-        from random import randint
-        for _ in range(0,10000):
-            language = languages[randint(0, num_languages - 1)]
-            if language not in user.guru_languages:
-                user.guru_languages.append(language)
-            if len(user.guru_languages) == 3:
-                db_session.commit()
-                break
-
-    for subcategory in Subcategory.query.all():
-        user.guru_subcategories.append(subcategory)
-        db_session.commit()
-
     def initUserDefaults(user):
         cashCurrency = Currency.query.filter_by(name='Cash').all()[0]
         if not user.guru_currencies:
             user.guru_currencies.append(cashCurrency)
         if not user.guru_calendar:
             Calendar.initGuruCalendar(user)
-        selectThreeRandLanguages(user)
-        fake_data = generateFakeShopData(user)
-        Shop.initAcademicShop(user, fake_data)
+        # selectThreeRandLanguages(user)
+        # fake_data = generateFakeShopData(user)
+        Shop.initAcademicShop(user)
 
 
     initUserDefaults(user)
@@ -986,6 +969,7 @@ if arg == 'init_admin':
             user.password = md5('launchuguru123').hexdigest()
             user.profile_code = account_name.split(' ')[0].lower()
             user.referral_code = account_name.split(' ')[0].lower()
+            Shop.initAcademicShop(user)
             db_session.commit()
             print "Account for %s successfully updated" % user.email
         else:
@@ -994,6 +978,7 @@ if arg == 'init_admin':
             user.is_admin = True
             user.profile_code = account_name.split(' ')[0].lower()
             user.referral_code = account_name.split(' ')[0].lower()
+            Shop.initAcademicShop(user)
             db_session.commit()
             print "Account for %s successfully created" % user.email
     admin_users = User.query.filter_by(is_admin=True).all()

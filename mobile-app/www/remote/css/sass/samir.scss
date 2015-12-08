@@ -462,3 +462,24 @@ body.platform-ios
 .pf-edit-pf.pf-desktop-edit {
 	z-index:101;
 }
+
+.guru-cta-profile-container {
+	width: 100%;
+    position: absolute !important;
+    height: 100%;
+    display: block;
+    right: 0;
+    top: 60px;
+    height: calc(100% - 138px);
+}
+
+.high-z-index {
+	z-index: 1000;
+}
+.z-index-11 {
+	z-index:11;
+}
+
+.height-100 {
+	height:100px;
+}
