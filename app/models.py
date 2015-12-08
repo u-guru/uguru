@@ -404,7 +404,7 @@ class User(Base):
 
     def initExperience(self, title, years, description):
         e = Experience()
-        e.title=title
+        e.name=title
         e.years = years
         e.description = description
         try:

@@ -62,11 +62,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-credibility':'.guru-home-container',
     'cta-box-students': '.guru-home-container',
     'cta-box-balance': '.guru-home-container',
-    'cta-box-profile-contact': '.desktop-guru-profile-view',
-    'cta-box-profile-experiences': '.desktop-guru-profile-view',
-    'cta-box-profile-languages': '.desktop-guru-profile-view',
-    'cta-box-profile-courses': '.desktop-guru-profile-view',
-    'cta-box-profile-skills': '.desktop-guru-profile-view',
+    'cta-box-profile-contact': '.pf-type',
+    'cta-box-profile-experiences': '.pf-tab-container',
+    'cta-box-profile-languages': '.pf-tab-container',
+    'cta-box-profile-courses': '.pf-type',
+    'cta-box-profile-skills': '.pf-type',
     'cta-box-referrals': '#desktop-guru-home',
     'cta-box-support': '.guru-home-container',
     'cta-box-signup': '.guru-home-container',
@@ -83,6 +83,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         duration:0.5,
         extraTransitionDuration:1
     }
+
+  $scope.closeGuruExperience = function() {
+    if ($scope.desktopMode) {
+
+
+    var modalElem = document.querySelector('#cta-modal-profile-experiences');
+    modalElem.classList.remove('show');
+    } else {
+      $scope.guruExperiencesModal.hide()
+    }
+  }
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
@@ -146,6 +157,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.openModal = function(modalName) {
     ModalService.open(modalName, $scope);
   };
+
+
 
   $scope.goToDesktopGuruProfile = function() {
     $ionicViewSwitcher.nextDirection('enter');

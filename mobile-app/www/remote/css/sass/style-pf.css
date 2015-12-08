@@ -954,9 +954,12 @@
       background: #69B3A5 !important;
       color: white; }
   .pf-edit .main {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
     height: calc(100% / 3 * 2 - 64px);
     overflow: auto;
-    padding: 15px; }
+    padding: 15px !important; }
     .pf-edit .main .input-outline {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
@@ -997,7 +1000,8 @@
       display: flex;
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
-      flex-flow: row wrap; }
+      flex-flow: row wrap;
+      width: 100%; }
       .pf-edit .main .pf-tag-edit .chip {
         -webkit-transition: all 0.15s ease-in-out;
         -o-transition: all 0.15s ease-in-out;
@@ -1041,7 +1045,8 @@
     .pf-edit .main .pf-pricing {
       margin-top: 30px;
       background: #4c5559;
-      padding: 15px; }
+      padding: 15px;
+      width: 100%; }
 
 .pf-checklist-full .pf-edit header.third {
   height: 256px !important; }
@@ -1179,7 +1184,10 @@
         .pf-type .pf-checklist .pf-checklist-full.active .pf-reviews p {
           font-size: 20px; }
   .pf-type .pf-shop-desc {
-    padding: 30px; }
+    padding: 30px;
+    position: relative !important; }
+    .pf-type .pf-shop-desc ion-pane {
+      position: absolute !important; }
     .pf-type .pf-shop-desc h1 {
       font-size: 48px; }
     .pf-type .pf-shop-desc p {

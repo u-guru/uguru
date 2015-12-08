@@ -613,7 +613,7 @@ if arg == 'update':
     print v.latest_ios, 'updated to', env
 
 if arg == 'seed_admin':
-    user = User.query.filter_by(email='gabrielle@uguru.me').first()
+    user = User.query.filter_by(email='samir@uguru.me').first()
     from hashlib import md5
 
     from app.database import db_session
@@ -626,7 +626,7 @@ if arg == 'seed_admin':
 
 
     #teston jeselle
-    admin_account = admin_accounts[1]
+    admin_account = admin_accounts[2]
     account_name = admin_account[1]
 
     # check user exists
@@ -721,11 +721,16 @@ if arg == 'seed_admin':
             db_session.delete(rating)
             db_session.commit()
 
+    def clearGuruExperiences(user):
+        user.guru_experiences = []
+        db_session.commit()
+
     def clearAccountInfo(user):
         deleteAllUserFiles(user)
         clearUserShopsAndItems(user)
         clearUserCalendar(user)
         clearGuruRatings(user)
+        clearGuruExperiences(user)
         user.guru_subcategories = []
         user.guru_courses = []
         db_session.commit()
@@ -796,7 +801,19 @@ if arg == 'seed_admin':
                 db_session.commit()
                 break
 
-
+    def selectThreeRandLanguages(user):
+        user.guru_languages = []
+        db_session.commit()
+        languages = Language.query.all()
+        num_languages = len(languages)
+        from random import randint
+        for _ in range(0,10000):
+            language = languages(randint(0, num_languages))
+            if language not in user.guru_languages:
+                user.guru_languages.append(language)
+            if len(user.guru_languages) == 3:
+                db_session.commit()
+                break
 
     def getFakeTagsArr(courses):
         from random import randint
@@ -841,11 +858,11 @@ if arg == 'seed_admin':
 
 
     def selectThreeRandLanguages(user):
-        languages = Languages.query.all()
+        languages = Language.query.all()
         num_languages = len(languages)
         from random import randint
         for _ in range(0,10000):
-            language = languages(randint(0, num_languages))
+            language = languages[randint(0, num_languages - 1)]
             if language not in user.guru_languages:
                 user.guru_languages.append(language)
             if len(user.guru_languages) == 3:
@@ -862,6 +879,7 @@ if arg == 'seed_admin':
             user.guru_currencies.append(cashCurrency)
         if not user.guru_calendar:
             Calendar.initGuruCalendar(user)
+        selectThreeRandLanguages(user)
         fake_data = generateFakeShopData(user)
         Shop.initAcademicShop(user, fake_data)
 

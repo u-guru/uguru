@@ -1066,9 +1066,10 @@
 		}
 	}
 	.main {
+		@include flex-wrap;
 		height: calc(100% / 3 * 2 - 64px);
 		overflow: auto;
-		padding: 15px;
+		padding: 15px!important;
 		.input-outline {
 			@include transition(.15s ease-in-out);
 			border-color: lighten($slate, 10%);
@@ -1104,6 +1105,7 @@
 		.pf-tag-edit {
 			@include flex;
 			@include flex-wrap;
+			width: 100%;
 			.chip {
 				@include transition(.15s ease-in-out);
 				@include flex;
@@ -1133,6 +1135,7 @@
 			margin-top: 30px;
 			background: lighten($slate, 5%);
 			padding: 15px;
+			width: 100%;
 		}
 	}
 }
@@ -1309,6 +1312,10 @@
 		}
 		.pf-shop-desc {
 			padding: 30px;
+			position:relative !important;
+			ion-pane {
+				position:absolute !important;
+			}
 			h1 {
 				font-size: 48px;
 			}

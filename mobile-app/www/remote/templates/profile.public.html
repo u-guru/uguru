@@ -58,11 +58,11 @@
 					</li>
 				</ul> -->
 				<ul class="pf-url pf-edit-url">
-					<li>
-						<input ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{(user.profile_code && user.profile_code.length + 1)|| ('nameless'.length + 1)}}"/>
-						<span>.uguru.me</span>
+					<li class='ng-class:{"bg-white":!profile.edit_mode}'>
+						<input class='ng-class:{"bg-white":!profile.edit_mode}' ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length}}"/>
+						<span class='ng-class:{"bg-white":!profile.edit_mode}'>.uguru.me</span>
 					</li>
-					<li>
+					<li class="hide ng-class={'show':profile.edit_mode}">
 						<a class='bg-white'>
 							<svg viewBox="0 0 100 100">
 								<path d="M15.6243489,84.7923176 L19.5509642,73.6399994 L69.794924,23.3911161 L77.0255506,30.6217427 L26.7800007,80.8660212 L15.6243489,84.7923176 Z M13.3333333,87.0833333 L16.6666667,83.75 L13.3333333,87.0833333 L13.3333333,87.0833333 Z M70.8333333,23.75 L73.3350627,21.25 L70.8333333,23.75 L70.8333333,23.75 Z M76.6666667,29.5833333 L79.1666667,27.0833333 L76.6666667,29.5833333 L76.6666667,29.5833333 Z M82.5205606,25.5682252 L85.7479206,28.7955852 C85.7479206,28.7955852 67.7080166,46.8354927 67.5,47.0435059 M75.9393067,32.2348919 L79.1666667,35.4622519 M19.5499992,73.6399994 L26.7800007,80.8700027 L19.5499992,73.6399994 Z M77.7627936,15.0378071 L85.3792239,22.6542374 L81.0085605,27.0249008 L73.3921302,19.4084705 L77.7627936,15.0378071 Z"></path>
@@ -79,13 +79,54 @@
 						<a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
 					</li>
 					<li>
-						<a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
+						<a ng-click='activeTabIndex = 1' class="ng-class:{'active':activeTabIndex === 1}">About</a>
 
 					</li>
 				</ul>
 			</div>
+
+				<!-- start CTA containers -->
+					<ion-pane id='cta-modal-profile-contact' class='full-xy hide-display cta-modal'>
+						<div class="profile-header">
+							<h1>My Communication Preferences </h1>
+							<a class="cta-modal-close close-button">
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						</div>
+						<div ng-include="img_base + BASE + 'templates/guru.contact.components.	html'"></div>
+						<!-- <div ></div> -->
+					</ion-pane>
+
+					<ion-pane id='cta-modal-profile-skills' class='full-xy hide-display cta-modal' ng-controller='CategoriesController'>
+						<div class="profile-header">
+							<h1>Other ways to earn</h1>
+							<a class="cta-modal-close close-button">
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						</div>
+						<div ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></div>
+					</ion-pane>
+
+					<ion-pane id='cta-modal-profile-courses' class='full-xy hide-display cta-modal' ng-controller='CoursesController'>
+						<div class="profile-header">
+							<h1>{{user.university.short_name || user.university.name}} courses</h1>
+							<a class="cta-modal-close close-button">
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						</div>
+						<div ng-include="img_base + BASE + 'templates/guru.courses.container.html'"></div>
+					</ion-pane>
+					<!-- end CTA containers -->
 			<!-- BIND -->
-			<div class="pf-shop-desc pf-tab-item ng-class:{'active':activeTabIndex === 1}">
+			<div class="relative pf-shop-desc full-x pf-tab-item ng-class:{'active':activeTabIndex === 1}">
+
+
 				<h1>{{user.first_name}}'s Shop</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				<ul class="pf-links">
@@ -118,12 +159,14 @@
 						</a>
 					</li>
 				</ul>
-				<div class="pf-list p15top">
-					<h1>Experience</h1>
+				<div class="pf-list p15top relative">
+					<h1 class='relative'>Experience
+						<a id='cta-box-profile-experiences' class='p10x cta-box edit-button right-0 absolute weight-700'>Add</a>
+					</h1>
 					<ul class="pf-list-y">
 						<li ng-repeat='experience in user.guru_experiences'>
 							<ul class="ugrid-2">
-								<li class="text-left">{{experience.title}}</li>
+								<li class="text-left">{{experience.name}}</li>
 								<li class="text-right" data-years="{{experience.years}}">{{experience.years}} year</li>
 							</ul>
 							<div class="pf-list-desc">{{experience.description}}</div>
@@ -137,6 +180,18 @@
 							<div class="pf-list-desc">
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
 							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="pf-list p15top relative">
+					<h1 class='relative'>Language
+						<a id='cta-box-profile-languages' class='p10x cta-box edit-button right-0 absolute weight-700'>Add</a>
+					</h1>
+					<ul class="pf-list-y">
+						<li ng-repeat='language in user.guru_languages'>
+							<ul class="ugrid-2">
+								<li class="text-center">{{language.name}}</li>
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -186,6 +241,15 @@
 					<h2>{{user.guru_avg_rating || 0.0}} Average Rating</h2>
 					<button class="m10top btn-ghost-white">See Availability</button>
 				</div>
+
+				<ion-pane id='cta-modal-profile-experiences' class='full-xy hide-display cta-modal'>
+						<div ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
+					</ion-pane>
+
+					<ion-pane id='cta-modal-profile-languages' class='full-xy hide-display cta-modal'>
+						<div ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
+					</ion-pane>
+
 			</div>
 
 			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
