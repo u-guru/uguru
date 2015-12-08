@@ -1,5 +1,25 @@
 <ion-view class='uguru-view pf-type pf-type-household bg-slate pf-has-edit'>
+	<!-- popups -->
+	<!-- <div class="guru-popup guru-popup-center" ng-show="root.vars.showProfileCodePopup">
+		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
+		<input> {{user.profile_code}}</input>
+		<button ng-click='saveUserProfileCode()'>Save</button>
+	</div>
+	<div class="guru-popup guru-popup-center" ng-show="root.vars.showProfileCodePopup">
+		<div class="guru-popup-vertical-center min-height with-button hide ng-class:{'show':root.vars.pleaseSignupFirstPopup()}">We can't officially save anything until we know your name!</div>
+		<input> {{user.profile_code}}</input>
+		<div class='full-x ugrid-2'>
+			<button>Nah not yet</button>
+			<button>Signup</button>
+		</div>
+	</div> -->
+	<a id='guru-profile-cta-close' class='cta-modal-close close-button absolute m15xy right-0 top-0'>
+		<svg viewBox="0 0 100 100">
+			<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+		</svg>
+	</a>
 	<section>
+		<!--Left third -->
 		<header class="third flex-center">
 			<div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
 			<div class="pf-header-color"></div>
@@ -14,7 +34,7 @@
 			<div class="pf-header">
 				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
 				<h1 class="verified">
-					<span class="inline">{{ user.profile_name }}</span>
+					<span class="inline">{{ user.profile_name || 'Nameless Guru' }}</span>
 					<span class="inline">
 						<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 					</span>
@@ -23,7 +43,8 @@
 				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
 				<!-- <button class="btn-ghost-white">Contact</button> -->
-				<textarea class="pf-header-desc" disabled>{{user.guru_introduction}}</textarea>
+				<textarea class="pf-header-desc ng-class:{'hide': profile.edit_mode}" disabled>{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</textarea>
+				<textarea placeholder="Add an introduction about your past guru-ing experience" class="pf-header-desc hide ng-class:{'show': profile.edit_mode}">{{user.guru_introduction}}</textarea>
 				<!-- <ul class="pf-url">
 					<li>
 						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code || user.first_name}}.uguru.me</a>
@@ -38,7 +59,7 @@
 				</ul> -->
 				<ul class="pf-url pf-edit-url">
 					<li>
-						<input size="11" value="{{user.profile_code || user.first_name}}"/>
+						<input ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{(user.profile_code && user.profile_code.length + 1)|| ('nameless'.length + 1)}}"/>
 						<span>.uguru.me</span>
 					</li>
 					<li>
@@ -107,7 +128,8 @@
 							</ul>
 							<div class="pf-list-desc">{{experience.description}}</div>
 						</li>
-						<li>
+						<!--Sample experience-->
+						<li ng-if='!user.guru_experiences || !user.guru_experiences.length'>
 							<ul class="ugrid-2">
 								<li class="text-left">Cal Web Master</li>
 								<li class="text-right" data-years="3" >3 year</li>
@@ -168,7 +190,7 @@
 
 			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
 				<!-- <li class="pf-checklist-full active pf-type-household" ng-include="img_base + 'templates/profile.modal.html'"></li> -->
-				
+
 				<li ng-repeat='course in user.guru_courses'>
 					<div class="pf-check-container">
 						<a class="pf-edit-link">Edit</a>
@@ -187,7 +209,7 @@
 						</span>
 					</div>
 				</li>
-				
+
 				<li class="pf-checklist-add">
 					<div class="pf-check-container">
 						<a>
@@ -200,14 +222,16 @@
 						</a>
 					</div>
 				</li>
-				
+
 				<li class="pf-checklist-full active pf-type-household" ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
 			</ul>
 			<div class="pf-edit-pf pf-desktop-edit">
-				<button class="btn-ghost-white">Edit</button>
+				<button id="btn-edit-profile" ng-click='profile.edit_mode = true;' class="btn-ghost-white ng-class:{'hide':profile.edit_mode}">Edit</button>
+				<button ng-click='saveGuruProfile()' id='btn-save-profile' class="btn-ghost-white hide ng-class:{'show':profile.edit_mode}">Save</button>
+
 			</div>
 			<div class="pf-edit-pf pf-mobile-edit">
-				<button>Edit</button>
+				<button>Save</button>
 			</div>
 		</div>
 	</section>

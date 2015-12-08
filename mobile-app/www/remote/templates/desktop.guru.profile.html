@@ -1,17 +1,4 @@
 <ion-view class='uguru-view desktop-guru-profile-view bg-charcoal'>
-	<div class="guru-popup guru-popup-center" ng-show="root.vars.showProfileCodePopup">
-		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
-		<input> {{user.profile_code}}</input>
-		<button ng-click='saveUserProfileCode()'>Save</button>
-	</div>
-	<div class="guru-popup guru-popup-center" ng-show="root.vars.showProfileCodePopup">
-		<div class="guru-popup-vertical-center min-height with-button hide ng-class:{'show':root.vars.pleaseSignupFirstPopup()}">We can't officially save anything until we know your name!</div>
-		<input> {{user.profile_code}}</input>
-		<div class='full-x ugrid-2'>
-			<button>Nah not yet</button>
-			<button>Signup</button>
-		</div>
-	</div>
 	<main id='desktop-guru-profile' class="desktop-forms desktop-mode">
 		<div id="profile">
 			<div id="profile-desc" class='relative'>

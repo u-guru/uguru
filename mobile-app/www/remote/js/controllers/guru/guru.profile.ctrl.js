@@ -40,6 +40,10 @@ angular.module('uguru.guru.controllers')
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
+    if (!$scope.user.profile_code) {
+      $scope.user.profile_code = $scope.user.profile_code || $scope.user.first_name || 'nameless';
+    }
+
     // credibility only variable
     $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
@@ -163,6 +167,16 @@ angular.module('uguru.guru.controllers')
       $scope.profile.intro_edit_mode = false;
       $timeout(function() {
         LoadingService.hide();
+        LoadingService.showSuccess('Saved!', 1500);
+      }, 500);
+    }
+
+    $scope.saveProfileCode = function() {
+      LoadingService.show();
+      $scope.refreshTipsAndRanking($scope.user);
+      $scope.user.updateAttr('profile_code', $scope.user, $scope.user.profile_code, null, $scope);
+      $scope.profile.intro_edit_mode = false;
+      $timeout(function() {
         LoadingService.showSuccess('Saved!', 1500);
       }, 500);
     }
@@ -587,6 +601,7 @@ angular.module('uguru.guru.controllers')
       $scope.success.show(0, 1500, 'Profile Successfully Saved');
       $scope.root.vars.profile.edit_mode = !$scope.root.vars.profile.edit_mode;
       $timeout(function() {
+        $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
         $scope.profile.edit_mode = false;
       }, 500)
     }

@@ -587,7 +587,6 @@ angular.module('uguru.user', [])
         $scope.user.referred_by = user.referred_by;
         $scope.user.referral_code = user.referral_code;
         $scope.user.profile_code = user.profile_code;
-        console.log(user.profile_code);
         $scope.user.guru_discoverability = user.guru_discoverability;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
