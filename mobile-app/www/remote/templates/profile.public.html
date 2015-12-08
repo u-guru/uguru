@@ -55,11 +55,13 @@
 			<div class="pf-tabs">
 				<ul>
 					<li>
-						<a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
+						<a ng-click='activeTabIndex = 2' class="ng-class:{'active':activeTabIndex === 2}">Services</a>
 					</li>
 					<li>
 						<a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
-
+					</li>
+					<li>
+						<a ng-click='activeTabIndex = 0;' class="ng-class:{'active':activeTabIndex === 0}">Calendar</a>
 					</li>
 				</ul>
 			</div>
@@ -166,9 +168,9 @@
 				</div>
 			</div>
 
-			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
+			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 2}">
 				<li class="pf-checklist-full active pf-type-household" ng-include="img_base + 'templates/profile.modal.html'"></li>
-				
+
 				<li ng-repeat='course in user.guru_courses'>
 					<div class="pf-check-container">
 						<a class="pf-edit-link">Edit</a>
@@ -203,6 +205,300 @@
 				
 				<li class="pf-checklist-full active pf-type-household" ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
 			</ul>
+			
+			<div class="pf-cal pf-tab-item ng-class:{'active':activeTabIndex === 0}">
+				<div>
+					<h1 class="pf-cal-month">December 2015</h1>
+					<ul class="pf-cal-time">
+						<li><span>12am</span></li>
+						<li><span>1am</span></li>
+						<li><span>2am</span></li>
+						<li><span>3am</span></li>
+						<li><span>4am</span></li>
+						<li><span>5am</span></li>
+						<li><span>6am</span></li>
+						<li><span>7am</span></li>
+						<li><span>8am</span></li>
+						<li><span>9am</span></li>
+						<li><span>10am</span></li>
+						<li><span>11am</span></li>
+						<li><span>Noon</span></li>
+						<li><span>1pm</span></li>
+						<li><span>2pm</span></li>
+						<li><span>3pm</span></li>
+						<li><span>4pm</span></li>
+						<li><span>5pm</span></li>
+						<li><span>6pm</span></li>
+						<li><span>7pm</span></li>
+						<li><span>8pm</span></li>
+						<li><span>9pm</span></li>
+						<li><span>10pm</span></li>
+						<li><span>11pm</span></li>
+					</ul>
+					<div class="pf-cal-main">
+						<ul class="pf-cal-date">
+							<li>
+								<span>
+									<span>Sun</span>&nbsp;<span>22</span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<span>Mon</span>&nbsp;<span>23</span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<span>Tue</span>&nbsp;<span>24</span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<span>Wed</span>&nbsp;<span>25</span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<span>Thu</span>&nbsp;<span>26</span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<span>Fri</span>&nbsp;<span>27</span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<span>Sat</span>&nbsp;<span>28</span>
+								</span>
+							</li>
+						</ul>
+						<div class="pf-cal-events">
+							<ul class="pf-cal-day">
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li class="has-event event-athletic">
+									<span>
+										<span>Basketball Game</span>
+									</span>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+							</ul>
+							<ul class="pf-cal-day">
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li class="has-event event-athletic">
+									<span>
+										<span>Marathon Training</span>
+									</span>
+								</li>
+								<li class="has-event event-photography hours-2">
+									<span>
+										<span>Grad Shoot</span>
+									</span>
+								</li>
+								<li class="has-event event-academic">
+									<span>
+										<span>Taiwanese Practice</span>
+									</span>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+							</ul>
+							<ul class="pf-cal-day">
+								<li class="has-event event-delivery">
+									<span>
+										<span>Furniture Delivery</span>
+									</span>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li class="has-event event-household">
+									<span>
+										<span>Vacuuming</span>
+									</span>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+							</ul>
+							<ul class="pf-cal-day">
+								<li><span></span></li>
+								<li class="has-event event-tech">
+									<span>
+										<span>Phone Repair</span>
+									</span>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+							</ul>
+							<ul class="pf-cal-day">
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li class="has-event event-academic hours-3">
+									<span>
+										<span>Office Hours</span>
+									</span>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+							</ul>
+							<ul class="pf-cal-day">
+								<li class="has-event event-academic">
+									<span>
+										<span>Exam Review</span>
+									</span>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+							</ul>
+							<ul class="pf-cal-day">
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li class="has-event event-athletic hours-4">
+									<span>
+										<span>Basketball Tournament</span>
+									</span>
+								</li>
+								<li class="has-event event-delivery">
+									<span>
+										<span>Pizza Delivery</span>
+									</span>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<div class="pf-edit-pf pf-desktop-edit">
 				<button class="btn-ghost-white">Edit</button>
 			</div>
