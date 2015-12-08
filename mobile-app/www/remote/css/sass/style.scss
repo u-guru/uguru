@@ -3173,26 +3173,68 @@ section {
 
 
 /* ---------- GENERAL */
-#mobile-general, .mobile-general{
+#mobile-general {
 	background: $lake;
 	padding: 15px;
+}
+.mobile-general {
+	header.third {
+		&::before {
+			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
+		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+		}
+	}
 	h1 {
 		padding-bottom: 15px;
 		font-size: 36px;
 		font-weight: 600;
 		text-align: center;
 	}
+	.main {
+		height: calc(100% / 3 * 2);
+		overflow: auto;
+		ol {
+			padding: 7.5px;
+			counter-reset: li;
+			li {
+				@include flex;
+				padding: 7.5px;
+				&:before {
+					display: block;
+					width: 50px;
+					padding: 15px;
+					content: counter(li);
+					counter-increment: li;
+					background: $lake;
+					font-weight: 600;
+					text-align: center;
+				}
+				a {
+					background: lighten($slate, 10%);
+					display: block;
+					padding: 15px;
+					font-weight: 600;
+				}
+			}
+		}
+	}
 	.general-list {
+		@include flex;
+		@include flex-center-vertical;
 		position: relative;
 		height: calc(100% - 122px);
-		overflow: hidden;
+		overflow-x: auto;
+		overflow-y: hidden;
+		counter-reset: li;
 		> li {
-			@include center-xy;
-			background: white;
+			position: relative;
 			color: $charcoal;
-			width: 100%;
-			padding: 15px;
 			text-align: center;
+			padding: 15px;
 			&:before {
 				@include rotate(5);
 				@include flex;
@@ -3213,31 +3255,31 @@ section {
 				font-weight: 700;
 				line-height: 1;
 			}
-			&:nth-child(1) {
-				z-index: 9;
-			}
-			&:nth-child(2) {
-				@include transform-origin(center top);
-				-webkit-transform: translate(-50%,-50%) scale(0.9);
-				-moz-transform: translate(-50%,-50%) scale(0.9);
-				-ms-transform: translate(-50%,-50%) scale(0.9);
-				-o-transform: translate(-50%,-50%) scale(0.9);
-				transform: translate(-50%,-50%) scale(0.9);
-				margin-top: -15px;
-				z-index: 8;
-				background: $smoke;
-			}
-			&:nth-child(3) {
-				@include transform-origin(center top);
-				-webkit-transform: translate(-50%,-50%) scale(0.8);
-				-moz-transform: translate(-50%,-50%) scale(0.8);
-				-ms-transform: translate(-50%,-50%) scale(0.8);
-				-o-transform: translate(-50%,-50%) scale(0.8);
-				transform: translate(-50%,-50%) scale(0.8);
-				margin-top: -30px;
-				z-index: 7;
-				background: rgba($taupe,.6);
-			}
+			// &:nth-child(1) {
+			// 	z-index: 9;
+			// }
+			// &:nth-child(2) {
+			// 	@include transform-origin(center top);
+			// 	-webkit-transform: translate(-50%,-50%) scale(0.9);
+			// 	-moz-transform: translate(-50%,-50%) scale(0.9);
+			// 	-ms-transform: translate(-50%,-50%) scale(0.9);
+			// 	-o-transform: translate(-50%,-50%) scale(0.9);
+			// 	transform: translate(-50%,-50%) scale(0.9);
+			// 	margin-top: -15px;
+			// 	z-index: 8;
+			// 	background: $smoke;
+			// }
+			// &:nth-child(3) {
+			// 	@include transform-origin(center top);
+			// 	-webkit-transform: translate(-50%,-50%) scale(0.8);
+			// 	-moz-transform: translate(-50%,-50%) scale(0.8);
+			// 	-ms-transform: translate(-50%,-50%) scale(0.8);
+			// 	-o-transform: translate(-50%,-50%) scale(0.8);
+			// 	transform: translate(-50%,-50%) scale(0.8);
+			// 	margin-top: -30px;
+			// 	z-index: 7;
+			// 	background: rgba($taupe,.6);
+			// }
 			.general-list-icon {
 				@include round;
 				display: block;
@@ -3255,15 +3297,21 @@ section {
 					}
 				}
 			}
-			div {
-				h3 {
-					margin-bottom: 15px;
-					font-size: 24px;
-					font-weight: 700;
-				}
-				p {
-					font-size: 18px;
-					font-weight: 400;
+			> div {
+				background: white;
+				padding: 15px;
+				width: 300px;
+				height: 380px;
+				div {
+					h3 {
+						margin-bottom: 15px;
+						font-size: 24px;
+						font-weight: 700;
+					}
+					p {
+						font-size: 18px;
+						font-weight: 400;
+					}
 				}
 			}
 			.general-breadcrumbs {
