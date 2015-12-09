@@ -136,6 +136,35 @@
     .pf-type header.third .pf-header .pf-school {
       margin: 0 !important;
       font-size: 20px; }
+    .pf-type header.third .pf-header a.profile-icon {
+      position: relative;
+      display: block; }
+      .pf-type header.third .pf-header a.profile-icon img {
+        border-radius: 1000px;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 100px;
+        padding: 5px;
+        filter: alpha(opacity=30);
+        opacity: 0.3; }
+      .pf-type header.third .pf-header a.profile-icon h1#guru-profile-edit-photo-txt {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100px;
+        font-size: 20px !important;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase; }
+    .pf-type header.third .pf-header a.profile-icon.active, .pf-type header.third .pf-header a.activated, .pf-type header.third .pf-header a:active {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
     .pf-type header.third .pf-header .user-icon {
       width: 72px;
       height: 72px;
@@ -683,7 +712,8 @@
       left: 0;
       padding: 15px;
       font-size: 20px;
-      font-weight: 600; }
+      font-weight: 600;
+      z-index: 100; }
     .pf-type .pf-checklist > li:not(.pf-checklist-full) input {
       filter: alpha(opacity=0);
       opacity: 0;
@@ -1231,6 +1261,10 @@
         width: 50%; }
     .pf-type .pf-shop-desc .pf-reviews h2 {
       font-size: 28px !important; } }
+.pf-modal header.third
+a.cta-modal-close svg {
+  height: 30px;
+  width: 30px; }
 .pf-modal header.third.pf-item-header .pf-header-bg {
   filter: blur(0px);
   -webkit-filter: blur(0px);
@@ -1337,6 +1371,58 @@
       font-weight: 700; }
   .pf-modal .pf-shop-item .pf-tags {
     text-align: center; }
+  .pf-modal .pf-shop-item .pf-tags {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 100%; }
+    .pf-modal .pf-shop-item .pf-tags .chip {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      background: #576267;
+      margin-right: 15px; }
+      .pf-modal .pf-shop-item .pf-tags .chip:hover {
+        background: #637074; }
+      .pf-modal .pf-shop-item .pf-tags .chip svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 10px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        width: 12px;
+        height: 12px;
+        margin-right: 3px; }
+      .pf-modal .pf-shop-item .pf-tags .chip input {
+        background: transparent;
+        border: 0;
+        color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input::-webkit-input-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input:-moz-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input::-moz-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input:-ms-input-placeholder {
+          color: white !important; }
   .pf-modal .pf-shop-item .pf-ingredients div .chip {
     margin-top: 5px; }
   .pf-modal .pf-shop-item .pf-attachments ul {

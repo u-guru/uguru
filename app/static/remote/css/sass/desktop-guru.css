@@ -1070,8 +1070,33 @@
             right: 15px; }
           #desktop-guru-profile #profile #profile-info #profile-experiences ul li .list-item-detail {
             width: 100% !important; }
-      #desktop-guru-profile #profile #profile-info #profile-languages {
-        border-bottom: 2px solid rgba(105, 179, 165, 0.4); }
+      #desktop-guru-profile #profile #profile-info #profile-workfor {
+        border: 2px solid rgba(105, 179, 165, 0.4);
+        border-top: 0; }
+        #desktop-guru-profile #profile #profile-info #profile-workfor div ol {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          margin: 0 auto;
+          max-width: 80%; }
+          #desktop-guru-profile #profile #profile-info #profile-workfor div ol li {
+            min-width: calc(100% / 3);
+            padding: 10px 0; }
+            #desktop-guru-profile #profile #profile-info #profile-workfor div ol li svg {
+              display: block;
+              margin: 0 auto;
+              width: 64px;
+              height: 64px; }
   #desktop-guru-profile ion-pane {
     position: absolute !important;
     top: 0;

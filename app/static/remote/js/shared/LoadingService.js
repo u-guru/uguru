@@ -26,7 +26,7 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
     }
 
     function showMsg(message, duration, callback) {
-        if (duration <= 3000)  {
+        if (duration <= 3000 && message && message.length > 20)  {
             duration = 3000;
         }
         $ionicLoading.show({
@@ -43,7 +43,7 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
 
     function showAmbig(text, duration, callback) {
         $rootScope.ambigLoaderText = text || '';
-        if (text && duration <= 2500) {
+        if (text && text.length > 20 && duration <= 2500) {
             duration = 2500
         }
         $ionicLoading.show({

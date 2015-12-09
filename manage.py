@@ -614,11 +614,17 @@ if arg == 'update':
 
 if arg == 'seed_admin':
     user = User.query.filter_by(email='samir@uguru.me').first()
+
+
+
+
     from hashlib import md5
 
     from app.database import db_session
     from app.models import *
 
+    if len(sys.argv) > 2:
+        user = User.query.filter_by(email=sys.argv[2]).first()
 
     admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
     admin_emails = [_tuple[0] for _tuple in admin_accounts]
@@ -626,8 +632,8 @@ if arg == 'seed_admin':
 
 
     #teston jeselle
-    admin_account = admin_accounts[2]
-    account_name = admin_account[1]
+    admin_account = user.email
+    account_name = user.name
 
     # check user exists
     if not user:
@@ -648,17 +654,15 @@ if arg == 'seed_admin':
         university_courses = user.university.popular_courses
         from random import randint
 
-        for _int in range(0, x * 2):
-            course = university_courses[randint(0, len(university_courses))]
+        for course in university_courses[0:10]:
             user.guru_courses.append(course)
-            if len(user.guru_courses) == x:
-                db_session.commit()
-                break
+            db_session.commit()
 
         for course in user.guru_courses:
             from random import randint
             x = randint(2, 10)
-            generateXRandomRatingsForCourse(x, user, course)
+            generateXRandomRatingsForCourse(5, user, course)
+        print len(user.guru_courses), 'courses added'
 
     def generateXRandomRatingsForCourse(x, user,course):
         from random import randint
@@ -670,6 +674,7 @@ if arg == 'seed_admin':
             db_session.add(rating)
             db_session.commit()
             user.guru_ratings.append(rating)
+
             db_session.commit()
 
     #example of deleting a user's files
@@ -732,11 +737,32 @@ if arg == 'seed_admin':
         clearGuruRatings(user)
         clearGuruExperiences(user)
         user.guru_subcategories = []
-        user.guru_courses = []
-        db_session.commit()
+        try:
+            for course in user.guru_courses:
+                user.guru_courses.remove(course)
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    try:
+                        d = db_session.query(guru_courses_table).filter(guru_courses_table.c.user_id == user.id, guru_courses_table.c.course_id == course.id).delete(synchronize_session=False)
+                        db_session.commit()
+                    except:
+                        print "ugh"
+                        db_session.rollback()
+                        raise
+
+        except:
+            raise
+            db_session.rollback()
+
 
 
     clearAccountInfo(user)
+
+
+    print "\n\nUpdate #1, previous account details cleared for %s" % user.getFirstName()
+
 
     transcript_file = createNewFile(user)
 
@@ -761,7 +787,7 @@ if arg == 'seed_admin':
         user.initExperience('CS10 Tutor', 12, 'i was a cs10 tutor for years')
         user.initExperience('Bio 1A Lab Assistant', 0, 'i was a bio1A lab assistant for almost one year')
 
-
+    print "\n\nUpdate #2: user profile + courses are set up"
 
     # save changes to local database
     db_session.commit()
@@ -802,76 +828,68 @@ if arg == 'seed_admin':
                 break
 
     def selectThreeRandLanguages(user):
-        user.guru_languages = []
-        db_session.commit()
+        try:
+            user.guru_languages = []
+            db_session.commit()
+        except:
+            db_session.rollback()
+            return
         languages = Language.query.all()
         num_languages = len(languages)
         from random import randint
         for _ in range(0,10000):
-            language = languages(randint(0, num_languages))
-            if language not in user.guru_languages:
-                user.guru_languages.append(language)
-            if len(user.guru_languages) == 3:
-                db_session.commit()
-                break
+            try:
+                language = languages[randint(0, num_languages)]
+                if language not in user.guru_languages:
+                    user.guru_languages.append(language)
+                    db_session.commit()
+                if len(user.guru_languages) == 3:
+                    db_session.commit()
+                    break
+            except:
+                db_session.rollback()
+                continue
 
-    def getFakeTagsArr(courses):
-        from random import randint
-        result_dict = {}
-        for course in courses:
-            result_dict[course.short_name] = course.full_name.split(' ')
-        return result_dict
+    def getFakeTagsArr(course):
+        return course.full_name.split(' ')
 
-    def getFakeResourcesArr(courses):
+    def getFakeResourcesArr(course):
         from random import randint
         result_arr = []
-        file_types = ['gDoc', 'pdf', 'jpeg', 'mp4', 'docx', '.ppt']
+        file_types = ['gdoc', 'pdf', 'jpeg', 'mp4', 'docx', 'ppt']
         file_names = ['HW', 'Study Guide', 'Hard Problem #', 'Practice Set']
-        for course in courses:
-            course_resource_dict = {'id':course.id, 'resources':[]}
-            for _int in range(0, 4):
-                rand_file_name = file_names[randint(0, len(file_names) - 1)]
-                rand_file_type = file_types[randint(0, len(file_types) - 1)]
-                course_resource_dict['resources'].append({
-                    'title': course.short_name + ' ' + rand_file_name,
-                    'file_type': rand_file_type,
-                    'description': 'A %s file for a %s %s' % (rand_file_type, course.short_name, rand_file_name),
-                    'site_url': "https://www.dropbox.com/%s.%s" % ((course.short_name + ' ' + rand_file_name).replace(' ', '_').lower(), rand_file_type)
-                    })
+        ## add four resources ot this array
+        for _int in range(0, 4):
+            rand_file_name = file_names[randint(0, len(file_names) - 1)]
+            rand_file_type = file_types[randint(0, len(file_types) - 1)]
+            course_resource_dict = {
+                'title': course.short_name + ' ' + rand_file_name,
+                'file_type': rand_file_type,
+                'description': 'A %s file for a %s %s' % (rand_file_type, course.short_name, rand_file_name),
+                'site_url': "https://www.dropbox.com/%s.%s" % ((course.short_name + ' ' + rand_file_name).replace(' ', '_').lower(), rand_file_type)
+            }
             result_arr.append(course_resource_dict)
         return result_arr
     def generateFakeShopData(user):
         fake_data_dict = {}
         from random import randint
         for course in user.guru_courses:
-            fake_data_dict[course.short_name] = {
-                'tags': getFakeTagsArr(user.guru_courses),
-                'resources': getFakeResourcesArr(user.guru_courses),
-                'pricing': {
-                    'unit': randint(3, 10),
-                    'max_unit': randint(10, 20),
-                    'hour': randint(10, 20),
-                    'max_hourly': randint(10, 30),
+            try:
+                fake_data_dict[course.short_name] = {
+                    'tags': getFakeTagsArr(course),
+                    'resources': getFakeResourcesArr(course),
+                    'pricing': {
+                        'unit': randint(3, 10),
+                        'max_unit': randint(10, 20),
+                        'hour': randint(10, 20),
+                        'max_hourly': randint(10, 30),
+                    }
                 }
-            }
+            except:
+                db_session.rollback()
+                continue
         return fake_data_dict
 
-
-    def selectThreeRandLanguages(user):
-        languages = Language.query.all()
-        num_languages = len(languages)
-        from random import randint
-        for _ in range(0,10000):
-            language = languages[randint(0, num_languages - 1)]
-            if language not in user.guru_languages:
-                user.guru_languages.append(language)
-            if len(user.guru_languages) == 3:
-                db_session.commit()
-                break
-
-    for subcategory in Subcategory.query.all():
-        user.guru_subcategories.append(subcategory)
-        db_session.commit()
 
     def initUserDefaults(user):
         cashCurrency = Currency.query.filter_by(name='Cash').all()[0]
@@ -885,14 +903,24 @@ if arg == 'seed_admin':
 
 
     initUserDefaults(user)
-    def selectAndShopResourceItems():
-        return 0
+    def selectAndShopResourceItems(user):
+        _sum = 0
+        for pi in user.guru_shops[0].portfolio_items:
+            _sum += len(pi.resources)
+        return _sum
 
-    def selectAndCountShopTagItems():
-        return 0
+    def selectAndCountShopTagItems(user):
+        _sum = 0
+        for pi in user.guru_shops[0].portfolio_items:
+            _sum += len(pi.tags)
+        return _sum
 
     def selectAndCountContactMethods(user):
-        return 0
+        user.person_friendly = True
+        user.messenger_friendly = True
+        user.skype_friendly = True
+        db_session.commit()
+        return 3
 
     def shopDetails(user):
         index = 0
@@ -907,16 +935,16 @@ if arg == 'seed_admin':
             print "###############"
             print
             print "Showcasing %s shop items" % len(shop.portfolio_items)
-            for item in shop.portfolio_items:
-                print
-                print item.title
-                print item.description
-                print item.avg_rating , 'avg rating'
-                print len(item.ratings), 'ratings'
-                print len(item.resources), 'total num resources'
-                print len(item.tags), 'total num tags'
-                print "Hourly Price: %s per hour, w/ max $%s per hour" % (item.hourly_price, item.max_hourly_price)
-                print "Unit Price: %s per unit, w/ max $%s per unit" % (item.unit_price, item.max_unit_price)
+            # for item in shop.portfolio_items:
+            #     print
+            #     print item.title
+            #     print item.description
+            #     print item.avg_rating , 'avg rating'
+            #     print len(item.ratings), 'ratings'
+            #     print len(item.resources), 'total num resources'
+            #     print len(item.tags), 'total num tags'
+            #     print "Hourly Price: %s per hour, w/ max $%s per hour" % (item.hourly_price, item.max_hourly_price)
+            #     print "Unit Price: %s per unit, w/ max $%s per unit" % (item.unit_price, item.max_unit_price)
 
 
 
@@ -941,7 +969,7 @@ if arg == 'seed_admin':
         # PI Tags: %s different tags,
         """ % (len(user.guru_shops), len(user.guru_subcategories), len(user.portfolio_items),\
             len(user.guru_currencies), len(user.guru_experiences), len(user.guru_introduction), len(user.guru_courses),\
-            len(user.profile_code), selectAndCountContactMethods(user), len(user.guru_calendar.calendar_events), len(user.guru_ratings), selectAndShopResourceItems(), selectAndCountShopTagItems())
+            len(user.profile_code), selectAndCountContactMethods(user), len(user.guru_calendar.calendar_events), len(user.guru_ratings), selectAndShopResourceItems(user), selectAndCountShopTagItems(user))
 
     def printAllShopsUserCreated(user):
         pass
@@ -987,6 +1015,7 @@ if arg == 'init_admin':
             user.password = md5('launchuguru123').hexdigest()
             user.profile_code = account_name.split(' ')[0].lower()
             user.referral_code = account_name.split(' ')[0].lower()
+            Shop.initAcademicShop(user)
             db_session.commit()
             print "Account for %s successfully updated" % user.email
         else:
@@ -995,6 +1024,7 @@ if arg == 'init_admin':
             user.is_admin = True
             user.profile_code = account_name.split(' ')[0].lower()
             user.referral_code = account_name.split(' ')[0].lower()
+            Shop.initAcademicShop(user)
             db_session.commit()
             print "Account for %s successfully created" % user.email
     admin_users = User.query.filter_by(is_admin=True).all()

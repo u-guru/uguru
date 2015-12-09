@@ -47,6 +47,15 @@ tag_fields = {}
 tag_fields['id'] = fields.Integer(attribute='id')
 tag_fields['name'] = fields.String(attribute='name')
 
+course_fields = {}
+course_fields['id'] = fields.Integer(attribute='id')
+course_fields['name'] = fields.String(attribute='short_name')
+course_fields['title'] = fields.String(attribute='full_name')
+course_fields['short_name'] = fields.String(attribute='short_name')
+course_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
+course_fields['department_short'] = fields.String(attribute='department_short')
+course_fields['department_long'] = fields.String(attribute='department_long')
+course_fields['code'] = fields.String(attribute='code')
 
 resource_fields = {}
 resource_fields['id'] = fields.Integer(attribute='resource')
@@ -57,15 +66,6 @@ resource_fields['description'] = fields.String(attribute='description')
 resource_fields['title'] = fields.String(attribute='title')
 resource_fields['site_url'] = fields.String(attribute='site_url')
 
-course_fields = {}
-course_fields['id'] = fields.Integer(attribute='id')
-course_fields['name'] = fields.String(attribute='short_name')
-course_fields['title'] = fields.String(attribute='full_name')
-course_fields['short_name'] = fields.String(attribute='short_name')
-course_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
-course_fields['department_short'] = fields.String(attribute='department_short')
-course_fields['department_long'] = fields.String(attribute='department_long')
-course_fields['code'] = fields.String(attribute='code')
 
 department_fields = {}
 department_fields['id'] = fields.Integer(attribute='id')
@@ -357,12 +357,15 @@ portfolio_item_fields['course'] = fields.Nested(course_fields)
 portfolio_item_fields['subcategory_fields'] = fields.List(fields.Nested(subcategory_fields))
 portfolio_item_fields['description'] = fields.String(attribute='description')
 portfolio_item_fields['title'] = fields.String(attribute='title')
+portfolio_item_fields['id'] = fields.Integer(attribute='id')
 portfolio_item_fields['avg_rating'] = fields.Float(attribute='avg_rating')
 portfolio_item_fields['hourly_price'] = fields.Float(attribute='hourly_price')
 portfolio_item_fields['max_hourly_price'] = fields.Float(attribute='max_hourly_price')
 portfolio_item_fields['unit_price'] = fields.Float(attribute='unit_price')
 portfolio_item_fields['max_unit_price'] = fields.Float(attribute='max_unit_price')
 portfolio_item_fields['tags'] = fields.List(fields.Nested(tag_fields))
+portfolio_item_fields['ratings'] = fields.List(fields.Nested(guru_rating_fields))
+portfolio_item_fields['resources'] = fields.List(fields.Nested(resource_fields))
 
 guru_shop_fields = {}
 guru_shop_fields['banner_url'] = fields.String(attribute='banner_url')

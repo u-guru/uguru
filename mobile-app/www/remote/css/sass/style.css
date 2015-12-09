@@ -1015,9 +1015,9 @@ section {
     vertical-align: 0;
     margin: 0; }
 
-.onboarding .onboarding-search .input-field .prefix {
+.onboarding .onboarding-search .input-field .prefix, .onboarding-portfolio-item .onboarding-search .input-field .prefix {
   margin-top: 6px; }
-  .onboarding .onboarding-search .input-field .prefix svg {
+  .onboarding .onboarding-search .input-field .prefix svg, .onboarding-portfolio-item .onboarding-search .input-field .prefix svg {
     fill: none;
     stroke: white;
     stroke-width: 5px;
@@ -1026,43 +1026,43 @@ section {
     width: 100%;
     height: 100%;
     padding: 11px; }
-.onboarding .onboarding-search .input-field input {
+.onboarding .onboarding-search .input-field input, .onboarding-portfolio-item .onboarding-search .input-field input {
   width: calc(100% - 63px) !important; }
-.onboarding .onboarding-search .input-field input, .onboarding .onboarding-search .input-field label {
+.onboarding .onboarding-search .input-field input, .onboarding .onboarding-search .input-field label, .onboarding-portfolio-item .onboarding-search .input-field input, .onboarding-portfolio-item .onboarding-search .input-field label {
   color: rgba(255, 255, 255, 0.6) !important;
   border-color: rgba(255, 255, 255, 0.6) !important; }
-.onboarding .onboarding-search .input-field input:focus {
+.onboarding .onboarding-search .input-field input:focus, .onboarding-portfolio-item .onboarding-search .input-field input:focus {
   color: white !important;
   border-color: white !important; }
-.onboarding .onboarding-search .input-field .desktop-input-close-icon {
+.onboarding .onboarding-search .input-field .desktop-input-close-icon, .onboarding-portfolio-item .onboarding-search .input-field .desktop-input-close-icon {
   right: 15px;
   margin-top: -20px; }
-.onboarding progress, .onboarding .progress {
+.onboarding progress, .onboarding .progress, .onboarding-portfolio-item progress, .onboarding-portfolio-item .progress {
   position: absolute;
   top: 0;
   z-index: 9; }
-  .onboarding progress span[data-value="2"], .onboarding .progress span[data-value="2"] {
+  .onboarding progress span[data-value="2"], .onboarding .progress span[data-value="2"], .onboarding-portfolio-item progress span[data-value="2"], .onboarding-portfolio-item .progress span[data-value="2"] {
     width: 2%; }
-  .onboarding progress span[data-value="30"], .onboarding .progress span[data-value="30"] {
+  .onboarding progress span[data-value="30"], .onboarding .progress span[data-value="30"], .onboarding-portfolio-item progress span[data-value="30"], .onboarding-portfolio-item .progress span[data-value="30"] {
     width: 25%; }
-  .onboarding progress span[data-value="50"], .onboarding .progress span[data-value="50"] {
+  .onboarding progress span[data-value="50"], .onboarding .progress span[data-value="50"], .onboarding-portfolio-item progress span[data-value="50"], .onboarding-portfolio-item .progress span[data-value="50"] {
     width: 40%; }
-  .onboarding progress span[data-value="80"], .onboarding .progress span[data-value="80"] {
+  .onboarding progress span[data-value="80"], .onboarding .progress span[data-value="80"], .onboarding-portfolio-item progress span[data-value="80"], .onboarding-portfolio-item .progress span[data-value="80"] {
     width: 80%; }
-  .onboarding progress span[data-value="85"], .onboarding .progress span[data-value="85"] {
+  .onboarding progress span[data-value="85"], .onboarding .progress span[data-value="85"], .onboarding-portfolio-item progress span[data-value="85"], .onboarding-portfolio-item .progress span[data-value="85"] {
     width: 85%; }
-  .onboarding progress span[data-value="95"], .onboarding .progress span[data-value="95"] {
+  .onboarding progress span[data-value="95"], .onboarding .progress span[data-value="95"], .onboarding-portfolio-item progress span[data-value="95"], .onboarding-portfolio-item .progress span[data-value="95"] {
     width: 95%; }
-  .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"] {
+  .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"], .onboarding-portfolio-item progress span[data-value="99"], .onboarding-portfolio-item .progress span[data-value="99"] {
     width: 86%; }
-.onboarding header h1:not(header .header-nav a h1) {
+.onboarding header h1:not(header .header-nav a h1), .onboarding-portfolio-item header h1:not(header .header-nav a h1) {
   text-align: center; }
-.onboarding .onboarding-list {
+.onboarding .onboarding-list, .onboarding-portfolio-item .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
-.onboarding#start {
+.onboarding#start, .onboarding-portfolio-item#start {
   background: #40484B; }
-  .onboarding#start #start-container {
+  .onboarding#start #start-container, .onboarding-portfolio-item#start #start-container {
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -3531,5 +3531,10 @@ body.platform-ios {
 
 #credit-slider ul li::selection, #credit-slider ul li.active, #credit-slider ul li.activated, #credit-slider ul li a, #credit-slider ul li a:hover {
   background: none !important; }
+
+.pf-character-count {
+  font-size: 12px;
+  font-weight: 500;
+  right: 33px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -17,7 +17,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		init: init,
 		open: open,
 		attachListeners: attachListeners,
-		close: close
+		close: close,
 	};
 
 	function open(popupName, callback, targetElem) {

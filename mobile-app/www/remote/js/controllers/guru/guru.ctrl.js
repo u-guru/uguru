@@ -65,7 +65,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-profile-contact': '.pf-type',
     'cta-box-profile-experiences': '.pf-tab-container',
     'cta-box-profile-languages': '.pf-tab-container',
-    'cta-box-profile-courses': '.pf-type',
+    'cta-box-profile-pi-item': '.pf-type',
     'cta-box-profile-skills': '.pf-type',
     'cta-box-referrals': '#desktop-guru-home',
     'cta-box-support': '.guru-home-container',
@@ -113,7 +113,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $timeout(function() {
       $state.go('^.university');
     }, 1000)
-
   }
 
   var actualRankingValue = $scope.user.guru_ranking;
