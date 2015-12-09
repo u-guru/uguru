@@ -112,6 +112,186 @@
   background: #467068;
 }
 
+.pf-photo-list {
+  width: 100%;
+  overflow: auto;
+}
+
+.pf-photo-list ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+  padding: 7.5px;
+}
+
+.pf-photo-list ul li {
+  padding: 7.5px;
+  height: 100%;
+}
+
+.pf-photo-list ul li:last-child {
+  padding-right: 15px;
+}
+
+.pf-photo-list ul li div {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  background: #40484B;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.pf-photo-list ul li div.pf-upload-img {
+  background-position: center center;
+  background-size: cover;
+}
+
+.pf-photo-list ul li div.pf-upload-img a svg, .pf-photo-list ul li div.pf-upload-file a svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+}
+
+.pf-photo-list ul li div.pf-upload-file {
+  border: 0;
+  width: auto;
+  background: none !important;
+}
+
+.pf-photo-list ul li div.pf-upload-file svg.doc-outline {
+  fill: none;
+  stroke: white;
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  height: 100%;
+  fill: #69B3A5;
+}
+
+.pf-photo-list ul li div.pf-upload-file.pf-upload-pdf svg.doc-outline {
+  height: 100%;
+  fill: #F04F54;
+}
+
+.pf-photo-list ul li div.pf-upload-file.pf-upload-doc svg.doc-outline {
+  height: 100%;
+  fill: #50A5DD;
+}
+
+.pf-photo-list ul li div.pf-upload-file.pf-upload-sheet svg.doc-outline {
+  height: 100%;
+  fill: #81B566;
+}
+
+.pf-photo-list ul li div.pf-upload-file .doc-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 30px 15px 15px;
+}
+
+.pf-photo-list ul li div.pf-upload-file .doc-info span {
+  display: block;
+  font-weight: 600;
+}
+
+.pf-photo-list ul li div.pf-upload-file .doc-info .doc-name {
+  font-size: 20px;
+}
+
+.pf-photo-list ul li div.pf-upload-file .doc-info .doc-type {
+  font-size: 16px;
+}
+
+.pf-photo-list ul li div.pf-upload-add {
+  position: relative;
+  border-style: dashed;
+  border: 0;
+  background: none;
+  width: auto;
+}
+
+.pf-photo-list ul li div.pf-upload-add .square {
+  height: 100%;
+  fill: none;
+}
+
+.pf-photo-list ul li div.pf-upload-add a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px dashed #69B3A5;
+}
+
+.pf-photo-list ul li div.pf-upload-add a span svg {
+  fill: none;
+  stroke: #69B3A5;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 100%;
+  height: 30px;
+}
+
+.pf-photo-list ul li div.pf-upload-add a span span {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #69B3A5;
+}
+
+.pf-photo-list ul li div.pf-upload-add a:hover, .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-photo-list ul li div.pf-upload-add a:active, .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #cfe6e2;
+}
+
 .pf-type header.third {
   position: relative;
   overflow: hidden;
@@ -366,187 +546,6 @@
 .pf-type header.third .pf-photo-list {
   margin-top: 30px;
   height: calc(100% - 80px);
-  width: 100%;
-  overflow: auto;
-}
-
-.pf-type header.third .pf-photo-list ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  height: 100%;
-  padding: 7.5px;
-}
-
-.pf-type header.third .pf-photo-list ul li {
-  padding: 7.5px;
-  height: 100%;
-}
-
-.pf-type header.third .pf-photo-list ul li:last-child {
-  padding-right: 15px;
-}
-
-.pf-type header.third .pf-photo-list ul li div {
-  position: relative;
-  width: 150px;
-  height: 100%;
-  background: #40484B;
-  border: 2px solid white;
-  border-radius: 10px;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-img {
-  background-position: center center;
-  background-size: cover;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-img a svg, .pf-type header.third .pf-photo-list ul li div.pf-upload-file a svg {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  fill: none;
-  stroke: white;
-  stroke-width: 8px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 25px;
-  height: 25px;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file {
-  border: 0;
-  width: auto;
-  background: none !important;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file svg.doc-outline {
-  fill: none;
-  stroke: white;
-  stroke-width: 1.5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  height: 100%;
-  fill: #69B3A5;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-pdf svg.doc-outline {
-  fill: none;
-  stroke: white;
-  stroke-width: 1.5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  height: 100%;
-  fill: #F04F54;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-doc svg.doc-outline {
-  fill: none;
-  stroke: white;
-  stroke-width: 1.5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  height: 100%;
-  fill: #50A5DD;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-sheet svg.doc-outline {
-  fill: none;
-  stroke: white;
-  stroke-width: 1.5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  height: 100%;
-  fill: #81B566;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 100%;
-  padding: 30px 15px 15px;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info span {
-  display: block;
-  font-weight: 600;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info .doc-name {
-  font-size: 20px;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info .doc-type {
-  font-size: 16px;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-add {
-  position: relative;
-  border-style: dashed;
-  border-color: #69B3A5;
-  background: none;
-  width: auto;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-add .square {
-  height: 100%;
-  fill: none;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-add a {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-add a span svg {
-  fill: none;
-  stroke: #69B3A5;
-  stroke-width: 6px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  width: 100%;
-  height: 30px;
-}
-
-.pf-type header.third .pf-photo-list ul li div.pf-upload-add a span span {
-  display: block;
-  font-size: 18px;
-  font-weight: 600;
-  color: #69B3A5;
 }
 
 .pf-type .pf-item-header {
@@ -1366,6 +1365,7 @@
   transition: all 0.15s ease-in-out;
   border-color: #576267;
   background: #4c5559;
+  padding: 10px 15px;
 }
 
 .pf-edit .main .input-outline:focus {
@@ -1493,6 +1493,389 @@
   stroke-width: 1px !important;
 }
 
+.pf-event .section-header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 50px;
+  background: #40484B;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.pf-event .pf-event-container {
+  padding: 2px;
+}
+
+.pf-event .pf-event-container .input-outline {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  padding: 10px 15px;
+  border-color: #c0c7ca;
+  background: #dce0e1;
+  font-weight: 600 !important;
+  color: #40484B;
+}
+
+.pf-event .pf-event-container .input-outline::-webkit-input-placeholder {
+  color: #6f7d82;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-container .input-outline:-moz-placeholder {
+  color: #6f7d82;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-container .input-outline::-moz-placeholder {
+  color: #6f7d82;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-container .input-outline:-ms-input-placeholder {
+  color: #6f7d82;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-container .input-outline:focus {
+  border-color: #dce0e1;
+  background: #eaeced;
+}
+
+.pf-event .pf-event-container .pf-title-edit.input-outline {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-container textarea.input-outline {
+  width: 100%;
+  padding: 10px 15px;
+  height: 176px;
+  line-height: 1;
+  border-bottom-width: 1px;
+  margin-bottom: 2px;
+  resize: none;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.pf-event .pf-event-container .custom-dropdown {
+  width: 100% !important;
+  margin-bottom: 2px;
+}
+
+.pf-event .pf-event-container .custom-dropdown > div {
+  border: 1px solid #c0c7ca;
+}
+
+.pf-event .pf-event-container .custom-dropdown > div > span {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  width: calc(100% - 36px);
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  height: 36px;
+  background: #dce0e1;
+  color: #6f7d82;
+  font-size: 20px;
+  text-align: left;
+}
+
+.pf-event .pf-event-container .custom-dropdown > div a {
+  width: 36px;
+  height: 36px;
+}
+
+.pf-event .pf-event-container .custom-dropdown > div a svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 10px;
+  background: #8A9EA3;
+}
+
+.pf-event .pf-event-container .custom-dropdown > div a:hover svg, .pf-event .pf-event-container .custom-dropdown > div a:focus svg {
+  background: #40484B;
+}
+
+.pf-event .pf-event-container .custom-dropdown > div a:active svg, .pf-event .pf-event-container .custom-dropdown > div a.active svg {
+  background: #8A9EA3;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+  left: 0;
+  z-index: 12;
+  margin-top: -1px;
+  width: calc(100% - 36px);
+  border: 1px solid #c0c7ca;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li {
+  width: 100%;
+  background: rgba(220, 224, 225, 0.9);
+  padding: 10px 15px !important;
+  color: #6f7d82;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li:hover, .pf-event .pf-event-container .custom-dropdown > ul li:focus {
+  color: white;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li.dropdown-delivery:hover, .pf-event .pf-event-container .custom-dropdown > ul li.dropdown-delivery:focus {
+  background: #F04F54;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li.dropdown-freelancing:hover, .pf-event .pf-event-container .custom-dropdown > ul li.dropdown-freelancing:focus {
+  background: #E5753C;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li.dropdown-baking:hover, .pf-event .pf-event-container .custom-dropdown > ul li.dropdown-baking:focus {
+  background: #F6C64E;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li.dropdown-photography:hover, .pf-event .pf-event-container .custom-dropdown > ul li.dropdown-photography:focus {
+  background: #81B566;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li.dropdown-tech:hover, .pf-event .pf-event-container .custom-dropdown > ul li.dropdown-tech:focus {
+  background: #55A4B7;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li.dropdown-household:hover, .pf-event .pf-event-container .custom-dropdown > ul li.dropdown-household:focus {
+  background: #7872e3;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li.dropdown-athletic:hover, .pf-event .pf-event-container .custom-dropdown > ul li.dropdown-athletic:focus {
+  background: #9A5BC5;
+}
+
+.pf-event .pf-event-container .custom-dropdown > ul li.dropdown-academic:hover, .pf-event .pf-event-container .custom-dropdown > ul li.dropdown-academic:focus {
+  background: #e6389b;
+}
+
+.pf-event .pf-event-container .picker {
+  margin-bottom: 2px;
+  border: 1px solid #c0c7ca;
+  background: #dce0e1;
+  color: #40484B !important;
+}
+
+.pf-event .pf-event-container .pf-doc-upload {
+  height: 38px;
+  margin-bottom: 2px;
+  background: #8A9EA3;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-container .pf-doc-upload:active, .pf-event .pf-event-container .pf-doc-upload.activated {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #40484B;
+}
+
+.pf-event .pf-event-container .pf-photo-list {
+  margin-bottom: 2px;
+  border: 1px solid #c0c7ca;
+  background: #dce0e1;
+  height: 165px;
+  text-align: center;
+}
+
+.pf-event .pf-event-container .pf-photo-list:not(.active) {
+  display: none;
+}
+
+.pf-event .pf-event-container .pf-photo-list ul li div.pf-upload-file svg.doc-outline {
+  stroke-width: 1px;
+}
+
+.pf-event .pf-event-container .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #8A9EA3;
+}
+
+.pf-event .pf-event-container .pf-photo-list ul li div.pf-upload-add a span svg {
+  stroke: #8A9EA3;
+}
+
+.pf-event .pf-event-container .pf-photo-list ul li div.pf-upload-add a span span {
+  color: #8A9EA3;
+}
+
+.pf-event .pf-event-container .pf-photo-list ul li div.pf-upload-add a:hover, .pf-event .pf-event-container .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-event .pf-event-container .pf-photo-list ul li div.pf-upload-add a:active, .pf-event .pf-event-container .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #eef1f2;
+}
+
+.pf-event .pf-event-container .pf-public {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 13px 0 15px;
+}
+
+.pf-event .pf-event-container .pf-public div {
+  position: relative;
+}
+
+.pf-event .pf-event-container .pf-public div input {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: absolute;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pf-event .pf-event-container .pf-public div span {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+  background: #dce0e1;
+}
+
+.pf-event .pf-event-container .pf-public div span svg {
+  fill: none;
+  stroke: #c0c7ca;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  padding: 4px;
+  width: 100%;
+  height: 100%;
+}
+
+.pf-event .pf-event-container .pf-public div input:checked + span {
+  background: #8A9EA3;
+}
+
+.pf-event .pf-event-container .pf-public div input:checked + span svg {
+  stroke: white;
+}
+
+.pf-event .pf-event-container .pf-public label {
+  padding-left: 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-save {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #40484B;
+  font-weight: 600;
+}
+
+.pf-event .pf-event-save:hover, .pf-event .pf-event-save:focus {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #576267;
+}
+
+.pf-event .pf-event-save:active, .pf-event .pf-event-save.activated {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #40484B;
+}
+
+.pf-event-add-modal {
+  position: absolute;
+  z-index: 100;
+  right: -351px;
+  top: 1px;
+  width: 320px;
+}
+
+.pf-event-add-modal:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -30px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-right-color: #40484B;
+}
+
+.pf-event-add-modal .pf-event .section-header {
+  height: 48px;
+}
+
+.pf-event-add-modal .pf-event .pf-event-save {
+  position: static;
+  left: auto;
+  bottom: auto;
+  height: 48px;
+}
+
+@media screen and (min-width: 768px) {
+  .pf-event .pf-event-container textarea.input-outline {
+    height: 38px;
+    padding: 7px 15px;
+  }
+  .pf-event .pf-event-container textarea.input-outline:focus, .pf-event .pf-event-container textarea.input-outline.active {
+    line-height: normal;
+    padding: 10px 15px;
+    height: 176px;
+  }
+  .pf-event .pf-event-container .picker {
+    margin-bottom: 2px;
+    border: 1px solid #c0c7ca;
+    background: #dce0e1;
+    color: #40484B !important;
+  }
+  .pf-event .pf-event-container .picker:not(.active) {
+    height: 30px;
+    overflow: hidden;
+  }
+  .pf-event-save {
+    position: static;
+    bottom: auto;
+    left: auto;
+  }
+}
+
 .pf-cal > div {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1604,6 +1987,7 @@
 }
 
 .pf-cal > div .pf-cal-main .pf-cal-events .pf-cal-day li {
+  position: relative;
   width: 100%;
   min-width: 110px;
   height: 50px;
@@ -2409,7 +2793,7 @@
   color: white !important;
 }
 
-.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add {
+.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a {
   border-color: #e6389b;
 }
 
@@ -2419,6 +2803,14 @@
 
 .pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a span span {
   color: #e6389b;
+}
+
+.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #fad7eb;
 }
 
 .pf-card-academic .pf-card-top {
@@ -2559,7 +2951,7 @@
   color: white !important;
 }
 
-.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add {
+.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a {
   border-color: #81B566;
 }
 
@@ -2569,6 +2961,14 @@
 
 .pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a span span {
   color: #81B566;
+}
+
+.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #e4efde;
 }
 
 .pf-card-photo .pf-card-top {
@@ -2942,7 +3342,7 @@
   color: white !important;
 }
 
-.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add {
+.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a {
   border-color: #F6C64E;
 }
 
@@ -2952,6 +3352,14 @@
 
 .pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a span span {
   color: #F6C64E;
+}
+
+.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #fcedc7;
 }
 
 .pf-card-baking .pf-card-top {
@@ -3124,7 +3532,7 @@
   color: white !important;
 }
 
-.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add {
+.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a {
   border-color: #7872e3;
 }
 
@@ -3134,6 +3542,14 @@
 
 .pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a span span {
   color: #7872e3;
+}
+
+.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #dedcf8;
 }
 
 .pf-card-household .pf-card-top {
@@ -3274,7 +3690,7 @@
   color: white !important;
 }
 
-.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add {
+.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a {
   border-color: #F04F54;
 }
 
@@ -3284,6 +3700,14 @@
 
 .pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a span span {
   color: #F04F54;
+}
+
+.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #fcdcdd;
 }
 
 .pf-card-delivery .pf-card-top {
@@ -3424,7 +3848,7 @@
   color: white !important;
 }
 
-.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add {
+.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a {
   border-color: #E5753C;
 }
 
@@ -3434,6 +3858,14 @@
 
 .pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a span span {
   color: #E5753C;
+}
+
+.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #fae4d9;
 }
 
 .pf-card-freelancing .pf-card-top {
@@ -3574,7 +4006,7 @@
   color: white !important;
 }
 
-.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add {
+.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a {
   border-color: #9A5BC5;
 }
 
@@ -3584,6 +4016,14 @@
 
 .pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a span span {
   color: #9A5BC5;
+}
+
+.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #ebdff4;
 }
 
 .pf-card-athletic .pf-card-top {
@@ -3724,7 +4164,7 @@
   color: white !important;
 }
 
-.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add {
+.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a {
   border-color: #55A4B7;
 }
 
@@ -3734,6 +4174,14 @@
 
 .pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a span span {
   color: #55A4B7;
+}
+
+.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+  background: white;
+}
+
+.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a.active {
+  background: #d2e7ec;
 }
 
 .pf-card-tech .pf-card-top {

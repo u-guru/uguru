@@ -4678,6 +4678,12 @@
   font-weight: 600;
 }
 
+.custom-dropdown > div a {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
 .custom-dropdown > div a svg {
   fill: none;
   stroke: white;

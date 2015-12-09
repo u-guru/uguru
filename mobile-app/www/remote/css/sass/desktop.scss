@@ -3297,6 +3297,9 @@
 			font-weight: 600;
 		}
 		a {
+			display: block;
+			width: 48px;
+			height: 48px;
 			svg {
 				@include svg-stroke(white, 8);
 				background: $shamrock;
