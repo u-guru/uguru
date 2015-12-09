@@ -828,19 +828,27 @@ if arg == 'seed_admin':
                 break
 
     def selectThreeRandLanguages(user):
-        user.guru_languages = []
-        db_session.commit()
+        try:
+            user.guru_languages = []
+            db_session.commit()
+        except:
+            db_session.rollback()
+            return
         languages = Language.query.all()
         num_languages = len(languages)
         from random import randint
         for _ in range(0,10000):
-            language = languages[randint(0, num_languages)]
-            if language not in user.guru_languages:
-                user.guru_languages.append(language)
-                db_session.commit()
-            if len(user.guru_languages) == 3:
-                db_session.commit()
-                break
+            try:
+                language = languages[randint(0, num_languages)]
+                if language not in user.guru_languages:
+                    user.guru_languages.append(language)
+                    db_session.commit()
+                if len(user.guru_languages) == 3:
+                    db_session.commit()
+                    break
+            except:
+                db_session.rollback()
+                continue
 
     def getFakeTagsArr(course):
         return course.full_name.split(' ')
@@ -866,16 +874,20 @@ if arg == 'seed_admin':
         fake_data_dict = {}
         from random import randint
         for course in user.guru_courses:
-            fake_data_dict[course.short_name] = {
-                'tags': getFakeTagsArr(course),
-                'resources': getFakeResourcesArr(course),
-                'pricing': {
-                    'unit': randint(3, 10),
-                    'max_unit': randint(10, 20),
-                    'hour': randint(10, 20),
-                    'max_hourly': randint(10, 30),
+            try:
+                fake_data_dict[course.short_name] = {
+                    'tags': getFakeTagsArr(course),
+                    'resources': getFakeResourcesArr(course),
+                    'pricing': {
+                        'unit': randint(3, 10),
+                        'max_unit': randint(10, 20),
+                        'hour': randint(10, 20),
+                        'max_hourly': randint(10, 30),
+                    }
                 }
-            }
+            except:
+                db_session.rollback()
+                continue
         return fake_data_dict
 
 
