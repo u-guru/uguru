@@ -135,7 +135,10 @@ angular.module('uguru.desktop.controllers', [])
     $scope.openModal = function(modalName) {
       ModalService.open(modalName, $scope);
     };
-
+    $scope.openModalWithLoader = function(modalName) {
+      ModalService.open(modalName, $scope);
+      LoadingService.showAmbig(null, 3500);
+    }
     $scope.openLoginModal = function() {
       $scope.root.vars.loginMode = true;
       $scope.openModal('login');
