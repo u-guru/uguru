@@ -1,5 +1,32 @@
-<ion-view class='uguru-view pf-type pf-type-household bg-slate'>
+<ion-view class='uguru-view pf-type pf-type-{{user.academic_shop.category.hex_color}} bg-slate pf-has-edit'>
+	<!-- popups -->
+	<div class="guru-popup guru-popup-center" ng-show="pagePopups.fb">
+		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
+		<input> {{user.profile_code}}</input>
+		<button ng-click='saveFbUrl()'>Save</button>
+	</div>
+	<div class="guru-popup guru-popup-center" ng-show="pagePopups.instagram">
+		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
+		<input> {{user.profile_code}}</input>
+		<button ng-click='saveInstagramUrl()'>Save</button>
+	</div>
+	<div class="guru-popup guru-popup-center" ng-show="pagePopups.twitter">
+		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
+		<input> {{user.profile_code}}</input>
+		<button ng-click='saveTwitterUrl()'>Save</button>
+	</div>
+	<div class="guru-popup guru-popup-center" ng-show="pagePopups.linkedin">
+		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
+		<input class='full-x' ng-model='user.public_linkedin_url'> {{user.public_linkedin_url}}</input>
+		<button ng-click='saveLinkedInUrl()'>Save</button>
+	</div>
+	<a id='guru-profile-cta-close' class='cta-modal-close close-button absolute m15xy right-0 top-0'>
+		<svg viewBox="0 0 100 100">
+			<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+		</svg>
+	</a>
 	<section>
+		<!--Left third -->
 		<header class="third flex-center">
 			<div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
 			<div class="pf-header-color"></div>
@@ -12,9 +39,20 @@
 			<div class="pf-banner pf-banner-athletic" ng-include="img_base + 'templates/svg/athletic.html'"></div>
 			<div class="pf-banner pf-banner-tech" ng-include="img_base + 'templates/svg/tech.html'"></div>
 			<div class="pf-header">
-				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+				<span class="ng-class:{'hide':profile.edit_mode}">
+					<img class='user-icon' ng-src="{{user.profile_url}}" id='guru-profile-img' />
+				</span>
+				<a ng-click='takeProfilePhoto()' class='profile-icon hide ng-class:{"show":profile.edit_mode}'>
+					<span>
+						<img ng-src="{{user.profile_url}}" id='guru-profile-img' />
+					</span>
+					<h1 id='guru-profile-edit-photo-txt'>
+						Edit
+						<br/>Photo
+					</h1>
+				</a>
 				<h1 class="verified">
-					<span class="inline">{{ user.profile_name }}</span>
+					<span class="inline">{{ user.profile_name || 'Nameless Guru' }}</span>
 					<span class="inline">
 						<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 					</span>
@@ -23,18 +61,32 @@
 				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
 				<!-- <button class="btn-ghost-white">Contact</button> -->
-				<div class="pf-header-desc">
-					{{user.guru_introduction}}
+				<div class='profile-textarea-container relative'>
+					<textarea class="pf-header-desc ng-class:{'hide': profile.edit_mode}" disabled>{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</textarea>
+					<textarea ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' class="pf-header-desc hide ng-class:{'show': profile.edit_mode}"></textarea>
+					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}' >{{140 - user.guru_introduction.length}}</span>
 				</div>
-				<ul class="pf-url">
-					<!-- BIND -->
+				<!-- <ul class="pf-url">
 					<li>
-						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code}}.uguru.me</a>
+						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code || user.first_name}}.uguru.me</a>
 					</li>
 					<li>
 						<a href='http://{{user.profile_code}}.uguru.me' target='_blank' class='bg-white'>
 							<svg viewBox="0 0 100 100">
 								<path d="M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848"></path>
+							</svg>
+						</a>
+					</li>
+				</ul> -->
+				<ul class="pf-url pf-edit-url">
+					<li class='ng-class:{"bg-white":!profile.edit_mode}'>
+						<input class='ng-class:{"bg-white":!profile.edit_mode}' ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length}}"/>
+						<span class='ng-class:{"bg-white":!profile.edit_mode}'>.uguru.me</span>
+					</li>
+					<li class="hide ng-class={'show':profile.edit_mode}">
+						<a class='bg-white'>
+							<svg viewBox="0 0 100 100">
+								<path d="M15.6243489,84.7923176 L19.5509642,73.6399994 L69.794924,23.3911161 L77.0255506,30.6217427 L26.7800007,80.8660212 L15.6243489,84.7923176 Z M13.3333333,87.0833333 L16.6666667,83.75 L13.3333333,87.0833333 L13.3333333,87.0833333 Z M70.8333333,23.75 L73.3350627,21.25 L70.8333333,23.75 L70.8333333,23.75 Z M76.6666667,29.5833333 L79.1666667,27.0833333 L76.6666667,29.5833333 L76.6666667,29.5833333 Z M82.5205606,25.5682252 L85.7479206,28.7955852 C85.7479206,28.7955852 67.7080166,46.8354927 67.5,47.0435059 M75.9393067,32.2348919 L79.1666667,35.4622519 M19.5499992,73.6399994 L26.7800007,80.8700027 L19.5499992,73.6399994 Z M77.7627936,15.0378071 L85.3792239,22.6542374 L81.0085605,27.0249008 L73.3921302,19.4084705 L77.7627936,15.0378071 Z"></path>
 							</svg>
 						</a>
 					</li>
@@ -48,26 +100,90 @@
 						<a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
 					</li>
 					<li>
-						<a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
+						<a ng-click='activeTabIndex = 1' class="ng-class:{'active':activeTabIndex === 1}">About</a>
 
 					</li>
 				</ul>
 			</div>
+
+				<!-- start CTA containers -->
+					<ion-pane id='cta-modal-profile-contact' class='full-xy hide-display cta-modal'>
+						<div class="profile-header">
+							<h1>My Communication Preferences </h1>
+							<a class="cta-modal-close close-button">
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						</div>
+						<div ng-include="img_base + BASE + 'templates/guru.contact.components.	html'"></div>
+						<!-- <div ></div> -->
+					</ion-pane>
+
+					<ion-pane id='cta-modal-profile-skills' class='full-xy hide-display cta-modal' ng-controller='CategoriesController'>
+						<div class="profile-header">
+							<h1>Other ways to earn</h1>
+							<a class="cta-modal-close close-button">
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						</div>
+						<div ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></div>
+					</ion-pane>
+
+
+					<!-- end CTA containers -->
 			<!-- BIND -->
-			<div class="pf-shop-desc pf-tab-item ng-class:{'active':activeTabIndex === 1}">
-				<h1>{{user.first_name}}'s Shop</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-				<div class="pf-list p15top">
-					<h1>Experience</h1>
+			<div class="relative pf-shop-desc full-x pf-tab-item ng-class:{'active':activeTabIndex === 1}">
+
+
+				<h1>{{user.academic_shop.title}}</h1>
+				<p>{{user.academic_shop.description}}</p>
+				<ul class="pf-links">
+					<li>
+						<a class="bg-li" ng-click='pagePopups.linkedin = true;'>
+							<svg viewBox="0 0 100 100">
+							    <path d="M22.0147869,13 C26.986455,13 31.0237522,17.0372972 31.0237522,22.0118761 C31.0237522,26.9893658 26.986455,31.026663 22.0147869,31.026663 C17.0227431,31.026663 13,26.9893658 13,22.0118761 C13,17.0372972 17.0227431,13 22.0147869,13 L22.0147869,13 Z M14.2341846,37.8583404 L29.7895676,37.8583404 L29.7895676,87.8661026 L14.2341846,87.8661026 L14.2341846,37.8583404 Z M39.5407902,37.8583404 L54.4383296,37.8583404 L54.4383296,44.6958395 L54.6508189,44.6958395 C56.7233176,40.7633315 61.7968641,36.6183342 69.3591555,36.6183342 C85.0920981,36.6183342 88,46.972095 88,60.4404254 L88,87.8661026 L72.4620818,87.8661026 L72.4620818,63.5462625 C72.4620818,57.7479236 72.3602034,50.2875107 64.3845766,50.2875107 C56.2983389,50.2875107 55.0641543,56.606885 55.0641543,63.1329271 L55.0641543,87.8661026 L39.5407902,87.8661026 L39.5407902,37.8583404" ></path>
+							</svg>
+						</a>
+					</li>
+					<li>
+						<a class="bg-fb"  ng-click='pagePopups.fb = true;'>
+							<svg viewBox="0 0 100 100">
+							    <path d="M56.2810216,53.7891775 L67.7641802,53.7891775 L69.4834101,40.4563738 L56.2810216,40.4563738 L56.2810216,31.9439678 C56.2810216,28.08381 57.3528096,25.4533286 62.8885049,25.4533286 L69.9488004,25.4500185 L69.9488004,13.5253019 C68.7270681,13.3631104 64.5365692,13 59.660894,13 C49.4815565,13 42.5126178,19.2132587 42.5126178,30.6239276 L42.5126178,40.4563738 L31,40.4563738 L31,53.7891775 L42.5126178,53.7891775 L42.5126178,88 L56.2810216,88 L56.2810216,53.7891775 Z"></path>
+							</svg>
+						</a>
+					</li>
+					<li>
+						<a class="bg-tw" ng-click='pagePopups.tw = true;'>
+							<svg viewBox="0 0 100 100">
+							    <path d="M86.2761719,27.903125 C84.015625,28.7457031 81.6378906,29.3398438 79.1628906,29.6363281 C81.1304687,28.45625 82.8144531,26.8484375 84.0847656,24.9429687 C84.8652344,23.7734375 85.4910156,22.4914062 85.928125,21.125 C82.9550781,22.8875 79.6621094,24.1683594 76.1570312,24.8585938 C73.3503906,21.8679688 69.3507812,20 64.9257812,20 C56.44375,20 49.5671875,26.8613281 49.5402344,35.3339844 C49.5378906,36.5890625 49.6738281,37.7632813 49.9363281,38.8894531 C48.7140625,38.8273438 47.509375,38.7007812 46.3152344,38.5414063 C35.0195312,37.0320313 25.084375,31.2335937 18.221875,22.8160156 C16.8964844,25.0882812 16.1382812,27.7308594 16.1382812,30.5503906 C16.1382812,33.5679687 17.0300781,36.3699219 18.5324219,38.7464844 C19.6855469,40.5734375 21.1902344,42.1554687 22.9832031,43.3542969 C20.4894531,43.2757813 18.1457031,42.5949219 16.0878906,41.4664062 C16.0128906,46.3859375 18.184375,50.6363281 21.5839844,53.459375 C21.9613281,53.7722656 22.3550781,54.0652344 22.7605469,54.3417969 C24.4246094,55.4738281 26.3136719,56.2988281 28.3550781,56.7078125 C27.3378906,56.9855469 26.2773438,57.1566406 25.1863281,57.2175781 C24.8933594,57.2351563 24.5992187,57.2480469 24.3015625,57.2480469 C23.3101562,57.2480469 22.3457031,57.1507812 21.4070312,56.9714844 C21.503125,57.2738281 21.6167969,57.5691406 21.7316406,57.8632812 C23.3441406,61.9917969 26.6863281,65.253125 30.8699219,66.7542969 C32.0277344,67.1691406 33.2476562,67.4527344 34.5132813,67.5792969 C34.5132813,67.5792969 32.5175781,69.9148438 31.3046875,70.5652344 C26.9441406,72.9042969 21.9660156,74.2414063 16.6703125,74.2414063 C15.4292969,74.2414063 14.2035156,74.1675781 13,74.0257812 C19.8097656,78.3910156 27.8980469,80.9375 36.5875,80.9375 C64.8894531,80.9375 80.3664063,57.4964844 80.3664063,37.1667969 C80.3664063,36.5 80.3511719,35.8367187 80.321875,35.1769531 C83.3277344,33.0078125 85.9375,30.2984375 88,27.2140625 C87.4351563,27.4636719 86.8574219,27.6863281 86.2761719,27.903125 Z"></path>
+							</svg>
+						</a>
+					</li>
+					<li>
+						<a class="pf-link-add" ng-click='pagePopups.linkedin = true;'>
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+					</li>
+				</ul>
+				<div class="pf-list p15top relative">
+					<h1 class='relative'>Experience
+						<a id='cta-box-profile-experiences' class='p10x cta-box edit-button right-0 absolute weight-700'>Add</a>
+					</h1>
 					<ul class="pf-list-y">
 						<li ng-repeat='experience in user.guru_experiences'>
 							<ul class="ugrid-2">
-								<li class="text-left">{{experience.title}}</li>
+								<li class="text-left">{{experience.name}}</li>
 								<li class="text-right" data-years="{{experience.years}}">{{experience.years}} year</li>
 							</ul>
 							<div class="pf-list-desc">{{experience.description}}</div>
 						</li>
-						<li>
+						<!--Sample experience-->
+						<li ng-if='!user.guru_experiences || !user.guru_experiences.length'>
 							<ul class="ugrid-2">
 								<li class="text-left">Cal Web Master</li>
 								<li class="text-right" data-years="3" >3 year</li>
@@ -78,46 +194,185 @@
 						</li>
 					</ul>
 				</div>
-				<div class="pf-list p15top">
-					<h1>Will Work For</h1>
-					<ul class="pf-list-x ugrid-3">
-						<li>
-							<svg viewBox="0 0 100 100">
-								<path d="M50,86 C69.882251,86 86,69.882251 86,50 C86,30.117749 69.882251,14 50,14 C30.117749,14 14,30.117749 14,50 C14,69.882251 30.117749,86 50,86 Z M62,41 C62,32 52.9423828,30.5131836 50,30.5131836 C47.0576172,30.5131836 38,32 38,41 C38,46.4300003 42.675293,49.1364937 50,50.2399998 C57.324707,51.3435059 62,53.8100014 62,59.2399998 C62,68.2399998 52.9423828,69.7268162 50,69.7268162 C47.0576172,69.7268162 38,68.2399998 38,59.2399998 M50,23.4736842 L50,76.5263158"></path>
-							</svg>
-						</li>
-						<li>
-							<svg viewBox="0 0 100 100">
-								<path d="M41.0165491,16.2307484 L14,84.3019805 L85.8502839,64.7488654 M78.1395527,66.5903838 C77.9282798,43.9236752 60.3905755,25.3983634 38.1315863,23.619595 M86,64.6027572 C84.848908,39.5582444 65.7881883,19.1872357 41.3281102,16 M46.1489882,43.6975899 C49.7000674,43.6975899 52.5787859,40.8188714 52.5787859,37.2677922 C52.5787859,33.716713 49.7000674,30.8379946 46.1489882,30.8379946 C42.5979091,30.8379946 39.7191906,33.716713 39.7191906,37.2677922 C39.7191906,40.8188714 42.5979091,43.6975899 46.1489882,43.6975899 Z M61.9761824,61.5031833 C65.5272616,61.5031833 68.4059801,58.6244649 68.4059801,55.0733857 C68.4059801,51.5223065 65.5272616,48.6435881 61.9761824,48.6435881 C58.4251033,48.6435881 55.5463848,51.5223065 55.5463848,55.0733857 C55.5463848,58.6244649 58.4251033,61.5031833 61.9761824,61.5031833 Z M33.2893929,73.373579 C36.8404721,73.373579 39.7191906,70.4948605 39.7191906,66.9437814 C39.7191906,63.3927022 36.8404721,60.5139837 33.2893929,60.5139837 C29.7383138,60.5139837 26.8595953,63.3927022 26.8595953,66.9437814 C26.8595953,70.4948605 29.7383138,73.373579 33.2893929,73.373579 Z M50.938492,69.4775102 L50.938492,59.5855138 M42.0356952,54.6395156 L51.9276916,49.6935174 M36.1004974,52.6611163 L35.1112977,43.7583196"></path>
-							</svg>
-						</li>
-						<li>
-							<svg viewBox="0 0 100 100">
-							    <path d="M72.5851716,42 L73.9931215,29.995752 C74.0570412,29.4507688 73.6585714,29 73.1018159,29 L27.8983562,29 C27.3424684,29 26.9425497,29.4458134 27.0070507,29.995752 L28.4150006,42 L72.5851716,42 Z M69.3011177,70 L67.6585926,84.004248 C67.5940916,84.5541866 67.0857626,85 66.5402092,85 L34.4599629,85 C33.9067978,85 33.4054993,84.5492312 33.3415795,84.004248 L31.6990544,70 L69.3011177,70 Z M22.3027991,18.9761766 C22.4382171,18.4370492 22.9928038,18 23.5543004,18 L76.8012657,18 C77.3570328,18 77.9158831,18.431213 78.052767,18.9761766 L80.3253539,28.0238234 C80.4607719,28.5629508 80.1162204,29 79.5662184,29 L20.7893477,29 C20.2346707,29 19.8933283,28.568787 20.0302121,28.0238234 L22.3027991,18.9761766 Z M30.2137671,13.9404618 C30.4060672,13.4210591 31.0119797,13 31.5619707,13 L68.4364299,13 C68.9887221,13 69.5942727,13.4262972 69.7846335,13.9404618 L70.9394192,17.0595382 C71.1317193,17.5789409 70.8382599,18 70.2875118,18 L29.7108888,18 C29.1585502,18 28.8686206,17.5737028 29.0589814,17.0595382 L30.2137671,13.9404618 Z M26.0050793,42.9965348 C25.9492956,42.4461638 26.359641,42 26.9089876,42 L74.0908467,42 C74.6458451,42 75.0511823,42.4398131 74.994755,42.9965348 L72.358783,69.0034652 C72.3029993,69.5538362 71.8129129,70 71.2671302,70 L29.7327035,70 C29.1855839,70 28.697478,69.5601869 28.6410506,69.0034652 L26.0050793,42.9965348 Z"></path>
-							</svg>
+				<div class="pf-list p15top relative">
+					<h1 class='relative'>Language
+						<a id='cta-box-profile-languages' class='p10x cta-box edit-button right-0 absolute weight-700'>Add</a>
+					</h1>
+					<ul class="pf-list-y">
+						<li ng-repeat='language in user.guru_languages'>
+							<ul class="ugrid-2">
+								<li class="text-center">{{language.name}}</li>
+							</ul>
 						</li>
 					</ul>
 				</div>
-				<div class="pf-reviews p15top">
+				<div class="pf-list p15top">
+					<h1>Will Work For</h1>
+					<ul class="pf-list-x ugrid-6">
+						<li ng-repeat='currency in all_currencies' ng-click='updateCurrency(currency)'>
+							<svg viewBox="0 0 100 100" ng-if='currency.active'>
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+							<small class="weight-500 p10xy ng-class:{'txt-cerise': currency.active, 'bg-academic': currency.active}"> {{currency.name}}
+							</small>
+						</li>
+					</ul>
+				</div>
+				<div class="pf-list p15top">
+					<h1>Preferred Communication Methods</h1>
+					<ul class="pf-list-x ugrid-6">
+						<li>
+					        <div>
+						        <input type="checkbox" ng-change='updateCommunicationMethod("phone_friendly", user.phone_friendly)' ng-model='user.phone_friendly'/>
+								<span>
+							        <label>
+										<svg viewBox="0 0 100 100">
+											<path d="M83.7938561,79.3821434 L78.6699409,84.5071137 C77.7551539,85.4205819 75.0764739,85.9906092 74.9904818,85.9906092 C58.7807089,86.131995 43.1731445,79.7648873 31.705598,68.2962858 C20.2066618,56.790755 13.8321683,41.1275331 14.0033612,24.8631579 C14.0033612,24.8557721 14.5900066,22.2538519 15.5040023,21.3485609 L20.6276537,16.2241181 C22.5025978,14.3404693 26.104242,13.4892531 28.6272922,14.3333473 L29.7050949,14.6928786 C32.2207592,15.5361814 34.8619825,18.3177354 35.5570413,20.8803525 L38.13443,30.34001 C38.8294888,32.9100129 37.8920167,36.5662594 36.0176002,38.4412035 L32.5963811,41.8629501 C35.9553482,54.2980395 45.7122852,64.0568229 58.1494848,67.4239672 L61.5693849,64.0014293 C63.4530338,62.1177804 67.1079614,61.1810997 69.6724249,61.8751034 L79.1307636,64.4617243 C81.6939082,65.1660154 84.4749346,67.7906206 85.3179736,70.3054936 L85.677505,71.3988593 C86.5131582,73.9147874 85.6685365,77.5156402 83.7938561,79.3821434 L83.7938561,79.3821434 Z"></path>
+										</svg>
+										<span>Phone</span>
+									</label>
+									<span></span>
+								</span>
+						    </div>
+					    </li>
+					    <li>
+					        <div>
+						        <input type="checkbox" ng-change='updateCommunicationMethod("skype_friendly", user.skype_friendly)' ng-model='user.skype_friendly'/>
+								<span>
+							        <label>
+										<svg viewBox="0 0 100 100">
+											<path d="M67.1700488,43.1554639 L67.1700488,32.2844044 C67.1700488,29.2226957 64.6887798,26.7381037 61.6348252,26.7381037 L19.5341159,26.7381037 C16.4812689,26.7381037 14,29.2226957 14,32.2844044 L14,67.7155956 C14,70.7773043 16.4801612,73.2618963 19.5341159,73.2618963 L61.6348252,73.2618963 C64.6876721,73.2618963 67.1700488,70.7773043 67.1700488,67.7155956 L67.1700488,56.8445361 L86,65.7892891 L86,34.2107109 L71.9187988,40.9001677 L67.1700488,43.1554639 Z M41.4037179,62.1366416 C48.1066,62.1366416 53.5403595,56.7028821 53.5403595,50 C53.5403595,43.2971179 48.1066,37.8633584 41.4037179,37.8633584 C34.7008359,37.8633584 29.2670763,43.2971179 29.2670763,50 C29.2670763,56.7028821 34.7008359,62.1366416 41.4037179,62.1366416 Z"></path>
+										</svg>
+										<span>Video</span>
+									</label>
+									<span></span>
+								</span>
+							</div>
+					    </li>
+					    <li>
+					        <div>
+						        <input type="checkbox" ng-change='updateCommunicationMethod("messenger_friendly", user.messenger_friendly)' ng-model='user.messenger_friendly'/>
+						        <span>
+							        <label>
+										<svg viewBox="0 0 100 100">
+											<path d="M23.2244571,18.0571429 L23.2244571,18.0571429 L78.7755429,18.0571429 C83.3177143,18.0571429 87,21.7445714 87,26.2826286 L87,65.3745143 C87,69.9177143 83.3177143,73.6 78.7755429,73.6 L57.1714286,73.6 L51,85.9428571 L44.8285714,73.6 L23.2244571,73.6 C18.6822857,73.6 15,69.9125714 15,65.3745143 L15,26.2826286 C15,21.7394286 18.6822857,18.0571429 23.2244571,18.0571429 L23.2244571,18.0571429 Z"></path>
+										</svg>
+										<span>Messaging</span>
+									</label>
+									<span></span>
+								</span>
+						    </div>
+					    </li>
+					    <li>
+					        <div>
+						        <input type="checkbox" ng-change='updateCommunicationMethod("text_friendly", user.text_friendly)' ng-model='user.text_friendly'/>
+						        <span>
+							        <label>
+										<svg viewBox="0 0 100 100">
+										    <path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
+										</svg>
+										<span>Texting</span>
+									</label>
+									<span></span>
+								</span>
+						    </div>
+					    </li>
+					    <li>
+					        <div>
+						        <input type="checkbox" ng-change='updateCommunicationMethod("email_friendly", user.email_friendly)' ng-model='user.email_friendly'/>
+								<span>
+							        <label>
+										<svg viewBox="0 0 100 100">
+										    <path d="M15,31.9968376 C15,27.5803062 18.579658,24 22.9957852,24 L77.0042148,24 C81.420165,24 85,27.5741706 85,31.9968376 L85,68.0031624 C85,72.4196938 81.420342,76 77.0042148,76 L22.9957852,76 C18.579835,76 15,72.4258294 15,68.0031624 L15,31.9968376 L15,31.9968376 Z M84.9111543,31.4941352 L49.9585003,55.0012225 L15.0058463,31.4941352 M42.8716789,50.2025451 L15.0946246,68.884039 L42.8716789,50.2025451 M57.2229457,50.2025451 L85,68.884039 L57.2229457,50.2025451"></path>
+										</svg>
+										<span>Email</span>
+									</label>
+									<span></span>
+								</span>
+						    </div>
+					    </li>
+					    <li>
+					        <div>
+						        <input type="checkbox" ng-change='updateCommunicationMethod("person_friendly", user.person_friendly)' ng-model='user.person_friendly'/>
+								<span>
+							        <label>
+										<svg viewBox="0 0 100 100">
+											<path d="M50.0000186,14 C30.1802821,14 14.030417,30.1419103 14.0000373,49.9835145 C13.9861494,59.7785062 17.8513192,69.2750235 24.6069034,76.038418 C31.0239706,82.4616905 39.5485232,86 48.6120989,86 C49.0955707,86 49.5825143,85.9904558 50.072062,85.969632 C70.2181637,85.1444892 86,69.3383625 86,49.9861175 C86,30.142778 69.8510029,14 50.0000186,14 L50.0000186,14 Z M24.18272,74.5721092 C25.26272,65.2447492 30.77792,57.3967492 38.83328,53.6988292 C35.65568,50.7151492 33.65696,46.4911492 33.65696,41.7986692 C33.65696,32.7871492 40.98848,25.4556292 50,25.4556292 C59.01152,25.4556292 66.34304,32.7871492 66.34304,41.7986692 C66.34304,46.4911492 64.34432,50.7151492 61.16672,53.6988292 C69.22208,57.3967492 74.73728,65.2447492 75.81728,74.5721092"></path>
+										</svg>
+										<span>In Person</span>
+									</label>
+									<span></span>
+								</span>
+						    </div>
+					    </li>
+					</ul>
+				</div>
+				<!-- <div class="pf-reviews p15top">
 					<h2>{{user.guru_avg_rating || 0.0}} Average Rating</h2>
 					<button class="m10top btn-ghost-white">See Availability</button>
-				</div>
+				</div> -->
+
+				<ion-pane id='cta-modal-profile-experiences' class='full-xy hide-display cta-modal'>
+						<div ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
+					</ion-pane>
+
+					<ion-pane id='cta-modal-profile-languages' class='full-xy hide-display cta-modal'>
+						<div ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
+					</ion-pane>
+
 			</div>
 
 			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
-				<li class="pf-checklist-full active pf-type-household" ng-include="img_base + 'templates/profile.modal.html'"></li>
 
-				<li ng-repeat='course in user.guru_courses'>
+				<li class="pf-checklist-full active pf-type-{{user.academic_shop.category.hex_color}} hide ng-class:{'show':user.academic_shop.active_portfolio_item}" ng-include="img_base + 'templates/profile.modal.html'"></li>
+
+				<li ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-click='user.academic_shop.active_portfolio_item = portfolio_item;'>
 					<div class="pf-check-container">
-						<span>
-							<span>{{course.short_name}}</span>
-							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-							<span class="pf-review-amt">3 Reviews</span>
-
+						<a class="pf-edit-link" ng-click="user.academic_shop.edit_portfolio_item = portfolio_item">Edit</a>
+						<a class="pf-check pf-remove">
+							<svg viewBox="0 0 100 100">
+						    	<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+						<span class="pf-check-label">
+							<span>{{portfolio_item.course.short_name}}</span>
+							<ul class="pf-rating" data-rating="{{portfolio_item.rounded_avg_rating}}" data-half="{{portfolio_item.half_stars}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<span class='pf-review-exact-amt'>
+							{{portfolio_item.avg_rating}}
+							</span>
+							<span class="pf-review-amt"> {{portfolio_item.ratings.length}} Reviews</span>
 						</span>
 					</div>
 				</li>
+
+				<li class="pf-checklist-add">
+					<div class="pf-check-container">
+						<a id='cta-box-profile-pi-item' class='cta-box' ng-click='bindPortfolioItemObjToScope()'>
+							<span class="pf-check-label">
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+								<span>Add an Item</span>
+							</span>
+						</a>
+					</div>
+				</li>
+
+				<li id='cta-modal-profile-pi-item' class="pf-checklist-full full-xy absolute top-0 left-0 cta-modal high-z-index pf-type-{{user.academic_shop.category.hex_color}} ng-class:{'show': user.academic_shop.edit_portfolio_item}"  ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
 			</ul>
+			<!-- <ion-pane id='cta-modal-profile-pi-item' class='guru-cta-profile-container full-xy right-0 hide-display cta-modal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/profile.modal.edit.html'">
+			</ion-pane> -->
+			<div class="pf-edit-pf pf-desktop-edit">
+				<button id="btn-edit-profile" ng-click='profile.edit_mode = true;' class="btn-ghost-white ng-class:{'hide':profile.edit_mode}">Edit</button>
+				<button ng-click='saveGuruProfile()' id='btn-save-profile' class="btn-ghost-white hide ng-class:{'show':profile.edit_mode}">Save</button>
+
+			</div>
+			<div class="pf-edit-pf pf-mobile-edit">
+				<button>Save</button>
+			</div>
 		</div>
 	</section>
 </ion-view>

@@ -27,27 +27,68 @@ angular.module('uguru.guru.controllers')
   'DeviceService',
   'LoadingService',
   '$ionicViewSwitcher',
+  'Currency',
+  'User',
+  'PortfolioItem',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook, uTracker, University, PopupService, Utilities,
   RankingService, TipService, Category, $ionicSlideBoxDelegate,
-  DeviceService, LoadingService, $ionicViewSwitcher) {
+  DeviceService, LoadingService, $ionicViewSwitcher, Currency, User, PortfolioItem) {
     $scope.refreshTipsAndRanking = function(user) {
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
     }
 
+
+
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
+
+    if (!$scope.user.profile_code) {
+      $scope.user.profile_code = $scope.user.profile_code || $scope.user.first_name || 'nameless';
+    }
 
     // credibility only variable
     $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
 
 
+    $scope.all_currencies = Currency.updateMasterList($scope.user);
+
     $scope.experience = {name:'samir', years:7, description:"i lvoe teaching this so much"};
 
     $scope.showEditGuruIntro = false;
+
+    $scope.bindPortfolioItemObjToScope = function() {
+      $scope.newPortfolioItem = PortfolioItem.initEmpty();
+      PortfolioItem.linkEditModal('#cta-modal-profile-pi-item');
+    }
+
+    $scope.bindPortfolioItemObjToScope();
+
+    $scope.setCourseAndClearInput = function(course) {
+      $scope.newPortfolioItem.course = {
+        id: course.id,
+        short_name: course.short_name,
+        department_long: course.department_long,
+        code: course.code,
+        full_name: course.full_name
+      }
+      var courseInput = document.querySelector('#course-input-1')
+      if (courseInput) {
+        courseInput.value = '';
+      }
+      $scope.searchInputFocus = false;
+    }
+
+    $scope.savePortfolioItem = function(portfolio_item) {
+      if (!PortfolioItem.validateFields(portfolio_item)) {
+        return;
+      }
+      LoadingService.showAmbig('Saving...', 10000);
+      $scope.user.createObj($scope.user, 'add_portfolio_item', portfolio_item , $scope, PortfolioItem.createObjSuccess);
+    }
 
     $scope.toggleDesktopIntroduction = function() {
       $scope.showEditGuruIntro = !$scope.showEditGuruIntro;
@@ -167,6 +208,28 @@ angular.module('uguru.guru.controllers')
       }, 500);
     }
 
+
+
+    //TODO --> send error to analytics if no callback
+    $scope.saveGuruIntroductionBehindScenes = function() {
+      User.updateLocal($scope.user);
+      $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
+    }
+
+    $scope.onEnterBlurInput = function($event) {
+      $event.target.blur();
+    }
+
+    $scope.saveProfileCode = function() {
+      LoadingService.show();
+      $scope.refreshTipsAndRanking($scope.user);
+      $scope.user.updateAttr('profile_code', $scope.user, $scope.user.profile_code, null, $scope);
+      $scope.profile.intro_edit_mode = false;
+      $timeout(function() {
+        LoadingService.showSuccess('Saved!', 1500);
+      }, 500);
+    }
+
     $scope.removeMajor = function(major, index) {
 
       if (!confirm('Remove ' + (major.code || major.name || major.title || major.abbr) + '?')) {
@@ -233,7 +296,30 @@ angular.module('uguru.guru.controllers')
     $scope.initLateNightOptions();
 
 
+    $scope.pagePopups = {
+      linkedin: false,
+      fb: false,
+      twitter: false,
+      instagram: false
+    }
 
+    $scope.saveLinkedInUrl = function(url) {
+      LoadingService.showSuccess('Saved!', 2000);
+      $scope.pagePopups.linkedin = false;
+      $scope.updateAttr('public_linkedin_url', $scope.user, $scope.user.public_linkedin_url, null, $scope);
+    }
+
+    $scope.saveFbUrl = function(url) {
+      $scope.updateAttr('public_fb_url', $scope.user, url, $scope.user.public_fb_url, $scope);
+    }
+
+    $scope.saveTwitterUrl = function(url) {
+      $scope.updateAttr('public_twitter_url', $scope.user, url, $scope.user.public_twitter_url, $scope);
+    }
+
+    $scope.saveInstagramUrl = function(url) {
+      $scope.updateAttr('public_instagram_url', $scope.user, url, $scope.user.public_instagram_url, $scope);
+    }
 
     $scope.lateNightOnChange = function() {
       $scope.success.show(0, 750, 'Saved!');
@@ -259,6 +345,17 @@ angular.module('uguru.guru.controllers')
              }
         }
 
+    }
+
+    $scope.focusTag = function() {
+      console.log('input is focused');
+      console.log($scope.newPortfolioItem.tags);
+    }
+
+    $scope.onEnterBlurInput = function($event) {
+      if ($event.keyCode == 13 ||$event.keyCode == 9) {
+        $scope.newPortfolioItem.tags.push($scope.newPortfolioItem.orig_tag);
+      }
     }
 
     $scope.maxHourlyOnChange = function(options) {
@@ -394,6 +491,18 @@ angular.module('uguru.guru.controllers')
         LoadingService.showSuccess('Introduction Saved', 1500);
         $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
       })
+    }
+
+
+    $scope.updateCurrency = function(currency) {
+      if (currency.active) {
+        currency.active = null;
+        $scope.user.updateAttr('remove_guru_currency', $scope.user, currency, null, $scope) ;
+      } else {
+        currency.active = true;
+        $scope.user.updateAttr('add_guru_currency', $scope.user, currency, null, $scope) ;
+      }
+
     }
 
     $scope.closeAndSaveContactGuruModal = function() {
@@ -587,6 +696,7 @@ angular.module('uguru.guru.controllers')
       $scope.success.show(0, 1500, 'Profile Successfully Saved');
       $scope.root.vars.profile.edit_mode = !$scope.root.vars.profile.edit_mode;
       $timeout(function() {
+        $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
         $scope.profile.edit_mode = false;
       }, 500)
     }

@@ -74,7 +74,7 @@
       .desktop-mode .desktop-header .skip-button:hover, .desktop-mode .desktop-header .skip-button:focus, .desktop-mode .desktop-header .skip-button:active {
         filter: alpha(opacity=100);
         opacity: 1; }
-  .desktop-mode #cta-box-support {
+  .desktop-mode #cta-box-support, .desktop-mode #cta-box-content {
     border-radius: 1000px;
     position: fixed;
     bottom: 15px;
@@ -83,13 +83,13 @@
     height: 48px;
     padding: 6px;
     background: rgba(255, 255, 255, 0.9); }
-    .desktop-mode #cta-box-support svg {
+    .desktop-mode #cta-box-support svg, .desktop-mode #cta-box-content svg {
       fill: none;
       stroke: #2B3234;
       stroke-width: 7px;
       stroke-linecap: round;
       stroke-linejoin: round; }
-    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-support:after {
+    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-support:after, .desktop-mode #cta-box-content:before, .desktop-mode #cta-box-content:after {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
       -ms-transition: all 0.15s ease-in-out;
@@ -104,14 +104,14 @@
       -ms-transform: translateY(-50%);
       -o-transform: translateY(-50%);
       transform: translateY(-50%); }
-    .desktop-mode #cta-box-support:before {
+    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-content:before {
       content: "";
       right: -20px;
       width: 0;
       height: 0;
       border: 10px solid transparent;
       border-right-color: rgba(255, 255, 255, 0.9); }
-    .desktop-mode #cta-box-support:after {
+    .desktop-mode #cta-box-support:after, .desktop-mode #cta-box-content:after {
       content: "Support";
       right: -108px;
       padding: 10px 15px;
@@ -120,13 +120,21 @@
       font-weight: 600;
       text-transform: uppercase;
       color: #40484B; }
-    .desktop-mode #cta-box-support:hover, .desktop-mode #cta-box-support:focus {
+    .desktop-mode #cta-box-support:hover, .desktop-mode #cta-box-support:focus, .desktop-mode #cta-box-content:hover, .desktop-mode #cta-box-content:focus {
       background: #8bc4b9; }
-      .desktop-mode #cta-box-support:hover:before, .desktop-mode #cta-box-support:hover:after, .desktop-mode #cta-box-support:focus:before, .desktop-mode #cta-box-support:focus:after {
+      .desktop-mode #cta-box-support:hover:before, .desktop-mode #cta-box-support:hover:after, .desktop-mode #cta-box-support:focus:before, .desktop-mode #cta-box-support:focus:after, .desktop-mode #cta-box-content:hover:before, .desktop-mode #cta-box-content:hover:after, .desktop-mode #cta-box-content:focus:before, .desktop-mode #cta-box-content:focus:after {
         filter: alpha(opacity=100);
         opacity: 1; }
-    .desktop-mode #cta-box-support:active {
+    .desktop-mode #cta-box-support:active, .desktop-mode #cta-box-content:active {
       background: #69B3A5; }
+  .desktop-mode #cta-box-content.dark {
+    background: rgba(43, 50, 52, 0.9); }
+    .desktop-mode #cta-box-content.dark svg {
+      fill: none;
+      stroke: #F1F1F1;
+      stroke-width: 7px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
   .desktop-mode #top-bar {
     height: 64px;
     background: #69B3A5;
@@ -3332,6 +3340,15 @@
 /* ---------- GENERAL */
 #desktop-general {
   background: #50A5DD; }
+  #desktop-general header.desktop-header {
+    z-index: 1000; }
+  #desktop-general .cta-modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px; }
+    #desktop-general .cta-modal-close svg {
+      stroke: #2B3234; }
   #desktop-general #general-top {
     border-radius: 1000px;
     display: block;
@@ -3350,6 +3367,122 @@
     font-size: 48px;
     font-weight: 900;
     text-align: center; }
+  #desktop-general #desktop-content {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px; }
+    #desktop-general #desktop-content #content-desc {
+      position: relative;
+      width: calc(100%/3);
+      height: 100%;
+      background: #40484B; }
+      #desktop-general #desktop-content #content-desc #content-sidebar h1 {
+        padding: 15px;
+        font-size: 32px;
+        font-weight: 900;
+        color: #F1F1F1; }
+      #desktop-general #desktop-content #content-desc #content-sidebar ul {
+        height: calc(100% - 146px);
+        overflow: auto; }
+        #desktop-general #desktop-content #content-desc #content-sidebar ul li {
+          font-weight: 400;
+          text-transform: uppercase;
+          color: #F1F1F1; }
+          #desktop-general #desktop-content #content-desc #content-sidebar ul li a {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            padding: 15px; }
+            #desktop-general #desktop-content #content-desc #content-sidebar ul li a.active, #desktop-general #desktop-content #content-desc #content-sidebar ul li a:active, #desktop-general #desktop-content #content-desc #content-sidebar ul li a.active {
+              background: rgba(241, 241, 241, 0.2); }
+            #desktop-general #desktop-content #content-desc #content-sidebar ul li a:hover, #desktop-general #desktop-content #content-desc #content-sidebar ul li a:focus, #desktop-general #desktop-content #content-desc #content-sidebar ul li a.active {
+              background: rgba(241, 241, 241, 0.4); }
+            #desktop-general #desktop-content #content-desc #content-sidebar ul li a .messenger-icon {
+              border-radius: 1000px;
+              width: 48px;
+              height: 48px;
+              background-position: center center;
+              background-size: cover; }
+            #desktop-general #desktop-content #content-desc #content-sidebar ul li a .messenger-label {
+              width: calc(100% - 48px);
+              padding-left: 15px;
+              font-weight: 600; }
+            #desktop-general #desktop-content #content-desc #content-sidebar ul li a.active .messenger-label {
+              font-weight: 700; }
+      #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        width: calc(100% - 30px); }
+        #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search label {
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+          left: 33px; }
+          #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search label svg {
+            fill: none;
+            stroke: rgba(117, 117, 117, 0.5);
+            stroke-width: 8px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            margin-top: 2px;
+            width: 24px;
+            height: 24px; }
+        #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input {
+          border-radius: 1000px;
+          display: block;
+          width: 100%;
+          height: 48px;
+          padding-left: 51px;
+          padding-right: 15px;
+          font-size: 16px;
+          background: #F1F1F1;
+          border: 0; }
+          #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:active, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:hover, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:focus, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input.active {
+            background: white; }
+            #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:active::-webkit-input-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:hover::-webkit-input-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:focus::-webkit-input-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input.active::-webkit-input-placeholder {
+              color: #757575; }
+            #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:active:-moz-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:hover:-moz-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:focus:-moz-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input.active:-moz-placeholder {
+              color: #757575; }
+            #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:active::-moz-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:hover::-moz-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:focus::-moz-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input.active::-moz-placeholder {
+              color: #757575; }
+            #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:active:-ms-input-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:hover:-ms-input-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input:focus:-ms-input-placeholder, #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search input.active:-ms-input-placeholder {
+              color: #757575; }
+        #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search label:hover + input {
+          background: white; }
+    #desktop-general #desktop-content #content-info {
+      position: relative;
+      width: calc(100% / 3 * 2);
+      height: 100%;
+      max-height: 800px;
+      overflow: auto;
+      font-weight: 600;
+      font-size: 18px;
+      text-transform: uppercase;
+      padding-bottom: 64px; }
   #desktop-general .general-list {
     max-width: 800px;
     margin: 30px auto 0;

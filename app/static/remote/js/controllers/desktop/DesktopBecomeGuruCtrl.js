@@ -38,7 +38,7 @@ angular.module('uguru.desktop.controllers')
 
     var CTA_PARENT = '#desktop-guru-onboarding div.main';
     var CTA_OPTIONS = {
-        duration:0.5,
+        duration:0.33,
         extraTransitionDuration:1
     }
 
@@ -54,7 +54,6 @@ angular.module('uguru.desktop.controllers')
     }
 
     $scope.calculateProgress = function() {
-      console.log('running progress again');
       $scope.progress.width = 16.66;
       var progressValue = 16.66;
       if ($scope.user.guru_courses.length) {
@@ -83,12 +82,12 @@ angular.module('uguru.desktop.controllers')
     }
 
     $scope.completeAndGoToGuru = function() {
-       LoadingService.showAmbig('Saving', 1000, function() {
-          function callbackSuccess() {
-            $scope.goToGuruMode();
-          }
-          LoadingService.showSuccess("Your guru profile is almost complete!", 2500, callbackSuccess)
-      })
+        if (!$scope.yourAllSetAlreadyShown) {
+          LoadingService.showSuccess("You're all set!", 1500);
+          $scope.yourAllSetAlreadyShown = true;
+          $scope.showFinishButton = true;
+        }
+
     }
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
@@ -113,7 +112,7 @@ angular.module('uguru.desktop.controllers')
       if (progressValue < 66) {
         $scope.loader.showMsg('Please fill out at least 2/3 to continue!', 0, 2000);
       } else {
-        $scope.completeAndGoToGuru();
+        AnimationService.flip('^.guru-home')
       }
     }
 
@@ -122,26 +121,27 @@ angular.module('uguru.desktop.controllers')
             var modal_elem = document.querySelector('#' + modal_elem_id);
 
             var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
-                $timeout(function() {
+                // $timeout(function() {
                     modal_elem.classList.add('show');
-                }, 200);
+                // }, 200);
 
                 var nestedCTACloseButtons = modal_elem.querySelectorAll('.cta-modal-close')
                 for (var j = 0; j < nestedCTACloseButtons.length; j++) {
                   var indexCTAButton = nestedCTACloseButtons[j];
 
-                  indexCTAButton.addEventListener('click', function() {
-                    if (indexCTAButton.innerHTML && indexCTAButton.innerHTML === "Save") {
-                      LoadingService.showAmbig('Saving...', 1500);
+                  indexCTAButton.addEventListener('click', function(e) {
+                    if (e.target.innerHTML && e.target.innerHTML === "Save") {
+                      LoadingService.showSuccess('Saved', 1000);
                       $timeout(function() {
                         closeCTAModal();
-                      }, 750)
+                        modal_elem.classList.remove('show');
+                      }, 500)
                     } else {
                       closeCTAModal();
+                      modal_elem.classList.remove('show');
                     }
 
                     $scope.calculateProgress();
-                    modal_elem.classList.remove('show');
                   });
                 }
             }, CTA_PARENT);

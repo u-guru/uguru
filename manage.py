@@ -614,11 +614,17 @@ if arg == 'update':
 
 if arg == 'seed_admin':
     user = User.query.filter_by(email='samir@uguru.me').first()
+
+
+
+
     from hashlib import md5
 
     from app.database import db_session
     from app.models import *
 
+    if len(sys.argv) > 2:
+        user = User.query.filter_by(email=sys.argv[2]).first()
 
     admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
     admin_emails = [_tuple[0] for _tuple in admin_accounts]
@@ -626,8 +632,8 @@ if arg == 'seed_admin':
 
 
     #teston jeselle
-    admin_account = admin_accounts[2]
-    account_name = admin_account[1]
+    admin_account = user.email
+    account_name = user.name
 
     # check user exists
     if not user:
@@ -655,7 +661,7 @@ if arg == 'seed_admin':
         for course in user.guru_courses:
             from random import randint
             x = randint(2, 10)
-            # generateXRandomRatingsForCourse(5, user, course)
+            generateXRandomRatingsForCourse(5, user, course)
         print len(user.guru_courses), 'courses added'
 
     def generateXRandomRatingsForCourse(x, user,course):
@@ -668,6 +674,7 @@ if arg == 'seed_admin':
             db_session.add(rating)
             db_session.commit()
             user.guru_ratings.append(rating)
+
             db_session.commit()
 
     #example of deleting a user's files
@@ -731,14 +738,31 @@ if arg == 'seed_admin':
         clearGuruExperiences(user)
         user.guru_subcategories = []
         try:
-            user.guru_courses = []
-            db_session.commit()
+            for course in user.guru_courses:
+                user.guru_courses.remove(course)
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    try:
+                        d = db_session.query(guru_courses_table).filter(guru_courses_table.c.user_id == user.id, guru_courses_table.c.course_id == course.id).delete(synchronize_session=False)
+                        db_session.commit()
+                    except:
+                        print "ugh"
+                        db_session.rollback()
+                        raise
+
         except:
+            raise
             db_session.rollback()
 
 
 
     clearAccountInfo(user)
+
+
+    print "\n\nUpdate #1, previous account details cleared for %s" % user.getFirstName()
+
 
     transcript_file = createNewFile(user)
 
@@ -763,7 +787,7 @@ if arg == 'seed_admin':
         user.initExperience('CS10 Tutor', 12, 'i was a cs10 tutor for years')
         user.initExperience('Bio 1A Lab Assistant', 0, 'i was a bio1A lab assistant for almost one year')
 
-
+    print "\n\nUpdate #2: user profile + courses are set up"
 
     # save changes to local database
     db_session.commit()
@@ -861,20 +885,30 @@ if arg == 'seed_admin':
             user.guru_currencies.append(cashCurrency)
         if not user.guru_calendar:
             Calendar.initGuruCalendar(user)
-        # selectThreeRandLanguages(user)
-        # fake_data = generateFakeShopData(user)
-        Shop.initAcademicShop(user)
+        selectThreeRandLanguages(user)
+        fake_data = generateFakeShopData(user)
+        Shop.initAcademicShop(user, fake_data)
 
 
     initUserDefaults(user)
-    def selectAndShopResourceItems():
-        return 0
+    def selectAndShopResourceItems(user):
+        _sum = 0
+        for pi in user.guru_shops[0].portfolio_items:
+            _sum += len(pi.resources)
+        return _sum
 
-    def selectAndCountShopTagItems():
-        return 0
+    def selectAndCountShopTagItems(user):
+        _sum = 0
+        for pi in user.guru_shops[0].portfolio_items:
+            _sum += len(pi.tags)
+        return _sum
 
     def selectAndCountContactMethods(user):
-        return 0
+        user.person_friendly = True
+        user.messenger_friendly = True
+        user.skype_friendly = True
+        db_session.commit()
+        return 3
 
     def shopDetails(user):
         index = 0
@@ -923,7 +957,7 @@ if arg == 'seed_admin':
         # PI Tags: %s different tags,
         """ % (len(user.guru_shops), len(user.guru_subcategories), len(user.portfolio_items),\
             len(user.guru_currencies), len(user.guru_experiences), len(user.guru_introduction), len(user.guru_courses),\
-            len(user.profile_code), selectAndCountContactMethods(user), len(user.guru_calendar.calendar_events), len(user.guru_ratings), selectAndShopResourceItems(), selectAndCountShopTagItems())
+            len(user.profile_code), selectAndCountContactMethods(user), len(user.guru_calendar.calendar_events), len(user.guru_ratings), selectAndShopResourceItems(user), selectAndCountShopTagItems(user))
 
     def printAllShopsUserCreated(user):
         pass
