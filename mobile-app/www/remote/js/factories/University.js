@@ -55,6 +55,9 @@ angular.module('uguru.rest', [])
 
         },
         getPopularCourses: function(uni_id, scope, callback) {
+             if (!uni_id) {
+                return;
+             }
              return $timeout(function() {
                   Restangular
                      .one('universities', uni_id).customGET('popular_courses').then(function(response) {

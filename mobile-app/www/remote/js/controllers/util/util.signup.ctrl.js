@@ -1420,7 +1420,10 @@ angular.module('uguru.util.controllers')
               else
                 $state.go('^.guru-home')
             } else {
-              document.getElementById('cta-modal-signup').classList.remove('show');
+              var ctaModalSignupContainer = document.getElementById('cta-modal-signup');
+              if (ctaModalSignupContainer) {
+                ctaModalSignupContainer.classList.remove('show');
+              }
             }
           }
           else
@@ -1508,13 +1511,11 @@ angular.module('uguru.util.controllers')
       }
 
 
-      // $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
-      // $scope.user.email = $scope.signupForm.email;
-      // $scope.user.password = $scope.signupForm.password;
-      // $scope.user.name = $scope.signupForm.full_name
+      $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
+      $scope.user.email = $scope.signupForm.email;
+      $scope.user.password = $scope.signupForm.password;
+      $scope.user.name = $scope.signupForm.full_name
 
-
-      $scope.user.university_id = $scope.user.university_id;
 
       console.log('USER BEFORE SIGNING UP', $scope.user);
 
@@ -1558,7 +1559,7 @@ angular.module('uguru.util.controllers')
               $scope.signupModal.hide();
               $state.go('^.guru');
             }
-    
+
 
 
       },
@@ -1621,9 +1622,16 @@ angular.module('uguru.util.controllers')
       password:null
     }
 
-    $timeout(function() {
+    //default mode
+    if (!$scope.root.vars.loginModeRecentlySet) {
       $scope.root.vars.loginMode = true;
-    })
+      $timeout(function() {
+        $scope.root.vars.loginMode = true;
+      }, 1000)
+    } else {
+      $scope.root.vars.loginMode = false;
+      $scope.root.vars.loginModeRecentlySet = null;
+    }
 
 
     $scope.$on('$ionicView.enter', function() {

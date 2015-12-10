@@ -8,9 +8,9 @@
 	</header>
     <section>
     	<div>
-    		<h1 ng-if='root.vars.forgotPassword'>Forgot Password Form</h1>
-    		<h1 ng-if='root.vars.loginMode && !root.vars.forgotPassword'>Login</h1>
-    		<h1 ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>Create an Account!</h1>
+    		<h1 class='hide ng-class: {"show": root.vars.forgotPassword}'>Forgot Password Form</h1>
+    		<h1 class='ng-class: {"hide": !root.vars.loginMode || root.vars.forgotPassword}'>Login</h1>
+    		<h1 class='hide ng-class: {"show": !root.vars.loginMode && !root.vars.forgotPassword}'>Create an Account!</h1>
     		<form onkeypress="return event.keyCode != 13;">
     			<div class="input-field relative" ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>
     				<input ng-model='signupForm.full_name' autocomplete="off" id='signup-name' type="text" class="validate txt-white">
@@ -36,7 +36,7 @@
     			<!-- radio input for remember me -->
     			<div class="desktop-login-buttons">
     				<button ng-click='connectWithFacebook()' class="bg-fb caps ng-class:{'hide':root.vars.forgotPassword}">Login with Facebook</button>
-    				<button class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
+    				<button id='login-button' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
     				<button class="bg-charcoal caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='root.vars.forgotPassword = false;'>Cancel</button>
     				<button class="bg-shamrock caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='attemptToResetPassword()'>Submit</button>
     				<button class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>

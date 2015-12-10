@@ -621,6 +621,14 @@ angular.module('uguru.desktop.controllers', [])
       $scope.showDesktopSettings = false;
     }
 
+    $scope.goToLoginMode = function() {
+      $scope.root.vars.loginMode = false;
+      $scope.root.vars.loginModeRecentlySet = true;
+      $scope.showDesktopSettings = false;
+      $ionicViewSwitcher.nextDirection('enter');
+      $state.go('^.desktop-login');
+    }
+
     $scope.toggleEmailNotifications = function() {
       $scope.user.email_notifications = !$scope.user.email_notifications;
       $scope.user.updateAttr('email_notifications', $scope.user, $scope.user.email_notifications, null, $scope);

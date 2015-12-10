@@ -2,7 +2,7 @@
 	<section>
 		<header class="text-center bg-charcoal">
 			<h1>Add a course</h1>
-			<a class="cta-modal-close close-button absolute right-0 top-0 m10xy high-z-index">
+			<a class="cta-modal-close close-button absolute right-0 top-0 m10xy high-z-index" ng-click='closeEditPortfolioItem()'>
 				<svg viewBox="0 0 100 100" style='height:25px; width:25px;'>
 					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 				</svg>
@@ -10,15 +10,15 @@
 		</header>
 		<div class="main onboarding-portfolio-item" style='height: calc(100% - 140px);'>
 			<div class='onboarding-search full-x' ng-controller='CoursesController'>
-				<div class='p20xy relative hide ng-class:{"show":newPorfolioItem.course.id}'>
-					<h1 style='font-size:40px; text-align:left' class='left-text hide ng-class:{"show":newPorfolioItem.course.id}'>
-					{{newPorfolioItem.course.short_name}}</h1>
-					<p class='left-text weight-500'>{{newPorfolioItem.course.full_name}}</p>
+				<div class='p20xy relative hide ng-class:{"show":activePortfolioItem.course.id}'>
+					<h1 style='font-size:40px; text-align:left' class='left-text hide ng-class:{"show":activePortfolioItem.course.id}'>
+					{{activePortfolioItem.course.short_name}}</h1>
+					<p class='left-text weight-500'>{{activePortfolioItem.course.full_name}}</p>
 					<a style='top:10%;' class="side-icon absolute m10xy right-0 top-10 desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
-				<div class="input-field ng-class:{'hide':newPorfolioItem.course.id}">
+				<div class="input-field ng-class:{'hide':activePortfolioItem.course.id}">
 					<i class="material-icons prefix" >
 	                    <svg viewBox="0 0 100 100" >
 	                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
@@ -34,15 +34,15 @@
 		                    ng-focus="searchInputFocus = true"
 		                    ng-blur="searchInputBlur()"
 		                    placeholder="" />
-		            <label for="course-input-1" class='ng-class:{"hide": newPortfolioItem.course.id || !courses.length}'>
-						<span class='ng-class:{"hide": newPortfolioItem.course.id}'> search among {{courses.length}} popular courses </span>
-						<span class='ng-class:{"hide": newPortfolioItem.course.id || courses.length}' ng-hide='courses.length'> search popular courses </span>
+		            <label for="course-input-1" class='ng-class:{"hide": activePortfolioItem.course.id || !courses.length}'>
+						<span class='ng-class:{"hide": activePortfolioItem.course.id}'> search among {{courses.length}} popular courses </span>
+						<span class='ng-class:{"hide": activePortfolioItem.course.id || courses.length}' ng-hide='courses.length'> search popular courses </span>
 					</label>
-					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()" ng-show="searchInputFocus || newPorfolioItem.course.id">
+					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()" ng-show="searchInputFocus || activePortfolioItem.course.id">
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 		        </div>
-		        <ul class='desktop-card-list hide ng-class:{"show":searchInputFocus}' style='z-index:100001'>
+		        <ul class='desktop-card-list hide ng-class:{"show":searchInputFocus && !activePortfolioItem.course.id}' style='z-index:100001'>
 					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id'>
 						<a class="hide ng-class:{'show':course.full_name || course.title}" ng-click='setCourseAndClearInput(course)'>
 							<span>
@@ -54,9 +54,9 @@
 				</ul>
 	        </div>
 			<!-- Not needed for shops for now-->
-			<input ng-if='false' class="pf-title-edit input-outline" placeholder="Shop Item Title" ng-model='newPorfolioItem.title'/>
+			<input ng-if='false' class="pf-title-edit input-outline" placeholder="Shop Item Title" ng-model='activePortfolioItem.title'/>
 			<!-- -->
-			<textarea class="input-outline" ng-model='newPorfolioItem.description' placeholder="Description"></textarea>
+			<textarea class="input-outline" ng-model='activePortfolioItem.description' placeholder="Description"></textarea>
 			<div class="pf-tag-edit">
 				<!-- disabled example -->
 				<!-- <span class="chip">#<input disabled value="tag" size="2"/></span> -->
@@ -65,13 +65,13 @@
 				<!-- <span class="chip">&times;&nbsp;<input size="12" placeholder="remove a tag"/></span> -->
 
 
-				<span class="chip chip-tags" ng-repeat="tag in newPortfolioItem.tags">+&nbsp;<input ng-model='tag.name' ng-keyup="$event.keyCode == 13 && onEnterBlurInput($event)" size="{{tag.placeholder.length || tag.name.length}}" autofocus="true" placeholder="{{tag.placeholder}}"/></span>
+				<span class="chip chip-tags" ng-repeat="tag in activePortfolioItem.tags">+&nbsp;<input ng-model='tag.name' ng-keyup="$event.keyCode == 13 && onEnterBlurInput($event)" size="{{tag.placeholder.length || tag.name.length}}"  placeholder="{{tag.placeholder}}"/></span>
 
 			</div>
 			<div class="pf-pricing">
 				<h1>My Preferred Price Per Hour</h1>
 				<div class="pf-range">
-					<input type="range" class='full-x'  ng-model='newPorfolioItem.hourly_price' name="volume" min="5" max="25" value="{{newPorfolioItem.hourly_price || 15}}">
+					<input type="range" class='full-x'  ng-model='activePortfolioItem.hourly_price' name="volume" min="5" max="25" value="{{activePortfolioItem.hourly_price || 15}}">
 					<ul class="ugrid-3 price-label">
 						<li>$5</li>
 						<li>$15</li>
@@ -184,6 +184,6 @@
 				</ul>
 			</div>
 		</div>
-		<button ng-click='savePortfolioItem(newPorfolioItem)' class='absolute high-z-index bottom-0 left-0 height-100'>Save</button>
+		<button ng-click='savePortfolioItem(activePortfolioItem)' class='absolute high-z-index bottom-0 left-0 height-100'>Save</button>
 	</section>
 </div>

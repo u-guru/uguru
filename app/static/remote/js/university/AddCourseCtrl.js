@@ -217,11 +217,11 @@ angular.module('uguru.util.controllers')
 			$scope.newPortfolioItem.course = null;
 		}
 
-		$scope.searchInputBlur = function() {
-			$timeout(function() {
-				$scope.searchInputFocus = false;
-			}, 250)
-		}
+		// $scope.searchInputBlur = function() {
+		// 	$timeout(function() {
+		// 		$scope.searchInputFocus = false;
+		// 	}, 250)
+		// }
 
 		$scope.limit = 10;
 		$scope.increaseLimit = function() {
@@ -240,7 +240,10 @@ angular.module('uguru.util.controllers')
 
 					LoadingService.showSuccess('Saved!', 1500);
 					$timeout(function() {
-						document.querySelector('#cta-modal-profile-courses').classList.remove('show');
+						var elem = document.querySelector('#cta-modal-profile-courses');
+						if (elem) {
+							elem.classList.remove('show');
+						}
 
 					}, 500);
 

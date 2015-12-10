@@ -56,13 +56,13 @@ angular.module('uguru.desktop.controllers')
     $scope.calculateProgress = function() {
       $scope.progress.width = 16.66;
       var progressValue = 16.66;
-      if ($scope.user.guru_courses.length) {
+      if ($scope.user.guru_courses && $scope.user.guru_courses.length) {
         console.log('user has guru courses');
         $scope.progress.width += 16.66;
         progressValue += 16.66;
       }
 
-      if ($scope.user.guru_subcategories.length) {
+      if ($scope.user.guru_subcategories && $scope.user.guru_subcategories.length) {
         $scope.progress.width += 33.3;
         progressValue += 33.3;
         console.log('user has guru subcategories');

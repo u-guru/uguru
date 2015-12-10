@@ -326,7 +326,7 @@
 
 				<li class="pf-checklist-full active pf-type-{{user.academic_shop.category.hex_color}} hide ng-class:{'show':user.academic_shop.active_portfolio_item}" ng-include="img_base + 'templates/profile.modal.html'"></li>
 
-				<li ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-click='user.academic_shop.active_portfolio_item = portfolio_item;'>
+				<li ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-click='editPortfolioItem(portfolio_item)'>
 					<div class="pf-check-container">
 						<a class="pf-edit-link" ng-click="user.academic_shop.edit_portfolio_item = portfolio_item">Edit</a>
 						<a class="pf-check pf-remove">

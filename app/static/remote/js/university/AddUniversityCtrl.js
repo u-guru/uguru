@@ -215,7 +215,9 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       }
 
       $timeout(function() {
-        $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope);
+        if ($scope.user.id) {
+          $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope);
+        }
       }, 0);
 
   };
