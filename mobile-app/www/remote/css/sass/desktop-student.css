@@ -1,197 +1,332 @@
 /* ---------- STUDENT HOME */
 #desktop-student-home {
-  background: #F1F1F1; }
-  #desktop-student-home .main {
-    position: relative; }
-    #desktop-student-home .main .top {
-      display: none;
-      width: 100%; }
-      #desktop-student-home .main .top h1, #desktop-student-home .main .top h3 {
-        display: block;
-        color: #757575;
-        text-align: center; }
-      #desktop-student-home .main .top h1 {
-        font-size: 48px;
-        font-weight: 700; }
-      #desktop-student-home .main .top h3 {
-        font-size: 24px;
-        font-weight: 600; }
-    #desktop-student-home .main .student-home-container {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      width: 100%;
-      height: 100%; }
-      #desktop-student-home .main .student-home-container > div {
-        height: 50%; }
-        #desktop-student-home .main .student-home-container > div > div {
-          background: #69B3A5;
-          height: 100%; }
-          #desktop-student-home .main .student-home-container > div > div h2 {
-            padding: 15px 15px 0;
-            font-size: 36px;
-            font-weight: 600;
-            text-align: center; }
-          #desktop-student-home .main .student-home-container > div > div ul {
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -ms-flex-flow: row wrap;
-            -webkit-flex-flow: row wrap;
-            flex-flow: row wrap;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-justify-content: center;
-            justify-content: center; }
-            #desktop-student-home .main .student-home-container > div > div ul a, #desktop-student-home .main .student-home-container > div > div ul span {
-              display: block; }
-      #desktop-student-home .main .student-home-container .student-home-select {
-        width: 100%;
-        padding-bottom: 7.5px; }
-        #desktop-student-home .main .student-home-container .student-home-select ul {
-          height: calc(100% - 58px);
-          padding: 0 15px 15px; }
-          #desktop-student-home .main .student-home-container .student-home-select ul li {
-            width: 25%;
-            height: 100%;
-            padding: 15px;
-            text-align: center; }
-            #desktop-student-home .main .student-home-container .student-home-select ul li a {
-              position: relative;
-              width: 100%;
-              height: 100%;
-              border-radius: 2px;
-              overflow: hidden; }
-              #desktop-student-home .main .student-home-container .student-home-select ul li a span {
-                width: 100%;
-                padding: 15px 0;
-                font-size: 22px;
-                font-weight: 700; }
-            #desktop-student-home .main .student-home-container .student-home-select ul li:not(:last-child) a {
-              background: white; }
-              #desktop-student-home .main .student-home-container .student-home-select ul li:not(:last-child) a span {
-                position: absolute;
-                bottom: 0;
-                left: 0; }
-            #desktop-student-home .main .student-home-container .student-home-select ul li:last-child a {
-              background: #4e9b8c; }
-              #desktop-student-home .main .student-home-container .student-home-select ul li:last-child a span {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                -moz-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                -o-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%); }
-            #desktop-student-home .main .student-home-container .student-home-select ul li:nth-child(1) a span {
-              background: #e6389b; }
-            #desktop-student-home .main .student-home-container .student-home-select ul li:nth-child(2) a span {
-              background: #E5753C; }
-            #desktop-student-home .main .student-home-container .student-home-select ul li:nth-child(3) a span {
-              background: #8A9EA3; }
-            #desktop-student-home .main .student-home-container .student-home-select ul li:nth-child(4) a span {
-              background: #4e9b8c; }
-      #desktop-student-home .main .student-home-container .student-home-apps {
-        width: calc(100% / 3 * 2);
-        padding: 7.5px 7.5px 0 0; }
-        #desktop-student-home .main .student-home-container .student-home-apps ul {
-          height: calc(100% - 58px);
-          padding: 0 15px 15px; }
-          #desktop-student-home .main .student-home-container .student-home-apps ul li {
-            width: 25%;
-            height: 100%;
-            padding: 15px;
-            text-align: center; }
-            #desktop-student-home .main .student-home-container .student-home-apps ul li a {
-              position: relative;
-              width: 100%;
-              height: 100%;
-              border-radius: 2px;
-              overflow: hidden; }
-              #desktop-student-home .main .student-home-container .student-home-apps ul li a span {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding: 15px 0;
-                font-size: 22px;
-                font-weight: 700;
-                background: rgba(43, 50, 52, 0.2); }
-            #desktop-student-home .main .student-home-container .student-home-apps ul li:nth-child(1) a {
-              background: #F04F54; }
-            #desktop-student-home .main .student-home-container .student-home-apps ul li:nth-child(2) a {
-              background: #9A5BC5; }
-            #desktop-student-home .main .student-home-container .student-home-apps ul li:nth-child(3) a {
-              background: #55A4B7; }
-            #desktop-student-home .main .student-home-container .student-home-apps ul li:nth-child(4) a {
-              background: #81B566; }
-      #desktop-student-home .main .student-home-container .student-home-guru {
-        width: calc(100% / 3);
-        padding: 7.5px 0 0 7.5px; }
-        #desktop-student-home .main .student-home-container .student-home-guru h3 {
-          margin-top: 0 !important;
-          font-weight: 600;
-          text-align: center; }
-        #desktop-student-home .main .student-home-container .student-home-guru > div > div {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          height: calc(100% - 150px); }
-          #desktop-student-home .main .student-home-container .student-home-guru > div > div ul li {
-            padding: 7.5px; }
-            #desktop-student-home .main .student-home-container .student-home-guru > div > div ul li a {
-              text-transform: uppercase; }
-        #desktop-student-home .main .student-home-container .student-home-guru > div button {
-          background: #4e9b8c;
-          font-weight: 600; }
+  background: #F1F1F1;
+  color: #40484B;
+}
 
-@media screen and (min-height: 1000px) {
-  #desktop-student-home .main .top {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    height: 20%; }
-  #desktop-student-home .main .student-home-container {
-    height: 80%; } }
+#desktop-student-home #top-bar {
+  background: #50A5DD;
+}
 
-/*# sourceMappingURL=desktop-student.css.map */
+#desktop-student-home #top-bar div:nth-child(2) div {
+  background: #50A5DD;
+}
+
+#desktop-student-home #top-bar div:nth-child(2) #top-menu-links {
+  background: #50A5DD;
+}
+
+#desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:hover span, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:active span, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
+  color: #50A5DD;
+}
+
+#desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:active svg, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
+  stroke: #50A5DD;
+}
+
+#desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li:last-child a span {
+  color: #50A5DD;
+}
+
+#desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li:last-child a svg {
+  stroke: #50A5DD;
+}
+
+#desktop-student-home .main {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#desktop-student-home .main a {
+  color: #40484B;
+}
+
+#desktop-student-home .main .student-home-greeting {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: calc(100% - 655px);
+  height: 100%;
+  padding-left: 15px;
+}
+
+#desktop-student-home .main .student-home-greeting div {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#desktop-student-home .main .student-home-greeting div h1 {
+  color: #50A5DD;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10%;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li {
+  padding: 0 15px;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a span {
+  display: block;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon {
+  position: relative;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon svg {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  border-radius: 1000px;
+  fill: none;
+  stroke: #F1F1F1;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  background: #40484B;
+  width: 64px;
+  height: 64px;
+  padding: 10px;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon .notification-number {
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  background: #50A5DD;
+  border: 3px solid #F1F1F1;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-type {
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:hover .notification-icon svg, #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:focus .notification-icon svg {
+  background: #7bbbe5;
+}
+
+#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:active .notification-icon svg {
+  background: #50A5DD;
+}
+
+#desktop-student-home .main .student-home-tiles {
+  width: 655px;
+  height: 100%;
+  max-height: 660px;
+  padding: 7.5px;
+}
+
+#desktop-student-home .main .student-home-tiles > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% / 3);
+  text-align: center;
+}
+
+#desktop-student-home .main .student-home-tiles > div .square {
+  height: 100%;
+  fill: none;
+}
+
+#desktop-student-home .main .student-home-tiles > div .square + div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+#desktop-student-home .main .student-home-tiles > div .square + div h1, #desktop-student-home .main .student-home-tiles > div .square + div h2, #desktop-student-home .main .student-home-tiles > div .square + div h3 {
+  color: white;
+  font-weight: 700;
+}
+
+#desktop-student-home .main .student-home-tiles > div .square + div h1 {
+  padding: 15px 0 0;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+#desktop-student-home .main .student-home-tiles > div .square + div h2 {
+  padding: 15px 0 0;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+#desktop-student-home .main .student-home-tiles > div .square + div h3 {
+  padding: 0 0 15px;
+  font-size: 16px;
+}
+
+#desktop-student-home .main .student-home-tiles > div .square + div h1 + svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  height: calc(100% - 43px - 34px);
+}
+
+#desktop-student-home .main .student-home-tiles > div .square + div h2 + svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  height: calc(100% - 39px - 53px);
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-quick, #desktop-student-home .main .student-home-tiles .home-tiles-request {
+  height: 100%;
+  width: calc(100% / 3 * 2);
+  padding: 7.5px;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-quick > div, #desktop-student-home .main .student-home-tiles .home-tiles-request > div {
+  position: relative;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-quick > div div {
+  background: #50A5DD;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-request > div div {
+  background: #298ed1;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-become, #desktop-student-home .main .student-home-tiles .home-tiles-courses {
+  height: 100%;
+  width: calc(100% / 3);
+  padding: 7.5px;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-become > div, #desktop-student-home .main .student-home-tiles .home-tiles-courses > div {
+  position: relative;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-become > div div {
+  background: #2a6f9d;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-courses > div div {
+  background: #7bbbe5;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-apps {
+  height: 100%;
+  width: 100%;
+  padding: 7.5px;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-apps > div {
+  position: relative;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-apps > div div {
+  background: #526775;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul {
+  height: calc(100% - 39px - 34px);
+  width: 100%;
+  padding: 7.5px;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul li {
+  padding: 7.5px;
+  height: 100%;
+}
+
+#desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul li svg {
+  display: block;
+  margin: auto;
+  height: 100%;
+  width: auto;
+}

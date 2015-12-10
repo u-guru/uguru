@@ -1,4 +1,4 @@
-<ion-view id='desktop-guru-home' class='bg-charcoal' data-sr-container>
+<ion-view id='desktop-guru-home' class='bg-charcoal'>
 	<main class="desktop-mode" ng-if='desktopMode'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default flex guru-home-container">
@@ -37,7 +37,7 @@
 				<!-- <div ></div> -->
 			</ion-pane>
 
-			<ion-pane id='cta-modal-content' class='show full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/content.general.html'">
+			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/content.general.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -85,6 +85,8 @@
 									</span>
 									<span class="notification-type">Bill Student</span>
 								</a>
+							</li>
+							<li>
 								<a ng-if='false'>
 									<span class="notification-icon">
 										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">

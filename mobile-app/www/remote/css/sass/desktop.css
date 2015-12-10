@@ -516,21 +516,15 @@
   margin-right: -15px;
 }
 
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover,
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active,
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus {
   background: white;
 }
 
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover span,
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active span,
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active span, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
   color: #69B3A5;
 }
 
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg,
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active svg,
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:active svg, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
   stroke: #69B3A5;
 }
 
@@ -546,9 +540,7 @@
   stroke: #69B3A5;
 }
 
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:hover,
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:active,
-.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:focus {
+.desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:hover, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:active, .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li:last-child:focus {
   background: white;
 }
 

@@ -306,9 +306,7 @@
 								width: 50px;
 								margin-right: -15px;
 							}
-							&:hover,
-							&:active,
-							&:focus {
+							&:hover, &:active, &:focus {
 								background: white;
 								span {
 									color: $gabrielle;
@@ -328,9 +326,7 @@
 									stroke: $gabrielle;
 								}
 							}
-							&:hover,
-							&:active,
-							&:focus {
+							&:hover, &:active, &:focus {
 								background: white;
 							}
 						}
