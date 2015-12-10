@@ -2,7 +2,6 @@ angular.module('uguru.guru.controllers', [])
 
 //ALL student controllers
 .controller('GuruController', [
-
   //All imported packages go here
   '$scope',
   '$state',
@@ -397,58 +396,75 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           if (!$scope.user.current_credibility_percent) {
             $scope.user.current_credibility_percent = 0.0;
           }
-
-          animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent, 0);
-
-          var guruProfileLine = initGuruHorizontalProgress('#guru-profile-progress-bar', 'profile-percent');
-
-          $scope.user.current_profile_percent = RankingService.calcProfile($scope.user);
-          animateProgressLine(guruProfileLine, $scope.user.current_profile_percent || 40);
-
-          var guruHourlyLine = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
-          animateProgressLine(guruHourlyLine, $scope.user.current_hourly || 10);
-
         }
 
 
-        var haveProgressBarsBeenInitialized = function() {
-          return document.querySelectorAll('.progressbar-text').length > 1;
-        }
+		$scope.goBackToBecomeGuru = function() {
+			if ($scope.root.vars.becomeGuruRecentlyCompleted) {
+				$ionicViewSwitcher.nextDirection('back');
+				$state.go('^.become-guru')
+			}
+		}
+
+		$scope.initializeHorizontalProgressBars = function() {
+
+			var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
+
+			if (!$scope.user.current_credibility_percent) {
+				$scope.user.current_credibility_percent = 0.0;
+			}
+
+			animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent, 0);
+
+			var guruProfileLine = initGuruHorizontalProgress('#guru-profile-progress-bar', 'profile-percent');
+
+			$scope.user.current_profile_percent = RankingService.calcProfile($scope.user);
+			animateProgressLine(guruProfileLine, $scope.user.current_profile_percent || 40);
+
+			var guruHourlyLine = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
+			animateProgressLine(guruHourlyLine, $scope.user.current_hourly || 10);
+
+		}
 
 
-        var initAndLaunchWelcomePopup = function () {
-
-          var openPopover = function() {
-
-              function callback() {
-                PopupService.close('welcomeGuru');
-              }
-
-              PopupService.open('welcomeGuru', callback, document.querySelector('.guru-tip-of-day-slide-box'));
+		var haveProgressBarsBeenInitialized = function() {
+			return document.querySelectorAll('.progressbar-text').length > 1;
+		}
 
 
-          }
+		var initAndLaunchWelcomePopup = function() {
 
-            PopupService.init('welcomeGuru', 'guru-uguru-popup', openPopover);
+			var openPopover = function() {
 
-        }
+				function callback() {
+					PopupService.close('welcomeGuru');
+				}
 
-        var checkIsFirstTimeGuruMode = function(is_first_time) {
-            if (is_first_time) {
-                console.log ('it is the first itme..');
-                appOnboardingObj = {
-                    guruWelcome: true
-                }
+				PopupService.open('welcomeGuru', callback, document.querySelector('.guru-tip-of-day-slide-box'));
 
-                $timeout(function() {
-                  initAndLaunchWelcomePopup();
-                }, 1000);
-                $localstorage.setObject('appOnboarding', appOnboardingObj);
 
-            } else {
-              console.log(appOnboardingObj);
-            }
-        }
+			}
+
+			PopupService.init('welcomeGuru', 'guru-uguru-popup', openPopover);
+
+		}
+
+		var checkIsFirstTimeGuruMode = function(is_first_time) {
+			if (is_first_time) {
+				console.log('it is the first itme..');
+				appOnboardingObj = {
+					guruWelcome: true
+				}
+
+				$timeout(function() {
+					initAndLaunchWelcomePopup();
+				}, 1000);
+				$localstorage.setObject('appOnboarding', appOnboardingObj);
+
+			} else {
+				console.log(appOnboardingObj);
+			}
+		}
 
 
 		$scope.goToStateWithTransition = function(state_name, transition) {
@@ -501,66 +517,62 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
 			$timeout(function() {
-        if ($scope.desktopMode) {
-          initCTA();
-        }
-      }, 0)
+				if ($scope.desktopMode) {
+					initCTA();
+				}
+			}, 0)
 
 			$timeout(function() {
 
-        if ($scope.desktopMode && !$scope.guruRankingCircle) {
-          $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-          $timeout(function() {
-            if (!$scope.guruRankingCircleInitialized) {
-              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
-            }
-          }, 2500)
-        }
+				if ($scope.desktopMode && !$scope.guruRankingCircle) {
+					$scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+					$timeout(function() {
+						if (!$scope.guruRankingCircleInitialized) {
+							animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+						}
+					}, 2500)
+				}
 
-      }, 0)
+			}, 0)
 
 			//desktop version but not loggedd in
 			$timeout(function() {
-
-        if ($scope.desktopMode) {
-          appOnboardingObj = $localstorage.getObject('appOnboarding');
-          if (!appOnboardingObj) {
-            $scope.launchCtaDict['cta-box-tour']();
-            appOnboardingObj = {
-              guruWelcome: true
-            }
-            $localstorage.setObject('appOnboarding', appOnboardingObj);
-          }
-           
-           if (!$scope.user || !$scope.user.id) {
-              $timeout(function() {
-                $scope.root.vars.loginMode = false;
-                if (!$scope.root.vars.page_cache.showSignupCTA) {
-                  $scope.root.vars.page_cache.showSignupCTA = true;
-                  $scope.launchCtaDict['cta-box-signup']();
-                  $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
-                }
-                LoadingService.hide();
-              }, 1500)
-            }
-        }
-
-      }, 250)
+				if ($scope.desktopMode) {
+					appOnboardingObj = $localstorage.getObject('appOnboarding');
+					if (!appOnboardingObj) {
+						$scope.launchCtaDict['cta-box-tour']();
+						appOnboardingObj = {
+							guruWelcome: true
+						}
+						$localstorage.setObject('appOnboarding', appOnboardingObj);
+					}
+					// $timeout(function() {
+					//   if (!$scope.root.vars.page_cache.showSignupCTA) {
+					//     $scope.root.vars.page_cache.showSignupCTA = true;
+					//     $scope.launchCtaDict['cta-box-signup']();
+					//     $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
+					//   }
+					//   LoadingService.hide();
+					// }, 2000)
+				}
+			}, 250)
 
 
 			$timeout(function() {
 
-        if (!$scope.desktopMode) {
-            $timeout(function() {
-              $scope.initMobileModals();
-            }, 1500)
-            $timeout(function() {
-              $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
-              animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
-            }, 1500)
-          }
-      });
+				if (!$scope.desktopMode) {
+					$timeout(function() {
+						$scope.initMobileModals();
+					}, 1500)
+					$timeout(function() {
+						$scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
+						animateProgressCircle($scope.guruRankingCircle, $scope.user.guru_ranking);
+					}, 1500)
+				}
+			});
 		});
+
+        $timeout(function() {$scope.contentModal.show()}, 3000);
 
 		var launchWelcomeToGuruMode = function() {
 			$timeout(function() {
