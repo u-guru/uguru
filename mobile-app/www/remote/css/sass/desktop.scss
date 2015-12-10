@@ -1,5 +1,4 @@
 @import 'mixin';
-
 .desktop-mode {
 	position: absolute;
 	width: 100%;
@@ -46,13 +45,15 @@
 			justify-content: flex-end;
 			padding-right: 10px;
 			font-weight: 600;
-			&:hover, &:focus, &:active {
+			&:hover,
+			&:focus,
+			&:active {
 				@include opacity(1);
 			}
 		}
 	}
-	#cta-box-support, #cta-box-content {
-
+	#cta-box-support,
+	#cta-box-content {
 		@include round;
 		position: fixed;
 		bottom: 15px;
@@ -64,7 +65,8 @@
 		svg {
 			@include svg-stroke($charcoal, 7);
 		}
-		&:before, &:after {
+		&:before,
+		&:after {
 			@include transition(.15s ease-in-out);
 			@include opacity(0);
 			@include center-y;
@@ -87,9 +89,11 @@
 			text-transform: uppercase;
 			color: $slate;
 		}
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			background: lighten($gabrielle, 10%);
-			&:before, &:after {
+			&:before,
+			&:after {
 				@include opacity(1);
 			}
 		}
@@ -126,7 +130,8 @@
 				max-width: 1280px;
 				height: 100%;
 			}
-			a:hover, a:focus {
+			a:hover,
+			a:focus {
 				@include opacity(.8);
 			}
 			a:active {
@@ -147,11 +152,13 @@
 				height: 64px;
 				width: 64px;
 				&.hide-tooltip {
-					&:before, &:after {
+					&:before,
+					&:after {
 						display: none;
 					}
 				}
-				&:before, &:after {
+				&:before,
+				&:after {
 					@include transition(.15s ease-in-out);
 					@include opacity(0);
 					@include center-x;
@@ -167,15 +174,17 @@
 				}
 				&:after {
 					bottom: -40px;
-				    padding: 10px 15px;
-				    background: rgba(white,.9);
-				    font-size: 14px;
-				    font-weight: 600;
-				    text-transform: uppercase;
-				    color: $slate;
+					padding: 10px 15px;
+					background: rgba(white,.9);
+					font-size: 14px;
+					font-weight: 600;
+					text-transform: uppercase;
+					color: $slate;
 				}
-				&:hover, &:focus {
-					&:before, &:after {
+				&:hover,
+				&:focus {
+					&:before,
+					&:after {
 						@include opacity(1);
 					}
 					svg {
@@ -230,7 +239,8 @@
 				@include flex-center;
 				width: 90px;
 				height: 64px;
-				img, img.profile-url {
+				img,
+				img.profile-url {
 					@include round;
 					width: 40px;
 					height: 40px;
@@ -296,7 +306,9 @@
 								width: 50px;
 								margin-right: -15px;
 							}
-							&:hover, &:active, &:focus {
+							&:hover,
+							&:active,
+							&:focus {
 								background: white;
 								span {
 									color: $gabrielle;
@@ -316,7 +328,9 @@
 									stroke: $gabrielle;
 								}
 							}
-							&:hover, &:active, &:focus {
+							&:hover,
+							&:active,
+							&:focus {
 								background: white;
 							}
 						}
@@ -351,7 +365,8 @@
 		background: $gabrielle;
 		.progress {
 			border-radius: 0;
-			&::-webkit-progress-value, span {
+			&::-webkit-progress-value,
+			span {
 				border-radius: 0 1000px 1000px 0;
 			}
 			&::-moz-progress-bar {
@@ -390,17 +405,17 @@
 #top-menu-background-overlay {
 	@include transition-type(opacity, .15s ease-in-out);
 	@include opacity(0);
-    z-index: -10;
+	z-index: -10;
 	top: 64px;
-    height: calc(100% - 64px)!important;
-    width: 100%!important;
-    max-width: 100%!important;
-    margin-left: -15px!important;
-    &.active {
+	height: calc(100% - 64px)!important;
+	width: 100%!important;
+	max-width: 100%!important;
+	margin-left: -15px !important;
+	&.active {
 		@include transition-type(opacity, .15s ease-in-out);
 		@include opacity(.7);
-    	z-index: 10;
-    }
+		z-index: 10;
+	}
 }
 
 /* ---------- LOGIN */
@@ -413,7 +428,8 @@
 	.main {
 		background: $smoke;
 		.desktop-forms-container {
-			> div, > section > div {
+			> div,
+			> section > div {
 				background: white;
 				.input-field {
 					input {
@@ -429,8 +445,7 @@
 	}
 	aside {
 		&::after {
-			background: url(../../img/login@2x.jpg) no-repeat center center / cover,
-						url(/static/remote/img/login@2x.jpg) no-repeat center center / cover;
+			background: url("../../img/login@2x.jpg") no-repeat center center / cover, url("/static/remote/img/login@2x.jpg") no-repeat center center / cover;
 		}
 	}
 }
@@ -439,7 +454,8 @@
 	.main {
 		background: $charcoal;
 		.desktop-forms-container {
-			> div, > section > div {
+			> div,
+			> section > div {
 				background: rgba($slate,.2);
 			}
 		}
@@ -449,8 +465,7 @@
 			padding-bottom: 150px;
 		}
 		&::after {
-			background: url(../../img/login@2x.jpg) no-repeat center center / cover,
-						url(/static/remote/img/login@2x.jpg) no-repeat center center / cover;
+			background: url("../../img/login@2x.jpg") no-repeat center center / cover, url("/static/remote/img/login@2x.jpg") no-repeat center center / cover;
 		}
 	}
 }
@@ -466,7 +481,8 @@
 		margin-top: 10px;
 	}
 }
-.desktop-forms, .guru-desktop-forms {
+.desktop-forms,
+.guru-desktop-forms {
 	@include flex;
 	.main {
 		@include flex;
@@ -476,7 +492,8 @@
 		.desktop-forms-container {
 			width: 100%;
 			max-width: 600px;
-			> div, > section > div {
+			> div,
+			> section > div {
 				background: white;
 				padding: 30px;
 				h1 {
@@ -494,7 +511,11 @@
 					a {
 						color: $shamrock;
 					}
-					a:active, a:focus, a:hover, a.active, a.activated {
+					a:active,
+					a:focus,
+					a:hover,
+					a.active,
+					a.activated {
 						color: $taupe;
 					}
 				}
@@ -513,7 +534,7 @@
 				}
 			}
 			.desktop-header {
-				display:none;
+				display: none;
 			}
 		}
 	}
@@ -591,7 +612,7 @@
 /* ---------- DESKTOP LISTS */
 .save-button {
 	display: block;
-	margin: 20px auto 0!important;
+	margin: 20px auto 0 !important;
 	min-width: 300px;
 	font-size: 28px!important;
 }
@@ -610,7 +631,8 @@
 				color: white;
 				height: 64px;
 			}
-			input, label {
+			input,
+			label {
 				font-size: 36px;
 			}
 			.prefix {
@@ -624,7 +646,7 @@
 				}
 			}
 			.prefix + input {
-				margin-left: 48px!important;
+				margin-left: 48px !important;
 			}
 			label {
 				top: 6px;
@@ -721,7 +743,6 @@
 		font-size: 32px;
 	}
 }
-
 #desktop-courses {
 	.main {
 		.desktop-search-list {
@@ -781,7 +802,8 @@
 }
 
 // SKILLS
-#desktop-skills, .desktop-skills {
+#desktop-skills,
+.desktop-skills {
 	@include flex-center;
 	padding-top: 50px;
 	.desktop-header {
@@ -811,9 +833,9 @@
 								width: 40px;
 								height: 40px;
 								padding-bottom: 5px;
-							    padding-left: 5px;
-							    font-weight: 900;
-							    font-size: 24px;
+								padding-left: 5px;
+								font-weight: 900;
+								font-size: 24px;
 							}
 							div {
 								position: relative;
@@ -838,17 +860,24 @@
 							border-radius: 2px;
 							overflow: hidden;
 						}
-						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
+						[class*="bg-"]:hover,
+						[class*="bg-"]:focus,
+						[class*="bg-"]:active {
 							&::after {
 								@include opacity(.3);
 							}
 						}
 						.important,
-						[class*="bg-"]:hover, [class*="bg-"]:focus, [class*="bg-"]:active {
+						[class*="bg-"]:hover,
+						[class*="bg-"]:focus,
+						[class*="bg-"]:active {
 							border-bottom-color: rgba(white,.8);
 						}
 						.bg-delivery {
-							&.important, &:hover, &:focus, &:active {
+							&.important,
+							&:hover,
+							&:focus,
+							&:active {
 								&::after {
 									background: $auburn;
 								}
@@ -858,7 +887,10 @@
 							}
 						}
 						.bg-freelancing {
-							&.important, &:hover, &:focus, &:active {
+							&.important,
+							&:hover,
+							&:focus,
+							&:active {
 								&::after {
 									background: $orange;
 								}
@@ -868,7 +900,10 @@
 							}
 						}
 						.bg-baking {
-							&.important, &:hover, &:focus, &:active {
+							&.important,
+							&:hover,
+							&:focus,
+							&:active {
 								&::after {
 									background: $gold;
 								}
@@ -878,7 +913,10 @@
 							}
 						}
 						.bg-photography {
-							&.important, &:hover, &:focus, &:active {
+							&.important,
+							&:hover,
+							&:focus,
+							&:active {
 								&::after {
 									background: $moola;
 								}
@@ -888,7 +926,10 @@
 							}
 						}
 						.bg-tech {
-							&.important, &:hover, &:focus, &:active {
+							&.important,
+							&:hover,
+							&:focus,
+							&:active {
 								&::after {
 									background: $azure;
 								}
@@ -898,7 +939,10 @@
 							}
 						}
 						.bg-household {
-							&.important, &:hover, &:focus, &:active {
+							&.important,
+							&:hover,
+							&:focus,
+							&:active {
 								&::after {
 									background: $cobalt;
 								}
@@ -908,7 +952,10 @@
 							}
 						}
 						.bg-athletic {
-							&.important, &:hover, &:focus, &:active {
+							&.important,
+							&:hover,
+							&:focus,
+							&:active {
 								&::after {
 									background: $eggplant;
 								}
@@ -918,7 +965,10 @@
 							}
 						}
 						.bg-academic {
-							&.important, &:hover, &:focus, &:active {
+							&.important,
+							&:hover,
+							&:focus,
+							&:active {
 								&::after {
 									background: $cerise;
 								}
@@ -975,13 +1025,13 @@
 				svg {
 					@include opacity(.3);
 					position: absolute;
-				    top: 15px;
-				    right: 15px;
-				    width: 40px;
-				    height: 40px;
-				    padding: 5px 5px 10px 10px;
-				    border-radius: 0 0 0 75%;
-				    background: white;
+					top: 15px;
+					right: 15px;
+					width: 40px;
+					height: 40px;
+					padding: 5px 5px 10px 10px;
+					border-radius: 0 0 0 75%;
+					background: white;
 					path {
 						@include svg-stroke($slate, 15);
 					}
@@ -1002,7 +1052,8 @@
 						}
 					}
 				}
-				&:hover, &:active {
+				&:hover,
+				&:active {
 					+ label {
 						background: rgba(white, .2);
 					}
@@ -1010,7 +1061,8 @@
 			}
 		}
 	}
-	&.not-selected, &:not(.selected) {
+	&.not-selected,
+	&:not(.selected) {
 		@include opacity(0);
 		display: none;
 	}
@@ -1021,7 +1073,8 @@
 		width: 100%;
 		height: 100%!important;
 		border: 0;
-		&::after, .skill-item-info {
+		&::after,
+		.skill-item-info {
 			display: none;
 		}
 		.skill-item-content {
@@ -1045,11 +1098,12 @@
 			}
 		}
 		button {
-			&:hover, &:focus {
-	   			border-color: $auburn!important;
-	   			background: $auburn!important;
-	   			color: white!important;
-	   		}
+			&:hover,
+			&:focus {
+				border-color: $auburn!important;
+				background: $auburn!important;
+				color: white!important;
+			}
 			&:active {
 				border-color: white!important;
 				background: white!important;
@@ -1074,11 +1128,12 @@
 			}
 		}
 		button {
-			&:hover, &:focus {
-	   			border-color: $orange!important;
-	   			background: $orange!important;
-	   			color: white!important;
-	   		}
+			&:hover,
+			&:focus {
+				border-color: $orange!important;
+				background: $orange!important;
+				color: white!important;
+			}
 			&:active {
 				border-color: white!important;
 				background: white!important;
@@ -1103,11 +1158,12 @@
 			}
 		}
 		button {
-			&:hover, &:focus {
-	   			border-color: $gold!important;
-	   			background: $gold!important;
-	   			color: white!important;
-	   		}
+			&:hover,
+			&:focus {
+				border-color: $gold!important;
+				background: $gold!important;
+				color: white!important;
+			}
 			&:active {
 				border-color: white!important;
 				background: white!important;
@@ -1132,11 +1188,12 @@
 			}
 		}
 		button {
-			&:hover, &:focus {
-	   			border-color: $moola!important;
-	   			background: $moola!important;
-	   			color: white!important;
-	   		}
+			&:hover,
+			&:focus {
+				border-color: $moola!important;
+				background: $moola!important;
+				color: white!important;
+			}
 			&:active {
 				border-color: white!important;
 				background: white!important;
@@ -1161,11 +1218,12 @@
 			}
 		}
 		button {
-			&:hover, &:focus {
-	   			border-color: $azure!important;
-	   			background: $azure!important;
-	   			color: white!important;
-	   		}
+			&:hover,
+			&:focus {
+				border-color: $azure!important;
+				background: $azure!important;
+				color: white!important;
+			}
 			&:active {
 				border-color: white!important;
 				background: white!important;
@@ -1190,11 +1248,12 @@
 			}
 		}
 		button {
-			&:hover, &:focus {
-	   			border-color: $cobalt!important;
-	   			background: $cobalt!important;
-	   			color: white!important;
-	   		}
+			&:hover,
+			&:focus {
+				border-color: $cobalt!important;
+				background: $cobalt!important;
+				color: white!important;
+			}
 			&:active {
 				border-color: white!important;
 				background: white!important;
@@ -1219,11 +1278,12 @@
 			}
 		}
 		button {
-			&:hover, &:focus {
-	   			border-color: $eggplant!important;
-	   			background: $eggplant!important;
-	   			color: white!important;
-	   		}
+			&:hover,
+			&:focus {
+				border-color: $eggplant!important;
+				background: $eggplant!important;
+				color: white!important;
+			}
 			&:active {
 				border-color: white!important;
 				background: white!important;
@@ -1248,11 +1308,12 @@
 			}
 		}
 		button {
-			&:hover, &:focus {
-	   			border-color: $cerise!important;
-	   			background: $cerise!important;
-	   			color: white!important;
-	   		}
+			&:hover,
+			&:focus {
+				border-color: $cerise!important;
+				background: $cerise!important;
+				color: white!important;
+			}
 			&:active {
 				border-color: white!important;
 				background: white!important;
@@ -1348,7 +1409,7 @@
 				@include center-xy;
 				width: 100%;
 				padding: 15px;
-				margin-top: 0!important;
+				margin-top: 0 !important;
 				font-weight: 900;
 				text-align: center;
 				text-transform: uppercase;
@@ -1538,7 +1599,8 @@
 		.settings-save {
 			@include flex;
 			@include flex-center;
-			button, a {
+			button,
+			a {
 				display: block;
 				margin: 0 auto;
 				padding: 15px 30px;
@@ -1617,7 +1679,10 @@
 		background: $smoke;
 		color: $slate!important;
 		border-color: $slate!important;
-		input, label, a, button {
+		input,
+		label,
+		a,
+		button {
 			color: $slate!important;
 		}
 		button:hover {
@@ -1659,10 +1724,14 @@
 							@include flex;
 							@include flex-center-vertical;
 							padding: 15px;
-							&.active, &:active, &.active {
+							&.active,
+							&:active,
+							&.active {
 								background: rgba($smoke,.2);
 							}
-							&:hover, &:focus, &.active{
+							&:hover,
+							&:focus,
+							&.active {
 								background: rgba($smoke,.4);
 							}
 							.messenger-icon {
@@ -1710,7 +1779,10 @@
 						font-size: 16px;
 						background: $smoke;
 						border: 0;
-						&:active, &:hover, &:focus, &.active {
+						&:active,
+						&:hover,
+						&:focus,
+						&.active {
 							background: white;
 							@include placeholder {
 								color: $taupe;
@@ -1751,6 +1823,7 @@
 							height: 36px;
 						}
 					}
+					
 					// #{$links} {
 					// 	background: lighten($taupe, 10%);
 					// }
@@ -1774,7 +1847,9 @@
 								@include translate-y(0);
 								@include opacity(1);
 							}
-							&:active, &:hover, &:focus {
+							&:active,
+							&:hover,
+							&:focus {
 								background: white;
 								@include placeholder {
 									color: $taupe;
@@ -1794,7 +1869,8 @@
 							svg {
 								path {
 									@include transition-type(transform, .15s ease-in-out);
-									&:first-child, &:last-child {
+									&:first-child,
+									&:last-child {
 										@include translate-y(0);
 										@include opacity(1);
 									}
@@ -1861,7 +1937,8 @@
 									background-position: center center;
 									background-size: cover;
 								}
-								img, svg {
+								img,
+								svg {
 									@include round;
 									width: 48px;
 									height: 48px;
@@ -1928,7 +2005,8 @@
 					#message-box {
 						@include flex;
 						position: relative;
-						a, button {
+						a,
+						button {
 							display: block;
 							width: 64px;
 							height: 64px;
@@ -1954,7 +2032,9 @@
 							height: 64px;
 							padding: 15px;
 							font-size: 18px;
-							&:active, &:hover, &:focus {
+							&:active,
+							&:hover,
+							&:focus {
 								background: white;
 								@include placeholder {
 									color: $taupe;
@@ -2146,7 +2226,8 @@
 					font-weight: 600;
 					li {
 						margin: 0 7.5px;
-						&:nth-child(2), &:nth-child(3) {
+						&:nth-child(2),
+						&:nth-child(3) {
 							position: relative;
 							span {
 								@include flex;
@@ -2201,7 +2282,8 @@
 					}
 				}
 			}
-			.request-form-map, .request-form-date {
+			.request-form-map,
+			.request-form-date {
 				width: 50%;
 				height: 150px;
 				> div {
@@ -2265,7 +2347,8 @@
 								> svg {
 									@include svg-stroke(white, 3);
 								}
-								div, > svg {
+								div,
+								> svg {
 									width: 75px;
 									height: 75px;
 								}
@@ -2320,7 +2403,8 @@
 					}
 				}
 			}
-			.request-form-desc, .request-form-upload {
+			.request-form-desc,
+			.request-form-upload {
 				width: 50%;
 				padding: 15px;
 				> div {
@@ -2356,7 +2440,8 @@
 				background: $cerise;
 			}
 			.request-form {
-				.request-form-map, .request-form-date {
+				.request-form-map,
+				.request-form-date {
 					> div {
 						color: $cerise;
 						border-color: $cerise;
@@ -2376,6 +2461,7 @@
 		}
 	}
 }
+
 // COMMON CLASSES
 .user-icon {
 	@include round;
@@ -2387,8 +2473,10 @@
 	background-size: cover;
 	border: 5px solid white;
 }
+
 // CONFIRM
-#desktop-request-student, #desktop-request-guru {
+#desktop-request-student,
+#desktop-request-guru {
 	header {
 		position: relative;
 		background: $taupe;
@@ -2410,7 +2498,7 @@
 				}
 			}
 			.request-header {
-				margin-top: 0!important;
+				margin-top: 0 !important;
 				.request-category {
 					+ span {
 						padding: 0 5px;
@@ -2625,6 +2713,7 @@
 		}
 	}
 }
+
 // CALENDAR
 #request-calendar {
 	position: absolute;
@@ -2741,7 +2830,8 @@
 								width: 20px;
 								height: 20px;
 							}
-							&:hover, &:focus {
+							&:hover,
+							&:focus {
 								background: rgba($slate, .4);
 								svg {
 									@include opacity(.6);
@@ -2754,6 +2844,7 @@
 		}
 	}
 }
+
 // PRICE
 #request-price {
 	position: absolute;
@@ -2774,7 +2865,8 @@
 		max-height: 500px;
 		background: white;
 		text-align: center;
-		h1, h3 {
+		h1,
+		h3 {
 			color: $charcoal;
 		}
 		h1 {
@@ -2800,7 +2892,8 @@
 					position: relative;
 					font-size: 48px;
 					font-weight: 600;
-					span, .add {
+					span,
+					.add {
 						@include center-xy;
 						display: block;
 					}
@@ -2814,7 +2907,9 @@
 							fill: $charcoal;
 						}
 					}
-					&:hover, &:focus, &.active {
+					&:hover,
+					&:focus,
+					&.active {
 						svg {
 							rect {
 								fill: $moola;
@@ -2852,6 +2947,7 @@
 		}
 	}
 }
+
 // CATEGORIES
 .desktop-request-categories {
 	.main {
@@ -2881,7 +2977,7 @@
 					font-weight: 900;
 				}
 				h3 {
-					margin-top: 0!important;
+					margin-top: 0 !important;
 					font-weight: 600;
 				}
 			}
@@ -2985,7 +3081,7 @@
 				font-weight: 900;
 			}
 			h3 {
-				margin-top: 0!important;
+				margin-top: 0 !important;
 				font-weight: 600;
 			}
 		}
@@ -3134,11 +3230,13 @@
 				}
 				button {
 					font-weight: 600;
-					&:hover, &:focus {
+					&:hover,
+					&:focus {
 						@include opacity(2);
 						background: darken($lake, 10%);
 					}
-					&:active, &.activated {
+					&:active,
+					&.activated {
 						background: $lake;
 					}
 				}
@@ -3166,7 +3264,10 @@
 					&.rating-stars {
 						padding-bottom: 30px;
 						li {
-							&:hover, &:focus, &.active, &:active {
+							&:hover,
+							&:focus,
+							&.active,
+							&:active {
 								svg {
 									fill: $gold;
 									stroke: $gold;
@@ -3196,10 +3297,13 @@
 			font-weight: 600;
 		}
 		a {
+			display: block;
+			width: 48px;
+			height: 48px;
 			svg {
 				@include svg-stroke(white, 8);
 				background: $shamrock;
-				padding: 12px 10px 8px 10px;
+				padding: 12px 10px 8px;
 				width: 48px;
 				height: 48px;
 			}
@@ -3218,9 +3322,10 @@
 		li {
 			width: 152px;
 			background: rgba(lighten($slate, 5%), .9);
-			padding: 15px 0!important;
+			padding: 15px 0 !important;
 			font-weight: 400;
-			&:hover, &:focus {
+			&:hover,
+			&:focus {
 				background: rgba(darken($shamrock, 10%),.9);
 			}
 			&:active {
@@ -3285,37 +3390,40 @@
 /* ---------- GENERAL */
 #desktop-general {
 	background: $lake;
-	//to be able to click the modal close
+	
+	// to be able to click the modal close
 	header.desktop-header {
-		z-index:1000;
+		z-index: 1000;
+		top: 0;
+		padding: 6.25px;
+		height: 62.5px;
 	}
 	.cta-modal-close {
-		position:absolute;
-		right:0;
-		top:0;
-		margin:10px;
+		position: absolute;
+		right: 0;
+		top: 0;
 		svg {
-			stroke:$charcoal;
+			stroke: $slate;
 		}
 	}
 	#general-top {
 		@include round;
-		display: block;
-		margin: 0 auto;
-		background: white;
-		border: 3px solid $charcoal;
-		width: 84px;
-		height: 84px;
+		display: none;
+		margin: 15px auto 0;
+		background: $slate;
+		width: 64px;
+		height: 64px;
 		svg {
 			width: 100%;
 			height: 100%;
-			padding: 10px;
+			padding: 15px;
 			path {
-				fill: $lake;
+				fill: white;
 			}
 		}
 	}
 	h1 {
+		padding-top: 30px;
 		font-size: 48px;
 		font-weight: 900;
 		text-align: center;
@@ -3328,49 +3436,54 @@
 		border-radius: 2px;
 		#content-desc {
 			position: relative;
-			width: calc(100%/3);
+			width: calc(100% / 3);
 			height: 100%;
 			background: $slate;
 			#content-sidebar {
 				h1 {
 					padding: 15px;
+					color: $smoke;
 					font-size: 32px;
 					font-weight: 900;
-					color:$smoke;
+					.bad-joke {
+						display: block;
+						margin-top: 5px;
+						font-size: 14px;
+						font-weight: 500;
+					}
 				}
-				ul {
-					height: calc(100% - 146px);
+				ol {
+					height: calc(100% - 215px);
 					overflow: auto;
+					counter-reset: li;
 					li {
-						font-weight: 400;
+						position: relative;
+						color: $smoke;
+						font-size: 28px;
+						font-weight: 600;
+						line-height: 1.2;
+						text-align: left;
 						text-transform: uppercase;
-						color:$smoke;
+						&:before {
+							position: absolute;
+							left: 0;
+							top: 0;
+							padding: 15px;
+							content: counter(li) ".";
+							counter-increment: li;
+						}
 						a {
 							@include flex;
 							@include flex-center-vertical;
-							padding: 15px;
+							padding: 15px 15px 15px 45px;
 							&.active, &:active, &.active {
 								background: rgba($smoke,.2);
 							}
-							&:hover, &:focus, &.active{
+							&:hover, &:focus, &.active {
 								background: rgba($smoke,.4);
 							}
-							.messenger-icon {
-								@include round;
-								width: 48px;
-								height: 48px;
-								background-position: center center;
-								background-size: cover;
-							}
-							.messenger-label {
-								width: calc(100% - 48px);
-								padding-left: 15px;
-								font-weight: 600;
-							}
 							&.active {
-								.messenger-label {
-									font-weight: 700;
-								}
+								font-weight: 700;
 							}
 						}
 					}
@@ -3414,15 +3527,13 @@
 			}
 		}
 		#content-info {
-				position: relative;
-				width: calc(100% / 3 * 2);
-				height: 100%;
-				max-height: 800px;
-				overflow: auto;
-				font-weight: 600;
-				font-size: 18px;
-				text-transform: uppercase;
-				padding-bottom: 64px;
+			position: relative;
+			width: calc(100% / 3 * 2);
+			height: 100%;
+			max-height: 800px;
+			overflow: auto;
+			font-weight: 600;
+			padding-bottom: 64px;
 		}
 	}
 	.general-list {
@@ -3451,28 +3562,22 @@
 			div {
 				width: calc(100% - 64px);
 				padding-left: 30px;
+				margin-bottom: 15px;
 			}
 			h3 {
 				font-size: 32px;
 				font-weight: 900;
 			}
 			p {
-				font-size: 18px;
+				font-size: 20px;
 				font-weight: 400;
+				line-height: 1.3;
 			}
 		}
 	}
 	&.general-muted {
 		background: $smoke;
 		color: $slate;
-		#general-top {
-			border-color: $taupe;
-			svg {
-				path {
-					fill: $taupe;
-				}
-			}
-		}
 		.general-list {
 			li {
 				&:before {

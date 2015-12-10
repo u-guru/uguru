@@ -3072,149 +3072,161 @@ section {
     -o-transform: translateY(5px);
     transform: translateY(5px); } }
 /* ---------- GENERAL */
-#mobile-general, .mobile-general {
+#mobile-general {
   background: #50A5DD;
   padding: 15px; }
-  #mobile-general h1, .mobile-general h1 {
-    padding-bottom: 15px;
-    font-size: 36px;
-    font-weight: 600;
-    text-align: center; }
-  #mobile-general .general-list, .mobile-general .general-list {
-    position: relative;
-    height: calc(100% - 122px);
-    overflow: hidden; }
-    #mobile-general .general-list > li, .mobile-general .general-list > li {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      background: white;
-      color: #2B3234;
-      width: 100%;
-      padding: 15px;
-      text-align: center; }
-      #mobile-general .general-list > li:before, .mobile-general .general-list > li:before {
-        -webkit-transform: rotate(5deg);
-        -moz-transform: rotate(5deg);
-        -ms-transform: rotate(5deg);
-        -o-transform: rotate(5deg);
-        transform: rotate(5deg);
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        position: absolute;
-        top: 120px;
-        right: 80px;
+
+.mobile-general header.third::before {
+  background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
+.mobile-general header.third > h1 {
+  font-size: 28px !important;
+  text-transform: lowercase; }
+.mobile-general h1 {
+  padding-bottom: 15px;
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center; }
+.mobile-general .main {
+  height: calc(100% / 3 * 2);
+  overflow: auto; }
+  .mobile-general .main ol {
+    padding: 7.5px;
+    counter-reset: li; }
+    .mobile-general .main ol li {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      padding: 7.5px; }
+      .mobile-general .main ol li:before {
+        display: block;
+        width: 50px;
+        padding: 15px;
         content: counter(li);
         counter-increment: li;
-        width: 80px;
-        height: 80px;
-        padding-bottom: 5px;
-        margin-top: 5px;
-        border-radius: 5px;
-        background: #2B3234;
-        color: white;
-        font-size: 64px;
-        font-weight: 700;
-        line-height: 1; }
-      #mobile-general .general-list > li:nth-child(1), .mobile-general .general-list > li:nth-child(1) {
-        z-index: 9; }
-      #mobile-general .general-list > li:nth-child(2), .mobile-general .general-list > li:nth-child(2) {
-        -webkit-transform-origin: center top;
-        -moz-transform-origin: center top;
-        -ms-transform-origin: center top;
-        -o-transform-origin: center top;
-        transform-origin: center top;
-        -webkit-transform: translate(-50%, -50%) scale(0.9);
-        -moz-transform: translate(-50%, -50%) scale(0.9);
-        -ms-transform: translate(-50%, -50%) scale(0.9);
-        -o-transform: translate(-50%, -50%) scale(0.9);
-        transform: translate(-50%, -50%) scale(0.9);
-        margin-top: -15px;
-        z-index: 8;
-        background: #F1F1F1; }
-      #mobile-general .general-list > li:nth-child(3), .mobile-general .general-list > li:nth-child(3) {
-        -webkit-transform-origin: center top;
-        -moz-transform-origin: center top;
-        -ms-transform-origin: center top;
-        -o-transform-origin: center top;
-        transform-origin: center top;
-        -webkit-transform: translate(-50%, -50%) scale(0.8);
-        -moz-transform: translate(-50%, -50%) scale(0.8);
-        -ms-transform: translate(-50%, -50%) scale(0.8);
-        -o-transform: translate(-50%, -50%) scale(0.8);
-        transform: translate(-50%, -50%) scale(0.8);
-        margin-top: -30px;
-        z-index: 7;
-        background: rgba(117, 117, 117, 0.6); }
-      #mobile-general .general-list > li .general-list-icon, .mobile-general .general-list > li .general-list-icon {
-        border-radius: 1000px;
+        background: #50A5DD;
+        font-weight: 600;
+        text-align: center; }
+      .mobile-general .main ol li a {
+        background: #576267;
         display: block;
-        margin: 15px auto;
-        width: 175px;
-        height: 175px;
-        border: 3px solid #50A5DD;
-        background: white; }
-        #mobile-general .general-list > li .general-list-icon svg, .mobile-general .general-list > li .general-list-icon svg {
-          width: 100%;
-          height: 100%;
-          padding: 15px; }
-          #mobile-general .general-list > li .general-list-icon svg path, .mobile-general .general-list > li .general-list-icon svg path {
-            fill: #50A5DD; }
-      #mobile-general .general-list > li div h3, .mobile-general .general-list > li div h3 {
+        padding: 15px;
+        font-weight: 600; }
+.mobile-general .general-list {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  position: relative;
+  height: calc(100% - 122px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  counter-reset: li; }
+  .mobile-general .general-list > li {
+    position: relative;
+    color: #2B3234;
+    text-align: center;
+    padding: 15px; }
+    .mobile-general .general-list > li:before {
+      -webkit-transform: rotate(5deg);
+      -moz-transform: rotate(5deg);
+      -ms-transform: rotate(5deg);
+      -o-transform: rotate(5deg);
+      transform: rotate(5deg);
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: absolute;
+      top: 120px;
+      right: 80px;
+      content: counter(li);
+      counter-increment: li;
+      width: 80px;
+      height: 80px;
+      padding-bottom: 5px;
+      margin-top: 5px;
+      border-radius: 5px;
+      background: #2B3234;
+      color: white;
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1; }
+    .mobile-general .general-list > li .general-list-icon {
+      border-radius: 1000px;
+      display: block;
+      margin: 15px auto;
+      width: 175px;
+      height: 175px;
+      border: 3px solid #50A5DD;
+      background: white; }
+      .mobile-general .general-list > li .general-list-icon svg {
+        width: 100%;
+        height: 100%;
+        padding: 15px; }
+        .mobile-general .general-list > li .general-list-icon svg path {
+          fill: #50A5DD; }
+    .mobile-general .general-list > li > div {
+      background: white;
+      padding: 15px;
+      width: 300px;
+      height: 380px; }
+      .mobile-general .general-list > li > div div h3 {
         margin-bottom: 15px;
         font-size: 24px;
         font-weight: 700; }
-      #mobile-general .general-list > li div p, .mobile-general .general-list > li div p {
+      .mobile-general .general-list > li > div div p {
         font-size: 18px;
         font-weight: 400; }
-      #mobile-general .general-list > li .general-breadcrumbs, .mobile-general .general-list > li .general-breadcrumbs {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        padding: 15px 0; }
-        #mobile-general .general-list > li .general-breadcrumbs li, .mobile-general .general-list > li .general-breadcrumbs li {
+    .mobile-general .general-list > li .general-breadcrumbs {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      padding: 15px 0; }
+      .mobile-general .general-list > li .general-breadcrumbs li {
+        border-radius: 1000px;
+        border: 2px solid #40484B;
+        margin: 0 7.5px; }
+        .mobile-general .general-list > li .general-breadcrumbs li a {
           border-radius: 1000px;
-          border: 2px solid #40484B;
-          margin: 0 7.5px; }
-          #mobile-general .general-list > li .general-breadcrumbs li a, .mobile-general .general-list > li .general-breadcrumbs li a {
-            border-radius: 1000px;
-            display: block;
-            width: 10px;
-            height: 10px;
-            background: white; }
-            #mobile-general .general-list > li .general-breadcrumbs li a.active, .mobile-general .general-list > li .general-breadcrumbs li a.active {
-              background: #50A5DD; }
-  #mobile-general button, .mobile-general button {
-    display: block;
-    margin: 15px auto;
-    text-transform: none !important;
-    letter-spacing: 0 !important; }
+          display: block;
+          width: 10px;
+          height: 10px;
+          background: white; }
+          .mobile-general .general-list > li .general-breadcrumbs li a.active {
+            background: #50A5DD; }
+.mobile-general button {
+  display: block;
+  margin: 15px auto;
+  text-transform: none !important;
+  letter-spacing: 0 !important; }
 
 /* ---------- TOAST */
 .guru-toast {

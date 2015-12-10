@@ -1855,11 +1855,15 @@
 								height: 100%;
 							}
 							svg {
+								display: none;
 								padding: 0 15px 15px;
 								height: 100%;
 								path {
 									stroke-linecap: round;
 								}
+							}
+							#percentile + svg {
+								display: inline-block;
 							}
 							#percentile {
 								@include center-xy;
