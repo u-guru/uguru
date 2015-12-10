@@ -62,10 +62,14 @@ angular.module('uguru.guru.controllers')
 
     $scope.bindPortfolioItemObjToScope = function() {
       $scope.newPortfolioItem = PortfolioItem.initEmpty();
+      console.log($scope.newPortfolioItem);
       PortfolioItem.linkEditModal('#cta-modal-profile-pi-item');
     }
 
-    $scope.bindPortfolioItemObjToScope();
+    $timeout(function() {
+      $scope.bindPortfolioItemObjToScope();
+    }, 3000)
+
 
     $scope.setCourseAndClearInput = function(course) {
       $scope.newPortfolioItem.course = {
@@ -87,7 +91,7 @@ angular.module('uguru.guru.controllers')
         return;
       }
       LoadingService.showAmbig('Saving...', 10000);
-      $scope.user.createObj($scope.user, 'add_portfolio_item', portfolio_item , $scope, PortfolioItem.createObjSuccess);
+      $scope.user.updateAttr('add_guru_portfolio_item', $scope.user, portfolio_item, null, $scope);
     }
 
     $scope.toggleDesktopIntroduction = function() {

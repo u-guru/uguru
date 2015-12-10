@@ -760,7 +760,6 @@ if arg == 'seed_admin':
 
     clearAccountInfo(user)
 
-
     print "\n\nUpdate #1, previous account details cleared for %s" % user.getFirstName()
 
 
@@ -781,7 +780,7 @@ if arg == 'seed_admin':
     user.profile_code = account_name.split(' ')[0].lower()
     user.referral_code = account_name.split(' ')[0].lower()
     user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
-    selectXRandomCourses(user, 10)
+    selectXRandomCourses(user, 2)
 
     if not user.guru_experiences:
         user.initExperience('CS10 Tutor', 12, 'i was a cs10 tutor for years')
@@ -898,8 +897,8 @@ if arg == 'seed_admin':
         if not user.guru_calendar:
             Calendar.initGuruCalendar(user)
         selectThreeRandLanguages(user)
-        fake_data = generateFakeShopData(user)
-        Shop.initAcademicShop(user, fake_data)
+        # fake_data = generateFakeShopData(user)
+        Shop.initAcademicShop(user)
 
 
     initUserDefaults(user)
@@ -949,7 +948,6 @@ if arg == 'seed_admin':
 
 
     def profileCompletionUser(user):
-        user_dict = getUserDictFromServer(user)
         print """ \n\n
         ######################
         ## Higher Level Info
@@ -974,7 +972,7 @@ if arg == 'seed_admin':
     def printAllShopsUserCreated(user):
         pass
 
-    print "credibility percentage %s" % checkCredibilityOfUser(user)
+    # print "credibility percentage %s" % checkCredibilityOfUser(user)
     print "profile completion percentage %s" % profileCompletionUser(user)
     print "\n\nAll Shop Info\n\n", shopDetails(user)
 

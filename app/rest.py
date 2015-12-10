@@ -783,7 +783,19 @@ class UserOneView(restful.Resource):
 
                 db_session.commit()
 
+        if request.json.get('add_guru_portfolio_item'):
+            pi_json = request.json.get('portfolio_item')
+            shop_id = pi_json.get('shop_id')
 
+            user_shop_ids = [shop.id for shop in user.guru_shops if shop and shop.id]
+            print user_shop_ids, shop_id
+
+            shop = user.getAcademicShop()
+            course_id = pi_json.get('course').get('id')
+            course = Course.query.get(int(course_id))
+            print shop, course
+            if course and shop:
+                Portfolio_Item.initAcademicPortfolioItemFromGuruProfile(user, shop, course, pi_json)
 
         if request.json.get('add_guru_course'):
             course = request.json.get('course')
@@ -821,13 +833,20 @@ class UserOneView(restful.Resource):
             language = Language.query.get(language_id)
             if language in user.guru_languages:
                 user.guru_languages.remove(language)
-                db_session.commit()
-
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    try:
+                        d = db_session.query(guru_languages_table).filter(guru_languages_table.c.user_id == user.id, guru_languages_table.c.language_id == language_id).delete(synchronize_session=False)
+                        db_session.commit()
+                    except:
+                        db_session.rollback()
+                        raise
 
         if request.json.get('remove_guru_course'):
             course = request.json.get('course')
             course_id = course.get('id')
-            print course, course_id
             course = Course.query.get(int(course_id))
             user.guru_courses.remove(course)
             try:
@@ -2232,24 +2251,7 @@ class UserNewView(restful.Resource):
         if not user_email and request.json.get('fb_id'):
             user_email = 'fb_id:' + request.json.get('fb_id')
 
-
-        user = User(email=user_email)
-        user.time_created = datetime.now()
-        user.name = request.json.get('name')
-        user.referral_code = User.generate_referral_code(user.name)
-        user.auth_token = uuid.uuid4().hex
-        user.email_notifications = True
-
-        if request.json.get('fb_id'):
-            user.profile_url = request.json.get('profile_url')
-            user.fb_id = request.json.get('fb_id')
-
-        else:
-            from hashlib import md5
-            user.password = md5(request.json.get('password')).hexdigest()
-
-        db_session.add(user)
-        db_session.commit()
+        user = User.initNewUser(user_email, request.json)
 
         if request.json.get('access_code_sender_id'):
             sender_id = int(request.json.get('access_code_sender_id'))
@@ -2299,11 +2301,12 @@ class UserNewView(restful.Resource):
             db_session.commit()
             print str(len(user.student_courses)) + ' after'
 
-        if request.json.get('university_id'):
-
-            user.university_id = request.json.get('university_id')
-            db_session.commit()
-
+        print "checking if user has guru courses"
+        if user.guru_courses:
+            Shop.initAcademicShop(user)
+            print "woohoos"
+            print user.guru_shops
+            print user.guru_shops[0]
 
         return user, 200
 

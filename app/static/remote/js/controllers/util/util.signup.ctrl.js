@@ -1413,7 +1413,10 @@ angular.module('uguru.util.controllers')
               else
                 $state.go('^.guru-home')
             } else {
-              document.getElementById('cta-modal-signup').classList.remove('show');
+              var ctaModalSignupContainer = document.getElementById('cta-modal-signup');
+              if (ctaModalSignupContainer) {
+                ctaModalSignupContainer.classList.remove('show');
+              }
             }
           }
           else
@@ -1551,7 +1554,7 @@ angular.module('uguru.util.controllers')
               $scope.signupModal.hide();
               $state.go('^.guru');
             }
-    
+
 
 
       },
@@ -1614,9 +1617,11 @@ angular.module('uguru.util.controllers')
       password:null
     }
 
+    //default mode
+    $scope.root.vars.loginMode = true;
     $timeout(function() {
       $scope.root.vars.loginMode = true;
-    })
+    }, 1000)
 
 
     $scope.$on('$ionicView.enter', function() {

@@ -1,6 +1,6 @@
 angular.module('uguru.rest')
-.factory('PortfolioItem', ['Restangular', 'Category', 'LoadingService',
-    function(Restangular, Category, LoadingService) {
+.factory('PortfolioItem', ['Restangular', 'Category', 'LoadingService', '$timeout',
+    function(Restangular, Category, LoadingService, $timeout) {
     var editModal;
     var PortfolioItem = {
         initEmpty:initEmpty,
@@ -13,11 +13,11 @@ angular.module('uguru.rest')
     return PortfolioItem;
 
     function createObjSuccess() {
-        if (modalElem) {
-            $timeout(function() {
-                modalElem.classList.remove('show');
-            }, 500)
-        }
+        // if (modalElem) {
+            // $timeout(function() {
+            //     modalElem.classList.remove('show');
+            // }, 500)
+        // }
         LoadingService.showSuccess('Saved!', 1500);
     }
 
@@ -29,6 +29,7 @@ angular.module('uguru.rest')
     }
 
     function validateFields(pi_obj) {
+        console.log('validaitng..', pi_obj)
         if (!pi_obj.course || !pi_obj.course.id) {
             LoadingService.showMsg('Please add a course to complete', 2000);
         }
@@ -43,13 +44,15 @@ angular.module('uguru.rest')
         if (!shop_type) {
             var setup;
         }
+
         return {
-            course: {},
+            course: {id:3232451, short_name:'PACS 127'},
             shop_category: Category.getAcademic(),
+            shop_id: Category.getAcademic().id,
             title: 'Test',
             hourly_price: 10,
             max_hourly_price: 25,
-            description: null,
+            description: "I really enjoy this --- its just wayyy to much fun yo",
             avg_rating: 0,
             unit_price: 5,
             max_unit_price:10,

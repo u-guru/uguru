@@ -705,7 +705,7 @@ angular.module('uguru.user', [])
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
         //custom logic client side only
-        $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
+        // $scope.user.show_become_guru =  !($scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
         $scope.user.is_a_guru = false && !$scope.user.show_become_guru;
 
         $localstorage.setObject('user', $scope.user);
@@ -847,6 +847,27 @@ angular.module('uguru.user', [])
                   return {
                         profession: obj,
                         'add_guru_profession': true
+                  }
+              }
+
+              if (arg === 'add_guru_portfolio_item') {
+                  return {
+                        portfolio_item: obj,
+                        'add_guru_portfolio_item': true
+                  }
+              }
+
+              if (arg === 'edit_guru_porfolio_item') {
+                  return {
+                        portfolio_item: obj,
+                        'edit_guru_porfolio_item': true
+                  }
+              }
+
+              if (arg === 'remove_guru_portfolio_item') {
+                  return {
+                        portfolio_item: obj,
+                        'remove_guru_portfolio_item': true
                   }
               }
 
