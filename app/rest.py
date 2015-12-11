@@ -2252,7 +2252,7 @@ class UserNewView(restful.Resource):
             user_email = 'fb_id:' + request.json.get('fb_id')
 
         user = User.initNewUser(user_email, request.json)
-
+        print user.guru_shops
         if request.json.get('access_code_sender_id'):
             sender_id = int(request.json.get('access_code_sender_id'))
             sender = User.query.get(sender_id)
