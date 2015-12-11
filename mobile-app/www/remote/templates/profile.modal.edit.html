@@ -10,7 +10,7 @@
 				</a>
 			</div>
 		</header>
-<<<<<<< HEAD
+
 		<div class="main onboarding-portfolio-item" style='height: calc(100% - 140px);'>
 			<div class='onboarding-search full-x' ng-controller='CoursesController'>
 				<div class='p20xy relative hide ng-class:{"show":activePortfolioItem.course.id}'>
@@ -18,7 +18,6 @@
 					{{activePortfolioItem.course.short_name}}</h1>
 					<p class='left-text weight-500'>{{activePortfolioItem.course.full_name}}</p>
 					<a style='top:10%;' ng-if='!activePortfolioItem.id' class="side-icon absolute m10xy right-0 top-10 desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
-=======
 		<div class="main onboarding-portfolio-item">
 			<div class="pf-course-check">
 				<div>
@@ -29,14 +28,13 @@
 						</svg>
 					</span>
 				</div>
-				<label for="pf-course-check">This is a university course</label>
+				<label ng-if='shop' for="pf-course-check">This is a university course</label>
 			</div>
 			<div class='pf-item-search' ng-controller='CoursesController'>
 				<div class='pf-item-selected relative' ng-if="activePortfolioItem.course.id">
-					<h2>Math 101</h2>
-					<h1>The Joy of Computing</h1>
+					<h2>{{activePortfolioItem.course.short_name}}</h2>
+					<h1>{{activePortfolioItem.course.department}} {{activePortfolioItem.course.code}} </h1>
 					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
->>>>>>> f6b12082ef33227961860541898e15129d57e3e9
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
@@ -46,7 +44,6 @@
 	                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 	                    </svg>
 	                </i>
-<<<<<<< HEAD
 					<input type="text" id='course-input-1' ng-disabled='activePortfolioItem.id' name="course-input-1" class="bg-charcoal"
 		                    fast-matcher
 		                    fast-matcher-source="courses"
@@ -58,11 +55,6 @@
 		                    ng-blur="searchInputBlur()"
 		                    placeholder="" />
 		            <label for="course-input-1" class='ng-class:{"hide": activePortfolioItem.course.id || !courses.length}'>
-=======
-					<input type="text" id='course-input-1' name="course-input-1" class="bg-charcoal" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-disabled="!courses || !courses.length"
-					ng-model="search_text.course" ng-focus="searchInputFocus = true" ng-blur="searchInputBlur()" placeholder="" />
-					<label for="course-input-1" class='ng-class:{"hide": activePortfolioItem.course.id || !courses.length}'>
->>>>>>> f6b12082ef33227961860541898e15129d57e3e9
 						<span class='ng-class:{"hide": activePortfolioItem.course.id}'> search among {{courses.length}} popular courses </span>
 						<span class='ng-class:{"hide": activePortfolioItem.course.id || courses.length}'> search popular courses </span>
 					</label>
