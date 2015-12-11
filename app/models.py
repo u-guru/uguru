@@ -2234,6 +2234,8 @@ class Session(Base):
     hours = Column(Integer)
 
 
+
+
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
         primaryjoin = "(User.id==Session.guru_id) & "\
@@ -2278,6 +2280,13 @@ class Session(Base):
         primaryjoin = "Card.id == Session.card_id",
         backref = 'sessions'
         )
+
+    course_id = Column(Integer, ForeignKey('course.id'))
+    course = relationship("Course",
+        uselist=False,
+        primaryjoin = "Course.id == Session.course_id",
+        backref="sessions"
+    )
 
     rating_id = Column(Integer, ForeignKey("rating.id"))
     request_id = Column(Integer, ForeignKey("request.id"))
