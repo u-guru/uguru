@@ -362,9 +362,15 @@
 				font-weight: 400;
 				line-height: 1.2;
 				text-align: center;
+				@include placeholder {
+					color: white;
+				}
 				&:focus {
 					background: white;
 					color: $charcoal;
+					@include placeholder {
+						color: $taupe;
+					}
 				}
 				&:disabled {
 					background: none;
@@ -1083,6 +1089,10 @@
 	left: 0;
 	width: 100%;
 	z-index: 99;
+	button {
+		display: block;
+		margin: 0 auto;
+	}
 }
 .pf-desktop-edit {
 	@include opacity(0);
