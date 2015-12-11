@@ -788,12 +788,21 @@ class UserOneView(restful.Resource):
             shop_id = pi_json.get('shop_id')
 
             user_shop_ids = [shop.id for shop in user.guru_shops if shop and shop.id]
-            print user_shop_ids, shop_id
 
             shop = user.getAcademicShop()
             course_id = pi_json.get('course').get('id')
             course = Course.query.get(int(course_id))
-            print shop, course
+            if not course:
+                abort(404)
+            if not shop and not user_shop_ids:
+                user.guru_courses.append(course)
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+                Shop.initAcademicShop(user)
+                shop = user.getAcademicShop()
             if course and shop:
                 Portfolio_Item.initAcademicPortfolioItemFromGuruProfile(user, shop, course, pi_json)
 
@@ -942,7 +951,7 @@ class UserOneView(restful.Resource):
         # # print request.json.get('requests');
         # if not request.json.get('auth_token'):
         #     abort(400)
-        print request.json
+
         user = User.query.get(_id)
         if not user:
             abort(400)
@@ -2266,6 +2275,8 @@ class UserNewView(restful.Resource):
             db_session.commit()
             print user.name, 'has', len(user.departments), 'majors'
 
+
+
         guru_courses_json = request.json.get('guru_courses')
         if  guru_courses_json:
             guru_course_ids = [guru_course.get('id') for guru_course in guru_courses_json]
@@ -2679,7 +2690,30 @@ class AdminSendView(restful.Resource):
 
 
 class AdminUserView(restful.Resource):
-
+    def delete(self, auth_token):
+        if auth_token and auth_token not in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+        count = 0
+        for u in User.query.all():
+            if "samir-" in u.email.lower():
+                from sqlalchemy import create_engine
+                if not os.environ.get('PRODUCTION'):
+                    SQLALCHEMY_DATABASE_URI = 'postgresql://uguru:uguru@localhost/uguru_db'
+                    engine = create_engine(SQLALCHEMY_DATABASE_URI)
+                    from sqlalchemy import MetaData
+                    m = MetaData()
+                    m.reflect(engine)
+                    for table in m.tables.values():
+                        for column in table.c:
+                            if column.name == "user_id":
+                                db_session.execute(table.delete(table.c.user_id == u.id))
+                    db_session.commit()
+                count += 1
+                print "deleting user %s %s" % (u.id, u.name)
+                db_session.delete(u)
+                db_session.commit()
+        print "%s users deleted", count
+        return 200
     def put(self):
 
         user_id = int(request.json.get('user_id'))
@@ -3565,7 +3599,7 @@ api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music')
 api.add_resource(AdminSessionView, '/api/admin')
 # api.add_resource(MandrillWebhook, '/<string:auth_token>/mandrill-webhook')
 api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')
-api.add_resource(AdminUserView, '/api/admin/users/')
+api.add_resource(AdminUserView, '/api/admin/<string:auth_token>/users')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/courses')
@@ -3596,6 +3630,7 @@ api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/l
 
 api.add_resource(UserView, '/api/v1/users', subdomain='www')
 api.add_resource(UserNewView, '/api/v1/user', subdomain='www')
+
 api.add_resource(UserOneView, '/api/v1/user/<int:_id>', subdomain='www')
 api.add_resource(FileView, '/api/v1/files', subdomain='www')
 api.add_resource(UserRequestView, '/api/v1/user/<int:user_id>/requests', subdomain='www')
@@ -3632,7 +3667,6 @@ api.add_resource(MusicPlayerPlayListView, '/api/v1/<string:auth_token>/music', s
 api.add_resource(AdminSessionView, '/api/admin', subdomain='www')
 # api.add_resource(MandrillWebhook, '/<string:auth_token>/mandrill-webhook', subdomain='www')
 api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test', subdomain='www')
-api.add_resource(AdminUserView, '/api/admin/users/', subdomain='www')
 # api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities', subdomain='www')
 api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>', subdomain='www')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/courses', subdomain='www')

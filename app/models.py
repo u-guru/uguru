@@ -2693,7 +2693,6 @@ class Portfolio_Item(Base):
         pi.user_id = user.id
         pi.shop_id = shop.id
         pi.course_id = course.id
-        print "does it even get here bro"
         try:
             db_session.commit()
         except:

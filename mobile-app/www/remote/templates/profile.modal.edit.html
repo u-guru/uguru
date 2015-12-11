@@ -14,7 +14,7 @@
 					<h1 style='font-size:40px; text-align:left' class='left-text hide ng-class:{"show":activePortfolioItem.course.id}'>
 					{{activePortfolioItem.course.short_name}}</h1>
 					<p class='left-text weight-500'>{{activePortfolioItem.course.full_name}}</p>
-					<a style='top:10%;' class="side-icon absolute m10xy right-0 top-10 desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
+					<a style='top:10%;' ng-if='!activePortfolioItem.id' class="side-icon absolute m10xy right-0 top-10 desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
@@ -24,7 +24,7 @@
 	                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 	                    </svg>
 	                </i>
-					<input type="text" id='course-input-1' name="course-input-1" class="bg-charcoal"
+					<input type="text" id='course-input-1' ng-disabled='activePortfolioItem.id' name="course-input-1" class="bg-charcoal"
 		                    fast-matcher
 		                    fast-matcher-source="courses"
 		                    fast-matcher-output="search_text.matching"
@@ -36,9 +36,9 @@
 		                    placeholder="" />
 		            <label for="course-input-1" class='ng-class:{"hide": activePortfolioItem.course.id || !courses.length}'>
 						<span class='ng-class:{"hide": activePortfolioItem.course.id}'> search among {{courses.length}} popular courses </span>
-						<span class='ng-class:{"hide": activePortfolioItem.course.id || courses.length}' ng-hide='courses.length'> search popular courses </span>
+						<span class='ng-class:{"hide": activePortfolioItem.course.id || courses.length}'> search popular courses </span>
 					</label>
-					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()" ng-show="searchInputFocus || activePortfolioItem.course.id">
+					<a ng-if='!activePortfolioItem.id' class="side-icon desktop-input-close-icon activated hide ng-class:{'show':(searchInputFocus || activePortfolioItem.course.id) && !activePortfolioItem.id}" ng-click="clearInputAndResetCourse(course)" >
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 		        </div>

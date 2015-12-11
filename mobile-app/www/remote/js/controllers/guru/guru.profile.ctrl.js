@@ -115,6 +115,13 @@ angular.module('uguru.guru.controllers')
         return;
       }
       LoadingService.showAmbig('Saving...', 10000);
+      var closeCTAModal = function() {
+        LoadingService.hide()
+        $timeout(function() {
+          LoadingService.showSuccess('Saved!', 2000);
+        }, 250)
+        $scope.closeEditPortfolioItem();
+      }
       $scope.user.updateAttr('add_guru_portfolio_item', $scope.user, portfolio_item, null, $scope);
     }
 
@@ -1003,6 +1010,14 @@ angular.module('uguru.guru.controllers')
           alert('Please enter valid phone number.')
       };
         return;
+    }
+
+    $scope.clearInputAndResetCourse = function() {
+      // if we can edit the course item
+      if (!$scope.activePortfolioItem.id) {
+        $scope.search_text.course = '';
+        $scope.activePortfolioItem.course = {};
+      }
     }
 
     $scope.resendPhoneConfirmation = function() {
