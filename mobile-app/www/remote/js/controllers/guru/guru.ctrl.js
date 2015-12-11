@@ -573,8 +573,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 				}
 			});
 		});
-
-        $timeout(function() {$scope.contentModal.show()}, 3000);
+        
+        // $timeout(function() {$scope.contentModal.show()}, 3000);
 
 		var launchWelcomeToGuruMode = function() {
 			$timeout(function() {
