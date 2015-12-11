@@ -64,7 +64,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-profile-contact': '.pf-type',
     'cta-box-profile-experiences': '.pf-tab-container',
     'cta-box-profile-languages': '.pf-tab-container',
-    'cta-box-profile-pi-item': '.pf-type',
+    'cta-box-profile-pi-item': '.pf-tab-item',
     'cta-box-profile-skills': '.pf-type',
     'cta-box-referrals': '#desktop-guru-home',
     'cta-box-support': '.guru-home-container',
@@ -573,7 +573,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 				}
 			});
 		});
-        
+
         // $timeout(function() {$scope.contentModal.show()}, 3000);
 
 		var launchWelcomeToGuruMode = function() {

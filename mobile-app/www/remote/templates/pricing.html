@@ -1,0 +1,89 @@
+<style>
+  header {
+    padding:20px;
+  }
+  .pricing-header {
+    font-size:60px !important;
+    font-weight:700;
+    margin:20px 0;
+  }
+  .two-third {
+    min-height:500px;
+  }
+
+  .header-stat {
+    font-size:80px;
+  }
+  ul.ugrid-2 li{
+    margin-top:30px;
+  }
+</style>
+
+<section class='bg-smoke flex-wrap full-xy'>
+  <header class='third bg-charcoal p20xy full-x top-0 flex-wrap-center hide ng-class:{"show":!page.header.state}'>
+    <div class='pricing-header p20pxy txt-smoke center-text text-center full-x'>
+      {{page.header.text}}
+    </div>
+    <ul class='ugrid-2 full-x'>
+      <li class='bg-slate txt-smoke text-center p30xy'>
+        <div class='full-xy bg-slate'>
+          <h1 class='weight-500'>Avg Fees</h1>
+          <div class='header-stat txt-auburn p20xy weight-700'>
+            25%
+          </div>
+        </div>
+      </li>
+      <li class='bg-slate txt-smoke text-center p30xy'>
+        <div class='full-xy bg-slate'>
+          <h1 class='weight-500'>Hourly Average</h1>
+          <div class='header-stat txt-auburn p20xy weight-700'>
+            $60
+          </div>
+        </div>
+      </li>
+    </ul>
+  </header>
+  <header class='third bg-smoke p20xy full-x top-0 flex-wrap-center hide ng-class:{"show":page.header.state === 1}'>
+    <div class='pricing-header p20pxy txt-charcoal center-text text-center full-x'>
+      And got to this....
+    </div>
+    <ul class='ugrid-3 full-x'>
+      <li class='bg-smoke txt-charcoal text-center p30xy'>
+        <div class='full-xy'>
+          <h1 class='weight-500'><span class='weight-800'>Our</span> Fees</h1>
+          <div class='header-stat txt-shamrock p20xy weight-700'>
+            0%
+          </div>
+        </div>
+      </li>
+      <li class='bg-smoke txt-charcoal text-center p30xy'>
+        <div class='full-xy'>
+          <h1 class='weight-500'><span class='weight-800'>Our</span> Average</h1>
+          <div class='header-stat txt-shamrock p20xy weight-700'>
+            $60
+          </div>
+        </div>
+      </li>
+      <li class='bg-smoke txt-charcoal text-center p30xy'>
+        <div class='full-xy'>
+          <h1 class='weight-500'><span class='weight-800'>Our</span> Average</h1>
+          <div class='header-stat txt-shamrock p20xy weight-700'>
+            $14
+          </div>
+        </div>
+      </li>
+    </ul>
+  </header>
+  <div class='two-third full-x'>
+    <ul>
+      <li ng-repeat='question in questions' class='p30xy'>
+        <h1 class='txt-charcoal weight-800'>
+          {{question.header}}
+        </h1>
+        <p class='txt-slate weight-500'>
+          {{question.body}}
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>

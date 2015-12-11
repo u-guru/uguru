@@ -145,6 +145,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/desktop.login.html',
     controller: 'SignupController'
   }).
+  state('root.pricing', {
+    url:'/pricing',
+    templateUrl: BASE + 'templates/pricing.html',
+    controller: 'PricingController'
+  }).
   state('root.desktop-become-guru', {
     url:'/desktop-become-guru',
     templateUrl: BASE + 'templates/desktop.guru.onboarding.html',
