@@ -32,6 +32,12 @@ category_fields['id'] = fields.Integer(attribute='id')
 category_fields['name'] = fields.String(attribute='name')
 category_fields['hex_color'] = fields.String(attribute='hex_color')
 
+currency_fields = {}
+currency_fields['id'] = fields.Integer(attribute='id')
+currency_fields['description'] = fields.String(attribute='description')
+currency_fields['name'] = fields.String(attribute='name')
+currency_fields['icon_url'] = fields.String(attribute='icon_url')
+
 user_subcategory_fields = {}
 user_subcategory_fields['id'] = fields.Integer(attribute='id')
 user_subcategory_fields['name'] = fields.String(attribute='name')
@@ -40,7 +46,6 @@ user_subcategory_fields['category'] = fields.Nested(category_fields)
 tag_fields = {}
 tag_fields['id'] = fields.Integer(attribute='id')
 tag_fields['name'] = fields.String(attribute='name')
-
 
 course_fields = {}
 course_fields['id'] = fields.Integer(attribute='id')
@@ -51,6 +56,16 @@ course_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
 course_fields['department_short'] = fields.String(attribute='department_short')
 course_fields['department_long'] = fields.String(attribute='department_long')
 course_fields['code'] = fields.String(attribute='code')
+
+resource_fields = {}
+resource_fields['id'] = fields.Integer(attribute='resource')
+resource_fields['name'] = fields.String(attribute='name')
+resource_fields['course'] = fields.Nested(course_fields)
+resource_fields['file_type'] = fields.String(attribute='file_type')
+resource_fields['description'] = fields.String(attribute='description')
+resource_fields['title'] = fields.String(attribute='title')
+resource_fields['site_url'] = fields.String(attribute='site_url')
+
 
 department_fields = {}
 department_fields['id'] = fields.Integer(attribute='id')
@@ -294,6 +309,8 @@ guru_experience_fields['admin_approved'] = fields.Boolean(attribute='admin_appro
 
 
 
+
+
 rating_fields = {}
 rating_fields['guru_id'] = fields.Integer(attribute='guru_id')
 rating_fields['student_id'] = fields.Integer(attribute='student_id')
@@ -340,11 +357,25 @@ portfolio_item_fields['course'] = fields.Nested(course_fields)
 portfolio_item_fields['subcategory_fields'] = fields.List(fields.Nested(subcategory_fields))
 portfolio_item_fields['description'] = fields.String(attribute='description')
 portfolio_item_fields['title'] = fields.String(attribute='title')
+portfolio_item_fields['id'] = fields.Integer(attribute='id')
 portfolio_item_fields['avg_rating'] = fields.Float(attribute='avg_rating')
 portfolio_item_fields['hourly_price'] = fields.Float(attribute='hourly_price')
 portfolio_item_fields['max_hourly_price'] = fields.Float(attribute='max_hourly_price')
 portfolio_item_fields['unit_price'] = fields.Float(attribute='unit_price')
 portfolio_item_fields['max_unit_price'] = fields.Float(attribute='max_unit_price')
+portfolio_item_fields['tags'] = fields.List(fields.Nested(tag_fields))
+portfolio_item_fields['ratings'] = fields.List(fields.Nested(guru_rating_fields))
+portfolio_item_fields['resources'] = fields.List(fields.Nested(resource_fields))
+
+guru_shop_fields = {}
+guru_shop_fields['banner_url'] = fields.String(attribute='banner_url')
+guru_shop_fields['is_featured'] = fields.String(attribute='is_featured')
+guru_shop_fields['public_url'] = fields.String(attribute='public_url')
+guru_shop_fields['avg_rating'] = fields.String(attribute='avg_rating')
+guru_shop_fields['title'] = fields.String(attribute='title')
+guru_shop_fields['description'] = fields.String(attribute='description')
+guru_shop_fields['portfolio_items'] = fields.List(fields.Nested(portfolio_item_fields))
+guru_shop_fields['category'] = fields.Nested(category_fields)
 
 
 UserSerializer = {
@@ -444,7 +475,9 @@ UserSerializer = {
     'guru_calendar': fields.List(fields.Nested(calendar_fields)),
     'student_calendar': fields.List(fields.Nested(calendar_fields)),
     'portfolio_items': fields.List(fields.Nested(portfolio_item_fields)),
+    'guru_shops': fields.List(fields.Nested(guru_shop_fields)),
     'referrals': fields.List(fields.Nested(referral_fields)),
+    'guru_currencies': fields.List(fields.Nested(currency_fields)),
     'first_degree_referrals': fields.Integer,
     'second_degree_referrals': fields.Integer,
     'referral_limit': fields.Integer,

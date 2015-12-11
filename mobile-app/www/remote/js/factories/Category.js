@@ -8,6 +8,17 @@ angular.module('uguru.rest')
             return Restangular
                 .one('categories').get();
         },
+        getAcademic: function() {
+            if (Category.categories && Category.categories.length) {
+                copied_categories = Category.categories.slice();
+                for (var i = 0; i < copied_categories.length; i ++) {
+                    var indexCategory = copied_categories[i]
+                    if (indexCategory.hex_color === 'academic') {
+                        return indexCategory;
+                    }
+                }
+            }
+        },
         mapActiveToSubcategories: function(categories, user) {
             categories_sliced = categories.slice();
             for (var i = 0; i < categories_sliced.length; i ++) {

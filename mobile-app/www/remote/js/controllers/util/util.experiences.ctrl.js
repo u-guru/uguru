@@ -39,6 +39,8 @@ angular.module('uguru.util.controllers')
 
     }
 
+
+
     $scope.saveGuruExperience = function() {
       if (!$scope.experience.name.length ||!$scope.experience.years || !$scope.experience.description.length) {
         $scope.success.show(0, 1500,'Please enter in all fields');

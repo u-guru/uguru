@@ -294,6 +294,9 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   filter: alpha(opacity=100);
   opacity: 1; }
 
+.show-opacity-impt {
+  opacity: 1 !important; }
+
 .absolute {
   position: absolute !important; }
 
@@ -799,6 +802,9 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
     background: rgba(105, 179, 165, 0.8); }
   [class*="bg-shamrock"][class*="-90p"] {
     background: rgba(105, 179, 165, 0.9); }
+
+[class*="bg-transparent"] {
+  background: transparent; }
 
 [class*="bg-azure"] {
   background: #55A4B7;

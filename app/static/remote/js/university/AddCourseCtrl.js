@@ -22,8 +22,15 @@ angular.module('uguru.util.controllers')
 		$cordovaKeyboard, $ionicModal, $ionicTabsDelegate,
 		$ionicSideMenuDelegate, University, Utilities, uTracker, Course, LoadingService) {
 
+		$scope.searchInputFocus;
 
-		$scope.courses = University.source.courses;
+		$scope.courses = University.source.courses || [];
+		if (!$scope.courses || !$scope.courses.length) {
+			var successCallback = function() {
+				$scope.courses = University.source.courses;
+			}
+			University.getPopularCourses($scope.user.university_id, $scope, successCallback)
+		}
 
 		if (!$scope.user.guru_courses) {
 			$scope.user.guru_courses = [];
@@ -205,6 +212,16 @@ angular.module('uguru.util.controllers')
 
 		};
 
+		$scope.clearInputAndResetCourse = function() {
+			$scope.search_text.course = '';
+			$scope.newPortfolioItem.course = null;
+		}
+
+		// $scope.searchInputBlur = function() {
+		// 	$timeout(function() {
+		// 		$scope.searchInputFocus = false;
+		// 	}, 250)
+		// }
 
 		$scope.limit = 10;
 		$scope.increaseLimit = function() {
@@ -213,7 +230,9 @@ angular.module('uguru.util.controllers')
 			}
 		};
 
-		if ($scope.desktopMode) {
+
+
+		if ($scope.desktopMode && $state.current.name === 'root.desktop-become-guru') {
 
 
 			$timeout(function() {
@@ -221,7 +240,10 @@ angular.module('uguru.util.controllers')
 
 					LoadingService.showSuccess('Saved!', 1500);
 					$timeout(function() {
-						document.querySelector('#cta-modal-profile-courses').classList.remove('show');
+						var elem = document.querySelector('#cta-modal-profile-courses');
+						if (elem) {
+							elem.classList.remove('show');
+						}
 
 					}, 500);
 

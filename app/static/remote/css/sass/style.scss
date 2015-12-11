@@ -1260,7 +1260,7 @@ section {
 		margin: 0;
 	}
 }
-.onboarding {
+.onboarding, .onboarding-portfolio-item {
 	.onboarding-search {
 		.input-field {
 			.prefix {
@@ -3173,7 +3173,7 @@ section {
 
 
 /* ---------- GENERAL */
-#mobile-general {
+#mobile-general, .mobile-general{
 	background: $lake;
 	padding: 15px;
 	h1 {
@@ -3645,3 +3645,13 @@ body.platform-ios {
 		}
 	}
 }
+
+
+
+//start SAMIR
+.pf-character-count {
+	font-size:12px;
+	font-weight:500;
+	right:33px;
+}
+//end Samir

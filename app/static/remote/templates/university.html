@@ -21,16 +21,24 @@
 								    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 								</svg>
 							</i>
-			                <input id="university-input" type="text" ng-model="search_text.university">
+			                <input id="university-input" type="text"
+			                fast-matcher
+		                    fast-matcher-source="universities"
+		                    fast-matcher-output="search_text.matching"
+		                    fast-matcher-properties="short_name, name, variations, city, state"
+		                    ng-disabled="!universities || !universities.length"
+		                    ng-model="search_text.university">
+			                <!-- <input id="university-input" type="text"
+			                /> -->
 			                <label class="ng-class:{'hide': search_text.university.length}" for="university-input">find your university</label>
 			                <a class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
 								<i class='icon ion-close-circled text-white'></i>
 							</a>
 			            </div>
 			        </form>
-			        <div data-velocity id="school-list" class="desktop-search-list" bind-list='universities' source='universitiesSorted' buffered-scroll='increaseLimit()'>
+			        <div data-velocity id="school-list" class="desktop-search-list">
 			            <ul class='desktop-card-list'>
-			                <li data-velocity ng-if="universities && universities.length" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+			                <li ng-if="universities && universities.length" ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 10 track by university.id'>
 			                    <a thr-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
 			                        <span class="list-item-overlay" style="background:{{university.school_color_one}}"></span>
 			                        <span class="school-icon">

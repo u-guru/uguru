@@ -58,6 +58,26 @@ angular.module('uguru.user', [])
         return profile_url
     }
 
+    var getAndProcessAcademicShop = function(guru_shops) {
+        academic_shop = {};
+        for (var i = 0; i < guru_shops.length; i++) {
+            var indexShop = guru_shops[i];
+            if (indexShop.category.name === 'Academic') {
+                academic_shop = indexShop;
+                for (var j = 0; j < academic_shop.portfolio_items.length; j ++) {
+                    indexPortfolioItem = academic_shop.portfolio_items[j];
+                    academic_shop.portfolio_items[j].avg_rating = parseFloat(academic_shop.portfolio_items[j].avg_rating).toFixed(1);
+                    if (indexPortfolioItem.avg_rating) {
+                        academic_shop.portfolio_items[j].rounded_avg_rating = parseInt(indexPortfolioItem.avg_rating);
+                        academic_shop.portfolio_items[j].half_stars = Math.abs(parseInt(indexPortfolioItem.avg_rating) - indexPortfolioItem.avg_rating) === 0.5;
+                    }
+                }
+                return academic_shop;
+            }
+        }
+        return academic_shop;
+    }
+
     var processReferrals = function(referrals) {
         for (var i = 0; i < referrals.length; i++) {
             var referralIndex = referrals[i];
@@ -267,7 +287,6 @@ angular.module('uguru.user', [])
         // user.summer_15 = false;
 
         var user_cards = user.cards || [];
-        console.log('processing cards', user.cards);
         for (var i = 0; i < user_cards.length; i++) {
             var card = user_cards[i];
             if (card.card_type) {
@@ -421,7 +440,6 @@ angular.module('uguru.user', [])
                   var index_rating = guru_ratings[i];
                   if (index_rating.student_rating === 0 && user.id === index_rating.guru_id) {
                     if (index_rating.session && index_rating.session.transaction) {
-                        console.log(index_rating.session.transaction);
                         index_rating.session.transaction.student_amount = parseFloat(index_rating.session.transaction.student_amount).toFixed(2);
                         index_rating.session.transaction.guru_amount = parseFloat(index_rating.session.transaction.guru_amount).toFixed(2);
                         user.pending_student_ratings.push(index_rating);
@@ -587,7 +605,6 @@ angular.module('uguru.user', [])
         $scope.user.referred_by = user.referred_by;
         $scope.user.referral_code = user.referral_code;
         $scope.user.profile_code = user.profile_code;
-        console.log(user.profile_code);
         $scope.user.guru_discoverability = user.guru_discoverability;
         $scope.user.current_device = user.current_device;
         $scope.user.devices = user.devices;
@@ -620,6 +637,13 @@ angular.module('uguru.user', [])
         $scope.user.skype_friendly = user.skype_friendly;
         $scope.user.text_friendly = user.text_friendly;
         $scope.user.guru_experiences = user.guru_experiences;
+        $scope.user.guru_shops = user.guru_shops;
+        if (user.guru_shops && user.guru_shops.length) {
+            $scope.user.academic_shop = getAndProcessAcademicShop(user.guru_shops);
+            console.log('printing out user w/ academic shop', $scope.user);
+        }
+
+        $scope.user.guru_currencies = user.guru_currencies;
         $scope.user.guru_languages = user.guru_languages;
         $scope.user.referrals = processReferrals(user.referrals);
         $scope.user.first_degree_referrals = user.first_degree_referrals;
@@ -681,7 +705,7 @@ angular.module('uguru.user', [])
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
         //custom logic client side only
-        $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
+        // $scope.user.show_become_guru =  !($scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
         $scope.user.is_a_guru = false && !$scope.user.show_become_guru;
 
         $localstorage.setObject('user', $scope.user);
@@ -823,6 +847,27 @@ angular.module('uguru.user', [])
                   return {
                         profession: obj,
                         'add_guru_profession': true
+                  }
+              }
+
+              if (arg === 'add_guru_portfolio_item') {
+                  return {
+                        portfolio_item: obj,
+                        'add_guru_portfolio_item': true
+                  }
+              }
+
+              if (arg === 'edit_guru_porfolio_item') {
+                  return {
+                        portfolio_item: obj,
+                        'edit_guru_porfolio_item': true
+                  }
+              }
+
+              if (arg === 'remove_guru_portfolio_item') {
+                  return {
+                        portfolio_item: obj,
+                        'remove_guru_portfolio_item': true
                   }
               }
 

@@ -1,10 +1,88 @@
-<div class='pf-type pf-modal pf-edit pf-type-household bg-slate'>
+<div class='pf-type pf-modal pf-edit pf-type-household bg-slate full-y'>
 	<section>
-		<header class="third text-center bg-charcoal">
-			<h1>Add Shop Item</h1>
+		<header class="text-center bg-charcoal">
+			<h1>Add a course</h1>
+			<a class="cta-modal-close close-button absolute right-0 top-0 m10xy high-z-index" ng-click='closeEditPortfolioItem()'>
+				<svg viewBox="0 0 100 100" style='height:25px; width:25px;'>
+					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</header>
+		<div class="main onboarding-portfolio-item" style='height: calc(100% - 140px);'>
+			<div class='onboarding-search full-x' ng-controller='CoursesController'>
+				<div class='p20xy relative hide ng-class:{"show":activePortfolioItem.course.id}'>
+					<h1 style='font-size:40px; text-align:left' class='left-text hide ng-class:{"show":activePortfolioItem.course.id}'>
+					{{activePortfolioItem.course.short_name}}</h1>
+					<p class='left-text weight-500'>{{activePortfolioItem.course.full_name}}</p>
+					<a style='top:10%;' class="side-icon absolute m10xy right-0 top-10 desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
+						<i class="icon ion-close-circled text-white"></i>
+					</a>
+				</div>
+				<div class="input-field ng-class:{'hide':activePortfolioItem.course.id}">
+					<i class="material-icons prefix" >
+	                    <svg viewBox="0 0 100 100" >
+	                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+	                    </svg>
+	                </i>
+					<input type="text" id='course-input-1' name="course-input-1" class="bg-charcoal"
+		                    fast-matcher
+		                    fast-matcher-source="courses"
+		                    fast-matcher-output="search_text.matching"
+		                    fast-matcher-properties="short_name, full_name, variations"
+		                    ng-disabled="!courses || !courses.length"
+		                    ng-model="search_text.course"
+		                    ng-focus="searchInputFocus = true"
+		                    ng-blur="searchInputBlur()"
+		                    placeholder="" />
+		            <label for="course-input-1" class='ng-class:{"hide": activePortfolioItem.course.id || !courses.length}'>
+						<span class='ng-class:{"hide": activePortfolioItem.course.id}'> search among {{courses.length}} popular courses </span>
+						<span class='ng-class:{"hide": activePortfolioItem.course.id || courses.length}' ng-hide='courses.length'> search popular courses </span>
+					</label>
+					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()" ng-show="searchInputFocus || activePortfolioItem.course.id">
+						<i class="icon ion-close-circled text-white"></i>
+					</a>
+		        </div>
+		        <ul class='desktop-card-list hide ng-class:{"show":searchInputFocus && !activePortfolioItem.course.id}' style='z-index:100001'>
+					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id'>
+						<a class="hide ng-class:{'show':course.full_name || course.title}" ng-click='setCourseAndClearInput(course)'>
+							<span>
+								<span class="course-name">{{course.short_name}}</span>
+								<span class="course-title">{{course.full_name || course.title}}</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+	        </div>
+			<!-- Not needed for shops for now-->
+			<input ng-if='false' class="pf-title-edit input-outline" placeholder="Shop Item Title" ng-model='activePortfolioItem.title'/>
+			<!-- -->
+			<textarea class="input-outline" ng-model='activePortfolioItem.description' placeholder="Description"></textarea>
+			<div class="pf-tag-edit">
+				<!-- disabled example -->
+				<!-- <span class="chip">#<input disabled value="tag" size="2"/></span> -->
+
+				<!-- Already set example -->
+				<!-- <span class="chip">&times;&nbsp;<input size="12" placeholder="remove a tag"/></span> -->
+
+
+				<span class="chip chip-tags" ng-repeat="tag in activePortfolioItem.tags">+&nbsp;<input ng-model='tag.name' ng-keyup="$event.keyCode == 13 && onEnterBlurInput($event)" size="{{tag.placeholder.length || tag.name.length}}"  placeholder="{{tag.placeholder}}"/></span>
+
+			</div>
+			<div class="pf-pricing">
+				<h1>My Preferred Price Per Hour</h1>
+				<div class="pf-range">
+					<input type="range" class='full-x'  ng-model='activePortfolioItem.hourly_price' name="volume" min="5" max="25" value="{{activePortfolioItem.hourly_price || 15}}">
+					<ul class="ugrid-3 price-label">
+						<li>$5</li>
+						<li>$15</li>
+						<li>$25</li>
+					</ul>
+				</div>
+			</div>
 			<div class="pf-photo-list">
 				<ul>
-					<li>
+					<!-- Samples -- for reference -->
+					<!-- <li>
 						<div class="pf-upload-file pf-upload-pdf">
 							<svg class="doc-outline" viewBox="0 0 75 75">
 							    <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
@@ -87,8 +165,8 @@
 								</svg>
 							</a>
 						</div>
-					</li>
-					<li>
+					</li> -->
+					<!-- <li class='left-0 absolute p15x'>
 						<div class="pf-upload-add">
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
@@ -102,30 +180,10 @@
 								</span>
 							</a>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</div>
-		</header>
-		<div class="main">
-			<input class="pf-title-edit input-outline" placeholder="Shop Item Title"/>
-			<textarea class="input-outline" placeholder="Description"></textarea>
-			<div class="pf-tag-edit">
-				<span class="chip">#<input disabled value="tag" size="2"/></span>
-				<span class="chip">+&nbsp;<input size="8" placeholder="add a tag"/></span>
-				<span class="chip">&times;&nbsp;<input size="12" placeholder="remove a tag"/></span>
-			</div>
-			<div class="pf-pricing">
-				<h1>My Preferred Price Per Hour</h1>
-				<div class="pf-range">
-					<input type="range" class='full-x' name="volume" min="5" max="25" value="15">
-					<ul class="ugrid-3 price-label">
-						<li>$5</li>
-						<li>$15</li>
-						<li>$25</li>
-					</ul>
-				</div>
-			</div>
 		</div>
-		<button>Save</button>
+		<button ng-click='savePortfolioItem(activePortfolioItem)' class='absolute high-z-index bottom-0 left-0 height-100'>Save</button>
 	</section>
 </div>

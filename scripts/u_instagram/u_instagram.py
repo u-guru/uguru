@@ -4,7 +4,7 @@ import requests
 
 
 ## Make sure each photo has all image size urls (small, medium, large)
-## Searchs ONE taeg 
+## Searchs ONE taeg
 ## Returns an array of dictionaries, where each dictionary has details of one
 ## instagram image. These are the details I want about each post/photos
 ##  - Different size urls of photos --> link DIRECTLY to image, not instagram page w/ image
@@ -13,10 +13,10 @@ import requests
 ##  - # of comments
 ##  - user_instagram account who posted
 ##  - # of followers of the user who posted
-## Time will take # of hours in the past. 
+## Time will take # of hours in the past.
 
 
-
+empty_array = {}
 
 SEARCH_QUERY = 'brownie'
 access_token = "1306759548.7d39735.d2314437da04454fb26851f86f25a3e8"
@@ -45,13 +45,14 @@ def mostPopularPhotosWithTag(hours=24, tag_string="cookies"):
 		json_load_data = json.load(max_likes)
 		key,value = max(json_load_data.iteritems(),key=lambda x:x[1])
 		return key,value
-	
 
-### Searches MANY tags && and returns photos that 
+
+### Searches MANY tags && and returns photos that
 ### have at least ONE of the tags
-### Time will take # of hours in the past. 
+### Time will take # of hours in the past.
 def mostPopularPhotosWithTagsOR(hours=24, tag_arr=[]):
-	for query_items in tag_arr[0]#specifiy a index number you want to run from an array:
+	for query_items in tag_arr[0]:
+	#specifiy a index number you want to run from an array:
 		first_api_call = 'https://api.instagram.com/v1/tags/'+query_items+'/media/recent?access_token='+access_token
 		response = requests.get(first_api_call).text
 		load_json_obj = json.loads(response)['data']
@@ -69,13 +70,13 @@ def mostPopularPhotosWithTagsOR(hours=24, tag_arr=[]):
 
 	with open(output) as max_likes:
 		json_load_data = json.load(max_likes)
-		key,value = max(json_load_data.iteritems(),key=lambda x:x[1])						
+		key,value = max(json_load_data.iteritems(),key=lambda x:x[1])
 	return key,value
-	
 
-### Searches MANY tags && and returns photos that 
+
+### Searches MANY tags && and returns photos that
 ### have ALL tags. If it is missing one of them, don't return it.
-### Time will take # of hours in the past. 
+### Time will take # of hours in the past.
 def mostPopularPhotosWithTagsAND(hours=24, tag_arr=[]):
 	for query_items in tag_arr:
 		first_api_call = 'https://api.instagram.com/v1/tags/'+query_items+'/media/recent?access_token='+access_token
@@ -95,12 +96,12 @@ def mostPopularPhotosWithTagsAND(hours=24, tag_arr=[]):
 
 	with open(output) as max_likes:
 		json_load_data = json.load(max_likes)
-		key,value = max(json_load_data.iteritems(),key=lambda x:x[1])						
+		key,value = max(json_load_data.iteritems(),key=lambda x:x[1])
 	return key,value
 
 
-### Takes an instagram username, and returns the photos 
-### uploaded in the past 24 hours 
+### Takes an instagram username, and returns the photos
+### uploaded in the past 24 hours
 def getRecentPhotosFromUser(insta_username, hours=24):
 	user_name = 'https://api.instagram.com/v1/users/'+insta_username+'/media/recent/?access_token='+access_token
 	response = requests.get(user_name).text
@@ -115,14 +116,14 @@ def getPhotosFromUser(insta_username, count=20):
 	load_json_obj = json.loads(response)
 	return load_json_obj
 
-### [SAVE FOR LAST] Searches profile of user, returns the time 
-### they were last active. 
+### [SAVE FOR LAST] Searches profile of user, returns the time
+### they were last active.
 ### Return format must be python datetime
 def lastActiveTime(insta_username):
 	import time
 	last_active = 'https://api.instagram.com/v1/users/'+insta_username+'/media/recent/?access_token='+access_token
 	response = requests.get(last_active).text
-	load_json_obj = json.loads(response)['data']hing about
+	load_json_obj = json.loads(response)['data']
 	for time_info in load_json_obj:
 		python_date_time = time.strftime("%D %H:%M", time.localtime(int(time_info['created_time'])))
 		return python_date_time
@@ -135,4 +136,4 @@ def getUserFollowers(insta_username, count=20):
 	load_json_obj = json.loads(response)['data']
 	return load_json_obj
 
-
+mostPopularPhotosWithTag(24, "cs10")

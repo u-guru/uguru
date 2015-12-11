@@ -122,6 +122,7 @@
       border-bottom-width: 10px !important;
       border-bottom-color: transparent; }
   .pf-type header.third .pf-header {
+    width: 100%;
     text-align: center; }
     .pf-type header.third .pf-header h1 {
       padding: 5px 0 0;
@@ -134,7 +135,36 @@
         height: 24px; }
     .pf-type header.third .pf-header .pf-school {
       margin: 0 !important;
-      font-size: 24px; }
+      font-size: 20px; }
+    .pf-type header.third .pf-header a.profile-icon {
+      position: relative;
+      display: block; }
+      .pf-type header.third .pf-header a.profile-icon img {
+        border-radius: 1000px;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 100px;
+        padding: 5px;
+        filter: alpha(opacity=30);
+        opacity: 0.3; }
+      .pf-type header.third .pf-header a.profile-icon h1#guru-profile-edit-photo-txt {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100px;
+        font-size: 20px !important;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase; }
+    .pf-type header.third .pf-header a.profile-icon.active, .pf-type header.third .pf-header a.activated, .pf-type header.third .pf-header a:active {
+      filter: alpha(opacity=75);
+      opacity: 0.75; }
     .pf-type header.third .pf-header .user-icon {
       width: 72px;
       height: 72px;
@@ -148,10 +178,23 @@
       padding: 5px 30px; }
     .pf-type header.third .pf-header .pf-header-desc {
       display: none;
-      margin: 15px 15px 0;
+      margin: 15px 25px 0;
+      width: calc(100% - 50px);
+      height: 124px;
+      padding: 0 5px;
+      resize: none;
+      overflow: auto;
+      background: rgba(255, 255, 255, 0.4);
+      color: white;
       font-size: 20px;
       font-weight: 400;
-      line-height: 1.2; }
+      line-height: 1.2;
+      text-align: center; }
+      .pf-type header.third .pf-header .pf-header-desc:focus {
+        background: white;
+        color: #2B3234; }
+      .pf-type header.third .pf-header .pf-header-desc:disabled {
+        background: none; }
     .pf-type header.third .pf-header .pf-url {
       display: none;
       -webkit-flex-direction: row;
@@ -176,6 +219,8 @@
         text-transform: lowercase; }
         .pf-type header.third .pf-header .pf-url li:first-child a {
           color: #40484B; }
+      .pf-type header.third .pf-header .pf-url li input, .pf-type header.third .pf-header .pf-url li span {
+        color: #40484B; }
       .pf-type header.third .pf-header .pf-url li:last-child a {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -210,6 +255,53 @@
           background: #2B3234; }
           .pf-type header.third .pf-header .pf-url li:last-child a:active svg {
             stroke: white; }
+      .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        padding: 0;
+        height: 40px; }
+        .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child input {
+          -webkit-transition: all 0.15s ease-in-out;
+          -o-transition: all 0.15s ease-in-out;
+          -ms-transition: all 0.15s ease-in-out;
+          -moz-transition: all 0.15s ease-in-out;
+          transition: all 0.15s ease-in-out;
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center;
+          height: 100%;
+          padding: 5px 0 5px 10px;
+          border: 0;
+          background: rgba(255, 255, 255, 0.6);
+          font-size: 18px;
+          text-transform: lowercase; }
+          .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child input:hover, .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child input:focus {
+            background: white; }
+        .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child span {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center;
+          height: 100%;
+          padding: 5px 10px 5px 0; }
   .pf-type header.third .pf-photo-list {
     margin-top: 30px;
     height: calc(100% - 80px);
@@ -228,6 +320,8 @@
       .pf-type header.third .pf-photo-list ul li {
         padding: 7.5px;
         height: 100%; }
+        .pf-type header.third .pf-photo-list ul li:last-child {
+          padding-right: 15px; }
         .pf-type header.third .pf-photo-list ul li div {
           position: relative;
           width: 150px;
@@ -235,123 +329,123 @@
           background: #40484B;
           border: 2px solid white;
           border-radius: 10px; }
-      .pf-type header.third .pf-photo-list ul li div.pf-upload-img {
-        background-position: center center;
-        background-size: cover; }
-      .pf-type header.third .pf-photo-list ul li div.pf-upload-img a svg, .pf-type header.third .pf-photo-list ul li div.pf-upload-file a svg {
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg);
-        fill: none;
-        stroke: white;
-        stroke-width: 8px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 25px;
-        height: 25px; }
-      .pf-type header.third .pf-photo-list ul li div.pf-upload-file {
-        border: 0;
-        width: auto;
-        background: none !important; }
-        .pf-type header.third .pf-photo-list ul li div.pf-upload-file svg.doc-outline {
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-img {
+          background-position: center center;
+          background-size: cover; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-img a svg, .pf-type header.third .pf-photo-list ul li div.pf-upload-file a svg {
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
           fill: none;
           stroke: white;
-          stroke-width: 1.5px;
+          stroke-width: 8px;
           stroke-linecap: round;
           stroke-linejoin: round;
-          height: 100%;
-          fill: #69B3A5; }
-        .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-pdf svg.doc-outline {
-          fill: none;
-          stroke: white;
-          stroke-width: 1.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          height: 100%;
-          fill: #F04F54; }
-        .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-doc svg.doc-outline {
-          fill: none;
-          stroke: white;
-          stroke-width: 1.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          height: 100%;
-          fill: #50A5DD; }
-        .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-sheet svg.doc-outline {
-          fill: none;
-          stroke: white;
-          stroke-width: 1.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          height: 100%;
-          fill: #81B566; }
-        .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-          width: 100%;
-          padding: 30px 15px 15px; }
-          .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info span {
-            display: block;
-            font-weight: 600; }
-          .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info .doc-name {
-            font-size: 20px; }
-          .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info .doc-type {
-            font-size: 16px; }
-      .pf-type header.third .pf-photo-list ul li div.pf-upload-add {
-        position: relative;
-        border-style: dashed;
-        border-color: #69B3A5;
-        background: none;
-        width: auto; }
-        .pf-type header.third .pf-photo-list ul li div.pf-upload-add .square {
-          height: 100%;
-          fill: none; }
-        .pf-type header.third .pf-photo-list ul li div.pf-upload-add a {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -ms-flex-flow: row wrap;
-          -webkit-flex-flow: row wrap;
-          flex-flow: row wrap;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%; }
-          .pf-type header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+          top: 5px;
+          left: 5px;
+          width: 25px;
+          height: 25px; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-file {
+          border: 0;
+          width: auto;
+          background: none !important; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-file svg.doc-outline {
             fill: none;
-            stroke: #69B3A5;
-            stroke-width: 6px;
+            stroke: white;
+            stroke-width: 1.5px;
             stroke-linecap: round;
             stroke-linejoin: round;
+            height: 100%;
+            fill: #69B3A5; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-pdf svg.doc-outline {
+            fill: none;
+            stroke: white;
+            stroke-width: 1.5px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            height: 100%;
+            fill: #F04F54; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-doc svg.doc-outline {
+            fill: none;
+            stroke: white;
+            stroke-width: 1.5px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            height: 100%;
+            fill: #50A5DD; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-file.pf-upload-sheet svg.doc-outline {
+            fill: none;
+            stroke: white;
+            stroke-width: 1.5px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            height: 100%;
+            fill: #81B566; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
             width: 100%;
-            height: 30px; }
-          .pf-type header.third .pf-photo-list ul li div.pf-upload-add a span span {
-            display: block;
-            font-size: 18px;
-            font-weight: 600;
-            color: #69B3A5; }
+            padding: 30px 15px 15px; }
+            .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info span {
+              display: block;
+              font-weight: 600; }
+            .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info .doc-name {
+              font-size: 20px; }
+            .pf-type header.third .pf-photo-list ul li div.pf-upload-file .doc-info .doc-type {
+              font-size: 16px; }
+        .pf-type header.third .pf-photo-list ul li div.pf-upload-add {
+          position: relative;
+          border-style: dashed;
+          border-color: #69B3A5;
+          background: none;
+          width: auto; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-add .square {
+            height: 100%;
+            fill: none; }
+          .pf-type header.third .pf-photo-list ul li div.pf-upload-add a {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; }
+            .pf-type header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+              fill: none;
+              stroke: #69B3A5;
+              stroke-width: 6px;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              width: 100%;
+              height: 30px; }
+            .pf-type header.third .pf-photo-list ul li div.pf-upload-add a span span {
+              display: block;
+              font-size: 18px;
+              font-weight: 600;
+              color: #69B3A5; }
 .pf-type .pf-item-header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -612,6 +706,14 @@
     padding: 7.5px;
     position: relative;
     height: 50%; }
+    .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-edit-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: 600;
+      z-index: 100; }
     .pf-type .pf-checklist > li:not(.pf-checklist-full) input {
       filter: alpha(opacity=0);
       opacity: 0;
@@ -652,11 +754,6 @@
         align-items: center;
         -webkit-justify-content: center;
         justify-content: center;
-        fill: none;
-        stroke: rgba(255, 255, 255, 0.5);
-        stroke-width: 10px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
         position: absolute;
         top: 0;
         right: 0;
@@ -665,7 +762,48 @@
         width: 40px;
         height: 40px;
         padding: 5px 5px 10px 10px; }
-      .pf-type .pf-checklist > li:not(.pf-checklist-full) div > span {
+        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check svg {
+          fill: none;
+          stroke: rgba(255, 255, 255, 0.5);
+          stroke-width: 10px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          width: 100%;
+          height: 100%; }
+        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove {
+          background: white; }
+          .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            stroke: #69B3A5; }
+            .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg:first-child {
+              padding: 5px 5px 10px 10px; }
+            .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg:last-child {
+              filter: alpha(opacity=0);
+              opacity: 0;
+              -webkit-transform: rotate(45deg);
+              -moz-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+              -o-transform: rotate(45deg);
+              transform: rotate(45deg);
+              padding: 5px 5px 10px 5px; }
+          .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+            background: #69B3A5; }
+            .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+              stroke: white; }
+              .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg:first-child, .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg:first-child {
+                filter: alpha(opacity=0);
+                opacity: 0; }
+              .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg:last-child, .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg:last-child {
+                filter: alpha(opacity=100);
+                opacity: 1; }
+      .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
         display: block;
         width: 100%;
         background: #69B3A5;
@@ -673,15 +811,62 @@
         font-size: 18px;
         font-weight: 600;
         text-align: center; }
-        .pf-type .pf-checklist > li:not(.pf-checklist-full) div > span .pf-rating {
+        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-rating {
           display: none;
           margin: 10px auto 0;
           max-width: 120px; }
-        .pf-type .pf-checklist > li:not(.pf-checklist-full) div > span .pf-review-amt {
+        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-review-amt {
           display: none; }
-    .pf-type .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
-      stroke: #69B3A5;
+    .pf-type .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check {
       background: white; }
+      .pf-type .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+        stroke: #69B3A5; }
+  .pf-type .pf-checklist .pf-checklist-add a {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #69B3A5;
+    text-align: center; }
+    .pf-type .pf-checklist .pf-checklist-add a span {
+      background: none !important;
+      font-weight: 600; }
+      .pf-type .pf-checklist .pf-checklist-add a span svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 3px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px; }
+    .pf-type .pf-checklist .pf-checklist-add a:hover, .pf-type .pf-checklist .pf-checklist-add a:focus {
+      background: white; }
+      .pf-type .pf-checklist .pf-checklist-add a:hover span, .pf-type .pf-checklist .pf-checklist-add a:focus span {
+        color: #69B3A5; }
+        .pf-type .pf-checklist .pf-checklist-add a:hover span svg, .pf-type .pf-checklist .pf-checklist-add a:focus span svg {
+          stroke: #69B3A5; }
+    .pf-type .pf-checklist .pf-checklist-add a:active, .pf-type .pf-checklist .pf-checklist-add a.active {
+      background: #69B3A5; }
+      .pf-type .pf-checklist .pf-checklist-add a:active span, .pf-type .pf-checklist .pf-checklist-add a.active span {
+        color: white; }
+        .pf-type .pf-checklist .pf-checklist-add a:active span svg, .pf-type .pf-checklist .pf-checklist-add a.active span svg {
+          stroke: white; }
   .pf-type .pf-checklist .pf-checklist-full {
     display: none; }
 .pf-type .pf-tabs {
@@ -710,16 +895,215 @@
         .pf-type .pf-tabs ul li a.active {
           border-bottom: 5px solid #69B3A5; }
 .pf-type .pf-tab-item {
-  height: calc(100% / 3 * 2 - 64px);
+  height: calc(100% / 3 * 2 - 60px);
   overflow: auto; }
   .pf-type .pf-tab-item:not(.active) {
     display: none; }
 .pf-type .pf-tab-container {
+  position: relative;
   height: calc(100% / 3 * 2); }
   .pf-type .pf-tab-container .pf-tab-item {
-    height: calc(100% - 64px); }
+    height: calc(100% - 60px); }
+.pf-type.pf-has-edit .pf-tab-container .pf-tab-item {
+  padding-bottom: 75px; }
+.pf-type .pf-links {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px !important; }
+  .pf-type .pf-links li {
+    padding: 7.5px; }
+    .pf-type .pf-links li a {
+      border-radius: 1000px;
+      display: block;
+      width: 48px;
+      height: 48px; }
+      .pf-type .pf-links li a svg {
+        width: 100%;
+        height: 100%;
+        padding: 6px;
+        fill: white; }
+      .pf-type .pf-links li a.pf-link-add {
+        background: #69B3A5; }
+        .pf-type .pf-links li a.pf-link-add svg {
+          fill: none;
+          stroke: white;
+          stroke-width: 5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+
+.pf-edit-pf {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99; }
+
+.pf-desktop-edit {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  display: none;
+  padding: 15px;
+  background: rgba(87, 98, 103, 0.9);
+  text-align: center; }
+
+.pf-mobile-edit button {
+  background: rgba(87, 98, 103, 0.9);
+  font-weight: 600; }
+  .pf-mobile-edit button:hover, .pf-mobile-edit button:focus {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: rgba(111, 125, 130, 0.9); }
+  .pf-mobile-edit button:active, .pf-mobile-edit button.activated {
+    background: rgba(87, 98, 103, 0.9); }
+
+.pf-edit {
+  background: #30373a; }
+  .pf-edit button {
+    background: #69B3A5;
+    font-weight: 600; }
+    .pf-edit button:hover, .pf-edit button:focus {
+      filter: alpha(opacity=100);
+      opacity: 1;
+      background: white !important;
+      color: #69B3A5; }
+    .pf-edit button:active, .pf-edit button.activated {
+      background: #69B3A5 !important;
+      color: white; }
+  .pf-edit .main {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: calc(100% / 3 * 2 - 64px);
+    overflow: auto;
+    padding: 15px !important; }
+    .pf-edit .main .input-outline {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      border-color: #576267;
+      background: #4c5559; }
+      .pf-edit .main .input-outline:focus {
+        border-color: #6f7d82;
+        background: #576267; }
+    .pf-edit .main .pf-title-edit.input-outline {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      font-weight: 600; }
+    .pf-edit .main textarea.input-outline {
+      width: 100%;
+      resize: none;
+      height: 176px;
+      font-size: 20px;
+      font-weight: 400; }
+    .pf-edit .main > div {
+      margin-top: 15px; }
+      .pf-edit .main > div h1 {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 10px; }
+    .pf-edit .main .pf-tag-edit {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      width: 100%; }
+      .pf-edit .main .pf-tag-edit .chip {
+        -webkit-transition: all 0.15s ease-in-out;
+        -o-transition: all 0.15s ease-in-out;
+        -ms-transition: all 0.15s ease-in-out;
+        -moz-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        background: #576267;
+        margin-right: 15px; }
+        .pf-edit .main .pf-tag-edit .chip:hover {
+          background: #637074; }
+        .pf-edit .main .pf-tag-edit .chip svg {
+          fill: none;
+          stroke: white;
+          stroke-width: 10px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          width: 12px;
+          height: 12px;
+          margin-right: 3px; }
+        .pf-edit .main .pf-tag-edit .chip input {
+          background: transparent;
+          border: 0;
+          color: white !important; }
+          .pf-edit .main .pf-tag-edit .chip input::-webkit-input-placeholder {
+            color: white !important; }
+          .pf-edit .main .pf-tag-edit .chip input:-moz-placeholder {
+            color: white !important; }
+          .pf-edit .main .pf-tag-edit .chip input::-moz-placeholder {
+            color: white !important; }
+          .pf-edit .main .pf-tag-edit .chip input:-ms-input-placeholder {
+            color: white !important; }
+    .pf-edit .main .pf-pricing {
+      margin-top: 30px;
+      background: #4c5559;
+      padding: 15px;
+      width: 100%; }
+
+.pf-checklist-full .pf-edit header.third {
+  height: 256px !important; }
+  .pf-checklist-full .pf-edit header.third h1 {
+    font-size: 28px !important;
+    text-transform: none !important; }
+  .pf-checklist-full .pf-edit header.third .pf-photo-list {
+    margin-top: 15px;
+    height: calc(100% - 72px); }
+    .pf-checklist-full .pf-edit header.third .pf-photo-list li div.pf-upload-file svg.doc-outline {
+      stroke-width: 1px !important; }
 
 @media screen and (min-width: 768px) {
+  .pf-desktop-edit {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    display: block; }
+
+  .pf-mobile-edit {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    display: none; }
+
+  .pf-type:not(.pf-modal) .pf-links li {
+    padding: 7.5px 15px; }
+  .pf-type:not(.pf-modal).pf-has-edit .pf-tab-container .pf-tab-item {
+    padding-bottom: 98px; }
   .pf-type:not(.pf-modal) > section {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -739,8 +1123,7 @@
       -ms-filter: blur(100px);
       filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='100'); }
     .pf-type:not(.pf-modal) > section > header.third .pf-header h1 {
-      font-size: 28px !important;
-      margin-bottom: 5px; }
+      font-size: 28px !important; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-school {
       font-size: 24px !important; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-rating {
@@ -752,9 +1135,7 @@
     .pf-type:not(.pf-modal) > section > header.third .pf-header button {
       padding: 10px 30px; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-header-desc {
-      display: block;
-      max-height: 124px;
-      overflow: auto; }
+      display: block; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-url {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -783,9 +1164,9 @@
     padding: 15px; }
     .pf-type .pf-checklist > li:not(.pf-checklist-full) {
       padding: 15px; }
-      .pf-type .pf-checklist > li:not(.pf-checklist-full) div > span {
+      .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
         font-size: 24px; }
-        .pf-type .pf-checklist > li:not(.pf-checklist-full) div > span .pf-rating {
+        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-rating {
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -793,7 +1174,7 @@
           display: -moz-flex;
           display: -webkit-flex;
           display: flex; }
-        .pf-type .pf-checklist > li:not(.pf-checklist-full) div > span .pf-review-amt {
+        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-review-amt {
           display: block; }
     .pf-type .pf-checklist .pf-checklist-full.active:not(.pf-type-photo) .pf-item-header {
       height: 256px !important; }
@@ -833,7 +1214,10 @@
         .pf-type .pf-checklist .pf-checklist-full.active .pf-reviews p {
           font-size: 20px; }
   .pf-type .pf-shop-desc {
-    padding: 30px; }
+    padding: 30px;
+    position: relative !important; }
+    .pf-type .pf-shop-desc ion-pane {
+      position: absolute !important; }
     .pf-type .pf-shop-desc h1 {
       font-size: 48px; }
     .pf-type .pf-shop-desc p {
@@ -862,10 +1246,25 @@
           max-width: 150px; }
           .pf-type .pf-shop-desc .pf-list .pf-list-x:not(.pf-attachments) li svg {
             height: 64px; }
+            .pf-type .pf-shop-desc .pf-list .pf-list-x:not(.pf-attachments) li svg:last-child:not(:first-child) {
+              -webkit-transform: rotate(45deg);
+              -moz-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+              -o-transform: rotate(45deg);
+              transform: rotate(45deg);
+              display: none; }
+          .pf-type .pf-shop-desc .pf-list .pf-list-x:not(.pf-attachments) li a:hover svg:first-child:not(:last-child), .pf-type .pf-shop-desc .pf-list .pf-list-x:not(.pf-attachments) li a:focus svg:first-child:not(:last-child) {
+            display: none; }
+          .pf-type .pf-shop-desc .pf-list .pf-list-x:not(.pf-attachments) li a:hover svg:last-child, .pf-type .pf-shop-desc .pf-list .pf-list-x:not(.pf-attachments) li a:focus svg:last-child {
+            display: block; }
       .pf-type .pf-shop-desc .pf-list .pf-list-x.pf-attachments li {
         width: 50%; }
     .pf-type .pf-shop-desc .pf-reviews h2 {
       font-size: 28px !important; } }
+.pf-modal header.third
+a.cta-modal-close svg {
+  height: 30px;
+  width: 30px; }
 .pf-modal header.third.pf-item-header .pf-header-bg {
   filter: blur(0px);
   -webkit-filter: blur(0px);
@@ -959,6 +1358,8 @@
     margin: 0; }
     .pf-modal .pf-shop-item-header + p:not(:empty) {
       padding: 15px; }
+.pf-modal p:empty + .pf-attachments {
+  margin-top: 10px; }
 .pf-modal .pf-shop-item {
   background: #2B3234;
   padding: 0; }
@@ -970,6 +1371,58 @@
       font-weight: 700; }
   .pf-modal .pf-shop-item .pf-tags {
     text-align: center; }
+  .pf-modal .pf-shop-item .pf-tags {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 100%; }
+    .pf-modal .pf-shop-item .pf-tags .chip {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      background: #576267;
+      margin-right: 15px; }
+      .pf-modal .pf-shop-item .pf-tags .chip:hover {
+        background: #637074; }
+      .pf-modal .pf-shop-item .pf-tags .chip svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 10px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        width: 12px;
+        height: 12px;
+        margin-right: 3px; }
+      .pf-modal .pf-shop-item .pf-tags .chip input {
+        background: transparent;
+        border: 0;
+        color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input::-webkit-input-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input:-moz-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input::-moz-placeholder {
+          color: white !important; }
+        .pf-modal .pf-shop-item .pf-tags .chip input:-ms-input-placeholder {
+          color: white !important; }
   .pf-modal .pf-shop-item .pf-ingredients div .chip {
     margin-top: 5px; }
   .pf-modal .pf-shop-item .pf-attachments ul {
@@ -1088,83 +1541,6 @@
       .pf-modal .pf-reviews > ul > li div p {
         font-size: 18px;
         font-weight: 400; }
-
-.pf-edit button {
-  background: #69B3A5;
-  font-weight: 600; }
-.pf-edit .main {
-  height: calc(100% / 3 * 2 - 64px);
-  overflow: auto;
-  padding: 15px; }
-  .pf-edit .main textarea.input-outline {
-    width: 100%;
-    resize: none;
-    height: 176px;
-    border-color: #576267;
-    background: #4c5559;
-    font-size: 20px;
-    font-weight: 400; }
-    .pf-edit .main textarea.input-outline:focus {
-      border-color: #6f7d82;
-      background: #576267; }
-  .pf-edit .main > div {
-    margin-top: 15px; }
-    .pf-edit .main > div h1 {
-      font-size: 18px;
-      font-weight: 600;
-      text-align: center;
-      text-transform: uppercase;
-      margin-bottom: 10px; }
-  .pf-edit .main .pf-tag-edit {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap; }
-    .pf-edit .main .pf-tag-edit .chip {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-align-items: center;
-      align-items: center;
-      background: #576267;
-      margin-right: 15px; }
-      .pf-edit .main .pf-tag-edit .chip:hover {
-        background: #637074; }
-      .pf-edit .main .pf-tag-edit .chip svg {
-        fill: none;
-        stroke: white;
-        stroke-width: 10px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        width: 12px;
-        height: 12px;
-        margin-right: 3px; }
-      .pf-edit .main .pf-tag-edit .chip input {
-        background: transparent;
-        border: 0;
-        color: white !important; }
-        .pf-edit .main .pf-tag-edit .chip input::-webkit-input-placeholder {
-          color: white !important; }
-        .pf-edit .main .pf-tag-edit .chip input:-moz-placeholder {
-          color: white !important; }
-        .pf-edit .main .pf-tag-edit .chip input::-moz-placeholder {
-          color: white !important; }
-        .pf-edit .main .pf-tag-edit .chip input:-ms-input-placeholder {
-          color: white !important; }
-  .pf-edit .main .pf-pricing {
-    margin-top: 30px;
-    background: #4c5559;
-    padding: 15px; }
 
 /* ---------- PROFILE CARDS */
 .pf-card-container {
@@ -1307,6 +1683,20 @@
           .pf-card .pf-card-main .pf-card-thumbs li a svg {
             fill: none !important; }
 
+.pf-edit.pf-type-academic button {
+  background: #e6389b; }
+  .pf-edit.pf-type-academic button:hover, .pf-edit.pf-type-academic button:focus {
+    color: #e6389b; }
+  .pf-edit.pf-type-academic button:active, .pf-edit.pf-type-academic button.activated {
+    background: #e6389b !important;
+    color: white !important; }
+.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add {
+  border-color: #e6389b; }
+  .pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+    stroke: #e6389b; }
+  .pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a span span {
+    color: #e6389b; }
+
 .pf-card-academic .pf-card-top {
   background: #e6389b; }
   .pf-card-academic .pf-card-top ul li:last-child > span {
@@ -1331,16 +1721,60 @@
     border-bottom-color: transparent; }
   .pf-type-academic header.third .pf-banner.pf-banner-academic {
     display: block; }
+.pf-type-academic header.third .pf-header .pf-url li:first-child a, .pf-type-academic header.third .pf-header .pf-url li input, .pf-type-academic header.third .pf-header .pf-url li span {
+  color: #912763 !important; }
+.pf-type-academic header.third .pf-header .pf-url li:last-child a svg {
+  stroke: #e6389b; }
+.pf-type-academic header.third .pf-header .pf-url li:last-child a:hover, .pf-type-academic header.third .pf-header .pf-url li:last-child a:focus {
+  background: #e6389b; }
+  .pf-type-academic header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-academic header.third .pf-header .pf-url li:last-child a:focus svg {
+    stroke: white; }
+.pf-type-academic header.third .pf-header .pf-url li:last-child a:active, .pf-type-academic header.third .pf-header .pf-url li:last-child a.active {
+  background: #912763 !important; }
 .pf-type-academic .pf-header .verified span svg path:first-child {
   fill: #e6389b; }
 .pf-type-academic .pf-tabs ul li a.active {
   border-bottom: 5px solid #e6389b; }
 .pf-type-academic .pf-list h1 {
   background: #e6389b; }
-.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div span {
-  background: #e6389b; }
-.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #e6389b; }
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+  background: #e6389b; }
+  .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+    stroke: white; }
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+  background: #e6389b; }
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+  stroke: #e6389b; }
+.pf-type-academic .pf-checklist .pf-checklist-add a {
+  background: #e6389b; }
+  .pf-type-academic .pf-checklist .pf-checklist-add a:hover, .pf-type-academic .pf-checklist .pf-checklist-add a:focus {
+    background: white; }
+    .pf-type-academic .pf-checklist .pf-checklist-add a:hover span, .pf-type-academic .pf-checklist .pf-checklist-add a:focus span {
+      color: #e6389b; }
+      .pf-type-academic .pf-checklist .pf-checklist-add a:hover span svg, .pf-type-academic .pf-checklist .pf-checklist-add a:focus span svg {
+        stroke: #e6389b; }
+  .pf-type-academic .pf-checklist .pf-checklist-add a:active, .pf-type-academic .pf-checklist .pf-checklist-add a.active {
+    background: #e6389b; }
+    .pf-type-academic .pf-checklist .pf-checklist-add a:active span, .pf-type-academic .pf-checklist .pf-checklist-add a.active span {
+      color: white; }
+      .pf-type-academic .pf-checklist .pf-checklist-add a:active span svg, .pf-type-academic .pf-checklist .pf-checklist-add a.active span svg {
+        stroke: white; }
+
+.pf-edit.pf-type-photo button {
+  background: #81B566; }
+  .pf-edit.pf-type-photo button:hover, .pf-edit.pf-type-photo button:focus {
+    color: #81B566; }
+  .pf-edit.pf-type-photo button:active, .pf-edit.pf-type-photo button.activated {
+    background: #81B566 !important;
+    color: white !important; }
+.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add {
+  border-color: #81B566; }
+  .pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+    stroke: #81B566; }
+  .pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a span span {
+    color: #81B566; }
 
 .pf-card-photo .pf-card-top {
   background: #81B566; }
@@ -1531,17 +1965,61 @@
     border-bottom-color: transparent; }
   .pf-type-photo header.third .pf-banner.pf-banner-photo {
     display: block; }
+.pf-type-photo header.third .pf-header .pf-url li:first-child a, .pf-type-photo header.third .pf-header .pf-url li input, .pf-type-photo header.third .pf-header .pf-url li span {
+  color: #56684d !important; }
+.pf-type-photo header.third .pf-header .pf-url li:last-child a svg {
+  stroke: #81B566; }
+.pf-type-photo header.third .pf-header .pf-url li:last-child a:hover, .pf-type-photo header.third .pf-header .pf-url li:last-child a:focus {
+  background: #81B566; }
+  .pf-type-photo header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-photo header.third .pf-header .pf-url li:last-child a:focus svg {
+    stroke: white; }
+.pf-type-photo header.third .pf-header .pf-url li:last-child a:active, .pf-type-photo header.third .pf-header .pf-url li:last-child a.active {
+  background: #56684d !important; }
 .pf-type-photo .pf-header .verified span svg path:first-child {
   fill: #81B566; }
 .pf-type-photo .pf-tabs ul li a.active {
   border-bottom: 5px solid #81B566; }
 .pf-type-photo .pf-list h1 {
   background: #81B566; }
-.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div span {
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+  stroke: #40484B; }
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+  background: #40484B; }
+  .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+    stroke: white; }
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
   background: white;
   color: #40484B; }
-.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
   stroke: white; }
+.pf-type-photo .pf-checklist .pf-checklist-add a {
+  background: #81B566; }
+  .pf-type-photo .pf-checklist .pf-checklist-add a:hover, .pf-type-photo .pf-checklist .pf-checklist-add a:focus {
+    background: white; }
+    .pf-type-photo .pf-checklist .pf-checklist-add a:hover span, .pf-type-photo .pf-checklist .pf-checklist-add a:focus span {
+      color: #81B566; }
+      .pf-type-photo .pf-checklist .pf-checklist-add a:hover span svg, .pf-type-photo .pf-checklist .pf-checklist-add a:focus span svg {
+        stroke: #81B566; }
+  .pf-type-photo .pf-checklist .pf-checklist-add a:active, .pf-type-photo .pf-checklist .pf-checklist-add a.active {
+    background: #81B566; }
+    .pf-type-photo .pf-checklist .pf-checklist-add a:active span, .pf-type-photo .pf-checklist .pf-checklist-add a.active span {
+      color: white; }
+      .pf-type-photo .pf-checklist .pf-checklist-add a:active span svg, .pf-type-photo .pf-checklist .pf-checklist-add a.active span svg {
+        stroke: white; }
+
+.pf-edit.pf-type-baking button {
+  background: #F6C64E; }
+  .pf-edit.pf-type-baking button:hover, .pf-edit.pf-type-baking button:focus {
+    color: #F6C64E; }
+  .pf-edit.pf-type-baking button:active, .pf-edit.pf-type-baking button.activated {
+    background: #F6C64E !important;
+    color: white !important; }
+.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add {
+  border-color: #F6C64E; }
+  .pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+    stroke: #F6C64E; }
+  .pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a span span {
+    color: #F6C64E; }
 
 .pf-card-baking .pf-card-top {
   background: #F6C64E; }
@@ -1567,6 +2045,16 @@
     border-bottom-color: transparent; }
   .pf-type-baking header.third .pf-banner.pf-banner-baking {
     display: block; }
+.pf-type-baking header.third .pf-header .pf-url li:first-child a, .pf-type-baking header.third .pf-header .pf-url li input, .pf-type-baking header.third .pf-header .pf-url li span {
+  color: #664e12 !important; }
+.pf-type-baking header.third .pf-header .pf-url li:last-child a svg {
+  stroke: #F6C64E; }
+.pf-type-baking header.third .pf-header .pf-url li:last-child a:hover, .pf-type-baking header.third .pf-header .pf-url li:last-child a:focus {
+  background: #F6C64E; }
+  .pf-type-baking header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-baking header.third .pf-header .pf-url li:last-child a:focus svg {
+    stroke: white; }
+.pf-type-baking header.third .pf-header .pf-url li:last-child a:active, .pf-type-baking header.third .pf-header .pf-url li:last-child a.active {
+  background: #664e12 !important; }
 .pf-type-baking .pf-header .verified span svg path:first-child {
   fill: #F6C64E; }
 .pf-type-baking .pf-tabs ul li a.active {
@@ -1591,10 +2079,44 @@
   fill: #fbe5af; }
 .pf-type-baking .pf-rating:not(.default)[data-rating="5"] li svg polygon {
   fill: #fbe5af; }
-.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div span {
-  background: #F6C64E; }
-.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #F6C64E; }
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+  background: #F6C64E; }
+  .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+    stroke: white; }
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+  background: #F6C64E; }
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+  stroke: #F6C64E; }
+.pf-type-baking .pf-checklist .pf-checklist-add a {
+  background: #F6C64E; }
+  .pf-type-baking .pf-checklist .pf-checklist-add a:hover, .pf-type-baking .pf-checklist .pf-checklist-add a:focus {
+    background: white; }
+    .pf-type-baking .pf-checklist .pf-checklist-add a:hover span, .pf-type-baking .pf-checklist .pf-checklist-add a:focus span {
+      color: #F6C64E; }
+      .pf-type-baking .pf-checklist .pf-checklist-add a:hover span svg, .pf-type-baking .pf-checklist .pf-checklist-add a:focus span svg {
+        stroke: #F6C64E; }
+  .pf-type-baking .pf-checklist .pf-checklist-add a:active, .pf-type-baking .pf-checklist .pf-checklist-add a.active {
+    background: #F6C64E; }
+    .pf-type-baking .pf-checklist .pf-checklist-add a:active span, .pf-type-baking .pf-checklist .pf-checklist-add a.active span {
+      color: white; }
+      .pf-type-baking .pf-checklist .pf-checklist-add a:active span svg, .pf-type-baking .pf-checklist .pf-checklist-add a.active span svg {
+        stroke: white; }
+
+.pf-edit.pf-type-household button {
+  background: #7872e3; }
+  .pf-edit.pf-type-household button:hover, .pf-edit.pf-type-household button:focus {
+    color: #7872e3; }
+  .pf-edit.pf-type-household button:active, .pf-edit.pf-type-household button.activated {
+    background: #7872e3 !important;
+    color: white !important; }
+.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add {
+  border-color: #7872e3; }
+  .pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+    stroke: #7872e3; }
+  .pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a span span {
+    color: #7872e3; }
 
 .pf-card-household .pf-card-top {
   background: #7872e3; }
@@ -1620,16 +2142,60 @@
     border-bottom-color: transparent; }
   .pf-type-household header.third .pf-banner.pf-banner-household {
     display: block; }
+.pf-type-household header.third .pf-header .pf-url li:first-child a, .pf-type-household header.third .pf-header .pf-url li input, .pf-type-household header.third .pf-header .pf-url li span {
+  color: #37328a !important; }
+.pf-type-household header.third .pf-header .pf-url li:last-child a svg {
+  stroke: #7872e3; }
+.pf-type-household header.third .pf-header .pf-url li:last-child a:hover, .pf-type-household header.third .pf-header .pf-url li:last-child a:focus {
+  background: #7872e3; }
+  .pf-type-household header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-household header.third .pf-header .pf-url li:last-child a:focus svg {
+    stroke: white; }
+.pf-type-household header.third .pf-header .pf-url li:last-child a:active, .pf-type-household header.third .pf-header .pf-url li:last-child a.active {
+  background: #37328a !important; }
 .pf-type-household .pf-header .verified span svg path:first-child {
   fill: #7872e3; }
 .pf-type-household .pf-tabs ul li a.active {
   border-bottom: 5px solid #7872e3; }
 .pf-type-household .pf-list h1 {
   background: #7872e3; }
-.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div span {
-  background: #7872e3; }
-.pf-type-household .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #7872e3; }
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+  background: #7872e3; }
+  .pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+    stroke: white; }
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+  background: #7872e3; }
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+  stroke: #7872e3; }
+.pf-type-household .pf-checklist .pf-checklist-add a {
+  background: #7872e3; }
+  .pf-type-household .pf-checklist .pf-checklist-add a:hover, .pf-type-household .pf-checklist .pf-checklist-add a:focus {
+    background: white; }
+    .pf-type-household .pf-checklist .pf-checklist-add a:hover span, .pf-type-household .pf-checklist .pf-checklist-add a:focus span {
+      color: #7872e3; }
+      .pf-type-household .pf-checklist .pf-checklist-add a:hover span svg, .pf-type-household .pf-checklist .pf-checklist-add a:focus span svg {
+        stroke: #7872e3; }
+  .pf-type-household .pf-checklist .pf-checklist-add a:active, .pf-type-household .pf-checklist .pf-checklist-add a.active {
+    background: #7872e3; }
+    .pf-type-household .pf-checklist .pf-checklist-add a:active span, .pf-type-household .pf-checklist .pf-checklist-add a.active span {
+      color: white; }
+      .pf-type-household .pf-checklist .pf-checklist-add a:active span svg, .pf-type-household .pf-checklist .pf-checklist-add a.active span svg {
+        stroke: white; }
+
+.pf-edit.pf-type-delivery button {
+  background: #F04F54; }
+  .pf-edit.pf-type-delivery button:hover, .pf-edit.pf-type-delivery button:focus {
+    color: #F04F54; }
+  .pf-edit.pf-type-delivery button:active, .pf-edit.pf-type-delivery button.activated {
+    background: #F04F54 !important;
+    color: white !important; }
+.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add {
+  border-color: #F04F54; }
+  .pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+    stroke: #F04F54; }
+  .pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a span span {
+    color: #F04F54; }
 
 .pf-card-delivery .pf-card-top {
   background: #F04F54; }
@@ -1655,16 +2221,60 @@
     border-bottom-color: transparent; }
   .pf-type-delivery header.third .pf-banner.pf-banner-delivery {
     display: block; }
+.pf-type-delivery header.third .pf-header .pf-url li:first-child a, .pf-type-delivery header.third .pf-header .pf-url li input, .pf-type-delivery header.third .pf-header .pf-url li span {
+  color: #881e21 !important; }
+.pf-type-delivery header.third .pf-header .pf-url li:last-child a svg {
+  stroke: #F04F54; }
+.pf-type-delivery header.third .pf-header .pf-url li:last-child a:hover, .pf-type-delivery header.third .pf-header .pf-url li:last-child a:focus {
+  background: #F04F54; }
+  .pf-type-delivery header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-delivery header.third .pf-header .pf-url li:last-child a:focus svg {
+    stroke: white; }
+.pf-type-delivery header.third .pf-header .pf-url li:last-child a:active, .pf-type-delivery header.third .pf-header .pf-url li:last-child a.active {
+  background: #881e21 !important; }
 .pf-type-delivery .pf-header .verified span svg path:first-child {
   fill: #F04F54; }
 .pf-type-delivery .pf-tabs ul li a.active {
   border-bottom: 5px solid #F04F54; }
 .pf-type-delivery .pf-list h1 {
   background: #F04F54; }
-.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div span {
-  background: #F04F54; }
-.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #F04F54; }
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+  background: #F04F54; }
+  .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+    stroke: white; }
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+  background: #F04F54; }
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+  stroke: #F04F54; }
+.pf-type-delivery .pf-checklist .pf-checklist-add a {
+  background: #F04F54; }
+  .pf-type-delivery .pf-checklist .pf-checklist-add a:hover, .pf-type-delivery .pf-checklist .pf-checklist-add a:focus {
+    background: white; }
+    .pf-type-delivery .pf-checklist .pf-checklist-add a:hover span, .pf-type-delivery .pf-checklist .pf-checklist-add a:focus span {
+      color: #F04F54; }
+      .pf-type-delivery .pf-checklist .pf-checklist-add a:hover span svg, .pf-type-delivery .pf-checklist .pf-checklist-add a:focus span svg {
+        stroke: #F04F54; }
+  .pf-type-delivery .pf-checklist .pf-checklist-add a:active, .pf-type-delivery .pf-checklist .pf-checklist-add a.active {
+    background: #F04F54; }
+    .pf-type-delivery .pf-checklist .pf-checklist-add a:active span, .pf-type-delivery .pf-checklist .pf-checklist-add a.active span {
+      color: white; }
+      .pf-type-delivery .pf-checklist .pf-checklist-add a:active span svg, .pf-type-delivery .pf-checklist .pf-checklist-add a.active span svg {
+        stroke: white; }
+
+.pf-edit.pf-type-freelancing button {
+  background: #E5753C; }
+  .pf-edit.pf-type-freelancing button:hover, .pf-edit.pf-type-freelancing button:focus {
+    color: #E5753C; }
+  .pf-edit.pf-type-freelancing button:active, .pf-edit.pf-type-freelancing button.activated {
+    background: #E5753C !important;
+    color: white !important; }
+.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add {
+  border-color: #E5753C; }
+  .pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+    stroke: #E5753C; }
+  .pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a span span {
+    color: #E5753C; }
 
 .pf-card-freelancing .pf-card-top {
   background: #E5753C; }
@@ -1690,16 +2300,60 @@
     border-bottom-color: transparent; }
   .pf-type-freelancing header.third .pf-banner.pf-banner-freelancing {
     display: block; }
+.pf-type-freelancing header.third .pf-header .pf-url li:first-child a, .pf-type-freelancing header.third .pf-header .pf-url li input, .pf-type-freelancing header.third .pf-header .pf-url li span {
+  color: #924c29 !important; }
+.pf-type-freelancing header.third .pf-header .pf-url li:last-child a svg {
+  stroke: #E5753C; }
+.pf-type-freelancing header.third .pf-header .pf-url li:last-child a:hover, .pf-type-freelancing header.third .pf-header .pf-url li:last-child a:focus {
+  background: #E5753C; }
+  .pf-type-freelancing header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-freelancing header.third .pf-header .pf-url li:last-child a:focus svg {
+    stroke: white; }
+.pf-type-freelancing header.third .pf-header .pf-url li:last-child a:active, .pf-type-freelancing header.third .pf-header .pf-url li:last-child a.active {
+  background: #924c29 !important; }
 .pf-type-freelancing .pf-header .verified span svg path:first-child {
   fill: #E5753C; }
 .pf-type-freelancing .pf-tabs ul li a.active {
   border-bottom: 5px solid #E5753C; }
 .pf-type-freelancing .pf-list h1 {
   background: #E5753C; }
-.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div span {
-  background: #E5753C; }
-.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #E5753C; }
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+  background: #E5753C; }
+  .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+    stroke: white; }
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+  background: #E5753C; }
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+  stroke: #E5753C; }
+.pf-type-freelancing .pf-checklist .pf-checklist-add a {
+  background: #E5753C; }
+  .pf-type-freelancing .pf-checklist .pf-checklist-add a:hover, .pf-type-freelancing .pf-checklist .pf-checklist-add a:focus {
+    background: white; }
+    .pf-type-freelancing .pf-checklist .pf-checklist-add a:hover span, .pf-type-freelancing .pf-checklist .pf-checklist-add a:focus span {
+      color: #E5753C; }
+      .pf-type-freelancing .pf-checklist .pf-checklist-add a:hover span svg, .pf-type-freelancing .pf-checklist .pf-checklist-add a:focus span svg {
+        stroke: #E5753C; }
+  .pf-type-freelancing .pf-checklist .pf-checklist-add a:active, .pf-type-freelancing .pf-checklist .pf-checklist-add a.active {
+    background: #E5753C; }
+    .pf-type-freelancing .pf-checklist .pf-checklist-add a:active span, .pf-type-freelancing .pf-checklist .pf-checklist-add a.active span {
+      color: white; }
+      .pf-type-freelancing .pf-checklist .pf-checklist-add a:active span svg, .pf-type-freelancing .pf-checklist .pf-checklist-add a.active span svg {
+        stroke: white; }
+
+.pf-edit.pf-type-athletic button {
+  background: #9A5BC5; }
+  .pf-edit.pf-type-athletic button:hover, .pf-edit.pf-type-athletic button:focus {
+    color: #9A5BC5; }
+  .pf-edit.pf-type-athletic button:active, .pf-edit.pf-type-athletic button.activated {
+    background: #9A5BC5 !important;
+    color: white !important; }
+.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add {
+  border-color: #9A5BC5; }
+  .pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+    stroke: #9A5BC5; }
+  .pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a span span {
+    color: #9A5BC5; }
 
 .pf-card-athletic .pf-card-top {
   background: #9A5BC5; }
@@ -1725,16 +2379,60 @@
     border-bottom-color: transparent; }
   .pf-type-athletic header.third .pf-banner.pf-banner-athletic {
     display: block; }
+.pf-type-athletic header.third .pf-header .pf-url li:first-child a, .pf-type-athletic header.third .pf-header .pf-url li input, .pf-type-athletic header.third .pf-header .pf-url li span {
+  color: #643a80 !important; }
+.pf-type-athletic header.third .pf-header .pf-url li:last-child a svg {
+  stroke: #9A5BC5; }
+.pf-type-athletic header.third .pf-header .pf-url li:last-child a:hover, .pf-type-athletic header.third .pf-header .pf-url li:last-child a:focus {
+  background: #9A5BC5; }
+  .pf-type-athletic header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-athletic header.third .pf-header .pf-url li:last-child a:focus svg {
+    stroke: white; }
+.pf-type-athletic header.third .pf-header .pf-url li:last-child a:active, .pf-type-athletic header.third .pf-header .pf-url li:last-child a.active {
+  background: #643a80 !important; }
 .pf-type-athletic .pf-header .verified span svg path:first-child {
   fill: #9A5BC5; }
 .pf-type-athletic .pf-tabs ul li a.active {
   border-bottom: 5px solid #9A5BC5; }
 .pf-type-athletic .pf-list h1 {
   background: #9A5BC5; }
-.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div span {
-  background: #9A5BC5; }
-.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #9A5BC5; }
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+  background: #9A5BC5; }
+  .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+    stroke: white; }
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+  background: #9A5BC5; }
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+  stroke: #9A5BC5; }
+.pf-type-athletic .pf-checklist .pf-checklist-add a {
+  background: #9A5BC5; }
+  .pf-type-athletic .pf-checklist .pf-checklist-add a:hover, .pf-type-athletic .pf-checklist .pf-checklist-add a:focus {
+    background: white; }
+    .pf-type-athletic .pf-checklist .pf-checklist-add a:hover span, .pf-type-athletic .pf-checklist .pf-checklist-add a:focus span {
+      color: #9A5BC5; }
+      .pf-type-athletic .pf-checklist .pf-checklist-add a:hover span svg, .pf-type-athletic .pf-checklist .pf-checklist-add a:focus span svg {
+        stroke: #9A5BC5; }
+  .pf-type-athletic .pf-checklist .pf-checklist-add a:active, .pf-type-athletic .pf-checklist .pf-checklist-add a.active {
+    background: #9A5BC5; }
+    .pf-type-athletic .pf-checklist .pf-checklist-add a:active span, .pf-type-athletic .pf-checklist .pf-checklist-add a.active span {
+      color: white; }
+      .pf-type-athletic .pf-checklist .pf-checklist-add a:active span svg, .pf-type-athletic .pf-checklist .pf-checklist-add a.active span svg {
+        stroke: white; }
+
+.pf-edit.pf-type-tech button {
+  background: #55A4B7; }
+  .pf-edit.pf-type-tech button:hover, .pf-edit.pf-type-tech button:focus {
+    color: #55A4B7; }
+  .pf-edit.pf-type-tech button:active, .pf-edit.pf-type-tech button.activated {
+    background: #55A4B7 !important;
+    color: white !important; }
+.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add {
+  border-color: #55A4B7; }
+  .pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+    stroke: #55A4B7; }
+  .pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a span span {
+    color: #55A4B7; }
 
 .pf-card-tech .pf-card-top {
   background: #55A4B7; }
@@ -1760,15 +2458,45 @@
     border-bottom-color: transparent; }
   .pf-type-tech header.third .pf-banner.pf-banner-tech {
     display: block; }
+.pf-type-tech header.third .pf-header .pf-url li:first-child a, .pf-type-tech header.third .pf-header .pf-url li input, .pf-type-tech header.third .pf-header .pf-url li span {
+  color: #3a626c !important; }
+.pf-type-tech header.third .pf-header .pf-url li:last-child a svg {
+  stroke: #55A4B7; }
+.pf-type-tech header.third .pf-header .pf-url li:last-child a:hover, .pf-type-tech header.third .pf-header .pf-url li:last-child a:focus {
+  background: #55A4B7; }
+  .pf-type-tech header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-tech header.third .pf-header .pf-url li:last-child a:focus svg {
+    stroke: white; }
+.pf-type-tech header.third .pf-header .pf-url li:last-child a:active, .pf-type-tech header.third .pf-header .pf-url li:last-child a.active {
+  background: #3a626c !important; }
 .pf-type-tech .pf-header .verified span svg path:first-child {
   fill: #55A4B7; }
 .pf-type-tech .pf-tabs ul li a.active {
   border-bottom: 5px solid #55A4B7; }
 .pf-type-tech .pf-list h1 {
   background: #55A4B7; }
-.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div span {
-  background: #55A4B7; }
-.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) input:checked + div svg {
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #55A4B7; }
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+  background: #55A4B7; }
+  .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+    stroke: white; }
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+  background: #55A4B7; }
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+  stroke: #55A4B7; }
+.pf-type-tech .pf-checklist .pf-checklist-add a {
+  background: #55A4B7; }
+  .pf-type-tech .pf-checklist .pf-checklist-add a:hover, .pf-type-tech .pf-checklist .pf-checklist-add a:focus {
+    background: white; }
+    .pf-type-tech .pf-checklist .pf-checklist-add a:hover span, .pf-type-tech .pf-checklist .pf-checklist-add a:focus span {
+      color: #55A4B7; }
+      .pf-type-tech .pf-checklist .pf-checklist-add a:hover span svg, .pf-type-tech .pf-checklist .pf-checklist-add a:focus span svg {
+        stroke: #55A4B7; }
+  .pf-type-tech .pf-checklist .pf-checklist-add a:active, .pf-type-tech .pf-checklist .pf-checklist-add a.active {
+    background: #55A4B7; }
+    .pf-type-tech .pf-checklist .pf-checklist-add a:active span, .pf-type-tech .pf-checklist .pf-checklist-add a.active span {
+      color: white; }
+      .pf-type-tech .pf-checklist .pf-checklist-add a:active span svg, .pf-type-tech .pf-checklist .pf-checklist-add a.active span svg {
+        stroke: white; }
 
 /*# sourceMappingURL=style-pf.css.map */

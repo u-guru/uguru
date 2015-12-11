@@ -1251,8 +1251,27 @@
 					}
 				}
 			}
-			#profile-languages {
-				border-bottom: 2px solid rgba($gabrielle,.4);
+			#profile-workfor {
+				border: 2px solid rgba($gabrielle,.4);
+				border-top: 0;
+				div {
+					ol {
+						@include flex;
+						@include flex-center;
+						margin: 0 auto;
+						max-width: 80%;
+						li {
+							min-width: calc(100% / 3);
+							padding: 10px 0;
+							svg {
+								display: block;
+								margin: 0 auto;
+								width: 64px;
+								height: 64px;
+							}
+						}
+					}
+				}
 			}
 		}
 	}

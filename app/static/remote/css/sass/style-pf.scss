@@ -165,6 +165,7 @@
 			}
 		}
 		.pf-header {
+			width: 100%;
 			text-align: center;
 			h1 {
 				padding: 5px 0 0;
@@ -179,7 +180,31 @@
 			}
 			.pf-school {
 				margin: 0!important;
-				font-size: 24px;
+				font-size: 20px;
+			}
+			a.profile-icon {
+				position: relative;
+				display: block;
+				img {
+					@include round;
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					height: 100px;
+					padding: 5px;
+					@include opacity(.3);
+				}
+				h1#guru-profile-edit-photo-txt {
+					@include center-xy;
+					width: 100px;
+					font-size: 20px !important;
+					font-weight: 700;
+					text-align: center;
+					text-transform: uppercase;
+				}
+			}
+			a.profile-icon.active, a.activated, a:active {
+				@include opacity(.75);
 			}
 			.user-icon {
 				width: 72px;
@@ -198,10 +223,25 @@
 			}
 			.pf-header-desc {
 				display: none;
-				margin: 15px 15px 0;
+				margin: 15px 25px 0;
+				width: calc(100% - 50px);
+				height: 124px;
+				padding: 0 5px;
+				resize: none;
+				overflow: auto;
+				background: rgba(white, .4);
+				color: white;
 				font-size: 20px;
 				font-weight: 400;
 				line-height: 1.2;
+				text-align: center;
+				&:focus {
+					background: white;
+					color: $charcoal;
+				}
+				&:disabled {
+					background: none;
+				}
 			}
 			.pf-url {
 				display: none;
@@ -210,38 +250,73 @@
 				bottom: 30px;
 				font-size: 18px;
 				font-weight: 400;
-				li:first-child {
-					padding: 10px 15px;
-					background: rgba(white,.7);
-					text-transform: lowercase;
-					a {
+				li {
+					&:first-child {
+						padding: 10px 15px;
+						background: rgba(white,.7);
+						text-transform: lowercase;
+						a {
+							color: $slate;
+						}
+					}
+					input, span {
 						color: $slate;
 					}
-				}
-				li:last-child {
-					a {
-						@include flex;
-						@include flex-center;
-						width: 40px;
-						height: 40px;
-						padding: 5px;
-						background: white;
-						svg {
-							@include svg-stroke-width(5);
-							stroke: $slate;
-							width: 100%;
-							height: 100%;
-						}
-						&:hover, &:focus {
-							background: $slate;
+					&:last-child {
+						a {
+							@include flex;
+							@include flex-center;
+							width: 40px;
+							height: 40px;
+							padding: 5px;
+							background: white;
 							svg {
-								stroke: white;
+								@include svg-stroke-width(5);
+								stroke: $slate;
+								width: 100%;
+								height: 100%;
+							}
+							&:hover, &:focus {
+								background: $slate;
+								svg {
+									stroke: white;
+								}
+							}
+							&:active {
+								background: $charcoal;
+								svg {
+									stroke: white;
+								}
 							}
 						}
-						&:active {
-							background: $charcoal;
-							svg {
-								stroke: white;
+					}
+				}
+				&.pf-edit-url {
+					li {
+						&:first-child {
+							@include flex;
+							@include flex-center-vertical;
+							padding: 0;
+							height: 40px;
+							input {
+								@include transition(.15s ease-in-out);
+								@include flex;
+								@include flex-center-vertical;
+								height: 100%;
+								padding: 5px 0 5px 10px;
+								border: 0;
+								background: rgba(white,.6);
+								font-size: 18px;
+								text-transform: lowercase;
+								&:hover, &:focus {
+									background: white;
+								}
+							}
+							span {
+								@include flex;
+								@include flex-center-vertical;
+								height: 100%;
+								padding: 5px 10px 5px 0;
 							}
 						}
 					}
@@ -260,6 +335,9 @@
 				li {
 					padding: 7.5px;
 					height: 100%;
+					&:last-child {
+						padding-right: 15px;
+					}
 					div {
 						position: relative;
 						width: 150px;
@@ -268,8 +346,6 @@
 						border: 2px solid white;
 						border-radius: 10px;
 					}
-				}
-				li {
 					div.pf-upload-img {
 						background-position: center center;
 						background-size: cover;
@@ -752,6 +828,15 @@
 			padding: 7.5px;
 			position: relative;
 			height: 50%;
+			.pf-edit-link {
+				position: absolute;
+			    top: 0;
+			    left: 0;
+			    padding: 15px;
+			    font-size: 20px;
+			    font-weight: 600;
+			    z-index:100;
+			}
 			input {
 				@include opacity(0);
 				position: absolute;
@@ -775,7 +860,6 @@
 				.pf-check {
 					@include flex;
 					@include flex-center;
-					@include svg-stroke(rgba(white,.5), 10);
 					position: absolute;
 					top: 0;
 					right: 0;
@@ -784,8 +868,43 @@
 					width: 40px;
 					height: 40px;
 					padding: 5px 5px 10px 10px;
+					svg {
+						@include svg-stroke(rgba(white,.5), 10);
+						width: 100%;
+						height: 100%;
+					}
+					&.pf-remove {
+						background: white;
+						svg {
+							@include transition(.15s ease-in-out);
+							position: absolute;
+							top: 0;
+							left: 0;
+							stroke: $shamrock;
+							&:first-child {
+								padding: 5px 5px 10px 10px;
+							}
+							&:last-child {
+								@include opacity(0);
+								@include rotate(45);
+								padding: 5px 5px 10px 5px;
+							}
+						}
+						&:hover, &:focus {
+							background: $shamrock;
+							svg {
+								stroke: white;
+								&:first-child {
+									@include opacity(0);
+								}
+								&:last-child {
+									@include opacity(1);
+								}
+							}
+						}
+					}
 				}
-				> span {
+				.pf-check-label {
 					display: block;
 					width: 100%;
 					background: $shamrock;
@@ -803,9 +922,51 @@
 					}
 				}
 			}
-			input:checked + div svg {
-				stroke: $shamrock;
+			input:checked + div .pf-check {
 				background: white;
+				svg {
+					stroke: $shamrock;
+				}
+			}
+		}
+		.pf-checklist-add {
+			a {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				width: 100%;
+				height: 100%;
+				background: $shamrock;
+				text-align: center;
+				span {
+					background: none!important;
+					font-weight: 600;
+					svg {
+						@include svg-stroke(white, 3);
+						display: block;
+						margin: 0 auto;
+						width: 100px;
+						height: 100px;
+					}
+				}
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $shamrock;
+						svg {
+							stroke: $shamrock;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $shamrock;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 		.pf-checklist-full {
@@ -837,23 +998,218 @@
 		}
 	}
 	.pf-tab-item {
-		height: calc(100% / 3 * 2 - 64px);
+		height: calc(100% / 3 * 2 - 60px);
 		overflow: auto;
 		&:not(.active) {
 			display: none;
 		}
 	}
 	.pf-tab-container {
+		position: relative;
 		height: calc(100% / 3 * 2);
 		.pf-tab-item {
-			height: calc(100% - 64px);
+			height: calc(100% - 60px);
+		}
+	}
+	&.pf-has-edit {
+		.pf-tab-container {
+			.pf-tab-item {
+				padding-bottom: 75px;
+			}
+		}
+	}
+	.pf-links {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		padding: 7.5px!important;
+		li {
+			padding: 7.5px;
+			a {
+				@include round;
+				display: block;
+				width: 48px;
+				height: 48px;
+				svg {
+					width: 100%;
+					height: 100%;
+					padding: 6px;
+					fill: white;
+				}
+				&.pf-link-add {
+					background: $shamrock;
+					svg {
+						@include svg-stroke(white, 5);
+					}
+				}
+			}
+		}
+	}
+}
+
+// EDIT
+.pf-edit-pf {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 99;
+}
+.pf-desktop-edit {
+	@include opacity(0);
+	display: none;
+	padding: 15px;
+	background: rgba(lighten($slate, 10%), .9);
+	text-align: center;
+}
+.pf-mobile-edit {
+	button {
+		background: rgba(lighten($slate, 10%), .9);
+		font-weight: 600;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: rgba(lighten($slate, 20%), .9);
+		}
+		&:active, &.activated {
+			background: rgba(lighten($slate, 10%), .9);
+		}
+	}
+}
+.pf-edit {
+	background: lighten($charcoal, 2%);
+	button {
+		background: $shamrock;
+		font-weight: 600;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: white!important;
+			color: $shamrock;
+		}
+		&:active, &.activated {
+			background: $shamrock!important;
+			color: white;
+		}
+	}
+	.main {
+		@include flex-wrap;
+		height: calc(100% / 3 * 2 - 64px);
+		overflow: auto;
+		padding: 15px!important;
+		.input-outline {
+			@include transition(.15s ease-in-out);
+			border-color: lighten($slate, 10%);
+			background: lighten($slate, 5%);
+			&:focus {
+				border-color: lighten($slate, 20%);
+				background: lighten($slate, 10%);
+			}
+		}
+		.pf-title-edit.input-outline {
+			display: block;
+			width: 100%;
+			margin-bottom: 15px;
+			font-weight: 600;
+		}
+		textarea.input-outline {
+			width: 100%;
+			resize: none;
+			height: 176px;
+			font-size: 20px;
+			font-weight: 400;
+		}
+		> div {
+			margin-top: 15px;
+			h1 {
+				font-size: 18px;
+				font-weight: 600;
+				text-align: center;
+				text-transform: uppercase;
+				margin-bottom: 10px;
+			}
+		}
+		.pf-tag-edit {
+			@include flex;
+			@include flex-wrap;
+			width: 100%;
+			.chip {
+				@include transition(.15s ease-in-out);
+				@include flex;
+				@include flex-center-vertical;
+				background: lighten($slate, 10%);
+				margin-right: 15px;
+				&:hover {
+					background: lighten($slate, 15%);
+				}
+				svg {
+					@include svg-stroke(white, 10);
+					width: 12px;
+					height: 12px;
+					margin-right: 3px;
+				}
+				input {
+					background: transparent;
+					border: 0;
+					color: white!important;
+					@include placeholder {
+						color: white!important;
+					}
+				}
+			}
+		}
+		.pf-pricing {
+			margin-top: 30px;
+			background: lighten($slate, 5%);
+			padding: 15px;
+			width: 100%;
+		}
+	}
+}
+.pf-checklist-full {
+	.pf-edit {
+		header.third {
+			height: 256px!important;
+			h1 {
+				font-size: 28px!important;
+				text-transform: none!important;
+			}
+			.pf-photo-list {
+				margin-top: 15px;
+				height: calc(100% - 72px);
+				li {
+					div.pf-upload-file {
+						svg.doc-outline {
+							stroke-width: 1px!important;
+						}
+					}
+				}
+			}
 		}
 	}
 }
 
 // DESKTOP
 @media screen and (min-width:768px) {
+	.pf-desktop-edit {
+		@include opacity(1);
+		display: block;
+	}
+	.pf-mobile-edit {
+		@include opacity(0);
+		display: none;
+	}
 	.pf-type:not(.pf-modal) {
+		.pf-links {
+			li {
+				padding: 7.5px 15px;
+			}
+		}
+		&.pf-has-edit {
+			.pf-tab-container {
+				.pf-tab-item {
+					padding-bottom: 98px;
+				}
+			}
+		}
 		> section {
 			@include flex;
 		}
@@ -866,7 +1222,6 @@
 			.pf-header {
 				h1 {
 					font-size: 28px!important;
-					margin-bottom: 5px;
 				}
 				.pf-school {
 					font-size: 24px!important;
@@ -884,8 +1239,6 @@
 				}
 				.pf-header-desc {
 					display: block;
-					max-height: 124px;
-					overflow: auto;
 				}
 				.pf-url {
 					@include flex;
@@ -923,7 +1276,7 @@
 			> li:not(.pf-checklist-full) {
 				padding: 15px;
 				div {
-					> span {
+					.pf-check-label {
 						font-size: 24px;
 						.pf-rating {
 							@include flex;
@@ -984,6 +1337,10 @@
 		}
 		.pf-shop-desc {
 			padding: 30px;
+			position:relative !important;
+			ion-pane {
+				position:absolute !important;
+			}
 			h1 {
 				font-size: 48px;
 			}
@@ -1017,6 +1374,22 @@
 							max-width: 150px;
 							svg {
 								height: 64px;
+								&:last-child:not(:first-child) {
+									@include rotate(45);
+									display: none;
+								}
+							}
+							a {
+								&:hover, &:focus {
+									svg {
+										&:first-child:not(:last-child) {
+											display: none;
+										}
+										&:last-child {
+											display: block;
+										}
+									}
+								}
 							}
 						}
 					}
@@ -1038,6 +1411,13 @@
 
 // MODAL
 .pf-modal {
+	header.third
+	a.cta-modal-close {
+		svg {
+				height:30px;
+				width:30px;
+			}
+	}
 	header.third.pf-item-header {
 		.pf-header-bg {
 			@include blur(0);
@@ -1116,6 +1496,9 @@
 			}
 		}
 	}
+	p:empty + .pf-attachments {
+		margin-top: 10px;
+	}
 	.pf-shop-item {
 		background: $charcoal;
 		padding: 0;
@@ -1129,6 +1512,35 @@
 		}
 		.pf-tags {
 			text-align: center;
+		}
+		.pf-tags {
+			@include flex;
+			@include flex-wrap;
+			width: 100%;
+			.chip {
+				@include transition(.15s ease-in-out);
+				@include flex;
+				@include flex-center-vertical;
+				background: lighten($slate, 10%);
+				margin-right: 15px;
+				&:hover {
+					background: lighten($slate, 15%);
+				}
+				svg {
+					@include svg-stroke(white, 10);
+					width: 12px;
+					height: 12px;
+					margin-right: 3px;
+				}
+				input {
+					background: transparent;
+					border: 0;
+					color: white!important;
+					@include placeholder {
+						color: white!important;
+					}
+				}
+			}
 		}
 		// .pf-ingredients {
 		// 	div {
@@ -1257,74 +1669,6 @@
 					}
 				}
 			}
-		}
-	}
-}
-
-// EDIT
-.pf-edit {
-	button {
-		background: $shamrock;
-		font-weight: 600;
-	}
-	.main {
-		height: calc(100% / 3 * 2 - 64px);
-		overflow: auto;
-		padding: 15px;
-		textarea.input-outline {
-			width: 100%;
-			resize: none;
-			height: 176px;
-			border-color: lighten($slate, 10%);
-			background: lighten($slate, 5%);
-			font-size: 20px;
-			font-weight: 400;
-			&:focus {
-				border-color: lighten($slate, 20%);
-				background: lighten($slate, 10%);
-			}
-		}
-		> div {
-			margin-top: 15px;
-			h1 {
-				font-size: 18px;
-				font-weight: 600;
-				text-align: center;
-				text-transform: uppercase;
-				margin-bottom: 10px;
-			}
-		}
-		.pf-tag-edit {
-			@include flex;
-			@include flex-wrap;
-			.chip {
-				@include flex;
-				@include flex-center-vertical;
-				background: lighten($slate, 10%);
-				margin-right: 15px;
-				&:hover {
-					background: lighten($slate, 15%);
-				}
-				svg {
-					@include svg-stroke(white, 10);
-					width: 12px;
-					height: 12px;
-					margin-right: 3px;
-				}
-				input {
-					background: transparent;
-					border: 0;
-					color: white!important;
-					@include placeholder {
-						color: white!important;
-					}
-				}
-			}
-		}
-		.pf-pricing {
-			margin-top: 30px;
-			background: lighten($slate, 5%);
-			padding: 15px;
 		}
 	}
 }
@@ -1465,6 +1809,39 @@
 
 
 // ACADEMIC
+.pf-edit.pf-type-academic {
+	button {
+		background: $cerise;
+		&:hover, &:focus {
+			color: $cerise;
+		}
+		&:active, &.activated {
+			background: $cerise!important;
+			color: white!important;
+		}
+	}
+	header.third {
+		.pf-photo-list {
+			ul {
+				li {
+					div.pf-upload-add {
+						border-color: $cerise;
+						a {
+							span {
+								svg {
+									stroke: $cerise;
+								}
+								span {
+									color: $cerise;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-card-academic {
 	.pf-card-top {
 		background: $cerise;
@@ -1529,6 +1906,27 @@
 				display: block;
 			}
 		}
+		.pf-header .pf-url {
+			li {
+				&:first-child a, input, span {
+					color:  desaturate(darken($cerise, 20%), 20%)!important;
+				}
+				&:last-child a {
+					svg {
+						stroke: $cerise;
+					}
+					&:hover, &:focus {
+						background: $cerise;
+						svg {
+							stroke: white;
+						}
+					}
+					&:active, &.active {
+						background:  desaturate(darken($cerise, 20%), 20%)!important;
+					}
+				}
+			}
+		}
 	}
 	.pf-header {
 		.verified {
@@ -1560,18 +1958,87 @@
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
 			div {
-				span {
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $cerise;
+						}
+						&:hover, &:focus {
+							background: $cerise;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
 					background: $cerise;
 				}
 			}
-			input:checked + div svg {
+			input:checked + div .pf-check svg {
 				stroke: $cerise;
+			}
+		}
+		.pf-checklist-add {
+			a {
+				background: $cerise;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $cerise;
+						svg {
+							stroke: $cerise;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $cerise;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 // PHOTOGRAHPY
+.pf-edit.pf-type-photo {
+	button {
+		background: $moola;
+		&:hover, &:focus {
+			color: $moola;
+		}
+		&:active, &.activated {
+			background: $moola!important;
+			color: white!important;
+		}
+	}
+	header.third {
+		.pf-photo-list {
+			ul {
+				li {
+					div.pf-upload-add {
+						border-color: $moola;
+						a {
+							span {
+								svg {
+									stroke: $moola;
+								}
+								span {
+									color: $moola;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-card-photo {
 	.pf-card-top {
 		background: $moola;
@@ -1777,6 +2244,27 @@
 				display: block;
 			}
 		}
+		.pf-header .pf-url {
+			li {
+				&:first-child a, input, span {
+					color:  desaturate(darken($moola, 20%), 20%)!important;
+				}
+				&:last-child a {
+					svg {
+						stroke: $moola;
+					}
+					&:hover, &:focus {
+						background: $moola;
+						svg {
+							stroke: white;
+						}
+					}
+					&:active, &.active {
+						background:  desaturate(darken($moola, 20%), 20%)!important;
+					}
+				}
+			}
+		}
 	}
 	.pf-header {
 		.verified {
@@ -1808,19 +2296,88 @@
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
 			div {
-				span {
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $slate;
+						}
+						&:hover, &:focus {
+							background: $slate;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
 					background: white;
 					color: $slate;
 				}
 			}
-			input:checked + div svg {
+			input:checked + div .pf-check svg {
 				stroke: white;
+			}
+		}
+		.pf-checklist-add {
+			a {
+				background: $moola;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $moola;
+						svg {
+							stroke: $moola;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $moola;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 // BAKING
+.pf-edit.pf-type-baking {
+	button {
+		background: $gold;
+		&:hover, &:focus {
+			color: $gold;
+		}
+		&:active, &.activated {
+			background: $gold!important;
+			color: white!important;
+		}
+	}
+	header.third {
+		.pf-photo-list {
+			ul {
+				li {
+					div.pf-upload-add {
+						border-color: $gold;
+						a {
+							span {
+								svg {
+									stroke: $gold;
+								}
+								span {
+									color: $gold;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-card-baking {
 	.pf-card-top {
 		background: $gold;
@@ -1883,6 +2440,27 @@
 			}
 			&.pf-banner-baking {
 				display: block;
+			}
+		}
+		.pf-header .pf-url {
+			li {
+				&:first-child a, input, span {
+					color:  desaturate(darken($gold, 40%), 20%)!important;
+				}
+				&:last-child a {
+					svg {
+						stroke: $gold;
+					}
+					&:hover, &:focus {
+						background: $gold;
+						svg {
+							stroke: white;
+						}
+					}
+					&:active, &.active {
+						background:  desaturate(darken($gold, 40%), 20%)!important;
+					}
+				}
 			}
 		}
 	}
@@ -1971,18 +2549,87 @@
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
 			div {
-				span {
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $gold;
+						}
+						&:hover, &:focus {
+							background: $gold;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
 					background: $gold;
 				}
 			}
-			input:checked + div svg {
+			input:checked + div .pf-check svg {
 				stroke: $gold;
+			}
+		}
+		.pf-checklist-add {
+			a {
+				background: $gold;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $gold;
+						svg {
+							stroke: $gold;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $gold;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 // HOUSEHOLD
+.pf-edit.pf-type-household {
+	button {
+		background: $cobalt;
+		&:hover, &:focus {
+			color: $cobalt;
+		}
+		&:active, &.activated {
+			background: $cobalt!important;
+			color: white!important;
+		}
+	}
+	header.third {
+		.pf-photo-list {
+			ul {
+				li {
+					div.pf-upload-add {
+						border-color: $cobalt;
+						a {
+							span {
+								svg {
+									stroke: $cobalt;
+								}
+								span {
+									color: $cobalt;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-card-household {
 	.pf-card-top {
 		background: $cobalt;
@@ -2047,6 +2694,27 @@
 				display: block;
 			}
 		}
+		.pf-header .pf-url {
+			li {
+				&:first-child a, input, span {
+					color: desaturate(darken($cobalt, 30%), 20%)!important;
+				}
+				&:last-child a {
+					svg {
+						stroke: $cobalt;
+					}
+					&:hover, &:focus {
+						background: $cobalt;
+						svg {
+							stroke: white;
+						}
+					}
+					&:active, &.active {
+						background: desaturate(darken($cobalt, 30%), 20%)!important;
+					}
+				}
+			}
+		}
 	}
 	.pf-header {
 		.verified {
@@ -2078,18 +2746,87 @@
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
 			div {
-				span {
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $cobalt;
+						}
+						&:hover, &:focus {
+							background: $cobalt;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
 					background: $cobalt;
 				}
 			}
-			input:checked + div svg {
+			input:checked + div .pf-check svg {
 				stroke: $cobalt;
+			}
+		}
+		.pf-checklist-add {
+			a {
+				background: $cobalt;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $cobalt;
+						svg {
+							stroke: $cobalt;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $cobalt;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 // DELIVERY
+.pf-edit.pf-type-delivery {
+	button {
+		background: $auburn;
+		&:hover, &:focus {
+			color: $auburn;
+		}
+		&:active, &.activated {
+			background: $auburn!important;
+			color: white!important;
+		}
+	}
+	header.third {
+		.pf-photo-list {
+			ul {
+				li {
+					div.pf-upload-add {
+						border-color: $auburn;
+						a {
+							span {
+								svg {
+									stroke: $auburn;
+								}
+								span {
+									color: $auburn;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-card-delivery {
 	.pf-card-top {
 		background: $auburn;
@@ -2154,6 +2891,27 @@
 				display: block;
 			}
 		}
+		.pf-header .pf-url {
+			li {
+				&:first-child a, input, span {
+					color:  desaturate(darken($auburn, 30%), 20%)!important;
+				}
+				&:last-child a {
+					svg {
+						stroke: $auburn;
+					}
+					&:hover, &:focus {
+						background: $auburn;
+						svg {
+							stroke: white;
+						}
+					}
+					&:active, &.active {
+						background:  desaturate(darken($auburn, 30%), 20%)!important;
+					}
+				}
+			}
+		}
 	}
 	.pf-header {
 		.verified {
@@ -2185,18 +2943,87 @@
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
 			div {
-				span {
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $auburn;
+						}
+						&:hover, &:focus {
+							background: $auburn;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
 					background: $auburn;
 				}
 			}
-			input:checked + div svg {
+			input:checked + div .pf-check svg {
 				stroke: $auburn;
+			}
+		}
+		.pf-checklist-add {
+			a {
+				background: $auburn;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $auburn;
+						svg {
+							stroke: $auburn;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $auburn;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 // FREELANCING
+.pf-edit.pf-type-freelancing {
+	button {
+		background: $orange;
+		&:hover, &:focus {
+			color: $orange;
+		}
+		&:active, &.activated {
+			background: $orange!important;
+			color: white!important;
+		}
+	}
+	header.third {
+		.pf-photo-list {
+			ul {
+				li {
+					div.pf-upload-add {
+						border-color: $orange;
+						a {
+							span {
+								svg {
+									stroke: $orange;
+								}
+								span {
+									color: $orange;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-card-freelancing {
 	.pf-card-top {
 		background: $orange;
@@ -2261,6 +3088,27 @@
 				display: block;
 			}
 		}
+		.pf-header .pf-url {
+			li {
+				&:first-child a, input, span {
+					color:  desaturate(darken($orange, 20%), 20%)!important;
+				}
+				&:last-child a {
+					svg {
+						stroke: $orange;
+					}
+					&:hover, &:focus {
+						background: $orange;
+						svg {
+							stroke: white;
+						}
+					}
+					&:active, &.active {
+						background:  desaturate(darken($orange, 20%), 20%)!important;
+					}
+				}
+			}
+		}
 	}
 	.pf-header {
 		.verified {
@@ -2292,18 +3140,87 @@
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
 			div {
-				span {
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $orange;
+						}
+						&:hover, &:focus {
+							background: $orange;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
 					background: $orange;
 				}
 			}
-			input:checked + div svg {
+			input:checked + div .pf-check svg {
 				stroke: $orange;
+			}
+		}
+		.pf-checklist-add {
+			a {
+				background: $orange;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $orange;
+						svg {
+							stroke: $orange;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $orange;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 // ATHLETIC
+.pf-edit.pf-type-athletic {
+	button {
+		background: $eggplant;
+		&:hover, &:focus {
+			color: $eggplant;
+		}
+		&:active, &.activated {
+			background: $eggplant!important;
+			color: white!important;
+		}
+	}
+	header.third {
+		.pf-photo-list {
+			ul {
+				li {
+					div.pf-upload-add {
+						border-color: $eggplant;
+						a {
+							span {
+								svg {
+									stroke: $eggplant;
+								}
+								span {
+									color: $eggplant;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-card-athletic {
 	.pf-card-top {
 		background: $eggplant;
@@ -2368,6 +3285,27 @@
 				display: block;
 			}
 		}
+		.pf-header .pf-url {
+			li {
+				&:first-child a, input, span {
+					color:  desaturate(darken($eggplant, 20%), 10%)!important;
+				}
+				&:last-child a {
+					svg {
+						stroke: $eggplant;
+					}
+					&:hover, &:focus {
+						background: $eggplant;
+						svg {
+							stroke: white;
+						}
+					}
+					&:active, &.active {
+						background:  desaturate(darken($eggplant, 20%), 10%)!important;
+					}
+				}
+			}
+		}
 	}
 	.pf-header {
 		.verified {
@@ -2399,18 +3337,87 @@
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
 			div {
-				span {
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $eggplant;
+						}
+						&:hover, &:focus {
+							background: $eggplant;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
 					background: $eggplant;
 				}
 			}
-			input:checked + div svg {
+			input:checked + div .pf-check svg {
 				stroke: $eggplant;
+			}
+		}
+		.pf-checklist-add {
+			a {
+				background: $eggplant;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $eggplant;
+						svg {
+							stroke: $eggplant;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $eggplant;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 // TECH & IT
+.pf-edit.pf-type-tech {
+	button {
+		background: $azure;
+		&:hover, &:focus {
+			color: $azure;
+		}
+		&:active, &.activated {
+			background: $azure!important;
+			color: white!important;
+		}
+	}
+	header.third {
+		.pf-photo-list {
+			ul {
+				li {
+					div.pf-upload-add {
+						border-color: $azure;
+						a {
+							span {
+								svg {
+									stroke: $azure;
+								}
+								span {
+									color: $azure;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-card-tech {
 	.pf-card-top {
 		background: $azure;
@@ -2475,6 +3482,27 @@
 				display: block;
 			}
 		}
+		.pf-header .pf-url {
+			li {
+				&:first-child a, input, span {
+					color:  desaturate(darken($azure, 20%), 10%)!important;
+				}
+				&:last-child a {
+					svg {
+						stroke: $azure;
+					}
+					&:hover, &:focus {
+						background: $azure;
+						svg {
+							stroke: white;
+						}
+					}
+					&:active, &.active {
+						background:  desaturate(darken($azure, 20%), 10%)!important;
+					}
+				}
+			}
+		}
 	}
 	.pf-header {
 		.verified {
@@ -2506,12 +3534,48 @@
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
 			div {
-				span {
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $azure;
+						}
+						&:hover, &:focus {
+							background: $azure;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
 					background: $azure;
 				}
 			}
-			input:checked + div svg {
+			input:checked + div .pf-check svg {
 				stroke: $azure;
+			}
+		}
+		.pf-checklist-add {
+			a {
+				background: $azure;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $azure;
+						svg {
+							stroke: $azure;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $azure;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
 			}
 		}
 	}

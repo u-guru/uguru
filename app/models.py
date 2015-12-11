@@ -373,6 +373,44 @@ class User(Base):
             db_session.rollback()
             raise
 
+
+    @staticmethod
+    def initNewUser(email, options):
+        import uuid
+        user = User(email=email)
+        user.time_created = datetime.now()
+        user.name = options.get('name')
+        user.referral_code = User.generate_referral_code(user.name)
+        user.auth_token = uuid.uuid4().hex
+        user.email_notifications = True
+        user.profile_code = User.generateProfileCode(user)
+        if options.get('fb_id'):
+            user.profile_url = options.get('profile_url')
+            user.fb_id = options.get('fb_id')
+
+        else:
+            from hashlib import md5
+            user.password = md5(options.get('password')).hexdigest()
+        try:
+            db_session.add(user)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        # if not user.profile_code:
+        #     user.profile_code = user.generateProfileCode()
+
+
+        if options.get('university_id'):
+            user.university_id = options.get('university_id')
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return user
+
     def reactivateUser(self):
         self.deactivated = False
         try:
@@ -380,6 +418,11 @@ class User(Base):
         except:
             db_session.rollback()
             raise
+
+    def getAcademicShop(self):
+        for shop in self.guru_shops:
+            if shop.category.hex_color == 'academic' or shop.category.hex_color == 'Academic':
+                return shop
 
     def getGuruRatingsForCourse(self, course_id):
         course_ratings = []
@@ -404,7 +447,7 @@ class User(Base):
 
     def initExperience(self, title, years, description):
         e = Experience()
-        e.title=title
+        e.name=title
         e.years = years
         e.description = description
         try:
@@ -499,17 +542,18 @@ class User(Base):
 
     def generateProfileCode(self):
         from random import randint
-        user_first_name = self.getFirstName()
+        profile_code = self.getFirstName().lower()
 
 
-        is_profile_code_taken = User.query.filter_by(profile_code=user_first_name.lower()).all()
         while True:
+            is_profile_code_taken = User.query.filter_by(profile_code=profile_code.lower()).all()
             if not is_profile_code_taken:
                 profile_code = is_profile_code_taken
                 self.profile_code = profile_code
                 break
             else:
-                profile_code = user_first_name + str(randint(0, 1000))
+                profile_code = self.getFirstName().lower()
+                profile_code = profile_code + str(randint(0, 1000))
                 ## keep cycling until generated
         try:
             db_session.commit()
@@ -738,7 +782,6 @@ class Shop(Base):
     description = Column(String)
     @staticmethod
     def initAcademicShop(user, fake_data=None):
-        print "fake_data", fake_data
         shop = Shop()
         shop.dark_mode = True
         shop.category_id = Category.query.filter_by(name='Academic').all()[0].id
@@ -751,10 +794,6 @@ class Shop(Base):
             db_session.rollback()
             raise
 
-        if not user.profile_code:
-            user.profile_code = user.generateProfileCode()
-
-
         shop.profile_url = "https://www.uguru.me/academic/%s" % user.profile_code
         shop.guru_id = user.id
         shop.title = "%s's Academic Shop" % user.getFirstName()
@@ -762,19 +801,20 @@ class Shop(Base):
             shop.description = "Teaching courses like %s, %s, %s" % (user.guru_courses[0].short_name, \
             user.guru_courses[1].short_name, user.guru_courses[2].short_name )
         user.guru_shops.append(shop)
+        Calendar_Event.createShopCreationDayEvent(user, shop)
         try:
             db_session.commit()
         except:
             db_session.rollback()
 
-        Calendar_Event.createShopCreationDayEvent(user, shop)
-
-        if user.guru_courses:
+        if not user.guru_courses:
+            return
+        elif user.guru_courses:
             for course in user.guru_courses:
                 course_ids_that_have_portfolios = [pi.course.id for pi in user.portfolio_items if pi.course]
                 if course.id not in course_ids_that_have_portfolios:
                     guru_ratings_for_course = user.getGuruRatingsForCourse(course.id)
-                    print "course %s not in user's %s portfolio items with %s guru ratings" % (course.short_name, len(user.portfolio_items), len(user.guru_ratings))
+
                     pi = Portfolio_Item.initAcademicPortfolioItem(user, shop, course, guru_ratings_for_course)
                     if fake_data and fake_data.get(course.short_name) and fake_data[course.short_name].get('resources'):
                         fake_resources_arr = fake_data[course.short_name]['resources']
@@ -782,8 +822,7 @@ class Shop(Base):
                             Resource.init(user, pi, course, resource.get('title'), resource.get('description'), resource.get('site_url'), resource.get('file_type'))
 
                     if fake_data and fake_data.get(course.short_name) and fake_data[course.short_name].get('tags'):
-                        fake_tags_dict = fake_data[course.short_name]['tags']
-                        course_tags = fake_tags_dict[course.short_name]
+                        course_tags = fake_data[course.short_name]['tags']
                         for tag in course_tags:
                             Tag.initPortfolioTag(user, pi, course, tag, True)
 
@@ -856,6 +895,15 @@ class Calendar_Event(Base):
 
     is_day_event = Column(Boolean)
 
+    ## Title
+    ## Description
+    ## Attachments
+    ## Location
+    ## start time
+    ## end time
+    ## is public
+
+
     ### Todo
     ## -- Create one --> many relationship event.attendees (RSVP ability)
     ## -- Attachments
@@ -882,6 +930,7 @@ class Calendar_Event(Base):
         try:
             ce.calendar_id = user.guru_calendar_id
             ce.shop_id = shop.id
+            db_session.commit()
         except:
             db_session.rollback()
             raise
@@ -1457,6 +1506,40 @@ class Resource(Base):
     professor_name = Column(String)
 
     course_string = Column(String)
+
+    @staticmethod
+    def initPortfolioResource(user, portfolio_item, course, options, is_admin=True):
+        r = Resource()
+        r.time_created = datetime.now()
+        r.title = options.get('title')
+        r.url = options.get('url')
+        r.file_type = options.get('file_type')
+        r.file_size = options.get('file_size')
+        r.last_referenced = datetime.now()
+        r.admin_approved = False
+
+        try:
+            db_session.add(r)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        if user:
+            r.contributed_user_id = user.id
+        if portfolio_item:
+            r.portfolio_item_id = portfolio_item.id
+        if course:
+            r.course_id = course.id
+
+        if options.get('file_id'):
+            r.file_id = options.get('file_id')
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     @staticmethod
     def init(user, portfolio_item, course, title, description, url, file_type):
@@ -2418,6 +2501,8 @@ class Portfolio_Item(Base):
     title = Column(String)
     description = Column(String)
 
+    archived = Column(Boolean, default=False)
+
 
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship("User",
@@ -2437,8 +2522,144 @@ class Portfolio_Item(Base):
         uselist=False,
         backref="portfolio_items")
 
+    def syncPortfolioResources(self, user, resources_json):
+        current_resources = self.tags
+        current_resource_ids = [resource.id for resource in current_resources if resource.id]
+        for resource_json in resources_json:
+            if resource_json.get('remove'):
+                resource_id = resource_json.get('id')
+                if resource_id and type(resource_id) == int:
+                    resource = Resource.query.get(resource_id)
+                    if resource:
+                        resource.contributed_user_id = None
+                        resource.portfolio_item_id = None
+                        self.resources.remove(resource)
+                    try:
+                        db_session.commit()
+                    except:
+                        db_session.rollback()
+                        raise
+                    try:
+                        db_session.delete(resource)
+                        db_session.commit()
+                    except:
+                        db_session.rollback()
+                        raise
+            # create one if new
+            elif not resource.get('id'):
+                resource = Resource.initPortfolioResource(user, self, self.course, resource_json.get('title'), False)
+            else:
+                ## resources are not editable yet
+                continue
+
+    def syncPortfolioTags(self, user, tags_json):
+        current_tags = self.tags
+        current_tag_ids = [tag.id for tag in current_tags if tag.id]
+        for tag_json in tags_json:
+
+            ## remove that tag
+            if tag_json.get('remove'):
+                tag_id = tag_json.get('id')
+                if tag_id and type(tag_id) == int:
+                    tag = Tag.query.get(tag_id)
+                    tag.user_id = None
+                    tag.portfolio_item_id = None
+                    self.tags.remove(tag)
+                    try:
+                        db_session.commit()
+                    except:
+                        db_session.rollback()
+                        raise
+                    try:
+                        db_session.delete(tag)
+                        db_session.commit()
+                    except:
+                        db_session.rollback()
+                        raise
+            ## recently added
+            elif not tag_json.get('id'):
+                Tag.initPortfolioTag(user, self, self.course, tag_json.get('name'), False)
+            ## updating the name
+            else:
+                tag_id = int(tag_json.get('id'))
+                if tag_id in current_tag_ids:
+                    tag = Tag.query.get(tag_id)
+                    tag.name = tag_json.get('name')
+                    try:
+                        db_session.commit()
+                    except:
+                        db_session.rollback()
+                        raise
+
+
+
+
+    def updatePortfolioItem(self, options):
+        self.title = options.get('title')
+        self.description = options.get('description')
+        self.archived = options.get('archived')
+        self.max_unit_price = options.get('max_unit_price')
+        self.unit_price = options.get('unit_price')
+        self.hourly_price = options.get('hourly_price')
+        self.max_hourly_price = options.get('max_hourly_price')
+
+        if options.get('tags'):
+            self.syncPortfolioTags(user, options.get('tags'))
+        if options.get('resources'):
+            self.syncPortfolioResources(user, options.get('resources'))
+
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
     @staticmethod
-    def initAcademicPortfolioItem(user, shop, course, arr_rating_objs):
+    def initAcademicPortfolioItemFromGuruProfile(user, shop, course, options):
+        pi = Portfolio_Item()
+        if shop.category.hex_color == 'academic':
+            if course.department_long and course.code:
+                pi.title = "%s %s" % (course.department_long, course.code)
+            else:
+                pi.title = course.short_name
+            pi.description = course.full_name
+        else:
+            pi.title = options.get('title')
+            pi.description = options.get('description')
+
+        pi.admin_approved = False
+        pi.time_created = datetime.now()
+
+        try:
+            db_session.add(pi)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        tags = options.get('tags')
+        if tags:
+            pi.syncPortfolioTags(user, tags)
+
+        resources = options.get('resources')
+        if resources:
+            pi.syncPortfolioResources(user, resources)
+
+
+        pi.user_id = user.id
+        pi.shop_id = shop.id
+        pi.course_id = course.id
+        print "does it even get here bro"
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return pi
+
+
+    @staticmethod
+    def initAcademicPortfolioItem(user, shop, course, arr_rating_objs=[]):
         pi = Portfolio_Item()
         if course.department_long and course.code:
             pi.title = "%s %s" % (course.department_long, course.code)
