@@ -125,6 +125,133 @@
 	height: 100%;
 	background: desaturate(darken($shamrock, 20%), 10%);
 }
+.pf-photo-list {
+	width: 100%;
+	overflow: auto;
+	ul {
+		@include flex;
+		height: 100%;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			height: 100%;
+			&:last-child {
+				padding-right: 15px;
+			}
+			div {
+				position: relative;
+				width: 150px;
+				height: 100%;
+				background: $slate;
+				border: 2px solid white;
+				border-radius: 10px;
+			}
+			div.pf-upload-img {
+				background-position: center center;
+				background-size: cover;
+			}
+			div.pf-upload-img, div.pf-upload-file {
+				a {
+					svg {
+						@include rotate(45);
+						@include svg-stroke(white, 8);
+						position: absolute;
+						top: 5px;
+						left: 5px;
+						width: 25px;
+						height: 25px;
+					}
+				}
+			}
+			div.pf-upload-file {
+				border: 0;
+				width: auto;
+				background: none!important;
+				svg.doc-outline {
+					@include svg-stroke(white, 1.5);
+					display: block;
+					height: 100%;
+					fill: $shamrock;
+				}
+				&.pf-upload-pdf {
+					svg.doc-outline {
+						height: 100%;
+						fill: $auburn;
+					}
+				}
+				&.pf-upload-doc {
+					svg.doc-outline {
+						height: 100%;
+						fill: $lake;
+					}
+				}
+				&.pf-upload-sheet {
+					svg.doc-outline {
+						height: 100%;
+						fill: $moola;
+					}
+				}
+				.doc-info {
+					@include center-xy;
+					width: 100%;
+					padding: 30px 15px 15px;
+					span {
+						display: block;
+						font-weight: 600;
+					}
+					.doc-name {
+						font-size: 20px;
+					}
+					.doc-type {
+						font-size: 16px;
+					}
+				}
+			}
+			div.pf-upload-add {
+				position: relative;
+				border-style: dashed;
+				border: 0;
+				background: none;
+				width: auto;
+				.square {
+					height: 100%;
+					fill: none;
+				}
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 10px;
+					border: 2px dashed $shamrock;
+					span {
+						svg {
+							@include svg-stroke($shamrock, 6);
+							width: 100%;
+							height: 30px;
+						}
+						span {
+							display: block;
+							font-size: 18px;
+							font-weight: 600;
+							color: $shamrock;
+						}
+					}
+					&:hover, &:focus {
+						background: white;
+					}
+					&:active, &.active {
+						background: lighten($shamrock, 30%);
+					}
+				}
+			}
+		}
+	}
+}
 .pf-type {
 	header.third {
 		position: relative;
@@ -235,9 +362,15 @@
 				font-weight: 400;
 				line-height: 1.2;
 				text-align: center;
+				@include placeholder {
+					color: white;
+				}
 				&:focus {
 					background: white;
 					color: $charcoal;
+					@include placeholder {
+						color: $taupe;
+					}
 				}
 				&:disabled {
 					background: none;
@@ -326,125 +459,6 @@
 		.pf-photo-list {
 			margin-top: 30px;
 			height: calc(100% - 80px);
-			width: 100%;
-			overflow: auto;
-			ul {
-				@include flex;
-				height: 100%;
-				padding: 7.5px;
-				li {
-					padding: 7.5px;
-					height: 100%;
-					&:last-child {
-						padding-right: 15px;
-					}
-					div {
-						position: relative;
-						width: 150px;
-						height: 100%;
-						background: $slate;
-						border: 2px solid white;
-						border-radius: 10px;
-					}
-					div.pf-upload-img {
-						background-position: center center;
-						background-size: cover;
-					}
-					div.pf-upload-img, div.pf-upload-file {
-						a {
-							svg {
-								@include rotate(45);
-								@include svg-stroke(white, 8);
-								position: absolute;
-								top: 5px;
-								left: 5px;
-								width: 25px;
-								height: 25px;
-							}
-						}
-					}
-					div.pf-upload-file {
-						border: 0;
-						width: auto;
-						background: none!important;
-						svg.doc-outline {
-							@include svg-stroke(white, 1.5);
-							height: 100%;
-							fill: $shamrock;
-						}
-						&.pf-upload-pdf {
-							svg.doc-outline {
-								@include svg-stroke(white, 1.5);
-								height: 100%;
-								fill: $auburn;
-							}
-						}
-						&.pf-upload-doc {
-							svg.doc-outline {
-								@include svg-stroke(white, 1.5);
-								height: 100%;
-								fill: $lake;
-							}
-						}
-						&.pf-upload-sheet {
-							svg.doc-outline {
-								@include svg-stroke(white, 1.5);
-								height: 100%;
-								fill: $moola;
-							}
-						}
-						.doc-info {
-							@include center-xy;
-							width: 100%;
-							padding: 30px 15px 15px;
-							span {
-								display: block;
-								font-weight: 600;
-							}
-							.doc-name {
-								font-size: 20px;
-							}
-							.doc-type {
-								font-size: 16px;
-							}
-						}
-					}
-					div.pf-upload-add {
-						position: relative;
-						border-style: dashed;
-						border-color: $shamrock;
-						background: none;
-						width: auto;
-						.square {
-							height: 100%;
-							fill: none;
-						}
-						a {
-							@include flex;
-							@include flex-wrap;
-							@include flex-center;
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							span {
-								svg {
-									@include svg-stroke($shamrock, 6);
-									width: 100%;
-									height: 30px;
-								}
-								span {
-									display: block;
-									font-size: 18px;
-									font-weight: 600;
-									color: $shamrock;
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 	.pf-item-header {
@@ -756,9 +770,30 @@
 				background: $charcoal;
 				padding: 6.25px;
 				svg {
+					@include transition(.15s ease-in-out);
 					@include svg-stroke(white, 4);
+					display: block;
 					width: 100%;
 					height: 50px;
+					&:last-child:not(:first-child) {
+						@include opacity(0);
+						@include rotate(45);
+						display: none;
+					}
+				}
+				a {
+					&:hover, &:focus {
+						svg {
+							&:first-child:not(:last-child) {
+								@include opacity(0);
+								display: none;
+							}
+							&:last-child:not(:first-child) {
+								@include opacity(1);
+								display: block;
+							}
+						}
+					}
 				}
 			}
 			&.pf-attachments {
@@ -1054,6 +1089,10 @@
 	left: 0;
 	width: 100%;
 	z-index: 99;
+	button {
+		display: block;
+		margin: 0 auto;
+	}
 }
 .pf-desktop-edit {
 	@include opacity(0);
@@ -1099,6 +1138,7 @@
 			@include transition(.15s ease-in-out);
 			border-color: lighten($slate, 10%);
 			background: lighten($slate, 5%);
+			padding: 10px 15px;
 			&:focus {
 				border-color: lighten($slate, 20%);
 				background: lighten($slate, 10%);
@@ -1179,6 +1219,488 @@
 					div.pf-upload-file {
 						svg.doc-outline {
 							stroke-width: 1px!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// ADD EVENT
+.pf-event {
+	.section-header {
+		@include flex;
+		@include flex-center;
+		height: 50px;
+		background: $slate;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+		letter-spacing: 0;
+	}
+	.pf-event-container {
+		padding: 2px;
+		.input-outline {
+			@include transition(.15s ease-in-out);
+			padding: 10px 15px;
+			border-color: lighten($slate, 50%);
+			background: lighten($slate, 60%);
+			font-weight: 600!important;
+			color: $slate;
+			@include placeholder {
+				color: lighten($slate, 20%);
+				font-weight: 600;
+			}
+			&:focus {
+				border-color: lighten($slate, 60%);
+				background: lighten($slate, 65%);
+			}
+		}
+		.pf-title-edit.input-outline {
+			display: block;
+			width: 100%;
+			margin-bottom: 2px;
+			font-weight: 600;
+		}
+		textarea.input-outline {
+			width: 100%;
+			padding: 10px 15px;
+			height: 176px;
+			line-height: 1;
+			border-bottom-width: 1px;
+			margin-bottom: 2px;
+			resize: none;
+			font-size: 20px;
+			font-weight: 400;
+		}
+		.custom-dropdown {
+			width: 100%!important;
+			margin-bottom: 2px;
+			> div {
+				border: 1px solid lighten($slate, 50%);
+				> span {
+					-webkit-justify-content: flex-start;
+					justify-content: flex-start;
+					width: calc(100% - 36px);
+					padding-left: 15px!important;
+					padding-right: 15px!important;
+					height: 36px;
+					background: lighten($slate, 60%);
+					color: lighten($slate, 20%);
+					font-size: 20px;
+					text-align: left;
+				}
+				a {
+					width: 36px;
+					height: 36px;
+					svg {
+						width: 100%;
+						height: 100%;
+						stroke-width: 10px;
+						background: $campus;
+					}
+					&:hover, &:focus {
+						svg {
+							background: $slate;
+						}
+					}
+					&:active, &.active {
+						svg {
+							background: $campus;
+						}
+					}
+				}
+			}
+			> ul {
+				@include translate-x(0);
+				left: 0;
+				z-index: 12;
+				margin-top: -1px;
+				width: calc(100% - 36px);
+				border: 1px solid lighten($slate, 50%);
+				li {
+					width: 100%;
+					background: rgba(lighten($slate, 60%), .9);
+					padding: 10px 15px!important;
+					color: lighten($slate, 20%);
+					font-size: 16px;
+					font-weight: 600;
+					&:hover, &:focus {
+						color: white;
+					}
+					&.dropdown-delivery {
+						&:hover, &:focus {
+							background: $auburn;
+						}
+					}
+					&.dropdown-freelancing {
+						&:hover, &:focus {
+							background: $orange;
+						}
+					}
+					&.dropdown-baking {
+						&:hover, &:focus {
+							background: $gold;
+						}
+					}
+					&.dropdown-photography {
+						&:hover, &:focus {
+							background: $moola;
+						}
+					}
+					&.dropdown-tech {
+						&:hover, &:focus {
+							background: $azure;
+						}
+					}
+					&.dropdown-household {
+						&:hover, &:focus {
+							background: $cobalt;
+						}
+					}
+					&.dropdown-athletic {
+						&:hover, &:focus {
+							background: $eggplant;
+						}
+					}
+					&.dropdown-academic {
+						&:hover, &:focus {
+							background: $cerise;
+						}
+					}
+				}
+			}
+		}
+		.picker {
+			margin-bottom: 2px;
+			border: 1px solid lighten($slate, 50%);
+			background: lighten($slate, 60%);
+			color: $slate!important;
+		}
+		.pf-doc-upload {
+			height: 38px;
+			margin-bottom: 2px;
+			background: $campus;
+			font-size: 20px;
+			font-weight: 600;
+			&:active, &.activated {
+				@include opacity(1);
+				background: $slate;
+			}
+		}
+		.pf-photo-list {
+			margin-bottom: 2px;
+			border: 1px solid lighten($slate, 50%);
+			background: lighten($slate, 60%);
+			height: 165px;
+			text-align: center;
+			&:not(.active) {
+				display: none;
+			}
+			ul {
+				li {
+					div.pf-upload-file {
+						svg.doc-outline {
+							stroke-width: 1px;
+						}
+					}
+					div.pf-upload-add {
+						a {
+							border-color: $campus;
+							span {
+								svg {
+									stroke: $campus;
+								}
+								span {
+									color: $campus;
+								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($campus, 35%);
+							}
+						}
+					}
+				}
+			}
+		}
+		.pf-public {
+			@include flex;
+			@include flex-center;
+			margin: 13px 0 15px;
+			div {
+				position: relative;
+				input {
+					@include opacity(0);
+					position: absolute;
+					z-index: 12;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				span {
+					display: block;
+					width: 32px;
+					height: 32px;
+					border-radius: 3px;
+					background: lighten($slate, 60%);
+					svg {
+						@include svg-stroke(lighten($slate, 50%), 10);
+						padding: 4px;
+						width: 100%;
+						height: 100%;
+					}
+				}
+				input:checked + span {
+					background: $campus;
+					svg {
+						stroke: white;
+					}
+				}
+			}
+			label {
+				padding-left: 15px;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
+	}
+	.pf-event-save {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background: $slate;
+		font-weight: 600;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: lighten($slate, 10%);
+		}
+		&:active, &.activated {
+			@include opacity(1);
+			background: $slate;
+		}
+	}
+}
+.pf-event-add-modal {
+	position: absolute;
+	z-index: 100;
+	right: -351px;
+	top: 1px;
+	width: 320px;
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		left: -30px;
+		top: 10px;
+		width: 0;
+		height: 0;
+		border: 15px solid transparent;
+		border-right-color: $slate;
+	}
+	.pf-event {
+		.section-header {
+			height: 48px;
+		}
+		.pf-event-save {
+			position: static;
+			left: auto;
+			bottom: auto;
+			height: 48px;
+		}
+	}
+}
+@media screen and (min-width:768px) {
+	.pf-event {
+		.pf-event-container {
+			textarea.input-outline {
+				height: 38px;
+				padding: 7px 15px;
+				&:focus, &.active {
+					line-height: normal;
+					padding: 10px 15px;
+					height: 176px;
+				}
+			}
+			.picker {
+				margin-bottom: 2px;
+				border: 1px solid lighten($slate, 50%);
+				background: lighten($slate, 60%);
+				color: $slate!important;
+				&:not(.active) {
+					height: 30px;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+	.pf-event-save {
+		position: static;
+		bottom: auto;
+		left: auto;
+	}
+}
+
+// CALENDAR
+.pf-cal {
+	> div {
+		@include flex;
+		@include flex-wrap;
+		width: 100%;
+		.pf-cal-month {
+			width: 100%;
+			background: darken($campus, 25%);
+			padding: 15px;
+			font-size: 28px;
+			font-weight: 700;
+			text-align: center;
+			text-transform: uppercase;
+			margin: 0 2px 2px;
+		}
+		.pf-cal-time {
+			width: 80px;
+			padding-top: 30px;
+			li {
+				position: relative;
+				height: 50px;
+				span {
+					display: block;
+					position: absolute;
+					top: -9px;
+					right: 15px;
+					font-size: 18px;
+					font-weight: 600;
+					line-height: 1;
+					text-align: right;
+				}
+			}
+		}
+		.pf-cal-main {
+			width: calc(100% - 80px);
+			overflow-x: auto;
+			.pf-cal-date {
+				@include flex;
+				width: 100%;
+				min-width: 770px;
+				height: 30px;
+				padding: 0 1px;
+				li {
+					width: calc(100% / 7);
+					min-width: 110px;
+					font-size: 18px;
+					font-weight: 600;
+					text-align: center;
+					padding: 0 1px;
+					> span {
+						@include flex;
+						@include flex-center;
+						border-radius: 2px;
+						height: 30px;
+						width: 100%;
+						background: $campus;
+					}
+				}
+			}
+			.pf-cal-events {
+				@include flex;
+				min-width: 770px;
+				padding: 1px;
+				.pf-cal-day {
+					width: calc(100% / 7);
+					li {
+						position: relative;
+						width: 100%;
+						min-width: 110px;
+						height: 50px;
+						padding: 1px;
+						> span {
+							display: block;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							background: rgba($smoke, .4);
+						}
+						&.has-event {
+							> span {
+								background: white;
+								border: 1px solid $campus;
+								border-left-width: 5px;
+								padding: 5px;
+								font-size: 16px;
+								font-weight: 600;
+								color: $campus;
+								span {
+									display: block;
+									line-height: 1.1;
+								}
+							}
+						}
+						&.hours-2 {
+							height: 100px;
+						}
+						&.hours-3 {
+							height: 150px;
+						}
+						&.hours-4 {
+							height: 200px;
+						}
+						&.hours-5 {
+							height: 250px;
+						}
+						&.hours-6 {
+							height: 300px;
+						}
+						&.event-academic {
+							> span {
+								border-color: $cerise;
+								color: $cerise;
+							}
+						}
+						&.event-baking {
+							> span {
+								border-color: $gold;
+								color: $gold;
+							}
+						}
+						&.event-photography {
+							> span {
+								border-color: $moola;
+								color: $moola;
+							}
+						}
+						&.event-household {
+							> span {
+								border-color: $cobalt;
+								color: $cobalt;
+							}
+						}
+						&.event-delivery {
+							> span {
+								border-color: $auburn;
+								color: $auburn;
+							}
+						}
+						&.event-freelancing {
+							> span {
+								border-color: $orange;
+								color: $orange;
+							}
+						}
+						&.event-athletic {
+							> span {
+								border-color: $eggplant;
+								color: $eggplant;
+							}
+						}
+						&.event-tech {
+							> span {
+								border-color: $azure;
+								color: $azure;
+							}
 						}
 					}
 				}
@@ -1337,11 +1859,16 @@
 		}
 		.pf-shop-desc {
 			padding: 30px;
+// <<<<<<< HEAD
 			position:relative !important;
 			ion-pane {
 				position:absolute !important;
 			}
 			h1 {
+// =======
+// 			> h1 {
+// 				margin-top: -15px;
+// >>>>>>> 016a3cd13fbf61eafe7c6131d04300e71613c276
 				font-size: 48px;
 			}
 			p {
@@ -1374,22 +1901,6 @@
 							max-width: 150px;
 							svg {
 								height: 64px;
-								&:last-child:not(:first-child) {
-									@include rotate(45);
-									display: none;
-								}
-							}
-							a {
-								&:hover, &:focus {
-									svg {
-										&:first-child:not(:last-child) {
-											display: none;
-										}
-										&:last-child {
-											display: block;
-										}
-									}
-								}
 							}
 						}
 					}
@@ -1825,8 +2336,8 @@
 			ul {
 				li {
 					div.pf-upload-add {
-						border-color: $cerise;
 						a {
+							border-color: $cerise;
 							span {
 								svg {
 									stroke: $cerise;
@@ -1834,6 +2345,12 @@
 								span {
 									color: $cerise;
 								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($cerise, 35%);
 							}
 						}
 					}
@@ -2022,8 +2539,8 @@
 			ul {
 				li {
 					div.pf-upload-add {
-						border-color: $moola;
 						a {
+							border-color: $moola;
 							span {
 								svg {
 									stroke: $moola;
@@ -2031,6 +2548,12 @@
 								span {
 									color: $moola;
 								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($moola, 35%);
 							}
 						}
 					}
@@ -2361,8 +2884,8 @@
 			ul {
 				li {
 					div.pf-upload-add {
-						border-color: $gold;
 						a {
+							border-color: $gold;
 							span {
 								svg {
 									stroke: $gold;
@@ -2370,6 +2893,12 @@
 								span {
 									color: $gold;
 								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($gold, 25%);
 							}
 						}
 					}
@@ -2613,8 +3142,8 @@
 			ul {
 				li {
 					div.pf-upload-add {
-						border-color: $cobalt;
 						a {
+							border-color: $cobalt;
 							span {
 								svg {
 									stroke: $cobalt;
@@ -2622,6 +3151,12 @@
 								span {
 									color: $cobalt;
 								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($cobalt, 25%);
 							}
 						}
 					}
@@ -2810,8 +3345,8 @@
 			ul {
 				li {
 					div.pf-upload-add {
-						border-color: $auburn;
 						a {
+							border-color: $auburn;
 							span {
 								svg {
 									stroke: $auburn;
@@ -2819,6 +3354,12 @@
 								span {
 									color: $auburn;
 								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($auburn, 30%);
 							}
 						}
 					}
@@ -3007,8 +3548,8 @@
 			ul {
 				li {
 					div.pf-upload-add {
-						border-color: $orange;
 						a {
+							border-color: $orange;
 							span {
 								svg {
 									stroke: $orange;
@@ -3016,6 +3557,12 @@
 								span {
 									color: $orange;
 								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($orange, 35%);
 							}
 						}
 					}
@@ -3204,8 +3751,8 @@
 			ul {
 				li {
 					div.pf-upload-add {
-						border-color: $eggplant;
 						a {
+							border-color: $eggplant;
 							span {
 								svg {
 									stroke: $eggplant;
@@ -3213,6 +3760,12 @@
 								span {
 									color: $eggplant;
 								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($eggplant, 35%);
 							}
 						}
 					}
@@ -3401,8 +3954,8 @@
 			ul {
 				li {
 					div.pf-upload-add {
-						border-color: $azure;
 						a {
+							border-color: $azure;
 							span {
 								svg {
 									stroke: $azure;
@@ -3410,6 +3963,12 @@
 								span {
 									color: $azure;
 								}
+							}
+							&:hover, &:focus {
+								background: white;
+							}
+							&:active, &.active {
+								background: lighten($azure, 35%);
 							}
 						}
 					}
