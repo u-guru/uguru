@@ -2,22 +2,22 @@
 	<!-- popups -->
 	<div class="guru-popup guru-popup-center" ng-show="pagePopups.fb">
 		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
-		<input> {{user.profile_code}}</input>
+		<input>{{user.profile_code}}</input>
 		<button ng-click='saveFbUrl()'>Save</button>
 	</div>
 	<div class="guru-popup guru-popup-center" ng-show="pagePopups.instagram">
 		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
-		<input> {{user.profile_code}}</input>
+		<input>{{user.profile_code}}</input>
 		<button ng-click='saveInstagramUrl()'>Save</button>
 	</div>
 	<div class="guru-popup guru-popup-center" ng-show="pagePopups.twitter">
 		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
-		<input> {{user.profile_code}}</input>
+		<input>{{user.profile_code}}</input>
 		<button ng-click='saveTwitterUrl()'>Save</button>
 	</div>
 	<div class="guru-popup guru-popup-center" ng-show="pagePopups.linkedin">
 		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
-		<input class='full-x' ng-model='user.public_linkedin_url'> {{user.public_linkedin_url}}</input>
+		<input class='full-x' ng-model='user.public_linkedin_url'>{{user.public_linkedin_url}}</input>
 		<button ng-click='saveLinkedInUrl()'>Save</button>
 	</div>
 	<a id='guru-profile-cta-close' class='cta-modal-close close-button absolute m15xy right-0 top-0'>
@@ -202,12 +202,56 @@
 				<div class="pf-list p15top">
 					<h1>Will Work For</h1>
 					<ul class="pf-list-x ugrid-6">
-						<li ng-repeat='currency in all_currencies' ng-click='updateCurrency(currency)'>
+						<!-- <li ng-repeat='currency in all_currencies' ng-click='updateCurrency(currency)'>
 							<svg viewBox="0 0 100 100" ng-if='currency.active'>
 								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 							</svg>
 							<small class="weight-500 p10xy ng-class:{'txt-cerise': currency.active, 'bg-academic': currency.active}"> {{currency.name}}
 							</small>
+						</li> -->
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/cat.html'"></span>
+							<span>Cat</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/chipotle.html'"></span>
+							<span>Chipotle</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/coffee.html'"></span>
+							<span>Coffee</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/dog.html'"></span>
+							<span>Dog</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/dogecoin.html'"></span>
+							<span>Dogecoin</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/gift-card.html'"></span>
+							<span>Gift Card</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/meal-points.html'"></span>
+							<span>Meal Points</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/money.html'"></span>
+							<span>Money</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/pizza.html'"></span>
+							<span>Pizza</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/tickets.html'"></span>
+							<span>Tickets</span>
+						</li>
+						<li>
+							<span ng-include="img_base + BASE + 'templates/svg/wwf/tutor.html'"></span>
+							<span>Tutor</span>
 						</li>
 					</ul>
 				</div>
@@ -315,11 +359,12 @@
 
 			</div>
 			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
-
-				<li class="pf-checklist-full active pf-type-{{user.academic_shop.category.hex_color}} hide ng-class:{'show':user.academic_shop.active_portfolio_item}" ng-include="img_base + 'templates/profile.modal.html'"></li>
-
 				<li ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-click='editPortfolioItem(portfolio_item)'>
 					<div class="pf-check-container">
+						<span class="pf-price pf-price-right">${{user.academic_shop.active_portfolio_item.hourly_price}}/hr</span>
+						<div class="pf-checklist-item-bg">
+							<span>{{course.full_name || course.title}}</span>
+						</div>
 						<a class="pf-edit-link" ng-click="user.academic_shop.edit_portfolio_item = portfolio_item">Edit</a>
 						<a class="pf-check pf-remove">
 							<svg viewBox="0 0 100 100">
@@ -332,13 +377,36 @@
 						<span class="pf-check-label">
 							<span>{{portfolio_item.course.short_name}}</span>
 							<ul class="pf-rating" data-rating="{{portfolio_item.rounded_avg_rating}}" data-half="{{portfolio_item.half_stars}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-							<span class='pf-review-exact-amt'>
-								{{portfolio_item.avg_rating}}
-							</span>
-							<span class="pf-review-amt"> {{portfolio_item.ratings.length}} Reviews</span>
+							<span class="pf-review-amt">{{portfolio_item.ratings.length}} Reviews</span>
 						</span>
 					</div>
 				</li>
+				
+				<!-- SAMPLE ITEM -->
+				<!-- <li>
+					<div class="pf-check-container">
+						<span class="pf-price pf-price-right">${{user.academic_shop.active_portfolio_item.hourly_price}}/hr</span>
+						<div class="pf-checklist-item-bg">
+							<span>The Joy of Computing</span>
+						</div>
+						<a class="pf-edit-link">Edit</a>
+						<a class="pf-check pf-remove">
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+						<span class="pf-check-label">
+							<span>Math 101</span>
+							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<span class="pf-review-amt">10 Reviews</span>
+						</span>
+					</div>
+				</li> -->
+				<!-- SAMPLE ITEM WHEN CLICKED -->
+				<!-- <li class="pf-checklist-full show pf-type-{{user.academic_shop.category.hex_color}}" ng-include="img_base + 'templates/profile.modal.html'"></li> -->
 
 				<li class="pf-checklist-add">
 					<div class="pf-check-container">
@@ -347,13 +415,13 @@
 								<svg viewBox="0 0 100 100">
 									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 								</svg>
-								<span>Add an Item</span>
+								<span>add an item</span>
 							</span>
 						</a>
 					</div>
 				</li>
 
-				<li id='cta-modal-profile-pi-item' class="pf-checklist-full full-xy absolute top-0 left-0 cta-modal high-z-index pf-type-{{user.academic_shop.category.hex_color}} ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
+				<li id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.hex_color}} ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
 			</ul>
 
 

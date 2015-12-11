@@ -1382,38 +1382,7 @@ section {
 		margin: 0;
 	}
 }
-.onboarding, .onboarding-portfolio-item {
-	.onboarding-search {
-		.input-field {
-			.prefix {
-				margin-top: 6px;
-				svg {
-					@include svg-stroke(white, 5);
-					width: 100%;
-					height: 100%;
-					padding: 11px;
-				}
-			}
-			input {
-				width: calc(100% - 63px)!important;
-			}
-			input, label {
-				color: rgba(white,.6)!important;
-				border-color: rgba(white,.6)!important;
-			}
-			input:focus {
-				color: white!important;
-				border-color: white!important;
-			}
-			.desktop-input-close-icon {
-				right: 15px;
-			    margin-top: -20px;
-			}
-		}
-		// input {
-		// 	width: calc(100% - 25px);
-		// }
-	}
+.onboarding {
 	progress, .progress {
 		position: absolute;
 		top: 0;
