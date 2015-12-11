@@ -254,6 +254,8 @@
 }
 .pf-type {
 	header.third {
+		@include flex;
+		@include flex-center;
 		position: relative;
 		overflow: hidden;
 		h1.pf-title {
@@ -264,7 +266,7 @@
 			display: none;
 			position: absolute;
 			top: 0;
-			right: 15px;
+			left: 15px;
 			background: $shamrock;
 			width: 50px;
 			height: 50px;
@@ -386,13 +388,17 @@
 				li {
 					&:first-child {
 						padding: 10px 15px;
-						background: rgba(white,.7);
+						background: rgba(white,.3);
 						text-transform: lowercase;
 						a {
-							color: $slate;
+							color: white;
 						}
 					}
-					input, span {
+					span {
+						color: white;
+					}
+					input {
+						text-align: center;
 						color: $slate;
 					}
 					&:last-child {
@@ -436,7 +442,7 @@
 								@include flex;
 								@include flex-center-vertical;
 								height: 100%;
-								padding: 5px 0 5px 10px;
+								padding: 5px 10px;
 								border: 0;
 								background: rgba(white,.6);
 								font-size: 18px;
@@ -449,9 +455,17 @@
 								@include flex;
 								@include flex-center-vertical;
 								height: 100%;
-								padding: 5px 10px 5px 0;
+								padding: 5px 10px;
 							}
 						}
+					}
+				}
+			}
+			@media screen and (max-width:768px) {
+				&.pf-header-edit {
+					padding-top: 90px;
+					.pf-rating, .pf-review-amt {
+						display: none;
 					}
 				}
 			}
@@ -733,6 +747,19 @@
 			text-align: center;
 			text-transform: uppercase;
 		}
+		button {
+			margin-top: 15px;
+			background: lighten($slate, 20%);
+			width: auto;
+			&:hover, &:focus {
+				@include opacity(1);
+				background: $shamrock;
+			}
+			&:active, &.activated {
+				@include opacity(1);
+				background: lighten($shamrock, 20%);
+			}
+		}
 		.pf-list-desc {
 			display: none;
 			width: 100%;
@@ -751,6 +778,7 @@
 				background: $charcoal;
 				font-size: 18px;
 				font-weight: 600;
+				line-height: 1.2;
 				[data-years]:not([data-years="1"]):after {
 					content: "s";
 				}
@@ -770,16 +798,10 @@
 				background: $charcoal;
 				padding: 6.25px;
 				svg {
-					@include transition(.15s ease-in-out);
 					@include svg-stroke(white, 4);
 					display: block;
 					width: 100%;
 					height: 50px;
-					&:last-child:not(:first-child) {
-						@include opacity(0);
-						@include rotate(45);
-						display: none;
-					}
 				}
 				span {
 					display: block;
@@ -787,17 +809,37 @@
 					font-size: 18px;
 					font-weight: 600;
 				}
-				a {
-					&:hover, &:focus {
+				div {
+					position: relative;
+					margin: 5px auto 15px;
+					width: 32px;
+					height: 32px;
+					input {
+						@include opacity(0);
+						position: absolute;
+						z-index: 12;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+					span {
+						display: block;
+						width: 32px;
+						height: 32px;
+						border-radius: 3px;
+						background: $slate;
 						svg {
-							&:first-child:not(:last-child) {
-								@include opacity(0);
-								display: none;
-							}
-							&:last-child:not(:first-child) {
-								@include opacity(1);
-								display: block;
-							}
+							@include svg-stroke(lighten($slate, 20%), 10);
+							padding: 4px;
+							width: 32px!important;
+							height: 32px!important;
+						}
+					}
+					input:checked + span {
+						background: $shamrock;
+						svg {
+							stroke: white;
 						}
 					}
 				}
@@ -1113,7 +1155,32 @@
 	}
 }
 
+#guru-profile-cta-close {
+	@include flex;
+	@include flex-center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60px;
+	height: 60px;
+}
+
 // EDIT
+.pf-edit-mode-banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: rgba(darken($auburn, 20%), .5);
+	span {
+		display: block;
+		padding: 20px;
+		font-size: 18px;
+		font-weight: 600;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
 .pf-edit-pf {
 	position: absolute;
 	bottom: 0;
@@ -1939,6 +2006,11 @@
 		@include opacity(0);
 		display: none;
 	}
+	.pf-list-x.ugrid-3 {
+		li {
+			width: calc(100% / 6)!important;
+		}
+	}
 	.pf-type:not(.pf-modal) {
 		.pf-links {
 			li {
@@ -2678,7 +2750,7 @@
 		}
 		.pf-header .pf-url {
 			li {
-				&:first-child a, input, span {
+				&:first-child input {
 					color:  desaturate(darken($cerise, 20%), 20%)!important;
 				}
 				&:last-child a {
@@ -2723,6 +2795,23 @@
 	.pf-list {
 		h1 {
 			background: $cerise;
+		}
+		button {
+			&:hover, &:focus {
+				background: $cerise;
+			}
+			&:active, &.activated {
+				background: lighten($cerise, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $cerise;
+					}
+				}
+			}
 		}
 	}
 	.pf-checklist {
@@ -3063,7 +3152,7 @@
 		}
 		.pf-header .pf-url {
 			li {
-				&:first-child a, input, span {
+				&:first-child input {
 					color:  desaturate(darken($moola, 20%), 20%)!important;
 				}
 				&:last-child a {
@@ -3108,6 +3197,23 @@
 	.pf-list {
 		h1 {
 			background: $moola;
+		}
+		button {
+			&:hover, &:focus {
+				background: $moola;
+			}
+			&:active, &.activated {
+				background: lighten($moola, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $moola;
+					}
+				}
+			}
 		}
 	}
 	.pf-checklist {
@@ -3308,7 +3414,7 @@
 		}
 		.pf-header .pf-url {
 			li {
-				&:first-child a, input, span {
+				&:first-child input {
 					color:  desaturate(darken($gold, 40%), 20%)!important;
 				}
 				&:last-child a {
@@ -3353,6 +3459,23 @@
 	.pf-list {
 		h1 {
 			background: $gold;
+		}
+		button {
+			&:hover, &:focus {
+				background: $gold;
+			}
+			&:active, &.activated {
+				background: lighten($gold, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $gold;
+					}
+				}
+			}
 		}
 	}
 	.pf-rating:not(.default) {
@@ -3607,7 +3730,7 @@
 		}
 		.pf-header .pf-url {
 			li {
-				&:first-child a, input, span {
+				&:first-child input {
 					color: desaturate(darken($cobalt, 30%), 20%)!important;
 				}
 				&:last-child a {
@@ -3652,6 +3775,23 @@
 	.pf-list {
 		h1 {
 			background: $cobalt;
+		}
+		button {
+			&:hover, &:focus {
+				background: $cobalt;
+			}
+			&:active, &.activated {
+				background: lighten($cobalt, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $cobalt;
+					}
+				}
+			}
 		}
 	}
 	.pf-checklist {
@@ -3851,7 +3991,7 @@
 		}
 		.pf-header .pf-url {
 			li {
-				&:first-child a, input, span {
+				&:first-child input {
 					color:  desaturate(darken($auburn, 30%), 20%)!important;
 				}
 				&:last-child a {
@@ -3896,6 +4036,23 @@
 	.pf-list {
 		h1 {
 			background: $auburn;
+		}
+		button {
+			&:hover, &:focus {
+				background: $auburn;
+			}
+			&:active, &.activated {
+				background: lighten($auburn, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $auburn;
+					}
+				}
+			}
 		}
 	}
 	.pf-checklist {
@@ -4095,7 +4252,7 @@
 		}
 		.pf-header .pf-url {
 			li {
-				&:first-child a, input, span {
+				&:first-child input {
 					color:  desaturate(darken($orange, 20%), 20%)!important;
 				}
 				&:last-child a {
@@ -4140,6 +4297,23 @@
 	.pf-list {
 		h1 {
 			background: $orange;
+		}
+		button {
+			&:hover, &:focus {
+				background: $orange;
+			}
+			&:active, &.activated {
+				background: lighten($orange, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $orange;
+					}
+				}
+			}
 		}
 	}
 	.pf-checklist {
@@ -4339,7 +4513,7 @@
 		}
 		.pf-header .pf-url {
 			li {
-				&:first-child a, input, span {
+				&:first-child input {
 					color:  desaturate(darken($eggplant, 20%), 10%)!important;
 				}
 				&:last-child a {
@@ -4384,6 +4558,23 @@
 	.pf-list {
 		h1 {
 			background: $eggplant;
+		}
+		button {
+			&:hover, &:focus {
+				background: $eggplant;
+			}
+			&:active, &.activated {
+				background: lighten($eggplant, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $eggplant;
+					}
+				}
+			}
 		}
 	}
 	.pf-checklist {
@@ -4583,7 +4774,7 @@
 		}
 		.pf-header .pf-url {
 			li {
-				&:first-child a, input, span {
+				&:first-child input {
 					color:  desaturate(darken($azure, 20%), 10%)!important;
 				}
 				&:last-child a {
@@ -4628,6 +4819,23 @@
 	.pf-list {
 		h1 {
 			background: $azure;
+		}
+		button {
+			&:hover, &:focus {
+				background: $azure;
+			}
+			&:active, &.activated {
+				background: lighten($azure, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $azure;
+					}
+				}
+			}
 		}
 	}
 	.pf-checklist {
