@@ -932,6 +932,13 @@
   display: none;
 }
 
+.pf-type .pf-list .pf-list-x li span {
+  display: block;
+  padding-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .pf-type .pf-list .pf-list-x li a:hover svg:first-child:not(:last-child), .pf-type .pf-list .pf-list-x li a:focus svg:first-child:not(:last-child) {
   filter: alpha(opacity=0);
   opacity: 0;
@@ -1071,15 +1078,49 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  position: relative;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-align-items: flex-end;
   align-items: flex-end;
   -webkit-justify-content: center;
   justify-content: center;
+  position: relative;
   background: #2B3234;
+  height: 100%;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 106px);
+  padding: 15px;
+  background-color: #485d5d;
   background-position: center center;
   background-size: cover;
-  height: 100%;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-price {
+  z-index: 20;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-price + .pf-checklist-item-bg span {
+  display: block;
+  padding-bottom: 15px;
 }
 
 .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check {
@@ -1299,6 +1340,7 @@
 .pf-type .pf-tab-item {
   height: calc(100% / 3 * 2 - 60px);
   overflow: auto;
+  background: #40484B;
 }
 
 .pf-type .pf-tab-item:not(.active) {
@@ -1307,11 +1349,16 @@
 
 .pf-type .pf-tab-container {
   position: relative;
-  height: calc(100% / 3 * 2);
+  height: 100%;
+  overflow: auto;
 }
 
 .pf-type .pf-tab-container .pf-tab-item {
   height: calc(100% - 60px);
+}
+
+.pf-type header.pf-item-header + .pf-tab-container {
+  height: calc(100% / 3 * 2);
 }
 
 .pf-type.pf-has-edit .pf-tab-container .pf-tab-item {
@@ -1409,6 +1456,24 @@
   background: #30373a;
 }
 
+.pf-edit header {
+  background: #373f42;
+}
+
+.pf-edit header h1 {
+  font-size: 28px !important;
+  text-transform: lowercase;
+}
+
+.pf-edit header .header-nav a {
+  height: 58px;
+}
+
+.pf-edit header .header-nav a svg {
+  width: 36px;
+  height: 36px;
+}
+
 .pf-edit button {
   background: #69B3A5;
   font-weight: 600;
@@ -1427,12 +1492,179 @@
 }
 
 .pf-edit .main {
+  height: calc(100% / 3 * 2 - 64px);
+}
+
+.pf-edit header.no-photo-list + .main {
+  height: calc(100% - 50px - 64px);
+}
+
+.pf-edit .main {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  height: calc(100% / 3 * 2 - 64px);
   overflow: auto;
   padding: 15px !important;
+}
+
+.pf-edit .main .pf-course-check {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-top: 0 !important;
+}
+
+.pf-edit .main .pf-course-check div {
+  position: relative;
+}
+
+.pf-edit .main .pf-course-check div input {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: absolute;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pf-edit .main .pf-course-check div span {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+  background: #40484B;
+}
+
+.pf-edit .main .pf-course-check div span svg {
+  fill: none;
+  stroke: #6f7d82;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  padding: 4px;
+  width: 100%;
+  height: 100%;
+}
+
+.pf-edit .main .pf-course-check div input:checked + span {
+  background: #69B3A5;
+}
+
+.pf-edit .main .pf-course-check div input:checked + span svg {
+  stroke: white;
+}
+
+.pf-edit .main .pf-course-check label {
+  padding-left: 15px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pf-edit .main .pf-item-search {
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+.pf-edit .main .pf-item-search .pf-item-selected {
+  margin-top: 15px;
+}
+
+.pf-edit .main .pf-item-search .pf-item-selected h1 {
+  font-size: 28px;
+  font-weight: 900;
+  text-align: left;
+  text-transform: none !important;
+  margin: 0 !important;
+}
+
+.pf-edit .main .pf-item-search .pf-item-selected h2 {
+  font-size: 20px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.pf-edit .main .pf-item-search .input-field .prefix {
+  margin-top: 6px;
+}
+
+.pf-edit .main .pf-item-search .input-field .prefix svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 100%;
+  height: 100%;
+  padding: 11px;
+}
+
+.pf-edit .main .pf-item-search .input-field input {
+  width: calc(100% - 48px) !important;
+}
+
+.pf-edit .main .pf-item-search .input-field input, .pf-edit .main .pf-item-search .input-field label {
+  color: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.pf-edit .main .pf-item-search .input-field input:focus {
+  color: white !important;
+  border-color: white !important;
+}
+
+.pf-edit .main .pf-item-search .input-field .desktop-input-close-icon {
+  right: 15px;
+  margin-top: -20px;
+}
+
+@media screen and (min-width: 768px) {
+  .pf-edit .main .pf-item-search .pf-item-selected h1 {
+    font-size: 36px;
+  }
+  .pf-edit .main .pf-item-search .pf-item-selected h2 {
+    font-size: 28px;
+  }
+  .pf-edit .main .pf-item-search .input-field .prefix svg {
+    fill: none;
+    stroke: white;
+    stroke-width: 7px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin-top: 8px;
+    margin-left: -6px;
+    width: 48px;
+    height: 48px;
+    padding: 6px 12px 6px 0;
+  }
+  .pf-edit .main .pf-item-search .input-field input {
+    color: white;
+    height: 64px;
+  }
+  .pf-edit .main .pf-item-search .input-field input, .pf-edit .main .pf-item-search .input-field label {
+    font-size: 36px;
+  }
+  .pf-edit .main .pf-item-search .input-field .prefix + input {
+    margin-left: 48px !important;
+  }
+  .pf-edit .main .pf-item-search .input-field label {
+    top: 6px;
+  }
+  .pf-edit .main .pf-item-search .input-field label.active {
+    font-size: 24px;
+  }
 }
 
 .pf-edit .main .input-outline {
@@ -1441,13 +1673,15 @@
   -ms-transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
-  border-color: #576267;
+  border-width: 0;
+  border-bottom-width: 5px;
+  border-color: rgba(255, 255, 255, 0.7);
   background: #4c5559;
   padding: 10px 15px;
 }
 
 .pf-edit .main .input-outline:focus {
-  border-color: #6f7d82;
+  border-color: #69B3A5;
   background: #576267;
 }
 
@@ -1507,45 +1741,81 @@
   display: flex;
   -webkit-align-items: center;
   align-items: center;
-  background: #576267;
+  background: #485d5d;
   margin-right: 15px;
-}
-
-.pf-edit .main .pf-tag-edit .chip:hover {
-  background: #637074;
-}
-
-.pf-edit .main .pf-tag-edit .chip svg {
-  fill: none;
-  stroke: white;
-  stroke-width: 10px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  width: 12px;
-  height: 12px;
-  margin-right: 3px;
-}
-
-.pf-edit .main .pf-tag-edit .chip input {
-  background: transparent;
   border: 0;
+}
+
+.pf-edit .main .pf-tag-edit .chip::-webkit-input-placeholder {
   color: white !important;
 }
 
-.pf-edit .main .pf-tag-edit .chip input::-webkit-input-placeholder {
+.pf-edit .main .pf-tag-edit .chip:-moz-placeholder {
   color: white !important;
 }
 
-.pf-edit .main .pf-tag-edit .chip input:-moz-placeholder {
+.pf-edit .main .pf-tag-edit .chip::-moz-placeholder {
   color: white !important;
 }
 
-.pf-edit .main .pf-tag-edit .chip input::-moz-placeholder {
+.pf-edit .main .pf-tag-edit .chip:-ms-input-placeholder {
   color: white !important;
 }
 
-.pf-edit .main .pf-tag-edit .chip input:-ms-input-placeholder {
+.pf-edit .main .pf-tag-edit .chip[disabled] {
+  cursor: pointer;
+}
+
+.pf-edit .main .pf-tag-edit .chip[disabled]::-webkit-input-placeholder {
   color: white !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip[disabled]:-moz-placeholder {
+  color: white !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip[disabled]::-moz-placeholder {
+  color: white !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip[disabled]:-ms-input-placeholder {
+  color: white !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip.tag-auto {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip.tag-auto:hover, .pf-edit .main .pf-tag-edit .chip.tag-auto:focus {
+  background: #69B3A5;
+  color: white !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip.tag-auto:active {
+  background: #add5ce;
+  color: white !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip.tag-selected {
+  background: #69B3A5;
+}
+
+.pf-edit .main .pf-tag-edit .chip.tag-selected:hover, .pf-edit .main .pf-tag-edit .chip.tag-selected:focus {
+  background: #485d5d;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip.tag-selected:active {
+  background: #40484B;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.pf-edit .main .pf-tag-edit .chip.tag-add {
+  background: #598881;
+}
+
+.pf-edit .main .pf-tag-edit .chip.tag-add:hover, .pf-edit .main .pf-tag-edit .chip.tag-add:focus {
+  background: #69B3A5;
 }
 
 .pf-edit .main .pf-pricing {
@@ -1553,6 +1823,28 @@
   background: #4c5559;
   padding: 15px;
   width: 100%;
+}
+
+.pf-edit .main .pf-attach-list {
+  padding-top: 15px;
+  height: 186px;
+  overflow: visible;
+  background: #4c5559;
+  text-align: center;
+}
+
+.pf-edit .main .pf-attach-list h1 {
+  margin-bottom: 0 !important;
+}
+
+.pf-edit .main .pf-attach-list ul {
+  height: 150px;
+  width: 100%;
+  overflow: auto;
+}
+
+.pf-edit .main .pf-attach-list ul li div.pf-upload-file svg.doc-outline {
+  stroke-width: 1.3px;
 }
 
 .pf-checklist-full .pf-edit header.third {
@@ -2232,6 +2524,13 @@
     width: calc(100% / 3 * 2);
     height: 100%;
   }
+  .pf-modal .pf-shop-item-header h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .pf-modal .pf-shop-item-header h2 + h1 {
+    margin-top: 0 !important;
+  }
   .pf-modal .pf-shop-item-header h1 {
     font-size: 48px !important;
   }
@@ -2263,24 +2562,20 @@
   .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-review-amt {
     display: block;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active:not(.pf-type-photo) .pf-item-header {
+  .pf-type .pf-checklist .pf-checklist-full:not(.pf-type-photo) .pf-item-header {
     height: 256px !important;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active {
-    display: block;
+  .pf-type .pf-checklist .pf-checklist-full {
     width: 100% !important;
     padding: 15px;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-item-header {
+  .pf-type .pf-checklist .pf-checklist-full .pf-item-header {
     background-color: #2B3234;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-tab-container {
+  .pf-type .pf-checklist .pf-checklist-full .pf-tab-container {
     height: auto;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-attachments h3, .pf-type .pf-checklist .pf-checklist-full.active .pf-tags h3, .pf-type .pf-checklist .pf-checklist-full.active .pf-ingredients h3 {
-    font-size: 24px;
-  }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-attachments ul {
+  .pf-type .pf-checklist .pf-checklist-full .pf-attachments ul {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -2292,34 +2587,31 @@
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-attachments ul li {
+  .pf-type .pf-checklist .pf-checklist-full .pf-attachments ul li {
     width: 50%;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-attachments p {
+  .pf-type .pf-checklist .pf-checklist-full .pf-attachments p {
     margin-top: 5px;
     font-size: 20px;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-reviews {
+  .pf-type .pf-checklist .pf-checklist-full .pf-reviews {
     background: rgba(43, 50, 52, 0.5);
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-reviews h2 {
+  .pf-type .pf-checklist .pf-checklist-full .pf-reviews h2 {
     font-size: 28px;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-reviews h4 {
+  .pf-type .pf-checklist .pf-checklist-full .pf-reviews h4 {
     font-size: 24px;
     line-height: 32px;
   }
-  .pf-type .pf-checklist .pf-checklist-full.active .pf-reviews p {
+  .pf-type .pf-checklist .pf-checklist-full .pf-reviews p {
     font-size: 20px;
   }
   .pf-type .pf-shop-desc {
     padding: 30px;
-    position: relative !important;
   }
-  .pf-type .pf-shop-desc ion-pane {
-    position: absolute !important;
-  }
-  .pf-type .pf-shop-desc h1 {
+  .pf-type .pf-shop-desc > h1 {
+    margin-top: -15px;
     font-size: 48px;
   }
   .pf-type .pf-shop-desc p {
@@ -2508,14 +2800,15 @@ a.cta-modal-close svg {
   padding: 0;
 }
 
-.pf-modal .pf-shop-item .pf-attachments, .pf-modal .pf-shop-item .pf-tags, .pf-modal .pf-shop-item .pf-ingredients {
-  padding: 0 15px 15px;
+.pf-modal .pf-shop-item h3 {
+  padding: 15px;
+  font-weight: 700;
   text-align: left;
 }
 
-.pf-modal .pf-shop-item .pf-attachments h3, .pf-modal .pf-shop-item .pf-tags h3, .pf-modal .pf-shop-item .pf-ingredients h3 {
-  font-size: 18px;
-  font-weight: 700;
+.pf-modal .pf-shop-item .pf-attachments, .pf-modal .pf-shop-item .pf-tags, .pf-modal .pf-shop-item .pf-ingredients {
+  padding: 0 15px 15px;
+  text-align: left;
 }
 
 .pf-modal .pf-shop-item .pf-tags {
@@ -2553,6 +2846,7 @@ a.cta-modal-close svg {
   align-items: center;
   background: #576267;
   margin-right: 15px;
+  border: 0;
 }
 
 .pf-modal .pf-shop-item .pf-tags .chip:hover {
@@ -2952,24 +3246,64 @@ a.cta-modal-close svg {
   color: white !important;
 }
 
-.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a {
+.pf-edit.pf-type-academic .pf-course-check div input:checked + span {
+  background: #e6389b;
+}
+
+.pf-edit.pf-type-academic .input-outline:focus {
   border-color: #e6389b;
 }
 
-.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+.pf-edit.pf-type-academic .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #e6389b;
+}
+
+.pf-edit.pf-type-academic .pf-photo-list ul li div.pf-upload-add a span svg {
   stroke: #e6389b;
 }
 
-.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a span span {
+.pf-edit.pf-type-academic .pf-photo-list ul li div.pf-upload-add a span span {
   color: #e6389b;
 }
 
-.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+.pf-edit.pf-type-academic .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-academic .pf-photo-list ul li div.pf-upload-add a:focus {
   background: white;
 }
 
-.pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-academic header.third .pf-photo-list ul li div.pf-upload-add a.active {
+.pf-edit.pf-type-academic .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-academic .pf-photo-list ul li div.pf-upload-add a.active {
   background: #fad7eb;
+}
+
+.pf-edit.pf-type-academic .pf-tag-edit .chip {
+  background: #61455b;
+}
+
+.pf-edit.pf-type-academic .pf-tag-edit .chip.tag-auto:hover, .pf-edit.pf-type-academic .pf-tag-edit .chip.tag-auto:focus {
+  background: #e6389b;
+}
+
+.pf-edit.pf-type-academic .pf-tag-edit .chip.tag-auto:active {
+  background: #f193c9;
+}
+
+.pf-edit.pf-type-academic .pf-tag-edit .chip.tag-selected {
+  background: #e6389b;
+}
+
+.pf-edit.pf-type-academic .pf-tag-edit .chip.tag-selected:hover, .pf-edit.pf-type-academic .pf-tag-edit .chip.tag-selected:focus {
+  background: #61455b;
+}
+
+.pf-edit.pf-type-academic .pf-tag-edit .chip.tag-selected:active {
+  background: #40484B;
+}
+
+.pf-edit.pf-type-academic .pf-tag-edit .chip.tag-add {
+  background: #a43e7b;
+}
+
+.pf-edit.pf-type-academic .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-academic .pf-tag-edit .chip.tag-add:focus {
+  background: #e6389b;
 }
 
 .pf-card-academic .pf-card-top {
@@ -3065,6 +3399,10 @@ a.cta-modal-close svg {
   background: #e6389b;
 }
 
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  background-color: #61455b;
+}
+
 .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
   stroke: #e6389b;
 }
@@ -3110,24 +3448,64 @@ a.cta-modal-close svg {
   color: white !important;
 }
 
-.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a {
+.pf-edit.pf-type-photo .pf-course-check div input:checked + span {
+  background: #81B566;
+}
+
+.pf-edit.pf-type-photo .input-outline:focus {
   border-color: #81B566;
 }
 
-.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+.pf-edit.pf-type-photo .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #81B566;
+}
+
+.pf-edit.pf-type-photo .pf-photo-list ul li div.pf-upload-add a span svg {
   stroke: #81B566;
 }
 
-.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a span span {
+.pf-edit.pf-type-photo .pf-photo-list ul li div.pf-upload-add a span span {
   color: #81B566;
 }
 
-.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+.pf-edit.pf-type-photo .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-photo .pf-photo-list ul li div.pf-upload-add a:focus {
   background: white;
 }
 
-.pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-photo header.third .pf-photo-list ul li div.pf-upload-add a.active {
+.pf-edit.pf-type-photo .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-photo .pf-photo-list ul li div.pf-upload-add a.active {
   background: #e4efde;
+}
+
+.pf-edit.pf-type-photo .pf-tag-edit .chip {
+  background: #4d5e50;
+}
+
+.pf-edit.pf-type-photo .pf-tag-edit .chip.tag-auto:hover, .pf-edit.pf-type-photo .pf-tag-edit .chip.tag-auto:focus {
+  background: #81B566;
+}
+
+.pf-edit.pf-type-photo .pf-tag-edit .chip.tag-auto:active {
+  background: #bad6ab;
+}
+
+.pf-edit.pf-type-photo .pf-tag-edit .chip.tag-selected {
+  background: #81B566;
+}
+
+.pf-edit.pf-type-photo .pf-tag-edit .chip.tag-selected:hover, .pf-edit.pf-type-photo .pf-tag-edit .chip.tag-selected:focus {
+  background: #4d5e50;
+}
+
+.pf-edit.pf-type-photo .pf-tag-edit .chip.tag-selected:active {
+  background: #81B566;
+}
+
+.pf-edit.pf-type-photo .pf-tag-edit .chip.tag-add {
+  background: #67895b;
+}
+
+.pf-edit.pf-type-photo .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-photo .pf-tag-edit .chip.tag-add:focus {
+  background: #81B566;
 }
 
 .pf-card-photo .pf-card-top {
@@ -3456,6 +3834,10 @@ a.cta-modal-close svg {
   color: #40484B;
 }
 
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  background-color: #4d5e50;
+}
+
 .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
   stroke: white;
 }
@@ -3501,24 +3883,64 @@ a.cta-modal-close svg {
   color: white !important;
 }
 
-.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a {
+.pf-edit.pf-type-baking .pf-course-check div input:checked + span {
+  background: #F6C64E;
+}
+
+.pf-edit.pf-type-baking .input-outline:focus {
   border-color: #F6C64E;
 }
 
-.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+.pf-edit.pf-type-baking .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #F6C64E;
+}
+
+.pf-edit.pf-type-baking .pf-photo-list ul li div.pf-upload-add a span svg {
   stroke: #F6C64E;
 }
 
-.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a span span {
+.pf-edit.pf-type-baking .pf-photo-list ul li div.pf-upload-add a span span {
   color: #F6C64E;
 }
 
-.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+.pf-edit.pf-type-baking .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-baking .pf-photo-list ul li div.pf-upload-add a:focus {
   background: white;
 }
 
-.pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-baking header.third .pf-photo-list ul li div.pf-upload-add a.active {
+.pf-edit.pf-type-baking .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-baking .pf-photo-list ul li div.pf-upload-add a.active {
   background: #fcedc7;
+}
+
+.pf-edit.pf-type-baking .pf-tag-edit .chip {
+  background: #64614c;
+}
+
+.pf-edit.pf-type-baking .pf-tag-edit .chip.tag-auto:hover, .pf-edit.pf-type-baking .pf-tag-edit .chip.tag-auto:focus {
+  background: #F6C64E;
+}
+
+.pf-edit.pf-type-baking .pf-tag-edit .chip.tag-auto:active {
+  background: #fbe5af;
+}
+
+.pf-edit.pf-type-baking .pf-tag-edit .chip.tag-selected {
+  background: #F6C64E;
+}
+
+.pf-edit.pf-type-baking .pf-tag-edit .chip.tag-selected:hover, .pf-edit.pf-type-baking .pf-tag-edit .chip.tag-selected:focus {
+  background: #64614c;
+}
+
+.pf-edit.pf-type-baking .pf-tag-edit .chip.tag-selected:active {
+  background: #40484B;
+}
+
+.pf-edit.pf-type-baking .pf-tag-edit .chip.tag-add {
+  background: #ad944d;
+}
+
+.pf-edit.pf-type-baking .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-baking .pf-tag-edit .chip.tag-add:focus {
+  background: #F6C64E;
 }
 
 .pf-card-baking .pf-card-top {
@@ -3646,6 +4068,10 @@ a.cta-modal-close svg {
   background: #F6C64E;
 }
 
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  background-color: #64614c;
+}
+
 .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
   stroke: #F6C64E;
 }
@@ -3691,24 +4117,64 @@ a.cta-modal-close svg {
   color: white !important;
 }
 
-.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a {
+.pf-edit.pf-type-household .pf-course-check div input:checked + span {
+  background: #7872e3;
+}
+
+.pf-edit.pf-type-household .input-outline:focus {
   border-color: #7872e3;
 }
 
-.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+.pf-edit.pf-type-household .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #7872e3;
+}
+
+.pf-edit.pf-type-household .pf-photo-list ul li div.pf-upload-add a span svg {
   stroke: #7872e3;
 }
 
-.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a span span {
+.pf-edit.pf-type-household .pf-photo-list ul li div.pf-upload-add a span span {
   color: #7872e3;
 }
 
-.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+.pf-edit.pf-type-household .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-household .pf-photo-list ul li div.pf-upload-add a:focus {
   background: white;
 }
 
-.pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-household header.third .pf-photo-list ul li div.pf-upload-add a.active {
+.pf-edit.pf-type-household .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-household .pf-photo-list ul li div.pf-upload-add a.active {
   background: #dedcf8;
+}
+
+.pf-edit.pf-type-household .pf-tag-edit .chip {
+  background: #4b5069;
+}
+
+.pf-edit.pf-type-household .pf-tag-edit .chip.tag-auto:hover, .pf-edit.pf-type-household .pf-tag-edit .chip.tag-auto:focus {
+  background: #7872e3;
+}
+
+.pf-edit.pf-type-household .pf-tag-edit .chip.tag-auto:active {
+  background: #c9c7f4;
+}
+
+.pf-edit.pf-type-household .pf-tag-edit .chip.tag-selected {
+  background: #7872e3;
+}
+
+.pf-edit.pf-type-household .pf-tag-edit .chip.tag-selected:hover, .pf-edit.pf-type-household .pf-tag-edit .chip.tag-selected:focus {
+  background: #4b5069;
+}
+
+.pf-edit.pf-type-household .pf-tag-edit .chip.tag-selected:active {
+  background: #40484B;
+}
+
+.pf-edit.pf-type-household .pf-tag-edit .chip.tag-add {
+  background: #6261a6;
+}
+
+.pf-edit.pf-type-household .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-household .pf-tag-edit .chip.tag-add:focus {
+  background: #7872e3;
 }
 
 .pf-card-household .pf-card-top {
@@ -3804,6 +4270,10 @@ a.cta-modal-close svg {
   background: #7872e3;
 }
 
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  background-color: #4b5069;
+}
+
 .pf-type-household .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
   stroke: #7872e3;
 }
@@ -3849,24 +4319,64 @@ a.cta-modal-close svg {
   color: white !important;
 }
 
-.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a {
+.pf-edit.pf-type-delivery .pf-course-check div input:checked + span {
+  background: #F04F54;
+}
+
+.pf-edit.pf-type-delivery .input-outline:focus {
   border-color: #F04F54;
 }
 
-.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+.pf-edit.pf-type-delivery .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #F04F54;
+}
+
+.pf-edit.pf-type-delivery .pf-photo-list ul li div.pf-upload-add a span svg {
   stroke: #F04F54;
 }
 
-.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a span span {
+.pf-edit.pf-type-delivery .pf-photo-list ul li div.pf-upload-add a span span {
   color: #F04F54;
 }
 
-.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+.pf-edit.pf-type-delivery .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-delivery .pf-photo-list ul li div.pf-upload-add a:focus {
   background: white;
 }
 
-.pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-delivery header.third .pf-photo-list ul li div.pf-upload-add a.active {
+.pf-edit.pf-type-delivery .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-delivery .pf-photo-list ul li div.pf-upload-add a.active {
   background: #fcdcdd;
+}
+
+.pf-edit.pf-type-delivery .pf-tag-edit .chip {
+  background: #63494d;
+}
+
+.pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-auto:hover, .pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-auto:focus {
+  background: #F04F54;
+}
+
+.pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-auto:active {
+  background: #f8adaf;
+}
+
+.pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-selected {
+  background: #F04F54;
+}
+
+.pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-selected:hover, .pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-selected:focus {
+  background: #63494d;
+}
+
+.pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-selected:active {
+  background: #40484B;
+}
+
+.pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-add {
+  background: #aa4c50;
+}
+
+.pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-add:focus {
+  background: #F04F54;
 }
 
 .pf-card-delivery .pf-card-top {
@@ -3962,6 +4472,10 @@ a.cta-modal-close svg {
   background: #F04F54;
 }
 
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  background-color: #63494d;
+}
+
 .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
   stroke: #F04F54;
 }
@@ -4007,24 +4521,64 @@ a.cta-modal-close svg {
   color: white !important;
 }
 
-.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a {
+.pf-edit.pf-type-freelancing .pf-course-check div input:checked + span {
+  background: #E5753C;
+}
+
+.pf-edit.pf-type-freelancing .input-outline:focus {
   border-color: #E5753C;
 }
 
-.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+.pf-edit.pf-type-freelancing .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #E5753C;
+}
+
+.pf-edit.pf-type-freelancing .pf-photo-list ul li div.pf-upload-add a span svg {
   stroke: #E5753C;
 }
 
-.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a span span {
+.pf-edit.pf-type-freelancing .pf-photo-list ul li div.pf-upload-add a span span {
   color: #E5753C;
 }
 
-.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+.pf-edit.pf-type-freelancing .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-freelancing .pf-photo-list ul li div.pf-upload-add a:focus {
   background: white;
 }
 
-.pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-freelancing header.third .pf-photo-list ul li div.pf-upload-add a.active {
+.pf-edit.pf-type-freelancing .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-freelancing .pf-photo-list ul li div.pf-upload-add a.active {
   background: #fae4d9;
+}
+
+.pf-edit.pf-type-freelancing .pf-tag-edit .chip {
+  background: #615148;
+}
+
+.pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-auto:hover, .pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-auto:focus {
+  background: #E5753C;
+}
+
+.pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-auto:active {
+  background: #f1b596;
+}
+
+.pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-selected {
+  background: #E5753C;
+}
+
+.pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-selected:hover, .pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-selected:focus {
+  background: #615148;
+}
+
+.pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-selected:active {
+  background: #40484B;
+}
+
+.pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-add {
+  background: #a36342;
+}
+
+.pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-add:focus {
+  background: #E5753C;
 }
 
 .pf-card-freelancing .pf-card-top {
@@ -4120,6 +4674,10 @@ a.cta-modal-close svg {
   background: #E5753C;
 }
 
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  background-color: #615148;
+}
+
 .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
   stroke: #E5753C;
 }
@@ -4165,24 +4723,64 @@ a.cta-modal-close svg {
   color: white !important;
 }
 
-.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a {
+.pf-edit.pf-type-athletic .pf-course-check div input:checked + span {
+  background: #9A5BC5;
+}
+
+.pf-edit.pf-type-athletic .input-outline:focus {
   border-color: #9A5BC5;
 }
 
-.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+.pf-edit.pf-type-athletic .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #9A5BC5;
+}
+
+.pf-edit.pf-type-athletic .pf-photo-list ul li div.pf-upload-add a span svg {
   stroke: #9A5BC5;
 }
 
-.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a span span {
+.pf-edit.pf-type-athletic .pf-photo-list ul li div.pf-upload-add a span span {
   color: #9A5BC5;
 }
 
-.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+.pf-edit.pf-type-athletic .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-athletic .pf-photo-list ul li div.pf-upload-add a:focus {
   background: white;
 }
 
-.pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-athletic header.third .pf-photo-list ul li div.pf-upload-add a.active {
+.pf-edit.pf-type-athletic .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-athletic .pf-photo-list ul li div.pf-upload-add a.active {
   background: #ebdff4;
+}
+
+.pf-edit.pf-type-athletic .pf-tag-edit .chip {
+  background: #524c63;
+}
+
+.pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-auto:hover, .pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-auto:focus {
+  background: #9A5BC5;
+}
+
+.pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-auto:active {
+  background: #c8a6e0;
+}
+
+.pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-selected {
+  background: #9A5BC5;
+}
+
+.pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-selected:hover, .pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-selected:focus {
+  background: #524c63;
+}
+
+.pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-selected:active {
+  background: #40484B;
+}
+
+.pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-add {
+  background: #765394;
+}
+
+.pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-add:focus {
+  background: #9A5BC5;
 }
 
 .pf-card-athletic .pf-card-top {
@@ -4278,6 +4876,10 @@ a.cta-modal-close svg {
   background: #9A5BC5;
 }
 
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  background-color: #524c63;
+}
+
 .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
   stroke: #9A5BC5;
 }
@@ -4323,24 +4925,64 @@ a.cta-modal-close svg {
   color: white !important;
 }
 
-.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a {
+.pf-edit.pf-type-tech .pf-course-check div input:checked + span {
+  background: #55A4B7;
+}
+
+.pf-edit.pf-type-tech .input-outline:focus {
   border-color: #55A4B7;
 }
 
-.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a span svg {
+.pf-edit.pf-type-tech .pf-photo-list ul li div.pf-upload-add a {
+  border-color: #55A4B7;
+}
+
+.pf-edit.pf-type-tech .pf-photo-list ul li div.pf-upload-add a span svg {
   stroke: #55A4B7;
 }
 
-.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a span span {
+.pf-edit.pf-type-tech .pf-photo-list ul li div.pf-upload-add a span span {
   color: #55A4B7;
 }
 
-.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a:focus {
+.pf-edit.pf-type-tech .pf-photo-list ul li div.pf-upload-add a:hover, .pf-edit.pf-type-tech .pf-photo-list ul li div.pf-upload-add a:focus {
   background: white;
 }
 
-.pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-tech header.third .pf-photo-list ul li div.pf-upload-add a.active {
+.pf-edit.pf-type-tech .pf-photo-list ul li div.pf-upload-add a:active, .pf-edit.pf-type-tech .pf-photo-list ul li div.pf-upload-add a.active {
   background: #d2e7ec;
+}
+
+.pf-edit.pf-type-tech .pf-tag-edit .chip {
+  background: #445a61;
+}
+
+.pf-edit.pf-type-tech .pf-tag-edit .chip.tag-auto:hover, .pf-edit.pf-type-tech .pf-tag-edit .chip.tag-auto:focus {
+  background: #55A4B7;
+}
+
+.pf-edit.pf-type-tech .pf-tag-edit .chip.tag-auto:active {
+  background: #9dcad5;
+}
+
+.pf-edit.pf-type-tech .pf-tag-edit .chip.tag-selected {
+  background: #55A4B7;
+}
+
+.pf-edit.pf-type-tech .pf-tag-edit .chip.tag-selected:hover, .pf-edit.pf-type-tech .pf-tag-edit .chip.tag-selected:focus {
+  background: #445a61;
+}
+
+.pf-edit.pf-type-tech .pf-tag-edit .chip.tag-selected:active {
+  background: #40484B;
+}
+
+.pf-edit.pf-type-tech .pf-tag-edit .chip.tag-add {
+  background: #4d7f8c;
+}
+
+.pf-edit.pf-type-tech .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-tech .pf-tag-edit .chip.tag-add:focus {
+  background: #55A4B7;
 }
 
 .pf-card-tech .pf-card-top {
@@ -4434,6 +5076,10 @@ a.cta-modal-close svg {
 
 .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
   background: #55A4B7;
+}
+
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  background-color: #445a61;
 }
 
 .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {

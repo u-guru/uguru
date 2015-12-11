@@ -781,6 +781,12 @@
 						display: none;
 					}
 				}
+				span {
+					display: block;
+					padding-bottom: 10px;
+					font-size: 18px;
+					font-weight: 600;
+				}
 				a {
 					&:hover, &:focus {
 						svg {
@@ -883,15 +889,35 @@
 			}
 			div {
 				@include flex;
-				position: relative;
+				@include flex-wrap;
 				-webkit-align-items: flex-end;
 				align-items: flex-end;
 				-webkit-justify-content: center;
 				justify-content: center;
+				position: relative;
 				background: $charcoal;
-				background-position: center center;
-				background-size: cover;
 				height: 100%;
+				.pf-checklist-item-bg {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: calc(100% - 106px);
+					padding: 15px;
+					background-color: mix($slate, $shamrock, 80%);
+					background-position: center center;
+					background-size: cover;
+					font-size: 32px;
+					font-weight: 600;
+				}
+				.pf-price {
+					z-index: 20;
+				}
+				.pf-price + .pf-checklist-item-bg {
+					span {
+						display: block;
+						padding-bottom: 15px;
+					}
+				}
 				.pf-check {
 					@include flex;
 					@include flex-center;
@@ -1035,16 +1061,21 @@
 	.pf-tab-item {
 		height: calc(100% / 3 * 2 - 60px);
 		overflow: auto;
+		background: $slate;
 		&:not(.active) {
 			display: none;
 		}
 	}
 	.pf-tab-container {
 		position: relative;
-		height: calc(100% / 3 * 2);
+		height: 100%;
+		overflow: auto;
 		.pf-tab-item {
 			height: calc(100% - 60px);
 		}
+	}
+	header.pf-item-header + .pf-tab-container {
+		height: calc(100% / 3 * 2);
 	}
 	&.pf-has-edit {
 		.pf-tab-container {
@@ -1116,6 +1147,20 @@
 }
 .pf-edit {
 	background: lighten($charcoal, 2%);
+	header {
+		background: lighten($charcoal, 5%);
+		h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+		}
+		.header-nav a {
+			height: 58px;
+			svg {
+			    width: 36px;
+			    height: 36px;
+			}
+		}
+	}
 	button {
 		background: $shamrock;
 		font-weight: 600;
@@ -1130,17 +1175,149 @@
 		}
 	}
 	.main {
-		@include flex-wrap;
 		height: calc(100% / 3 * 2 - 64px);
+	}
+	header.no-photo-list + .main {
+		height: calc(100% - 50px - 64px);
+	}
+	.main {
+		@include flex-wrap;
 		overflow: auto;
 		padding: 15px!important;
+		.pf-course-check {
+			@include flex;
+			@include flex-center;
+			margin-top: 0!important;
+			div {
+				position: relative;
+				input {
+					@include opacity(0);
+					position: absolute;
+					z-index: 12;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				span {
+					display: block;
+					width: 32px;
+					height: 32px;
+					border-radius: 3px;
+					background: $slate;
+					svg {
+						@include svg-stroke(lighten($slate, 20%), 10);
+						padding: 4px;
+						width: 100%;
+						height: 100%;
+					}
+				}
+				input:checked + span {
+					background: $shamrock;
+					svg {
+						stroke: white;
+					}
+				}
+			}
+			label {
+				padding-left: 15px;
+				color: white;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
+		.pf-item-search {
+			width: 100%;
+			margin-top: 0!important;
+			.pf-item-selected {
+				margin-top: 15px;
+				h1 {
+					font-size: 28px;
+					font-weight: 900;
+					text-align: left;
+					text-transform: none!important;
+					margin: 0!important;
+				}
+				h2 {
+					font-size: 20px;
+					text-align: left;
+					text-transform: uppercase;
+				}
+			}
+			.input-field {
+				.prefix {
+					margin-top: 6px;
+					svg {
+						@include svg-stroke(white, 5);
+						width: 100%;
+						height: 100%;
+						padding: 11px;
+					}
+				}
+				input {
+					width: calc(100% - 48px)!important;
+				}
+				input, label {
+					color: rgba(white,.6)!important;
+					border-color: rgba(white,.6)!important;
+				}
+				input:focus {
+					color: white!important;
+					border-color: white!important;
+				}
+				.desktop-input-close-icon {
+					right: 15px;
+					margin-top: -20px;
+				}
+			}
+			@media screen and (min-width:768px) {
+				.pf-item-selected {
+					h1 {
+						font-size: 36px;
+					}
+					h2 {
+						font-size: 28px;
+					}
+				}
+				.input-field {
+					.prefix {
+						svg {
+							@include svg-stroke(white, 7);
+							margin-top: 8px;
+							margin-left: -6px;
+							width: 48px;
+							height: 48px;
+							padding: 6px 12px 6px 0;
+						}
+					}
+					input {
+						color: white;
+						height: 64px;
+					}
+					input, label {
+						font-size: 36px;
+					}
+					.prefix + input {
+						margin-left: 48px !important;
+					}
+					label {
+						top: 6px;
+					}
+					label.active {
+						font-size: 24px;
+					}
+				}
+			}
+		}
 		.input-outline {
 			@include transition(.15s ease-in-out);
-			border-color: lighten($slate, 10%);
+			border-width: 0;
+			border-bottom-width: 5px;
+			border-color: rgba(white,.7);
 			background: lighten($slate, 5%);
 			padding: 10px 15px;
 			&:focus {
-				border-color: lighten($slate, 20%);
+				border-color: $shamrock;
 				background: lighten($slate, 10%);
 			}
 		}
@@ -1175,23 +1352,44 @@
 				@include transition(.15s ease-in-out);
 				@include flex;
 				@include flex-center-vertical;
-				background: lighten($slate, 10%);
+				background: mix($slate, $shamrock, 80%);
 				margin-right: 15px;
-				&:hover {
-					background: lighten($slate, 15%);
-				}
-				svg {
-					@include svg-stroke(white, 10);
-					width: 12px;
-					height: 12px;
-					margin-right: 3px;
-				}
-				input {
-					background: transparent;
-					border: 0;
+				border: 0;
+				@include placeholder {
 					color: white!important;
+				}
+				&[disabled] {
+					cursor: pointer;
 					@include placeholder {
 						color: white!important;
+					}
+				}
+				&.tag-auto {
+					color: rgba(white, .5)!important;
+					&:hover, &:focus {
+						background: $shamrock;
+						color: white!important;
+					}
+					&:active {
+						background: lighten($shamrock, 20%);
+						color: white!important;
+					}
+				}
+				&.tag-selected {
+					background: $shamrock;
+					&:hover, &:focus {
+						background: mix($slate, $shamrock, 80%);
+						color: rgba(white, .5)!important;
+					}
+					&:active {
+						background: $slate;
+						color: rgba(white, .5)!important;
+					}
+				}
+				&.tag-add {
+					background: mix($slate, $shamrock, 40%);
+					&:hover, &:focus {
+						background: $shamrock;
 					}
 				}
 			}
@@ -1201,6 +1399,28 @@
 			background: lighten($slate, 5%);
 			padding: 15px;
 			width: 100%;
+		}
+		.pf-attach-list {
+			padding-top: 15px;
+			height: 186px;
+			overflow: visible;
+			background: lighten($slate, 5%);
+			text-align: center;
+			h1 {
+				margin-bottom: 0!important;
+			}
+			ul {
+				height: 150px;
+				width: 100%;
+				overflow: auto;
+				li {
+					div.pf-upload-file {
+						svg.doc-outline {
+							stroke-width: 1.3px;
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -1780,6 +2000,13 @@
 	}
 	.pf-modal {
 		.pf-shop-item-header {
+			h2 {
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+			h2 + h1 {
+				margin-top: 0!important;
+			}
 			h1 {
 				font-size: 48px!important;
 			}
@@ -1809,13 +2036,12 @@
 					}
 				}
 			}
-			.pf-checklist-full.active:not(.pf-type-photo) {
+			.pf-checklist-full:not(.pf-type-photo) {
 				.pf-item-header {
 					height: 256px!important;
 				}
 			}
-			.pf-checklist-full.active {
-				display: block;
+			.pf-checklist-full {
 				width: 100%!important;
 				padding: 15px;
 				.pf-item-header {
@@ -1823,11 +2049,6 @@
 				}
 				.pf-tab-container {
 					height: auto;
-				}
-				.pf-attachments, .pf-tags, .pf-ingredients {
-					h3 {
-						font-size: 24px;
-					}
 				}
 				.pf-attachments {
 					ul {
@@ -1859,16 +2080,8 @@
 		}
 		.pf-shop-desc {
 			padding: 30px;
-// <<<<<<< HEAD
-			position:relative !important;
-			ion-pane {
-				position:absolute !important;
-			}
-			h1 {
-// =======
-// 			> h1 {
-// 				margin-top: -15px;
-// >>>>>>> 016a3cd13fbf61eafe7c6131d04300e71613c276
+			> h1 {
+				margin-top: -15px;
 				font-size: 48px;
 			}
 			p {
@@ -2013,13 +2226,14 @@
 	.pf-shop-item {
 		background: $charcoal;
 		padding: 0;
+		h3 {
+			padding: 15px;
+			font-weight: 700;
+			text-align: left;
+		}
 		.pf-attachments, .pf-tags, .pf-ingredients {
 			padding: 0 15px 15px;
 			text-align: left;
-			h3 {
-				font-size: 18px;
-				font-weight: 700;
-			}
 		}
 		.pf-tags {
 			text-align: center;
@@ -2034,6 +2248,7 @@
 				@include flex-center-vertical;
 				background: lighten($slate, 10%);
 				margin-right: 15px;
+				border: 0;
 				&:hover {
 					background: lighten($slate, 15%);
 				}
@@ -2331,29 +2546,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $cerise;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $cerise;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $cerise;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $cerise;
+						span {
+							svg {
+								stroke: $cerise;
+							}
 							span {
-								svg {
-									stroke: $cerise;
-								}
-								span {
-									color: $cerise;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($cerise, 35%);
+								color: $cerise;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($cerise, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $cerise, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $cerise;
+				}
+				&:active {
+					background: lighten($cerise, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $cerise;
+				&:hover, &:focus {
+					background: mix($slate, $cerise, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $cerise, 40%);
+				&:hover, &:focus {
+					background: $cerise;
 				}
 			}
 		}
@@ -2491,6 +2744,9 @@
 				.pf-check-label {
 					background: $cerise;
 				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $cerise, 80%);
+				}
 			}
 			input:checked + div .pf-check svg {
 				stroke: $cerise;
@@ -2534,29 +2790,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $moola;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $moola;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $moola;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $moola;
+						span {
+							svg {
+								stroke: $moola;
+							}
 							span {
-								svg {
-									stroke: $moola;
-								}
-								span {
-									color: $moola;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($moola, 35%);
+								color: $moola;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($moola, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $moola, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $moola;
+				}
+				&:active {
+					background: lighten($moola, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $moola;
+				&:hover, &:focus {
+					background: mix($slate, $moola, 80%);
+				}
+				&:active {
+					background: $moola;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $moola, 40%);
+				&:hover, &:focus {
+					background: $moola;
 				}
 			}
 		}
@@ -2836,6 +3130,9 @@
 					background: white;
 					color: $slate;
 				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $moola, 80%);
+				}
 			}
 			input:checked + div .pf-check svg {
 				stroke: white;
@@ -2879,29 +3176,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $gold;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $gold;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $gold;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $gold;
+						span {
+							svg {
+								stroke: $gold;
+							}
 							span {
-								svg {
-									stroke: $gold;
-								}
-								span {
-									color: $gold;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($gold, 25%);
+								color: $gold;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($gold, 25%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $gold, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $gold;
+				}
+				&:active {
+					background: lighten($gold, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $gold;
+				&:hover, &:focus {
+					background: mix($slate, $gold, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $gold, 40%);
+				&:hover, &:focus {
+					background: $gold;
 				}
 			}
 		}
@@ -3094,6 +3429,9 @@
 				.pf-check-label {
 					background: $gold;
 				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $gold, 80%);
+				}
 			}
 			input:checked + div .pf-check svg {
 				stroke: $gold;
@@ -3137,29 +3475,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $cobalt;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $cobalt;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $cobalt;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $cobalt;
+						span {
+							svg {
+								stroke: $cobalt;
+							}
 							span {
-								svg {
-									stroke: $cobalt;
-								}
-								span {
-									color: $cobalt;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($cobalt, 25%);
+								color: $cobalt;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($cobalt, 25%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $cobalt, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $cobalt;
+				}
+				&:active {
+					background: lighten($cobalt, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $cobalt;
+				&:hover, &:focus {
+					background: mix($slate, $cobalt, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $cobalt, 40%);
+				&:hover, &:focus {
+					background: $cobalt;
 				}
 			}
 		}
@@ -3297,6 +3673,9 @@
 				.pf-check-label {
 					background: $cobalt;
 				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $cobalt, 80%);
+				}
 			}
 			input:checked + div .pf-check svg {
 				stroke: $cobalt;
@@ -3340,29 +3719,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $auburn;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $auburn;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $auburn;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $auburn;
+						span {
+							svg {
+								stroke: $auburn;
+							}
 							span {
-								svg {
-									stroke: $auburn;
-								}
-								span {
-									color: $auburn;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($auburn, 30%);
+								color: $auburn;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($auburn, 30%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $auburn, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $auburn;
+				}
+				&:active {
+					background: lighten($auburn, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $auburn;
+				&:hover, &:focus {
+					background: mix($slate, $auburn, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $auburn, 40%);
+				&:hover, &:focus {
+					background: $auburn;
 				}
 			}
 		}
@@ -3500,6 +3917,9 @@
 				.pf-check-label {
 					background: $auburn;
 				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $auburn, 80%);
+				}
 			}
 			input:checked + div .pf-check svg {
 				stroke: $auburn;
@@ -3543,29 +3963,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $orange;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $orange;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $orange;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $orange;
+						span {
+							svg {
+								stroke: $orange;
+							}
 							span {
-								svg {
-									stroke: $orange;
-								}
-								span {
-									color: $orange;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($orange, 35%);
+								color: $orange;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($orange, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $orange, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $orange;
+				}
+				&:active {
+					background: lighten($orange, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $orange;
+				&:hover, &:focus {
+					background: mix($slate, $orange, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $orange, 40%);
+				&:hover, &:focus {
+					background: $orange;
 				}
 			}
 		}
@@ -3703,6 +4161,9 @@
 				.pf-check-label {
 					background: $orange;
 				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $orange, 80%);
+				}
 			}
 			input:checked + div .pf-check svg {
 				stroke: $orange;
@@ -3746,29 +4207,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $eggplant;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $eggplant;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $eggplant;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $eggplant;
+						span {
+							svg {
+								stroke: $eggplant;
+							}
 							span {
-								svg {
-									stroke: $eggplant;
-								}
-								span {
-									color: $eggplant;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($eggplant, 35%);
+								color: $eggplant;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($eggplant, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $eggplant, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $eggplant;
+				}
+				&:active {
+					background: lighten($eggplant, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $eggplant;
+				&:hover, &:focus {
+					background: mix($slate, $eggplant, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $eggplant, 40%);
+				&:hover, &:focus {
+					background: $eggplant;
 				}
 			}
 		}
@@ -3906,6 +4405,9 @@
 				.pf-check-label {
 					background: $eggplant;
 				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $eggplant, 80%);
+				}
 			}
 			input:checked + div .pf-check svg {
 				stroke: $eggplant;
@@ -3949,29 +4451,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $azure;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $azure;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $azure;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $azure;
+						span {
+							svg {
+								stroke: $azure;
+							}
 							span {
-								svg {
-									stroke: $azure;
-								}
-								span {
-									color: $azure;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($azure, 35%);
+								color: $azure;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($azure, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $azure, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $azure;
+				}
+				&:active {
+					background: lighten($azure, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $azure;
+				&:hover, &:focus {
+					background: mix($slate, $azure, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $azure, 40%);
+				&:hover, &:focus {
+					background: $azure;
 				}
 			}
 		}
@@ -4108,6 +4648,9 @@
 				}
 				.pf-check-label {
 					background: $azure;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $azure, 80%);
 				}
 			}
 			input:checked + div .pf-check svg {
