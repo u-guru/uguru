@@ -270,6 +270,10 @@ class User(Base):
 
     current_device = relationship("Device", uselist=False)
 
+    external_profiles = relationship("Resource",
+        primaryjoin = "(Resource.contributed_user_id==User.id) & "\
+                        "(Resource.is_profile==True)")
+
     # conducted every night at midnight
     estimated_guru_score = Column(Integer)
     estimated_guru_rank = Column(Integer)
@@ -383,7 +387,6 @@ class User(Base):
         user.referral_code = User.generate_referral_code(user.name)
         user.auth_token = uuid.uuid4().hex
         user.email_notifications = True
-        user.profile_code = User.generateProfileCode(user)
         if options.get('fb_id'):
             user.profile_url = options.get('profile_url')
             user.fb_id = options.get('fb_id')
@@ -400,7 +403,10 @@ class User(Base):
 
         # if not user.profile_code:
         #     user.profile_code = user.generateProfileCode()
-
+        user.initAllExternalProfiles()
+        user.profile_code = User.generateProfileCode(user)
+        Shop.initAcademicShop(user)
+        Calendar.initGuruCalendar(user)
 
         if options.get('university_id'):
             user.university_id = options.get('university_id')
@@ -444,6 +450,32 @@ class User(Base):
 
 
         return course_ratings
+
+    def initAllExternalProfiles(self):
+        initial_titles = ['LinkedIn', 'Twitter', 'Instagram', 'Facebook']
+        for title in initial_titles:
+            self.initExternalProfileResource(None, title, '%s profile url' % title)
+        print len(self.external_profiles), 'external profiles initiated'
+
+    def initExternalProfileResource(self, url, title, description):
+        r = Resource()
+        r.is_profile = True
+        r.site_url = url
+        r.title = title
+        r.description = description
+        try:
+            db_session.add(r)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        r.contributed_user_id = self.id
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     def initExperience(self, title, years, description):
         e = Experience()
@@ -1507,6 +1539,9 @@ class Resource(Base):
 
     course_string = Column(String)
 
+    bg_hex_color = Column(String)
+    font_hex_color = Column(String)
+
     @staticmethod
     def initPortfolioResource(user, portfolio_item, course, options, is_admin=True):
         r = Resource()
@@ -2199,6 +2234,8 @@ class Session(Base):
     hours = Column(Integer)
 
 
+
+
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
         primaryjoin = "(User.id==Session.guru_id) & "\
@@ -2243,6 +2280,13 @@ class Session(Base):
         primaryjoin = "Card.id == Session.card_id",
         backref = 'sessions'
         )
+
+    course_id = Column(Integer, ForeignKey('course.id'))
+    course = relationship("Course",
+        uselist=False,
+        primaryjoin = "Course.id == Session.course_id",
+        backref="sessions"
+    )
 
     rating_id = Column(Integer, ForeignKey("rating.id"))
     request_id = Column(Integer, ForeignKey("request.id"))
@@ -2649,7 +2693,6 @@ class Portfolio_Item(Base):
         pi.user_id = user.id
         pi.shop_id = shop.id
         pi.course_id = course.id
-        print "does it even get here bro"
         try:
             db_session.commit()
         except:

@@ -4,6 +4,7 @@
 			<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 		</svg>
 	</a>
+
 	<section>
 		<!--Left third -->
 		<header class="third">
@@ -110,8 +111,8 @@
 				<div ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></div>
 			</ion-pane>
 			<!-- end CTA containers -->
-			
-			<div class="relative pf-shop-desc full-x pf-tab-item active ng-class:{'active':activeTabIndex === 1}">
+			<div class="relative pf-shop-desc full-x pf-tab-item ng-class:{'active':activeTabIndex === 1}">
+				<!-- mobile-only -->
 				<ul class="pf-url"  ng-if="!profile.edit_mode">
 					<li>
 						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code || user.first_name}}.uguru.me</a>
@@ -130,12 +131,19 @@
 						<span>.uguru.me</span>
 					</li>
 					<li>
+						<a href='http://{{user.profile_code}}.uguru.me' target='_blank' class='bg-white'>
+							<svg viewBox="0 0 100 100">
+								<path d="M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848"></path>
+							</svg>
+						</a>
+					</li>
+					<!-- <li>
 						<a class='bg-white'>
 							<svg viewBox="0 0 100 100">
 								<path d="M15.6243489,84.7923176 L19.5509642,73.6399994 L69.794924,23.3911161 L77.0255506,30.6217427 L26.7800007,80.8660212 L15.6243489,84.7923176 Z M13.3333333,87.0833333 L16.6666667,83.75 L13.3333333,87.0833333 L13.3333333,87.0833333 Z M70.8333333,23.75 L73.3350627,21.25 L70.8333333,23.75 L70.8333333,23.75 Z M76.6666667,29.5833333 L79.1666667,27.0833333 L76.6666667,29.5833333 L76.6666667,29.5833333 Z M82.5205606,25.5682252 L85.7479206,28.7955852 C85.7479206,28.7955852 67.7080166,46.8354927 67.5,47.0435059 M75.9393067,32.2348919 L79.1666667,35.4622519 M19.5499992,73.6399994 L26.7800007,80.8700027 L19.5499992,73.6399994 Z M77.7627936,15.0378071 L85.3792239,22.6542374 L81.0085605,27.0249008 L73.3921302,19.4084705 L77.7627936,15.0378071 Z"></path>
 							</svg>
 						</a>
-					</li>
+					</li> -->
 				</ul>
 				<ul class="pf-links">
 					<li>
@@ -516,16 +524,14 @@
 						</li>
 					</ul>
 				</div>
-				<!-- <div class="pf-reviews p15top">
-					<h2>{{user.guru_avg_rating || 0.0}} Average Rating</h2>
-					<button class="m10top btn-ghost-white">See Availability</button>
-				</div> -->
 			</div>
-			<ul class="pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
+
+			<ul class="relative pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
+				<!-- Description should be first child -->
 				<li class="pf-checklist-desc">
-					<h1 class="ng-class:{'hide': profile.edit_mode}">Gabrielle's Academic Shop</h1>
-					<input class="ng-class:{'hide': !profile.edit_mode}" value="Gabrielle's Academic Shop"/>
-					<p class="pf-header-desc ng-class:{'hide': profile.edit_mode}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+					<h1 class="ng-class:{'hide': profile.edit_mode}">{{user.academic_shop.title}}</h1>
+					<input class="ng-class:{'hide': !profile.edit_mode}" value="{{user.academic_shop.title}}"/>
+					<p ng-if='!user.academic_shop && user.active_shop && user.active_shop.description' class="pf-header-desc ng-class:{'hide': profile.edit_mode}">{{user.active_shop.description}}</p>
 					<div class='pf-textarea-container relative'>
 						<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" rows="2" maxlength="100" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{100 - user.guru_introduction.length}}</span>
@@ -534,17 +540,16 @@
 						<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" rows="3" maxlength="100" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{100 - user.guru_introduction.length}}</span>
 					</div>
-					<!-- <h1>{{user.academic_shop.title}}</h1>
-					<p>{{user.academic_shop.description}}</p> -->
 				</li>
-				<li ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-click='editPortfolioItem(portfolio_item)'>
+				<li class='relative'  ng-repeat='portfolio_item in user.academic_shop.portfolio_items'>
 					<div class="pf-check-container">
+						<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
 						<div class="pf-checklist-item-bg">
-							<span class="pf-price pf-price-right">${{user.academic_shop.active_portfolio_item.hourly_price}}/hr</span>
-							<span>{{course.full_name || course.title}}</span>
+							<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
+							<span>{{portfolio_item.course.full_name || portfolio_item.course.title}}</span>
 						</div>
 						<a class="pf-edit-link" ng-click="user.academic_shop.edit_portfolio_item = portfolio_item">Edit</a>
-						<a class="pf-check pf-remove">
+						<a class="pf-check pf-remove" ng-click='portfolio_item.showRemovePopup = true;'>
 							<svg viewBox="0 0 100 100">
 								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 							</svg>
@@ -555,54 +560,15 @@
 						<span class="pf-check-label">
 							<span>{{portfolio_item.course.short_name}}</span>
 							<ul class="pf-rating" data-rating="{{portfolio_item.rounded_avg_rating}}" data-half="{{portfolio_item.half_stars}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-							<span class="pf-review-amt">{{portfolio_item.ratings.length}} Reviews</span>
+							<span class="pf-review-amt">{{portfolio_item.avg_rating}}</span>
 						</span>
 					</div>
-				</li>
-				
-				<!-- SAMPLE ITEM -->
-				<li>
-					<div class="pf-check-container">
-						<div class="pf-checklist-item-bg">
-							<span class="pf-price pf-price-right">${{user.academic_shop.active_portfolio_item.hourly_price}}/hr</span>
-							<span>The Joy of Computing</span>
+					<div class="absolute top-0 guru-popup guru-popup-remove-pi hide ng-class:{'show':portfolio_item.showRemovePopup}">
+						<div class="guru-popup-vertical-center min-height with-button">Remove {{activePortfolioItem.course.short_name}}?</div>
+						<div class='ugrid-2'>
+							<button ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
+							<button ng-click='removePortfolioItem(portfolio_item)'>Confirm</button>
 						</div>
-						<a class="pf-edit-link">Edit</a>
-						<a class="pf-check pf-remove">
-							<svg viewBox="0 0 100 100">
-								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-							</svg>
-							<svg viewBox="0 0 100 100">
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-						</a>
-						<span class="pf-check-label">
-							<span>Math 101</span>
-							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-							<span class="pf-review-amt">10 Reviews</span>
-						</span>
-					</div>
-				</li>
-				<li>
-					<div class="pf-check-container">
-						<div class="pf-checklist-item-bg">
-							<span class="pf-price pf-price-right">${{user.academic_shop.active_portfolio_item.hourly_price}}/hr</span>
-							<span>The Joy of Computing</span>
-						</div>
-						<a class="pf-edit-link">Edit</a>
-						<a class="pf-check pf-remove">
-							<svg viewBox="0 0 100 100">
-								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-							</svg>
-							<svg viewBox="0 0 100 100">
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-						</a>
-						<span class="pf-check-label">
-							<span>Math 101</span>
-							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-							<span class="pf-review-amt">10 Reviews</span>
-						</span>
 					</div>
 				</li>
 				<!-- SAMPLE ITEM WHEN CLICKED -->
@@ -621,7 +587,7 @@
 					</div>
 				</li>
 
-				<li id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.hex_color}} ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
+				<li id='cta-modal-profile-pi-item'  class="fixed right-0 pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.hex_color}} ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
 			</ul>
 
 

@@ -46,7 +46,7 @@ angular.module('uguru.rest')
         }
 
         return {
-            course: {id:3232451, short_name:'PACS 127'},
+            course: {},
             shop_category: Category.getAcademic(),
             shop_id: Category.getAcademic().id,
             title: 'Test',

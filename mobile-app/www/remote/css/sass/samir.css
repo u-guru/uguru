@@ -351,7 +351,7 @@ body.platform-ios
     width: 30px; }
 
 .pf-edit-pf.pf-desktop-edit {
-  z-index: 101; }
+  z-index: 1000; }
 
 .guru-cta-profile-container {
   width: 100%;
@@ -370,5 +370,14 @@ body.platform-ios
 
 .height-100 {
   height: 100px; }
+
+.guru-popup-remove-pi {
+  z-index: 101; }
+
+#cta-modal-profile-pi-item {
+  top: 60px;
+  z-index: 1000;
+  height: calc(100% - 140px);
+  width: 66% !important; }
 
 /*# sourceMappingURL=samir.css.map */

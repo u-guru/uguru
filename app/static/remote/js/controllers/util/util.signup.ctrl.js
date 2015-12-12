@@ -1504,13 +1504,11 @@ angular.module('uguru.util.controllers')
       }
 
 
-      // $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
-      // $scope.user.email = $scope.signupForm.email;
-      // $scope.user.password = $scope.signupForm.password;
-      // $scope.user.name = $scope.signupForm.full_name
+      $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
+      $scope.user.email = $scope.signupForm.email;
+      $scope.user.password = $scope.signupForm.password;
+      $scope.user.name = $scope.signupForm.full_name
 
-
-      $scope.user.university_id = $scope.user.university_id;
 
       console.log('USER BEFORE SIGNING UP', $scope.user);
 
@@ -1618,10 +1616,15 @@ angular.module('uguru.util.controllers')
     }
 
     //default mode
-    $scope.root.vars.loginMode = true;
-    $timeout(function() {
+    if (!$scope.root.vars.loginModeRecentlySet) {
       $scope.root.vars.loginMode = true;
-    }, 1000)
+      $timeout(function() {
+        $scope.root.vars.loginMode = true;
+      }, 1000)
+    } else {
+      $scope.root.vars.loginMode = false;
+      $scope.root.vars.loginModeRecentlySet = null;
+    }
 
 
     $scope.$on('$ionicView.enter', function() {

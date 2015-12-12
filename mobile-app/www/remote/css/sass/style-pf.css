@@ -1301,6 +1301,7 @@
 
 .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove {
   background: white;
+  z-index: 1000;
 }
 
 .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {

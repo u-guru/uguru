@@ -1,10 +1,11 @@
-<ion-view id='desktop-guru-home' class='bg-charcoal' data-sr-container>
+<ion-view id='desktop-guru-home' class='bg-charcoal'>
 	<main class="desktop-mode" ng-if='desktopMode'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default flex guru-home-container">
 			<!-- @samir -->
 			<!-- This is a toast example -->
-			<div class="guru-toast full-x absolute top-10">
+			<div class="guru-toast full-x absolute top-10" ng-if='!user.school_email_confirmed'>
+
 				<div>
 					<span>Please confirm your school email!</span>
 					<button class="chip bg-white txt-auburn">Resend</button>
@@ -52,6 +53,7 @@
 					<div class="main" ng-include="img_base + BASE + 'templates/billing.html'"></div>
 				</div>
 			</ion-pane>
+
 			<ion-pane id='cta-modal-tour' class='hide-display cta-modal bg-transparent'>
 				<!-- <div class='full-xy absolute top-0 left-0 guru-desktop-forms'></div> -->
 				<div class="uguru-popup show" id='guru-uguru-popup' ng-include="img_base + BASE + 'templates/welcome.guru.popup.html'"></div>
@@ -84,6 +86,8 @@
 									</span>
 									<span class="notification-type">Bill Student</span>
 								</a>
+							</li>
+							<li>
 								<a ng-if='false'>
 									<span class="notification-icon">
 										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">

@@ -20,12 +20,12 @@
 						</svg>
 					</span>
 				</div>
-				<label for="pf-course-check">This is a university course</label>
+				<label ng-if='shop' for="pf-course-check">This is a university course</label>
 			</div>
 			<div class='pf-item-search' ng-controller='CoursesController'>
 				<div class='pf-item-selected relative' ng-if="activePortfolioItem.course.id">
-					<h2>Math 101</h2>
-					<h1>The Joy of Computing</h1>
+					<h2>{{activePortfolioItem.course.short_name}}</h2>
+					<h1>{{activePortfolioItem.course.department}} {{activePortfolioItem.course.code}} </h1>
 					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
@@ -36,13 +36,21 @@
 	                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 	                    </svg>
 	                </i>
-					<input type="text" id='course-input-1' name="course-input-1" class="bg-charcoal" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-disabled="!courses || !courses.length"
-					ng-model="search_text.course" ng-focus="searchInputFocus = true" ng-blur="searchInputBlur()" placeholder="" />
-					<label for="course-input-1" class='ng-class:{"hide": activePortfolioItem.course.id || !courses.length}'>
+					<input type="text" id='course-input-1' ng-disabled='activePortfolioItem.id' name="course-input-1" class="bg-charcoal"
+		                    fast-matcher
+		                    fast-matcher-source="courses"
+		                    fast-matcher-output="search_text.matching"
+		                    fast-matcher-properties="short_name, full_name, variations"
+		                    ng-disabled="!courses || !courses.length"
+		                    ng-model="search_text.course"
+		                    ng-focus="searchInputFocus = true"
+		                    ng-blur="searchInputBlur()"
+		                    placeholder="" />
+		            <label for="course-input-1" class='ng-class:{"hide": activePortfolioItem.course.id || !courses.length}'>
 						<span class='ng-class:{"hide": activePortfolioItem.course.id}'> search among {{courses.length}} popular courses </span>
-						<span class='ng-class:{"hide": activePortfolioItem.course.id || courses.length}' ng-hide='courses.length'> search popular courses </span>
+						<span class='ng-class:{"hide": activePortfolioItem.course.id || courses.length}'> search popular courses </span>
 					</label>
-					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()" ng-show="searchInputFocus || activePortfolioItem.course.id">
+					<a ng-if='!activePortfolioItem.id' class="side-icon desktop-input-close-icon activated hide ng-class:{'show':(searchInputFocus || activePortfolioItem.course.id) && !activePortfolioItem.id}" ng-click="clearInputAndResetCourse(course)" >
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>

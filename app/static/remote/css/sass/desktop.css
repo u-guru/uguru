@@ -74,7 +74,8 @@
       .desktop-mode .desktop-header .skip-button:hover, .desktop-mode .desktop-header .skip-button:focus, .desktop-mode .desktop-header .skip-button:active {
         filter: alpha(opacity=100);
         opacity: 1; }
-  .desktop-mode #cta-box-support, .desktop-mode #cta-box-content {
+  .desktop-mode #cta-box-support,
+  .desktop-mode #cta-box-content {
     border-radius: 1000px;
     position: fixed;
     bottom: 15px;
@@ -83,13 +84,16 @@
     height: 48px;
     padding: 6px;
     background: rgba(255, 255, 255, 0.9); }
-    .desktop-mode #cta-box-support svg, .desktop-mode #cta-box-content svg {
+    .desktop-mode #cta-box-support svg,
+    .desktop-mode #cta-box-content svg {
       fill: none;
       stroke: #2B3234;
       stroke-width: 7px;
       stroke-linecap: round;
       stroke-linejoin: round; }
-    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-support:after, .desktop-mode #cta-box-content:before, .desktop-mode #cta-box-content:after {
+    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-support:after,
+    .desktop-mode #cta-box-content:before,
+    .desktop-mode #cta-box-content:after {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
       -ms-transition: all 0.15s ease-in-out;
@@ -104,14 +108,16 @@
       -ms-transform: translateY(-50%);
       -o-transform: translateY(-50%);
       transform: translateY(-50%); }
-    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-content:before {
+    .desktop-mode #cta-box-support:before,
+    .desktop-mode #cta-box-content:before {
       content: "";
       right: -20px;
       width: 0;
       height: 0;
       border: 10px solid transparent;
       border-right-color: rgba(255, 255, 255, 0.9); }
-    .desktop-mode #cta-box-support:after, .desktop-mode #cta-box-content:after {
+    .desktop-mode #cta-box-support:after,
+    .desktop-mode #cta-box-content:after {
       content: "Support";
       right: -108px;
       padding: 10px 15px;
@@ -120,12 +126,19 @@
       font-weight: 600;
       text-transform: uppercase;
       color: #40484B; }
-    .desktop-mode #cta-box-support:hover, .desktop-mode #cta-box-support:focus, .desktop-mode #cta-box-content:hover, .desktop-mode #cta-box-content:focus {
+    .desktop-mode #cta-box-support:hover, .desktop-mode #cta-box-support:focus,
+    .desktop-mode #cta-box-content:hover,
+    .desktop-mode #cta-box-content:focus {
       background: #8bc4b9; }
-      .desktop-mode #cta-box-support:hover:before, .desktop-mode #cta-box-support:hover:after, .desktop-mode #cta-box-support:focus:before, .desktop-mode #cta-box-support:focus:after, .desktop-mode #cta-box-content:hover:before, .desktop-mode #cta-box-content:hover:after, .desktop-mode #cta-box-content:focus:before, .desktop-mode #cta-box-content:focus:after {
+      .desktop-mode #cta-box-support:hover:before, .desktop-mode #cta-box-support:hover:after, .desktop-mode #cta-box-support:focus:before, .desktop-mode #cta-box-support:focus:after,
+      .desktop-mode #cta-box-content:hover:before,
+      .desktop-mode #cta-box-content:hover:after,
+      .desktop-mode #cta-box-content:focus:before,
+      .desktop-mode #cta-box-content:focus:after {
         filter: alpha(opacity=100);
         opacity: 1; }
-    .desktop-mode #cta-box-support:active, .desktop-mode #cta-box-content:active {
+    .desktop-mode #cta-box-support:active,
+    .desktop-mode #cta-box-content:active {
       background: #69B3A5; }
   .desktop-mode #cta-box-content.dark {
     background: rgba(43, 50, 52, 0.9); }
@@ -171,7 +184,8 @@
         width: 100%;
         max-width: 1280px;
         height: 100%; }
-      .desktop-mode #top-bar div:nth-child(2) a:hover, .desktop-mode #top-bar div:nth-child(2) a:focus {
+      .desktop-mode #top-bar div:nth-child(2) a:hover,
+      .desktop-mode #top-bar div:nth-child(2) a:focus {
         filter: alpha(opacity=80);
         opacity: 0.8; }
       .desktop-mode #top-bar div:nth-child(2) a:active {
@@ -282,7 +296,8 @@
         justify-content: center;
         width: 90px;
         height: 64px; }
-        .desktop-mode #top-bar div:nth-child(2) #top-settings img, .desktop-mode #top-bar div:nth-child(2) #top-settings img.profile-url {
+        .desktop-mode #top-bar div:nth-child(2) #top-settings img,
+        .desktop-mode #top-bar div:nth-child(2) #top-settings img.profile-url {
           border-radius: 1000px;
           width: 40px;
           height: 40px;
@@ -420,7 +435,8 @@
     background: #69B3A5; }
     .desktop-mode .progress-bottom .progress {
       border-radius: 0; }
-      .desktop-mode .progress-bottom .progress::-webkit-progress-value, .desktop-mode .progress-bottom .progress span {
+      .desktop-mode .progress-bottom .progress::-webkit-progress-value,
+      .desktop-mode .progress-bottom .progress span {
         border-radius: 0 1000px 1000px 0; }
       .desktop-mode .progress-bottom .progress::-moz-progress-bar {
         border-radius: 0 1000px 1000px 0; }
@@ -493,26 +509,29 @@
   fill: #69B3A5 !important; }
 #desktop-login .main {
   background: #F1F1F1; }
-  #desktop-login .main .desktop-forms-container > div, #desktop-login .main .desktop-forms-container > section > div {
+  #desktop-login .main .desktop-forms-container > div,
+  #desktop-login .main .desktop-forms-container > section > div {
     background: white; }
-    #desktop-login .main .desktop-forms-container > div .input-field input, #desktop-login .main .desktop-forms-container > section > div .input-field input {
+    #desktop-login .main .desktop-forms-container > div .input-field input,
+    #desktop-login .main .desktop-forms-container > section > div .input-field input {
       color: white !important; }
   #desktop-login .main .desktop-forms-container .explore {
     background: #69B3A5;
     font-weight: 600; }
 #desktop-login aside::after {
-  background: url(../../img/login@2x.jpg) no-repeat center center/cover, url(/static/remote/img/login@2x.jpg) no-repeat center center/cover; }
+  background: url("../../img/login@2x.jpg") no-repeat center center/cover, url("/static/remote/img/login@2x.jpg") no-repeat center center/cover; }
 
 #desktop-signup {
   z-index: 9; }
   #desktop-signup .main {
     background: #2B3234; }
-    #desktop-signup .main .desktop-forms-container > div, #desktop-signup .main .desktop-forms-container > section > div {
+    #desktop-signup .main .desktop-forms-container > div,
+    #desktop-signup .main .desktop-forms-container > section > div {
       background: rgba(64, 72, 75, 0.2); }
   #desktop-signup aside > div {
     padding-bottom: 150px; }
   #desktop-signup aside::after {
-    background: url(../../img/login@2x.jpg) no-repeat center center/cover, url(/static/remote/img/login@2x.jpg) no-repeat center center/cover; }
+    background: url("../../img/login@2x.jpg") no-repeat center center/cover, url("/static/remote/img/login@2x.jpg") no-repeat center center/cover; }
 
 .form-link {
   filter: alpha(opacity=90);
@@ -526,7 +545,8 @@
   .form-link + .form-link {
     margin-top: 10px; }
 
-.desktop-forms, .guru-desktop-forms {
+.desktop-forms,
+.guru-desktop-forms {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -534,7 +554,8 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex; }
-  .desktop-forms .main, .guru-desktop-forms .main {
+  .desktop-forms .main,
+  .guru-desktop-forms .main {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -550,28 +571,63 @@
     justify-content: center;
     height: 100%;
     width: 100%; }
-    .desktop-forms .main .desktop-forms-container, .guru-desktop-forms .main .desktop-forms-container {
+    .desktop-forms .main .desktop-forms-container,
+    .guru-desktop-forms .main .desktop-forms-container {
       width: 100%;
       max-width: 600px; }
-      .desktop-forms .main .desktop-forms-container > div, .desktop-forms .main .desktop-forms-container > section > div, .guru-desktop-forms .main .desktop-forms-container > div, .guru-desktop-forms .main .desktop-forms-container > section > div {
+      .desktop-forms .main .desktop-forms-container > div,
+      .desktop-forms .main .desktop-forms-container > section > div,
+      .guru-desktop-forms .main .desktop-forms-container > div,
+      .guru-desktop-forms .main .desktop-forms-container > section > div {
         background: white;
         padding: 30px; }
-        .desktop-forms .main .desktop-forms-container > div h1, .desktop-forms .main .desktop-forms-container > section > div h1, .guru-desktop-forms .main .desktop-forms-container > div h1, .guru-desktop-forms .main .desktop-forms-container > section > div h1 {
+        .desktop-forms .main .desktop-forms-container > div h1,
+        .desktop-forms .main .desktop-forms-container > section > div h1,
+        .guru-desktop-forms .main .desktop-forms-container > div h1,
+        .guru-desktop-forms .main .desktop-forms-container > section > div h1 {
           color: #69B3A5;
           font-size: 36px;
           font-weight: 600;
           text-align: center; }
-        .desktop-forms .main .desktop-forms-container > div p, .desktop-forms .main .desktop-forms-container > section > div p, .guru-desktop-forms .main .desktop-forms-container > div p, .guru-desktop-forms .main .desktop-forms-container > section > div p {
+        .desktop-forms .main .desktop-forms-container > div p,
+        .desktop-forms .main .desktop-forms-container > section > div p,
+        .guru-desktop-forms .main .desktop-forms-container > div p,
+        .guru-desktop-forms .main .desktop-forms-container > section > div p {
           color: #40484B;
           font-size: 18px;
           font-weight: 400;
           text-align: center;
           margin-top: 5px; }
-          .desktop-forms .main .desktop-forms-container > div p a, .desktop-forms .main .desktop-forms-container > section > div p a, .guru-desktop-forms .main .desktop-forms-container > div p a, .guru-desktop-forms .main .desktop-forms-container > section > div p a {
+          .desktop-forms .main .desktop-forms-container > div p a,
+          .desktop-forms .main .desktop-forms-container > section > div p a,
+          .guru-desktop-forms .main .desktop-forms-container > div p a,
+          .guru-desktop-forms .main .desktop-forms-container > section > div p a {
             color: #69B3A5; }
-          .desktop-forms .main .desktop-forms-container > div p a:active, .desktop-forms .main .desktop-forms-container > div p a:focus, .desktop-forms .main .desktop-forms-container > div p a:hover, .desktop-forms .main .desktop-forms-container > div p a.active, .desktop-forms .main .desktop-forms-container > div p a.activated, .desktop-forms .main .desktop-forms-container > section > div p a:active, .desktop-forms .main .desktop-forms-container > section > div p a:focus, .desktop-forms .main .desktop-forms-container > section > div p a:hover, .desktop-forms .main .desktop-forms-container > section > div p a.active, .desktop-forms .main .desktop-forms-container > section > div p a.activated, .guru-desktop-forms .main .desktop-forms-container > div p a:active, .guru-desktop-forms .main .desktop-forms-container > div p a:focus, .guru-desktop-forms .main .desktop-forms-container > div p a:hover, .guru-desktop-forms .main .desktop-forms-container > div p a.active, .guru-desktop-forms .main .desktop-forms-container > div p a.activated, .guru-desktop-forms .main .desktop-forms-container > section > div p a:active, .guru-desktop-forms .main .desktop-forms-container > section > div p a:focus, .guru-desktop-forms .main .desktop-forms-container > section > div p a:hover, .guru-desktop-forms .main .desktop-forms-container > section > div p a.active, .guru-desktop-forms .main .desktop-forms-container > section > div p a.activated {
+          .desktop-forms .main .desktop-forms-container > div p a:active,
+          .desktop-forms .main .desktop-forms-container > div p a:focus,
+          .desktop-forms .main .desktop-forms-container > div p a:hover,
+          .desktop-forms .main .desktop-forms-container > div p a.active,
+          .desktop-forms .main .desktop-forms-container > div p a.activated,
+          .desktop-forms .main .desktop-forms-container > section > div p a:active,
+          .desktop-forms .main .desktop-forms-container > section > div p a:focus,
+          .desktop-forms .main .desktop-forms-container > section > div p a:hover,
+          .desktop-forms .main .desktop-forms-container > section > div p a.active,
+          .desktop-forms .main .desktop-forms-container > section > div p a.activated,
+          .guru-desktop-forms .main .desktop-forms-container > div p a:active,
+          .guru-desktop-forms .main .desktop-forms-container > div p a:focus,
+          .guru-desktop-forms .main .desktop-forms-container > div p a:hover,
+          .guru-desktop-forms .main .desktop-forms-container > div p a.active,
+          .guru-desktop-forms .main .desktop-forms-container > div p a.activated,
+          .guru-desktop-forms .main .desktop-forms-container > section > div p a:active,
+          .guru-desktop-forms .main .desktop-forms-container > section > div p a:focus,
+          .guru-desktop-forms .main .desktop-forms-container > section > div p a:hover,
+          .guru-desktop-forms .main .desktop-forms-container > section > div p a.active,
+          .guru-desktop-forms .main .desktop-forms-container > section > div p a.activated {
             color: #757575; }
-        .desktop-forms .main .desktop-forms-container > div .desktop-login-buttons, .desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons, .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons, .guru-desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons {
+        .desktop-forms .main .desktop-forms-container > div .desktop-login-buttons,
+        .desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons,
+        .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons,
+        .guru-desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons {
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -581,16 +637,21 @@
           display: flex;
           -webkit-justify-content: flex-end;
           justify-content: flex-end; }
-          .desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button, .desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons button, .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button, .guru-desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons button {
+          .desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button,
+          .desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons button,
+          .guru-desktop-forms .main .desktop-forms-container > div .desktop-login-buttons button,
+          .guru-desktop-forms .main .desktop-forms-container > section > div .desktop-login-buttons button {
             margin: 15px 0 0 15px;
             height: auto;
             width: auto;
             padding: 10px 15px;
             font-size: 16px;
             font-weight: 600; }
-      .desktop-forms .main .desktop-forms-container .desktop-header, .guru-desktop-forms .main .desktop-forms-container .desktop-header {
+      .desktop-forms .main .desktop-forms-container .desktop-header,
+      .guru-desktop-forms .main .desktop-forms-container .desktop-header {
         display: none; }
-  .desktop-forms aside, .guru-desktop-forms aside {
+  .desktop-forms aside,
+  .guru-desktop-forms aside {
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
@@ -601,7 +662,8 @@
     position: relative;
     height: 100%;
     overflow: hidden; }
-    .desktop-forms aside svg, .guru-desktop-forms aside svg {
+    .desktop-forms aside svg,
+    .guru-desktop-forms aside svg {
       position: absolute;
       left: 50%;
       -webkit-transform: translateX(-50%);
@@ -613,20 +675,24 @@
       top: 5%;
       width: 75px;
       height: 75px; }
-    .desktop-forms aside div, .guru-desktop-forms aside div {
+    .desktop-forms aside div,
+    .guru-desktop-forms aside div {
       position: relative;
       z-index: 9;
       width: 75%;
       text-align: center !important; }
-      .desktop-forms aside div h1, .guru-desktop-forms aside div h1 {
+      .desktop-forms aside div h1,
+      .guru-desktop-forms aside div h1 {
         font-size: 24px;
         font-weight: 600; }
-      .desktop-forms aside div p, .guru-desktop-forms aside div p {
+      .desktop-forms aside div p,
+      .guru-desktop-forms aside div p {
         padding: 10px 0;
         font-size: 18px;
         font-weight: 400;
         line-height: 1.5 !important; }
-    .desktop-forms aside::after, .guru-desktop-forms aside::after {
+    .desktop-forms aside::after,
+    .guru-desktop-forms aside::after {
       filter: alpha(opacity=75);
       opacity: 0.75;
       content: "";
@@ -691,7 +757,8 @@
       .desktop-search .main form input {
         color: white;
         height: 64px; }
-      .desktop-search .main form input, .desktop-search .main form label {
+      .desktop-search .main form input,
+      .desktop-search .main form label {
         font-size: 36px; }
       .desktop-search .main form .prefix svg {
         fill: none;
@@ -847,7 +914,8 @@
     justify-content: center;
     height: 84px;
     font-size: 22px !important; } }
-#desktop-skills, .desktop-skills {
+#desktop-skills,
+.desktop-skills {
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -855,18 +923,23 @@
   -webkit-justify-content: center;
   justify-content: center;
   padding-top: 50px; }
-  #desktop-skills .desktop-header, .desktop-skills .desktop-header {
+  #desktop-skills .desktop-header,
+  .desktop-skills .desktop-header {
     max-width: none !important; }
-  #desktop-skills .main, .desktop-skills .main {
+  #desktop-skills .main,
+  .desktop-skills .main {
     max-width: none !important; }
-    #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info {
+    #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info,
+    .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info {
       width: 100%;
       border-radius: 2px;
       overflow: hidden; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a {
         height: 100px;
         background-color: rgba(43, 50, 52, 0.5); }
-        #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a .skill-count {
+        #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a .skill-count,
+        .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a .skill-count {
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -892,14 +965,18 @@
           padding-left: 5px;
           font-weight: 900;
           font-size: 24px; }
-        #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div {
+        #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div,
+        .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div {
           position: relative;
           z-index: 99; }
-          #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span {
+          #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span,
+          .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span {
             display: block; }
-            #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label {
+            #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label,
+            .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info a div span.skill-label {
               font-size: 24px; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]::after {
         -webkit-transition: all 0.15s ease-in-out;
         -o-transition: all 0.15s ease-in-out;
         -ms-transition: all 0.15s ease-in-out;
@@ -915,44 +992,134 @@
         top: 0;
         border-radius: 2px;
         overflow: hidden; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover::after,
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus::after,
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active::after {
         filter: alpha(opacity=30);
         opacity: 0.3; }
       #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important,
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important,
-      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover,
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus,
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active {
         border-bottom-color: rgba(255, 255, 255, 0.8); }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:active::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn:active::after {
         background: #F04F54; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery .skill-count {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery .skill-count, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-delivery .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-auburn .skill-count {
         color: #F04F54; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:active::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange:active::after {
         background: #E5753C; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing .skill-count {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing .skill-count, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-freelancing .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-orange .skill-count {
         color: #E5753C; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:active::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking:active::after {
         background: #F6C64E; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking .skill-count {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking .skill-count, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-baking .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-baking .skill-count {
         color: #F6C64E; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:active::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography:active::after {
         background: #81B566; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography .skill-count {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography .skill-count, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-photography .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-photography .skill-count {
         color: #81B566; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:active::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure:active::after {
         background: #55A4B7; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech .skill-count {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech .skill-count, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-tech .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-azure .skill-count {
         color: #55A4B7; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:active::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt:active::after {
         background: #7872e3; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household .skill-count {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household .skill-count, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-household .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cobalt .skill-count {
         color: #7872e3; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:active::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic:active::after {
         background: #9A5BC5; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic .skill-count {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic .skill-count, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-athletic .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-athletic .skill-count {
         color: #9A5BC5; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:active::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic.important::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:hover::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:focus::after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:active::after {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:active::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise.important::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise:hover::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise:focus::after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic:active::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise.important::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise:hover::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise:focus::after,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise:active::after {
         background: #e6389b; }
-      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic .skill-count, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic .skill-count {
+      #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic .skill-count, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-academic .skill-count,
+      .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .bg-bg-cerise .skill-count {
         color: #e6389b; }
 
 .subcategory {
@@ -1067,7 +1234,8 @@
     width: 100%;
     height: 100% !important;
     border: 0; }
-    .subcategory.selected::after, .subcategory.selected .skill-item-info {
+    .subcategory.selected::after,
+    .subcategory.selected .skill-item-info {
       display: none; }
     .subcategory.selected .skill-item-content {
       display: block; }
@@ -1385,7 +1553,8 @@
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center; }
-    #desktop-settings .main .settings-save button, #desktop-settings .main .settings-save a {
+    #desktop-settings .main .settings-save button,
+    #desktop-settings .main .settings-save a {
       display: block;
       margin: 0 auto;
       padding: 15px 30px;
@@ -1459,7 +1628,10 @@
   background: #F1F1F1;
   color: #40484B !important;
   border-color: #40484B !important; }
-  #desktop-settings.student-mode input, #desktop-settings.student-mode label, #desktop-settings.student-mode a, #desktop-settings.student-mode button {
+  #desktop-settings.student-mode input,
+  #desktop-settings.student-mode label,
+  #desktop-settings.student-mode a,
+  #desktop-settings.student-mode button {
     color: #40484B !important; }
   #desktop-settings.student-mode button:hover {
     background: #40484B !important;
@@ -1856,7 +2028,8 @@
                 height: 48px;
                 background-position: center center;
                 background-size: cover; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon img, #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg,
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon img,
+              #desktop-messaging .main #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-icon img,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #messages .message-single .message-single-icon svg {
                 border-radius: 1000px;
@@ -1933,13 +2106,15 @@
             display: -webkit-flex;
             display: flex;
             position: relative; }
-            #desktop-messaging .main #messenger #messenger-content #message-container #message-box a, #desktop-messaging .main #messenger #messenger-content #message-container #message-box button,
+            #desktop-messaging .main #messenger #messenger-content #message-container #message-box a,
+            #desktop-messaging .main #messenger #messenger-content #message-container #message-box button,
             #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box a,
             #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box button {
               display: block;
               width: 64px;
               height: 64px; }
-              #desktop-messaging .main #messenger #messenger-content #message-container #message-box a svg, #desktop-messaging .main #messenger #messenger-content #message-container #message-box button svg,
+              #desktop-messaging .main #messenger #messenger-content #message-container #message-box a svg,
+              #desktop-messaging .main #messenger #messenger-content #message-container #message-box button svg,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box a svg,
               #desktop-messaging .main.mobile-messages-container #messenger #messenger-content #message-container #message-box button svg {
                 fill: none;
@@ -2231,10 +2406,12 @@
               content: "min";
               display: inline-block;
               padding-left: 5px; }
-      .desktop-request .main .request-form .request-form-map, .desktop-request .main .request-form .request-form-date {
+      .desktop-request .main .request-form .request-form-map,
+      .desktop-request .main .request-form .request-form-date {
         width: 50%;
         height: 150px; }
-        .desktop-request .main .request-form .request-form-map > div, .desktop-request .main .request-form .request-form-date > div {
+        .desktop-request .main .request-form .request-form-map > div,
+        .desktop-request .main .request-form .request-form-date > div {
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -2256,11 +2433,13 @@
           height: 100%;
           font-size: 24px;
           text-align: center; }
-          .desktop-request .main .request-form .request-form-map > div ul li h2, .desktop-request .main .request-form .request-form-date > div ul li h2 {
+          .desktop-request .main .request-form .request-form-map > div ul li h2,
+          .desktop-request .main .request-form .request-form-date > div ul li h2 {
             font-size: 22px;
             font-weight: 700;
             line-height: 1.2; }
-          .desktop-request .main .request-form .request-form-map > div ul li > span, .desktop-request .main .request-form .request-form-date > div ul li > span {
+          .desktop-request .main .request-form .request-form-map > div ul li > span,
+          .desktop-request .main .request-form .request-form-date > div ul li > span {
             font-size: 20px;
             font-weight: 400;
             line-height: 1.2; }
@@ -2315,7 +2494,8 @@
                 stroke-width: 3px;
                 stroke-linecap: round;
                 stroke-linejoin: round; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li div, .desktop-request .main .request-form .request-form-upload > div > div ul li > svg {
+              .desktop-request .main .request-form .request-form-upload > div > div ul li div,
+              .desktop-request .main .request-form .request-form-upload > div > div ul li > svg {
                 width: 75px;
                 height: 75px; }
               .desktop-request .main .request-form .request-form-upload > div > div ul li span {
@@ -2370,20 +2550,25 @@
                   width: 40px;
                   height: 40px;
                   overflow: hidden; }
-      .desktop-request .main .request-form .request-form-desc, .desktop-request .main .request-form .request-form-upload {
+      .desktop-request .main .request-form .request-form-desc,
+      .desktop-request .main .request-form .request-form-upload {
         width: 50%;
         padding: 15px; }
-        .desktop-request .main .request-form .request-form-desc > div, .desktop-request .main .request-form .request-form-upload > div {
+        .desktop-request .main .request-form .request-form-desc > div,
+        .desktop-request .main .request-form .request-form-upload > div {
           width: 100%; }
-          .desktop-request .main .request-form .request-form-desc > div > div, .desktop-request .main .request-form .request-form-upload > div > div {
+          .desktop-request .main .request-form .request-form-desc > div > div,
+          .desktop-request .main .request-form .request-form-upload > div > div {
             color: #757575;
             font-size: 18px;
             font-weight: 400;
             line-height: 1.4; }
-          .desktop-request .main .request-form .request-form-desc > div button, .desktop-request .main .request-form .request-form-upload > div button {
+          .desktop-request .main .request-form .request-form-desc > div button,
+          .desktop-request .main .request-form .request-form-upload > div button {
             background: #757575;
             font-weight: 600; }
-          .desktop-request .main .request-form .request-form-desc > div .input + button, .desktop-request .main .request-form .request-form-upload > div .input + button {
+          .desktop-request .main .request-form .request-form-desc > div .input + button,
+          .desktop-request .main .request-form .request-form-upload > div .input + button {
             height: 48px;
             font-size: 20px; }
       .desktop-request .main .request-form .request-form-submit {
@@ -2395,7 +2580,8 @@
           text-transform: uppercase; }
     .desktop-request .main.bg-cerise header {
       background: #e6389b; }
-    .desktop-request .main.bg-cerise .request-form .request-form-map > div, .desktop-request .main.bg-cerise .request-form .request-form-date > div {
+    .desktop-request .main.bg-cerise .request-form .request-form-map > div,
+    .desktop-request .main.bg-cerise .request-form .request-form-date > div {
       color: #e6389b;
       border-color: #e6389b; }
     .desktop-request .main.bg-cerise .request-form-payment a {
@@ -2403,63 +2589,70 @@
     .desktop-request .main.bg-cerise .request-form-submit button {
       background: #e6389b; }
 
-.user-icon {
-  border-radius: 1000px;
-  display: block;
-  margin: 0 auto;
-  width: 128px;
-  height: 128px;
-  background-position: center;
-  background-size: cover;
-  border: 5px solid white; }
-
-#desktop-request-student header, #desktop-request-guru header {
+#desktop-request-student header,
+#desktop-request-guru header {
   position: relative;
   background: #757575; }
-#desktop-request-student .request-form, #desktop-request-guru .request-form {
+#desktop-request-student .request-form,
+#desktop-request-guru .request-form {
   -webkit-align-items: flex-start;
   align-items: flex-start; }
-  #desktop-request-student .request-form .request-form-header, #desktop-request-guru .request-form .request-form-header {
+  #desktop-request-student .request-form .request-form-header,
+  #desktop-request-guru .request-form .request-form-header {
     width: 100%;
     text-align: center;
     padding-top: 0; }
-    #desktop-request-student .request-form .request-form-header h1:first-child, #desktop-request-guru .request-form .request-form-header h1:first-child {
+    #desktop-request-student .request-form .request-form-header h1:first-child,
+    #desktop-request-guru .request-form .request-form-header h1:first-child {
       font-size: 40px;
       font-weight: 600; }
-      #desktop-request-student .request-form .request-form-header h1:first-child span, #desktop-request-guru .request-form .request-form-header h1:first-child span {
+      #desktop-request-student .request-form .request-form-header h1:first-child span,
+      #desktop-request-guru .request-form .request-form-header h1:first-child span {
         font-weight: 900; }
-    #desktop-request-student .request-form .request-form-header .request-header, #desktop-request-guru .request-form .request-form-header .request-header {
+    #desktop-request-student .request-form .request-form-header .request-header,
+    #desktop-request-guru .request-form .request-form-header .request-header {
       margin-top: 0 !important; }
-      #desktop-request-student .request-form .request-form-header .request-header .request-category + span, #desktop-request-guru .request-form .request-form-header .request-header .request-category + span {
+      #desktop-request-student .request-form .request-form-header .request-header .request-category + span,
+      #desktop-request-guru .request-form .request-form-header .request-header .request-category + span {
         padding: 0 5px; }
-        #desktop-request-student .request-form .request-form-header .request-header .request-category + span svg, #desktop-request-guru .request-form .request-form-header .request-header .request-category + span svg {
+        #desktop-request-student .request-form .request-form-header .request-header .request-category + span svg,
+        #desktop-request-guru .request-form .request-form-header .request-header .request-category + span svg {
           margin-top: 5px;
           width: 20px;
           height: 20px; }
-  #desktop-request-student .request-form .request-form-map, #desktop-request-guru .request-form .request-form-map {
+  #desktop-request-student .request-form .request-form-map,
+  #desktop-request-guru .request-form .request-form-map {
     height: 310px; }
-    #desktop-request-student .request-form .request-form-map > div, #desktop-request-guru .request-form .request-form-map > div {
+    #desktop-request-student .request-form .request-form-map > div,
+    #desktop-request-guru .request-form .request-form-map > div {
       -webkit-align-items: flex-end;
       align-items: flex-end; }
-      #desktop-request-student .request-form .request-form-map > div ul, #desktop-request-guru .request-form .request-form-map > div ul {
+      #desktop-request-student .request-form .request-form-map > div ul,
+      #desktop-request-guru .request-form .request-form-map > div ul {
         color: white;
         width: 100%;
         padding: 15px; }
-  #desktop-request-student .request-form .request-form-map + div, #desktop-request-guru .request-form .request-form-map + div {
+  #desktop-request-student .request-form .request-form-map + div,
+  #desktop-request-guru .request-form .request-form-map + div {
     width: 50%; }
-    #desktop-request-student .request-form .request-form-map + div > div, #desktop-request-guru .request-form .request-form-map + div > div {
+    #desktop-request-student .request-form .request-form-map + div > div,
+    #desktop-request-guru .request-form .request-form-map + div > div {
       width: 100%; }
-    #desktop-request-student .request-form .request-form-map + div .request-form-date, #desktop-request-guru .request-form .request-form-map + div .request-form-date {
+    #desktop-request-student .request-form .request-form-map + div .request-form-date,
+    #desktop-request-guru .request-form .request-form-map + div .request-form-date {
       height: 100px; }
-    #desktop-request-student .request-form .request-form-map + div .request-form-upload .input, #desktop-request-guru .request-form .request-form-map + div .request-form-upload .input {
+    #desktop-request-student .request-form .request-form-map + div .request-form-upload .input,
+    #desktop-request-guru .request-form .request-form-map + div .request-form-upload .input {
       padding-top: 10px;
       color: white;
       font-size: 24px;
       font-weight: 600;
       text-align: center; }
-  #desktop-request-student .request-form .request-form-submit button, #desktop-request-guru .request-form .request-form-submit button {
+  #desktop-request-student .request-form .request-form-submit button,
+  #desktop-request-guru .request-form .request-form-submit button {
     text-transform: none !important; }
-  #desktop-request-student .request-form .request-form-submit a, #desktop-request-guru .request-form .request-form-submit a {
+  #desktop-request-student .request-form .request-form-submit a,
+  #desktop-request-guru .request-form .request-form-submit a {
     display: block;
     margin-top: 15px;
     width: 100%;
@@ -2826,7 +3019,8 @@
     max-height: 500px;
     background: white;
     text-align: center; }
-    #desktop-request-price #price-container h1, #desktop-request-price #price-container h3 {
+    #desktop-request-price #price-container h1,
+    #desktop-request-price #price-container h3 {
       color: #2B3234; }
     #desktop-request-price #price-container h1 {
       padding: 15px 15px 0;
@@ -2850,7 +3044,8 @@
           position: relative;
           font-size: 48px;
           font-weight: 600; }
-          #desktop-request-price #price-container ul li a span, #desktop-request-price #price-container ul li a .add {
+          #desktop-request-price #price-container ul li a span,
+          #desktop-request-price #price-container ul li a .add {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -3193,79 +3388,6 @@
           fill: #F6C64E;
           stroke: #F6C64E; }
 
-/* ---------- CUSTOM DROPDOWN */
-.custom-dropdown {
-  position: relative; }
-  .custom-dropdown > div {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center; }
-    .custom-dropdown > div span {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: 152px;
-      height: 48px;
-      background: #576267;
-      font-size: 28px;
-      font-weight: 600; }
-    .custom-dropdown > div a svg {
-      fill: none;
-      stroke: white;
-      stroke-width: 8px;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      background: #69B3A5;
-      padding: 12px 10px 8px 10px;
-      width: 48px;
-      height: 48px; }
-  .custom-dropdown > ul {
-    position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-    filter: alpha(opacity=0);
-    opacity: 0;
-    width: 200px;
-    height: 0;
-    overflow: hidden; }
-    .custom-dropdown > ul.active {
-      filter: alpha(opacity=100);
-      opacity: 1;
-      height: auto; }
-    .custom-dropdown > ul li {
-      width: 152px;
-      background: rgba(76, 85, 89, 0.9);
-      padding: 15px 0 !important;
-      font-weight: 400; }
-      .custom-dropdown > ul li:hover, .custom-dropdown > ul li:focus {
-        background: rgba(78, 155, 140, 0.9); }
-      .custom-dropdown > ul li:active {
-        background: rgba(139, 196, 185, 0.9); }
-
 /* ---------- TIMER */
 #desktop-timer .main {
   -ms-box-orient: horizontal;
@@ -3341,29 +3463,31 @@
 #desktop-general {
   background: #50A5DD; }
   #desktop-general header.desktop-header {
-    z-index: 1000; }
+    z-index: 1000;
+    top: 0;
+    padding: 6.25px;
+    height: 62.5px; }
   #desktop-general .cta-modal-close {
     position: absolute;
     right: 0;
-    top: 0;
-    margin: 10px; }
+    top: 0; }
     #desktop-general .cta-modal-close svg {
-      stroke: #2B3234; }
+      stroke: #40484B; }
   #desktop-general #general-top {
     border-radius: 1000px;
-    display: block;
-    margin: 0 auto;
-    background: white;
-    border: 3px solid #2B3234;
-    width: 84px;
-    height: 84px; }
+    display: none;
+    margin: 15px auto 0;
+    background: #40484B;
+    width: 64px;
+    height: 64px; }
     #desktop-general #general-top svg {
       width: 100%;
       height: 100%;
-      padding: 10px; }
+      padding: 15px; }
       #desktop-general #general-top svg path {
-        fill: #50A5DD; }
+        fill: white; }
   #desktop-general h1 {
+    padding-top: 30px;
     font-size: 48px;
     font-weight: 900;
     text-align: center; }
@@ -3386,22 +3510,39 @@
     border-radius: 2px; }
     #desktop-general #desktop-content #content-desc {
       position: relative;
-      width: calc(100%/3);
+      width: calc(100% / 3);
       height: 100%;
       background: #40484B; }
       #desktop-general #desktop-content #content-desc #content-sidebar h1 {
         padding: 15px;
+        color: #F1F1F1;
         font-size: 32px;
-        font-weight: 900;
-        color: #F1F1F1; }
-      #desktop-general #desktop-content #content-desc #content-sidebar ul {
-        height: calc(100% - 146px);
-        overflow: auto; }
-        #desktop-general #desktop-content #content-desc #content-sidebar ul li {
-          font-weight: 400;
-          text-transform: uppercase;
-          color: #F1F1F1; }
-          #desktop-general #desktop-content #content-desc #content-sidebar ul li a {
+        font-weight: 900; }
+        #desktop-general #desktop-content #content-desc #content-sidebar h1 .bad-joke {
+          display: block;
+          margin-top: 5px;
+          font-size: 14px;
+          font-weight: 500; }
+      #desktop-general #desktop-content #content-desc #content-sidebar ol {
+        height: calc(100% - 215px);
+        overflow: auto;
+        counter-reset: li; }
+        #desktop-general #desktop-content #content-desc #content-sidebar ol li {
+          position: relative;
+          color: #F1F1F1;
+          font-size: 28px;
+          font-weight: 600;
+          line-height: 1.2;
+          text-align: left;
+          text-transform: uppercase; }
+          #desktop-general #desktop-content #content-desc #content-sidebar ol li:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 15px;
+            content: counter(li) ".";
+            counter-increment: li; }
+          #desktop-general #desktop-content #content-desc #content-sidebar ol li a {
             -ms-box-orient: horizontal;
             display: -webkit-box;
             display: -moz-box;
@@ -3411,22 +3552,12 @@
             display: flex;
             -webkit-align-items: center;
             align-items: center;
-            padding: 15px; }
-            #desktop-general #desktop-content #content-desc #content-sidebar ul li a.active, #desktop-general #desktop-content #content-desc #content-sidebar ul li a:active, #desktop-general #desktop-content #content-desc #content-sidebar ul li a.active {
+            padding: 15px 15px 15px 45px; }
+            #desktop-general #desktop-content #content-desc #content-sidebar ol li a.active, #desktop-general #desktop-content #content-desc #content-sidebar ol li a:active, #desktop-general #desktop-content #content-desc #content-sidebar ol li a.active {
               background: rgba(241, 241, 241, 0.2); }
-            #desktop-general #desktop-content #content-desc #content-sidebar ul li a:hover, #desktop-general #desktop-content #content-desc #content-sidebar ul li a:focus, #desktop-general #desktop-content #content-desc #content-sidebar ul li a.active {
+            #desktop-general #desktop-content #content-desc #content-sidebar ol li a:hover, #desktop-general #desktop-content #content-desc #content-sidebar ol li a:focus, #desktop-general #desktop-content #content-desc #content-sidebar ol li a.active {
               background: rgba(241, 241, 241, 0.4); }
-            #desktop-general #desktop-content #content-desc #content-sidebar ul li a .messenger-icon {
-              border-radius: 1000px;
-              width: 48px;
-              height: 48px;
-              background-position: center center;
-              background-size: cover; }
-            #desktop-general #desktop-content #content-desc #content-sidebar ul li a .messenger-label {
-              width: calc(100% - 48px);
-              padding-left: 15px;
-              font-weight: 600; }
-            #desktop-general #desktop-content #content-desc #content-sidebar ul li a.active .messenger-label {
+            #desktop-general #desktop-content #content-desc #content-sidebar ol li a.active {
               font-weight: 700; }
       #desktop-general #desktop-content #content-desc #content-sidebar #content-sidebar-search {
         position: absolute;
@@ -3480,8 +3611,6 @@
       max-height: 800px;
       overflow: auto;
       font-weight: 600;
-      font-size: 18px;
-      text-transform: uppercase;
       padding-bottom: 64px; }
   #desktop-general .general-list {
     max-width: 800px;
@@ -3524,20 +3653,18 @@
         line-height: 1; }
       #desktop-general .general-list li div {
         width: calc(100% - 64px);
-        padding-left: 30px; }
+        padding-left: 30px;
+        margin-bottom: 15px; }
       #desktop-general .general-list li h3 {
         font-size: 32px;
         font-weight: 900; }
       #desktop-general .general-list li p {
-        font-size: 18px;
-        font-weight: 400; }
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.3; }
   #desktop-general.general-muted {
     background: #F1F1F1;
     color: #40484B; }
-    #desktop-general.general-muted #general-top {
-      border-color: #757575; }
-      #desktop-general.general-muted #general-top svg path {
-        fill: #757575; }
     #desktop-general.general-muted .general-list li:before {
       background: #50A5DD; }
 

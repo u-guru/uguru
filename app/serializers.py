@@ -482,6 +482,7 @@ UserSerializer = {
     'second_degree_referrals': fields.Integer,
     'referral_limit': fields.Integer,
     'deactivated': fields.Boolean,
+    'external_profiles': fields.List(fields.Nested(resource_fields))
 }
 
 DeviceSerializer = {
