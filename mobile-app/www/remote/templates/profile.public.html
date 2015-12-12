@@ -609,7 +609,13 @@
 							</div>
 						</div>
 					</div>
-					<div id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.name | lowercase}} hide ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></div>
+					
+					<!-- @samir -->
+					<!-- I wanted the item edit to show up exactly where the item is positioned, so I had to make some changes -->
+					
+					<!-- The CTA had to be nested *inside* the <li> element, which obviously messed up some things. I also had to change from <li class="pf-checklist-full"> to <div class="pf-checklist-full">. If this is too much, you can just use the <li class="pf-checklist-full"> that's underneath the add button, it still works. But I would prefer the one nested inside each item. -->
+					
+					<!-- <div id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.name | lowercase}} hide ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></div> -->
 				</li>
 				<!-- SAMPLE ITEM WHEN CLICKED -->
 				<!-- <li class="pf-checklist-full show pf-type-{{user.academic_shop.category.hex_color}}" ng-include="img_base + 'templates/profile.modal.html'"></li> -->
@@ -626,6 +632,8 @@
 						</a>
 					</div>
 				</li>
+				
+				<li id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.name | lowercase}} hide ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
 			</ul>
 
 
