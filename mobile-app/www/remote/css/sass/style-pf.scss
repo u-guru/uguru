@@ -252,6 +252,116 @@
 		}
 	}
 }
+.pf-textarea-container {
+	.pf-header-desc {
+		padding: 0 5px;
+		resize: none;
+		overflow: auto;
+		background: rgba(white, .4);
+		color: white;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 1.2;
+		text-align: center;
+		@include placeholder {
+			color: white;
+		}
+		&:focus {
+			background: white;
+			color: $charcoal;
+			@include placeholder {
+				color: $taupe;
+			}
+		}
+		&:disabled {
+			background: none;
+		}
+	}
+	p {
+		background: none!important;
+	}
+}
+.pf-url {
+	@include flex;
+	@include flex-center;
+	font-size: 18px;
+	font-weight: 400;
+	li {
+		&:first-child {
+			padding: 10px 15px;
+			background: rgba(white,.3);
+			text-transform: lowercase;
+			a {
+				color: white;
+			}
+		}
+		span {
+			color: white;
+		}
+		input {
+			text-align: center;
+			color: $slate;
+		}
+		&:last-child {
+			a {
+				@include flex;
+				@include flex-center;
+				width: 40px;
+				height: 40px;
+				padding: 5px;
+				background: white;
+				svg {
+					@include svg-stroke-width(5);
+					stroke: $slate;
+					width: 100%;
+					height: 100%;
+				}
+				&:hover, &:focus {
+					background: $slate;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active {
+					background: $charcoal;
+					svg {
+						stroke: white;
+					}
+				}
+			}
+		}
+	}
+	&.pf-edit-url {
+		li {
+			&:first-child {
+				@include flex;
+				@include flex-center-vertical;
+				padding: 0;
+				height: 40px;
+				input {
+					@include transition(.15s ease-in-out);
+					@include flex;
+					@include flex-center-vertical;
+					height: 100%;
+					padding: 5px 10px;
+					border: 0;
+					background: rgba(white,.6);
+					font-size: 18px;
+					text-transform: lowercase;
+					&:hover, &:focus {
+						background: white;
+					}
+				}
+				span {
+					@include flex;
+					@include flex-center-vertical;
+					height: 100%;
+					padding: 5px 10px;
+				}
+			}
+		}
+	}
+}
 .pf-type {
 	header.third {
 		@include flex;
@@ -363,113 +473,12 @@
 				.pf-header-desc {
 					margin: 15px 25px 0;
 					width: calc(100% - 50px);
-					height: 124px;
-					padding: 0 5px;
-					resize: none;
-					overflow: auto;
-					background: rgba(white, .4);
-					color: white;
-					font-size: 20px;
-					font-weight: 400;
-					line-height: 1.2;
-					text-align: center;
-					@include placeholder {
-						color: white;
-					}
-					&:focus {
-						background: white;
-						color: $charcoal;
-						@include placeholder {
-							color: $taupe;
-						}
-					}
-					&:disabled {
-						background: none;
-					}
 				}
 			}
 			.pf-url {
-				display: none;
-				@include flex-center;
 				@include center-x;
+				display: none;
 				bottom: 30px;
-				font-size: 18px;
-				font-weight: 400;
-				li {
-					&:first-child {
-						padding: 10px 15px;
-						background: rgba(white,.3);
-						text-transform: lowercase;
-						a {
-							color: white;
-						}
-					}
-					span {
-						color: white;
-					}
-					input {
-						text-align: center;
-						color: $slate;
-					}
-					&:last-child {
-						a {
-							@include flex;
-							@include flex-center;
-							width: 40px;
-							height: 40px;
-							padding: 5px;
-							background: white;
-							svg {
-								@include svg-stroke-width(5);
-								stroke: $slate;
-								width: 100%;
-								height: 100%;
-							}
-							&:hover, &:focus {
-								background: $slate;
-								svg {
-									stroke: white;
-								}
-							}
-							&:active {
-								background: $charcoal;
-								svg {
-									stroke: white;
-								}
-							}
-						}
-					}
-				}
-				&.pf-edit-url {
-					li {
-						&:first-child {
-							@include flex;
-							@include flex-center-vertical;
-							padding: 0;
-							height: 40px;
-							input {
-								@include transition(.15s ease-in-out);
-								@include flex;
-								@include flex-center-vertical;
-								height: 100%;
-								padding: 5px 10px;
-								border: 0;
-								background: rgba(white,.6);
-								font-size: 18px;
-								text-transform: lowercase;
-								&:hover, &:focus {
-									background: white;
-								}
-							}
-							span {
-								@include flex;
-								@include flex-center-vertical;
-								height: 100%;
-								padding: 5px 10px;
-							}
-						}
-					}
-				}
 			}
 			@media screen and (max-width:768px) {
 				&.pf-header-edit {
@@ -737,12 +746,29 @@
 	.pf-shop-desc {
 		padding: 15px;
 		text-align: center;
+		.pf-textarea-container {
+			.pf-header-desc {
+				width: 100%;
+				height: auto;
+				&:disabled {
+					background: rgba(white, .2);
+				}
+			}
+			textarea {
+				padding: 10px 15px;
+			}
+			.pf-character-count {
+				right: 5px!important;
+			}
+			@media screen and (min-width:768px) {
+				display: none!important;
+			}
+		}
 		h1 {
 			font-size: 32px;
 			font-weight: 600;
 		}
 		p {
-			margin-top: 5px;
 			font-size: 18px;
 			font-weight: 400;
 			line-height: 1.2;
@@ -922,13 +948,15 @@
 		}
 	}
 	.pf-checklist {
+		@include flex;
+		@include flex-wrap;
 		height: calc(100% / 3 * 2 - 64px);
 		overflow: auto;
 		padding: 7.5px;
 		> li:not(.pf-checklist-full) {
 			padding: 7.5px;
 			position: relative;
-			height: 50%;
+			width: 100%;
 			.pf-edit-link {
 				position: absolute;
 			    top: 0;
@@ -938,7 +966,7 @@
 			    font-weight: 600;
 			    z-index:100;
 			}
-			input {
+			input[type="checkbox"] {
 				@include opacity(0);
 				position: absolute;
 				z-index: 10;
@@ -950,30 +978,32 @@
 			div {
 				@include flex;
 				@include flex-wrap;
-				-webkit-align-items: flex-end;
-				align-items: flex-end;
-				-webkit-justify-content: center;
-				justify-content: center;
+				@include flex-center;
 				position: relative;
 				background: $charcoal;
 				height: 100%;
 				.pf-checklist-item-bg {
 					@include flex;
 					@include flex-center;
+					position: relative;
 					width: 100%;
-					height: calc(100% - 106px);
+					height: 144px;
 					padding: 15px;
 					background-color: mix($slate, $shamrock, 80%);
 					background-position: center center;
 					background-size: cover;
-					font-size: 32px;
+					font-size: 24px;
 					font-weight: 600;
-				}
-				.pf-price {
-					z-index: 20;
-				}
-				.pf-price + .pf-checklist-item-bg {
-					span {
+					line-height: 1.2;
+					text-align: center;
+					.pf-price {
+						@include translate-x(0);
+						top: auto!important;
+						bottom: 15px;
+						z-index: 20;
+						height: 40px;
+					}
+					.pf-price + span {
 						display: block;
 						padding-bottom: 15px;
 					}
@@ -1028,25 +1058,104 @@
 				.pf-check-label {
 					display: block;
 					width: 100%;
+					height: 106px;
 					background: $shamrock;
 					padding: 15px;
-					font-size: 18px;
+					font-size: 24px;
 					font-weight: 600;
 					text-align: center;
 					.pf-rating {
-						display: none;
-						margin: 10px auto 0;
+						@include flex;
+						margin: 10px auto 0;;
 						max-width: 120px;
+						height: 26px;
 					}
 					.pf-review-amt {
-						display: none;
+						display: block;
 					}
 				}
 			}
-			input:checked + div .pf-check {
+			input[type="checkbox"]:checked + div .pf-check {
 				background: white;
 				svg {
 					stroke: $shamrock;
+				}
+			}
+		}
+		.pf-checklist-desc {
+			width: 100%!important;
+			height: auto!important;
+			text-align: center;
+			h1 {
+				font-size: 28px;
+				font-weight: 600;
+				line-height: 1.2;
+				@media screen and (min-width:768px) {
+					font-size: 48px;
+				}
+			}
+			input {
+				display: block;
+				border: 0;
+				width: 100%;
+				background: rgba(white, .4);
+				color: white;
+				font-size: 28px;
+				font-weight: 600;
+				line-height: 1.2;
+				text-align: center;
+				@include placeholder {
+					color: white;
+				}
+				&:focus {
+					background: white;
+					color: $charcoal;
+					@include placeholder {
+						color: $taupe;
+					}
+				}
+				@media screen and (min-width:768px) {
+					font-size: 48px;
+				}
+			}
+			p {
+				margin-top: 10px;
+				font-size: 18px;
+				font-weight: 400;
+				@media screen and (min-width:768px) {
+					font-size: 24px;
+				}
+			}
+			.pf-textarea-container {
+				background: none;
+				width: 100%;
+				margin-top: 10px;
+				font-size: 18px;
+				.pf-header-desc {
+					width: 100%;
+					height: auto;
+					padding: 10px 15px;
+					font-size: 18px;
+					&:disabled {
+						background: rgba(white, .2);
+					}
+				}
+				.pf-character-count {
+					right: 5px!important;
+				}
+			}
+			.pf-textarea-container:nth-child(4) {
+				display: none;
+				.pf-header-desc {
+					font-size: 24px;
+				}
+			}
+			@media screen and (min-width:768px) {
+				.pf-textarea-container:nth-child(4) {
+					display: block;
+				}
+				.pf-textarea-container:nth-child(5) {
+					display: none;
 				}
 			}
 		}
@@ -2126,16 +2235,13 @@
 		.pf-checklist {
 			padding: 15px;
 			> li:not(.pf-checklist-full) {
+				width: 50%;
+				height: 50%;
 				padding: 15px;
 				div {
-					.pf-check-label {
-						font-size: 24px;
-						.pf-rating {
-							@include flex;
-						}
-						.pf-review-amt {
-							display: block;
-						}
+					.pf-checklist-item-bg {
+						height: calc(100% - 106px);
+						font-size: 28px;
 					}
 				}
 			}
@@ -2183,13 +2289,8 @@
 		}
 		.pf-shop-desc {
 			padding: 30px;
-			> h1 {
-				margin-top: -15px;
-				font-size: 48px;
-			}
-			p {
-				margin-top: 10px;
-				font-size: 24px;
+			.pf-url {
+				display: none;
 			}
 			.p15top {
 				padding-top: 30px!important;
@@ -2981,24 +3082,24 @@
 				}
 			}
 		}
-		.pf-header .pf-url {
-			li {
-				&:first-child input {
-					color:  desaturate(darken($cerise, 20%), 20%)!important;
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($cerise, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $cerise;
 				}
-				&:last-child a {
+				&:hover, &:focus {
+					background: $cerise;
 					svg {
-						stroke: $cerise;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $cerise;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($cerise, 20%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($cerise, 20%), 20%)!important;
 				}
 			}
 		}
@@ -3414,24 +3515,24 @@
 				}
 			}
 		}
-		.pf-header .pf-url {
-			li {
-				&:first-child input {
-					color:  desaturate(darken($moola, 20%), 20%)!important;
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($moola, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $moola;
 				}
-				&:last-child a {
+				&:hover, &:focus {
+					background: $moola;
 					svg {
-						stroke: $moola;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $moola;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($moola, 20%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($moola, 20%), 20%)!important;
 				}
 			}
 		}
@@ -3707,24 +3808,24 @@
 				}
 			}
 		}
-		.pf-header .pf-url {
-			li {
-				&:first-child input {
-					color:  desaturate(darken($gold, 40%), 20%)!important;
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($gold, 40%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $gold;
 				}
-				&:last-child a {
+				&:hover, &:focus {
+					background: $gold;
 					svg {
-						stroke: $gold;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $gold;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($gold, 40%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($gold, 40%), 20%)!important;
 				}
 			}
 		}
@@ -4063,24 +4164,24 @@
 				}
 			}
 		}
-		.pf-header .pf-url {
-			li {
-				&:first-child input {
-					color: desaturate(darken($cobalt, 30%), 20%)!important;
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color: desaturate(darken($cobalt, 30%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $cobalt;
 				}
-				&:last-child a {
+				&:hover, &:focus {
+					background: $cobalt;
 					svg {
-						stroke: $cobalt;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $cobalt;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background: desaturate(darken($cobalt, 30%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background: desaturate(darken($cobalt, 30%), 20%)!important;
 				}
 			}
 		}
@@ -4355,24 +4456,24 @@
 				}
 			}
 		}
-		.pf-header .pf-url {
-			li {
-				&:first-child input {
-					color:  desaturate(darken($auburn, 30%), 20%)!important;
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($auburn, 30%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $auburn;
 				}
-				&:last-child a {
+				&:hover, &:focus {
+					background: $auburn;
 					svg {
-						stroke: $auburn;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $auburn;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($auburn, 30%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($auburn, 30%), 20%)!important;
 				}
 			}
 		}
@@ -4647,24 +4748,24 @@
 				}
 			}
 		}
-		.pf-header .pf-url {
-			li {
-				&:first-child input {
-					color:  desaturate(darken($orange, 20%), 20%)!important;
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($orange, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $orange;
 				}
-				&:last-child a {
+				&:hover, &:focus {
+					background: $orange;
 					svg {
-						stroke: $orange;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $orange;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($orange, 20%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($orange, 20%), 20%)!important;
 				}
 			}
 		}
@@ -4939,24 +5040,24 @@
 				}
 			}
 		}
-		.pf-header .pf-url {
-			li {
-				&:first-child input {
-					color:  desaturate(darken($eggplant, 20%), 10%)!important;
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($eggplant, 20%), 10%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $eggplant;
 				}
-				&:last-child a {
+				&:hover, &:focus {
+					background: $eggplant;
 					svg {
-						stroke: $eggplant;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $eggplant;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($eggplant, 20%), 10%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($eggplant, 20%), 10%)!important;
 				}
 			}
 		}
@@ -5231,24 +5332,24 @@
 				}
 			}
 		}
-		.pf-header .pf-url {
-			li {
-				&:first-child input {
-					color:  desaturate(darken($azure, 20%), 10%)!important;
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($azure, 20%), 10%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $azure;
 				}
-				&:last-child a {
+				&:hover, &:focus {
+					background: $azure;
 					svg {
-						stroke: $azure;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $azure;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($azure, 20%), 10%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($azure, 20%), 10%)!important;
 				}
 			}
 		}
