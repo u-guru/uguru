@@ -1,4 +1,4 @@
-<ion-view class='uguru-view pf-type pf-type-delivery pf-type-{{user.academic_shop.category.hex_color}} bg-slate pf-has-edit'>
+<ion-view class='uguru-view pf-type pf-type-academic pf-type-{{user.academic_shop.category.hex_color}} bg-slate pf-has-edit'>
 	<a id='guru-profile-cta-close' class='cta-modal-close close-button'>
 		<svg viewBox="0 0 100 100">
 			<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -29,7 +29,7 @@
 					<span class="user-icon-edit">Edit</span>
 				</a>
 				<h1 class="verified">
-					<span class="inline">{{ user.profile_name || 'Nameless Guru' }}</span>
+					<span class="inline">{{ user.name || 'Nameless Guru' }}</span>
 					<span class="inline">
 						<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 					</span>
@@ -529,8 +529,8 @@
 			<ul class="relative pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
 				<!-- Description should be first child -->
 				<li class="pf-checklist-desc">
-					<h1 class="ng-class:{'hide': profile.edit_mode}">{{user.academic_shop.title}}</h1>
-					<input class="ng-class:{'hide': !profile.edit_mode}" value="{{user.academic_shop.title}}"/>
+					<h1 class="ng-class:{'hide': profile.edit_mode}">{{user.academic_shop.title || user.first_name + "’s Academic Shop"}}</h1>
+					<input class="ng-class:{'hide': !profile.edit_mode}" value='{{user.academic_shop.title || user.first_name + "’s Academic Shop"}}'/>
 					<p ng-if='!user.academic_shop && user.active_shop && user.active_shop.description' class="pf-header-desc ng-class:{'hide': profile.edit_mode}">{{user.active_shop.description}}</p>
 					<div class='pf-textarea-container relative'>
 						<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" rows="2" maxlength="100" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."></textarea>
@@ -541,7 +541,42 @@
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{100 - user.guru_introduction.length}}</span>
 					</div>
 				</li>
-				<li class='relative'  ng-repeat='portfolio_item in user.academic_shop.portfolio_items'>
+				
+				
+				<!-- SAMPLE ITEM -->
+				<!-- <li class='relative'>
+					<div class="pf-check-container">
+						<span class="pf-price pf-price-right">$10/hr</span>
+						<div class="pf-checklist-item-bg">
+							<span class="pf-price pf-price-right">$10/hr</span>
+							<span>The Joy of Computing</span>
+						</div>
+						<a class="pf-edit-link" ng-click="user.academic_shop.edit_portfolio_item = portfolio_item">Edit</a>
+						<a class="pf-check pf-remove" ng-click='portfolio_item.showRemovePopup = true;'>
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+						<span class="pf-check-label">
+							<span>Math 101</span>
+							<ul class="pf-rating" data-rating="3" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<span class="pf-review-amt">3.5 Avg Rating</span>
+						</span>
+					</div>
+					<div class="absolute top-0 guru-popup guru-popup-remove-pi hide ng-class:{'show':portfolio_item.showRemovePopup}">
+						<div class="guru-popup-vertical-center min-height with-button">Remove Math 101?</div>
+						<div class='ugrid-2'>
+							<button ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
+							<button ng-click='removePortfolioItem(portfolio_item)'>Confirm</button>
+						</div>
+					</div>
+				</li> -->
+				
+				
+				<li class='relative' ng-repeat='portfolio_item in user.academic_shop.portfolio_items'>
 					<div class="pf-check-container">
 						<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
 						<div class="pf-checklist-item-bg">
@@ -562,14 +597,19 @@
 							<ul class="pf-rating" data-rating="{{portfolio_item.rounded_avg_rating}}" data-half="{{portfolio_item.half_stars}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 							<span class="pf-review-amt">{{portfolio_item.avg_rating}}</span>
 						</span>
-					</div>
-					<div class="absolute top-0 guru-popup guru-popup-remove-pi hide ng-class:{'show':portfolio_item.showRemovePopup}">
-						<div class="guru-popup-vertical-center min-height with-button">Remove {{activePortfolioItem.course.short_name}}?</div>
-						<div class='ugrid-2'>
-							<button ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
-							<button ng-click='removePortfolioItem(portfolio_item)'>Confirm</button>
+						<div class="guru-popup hide ng-class:{'show':portfolio_item.showRemovePopup}">
+							<div>
+								<div>
+									<h2>Remove {{portfolio_item.course.short_name}}?</h2>
+									<div class='button-group'>
+										<button class="button-group-cancel" ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
+										<button ng-click='removePortfolioItem(portfolio_item)'>Confirm</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+					<div id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.name | lowercase}} hide ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></div>
 				</li>
 				<!-- SAMPLE ITEM WHEN CLICKED -->
 				<!-- <li class="pf-checklist-full show pf-type-{{user.academic_shop.category.hex_color}}" ng-include="img_base + 'templates/profile.modal.html'"></li> -->
@@ -586,8 +626,6 @@
 						</a>
 					</div>
 				</li>
-
-				<li id='cta-modal-profile-pi-item'  class="fixed right-0 pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.hex_color}} ng-class:{'show': user.academic_shop.edit_portfolio_item}" ng-include="img_base + 'templates/profile.modal.edit.html'"></li>
 			</ul>
 
 

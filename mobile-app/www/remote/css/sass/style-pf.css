@@ -1167,6 +1167,11 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  position: relative;
   height: calc(100% / 3 * 2 - 64px);
   overflow: auto;
   padding: 7.5px;
@@ -1199,7 +1204,7 @@
   height: 100%;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1221,7 +1226,87 @@
   height: 100%;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  padding: 0;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 7.5px;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  margin: 7.5px;
+  border-radius: 2px !important;
+  width: 100px;
+  background: #69B3A5;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #8bc4b9;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active, .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button.activated {
+  background: #6f7d82;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button.button-group-cancel {
+  background: #89969b !important;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button.button-group-cancel:hover, .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button.button-group-cancel:focus {
+  background: #a5afb2 !important;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button.button-group-cancel:active, .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button.button-group-cancel.activated {
+  background: #6f7d82 !important;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  background: rgba(43, 50, 52, 0.95);
+  border-radius: 0;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup > div div h2 {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1248,7 +1333,7 @@
   text-align: center;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg .pf-price {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg .pf-price {
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
   -ms-transform: translateX(0);
@@ -1260,12 +1345,12 @@
   height: 40px;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg .pf-price + span {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg .pf-price + span {
   display: block;
   padding-bottom: 15px;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1289,7 +1374,7 @@
   padding: 5px 5px 10px 10px;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check svg {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check svg {
   fill: none;
   stroke: rgba(255, 255, 255, 0.5);
   stroke-width: 10px;
@@ -1299,12 +1384,11 @@
   height: 100%;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove {
   background: white;
-  z-index: 1000;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -1316,11 +1400,11 @@
   stroke: #69B3A5;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg:first-child {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg:first-child {
   padding: 5px 5px 10px 10px;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg:last-child {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg:last-child {
   filter: alpha(opacity=0);
   opacity: 0;
   -webkit-transform: rotate(45deg);
@@ -1331,25 +1415,25 @@
   padding: 5px 5px 10px 5px;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #69B3A5;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg:first-child, .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg:first-child {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg:first-child, .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg:first-child {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg:last-child, .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg:last-child {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg:last-child, .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg:last-child {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   display: block;
   width: 100%;
   height: 106px;
@@ -1360,7 +1444,7 @@
   text-align: center;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-rating {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label .pf-rating {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1373,7 +1457,7 @@
   height: 26px;
 }
 
-.pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-review-amt {
+.pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label .pf-review-amt {
   display: block;
 }
 
@@ -1473,11 +1557,11 @@
 .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container {
   background: none;
   width: 100%;
-  margin-top: 10px;
   font-size: 18px;
 }
 
 .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container .pf-header-desc {
+  margin-top: 10px;
   width: 100%;
   height: auto;
   padding: 10px 15px;
@@ -1576,10 +1660,6 @@
 
 .pf-type .pf-checklist .pf-checklist-add a:active span svg, .pf-type .pf-checklist .pf-checklist-add a.active span svg {
   stroke: white;
-}
-
-.pf-type .pf-checklist .pf-checklist-full {
-  display: none;
 }
 
 .pf-type .pf-tabs {
@@ -3136,16 +3216,28 @@
     height: 50%;
     padding: 15px;
   }
-  .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+  .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
     height: calc(100% - 106px);
     font-size: 28px;
   }
   .pf-type .pf-checklist .pf-checklist-full:not(.pf-type-photo) .pf-item-header {
     height: 256px !important;
   }
+  .pf-type .pf-checklist > li:nth-child(odd) .pf-checklist-full {
+    right: 0;
+  }
+  .pf-type .pf-checklist > li:nth-child(even) .pf-checklist-full {
+    left: 0;
+  }
   .pf-type .pf-checklist .pf-checklist-full {
-    width: 100% !important;
+    position: absolute;
+    top: 0;
+    width: 200% !important;
+    z-index: 1000;
     padding: 15px;
+  }
+  .pf-type .pf-checklist .pf-checklist-full .pf-edit {
+    background: rgba(48, 55, 58, 0.95);
   }
   .pf-type .pf-checklist .pf-checklist-full .pf-item-header {
     background-color: #2B3234;
@@ -3821,7 +3913,7 @@
 #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
   filter: alpha(opacity=100);
   opacity: 1;
-  background: #add5ce !important;
+  background: #8bc4b9 !important;
   color: white !important;
 }
 
@@ -3999,7 +4091,7 @@
 }
 
 #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #f193c9 !important;
+  background: #ec65b2 !important;
 }
 
 #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
@@ -4060,7 +4152,7 @@
 }
 
 .pf-edit.pf-type-academic .pf-tag-edit .chip.tag-auto:active {
-  background: #f193c9;
+  background: #ec65b2;
 }
 
 .pf-edit.pf-type-academic .pf-tag-edit .chip.tag-selected {
@@ -4169,30 +4261,42 @@
 }
 
 .pf-type-academic .pf-list button.chip:active, .pf-type-academic .pf-list button.chip.activated {
-  background: #f193c9;
+  background: #ec65b2;
 }
 
 .pf-type-academic .pf-list .pf-list-x li div input:checked + span {
   background: #e6389b;
 }
 
-.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  background: #e6389b;
+}
+
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #ec65b2;
+}
+
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active {
+  background: #6f7d82;
+}
+
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   stroke: #e6389b;
 }
 
-.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #e6389b;
 }
 
-.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   background: #e6389b;
 }
 
-.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type-academic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   background-color: #61455b;
 }
 
@@ -4233,7 +4337,7 @@
 }
 
 #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #bad6ab !important;
+  background: #9dc688 !important;
 }
 
 #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
@@ -4294,7 +4398,7 @@
 }
 
 .pf-edit.pf-type-photo .pf-tag-edit .chip.tag-auto:active {
-  background: #bad6ab;
+  background: #9dc688;
 }
 
 .pf-edit.pf-type-photo .pf-tag-edit .chip.tag-selected {
@@ -4635,31 +4739,43 @@
 }
 
 .pf-type-photo .pf-list button.chip:active, .pf-type-photo .pf-list button.chip.activated {
-  background: #bad6ab;
+  background: #9dc688;
 }
 
 .pf-type-photo .pf-list .pf-list-x li div input:checked + span {
   background: #81B566;
 }
 
-.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  background: #81B566;
+}
+
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #9dc688;
+}
+
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active {
+  background: #6f7d82;
+}
+
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   stroke: #40484B;
 }
 
-.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #40484B;
 }
 
-.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   background: white;
   color: #40484B;
 }
 
-.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type-photo .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   background-color: #4d5e50;
 }
 
@@ -4700,7 +4816,7 @@
 }
 
 #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #fbe5af !important;
+  background: #f8d67f !important;
 }
 
 #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
@@ -4761,7 +4877,7 @@
 }
 
 .pf-edit.pf-type-baking .pf-tag-edit .chip.tag-auto:active {
-  background: #fbe5af;
+  background: #f8d67f;
 }
 
 .pf-edit.pf-type-baking .pf-tag-edit .chip.tag-selected {
@@ -4870,7 +4986,7 @@
 }
 
 .pf-type-baking .pf-list button.chip:active, .pf-type-baking .pf-list button.chip.activated {
-  background: #fbe5af;
+  background: #f8d67f;
 }
 
 .pf-type-baking .pf-list .pf-list-x li div input:checked + span {
@@ -4909,23 +5025,35 @@
   fill: #fbe5af;
 }
 
-.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  background: #F6C64E;
+}
+
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #f8d67f;
+}
+
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active {
+  background: #6f7d82;
+}
+
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   stroke: #F6C64E;
 }
 
-.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #F6C64E;
 }
 
-.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   background: #F6C64E;
 }
 
-.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type-baking .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   background-color: #64614c;
 }
 
@@ -4966,7 +5094,7 @@
 }
 
 #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #c9c7f4 !important;
+  background: #a19deb !important;
 }
 
 #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
@@ -4982,7 +5110,7 @@
 }
 
 #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #c9c7f4 !important;
+  background: #a19deb !important;
 }
 
 #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
@@ -5039,7 +5167,7 @@
 }
 
 .pf-edit.pf-type-household .pf-tag-edit .chip.tag-auto:active {
-  background: #c9c7f4;
+  background: #a19deb;
 }
 
 .pf-edit.pf-type-household .pf-tag-edit .chip.tag-selected {
@@ -5148,30 +5276,42 @@
 }
 
 .pf-type-household .pf-list button.chip:active, .pf-type-household .pf-list button.chip.activated {
-  background: #c9c7f4;
+  background: #a19deb;
 }
 
 .pf-type-household .pf-list .pf-list-x li div input:checked + span {
   background: #7872e3;
 }
 
-.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  background: #7872e3;
+}
+
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #a19deb;
+}
+
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active {
+  background: #6f7d82;
+}
+
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   stroke: #7872e3;
 }
 
-.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #7872e3;
 }
 
-.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   background: #7872e3;
 }
 
-.pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type-household .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   background-color: #4b5069;
 }
 
@@ -5212,7 +5352,7 @@
 }
 
 #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #f8adaf !important;
+  background: #f47e82 !important;
 }
 
 #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
@@ -5273,7 +5413,7 @@
 }
 
 .pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-auto:active {
-  background: #f8adaf;
+  background: #f47e82;
 }
 
 .pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-selected {
@@ -5382,30 +5522,42 @@
 }
 
 .pf-type-delivery .pf-list button.chip:active, .pf-type-delivery .pf-list button.chip.activated {
-  background: #f8adaf;
+  background: #f47e82;
 }
 
 .pf-type-delivery .pf-list .pf-list-x li div input:checked + span {
   background: #F04F54;
 }
 
-.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  background: #F04F54;
+}
+
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #f47e82;
+}
+
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active {
+  background: #6f7d82;
+}
+
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   stroke: #F04F54;
 }
 
-.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #F04F54;
 }
 
-.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   background: #F04F54;
 }
 
-.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   background-color: #63494d;
 }
 
@@ -5442,15 +5594,15 @@
 }
 
 #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
-  background: #e6389b !important;
+  background: #E5753C !important;
 }
 
 #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #f1b596 !important;
+  background: #eb9569 !important;
 }
 
 #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
-  background: #f1b596 !important;
+  background: #6f7d82 !important;
 }
 
 #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
@@ -5507,7 +5659,7 @@
 }
 
 .pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-auto:active {
-  background: #f1b596;
+  background: #eb9569;
 }
 
 .pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-selected {
@@ -5616,30 +5768,42 @@
 }
 
 .pf-type-freelancing .pf-list button.chip:active, .pf-type-freelancing .pf-list button.chip.activated {
-  background: #f1b596;
+  background: #eb9569;
 }
 
 .pf-type-freelancing .pf-list .pf-list-x li div input:checked + span {
   background: #E5753C;
 }
 
-.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  background: #E5753C;
+}
+
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #eb9569;
+}
+
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active {
+  background: #6f7d82;
+}
+
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   stroke: #E5753C;
 }
 
-.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #E5753C;
 }
 
-.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   background: #E5753C;
 }
 
-.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   background-color: #615148;
 }
 
@@ -5680,7 +5844,7 @@
 }
 
 #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #c8a6e0 !important;
+  background: #b181d2 !important;
 }
 
 #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
@@ -5741,7 +5905,7 @@
 }
 
 .pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-auto:active {
-  background: #c8a6e0;
+  background: #b181d2;
 }
 
 .pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-selected {
@@ -5850,30 +6014,42 @@
 }
 
 .pf-type-athletic .pf-list button.chip:active, .pf-type-athletic .pf-list button.chip.activated {
-  background: #c8a6e0;
+  background: #b181d2;
 }
 
 .pf-type-athletic .pf-list .pf-list-x li div input:checked + span {
   background: #9A5BC5;
 }
 
-.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  background: #9A5BC5;
+}
+
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #b181d2;
+}
+
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active {
+  background: #6f7d82;
+}
+
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   stroke: #9A5BC5;
 }
 
-.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #9A5BC5;
 }
 
-.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   background: #9A5BC5;
 }
 
-.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   background-color: #524c63;
 }
 
@@ -5914,7 +6090,7 @@
 }
 
 #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
-  background: #9dcad5 !important;
+  background: #79b7c6 !important;
 }
 
 #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
@@ -5975,7 +6151,7 @@
 }
 
 .pf-edit.pf-type-tech .pf-tag-edit .chip.tag-auto:active {
-  background: #9dcad5;
+  background: #79b7c6;
 }
 
 .pf-edit.pf-type-tech .pf-tag-edit .chip.tag-selected {
@@ -6084,30 +6260,42 @@
 }
 
 .pf-type-tech .pf-list button.chip:active, .pf-type-tech .pf-list button.chip.activated {
-  background: #9dcad5;
+  background: #79b7c6;
 }
 
 .pf-type-tech .pf-list .pf-list-x li div input:checked + span {
   background: #55A4B7;
 }
 
-.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button {
+  background: #55A4B7;
+}
+
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:hover, .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:focus {
+  background: #79b7c6;
+}
+
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .guru-popup .button-group button:active {
+  background: #6f7d82;
+}
+
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove svg {
   stroke: #55A4B7;
 }
 
-.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover, .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus {
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover, .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus {
   background: #55A4B7;
 }
 
-.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:hover svg, .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove:focus svg {
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:hover svg, .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check.pf-remove:focus svg {
   stroke: white;
 }
 
-.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-check-label {
   background: #55A4B7;
 }
 
-.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+.pf-type-tech .pf-checklist > li:not(.pf-checklist-full) .pf-check-container .pf-checklist-item-bg {
   background-color: #445a61;
 }
 

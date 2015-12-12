@@ -950,6 +950,11 @@
 	.pf-checklist {
 		@include flex;
 		@include flex-wrap;
+		-webkit-align-items: flex-start;
+		align-items: flex-start;
+		-webkit-align-content: flex-start;
+		align-content: flex-start;
+		position: relative;
 		height: calc(100% / 3 * 2 - 64px);
 		overflow: auto;
 		padding: 7.5px;
@@ -975,13 +980,63 @@
 				width: 100%;
 				height: 100%;
 			}
-			div {
+			.pf-check-container {
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
 				position: relative;
 				background: $charcoal;
 				height: 100%;
+				.guru-popup {
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 101;
+					width: 100%;
+					max-width: none;
+					height: 100%;
+					padding: 0;
+					.button-group {
+						@include flex;
+						@include flex-center;
+						padding: 7.5px;
+						button {
+							margin: 7.5px;
+							border-radius: 2px!important;
+							width: 100px;
+							background: $shamrock;
+							&:hover, &:focus {
+								background: lighten($shamrock, 10%);
+							}
+							&:active, &.activated {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-cancel {
+								background: lighten($slate, 30%)!important;
+								&:hover, &:focus {
+									background: lighten($slate, 40%)!important;
+								}
+								&:active, &.activated {
+									background: lighten($slate, 20%)!important;
+								}
+							}
+						}
+					}
+					> div {
+						@include flex;
+						@include flex-center;
+						height: 100%;
+						background: rgba($charcoal,.95);
+						border-radius: 0;
+						div {
+							h2 {
+								font-size: 20px;
+								font-weight: 600;
+								text-align: center;
+							}
+						}
+					}
+				}
 				.pf-checklist-item-bg {
 					@include flex;
 					@include flex-center;
@@ -1026,7 +1081,6 @@
 					}
 					&.pf-remove {
 						background: white;
-						z-index:1000;
 						svg {
 							@include transition(.15s ease-in-out);
 							position: absolute;
@@ -1130,9 +1184,9 @@
 			.pf-textarea-container {
 				background: none;
 				width: 100%;
-				margin-top: 10px;
 				font-size: 18px;
 				.pf-header-desc {
+					margin-top: 10px;
 					width: 100%;
 					height: auto;
 					padding: 10px 15px;
@@ -1201,9 +1255,6 @@
 					}
 				}
 			}
-		}
-		.pf-checklist-full {
-			display: none;
 		}
 	}
 	.pf-tabs {
@@ -2323,7 +2374,7 @@
 				width: 50%;
 				height: 50%;
 				padding: 15px;
-				div {
+				.pf-check-container {
 					.pf-checklist-item-bg {
 						height: calc(100% - 106px);
 						font-size: 28px;
@@ -2335,9 +2386,25 @@
 					height: 256px!important;
 				}
 			}
+			> li:nth-child(odd) {
+				.pf-checklist-full {
+					right: 0;
+				}
+			}
+			> li:nth-child(even) {
+				.pf-checklist-full {
+					left: 0;
+				}
+			}
 			.pf-checklist-full {
-				width: 100%!important;
+				position: absolute;
+				top: 0;
+				width: 200%!important;
+				z-index: 1000;
 				padding: 15px;
+				.pf-edit {
+					background: rgba(lighten($charcoal, 2%),.95);
+				}
 				.pf-item-header {
 					background-color: $charcoal;
 				}
@@ -2841,7 +2908,7 @@
 						text-transform: none!important;
 						&:hover, &:focus {
 							@include opacity(1);
-							background: lighten($shamrock, 20%)!important;
+							background: lighten($shamrock, 10%)!important;
 							color: white!important;
 						}
 						&:active, &.activated {
@@ -3003,7 +3070,7 @@
 					button.save-button, button.bg-campus {
 						background: $cerise!important;
 						&:hover, &:focus {
-							background: lighten($cerise, 20%)!important;
+							background: lighten($cerise, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -3077,7 +3144,7 @@
 					background: $cerise;
 				}
 				&:active {
-					background: lighten($cerise, 20%);
+					background: lighten($cerise, 10%);
 				}
 			}
 			&.tag-selected {
@@ -3220,7 +3287,7 @@
 				background: $cerise;
 			}
 			&:active, &.activated {
-				background: lighten($cerise, 20%);
+				background: lighten($cerise, 10%);
 			}
 		}
 		.pf-list-x {
@@ -3235,7 +3302,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $cerise;
+							&:hover, &:focus {
+								background: lighten($cerise, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -3295,7 +3375,7 @@
 					button.save-button, button.bg-campus {
 						background: $moola!important;
 						&:hover, &:focus {
-							background: lighten($moola, 20%)!important;
+							background: lighten($moola, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -3369,7 +3449,7 @@
 					background: $moola;
 				}
 				&:active {
-					background: lighten($moola, 20%);
+					background: lighten($moola, 10%);
 				}
 			}
 			&.tag-selected {
@@ -3653,7 +3733,7 @@
 				background: $moola;
 			}
 			&:active, &.activated {
-				background: lighten($moola, 20%);
+				background: lighten($moola, 10%);
 			}
 		}
 		.pf-list-x {
@@ -3668,7 +3748,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $moola;
+							&:hover, &:focus {
+								background: lighten($moola, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -3729,7 +3822,7 @@
 					button.save-button, button.bg-campus {
 						background: $gold!important;
 						&:hover, &:focus {
-							background: lighten($gold, 20%)!important;
+							background: lighten($gold, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -3803,7 +3896,7 @@
 					background: $gold;
 				}
 				&:active {
-					background: lighten($gold, 20%);
+					background: lighten($gold, 10%);
 				}
 			}
 			&.tag-selected {
@@ -3946,7 +4039,7 @@
 				background: $gold;
 			}
 			&:active, &.activated {
-				background: lighten($gold, 20%);
+				background: lighten($gold, 10%);
 			}
 		}
 		.pf-list-x {
@@ -4016,7 +4109,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $gold;
+							&:hover, &:focus {
+								background: lighten($gold, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -4076,7 +4182,7 @@
 					button.save-button, button.bg-campus {
 						background: $cobalt!important;
 						&:hover, &:focus {
-							background: lighten($cobalt, 20%)!important;
+							background: lighten($cobalt, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -4092,7 +4198,7 @@
 					button.bg-campus {
 						background: $cobalt!important;
 						&:hover, &:focus {
-							background: lighten($cobalt, 20%)!important;
+							background: lighten($cobalt, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -4159,7 +4265,7 @@
 					background: $cobalt;
 				}
 				&:active {
-					background: lighten($cobalt, 20%);
+					background: lighten($cobalt, 10%);
 				}
 			}
 			&.tag-selected {
@@ -4302,7 +4408,7 @@
 				background: $cobalt;
 			}
 			&:active, &.activated {
-				background: lighten($cobalt, 20%);
+				background: lighten($cobalt, 10%);
 			}
 		}
 		.pf-list-x {
@@ -4317,7 +4423,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $cobalt;
+							&:hover, &:focus {
+								background: lighten($cobalt, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -4377,7 +4496,7 @@
 					button.save-button, button.bg-campus {
 						background: $auburn!important;
 						&:hover, &:focus {
-							background: lighten($auburn, 20%)!important;
+							background: lighten($auburn, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -4451,7 +4570,7 @@
 					background: $auburn;
 				}
 				&:active {
-					background: lighten($auburn, 20%);
+					background: lighten($auburn, 10%);
 				}
 			}
 			&.tag-selected {
@@ -4594,7 +4713,7 @@
 				background: $auburn;
 			}
 			&:active, &.activated {
-				background: lighten($auburn, 20%);
+				background: lighten($auburn, 10%);
 			}
 		}
 		.pf-list-x {
@@ -4609,7 +4728,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $auburn;
+							&:hover, &:focus {
+								background: lighten($auburn, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -4667,12 +4799,12 @@
 			.pf-shop-desc {
 				#desktop-languages, #experience-modal {
 					button.save-button, button.bg-campus {
-						background: $cerise!important;
+						background: $orange!important;
 						&:hover, &:focus {
-							background: lighten($orange, 20%)!important;
+							background: lighten($orange, 10%)!important;
 						}
 						&:active, &.activated {
-							background: lighten($orange, 20%)!important;
+							background: lighten($slate, 20%)!important;
 						}
 					}
 				}
@@ -4743,7 +4875,7 @@
 					background: $orange;
 				}
 				&:active {
-					background: lighten($orange, 20%);
+					background: lighten($orange, 10%);
 				}
 			}
 			&.tag-selected {
@@ -4886,7 +5018,7 @@
 				background: $orange;
 			}
 			&:active, &.activated {
-				background: lighten($orange, 20%);
+				background: lighten($orange, 10%);
 			}
 		}
 		.pf-list-x {
@@ -4901,7 +5033,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $orange;
+							&:hover, &:focus {
+								background: lighten($orange, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -4961,7 +5106,7 @@
 					button.save-button, button.bg-campus {
 						background: $eggplant!important;
 						&:hover, &:focus {
-							background: lighten($eggplant, 20%)!important;
+							background: lighten($eggplant, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -5035,7 +5180,7 @@
 					background: $eggplant;
 				}
 				&:active {
-					background: lighten($eggplant, 20%);
+					background: lighten($eggplant, 10%);
 				}
 			}
 			&.tag-selected {
@@ -5178,7 +5323,7 @@
 				background: $eggplant;
 			}
 			&:active, &.activated {
-				background: lighten($eggplant, 20%);
+				background: lighten($eggplant, 10%);
 			}
 		}
 		.pf-list-x {
@@ -5193,7 +5338,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $eggplant;
+							&:hover, &:focus {
+								background: lighten($eggplant, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -5253,7 +5411,7 @@
 					button.save-button, button.bg-campus {
 						background: $azure!important;
 						&:hover, &:focus {
-							background: lighten($azure, 20%)!important;
+							background: lighten($azure, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -5327,7 +5485,7 @@
 					background: $azure;
 				}
 				&:active {
-					background: lighten($azure, 20%);
+					background: lighten($azure, 10%);
 				}
 			}
 			&.tag-selected {
@@ -5470,7 +5628,7 @@
 				background: $azure;
 			}
 			&:active, &.activated {
-				background: lighten($azure, 20%);
+				background: lighten($azure, 10%);
 			}
 		}
 		.pf-list-x {
@@ -5485,7 +5643,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $azure;
+							&:hover, &:focus {
+								background: lighten($azure, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
