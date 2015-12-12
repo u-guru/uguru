@@ -4210,3 +4210,612 @@ input[type=range]:focus::-ms-fill-upper {
   right: -20px;
   border-left-color: rgba(255, 255, 255, 0.9);
 }
+
+/* ---------- COLOR PICKER */
+.color-picker {
+  background: white;
+  width: 100%;
+}
+
+.color-picker ul {
+  padding: 5px;
+}
+
+.color-picker button {
+  height: 52px;
+  font-weight: 600;
+}
+
+.color-picker button:active, .color-picker button.activated {
+  filter: alpha(opacity=30);
+  opacity: 0.3;
+}
+
+.color-picker .color-picker-top {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  overflow: auto;
+}
+
+.color-picker .color-picker-top li {
+  padding: 5px;
+}
+
+.color-picker .color-picker-top li a {
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+}
+
+.color-picker .color-picker-top li a.active:after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+}
+
+.color-picker .color-picker-bottom {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  background: none !important;
+}
+
+.color-picker .color-picker-bottom li {
+  width: calc(100% / 3);
+  padding: 5px;
+}
+
+.color-picker .color-picker-bottom li span {
+  display: block;
+  width: 100%;
+  height: 36px;
+}
+
+.color-picker .color-picker-bottom.bg-auburn + button {
+  background: #F04F54;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(1) span {
+  background: #f8adaf;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(2) span {
+  background: #f69598;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(3) span {
+  background: #f47e82;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(4) span {
+  background: #f2666b;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(5) span {
+  background: #F04F54;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(6) span {
+  background: #ee383d;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(7) span {
+  background: #ec2026;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(8) span {
+  background: #df1319;
+}
+
+.color-picker .color-picker-bottom.bg-auburn li:nth-child(9) span {
+  background: #c81117;
+}
+
+.color-picker .color-picker-bottom.bg-orange + button {
+  background: #E5753C;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(1) span {
+  background: #f1b596;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(2) span {
+  background: #eea57f;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(3) span {
+  background: #eb9569;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(4) span {
+  background: #e88552;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(5) span {
+  background: #E5753C;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(6) span {
+  background: #e26525;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(7) span {
+  background: #d2591c;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(8) span {
+  background: #bc5019;
+}
+
+.color-picker .color-picker-bottom.bg-orange li:nth-child(9) span {
+  background: #a54616;
+}
+
+.color-picker .color-picker-bottom.bg-gold + button {
+  background: #F6C64E;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(1) span {
+  background: #fbe5af;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(2) span {
+  background: #fadd97;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(3) span {
+  background: #f8d67f;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(4) span {
+  background: #f7ce66;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(5) span {
+  background: #F6C64E;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(6) span {
+  background: #f5be36;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(7) span {
+  background: #f4b61d;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(8) span {
+  background: #ecac0c;
+}
+
+.color-picker .color-picker-bottom.bg-gold li:nth-child(9) span {
+  background: #d39a0b;
+}
+
+.color-picker .color-picker-bottom.bg-moola + button {
+  background: #81B566;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(1) span {
+  background: #bad6ab;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(2) span {
+  background: #abce9a;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(3) span {
+  background: #9dc688;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(4) span {
+  background: #8fbd77;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(5) span {
+  background: #81B566;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(6) span {
+  background: #73ad55;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(7) span {
+  background: #679c4c;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(8) span {
+  background: #5c8b43;
+}
+
+.color-picker .color-picker-bottom.bg-moola li:nth-child(9) span {
+  background: #517a3b;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock + button {
+  background: #69B3A5;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(1) span {
+  background: #add5ce;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(2) span {
+  background: #9ccdc3;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(3) span {
+  background: #8bc4b9;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(4) span {
+  background: #7abcaf;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(5) span {
+  background: #69B3A5;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(6) span {
+  background: #58aa9b;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(7) span {
+  background: #4e9b8c;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(8) span {
+  background: #468a7d;
+}
+
+.color-picker .color-picker-bottom.bg-shamrock li:nth-child(9) span {
+  background: #3d796e;
+}
+
+.color-picker .color-picker-bottom.bg-azure + button {
+  background: #55A4B7;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(1) span {
+  background: #9dcad5;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(2) span {
+  background: #8bc1ce;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(3) span {
+  background: #79b7c6;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(4) span {
+  background: #67aebf;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(5) span {
+  background: #55A4B7;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(6) span {
+  background: #4897aa;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(7) span {
+  background: #418798;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(8) span {
+  background: #397787;
+}
+
+.color-picker .color-picker-bottom.bg-azure li:nth-child(9) span {
+  background: #316875;
+}
+
+.color-picker .color-picker-bottom.bg-lake + button {
+  background: #50A5DD;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(1) span {
+  background: #a5d1ee;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(2) span {
+  background: #90c6e9;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(3) span {
+  background: #7bbbe5;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(4) span {
+  background: #65b0e1;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(5) span {
+  background: #50A5DD;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(6) span {
+  background: #3b9ad9;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(7) span {
+  background: #298ed1;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(8) span {
+  background: #2580bc;
+}
+
+.color-picker .color-picker-bottom.bg-lake li:nth-child(9) span {
+  background: #2071a7;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt + button {
+  background: #7872e3;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(1) span {
+  background: #c9c7f4;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(2) span {
+  background: #b5b2f0;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(3) span {
+  background: #a19deb;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(4) span {
+  background: #8c87e7;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(5) span {
+  background: #7872e3;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(6) span {
+  background: #645ddf;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(7) span {
+  background: #4f47db;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(8) span {
+  background: #3b32d6;
+}
+
+.color-picker .color-picker-bottom.bg-cobalt li:nth-child(9) span {
+  background: #3028c7;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant + button {
+  background: #9A5BC5;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(1) span {
+  background: #c8a6e0;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(2) span {
+  background: #bd94d9;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(3) span {
+  background: #b181d2;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(4) span {
+  background: #a66ecc;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(5) span {
+  background: #9A5BC5;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(6) span {
+  background: #8e48be;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(7) span {
+  background: #813eaf;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(8) span {
+  background: #73379c;
+}
+
+.color-picker .color-picker-bottom.bg-eggplant li:nth-child(9) span {
+  background: #653189;
+}
+
+.color-picker .color-picker-bottom.bg-campus + button {
+  background: #8A9EA3;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(1) span {
+  background: #c3cdd0;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(2) span {
+  background: #b5c2c5;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(3) span {
+  background: #a7b6b9;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(4) span {
+  background: #98aaae;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(5) span {
+  background: #8A9EA3;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(6) span {
+  background: #7c9298;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(7) span {
+  background: #6e868c;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(8) span {
+  background: #63787e;
+}
+
+.color-picker .color-picker-bottom.bg-campus li:nth-child(9) span {
+  background: #586b6f;
+}
+
+.color-picker .color-picker-bottom.bg-taupe + button {
+  background: #757575;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(1) span {
+  background: #a8a8a8;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(2) span {
+  background: #9b9b9b;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(3) span {
+  background: #8f8f8f;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(4) span {
+  background: #828282;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(5) span {
+  background: #757575;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(6) span {
+  background: #686868;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(7) span {
+  background: #5c5c5c;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(8) span {
+  background: #4f4f4f;
+}
+
+.color-picker .color-picker-bottom.bg-taupe li:nth-child(9) span {
+  background: #424242;
+}
+
+.color-picker .color-picker-bottom.bg-slate + button {
+  background: #40484B;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(1) span {
+  background: #6f7d82;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(2) span {
+  background: #637074;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(3) span {
+  background: #576267;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(4) span {
+  background: #4c5559;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(5) span {
+  background: #40484B;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(6) span {
+  background: #343b3d;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(7) span {
+  background: #292e2f;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(8) span {
+  background: #1d2022;
+}
+
+.color-picker .color-picker-bottom.bg-slate li:nth-child(9) span {
+  background: #111314;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal + button {
+  background: #2B3234;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(1) span {
+  background: #59686c;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(2) span {
+  background: #4e5a5e;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(3) span {
+  background: #424d50;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(4) span {
+  background: #373f42;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(5) span {
+  background: #2B3234;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(6) span {
+  background: #1f2526;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(7) span {
+  background: #141718;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(8) span {
+  background: #080a0a;
+}
+
+.color-picker .color-picker-bottom.bg-charcoal li:nth-child(9) span {
+  background: black;
+}

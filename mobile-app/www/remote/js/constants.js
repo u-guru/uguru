@@ -1,3 +1,3 @@
 var _local = "true";
-var _startpage = "guru-home";
+var _startpage = "pricing";
 var _ipaddress = "192.168.0.103";

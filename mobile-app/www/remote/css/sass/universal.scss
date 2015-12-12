@@ -1,0 +1,154 @@
+@import 'mixin';
+
+/* ---------- PRICING */
+#pricing {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: $smoke;
+	header {
+		@include flex;
+		@include flex-wrap;
+		height: 40%;
+		background: $shamrock;
+		> h1 {
+			width: 100%;
+			padding: 30px;
+			font-size: 48px;
+			font-weight: 900;
+			color: white;
+			text-align: center;
+			text-transform: none;
+		}
+		.pricing-other {
+			@include flex;
+			@include flex-center;
+			position: relative;
+			margin: 0 auto;
+			padding: 15px 0;
+			width: 100%;
+			max-width: 800px;
+			background: #d4ac54;
+			li {
+				@include translate-y(25%);
+				padding: 0 50px;
+				div {
+					text-align: center;
+					h3 {
+						font-size: 36px;
+						font-weight: 700;
+					}
+					h1 {
+						margin-top: 0!important;
+						padding: 0!important;
+						font-size: 128px;
+						font-weight: 900;
+					}
+				}
+			}
+			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				bottom: -80px;
+				left: 0;
+				width: calc(100% - 80px);
+				height: 80px;
+				background: #d4ac54;
+			}
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+				bottom: -80px;
+				right: 0;
+				width: 0;
+				height: 0;
+				border: 40px solid transparent;
+				border-top-color: darken(#d4ac54, 25%);
+				border-left-color: darken(#d4ac54, 25%);
+			}
+		}
+		.pricing-uguru {
+			@include flex;
+			@include flex-center;
+			width: 815px;
+			margin: 0 auto;
+			color: $slate;
+			text-align: center;
+			li {
+				position: relative;
+				width: calc(100% / 3);
+				padding: 0 7.5px;
+				div {
+					overflow: hidden;
+					position: relative;
+					padding: 15px 0;
+					background: $smoke;
+					border: 10px solid $slate;
+					h3 {
+						font-size: 24px;
+						font-weight: 700;
+						text-transform: uppercase;
+					}
+					h2 {
+						@include round;
+						@include flex;
+						@include flex-center;
+						margin: 15px auto;
+						width: 144px;
+						height: 144px;
+						background: rgba($azure, .1);
+						font-size: 44px;
+						font-weight: 700;
+						u {
+							display: block;
+							padding-bottom: 8px;
+							padding-right: 2px;
+						}
+					}
+					span {
+						font-size: 24px;
+						font-weight: 400;
+					}
+					svg {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						fill: rgba($taupe,.1);
+					}
+				}
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					bottom: -5px;
+					left: 7.5px;
+					width: calc(100% - 15px);
+					height: 5px;
+					background: rgba($taupe,.5);
+				}
+			}
+		}
+	}
+	> div {
+		padding: 110px 30px 30px;
+		max-width: 860px;
+		margin: auto;
+		color: $slate;
+		dl {
+			dt {
+				font-size: 28px;
+				font-weight: 700;
+				line-height: 1.2;
+			}
+			dd {
+				font-size: 24px;
+				font-weight: 400;
+				line-height: 1.2;
+			}
+		}
+	}
+}
