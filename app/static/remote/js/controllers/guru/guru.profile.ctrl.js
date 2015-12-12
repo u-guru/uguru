@@ -94,6 +94,8 @@ angular.module('uguru.guru.controllers')
       });
     }
 
+
+    //to add
     $scope.editPortfolioItem = function(portfolio_item) {
       $scope.activePortfolioItem = portfolio_item;
       var portfolioItemModal = document.querySelector('#cta-modal-profile-pi-item');
@@ -101,6 +103,10 @@ angular.module('uguru.guru.controllers')
         portfolioItemModal.classList.add('show');
       }
     }
+
+    //highlight mode
+    //resources
+    //
 
     $scope.closeEditPortfolioItem = function() {
       var portfolioItemModal = document.querySelector('#cta-modal-profile-pi-item');

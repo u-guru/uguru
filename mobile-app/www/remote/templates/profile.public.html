@@ -156,12 +156,19 @@
 						<span>.uguru.me</span>
 					</li>
 					<li>
+						<a href='http://{{user.profile_code}}.uguru.me' target='_blank' class='bg-white'>
+							<svg viewBox="0 0 100 100">
+								<path d="M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848"></path>
+							</svg>
+						</a>
+					</li>
+					<!-- <li>
 						<a class='bg-white'>
 							<svg viewBox="0 0 100 100">
 								<path d="M15.6243489,84.7923176 L19.5509642,73.6399994 L69.794924,23.3911161 L77.0255506,30.6217427 L26.7800007,80.8660212 L15.6243489,84.7923176 Z M13.3333333,87.0833333 L16.6666667,83.75 L13.3333333,87.0833333 L13.3333333,87.0833333 Z M70.8333333,23.75 L73.3350627,21.25 L70.8333333,23.75 L70.8333333,23.75 Z M76.6666667,29.5833333 L79.1666667,27.0833333 L76.6666667,29.5833333 L76.6666667,29.5833333 Z M82.5205606,25.5682252 L85.7479206,28.7955852 C85.7479206,28.7955852 67.7080166,46.8354927 67.5,47.0435059 M75.9393067,32.2348919 L79.1666667,35.4622519 M19.5499992,73.6399994 L26.7800007,80.8700027 L19.5499992,73.6399994 Z M77.7627936,15.0378071 L85.3792239,22.6542374 L81.0085605,27.0249008 L73.3921302,19.4084705 L77.7627936,15.0378071 Z"></path>
 							</svg>
 						</a>
-					</li>
+					</li> -->
 				</ul>
 				<ul class="pf-links">
 					<li>
@@ -508,7 +515,7 @@
 					<div class="pf-check-container">
 						<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
 						<div class="pf-checklist-item-bg">
-							<span class="pf-price pf-price-right">${{user.academic_shop.active_portfolio_item.hourly_price}}/hr</span>
+							<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
 							<span>{{portfolio_item.course.full_name || portfolio_item.course.title}}</span>
 						</div>
 						<a class="pf-edit-link" ng-click="user.academic_shop.edit_portfolio_item = portfolio_item">Edit</a>

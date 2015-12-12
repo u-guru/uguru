@@ -212,10 +212,7 @@ angular.module('uguru.util.controllers')
 
 		};
 
-		$scope.clearInputAndResetCourse = function() {
-			$scope.search_text.course = '';
-			$scope.newPortfolioItem.course = null;
-		}
+
 
 		// $scope.searchInputBlur = function() {
 		// 	$timeout(function() {

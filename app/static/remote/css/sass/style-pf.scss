@@ -252,8 +252,120 @@
 		}
 	}
 }
+.pf-textarea-container {
+	.pf-header-desc {
+		padding: 0 5px;
+		resize: none;
+		overflow: auto;
+		background: rgba(white, .4);
+		color: white;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 1.2;
+		text-align: center;
+		@include placeholder {
+			color: white;
+		}
+		&:focus {
+			background: white;
+			color: $charcoal;
+			@include placeholder {
+				color: $taupe;
+			}
+		}
+		&:disabled {
+			background: none;
+		}
+	}
+	p {
+		background: none!important;
+	}
+}
+.pf-url {
+	@include flex;
+	@include flex-center;
+	font-size: 18px;
+	font-weight: 400;
+	li {
+		&:first-child {
+			padding: 10px 15px;
+			background: rgba(white,.3);
+			text-transform: lowercase;
+			a {
+				color: white;
+			}
+		}
+		span {
+			color: white;
+		}
+		input {
+			text-align: center;
+			color: $slate;
+		}
+		&:last-child {
+			a {
+				@include flex;
+				@include flex-center;
+				width: 40px;
+				height: 40px;
+				padding: 5px;
+				background: white;
+				svg {
+					@include svg-stroke-width(5);
+					stroke: $slate;
+					width: 100%;
+					height: 100%;
+				}
+				&:hover, &:focus {
+					background: $slate;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active {
+					background: $charcoal;
+					svg {
+						stroke: white;
+					}
+				}
+			}
+		}
+	}
+	&.pf-edit-url {
+		li {
+			&:first-child {
+				@include flex;
+				@include flex-center-vertical;
+				padding: 0;
+				height: 40px;
+				input {
+					@include transition(.15s ease-in-out);
+					@include flex;
+					@include flex-center-vertical;
+					height: 100%;
+					padding: 5px 10px;
+					border: 0;
+					background: rgba(white,.6);
+					font-size: 18px;
+					text-transform: lowercase;
+					&:hover, &:focus {
+						background: white;
+					}
+				}
+				span {
+					@include flex;
+					@include flex-center-vertical;
+					height: 100%;
+					padding: 5px 10px;
+				}
+			}
+		}
+	}
+}
 .pf-type {
 	header.third {
+		@include flex;
+		@include flex-center;
 		position: relative;
 		overflow: hidden;
 		h1.pf-title {
@@ -264,7 +376,8 @@
 			display: none;
 			position: absolute;
 			top: 0;
-			right: 15px;
+			left: 15px;
+			z-index: 21;
 			background: $shamrock;
 			width: 50px;
 			height: 50px;
@@ -289,6 +402,13 @@
 				border-top-width: 10px!important;
 				border-bottom-width: 10px!important;
 				border-bottom-color: transparent;
+			}
+			&.pf-banner-edit {
+				background: white;
+				&:after {
+					border: 25px solid white;
+					border-bottom-color: transparent;
+				}
 			}
 		}
 		.pf-header {
@@ -348,110 +468,24 @@
 			button {
 				padding: 5px 30px;
 			}
-			.pf-header-desc {
+			.pf-textarea-container {
 				display: none;
-				margin: 15px 25px 0;
-				width: calc(100% - 50px);
-				height: 124px;
-				padding: 0 5px;
-				resize: none;
-				overflow: auto;
-				background: rgba(white, .4);
-				color: white;
-				font-size: 20px;
-				font-weight: 400;
-				line-height: 1.2;
-				text-align: center;
-				@include placeholder {
-					color: white;
-				}
-				&:focus {
-					background: white;
-					color: $charcoal;
-					@include placeholder {
-						color: $taupe;
-					}
-				}
-				&:disabled {
-					background: none;
+				.pf-header-desc {
+					margin: 15px 25px 0;
+					width: calc(100% - 50px);
 				}
 			}
 			.pf-url {
-				display: none;
-				@include flex-center;
 				@include center-x;
+				display: none;
 				bottom: 30px;
-				font-size: 18px;
-				font-weight: 400;
-				li {
-					&:first-child {
-						padding: 10px 15px;
-						background: rgba(white,.7);
-						text-transform: lowercase;
-						a {
-							color: $slate;
-						}
-					}
-					input, span {
-						color: $slate;
-					}
-					&:last-child {
-						a {
-							@include flex;
-							@include flex-center;
-							width: 40px;
-							height: 40px;
-							padding: 5px;
-							background: white;
-							svg {
-								@include svg-stroke-width(5);
-								stroke: $slate;
-								width: 100%;
-								height: 100%;
-							}
-							&:hover, &:focus {
-								background: $slate;
-								svg {
-									stroke: white;
-								}
-							}
-							&:active {
-								background: $charcoal;
-								svg {
-									stroke: white;
-								}
-							}
-						}
-					}
-				}
-				&.pf-edit-url {
-					li {
-						&:first-child {
-							@include flex;
-							@include flex-center-vertical;
-							padding: 0;
-							height: 40px;
-							input {
-								@include transition(.15s ease-in-out);
-								@include flex;
-								@include flex-center-vertical;
-								height: 100%;
-								padding: 5px 0 5px 10px;
-								border: 0;
-								background: rgba(white,.6);
-								font-size: 18px;
-								text-transform: lowercase;
-								&:hover, &:focus {
-									background: white;
-								}
-							}
-							span {
-								@include flex;
-								@include flex-center-vertical;
-								height: 100%;
-								padding: 5px 10px 5px 0;
-							}
-						}
+			}
+			@media screen and (max-width:768px) {
+				&.pf-header-edit {
+					padding-top: 80px;
+					padding-bottom: 15px;
+					.pf-rating, .pf-review-amt {
+						display: none;
 					}
 				}
 			}
@@ -712,12 +746,29 @@
 	.pf-shop-desc {
 		padding: 15px;
 		text-align: center;
+		.pf-textarea-container {
+			.pf-header-desc {
+				width: 100%;
+				height: auto;
+				&:disabled {
+					background: rgba(white, .2);
+				}
+			}
+			textarea {
+				padding: 10px 15px;
+			}
+			.pf-character-count {
+				right: 5px!important;
+			}
+			@media screen and (min-width:768px) {
+				display: none!important;
+			}
+		}
 		h1 {
 			font-size: 32px;
 			font-weight: 600;
 		}
 		p {
-			margin-top: 5px;
 			font-size: 18px;
 			font-weight: 400;
 			line-height: 1.2;
@@ -732,6 +783,19 @@
 			letter-spacing: 1px;
 			text-align: center;
 			text-transform: uppercase;
+		}
+		button.chip {
+			margin-top: 15px;
+			background: lighten($slate, 20%);
+			width: auto;
+			&:hover, &:focus {
+				@include opacity(1);
+				background: $shamrock;
+			}
+			&:active, &.activated {
+				@include opacity(1);
+				background: lighten($shamrock, 20%);
+			}
 		}
 		.pf-list-desc {
 			display: none;
@@ -751,11 +815,9 @@
 				background: $charcoal;
 				font-size: 18px;
 				font-weight: 600;
+				line-height: 1.2;
 				[data-years]:not([data-years="1"]):after {
 					content: "s";
-				}
-				&:not(:last-child) {
-					margin-bottom: 2px;
 				}
 				ul {
 					li:last-child {
@@ -763,35 +825,65 @@
 					}
 				}
 			}
+			&.ugrid-2 {
+				> li {
+					margin-bottom: 2px;
+				}
+			}
+			&:not(.ugrid-2) {
+				> li:not(:last-child) {
+					margin-bottom: 2px;
+				}
+			}
 		}
 		.pf-list-x {
 			margin-top: 2px;
 			li {
+				position: relative;
 				background: $charcoal;
 				padding: 6.25px;
 				svg {
-					@include transition(.15s ease-in-out);
 					@include svg-stroke(white, 4);
 					display: block;
 					width: 100%;
 					height: 50px;
-					&:last-child:not(:first-child) {
-						@include opacity(0);
-						@include rotate(45);
-						display: none;
-					}
 				}
-				a {
-					&:hover, &:focus {
+				span {
+					display: block;
+					padding-bottom: 10px;
+					font-size: 18px;
+					font-weight: 600;
+				}
+				div {
+					margin: 5px auto 15px;
+					width: 32px;
+					height: 32px;
+					input {
+						@include opacity(0);
+						position: absolute;
+						z-index: 12;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+					span {
+						display: block;
+						width: 32px;
+						height: 32px;
+						border-radius: 3px;
+						background: $slate;
 						svg {
-							&:first-child:not(:last-child) {
-								@include opacity(0);
-								display: none;
-							}
-							&:last-child:not(:first-child) {
-								@include opacity(1);
-								display: block;
-							}
+							@include svg-stroke(lighten($slate, 20%), 10);
+							padding: 4px;
+							width: 32px!important;
+							height: 32px!important;
+						}
+					}
+					input:checked + span {
+						background: $shamrock;
+						svg {
+							stroke: white;
 						}
 					}
 				}
@@ -856,13 +948,15 @@
 		}
 	}
 	.pf-checklist {
+		@include flex;
+		@include flex-wrap;
 		height: calc(100% / 3 * 2 - 64px);
 		overflow: auto;
 		padding: 7.5px;
 		> li:not(.pf-checklist-full) {
 			padding: 7.5px;
 			position: relative;
-			height: 50%;
+			width: 100%;
 			.pf-edit-link {
 				position: absolute;
 			    top: 0;
@@ -872,7 +966,7 @@
 			    font-weight: 600;
 			    z-index:100;
 			}
-			input {
+			input[type="checkbox"] {
 				@include opacity(0);
 				position: absolute;
 				z-index: 10;
@@ -883,15 +977,37 @@
 			}
 			div {
 				@include flex;
+				@include flex-wrap;
+				@include flex-center;
 				position: relative;
-				-webkit-align-items: flex-end;
-				align-items: flex-end;
-				-webkit-justify-content: center;
-				justify-content: center;
 				background: $charcoal;
-				background-position: center center;
-				background-size: cover;
 				height: 100%;
+				.pf-checklist-item-bg {
+					@include flex;
+					@include flex-center;
+					position: relative;
+					width: 100%;
+					height: 144px;
+					padding: 15px;
+					background-color: mix($slate, $shamrock, 80%);
+					background-position: center center;
+					background-size: cover;
+					font-size: 24px;
+					font-weight: 600;
+					line-height: 1.2;
+					text-align: center;
+					.pf-price {
+						@include translate-x(0);
+						top: auto!important;
+						bottom: 15px;
+						z-index: 20;
+						height: 40px;
+					}
+					.pf-price + span {
+						display: block;
+						padding-bottom: 15px;
+					}
+				}
 				.pf-check {
 					@include flex;
 					@include flex-center;
@@ -910,6 +1026,7 @@
 					}
 					&.pf-remove {
 						background: white;
+						z-index:1000;
 						svg {
 							@include transition(.15s ease-in-out);
 							position: absolute;
@@ -942,25 +1059,104 @@
 				.pf-check-label {
 					display: block;
 					width: 100%;
+					height: 106px;
 					background: $shamrock;
 					padding: 15px;
-					font-size: 18px;
+					font-size: 24px;
 					font-weight: 600;
 					text-align: center;
 					.pf-rating {
-						display: none;
-						margin: 10px auto 0;
+						@include flex;
+						margin: 10px auto 0;;
 						max-width: 120px;
+						height: 26px;
 					}
 					.pf-review-amt {
-						display: none;
+						display: block;
 					}
 				}
 			}
-			input:checked + div .pf-check {
+			input[type="checkbox"]:checked + div .pf-check {
 				background: white;
 				svg {
 					stroke: $shamrock;
+				}
+			}
+		}
+		.pf-checklist-desc {
+			width: 100%!important;
+			height: auto!important;
+			text-align: center;
+			h1 {
+				font-size: 28px;
+				font-weight: 600;
+				line-height: 1.2;
+				@media screen and (min-width:768px) {
+					font-size: 48px;
+				}
+			}
+			input {
+				display: block;
+				border: 0;
+				width: 100%;
+				background: rgba(white, .4);
+				color: white;
+				font-size: 28px;
+				font-weight: 600;
+				line-height: 1.2;
+				text-align: center;
+				@include placeholder {
+					color: white;
+				}
+				&:focus {
+					background: white;
+					color: $charcoal;
+					@include placeholder {
+						color: $taupe;
+					}
+				}
+				@media screen and (min-width:768px) {
+					font-size: 48px;
+				}
+			}
+			p {
+				margin-top: 10px;
+				font-size: 18px;
+				font-weight: 400;
+				@media screen and (min-width:768px) {
+					font-size: 24px;
+				}
+			}
+			.pf-textarea-container {
+				background: none;
+				width: 100%;
+				margin-top: 10px;
+				font-size: 18px;
+				.pf-header-desc {
+					width: 100%;
+					height: auto;
+					padding: 10px 15px;
+					font-size: 18px;
+					&:disabled {
+						background: rgba(white, .2);
+					}
+				}
+				.pf-character-count {
+					right: 5px!important;
+				}
+			}
+			.pf-textarea-container:nth-child(4) {
+				display: none;
+				.pf-header-desc {
+					font-size: 24px;
+				}
+			}
+			@media screen and (min-width:768px) {
+				.pf-textarea-container:nth-child(4) {
+					display: block;
+				}
+				.pf-textarea-container:nth-child(5) {
+					display: none;
 				}
 			}
 		}
@@ -1035,6 +1231,7 @@
 	.pf-tab-item {
 		height: calc(100% / 3 * 2 - 60px);
 		overflow: auto;
+		background: $slate;
 		&:not(.active) {
 			display: none;
 		}
@@ -1042,14 +1239,21 @@
 	.pf-tab-container {
 		position: relative;
 		height: calc(100% / 3 * 2);
+		overflow: auto;
+		@media screen and (min-width:768px) {
+			height: 100%;
+		}
 		.pf-tab-item {
 			height: calc(100% - 60px);
 		}
 	}
+	header.pf-item-header + .pf-tab-container {
+		height: calc(100% / 3 * 2);
+	}
 	&.pf-has-edit {
 		.pf-tab-container {
 			.pf-tab-item {
-				padding-bottom: 75px;
+				padding-bottom: 80px;
 			}
 		}
 	}
@@ -1082,7 +1286,42 @@
 	}
 }
 
+#guru-profile-cta-close {
+	@include flex;
+	@include flex-center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60px;
+	height: 60px;
+}
+
 // EDIT
+.pf-edit-mode-banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	width: 100%;
+	background: $auburn;
+	span {
+		display: block;
+		padding: 20px;
+		font-size: 18px;
+		font-weight: 600;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	button {
+		position: absolute;
+		right: 15px;
+		bottom: -64px;
+		@media screen and (min-width:768px) {
+			@include center-x;
+			right: auto;
+		}
+	}
+}
 .pf-edit-pf {
 	position: absolute;
 	bottom: 0;
@@ -1116,6 +1355,20 @@
 }
 .pf-edit {
 	background: lighten($charcoal, 2%);
+	header {
+		background: lighten($charcoal, 5%);
+		h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+		}
+		.header-nav a {
+			height: 58px;
+			svg {
+			    width: 36px;
+			    height: 36px;
+			}
+		}
+	}
 	button {
 		background: $shamrock;
 		font-weight: 600;
@@ -1130,17 +1383,149 @@
 		}
 	}
 	.main {
-		@include flex-wrap;
 		height: calc(100% / 3 * 2 - 64px);
+	}
+	header.no-photo-list + .main {
+		height: calc(100% - 50px - 64px);
+	}
+	.main {
+		@include flex-wrap;
 		overflow: auto;
 		padding: 15px!important;
+		.pf-course-check {
+			@include flex;
+			@include flex-center;
+			margin-top: 0!important;
+			div {
+				position: relative;
+				input {
+					@include opacity(0);
+					position: absolute;
+					z-index: 12;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				span {
+					display: block;
+					width: 32px;
+					height: 32px;
+					border-radius: 3px;
+					background: $slate;
+					svg {
+						@include svg-stroke(lighten($slate, 20%), 10);
+						padding: 4px;
+						width: 100%;
+						height: 100%;
+					}
+				}
+				input:checked + span {
+					background: $shamrock;
+					svg {
+						stroke: white;
+					}
+				}
+			}
+			label {
+				padding-left: 15px;
+				color: white;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
+		.pf-item-search {
+			width: 100%;
+			margin-top: 0!important;
+			.pf-item-selected {
+				margin-top: 15px;
+				h1 {
+					font-size: 28px;
+					font-weight: 900;
+					text-align: left;
+					text-transform: none!important;
+					margin: 0!important;
+				}
+				h2 {
+					font-size: 20px;
+					text-align: left;
+					text-transform: uppercase;
+				}
+			}
+			.input-field {
+				.prefix {
+					margin-top: 6px;
+					svg {
+						@include svg-stroke(white, 5);
+						width: 100%;
+						height: 100%;
+						padding: 11px;
+					}
+				}
+				input {
+					width: calc(100% - 48px)!important;
+				}
+				input, label {
+					color: rgba(white,.6)!important;
+					border-color: rgba(white,.6)!important;
+				}
+				input:focus {
+					color: white!important;
+					border-color: white!important;
+				}
+				.desktop-input-close-icon {
+					right: 15px;
+					margin-top: -20px;
+				}
+			}
+			@media screen and (min-width:768px) {
+				.pf-item-selected {
+					h1 {
+						font-size: 36px;
+					}
+					h2 {
+						font-size: 28px;
+					}
+				}
+				.input-field {
+					.prefix {
+						svg {
+							@include svg-stroke(white, 7);
+							margin-top: 8px;
+							margin-left: -6px;
+							width: 48px;
+							height: 48px;
+							padding: 6px 12px 6px 0;
+						}
+					}
+					input {
+						color: white;
+						height: 64px;
+					}
+					input, label {
+						font-size: 36px;
+					}
+					.prefix + input {
+						margin-left: 48px !important;
+					}
+					label {
+						top: 6px;
+					}
+					label.active {
+						font-size: 24px;
+					}
+				}
+			}
+		}
 		.input-outline {
 			@include transition(.15s ease-in-out);
-			border-color: lighten($slate, 10%);
+			border-width: 0;
+			border-bottom-width: 5px;
+			border-color: rgba(white,.7);
 			background: lighten($slate, 5%);
 			padding: 10px 15px;
 			&:focus {
-				border-color: lighten($slate, 20%);
+				border-color: $shamrock;
 				background: lighten($slate, 10%);
 			}
 		}
@@ -1175,23 +1560,44 @@
 				@include transition(.15s ease-in-out);
 				@include flex;
 				@include flex-center-vertical;
-				background: lighten($slate, 10%);
+				background: mix($slate, $shamrock, 80%);
 				margin-right: 15px;
-				&:hover {
-					background: lighten($slate, 15%);
-				}
-				svg {
-					@include svg-stroke(white, 10);
-					width: 12px;
-					height: 12px;
-					margin-right: 3px;
-				}
-				input {
-					background: transparent;
-					border: 0;
+				border: 0;
+				@include placeholder {
 					color: white!important;
+				}
+				&[disabled] {
+					cursor: pointer;
 					@include placeholder {
 						color: white!important;
+					}
+				}
+				&.tag-auto {
+					color: rgba(white, .5)!important;
+					&:hover, &:focus {
+						background: $shamrock;
+						color: white!important;
+					}
+					&:active {
+						background: lighten($shamrock, 20%);
+						color: white!important;
+					}
+				}
+				&.tag-selected {
+					background: $shamrock;
+					&:hover, &:focus {
+						background: mix($slate, $shamrock, 80%);
+						color: rgba(white, .5)!important;
+					}
+					&:active {
+						background: $slate;
+						color: rgba(white, .5)!important;
+					}
+				}
+				&.tag-add {
+					background: mix($slate, $shamrock, 40%);
+					&:hover, &:focus {
+						background: $shamrock;
 					}
 				}
 			}
@@ -1201,6 +1607,28 @@
 			background: lighten($slate, 5%);
 			padding: 15px;
 			width: 100%;
+		}
+		.pf-attach-list {
+			padding-top: 15px;
+			height: 186px;
+			overflow: visible;
+			background: lighten($slate, 5%);
+			text-align: center;
+			h1 {
+				margin-bottom: 0!important;
+			}
+			ul {
+				height: 150px;
+				width: 100%;
+				overflow: auto;
+				li {
+					div.pf-upload-file {
+						svg.doc-outline {
+							stroke-width: 1.3px;
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -1719,6 +2147,11 @@
 		@include opacity(0);
 		display: none;
 	}
+	.pf-list-x.ugrid-3 {
+		li {
+			width: calc(100% / 6)!important;
+		}
+	}
 	.pf-type:not(.pf-modal) {
 		.pf-links {
 			li {
@@ -1759,7 +2192,7 @@
 				button {
 					padding: 10px 30px;
 				}
-				.pf-header-desc {
+				.pf-textarea-container {
 					display: block;
 				}
 				.pf-url {
@@ -1780,6 +2213,13 @@
 	}
 	.pf-modal {
 		.pf-shop-item-header {
+			h2 {
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+			h2 + h1 {
+				margin-top: 0!important;
+			}
 			h1 {
 				font-size: 48px!important;
 			}
@@ -1796,26 +2236,22 @@
 		.pf-checklist {
 			padding: 15px;
 			> li:not(.pf-checklist-full) {
+				width: 50%;
+				height: 50%;
 				padding: 15px;
 				div {
-					.pf-check-label {
-						font-size: 24px;
-						.pf-rating {
-							@include flex;
-						}
-						.pf-review-amt {
-							display: block;
-						}
+					.pf-checklist-item-bg {
+						height: calc(100% - 106px);
+						font-size: 28px;
 					}
 				}
 			}
-			.pf-checklist-full.active:not(.pf-type-photo) {
+			.pf-checklist-full:not(.pf-type-photo) {
 				.pf-item-header {
 					height: 256px!important;
 				}
 			}
-			.pf-checklist-full.active {
-				display: block;
+			.pf-checklist-full {
 				width: 100%!important;
 				padding: 15px;
 				.pf-item-header {
@@ -1823,11 +2259,6 @@
 				}
 				.pf-tab-container {
 					height: auto;
-				}
-				.pf-attachments, .pf-tags, .pf-ingredients {
-					h3 {
-						font-size: 24px;
-					}
 				}
 				.pf-attachments {
 					ul {
@@ -1859,21 +2290,8 @@
 		}
 		.pf-shop-desc {
 			padding: 30px;
-// <<<<<<< HEAD
-			position:relative !important;
-			ion-pane {
-				position:absolute !important;
-			}
-			h1 {
-// =======
-// 			> h1 {
-// 				margin-top: -15px;
-// >>>>>>> 016a3cd13fbf61eafe7c6131d04300e71613c276
-				font-size: 48px;
-			}
-			p {
-				margin-top: 10px;
-				font-size: 24px;
+			.pf-url {
+				display: none;
 			}
 			.p15top {
 				padding-top: 30px!important;
@@ -1922,12 +2340,11 @@
 
 // MODAL
 .pf-modal {
-	header.third
-	a.cta-modal-close {
+	header.third a.cta-modal-close {
 		svg {
-				height:30px;
-				width:30px;
-			}
+			height: 36px;
+			width: 36px;
+		}
 	}
 	header.third.pf-item-header {
 		.pf-header-bg {
@@ -2013,13 +2430,14 @@
 	.pf-shop-item {
 		background: $charcoal;
 		padding: 0;
+		h3 {
+			padding: 15px;
+			font-weight: 700;
+			text-align: left;
+		}
 		.pf-attachments, .pf-tags, .pf-ingredients {
 			padding: 0 15px 15px;
 			text-align: left;
-			h3 {
-				font-size: 18px;
-				font-weight: 700;
-			}
 		}
 		.pf-tags {
 			text-align: center;
@@ -2034,6 +2452,7 @@
 				@include flex-center-vertical;
 				background: lighten($slate, 10%);
 				margin-right: 15px;
+				border: 0;
 				&:hover {
 					background: lighten($slate, 15%);
 				}
@@ -2319,7 +2738,205 @@
 }
 
 
+// CTA
+#desktop-guru-home {
+	.pf-type {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						width: 100%!important;
+						margin: 0!important;
+						padding: 0!important;
+						height: 64px!important;
+						border: 0!important;
+						border-radius: 0!important;
+						background: $shamrock!important;
+						font-size: 24px!important;
+						letter-spacing: 0!important;
+						text-transform: none!important;
+						&:hover, &:focus {
+							@include opacity(1);
+							background: lighten($shamrock, 20%)!important;
+							color: white!important;
+						}
+						&:active, &.activated {
+							@include opacity(1);
+							background: lighten($slate, 20%)!important;
+							color: white!important;
+						}
+					}
+				}
+				#desktop-languages {
+					display: block!important;
+					position: static!important;
+					min-width: auto!important;
+					max-width: auto!important;
+					min-height: auto!important;
+					height: auto!important;
+					padding-bottom: 0!important;
+					margin-top: 15px;
+					#main-logo {
+						display: none!important;
+					}
+					.desktop-header {
+						@include translate-x(0);
+						position: static!important;
+						left: auto!important;
+						right: auto!important;
+						top: auto!important;
+						min-width: auto!important;
+						max-width: auto!important;
+						height: 60px!important;
+						padding: 0!important;
+						a {
+							svg {
+								width: 36px;
+								height: 36px;
+								margin: 8px;
+							}
+						}
+					}
+					.main.default {
+						display: block!important;
+						min-width: auto!important;
+						min-height: auto!important;
+						height: auto!important;
+						form {
+							.input-field {
+								.prefix {
+									left: 0;
+								}
+							}
+						}
+						#guru-courses-user-profile {
+							display: none!important;
+						}
+						.desktop-search-list {
+							padding: 0!important;
+						}
+						.desktop-card-list {
+							padding: 7.5px!important;
+							margin: auto!important;
+							li {
+								padding: 7.5px!important;
+								a.name-only {
+									height: auto!important;
+									span {
+										font-size: 18px!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				#experience-modal {
+					position: relative!important;
+					top: auto!important;
+					margin-top: 15px;
+					height: auto!important;
+					background: lighten($charcoal, 2%);
+					header:not(.desktop-header) {
+						background: lighten($charcoal, 5%);
+						h1 {
+							font-size: 28px!important;
+							text-transform: lowercase!important;
+						}
+						.header-nav {
+							a {
+								height: 60px;
+								svg {
+									width: 36px;
+									height: 36px;
+								}
+							}
+						}
+					}
+					h1 {
+						background: none!important;
+						padding: 15px!important;
+						font-weight: 600!important;
+						letter-spacing: 0!important;
+					}
+					.main {
+						display: block!important;
+						background: lighten($charcoal, 2%)!important;
+						.bg-campus-50p {
+							background: lighten($charcoal, 2%)!important;
+						}
+						.exp-years {
+							margin: 0 15px;
+							padding: 0 15px 15px;
+							background: lighten($slate, 5%);
+							input[type=range] {
+								padding: 105px 0 20px!important;
+								background: none!important;
+							}
+						}
+						.input-outline {
+							@include transition(.15s ease-in-out);
+							border-width: 0;
+							border-bottom-width: 5px;
+							border-color: rgba(white,.7);
+							background: lighten($slate, 5%);
+							padding: 10px 15px;
+							&:focus {
+								border-color: $shamrock;
+								background: lighten($slate, 10%);
+							}
+						}
+						#experience-name-input.input-outline {
+							display: block;
+							width: 100%;
+							font-weight: 600;
+						}
+						textarea.input-outline {
+							width: 100%;
+							resize: none;
+							height: 176px;
+							font-size: 20px;
+							font-weight: 400;
+						}
+						.exp-years-label {
+							li:first-child {
+								text-align: left!important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
 // ACADEMIC
+#desktop-guru-home {
+	.pf-type-academic {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $cerise!important;
+						&:hover, &:focus {
+							background: lighten($cerise, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $cerise;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-academic {
 	button {
 		background: $cerise;
@@ -2331,29 +2948,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $cerise;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $cerise;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $cerise;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $cerise;
+						span {
+							svg {
+								stroke: $cerise;
+							}
 							span {
-								svg {
-									stroke: $cerise;
-								}
-								span {
-									color: $cerise;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($cerise, 35%);
+								color: $cerise;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($cerise, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $cerise, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $cerise;
+				}
+				&:active {
+					background: lighten($cerise, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $cerise;
+				&:hover, &:focus {
+					background: mix($slate, $cerise, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $cerise, 40%);
+				&:hover, &:focus {
+					background: $cerise;
 				}
 			}
 		}
@@ -2422,25 +3077,30 @@
 			&.pf-banner-academic {
 				display: block;
 			}
-		}
-		.pf-header .pf-url {
-			li {
-				&:first-child a, input, span {
-					color:  desaturate(darken($cerise, 20%), 20%)!important;
+			&.pf-banner-edit {
+				svg path {
+					stroke: $cerise;
 				}
-				&:last-child a {
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($cerise, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $cerise;
+				}
+				&:hover, &:focus {
+					background: $cerise;
 					svg {
-						stroke: $cerise;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $cerise;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($cerise, 20%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($cerise, 20%), 20%)!important;
 				}
 			}
 		}
@@ -2471,6 +3131,23 @@
 		h1 {
 			background: $cerise;
 		}
+		button.chip {
+			&:hover, &:focus {
+				background: $cerise;
+			}
+			&:active, &.activated {
+				background: lighten($cerise, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $cerise;
+					}
+				}
+			}
+		}
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
@@ -2490,6 +3167,9 @@
 				}
 				.pf-check-label {
 					background: $cerise;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $cerise, 80%);
 				}
 			}
 			input:checked + div .pf-check svg {
@@ -2523,6 +3203,32 @@
 }
 
 // PHOTOGRAHPY
+#desktop-guru-home {
+	.pf-type-photo {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $moola!important;
+						&:hover, &:focus {
+							background: lighten($moola, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $moola;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-photo {
 	button {
 		background: $moola;
@@ -2534,29 +3240,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $moola;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $moola;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $moola;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $moola;
+						span {
+							svg {
+								stroke: $moola;
+							}
 							span {
-								svg {
-									stroke: $moola;
-								}
-								span {
-									color: $moola;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($moola, 35%);
+								color: $moola;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($moola, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $moola, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $moola;
+				}
+				&:active {
+					background: lighten($moola, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $moola;
+				&:hover, &:focus {
+					background: mix($slate, $moola, 80%);
+				}
+				&:active {
+					background: $moola;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $moola, 40%);
+				&:hover, &:focus {
+					background: $moola;
 				}
 			}
 		}
@@ -2766,25 +3510,30 @@
 			&.pf-banner-photo {
 				display: block;
 			}
-		}
-		.pf-header .pf-url {
-			li {
-				&:first-child a, input, span {
-					color:  desaturate(darken($moola, 20%), 20%)!important;
+			&.pf-banner-edit {
+				svg path {
+					stroke: $moola;
 				}
-				&:last-child a {
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($moola, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $moola;
+				}
+				&:hover, &:focus {
+					background: $moola;
 					svg {
-						stroke: $moola;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $moola;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($moola, 20%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($moola, 20%), 20%)!important;
 				}
 			}
 		}
@@ -2815,6 +3564,23 @@
 		h1 {
 			background: $moola;
 		}
+		button.chip {
+			&:hover, &:focus {
+				background: $moola;
+			}
+			&:active, &.activated {
+				background: lighten($moola, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $moola;
+					}
+				}
+			}
+		}
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
@@ -2835,6 +3601,9 @@
 				.pf-check-label {
 					background: white;
 					color: $slate;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $moola, 80%);
 				}
 			}
 			input:checked + div .pf-check svg {
@@ -2868,6 +3637,32 @@
 }
 
 // BAKING
+#desktop-guru-home {
+	.pf-type-baking {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $gold!important;
+						&:hover, &:focus {
+							background: lighten($gold, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $gold;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-baking {
 	button {
 		background: $gold;
@@ -2879,29 +3674,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $gold;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $gold;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $gold;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $gold;
+						span {
+							svg {
+								stroke: $gold;
+							}
 							span {
-								svg {
-									stroke: $gold;
-								}
-								span {
-									color: $gold;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($gold, 25%);
+								color: $gold;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($gold, 25%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $gold, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $gold;
+				}
+				&:active {
+					background: lighten($gold, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $gold;
+				&:hover, &:focus {
+					background: mix($slate, $gold, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $gold, 40%);
+				&:hover, &:focus {
+					background: $gold;
 				}
 			}
 		}
@@ -2970,25 +3803,30 @@
 			&.pf-banner-baking {
 				display: block;
 			}
-		}
-		.pf-header .pf-url {
-			li {
-				&:first-child a, input, span {
-					color:  desaturate(darken($gold, 40%), 20%)!important;
+			&.pf-banner-edit {
+				svg path {
+					stroke: $gold;
 				}
-				&:last-child a {
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($gold, 40%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $gold;
+				}
+				&:hover, &:focus {
+					background: $gold;
 					svg {
-						stroke: $gold;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $gold;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($gold, 40%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($gold, 40%), 20%)!important;
 				}
 			}
 		}
@@ -3018,6 +3856,23 @@
 	.pf-list {
 		h1 {
 			background: $gold;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $gold;
+			}
+			&:active, &.activated {
+				background: lighten($gold, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $gold;
+					}
+				}
+			}
 		}
 	}
 	.pf-rating:not(.default) {
@@ -3094,6 +3949,9 @@
 				.pf-check-label {
 					background: $gold;
 				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $gold, 80%);
+				}
 			}
 			input:checked + div .pf-check svg {
 				stroke: $gold;
@@ -3126,6 +3984,41 @@
 }
 
 // HOUSEHOLD
+#desktop-guru-home {
+	.pf-type-household {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $cobalt!important;
+						&:hover, &:focus {
+							background: lighten($cobalt, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $cobalt;
+						}
+					}
+					button.bg-campus {
+						background: $cobalt!important;
+						&:hover, &:focus {
+							background: lighten($cobalt, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-household {
 	button {
 		background: $cobalt;
@@ -3137,29 +4030,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $cobalt;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $cobalt;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $cobalt;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $cobalt;
+						span {
+							svg {
+								stroke: $cobalt;
+							}
 							span {
-								svg {
-									stroke: $cobalt;
-								}
-								span {
-									color: $cobalt;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($cobalt, 25%);
+								color: $cobalt;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($cobalt, 25%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $cobalt, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $cobalt;
+				}
+				&:active {
+					background: lighten($cobalt, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $cobalt;
+				&:hover, &:focus {
+					background: mix($slate, $cobalt, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $cobalt, 40%);
+				&:hover, &:focus {
+					background: $cobalt;
 				}
 			}
 		}
@@ -3228,25 +4159,30 @@
 			&.pf-banner-household {
 				display: block;
 			}
-		}
-		.pf-header .pf-url {
-			li {
-				&:first-child a, input, span {
-					color: desaturate(darken($cobalt, 30%), 20%)!important;
+			&.pf-banner-edit {
+				svg path {
+					stroke: $cobalt;
 				}
-				&:last-child a {
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color: desaturate(darken($cobalt, 30%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $cobalt;
+				}
+				&:hover, &:focus {
+					background: $cobalt;
 					svg {
-						stroke: $cobalt;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $cobalt;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background: desaturate(darken($cobalt, 30%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background: desaturate(darken($cobalt, 30%), 20%)!important;
 				}
 			}
 		}
@@ -3277,6 +4213,23 @@
 		h1 {
 			background: $cobalt;
 		}
+		button.chip {
+			&:hover, &:focus {
+				background: $cobalt;
+			}
+			&:active, &.activated {
+				background: lighten($cobalt, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $cobalt;
+					}
+				}
+			}
+		}
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
@@ -3296,6 +4249,9 @@
 				}
 				.pf-check-label {
 					background: $cobalt;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $cobalt, 80%);
 				}
 			}
 			input:checked + div .pf-check svg {
@@ -3329,6 +4285,32 @@
 }
 
 // DELIVERY
+#desktop-guru-home {
+	.pf-type-delivery {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $auburn!important;
+						&:hover, &:focus {
+							background: lighten($auburn, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $auburn;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-delivery {
 	button {
 		background: $auburn;
@@ -3340,29 +4322,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $auburn;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $auburn;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $auburn;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $auburn;
+						span {
+							svg {
+								stroke: $auburn;
+							}
 							span {
-								svg {
-									stroke: $auburn;
-								}
-								span {
-									color: $auburn;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($auburn, 30%);
+								color: $auburn;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($auburn, 30%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $auburn, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $auburn;
+				}
+				&:active {
+					background: lighten($auburn, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $auburn;
+				&:hover, &:focus {
+					background: mix($slate, $auburn, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $auburn, 40%);
+				&:hover, &:focus {
+					background: $auburn;
 				}
 			}
 		}
@@ -3431,25 +4451,30 @@
 			&.pf-banner-delivery {
 				display: block;
 			}
-		}
-		.pf-header .pf-url {
-			li {
-				&:first-child a, input, span {
-					color:  desaturate(darken($auburn, 30%), 20%)!important;
+			&.pf-banner-edit {
+				svg path {
+					stroke: $auburn;
 				}
-				&:last-child a {
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($auburn, 30%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $auburn;
+				}
+				&:hover, &:focus {
+					background: $auburn;
 					svg {
-						stroke: $auburn;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $auburn;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($auburn, 30%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($auburn, 30%), 20%)!important;
 				}
 			}
 		}
@@ -3480,6 +4505,23 @@
 		h1 {
 			background: $auburn;
 		}
+		button.chip {
+			&:hover, &:focus {
+				background: $auburn;
+			}
+			&:active, &.activated {
+				background: lighten($auburn, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $auburn;
+					}
+				}
+			}
+		}
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
@@ -3499,6 +4541,9 @@
 				}
 				.pf-check-label {
 					background: $auburn;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $auburn, 80%);
 				}
 			}
 			input:checked + div .pf-check svg {
@@ -3532,6 +4577,32 @@
 }
 
 // FREELANCING
+#desktop-guru-home {
+	.pf-type-freelancing {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $cerise!important;
+						&:hover, &:focus {
+							background: lighten($orange, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($orange, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $orange;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-freelancing {
 	button {
 		background: $orange;
@@ -3543,29 +4614,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $orange;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $orange;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $orange;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $orange;
+						span {
+							svg {
+								stroke: $orange;
+							}
 							span {
-								svg {
-									stroke: $orange;
-								}
-								span {
-									color: $orange;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($orange, 35%);
+								color: $orange;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($orange, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $orange, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $orange;
+				}
+				&:active {
+					background: lighten($orange, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $orange;
+				&:hover, &:focus {
+					background: mix($slate, $orange, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $orange, 40%);
+				&:hover, &:focus {
+					background: $orange;
 				}
 			}
 		}
@@ -3634,25 +4743,30 @@
 			&.pf-banner-freelancing {
 				display: block;
 			}
-		}
-		.pf-header .pf-url {
-			li {
-				&:first-child a, input, span {
-					color:  desaturate(darken($orange, 20%), 20%)!important;
+			&.pf-banner-edit {
+				svg path {
+					stroke: $orange;
 				}
-				&:last-child a {
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($orange, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $orange;
+				}
+				&:hover, &:focus {
+					background: $orange;
 					svg {
-						stroke: $orange;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $orange;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($orange, 20%), 20%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($orange, 20%), 20%)!important;
 				}
 			}
 		}
@@ -3683,6 +4797,23 @@
 		h1 {
 			background: $orange;
 		}
+		button.chip {
+			&:hover, &:focus {
+				background: $orange;
+			}
+			&:active, &.activated {
+				background: lighten($orange, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $orange;
+					}
+				}
+			}
+		}
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
@@ -3702,6 +4833,9 @@
 				}
 				.pf-check-label {
 					background: $orange;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $orange, 80%);
 				}
 			}
 			input:checked + div .pf-check svg {
@@ -3735,6 +4869,32 @@
 }
 
 // ATHLETIC
+#desktop-guru-home {
+	.pf-type-athletic {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $eggplant!important;
+						&:hover, &:focus {
+							background: lighten($eggplant, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $eggplant;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-athletic {
 	button {
 		background: $eggplant;
@@ -3746,29 +4906,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $eggplant;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $eggplant;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $eggplant;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $eggplant;
+						span {
+							svg {
+								stroke: $eggplant;
+							}
 							span {
-								svg {
-									stroke: $eggplant;
-								}
-								span {
-									color: $eggplant;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($eggplant, 35%);
+								color: $eggplant;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($eggplant, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $eggplant, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $eggplant;
+				}
+				&:active {
+					background: lighten($eggplant, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $eggplant;
+				&:hover, &:focus {
+					background: mix($slate, $eggplant, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $eggplant, 40%);
+				&:hover, &:focus {
+					background: $eggplant;
 				}
 			}
 		}
@@ -3837,25 +5035,30 @@
 			&.pf-banner-athletic {
 				display: block;
 			}
-		}
-		.pf-header .pf-url {
-			li {
-				&:first-child a, input, span {
-					color:  desaturate(darken($eggplant, 20%), 10%)!important;
+			&.pf-banner-edit {
+				svg path {
+					stroke: $eggplant;
 				}
-				&:last-child a {
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($eggplant, 20%), 10%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $eggplant;
+				}
+				&:hover, &:focus {
+					background: $eggplant;
 					svg {
-						stroke: $eggplant;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $eggplant;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($eggplant, 20%), 10%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($eggplant, 20%), 10%)!important;
 				}
 			}
 		}
@@ -3886,6 +5089,23 @@
 		h1 {
 			background: $eggplant;
 		}
+		button.chip {
+			&:hover, &:focus {
+				background: $eggplant;
+			}
+			&:active, &.activated {
+				background: lighten($eggplant, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $eggplant;
+					}
+				}
+			}
+		}
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
@@ -3905,6 +5125,9 @@
 				}
 				.pf-check-label {
 					background: $eggplant;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $eggplant, 80%);
 				}
 			}
 			input:checked + div .pf-check svg {
@@ -3938,6 +5161,32 @@
 }
 
 // TECH & IT
+#desktop-guru-home {
+	.pf-type-tech {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $azure!important;
+						&:hover, &:focus {
+							background: lighten($azure, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-tech {
 	button {
 		background: $azure;
@@ -3949,29 +5198,67 @@
 			color: white!important;
 		}
 	}
-	header.third {
-		.pf-photo-list {
-			ul {
-				li {
-					div.pf-upload-add {
-						a {
-							border-color: $azure;
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $azure;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $azure;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $azure;
+						span {
+							svg {
+								stroke: $azure;
+							}
 							span {
-								svg {
-									stroke: $azure;
-								}
-								span {
-									color: $azure;
-								}
-							}
-							&:hover, &:focus {
-								background: white;
-							}
-							&:active, &.active {
-								background: lighten($azure, 35%);
+								color: $azure;
 							}
 						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($azure, 35%);
+						}
 					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $azure, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $azure;
+				}
+				&:active {
+					background: lighten($azure, 20%);
+				}
+			}
+			&.tag-selected {
+				background: $azure;
+				&:hover, &:focus {
+					background: mix($slate, $azure, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $azure, 40%);
+				&:hover, &:focus {
+					background: $azure;
 				}
 			}
 		}
@@ -4040,25 +5327,30 @@
 			&.pf-banner-tech {
 				display: block;
 			}
-		}
-		.pf-header .pf-url {
-			li {
-				&:first-child a, input, span {
-					color:  desaturate(darken($azure, 20%), 10%)!important;
+			&.pf-banner-edit {
+				svg path {
+					stroke: $azure;
 				}
-				&:last-child a {
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($azure, 20%), 10%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $azure;
+				}
+				&:hover, &:focus {
+					background: $azure;
 					svg {
-						stroke: $azure;
+						stroke: white;
 					}
-					&:hover, &:focus {
-						background: $azure;
-						svg {
-							stroke: white;
-						}
-					}
-					&:active, &.active {
-						background:  desaturate(darken($azure, 20%), 10%)!important;
-					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($azure, 20%), 10%)!important;
 				}
 			}
 		}
@@ -4089,6 +5381,23 @@
 		h1 {
 			background: $azure;
 		}
+		button.chip {
+			&:hover, &:focus {
+				background: $azure;
+			}
+			&:active, &.activated {
+				background: lighten($azure, 20%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $azure;
+					}
+				}
+			}
+		}
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
@@ -4108,6 +5417,9 @@
 				}
 				.pf-check-label {
 					background: $azure;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $azure, 80%);
 				}
 			}
 			input:checked + div .pf-check svg {
