@@ -219,7 +219,163 @@
           .pf-photo-list ul li div.pf-upload-add a:active, .pf-photo-list ul li div.pf-upload-add a.active {
             background: #cfe6e2; }
 
+.pf-textarea-container .pf-header-desc {
+  padding: 0 5px;
+  resize: none;
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.4);
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center; }
+  .pf-textarea-container .pf-header-desc::-webkit-input-placeholder {
+    color: white; }
+  .pf-textarea-container .pf-header-desc:-moz-placeholder {
+    color: white; }
+  .pf-textarea-container .pf-header-desc::-moz-placeholder {
+    color: white; }
+  .pf-textarea-container .pf-header-desc:-ms-input-placeholder {
+    color: white; }
+  .pf-textarea-container .pf-header-desc:focus {
+    background: white;
+    color: #2B3234; }
+    .pf-textarea-container .pf-header-desc:focus::-webkit-input-placeholder {
+      color: #757575; }
+    .pf-textarea-container .pf-header-desc:focus:-moz-placeholder {
+      color: #757575; }
+    .pf-textarea-container .pf-header-desc:focus::-moz-placeholder {
+      color: #757575; }
+    .pf-textarea-container .pf-header-desc:focus:-ms-input-placeholder {
+      color: #757575; }
+  .pf-textarea-container .pf-header-desc:disabled {
+    background: none; }
+.pf-textarea-container p {
+  background: none !important; }
+
+.pf-url {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 400; }
+  .pf-url li:first-child {
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.3);
+    text-transform: lowercase; }
+    .pf-url li:first-child a {
+      color: white; }
+  .pf-url li span {
+    color: white; }
+  .pf-url li input {
+    text-align: center;
+    color: #40484B; }
+  .pf-url li:last-child a {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    background: white; }
+    .pf-url li:last-child a svg {
+      fill: none;
+      stroke-width: 5px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: #40484B;
+      width: 100%;
+      height: 100%; }
+    .pf-url li:last-child a:hover, .pf-url li:last-child a:focus {
+      background: #40484B; }
+      .pf-url li:last-child a:hover svg, .pf-url li:last-child a:focus svg {
+        stroke: white; }
+    .pf-url li:last-child a:active {
+      background: #2B3234; }
+      .pf-url li:last-child a:active svg {
+        stroke: white; }
+  .pf-url.pf-edit-url li:first-child {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 0;
+    height: 40px; }
+    .pf-url.pf-edit-url li:first-child input {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      height: 100%;
+      padding: 5px 10px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.6);
+      font-size: 18px;
+      text-transform: lowercase; }
+      .pf-url.pf-edit-url li:first-child input:hover, .pf-url.pf-edit-url li:first-child input:focus {
+        background: white; }
+    .pf-url.pf-edit-url li:first-child span {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      height: 100%;
+      padding: 5px 10px; }
+
 .pf-type header.third {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   position: relative;
   overflow: hidden; }
   .pf-type header.third h1.pf-title {
@@ -229,7 +385,8 @@
     display: none;
     position: absolute;
     top: 0;
-    right: 15px;
+    left: 15px;
+    z-index: 21;
     background: #69B3A5;
     width: 50px;
     height: 50px; }
@@ -256,6 +413,11 @@
       border-top-width: 10px !important;
       border-bottom-width: 10px !important;
       border-bottom-color: transparent; }
+    .pf-type header.third .pf-banner.pf-banner-edit {
+      background: white; }
+      .pf-type header.third .pf-banner.pf-banner-edit:after {
+        border: 25px solid white;
+        border-bottom-color: transparent; }
   .pf-type header.third .pf-header {
     width: 100%;
     text-align: center; }
@@ -311,49 +473,12 @@
       margin-bottom: 5px; }
     .pf-type header.third .pf-header button {
       padding: 5px 30px; }
-    .pf-type header.third .pf-header .pf-header-desc {
-      display: none;
-      margin: 15px 25px 0;
-      width: calc(100% - 50px);
-      height: 124px;
-      padding: 0 5px;
-      resize: none;
-      overflow: auto;
-      background: rgba(255, 255, 255, 0.4);
-      color: white;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 1.2;
-      text-align: center; }
-      .pf-type header.third .pf-header .pf-header-desc::-webkit-input-placeholder {
-        color: white; }
-      .pf-type header.third .pf-header .pf-header-desc:-moz-placeholder {
-        color: white; }
-      .pf-type header.third .pf-header .pf-header-desc::-moz-placeholder {
-        color: white; }
-      .pf-type header.third .pf-header .pf-header-desc:-ms-input-placeholder {
-        color: white; }
-      .pf-type header.third .pf-header .pf-header-desc:focus {
-        background: white;
-        color: #2B3234; }
-        .pf-type header.third .pf-header .pf-header-desc:focus::-webkit-input-placeholder {
-          color: #757575; }
-        .pf-type header.third .pf-header .pf-header-desc:focus:-moz-placeholder {
-          color: #757575; }
-        .pf-type header.third .pf-header .pf-header-desc:focus::-moz-placeholder {
-          color: #757575; }
-        .pf-type header.third .pf-header .pf-header-desc:focus:-ms-input-placeholder {
-          color: #757575; }
-      .pf-type header.third .pf-header .pf-header-desc:disabled {
-        background: none; }
+    .pf-type header.third .pf-header .pf-textarea-container {
+      display: none; }
+      .pf-type header.third .pf-header .pf-textarea-container .pf-header-desc {
+        margin: 15px 25px 0;
+        width: calc(100% - 50px); }
     .pf-type header.third .pf-header .pf-url {
-      display: none;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
       position: absolute;
       left: 50%;
       -webkit-transform: translateX(-50%);
@@ -361,98 +486,14 @@
       -ms-transform: translateX(-50%);
       -o-transform: translateX(-50%);
       transform: translateX(-50%);
-      bottom: 30px;
-      font-size: 18px;
-      font-weight: 400; }
-      .pf-type header.third .pf-header .pf-url li:first-child {
-        padding: 10px 15px;
-        background: rgba(255, 255, 255, 0.7);
-        text-transform: lowercase; }
-        .pf-type header.third .pf-header .pf-url li:first-child a {
-          color: #40484B; }
-      .pf-type header.third .pf-header .pf-url li input, .pf-type header.third .pf-header .pf-url li span {
-        color: #40484B; }
-      .pf-type header.third .pf-header .pf-url li:last-child a {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        padding: 5px;
-        background: white; }
-        .pf-type header.third .pf-header .pf-url li:last-child a svg {
-          fill: none;
-          stroke-width: 5px;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          stroke: #40484B;
-          width: 100%;
-          height: 100%; }
-        .pf-type header.third .pf-header .pf-url li:last-child a:hover, .pf-type header.third .pf-header .pf-url li:last-child a:focus {
-          background: #40484B; }
-          .pf-type header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type header.third .pf-header .pf-url li:last-child a:focus svg {
-            stroke: white; }
-        .pf-type header.third .pf-header .pf-url li:last-child a:active {
-          background: #2B3234; }
-          .pf-type header.third .pf-header .pf-url li:last-child a:active svg {
-            stroke: white; }
-      .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-        align-items: center;
-        padding: 0;
-        height: 40px; }
-        .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child input {
-          -webkit-transition: all 0.15s ease-in-out;
-          -o-transition: all 0.15s ease-in-out;
-          -ms-transition: all 0.15s ease-in-out;
-          -moz-transition: all 0.15s ease-in-out;
-          transition: all 0.15s ease-in-out;
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-align-items: center;
-          align-items: center;
-          height: 100%;
-          padding: 5px 0 5px 10px;
-          border: 0;
-          background: rgba(255, 255, 255, 0.6);
-          font-size: 18px;
-          text-transform: lowercase; }
-          .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child input:hover, .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child input:focus {
-            background: white; }
-        .pf-type header.third .pf-header .pf-url.pf-edit-url li:first-child span {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-align-items: center;
-          align-items: center;
-          height: 100%;
-          padding: 5px 10px 5px 0; }
+      display: none;
+      bottom: 30px; }
+    @media screen and (max-width: 768px) {
+      .pf-type header.third .pf-header.pf-header-edit {
+        padding-top: 80px;
+        padding-bottom: 15px; }
+        .pf-type header.third .pf-header.pf-header-edit .pf-rating, .pf-type header.third .pf-header.pf-header-edit .pf-review-amt {
+          display: none; } }
   .pf-type header.third .pf-photo-list {
     margin-top: 30px;
     height: calc(100% - 80px); }
@@ -594,11 +635,22 @@
 .pf-type .pf-shop-desc {
   padding: 15px;
   text-align: center; }
+  .pf-type .pf-shop-desc .pf-textarea-container .pf-header-desc {
+    width: 100%;
+    height: auto; }
+    .pf-type .pf-shop-desc .pf-textarea-container .pf-header-desc:disabled {
+      background: rgba(255, 255, 255, 0.2); }
+  .pf-type .pf-shop-desc .pf-textarea-container textarea {
+    padding: 10px 15px; }
+  .pf-type .pf-shop-desc .pf-textarea-container .pf-character-count {
+    right: 5px !important; }
+  @media screen and (min-width: 768px) {
+    .pf-type .pf-shop-desc .pf-textarea-container {
+      display: none !important; } }
   .pf-type .pf-shop-desc h1 {
     font-size: 32px;
     font-weight: 600; }
   .pf-type .pf-shop-desc p {
-    margin-top: 5px;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.2; }
@@ -610,6 +662,18 @@
   letter-spacing: 1px;
   text-align: center;
   text-transform: uppercase; }
+.pf-type .pf-list button.chip {
+  margin-top: 15px;
+  background: #6f7d82;
+  width: auto; }
+  .pf-type .pf-list button.chip:hover, .pf-type .pf-list button.chip:focus {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #69B3A5; }
+  .pf-type .pf-list button.chip:active, .pf-type .pf-list button.chip.activated {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #add5ce; }
 .pf-type .pf-list .pf-list-desc {
   display: none;
   width: 100%;
@@ -625,25 +689,24 @@
     padding: 15px;
     background: #2B3234;
     font-size: 18px;
-    font-weight: 600; }
+    font-weight: 600;
+    line-height: 1.2; }
     .pf-type .pf-list .pf-list-y > li [data-years]:not([data-years="1"]):after {
       content: "s"; }
-    .pf-type .pf-list .pf-list-y > li:not(:last-child) {
-      margin-bottom: 2px; }
     .pf-type .pf-list .pf-list-y > li ul li:last-child {
       filter: alpha(opacity=50);
       opacity: 0.5; }
+  .pf-type .pf-list .pf-list-y.ugrid-2 > li {
+    margin-bottom: 2px; }
+  .pf-type .pf-list .pf-list-y:not(.ugrid-2) > li:not(:last-child) {
+    margin-bottom: 2px; }
 .pf-type .pf-list .pf-list-x {
   margin-top: 2px; }
   .pf-type .pf-list .pf-list-x li {
+    position: relative;
     background: #2B3234;
     padding: 6.25px; }
     .pf-type .pf-list .pf-list-x li svg {
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
       fill: none;
       stroke: white;
       stroke-width: 4px;
@@ -652,28 +715,43 @@
       display: block;
       width: 100%;
       height: 50px; }
-      .pf-type .pf-list .pf-list-x li svg:last-child:not(:first-child) {
-        filter: alpha(opacity=0);
-        opacity: 0;
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg);
-        display: none; }
     .pf-type .pf-list .pf-list-x li span {
       display: block;
       padding-bottom: 10px;
       font-size: 18px;
       font-weight: 600; }
-    .pf-type .pf-list .pf-list-x li a:hover svg:first-child:not(:last-child), .pf-type .pf-list .pf-list-x li a:focus svg:first-child:not(:last-child) {
-      filter: alpha(opacity=0);
-      opacity: 0;
-      display: none; }
-    .pf-type .pf-list .pf-list-x li a:hover svg:last-child:not(:first-child), .pf-type .pf-list .pf-list-x li a:focus svg:last-child:not(:first-child) {
-      filter: alpha(opacity=100);
-      opacity: 1;
-      display: block; }
+    .pf-type .pf-list .pf-list-x li div {
+      margin: 5px auto 15px;
+      width: 32px;
+      height: 32px; }
+      .pf-type .pf-list .pf-list-x li div input {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        position: absolute;
+        z-index: 12;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+      .pf-type .pf-list .pf-list-x li div span {
+        display: block;
+        width: 32px;
+        height: 32px;
+        border-radius: 3px;
+        background: #40484B; }
+        .pf-type .pf-list .pf-list-x li div span svg {
+          fill: none;
+          stroke: #6f7d82;
+          stroke-width: 10px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          padding: 4px;
+          width: 32px !important;
+          height: 32px !important; }
+      .pf-type .pf-list .pf-list-x li div input:checked + span {
+        background: #69B3A5; }
+        .pf-type .pf-list .pf-list-x li div input:checked + span svg {
+          stroke: white; }
   .pf-type .pf-list .pf-list-x.pf-attachments {
     padding: 7.5px;
     background: #2B3234; }
@@ -737,13 +815,23 @@
       .pf-type .pf-select > li a:not([class*="bg-"]) {
         background: #69B3A5; }
 .pf-type .pf-checklist {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   height: calc(100% / 3 * 2 - 64px);
   overflow: auto;
   padding: 7.5px; }
   .pf-type .pf-checklist > li:not(.pf-checklist-full) {
     padding: 7.5px;
     position: relative;
-    height: 50%; }
+    width: 100%; }
     .pf-type .pf-checklist > li:not(.pf-checklist-full) .pf-edit-link {
       position: absolute;
       top: 0;
@@ -752,7 +840,7 @@
       font-size: 20px;
       font-weight: 600;
       z-index: 100; }
-    .pf-type .pf-checklist > li:not(.pf-checklist-full) input {
+    .pf-type .pf-checklist > li:not(.pf-checklist-full) input[type="checkbox"] {
       filter: alpha(opacity=0);
       opacity: 0;
       position: absolute;
@@ -772,8 +860,10 @@
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
-      -webkit-align-items: flex-end;
-      align-items: flex-end;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
       -webkit-justify-content: center;
       justify-content: center;
       position: relative;
@@ -793,19 +883,30 @@
         align-items: center;
         -webkit-justify-content: center;
         justify-content: center;
+        position: relative;
         width: 100%;
-        height: calc(100% - 106px);
+        height: 144px;
         padding: 15px;
         background-color: #485d5d;
         background-position: center center;
         background-size: cover;
-        font-size: 32px;
-        font-weight: 600; }
-      .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-price {
-        z-index: 20; }
-      .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-price + .pf-checklist-item-bg span {
-        display: block;
-        padding-bottom: 15px; }
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-align: center; }
+        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg .pf-price {
+          -webkit-transform: translateX(0);
+          -moz-transform: translateX(0);
+          -ms-transform: translateX(0);
+          -o-transform: translateX(0);
+          transform: translateX(0);
+          top: auto !important;
+          bottom: 15px;
+          z-index: 20;
+          height: 40px; }
+        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg .pf-price + span {
+          display: block;
+          padding-bottom: 15px; }
       .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -873,21 +974,102 @@
       .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
         display: block;
         width: 100%;
+        height: 106px;
         background: #69B3A5;
         padding: 15px;
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 600;
         text-align: center; }
         .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-rating {
-          display: none;
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
           margin: 10px auto 0;
-          max-width: 120px; }
+          max-width: 120px;
+          height: 26px; }
         .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-review-amt {
-          display: none; }
-    .pf-type .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check {
+          display: block; }
+    .pf-type .pf-checklist > li:not(.pf-checklist-full) input[type="checkbox"]:checked + div .pf-check {
       background: white; }
-      .pf-type .pf-checklist > li:not(.pf-checklist-full) input:checked + div .pf-check svg {
+      .pf-type .pf-checklist > li:not(.pf-checklist-full) input[type="checkbox"]:checked + div .pf-check svg {
         stroke: #69B3A5; }
+  .pf-type .pf-checklist .pf-checklist-desc {
+    width: 100% !important;
+    height: auto !important;
+    text-align: center; }
+    .pf-type .pf-checklist .pf-checklist-desc h1 {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2; }
+      @media screen and (min-width: 768px) {
+        .pf-type .pf-checklist .pf-checklist-desc h1 {
+          font-size: 48px; } }
+    .pf-type .pf-checklist .pf-checklist-desc input {
+      display: block;
+      border: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      color: white;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+      text-align: center; }
+      .pf-type .pf-checklist .pf-checklist-desc input::-webkit-input-placeholder {
+        color: white; }
+      .pf-type .pf-checklist .pf-checklist-desc input:-moz-placeholder {
+        color: white; }
+      .pf-type .pf-checklist .pf-checklist-desc input::-moz-placeholder {
+        color: white; }
+      .pf-type .pf-checklist .pf-checklist-desc input:-ms-input-placeholder {
+        color: white; }
+      .pf-type .pf-checklist .pf-checklist-desc input:focus {
+        background: white;
+        color: #2B3234; }
+        .pf-type .pf-checklist .pf-checklist-desc input:focus::-webkit-input-placeholder {
+          color: #757575; }
+        .pf-type .pf-checklist .pf-checklist-desc input:focus:-moz-placeholder {
+          color: #757575; }
+        .pf-type .pf-checklist .pf-checklist-desc input:focus::-moz-placeholder {
+          color: #757575; }
+        .pf-type .pf-checklist .pf-checklist-desc input:focus:-ms-input-placeholder {
+          color: #757575; }
+      @media screen and (min-width: 768px) {
+        .pf-type .pf-checklist .pf-checklist-desc input {
+          font-size: 48px; } }
+    .pf-type .pf-checklist .pf-checklist-desc p {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: 400; }
+      @media screen and (min-width: 768px) {
+        .pf-type .pf-checklist .pf-checklist-desc p {
+          font-size: 24px; } }
+    .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container {
+      background: none;
+      width: 100%;
+      margin-top: 10px;
+      font-size: 18px; }
+      .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container .pf-header-desc {
+        width: 100%;
+        height: auto;
+        padding: 10px 15px;
+        font-size: 18px; }
+        .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container .pf-header-desc:disabled {
+          background: rgba(255, 255, 255, 0.2); }
+      .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container .pf-character-count {
+        right: 5px !important; }
+    .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container:nth-child(4) {
+      display: none; }
+      .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container:nth-child(4) .pf-header-desc {
+        font-size: 24px; }
+    @media screen and (min-width: 768px) {
+      .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container:nth-child(4) {
+        display: block; }
+      .pf-type .pf-checklist .pf-checklist-desc .pf-textarea-container:nth-child(5) {
+        display: none; } }
   .pf-type .pf-checklist .pf-checklist-add a {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -969,14 +1151,17 @@
     display: none; }
 .pf-type .pf-tab-container {
   position: relative;
-  height: 100%;
+  height: calc(100% / 3 * 2);
   overflow: auto; }
+  @media screen and (min-width: 768px) {
+    .pf-type .pf-tab-container {
+      height: 100%; } }
   .pf-type .pf-tab-container .pf-tab-item {
     height: calc(100% - 60px); }
 .pf-type header.pf-item-header + .pf-tab-container {
   height: calc(100% / 3 * 2); }
 .pf-type.pf-has-edit .pf-tab-container .pf-tab-item {
-  padding-bottom: 75px; }
+  padding-bottom: 80px; }
 .pf-type .pf-links {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1015,6 +1200,55 @@
           stroke-width: 5px;
           stroke-linecap: round;
           stroke-linejoin: round; }
+
+#guru-profile-cta-close {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px; }
+
+.pf-edit-mode-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  background: #F04F54; }
+  .pf-edit-mode-banner span {
+    display: block;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase; }
+  .pf-edit-mode-banner button {
+    position: absolute;
+    right: 15px;
+    bottom: -64px; }
+    @media screen and (min-width: 768px) {
+      .pf-edit-mode-banner button {
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        right: auto; } }
 
 .pf-edit-pf {
   position: absolute;
@@ -1751,6 +1985,9 @@
     opacity: 0;
     display: none; }
 
+  .pf-list-x.ugrid-3 li {
+    width: calc(100% / 6) !important; }
+
   .pf-type:not(.pf-modal) .pf-links li {
     padding: 7.5px 15px; }
   .pf-type:not(.pf-modal).pf-has-edit .pf-tab-container .pf-tab-item {
@@ -1785,7 +2022,7 @@
       margin-bottom: 15px; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header button {
       padding: 10px 30px; }
-    .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-header-desc {
+    .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-textarea-container {
       display: block; }
     .pf-type:not(.pf-modal) > section > header.third .pf-header .pf-url {
       -ms-box-orient: horizontal;
@@ -1819,19 +2056,12 @@
   .pf-type .pf-checklist {
     padding: 15px; }
     .pf-type .pf-checklist > li:not(.pf-checklist-full) {
+      width: 50%;
+      height: 50%;
       padding: 15px; }
-      .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label {
-        font-size: 24px; }
-        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-rating {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex; }
-        .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check-label .pf-review-amt {
-          display: block; }
+      .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-checklist-item-bg {
+        height: calc(100% - 106px);
+        font-size: 28px; }
     .pf-type .pf-checklist .pf-checklist-full:not(.pf-type-photo) .pf-item-header {
       height: 256px !important; }
     .pf-type .pf-checklist .pf-checklist-full {
@@ -1868,12 +2098,8 @@
           font-size: 20px; }
   .pf-type .pf-shop-desc {
     padding: 30px; }
-    .pf-type .pf-shop-desc > h1 {
-      margin-top: -15px;
-      font-size: 48px; }
-    .pf-type .pf-shop-desc p {
-      margin-top: 10px;
-      font-size: 24px; }
+    .pf-type .pf-shop-desc .pf-url {
+      display: none; }
     .pf-type .pf-shop-desc .p15top {
       padding-top: 30px !important; }
     .pf-type .pf-shop-desc .m10top {
@@ -1901,10 +2127,9 @@
         width: 50%; }
     .pf-type .pf-shop-desc .pf-reviews h2 {
       font-size: 28px !important; } }
-.pf-modal header.third
-a.cta-modal-close svg {
-  height: 30px;
-  width: 30px; }
+.pf-modal header.third a.cta-modal-close svg {
+  height: 36px;
+  width: 36px; }
 .pf-modal header.third.pf-item-header .pf-header-bg {
   filter: blur(0px);
   -webkit-filter: blur(0px);
@@ -2325,6 +2550,145 @@ a.cta-modal-close svg {
           .pf-card .pf-card-main .pf-card-thumbs li a svg {
             fill: none !important; }
 
+#desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 64px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #69B3A5 !important;
+  font-size: 24px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important; }
+  #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #add5ce !important;
+    color: white !important; }
+  #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #6f7d82 !important;
+    color: white !important; }
+#desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages {
+  display: block !important;
+  position: static !important;
+  min-width: auto !important;
+  max-width: auto !important;
+  min-height: auto !important;
+  height: auto !important;
+  padding-bottom: 0 !important;
+  margin-top: 15px; }
+  #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages #main-logo {
+    display: none !important; }
+  #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .desktop-header {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    min-width: auto !important;
+    max-width: auto !important;
+    height: 60px !important;
+    padding: 0 !important; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .desktop-header a svg {
+      width: 36px;
+      height: 36px;
+      margin: 8px; }
+  #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .main.default {
+    display: block !important;
+    min-width: auto !important;
+    min-height: auto !important;
+    height: auto !important; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .main.default form .input-field .prefix {
+      left: 0; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .main.default #guru-courses-user-profile {
+      display: none !important; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .main.default .desktop-search-list {
+      padding: 0 !important; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .main.default .desktop-card-list {
+      padding: 7.5px !important;
+      margin: auto !important; }
+      #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .main.default .desktop-card-list li {
+        padding: 7.5px !important; }
+        #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .main.default .desktop-card-list li a.name-only {
+          height: auto !important; }
+          #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #desktop-languages .main.default .desktop-card-list li a.name-only span {
+            font-size: 18px !important; }
+#desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal {
+  position: relative !important;
+  top: auto !important;
+  margin-top: 15px;
+  height: auto !important;
+  background: #30373a; }
+  #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal header:not(.desktop-header) {
+    background: #373f42; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal header:not(.desktop-header) h1 {
+      font-size: 28px !important;
+      text-transform: lowercase !important; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal header:not(.desktop-header) .header-nav a {
+      height: 60px; }
+      #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal header:not(.desktop-header) .header-nav a svg {
+        width: 36px;
+        height: 36px; }
+  #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal h1 {
+    background: none !important;
+    padding: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important; }
+  #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main {
+    display: block !important;
+    background: #30373a !important; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main .bg-campus-50p {
+      background: #30373a !important; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main .exp-years {
+      margin: 0 15px;
+      padding: 0 15px 15px;
+      background: #4c5559; }
+      #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main .exp-years input[type=range] {
+        padding: 105px 0 20px !important;
+        background: none !important; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline {
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+      border-width: 0;
+      border-bottom-width: 5px;
+      border-color: rgba(255, 255, 255, 0.7);
+      background: #4c5559;
+      padding: 10px 15px; }
+      #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+        border-color: #69B3A5;
+        background: #576267; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main #experience-name-input.input-outline {
+      display: block;
+      width: 100%;
+      font-weight: 600; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main textarea.input-outline {
+      width: 100%;
+      resize: none;
+      height: 176px;
+      font-size: 20px;
+      font-weight: 400; }
+    #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main .exp-years-label li:first-child {
+      text-align: left !important; }
+
+#desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #e6389b !important; }
+  #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #f193c9 !important; }
+  #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #6f7d82 !important; }
+#desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+  border-color: #e6389b; }
+
 .pf-edit.pf-type-academic button {
   background: #e6389b; }
   .pf-edit.pf-type-academic button:hover, .pf-edit.pf-type-academic button:focus {
@@ -2387,21 +2751,29 @@ a.cta-modal-close svg {
     border-bottom-color: transparent; }
   .pf-type-academic header.third .pf-banner.pf-banner-academic {
     display: block; }
-.pf-type-academic header.third .pf-header .pf-url li:first-child a, .pf-type-academic header.third .pf-header .pf-url li input, .pf-type-academic header.third .pf-header .pf-url li span {
+  .pf-type-academic header.third .pf-banner.pf-banner-edit svg path {
+    stroke: #e6389b; }
+.pf-type-academic .pf-url li:first-child input {
   color: #912763 !important; }
-.pf-type-academic header.third .pf-header .pf-url li:last-child a svg {
+.pf-type-academic .pf-url li:last-child a svg {
   stroke: #e6389b; }
-.pf-type-academic header.third .pf-header .pf-url li:last-child a:hover, .pf-type-academic header.third .pf-header .pf-url li:last-child a:focus {
+.pf-type-academic .pf-url li:last-child a:hover, .pf-type-academic .pf-url li:last-child a:focus {
   background: #e6389b; }
-  .pf-type-academic header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-academic header.third .pf-header .pf-url li:last-child a:focus svg {
+  .pf-type-academic .pf-url li:last-child a:hover svg, .pf-type-academic .pf-url li:last-child a:focus svg {
     stroke: white; }
-.pf-type-academic header.third .pf-header .pf-url li:last-child a:active, .pf-type-academic header.third .pf-header .pf-url li:last-child a.active {
+.pf-type-academic .pf-url li:last-child a:active, .pf-type-academic .pf-url li:last-child a.active {
   background: #912763 !important; }
 .pf-type-academic .pf-header .verified span svg path:first-child {
   fill: #e6389b; }
 .pf-type-academic .pf-tabs ul li a.active {
   border-bottom: 5px solid #e6389b; }
 .pf-type-academic .pf-list h1 {
+  background: #e6389b; }
+.pf-type-academic .pf-list button.chip:hover, .pf-type-academic .pf-list button.chip:focus {
+  background: #e6389b; }
+.pf-type-academic .pf-list button.chip:active, .pf-type-academic .pf-list button.chip.activated {
+  background: #f193c9; }
+.pf-type-academic .pf-list .pf-list-x li div input:checked + span {
   background: #e6389b; }
 .pf-type-academic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #e6389b; }
@@ -2429,6 +2801,15 @@ a.cta-modal-close svg {
       color: white; }
       .pf-type-academic .pf-checklist .pf-checklist-add a:active span svg, .pf-type-academic .pf-checklist .pf-checklist-add a.active span svg {
         stroke: white; }
+
+#desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #81B566 !important; }
+  #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #bad6ab !important; }
+  #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #6f7d82 !important; }
+#desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+  border-color: #81B566; }
 
 .pf-edit.pf-type-photo button {
   background: #81B566; }
@@ -2657,21 +3038,29 @@ a.cta-modal-close svg {
     border-bottom-color: transparent; }
   .pf-type-photo header.third .pf-banner.pf-banner-photo {
     display: block; }
-.pf-type-photo header.third .pf-header .pf-url li:first-child a, .pf-type-photo header.third .pf-header .pf-url li input, .pf-type-photo header.third .pf-header .pf-url li span {
+  .pf-type-photo header.third .pf-banner.pf-banner-edit svg path {
+    stroke: #81B566; }
+.pf-type-photo .pf-url li:first-child input {
   color: #56684d !important; }
-.pf-type-photo header.third .pf-header .pf-url li:last-child a svg {
+.pf-type-photo .pf-url li:last-child a svg {
   stroke: #81B566; }
-.pf-type-photo header.third .pf-header .pf-url li:last-child a:hover, .pf-type-photo header.third .pf-header .pf-url li:last-child a:focus {
+.pf-type-photo .pf-url li:last-child a:hover, .pf-type-photo .pf-url li:last-child a:focus {
   background: #81B566; }
-  .pf-type-photo header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-photo header.third .pf-header .pf-url li:last-child a:focus svg {
+  .pf-type-photo .pf-url li:last-child a:hover svg, .pf-type-photo .pf-url li:last-child a:focus svg {
     stroke: white; }
-.pf-type-photo header.third .pf-header .pf-url li:last-child a:active, .pf-type-photo header.third .pf-header .pf-url li:last-child a.active {
+.pf-type-photo .pf-url li:last-child a:active, .pf-type-photo .pf-url li:last-child a.active {
   background: #56684d !important; }
 .pf-type-photo .pf-header .verified span svg path:first-child {
   fill: #81B566; }
 .pf-type-photo .pf-tabs ul li a.active {
   border-bottom: 5px solid #81B566; }
 .pf-type-photo .pf-list h1 {
+  background: #81B566; }
+.pf-type-photo .pf-list button.chip:hover, .pf-type-photo .pf-list button.chip:focus {
+  background: #81B566; }
+.pf-type-photo .pf-list button.chip:active, .pf-type-photo .pf-list button.chip.activated {
+  background: #bad6ab; }
+.pf-type-photo .pf-list .pf-list-x li div input:checked + span {
   background: #81B566; }
 .pf-type-photo .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #40484B; }
@@ -2700,6 +3089,15 @@ a.cta-modal-close svg {
       color: white; }
       .pf-type-photo .pf-checklist .pf-checklist-add a:active span svg, .pf-type-photo .pf-checklist .pf-checklist-add a.active span svg {
         stroke: white; }
+
+#desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #F6C64E !important; }
+  #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #fbe5af !important; }
+  #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #6f7d82 !important; }
+#desktop-guru-home .pf-type-baking .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+  border-color: #F6C64E; }
 
 .pf-edit.pf-type-baking button {
   background: #F6C64E; }
@@ -2763,21 +3161,29 @@ a.cta-modal-close svg {
     border-bottom-color: transparent; }
   .pf-type-baking header.third .pf-banner.pf-banner-baking {
     display: block; }
-.pf-type-baking header.third .pf-header .pf-url li:first-child a, .pf-type-baking header.third .pf-header .pf-url li input, .pf-type-baking header.third .pf-header .pf-url li span {
+  .pf-type-baking header.third .pf-banner.pf-banner-edit svg path {
+    stroke: #F6C64E; }
+.pf-type-baking .pf-url li:first-child input {
   color: #664e12 !important; }
-.pf-type-baking header.third .pf-header .pf-url li:last-child a svg {
+.pf-type-baking .pf-url li:last-child a svg {
   stroke: #F6C64E; }
-.pf-type-baking header.third .pf-header .pf-url li:last-child a:hover, .pf-type-baking header.third .pf-header .pf-url li:last-child a:focus {
+.pf-type-baking .pf-url li:last-child a:hover, .pf-type-baking .pf-url li:last-child a:focus {
   background: #F6C64E; }
-  .pf-type-baking header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-baking header.third .pf-header .pf-url li:last-child a:focus svg {
+  .pf-type-baking .pf-url li:last-child a:hover svg, .pf-type-baking .pf-url li:last-child a:focus svg {
     stroke: white; }
-.pf-type-baking header.third .pf-header .pf-url li:last-child a:active, .pf-type-baking header.third .pf-header .pf-url li:last-child a.active {
+.pf-type-baking .pf-url li:last-child a:active, .pf-type-baking .pf-url li:last-child a.active {
   background: #664e12 !important; }
 .pf-type-baking .pf-header .verified span svg path:first-child {
   fill: #F6C64E; }
 .pf-type-baking .pf-tabs ul li a.active {
   border-bottom: 5px solid #F6C64E; }
 .pf-type-baking .pf-list h1 {
+  background: #F6C64E; }
+.pf-type-baking .pf-list button.chip:hover, .pf-type-baking .pf-list button.chip:focus {
+  background: #F6C64E; }
+.pf-type-baking .pf-list button.chip:active, .pf-type-baking .pf-list button.chip.activated {
+  background: #fbe5af; }
+.pf-type-baking .pf-list .pf-list-x li div input:checked + span {
   background: #F6C64E; }
 .pf-type-baking .pf-rating:not(.default) li svg {
   fill: none;
@@ -2823,6 +3229,21 @@ a.cta-modal-close svg {
       color: white; }
       .pf-type-baking .pf-checklist .pf-checklist-add a:active span svg, .pf-type-baking .pf-checklist .pf-checklist-add a.active span svg {
         stroke: white; }
+
+#desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #7872e3 !important; }
+  #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #c9c7f4 !important; }
+  #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #6f7d82 !important; }
+#desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+  border-color: #7872e3; }
+#desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #7872e3 !important; }
+  #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #c9c7f4 !important; }
+  #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-household .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #6f7d82 !important; }
 
 .pf-edit.pf-type-household button {
   background: #7872e3; }
@@ -2886,21 +3307,29 @@ a.cta-modal-close svg {
     border-bottom-color: transparent; }
   .pf-type-household header.third .pf-banner.pf-banner-household {
     display: block; }
-.pf-type-household header.third .pf-header .pf-url li:first-child a, .pf-type-household header.third .pf-header .pf-url li input, .pf-type-household header.third .pf-header .pf-url li span {
+  .pf-type-household header.third .pf-banner.pf-banner-edit svg path {
+    stroke: #7872e3; }
+.pf-type-household .pf-url li:first-child input {
   color: #37328a !important; }
-.pf-type-household header.third .pf-header .pf-url li:last-child a svg {
+.pf-type-household .pf-url li:last-child a svg {
   stroke: #7872e3; }
-.pf-type-household header.third .pf-header .pf-url li:last-child a:hover, .pf-type-household header.third .pf-header .pf-url li:last-child a:focus {
+.pf-type-household .pf-url li:last-child a:hover, .pf-type-household .pf-url li:last-child a:focus {
   background: #7872e3; }
-  .pf-type-household header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-household header.third .pf-header .pf-url li:last-child a:focus svg {
+  .pf-type-household .pf-url li:last-child a:hover svg, .pf-type-household .pf-url li:last-child a:focus svg {
     stroke: white; }
-.pf-type-household header.third .pf-header .pf-url li:last-child a:active, .pf-type-household header.third .pf-header .pf-url li:last-child a.active {
+.pf-type-household .pf-url li:last-child a:active, .pf-type-household .pf-url li:last-child a.active {
   background: #37328a !important; }
 .pf-type-household .pf-header .verified span svg path:first-child {
   fill: #7872e3; }
 .pf-type-household .pf-tabs ul li a.active {
   border-bottom: 5px solid #7872e3; }
 .pf-type-household .pf-list h1 {
+  background: #7872e3; }
+.pf-type-household .pf-list button.chip:hover, .pf-type-household .pf-list button.chip:focus {
+  background: #7872e3; }
+.pf-type-household .pf-list button.chip:active, .pf-type-household .pf-list button.chip.activated {
+  background: #c9c7f4; }
+.pf-type-household .pf-list .pf-list-x li div input:checked + span {
   background: #7872e3; }
 .pf-type-household .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #7872e3; }
@@ -2928,6 +3357,15 @@ a.cta-modal-close svg {
       color: white; }
       .pf-type-household .pf-checklist .pf-checklist-add a:active span svg, .pf-type-household .pf-checklist .pf-checklist-add a.active span svg {
         stroke: white; }
+
+#desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #F04F54 !important; }
+  #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #f8adaf !important; }
+  #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #6f7d82 !important; }
+#desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+  border-color: #F04F54; }
 
 .pf-edit.pf-type-delivery button {
   background: #F04F54; }
@@ -2991,21 +3429,29 @@ a.cta-modal-close svg {
     border-bottom-color: transparent; }
   .pf-type-delivery header.third .pf-banner.pf-banner-delivery {
     display: block; }
-.pf-type-delivery header.third .pf-header .pf-url li:first-child a, .pf-type-delivery header.third .pf-header .pf-url li input, .pf-type-delivery header.third .pf-header .pf-url li span {
+  .pf-type-delivery header.third .pf-banner.pf-banner-edit svg path {
+    stroke: #F04F54; }
+.pf-type-delivery .pf-url li:first-child input {
   color: #881e21 !important; }
-.pf-type-delivery header.third .pf-header .pf-url li:last-child a svg {
+.pf-type-delivery .pf-url li:last-child a svg {
   stroke: #F04F54; }
-.pf-type-delivery header.third .pf-header .pf-url li:last-child a:hover, .pf-type-delivery header.third .pf-header .pf-url li:last-child a:focus {
+.pf-type-delivery .pf-url li:last-child a:hover, .pf-type-delivery .pf-url li:last-child a:focus {
   background: #F04F54; }
-  .pf-type-delivery header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-delivery header.third .pf-header .pf-url li:last-child a:focus svg {
+  .pf-type-delivery .pf-url li:last-child a:hover svg, .pf-type-delivery .pf-url li:last-child a:focus svg {
     stroke: white; }
-.pf-type-delivery header.third .pf-header .pf-url li:last-child a:active, .pf-type-delivery header.third .pf-header .pf-url li:last-child a.active {
+.pf-type-delivery .pf-url li:last-child a:active, .pf-type-delivery .pf-url li:last-child a.active {
   background: #881e21 !important; }
 .pf-type-delivery .pf-header .verified span svg path:first-child {
   fill: #F04F54; }
 .pf-type-delivery .pf-tabs ul li a.active {
   border-bottom: 5px solid #F04F54; }
 .pf-type-delivery .pf-list h1 {
+  background: #F04F54; }
+.pf-type-delivery .pf-list button.chip:hover, .pf-type-delivery .pf-list button.chip:focus {
+  background: #F04F54; }
+.pf-type-delivery .pf-list button.chip:active, .pf-type-delivery .pf-list button.chip.activated {
+  background: #f8adaf; }
+.pf-type-delivery .pf-list .pf-list-x li div input:checked + span {
   background: #F04F54; }
 .pf-type-delivery .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #F04F54; }
@@ -3033,6 +3479,15 @@ a.cta-modal-close svg {
       color: white; }
       .pf-type-delivery .pf-checklist .pf-checklist-add a:active span svg, .pf-type-delivery .pf-checklist .pf-checklist-add a.active span svg {
         stroke: white; }
+
+#desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #e6389b !important; }
+  #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #f1b596 !important; }
+  #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #f1b596 !important; }
+#desktop-guru-home .pf-type-freelancing .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+  border-color: #E5753C; }
 
 .pf-edit.pf-type-freelancing button {
   background: #E5753C; }
@@ -3096,21 +3551,29 @@ a.cta-modal-close svg {
     border-bottom-color: transparent; }
   .pf-type-freelancing header.third .pf-banner.pf-banner-freelancing {
     display: block; }
-.pf-type-freelancing header.third .pf-header .pf-url li:first-child a, .pf-type-freelancing header.third .pf-header .pf-url li input, .pf-type-freelancing header.third .pf-header .pf-url li span {
+  .pf-type-freelancing header.third .pf-banner.pf-banner-edit svg path {
+    stroke: #E5753C; }
+.pf-type-freelancing .pf-url li:first-child input {
   color: #924c29 !important; }
-.pf-type-freelancing header.third .pf-header .pf-url li:last-child a svg {
+.pf-type-freelancing .pf-url li:last-child a svg {
   stroke: #E5753C; }
-.pf-type-freelancing header.third .pf-header .pf-url li:last-child a:hover, .pf-type-freelancing header.third .pf-header .pf-url li:last-child a:focus {
+.pf-type-freelancing .pf-url li:last-child a:hover, .pf-type-freelancing .pf-url li:last-child a:focus {
   background: #E5753C; }
-  .pf-type-freelancing header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-freelancing header.third .pf-header .pf-url li:last-child a:focus svg {
+  .pf-type-freelancing .pf-url li:last-child a:hover svg, .pf-type-freelancing .pf-url li:last-child a:focus svg {
     stroke: white; }
-.pf-type-freelancing header.third .pf-header .pf-url li:last-child a:active, .pf-type-freelancing header.third .pf-header .pf-url li:last-child a.active {
+.pf-type-freelancing .pf-url li:last-child a:active, .pf-type-freelancing .pf-url li:last-child a.active {
   background: #924c29 !important; }
 .pf-type-freelancing .pf-header .verified span svg path:first-child {
   fill: #E5753C; }
 .pf-type-freelancing .pf-tabs ul li a.active {
   border-bottom: 5px solid #E5753C; }
 .pf-type-freelancing .pf-list h1 {
+  background: #E5753C; }
+.pf-type-freelancing .pf-list button.chip:hover, .pf-type-freelancing .pf-list button.chip:focus {
+  background: #E5753C; }
+.pf-type-freelancing .pf-list button.chip:active, .pf-type-freelancing .pf-list button.chip.activated {
+  background: #f1b596; }
+.pf-type-freelancing .pf-list .pf-list-x li div input:checked + span {
   background: #E5753C; }
 .pf-type-freelancing .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #E5753C; }
@@ -3138,6 +3601,15 @@ a.cta-modal-close svg {
       color: white; }
       .pf-type-freelancing .pf-checklist .pf-checklist-add a:active span svg, .pf-type-freelancing .pf-checklist .pf-checklist-add a.active span svg {
         stroke: white; }
+
+#desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #9A5BC5 !important; }
+  #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #c8a6e0 !important; }
+  #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #6f7d82 !important; }
+#desktop-guru-home .pf-type-athletic .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+  border-color: #9A5BC5; }
 
 .pf-edit.pf-type-athletic button {
   background: #9A5BC5; }
@@ -3201,21 +3673,29 @@ a.cta-modal-close svg {
     border-bottom-color: transparent; }
   .pf-type-athletic header.third .pf-banner.pf-banner-athletic {
     display: block; }
-.pf-type-athletic header.third .pf-header .pf-url li:first-child a, .pf-type-athletic header.third .pf-header .pf-url li input, .pf-type-athletic header.third .pf-header .pf-url li span {
+  .pf-type-athletic header.third .pf-banner.pf-banner-edit svg path {
+    stroke: #9A5BC5; }
+.pf-type-athletic .pf-url li:first-child input {
   color: #643a80 !important; }
-.pf-type-athletic header.third .pf-header .pf-url li:last-child a svg {
+.pf-type-athletic .pf-url li:last-child a svg {
   stroke: #9A5BC5; }
-.pf-type-athletic header.third .pf-header .pf-url li:last-child a:hover, .pf-type-athletic header.third .pf-header .pf-url li:last-child a:focus {
+.pf-type-athletic .pf-url li:last-child a:hover, .pf-type-athletic .pf-url li:last-child a:focus {
   background: #9A5BC5; }
-  .pf-type-athletic header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-athletic header.third .pf-header .pf-url li:last-child a:focus svg {
+  .pf-type-athletic .pf-url li:last-child a:hover svg, .pf-type-athletic .pf-url li:last-child a:focus svg {
     stroke: white; }
-.pf-type-athletic header.third .pf-header .pf-url li:last-child a:active, .pf-type-athletic header.third .pf-header .pf-url li:last-child a.active {
+.pf-type-athletic .pf-url li:last-child a:active, .pf-type-athletic .pf-url li:last-child a.active {
   background: #643a80 !important; }
 .pf-type-athletic .pf-header .verified span svg path:first-child {
   fill: #9A5BC5; }
 .pf-type-athletic .pf-tabs ul li a.active {
   border-bottom: 5px solid #9A5BC5; }
 .pf-type-athletic .pf-list h1 {
+  background: #9A5BC5; }
+.pf-type-athletic .pf-list button.chip:hover, .pf-type-athletic .pf-list button.chip:focus {
+  background: #9A5BC5; }
+.pf-type-athletic .pf-list button.chip:active, .pf-type-athletic .pf-list button.chip.activated {
+  background: #c8a6e0; }
+.pf-type-athletic .pf-list .pf-list-x li div input:checked + span {
   background: #9A5BC5; }
 .pf-type-athletic .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #9A5BC5; }
@@ -3243,6 +3723,15 @@ a.cta-modal-close svg {
       color: white; }
       .pf-type-athletic .pf-checklist .pf-checklist-add a:active span svg, .pf-type-athletic .pf-checklist .pf-checklist-add a.active span svg {
         stroke: white; }
+
+#desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
+  background: #55A4B7 !important; }
+  #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
+    background: #9dcad5 !important; }
+  #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:active, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.save-button.activated, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:active, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus.activated, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button:active, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.save-button.activated, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:active, #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus.activated {
+    background: #6f7d82 !important; }
+#desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
+  border-color: #55A4B7; }
 
 .pf-edit.pf-type-tech button {
   background: #55A4B7; }
@@ -3306,21 +3795,29 @@ a.cta-modal-close svg {
     border-bottom-color: transparent; }
   .pf-type-tech header.third .pf-banner.pf-banner-tech {
     display: block; }
-.pf-type-tech header.third .pf-header .pf-url li:first-child a, .pf-type-tech header.third .pf-header .pf-url li input, .pf-type-tech header.third .pf-header .pf-url li span {
+  .pf-type-tech header.third .pf-banner.pf-banner-edit svg path {
+    stroke: #55A4B7; }
+.pf-type-tech .pf-url li:first-child input {
   color: #3a626c !important; }
-.pf-type-tech header.third .pf-header .pf-url li:last-child a svg {
+.pf-type-tech .pf-url li:last-child a svg {
   stroke: #55A4B7; }
-.pf-type-tech header.third .pf-header .pf-url li:last-child a:hover, .pf-type-tech header.third .pf-header .pf-url li:last-child a:focus {
+.pf-type-tech .pf-url li:last-child a:hover, .pf-type-tech .pf-url li:last-child a:focus {
   background: #55A4B7; }
-  .pf-type-tech header.third .pf-header .pf-url li:last-child a:hover svg, .pf-type-tech header.third .pf-header .pf-url li:last-child a:focus svg {
+  .pf-type-tech .pf-url li:last-child a:hover svg, .pf-type-tech .pf-url li:last-child a:focus svg {
     stroke: white; }
-.pf-type-tech header.third .pf-header .pf-url li:last-child a:active, .pf-type-tech header.third .pf-header .pf-url li:last-child a.active {
+.pf-type-tech .pf-url li:last-child a:active, .pf-type-tech .pf-url li:last-child a.active {
   background: #3a626c !important; }
 .pf-type-tech .pf-header .verified span svg path:first-child {
   fill: #55A4B7; }
 .pf-type-tech .pf-tabs ul li a.active {
   border-bottom: 5px solid #55A4B7; }
 .pf-type-tech .pf-list h1 {
+  background: #55A4B7; }
+.pf-type-tech .pf-list button.chip:hover, .pf-type-tech .pf-list button.chip:focus {
+  background: #55A4B7; }
+.pf-type-tech .pf-list button.chip:active, .pf-type-tech .pf-list button.chip.activated {
+  background: #9dcad5; }
+.pf-type-tech .pf-list .pf-list-x li div input:checked + span {
   background: #55A4B7; }
 .pf-type-tech .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
   stroke: #55A4B7; }

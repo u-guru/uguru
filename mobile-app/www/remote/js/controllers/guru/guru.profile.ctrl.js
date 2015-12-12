@@ -60,29 +60,15 @@ angular.module('uguru.guru.controllers')
 
     $scope.showEditGuruIntro = false;
 
-
     $scope.bindPortfolioItemObjToScope = function() {
-
-      // $scope.activePortfolioItem = PortfolioItem.initEmpty();
+      $scope.activePortfolioItem = PortfolioItem.initEmpty();
+      console.log($scope.activePortfolioItem);
       PortfolioItem.linkEditModal('#cta-modal-profile-pi-item');
     }
 
-    // $timeout(function() {
-    //   $scope.bindPortfolioItemObjToScope();
-    // }, 3000)
-
-    $scope.page = {
-      popups: {removePI: false}
-    }
-
-    $scope.closeRemovePIPopup = function() {
-      $scope.page.popups.removePI = false;
-    }
-
-    $scope.openRemovePIPopup = function(portfolio_item) {
-        $scope.activePortfolioItem = portfolio_item;
-        $scope.page.popups.removePI = true;
-    }
+    $timeout(function() {
+      $scope.bindPortfolioItemObjToScope();
+    }, 3000)
 
 
     $scope.setCourseAndClearInput = function(course) {
@@ -108,6 +94,8 @@ angular.module('uguru.guru.controllers')
       });
     }
 
+
+    //to add
     $scope.editPortfolioItem = function(portfolio_item) {
       $scope.activePortfolioItem = portfolio_item;
       var portfolioItemModal = document.querySelector('#cta-modal-profile-pi-item');
@@ -115,6 +103,10 @@ angular.module('uguru.guru.controllers')
         portfolioItemModal.classList.add('show');
       }
     }
+
+    //highlight mode
+    //resources
+    //
 
     $scope.closeEditPortfolioItem = function() {
       var portfolioItemModal = document.querySelector('#cta-modal-profile-pi-item');
@@ -129,17 +121,7 @@ angular.module('uguru.guru.controllers')
         return;
       }
       LoadingService.showAmbig('Saving...', 10000);
-      var closeCTAModal = function() {
-        LoadingService.hide()
-        $timeout(function() {
-          LoadingService.showSuccess('Saved!', 2000);
-        }, 250)
-        $scope.closeEditPortfolioItem();
-      }
-      $timeout(function() {
-        closeCTAModal();
-      }, 1000)
-      // $scope.user.updateAttr('add_guru_portfolio_item', $scope.user, portfolio_item, null, $scope);
+      $scope.user.updateAttr('add_guru_portfolio_item', $scope.user, portfolio_item, null, $scope);
     }
 
     $scope.toggleDesktopIntroduction = function() {
@@ -1027,14 +1009,6 @@ angular.module('uguru.guru.controllers')
           alert('Please enter valid phone number.')
       };
         return;
-    }
-
-    $scope.clearInputAndResetCourse = function() {
-      // if we can edit the course item
-      if (!$scope.activePortfolioItem.id) {
-        $scope.search_text.course = '';
-        $scope.activePortfolioItem.course = {};
-      }
     }
 
     $scope.resendPhoneConfirmation = function() {
