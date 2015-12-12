@@ -107,8 +107,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $state.go('^.guru')
   }
 
-  if (!$scope.user.university_id) {
-    LoadingService.showAmbig('No university detected.. redirecting..', 2000);
+  if (!$scope.user.university_id && $scope.autoRedirects) {
+    LoadingService.showAmbig('No university detected.. redirecting..', 3000);
     $timeout(function() {
       $state.go('^.university');
     }, 1000)

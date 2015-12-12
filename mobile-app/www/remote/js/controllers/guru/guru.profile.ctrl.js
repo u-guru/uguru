@@ -50,7 +50,7 @@ angular.module('uguru.guru.controllers')
     }
 
     // credibility only variable
-    $scope.activeTabIndex = 0;
+    $scope.activeTabIndex = 1;
     $scope.profile.edit_mode = false;
 
 

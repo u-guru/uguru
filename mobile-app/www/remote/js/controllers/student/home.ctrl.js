@@ -32,7 +32,7 @@ angular.module('uguru.student.controllers', [])
 
 
 
-        if ($scope.desktopMode) {
+        if ($scope.desktopMode && $scope.autoRedirects) {
             LoadingService.showAmbig('Redirecting',1000);
             $ionicViewSwitcher.nextDirection('enter');
             $state.go('^.guru-home');
@@ -59,9 +59,9 @@ angular.module('uguru.student.controllers', [])
 
         //todo create service
         function initDesktopFunctions() {
-            $scope.showDesktopSettings = false;
+            $scope.root.vars.showDesktopSettings = false;
             $scope.toggleDesktopSettings = function() {
-                $scope.showDesktopSettings = !$scope.showDesktopSettings;
+                $scope.root.vars.showDesktopSettings = !$scope.root.vars.showDesktopSettings;
             }
         }
 

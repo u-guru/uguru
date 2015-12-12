@@ -8,7 +8,7 @@ angular.module('uguru.rest')
     }
 
     function getAll() {
-        return [{icon_url: null, id: 1, name: 'Food'}, {icon_url: null, id: 2, name: 'Cash'}, {icon_url: null, id: 3, name: 'Coffee'}, {icon_url: null, id: 4, name: 'Giftcards'}, {icon_url: null, id: 5, name: 'Kitten Time'}, {icon_url: null, id: 6, name: 'Meal Points'}, {icon_url: null, id: 7, name: 'Chipotle'}, {icon_url: null, id: 8, name: 'Dogecoin'}, {icon_url: null, id: 9, name: 'Concert Tickets'}, {icon_url: null, id: 10, name: 'Puppy Time'}, {icon_url: null, id: 11, name: 'Cookies'}];
+        return [{'id': 1, 'name': 'Food', 'icon_url': 'food.svg'}, {'id': 3, 'name': 'Coffee', 'icon_url': 'coffee.svg'}, {'id': 5, 'name': 'Kitten Time', 'icon_url': 'kitten_time.svg'}, {'id': 6, 'name': 'Meal Points', 'icon_url': 'meal_points.svg'}, {'id': 7, 'name': 'Chipotle', 'icon_url': 'chipotle.svg'}, {'id': 8, 'name': 'Dogecoin', 'icon_url': 'dogecoin.svg'}, {'id': 10, 'name': 'Puppy Time', 'icon_url': 'puppy_time.svg'}, {'id': 2, 'name': 'Cash', 'icon_url': 'cash.svg'}, {'id': 12, 'name': 'Skill Swap', 'icon_url': 'skill_swap.svg'}, {'id': 4, 'name': 'Gift Cards', 'icon_url': 'gift_cards.svg'}, {'id': 9, 'name': 'Tickets', 'icon_url': 'tickets.svg'}, {'id': 11, 'name': 'Tutor', 'icon_url': 'tutor.svg'}]
     }
 
     function updateMasterList(user) {

@@ -3118,7 +3118,7 @@ class Currency(Base):
     is_approved = Column(Boolean, default=False)
 
 
-    DEFAULT_CURRENCIES = ['Food', 'Money', 'Coffee', 'Giftcards', 'Kitten Time', 'Meal Points', 'Chipotle', 'Dogecoin', 'Concert Tickets', 'Puppy Time', 'Cookies']
+    DEFAULT_CURRENCIES = ['Food', 'Money', 'Coffee', 'Gift Cards', 'Kitten Time', 'Meal Points', 'Chipotle', 'Dogecoin', 'Concert Tickets', 'Puppy Time', 'Cookies']
 
     @staticmethod
     def init(arr_names):

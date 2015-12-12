@@ -1026,6 +1026,12 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'add_guru_currency') {
+                return {
+                    'add_guru_currency': obj
+                }
+              }
+
               if (arg === 'update_guru_experience') {
                 return {
                     'update_guru_experience': obj

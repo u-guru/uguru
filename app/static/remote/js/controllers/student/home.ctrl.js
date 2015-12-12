@@ -32,10 +32,12 @@ angular.module('uguru.student.controllers', [])
 
 
 
-        if ($scope.desktopMode) {
+        if ($scope.desktopMode && $scope.autoRedirects) {
             LoadingService.showAmbig('Redirecting',1000);
             $ionicViewSwitcher.nextDirection('enter');
             $state.go('^.guru-home');
+        } else if ($scope.desktopMode && !$scope.autoRedirects && $scope.LOCAL) {
+
         }
 
         $ionicSideMenuDelegate.canDragContent(false);

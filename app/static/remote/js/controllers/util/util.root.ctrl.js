@@ -116,6 +116,7 @@ angular.module('uguru.util.controllers')
 
 
         $scope.LOCAL = LOCAL || false;
+        $scope.autoRedirects = _autoredirects || false;
         $ionicPlatform.registerBackButtonAction(function(e) {
             var popup = document.querySelectorAll('.uguru-popup.show')[0];
             if(popup !== null && popup !== undefined) {
@@ -672,8 +673,7 @@ angular.module('uguru.util.controllers')
         if (window.location.href.indexOf('/profile/') > 0) {
             console.log('redirecting...')
             $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
-        } else if ($scope.user && $scope.user.guru_mode) {
-
+        } else if ($scope.user && $scope.user.guru_mode && $scope.autoRedirects) {
 
             LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
@@ -693,7 +693,7 @@ angular.module('uguru.util.controllers')
             }, 1000);
 
         }
-        else if ($scope.user && $scope.user.university_id) {
+        else if ($scope.user && $scope.user.university_id && $scope.autoRedirects) {
             LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {
@@ -710,7 +710,8 @@ angular.module('uguru.util.controllers')
             }, 1000);
         }
 
-        if ((!$scope.LOCAL || !LOCAL) && console.log) {
+        // Override consolelog to prevent it frmo logging on the client side
+        if (!$scope.LOCAL && console.log) {
             console.log = function() {
                 return;
             }
