@@ -492,9 +492,9 @@
 			<ul class="relative pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
 				<!-- Description should be first child -->
 				<li class="pf-checklist-desc">
-					<h1 class="ng-class:{'hide': profile.edit_mode}">Gabrielle's Academic Shop</h1>
-					<input class="ng-class:{'hide': !profile.edit_mode}" value="Gabrielle's Academic Shop"/>
-					<p class="pf-header-desc ng-class:{'hide': profile.edit_mode}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+					<h1 class="ng-class:{'hide': profile.edit_mode}">{{user.academic_shop.title}}</h1>
+					<input class="ng-class:{'hide': !profile.edit_mode}" value="{{user.academic_shop.title}}"/>
+					<p ng-if='!user.academic_shop && user.active_shop && user.active_shop.description' class="pf-header-desc ng-class:{'hide': profile.edit_mode}">{{user.active_shop.description}}</p>
 					<div class='pf-textarea-container relative'>
 						<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" rows="2" maxlength="100" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{100 - user.guru_introduction.length}}</span>
