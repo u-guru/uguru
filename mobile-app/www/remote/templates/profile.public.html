@@ -1,4 +1,4 @@
-<ion-view class='uguru-view pf-type pf-type-academic pf-type-{{user.academic_shop.category.hex_color}} bg-slate pf-has-edit'>
+<ion-view class='uguru-view pf-type pf-type-delivery pf-type-{{user.academic_shop.category.hex_color}} bg-slate pf-has-edit'>
 	<!-- popups -->
 	<div class="guru-popup guru-popup-center" ng-show="pagePopups.fb">
 		<div class="guru-popup-vertical-center min-height with-button">Edit your live public profile URL</div>
@@ -33,14 +33,14 @@
 			<div class="pf-edit-mode-banner" ng-if="profile.edit_mode">
 				<span>Edit Mode</span>
 			</div>
-			<div class="pf-banner pf-banner-academic" ng-include="img_base + 'templates/svg/academic.html'"></div>
-			<div class="pf-banner pf-banner-photo" ng-include="img_base + 'templates/svg/photography.html'"></div>
-			<div class="pf-banner pf-banner-baking" ng-include="img_base + 'templates/svg/baking.html'"></div>
-			<div class="pf-banner pf-banner-household" ng-include="img_base + 'templates/svg/household.html'"></div>
-			<div class="pf-banner pf-banner-delivery" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></div>
-			<div class="pf-banner pf-banner-freelancing" ng-include="img_base + 'templates/svg/freelancing.html'"></div>
-			<div class="pf-banner pf-banner-athletic" ng-include="img_base + 'templates/svg/athletic.html'"></div>
-			<div class="pf-banner pf-banner-tech" ng-include="img_base + 'templates/svg/tech.html'"></div>
+			<div class="pf-banner pf-banner-academic ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/academic.html'"></div>
+			<div class="pf-banner pf-banner-photo ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/photography.html'"></div>
+			<div class="pf-banner pf-banner-baking ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/baking.html'"></div>
+			<div class="pf-banner pf-banner-household ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/household.html'"></div>
+			<div class="pf-banner pf-banner-delivery ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></div>
+			<div class="pf-banner pf-banner-freelancing ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/freelancing.html'"></div>
+			<div class="pf-banner pf-banner-athletic ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/athletic.html'"></div>
+			<div class="pf-banner pf-banner-tech ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/tech.html'"></div>
 			<div class="pf-header ng-class:{'pf-header-edit': profile.edit_mode}">
 				<span class="user-icon" ng-if="!profile.edit_mode" style="background-image: url({{user.profile_url}});"></span>
 				<a class="user-icon-container" ng-click='takeProfilePhoto()' ng-if="profile.edit_mode">
@@ -57,9 +57,9 @@
 				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
 				<!-- <button class="btn-ghost-white">Contact</button> -->
-				<div class='profile-textarea-container relative'>
+				<div class='pf-textarea-container relative'>
 					<textarea class="pf-header-desc ng-class:{'hide': profile.edit_mode}" disabled>{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</textarea>
-					<textarea ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' class="pf-header-desc hide ng-class:{'show': profile.edit_mode}"></textarea>
+					<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction'></textarea>
 					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{140 - user.guru_introduction.length}}</span>
 				</div>
 				<ul class="pf-url"  ng-if="!profile.edit_mode">
@@ -187,14 +187,16 @@
 							</div>
 						</li>
 					</ul>
-					<button id='cta-box-profile-experiences' class="cta-box chip">Add an Experience</button>
+					<div ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
+					<button class="chip">Add an Experience</button>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>Languages</h1>
 					<ul class="pf-list-y ugrid-2">
 						<li ng-repeat='language in user.guru_languages' class="text-center">{{language.name}}</li>
 					</ul>
-					<button id='cta-box-profile-languages' class="cta-box chip">Add a Language</button>
+					<div ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
+					<button class="chip">Add a Language</button>
 				</div>
 				<div class="pf-list p15top">
 					<h1>Will Work For</h1>
@@ -354,7 +356,7 @@
 				</div>
 				<div class="pf-list p15top">
 					<h1>Preferred Communication Methods</h1>
-					<ul class="pf-list-x ugrid-6">
+					<ul class="pf-list-x ugrid-3">
 						<li>
 							<span>
 								<svg viewBox="0 0 100 100">
@@ -457,15 +459,6 @@
 					<h2>{{user.guru_avg_rating || 0.0}} Average Rating</h2>
 					<button class="m10top btn-ghost-white">See Availability</button>
 				</div> -->
-
-				<ion-pane id='cta-modal-profile-experiences' class='full-xy hide-display cta-modal'>
-					<div ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
-				</ion-pane>
-
-				<ion-pane id='cta-modal-profile-languages' class='full-xy hide-display cta-modal'>
-					<div ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
-				</ion-pane>
-
 			</div>
 			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
 				<li ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-click='editPortfolioItem(portfolio_item)'>

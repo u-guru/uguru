@@ -292,6 +292,13 @@
 				border-bottom-width: 10px!important;
 				border-bottom-color: transparent;
 			}
+			&.pf-banner-edit {
+				background: white;
+				&:after {
+					border: 25px solid white;
+					border-bottom-color: transparent;
+				}
+			}
 		}
 		.pf-header {
 			width: 100%;
@@ -350,32 +357,34 @@
 			button {
 				padding: 5px 30px;
 			}
-			.pf-header-desc {
+			.pf-textarea-container {
 				display: none;
-				margin: 15px 25px 0;
-				width: calc(100% - 50px);
-				height: 124px;
-				padding: 0 5px;
-				resize: none;
-				overflow: auto;
-				background: rgba(white, .4);
-				color: white;
-				font-size: 20px;
-				font-weight: 400;
-				line-height: 1.2;
-				text-align: center;
-				@include placeholder {
+				.pf-header-desc {
+					margin: 15px 25px 0;
+					width: calc(100% - 50px);
+					height: 124px;
+					padding: 0 5px;
+					resize: none;
+					overflow: auto;
+					background: rgba(white, .4);
 					color: white;
-				}
-				&:focus {
-					background: white;
-					color: $charcoal;
+					font-size: 20px;
+					font-weight: 400;
+					line-height: 1.2;
+					text-align: center;
 					@include placeholder {
-						color: $taupe;
+						color: white;
 					}
-				}
-				&:disabled {
-					background: none;
+					&:focus {
+						background: white;
+						color: $charcoal;
+						@include placeholder {
+							color: $taupe;
+						}
+					}
+					&:disabled {
+						background: none;
+					}
 				}
 			}
 			.pf-url {
@@ -463,7 +472,8 @@
 			}
 			@media screen and (max-width:768px) {
 				&.pf-header-edit {
-					padding-top: 90px;
+					padding-top: 80px;
+					padding-bottom: 15px;
 					.pf-rating, .pf-review-amt {
 						display: none;
 					}
@@ -747,7 +757,7 @@
 			text-align: center;
 			text-transform: uppercase;
 		}
-		button {
+		button.chip {
 			margin-top: 15px;
 			background: lighten($slate, 20%);
 			width: auto;
@@ -782,19 +792,27 @@
 				[data-years]:not([data-years="1"]):after {
 					content: "s";
 				}
-				&:not(:last-child) {
-					margin-bottom: 2px;
-				}
 				ul {
 					li:last-child {
 						@include opacity(.5);
 					}
 				}
 			}
+			&.ugrid-2 {
+				> li {
+					margin-bottom: 2px;
+				}
+			}
+			&:not(.ugrid-2) {
+				> li:not(:last-child) {
+					margin-bottom: 2px;
+				}
+			}
 		}
 		.pf-list-x {
 			margin-top: 2px;
 			li {
+				position: relative;
 				background: $charcoal;
 				padding: 6.25px;
 				svg {
@@ -810,7 +828,6 @@
 					font-weight: 600;
 				}
 				div {
-					position: relative;
 					margin: 5px auto 15px;
 					width: 32px;
 					height: 32px;
@@ -1110,8 +1127,11 @@
 	}
 	.pf-tab-container {
 		position: relative;
-		height: 100%;
+		height: calc(100% / 3 * 2);
 		overflow: auto;
+		@media screen and (min-width:768px) {
+			height: 100%;
+		}
 		.pf-tab-item {
 			height: calc(100% - 60px);
 		}
@@ -1122,7 +1142,7 @@
 	&.pf-has-edit {
 		.pf-tab-container {
 			.pf-tab-item {
-				padding-bottom: 75px;
+				padding-bottom: 80px;
 			}
 		}
 	}
@@ -1171,7 +1191,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	background: rgba(darken($auburn, 20%), .5);
+	background: $auburn;
 	span {
 		display: block;
 		padding: 20px;
@@ -2051,7 +2071,7 @@
 				button {
 					padding: 10px 30px;
 				}
-				.pf-header-desc {
+				.pf-textarea-container {
 					display: block;
 				}
 				.pf-url {
@@ -2207,12 +2227,11 @@
 
 // MODAL
 .pf-modal {
-	header.third
-	a.cta-modal-close {
+	header.third a.cta-modal-close {
 		svg {
-				height:30px;
-				width:30px;
-			}
+			height: 36px;
+			width: 36px;
+		}
 	}
 	header.third.pf-item-header {
 		.pf-header-bg {
@@ -2606,7 +2625,205 @@
 }
 
 
+// CTA
+#desktop-guru-home {
+	.pf-type {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						width: 100%!important;
+						margin: 0!important;
+						padding: 0!important;
+						height: 64px!important;
+						border: 0!important;
+						border-radius: 0!important;
+						background: $shamrock!important;
+						font-size: 24px!important;
+						letter-spacing: 0!important;
+						text-transform: none!important;
+						&:hover, &:focus {
+							@include opacity(1);
+							background: lighten($shamrock, 20%)!important;
+							color: white!important;
+						}
+						&:active, &.activated {
+							@include opacity(1);
+							background: lighten($slate, 20%)!important;
+							color: white!important;
+						}
+					}
+				}
+				#desktop-languages {
+					display: block!important;
+					position: static!important;
+					min-width: auto!important;
+					max-width: auto!important;
+					min-height: auto!important;
+					height: auto!important;
+					padding-bottom: 0!important;
+					margin-top: 15px;
+					#main-logo {
+						display: none!important;
+					}
+					.desktop-header {
+						@include translate-x(0);
+						position: static!important;
+						left: auto!important;
+						right: auto!important;
+						top: auto!important;
+						min-width: auto!important;
+						max-width: auto!important;
+						height: 60px!important;
+						padding: 0!important;
+						a {
+							svg {
+								width: 36px;
+								height: 36px;
+								margin: 8px;
+							}
+						}
+					}
+					.main.default {
+						display: block!important;
+						min-width: auto!important;
+						min-height: auto!important;
+						height: auto!important;
+						form {
+							.input-field {
+								.prefix {
+									left: 0;
+								}
+							}
+						}
+						#guru-courses-user-profile {
+							display: none!important;
+						}
+						.desktop-search-list {
+							padding: 0!important;
+						}
+						.desktop-card-list {
+							padding: 7.5px!important;
+							margin: auto!important;
+							li {
+								padding: 7.5px!important;
+								a.name-only {
+									height: auto!important;
+									span {
+										font-size: 18px!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				#experience-modal {
+					position: relative!important;
+					top: auto!important;
+					margin-top: 15px;
+					height: auto!important;
+					background: lighten($charcoal, 2%);
+					header:not(.desktop-header) {
+						background: lighten($charcoal, 5%);
+						h1 {
+							font-size: 28px!important;
+							text-transform: lowercase!important;
+						}
+						.header-nav {
+							a {
+								height: 60px;
+								svg {
+									width: 36px;
+									height: 36px;
+								}
+							}
+						}
+					}
+					h1 {
+						background: none!important;
+						padding: 15px!important;
+						font-weight: 600!important;
+						letter-spacing: 0!important;
+					}
+					.main {
+						display: block!important;
+						background: lighten($charcoal, 2%)!important;
+						.bg-campus-50p {
+							background: lighten($charcoal, 2%)!important;
+						}
+						.exp-years {
+							margin: 0 15px;
+							padding: 0 15px 15px;
+							background: lighten($slate, 5%);
+							input[type=range] {
+								padding: 105px 0 20px!important;
+								background: none!important;
+							}
+						}
+						.input-outline {
+							@include transition(.15s ease-in-out);
+							border-width: 0;
+							border-bottom-width: 5px;
+							border-color: rgba(white,.7);
+							background: lighten($slate, 5%);
+							padding: 10px 15px;
+							&:focus {
+								border-color: $shamrock;
+								background: lighten($slate, 10%);
+							}
+						}
+						#experience-name-input.input-outline {
+							display: block;
+							width: 100%;
+							font-weight: 600;
+						}
+						textarea.input-outline {
+							width: 100%;
+							resize: none;
+							height: 176px;
+							font-size: 20px;
+							font-weight: 400;
+						}
+						.exp-years-label {
+							li:first-child {
+								text-align: left!important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
 // ACADEMIC
+#desktop-guru-home {
+	.pf-type-academic {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $cerise!important;
+						&:hover, &:focus {
+							background: lighten($cerise, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $cerise;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-academic {
 	button {
 		background: $cerise;
@@ -2747,6 +2964,11 @@
 			&.pf-banner-academic {
 				display: block;
 			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $cerise;
+				}
+			}
 		}
 		.pf-header .pf-url {
 			li {
@@ -2796,7 +3018,7 @@
 		h1 {
 			background: $cerise;
 		}
-		button {
+		button.chip {
 			&:hover, &:focus {
 				background: $cerise;
 			}
@@ -2868,6 +3090,32 @@
 }
 
 // PHOTOGRAHPY
+#desktop-guru-home {
+	.pf-type-photo {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $moola!important;
+						&:hover, &:focus {
+							background: lighten($moola, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $moola;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-photo {
 	button {
 		background: $moola;
@@ -3149,6 +3397,11 @@
 			&.pf-banner-photo {
 				display: block;
 			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $moola;
+				}
+			}
 		}
 		.pf-header .pf-url {
 			li {
@@ -3198,7 +3451,7 @@
 		h1 {
 			background: $moola;
 		}
-		button {
+		button.chip {
 			&:hover, &:focus {
 				background: $moola;
 			}
@@ -3271,6 +3524,32 @@
 }
 
 // BAKING
+#desktop-guru-home {
+	.pf-type-baking {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $gold!important;
+						&:hover, &:focus {
+							background: lighten($gold, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $gold;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-baking {
 	button {
 		background: $gold;
@@ -3411,6 +3690,11 @@
 			&.pf-banner-baking {
 				display: block;
 			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $gold;
+				}
+			}
 		}
 		.pf-header .pf-url {
 			li {
@@ -3460,7 +3744,7 @@
 		h1 {
 			background: $gold;
 		}
-		button {
+		button.chip {
 			&:hover, &:focus {
 				background: $gold;
 			}
@@ -3587,6 +3871,41 @@
 }
 
 // HOUSEHOLD
+#desktop-guru-home {
+	.pf-type-household {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $cobalt!important;
+						&:hover, &:focus {
+							background: lighten($cobalt, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $cobalt;
+						}
+					}
+					button.bg-campus {
+						background: $cobalt!important;
+						&:hover, &:focus {
+							background: lighten($cobalt, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-household {
 	button {
 		background: $cobalt;
@@ -3727,6 +4046,11 @@
 			&.pf-banner-household {
 				display: block;
 			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $cobalt;
+				}
+			}
 		}
 		.pf-header .pf-url {
 			li {
@@ -3776,7 +4100,7 @@
 		h1 {
 			background: $cobalt;
 		}
-		button {
+		button.chip {
 			&:hover, &:focus {
 				background: $cobalt;
 			}
@@ -3848,6 +4172,32 @@
 }
 
 // DELIVERY
+#desktop-guru-home {
+	.pf-type-delivery {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $auburn!important;
+						&:hover, &:focus {
+							background: lighten($auburn, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $auburn;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-delivery {
 	button {
 		background: $auburn;
@@ -3988,6 +4338,11 @@
 			&.pf-banner-delivery {
 				display: block;
 			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $auburn;
+				}
+			}
 		}
 		.pf-header .pf-url {
 			li {
@@ -4037,7 +4392,7 @@
 		h1 {
 			background: $auburn;
 		}
-		button {
+		button.chip {
 			&:hover, &:focus {
 				background: $auburn;
 			}
@@ -4109,6 +4464,32 @@
 }
 
 // FREELANCING
+#desktop-guru-home {
+	.pf-type-freelancing {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $cerise!important;
+						&:hover, &:focus {
+							background: lighten($orange, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($orange, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $orange;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-freelancing {
 	button {
 		background: $orange;
@@ -4249,6 +4630,11 @@
 			&.pf-banner-freelancing {
 				display: block;
 			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $orange;
+				}
+			}
 		}
 		.pf-header .pf-url {
 			li {
@@ -4298,7 +4684,7 @@
 		h1 {
 			background: $orange;
 		}
-		button {
+		button.chip {
 			&:hover, &:focus {
 				background: $orange;
 			}
@@ -4370,6 +4756,32 @@
 }
 
 // ATHLETIC
+#desktop-guru-home {
+	.pf-type-athletic {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $eggplant!important;
+						&:hover, &:focus {
+							background: lighten($eggplant, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $eggplant;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-athletic {
 	button {
 		background: $eggplant;
@@ -4510,6 +4922,11 @@
 			&.pf-banner-athletic {
 				display: block;
 			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $eggplant;
+				}
+			}
 		}
 		.pf-header .pf-url {
 			li {
@@ -4559,7 +4976,7 @@
 		h1 {
 			background: $eggplant;
 		}
-		button {
+		button.chip {
 			&:hover, &:focus {
 				background: $eggplant;
 			}
@@ -4631,6 +5048,32 @@
 }
 
 // TECH & IT
+#desktop-guru-home {
+	.pf-type-tech {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $azure!important;
+						&:hover, &:focus {
+							background: lighten($azure, 20%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 .pf-edit.pf-type-tech {
 	button {
 		background: $azure;
@@ -4771,6 +5214,11 @@
 			&.pf-banner-tech {
 				display: block;
 			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $azure;
+				}
+			}
 		}
 		.pf-header .pf-url {
 			li {
@@ -4820,7 +5268,7 @@
 		h1 {
 			background: $azure;
 		}
-		button {
+		button.chip {
 			&:hover, &:focus {
 				background: $azure;
 			}
