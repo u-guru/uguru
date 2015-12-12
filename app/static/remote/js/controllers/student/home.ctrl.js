@@ -36,8 +36,6 @@ angular.module('uguru.student.controllers', [])
             LoadingService.showAmbig('Redirecting',1000);
             $ionicViewSwitcher.nextDirection('enter');
             $state.go('^.guru-home');
-        } else if ($scope.desktopMode && !$scope.autoRedirects && $scope.LOCAL) {
-
         }
 
         $ionicSideMenuDelegate.canDragContent(false);
@@ -61,9 +59,9 @@ angular.module('uguru.student.controllers', [])
 
         //todo create service
         function initDesktopFunctions() {
-            $scope.showDesktopSettings = false;
+            $scope.root.vars.showDesktopSettings = false;
             $scope.toggleDesktopSettings = function() {
-                $scope.showDesktopSettings = !$scope.showDesktopSettings;
+                $scope.root.vars.showDesktopSettings = !$scope.root.vars.showDesktopSettings;
             }
         }
 

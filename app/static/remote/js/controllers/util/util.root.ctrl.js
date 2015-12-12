@@ -256,6 +256,9 @@ angular.module('uguru.util.controllers')
         $scope.root.vars.guru_mode = $scope.user.guru_mode;
 
         $scope.logoutUser = function(skipShowAlert) {
+            if ($scope.desktopMode) {
+                $scope.root.vars.showDesktopSettings = false;
+            }
             if (skipShowAlert || confirm('Are you sure you want to log out?')) {
                   LoadingService.show();
                   $localstorage.setObject('user', []);

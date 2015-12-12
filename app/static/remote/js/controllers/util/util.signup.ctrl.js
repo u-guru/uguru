@@ -629,8 +629,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-
-
     $scope.goToEditUniversity = function() {
       $ionicSideMenuDelegate.toggleRight();
         $timeout(function() {
@@ -1403,7 +1401,7 @@ angular.module('uguru.util.controllers')
           if (mixpanel && mixpanel.register) {
             mixpanel.register($scope.user);
           }
-
+          $scope.$apply();
           LoadingService.showSuccess('Login Successful!', 2500);
           if ($scope.desktopMode)
           {

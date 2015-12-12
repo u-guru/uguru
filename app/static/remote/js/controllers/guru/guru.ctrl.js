@@ -483,6 +483,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 		}
 
 
+
 		$scope.showBalanceModal = function() {
 			if ($scope.user && $scope.user.id) {
 				$scope.balanceModal.show()
@@ -513,8 +514,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 			}
 		}
 
+    $scope.$on('$ionicView.loaded', function() {
+      $scope.root.vars.showDesktopSettings = false;
+    })
+
 		$scope.$on('$ionicView.enter', function() {
 
+      $scope.root.vars.showDesktopSettings = false;
 
 			$timeout(function() {
 				if ($scope.desktopMode) {

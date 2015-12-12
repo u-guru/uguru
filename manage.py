@@ -815,16 +815,27 @@ if arg == 'seed_admin':
 
 
     def selectThreeRandCurrencies(user):
+        try:
+            user.guru_currencies = []
+            db_session.commit()
+        except:
+            db_session.rollback()
+            return
         currencies = Currency.query.all()
         num_currencies = len(currencies)
         from random import randint
         for _ in range(0,10000):
-            currency = currencies(randint(0, num_currencies))
-            if currency not in user.guru_currencies:
-                user.guru_currencies.append(currency)
-            if len(user.guru_currencies) == 3:
-                db_session.commit()
-                break
+            try:
+                currency = currencies[randint(0, num_currencies)]
+                if currency not in user.guru_currencies:
+                    user.guru_currencies.append(currency)
+                    db_session.commit()
+                if len(user.guru_currencies) == 3:
+                    db_session.commit()
+                    break
+            except:
+                db_session.rollback()
+                continue
 
     def selectThreeRandLanguages(user):
         try:
@@ -897,6 +908,7 @@ if arg == 'seed_admin':
         if not user.guru_calendar:
             Calendar.initGuruCalendar(user)
         selectThreeRandLanguages(user)
+        selectThreeRandCurrencies(user)
         # fake_data = generateFakeShopData(user)
         Shop.initAcademicShop(user)
 
@@ -907,6 +919,7 @@ if arg == 'seed_admin':
         for pi in user.guru_shops[0].portfolio_items:
             _sum += len(pi.resources)
         return _sum
+
 
     def selectAndCountShopTagItems(user):
         _sum = 0

@@ -116,7 +116,7 @@
 						</svg>
 					</a>
 				</div>
-				<div ng-include="img_base + BASE + 'templates/guru.contact.components.	html'"></div>
+				<div ng-include="img_base + BASE + 'templates/guru.contact.components.html'"></div>
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -251,7 +251,7 @@
 							<span ng-include="img_base + BASE + 'templates/svg/wwf/' + currency.icon_url"></span>
 							<span>{{currency.name}}</span>
 							<div>
-								<input type="checkbox"  ng-model="all_currency.active" />
+								<input type="checkbox" ng-change='updateGuruCurrency(currency, currency.active)' ng-model="currency.active" />
 								<span>
 									<svg viewBox="0 0 100 100">
 									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>

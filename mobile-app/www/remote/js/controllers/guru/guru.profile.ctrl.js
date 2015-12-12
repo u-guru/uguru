@@ -50,7 +50,7 @@ angular.module('uguru.guru.controllers')
     }
 
     // credibility only variable
-    $scope.activeTabIndex = 1;
+    $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
 
     $scope.page = { modals : {}, popups: {} }
@@ -62,7 +62,11 @@ angular.module('uguru.guru.controllers')
 
 
 
+
     $scope.all_currencies = Currency.updateMasterList($scope.user);
+    $timeout(function() {
+      console.log('CURRENCIES', $scope.all_currencies);
+    }, 2500)
 
     $scope.showEditGuruIntro = false;
 
@@ -617,6 +621,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.updateCommunicationMethod = function(attr_str, bool) {
       $scope.user.updateAttr(attr_str, $scope.user, bool, null, $scope);
+    }
+
+    $scope.updateGuruCurrency = function(currency, bool) {
+      currency.active = bool;
+      $scope.user.updateAttr('update_guru_currency', $scope.user, currency, null, $scope);
     }
 
 
