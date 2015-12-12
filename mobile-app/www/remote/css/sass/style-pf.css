@@ -3223,13 +3223,6 @@
   .pf-type .pf-checklist .pf-checklist-full:not(.pf-type-photo) .pf-item-header {
     height: 256px !important;
   }
-  .pf-type .pf-checklist li.pf-checklist-full {
-    width: 100% !important;
-    left: 0;
-  }
-  .pf-type .pf-checklist > li:nth-child .pf-checklist-full {
-    width: 200% !important;
-  }
   .pf-type .pf-checklist > li:nth-child(odd) .pf-checklist-full {
     right: 0;
   }
@@ -3239,6 +3232,7 @@
   .pf-type .pf-checklist .pf-checklist-full {
     position: absolute;
     top: 0;
+    width: 200% !important;
     z-index: 1000;
     padding: 15px;
   }
