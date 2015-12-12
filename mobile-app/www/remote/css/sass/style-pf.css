@@ -837,7 +837,8 @@
           width: 100%;
           height: 100%; }
         .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove {
-          background: white; }
+          background: white;
+          z-index: 1000; }
           .pf-type .pf-checklist > li:not(.pf-checklist-full) div .pf-check.pf-remove svg {
             -webkit-transition: all 0.15s ease-in-out;
             -o-transition: all 0.15s ease-in-out;

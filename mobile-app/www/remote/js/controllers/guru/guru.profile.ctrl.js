@@ -60,15 +60,29 @@ angular.module('uguru.guru.controllers')
 
     $scope.showEditGuruIntro = false;
 
+
     $scope.bindPortfolioItemObjToScope = function() {
-      $scope.activePortfolioItem = PortfolioItem.initEmpty();
-      console.log($scope.activePortfolioItem);
+
+      // $scope.activePortfolioItem = PortfolioItem.initEmpty();
       PortfolioItem.linkEditModal('#cta-modal-profile-pi-item');
     }
 
-    $timeout(function() {
-      $scope.bindPortfolioItemObjToScope();
-    }, 3000)
+    // $timeout(function() {
+    //   $scope.bindPortfolioItemObjToScope();
+    // }, 3000)
+
+    $scope.page = {
+      popups: {removePI: false}
+    }
+
+    $scope.closeRemovePIPopup = function() {
+      $scope.page.popups.removePI = false;
+    }
+
+    $scope.openRemovePIPopup = function(portfolio_item) {
+        $scope.activePortfolioItem = portfolio_item;
+        $scope.page.popups.removePI = true;
+    }
 
 
     $scope.setCourseAndClearInput = function(course) {
@@ -122,7 +136,10 @@ angular.module('uguru.guru.controllers')
         }, 250)
         $scope.closeEditPortfolioItem();
       }
-      $scope.user.updateAttr('add_guru_portfolio_item', $scope.user, portfolio_item, null, $scope);
+      $timeout(function() {
+        closeCTAModal();
+      }, 1000)
+      // $scope.user.updateAttr('add_guru_portfolio_item', $scope.user, portfolio_item, null, $scope);
     }
 
     $scope.toggleDesktopIntroduction = function() {

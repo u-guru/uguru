@@ -1022,8 +1022,16 @@ if arg == 'init_admin':
             user.is_admin = True
             user.profile_code = account_name.split(' ')[0].lower()
             user.referral_code = account_name.split(' ')[0].lower()
-            Shop.initAcademicShop(user)
             db_session.commit()
+            try:
+                user.guru_courses = user.university.popular_courses[0:5]
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+                Shop.initAcademicShop(user)
+
             print "Account for %s successfully created" % user.email
     admin_users = User.query.filter_by(is_admin=True).all()
     for user in admin_users:

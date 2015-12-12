@@ -150,6 +150,12 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/pricing.html',
     controller: 'PricingController'
   }).
+  state('root.apply', {
+    url:'/apply',
+    templateUrl: BASE + 'templates/apply.html',
+    controller: 'ApplyController'
+  }).
+
   state('root.desktop-become-guru', {
     url:'/desktop-become-guru',
     templateUrl: BASE + 'templates/desktop.guru.onboarding.html',
@@ -304,6 +310,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/profiles/:profileId',
         templateUrl: BASE + 'templates/profile.public.html',
         controller: 'PublicProfileController'
+  }).
+  state('root.universities', {
+        url: '/universities/:universityId',
+        templateUrl: BASE + 'templates/one.university.html',
+        controller: 'OneUniversityController'
   }).
   state('root.cashout', {
         url: '/cashout',

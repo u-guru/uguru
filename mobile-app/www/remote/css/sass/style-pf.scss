@@ -936,6 +936,7 @@
 					}
 					&.pf-remove {
 						background: white;
+						z-index:1000;
 						svg {
 							@include transition(.15s ease-in-out);
 							position: absolute;

@@ -67,6 +67,9 @@ angular.module('uguru.user', [])
                 for (var j = 0; j < academic_shop.portfolio_items.length; j ++) {
                     indexPortfolioItem = academic_shop.portfolio_items[j];
                     academic_shop.portfolio_items[j].avg_rating = parseFloat(academic_shop.portfolio_items[j].avg_rating).toFixed(1);
+                    if (academic_shop.portfolio_items[j].hourly_price) {
+                        academic_shop.portfolio_items[j].hourly_price = parseInt(academic_shop.portfolio_items[j].hourly_price);
+                    }
                     if (indexPortfolioItem.avg_rating) {
                         academic_shop.portfolio_items[j].rounded_avg_rating = parseInt(indexPortfolioItem.avg_rating);
                         academic_shop.portfolio_items[j].half_stars = Math.abs(parseInt(indexPortfolioItem.avg_rating) - indexPortfolioItem.avg_rating) === 0.5;
