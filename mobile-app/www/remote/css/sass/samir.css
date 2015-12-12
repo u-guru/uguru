@@ -376,7 +376,7 @@ body.platform-ios
 
 #cta-modal-profile-pi-item {
   top: 60px;
-  z-index: 100;
+  z-index: 1000;
   height: calc(100% - 140px);
   width: 66% !important; }
 
