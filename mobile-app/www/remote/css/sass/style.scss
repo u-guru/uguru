@@ -3539,7 +3539,7 @@ section {
 			border-top-right-radius: 0!important;
 		}
 	}
-	div {
+	> div {
 		background: rgba($charcoal,.9);
 		padding: 10px 15px;
 		width: 100%;
@@ -3552,6 +3552,7 @@ section {
 		}
 		&.guru-popup-vertical-center {
 			@include flex;
+			@include flex-wrap;
 			@include flex-center-vertical;
 		}
 		input {

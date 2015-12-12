@@ -4879,7 +4879,7 @@ section {
   border-top-right-radius: 0 !important;
 }
 
-.guru-popup div {
+.guru-popup > div {
   background: rgba(43, 50, 52, 0.9);
   padding: 10px 15px;
   width: 100%;
@@ -4889,11 +4889,11 @@ section {
   font-weight: 600;
 }
 
-.guru-popup div.min-height {
+.guru-popup > div.min-height {
   min-height: 100px;
 }
 
-.guru-popup div.guru-popup-vertical-center {
+.guru-popup > div.guru-popup-vertical-center {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4901,18 +4901,21 @@ section {
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-align-items: center;
   align-items: center;
 }
 
-.guru-popup div input {
+.guru-popup > div input {
   display: block;
   width: 100%;
   padding: 5px 10px;
   border: 0;
 }
 
-.guru-popup div input:last-child {
+.guru-popup > div input:last-child {
   margin-bottom: 5px;
 }
 

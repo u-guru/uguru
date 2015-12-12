@@ -1160,6 +1160,7 @@
 			}
 		}
 		.pf-checklist-add {
+			height: 50%!important;
 			a {
 				@include flex;
 				@include flex-wrap;
@@ -1171,6 +1172,7 @@
 				span {
 					background: none!important;
 					font-weight: 600;
+					height: auto!important;
 					svg {
 						@include svg-stroke(white, 3);
 						display: block;
@@ -1262,7 +1264,74 @@
 		@include flex-wrap;
 		padding: 7.5px!important;
 		li {
+			position: relative;
 			padding: 7.5px;
+			.guru-popup {
+				@include transition(.15s ease-in-out);
+				@include center-x;
+				top: 78px;
+				width: 320px!important;
+				max-width: none!important;
+				&.hide {
+					@include opacity(0);
+					display: block!important;
+					z-index: -10;
+				}
+				&.show {
+					@include opacity(1);
+					z-index: 99;
+				}
+				&:before {
+					@include center-x;
+					content: "";
+					top: -30px;
+					width: 0;
+					height: 0;
+					border: 15px solid transparent;
+					border-bottom-color: rgba(lighten($slate, 20%),.9);
+				}
+				h1 {
+					background: rgba(lighten($slate, 20%),.9);
+					font-size: 20px;
+				}
+				> div {
+					background: rgba(lighten($slate, 20%),.9);
+					div {
+						@include flex;
+						@include flex-center;
+						&.url-pop {
+							@include animation-name(url-pop);
+							@include animation-duration(.3s);
+							@include animation-iteration-count(1);
+						}
+						span {
+							display: block;
+							padding: 5px 3px 5px 10px;
+						}
+						input {
+							width: auto;
+							margin-bottom: 0!important;
+							font-size: 18px;
+						}
+					}
+				}
+				button {
+					position: relative;
+					z-index: 100;
+					&.bg-fb {
+						background: $facebook!important;
+					}
+					&.bg-li {
+						background: $linkedin!important;
+					}
+					&.bg-in {
+						background: $instagram!important;
+					}
+					&.bg-tw {
+						background: $twitter!important;
+					}
+				}
+			}
 			a {
 				@include round;
 				display: block;
@@ -1282,6 +1351,21 @@
 				}
 			}
 		}
+	}
+}
+
+@include keyframes(url-pop) {
+	0% {
+		@include opacity(0);
+		@include translate-y(50%);
+	}
+	90% {
+		@include opacity(1);
+		@include translate-y(-5%);
+	}
+	100% {
+		@include opacity(1);
+		@include translate-y(0);
 	}
 }
 
