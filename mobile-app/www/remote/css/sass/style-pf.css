@@ -320,6 +320,7 @@
   position: absolute;
   top: 0;
   left: 15px;
+  z-index: 21;
   background: #69B3A5;
   width: 50px;
   height: 50px;
@@ -1526,6 +1527,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 20;
   width: 100%;
   background: #F04F54;
 }
@@ -1537,6 +1539,25 @@
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;
+}
+
+.pf-edit-mode-banner button {
+  position: absolute;
+  right: 15px;
+  bottom: -64px;
+}
+
+@media screen and (min-width: 768px) {
+  .pf-edit-mode-banner button {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    right: auto;
+  }
 }
 
 .pf-edit-pf {
