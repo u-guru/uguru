@@ -629,8 +629,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-
-
     $scope.goToEditUniversity = function() {
       $ionicSideMenuDelegate.toggleRight();
         $timeout(function() {

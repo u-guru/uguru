@@ -8,15 +8,16 @@ angular.module('uguru.rest')
     }
 
     function getAll() {
-        return [{'id': 1, 'name': 'Food', 'icon_url': 'food.svg'}, {'id': 3, 'name': 'Coffee', 'icon_url': 'coffee.svg'}, {'id': 5, 'name': 'Kitten Time', 'icon_url': 'kitten_time.svg'}, {'id': 6, 'name': 'Meal Points', 'icon_url': 'meal_points.svg'}, {'id': 7, 'name': 'Chipotle', 'icon_url': 'chipotle.svg'}, {'id': 8, 'name': 'Dogecoin', 'icon_url': 'dogecoin.svg'}, {'id': 10, 'name': 'Puppy Time', 'icon_url': 'puppy_time.svg'}, {'id': 2, 'name': 'Cash', 'icon_url': 'cash.svg'}, {'id': 12, 'name': 'Skill Swap', 'icon_url': 'skill_swap.svg'}, {'id': 4, 'name': 'Gift Cards', 'icon_url': 'gift_cards.svg'}, {'id': 9, 'name': 'Tickets', 'icon_url': 'tickets.svg'}, {'id': 11, 'name': 'Tutor', 'icon_url': 'tutor.svg'}]
+        return [{'id': 1, 'name': 'Food', 'icon_url': 'food.html'}, {'id': 3, 'name': 'Coffee', 'icon_url': 'coffee.html'}, {'id': 5, 'name': 'Kitten Time', 'icon_url': 'kitten_time.html'}, {'id': 6, 'name': 'Meal Points', 'icon_url': 'meal_points.html'}, {'id': 7, 'name': 'Chipotle', 'icon_url': 'chipotle.html'}, {'id': 8, 'name': 'Dogecoin', 'icon_url': 'dogecoin.html'}, {'id': 10, 'name': 'Puppy Time', 'icon_url': 'puppy_time.html'}, {'id': 2, 'name': 'Cash', 'icon_url': 'cash.html'}, {'id': 12, 'name': 'Skill Swap', 'icon_url': 'skill_swap.html'}, {'id': 4, 'name': 'Gift Cards', 'icon_url': 'gift_cards.html'}, {'id': 9, 'name': 'Tickets', 'icon_url': 'tickets.html'}, {'id': 11, 'name': 'Tutor', 'icon_url': 'tutor.html'}]
     }
 
     function updateMasterList(user) {
-        if (!user.guru_currencies || user.guru_currencies.length) {
-            return;
-        }
+        // if (!user.guru_currencies || user.guru_currencies.length) {
+        //     return;
+        // }
         all_user_currencies = user.guru_currencies.slice();
         all_currencies_copy = getAll().slice();
+        console.log(getAll())
 
         all_currency_names = getNamesOfCurrencies(all_currencies_copy)
         all_user_currency_names = getNamesOfCurrencies(all_user_currencies)

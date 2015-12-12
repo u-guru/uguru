@@ -7,19 +7,26 @@ angular.module('uguru.util.controllers')
   'Restangular',
   'User',
   '$ionicSideMenuDelegate',
-  function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate){
+  'LoadingService',
+  '$timeout',
+  function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, LoadingService, $timeout){
 
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
       $scope.activeTabIndex = 0;
+      $scope.university = {}
 
       var university_id = $stateParams.universityId;
       $scope.university = {};
-
-      var getPublicProfileInformation = function() {
+      LoadingService.showAmbig('Retrieving university data...', 10000);
+      var getPublicUniversityInformation = function() {
 
         var success = function(universityObj) {
-          $scope.university;
+          $scope.university = universityObj;
+
+          $timeout(function() {
+            LoadingService.showSuccess(universityObj.popular_courses.length + ' popular courses found', 2500)
+          }, 1500)
           console.log('universityObj', universityObj)
         }
 

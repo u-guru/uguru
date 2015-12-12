@@ -1030,7 +1030,10 @@ if arg == 'init_admin':
                 except:
                     db_session.rollback()
                     raise
-                Shop.initAcademicShop(user)
+            except:
+                raise
+
+            Shop.initAcademicShop(user)
 
             print "Account for %s successfully created" % user.email
     admin_users = User.query.filter_by(is_admin=True).all()

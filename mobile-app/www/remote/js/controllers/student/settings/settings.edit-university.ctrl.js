@@ -15,7 +15,7 @@ angular.module('uguru.student.controllers')
   	$ionicModal, $cordovaKeyboard, $ionicViewSwitcher) {
     $scope.editMode = false;
 	$scope.progress_active = false;
-
+  alert('sup');
 
 	$scope.goBack = function() {
 
