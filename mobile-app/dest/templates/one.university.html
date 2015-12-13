@@ -1,15 +1,126 @@
-<section class='bg-smoke flex-wrap-center full-xy txt-charcoal'>
-
-  <h1 class='full-x'>{{university.name}}</h1>
-  <h4>{{university.city}}, {{university.state}}</h4>
-
-  <ul class='ugrid-5 flex-wrap-center bg-shamrock txt-charcoal'>
-    <img src='{{university.svg_url}}'/>
-    <li class='p20xy' ng-repeat='course in university.popular_courses.slice(0, 25)'>
-      {{course.short_name}} <br>
-      {{course.full_name}}
-      {{course.gurus}}
-    </li>
-  </ul>
-
-</section>
+<main id="discover" ng-controller="CoursesController">
+	<header>
+        <div id="discover-banner" style="background-image: url({{university.banner_url}});"></div>
+        <div id="discover-banner-color" style="background-color: {{university.school_color_one}};"></div>
+		<h1>Discover {{university.short_name}}</h1>
+        <div id="discover-search">
+            <div id="discover-search-color" style="background-color: {{university.school_color_one}};"></div>
+            <form>
+    			<div class="input-field">
+    				<i class="material-icons prefix">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                        </svg>
+                    </i>
+    				<input id='discover-input' name='discover-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-disabled="!courses || !courses.length"
+    				ng-model="search_text.course" style="border-bottom-color: {{university.school_color_two || 'white'}}!important;">
+    				<label for="discover-input">
+    					<span ng-show='courses.length'>search {{courses.length}} popular {{university.school_casual_name}} courses</span>
+    					<span ng-hide='courses.length'>search popular {{university.school_casual_name}} courses</span>
+    				</label>
+    				<a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
+    					<i class="icon ion-close-circled text-white"></i>
+    				</a>
+    			</div>
+    		</form>
+        </div>
+	</header>
+	<div>
+        <div id="discover-courses">
+            <h1 style="color: {{university.school_color_one}};">Top {{ university.school_casual_name }} Courses</h1>
+            <ul>
+        		<li ng-repeat='course in university.popular_courses.slice(0, 25) | limitTo: 6'>
+        			<h2 style="background-color: {{university.school_color_one}};">{{course.short_name}}</h2>
+                    <ul style="background-color: {{university.school_color_one}};">
+                        <li style="border-color: {{university.school_color_one}};">
+                            <svg viewBox="0 0 100 100">
+                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            </svg>
+                            <span>4.9 Avg</span>
+                        </li>
+                        <li style="border-color: {{university.school_color_one}};">
+                            <svg viewBox="0 0 100 100">
+                            	<path d="M50.0000186,14 C30.1802821,14 14.030417,30.1419103 14.0000373,49.9835145 C13.9861494,59.7785062 17.8513192,69.2750235 24.6069034,76.038418 C31.0239706,82.4616905 39.5485232,86 48.6120989,86 C49.0955707,86 49.5825143,85.9904558 50.072062,85.969632 C70.2181637,85.1444892 86,69.3383625 86,49.9861175 C86,30.142778 69.8510029,14 50.0000186,14 L50.0000186,14 Z M24.18272,74.5721092 C25.26272,65.2447492 30.77792,57.3967492 38.83328,53.6988292 C35.65568,50.7151492 33.65696,46.4911492 33.65696,41.7986692 C33.65696,32.7871492 40.98848,25.4556292 50,25.4556292 C59.01152,25.4556292 66.34304,32.7871492 66.34304,41.7986692 C66.34304,46.4911492 64.34432,50.7151492 61.16672,53.6988292 C69.22208,57.3967492 74.73728,65.2447492 75.81728,74.5721092"></path>
+                            </svg>
+                            <span>86 Gurus</span>
+                        </li>
+                    </ul>
+        		</li>
+        	</ul>
+        </div>
+        <div id="discover-gurus">
+            <h1>Popular Gurus</h1>
+            <ul>
+                <li class="discover-academic">
+                    <h2>Academic</h2>
+                    <ul>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="discover-baking">
+                    <h2>Baking</h2>
+                    <ul>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-baking">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-baking">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-baking">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="discover-photography">
+                    <h2>Photography</h2>
+                    <ul>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-photography">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-photography">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pf-card-mini pf-card-mini-photography">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>

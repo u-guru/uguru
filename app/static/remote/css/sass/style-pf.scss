@@ -950,6 +950,11 @@
 	.pf-checklist {
 		@include flex;
 		@include flex-wrap;
+		-webkit-align-items: flex-start;
+		align-items: flex-start;
+		-webkit-align-content: flex-start;
+		align-content: flex-start;
+		position: relative;
 		height: calc(100% / 3 * 2 - 64px);
 		overflow: auto;
 		padding: 7.5px;
@@ -975,13 +980,63 @@
 				width: 100%;
 				height: 100%;
 			}
-			div {
+			.pf-check-container {
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
 				position: relative;
 				background: $charcoal;
 				height: 100%;
+				.guru-popup {
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 101;
+					width: 100%;
+					max-width: none;
+					height: 100%;
+					padding: 0;
+					.button-group {
+						@include flex;
+						@include flex-center;
+						padding: 7.5px;
+						button {
+							margin: 7.5px;
+							border-radius: 2px!important;
+							width: 100px;
+							background: $shamrock;
+							&:hover, &:focus {
+								background: lighten($shamrock, 10%);
+							}
+							&:active, &.activated {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-cancel {
+								background: lighten($slate, 30%)!important;
+								&:hover, &:focus {
+									background: lighten($slate, 40%)!important;
+								}
+								&:active, &.activated {
+									background: lighten($slate, 20%)!important;
+								}
+							}
+						}
+					}
+					> div {
+						@include flex;
+						@include flex-center;
+						height: 100%;
+						background: rgba($charcoal,.95);
+						border-radius: 0;
+						div {
+							h2 {
+								font-size: 20px;
+								font-weight: 600;
+								text-align: center;
+							}
+						}
+					}
+				}
 				.pf-checklist-item-bg {
 					@include flex;
 					@include flex-center;
@@ -1026,7 +1081,6 @@
 					}
 					&.pf-remove {
 						background: white;
-						z-index:1000;
 						svg {
 							@include transition(.15s ease-in-out);
 							position: absolute;
@@ -1130,9 +1184,9 @@
 			.pf-textarea-container {
 				background: none;
 				width: 100%;
-				margin-top: 10px;
 				font-size: 18px;
 				.pf-header-desc {
+					margin-top: 10px;
 					width: 100%;
 					height: auto;
 					padding: 10px 15px;
@@ -1161,6 +1215,7 @@
 			}
 		}
 		.pf-checklist-add {
+			height: 50%!important;
 			a {
 				@include flex;
 				@include flex-wrap;
@@ -1172,6 +1227,7 @@
 				span {
 					background: none!important;
 					font-weight: 600;
+					height: auto!important;
 					svg {
 						@include svg-stroke(white, 3);
 						display: block;
@@ -1199,9 +1255,6 @@
 					}
 				}
 			}
-		}
-		.pf-checklist-full {
-			display: none;
 		}
 	}
 	.pf-tabs {
@@ -1263,7 +1316,74 @@
 		@include flex-wrap;
 		padding: 7.5px!important;
 		li {
+			position: relative;
 			padding: 7.5px;
+			.guru-popup {
+				@include transition(.15s ease-in-out);
+				@include center-x;
+				top: 78px;
+				width: 320px!important;
+				max-width: none!important;
+				&.hide {
+					@include opacity(0);
+					display: block!important;
+					z-index: -10;
+				}
+				&.show {
+					@include opacity(1);
+					z-index: 99;
+				}
+				&:before {
+					@include center-x;
+					content: "";
+					top: -30px;
+					width: 0;
+					height: 0;
+					border: 15px solid transparent;
+					border-bottom-color: rgba(lighten($slate, 20%),.9);
+				}
+				h1 {
+					background: rgba(lighten($slate, 20%),.9);
+					font-size: 20px;
+				}
+				> div {
+					background: rgba(lighten($slate, 20%),.9);
+					div {
+						@include flex;
+						@include flex-center;
+						&.url-pop {
+							@include animation-name(url-pop);
+							@include animation-duration(.3s);
+							@include animation-iteration-count(1);
+						}
+						span {
+							display: block;
+							padding: 5px 3px 5px 10px;
+						}
+						input {
+							width: auto;
+							margin-bottom: 0!important;
+							font-size: 18px;
+						}
+					}
+				}
+				button {
+					position: relative;
+					z-index: 100;
+					&.bg-fb {
+						background: $facebook!important;
+					}
+					&.bg-li {
+						background: $linkedin!important;
+					}
+					&.bg-in {
+						background: $instagram!important;
+					}
+					&.bg-tw {
+						background: $twitter!important;
+					}
+				}
+			}
 			a {
 				@include round;
 				display: block;
@@ -1283,6 +1403,21 @@
 				}
 			}
 		}
+	}
+}
+
+@include keyframes(url-pop) {
+	0% {
+		@include opacity(0);
+		@include translate-y(50%);
+	}
+	90% {
+		@include opacity(1);
+		@include translate-y(-5%);
+	}
+	100% {
+		@include opacity(1);
+		@include translate-y(0);
 	}
 }
 
@@ -2239,7 +2374,7 @@
 				width: 50%;
 				height: 50%;
 				padding: 15px;
-				div {
+				.pf-check-container {
 					.pf-checklist-item-bg {
 						height: calc(100% - 106px);
 						font-size: 28px;
@@ -2251,9 +2386,25 @@
 					height: 256px!important;
 				}
 			}
+			> li:nth-child(odd) {
+				.pf-checklist-full {
+					right: 0;
+				}
+			}
+			> li:nth-child(even) {
+				.pf-checklist-full {
+					left: 0;
+				}
+			}
 			.pf-checklist-full {
-				width: 100%!important;
+				position: absolute;
+				top: 0;
+				width: 200%!important;
+				z-index: 1000;
 				padding: 15px;
+				.pf-edit {
+					background: rgba(lighten($charcoal, 2%),.95);
+				}
 				.pf-item-header {
 					background-color: $charcoal;
 				}
@@ -2605,139 +2756,6 @@
 
 
 
-/* ---------- PROFILE CARDS */
-.pf-card-container {
-	@include flex;
-	@include flex-center;
-	padding: 15px;
-}
-.pf-card {
-	width: 100%;
-	border-radius: 2px;
-	overflow: hidden;
-	background: white;
-	color: $slate;
-	.pf-card-top {
-		position: relative;
-		background: $shamrock;
-		height: 100px;
-		ul {
-			@include flex;
-			@include flex-center-vertical;
-			li {
-				width: 50%;
-				font-size: 14px;
-				font-weight: 600;
-				text-transform: uppercase;
-				&:first-child {
-					padding: 10px 15px;
-					color: white;
-				}
-				&:last-child {
-					@include flex;
-					@include flex-right-center;
-					> span {
-						position: relative;
-						background: white;
-						padding: 10px 15px 10px 0;
-						color: $shamrock;
-						&:before {
-							content: "";
-							position: absolute;
-							top: 0;
-							left: -20px;
-							width: 0;
-							height: 0;
-							border: 20px solid white;
-							border-left-width: 10px!important;
-							border-right-width: 10px!important;
-							border-left-color: transparent;
-						}
-						span {
-							&:after {
-								content: "th";
-							}
-							&[data-rank="1"] {
-								&:after {
-									content: "st";
-								}
-							}
-							&[data-rank="2"] {
-								&:after {
-									content: "nd";
-								}
-							}
-							&[data-rank="3"] {
-								&:after {
-									content: "rd";
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		.user-icon {
-			@include center-x;
-			bottom: -84px;
-			border-width: 5px;
-		}
-	}
-	.pf-card-main {
-		padding: 84px 15px 15px;
-		text-align: center;
-		h1 {
-			padding-top: 5px;
-			font-size: 28px;
-			font-weight: 600;
-			&.verified span svg {
-				margin-left: 8px;
-				margin-top: 6px;
-				width: 24px;
-				height: 24px;
-			}
-		}
-		.pf-school {
-			margin-top: 0;
-			font-size: 20px;
-			font-weight: 400;
-		}
-		.pf-rating {
-			margin: 15px auto 0;
-		}
-		.pf-review-amt {
-			display: block;
-			margin-top: -3px;
-		}
-		.pf-card-thumbs {
-			@include flex;
-			margin: 7.5px -7.5px 0;
-			li {
-				padding: 7.5px 7.5px 0;
-				width: calc(100% / 3);
-				a {
-					display: block;
-					position: relative;
-					span {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						background-color: $shamrock;
-						background-position: center center;
-						background-size: cover;
-					}
-					svg {
-						fill: none!important;
-					}
-				}
-			}
-		}
-	}
-}
-
-
 // CTA
 #desktop-guru-home {
 	.pf-type {
@@ -2757,7 +2775,7 @@
 						text-transform: none!important;
 						&:hover, &:focus {
 							@include opacity(1);
-							background: lighten($shamrock, 20%)!important;
+							background: lighten($shamrock, 10%)!important;
 							color: white!important;
 						}
 						&:active, &.activated {
@@ -2919,7 +2937,7 @@
 					button.save-button, button.bg-campus {
 						background: $cerise!important;
 						&:hover, &:focus {
-							background: lighten($cerise, 20%)!important;
+							background: lighten($cerise, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -2993,7 +3011,7 @@
 					background: $cerise;
 				}
 				&:active {
-					background: lighten($cerise, 20%);
+					background: lighten($cerise, 10%);
 				}
 			}
 			&.tag-selected {
@@ -3009,40 +3027,6 @@
 				background: mix($slate, $cerise, 40%);
 				&:hover, &:focus {
 					background: $cerise;
-				}
-			}
-		}
-	}
-}
-.pf-card-academic {
-	.pf-card-top {
-		background: $cerise;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $cerise;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $cerise;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $cerise;
-					}
 				}
 			}
 		}
@@ -3136,7 +3120,7 @@
 				background: $cerise;
 			}
 			&:active, &.activated {
-				background: lighten($cerise, 20%);
+				background: lighten($cerise, 10%);
 			}
 		}
 		.pf-list-x {
@@ -3151,7 +3135,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $cerise;
+							&:hover, &:focus {
+								background: lighten($cerise, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -3211,7 +3208,7 @@
 					button.save-button, button.bg-campus {
 						background: $moola!important;
 						&:hover, &:focus {
-							background: lighten($moola, 20%)!important;
+							background: lighten($moola, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -3285,7 +3282,7 @@
 					background: $moola;
 				}
 				&:active {
-					background: lighten($moola, 20%);
+					background: lighten($moola, 10%);
 				}
 			}
 			&.tag-selected {
@@ -3301,40 +3298,6 @@
 				background: mix($slate, $moola, 40%);
 				&:hover, &:focus {
 					background: $moola;
-				}
-			}
-		}
-	}
-}
-.pf-card-photo {
-	.pf-card-top {
-		background: $moola;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $moola;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $moola;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $moola;
-					}
 				}
 			}
 		}
@@ -3569,7 +3532,7 @@
 				background: $moola;
 			}
 			&:active, &.activated {
-				background: lighten($moola, 20%);
+				background: lighten($moola, 10%);
 			}
 		}
 		.pf-list-x {
@@ -3584,7 +3547,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $moola;
+							&:hover, &:focus {
+								background: lighten($moola, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -3645,7 +3621,7 @@
 					button.save-button, button.bg-campus {
 						background: $gold!important;
 						&:hover, &:focus {
-							background: lighten($gold, 20%)!important;
+							background: lighten($gold, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -3719,7 +3695,7 @@
 					background: $gold;
 				}
 				&:active {
-					background: lighten($gold, 20%);
+					background: lighten($gold, 10%);
 				}
 			}
 			&.tag-selected {
@@ -3735,40 +3711,6 @@
 				background: mix($slate, $gold, 40%);
 				&:hover, &:focus {
 					background: $gold;
-				}
-			}
-		}
-	}
-}
-.pf-card-baking {
-	.pf-card-top {
-		background: $gold;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $gold;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $gold;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $gold;
-					}
 				}
 			}
 		}
@@ -3862,7 +3804,7 @@
 				background: $gold;
 			}
 			&:active, &.activated {
-				background: lighten($gold, 20%);
+				background: lighten($gold, 10%);
 			}
 		}
 		.pf-list-x {
@@ -3932,7 +3874,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $gold;
+							&:hover, &:focus {
+								background: lighten($gold, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -3992,7 +3947,7 @@
 					button.save-button, button.bg-campus {
 						background: $cobalt!important;
 						&:hover, &:focus {
-							background: lighten($cobalt, 20%)!important;
+							background: lighten($cobalt, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -4008,7 +3963,7 @@
 					button.bg-campus {
 						background: $cobalt!important;
 						&:hover, &:focus {
-							background: lighten($cobalt, 20%)!important;
+							background: lighten($cobalt, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -4075,7 +4030,7 @@
 					background: $cobalt;
 				}
 				&:active {
-					background: lighten($cobalt, 20%);
+					background: lighten($cobalt, 10%);
 				}
 			}
 			&.tag-selected {
@@ -4091,40 +4046,6 @@
 				background: mix($slate, $cobalt, 40%);
 				&:hover, &:focus {
 					background: $cobalt;
-				}
-			}
-		}
-	}
-}
-.pf-card-household {
-	.pf-card-top {
-		background: $cobalt;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $cobalt;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $cobalt;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $cobalt;
-					}
 				}
 			}
 		}
@@ -4218,7 +4139,7 @@
 				background: $cobalt;
 			}
 			&:active, &.activated {
-				background: lighten($cobalt, 20%);
+				background: lighten($cobalt, 10%);
 			}
 		}
 		.pf-list-x {
@@ -4233,7 +4154,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $cobalt;
+							&:hover, &:focus {
+								background: lighten($cobalt, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -4293,7 +4227,7 @@
 					button.save-button, button.bg-campus {
 						background: $auburn!important;
 						&:hover, &:focus {
-							background: lighten($auburn, 20%)!important;
+							background: lighten($auburn, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -4367,7 +4301,7 @@
 					background: $auburn;
 				}
 				&:active {
-					background: lighten($auburn, 20%);
+					background: lighten($auburn, 10%);
 				}
 			}
 			&.tag-selected {
@@ -4383,40 +4317,6 @@
 				background: mix($slate, $auburn, 40%);
 				&:hover, &:focus {
 					background: $auburn;
-				}
-			}
-		}
-	}
-}
-.pf-card-delivery {
-	.pf-card-top {
-		background: $auburn;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $auburn;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $auburn;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $auburn;
-					}
 				}
 			}
 		}
@@ -4510,7 +4410,7 @@
 				background: $auburn;
 			}
 			&:active, &.activated {
-				background: lighten($auburn, 20%);
+				background: lighten($auburn, 10%);
 			}
 		}
 		.pf-list-x {
@@ -4525,7 +4425,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $auburn;
+							&:hover, &:focus {
+								background: lighten($auburn, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -4583,12 +4496,12 @@
 			.pf-shop-desc {
 				#desktop-languages, #experience-modal {
 					button.save-button, button.bg-campus {
-						background: $cerise!important;
+						background: $orange!important;
 						&:hover, &:focus {
-							background: lighten($orange, 20%)!important;
+							background: lighten($orange, 10%)!important;
 						}
 						&:active, &.activated {
-							background: lighten($orange, 20%)!important;
+							background: lighten($slate, 20%)!important;
 						}
 					}
 				}
@@ -4659,7 +4572,7 @@
 					background: $orange;
 				}
 				&:active {
-					background: lighten($orange, 20%);
+					background: lighten($orange, 10%);
 				}
 			}
 			&.tag-selected {
@@ -4675,40 +4588,6 @@
 				background: mix($slate, $orange, 40%);
 				&:hover, &:focus {
 					background: $orange;
-				}
-			}
-		}
-	}
-}
-.pf-card-freelancing {
-	.pf-card-top {
-		background: $orange;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $orange;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $orange;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $orange;
-					}
 				}
 			}
 		}
@@ -4802,7 +4681,7 @@
 				background: $orange;
 			}
 			&:active, &.activated {
-				background: lighten($orange, 20%);
+				background: lighten($orange, 10%);
 			}
 		}
 		.pf-list-x {
@@ -4817,7 +4696,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $orange;
+							&:hover, &:focus {
+								background: lighten($orange, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -4877,7 +4769,7 @@
 					button.save-button, button.bg-campus {
 						background: $eggplant!important;
 						&:hover, &:focus {
-							background: lighten($eggplant, 20%)!important;
+							background: lighten($eggplant, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -4951,7 +4843,7 @@
 					background: $eggplant;
 				}
 				&:active {
-					background: lighten($eggplant, 20%);
+					background: lighten($eggplant, 10%);
 				}
 			}
 			&.tag-selected {
@@ -4967,40 +4859,6 @@
 				background: mix($slate, $eggplant, 40%);
 				&:hover, &:focus {
 					background: $eggplant;
-				}
-			}
-		}
-	}
-}
-.pf-card-athletic {
-	.pf-card-top {
-		background: $eggplant;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $eggplant;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $eggplant;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $eggplant;
-					}
 				}
 			}
 		}
@@ -5094,7 +4952,7 @@
 				background: $eggplant;
 			}
 			&:active, &.activated {
-				background: lighten($eggplant, 20%);
+				background: lighten($eggplant, 10%);
 			}
 		}
 		.pf-list-x {
@@ -5109,7 +4967,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $eggplant;
+							&:hover, &:focus {
+								background: lighten($eggplant, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {
@@ -5169,7 +5040,7 @@
 					button.save-button, button.bg-campus {
 						background: $azure!important;
 						&:hover, &:focus {
-							background: lighten($azure, 20%)!important;
+							background: lighten($azure, 10%)!important;
 						}
 						&:active, &.activated {
 							background: lighten($slate, 20%)!important;
@@ -5243,7 +5114,7 @@
 					background: $azure;
 				}
 				&:active {
-					background: lighten($azure, 20%);
+					background: lighten($azure, 10%);
 				}
 			}
 			&.tag-selected {
@@ -5259,40 +5130,6 @@
 				background: mix($slate, $azure, 40%);
 				&:hover, &:focus {
 					background: $azure;
-				}
-			}
-		}
-	}
-}
-.pf-card-tech {
-	.pf-card-top {
-		background: $azure;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $azure;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $azure;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $azure;
-					}
 				}
 			}
 		}
@@ -5386,7 +5223,7 @@
 				background: $azure;
 			}
 			&:active, &.activated {
-				background: lighten($azure, 20%);
+				background: lighten($azure, 10%);
 			}
 		}
 		.pf-list-x {
@@ -5401,7 +5238,20 @@
 	}
 	.pf-checklist {
 		> li:not(.pf-checklist-full) {
-			div {
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $azure;
+							&:hover, &:focus {
+								background: lighten($azure, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+						}
+					}
+				}
 				.pf-check {
 					&.pf-remove {
 						svg {

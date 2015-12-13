@@ -147,8 +147,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.pricing', {
     url:'/pricing',
-    templateUrl: BASE + 'templates/pricing.html',
-    controller: 'PricingController'
+    templateUrl: BASE + 'templates/pricing.html'
+    // controller: 'PricingController'
   }).
   state('root.apply', {
     url:'/apply',
@@ -436,7 +436,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 
 
-  $urlRouterProvider.otherwise('/' + _startpage);
+  $urlRouterProvider.otherwise('/universities/2307');
 
 
 });

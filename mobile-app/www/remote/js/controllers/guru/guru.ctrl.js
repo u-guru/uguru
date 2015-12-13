@@ -344,7 +344,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.balanceModal = modal;
           });
 
-          $ionicModal.fromTemplateUrl(BASE + 'templates/profile.mobile.modal.html', {
+          $ionicModal.fromTemplateUrl(BASE + 'templates/profile.public.html', {
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
