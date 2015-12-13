@@ -1043,25 +1043,14 @@ if arg == 'init_admin':
                 except:
                     db_session.rollback()
                     raise
-<<<<<<< HEAD
-                Shop.initAcademicShop(user)
+
             except:
                 raise
                 sys.exit()
-=======
-            except:
-                raise
-
             Shop.initAcademicShop(user)
-
->>>>>>> 2304779178c6a619fe0988d2351456b0d2562f3c
             print "Account for %s successfully created" % user.email
-    admin_users = User.query.filter_by(is_admin=True).all()
-    for user in admin_users:
-        if user.email.lower() not in admin_emails:
-            print user.email, 'is not an admin'
-            user.is_admin = False
-            db_session.commit()
+
+
 
 if arg == 'parse_uni':
     from app.lib.wikipedia import *
