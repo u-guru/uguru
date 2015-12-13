@@ -1,91 +1,65 @@
-<style>
-  header {
-    padding:20px;
-  }
-  .pricing-header {
-    font-size:60px !important;
-    font-weight:700;
-    margin:20px 0;
-  }
-  .two-third {
-    min-height:500px;
-  }
-
-  .header-stat {
-    font-size:80px;
-  }
-  ul.ugrid-2 li{
-    margin-top:30px;
-  }
-</style>
-
-<section class='bg-smoke flex-wrap full-xy'>
-  <header class='third bg-charcoal p20xy full-x top-0 flex-wrap-center hide ng-class:{"show":!page.header.state}'>
-    <div class='pricing-header p20pxy txt-smoke center-text text-center full-x'>
-      {{page.header.text}}
-    </div>
-    <ul class='ugrid-2 full-x'>
-      <li class='bg-slate txt-smoke text-center p30xy'>
-        <div class='full-xy bg-slate'>
-          <h1 class='weight-500'>Avg Fees</h1>
-          <div class='header-stat txt-auburn p20xy weight-700'>
-            25%
-          </div>
-        </div>
-      </li>
-      <li class='bg-slate txt-smoke text-center p30xy'>
-        <div class='full-xy bg-slate'>
-          <h1 class='weight-500'>Hourly Average</h1>
-          <div class='header-stat txt-auburn p20xy weight-700'>
-            $60
-          </div>
-        </div>
-      </li>
-    </ul>
-  </header>
-  <header class='third bg-smoke p20xy full-x top-0 flex-wrap-center hide ng-class:{"show":page.header.state === 1}'>
-    <div class='pricing-header p20pxy txt-charcoal center-text text-center full-x'>
-      And got to this....
-    </div>
-    <ul class='ugrid-3 full-x'>
-      <li class='bg-smoke txt-charcoal text-center p30xy'>
-        <div class='full-xy'>
-          <h1 class='weight-500'><span class='weight-800'>Our</span> Fees</h1>
-          <div class='header-stat txt-shamrock p20xy weight-700'>
-            0%
-          </div>
-        </div>
-      </li>
-      <li class='bg-smoke txt-charcoal text-center p30xy'>
-        <div class='full-xy'>
-          <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-          <div class='header-stat txt-shamrock p20xy weight-700'>
-            $14/hr
-          </div>
-          <p class="text-center p20xy"> on avg </p>
-        </div>
-      </li>
-      <li class='bg-smoke txt-charcoal text-center p30xy'>
-        <div class='full-xy'>
-          <h1 class='weight-500'><span class='weight-800'>Our</span> Gurus can charge</h1>
-          <div class='header-stat txt-shamrock p20xy weight-700'>
-            <u><</u>$40
-          </div>
-          <p class="text-center p20xy">$10 - $40. Their choice</p>
-        </div>
-      </li>
-    </ul>
-  </header>
-  <div class='two-third full-x'>
-    <ul>
-      <li ng-repeat='question in questions' class='p30xy'>
-        <h1 class='txt-charcoal weight-800'>
-          {{question.header}}
-        </h1>
-        <p class='txt-slate weight-500'>
-          {{question.body}}
-        </p>
-      </li>
-    </ul>
-  </div>
-</section>
+<main id="pricing">
+	<header>
+		<h1>We looked at other pricing models...</h1>
+		<!-- <ul class="pricing-other">
+			<li>
+				<div>
+					<h3>Avg Fees</h3>
+					<h1>25%</h1>
+				</div>
+			</li>
+			<li>
+				<div>
+					<h3>Hourly Average</h3>
+					<h1>$60</h1>
+				</div>
+			</li>
+		</ul> -->
+        <ul class="pricing-uguru">
+			<li>
+				<div>
+					<h3>Our Fees</h3>
+					<h2>0%</h2>
+                    <span>Our Fees = no fees.</span>
+                    <svg viewBox="0 0 150 200" preserveAspectRatio="none">
+                        <path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+                    </svg>
+				</div>
+			</li>
+			<li>
+				<div>
+					<h3>Our Students Pay</h3>
+					<h2>$14/hr</h2>
+					<span>on average</span>
+                    <svg viewBox="0 0 150 200" preserveAspectRatio="none">
+                        <path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+                    </svg>
+				</div>
+			</li>
+            <li>
+				<div>
+					<h3>Our Gurus Charge</h3>
+					<h2><u>&lsaquo;</u>$40</h2>
+					<span>$10-$40. Their choice.</span>
+                    <svg viewBox="0 0 150 200" preserveAspectRatio="none">
+                        <path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+                    </svg>
+				</div>
+			</li>
+		</ul>
+	</header>
+	<div>
+		<dl>
+			<dt>Tutors can set their own prices.</dt>
+			<dd>Their maximum increases as they build repertoire. Suspendisse rutrum odio mi, et pretium.</dd>
+		</dl>
+        <dl>
+			<dt>Tutors can set their own prices.</dt>
+			<dd>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</dd>
+		</dl>
+        <dl>
+			<dt>Tutors can set their own prices.</dt>
+			<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</dd>
+		</dl>
+	</div>
+</main>
