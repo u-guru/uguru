@@ -436,7 +436,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 
 
-  $urlRouterProvider.otherwise('/' + _startpage);
+  $urlRouterProvider.otherwise('/universities/2307');
 
 
 });

@@ -2756,139 +2756,6 @@
 
 
 
-/* ---------- PROFILE CARDS */
-.pf-card-container {
-	@include flex;
-	@include flex-center;
-	padding: 15px;
-}
-.pf-card {
-	width: 100%;
-	border-radius: 2px;
-	overflow: hidden;
-	background: white;
-	color: $slate;
-	.pf-card-top {
-		position: relative;
-		background: $shamrock;
-		height: 100px;
-		ul {
-			@include flex;
-			@include flex-center-vertical;
-			li {
-				width: 50%;
-				font-size: 14px;
-				font-weight: 600;
-				text-transform: uppercase;
-				&:first-child {
-					padding: 10px 15px;
-					color: white;
-				}
-				&:last-child {
-					@include flex;
-					@include flex-right-center;
-					> span {
-						position: relative;
-						background: white;
-						padding: 10px 15px 10px 0;
-						color: $shamrock;
-						&:before {
-							content: "";
-							position: absolute;
-							top: 0;
-							left: -20px;
-							width: 0;
-							height: 0;
-							border: 20px solid white;
-							border-left-width: 10px!important;
-							border-right-width: 10px!important;
-							border-left-color: transparent;
-						}
-						span {
-							&:after {
-								content: "th";
-							}
-							&[data-rank="1"] {
-								&:after {
-									content: "st";
-								}
-							}
-							&[data-rank="2"] {
-								&:after {
-									content: "nd";
-								}
-							}
-							&[data-rank="3"] {
-								&:after {
-									content: "rd";
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		.user-icon {
-			@include center-x;
-			bottom: -84px;
-			border-width: 5px;
-		}
-	}
-	.pf-card-main {
-		padding: 84px 15px 15px;
-		text-align: center;
-		h1 {
-			padding-top: 5px;
-			font-size: 28px;
-			font-weight: 600;
-			&.verified span svg {
-				margin-left: 8px;
-				margin-top: 6px;
-				width: 24px;
-				height: 24px;
-			}
-		}
-		.pf-school {
-			margin-top: 0;
-			font-size: 20px;
-			font-weight: 400;
-		}
-		.pf-rating {
-			margin: 15px auto 0;
-		}
-		.pf-review-amt {
-			display: block;
-			margin-top: -3px;
-		}
-		.pf-card-thumbs {
-			@include flex;
-			margin: 7.5px -7.5px 0;
-			li {
-				padding: 7.5px 7.5px 0;
-				width: calc(100% / 3);
-				a {
-					display: block;
-					position: relative;
-					span {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						background-color: $shamrock;
-						background-position: center center;
-						background-size: cover;
-					}
-					svg {
-						fill: none!important;
-					}
-				}
-			}
-		}
-	}
-}
-
-
 // CTA
 #desktop-guru-home {
 	.pf-type {
@@ -3165,40 +3032,6 @@
 		}
 	}
 }
-.pf-card-academic {
-	.pf-card-top {
-		background: $cerise;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $cerise;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $cerise;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $cerise;
-					}
-				}
-			}
-		}
-	}
-}
 .pf-type-academic {
 	&.pf-modal {
 		header.third.pf-item-header {
@@ -3465,40 +3298,6 @@
 				background: mix($slate, $moola, 40%);
 				&:hover, &:focus {
 					background: $moola;
-				}
-			}
-		}
-	}
-}
-.pf-card-photo {
-	.pf-card-top {
-		background: $moola;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $moola;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $moola;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $moola;
-					}
 				}
 			}
 		}
@@ -3917,40 +3716,6 @@
 		}
 	}
 }
-.pf-card-baking {
-	.pf-card-top {
-		background: $gold;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $gold;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $gold;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $gold;
-					}
-				}
-			}
-		}
-	}
-}
 .pf-type-baking {
 	&.pf-modal {
 		header.third.pf-item-header {
@@ -4286,40 +4051,6 @@
 		}
 	}
 }
-.pf-card-household {
-	.pf-card-top {
-		background: $cobalt;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $cobalt;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $cobalt;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $cobalt;
-					}
-				}
-			}
-		}
-	}
-}
 .pf-type-household {
 	&.pf-modal {
 		header.third.pf-item-header {
@@ -4586,40 +4317,6 @@
 				background: mix($slate, $auburn, 40%);
 				&:hover, &:focus {
 					background: $auburn;
-				}
-			}
-		}
-	}
-}
-.pf-card-delivery {
-	.pf-card-top {
-		background: $auburn;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $auburn;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $auburn;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $auburn;
-					}
 				}
 			}
 		}
@@ -4896,40 +4593,6 @@
 		}
 	}
 }
-.pf-card-freelancing {
-	.pf-card-top {
-		background: $orange;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $orange;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $orange;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $orange;
-					}
-				}
-			}
-		}
-	}
-}
 .pf-type-freelancing {
 	&.pf-modal {
 		header.third.pf-item-header {
@@ -5201,40 +4864,6 @@
 		}
 	}
 }
-.pf-card-athletic {
-	.pf-card-top {
-		background: $eggplant;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $eggplant;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $eggplant;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $eggplant;
-					}
-				}
-			}
-		}
-	}
-}
 .pf-type-athletic {
 	&.pf-modal {
 		header.third.pf-item-header {
@@ -5501,40 +5130,6 @@
 				background: mix($slate, $azure, 40%);
 				&:hover, &:focus {
 					background: $azure;
-				}
-			}
-		}
-	}
-}
-.pf-card-tech {
-	.pf-card-top {
-		background: $azure;
-		ul {
-			li {
-				&:last-child {
-					> span {
-						color: $azure;
-					}
-				}
-			}
-		}
-	}
-	.pf-card-main {
-		.verified {
-			span {
-				svg {
-					path:first-child {
-						fill: $azure;
-					}
-				}
-			}
-		}
-		.pf-card-thumbs {
-			li {
-				a {
-					span {
-						background-color: $azure;
-					}
 				}
 			}
 		}
