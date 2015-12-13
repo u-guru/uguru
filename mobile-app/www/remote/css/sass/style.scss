@@ -2326,6 +2326,7 @@ section {
 							position: relative;
 							height: calc(100% - 97px);
 							width: 100%;
+							text-align: center!important;
 							#guru-ranking-progress-bar {
 								height: 100%;
 							}
@@ -2342,6 +2343,7 @@ section {
 								@include center-xy;
 								+ svg {
 									display: block!important;
+									margin: 0 auto!important;
 								}
 								#percentile-ranking {
 									position: relative;

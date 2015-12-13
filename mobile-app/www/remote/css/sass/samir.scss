@@ -396,26 +396,14 @@ ul.mobile-cards-container li {
 	h2 {
 		font-size:20px !important;
 	}
-	a.header-nav-back {
-
-			top:12.5px;
-			left:-5px;
-			position:absolute;
-	}
 }
 
 
 body.platform-ios
 #mobile-guru-home
 {
-	height: calc(100% - 20px) !important;
+	height: calc(100% - 20px)!important;
 	margin-top: 20px;
-	a.header-nav-back {
-
-			top:16px;
-			left:-5px;
-			position:absolute;
-	}
 }
 
 

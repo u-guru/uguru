@@ -18,15 +18,15 @@ angular.module('uguru.util.controllers')
       
       var university_id = $stateParams.universityId;
       $scope.university = {};
-    //   LoadingService.showAmbig('Retrieving university data...', 10000);
+      LoadingService.showAmbig('Retrieving university data...', 10000);
       var getPublicUniversityInformation = function() {
       
         var success = function(universityObj) {
           $scope.university = universityObj;
       
-        //   $timeout(function() {
-        //     LoadingService.showSuccess(universityObj.popular_courses.length + ' popular courses found', 2500)
-        //   }, 1500)
+          $timeout(function() {
+            LoadingService.showSuccess(universityObj.popular_courses.length + ' popular courses found', 2500)
+          }, 1500)
           console.log('universityObj', universityObj)
         }
       
