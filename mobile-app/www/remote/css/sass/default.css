@@ -4819,3 +4819,391 @@ input[type=range]:focus::-ms-fill-upper {
 .color-picker .color-picker-bottom.bg-charcoal li:nth-child(9) span {
   background: black;
 }
+
+/* ---------- PROFILE CARDS */
+.pf-card-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.pf-card-mini {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.pf-card-mini .pf-card-mini-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% / 3);
+  background: #69B3A5;
+}
+
+.pf-card-mini .user-icon {
+  position: relative;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+.pf-card-mini.pf-card-mini-delivery .user-icon, .pf-card-mini.pf-card-mini-delivery .pf-card-mini-banner {
+  background-color: #F04F54;
+}
+
+.pf-card-mini.pf-card-mini-freelancing .user-icon, .pf-card-mini.pf-card-mini-freelancing .pf-card-mini-banner {
+  background-color: #E5753C;
+}
+
+.pf-card-mini.pf-card-mini-baking .user-icon, .pf-card-mini.pf-card-mini-baking .pf-card-mini-banner {
+  background-color: #F6C64E;
+}
+
+.pf-card-mini.pf-card-mini-photography .user-icon, .pf-card-mini.pf-card-mini-photography .pf-card-mini-banner {
+  background-color: #81B566;
+}
+
+.pf-card-mini.pf-card-mini-tech .user-icon, .pf-card-mini.pf-card-mini-tech .pf-card-mini-banner {
+  background-color: #55A4B7;
+}
+
+.pf-card-mini.pf-card-mini-household .user-icon, .pf-card-mini.pf-card-mini-household .pf-card-mini-banner {
+  background-color: #7872e3;
+}
+
+.pf-card-mini.pf-card-mini-athletic .user-icon, .pf-card-mini.pf-card-mini-athletic .pf-card-mini-banner {
+  background-color: #9A5BC5;
+}
+
+.pf-card-mini.pf-card-mini-academic .user-icon, .pf-card-mini.pf-card-mini-academic .pf-card-mini-banner {
+  background-color: #e6389b;
+}
+
+.pf-card {
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  background: white;
+  color: #40484B;
+}
+
+.pf-card .pf-card-top {
+  position: relative;
+  background: #69B3A5;
+  height: 100px;
+}
+
+.pf-card .pf-card-top ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.pf-card .pf-card-top ul li {
+  width: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pf-card .pf-card-top ul li:first-child {
+  padding: 10px 15px;
+  color: white;
+}
+
+.pf-card .pf-card-top ul li:last-child {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.pf-card .pf-card-top ul li:last-child > span {
+  position: relative;
+  background: white;
+  padding: 10px 15px 10px 0;
+  color: #69B3A5;
+}
+
+.pf-card .pf-card-top ul li:last-child > span:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border: 20px solid white;
+  border-left-width: 10px !important;
+  border-right-width: 10px !important;
+  border-left-color: transparent;
+}
+
+.pf-card .pf-card-top ul li:last-child > span span:after {
+  content: "th";
+}
+
+.pf-card .pf-card-top ul li:last-child > span span[data-rank="1"]:after {
+  content: "st";
+}
+
+.pf-card .pf-card-top ul li:last-child > span span[data-rank="2"]:after {
+  content: "nd";
+}
+
+.pf-card .pf-card-top ul li:last-child > span span[data-rank="3"]:after {
+  content: "rd";
+}
+
+.pf-card .pf-card-top .user-icon {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: -84px;
+  border-width: 5px;
+}
+
+.pf-card .pf-card-main {
+  padding: 84px 15px 15px;
+  text-align: center;
+}
+
+.pf-card .pf-card-main h1 {
+  padding-top: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.pf-card .pf-card-main h1.verified span svg {
+  margin-left: 8px;
+  margin-top: 6px;
+  width: 24px;
+  height: 24px;
+}
+
+.pf-card .pf-card-main .pf-school {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.pf-card .pf-card-main .pf-rating {
+  margin: 15px auto 0;
+}
+
+.pf-card .pf-card-main .pf-review-amt {
+  display: block;
+  margin-top: -3px;
+}
+
+.pf-card .pf-card-main .pf-card-thumbs {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  margin: 7.5px -7.5px 0;
+}
+
+.pf-card .pf-card-main .pf-card-thumbs li {
+  padding: 7.5px 7.5px 0;
+  width: calc(100% / 3);
+}
+
+.pf-card .pf-card-main .pf-card-thumbs li a {
+  display: block;
+  position: relative;
+}
+
+.pf-card .pf-card-main .pf-card-thumbs li a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #69B3A5;
+  background-position: center center;
+  background-size: cover;
+}
+
+.pf-card .pf-card-main .pf-card-thumbs li a svg {
+  fill: none !important;
+}
+
+.pf-card-academic .pf-card-top {
+  background: #e6389b;
+}
+
+.pf-card-academic .pf-card-top ul li:last-child > span {
+  color: #e6389b;
+}
+
+.pf-card-academic .pf-card-main .verified span svg path:first-child {
+  fill: #e6389b;
+}
+
+.pf-card-academic .pf-card-main .pf-card-thumbs li a span {
+  background-color: #e6389b;
+}
+
+.pf-card-photo .pf-card-top {
+  background: #81B566;
+}
+
+.pf-card-photo .pf-card-top ul li:last-child > span {
+  color: #81B566;
+}
+
+.pf-card-photo .pf-card-main .verified span svg path:first-child {
+  fill: #81B566;
+}
+
+.pf-card-photo .pf-card-main .pf-card-thumbs li a span {
+  background-color: #81B566;
+}
+
+.pf-card-baking .pf-card-top {
+  background: #F6C64E;
+}
+
+.pf-card-baking .pf-card-top ul li:last-child > span {
+  color: #F6C64E;
+}
+
+.pf-card-baking .pf-card-main .verified span svg path:first-child {
+  fill: #F6C64E;
+}
+
+.pf-card-baking .pf-card-main .pf-card-thumbs li a span {
+  background-color: #F6C64E;
+}
+
+.pf-card-household .pf-card-top {
+  background: #7872e3;
+}
+
+.pf-card-household .pf-card-top ul li:last-child > span {
+  color: #7872e3;
+}
+
+.pf-card-household .pf-card-main .verified span svg path:first-child {
+  fill: #7872e3;
+}
+
+.pf-card-household .pf-card-main .pf-card-thumbs li a span {
+  background-color: #7872e3;
+}
+
+.pf-card-delivery .pf-card-top {
+  background: #F04F54;
+}
+
+.pf-card-delivery .pf-card-top ul li:last-child > span {
+  color: #F04F54;
+}
+
+.pf-card-delivery .pf-card-main .verified span svg path:first-child {
+  fill: #F04F54;
+}
+
+.pf-card-delivery .pf-card-main .pf-card-thumbs li a span {
+  background-color: #F04F54;
+}
+
+.pf-card-freelancing .pf-card-top {
+  background: #E5753C;
+}
+
+.pf-card-freelancing .pf-card-top ul li:last-child > span {
+  color: #E5753C;
+}
+
+.pf-card-freelancing .pf-card-main .verified span svg path:first-child {
+  fill: #E5753C;
+}
+
+.pf-card-freelancing .pf-card-main .pf-card-thumbs li a span {
+  background-color: #E5753C;
+}
+
+.pf-card-athletic .pf-card-top {
+  background: #9A5BC5;
+}
+
+.pf-card-athletic .pf-card-top ul li:last-child > span {
+  color: #9A5BC5;
+}
+
+.pf-card-athletic .pf-card-main .verified span svg path:first-child {
+  fill: #9A5BC5;
+}
+
+.pf-card-athletic .pf-card-main .pf-card-thumbs li a span {
+  background-color: #9A5BC5;
+}
+
+.pf-card-tech .pf-card-top {
+  background: #55A4B7;
+}
+
+.pf-card-tech .pf-card-top ul li:last-child > span {
+  color: #55A4B7;
+}
+
+.pf-card-tech .pf-card-main .verified span svg path:first-child {
+  fill: #55A4B7;
+}
+
+.pf-card-tech .pf-card-main .pf-card-thumbs li a span {
+  background-color: #55A4B7;
+}

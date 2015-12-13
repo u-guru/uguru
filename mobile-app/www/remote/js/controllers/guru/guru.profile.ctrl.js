@@ -42,7 +42,7 @@ angular.module('uguru.guru.controllers')
 
 
 
-    $scope.profile = {edit_mode:false, showCredibility:false};
+    $scope.profile = {edit_mode:true, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
     if (!$scope.user.profile_code) {
@@ -53,10 +53,20 @@ angular.module('uguru.guru.controllers')
     $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
 
+    $scope.page = { modals : {}, popups: {} }
+    $scope.page.modals = {
+      experience: {visible:false},
+      language: {visible:false}
+    }
+
+
+
+
 
     $scope.all_currencies = Currency.updateMasterList($scope.user);
-
-    $scope.experience = {name:'samir', years:7, description:"i lvoe teaching this so much"};
+    $timeout(function() {
+      console.log('CURRENCIES', $scope.all_currencies);
+    }, 2500)
 
     $scope.showEditGuruIntro = false;
 
@@ -225,10 +235,11 @@ angular.module('uguru.guru.controllers')
       }, 100)
     }
 
-    $scope.editExperienceDesktopMode = function(experience) {
-      $scope.experience = experience;
-      var modalElem = document.querySelector('#cta-modal-profile-experiences');
-      modalElem.classList.add('show');
+    $scope.editExperienceDesktop = function(experience) {
+      if ($scope.desktopMode) {
+        $scope.activeExperience = experience;
+        $scope.page.modals.experience.visible=true;
+      }
     }
 
     $scope.saveGuruIntroduction = function() {
@@ -610,6 +621,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.updateCommunicationMethod = function(attr_str, bool) {
       $scope.user.updateAttr(attr_str, $scope.user, bool, null, $scope);
+    }
+
+    $scope.updateGuruCurrency = function(currency, bool) {
+      currency.active = bool;
+      $scope.user.updateAttr('update_guru_currency', $scope.user, currency, null, $scope);
     }
 
 

@@ -451,6 +451,26 @@ class User(Base):
 
         return course_ratings
 
+    def removeCurrencyItem(self, currency_id):
+        for currency in user.guru_currencies:
+            if currency.id == currency_id:
+                user.guru_currencies.remove(currency)
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+
+    def addGuruCurrencyItem(self, currency_id):
+        currency = Currency.query.get(currency_id)
+        if currency not in user.guru_currencies:
+            user.guru_currencies.append(currency)
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
     def initAllExternalProfiles(self):
         initial_titles = ['LinkedIn', 'Twitter', 'Instagram', 'Facebook']
         for title in initial_titles:
@@ -2566,6 +2586,17 @@ class Portfolio_Item(Base):
         uselist=False,
         backref="portfolio_items")
 
+
+
+
+    def remove(self):
+        self.archived = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
     def syncPortfolioResources(self, user, resources_json):
         current_resources = self.tags
         current_resource_ids = [resource.id for resource in current_resources if resource.id]
@@ -3118,7 +3149,7 @@ class Currency(Base):
     is_approved = Column(Boolean, default=False)
 
 
-    DEFAULT_CURRENCIES = ['Food', 'Money', 'Coffee', 'Giftcards', 'Kitten Time', 'Meal Points', 'Chipotle', 'Dogecoin', 'Concert Tickets', 'Puppy Time', 'Cookies']
+    DEFAULT_CURRENCIES = ['Food', 'Money', 'Coffee', 'Gift Cards', 'Kitten Time', 'Meal Points', 'Chipotle', 'Dogecoin', 'Concert Tickets', 'Puppy Time', 'Cookies']
 
     @staticmethod
     def init(arr_names):

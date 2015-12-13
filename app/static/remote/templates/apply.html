@@ -57,6 +57,24 @@
   .comment:hover:before {
     content:'';
   }
+  .white-icon-placeholder {
+    background-color:white;
+    border-radius:1000;
+    border: 1px solid white;
+  }
+  .content-subsection h1 {
+    color:white;
+    font-size:16px;
+    text-transform: uppercase;
+    font-size:32px !important;
+    font-weight:700;
+  }
+  .content-subsection p {
+    color:white;
+    font-size:16px;
+    text-transform: lowercase
+    font-weight:300;
+  }
 </style>
 <div style='height:calc(100%) !important; overflow:auto;'>
   <section class='bg-lake flex-center-wrap full-x'>
@@ -72,86 +90,91 @@
       <div class='content-section full-xy bg-lake' id='section-1'>
 
         <ul class='ugrid-3 full-x'>
-          <li class='txt-white text-center p30xy'>
+          <li class='txt-white text-center p30xy content-subsection' ng-repeat='subsection in section.one.attr'>
             <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Fees</h1>
-              <div class='header-stat txt-shamrock p20xy weight-700'>
-                0%
+              <h1 class='weight-400 p10xy'>{{subsection.subheader}}</h1>
+              <p class='weight-700'> {{subsection.body}} </p>
+              <div class='header-stat txt-shamrock p20xy weight-700 flex-center-wrap'>
+                <span class='bg-smoke p20xy white-icon-placeholder'>
+
+                </span>
               </div>
             </div>
           </li>
-          <li class='txt-smoke text-center p30xy'>
-            <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-            </div>
-          </li>
-          <li class='txt-smoke text-center p30xy'>
-            <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-            </div>
-          </li>
-          <li class='txt-smoke text-center p30xy'>
-            <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-            </div>
-          </li>
         </ul>
+      </div>
     </div>
     <div class='content-section full-xy bg-slate' id='section-2'>
-
-        <ul class='ugrid-3 full-x bg-slate'>
-          <li class='txt-white text-center p30xy'>
+      <header class='quarter p20xy full-x top-0 flex-wrap-center relative'>
+      <div class='pricing-header p20pxy txt-white center-text text-center full-x'>
+        {{section.two.header}}
+      </div>
+      <!-- <div class='comment bg-cerise flex-center-wrap'>
+        Baybridge svg + city skyline in the background (find an example to jack!). Would be cool to have it draw out
+      </div> -->
+    </header>
+      <ul class='ugrid-3 full-x'>
+          <li class='txt-white text-center p30xy content-subsection' ng-repeat='subsection in section.two.attr'>
             <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Fees</h1>
-              <div class='header-stat txt-shamrock p20xy weight-700'>
-                0%
+              <h1 class='weight-400 p10xy'>{{subsection.subheader}}</h1>
+              <p class='weight-700'> {{subsection.body}} </p>
+              <div class='header-stat txt-shamrock p20xy weight-700 flex-center-wrap'>
+                <span class='bg-smoke p20xy white-icon-placeholder'>
+
+                </span>
               </div>
             </div>
           </li>
-          <li class='txt-smoke text-center p30xy'>
-            <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-            </div>
-          </li>
-          <li class='txt-smoke text-center p30xy'>
-            <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-            </div>
-          </li>
-          <li class='txt-smoke text-center p30xy'>
-            <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-            </div>
-          </li>
         </ul>
+
     </div>
-    <div class='content-section full-xy bg-slate' id='section-3'>
-
-        <ul class='ugrid-3 full-x bg-slate'>
-          <li class='txt-white text-center p30xy'>
+    <div class='content-section full-xy bg-cerise' id='section-3'>
+      <header class='quarter p20xy full-x top-0 flex-wrap-center relative'>
+      <div class='pricing-header p20pxy txt-white center-text text-center full-x'>
+        {{section.three.header}}
+      </div>
+      <!-- <div class='comment bg-cerise flex-center-wrap'>
+        Baybridge svg + city skyline in the background (find an example to jack!). Would be cool to have it draw out
+      </div> -->
+    </header>
+      <ul class='ugrid-3 full-x'>
+          <li class='txt-white text-center p30xy content-subsection' ng-repeat='subsection in section.three.attr'>
             <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Fees</h1>
-              <div class='header-stat txt-shamrock p20xy weight-700'>
-                0%
+              <h1 class='weight-400 p10xy'>{{subsection.subheader}}</h1>
+              <p class='weight-700'> {{subsection.body}} </p>
+              <div class='header-stat txt-shamrock p20xy weight-700 flex-center-wrap'>
+                <span class='bg-smoke p20xy white-icon-placeholder'>
+
+                </span>
               </div>
             </div>
           </li>
-          <li class='txt-smoke text-center p30xy'>
+      </ul>
+
+    </div>
+    <div class='content-section full-xy bg-shamrock' id='section-4'>
+      <header class='quarter p20xy full-x top-0 flex-wrap-center relative'>
+      <div class='pricing-header p20pxy txt-white center-text text-center full-x'>
+        {{section.four.header}}
+      </div>
+      <!-- <div class='comment bg-cerise flex-center-wrap'>
+        Baybridge svg + city skyline in the background (find an example to jack!). Would be cool to have it draw out
+      </div> -->
+    </header>
+      <ul class='ugrid-3 full-x'>
+          <li class='txt-white text-center p30xy content-subsection' ng-repeat='subsection in section.four.attr'>
             <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
+              <h1 class='weight-400 p10xy'>{{subsection.subheader}}</h1>
+              <p class='weight-700'> {{subsection.body}} </p>
+              <div class='header-stat txt-shamrock p20xy weight-700 flex-center-wrap'>
+                <span class='bg-smoke p20xy white-icon-placeholder'>
+
+                </span>
+              </div>
             </div>
           </li>
-          <li class='txt-smoke text-center p30xy'>
-            <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-            </div>
-          </li>
-          <li class='txt-smoke text-center p30xy'>
-            <div class='full-xy'>
-              <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-            </div>
-          </li>
-        </ul>
+      </ul>
+
     </div>
   </section>
 </div>

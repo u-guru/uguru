@@ -344,7 +344,7 @@ angular.module('uguru.desktop.controllers')
         Category.mapActiveToSubcategories(Category.categories, $scope.user);
         $scope.categories = Category.categories;
       }, 1000)
-      console.log('ayy');
+
       //since this is the same as entering the slidebox
       var universityId = $scope.user.university && $scope.user.university_id || 2307;
       if (DeviceService.isIOSDevice()) {

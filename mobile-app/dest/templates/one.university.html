@@ -1,91 +1,15 @@
-<style>
-  header {
-    padding:20px;
-  }
-  .pricing-header {
-    font-size:60px !important;
-    font-weight:700;
-    margin:20px 0;
-  }
-  .two-third {
-    min-height:500px;
-  }
+<section class='bg-smoke flex-wrap-center full-xy txt-charcoal'>
 
-  .header-stat {
-    font-size:80px;
-  }
-  ul.ugrid-2 li{
-    margin-top:30px;
-  }
-</style>
+  <h1 class='full-x'>{{university.name}}</h1>
+  <h4>{{university.city}}, {{university.state}}</h4>
 
-<section class='bg-smoke flex-wrap full-xy'>
-  <header class='third bg-charcoal p20xy full-x top-0 flex-wrap-center hide ng-class:{"show":!page.header.state}'>
-    <div class='pricing-header p20pxy txt-smoke center-text text-center full-x'>
-      {{page.header.text}}
-    </div>
-    <ul class='ugrid-2 full-x'>
-      <li class='bg-slate txt-smoke text-center p30xy'>
-        <div class='full-xy bg-slate'>
-          <h1 class='weight-500'>Avg Fees</h1>
-          <div class='header-stat txt-auburn p20xy weight-700'>
-            25%
-          </div>
-        </div>
-      </li>
-      <li class='bg-slate txt-smoke text-center p30xy'>
-        <div class='full-xy bg-slate'>
-          <h1 class='weight-500'>Hourly Average</h1>
-          <div class='header-stat txt-auburn p20xy weight-700'>
-            $60
-          </div>
-        </div>
-      </li>
-    </ul>
-  </header>
-  <header class='third bg-smoke p20xy full-x top-0 flex-wrap-center hide ng-class:{"show":page.header.state === 1}'>
-    <div class='pricing-header p20pxy txt-charcoal center-text text-center full-x'>
-      And got to this....
-    </div>
-    <ul class='ugrid-3 full-x'>
-      <li class='bg-smoke txt-charcoal text-center p30xy'>
-        <div class='full-xy'>
-          <h1 class='weight-500'><span class='weight-800'>Our</span> Fees</h1>
-          <div class='header-stat txt-shamrock p20xy weight-700'>
-            0%
-          </div>
-        </div>
-      </li>
-      <li class='bg-smoke txt-charcoal text-center p30xy'>
-        <div class='full-xy'>
-          <h1 class='weight-500'><span class='weight-800'>Our</span> Students Pay</h1>
-          <div class='header-stat txt-shamrock p20xy weight-700'>
-            $14/hr
-          </div>
-          <p class="text-center p20xy"> on avg </p>
-        </div>
-      </li>
-      <li class='bg-smoke txt-charcoal text-center p30xy'>
-        <div class='full-xy'>
-          <h1 class='weight-500'><span class='weight-800'>Our</span> Gurus can charge</h1>
-          <div class='header-stat txt-shamrock p20xy weight-700'>
-            <u><</u>$40
-          </div>
-          <p class="text-center p20xy">$10 - $40. Their choice</p>
-        </div>
-      </li>
-    </ul>
-  </header>
-  <div class='two-third full-x'>
-    <ul>
-      <li ng-repeat='question in questions' class='p30xy'>
-        <h1 class='txt-charcoal weight-800'>
-          {{question.header}}
-        </h1>
-        <p class='txt-slate weight-500'>
-          {{question.body}}
-        </p>
-      </li>
-    </ul>
-  </div>
+  <ul class='ugrid-5 flex-wrap-center bg-shamrock txt-charcoal'>
+    <img src='{{university.svg_url}}'/>
+    <li class='p20xy' ng-repeat='course in university.popular_courses.slice(0, 25)'>
+      {{course.short_name}} <br>
+      {{course.full_name}}
+      {{course.gurus}}
+    </li>
+  </ul>
+
 </section>

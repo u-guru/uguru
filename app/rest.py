@@ -100,6 +100,12 @@ class UniversityListView(restful.Resource):
         prepared_universities = getPreparedUniversitiesObj(University.query.all())
         return prepared_universities, 200
 
+class UniversityDetailedListView(restful.Resource):
+    @marshal_with(AdminUniversityDetailedSerializer)
+    def get(self, _id):
+        university = University.query.get(_id)
+        return university, 200
+
 class UniversityMajorsView(restful.Resource):
     @marshal_with(DepartmentSerializer)
     def get(self, _id):
@@ -805,6 +811,22 @@ class UserOneView(restful.Resource):
                 shop = user.getAcademicShop()
             if course and shop:
                 Portfolio_Item.initAcademicPortfolioItemFromGuruProfile(user, shop, course, pi_json)
+
+        if request.json.get('edit_portfolio_item'):
+            pi_json = pi_json.get('portfolio_item')
+            pi = Portfolio_Item.query.get(int(pi_json.get('id')))
+
+            ## all done in the model
+            pi.updatePortfolioItem(pi_json)
+
+        if request.json.get('remove_portfolio_item'):
+            pi_json = pi_json.get('portfolio_item')
+            pi_id = int(pi_json.get('id'))
+            pi = Portfolio_Item.query.get(pid_id)
+            if pi:
+                pi.remove()
+
+
 
         if request.json.get('add_guru_course'):
             course = request.json.get('course')
@@ -2277,6 +2299,7 @@ class UserNewView(restful.Resource):
 
 
 
+
         guru_courses_json = request.json.get('guru_courses')
         if  guru_courses_json:
             guru_course_ids = [guru_course.get('id') for guru_course in guru_courses_json]
@@ -3580,6 +3603,7 @@ api.add_resource(UserPhoneView, '/api/v1/phone')
 api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(RankingsView, '/api/v1/rankings')
+api.add_resource(UniversityDetailedListView, '/api/v1/universities/<int:_id>')
 api.add_resource(UniversityListView, '/api/v1/universities')
 api.add_resource(CategoryListView, '/api/v1/categories')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments')

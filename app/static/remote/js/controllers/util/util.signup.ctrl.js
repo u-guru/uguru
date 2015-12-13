@@ -629,8 +629,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-
-
     $scope.goToEditUniversity = function() {
       $ionicSideMenuDelegate.toggleRight();
         $timeout(function() {
@@ -1403,7 +1401,7 @@ angular.module('uguru.util.controllers')
           if (mixpanel && mixpanel.register) {
             mixpanel.register($scope.user);
           }
-
+          $scope.$apply();
           LoadingService.showSuccess('Login Successful!', 2500);
           if ($scope.desktopMode)
           {
@@ -1455,7 +1453,7 @@ angular.module('uguru.util.controllers')
           $scope.signupForm.email = '';
           LoadingService.showMsg('Sorry, your account is currently deactivated. Please contact support@uguru.me for a reactivation code.', 2500, function() {
 
-            if ($state.current.name = 'root.desktop-login') {
+            if ($state.current.name === 'root.desktop-login') {
               LoadingService.showAmbig('Redirecting...', 1000);
               $timeout(function() {
                 if ($scope.desktopMode) {
