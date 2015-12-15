@@ -52,6 +52,11 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     matching: []
   };
 
+  if ($state.current.name.indexOf('essay') > -1) {
+    $scope.theme = 'essay';
+    $scope.root.vars.theme = 'essay';
+  }
+
   //only shows back button local
   $scope.showBackButton = false || LOCAL;
   // Measure app load times
