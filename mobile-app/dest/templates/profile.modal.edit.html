@@ -1,9 +1,10 @@
 <div class='pf-type pf-modal pf-edit pf-type-{{user.academic_shop.category.name | lowercase}} bg-slate full-y'>
 	<section>
 		<header class="text-center no-photo-list">
-			<h1>Add an item</h1>
+			<h1 class="hide ng-class:{'show':portfolio_item.visible}">edit {{portfolio_item.course.short_name}}</h1>
+			<h1 class="hide ng-class:{'show':!portfolio_item.visible}">add a course</h1>
 			<div class="header-nav">
-				<a class="header-close cta-modal-close" ng-click="closeEditPortfolioItem()">
+				<a class="header-close" ng-click="closeEditPortfolioItemModal(portfolio_item)">
 					<svg viewBox="0 0 100 100">
 						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 					</svg>
@@ -11,7 +12,7 @@
 			</div>
 		</header>
 		<div class="main onboarding-portfolio-item">
-			<div class="pf-course-check">
+			<div class="pf-course-check" ng-if='false'>
 				<div>
 					<input type="checkbox" name="pf-course-check" checked disabled/>
 					<span>
@@ -23,20 +24,20 @@
 				<label for="pf-course-check">This is a university course</label>
 			</div>
 			<div class='pf-item-search' ng-controller='CoursesController'>
-				<div class='pf-item-selected relative' ng-if="activePortfolioItem.course.id">
-					<h2>{{activePortfolioItem.course.short_name}}</h2>
-					<h1>{{activePortfolioItem.course.department}} {{activePortfolioItem.course.code}} </h1>
+				<div class='pf-item-selected relative' ng-if="portfolio_item.course.id">
+					<!-- <h2>{{portfolio_item.course.short_name}}</h2>
+					<h1>{{portfolio_item.course.department}} {{portfolio_item.course.code}} </h1> -->
 					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
-				<div class="input-field" ng-if="!activePortfolioItem.course.id">
+				<div class="input-field" ng-if="!portfolio_item.course.id">
 					<i class="material-icons prefix">
 	                    <svg viewBox="0 0 100 100" >
 	                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 	                    </svg>
 	                </i>
-					<input type="text" id='course-input-1' ng-disabled='activePortfolioItem.id' name="course-input-1" class="bg-charcoal"
+					<input type="text" id='course-input-1' ng-disabled='portfolio_item.visible' name="course-input-1" class="bg-charcoal"
 		                    fast-matcher
 		                    fast-matcher-source="courses"
 		                    fast-matcher-output="search_text.matching"
@@ -46,15 +47,15 @@
 		                    ng-focus="searchInputFocus = true"
 		                    ng-blur="searchInputBlur()"
 		                    placeholder="" />
-		            <label for="course-input-1" class='ng-class:{"hide": activePortfolioItem.course.id || !courses.length}'>
-						<span class='ng-class:{"hide": activePortfolioItem.course.id}'> search among {{courses.length}} popular courses </span>
-						<span class='ng-class:{"hide": activePortfolioItem.course.id || courses.length}'> search popular courses </span>
+		            <label for="course-input-1" class='ng-class:{"hide": portfolio_item.course.id || !courses.length}'>
+						<span class='ng-class:{"hide": portfolio_item.course.id}'> search among {{courses.length}} popular courses </span>
+						<span class='ng-class:{"hide": portfolio_item.course.id || courses.length}'> search popular courses </span>
 					</label>
-					<a ng-if='!activePortfolioItem.id' class="side-icon desktop-input-close-icon activated hide ng-class:{'show':(searchInputFocus || activePortfolioItem.course.id) && !activePortfolioItem.id}" ng-click="clearInputAndResetCourse(course)" >
+					<a ng-if='!portfolio_item.visible' class="side-icon desktop-input-close-icon activated hide ng-class:{'show':(searchInputFocus || portfolio_item.course.id) && !portfolio_item.visible}" ng-click="clearInputAndResetCourse(course)" >
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
-				<ul class='desktop-card-list hide ng-class:{"show":searchInputFocus && !activePortfolioItem.course.id}' style='z-index:100001'>
+				<ul class='desktop-card-list hide ng-class:{"show":searchInputFocus && !portfolio_item.course.id}' style='z-index:100001'>
 					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id'>
 						<a class="hide ng-class:{'show':course.full_name || course.title}" ng-click='setCourseAndClearInput(course)'>
 							<span>
@@ -66,9 +67,9 @@
 				</ul>
 			</div>
 			<!-- Not needed for shops for now-->
-			<input ng-if='false' class="pf-title-edit input-outline" placeholder="Shop Item Title" ng-model='activePortfolioItem.title' />
+			<input ng-if='false' class="pf-title-edit input-outline" placeholder="Shop Item Title" ng-model='portfolio_item.title' />
 			<!-- -->
-			<textarea class="input-outline" ng-model='activePortfolioItem.description' placeholder="Description"></textarea>
+			<textarea class="input-outline" ng-model='portfolio_item.description' placeholder="Description"></textarea>
 			<div class="pf-tag-edit">
 				<!-- auto-generated tag, not selected -->
 				<input class="chip tag-auto" disabled value="tag" size="2" />
@@ -79,7 +80,7 @@
 				<!-- add a tag -->
 				<input class="chip tag-add" placeholder="+&nbsp;add a tag" size="9" />
 
-				<span class="chip" ng-repeat="tag in activePortfolioItem.tags">+&nbsp;
+				<span class="chip" ng-repeat="tag in portfolio_item.tags">+&nbsp;
 					<input ng-model='tag.name' ng-keyup="$event.keyCode == 13 && onEnterBlurInput($event)" size="{{tag.placeholder.length || tag.name.length}}" placeholder="{{tag.placeholder}}" />
 				</span>
 
@@ -87,7 +88,7 @@
 			<div class="pf-pricing">
 				<h1>My Preferred Price Per Hour</h1>
 				<div class="pf-range">
-					<input type="range" class='full-x' ng-model='activePortfolioItem.hourly_price' name="volume" min="5" max="25" value="{{activePortfolioItem.hourly_price || 15}}">
+					<input type="range" class='full-x' ng-model='portfolio_item.hourly_price' name="volume" min="5" max="25" value="{{portfolio_item.hourly_price || 15}}">
 					<ul class="ugrid-3 price-label">
 						<li>$5</li>
 						<li>$15</li>
@@ -200,6 +201,6 @@
 				</ul>
 			</div>
 		</div>
-		<button ng-click='savePortfolioItem(activePortfolioItem)'>Save</button>
+		<button ng-click='savePortfolioItem(portfolio_item)'>Save</button>
 	</section>
 </div>

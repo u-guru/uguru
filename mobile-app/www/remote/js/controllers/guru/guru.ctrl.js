@@ -37,6 +37,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   };
 
+  $scope.activePortfolioItem = {};
+
   if (!$scope.user.id) {
     $scope.user.profile_url = 'https://www.uguru.me/static/remote/img/avatar.svg';
   }
@@ -99,11 +101,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.showActive = true;
   $ionicSideMenuDelegate.canDragContent(false);
 
-  if ($state.current.name === 'root.guru' && $scope.desktopMode) {
+  if ($state.current.name === 'root.guru' && $scope.desktopMode && $scope.autoRedirects) {
     $state.go('^.guru-home')
   }
 
-  if ($state.current.name === 'root.guru-home' && !$scope.desktopMode) {
+  if ($state.current.name === 'root.guru-home' && !$scope.desktopMode && $scope.autoRedirects) {
     $state.go('^.guru')
   }
 
@@ -145,6 +147,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     ModalService.close(modalName);
   };
 
+
+  $scope.shiftCTAUnderneathPI = function($event) {
+    console.log($event.target);
+  }
 
   $scope.root.vars.guru_mode = true;
   $scope.guru_mode = true;
@@ -320,6 +326,28 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return line;
       }
 
+      $scope.launchEditPortfolioItemModal = function(portfolio_item) {
+        if (portfolio_item) {
+          portfolio_item.visible = true;
+        }
+        $scope.editPortfolioItemModal.show();
+      }
+
+      $scope.closeProfileModal = function() {
+        $scope.profileModal.hide();
+      }
+
+      $scope.$on('modal.shown', function() {
+          if ($scope.editPortfolioItemModal.isShown()) {
+
+            $scope.closeEditPortfolioItemModal = function(desktop_portfolio_item) {
+              $scope.editPortfolioItemModal.hide();
+            }
+
+          }
+
+      })
+
         $scope.initMobileModals = function() {
           console.log('initializing modals..');
           $ionicModal.fromTemplateUrl(BASE + 'templates/referrals.mobile.modal.html', {
@@ -327,6 +355,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             animation: 'slide-in-up'
           }).then(function(modal) {
             $scope.referralsModal = modal;
+          });
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/profile.modal.edit.mobile.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.editPortfolioItemModal = modal;
           });
 
           $ionicModal.fromTemplateUrl(BASE + 'templates/content.mobile.modal.html', {
@@ -344,7 +379,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.balanceModal = modal;
           });
 
-          $ionicModal.fromTemplateUrl(BASE + 'templates/profile.public.html', {
+          $ionicModal.fromTemplateUrl(BASE + 'templates/profile.public.mobile.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
@@ -405,6 +440,28 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 				$state.go('^.become-guru')
 			}
 		}
+
+    $scope.showEditPortfolioItem = function(portfolio_item) {
+
+        if ($scope.desktopMode) {
+            if (portfolio_item) {
+              portfolio_item.visible = true;
+            }
+        } else {
+
+          if (portfolio_item) {
+
+            portfolio_item.visible = true;
+            $scope.portfolio_item = portfolio_item;
+          }
+
+          $scope.launchEditPortfolioItemModal(portfolio_item);
+        }
+
+    }
+
+
+
 
 		$scope.initializeHorizontalProgressBars = function() {
 

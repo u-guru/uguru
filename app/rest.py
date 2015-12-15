@@ -620,8 +620,15 @@ class UserOneView(restful.Resource):
         if 'facetime_friendly' in request.json:
             user.facetime_friendly = request.json.get('facetime_friendly')
 
+        if 'update_external_profile_resource' in request.json:
+
+            resource_type = request.json.get('domain')
+            if resource_type and resource_type in Resource.RECOGNIZED:
+                user.updateRecognizedResource(resource_type)
+            else:
+                user.addNewExternalResource(resource_type)
+
         if 'discoverability' in request.json:
-            print 'ayy'
             user.guru_discoverability = request.json.get('discoverability')
 
         if 'messenger_friendly' in request.json:
@@ -631,6 +638,13 @@ class UserOneView(restful.Resource):
             user.referral_code = request.json.get('referral_code')
 
         if 'profile_code' in request.json:
+            profile_code = request.json.get('profile_code').lower()
+            profile_codes_already = User.query.filter_by(profile_code=profile_code).all()
+            print profile_code
+            print profile_codes_already
+            num_already = len(profile_codes_already)
+            if num_already  and not (num_already == 1 and profile_codes_already[0].id == user.id):
+                return "TAKEN", 401
             user.profile_code = request.json.get('profile_code')
 
         if 'person_friendly' in request.json:
@@ -812,19 +826,24 @@ class UserOneView(restful.Resource):
             if course and shop:
                 Portfolio_Item.initAcademicPortfolioItemFromGuruProfile(user, shop, course, pi_json)
 
-        if request.json.get('edit_portfolio_item'):
-            pi_json = pi_json.get('portfolio_item')
+        if request.json.get('edit_guru_portfolio_item'):
+            pi_json = request.json.get('portfolio_item')
             pi = Portfolio_Item.query.get(int(pi_json.get('id')))
 
+            from pprint import pprint
+            pprint(pi_json)
             ## all done in the model
             pi.updatePortfolioItem(pi_json)
 
-        if request.json.get('remove_portfolio_item'):
-            pi_json = pi_json.get('portfolio_item')
+        if request.json.get('remove_guru_portfolio_item'):
+            pi_json = request.json.get('portfolio_item')
             pi_id = int(pi_json.get('id'))
-            pi = Portfolio_Item.query.get(pid_id)
+            pi = Portfolio_Item.query.get(pi_id)
+            print len(user.portfolio_items), 'before'
             if pi:
                 pi.remove()
+            print pi.archived
+            print len(user.portfolio_items), 'after'
 
 
 

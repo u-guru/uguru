@@ -32,6 +32,11 @@ angular.module('uguru.user', [])
                     }
                 }
                 result = (result / ratings_arr.length)
+                result = {
+                    'float':result,
+                    'int': parseInt(result),
+                    'half': Math.abs(parseInt(result) - result) === 0.5
+                }
                 return result;
     }
 
@@ -72,7 +77,11 @@ angular.module('uguru.user', [])
                     }
                     if (indexPortfolioItem.avg_rating) {
                         academic_shop.portfolio_items[j].rounded_avg_rating = parseInt(indexPortfolioItem.avg_rating);
-                        academic_shop.portfolio_items[j].half_stars = Math.abs(parseInt(indexPortfolioItem.avg_rating) - indexPortfolioItem.avg_rating) === 0.5;
+                        if (Math.abs(academic_shop.portfolio_items[j].rounded_avg_rating - indexPortfolioItem.avg_rating) >= .25) {
+                            academic_shop.portfolio_items[j].half_stars = true;
+                        } else {
+                            academic_shop.portfolio_items[j].half_stars = Math.abs(parseInt(indexPortfolioItem.avg_rating) - indexPortfolioItem.avg_rating) === 0.5;
+                        }
                     }
                 }
                 return academic_shop;
@@ -91,6 +100,40 @@ angular.module('uguru.user', [])
         }
         return referrals
     }
+
+    var parseProfileResources = function(external_profiles) {
+            var resultDict = {};
+            for (var i = 0; i < external_profiles.length; i++) {
+                var indexProfile = external_profiles[i];
+                if (indexProfile.site_url.indexOf('facebook') > -1) {
+                    resultDict.facebook = indexProfile.site_url.replace('facebook.com/', '');
+                }
+                if (indexProfile.site_url.indexOf('twitter') > -1) {
+                    resultDict.instagram = indexProfile.site_url;
+                }
+                if (indexProfile.site_url.indexOf('instagram') > -1) {
+                    resultDict.instagram = indexProfile.site_url;
+                }
+                if (indexProfile.site_url.indexOf('linkedin') > -1) {
+                    resultDict.linkedin = indexProfile.site_url;
+                }
+            }
+
+            if (!resultDict.facebook) {
+                resultDict.facebook = 'your-fb-url';
+            }
+            if (!resultDict.instagram) {
+                resultDict.instagram = 'your-insta-url';
+            }
+            if (!resultDict.twitter) {
+                resultDict.twitter = 'your-twitter-url';
+            }
+            if (!resultDict.linkedin) {
+                resultDict.linkedin = 'your-linkedin-url';
+            }
+
+            return resultDict;
+        }
 
     var parseRelationships = function(relationships) {
         for (var i = 0; i < relationships.length; i++) {
@@ -433,7 +476,8 @@ angular.module('uguru.user', [])
             user.previous_guru_sessions = [];
 
             var guru_ratings = user.guru_ratings;
-            user.guru_avg_rating = calcAverage(guru_ratings, true);
+            user.guru_rating = calcAverage(guru_ratings, true);
+            user.guru_avg_rating = user.guru_rating.float;
 
             if (!user.guru_avg_rating) {
                 user.guru_avg_rating = 0;
@@ -614,6 +658,7 @@ angular.module('uguru.user', [])
         $scope.user.current_hourly = user.current_hourly;
         $scope.user.previous_proposals = user.previous_proposals;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
+        $scope.user.external_re
 
         $scope.user.is_admin = user.is_admin;
         // if (!$scope.user.is_admin) {
@@ -634,6 +679,9 @@ angular.module('uguru.user', [])
         $scope.user.guru_latest_time = user.guru_latest_time;
         $scope.user.hangouts_friendly = user.hangouts_friendly;
         $scope.user.messenger_friendly = user.messenger_friendly;
+        $scope.user.external_profiles = user.external_profiles;
+        $scope.user.external_profiles_dict = parseProfileResources(user.external_profiles)
+
         $scope.user.person_friendly = user.person_friendly;
         $scope.user.phone_friendly = user.phone_friendly;
         $scope.user.person_friendly = user.person_friendly;
@@ -688,7 +736,8 @@ angular.module('uguru.user', [])
         $scope.user.official_guru_score = user.official_guru_score;
         $scope.user.estimated_guru_rank_last_updated = user.estimated_guru_rank_last_updated;
         $scope.user.official_guru_rank_last_updated = user.official_guru_rank_last_updated;
-        $scope.user.guru_avg_rating = Math.round(user.guru_avg_rating * 10) / 10;
+        $scope.user.guru_avg_rating = Math.round(user.guru_avg_rating.float * 10) / 10;
+        $scope.user.guru_rating = user.guru_rating
         $scope.user.student_avg_rating = user.student_avg_rating;
         $scope.user.student_ratings = user.student_ratings;
         $scope.user.guru_ratings = user.guru_ratings;
@@ -860,10 +909,10 @@ angular.module('uguru.user', [])
                   }
               }
 
-              if (arg === 'edit_guru_porfolio_item') {
+              if (arg === 'edit_guru_portfolio_item') {
                   return {
                         portfolio_item: obj,
-                        'edit_guru_porfolio_item': true
+                        'edit_guru_portfolio_item': true
                   }
               }
 
@@ -1155,6 +1204,13 @@ angular.module('uguru.user', [])
               if (arg === 'profile_code') {
                 return {
                     'profile_code': obj
+                }
+              }
+
+              if (arg === 'update_external_profile_resource') {
+                return {
+                    'update_external_profile_resource': true,
+                    'domain': obj
                 }
               }
 

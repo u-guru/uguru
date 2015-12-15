@@ -430,6 +430,11 @@ class User(Base):
             if shop.category.hex_color == 'academic' or shop.category.hex_color == 'Academic':
                 return shop
 
+    def getActiveShop(self, shop_id):
+        for shop in self.guru_shops:
+            if shop.id == shop_id:
+                return shop
+
     def getGuruRatingsForCourse(self, course_id):
         course_ratings = []
         for rating in self.guru_ratings:
@@ -452,9 +457,9 @@ class User(Base):
         return course_ratings
 
     def removeCurrencyItem(self, currency_id):
-        for currency in user.guru_currencies:
+        for currency in self.guru_currencies:
             if currency.id == currency_id:
-                user.guru_currencies.remove(currency)
+                self.guru_currencies.remove(currency)
                 try:
                     db_session.commit()
                 except:
@@ -463,8 +468,8 @@ class User(Base):
 
     def addGuruCurrencyItem(self, currency_id):
         currency = Currency.query.get(currency_id)
-        if currency not in user.guru_currencies:
-            user.guru_currencies.append(currency)
+        if currency not in self.guru_currencies:
+            self.guru_currencies.append(currency)
             try:
                 db_session.commit()
             except:
@@ -476,6 +481,20 @@ class User(Base):
         for title in initial_titles:
             self.initExternalProfileResource(None, title, '%s profile url' % title)
         print len(self.external_profiles), 'external profiles initiated'
+
+    def addNewExternalResource(self, domain):
+        self.initExternalProfileResource(domain, domain, "")
+
+    def updateExternalResource(self, url):
+        for title in Resource.RECOGNIZED:
+            if title.lower() in url.lower():
+                self.site_url == url
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+                break
 
     def initExternalProfileResource(self, url, title, description):
         r = Resource()
@@ -1499,6 +1518,8 @@ class Position(Base):
 
 class Resource(Base):
     __tablename__ = 'resource'
+
+    RECOGNIZED = ['facebook', 'linked', 'instagram', 'twitter']
 
     id = Column(Integer, primary_key=True)
 
@@ -2554,7 +2575,7 @@ class Portfolio_Item(Base):
     description = Column(String)
     title = Column(String)
 
-    avg_rating = Column(Float)
+    avg_rating = Column(Float, default = 0)
 
     hourly_price = Column(Float, default = 10)
     max_hourly_price = Column(Float, default = 0)
@@ -2677,6 +2698,9 @@ class Portfolio_Item(Base):
         self.unit_price = options.get('unit_price')
         self.hourly_price = options.get('hourly_price')
         self.max_hourly_price = options.get('max_hourly_price')
+
+        if not self.avg_rating:
+            self.avg_rating = 0
 
         if options.get('tags'):
             self.syncPortfolioTags(user, options.get('tags'))

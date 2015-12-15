@@ -41,18 +41,15 @@ angular.module('uguru.rest')
     }
 
     function initEmpty(shop_type) {
-        if (!shop_type) {
-            var setup;
-        }
 
         return {
             course: {},
             shop_category: Category.getAcademic(),
             shop_id: Category.getAcademic().id,
-            title: 'Test',
+            title: '',
             hourly_price: 10,
             max_hourly_price: 25,
-            description: "I really enjoy this --- its just wayyy to much fun yo",
+            description: "",
             avg_rating: 0,
             unit_price: 5,
             max_unit_price:10,

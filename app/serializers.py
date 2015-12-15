@@ -358,6 +358,7 @@ portfolio_item_fields['subcategory_fields'] = fields.List(fields.Nested(subcateg
 portfolio_item_fields['description'] = fields.String(attribute='description')
 portfolio_item_fields['title'] = fields.String(attribute='title')
 portfolio_item_fields['id'] = fields.Integer(attribute='id')
+portfolio_item_fields['archived'] = fields.Boolean(attribute='archived')
 portfolio_item_fields['avg_rating'] = fields.Float(attribute='avg_rating')
 portfolio_item_fields['hourly_price'] = fields.Float(attribute='hourly_price')
 portfolio_item_fields['max_hourly_price'] = fields.Float(attribute='max_hourly_price')
@@ -618,7 +619,6 @@ AdminUniversityDetailedSerializer = {
     'state': fields.String,
     'population': fields.Integer,
     'num_emails': fields.Integer,
-    'num_gurus': fields.Integer,
     'departments_sanitized': fields.Boolean,
     'courses_sanitized': fields.Boolean,
     'school_color_one': fields.String,

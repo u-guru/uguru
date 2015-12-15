@@ -2326,9 +2326,8 @@
     .pf-type .pf-checklist .pf-checklist-full {
       position: absolute;
       top: 0;
-      width: 200% !important;
-      z-index: 1000;
-      padding: 15px; }
+      width: 100% !important;
+      z-index: 1000; }
       .pf-type .pf-checklist .pf-checklist-full .pf-edit {
         background: rgba(48, 55, 58, 0.95); }
       .pf-type .pf-checklist .pf-checklist-full .pf-item-header {

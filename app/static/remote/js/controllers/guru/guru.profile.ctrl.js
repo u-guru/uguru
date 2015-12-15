@@ -70,16 +70,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.showEditGuruIntro = false;
 
-    $scope.bindPortfolioItemObjToScope = function() {
-      $scope.activePortfolioItem = PortfolioItem.initEmpty();
-      console.log($scope.activePortfolioItem);
-      PortfolioItem.linkEditModal('#cta-modal-profile-pi-item');
-    }
-
-    $timeout(function() {
-      $scope.bindPortfolioItemObjToScope();
-    }, 3000)
-
 
     $scope.setCourseAndClearInput = function(course) {
       $scope.activePortfolioItem.course = {
@@ -105,23 +95,68 @@ angular.module('uguru.guru.controllers')
     }
 
 
+
+
     //to add
-    $scope.editPortfolioItem = function(portfolio_item) {
-      $scope.activePortfolioItem = portfolio_item;
-      var portfolioItemModal = document.querySelector('#cta-modal-profile-pi-item');
-      if (portfolioItemModal) {
-        portfolioItemModal.classList.add('show');
+    $scope.addPortfolioItem = function() {
+      $scope.activePortfolioItem = PortfolioItem.initEmpty();
+      if ($scope.desktopMode) {
+        $scope.activePortfolioItem.visible = true;
+        var portfolioItemModal = document.querySelector('#cta-modal-profile-pi-item');
+        // if (portfolioItemModal) {
+        //   LoadingService.showAmbig(null, 1000, function() {
+        //      portfolioItemModal.classList.add('show');
+        //   });
+        // }
+
+      } else {
+        $scope.launchEditPortfolioItemModal()
       }
     }
+
+    function shiftPortfolioItemEditModalToNextRow(elem, successFunction) {
+      var elemRect = elem.getBoundingClientRect();
+      console.log(elemRect, elem.offsetTop);
+      var totalVerticalOffsetFromTop = elemRect.height + elemRect.top;
+      console.log(totalVerticalOffsetFromTop + 15);
+      elem.style.top = totalVerticalOffsetFromTop + 30 + 'px';
+    }
+
+    $scope.closeEditPortfolioItemModal = function(portfolio_item) {
+
+        //user is closing an active porftolio addition
+        //todo -- add warning
+        console.log('this is being called')
+        if (!$scope.desktopMode) {
+          $scope.activePortfolioItem.visible = false;
+          $scope.editPortfolioItemModal.hide();
+        } else {
+          console.log('this is being called 2 ')
+          if (!portfolio_item  || !portfolio_item.visible) {
+            console.log('this is being called 3')
+            $scope.activePortfolioItem.visible = null;
+
+          } else {
+            portfolio_item.visible = null;
+          }
+
+        }
+
+      }
 
     //highlight mode
     //resources
     //
 
-    $scope.closeEditPortfolioItem = function() {
-      var portfolioItemModal = document.querySelector('#cta-modal-profile-pi-item');
-      if (portfolioItemModal) {
-        portfolioItemModal.classList.remove('show');
+    $scope.closeAddPortfolioItem = function() {
+      if ($scope.desktopMode) {
+        var portfolioItemModal = document.querySelector('#cta-modal-profile-pi-item');
+        $scope.activePortfolioItem = {};
+        if (portfolioItemModal) {
+          portfolioItemModal.classList.remove('show');
+        }
+      } else {
+        $scope.profileModal.hide();
       }
     }
 
@@ -130,8 +165,26 @@ angular.module('uguru.guru.controllers')
       if (!PortfolioItem.validateFields(portfolio_item)) {
         return;
       }
-      LoadingService.showAmbig('Saving...', 10000);
-      $scope.user.updateAttr('add_guru_portfolio_item', $scope.user, portfolio_item, null, $scope);
+      console.log(portfolio_item);
+      LoadingService.showAmbig(null, 10000)
+      var successFunction = function() {
+        LoadingService.hide();
+        LoadingService.showSuccess('Saved!', 750);
+      }
+      $scope.user.updateAttr('edit_guru_portfolio_item', $scope.user, portfolio_item, successFunction, $scope);
+    }
+
+    $scope.removePortfolioItem = function(portfolio_item) {
+      LoadingService.showAmbig('Removing...', 10000);
+
+
+      var successFunction = function() {
+          LoadingService.hide();
+          $timeout(function() {
+            LoadingService.showSuccess(portfolio_item.course.short_name + ' successfully removed!', 2500 );
+          }, 100)
+      }
+      $scope.user.updateAttr('remove_guru_portfolio_item', $scope.user, portfolio_item, successFunction, $scope);
     }
 
     $scope.toggleDesktopIntroduction = function() {
@@ -253,7 +306,20 @@ angular.module('uguru.guru.controllers')
       }, 500);
     }
 
-
+    $scope.updateExternalResource = function(site, url) {
+      $scope.pagePopups.facebook = false;
+      $scope.pagePopups.linkedin = false;
+      $scope.pagePopups.twitter = false;
+      $scope.pagePopups.instagram = false;
+      LoadingService.showAmbig(null, 10000);
+      var successFunction = function(external_user) {
+        LoadingService.hide();
+        $timeout(function() {
+          LoadingService.showSuccess('Saved!', 750);
+        }, 100)
+      }
+      $scope.user.updateAttr('update_external_profile_resource', $scope.user, site, successFunction, $scope)
+    }
 
     //TODO --> send error to analytics if no callback
     $scope.saveGuruIntroductionBehindScenes = function() {
@@ -265,15 +331,25 @@ angular.module('uguru.guru.controllers')
       $event.target.blur();
     }
 
-    $scope.saveProfileCode = function() {
-      $scope.refreshTipsAndRanking($scope.user);
+
+
+    $scope.saveProfileCode = function(cb) {
+
       function failureFunction(err) {
-        if (err && err.status && err.status === 409) {
+        if (err && err.status && err.status === 401) {
           LoadingService.showMsg("We're sorry, the profile code " + $scope.user.profile_code  + " is already taken.")
+          return;
         }
       }
-      $scope.user.updateAttr('profile_code', $scope.user, $scope.user.profile_code, null, $scope, failureFunction);
+
+      function successFunction() {
+        // LoadingService.showSuccess('Saved', 1000)
+        cb && cb();
+      }
+
+      $scope.user.updateAttr('profile_code', $scope.user, $scope.user.profile_code, successFunction, $scope, failureFunction);
       $scope.profile.intro_edit_mode = false;
+
     }
 
     $scope.removeMajor = function(major, index) {
@@ -347,6 +423,29 @@ angular.module('uguru.guru.controllers')
       fb: false,
       twitter: false,
       instagram: false
+    }
+
+    $scope.showPagePopup = function(type_string) {
+      var popupKeys = Object.keys($scope.pagePopups);
+      for (var i = 0; i < popupKeys.length; i++) {
+        $scope.pagePopups[popupKeys[i]] = false
+
+      }
+      if (type_string === 'linkedin') {
+        $scope.pagePopups.linkedin = true;
+      }
+      if (type_string === 'facebook') {
+        $scope.pagePopups.facebook = true;
+      }
+      if (type_string === 'twitter') {
+        $scope.pagePopups.twitter = true;
+      }
+      if (type_string === 'custom') {
+        $scope.pagePopups.custom = true;
+      }
+      if (type_string === 'instagram') {
+        $scope.pagePopups.instagram = true;
+      }
     }
 
     $scope.saveLinkedInUrl = function(url) {
@@ -744,12 +843,16 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.saveGuruProfile = function() {
-      $scope.success.show(0, 1500, 'Profile Successfully Saved');
-      $scope.root.vars.profile.edit_mode = !$scope.root.vars.profile.edit_mode;
-      $timeout(function() {
-        $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
-        $scope.profile.edit_mode = false;
-      }, 500)
+      var callbackFunction = function() {
+        $scope.success.show(0, 1500, 'Profile Successfully Saved');
+        $scope.root.vars.profile.edit_mode = !$scope.root.vars.profile.edit_mode;
+        $timeout(function() {
+          $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
+          $scope.profile.edit_mode = false;
+        }, 500)
+      }
+
+      $scope.saveProfileCode(callbackFunction);
     }
 
     $scope.showActionSheetTranscriptPhoto = function() {
