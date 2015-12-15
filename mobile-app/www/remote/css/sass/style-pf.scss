@@ -1193,7 +1193,7 @@
 		}
 		.pf-checklist-add {
 			height: 250px!important;
-			a {
+			.pf-check-container > a {
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
@@ -3223,7 +3223,7 @@
 			}
 		}
 		.pf-checklist-add {
-			a {
+			.pf-check-container > a {
 				background: $cerise;
 				&:hover, &:focus {
 					background: white;
@@ -3636,7 +3636,7 @@
 			}
 		}
 		.pf-checklist-add {
-			a {
+			.pf-check-container > a {
 				background: $moola;
 				&:hover, &:focus {
 					background: white;
@@ -3962,7 +3962,7 @@
 			}
 		}
 		.pf-checklist-add {
-			a {
+			.pf-check-container > a {
 				background: $gold;
 				&:hover, &:focus {
 					background: white;
@@ -4242,7 +4242,7 @@
 			}
 		}
 		.pf-checklist-add {
-			a {
+			.pf-check-container > a {
 				background: $cobalt;
 				&:hover, &:focus {
 					background: white;
@@ -4513,7 +4513,7 @@
 			}
 		}
 		.pf-checklist-add {
-			a {
+			.pf-check-container > a {
 				background: $auburn;
 				&:hover, &:focus {
 					background: white;
@@ -4784,7 +4784,7 @@
 			}
 		}
 		.pf-checklist-add {
-			a {
+			.pf-check-container > a {
 				background: $orange;
 				&:hover, &:focus {
 					background: white;
@@ -5055,7 +5055,7 @@
 			}
 		}
 		.pf-checklist-add {
-			a {
+			.pf-check-container > a {
 				background: $eggplant;
 				&:hover, &:focus {
 					background: white;
@@ -5326,7 +5326,7 @@
 			}
 		}
 		.pf-checklist-add {
-			a {
+			.pf-check-container > a {
 				background: $azure;
 				&:hover, &:focus {
 					background: white;
