@@ -106,6 +106,12 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'AddUniversityCtrl'
   }).
 
+  state('root.timeline', {
+        url: '/timeline',
+        templateUrl: BASE + 'templates/timeline.html',
+        controller: 'TimelineController'
+  }).
+
   state('privacy', {
         url:'/privacy',
         templateUrl: BASE + 'templates/privacy-terms.modal.html'

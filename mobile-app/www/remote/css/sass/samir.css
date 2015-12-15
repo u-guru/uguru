@@ -475,9 +475,6 @@ body.platform-ios
   height: 100px;
 }
 
-#cta-modal-profile-pi-item {
-  top: 60px;
-  z-index: 1000;
-  height: calc(100% - 140px);
-  width: 66% !important;
+.min-height-modal-desktop {
+  min-height: 800px;
 }
