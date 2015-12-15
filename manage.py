@@ -2124,8 +2124,8 @@ if arg == 'print_uw_data':
     print "University Name, Website, College Application Submission Date, Source"
     print "UC Berkeley, www.berkeley.edu, 11/30/2015, http://admissions.berkeley.edu/datesdeadlines"
     for u in University.query.all():
-        if u.us_news_ranking and u.us_news_ranking > 220 and ((u.website and len(u.website) < 40) or not u.website):
-            print "%s, %s, , " % (u.name, u.website)
+        if u.us_news_ranking and u.us_news_ranking < 220 and ((u.website and len(u.website) < 50) or not u.website):
+            print "%s, %s, %s, , " % (u.us_news_ranking, u.name, u.website)
 
 
 if arg == 'variations_courses':

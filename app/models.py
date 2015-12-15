@@ -488,6 +488,7 @@ class User(Base):
     def updateExternalResource(self, url):
         for title in Resource.RECOGNIZED:
             if title.lower() in url.lower():
+
                 self.site_url == url
                 try:
                     db_session.commit()
