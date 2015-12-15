@@ -1,0 +1,437 @@
+/* ---------- DISCOVER */
+#discover {
+  background: #F1F1F1;
+  color: #40484B; }
+  #discover header {
+    position: relative;
+    height: 40%;
+    background: #40484B; }
+    #discover header #discover-banner {
+      filter: alpha(opacity=40);
+      opacity: 0.4;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-size: cover; }
+    #discover header #discover-banner-color {
+      filter: alpha(opacity=20);
+      opacity: 0.2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    #discover header h1 {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      height: calc(100% - 102px);
+      color: white;
+      font-size: 60px;
+      font-weight: 700;
+      text-align: center;
+      text-transform: none; }
+    #discover header #discover-search {
+      position: relative;
+      padding: 15px; }
+      #discover header #discover-search .input-field {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0; }
+        #discover header #discover-search .input-field .prefix {
+          top: 24px;
+          padding-right: 12px; }
+          #discover header #discover-search .input-field .prefix svg {
+            fill: none;
+            stroke: white;
+            stroke-width: 4px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+        #discover header #discover-search .input-field input {
+          height: 72px;
+          margin-bottom: 0; }
+          #discover header #discover-search .input-field input::-webkit-input-placeholder {
+            color: white; }
+          #discover header #discover-search .input-field input:-moz-placeholder {
+            color: white; }
+          #discover header #discover-search .input-field input::-moz-placeholder {
+            color: white; }
+          #discover header #discover-search .input-field input:-ms-input-placeholder {
+            color: white; }
+        #discover header #discover-search .input-field input, #discover header #discover-search .input-field label {
+          color: white !important;
+          font-size: 32px !important; }
+      #discover header #discover-search #discover-search-color {
+        filter: alpha(opacity=70);
+        opacity: 0.7;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+  #discover > div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    height: 60%; }
+    #discover > div > div {
+      padding: 15px;
+      height: 100%;
+      text-align: center; }
+      #discover > div > div h1 {
+        padding: 15px;
+        font-size: 32px;
+        font-weight: 700;
+        text-transform: uppercase; }
+    #discover > div #discover-courses {
+      width: calc(100% / 3 * 2);
+      padding-right: 7.5px; }
+      #discover > div #discover-courses > ul {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        margin: -7.5px;
+        height: calc(100% - 53px); }
+        #discover > div #discover-courses > ul > li {
+          width: calc(100% / 3);
+          height: 50%;
+          padding: 7.5px; }
+          #discover > div #discover-courses > ul > li h2 {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            height: 60%;
+            background: #40484B;
+            font-size: 36px;
+            font-weight: 600;
+            color: white; }
+          #discover > div #discover-courses > ul > li ul {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            height: 40%;
+            padding: 1px; }
+            #discover > div #discover-courses > ul > li ul li {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              height: 100%;
+              width: 50%;
+              background: rgba(255, 255, 255, 0.2);
+              border: 1px solid #40484B;
+              color: white;
+              font-size: 18px;
+              font-weight: 400; }
+              #discover > div #discover-courses > ul > li ul li svg {
+                fill: none;
+                stroke: white;
+                stroke-width: 4px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                margin-top: 5px;
+                display: block;
+                width: 100%;
+                height: 30px; }
+              #discover > div #discover-courses > ul > li ul li span {
+                display: block;
+                margin-top: -10px; }
+    #discover > div #discover-gurus {
+      width: calc(100% / 3);
+      padding-left: 7.5px; }
+      #discover > div #discover-gurus h1 {
+        background: #40484B;
+        color: white; }
+      #discover > div #discover-gurus > ul {
+        height: calc(100% - 68px); }
+        #discover > div #discover-gurus > ul > li {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          width: 100%;
+          height: calc(100% / 3); }
+          #discover > div #discover-gurus > ul > li.discover-delivery {
+            background: #f08083; }
+          #discover > div #discover-gurus > ul > li.discover-freelancing {
+            background: #eaa784; }
+          #discover > div #discover-gurus > ul > li.discover-baking {
+            background: #f5d37f; }
+          #discover > div #discover-gurus > ul > li.discover-photography {
+            background: #aecd9e; }
+          #discover > div #discover-gurus > ul > li.discover-tech {
+            background: #93c3ce; }
+          #discover > div #discover-gurus > ul > li.discover-household {
+            background: #9c98e7; }
+          #discover > div #discover-gurus > ul > li.discover-athletic {
+            background: #b488d2; }
+          #discover > div #discover-gurus > ul > li.discover-academic {
+            background: #ea82bd; }
+          #discover > div #discover-gurus > ul > li h2 {
+            padding-top: 5px;
+            width: 100%;
+            color: white;
+            font-size: 28px;
+            font-weight: 700; }
+          #discover > div #discover-gurus > ul > li ul {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            padding: 7.5px; }
+            #discover > div #discover-gurus > ul > li ul li {
+              padding: 7.5px;
+              width: calc(100% / 3); }
+
+/* ---------- PRICING */
+#pricing {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: #F1F1F1; }
+  #pricing header {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: 40%;
+    background: #69B3A5; }
+    #pricing header > h1 {
+      width: 100%;
+      padding: 30px;
+      font-size: 48px;
+      font-weight: 900;
+      color: white;
+      text-align: center;
+      text-transform: none; }
+    #pricing header .pricing-other {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 auto;
+      padding: 15px 0;
+      width: 100%;
+      max-width: 800px;
+      background: #d4ac54; }
+      #pricing header .pricing-other li {
+        -webkit-transform: translateY(25%);
+        -moz-transform: translateY(25%);
+        -ms-transform: translateY(25%);
+        -o-transform: translateY(25%);
+        transform: translateY(25%);
+        padding: 0 50px; }
+        #pricing header .pricing-other li div {
+          text-align: center; }
+          #pricing header .pricing-other li div h3 {
+            font-size: 36px;
+            font-weight: 700; }
+          #pricing header .pricing-other li div h1 {
+            margin-top: 0 !important;
+            padding: 0 !important;
+            font-size: 128px;
+            font-weight: 900; }
+      #pricing header .pricing-other:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -80px;
+        left: 0;
+        width: calc(100% - 80px);
+        height: 80px;
+        background: #d4ac54; }
+      #pricing header .pricing-other:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -80px;
+        right: 0;
+        width: 0;
+        height: 0;
+        border: 40px solid transparent;
+        border-top-color: #876722;
+        border-left-color: #876722; }
+    #pricing header .pricing-uguru {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      width: 815px;
+      margin: 0 auto;
+      color: #40484B;
+      text-align: center; }
+      #pricing header .pricing-uguru li {
+        position: relative;
+        width: calc(100% / 3);
+        padding: 0 7.5px; }
+        #pricing header .pricing-uguru li div {
+          overflow: hidden;
+          position: relative;
+          padding: 15px 0;
+          background: #F1F1F1;
+          border: 10px solid #40484B; }
+          #pricing header .pricing-uguru li div h3 {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase; }
+          #pricing header .pricing-uguru li div h2 {
+            border-radius: 1000px;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            margin: 15px auto;
+            width: 144px;
+            height: 144px;
+            background: rgba(85, 164, 183, 0.1);
+            font-size: 44px;
+            font-weight: 700; }
+            #pricing header .pricing-uguru li div h2 u {
+              display: block;
+              padding-bottom: 8px;
+              padding-right: 2px; }
+          #pricing header .pricing-uguru li div span {
+            font-size: 24px;
+            font-weight: 400; }
+          #pricing header .pricing-uguru li div svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            fill: rgba(117, 117, 117, 0.1); }
+        #pricing header .pricing-uguru li:after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: -5px;
+          left: 7.5px;
+          width: calc(100% - 15px);
+          height: 5px;
+          background: rgba(117, 117, 117, 0.5); }
+  #pricing > div {
+    padding: 110px 30px 30px;
+    max-width: 860px;
+    margin: auto;
+    color: #40484B; }
+    #pricing > div dl dt {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2; }
+    #pricing > div dl dd {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2; }
+
+/*# sourceMappingURL=universal.css.map */

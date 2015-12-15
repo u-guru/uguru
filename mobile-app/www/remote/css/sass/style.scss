@@ -96,505 +96,6 @@ section {
 
 
 
-/* ---------- COLOR PICKER */
-.color-picker {
-	background: white;
-	width: 100%;
-	ul {
-		padding: 5px;
-	}
-	button {
-		height: 52px;
-		font-weight: 600;
-		&:active, &.activated {
-			@include opacity(.3);
-		}
-	}
-	.color-picker-top {
-		@include flex;
-		overflow: auto;
-		li {
-			padding: 5px;
-			a {
-				@include round;
-				@include flex;
-				@include flex-center;
-				width: 36px;
-				height: 36px;
-				padding: 2px;
-				&.active {
-					&:after {
-						@include round;
-						content: "";
-						display: block;
-						width: 100%;
-						height: 100%;
-						border: 2px solid white;
-					}
-				}
-			}
-		}
-	}
-	.color-picker-bottom {
-		@include flex;
-		@include flex-wrap;
-		background: none!important;
-		li {
-			width: calc(100% / 3);
-			padding: 5px;
-			span {
-				display: block;
-				width: 100%;
-				height: 36px;
-			}
-		}
-		&.bg-auburn {
-			+ button {
-				background: $auburn;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($auburn, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($auburn, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($auburn, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($auburn, 5%);
-				}
-				&:nth-child(5) span {
-					background: $auburn;
-				}
-				&:nth-child(6) span {
-					background: darken($auburn, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($auburn, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($auburn, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($auburn, 20%);
-				}
-			}
-		}
-		&.bg-orange {
-			+ button {
-				background: $orange;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($orange, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($orange, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($orange, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($orange, 5%);
-				}
-				&:nth-child(5) span {
-					background: $orange;
-				}
-				&:nth-child(6) span {
-					background: darken($orange, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($orange, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($orange, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($orange, 20%);
-				}
-			}
-		}
-		&.bg-gold {
-			+ button {
-				background: $gold;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($gold, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($gold, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($gold, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($gold, 5%);
-				}
-				&:nth-child(5) span {
-					background: $gold;
-				}
-				&:nth-child(6) span {
-					background: darken($gold, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($gold, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($gold, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($gold, 20%);
-				}
-			}
-		}
-		&.bg-moola {
-			+ button {
-				background: $moola;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($moola, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($moola, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($moola, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($moola, 5%);
-				}
-				&:nth-child(5) span {
-					background: $moola;
-				}
-				&:nth-child(6) span {
-					background: darken($moola, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($moola, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($moola, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($moola, 20%);
-				}
-			}
-		}
-		&.bg-shamrock {
-			+ button {
-				background: $shamrock;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($shamrock, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($shamrock, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($shamrock, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($shamrock, 5%);
-				}
-				&:nth-child(5) span {
-					background: $shamrock;
-				}
-				&:nth-child(6) span {
-					background: darken($shamrock, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($shamrock, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($shamrock, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($shamrock, 20%);
-				}
-			}
-		}
-		&.bg-azure {
-			+ button {
-				background: $azure;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($azure, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($azure, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($azure, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($azure, 5%);
-				}
-				&:nth-child(5) span {
-					background: $azure;
-				}
-				&:nth-child(6) span {
-					background: darken($azure, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($azure, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($azure, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($azure, 20%);
-				}
-			}
-		}
-		&.bg-lake {
-			+ button {
-				background: $lake;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($lake, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($lake, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($lake, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($lake, 5%);
-				}
-				&:nth-child(5) span {
-					background: $lake;
-				}
-				&:nth-child(6) span {
-					background: darken($lake, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($lake, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($lake, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($lake, 20%);
-				}
-			}
-		}
-		&.bg-cobalt {
-			+ button {
-				background: $cobalt;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($cobalt, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($cobalt, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($cobalt, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($cobalt, 5%);
-				}
-				&:nth-child(5) span {
-					background: $cobalt;
-				}
-				&:nth-child(6) span {
-					background: darken($cobalt, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($cobalt, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($cobalt, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($cobalt, 20%);
-				}
-			}
-		}
-		&.bg-eggplant {
-			+ button {
-				background: $eggplant;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($eggplant, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($eggplant, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($eggplant, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($eggplant, 5%);
-				}
-				&:nth-child(5) span {
-					background: $eggplant;
-				}
-				&:nth-child(6) span {
-					background: darken($eggplant, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($eggplant, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($eggplant, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($eggplant, 20%);
-				}
-			}
-		}
-		&.bg-campus {
-			+ button {
-				background: $campus;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($campus, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($campus, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($campus, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($campus, 5%);
-				}
-				&:nth-child(5) span {
-					background: $campus;
-				}
-				&:nth-child(6) span {
-					background: darken($campus, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($campus, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($campus, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($campus, 20%);
-				}
-			}
-		}
-		&.bg-taupe {
-			+ button {
-				background: $taupe;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($taupe, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($taupe, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($taupe, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($taupe, 5%);
-				}
-				&:nth-child(5) span {
-					background: $taupe;
-				}
-				&:nth-child(6) span {
-					background: darken($taupe, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($taupe, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($taupe, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($taupe, 20%);
-				}
-			}
-		}
-		&.bg-slate {
-			+ button {
-				background: $slate;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($slate, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($slate, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($slate, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($slate, 5%);
-				}
-				&:nth-child(5) span {
-					background: $slate;
-				}
-				&:nth-child(6) span {
-					background: darken($slate, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($slate, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($slate, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($slate, 20%);
-				}
-			}
-		}
-		&.bg-charcoal {
-			+ button {
-				background: $charcoal;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($charcoal, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($charcoal, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($charcoal, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($charcoal, 5%);
-				}
-				&:nth-child(5) span {
-					background: $charcoal;
-				}
-				&:nth-child(6) span {
-					background: darken($charcoal, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($charcoal, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($charcoal, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($charcoal, 20%);
-				}
-			}
-		}
-	}
-}
-
-
-
 /* ---------- SIDEBAR & MENUS */
 // SIDEBAR
 #side-menu-left-overlay.active {
@@ -692,7 +193,6 @@ section {
 }
 @media screen and (min-height:540px) {
 	.side-menu-list {
-
 		.list-item-profile {
 			height: 84px;
 		}
@@ -721,19 +221,44 @@ section {
 		background: $slate;
 	}
 	.list-item {
-		&.active, &.activated {
-			background: $campus;
+		&:hover, &:focus, &:active, &.activated, &.active {
+			background: $shamrock;
 		}
 		.list-item-icon {
 			svg {
 				path, circle {
-					stroke: #fff;
+					stroke: white;
+				}
+				rect {
+					fill: white;
+				}
+			}
+		}
+		&#top-menu-discover {
+			.list-item-icon.active {
+				svg {
+					circle {
+						stroke: white;
+						fill: white!important;
+					}
+					path {
+						stroke: $slate!important;
+					}
+				}
+			}
+			&:hover, &:focus, &:active, &.activated, &.active {
+				.list-item-icon.active {
+					svg {
+						path {
+							stroke: $shamrock!important;
+						}
+					}
 				}
 			}
 		}
 	}
 	.list-item-profile {
-		background: rgba($campus, .75);
+		background: rgba($shamrock, .75);
 	}
 	.list-item-agenda {
 		background: white;
@@ -743,7 +268,7 @@ section {
 		}
 	}
 	.list-item-mode {
-		background: rgba($campus, .75);
+		background: rgba($shamrock, .75);
 	}
 }
 
@@ -756,17 +281,49 @@ section {
 		color: $slate;
 		.list-item-icon {
 			svg {
-				path {
+				path, circle {
 					stroke: $slate;
+				}
+				rect {
+					fill: $slate;
 				}
 			}
 		}
-		&.activated, &.active {
+		&:hover, &:focus, &:active, &.activated, &.active {
 			background: rgba($lake, .75);
 			color: white;
 			svg {
-				path {
+				path, circle {
 					stroke: white;
+				}
+				rect {
+					fill: white;
+				}
+			}
+		}
+		&#top-menu-discover {
+			.list-item-icon.active {
+				svg {
+					circle {
+						stroke: $slate;
+						fill: $slate!important;
+					}
+					path {
+						stroke: white!important;
+					}
+				}
+			}
+			&:hover, &:focus, &:active, &.activated, &.active {
+				.list-item-icon.active {
+					svg {
+						circle {
+							stroke: white!important;
+							fill: white!important;
+						}
+						path {
+							stroke: $slate!important;
+						}
+					}
 				}
 			}
 		}
@@ -1104,137 +661,203 @@ section {
 }
 
 // STUDENT HOME
-.home-view {
-	background: white;
-	#student-home, {
-		header {
-			background: rgba(white, .75);
-			color: $slate;
-			svg {
-				path {
-					stroke: $slate!important;
-				}
-			}
-		}
-		#student-home-map-container, #student-home-default-map-container {
-			position: absolute;
-			top: 0;
-			left: 0;
-			overflow: hidden;
-			z-index: -1;
-			width: 100%;
-			height: 100%;
-			div {
-				top: -10%;
-				left: -10%;
-				width: 120%!important;
-				height: 120%!important;
-				.student-home-map-label {
-					display: none!important;
-				}
-			}
-		}
-		#home-content {
-			@include center-xy;
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			z-index: 2;
-			height: calc(100% - 150px);
-			width: 100%;
-			div {
-				width: 100%;
-				button {
-					@include round;
-					display: block;
-					margin: 0 auto;
-					width: 150px;
-					height: 150px;
-					font-weight: 600;
-					line-height: 1.2;
-					text-transform: uppercase;
-				}
-				.bg-lake-80p.activated, .bg-lake-80p:active {
-					@include opacity(1);
-					background: $lake!important;
-				}
-				.bg-campus-80p.activated, .bg-campus-80p:active {
-					@include opacity(1);
-					background: $campus!important;
-				}
-			}
-			&.trending-container {
-				height: calc(100% - 130px);
-			}
-			#trending {
-				width: calc(100% - 30px);
-				margin: 15px;
-				h1 {
-					font-size: 14px;
-					font-weight: 600;
-					letter-spacing: 1px;
-					text-align: center;
-					text-transform: uppercase;
-					padding: 15px;
-					background: rgba($charcoal,.9);
-				}
-				ul {
-					margin-top: 2px;
-					background: rgba(white,.9);
-					li {
-						@include flex;
-						@include flex-center;
-						@include flex-wrap;
-						padding: 15px 0;
-						button {
-							width: 70px;
-							height: 70px;
-							font-size: 14px;
-							padding: 10px;
-							svg {
-								path {
-									stroke: white;
-								}
-							}
-						}
-						button + span {
-							display: block;
-							margin-top: 5px;
-							width: 100%;
-							font-size: 14px;
-							font-weight: 600;
-							text-align: center;
-							text-transform: uppercase;
-						}
+#mobile-student-home {
+	background: $smoke;
+	header {
+		@include flex;
+		-webkit-align-items: flex-end;
+		align-items: flex-end;
+		height: calc(25% - 64px);
+		padding-bottom: 15px;
+		background: $smoke;
+		.header-nav {
+			a {
+				svg {
+					path {
+						stroke: $slate;
 					}
 				}
-				ul + button {
-					width: 100%;
-					height: 64px;
-					border-radius: 0;
-					margin-top: 2px;
+			}
+		}
+		h1 {
+			padding: 15px 15px 5px;
+			color: $slate;
+			font-size: 28px!important;
+			line-height: 1.2;
+			text-transform: none;
+		}
+	}
+	.student-home-notifications {
+		ul {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center-vertical;
+			width: 100%;
+			height: 64px;
+			background: $slate;
+			li {
+				padding: 15px;
+				a {
+					@include flex;
+					@include flex-center;
+					color: white;
+					span {
+						display: block;
+					}
+					.notification-icon {
+						position: relative;
+						.notification-number {
+							@include round;
+							@include flex;
+							@include flex-center;
+							padding: 0 5px;
+							height: 28px;
+							min-width: 28px;
+							background: $lake;
+							color: white;
+							font-size: 14px;
+							font-weight: 600;
+						}
+					}
+					.notification-type {
+						padding-left: 10px;
+						font-weight: 600;
+						font-size: 20px;
+					}
 				}
 			}
 		}
 	}
-}
-@media screen and (min-height:667px) {
-	.home-view {
-		#student-home {
-			#home-content {
-				div {
-					button {
-						width: 200px;
-						height: 200px;
+	.main {
+		height: 75%;
+		overflow: auto;
+		background: $smoke;
+		.student-home-tiles {
+			height: 100%;
+			padding: 1px;
+			.home-tiles-row {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: calc(100% / 4);
+				text-align: center;
+				.home-tiles-tile {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					text-align: left;
+					.home-tiles-inside {
+						@include flex;
+						@include flex-center;
+						height: 100%;
+						width: 100%;
+					}
+					.home-tiles-text {
+						padding: 15px;
+						height: auto;
+						width: calc(100% - 120px);
+						h2, h3 {
+							font-weight: 700;
+						}
+						h2 {
+							font-size: 24px;
+							text-transform: uppercase;
+						}
+						h3 {
+							font-size: 18px;
+						}
 					}
 				}
-				#trending {
-					ul {
-						li {
-							button {
-								width: 100px!important;
-								height: 100px!important;
-							}
+			}
+			.home-tiles-quick, .home-tiles-request {
+				height: 100%;
+				width: 100%;
+				padding: 1px;
+				svg {
+					@include svg-stroke(white, 3);
+					margin: 15px;
+					background: rgba(white, .2);
+					width: 90px;
+					height: 90px;
+				}
+			}
+			.home-tiles-quick {
+				> div {
+					background: $lake;
+				}
+				.home-tiles-text {
+					padding-right: 0!important;
+				}
+			}
+			.home-tiles-request {
+				> div {
+					background: darken($lake, 10%);
+				}
+				.home-tiles-text {
+					padding-left: 0!important;
+				}
+			}
+			.home-tiles-become, .home-tiles-courses {
+				height: 100%;
+				width: 50%;
+				padding: 1px;
+				.home-tiles-inside {
+					@include flex-wrap;
+					.home-tiles-text {
+						padding: 10px 0 0;
+						width: 100%;
+						text-align: center;
+						h2 {
+							font-size: 18px;
+						}
+					}
+					svg {
+						@include svg-stroke(white, 3);
+						width: 100%;
+						height: calc(100% - 31px);
+						padding-bottom: 5px;
+					}
+				}
+			}
+			.home-tiles-become {
+				> div {
+					background: desaturate(darken($lake, 20%), 10%);
+				}
+			}
+			.home-tiles-courses {
+				> div {
+					background: lighten($lake, 10%);
+				}
+			}
+			.home-tiles-apps {
+				height: 100%;
+				width: 100%;
+				padding: 1px;
+				.home-tiles-inside {
+					@include flex-wrap;
+					background: darken(desaturate($lake, 50%), 20%);
+				}
+				.home-tiles-text {
+					padding: 10px 0 0!important;
+					width: 100%!important;
+					text-align: center;
+					h2 {
+						font-size: 18px!important;
+					}
+				}
+				ul {
+					height: calc(100% - 31px);
+					width: 100%;
+					padding: 5px;
+					li {
+						padding: 5px;
+						height: 100%;
+						svg {
+							display: block;
+							margin: auto;
+							height: 100%;
+							width: auto;
 						}
 					}
 				}
@@ -1260,38 +883,7 @@ section {
 		margin: 0;
 	}
 }
-.onboarding, .onboarding-portfolio-item {
-	.onboarding-search {
-		.input-field {
-			.prefix {
-				margin-top: 6px;
-				svg {
-					@include svg-stroke(white, 5);
-					width: 100%;
-					height: 100%;
-					padding: 11px;
-				}
-			}
-			input {
-				width: calc(100% - 63px)!important;
-			}
-			input, label {
-				color: rgba(white,.6)!important;
-				border-color: rgba(white,.6)!important;
-			}
-			input:focus {
-				color: white!important;
-				border-color: white!important;
-			}
-			.desktop-input-close-icon {
-				right: 15px;
-			    margin-top: -20px;
-			}
-		}
-		// input {
-		// 	width: calc(100% - 25px);
-		// }
-	}
+.onboarding {
 	progress, .progress {
 		position: absolute;
 		top: 0;
@@ -3413,153 +3005,6 @@ section {
 .main-nav + .desktop-mode {
 	.guru-toast {
 		top: 79px;
-	}
-}
-
-
-
-
-/* ---------- TOOLTIPS */
-.guru-tip, .guru-popup {
-	position: absolute;
-	z-index: 99;
-	padding: 0 15px;
-	&.guru-tip-center, &.guru-popup-center {
-		@include center-xy;
-	}
-	div.with-button {
-		border-bottom-left-radius: 0!important;
-		border-bottom-right-radius: 0!important;
-	}
-}
-.guru-popup {
-	width: 75%;
-	max-width: 250px;
-	h1 {
-		background: rgba($charcoal,.9);
-		border-top-left-radius: 2px;
-		border-top-right-radius: 2px;
-		padding: 10px 15px 0;
-		font-size: 20px;
-		font-weight: 600;
-		text-align: center;
-		+ div {
-			border-top-left-radius: 0!important;
-			border-top-right-radius: 0!important;
-		}
-	}
-	div {
-		background: rgba($charcoal,.9);
-		padding: 10px 15px;
-		width: 100%;
-		border-radius: 2px;
-		color: white;
-		font-size: 18px;
-		font-weight: 600;
-		&.min-height {
-			min-height: 100px;
-		}
-		&.guru-popup-vertical-center {
-			@include flex;
-			@include flex-center-vertical;
-		}
-		input {
-			display: block;
-			width: 100%;
-			padding: 5px 10px;
-			border: 0;
-			&:last-child {
-				margin-bottom: 5px;
-			}
-		}
-	}
-	button {
-		height: auto;
-		padding: 10px 15px;
-		font-size: 18px;
-		font-weight: 600;
-		background: lighten($shamrock, 20%);
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-		line-height: 1;
-		&:hover, &:focus {
-			@include opacity(1);
-			background: $shamrock;
-		}
-		&.activated, &:active {
-			background: $taupe;
-		}
-	}
-}
-.guru-tip {
-	div {
-		position: relative;
-		background: rgba(white,.9);
-		padding: 10px 15px;
-		border-radius: 2px;
-		color: $slate;
-		font-size: 18px;
-		font-weight: 600;
-		&::after {
-			content: "";
-			bottom: 0;
-			width: 0;
-			height: 0;
-			border: 10px solid transparent;
-		}
-	}
-	button {
-		height: auto;
-		padding: 10px 15px;
-		font-size: 18px;
-		font-weight: 600;
-		background: $shamrock;
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-		line-height: 1;
-		&:hover, &:focus {
-			@include opacity(1);
-			background: $slate;
-		}
-		&.activated, &:active {
-			background: $charcoal;
-		}
-	}
-	&.guru-tip-top {
-		div {
-			&::after {
-				@include center-x;
-				top: -20px;
-				border-bottom-color: rgba(white,.9);
-			}
-		}
-	}
-	&.guru-tip-bottom {
-		div {
-			&::after {
-				@include center-x;
-				top: -20px;
-				border-top-color: rgba(white,.9);
-			}
-		}
-	}
-	&.guru-tip-left {
-		div {
-			&::after {
-				@include center-y;
-				left: -20px;
-				border-right-color: rgba(white,.9);
-			}
-		}
-	}
-	&.guru-tip-right {
-		div {
-			&::after {
-				@include center-y;
-				right: -20px;
-				border-left-color: rgba(white,.9);
-			}
-		}
 	}
 }
 

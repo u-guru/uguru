@@ -125,9 +125,9 @@ angular.module('uguru.desktop.controllers', [])
     });
 
 
-    $scope.showDesktopSettings = false;
+    $scope.root.vars.showDesktopSettings = false;
     $scope.toggleDesktopSettings = function() {
-        $scope.showDesktopSettings = !$scope.showDesktopSettings;
+        $scope.root.vars.showDesktopSettings = !$scope.root.vars.showDesktopSettings;
     }
 
     ModalService.init('university', $scope);
@@ -526,6 +526,13 @@ angular.module('uguru.desktop.controllers', [])
 
     $scope.state = $state;
 
+    $scope.hideSettingsPopupAndLogout = function() {
+      $scope.logoutPopup.visible = false;
+      $scope.root.vars.showDesktopSettings = false;
+      $scope.logoutUser(true);
+    }
+    $scope.logoutPopup = {visible: false};
+
     $scope.resetAccount = function() {
       if (confirm('Are you sure you want to reset your admin account?')) {
 
@@ -618,13 +625,13 @@ angular.module('uguru.desktop.controllers', [])
     $scope.goToDesktopSettings = function() {
       $ionicViewSwitcher.nextDirection('enter')
       $state.go('^.desktop-settings');
-      $scope.showDesktopSettings = false;
+      $scope.root.vars.showDesktopSettings = false;
     }
 
     $scope.goToLoginMode = function() {
       $scope.root.vars.loginMode = false;
       $scope.root.vars.loginModeRecentlySet = true;
-      $scope.showDesktopSettings = false;
+      $scope.root.vars.showDesktopSettings = false;
       $ionicViewSwitcher.nextDirection('enter');
       $state.go('^.desktop-login');
     }

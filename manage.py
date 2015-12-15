@@ -815,16 +815,27 @@ if arg == 'seed_admin':
 
 
     def selectThreeRandCurrencies(user):
+        try:
+            user.guru_currencies = []
+            db_session.commit()
+        except:
+            db_session.rollback()
+            return
         currencies = Currency.query.all()
         num_currencies = len(currencies)
         from random import randint
         for _ in range(0,10000):
-            currency = currencies(randint(0, num_currencies))
-            if currency not in user.guru_currencies:
-                user.guru_currencies.append(currency)
-            if len(user.guru_currencies) == 3:
-                db_session.commit()
-                break
+            try:
+                currency = currencies[randint(0, num_currencies)]
+                if currency not in user.guru_currencies:
+                    user.guru_currencies.append(currency)
+                    db_session.commit()
+                if len(user.guru_currencies) == 3:
+                    db_session.commit()
+                    break
+            except:
+                db_session.rollback()
+                continue
 
     def selectThreeRandLanguages(user):
         try:
@@ -897,6 +908,7 @@ if arg == 'seed_admin':
         if not user.guru_calendar:
             Calendar.initGuruCalendar(user)
         selectThreeRandLanguages(user)
+        selectThreeRandCurrencies(user)
         # fake_data = generateFakeShopData(user)
         Shop.initAcademicShop(user)
 
@@ -907,6 +919,7 @@ if arg == 'seed_admin':
         for pi in user.guru_shops[0].portfolio_items:
             _sum += len(pi.resources)
         return _sum
+
 
     def selectAndCountShopTagItems(user):
         _sum = 0
@@ -1022,15 +1035,22 @@ if arg == 'init_admin':
             user.is_admin = True
             user.profile_code = account_name.split(' ')[0].lower()
             user.referral_code = account_name.split(' ')[0].lower()
+            db_session.commit()
+            try:
+                user.guru_courses = user.university.popular_courses[0:5]
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+
+            except:
+                raise
+                sys.exit()
             Shop.initAcademicShop(user)
-            db_session.commit()
             print "Account for %s successfully created" % user.email
-    admin_users = User.query.filter_by(is_admin=True).all()
-    for user in admin_users:
-        if user.email.lower() not in admin_emails:
-            print user.email, 'is not an admin'
-            user.is_admin = False
-            db_session.commit()
+
+
 
 if arg == 'parse_uni':
     from app.lib.wikipedia import *
@@ -2098,6 +2118,14 @@ if arg == 'init_berkeley_course':
                 db_session.commit()
                 print "Progress %s out of %s" % (count, len(cal.popular_courses))
     print count
+
+
+if arg == 'print_uw_data':
+    print "University Name, Website, College Application Submission Date, Source"
+    print "UC Berkeley, www.berkeley.edu, 11/30/2015, http://admissions.berkeley.edu/datesdeadlines"
+    for u in University.query.all():
+        if u.us_news_ranking and u.us_news_ranking < 220 and ((u.website and len(u.website) < 50) or not u.website):
+            print "%s, %s, %s, , " % (u.us_news_ranking, u.name, u.website)
 
 
 if arg == 'variations_courses':

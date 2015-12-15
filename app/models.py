@@ -270,6 +270,10 @@ class User(Base):
 
     current_device = relationship("Device", uselist=False)
 
+    external_profiles = relationship("Resource",
+        primaryjoin = "(Resource.contributed_user_id==User.id) & "\
+                        "(Resource.is_profile==True)")
+
     # conducted every night at midnight
     estimated_guru_score = Column(Integer)
     estimated_guru_rank = Column(Integer)
@@ -383,7 +387,6 @@ class User(Base):
         user.referral_code = User.generate_referral_code(user.name)
         user.auth_token = uuid.uuid4().hex
         user.email_notifications = True
-        user.profile_code = User.generateProfileCode(user)
         if options.get('fb_id'):
             user.profile_url = options.get('profile_url')
             user.fb_id = options.get('fb_id')
@@ -400,7 +403,10 @@ class User(Base):
 
         # if not user.profile_code:
         #     user.profile_code = user.generateProfileCode()
-
+        user.initAllExternalProfiles()
+        user.profile_code = User.generateProfileCode(user)
+        Shop.initAcademicShop(user)
+        Calendar.initGuruCalendar(user)
 
         if options.get('university_id'):
             user.university_id = options.get('university_id')
@@ -424,6 +430,11 @@ class User(Base):
             if shop.category.hex_color == 'academic' or shop.category.hex_color == 'Academic':
                 return shop
 
+    def getActiveShop(self, shop_id):
+        for shop in self.guru_shops:
+            if shop.id == shop_id:
+                return shop
+
     def getGuruRatingsForCourse(self, course_id):
         course_ratings = []
         for rating in self.guru_ratings:
@@ -444,6 +455,67 @@ class User(Base):
 
 
         return course_ratings
+
+    def removeCurrencyItem(self, currency_id):
+        for currency in self.guru_currencies:
+            if currency.id == currency_id:
+                self.guru_currencies.remove(currency)
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+
+    def addGuruCurrencyItem(self, currency_id):
+        currency = Currency.query.get(currency_id)
+        if currency not in self.guru_currencies:
+            self.guru_currencies.append(currency)
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+    def initAllExternalProfiles(self):
+        initial_titles = ['LinkedIn', 'Twitter', 'Instagram', 'Facebook']
+        for title in initial_titles:
+            self.initExternalProfileResource(None, title, '%s profile url' % title)
+        print len(self.external_profiles), 'external profiles initiated'
+
+    def addNewExternalResource(self, domain):
+        self.initExternalProfileResource(domain, domain, "")
+
+    def updateExternalResource(self, url):
+        for title in Resource.RECOGNIZED:
+            if title.lower() in url.lower():
+
+                self.site_url == url
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+                break
+
+    def initExternalProfileResource(self, url, title, description):
+        r = Resource()
+        r.is_profile = True
+        r.site_url = url
+        r.title = title
+        r.description = description
+        try:
+            db_session.add(r)
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        r.contributed_user_id = self.id
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     def initExperience(self, title, years, description):
         e = Experience()
@@ -1448,6 +1520,8 @@ class Position(Base):
 class Resource(Base):
     __tablename__ = 'resource'
 
+    RECOGNIZED = ['facebook', 'linked', 'instagram', 'twitter']
+
     id = Column(Integer, primary_key=True)
 
     _type = Column(Integer, default = 0)
@@ -1506,6 +1580,9 @@ class Resource(Base):
     professor_name = Column(String)
 
     course_string = Column(String)
+
+    bg_hex_color = Column(String)
+    font_hex_color = Column(String)
 
     @staticmethod
     def initPortfolioResource(user, portfolio_item, course, options, is_admin=True):
@@ -2199,6 +2276,8 @@ class Session(Base):
     hours = Column(Integer)
 
 
+
+
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
         primaryjoin = "(User.id==Session.guru_id) & "\
@@ -2243,6 +2322,13 @@ class Session(Base):
         primaryjoin = "Card.id == Session.card_id",
         backref = 'sessions'
         )
+
+    course_id = Column(Integer, ForeignKey('course.id'))
+    course = relationship("Course",
+        uselist=False,
+        primaryjoin = "Course.id == Session.course_id",
+        backref="sessions"
+    )
 
     rating_id = Column(Integer, ForeignKey("rating.id"))
     request_id = Column(Integer, ForeignKey("request.id"))
@@ -2490,7 +2576,7 @@ class Portfolio_Item(Base):
     description = Column(String)
     title = Column(String)
 
-    avg_rating = Column(Float)
+    avg_rating = Column(Float, default = 0)
 
     hourly_price = Column(Float, default = 10)
     max_hourly_price = Column(Float, default = 0)
@@ -2521,6 +2607,17 @@ class Portfolio_Item(Base):
         primaryjoin = "(Shop.id==Portfolio_Item.shop_id)",
         uselist=False,
         backref="portfolio_items")
+
+
+
+
+    def remove(self):
+        self.archived = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
     def syncPortfolioResources(self, user, resources_json):
         current_resources = self.tags
@@ -2603,6 +2700,9 @@ class Portfolio_Item(Base):
         self.hourly_price = options.get('hourly_price')
         self.max_hourly_price = options.get('max_hourly_price')
 
+        if not self.avg_rating:
+            self.avg_rating = 0
+
         if options.get('tags'):
             self.syncPortfolioTags(user, options.get('tags'))
         if options.get('resources'):
@@ -2649,7 +2749,6 @@ class Portfolio_Item(Base):
         pi.user_id = user.id
         pi.shop_id = shop.id
         pi.course_id = course.id
-        print "does it even get here bro"
         try:
             db_session.commit()
         except:
@@ -3075,7 +3174,7 @@ class Currency(Base):
     is_approved = Column(Boolean, default=False)
 
 
-    DEFAULT_CURRENCIES = ['Food', 'Money', 'Coffee', 'Giftcards', 'Kitten Time', 'Meal Points', 'Chipotle', 'Dogecoin', 'Concert Tickets', 'Puppy Time', 'Cookies']
+    DEFAULT_CURRENCIES = ['Food', 'Money', 'Coffee', 'Gift Cards', 'Kitten Time', 'Meal Points', 'Chipotle', 'Dogecoin', 'Concert Tickets', 'Puppy Time', 'Cookies']
 
     @staticmethod
     def init(arr_names):

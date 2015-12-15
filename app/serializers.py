@@ -358,6 +358,7 @@ portfolio_item_fields['subcategory_fields'] = fields.List(fields.Nested(subcateg
 portfolio_item_fields['description'] = fields.String(attribute='description')
 portfolio_item_fields['title'] = fields.String(attribute='title')
 portfolio_item_fields['id'] = fields.Integer(attribute='id')
+portfolio_item_fields['archived'] = fields.Boolean(attribute='archived')
 portfolio_item_fields['avg_rating'] = fields.Float(attribute='avg_rating')
 portfolio_item_fields['hourly_price'] = fields.Float(attribute='hourly_price')
 portfolio_item_fields['max_hourly_price'] = fields.Float(attribute='max_hourly_price')
@@ -482,6 +483,7 @@ UserSerializer = {
     'second_degree_referrals': fields.Integer,
     'referral_limit': fields.Integer,
     'deactivated': fields.Boolean,
+    'external_profiles': fields.List(fields.Nested(resource_fields))
 }
 
 DeviceSerializer = {
@@ -602,6 +604,38 @@ AdminUniversitySerializer = {
     'school_color_two': fields.String,
     'variations': fields.String
 }
+
+AdminUniversityDetailedSerializer = {
+    'id': fields.Integer,
+    'num_courses': fields.Integer,
+    'num_popular_courses': fields.Integer,
+    'num_depts': fields.Integer,
+    'name': fields.String,
+    'short_name': fields.String,
+    'logo_url': fields.String,
+    'banner_url':fields.String,
+    'svg_url': fields.String,
+    'city': fields.String,
+    'state': fields.String,
+    'population': fields.Integer,
+    'num_emails': fields.Integer,
+    'departments_sanitized': fields.Boolean,
+    'courses_sanitized': fields.Boolean,
+    'school_color_one': fields.String,
+    'website': fields.String,
+    'school_mascot_name': fields.String,
+    'school_casual_name': fields.String,
+    'us_news_ranking': fields.String,
+    'latitude': fields.Float,
+    'longitude': fields.Float,
+    'forbes_url': fields.String,
+    'seal_url': fields.String,
+    'school_color_one': fields.String,
+    'school_color_two': fields.String,
+    'variations': fields.String,
+    'popular_courses': fields.Nested(course_fields)
+}
+
 
 AdminUniversityDeptSerializer = {
     'id': fields.Integer,

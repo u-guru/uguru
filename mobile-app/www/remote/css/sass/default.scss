@@ -2661,71 +2661,1192 @@ input[type=range] {
 	100% { @include opacity(0); }
 }
 
-.toast {
-	background: white;
-	font-weight: 600;
-	text-align: center;
-	text-transform: uppercase;
-	height: 50px;
-	overflow: hidden;
+// USER ICON
+.user-icon {
+	@include round;
+	display: block;
+	margin: 0 auto;
+	width: 128px;
+	height: 128px;
+	background-position: center;
+	background-size: cover;
+	border: 5px solid white;
+}
+.user-icon-container {
+	display: block;
+	position: relative;
+	.user-icon {
+		@include opacity(.5);
+	}
+	.user-icon-edit {
+		@include center-xy;
+		font-size: 20px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+}
+
+// CUSTOM DROPDOWNS
+.custom-dropdown {
+	position: relative;
 	> div {
-		background: $cerise;
+		@include flex;
+		@include flex-center;
+		span {
+			@include flex;
+			@include flex-center;
+			width: 152px;
+			height: 48px;
+			background: lighten($slate, 10%);
+			font-size: 28px;
+			font-weight: 600;
+		}
+		a {
+			display: block;
+			width: 48px;
+			height: 48px;
+			svg {
+				@include svg-stroke(white, 8);
+				background: $shamrock;
+				padding: 12px 10px 8px;
+				width: 48px;
+				height: 48px;
+			}
+		}
+	}
+	> ul {
+		@include center-x;
+		@include opacity(0);
+		width: 200px;
+		height: 0;
+		overflow: hidden;
+		&.active {
+			@include opacity(1);
+			height: auto;
+		}
+		li {
+			width: 152px;
+			background: rgba(lighten($slate, 5%), .9);
+			padding: 15px 0 !important;
+			font-weight: 400;
+			&:hover,
+			&:focus {
+				background: rgba(darken($shamrock, 10%),.9);
+			}
+			&:active {
+				background: rgba(lighten($shamrock, 10%),.9);
+			}
+		}
+	}
+}
+
+/* ---------- TOOLTIPS */
+.guru-tip, .guru-popup {
+	position: absolute;
+	z-index: 99;
+	padding: 0 15px;
+	&.guru-tip-center, &.guru-popup-center {
+		@include center-xy;
+	}
+	div.with-button {
+		border-bottom-left-radius: 0!important;
+		border-bottom-right-radius: 0!important;
+	}
+}
+.guru-popup {
+	width: 75%;
+	max-width: 250px;
+	h1 {
+		background: rgba($charcoal,.9);
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		padding: 10px 15px 0;
+		font-size: 20px;
+		font-weight: 600;
+		text-align: center;
+		+ div {
+			border-top-left-radius: 0!important;
+			border-top-right-radius: 0!important;
+		}
+	}
+	> div {
+		background: rgba($charcoal,.9);
+		padding: 10px 15px;
 		width: 100%;
-		height: 100%;
-		padding: 10px;
-		font-size: 14px;
+		border-radius: 2px;
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		&.min-height {
+			min-height: 100px;
+		}
+		&.guru-popup-vertical-center {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center-vertical;
+		}
+		input {
+			display: block;
+			width: 100%;
+			padding: 5px 10px;
+			border: 0;
+			&:last-child {
+				margin-bottom: 5px;
+			}
+		}
 	}
-	&.active > div, &.activated > div {
-		background: rgba($cerise, .75);
+	button {
+		height: auto;
+		padding: 10px 15px;
+		font-size: 18px;
+		font-weight: 600;
+		background: lighten($shamrock, 20%);
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		line-height: 1;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: $shamrock;
+		}
+		&.activated, &:active {
+			background: $taupe;
+		}
 	}
 }
-.toast + * {
-	height: calc(100% - 50px)!important;
-}
-.toast + * header.third {
-	height: calc(100% / 3 + 15px);
-}
-.toast + * .two-thirds {
-	height: calc(100% / 3 * 2 - 15px);
+.guru-tip {
+	div {
+		position: relative;
+		background: rgba(white,.9);
+		padding: 10px 15px;
+		border-radius: 2px;
+		color: $slate;
+		font-size: 18px;
+		font-weight: 600;
+		&::after {
+			content: "";
+			bottom: 0;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+		}
+	}
+	button {
+		height: auto;
+		padding: 10px 15px;
+		font-size: 18px;
+		font-weight: 600;
+		background: $shamrock;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		line-height: 1;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: $slate;
+		}
+		&.activated, &:active {
+			background: $charcoal;
+		}
+	}
+	&.guru-tip-top {
+		div {
+			&::after {
+				@include center-x;
+				top: -20px;
+				border-bottom-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-bottom {
+		div {
+			&::after {
+				@include center-x;
+				top: -20px;
+				border-top-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-left {
+		div {
+			&::after {
+				@include center-y;
+				left: -20px;
+				border-right-color: rgba(white,.9);
+			}
+		}
+	}
+	&.guru-tip-right {
+		div {
+			&::after {
+				@include center-y;
+				right: -20px;
+				border-left-color: rgba(white,.9);
+			}
+		}
+	}
 }
 
-// .chart {
-// 	.bg {
-// 		@include opacity(.3);
-// 	}
-// 	.chart-percent circle {
-// 		@include opacity(0);
-// 	    -webkit-transform-origin: center center;
-// 	    -moz-transform-origin: center center;
-// 	    -ms-transform-origin: center center;
-// 	    -o-transform-origin: center center;
-// 	    transform-origin: center center;
-// 		stroke-dasharray: 3px, 380px;
-// 		stroke-linecap: round;
-// 	}
-// 	circle {
-// 		cx: 60px;
-// 		cy: 60px;
-// 		r: 60px;
-// 	}
-// }
+/* ---------- COLOR PICKER */
+.color-picker {
+	background: white;
+	width: 100%;
+	ul {
+		padding: 5px;
+	}
+	button {
+		height: 52px;
+		font-weight: 600;
+		&:active, &.activated {
+			@include opacity(.3);
+		}
+	}
+	.color-picker-top {
+		@include flex;
+		overflow: auto;
+		li {
+			padding: 5px;
+			a {
+				@include round;
+				@include flex;
+				@include flex-center;
+				width: 36px;
+				height: 36px;
+				padding: 2px;
+				&.active {
+					&:after {
+						@include round;
+						content: "";
+						display: block;
+						width: 100%;
+						height: 100%;
+						border: 2px solid white;
+					}
+				}
+			}
+		}
+	}
+	.color-picker-bottom {
+		@include flex;
+		@include flex-wrap;
+		background: none!important;
+		li {
+			width: calc(100% / 3);
+			padding: 5px;
+			span {
+				display: block;
+				width: 100%;
+				height: 36px;
+			}
+		}
+		&.bg-auburn {
+			+ button {
+				background: $auburn;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($auburn, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($auburn, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($auburn, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($auburn, 5%);
+				}
+				&:nth-child(5) span {
+					background: $auburn;
+				}
+				&:nth-child(6) span {
+					background: darken($auburn, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($auburn, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($auburn, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($auburn, 20%);
+				}
+			}
+		}
+		&.bg-orange {
+			+ button {
+				background: $orange;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($orange, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($orange, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($orange, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($orange, 5%);
+				}
+				&:nth-child(5) span {
+					background: $orange;
+				}
+				&:nth-child(6) span {
+					background: darken($orange, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($orange, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($orange, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($orange, 20%);
+				}
+			}
+		}
+		&.bg-gold {
+			+ button {
+				background: $gold;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($gold, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($gold, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($gold, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($gold, 5%);
+				}
+				&:nth-child(5) span {
+					background: $gold;
+				}
+				&:nth-child(6) span {
+					background: darken($gold, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($gold, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($gold, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($gold, 20%);
+				}
+			}
+		}
+		&.bg-moola {
+			+ button {
+				background: $moola;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($moola, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($moola, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($moola, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($moola, 5%);
+				}
+				&:nth-child(5) span {
+					background: $moola;
+				}
+				&:nth-child(6) span {
+					background: darken($moola, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($moola, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($moola, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($moola, 20%);
+				}
+			}
+		}
+		&.bg-shamrock {
+			+ button {
+				background: $shamrock;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($shamrock, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($shamrock, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($shamrock, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($shamrock, 5%);
+				}
+				&:nth-child(5) span {
+					background: $shamrock;
+				}
+				&:nth-child(6) span {
+					background: darken($shamrock, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($shamrock, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($shamrock, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($shamrock, 20%);
+				}
+			}
+		}
+		&.bg-azure {
+			+ button {
+				background: $azure;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($azure, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($azure, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($azure, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($azure, 5%);
+				}
+				&:nth-child(5) span {
+					background: $azure;
+				}
+				&:nth-child(6) span {
+					background: darken($azure, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($azure, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($azure, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($azure, 20%);
+				}
+			}
+		}
+		&.bg-lake {
+			+ button {
+				background: $lake;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($lake, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($lake, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($lake, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($lake, 5%);
+				}
+				&:nth-child(5) span {
+					background: $lake;
+				}
+				&:nth-child(6) span {
+					background: darken($lake, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($lake, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($lake, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($lake, 20%);
+				}
+			}
+		}
+		&.bg-cobalt {
+			+ button {
+				background: $cobalt;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($cobalt, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($cobalt, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($cobalt, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($cobalt, 5%);
+				}
+				&:nth-child(5) span {
+					background: $cobalt;
+				}
+				&:nth-child(6) span {
+					background: darken($cobalt, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($cobalt, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($cobalt, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($cobalt, 20%);
+				}
+			}
+		}
+		&.bg-eggplant {
+			+ button {
+				background: $eggplant;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($eggplant, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($eggplant, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($eggplant, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($eggplant, 5%);
+				}
+				&:nth-child(5) span {
+					background: $eggplant;
+				}
+				&:nth-child(6) span {
+					background: darken($eggplant, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($eggplant, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($eggplant, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($eggplant, 20%);
+				}
+			}
+		}
+		&.bg-campus {
+			+ button {
+				background: $campus;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($campus, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($campus, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($campus, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($campus, 5%);
+				}
+				&:nth-child(5) span {
+					background: $campus;
+				}
+				&:nth-child(6) span {
+					background: darken($campus, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($campus, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($campus, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($campus, 20%);
+				}
+			}
+		}
+		&.bg-taupe {
+			+ button {
+				background: $taupe;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($taupe, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($taupe, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($taupe, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($taupe, 5%);
+				}
+				&:nth-child(5) span {
+					background: $taupe;
+				}
+				&:nth-child(6) span {
+					background: darken($taupe, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($taupe, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($taupe, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($taupe, 20%);
+				}
+			}
+		}
+		&.bg-slate {
+			+ button {
+				background: $slate;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($slate, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($slate, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($slate, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($slate, 5%);
+				}
+				&:nth-child(5) span {
+					background: $slate;
+				}
+				&:nth-child(6) span {
+					background: darken($slate, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($slate, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($slate, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($slate, 20%);
+				}
+			}
+		}
+		&.bg-charcoal {
+			+ button {
+				background: $charcoal;
+			}
+			li {
+				&:nth-child(1) span {
+					background: lighten($charcoal, 20%);
+				}
+				&:nth-child(2) span {
+					background: lighten($charcoal, 15%);
+				}
+				&:nth-child(3) span {
+					background: lighten($charcoal, 10%);
+				}
+				&:nth-child(4) span {
+					background: lighten($charcoal, 5%);
+				}
+				&:nth-child(5) span {
+					background: $charcoal;
+				}
+				&:nth-child(6) span {
+					background: darken($charcoal, 5%);
+				}
+				&:nth-child(7) span {
+					background: darken($charcoal, 10%);
+				}
+				&:nth-child(8) span {
+					background: darken($charcoal, 15%);
+				}
+				&:nth-child(9) span {
+					background: darken($charcoal, 20%);
+				}
+			}
+		}
+	}
+}
 
-// .chart-percent {
-// 	@for $j 0% 1 through 100 {
-// 		circle:nth-child(#{$j}) {
-// 			@include rotate((360/100*$j));
-// 		}
-// 	}
-// }
-
-// @for $p 0% 1 through 100 {
-// 	.chart[data-value="#{$p}"] {
-// 		.chart-percent {
-// 			@for $j 0% 1 through $p {
-// 				circle:nth-child(#{$j}) {
-// 					@include opacity(1);
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+/* ---------- PROFILE CARDS */
+.pf-card-container {
+	@include flex;
+	@include flex-center;
+	padding: 15px;
+}
+.pf-card-mini {
+	@include flex;
+	@include flex-center;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	background: white;
+	border-radius: 2px;
+	overflow: hidden;
+	.pf-card-mini-banner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: calc(100% / 3);
+		background: $shamrock;
+	}
+	.user-icon {
+		position: relative;
+		z-index: 10;
+		width: 32px;
+		height: 32px;
+		border-width: 3px;
+	}
+	&.pf-card-mini-delivery {
+		.user-icon, .pf-card-mini-banner {
+			background-color: $auburn;
+		}
+	}
+	&.pf-card-mini-freelancing {
+		.user-icon, .pf-card-mini-banner {
+			background-color: $orange;
+		}
+	}
+	&.pf-card-mini-baking {
+		.user-icon, .pf-card-mini-banner {
+			background-color: $gold;
+		}
+	}
+	&.pf-card-mini-photography {
+		.user-icon, .pf-card-mini-banner {
+			background-color: $moola;
+		}
+	}
+	&.pf-card-mini-tech {
+		.user-icon, .pf-card-mini-banner {
+			background-color: $azure;
+		}
+	}
+	&.pf-card-mini-household {
+		.user-icon, .pf-card-mini-banner {
+			background-color: $cobalt;
+		}
+	}
+	&.pf-card-mini-athletic {
+		.user-icon, .pf-card-mini-banner {
+			background-color: $eggplant;
+		}
+	}
+	&.pf-card-mini-academic {
+		.user-icon, .pf-card-mini-banner {
+			background-color: $cerise;
+		}
+	}
+}
+.pf-card {
+	width: 100%;
+	border-radius: 2px;
+	overflow: hidden;
+	background: white;
+	color: $slate;
+	.pf-card-top {
+		position: relative;
+		background: $shamrock;
+		height: 100px;
+		ul {
+			@include flex;
+			@include flex-center-vertical;
+			li {
+				width: 50%;
+				font-size: 14px;
+				font-weight: 600;
+				text-transform: uppercase;
+				&:first-child {
+					padding: 10px 15px;
+					color: white;
+				}
+				&:last-child {
+					@include flex;
+					@include flex-right-center;
+					> span {
+						position: relative;
+						background: white;
+						padding: 10px 15px 10px 0;
+						color: $shamrock;
+						&:before {
+							content: "";
+							position: absolute;
+							top: 0;
+							left: -20px;
+							width: 0;
+							height: 0;
+							border: 20px solid white;
+							border-left-width: 10px!important;
+							border-right-width: 10px!important;
+							border-left-color: transparent;
+						}
+						span {
+							&:after {
+								content: "th";
+							}
+							&[data-rank="1"] {
+								&:after {
+									content: "st";
+								}
+							}
+							&[data-rank="2"] {
+								&:after {
+									content: "nd";
+								}
+							}
+							&[data-rank="3"] {
+								&:after {
+									content: "rd";
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.user-icon {
+			@include center-x;
+			bottom: -84px;
+			border-width: 5px;
+		}
+	}
+	.pf-card-main {
+		padding: 84px 15px 15px;
+		text-align: center;
+		h1 {
+			padding-top: 5px;
+			font-size: 28px;
+			font-weight: 600;
+			&.verified span svg {
+				margin-left: 8px;
+				margin-top: 6px;
+				width: 24px;
+				height: 24px;
+			}
+		}
+		.pf-school {
+			margin-top: 0;
+			font-size: 20px;
+			font-weight: 400;
+		}
+		.pf-rating {
+			margin: 15px auto 0;
+		}
+		.pf-review-amt {
+			display: block;
+			margin-top: -3px;
+		}
+		.pf-card-thumbs {
+			@include flex;
+			margin: 7.5px -7.5px 0;
+			li {
+				padding: 7.5px 7.5px 0;
+				width: calc(100% / 3);
+				a {
+					display: block;
+					position: relative;
+					span {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background-color: $shamrock;
+						background-position: center center;
+						background-size: cover;
+					}
+					svg {
+						fill: none!important;
+					}
+				}
+			}
+		}
+	}
+}
+.pf-card-academic {
+	.pf-card-top {
+		background: $cerise;
+		ul {
+			li {
+				&:last-child {
+					> span {
+						color: $cerise;
+					}
+				}
+			}
+		}
+	}
+	.pf-card-main {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $cerise;
+					}
+				}
+			}
+		}
+		.pf-card-thumbs {
+			li {
+				a {
+					span {
+						background-color: $cerise;
+					}
+				}
+			}
+		}
+	}
+}
+.pf-card-photo {
+	.pf-card-top {
+		background: $moola;
+		ul {
+			li {
+				&:last-child {
+					> span {
+						color: $moola;
+					}
+				}
+			}
+		}
+	}
+	.pf-card-main {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $moola;
+					}
+				}
+			}
+		}
+		.pf-card-thumbs {
+			li {
+				a {
+					span {
+						background-color: $moola;
+					}
+				}
+			}
+		}
+	}
+}
+.pf-card-baking {
+	.pf-card-top {
+		background: $gold;
+		ul {
+			li {
+				&:last-child {
+					> span {
+						color: $gold;
+					}
+				}
+			}
+		}
+	}
+	.pf-card-main {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $gold;
+					}
+				}
+			}
+		}
+		.pf-card-thumbs {
+			li {
+				a {
+					span {
+						background-color: $gold;
+					}
+				}
+			}
+		}
+	}
+}
+.pf-card-household {
+	.pf-card-top {
+		background: $cobalt;
+		ul {
+			li {
+				&:last-child {
+					> span {
+						color: $cobalt;
+					}
+				}
+			}
+		}
+	}
+	.pf-card-main {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $cobalt;
+					}
+				}
+			}
+		}
+		.pf-card-thumbs {
+			li {
+				a {
+					span {
+						background-color: $cobalt;
+					}
+				}
+			}
+		}
+	}
+}
+.pf-card-delivery {
+	.pf-card-top {
+		background: $auburn;
+		ul {
+			li {
+				&:last-child {
+					> span {
+						color: $auburn;
+					}
+				}
+			}
+		}
+	}
+	.pf-card-main {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $auburn;
+					}
+				}
+			}
+		}
+		.pf-card-thumbs {
+			li {
+				a {
+					span {
+						background-color: $auburn;
+					}
+				}
+			}
+		}
+	}
+}
+.pf-card-freelancing {
+	.pf-card-top {
+		background: $orange;
+		ul {
+			li {
+				&:last-child {
+					> span {
+						color: $orange;
+					}
+				}
+			}
+		}
+	}
+	.pf-card-main {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $orange;
+					}
+				}
+			}
+		}
+		.pf-card-thumbs {
+			li {
+				a {
+					span {
+						background-color: $orange;
+					}
+				}
+			}
+		}
+	}
+}
+.pf-card-athletic {
+	.pf-card-top {
+		background: $eggplant;
+		ul {
+			li {
+				&:last-child {
+					> span {
+						color: $eggplant;
+					}
+				}
+			}
+		}
+	}
+	.pf-card-main {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $eggplant;
+					}
+				}
+			}
+		}
+		.pf-card-thumbs {
+			li {
+				a {
+					span {
+						background-color: $eggplant;
+					}
+				}
+			}
+		}
+	}
+}
+.pf-card-tech {
+	.pf-card-top {
+		background: $azure;
+		ul {
+			li {
+				&:last-child {
+					> span {
+						color: $azure;
+					}
+				}
+			}
+		}
+	}
+	.pf-card-main {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $azure;
+					}
+				}
+			}
+		}
+		.pf-card-thumbs {
+			li {
+				a {
+					span {
+						background-color: $azure;
+					}
+				}
+			}
+		}
+	}
+}

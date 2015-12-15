@@ -83,7 +83,7 @@ angular.module('uguru.util.controllers')
 
 
     $scope.$on('modal.shown', function() {
-      if ($scope.guruExperiencesModal.isShown() && !$scope.experience.name.length) {
+      if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown() && !$scope.experience.name.length) {
         $timeout(function() {
           var experienceNameInput = document.getElementById('experience-name-input');
           experienceNameInput.focus();

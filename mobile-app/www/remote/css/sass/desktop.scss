@@ -306,9 +306,7 @@
 								width: 50px;
 								margin-right: -15px;
 							}
-							&:hover,
-							&:active,
-							&:focus {
+							&:hover, &:active, &:focus {
 								background: white;
 								span {
 									color: $gabrielle;
@@ -328,9 +326,7 @@
 									stroke: $gabrielle;
 								}
 							}
-							&:hover,
-							&:active,
-							&:focus {
+							&:hover, &:active, &:focus {
 								background: white;
 							}
 						}
@@ -873,7 +869,7 @@
 						[class*="bg-"]:active {
 							border-bottom-color: rgba(white,.8);
 						}
-						.bg-delivery {
+						.bg-delivery, .bg-bg-auburn {
 							&.important,
 							&:hover,
 							&:focus,
@@ -886,7 +882,7 @@
 								color: $auburn;
 							}
 						}
-						.bg-freelancing {
+						.bg-freelancing, .bg-bg-orange {
 							&.important,
 							&:hover,
 							&:focus,
@@ -899,7 +895,7 @@
 								color: $orange;
 							}
 						}
-						.bg-baking {
+						.bg-baking, .bg-bg-baking {
 							&.important,
 							&:hover,
 							&:focus,
@@ -912,7 +908,7 @@
 								color: $gold;
 							}
 						}
-						.bg-photography {
+						.bg-photography, .bg-bg-photography {
 							&.important,
 							&:hover,
 							&:focus,
@@ -925,7 +921,7 @@
 								color: $moola;
 							}
 						}
-						.bg-tech {
+						.bg-tech, .bg-bg-azure {
 							&.important,
 							&:hover,
 							&:focus,
@@ -938,7 +934,7 @@
 								color: $azure;
 							}
 						}
-						.bg-household {
+						.bg-household, .bg-bg-cobalt {
 							&.important,
 							&:hover,
 							&:focus,
@@ -951,7 +947,7 @@
 								color: $cobalt;
 							}
 						}
-						.bg-athletic {
+						.bg-athletic, .bg-bg-athletic {
 							&.important,
 							&:hover,
 							&:focus,
@@ -964,7 +960,7 @@
 								color: $eggplant;
 							}
 						}
-						.bg-academic {
+						.bg-academic, .bg-bg-cerise {
 							&.important,
 							&:hover,
 							&:focus,
@@ -1823,7 +1819,7 @@
 							height: 36px;
 						}
 					}
-					
+
 					// #{$links} {
 					// 	background: lighten($taupe, 10%);
 					// }
@@ -2460,18 +2456,6 @@
 			}
 		}
 	}
-}
-
-// COMMON CLASSES
-.user-icon {
-	@include round;
-	display: block;
-	margin: 0 auto;
-	width: 128px;
-	height: 128px;
-	background-position: center;
-	background-size: cover;
-	border: 5px solid white;
 }
 
 // CONFIRM
@@ -3281,60 +3265,6 @@
 	}
 }
 
-/* ---------- CUSTOM DROPDOWN */
-.custom-dropdown {
-	position: relative;
-	> div {
-		@include flex;
-		@include flex-center;
-		span {
-			@include flex;
-			@include flex-center;
-			width: 152px;
-			height: 48px;
-			background: lighten($slate, 10%);
-			font-size: 28px;
-			font-weight: 600;
-		}
-		a {
-			display: block;
-			width: 48px;
-			height: 48px;
-			svg {
-				@include svg-stroke(white, 8);
-				background: $shamrock;
-				padding: 12px 10px 8px;
-				width: 48px;
-				height: 48px;
-			}
-		}
-	}
-	> ul {
-		@include center-x;
-		@include opacity(0);
-		width: 200px;
-		height: 0;
-		overflow: hidden;
-		&.active {
-			@include opacity(1);
-			height: auto;
-		}
-		li {
-			width: 152px;
-			background: rgba(lighten($slate, 5%), .9);
-			padding: 15px 0 !important;
-			font-weight: 400;
-			&:hover,
-			&:focus {
-				background: rgba(darken($shamrock, 10%),.9);
-			}
-			&:active {
-				background: rgba(lighten($shamrock, 10%),.9);
-			}
-		}
-	}
-}
-
 /* ---------- TIMER */
 #desktop-timer {
 	.main {
@@ -3390,7 +3320,7 @@
 /* ---------- GENERAL */
 #desktop-general {
 	background: $lake;
-	
+
 	// to be able to click the modal close
 	header.desktop-header {
 		z-index: 1000;
