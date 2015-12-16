@@ -1476,6 +1476,21 @@
 	}
 }
 
+@include keyframes(courses-pop) {
+	0% {
+		@include opacity(0);
+		@include translate-y(-8%);
+	}
+	80% {
+		@include opacity(1);
+		@include translate-y(2%);
+	}
+	100% {
+		@include opacity(1);
+		@include translate-y(0);
+	}
+}
+
 @include keyframes(url-pop) {
 	0% {
 		@include opacity(0);
@@ -1572,6 +1587,68 @@
 }
 .pf-edit {
 	background: lighten($charcoal, 2%);
+	.pf-course-list {
+		@include transition(.3s ease-in-out);
+		@include flex;
+		@include flex-wrap;
+		position: absolute;
+		z-index: 100;
+		width: 100%;
+		margin-top: -15px;
+		margin-left: -15px;
+		padding: 7.5px;
+		background: rgba(lighten($charcoal, 2%),.95);
+    	font-weight: 600;
+		&.hide {
+			@include flex-important;
+			@include opacity(0);
+			@include translate-y(-10%);
+			z-index: -10;
+		}
+		&.show {
+			@include flex-important;
+			@include opacity(1);
+			@include translate-y(0);
+			@include animation-name(courses-pop);
+			@include animation-duration(.4s);
+			@include animation-iteration-count(1);
+			z-index: 100;
+		}
+		li {
+			width: calc(100% / 3);
+			height: 102px;
+			overflow: hidden;
+			padding: 7.5px;
+			a {
+				@include flex;
+				@include flex-center-vertical;
+				display: block;
+				height: 87px;
+				padding: 10px 15px;
+				background: lighten($slate, 20%);
+				&:hover, &:focus {
+					background: $shamrock;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+				span {
+					display: block;
+					line-height: 1.2;
+				}
+				.course-name {
+					font-size: 16px;
+					text-transform: uppercase;
+				}
+				.course-title {
+					max-height: 48px;
+					overflow: hidden;
+					font-size: 20px;
+					font-weight: 700;
+				}
+			}
+		}
+	}
 	section {
 		background: none!important;
 	}
@@ -3075,6 +3152,18 @@
 	}
 }
 .pf-edit.pf-type-academic {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $cerise;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
 	button {
 		background: $cerise;
 		&:hover, &:focus {
@@ -3346,6 +3435,18 @@
 	}
 }
 .pf-edit.pf-type-photo {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $moola;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
 	button {
 		background: $moola;
 		&:hover, &:focus {
@@ -3759,6 +3860,18 @@
 	}
 }
 .pf-edit.pf-type-baking {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $gold;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
 	button {
 		background: $gold;
 		&:hover, &:focus {
@@ -4094,6 +4207,18 @@
 	}
 }
 .pf-edit.pf-type-household {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $cobalt;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
 	button {
 		background: $cobalt;
 		&:hover, &:focus {
@@ -4365,6 +4490,18 @@
 	}
 }
 .pf-edit.pf-type-delivery {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $auburn;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
 	button {
 		background: $auburn;
 		&:hover, &:focus {
@@ -4636,6 +4773,18 @@
 	}
 }
 .pf-edit.pf-type-freelancing {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $orange;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
 	button {
 		background: $orange;
 		&:hover, &:focus {
@@ -4907,6 +5056,18 @@
 	}
 }
 .pf-edit.pf-type-athletic {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $eggplant;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
 	button {
 		background: $eggplant;
 		&:hover, &:focus {
@@ -5178,6 +5339,18 @@
 	}
 }
 .pf-edit.pf-type-tech {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $azure;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
 	button {
 		background: $azure;
 		&:hover, &:focus {

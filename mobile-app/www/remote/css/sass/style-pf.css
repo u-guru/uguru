@@ -1956,6 +1956,126 @@
   stroke-linejoin: round;
 }
 
+@-webkit-keyframes courses-pop {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(-8%);
+    -moz-transform: translateY(-8%);
+    -ms-transform: translateY(-8%);
+    -o-transform: translateY(-8%);
+    transform: translateY(-8%);
+  }
+  80% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(2%);
+    -moz-transform: translateY(2%);
+    -ms-transform: translateY(2%);
+    -o-transform: translateY(2%);
+    transform: translateY(2%);
+  }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-moz-keyframes courses-pop {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(-8%);
+    -moz-transform: translateY(-8%);
+    -ms-transform: translateY(-8%);
+    -o-transform: translateY(-8%);
+    transform: translateY(-8%);
+  }
+  80% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(2%);
+    -moz-transform: translateY(2%);
+    -ms-transform: translateY(2%);
+    -o-transform: translateY(2%);
+    transform: translateY(2%);
+  }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-ms-keyframes courses-pop {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(-8%);
+    -moz-transform: translateY(-8%);
+    -ms-transform: translateY(-8%);
+    -o-transform: translateY(-8%);
+    transform: translateY(-8%);
+  }
+  80% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(2%);
+    -moz-transform: translateY(2%);
+    -ms-transform: translateY(2%);
+    -o-transform: translateY(2%);
+    transform: translateY(2%);
+  }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes courses-pop {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(-8%);
+    -moz-transform: translateY(-8%);
+    -ms-transform: translateY(-8%);
+    -o-transform: translateY(-8%);
+    transform: translateY(-8%);
+  }
+  80% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(2%);
+    -moz-transform: translateY(2%);
+    -ms-transform: translateY(2%);
+    -o-transform: translateY(2%);
+    transform: translateY(2%);
+  }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
 @-webkit-keyframes url-pop {
   0% {
     filter: alpha(opacity=0);
@@ -2191,6 +2311,128 @@
 
 .pf-edit {
   background: #30373a;
+}
+
+.pf-edit .pf-course-list {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  margin-top: -15px;
+  margin-left: -15px;
+  padding: 7.5px;
+  background: rgba(48, 55, 58, 0.95);
+  font-weight: 600;
+}
+
+.pf-edit .pf-course-list.hide {
+  -ms-box-orient: horizontal !important;
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -moz-flex !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transform: translateY(-10%);
+  -moz-transform: translateY(-10%);
+  -ms-transform: translateY(-10%);
+  -o-transform: translateY(-10%);
+  transform: translateY(-10%);
+  z-index: -10;
+}
+
+.pf-edit .pf-course-list.show {
+  -ms-box-orient: horizontal !important;
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -moz-flex !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-animation-name: courses-pop;
+  -moz-animation-name: courses-pop;
+  -o-animation-name: courses-pop;
+  animation-name: courses-pop;
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  -o-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  z-index: 100;
+}
+
+.pf-edit .pf-course-list li {
+  width: calc(100% / 3);
+  height: 102px;
+  overflow: hidden;
+  padding: 7.5px;
+}
+
+.pf-edit .pf-course-list li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  display: block;
+  height: 87px;
+  padding: 10px 15px;
+  background: #6f7d82;
+}
+
+.pf-edit .pf-course-list li a:hover, .pf-edit .pf-course-list li a:focus {
+  background: #69B3A5;
+}
+
+.pf-edit .pf-course-list li a:active {
+  background: #576267;
+}
+
+.pf-edit .pf-course-list li a span {
+  display: block;
+  line-height: 1.2;
+}
+
+.pf-edit .pf-course-list li a .course-name {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.pf-edit .pf-course-list li a .course-title {
+  max-height: 48px;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .pf-edit section {
@@ -4021,6 +4263,14 @@
   border-color: #e6389b;
 }
 
+.pf-edit.pf-type-academic .pf-course-list li a:hover, .pf-edit.pf-type-academic .pf-course-list li a:focus {
+  background: #e6389b;
+}
+
+.pf-edit.pf-type-academic .pf-course-list li a:active {
+  background: #576267;
+}
+
 .pf-edit.pf-type-academic button {
   background: #e6389b;
 }
@@ -4249,6 +4499,14 @@
 
 #desktop-guru-home .pf-type-photo .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
   border-color: #81B566;
+}
+
+.pf-edit.pf-type-photo .pf-course-list li a:hover, .pf-edit.pf-type-photo .pf-course-list li a:focus {
+  background: #81B566;
+}
+
+.pf-edit.pf-type-photo .pf-course-list li a:active {
+  background: #576267;
 }
 
 .pf-edit.pf-type-photo button {
@@ -4714,6 +4972,14 @@
   border-color: #F6C64E;
 }
 
+.pf-edit.pf-type-baking .pf-course-list li a:hover, .pf-edit.pf-type-baking .pf-course-list li a:focus {
+  background: #F6C64E;
+}
+
+.pf-edit.pf-type-baking .pf-course-list li a:active {
+  background: #576267;
+}
+
 .pf-edit.pf-type-baking button {
   background: #F6C64E;
 }
@@ -4988,6 +5254,14 @@
   background: #6f7d82 !important;
 }
 
+.pf-edit.pf-type-household .pf-course-list li a:hover, .pf-edit.pf-type-household .pf-course-list li a:focus {
+  background: #7872e3;
+}
+
+.pf-edit.pf-type-household .pf-course-list li a:active {
+  background: #576267;
+}
+
 .pf-edit.pf-type-household button {
   background: #7872e3;
 }
@@ -5216,6 +5490,14 @@
 
 #desktop-guru-home .pf-type-delivery .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
   border-color: #F04F54;
+}
+
+.pf-edit.pf-type-delivery .pf-course-list li a:hover, .pf-edit.pf-type-delivery .pf-course-list li a:focus {
+  background: #F04F54;
+}
+
+.pf-edit.pf-type-delivery .pf-course-list li a:active {
+  background: #576267;
 }
 
 .pf-edit.pf-type-delivery button {
@@ -5448,6 +5730,14 @@
   border-color: #E5753C;
 }
 
+.pf-edit.pf-type-freelancing .pf-course-list li a:hover, .pf-edit.pf-type-freelancing .pf-course-list li a:focus {
+  background: #E5753C;
+}
+
+.pf-edit.pf-type-freelancing .pf-course-list li a:active {
+  background: #576267;
+}
+
 .pf-edit.pf-type-freelancing button {
   background: #E5753C;
 }
@@ -5678,6 +5968,14 @@
   border-color: #9A5BC5;
 }
 
+.pf-edit.pf-type-athletic .pf-course-list li a:hover, .pf-edit.pf-type-athletic .pf-course-list li a:focus {
+  background: #9A5BC5;
+}
+
+.pf-edit.pf-type-athletic .pf-course-list li a:active {
+  background: #576267;
+}
+
 .pf-edit.pf-type-athletic button {
   background: #9A5BC5;
 }
@@ -5906,6 +6204,14 @@
 
 #desktop-guru-home .pf-type-tech .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
   border-color: #55A4B7;
+}
+
+.pf-edit.pf-type-tech .pf-course-list li a:hover, .pf-edit.pf-type-tech .pf-course-list li a:focus {
+  background: #55A4B7;
+}
+
+.pf-edit.pf-type-tech .pf-course-list li a:active {
+  background: #576267;
 }
 
 .pf-edit.pf-type-tech button {

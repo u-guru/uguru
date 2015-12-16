@@ -55,8 +55,8 @@
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
-				<ul class='desktop-card-list hide ng-class:{"show":search_text.input_focused && courses && courses.length}' style='z-index:100001'>
-					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id'>
+				<ul class='pf-course-list hide ng-class:{"show":search_text.input_focused && courses && courses.length}'>
+					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 9 track by course.id'>
 						<a class="hide ng-class:{'show':course.full_name || course.title}" ng-click='setCourseAndClearInput(course)'>
 							<span>
 								<span class="course-name">{{course.short_name}}</span>
