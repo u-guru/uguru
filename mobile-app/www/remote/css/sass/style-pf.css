@@ -2313,33 +2313,20 @@
   background: #30373a;
 }
 
-.pf-edit .pf-course-list {
+.pf-edit .pf-course-list, .pf-edit .pf-course-none {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
   position: absolute;
-  z-index: 100;
   width: 100%;
   margin-top: -15px;
   margin-left: -15px;
-  padding: 7.5px;
   background: rgba(48, 55, 58, 0.95);
-  font-weight: 600;
 }
 
-.pf-edit .pf-course-list.hide {
+.pf-edit .pf-course-list.hide, .pf-edit .pf-course-none.hide {
   -ms-box-orient: horizontal !important;
   display: -webkit-box !important;
   display: -moz-box !important;
@@ -2357,7 +2344,7 @@
   z-index: -10;
 }
 
-.pf-edit .pf-course-list.show {
+.pf-edit .pf-course-list.show, .pf-edit .pf-course-none.show {
   -ms-box-orient: horizontal !important;
   display: -webkit-box !important;
   display: -moz-box !important;
@@ -2385,6 +2372,41 @@
   -o-animation-iteration-count: 1;
   animation-iteration-count: 1;
   z-index: 100;
+}
+
+.pf-edit .pf-course-none {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  z-index: 90;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.pf-edit .pf-course-list {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  z-index: 100;
+  padding: 7.5px;
+  font-weight: 600;
 }
 
 .pf-edit .pf-course-list li {

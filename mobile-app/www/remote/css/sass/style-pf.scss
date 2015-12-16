@@ -1587,18 +1587,13 @@
 }
 .pf-edit {
 	background: lighten($charcoal, 2%);
-	.pf-course-list {
+	.pf-course-list, .pf-course-none {
 		@include transition(.3s ease-in-out);
-		@include flex;
-		@include flex-wrap;
 		position: absolute;
-		z-index: 100;
 		width: 100%;
 		margin-top: -15px;
 		margin-left: -15px;
-		padding: 7.5px;
 		background: rgba(lighten($charcoal, 2%),.95);
-    	font-weight: 600;
 		&.hide {
 			@include flex-important;
 			@include opacity(0);
@@ -1614,6 +1609,20 @@
 			@include animation-iteration-count(1);
 			z-index: 100;
 		}
+	}
+	.pf-course-none {
+		@include flex;
+		@include flex-center;
+		z-index: 90;
+		padding: 15px;
+		font-weight: 600;
+	}
+	.pf-course-list {
+		@include flex;
+		@include flex-wrap;
+		z-index: 100;
+		padding: 7.5px;
+    	font-weight: 600;
 		li {
 			width: calc(100% / 3);
 			height: 102px;
