@@ -3408,11 +3408,241 @@ input[type=range] {
 	}
 }
 
-/* ---------- PROFILE CARDS */
-.pf-card-container {
+/* ---------- CARDS */
+.pf-card-container, .school-card-container, .paper-container {
 	@include flex;
+	@include flex-wrap;
 	@include flex-center;
 	padding: 15px;
+}
+.paper-container {
+	main {
+		display: none;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		padding: 15px 0;
+		background: #F4C2A7;
+		.paper {
+			position: relative;
+			max-width: 800px;
+			margin: 0 auto;
+			svg {
+				rect {
+					fill: white;
+					width: 100%;
+					height: 100%;
+				}
+				path {
+					stroke-width: 2px;
+					&:not(:last-child) {
+						@include opacity(.3);
+						stroke: $lake;
+					}
+					&:last-child {
+						stroke: $auburn;
+					}
+				}
+			}
+			h1 {
+				position: absolute;
+				top: 7.7%;
+				left: 15.5%;
+				width: 84.5%;
+				padding: 0 15px;
+				color: $slate;
+				font-size: 20px;
+				font-weight: 600;
+				line-height: 2.14;
+			}
+			div {
+				position: absolute;
+				top: 11.7%;
+				left: 15.5%;
+				width: 84.5%;
+				padding: 0 15px;
+				color: $slate;
+				font-size: 18px;
+				font-weight: 400;
+				line-height: 2.14;
+			}
+			&.bottom-align {
+				h1, div {
+					padding-top: 1%;
+				}
+			}
+		}
+	}
+	section {
+		width: 100%;
+	}
+	@media screen and (min-width: 768px) {
+		padding: 0;
+		main {
+			display: block;
+		}
+		main + section {
+			display: none;
+		}
+	}
+}
+.notecard {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		rect {
+			width: 100%;
+			&:first-child {
+				fill: $smoke;
+				height: 100%;
+			}
+			&:not(:first-child) {
+				@include opacity(.3);
+				fill: $lake;
+				height: 2px;
+			}
+			&:last-child {
+				fill: $auburn;
+			}
+		}
+	}
+	h1 {
+		position: absolute;
+		top: 12%;
+		left: 0;
+		padding: 0 15px;
+		color: $charcoal;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 165%;
+	}
+	div {
+		position: absolute;
+		top: 29%;
+		left: 0;
+		padding: 0 15px;
+		color: $charcoal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 165%;
+	}
+	@media screen and (min-width: 375px) {
+		h1 {
+			font-size: 20px;
+			line-height: 150%;
+		}
+		div {
+			font-size: 18px;
+			line-height: 150%;
+		}
+	}
+	@media screen and (min-width: 414px) {
+		h1, div {
+			line-height: 170%;
+		}
+	}
+	@media screen and (min-width: 430px) {
+		h1, div {
+			line-height: 180%;
+		}
+	}
+}
+.school-card {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	border-radius: 10px;
+	overflow: hidden;
+	.rect {
+		display: block;
+		width: 100%;
+		fill: none;
+	}
+	.school-card-inside {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		.school-card-top {
+			position: relative;
+			z-index: 3;
+			height: 30%;
+			background-color: $slate;
+			border-radius: 10px 10px 0 0;
+			.school-card-icon {
+				@include center-x;
+				@include round;
+				display: block;
+				top: 16px;
+				width: 96px;
+				height: 96px;
+				background-position: center;
+				background-size: cover;
+				background-color: white;
+				border: 3px solid $slate;
+			}
+		}
+		.school-card-main {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			position: relative;
+			height: 70%;
+			background: white;
+			border-radius: 0 0 10px 10px;
+			overflow: hidden;
+			color: $slate;
+			.school-card-map {
+				@include opacity(.2);
+				@include center-x;
+				bottom: 0;
+				z-index: 1;
+				width: 100%;
+				height: 171%;
+				border-radius: 0 0 10px 10px;
+				overflow: hidden;
+				img {
+					display: block;
+					width: 100%;
+				}
+			}
+			.school-card-color {
+				@include opacity(.1);
+				position: absolute;
+				z-index: 2;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 0 0 10px 10px;
+				overflow: hidden;
+			}
+			.school-card-info {
+				position: relative;
+				z-index: 4;
+				padding-top: 40px;
+			}
+			h1, h2 {
+				text-align: center;
+				margin: 0!important;
+			}
+			h1 {
+				font-size: 28px;
+				font-weight: 900;
+			}
+			h2 {
+				font-size: 18px;
+				font-weight: 600;
+			}
+		}
+	}
 }
 .pf-card-mini {
 	@include flex;
@@ -3481,6 +3711,8 @@ input[type=range] {
 }
 .pf-card {
 	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
 	border-radius: 2px;
 	overflow: hidden;
 	background: white;

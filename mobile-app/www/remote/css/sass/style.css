@@ -717,6 +717,21 @@ section {
   text-align: center;
 }
 
+.onboarding-search .prefix {
+  top: 4px;
+}
+
+.onboarding-search .prefix svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
 .university-view {
   background: #2B3234;
 }
@@ -729,6 +744,15 @@ section {
   font-size: 28px !important;
   text-transform: lowercase;
   padding-bottom: 30px;
+}
+
+.university-view header.third .onboarding-search input {
+  width: calc(100% - 48px - 15px);
+}
+
+.university-view header.third .onboarding-search input, .university-view header.third .onboarding-search label {
+  color: white !important;
+  border-color: white !important;
 }
 
 .university-view header.third .geolocation-icon {
@@ -1259,6 +1283,15 @@ section {
   margin-top: 0;
   font-size: 20px;
   padding: 0 15px 30px;
+}
+
+.courses-view header.third .onboarding-search input {
+  width: calc(100% - 48px - 15px);
+}
+
+.courses-view header.third .onboarding-search input, .courses-view header.third .onboarding-search label {
+  color: white !important;
+  border-color: white !important;
 }
 
 @media screen and (max-height: 568px) {
