@@ -362,10 +362,10 @@
 		}
 	}
 }
+.pf-type:not(.pf-edit) section {
+	background: $slate;
+}
 .pf-type {
-	section {
-		background: $slate;
-	}
 	header.third {
 		@include flex;
 		@include flex-center;
@@ -1296,8 +1296,44 @@
 		padding: 7.5px 0!important;
 		margin: 0 -7.5px;
 		li {
-			width: calc(100% / 5);
+			width: 25%;
 			padding: 7.5px;
+			.bg-fb {
+				background: $facebook!important;
+				&:hover, &:focus {
+					background: lighten($facebook, 15%)!important;
+				}
+				&:active {
+					background: darken($facebook, 5%)!important;
+				}
+			}
+			.bg-li {
+				background: $linkedin!important;
+				&:hover, &:focus {
+					background: lighten($linkedin, 5%)!important;
+				}
+				&:active {
+					background: darken($linkedin, 5%)!important;
+				}
+			}
+			.bg-in {
+				background: $instagram!important;
+				&:hover, &:focus {
+					background: lighten($instagram, 10%)!important;
+				}
+				&:active {
+					background: darken($instagram, 5%)!important;
+				}
+			}
+			.bg-tw {
+				background: $twitter!important;
+				&:hover, &:focus {
+					background: lighten($twitter, 20%)!important;
+				}
+				&:active {
+					background: darken($twitter, 5%)!important;
+				}
+			}
 			.guru-popup {
 				@include transition(.15s ease-in-out);
 				position: absolute;
@@ -1323,17 +1359,17 @@
 					width: 0;
 					height: 0;
 					border: 15px solid transparent;
-					border-bottom-color: rgba(lighten($slate, 20%),.9);
+					border-bottom-color: rgba(lighten($slate, 20%),.95);
 					@media screen and (min-width:768px) {
 						@include center-x;
 					}
 				}
 				h1 {
-					background: rgba(lighten($slate, 20%),.9);
+					background: rgba(lighten($slate, 20%),.95);
 					font-size: 20px;
 				}
 				> div {
-					background: rgba(lighten($slate, 20%),.9);
+					background: rgba(lighten($slate, 20%),.95);
 					div {
 						@include flex;
 						@include flex-center;
@@ -1344,57 +1380,67 @@
 						}
 						span {
 							display: block;
-							padding: 5px 3px 5px 10px;
+							padding: 5px 3px 5px 0;
+							font-weight: 600!important;
 						}
 						input {
 							width: auto;
 							margin-bottom: 0!important;
 							font-size: 18px;
+							font-weight: 600!important;
 						}
 					}
 				}
 				button {
 					position: relative;
 					z-index: 100;
-					&.bg-fb {
-						background: $facebook!important;
-					}
-					&.bg-li {
-						background: $linkedin!important;
-					}
-					&.bg-in {
-						background: $instagram!important;
-					}
-					&.bg-tw {
-						background: $twitter!important;
-					}
 				}
 			}
 			&:nth-child(1) {
 				.guru-popup:before {
-					left: calc(10% - 6px);
+					left: calc(12.5% - 6px);
 				}
 			}
 			&:nth-child(2) {
 				.guru-popup:before {
-					left: calc(30% - 3px);
+					left: calc(37.5% - 3px);
 				}
 			}
 			&:nth-child(3) {
 				.guru-popup:before {
-					left: 50%;
+					left: calc(62.5% + 3px);
 				}
 			}
 			&:nth-child(4) {
 				.guru-popup:before {
-					left: calc(70% + 3px);
+					left: calc(87.5% + 6px);
 				}
 			}
-			&:nth-child(5) {
-				.guru-popup:before {
-					left: calc(90% + 6px);
-				}
-			}
+			// &:nth-child(1) {
+			// 	.guru-popup:before {
+			// 		left: calc(10% - 6px);
+			// 	}
+			// }
+			// &:nth-child(2) {
+			// 	.guru-popup:before {
+			// 		left: calc(30% - 3px);
+			// 	}
+			// }
+			// &:nth-child(3) {
+			// 	.guru-popup:before {
+			// 		left: 50%;
+			// 	}
+			// }
+			// &:nth-child(4) {
+			// 	.guru-popup:before {
+			// 		left: calc(70% + 3px);
+			// 	}
+			// }
+			// &:nth-child(5) {
+			// 	.guru-popup:before {
+			// 		left: calc(90% + 6px);
+			// 	}
+			// }
 			@media screen and (min-width:768px) {
 				position: relative;
 				width: auto!important;
@@ -1508,29 +1554,35 @@
 	@include opacity(0);
 	display: none;
 	padding: 15px;
-	background: rgba(lighten($slate, 10%), .9);
+	background: rgba(lighten($slate, 10%), .95);
 	text-align: center;
 }
 .pf-mobile-edit {
 	button {
-		background: rgba(lighten($slate, 10%), .9);
+		background: rgba(lighten($slate, 10%), .95);
 		font-weight: 600;
 		&:hover, &:focus {
 			@include opacity(1);
-			background: rgba(lighten($slate, 20%), .9);
+			background: rgba(lighten($slate, 20%), .95);
 		}
 		&:active, &.activated {
-			background: rgba(lighten($slate, 10%), .9);
+			background: rgba(lighten($slate, 10%), .95);
 		}
 	}
 }
 .pf-edit {
 	background: lighten($charcoal, 2%);
+	section {
+		background: none!important;
+	}
 	header {
 		background: lighten($charcoal, 5%);
 		h1 {
 			font-size: 28px!important;
 			text-transform: lowercase;
+			span {
+				text-transform: uppercase;
+			}
 		}
 		.header-nav a {
 			height: 58px;
@@ -1609,18 +1661,23 @@
 			width: 100%;
 			margin-top: 0!important;
 			.pf-item-selected {
-				margin-top: 15px;
+				margin: 15px 0;
 				h1 {
+					margin: 0!important;
 					font-size: 28px;
 					font-weight: 900;
 					text-align: left;
 					text-transform: none!important;
-					margin: 0!important;
 				}
 				h2 {
+					margin: 0!important;
 					font-size: 20px;
+					font-weight: 600;
 					text-align: left;
 					text-transform: uppercase;
+				}
+				.desktop-input-close-icon {
+					margin: -5px -20px 0 0;
 				}
 			}
 			.input-field {
@@ -2417,6 +2474,7 @@
 		.pf-checklist {
 			padding: 15px;
 			> li:not(.pf-checklist-full) {
+				position: relative;
 				width: 50%;
 				height: 50%;
 				padding: 15px;
@@ -2435,27 +2493,39 @@
 					height: 256px!important;
 				}
 			}
-			> li:nth-child(odd) {
+			> li {
 				.pf-checklist-full {
-					right: 0;
+					width: calc(200% + 30px)!important;
+					padding-bottom: 60px!important;
 				}
-			}
-			> li:nth-child(even) {
-				.pf-checklist-full {
-					left: 0;
+				&:nth-child(odd) {
+					.pf-checklist-full {
+						right: 0;
+					}
+				}
+				&:nth-child(even) {
+					.pf-checklist-full {
+						left: 0;
+					}
+				}
+				&.pf-checklist-add {
+					.pf-checklist-full {
+						top: 5px;
+						left: 15px;
+						width: calc(200% - 30px)!important;
+					}
 				}
 			}
 			.pf-checklist-full {
 				position: absolute;
 				top: 0;
-				width: 100%!important;
 				z-index: 1000;
 				// padding: 15px;
 				.pf-edit {
 					background: rgba(lighten($charcoal, 2%),.95);
 				}
-				.pf-item-header {
-					background-color: $charcoal;
+				header {
+					background: rgba($charcoal,.7)!important;
 				}
 				.pf-tab-container {
 					height: auto;

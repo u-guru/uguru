@@ -41,7 +41,7 @@ angular.module('uguru.guru.controllers')
     }
 
 
-
+    
     $scope.profile = {edit_mode:true, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
