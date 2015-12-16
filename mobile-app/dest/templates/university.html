@@ -3,8 +3,8 @@
 		<div ng-include="img_base + BASE + 'templates/access.html'"></div>
 	</u-slide>
 	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
-		<ion-view class='uguru-view university-view'>
-			<main id="desktop-university" class="desktop-mode desktop-search" ng-if='desktopMode'>
+		<ion-view class='uguru-view university-view hs-view'>
+			<main id="desktop-university" class="desktop-mode desktop-search hs-view" ng-if='desktopMode'>
 			    <span data-velocity id="main-logo-container" ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 				<header data-velocity class="desktop-header">
 					<a class="desktop-header-back" ng-click='backToAccess()'>

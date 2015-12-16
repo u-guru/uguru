@@ -1,5 +1,297 @@
 @import 'mixin';
 
+/* ---------- APPLY */
+#apply {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: white;
+	section {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		&#apply-fullstack {
+			header {
+				@include flex;
+				@include flex-center;
+				background: $lake;
+				height: 30%;
+				h1 {
+					font-size: 48px;
+					font-weight: 700;
+					line-height: 1.2;
+					text-align: center;
+					text-transform: none;
+				}
+				#apply-desk {
+					width: 321px;
+				    height: 195px;
+				    position: absolute;
+				    bottom: 0;
+				}
+			}
+			.main {
+				height: 70%;
+				background: $smoke;
+				overflow: hidden;
+				ul {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					width: 100%;
+					max-width: 815px;
+					height: 100%;
+					margin: 0 auto;
+					padding: 7.5px;
+					li {
+						@include flex;
+						@include flex-center;
+						position: relative;
+						width: calc(100% / 3);
+						height: 50%;
+						padding: 7.5px;
+						div {
+							width: 100%;
+							height: 100%;
+							svg {
+								display: block;
+								height: 100%;
+								width: auto;
+								margin: 0 auto;
+							}
+						}
+						.apply-icon {
+							@include flex;
+							@include flex-center;
+							@include center-x;
+    						bottom: calc(7.5px + 4%);
+							width: 66%;
+						    height: 61%;
+						    padding-left: 5%;
+							svg {
+								width: auto;
+								height: 75%;
+								path {
+									@include svg-stroke(white, 3);
+								}
+							}
+						}
+						.apply-label {
+							@include flex;
+							@include flex-center;
+							@include center-x;
+							top: 7.5px;
+							padding-left: 5%;
+							width: 66%;
+							height: 28%;
+							font-size: 18px;
+							font-weight: 600;
+							text-align: center;
+						}
+						&#apply-analytics {
+							.color {
+								fill: $cobalt;
+							}
+						}
+						&#apply-ux {
+							.color {
+								fill: $azure;
+							}
+						}
+						&#apply-business {
+							.color {
+								fill: $moola;
+							}
+						}
+						&#apply-media {
+							.color {
+								fill: $lake;
+							}
+						}
+						&#apply-marketing {
+							.color {
+								fill: $shamrock;
+							}
+						}
+						&#apply-support {
+							.color {
+								fill: $gold;
+							}
+						}
+					}
+				}
+			}
+		}
+		&#apply-perks {
+			position: relative;
+			background: mix(white, $gold, 70%);
+			header {
+				@include flex;
+				@include flex-center;
+				position: absolute;
+				top: 8%;
+				right: -15px;
+				width: 44%;
+				height: 41%;
+				background: white;
+				border: 15px solid $campus;
+				h1 {
+					color: $slate;
+					font-size: 48px;
+					font-weight: 700;
+					line-height: 1.2;
+					text-align: center;
+					text-transform: none;
+				}
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					left: -30px;
+					bottom: -30px;
+					width: calc(100% + 30px);
+					height: 15px;
+					background: #d8d8d8;
+				}
+			}
+			.main {
+				#apply-table {
+					position: absolute;
+					bottom: 19%;
+					left: 0;
+					width: 63%;
+					height: calc(4% + 5px);
+					background: #806051;
+					border-top: 5px solid #b98e5d;
+					&:after {
+						content: "";
+						display: block;
+						position: absolute;
+						right: 5%;
+						bottom: -800%;
+						width: 5%;
+						height: 800%;
+						background: #065c70;
+					}
+					.apply-book {
+						position: absolute;
+						height: 313%;
+						div {
+							height: 100%;
+							svg {
+								display: block;
+								width: auto;
+								height: 100%;
+							}
+						}
+						.apply-icon {
+							@include flex;
+							@include flex-center;
+							position: absolute;
+							top: 0;
+							left: 14%;
+							height: 100%;
+							svg {
+								width: auto;
+								height: 75%;
+								padding: 5px;
+								path {
+									@include svg-stroke(white, 3);
+								}
+							}
+						}
+						.apply-label {
+							@include flex;
+							@include flex-center;
+							position: absolute;
+							top: 0;
+						    height: 100%;
+						    left: 35%;
+						    width: 55%;
+							color: $campus;
+							font-size: 24px;
+							font-weight: 600;
+						}
+						&:nth-child(1) {
+							@include center-x;
+							top: calc(-313% - 6px);
+							div {
+								svg {
+									.color {
+										fill: $shamrock!important;
+									}
+								}
+							}
+							.apply-label {
+								color: $shamrock;
+							}
+						}
+						&:nth-child(2) {
+							@include center-x;
+							top: calc(-313% * 2 - 7px);
+							margin-left: 2%;
+							div {
+								svg {
+									.color {
+										fill: $lake!important;
+									}
+								}
+							}
+							.apply-label {
+								color: $lake;
+							}
+						}
+						&:nth-child(3) {
+							@include center-x;
+							top: calc(-313% * 3 - 8px);
+							div {
+								svg {
+									.color {
+										fill: darken($shamrock, 20%)!important;
+									}
+								}
+							}
+							.apply-label {
+								color: darken($shamrock, 20%);
+							}
+						}
+						&:nth-child(4) {
+							@include center-x;
+							top: calc(-313% * 4 - 9px);
+							margin-left: -3%;
+							div {
+								svg {
+									.color {
+										fill: $shamrock!important;
+									}
+								}
+							}
+							.apply-label {
+								color: $shamrock;
+							}
+						}
+						&:nth-child(5) {
+							@include center-x;
+							top: calc(-313% * 5 - 10px);
+							margin-left: 2%;
+							div {
+								svg {
+									.color {
+										fill: lighten($lake, 10%)!important;
+									}
+								}
+							}
+							.apply-label {
+								color: lighten($lake, 10%);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 /* ---------- DISCOVER */
 #discover {
 	background: $smoke;

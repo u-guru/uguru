@@ -32,9 +32,11 @@ angular.module('uguru.rest')
         console.log('validaitng..', pi_obj)
         if (!pi_obj.course || !pi_obj.course.id) {
             LoadingService.showMsg('Please add a course to complete', 2000);
+            return false
         }
         else if (!pi_obj.description || !pi_obj.description.length) {
             LoadingService.showMsg('Please add a small short background description', 2000);
+            return false;
         }
 
         return true;

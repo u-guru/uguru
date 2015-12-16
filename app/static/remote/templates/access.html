@@ -1,10 +1,10 @@
-<ion-view class='uguru-view access-view full-xy overflow-hidden' ion-scroll='false' ng-controller='AccessController' cache-view='!LOCAL'>
-    <main id="desktop-access" class="desktop-mode" ng-if='desktopMode'>
+<ion-view class='uguru-view access-view full-xy overflow-hidden hs-view' ion-scroll='false' ng-controller='AccessController' cache-view='!LOCAL'>
+    <main id="desktop-access" class="desktop-mode hs-view" ng-if='desktopMode'>
         <a class="back-link absolute top-0 left-0 m30xy" ng-if="desktopMode &amp;&amp; !user.id" href='https://www.uguru.me'>
             Home
         </a>
         <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
-        <div class="main">
+        <div class="main hs-view">
             <div id="desktop-access-code" ng-init='getLoadTime()'>
                 <span ng-include="img_base + BASE + 'templates/svg/logo-title.html'"></span>
                 <p id='input-error-text' class='access-message' >{{access.consoleMsg}}</p>

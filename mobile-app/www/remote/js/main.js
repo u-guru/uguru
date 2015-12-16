@@ -106,6 +106,17 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'AddUniversityCtrl'
   }).
 
+  state('root.essay-guru-access', {
+        url: '/essay-university',
+        templateUrl: BASE + 'templates/university.html',
+        controller: 'AddUniversityCtrl',
+  }).
+  state('root.essay-home', {
+        url: '/essay-home',
+        templateUrl: BASE + 'templates/essay.student.home.html',
+        controller: "EssayStudentController"
+  }).
+
   state('root.timeline', {
         url: '/timeline',
         templateUrl: BASE + 'templates/timeline.html',
@@ -277,6 +288,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.profile-card', {
     url:'/profile-card',
     templateUrl: BASE + 'templates/profile.card.html'
+  }).
+  state('root.university-card', {
+    url:'/university-card',
+    templateUrl: BASE + 'templates/university.card.html',
+    controller: 'AddUniversityCtrl'
+  }).
+  state('root.paper', {
+    url:'/paper',
+    templateUrl: BASE + 'templates/paper.html'
   }).
   state('root.color-picker', {
     url:'/color-picker',

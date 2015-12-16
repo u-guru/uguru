@@ -7,6 +7,26 @@
     .u-timeline-list  li{
         height:200px;
     }
+    .user-photo {
+        height:40px;
+        width:40px;
+    }
+    .timeline-tag {
+        margin:4px;
+        padding:4px 16px;
+        font-size:12px;
+    }
+    .preview-card {
+        background-color:rgba(0,0,0,0.7);
+        height:100px;
+        width:100px;
+        border: 3px dashed white;
+        border-radius:16px;
+        margin:5px 10px 5px 0;
+    }
+    .attachment-name {
+        font-size:18px;
+    }
 </style>
 <main id="discover" ng-controller="TimelineController" class='full-xy'>
 	<header class='fourth bg-shamrock flex-wrap-center'>
@@ -16,22 +36,24 @@
 
     <section class='relative full-xy'>
         <ul class='flex-wrap u-timeline-list'>
-            <li class='milestone-item bg-azul relative full-x flex-wrap-center'>
-                <div class='full-x metadata'>
-                    <ul class='ugrid-3'>
-                        <li class='bg-cerise weight-700'>
-                            Dec 15, 2015
-                        </li>
-                        <li class='txt-charcoal'>
-                            Samir M.
-                        </li>
-                        <li class='txt-smoke bg-charcoal'>
-                            milestone achieved
-                        </li>>
-                    </ul>
+            <li class='milestone-item' ng-repeat = 'event in timeline.events'>
+                <div class='user-card flex-wrap-left'>
+                    <img class='user-photo' ng-src="{{event.announcer.profile_url}}">
+                    <div class='full-x text-left weight-700 txt-charcoal'> {{event.announcer.name}} </div>
+                    <small class='full-x text-left weight-400 txt-slate'> {{event.announcer.role}} </small>
                 </div>
-                <div class='full-x'>
-                    <p class='text-left'>Gurus can now set up their essay portfolios to help students last-second with college apps.</p>
+                <div class='timeline-content full-x'>
+                    <h2 class='tag weight-700 bg-shamrock txt-smoke'>{{event.formatted_time}} </h2>
+                    <h4 ng-bind-html="event.title"></h4>
+                    <p>{{event.body}}</p>
+                    <div class='full-x flex-wrap'>
+                        <span class='preview-card txt-shamrock flex-wrap-center' ng-repeat="attachment in event.attachments">
+                            <span class='weight-500 uppercase text-center attachment-name'>{{attachment}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <span class='txt-smoke bg-campus timeline-tag uppercase weight-700' ng-repeat='tag in event.tags'>&nbsp;{{tag}}&nbsp;</span>
                 </div>
             </li>
         </ul>

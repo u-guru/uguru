@@ -24,7 +24,6 @@ def verify_password(email, password):
     return flask_bcrypt.check_password_hash(user.password, password)
 
 
-
 class VersionView(restful.Resource):
     def get(self):
         version_dict = {
@@ -833,7 +832,7 @@ class UserOneView(restful.Resource):
             from pprint import pprint
             pprint(pi_json)
             ## all done in the model
-            pi.updatePortfolioItem(pi_json)
+            pi.updatePortfolioItem(user, pi_json)
 
         if request.json.get('remove_guru_portfolio_item'):
             pi_json = request.json.get('portfolio_item')

@@ -17,7 +17,7 @@ angular.module('uguru.user', [])
 
     var calcAverage = function(ratings_arr, is_guru) {
                 if (!ratings_arr) {
-                    return;
+                    return 0;
                 }
 
                 if (ratings_arr.length === 0)  {
@@ -31,10 +31,10 @@ angular.module('uguru.user', [])
                         result += ratings_arr[i].student_rating;
                     }
                 }
-                result = (result / ratings_arr.length)
+                result = (result / ratings_arr.length) || 0
                 result = {
-                    'float':result,
-                    'int': parseInt(result),
+                    'float':result || 0,
+                    'int': parseInt(result || 0),
                     'half': Math.abs(parseInt(result) - result) === 0.5
                 }
                 return result;
@@ -477,7 +477,7 @@ angular.module('uguru.user', [])
 
             var guru_ratings = user.guru_ratings;
             user.guru_rating = calcAverage(guru_ratings, true);
-            user.guru_avg_rating = user.guru_rating.float;
+            user.guru_avg_rating = user.guru_rating.float || 0;
 
             if (!user.guru_avg_rating) {
                 user.guru_avg_rating = 0;
@@ -736,7 +736,11 @@ angular.module('uguru.user', [])
         $scope.user.official_guru_score = user.official_guru_score;
         $scope.user.estimated_guru_rank_last_updated = user.estimated_guru_rank_last_updated;
         $scope.user.official_guru_rank_last_updated = user.official_guru_rank_last_updated;
-        $scope.user.guru_avg_rating = Math.round(user.guru_avg_rating.float * 10) / 10;
+        if (user.guru_avg_rating) {
+            $scope.user.guru_avg_rating = Math.round(user.guru_avg_rating.float * 10) / 10;
+        } else {
+            $scope.user.guru_avg_rating = 0;
+        }
         $scope.user.guru_rating = user.guru_rating
         $scope.user.student_avg_rating = user.student_avg_rating;
         $scope.user.student_ratings = user.student_ratings;

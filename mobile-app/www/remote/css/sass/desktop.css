@@ -361,6 +361,43 @@
         .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul {
           background: rgba(255, 255, 255, 0.3);
           min-width: 250px; }
+          .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            background: rgba(87, 98, 103, 0.9); }
+            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup h2 {
+              font-size: 20px;
+              font-weight: 600;
+              text-align: center; }
+            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup div {
+              width: 100% !important;
+              background: none !important; }
+            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup > div {
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center; }
+              .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup > div > div {
+                -ms-box-orient: horizontal;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -moz-flex;
+                display: -webkit-flex;
+                display: flex;
+                -ms-flex-flow: row wrap;
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+                height: auto !important; }
           .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a {
             -ms-box-orient: horizontal;
             display: -webkit-box;

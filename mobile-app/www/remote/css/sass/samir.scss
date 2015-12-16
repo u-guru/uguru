@@ -396,26 +396,14 @@ ul.mobile-cards-container li {
 	h2 {
 		font-size:20px !important;
 	}
-	a.header-nav-back {
-
-			top:12.5px;
-			left:-5px;
-			position:absolute;
-	}
 }
 
 
 body.platform-ios
 #mobile-guru-home
 {
-	height: calc(100% - 20px) !important;
+	height: calc(100% - 20px)!important;
 	margin-top: 20px;
-	a.header-nav-back {
-
-			top:16px;
-			left:-5px;
-			position:absolute;
-	}
 }
 
 
@@ -467,4 +455,29 @@ body.platform-ios
 
 .min-height-modal-desktop {
 	min-height: 800px;
+}
+
+
+.hs-view {
+	background: url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center fixed !important;
+	-webkit-background-size:100% 100% !important;
+	-moz-background-size:100% 100% !important;
+	-o-background-size:100% 100% !important;
+	background-size:100% 100% !important;
+
+	&#desktop-university {
+		div.main.default {
+			margin-top:20% !important;
+
+			.university-content-header h1 {
+				font-size:48px;
+				margin-top:-7.5% !important;
+			}
+		}
+	}
+}
+
+
+#label-course-input-1:hover {
+	display:none;
 }
