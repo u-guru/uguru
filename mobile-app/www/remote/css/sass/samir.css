@@ -374,4 +374,16 @@ body.platform-ios
 .min-height-modal-desktop {
   min-height: 800px; }
 
+.hs-view {
+  background: url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center fixed !important;
+  -webkit-background-size: 100% 100% !important;
+  -moz-background-size: 100% 100% !important;
+  -o-background-size: 100% 100% !important;
+  background-size: 100% 100% !important; }
+  .hs-view#desktop-university div.main.default {
+    margin-top: 20% !important; }
+    .hs-view#desktop-university div.main.default .university-content-header h1 {
+      font-size: 48px;
+      margin-top: -7.5% !important; }
+
 /*# sourceMappingURL=samir.css.map */

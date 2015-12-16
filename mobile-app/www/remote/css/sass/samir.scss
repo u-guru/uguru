@@ -470,6 +470,22 @@ body.platform-ios
 }
 
 
-// .hs-view {
-// 	background-color:black !important;
-// }
+.hs-view {
+	background: url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center fixed !important;
+	-webkit-background-size:100% 100% !important;
+	-moz-background-size:100% 100% !important;
+	-o-background-size:100% 100% !important;
+	background-size:100% 100% !important;
+
+	&#desktop-university {
+		div.main.default {
+			margin-top:20% !important;
+
+			.university-content-header h1 {
+				font-size:48px;
+				margin-top:-7.5% !important;
+			}
+		}
+	}
+}
+

@@ -15,4 +15,4 @@ angular.module('uguru.util.controllers')
     }
 
 
-])
+]);

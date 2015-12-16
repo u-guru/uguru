@@ -24,7 +24,6 @@ def verify_password(email, password):
     return flask_bcrypt.check_password_hash(user.password, password)
 
 
-
 class VersionView(restful.Resource):
     def get(self):
         version_dict = {

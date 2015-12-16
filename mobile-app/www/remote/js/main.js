@@ -106,10 +106,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'AddUniversityCtrl'
   }).
 
-  state('root.essay-university', {
+  state('root.essay-guru-access', {
         url: '/essay-university',
         templateUrl: BASE + 'templates/university.html',
         controller: 'AddUniversityCtrl',
+  }).
+  state('root.essay-home', {
+        url: '/essay-home',
+        templateUrl: BASE + 'templates/essay.student.home.html',
+        controller: "EssayStudentController"
   }).
 
   state('root.timeline', {
