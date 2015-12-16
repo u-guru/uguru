@@ -1,8 +1,8 @@
 <div class='pf-type pf-modal pf-edit pf-type-{{user.academic_shop.category.name | lowercase}} bg-slate full-y'>
 	<section>
 		<header class="text-center no-photo-list">
-			<h1 class="hide ng-class:{'show':portfolio_item.visible}">edit {{portfolio_item.course.short_name}}</h1>
-			<h1 class="hide ng-class:{'show':!portfolio_item.visible}">add a course</h1>
+			<h1 class="hide ng-class:{'show':portfolio_item.id}">edit {{portfolio_item.course.short_name}}</h1>
+			<h1 class="hide ng-class:{'show':!portfolio_item.course.id}">add a course</h1>
 			<div class="header-nav">
 				<a class="header-close" ng-click="closeEditPortfolioItemModal(portfolio_item)">
 					<svg viewBox="0 0 100 100">
@@ -24,38 +24,38 @@
 				<label for="pf-course-check">This is a university course</label>
 			</div>
 			<div class='pf-item-search' ng-controller='CoursesController'>
-				<div class='pf-item-selected relative' ng-if="portfolio_item.course.id">
-					<!-- <h2>{{portfolio_item.course.short_name}}</h2>
-					<h1>{{portfolio_item.course.department}} {{portfolio_item.course.code}} </h1> -->
-					<a class="side-icon desktop-input-close-icon activated" ng-click="clearInputAndResetCourse()">
+				<div class='pf-item-selected relative hide ng-class:{"show":portfolio_item.course.id}' ng-if="portfolio_item.course.id">
+					<h2>{{portfolio_item.course.short_name}}</h2>
+					<h1>{{portfolio_item.course.department}} {{portfolio_item.course.code}} </h1>
+					<a class="side-icon desktop-input-close-icon activated" ng-click="clearCourseAndFocusInput()">
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
-				<div class="input-field" ng-if="!portfolio_item.course.id">
+				<div class="input-field hide ng-class:{'show':!portfolio_item.course.id}">
 					<i class="material-icons prefix">
 	                    <svg viewBox="0 0 100 100" >
 	                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 	                    </svg>
 	                </i>
-					<input type="text" id='course-input-1' ng-disabled='portfolio_item.visible' name="course-input-1" class="bg-charcoal"
+					<input type="text" id='course-input-1' name="course-input-1" style='z-index:1000;' class="bg-charcoal"
 		                    fast-matcher
 		                    fast-matcher-source="courses"
 		                    fast-matcher-output="search_text.matching"
 		                    fast-matcher-properties="short_name, full_name, variations"
 		                    ng-disabled="!courses || !courses.length"
 		                    ng-model="search_text.course"
-		                    ng-focus="searchInputFocus = true"
-		                    ng-blur="searchInputBlur()"
+		                    ng-focus="search_text.input_focused = true;"
+		                    ng-blur="blurSearchInput()"
 		                    placeholder="" />
-		            <label for="course-input-1" class='ng-class:{"hide": portfolio_item.course.id || !courses.length}'>
-						<span class='ng-class:{"hide": portfolio_item.course.id}'> search among {{courses.length}} popular courses </span>
-						<span class='ng-class:{"hide": portfolio_item.course.id || courses.length}'> search popular courses </span>
+		            <label for="course-input-1" id="label-course-input-1" ng-click='search_text.input_focused = true;' class='ng-class:{"hide": search_text.input_focused}' style='z-index:1;'>
+						<span class='ng-class:{"hide": portfolio_item.course.id || !courses.length}'> search among {{courses.length}} popular courses </span>
+						<span class='ng-class:{"hide": courses.length}'> search popular courses </span>
 					</label>
-					<a ng-if='!portfolio_item.visible' class="side-icon desktop-input-close-icon activated hide ng-class:{'show':(searchInputFocus || portfolio_item.course.id) && !portfolio_item.visible}" ng-click="clearInputAndResetCourse(course)" >
+					<a class="side-icon desktop-input-close-icon activated hide ng-class:{'show':search_text.input_focused || (search_text.course && search_text.course.length > 0)}" ng-click="search_text.course = ''" >
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
-				<ul class='desktop-card-list hide ng-class:{"show":searchInputFocus && !portfolio_item.course.id}' style='z-index:100001'>
+				<ul class='desktop-card-list hide ng-class:{"show":search_text.input_focused && courses && courses.length}' style='z-index:100001'>
 					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id'>
 						<a class="hide ng-class:{'show':course.full_name || course.title}" ng-click='setCourseAndClearInput(course)'>
 							<span>
@@ -88,7 +88,7 @@
 			<div class="pf-pricing">
 				<h1>My Preferred Price Per Hour</h1>
 				<div class="pf-range">
-					<input type="range" class='full-x' ng-model='portfolio_item.hourly_price' name="volume" min="5" max="25" value="{{portfolio_item.hourly_price || 15}}">
+					<input id='preferred-price-input-slider' type="range" class='full-x' ng-model='portfolio_item.hourly_price' name="volume" min="5" max="25" value="{{portfolio_item.hourly_price}}">
 					<ul class="ugrid-3 price-label">
 						<li>$5</li>
 						<li>$15</li>
@@ -201,6 +201,6 @@
 				</ul>
 			</div>
 		</div>
-		<button ng-click='savePortfolioItem(portfolio_item)'>Save</button>
+		<button id='save-portfolio-item-button' ng-click='savePortfolioItem(portfolio_item)'>Save</button>
 	</section>
 </div>

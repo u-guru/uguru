@@ -2579,10 +2579,10 @@ class Portfolio_Item(Base):
     avg_rating = Column(Float, default = 0)
 
     hourly_price = Column(Float, default = 10)
-    max_hourly_price = Column(Float, default = 0)
+    max_hourly_price = Column(Float, default = 10)
 
-    unit_price = Column(Float)
-    max_unit_price = Column(Float)
+    unit_price = Column(Float, default=5)
+    max_unit_price = Column(Float, default=5)
 
     title = Column(String)
     description = Column(String)
@@ -2691,14 +2691,18 @@ class Portfolio_Item(Base):
 
 
 
-    def updatePortfolioItem(self, options):
+    def updatePortfolioItem(self, user, options):
         self.title = options.get('title')
         self.description = options.get('description')
         self.archived = options.get('archived')
-        self.max_unit_price = options.get('max_unit_price')
-        self.unit_price = options.get('unit_price')
-        self.hourly_price = options.get('hourly_price')
-        self.max_hourly_price = options.get('max_hourly_price')
+        if options.get('max_unit_price'):
+            self.max_unit_price = float(options.get('max_unit_price'))
+        if options.get('unit_price'):
+            self.unit_price = float(options.get('unit_price'))
+        if options.get('hourly_price'):
+            self.hourly_price = float(options.get('hourly_price'))
+        if options.get('max_hourly_price'):
+            self.max_hourly_price = float(options.get('max_hourly_price'))
 
         if not self.avg_rating:
             self.avg_rating = 0

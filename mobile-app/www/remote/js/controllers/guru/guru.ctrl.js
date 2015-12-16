@@ -37,6 +37,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   };
 
+  $scope.profile = {edit_mode:true, showCredibility:false};
+
   $scope.activePortfolioItem = {};
 
   if (!$scope.user.id) {
@@ -442,8 +444,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 		}
 
     $scope.showEditPortfolioItem = function(portfolio_item) {
-
+      $scope.root.vars.hide_edit_button = true;
         if ($scope.desktopMode) {
+            $timeout(function() {
+              $scope.$apply();
+            }, 100)
             if (portfolio_item) {
               portfolio_item.visible = true;
             }
@@ -562,22 +567,20 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 		}
 
 		$scope.showCredibilityModal = function() {
-
 			if ($scope.user && $scope.user.id) {
 				$scope.credibilityModal.show();
 			} else {
-
 				LoadingService.showMsg('You need an account to do that!', 2500)
 			}
 		}
 
-    $scope.$on('$ionicView.loaded', function() {
-      $scope.root.vars.showDesktopSettings = false;
-    })
+		$scope.$on('$ionicView.loaded', function() {
+			$scope.root.vars.showDesktopSettings = false;
+		})
 
 		$scope.$on('$ionicView.enter', function() {
 
-      $scope.root.vars.showDesktopSettings = false;
+			$scope.root.vars.showDesktopSettings = false;
 
 			$timeout(function() {
 				if ($scope.desktopMode) {
@@ -624,7 +627,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
 			$timeout(function() {
-
 				if (!$scope.desktopMode) {
 					$timeout(function() {
 						$scope.initMobileModals();
@@ -637,7 +639,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 			});
 		});
 
-        // $timeout(function() {$scope.contentModal.show()}, 3000);
+		// $timeout(function() {$scope.contentModal.show()}, 3000);
 
 		var launchWelcomeToGuruMode = function() {
 			$timeout(function() {

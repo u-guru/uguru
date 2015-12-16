@@ -325,20 +325,11 @@ ul.mobile-cards-container li {
 
 #mobile-guru-home header .text-center h2 {
   font-size: 20px !important; }
-#mobile-guru-home header .text-center a.header-nav-back {
-  top: 12.5px;
-  left: -5px;
-  position: absolute; }
 
 body.platform-ios
 #mobile-guru-home {
   height: calc(100% - 20px) !important;
   margin-top: 20px; }
-  body.platform-ios
-  #mobile-guru-home a.header-nav-back {
-    top: 16px;
-    left: -5px;
-    position: absolute; }
 
 .show-display {
   display: block !important; }
@@ -385,5 +376,8 @@ body.platform-ios
     .hs-view#desktop-university div.main.default .university-content-header h1 {
       font-size: 48px;
       margin-top: -7.5% !important; }
+
+#label-course-input-1:hover {
+  display: none; }
 
 /*# sourceMappingURL=samir.css.map */

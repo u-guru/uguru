@@ -2774,6 +2774,36 @@ input[type=range]:focus::-ms-fill-upper {
     .guru-popup h1 + div {
       border-top-left-radius: 0 !important;
       border-top-right-radius: 0 !important; }
+  .guru-popup .button-group {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 7.5px; }
+    .guru-popup .button-group button {
+      margin: 7.5px;
+      border-radius: 2px !important;
+      width: 100px;
+      background: #69B3A5; }
+      .guru-popup .button-group button:hover, .guru-popup .button-group button:focus {
+        background: #8bc4b9; }
+      .guru-popup .button-group button:active, .guru-popup .button-group button.activated {
+        background: #6f7d82; }
+      .guru-popup .button-group button.button-group-cancel {
+        background: #89969b !important; }
+        .guru-popup .button-group button.button-group-cancel:hover, .guru-popup .button-group button.button-group-cancel:focus {
+          background: #a5afb2 !important; }
+        .guru-popup .button-group button.button-group-cancel:active, .guru-popup .button-group button.button-group-cancel.activated {
+          background: #6f7d82 !important; }
   .guru-popup > div {
     background: rgba(43, 50, 52, 0.9);
     padding: 10px 15px;
@@ -3218,8 +3248,8 @@ input[type=range]:focus::-ms-fill-upper {
     .color-picker .color-picker-bottom.bg-charcoal li:nth-child(9) span {
       background: black; }
 
-/* ---------- PROFILE CARDS */
-.pf-card-container {
+/* ---------- CARDS */
+.pf-card-container, .school-card-container, .paper-container {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3227,6 +3257,9 @@ input[type=range]:focus::-ms-fill-upper {
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -3234,6 +3267,221 @@ input[type=range]:focus::-ms-fill-upper {
   -webkit-justify-content: center;
   justify-content: center;
   padding: 15px; }
+
+.paper-container main {
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 15px 0;
+  background: #F4C2A7; }
+  .paper-container main .paper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto; }
+    .paper-container main .paper svg rect {
+      fill: white;
+      width: 100%;
+      height: 100%; }
+    .paper-container main .paper svg path {
+      stroke-width: 2px; }
+      .paper-container main .paper svg path:not(:last-child) {
+        filter: alpha(opacity=30);
+        opacity: 0.3;
+        stroke: #50A5DD; }
+      .paper-container main .paper svg path:last-child {
+        stroke: #F04F54; }
+    .paper-container main .paper h1 {
+      position: absolute;
+      top: 7.7%;
+      left: 15.5%;
+      width: 84.5%;
+      padding: 0 15px;
+      color: #40484B;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 2.14; }
+    .paper-container main .paper div {
+      position: absolute;
+      top: 11.7%;
+      left: 15.5%;
+      width: 84.5%;
+      padding: 0 15px;
+      color: #40484B;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 2.14; }
+    .paper-container main .paper.bottom-align h1, .paper-container main .paper.bottom-align div {
+      padding-top: 1%; }
+.paper-container section {
+  width: 100%; }
+@media screen and (min-width: 768px) {
+  .paper-container {
+    padding: 0; }
+    .paper-container main {
+      display: block; }
+    .paper-container main + section {
+      display: none; } }
+
+.notecard {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto; }
+  .notecard svg {
+    display: block;
+    width: 100%;
+    height: auto; }
+    .notecard svg rect {
+      width: 100%; }
+      .notecard svg rect:first-child {
+        fill: #F1F1F1;
+        height: 100%; }
+      .notecard svg rect:not(:first-child) {
+        filter: alpha(opacity=30);
+        opacity: 0.3;
+        fill: #50A5DD;
+        height: 2px; }
+      .notecard svg rect:last-child {
+        fill: #F04F54; }
+  .notecard h1 {
+    position: absolute;
+    top: 12%;
+    left: 0;
+    padding: 0 15px;
+    color: #2B3234;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 165%; }
+  .notecard div {
+    position: absolute;
+    top: 29%;
+    left: 0;
+    padding: 0 15px;
+    color: #2B3234;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 165%; }
+  @media screen and (min-width: 375px) {
+    .notecard h1 {
+      font-size: 20px;
+      line-height: 150%; }
+    .notecard div {
+      font-size: 18px;
+      line-height: 150%; } }
+  @media screen and (min-width: 414px) {
+    .notecard h1, .notecard div {
+      line-height: 170%; } }
+  @media screen and (min-width: 430px) {
+    .notecard h1, .notecard div {
+      line-height: 180%; } }
+
+.school-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden; }
+  .school-card .rect {
+    display: block;
+    width: 100%;
+    fill: none; }
+  .school-card .school-card-inside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .school-card .school-card-inside .school-card-top {
+      position: relative;
+      z-index: 3;
+      height: 30%;
+      background-color: #40484B;
+      border-radius: 10px 10px 0 0; }
+      .school-card .school-card-inside .school-card-top .school-card-icon {
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-radius: 1000px;
+        display: block;
+        top: 16px;
+        width: 96px;
+        height: 96px;
+        background-position: center;
+        background-size: cover;
+        background-color: white;
+        border: 3px solid #40484B; }
+    .school-card .school-card-inside .school-card-main {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: relative;
+      height: 70%;
+      background: white;
+      border-radius: 0 0 10px 10px;
+      overflow: hidden;
+      color: #40484B; }
+      .school-card .school-card-inside .school-card-main .school-card-map {
+        filter: alpha(opacity=20);
+        opacity: 0.2;
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        bottom: 0;
+        z-index: 1;
+        width: 100%;
+        height: 171%;
+        border-radius: 0 0 10px 10px;
+        overflow: hidden; }
+        .school-card .school-card-inside .school-card-main .school-card-map img {
+          display: block;
+          width: 100%; }
+      .school-card .school-card-inside .school-card-main .school-card-color {
+        filter: alpha(opacity=10);
+        opacity: 0.1;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0 0 10px 10px;
+        overflow: hidden; }
+      .school-card .school-card-inside .school-card-main .school-card-info {
+        position: relative;
+        z-index: 4;
+        padding-top: 40px; }
+      .school-card .school-card-inside .school-card-main h1, .school-card .school-card-inside .school-card-main h2 {
+        text-align: center;
+        margin: 0 !important; }
+      .school-card .school-card-inside .school-card-main h1 {
+        font-size: 28px;
+        font-weight: 900; }
+      .school-card .school-card-inside .school-card-main h2 {
+        font-size: 18px;
+        font-weight: 600; }
 
 .pf-card-mini {
   -ms-box-orient: horizontal;
@@ -3287,6 +3535,8 @@ input[type=range]:focus::-ms-fill-upper {
 
 .pf-card {
   width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   border-radius: 2px;
   overflow: hidden;
   background: white;

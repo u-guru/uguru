@@ -60,7 +60,9 @@ angular.module('uguru.util.controllers')
 
 
 		$scope.search_text = {
-			course: ''
+			course: '',
+			matching: [],
+			input_focused: false
 		};
 
 		// $scope.refresh = {
@@ -213,12 +215,11 @@ angular.module('uguru.util.controllers')
 		};
 
 
-
-		// $scope.searchInputBlur = function() {
-		// 	$timeout(function() {
-		// 		$scope.searchInputFocus = false;
-		// 	}, 250)
-		// }
+		$scope.blurSearchInput = function() {
+			$timeout(function() {
+    			$scope.search_text.input_focused = false;
+			}, 250)
+		}
 
 		$scope.limit = 10;
 		$scope.increaseLimit = function() {

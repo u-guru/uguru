@@ -413,11 +413,83 @@
 							<span class="pf-review-amt">3.5 Avg Rating</span>
 						</span>
 					</div>
-					<div class="absolute top-0 guru-popup guru-popup-remove-pi hide ng-class:{'show':portfolio_item.showRemovePopup}">
-						<div class="guru-popup-vertical-center min-height with-button">Remove Math 101?</div>
-						<div class='ugrid-2'>
-							<button ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
-							<button ng-click='removePortfolioItem(portfolio_item)'>Confirm</button>
+					<div class="guru-popup hide ng-class:{'show':portfolio_item.showRemovePopup}">
+						<div>
+							<div>
+								<h2>Remove Math 101?</h2>
+								<div class='button-group'>
+									<button class="button-group-cancel" ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
+									<button ng-click='removePortfolioItem(portfolio_item)'>Confirm</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class='relative'>
+					<div class="pf-check-container">
+						<span class="pf-price pf-price-right">$10/hr</span>
+						<div class="pf-checklist-item-bg">
+							<span class="pf-price pf-price-right">$10/hr</span>
+							<span>The Joy of Computing</span>
+						</div>
+						<a class="pf-edit-link" ng-click="user.academic_shop.edit_portfolio_item = portfolio_item">Edit</a>
+						<a class="pf-check pf-remove" ng-click='portfolio_item.showRemovePopup = true;'>
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+						<span class="pf-check-label">
+							<span>Math 101</span>
+							<ul class="pf-rating" data-rating="3" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<span class="pf-review-amt">3.5 Avg Rating</span>
+						</span>
+					</div>
+					<div class="guru-popup hide ng-class:{'show':portfolio_item.showRemovePopup}">
+						<div>
+							<div>
+								<h2>Remove Math 101?</h2>
+								<div class='button-group'>
+									<button class="button-group-cancel" ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
+									<button ng-click='removePortfolioItem(portfolio_item)'>Confirm</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class='relative'>
+					<div class="pf-check-container">
+						<span class="pf-price pf-price-right">$10/hr</span>
+						<div class="pf-checklist-item-bg">
+							<span class="pf-price pf-price-right">$10/hr</span>
+							<span>The Joy of Computing</span>
+						</div>
+						<a class="pf-edit-link" ng-click="user.academic_shop.edit_portfolio_item = portfolio_item">Edit</a>
+						<a class="pf-check pf-remove" ng-click='portfolio_item.showRemovePopup = true;'>
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</a>
+						<span class="pf-check-label">
+							<span>Math 101</span>
+							<ul class="pf-rating" data-rating="3" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<span class="pf-review-amt">3.5 Avg Rating</span>
+						</span>
+					</div>
+					<div class="guru-popup hide ng-class:{'show':portfolio_item.showRemovePopup}">
+						<div>
+							<div>
+								<h2>Remove Math 101?</h2>
+								<div class='button-group'>
+									<button class="button-group-cancel" ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
+									<button ng-click='removePortfolioItem(portfolio_item)'>Confirm</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</li> -->
@@ -482,7 +554,7 @@
 			</ul>
 
 
-			<div ng-include="img_base + 'templates/profile.modal" class="pf-cal pf-tab-item ng-class:{'active':activeTabIndex === 2}">
+			<div ng-include="img_base + 'templates/profile.modal'" class="pf-cal pf-tab-item ng-class:{'active':activeTabIndex === 2}">
 				<div>
 					<h1 class="pf-cal-month">December 2015</h1>
 					<ul class="pf-cal-time">
@@ -1133,11 +1205,11 @@
 				</div>
 			</div>
 			<div class="pf-edit-pf pf-desktop-edit">
-				<button ng-click='profile.edit_mode = true;' class="btn-ghost-white ng-class:{'hide':profile.edit_mode}">Edit</button>
+				<button ng-click='profile.edit_mode = true;' class="btn-ghost-white ng-class:{'hide':profile.edit_mode || portfolio_item.visible || root.vars.hide_edit_button}">Edit</button>
 				<button ng-click='saveGuruProfile()' class="btn-ghost-white hide ng-class:{'show':profile.edit_mode}">Save</button>
 			</div>
 			<div class="pf-edit-pf pf-mobile-edit">
-				<button ng-click='profile.edit_mode = true;' class="ng-class:{'hide':profile.edit_mode}">Edit</button>
+				<button ng-click='profile.edit_mode = true;' class="ng-class:{'hide':profile.edit_mode || portfolio_item.visible}">Edit</button>
 				<button ng-click='saveGuruProfile()' class="hide ng-class:{'show':profile.edit_mode}">Save</button>
 			</div>
 		</div>

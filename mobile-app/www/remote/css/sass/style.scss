@@ -577,6 +577,19 @@ section {
 	}
 }
 
+// ONBOARDING
+.onboarding-search {
+	.prefix {
+		top: 4px;
+		svg {
+			@include svg-stroke(white, 5);
+			width: 100%;
+			height: 100%;
+			padding: 10px;
+		}
+	}
+}
+
 // UNIVERSITY
 .university-view {
 	background: $charcoal;
@@ -589,6 +602,15 @@ section {
 			font-size: 28px!important;
 			text-transform: lowercase;
 			padding-bottom: 30px;
+		}
+		.onboarding-search {
+			input {
+				width: calc(100% - 48px - 15px);
+			}
+			input, label {
+				color: white!important;
+				border-color: white!important;
+			}
 		}
 		.geolocation-icon {
 			position: absolute;
@@ -997,6 +1019,15 @@ section {
 				margin-top: 0;
 				font-size: 20px;
 				padding: 0 15px 30px;
+			}
+		}
+		.onboarding-search {
+			input {
+				width: calc(100% - 48px - 15px);
+			}
+			input, label {
+				color: white!important;
+				border-color: white!important;
 			}
 		}
 	}
@@ -2326,6 +2357,7 @@ section {
 							position: relative;
 							height: calc(100% - 97px);
 							width: 100%;
+							text-align: center!important;
 							#guru-ranking-progress-bar {
 								height: 100%;
 							}
@@ -2342,6 +2374,7 @@ section {
 								@include center-xy;
 								+ svg {
 									display: block!important;
+									margin: 0 auto!important;
 								}
 								#percentile-ranking {
 									position: relative;

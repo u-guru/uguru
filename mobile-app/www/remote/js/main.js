@@ -289,6 +289,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/profile-card',
     templateUrl: BASE + 'templates/profile.card.html'
   }).
+  state('root.university-card', {
+    url:'/university-card',
+    templateUrl: BASE + 'templates/university.card.html',
+    controller: 'AddUniversityCtrl'
+  }).
+  state('root.paper', {
+    url:'/paper',
+    templateUrl: BASE + 'templates/paper.html'
+  }).
   state('root.color-picker', {
     url:'/color-picker',
     templateUrl: BASE + 'templates/color.picker.html'
