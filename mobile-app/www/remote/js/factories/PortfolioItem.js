@@ -47,7 +47,7 @@ angular.module('uguru.rest')
         return {
             course: {},
             shop_category: Category.getAcademic(),
-            shop_id: Category.getAcademic().id,
+            shop_id: 1,
             title: '',
             hourly_price: 10,
             max_hourly_price: 25,
