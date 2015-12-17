@@ -243,7 +243,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.student-home', {
     url:'/student-home',
-    templateUrl: BASE + 'templates/home.student.html'
+    templateUrl: BASE + 'templates/home.desktop.student.html',
+    controller: 'StudentHomeController'
   }).
   state('root.guru-home', {
     url:'/guru-home',

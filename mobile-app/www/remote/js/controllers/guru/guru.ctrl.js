@@ -50,16 +50,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $scope.sidebar_content = {search_text:'', active_section:$scope.guideContent[0]}
   }, 1500)
 
-  // $timeout(function() {
-
-  //   var toolTipArr = [
-  //     {text: 'This is where you edit your profile', direction:'left', btnText: 'Got it!', selector: "#cta-box-profile"},
-  //     {text: 'Cash out your hundreds of dollars here', direction:'right', btnText: 'Got it!', selector: "#cta-box-balance"},
-  //   ]
-  //   TourService.initTooltipTour(toolTipArr)
-  //   // TourService.initTooltip(null, null, '#cta-box-profile');
-  // }, 1500);
-
   var CTA_PARENT_DICT = {
     'cta-box-profile':'.guru-home-container',
     'cta-box-credibility':'.guru-home-container',
@@ -217,15 +207,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
             $scope.launchCtaDict[box_elem.id] = function() {
                 var modal_elem = document.querySelector('#' + modal_elem_id);
-
-                   // if (!$scope.user || !$scope.user.id) {
-                   //    $scope.loader.showMsg('Please create an account first!', 0, 500);
-                   //    box_elem = document.querySelector('#cta-box-signup');
-                   //    modal_elem = document.querySelector('#cta-modal-signup');
-                   //  }
-
-
-
 
                 var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 

@@ -380,4 +380,7 @@ body.platform-ios
 #label-course-input-1:hover {
   display: none; }
 
+#desktop-student-home ion-pane.cta-modal {
+  z-index: 10; }
+
 /*# sourceMappingURL=samir.css.map */
