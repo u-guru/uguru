@@ -649,6 +649,12 @@ class UserOneView(restful.Resource):
         if 'person_friendly' in request.json:
             user.person_friendly = request.json.get('person_friendly')
 
+        if 'update_guru_major' in request.json:
+            user.major = request.json.get('update_guru_major')
+
+        if 'update_guru_demographic' in request.json:
+            user.year = request.json.get('update_guru_demographic')
+
         if 'text_friendly' in request.json:
             user.text_friendly = request.json.get('text_friendly')
 
@@ -668,13 +674,6 @@ class UserOneView(restful.Resource):
             pi = Portfolio_Item.getPortfolioItemByCourseId(course_id)
             if not pi:
                 abort(404)
-
-            pi.description = pi_json.get('description')
-            pi.hourly_price = pi_json.get('hourly_price')
-            pi.max_hourly_price = pi_json.get('max_hourly_price')
-            pi.unit_price = pi_json.get('unit_price')
-            pi.max_unit_price = pi_json.get('max_unit_price')
-
 
         if 'fb_id' in request.json:
             if not user.fb_id:

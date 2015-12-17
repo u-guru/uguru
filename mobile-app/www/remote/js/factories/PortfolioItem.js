@@ -54,6 +54,7 @@ angular.module('uguru.rest')
             description: "",
             avg_rating: 0,
             unit_price: 5,
+            active: true,
             max_unit_price:10,
             admin_approved: true,
             files: [],

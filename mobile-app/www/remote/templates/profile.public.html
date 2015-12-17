@@ -223,7 +223,7 @@
 							</ul>
 						</div>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;a&nbsp;&nbsp;</h2>
-						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode} custom-dropdown">
+						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
 							<div>
 								<span>Bachelors</span>
 								<a>
@@ -445,14 +445,14 @@
 						</span>
 					</div>
 					<!-- BIND -->
-					<div class="pf-check-enabled">
+					<div class="pf-check-enabled" ng-if='!portfolio_item.active'>
 						<div><button>Enable ANTHRO 2AC</button></div>
 					</div>
 				</li>
 				<!-- END SAMPLE DISABLED COURSE -->
 
 				<!-- <li class='relative ng-class:{"full-xy":portfolio_item.visible, "min-height-modal-desktop":portfolio_item.visible}' ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-if='!portfolio_item.archived'> -->
-				<li ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-if='!portfolio_item.archived'>
+				<li  ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-if='!portfolio_item.archived' class=" ng-class:{'disabled':portfolio_item.active == false}">
 					<div class="pf-check-container">
 						<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
 						<div class="pf-checklist-item-bg">
@@ -481,7 +481,7 @@
 										<button class="button-group-cancel" ng-click='portfolio_item.showRemovePopup = null;'>Cancel</button>
 										<button ng-click='removePortfolioItem(portfolio_item)'>Remove</button>
 										<div>
-											<button class="button-group-deactivate">Deactivate</button>
+											<button ng-click='deactivatePortfolioItem(portfolio_item)' class="button-group-deactivate">Deactivate</button>
 										</div>
 									</div>
 								</div>
@@ -490,8 +490,8 @@
 						<div id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.name | lowercase}} hide ng-class:{'show': portfolio_item.visible}" ng-include="img_base + 'templates/profile.modal.edit.html'"></div>
 					</div>
 					<!-- BIND -->
-					<div class="pf-check-enabled hide">
-						<div><button>Enable {{portfolio_item.course.short_name}}</button></div>
+					<div class="pf-check-enabled ng-class:{'hide': portfolio_item.active}">
+						<div><button ng-click='reactivatePortfolioItem(portfolio_item)'>Enable {{portfolio_item.course.short_name}}</button></div>
 					</div>
 				</li>
 

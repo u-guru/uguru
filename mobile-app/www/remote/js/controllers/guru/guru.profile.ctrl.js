@@ -41,7 +41,7 @@ angular.module('uguru.guru.controllers')
     }
 
 
-    
+
     $scope.profile = {edit_mode:true, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
@@ -50,7 +50,7 @@ angular.module('uguru.guru.controllers')
     }
 
     // credibility only variable
-    $scope.activeTabIndex = 0;
+    $scope.activeTabIndex = 1;
     $scope.profile.edit_mode = false;
 
     $scope.page = { modals : {}, popups: {} }
@@ -220,6 +220,32 @@ angular.module('uguru.guru.controllers')
           }, 100)
       }
       $scope.user.updateAttr('remove_guru_portfolio_item', $scope.user, portfolio_item, successFunction, $scope);
+    }
+
+    $scope.reactivatePortfolioItem = function(portfolio_item) {
+      LoadingService.showAmbig('Reactivating...', 10000);
+
+      portfolio_item.active = true;
+      var successFunction = function() {
+          LoadingService.hide();
+          $timeout(function() {
+            LoadingService.showSuccess(portfolio_item.course.short_name + ' successfully reactivated!', 2500 );
+          }, 100)
+      }
+      $scope.user.updateAttr('edit_guru_portfolio_item', $scope.user, portfolio_item, successFunction, $scope);
+    }
+
+    $scope.deactivatePortfolioItem = function(portfolio_item) {
+      LoadingService.showAmbig('Deactivating...', 10000);
+
+      portfolio_item.active = false;
+      var successFunction = function() {
+          LoadingService.hide();
+          $timeout(function() {
+            LoadingService.showSuccess(portfolio_item.course.short_name + ' successfully deactivated!', 2500 );
+          }, 100)
+      }
+      $scope.user.updateAttr('edit_guru_portfolio_item', $scope.user, portfolio_item, successFunction, $scope);
     }
 
     $scope.toggleDesktopIntroduction = function() {
