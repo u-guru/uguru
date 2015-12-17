@@ -1,7 +1,7 @@
 <div class='pf-type pf-modal pf-edit pf-type-{{user.academic_shop.category.name | lowercase}} full-y'>
 	<section>
 		<header class="text-center no-photo-list">
-			<h1 class="hide ng-class:{'show':portfolio_item.id}">edit <span>{{portfolio_item.course.short_name}}</span></h1>
+			<h1 class="hide ng-class:{'show':portfolio_item.id}">edit course</h1>
 			<h1 class="hide ng-class:{'show':!portfolio_item.course.id}">add a course</h1>
 			<div class="header-nav">
 				<a class="header-close" ng-click="closeEditPortfolioItemModal(portfolio_item)">
@@ -89,14 +89,34 @@
 
 			</div>
 			<div class="pf-pricing">
-				<h1>My Preferred Price Per Hour</h1>
-				<div class="pf-range">
-					<input id='preferred-price-input-slider' type="range" class='full-x' ng-model='portfolio_item.hourly_price' name="volume" min="5" max="25" value="{{portfolio_item.hourly_price}}">
-					<ul class="ugrid-3 price-label">
-						<li>$5</li>
-						<li>$15</li>
-						<li>$25</li>
-					</ul>
+				<h1>My Preferred Price</h1>
+				<div>
+					<div>
+						<div class="pf-range">
+							<input id='preferred-price-input-slider' type="range" class='full-x' ng-model='portfolio_item.hourly_price' name="volume" min="5" max="25" value="{{portfolio_item.hourly_price}}">
+							<ul class="ugrid-3 price-label">
+								<li>$5</li>
+								<li>$15</li>
+								<li>$25</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="custom-dropdown text-center">
+							<div>
+								<span>per hour</span>
+								<a>
+									<svg viewBox="0 0 100 100">
+										<path d="M14,32 L50,68 L86,32"></path>
+									</svg>
+								</a>
+							</div>
+							<ul class="active">
+								<li tabindex>per 30min</li>
+								<li tabindex>per 15min</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="pf-photo-list pf-attach-list">

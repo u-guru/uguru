@@ -2554,18 +2554,14 @@ input[type=range] {
 	}
 }
 .loader {
-	fill: none;
-	stroke: white;
-	stroke-width: 8;
-	stroke-linecap: round;
-	stroke-linejoin: round;
+	@include svg-stroke(white, 8);
 	div {
 		font-weight: 600;
 		text-transform: uppercase;
 	}
 }
 
-#checkmark line {
+#checkmark line, .checkmark line {
 	@include animation-duration(.75s);
 	@include animation-iteration-count(1);
 	&:first-child {
@@ -2578,6 +2574,13 @@ input[type=range] {
 		stroke-dasharray: 49.91, 49.91;
 		stroke-dashoffset: 0;
 	}
+}
+
+.checkmark {
+	@include opacity(0);
+	@include animation-duration(3s);
+	@include animation-iteration-count(1);
+	@include animation-name(checkmark-opacity);
 }
 
 @include keyframes(checkmark-one) {
@@ -2602,6 +2605,21 @@ input[type=range] {
 	}
 	95% { stroke-dashoffset: 0; }
 	100% { stroke-dashoffset: 0; }
+}
+
+@include keyframes(checkmark-opacity) {
+	0% {
+		@include opacity(0);
+	}
+	1% {
+		@include opacity(1);
+	}
+	98% {
+		@include opacity(1);
+	}
+	100% {
+		@include opacity(0);
+	}
 }
 
 #tour-guru {
@@ -2706,11 +2724,22 @@ input[type=range] {
 			width: 48px;
 			height: 48px;
 			svg {
+				@include transition(.15s ease-in-out);
 				@include svg-stroke(white, 8);
 				background: $shamrock;
 				padding: 12px 10px 8px;
 				width: 48px;
 				height: 48px;
+			}
+			&:hover, &:focus {
+				svg {
+					background: lighten($shamrock, 10%);
+				}
+			}
+			&:active {
+				svg {
+					background: darken($shamrock, 10%);
+				}
 			}
 		}
 	}
@@ -2722,15 +2751,16 @@ input[type=range] {
 		overflow: hidden;
 		&.active {
 			@include opacity(1);
+			z-index: 99;
 			height: auto;
 		}
 		li {
+			@include transition(.15s ease-in-out);
 			width: 152px;
 			background: rgba(lighten($slate, 5%), .9);
 			padding: 15px 0 !important;
 			font-weight: 400;
-			&:hover,
-			&:focus {
+			&:hover, &:focus {
 				background: rgba(darken($shamrock, 10%),.9);
 			}
 			&:active {
@@ -2753,6 +2783,45 @@ input[type=range] {
 		border-bottom-right-radius: 0!important;
 	}
 }
+.button-group {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	padding: 7.5px;
+	button {
+		height: auto;
+		padding: 10px 15px;
+		margin: 7.5px;
+		border-radius: 2px!important;
+		width: 100px;
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 1;
+		background: $shamrock;
+		&:hover, &:focus {
+			background: lighten($shamrock, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+		&.button-group-cancel {
+			background: lighten($slate, 30%)!important;
+			&:hover, &:focus {
+				background: lighten($slate, 40%)!important;
+			}
+			&:active, &.activated {
+				background: lighten($slate, 20%)!important;
+			}
+		}
+	}
+	div {
+		width: 100%;
+		text-align: center;
+		button {
+			width: 150px;
+		}
+	}
+}
 .guru-popup {
 	width: 75%;
 	max-width: 250px;
@@ -2767,32 +2836,6 @@ input[type=range] {
 		+ div {
 			border-top-left-radius: 0!important;
 			border-top-right-radius: 0!important;
-		}
-	}
-	.button-group {
-		@include flex;
-		@include flex-center;
-		padding: 7.5px;
-		button {
-			margin: 7.5px;
-			border-radius: 2px!important;
-			width: 100px;
-			background: $shamrock;
-			&:hover, &:focus {
-				background: lighten($shamrock, 10%);
-			}
-			&:active, &.activated {
-				background: lighten($slate, 20%);
-			}
-			&.button-group-cancel {
-				background: lighten($slate, 30%)!important;
-				&:hover, &:focus {
-					background: lighten($slate, 40%)!important;
-				}
-				&:active, &.activated {
-					background: lighten($slate, 20%)!important;
-				}
-			}
 		}
 	}
 	> div {
