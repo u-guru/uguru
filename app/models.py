@@ -2588,6 +2588,7 @@ class Portfolio_Item(Base):
     description = Column(String)
 
     archived = Column(Boolean, default=False)
+    activated = Column(Boolean, default=True)
 
 
     user_id = Column(Integer, ForeignKey('user.id'))

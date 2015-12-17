@@ -99,9 +99,9 @@
 				</ul>
 			</div>
 			<!-- end CTA containers -->
-			
-			
-			
+
+
+
 			<div class="relative pf-shop-desc full-x pf-tab-item ng-class:{'active':activeTabIndex === 1}">
 				<!-- mobile-only -->
 				<ul class="pf-url"  ng-if="!profile.edit_mode">
@@ -209,7 +209,7 @@
 					<div>
 						<h2 class="hide ng-class:{'hide': profile.edit_mode}">I have a PhD in Math</h2>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">I&nbsp;&nbsp;</h2>
-						<div class="show ng-class:{'show': profile.edit_mode} custom-dropdown">
+						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
 							<div>
 								<span>am seeking</span>
 								<a>
@@ -223,7 +223,7 @@
 							</ul>
 						</div>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;a&nbsp;&nbsp;</h2>
-						<div class="show ng-class:{'show': profile.edit_mode} custom-dropdown">
+						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode} custom-dropdown">
 							<div>
 								<span>Bachelors</span>
 								<a>
@@ -414,7 +414,7 @@
 						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 						</svg>
 					</div>
-					
+
 					<p ng-if=' !user.academic_shop && user.active_shop && user.active_shop.description' class="pf-header-desc ng-class:{'hide': profile.edit_mode}">{{user.active_shop.description}}</p>
 					<!-- @Gabrielle did you mean to put two here? -->
 					<!-- <div class='pf-textarea-container relative'>
@@ -426,7 +426,7 @@
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{100 - user.guru_introduction.length}}</span>
 					</div>
 				</li>
-				
+
 				<!-- @samir -->
 				<!-- when edit is clicked and the popup comes up, add .semi-disabled to other course li elements -->
 				<!-- SAMPLE DISABLED COURSE -->
@@ -1171,7 +1171,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- @samir -->
 	<!-- BIND -->
 	<!-- <div id="pf-activate">
