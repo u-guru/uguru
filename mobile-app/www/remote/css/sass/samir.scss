@@ -485,6 +485,181 @@ body.platform-ios
 
 	ion-pane.cta-modal {
 		z-index:10;
+		.desktop-header {
+			z-index:10;
+		}
+		.request-form-container {
+			#request-form-slide-box {
+				top:4px;
+			}
+		}
+	}
+	.hide-display {
+		display:none;
 	}
 
+}
+
+#pf-shop-desc-backdrop {
+	z-index:98;
+	opacity:0.3;
+	display:none;
+}
+
+.pf-tags {
+	@include flex;
+	@include flex-wrap;
+	width: 100%;
+	.chip {
+		@include transition(.15s ease-in-out);
+		@include flex;
+		@include flex-center-vertical;
+		background: lighten($slate, 10%);
+		margin-right: 15px;
+		border: 0;
+		&:hover {
+			background: lighten($slate, 15%);
+		}
+		svg {
+			@include svg-stroke(white, 10);
+			width: 12px;
+			height: 12px;
+			margin-right: 3px;
+		}
+		input {
+			background: transparent;
+			border: 0;
+			color: white!important;
+			@include placeholder {
+				color: white!important;
+			}
+		}
+	}
+}
+.pf-photo-list {
+	width: 100%;
+	overflow: auto;
+	ul {
+		@include flex;
+		height: 100%;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			height: 100%;
+			&:last-child {
+				padding-right: 15px;
+			}
+			div {
+				position: relative;
+				width: 150px;
+				height: 100%;
+				background: $slate;
+				border: 2px solid white;
+				border-radius: 10px;
+			}
+			div.pf-upload-img {
+				background-position: center center;
+				background-size: cover;
+			}
+			div.pf-upload-img, div.pf-upload-file {
+				a {
+					svg {
+						@include rotate(45);
+						@include svg-stroke(white, 8);
+						position: absolute;
+						top: 5px;
+						left: 5px;
+						width: 25px;
+						height: 25px;
+					}
+				}
+			}
+			div.pf-upload-file {
+				border: 0;
+				width: auto;
+				background: none!important;
+				svg.doc-outline {
+					@include svg-stroke(white, 1.5);
+					display: block;
+					height: 100%;
+					fill: $shamrock;
+				}
+				&.pf-upload-pdf {
+					svg.doc-outline {
+						height: 100%;
+						fill: $auburn;
+					}
+				}
+				&.pf-upload-doc {
+					svg.doc-outline {
+						height: 100%;
+						fill: $lake;
+					}
+				}
+				&.pf-upload-sheet {
+					svg.doc-outline {
+						height: 100%;
+						fill: $moola;
+					}
+				}
+				.doc-info {
+					@include center-xy;
+					width: 100%;
+					padding: 30px 15px 15px;
+					span {
+						display: block;
+						font-weight: 600;
+					}
+					.doc-name {
+						font-size: 20px;
+					}
+					.doc-type {
+						font-size: 16px;
+					}
+				}
+			}
+			div.pf-upload-add {
+				position: relative;
+				border-style: dashed;
+				border: 0;
+				background: none;
+				width: auto;
+				.square {
+					height: 100%;
+					fill: none;
+				}
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 10px;
+					border: 2px dashed $shamrock;
+					span {
+						svg {
+							@include svg-stroke($shamrock, 6);
+							width: 100%;
+							height: 30px;
+						}
+						span {
+							display: block;
+							font-size: 18px;
+							font-weight: 600;
+							color: $shamrock;
+						}
+					}
+					&:hover, &:focus {
+						background: white;
+					}
+					&:active, &.active {
+						background: lighten($shamrock, 30%);
+					}
+				}
+			}
+		}
+	}
 }

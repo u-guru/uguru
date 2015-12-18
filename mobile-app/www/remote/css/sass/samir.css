@@ -382,5 +382,205 @@ body.platform-ios
 
 #desktop-student-home ion-pane.cta-modal {
   z-index: 10; }
+  #desktop-student-home ion-pane.cta-modal .desktop-header {
+    z-index: 10; }
+  #desktop-student-home ion-pane.cta-modal .request-form-container #request-form-slide-box {
+    top: 4px; }
+#desktop-student-home .hide-display {
+  display: none; }
+
+#pf-shop-desc-backdrop {
+  z-index: 98;
+  opacity: 0.3;
+  display: none; }
+
+.pf-tags {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%; }
+  .pf-tags .chip {
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    background: #576267;
+    margin-right: 15px;
+    border: 0; }
+    .pf-tags .chip:hover {
+      background: #637074; }
+    .pf-tags .chip svg {
+      fill: none;
+      stroke: white;
+      stroke-width: 10px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      width: 12px;
+      height: 12px;
+      margin-right: 3px; }
+    .pf-tags .chip input {
+      background: transparent;
+      border: 0;
+      color: white !important; }
+      .pf-tags .chip input::-webkit-input-placeholder {
+        color: white !important; }
+      .pf-tags .chip input:-moz-placeholder {
+        color: white !important; }
+      .pf-tags .chip input::-moz-placeholder {
+        color: white !important; }
+      .pf-tags .chip input:-ms-input-placeholder {
+        color: white !important; }
+
+.pf-photo-list {
+  width: 100%;
+  overflow: auto; }
+  .pf-photo-list ul {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    height: 100%;
+    padding: 7.5px; }
+    .pf-photo-list ul li {
+      padding: 7.5px;
+      height: 100%; }
+      .pf-photo-list ul li:last-child {
+        padding-right: 15px; }
+      .pf-photo-list ul li div {
+        position: relative;
+        width: 150px;
+        height: 100%;
+        background: #40484B;
+        border: 2px solid white;
+        border-radius: 10px; }
+      .pf-photo-list ul li div.pf-upload-img {
+        background-position: center center;
+        background-size: cover; }
+      .pf-photo-list ul li div.pf-upload-img a svg, .pf-photo-list ul li div.pf-upload-file a svg {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        fill: none;
+        stroke: white;
+        stroke-width: 8px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 25px;
+        height: 25px; }
+      .pf-photo-list ul li div.pf-upload-file {
+        border: 0;
+        width: auto;
+        background: none !important; }
+        .pf-photo-list ul li div.pf-upload-file svg.doc-outline {
+          fill: none;
+          stroke: white;
+          stroke-width: 1.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          display: block;
+          height: 100%;
+          fill: #69B3A5; }
+        .pf-photo-list ul li div.pf-upload-file.pf-upload-pdf svg.doc-outline {
+          height: 100%;
+          fill: #F04F54; }
+        .pf-photo-list ul li div.pf-upload-file.pf-upload-doc svg.doc-outline {
+          height: 100%;
+          fill: #50A5DD; }
+        .pf-photo-list ul li div.pf-upload-file.pf-upload-sheet svg.doc-outline {
+          height: 100%;
+          fill: #81B566; }
+        .pf-photo-list ul li div.pf-upload-file .doc-info {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 100%;
+          padding: 30px 15px 15px; }
+          .pf-photo-list ul li div.pf-upload-file .doc-info span {
+            display: block;
+            font-weight: 600; }
+          .pf-photo-list ul li div.pf-upload-file .doc-info .doc-name {
+            font-size: 20px; }
+          .pf-photo-list ul li div.pf-upload-file .doc-info .doc-type {
+            font-size: 16px; }
+      .pf-photo-list ul li div.pf-upload-add {
+        position: relative;
+        border-style: dashed;
+        border: 0;
+        background: none;
+        width: auto; }
+        .pf-photo-list ul li div.pf-upload-add .square {
+          height: 100%;
+          fill: none; }
+        .pf-photo-list ul li div.pf-upload-add a {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          border: 2px dashed #69B3A5; }
+          .pf-photo-list ul li div.pf-upload-add a span svg {
+            fill: none;
+            stroke: #69B3A5;
+            stroke-width: 6px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            width: 100%;
+            height: 30px; }
+          .pf-photo-list ul li div.pf-upload-add a span span {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: #69B3A5; }
+          .pf-photo-list ul li div.pf-upload-add a:hover, .pf-photo-list ul li div.pf-upload-add a:focus {
+            background: white; }
+          .pf-photo-list ul li div.pf-upload-add a:active, .pf-photo-list ul li div.pf-upload-add a.active {
+            background: #cfe6e2; }
 
 /*# sourceMappingURL=samir.css.map */

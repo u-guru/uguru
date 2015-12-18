@@ -8,13 +8,16 @@
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 
 		<div class="main full-xy relative">
-			<ion-pane id='cta-modal-student-request' class='hide full-xy hide-display cta-modal bg-charcoal' ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'">
+			<ion-pane id='cta-modal-student-request' class='show full-xy hide-display cta-modal bg-charcoal' ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'">
+			</ion-pane>
 
 			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/content.general.html'">
-
 			</ion-pane>
 
+			<ion-pane id='cta-modal-student-courses' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/student.courses.container.html'">
 			</ion-pane>
+
+
 			<div class="student-home-greeting">
 				<div>
 					<h1>Hello {{user.first_name || 'Student'}},<br/>how are you today?</h1>
@@ -96,8 +99,18 @@
 							<svg class="square" viewBox="0 0 200 200">
 								<rect x="0" y="0" width="200" height="200"></rect>
 							</svg>
-							<div>
-								<h2>Add your Courses</h2>
+							<div id='cta-box-student-courses' class='cta-box'>
+								<h2>
+									<span class='ng-class:{"hide":user.student_courses.length}'>
+									Add your Courses
+									</span>
+									<span class='hide ng-class:{"show":user.student_courses.length}'>
+										{{user.student_courses.length}} course
+										<span class='hide ng-class:{"show":user.student_courses.length !== 1}'>s</span>
+										added
+									</span>
+								</h2>
+
 								<svg viewBox="0 0 100 100">
 	                                <circle cx="50" cy="50" r="36"></circle>
 	                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>

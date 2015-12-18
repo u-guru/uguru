@@ -1,6 +1,7 @@
 angular.module('uguru.util.controllers')
 
 .controller('TimelineController', [
+
 	'$scope',
 	'$state',
 	'$stateParams',
@@ -79,7 +80,7 @@ angular.module('uguru.util.controllers')
 			category: 'high-school',
 			formatted_category: 'high school'
 		}
-        
+
         var event_six = {
 			title: 'How I learned Python in a day',
             body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pulvinar mauris quis ex ullamcorp...',
@@ -98,7 +99,7 @@ angular.module('uguru.util.controllers')
 			formatted_time: 'December 11, 2015',
 			category: 'blog'
 		}
-        
+
         var event_seven = {
 			title: 'The ultimate parent\'s guide to choosing the right guru',
 			announcer: {
@@ -111,7 +112,7 @@ angular.module('uguru.util.controllers')
 			formatted_time: 'December 10, 2015',
 			category: 'parent'
 		}
-        
+
         var event_seven = {
 			title: 'Uguru partners up with Bohemian Coding',
             banner: 'http://s3.amazonaws.com/skillshare/uploads/parentClasses/3b5b63fb47f08efc8ab76e4aeef2b161/7914b201',
@@ -125,7 +126,7 @@ angular.module('uguru.util.controllers')
 			formatted_time: 'December 9, 2015',
 			category: 'partnership'
 		}
-        
+
         var event_eight = {
 			title: 'Easy billing for professional gurus',
 			announcer: {
@@ -144,6 +145,5 @@ angular.module('uguru.util.controllers')
 		}
 
 	}
-
 
 ]);

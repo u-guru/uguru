@@ -535,6 +535,10 @@ CourseSerializer = {
     'name': fields.String(attribute='short_name'),
     'short_name': fields.String(attribute='short_name'),
     'num_gurus': fields.Integer(attribute='num_gurus'),
+    'full_name': fields.String(attribute='full_name'),
+    'code': fields.String(attribute='code'),
+    'department_short': fields.String(attribute='department_short'),
+    'department_long': fields.String(attribute='department_long'),
     'id': fields.Integer
 }
 

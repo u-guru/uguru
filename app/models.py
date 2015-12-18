@@ -478,7 +478,7 @@ class User(Base):
                 raise
 
     def initAllExternalProfiles(self):
-        initial_titles = ['LinkedIn', 'Twitter', 'Instagram', 'Facebook']
+        initial_titles = ['Linkedin', 'Twitter', 'Instagram', 'Facebook']
         for title in initial_titles:
             self.initExternalProfileResource(None, title, '%s profile url' % title)
         print len(self.external_profiles), 'external profiles initiated'
@@ -486,17 +486,25 @@ class User(Base):
     def addNewExternalResource(self, domain):
         self.initExternalProfileResource(domain, domain, "")
 
-    def updateExternalResource(self, url):
+    def updateExternalResource(self, domain, url):
         for title in Resource.RECOGNIZED:
-            if title.lower() in url.lower():
+            if title.lower() == domain.lower():
 
-                self.site_url == url
-                try:
-                    db_session.commit()
-                except:
-                    db_session.rollback()
-                    raise
-                break
+                correct_resource = None
+                for resource in self.external_profiles:
+                    if resource.title and resource.title.lower() == title.lower():
+                        correct_resource = resource
+                        break
+
+                if correct_resource:
+                    correct_resource.site_url = url
+                    print "%s.com/%s saved" % (domain, url)
+                    try:
+                        db_session.commit()
+                    except:
+                        db_session.rollback()
+                        raise
+                    break
 
     def initExternalProfileResource(self, url, title, description):
         r = Resource()
@@ -1521,7 +1529,7 @@ class Position(Base):
 class Resource(Base):
     __tablename__ = 'resource'
 
-    RECOGNIZED = ['facebook', 'linked', 'instagram', 'twitter']
+    RECOGNIZED = ['facebook', 'linkedin', 'instagram', 'twitter']
 
     id = Column(Integer, primary_key=True)
 

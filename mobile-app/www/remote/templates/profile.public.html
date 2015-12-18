@@ -103,6 +103,8 @@
 
 
 			<div class="relative pf-shop-desc full-x pf-tab-item ng-class:{'active':activeTabIndex === 1}">
+				<div class='backdrop full-xy bg-charcoal absolute top-0 left-0 ng-class:{"show":page.backdrops.activeTab}' ng-click='hideAllProfilePopups()' id='pf-shop-desc-backdrop'>
+				</div>
 				<!-- mobile-only -->
 				<ul class="pf-url"  ng-if="!profile.edit_mode">
 					<li>
@@ -168,7 +170,7 @@
 								<div class="ng-class:{'url-pop':pagePopups.twitter}">
 									<!-- BIND -->
 									<div>
-										<span>twitter.com/</span><input value="user.external_profiles_dict.twitter" size="{{user.external_profiles_dict.twitter.length + 1}}"/>
+										<span>twitter.com/</span><input ng-model="user.external_profiles_dict.twitter" size="{{user.external_profiles_dict.twitter.length + 1}}"/>
 									</div>
 								</div>
 							</div>
@@ -184,7 +186,7 @@
 								<div class="ng-class:{'url-pop':pagePopups.instagram}">
 									<!-- BIND -->
 									<div>
-										<span>instagram.com/</span><input value="user.external_profiles_dict.instagram" size="{{user.external_profiles_dict.instagram.length + 1}}"/>
+										<span>instagram.com/</span><input ng-model="user.external_profiles_dict.instagram" size="{{user.external_profiles_dict.instagram.length + 1}}"/>
 									</div>
 								</div>
 							</div>
@@ -263,7 +265,7 @@
 						</li>
 					</ul>
 					<div class="hide ng-class{'show':page.modals.experience.visible}" ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
-					<button class="chip">Add an Experience</button>
+					<button ng-click='page.modals.experience.visible = true;' class="chip">Add an Experience</button>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>Languages</h1>
@@ -426,30 +428,6 @@
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{100 - user.guru_introduction.length}}</span>
 					</div>
 				</li>
-
-				<!-- @samir -->
-				<!-- when edit is clicked and the popup comes up, add .semi-disabled to other course li elements -->
-				<!-- SAMPLE DISABLED COURSE -->
-				<li class="disabled">
-					<div class="pf-check-container">
-						<span class="pf-price pf-price-right ng-binding">$10/hr</span>
-						<div class="pf-checklist-item-bg">
-							<span class="pf-price pf-price-right ng-binding">$10/hr</span>
-							<span class="ng-binding">Introduction to Archaeology</span>
-						</div>
-						<a class="pf-edit-link" ng-click="showEditPortfolioItem(portfolio_item)">Edit</a>
-						<span class="pf-check-label">
-							<span class="ng-binding">ANTHRO 2AC</span>
-							<ul class="pf-rating" data-rating="3" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-							<span class="pf-review-amt ng-binding">3.6</span>
-						</span>
-					</div>
-					<!-- BIND -->
-					<div class="pf-check-enabled" ng-if='!portfolio_item.active'>
-						<div><button>Enable ANTHRO 2AC</button></div>
-					</div>
-				</li>
-				<!-- END SAMPLE DISABLED COURSE -->
 
 				<!-- <li class='relative ng-class:{"full-xy":portfolio_item.visible, "min-height-modal-desktop":portfolio_item.visible}' ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-if='!portfolio_item.archived'> -->
 				<li  ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-if='!portfolio_item.archived' class=" ng-class:{'disabled':portfolio_item.active == false}">

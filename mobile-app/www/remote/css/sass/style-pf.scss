@@ -28,6 +28,7 @@
 }
 .pf-photo-list {
 	width: 100%;
+	height:100px;
 	overflow: auto;
 	ul {
 		@include flex;
