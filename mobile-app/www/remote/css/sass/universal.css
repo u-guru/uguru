@@ -61,6 +61,210 @@
   border-bottom-color: white;
 }
 
+#timeline > section .post-search {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 60px auto 30px;
+}
+
+#timeline > section .post-search div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+#timeline > section .post-search div svg {
+  border-radius: 1000px;
+  fill: none;
+  stroke: #40484B;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+  display: block;
+  padding: 6px;
+  width: 48px;
+  height: 48px;
+  background: white;
+}
+
+#timeline > section .post-search div ul {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 7.5px;
+  width: 100%;
+}
+
+#timeline > section .post-search div ul li {
+  position: relative;
+  padding: 7.5px;
+}
+
+#timeline > section .post-search div ul li input {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#timeline > section .post-search div ul li input:checked + label {
+  background: #69B3A5;
+}
+
+#timeline > section .post-search div ul li input:hover + label, #timeline > section .post-search div ul li input:focus + label {
+  background: #637074;
+}
+
+#timeline > section .post-search div ul li label {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  display: block;
+}
+
+#timeline > section .post-search div input[type="search"] {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  border-radius: 1000px;
+  height: 48px;
+  width: 48px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  margin-left: -48px;
+  color: #2B3234;
+  font-size: 18px;
+}
+
+#timeline > section .post-search div input[type="search"]::-webkit-input-placeholder {
+  color: #c2c2c2;
+}
+
+#timeline > section .post-search div input[type="search"]:-moz-placeholder {
+  color: #c2c2c2;
+}
+
+#timeline > section .post-search div input[type="search"]::-moz-placeholder {
+  color: #c2c2c2;
+}
+
+#timeline > section .post-search div input[type="search"]:-ms-input-placeholder {
+  color: #c2c2c2;
+}
+
+#timeline > section .post-search div input[type="search"]:hover + ul, #timeline > section .post-search div input[type="search"]:focus + ul {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+#timeline > section .post-search div input[type="search"]:hover::-webkit-input-placeholder {
+  color: #9b9b9b;
+}
+
+#timeline > section .post-search div input[type="search"]:hover:-moz-placeholder {
+  color: #9b9b9b;
+}
+
+#timeline > section .post-search div input[type="search"]:hover::-moz-placeholder {
+  color: #9b9b9b;
+}
+
+#timeline > section .post-search div input[type="search"]:hover:-ms-input-placeholder {
+  color: #9b9b9b;
+}
+
+#timeline > section .post-search div input[type="search"]:focus {
+  width: 160px;
+  padding: 0 15px 0 53px;
+}
+
+#timeline > section .post-search div input[type="search"]:focus::-webkit-input-placeholder {
+  color: #757575;
+}
+
+#timeline > section .post-search div input[type="search"]:focus:-moz-placeholder {
+  color: #757575;
+}
+
+#timeline > section .post-search div input[type="search"]:focus::-moz-placeholder {
+  color: #757575;
+}
+
+#timeline > section .post-search div input[type="search"]:focus:-ms-input-placeholder {
+  color: #757575;
+}
+
+#timeline > section .post-search div:hover input[type="search"], #timeline > section .post-search div:focus input[type="search"] {
+  margin-left: -48px;
+  width: 160px;
+  padding: 0 15px 0 53px;
+}
+
+#timeline > section .post-search div:hover ul, #timeline > section .post-search div:focus ul {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
 #timeline > section > ul {
   position: relative;
   padding: 30px 0;
@@ -103,6 +307,8 @@
   -ms-transform: translateX(100%);
   -o-transform: translateX(100%);
   transform: translateX(100%);
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
   right: 0;
   padding: 0 48px 0 15px;
 }
@@ -126,8 +332,11 @@
   -ms-transform: translateX(-100%);
   -o-transform: translateX(-100%);
   transform: translateX(-100%);
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
   left: 0;
   padding: 0 15px 0 48px;
+  text-align: right !important;
 }
 
 #timeline > section > ul > li:nth-child(odd) article header a:after {
@@ -159,20 +368,25 @@
 }
 
 #timeline > section > ul > li .post-icon svg {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
   border-radius: 1000px;
   position: relative;
   z-index: 4;
   display: block;
   width: 48px;
   height: 48px;
-  padding: 5px;
+  padding: 6px;
   background: #40484B;
 }
 
 #timeline > section > ul > li .post-icon svg path {
   fill: none;
   stroke: white;
-  stroke-width: 4px;
+  stroke-width: 6px;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -275,6 +489,11 @@
 }
 
 #timeline > section > ul > li article header a:after {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
   content: "";
   position: absolute;
   top: 10px;
@@ -445,8 +664,24 @@
   background: #80beb3;
 }
 
+#timeline > section > ul > li.post-milestone:hover .post-icon span:last-child, #timeline > section > ul > li.post-milestone:focus .post-icon span:last-child {
+  background: #69B3A5;
+}
+
+#timeline > section > ul > li.post-milestone:hover .post-icon svg, #timeline > section > ul > li.post-milestone:hover header a, #timeline > section > ul > li.post-milestone:focus .post-icon svg, #timeline > section > ul > li.post-milestone:focus header a {
+  background: #69B3A5;
+}
+
 #timeline > section > ul > li.post-milestone article a:not(.txt-white) {
   color: #80beb3;
+}
+
+#timeline > section > ul > li.post-milestone article a.txt-white:hover, #timeline > section > ul > li.post-milestone article a.txt-white:focus {
+  background: #69B3A5;
+}
+
+#timeline > section > ul > li.post-milestone article a.txt-white:active {
+  background: #4e9b8c;
 }
 
 #timeline > section > ul > li.post-milestone article footer ul li:first-child span {
@@ -457,8 +692,16 @@
   border-right-color: #80beb3;
 }
 
+#timeline > section > ul > li.post-milestone:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-milestone:nth-child(even):focus article header a:after {
+  border-right-color: #69B3A5;
+}
+
 #timeline > section > ul > li.post-milestone:nth-child(odd) article header a:after {
   border-left-color: #80beb3;
+}
+
+#timeline > section > ul > li.post-milestone:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-milestone:nth-child(odd):focus article header a:after {
+  border-left-color: #69B3A5;
 }
 
 #timeline > section > ul > li.post-blog .post-icon span:last-child {
@@ -469,8 +712,24 @@
   background: #f7cc60;
 }
 
+#timeline > section > ul > li.post-blog:hover .post-icon span:last-child, #timeline > section > ul > li.post-blog:focus .post-icon span:last-child {
+  background: #F6C64E;
+}
+
+#timeline > section > ul > li.post-blog:hover .post-icon svg, #timeline > section > ul > li.post-blog:hover header a, #timeline > section > ul > li.post-blog:focus .post-icon svg, #timeline > section > ul > li.post-blog:focus header a {
+  background: #F6C64E;
+}
+
 #timeline > section > ul > li.post-blog article a:not(.chip) {
   color: #F6C64E;
+}
+
+#timeline > section > ul > li.post-blog article a.txt-white:hover, #timeline > section > ul > li.post-blog article a.txt-white:focus {
+  background: #F6C64E;
+}
+
+#timeline > section > ul > li.post-blog article a.txt-white:active {
+  background: #f4b61d;
 }
 
 #timeline > section > ul > li.post-blog article footer ul li:first-child span {
@@ -481,8 +740,16 @@
   border-right-color: #f7cc60;
 }
 
+#timeline > section > ul > li.post-blog:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-blog:nth-child(even):focus article header a:after {
+  border-right-color: #F6C64E;
+}
+
 #timeline > section > ul > li.post-blog:nth-child(odd) article header a:after {
   border-left-color: #f7cc60;
+}
+
+#timeline > section > ul > li.post-blog:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-blog:nth-child(odd):focus article header a:after {
+  border-left-color: #F6C64E;
 }
 
 #timeline > section > ul > li.post-tutorial .post-icon span:last-child {
@@ -493,8 +760,24 @@
   background: #6fb2c2;
 }
 
+#timeline > section > ul > li.post-tutorial:hover .post-icon span:last-child, #timeline > section > ul > li.post-tutorial:focus .post-icon span:last-child {
+  background: #55A4B7;
+}
+
+#timeline > section > ul > li.post-tutorial:hover .post-icon svg, #timeline > section > ul > li.post-tutorial:hover header a, #timeline > section > ul > li.post-tutorial:focus .post-icon svg, #timeline > section > ul > li.post-tutorial:focus header a {
+  background: #55A4B7;
+}
+
 #timeline > section > ul > li.post-tutorial article a:not(.chip) {
   color: #6fb2c2;
+}
+
+#timeline > section > ul > li.post-tutorial article a.txt-white:hover, #timeline > section > ul > li.post-tutorial article a.txt-white:focus {
+  background: #55A4B7;
+}
+
+#timeline > section > ul > li.post-tutorial article a.txt-white:active {
+  background: #418798;
 }
 
 #timeline > section > ul > li.post-tutorial article footer ul li:first-child span {
@@ -505,8 +788,16 @@
   border-right-color: #6fb2c2;
 }
 
+#timeline > section > ul > li.post-tutorial:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-tutorial:nth-child(even):focus article header a:after {
+  border-right-color: #55A4B7;
+}
+
 #timeline > section > ul > li.post-tutorial:nth-child(odd) article header a:after {
   border-left-color: #6fb2c2;
+}
+
+#timeline > section > ul > li.post-tutorial:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-tutorial:nth-child(odd):focus article header a:after {
+  border-left-color: #55A4B7;
 }
 
 #timeline > section > ul > li.post-partnership .post-icon span:last-child {
@@ -517,8 +808,24 @@
   background: #f26165;
 }
 
+#timeline > section > ul > li.post-partnership:hover .post-icon span:last-child, #timeline > section > ul > li.post-partnership:focus .post-icon span:last-child {
+  background: #F04F54;
+}
+
+#timeline > section > ul > li.post-partnership:hover .post-icon svg, #timeline > section > ul > li.post-partnership:hover header a, #timeline > section > ul > li.post-partnership:focus .post-icon svg, #timeline > section > ul > li.post-partnership:focus header a {
+  background: #F04F54;
+}
+
 #timeline > section > ul > li.post-partnership article a:not(.chip) {
   color: #f26165;
+}
+
+#timeline > section > ul > li.post-partnership article a.txt-white:hover, #timeline > section > ul > li.post-partnership article a.txt-white:focus {
+  background: #F04F54;
+}
+
+#timeline > section > ul > li.post-partnership article a.txt-white:active {
+  background: #ec2026;
 }
 
 #timeline > section > ul > li.post-partnership article footer ul li:first-child span {
@@ -529,8 +836,16 @@
   border-right-color: #f26165;
 }
 
+#timeline > section > ul > li.post-partnership:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-partnership:nth-child(even):focus article header a:after {
+  border-right-color: #F04F54;
+}
+
 #timeline > section > ul > li.post-partnership:nth-child(odd) article header a:after {
   border-left-color: #f26165;
+}
+
+#timeline > section > ul > li.post-partnership:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-partnership:nth-child(odd):focus article header a:after {
+  border-left-color: #F04F54;
 }
 
 #timeline > section > ul > li.post-parent .post-icon span:last-child {
@@ -541,8 +856,24 @@
   background: #a974ce;
 }
 
+#timeline > section > ul > li.post-parent:hover .post-icon span:last-child, #timeline > section > ul > li.post-parent:focus .post-icon span:last-child {
+  background: #9A5BC5;
+}
+
+#timeline > section > ul > li.post-parent:hover .post-icon svg, #timeline > section > ul > li.post-parent:hover header a, #timeline > section > ul > li.post-parent:focus .post-icon svg, #timeline > section > ul > li.post-parent:focus header a {
+  background: #9A5BC5;
+}
+
 #timeline > section > ul > li.post-parent article a:not(.chip) {
   color: #a974ce;
+}
+
+#timeline > section > ul > li.post-parent article a.txt-white:hover, #timeline > section > ul > li.post-parent article a.txt-white:focus {
+  background: #9A5BC5;
+}
+
+#timeline > section > ul > li.post-parent article a.txt-white:active {
+  background: #813eaf;
 }
 
 #timeline > section > ul > li.post-parent article footer ul li:first-child span {
@@ -553,8 +884,16 @@
   border-right-color: #a974ce;
 }
 
+#timeline > section > ul > li.post-parent:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-parent:nth-child(even):focus article header a:after {
+  border-right-color: #9A5BC5;
+}
+
 #timeline > section > ul > li.post-parent:nth-child(odd) article header a:after {
   border-left-color: #a974ce;
+}
+
+#timeline > section > ul > li.post-parent:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-parent:nth-child(odd):focus article header a:after {
+  border-left-color: #9A5BC5;
 }
 
 #timeline > section > ul > li.post-college-main .post-icon span:last-child {
@@ -565,8 +904,24 @@
   background: #eb60af;
 }
 
+#timeline > section > ul > li.post-college-main:hover .post-icon span:last-child, #timeline > section > ul > li.post-college-main:focus .post-icon span:last-child {
+  background: #e6389b;
+}
+
+#timeline > section > ul > li.post-college-main:hover .post-icon svg, #timeline > section > ul > li.post-college-main:hover header a, #timeline > section > ul > li.post-college-main:focus .post-icon svg, #timeline > section > ul > li.post-college-main:focus header a {
+  background: #e6389b;
+}
+
 #timeline > section > ul > li.post-college-main article a:not(.chip) {
   color: #eb60af;
+}
+
+#timeline > section > ul > li.post-college-main article a.txt-white:hover, #timeline > section > ul > li.post-college-main article a.txt-white:focus {
+  background: #e6389b;
+}
+
+#timeline > section > ul > li.post-college-main article a.txt-white:active {
+  background: #d11a82;
 }
 
 #timeline > section > ul > li.post-college-main article footer ul li:first-child span {
@@ -577,8 +932,16 @@
   border-right-color: #eb60af;
 }
 
+#timeline > section > ul > li.post-college-main:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-college-main:nth-child(even):focus article header a:after {
+  border-right-color: #e6389b;
+}
+
 #timeline > section > ul > li.post-college-main:nth-child(odd) article header a:after {
   border-left-color: #eb60af;
+}
+
+#timeline > section > ul > li.post-college-main:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-main:nth-child(odd):focus article header a:after {
+  border-left-color: #e6389b;
 }
 
 #timeline > section > ul > li.post-college-guru .post-icon span:last-child {
@@ -589,8 +952,24 @@
   background: #94c07d;
 }
 
+#timeline > section > ul > li.post-college-guru:hover .post-icon span:last-child, #timeline > section > ul > li.post-college-guru:focus .post-icon span:last-child {
+  background: #81B566;
+}
+
+#timeline > section > ul > li.post-college-guru:hover .post-icon svg, #timeline > section > ul > li.post-college-guru:hover header a, #timeline > section > ul > li.post-college-guru:focus .post-icon svg, #timeline > section > ul > li.post-college-guru:focus header a {
+  background: #81B566;
+}
+
 #timeline > section > ul > li.post-college-guru article a:not(.chip) {
   color: #94c07d;
+}
+
+#timeline > section > ul > li.post-college-guru article a.txt-white:hover, #timeline > section > ul > li.post-college-guru article a.txt-white:focus {
+  background: #81B566;
+}
+
+#timeline > section > ul > li.post-college-guru article a.txt-white:active {
+  background: #679c4c;
 }
 
 #timeline > section > ul > li.post-college-guru article footer ul li:first-child span {
@@ -601,8 +980,16 @@
   border-right-color: #94c07d;
 }
 
+#timeline > section > ul > li.post-college-guru:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-college-guru:nth-child(even):focus article header a:after {
+  border-right-color: #81B566;
+}
+
 #timeline > section > ul > li.post-college-guru:nth-child(odd) article header a:after {
   border-left-color: #94c07d;
+}
+
+#timeline > section > ul > li.post-college-guru:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-guru:nth-child(odd):focus article header a:after {
+  border-left-color: #81B566;
 }
 
 #timeline > section > ul > li.post-college-student .post-icon span:last-child {
@@ -613,8 +1000,24 @@
   background: #6ab3e2;
 }
 
+#timeline > section > ul > li.post-college-student:hover .post-icon span:last-child, #timeline > section > ul > li.post-college-student:focus .post-icon span:last-child {
+  background: #50A5DD;
+}
+
+#timeline > section > ul > li.post-college-student:hover .post-icon svg, #timeline > section > ul > li.post-college-student:hover header a, #timeline > section > ul > li.post-college-student:focus .post-icon svg, #timeline > section > ul > li.post-college-student:focus header a {
+  background: #50A5DD;
+}
+
 #timeline > section > ul > li.post-college-student article a:not(.chip) {
   color: #6ab3e2;
+}
+
+#timeline > section > ul > li.post-college-student article a.txt-white:hover, #timeline > section > ul > li.post-college-student article a.txt-white:focus {
+  background: #50A5DD;
+}
+
+#timeline > section > ul > li.post-college-student article a.txt-white:active {
+  background: #298ed1;
 }
 
 #timeline > section > ul > li.post-college-student article footer ul li:first-child span {
@@ -625,8 +1028,16 @@
   border-right-color: #6ab3e2;
 }
 
+#timeline > section > ul > li.post-college-student:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-college-student:nth-child(even):focus article header a:after {
+  border-right-color: #50A5DD;
+}
+
 #timeline > section > ul > li.post-college-student:nth-child(odd) article header a:after {
   border-left-color: #6ab3e2;
+}
+
+#timeline > section > ul > li.post-college-student:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-student:nth-child(odd):focus article header a:after {
+  border-left-color: #50A5DD;
 }
 
 #timeline > section > ul > li.post-professional .post-icon span:last-child {
@@ -637,8 +1048,24 @@
   background: #8c87e7;
 }
 
+#timeline > section > ul > li.post-professional:hover .post-icon span:last-child, #timeline > section > ul > li.post-professional:focus .post-icon span:last-child {
+  background: #7872e3;
+}
+
+#timeline > section > ul > li.post-professional:hover .post-icon svg, #timeline > section > ul > li.post-professional:hover header a, #timeline > section > ul > li.post-professional:focus .post-icon svg, #timeline > section > ul > li.post-professional:focus header a {
+  background: #7872e3;
+}
+
 #timeline > section > ul > li.post-professional article a:not(.chip) {
   color: #8c87e7;
+}
+
+#timeline > section > ul > li.post-professional article a.txt-white:hover, #timeline > section > ul > li.post-professional article a.txt-white:focus {
+  background: #7872e3;
+}
+
+#timeline > section > ul > li.post-professional article a.txt-white:active {
+  background: #4f47db;
 }
 
 #timeline > section > ul > li.post-professional article footer ul li:first-child span {
@@ -649,20 +1076,45 @@
   border-right-color: #8c87e7;
 }
 
+#timeline > section > ul > li.post-professional:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-professional:nth-child(even):focus article header a:after {
+  border-right-color: #7872e3;
+}
+
 #timeline > section > ul > li.post-professional:nth-child(odd) article header a:after {
   border-left-color: #8c87e7;
 }
 
+#timeline > section > ul > li.post-professional:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-professional:nth-child(odd):focus article header a:after {
+  border-right-color: #7872e3;
+}
+
 #timeline > section > ul > li.post-high-school .post-icon span:last-child {
   background: #e98a59;
+  min-width: 160px;
 }
 
 #timeline > section > ul > li.post-high-school .post-icon svg, #timeline > section > ul > li.post-high-school header a {
   background: #e98a59;
 }
 
+#timeline > section > ul > li.post-high-school:hover .post-icon span:last-child, #timeline > section > ul > li.post-high-school:focus .post-icon span:last-child {
+  background: #E5753C;
+}
+
+#timeline > section > ul > li.post-high-school:hover .post-icon svg, #timeline > section > ul > li.post-high-school:hover header a, #timeline > section > ul > li.post-high-school:focus .post-icon svg, #timeline > section > ul > li.post-high-school:focus header a {
+  background: #E5753C;
+}
+
 #timeline > section > ul > li.post-high-school article a:not(.chip) {
   color: #e98a59;
+}
+
+#timeline > section > ul > li.post-high-school article a.txt-white:hover, #timeline > section > ul > li.post-high-school article a.txt-white:focus {
+  background: #E5753C;
+}
+
+#timeline > section > ul > li.post-high-school article a.txt-white:active {
+  background: #d2591c;
 }
 
 #timeline > section > ul > li.post-high-school article footer ul li:first-child span {
@@ -673,8 +1125,16 @@
   border-right-color: #e98a59;
 }
 
+#timeline > section > ul > li.post-high-school:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-high-school:nth-child(even):focus article header a:after {
+  border-right-color: #E5753C;
+}
+
 #timeline > section > ul > li.post-high-school:nth-child(odd) article header a:after {
   border-left-color: #e98a59;
+}
+
+#timeline > section > ul > li.post-high-school:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-high-school:nth-child(odd):focus article header a:after {
+  border-left-color: #E5753C;
 }
 
 /* ---------- APPLY */

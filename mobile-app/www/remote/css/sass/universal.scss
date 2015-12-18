@@ -44,7 +44,107 @@
 	}
 	> section {
 		.post-search {
-			
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			margin: 60px auto 30px;
+			div {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				width: 100%;
+				position: relative;
+				margin: 0 auto;
+				svg {
+					@include round;
+					@include svg-stroke($slate, 6);
+					cursor: pointer;
+					position: relative;
+					z-index: 3;
+					display: block;
+					padding: 6px;
+					width: 48px;
+					height: 48px;
+					background: white;
+				}
+				ul {
+					@include opacity(0);
+					@include transition(.15s ease-in-out);
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					padding: 7.5px;
+					width: 100%;
+					li {
+						position: relative;
+						padding: 7.5px;
+						input {
+							position: absolute;
+							z-index: 4;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							&:checked {
+								+ label {
+									background: $shamrock;
+								}
+							}
+							&:hover, &:focus {
+								+ label {
+									background: lighten($slate, 15%);
+								}
+							}
+						}
+						label {
+							@include transition(.15s ease-in-out);
+							display: block;
+						}
+					}
+				}
+				input[type="search"] {
+					@include transition(.15s ease-in-out);
+					@include round;
+					height: 48px;
+					width: 48px;
+					overflow: hidden;
+					border: 0;
+					padding: 0;
+					margin-left: -48px;
+					color: $charcoal;
+					font-size: 18px;
+					@include placeholder {
+						color: lighten($taupe, 30%);
+					}
+					&:hover, &:focus {
+						+ ul {
+							@include opacity(1);
+						}
+					}
+					&:hover {
+						@include placeholder {
+							color: lighten($taupe, 15%);
+						}
+					}
+					&:focus {
+						width: 160px;
+						padding: 0 15px 0 53px;
+						@include placeholder {
+							color: $taupe;
+						}
+					}
+				}
+				&:hover, &:focus {
+					input[type="search"] {
+						margin-left: -48px;
+						width: 160px;
+						padding: 0 15px 0 53px;
+					}
+					ul {
+						@include opacity(1);
+					}
+				}
+			}
 		}
 		> ul {
 			position: relative;
@@ -77,6 +177,8 @@
 						}
 						span:last-child {
 							@include translate-x(100%);
+							-webkit-justify-content: flex-start;
+							justify-content: flex-start;
 							right: 0;
 							padding: 0 48px 0 15px;
 						}
@@ -98,8 +200,11 @@
 						}
 						span:last-child {
 							@include translate-x(-100%);
+							-webkit-justify-content: flex-end;
+							justify-content: flex-end;
 							left: 0;
 							padding: 0 15px 0 48px;
+							text-align: right!important;
 						}
 					}
 					article {
@@ -126,16 +231,17 @@
 					z-index: 1;
 					display: block;
 					svg {
+						@include transition(.15s ease-in-out);
 						@include round;
 						position: relative;
 						z-index: 4;
 						display: block;
 						width: 48px;
 						height: 48px;
-						padding: 5px;
+						padding: 6px;
 						background: $slate;
 						path {
-							@include svg-stroke(white, 4);
+							@include svg-stroke(white, 6);
 						}
 					}
 					&:after {
@@ -203,6 +309,7 @@
 							line-height: 1.2;
 							text-transform: none;
 							&:after {
+								@include transition(.15s ease-in-out);
 								content: "";
 								position: absolute;
 								top: 10px;
@@ -339,9 +446,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $shamrock, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $shamrock;
+							}
+						}
+						.post-icon svg, header a {
+							background: $shamrock;
+						}
+					}
 					article {
 						a:not(.txt-white) {
 							color: mix(white, $shamrock, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $shamrock;
+							}
+							&:active {
+								background: darken($shamrock, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -363,12 +488,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $shamrock;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $shamrock, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $shamrock;
+									}
 								}
 							}
 						}
@@ -383,9 +526,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $gold, 10%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $gold;
+							}
+						}
+						.post-icon svg, header a {
+							background: $gold;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: $gold;
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $gold
+							}
+							&:active {
+								background: darken($gold, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -407,12 +568,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $gold;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $gold, 10%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $gold;
+									}
 								}
 							}
 						}
@@ -427,9 +606,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $azure, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $azure;
+							}
+						}
+						.post-icon svg, header a {
+							background: $azure;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $azure, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $azure;
+							}
+							&:active {
+								background: darken($azure, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -451,12 +648,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $azure;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $azure, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $azure;
+									}
 								}
 							}
 						}
@@ -471,9 +686,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $auburn, 10%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $auburn;
+							}
+						}
+						.post-icon svg, header a {
+							background: $auburn;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $auburn, 10%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $auburn;
+							}
+							&:active {
+								background: darken($auburn, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -495,12 +728,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $auburn;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $auburn, 10%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $auburn;
+									}
 								}
 							}
 						}
@@ -515,9 +766,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $eggplant, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $eggplant;
+							}
+						}
+						.post-icon svg, header a {
+							background: $eggplant;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $eggplant, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $eggplant
+							}
+							&:active {
+								background: darken($eggplant, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -539,12 +808,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $eggplant;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $eggplant, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $eggplant;
+									}
 								}
 							}
 						}
@@ -559,9 +846,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $cerise, 20%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $cerise;
+							}
+						}
+						.post-icon svg, header a {
+							background: $cerise;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $cerise, 20%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $cerise;
+							}
+							&:active {
+								background: darken($cerise, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -583,12 +888,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $cerise;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $cerise, 20%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $cerise;
+									}
 								}
 							}
 						}
@@ -603,9 +926,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $moola, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $moola;
+							}
+						}
+						.post-icon svg, header a {
+							background: $moola;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $moola, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $moola;
+							}
+							&:active {
+								background: darken($moola, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -627,12 +968,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $moola;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $moola, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $moola;
+									}
 								}
 							}
 						}
@@ -647,9 +1006,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $lake, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $lake;
+							}
+						}
+						.post-icon svg, header a {
+							background: $lake;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $lake, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $lake;
+							}
+							&:active {
+								background: darken($lake, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -671,12 +1048,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $lake;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $lake, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $lake;
+									}
 								}
 							}
 						}
@@ -691,9 +1086,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $cobalt, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $cobalt;
+							}
+						}
+						.post-icon svg, header a {
+							background: $cobalt;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $cobalt, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $cobalt;
+							}
+							&:active {
+								background: darken($cobalt, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -715,6 +1128,15 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $cobalt;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
@@ -724,20 +1146,48 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $cobalt;
+									}
+								}
+							}
+						}
 					}
 				}
 				&.post-high-school {
 					.post-icon {
 						span:last-child {
 							background: mix(white, $orange, 15%);
+							min-width: 160px;
 						}
 					}
 					.post-icon svg, header a {
 						background: mix(white, $orange, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $orange;
+							}
+						}
+						.post-icon svg, header a {
+							background: $orange;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $orange, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $orange;
+							}
+							&:active {
+								background: darken($orange, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -759,12 +1209,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $orange;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $orange, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $orange;
+									}
 								}
 							}
 						}
