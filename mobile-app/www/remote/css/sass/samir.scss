@@ -485,6 +485,23 @@ body.platform-ios
 
 	ion-pane.cta-modal {
 		z-index:10;
+		.desktop-header {
+			z-index:10;
+		}
+		.request-form-container {
+			#request-form-slide-box {
+				top:5px;
+			}
+		}
+	}
+	.hide-display {
+		display:none;
 	}
 
+}
+
+#pf-shop-desc-backdrop {
+	z-index:98;
+	opacity:0.3;
+	display:none;
 }

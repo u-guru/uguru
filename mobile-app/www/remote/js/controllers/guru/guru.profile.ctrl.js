@@ -53,14 +53,40 @@ angular.module('uguru.guru.controllers')
     $scope.activeTabIndex = 1;
     $scope.profile.edit_mode = false;
 
-    $scope.page = { modals : {}, popups: {} }
+    $scope.page = { modals : {}, popups: {}, backdrops: {} }
     $scope.page.modals = {
       experience: {visible:false},
       language: {visible:false}
     }
+    $scope.page.backdrops = {activeTab:false}
+
+    $scope.page.popups.checkPopupVisible = function() {
+      return $scope.pagePopups.linkedin || $scope.pagePopups.facebook ||
+      $scope.pagePopups.instagram || $scope.pagePopups.custom || $scope.pagePopups.twitter;
+    }
+
+
+    var initAboutTabBackgroundListener = function() {
+      var mainAboutTabDiv = document.querySelector('.pf-shop-desc');
+      if (mainAboutTabDiv) {
+        mainAboutTabDiv.addEventListener('click', function($event) {
+          if ($scope.activeTabIndex === 1 && $scope.page.popups.checkPopupVisible()) {
+            var elemClicked = $event.target;
+            if (elemClicked.querySelector('.guru-popup')) {
+              console.log('div was clicked outside of the popup');
+            } else {
+              console.log('div was clicked INSIDE of the popup');
+            }
+          }
+        })
+      }
+    }
 
 
 
+    $timeout(function() {
+      initAboutTabBackgroundListener();
+    }, 1000)
 
 
     $scope.all_currencies = Currency.updateMasterList($scope.user);
@@ -367,11 +393,16 @@ angular.module('uguru.guru.controllers')
       }, 500);
     }
 
-    $scope.updateExternalResource = function(site, url) {
+    $scope.hideAllProfilePopups = function() {
       $scope.pagePopups.facebook = false;
       $scope.pagePopups.linkedin = false;
       $scope.pagePopups.twitter = false;
       $scope.pagePopups.instagram = false;
+      $scope.page.backdrops.activeTab = false;
+    }
+
+    $scope.updateExternalResource = function(site, url) {
+      $scope.hideAllProfilePopups();
       LoadingService.showAmbig(null, 10000);
       var successFunction = function(external_user) {
         LoadingService.hide();
@@ -379,7 +410,13 @@ angular.module('uguru.guru.controllers')
           LoadingService.showSuccess('Saved!', 750);
         }, 100)
       }
-      $scope.user.updateAttr('update_external_profile_resource', $scope.user, site, successFunction, $scope)
+
+      var payload = {
+        site:site,
+        url:url
+      }
+
+      $scope.user.updateAttr('update_external_profile_resource', $scope.user, payload, successFunction, $scope)
     }
 
     //TODO --> send error to analytics if no callback
@@ -487,6 +524,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.showPagePopup = function(type_string) {
+      $scope.page.backdrops.activeTab = true;
       var popupKeys = Object.keys($scope.pagePopups);
       for (var i = 0; i < popupKeys.length; i++) {
         $scope.pagePopups[popupKeys[i]] = false

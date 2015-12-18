@@ -105,16 +105,16 @@ angular.module('uguru.user', [])
             var resultDict = {};
             for (var i = 0; i < external_profiles.length; i++) {
                 var indexProfile = external_profiles[i];
-                if (indexProfile.site_url.indexOf('facebook') > -1) {
+                if (indexProfile.site_url && indexProfile.title.toLowerCase().indexOf('facebook') > -1) {
                     resultDict.facebook = indexProfile.site_url.replace('facebook.com/', '');
                 }
-                if (indexProfile.site_url.indexOf('twitter') > -1) {
+                if (indexProfile.site_url && indexProfile.title.toLowerCase().toLowerCase().indexOf('twitter') > -1) {
+                    resultDict.twitter = indexProfile.site_url;
+                }
+                if (indexProfile.site_url && indexProfile.title.toLowerCase().toLowerCase().indexOf('instagram') > -1) {
                     resultDict.instagram = indexProfile.site_url;
                 }
-                if (indexProfile.site_url.indexOf('instagram') > -1) {
-                    resultDict.instagram = indexProfile.site_url;
-                }
-                if (indexProfile.site_url.indexOf('linkedin') > -1) {
+                if (indexProfile.site_url && indexProfile.title.toLowerCase().indexOf('linkedin') > -1) {
                     resultDict.linkedin = indexProfile.site_url;
                 }
             }
@@ -1227,7 +1227,7 @@ angular.module('uguru.user', [])
               if (arg === 'update_external_profile_resource') {
                 return {
                     'update_external_profile_resource': true,
-                    'domain': obj
+                    'payload': obj
                 }
               }
 

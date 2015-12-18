@@ -9,12 +9,14 @@ angular.module('uguru.student.controllers', [])
     '$ionicSlideBoxDelegate',
     'DeviceService',
     '$timeout',
+    '$ionicModal',
     function($scope, $state, $ionicSideMenuDelegate, $ionicSlideBoxDelegate,
-        DeviceService, $timeout) {
+        DeviceService, $timeout, $ionicModal) {
 
         var CTA_PARENT_DICT = {
             'cta-box-student-request':'#desktop-student-home',
-            'cta-box-content': '#desktop-student-home'
+            'cta-box-content': '#desktop-student-home',
+            'cta-box-student-courses': '#desktop-student-home'
         }
 
         var CTA_OPTIONS = {
@@ -69,7 +71,19 @@ angular.module('uguru.student.controllers', [])
         }
 
         function initStudentHomeModals() {
+            $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.studentCoursesModal = modal;
+            });
 
+            $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.studentRequestModal = modal;
+            });
         }
 
         $ionicSideMenuDelegate.canDragContent(false);
@@ -172,7 +186,7 @@ angular.module('uguru.student.controllers', [])
                     initCTA();
                 }, 3000)
             } else {
-                initModals();
+                initStudentHomeModals();
             }
 
         })

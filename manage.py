@@ -779,6 +779,8 @@ if arg == 'seed_admin':
     user.school_email = 'gabrielle@berkeley.edu'
     user.profile_code = account_name.split(' ')[0].lower()
     user.referral_code = account_name.split(' ')[0].lower()
+    if not user.external_profiles:
+        user.initAllExternalProfiles()
     user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
     selectXRandomCourses(user, 2)
 
