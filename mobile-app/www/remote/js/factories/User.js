@@ -616,6 +616,8 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
 
         $scope.user.majors = user.departments;
+        $scope.user.major = user.major;
+        $scope.user.year = user.year;
 
         $scope.user.guru_categories = user.guru_categories;
         $scope.user.guru_subcategories = user.guru_subcategories;
@@ -918,6 +920,17 @@ angular.module('uguru.user', [])
                         portfolio_item: obj,
                         'edit_guru_portfolio_item': true
                   }
+              }
+
+              if (arg === 'update_guru_demographic') {
+                return {
+                    'update_guru_demographic': obj
+                }
+              }
+              if (arg === 'update_guru_major') {
+                return {
+                    'update_guru_major': obj
+                }
               }
 
               if (arg === 'remove_guru_portfolio_item') {

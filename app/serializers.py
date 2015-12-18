@@ -364,6 +364,7 @@ portfolio_item_fields['hourly_price'] = fields.Float(attribute='hourly_price')
 portfolio_item_fields['max_hourly_price'] = fields.Float(attribute='max_hourly_price')
 portfolio_item_fields['unit_price'] = fields.Float(attribute='unit_price')
 portfolio_item_fields['max_unit_price'] = fields.Float(attribute='max_unit_price')
+portfolio_item_fields['active'] = fields.Boolean(attribute='activated')
 portfolio_item_fields['tags'] = fields.List(fields.Nested(tag_fields))
 portfolio_item_fields['ratings'] = fields.List(fields.Nested(guru_rating_fields))
 portfolio_item_fields['resources'] = fields.List(fields.Nested(resource_fields))
@@ -421,6 +422,8 @@ UserSerializer = {
     'guru_languages': fields.List(fields.Nested(guru_language_fields)),
     'guru_experiences': fields.List(fields.Nested(guru_experience_fields)),
     'location_services_enabled': fields.Boolean,
+    'major': fields.String,
+    'year': fields.String,
     'majors': fields.List(fields.Nested(major_fields)),
     'guru_courses': fields.List(fields.Nested(course_fields)),
     'student_courses': fields.List(fields.Nested(course_fields)),

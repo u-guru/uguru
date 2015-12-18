@@ -281,6 +281,7 @@ class User(Base):
 
     year = Column(String)
     major = Column(String)
+    is_alumni = Column(Boolean, default=False)
 
     # conducted every night at midnight
     official_guru_score = Column(Integer)
@@ -2588,6 +2589,7 @@ class Portfolio_Item(Base):
     description = Column(String)
 
     archived = Column(Boolean, default=False)
+    activated = Column(Boolean, default=True)
 
 
     user_id = Column(Integer, ForeignKey('user.id'))
@@ -2703,6 +2705,10 @@ class Portfolio_Item(Base):
             self.hourly_price = float(options.get('hourly_price'))
         if options.get('max_hourly_price'):
             self.max_hourly_price = float(options.get('max_hourly_price'))
+
+        ## since boolean value
+        if 'active' in options:
+            self.activated = options.get('active')
 
         if not self.avg_rating:
             self.avg_rating = 0
