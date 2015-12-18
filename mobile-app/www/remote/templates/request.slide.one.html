@@ -1,0 +1,110 @@
+<section class='bg-slate full-xy flex-wrap-center text-center ng-class:{"ugrid-3":desktopMode}'>
+	<div ng-if='desktopMode'>
+	</div>
+	<div class='full-y relative ng-class:{"full-x":!desktopMode}'>
+		<div class='absolute full-xy flex-wrap-center'>
+				<h1 class='txt-smoke uppercase weight-900'>
+					What do you need help in?
+				</h1>
+				<div class="bg-slate full-x input-field">
+					<div>
+					</div>
+					<div class='text-center relative' ng-controller="CoursesController">
+						<input type="text" id='course-input-1' name="course-input-1" style='z-index:1000;' class="bg-charcoal"
+				                fast-matcher
+				                fast-matcher-source="courses"
+				                fast-matcher-output="search_text.matching"
+				                fast-matcher-properties="short_name, full_name, variations"
+				                ng-model="search_text.course"
+				        		ng-focus="search_text.input_focused = true"
+				        		ng-blur="blurSearchInput()"
+				                placeholder="" />
+				        <label for="course-input-1" id="label-course-input-1" ng-click='search_text.input_focused = true;' style='z-index:1;'>
+							<span class='ng-class:{"hide": !courses.length}'> search among {{courses.length}} popular courses </span>
+							<span class='ng-class:{"hide": courses.length}'> search popular courses </span>
+						</label>
+						<a style="top:25%;"  class="txt-smoke side-icon desktop-input-close-icon activated hide ng-class:{'show':search_text.input_focused || (search_text.course && search_text.course.length > 0)}" ng-click="search_text.course = ''" >
+							<i class="icon ion-close-circled text-white"></i>
+						</a>
+						<div class='pf-course-none hide ng-class:{"show": search_text.course.length && !courses.length}'>
+							No results, try again?
+						</div>
+						<ul class='pf-course-list hide ng-class:{"show": search_text.course.length}'>
+							<li class="hide ng-class:{'show':course.short_name}" ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 9 track by course.id' ng-click='setCourseAndClearInput(course)'>
+								<div class='txt-smoke text-left weight-400 uppercase p10x'>
+									<span class="course-name">{{course.short_name}}</span>
+									<span class="course-title">{{course.full_name || course.title}}</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<!-- description -->
+				<textarea class="input-outline full-x" ng-model='request.info.description' placeholder="Description"></textarea>
+
+				<!-- start tags -->
+				<div class='chip-container pf-tags flex-wrap-center p05y'>
+
+						<a ng-click='removeTagFromRequest($index, tag)' class="chip tag-selected txt-smoke m10xy" ng-repeat="tag in request.info.tags">x&nbsp;&nbsp;<input ng-disabled="true" ng-model='tag.name' size="{{tag.name.length}}" /></a>
+
+
+					<!-- empty one -->
+					<div class='full-x flex-center-wrap p05y'>
+						<input class='chip tag-add' ng-model='request.info.empty_tag.name' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{request.info.empty_tag.name.length || 10}}">
+					</div>
+				</div>
+				<!-- end tags -->
+
+				<!-- start attachments -->
+				<div class='pf-photo-list'>
+					<ul class='ugrid'>
+						<li>
+							<div class="pf-upload-file pf-upload-pdf">
+								<svg class="doc-outline" viewBox="0 0 75 75">
+									<path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+								</svg>
+								<a>
+									<svg viewBox="0 0 100 100">
+										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+									</svg>
+								</a>
+								<span class="doc-info">
+									<span class="doc-name">file.pdf</span>
+									<span class="doc-type">PDF</span>
+								</span>
+							</div>
+						</li>
+						<li>
+							<div class="pf-upload-img" style="background-image: url({{img_base}}./img/stock/photography/6.jpg);">
+								<a>
+									<svg viewBox="0 0 100 100">
+										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+									</svg>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="pf-upload-add">
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<a>
+									<span>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+										<span>Add File</span>
+									</span>
+								</a>
+							</div>
+						</li>
+					</ul>
+			</div>
+
+		</div>
+	</div>
+	<div>
+	</div>
+	</section>

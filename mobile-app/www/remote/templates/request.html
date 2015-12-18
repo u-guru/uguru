@@ -1,16 +1,11 @@
 <!--
 Gameplan
-1. Fluid Container & template
-	- ion-slide
+1. Progress bar functionality
 2. Request Service
 	- category type == 'academic'
 	- add course input w/ container show & hide
 	- empty request
 	## P.1 What do you need help in?
-			- course
-			- tags
-			- description
-			- attachment
 	## your situation + store in default cache
 			- is urgent
 			- time estimate
@@ -26,9 +21,8 @@ Gameplan
 			- simultaneous contact
 			- extra details? textarea
 	## Receipt
-
 -->
-<section>
+<section ng-controller='RequestController'>
 	<!-- only show this on desktop mode -->
 	<header class="desktop-header" ng-if='desktopMode'>
 		<a></a>
@@ -54,12 +48,7 @@ Gameplan
 			<progress class="shamrock" max="6" value="1"></progress>
 		</div>
 		<ion-slide-box id='request-form-slide-box' can-swipe-back='false' on-slide-changed="slideHasChanged($index)" class='full-y'>
-			<ion-slide>
-				<section class='bg-slate full-xy flex-center-wrap'>
-					<h1 class='txt-smoke uppercase weight-900'>
-						Slide 1
-					</h1>
-				</section>
+			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.one.html'">
 			</ion-slide>
 			<ion-slide class='bg-shamrock'>
 				<section class='bg-shamrock full-xy flex-center-wrap'>
