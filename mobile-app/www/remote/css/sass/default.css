@@ -5673,3 +5673,136 @@ input[type=range]:focus::-ms-fill-upper {
 .pf-card-tech .pf-card-main .pf-card-thumbs li a span {
   background-color: #55A4B7;
 }
+
+.pf-tabs, .tab-bar {
+  background: #2B3234;
+}
+
+.pf-tabs ul, .tab-bar ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  padding: 0 7.5px;
+}
+
+.pf-tabs ul li, .tab-bar ul li {
+  width: 100%;
+  text-align: center;
+  padding: 0 7.5px;
+}
+
+.pf-tabs ul li a, .tab-bar ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  height: 60px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pf-tabs ul li a.active, .tab-bar ul li a.active {
+  border-bottom: 5px solid #69B3A5;
+}
+
+.pf-tabs ul li a:hover, .pf-tabs ul li a:focus, .tab-bar ul li a:hover, .tab-bar ul li a:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.pf-tabs ul li a:visited, .tab-bar ul li a:visited {
+  background: none !important;
+}
+
+.rating-stars, .pf-rating {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.rating-stars li, .pf-rating li {
+  width: 20%;
+}
+
+.rating-stars li svg, .pf-rating li svg {
+  fill: none;
+  stroke: #F6C64E;
+  stroke-width: 7px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rating-stars li svg polygon:nth-child(2), .pf-rating li svg polygon:nth-child(2) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  stroke-width: 0;
+  fill: #F6C64E;
+}
+
+.rating-stars[data-rating="1"] li:nth-child(1) svg polygon, .pf-rating[data-rating="1"] li:nth-child(1) svg polygon {
+  fill: #F6C64E;
+}
+
+.rating-stars[data-rating="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2) {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.rating-stars[data-rating="2"] li:nth-child(1) svg polygon, .rating-stars[data-rating="2"] li:nth-child(2) svg polygon, .pf-rating[data-rating="2"] li:nth-child(1) svg polygon, .pf-rating[data-rating="2"] li:nth-child(2) svg polygon {
+  fill: #F6C64E;
+}
+
+.rating-stars[data-rating="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2) {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.rating-stars[data-rating="3"] li:nth-child(1) svg polygon, .rating-stars[data-rating="3"] li:nth-child(2) svg polygon, .rating-stars[data-rating="3"] li:nth-child(3) svg polygon, .pf-rating[data-rating="3"] li:nth-child(1) svg polygon, .pf-rating[data-rating="3"] li:nth-child(2) svg polygon, .pf-rating[data-rating="3"] li:nth-child(3) svg polygon {
+  fill: #F6C64E;
+}
+
+.rating-stars[data-rating="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2) {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.rating-stars[data-rating="4"] li:nth-child(1) svg polygon, .rating-stars[data-rating="4"] li:nth-child(2) svg polygon, .rating-stars[data-rating="4"] li:nth-child(3) svg polygon, .rating-stars[data-rating="4"] li:nth-child(4) svg polygon, .pf-rating[data-rating="4"] li:nth-child(1) svg polygon, .pf-rating[data-rating="4"] li:nth-child(2) svg polygon, .pf-rating[data-rating="4"] li:nth-child(3) svg polygon, .pf-rating[data-rating="4"] li:nth-child(4) svg polygon {
+  fill: #F6C64E;
+}
+
+.rating-stars[data-rating="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2) {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.rating-stars[data-rating="5"] li svg polygon, .pf-rating[data-rating="5"] li svg polygon {
+  fill: #F6C64E;
+}
