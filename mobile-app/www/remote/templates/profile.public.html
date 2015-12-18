@@ -103,6 +103,8 @@
 
 
 			<div class="relative pf-shop-desc full-x pf-tab-item ng-class:{'active':activeTabIndex === 1}">
+				<div class='backdrop full-xy bg-charcoal absolute top-0 left-0 ng-class:{"show":page.backdrops.activeTab}' ng-click='hideAllProfilePopups()' id='pf-shop-desc-backdrop'>
+				</div>
 				<!-- mobile-only -->
 				<ul class="pf-url"  ng-if="!profile.edit_mode">
 					<li>
@@ -168,7 +170,7 @@
 								<div class="ng-class:{'url-pop':pagePopups.twitter}">
 									<!-- BIND -->
 									<div>
-										<span>twitter.com/</span><input value="user.external_profiles_dict.twitter" size="{{user.external_profiles_dict.twitter.length + 1}}"/>
+										<span>twitter.com/</span><input ng-model="user.external_profiles_dict.twitter" size="{{user.external_profiles_dict.twitter.length + 1}}"/>
 									</div>
 								</div>
 							</div>
@@ -184,7 +186,7 @@
 								<div class="ng-class:{'url-pop':pagePopups.instagram}">
 									<!-- BIND -->
 									<div>
-										<span>instagram.com/</span><input value="user.external_profiles_dict.instagram" size="{{user.external_profiles_dict.instagram.length + 1}}"/>
+										<span>instagram.com/</span><input ng-model="user.external_profiles_dict.instagram" size="{{user.external_profiles_dict.instagram.length + 1}}"/>
 									</div>
 								</div>
 							</div>
@@ -263,7 +265,7 @@
 						</li>
 					</ul>
 					<div class="hide ng-class{'show':page.modals.experience.visible}" ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
-					<button class="chip">Add an Experience</button>
+					<button ng-click='page.modals.experience.visible = true;' class="chip">Add an Experience</button>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>Languages</h1>

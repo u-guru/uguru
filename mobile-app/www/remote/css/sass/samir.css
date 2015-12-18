@@ -382,5 +382,16 @@ body.platform-ios
 
 #desktop-student-home ion-pane.cta-modal {
   z-index: 10; }
+  #desktop-student-home ion-pane.cta-modal .desktop-header {
+    z-index: 10; }
+  #desktop-student-home ion-pane.cta-modal .request-form-container #request-form-slide-box {
+    top: 5px; }
+#desktop-student-home .hide-display {
+  display: none; }
+
+#pf-shop-desc-backdrop {
+  z-index: 98;
+  opacity: 0.3;
+  display: none; }
 
 /*# sourceMappingURL=samir.css.map */

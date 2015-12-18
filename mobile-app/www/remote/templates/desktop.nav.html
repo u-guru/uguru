@@ -9,7 +9,7 @@
 				<svg viewBox="0 0 372 104" ng-include="img_base + BASE + 'templates/svg.icon.logo.html'">
 				</svg>
 			</a>
-			<a id="top-menu-discover" class="top-tooltip ng-class:{'active': user.guru_discoverability, 'hide-tooltip':root.vars.showDesktopSettings}" ng-click='toggleDiscoverability()'>
+			<a id="top-menu-discover" class="top-tooltip ng-class:{'active': user.guru_discoverability, 'hide-tooltip':root.vars.showDesktopSettings}" ng-click='toggleDiscoverability()' ng-if='root.vars.guru_mode'>
 				<svg viewBox="0 0 100 100">
 					<circle cx="50" cy="50" r="36"></circle>
 					<path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>

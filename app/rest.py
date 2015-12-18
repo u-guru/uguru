@@ -621,9 +621,14 @@ class UserOneView(restful.Resource):
 
         if 'update_external_profile_resource' in request.json:
 
-            resource_type = request.json.get('domain')
-            if resource_type and resource_type in Resource.RECOGNIZED:
-                user.updateRecognizedResource(resource_type)
+            request_json = request.json.get('payload')
+            print request_json
+            resource_type = request_json.get('site')
+            url = request_json.get('url')
+
+            if resource_type and resource_type in Resource.RECOGNIZED and url:
+                print "Were trying"
+                user.updateExternalResource(resource_type, url)
             else:
                 user.addNewExternalResource(resource_type)
 
