@@ -6127,3 +6127,223 @@ input[type=range]:focus::-ms-fill-upper {
   font-size: 20px;
   font-weight: 600;
 }
+
+.cal-week > div, .pf-cal > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.cal-week > div .cal-month, .pf-cal > div .cal-month {
+  width: 100%;
+  background: #4c5d61;
+  padding: 15px;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 2px 2px;
+}
+
+.cal-week > div .cal-month.has-link, .pf-cal > div .cal-month.has-link {
+  padding: 0;
+}
+
+.cal-week > div .cal-month.has-link a, .pf-cal > div .cal-month.has-link a {
+  display: block;
+  padding: 15px;
+  background: #4c5d61;
+  color: white !important;
+}
+
+.cal-week > div .cal-month.has-link a:hover, .cal-week > div .cal-month.has-link a:focus, .pf-cal > div .cal-month.has-link a:hover, .pf-cal > div .cal-month.has-link a:focus {
+  background: #63787e;
+}
+
+.cal-week > div .cal-month.has-link a:active, .cal-week > div .cal-month.has-link a.active, .pf-cal > div .cal-month.has-link a:active, .pf-cal > div .cal-month.has-link a.active {
+  background: #586b6f;
+}
+
+.cal-week > div .cal-time, .cal-week > div .pf-cal-time, .pf-cal > div .cal-time, .pf-cal > div .pf-cal-time {
+  width: 80px;
+  padding-top: 30px;
+}
+
+.cal-week > div .cal-time li, .cal-week > div .pf-cal-time li, .pf-cal > div .cal-time li, .pf-cal > div .pf-cal-time li {
+  position: relative;
+  height: 50px;
+}
+
+.cal-week > div .cal-time li span, .cal-week > div .pf-cal-time li span, .pf-cal > div .cal-time li span, .pf-cal > div .pf-cal-time li span {
+  display: block;
+  position: absolute;
+  top: -9px;
+  right: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: right;
+}
+
+.cal-week > div .cal-main, .pf-cal > div .cal-main {
+  width: calc(100% - 80px);
+  overflow-x: auto;
+}
+
+.cal-week > div .cal-main .cal-date, .pf-cal > div .cal-main .cal-date {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  min-width: 770px;
+  height: 30px;
+  padding: 0 1px;
+}
+
+.cal-week > div .cal-main .cal-date li, .pf-cal > div .cal-main .cal-date li {
+  width: calc(100% / 7);
+  min-width: 110px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 1px;
+}
+
+.cal-week > div .cal-main .cal-date li > span, .pf-cal > div .cal-main .cal-date li > span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  border-radius: 2px;
+  height: 30px;
+  width: 100%;
+  background: #8A9EA3;
+}
+
+.cal-week > div .cal-main .cal-events, .pf-cal > div .cal-main .cal-events {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  min-width: 770px;
+  padding: 1px;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day, .pf-cal > div .cal-main .cal-events .cal-day {
+  width: calc(100% / 7);
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li, .pf-cal > div .cal-main .cal-events .cal-day li {
+  position: relative;
+  width: 100%;
+  min-width: 110px;
+  height: 50px;
+  padding: 1px;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li > span, .pf-cal > div .cal-main .cal-events .cal-day li > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  background: rgba(241, 241, 241, 0.4);
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.has-event > span, .pf-cal > div .cal-main .cal-events .cal-day li.has-event > span {
+  background: white;
+  border: 1px solid #8A9EA3;
+  border-left-width: 5px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #8A9EA3;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.has-event > span span, .pf-cal > div .cal-main .cal-events .cal-day li.has-event > span span {
+  display: block;
+  line-height: 1.1;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.hours-2, .pf-cal > div .cal-main .cal-events .cal-day li.hours-2 {
+  height: 100px;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.hours-3, .pf-cal > div .cal-main .cal-events .cal-day li.hours-3 {
+  height: 150px;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.hours-4, .pf-cal > div .cal-main .cal-events .cal-day li.hours-4 {
+  height: 200px;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.hours-5, .pf-cal > div .cal-main .cal-events .cal-day li.hours-5 {
+  height: 250px;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.hours-6, .pf-cal > div .cal-main .cal-events .cal-day li.hours-6 {
+  height: 300px;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.event-academic > span, .pf-cal > div .cal-main .cal-events .cal-day li.event-academic > span {
+  border-color: #e6389b;
+  color: #e6389b;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.event-baking > span, .pf-cal > div .cal-main .cal-events .cal-day li.event-baking > span {
+  border-color: #F6C64E;
+  color: #F6C64E;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.event-photography > span, .pf-cal > div .cal-main .cal-events .cal-day li.event-photography > span {
+  border-color: #81B566;
+  color: #81B566;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.event-household > span, .pf-cal > div .cal-main .cal-events .cal-day li.event-household > span {
+  border-color: #7872e3;
+  color: #7872e3;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.event-delivery > span, .pf-cal > div .cal-main .cal-events .cal-day li.event-delivery > span {
+  border-color: #F04F54;
+  color: #F04F54;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.event-freelancing > span, .pf-cal > div .cal-main .cal-events .cal-day li.event-freelancing > span {
+  border-color: #E5753C;
+  color: #E5753C;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.event-athletic > span, .pf-cal > div .cal-main .cal-events .cal-day li.event-athletic > span {
+  border-color: #9A5BC5;
+  color: #9A5BC5;
+}
+
+.cal-week > div .cal-main .cal-events .cal-day li.event-tech > span, .pf-cal > div .cal-main .cal-events .cal-day li.event-tech > span {
+  border-color: #55A4B7;
+  color: #55A4B7;
+}

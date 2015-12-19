@@ -55,6 +55,8 @@
 	.request-content {
 		height: 70%;
 		background: $smoke;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	#request-search {
 		background: lighten($shamrock, 10%);
@@ -110,9 +112,11 @@
 			}
 		}
 		.request-content {
-			max-width: 800px;
-			margin: 0 auto;
 			color: $slate;
+			> div {
+				max-width: 800px;
+				margin: 0 auto;
+			}
 			.request-form {
 				@include flex;
 				@include flex-wrap;
@@ -169,6 +173,104 @@
 			}
 			.request-loc {
 				height: 400px;
+			}
+			.request-cal {
+				margin-bottom: 30px;
+				color: white;
+				.cal-week {
+					&:not(.active) {
+						.cal-time, .cal-main {
+							display: none;
+						}
+					}
+					&.active {
+						.cal-month {
+							svg {
+								&:last-child {
+									@include rotate(180);
+								}
+							}
+						}
+					}
+				}
+				.cal-week {
+					background: darken($campus, 15%);
+					.cal-month {
+						margin: 0 0 2px;
+						width: calc(100% + 4px);
+						text-transform: none;
+						a {
+							padding: 10px 15px;
+						}
+						svg {
+							@include svg-stroke(white, 4);
+							display: block;
+							&:first-child {
+								margin: 0 auto 5px;
+								width: 48px;
+								height: 48px;
+							}
+							&:last-child {
+								margin: 5px auto 0;
+								stroke-width: 8px;
+								width: 24px;
+								height: 24px;
+							}
+						}
+						span:nth-child(2) {
+							display: block!important;
+						}
+					}
+					.cal-main {
+						.cal-date {
+							min-width: 720px;
+							li {
+								min-width: 102px;
+							}
+						}
+						.cal-events {
+							min-width: 720px;
+							.cal-day {
+								li {
+									min-width: 102px;
+								}
+							}
+						}
+					}
+					@media screen and (max-width: 768px) {
+						.cal-month {
+							font-size: 20px;
+							font-weight: 600;
+						}
+						.cal-main {
+							overflow: visible;
+							.cal-date {
+								min-width: auto;
+								li {
+									min-width: auto;
+									> span {
+										span:nth-child(2), span:nth-child(3) {
+											display: none!important;
+										}
+									}
+								}
+							}
+							.cal-events {
+								@include flex;
+								@include flex-center;
+								width: 100%;
+								min-width: auto!important;
+								overflow-x: auto;
+								.cal-day {
+									min-width: 102px;
+								}
+							}
+						}
+					}
+				}
+			}
+			.request-loc {
+				margin-bottom: 30px;
 			}
 		}
 	}
@@ -306,6 +408,20 @@
 					}
 				}
 			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($auburn, 10%);
+							}
+							&:active, &.active {
+								background: $auburn;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -382,6 +498,20 @@
 							}
 							&:active {
 								background: rgba(lighten($orange, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($orange, 10%);
+							}
+							&:active, &.active {
+								background: $orange;
 							}
 						}
 					}
@@ -468,6 +598,20 @@
 					}
 				}
 			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($gold, 10%);
+							}
+							&:active, &.active {
+								background: $gold;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -544,6 +688,20 @@
 							}
 							&:active {
 								background: rgba(lighten($moola, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($moola, 10%);
+							}
+							&:active, &.active {
+								background: $moola;
 							}
 						}
 					}
@@ -630,6 +788,20 @@
 					}
 				}
 			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($azure, 10%);
+							}
+							&:active, &.active {
+								background: $azure;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -706,6 +878,20 @@
 							}
 							&:active {
 								background: rgba(lighten($cobalt, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($cobalt, 10%);
+							}
+							&:active, &.active {
+								background: $cobalt;
 							}
 						}
 					}
@@ -792,6 +978,20 @@
 					}
 				}
 			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($eggplant, 10%);
+							}
+							&:active, &.active {
+								background: $eggplant;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -873,6 +1073,20 @@
 					}
 				}
 			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($cerise, 10%);
+							}
+							&:active, &.active {
+								background: $cerise;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -890,8 +1104,19 @@
 		&#request-two {
 			.request-content {
 				.request-form {
+					h2:first-child {
+						-webkit-justify-content: center;
+						justify-content: center;
+						width: 100%;
+					}
 					.custom-dropdown {
 						position: static!important;
+						> div {
+							span {
+								width: 72px;
+								font-size: 24px;
+							}
+						}
 						> ul {
 							z-index: 20;
 							width: calc(100% - 60px);
@@ -937,6 +1162,15 @@
 		&#request-two {
 			.request-urgency {
 				height: 87px;
+				div {
+					span {
+						width: 36px;
+						height: 36px;
+					}
+				}
+				label {
+					font-size: 28px;
+				}
 			}
 		}
 		#request-search {
