@@ -43,6 +43,7 @@ angular.module('uguru.student.controllers', [])
 
                         $timeout(function() {
                             modal_elem.classList.add('show');
+                            $ionicSlideBoxDelegate.update();
                         }, 200);
                           var close_icon = modal_elem.querySelector('.cta-modal-close');
                           if (close_icon) {

@@ -4151,3 +4151,137 @@ input[type=range] {
 		}
 	}
 }
+
+// TAB BAR
+.pf-tabs, .tab-bar {
+	background: $charcoal;
+	ul {
+		@include flex;
+		padding: 0 7.5px;
+		li {
+			width: 100%;
+			text-align: center;
+			padding: 0 7.5px;
+			a {
+				@include flex;
+				@include flex-center;
+				border-top: 5px solid transparent;
+				border-bottom: 5px solid transparent;
+				height: 60px;
+				font-size: 18px;
+				font-weight: 600;
+				text-transform: uppercase;
+				&.active {
+					border-bottom: 5px solid $shamrock;
+				}
+				&:hover, &:focus {
+					border-bottom-color: rgba(white, .2);
+				}
+				&:visited {
+					background: none!important;
+				}
+			}
+		}
+	}
+}
+
+// RATING
+.rating-stars, .pf-rating {
+	@include flex;
+	@include flex-center;
+	width: 100%;
+	max-width: 100px;
+	margin: 0 auto;
+	li {
+		width: 20%;
+		svg {
+			@include svg-stroke($gold, 7);
+			polygon:nth-child(2) {
+				@include opacity(0);
+				stroke-width: 0;
+				fill: $gold;
+			}
+		}
+	}
+	&[data-rating="1"] {
+		li:nth-child(1) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"] {
+			li:nth-child(2) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating="2"] {
+		li:nth-child(1), li:nth-child(2) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"] {
+			li:nth-child(3) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating="3"] {
+		li:nth-child(1), li:nth-child(2), li:nth-child(3) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"] {
+			li:nth-child(4) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating="4"] {
+		li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"] {
+			li:nth-child(5) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating="5"] {
+		li {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+	}
+}

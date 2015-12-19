@@ -37,12 +37,13 @@ angular.module('uguru.util.controllers')
 		}
 
 
-
-		$scope.search_text = {
-			course: '',
-			matching: [],
-			input_focused: false
-		};
+		if (!$scope.search_text) {
+			$scope.search_text = {
+				course: '',
+				matching: [],
+				input_focused: false
+			};
+		}
 
 
 
@@ -189,6 +190,7 @@ angular.module('uguru.util.controllers')
 
 
 		$scope.blurSearchInput = function() {
+			console.log($scope.search_text)
 			$timeout(function() {
     			$scope.search_text.input_focused = false;
 			}, 250)
