@@ -88,13 +88,13 @@
 			<div class="pf-tabs tab-bar">
 				<ul>
 					<li>
-						<a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
+						<a name='services-btn' ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
 					</li>
 					<li>
-						<a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
+						<a name='about-btn' ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
 					</li>
 					<li ng-if='false'>
-						<a ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex === 2}">Calendar</a>
+						<a name='calendar-btn' ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex === 2}">Calendar</a>
 					</li>
 				</ul>
 			</div>
@@ -420,11 +420,11 @@
 					<!-- <p class="pf-header-desc">{{user.active_shop.description}}</p> -->
 					<!-- @Gabrielle did you mean to put two here? -->
 					<div class='pf-textarea-container relative' ng-if='desktopMode'>
-						<textarea ng-model='user.academic_shop.description' ng-blur='saveGuruShopDescription()' class="pf-header-desc" rows="2" maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
+						<textarea name='description' ng-model='user.academic_shop.description' ng-blur='saveGuruShopDescription()' class="pf-header-desc" rows="2" maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{100 - user.guru_introduction.length}}</span>
 					</div>
 					<div class='pf-textarea-container relative' ng-if='!desktopMode'>
-						<textarea class="pf-header-desc" rows="3" ng-blur='saveGuruShopDescription()' maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
+						<textarea name='description' class="pf-header-desc" rows="3" ng-blur='saveGuruShopDescription()' maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{100 - user.guru_introduction.length}}</span>
 					</div>
 				</li>
