@@ -89,6 +89,7 @@ function SearchboxService(GUtilService, $timeout) {
 
             scope.map.predictions = predictions;
             scope.page.dropdowns.location_search.predictions = predictions;
+            console.log(scope.page.dropdowns.location_search.predictions);
             // scope.instantiateAllMarkers(predictions);
             scope.map.predictions.forEach(function(prediction, index) {
               successCallback = function(placesResult, status) {
