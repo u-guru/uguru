@@ -67,6 +67,15 @@ angular.module('uguru.util.controllers')
       return true;
     }
 
+    $scope.setHourDropdownValue = function(value) {
+      $scope.request.user.time_estimate.hours = value;
+      $scope.toggleHourDropdown = !$scope.toggleHourDropdown;
+    }
+    $scope.setMinDropdownValue = function(value) {
+      $scope.request.user.time_estimate.min = value;
+      $scope.toggleMinDropdown = !$scope.toggleMinDropdown;
+    }
+
     uiGmapGoogleMapApi.then(function(maps) {
       console.log('this indicates that the map has been loaded')
     });
