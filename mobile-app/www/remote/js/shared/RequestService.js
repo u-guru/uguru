@@ -41,7 +41,7 @@ function RequestService() {
         attachments: []
       },
       user: {
-        is_urgent:false,
+        is_urgent:true,
         time_estimate: {hours:0, minutes: 30},
         location: {latitude:null, latitude: null},
         availability: [] //{start: UTCJSDate, end UTCJSDate}

@@ -1,7 +1,3 @@
-<!-- //Dont ask lol, just style -->
-<script type="text/ng-template" id="request.slide.two.input.html">
-    <input id='request-form-map-search' type="text" placeholder="Search locations"/>
-</script>
  <section id="request-two" class="request-slide request-academic">
     <header>
         <h1>When and where?</h1>
@@ -23,48 +19,79 @@
             <div class="custom-dropdown request-hours">
                 <div>
                     <span>{{request.user.time_estimate.hours}}</span>
-                    <a ng-click='toggleHourDropdown = !toggleHourDropdown'>
+                    <a ng-click='page.dropdowns.hour = !page.dropdowns.hour'>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
                         </svg>
                     </a>
                 </div>
-                <ul class="ng-class:{'active':toggleHourDropdown}">
+
+                <ul class="ng-class:{'active':page.dropdowns.hour}">
                     <li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
                 </ul>
                 <!-- @samir -->
                 <!-- this is just an example of what I want the overlay to look like, but you can just remove it if needed -->
-                <div class="dropdown-overlay" ng-click='toggleHourDropdown = !toggleHourDropdown'></div>
+                <div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
             </div>
             <h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
             <div class="custom-dropdown request-minutes">
                 <div>
                     <span>{{request.user.time_estimate.minutes}}</span>
-                    <a ng-click='toggleMinDropdown = !toggleMinDropdown'>
+                    <a ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
                         </svg>
                     </a>
                 </div>
-                <ul class="ng-class:{'active':toggleMinDropdown}">
+                <ul class="ng-class:{'active':page.dropdowns.minutes}">
                     <li tabindex ng-click='setMinDropdownValue(15)'>15</li>
                     <li tabindex ng-click='setMinDropdownValue(30)'>30</li>
                     <li tabindex ng-click='setMinDropdownValue(45)'>45</li>
                 </ul>
                 <!-- @samir -->
                 <!-- this is just an example of what I want the overlay to look like, but you can just remove it if needed -->
-                <div class="dropdown-overlay" ng-click='toggleMinDropdown = !toggleMinDropdown'></div>
+                <div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
             </div>
             <h2>&nbsp;&nbsp;min</h2>
         </div>
         <div class="request-loc">
             <!-- All attribute options are below
             https://angular-ui.github.io/angular-google-maps/#!/api/google-map -->
-            <ui-gmap-google-map style='height:400px;' class='full-x' center="map.center" zoom="map.zoom" pan="false" options="{streetViewControl:false,panControl:false,zoomControl:false,mapTypeControl:false}">
-                <!-- other ui-gmap-directives here -->
+
+            <div class='search-box-containter'>
+                <input id='request-form-map-search' ng-keyup="queryAutocompleteFromSearch(page.dropdowns.location_search.input)" ng-model='page.dropdowns.location_search.input' type="text" placeholder="Search locations"/>
+
+                <ul class="hide ng-class:{'show': page.dropdowns.location_search.predictions.length || page.dropdowns.location_search.input.length }">
+                    <li class='m10y' ng-repeat='prediction in page.dropdowns.location_search.predictions'>
+                        {{prediction.photos[0].getUrl}}
+                        <div>
+                            <strong>
+                                <a target='_blank' href="{{prediction.website}}">{{prediction.name}} </a>
+                            </strong>
+                        </div>
+                        <div>
+                            {{prediction.vicinity}}
+                        </div>
+                        <div>
+                            <small>
+                                {{prediction.rating}} <i class='icon ion-star'></i>
+                                {{prediction.user_ratings_total}} ratings
+                            </small>
+                        </div>
+                        <div>
+                            <small>{{prediction.international_phone_number}}
+                        </small>
+
+                    </li>
+                </ul>
+            </div>
+            <ui-gmap-google-map style='height:400px;' class='full-x' center="map.center" control="map.control" zoom="map.zoom" pan="false" options="{streetViewControl:false,panControl:false,zoomControl:false,mapTypeControl:false}">
+
+
+
                 <!--All autocomplete options from website
                 https://developers.google.com/maps/documentation/javascript/reference#AutocompleteOptions -->
-                <ui-gmap-search-box template="searchbox.template" options="searchbox.options" events="searchbox.events"></ui-gmap-search-box>
+                <!-- <ui-gmap-search-box template="searchbox.template" options="searchbox.options" events="searchbox.events"></ui-gmap-search-box> -->
             </ui-gmap-google-map>
         </div>
     </div>
