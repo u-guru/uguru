@@ -27,7 +27,8 @@ var stats = new Stats();
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB', 'fox.scrollReveal'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic',
+  'angularMoment','ngOpenFB', 'fox.scrollReveal', 'uiGmapgoogle-maps'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -46,7 +47,13 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $ionicConfigProvider, $compileProvider, $provide, $httpProvider) {
+  $ionicConfigProvider, $compileProvider, $provide, $httpProvider, uiGmapGoogleMapApiProvider) {
+
+  uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyD97om7R6sYXaUUgdNMdVjXWXviAFCF0u4',
+        v: '3.20',
+        libraries: 'places, weather,geometry,visualization'
+    });
 
 
   $httpProvider.useApplyAsync(true);

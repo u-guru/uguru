@@ -1,0 +1,73 @@
+<!-- //Dont ask lol, just style -->
+<script type="text/ng-template" id="request.slide.two.input.html">
+
+    <input id='request-form-map-search' type="text" placeholder="Search Box">
+
+</script>
+
+ <section class='bg-slate full-xy flex-wrap-center text-center ng-class:{"ugrid-3":desktopMode}'>
+
+    <header class='third bg-campus relative full-x'>
+
+        <!--
+        All attribute options are below
+        https://angular-ui.github.io/angular-google-maps/#!/api/google-map -->
+        <ui-gmap-google-map style='height:400px;' class='full-x'  center="map.center" zoom="map.zoom"  pan="false">
+
+            <!-- other ui-gmap-directives here -->
+            <!--
+            All autocomplete options from website
+            https://developers.google.com/maps/documentation/javascript/reference#AutocompleteOptions -->
+            <ui-gmap-search-box template="searchbox.template" options="searchbox.options" events="searchbox.events"></ui-gmap-search-box>
+
+        </ui-gmap-google-map>
+    </header>
+    <div class='request-form request-time-estimate-dropdowns full-x flex-wrap-center'>
+        <h2> I think I will need .. &nbsp;&nbsp;</h2>
+        <div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
+            <div>
+                <span>{{request.user.time_estimate.hours}} hour</span>
+                <a ng-click='toggleHourDropdown = !toggleHourDropdown'>
+                    <svg viewBox="0 0 100 100">
+                        <path d="M14,32 L50,68 L86,32"></path>
+                    </svg>
+                </a>
+            </div>
+            <ul class="ng-class:{'active':toggleHourDropdown}">
+                <li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}} hour</li>
+            </ul>
+        </div>
+
+        <h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;a&nbsp;&nbsp;</h2>
+        <div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
+            <div>
+                <span>{{request.user.time_estimate.minutes}} min</span>
+                <a ng-click='toggleMinDropdown = !toggleMinDropdown'>
+                    <svg viewBox="0 0 100 100">
+                        <path d="M14,32 L50,68 L86,32"></path>
+                    </svg>
+                </a>
+            </div>
+            <ul class="ng-class:{'active':toggleMinDropdown}">
+                <li tabindex ng-click='setMinDropdownValue(15)'>15 min</li>
+                <li tabindex ng-click='setMinDropdownValue(30)'>30 min</li>
+                <li tabindex ng-click='setMinDropdownValue(45)'>45 min</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class='request-urgency-check-container full-x'>
+        <div class="request-urgency-check" >
+            <div>
+                <input type="checkbox" id='pf-course-check' ng-model='request.user.is_urgent' name="pf-course-check"/>
+                <span>
+                    <svg viewBox="0 0 100 100">
+                        <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                    </svg>
+                </span>
+            </div>
+            <label for="pf-course-check">I need help urgently</label>
+        </div>
+    </div>
+
+</section>

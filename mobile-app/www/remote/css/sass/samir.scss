@@ -663,3 +663,132 @@ body.platform-ios
 		}
 	}
 }
+
+.angular-google-map,
+.angular-google-map-container {
+	height:calc(100%) !important;
+	width:calc(100%) !important;
+}
+
+
+#request-form-map-search {
+	z-index:1000;
+	width:400px;
+}
+
+.request-form-time {
+	width: 100%;
+	ul {
+		@include flex;
+		@include flex-center;
+		color: $taupe;
+		font-size: 24px;
+		font-weight: 600;
+		li {
+			margin: 0 7.5px;
+			&:nth-child(1),
+			&:nth-child(2) {
+				position: relative;
+				span {
+					@include flex;
+					@include flex-center;
+					padding: 15px;
+					background: white;
+					border-radius: 2px;
+				}
+				input {
+					display: inline-block;
+					text-align: right;
+					background: white;
+					border: 0;
+					font-size: 24px;
+					font-weight: 600;
+					color: $taupe;
+					@include placeholder {
+						color: rgba($taupe,.5);
+					}
+				}
+			}
+			&:nth-child(1) {
+				margin-right: 15px;
+				&::after {
+					@include center-y;
+					right: -15px;
+				}
+				span {
+					input {
+						max-width: 20px;
+					}
+					&::after {
+						content: "hr";
+						display: inline-block;
+						padding-left: 5px;
+					}
+				}
+			}
+			&:nth-child(2) {
+				span {
+					input {
+						max-width: 30px;
+					}
+					&::after {
+						content: "min";
+						display: inline-block;
+						padding-left: 5px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.request-urgency-check-container {
+
+	@include flex-wrap;
+	overflow: auto;
+	padding: 15px!important;
+	.request-urgency-check {
+		@include flex;
+		@include flex-center;
+		margin-top: 0!important;
+		div {
+			position: relative;
+			input {
+				@include opacity(0);
+				position: absolute;
+				z-index: 12;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			span {
+				display: block;
+				width: 32px;
+				height: 32px;
+				border-radius: 3px;
+				background: $slate;
+				svg {
+					@include svg-stroke(lighten($slate, 20%), 10);
+					padding: 4px;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			input:checked + span {
+				background: $shamrock;
+				svg {
+					stroke: white;
+				}
+			}
+		}
+		label {
+			padding-left: 15px;
+			color: white;
+			font-size: 20px;
+			font-weight: 600;
+		}
+	}
+
+}
+

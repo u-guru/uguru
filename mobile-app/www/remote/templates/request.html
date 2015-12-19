@@ -45,39 +45,15 @@ Gameplan
 	</header>
 	<main id='desktop-request' class="request-form-container desktop-request desktop-mode bg-cerise">
 		<div class="onboarding-steps absolute top-0 left-0">
-			<progress class="shamrock" max="6" value="1"></progress>
+			<progress class="shamrock" max="6" value="{{requestProgress.value}}"></progress>
 		</div>
 		<ion-slide-box id='request-form-slide-box' can-swipe-back='false' on-slide-changed="slideHasChanged($index)" class='full-y'>
+			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.two.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.one.html'">
 			</ion-slide>
-			<ion-slide class='bg-shamrock'>
-				<section class='bg-shamrock full-xy flex-center-wrap'>
-					<h1 class='txt-smoke uppercase weight-900'>
-						Slide 2
-					</h1>
-				</section>
-			</ion-slide>
-			<ion-slide>
-				<section class='bg-cerise full-xy flex-center-wrap'>
-					<h1 class='txt-smoke uppercase weight-900'>
-						Slide 3
-					</h1>
-				</section>
-			</ion-slide>
-			<ion-slide>
-				<section class='bg-charcoal full-xy flex-center-wrap'>
-					<h1 class='txt-smoke uppercase weight-900'>
-						Slide 4
-					</h1>
-				</section>
-			</ion-slide>
-			<ion-slide>
-				<section class='bg-smoke full-xy flex-center-wrap'>
-					<h1 class='txt-charcoal uppercase weight-900'>
-						Slide 5
-					</h1>
-				</section>
-			</ion-slide>
+			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.three.html'"></ion-slide>
+			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.four.html'"></ion-slide>
+			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.five.html'"></ion-slide>
 		</ion-slide-box>
 	</main>
 

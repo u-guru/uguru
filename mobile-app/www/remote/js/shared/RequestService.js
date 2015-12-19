@@ -6,17 +6,27 @@ angular
 
 function RequestService() {
   var _types = {DEFAULT:0, QUICK_QA:1}
+  var MAX_REQUEST_HOURS = 10;
 
   return {
 
     init:init,
     initSample: initSample,
     validate:validate,
+    getMaxNumHourArr:getMaxNumHourArr
 
   }
 
   function validate() {
     return;
+  }
+
+  function getMaxNumHourArr() {
+    var result = [];
+    for (var i = 0; i < MAX_REQUEST_HOURS; i++) {
+      result.push(i)
+    }
+    return result;
   }
 
   function init() {
@@ -31,7 +41,7 @@ function RequestService() {
         attachments: []
       },
       user: {
-        is_urgent:true,
+        is_urgent:false,
         time_estimate: {hours:0, minutes: 30},
         location: {latitude:null, latitude: null},
         availability: [] //{start: UTCJSDate, end UTCJSDate}
