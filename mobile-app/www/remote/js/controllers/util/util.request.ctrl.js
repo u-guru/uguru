@@ -32,7 +32,7 @@ angular.module('uguru.util.controllers')
       input_focused: false
     };
     $scope.page = {dropdowns: {}}
-    $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:''}}
+    $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
 
     var initMapFromUniversity = function(university) {
       var latitude = parseFloat(university.latitude);
