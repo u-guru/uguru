@@ -52,7 +52,7 @@
 	}
 	header,
 	.header-nav {
-		padding-top: 0 !important;
+		padding-top: 0!important;
 	}
 	.guru-desktop-credibility {
 		padding-top: 20px;
@@ -163,9 +163,9 @@
 			top: 50%;
 		}
 		.card-name {
+			@include opacity(.75);
 			font-size: 10px;
 			text-align: left;
-			opacity: .75;
 			color: white;
 			line-height: 2;
 			font-weight: 700;
@@ -180,21 +180,21 @@
 			top: 20%;
 		}
 		.valid .group {
+			@include opacity(.4);
 			position: absolute;
-			width: 33% !important;
+			width: 33%!important;
 			bottom: 12.5%;
 			right: 15%;
 			font-size: 10px;
-			opacity: .4;
 			line-height: 10px;
 		}
 		.valid .expiry {
+			@include opacity(.75);
 			position: absolute;
-			width: 33% !important;
+			width: 33%!important;
 			bottom: 17.5%;
 			right: -3%;
 			font-size: 16px;
-			opacity: .75;
 			line-height: 10px;
 			margin-top: 3px;
 		}
@@ -210,7 +210,7 @@
 
 // .guru-view-mobile .header-nav {
 // 	h1.balance-header {
-// 		padding-right: 15px !important;
+// 		padding-right: 15px!important;
 // 	}
 // 	svg.referral-icon {
 // 		padding-left: 5px;
@@ -220,10 +220,10 @@ body.platform-ios {
 	.mobile-referrals-modal a.header-close,
 	.mobile-balance-modal a.header-close,
 	.guru-view-mobile .header-nav {
-		padding-top: 0 !important;
+		padding-top: 0!important;
 		h1.balance-header {
-			padding-right: 15px !important;
-			margin-top: 5px !important;
+			padding-right: 15px!important;
+			margin-top: 5px!important;
 		}
 		svg.referral-icon {
 			padding: 0;
@@ -232,9 +232,9 @@ body.platform-ios {
 }
 #cta-modal-payments {
 	height: 100%;
-	background: rgba(0,0,0,0.25) !important;
+	background: rgba(0,0,0,0.25)!important;
 	input {
-		color: $charcoal !important;
+		color: $charcoal!important;
 	}
 	.close-button svg {
 		stroke: $charcoal;
@@ -242,8 +242,8 @@ body.platform-ios {
 	}
 }
 .payments-modal input {
-	background-color: $charcoal !important;
-	background: $charcoal !important;
+	background-color: $charcoal!important;
+	background: $charcoal!important;
 }
 .desktop-input-close-icon {
 	padding: 10px;
@@ -253,10 +253,7 @@ body.platform-ios {
 	font-size: 20px;
 }
 #settings-notifications-list {
-	ion-item.active,
-	ion-item:hover,
-	ion-item:active,
-	ion-item:focus {
+	ion-item.active, ion-item:hover, ion-item:active, ion-item:focus {
 		background: none;
 		background-color: none;
 	}
@@ -264,26 +261,24 @@ body.platform-ios {
 		padding-left: 5%;
 	}
 	.list-item-icon {
-		svg:active,
-		svg.active,
-		svg.activated {
-			opacity: .5;
+		svg:active, svg.active, svg.activated {
+			@include opacity(.5);
 		}
 	}
 	.list-item-icon svg {
 		path.notifications-path {
 			stroke: white;
 			&.active {
+				@include opacity(1);
 				stroke: $slate;
 				width: 5px;
-				opacity: 1;
 			}
 		}
 		circle.notifications-circle {
 			fill: $slate;
 			&.active {
+				@include opacity(1);
 				fill: white;
-				opacity: 1;
 			}
 		}
 	}
@@ -293,25 +288,17 @@ body.platform-ios {
 	padding-bottom: 12.5%;
 }
 .dark-shamrock-bg {
-	background-color: #3d796e !important;
+	background-color: #3d796e!important;
 }
 .textarea-container {
-	 ::-webkit-input-placeholder {
+	* {
+		@include placeholder {
+			color: red;
+			font-weight: 500;
+		}
+	}
+	::-webkit-input-placeholder {
 		color: white;
-		font-weight: 500;
-	}
-	 :-moz-placeholder {
-		/* Firefox 18- */
-		color: red;
-		font-weight: 500;
-	}
-	 ::-moz-placeholder {
-		/* Firefox 19+ */
-		color: red;
-		font-weight: 500;
-	}
-	 :-ms-input-placeholder {
-		color: red;
 		font-weight: 500;
 	}
 }
@@ -335,16 +322,16 @@ body.platform-ios {
 //     border-right-color: rgba(255, 255, 255, 0.9);
 // }
 #cta-modal-support {
-	top: 64px !important;
+	top: 64px!important;
 	h1 {
-		background: none !important;
-		padding: 20px 15px !important;
-		margin-bottom: 0 !important;
-		font-size: 48px !important;
-		font-weight: 900 !important;
-		letter-spacing: 0 !important;
-		text-align: center !important;
-		text-transform: none !important;
+		background: none!important;
+		padding: 20px 15px!important;
+		margin-bottom: 0!important;
+		font-size: 48px!important;
+		font-weight: 900!important;
+		letter-spacing: 0!important;
+		text-align: center!important;
+		text-transform: none!important;
 		color: white;
 	}
 	a.cta-modal-close {
@@ -390,276 +377,94 @@ ul.mobile-cards-container li {
 		}
 	}
 }
-
-
-#mobile-guru-home header .text-center  {
+#mobile-guru-home header .text-center {
 	h2 {
-		font-size:20px !important;
+		font-size: 20px!important;
 	}
 }
-
-
-body.platform-ios
-#mobile-guru-home
-{
+body.platform-ios #mobile-guru-home {
 	height: calc(100% - 20px)!important;
 	margin-top: 20px;
 }
-
-
 .show-display {
-	display:block !important;
+	display: block!important;
 }
-
 #guru-profile-cta-close {
-
 	z-index: 10;
 	svg {
-		stroke:white;
-		height:30px;
-		width:30px;
+		stroke: white;
+		height: 30px;
+		width: 30px;
 	}
 }
-
 .pf-edit-pf.pf-desktop-edit {
-	z-index:1000;
+	z-index: 1000;
 }
-
 .guru-cta-profile-container {
 	width: 100%;
-    position: absolute !important;
-    height: 100%;
-    display: block;
-    right: 0;
-    top: 60px;
-    height: calc(100% - 138px);
+	position: absolute!important;
+	height: 100%;
+	display: block;
+	right: 0;
+	top: 60px;
+	height: calc(100% - 138px);
 }
-
 .high-z-index {
 	z-index: 1000;
 }
 .z-index-11 {
-	z-index:11;
+	z-index: 11;
 }
-
 .height-100 {
-	height:100px;
+	height: 100px;
 }
 
 // #cta-modal-profile-pi-item {
-// 	top:60px;
-// 	z-index:1000;
-// 	height:calc(100% - 140px);
-// 	width:66% !important;
+// 	top: 60px;
+// 	z-index: 1000;
+// 	height: calc(100% - 140px);
+// 	width: 66%!important;
 // }
-
 .min-height-modal-desktop {
 	min-height: 800px;
 }
-
-
 .hs-view {
-	background: url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center fixed !important;
-	-webkit-background-size:100% 100% !important;
-	-moz-background-size:100% 100% !important;
-	-o-background-size:100% 100% !important;
-	background-size:100% 100% !important;
-
+	background: url("https: //uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center fixed!important;
+	-webkit-background-size: 100% 100%!important;
+	-moz-background-size: 100% 100%!important;
+	-o-background-size: 100% 100%!important;
+	background-size: 100% 100%!important;
 	&#desktop-university {
 		div.main.default {
-			margin-top:20% !important;
-
+			margin-top: 20%!important;
 			.university-content-header h1 {
-				font-size:48px;
-				margin-top:-7.5% !important;
+				font-size: 48px;
+				margin-top: -7.5%!important;
 			}
 		}
 	}
 }
-
-
 #label-course-input-1:hover {
-	display:none;
+	display: none;
 }
 #desktop-student-home {
-
 	ion-pane.cta-modal {
-		z-index:10;
+		z-index: 19;
 		.desktop-header {
-			z-index:10;
+			z-index: 19;
 		}
 		.request-form-container {
 			#request-form-slide-box {
-				top:4px;
+				top: 4px;
 			}
 		}
 	}
 	.hide-display {
-		display:none;
+		display: none;
 	}
-
 }
-
 #pf-shop-desc-backdrop {
-	z-index:98;
-	opacity:0.3;
-	display:none;
-}
-
-.pf-tags {
-	@include flex;
-	@include flex-wrap;
-	width: 100%;
-	.chip {
-		@include transition(.15s ease-in-out);
-		@include flex;
-		@include flex-center-vertical;
-		background: lighten($slate, 10%);
-		margin-right: 15px;
-		border: 0;
-		&:hover {
-			background: lighten($slate, 15%);
-		}
-		svg {
-			@include svg-stroke(white, 10);
-			width: 12px;
-			height: 12px;
-			margin-right: 3px;
-		}
-		input {
-			background: transparent;
-			border: 0;
-			color: white!important;
-			@include placeholder {
-				color: white!important;
-			}
-		}
-	}
-}
-.pf-photo-list {
-	width: 100%;
-	overflow: auto;
-	ul {
-		@include flex;
-		height: 100%;
-		padding: 7.5px;
-		li {
-			padding: 7.5px;
-			height: 100%;
-			&:last-child {
-				padding-right: 15px;
-			}
-			div {
-				position: relative;
-				width: 150px;
-				height: 100%;
-				background: $slate;
-				border: 2px solid white;
-				border-radius: 10px;
-			}
-			div.pf-upload-img {
-				background-position: center center;
-				background-size: cover;
-			}
-			div.pf-upload-img, div.pf-upload-file {
-				a {
-					svg {
-						@include rotate(45);
-						@include svg-stroke(white, 8);
-						position: absolute;
-						top: 5px;
-						left: 5px;
-						width: 25px;
-						height: 25px;
-					}
-				}
-			}
-			div.pf-upload-file {
-				border: 0;
-				width: auto;
-				background: none!important;
-				svg.doc-outline {
-					@include svg-stroke(white, 1.5);
-					display: block;
-					height: 100%;
-					fill: $shamrock;
-				}
-				&.pf-upload-pdf {
-					svg.doc-outline {
-						height: 100%;
-						fill: $auburn;
-					}
-				}
-				&.pf-upload-doc {
-					svg.doc-outline {
-						height: 100%;
-						fill: $lake;
-					}
-				}
-				&.pf-upload-sheet {
-					svg.doc-outline {
-						height: 100%;
-						fill: $moola;
-					}
-				}
-				.doc-info {
-					@include center-xy;
-					width: 100%;
-					padding: 30px 15px 15px;
-					span {
-						display: block;
-						font-weight: 600;
-					}
-					.doc-name {
-						font-size: 20px;
-					}
-					.doc-type {
-						font-size: 16px;
-					}
-				}
-			}
-			div.pf-upload-add {
-				position: relative;
-				border-style: dashed;
-				border: 0;
-				background: none;
-				width: auto;
-				.square {
-					height: 100%;
-					fill: none;
-				}
-				a {
-					@include flex;
-					@include flex-wrap;
-					@include flex-center;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					border-radius: 10px;
-					border: 2px dashed $shamrock;
-					span {
-						svg {
-							@include svg-stroke($shamrock, 6);
-							width: 100%;
-							height: 30px;
-						}
-						span {
-							display: block;
-							font-size: 18px;
-							font-weight: 600;
-							color: $shamrock;
-						}
-					}
-					&:hover, &:focus {
-						background: white;
-					}
-					&:active, &.active {
-						background: lighten($shamrock, 30%);
-					}
-				}
-			}
-		}
-	}
+	@include opacity(.3);
+	z-index: 98;
+	display: none;
 }
