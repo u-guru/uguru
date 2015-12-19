@@ -1,5 +1,736 @@
 @import 'mixin';
 
+/* ---------- REQUESTS */
+#request {
+	header:not(.desktop-header) {
+		background: $shamrock;
+	}
+	main {
+		height: calc(100% - 50px);
+	}
+}
+.request-slide {
+	background: $smoke;
+	header {
+		@include flex;
+		@include flex-center;
+		background: $shamrock;
+		height: calc(100% / 3 - 98px)!important;
+		h1 {
+			padding-bottom: 50px;
+			font-size: 28px;
+			font-weight: 600;
+			text-transform: none!important;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		header {
+			height: calc(30% - 87px)!important;
+			h1 {
+				padding-bottom: 0;
+				font-size: 48px;
+				font-weight: 700;
+			}
+		}
+	}
+	.request-content {
+		height: 70%;
+		background: $smoke;
+	}
+	#request-search {
+		background: lighten($shamrock, 10%);
+		position: relative;
+		padding: 0 15px 15px 0;
+		.input-field {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 0;
+			.prefix {
+				top: 4px;
+				svg {
+					@include svg-stroke(white, 5);
+					width: 100%;
+					height: 100%;
+					padding: 10px;
+				}
+			}
+			input {
+				margin-bottom: 0;
+				border-color: rgba(white, .5)!important;
+				@include placeholder {
+					color: white;
+				}
+				&:focus {
+					border-color: white!important;
+				}
+			}
+			input, label {
+				color: white!important;
+			}
+			label.active {
+				@include opacity-important(0);
+			}
+		}
+	}
+	&#request-one {
+		.request-content {
+			> ul {
+				@include flex;
+				@include flex-wrap;
+				max-width: 830px;
+				padding: 7.5px;
+				margin: 0 auto;
+				> li {
+					width: 100%;
+					padding: 7.5px;
+					&:first-child {
+						textarea {
+							@include transition(.15s ease-in-out);
+							width: 100%;
+							min-height: 150px;
+							resize: none;
+							color: $slate;
+							font-size: 18px;
+							font-weight: 400;
+							&:hover {
+								background: rgba(white, .7);
+								border-color: lighten($slate, 30%);
+							}
+							&:focus, .active {
+								background: white;
+								border-color: $slate;
+							}
+							@include placeholder {
+								color: rgba($charcoal,.2);
+							}
+						}
+					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								margin-bottom: 15px;
+							}
+						}
+						.attachment-list {
+							margin: -15px;
+							height: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+	button {
+		display: block;
+		margin: 15px auto;
+		max-width: 400px;
+		background: $slate;
+		font-weight: 600;
+	}
+}
+.request-delivery {
+	button {
+		background: $auburn;
+		&:focus, &:hover {
+			background: lighten($auburn, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+	}
+	header:not(.desktop-header) {
+		background: $auburn!important;
+	}
+	#request-search {
+		background: lighten($auburn, 10%);
+	}
+	#request-one {
+		.request-content {
+			ul {
+				li {
+					&:first-child {
+						textarea {
+							&:focus, .active {
+								border-color: $auburn;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.request-freelancing {
+	button {
+		background: $orange;
+		&:focus, &:hover {
+			background: lighten($orange, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+	}
+	header:not(.desktop-header) {
+		background: $orange!important;
+	}
+	#request-search {
+		background: lighten($orange, 10%);
+	}
+	#request-one {
+		.request-content {
+			ul {
+				li {
+					&:first-child {
+						textarea {
+							&:focus, .active {
+								border-color: $orange;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.request-baking {
+	button {
+		background: $gold;
+		&:focus, &:hover {
+			background: lighten($gold, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+	}
+	header:not(.desktop-header) {
+		background: $gold!important;
+	}
+	#request-search {
+		background: lighten($gold, 10%);
+	}
+	#request-one {
+		.request-content {
+			ul {
+				li {
+					&:first-child {
+						textarea {
+							&:focus, .active {
+								border-color: $gold;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.request-photography {
+	button {
+		background: $moola;
+		&:focus, &:hover {
+			background: lighten($moola, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+	}
+	header:not(.desktop-header) {
+		background: $moola!important;
+	}
+	#request-search {
+		background: lighten($moola, 10%);
+	}
+	#request-one {
+		.request-content {
+			ul {
+				li {
+					&:first-child {
+						textarea {
+							&:focus, .active {
+								border-color: $moola;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.request-tech {
+	button {
+		background: $azure;
+		&:focus, &:hover {
+			background: lighten($azure, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+	}
+	header:not(.desktop-header) {
+		background: $azure!important;
+	}
+	#request-search {
+		background: lighten($azure, 10%);
+	}
+	#request-one {
+		.request-content {
+			ul {
+				li {
+					&:first-child {
+						textarea {
+							&:focus, .active {
+								border-color: $azure;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.request-household {
+	button {
+		background: $cobalt;
+		&:focus, &:hover {
+			background: lighten($cobalt, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+	}
+	header:not(.desktop-header) {
+		background: $cobalt!important;
+	}
+	#request-search {
+		background: lighten($cobalt, 10%);
+	}
+	#request-one {
+		.request-content {
+			ul {
+				li {
+					&:first-child {
+						textarea {
+							&:focus {
+								border-color: $cobalt;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.request-athletic {
+	button {
+		background: $eggplant;
+		&:focus, &:hover {
+			background: lighten($eggplant, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+	}
+	header:not(.desktop-header) {
+		background: $eggplant!important;
+	}
+	#request-search {
+		background: lighten($eggplant, 10%);
+	}
+	#request-one {
+		.request-content {
+			ul {
+				li {
+					&:first-child {
+						textarea {
+							&:focus, .active {
+								border-color: $eggplant;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.request-academic {
+	button {
+		background: $cerise;
+		&:focus, &:hover {
+			background: lighten($cerise, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+	}
+	header:not(.desktop-header) {
+		background: $cerise!important;
+	}
+	#request-search {
+		background: lighten($cerise, 10%);
+	}
+	#request-one {
+		.request-content {
+			ul {
+				li {
+					&:first-child {
+						textarea, .active {
+							&:focus {
+								border-color: $cerise;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 768px) {
+	.request-slide {
+		padding-bottom: 79px;
+		button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			margin: 0;
+			max-width: none;
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	#request {
+		main {
+			height: 100%;
+		}
+	}
+	.request-slide {
+		#request-search {
+			padding: 0 15px 15px;
+			.input-field {
+				.prefix {
+					top: 24px;
+					padding-right: 12px;
+					svg {
+						@include svg-stroke(white, 4);
+						padding: 0;
+					}
+				}
+				input {
+					height: 72px;
+				}
+				input, label {
+					font-size: 32px!important;
+				}
+				label.active {
+					font-size: 20px!important;
+				}
+			}
+		}
+	}
+}
+// .desktop-request {
+// 	background: $smoke;
+// 	.request-header {
+// 		@include flex;
+// 		@include flex-center;
+// 		font-weight: 900;
+// 		line-height: 1;
+// 		letter-spacing: 0;
+// 		text-transform: none;
+// 		.request-category {
+// 			@include opacity(.5);
+// 			font-weight: 600;
+// 			+ span {
+// 				display: inline-block;
+// 			}
+// 		}
+// 	}
+// 	.main {
+// 		width: 100%;
+// 		height: 100%;
+// 		background: none!important;
+// 		padding: 0;
+// 		header {
+// 			@include flex;
+// 			@include flex-center;
+// 			position: relative;
+// 			height: 25%;
+// 			background: $taupe;
+// 			.request-header {
+// 				font-size: 36px;
+// 				.request-category {
+// 					+ span {
+// 						padding: 0 10px;
+// 						svg {
+// 							@include svg-stroke(white, 16);
+// 							margin-top: 10px;
+// 							width: 28px;
+// 							height: 28px;
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 		.request-form {
+// 			@include flex;
+// 			@include flex-center;
+// 			max-width: 830px;
+// 			height: 75%;
+// 			margin: 0 auto;
+// 			> div {
+// 				@include flex;
+// 				@include flex-wrap;
+// 				width: 100%;
+// 				> div {
+// 					padding: 15px;
+// 				}
+// 			}
+// 			.request-form-time {
+// 				width: 100%;
+// 				ul {
+// 					@include flex;
+// 					@include flex-center;
+// 					color: $taupe;
+// 					font-size: 24px;
+// 					font-weight: 600;
+// 					li {
+// 						margin: 0 7.5px;
+// 						&:nth-child(2),
+// 						&:nth-child(3) {
+// 							position: relative;
+// 							span {
+// 								@include flex;
+// 								@include flex-center;
+// 								padding: 15px;
+// 								background: white;
+// 								border-radius: 2px;
+// 							}
+// 							input {
+// 								display: inline-block;
+// 								text-align: right;
+// 								background: white;
+// 								border: 0;
+// 								font-size: 24px;
+// 								font-weight: 600;
+// 								color: $taupe;
+// 								@include placeholder {
+// 									color: rgba($taupe,.5);
+// 								}
+// 							}
+// 						}
+// 						&:nth-child(2) {
+// 							margin-right: 15px;
+// 							&::after {
+// 								@include center-y;
+// 								content: ":";
+// 								right: -15px;
+// 							}
+// 							span {
+// 								input {
+// 									max-width: 20px;
+// 								}
+// 								&::after {
+// 									content: "hr";
+// 									display: inline-block;
+// 									padding-left: 5px;
+// 								}
+// 							}
+// 						}
+// 						&:nth-child(3) {
+// 							span {
+// 								input {
+// 									max-width: 30px;
+// 								}
+// 								&::after {
+// 									content: "min";
+// 									display: inline-block;
+// 									padding-left: 5px;
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 			.request-form-map,
+// 			.request-form-date {
+// 				width: 50%;
+// 				height: 150px;
+// 				> div {
+// 					@include flex;
+// 					@include flex-center;
+// 					background: white;
+// 					color: $taupe;
+// 					border: 2px solid $taupe;
+// 					border-radius: 3px;
+// 					width: 100%;
+// 					height: 100%;
+// 					font-size: 24px;
+// 					text-align: center;
+// 					ul {
+// 						li {
+// 							h2 {
+// 								font-size: 22px;
+// 								font-weight: 700;
+// 								line-height: 1.2;
+// 							}
+// 							> span {
+// 								font-size: 20px;
+// 								font-weight: 400;
+// 								line-height: 1.2;
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 			.request-form-date {
+// 				> div {
+// 					border-left-width: 10px;
+// 				}
+// 			}
+// 			.request-form-desc {
+// 				> div {
+// 					background: white;
+// 					> div {
+// 						padding: 15px;
+// 						height: 112.5px;
+// 					}
+// 				}
+// 			}
+// 			.request-form-upload {
+// 				> div {
+// 					background: $slate;
+// 					> div {
+// 						height: 112.5px;
+// 						ul {
+// 							@include flex;
+// 							@include flex-center;
+// 							padding: 7.5px;
+// 							li {
+// 								@include flex;
+// 								@include flex-center;
+// 								position: relative;
+// 								width: 25%;
+// 								height: 92.5px;
+// 								padding: 7.5px;
+// 								text-align: center;
+// 								> svg {
+// 									@include svg-stroke(white, 3);
+// 								}
+// 								div,
+// 								> svg {
+// 									width: 75px;
+// 									height: 75px;
+// 								}
+// 								span {
+// 									@include center-xy;
+// 									display: block;
+// 									color: white;
+// 									font-size: 24px;
+// 									font-weight: 700;
+// 									text-transform: uppercase;
+// 								}
+// 								&.upload-img {
+// 									div {
+// 										@include opacity(.4);
+// 										position: relative;
+// 										border-radius: 7px;
+// 										background-position: center;
+// 										background-size: cover;
+// 									}
+// 									&::after {
+// 										@include center-xy;
+// 										content: "";
+// 										display: block;
+// 										width: 75px;
+// 										height: 75px;
+// 										border: 3px solid white;
+// 										border-radius: 7px;
+// 									}
+// 								}
+// 								&.upload-pdf {
+// 									> svg {
+// 										fill: $cerise;
+// 									}
+// 								}
+// 								&.upload-add {
+// 									> svg {
+// 										fill: $taupe;
+// 									}
+// 									span {
+// 										height: 40px;
+// 										overflow: hidden;
+// 										svg {
+// 											@include svg-stroke(white, 9);
+// 											width: 40px;
+// 											height: 40px;
+// 											overflow: hidden;
+// 										}
+// 									}
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 			.request-form-desc,
+// 			.request-form-upload {
+// 				width: 50%;
+// 				padding: 15px;
+// 				> div {
+// 					width: 100%;
+// 					> div {
+// 						color: $taupe;
+// 						font-size: 18px;
+// 						font-weight: 400;
+// 						line-height: 1.4;
+// 					}
+// 					button {
+// 						background: $taupe;
+// 						font-weight: 600;
+// 					}
+// 					.input + button {
+// 						height: 48px;
+// 						font-size: 20px;
+// 					}
+// 				}
+// 			}
+// 			.request-form-submit {
+// 				width: 100%;
+// 				button {
+// 					display: block;
+// 					width: 100%;
+// 					font-weight: 600;
+// 					text-transform: uppercase;
+// 				}
+// 			}
+// 		}
+// 		&.bg-cerise {
+// 			header {
+// 				background: $cerise;
+// 			}
+// 			.request-form {
+// 				.request-form-map,
+// 				.request-form-date {
+// 					> div {
+// 						color: $cerise;
+// 						border-color: $cerise;
+// 					}
+// 				}
+// 			}
+// 			.request-form-payment {
+// 				a {
+// 					background: $cerise;
+// 				}
+// 			}
+// 			.request-form-submit {
+// 				button {
+// 					background: $cerise;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
 /* ---------- TIMELINE */
 #timeline {
 	background: $smoke;
@@ -44,7 +775,107 @@
 	}
 	> section {
 		.post-search {
-			
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			margin: 60px auto 30px;
+			div {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				width: 100%;
+				position: relative;
+				margin: 0 auto;
+				svg {
+					@include round;
+					@include svg-stroke($slate, 6);
+					cursor: pointer;
+					position: relative;
+					z-index: 3;
+					display: block;
+					padding: 6px;
+					width: 48px;
+					height: 48px;
+					background: white;
+				}
+				ul {
+					@include opacity(0);
+					@include transition(.15s ease-in-out);
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					padding: 7.5px;
+					width: 100%;
+					li {
+						position: relative;
+						padding: 7.5px;
+						input {
+							position: absolute;
+							z-index: 4;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							&:checked {
+								+ label {
+									background: $shamrock;
+								}
+							}
+							&:hover, &:focus {
+								+ label {
+									background: lighten($slate, 15%);
+								}
+							}
+						}
+						label {
+							@include transition(.15s ease-in-out);
+							display: block;
+						}
+					}
+				}
+				input[type="search"] {
+					@include transition(.15s ease-in-out);
+					@include round;
+					height: 48px;
+					width: 48px;
+					overflow: hidden;
+					border: 0;
+					padding: 0;
+					margin-left: -48px;
+					color: $charcoal;
+					font-size: 18px;
+					@include placeholder {
+						color: lighten($taupe, 30%);
+					}
+					&:hover, &:focus {
+						+ ul {
+							@include opacity(1);
+						}
+					}
+					&:hover {
+						@include placeholder {
+							color: lighten($taupe, 15%);
+						}
+					}
+					&:focus {
+						width: 160px;
+						padding: 0 15px 0 53px;
+						@include placeholder {
+							color: $taupe;
+						}
+					}
+				}
+				&:hover, &:focus {
+					input[type="search"] {
+						margin-left: -48px;
+						width: 160px;
+						padding: 0 15px 0 53px;
+					}
+					ul {
+						@include opacity(1);
+					}
+				}
+			}
 		}
 		> ul {
 			position: relative;
@@ -77,6 +908,8 @@
 						}
 						span:last-child {
 							@include translate-x(100%);
+							-webkit-justify-content: flex-start;
+							justify-content: flex-start;
 							right: 0;
 							padding: 0 48px 0 15px;
 						}
@@ -98,8 +931,11 @@
 						}
 						span:last-child {
 							@include translate-x(-100%);
+							-webkit-justify-content: flex-end;
+							justify-content: flex-end;
 							left: 0;
 							padding: 0 15px 0 48px;
+							text-align: right!important;
 						}
 					}
 					article {
@@ -126,16 +962,17 @@
 					z-index: 1;
 					display: block;
 					svg {
+						@include transition(.15s ease-in-out);
 						@include round;
 						position: relative;
 						z-index: 4;
 						display: block;
 						width: 48px;
 						height: 48px;
-						padding: 5px;
+						padding: 6px;
 						background: $slate;
 						path {
-							@include svg-stroke(white, 4);
+							@include svg-stroke(white, 6);
 						}
 					}
 					&:after {
@@ -203,6 +1040,7 @@
 							line-height: 1.2;
 							text-transform: none;
 							&:after {
+								@include transition(.15s ease-in-out);
 								content: "";
 								position: absolute;
 								top: 10px;
@@ -339,9 +1177,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $shamrock, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $shamrock;
+							}
+						}
+						.post-icon svg, header a {
+							background: $shamrock;
+						}
+					}
 					article {
 						a:not(.txt-white) {
 							color: mix(white, $shamrock, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $shamrock;
+							}
+							&:active {
+								background: darken($shamrock, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -363,12 +1219,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $shamrock;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $shamrock, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $shamrock;
+									}
 								}
 							}
 						}
@@ -383,9 +1257,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $gold, 10%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $gold;
+							}
+						}
+						.post-icon svg, header a {
+							background: $gold;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: $gold;
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $gold
+							}
+							&:active {
+								background: darken($gold, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -407,12 +1299,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $gold;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $gold, 10%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $gold;
+									}
 								}
 							}
 						}
@@ -427,9 +1337,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $azure, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $azure;
+							}
+						}
+						.post-icon svg, header a {
+							background: $azure;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $azure, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $azure;
+							}
+							&:active {
+								background: darken($azure, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -451,12 +1379,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $azure;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $azure, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $azure;
+									}
 								}
 							}
 						}
@@ -471,9 +1417,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $auburn, 10%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $auburn;
+							}
+						}
+						.post-icon svg, header a {
+							background: $auburn;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $auburn, 10%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $auburn;
+							}
+							&:active {
+								background: darken($auburn, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -495,12 +1459,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $auburn;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $auburn, 10%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $auburn;
+									}
 								}
 							}
 						}
@@ -515,9 +1497,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $eggplant, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $eggplant;
+							}
+						}
+						.post-icon svg, header a {
+							background: $eggplant;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $eggplant, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $eggplant
+							}
+							&:active {
+								background: darken($eggplant, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -539,12 +1539,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $eggplant;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $eggplant, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $eggplant;
+									}
 								}
 							}
 						}
@@ -559,9 +1577,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $cerise, 20%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $cerise;
+							}
+						}
+						.post-icon svg, header a {
+							background: $cerise;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $cerise, 20%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $cerise;
+							}
+							&:active {
+								background: darken($cerise, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -583,12 +1619,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $cerise;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $cerise, 20%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $cerise;
+									}
 								}
 							}
 						}
@@ -603,9 +1657,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $moola, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $moola;
+							}
+						}
+						.post-icon svg, header a {
+							background: $moola;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $moola, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $moola;
+							}
+							&:active {
+								background: darken($moola, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -627,12 +1699,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $moola;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $moola, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $moola;
+									}
 								}
 							}
 						}
@@ -647,9 +1737,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $lake, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $lake;
+							}
+						}
+						.post-icon svg, header a {
+							background: $lake;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $lake, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $lake;
+							}
+							&:active {
+								background: darken($lake, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -671,12 +1779,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $lake;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $lake, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $lake;
+									}
 								}
 							}
 						}
@@ -691,9 +1817,27 @@
 					.post-icon svg, header a {
 						background: mix(white, $cobalt, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $cobalt;
+							}
+						}
+						.post-icon svg, header a {
+							background: $cobalt;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $cobalt, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $cobalt;
+							}
+							&:active {
+								background: darken($cobalt, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -715,6 +1859,15 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $cobalt;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
@@ -724,20 +1877,48 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $cobalt;
+									}
+								}
+							}
+						}
 					}
 				}
 				&.post-high-school {
 					.post-icon {
 						span:last-child {
 							background: mix(white, $orange, 15%);
+							min-width: 160px;
 						}
 					}
 					.post-icon svg, header a {
 						background: mix(white, $orange, 15%);
 					}
+					&:hover, &:focus {
+						.post-icon {
+							span:last-child {
+								background: $orange;
+							}
+						}
+						.post-icon svg, header a {
+							background: $orange;
+						}
+					}
 					article {
 						a:not(.chip) {
 							color: mix(white, $orange, 15%);
+						}
+						a.txt-white {
+							&:hover, &:focus {
+								background: $orange;
+							}
+							&:active {
+								background: darken($orange, 10%);
+							}
 						}
 						footer {
 							ul {
@@ -759,12 +1940,30 @@
 								}
 							}
 						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-right-color: $orange;
+									}
+								}
+							}
+						}
 					}
 					&:nth-child(odd) {
 						article {
 							header {
 								a:after {
 									border-left-color: mix(white, $orange, 15%);
+								}
+							}
+						}
+						&:hover, &:focus {
+							article {
+								header {
+									a:after {
+										border-left-color: $orange;
+									}
 								}
 							}
 						}

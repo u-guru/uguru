@@ -5,7 +5,11 @@
 	<!-- <div class="top-request-button"> -->
 	<div>
 		<div class='ng-class:{"active":root.vars.showDesktopSettings}'>
-			<a id="top-logo" href='#/guru-home'>
+			<a id="top-logo" href='#/guru-home' ng-if='root.vars.guru_mode'>
+				<svg viewBox="0 0 372 104" ng-include="img_base + BASE + 'templates/svg.icon.logo.html'">
+				</svg>
+			</a>
+			<a id="top-logo" class="full" href='#/student-home' ng-if='!root.vars.guru_mode'>
 				<svg viewBox="0 0 372 104" ng-include="img_base + BASE + 'templates/svg.icon.logo.html'">
 				</svg>
 			</a>
