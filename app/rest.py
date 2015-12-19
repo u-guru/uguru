@@ -660,6 +660,33 @@ class UserOneView(restful.Resource):
         if 'update_guru_demographic' in request.json:
             user.year = request.json.get('update_guru_demographic')
 
+        if 'update_guru_shop_description' in request.json:
+
+            shop_json = request.json.get('update_guru_shop_description')
+            shop_json_id = int(shop_json.get('id'))
+            shop_description = shop_json.get('description')
+            if shop_json_id and shop_description:
+                shop = Shop.query.get(shop_json_id)
+                shop.description = shop_description
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+
+        if 'update_guru_shop_title' in request.json:
+            shop_json = request.json.get('update_guru_shop_title')
+            shop_json_id = int(shop_json.get('id'))
+            shop_title = shop_json.get('title')
+            if shop_json_id and shop_title:
+                shop = Shop.query.get(shop_json_id)
+                shop.title = shop_title
+                try:
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
+
         if 'text_friendly' in request.json:
             user.text_friendly = request.json.get('text_friendly')
 
