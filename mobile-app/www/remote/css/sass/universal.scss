@@ -79,18 +79,19 @@
 					padding: 10px;
 				}
 			}
+			input, label {
+				color: white!important;
+				border-color: rgba(white, .5)!important;
+			}
 			input {
 				margin-bottom: 0;
-				border-color: rgba(white, .5)!important;
 				@include placeholder {
 					color: white;
 				}
 				&:focus {
 					border-color: white!important;
+					box-shadow: 0 1px 0 0 white!important;
 				}
-			}
-			input, label {
-				color: white!important;
 			}
 			label.active {
 				@include opacity-important(0);
@@ -343,6 +344,11 @@
 						.tag-list {
 							.chip {
 								margin-bottom: 15px;
+								&:hover, &:focus {
+									@include placeholder {
+										color: white;
+									}
+								}
 							}
 						}
 						.attachment-list {
@@ -401,6 +407,23 @@
 						textarea {
 							&:focus, .active {
 								border-color: $auburn;
+							}
+						}
+					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($auburn, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $auburn;
+								}
 							}
 						}
 					}
@@ -522,6 +545,23 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($orange, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $orange;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -637,6 +677,23 @@
 						textarea {
 							&:focus, .active {
 								border-color: $gold;
+							}
+						}
+					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: $gold;
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: darken($gold, 10%);
+								}
 							}
 						}
 					}
@@ -758,6 +815,23 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($moola, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $moola;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -873,6 +947,23 @@
 						textarea {
 							&:focus, .active {
 								border-color: $azure;
+							}
+						}
+					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($azure, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $azure;
+								}
 							}
 						}
 					}
@@ -994,6 +1085,23 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($cobalt, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $cobalt;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -1112,6 +1220,23 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($eggplant, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $eggplant;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -1227,6 +1352,23 @@
 						textarea, .active {
 							&:focus {
 								border-color: $cerise;
+							}
+						}
+					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($cerise, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $cerise;
+								}
 							}
 						}
 					}

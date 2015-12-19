@@ -2211,6 +2211,7 @@
 .pf-edit .main .pf-item-search .input-field input:focus {
   color: white !important;
   border-color: white !important;
+  box-shadow: 0 1px 0 0 white !important;
 }
 
 .pf-edit .main .pf-item-search .input-field .desktop-input-close-icon {

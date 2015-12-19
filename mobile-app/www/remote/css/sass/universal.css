@@ -137,9 +137,13 @@
   padding: 10px;
 }
 
+.request-slide #request-search .input-field input, .request-slide #request-search .input-field label {
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
 .request-slide #request-search .input-field input {
   margin-bottom: 0;
-  border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .request-slide #request-search .input-field input::-webkit-input-placeholder {
@@ -160,10 +164,7 @@
 
 .request-slide #request-search .input-field input:focus {
   border-color: white !important;
-}
-
-.request-slide #request-search .input-field input, .request-slide #request-search .input-field label {
-  color: white !important;
+  box-shadow: 0 1px 0 0 white !important;
 }
 
 .request-slide #request-search .input-field label.active {
@@ -514,6 +515,22 @@
   margin-bottom: 15px;
 }
 
+.request-slide#request-one .request-content > ul > li:last-child .tag-list .chip:hover::-webkit-input-placeholder, .request-slide#request-one .request-content > ul > li:last-child .tag-list .chip:focus::-webkit-input-placeholder {
+  color: white;
+}
+
+.request-slide#request-one .request-content > ul > li:last-child .tag-list .chip:hover:-moz-placeholder, .request-slide#request-one .request-content > ul > li:last-child .tag-list .chip:focus:-moz-placeholder {
+  color: white;
+}
+
+.request-slide#request-one .request-content > ul > li:last-child .tag-list .chip:hover::-moz-placeholder, .request-slide#request-one .request-content > ul > li:last-child .tag-list .chip:focus::-moz-placeholder {
+  color: white;
+}
+
+.request-slide#request-one .request-content > ul > li:last-child .tag-list .chip:hover:-ms-input-placeholder, .request-slide#request-one .request-content > ul > li:last-child .tag-list .chip:focus:-ms-input-placeholder {
+  color: white;
+}
+
 .request-slide#request-one .request-content > ul > li:last-child .attachment-list {
   margin: -15px;
   height: 150px;
@@ -557,6 +574,18 @@
 
 .request-delivery #request-one .request-content ul li:first-child textarea:focus, .request-delivery #request-one .request-content ul li:first-child textarea .active {
   border-color: #F04F54;
+}
+
+.request-delivery #request-one .request-content ul li:last-child .tag-list .chip:hover, .request-delivery #request-one .request-content ul li:last-child .tag-list .chip:focus {
+  background: #f47e82;
+}
+
+.request-delivery #request-one .request-content ul li:last-child .tag-list .chip:active {
+  background: #6f7d82;
+}
+
+.request-delivery #request-one .request-content ul li:last-child .tag-list input.chip:active {
+  background: #F04F54;
 }
 
 .request-delivery #request-two .request-urgency div span svg {
@@ -635,6 +664,18 @@
   border-color: #E5753C;
 }
 
+.request-freelancing #request-one .request-content ul li:last-child .tag-list .chip:hover, .request-freelancing #request-one .request-content ul li:last-child .tag-list .chip:focus {
+  background: #eb9569;
+}
+
+.request-freelancing #request-one .request-content ul li:last-child .tag-list .chip:active {
+  background: #6f7d82;
+}
+
+.request-freelancing #request-one .request-content ul li:last-child .tag-list input.chip:active {
+  background: #E5753C;
+}
+
 .request-freelancing #request-two .request-urgency div span svg {
   fill: none;
   stroke: #eb9569;
@@ -709,6 +750,18 @@
 
 .request-baking #request-one .request-content ul li:first-child textarea:focus, .request-baking #request-one .request-content ul li:first-child textarea .active {
   border-color: #F6C64E;
+}
+
+.request-baking #request-one .request-content ul li:last-child .tag-list .chip:hover, .request-baking #request-one .request-content ul li:last-child .tag-list .chip:focus {
+  background: #F6C64E;
+}
+
+.request-baking #request-one .request-content ul li:last-child .tag-list .chip:active {
+  background: #6f7d82;
+}
+
+.request-baking #request-one .request-content ul li:last-child .tag-list input.chip:active {
+  background: #f4b61d;
 }
 
 .request-baking #request-two .request-urgency div span svg {
@@ -787,6 +840,18 @@
   border-color: #81B566;
 }
 
+.request-photography #request-one .request-content ul li:last-child .tag-list .chip:hover, .request-photography #request-one .request-content ul li:last-child .tag-list .chip:focus {
+  background: #9dc688;
+}
+
+.request-photography #request-one .request-content ul li:last-child .tag-list .chip:active {
+  background: #6f7d82;
+}
+
+.request-photography #request-one .request-content ul li:last-child .tag-list input.chip:active {
+  background: #81B566;
+}
+
 .request-photography #request-two .request-urgency div span svg {
   fill: none;
   stroke: #9dc688;
@@ -861,6 +926,18 @@
 
 .request-tech #request-one .request-content ul li:first-child textarea:focus, .request-tech #request-one .request-content ul li:first-child textarea .active {
   border-color: #55A4B7;
+}
+
+.request-tech #request-one .request-content ul li:last-child .tag-list .chip:hover, .request-tech #request-one .request-content ul li:last-child .tag-list .chip:focus {
+  background: #79b7c6;
+}
+
+.request-tech #request-one .request-content ul li:last-child .tag-list .chip:active {
+  background: #6f7d82;
+}
+
+.request-tech #request-one .request-content ul li:last-child .tag-list input.chip:active {
+  background: #55A4B7;
 }
 
 .request-tech #request-two .request-urgency div span svg {
@@ -939,6 +1016,18 @@
   border-color: #7872e3;
 }
 
+.request-household #request-one .request-content ul li:last-child .tag-list .chip:hover, .request-household #request-one .request-content ul li:last-child .tag-list .chip:focus {
+  background: #a19deb;
+}
+
+.request-household #request-one .request-content ul li:last-child .tag-list .chip:active {
+  background: #6f7d82;
+}
+
+.request-household #request-one .request-content ul li:last-child .tag-list input.chip:active {
+  background: #7872e3;
+}
+
 .request-household #request-two .request-urgency div span svg {
   fill: none;
   stroke: #a19deb;
@@ -1015,6 +1104,18 @@
   border-color: #9A5BC5;
 }
 
+.request-athletic #request-one .request-content ul li:last-child .tag-list .chip:hover, .request-athletic #request-one .request-content ul li:last-child .tag-list .chip:focus {
+  background: #b181d2;
+}
+
+.request-athletic #request-one .request-content ul li:last-child .tag-list .chip:active {
+  background: #6f7d82;
+}
+
+.request-athletic #request-one .request-content ul li:last-child .tag-list input.chip:active {
+  background: #9A5BC5;
+}
+
 .request-athletic #request-two .request-urgency div span svg {
   fill: none;
   stroke: #b181d2;
@@ -1089,6 +1190,18 @@
 
 .request-academic #request-one .request-content ul li:first-child textarea:focus, .request-academic #request-one .request-content ul li:first-child .active:focus {
   border-color: #e6389b;
+}
+
+.request-academic #request-one .request-content ul li:last-child .tag-list .chip:hover, .request-academic #request-one .request-content ul li:last-child .tag-list .chip:focus {
+  background: #ec65b2;
+}
+
+.request-academic #request-one .request-content ul li:last-child .tag-list .chip:active {
+  background: #6f7d82;
+}
+
+.request-academic #request-one .request-content ul li:last-child .tag-list input.chip:active {
+  background: #e6389b;
 }
 
 .request-academic #request-two .request-urgency div span svg {
