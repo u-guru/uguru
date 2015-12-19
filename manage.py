@@ -904,9 +904,7 @@ if arg == 'seed_admin':
 
 
     def initUserDefaults(user):
-        cashCurrency = Currency.query.filter_by(name='Cash').all()[0]
-        if not user.guru_currencies:
-            user.guru_currencies.append(cashCurrency)
+        user.deactivated = False
         if not user.guru_calendar:
             Calendar.initGuruCalendar(user)
         selectThreeRandLanguages(user)
