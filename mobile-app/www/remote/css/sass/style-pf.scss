@@ -1361,36 +1361,6 @@
 	}
 }
 
-@include keyframes(courses-pop) {
-	0% {
-		@include opacity(0);
-		@include translate-y(-8%);
-	}
-	80% {
-		@include opacity(1);
-		@include translate-y(2%);
-	}
-	100% {
-		@include opacity(1);
-		@include translate-y(0);
-	}
-}
-
-@include keyframes(url-pop) {
-	0% {
-		@include opacity(0);
-		@include translate-y(50%);
-	}
-	90% {
-		@include opacity(1);
-		@include translate-y(-5%);
-	}
-	100% {
-		@include opacity(1);
-		@include translate-y(0);
-	}
-}
-
 #guru-profile-cta-close {
 	@include flex;
 	@include flex-center;
@@ -1473,72 +1443,23 @@
 .pf-edit {
 	background: lighten($charcoal, 2%);
 	.pf-course-list, .pf-course-none {
-		@include transition(.3s ease-in-out);
 		position: absolute;
-		width: 100%;
 		margin-top: -15px;
 		margin-left: -15px;
 		background: rgba(lighten($charcoal, 2%),.95);
-		&.hide {
-			@include flex-important;
-			@include opacity(0);
-			@include translate-y(-10%);
-			z-index: -10;
-		}
 		&.show {
-			@include flex-important;
-			@include opacity(1);
-			@include translate-y(0);
-			@include animation-name(courses-pop);
-			@include animation-duration(.4s);
-			@include animation-iteration-count(1);
 			z-index: 100;
 		}
 	}
-	.pf-course-none {
-		@include flex;
-		@include flex-center;
-		z-index: 90;
-		padding: 15px;
-		font-weight: 600;
-	}
 	.pf-course-list {
-		@include flex;
-		@include flex-wrap;
-		z-index: 100;
-		padding: 7.5px;
-    	font-weight: 600;
 		li {
-			width: calc(100% / 3);
-			height: 102px;
-			overflow: hidden;
-			padding: 7.5px;
 			a {
-				@include flex;
-				@include flex-center-vertical;
-				display: block;
-				height: 87px;
-				padding: 10px 15px;
 				background: lighten($slate, 20%);
 				&:hover, &:focus {
 					background: $shamrock;
 				}
 				&:active {
 					background: lighten($slate, 10%);
-				}
-				span {
-					display: block;
-					line-height: 1.2;
-				}
-				.course-name {
-					font-size: 16px;
-					text-transform: uppercase;
-				}
-				.course-title {
-					max-height: 48px;
-					overflow: hidden;
-					font-size: 20px;
-					font-weight: 700;
 				}
 			}
 		}

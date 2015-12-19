@@ -59,9 +59,13 @@
 		overflow-x: hidden;
 	}
 	#request-search {
-		background: lighten($shamrock, 10%);
 		position: relative;
-		padding: 0 15px 15px 0;
+		form {
+			background: lighten($shamrock, 10%);
+			padding: 0 15px 15px 0;
+			position: relative;
+			z-index: 12;
+		}
 		.input-field {
 			max-width: 800px;
 			margin: 0 auto;
@@ -90,6 +94,34 @@
 			}
 			label.active {
 				@include opacity-important(0);
+			}
+		}
+		.course-list, .course-none {
+			top: 63px;
+    		left: 0;
+			background: rgba($smoke,.7);
+			a {
+				color: white;
+			}
+		}
+		.course-list {
+			ul {
+				max-width: 815px;
+				margin: 0 auto;
+			}
+		}
+		.course-none {
+			padding: 15px;
+		    font-size: 28px;
+		    color: $slate;
+		    line-height: 1.5;
+		}
+		@media screen and (min-width: 768px) {
+			.course-list, .course-none {
+				top: 87px;
+			}
+			.course-none {
+				font-size: 36px;
 			}
 		}
 	}
@@ -330,6 +362,7 @@
 		font-weight: 600;
 	}
 }
+
 .request-delivery {
 	button {
 		background: $auburn;
@@ -343,8 +376,22 @@
 	header:not(.desktop-header) {
 		background: $auburn!important;
 	}
-	#request-search, .request-urgency {
+	#request-search form, .request-urgency {
 		background: lighten($auburn, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $auburn;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -420,6 +467,15 @@
 							}
 						}
 					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($auburn, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -438,8 +494,22 @@
 	header:not(.desktop-header) {
 		background: $orange!important;
 	}
-	#request-search, .request-urgency  {
+	#request-search form, .request-urgency  {
 		background: lighten($orange, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $orange;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -515,6 +585,15 @@
 							}
 						}
 					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($orange, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -533,8 +612,22 @@
 	header:not(.desktop-header) {
 		background: $gold!important;
 	}
-	#request-search, .request-urgency  {
+	#request-search form, .request-urgency  {
 		background: lighten($gold, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $gold;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -610,6 +703,15 @@
 							}
 						}
 					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($gold, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -628,8 +730,22 @@
 	header:not(.desktop-header) {
 		background: $moola!important;
 	}
-	#request-search, .request-urgency  {
+	#request-search form, .request-urgency  {
 		background: lighten($moola, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $moola;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -705,6 +821,15 @@
 							}
 						}
 					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($moola, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -723,8 +848,22 @@
 	header:not(.desktop-header) {
 		background: $azure!important;
 	}
-	#request-search, .request-urgency  {
+	#request-search form, .request-urgency  {
 		background: lighten($azure, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $azure;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -800,6 +939,15 @@
 							}
 						}
 					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($azure, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -818,8 +966,22 @@
 	header:not(.desktop-header) {
 		background: $cobalt!important;
 	}
-	#request-search, .request-urgency  {
+	#request-search form, .request-urgency  {
 		background: lighten($cobalt, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $cobalt;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -895,6 +1057,15 @@
 							}
 						}
 					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($cobalt, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -913,8 +1084,22 @@
 	header:not(.desktop-header) {
 		background: $eggplant!important;
 	}
-	#request-search, .request-urgency  {
+	#request-search form, .request-urgency  {
 		background: lighten($eggplant, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $eggplant;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -990,6 +1175,15 @@
 							}
 						}
 					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($eggplant, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -1008,8 +1202,22 @@
 	header:not(.desktop-header) {
 		background: $cerise!important;
 	}
-	#request-search, .request-urgency  {
+	#request-search form, .request-urgency  {
 		background: lighten($cerise, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $cerise;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -1082,6 +1290,15 @@
 							}
 							&:active, &.active {
 								background: $cerise;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($cerise, 10%);
+								}
 							}
 						}
 					}
@@ -1174,7 +1391,9 @@
 			}
 		}
 		#request-search {
-			padding: 0 15px 15px;
+			form {
+				padding: 0 15px 15px;
+			}
 			.input-field {
 				.prefix {
 					top: 24px;

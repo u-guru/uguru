@@ -106,9 +106,14 @@
 }
 
 .request-slide #request-search {
-  background: #8bc4b9;
   position: relative;
+}
+
+.request-slide #request-search form {
+  background: #8bc4b9;
   padding: 0 15px 15px 0;
+  position: relative;
+  z-index: 12;
 }
 
 .request-slide #request-search .input-field {
@@ -164,6 +169,37 @@
 .request-slide #request-search .input-field label.active {
   filter: alpha(opacity=0) !important;
   opacity: 0 !important;
+}
+
+.request-slide #request-search .course-list, .request-slide #request-search .course-none {
+  top: 63px;
+  left: 0;
+  background: rgba(241, 241, 241, 0.7);
+}
+
+.request-slide #request-search .course-list a, .request-slide #request-search .course-none a {
+  color: white;
+}
+
+.request-slide #request-search .course-list ul {
+  max-width: 815px;
+  margin: 0 auto;
+}
+
+.request-slide #request-search .course-none {
+  padding: 15px;
+  font-size: 28px;
+  color: #40484B;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 768px) {
+  .request-slide #request-search .course-list, .request-slide #request-search .course-none {
+    top: 87px;
+  }
+  .request-slide #request-search .course-none {
+    font-size: 36px;
+  }
 }
 
 .request-slide#request-two .request-urgency {
@@ -507,8 +543,16 @@
   background: #F04F54 !important;
 }
 
-.request-delivery #request-search, .request-delivery .request-urgency {
+.request-delivery #request-search form, .request-delivery .request-urgency {
   background: #f47e82;
+}
+
+.request-delivery #request-search .course-list li a:hover, .request-delivery #request-search .course-list li a:focus {
+  background: #F04F54;
+}
+
+.request-delivery #request-search .course-list li a:active {
+  background: #576267;
 }
 
 .request-delivery #request-one .request-content ul li:first-child textarea:focus, .request-delivery #request-one .request-content ul li:first-child textarea .active {
@@ -555,6 +599,10 @@
   background: #F04F54;
 }
 
+.request-delivery #request-two .request-content .request-cal .cal-week .cal-main .cal-date li.active > span {
+  background: #f47e82;
+}
+
 .request-freelancing button {
   background: #E5753C;
 }
@@ -571,8 +619,16 @@
   background: #E5753C !important;
 }
 
-.request-freelancing #request-search, .request-freelancing .request-urgency {
+.request-freelancing #request-search form, .request-freelancing .request-urgency {
   background: #eb9569;
+}
+
+.request-freelancing #request-search .course-list li a:hover, .request-freelancing #request-search .course-list li a:focus {
+  background: #E5753C;
+}
+
+.request-freelancing #request-search .course-list li a:active {
+  background: #576267;
 }
 
 .request-freelancing #request-one .request-content ul li:first-child textarea:focus, .request-freelancing #request-one .request-content ul li:first-child textarea .active {
@@ -619,6 +675,10 @@
   background: #E5753C;
 }
 
+.request-freelancing #request-two .request-content .request-cal .cal-week .cal-main .cal-date li.active > span {
+  background: #eb9569;
+}
+
 .request-baking button {
   background: #F6C64E;
 }
@@ -635,8 +695,16 @@
   background: #F6C64E !important;
 }
 
-.request-baking #request-search, .request-baking .request-urgency {
+.request-baking #request-search form, .request-baking .request-urgency {
   background: #f8d67f;
+}
+
+.request-baking #request-search .course-list li a:hover, .request-baking #request-search .course-list li a:focus {
+  background: #F6C64E;
+}
+
+.request-baking #request-search .course-list li a:active {
+  background: #576267;
 }
 
 .request-baking #request-one .request-content ul li:first-child textarea:focus, .request-baking #request-one .request-content ul li:first-child textarea .active {
@@ -683,6 +751,10 @@
   background: #F6C64E;
 }
 
+.request-baking #request-two .request-content .request-cal .cal-week .cal-main .cal-date li.active > span {
+  background: #f8d67f;
+}
+
 .request-photography button {
   background: #81B566;
 }
@@ -699,8 +771,16 @@
   background: #81B566 !important;
 }
 
-.request-photography #request-search, .request-photography .request-urgency {
+.request-photography #request-search form, .request-photography .request-urgency {
   background: #9dc688;
+}
+
+.request-photography #request-search .course-list li a:hover, .request-photography #request-search .course-list li a:focus {
+  background: #81B566;
+}
+
+.request-photography #request-search .course-list li a:active {
+  background: #576267;
 }
 
 .request-photography #request-one .request-content ul li:first-child textarea:focus, .request-photography #request-one .request-content ul li:first-child textarea .active {
@@ -747,6 +827,10 @@
   background: #81B566;
 }
 
+.request-photography #request-two .request-content .request-cal .cal-week .cal-main .cal-date li.active > span {
+  background: #9dc688;
+}
+
 .request-tech button {
   background: #55A4B7;
 }
@@ -763,8 +847,16 @@
   background: #55A4B7 !important;
 }
 
-.request-tech #request-search, .request-tech .request-urgency {
+.request-tech #request-search form, .request-tech .request-urgency {
   background: #79b7c6;
+}
+
+.request-tech #request-search .course-list li a:hover, .request-tech #request-search .course-list li a:focus {
+  background: #55A4B7;
+}
+
+.request-tech #request-search .course-list li a:active {
+  background: #576267;
 }
 
 .request-tech #request-one .request-content ul li:first-child textarea:focus, .request-tech #request-one .request-content ul li:first-child textarea .active {
@@ -811,6 +903,10 @@
   background: #55A4B7;
 }
 
+.request-tech #request-two .request-content .request-cal .cal-week .cal-main .cal-date li.active > span {
+  background: #79b7c6;
+}
+
 .request-household button {
   background: #7872e3;
 }
@@ -827,8 +923,16 @@
   background: #7872e3 !important;
 }
 
-.request-household #request-search, .request-household .request-urgency {
+.request-household #request-search form, .request-household .request-urgency {
   background: #a19deb;
+}
+
+.request-household #request-search .course-list li a:hover, .request-household #request-search .course-list li a:focus {
+  background: #7872e3;
+}
+
+.request-household #request-search .course-list li a:active {
+  background: #576267;
 }
 
 .request-household #request-one .request-content ul li:first-child textarea:focus {
@@ -875,6 +979,10 @@
   background: #7872e3;
 }
 
+.request-household #request-two .request-content .request-cal .cal-week .cal-main .cal-date li.active > span {
+  background: #a19deb;
+}
+
 .request-athletic button {
   background: #9A5BC5;
 }
@@ -891,8 +999,16 @@
   background: #9A5BC5 !important;
 }
 
-.request-athletic #request-search, .request-athletic .request-urgency {
+.request-athletic #request-search form, .request-athletic .request-urgency {
   background: #b181d2;
+}
+
+.request-athletic #request-search .course-list li a:hover, .request-athletic #request-search .course-list li a:focus {
+  background: #9A5BC5;
+}
+
+.request-athletic #request-search .course-list li a:active {
+  background: #576267;
 }
 
 .request-athletic #request-one .request-content ul li:first-child textarea:focus, .request-athletic #request-one .request-content ul li:first-child textarea .active {
@@ -939,6 +1055,10 @@
   background: #9A5BC5;
 }
 
+.request-athletic #request-two .request-content .request-cal .cal-week .cal-main .cal-date li.active > span {
+  background: #b181d2;
+}
+
 .request-academic button {
   background: #e6389b;
 }
@@ -955,8 +1075,16 @@
   background: #e6389b !important;
 }
 
-.request-academic #request-search, .request-academic .request-urgency {
+.request-academic #request-search form, .request-academic .request-urgency {
   background: #ec65b2;
+}
+
+.request-academic #request-search .course-list li a:hover, .request-academic #request-search .course-list li a:focus {
+  background: #e6389b;
+}
+
+.request-academic #request-search .course-list li a:active {
+  background: #576267;
 }
 
 .request-academic #request-one .request-content ul li:first-child textarea:focus, .request-academic #request-one .request-content ul li:first-child .active:focus {
@@ -1001,6 +1129,10 @@
 
 .request-academic #request-two .request-content .request-cal .cal-week .cal-month a:active, .request-academic #request-two .request-content .request-cal .cal-week .cal-month a.active {
   background: #e6389b;
+}
+
+.request-academic #request-two .request-content .request-cal .cal-week .cal-main .cal-date li.active > span {
+  background: #ec65b2;
 }
 
 @media screen and (max-width: 768px) {
@@ -1076,7 +1208,7 @@
   .request-slide#request-two .request-urgency label {
     font-size: 28px;
   }
-  .request-slide #request-search {
+  .request-slide #request-search form {
     padding: 0 15px 15px;
   }
   .request-slide #request-search .input-field .prefix {
