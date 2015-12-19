@@ -1,25 +1,19 @@
 <!-- //Dont ask lol, just style -->
 <script type="text/ng-template" id="request.slide.two.input.html">
-
-    <input id='request-form-map-search' type="text" placeholder="Search Box">
-
+    <input id='request-form-map-search' type="text" placeholder="Search Box"/>
 </script>
 
- <section class='bg-slate full-xy flex-wrap-center text-center ng-class:{"ugrid-3":desktopMode}'>
-
-    <header class='third bg-campus relative full-x'>
-
+ <section id="request-two" class="request-slide request-academic">
+    <header>
         <!--
         All attribute options are below
         https://angular-ui.github.io/angular-google-maps/#!/api/google-map -->
-        <ui-gmap-google-map style='height:400px;' class='full-x'  center="map.center" zoom="map.zoom"  pan="false">
-
+        <ui-gmap-google-map style='height:400px;' class='full-x' center="map.center" zoom="map.zoom"  pan="false">
             <!-- other ui-gmap-directives here -->
             <!--
             All autocomplete options from website
             https://developers.google.com/maps/documentation/javascript/reference#AutocompleteOptions -->
             <ui-gmap-search-box template="searchbox.template" options="searchbox.options" events="searchbox.events"></ui-gmap-search-box>
-
         </ui-gmap-google-map>
     </header>
     <div class='request-form request-time-estimate-dropdowns full-x flex-wrap-center'>
