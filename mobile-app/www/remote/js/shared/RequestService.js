@@ -1,7 +1,7 @@
 angular
-.module('sharedServices')
-.factory("RequestService", [
-  RequestService
+	.module('sharedServices')
+	.factory("RequestService", [
+		RequestService
 	]);
 
 function RequestService() {
@@ -69,12 +69,3 @@ function RequestService() {
 
 
 }
-
-
-
-
-
-
-
-
-

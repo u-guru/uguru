@@ -5806,3 +5806,258 @@ input[type=range]:focus::-ms-fill-upper {
 .rating-stars[data-rating="5"] li svg polygon, .pf-rating[data-rating="5"] li svg polygon {
   fill: #F6C64E;
 }
+
+.tag-list, .pf-tags {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  text-align: center;
+}
+
+.tag-list .chip, .pf-tags .chip {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  background: #576267;
+  margin-right: 15px;
+  border: 0;
+  color: white !important;
+}
+
+.tag-list .chip:hover, .pf-tags .chip:hover {
+  background: #637074;
+}
+
+.tag-list .chip svg, .pf-tags .chip svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+}
+
+.tag-list .chip input, .pf-tags .chip input {
+  background: transparent;
+  border: 0;
+  color: white !important;
+}
+
+.tag-list .chip input::-webkit-input-placeholder, .pf-tags .chip input::-webkit-input-placeholder {
+  color: white !important;
+}
+
+.tag-list .chip input:-moz-placeholder, .pf-tags .chip input:-moz-placeholder {
+  color: white !important;
+}
+
+.tag-list .chip input::-moz-placeholder, .pf-tags .chip input::-moz-placeholder {
+  color: white !important;
+}
+
+.tag-list .chip input:-ms-input-placeholder, .pf-tags .chip input:-ms-input-placeholder {
+  color: white !important;
+}
+
+.attachment-list, .pf-photo-list {
+  width: 100%;
+  min-height: 100px;
+  overflow: auto;
+  text-align: center !important;
+}
+
+.attachment-list ul, .pf-photo-list ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+  padding: 7.5px;
+}
+
+.attachment-list ul li, .pf-photo-list ul li {
+  padding: 7.5px;
+  height: 100%;
+}
+
+.attachment-list ul li:last-child, .pf-photo-list ul li:last-child {
+  padding-right: 15px;
+}
+
+.attachment-list ul li div, .pf-photo-list ul li div {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  background: #40484B;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.attachment-list ul li .attach-upload-img, .attachment-list ul li .pf-upload-img, .pf-photo-list ul li .attach-upload-img, .pf-photo-list ul li .pf-upload-img {
+  background-position: center center;
+  background-size: cover;
+}
+
+.attachment-list ul li .attach-upload-img a svg, .attachment-list ul li .attach-upload-file a svg, .attachment-list ul li .pf-upload-img a svg, .attachment-list ul li .pf-upload-file a svg, .pf-photo-list ul li .attach-upload-img a svg, .pf-photo-list ul li .attach-upload-file a svg, .pf-photo-list ul li .pf-upload-img a svg, .pf-photo-list ul li .pf-upload-file a svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+}
+
+.attachment-list ul li .attach-upload-file, .attachment-list ul li .pf-upload-file, .pf-photo-list ul li .attach-upload-file, .pf-photo-list ul li .pf-upload-file {
+  border: 0;
+  width: auto;
+  background: none !important;
+}
+
+.attachment-list ul li .attach-upload-file svg.doc-outline, .attachment-list ul li .pf-upload-file svg.doc-outline, .pf-photo-list ul li .attach-upload-file svg.doc-outline, .pf-photo-list ul li .pf-upload-file svg.doc-outline {
+  fill: none;
+  stroke: white;
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  height: 100%;
+  fill: #69B3A5;
+}
+
+.attachment-list ul li .attach-upload-file.attach-upload-pdf svg.doc-outline, .attachment-list ul li .attach-upload-file.pf-upload-pdf svg.doc-outline, .attachment-list ul li .pf-upload-file.attach-upload-pdf svg.doc-outline, .attachment-list ul li .pf-upload-file.pf-upload-pdf svg.doc-outline, .pf-photo-list ul li .attach-upload-file.attach-upload-pdf svg.doc-outline, .pf-photo-list ul li .attach-upload-file.pf-upload-pdf svg.doc-outline, .pf-photo-list ul li .pf-upload-file.attach-upload-pdf svg.doc-outline, .pf-photo-list ul li .pf-upload-file.pf-upload-pdf svg.doc-outline {
+  height: 100%;
+  fill: #F04F54;
+}
+
+.attachment-list ul li .attach-upload-file.attach-upload-doc svg.doc-outline, .attachment-list ul li .attach-upload-file.pf-upload-doc svg.doc-outline, .attachment-list ul li .pf-upload-file.attach-upload-doc svg.doc-outline, .attachment-list ul li .pf-upload-file.pf-upload-doc svg.doc-outline, .pf-photo-list ul li .attach-upload-file.attach-upload-doc svg.doc-outline, .pf-photo-list ul li .attach-upload-file.pf-upload-doc svg.doc-outline, .pf-photo-list ul li .pf-upload-file.attach-upload-doc svg.doc-outline, .pf-photo-list ul li .pf-upload-file.pf-upload-doc svg.doc-outline {
+  height: 100%;
+  fill: #50A5DD;
+}
+
+.attachment-list ul li .attach-upload-file.attach-upload-xls svg.doc-outline, .attachment-list ul li .attach-upload-file.pf-upload-sheet svg.doc-outline, .attachment-list ul li .pf-upload-file.attach-upload-xls svg.doc-outline, .attachment-list ul li .pf-upload-file.pf-upload-sheet svg.doc-outline, .pf-photo-list ul li .attach-upload-file.attach-upload-xls svg.doc-outline, .pf-photo-list ul li .attach-upload-file.pf-upload-sheet svg.doc-outline, .pf-photo-list ul li .pf-upload-file.attach-upload-xls svg.doc-outline, .pf-photo-list ul li .pf-upload-file.pf-upload-sheet svg.doc-outline {
+  height: 100%;
+  fill: #81B566;
+}
+
+.attachment-list ul li .attach-upload-file .doc-info, .attachment-list ul li .pf-upload-file .doc-info, .pf-photo-list ul li .attach-upload-file .doc-info, .pf-photo-list ul li .pf-upload-file .doc-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 30px 15px 15px;
+}
+
+.attachment-list ul li .attach-upload-file .doc-info span, .attachment-list ul li .pf-upload-file .doc-info span, .pf-photo-list ul li .attach-upload-file .doc-info span, .pf-photo-list ul li .pf-upload-file .doc-info span {
+  display: block;
+  font-weight: 600;
+}
+
+.attachment-list ul li .attach-upload-file .doc-info .doc-name, .attachment-list ul li .pf-upload-file .doc-info .doc-name, .pf-photo-list ul li .attach-upload-file .doc-info .doc-name, .pf-photo-list ul li .pf-upload-file .doc-info .doc-name {
+  font-size: 20px;
+}
+
+.attachment-list ul li .attach-upload-file .doc-info .doc-type, .attachment-list ul li .pf-upload-file .doc-info .doc-type, .pf-photo-list ul li .attach-upload-file .doc-info .doc-type, .pf-photo-list ul li .pf-upload-file .doc-info .doc-type {
+  font-size: 16px;
+}
+
+.attachment-list ul li .attach-upload-add, .attachment-list ul li .pf-upload-add, .pf-photo-list ul li .attach-upload-add, .pf-photo-list ul li .pf-upload-add {
+  position: relative;
+  border-style: dashed;
+  border: 0;
+  background: none;
+  width: auto;
+}
+
+.attachment-list ul li .attach-upload-add .square, .attachment-list ul li .pf-upload-add .square, .pf-photo-list ul li .attach-upload-add .square, .pf-photo-list ul li .pf-upload-add .square {
+  height: 100%;
+  fill: none;
+}
+
+.attachment-list ul li .attach-upload-add a, .attachment-list ul li .pf-upload-add a, .pf-photo-list ul li .attach-upload-add a, .pf-photo-list ul li .pf-upload-add a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px dashed #69B3A5;
+}
+
+.attachment-list ul li .attach-upload-add a span svg, .attachment-list ul li .pf-upload-add a span svg, .pf-photo-list ul li .attach-upload-add a span svg, .pf-photo-list ul li .pf-upload-add a span svg {
+  fill: none;
+  stroke: #69B3A5;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 100%;
+  height: 30px;
+}
+
+.attachment-list ul li .attach-upload-add a span span, .attachment-list ul li .pf-upload-add a span span, .pf-photo-list ul li .attach-upload-add a span span, .pf-photo-list ul li .pf-upload-add a span span {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #69B3A5;
+}
+
+.attachment-list ul li .attach-upload-add a:hover, .attachment-list ul li .attach-upload-add a:focus, .attachment-list ul li .pf-upload-add a:hover, .attachment-list ul li .pf-upload-add a:focus, .pf-photo-list ul li .attach-upload-add a:hover, .pf-photo-list ul li .attach-upload-add a:focus, .pf-photo-list ul li .pf-upload-add a:hover, .pf-photo-list ul li .pf-upload-add a:focus {
+  background: white;
+}
+
+.attachment-list ul li .attach-upload-add a:active, .attachment-list ul li .attach-upload-add a.active, .attachment-list ul li .pf-upload-add a:active, .attachment-list ul li .pf-upload-add a.active, .pf-photo-list ul li .attach-upload-add a:active, .pf-photo-list ul li .attach-upload-add a.active, .pf-photo-list ul li .pf-upload-add a:active, .pf-photo-list ul li .pf-upload-add a.active {
+  background: #cfe6e2;
+}
