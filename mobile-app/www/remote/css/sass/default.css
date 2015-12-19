@@ -4102,6 +4102,7 @@ input[type=range]:focus::-ms-fill-upper {
   width: 200px;
   height: 0;
   overflow: hidden;
+  text-align: center;
 }
 
 .custom-dropdown > ul.active {
@@ -6060,4 +6061,69 @@ input[type=range]:focus::-ms-fill-upper {
 
 .attachment-list ul li .attach-upload-add a:active, .attachment-list ul li .attach-upload-add a.active, .attachment-list ul li .pf-upload-add a:active, .attachment-list ul li .pf-upload-add a.active, .pf-photo-list ul li .attach-upload-add a:active, .pf-photo-list ul li .attach-upload-add a.active, .pf-photo-list ul li .pf-upload-add a:active, .pf-photo-list ul li .pf-upload-add a.active {
   background: #cfe6e2;
+}
+
+.checkbox-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.checkbox-container div {
+  position: relative;
+}
+
+.checkbox-container div input {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: absolute;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.checkbox-container div span {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+  background: #40484B;
+}
+
+.checkbox-container div span svg {
+  fill: none;
+  stroke: #6f7d82;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  padding: 4px;
+  width: 100%;
+  height: 100%;
+}
+
+.checkbox-container div input:checked + span {
+  background: #69B3A5;
+}
+
+.checkbox-container div input:checked + span svg {
+  stroke: white;
+}
+
+.checkbox-container label {
+  padding-left: 15px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
 }
