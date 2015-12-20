@@ -471,7 +471,8 @@
 	}
 	aside {
 		&::after {
-			background: url("../../img/login@2x.jpg") no-repeat center center / cover, url("/static/remote/img/login@2x.jpg") no-repeat center center / cover;
+			background: url("../../img/login@2x.jpg") no-repeat center center / cover,
+						url("/static/remote/img/login@2x.jpg") no-repeat center center / cover;
 		}
 	}
 }
@@ -491,7 +492,8 @@
 			padding-bottom: 150px;
 		}
 		&::after {
-			background: url("../../img/login@2x.jpg") no-repeat center center / cover, url("/static/remote/img/login@2x.jpg") no-repeat center center / cover;
+			background: url("../../img/login@2x.jpg") no-repeat center center / cover,
+						url("/static/remote/img/login@2x.jpg") no-repeat center center / cover;
 		}
 	}
 }
