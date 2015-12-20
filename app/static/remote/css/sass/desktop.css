@@ -198,6 +198,8 @@
         .desktop-mode #top-bar div:nth-child(2) #top-logo svg {
           height: 100%;
           padding: 20px 0 15px; }
+        .desktop-mode #top-bar div:nth-child(2) #top-logo.full {
+          width: calc(100% - 90px); }
       .desktop-mode #top-bar div:nth-child(2) .top-tooltip {
         filter: alpha(opacity=100) !important;
         opacity: 1 !important;
@@ -361,6 +363,43 @@
         .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul {
           background: rgba(255, 255, 255, 0.3);
           min-width: 250px; }
+          .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            background: rgba(87, 98, 103, 0.9); }
+            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup h2 {
+              font-size: 20px;
+              font-weight: 600;
+              text-align: center; }
+            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup div {
+              width: 100% !important;
+              background: none !important; }
+            .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup > div {
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-justify-content: center;
+              justify-content: center; }
+              .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup > div > div {
+                -ms-box-orient: horizontal;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -moz-flex;
+                display: -webkit-flex;
+                display: flex;
+                -ms-flex-flow: row wrap;
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+                height: auto !important; }
           .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li a {
             -ms-box-orient: horizontal;
             display: -webkit-box;
@@ -2232,362 +2271,6 @@
       #desktop-messaging .main #messenger.bg-campus #messenger-content .messenger-header,
       #desktop-messaging .main.mobile-messages-container #messenger.bg-campus #messenger-content .messenger-header {
         background: #8A9EA3; }
-
-/* ---------- REQUESTS */
-.desktop-request {
-  background: #F1F1F1; }
-  .desktop-request .request-header {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: 0;
-    text-transform: none; }
-    .desktop-request .request-header .request-category {
-      filter: alpha(opacity=50);
-      opacity: 0.5;
-      font-weight: 600; }
-      .desktop-request .request-header .request-category + span {
-        display: inline-block; }
-  .desktop-request .main {
-    width: 100%;
-    height: 100%;
-    background: none !important;
-    padding: 0; }
-    .desktop-request .main header {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      position: relative;
-      height: 25%;
-      background: #757575; }
-      .desktop-request .main header .request-header {
-        font-size: 36px; }
-        .desktop-request .main header .request-header .request-category + span {
-          padding: 0 10px; }
-          .desktop-request .main header .request-header .request-category + span svg {
-            fill: none;
-            stroke: white;
-            stroke-width: 16px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            margin-top: 10px;
-            width: 28px;
-            height: 28px; }
-    .desktop-request .main .request-form {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      max-width: 830px;
-      height: 75%;
-      margin: 0 auto; }
-      .desktop-request .main .request-form > div {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        width: 100%; }
-        .desktop-request .main .request-form > div > div {
-          padding: 15px; }
-      .desktop-request .main .request-form .request-form-time {
-        width: 100%; }
-        .desktop-request .main .request-form .request-form-time ul {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          color: #757575;
-          font-size: 24px;
-          font-weight: 600; }
-          .desktop-request .main .request-form .request-form-time ul li {
-            margin: 0 7.5px; }
-            .desktop-request .main .request-form .request-form-time ul li:nth-child(2), .desktop-request .main .request-form .request-form-time ul li:nth-child(3) {
-              position: relative; }
-              .desktop-request .main .request-form .request-form-time ul li:nth-child(2) span, .desktop-request .main .request-form .request-form-time ul li:nth-child(3) span {
-                -ms-box-orient: horizontal;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -moz-flex;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-flex-direction: row;
-                flex-direction: row;
-                -webkit-align-items: center;
-                align-items: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                padding: 15px;
-                background: white;
-                border-radius: 2px; }
-              .desktop-request .main .request-form .request-form-time ul li:nth-child(2) input, .desktop-request .main .request-form .request-form-time ul li:nth-child(3) input {
-                display: inline-block;
-                text-align: right;
-                background: white;
-                border: 0;
-                font-size: 24px;
-                font-weight: 600;
-                color: #757575; }
-                .desktop-request .main .request-form .request-form-time ul li:nth-child(2) input::-webkit-input-placeholder, .desktop-request .main .request-form .request-form-time ul li:nth-child(3) input::-webkit-input-placeholder {
-                  color: rgba(117, 117, 117, 0.5); }
-                .desktop-request .main .request-form .request-form-time ul li:nth-child(2) input:-moz-placeholder, .desktop-request .main .request-form .request-form-time ul li:nth-child(3) input:-moz-placeholder {
-                  color: rgba(117, 117, 117, 0.5); }
-                .desktop-request .main .request-form .request-form-time ul li:nth-child(2) input::-moz-placeholder, .desktop-request .main .request-form .request-form-time ul li:nth-child(3) input::-moz-placeholder {
-                  color: rgba(117, 117, 117, 0.5); }
-                .desktop-request .main .request-form .request-form-time ul li:nth-child(2) input:-ms-input-placeholder, .desktop-request .main .request-form .request-form-time ul li:nth-child(3) input:-ms-input-placeholder {
-                  color: rgba(117, 117, 117, 0.5); }
-            .desktop-request .main .request-form .request-form-time ul li:nth-child(2) {
-              margin-right: 15px; }
-              .desktop-request .main .request-form .request-form-time ul li:nth-child(2)::after {
-                position: absolute;
-                top: 50%;
-                -webkit-transform: translateY(-50%);
-                -moz-transform: translateY(-50%);
-                -ms-transform: translateY(-50%);
-                -o-transform: translateY(-50%);
-                transform: translateY(-50%);
-                content: ":";
-                right: -15px; }
-              .desktop-request .main .request-form .request-form-time ul li:nth-child(2) span input {
-                max-width: 20px; }
-              .desktop-request .main .request-form .request-form-time ul li:nth-child(2) span::after {
-                content: "hr";
-                display: inline-block;
-                padding-left: 5px; }
-            .desktop-request .main .request-form .request-form-time ul li:nth-child(3) span input {
-              max-width: 30px; }
-            .desktop-request .main .request-form .request-form-time ul li:nth-child(3) span::after {
-              content: "min";
-              display: inline-block;
-              padding-left: 5px; }
-      .desktop-request .main .request-form .request-form-map,
-      .desktop-request .main .request-form .request-form-date {
-        width: 50%;
-        height: 150px; }
-        .desktop-request .main .request-form .request-form-map > div,
-        .desktop-request .main .request-form .request-form-date > div {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          background: white;
-          color: #757575;
-          border: 2px solid #757575;
-          border-radius: 3px;
-          width: 100%;
-          height: 100%;
-          font-size: 24px;
-          text-align: center; }
-          .desktop-request .main .request-form .request-form-map > div ul li h2,
-          .desktop-request .main .request-form .request-form-date > div ul li h2 {
-            font-size: 22px;
-            font-weight: 700;
-            line-height: 1.2; }
-          .desktop-request .main .request-form .request-form-map > div ul li > span,
-          .desktop-request .main .request-form .request-form-date > div ul li > span {
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 1.2; }
-      .desktop-request .main .request-form .request-form-date > div {
-        border-left-width: 10px; }
-      .desktop-request .main .request-form .request-form-desc > div {
-        background: white; }
-        .desktop-request .main .request-form .request-form-desc > div > div {
-          padding: 15px;
-          height: 112.5px; }
-      .desktop-request .main .request-form .request-form-upload > div {
-        background: #40484B; }
-        .desktop-request .main .request-form .request-form-upload > div > div {
-          height: 112.5px; }
-          .desktop-request .main .request-form .request-form-upload > div > div ul {
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            padding: 7.5px; }
-            .desktop-request .main .request-form .request-form-upload > div > div ul li {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -webkit-flex-direction: row;
-              flex-direction: row;
-              -webkit-align-items: center;
-              align-items: center;
-              -webkit-justify-content: center;
-              justify-content: center;
-              position: relative;
-              width: 25%;
-              height: 92.5px;
-              padding: 7.5px;
-              text-align: center; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li > svg {
-                fill: none;
-                stroke: white;
-                stroke-width: 3px;
-                stroke-linecap: round;
-                stroke-linejoin: round; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li div,
-              .desktop-request .main .request-form .request-form-upload > div > div ul li > svg {
-                width: 75px;
-                height: 75px; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li span {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                -moz-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                -o-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-                display: block;
-                color: white;
-                font-size: 24px;
-                font-weight: 700;
-                text-transform: uppercase; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li.upload-img div {
-                filter: alpha(opacity=40);
-                opacity: 0.4;
-                position: relative;
-                border-radius: 7px;
-                background-position: center;
-                background-size: cover; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li.upload-img::after {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                -moz-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                -o-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-                content: "";
-                display: block;
-                width: 75px;
-                height: 75px;
-                border: 3px solid white;
-                border-radius: 7px; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li.upload-pdf > svg {
-                fill: #e6389b; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li.upload-add > svg {
-                fill: #757575; }
-              .desktop-request .main .request-form .request-form-upload > div > div ul li.upload-add span {
-                height: 40px;
-                overflow: hidden; }
-                .desktop-request .main .request-form .request-form-upload > div > div ul li.upload-add span svg {
-                  fill: none;
-                  stroke: white;
-                  stroke-width: 9px;
-                  stroke-linecap: round;
-                  stroke-linejoin: round;
-                  width: 40px;
-                  height: 40px;
-                  overflow: hidden; }
-      .desktop-request .main .request-form .request-form-desc,
-      .desktop-request .main .request-form .request-form-upload {
-        width: 50%;
-        padding: 15px; }
-        .desktop-request .main .request-form .request-form-desc > div,
-        .desktop-request .main .request-form .request-form-upload > div {
-          width: 100%; }
-          .desktop-request .main .request-form .request-form-desc > div > div,
-          .desktop-request .main .request-form .request-form-upload > div > div {
-            color: #757575;
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 1.4; }
-          .desktop-request .main .request-form .request-form-desc > div button,
-          .desktop-request .main .request-form .request-form-upload > div button {
-            background: #757575;
-            font-weight: 600; }
-          .desktop-request .main .request-form .request-form-desc > div .input + button,
-          .desktop-request .main .request-form .request-form-upload > div .input + button {
-            height: 48px;
-            font-size: 20px; }
-      .desktop-request .main .request-form .request-form-submit {
-        width: 100%; }
-        .desktop-request .main .request-form .request-form-submit button {
-          display: block;
-          width: 100%;
-          font-weight: 600;
-          text-transform: uppercase; }
-    .desktop-request .main.bg-cerise header {
-      background: #e6389b; }
-    .desktop-request .main.bg-cerise .request-form .request-form-map > div,
-    .desktop-request .main.bg-cerise .request-form .request-form-date > div {
-      color: #e6389b;
-      border-color: #e6389b; }
-    .desktop-request .main.bg-cerise .request-form-payment a {
-      background: #e6389b; }
-    .desktop-request .main.bg-cerise .request-form-submit button {
-      background: #e6389b; }
 
 #desktop-request-student header,
 #desktop-request-guru header {

@@ -1,0 +1,53 @@
+<!--Gabrielle 0. "Fix" the header on scroll + right align all the buttons  -->
+<!-- Gabrielle 1. create 4 sections -->
+<!-- Gabrielle 2. Add downward arrow, ill take care of scrolling after-->
+<!-- Gabrielle 3. Add support icon bottom left-->
+<!-- Gabrielle 4. Make sure the index is working-->
+
+<style>
+#intercom-messenger {
+    display:none !important;
+}
+</style>
+<ion-view>
+    <main id='essay-student-home'class='hs-view full-xy'>
+        <header class='p20xy flex-center-wrap fixed full-x'>
+            <a class='txt-smoke weight-500' ng-click='scrollToPricing()'>Pricing</a>
+            <a class='txt-smoke weight-500'>How it works</a>
+            <a class='txt-smoke weight-500'>Timeline</a>
+            <a class='txt-shamrock bg-smoke weight-500' ng-click='goToUniversity()'>Get Started</a>
+        </header>
+        <section class='flex-center-wrap full-xy'>
+            <div class='full-x essay-home-content-header text-center'>
+                <h1 id='main-text' class='text-center weight-600'>Instant college app help from <br>
+                    <span class='weight-900'><u>{{university.name}}</u></span> student gurus
+                </h1>
+            </div>
+            <button ng-click='goToUniversity()'> Get Started </button>
+        </section>
+        <section class='flex-center-wrap full-xy absolute bg-charcoal' style='top:100%;'>
+            <div class='header'>
+                How it works
+            </div>
+            <div class='main flex-wrap-center'>
+                How it works
+            </div>
+        </section>
+        <section class='flex-center-wrap full-xy absolute bg-charcoal' style='top:100%;'>
+            <div class='header'>
+                Pricing
+            </div>
+            <div class='main flex-wrap-center'>
+                PRICING CONTENT
+            </div>
+        </section>
+        <section class='flex-center-wrap full-xy absolute bg-charcoal' style='top:100%;'>
+            <div class='header'>
+                Timeline
+            </div>
+            <div class='main flex-wrap-center'>
+                TIMELINE CONTENT
+            </div>
+        </section>
+    </main>
+</ion-view>

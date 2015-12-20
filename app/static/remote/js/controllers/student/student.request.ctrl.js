@@ -23,27 +23,17 @@ angular.module('uguru.student.controllers')
   '$ionicViewSwitcher',
   '$ionicSideMenuDelegate',
   'LoadingService',
+  'RequestService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
-  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User, $ionicViewSwitcher, $ionicSideMenuDelegate, LoadingService) {
+  $ionicHistory, CordovaPushWrapper, $ionicPlatform, User, $ionicViewSwitcher, $ionicSideMenuDelegate, LoadingService,
+  RequestService) {
     $scope.isRequestFormComplete = false;
-    //TODO: ADD ACTION BAR W / FILE SUPPORT
-    //TODO: IF NOT PUSH NOTIFICATIONS, SHOW IT HERE AS PART OF THE FORM
 
-    // $ionicModal.fromTemplateUrl(BASE + 'templates/add-note.modal.html', {
-    //   scope: $scope,
-    //   animation: 'slide-in-up'
-    // }).then(function(modal) {
-    //     $scope.addRequestNoteModal = modal;
-    // });
 
-    // $ionicModal.fromTemplateUrl(BASE + 'templates/student-request-map.modal.html', {
-    //   scope: $scope,
-    //   animation: 'slide-in-up'
-    // }).then(function(modal) {
-    //     $scope.requestMapModal = modal;
-    // });
+    $scope.request = RequestService.initSample();
+
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
       scope: $scope,

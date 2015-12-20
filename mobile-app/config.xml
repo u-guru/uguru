@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.beta.college.Uguru" version="1.2.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.beta.college.Uguru" version="1.4.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Uguru</name>
   <description>
         A peer-to-peer tutoring platform
@@ -7,7 +7,7 @@
   <author email="samir@uguru.me" href="http://uguru.me">
       Uguru team
     </author>
-  <content src="remote/local.index.html"/>
+  <content src="index.html"/>
   <access origin="*"/>
   <allow-navigation href="*"/>
   <preference name="orientation" value="portrait"/>

@@ -36,37 +36,16 @@ angular.module('uguru.util.controllers')
 			$scope.user.guru_courses = [];
 		}
 
-		// $timeout(function() {
-        //
-		// 	if (!$scope.courses || !$scope.courses.length) {
-		// 		LoadingService.showAmbig("Loading Courses...", 10000);
-		// 		loadingCourseCallback = function(scope, courses) {
-		// 			scope.courses = courses;
-		// 			$timeout(function() {
-		// 				LoadingService.hide();
-		// 			}, 250)
-		// 		}
-        //
-		// 		University.getPopularCourses($scope.user.university_id, $scope, loadingCourseCallback);
-		// 	}
-        //
-		// }, 50)
 
-		// $rootScope.$on('loadCourses', function() {
-		//   console.log("heard loadCourses!");
-		//   // $scope.courses = null;
-		//   $scope.source = University.source;
-		// });
+		if (!$scope.search_text) {
+			$scope.search_text = {
+				course: '',
+				matching: [],
+				input_focused: false
+			};
+		}
 
 
-		$scope.search_text = {
-			course: ''
-		};
-
-		// $scope.refresh = {
-		//   courses: '',
-		//   coursesLength: $scope.courses.length
-		// };
 
 		function updateDOM() {
 			if ($scope.courses.length > 0) {
@@ -80,8 +59,6 @@ angular.module('uguru.util.controllers')
 				}
 			}
 
-			// $scope.refresh.coursesLength = $scope.courses.length;
-			// University.refresh();
 		}
 
 
@@ -159,23 +136,22 @@ angular.module('uguru.util.controllers')
 		};
 
 		$scope.addSelectedStudentCourse = function(course, input_text, $index) {
-
-
-			$scope.search_text.course = '';
-			$scope.courses.splice($index, 1);
-			//set the course text to what it should be
-			// $scope.studentCourseInput.value = '';
-			// $scope.search_text.course = course.name
-
+			for (var i = 0; i < $scope.courses.length; i++) {
+				if ($scope.courses[i].id === course.id) {
+					$scope.courses.splice(i, 1);
+				}
+			}
+			if (course.short_name && !course.name) {
+				course.name = course.short_name;
+			}
 			$scope.user.student_courses.push(course);
-
+			$scope.search_text.course = '';
 			$localstorage.setObject('user', $scope.user);
-
-			$scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
-
-			$scope.root.vars.remote_cache.push({
-				'add_student_course': course
-			});
+			//only if user has signed in
+			if ($scope.user.id) {
+				//adds to database for user
+				$scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
+			} //
 
 		};
 
@@ -213,12 +189,12 @@ angular.module('uguru.util.controllers')
 		};
 
 
-
-		// $scope.searchInputBlur = function() {
-		// 	$timeout(function() {
-		// 		$scope.searchInputFocus = false;
-		// 	}, 250)
-		// }
+		$scope.blurSearchInput = function() {
+			console.log($scope.search_text)
+			$timeout(function() {
+    			$scope.search_text.input_focused = false;
+			}, 250)
+		}
 
 		$scope.limit = 10;
 		$scope.increaseLimit = function() {

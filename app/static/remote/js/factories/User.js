@@ -17,7 +17,7 @@ angular.module('uguru.user', [])
 
     var calcAverage = function(ratings_arr, is_guru) {
                 if (!ratings_arr) {
-                    return;
+                    return 0;
                 }
 
                 if (ratings_arr.length === 0)  {
@@ -31,10 +31,10 @@ angular.module('uguru.user', [])
                         result += ratings_arr[i].student_rating;
                     }
                 }
-                result = (result / ratings_arr.length)
+                result = (result / ratings_arr.length) || 0
                 result = {
-                    'float':result,
-                    'int': parseInt(result),
+                    'float':result || 0,
+                    'int': parseInt(result || 0),
                     'half': Math.abs(parseInt(result) - result) === 0.5
                 }
                 return result;
@@ -68,7 +68,9 @@ angular.module('uguru.user', [])
         for (var i = 0; i < guru_shops.length; i++) {
             var indexShop = guru_shops[i];
             if (indexShop.category.name === 'Academic') {
+
                 academic_shop = indexShop;
+
                 for (var j = 0; j < academic_shop.portfolio_items.length; j ++) {
                     indexPortfolioItem = academic_shop.portfolio_items[j];
                     academic_shop.portfolio_items[j].avg_rating = parseFloat(academic_shop.portfolio_items[j].avg_rating).toFixed(1);
@@ -105,16 +107,16 @@ angular.module('uguru.user', [])
             var resultDict = {};
             for (var i = 0; i < external_profiles.length; i++) {
                 var indexProfile = external_profiles[i];
-                if (indexProfile.site_url.indexOf('facebook') > -1) {
+                if (indexProfile.site_url && indexProfile.title.toLowerCase().indexOf('facebook') > -1) {
                     resultDict.facebook = indexProfile.site_url.replace('facebook.com/', '');
                 }
-                if (indexProfile.site_url.indexOf('twitter') > -1) {
+                if (indexProfile.site_url && indexProfile.title.toLowerCase().toLowerCase().indexOf('twitter') > -1) {
+                    resultDict.twitter = indexProfile.site_url;
+                }
+                if (indexProfile.site_url && indexProfile.title.toLowerCase().toLowerCase().indexOf('instagram') > -1) {
                     resultDict.instagram = indexProfile.site_url;
                 }
-                if (indexProfile.site_url.indexOf('instagram') > -1) {
-                    resultDict.instagram = indexProfile.site_url;
-                }
-                if (indexProfile.site_url.indexOf('linkedin') > -1) {
+                if (indexProfile.site_url && indexProfile.title.toLowerCase().indexOf('linkedin') > -1) {
                     resultDict.linkedin = indexProfile.site_url;
                 }
             }
@@ -477,7 +479,7 @@ angular.module('uguru.user', [])
 
             var guru_ratings = user.guru_ratings;
             user.guru_rating = calcAverage(guru_ratings, true);
-            user.guru_avg_rating = user.guru_rating.float;
+            user.guru_avg_rating = user.guru_rating.float || 0;
 
             if (!user.guru_avg_rating) {
                 user.guru_avg_rating = 0;
@@ -616,6 +618,8 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
 
         $scope.user.majors = user.departments;
+        $scope.user.major = user.major;
+        $scope.user.year = user.year;
 
         $scope.user.guru_categories = user.guru_categories;
         $scope.user.guru_subcategories = user.guru_subcategories;
@@ -691,6 +695,9 @@ angular.module('uguru.user', [])
         $scope.user.guru_shops = user.guru_shops;
         if (user.guru_shops && user.guru_shops.length) {
             $scope.user.academic_shop = getAndProcessAcademicShop(user.guru_shops);
+            if (!$scope.user.academic_shop.title) {
+                $scope.user.academic_shop.title = user.first_name + "’s Academic Shop"
+            }
             console.log('printing out user w/ academic shop', $scope.user);
         }
 
@@ -736,7 +743,11 @@ angular.module('uguru.user', [])
         $scope.user.official_guru_score = user.official_guru_score;
         $scope.user.estimated_guru_rank_last_updated = user.estimated_guru_rank_last_updated;
         $scope.user.official_guru_rank_last_updated = user.official_guru_rank_last_updated;
-        $scope.user.guru_avg_rating = Math.round(user.guru_avg_rating.float * 10) / 10;
+        if (user.guru_avg_rating) {
+            $scope.user.guru_avg_rating = Math.round(user.guru_avg_rating.float * 10) / 10;
+        } else {
+            $scope.user.guru_avg_rating = 0;
+        }
         $scope.user.guru_rating = user.guru_rating
         $scope.user.student_avg_rating = user.student_avg_rating;
         $scope.user.student_ratings = user.student_ratings;
@@ -916,6 +927,17 @@ angular.module('uguru.user', [])
                   }
               }
 
+              if (arg === 'update_guru_demographic') {
+                return {
+                    'update_guru_demographic': obj
+                }
+              }
+              if (arg === 'update_guru_major') {
+                return {
+                    'update_guru_major': obj
+                }
+              }
+
               if (arg === 'remove_guru_portfolio_item') {
                   return {
                         portfolio_item: obj,
@@ -976,6 +998,19 @@ angular.module('uguru.user', [])
                         'remove_guru_subcategory': true
                   }
               }
+
+              if (arg === 'update_guru_shop_description') {
+                return {
+                    'update_guru_shop_description': obj
+                    }
+              }
+
+              if (arg === 'update_guru_shop_title') {
+                return {
+                    'update_guru_shop_title': obj
+                }
+              }
+
               if (arg === 'impact_event') {
                 return {
                     event_id: obj,
@@ -1210,7 +1245,7 @@ angular.module('uguru.user', [])
               if (arg === 'update_external_profile_resource') {
                 return {
                     'update_external_profile_resource': true,
-                    'domain': obj
+                    'payload': obj
                 }
               }
 

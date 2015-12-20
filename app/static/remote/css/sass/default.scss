@@ -2554,18 +2554,14 @@ input[type=range] {
 	}
 }
 .loader {
-	fill: none;
-	stroke: white;
-	stroke-width: 8;
-	stroke-linecap: round;
-	stroke-linejoin: round;
+	@include svg-stroke(white, 8);
 	div {
 		font-weight: 600;
 		text-transform: uppercase;
 	}
 }
 
-#checkmark line {
+#checkmark line, .checkmark line {
 	@include animation-duration(.75s);
 	@include animation-iteration-count(1);
 	&:first-child {
@@ -2578,6 +2574,13 @@ input[type=range] {
 		stroke-dasharray: 49.91, 49.91;
 		stroke-dashoffset: 0;
 	}
+}
+
+.checkmark {
+	@include opacity(0);
+	@include animation-duration(3s);
+	@include animation-iteration-count(1);
+	@include animation-name(checkmark-opacity);
 }
 
 @include keyframes(checkmark-one) {
@@ -2602,6 +2605,21 @@ input[type=range] {
 	}
 	95% { stroke-dashoffset: 0; }
 	100% { stroke-dashoffset: 0; }
+}
+
+@include keyframes(checkmark-opacity) {
+	0% {
+		@include opacity(0);
+	}
+	1% {
+		@include opacity(1);
+	}
+	98% {
+		@include opacity(1);
+	}
+	100% {
+		@include opacity(0);
+	}
 }
 
 #tour-guru {
@@ -2706,11 +2724,22 @@ input[type=range] {
 			width: 48px;
 			height: 48px;
 			svg {
+				@include transition(.15s ease-in-out);
 				@include svg-stroke(white, 8);
 				background: $shamrock;
 				padding: 12px 10px 8px;
 				width: 48px;
 				height: 48px;
+			}
+			&:hover, &:focus {
+				svg {
+					background: lighten($shamrock, 10%);
+				}
+			}
+			&:active {
+				svg {
+					background: darken($shamrock, 10%);
+				}
 			}
 		}
 	}
@@ -2720,17 +2749,19 @@ input[type=range] {
 		width: 200px;
 		height: 0;
 		overflow: hidden;
+		text-align: center;
 		&.active {
 			@include opacity(1);
+			z-index: 99;
 			height: auto;
 		}
 		li {
+			@include transition(.15s ease-in-out);
 			width: 152px;
 			background: rgba(lighten($slate, 5%), .9);
 			padding: 15px 0 !important;
 			font-weight: 400;
-			&:hover,
-			&:focus {
+			&:hover, &:focus {
 				background: rgba(darken($shamrock, 10%),.9);
 			}
 			&:active {
@@ -2751,6 +2782,45 @@ input[type=range] {
 	div.with-button {
 		border-bottom-left-radius: 0!important;
 		border-bottom-right-radius: 0!important;
+	}
+}
+.button-group {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	padding: 7.5px;
+	button {
+		height: auto;
+		padding: 10px 15px;
+		margin: 7.5px;
+		border-radius: 2px!important;
+		width: 100px;
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 1;
+		background: $shamrock;
+		&:hover, &:focus {
+			background: lighten($shamrock, 10%);
+		}
+		&:active, &.activated {
+			background: lighten($slate, 20%);
+		}
+		&.button-group-cancel {
+			background: lighten($slate, 30%)!important;
+			&:hover, &:focus {
+				background: lighten($slate, 40%)!important;
+			}
+			&:active, &.activated {
+				background: lighten($slate, 20%)!important;
+			}
+		}
+	}
+	div {
+		width: 100%;
+		text-align: center;
+		button {
+			width: 150px;
+		}
 	}
 }
 .guru-popup {
@@ -3382,11 +3452,241 @@ input[type=range] {
 	}
 }
 
-/* ---------- PROFILE CARDS */
-.pf-card-container {
+/* ---------- CARDS */
+.pf-card-container, .school-card-container, .paper-container {
 	@include flex;
+	@include flex-wrap;
 	@include flex-center;
 	padding: 15px;
+}
+.paper-container {
+	main {
+		display: none;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		padding: 15px 0;
+		background: #F4C2A7;
+		.paper {
+			position: relative;
+			max-width: 800px;
+			margin: 0 auto;
+			svg {
+				rect {
+					fill: white;
+					width: 100%;
+					height: 100%;
+				}
+				path {
+					stroke-width: 2px;
+					&:not(:last-child) {
+						@include opacity(.3);
+						stroke: $lake;
+					}
+					&:last-child {
+						stroke: $auburn;
+					}
+				}
+			}
+			h1 {
+				position: absolute;
+				top: 7.7%;
+				left: 15.5%;
+				width: 84.5%;
+				padding: 0 15px;
+				color: $slate;
+				font-size: 20px;
+				font-weight: 600;
+				line-height: 2.14;
+			}
+			div {
+				position: absolute;
+				top: 11.7%;
+				left: 15.5%;
+				width: 84.5%;
+				padding: 0 15px;
+				color: $slate;
+				font-size: 18px;
+				font-weight: 400;
+				line-height: 2.14;
+			}
+			&.bottom-align {
+				h1, div {
+					padding-top: 1%;
+				}
+			}
+		}
+	}
+	section {
+		width: 100%;
+	}
+	@media screen and (min-width: 768px) {
+		padding: 0;
+		main {
+			display: block;
+		}
+		main + section {
+			display: none;
+		}
+	}
+}
+.notecard {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		rect {
+			width: 100%;
+			&:first-child {
+				fill: $smoke;
+				height: 100%;
+			}
+			&:not(:first-child) {
+				@include opacity(.3);
+				fill: $lake;
+				height: 2px;
+			}
+			&:last-child {
+				fill: $auburn;
+			}
+		}
+	}
+	h1 {
+		position: absolute;
+		top: 12%;
+		left: 0;
+		padding: 0 15px;
+		color: $charcoal;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 165%;
+	}
+	div {
+		position: absolute;
+		top: 29%;
+		left: 0;
+		padding: 0 15px;
+		color: $charcoal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 165%;
+	}
+	@media screen and (min-width: 375px) {
+		h1 {
+			font-size: 20px;
+			line-height: 150%;
+		}
+		div {
+			font-size: 18px;
+			line-height: 150%;
+		}
+	}
+	@media screen and (min-width: 414px) {
+		h1, div {
+			line-height: 170%;
+		}
+	}
+	@media screen and (min-width: 430px) {
+		h1, div {
+			line-height: 180%;
+		}
+	}
+}
+.school-card {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	border-radius: 10px;
+	overflow: hidden;
+	.rect {
+		display: block;
+		width: 100%;
+		fill: none;
+	}
+	.school-card-inside {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		.school-card-top {
+			position: relative;
+			z-index: 3;
+			height: 30%;
+			background-color: $slate;
+			border-radius: 10px 10px 0 0;
+			.school-card-icon {
+				@include center-x;
+				@include round;
+				display: block;
+				top: 16px;
+				width: 96px;
+				height: 96px;
+				background-position: center;
+				background-size: cover;
+				background-color: white;
+				border: 3px solid $slate;
+			}
+		}
+		.school-card-main {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			position: relative;
+			height: 70%;
+			background: white;
+			border-radius: 0 0 10px 10px;
+			overflow: hidden;
+			color: $slate;
+			.school-card-map {
+				@include opacity(.2);
+				@include center-x;
+				bottom: 0;
+				z-index: 1;
+				width: 100%;
+				height: 171%;
+				border-radius: 0 0 10px 10px;
+				overflow: hidden;
+				img {
+					display: block;
+					width: 100%;
+				}
+			}
+			.school-card-color {
+				@include opacity(.1);
+				position: absolute;
+				z-index: 2;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 0 0 10px 10px;
+				overflow: hidden;
+			}
+			.school-card-info {
+				position: relative;
+				z-index: 4;
+				padding-top: 40px;
+			}
+			h1, h2 {
+				text-align: center;
+				margin: 0!important;
+			}
+			h1 {
+				font-size: 28px;
+				font-weight: 900;
+			}
+			h2 {
+				font-size: 18px;
+				font-weight: 600;
+			}
+		}
+	}
 }
 .pf-card-mini {
 	@include flex;
@@ -3455,6 +3755,8 @@ input[type=range] {
 }
 .pf-card {
 	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
 	border-radius: 2px;
 	overflow: hidden;
 	background: white;
@@ -3848,5 +4150,638 @@ input[type=range] {
 				}
 			}
 		}
+	}
+}
+
+// TAB BAR
+.pf-tabs, .tab-bar {
+	background: $charcoal;
+	ul {
+		@include flex;
+		padding: 0 7.5px;
+		li {
+			width: 100%;
+			text-align: center;
+			padding: 0 7.5px;
+			a {
+				@include flex;
+				@include flex-center;
+				border-top: 5px solid transparent;
+				border-bottom: 5px solid transparent;
+				height: 60px;
+				font-size: 18px;
+				font-weight: 600;
+				text-transform: uppercase;
+				&.active {
+					border-bottom: 5px solid $shamrock;
+				}
+				&:hover, &:focus {
+					border-bottom-color: rgba(white, .2);
+				}
+				&:visited {
+					background: none!important;
+				}
+			}
+		}
+	}
+}
+
+// RATING
+.rating-stars, .pf-rating {
+	@include flex;
+	@include flex-center;
+	width: 100%;
+	max-width: 100px;
+	margin: 0 auto;
+	li {
+		width: 20%;
+		svg {
+			@include svg-stroke($gold, 7);
+			polygon:nth-child(2) {
+				@include opacity(0);
+				stroke-width: 0;
+				fill: $gold;
+			}
+		}
+	}
+	&[data-rating*="1"] {
+		li:nth-child(1) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"], &[data-rating*="."] {
+			li:nth-child(2) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating*="2"] {
+		li:nth-child(1), li:nth-child(2) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"], &[data-rating*="."] {
+			li:nth-child(3) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating*="3"] {
+		li:nth-child(1), li:nth-child(2), li:nth-child(3) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"], &[data-rating*="."] {
+			li:nth-child(4) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating*="4"] {
+		li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"], &[data-rating*="."] {
+			li:nth-child(5) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating*="5"] {
+		li {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+	}
+}
+
+// TAG LIST
+.tag-list, .pf-tags {
+	@include flex;
+	@include flex-wrap;
+	width: 100%;
+	text-align: center;
+	.chip {
+		@include transition(.15s ease-in-out);
+		@include flex;
+		@include flex-center-vertical;
+		background: lighten($slate, 10%);
+		margin-right: 15px;
+		border: 0;
+		color: white!important;
+		&:hover {
+			background: lighten($slate, 15%);
+		}
+		svg {
+			@include svg-stroke(white, 10);
+			width: 12px;
+			height: 12px;
+			margin-right: 3px;
+		}
+		input {
+			background: transparent;
+			border: 0;
+			color: white!important;
+			@include placeholder {
+				color: white!important;
+			}
+		}
+	}
+}
+
+// ATTACHMENT LIST
+.attachment-list, .pf-photo-list {
+	width: 100%;
+	min-height: 100px;
+	overflow: auto;
+	text-align: center!important;
+	ul {
+		@include flex;
+		height: 100%;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			height: 100%;
+			&:last-child {
+				padding-right: 15px;
+			}
+			div {
+				position: relative;
+				width: 150px;
+				height: 100%;
+				background: $slate;
+				border: 2px solid white;
+				border-radius: 10px;
+			}
+			.attach-upload-img, .pf-upload-img {
+				background-position: center center;
+				background-size: cover;
+			}
+			.attach-upload-img, .attach-upload-file, .pf-upload-img, .pf-upload-file {
+				a {
+					svg {
+						@include rotate(45);
+						@include svg-stroke(white, 8);
+						position: absolute;
+						top: 5px;
+						left: 5px;
+						width: 25px;
+						height: 25px;
+					}
+				}
+			}
+			.attach-upload-file, .pf-upload-file {
+				border: 0;
+				width: auto;
+				background: none!important;
+				svg.doc-outline {
+					@include svg-stroke(white, 1.5);
+					display: block;
+					height: 100%;
+					fill: $shamrock;
+				}
+				&.attach-upload-pdf, &.pf-upload-pdf {
+					svg.doc-outline {
+						height: 100%;
+						fill: $auburn;
+					}
+				}
+				&.attach-upload-doc, &.pf-upload-doc {
+					svg.doc-outline {
+						height: 100%;
+						fill: $lake;
+					}
+				}
+				&.attach-upload-xls, &.pf-upload-sheet {
+					svg.doc-outline {
+						height: 100%;
+						fill: $moola;
+					}
+				}
+				.doc-info {
+					@include center-xy;
+					width: 100%;
+					padding: 30px 15px 15px;
+					span {
+						display: block;
+						font-weight: 600;
+					}
+					.doc-name {
+						font-size: 20px;
+					}
+					.doc-type {
+						font-size: 16px;
+					}
+				}
+			}
+			.attach-upload-add, .pf-upload-add {
+				position: relative;
+				border-style: dashed;
+				border: 0;
+				background: none;
+				width: auto;
+				.square {
+					height: 100%;
+					fill: none;
+				}
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 10px;
+					border: 2px dashed $shamrock;
+					span {
+						svg {
+							@include svg-stroke($shamrock, 6);
+							width: 100%;
+							height: 30px;
+						}
+						span {
+							display: block;
+							font-size: 18px;
+							font-weight: 600;
+							color: $shamrock;
+						}
+					}
+					&:hover, &:focus {
+						background: white;
+					}
+					&:active, &.active {
+						background: lighten($shamrock, 30%);
+					}
+				}
+			}
+		}
+	}
+}
+
+// CHECKBOXES
+.checkbox-container {
+	@include flex;
+	@include flex-center;
+	div {
+		position: relative;
+		input {
+			@include opacity(0);
+			position: absolute;
+			z-index: 12;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		span {
+			display: block;
+			width: 32px;
+			height: 32px;
+			border-radius: 3px;
+			background: $slate;
+			svg {
+				@include svg-stroke(lighten($slate, 20%), 10);
+				padding: 4px;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		input:checked + span {
+			background: $shamrock;
+			svg {
+				stroke: white;
+			}
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+// CALENDAR
+.cal-week {
+	> div {
+		@include flex;
+		@include flex-wrap;
+		width: 100%;
+		.cal-month {
+			width: 100%;
+			background: darken($campus, 25%);
+			padding: 15px;
+			font-size: 28px;
+			font-weight: 700;
+			text-align: center;
+			text-transform: uppercase;
+			margin: 0 2px 2px;
+		}
+		.cal-month.has-link {
+			padding: 0;
+			a {
+				display: block;
+				padding: 15px;
+				background: darken($campus, 25%);
+				color: white!important;
+				&:hover, &:focus {
+					background: darken($campus, 15%);
+				}
+				&:active, &.active {
+					background: darken($campus, 20%);
+				}
+			}
+		}
+		.cal-time {
+			width: 80px;
+			padding-top: 30px;
+			li {
+				position: relative;
+				height: 50px;
+				span {
+					display: block;
+					position: absolute;
+					top: -9px;
+					right: 15px;
+					font-size: 18px;
+					font-weight: 600;
+					line-height: 1;
+					text-align: right;
+				}
+			}
+		}
+		.cal-main {
+			width: calc(100% - 80px);
+			overflow-x: auto;
+			.cal-date {
+				@include flex;
+				width: 100%;
+				min-width: 770px;
+				height: 30px;
+				padding: 0 1px;
+				li {
+					width: calc(100% / 7);
+					min-width: 110px;
+					font-size: 18px;
+					font-weight: 600;
+					text-align: center;
+					padding: 0 1px;
+					> span {
+						@include flex;
+						@include flex-center;
+						border-radius: 2px;
+						height: 30px;
+						width: 100%;
+						background: $campus;
+					}
+				}
+			}
+			.cal-events {
+				@include flex;
+				min-width: 770px;
+				padding: 1px;
+				.cal-day {
+					width: calc(100% / 7);
+					li {
+						position: relative;
+						width: 100%;
+						min-width: 110px;
+						height: 50px;
+						padding: 1px;
+						> span {
+							display: block;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							background: rgba($smoke, .4);
+						}
+						&.has-event {
+							> span {
+								background: white;
+								border: 1px solid $campus;
+								border-left-width: 5px;
+								padding: 5px;
+								font-size: 16px;
+								font-weight: 600;
+								color: $campus;
+								span {
+									display: block;
+									line-height: 1.1;
+								}
+							}
+						}
+						&.hours-2 {
+							height: 100px;
+						}
+						&.hours-3 {
+							height: 150px;
+						}
+						&.hours-4 {
+							height: 200px;
+						}
+						&.hours-5 {
+							height: 250px;
+						}
+						&.hours-6 {
+							height: 300px;
+						}
+						&.event-academic {
+							> span {
+								border-color: $cerise;
+								color: $cerise;
+							}
+						}
+						&.event-baking {
+							> span {
+								border-color: $gold;
+								color: $gold;
+							}
+						}
+						&.event-photography {
+							> span {
+								border-color: $moola;
+								color: $moola;
+							}
+						}
+						&.event-household {
+							> span {
+								border-color: $cobalt;
+								color: $cobalt;
+							}
+						}
+						&.event-delivery {
+							> span {
+								border-color: $auburn;
+								color: $auburn;
+							}
+						}
+						&.event-freelancing {
+							> span {
+								border-color: $orange;
+								color: $orange;
+							}
+						}
+						&.event-athletic {
+							> span {
+								border-color: $eggplant;
+								color: $eggplant;
+							}
+						}
+						&.event-tech {
+							> span {
+								border-color: $azure;
+								color: $azure;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// COURSE LIST
+.course-list, .course-none {
+	@include transition(.3s ease-in-out);
+	position: absolute;
+	width: 100%;
+	background: rgba(lighten($charcoal, 2%),.95);
+	&.hide {
+		@include flex-important;
+		// @include opacity(0);
+		@include translate-y(-10%);
+		z-index: -10;
+	}
+	&.show {
+		@include flex-important;
+		@include opacity(1);
+		@include translate-y(0);
+		@include animation-name(courses-pop);
+		@include animation-duration(.4s);
+		@include animation-iteration-count(1);
+		z-index: 10;
+	}
+}
+.course-none {
+	@include flex;
+	@include flex-center;
+	z-index: 90;
+	padding: 15px;
+	font-weight: 600;
+}
+.course-list, .course-list ul {
+	@include flex;
+	@include flex-wrap;
+	z-index: 100;
+	font-weight: 600;
+}
+.course-list {
+	padding: 7.5px;
+	li {
+		width: 100%;
+		overflow: hidden;
+		padding: 7.5px;
+		a {
+			@include flex;
+			@include flex-center-vertical;
+			display: block;
+			padding: 10px 15px;
+			background: lighten($slate, 20%);
+			&:hover, &:focus {
+				background: $shamrock;
+			}
+			&:active {
+				background: lighten($slate, 10%);
+			}
+			span {
+				display: block;
+				line-height: 1.2;
+			}
+			.course-name {
+				font-size: 16px;
+				text-transform: uppercase;
+			}
+			.course-title {
+				max-height: 48px;
+				overflow: hidden;
+				font-size: 20px;
+				font-weight: 700;
+			}
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.course-list {
+		li {
+			width: calc(100% / 3);
+			height: 102px;
+			a {
+				height: 87px;
+			}
+		}
+	}
+}
+
+@include keyframes(courses-pop) {
+	0% {
+		@include opacity(0);
+		@include translate-y(-8%);
+	}
+	80% {
+		@include opacity(1);
+		@include translate-y(2%);
+	}
+	100% {
+		@include opacity(1);
+		@include translate-y(0);
+	}
+}
+
+@include keyframes(url-pop) {
+	0% {
+		@include opacity(0);
+		@include translate-y(50%);
+	}
+	90% {
+		@include opacity(1);
+		@include translate-y(-5%);
+	}
+	100% {
+		@include opacity(1);
+		@include translate-y(0);
 	}
 }
