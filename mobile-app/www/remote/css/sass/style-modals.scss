@@ -937,23 +937,25 @@
 				padding: 15px 15px 0;
 				&:nth-child(1) {
 					.select-subcategory {
-						background: url("../../img/subcategories/session.png") center center / cover, url("/static/remote/img/subcategories/session.png") center center / cover;
+						background: url("../../img/subcategories/session.png") no-repeat center center / cover,
+						url("/static/remote/img/subcategories/session.png") no-repeat center center / cover;
 					}
 				}
 				&:nth-child(2) {
 					.select-subcategory {
-						background: url("../../img/subcategories/question.png") center center / cover, url("/static/remote/img/subcategories/question.png") center center / cover;
+						background: url("../../img/subcategories/question.png") no-repeat center center / cover, url("/static/remote/img/subcategories/question.png") no-repeat center center / cover;
 					}
 				}
 				&:nth-child(3) {
 					.select-subcategory {
-						background: url("../../img/subcategories/homework.png") center center / cover, url("/static/remote/img/subcategories/homework.png") center center / cover;
+						background: url("../../img/subcategories/homework.png") no-repeat center center / cover, url("/static/remote/img/subcategories/homework.png") no-repeat center center / cover;
 					}
 				}
 				&:nth-child(4) {
 					padding-bottom: 15px;
 					.select-subcategory {
-						background: url("../../img/subcategories/study.png") center center / cover, url("/static/remote/img/subcategories/study.png") center center / cover;
+						background: url("../../img/subcategories/study.png") no-repeat center center / cover,
+									url("/static/remote/img/subcategories/study.png") no-repeat center center / cover;
 					}
 				}
 				.select-subcategory {
@@ -1115,7 +1117,8 @@
 					left: 0;
 					width: 200%;
 					height: 200%;
-					background: url("../../img/map-small.png") center center / cover, url("/static/remote/img/map-small.png") center center / cover;
+					background: url("../../img/map-small.png") no-repeat center center / cover,
+								url("/static/remote/img/map-small.png") no-repeat center center / cover;
 				}
 				> span {
 					display: block;
@@ -1430,7 +1433,8 @@
 					}
 				}
 				&:before {
-					background: url("../../img/svg/search-dark.svg") no-repeat center center/cover, url("/static/remote/img/svg/search-dark.svg") center/cover no-repeat;
+					background: url("../../img/svg/search-dark.svg") no-repeat center center / cover,
+					url("/static/remote/img/svg/search-dark.svg") no-repeat center center / cover;
 				}
 			}
 		}

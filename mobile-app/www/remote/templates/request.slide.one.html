@@ -10,27 +10,29 @@
 						<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 					</svg>
 				</i>
-				<input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-disabled="!courses || !courses.length" ng-model="search_text.course">
+				<input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-disabled="!courses || !courses.length" ng-model="search_text.course"/>
 				<label for="request-search-input">
 					<span ng-show='courses.length'>search {{courses.length}} popular {{university.school_casual_name}} courses</span>
 					<span ng-hide='courses.length'>search popular {{university.school_casual_name}} courses</span>
 				</label>
 				<a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
-					<i class="icon ion-close-circled text-white"></i>
+					<i class="icon ion-close-circled txt-white"></i>
 				</a>
 			</div>
 		</form>
-		<div class='pf-course-none hide ng-class:{"show": search_text.course.length && !courses.length}'>
+		<div class='course-none hide ng-class:{"show": search_text.course.length && !courses.length}'>
 			No results, try again?
 		</div>
-		<ul class='pf-course-list hide ng-class:{"show": search_text.course.length}'>
-			<li class="hide ng-class:{'show':course.short_name}" ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 9 track by course.id' ng-click='setCourseAndClearInput(course)'>
-				<div>
-					<span class="course-name">{{course.short_name}}</span>
-					<span class="course-title">{{course.full_name || course.title}}</span>
-				</div>
-			</li>
-		</ul>
+		<div class="course-list hide ng-class:{'show': search_text.course.length}">
+			<ul>
+				<li class="hide ng-class:{'show':course.short_name}" ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 9 track by course.id' ng-click='setCourseAndClearInput(course)'>
+					<a>
+						<span class="course-name">{{course.short_name}}</span>
+						<span class="course-title">{{course.full_name || course.title}}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 
 	<div class="request-content">
