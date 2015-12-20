@@ -11,25 +11,38 @@
       font-size: 48px !important;
       margin-top: -7.5% !important; }
 
-#essay-student-home div.essay-home-content-header {
-  padding: 40px 20px;
-  align-self: flex-end;
-  -webkit-align-self: flex-end; }
-  #essay-student-home div.essay-home-content-header h1#main-text {
-    font-size: 60px !important;
-    line-height: 90px !important; }
-    #essay-student-home div.essay-home-content-header h1#main-text span {
-      display: inline-block !important; }
-#essay-student-home button {
-  background-color: #69B3A5;
-  color: white;
-  width: 15%;
-  min-width: 100px;
-  font-weight: 700;
-  text-transform: capitalize;
-  align-self: flex-start; }
-#essay-student-home button:hover, #essay-student-home button.activated, #essay-student-home button.active {
-  background-color: rgba(105, 179, 165, 0.8);
-  opacity: 1; }
+ion-view {
+  overflow: auto !important;
+  height: calc(200%); }
+  ion-view #essay-student-home {
+    overflow: auto;
+    min-height: 100%; }
+    ion-view #essay-student-home .loading-container {
+      display: none !important; }
+    ion-view #essay-student-home div.essay-home-content-header {
+      padding: 40px 20px;
+      align-self: flex-end;
+      -webkit-align-self: flex-end; }
+      ion-view #essay-student-home div.essay-home-content-header h1#main-text {
+        font-size: 60px !important;
+        line-height: 90px !important; }
+        ion-view #essay-student-home div.essay-home-content-header h1#main-text span {
+          display: inline-block !important; }
+    ion-view #essay-student-home button {
+      background-color: #69B3A5;
+      color: white;
+      width: 15%;
+      min-width: 100px;
+      font-weight: 700;
+      text-transform: capitalize;
+      align-self: flex-start; }
+    ion-view #essay-student-home section button:hover, ion-view #essay-student-home section button.activated, ion-view #essay-student-home section button.active {
+      background-color: rgba(105, 179, 165, 0.8);
+      opacity: 1; }
+    ion-view #essay-student-home header {
+      text-align: right;
+      background-color: rgba(43, 50, 52, 0.5); }
+      ion-view #essay-student-home header a {
+        padding: 20px; }
 
 /*# sourceMappingURL=essay.css.map */

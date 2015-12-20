@@ -212,7 +212,7 @@ angular.module('uguru.student.controllers', [])
 
         $scope.$on('$ionicView.enter', function() {
             $ionicSlideBoxDelegate.update();
-
+            // $scope.studentRequestModal.show();
         });
     }
 

@@ -31,7 +31,10 @@ angular.module('uguru.util.controllers')
       matching: [],
       input_focused: false
     };
-    $scope.page = {dropdowns: {}}
+
+    $scope.predictionMarkers = [];
+
+    $scope.page = {dropdowns: {}, predictionMarkers:[]}
     $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
 
     var initMapFromUniversity = function(university) {
@@ -39,7 +42,7 @@ angular.module('uguru.util.controllers')
       var longitude = parseFloat(university.longitude);
       return  {
                     center:  {latitude: latitude, longitude:longitude },
-                    zoom: 14,
+                    zoom: 10,
                     control: {}
               };
     }
@@ -52,7 +55,7 @@ angular.module('uguru.util.controllers')
         query = $scope.page.dropdowns.location_search.input;
         console.log('querying', $scope.page.dropdowns.location_search.input)
         if (query && query.length) {
-          SearchboxService.queryAutocompleteService($scope.page.dropdowns.location_search.input, $scope);
+          SearchboxService.queryAutocompleteService($scope.page.dropdowns.location_search.input, $scope, $scope.map.control.getGMap());
         } else {
           $scope.page.dropdowns.location_search.predictions = [];
         }
@@ -131,12 +134,12 @@ angular.module('uguru.util.controllers')
       $scope.toggleMinDropdown = !$scope.toggleMinDropdown;
     }
 
+    $scope.map = initMapFromUniversity($scope.user.university)
     uiGmapGoogleMapApi.then(function(maps) {
       maps.visualRefresh = true;
 
       // $scope.$on('$ionicView.loaded', function() {
 
-        $scope.map = initMapFromUniversity($scope.user.university)
         $scope.searchbox = initSearchboxGMap();
 
         SearchboxService.initAutocomplete({lat:$scope.user.university.latitude, lng:$scope.user.university.longitude})
