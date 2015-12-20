@@ -405,9 +405,9 @@
 			<ul class="relative pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
 				<!-- Description should be first child -->
 				<li class="pf-checklist-desc">
-					<h1 class="ng-class:{'hide': profile.edit_mode}">{{user.academic_shop.title || user.first_name + "’s Academic Shop"}}</h1>
+					<!-- <h1 class="ng-class:{'hide': profile.edit_mode}">{{user.academic_shop.title || user.first_name + "’s Academic Shop"}}</h1> -->
 					<div class="relative">
-						<input class="ng-class:{'hide': !profile.edit_mode}" value='{{user.academic_shop.title || user.first_name + "’s Academic Shop"}}'/>
+						<input ng-model='user.academic_shop.title' ng-blur='saveGuruShopTitle()'/>
 						<!-- @samir -->
 						<!-- BIND -->
 						<!-- add .checkmark to activate animation, parent must have .relative -->
@@ -417,15 +417,15 @@
 						</svg>
 					</div>
 
-					<p ng-if=' !user.academic_shop && user.active_shop && user.active_shop.description' class="pf-header-desc ng-class:{'hide': profile.edit_mode}">{{user.active_shop.description}}</p>
+					<!-- <p class="pf-header-desc">{{user.active_shop.description}}</p> -->
 					<!-- @Gabrielle did you mean to put two here? -->
-					<!-- <div class='pf-textarea-container relative'>
-						<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" rows="2" maxlength="100" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."></textarea>
-						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{100 - user.guru_introduction.length}}</span>
-					</div> -->
-					<div class='pf-textarea-container relative'>
-						<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" rows="3" maxlength="100" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."></textarea>
-						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{100 - user.guru_introduction.length}}</span>
+					<div class='pf-textarea-container relative' ng-if='desktopMode'>
+						<textarea ng-model='user.academic_shop.description' ng-blur='saveGuruShopDescription()' class="pf-header-desc" rows="2" maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
+						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{100 - user.guru_introduction.length}}</span>
+					</div>
+					<div class='pf-textarea-container relative' ng-if='!desktopMode'>
+						<textarea class="pf-header-desc" rows="3" ng-blur='saveGuruShopDescription()' maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
+						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{100 - user.guru_introduction.length}}</span>
 					</div>
 				</li>
 
@@ -1090,14 +1090,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="pf-edit-pf pf-desktop-edit">
-				<button ng-click='profile.edit_mode = true;' class="btn-ghost-white ng-class:{'hide':profile.edit_mode || portfolio_item.visible || root.vars.hide_edit_button}">Edit</button>
-				<button ng-click='saveGuruProfile()' class="btn-ghost-white hide ng-class:{'show':profile.edit_mode}">Save</button>
-			</div>
-			<div class="pf-edit-pf pf-mobile-edit">
-				<button ng-click='profile.edit_mode = true;' class="ng-class:{'hide':profile.edit_mode || portfolio_item.visible}">Edit</button>
-				<button ng-click='saveGuruProfile()' class="hide ng-class:{'show':profile.edit_mode}">Save</button>
 			</div>
 		</div>
 	</section>

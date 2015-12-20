@@ -42,7 +42,7 @@ angular.module('uguru.guru.controllers')
 
 
 
-    $scope.profile = {edit_mode:true, showCredibility:false};
+    $scope.profile = {showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
     if (!$scope.user.profile_code) {
@@ -50,7 +50,7 @@ angular.module('uguru.guru.controllers')
     }
 
     // credibility only variable
-    $scope.activeTabIndex = 1;
+    $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
 
     $scope.page = { modals : {}, popups: {}, backdrops: {} }
@@ -425,9 +425,27 @@ angular.module('uguru.guru.controllers')
       $scope.user.updateAttr('guru_introduction', $scope.user, $scope.user.guru_introduction, null, $scope);
     }
 
+    $scope.saveGuruShopDescription = function() {
+      if (!$scope.user.academic_shop.description || !$scope.user.academic_shop.description.length) {
+        return
+      }
+      User.updateLocal($scope.user);
+      $scope.user.updateAttr('update_guru_shop_description', $scope.user, $scope.user.academic_shop, null, $scope);
+    }
+
+    $scope.saveGuruShopTitle = function() {
+      if (!$scope.user.academic_shop.title || !$scope.user.academic_shop.title.length) {
+        return
+      }
+      User.updateLocal($scope.user);
+      $scope.user.updateAttr('update_guru_shop_title', $scope.user, $scope.user.academic_shop, null, $scope);
+    }
+
     $scope.onEnterBlurInput = function($event) {
       $event.target.blur();
     }
+
+
 
 
 

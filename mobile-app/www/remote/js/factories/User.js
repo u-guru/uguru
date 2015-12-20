@@ -68,7 +68,9 @@ angular.module('uguru.user', [])
         for (var i = 0; i < guru_shops.length; i++) {
             var indexShop = guru_shops[i];
             if (indexShop.category.name === 'Academic') {
+
                 academic_shop = indexShop;
+
                 for (var j = 0; j < academic_shop.portfolio_items.length; j ++) {
                     indexPortfolioItem = academic_shop.portfolio_items[j];
                     academic_shop.portfolio_items[j].avg_rating = parseFloat(academic_shop.portfolio_items[j].avg_rating).toFixed(1);
@@ -693,6 +695,9 @@ angular.module('uguru.user', [])
         $scope.user.guru_shops = user.guru_shops;
         if (user.guru_shops && user.guru_shops.length) {
             $scope.user.academic_shop = getAndProcessAcademicShop(user.guru_shops);
+            if (!$scope.user.academic_shop.title) {
+                $scope.user.academic_shop.title = user.first_name + "’s Academic Shop"
+            }
             console.log('printing out user w/ academic shop', $scope.user);
         }
 
@@ -993,6 +998,19 @@ angular.module('uguru.user', [])
                         'remove_guru_subcategory': true
                   }
               }
+
+              if (arg === 'update_guru_shop_description') {
+                return {
+                    'update_guru_shop_description': obj
+                    }
+              }
+
+              if (arg === 'update_guru_shop_title') {
+                return {
+                    'update_guru_shop_title': obj
+                }
+              }
+
               if (arg === 'impact_event') {
                 return {
                     event_id: obj,
