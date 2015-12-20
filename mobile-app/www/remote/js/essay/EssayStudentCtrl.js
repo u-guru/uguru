@@ -5,16 +5,28 @@ angular.module('uguru.util.controllers')
   '$state',
   '$interval',
   'University',
-  function AccessController($scope, $timeout, $state, $interval, University) {
+  '$ionicViewSwitcher',
+  '$ionicScrollDelegate',
+  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate) {
     var UPPER = 12;
     var LOWER = 0;
 
     //default
     $scope.university = {name:'Harvard'};
+    $scope.root.vars.theme = 'essay';
 
     $interval(function() {
       $scope.university = selectRandom(targettedUniversities);
     }, 3500)
+
+    $scope.goToUniversity = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.university');
+    }
+
+    $scope.scrollToPricing = function() {
+
+    }
 
     var selectRandom = function(university_arr) {
       return university_arr[Math.floor(Math.random()*university_arr.length)];
@@ -41,8 +53,6 @@ angular.module('uguru.util.controllers')
           new_arr.push(university_arr[j])
         }
       }
-      console.log(university_arr.length, new_arr.length);
-      console.log(new_arr);
 
       return new_arr;
     }

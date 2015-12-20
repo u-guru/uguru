@@ -27,6 +27,7 @@
 						</a>
 					</div>
 
+
 					<ul class="ng-class:{'active':page.dropdowns.hour}">
 						<li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
 					</ul>
@@ -60,8 +61,8 @@
 				<!-- https://angular-ui.github.io/angular-google-maps/#!/api/google-map -->
 				<div class='map-box'>
 					<input ng-keyup="queryAutocompleteFromSearch(page.dropdowns.location_search.input)" ng-model='page.dropdowns.location_search.input' type="text" placeholder="Search locations" />
-                    
-					<ul class="hide ng-class:{'show': page.dropdowns.location_search.predictions.length || page.dropdowns.location_search.input.length }">
+
+					<ul class="hide ng-class:{'show': page.dropdowns.location_search.predictions.length }">
                         <!-- .has-image to show image -->
                         <li ng-repeat='prediction in page.dropdowns.location_search.predictions'>
                             <div>
@@ -81,13 +82,17 @@
 					</ul>
 				</div>
 				<ui-gmap-google-map style='height:400px;' class='full-x' center="map.center" control="map.control" zoom="map.zoom" pan="false" options="{streetViewControl:false,panControl:false,zoomControl:false,mapTypeControl:false}">
-					<!--All autocomplete options from website
-                    https://developers.google.com/maps/documentation/javascript/reference#AutocompleteOptions -->
-					<!-- <ui-gmap-search-box template="searchbox.template" options="searchbox.options" events="searchbox.events"></ui-gmap-search-box> -->
-				</ui-gmap-google-map>
-			</div>
-			<button ng-if='desktopMode'>Next</button>
-		</div>
-	</div>
+                    <ui-gmap-markers
+                        models="page.predictionMarkers"
+                        >
+                </ui-gmap-markers>
+
+
+                </ui-gmap-google-map>
+            </div>
+            <button ng-if='desktopMode'>Next</button>
+
+        </div>
+    </div>
 	<button ng-if='!desktopMode'>Next</button>
 </section>

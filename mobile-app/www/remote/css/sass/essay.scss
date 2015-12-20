@@ -1,55 +1,196 @@
 @import 'mixin';
-.hs-view {
-	background: url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center fixed !important;
-	-webkit-background-size:100% 100% !important;
-	-moz-background-size:100% 100% !important;
-	-o-background-size:100% 100% !important;
-	background-size:100% 100% !important;
 
-	&#desktop-university {
-		div.main.default {
-			margin-top:20% !important;
-
-			.university-content-header
-			.essay-home-content-header
-			{
+// GABRIELLE CSS
+ion-view {
+	#essay-student-home {
+		background: white;
+		> header {
+			@include flex;
+			position: fixed;
+			z-index: 99;
+			top: 0;
+			right: 0;
+			padding: 15px;
+			a {
+				display: block;
+				padding: 15px;
+				font-size: 20px;
+				font-weight: 700;
+				&.active {
+					background: white;
+					color: $orange;
+				}
+			}
+		}
+		> section {
+			width: 100%;
+			height: 100%;
+			background-color: $smoke;
+			> header {
+				@include flex;
+				@include flex-center;
+				background: $orange;
+				height: 30%!important;
 				h1 {
-				font-size:48px !important;
-				margin-top:-7.5% !important;
+					font-size: 48px;
+					font-weight: 900;
+					text-align: center;
+					text-transform: none!important;
+				}
+			}
+			button {
+				background: $shamrock;
+				max-width: 300px;
+				color: white;
+				font-weight: 700;
+				text-transform: capitalize;
+			}
+			.main {
+				height: 70%;
+				color: $slate;
+				padding: 15px;
+				line-height: 1.2;
+				font-weight: 400;
+			}
+			&.essay-splash {
+				@include flex;
+				@include flex-center;
+				background: $smoke url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center / cover;
+				text-align: center;
+				h1 {
+					font-size: 60px;
+					font-weight: 600;
+					line-height: 90px;
+					span {
+						display: inline-block;
+					}
+				}
+				button {
+					margin-top: 30px;
+				}
+			}
+			&.essay-pricing {
+				.main {
+					@include flex;
+					@include flex-center;
+					@include flex-wrap;
+					> ul {
+						max-width: 1030px;
+						margin: 0 auto;
+						padding: 15px;
+						> li {
+							padding: 15px;
+						}
+					}
+					> div {
+						width: 100%;
+						text-align: center;
+						h1 {
+							font-size: 24px;
+							font-weight: 700;
+						}
+						h2 {
+							font-size: 18px;
+							font-weight: 600;
+						}
+					}
 				}
 			}
 		}
 	}
 }
-
-
-#essay-student-home {
-
-	div.essay-home-content-header {
-		padding:40px 20px;
-		h1#main-text {
-			font-size:60px !important;
-			line-height:90px !important;
-			//overrides some default.scss nth-child hidden override
-			span {
-				display:inline-block !important;
+.ticket-container {
+	background: $smoke;
+}
+.ticket {
+	border-radius: 5px;
+	border: 3px solid darken($orange, 15%);
+	.ticket-top {
+		position: relative;
+		padding: 30px 15px 15px;
+		background: $orange;
+		border-bottom: 3px dashed darken($orange, 15%);
+		color: white;
+		text-align: center;
+		h1 {
+			font-size: 32px;
+			font-weight: 600;
+		}
+		p {
+			margin: 0;
+			font-size: 18px;
+			font-weight: 400;
+		}
+		&:before {
+			@include round;
+			@include center-x;
+			content: "";
+			display: block;
+			top: -24px;
+			width: 48px;
+			height: 48px;
+			background: $smoke;
+			border: 3px solid darken($orange, 15%);
+		}
+		&:after {
+			@include center-x;
+			content: "";
+			display: block;
+			top: -27px;
+			width: 48px;
+			height: 24px;
+			background: $smoke;
+		}
+	}
+	.ticket-bot {
+		background: white;
+		color: lighten($slate, 20%);
+		ul {
+			padding: 7.5px;
+			li {
+				@include flex;
+				@include flex-center-vertical;
+				padding: 7.5px;
+				font-size: 18px;
+				font-weight: 400;
+				span {
+					display: block;
+				}
+				.ticket-icon {
+					width: 24px;
+					height: 24px;
+					svg {
+						display: block;
+						width: 100%;
+						height: 100%;
+						* {
+							@include svg-stroke(lighten($slate, 20%), 6);
+						}
+					}
+				}
+				.ticket-info {
+					width: calc(100% - 24px);
+					padding-left: 15px;
+				}
 			}
 		}
-		align-self:flex-end;
-		-webkit-align-self: flex-end;
 	}
-	button {
-		background-color:$shamrock;
-		color:white;
-		width:15%;
-		min-width:100px;
-		font-weight:700;
-		text-transform: capitalize;
-		align-self: flex-start;
-	}
+}
+// END GABRIELLE CSS
 
-	button:hover, button.activated, button.active {
-		background-color:rgba($shamrock, 0.8);
-		opacity:1;
+ion-view {
+	overflow:auto !important;
+	#essay-student-home {
+		overflow: auto;
+		min-height: 100%;
+		.loading-container {
+			display: none!important;
+		}
+		section {
+			button:hover, button.activated, button.active {
+			background-color:rgba($shamrock, 0.8);
+			opacity:1;
+			}
+		}
 	}
 }

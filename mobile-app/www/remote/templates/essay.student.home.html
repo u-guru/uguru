@@ -1,14 +1,126 @@
+<!-- Gabrielle 0. Fix background -->
+<!-- Gabrielle 0. "Fix" the header on scroll + right align all the buttons  -->
+<!-- Gabrielle 1. create 4 sections -->
+<!-- Gabrielle 2. Add downward arrow, ill take care of scrolling after-->
+<!-- Gabrielle 3. Add support icon bottom left-->
+<!-- Gabrielle 4. Make sure the index is working-->
 
-<main id='essay-student-home'class='hs-view'>
-    <header>
-
-    </header>
-    <section class='flex-center-wrap'>
-        <div class='full-x essay-home-content-header text-center'>
-            <h1 id='main-text' class='text-center weight-600'>Instant college app help from <br>
-                <span class='weight-900'><u>{{university.name}}</u></span> student gurus
-            </h1>
-        </div>
-        <button> Get Started </button>
-    </section>
-</main>
+<ion-view>
+    <main id='essay-student-home' class='hs-view full-xy'>
+        <header>
+            <a ng-click='scrollToPricing()'>Pricing</a>
+            <a>How it works</a>
+            <a>Timeline</a>
+            <a class="active" ng-click='goToUniversity()'>Get Started</a>
+        </header>
+        <section class='essay-splash'>
+            <div class='essay-home-content-header'>
+                <h1 id='main-text'>
+                    Instant college app help from <br/><span class='weight-900'><u>{{university.name}}</u></span> student gurus
+                </h1>
+                <button ng-click='goToUniversity()'> Get Started </button>
+            </div>
+        </section>
+        <section class="essay-pricing">
+            <header>
+                <h1>Services We Can Offer</h1>
+            </header>
+            <div class='main'>
+                <ul class="ugrid-3">
+                    <li class="ticket-container">
+                        <div class="ticket">
+                            <div class="ticket-top">
+                                <h1>Personalized Q &amp; A</h1>
+                                <p>Be paired with an expert guru who can help you with anything.</p>
+                            </div>
+                            <div class="ticket-bot">
+                                <ul>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Private Messaging Thread</span>
+                                    </li>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Unlimited Storage</span>
+                                    </li>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Guaranteed 24 hour reply</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ticket">
+                            <div class="ticket-top">
+                                <h1>Personalized Q &amp; A</h1>
+                                <p>Be paired with an expert guru who can help you with anything.</p>
+                            </div>
+                            <div class="ticket-bot">
+                                <ul>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Private Messaging Thread</span>
+                                    </li>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Unlimited Storage</span>
+                                    </li>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Guaranteed 24 hour reply</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ticket">
+                            <div class="ticket-top">
+                                <h1>Personalized Q &amp; A</h1>
+                                <p>Be paired with an expert guru who can help you with anything.</p>
+                            </div>
+                            <div class="ticket-bot">
+                                <ul>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Private Messaging Thread</span>
+                                    </li>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Unlimited Storage</span>
+                                    </li>
+                                    <li>
+                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-info">Guaranteed 24 hour reply</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div>
+                    <h1>If you seek something more sophisticated, we have a couple of these left.</h1>
+                    <h2>If none of these options meet your needs or are out of budget, CONTACT US for a quick reply.</h2>
+                </div>
+            </div>
+        </section>
+        <section>
+            <header>
+                <h1>How It Works</h1>
+            </header>
+            <div class='main flex-wrap-center'>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+        </section>
+        <section>
+            <header>
+                <h1>TIMELINE</h1>
+            </header>
+            <div class='main flex-wrap-center'>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+        </section>
+    </main>
+</ion-view>

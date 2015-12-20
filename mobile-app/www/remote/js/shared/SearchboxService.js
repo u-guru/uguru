@@ -65,10 +65,33 @@ function SearchboxService(GUtilService, $timeout) {
         }
       }
 
-      function queryAutocompleteService(query, scope, callback) {
+
+      function createMarkersFromPredictions(predictions, map) {
+        var newMarkers = [];
+
+        for (var i = 0; i < predictions.length; i++) {
+          var indexPrediction = predictions[i];
+          if (indexPrediction.geometry && indexPrediction.geometry.location) {
+            var marker = new google.maps.Marker({
+              position: indexPrediction.geometry.location,
+              map: map,
+              title: indexPrediction.name
+            });
+            newMarkers.push(marker);
+          }
+
+        }
+
+        return newMarkers
+      }
+
+      function queryAutocompleteService(query, scope, map, callback) {
 
         if (scope.map.control.getGMap) {
           lastPlaceService = GUtilService.initPlacesService(scope.map.control.getGMap());
+        }
+        if (map) {
+          lastPlaceService = GUtilService.initPlacesService(map);
         }
 
         autocompleteOptions.input = query;
@@ -79,25 +102,32 @@ function SearchboxService(GUtilService, $timeout) {
 
 
         function displaySuggestionsCallback(predictions, status) {
-
+          console.log(predictions, status);
           if (status != google.maps.places.PlacesServiceStatus.OK) {
             alert(status);
             return;
           }
 
 
-
-            scope.map.predictions = predictions;
+            var new_markers;
             scope.page.dropdowns.location_search.predictions = predictions;
-            console.log(scope.page.dropdowns.location_search.predictions);
+            scope.page.predictionMarkers = []
+            console.log(scope.page.predictionMarkers)
             // scope.instantiateAllMarkers(predictions);
-            scope.map.predictions.forEach(function(prediction, index) {
+            scope.page.dropdowns.location_search.predictions.forEach(function(prediction, index) {
               successCallback = function(placesResult, status) {
                 if (status != google.maps.places.PlacesServiceStatus.OK) {
                   alert(status);
                   return;
                 }
-                scope.map.predictions[index] = placesResult;
+                scope.page.dropdowns.location_search.predictions[index] = placesResult;
+                if (scope.map.control.getGetMap) {
+                  new_markers = createMarkersFromPredictions(predictions, scope.map.control.getGetMap());
+                }
+                if (map) {
+                  new_markers = createMarkersFromPredictions(predictions, map);
+                  scope.page.predictionMarkers = new_markers;
+                }
               }
               var prediction_place_id = prediction.place_id;
 
