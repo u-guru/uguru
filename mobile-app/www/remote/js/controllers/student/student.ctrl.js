@@ -207,12 +207,12 @@ angular.module('uguru.student.controllers', [])
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
-
         })
 
 
         $scope.$on('$ionicView.enter', function() {
             $ionicSlideBoxDelegate.update();
+
         });
     }
 

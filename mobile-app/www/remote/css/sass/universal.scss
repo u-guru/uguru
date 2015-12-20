@@ -1,5 +1,9 @@
 @import 'mixin';
 
+#intercom-container {
+	z-index: auto!important;
+}
+
 /* ---------- REQUESTS */
 #request {
 	header:not(.desktop-header) {
@@ -14,17 +18,88 @@
 	height: calc(100%)!important;
 	width: calc(100%)!important;
 }
-#request-form-map-search {
-	left: 15px!important;
-    top: 15px!important;
-	width: 256px;
-    padding: 10px 15px;
-    font-size: 18px;
-	color: $slate;
-	&:focus, &:hover {
-		@include placeholder {
-			@include transition(.15s ease-in-out);
-			color: $taupe;
+.map-box-container {
+	height: 400px;
+	position: relative;
+}
+.map-box {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 385px;
+	padding: 15px;
+	@media screen and (min-width: 768px) {
+		max-width: 400px;
+	}
+	> input {
+		width: 100%;
+	    padding: 10px 15px;
+	    font-size: 18px;
+		color: $slate;
+		background: rgba(white,.9);
+		&:focus, &:hover {
+			@include placeholder {
+				@include transition(.15s ease-in-out);
+				color: $taupe;
+			}
+		}
+	}
+	> ul {
+		height: calc(100% - 43px);
+		overflow: auto;
+		margin-top: 15px;
+		background: rgba(white,.9);
+		padding: 0 15px;
+		> li {
+			padding: 15px 0;
+			font-size: 16px;
+			line-height: 1.2;
+			&.has-image {
+				@include flex;
+				@include flex-center;
+			}
+			&:not(:last-child) {
+				border-bottom: 1px solid lighten($taupe, 40%);
+			}
+			.map-title {
+				@include flex;
+				-webkit-align-items: flex-start;
+				align-items: flex-start;
+				h3 {
+					width: calc(100% - 149px);
+					font-size: 18px;
+					font-weight: 600;
+				}
+				.map-rating {
+					@include flex;
+					@include flex-center-vertical;
+					margin-top: -3px;
+					width: 149px;
+					.rating-stars {
+						margin: 0 3px!important;
+					}
+					span {
+						@include flex;
+						@include flex-center-vertical;
+						padding-bottom: 4px;
+						color: $taupe;
+						font-weight: 600;
+						font-size: 14px;
+						line-height: 24px;
+					}
+				}
+			}
+			.map-address {
+				margin-top: 5px;
+			}
+			.map-address, .map-phone {
+				display: block;
+				color: $taupe;
+				font-size: 14px;
+				font-weight: 600;
+			}
 		}
 	}
 }
@@ -204,9 +279,6 @@
 					}
 				}
 			}
-			.request-loc {
-				height: 400px;
-			}
 			.request-cal {
 				margin-bottom: 30px;
 				color: white;
@@ -370,6 +442,18 @@
 }
 
 .request-delivery {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $auburn!important;
+					&:hover, &:focus {
+						color: lighten($auburn, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $auburn;
 		&:focus, &:hover {
@@ -505,6 +589,18 @@
 	}
 }
 .request-freelancing {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $orange!important;
+					&:hover, &:focus {
+						color: lighten($orange, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $orange;
 		&:focus, &:hover {
@@ -640,6 +736,18 @@
 	}
 }
 .request-baking {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: darken($gold, 10%)!important;
+					&:hover, &:focus {
+						color: $gold!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $gold;
 		&:focus, &:hover {
@@ -775,6 +883,18 @@
 	}
 }
 .request-photography {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $moola!important;
+					&:hover, &:focus {
+						color: lighten($moola, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $moola;
 		&:focus, &:hover {
@@ -910,6 +1030,18 @@
 	}
 }
 .request-tech {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $azure!important;
+					&:hover, &:focus {
+						color: lighten($azure, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $azure;
 		&:focus, &:hover {
@@ -1045,6 +1177,18 @@
 	}
 }
 .request-household {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $cobalt!important;
+					&:hover, &:focus {
+						color: lighten($cobalt, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $cobalt;
 		&:focus, &:hover {
@@ -1180,6 +1324,18 @@
 	}
 }
 .request-athletic {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $eggplant!important;
+					&:hover, &:focus {
+						color: lighten($eggplant, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $eggplant;
 		&:focus, &:hover {
@@ -1315,6 +1471,18 @@
 	}
 }
 .request-academic {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $cerise!important;
+					&:hover, &:focus {
+						color: lighten($cerise, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $cerise;
 		&:focus, &:hover {

@@ -4204,7 +4204,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="1"] {
+	&[data-rating*="1"] {
 		li:nth-child(1) {
 			svg {
 				polygon {
@@ -4212,7 +4212,7 @@ input[type=range] {
 				}
 			}
 		}
-		&[data-half="true"] {
+		&[data-half="true"], &[data-rating*="."] {
 			li:nth-child(2) {
 				svg {
 					polygon:nth-child(2) {
@@ -4222,7 +4222,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="2"] {
+	&[data-rating*="2"] {
 		li:nth-child(1), li:nth-child(2) {
 			svg {
 				polygon {
@@ -4230,7 +4230,7 @@ input[type=range] {
 				}
 			}
 		}
-		&[data-half="true"] {
+		&[data-half="true"], &[data-rating*="."] {
 			li:nth-child(3) {
 				svg {
 					polygon:nth-child(2) {
@@ -4240,7 +4240,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="3"] {
+	&[data-rating*="3"] {
 		li:nth-child(1), li:nth-child(2), li:nth-child(3) {
 			svg {
 				polygon {
@@ -4248,7 +4248,7 @@ input[type=range] {
 				}
 			}
 		}
-		&[data-half="true"] {
+		&[data-half="true"], &[data-rating*="."] {
 			li:nth-child(4) {
 				svg {
 					polygon:nth-child(2) {
@@ -4258,7 +4258,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="4"] {
+	&[data-rating*="4"] {
 		li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4) {
 			svg {
 				polygon {
@@ -4266,7 +4266,7 @@ input[type=range] {
 				}
 			}
 		}
-		&[data-half="true"] {
+		&[data-half="true"], &[data-rating*="."] {
 			li:nth-child(5) {
 				svg {
 					polygon:nth-child(2) {
@@ -4276,7 +4276,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="5"] {
+	&[data-rating*="5"] {
 		li {
 			svg {
 				polygon {

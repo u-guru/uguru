@@ -43,7 +43,9 @@ angular.module('uguru.util.controllers')
                     control: {}
               };
     }
-
+    $scope.showMarkerDetails = function(prediction) {
+      LoadingService.showMsg('Coming Soon', 1000);
+    }
 
     $scope.queryAutocompleteFromSearch = function(query) {
 
