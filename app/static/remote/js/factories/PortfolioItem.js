@@ -32,9 +32,11 @@ angular.module('uguru.rest')
         console.log('validaitng..', pi_obj)
         if (!pi_obj.course || !pi_obj.course.id) {
             LoadingService.showMsg('Please add a course to complete', 2000);
+            return false
         }
         else if (!pi_obj.description || !pi_obj.description.length) {
             LoadingService.showMsg('Please add a small short background description', 2000);
+            return false;
         }
 
         return true;
@@ -45,13 +47,14 @@ angular.module('uguru.rest')
         return {
             course: {},
             shop_category: Category.getAcademic(),
-            shop_id: Category.getAcademic().id,
+            shop_id: 1,
             title: '',
             hourly_price: 10,
             max_hourly_price: 25,
             description: "",
             avg_rating: 0,
             unit_price: 5,
+            active: true,
             max_unit_price:10,
             admin_approved: true,
             files: [],

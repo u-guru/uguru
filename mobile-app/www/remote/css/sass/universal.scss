@@ -1,5 +1,9 @@
 @import 'mixin';
 
+#intercom-container {
+	z-index: auto!important;
+}
+
 /* ---------- REQUESTS */
 #request {
 	header:not(.desktop-header) {
@@ -7,6 +11,96 @@
 	}
 	main {
 		height: calc(100% - 50px);
+	}
+}
+.angular-google-map,
+.angular-google-map-container {
+	height: calc(100%)!important;
+	width: calc(100%)!important;
+}
+.map-box-container {
+	height: 400px;
+	position: relative;
+}
+.map-box {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 385px;
+	padding: 15px;
+	@media screen and (min-width: 768px) {
+		max-width: 400px;
+	}
+	> input {
+		width: 100%;
+	    padding: 10px 15px;
+	    font-size: 18px;
+		color: $slate;
+		background: rgba(white,.9);
+		&:focus, &:hover {
+			@include placeholder {
+				@include transition(.15s ease-in-out);
+				color: $taupe;
+			}
+		}
+	}
+	> ul {
+		height: calc(100% - 43px);
+		overflow: auto;
+		margin-top: 15px;
+		background: rgba(white,.9);
+		padding: 0 15px;
+		> li {
+			padding: 15px 0;
+			font-size: 16px;
+			line-height: 1.2;
+			&.has-image {
+				@include flex;
+				@include flex-center;
+			}
+			&:not(:last-child) {
+				border-bottom: 1px solid lighten($taupe, 40%);
+			}
+			.map-title {
+				@include flex;
+				-webkit-align-items: flex-start;
+				align-items: flex-start;
+				h3 {
+					width: calc(100% - 149px);
+					font-size: 18px;
+					font-weight: 600;
+				}
+				.map-rating {
+					@include flex;
+					@include flex-center-vertical;
+					margin-top: -3px;
+					width: 149px;
+					.rating-stars {
+						margin: 0 3px!important;
+					}
+					span {
+						@include flex;
+						@include flex-center-vertical;
+						padding-bottom: 4px;
+						color: $taupe;
+						font-weight: 600;
+						font-size: 14px;
+						line-height: 24px;
+					}
+				}
+			}
+			.map-address {
+				margin-top: 5px;
+			}
+			.map-address, .map-phone {
+				display: block;
+				color: $taupe;
+				font-size: 14px;
+				font-weight: 600;
+			}
+		}
 	}
 }
 .request-slide {
@@ -34,13 +128,22 @@
 		}
 	}
 	.request-content {
-		height: 70%;
+		height: calc(70% + 45px);
 		background: $smoke;
+		overflow-y: auto;
+		overflow-x: hidden;
+		@media screen and (min-width: 768px) {
+			height: 70%;
+		}
 	}
 	#request-search {
-		background: lighten($shamrock, 10%);
 		position: relative;
-		padding: 0 15px 15px 0;
+		form {
+			background: lighten($shamrock, 10%);
+			padding: 0 15px 15px 0;
+			position: relative;
+			z-index: 12;
+		}
 		.input-field {
 			max-width: 800px;
 			margin: 0 auto;
@@ -54,21 +157,230 @@
 					padding: 10px;
 				}
 			}
+			input, label {
+				color: white!important;
+				border-color: rgba(white, .5)!important;
+			}
 			input {
 				margin-bottom: 0;
-				border-color: rgba(white, .5)!important;
 				@include placeholder {
 					color: white;
 				}
 				&:focus {
 					border-color: white!important;
+					box-shadow: 0 1px 0 0 white!important;
 				}
-			}
-			input, label {
-				color: white!important;
 			}
 			label.active {
 				@include opacity-important(0);
+			}
+		}
+		.course-list, .course-none {
+			top: 63px;
+    		left: 0;
+			background: rgba($smoke,.7);
+			a {
+				color: white;
+			}
+		}
+		.course-list {
+			ul {
+				max-width: 815px;
+				margin: 0 auto;
+			}
+		}
+		.course-none {
+			padding: 15px;
+		    font-size: 28px;
+		    color: $slate;
+		    line-height: 1.5;
+		}
+		@media screen and (min-width: 768px) {
+			.course-list, .course-none {
+				top: 87px;
+			}
+			.course-none {
+				font-size: 36px;
+			}
+		}
+	}
+	&#request-two {
+		.request-urgency {
+			height: 48px;
+			div {
+				span {
+					background: rgba(white,.3);
+					svg {
+						@include svg-stroke(lighten($shamrock, 10%), 10);
+					}
+				}
+				input:checked + span {
+					background: white;
+					svg {
+						stroke: $shamrock;
+					}
+				}
+			}
+		}
+		.request-content {
+			color: $slate;
+			> div {
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			.request-form {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				padding: 15px;
+				h2 {
+					@include flex;
+					@include flex-center-vertical;
+					margin-bottom: 15px;
+					height: 48px;
+					font-weight: 600;
+				}
+				.custom-dropdown {
+					color: white;
+					margin-bottom: 15px;
+					> div {
+						span {
+							width: 84px;
+						}
+					}
+					> ul {
+						@include transition(.15s ease-in-out);
+						@include flex;
+						@include flex-wrap;
+						@include translate(-50%, -50%);
+						top: 50%;
+						li {
+							background: rgba(lighten($slate, 5%), .98);
+							font-weight: 600;
+							&:hover, &:focus {
+								background: rgba($shamrock,.98);
+							}
+							&:active {
+								background: rgba(lighten($shamrock, 10%),.98);
+							}
+						}
+					}
+					&.request-hours {
+						> ul {
+							li {
+								width: 50%;
+							}
+						}
+					}
+					&.request-minutes {
+						> ul {
+							left: calc(50% + 24px);
+							li {
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				margin-bottom: 30px;
+				color: white;
+				.cal-week {
+					&:not(.active) {
+						.cal-time, .cal-main {
+							display: none;
+						}
+					}
+					&.active {
+						.cal-month {
+							svg {
+								&:last-child {
+									@include rotate(180);
+								}
+							}
+						}
+					}
+				}
+				.cal-week {
+					background: darken($campus, 15%);
+					.cal-month {
+						margin: 0 0 2px;
+						width: calc(100% + 4px);
+						text-transform: none;
+						a {
+							padding: 10px 15px;
+						}
+						svg {
+							@include svg-stroke(white, 4);
+							display: block;
+							&:first-child {
+								margin: 0 auto 5px;
+								width: 48px;
+								height: 48px;
+							}
+							&:last-child {
+								margin: 5px auto 0;
+								stroke-width: 8px;
+								width: 24px;
+								height: 24px;
+							}
+						}
+						span:nth-child(2) {
+							display: block!important;
+						}
+					}
+					.cal-main {
+						.cal-date {
+							min-width: 720px;
+							li {
+								min-width: 102px;
+							}
+						}
+						.cal-events {
+							min-width: 720px;
+							.cal-day {
+								li {
+									min-width: 102px;
+								}
+							}
+						}
+					}
+					@media screen and (max-width: 768px) {
+						.cal-month {
+							font-size: 20px;
+							font-weight: 600;
+						}
+						.cal-main {
+							overflow: visible;
+							.cal-date {
+								min-width: auto;
+								li {
+									min-width: auto;
+									> span {
+										span:nth-child(2), span:nth-child(3) {
+											display: none!important;
+										}
+									}
+								}
+							}
+							.cal-events {
+								@include flex;
+								@include flex-center;
+								width: 100%;
+								min-width: auto!important;
+								overflow-x: auto;
+								.cal-day {
+									min-width: 102px;
+								}
+							}
+						}
+					}
+				}
+			}
+			@media screen and (min-width: 768px) {
+				.request-loc {
+					margin-bottom: 30px;
+				}
 			}
 		}
 	}
@@ -109,6 +421,11 @@
 						.tag-list {
 							.chip {
 								margin-bottom: 15px;
+								&:hover, &:focus {
+									@include placeholder {
+										color: white;
+									}
+								}
 							}
 						}
 						.attachment-list {
@@ -128,7 +445,20 @@
 		font-weight: 600;
 	}
 }
+
 .request-delivery {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $auburn!important;
+					&:hover, &:focus {
+						color: lighten($auburn, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $auburn;
 		&:focus, &:hover {
@@ -141,8 +471,22 @@
 	header:not(.desktop-header) {
 		background: $auburn!important;
 	}
-	#request-search {
+	#request-search form, .request-urgency {
 		background: lighten($auburn, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $auburn;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -155,12 +499,113 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($auburn, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $auburn;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-two {
+		.request-urgency {
+			div {
+				span {
+					svg {
+						@include svg-stroke(lighten($auburn, 10%), 10);
+					}
+				}
+				input:checked + span {
+					svg {
+						stroke: $auburn;
+					}
+				}
+			}
+		}
+		.request-content {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $auburn;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($auburn, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($auburn, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($auburn,.98);
+							}
+							&:active {
+								background: rgba(lighten($auburn, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($auburn, 10%);
+							}
+							&:active, &.active {
+								background: $auburn;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($auburn, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 }
 .request-freelancing {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $orange!important;
+					&:hover, &:focus {
+						color: lighten($orange, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $orange;
 		&:focus, &:hover {
@@ -173,8 +618,22 @@
 	header:not(.desktop-header) {
 		background: $orange!important;
 	}
-	#request-search {
+	#request-search form, .request-urgency  {
 		background: lighten($orange, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $orange;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -187,12 +646,113 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($orange, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $orange;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-two {
+		.request-urgency {
+			div {
+				span {
+					svg {
+						@include svg-stroke(lighten($orange, 10%), 10);
+					}
+				}
+				input:checked + span {
+					svg {
+						stroke: $orange;
+					}
+				}
+			}
+		}
+		.request-content {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $orange;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($orange, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($orange, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($orange,.98);
+							}
+							&:active {
+								background: rgba(lighten($orange, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($orange, 10%);
+							}
+							&:active, &.active {
+								background: $orange;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($orange, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 }
 .request-baking {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: darken($gold, 10%)!important;
+					&:hover, &:focus {
+						color: $gold!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $gold;
 		&:focus, &:hover {
@@ -205,8 +765,22 @@
 	header:not(.desktop-header) {
 		background: $gold!important;
 	}
-	#request-search {
+	#request-search form, .request-urgency  {
 		background: lighten($gold, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $gold;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -219,12 +793,113 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: $gold;
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: darken($gold, 10%);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-two {
+		.request-urgency {
+			div {
+				span {
+					svg {
+						@include svg-stroke(lighten($gold, 10%), 10);
+					}
+				}
+				input:checked + span {
+					svg {
+						stroke: $gold;
+					}
+				}
+			}
+		}
+		.request-content {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $gold;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($gold, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($gold, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($gold,.98);
+							}
+							&:active {
+								background: rgba(lighten($gold, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($gold, 10%);
+							}
+							&:active, &.active {
+								background: $gold;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($gold, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 }
 .request-photography {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $moola!important;
+					&:hover, &:focus {
+						color: lighten($moola, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $moola;
 		&:focus, &:hover {
@@ -237,8 +912,22 @@
 	header:not(.desktop-header) {
 		background: $moola!important;
 	}
-	#request-search {
+	#request-search form, .request-urgency  {
 		background: lighten($moola, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $moola;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -251,12 +940,113 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($moola, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $moola;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-two {
+		.request-urgency {
+			div {
+				span {
+					svg {
+						@include svg-stroke(lighten($moola, 10%), 10);
+					}
+				}
+				input:checked + span {
+					svg {
+						stroke: $moola;
+					}
+				}
+			}
+		}
+		.request-content {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $moola;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($moola, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($moola, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($moola,.98);
+							}
+							&:active {
+								background: rgba(lighten($moola, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($moola, 10%);
+							}
+							&:active, &.active {
+								background: $moola;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($moola, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 }
 .request-tech {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $azure!important;
+					&:hover, &:focus {
+						color: lighten($azure, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $azure;
 		&:focus, &:hover {
@@ -269,8 +1059,22 @@
 	header:not(.desktop-header) {
 		background: $azure!important;
 	}
-	#request-search {
+	#request-search form, .request-urgency  {
 		background: lighten($azure, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $azure;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -283,12 +1087,113 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($azure, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $azure;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-two {
+		.request-urgency {
+			div {
+				span {
+					svg {
+						@include svg-stroke(lighten($azure, 10%), 10);
+					}
+				}
+				input:checked + span {
+					svg {
+						stroke: $azure;
+					}
+				}
+			}
+		}
+		.request-content {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $azure;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($azure, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($azure, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($azure,.98);
+							}
+							&:active {
+								background: rgba(lighten($azure, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($azure, 10%);
+							}
+							&:active, &.active {
+								background: $azure;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($azure, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 }
 .request-household {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $cobalt!important;
+					&:hover, &:focus {
+						color: lighten($cobalt, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $cobalt;
 		&:focus, &:hover {
@@ -301,8 +1206,22 @@
 	header:not(.desktop-header) {
 		background: $cobalt!important;
 	}
-	#request-search {
+	#request-search form, .request-urgency  {
 		background: lighten($cobalt, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $cobalt;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -315,12 +1234,113 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($cobalt, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $cobalt;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-two {
+		.request-urgency {
+			div {
+				span {
+					svg {
+						@include svg-stroke(lighten($cobalt, 10%), 10);
+					}
+				}
+				input:checked + span {
+					svg {
+						stroke: $cobalt;
+					}
+				}
+			}
+		}
+		.request-content {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $cobalt;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($cobalt, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($cobalt, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($cobalt,.98);
+							}
+							&:active {
+								background: rgba(lighten($cobalt, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($cobalt, 10%);
+							}
+							&:active, &.active {
+								background: $cobalt;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($cobalt, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 }
 .request-athletic {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $eggplant!important;
+					&:hover, &:focus {
+						color: lighten($eggplant, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $eggplant;
 		&:focus, &:hover {
@@ -333,8 +1353,22 @@
 	header:not(.desktop-header) {
 		background: $eggplant!important;
 	}
-	#request-search {
+	#request-search form, .request-urgency  {
 		background: lighten($eggplant, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $eggplant;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -347,12 +1381,113 @@
 							}
 						}
 					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($eggplant, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $eggplant;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-two {
+		.request-urgency {
+			div {
+				span {
+					svg {
+						@include svg-stroke(lighten($eggplant, 10%), 10);
+					}
+				}
+				input:checked + span {
+					svg {
+						stroke: $eggplant;
+					}
+				}
+			}
+		}
+		.request-content {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $eggplant;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($eggplant, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($eggplant, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($eggplant,.98);
+							}
+							&:active {
+								background: rgba(lighten($eggplant, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($eggplant, 10%);
+							}
+							&:active, &.active {
+								background: $eggplant;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($eggplant, 10%);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 }
 .request-academic {
+	.map-box {
+		> ul {
+			> li {
+				a {
+					color: $cerise!important;
+					&:hover, &:focus {
+						color: lighten($cerise, 10%)!important;
+					}
+				}
+			}
+		}
+	}
 	button {
 		background: $cerise;
 		&:focus, &:hover {
@@ -365,8 +1500,22 @@
 	header:not(.desktop-header) {
 		background: $cerise!important;
 	}
-	#request-search {
+	#request-search form, .request-urgency  {
 		background: lighten($cerise, 10%);
+	}
+	#request-search {
+		.course-list {
+			li {
+				a {
+					&:hover, &:focus {
+						background: $cerise;
+					}
+					&:active {
+						background: lighten($slate, 10%);
+					}
+				}
+			}
+		}
 	}
 	#request-one {
 		.request-content {
@@ -376,6 +1525,95 @@
 						textarea, .active {
 							&:focus {
 								border-color: $cerise;
+							}
+						}
+					}
+					&:last-child {
+						.tag-list {
+							.chip {
+								&:hover, &:focus {
+									background: lighten($cerise, 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+							input.chip {
+								&:active {
+									background: $cerise;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-two {
+		.request-urgency {
+			div {
+				span {
+					svg {
+						@include svg-stroke(lighten($cerise, 10%), 10);
+					}
+				}
+				input:checked + span {
+					svg {
+						stroke: $cerise;
+					}
+				}
+			}
+		}
+		.request-content {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $cerise;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($cerise, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($cerise, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($cerise,.98);
+							}
+							&:active {
+								background: rgba(lighten($cerise, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-cal {
+				.cal-week {
+					.cal-month {
+						a {
+							&:hover, &:focus {
+								background: lighten($cerise, 10%);
+							}
+							&:active, &.active {
+								background: $cerise;
+							}
+						}
+					}
+					.cal-main {
+						.cal-date {
+							li.active {
+								> span {
+									background: lighten($cerise, 10%);
+								}
 							}
 						}
 					}
@@ -395,6 +1633,55 @@
 			margin: 0;
 			max-width: none;
 		}
+		&#request-two {
+			.request-content {
+				.request-form {
+					h2:first-child {
+						-webkit-justify-content: center;
+						justify-content: center;
+						width: 100%;
+					}
+					.custom-dropdown {
+						position: static!important;
+						> div {
+							span {
+								width: 72px;
+								font-size: 24px;
+							}
+						}
+						> ul {
+							z-index: 20;
+							width: calc(100% - 60px);
+							li {
+							    font-size: 36px;
+							    font-weight: 600;
+							    line-height: 1;
+							}
+						}
+						&.request-minutes {
+							> ul {
+								left: 50%;
+							}
+						}
+						.dropdown-overlay {
+							@include transition(.15s ease-in-out);
+							@include opacity(0);
+							position: absolute;
+							z-index: -100;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background: rgba($slate, .4);
+						}
+						> ul.active + .dropdown-overlay {
+							@include opacity(1);
+							z-index: 19;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 @media screen and (min-width: 768px) {
@@ -404,8 +1691,24 @@
 		}
 	}
 	.request-slide {
+		&#request-two {
+			.request-urgency {
+				height: 87px;
+				div {
+					span {
+						width: 36px;
+						height: 36px;
+					}
+				}
+				label {
+					font-size: 28px;
+				}
+			}
+		}
 		#request-search {
-			padding: 0 15px 15px;
+			form {
+				padding: 0 15px 15px;
+			}
 			.input-field {
 				.prefix {
 					top: 24px;
@@ -1566,7 +2869,7 @@
 								}
 							}
 						}
-					}	
+					}
 				}
 				&.post-college-main {
 					.post-icon {

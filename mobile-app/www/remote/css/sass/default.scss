@@ -2749,6 +2749,7 @@ input[type=range] {
 		width: 200px;
 		height: 0;
 		overflow: hidden;
+		text-align: center;
 		&.active {
 			@include opacity(1);
 			z-index: 99;
@@ -3607,6 +3608,14 @@ input[type=range] {
 		width: 100%;
 		fill: none;
 	}
+	input {
+		position: absolute;
+		z-index: 7;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 	.school-card-inside {
 		position: absolute;
 		top: 0;
@@ -3616,20 +3625,74 @@ input[type=range] {
 		.school-card-top {
 			position: relative;
 			z-index: 3;
-			height: 30%;
+			height: calc(100% / 3);
 			background-color: $slate;
 			border-radius: 10px 10px 0 0;
 			.school-card-icon {
 				@include center-x;
 				@include round;
-				display: block;
-				top: 16px;
-				width: 96px;
-				height: 96px;
+				@include flex;
+				@include flex-center;
+				z-index: 5;
+				top: 15px;
+				width: 84px;
+				height: 84px;
 				background-position: center;
 				background-size: cover;
 				background-color: white;
 				border: 3px solid $slate;
+				.school-card-icon-bg {
+					@include transition(.15s ease-in-out);
+					@include opacity(0);
+					@include round;
+					display: block;
+					position: absolute;
+					z-index: 6;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				.school-card-state {
+					@include transition(.15s ease-in-out);
+					@include opacity(0);
+					position: absolute;
+					z-index: 7;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					svg {
+						@include transition(.15s ease-in-out);
+						@include round;
+						display: block;
+						width: 100%;
+						height: 100%;
+						padding: 15px;
+						path {
+							@include svg-stroke(white, 10);
+						}
+					}
+					&:last-child {
+						svg {
+							@include opacity(0);
+							@include rotate(45);
+						}
+					}
+				}
+			}
+			&:after {
+				@include transition(.15s ease-in-out);
+				@include opacity(0);
+				content: "";
+				position: absolute;
+				z-index: 4;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(white,.8);
+				border-radius: 10px 10px 0 0;
 			}
 		}
 		.school-card-main {
@@ -3637,7 +3700,7 @@ input[type=range] {
 			@include flex-wrap;
 			@include flex-center;
 			position: relative;
-			height: 70%;
+			height: calc(100% / 3 * 2);
 			background: white;
 			border-radius: 0 0 10px 10px;
 			overflow: hidden;
@@ -3646,7 +3709,7 @@ input[type=range] {
 				@include opacity(.2);
 				@include center-x;
 				bottom: 0;
-				z-index: 1;
+				z-index: 2;
 				width: 100%;
 				height: 171%;
 				border-radius: 0 0 10px 10px;
@@ -3657,9 +3720,10 @@ input[type=range] {
 				}
 			}
 			.school-card-color {
+				@include transition(.15s ease-in-out);
 				@include opacity(.1);
 				position: absolute;
-				z-index: 2;
+				z-index: 1;
 				top: 0;
 				left: 0;
 				width: 100%;
@@ -3670,9 +3734,44 @@ input[type=range] {
 			.school-card-info {
 				position: relative;
 				z-index: 4;
-				padding-top: 40px;
+				padding-top: 30px;
+			}
+			.school-card-footer {
+				@include transition(.15s ease-in-out);
+				@include opacity(0);
+				@include flex;
+				@include flex-center;
+				-webkit-align-self: flex-end;
+				align-self: flex-end;
+				position: relative;
+				z-index: 4;
+				height: 36px;
+				width: 100%;
+				background: rgba(white,.4);
+				color: white;
+				li {
+					@include flex;
+					@include flex-center;
+					width: calc(100% / 3);
+					font-size: 16px;
+					font-weight: 600;
+					text-align: center;
+					span {
+						display: block;
+					}
+					svg {
+						display: block;
+						margin-right: 5px;
+						width: 28px;
+						height: 28px;
+						path {
+							@include svg-stroke(white, 5);
+						}
+					}
+				}
 			}
 			h1, h2 {
+				@include transition(.15s ease-in-out);
 				text-align: center;
 				margin: 0!important;
 			}
@@ -3683,6 +3782,59 @@ input[type=range] {
 			h2 {
 				font-size: 18px;
 				font-weight: 600;
+			}
+		}
+	}
+	input:hover + .school-card-inside {
+		.school-card-top {
+			.school-card-icon {
+				.school-card-icon-bg {
+					@include opacity(.7);
+				}
+				.school-card-state {
+					@include opacity(1);
+				}
+			}
+		}
+	}
+	input:checked:hover + .school-card-inside {
+		.school-card-top {
+			.school-card-icon {
+				.school-card-state {
+					&:not(:last-child) {
+						svg {
+							@include opacity(0);
+						}
+					}
+					&:last-child {
+						svg {
+							@include opacity(1);
+						}
+					}
+				}
+			}
+		}
+	}
+	input:checked + .school-card-inside {
+		.school-card-top {
+			&:after {
+				@include opacity(1);
+			}
+			.school-card-icon {
+				.school-card-icon-bg {
+					@include opacity(.7);
+				}
+				.school-card-state {
+					@include opacity(1);
+				}
+			}
+		}
+		.school-card-main {
+			.school-card-color, .school-card-footer {
+				@include opacity(1);
+			}
+			h1, h2 {
+				color: white!important;
 			}
 		}
 	}
@@ -4203,7 +4355,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="1"] {
+	&[data-rating*="1"] {
 		li:nth-child(1) {
 			svg {
 				polygon {
@@ -4211,7 +4363,7 @@ input[type=range] {
 				}
 			}
 		}
-		&[data-half="true"] {
+		&[data-half="true"], &[data-rating*="."] {
 			li:nth-child(2) {
 				svg {
 					polygon:nth-child(2) {
@@ -4221,7 +4373,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="2"] {
+	&[data-rating*="2"] {
 		li:nth-child(1), li:nth-child(2) {
 			svg {
 				polygon {
@@ -4229,7 +4381,7 @@ input[type=range] {
 				}
 			}
 		}
-		&[data-half="true"] {
+		&[data-half="true"], &[data-rating*="."] {
 			li:nth-child(3) {
 				svg {
 					polygon:nth-child(2) {
@@ -4239,7 +4391,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="3"] {
+	&[data-rating*="3"] {
 		li:nth-child(1), li:nth-child(2), li:nth-child(3) {
 			svg {
 				polygon {
@@ -4247,7 +4399,7 @@ input[type=range] {
 				}
 			}
 		}
-		&[data-half="true"] {
+		&[data-half="true"], &[data-rating*="."] {
 			li:nth-child(4) {
 				svg {
 					polygon:nth-child(2) {
@@ -4257,7 +4409,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="4"] {
+	&[data-rating*="4"] {
 		li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4) {
 			svg {
 				polygon {
@@ -4265,7 +4417,7 @@ input[type=range] {
 				}
 			}
 		}
-		&[data-half="true"] {
+		&[data-half="true"], &[data-rating*="."] {
 			li:nth-child(5) {
 				svg {
 					polygon:nth-child(2) {
@@ -4275,7 +4427,7 @@ input[type=range] {
 			}
 		}
 	}
-	&[data-rating="5"] {
+	&[data-rating*="5"] {
 		li {
 			svg {
 				polygon {
@@ -4448,5 +4600,339 @@ input[type=range] {
 				}
 			}
 		}
+	}
+}
+
+// CHECKBOXES
+.checkbox-container {
+	@include flex;
+	@include flex-center;
+	div {
+		position: relative;
+		input {
+			@include opacity(0);
+			position: absolute;
+			z-index: 12;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		span {
+			display: block;
+			width: 32px;
+			height: 32px;
+			border-radius: 3px;
+			background: $slate;
+			svg {
+				@include svg-stroke(lighten($slate, 20%), 10);
+				padding: 4px;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		input:checked + span {
+			background: $shamrock;
+			svg {
+				stroke: white;
+			}
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+// CALENDAR
+.cal-week {
+	> div {
+		@include flex;
+		@include flex-wrap;
+		width: 100%;
+		.cal-month {
+			width: 100%;
+			background: darken($campus, 25%);
+			padding: 15px;
+			font-size: 28px;
+			font-weight: 700;
+			text-align: center;
+			text-transform: uppercase;
+			margin: 0 2px 2px;
+		}
+		.cal-month.has-link {
+			padding: 0;
+			a {
+				display: block;
+				padding: 15px;
+				background: darken($campus, 25%);
+				color: white!important;
+				&:hover, &:focus {
+					background: darken($campus, 15%);
+				}
+				&:active, &.active {
+					background: darken($campus, 20%);
+				}
+			}
+		}
+		.cal-time {
+			width: 80px;
+			padding-top: 30px;
+			li {
+				position: relative;
+				height: 50px;
+				span {
+					display: block;
+					position: absolute;
+					top: -9px;
+					right: 15px;
+					font-size: 18px;
+					font-weight: 600;
+					line-height: 1;
+					text-align: right;
+				}
+			}
+		}
+		.cal-main {
+			width: calc(100% - 80px);
+			overflow-x: auto;
+			.cal-date {
+				@include flex;
+				width: 100%;
+				min-width: 770px;
+				height: 30px;
+				padding: 0 1px;
+				li {
+					width: calc(100% / 7);
+					min-width: 110px;
+					font-size: 18px;
+					font-weight: 600;
+					text-align: center;
+					padding: 0 1px;
+					> span {
+						@include flex;
+						@include flex-center;
+						border-radius: 2px;
+						height: 30px;
+						width: 100%;
+						background: $campus;
+					}
+				}
+			}
+			.cal-events {
+				@include flex;
+				min-width: 770px;
+				padding: 1px;
+				.cal-day {
+					width: calc(100% / 7);
+					li {
+						position: relative;
+						width: 100%;
+						min-width: 110px;
+						height: 50px;
+						padding: 1px;
+						> span {
+							display: block;
+							width: 100%;
+							height: 100%;
+							border-radius: 2px;
+							background: rgba($smoke, .4);
+						}
+						&.has-event {
+							> span {
+								background: white;
+								border: 1px solid $campus;
+								border-left-width: 5px;
+								padding: 5px;
+								font-size: 16px;
+								font-weight: 600;
+								color: $campus;
+								span {
+									display: block;
+									line-height: 1.1;
+								}
+							}
+						}
+						&.hours-2 {
+							height: 100px;
+						}
+						&.hours-3 {
+							height: 150px;
+						}
+						&.hours-4 {
+							height: 200px;
+						}
+						&.hours-5 {
+							height: 250px;
+						}
+						&.hours-6 {
+							height: 300px;
+						}
+						&.event-academic {
+							> span {
+								border-color: $cerise;
+								color: $cerise;
+							}
+						}
+						&.event-baking {
+							> span {
+								border-color: $gold;
+								color: $gold;
+							}
+						}
+						&.event-photography {
+							> span {
+								border-color: $moola;
+								color: $moola;
+							}
+						}
+						&.event-household {
+							> span {
+								border-color: $cobalt;
+								color: $cobalt;
+							}
+						}
+						&.event-delivery {
+							> span {
+								border-color: $auburn;
+								color: $auburn;
+							}
+						}
+						&.event-freelancing {
+							> span {
+								border-color: $orange;
+								color: $orange;
+							}
+						}
+						&.event-athletic {
+							> span {
+								border-color: $eggplant;
+								color: $eggplant;
+							}
+						}
+						&.event-tech {
+							> span {
+								border-color: $azure;
+								color: $azure;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// COURSE LIST
+.course-list, .course-none {
+	@include transition(.3s ease-in-out);
+	position: absolute;
+	width: 100%;
+	background: rgba(lighten($charcoal, 2%),.95);
+	&.hide {
+		@include flex-important;
+		// @include opacity(0);
+		@include translate-y(-10%);
+		z-index: -10;
+	}
+	&.show {
+		@include flex-important;
+		@include opacity(1);
+		@include translate-y(0);
+		@include animation-name(courses-pop);
+		@include animation-duration(.4s);
+		@include animation-iteration-count(1);
+		z-index: 10;
+	}
+}
+.course-none {
+	@include flex;
+	@include flex-center;
+	z-index: 90;
+	padding: 15px;
+	font-weight: 600;
+}
+.course-list, .course-list ul {
+	@include flex;
+	@include flex-wrap;
+	z-index: 100;
+	font-weight: 600;
+}
+.course-list {
+	padding: 7.5px;
+	li {
+		width: 100%;
+		overflow: hidden;
+		padding: 7.5px;
+		a {
+			@include flex;
+			@include flex-center-vertical;
+			display: block;
+			padding: 10px 15px;
+			background: lighten($slate, 20%);
+			&:hover, &:focus {
+				background: $shamrock;
+			}
+			&:active {
+				background: lighten($slate, 10%);
+			}
+			span {
+				display: block;
+				line-height: 1.2;
+			}
+			.course-name {
+				font-size: 16px;
+				text-transform: uppercase;
+			}
+			.course-title {
+				max-height: 48px;
+				overflow: hidden;
+				font-size: 20px;
+				font-weight: 700;
+			}
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.course-list {
+		li {
+			width: calc(100% / 3);
+			height: 102px;
+			a {
+				height: 87px;
+			}
+		}
+	}
+}
+
+@include keyframes(courses-pop) {
+	0% {
+		@include opacity(0);
+		@include translate-y(-8%);
+	}
+	80% {
+		@include opacity(1);
+		@include translate-y(2%);
+	}
+	100% {
+		@include opacity(1);
+		@include translate-y(0);
+	}
+}
+
+@include keyframes(url-pop) {
+	0% {
+		@include opacity(0);
+		@include translate-y(50%);
+	}
+	90% {
+		@include opacity(1);
+		@include translate-y(-5%);
+	}
+	100% {
+		@include opacity(1);
+		@include translate-y(0);
 	}
 }

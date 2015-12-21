@@ -50,8 +50,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $ionicConfigProvider, $compileProvider, $provide, $httpProvider, uiGmapGoogleMapApiProvider) {
 
   uiGmapGoogleMapApiProvider.configure({
-        key: 'AIzaSyD97om7R6sYXaUUgdNMdVjXWXviAFCF0u4',
-        v: '3.20',
+        key: 'AIzaSyDytQb8vjgkgYkAp7oVTjwIZkMtOE6xMZg',
+        v: '3.21',
         libraries: 'places, weather,geometry,visualization'
     });
 

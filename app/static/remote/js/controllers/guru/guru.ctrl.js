@@ -37,6 +37,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     RankingService.refreshRanking(user);
   };
 
+  $scope.profile = {edit_mode:true, showCredibility:false};
+
   $scope.activePortfolioItem = {};
 
   if (!$scope.user.id) {
@@ -47,16 +49,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $scope.guideContent = Content.getAll($scope.user);
     $scope.sidebar_content = {search_text:'', active_section:$scope.guideContent[0]}
   }, 1500)
-
-  // $timeout(function() {
-
-  //   var toolTipArr = [
-  //     {text: 'This is where you edit your profile', direction:'left', btnText: 'Got it!', selector: "#cta-box-profile"},
-  //     {text: 'Cash out your hundreds of dollars here', direction:'right', btnText: 'Got it!', selector: "#cta-box-balance"},
-  //   ]
-  //   TourService.initTooltipTour(toolTipArr)
-  //   // TourService.initTooltip(null, null, '#cta-box-profile');
-  // }, 1500);
 
   var CTA_PARENT_DICT = {
     'cta-box-profile':'.guru-home-container',
@@ -215,15 +207,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
             $scope.launchCtaDict[box_elem.id] = function() {
                 var modal_elem = document.querySelector('#' + modal_elem_id);
-
-                   // if (!$scope.user || !$scope.user.id) {
-                   //    $scope.loader.showMsg('Please create an account first!', 0, 500);
-                   //    box_elem = document.querySelector('#cta-box-signup');
-                   //    modal_elem = document.querySelector('#cta-modal-signup');
-                   //  }
-
-
-
 
                 var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
@@ -442,8 +425,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 		}
 
     $scope.showEditPortfolioItem = function(portfolio_item) {
-
+      $scope.root.vars.hide_edit_button = true;
         if ($scope.desktopMode) {
+            $timeout(function() {
+              $scope.$apply();
+            }, 100)
             if (portfolio_item) {
               portfolio_item.visible = true;
             }
@@ -562,22 +548,20 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 		}
 
 		$scope.showCredibilityModal = function() {
-
 			if ($scope.user && $scope.user.id) {
 				$scope.credibilityModal.show();
 			} else {
-
 				LoadingService.showMsg('You need an account to do that!', 2500)
 			}
 		}
 
-    $scope.$on('$ionicView.loaded', function() {
-      $scope.root.vars.showDesktopSettings = false;
-    })
+		$scope.$on('$ionicView.loaded', function() {
+			$scope.root.vars.showDesktopSettings = false;
+		})
 
 		$scope.$on('$ionicView.enter', function() {
 
-      $scope.root.vars.showDesktopSettings = false;
+			$scope.root.vars.showDesktopSettings = false;
 
 			$timeout(function() {
 				if ($scope.desktopMode) {
@@ -624,7 +608,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
 			$timeout(function() {
-
 				if (!$scope.desktopMode) {
 					$timeout(function() {
 						$scope.initMobileModals();
@@ -637,7 +620,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 			});
 		});
 
-        // $timeout(function() {$scope.contentModal.show()}, 3000);
+		// $timeout(function() {$scope.contentModal.show()}, 3000);
 
 		var launchWelcomeToGuruMode = function() {
 			$timeout(function() {

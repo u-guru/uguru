@@ -27,7 +27,8 @@ var stats = new Stats();
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'angularMoment','ngOpenFB', 'fox.scrollReveal'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic',
+  'angularMoment','ngOpenFB', 'fox.scrollReveal', 'uiGmapgoogle-maps'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -46,7 +47,13 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $ionicConfigProvider, $compileProvider, $provide, $httpProvider) {
+  $ionicConfigProvider, $compileProvider, $provide, $httpProvider, uiGmapGoogleMapApiProvider) {
+
+  uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyDytQb8vjgkgYkAp7oVTjwIZkMtOE6xMZg',
+        v: '3.21',
+        libraries: 'places, weather,geometry,visualization'
+    });
 
 
   $httpProvider.useApplyAsync(true);
@@ -106,10 +113,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'AddUniversityCtrl'
   }).
 
-  state('root.essay-university', {
+  state('root.essay-guru-access', {
         url: '/essay-university',
         templateUrl: BASE + 'templates/university.html',
         controller: 'AddUniversityCtrl',
+  }).
+  state('root.essay-home', {
+        url: '/essay-home',
+        templateUrl: BASE + 'templates/essay.student.home.html',
+        controller: "EssayStudentController"
   }).
 
   state('root.timeline', {
@@ -238,7 +250,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.student-home', {
     url:'/student-home',
-    templateUrl: BASE + 'templates/home.student.html'
+    templateUrl: BASE + 'templates/home.desktop.student.html',
+    controller: 'StudentHomeController'
   }).
   state('root.guru-home', {
     url:'/guru-home',
@@ -283,6 +296,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.profile-card', {
     url:'/profile-card',
     templateUrl: BASE + 'templates/profile.card.html'
+  }).
+  state('root.university-card', {
+    url:'/university-card',
+    templateUrl: BASE + 'templates/university.card.html',
+    controller: 'AddUniversityCtrl'
+  }).
+  state('root.paper', {
+    url:'/paper',
+    templateUrl: BASE + 'templates/paper.html'
   }).
   state('root.color-picker', {
     url:'/color-picker',

@@ -1,0 +1,170 @@
+@import 'mixin';
+
+.intercom-reset {
+	div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, div.form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video, button, textarea, input, input[type] {
+		font-family: $font;
+	}
+	input, textarea {
+		@include placeholder {
+			font-family: $font;
+		}
+	}
+}
+
+// app specific
+.intercom-parent-container {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	height: 100%;
+	margin-top: -54px;
+}
+
+#intercom-launcher, .intercom-sheet-header-minimize-button, .intercom-launcher-hovercard {
+	display: none!important;
+}
+
+#intercom-container {
+	* {
+		box-shadow: none!important;
+		font-family: $font!important;
+		text-shadow: none!important;
+	}
+	
+	#intercom-messenger:after {
+		@include transition(.15s ease-in-out);
+		@include opacity(0);
+		content: "";
+		display: block;
+		position: fixed;
+		z-index: -10000000;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba($charcoal,.7);
+	}
+	#intercom-messenger.intercom-messenger-active:after {
+		@include opacity(1);
+		z-index: auto;
+	}
+	
+	// notify email submit
+	.intercom-new-anonymous-user input[type=submit]:disabled {
+		// @samir
+		background: lighten($campus, 15%) url(../../img/svg/intercom/check.svg) no-repeat center center / 19.5px 15px!important;
+		border-color: $campus!important;
+	}
+	
+	// emoji
+	.intercom-composer-emoji-button {
+		display: none!important;
+	}
+	
+	/* -- SEND MESSAGE -- */
+	.intercom-composer {
+		@include transition(.15s ease-in-out);
+	    padding: 15px!important;
+		max-width: 338px!important;
+		.intercom-composer-textarea {
+			border-color: lighten($campus, 15%)!important;
+			border-radius: 2px!important;
+			&.intercom-composer-focused {
+				border-color: $shamrock!important;
+			}
+			textarea {
+				border-radius: 2px!important;
+			}
+		}
+	}
+	
+	/* -- MESSAGE -- */
+	.intercom-conversation-parts-container {
+		.intercom-conversation-part {
+			padding-bottom: 15px!important;
+			.intercom-comment-body {
+				padding: 10px 15px!important;
+				p {
+					font-size: 16px!important;
+				}
+			}
+			.intercom-comment-caret {
+				&:before, &:after {
+					border-width: 10px!important;
+					margin-top: 0!important;
+					top: 10px!important;
+				}
+			}
+		}
+	}
+	
+	/* -- HEADER - "New Conversation" -- */
+	.intercom-sheet-header {
+		background: $shamrock!important;
+		margin-left: -1px!important;
+		width: calc(100% + 1px)!important;
+		* {
+			font-weight: 600!important;
+			color: white!important;
+		}
+		.intercom-sheet-header-close-button .intercom-sheet-header-button-icon {
+			background-image: url(../../img/svg/intercom/close.svg)!important;
+			background-size: 13px 13px!important;
+			width: 15px!important;
+		}
+		.intercom-sheet-header-conversations-button .intercom-sheet-header-button-icon {
+			background-image: url(../../img/svg/intercom/menu.svg)!important;
+			background-size: 15px 12px!important;
+			width: 15px!important;
+		}
+	}
+	
+	.intercom-no-conversations .intercom-no-conversations-icon {
+		background-image: url(../../img/svg/intercom/no-convo.svg)!important;
+	}
+	
+	/* -- FOOTER -- */
+	.intercom-sheet-footer {
+		// "New Conversation"
+		.intercom-conversations-new-conversation-button {
+			background-image: none!important;
+			border-color: darken($shamrock, 10%)!important;
+			i {
+				display: none!important;
+			}
+		}
+	}
+	
+	/* -- TEAM MEMBER PROFILE CARD -- */
+	.intercom-app-profile-container {
+		padding: 15px 15px 0!important;
+		
+		// "Uguru Team"
+	    .intercom-app-profile-team {
+	        font-size: 24px!important;
+	        font-weight: 600!important;
+	    }
+		
+		// "Samir" or team member name
+	    .intercom-active-admins {
+	        padding-top: 0!important;
+	        .intercom-active-admin-name {
+	            font-size: 16px!important;
+	            font-weight: 600!important;
+	        }
+			.intercom-admin-avatar {
+				img {
+					@include box-sizing-important;
+					border: 3px solid $slate!important;
+				}
+			}
+	    }
+		
+		// "Ask us anything!"
+		.intercom-app-profile-text {
+			p {
+				font-weight: 600;
+			}
+		}
+	}
+}

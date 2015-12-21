@@ -273,7 +273,7 @@
 						<li ng-repeat='language in user.guru_languages' class="text-center">{{language.name}}</li>
 					</ul>
 					<div class='hide ng-class:{"show":page.modals.language.visible}' ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
-					<button class="chip">Add a Language</button>
+					<button name='AddLang-btn'class="chip">Add a Language</button>
 				</div>
 				<div class="pf-list p15top">
 					<h1>Will Work For</h1>
@@ -489,85 +489,37 @@
 				</li>
 			</ul>
 
-			<div ng-include="img_base + 'templates/profile.modal'" class="pf-cal pf-tab-item ng-class:{'active':activeTabIndex === 2}">
+			<div ng-include="img_base + 'templates/profile.modal'" class="pf-cal cal-week pf-tab-item ng-class:{'active':activeTabIndex === 2}">
 				<div>
-					<h1 class="pf-cal-month">December 2015</h1>
-					<ul class="pf-cal-time">
-						<li>
-							<span>12am</span>
-						</li>
-						<li>
-							<span>1am</span>
-						</li>
-						<li>
-							<span>2am</span>
-						</li>
-						<li>
-							<span>3am</span>
-						</li>
-						<li>
-							<span>4am</span>
-						</li>
-						<li>
-							<span>5am</span>
-						</li>
-						<li>
-							<span>6am</span>
-						</li>
-						<li>
-							<span>7am</span>
-						</li>
-						<li>
-							<span>8am</span>
-						</li>
-						<li>
-							<span>9am</span>
-						</li>
-						<li>
-							<span>10am</span>
-						</li>
-						<li>
-							<span>11am</span>
-						</li>
-						<li>
-							<span>Noon</span>
-						</li>
-						<li>
-							<span>1pm</span>
-						</li>
-						<li>
-							<span>2pm</span>
-						</li>
-						<li>
-							<span>3pm</span>
-						</li>
-						<li>
-							<span>4pm</span>
-						</li>
-						<li>
-							<span>5pm</span>
-						</li>
-						<li>
-							<span>6pm</span>
-						</li>
-						<li>
-							<span>7pm</span>
-						</li>
-						<li>
-							<span>8pm</span>
-						</li>
-						<li>
-							<span>9pm</span>
-						</li>
-						<li>
-							<span>10pm</span>
-						</li>
-						<li>
-							<span>11pm</span>
-						</li>
+					<h1 class="cal-month">December 2015</h1>
+					<ul class="cal-time">
+						<li><span>12am</span></li>
+						<li><span>1am</span></li>
+						<li><span>2am</span></li>
+						<li><span>3am</span></li>
+						<li><span>4am</span></li>
+						<li><span>5am</span></li>
+						<li><span>6am</span></li>
+						<li><span>7am</span></li>
+						<li><span>8am</span></li>
+						<li><span>9am</span></li>
+						<li><span>10am</span></li>
+						<li><span>11am</span></li>
+						<li><span>Noon</span></li>
+						<li><span>1pm</span></li>
+						<li><span>2pm</span></li>
+						<li><span>3pm</span></li>
+						<li><span>4pm</span></li>
+						<li><span>5pm</span></li>
+						<li><span>6pm</span></li>
+						<li><span>7pm</span></li>
+						<li><span>8pm</span></li>
+						<li><span>9pm</span></li>
+						<li><span>10pm</span></li>
+						<li><span>11pm</span></li>
 					</ul>
-					<div class="pf-cal-main">
-						<ul class="pf-cal-date">
+					<div class="cal-main">
+						<ul class="cal-date">
 							<li>
 								<span>
 									<span>Sun</span>&nbsp;
@@ -611,8 +563,8 @@
 								</span>
 							</li>
 						</ul>
-						<div class="pf-cal-events">
-							<ul class="pf-cal-day">
+						<div class="cal-events">
+							<ul class="cal-day">
 								<li>
 									<span></span>
 								</li>
@@ -688,7 +640,7 @@
 									<span></span>
 								</li>
 							</ul>
-							<ul class="pf-cal-day">
+							<ul class="cal-day">
 								<li>
 									<span></span>
 								</li>
@@ -766,7 +718,7 @@
 									<span></span>
 								</li>
 							</ul>
-							<ul class="pf-cal-day">
+							<ul class="cal-day">
 								<li class="has-event event-delivery">
 									<span>
 										<span>Furniture Delivery</span>
@@ -844,7 +796,7 @@
 									<span></span>
 								</li>
 							</ul>
-							<ul class="pf-cal-day">
+							<ul class="cal-day">
 								<li>
 									<span></span>
 								</li>
@@ -920,7 +872,7 @@
 									<span></span>
 								</li>
 							</ul>
-							<ul class="pf-cal-day">
+							<ul class="cal-day">
 								<li>
 									<span></span>
 								</li>
@@ -990,7 +942,7 @@
 									<span></span>
 								</li>
 							</ul>
-							<ul class="pf-cal-day">
+							<ul class="cal-day">
 								<li class="has-event event-academic">
 									<span>
 										<span>Exam Review</span>
@@ -1066,7 +1018,7 @@
 									<span></span>
 								</li>
 							</ul>
-							<ul class="pf-cal-day">
+							<ul class="cal-day">
 								<li>
 									<span></span>
 								</li>

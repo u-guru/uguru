@@ -45,9 +45,14 @@ Gameplan
 	</header>
 	<main>
 		<div class="onboarding-steps absolute top-0 left-0">
-			<progress class="shamrock" max="6" value="{{requestProgress.value}}"></progress>
+			<progress class="white" max="6" value="{{requestProgress.value}}"></progress>
 		</div>
 		<ion-slide-box id='request-form-slide-box' can-swipe-back='false' on-slide-changed="slideHasChanged($index)" class='full-y'>
+
+			<!-- <ion-slide ng-include="img_base + BASE + 'templates/request.slide.one.html'"></ion-slide> -->
+
+
+
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.two.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.one.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.three.html'"></ion-slide>

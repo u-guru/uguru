@@ -80,7 +80,13 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     if (mixpanel && mixpanel.track) {
       mixpanel.track("Back to access selected");
     }
-    $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
+
+    if ($scope.root.vars.theme === 'essay') {
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.essay-home')
+    } else {
+      $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').previous();
+    }
   }
 
 

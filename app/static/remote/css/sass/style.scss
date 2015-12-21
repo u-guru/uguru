@@ -209,7 +209,8 @@ section {
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background: url(../../img/schools.jpg) center center / cover;
+				background: url(../../img/schools.jpg) no-repeat center center / cover,
+							url(/static/remote/img/schools.jpg) no-repeat center center / cover;
 			}
 		}
 	}
@@ -577,18 +578,40 @@ section {
 	}
 }
 
+// ONBOARDING
+.onboarding-search {
+	.prefix {
+		top: 4px;
+		svg {
+			@include svg-stroke(white, 5);
+			width: 100%;
+			height: 100%;
+			padding: 10px;
+		}
+	}
+}
+
 // UNIVERSITY
 .university-view {
 	background: $charcoal;
 	header.third {
 		&::before {
-			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
-						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
+			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/schools.jpg) no-repeat center center / cover;
 		}
 		> h1 {
 			font-size: 28px!important;
 			text-transform: lowercase;
 			padding-bottom: 30px;
+		}
+		.onboarding-search {
+			input {
+				width: calc(100% - 48px - 15px);
+			}
+			input, label {
+				color: white!important;
+				border-color: white!important;
+			}
 		}
 		.geolocation-icon {
 			position: absolute;
@@ -936,8 +959,8 @@ section {
 	background: $charcoal;
 	header.third {
 		&::before {
-			background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,
-						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
+			background: url(../../img/onboarding/major.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/major.jpg) no-repeat center center / cover;
 		}
 		> h1 {
 			font-size: 28px!important;
@@ -986,8 +1009,8 @@ section {
 .courses-view {
 	header.third {
 		&::before {
-			background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
-						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
+			background: url(../../img/onboarding/courses.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/courses.jpg) no-repeat center center / cover;
 		}
 		div:not(.header-nav) h1 {
 			font-size: 28px!important;
@@ -997,6 +1020,15 @@ section {
 				margin-top: 0;
 				font-size: 20px;
 				padding: 0 15px 30px;
+			}
+		}
+		.onboarding-search {
+			input {
+				width: calc(100% - 48px - 15px);
+			}
+			input, label {
+				color: white!important;
+				border-color: white!important;
 			}
 		}
 	}
@@ -1089,8 +1121,8 @@ section {
 	background: $charcoal;
 	header.third {
 		&::before {
-			background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
-						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
+			background: url(../../img/onboarding/skills.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/skills.jpg) no-repeat center center / cover;
 		}
 		div:not(.header-nav) h1 {
 			font-size: 28px!important;
@@ -2326,6 +2358,7 @@ section {
 							position: relative;
 							height: calc(100% - 97px);
 							width: 100%;
+							text-align: center!important;
 							#guru-ranking-progress-bar {
 								height: 100%;
 							}
@@ -2342,6 +2375,7 @@ section {
 								@include center-xy;
 								+ svg {
 									display: block!important;
+									margin: 0 auto!important;
 								}
 								#percentile-ranking {
 									position: relative;
@@ -2772,8 +2806,8 @@ section {
 .mobile-general {
 	header.third {
 		&::before {
-			background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover,
-						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
+			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/schools.jpg) no-repeat center center / cover;
 		}
 		> h1 {
 			font-size: 28px!important;
@@ -3025,17 +3059,6 @@ section {
 	}
 }
 
-/**Hide intercom shit**/
-#intercom-launcher {
-	display:none !important;
-}
-.intercom-parent-container {
-	position: absolute;
-	width: 100%;
-	top: 0;
-	height: 100%;
-	margin-top: -54px;
-}
 .stats-small {
 	font-size: 12px;
 	font-weight: 700;

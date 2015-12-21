@@ -1,0 +1,80 @@
+@import 'mixin';
+
+.intercom-reset {
+	div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, div.form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video, button, textarea, input, input[type] {
+		font-family: $font;
+	}
+	input, textarea {
+		@include placeholder {
+			font-family: $font;
+		}
+	}
+}
+
+.intercom-sheet-header-minimize-button, .intercom-launcher-hovercard {
+	display: none!important;
+}
+#intercom-container {
+    * {
+		box-shadow: none!important;
+		font-family: $font!important;
+		text-shadow: none!important;
+	}
+    
+    // LAUNCHER
+	.intercom-launcher {
+	    right: 10px!important;
+	    bottom: 10px!important;
+    }
+	.intercom-launcher-preview {
+		&::before {
+			background: none!important;
+		}
+	}
+	.intercom-launcher-button {
+		@include transition(.15s ease-in);
+    	z-index: 5!important;
+		border: 2px solid white!important;
+		background: transparent!important;
+		height: 42px!important;
+		width: 76px!important;
+		border-radius: 1000px!important;
+		&:after {
+			@include transition(.15s ease-in);
+			@include center-xy;
+			content: "Chat"!important;
+			color: white!important;
+			font-size: 14px!important;
+			font-weight: 600!important;
+			text-transform: uppercase!important;
+		}
+		&.active {
+			display: none!important;
+		}
+		&:hover, &:active, &:focus {
+			background: white!important;
+			&:after {
+				color: $charcoal!important;
+			}
+		}
+	}
+	.intercom-launcher-preview {
+    	bottom: -7px!important;
+    	right: 110px!important;
+    	max-width: 111px!important;
+	}
+	.intercom-launcher-preview-body {
+		position: relative;
+		padding-left: 15px;
+	}
+	.intercom-launcher-preview-body:after {
+		@include round;
+		@include center-y;
+		left: 0;
+		content: "";
+		display: block;
+		width: 8px;
+		height: 8px;
+		background: $moola;
+	}
+}
