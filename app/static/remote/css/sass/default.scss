@@ -3608,6 +3608,14 @@ input[type=range] {
 		width: 100%;
 		fill: none;
 	}
+	input {
+		position: absolute;
+		z-index: 7;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 	.school-card-inside {
 		position: absolute;
 		top: 0;
@@ -3617,20 +3625,74 @@ input[type=range] {
 		.school-card-top {
 			position: relative;
 			z-index: 3;
-			height: 30%;
+			height: calc(100% / 3);
 			background-color: $slate;
 			border-radius: 10px 10px 0 0;
 			.school-card-icon {
 				@include center-x;
 				@include round;
-				display: block;
-				top: 16px;
-				width: 96px;
-				height: 96px;
+				@include flex;
+				@include flex-center;
+				z-index: 5;
+				top: 15px;
+				width: 84px;
+				height: 84px;
 				background-position: center;
 				background-size: cover;
 				background-color: white;
 				border: 3px solid $slate;
+				.school-card-icon-bg {
+					@include transition(.15s ease-in-out);
+					@include opacity(0);
+					@include round;
+					display: block;
+					position: absolute;
+					z-index: 6;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				.school-card-state {
+					@include transition(.15s ease-in-out);
+					@include opacity(0);
+					position: absolute;
+					z-index: 7;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					svg {
+						@include transition(.15s ease-in-out);
+						@include round;
+						display: block;
+						width: 100%;
+						height: 100%;
+						padding: 15px;
+						path {
+							@include svg-stroke(white, 10);
+						}
+					}
+					&:last-child {
+						svg {
+							@include opacity(0);
+							@include rotate(45);
+						}
+					}
+				}
+			}
+			&:after {
+				@include transition(.15s ease-in-out);
+				@include opacity(0);
+				content: "";
+				position: absolute;
+				z-index: 4;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(white,.8);
+				border-radius: 10px 10px 0 0;
 			}
 		}
 		.school-card-main {
@@ -3638,7 +3700,7 @@ input[type=range] {
 			@include flex-wrap;
 			@include flex-center;
 			position: relative;
-			height: 70%;
+			height: calc(100% / 3 * 2);
 			background: white;
 			border-radius: 0 0 10px 10px;
 			overflow: hidden;
@@ -3647,7 +3709,7 @@ input[type=range] {
 				@include opacity(.2);
 				@include center-x;
 				bottom: 0;
-				z-index: 1;
+				z-index: 2;
 				width: 100%;
 				height: 171%;
 				border-radius: 0 0 10px 10px;
@@ -3658,9 +3720,10 @@ input[type=range] {
 				}
 			}
 			.school-card-color {
+				@include transition(.15s ease-in-out);
 				@include opacity(.1);
 				position: absolute;
-				z-index: 2;
+				z-index: 1;
 				top: 0;
 				left: 0;
 				width: 100%;
@@ -3671,9 +3734,44 @@ input[type=range] {
 			.school-card-info {
 				position: relative;
 				z-index: 4;
-				padding-top: 40px;
+				padding-top: 30px;
+			}
+			.school-card-footer {
+				@include transition(.15s ease-in-out);
+				@include opacity(0);
+				@include flex;
+				@include flex-center;
+				-webkit-align-self: flex-end;
+				align-self: flex-end;
+				position: relative;
+				z-index: 4;
+				height: 36px;
+				width: 100%;
+				background: rgba(white,.4);
+				color: white;
+				li {
+					@include flex;
+					@include flex-center;
+					width: calc(100% / 3);
+					font-size: 16px;
+					font-weight: 600;
+					text-align: center;
+					span {
+						display: block;
+					}
+					svg {
+						display: block;
+						margin-right: 5px;
+						width: 28px;
+						height: 28px;
+						path {
+							@include svg-stroke(white, 5);
+						}
+					}
+				}
 			}
 			h1, h2 {
+				@include transition(.15s ease-in-out);
 				text-align: center;
 				margin: 0!important;
 			}
@@ -3684,6 +3782,59 @@ input[type=range] {
 			h2 {
 				font-size: 18px;
 				font-weight: 600;
+			}
+		}
+	}
+	input:hover + .school-card-inside {
+		.school-card-top {
+			.school-card-icon {
+				.school-card-icon-bg {
+					@include opacity(.7);
+				}
+				.school-card-state {
+					@include opacity(1);
+				}
+			}
+		}
+	}
+	input:checked:hover + .school-card-inside {
+		.school-card-top {
+			.school-card-icon {
+				.school-card-state {
+					&:not(:last-child) {
+						svg {
+							@include opacity(0);
+						}
+					}
+					&:last-child {
+						svg {
+							@include opacity(1);
+						}
+					}
+				}
+			}
+		}
+	}
+	input:checked + .school-card-inside {
+		.school-card-top {
+			&:after {
+				@include opacity(1);
+			}
+			.school-card-icon {
+				.school-card-icon-bg {
+					@include opacity(.7);
+				}
+				.school-card-state {
+					@include opacity(1);
+				}
+			}
+		}
+		.school-card-main {
+			.school-card-color, .school-card-footer {
+				@include opacity(1);
+			}
+			h1, h2 {
+				color: white!important;
 			}
 		}
 	}
