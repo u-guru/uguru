@@ -58,7 +58,7 @@ angular.module('uguru.guru.controllers')
       language: {visible:false}
     }
     $scope.page.backdrops = {activeTab:false}
-    $scope.page.dropdowns = {majors:{active:false}, year: {active:false}, alumn:{active:false, options:User.alumnOptions()}}
+    $scope.page.dropdowns = {majors:{active:false}, year: {active:false, options:User.yearOptions()}, alumn:{active:false, options:User.alumnOptions()}}
 
     $scope.page.popups.checkPopupVisible = function() {
       return $scope.pagePopups.linkedin || $scope.pagePopups.facebook ||
@@ -71,7 +71,18 @@ angular.module('uguru.guru.controllers')
       LoadingService.showAmbig(null, 200, function() {
         $scope.user.updateAttr('is_alumni', $scope.user, $scope.user.is_alumni, null, $scope);
       })
+    }
 
+    $scope.updateUserYear = function(year) {
+      $scope.user.year = year;
+      $scope.page.dropdowns.year.active = !$scope.page.dropdowns.year.active;
+      LoadingService.showAmbig(null, 200, function() {
+        $scope.user.updateAttr('year', $scope.user, $scope.user.year, null, $scope);
+      })
+    }
+
+    $scope.updateUserMajor = function(bool) {
+        $scope.user.updateAttr('major', $scope.user, $scope.user.major, null, $scope);
     }
 
 

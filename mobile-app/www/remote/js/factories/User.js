@@ -618,7 +618,7 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
 
         $scope.user.majors = user.departments;
-        $scope.user.major = user.major;
+        $scope.user.major = user.major || 'mathematics';
         $scope.user.year = user.year;
 
         $scope.user.guru_categories = user.guru_categories;
@@ -845,6 +845,9 @@ angular.module('uguru.user', [])
         alumnOptions: function() {
             return ['am seeking', 'have'];
         },
+        yearOptions: function() {
+            return ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Grad/Masters', 'PhD', 'Alumni'];
+        },
         initUser: function() {
             var newUser = initUser();
             return newUser;
@@ -1062,6 +1065,19 @@ angular.module('uguru.user', [])
                     'is_alumni': obj
                 }
               }
+
+              if (arg === 'year') {
+                return {
+                    'year': obj
+                }
+              }
+
+              if (arg === 'major') {
+                return {
+                    'major': obj
+                }
+              }
+
 
               if (arg === 'recent_position') {
                 return {
