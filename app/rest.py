@@ -657,6 +657,15 @@ class UserOneView(restful.Resource):
         if 'update_guru_major' in request.json:
             user.major = request.json.get('update_guru_major')
 
+        if 'is_alumni' in request.json:
+            print "it gets here"
+            user.is_alumni = request.json.get('is_alumni')
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
         if 'update_guru_demographic' in request.json:
             user.year = request.json.get('update_guru_demographic')
 

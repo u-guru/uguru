@@ -760,6 +760,7 @@ angular.module('uguru.user', [])
         $scope.user.grade_dict = user.grade_dict;
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;
         $scope.user.skills = user.skills;
+        $scope.user.is_alumni = user.is_alumni;
         $scope.user.professions = user.professions;
         $scope.user.support_tickets = user.support_tickets;
         $scope.user.max_hourly = parseInt(user.max_hourly);
@@ -840,6 +841,9 @@ angular.module('uguru.user', [])
         },
         checkAccess: function(payload) {
             return Restangular.one('user').customPUT(JSON.stringify(payload));
+        },
+        alumnOptions: function() {
+            return ['am seeking', 'have'];
         },
         initUser: function() {
             var newUser = initUser();
@@ -1041,12 +1045,21 @@ angular.module('uguru.user', [])
               if (arg === 'is_a_guru') {
                 return obj;
               }
+
+
+
               if (arg === 'guru_mode') {
                 return obj;
               }
               if (arg === 'profile_info') {
                 return {
                     'profile_info': obj
+                }
+              }
+
+              if (arg === 'is_alumni') {
+                return {
+                    'is_alumni': obj
                 }
               }
 

@@ -41,7 +41,6 @@ angular.module('uguru.guru.controllers')
     }
 
 
-
     $scope.profile = {showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
@@ -50,19 +49,29 @@ angular.module('uguru.guru.controllers')
     }
 
     // credibility only variable
-    $scope.activeTabIndex = 0;
+    $scope.activeTabIndex = 1;
     $scope.profile.edit_mode = false;
 
-    $scope.page = { modals : {}, popups: {}, backdrops: {} }
+    $scope.page = { modals : {}, popups: {}, backdrops: {}, dropdowns: {} }
     $scope.page.modals = {
       experience: {visible:false},
       language: {visible:false}
     }
     $scope.page.backdrops = {activeTab:false}
+    $scope.page.dropdowns = {majors:{active:false}, year: {active:false}, alumn:{active:false, options:User.alumnOptions()}}
 
     $scope.page.popups.checkPopupVisible = function() {
       return $scope.pagePopups.linkedin || $scope.pagePopups.facebook ||
       $scope.pagePopups.instagram || $scope.pagePopups.custom || $scope.pagePopups.twitter;
+    }
+
+    $scope.updateUserAlumni = function(bool) {
+      $scope.user.is_alumni = bool;
+      $scope.page.dropdowns.alumn.active = !$scope.page.dropdowns.alumn.active
+      LoadingService.showAmbig(null, 200, function() {
+        $scope.user.updateAttr('is_alumni', $scope.user, $scope.user.is_alumni, null, $scope);
+      })
+
     }
 
 
