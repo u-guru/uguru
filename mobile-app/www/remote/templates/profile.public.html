@@ -212,16 +212,20 @@
 						<h2 class="hide ng-class:{'hide': profile.edit_mode}">I have a PhD in Math</h2>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">I&nbsp;&nbsp;</h2>
 						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
-							<div>
-								<span>am seeking</span>
-								<a>
+							<div class='relative alumn-dropdown'>
+								<span class='flex-wrap-center full-xy'>
+									<span class="hide ng-class:{'show':user.is_alumni}" >have</span>
+									<span class="hide ng-class:{'show':!user.is_alumni}">am seeking</span>
+								</span>
+								<a ng-click="page.dropdowns.alumn.active = !page.dropdowns.alumn.active">
 									<svg viewBox="0 0 100 100">
 										<path d="M14,32 L50,68 L86,32"></path>
 									</svg>
 								</a>
 							</div>
-							<ul class="active">
-								<li tabindex>have</li>
+							<ul class="ng-class:{'active': page.dropdowns.alumn.active}">
+								<li ng-click='updateUserAlumni(true)' class="hide ng-class:{'show':!user.is_alumni}" tabindex>have</li>
+								<li ng-click='updateUserAlumni(false)' class="hide ng-class:{'show':user.is_alumni}" tabindex>am seeking</li>
 							</ul>
 						</div>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;a&nbsp;&nbsp;</h2>
