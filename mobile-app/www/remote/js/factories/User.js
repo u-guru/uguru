@@ -1066,6 +1066,12 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'update_guru_currency') {
+                return {
+                    'update_guru_currency': obj
+                }
+              }
+
               if (arg === 'year') {
                 return {
                     'year': obj
