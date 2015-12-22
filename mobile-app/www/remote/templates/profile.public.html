@@ -50,7 +50,7 @@
 					  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 					</svg>
 				</div>
-				<ul class="pf-url"  ng-if="!profile.edit_mode">
+				<ul class="pf-url"  ng-if="profile.public_mode">
 					<li>
 						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code || user.first_name}}.uguru.me</a>
 					</li>
@@ -62,14 +62,18 @@
 						</a>
 					</li>
 				</ul>
-				<ul class="pf-url pf-edit-url" ng-if="profile.edit_mode">
+				<ul class="pf-url pf-edit-url" ng-if="!profile.public_mode">
 					<li class="relative">
+<<<<<<< HEAD
 						<input name='profile_code' ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length}}" />
+=======
+						<input ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length + 2}}" />
+>>>>>>> d602cf3ab01ef91487a4ca21cd745fd659717410
 						<span>.uguru.me</span>
 						<!-- @samir -->
 						<!-- BIND -->
 						<!-- add .checkmark to activate animation, parent must have .relative -->
-						<svg class="loader center-bottom" viewBox="0 0 100 100">
+						<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.profile_code}" viewBox="0 0 100 100">
 						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 						</svg>
@@ -222,6 +226,10 @@
 										<path d="M14,32 L50,68 L86,32"></path>
 									</svg>
 								</a>
+								<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.alumni}" viewBox="0 0 100 100">
+								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+								</svg>
 							</div>
 							<ul name="alumni-dropdown" class="ng-class:{'active': page.dropdowns.alumn.active}">
 								<li ng-click='updateUserAlumni(true)' class="hide ng-class:{'show':!user.is_alumni}" tabindex>have</li>
@@ -230,20 +238,35 @@
 						</div>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;a&nbsp;&nbsp;</h2>
 						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
-							<div>
+							<div class='relative'>
 								<span>{{user.year || 'Freshman'}}</span>
 								<a name="year-btn" ng-click="page.dropdowns.year.active = !page.dropdowns.year.active">
 									<svg viewBox="0 0 100 100">
 										<path d="M14,32 L50,68 L86,32"></path>
 									</svg>
 								</a>
+								<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.year}" viewBox="0 0 100 100">
+								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+								</svg>
 							</div>
 							<ul name="year-dropdown" class="ng-class:{'active': page.dropdowns.year.active}">
 								<li ng-click='updateUserYear(option)' ng-repeat='option in page.dropdowns.year.options' tabindex>{{option}}</li>
 							</ul>
 						</div>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;in&nbsp;&nbsp;</h2>
+<<<<<<< HEAD
 						<input name="userMajor-input"ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}"/>
+=======
+						<span class='relative'>
+							<input ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}
+							"/>
+							<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.major}" viewBox="0 0 100 100">
+								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+							</svg>
+						</span>
+>>>>>>> d602cf3ab01ef91487a4ca21cd745fd659717410
 					</div>
 				</div>
 				<div class="pf-list p15top relative">
@@ -283,13 +306,6 @@
 				<div class="pf-list p15top">
 					<h1>Will Work For</h1>
 					<ul class="pf-list-x ugrid-3">
-						<!-- <li ng-repeat='currency in all_currencies' ng-click='updateCurrency(currency)'>
-							<svg viewBox="0 0 100 100" ng-if='currency.active'>
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-							<small class="weight-500 p10xy ng-class:{'txt-cerise': currency.active, 'bg-academic': currency.active}"> {{currency.name}}
-							</small>
-						</li> -->
 						<li name="currency-check" ng-repeat='currency in all_currencies'>
 							<span ng-include="img_base + BASE + 'templates/svg/wwf/' + currency.icon_url"></span>
 							<span>{{currency.name}}</span>
@@ -416,21 +432,29 @@
 						<!-- @samir -->
 						<!-- BIND -->
 						<!-- add .checkmark to activate animation, parent must have .relative -->
-						<svg class="loader right-center" viewBox="0 0 100 100">
+						<svg class="loader right-center ng-class:{'checkmark':page.checkmarks.shop_title}" viewBox="0 0 100 100">
 						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 						</svg>
 					</div>
 
-					<!-- <p class="pf-header-desc">{{user.active_shop.description}}</p> -->
+					<p class="pf-header-desc">{{user.active_shop.description}}</p>
 					<!-- @Gabrielle did you mean to put two here? -->
 					<div class='pf-textarea-container relative' ng-if='desktopMode'>
 						<textarea name='description' ng-model='user.academic_shop.description' ng-blur='saveGuruShopDescription()' class="pf-header-desc" rows="2" maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{100 - user.guru_introduction.length}}</span>
+						<svg class="loader right-center ng-class:{'checkmark':page.checkmarks.shop_description}" viewBox="0 0 100 100">
+						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+						</svg>
 					</div>
 					<div class='pf-textarea-container relative' ng-if='!desktopMode'>
 						<textarea name='description' class="pf-header-desc" rows="3" ng-blur='saveGuruShopDescription()' maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{100 - user.guru_introduction.length}}</span>
+						<svg class="loader right-center ng-class:{'checkmark':page.checkmarks.shop_description}" viewBox="0 0 100 100">
+						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+						</svg>
 					</div>
 				</li>
 

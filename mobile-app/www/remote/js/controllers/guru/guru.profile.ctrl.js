@@ -58,7 +58,8 @@ angular.module('uguru.guru.controllers')
       language: {visible:false}
     }
     $scope.page.toggles = {experience:{active:false}, languages:{active:false}};
-    $scope.page.backdrops = {activeTab:false}
+    $scope.page.backdrops = {activeTab:false};
+    $scope.page.checkmarks = {shop_title:false, shop_description:false, profile_code:false, major:false, alumni:false, year:false};
     $scope.page.dropdowns = {majors:{active:false}, year: {active:false, options:User.yearOptions()}, alumn:{active:false, options:User.alumnOptions()}}
 
     $scope.page.popups.checkPopupVisible = function() {
@@ -66,15 +67,27 @@ angular.module('uguru.guru.controllers')
       $scope.pagePopups.instagram || $scope.pagePopups.custom || $scope.pagePopups.twitter;
     }
 
+    $scope.showConfirmInputCheckmark = function(input_name) {
+      if ($scope.page.checkmarks) {
+        $scope.page.checkmarks[input_name] = true;
+        //hide it after it shows
+        $timeout(function() {
+          $scope.page.checkmarks[input_name] = false;
+        }, 3000);
+      }
+    }
+
     $scope.updateUserAlumni = function(bool) {
       $scope.user.is_alumni = bool;
       $scope.page.dropdowns.alumn.active = !$scope.page.dropdowns.alumn.active
+      $scope.showConfirmInputCheckmark('alumni');
       LoadingService.showAmbig(null, 200, function() {
         $scope.user.updateAttr('is_alumni', $scope.user, $scope.user.is_alumni, null, $scope);
       })
     }
 
     $scope.updateUserYear = function(year) {
+      $scope.showConfirmInputCheckmark('year');
       $scope.user.year = year;
       $scope.page.dropdowns.year.active = !$scope.page.dropdowns.year.active;
       LoadingService.showAmbig(null, 200, function() {
@@ -83,6 +96,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.updateUserMajor = function(bool) {
+      $scope.showConfirmInputCheckmark('major');
         $scope.user.updateAttr('major', $scope.user, $scope.user.major, null, $scope);
     }
 
@@ -460,6 +474,7 @@ angular.module('uguru.guru.controllers')
         return
       }
       User.updateLocal($scope.user);
+      $scope.showConfirmInputCheckmark('shop_description');
       $scope.user.updateAttr('update_guru_shop_description', $scope.user, $scope.user.academic_shop, null, $scope);
     }
 
@@ -468,7 +483,8 @@ angular.module('uguru.guru.controllers')
         return
       }
       User.updateLocal($scope.user);
-      $scope.user.updateAttr('update_guru_shop_title', $scope.user, $scope.user.academic_shop, null, $scope);
+      $scope.showConfirmInputCheckmark('shop_title');
+      $scope.user.updateAttr('update_guru_shop_title', $scope.user, $scope.user.academic_shop, $scope);
     }
 
     $scope.onEnterBlurInput = function($event) {
@@ -492,7 +508,7 @@ angular.module('uguru.guru.controllers')
         // LoadingService.showSuccess('Saved', 1000)
         cb && cb();
       }
-
+      $scope.showConfirmInputCheckmark('profile_code')
       $scope.user.updateAttr('profile_code', $scope.user, $scope.user.profile_code, successFunction, $scope, failureFunction);
       $scope.profile.intro_edit_mode = false;
 
