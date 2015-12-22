@@ -64,11 +64,7 @@
 				</ul>
 				<ul class="pf-url pf-edit-url" ng-if="!profile.public_mode">
 					<li class="relative">
-<<<<<<< HEAD
-						<input name='profile_code' ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length}}" />
-=======
-						<input ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length + 2}}" />
->>>>>>> d602cf3ab01ef91487a4ca21cd745fd659717410
+						<input name='profile_code' ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length + 2}}" />
 						<span>.uguru.me</span>
 						<!-- @samir -->
 						<!-- BIND -->
@@ -255,18 +251,14 @@
 							</ul>
 						</div>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;in&nbsp;&nbsp;</h2>
-<<<<<<< HEAD
-						<input name="userMajor-input"ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}"/>
-=======
 						<span class='relative'>
-							<input ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}
+							<input name="userMajor-input" ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}
 							"/>
 							<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.major}" viewBox="0 0 100 100">
 								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 							</svg>
 						</span>
->>>>>>> d602cf3ab01ef91487a4ca21cd745fd659717410
 					</div>
 				</div>
 				<div class="pf-list p15top relative">
