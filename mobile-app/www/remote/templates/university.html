@@ -7,7 +7,7 @@
 			<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.theme && root.vars.theme === 'essay'}" ng-if='desktopMode'>
 			    <span data-velocity id="main-logo-container" ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 				<header data-velocity class="desktop-header">
-					<a class="desktop-header-back" ng-click='backToAccess()'>
+					<a name='university-head-back' class="desktop-header-back" ng-click='backToAccess()'>
 						<svg viewBox="0 0 100 100">
 							<path d="M68,86 L32,50 L68,14"></path>
 						</svg>
@@ -34,7 +34,7 @@
 			                <!-- <input id="university-input" type="text"
 			                /> -->
 			                <label class="ng-class:{'hide': search_text.university.length}" for="university-input">find your university</label>
-			                <a class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
+			                <a name='reset-input' class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
 								<i class='icon ion-close-circled text-white'></i>
 							</a>
 			            </div>
@@ -68,7 +68,7 @@
 				<header class="third flex-center">
 					<h1>Find Your Campus</h1>
 					<div class="header-nav" ng-if='LOCAL'>
-						<a class="header-nav-back" ng-click='goToAccessAdmin()'>
+						<a name='university-head-back' class="header-nav-back" ng-click='goToAccessAdmin()'>
 							<svg viewBox="0 0 100 100">
 								<path d="M68,86 L32,50 L68,14"></path>
 							</svg>
@@ -94,7 +94,7 @@
 							<a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='search_text.university.length === 0'>
 								<i class='icon ion-navigate ng-class:{"location-active":location.settings.isActive}'></i>
 							</a>
-			                <a class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
+			                <a name='reset-input' class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
 								<i class='icon ion-close-circled text-white'></i>
 							</a>
 			            </div>
