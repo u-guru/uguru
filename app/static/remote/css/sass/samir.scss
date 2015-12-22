@@ -468,3 +468,15 @@ body.platform-ios #mobile-guru-home {
 	z-index: 98;
 	display: none;
 }
+
+
+//@gabrielle what's the best way to do this
+.alumn-dropdown span span {
+	line-height:48px;
+}
+
+//for somereason #guru courses user profile is hidden
+#language-list
+ul#guru-courses-user-profile {
+	display:block!important;
+}

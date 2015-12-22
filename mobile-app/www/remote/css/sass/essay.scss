@@ -220,5 +220,24 @@ ion-view {
 			}
 		}
 	}
+	header#essay-header {
+		div#essay-home-backdrop {
+			background-color: rgba($charcoal, 0.66);
+			position:fixed;
+			a {
+				color:white;
+				top:0;
+				right:0;
+				margin:10px 30px 10px 0px;
+				svg {
+					width:33px;
+					height:33px;
+					path {
+						stroke-width:10px;
+					}
+				}
+			}
+		}
+	}
 }
 //samir essay css ---- END

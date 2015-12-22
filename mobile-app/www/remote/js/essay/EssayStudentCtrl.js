@@ -23,6 +23,7 @@ angular.module('uguru.util.controllers')
     //default
     $scope.university = {name:'Harvard'};
     $scope.root.vars.theme = 'essay';
+    $scope.page = {modals: {backdrop: {active:false}}};
 
     $interval(function() {
       $scope.university = selectRandom(targettedUniversities);

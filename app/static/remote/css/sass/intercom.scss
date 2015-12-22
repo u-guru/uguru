@@ -24,13 +24,13 @@
 	display: none!important;
 }
 
-#intercom-container {
-	* {
+#intercom-container {*
+	 {
 		box-shadow: none!important;
 		font-family: $font!important;
 		text-shadow: none!important;
-	}
-	
+	 }
+
 	#intercom-messenger:after {
 		@include transition(.15s ease-in-out);
 		@include opacity(0);
@@ -48,19 +48,19 @@
 		@include opacity(1);
 		z-index: auto;
 	}
-	
+
 	// notify email submit
 	.intercom-new-anonymous-user input[type=submit]:disabled {
 		// @samir
 		background: lighten($campus, 15%) url(../../img/svg/intercom/check.svg) no-repeat center center / 19.5px 15px!important;
 		border-color: $campus!important;
 	}
-	
+
 	// emoji
 	.intercom-composer-emoji-button {
 		display: none!important;
 	}
-	
+
 	/* -- SEND MESSAGE -- */
 	.intercom-composer {
 		@include transition(.15s ease-in-out);
@@ -77,7 +77,7 @@
 			}
 		}
 	}
-	
+
 	/* -- MESSAGE -- */
 	.intercom-conversation-parts-container {
 		.intercom-conversation-part {
@@ -97,7 +97,7 @@
 			}
 		}
 	}
-	
+
 	/* -- HEADER - "New Conversation" -- */
 	.intercom-sheet-header {
 		background: $shamrock!important;
@@ -118,11 +118,11 @@
 			width: 15px!important;
 		}
 	}
-	
+
 	.intercom-no-conversations .intercom-no-conversations-icon {
 		background-image: url(../../img/svg/intercom/no-convo.svg)!important;
 	}
-	
+
 	/* -- FOOTER -- */
 	.intercom-sheet-footer {
 		// "New Conversation"
@@ -134,17 +134,17 @@
 			}
 		}
 	}
-	
+
 	/* -- TEAM MEMBER PROFILE CARD -- */
 	.intercom-app-profile-container {
 		padding: 15px 15px 0!important;
-		
+
 		// "Uguru Team"
 	    .intercom-app-profile-team {
 	        font-size: 24px!important;
 	        font-weight: 600!important;
 	    }
-		
+
 		// "Samir" or team member name
 	    .intercom-active-admins {
 	        padding-top: 0!important;
@@ -159,7 +159,7 @@
 				}
 			}
 	    }
-		
+
 		// "Ask us anything!"
 		.intercom-app-profile-text {
 			p {

@@ -229,5 +229,18 @@ ion-view {
       height: 33px; }
       #essay-student-home header#become-guru-essay-header a.close-become-guru-header svg path {
         stroke-width: 10px; }
+#essay-student-home header#essay-header div#essay-home-backdrop {
+  background-color: rgba(43, 50, 52, 0.66);
+  position: fixed; }
+  #essay-student-home header#essay-header div#essay-home-backdrop a {
+    color: white;
+    top: 0;
+    right: 0;
+    margin: 10px 30px 10px 0px; }
+    #essay-student-home header#essay-header div#essay-home-backdrop a svg {
+      width: 33px;
+      height: 33px; }
+      #essay-student-home header#essay-header div#essay-home-backdrop a svg path {
+        stroke-width: 10px; }
 
 /*# sourceMappingURL=essay.css.map */

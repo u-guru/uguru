@@ -17,6 +17,16 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate, LoadingService) {
 
+    $scope.closeGuruExperience = function() {
+      if ($scope.desktopMode) {
+        $scope.page.toggles.experience.active = {name:'', years:1, description:''};
+        $scope.page.toggles.experience.active = !$scope.page.toggles.experience.active;
+
+      } else {
+        $scope.guruExperiencesModal.hide()
+      }
+    }
+
     $scope.removeGuruExperience = function(experience, index) {
       var removedExperience = $scope.user.guru_experiences.splice(index, 1);
       var successCallback = function() {
@@ -26,10 +36,7 @@ angular.module('uguru.util.controllers')
           $scope.guruExperiencesModal.remove();
         }
         if ($scope.desktopMode) {
-          $timeout(function() {
-            var modalElem = document.querySelector('#cta-modal-profile-experiences');
-            modalElem.classList.remove('show');
-          }, 1000)
+          $scope.page.toggles.experience.active = !$scope.page.toggles.experience.active;
         }
       }
 
@@ -55,15 +62,12 @@ angular.module('uguru.util.controllers')
 
         if ($scope.desktopMode) {
 
-          $timeout(function() {
-            var modalElem = document.querySelector('#cta-modal-profile-experiences');
-            modalElem.classList.remove('show');
-          }, 1000)
+          $scope.page.toggles.experience.active = !$scope.page.toggles.experience.active;
 
         } else {
 
           if ($scope.guruExperiencesModal && $scope.guruExperiencesModal.isShown()){
-              $scope.guruExperiencesModal.remove();
+              $scope.guruExperiencesModal.hide();
           }
 
         }
