@@ -290,7 +290,7 @@
 							<small class="weight-500 p10xy ng-class:{'txt-cerise': currency.active, 'bg-academic': currency.active}"> {{currency.name}}
 							</small>
 						</li> -->
-						<li ng-repeat='currency in all_currencies'>
+						<li name="currency-check" ng-repeat='currency in all_currencies'>
 							<span ng-include="img_base + BASE + 'templates/svg/wwf/' + currency.icon_url"></span>
 							<span>{{currency.name}}</span>
 							<div>
@@ -306,7 +306,7 @@
 				</div>
 				<div class="pf-list p15top">
 					<h1>Preferred Communication Methods</h1>
-					<ul class="pf-list-x ugrid-3">
+					<ul name="communication-check" class="pf-list-x ugrid-3">
 						<li>
 							<span>
 								<svg viewBox="0 0 100 100">
