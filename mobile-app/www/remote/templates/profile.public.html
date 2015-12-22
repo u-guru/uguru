@@ -275,8 +275,10 @@
 					<ul class="pf-list-y ugrid-2">
 						<li ng-repeat='language in user.guru_languages' class="text-center">{{language.name}}</li>
 					</ul>
-					<div class='hide ng-class:{"show":page.modals.language.visible}' ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
-					<button class="chip">Add a Language</button>
+					<div class='languages-container hide ng-class:{"show":page.toggles.languages.active}'>
+						<div ng-controller='LanguagesController' ng-include="img_base + BASE + 'templates/guru.languages.container.html'"></div>
+					</div>
+					<button class='chip' ng-click='page.toggles.languages.active = true;'>Add a Language</button>
 				</div>
 				<div class="pf-list p15top">
 					<h1>Will Work For</h1>
