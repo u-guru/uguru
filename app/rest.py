@@ -684,6 +684,17 @@ class UserOneView(restful.Resource):
         if 'update_guru_demographic' in request.json:
             user.year = request.json.get('update_guru_demographic')
 
+        if 'update_guru_currency' in request.json:
+
+            currency_json = request.json.get('update_guru_currency')
+            currency_id = int(currency_json.get('id'))
+            add_currency = currency_json.get('active')
+
+            if add_currency:
+                user.addGuruCurrencyItem(currency_id)
+            else:
+                user.removeGuruCurrencyItem(currency_id)
+
         if 'update_guru_shop_description' in request.json:
 
             shop_json = request.json.get('update_guru_shop_description')

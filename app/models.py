@@ -457,7 +457,8 @@ class User(Base):
 
         return course_ratings
 
-    def removeCurrencyItem(self, currency_id):
+    def removeGuruCurrencyItem(self, currency_id):
+
         for currency in self.guru_currencies:
             if currency.id == currency_id:
                 self.guru_currencies.remove(currency)

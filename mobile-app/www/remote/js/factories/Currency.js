@@ -12,7 +12,7 @@ angular.module('uguru.rest')
     }
 
     function updateMasterList(user) {
-        if (!user.guru_currencies || user.guru_currencies.length) {
+        if (!user.guru_currencies) {
             return;
         }
         all_user_currencies = user.guru_currencies.slice();
