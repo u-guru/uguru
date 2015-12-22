@@ -611,7 +611,8 @@ AdminUniversitySerializer = {
     'seal_url': fields.String,
     'school_color_one': fields.String,
     'school_color_two': fields.String,
-    'variations': fields.String
+    'variations': fields.String,
+    'sp16_deadline': fields.DateTime
 }
 
 AdminUniversityDetailedSerializer = {

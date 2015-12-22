@@ -618,7 +618,7 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
 
         $scope.user.majors = user.departments;
-        $scope.user.major = user.major;
+        $scope.user.major = user.major || 'mathematics';
         $scope.user.year = user.year;
 
         $scope.user.guru_categories = user.guru_categories;
@@ -760,6 +760,7 @@ angular.module('uguru.user', [])
         $scope.user.grade_dict = user.grade_dict;
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;
         $scope.user.skills = user.skills;
+        $scope.user.is_alumni = user.is_alumni;
         $scope.user.professions = user.professions;
         $scope.user.support_tickets = user.support_tickets;
         $scope.user.max_hourly = parseInt(user.max_hourly);
@@ -840,6 +841,12 @@ angular.module('uguru.user', [])
         },
         checkAccess: function(payload) {
             return Restangular.one('user').customPUT(JSON.stringify(payload));
+        },
+        alumnOptions: function() {
+            return ['am seeking', 'have'];
+        },
+        yearOptions: function() {
+            return ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Grad/Masters', 'PhD', 'Alumni'];
         },
         initUser: function() {
             var newUser = initUser();
@@ -1041,6 +1048,9 @@ angular.module('uguru.user', [])
               if (arg === 'is_a_guru') {
                 return obj;
               }
+
+
+
               if (arg === 'guru_mode') {
                 return obj;
               }
@@ -1049,6 +1059,31 @@ angular.module('uguru.user', [])
                     'profile_info': obj
                 }
               }
+
+              if (arg === 'is_alumni') {
+                return {
+                    'is_alumni': obj
+                }
+              }
+
+              if (arg === 'update_guru_currency') {
+                return {
+                    'update_guru_currency': obj
+                }
+              }
+
+              if (arg === 'year') {
+                return {
+                    'year': obj
+                }
+              }
+
+              if (arg === 'major') {
+                return {
+                    'major': obj
+                }
+              }
+
 
               if (arg === 'recent_position') {
                 return {
