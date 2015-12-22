@@ -39,7 +39,7 @@ angular.module('uguru.guru.controllers')
       TipService.currentTips = TipService.generateTips(user);
       RankingService.refreshRanking(user);
     }
-
+    $scope.experience = {name: '', years: 0, description:''};
 
     $scope.profile = {showCredibility:false};
     $scope.root.vars.guru_mode = true;
@@ -52,11 +52,12 @@ angular.module('uguru.guru.controllers')
     $scope.activeTabIndex = 1;
     $scope.profile.edit_mode = false;
 
-    $scope.page = { modals : {}, popups: {}, backdrops: {}, dropdowns: {} }
+    $scope.page = { modals : {}, popups: {}, backdrops: {}, dropdowns: {}, toggles:{} }
     $scope.page.modals = {
       experience: {visible:false},
       language: {visible:false}
     }
+    $scope.page.toggles = {experience:{active:false}};
     $scope.page.backdrops = {activeTab:false}
     $scope.page.dropdowns = {majors:{active:false}, year: {active:false, options:User.yearOptions()}, alumn:{active:false, options:User.alumnOptions()}}
 
@@ -395,10 +396,13 @@ angular.module('uguru.guru.controllers')
       }, 100)
     }
 
-    $scope.editExperienceDesktop = function(experience) {
-      if ($scope.desktopMode) {
-        $scope.activeExperience = experience;
-        $scope.page.modals.experience.visible=true;
+    $scope.editGuruExperience = function(experience) {
+      if ($scope.desktopMode)  {
+        $scope.page.toggles.experience.active = !$scope.page.toggles.experience.active;
+        $scope.experience = experience;
+      } else {
+        $scope.experience = experience;
+        $scope.guruExperiencesModal.show();
       }
     }
 
