@@ -7,9 +7,18 @@ angular.module('uguru.util.controllers')
   'University',
   '$ionicViewSwitcher',
   '$ionicScrollDelegate',
-  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate) {
+  'ScrollService',
+  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService) {
     var UPPER = 12;
     var LOWER = 0;
+    var pageParentContainer;
+
+    var showDelayedBecomeGuruHeader = function() {
+      $timeout(function() {
+        $scope.becomeGuruHeaderActive = true;
+      }, 3000);
+    }
+    var shouldShowBecomeGuruHeader = true;
 
     //default
     $scope.university = {name:'Harvard'};
@@ -24,8 +33,16 @@ angular.module('uguru.util.controllers')
       $state.go('^.university');
     }
 
-    $scope.scrollToPricing = function() {
+    $scope.scrollToSection = function(section_selector) {
+      var amount = null;
+      var successFunction = null;
+      var pageParentContainer = '#essay-student-home';
+      var duration = 666;
+      ScrollService.scrollTo(amount, successFunction, duration, pageParentContainer, section_selector);
+    }
 
+    $scope.scrollToPricing = function() {
+      var nothing;
     }
 
     var selectRandom = function(university_arr) {
@@ -59,6 +76,13 @@ angular.module('uguru.util.controllers')
 
     $scope.targettedUniversities = filterTargetted(University.getTargetted());
 
+    // loaded means first time only
+    $scope.$on('$ionicView.loaded', function() {
+         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader()
+    });
+
   }
+
+
 
 ]);

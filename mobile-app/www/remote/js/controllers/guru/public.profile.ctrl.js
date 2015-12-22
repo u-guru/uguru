@@ -8,11 +8,16 @@ angular.module('uguru.guru.controllers')
   'Restangular',
   'User',
   '$ionicSideMenuDelegate',
-  function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate){
+  'Currency',
+  function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, Currency){
 
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
       $scope.activeTabIndex = 0;
+
+      $scope.all_currencies = Currency.updateMasterList($scope.user);
+
+      $scope.profile = {public_mode: true};
 
       var user_id = $stateParams.profileId;
 

@@ -194,3 +194,31 @@ ion-view {
 		}
 	}
 }
+
+
+//samir essay css ---- START
+#essay-student-home {
+	header#become-guru-essay-header {
+		z-index:10000;
+		a.become-guru-link {
+			background-color:$cerise;
+			margin-right:5%;
+			top:15px;
+		}
+
+		a.close-become-guru-header  {
+			color:white;
+			top:0;
+			right:0;
+			margin:10px 30px 10px 0px;
+			svg {
+				width:33px;
+				height:33px;
+				path {
+					stroke-width:10px;
+				}
+			}
+		}
+	}
+}
+//samir essay css ---- END
