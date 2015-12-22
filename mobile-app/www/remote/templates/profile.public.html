@@ -248,7 +248,7 @@
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>Experience</h1>
-					<ul class="pf-list-y">
+					<ul name='exp-list' class="pf-list-y">
 						<li ng-repeat='experience in user.guru_experiences' ng-click='editGuruExperience(experience)'>
 							<ul class="ugrid-2">
 								<li class="text-left">{{experience.name || experience.description}}</li>
@@ -268,7 +268,7 @@
 						</li>
 					</ul>
 					<div class="hide ng-class:{'show':page.toggles.experience.active}" ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
-					<button ng-click='page.toggles.experience.active = !page.toggles.experience.active;' class="chip">Add an Experience</button>
+					<button name='exp-add-btn'ng-click='page.toggles.experience.active = !page.toggles.experience.active;' class="chip">Add an Experience</button>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>Languages</h1>
