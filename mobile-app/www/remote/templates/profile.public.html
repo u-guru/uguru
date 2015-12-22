@@ -217,13 +217,13 @@
 									<span class="hide ng-class:{'show':user.is_alumni}" >have</span>
 									<span class="hide ng-class:{'show':!user.is_alumni}">am seeking</span>
 								</span>
-								<a ng-click="page.dropdowns.alumn.active = !page.dropdowns.alumn.active">
+								<a name="alumni-btn" ng-click="page.dropdowns.alumn.active = !page.dropdowns.alumn.active">
 									<svg viewBox="0 0 100 100">
 										<path d="M14,32 L50,68 L86,32"></path>
 									</svg>
 								</a>
 							</div>
-							<ul class="ng-class:{'active': page.dropdowns.alumn.active}">
+							<ul name="alumni-dropdown" class="ng-class:{'active': page.dropdowns.alumn.active}">
 								<li ng-click='updateUserAlumni(true)' class="hide ng-class:{'show':!user.is_alumni}" tabindex>have</li>
 								<li ng-click='updateUserAlumni(false)' class="hide ng-class:{'show':user.is_alumni}" tabindex>am seeking</li>
 							</ul>
@@ -232,18 +232,18 @@
 						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
 							<div>
 								<span>{{user.year || 'Freshman'}}</span>
-								<a ng-click="page.dropdowns.year.active = !page.dropdowns.year.active">
+								<a name="year-btn" ng-click="page.dropdowns.year.active = !page.dropdowns.year.active">
 									<svg viewBox="0 0 100 100">
 										<path d="M14,32 L50,68 L86,32"></path>
 									</svg>
 								</a>
 							</div>
-							<ul class="ng-class:{'active': page.dropdowns.year.active}">
+							<ul name="year-dropdown" class="ng-class:{'active': page.dropdowns.year.active}">
 								<li ng-click='updateUserYear(option)' ng-repeat='option in page.dropdowns.year.options' tabindex>{{option}}</li>
 							</ul>
 						</div>
 						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;in&nbsp;&nbsp;</h2>
-						<input ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}"/>
+						<input name="userMajor-input"ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}"/>
 					</div>
 				</div>
 				<div class="pf-list p15top relative">
