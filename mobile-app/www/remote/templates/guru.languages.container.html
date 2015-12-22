@@ -4,7 +4,7 @@
     </svg>
     <header class="desktop-header">
 		<a></a>
-		<a class='cta-modal-close close-button desktop-header-next'>
+		<a class='close-button desktop-header-next' ng-click='closeGuruLanguages()'>
 			<svg viewBox="0 0 100 100">
 			    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 			</svg>
@@ -18,7 +18,7 @@
                         <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
                     </svg>
                 </i>
-                <input type="text" id='language-input' autocomplete="off" ng-model="page.search_text" class="bg-charcoal"/>
+                <input name='lang-input' type="text" id='language-input' autocomplete="off" ng-model="page.search_text" class="bg-charcoal"/>
                 <label for="language-input">
                     <span>search languages</span>
                 </label>
@@ -26,7 +26,9 @@
         </form>
 
         <div id="language-list" class='desktop-search-list'>
-            <ul class='desktop-card-list' id='guru-courses-user-profile'>
+
+
+            <ul name="lang-usr-list" class='desktop-card-list' id='guru-courses-user-profile' style="display:flex !important;">
                 <li ng-if="user.guru_languages.length > 0" class="course-item selected" ng-repeat='language in user.guru_languages' ng-click='removeGuruLanguageAndUpdate(language, $index)'>
                         <a class="name-only" >
                             <svg viewBox="0 0 100 100">
@@ -36,7 +38,7 @@
                         </a>
                 </li>
             </ul>
-            <ul class='desktop-card-list'>
+            <ul name="lang-list" class='desktop-card-list'>
                 <li ng-repeat='language in languages | filter:page.search_text:strict | limitTo: limit'>
 					<a class="name-only" ng-click='addSelectedGuruLanguage(language, $index)'>
 						<span>{{language.name}}</span>

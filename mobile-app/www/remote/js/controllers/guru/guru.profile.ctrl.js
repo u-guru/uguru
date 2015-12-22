@@ -57,7 +57,7 @@ angular.module('uguru.guru.controllers')
       experience: {visible:false},
       language: {visible:false}
     }
-    $scope.page.toggles = {experience:{active:false}};
+    $scope.page.toggles = {experience:{active:false}, languages:{active:false}};
     $scope.page.backdrops = {activeTab:false}
     $scope.page.dropdowns = {majors:{active:false}, year: {active:false, options:User.yearOptions()}, alumn:{active:false, options:User.alumnOptions()}}
 
@@ -84,6 +84,12 @@ angular.module('uguru.guru.controllers')
 
     $scope.updateUserMajor = function(bool) {
         $scope.user.updateAttr('major', $scope.user, $scope.user.major, null, $scope);
+    }
+
+    $scope.closeGuruLanguages = function() {
+      if ($scope.desktopMode) {
+        $scope.page.toggles.languages.active = false;
+      }
     }
 
 
