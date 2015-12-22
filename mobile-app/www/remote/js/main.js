@@ -112,7 +112,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/university.html',
         controller: 'AddUniversityCtrl'
   }).
-
+  state('root.essay-student-university', {
+        url: '/essay-student-university',
+        templateUrl: BASE + 'templates/university.card.html',
+        controller: 'EssayStudentUniversityController',
+  }).
   state('root.essay-guru-access', {
         url: '/essay-university',
         templateUrl: BASE + 'templates/university.html',
@@ -296,11 +300,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.profile-card', {
     url:'/profile-card',
     templateUrl: BASE + 'templates/profile.card.html'
-  }).
-  state('root.university-card', {
-    url:'/university-card',
-    templateUrl: BASE + 'templates/university.card.html',
-    controller: 'AddUniversityCtrl'
   }).
   state('root.paper', {
     url:'/paper',
