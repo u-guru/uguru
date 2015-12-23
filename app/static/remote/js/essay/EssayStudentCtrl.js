@@ -31,7 +31,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToUniversity = function() {
       $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.university');
+      $state.go('^.essay-student-university');
     }
 
     $scope.scrollToSection = function(section_selector) {

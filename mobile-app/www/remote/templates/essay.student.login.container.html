@@ -1,0 +1,118 @@
+<ion-view class='uguru-view paper-container bg-white'>
+    <main>
+        <!-- adding .bottom-align to .paper makes the text align to the line below instead of between two lines -->
+        <div class="paper">
+            <svg viewBox="0 0 800 1035">
+                <rect x="0" y="0" rx="2"></rect>
+                <path d="M0,122 L800,122"></path><path d="M0,160 L800,160"></path>
+                <path d="M0,198 L800,198"></path><path d="M0,236 L800,236"></path>
+                <path d="M0,274 L800,274"></path><path d="M0,312 L800,312"></path>
+                <path d="M0,350 L800,350"></path><path d="M0,388 L800,388"></path>
+                <path d="M0,426 L800,426"></path><path d="M0,464 L800,464"></path>
+                <path d="M0,502 L800,502"></path><path d="M0,540 L800,540"></path>
+                <path d="M0,578 L800,578"></path><path d="M0,616 L800,616"></path>
+                <path d="M0,654 L800,654"></path><path d="M0,692 L800,692"></path>
+                <path d="M0,730 L800,730"></path><path d="M0,768 L800,768"></path>
+                <path d="M0,806 L800,806"></path><path d="M0,844 L800,844"></path>
+                <path d="M0,882 L800,882"></path><path d="M0,920 L800,920"></path>
+                <path d="M0,958 L800,958"></path><path d="M0,996 L800,996"></path>
+                <path d="M126,0 L126,1035"></path>
+            </svg>
+            <h1 class="paper-title hide ng-class:{'show':!page.toggles.login.active}">Create an account
+                <!-- @gabrielle lets make this feel more high-school-y what do you think of below? -->
+                <!-- <br> On Dec, 11, 2015 -->
+            </h1>
+            <div class="paper-text student-signup-paper">
+                <!-- @gabrielle hide nth-child for responsitivity to the <BR>. These tags should work  via CSS but lmk if not-->
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <span id='essay-student-name-container' class='flex-wrap relative essay-paper-input-container'>
+                    <label class='weight-700'>Name</label>
+                    <input class='weight-400' type='text' ng-model="signupForm.full_name" placeholder="Full Name"/>
+                </span>
+                <span id='essay-student-name-container' class='flex-wrap relative essay-paper-input-container'>
+                    <label class='weight-700'>Email</label>
+                    <input class='weight-400' type='text' placeholder="youremail@gmail.com" ng-model='signupForm.email'/>
+                </span>
+                <span id='essay-student-name-container' class='flex-wrap relative essay-paper-input-container'>
+                    <label class='weight-700'>Password</label>
+                    <input class='weight-400' type='password' placeholder="••••••••••••" ng-model="signupForm.password"/>
+                </span>
+            </div>
+            <button ng-click='goToStudentEssayHome()' class='fixed left-0 bottom-0 text-center bg-slate txt-smoke full-x'>Submit</button>
+        </div>
+    </main>
+</ion-view>
+
+<!-- for later use PLZ leave commented-->
+<!-- <section>
+    <div class="notecard">
+        <svg viewBox="0 0 328 182">
+            <rect x="0" y="0" rx="2"></rect>
+            <rect x="0" y="78"></rect><rect x="0" y="104"></rect>
+            <rect x="0" y="130"></rect><rect x="0" y="156"></rect>
+            <rect x="0" y="52"></rect>
+        </svg>
+        <h1 class="notecard-title">This is a notecard.</h1>
+        <div class="notecard-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </div>
+    </div>
+</section> -->
+
+
+<!-- old stuff for reference -->
+
+<!--
+<div class="desktop-forms-container" >
+    <header class="desktop-header hidden">
+        <a class='cta-modal-close close-button desktop-header-next' id='cta-desktop-signup-close'>
+            <svg viewBox="0 0 100 100">
+                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+            </svg>
+        </a>
+    </header>
+    <section>
+        <div>
+            <h1 class='hide ng-class: {"show": root.vars.forgotPassword}'>Forgot Password Form</h1>
+            <h1 class='ng-class: {"hide": !root.vars.loginMode || root.vars.forgotPassword}'>Login</h1>
+            <h1 class='hide ng-class: {"show": !root.vars.loginMode && !root.vars.forgotPassword}'>Create an Account!</h1>
+            <form onkeypress="return event.keyCode != 13;">
+                <div class="input-field relative" ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>
+                    <input ng-model='signupForm.full_name' autocomplete="off" id='signup-name' type="text" class="validate txt-white">
+                    <label for="Full Name">Full Name</label>
+                    <a ng-show='signupForm.full_name && signupForm.full_name.length' ng-click='signupForm.full_name = "";' class="desktop-input-close-icon side-icon">
+                        <i class='icon ion-close-circled'> </i>
+                    </a>
+                </div>
+                <div class="input-field relative">
+                    <input ng-model='signupForm.email' autocomplete="off" id="email" type="text" class="validate txt-white">
+                    <label for="email">Email</label>
+                    <a ng-show="root.vars.loginMode && signupForm.email.length" ng-click='signupForm.email = "";' class="desktop-input-close-icon side-icon">
+                        <i class='icon ion-close-circled'> </i>
+                    </a>
+                </div>
+                <div class="input-field ng-class:{'hide':root.vars.forgotPassword}">
+                    <input autocomplete="off" ng-model='signupForm.password' id="password" type="password" class="validate txt-white">
+                    <label for="password">Password</label>
+                    <a ng-show="root.vars.loginMode && signupForm.password.length" ng-click='signupForm.password = "";' class="desktop-input-close-icon side-icon">
+                        <i class='icon ion-close-circled'> </i>
+                    </a>
+                </div>
+                <div class="desktop-login-buttons">
+                    <button ng-click='connectWithFacebook()' class="bg-fb caps ng-class:{'hide':root.vars.forgotPassword}">Login with Facebook</button>
+                    <button id='login-button' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
+                    <button class="bg-charcoal caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='root.vars.forgotPassword = false;'>Cancel</button>
+                    <button class="bg-shamrock caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='attemptToResetPassword()'>Submit</button>
+                    <button class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
+                </div>
+            </form>
+        </div>
+        <a class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' ng-click="root.vars.forgotPassword = true;">Forgot Your Password?</a>
+        <a class="form-link" ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode && !root.vars.forgotPassword'>Have an account?</a>
+        <a class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>Create an account</a>
+    </section>
+</div> -->

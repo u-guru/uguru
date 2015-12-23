@@ -240,4 +240,64 @@ ion-view {
 		}
 	}
 }
+#essay-student-university {
+	ul.school-card-footer {
+		border-bottom-right-radius: 16px !important;
+    	border-bottom-left-radius: 16px;
+	}
+	#desktop-essay-university-header {
+		position:relative !important;
+		h1 {
+			text-align: center;
+			position:absolute;
+			width:100%;
+			left:0;
+		}
+	}
+}
+
+#essay-student-login {
+	.paper-text.student-signup-paper {
+		.essay-paper-input-container {
+			padding:5px 10px;
+			label {
+				padding:5px;
+				width:100px;
+				text-align: right;
+				position:absolute;
+				left:-20%;
+				// line-height:18px; //default 18px *2
+			}
+			input {
+				padding: 3px 0px;
+				font-size:18px;
+				background:transparent;
+				background-color:transparent;
+				min-width:300px;
+			}
+		}
+	}
+}
+#desktop-student-home {
+	ion-pane {
+		position: absolute!important;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		font-size: 18px;
+		background: lighten($charcoal, 5%)!important;
+		.main.default {
+			@include flex-center;
+			@include flex-wrap;
+			height:100%;
+			form {
+				width:100%;
+				.input-field {
+					padding: auto 20px;
+				}
+			}
+		}
+	}
+}
 //samir essay css ---- END
