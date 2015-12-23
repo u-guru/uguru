@@ -676,7 +676,7 @@ angular.module('uguru.util.controllers')
         if (window.location.href.indexOf('/profile/') > 0) {
             console.log('redirecting...')
             $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
-        } else if ($scope.user && $scope.user.guru_mode && $scope.autoRedirects) {
+        } else if ($scope.user && $scope.user.guru_mode && !$scope.autoRedirects) {
 
             LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
@@ -696,7 +696,7 @@ angular.module('uguru.util.controllers')
             }, 1000);
 
         }
-        else if ($scope.user && $scope.user.university_id && $scope.autoRedirects) {
+        else if ($scope.user && $scope.user.university_id && !$scope.autoRedirects) {
             LoadingService.show();
             $ionicViewSwitcher.nextDirection('enter');
             if (LOCAL) {
