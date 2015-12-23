@@ -282,6 +282,7 @@ ion-view {
 	ion-pane {
 		position: absolute!important;
 		top: 0;
+		z-index:100000;
 		left: 0;
 		width: 100%;
 		height: 100%;
@@ -299,5 +300,102 @@ ion-view {
 			}
 		}
 	}
+	.trending-resources-container {
+		overflow-x:scroll;
+		white-space:nowrap;
+		ul {
+			li {
+				margin:5px;
+				img {
+					width:auto;
+					max-width:200px;
+					height:60px;
+				}
+			}
+		}
+	}
+}
+
+
+#request-slide-two {
+	.desktop-forms-container {
+		width:33%;
+
+		h1, .cta-modal-close {
+			display:none;
+		}
+		form {
+			.input-field
+			{
+				input {
+					color:$slate !important;
+					@include placeholder {
+						color: $slate !important;
+						opacity:0.5;
+					}
+				}
+			}
+		}
+	}
+}
+
+#essay-student-request-form {
+	textarea {
+		@include placeholder {
+			color: $slate !important;
+			opacity:0.5;
+		}
+	}
+	.essay-request-type {
+		h1 {
+			font-size:28px;
+			padding:10px 0px;
+		}
+		.pf-course-check {
+			@include flex;
+			@include flex-center;
+			margin-top: 0!important;
+			div {
+				position: relative;
+				input {
+					@include opacity(0);
+					position: absolute;
+					z-index: 12;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				span {
+					display: block;
+					width: 32px;
+					height: 32px;
+					border-radius: 3px;
+					background: $slate;
+					svg {
+						@include svg-stroke(lighten($slate, 20%), 10);
+						padding: 4px;
+						width: 100%;
+						height: 100%;
+					}
+				}
+				input:checked + span {
+					background: $shamrock;
+					svg {
+						stroke: white;
+					}
+				}
+			}
+			label {
+				width:100%;
+				padding-left: 15px;
+				color: $slate;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
+
+	}
+
 }
 //samir essay css ---- END
