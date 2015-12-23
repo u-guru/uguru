@@ -29,11 +29,13 @@ angular.module('uguru.util.controllers')
         DeviceService, PopupService, LoadingService, TimelineService) {
 
       var CTA_PARENT_DICT = {
-            'cta-box-essay-student-request':'#desktop-student-home',
-            'cta-box-content': '#desktop-student-home',
-            'cta-box-essay-student-universities': '#desktop-student-home',
-            'cta-box-essay-student-timeline': '#desktop-student-home',
-            'cta-box-essay-student-files': '#desktop-student-home',
+            'cta-box-essay-student-request':'#desktop-student-home .main',
+            'cta-box-content': '#desktop-student-home .main',
+            'cta-box-essay-student-universities': '#desktop-student-home .main',
+            'cta-box-essay-student-timeline': '#desktop-student-home .main',
+            'cta-box-essay-student-files': '#desktop-student-home .main',
+            'cta-box-essay-student-messaging': '#desktop-student-home .main',
+            'cta-box-essay-student-transaction': '#desktop-student-home .main'
         }
 
         var CTA_OPTIONS = {
@@ -43,6 +45,7 @@ angular.module('uguru.util.controllers')
 
         $scope.launchCtaDict = {};
         $scope.closeCTADict = {};
+        $scope.search_text = {university:''};
 
         function initCTA() {
 
@@ -58,17 +61,21 @@ angular.module('uguru.util.controllers')
 
                     var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
-                        $timeout(function() {
-                            modal_elem.classList.add('show');
+
                             $ionicSlideBoxDelegate.update();
-                        }, 200);
+                            modal_elem.classList.add('show');
+                            // $timeout(function() {
+
+                            // }, );
+
                           var close_icon = modal_elem.querySelector('.cta-modal-close');
                           if (close_icon) {
                               close_icon.addEventListener('click', function() {
 
                               //add callbacks here
-                              modal_elem.classList.remove('show');
-                              closeCTAModal();
+
+                                closeCTAModal();
+                                modal_elem.classList.remove('show');
                             });
                           }
                     }, CTA_PARENT_DICT[box_elem.id]);
@@ -146,8 +153,6 @@ angular.module('uguru.util.controllers')
                 $ionicViewSwitcher.nextDirection('forward');
                 $state.go('^.become-guru')
             }
-
-
         }
 
         $scope.goToDesktopBecomeGuru = function() {

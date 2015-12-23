@@ -9,19 +9,21 @@
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 
 		<div class="main">
-			<!-- <ion-pane id='cta-modal-student-request' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'">
-			</ion-pane> -->
 
 			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal university-view' ng-include="img_base + BASE + 'templates/content.general.html'">
 			</ion-pane>
-			<ion-pane id='cta-modal-essay-student-request' class='full-xy hide-display cta-modal bg-charcoal'>
+			<!-- <ion-pane id='cta-modal-essay-student-request' class='show full-xy hide-display cta-modal bg-charcoal'>
 				<main class='desktop-mode'>
 
 					<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
 
-					<div ng-controller='EssayStudentUniversityController' ng-include="img_base + BASE + 'templates/essay.student.request.html'" class='main desktop-search'> </div>
+					<div ng-controller='EssayStudentRequestController' ng-include="img_base + BASE + 'templates/essay.student.request.html'" class='main desktop-search'> </div>
 				</main>
+			</ion-pane> -->
+
+			<ion-pane id='cta-modal-essay-student-request' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='EssayStudentRequestController' ng-include="img_base + BASE + 'templates/essay.student.request.html'">
 			</ion-pane>
+
 			<ion-pane id='cta-modal-essay-student-universities' class='full-xy hide-display cta-modal bg-charcoal'>
 				<main class='desktop-mode'>
 
@@ -31,7 +33,7 @@
 				</main>
 			</ion-pane>
 
-			<ion-pane id='cta-modal-essay-student-timeline' class='show full-xy hide-display cta-modal bg-charcoal'>
+			<ion-pane id='cta-modal-essay-student-timeline' class='full-xy hide-display cta-modal bg-charcoal'>
 
 				<main class='desktop-mode'>
 
@@ -53,6 +55,24 @@
 
 			</ion-pane>
 
+			<ion-pane id='cta-modal-essay-student-messaging' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/essay.student.messaging.html'">
+				<main class='desktop-mode'>
+
+					<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
+
+					<div class='main' ng-include="img_base + BASE + 'templates/essay.student.messaging.html'"> </div>
+				</main>
+			</ion-pane>
+
+			<ion-pane id='cta-modal-essay-student-transaction' class='full-xy hide-display cta-modal'>
+				<main class='desktop-mode'>
+
+					<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
+
+					<div class='main' ng-include="img_base + BASE + 'templates/essay.student.billing.html'"> </div>
+				</main>
+			</ion-pane>
+
 
 			<div class="student-home-greeting">
 				<div>
@@ -60,17 +80,17 @@
 					<div class="student-home-notifications">
 						<ul>
 							<li>
-								<a>
+								<a id='cta-box-essay-student-transaction' class='cta-box'>
 									<span class="notification-icon">
 										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">
 										</svg>
 										<span class="notification-number">0</span>
 									</span>
-									<span class="notification-type">Billing</span>
+									<span class="notification-type">Account Funds</span>
 								</a>
 							</li>
 							<li>
-								<a>
+								<a id='cta-box-essay-student-messaging' class='cta-box'>
 									<span class="notification-icon">
 										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.notification.html'">
 										</svg>
@@ -160,13 +180,24 @@
 							<svg class="square" viewBox="0 0 630 200">
 								<rect x="0" y="0" width="630" height="200"></rect>
 							</svg>
-							<div>
-								<h2>Helpful Resources</h2>
-								<ul class="ugrid-4">
-	                                <li ng-include="img_base + BASE + 'templates/svg/gpa.html'"></li>
-	                                <li ng-include="img_base + BASE + 'templates/svg/munchies.html'"></li>
-	                                <li ng-include="img_base + BASE + 'templates/svg/sound.html'"></li>
-	                                <li ng-include="img_base + BASE + 'templates/svg/transit.html'"></li>
+							<div class='trending-resources-container' style='overflow:hidden;'>
+								<h2>Trending Resources</h2>
+								<ul class="full-x flex" style='overflow-x:scroll;'>
+	                                <li>
+	                                	<a href='http://www.collegeconfidential.com' target='_blank'>
+	                                		<img src="http://www.collegeconfidential.com/wp-content/themes/hobsons/images/logo.png"/>
+	                                	</a>
+	                                </li>
+	                                <li>
+	                                	<a href='http://www.collegeboard.com' target='_blank'>
+	                                		<img class='bg-smoke' src="https://www.collegeboard.org/sites/all/themes/uwe_theme/images/cb_logo.png" style='width:250px; max-width:300px;'/>
+	                                	</a>
+	                                </li>
+	                                <li>
+	                                	<a href='http://www.collegesimply.com' target='_blank'>
+	                                		<img class='bg-smoke' src="http://i.imgur.com/XVPcULv.png"/>
+	                                	</a>
+	                                </li>
 	                            </ul>
 								<h3>External resources that can help you</h3>
 							</div>
