@@ -5472,6 +5472,16 @@ input[type=range]:focus::-ms-fill-upper {
   font-weight: 900;
 }
 
+.school-card .school-card-inside .school-card-main h1:first-letter {
+  text-transform: uppercase;
+}
+
+.school-card .school-card-inside .school-card-main h1 + h1 {
+  position: absolute;
+  top: 30px;
+  color: rgba(43, 50, 52, 0.4);
+}
+
 .school-card .school-card-inside .school-card-main h2 {
   font-size: 18px;
   font-weight: 600;
