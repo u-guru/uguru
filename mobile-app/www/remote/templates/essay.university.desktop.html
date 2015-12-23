@@ -20,12 +20,15 @@
 			<section id="school" class="onboarding" ng-if='!desktopMode'>
 				<header class="third flex-center">
 					<h1>Find Your Campus</h1>
-					<div class="header-nav" ng-if='LOCAL'>
-						<a class="header-nav-back" ng-click='goToAccessAdmin()'>
+					<div class="header-nav">
+						<a class="header-nav-back" ng-click='goBackToStudentEssayHome()'>
 							<svg viewBox="0 0 100 100">
 								<path d="M68,86 L32,50 L68,14"></path>
 							</svg>
 							<h1>&nbsp;</h1>
+						</a>
+						<a class="header-nav-next" ng-click='goToEssaySignup()'>
+							<h1>Next</h1>
 						</a>
 					</div>
 					<div class="onboarding-search absolute center-x bottom-0 full-x">
