@@ -3581,36 +3581,49 @@ input[type=range] {
 		color: $charcoal;
 		font-weight: 600;
 		font-size: 16px;
-		line-height: 165%;
+		line-height: 32px;
 	}
-	div {
+	> div {
 		position: absolute;
 		top: 29%;
 		left: 0;
+		width: 100%;
 		padding: 0 15px;
-		color: $charcoal;
 		font-weight: 400;
+		> div {
+			@include flex;
+			position: relative;
+			width: 100%;
+		}
+		label {
+			font-weight: 600;
+			padding-right: 15px;
+		}
+		input {
+			position: absolute;
+			background: none;
+			padding: 0;
+			margin: 0;
+			height: 32px;
+			&:focus {
+				color: $charcoal;
+				@include placeholder {
+					color: rgba($charcoal,.6);
+				}
+			}
+		}
+	}
+	> div, input, label {
+		color: $charcoal;
 		font-size: 14px;
-		line-height: 165%;
+		line-height: 32px;
 	}
 	@media screen and (min-width: 375px) {
 		h1 {
 			font-size: 20px;
-			line-height: 150%;
 		}
-		div {
+		> div, input, label {
 			font-size: 18px;
-			line-height: 150%;
-		}
-	}
-	@media screen and (min-width: 414px) {
-		h1, div {
-			line-height: 170%;
-		}
-	}
-	@media screen and (min-width: 430px) {
-		h1, div {
-			line-height: 180%;
 		}
 	}
 }

@@ -1,11 +1,8 @@
-<!-- Gabrielle 0. Fix background -->
-<!-- Gabrielle 0. "Fix" the header on scroll + right align all the buttons  -->
-<!-- Gabrielle 1. create 4 sections -->
-<!-- Gabrielle 2. Add downward arrow, ill take care of scrolling after-->
-<!-- Gabrielle 3. Add support icon bottom left-->
-<!-- Gabrielle 4. Make sure the index is working-->
+<!--1. Read all @gabrielle comments-->
+<!--2. Please create fixed support icon && I can link it-->
+<!--3. Please format the pricing with the template content (for context)-->
 
-<ion-view>
+<ion-view class='bg-smoke'>
     <main id='essay-student-home' class='hs-view full-xy'>
         <header class='p20xy flex-wrap-center full-x bg-charcoal hide ng-class:{"show":becomeGuruHeaderActive}' id='become-guru-essay-header'>
             <div class='relative full-xy'>
@@ -33,13 +30,15 @@
 
             </div>
         </header>
-        <section class='essay-splash' id='essay-home'>
+        <section class='essay-splash relative' id='essay-home'>
             <div class='essay-home-content-header'>
                 <h1 id='main-text'>
                     Instant college app help from <br/><span class='weight-900'><u>{{university.name}}</u></span> student gurus
                 </h1>
                 <button ng-click='goToUniversity()'> Get Started </button>
             </div>
+            <!-- @gabrielle please change this to bottom pointing arrow icon -->
+            <a class='absolute bottom-0 full-x weight-900 text-center left-0 p20xy' ng-click='scrollToSection("#essay-pricing")'>Next</a>
         </section>
         <section class="essay-pricing" id='essay-pricing'>
             <header>
@@ -131,15 +130,36 @@
                 <h1>How It Works</h1>
             </header>
             <div class='main flex-wrap-center'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-        </section>
-        <section id='timeline'>
-            <header>
-                <h1>TIMELINE</h1>
-            </header>
-            <div class='main flex-wrap-center' ng-include="img_base + 'templates/timeline.html'">
+                <!--We really need a class for bigger font-sizes, even if there is an attribute called font-size-200p. Which takes default font-size in this area and doubles it-->
+                <h1 style='font-size:36' class='text-center full-x'>{{how_it_works.header}}</h1>
+                <div class='ugrid-3 text-center'>
 
+
+                    <!--Step by Step-->
+                    <div ng-repeat="hiw_item in how_it_works.top_half" class='p20xy'>
+
+                        <h1>{{hiw_item.step_number}}</h1> <br>
+                        <h1>{{hiw_item.header}}</h1> <br>
+                        <small class='weight-700'>{{hiw_item.content}}</small>
+
+                    </div>
+                    <!--@gabrielle just a separate section, we dont need the HR, just needs to be spaced properly.-->
+                    <hr class='full-x'>
+                    <!--More like "features"-->
+                    <div ng-repeat="hiw_item in how_it_works.bottom_half" class='ps20xy'>
+
+
+                            <h1>{{hiw_item.header}}</h1> <br>
+                            <small class='weight-700'>{{hiw_item.content}}</small>
+
+                    </div>
+
+                </div>
+                <!-- <div class='ugrid-3 text-center'>
+
+
+
+                </div> -->
             </div>
         </section>
         <section id='faq-section'>
@@ -147,8 +167,29 @@
                 <h1>FAQ</h1>
             </header>
             <div class='main flex-wrap-center'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <div class='faq-header'>
+                    <!-- @gabrielle make header size optimal -->
+                    <h1>
+                        Popular Questions
+                    </h1>
+                </div>
+                <ul>
+                    <li ng-repeat='faq in faqs' style='padding-left:5%; padding-right:5%'>
+                        <h1 class='weight-700 text-left'>{{faq.question}}</h1>
+                        <p class='weight-300 text-left'>{{faq.answer}}</p>
+                        <br>
+                    </li>
+                </ul>
+                <small> Can't find your question? Contact our support to get a quick reply. Check back here for updates, we will be updating this page pretty frequently.</small>
             </div>
         </section>
+        <!--Will discuss later-->
+        <!-- <section id='timeline'>
+            <header>
+                <h1>Upcoming Deadlines</h1>
+            </header>
+            <div class='main flex-wrap-center' ng-include="img_base + 'templates/timeline.html'">
+            </div>
+        </section> -->
     </main>
 </ion-view>

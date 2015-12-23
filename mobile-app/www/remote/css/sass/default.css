@@ -5118,40 +5118,75 @@ input[type=range]:focus::-ms-fill-upper {
   color: #2B3234;
   font-weight: 600;
   font-size: 16px;
-  line-height: 165%;
+  line-height: 32px;
 }
 
-.notecard div {
+.notecard > div {
   position: absolute;
   top: 29%;
   left: 0;
+  width: 100%;
   padding: 0 15px;
-  color: #2B3234;
   font-weight: 400;
+}
+
+.notecard > div > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.notecard > div label {
+  font-weight: 600;
+  padding-right: 15px;
+}
+
+.notecard > div input {
+  position: absolute;
+  background: none;
+  padding: 0;
+  margin: 0;
+  height: 32px;
+}
+
+.notecard > div input:focus {
+  color: #2B3234;
+}
+
+.notecard > div input:focus::-webkit-input-placeholder {
+  color: rgba(43, 50, 52, 0.6);
+}
+
+.notecard > div input:focus:-moz-placeholder {
+  color: rgba(43, 50, 52, 0.6);
+}
+
+.notecard > div input:focus::-moz-placeholder {
+  color: rgba(43, 50, 52, 0.6);
+}
+
+.notecard > div input:focus:-ms-input-placeholder {
+  color: rgba(43, 50, 52, 0.6);
+}
+
+.notecard > div, .notecard input, .notecard label {
+  color: #2B3234;
   font-size: 14px;
-  line-height: 165%;
+  line-height: 32px;
 }
 
 @media screen and (min-width: 375px) {
   .notecard h1 {
     font-size: 20px;
-    line-height: 150%;
   }
-  .notecard div {
+  .notecard > div, .notecard input, .notecard label {
     font-size: 18px;
-    line-height: 150%;
-  }
-}
-
-@media screen and (min-width: 414px) {
-  .notecard h1, .notecard div {
-    line-height: 170%;
-  }
-}
-
-@media screen and (min-width: 430px) {
-  .notecard h1, .notecard div {
-    line-height: 180%;
   }
 }
 

@@ -8,10 +8,12 @@ angular.module('uguru.util.controllers')
   '$ionicViewSwitcher',
   '$ionicScrollDelegate',
   'ScrollService',
-  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService) {
+  'ContentService',
+  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService, ContentService) {
     var UPPER = 12;
     var LOWER = 0;
     var pageParentContainer;
+    var scrollDuration= 500;
 
     var showDelayedBecomeGuruHeader = function() {
       $timeout(function() {
@@ -19,6 +21,9 @@ angular.module('uguru.util.controllers')
       }, 3000);
     }
     var shouldShowBecomeGuruHeader = true;
+
+    $scope.faqs = ContentService.faq;
+    $scope.how_it_works = ContentService.how_it_works;
 
     //default
     $scope.university = {name:'Harvard'};
@@ -38,8 +43,7 @@ angular.module('uguru.util.controllers')
       var amount = null;
       var successFunction = null;
       var pageParentContainer = '#essay-student-home';
-      var duration = 666;
-      ScrollService.scrollTo(amount, successFunction, duration, pageParentContainer, section_selector);
+      ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector);
     }
 
     $scope.scrollToPricing = function() {
@@ -61,7 +65,6 @@ angular.module('uguru.util.controllers')
         if ((university_arr[i].name.length <= UPPER && university_arr[i].name.length >= LOWER)) {
           continue;
         } else {
-          console.log(university_arr[i].name)
           indices_to_slice.push(i.toString());
         }
       }

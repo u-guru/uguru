@@ -176,6 +176,51 @@ ion-view {
 		}
 	}
 }
+#essay-student-login {
+	.main {
+		> div {
+			position: relative;
+			.notecard {
+				width: 400px;
+				&:first-child {
+					position: relative;
+					z-index: 10;
+					h1 {
+						font-size: 28px;
+    					font-weight: 700;
+					}
+					button {
+						height: 62px;
+						width: calc(100% + 30px);
+						margin-left: -15px;
+						border-radius: 0 0 2px 2px;
+						background: lighten($slate, 15%);
+						font-weight: 600;
+						&:hover, &:focus {
+							@include opacity(1);
+							background: mix($shamrock, lighten($slate, 15%));
+						}
+						&:active, &.activated {
+							@include opacity(1);
+							background: $shamrock;
+						}
+					}
+				}
+				&:not(:first-child) {
+					position: absolute;
+					top: 0;
+					&:nth-child(2) {
+						@include opacity(.7);
+						@include rotate(10);
+						@include transform-origin(center);
+						background: $slate;
+						z-index: 9;
+					}
+				}
+			}
+		}
+	}
+}
 // END GABRIELLE CSS
 
 ion-view {
@@ -264,28 +309,6 @@ ion-view {
 	}
 }
 
-#essay-student-login {
-	.paper-text.student-signup-paper {
-		.essay-paper-input-container {
-			padding:5px 10px;
-			label {
-				padding:5px;
-				width:100px;
-				text-align: right;
-				position:absolute;
-				left:-20%;
-				// line-height:18px; //default 18px *2
-			}
-			input {
-				padding: 3px 0px;
-				font-size:18px;
-				background:transparent;
-				background-color:transparent;
-				min-width:300px;
-			}
-		}
-	}
-}
 #desktop-student-home {
 	ion-pane {
 		position: absolute!important;
