@@ -763,30 +763,30 @@ if arg == 'seed_admin':
     print "\n\nUpdate #1, previous account details cleared for %s" % user.getFirstName()
 
 
-    transcript_file = createNewFile(user)
+    # transcript_file = createNewFile(user)
 
     # initiate regular profile attributes
 
-    user.fb_id = 'sjd9qdjoiqwjdijwqeidjioad'
+    # user.fb_id = 'sjd9qdjoiqwjdijwqeidjioad'
     user.is_admin = True
     user.name = account_name
     user.password = md5('launchuguru123').hexdigest()
-    user.school_email_confirmed = True
-    user.phone_number_confirmed = True
-    user.phone_number = 8135009853
+    user.school_email_confirmed = False
+    user.phone_number_confirmed = False
+    # user.phone_number = 8135009853
     user.is_a_guru = True
     user.guru_introduction = 'alkdjaslkdjaskldjksladjaklsdjlak'
-    user.school_email = 'gabrielle@berkeley.edu'
+    # user.school_email = 'gabrielle@berkeley.edu'
     user.profile_code = account_name.split(' ')[0].lower()
     user.referral_code = account_name.split(' ')[0].lower()
-    if not user.external_profiles:
-        user.initAllExternalProfiles()
+    # if not user.external_profiles:
+    #     user.initAllExternalProfiles()
     user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
     selectXRandomCourses(user, 2)
 
-    if not user.guru_experiences:
-        user.initExperience('CS10 Tutor', 12, 'i was a cs10 tutor for years')
-        user.initExperience('Bio 1A Lab Assistant', 0, 'i was a bio1A lab assistant for almost one year')
+    # if not user.guru_experiences:
+    #     user.initExperience('CS10 Tutor', 12, 'i was a cs10 tutor for years')
+    #     user.initExperience('Bio 1A Lab Assistant', 0, 'i was a bio1A lab assistant for almost one year')
 
     print "\n\nUpdate #2: user profile + courses are set up"
 

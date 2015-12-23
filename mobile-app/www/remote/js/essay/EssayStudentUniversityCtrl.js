@@ -1,5 +1,5 @@
 angular.module('uguru.util.controllers')
-.controller('EssayStudentController', [
+.controller('EssayStudentUniversityController', [
   '$scope',
   '$timeout',
   '$state',
@@ -8,10 +8,18 @@ angular.module('uguru.util.controllers')
   '$ionicViewSwitcher',
   '$ionicScrollDelegate',
   'ScrollService',
-  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService) {
+  'LoadingService',
+  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService, LoadingService) {
     var UPPER = 12;
     var LOWER = 0;
     var pageParentContainer;
+
+    $scope.universities = University.getTargetted();
+    $scope.university = $scope.universities[0];
+
+    if (!$scope.user.universities) {
+      $scope.user.universities = [];
+    }
 
     var showDelayedBecomeGuruHeader = function() {
       $timeout(function() {
@@ -23,7 +31,7 @@ angular.module('uguru.util.controllers')
     //default
     $scope.university = {name:'Harvard'};
     $scope.root.vars.theme = 'essay';
-    $scope.page = {modals: {backdrop: {active:false}}};
+    $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
 
     $interval(function() {
       $scope.university = selectRandom(targettedUniversities);
@@ -31,7 +39,30 @@ angular.module('uguru.util.controllers')
 
     $scope.goToUniversity = function() {
       $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.essay-student-university');
+      $state.go('^.university');
+    }
+
+    $scope.toggleUniversityState = function(university) {
+
+    }
+
+    $scope.addHighSchoolStudentUniversity = function(university, index) {
+      var university = $scope.universities.splice(index, 1)[0];
+      $scope.user.universities.push(university);
+    }
+
+    $scope.removeHighSchoolStudentUniversity = function(university) {
+      var university = $scope.user.universities.splice(index, 1)[0];
+      $scope.user.universities.unshift(university);
+    }
+
+    $scope.goBackToStudentEssayHome = function() {
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.essay-home');
+    }
+
+    $scope.showComingSoon = function() {
+      LoadingService.showMsg('Coming soon!', 2000);
     }
 
     $scope.scrollToSection = function(section_selector) {
