@@ -4657,8 +4657,8 @@ input[type=range] {
 	}
 }
 
-// CHECKBOXES
-.checkbox-container {
+// CHECKBOXES & RADIOS
+.checkbox-container, .radio-container {
 	@include flex;
 	@include flex-center;
 	div {
@@ -4674,10 +4674,22 @@ input[type=range] {
 		}
 		span {
 			display: block;
+			background: $slate;
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+.checkbox-container {
+	div {
+		span {
+			border-radius: 3px;
 			width: 32px;
 			height: 32px;
-			border-radius: 3px;
-			background: $slate;
 			svg {
 				@include svg-stroke(lighten($slate, 20%), 10);
 				padding: 4px;
@@ -4692,11 +4704,27 @@ input[type=range] {
 			}
 		}
 	}
-	label {
-		padding-left: 15px;
-		color: white;
-		font-size: 20px;
-		font-weight: 600;
+}
+.radio-container {
+	div {
+		span {
+			@include round;
+			width: 24px;
+			height: 24px;
+			padding: 4px;
+			svg {
+				@include round;
+				background: lighten($slate, 10%);
+				path {
+					display: none;
+				}
+			}
+		}
+		input:checked + span {
+			svg {
+				background: $shamrock;
+			}
+		}
 	}
 }
 
@@ -4910,6 +4938,7 @@ input[type=range] {
 }
 .course-list, .course-list ul {
 	@include flex;
+	@include flex-center;
 	@include flex-wrap;
 	z-index: 100;
 	font-weight: 600;

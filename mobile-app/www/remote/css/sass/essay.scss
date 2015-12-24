@@ -551,7 +551,7 @@ ion-view {
 		}
 	}
 }
-#essay-student-university {
+#desktop-university {
 	.school-card {
 		.school-card-inside {
 			.school-card-top {
@@ -564,6 +564,19 @@ ion-view {
 			}
 		}
 	}
+}
+#cta-modal-essay-student-universities {
+	#desktop-university {
+		.main {
+			.university-header {
+				h1 {
+					padding-top: 0!important;
+				}
+			}
+		}
+	}
+}
+#essay-student-university {
 	#desktop-essay-university-header {
 		position:relative !important;
 		h1 {

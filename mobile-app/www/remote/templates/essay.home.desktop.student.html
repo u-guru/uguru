@@ -7,9 +7,8 @@
 	<!--@gabrielle the id below should be changed to student essay soon-->
 	<main id='desktop-student-home' class="desktop-mode" ng-if='desktopMode'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
-
 		<div class="main">
-
+			
 			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal university-view' ng-include="img_base + BASE + 'templates/content.general.html'">
 			</ion-pane>
 			<!-- <ion-pane id='cta-modal-essay-student-request' class='show full-xy hide-display cta-modal bg-charcoal'>
@@ -20,13 +19,17 @@
 					<div ng-controller='EssayStudentRequestController' ng-include="img_base + BASE + 'templates/essay.student.request.html'" class='main desktop-search'> </div>
 				</main>
 			</ion-pane> -->
-
-			<ion-pane id='cta-modal-essay-student-request' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='EssayStudentRequestController' ng-include="img_base + BASE + 'templates/essay.student.request.html'">
+			
+			<ion-pane id='cta-modal-essay-student-request' class='show full-xy hide-display cta-modal bg-charcoal' ng-controller='EssayStudentRequestController' ng-include="img_base + BASE + 'templates/essay.student.request.html'">
 			</ion-pane>
 
 			<ion-pane id='cta-modal-essay-student-universities' class='full-xy hide-display cta-modal bg-charcoal'>
-				<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
-				<div ng-controller='EssayStudentUniversityController' ng-include="img_base + BASE + 'templates/essay.university.desktop.container.html'" class='student-mode desktop-search'> </div>
+				<div class='full-xy'>
+					<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.theme && root.vars.theme === 'essay'}" ng-if='desktopMode'>
+						<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
+						<div class="main default" ng-controller='EssayStudentUniversityController' ng-include="img_base + BASE + 'templates/essay.university.desktop.container.html'"></div>
+					</main>
+				</div>
 			</ion-pane>
 
 			<ion-pane id='cta-modal-essay-student-timeline' class='full-xy hide-display cta-modal bg-charcoal'>
@@ -34,7 +37,7 @@
 				<div class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.timeline.html'"> </div>
 			</ion-pane>
 
-			<ion-pane id='cta-modal-essay-student-files' class='show full-xy hide-display cta-modal bg-charcoal'>
+			<ion-pane id='cta-modal-essay-student-files' class='full-xy hide-display cta-modal bg-charcoal'>
 				<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
 				<section class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.files.html'"> </section>
 			</ion-pane>
@@ -135,7 +138,9 @@
 								<rect x="0" y="0" width="200" height="200"></rect>
 							</svg>
 							<div id='cta-box-essay-student-universities' class='cta-box'>
-								<h2><span>My universities</span></h2>
+								<h2>
+									<span>My universities</span>
+								</h2>
 								<svg viewBox="0 0 100 100">
 									<circle cx="50" cy="50" r="36"></circle>
 									<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
@@ -180,5 +185,6 @@
 			</div>
 		</div>
 	</main>
-	<section ng-if='!desktopMode' ng-include="img_base + BASE + 'templates/home.mobile.student.html'"></secion>
+	<section ng-if='!desktopMode' ng-include="img_base + BASE + 'templates/home.mobile.student.html'">
+		</secion>
 </ion-view>

@@ -919,11 +919,15 @@ ion-view {
   stroke-width: 10px;
 }
 
-#essay-student-university .school-card .school-card-inside .school-card-top .school-card-icon {
+#desktop-university .school-card .school-card-inside .school-card-top .school-card-icon {
   top: auto;
   bottom: -24px;
   width: 64px;
   height: 64px;
+}
+
+#cta-modal-essay-student-universities #desktop-university .main .university-header h1 {
+  padding-top: 0 !important;
 }
 
 #essay-student-university #desktop-essay-university-header {

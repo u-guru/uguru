@@ -6364,7 +6364,7 @@ input[type=range]:focus::-ms-fill-upper {
   background: #cfe6e2;
 }
 
-.checkbox-container {
+.checkbox-container, .radio-container {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -6380,11 +6380,11 @@ input[type=range]:focus::-ms-fill-upper {
   justify-content: center;
 }
 
-.checkbox-container div {
+.checkbox-container div, .radio-container div {
   position: relative;
 }
 
-.checkbox-container div input {
+.checkbox-container div input, .radio-container div input {
   filter: alpha(opacity=0);
   opacity: 0;
   position: absolute;
@@ -6395,12 +6395,22 @@ input[type=range]:focus::-ms-fill-upper {
   height: 100%;
 }
 
-.checkbox-container div span {
+.checkbox-container div span, .radio-container div span {
   display: block;
+  background: #40484B;
+}
+
+.checkbox-container label, .radio-container label {
+  padding-left: 15px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.checkbox-container div span {
+  border-radius: 3px;
   width: 32px;
   height: 32px;
-  border-radius: 3px;
-  background: #40484B;
 }
 
 .checkbox-container div span svg {
@@ -6422,11 +6432,24 @@ input[type=range]:focus::-ms-fill-upper {
   stroke: white;
 }
 
-.checkbox-container label {
-  padding-left: 15px;
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
+.radio-container div span {
+  border-radius: 1000px;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
+
+.radio-container div span svg {
+  border-radius: 1000px;
+  background: #576267;
+}
+
+.radio-container div span svg path {
+  display: none;
+}
+
+.radio-container div input:checked + span svg {
+  background: #69B3A5;
 }
 
 .cal-week > div {
@@ -6733,6 +6756,12 @@ input[type=range]:focus::-ms-fill-upper {
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;

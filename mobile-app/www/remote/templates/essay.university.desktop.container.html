@@ -18,8 +18,8 @@
 	</div>
 </form>
 <div data-velocity class="flex-wrap-center desktop-search-list">
-	<ul class='desktop-card-list bg-charcoal'>
-		<li class='bg-charcoal hide ng-class:{"show":page.toggles.searchMode.active}' ng-if="universities && universities.length" ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
+	<ul class='desktop-card-list'>
+		<li class='hide ng-class:{"show":page.toggles.searchMode.active}' ng-if="universities && universities.length" ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
 			<div class="school-card">
 				<svg class="rect" viewBox="0 0 300 175">
 					<rect x="0" y="0" width="300" height="175" fill="none"></rect>
