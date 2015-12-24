@@ -18,8 +18,8 @@
                 </svg>
             </a>
         </header>
-        <header id='essay-header' class='flex-end full-x ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
-            <a class='left-0 fixed p15xy weight-900' style='font-size:48px; font-family:"Grand Hotel", cursive;' ng-click='scrollToSection("#essay-header")' ng-click='scrollToSection("#essay-pricing")'>HS.Guru</a>
+        <header id='essay-header' class='ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
+            <a ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-hs.html'"></a>
             <a ng-click='scrollToSection("#essay-pricing")'>Pricing</a>
             <a ng-click='scrollToSection("#essay-how-it-works")'>How it works</a>
             <!-- <a ng-click='scrollToSection("#timeline")'>Timeline</a> -->
@@ -143,7 +143,10 @@
                     </li>
                 </ul>
                 <ul class='ugrid-3 text-center'>
-                    <li ng-repeat="hiw_item in how_it_works.bottom_half">
+                    <li class="hiw-{{hiw_item.svg_url}}" ng-repeat="hiw_item in how_it_works.bottom_half">
+                        <span class="hiw-icon" ng-include='img_base + "templates/svg/main/shield-lock.html"'></span>
+                        <span class="hiw-icon" ng-include='img_base + "templates/svg/main/satisfaction.html"'></span>
+                        <span class="hiw-icon" ng-include='img_base + "templates/svg/main/safety.html"'></span>
                         <h1>{{hiw_item.header}}.</h1>
                         <p>{{hiw_item.content}}</p>
                     </li>
@@ -173,28 +176,37 @@
                         <path d="M126,0 L126,1035"></path>
                     </svg>
                     <svg viewBox="0 0 800 75">
-                        <rect x="0" y="0"></rect>
-                        <path d="M0,1 L800,1"></path>
-                        <path d="M0,39 L800,39"></path>
-                        <path d="M126,0 L126,75"></path>
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
                     </svg>
                     <svg viewBox="0 0 800 75">
-                        <rect x="0" y="0"></rect>
-                        <path d="M0,1 L800,1"></path>
-                        <path d="M0,39 L800,39"></path>
-                        <path d="M126,0 L126,75"></path>
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
                     </svg>
                     <svg viewBox="0 0 800 75">
-                        <rect x="0" y="0"></rect>
-                        <path d="M0,1 L800,1"></path>
-                        <path d="M0,39 L800,39"></path>
-                        <path d="M126,0 L126,75"></path>
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
                     </svg>
                     <svg viewBox="0 0 800 75">
-                        <rect x="0" y="0"></rect>
-                        <path d="M0,1 L800,1"></path>
-                        <path d="M0,39 L800,39"></path>
-                        <path d="M126,0 L126,75"></path>
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect><path d="M0,1 L800,1"></path><path d="M0,39 L800,39"></path><path d="M126,0 L126,75"></path>
                     </svg>
                     <h1 class="paper-title hide ng-class:{'show':!page.toggles.login.active}">Popular Questions</h1>
                     <div class="paper-text">
@@ -205,7 +217,7 @@
                         </dl>
                     </div>
                 </div>
-                <small>Can't find your question? Contact our support to get a quick reply. Check back here for updates, we will be updating this page pretty frequently.</small>
+                <p>Can't find your question? Contact our support to get a quick reply. Check back here for updates, we will be updating this page pretty frequently.</p>
             </div>
         </section>
         <!--Will discuss later-->

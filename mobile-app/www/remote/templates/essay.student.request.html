@@ -60,6 +60,9 @@ Gameplan
 		</div>
 		<ion-slide-box id='request-form-slide-box' can-swipe-back='false' on-slide-changed="slideHasChanged($index)" class='full-y'>
 
+		<!-- Description + (FUTURE OPTIONS) submit -->
+		<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.four.html'"></ion-slide>
+
 			<!-- What do you need help in? -->
 			<ion-slide id='essay-student-request-form'  ng-include="img_base + BASE + 'templates/essay.student.request.slide.one.html'"></ion-slide>
 
@@ -68,9 +71,6 @@ Gameplan
 
 			<!-- Honor Pledge -->
 			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.three.html'"></ion-slide>
-
-			<!-- Description + (FUTURE OPTIONS) submit -->
-			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.four.html'"></ion-slide>
 
 		</ion-slide-box>
 	</main>

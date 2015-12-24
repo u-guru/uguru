@@ -156,6 +156,36 @@
 			width: 36px;
 			height: 36px;
 		}
+		svg {
+			@include svg-stroke(white, 10);
+			display: none;
+			margin-left: 1px;
+			padding: 6px;
+			width: 36px;
+			height: 36px;
+		}
+		&.small {
+			@include opacity(.4);
+			font-size: 20px;
+			b {
+				strong {
+					display: none;
+				}
+				+ b {
+					font-size: 16px;
+				}
+			}
+			svg {
+				display: block;
+			}
+			span {
+				width: 28px;
+				height: 28px;
+			}
+		}
+		&.selected {
+			@include opacity-important(.7);
+		}
 	}
 	.request-content {
 		height: calc(70% + 45px);
@@ -187,11 +217,19 @@
 					padding: 10px;
 				}
 			}
+			.desktop-input-close-icon {
+				z-index: 3;
+			    margin: -15px -10px -10px!important;
+				font-size: 20px!important;
+			}
 			input, label {
-				color: white!important;
 				border-color: rgba(white, .5)!important;
+				color: white!important;
+				text-align: center!important;
 			}
 			input {
+				padding-right: 48px;
+				z-index: 2;
 				margin-bottom: 0;
 				@include placeholder {
 					color: white;
@@ -201,8 +239,16 @@
 					box-shadow: 0 1px 0 0 white!important;
 				}
 			}
-			label.active {
-				@include opacity-important(0);
+			label {
+				width: calc(100% - 48px);
+				padding-right: 48px;
+				z-index: 1;
+				span.selected-school, span.selected-course {
+					font-weight: 600;
+				}
+				&.active {
+					@include opacity-important(0);
+				}
 			}
 		}
 		.course-list, .course-none {
@@ -449,6 +495,9 @@
 			}
 			.attachment-list {
 				height: 150px;
+				ul {
+					margin-left: -15px;
+				}
 			}
 			> ul {
 				@include flex;
@@ -1220,12 +1269,37 @@
 		.course-list {
 			li {
 				a {
+					@include flex;
+					@include flex-center;
 					&:hover, &:focus {
 						background: $lake;
 					}
 					&:active {
 						background: lighten($slate, 10%);
 					}
+					.course-name {
+						font-size: 24px;
+						text-transform: none;
+						&:first-letter {
+							text-transform: uppercase;
+						}
+					}
+				}
+			}
+		}
+	}
+	.attachment-list {
+		.attach-upload-add {
+			a {
+				border-color: white;
+				span {
+					color: white;
+					svg {
+						stroke: white;
+					}
+				}
+				&:hover, &:focus {
+					background: rgba(white,.3);
 				}
 			}
 		}
@@ -1263,6 +1337,16 @@
 									svg {
 										background: $lake;
 									}
+								}
+							}
+							label {
+								font-size: 24px;
+							}
+						}
+						&:only-child {
+							.radio-container {
+								label {
+									font-size: 28px;
 								}
 							}
 						}
@@ -1322,6 +1406,41 @@
 				input.chip {
 					&:active {
 						background: $lake;
+					}
+				}
+			}
+			.request-payment {
+				background: lighten($lake, 20%);
+				padding: 0 15px 15px;
+				.credit-card {
+					position: relative;
+					background: $slate;
+					border-radius: 15px;
+					max-width: 350px;
+					margin: 15px auto 0;
+					.credit-card-info {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						div {
+							span {
+								display: block;
+								font-weight: 600;
+								text-align: center;
+							}
+							.credit-card-type {
+								font-size: 18px;
+								margin-bottom: 10px;
+							}
+							.credit-card-number {
+								font-size: 24px;
+							}
+						}
 					}
 				}
 			}

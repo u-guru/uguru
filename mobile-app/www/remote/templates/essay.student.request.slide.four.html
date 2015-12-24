@@ -6,13 +6,13 @@ selected university
 	<header>
 		<h1>Confirm my request</h1>
 	</header>
-	<div class="request-content relative full-xy">
-		<div class='main flex-wrap-center full-xy' id="request-search">
-			<form class='full-x'>
-				<!-- not required for fourth page -->
-				<!-- <h1 class="request-step"><b>Step <span>1</span></b></h1> -->
-				<div class="input-field full-x">
-					<!-- @gabrielle, change this to a plus icon-->
+	<div class="request-content relative">
+		<div id="request-search">
+			<form>
+				<h1 class="request-step small selected">
+					<b>Selected School</b>
+				</h1>
+				<div class="input-field">
 					<i class="material-icons prefix">
 						<svg viewBox="0 0 100 100">
 						    <path d="M43,27 L43,59 M27,43 L59,43 M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
@@ -22,55 +22,40 @@ selected university
 					ng-disabled="!user.universities|| !user.universities.length" ng-model="search_text.university" />
 					<label for="request-search-input">
 						<span class='hide ng-class:{"show":!request.selected_university}'>choose one of {{user.universities.length}} added universities</span>
-						<span class='hide ng-class:{"show":request.selected_university}'>{{request.selected_university.name}}</span>
+						<span class='hide selected-school ng-class:{"show":request.selected_university}'>{{request.selected_university.name}}</span>
 					</label>
 					<a ng-click='jumpToSlide(1, "request-university");' class="side-icon desktop-input-close-icon hide ng-class:{'show':request.selected_university || (search_text.university && search_text.university.length)}">
 						<i class="icon ion-close-circled txt-white"></i>
 					</a>
 				</div>
 			</form>
-			<div class='txt-charcoal flex-wrap-center full-x'>
-				<ul>
-					<li class='p20xy'>
-						<span class='weight-700'>
-							I chose the option...
-						</span>
-						<p class='weight-300'>
-							Insert the option here
-						</p>
-					</li>
-					<li class='p20xy'>
-						<span class='weight-700'>
-							Request Description
-						</span>
-						<p class='weight-300'>
-						{{request.info.description}}
-						</p>
-					</li>
-
-
-					<!-- Tags-->
-					<li class='weight-700 p20xy'>
-						<div class='p10y'>
-							Request Tags
-						</div>
-						<div class='full-x s20xy'>
+			<div class='request-type'>
+				<h1 class="request-step small selected">
+					<b>Selected Help Type</b>
+				</h1>
+				<ul class="ugrid-1">
+					<li>
+						<div class="radio-container">
 							<div>
-								<span class="chip bg-slate txt-white"  ng-repeat='tag in request.info.tags'>{{tag.name}}</span>
+								<input type="radio" id="checkbox-container-selected" name="checkbox-container-selected" checked disabled/>
+								<span>
+									<svg viewBox="0 0 100 100">
+										<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</span>
 							</div>
-						</div>
-					</li>
-					<li class='weight-700 p20xy'>
-						Payment Card Selected
-						<div class='full-x s20xy'>
-							<p class ='weight-300'>
-								Visa ****-****-****-4242
-							</p>
+							<label for="checkbox-container-selected">1:1 with a {{request.selected_university.name || request.selected_university.short_name}} guru</label>
 						</div>
 					</li>
 				</ul>
-				<div class='full-x text-left weight-700 p20xy'>
-					My Files
+			</div>
+			<div class="request-desc">
+				<h1 class="request-step small selected">
+					<b>Request Description</b>
+				</h1>
+				<textarea class="input-outline active" rows="4" ng-model='request.info.description' value="{{request.info.description}}" disabled></textarea>
+				<div class='tag-list'>
+					<span class="chip tag-selected" ng-repeat="tag in request.info.tags">{{tag.name}}</span>
 				</div>
 				<div class='attachment-list'>
 					<ul>
@@ -100,6 +85,26 @@ selected university
 						</li>
 					</ul>
 				</div>
+			</div>
+			<div class="request-payment">
+				<h1 class="request-step small selected">
+					<b>Selected Payment Card</b>
+				</h1>
+				<div>
+					<div class="credit-card">
+						<svg class="rect" viewBox="0 0 300 175">
+							<rect x="0" y="0" width="300" height="175" fill="none"></rect>
+						</svg>
+						<div class="credit-card-info">
+							<div>
+								<span class="credit-card-type">Visa</span>
+								<span class="credit-card-number">****-****-****-4242</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='txt-charcoal flex-wrap-center full-x'>
 				<div class='full-x text-left weight-700 p20xy'>
 					Payment Details
 					** Important  we will discuss this, it should take a third/at least 1/4th of this entire page.**
