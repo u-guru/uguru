@@ -2,6 +2,45 @@
 
 // GABRIELLE CSS
 ion-view {
+	.student-mode {
+		background: $smoke;
+	}
+	// FILES
+	#student-files {
+		height: 100%;
+		header {
+			@include flex;
+			@include flex-center;
+			height: 30%!important;
+			text-align: center;
+			background: $lake;
+			h1 {
+				font-size: 48px;
+				font-weight: 700;
+				text-transform: none;
+			}
+		}
+		.main {
+			-webkit-align-items: flex-start;
+			align-items: flex-start;
+			height: 70%;
+			padding: 22.5px 0 7.5px!important;
+			overflow: auto;
+			.attachment-list {
+				ul {
+					@include flex-center;
+					@include flex-wrap;
+					li {
+						div {
+							height: 150px;
+							width: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+	// SPLASH
 	#essay-student-home {
 		background: white;
 		> header {
@@ -137,6 +176,7 @@ ion-view {
 				line-height: 1.2;
 				font-weight: 400;
 			}
+			// // //
 			&.essay-splash {
 				@include flex;
 				@include flex-center;
@@ -158,6 +198,7 @@ ion-view {
 					margin-top: 30px;
 				}
 			}
+			// // //
 			&.essay-pricing {
 				.main {
 					@include flex;
@@ -205,6 +246,7 @@ ion-view {
 					}
 				}
 			}
+			// // //
 			&#essay-faq {
 				.main {
 					.paper {
@@ -224,6 +266,7 @@ ion-view {
 					}
 				}
 			}
+			// // //
 			&#essay-how-it-works {
 				.main {
 					> ul {
@@ -290,6 +333,7 @@ ion-view {
 	}
 }
 
+// TICKET STUB
 .ticket-container {
 	background: $smoke;
 }
@@ -422,6 +466,8 @@ ion-view {
 		}
 	}
 }
+
+// LOGIN
 #essay-student-login {
 	.main {
 		> div {

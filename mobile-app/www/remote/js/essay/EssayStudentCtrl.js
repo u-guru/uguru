@@ -9,7 +9,9 @@ angular.module('uguru.util.controllers')
   '$ionicScrollDelegate',
   'ScrollService',
   'ContentService',
-  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService, ContentService) {
+  'AnimationService',
+  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate,
+    ScrollService, ContentService, AnimationService) {
     var UPPER = 12;
     var LOWER = 0;
     var pageParentContainer;
@@ -35,8 +37,12 @@ angular.module('uguru.util.controllers')
     }, 3500)
 
     $scope.goToUniversity = function() {
-      $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.essay-student-university');
+      if ($scope.desktopMode) {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.essay-student-university');
+      } else {
+        AnimationService.flip('^.essay-student-university');
+      }
     }
 
     $scope.scrollToSection = function(section_selector) {

@@ -1,3 +1,61 @@
+ion-view .student-mode {
+  background: #F1F1F1;
+}
+
+ion-view #student-files {
+  height: 100%;
+}
+
+ion-view #student-files header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 30% !important;
+  text-align: center;
+  background: #50A5DD;
+}
+
+ion-view #student-files header h1 {
+  font-size: 48px;
+  font-weight: 700;
+  text-transform: none;
+}
+
+ion-view #student-files .main {
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  height: 70%;
+  padding: 22.5px 0 7.5px !important;
+  overflow: auto;
+}
+
+ion-view #student-files .main .attachment-list ul {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+ion-view #student-files .main .attachment-list ul li div {
+  height: 150px;
+  width: 150px;
+}
+
 ion-view #essay-student-home {
   background: white;
 }

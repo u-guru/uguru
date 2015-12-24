@@ -60,8 +60,6 @@ Gameplan
 			<progress class="white" max="6" value="{{requestProgress.value}}"></progress>
 		</div>
 		<ion-slide-box id='request-form-slide-box' can-swipe-back='false' on-slide-changed="slideHasChanged($index)" class='full-y'>
-			<!-- Honor Pledge -->
-			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.three.html'"></ion-slide>
 
 			<!-- What do you need help in? -->
 			<ion-slide id='essay-student-request-form'  ng-include="img_base + BASE + 'templates/essay.student.request.slide.one.html'"></ion-slide>
@@ -69,9 +67,11 @@ Gameplan
 			<!-- Payment options -->
 			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.two.html'"></ion-slide>
 
-			<!-- Receipt + submit -->
-			<!-- <ion-slide ng-include="img_base + BASE + 'templates/student.essay.request.slide.three.html'"></ion-slide> -->
+			<!-- Honor Pledge -->
+			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.three.html'"></ion-slide>
 
+			<!-- Summary & Submit -->
+			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.three.html'"></ion-slide>
 
 		</ion-slide-box>
 	</main>

@@ -22,11 +22,12 @@ angular.module('uguru.util.controllers')
     'PopupService',
     'LoadingService',
     'TimelineService',
+    'Utilities',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
-        DeviceService, PopupService, LoadingService, TimelineService) {
+        DeviceService, PopupService, LoadingService, TimelineService, Utilities) {
 
       var CTA_PARENT_DICT = {
             'cta-box-essay-student-request':'#desktop-student-home .main',
@@ -46,6 +47,23 @@ angular.module('uguru.util.controllers')
         $scope.launchCtaDict = {};
         $scope.closeCTADict = {};
         $scope.search_text = {university:''};
+        $scope.universities = University.getTargetted();
+
+        //temp function
+        var selectRandom = function(arr) {
+           return arr[Math.floor(Math.random()*arr.length)];
+        }
+
+        //temp data here
+        $scope.user.hs_files = []
+        for (var i = 0; i < 20; i++) {
+             var randUniversity = selectRandom($scope.universities)
+             $scope.user.hs_files.push({name:"Essay " + i, university: randUniversity, university_id:randUniversity.id, type:selectRandom(['doc', 'xls', 'pdf','img'])})
+        }
+
+        Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
+
+
 
         function initCTA() {
 
@@ -95,19 +113,48 @@ angular.module('uguru.util.controllers')
         }
 
         function initStudentHomeModals() {
-            $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.university.modal.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function(modal) {
-                $scope.studentCoursesModal = modal;
+                $scope.essayStudentUniversityModal = modal;
             });
 
-            // $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.modal.html', {
-            //     scope: $scope,
-            //     animation: 'slide-in-up'
-            // }).then(function(modal) {
-            //     $scope.studentRequestModal = modal;
-            // });
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.request.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentRequestModal = modal;
+            });
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.timeline.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentTimelineModal = modal;
+            });
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.files.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentFilesModal = modal;
+            });
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.messaging.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentMessagesModal = modal;
+            });
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.payments.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentPaymentsModal = modal;
+            });
+
         }
 
         $ionicSideMenuDelegate.canDragContent(false);
@@ -130,6 +177,7 @@ angular.module('uguru.util.controllers')
             }
 
         }
+
 
 
 

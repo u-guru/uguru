@@ -1,7 +1,7 @@
 <!--1. Read all @gabrielle comments-->
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
-
+<link href='https://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 <ion-view class='bg-smoke'>
     <main id='essay-student-home' class='hs-view full-xy'>
         <header id='essay-home-banner' class='hide ng-class:{"show":becomeGuruHeaderActive}'>
@@ -16,9 +16,10 @@
             </a>
         </header>
         <header id='essay-header' class='ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
+            <a class='left-0 fixed p15xy weight-900' style='font-size:48px; font-family:"Grand Hotel", cursive;' ng-click='scrollToSection("#essay-header")' ng-click='scrollToSection("#essay-pricing")'>HS.Guru</a>
             <a ng-click='scrollToSection("#essay-pricing")'>Pricing</a>
             <a ng-click='scrollToSection("#how-it-works")'>How it works</a>
-            <a ng-click='scrollToSection("#timeline")'>Timeline</a>
+            <!-- <a ng-click='scrollToSection("#timeline")'>Timeline</a> -->
             <a ng-click='scrollToSection("#faq-section")'>FAQ</a>
             <a class="active" ng-click='goToUniversity()'>Get Started</a>
             <div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
