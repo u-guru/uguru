@@ -1,0 +1,16 @@
+<ion-view class='uguru-view desktop-login-view bg-charcoal' id='essay-student-login'>
+	<main id='desktop-signup' class="desktop-forms desktop-mode">
+		<aside>
+			<span ng-include="img_base + BASE + 'templates/svg/main-logo-static.html'"></span>
+			<div>
+				<h1>Want an account?</h1>
+				<p>Sweet! You can request an access code by clicking on the button below.</p>
+				<button ng-click='switchSignupMode()' class="btn-ghost-white">Sign up</button>
+				<button ng-if='desktopMode && !user.id' ng-click='backToAccess()' class="cta-modal-close btn-ghost-white m15top">Redeem code</button>
+			</div>
+		</aside>
+
+		<div class="main relative essay" ng-include="img_base + BASE + 'templates/essay.student.login.container.html'"></div>
+
+	</main>
+</ion-view>

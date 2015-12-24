@@ -41,7 +41,7 @@
 						<div class="balance-cards">
 							<h2>Choose Method to Cash Out</h2>
 							<ul class="ugrid-3">
-								<li ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account'>
+								<li name='cards' ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account'>
 									<a class='credit-card-wrapper' ng-click='editPayment(card)'>
 										<!-- BIND -->
 										<div id="credit-card-visa" class="credit-card cf">

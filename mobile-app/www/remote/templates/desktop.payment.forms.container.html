@@ -31,9 +31,9 @@
                         <!-- radio input for remember me -->
                         <div class="desktop-login-buttons">
                             <!-- <button ng-click='connectWithFacebook()' class="bg-fb caps">Login with Facebook</button> -->
-                            <button class="bg-shamrock caps hide ng-class:{'show':!root.vars.cardForm.view_only}" ng-click='savePayment()'>Add Card</button>
-                            <button  class="caps bg-auburn hide ng-class:{'show':root.vars.cardForm.view_only}" ng-click='removeCard()'>Delete</button>
-                            <button class="bg-charcoal caps hide ng-class:{'show':root.vars.cardForm.view_only}" ng-click='setDefaultTransfer()'>Set Default</button>
+                            <button name='save_card-btn' class="bg-shamrock caps hide ng-class:{'show':!root.vars.cardForm.view_only}" ng-click='savePayment()'>Add Card</button>
+                            <button name='remove_card-btn' class="caps bg-auburn hide ng-class:{'show':root.vars.cardForm.view_only}" ng-click='removeCard()'>Delete</button>
+                            <button name='default_card-btn' class="bg-charcoal caps hide ng-class:{'show':root.vars.cardForm.view_only}" ng-click='setDefaultTransfer()'>Set Default</button>
 
                         </div>
                     </form>

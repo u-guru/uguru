@@ -42,12 +42,17 @@ angular.module('uguru.util.controllers')
 
     function goGuruMode()
     {
-      if ($scope.desktopMode) {
-         $state.go('^.guru-home');
-       }
-      else {
-         $state.go('^.guru');
-       }
+
+      if ($scope.LOCAL && $scope.autoredirects) {
+        return;
+      }
+
+      // if ($scope.desktopMode) {
+      //    $state.go('^.guru-home');
+      //  }
+      // else {
+      //    $state.go('^.guru');
+      //  }
     }
 
     ngFB.init({appId: '1416375518604557'});
@@ -79,6 +84,15 @@ angular.module('uguru.util.controllers')
       $scope.signupModal.hide();
      }
     };
+
+    $scope.goToStudentEssayHome = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      if ($scope.desktopMode) {
+        $state.go('^.essay-student-home-desktop');
+      } else {
+        $state.go('^.essay-student-home-mobile');
+      }
+    }
 
     $scope.preventSignupAndBackToAccess = function() {
       $scope.loader.showMsg("Sorry! We are out of signups. <br><br> Please request access code from support on our home page.", 0, 3000);
@@ -1632,9 +1646,9 @@ angular.module('uguru.util.controllers')
         LoadingService.showAmbig('Redirecting...', 2000);
         $ionicViewSwitcher.nextDirection('forward');
         $timeout(function() {
-          if ($scope.desktopMode) {
+          if ($scope.desktopMode && _autoredirects) {
             $state.go('^.guru-home');
-          } else {
+          } else if(!$scope.desktopMode && _autoredirects) {
             $state.go('^.guru');
           }
         }, 1250);

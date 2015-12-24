@@ -10,7 +10,21 @@ angular.module('uguru.util.controllers')
 	'$ionicSideMenuDelegate',
 	'LoadingService',
 	'$timeout',
-	function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, LoadingService, $timeout) {
+	'University',
+	'TimelineService',
+	function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, LoadingService, $timeout, University, TimelineService) {
+		$scope.user.universities = University.getTargetted().slice(0, 20);
+
+		//first format by
+		$scope.user.timeline_universities = TimelineService.formatUniversitiesByDueDate($scope.user.universities);
+		$scope.user.timeline_universities = TimelineService.formatTimelineUniversitiesForHSStudent($scope.user.timeline_universities);
+		$timeout(function() {
+			console.log('user universities', $scope.user.universities)
+		}, 1000)
+
+		$scope.header = {
+			timestamp: TimelineService.todaysDateShortFormat()
+		}
 
 		var event_one = {
 			title: 'If you work in college admissions, you need to get better at Instagram.',

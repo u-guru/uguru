@@ -468,7 +468,7 @@
 							</svg>
 						</a>
 						<span class="pf-check-label">
-							<span>{{portfolio_item.course.short_name}}</span>
+							<span name='portfolio-item-course-short_name'>{{portfolio_item.course.short_name}}</span>
 							<ul class="pf-rating" data-rating="{{portfolio_item.rounded_avg_rating}}" data-half="{{portfolio_item.half_stars}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 							<span class="pf-review-amt">{{portfolio_item.avg_rating}}</span>
 						</span>
@@ -495,7 +495,7 @@
 				</li>
 
 				<!-- <li class='pf-checklist-add ng-class:{"full-xy":activePortfolioItem.visible, "min-height-modal-desktop":activePortfolioItem.visible}'> -->
-				<li class='pf-checklist-add' ng-if='!profile.public_mode'>
+				<li name='new-portfolio' class='pf-checklist-add' ng-if='!profile.public_mode'>
 					<div class="pf-check-container">
 						<a id='cta-box-profile-pi-item' class='cta-box' ng-click='addPortfolioItem($event)'>
 							<span class="pf-check-label">
@@ -506,7 +506,7 @@
 							</span>
 						</a>
 					</div>
-					<div id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.name | lowercase}} ng-class:{'hide': !activePortfolioItem.visible}" ng-include="img_base + 'templates/profile.modal.edit.html'"></div>
+					<div name='add-course-container' id='cta-modal-profile-pi-item' class="pf-checklist-full cta-modal pf-type-{{user.academic_shop.category.name | lowercase}} ng-class:{'hide': !activePortfolioItem.visible}" ng-include="img_base + 'templates/profile.modal.edit.html'"></div>
 				</li>
 			</ul>
 
