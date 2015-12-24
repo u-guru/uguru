@@ -27,6 +27,7 @@ angular.module('uguru.util.controllers')
 
 
     $scope.request = RequestService.initSample();
+    $scope.request.selected_university = University.getTargetted()[0];
     $scope.requestProgress = {value:1};
     $scope.maxHourArr = RequestService.getMaxNumHourArr();
     $scope.search_text = {

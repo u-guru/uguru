@@ -21,24 +21,25 @@ selected university
 							<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 						</svg>
 					</i>
-					<input ng-disabled="essayRequest.selected_university" id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="user.universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, name, variations" ng-disabled="!user.universities|| !user.universities.length" ng-model="search_text.university"/>
+					<input ng-disabled="request.selected_university" id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="user.universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, name, variations" ng-disabled="!user.universities|| !user.universities.length" ng-model="search_text.university"/>
 					<label for="request-search-input">
-						<span>choose one of {{user.universities.length}} added universities</span>
+						<span class='hide ng-class:{"show":!request.selected_university}'>choose one of {{user.universities.length}} added universities</span>
+						<span class='hide ng-class:{"show":request.selected_university}'>{{request.selected_university.name}}</span>
 					</label>
-					<a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
+					<a ng-click='request.selected_university = null;' class="side-icon desktop-input-close-icon hide ng-class:{'show':request.selected_university || (search_text.university && search_text.university.length)}" ng-click="search_text.course = '';">
 						<i class="icon ion-close-circled txt-white"></i>
 					</a>
 				</div>
 			</form>
-			<div class='course-none hide ng-class:{"show": search_text.course.length && !courses.length}'>
+			<div class='course-none hide ng-class:{"show": search_text.university.length && !user.universities.length}'>
 				No results, try again?
 			</div>
-			<div class="course-list hide ng-class:{'show': search_text.course.length}">
+			<!--This works... it just doesn't show for some reason. Keep me updated on why! I want to know-->
+			<div class="course-list hide ng-class:{'show': search_text.university.length}">
 				<ul>
-					<li class="hide ng-class:{'show':course.short_name}" ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 9 track by course.id' ng-click='setCourseAndClearInput(course)'>
+					<li class="hide ng-class:{'show':course.short_name}" ng-repeat='university in user.universities | filter:search_text.university:strict | limitTo: 9 track by university.id' ng-click='request.selected_university = university;'>
 						<a>
-							<span class="course-name">{{course.short_name}}</span>
-							<span class="course-title">{{course.full_name || course.title}}</span>
+							<span class="course-name">{{university.short_name || university.name}}</span>
 						</a>
 					</li>
 				</ul>
@@ -46,6 +47,7 @@ selected university
 		</div>
 
 		<ul>
+			<!-- @gabrielle, i'll template this one after-->
 			<li class='essay-request-type'>
 				<h1 class='txt-charcoal full-x'>
 					Please choose one of the options
@@ -61,7 +63,7 @@ selected university
 										</svg>
 									</span>
 								</div>
-								<label for="pf-course-check">Paired 1:1 with a {{essayRequest.selected_university.name}} guru</label>
+								<label for="pf-course-check">Paired 1:1 with a {{request.selected_university.name || request.selected_university.short_name}} guru</label>
 							</div>
 						</div>
 						<div>
@@ -97,6 +99,12 @@ selected university
 				<!--@gabrielle please add -->
 				<!-- description -->
 				<textarea class="input-outline full-x txt-charcoal" rows="4" ng-model='request.info.description' placeholder="Please provide as much detail as possible"></textarea>
+			</li>
+			<li class='tags-wrapper'>
+				<div class='tag-list'>
+					<a class="chip tag-selected" ng-click='removeTagFromRequest($index, tag)' ng-repeat="tag in request.info.tags"><span>&times;&nbsp;&nbsp;</span><span>{{tag.name}}</span></a>
+					<input class='chip tag-add' ng-model='request.info.empty_tag.name' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{request.info.empty_tag.name.length || 10}}">
+				</div>
 			</li>
 			<li>
 				<!-- start attachments -->
