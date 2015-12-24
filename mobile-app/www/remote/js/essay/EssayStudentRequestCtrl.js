@@ -23,7 +23,9 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation,
     $ionicSideMenuDelegate, LoadingService, RequestService, University,
     SearchboxService, $ionicSlideBoxDelegate, ContentService) {
-    $ionicSideMenuDelegate.canDragContent(true);
+
+    //@gabrielle - this is how you disable the sidemenu
+    $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.honorPledgeArr = ContentService.honorPledge;
 

@@ -90,6 +90,10 @@ angular.module('uguru.util.controllers')
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth) && !(navigator.userAgent.indexOf('iPad') > 0);
 
         if ($scope.desktopMode) {
+            $ionicSideMenuDelegate.canDragContent(false);
+        }
+
+        if ($scope.desktopMode) {
             document.body.classList.add('desktop-view');
         }
         window.addEventListener('native.keyboardshow', keyboardShowHandler);

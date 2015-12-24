@@ -136,6 +136,67 @@ def init_mailgun_lists():
             print create_mailing_list(u)
 
 
+def getNumRandomTargettedUniversities(num):
+    import json
+    from random import randint
+    arr_universities = json.load(open('app/static/data/fa15_targetted.json'))
+    result = []
+    for index in range(0, num):
+        randInt = randint(0, len(arr_universities) - 1)
+        selected_uni = arr_universities[randInt]
+        arr_universities.remove(selected_uni)
+        result.append(selected_uni)
+    return result
+
+def addUniversitiesToUser(user, arr):
+    for uni_dict in arr:
+        uni_id = int(uni_dict.get('id'))
+        uni = University.query.get(uni_id)
+        user.universities.append(uni)
+        db_session.commit()
+    print "%s universities added to %s" % (len(arr), user.name)
+
+def init_hs():
+    from app.models import *
+    from hashlib import md5
+
+    email = "hs@uguru.me"
+    print "creating %s" % email
+    try:
+        user = User(email=email)
+    except:
+        user = User.query.filter_by(email=email).first()
+        db_session.delete(user)
+        db_session.commit()
+        user = User(email=email)
+
+    user.password = md5('launchuguru123').hexdigest()
+    user.name = 'Sizzle N'
+    ## create user with _high school
+    ## add many propertyes
+
+
+    ## add 5 universities
+
+    db_session.add(user)
+    db_session.commit()
+    print "user created"
+
+    try:
+        randomUniversities = getNumRandomTargettedUniversities(20)
+        addUniversitiesToUser(user, randomUniversities)
+    except:
+        db_session.delete(user)
+        db_session.commit()
+        raise
+
+    db_session.delete(user)
+    db_session.commit()
+
+    print 'user successfully deleted'
+
+if arg == 'init_hs':
+    init_hs()
 
 def init_university_dates(name):
     req = urllib2.Request("https://drive.google.com/uc?export=download&id=0By5VIgFdqFHddHdBT1U4YWZ2VkE", None)
