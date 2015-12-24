@@ -5007,60 +5007,6 @@ input[type=range]:focus::-ms-fill-upper {
   background: #F4C2A7;
 }
 
-.paper-container main .paper {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.paper-container main .paper svg rect {
-  fill: white;
-  width: 100%;
-  height: 100%;
-}
-
-.paper-container main .paper svg path {
-  stroke-width: 2px;
-}
-
-.paper-container main .paper svg path:not(:last-child) {
-  filter: alpha(opacity=30);
-  opacity: 0.3;
-  stroke: #50A5DD;
-}
-
-.paper-container main .paper svg path:last-child {
-  stroke: #F04F54;
-}
-
-.paper-container main .paper h1 {
-  position: absolute;
-  top: 7.7%;
-  left: 15.5%;
-  width: 84.5%;
-  padding: 0 15px;
-  color: #40484B;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 2.14;
-}
-
-.paper-container main .paper div {
-  position: absolute;
-  top: 11.7%;
-  left: 15.5%;
-  width: 84.5%;
-  padding: 0 15px;
-  color: #40484B;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 2.14;
-}
-
-.paper-container main .paper.bottom-align h1, .paper-container main .paper.bottom-align div {
-  padding-top: 1%;
-}
-
 .paper-container section {
   width: 100%;
 }
@@ -5075,6 +5021,68 @@ input[type=range]:focus::-ms-fill-upper {
   .paper-container main + section {
     display: none;
   }
+}
+
+.paper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.paper svg {
+  display: block;
+}
+
+.paper svg rect {
+  fill: white;
+  width: 100%;
+  height: 100%;
+}
+
+.paper svg path {
+  stroke-width: 2px;
+}
+
+.paper svg path:not(:last-child) {
+  filter: alpha(opacity=30);
+  opacity: 0.3;
+  stroke: #50A5DD;
+}
+
+.paper svg path:last-child {
+  stroke: #F04F54;
+}
+
+.paper h1 {
+  position: absolute;
+  top: 7.7%;
+  left: 15.5%;
+  width: 84.5%;
+  padding: 0 15px;
+  color: #40484B;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 2.14;
+}
+
+.paper div {
+  position: absolute;
+  top: 11.7%;
+  left: 15.5%;
+  width: 84.5%;
+  padding: 0 15px;
+  color: #40484B;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 2.14;
+}
+
+.paper.bottom-align h1, .paper.bottom-align div {
+  padding-top: 1%;
 }
 
 .notecard {

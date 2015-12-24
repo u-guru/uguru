@@ -1239,11 +1239,7 @@ header:not(.desktop-header) {
 				height: 28px;
 				margin: 0 8px;
 				path {
-					fill: none;
-					stroke: white;
-					stroke-width: 7px;
-					stroke-linecap: round;
-					stroke-linejoin: round;
+					@include svg-stroke(white, 7);
 				}
 			}
 		}
@@ -3485,55 +3481,6 @@ input[type=range] {
 		overflow: auto;
 		padding: 15px 0;
 		background: #F4C2A7;
-		.paper {
-			position: relative;
-			max-width: 800px;
-			margin: 0 auto;
-			svg {
-				rect {
-					fill: white;
-					width: 100%;
-					height: 100%;
-				}
-				path {
-					stroke-width: 2px;
-					&:not(:last-child) {
-						@include opacity(.3);
-						stroke: $lake;
-					}
-					&:last-child {
-						stroke: $auburn;
-					}
-				}
-			}
-			h1 {
-				position: absolute;
-				top: 7.7%;
-				left: 15.5%;
-				width: 84.5%;
-				padding: 0 15px;
-				color: $slate;
-				font-size: 20px;
-				font-weight: 600;
-				line-height: 2.14;
-			}
-			div {
-				position: absolute;
-				top: 11.7%;
-				left: 15.5%;
-				width: 84.5%;
-				padding: 0 15px;
-				color: $slate;
-				font-size: 18px;
-				font-weight: 400;
-				line-height: 2.14;
-			}
-			&.bottom-align {
-				h1, div {
-					padding-top: 1%;
-				}
-			}
-		}
 	}
 	section {
 		width: 100%;
@@ -3545,6 +3492,60 @@ input[type=range] {
 		}
 		main + section {
 			display: none;
+		}
+	}
+}
+.paper {
+	position: relative;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	background: white;
+	border-radius: 2px;
+	overflow: hidden;
+	svg {
+		display: block;
+		rect {
+			fill: white;
+			width: 100%;
+			height: 100%;
+		}
+		path {
+			stroke-width: 2px;
+			&:not(:last-child) {
+				@include opacity(.3);
+				stroke: $lake;
+			}
+			&:last-child {
+				stroke: $auburn;
+			}
+		}
+	}
+	h1 {
+		position: absolute;
+		top: 7.7%;
+		left: 15.5%;
+		width: 84.5%;
+		padding: 0 15px;
+		color: $slate;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 2.14;
+	}
+	div {
+		position: absolute;
+		top: 11.7%;
+		left: 15.5%;
+		width: 84.5%;
+		padding: 0 15px;
+		color: $slate;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 2.14;
+	}
+	&.bottom-align {
+		h1, div {
+			padding-top: 1%;
 		}
 	}
 }

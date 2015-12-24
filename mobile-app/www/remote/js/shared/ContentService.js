@@ -40,52 +40,52 @@ function ContentService() {
     var faq = [
       {
         question: "Is this college ruled?",
-        popularity:10,
+        popularity: 10,
         answer: "Yes"
       },
       {
-        question: "Gurus edit your content anonymously, unless you choose Option 1 on pricing, where we leave it up to you guys to reveal identities",
-        popularity:10,
-        answer: "Yes"
+        question: "Do Gurus edit my content anonymously?",
+        popularity: 10,
+        answer: "Yes - unless you choose Option 1 on pricing, where we leave it up to you guys to reveal identities"
       },
       {
         question: "What payment forms do you support?",
-        popularity:10,
+        popularity: 10,
         answer: "We take all popular credit cards, domestically and internationally"
       },
       {
-        question: "Can other college applications see any of my content(i.e. college essays) uploaded?",
-        popularity:10,
+        question: "Can other college applications see any of my uploaded content (i.e. college essays)?",
+        popularity: 10,
         answer: "Absolutely not. We take privacy very seriously and can assure you that your data is safe with us."
       },
       {
         question: "Can I request help anonymously?",
-        popularity:10,
+        popularity: 10,
         answer: "You remain anonymous by default. However, our signup still requires your full name and email."
       },
       {
         question: "How can I increase my chances to be connected with a college Guru?",
-        popularity:10,
+        popularity: 10,
         answer: "Provide detailed description of what you need help in. If you are not sure, try our live customer support."
       },
       {
         question: "I am not 100% happy with my experience - can I request a refund?",
-        popularity:10,
+        popularity: 10,
         answer: "Absolutely, we will dispute the situation from both sides."
       },
       {
-        question: "Can I request for a College Guru to rewrite parts of my essay?",
-        popularity:10,
+        question: "Can I request for a college Guru to rewrite parts of my essay?",
+        popularity: 10,
         answer: "This is strictly against our policy. Any violation or attempts to do so will result in a de-activated account. We do not tolerate cheating, just like the university you are applying to."
       },
       {
         question: "Do you sell my content to third party services?",
-        popularity:10,
+        popularity: 10,
         answer: "Absolutely not. We respect your privacy and have no future plans to share any sensitive content."
       },
       {
-        question: "I'm applying for many special scholarships, athletes, honors, and minorities. I need these to be able to afford college. Can we clarify this when we request help.",
-        popularity:10,
+        question: "I'm applying for many different special scholarships, including athletics, honors, and minorities. I need these to be able to afford college. Can I clarify this when I request help?",
+        popularity: 10,
         answer: "Yes. For Gurus that have used the exact same key terms in their description, we'll immediately let them know and connect you immediately if they are available."
       }
     ];
@@ -116,17 +116,17 @@ function ContentService() {
         {
           step_number: 1,
           header: "Request Help",
-          content: "From last-second essay feedback, to detailed teardowns, to unlimited Q&A with Gurus from your dream school."
+          content: "From last-second essay feedback to detailed teardowns to unlimited Q&A with gurus from your dream school."
         },
         {
           step_number: 2,
-          header: "Gurus are instantly contacted",
-          content: "We'll send out your request to all Guru's across the nation. Our goal is to match you with the perfect one."
+          header: "Instant contact",
+          content: "We'll send out your request to all gurus across the nation. Our goal is to match you with the perfect one."
         },
         {
           step_number: 3,
-          header: "Match with the perfect Guru",
-          content: "We'll send out your request to all Guru's across the nation. Our goal is to match you with the perfect one."
+          header: "Make the perfect match",
+          content: "We'll send out your request to all gurus across the nation. Our goal is to match you with the perfect one."
         }
       ],
       bottom_half:[

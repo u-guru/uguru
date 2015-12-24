@@ -17,16 +17,149 @@ ion-view #essay-student-home > header {
   padding: 15px;
 }
 
-ion-view #essay-student-home > header a {
+ion-view #essay-student-home > header a:not(.header-close) {
   display: block;
   padding: 15px;
   font-size: 20px;
   font-weight: 700;
+  text-shadow: 0 0 20px rgba(43, 50, 52, 0.1);
 }
 
-ion-view #essay-student-home > header a.active {
+ion-view #essay-student-home > header a:not(.header-close).active {
   background: white;
   color: #E5753C;
+}
+
+ion-view #essay-student-home #essay-home-banner {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  background: rgba(64, 72, 75, 0.95);
+  z-index: 100;
+  width: 100%;
+  padding: 15px 0 0;
+  margin-top: -15px;
+}
+
+ion-view #essay-student-home #essay-home-banner.hide {
+  -ms-box-orient: horizontal !important;
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -moz-flex !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transform: translateY(-15%);
+  -moz-transform: translateY(-15%);
+  -ms-transform: translateY(-15%);
+  -o-transform: translateY(-15%);
+  transform: translateY(-15%);
+  z-index: -50;
+}
+
+ion-view #essay-student-home #essay-home-banner.show {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-animation-name: toast-pop;
+  -moz-animation-name: toast-pop;
+  -o-animation-name: toast-pop;
+  animation-name: toast-pop;
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  -o-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  z-index: 100;
+}
+
+ion-view #essay-student-home #essay-home-banner h1 {
+  padding: 15px !important;
+  text-transform: none;
+  line-height: 1.2;
+}
+
+ion-view #essay-student-home #essay-home-banner button {
+  height: auto;
+  padding: 10px 15px;
+  font-weight: 600;
+  text-transform: lowercase;
+  background: #81B566;
+}
+
+ion-view #essay-student-home #essay-home-banner a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  height: 50px;
+}
+
+ion-view #essay-student-home #essay-home-banner a svg {
+  width: 28px;
+  height: 28px;
+  margin: 0 8px;
+}
+
+ion-view #essay-student-home #essay-home-banner a svg path {
+  fill: none;
+  stroke: white;
+  stroke-width: 7px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media screen and (min-width: 768px) {
+  ion-view #essay-student-home #essay-home-banner {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 30px 15px 15px;
+    text-align: center;
+  }
+  ion-view #essay-student-home #essay-home-banner h1 {
+    padding: 0 15px 15px !important;
+    font-size: 28px !important;
+  }
+  ion-view #essay-student-home #essay-home-banner button {
+    border-radius: 1000px;
+    margin: 0 15px;
+    width: auto;
+    padding: 15px 30px;
+  }
+}
+
+@media screen and (min-width: 1106px) {
+  ion-view #essay-student-home #essay-home-banner h1 {
+    padding: 0 15px !important;
+  }
 }
 
 ion-view #essay-student-home > section {
@@ -58,6 +191,31 @@ ion-view #essay-student-home > section > header h1 {
   font-weight: 900;
   text-align: center;
   text-transform: none !important;
+}
+
+ion-view #essay-student-home > section .arrow-down-next {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: block;
+  bottom: 0;
+}
+
+ion-view #essay-student-home > section .arrow-down-next svg {
+  width: 72px;
+  height: 72px;
+}
+
+ion-view #essay-student-home > section .arrow-down-next svg path {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 ion-view #essay-student-home > section button {
@@ -95,9 +253,16 @@ ion-view #essay-student-home > section.essay-splash {
 }
 
 ion-view #essay-student-home > section.essay-splash h1 {
-  font-size: 60px;
+  font-size: 32px;
   font-weight: 600;
-  line-height: 90px;
+  line-height: 44px;
+}
+
+@media screen and (min-width: 768px) {
+  ion-view #essay-student-home > section.essay-splash h1 {
+    font-size: 60px;
+    line-height: 90px;
+  }
 }
 
 ion-view #essay-student-home > section.essay-splash h1 span {
@@ -128,13 +293,38 @@ ion-view #essay-student-home > section.essay-pricing .main {
 }
 
 ion-view #essay-student-home > section.essay-pricing .main > ul {
-  max-width: 1030px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  overflow: auto;
   margin: 0 auto;
   padding: 15px;
 }
 
 ion-view #essay-student-home > section.essay-pricing .main > ul > li {
+  width: 100%;
+  min-width: 320px;
   padding: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  ion-view #essay-student-home > section.essay-pricing .main > ul {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    max-width: 1030px;
+  }
+  ion-view #essay-student-home > section.essay-pricing .main > ul > li {
+    width: calc(100% / 3);
+  }
 }
 
 ion-view #essay-student-home > section.essay-pricing .main > div {
@@ -150,6 +340,220 @@ ion-view #essay-student-home > section.essay-pricing .main > div h1 {
 ion-view #essay-student-home > section.essay-pricing .main > div h2 {
   font-size: 18px;
   font-weight: 600;
+}
+
+ion-view #essay-student-home > section#essay-how-it-works .main > h1, ion-view #essay-student-home > section#essay-faq .main > h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+ion-view #essay-student-home > section#essay-faq .main .paper > h1 {
+  top: 5.2%;
+  font-size: 28px;
+}
+
+ion-view #essay-student-home > section#essay-faq .main .paper > div {
+  top: 9%;
+}
+
+ion-view #essay-student-home > section#essay-faq .main .paper dl {
+  margin: 0;
+}
+
+ion-view #essay-student-home > section#essay-faq .main .paper dl dt, ion-view #essay-student-home > section#essay-faq .main .paper dl dd {
+  line-height: inherit;
+}
+
+ion-view #essay-student-home > section#essay-how-it-works .main > ul {
+  counter-reset: li;
+  padding: 15px;
+  max-width: 1030px;
+}
+
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:first-of-type li {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:first-of-type li:before {
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  content: counter(li);
+  counter-increment: li;
+  padding: 15px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+  background: #E5753C;
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+ion-view #essay-student-home > section#essay-how-it-works .main > ul li {
+  position: relative;
+  padding: 15px;
+}
+
+ion-view #essay-student-home > section#essay-how-it-works .main > ul li h1, ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
+  width: 100%;
+}
+
+ion-view #essay-student-home > section#essay-how-it-works .main > ul li h1 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+@-webkit-keyframes toast-pop {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(-10%);
+    -moz-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    -o-transform: translateY(-10%);
+    transform: translateY(-10%);
+  }
+  80% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(5%);
+    -moz-transform: translateY(5%);
+    -ms-transform: translateY(5%);
+    -o-transform: translateY(5%);
+    transform: translateY(5%);
+  }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-moz-keyframes toast-pop {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(-10%);
+    -moz-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    -o-transform: translateY(-10%);
+    transform: translateY(-10%);
+  }
+  80% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(5%);
+    -moz-transform: translateY(5%);
+    -ms-transform: translateY(5%);
+    -o-transform: translateY(5%);
+    transform: translateY(5%);
+  }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-ms-keyframes toast-pop {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(-10%);
+    -moz-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    -o-transform: translateY(-10%);
+    transform: translateY(-10%);
+  }
+  80% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(5%);
+    -moz-transform: translateY(5%);
+    -ms-transform: translateY(5%);
+    -o-transform: translateY(5%);
+    transform: translateY(5%);
+  }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-pop {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateY(-10%);
+    -moz-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    -o-transform: translateY(-10%);
+    transform: translateY(-10%);
+  }
+  80% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(5%);
+    -moz-transform: translateY(5%);
+    -ms-transform: translateY(5%);
+    -o-transform: translateY(5%);
+    transform: translateY(5%);
+  }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
 
 .ticket-container {
@@ -216,8 +620,26 @@ ion-view #essay-student-home > section.essay-pricing .main > div h2 {
 }
 
 .ticket .ticket-bot {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
   background: white;
   color: #6f7d82;
+  padding-bottom: 24px;
 }
 
 .ticket .ticket-bot ul {
@@ -265,6 +687,74 @@ ion-view #essay-student-home > section.essay-pricing .main > div h2 {
 .ticket .ticket-bot ul li .ticket-info {
   width: calc(100% - 24px);
   padding-left: 15px;
+}
+
+.ticket .ticket-bot h1 {
+  position: relative;
+  width: 70%;
+  margin: 0 15px 15px;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+  background: #f1b596;
+  color: white;
+}
+
+.ticket .ticket-bot h1:before, .ticket .ticket-bot h1:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 29px solid transparent;
+  border-left-width: 14px;
+  border-right-width: 14px;
+  border-top-color: #f1b596;
+  border-bottom-color: #f1b596;
+}
+
+.ticket .ticket-bot h1:before {
+  left: -14px;
+}
+
+.ticket .ticket-bot h1:after {
+  right: -14px;
+}
+
+.ticket .ticket-bot:before {
+  border-radius: 1000px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  content: "";
+  display: block;
+  bottom: -24px;
+  width: 48px;
+  height: 48px;
+  background: #F1F1F1;
+  border: 3px solid #bc5019;
+}
+
+.ticket .ticket-bot:after {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  content: "";
+  display: block;
+  bottom: -27px;
+  width: 48px;
+  height: 24px;
+  background: #F1F1F1;
 }
 
 #essay-student-login .main > div {
@@ -332,44 +822,22 @@ ion-view {
   overflow: auto !important;
 }
 
-ion-view #essay-student-home {
+#essay-student-home {
   overflow: auto;
   min-height: 100%;
 }
 
-ion-view #essay-student-home .loading-container {
+#essay-student-home .loading-container {
   display: none !important;
 }
 
-ion-view #essay-student-home section button:hover, ion-view #essay-student-home section button.activated, ion-view #essay-student-home section button.active {
-  background-color: rgba(105, 179, 165, 0.8);
+#essay-student-home section {
+  filter: alpha(opacity=100);
   opacity: 1;
 }
 
-#essay-student-home header#become-guru-essay-header {
-  z-index: 10000;
-}
-
-#essay-student-home header#become-guru-essay-header a.become-guru-link {
-  background-color: #e6389b;
-  margin-right: 5%;
-  top: 15px;
-}
-
-#essay-student-home header#become-guru-essay-header a.close-become-guru-header {
-  color: white;
-  top: 0;
-  right: 0;
-  margin: 10px 30px 10px 0px;
-}
-
-#essay-student-home header#become-guru-essay-header a.close-become-guru-header svg {
-  width: 33px;
-  height: 33px;
-}
-
-#essay-student-home header#become-guru-essay-header a.close-become-guru-header svg path {
-  stroke-width: 10px;
+#essay-student-home section button:hover, #essay-student-home section button.activated, #essay-student-home section button.active {
+  background-color: rgba(105, 179, 165, 0.8);
 }
 
 #essay-student-home header#essay-header div#essay-home-backdrop {
