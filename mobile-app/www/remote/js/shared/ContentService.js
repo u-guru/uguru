@@ -94,6 +94,13 @@ function ContentService() {
 
     }
 
+    var honorPledge = [
+      {content: "I will request any portion of my essay or college application re-written by a Guru."},
+      {content: "I understand that if I do, I risk immediately losing access to my Uguru account for a lengthy period of time."},
+      {content: "All of the work I'm submitting for feedback is my work and my work only."},
+      {content: "I understand that Uguru's services may not result in direct acceptance to my dream school"},
+      {content: "I understand that addicting usage of Uguru may result in cancer"}
+    ]
 
     //MVP
     var affordability_modal = {
@@ -153,6 +160,7 @@ function ContentService() {
       faq: faq,
       timeline: timeline,
       how_it_works: how_it_works,
+      honorPledge: honorPledge,
       parents: parents,
       sophisticated_modal:sophisticated_modal,
       affordability_modal:affordability_modal,

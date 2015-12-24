@@ -4,180 +4,114 @@ selected university
 -->
 <section id="request-one" class="request-slide request-essay">
 	<header>
-		<h1>How can we help you achieve your college goals?</h1>
+		<h1>Confirm my request</h1>
 	</header>
 	<div class="request-content relative">
 		<div id="request-search">
 			<form>
+				<h1 class="request-step small selected">
+					<b>Selected School</b>
+				</h1>
 				<div class="input-field">
-					<!-- @gabrielle, change this to a plus icon-->
 					<i class="material-icons prefix">
 						<svg viewBox="0 0 100 100">
-							<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+						    <path d="M43,27 L43,59 M27,43 L59,43 M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 						</svg>
 					</i>
-					<input ng-disabled="essayRequest.selected_university" id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="user.universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, name, variations" ng-disabled="!user.universities|| !user.universities.length" ng-model="search_text.university"/>
+					<input ng-disabled="request.selected_university" id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="user.universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, name, variations"
+					ng-disabled="!user.universities|| !user.universities.length" ng-model="search_text.university" />
 					<label for="request-search-input">
-						<span>choose one of {{user.universities.length}} added universities</span>
+						<span class='hide ng-class:{"show":!request.selected_university}'>choose one of {{user.universities.length}} added universities</span>
+						<span class='hide selected-school ng-class:{"show":request.selected_university}'>{{request.selected_university.name}}</span>
 					</label>
-					<a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
+					<a ng-click='jumpToSlide(1, "request-university");' class="side-icon desktop-input-close-icon hide ng-class:{'show':request.selected_university || (search_text.university && search_text.university.length)}">
 						<i class="icon ion-close-circled txt-white"></i>
 					</a>
 				</div>
 			</form>
-			<div class='course-none hide ng-class:{"show": search_text.course.length && !courses.length}'>
-				No results, try again?
-			</div>
-			<div class="course-list hide ng-class:{'show': search_text.course.length}">
-				<ul>
-					<li class="hide ng-class:{'show':course.short_name}" ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 9 track by course.id' ng-click='setCourseAndClearInput(course)'>
-						<a>
-							<span class="course-name">{{course.short_name}}</span>
-							<span class="course-title">{{course.full_name || course.title}}</span>
-						</a>
+			<div class='request-type'>
+				<h1 class="request-step small selected">
+					<b>Selected Help Type</b>
+				</h1>
+				<ul class="ugrid-1">
+					<li>
+						<div class="radio-container">
+							<div>
+								<input type="radio" id="checkbox-container-selected" name="checkbox-container-selected" checked disabled/>
+								<span>
+									<svg viewBox="0 0 100 100">
+										<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</span>
+							</div>
+							<label for="checkbox-container-selected">1:1 with a {{request.selected_university.name || request.selected_university.short_name}} guru</label>
+						</div>
 					</li>
 				</ul>
 			</div>
-		</div>
-
-		<ul>
-			<li class='essay-request-type'>
-				<h1 class='txt-charcoal full-x'>
-					Please choose one of the options
+			<div class="request-desc">
+				<h1 class="request-step small selected">
+					<b>Request Description</b>
 				</h1>
-				<div class='ugrid-3 txt-slate p20y'>
-						<div>
-							<div class="pf-course-check">
-								<div>
-									<input type="checkbox" name="pf-course-check" checked disabled/>
-									<span>
-										<svg viewBox="0 0 100 100">
-											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-										</svg>
-									</span>
-								</div>
-								<label for="pf-course-check">Paired 1:1 with a {{essayRequest.selected_university.name}} guru</label>
-							</div>
-						</div>
-						<div>
-							<div class="pf-course-check">
-								<div>
-									<input type="checkbox" name="pf-course-check" checked disabled/>
-									<span>
-										<svg viewBox="0 0 100 100">
-											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-										</svg>
-									</span>
-								</div>
-								<label for="pf-course-check">Detailed essay feedback</label>
-							</div>
-						</div>
-						<div>
-							<div class="pf-course-check">
-								<div>
-									<input type="checkbox" name="pf-course-check" checked disabled/>
-									<span>
-										<svg viewBox="0 0 100 100">
-											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-										</svg>
-									</span>
-								</div>
-								<label for="pf-course-check">Quick question (<10m)</label>
-							</div>
-						</div>
-
+				<textarea class="input-outline active" rows="4" ng-model='request.info.description' value="{{request.info.description}}" disabled></textarea>
+				<div class='tag-list'>
+					<span class="chip tag-selected" ng-repeat="tag in request.info.tags">{{tag.name}}</span>
 				</div>
-			</li>
-			<li class='full-x'>
-				<!--@gabrielle please add -->
-				<!-- description -->
-				<textarea class="input-outline full-x txt-charcoal" rows="4" ng-model='request.info.description' placeholder="Please provide as much detail as possible"></textarea>
-			</li>
-			<li>
-				<!-- start attachments -->
 				<div class='attachment-list'>
 					<ul>
-						<li>
-							<div class="attach-upload-add">
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
+						<li ng-repeat='file in user.hs_files.slice(0, 5)'>
+							<div class="attach-upload-file attach-upload-{{file.type}}" ng-if='file.type !== "img"'>
+								<svg class="doc-outline" viewBox="0 0 75 75" fill="{{file.university.school_color_one}}" style="fill: {{file.university.school_color_one}}!important;">
+									<path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
 								</svg>
 								<a>
-									<span>
-										<svg viewBox="0 0 100 100">
-											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-										</svg>
-										<span>Add File</span>
-									</span>
+									<svg viewBox="0 0 100 100">
+										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+									</svg>
 								</a>
+								<span class="doc-info">
+									<span class="doc-name">{{file.name}}</span>
+									<span class="doc-type">{{file.type.toUpperCase()}}</span>
+								</span>
 							</div>
-						</li>
-						<li>
-							<div class="attach-upload-add">
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
+
+							<div ng-if='file.type === "img"' class="attach-upload-img" style="background-image: url({{img_base}}./img/stock/photography/5.jpg);">
 								<a>
-									<span>
-										<svg viewBox="0 0 100 100">
-											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-										</svg>
-										<span>Add File</span>
-									</span>
-								</a>
-							</div>
-						</li>
-						<li>
-							<div class="attach-upload-add">
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-								<a>
-									<span>
-										<svg viewBox="0 0 100 100">
-											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-										</svg>
-										<span>Add File</span>
-									</span>
-								</a>
-							</div>
-						</li>
-						<li>
-							<div class="attach-upload-add">
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-								<a>
-									<span>
-										<svg viewBox="0 0 100 100">
-											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-										</svg>
-										<span>Add File</span>
-									</span>
-								</a>
-							</div>
-						</li>
-						<li>
-							<div class="attach-upload-add">
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-								<a>
-									<span>
-										<svg viewBox="0 0 100 100">
-											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-										</svg>
-										<span>Add File</span>
-									</span>
+									<svg viewBox="0 0 100 100">
+										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+									</svg>
 								</a>
 							</div>
 						</li>
 					</ul>
 				</div>
-				<!-- end attachments -->
-			</li>
-		</ul>
-		<button ng-if='desktopMode' ng-click='nextSlide()'>Next</button>
+			</div>
+			<div class="request-payment">
+				<h1 class="request-step small selected">
+					<b>Selected Payment Card</b>
+				</h1>
+				<div>
+					<div class="credit-card">
+						<svg class="rect" viewBox="0 0 300 175">
+							<rect x="0" y="0" width="300" height="175" fill="none"></rect>
+						</svg>
+						<div class="credit-card-info">
+							<div>
+								<span class="credit-card-type">Visa</span>
+								<span class="credit-card-number">****-****-****-4242</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='txt-charcoal flex-wrap-center full-x'>
+				<div class='full-x text-left weight-700 p20xy'>
+					Payment Details
+					** Important  we will discuss this, it should take a third/at least 1/4th of this entire page.**
+				</div>
+				<button ng-if='desktopMode' ng-click='showComingSoon()'>Complete</button>
+			</div>
+		</div>
 	</div>
 	<button ng-if='!desktopMode'>Next</button>
 </section>
