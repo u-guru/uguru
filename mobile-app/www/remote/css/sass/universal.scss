@@ -1410,7 +1410,7 @@
 				}
 			}
 			.request-payment {
-				background: lighten($lake, 20%);
+				background: lighten($lake, 10%);
 				padding: 0 15px 15px;
 				.credit-card {
 					position: relative;
@@ -1434,14 +1434,37 @@
 								text-align: center;
 							}
 							.credit-card-type {
-								font-size: 18px;
-								margin-bottom: 10px;
+								margin-bottom: 15px;
+								font-size: 24px;
+								text-transform: uppercase;
 							}
 							.credit-card-number {
-								font-size: 24px;
+								font-size: 32px;
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+	.request-total {
+		background: $lake;
+		padding: 0 15px 15px;
+		> div {
+			h1 {
+				font-size: 84px;
+				font-weight: 700; 
+				text-align: center;
+			}
+			h3 {
+				font-size: 20px;
+				font-weight: 600;
+				text-align: center;
+				&:first-child {
+					margin-top: 15px;
+				}
+				+ h3 {
+					margin-top: 0px!important;
 				}
 			}
 		}

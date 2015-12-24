@@ -1533,7 +1533,7 @@
 }
 
 .request-essay #request-one .request-content .request-payment {
-  background: #a5d1ee;
+  background: #7bbbe5;
   padding: 0 15px 15px;
 }
 
@@ -1576,12 +1576,38 @@
 }
 
 .request-essay #request-one .request-content .request-payment .credit-card .credit-card-info div .credit-card-type {
-  font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  text-transform: uppercase;
 }
 
 .request-essay #request-one .request-content .request-payment .credit-card .credit-card-info div .credit-card-number {
-  font-size: 24px;
+  font-size: 32px;
+}
+
+.request-essay .request-total {
+  background: #50A5DD;
+  padding: 0 15px 15px;
+}
+
+.request-essay .request-total > div h1 {
+  font-size: 84px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.request-essay .request-total > div h3 {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.request-essay .request-total > div h3:first-child {
+  margin-top: 15px;
+}
+
+.request-essay .request-total > div h3 + h3 {
+  margin-top: 0px !important;
 }
 
 .request-essay #request-two .request-urgency div span svg {
