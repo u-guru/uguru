@@ -6,7 +6,7 @@
 	background: $charcoal;
 	#main-logo {
 		@include center-x;
-		top: 30px;
+		top: 15px;
 		display: block;
 		height: 50px;
 		width: 50px;
@@ -538,13 +538,9 @@
 					margin-top: 5px;
 					a {
 						color: $shamrock;
-					}
-					a:active,
-					a:focus,
-					a:hover,
-					a.active,
-					a.activated {
-						color: $taupe;
+						&:active, &:focus, &:hover, &.active, &.activated {
+							color: $taupe;
+						}
 					}
 				}
 				.desktop-login-buttons {
@@ -639,10 +635,28 @@
 
 /* ---------- DESKTOP LISTS */
 .save-button {
+	position: relative;
 	display: block;
-	margin: 20px auto 0 !important;
+	margin: 15px auto 0 !important;
 	min-width: 300px;
 	font-size: 28px!important;
+	&:not(.active) {
+		@include opacity(0);
+		z-index: -10;
+	}
+	&.show {
+		@include opacity(1);
+		z-index: auto;
+	}
+}
+.save-button-container {
+	position: relative;
+	height: 78px;
+	width: 450px;
+	.save-button {
+		position: absolute;
+		width: 100%;
+	}
 }
 .desktop-search {
 	@include flex;
@@ -659,8 +673,7 @@
 				color: white;
 				height: 64px;
 			}
-			input,
-			label {
+			input, label {
 				font-size: 36px;
 			}
 			.prefix {
@@ -680,6 +693,7 @@
 				top: 6px;
 			}
 			label.active {
+				@include opacity(0);
 				font-size: 24px;
 			}
 		}
@@ -690,6 +704,7 @@
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
+				width: 100%;
 				margin: 0 -7.5px;
 				li {
 					width: calc(100% / 3);
@@ -1462,13 +1477,24 @@
 /* ---------- UNIVERSITY */
 #desktop-university {
 	.main {
+		.university-header {
+			h1 {
+				text-align: center;
+				font-weight: 900;
+				font-size: 36px;
+				padding-top: 60px;
+			}
+		}
+		form {
+			margin-top: -10px;
+		}
 		.desktop-search-list {
 			.desktop-card-list {
 				li {
 					a {
 						.school-icon {
 							@include round;
-							display: none;
+							display: block;
 							position: relative;
 							z-index: 999999;
 							margin: 0 auto -5px;
@@ -1499,6 +1525,9 @@
 								overflow: hidden;
 								white-space: nowrap;
 								text-overflow: ellipsis;
+								&:first-letter {
+									text-transform: uppercase;
+								}
 							}
 							.school-location {
 								display: block;

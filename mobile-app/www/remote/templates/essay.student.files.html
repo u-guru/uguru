@@ -1,64 +1,49 @@
-<main id="timeline" ng-controller="TimelineController" class='full-xy main default'>
-    <section>
-        <ul>
-            <li class="post-month">
-                <span class="post-icon">DEC</span>
-            </li>
-            <li class="post post-{{event.category}}" ng-repeat='event in timeline.events' tabindex>
-                <span class="post-icon">
-                    <span ng-include="img_base + 'templates/svg/timeline/' + event.category + '.html'"></span>
-                    <span>{{event.formatted_category || event.category}}</span>
-                </span>
-                <article class="post-content">
-                    <header>
-                        <a class="txt-white" ng-bind-html="event.title"></a>
-                    </header>
-                    <figure ng-if="event.banner.length">
-                        <img class="post-banner" src='{{event.banner}}' alt=''/>
-                    </figure>
-                    <figure ng-if="event.svg.length">
-                        <img class="post-svg" src='{{event.svg}}' alt=''/>
-                    </figure>
-                    <section ng-if="event.body.length">{{event.body}}</section>
-                    <aside class="post-attach" ng-if="event.attachment.url.length">
-                        <ul>
-                            <li>
-                                <div class="post-upload-file post-upload-pdf">
-        							<svg class="doc-outline" viewBox="0 0 75 75">
-        								<path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
-        							</svg>
-        							<span class="doc-info">
-        								<span class="doc-name">{{event.attachment.title}}.{{event.attachment.extension}}</span>
-        								<span class="doc-type">{{event.attachment.extension}}</span>
-        							</span>
-        						</div>
-                            </li>
-                            <li>
-                                <div class="post-upload-file post-upload-img" style="background-image: url({{img_base}}./img/sample/1.jpeg)"></div>
-                            </li>
-                        </ul>
-                    </aside>
-                    <aside class="post-tags">
-                        <a class="chip bg-slate txt-white" ng-repeat='tag in event.tags'>{{tag}}</a>
-                    </aside>
-                    <footer>
-                        <ul>
-                            <li><span style="background-image: url({{event.announcer.profile_url}});"></span></li>
-                            <li>
-                                <a>{{event.announcer.name}}</a>
-                                <span>{{event.formatted_time}}</span>
-                            </li>
-                        </ul>
-                    </footer>
-                </article>
-                <!--
-                    {{event.announcer.role}}
-                    <span ng-repeat="attachment in event.attachments">{{attachment}}</span>
-                -->
+<!-- @gabrielle can you do this one in front of me? dont know why its not working-->
+<!-- initially cloned from essay student request one (for context)-->
 
-            </li>
-            <div></div>
-        </ul>
-    </section>
+<section id='request'  class="request-academic full-xy">
+    <main class='full-xy'>
+        <div class='main flex-wrap-center full-xy'>
+            <section id="request-one" class="request-slide request-academic full-xy">
+                <header>
+                    <h1>My Files</h1>
+                </header>
+                <div class="request-content relative full-xy flex-wrap-center">
+                            <!-- start attachments -->
+                            <div class='attachment-list'>
+                                <ul class='flex-wrap-center'>
+                                    <li ng-repeat='file in user.hs_files' style="height: 150px">
+                                        <div class="attach-upload-file attach-upload-{{file.type}}" ng-if='file.type !== "img"'>
+                                            <svg class="doc-outline" viewBox="0 0 75 75">
+                                                <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+                                            </svg>
+                                            <a>
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </a>
+                                            <span class="doc-info">
+                                                <span class="doc-name">{{file.filename}}</span>
+                                                <span class="doc-type">{{file.type.toUpperCase()}}</span>
+                                            </span>
+                                        </div>
 
-</main>
+                                        <div ng-if='file.type === "img"' class="attach-upload-img" style="background-image: url({{img_base}}./img/stock/photography/5.jpg);">
+                                            <a>
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- end attachments -->
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+</section>

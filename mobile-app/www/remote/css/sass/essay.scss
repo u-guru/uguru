@@ -241,9 +241,17 @@ ion-view {
 	}
 }
 #essay-student-university {
-	ul.school-card-footer {
-		border-bottom-right-radius: 16px !important;
-    	border-bottom-left-radius: 16px;
+	.school-card {
+		.school-card-inside {
+			.school-card-top {
+				.school-card-icon {
+					top: auto;
+					bottom: -24px;
+					width: 64px;
+					height: 64px;
+				}
+			}
+		}
 	}
 	#desktop-essay-university-header {
 		position:relative !important;
