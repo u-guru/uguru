@@ -127,6 +127,12 @@ experience_portfolio_items_table = Table('experience-portfolio-items_assoc',
     Column('portfolio_item_id', Integer, ForeignKey('portfolio_item.id')),
     Column('experience_id', Integer, ForeignKey('experience.id')))
 
+user_university_table = Table('user-university_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('university_id', Integer, ForeignKey('university.id'))
+)
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -150,6 +156,7 @@ class User(Base):
     #admin fields
     is_admin = Column(Boolean)
     is_support_admin = Column(Boolean)
+    hs_student = Column(Boolean)
 
 
     fb_id = Column(String)
@@ -260,7 +267,10 @@ class User(Base):
         primaryjoin="Calendar.id==User.student_calendar_id",
         uselist=False)
 
-
+    universities = relationship("University",
+        secondary = user_university_table,
+        backref="users"
+    )
 
     guru_calendar_id = Column(Integer, ForeignKey('calendar.id'))
     guru_calendar = relationship("Calendar",
@@ -273,6 +283,11 @@ class User(Base):
     external_profiles = relationship("Resource",
         primaryjoin = "(Resource.contributed_user_id==User.id) & "\
                         "(Resource.is_profile==True)")
+
+
+    hs_files = relationship("File",
+        primaryjoin = "(File.user_id==User.id) & "\
+                        "(File.high_school==True)")
 
     # conducted every night at midnight
     estimated_guru_score = Column(Integer)
@@ -1149,6 +1164,8 @@ class University(Base):
         primaryjoin = "(User.university_id==University.id) & "\
                         "(User.is_a_guru==False)")
 
+
+
     majors = relationship("Major",
         secondary = university_major_table,
         backref = backref('universities', lazy='dynamic')
@@ -1841,6 +1858,8 @@ class Request(Base):
 
     time_created = Column(DateTime)
     time_accepted = Column(DateTime)
+    high_school = Column(Boolean, default=False)
+    hs_request_option = Column(String)
 
 
     description= Column(String)
@@ -1851,7 +1870,6 @@ class Request(Base):
 
     rating_id = Column(Integer, ForeignKey("rating.id"))
     transaction_id = Column(Integer, ForeignKey("transaction.id"))
-
 
     student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
     student_calendar = relationship("Calendar",
@@ -2100,6 +2118,8 @@ class File(Base):
     time_updated = Column(String)
     name = Column(String)
 
+    high_school = Column(Boolean, default=False)
+
 
     request_id = Column(Integer, ForeignKey("request.id"))
     request = relationship("Request",
@@ -2112,6 +2132,13 @@ class File(Base):
     proposal = relationship("Proposal",
         uselist = False,
         primaryjoin = "Proposal.id == File.proposal_id",
+        backref = "files"
+    )
+
+    university_id = Column(Integer, ForeignKey("university.id"))
+    university = relationship("University",
+        uselist = False,
+        primaryjoin = "University.id == File.university_id",
         backref = "files"
     )
 
