@@ -131,16 +131,22 @@ function ContentService() {
       ],
       bottom_half:[
         {
-          header: "You Remain Anonymous",
-          content: "From quick essay polishing"
+          icon_details: "Lock or Sheild or Castle?",
+          svg_url: "https://thenounproject.com/search/?q=safety&i=5983",
+          header: "Your Privacy Comes First",
+          content: "You are just an ID number to Gurus (by default, your choice to reveal), and we do not sell data to third parties)."
         },
         {
+          icon_details: "Thumbs up / 5 stars",
+
           header: "Satisfaction Guaranteed",
-          content: "If your feedback wasn't valuable, we'll closely examine the situation and try to get you a full refund."
+          content: "If your feedback wasn't valuable, we'll closely examine the situation and likely provide a full refund."
         },
         {
-          header: "Stay out trouble",
-          content: "We do not tolerate requests for re-writing essays. Make the most out of these Guru's valuable time."
+          icon_details: "Something fostering a safe environment?",
+          svg_url: "https://thenounproject.com/search/?q=diversity&i=61296",
+          header: "A Safe & Honest Environment",
+          content: "We monitor our Gurus very carefully, assuring the best quality, privacy, "
         },
       ]
     };

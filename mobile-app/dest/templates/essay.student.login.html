@@ -10,7 +10,41 @@
 			</div>
 		</aside>
 
-		<div class="main relative essay" ng-include="img_base + BASE + 'templates/essay.student.login.container.html'"></div>
-
+		<div class="main">
+		    <div>
+				<div class="notecard">
+			        <svg viewBox="0 0 328 182">
+			            <rect x="0" y="0" rx="2"></rect>
+			            <rect x="0" y="78"></rect><rect x="0" y="104"></rect>
+			            <rect x="0" y="130"></rect><rect x="0" y="156"></rect>
+			            <rect x="0" y="52"></rect>
+			        </svg>
+			        <h1 class="notecard-title hide ng-class:{'show':!page.toggles.login.active}">Create an account</h1>
+			        <div class="notecard-text">
+			            <div>
+			                <label for="notecard-name">Name</label>
+			                <input id="notecard-name" name="notecard-name" type='text' ng-model="signupForm.full_name" placeholder="Full Name"/>
+			            </div>
+			            <div>
+			                <label for="notecard-email">Email</label>
+			                <input id="notecard-email" name="notecard-email"type='email' placeholder="youremail@email.com" ng-model='signupForm.email'/>
+			            </div>
+			            <div>
+			                <label for="notecard-password">Password</label>
+			                <input id="notecard-password" name="notecard-password" type='password' placeholder="••••••••••••" ng-model="signupForm.password"/>
+			            </div>
+						<button ng-click='goToStudentEssayHome()'>Submit</button>
+			        </div>
+			    </div>
+				<div class="notecard">
+			        <svg viewBox="0 0 328 182">
+			            <rect x="0" y="0" rx="2"></rect>
+			            <rect x="0" y="78"></rect><rect x="0" y="104"></rect>
+			            <rect x="0" y="130"></rect><rect x="0" y="156"></rect>
+			            <rect x="0" y="52"></rect>
+			        </svg>
+			    </div>
+			</div>
+		</div>
 	</main>
 </ion-view>

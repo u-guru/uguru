@@ -62,6 +62,11 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	@include listless;
 	@include flex;
 	@include flex-wrap;
+	&[class*="-1"] {
+		> * {
+			width: 100%;
+		}
+	}
 	&[class*="-2"] {
 		> * {
 			width: 50%;
@@ -95,6 +100,26 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	&[class*="-8"] {
 		> * {
 			width: calc(100% / 8);
+		}
+	}
+	&[class*="-9"] {
+		> * {
+			width: calc(100% / 9);
+		}
+	}
+	&[class*="-10"] {
+		> * {
+			width: 10%;
+		}
+	}
+	&[class*="-11"] {
+		> * {
+			width: calc(100% / 11);
+		}
+	}
+	&[class*="-12"] {
+		> * {
+			width: calc(100% / 12);
 		}
 	}
 }
@@ -463,11 +488,11 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 }
 
 .fourth {
-	height:calc(100%/4);
+	height: 25%;
 }
 
 .fifth {
-	height: calc(100%/5);
+	height: 20%;
 }
 
 .two-thirds {
@@ -1214,11 +1239,7 @@ header:not(.desktop-header) {
 				height: 28px;
 				margin: 0 8px;
 				path {
-					fill: none;
-					stroke: white;
-					stroke-width: 7px;
-					stroke-linecap: round;
-					stroke-linejoin: round;
+					@include svg-stroke(white, 7);
 				}
 			}
 		}
@@ -1271,6 +1292,36 @@ header:not(.desktop-header) {
 		line-height: 1;
 		font-weight: 600;
 		text-transform: uppercase;
+		&.long {
+			line-height: 1.2;
+		}
+		&.large {
+			font-size: 28px!important;
+			text-transform: lowercase!important;
+		}
+	}
+	.input-field {
+		@include flex;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		input, label {
+			color: white;
+			border-color: white!important;
+		}
+		label.active, input:focus {
+			color: white!important;
+		}
+		input {
+			width: calc(100% - 48px - 15px);
+			&:focus {
+				box-shadow: 0 1px 0 0 white!important;
+			}
+		}
+		+ h1 {
+			padding-bottom: 30px;
+		}
 	}
 	&.third {
 		h1 {
@@ -1310,7 +1361,7 @@ header:not(.desktop-header) {
 			}
 		}
 		&.third:not(.flex-center-wrap), .header-nav {
-			h1 {
+			h1:not(.large) {
 				font-size: 20px!important;
 			}
 		}
@@ -1421,6 +1472,15 @@ button.active, button.activated, button:active, button:hover, button:focus {
 			@include opacity(1);
 			border: 2px solid $taupe;
 			background: $taupe;
+			color: white;
+		}
+	}
+	&[class*="btn-ghost-campus"] {
+		color: $campus;
+		&.activated, &:active, &:hover, &:focus {
+			@include opacity(1);
+			border: 2px solid $campus;
+			background: $campus;
 			color: white;
 		}
 	}
@@ -1618,63 +1678,6 @@ button.disabled {
 	@include opacity(.7);
 }
 
-.input-search-ghost {
-	position: relative;
-	.clear-search-input {
-		position: absolute;
-	    right: 0;
-	    top: 20px;
-	    right: 10px;
-	    color: rgba(white,.7);
-	    padding: 0px;
-	}
-	input {
-		@include appearance;
-		display: block;
-		width: 100%;
-		padding: 5px 0 5px 25px;
-		border: 0;
-		border-bottom: 1px solid rgba(white,.5);
-		border-radius: 0;
-		background: none;
-		color: white;
-		font-family: $font;
-		font-size: 20px;
-		@include placeholder {
-			color: rgba(white,.5);
-		}
-	}
-	input:active, input:focus {
-		border-bottom-color: white;
-		@include placeholder {
-			color: white;
-		}
-	}
-	&:before {
-		@include center-y;
-		display: block;
-		content: "";
-		background: url(../../img/svg/search.svg) no-repeat center center/cover,
-					url(/static/remote/img/svg/search.svg) center/cover no-repeat;
-		width: 18px;
-		height: 18px;
-	}
-	.side-icon {
-		@include opacity(1);
-		@include center-y;
-		right: 12px;
-		z-index: 0;
-		.ion-navigate {
-			@include opacity(.6);
-		}
-		.ion-navigate.active,
-		.ion-navigate.activated,
-		.ion-navigate.location-active {
-			@include opacity(1);
-		}
-	}
-}
-
 // DATE PICKER
 .picker {
 	font-size: 20px;
@@ -1720,6 +1723,7 @@ button.disabled {
 		}
 	}
 	[class*="picker-"] {
+		@include listless;
 		@include flex;
 		@include flex-center;
 		@include flex-wrap;
@@ -2037,28 +2041,6 @@ button.disabled {
 	li {
 		input:checked + label {
 		    background-color: $campus;
-		}
-	}
-}
-
-// BREADCRUMBS
-.breadcrumbs {
-	ul {
-		@include flex;
-		@include flex-center;
-		margin: 0 auto;
-		li {
-			padding: 3px;
-			a {
-				@include round;
-				display: block;
-				width: 14px;
-				height: 14px;
-				border: 2px solid white;
-				&.active {
-					background: white;
-				}
-			}
 		}
 	}
 }
@@ -2515,6 +2497,9 @@ input[type=range] {
 		svg {
 			@include center-xy;
 			@include opacity(0);
+			@include svg-stroke(white, 8);
+			width: 64px;
+			height: 64px;
 		}
 		input {
 			@include opacity(0);
@@ -2680,15 +2665,27 @@ input[type=range] {
 }
 
 // USER ICON
-.user-icon {
+.user-icon, .user-icon-64, .user-icon-32 {
 	@include round;
 	display: block;
 	margin: 0 auto;
-	width: 128px;
-	height: 128px;
 	background-position: center;
 	background-size: cover;
+}
+.user-icon {
+	width: 128px;
+	height: 128px;
 	border: 5px solid white;
+}
+.user-icon-64 {
+	width: 64px;
+	height: 64px;
+	border: 3px solid white;
+}
+.user-icon-32 {
+	width: 32px;
+	height: 32px;
+	border: 2px solid white;
 }
 .user-icon-container {
 	display: block;
@@ -2705,7 +2702,7 @@ input[type=range] {
 }
 
 // CUSTOM DROPDOWNS
-.custom-dropdown {
+.custom-dropdown, .dropdown {
 	position: relative;
 	> div {
 		@include flex;
@@ -2744,16 +2741,18 @@ input[type=range] {
 		}
 	}
 	> ul {
-		@include center-x;
+		@include transition(.15s ease-in-out);
+		@include listless;
 		@include opacity(0);
+		position: absolute;
+		left: 0;
+		z-index: -1;
 		width: 200px;
-		height: 0;
 		overflow: hidden;
 		text-align: center;
 		&.active {
 			@include opacity(1);
 			z-index: 99;
-			height: auto;
 		}
 		li {
 			@include transition(.15s ease-in-out);
@@ -2769,14 +2768,27 @@ input[type=range] {
 			}
 		}
 	}
+	&.full-x {
+		> div {
+			span {
+				width: calc(100% - 48px);
+			}
+		}
+		> ul {
+			width: 100%;
+			li {
+				width: calc(100% - 48px);
+			}
+		}
+	}
 }
 
 /* ---------- TOOLTIPS */
-.guru-tip, .guru-popup {
+.tooltip, .guru-popup {
 	position: absolute;
 	z-index: 99;
 	padding: 0 15px;
-	&.guru-tip-center, &.guru-popup-center {
+	&.tooltip-center, &.guru-popup-center {
 		@include center-xy;
 	}
 	div.with-button {
@@ -2883,7 +2895,7 @@ input[type=range] {
 		}
 	}
 }
-.guru-tip {
+.tooltip {
 	div {
 		position: relative;
 		background: rgba(white,.9);
@@ -2917,7 +2929,7 @@ input[type=range] {
 			background: $charcoal;
 		}
 	}
-	&.guru-tip-top {
+	&.tooltip-top {
 		div {
 			&::after {
 				@include center-x;
@@ -2926,7 +2938,7 @@ input[type=range] {
 			}
 		}
 	}
-	&.guru-tip-bottom {
+	&.tooltip-bottom {
 		div {
 			&::after {
 				@include center-x;
@@ -2935,7 +2947,7 @@ input[type=range] {
 			}
 		}
 	}
-	&.guru-tip-left {
+	&.tooltip-left {
 		div {
 			&::after {
 				@include center-y;
@@ -2944,7 +2956,7 @@ input[type=range] {
 			}
 		}
 	}
-	&.guru-tip-right {
+	&.tooltip-right {
 		div {
 			&::after {
 				@include center-y;
@@ -2959,9 +2971,6 @@ input[type=range] {
 .color-picker {
 	background: white;
 	width: 100%;
-	ul {
-		padding: 5px;
-	}
 	button {
 		height: 52px;
 		font-weight: 600;
@@ -2969,483 +2978,488 @@ input[type=range] {
 			@include opacity(.3);
 		}
 	}
-	.color-picker-top {
-		@include flex;
-		overflow: auto;
-		li {
-			padding: 5px;
-			a {
-				@include round;
-				@include flex;
-				@include flex-center;
-				width: 36px;
-				height: 36px;
-				padding: 2px;
-				&.active {
-					&:after {
-						@include round;
-						content: "";
-						display: block;
-						width: 100%;
-						height: 100%;
-						border: 2px solid white;
+	ul {
+		@include listless;
+		padding: 5px;
+		&:nth-child(1) {
+			@include flex;
+			overflow: auto;
+			li {
+				padding: 5px;
+				a {
+					@include round;
+					@include flex;
+					@include flex-center;
+					width: 36px;
+					height: 36px;
+					padding: 2px;
+					&.active {
+						&:after {
+							@include round;
+							content: "";
+							display: block;
+							width: 28px;
+							height: 28px;
+							border: 2px solid white;
+						}
 					}
 				}
 			}
 		}
-	}
-	.color-picker-bottom {
-		@include flex;
-		@include flex-wrap;
-		background: none!important;
-		li {
-			width: calc(100% / 3);
-			padding: 5px;
-			span {
-				display: block;
-				width: 100%;
-				height: 36px;
-			}
-		}
-		&.bg-auburn {
-			+ button {
-				background: $auburn;
-			}
+		&:nth-child(2) {
+			@include flex;
+			@include flex-wrap;
+			background: none!important;
 			li {
-				&:nth-child(1) span {
-					background: lighten($auburn, 20%);
+				width: calc(100% / 3);
+				padding: 5px;
+				span {
+					@include transition(.15s ease-in-out);
+					display: block;
+					width: 100%;
+					height: 36px;
 				}
-				&:nth-child(2) span {
-					background: lighten($auburn, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($auburn, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($auburn, 5%);
-				}
-				&:nth-child(5) span {
+			}
+			&.bg-auburn {
+				+ button {
 					background: $auburn;
 				}
-				&:nth-child(6) span {
-					background: darken($auburn, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($auburn, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($auburn, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($auburn, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($auburn, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($auburn, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($auburn, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($auburn, 5%);
+					}
+					&:nth-child(5) span {
+						background: $auburn;
+					}
+					&:nth-child(6) span {
+						background: darken($auburn, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($auburn, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($auburn, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($auburn, 20%);
+					}
 				}
 			}
-		}
-		&.bg-orange {
-			+ button {
-				background: $orange;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($orange, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($orange, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($orange, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($orange, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-orange {
+				+ button {
 					background: $orange;
 				}
-				&:nth-child(6) span {
-					background: darken($orange, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($orange, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($orange, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($orange, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($orange, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($orange, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($orange, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($orange, 5%);
+					}
+					&:nth-child(5) span {
+						background: $orange;
+					}
+					&:nth-child(6) span {
+						background: darken($orange, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($orange, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($orange, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($orange, 20%);
+					}
 				}
 			}
-		}
-		&.bg-gold {
-			+ button {
-				background: $gold;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($gold, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($gold, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($gold, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($gold, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-gold {
+				+ button {
 					background: $gold;
 				}
-				&:nth-child(6) span {
-					background: darken($gold, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($gold, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($gold, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($gold, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($gold, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($gold, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($gold, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($gold, 5%);
+					}
+					&:nth-child(5) span {
+						background: $gold;
+					}
+					&:nth-child(6) span {
+						background: darken($gold, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($gold, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($gold, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($gold, 20%);
+					}
 				}
 			}
-		}
-		&.bg-moola {
-			+ button {
-				background: $moola;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($moola, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($moola, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($moola, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($moola, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-moola {
+				+ button {
 					background: $moola;
 				}
-				&:nth-child(6) span {
-					background: darken($moola, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($moola, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($moola, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($moola, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($moola, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($moola, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($moola, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($moola, 5%);
+					}
+					&:nth-child(5) span {
+						background: $moola;
+					}
+					&:nth-child(6) span {
+						background: darken($moola, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($moola, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($moola, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($moola, 20%);
+					}
 				}
 			}
-		}
-		&.bg-shamrock {
-			+ button {
-				background: $shamrock;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($shamrock, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($shamrock, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($shamrock, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($shamrock, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-shamrock {
+				+ button {
 					background: $shamrock;
 				}
-				&:nth-child(6) span {
-					background: darken($shamrock, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($shamrock, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($shamrock, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($shamrock, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($shamrock, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($shamrock, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($shamrock, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($shamrock, 5%);
+					}
+					&:nth-child(5) span {
+						background: $shamrock;
+					}
+					&:nth-child(6) span {
+						background: darken($shamrock, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($shamrock, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($shamrock, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($shamrock, 20%);
+					}
 				}
 			}
-		}
-		&.bg-azure {
-			+ button {
-				background: $azure;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($azure, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($azure, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($azure, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($azure, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-azure {
+				+ button {
 					background: $azure;
 				}
-				&:nth-child(6) span {
-					background: darken($azure, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($azure, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($azure, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($azure, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($azure, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($azure, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($azure, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($azure, 5%);
+					}
+					&:nth-child(5) span {
+						background: $azure;
+					}
+					&:nth-child(6) span {
+						background: darken($azure, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($azure, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($azure, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($azure, 20%);
+					}
 				}
 			}
-		}
-		&.bg-lake {
-			+ button {
-				background: $lake;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($lake, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($lake, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($lake, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($lake, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-lake {
+				+ button {
 					background: $lake;
 				}
-				&:nth-child(6) span {
-					background: darken($lake, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($lake, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($lake, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($lake, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($lake, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($lake, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($lake, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($lake, 5%);
+					}
+					&:nth-child(5) span {
+						background: $lake;
+					}
+					&:nth-child(6) span {
+						background: darken($lake, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($lake, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($lake, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($lake, 20%);
+					}
 				}
 			}
-		}
-		&.bg-cobalt {
-			+ button {
-				background: $cobalt;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($cobalt, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($cobalt, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($cobalt, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($cobalt, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-cobalt {
+				+ button {
 					background: $cobalt;
 				}
-				&:nth-child(6) span {
-					background: darken($cobalt, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($cobalt, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($cobalt, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($cobalt, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($cobalt, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($cobalt, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($cobalt, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($cobalt, 5%);
+					}
+					&:nth-child(5) span {
+						background: $cobalt;
+					}
+					&:nth-child(6) span {
+						background: darken($cobalt, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($cobalt, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($cobalt, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($cobalt, 20%);
+					}
 				}
 			}
-		}
-		&.bg-eggplant {
-			+ button {
-				background: $eggplant;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($eggplant, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($eggplant, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($eggplant, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($eggplant, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-eggplant {
+				+ button {
 					background: $eggplant;
 				}
-				&:nth-child(6) span {
-					background: darken($eggplant, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($eggplant, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($eggplant, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($eggplant, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($eggplant, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($eggplant, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($eggplant, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($eggplant, 5%);
+					}
+					&:nth-child(5) span {
+						background: $eggplant;
+					}
+					&:nth-child(6) span {
+						background: darken($eggplant, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($eggplant, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($eggplant, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($eggplant, 20%);
+					}
 				}
 			}
-		}
-		&.bg-campus {
-			+ button {
-				background: $campus;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($campus, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($campus, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($campus, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($campus, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-campus {
+				+ button {
 					background: $campus;
 				}
-				&:nth-child(6) span {
-					background: darken($campus, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($campus, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($campus, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($campus, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($campus, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($campus, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($campus, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($campus, 5%);
+					}
+					&:nth-child(5) span {
+						background: $campus;
+					}
+					&:nth-child(6) span {
+						background: darken($campus, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($campus, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($campus, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($campus, 20%);
+					}
 				}
 			}
-		}
-		&.bg-taupe {
-			+ button {
-				background: $taupe;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($taupe, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($taupe, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($taupe, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($taupe, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-taupe {
+				+ button {
 					background: $taupe;
 				}
-				&:nth-child(6) span {
-					background: darken($taupe, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($taupe, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($taupe, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($taupe, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($taupe, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($taupe, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($taupe, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($taupe, 5%);
+					}
+					&:nth-child(5) span {
+						background: $taupe;
+					}
+					&:nth-child(6) span {
+						background: darken($taupe, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($taupe, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($taupe, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($taupe, 20%);
+					}
 				}
 			}
-		}
-		&.bg-slate {
-			+ button {
-				background: $slate;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($slate, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($slate, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($slate, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($slate, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-slate {
+				+ button {
 					background: $slate;
 				}
-				&:nth-child(6) span {
-					background: darken($slate, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($slate, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($slate, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($slate, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($slate, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($slate, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($slate, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($slate, 5%);
+					}
+					&:nth-child(5) span {
+						background: $slate;
+					}
+					&:nth-child(6) span {
+						background: darken($slate, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($slate, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($slate, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($slate, 20%);
+					}
 				}
 			}
-		}
-		&.bg-charcoal {
-			+ button {
-				background: $charcoal;
-			}
-			li {
-				&:nth-child(1) span {
-					background: lighten($charcoal, 20%);
-				}
-				&:nth-child(2) span {
-					background: lighten($charcoal, 15%);
-				}
-				&:nth-child(3) span {
-					background: lighten($charcoal, 10%);
-				}
-				&:nth-child(4) span {
-					background: lighten($charcoal, 5%);
-				}
-				&:nth-child(5) span {
+			&.bg-charcoal {
+				+ button {
 					background: $charcoal;
 				}
-				&:nth-child(6) span {
-					background: darken($charcoal, 5%);
-				}
-				&:nth-child(7) span {
-					background: darken($charcoal, 10%);
-				}
-				&:nth-child(8) span {
-					background: darken($charcoal, 15%);
-				}
-				&:nth-child(9) span {
-					background: darken($charcoal, 20%);
+				li {
+					&:nth-child(1) span {
+						background: lighten($charcoal, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($charcoal, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($charcoal, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($charcoal, 5%);
+					}
+					&:nth-child(5) span {
+						background: $charcoal;
+					}
+					&:nth-child(6) span {
+						background: darken($charcoal, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($charcoal, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($charcoal, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($charcoal, 20%);
+					}
 				}
 			}
 		}
@@ -3467,55 +3481,6 @@ input[type=range] {
 		overflow: auto;
 		padding: 15px 0;
 		background: #F4C2A7;
-		.paper {
-			position: relative;
-			max-width: 800px;
-			margin: 0 auto;
-			svg {
-				rect {
-					fill: white;
-					width: 100%;
-					height: 100%;
-				}
-				path {
-					stroke-width: 2px;
-					&:not(:last-child) {
-						@include opacity(.3);
-						stroke: $lake;
-					}
-					&:last-child {
-						stroke: $auburn;
-					}
-				}
-			}
-			h1 {
-				position: absolute;
-				top: 7.7%;
-				left: 15.5%;
-				width: 84.5%;
-				padding: 0 15px;
-				color: $slate;
-				font-size: 20px;
-				font-weight: 600;
-				line-height: 2.14;
-			}
-			div {
-				position: absolute;
-				top: 11.7%;
-				left: 15.5%;
-				width: 84.5%;
-				padding: 0 15px;
-				color: $slate;
-				font-size: 18px;
-				font-weight: 400;
-				line-height: 2.14;
-			}
-			&.bottom-align {
-				h1, div {
-					padding-top: 1%;
-				}
-			}
-		}
 	}
 	section {
 		width: 100%;
@@ -3527,6 +3492,60 @@ input[type=range] {
 		}
 		main + section {
 			display: none;
+		}
+	}
+}
+.paper {
+	position: relative;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	background: white;
+	border-radius: 2px;
+	overflow: hidden;
+	svg {
+		display: block;
+		rect {
+			fill: white;
+			width: 100%;
+			height: 100%;
+		}
+		path {
+			stroke-width: 2px;
+			&:not(:last-child) {
+				@include opacity(.3);
+				stroke: $lake;
+			}
+			&:last-child {
+				stroke: $auburn;
+			}
+		}
+	}
+	h1 {
+		position: absolute;
+		top: 7.7%;
+		left: 15.5%;
+		width: 84.5%;
+		padding: 0 15px;
+		color: $slate;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 2.14;
+	}
+	div {
+		position: absolute;
+		top: 11.7%;
+		left: 15.5%;
+		width: 84.5%;
+		padding: 0 15px;
+		color: $slate;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 2.14;
+	}
+	&.bottom-align {
+		h1, div {
+			padding-top: 1%;
 		}
 	}
 }
@@ -3563,36 +3582,49 @@ input[type=range] {
 		color: $charcoal;
 		font-weight: 600;
 		font-size: 16px;
-		line-height: 165%;
+		line-height: 32px;
 	}
-	div {
+	> div {
 		position: absolute;
 		top: 29%;
 		left: 0;
+		width: 100%;
 		padding: 0 15px;
-		color: $charcoal;
 		font-weight: 400;
+		> div {
+			@include flex;
+			position: relative;
+			width: 100%;
+		}
+		label {
+			font-weight: 600;
+			padding-right: 15px;
+		}
+		input {
+			position: absolute;
+			background: none;
+			padding: 0;
+			margin: 0;
+			height: 32px;
+			&:focus {
+				color: $charcoal;
+				@include placeholder {
+					color: rgba($charcoal,.6);
+				}
+			}
+		}
+	}
+	> div, input, label {
+		color: $charcoal;
 		font-size: 14px;
-		line-height: 165%;
+		line-height: 32px;
 	}
 	@media screen and (min-width: 375px) {
 		h1 {
 			font-size: 20px;
-			line-height: 150%;
 		}
-		div {
+		> div, input, label {
 			font-size: 18px;
-			line-height: 150%;
-		}
-	}
-	@media screen and (min-width: 414px) {
-		h1, div {
-			line-height: 170%;
-		}
-	}
-	@media screen and (min-width: 430px) {
-		h1, div {
-			line-height: 180%;
 		}
 	}
 }
@@ -3737,6 +3769,7 @@ input[type=range] {
 				padding-top: 30px;
 			}
 			.school-card-footer {
+				@include listless;
 				@include transition(.15s ease-in-out);
 				@include opacity(0);
 				@include flex;
@@ -3748,6 +3781,7 @@ input[type=range] {
 				height: 36px;
 				width: 100%;
 				background: rgba(white,.4);
+				border-radius: 0 0 10px 10px;
 				color: white;
 				li {
 					@include flex;
@@ -3778,6 +3812,14 @@ input[type=range] {
 			h1 {
 				font-size: 28px;
 				font-weight: 900;
+				&:first-letter {
+					text-transform: uppercase;
+				}
+				+ h1 {
+					position: absolute;
+    				top: 30px;
+					color: rgba($charcoal,.4);
+				}
 			}
 			h2 {
 				font-size: 18px;
@@ -3917,6 +3959,7 @@ input[type=range] {
 		background: $shamrock;
 		height: 100px;
 		ul {
+			@include listless;
 			@include flex;
 			@include flex-center-vertical;
 			li {
@@ -3932,9 +3975,12 @@ input[type=range] {
 					@include flex;
 					@include flex-right-center;
 					> span {
+						@include flex;
+						@include flex-center-vertical;
 						position: relative;
 						background: white;
 						padding: 10px 15px 10px 0;
+						height: 40px;
 						color: $shamrock;
 						&:before {
 							content: "";
@@ -4005,6 +4051,7 @@ input[type=range] {
 			margin-top: -3px;
 		}
 		.pf-card-thumbs {
+			@include listless;
 			@include flex;
 			margin: 7.5px -7.5px 0;
 			li {
@@ -4305,9 +4352,10 @@ input[type=range] {
 }
 
 // TAB BAR
-.pf-tabs, .tab-bar {
+.tab-bar {
 	background: $charcoal;
 	ul {
+		@include listless;
 		@include flex;
 		padding: 0 7.5px;
 		li {
@@ -4339,6 +4387,7 @@ input[type=range] {
 
 // RATING
 .rating-stars, .pf-rating {
+	@include listless;
 	@include flex;
 	@include flex-center;
 	width: 100%;
@@ -4348,6 +4397,7 @@ input[type=range] {
 		width: 20%;
 		svg {
 			@include svg-stroke($gold, 7);
+			display: block;
 			polygon:nth-child(2) {
 				@include opacity(0);
 				stroke-width: 0;
@@ -4473,12 +4523,16 @@ input[type=range] {
 }
 
 // ATTACHMENT LIST
-.attachment-list, .pf-photo-list {
+.attachment-list {
 	width: 100%;
 	min-height: 100px;
 	overflow: auto;
 	text-align: center!important;
+	&.min-height {
+		height: 150px;
+	}
 	ul {
+		@include listless;
 		@include flex;
 		height: 100%;
 		padding: 7.5px;
@@ -4496,11 +4550,11 @@ input[type=range] {
 				border: 2px solid white;
 				border-radius: 10px;
 			}
-			.attach-upload-img, .pf-upload-img {
+			.attach-upload-img {
 				background-position: center center;
 				background-size: cover;
 			}
-			.attach-upload-img, .attach-upload-file, .pf-upload-img, .pf-upload-file {
+			.attach-upload-img, .attach-upload-file {
 				a {
 					svg {
 						@include rotate(45);
@@ -4513,7 +4567,7 @@ input[type=range] {
 					}
 				}
 			}
-			.attach-upload-file, .pf-upload-file {
+			.attach-upload-file {
 				border: 0;
 				width: auto;
 				background: none!important;
@@ -4523,19 +4577,19 @@ input[type=range] {
 					height: 100%;
 					fill: $shamrock;
 				}
-				&.attach-upload-pdf, &.pf-upload-pdf {
+				&.attach-upload-pdf {
 					svg.doc-outline {
 						height: 100%;
 						fill: $auburn;
 					}
 				}
-				&.attach-upload-doc, &.pf-upload-doc {
+				&.attach-upload-doc {
 					svg.doc-outline {
 						height: 100%;
 						fill: $lake;
 					}
 				}
-				&.attach-upload-xls, &.pf-upload-sheet {
+				&.attach-upload-xls {
 					svg.doc-outline {
 						height: 100%;
 						fill: $moola;
@@ -4557,7 +4611,7 @@ input[type=range] {
 					}
 				}
 			}
-			.attach-upload-add, .pf-upload-add {
+			.attach-upload-add {
 				position: relative;
 				border-style: dashed;
 				border: 0;
@@ -4603,8 +4657,8 @@ input[type=range] {
 	}
 }
 
-// CHECKBOXES
-.checkbox-container {
+// CHECKBOXES & RADIOS
+.checkbox-container, .radio-container {
 	@include flex;
 	@include flex-center;
 	div {
@@ -4620,10 +4674,22 @@ input[type=range] {
 		}
 		span {
 			display: block;
+			background: $slate;
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+.checkbox-container {
+	div {
+		span {
+			border-radius: 3px;
 			width: 32px;
 			height: 32px;
-			border-radius: 3px;
-			background: $slate;
 			svg {
 				@include svg-stroke(lighten($slate, 20%), 10);
 				padding: 4px;
@@ -4638,11 +4704,27 @@ input[type=range] {
 			}
 		}
 	}
-	label {
-		padding-left: 15px;
-		color: white;
-		font-size: 20px;
-		font-weight: 600;
+}
+.radio-container {
+	div {
+		span {
+			@include round;
+			width: 24px;
+			height: 24px;
+			padding: 4px;
+			svg {
+				@include round;
+				background: lighten($slate, 10%);
+				path {
+					display: none;
+				}
+			}
+		}
+		input:checked + span {
+			svg {
+				background: $shamrock;
+			}
+		}
 	}
 }
 
@@ -4856,6 +4938,7 @@ input[type=range] {
 }
 .course-list, .course-list ul {
 	@include flex;
+	@include flex-center;
 	@include flex-wrap;
 	z-index: 100;
 	font-weight: 600;

@@ -7,20 +7,37 @@ angular.module('uguru.util.controllers')
   'University',
   '$ionicViewSwitcher',
   '$ionicScrollDelegate',
+  '$ionicSideMenuDelegate',
   'ScrollService',
   'ContentService',
   'AnimationService',
+  'TransitionService',
+  '$localstorage',
   function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate,
-    ScrollService, ContentService, AnimationService) {
+    $ionicSideMenuDelegate, ScrollService, ContentService, AnimationService, TransitionService, $localstorage) {
     var UPPER = 12;
     var LOWER = 0;
     var pageParentContainer;
     var scrollDuration= 500;
+    $ionicSideMenuDelegate.canDragContent(false);
+    $scope.checkPosition = function() {
+      ScrollService.initStickyHeaderScroll("#essay-header", "#essay-pricing", 'active', '#essay-student-home');
+    }
 
     var showDelayedBecomeGuruHeader = function() {
+
+
       $timeout(function() {
-        $scope.becomeGuruHeaderActive = true;
-      }, 3000);
+
+        var becomeGuruShown = $scope.root.vars.page_cache.essayHomeBecomeGuru;
+        if (!becomeGuruShown) {
+          $scope.becomeGuruHeaderActive = true;
+          $scope.root.vars.page_cache.essayHomeBecomeGuru = true;
+          $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
+        } else {
+          console.log('already shown');
+        }
+      }, 7000);
     }
     var shouldShowBecomeGuruHeader = true;
 
@@ -50,6 +67,9 @@ angular.module('uguru.util.controllers')
       var successFunction = null;
       var pageParentContainer = '#essay-student-home';
       ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector);
+      $timeout(function() {
+        ScrollService.initStickyHeaderScroll("#essay-header", "#essay-pricing", 'active', '#essay-student-home');
+      }, scrollDuration + 100)
     }
 
     $scope.scrollToPricing = function() {

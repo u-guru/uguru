@@ -2,7 +2,10 @@
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
 <link href='https://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+
+<ion-content on-scroll='checkPosition()' scroll-event-interval="250">
 <ion-view class='bg-smoke'>
+    <!-- <ion-content> -->
     <main id='essay-student-home' class='hs-view full-xy'>
         <header id='essay-home-banner' class='hide ng-class:{"show":becomeGuruHeaderActive}'>
             <div>
@@ -15,12 +18,12 @@
                 </svg>
             </a>
         </header>
-        <header id='essay-header' class='ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
+        <header id='essay-header' class='flex-end full-x ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
             <a class='left-0 fixed p15xy weight-900' style='font-size:48px; font-family:"Grand Hotel", cursive;' ng-click='scrollToSection("#essay-header")' ng-click='scrollToSection("#essay-pricing")'>HS.Guru</a>
             <a ng-click='scrollToSection("#essay-pricing")'>Pricing</a>
-            <a ng-click='scrollToSection("#how-it-works")'>How it works</a>
+            <a ng-click='scrollToSection("#essay-how-it-works")'>How it works</a>
             <!-- <a ng-click='scrollToSection("#timeline")'>Timeline</a> -->
-            <a ng-click='scrollToSection("#faq-section")'>FAQ</a>
+            <a ng-click='scrollToSection("#essay-faq")'>FAQ</a>
             <a class="active" ng-click='goToUniversity()'>Get Started</a>
             <div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
                 <a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
@@ -212,5 +215,9 @@
             <div class='main flex-wrap-center' ng-include="img_base + 'templates/timeline.html'">
             </div>
         </section> -->
+
     </main>
+<!-- </ion-content> -->
 </ion-view>
+<!-- </ion-scroll> -->
+</ion-content>

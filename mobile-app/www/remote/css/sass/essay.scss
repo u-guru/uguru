@@ -532,6 +532,13 @@ ion-view {
 		}
 	}
 	header#essay-header {
+		@include flex;
+  		@include flex-wrap;
+ 		-webkit-justify-content: flex-end;
+ 		justify-content: flex-end;
+ 		&.active {
+ 			background-color:rgba($charcoal, 0.8);
+ 		}
 		div#essay-home-backdrop {
 			background-color: rgba($charcoal, 0.66);
 			position:fixed;
@@ -709,3 +716,7 @@ ion-view {
 
 }
 //samir essay css ---- END
+
+ion-scroll, .scroll {
+	height:100% !important;
+}

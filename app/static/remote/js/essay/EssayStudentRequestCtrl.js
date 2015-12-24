@@ -1,0 +1,152 @@
+angular.module('uguru.util.controllers')
+
+.controller('EssayStudentRequestController', [
+
+  //All imported packages go here
+  '$scope',
+  '$state',
+  '$timeout',
+  '$localstorage',
+  '$ionicPlatform',
+  '$cordovaKeyboard',
+  '$ionicModal',
+  '$ionicGesture',
+  '$cordovaGeolocation',
+  '$ionicSideMenuDelegate',
+  'LoadingService',
+  'RequestService',
+  'University',
+  'SearchboxService',
+  '$ionicSlideBoxDelegate',
+  function($scope, $state, $timeout, $localstorage, $ionicPlatform,
+    $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation,
+    $ionicSideMenuDelegate, LoadingService, RequestService, University,
+    SearchboxService, $ionicSlideBoxDelegate) {
+    $ionicSideMenuDelegate.canDragContent(true);
+
+
+
+    $scope.request = RequestService.initSample();
+    $scope.request.selected_university = University.getTargetted()[0];
+    $scope.requestProgress = {value:1};
+    $scope.maxHourArr = RequestService.getMaxNumHourArr();
+    $scope.search_text = {
+      course: '',
+      matching: [],
+      input_focused: false
+    };
+
+    $scope.predictionMarkers = [];
+
+    $scope.page = {dropdowns: {}, predictionMarkers:[]}
+    $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
+
+    var initMapFromUniversity = function(university) {
+      var latitude = parseFloat(university.latitude);
+      var longitude = parseFloat(university.longitude);
+      return  {
+                    center:  {latitude: latitude, longitude:longitude },
+                    zoom: 10,
+                    control: {}
+              };
+    }
+    $scope.showMarkerDetails = function(prediction) {
+      LoadingService.showMsg('Coming Soon', 1000);
+    }
+
+    $scope.queryAutocompleteFromSearch = function(query) {
+
+        query = $scope.page.dropdowns.location_search.input;
+        console.log('querying', $scope.page.dropdowns.location_search.input)
+        if (query && query.length) {
+          SearchboxService.queryAutocompleteService($scope.page.dropdowns.location_search.input, $scope, $scope.map.control.getGMap());
+        } else {
+          $scope.page.dropdowns.location_search.predictions = [];
+        }
+
+    }
+
+    $scope.removeTagFromRequest = function(index, tag) {
+      if ($scope.request && $scope.request.info.tags.length >= index) {
+        $scope.request.info.tags.splice(index, 1);
+      }
+    }
+
+    var processSearchBoxResults = function(results) {
+      alert('is this real')
+      console.log(results);
+    }
+
+
+    var checkPropertyInArrayForDupes = function(arr, val, property) {
+      for (var i = 0; i < arr.length; i++) {
+        var indexElem = arr[i];
+        if (indexElem && indexElem[property] === val) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    $scope.setHourDropdownValue = function(value) {
+      $scope.page.dropdowns.hour = false;
+      $scope.request.user.time_estimate.hours = value;
+      $scope.toggleHourDropdown = !$scope.toggleHourDropdown;
+    }
+    $scope.setMinDropdownValue = function(value) {
+      $scope.page.dropdowns.minutes = false;
+      $scope.request.user.time_estimate.min = value;
+      $scope.toggleMinDropdown = !$scope.toggleMinDropdown;
+    }
+
+    // $scope.map = initMapFromUniversity($scope.user.university)
+    // uiGmapGoogleMapApi.then(function(maps) {
+    //   maps.visualRefresh = true;
+
+    //   // $scope.$on('$ionicView.loaded', function() {
+
+    //     $scope.searchbox = initSearchboxGMap();
+
+    //     SearchboxService.initAutocomplete({lat:$scope.user.university.latitude, lng:$scope.user.university.longitude})
+
+    //   // })
+
+
+    // });
+
+    $scope.slideHasChanged = function($index) {
+      $scope.activeSlideIndex = $index;
+      if ($index > $scope.requestProgress.value - 1) {
+        $scope.requestProgress.value = $scope.requestProgress.value + 1
+      } else {
+        $scope.requestProgress.value = $scope.requestProgress.value - 1;
+      }
+    }
+
+    $scope.nextSlide = function() {
+      $ionicSlideBoxDelegate.next();
+    }
+    $scope.previousSlide = function() {
+      $ionicSlideBoxDelegate.previous();
+    }
+
+    $scope.addRequestTagAndInitEmpty = function() {
+      var emptyTagVal = $scope.request.info.empty_tag.name;
+      if (checkPropertyInArrayForDupes($scope.request.info.tags, emptyTagVal, 'name')) {
+        $scope.request.info.tags.push(JSON.parse(JSON.stringify($scope.request.info.empty_tag)))
+        $scope.request.info.empty_tag = {name: ''};
+      } else {
+        LoadingService.showMsg(emptyTagVal + ' already exists as a tag', 2000);
+        $scope.request.info.empty_tag = {name: ''};
+      }
+    }
+
+    var updateCoursesToScope = function(guru_courses) {
+        $scope.courses = guru_courses;
+    }
+    $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
+
+
+
+  }
+])

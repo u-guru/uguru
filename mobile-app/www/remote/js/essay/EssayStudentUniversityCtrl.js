@@ -16,8 +16,10 @@ angular.module('uguru.util.controllers')
     var LOWER = 0;
     var pageParentContainer;
 
-    $scope.universities = University.getTargetted();
-    $scope.university = $scope.universities[0];
+    $timeout(function() {
+      $scope.universities = University.getTargetted();
+      $scope.university = $scope.universities[0];
+    })
 
     if (!$scope.user.universities) {
       $scope.user.universities = [];
@@ -31,9 +33,11 @@ angular.module('uguru.util.controllers')
     var shouldShowBecomeGuruHeader = true;
 
     //default
-    $scope.university = {name:'Harvard'};
-    $scope.root.vars.theme = 'essay';
-    $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
+    $timeout(function() {
+      $scope.university = {name:'Harvard'};
+      $scope.root.vars.theme = 'essay';
+      $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
+    })
 
 
 
@@ -46,9 +50,12 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.addHighSchoolStudentUniversity = function(university, index) {
-      var university = $scope.universities.splice(index, 1)[0];
-      $scope.user.universities.push(university);
+    $scope.addHighSchoolStudentUniversity = function($event, university, index) {
+      university.active = true;
+      $timeout(function() {
+        var university = $scope.universities.splice(index, 1)[0];
+        $scope.user.universities.push(university);
+      }, 500);
     }
 
     $scope.goToEssaySignup = function() {
@@ -115,11 +122,15 @@ angular.module('uguru.util.controllers')
       return new_arr;
     }
 
-    $scope.targettedUniversities = filterTargetted(University.getTargetted());
+    $timeout(function() {
+      $scope.targettedUniversities = filterTargetted(University.getTargetted());
+    });
 
     // loaded means first time only
     $scope.$on('$ionicView.loaded', function() {
-         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader()
+         $timeout(function() {
+          shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader()
+         })
     });
 
   }

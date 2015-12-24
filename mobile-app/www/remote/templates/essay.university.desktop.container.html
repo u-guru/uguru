@@ -1,5 +1,5 @@
-<div ng-if='root.vars.theme && root.vars.theme === "essay"' class="university-header">
-	<h1 class="ng-class:{'fix-spacing':user.universities.length && page.toggles.searchMode.active}">Add schools you would like to attend</h1>
+<div class="university-header">
+	<h1 >Add schools you would like to attend</h1>
 </div>
 <form data-velocity>
 	<div class="input-field">
@@ -19,12 +19,13 @@
 </form>
 <div data-velocity class="flex-wrap-center desktop-search-list">
 	<ul class='desktop-card-list'>
-		<li class='hide ng-class:{"show":page.toggles.searchMode.active}' ng-if="universities && universities.length" ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
-			<div class="school-card">
+		<!-- -->
+		<li class='hide ng-class:{"show":page.toggles.searchMode.active}' ng-if="universities && universities.length"  ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
+			<div ng-if='!university.active' class="fx-zoom-up fx-dur-2513 fx-ease-back school-card">
 				<svg class="rect" viewBox="0 0 300 175">
 					<rect x="0" y="0" width="300" height="175" fill="none"></rect>
 				</svg>
-				<input type="checkbox" ng-click='addHighSchoolStudentUniversity(university, $index)' />
+				<input type="checkbox" ng-click='addHighSchoolStudentUniversity($event, university, $index)' />
 				<div class="school-card-inside">
 					<div class="school-card-top" style="background-color: {{university.school_color_one}};">
 						<span class="school-card-icon" style="background-image: url({{university.svg_url || university.seal_url || university.logo_url}}); border-color: {{university.school_color_one}};">
@@ -62,7 +63,7 @@
 				</div>
 			</div>
 		</li>
-		<li class='bg-charcoal hide ng-class:{"show":!page.toggles.searchMode.active}' ng-if="universities && universities.length" ng-repeat='university in user.universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
+		<li class='hide ng-class:{"show":!page.toggles.searchMode.active}' ng-if="universities && universities.length" ng-repeat='university in user.universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
 			<div class="school-card">
 				<svg class="rect" viewBox="0 0 300 175">
 					<rect x="0" y="0" width="300" height="175" fill="none"></rect>

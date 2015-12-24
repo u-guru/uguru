@@ -52,7 +52,7 @@ function TourService($ionicBackdrop) {
     }
     function initTipElem(text, btnText, direction, coords, clonedNode) {
         var elemDiv = document.createElement('div');
-        elemDiv.className = "guru-tip guru-tip-center guru-tip-" + direction;
+        elemDiv.className = "tooltip tooltip-center tooltip-" + direction;
 
         var buttonDiv = document.createElement('button');
         buttonDiv.innerHTML = btnText;
