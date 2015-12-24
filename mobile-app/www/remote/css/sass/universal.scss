@@ -156,6 +156,33 @@
 			width: 36px;
 			height: 36px;
 		}
+		svg {
+			@include svg-stroke(white, 10);
+			display: none;
+			margin-left: 1px;
+			padding: 6px;
+			width: 36px;
+			height: 36px;
+		}
+		&.small {
+			@include opacity(.4);
+			font-size: 20px;
+			b {
+				strong {
+					display: none;
+				}
+				+ b {
+					font-size: 16px;
+				}
+			}
+			svg {
+				display: block;
+			}
+			span {
+				width: 28px;
+				height: 28px;
+			}
+		}
 	}
 	.request-content {
 		height: calc(70% + 45px);
@@ -1206,6 +1233,26 @@
 		background: lighten($lake, 5%);
 	}
 	#request-search {
+		.input-field {
+			label {
+				width: calc(100% - 48px);
+				padding-right: 48px;
+				z-index: 1;
+				span.selected-school {
+					font-weight: 600;
+				}
+			}
+			input {
+				padding-right: 48px;
+				z-index: 2;
+			}
+			a {
+				z-index: 3;
+			}
+			input, label {
+				text-align: center!important;
+			}
+		}
 		h1.request-step {
 			span {
 				color: lighten($lake, 5%);
@@ -1220,11 +1267,20 @@
 		.course-list {
 			li {
 				a {
+					@include flex;
+					@include flex-center;
 					&:hover, &:focus {
 						background: $lake;
 					}
 					&:active {
 						background: lighten($slate, 10%);
+					}
+					.course-name {
+						font-size: 24px;
+						text-transform: none;
+						&:first-letter {
+							text-transform: uppercase;
+						}
 					}
 				}
 			}

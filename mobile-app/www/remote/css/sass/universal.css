@@ -289,6 +289,42 @@
   height: 36px;
 }
 
+.request-slide h1.request-step svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: none;
+  margin-left: 1px;
+  padding: 6px;
+  width: 36px;
+  height: 36px;
+}
+
+.request-slide h1.request-step.small {
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+  font-size: 20px;
+}
+
+.request-slide h1.request-step.small b strong {
+  display: none;
+}
+
+.request-slide h1.request-step.small b + b {
+  font-size: 16px;
+}
+
+.request-slide h1.request-step.small svg {
+  display: block;
+}
+
+.request-slide h1.request-step.small span {
+  width: 28px;
+  height: 28px;
+}
+
 .request-slide .request-content {
   height: calc(70% + 45px);
   background: #F1F1F1;
@@ -1255,6 +1291,29 @@
   background: #65b0e1;
 }
 
+.request-essay #request-search .input-field label {
+  width: calc(100% - 48px);
+  padding-right: 48px;
+  z-index: 1;
+}
+
+.request-essay #request-search .input-field label span.selected-school {
+  font-weight: 600;
+}
+
+.request-essay #request-search .input-field input {
+  padding-right: 48px;
+  z-index: 2;
+}
+
+.request-essay #request-search .input-field a {
+  z-index: 3;
+}
+
+.request-essay #request-search .input-field input, .request-essay #request-search .input-field label {
+  text-align: center !important;
+}
+
 .request-essay #request-search h1.request-step span {
   color: #65b0e1;
 }
@@ -1267,12 +1326,37 @@
   z-index: 1000;
 }
 
+.request-essay #request-search .course-list li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
 .request-essay #request-search .course-list li a:hover, .request-essay #request-search .course-list li a:focus {
   background: #50A5DD;
 }
 
 .request-essay #request-search .course-list li a:active {
   background: #576267;
+}
+
+.request-essay #request-search .course-list li a .course-name {
+  font-size: 24px;
+  text-transform: none;
+}
+
+.request-essay #request-search .course-list li a .course-name:first-letter {
+  text-transform: uppercase;
 }
 
 .request-essay #request-one {

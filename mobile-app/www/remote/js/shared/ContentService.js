@@ -131,20 +131,17 @@ function ContentService() {
       ],
       bottom_half:[
         {
-          icon_details: "Lock or Sheild or Castle?",
-          svg_url: "https://thenounproject.com/search/?q=safety&i=5983",
+          svg_url: "shield-lock",
           header: "Your Privacy Comes First",
           content: "You are just an ID number to Gurus (by default, your choice to reveal), and we do not sell data to third parties)."
         },
         {
-          icon_details: "Thumbs up / 5 stars",
-
+          svg_url: "satisfaction",
           header: "Satisfaction Guaranteed",
           content: "If your feedback wasn't valuable, we'll closely examine the situation and likely provide a full refund."
         },
         {
-          icon_details: "Something fostering a safe environment?",
-          svg_url: "https://thenounproject.com/search/?q=diversity&i=61296",
+          svg_url: "safety",
           header: "A Safe & Honest Environment",
           content: "We monitor our Gurus very carefully, assuring the best quality, privacy, "
         },

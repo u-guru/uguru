@@ -44,23 +44,68 @@ ion-view {
 	#essay-student-home {
 		background: white;
 		> header {
+			@include transition(.15s ease-in-out);
 			@include flex;
+	  		@include flex-wrap;
+	 		-webkit-justify-content: flex-end;
+	 		justify-content: flex-end;
+			width: 100%;
 			position: fixed;
 			z-index: 99;
 			top: 0;
 			right: 0;
 			padding: 15px;
+			background: rgba($orange, 0);
 			a:not(.header-close) {
 				display: block;
 				padding: 15px;
 				font-size: 20px;
 				font-weight: 700;
-				text-shadow: 0 0 20px rgba($charcoal,.1);
 				&.active {
-					background: white;
+					background: rgba(white,.9);
 					color: $orange;
 				}
+				&:hover, &:focus {
+					background: white;
+					color: $lake;
+				}
+				&:first-child {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					padding: 15px 15px 5px;
+					svg {
+						display: block;
+						height: 100%;
+						path {
+							@include transition(.15s ease-in-out);
+							&:first-child {
+								fill: rgba(white,.8);
+							}
+							&:last-child {
+								fill: white;
+							}
+						}
+					}
+					&:hover, &:focus {
+						background: none!important;
+						svg {
+							path {
+								&:first-child {
+									fill: white;
+								}
+								&:last-child {
+									fill: rgba(white,.8);
+								}
+							}
+						}
+					}
+				}
 			}
+			&.active {
+	 			background: rgba($orange, 0.95);
+	 		}
 		}
 		#essay-home-banner {
 			@include transition(.3s ease-in-out);
@@ -163,11 +208,19 @@ ion-view {
 				}
 			}
 			button {
-				background: $shamrock;
 				max-width: 300px;
-				color: white;
+				background: white;
+				color: $orange;
 				font-weight: 700;
 				text-transform: capitalize;
+				&:hover, &:focus {
+					@include opacity(1);
+					background: $lake;
+					color: white;
+				}
+				&:active, &.activated {
+					background: $orange;
+				}
 			}
 			.main {
 				height: 70%;
@@ -249,16 +302,52 @@ ion-view {
 			// // //
 			&#essay-faq {
 				.main {
+					> p {
+						padding: 30px 15px;
+						max-width: 830px;
+						margin: 0 auto;
+						font-weight: 600;
+						text-align: center;
+					}
 					.paper {
 						> h1 {
-							top: 5.2%;
-							font-size: 28px;
+							top: 3%;
+							font-size: 36px;
+							font-weight: 900;
+							text-align: center;
 						}
 						> div {
-							top: 9%;
+							top: 8.55%;
+							counter-reset: dl;
+							line-height: 38px;
 						}
 						dl {
-							margin: 0;
+							margin: 0 0 38px;
+							&:before {
+								content: counter(dl) ".";
+								counter-increment: dl;
+								position: absolute;
+								left: -45px;
+								width: 35px;
+								font-size: 24px;
+								font-weight: 900;
+								text-align: right;
+							}
+							&:nth-child(7) {
+								padding-top: 2px;
+							}
+							&:nth-child(8) {
+								margin-top: -2px!important;
+							}
+							&:nth-child(9) {
+								margin-top: -3px!important;
+							}
+							&:nth-child(10) {
+								margin-top: -2px!important;
+							}
+							dt {
+								font-size: 24px;
+							}
 							dt, dd {
 								line-height: inherit;
 							}
@@ -285,13 +374,57 @@ ion-view {
 									content: counter(li);
 									counter-increment: li;
 									padding: 15px;
-									width: 48px;
-									height: 48px;
+									width: 64px;
+									height: 64px;
 									margin-bottom: 15px;
-									background: $orange;
+									background: $lake;
 									color: white;
-									font-size: 24px;
+									font-size: 28px;
 									font-weight: 900;
+								}
+							}
+						}
+						&:last-of-type {
+							li {
+								@include flex;
+								@include flex-wrap;
+								@include flex-center;
+								.hiw-icon {
+									display: block;
+								}
+								svg {
+									@include round;
+									@include flex;
+									@include flex-center;
+									padding: 5px;
+									width: 64px;
+									height: 64px;
+									margin-bottom: 15px;
+									background: $lake;
+									path, circle {
+										@include svg-stroke(white, 3);
+									}
+								}
+								&.hiw-shield-lock {
+									.hiw-icon {
+										&:nth-child(2), &:nth-child(3) {
+											display: none!important;
+										}
+									}
+								}
+								&.hiw-satisfaction {
+									.hiw-icon {
+										&:nth-child(1), &:nth-child(3) {
+											display: none!important;
+										}
+									}
+								}
+								&.hiw-safety {
+									.hiw-icon {
+										&:nth-child(1), &:nth-child(2) {
+											display: none!important;
+										}
+									}
 								}
 							}
 						}
@@ -339,12 +472,12 @@ ion-view {
 }
 .ticket {
 	border-radius: 5px;
-	border: 3px solid darken($orange, 15%);
+	border: 3px solid darken($lake, 15%);
 	.ticket-top {
 		position: relative;
 		padding: 30px 15px 15px;
-		background: $orange;
-		border-bottom: 3px dashed darken($orange, 15%);
+		background: $lake;
+		border-bottom: 3px dashed darken($lake, 15%);
 		color: white;
 		text-align: center;
 		h1 {
@@ -365,7 +498,7 @@ ion-view {
 			width: 48px;
 			height: 48px;
 			background: $smoke;
-			border: 3px solid darken($orange, 15%);
+			border: 3px solid darken($lake, 15%);
 		}
 		&:after {
 			@include center-x;
@@ -422,7 +555,7 @@ ion-view {
 			font-size: 24px;
 			font-weight: 900;
 			text-align: center;
-			background: lighten($orange, 20%);
+			background: lighten($lake, 20%);
 			color: white;
 			&:before, &:after {
 				content: "";
@@ -434,8 +567,8 @@ ion-view {
 				border: 29px solid transparent;
 				border-left-width: 14px;
 				border-right-width: 14px;
-				border-top-color: lighten($orange, 20%);
-				border-bottom-color: lighten($orange, 20%);
+				border-top-color: lighten($lake, 20%);
+				border-bottom-color: lighten($lake, 20%);
 			}
 			&:before {
 				left: -14px;
@@ -453,7 +586,7 @@ ion-view {
 			width: 48px;
 			height: 48px;
 			background: $smoke;
-			border: 3px solid darken($orange, 15%);
+			border: 3px solid darken($lake, 15%);
 		}
 		&:after {
 			@include center-x;
@@ -529,32 +662,6 @@ ion-view {
 		@include opacity(1);
 		button:hover, button.activated, button.active {
 			background-color:rgba($shamrock, 0.8);
-		}
-	}
-	header#essay-header {
-		@include flex;
-  		@include flex-wrap;
- 		-webkit-justify-content: flex-end;
- 		justify-content: flex-end;
- 		&.active {
- 			background-color:rgba($charcoal, 0.8);
- 		}
-		div#essay-home-backdrop {
-			background-color: rgba($charcoal, 0.66);
-			position:fixed;
-			a {
-				color:white;
-				top:0;
-				right:0;
-				margin:10px 30px 10px 0px;
-				svg {
-					width:33px;
-					height:33px;
-					path {
-						stroke-width:10px;
-					}
-				}
-			}
 		}
 	}
 }
