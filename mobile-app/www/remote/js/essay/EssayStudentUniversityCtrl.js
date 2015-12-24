@@ -108,7 +108,6 @@ angular.module('uguru.util.controllers')
         if ((university_arr[i].name.length <= UPPER && university_arr[i].name.length >= LOWER)) {
           continue;
         } else {
-          console.log(university_arr[i].name)
           indices_to_slice.push(i.toString());
         }
       }

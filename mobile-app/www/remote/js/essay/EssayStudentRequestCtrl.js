@@ -18,13 +18,14 @@ angular.module('uguru.util.controllers')
   'University',
   'SearchboxService',
   '$ionicSlideBoxDelegate',
+  'ContentService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation,
     $ionicSideMenuDelegate, LoadingService, RequestService, University,
-    SearchboxService, $ionicSlideBoxDelegate) {
+    SearchboxService, $ionicSlideBoxDelegate, ContentService) {
     $ionicSideMenuDelegate.canDragContent(true);
 
-
+    $scope.honorPledgeArr = ContentService.honorPledge;
 
     $scope.request = RequestService.initSample();
     $scope.request.selected_university = University.getTargetted()[0];
@@ -57,7 +58,6 @@ angular.module('uguru.util.controllers')
     $scope.queryAutocompleteFromSearch = function(query) {
 
         query = $scope.page.dropdowns.location_search.input;
-        console.log('querying', $scope.page.dropdowns.location_search.input)
         if (query && query.length) {
           SearchboxService.queryAutocompleteService($scope.page.dropdowns.location_search.input, $scope, $scope.map.control.getGMap());
         } else {
@@ -70,11 +70,6 @@ angular.module('uguru.util.controllers')
       if ($scope.request && $scope.request.info.tags.length >= index) {
         $scope.request.info.tags.splice(index, 1);
       }
-    }
-
-    var processSearchBoxResults = function(results) {
-      alert('is this real')
-      console.log(results);
     }
 
 
@@ -128,6 +123,16 @@ angular.module('uguru.util.controllers')
     }
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.previous();
+    }
+
+    $scope.jumpToSlide = function(index, recently_edited_component) {
+      if (recently_edited_component === 'request-university') {
+        $scope.request.university = null;
+      }
+      if (recently_edited_component === 'textarea-description') {
+        $scope.request.university = null;
+      }
+      $ionicSlideBoxDelegate.slide(index - 1, 500)
     }
 
     $scope.addRequestTagAndInitEmpty = function() {
