@@ -238,7 +238,7 @@
   -webkit-justify-content: center;
   justify-content: center;
   width: 100%;
-  padding: 15px 15px 0;
+  padding: 15px;
   text-align: center;
   font-size: 28px;
   font-weight: 600;
@@ -357,7 +357,7 @@
 .request-slide #request-search .input-field {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 0 15px;
 }
 
 .request-slide #request-search .input-field .prefix {
@@ -377,7 +377,10 @@
 
 .request-slide #request-search .input-field .desktop-input-close-icon {
   z-index: 3;
-  margin: -15px -10px -10px !important;
+  margin: -10px -20px -10px 0 !important;
+}
+
+.request-slide #request-search .input-field .desktop-input-close-icon .icon {
   font-size: 20px !important;
 }
 
@@ -459,6 +462,128 @@
   .request-slide #request-search .course-none {
     font-size: 36px;
   }
+}
+
+.request-slide#request-three .request-honor-pledge {
+  height: calc(100% + 87px);
+  overflow: hidden;
+}
+
+.request-slide#request-three .request-honor-pledge .paper {
+  margin-top: 15px;
+}
+
+.request-slide#request-three .request-honor-pledge .paper > div {
+  counter-reset: dl;
+  line-height: 38px;
+}
+
+.request-slide#request-three .request-honor-pledge .paper dl {
+  margin: 0;
+}
+
+.request-slide#request-three .request-honor-pledge .paper dl:before {
+  content: counter(dl) ".";
+  counter-increment: dl;
+  position: absolute;
+  left: -45px;
+  width: 35px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.request-slide#request-three .request-honor-pledge .paper dl dt {
+  font-weight: 600;
+}
+
+.request-slide#request-three .request-honor-pledge .paper dl dt, .request-slide#request-three .request-honor-pledge .paper dl dd {
+  line-height: inherit;
+}
+
+.request-slide#request-three .request-honor-pledge .paper input {
+  background: none;
+  border: 0;
+  margin-top: 35px;
+  height: 41px;
+  line-height: 41px;
+  font-size: 28px;
+  font-family: "Cedarville Cursive", cursive !important;
+  border-bottom: 2px solid;
+  width: 40%;
+}
+
+.request-slide#request-three .request-honor-pledge .paper label {
+  height: 38px;
+  line-height: 38px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.request-slide#request-two .request-payment-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: calc(70% + 87px);
+}
+
+.request-slide#request-two .request-payment-container > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 15px;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.request-slide#request-two .request-payment-container > ul > li {
+  padding: 15px;
+}
+
+.request-slide#request-two .request-payment-container > ul > li .credit-card-wrapper {
+  display: block;
+  margin: 0 auto;
+  width: 275px;
+  height: 150px;
+}
+
+.request-slide#request-two .request-payment-container > ul > li:last-child {
+  width: calc(100% - 305px);
+}
+
+.request-slide#request-two .request-payment-container > ul > li:last-child button {
+  width: 100%;
+  max-width: none !important;
+}
+
+.request-slide#request-two .request-payment-container > ul > li:last-child .desktop-input-close-icon {
+  right: 0 !important;
+  padding: 0 !important;
+  margin: -10px 0 0 !important;
+}
+
+.request-slide#request-two .request-payment-container > ul > li:last-child .ugrid-2 {
+  margin: 0 -7.5px;
+}
+
+.request-slide#request-two .request-payment-container > ul > li:last-child .ugrid-2 > * {
+  padding: 0 7.5px;
 }
 
 .request-slide#request-two .request-urgency {
@@ -1291,6 +1416,26 @@
   color: #50A5DD;
 }
 
+.request-essay.request-essay-form h1.request-step {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+}
+
+.request-essay.request-essay-form .request-content > div:not(.active) h1.request-step {
+  padding: 45px 15px;
+}
+
+.request-essay.request-essay-form .request-content > div:not(.active) h1.request-step + * {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
 .request-essay .map-box > ul > li a {
   color: #50A5DD !important;
 }
@@ -1447,11 +1592,7 @@
 
 .request-essay #request-one .request-content .request-desc {
   background: #90c6e9;
-  padding: 15px;
-}
-
-.request-essay #request-one .request-content .request-desc h1.request-step {
-  padding: 0 15px 15px;
+  padding: 0 15px;
 }
 
 .request-essay #request-one .request-content .request-desc h1.request-step span {
@@ -1520,6 +1661,10 @@
   margin-top: 15px;
 }
 
+.request-essay #request-one .request-content .request-desc .attachment-list {
+  margin-bottom: 15px;
+}
+
 .request-essay #request-one .request-content .tag-list .chip:hover, .request-essay #request-one .request-content .tag-list .chip:focus {
   background: #65b0e1;
 }
@@ -1533,7 +1678,7 @@
 }
 
 .request-essay #request-one .request-content .request-payment {
-  background: #7bbbe5;
+  background: #70b5e3;
   padding: 0 15px 15px;
 }
 
@@ -1571,18 +1716,19 @@
 
 .request-essay #request-one .request-content .request-payment .credit-card .credit-card-info div span {
   display: block;
-  font-weight: 600;
   text-align: center;
 }
 
 .request-essay #request-one .request-content .request-payment .credit-card .credit-card-info div .credit-card-type {
   margin-bottom: 15px;
   font-size: 24px;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
 .request-essay #request-one .request-content .request-payment .credit-card .credit-card-info div .credit-card-number {
   font-size: 32px;
+  font-weight: 600;
 }
 
 .request-essay .request-total {
@@ -1608,6 +1754,14 @@
 
 .request-essay .request-total > div h3 + h3 {
   margin-top: 0px !important;
+}
+
+.request-essay #request-three .request-honor-pledge {
+  background: #d0e7f6;
+}
+
+.request-essay #request-two .request-payment-container {
+  background: #e5f2fa;
 }
 
 .request-essay #request-two .request-urgency div span svg {
@@ -2016,7 +2170,7 @@
     font-size: 28px;
   }
   .request-slide #request-search form {
-    padding: 0 15px 15px;
+    padding: 0 15px;
   }
   .request-slide #request-search .input-field .prefix {
     top: 24px;
