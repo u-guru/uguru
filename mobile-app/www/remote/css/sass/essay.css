@@ -45,6 +45,11 @@ ion-view #student-files {
 ion-view #essay-student-home {
   background: white; }
   ion-view #essay-student-home > header {
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -52,20 +57,56 @@ ion-view #essay-student-home {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    width: 100%;
     position: fixed;
     z-index: 99;
     top: 0;
     right: 0;
-    padding: 15px; }
+    padding: 15px;
+    background: rgba(229, 117, 60, 0); }
     ion-view #essay-student-home > header a:not(.header-close) {
       display: block;
       padding: 15px;
       font-size: 20px;
-      font-weight: 700;
-      text-shadow: 0 0 20px rgba(43, 50, 52, 0.1); }
+      font-weight: 700; }
       ion-view #essay-student-home > header a:not(.header-close).active {
-        background: white;
+        background: rgba(255, 255, 255, 0.9);
         color: #E5753C; }
+      ion-view #essay-student-home > header a:not(.header-close):hover, ion-view #essay-student-home > header a:not(.header-close):focus {
+        background: white;
+        color: #50A5DD; }
+      ion-view #essay-student-home > header a:not(.header-close):first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 15px 15px 5px; }
+        ion-view #essay-student-home > header a:not(.header-close):first-child svg {
+          display: block;
+          height: 100%; }
+          ion-view #essay-student-home > header a:not(.header-close):first-child svg path {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out; }
+            ion-view #essay-student-home > header a:not(.header-close):first-child svg path:first-child {
+              fill: rgba(255, 255, 255, 0.8); }
+            ion-view #essay-student-home > header a:not(.header-close):first-child svg path:last-child {
+              fill: white; }
+        ion-view #essay-student-home > header a:not(.header-close):first-child:hover, ion-view #essay-student-home > header a:not(.header-close):first-child:focus {
+          background: none !important; }
+          ion-view #essay-student-home > header a:not(.header-close):first-child:hover svg path:first-child, ion-view #essay-student-home > header a:not(.header-close):first-child:focus svg path:first-child {
+            fill: white; }
+          ion-view #essay-student-home > header a:not(.header-close):first-child:hover svg path:last-child, ion-view #essay-student-home > header a:not(.header-close):first-child:focus svg path:last-child {
+            fill: rgba(255, 255, 255, 0.8); }
+    ion-view #essay-student-home > header.active {
+      background: rgba(229, 117, 60, 0.95); }
   ion-view #essay-student-home #essay-home-banner {
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -219,11 +260,18 @@ ion-view #essay-student-home {
           stroke-linecap: round;
           stroke-linejoin: round; }
     ion-view #essay-student-home > section button {
-      background: #69B3A5;
       max-width: 300px;
-      color: white;
+      background: white;
+      color: #E5753C;
       font-weight: 700;
       text-transform: capitalize; }
+      ion-view #essay-student-home > section button:hover, ion-view #essay-student-home > section button:focus {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        background: #50A5DD;
+        color: white; }
+      ion-view #essay-student-home > section button:active, ion-view #essay-student-home > section button.activated {
+        background: #E5753C; }
     ion-view #essay-student-home > section .main {
       height: 70%;
       color: #40484B;
@@ -314,13 +362,42 @@ ion-view #essay-student-home {
     ion-view #essay-student-home > section#essay-how-it-works .main > h1, ion-view #essay-student-home > section#essay-faq .main > h1 {
       font-size: 28px;
       font-weight: 600; }
+    ion-view #essay-student-home > section#essay-faq .main > p {
+      padding: 30px 15px;
+      max-width: 830px;
+      margin: 0 auto;
+      font-weight: 600;
+      text-align: center; }
     ion-view #essay-student-home > section#essay-faq .main .paper > h1 {
-      top: 5.2%;
-      font-size: 28px; }
+      top: 3%;
+      font-size: 36px;
+      font-weight: 900;
+      text-align: center; }
     ion-view #essay-student-home > section#essay-faq .main .paper > div {
-      top: 9%; }
+      top: 8.55%;
+      counter-reset: dl;
+      line-height: 38px; }
     ion-view #essay-student-home > section#essay-faq .main .paper dl {
-      margin: 0; }
+      margin: 0 0 38px; }
+      ion-view #essay-student-home > section#essay-faq .main .paper dl:before {
+        content: counter(dl) ".";
+        counter-increment: dl;
+        position: absolute;
+        left: -45px;
+        width: 35px;
+        font-size: 24px;
+        font-weight: 900;
+        text-align: right; }
+      ion-view #essay-student-home > section#essay-faq .main .paper dl:nth-child(7) {
+        padding-top: 2px; }
+      ion-view #essay-student-home > section#essay-faq .main .paper dl:nth-child(8) {
+        margin-top: -2px !important; }
+      ion-view #essay-student-home > section#essay-faq .main .paper dl:nth-child(9) {
+        margin-top: -3px !important; }
+      ion-view #essay-student-home > section#essay-faq .main .paper dl:nth-child(10) {
+        margin-top: -2px !important; }
+      ion-view #essay-student-home > section#essay-faq .main .paper dl dt {
+        font-size: 24px; }
       ion-view #essay-student-home > section#essay-faq .main .paper dl dt, ion-view #essay-student-home > section#essay-faq .main .paper dl dd {
         line-height: inherit; }
     ion-view #essay-student-home > section#essay-how-it-works .main > ul {
@@ -362,13 +439,64 @@ ion-view #essay-student-home {
           content: counter(li);
           counter-increment: li;
           padding: 15px;
-          width: 48px;
-          height: 48px;
+          width: 64px;
+          height: 64px;
           margin-bottom: 15px;
-          background: #E5753C;
+          background: #50A5DD;
           color: white;
-          font-size: 24px;
+          font-size: 28px;
           font-weight: 900; }
+      ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center; }
+        ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li .hiw-icon {
+          display: block; }
+        ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li svg {
+          border-radius: 1000px;
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          padding: 5px;
+          width: 64px;
+          height: 64px;
+          margin-bottom: 15px;
+          background: #50A5DD; }
+          ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li svg path, ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li svg circle {
+            fill: none;
+            stroke: white;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+        ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-shield-lock .hiw-icon:nth-child(2), ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-shield-lock .hiw-icon:nth-child(3) {
+          display: none !important; }
+        ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-satisfaction .hiw-icon:nth-child(1), ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-satisfaction .hiw-icon:nth-child(3) {
+          display: none !important; }
+        ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-safety .hiw-icon:nth-child(1), ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-safety .hiw-icon:nth-child(2) {
+          display: none !important; }
       ion-view #essay-student-home > section#essay-how-it-works .main > ul li {
         position: relative;
         padding: 15px; }
@@ -487,12 +615,12 @@ ion-view #essay-student-home {
 
 .ticket {
   border-radius: 5px;
-  border: 3px solid #bc5019; }
+  border: 3px solid #2580bc; }
   .ticket .ticket-top {
     position: relative;
     padding: 30px 15px 15px;
-    background: #E5753C;
-    border-bottom: 3px dashed #bc5019;
+    background: #50A5DD;
+    border-bottom: 3px dashed #2580bc;
     color: white;
     text-align: center; }
     .ticket .ticket-top h1 {
@@ -517,7 +645,7 @@ ion-view #essay-student-home {
       width: 48px;
       height: 48px;
       background: #F1F1F1;
-      border: 3px solid #bc5019; }
+      border: 3px solid #2580bc; }
     .ticket .ticket-top:after {
       position: absolute;
       left: 50%;
@@ -552,7 +680,8 @@ ion-view #essay-student-home {
     position: relative;
     background: white;
     color: #6f7d82;
-    padding-bottom: 24px; }
+    padding-bottom: 24px;
+    min-height: 300px; }
     .ticket .ticket-bot ul {
       padding: 7.5px; }
       .ticket .ticket-bot ul li {
@@ -590,12 +719,16 @@ ion-view #essay-student-home {
       position: relative;
       width: 70%;
       margin: 0 15px 15px;
-      padding: 15px;
+      padding: 16px 15px 15px 15px;
       font-size: 24px;
-      font-weight: 900;
+      font-weight: 500;
       text-align: center;
-      background: #f1b596;
+      background: #2580bc;
       color: white; }
+      .ticket .ticket-bot h1 span.strong {
+        font-weight: 900; }
+      .ticket .ticket-bot h1:not(.verified) span:nth-child(2) {
+        display: initial !important; }
       .ticket .ticket-bot h1:before, .ticket .ticket-bot h1:after {
         content: "";
         display: block;
@@ -603,11 +736,11 @@ ion-view #essay-student-home {
         top: 0;
         width: 0;
         height: 0;
-        border: 29px solid transparent;
+        border: 30px solid transparent;
         border-left-width: 14px;
         border-right-width: 14px;
-        border-top-color: #f1b596;
-        border-bottom-color: #f1b596; }
+        border-top-color: #2580bc;
+        border-bottom-color: #2580bc; }
       .ticket .ticket-bot h1:before {
         left: -14px; }
       .ticket .ticket-bot h1:after {
@@ -627,7 +760,7 @@ ion-view #essay-student-home {
       width: 48px;
       height: 48px;
       background: #F1F1F1;
-      border: 3px solid #bc5019; }
+      border: 3px solid #2580bc; }
     .ticket .ticket-bot:after {
       position: absolute;
       left: 50%;
@@ -700,34 +833,6 @@ ion-view {
     opacity: 1; }
     #essay-student-home section button:hover, #essay-student-home section button.activated, #essay-student-home section button.active {
       background-color: rgba(105, 179, 165, 0.8); }
-  #essay-student-home header#essay-header {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-justify-content: flex-end;
-    justify-content: flex-end; }
-    #essay-student-home header#essay-header.active {
-      background-color: rgba(43, 50, 52, 0.8); }
-    #essay-student-home header#essay-header div#essay-home-backdrop {
-      background-color: rgba(43, 50, 52, 0.66);
-      position: fixed; }
-      #essay-student-home header#essay-header div#essay-home-backdrop a {
-        color: white;
-        top: 0;
-        right: 0;
-        margin: 10px 30px 10px 0px; }
-        #essay-student-home header#essay-header div#essay-home-backdrop a svg {
-          width: 33px;
-          height: 33px; }
-          #essay-student-home header#essay-header div#essay-home-backdrop a svg path {
-            stroke-width: 10px; }
 
 #desktop-university .school-card .school-card-inside .school-card-top .school-card-icon {
   top: auto;
@@ -868,5 +973,21 @@ ion-view {
 
 ion-scroll, .scroll {
   height: 100% !important; }
+
+#essay-student-home section#essay-pricing header {
+  height: 25% !important; }
+#essay-student-home section#essay-pricing .main {
+  height: 75% !important; }
+  #essay-student-home section#essay-pricing .main h1.price-text {
+    color: #2B3234 !important;
+    opacity: 0.8 !important; }
+  #essay-student-home section#essay-pricing .main h2.support-text {
+    margin-top: 20px;
+    color: #40484B !important;
+    font-weight: 400; }
+    #essay-student-home section#essay-pricing .main h2.support-text a {
+      font-weight: 700;
+      color: #2B3234 !important;
+      opacity: 0.5 !important; }
 
 /*# sourceMappingURL=essay.css.map */

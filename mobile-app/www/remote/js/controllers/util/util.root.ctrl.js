@@ -35,6 +35,7 @@ angular.module('uguru.util.controllers')
     'Github',
     'LoadingService',
     '$ionicSlideBoxDelegate',
+    'AnimationService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -43,7 +44,7 @@ angular.module('uguru.util.controllers')
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
          KeyboardService, ModalService, Github, LoadingService,
-         $ionicSlideBoxDelegate) {
+         $ionicSlideBoxDelegate, AnimationService) {
 
 
         var bodyRect;
@@ -88,6 +89,10 @@ angular.module('uguru.util.controllers')
             return height >= desktopHeightLimit && width >= desktopWidthLimit;
         };
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth) && !(navigator.userAgent.indexOf('iPad') > 0);
+
+        if ($scope.desktopMode) {
+            $ionicSideMenuDelegate.canDragContent(false);
+        }
 
         if ($scope.desktopMode) {
             document.body.classList.add('desktop-view');
@@ -279,10 +284,20 @@ angular.module('uguru.util.controllers')
                         $scope.user.createObj = User.createObj;
                         $scope.user.updateObj = User.updateObj;
                         $scope.root.vars.settings = {icons : {profile : true}};
-                        LoadingService.showSuccess('You have been successfully logged out!', 2500);
-                        $state.go('^.university');
-                        if (!$scope.desktopMode) {
-                            $ionicSideMenuDelegate.toggleRight();
+                        if (!$scope.root.vars.essay) {
+                            LoadingService.showSuccess('You have been successfully logged out!', 2500);
+                            $state.go('^.university');
+                            if (!$scope.desktopMode) {
+                                $ionicSideMenuDelegate.toggleRight();
+                            }
+                        } else {
+                            LoadingService.showAmbig(null, 1000, function() {
+                                $timeout(function() {
+                                    LoadingService.showSuccess('You have been successfully logged out!', 2500);
+                                }, 500)
+                                AnimationService.flip('^.essay-home');
+                            })
+
                         }
                   }, 1000);
             }

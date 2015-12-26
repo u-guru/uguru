@@ -9,9 +9,29 @@ angular
 function ScrollService() {
 
   return {
-    scrollTo:scrollTo
+    scrollTo:scrollTo,
+    initStickyHeaderScroll: initStickyHeaderScroll
   }
 
+  function initStickyHeaderScroll(header_selector, start_element, inject_class, parent_container) {
+    var header = document.querySelector(header_selector);
+    var top_section             = document.querySelector(parent_container);
+    var top_section_height      = getComputedStyle(top_section).height.split('px')[0];
+    var sticky_start              = document.querySelector(start_element);
+    var sticky_height       = getComputedStyle(sticky_start).height.split('px')[0];
+
+    function stickyScroll(e) {
+      // 50 allows it to a bit earlier to avoid any chance of lag
+      if( top_section.scrollTop > (sticky_start.offsetTop - 50) ) {
+
+        header.classList.add(inject_class);
+      } else {
+        header.classList.remove(inject_class);
+      }
+    }
+
+    stickyScroll();
+  }
 
   function scrollTo(to, callback, duration, viewSelectorID, destinationSelectorID) {
     if (!to && !(to === 0) && destinationSelectorID) {

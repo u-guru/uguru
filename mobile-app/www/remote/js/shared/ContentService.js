@@ -94,6 +94,13 @@ function ContentService() {
 
     }
 
+    var honorPledge = [
+      {content: "I will not request that any portion of my work be rewritten by a Guru."},
+      {content: "I understand that if I do, I risk immediately losing access to my Uguru account."},
+      {content: "All of the work I'm submitting for feedback is my work and my work only."},
+      {content: "I understand that Uguru's services may not result in acceptance to any school."},
+      {content: "I understand that addicting usage of Uguru may result in cancer."}
+    ]
 
     //MVP
     var affordability_modal = {
@@ -115,38 +122,35 @@ function ContentService() {
       top_half: [
         {
           step_number: 1,
-          header: "Request Help",
-          content: "From last-second essay feedback to detailed teardowns to unlimited Q&A with gurus from your dream school."
+          header: "Request a Guru",
+          content: "Anything from last-second essay feedback, quick questions, to unlimited Q&A with gurus from your dream school."
         },
         {
           step_number: 2,
-          header: "Instant contact",
-          content: "We'll send out your request to all gurus across the nation. Our goal is to match you with the perfect one."
+          header: "Open 24/7",
+          content: "Your request is dispatched immediately. On-demand assistence past midnight (even @3am) occurs frequently."
         },
         {
           step_number: 3,
           header: "Make the perfect match",
-          content: "We'll send out your request to all gurus across the nation. Our goal is to match you with the perfect one."
+          content: "Applying for a particular scholarship? Looking for a guru with a particular major at your dream school? We got it."
         }
       ],
       bottom_half:[
         {
-          icon_details: "Lock or Sheild or Castle?",
-          svg_url: "https://thenounproject.com/search/?q=safety&i=5983",
+          svg_url: "shield-lock",
           header: "Your Privacy Comes First",
           content: "You are just an ID number to Gurus (by default, your choice to reveal), and we do not sell data to third parties)."
         },
         {
-          icon_details: "Thumbs up / 5 stars",
-
+          svg_url: "satisfaction",
           header: "Satisfaction Guaranteed",
           content: "If your feedback wasn't valuable, we'll closely examine the situation and likely provide a full refund."
         },
         {
-          icon_details: "Something fostering a safe environment?",
-          svg_url: "https://thenounproject.com/search/?q=diversity&i=61296",
-          header: "A Safe & Honest Environment",
-          content: "We monitor our Gurus very carefully, assuring the best quality, privacy, "
+          svg_url: "safety",
+          header: "Safety and Honest First",
+          content: "All requests are verified to assure a fair process for all students. Cheating is not tolerated and our college gurus."
         },
       ]
     };
@@ -156,6 +160,7 @@ function ContentService() {
       faq: faq,
       timeline: timeline,
       how_it_works: how_it_works,
+      honorPledge: honorPledge,
       parents: parents,
       sophisticated_modal:sophisticated_modal,
       affordability_modal:affordability_modal,

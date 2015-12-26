@@ -20,8 +20,8 @@
 <div data-velocity class="flex-wrap-center desktop-search-list">
 	<ul class='desktop-card-list'>
 		<!-- -->
-		<li class='hide ng-class:{"show":page.toggles.searchMode.active}' ng-if="universities && universities.length"  ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
-			<div ng-if='!university.active' class="fx-zoom-up fx-dur-2513 fx-ease-back school-card">
+		<li class='hide ng-class:{"show":page.toggles.searchMode.active}' ng-if="universities && universities.length"  ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 8  | orderBy:id track by $index'>
+			<div ng-if='!university.active' class="fx-fade-down fx-dur-500 fx-ease-back school-card">
 				<svg class="rect" viewBox="0 0 300 175">
 					<rect x="0" y="0" width="300" height="175" fill="none"></rect>
 				</svg>
@@ -47,16 +47,16 @@
 						</div>
 						<ul class="school-card-footer">
 							<li>
-								<span ng-include="img_base + 'templates/svg/main/user.html'"></span>
-								<span>43</span>
+								<!-- <span ng-include="img_base + 'templates/svg/main/user.html'"></span>
+								<span>43</span> -->
 							</li>
 							<li>
-								<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
-								<span>1/1/16</span>
+								<!-- <span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
+								<span>1/1/16</span> -->
 							</li>
 							<li>
-								<span ng-include="img_base + 'templates/svg/main/attach.html'"></span>
-								<span>7</span>
+								<!-- <span ng-include="img_base + 'templates/svg/main/attach.html'"></span>
+								<span>7</span> -->
 							</li>
 						</ul>
 					</div>
@@ -90,16 +90,16 @@
 						</div>
 						<ul class="school-card-footer">
 							<li>
-								<span ng-include="img_base + 'templates/svg/main/user.html'"></span>
-								<span>43</span>
+								<!-- <span ng-include="img_base + 'templates/svg/main/user.html'"></span>
+								<span>43</span> -->
 							</li>
 							<li>
-								<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
-								<span>1/1/16</span>
+								<!-- <span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
+								<span>1/1/16</span> -->
 							</li>
 							<li>
-								<span ng-include="img_base + 'templates/svg/main/attach.html'"></span>
-								<span>7</span>
+								<!-- <span ng-include="img_base + 'templates/svg/main/attach.html'"></span>
+								<span>7</span> -->
 							</li>
 						</ul>
 					</div>

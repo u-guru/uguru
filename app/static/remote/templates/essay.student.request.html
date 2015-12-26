@@ -31,7 +31,7 @@ Gameplan
 			</svg>
 		</a>
 
-		<a class="right-0 absolute text-right header-nav-next hide ng-class:{'show':activeSlideIndex}" ng-click='nextSlide()'>
+		<a class="right-0 absolute text-right header-nav-next hide ng-class:{'show':activeSlideIndex && activeSlideIndex < 3}" ng-click='nextSlide()'>
         	<svg viewBox="0 0 100 100">
             	<path d="M32,86 L68,50 L32,14"></path>
         	</svg>
@@ -69,9 +69,8 @@ Gameplan
 			<!-- Honor Pledge -->
 			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.three.html'"></ion-slide>
 
-			<!-- Summary & Submit -->
+			<!-- Description + (FUTURE OPTIONS) submit -->
 			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.four.html'"></ion-slide>
-
 
 		</ion-slide-box>
 	</main>

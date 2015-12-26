@@ -383,6 +383,22 @@ class UserOneView(restful.Resource):
         #     if not user.email:
         #         user.email = request.json.get('email_address')
 
+        if request.json.get('add_hs_university'):
+            university_id = int(request.json.get('add_hs_university'))
+            if university_id:
+                university = University.query.get(university_id)
+                user.universities.append(university)
+            else:
+                abort(404)
+
+        if request.json.get('remove_hs_university'):
+            university_id = int(request.json.get('remove_hs_university'))
+            if university_id:
+                university = University.query.get(university_id)
+                user.universities.remove(university)
+            else:
+                abort(404)
+
         if request.json.get('confirm_school_email'):
             from emails import send_transactional_email
             from hashlib import md5
@@ -2366,7 +2382,11 @@ class UserNewView(restful.Resource):
         if not user_email and request.json.get('fb_id'):
             user_email = 'fb_id:' + request.json.get('fb_id')
 
+
+        ### Main user creation script
         user = User.initNewUser(user_email, request.json)
+
+
         print user.guru_shops
         if request.json.get('access_code_sender_id'):
             sender_id = int(request.json.get('access_code_sender_id'))
@@ -2390,6 +2410,31 @@ class UserNewView(restful.Resource):
             user.add_guru_courses(guru_course_ids)
             db_session.commit()
             print user.name, 'has', len(user.guru_courses), 'guru courses'
+
+
+        if 'high_school' in request.json:
+            user.high_school = True
+            print "detected that user is a high school student"
+
+        ## if they added high schools
+        hs_universities_json = request.json.get('add_hs_universities')
+        if hs_universities_json:
+            university_ids = [int(uni_json.get('id')) for uni_json in hs_universities_json]
+            for university_id in university_ids:
+                university = University.query.get(university_id)
+                if university:
+                    user.universities.append(university)
+                else:
+                    db_session.rollback()
+                    raise
+
+            if len(user.universities):
+                try:
+                    db_session.commit()
+                    print "added %s universities for the user" % len(user.universities)
+                except:
+                    db_session.rollback()
+                    raise
 
         guru_subcategories_json = request.json.get('guru_subcategories')
         if  guru_subcategories_json:

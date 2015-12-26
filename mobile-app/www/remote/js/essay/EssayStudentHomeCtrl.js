@@ -48,21 +48,29 @@ angular.module('uguru.util.controllers')
         $scope.closeCTADict = {};
         $scope.search_text = {university:''};
         $scope.universities = University.getTargetted();
+        $scope.root.vars.essay = true;
 
-        //temp function
-        var selectRandom = function(arr) {
-           return arr[Math.floor(Math.random()*arr.length)];
+        $scope.flipToEssayHome = function() {
+            LoadingService.showAmbig(null, 2000);
+            $timeout(function() {
+                AnimationService.flip('^.essay-home');
+            }, 500)
         }
 
-        //temp data here
-        $scope.user.hs_files = []
-        for (var i = 0; i < 20; i++) {
-             var randUniversity = selectRandom($scope.universities)
-             $scope.user.hs_files.push({name:"Essay " + i, university: randUniversity, university_id:randUniversity.id, type:selectRandom(['doc', 'xls', 'pdf','img'])})
-             console.log($scope.user.hs_files[i].university.name, $scope.user.hs_files[i].university.school_color_one, $scope.user.hs_files[i].university.school_color_two);
-        }
+        // //temp function
+        // var selectRandom = function(arr) {
+        //    return arr[Math.floor(Math.random()*arr.length)];
+        // }
 
-        Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
+        // //temp data here
+        // $scope.user.hs_files = []
+        // for (var i = 0; i < 20; i++) {
+        //      var randUniversity = selectRandom($scope.universities)
+        //      $scope.user.hs_files.push({name:"Essay " + i, university: randUniversity, university_id:randUniversity.id, type:selectRandom(['doc', 'xls', 'pdf','img'])})
+
+        // }
+
+        // Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
 
 
         function initCTA() {
@@ -246,10 +254,7 @@ angular.module('uguru.util.controllers')
         $scope.$on('$ionicView.loaded', function() {
             $ionicSlideBoxDelegate.update();
             $scope.root.vars.guru_mode = false;
-            if (!$scope.mapInitialized) {
-                console.log('initializing map from load');
-                $scope.mapInitialized = true;
-            }
+
 
             if ($scope.desktopMode) {
                 $timeout(function() {
