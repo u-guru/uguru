@@ -337,6 +337,18 @@ def profile_page_new_view_two(username):
 def new_home_page():
     return render_template("web/index.html")
 
+@app.route('/static/remote/<path:path>')
+def hs_college_app(path):
+    # print angular_route
+    # if os.environ.get('PRODUCTION'):
+    #     return render_template('static', filename='remote/index.html', _scheme='https')
+    # else:
+    from flask import send_from_directory
+    print "it comes here"
+    print path
+    return send_from_directory('remote', path)
+    # return render_template(url_for('static', filename=angular_route))
+
 # @app.route('/', subdomain='www')
 # def new_home_page_www():
 #     return render_template("web/index.html")

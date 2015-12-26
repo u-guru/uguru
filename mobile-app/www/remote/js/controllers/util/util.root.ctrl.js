@@ -689,45 +689,45 @@ angular.module('uguru.util.controllers')
             }, false);
         });
 
-        if (window.location.href.indexOf('/profile/') > 0) {
-            console.log('redirecting...')
-            $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
-        } else if ($scope.user && $scope.user.guru_mode && !$scope.autoRedirects) {
+        // if (window.location.href.indexOf('/profile/') > 0) {
+        //     console.log('redirecting...')
+        //     $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
+        // } else if ($scope.user && $scope.user.guru_mode && !$scope.autoRedirects) {
 
-            LoadingService.show();
-            $ionicViewSwitcher.nextDirection('enter');
-            if (LOCAL) {
-                $state.go('^.' + _startpage);
-            } else {
-                if ($scope.desktopMode) {
-                    $state.go('^.guru-home');
-                } else {
-                    $state.go('^.guru');
-                }
+        //     LoadingService.show();
+        //     $ionicViewSwitcher.nextDirection('enter');
+        //     if (LOCAL) {
+        //         $state.go('^.' + _startpage);
+        //     } else {
+        //         if ($scope.desktopMode) {
+        //             $state.go('^.guru-home');
+        //         } else {
+        //             $state.go('^.guru');
+        //         }
 
-            }
+        //     }
 
-            $timeout(function() {
-                LoadingService.hide();
-            }, 1000);
+        //     $timeout(function() {
+        //         LoadingService.hide();
+        //     }, 1000);
 
-        }
-        else if ($scope.user && $scope.user.university_id && !$scope.autoRedirects) {
-            LoadingService.show();
-            $ionicViewSwitcher.nextDirection('enter');
-            if (LOCAL) {
-                $state.go('^.' + _startpage);
-            } else {
-                if ($scope.desktopMode) {
-                    $state.go('^.guru-home');
-                } else {
-                    $state.go('^.guru');
-                }
-            }
-            $timeout(function() {
-                LoadingService.hide();
-            }, 1000);
-        }
+        // }
+        // else if ($scope.user && $scope.user.university_id && !$scope.autoRedirects) {
+        //     LoadingService.show();
+        //     $ionicViewSwitcher.nextDirection('enter');
+        //     if (LOCAL) {
+        //         $state.go('^.' + _startpage);
+        //     } else {
+        //         if ($scope.desktopMode) {
+        //             $state.go('^.guru-home');
+        //         } else {
+        //             $state.go('^.guru');
+        //         }
+        //     }
+        //     $timeout(function() {
+        //         LoadingService.hide();
+        //     }, 1000);
+        // }
 
         // Override consolelog to prevent it frmo logging on the client side
         if (!$scope.LOCAL && console.log) {
