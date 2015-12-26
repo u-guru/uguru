@@ -57,20 +57,20 @@ angular.module('uguru.util.controllers')
             }, 500)
         }
 
-        // //temp function
-        // var selectRandom = function(arr) {
-        //    return arr[Math.floor(Math.random()*arr.length)];
-        // }
+        //temp function
+        var selectRandom = function(arr) {
+           return arr[Math.floor(Math.random()*arr.length)];
+        }
 
-        // //temp data here
-        // $scope.user.hs_files = []
-        // for (var i = 0; i < 20; i++) {
-        //      var randUniversity = selectRandom($scope.universities)
-        //      $scope.user.hs_files.push({name:"Essay " + i, university: randUniversity, university_id:randUniversity.id, type:selectRandom(['doc', 'xls', 'pdf','img'])})
+        //temp data here
+        $scope.user.hs_files = []
+        for (var i = 0; i < 20; i++) {
+             var randUniversity = selectRandom($scope.universities)
+             $scope.user.hs_files.push({name:"Essay " + i, university: randUniversity, university_id:randUniversity.id, type:selectRandom(['doc', 'xls', 'pdf','img'])})
 
-        // }
+        }
 
-        // Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
+        Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
 
 
         function initCTA() {
