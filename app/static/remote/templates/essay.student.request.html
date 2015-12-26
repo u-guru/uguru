@@ -22,18 +22,57 @@ Gameplan
 			- extra details? textarea
 	## Receipt
 -->
-<section id='request' class="request-academic" ng-controller='RequestController'>
+<section id='request' class="request-essay">
+	<header class="desktop-header" ng-if='desktopMode'>
+		<a></a>
+		<a class='cta-modal-close desktop-header-next desktop-header-close hide ng-class:{"show":!activeSlideIndex}'>
+			<svg viewBox="0 0 100 100">
+				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+			</svg>
+		</a>
 
+		<a class="right-0 absolute text-right header-nav-next hide ng-class:{'show':activeSlideIndex}" ng-click='nextSlide()'>
+        	<svg viewBox="0 0 100 100">
+            	<path d="M32,86 L68,50 L32,14"></path>
+        	</svg>
+    	</a>
+    	<a class='desktop-header-back absolute left-0  hide ng-class:{"show":activeSlideIndex}' ng-click='previousSlide()'>
+			<svg viewBox="0 0 100 100">
+				<path d="M68,86 L32,50 L68,14"></path>
+			</svg>
+		</a>
+	</header>
 
+	<header class="flex-center" ng-if='!desktopMode'>
+		<h1 class='full-x text-center'>Instant Guru Request</h1>
+	    <div class="header-nav full-x">
+			<a class="header-close cta-modal-close" ng-click="studentRequestModal.hide()">
+				<svg viewBox="0 0 100 100">
+					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</div>
+	</header>
 
 	<main>
 		<div class="onboarding-steps absolute top-0 left-0">
 			<progress class="white" max="6" value="{{requestProgress.value}}"></progress>
 		</div>
 		<ion-slide-box id='request-form-slide-box' can-swipe-back='false' on-slide-changed="slideHasChanged($index)" class='full-y'>
-			<!-- <ion-slide ng-include="img_base + BASE + 'templates/student.essay.request.slide.one.html'"></ion-slide>
-			<ion-slide ng-include="img_base + BASE + 'templates/student.essay.request.slide.two.html'"></ion-slide>
-			<ion-slide ng-include="img_base + BASE + 'templates/student.essay.request.slide.three.html'"></ion-slide> -->
+
+			<!-- What do you need help in? -->
+			<ion-slide id='essay-student-request-form'  ng-include="img_base + BASE + 'templates/essay.student.request.slide.one.html'"></ion-slide>
+
+			<!-- Payment options -->
+			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.two.html'"></ion-slide>
+
+			<!-- Honor Pledge -->
+			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.three.html'"></ion-slide>
+
+			<!-- Summary & Submit -->
+			<ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.four.html'"></ion-slide>
+
+
 		</ion-slide-box>
 	</main>
 

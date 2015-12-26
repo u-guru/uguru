@@ -1,52 +1,53 @@
-<!-- Gabrielle 0. Fix background -->
-<!-- Gabrielle 0. "Fix" the header on scroll + right align all the buttons  -->
-<!-- Gabrielle 1. create 4 sections -->
-<!-- Gabrielle 2. Add downward arrow, ill take care of scrolling after-->
-<!-- Gabrielle 3. Add support icon bottom left-->
-<!-- Gabrielle 4. Make sure the index is working-->
+<!--1. Read all @gabrielle comments-->
+<!--2. Please create fixed support icon && I can link it-->
+<!--3. Please format the pricing with the template content (for context)-->
+<link href='https://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 
-<ion-view>
+<ion-content on-scroll='checkPosition()' scroll-event-interval="250">
+<ion-view class='bg-smoke'>
+    <!-- <ion-content> -->
     <main id='essay-student-home' class='hs-view full-xy'>
-        <header class='p20xy flex-wrap-center full-x bg-charcoal hide ng-class:{"show":becomeGuruHeaderActive}' id='become-guru-essay-header'>
-            <div class='relative full-xy'>
-                <h1 class='weight-900'>Are you a college student? Help future college students <span class='weight-900'>now</span></h1>
+        <header id='essay-home-banner' class='hide ng-class:{"show":becomeGuruHeaderActive}'>
+            <div>
+                <h1>Are you a college student? Help future college students <span class='weight-900'>now</span>!</h1>
             </div>
-            <a class="active absolute right-0 m20right bg-cerise txt-smoke become-guru-link" ng-click='goToUniversity()'>Become a college Guru</a>
-            <a name='guru-essay-hdeader-close' class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='becomeGuruHeaderActive = false;'>
+            <button ng-click='goToUniversity()'>Become a college Guru</button>
+            <a name='guru-essay-hdeader-close'class="header-close" ng-click='becomeGuruHeaderActive = false;'>
                 <svg viewBox="0 0 100 100">
                     <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </a>
         </header>
-        <header id='essay-header' class='ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
-            <a name='price-scroll' ng-click='scrollToSection("#essay-pricing")'>Pricing</a>
-            <a name='how-scroll' ng-click='scrollToSection("#how-it-works")'>How it works</a>
-            <a name='timeline-scroll' ng-click='scrollToSection("#timeline")'>Timeline</a>
-            <a name='faq-scroll' ng-click='scrollToSection("#faq-section")'>FAQ</a>
-            <a class="active" ng-click='goToUniversity()'>Get Started</a>
+        <header id='essay-header' class='flex-end full-x ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
+            <a class='left-0 fixed p15xy weight-900' style='font-size:48px; font-family:"Grand Hotel", cursive;' ng-click='scrollToSection("#essay-header")' ng-click='scrollToSection("#essay-pricing")'>HS.Guru</a>
+            <a name='price-scroll'  ng-click='scrollToSection("#essay-pricing")'>Pricing</a>
+            <a name='how-scroll' ng-click='scrollToSection("#essay-how-it-works")'>How it works</a>
+            <!-- <a ng-click='scrollToSection("#timeline")'>Timeline</a> -->
+            <a name='faq-scroll' ng-click='scrollToSection("#essay-faq")'>FAQ</a>
+            <a name='getStarted-scroll' class="active" ng-click='goToUniversity()'>Get Started</a>
             <div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
                 <a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
                     <svg viewBox="0 0 100 100">
                         <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </a>
-
             </div>
         </header>
-        <section class='essay-splash' id='essay-home'>
+        <section class='essay-splash relative' id='essay-home'>
             <div class='essay-home-content-header'>
                 <h1 id='main-text'>
                     Instant college app help from <br/><span class='weight-900'><u>{{university.name}}</u></span> student gurus
                 </h1>
                 <button ng-click='goToUniversity()'> Get Started </button>
             </div>
+            <a class='arrow-down-next' ng-click='scrollToSection("#essay-pricing")' ng-include="img_base + 'templates/svg/main/down.html'"></a>
         </section>
         <section class="essay-pricing" id='essay-pricing'>
             <header>
                 <h1>Services We Can Offer</h1>
             </header>
             <div class='main'>
-                <ul class="ugrid-3">
+                <ul>
                     <li class="ticket-container">
                         <div class="ticket">
                             <div class="ticket-top">
@@ -68,6 +69,7 @@
                                         <span class="ticket-info">Guaranteed 24 hour reply</span>
                                     </li>
                                 </ul>
+                                <h1>$50/hour</h1>
                             </div>
                         </div>
                     </li>
@@ -92,6 +94,7 @@
                                         <span class="ticket-info">Guaranteed 24 hour reply</span>
                                     </li>
                                 </ul>
+                                <h1>$50/hour</h1>
                             </div>
                         </div>
                     </li>
@@ -116,6 +119,7 @@
                                         <span class="ticket-info">Guaranteed 24 hour reply</span>
                                     </li>
                                 </ul>
+                                <h1>$50/hour</h1>
                             </div>
                         </div>
                     </li>
@@ -126,29 +130,94 @@
                 </div>
             </div>
         </section>
-        <section id='how-it-works'>
+        <section id='essay-how-it-works'>
             <header>
                 <h1>How It Works</h1>
             </header>
             <div class='main flex-wrap-center'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h1>{{how_it_works.header}}.</h1>
+                <ul class='ugrid-3 text-center'>
+                    <li ng-repeat="hiw_item in how_it_works.top_half">
+                        <h1>{{hiw_item.header}}.</h1>
+                        <p>{{hiw_item.content}}</p>
+                    </li>
+                </ul>
+                <ul class='ugrid-3 text-center'>
+                    <li ng-repeat="hiw_item in how_it_works.bottom_half">
+                        <h1>{{hiw_item.header}}.</h1>
+                        <p>{{hiw_item.content}}</p>
+                    </li>
+                </ul>
             </div>
         </section>
-        <section id='timeline'>
-            <header>
-                <h1>TIMELINE</h1>
-            </header>
-            <div class='main flex-wrap-center' ng-include="img_base + 'templates/timeline.html'">
-
-            </div>
-        </section>
-        <section id='faq-section'>
+        <section id='essay-faq'>
             <header>
                 <h1>FAQ</h1>
             </header>
             <div class='main flex-wrap-center'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <div class="paper">
+                    <svg viewBox="0 0 800 1035">
+                        <rect x="0" y="0"></rect>
+                        <path d="M0,122 L800,122"></path><path d="M0,160 L800,160"></path>
+                        <path d="M0,198 L800,198"></path><path d="M0,236 L800,236"></path>
+                        <path d="M0,274 L800,274"></path><path d="M0,312 L800,312"></path>
+                        <path d="M0,350 L800,350"></path><path d="M0,388 L800,388"></path>
+                        <path d="M0,426 L800,426"></path><path d="M0,464 L800,464"></path>
+                        <path d="M0,502 L800,502"></path><path d="M0,540 L800,540"></path>
+                        <path d="M0,578 L800,578"></path><path d="M0,616 L800,616"></path>
+                        <path d="M0,654 L800,654"></path><path d="M0,692 L800,692"></path>
+                        <path d="M0,730 L800,730"></path><path d="M0,768 L800,768"></path>
+                        <path d="M0,806 L800,806"></path><path d="M0,844 L800,844"></path>
+                        <path d="M0,882 L800,882"></path><path d="M0,920 L800,920"></path>
+                        <path d="M0,958 L800,958"></path><path d="M0,996 L800,996"></path>
+                        <path d="M126,0 L126,1035"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect>
+                        <path d="M0,1 L800,1"></path>
+                        <path d="M0,39 L800,39"></path>
+                        <path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect>
+                        <path d="M0,1 L800,1"></path>
+                        <path d="M0,39 L800,39"></path>
+                        <path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect>
+                        <path d="M0,1 L800,1"></path>
+                        <path d="M0,39 L800,39"></path>
+                        <path d="M126,0 L126,75"></path>
+                    </svg>
+                    <svg viewBox="0 0 800 75">
+                        <rect x="0" y="0"></rect>
+                        <path d="M0,1 L800,1"></path>
+                        <path d="M0,39 L800,39"></path>
+                        <path d="M126,0 L126,75"></path>
+                    </svg>
+                    <h1 class="paper-title hide ng-class:{'show':!page.toggles.login.active}">Popular Questions</h1>
+                    <div class="paper-text">
+                        <dl ng-repeat='faq in faqs'>
+                            <dt>{{faq.question}}</dt>
+                            <dd>{{faq.answer}}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <small>Can't find your question? Contact our support to get a quick reply. Check back here for updates, we will be updating this page pretty frequently.</small>
             </div>
         </section>
+        <!--Will discuss later-->
+        <!-- <section id='timeline'>
+            <header>
+                <h1>Upcoming Deadlines</h1>
+            </header>
+            <div class='main flex-wrap-center' ng-include="img_base + 'templates/timeline.html'">
+            </div>
+        </section> -->
+
     </main>
+<!-- </ion-content> -->
 </ion-view>
+<!-- </ion-scroll> -->
+</ion-content>

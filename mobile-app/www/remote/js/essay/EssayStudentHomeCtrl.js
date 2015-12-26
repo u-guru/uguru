@@ -22,18 +22,21 @@ angular.module('uguru.util.controllers')
     'PopupService',
     'LoadingService',
     'TimelineService',
+    'Utilities',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
-        DeviceService, PopupService, LoadingService, TimelineService) {
+        DeviceService, PopupService, LoadingService, TimelineService, Utilities) {
 
       var CTA_PARENT_DICT = {
-            'cta-box-essay-student-request':'#desktop-student-home',
-            'cta-box-content': '#desktop-student-home',
-            'cta-box-essay-student-universities': '#desktop-student-home',
-            'cta-box-essay-student-timeline': '#desktop-student-home',
-            'cta-box-essay-student-files': '#desktop-student-home',
+            'cta-box-essay-student-request':'#desktop-student-home .main',
+            'cta-box-content': '#desktop-student-home .main',
+            'cta-box-essay-student-universities': '#desktop-student-home .main',
+            'cta-box-essay-student-timeline': '#desktop-student-home .main',
+            'cta-box-essay-student-files': '#desktop-student-home .main',
+            'cta-box-essay-student-messaging': '#desktop-student-home .main',
+            'cta-box-essay-student-transaction': '#desktop-student-home .main'
         }
 
         var CTA_OPTIONS = {
@@ -43,6 +46,24 @@ angular.module('uguru.util.controllers')
 
         $scope.launchCtaDict = {};
         $scope.closeCTADict = {};
+        $scope.search_text = {university:''};
+        $scope.universities = University.getTargetted();
+
+        //temp function
+        var selectRandom = function(arr) {
+           return arr[Math.floor(Math.random()*arr.length)];
+        }
+
+        //temp data here
+        $scope.user.hs_files = []
+        for (var i = 0; i < 20; i++) {
+             var randUniversity = selectRandom($scope.universities)
+             $scope.user.hs_files.push({name:"Essay " + i, university: randUniversity, university_id:randUniversity.id, type:selectRandom(['doc', 'xls', 'pdf','img'])})
+             console.log($scope.user.hs_files[i].university.name, $scope.user.hs_files[i].university.school_color_one, $scope.user.hs_files[i].university.school_color_two);
+        }
+
+        Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
+
 
         function initCTA() {
 
@@ -58,17 +79,21 @@ angular.module('uguru.util.controllers')
 
                     var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
-                        $timeout(function() {
-                            modal_elem.classList.add('show');
+
                             $ionicSlideBoxDelegate.update();
-                        }, 200);
+                            modal_elem.classList.add('show');
+                            // $timeout(function() {
+
+                            // }, );
+
                           var close_icon = modal_elem.querySelector('.cta-modal-close');
                           if (close_icon) {
                               close_icon.addEventListener('click', function() {
 
                               //add callbacks here
-                              modal_elem.classList.remove('show');
-                              closeCTAModal();
+
+                                closeCTAModal();
+                                modal_elem.classList.remove('show');
                             });
                           }
                     }, CTA_PARENT_DICT[box_elem.id]);
@@ -88,19 +113,48 @@ angular.module('uguru.util.controllers')
         }
 
         function initStudentHomeModals() {
-            $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.university.modal.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function(modal) {
-                $scope.studentCoursesModal = modal;
+                $scope.essayStudentUniversityModal = modal;
             });
 
-            // $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.modal.html', {
-            //     scope: $scope,
-            //     animation: 'slide-in-up'
-            // }).then(function(modal) {
-            //     $scope.studentRequestModal = modal;
-            // });
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.request.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentRequestModal = modal;
+            });
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.timeline.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentTimelineModal = modal;
+            });
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.files.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentFilesModal = modal;
+            });
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.messaging.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentMessagesModal = modal;
+            });
+
+            $ionicModal.fromTemplateUrl(BASE + 'templates/essay.student.payments.modal.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.essayStudentPaymentsModal = modal;
+            });
+
         }
 
         $ionicSideMenuDelegate.canDragContent(false);
@@ -126,6 +180,7 @@ angular.module('uguru.util.controllers')
 
 
 
+
         $scope.closeRequestModal = function() {
             $scope.requestModal.hide();
             $ionicSlideBoxDelegate.update();
@@ -146,8 +201,6 @@ angular.module('uguru.util.controllers')
                 $ionicViewSwitcher.nextDirection('forward');
                 $state.go('^.become-guru')
             }
-
-
         }
 
         $scope.goToDesktopBecomeGuru = function() {

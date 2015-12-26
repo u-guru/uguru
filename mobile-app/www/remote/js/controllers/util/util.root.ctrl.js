@@ -264,6 +264,7 @@ angular.module('uguru.util.controllers')
                   $localstorage.setObject('user', []);
                   $localstorage.set('access', false);
                   $localstorage.setObject('appOnboarding', null);
+                  $localstorage.setObject('page_cache', null);
 
                   $ionicHistory.clearCache();
                   $ionicHistory.clearHistory();

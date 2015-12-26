@@ -669,6 +669,9 @@ def admin_product_skills():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.product.categories.html")
 
+@app.route('/sticker/')
+def admin_product_skills():
+    return render_template("web/pages/sticker.html")
 
 
 @app.route('/admin/product/releases/')

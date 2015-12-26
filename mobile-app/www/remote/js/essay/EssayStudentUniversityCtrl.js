@@ -9,13 +9,17 @@ angular.module('uguru.util.controllers')
   '$ionicScrollDelegate',
   'ScrollService',
   'LoadingService',
-  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService, LoadingService) {
+  'AnimationService',
+  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate,
+    ScrollService, LoadingService, AnimationService) {
     var UPPER = 12;
     var LOWER = 0;
     var pageParentContainer;
 
-    $scope.universities = University.getTargetted();
-    $scope.university = $scope.universities[0];
+    $timeout(function() {
+      $scope.universities = University.getTargetted();
+      $scope.university = $scope.universities[0];
+    })
 
     if (!$scope.user.universities) {
       $scope.user.universities = [];
@@ -28,16 +32,14 @@ angular.module('uguru.util.controllers')
     }
     var shouldShowBecomeGuruHeader = true;
 
-
-
     //default
-    $scope.university = {name:'Harvard'};
-    $scope.root.vars.theme = 'essay';
-    $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
+    $timeout(function() {
+      $scope.university = {name:'Harvard'};
+      $scope.root.vars.theme = 'essay';
+      $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
+    })
 
-    $interval(function() {
-      $scope.university = selectRandom(targettedUniversities);
-    }, 3500)
+
 
     $scope.goToUniversity = function() {
       $ionicViewSwitcher.nextDirection('forward');
@@ -48,9 +50,12 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.addHighSchoolStudentUniversity = function(university, index) {
-      var university = $scope.universities.splice(index, 1)[0];
-      $scope.user.universities.push(university);
+    $scope.addHighSchoolStudentUniversity = function($event, university, index) {
+      university.active = true;
+      $timeout(function() {
+        var university = $scope.universities.splice(index, 1)[0];
+        $scope.user.universities.push(university);
+      }, 500);
     }
 
     $scope.goToEssaySignup = function() {
@@ -64,8 +69,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goBackToStudentEssayHome = function() {
-      $ionicViewSwitcher.nextDirection('back');
-      $state.go('^.essay-home');
+      if ($scope.desktopMode) {
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.essay-home');
+      } else {
+        AnimationService.flip('^.essay-home');
+      }
     }
 
     $scope.showComingSoon = function() {
@@ -113,11 +122,15 @@ angular.module('uguru.util.controllers')
       return new_arr;
     }
 
-    $scope.targettedUniversities = filterTargetted(University.getTargetted());
+    $timeout(function() {
+      $scope.targettedUniversities = filterTargetted(University.getTargetted());
+    });
 
     // loaded means first time only
     $scope.$on('$ionicView.loaded', function() {
-         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader()
+         $timeout(function() {
+          shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader()
+         })
     });
 
   }

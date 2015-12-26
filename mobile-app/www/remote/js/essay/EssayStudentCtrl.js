@@ -7,18 +7,42 @@ angular.module('uguru.util.controllers')
   'University',
   '$ionicViewSwitcher',
   '$ionicScrollDelegate',
+  '$ionicSideMenuDelegate',
   'ScrollService',
-  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService) {
+  'ContentService',
+  'AnimationService',
+  'TransitionService',
+  '$localstorage',
+  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate,
+    $ionicSideMenuDelegate, ScrollService, ContentService, AnimationService, TransitionService, $localstorage) {
     var UPPER = 12;
     var LOWER = 0;
     var pageParentContainer;
+    var scrollDuration= 500;
+    $ionicSideMenuDelegate.canDragContent(false);
+    $scope.checkPosition = function() {
+      ScrollService.initStickyHeaderScroll("#essay-header", "#essay-pricing", 'active', '#essay-student-home');
+    }
 
     var showDelayedBecomeGuruHeader = function() {
+
+
       $timeout(function() {
-        $scope.becomeGuruHeaderActive = true;
-      }, 3000);
+
+        var becomeGuruShown = $scope.root.vars.page_cache.essayHomeBecomeGuru;
+        if (!becomeGuruShown) {
+          $scope.becomeGuruHeaderActive = true;
+          $scope.root.vars.page_cache.essayHomeBecomeGuru = true;
+          $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
+        } else {
+          console.log('already shown');
+        }
+      }, 7000);
     }
     var shouldShowBecomeGuruHeader = true;
+
+    $scope.faqs = ContentService.faq;
+    $scope.how_it_works = ContentService.how_it_works;
 
     //default
     $scope.university = {name:'Harvard'};
@@ -30,16 +54,22 @@ angular.module('uguru.util.controllers')
     }, 3500)
 
     $scope.goToUniversity = function() {
-      $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.essay-student-university');
+      if ($scope.desktopMode) {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.essay-student-university');
+      } else {
+        AnimationService.flip('^.essay-student-university');
+      }
     }
 
     $scope.scrollToSection = function(section_selector) {
       var amount = null;
       var successFunction = null;
       var pageParentContainer = '#essay-student-home';
-      var duration = 666;
-      ScrollService.scrollTo(amount, successFunction, duration, pageParentContainer, section_selector);
+      ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector);
+      $timeout(function() {
+        ScrollService.initStickyHeaderScroll("#essay-header", "#essay-pricing", 'active', '#essay-student-home');
+      }, scrollDuration + 100)
     }
 
     $scope.scrollToPricing = function() {
@@ -61,7 +91,6 @@ angular.module('uguru.util.controllers')
         if ((university_arr[i].name.length <= UPPER && university_arr[i].name.length >= LOWER)) {
           continue;
         } else {
-          console.log(university_arr[i].name)
           indices_to_slice.push(i.toString());
         }
       }

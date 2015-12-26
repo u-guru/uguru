@@ -112,6 +112,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/university.html',
         controller: 'AddUniversityCtrl'
   }).
+  
+  //start essay
   state('root.essay-student-university', {
         url: '/essay-student-university',
         templateUrl: BASE + 'templates/essay.university.desktop.html',
@@ -142,6 +144,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/essay.student.home.html',
         controller: "EssayStudentController"
   }).
+  //end essay
 
   state('root.timeline', {
         url: '/timeline',

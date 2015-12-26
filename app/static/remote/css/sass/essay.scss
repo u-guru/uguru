@@ -2,6 +2,45 @@
 
 // GABRIELLE CSS
 ion-view {
+	.student-mode {
+		background: $smoke;
+	}
+	// FILES
+	#student-files {
+		height: 100%;
+		header {
+			@include flex;
+			@include flex-center;
+			height: 30%!important;
+			text-align: center;
+			background: $lake;
+			h1 {
+				font-size: 48px;
+				font-weight: 700;
+				text-transform: none;
+			}
+		}
+		.main {
+			-webkit-align-items: flex-start;
+			align-items: flex-start;
+			height: 70%;
+			padding: 22.5px 0 7.5px!important;
+			overflow: auto;
+			.attachment-list {
+				ul {
+					@include flex-center;
+					@include flex-wrap;
+					li {
+						div {
+							height: 150px;
+							width: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+	// SPLASH
 	#essay-student-home {
 		background: white;
 		> header {
@@ -11,14 +50,87 @@ ion-view {
 			top: 0;
 			right: 0;
 			padding: 15px;
-			a {
+			a:not(.header-close) {
 				display: block;
 				padding: 15px;
 				font-size: 20px;
 				font-weight: 700;
+				text-shadow: 0 0 20px rgba($charcoal,.1);
 				&.active {
 					background: white;
 					color: $orange;
+				}
+			}
+		}
+		#essay-home-banner {
+			@include transition(.3s ease-in-out);
+			@include flex-center-vertical;
+			@include flex-wrap;
+			background: rgba($slate, .95);
+			z-index: 100;
+			width: 100%;
+			padding: 15px 0 0;
+			margin-top: -15px;
+			&.hide {
+				@include flex-important;
+				@include opacity(0);
+				@include translate-y(-15%);
+				z-index: -50;
+			}
+			&.show {
+				@include opacity(1);
+				@include translate-y(0);
+				@include animation-name(toast-pop);
+				@include animation-duration(.4s);
+				@include animation-iteration-count(1);
+				z-index: 100;
+			}
+			h1 {
+				padding: 15px!important;
+				text-transform: none;
+				line-height: 1.2;
+			}
+			button {
+				height: auto;
+				padding: 10px 15px;
+				font-weight: 600;
+				text-transform: lowercase;
+				background: $moola;
+			}
+			a {
+				@include flex;
+				@include flex-center-vertical;
+				position: absolute;
+				top: 15px;
+				right: 0;
+				height: 50px;
+				svg {
+					width: 28px;
+					height: 28px;
+					margin: 0 8px;
+					path {
+						@include svg-stroke(white, 7);
+					}
+				}
+			}
+			@media screen and (min-width: 768px) {
+				@include flex-center;
+				padding: 30px 15px 15px;
+				text-align: center;
+				h1 {
+					padding: 0 15px 15px!important;
+					font-size: 28px!important;
+				}
+				button {
+					@include round;
+					margin: 0 15px;
+					width: auto;
+					padding: 15px 30px;
+				}
+			}
+			@media screen and (min-width: 1106px) {
+				h1 {
+					padding: 0 15px!important;
 				}
 			}
 		}
@@ -38,6 +150,18 @@ ion-view {
 					text-transform: none!important;
 				}
 			}
+			.arrow-down-next {
+				@include center-x;
+				display: block;
+				bottom: 0;
+				svg {
+					width: 72px;
+					height: 72px;
+					path {
+						@include svg-stroke(white, 5);
+					}
+				}
+			}
 			button {
 				background: $shamrock;
 				max-width: 300px;
@@ -52,15 +176,20 @@ ion-view {
 				line-height: 1.2;
 				font-weight: 400;
 			}
+			// // //
 			&.essay-splash {
 				@include flex;
 				@include flex-center;
 				background: $smoke url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center / cover;
 				text-align: center;
 				h1 {
-					font-size: 60px;
+					font-size: 32px;
 					font-weight: 600;
-					line-height: 90px;
+					line-height: 44px;
+					@media screen and (min-width: 768px) {
+						font-size: 60px;
+						line-height: 90px;
+					}
 					span {
 						display: inline-block;
 					}
@@ -69,17 +198,30 @@ ion-view {
 					margin-top: 30px;
 				}
 			}
+			// // //
 			&.essay-pricing {
 				.main {
 					@include flex;
 					@include flex-center;
 					@include flex-wrap;
 					> ul {
-						max-width: 1030px;
+						@include listless;
+						@include flex;
+						width: 100%;
+						overflow: auto;
 						margin: 0 auto;
 						padding: 15px;
 						> li {
+							width: 100%;
+							min-width: 320px;
 							padding: 15px;
+						}
+						@media screen and (min-width: 768px) {
+							@include flex-wrap;
+							max-width: 1030px;
+							> li {
+								width: calc(100% / 3);
+							}
 						}
 					}
 					> div {
@@ -96,9 +238,102 @@ ion-view {
 					}
 				}
 			}
+			&#essay-how-it-works, &#essay-faq {
+				.main {
+					> h1 {
+						font-size: 28px;
+						font-weight: 600;
+					}
+				}
+			}
+			// // //
+			&#essay-faq {
+				.main {
+					.paper {
+						> h1 {
+							top: 5.2%;
+							font-size: 28px;
+						}
+						> div {
+							top: 9%;
+						}
+						dl {
+							margin: 0;
+							dt, dd {
+								line-height: inherit;
+							}
+						}
+					}
+				}
+			}
+			// // //
+			&#essay-how-it-works {
+				.main {
+					> ul {
+						counter-reset: li;
+						padding: 15px;
+						max-width: 1030px;
+						&:first-of-type {
+							li {
+								@include flex;
+								@include flex-wrap;
+								@include flex-center;
+								&:before {
+									@include round;
+									@include flex;
+									@include flex-center;
+									content: counter(li);
+									counter-increment: li;
+									padding: 15px;
+									width: 48px;
+									height: 48px;
+									margin-bottom: 15px;
+									background: $orange;
+									color: white;
+									font-size: 24px;
+									font-weight: 900;
+								}
+							}
+						}
+						li {
+							position: relative;
+							padding: 15px;
+							h1, p {
+								width: 100%;
+							}
+							h1 {
+								font-size: 26px;
+								font-weight: 700;
+							}
+							p {
+								margin-top: 5px;
+								font-size: 18px;
+								font-weight: 400;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
+
+@include keyframes(toast-pop) {
+	0% {
+		@include opacity(0);
+		@include translate-y(-10%);
+	}
+	80% {
+		@include opacity(1);
+		@include translate-y(5%);
+	}
+	100% {
+		@include opacity(1);
+		@include translate-y(0);
+	}
+}
+
+// TICKET STUB
 .ticket-container {
 	background: $smoke;
 }
@@ -143,8 +378,13 @@ ion-view {
 		}
 	}
 	.ticket-bot {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		position: relative;
 		background: white;
 		color: lighten($slate, 20%);
+		padding-bottom: 24px;
 		ul {
 			padding: 7.5px;
 			li {
@@ -174,50 +414,121 @@ ion-view {
 				}
 			}
 		}
+		h1 {
+			position: relative;
+			width: 70%;
+			margin: 0 15px 15px;
+			padding: 15px;
+			font-size: 24px;
+			font-weight: 900;
+			text-align: center;
+			background: lighten($orange, 20%);
+			color: white;
+			&:before, &:after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 0;
+				width: 0;
+				height: 0;
+				border: 29px solid transparent;
+				border-left-width: 14px;
+				border-right-width: 14px;
+				border-top-color: lighten($orange, 20%);
+				border-bottom-color: lighten($orange, 20%);
+			}
+			&:before {
+				left: -14px;
+			}
+			&:after {
+				right: -14px;
+			}
+		}
+		&:before {
+			@include round;
+			@include center-x;
+			content: "";
+			display: block;
+			bottom: -24px;
+			width: 48px;
+			height: 48px;
+			background: $smoke;
+			border: 3px solid darken($orange, 15%);
+		}
+		&:after {
+			@include center-x;
+			content: "";
+			display: block;
+			bottom: -27px;
+			width: 48px;
+			height: 24px;
+			background: $smoke;
+		}
+	}
+}
+
+// LOGIN
+#essay-student-login {
+	.main {
+		> div {
+			position: relative;
+			.notecard {
+				width: 400px;
+				&:first-child {
+					position: relative;
+					z-index: 10;
+					h1 {
+						font-size: 28px;
+    					font-weight: 700;
+					}
+					button {
+						height: 62px;
+						width: calc(100% + 30px);
+						margin-left: -15px;
+						border-radius: 0 0 2px 2px;
+						background: lighten($slate, 15%);
+						font-weight: 600;
+						&:hover, &:focus {
+							@include opacity(1);
+							background: mix($shamrock, lighten($slate, 15%));
+						}
+						&:active, &.activated {
+							@include opacity(1);
+							background: $shamrock;
+						}
+					}
+				}
+				&:not(:first-child) {
+					position: absolute;
+					top: 0;
+					&:nth-child(2) {
+						@include opacity(.7);
+						@include rotate(10);
+						@include transform-origin(center);
+						background: $slate;
+						z-index: 9;
+					}
+				}
+			}
+		}
 	}
 }
 // END GABRIELLE CSS
 
-ion-view {
-	overflow:auto !important;
-	#essay-student-home {
-		overflow: auto;
-		min-height: 100%;
-		.loading-container {
-			display: none!important;
-		}
-		section {
-			button:hover, button.activated, button.active {
-			background-color:rgba($shamrock, 0.8);
-			opacity:1;
-			}
-		}
-	}
-}
-
-
 //samir essay css ---- START
+ion-view {
+	overflow: auto!important;
+}
 #essay-student-home {
-	header#become-guru-essay-header {
-		z-index:10000;
-		a.become-guru-link {
-			background-color:$cerise;
-			margin-right:5%;
-			top:15px;
-		}
-
-		a.close-become-guru-header  {
-			color:white;
-			top:0;
-			right:0;
-			margin:10px 30px 10px 0px;
-			svg {
-				width:33px;
-				height:33px;
-				path {
-					stroke-width:10px;
-				}
-			}
+	overflow: auto;
+	min-height: 100%;
+	.loading-container {
+		display: none!important;
+	}
+	section {
+		@include opacity(1);
+		button:hover, button.activated, button.active {
+			background-color:rgba($shamrock, 0.8);
 		}
 	}
 	header#essay-header {
@@ -240,11 +551,32 @@ ion-view {
 		}
 	}
 }
-#essay-student-university {
-	ul.school-card-footer {
-		border-bottom-right-radius: 16px !important;
-    	border-bottom-left-radius: 16px;
+#desktop-university {
+	.school-card {
+		.school-card-inside {
+			.school-card-top {
+				.school-card-icon {
+					top: auto;
+					bottom: -24px;
+					width: 64px;
+					height: 64px;
+				}
+			}
+		}
 	}
+}
+#cta-modal-essay-student-universities {
+	#desktop-university {
+		.main {
+			.university-header {
+				h1 {
+					padding-top: 0!important;
+				}
+			}
+		}
+	}
+}
+#essay-student-university {
 	#desktop-essay-university-header {
 		position:relative !important;
 		h1 {
@@ -256,32 +588,11 @@ ion-view {
 	}
 }
 
-#essay-student-login {
-	.paper-text.student-signup-paper {
-		.essay-paper-input-container {
-			padding:5px 10px;
-			label {
-				padding:5px;
-				width:100px;
-				text-align: right;
-				position:absolute;
-				left:-20%;
-				// line-height:18px; //default 18px *2
-			}
-			input {
-				padding: 3px 0px;
-				font-size:18px;
-				background:transparent;
-				background-color:transparent;
-				min-width:300px;
-			}
-		}
-	}
-}
 #desktop-student-home {
 	ion-pane {
 		position: absolute!important;
 		top: 0;
+		z-index:100000;
 		left: 0;
 		width: 100%;
 		height: 100%;
@@ -299,5 +610,102 @@ ion-view {
 			}
 		}
 	}
+	.trending-resources-container {
+		overflow-x:scroll;
+		white-space:nowrap;
+		ul {
+			li {
+				margin:5px;
+				img {
+					width:auto;
+					max-width:200px;
+					height:60px;
+				}
+			}
+		}
+	}
+}
+
+
+#request-slide-two {
+	.desktop-forms-container {
+		width:33%;
+
+		h1, .cta-modal-close {
+			display:none;
+		}
+		form {
+			.input-field
+			{
+				input {
+					color:$slate !important;
+					@include placeholder {
+						color: $slate !important;
+						opacity:0.5;
+					}
+				}
+			}
+		}
+	}
+}
+
+#essay-student-request-form {
+	textarea {
+		@include placeholder {
+			color: $slate !important;
+			opacity:0.5;
+		}
+	}
+	.essay-request-type {
+		h1 {
+			font-size:28px;
+			padding:10px 0px;
+		}
+		.pf-course-check {
+			@include flex;
+			@include flex-center;
+			margin-top: 0!important;
+			div {
+				position: relative;
+				input {
+					@include opacity(0);
+					position: absolute;
+					z-index: 12;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				span {
+					display: block;
+					width: 32px;
+					height: 32px;
+					border-radius: 3px;
+					background: $slate;
+					svg {
+						@include svg-stroke(lighten($slate, 20%), 10);
+						padding: 4px;
+						width: 100%;
+						height: 100%;
+					}
+				}
+				input:checked + span {
+					background: $shamrock;
+					svg {
+						stroke: white;
+					}
+				}
+			}
+			label {
+				width:100%;
+				padding-left: 15px;
+				color: $slate;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
+
+	}
+
 }
 //samir essay css ---- END

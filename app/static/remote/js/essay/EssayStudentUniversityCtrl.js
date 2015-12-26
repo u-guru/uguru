@@ -9,7 +9,9 @@ angular.module('uguru.util.controllers')
   '$ionicScrollDelegate',
   'ScrollService',
   'LoadingService',
-  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate, ScrollService, LoadingService) {
+  'AnimationService',
+  function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate,
+    ScrollService, LoadingService, AnimationService) {
     var UPPER = 12;
     var LOWER = 0;
     var pageParentContainer;
@@ -28,16 +30,12 @@ angular.module('uguru.util.controllers')
     }
     var shouldShowBecomeGuruHeader = true;
 
-
-
     //default
     $scope.university = {name:'Harvard'};
     $scope.root.vars.theme = 'essay';
     $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
 
-    $interval(function() {
-      $scope.university = selectRandom(targettedUniversities);
-    }, 3500)
+
 
     $scope.goToUniversity = function() {
       $ionicViewSwitcher.nextDirection('forward');
@@ -64,8 +62,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goBackToStudentEssayHome = function() {
-      $ionicViewSwitcher.nextDirection('back');
-      $state.go('^.essay-home');
+      if ($scope.desktopMode) {
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.essay-home');
+      } else {
+        AnimationService.flip('^.essay-home');
+      }
     }
 
     $scope.showComingSoon = function() {

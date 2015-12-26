@@ -67,7 +67,8 @@ angular.module('uguru.util.controllers')
         openFB.login(callback, {scope: 'email,public_profile,user_friends'});
     }
 
-
+    $scope.page = {toggles: {}};
+    $scope.page.toggles = {login: {active:false}};
 
     $scope.openModal = function(modalName) {
      if (!$scope.desktopMode) {
@@ -92,6 +93,11 @@ angular.module('uguru.util.controllers')
       } else {
         $state.go('^.essay-student-home-mobile');
       }
+    }
+
+    $scope.goToStudentEssayLanding = function() {
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.essay-home');
     }
 
     $scope.preventSignupAndBackToAccess = function() {
@@ -1217,13 +1223,6 @@ angular.module('uguru.util.controllers')
       if (!$scope.signupForm.email || !$scope.signupForm.email.length) {
         $scope.success.show(0,1000,'Please enter your email');
 
-        // $timeout(function() {
-        //   var emailInput = document.getElementById('email-input')
-        //   if (emailInput) {
-        //     emailInput.focus();
-        //   }
-        // }, 1250)
-
         return false;
       }
 
@@ -1231,12 +1230,6 @@ angular.module('uguru.util.controllers')
       if (!Utilities.validateEmail($scope.signupForm.email)) {
         $scope.success.show(0,1000,'Please enter a valid email');
         $scope.signupForm.email = '';
-        // $timeout(function() {
-        //   var emailInput = document.getElementById('email-input');
-        //   if (emailInput) {
-        //     emailInput.focus();
-        //   }
-        // }, 1250)
 
         return false;
       } else {
@@ -1245,13 +1238,6 @@ angular.module('uguru.util.controllers')
 
       if (!$scope.signupForm.password) {
         $scope.success.show(0,1000,'Please enter a password');
-
-        // $timeout(function() {
-        //   var passwordInput = document.getElementById('password-input');
-        //   if (passwordInput) {
-        //     passwordInput.focus();
-        //   }
-        // }, 1250);
 
         return false;
       } else {

@@ -7,22 +7,22 @@ angular
     "Utilities",
 
     function TimelineService(Utilities) {
-
-  return {
-    formatUniversitiesByDueDate:formatUniversitiesByDueDate,
-    todaysDateShortFormat: todaysDateShortFormat,
-    formatTimelineUniversitiesForHSStudent: formatTimelineUniversitiesForHSStudent
-  }
+      var fullMonthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+    return {
+      formatUniversitiesByDueDate:formatUniversitiesByDueDate,
+      todaysDateShortFormat: todaysDateShortFormat,
+      formatTimelineUniversitiesForHSStudent: formatTimelineUniversitiesForHSStudent
+    }
 
 
   function todaysDateShortFormat() {
     var todayDate = new Date();
-    return (todayDate.getMonth() + 1) + '/' + todayDate.getDate();
+    return (todayDate.getMonth() + 1)  + '/' + todayDate.getDate();
   }
 
   function rfcToShortFormatDate(rfc_date) {
     var formattedDate = new Date(Date.parse(rfc_date));
-    return (formattedDate.getMonth() + 1) + '/' + formattedDate.getDate() + '/' + formattedDate.getYear();
+    return fullMonthArr[(formattedDate.getUTCMonth())] + ' ' + formattedDate.getUTCDate() + ', ' + formattedDate.getUTCFullYear();
   }
 
   function formatTimelineUniversitiesForHSStudent(arr) {
@@ -30,15 +30,17 @@ angular
       var indexDate = arr[i];
       var indexDateKeys = Object.keys(indexDate);
       var universities = indexDate[indexDateKeys[0]];
-      console.log(indexDate, universities);
       arr[i].category = 'high-school';
-      arr[i].title = 'You have ' + universities.length + ' applications due today.';
+      arr[i].body = 'You have ' + universities.length + ' applications due today.';
       arr[i].announcer = {name: 'Samir', profile_url:"https://www.uguru.me/static/web/images/team/samir.png"};
-      arr[i].formatted_date = rfcToShortFormatDate(arr[i].sp16_deadline);
+      arr[i].title = rfcToShortFormatDate(universities[0].sp16_deadline);
+      arr[i].svg = universities[0].svg_url;
+      arr[i].formatted_time = "HS Advisor Guru"
+      arr[i].formatted_category = "Application Deadline"
       //format tags
       arr[i].tags = [];
       for (var j = 0; j < universities.length; j++) {
-        var shortNameAvail = universities[j].short_name || universities[j].name;
+        var shortNameAvail = universities[j].name;
         arr[i].tags.push(shortNameAvail);
       }
     }
@@ -79,8 +81,8 @@ angular
     var dict_keys = Object.keys(dict)
     for (var i = 0; i < dict_keys.length; i++) {
       var indexKey = dict_keys[i];
-      var indexDict = {}
-      indexDict[indexKey] = dict[indexKey]
+      var indexDict = {};
+      indexDict[indexKey] = dict[indexKey];
       result_arr.push(indexDict);
     }
     return result_arr;
