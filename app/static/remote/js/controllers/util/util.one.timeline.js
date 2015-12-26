@@ -13,7 +13,6 @@ angular.module('uguru.util.controllers')
 	'University',
 	'TimelineService',
 	function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, LoadingService, $timeout, University, TimelineService) {
-		$scope.user.universities = University.getTargetted().slice(0, 20);
 
 		//first format by
 		$scope.user.timeline_universities = TimelineService.formatUniversitiesByDueDate($scope.user.universities);

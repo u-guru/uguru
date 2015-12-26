@@ -518,6 +518,7 @@ ion-view {
 		background: white;
 		color: lighten($slate, 20%);
 		padding-bottom: 24px;
+		min-height:300px; // added to keep all the same height
 		ul {
 			padding: 7.5px;
 			li {
@@ -551,12 +552,20 @@ ion-view {
 			position: relative;
 			width: 70%;
 			margin: 0 15px 15px;
-			padding: 15px;
+			// before s: padding: 15px;
+			padding: 16px 15px 15px 15px; //after s
 			font-size: 24px;
-			font-weight: 900;
+			font-weight:500;
 			text-align: center;
-			background: lighten($lake, 20%);
+			// background: lighten($lake, 20%); //old
+			background: darken($lake, 15%); //samir edit
 			color: white;
+			span.strong {
+				font-weight: 900;
+			}
+			&:not(.verified) span:nth-child(2) {
+			    display: initial !important; //overrides nth-child(2) 'display: none' on 1081 lol
+			}
 			&:before, &:after {
 				content: "";
 				display: block;
@@ -564,11 +573,14 @@ ion-view {
 				top: 0;
 				width: 0;
 				height: 0;
-				border: 29px solid transparent;
+				// border: 30px solid transparent; //before s:
+				border: 30px solid transparent; //after s:
 				border-left-width: 14px;
 				border-right-width: 14px;
-				border-top-color: lighten($lake, 20%);
-				border-bottom-color: lighten($lake, 20%);
+				border-top-color: darken($lake, 15%);
+				border-bottom-color: darken($lake, 15%);
+				// border-top-color: lighten($lake, 20%);
+				// border-bottom-color: lighten($lake, 20%);
 			}
 			&:before {
 				left: -14px;
@@ -826,4 +838,30 @@ ion-view {
 
 ion-scroll, .scroll {
 	height:100% !important;
+}
+
+//samir start css override 12/26/2015
+#essay-student-home {
+	section#essay-pricing {
+		header {
+			height:25% !important;
+		}
+		.main {
+			height:75% !important;
+			h1.price-text {
+				color: $charcoal !important;
+				opacity:0.8 !important;
+			}
+			h2.support-text {
+				margin-top:20px;
+				color:$slate !important;
+				font-weight:400;
+				a {
+					font-weight:700;
+					color:$charcoal !important;
+					opacity:0.5 !important;
+				}
+			}
+		}
+	}
 }

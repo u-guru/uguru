@@ -3,14 +3,31 @@
 		<aside>
 			<span ng-include="img_base + BASE + 'templates/svg/main-logo-static.html'"></span>
 			<div>
-				<h1>Want an account?</h1>
-				<p>Sweet! You can request an access code by clicking on the button below.</p>
-				<button ng-click='switchSignupMode()' class="btn-ghost-white">Sign up</button>
-				<button ng-if='desktopMode && !user.id' ng-click='backToAccess()' class="cta-modal-close btn-ghost-white m15top">Redeem code</button>
+				<h1>
+					<span class="hide ng-class:{'show':!page.toggles.login.active}">
+						Already have an account?
+					</span>
+					<span class="hide ng-class:{'show':page.toggles.login.active}"> Don't have an account? </span>
+				</h1>
+				<p>Sweet! You can continue by clicking on the button below.</p>
+				<button ng-click='page.toggles.login.active = !page.toggles.login.active' class="btn-ghost-white">
+					<span class="hide ng-class:{'show':!page.toggles.login.active}">
+						Login
+					</span>
+					<span class="hide ng-class:{'show':page.toggles.login.active}">
+						Create an account
+					</span>
+				</button>
 			</div>
 		</aside>
 
-		<div class="main">
+		<div class="main relative">
+			<a class="back-link absolute top-0 left-0 m30xy" ng-click='goBackToStudentEssayUniversity()'>
+            	My Universities
+        	</a>
+			<a class="back-link absolute top-0 right-0 m30xy" ng-click='flipToStudentEssayLanding()'>
+            	Home
+        	</a>
 		    <div>
 				<div class="notecard">
 			        <svg viewBox="0 0 328 182">
@@ -19,11 +36,23 @@
 			            <rect x="0" y="130"></rect><rect x="0" y="156"></rect>
 			            <rect x="0" y="52"></rect>
 			        </svg>
-			        <h1 class="notecard-title hide ng-class:{'show':!page.toggles.login.active}">Create an account</h1>
+			        <h1 class="notecard-title">
+			        		<span class="hide ng-class:{'show':!page.toggles.login.active}">
+			        			Create an account
+			        		</span>
+			        		<span class="notecard-title hide ng-class:{'show':page.toggles.login.active}">
+			        			Login
+			        		</span>
+			        </h1>
+
 			        <div class="notecard-text">
 			            <div>
-			                <label for="notecard-name">Name</label>
-			                <input id="notecard-name" name="notecard-name" type='text' ng-model="signupForm.full_name" placeholder="Full Name"/>
+			            	<br>
+			            </div>
+			            <div  class='ng-class:{"hide":page.toggles.login.active}'>
+			                <label for="notecard-name"><span class='ng-class:{"hide":page.toggles.login.active}'>Name </span>&nbsp;</label>
+			                <input  class='ng-class:{"hide":page.toggles.login.active}' id="notecard-name" name="notecard-name" type='text' ng-model="signupForm.full_name" placeholder="Full Name"/>
+
 			            </div>
 			            <div>
 			                <label for="notecard-email">Email</label>
@@ -33,7 +62,11 @@
 			                <label for="notecard-password">Password</label>
 			                <input id="notecard-password" name="notecard-password" type='password' placeholder="••••••••••••" ng-model="signupForm.password"/>
 			            </div>
-						<button ng-click='goToStudentEssayHome()'>Submit</button>
+			            <div>
+			            	<br>
+			            </div>
+						<button class='hide ng-class:{"show": page.toggles.login.active}' ng-click='loginUser()'>Login</button>
+						<button class='hide ng-class:{"show": !page.toggles.login.active}' ng-click='completeSignup()'>Create</button>
 			        </div>
 			    </div>
 				<div class="notecard">
