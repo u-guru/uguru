@@ -1889,6 +1889,8 @@ class Request(Base):
         uselist=False,
         backref="requests")
 
+    ## TODO REQUEST PAYMENT ID
+
     address = Column(String)
     in_person = Column(Boolean)
     online = Column(Boolean)
@@ -1953,6 +1955,56 @@ class Request(Base):
         if self.status == 0 or self.status == 1:
             return True
         return False
+
+
+    @staticmethod
+    def createHSRequest(student_id, university_id, \
+        option_num, file_arr, tag_arr, description):
+        from datetime import datetime
+        r = Request()
+        r.high_school = True
+        r.hs_request_option = str(option_num)
+        r._type = option_num
+        r.time_created = datetime.now()
+        r.anonymous = True
+        r.description = description
+
+        db_session.add(r)
+        db_session.commit()
+
+        r.university_id = university_id
+        r.student_id = student_id
+        db_session.commit()
+
+
+        ## update files
+        for _file in file_arr:
+            if type(_file) == dict:
+                f_id = _file.get('id')
+            elif type(_file) == File:
+                f_id = _file.id
+            if not f_id:
+                print "No id number for file"
+                raise
+            f = File.query.get(f_id)
+            f.request_id = r.id
+            db_session.commit()
+
+
+        ## update tags
+        for _tag in tag_arr:
+            if type(_tag) == dict:
+                t_id = _tag.get('id')
+            elif type(_tag) == Tag:
+                t_id = _tag.id
+
+            if not t_id:
+                print "No id number for tag"
+                raise
+            t = Tag.query.get(t_id)
+            r.tags.append(t)
+        db_session.commit()
+
 
 
 class Proposal(Base):
