@@ -555,7 +555,7 @@ ion-view {
 			font-size: 24px;
 			font-weight: 900;
 			text-align: center;
-			background: lighten($lake, 20%);
+			background: $lake;
 			color: white;
 			&:before, &:after {
 				content: "";
@@ -567,8 +567,8 @@ ion-view {
 				border: 29px solid transparent;
 				border-left-width: 14px;
 				border-right-width: 14px;
-				border-top-color: lighten($lake, 20%);
-				border-bottom-color: lighten($lake, 20%);
+				border-top-color: $lake;
+				border-bottom-color: $lake;
 			}
 			&:before {
 				left: -14px;
