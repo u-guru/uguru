@@ -32,10 +32,10 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    print "gets catch in catch_all_function"
+    print "gets catch in catch_all_function", request.url
     if 'www.' in request.url:
         return redirect(request.url.replace('www.', ''))
-    if 'hs.uguru.me' in request.url:
+    if 'hs.uguru.me' in request.url or 'hs' in request.url:
         from flask import send_file
         return send_file('templates/hs/index.html')
     return redirect(url_for('new_home_page'))
