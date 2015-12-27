@@ -49,7 +49,7 @@ def catch_all_two(path):
     if 'www.' in request.url:
         filename_redirect = request.url.split('/static/')[-1]
         print 'redirecting to %s' % filename_redirect
-        return redirect(url_for('static', filename=filename, _scheme='https'))
+        return redirect(url_for('static', filename=filename_redirect, _scheme='https'))
 
         # return redirect(request.url.replace('www.', '').replace('http://','https://'))
     if 'hs.uguru.me' in request.url:
