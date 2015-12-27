@@ -43,6 +43,7 @@ def catch_all(path):
 @app.route('/', defaults={'path': ''}, subdomain='www')
 @app.route('/<path:path>', subdomain='www')
 def catch_all_two(path):
+    print "gets catch in catch_two function", request.url
     if 'www.' in request.url:
         return redirect(request.url.replace('www.', ''))
     if 'hs.uguru.me' in request.url:
@@ -324,6 +325,10 @@ def admin_devices():
 def profile_page_new_view(username):
     from flask import send_file
     print "\n\nsubdomain routing: %s\n\n" % username
+
+    if '.' in username and 'www.' in username:
+        return redirect(request.url.replace("www.", ""))
+
     if username == 'hs' or username == 'highschool':
         return send_file('templates/hs/index.html')
     user_profile_exists = User.query.filter_by(profile_code=username).all()
