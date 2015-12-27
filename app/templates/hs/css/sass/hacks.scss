@@ -1,0 +1,43 @@
+#profile.guru-profile {
+    header {
+        position: absolute;
+        height: 50px;
+        width: 100%;
+    }
+    header.relative {
+        position: relative;
+    }
+    header a {
+        position: relative;
+    }
+    header a.edit-button h1 {
+        position: absolute;
+        right: 0;
+    }
+    header a.save-button h1 {
+        position: absolute;
+        right: 0;
+    }
+}
+
+.uguru-view.faq-modal {
+    background-color:whitesmoke !important;
+    z-index: 1000;
+    header {
+        overflow:hidden;
+    }
+    background-color:white;
+    .ion-chevron-down {
+        position:absolute;
+        top:10px;
+        left:10px;
+    }
+
+}
+.white-guru-svg {
+    padding: 3px;
+}
+
+.high-z-index {
+    z-index:1000000000;
+}

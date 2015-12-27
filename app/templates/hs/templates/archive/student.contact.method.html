@@ -1,0 +1,26 @@
+    <ion-view hide-nav-bar='true'>
+      <ion-header-bar class='header-bar'>
+        <a class="button button-clear button-back" nav-direction="back" href="#/student-request">Back</a>
+        <h5 class="title">Contact Method</h5>
+        <a class="button button-clear button-back bold positive uppercase" ng-click='saveAndGoToRequest()'>Next</a>
+      </ion-header-bar>
+      <ion-content>
+        <div class='pure-g-c padding-half positive'>
+          <div class='pure-u-1 flex-item-c'>
+            <h5 class='contact-method-warning-text positive'>Please choose at least one </h5>
+          </div>
+        </div>
+        <ion-list class='list-inset'>
+          <!-- <ion-toggle ng-model="root.vars.request.contact.phone" ng-change='toggleTextMessageInput()' toggle-class="toggle-calm" class='ng-class:{"item-icon-left": root.vars.request.contact.phone} '>
+          <i class='icon ion-checkmark icon-medium icon-positive' ng-show='root.vars.request.contact.phone'></i>
+          Text Message
+          <p ng-show='user.phone_number'> {{user.phone_number}} </p>
+          </ion-toggle> -->
+
+          <ion-toggle ng-model="user.email_notifications" ng-change='emailNotificationChange()' toggle-class="toggle-calm">
+          Email Notification
+          </ion-toggle>
+          <ion-toggle ng-change="requestPushNotifications()" ng-show='platform.mobile' ng-model="user.push_notifications" toggle-class="toggle-calm">Push Notifications</ion-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-view>

@@ -29,20 +29,20 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## Bens Views ##
 ################
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    if 'www.' in request.url:
-        return redirect(request.url.replace('www.', ''))
-    print request.url.replace('sam', '')
-    return redirect(url_for('new_home_page'))
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path:path>')
+# def catch_all(path):
+#     if 'www.' in request.url:
+#         return redirect(request.url.replace('www.', ''))
+#     print request.url.replace('sam', '')
+#     return redirect(url_for('new_home_page'))
 
-@app.route('/', defaults={'path': ''}, subdomain='www')
-@app.route('/<path:path>', subdomain='www')
-def catch_all(path):
-    if 'www.' in request.url:
-        return redirect(request.url.replace('www.', ''))
-    return redirect(url_for('new_home_page'))
+# @app.route('/', defaults={'path': ''}, subdomain='www')
+# @app.route('/<path:path>', subdomain='www')
+# def catch_all(path):
+#     if 'www.' in request.url:
+#         return redirect(request.url.replace('www.', ''))
+#     return redirect(url_for('new_home_page'))
 
 @app.route('/loading/')
 def loading():
@@ -316,6 +316,10 @@ def admin_devices():
 
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
+
+    print "\n\nsubdomain routing: %s\n\n" % username
+    if username == 'hs':
+        return send_file('templates/hs/index.html')
     user_profile_exists = User.query.filter_by(profile_code=username).all()
     if username == "www":
         print 'redirecting to ' + request.url.replace("www.", "")
@@ -337,16 +341,10 @@ def profile_page_new_view_two(username):
 def new_home_page():
     return render_template("web/index.html")
 
-@app.route('/static/remote/<path:path>')
-def hs_college_app(path):
-    # print angular_route
-    # if os.environ.get('PRODUCTION'):
-    #     return render_template('static', filename='remote/index.html', _scheme='https')
-    # else:
-    from flask import send_from_directory
-    print "it comes here"
-    print path
-    return send_from_directory('remote', path)
+@app.route('/hs/')
+def hs_college_app():
+    from flask import send_from_directory, send_file
+    return send_file('templates/hs/index.html')
     # return render_template(url_for('static', filename=angular_route))
 
 # @app.route('/', subdomain='www')

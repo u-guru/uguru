@@ -1,0 +1,479 @@
+@import 'mixin';
+
+// start samir css 11/9
+.desktop-input-close-icon {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+}
+.desktop-login-view {
+	.desktop-input-close-icon {
+		color: rgba($slate,.2);
+		top: 30%;
+	}
+}
+
+// End samir-css
+.desktop-mode {
+	#desktop-student-home-map-container,
+	#student-home-default-map-container {
+		position: absolute!important;
+		top: 0!important;
+		left: 0!important;
+		overflow: hidden!important;
+		z-index: 0!important;
+		width: 100%!important;
+		height: calc(100% - 64px)!important;
+	}
+	.main {
+		z-index: 1!important;
+		background: transparent;
+	}
+}
+
+//all component overrides
+//@gabriellewee I injected desktop-view into body if desktop
+.desktop-view {
+	ion-modal-view {
+		width: 100%;
+		height: calc(100% - 64px);
+		left: 0;
+		top: 64px;
+	}
+	.uguru-popup-content {
+		width: 33%!important;
+	}
+}
+.desktop-view.platform-ios {
+	ion-modal-view {
+		top: 84px;
+		height: calc(100% - 84px);
+		width: 100%;
+	}
+	header,
+	.header-nav {
+		padding-top: 0!important;
+	}
+	.guru-desktop-credibility {
+		padding-top: 20px;
+	}
+	#top-menu-background-overlay {
+		top: 64px;
+		height: calc(100% - 84px)!important;
+	}
+}
+
+//end component overrides
+.desktop-guru-onboarding-view {
+	.cta-modal.hide-display {
+		@include opacity-important(0);
+		display: none;
+		z-index: 1000;
+		&.show {
+			@include opacity-important(1);
+			display: block!important;
+		}
+	}
+}
+.desktop-guru-onboarding {
+	.main.default {
+		min-height: 50%;
+	}
+}
+.photo-view .main {
+	height: calc(100% - 140px);
+}
+.mode-links {
+	background: rgba(white,.75);
+	span {
+		color: $gabrielle;
+	}
+	svg {
+		stroke: $gabrielle!important;
+	}
+}
+.progressbar-text {
+	display: none!important;
+}
+#desktop-guru-home {
+	.hide-display.cta-modal.pane {
+		@include opacity-important(0);
+		position: fixed;
+		transition: 200ms ease;
+		visibility: hidden;
+		overflow: auto;
+		z-index: -1;
+		background: $charcoal;
+		&.show {
+			z-index: 1000;
+			@include opacity-important(1);
+			visibility: visible;
+		}
+	}
+}
+.desktop-guru-onboarding-view .skill-item-content.hide-display {
+	@include opacity(0);
+	visibility: hidden;
+	flex-direction: column;
+	&.show {
+		@include flex;
+		@include opacity(1);
+		visibility: visible;
+		a {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			svg {
+				@include rotate(45);
+				height: 50px;
+			}
+		}
+	}
+}
+.guru-message-container {
+	.cta-modal-close {
+		z-index: 1000;
+		height: 50px;
+		width: 50px;
+	}
+}
+.credit-card-wrapper {
+	.credit-card {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		background: $charcoal;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		padding: 15px;
+		color: white;
+		position: relative;
+		.card-type {
+			float: right;
+			clear: both;
+			width: 50px;
+			font-weight: 400;
+			font-size: 16px;
+			+ .card-type {
+				width: auto;
+			}
+		}
+		.card-number {
+			font-family: OCR-A, monospace;
+			font-size: 14px;
+			text-align: left;
+			color: $smoke;
+			position: absolute;
+			left: 10%;
+			top: 50%;
+		}
+		.card-name {
+			@include opacity(.75);
+			font-size: 10px;
+			text-align: left;
+			color: white;
+			line-height: 2;
+			font-weight: 700;
+			position: absolute;
+			left: 10%;
+			bottom: 12.5%;
+		}
+		img.card-chip {
+			width: 30px;
+			position: absolute;
+			left: 20px;
+			top: 20%;
+		}
+		.valid .group {
+			@include opacity(.4);
+			position: absolute;
+			width: 33%!important;
+			bottom: 12.5%;
+			right: 15%;
+			font-size: 10px;
+			line-height: 10px;
+		}
+		.valid .expiry {
+			@include opacity(.75);
+			position: absolute;
+			width: 33%!important;
+			bottom: 17.5%;
+			right: -3%;
+			font-size: 16px;
+			line-height: 10px;
+			margin-top: 3px;
+		}
+	}
+	.cf:before,
+	.credit-card:before,
+	.cf:after,
+	.credit .credit-card:after {
+		content: " ";
+		display: table;
+	}
+}
+
+// .guru-view-mobile .header-nav {
+// 	h1.balance-header {
+// 		padding-right: 15px!important;
+// 	}
+// 	svg.referral-icon {
+// 		padding-left: 5px;
+// 	}
+// }
+body.platform-ios {
+	.mobile-referrals-modal a.header-close,
+	.mobile-balance-modal a.header-close,
+	.guru-view-mobile .header-nav {
+		padding-top: 0!important;
+		h1.balance-header {
+			padding-right: 15px!important;
+			margin-top: 5px!important;
+		}
+		svg.referral-icon {
+			padding: 0;
+		}
+	}
+}
+#cta-modal-payments {
+	height: 100%;
+	background: rgba(0,0,0,0.25)!important;
+	input {
+		color: $charcoal!important;
+	}
+	.close-button svg {
+		stroke: $charcoal;
+		width: 30px;
+	}
+}
+.payments-modal input {
+	background-color: $charcoal!important;
+	background: $charcoal!important;
+}
+.desktop-input-close-icon {
+	padding: 10px;
+	margin: -10px;
+}
+#profile-footer-desc {
+	font-size: 20px;
+}
+#settings-notifications-list {
+	ion-item.active, ion-item:hover, ion-item:active, ion-item:focus {
+		background: none;
+		background-color: none;
+	}
+	.list-item-detail {
+		padding-left: 5%;
+	}
+	.list-item-icon {
+		svg:active, svg.active, svg.activated {
+			@include opacity(.5);
+		}
+	}
+	.list-item-icon svg {
+		path.notifications-path {
+			stroke: white;
+			&.active {
+				@include opacity(1);
+				stroke: $slate;
+				width: 5px;
+			}
+		}
+		circle.notifications-circle {
+			fill: $slate;
+			&.active {
+				@include opacity(1);
+				fill: white;
+			}
+		}
+	}
+}
+#public-profile-url {
+	font-size: 14px;
+	padding-bottom: 12.5%;
+}
+.dark-shamrock-bg {
+	background-color: #3d796e!important;
+}
+.textarea-container {
+	* {
+		@include placeholder {
+			color: red;
+			font-weight: 500;
+		}
+	}
+	::-webkit-input-placeholder {
+		color: white;
+		font-weight: 500;
+	}
+}
+
+// .desktop-mode #profile-code-list:after {
+//     content: "tap to launch";
+//     right: -108px;
+//     padding: 10px 15px;
+//     background: rgba(255, 255, 255, 0.9);
+//     font-size: 14px;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     color: #40484B;
+// }
+// .desktop-mode #profile-code-list:before {
+//     content: "";
+//     right: -20px;
+//     width: 0;
+//     height: 0;
+//     border: 10px solid transparent;
+//     border-right-color: rgba(255, 255, 255, 0.9);
+// }
+#cta-modal-support {
+	top: 64px!important;
+	h1 {
+		background: none!important;
+		padding: 20px 15px!important;
+		margin-bottom: 0!important;
+		font-size: 48px!important;
+		font-weight: 900!important;
+		letter-spacing: 0!important;
+		text-align: center!important;
+		text-transform: none!important;
+		color: white;
+	}
+	a.cta-modal-close {
+		width: auto;
+		position: absolute;
+		height: 50px;
+		width: 50px;
+		right: 0;
+		top: 0;
+		margin: 20px;
+	}
+}
+ion-pane #experience-modal #guru-experience-remove-button {
+	bottom: 115px;
+	position: absolute;
+	z-index: 1000;
+	width: 100%;
+	left: 0;
+}
+ul.mobile-cards-container li {
+	padding: 7.5px;
+	a {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		width: 80%;
+		left: 10%;
+		margin: 0 auto;
+		height: 150px;
+		background: $slate;
+		font-weight: 600;
+		svg {
+			@include svg-stroke(white, 4);
+			width: 80px;
+			height: 80px;
+		}
+		span {
+			display: block;
+			span {
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+		}
+	}
+}
+#mobile-guru-home header .text-center {
+	h2 {
+		font-size: 20px!important;
+	}
+}
+body.platform-ios #mobile-guru-home {
+	height: calc(100% - 20px)!important;
+	margin-top: 20px;
+}
+.show-display {
+	display: block!important;
+}
+#guru-profile-cta-close {
+	z-index: 10;
+	svg {
+		stroke: white;
+		height: 30px;
+		width: 30px;
+	}
+}
+.pf-edit-pf.pf-desktop-edit {
+	z-index: 1000;
+}
+.guru-cta-profile-container {
+	width: 100%;
+	position: absolute!important;
+	height: 100%;
+	display: block;
+	right: 0;
+	top: 60px;
+	height: calc(100% - 138px);
+}
+.high-z-index {
+	z-index: 1000;
+}
+.z-index-11 {
+	z-index: 11;
+}
+.height-100 {
+	height: 100px;
+}
+
+// #cta-modal-profile-pi-item {
+// 	top: 60px;
+// 	z-index: 1000;
+// 	height: calc(100% - 140px);
+// 	width: 66%!important;
+// }
+.min-height-modal-desktop {
+	min-height: 800px;
+}
+.hs-view {
+	background: url("https: //uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center fixed!important;
+	-webkit-background-size: 100% 100%!important;
+	-moz-background-size: 100% 100%!important;
+	-o-background-size: 100% 100%!important;
+	background-size: 100% 100%!important;
+}
+#label-course-input-1:hover {
+	display: none;
+}
+#desktop-student-home {
+	ion-pane.cta-modal {
+		z-index: 19;
+		.desktop-header {
+			z-index: 19;
+		}
+		.request-form-container {
+			#request-form-slide-box {
+				top: 4px;
+			}
+		}
+	}
+	.hide-display {
+		display: none;
+	}
+}
+#pf-shop-desc-backdrop {
+	@include opacity(.3);
+	z-index: 98;
+	display: none;
+}
+
+
+//@gabrielle what's the best way to do this
+.alumn-dropdown span span {
+	line-height:48px;
+}
+
+//for somereason #guru courses user profile is hidden
+#language-list
+ul#guru-courses-user-profile {
+	display:block!important;
+}

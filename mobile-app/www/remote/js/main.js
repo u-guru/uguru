@@ -20,6 +20,8 @@ if (LOCAL) {
   img_base = '/static/';
 }
 
+
+
 var tracker = 'lo';
 var stats = new Stats();
 

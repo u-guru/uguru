@@ -1,0 +1,133 @@
+<ion-view class='uguru-view pf-type pf-type-photo bg-slate'>
+	<section>
+		<header class="third flex-center">
+			<div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
+			<div class="pf-header-color"></div>
+			<div class="pf-banner pf-banner-photo" ng-include="img_base + 'templates/svg/photography.html'"></div>
+			<div class="pf-header">
+				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+				<h1 class="verified">
+					<span class="inline">{{ user.profile_name }}</span>
+					<span class="inline">
+						<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
+					</span>
+				</h1>
+				<h2 class="pf-school">{{user.university.short_name || user.university.name}}</h2>
+				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
+				<!-- <button class="btn-ghost-white">Contact</button> -->
+				<div class="pf-header-desc">
+					{{user.guru_introduction}}
+				</div>
+				<ul class="pf-url">
+					<!-- BIND -->
+					<li>
+						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code}}.uguru.me</a>
+					</li>
+					<li>
+						<a href='http://{{user.profile_code}}.uguru.me' target='_blank' class='bg-white'>
+							<svg viewBox="0 0 100 100">
+								<path d="M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848"></path>
+							</svg>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div class="pf-tab-container">
+			<div class="pf-tabs tab-bar">
+				<ul>
+					<li>
+						<a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Gallery</a>
+					</li>
+					<li>
+						<a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
+					</li>
+				</ul>
+			</div>
+			<!-- BIND -->
+			<div class="pf-shop-desc pf-tab-item ng-class:{'active':activeTabIndex === 1}">
+				<h1>{{user.first_name}}'s Shop</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<div class="pf-list p15top">
+					<h1>Experience</h1>
+					<ul class="pf-list-y">
+						<li ng-repeat='experience in user.guru_experiences'>
+							<ul class="ugrid-2">
+								<li class="text-left">{{experience.title}}</li>
+								<li class="text-right" data-years="{{experience.years}}">{{experience.years}} year</li>
+							</ul>
+							<div class="pf-list-desc">{{experience.description}}</div>
+						</li>
+						<li>
+							<ul class="ugrid-2">
+								<li class="text-left">Cal Web Master</li>
+								<li class="text-right" data-years="3" >3 year</li>
+							</ul>
+							<div class="pf-list-desc">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="pf-list p15top">
+					<h1>Attachments</h1>
+					<ul class="pf-list-x pf-attachments flex-wrap">
+						<li>
+							<a>
+								<h2>Pricing</h2>
+								<h3>pricing.pdf</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							</a>
+						</li>
+						<li>
+							<a>
+								<h2>Restrictions</h2>
+								<h3>restrictions.pdf</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="pf-list p15top">
+					<h1>Will Work For</h1>
+					<ul class="pf-list-x ugrid-3">
+						<li>
+							<svg viewBox="0 0 100 100">
+								<path d="M50,86 C69.882251,86 86,69.882251 86,50 C86,30.117749 69.882251,14 50,14 C30.117749,14 14,30.117749 14,50 C14,69.882251 30.117749,86 50,86 Z M62,41 C62,32 52.9423828,30.5131836 50,30.5131836 C47.0576172,30.5131836 38,32 38,41 C38,46.4300003 42.675293,49.1364937 50,50.2399998 C57.324707,51.3435059 62,53.8100014 62,59.2399998 C62,68.2399998 52.9423828,69.7268162 50,69.7268162 C47.0576172,69.7268162 38,68.2399998 38,59.2399998 M50,23.4736842 L50,76.5263158"></path>
+							</svg>
+						</li>
+						<li>
+							<svg viewBox="0 0 100 100">
+								<path d="M41.0165491,16.2307484 L14,84.3019805 L85.8502839,64.7488654 M78.1395527,66.5903838 C77.9282798,43.9236752 60.3905755,25.3983634 38.1315863,23.619595 M86,64.6027572 C84.848908,39.5582444 65.7881883,19.1872357 41.3281102,16 M46.1489882,43.6975899 C49.7000674,43.6975899 52.5787859,40.8188714 52.5787859,37.2677922 C52.5787859,33.716713 49.7000674,30.8379946 46.1489882,30.8379946 C42.5979091,30.8379946 39.7191906,33.716713 39.7191906,37.2677922 C39.7191906,40.8188714 42.5979091,43.6975899 46.1489882,43.6975899 Z M61.9761824,61.5031833 C65.5272616,61.5031833 68.4059801,58.6244649 68.4059801,55.0733857 C68.4059801,51.5223065 65.5272616,48.6435881 61.9761824,48.6435881 C58.4251033,48.6435881 55.5463848,51.5223065 55.5463848,55.0733857 C55.5463848,58.6244649 58.4251033,61.5031833 61.9761824,61.5031833 Z M33.2893929,73.373579 C36.8404721,73.373579 39.7191906,70.4948605 39.7191906,66.9437814 C39.7191906,63.3927022 36.8404721,60.5139837 33.2893929,60.5139837 C29.7383138,60.5139837 26.8595953,63.3927022 26.8595953,66.9437814 C26.8595953,70.4948605 29.7383138,73.373579 33.2893929,73.373579 Z M50.938492,69.4775102 L50.938492,59.5855138 M42.0356952,54.6395156 L51.9276916,49.6935174 M36.1004974,52.6611163 L35.1112977,43.7583196"></path>
+							</svg>
+						</li>
+						<li>
+							<svg viewBox="0 0 100 100">
+							    <path d="M72.5851716,42 L73.9931215,29.995752 C74.0570412,29.4507688 73.6585714,29 73.1018159,29 L27.8983562,29 C27.3424684,29 26.9425497,29.4458134 27.0070507,29.995752 L28.4150006,42 L72.5851716,42 Z M69.3011177,70 L67.6585926,84.004248 C67.5940916,84.5541866 67.0857626,85 66.5402092,85 L34.4599629,85 C33.9067978,85 33.4054993,84.5492312 33.3415795,84.004248 L31.6990544,70 L69.3011177,70 Z M22.3027991,18.9761766 C22.4382171,18.4370492 22.9928038,18 23.5543004,18 L76.8012657,18 C77.3570328,18 77.9158831,18.431213 78.052767,18.9761766 L80.3253539,28.0238234 C80.4607719,28.5629508 80.1162204,29 79.5662184,29 L20.7893477,29 C20.2346707,29 19.8933283,28.568787 20.0302121,28.0238234 L22.3027991,18.9761766 Z M30.2137671,13.9404618 C30.4060672,13.4210591 31.0119797,13 31.5619707,13 L68.4364299,13 C68.9887221,13 69.5942727,13.4262972 69.7846335,13.9404618 L70.9394192,17.0595382 C71.1317193,17.5789409 70.8382599,18 70.2875118,18 L29.7108888,18 C29.1585502,18 28.8686206,17.5737028 29.0589814,17.0595382 L30.2137671,13.9404618 Z M26.0050793,42.9965348 C25.9492956,42.4461638 26.359641,42 26.9089876,42 L74.0908467,42 C74.6458451,42 75.0511823,42.4398131 74.994755,42.9965348 L72.358783,69.0034652 C72.3029993,69.5538362 71.8129129,70 71.2671302,70 L29.7327035,70 C29.1855839,70 28.697478,69.5601869 28.6410506,69.0034652 L26.0050793,42.9965348 Z"></path>
+							</svg>
+						</li>
+					</ul>
+				</div>
+				<div class="pf-reviews p15top">
+					<h2>{{user.guru_avg_rating || 0.0}} Average Rating</h2>
+					<button class="m10top btn-ghost-white">See Availability</button>
+				</div>
+			</div>
+
+			<ul class="ugrid-2 pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
+				<li class="pf-checklist-full active pf-type-photo" ng-include="img_base + 'templates/profile.modal.photo.html'"></li>
+				<li ng-repeat='course in user.guru_courses'>
+					<div class="pf-check-container">
+						<span>
+							<span>{{course.short_name}}</span>
+							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<span class="pf-review-amt">3 Reviews</span>
+
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</section>
+</ion-view>

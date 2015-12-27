@@ -1,0 +1,28 @@
+  <ion-view hide-nav-bar="true">
+    <ion-header-bar class='header-bar item-button-left'>
+        <a class="button button-clear button-back" ng-click='goBack()'>Back</a>
+        <h5 class="title bold sans-bold" style='left:0px !important; right:0px !important;'>My Profile & Settings</h5>
+    </ion-header-bar>
+    <ion-content scroll='false'>
+
+        <ion-list class='list-inset'>
+          <!-- <ion-toggle ng-model="user.text_notifications" ng-change='textNotificationChange()' toggle-class="toggle-calm" class='ng-class:{"item-icon-left": root.vars.request.contact.phone} '>
+          Text Message
+          </ion-toggle> -->
+
+          <ion-toggle ng-model="user.email_notifications" ng-change='emailNotificationChange()'toggle-class="toggle-calm">
+          Email Notification
+          <p ng-show='user.email'> {{user.email}} </p>
+          </ion-toggle>
+          <ion-toggle ng-show='platform.mobile' ng-change="pushNotificationChange()" ng-model="user.push_notifications" toggle-class="toggle-calm">Push Notifications</ion-toggle>
+        </ion-list>
+
+    </ion-content>
+  </ion-view>
+  <!-- <div class="bar bar-footer uguru-footer">
+    <div class="row">
+      <div class="col center"><img src='./img/glass.png' class='width'></div>
+      <div class="col center"><img src='./img/book.png' class='width'></div>
+      <div class="col center border-bottom"><img src='./img/setting.png' class='width'></div>
+    </div>
+  </div> -->

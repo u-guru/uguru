@@ -1,0 +1,49 @@
+  <ion-view title="Your Transaction History">
+    <ion-header-bar class="bar bar-subheader">
+        <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="transactions-delegate" ng-show="user.guru_mode">
+          <ion-tab title="Transactions"></ion-tab>
+          <ion-tab title="Transfers"></ion-tab>
+        </ion-tabs>
+    </ion-header-bar>
+
+    <ion-content>
+      <ion-list>
+        <div class="add-item-box transaction padding-12" ng-repeat="transaction in user.guru_transactions" ng-show="transactionsDelegate.selectedIndex() === 0 && user.guru_mode">
+          <div class="green-box"><span class="day">{{transaction.time.date}}</span><span class="month">{{transaction.time.month}}</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img ng-src="{{transaction.student.profile_url}}" class="icon">
+              <span class="name">{{transaction.student.name}}</span>
+              <span class="status">{{transaction.session.request.course.short_name}} session</span>
+              <span class="money">+ ${{transaction.guru_amount}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction" ng-repeat="transaction in user.student_transactions" ng-show="transactionsDelegate.selectedIndex() === 1">
+          <div class="green-box"><span class="day">{{transaction.time.date}}</span><span class="month" >{{transaction.time.month}}</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img ng-src="{{transaction.guru.profile_url}}" class="icon">
+              <span class="name">{{transaction.student.name}}</span>
+              <span class="status">{{transaction.session.request.course.short_name}} session</span>
+              <span class="money" style="color: red;">- ${{transaction.student_amount}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="add-item-box transaction" ng-repeat="transaction in user.transfer_transactions" ng-show="transactionsDelegate.selectedIndex() === 1 && user.guru_mode">
+          <div class="green-box"><span class="day">{{transaction.time.date}}</span><span class="month" >{{transaction.time.month}}</span>
+          </div>
+          <div class="md-box"> <!-- add active later -->
+            <div class="text">
+              <img src="{{transaction.guru.profile_url}}" class="icon">
+              <span class="name">{{transaction.guru.name}}</span>
+              <span class="status">{{transaction.card.card_last4}}, {{transaction.transfer_status}}</span>
+              <span class="money positive">+ ${{transaction.guru_amount}}</span>
+            </div>
+          </div>
+        </div>
+      </ion-list>
+    </ion-content>
+  </ion-view>

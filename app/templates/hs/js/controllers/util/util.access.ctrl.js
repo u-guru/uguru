@@ -1,0 +1,209 @@
+// angular.module('uguru.util.controllers')
+
+// .controller('AccessController', [
+
+//   //All imported packages go here
+//   '$scope',
+//   '$state',
+//   '$timeout',
+//   '$localstorage',
+//   '$ionicModal',
+//   '$cordovaStatusbar',
+//   '$ionicPlatform',
+//   '$ionicViewSwitcher',
+//   '$ionicSideMenuDelegate',
+//   function($scope, $state, $timeout, $localstorage,
+//     $ionicModal, $cordovaStatusbar, $ionicPlatform,
+//     $ionicViewSwitcher, $ionicSideMenuDelegate) {
+
+//     $ionicSideMenuDelegate.canDragContent(false);
+//     //Sanitized
+
+//     //DATA
+//     /* NICK TODO: What is best practice
+//     // for view-specific scope variable naming? */
+
+//     $scope.access = {
+//       codeInput: '',
+//       errorInputMsg: null,
+//       keyboardShown:false,
+//       data: {
+//         genericAccessCode: 'cool',
+//       }
+//     }
+
+//     $scope.checkAccessCode = function(code) {
+
+//       if (code === $scope.access.data.genericAccessCode) {
+//         $scope.success.show(0, 2000,'Access Granted');
+//         $scope.access.codeInput ='';
+//         $ionicViewSwitcher.nextDirection('forward');
+//         $timeout(function() {
+//           $state.go('^.university');
+//         }, 750)
+//       } else {
+//         $scope.access.errorInputMsg = 'Incorrect access code';
+//         $timeout(function() {
+//           $scope.access.errorInputMsg = '';
+//         }, 1500);
+//       }
+//     }
+
+
+//     /* This is where all cordova plugins MUST go
+//        EVENTUALLY TODO: Put all device readys in a service
+//     */
+//      window.addEventListener('native.keyboardshow', keyboardShowHandler);
+
+//       function keyboardShowHandler(e){
+//           if ($scope.platform.mobile) {
+//             $scope.keyboardHeight = e.keyboardHeight;
+//             Velocity(
+//               document.querySelector('#redeem-button'),
+//               {
+//                 translateY:"-" + $scope.keyboardHeight + 'px',
+//                 height: "*=0.75"
+
+//               },
+//               {duration:1000},
+//               "ease-in-out"
+//             );
+//             // alert(e.keyboardHeight);
+//             // $scope.access.keyboardShown = true;
+//           }
+//       }
+//       $scope.accessInputOnFocus = function() {
+//         if ($scope.platform.mobile) {
+//           $scope.access.keyboardShown = true;
+//           cordova.plugins.Keyboard.disableScroll(true)
+//           Velocity(
+//             document.querySelector('#access-logo svg'),
+//             {
+//               scale:0.66,
+//               translateY:"-140px"
+//             },
+//             {duration:500},
+//             "easeInSine"
+//           );
+
+//           Velocity(
+//             document.querySelector('#access-code-bar'),
+//             {translateY:"-120px"},
+//             {duration:500},
+//             "ease-in-out"
+//           );
+//           // Velocity(
+//           //   document.querySelector('#access-code-bar'),
+//           //   {translateY:"200px"},
+//           //   {duration:50},
+//           //   "easeInSine"
+//           // );
+//         }
+//       }
+
+//       $scope.accessInputOnBlur = function() {
+//         if ($scope.platform.mobile) {
+//           $scope.access.keyboardShown = false;
+//           Velocity(
+//             document.querySelector('#access-logo svg'),
+//             {scale:1, translateY:"0px"},
+//             {duration:500},
+//             "easeInSine"
+//           );
+
+//           Velocity(
+//             document.querySelector('#access-code-bar'),
+//             {translateY:"25px"},
+//             {duration:500},
+//             "easeInSine"
+//           );
+//           console.log ($scope.keyboardHeight);
+//           Velocity(
+//             document.querySelector('#redeem-button'),
+//             {translateY:"0px", height: "/=0.75"},
+//             {duration:200},
+//             "easeInSine"
+//           );
+//         }
+//       }
+
+//       // NICK TODO --> location
+//       document.addEventListener("deviceready", function () {
+
+//         //all mobile specific plugins
+//         if ($scope.platform.mobile) {
+//           cordova.plugins.Keyboard.disableScroll(true);
+
+//           if ($scope.platform.ios) {
+//             StatusBar.styleLightContent();
+//             StatusBar.overlaysWebView(true);
+//             if (window.StatusBar) {
+
+//               StatusBar.styleLightContent();
+//               StatusBar.overlaysWebView(true);
+
+//             }
+
+//             if (cordova.plugins.Keyboard) {
+//               cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+//             }
+
+//           }
+
+//           if ($scope.platform.android) {
+
+//             //handle android case here
+//           }
+//         }
+//       })
+
+//     /*
+//       Initialize all the modals & render the controllers & views
+//       NICK TODO: Look up best way to instantiate these with respect
+//       to performance.
+//     */
+//     $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+//         scope: $scope,
+//         animation: 'slide-in-up'
+//     }).then(function(modal) {
+//         $scope.howItWorksModal = modal;
+//     });
+
+//     $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+//         scope: $scope,
+//         animation: 'slide-in-up'
+//     }).then(function(modal) {
+//         $scope.signupModal = modal;
+//     });
+
+//     $scope.launchHowItWorksModal = function() {
+//       if ($scope.signupModal) {
+//         //show
+//       }
+//     }
+
+//     $scope.launchSignupModal = function() {
+//       $scope.signupModal.show();
+//     }
+
+//     //View-specific event for when the view-specific
+//     // assets are rendered
+//     $scope.$on('$ionicView.enter', function() {
+
+//       //TEMPORARY-PLZ REMOVE
+//       $scope.user.university_id = null;
+//       var accessCodeInput = document.getElementById('access-code-bar');
+//       accessCodeInput.onkeyup = function (e) {
+//           e = e || window.event;
+//           if (e.keyCode === 13)  {
+//             console.log('checking', e.target.value)
+//             $scope.checkAccessCode(e.target.value);
+//           }
+//         };
+//       // $scope.launchHowItWorksModal();
+
+//     });
+
+//   }
+
+// ])

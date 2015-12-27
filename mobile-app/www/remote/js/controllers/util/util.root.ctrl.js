@@ -200,6 +200,12 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
         }
 
+        if (window.location.hostname.indexOf('hs') > -1 || window.location.pathname.indexOf('hs') > -1) {
+          $scope.img_base = '/static/remote/';
+
+          // BASE = '/static/';
+        }
+
         $scope.getCoursesForUniversityId = function(uni_id, callback) {
             if (!uni_id) {
                 return;
