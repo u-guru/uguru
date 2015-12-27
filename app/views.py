@@ -47,7 +47,11 @@ def catch_all(path):
 def catch_all_two(path):
     print "gets catch in catch_two function", request.url
     if 'www.' in request.url:
-        return redirect(request.url.replace('www.', ''))
+        filename_redirect = request.url.split('/static/')[-1]
+        print 'redirecting to %s' % filename_redirect
+        return redirect(url_for('static', filename=filename, _scheme='https'))
+
+        # return redirect(request.url.replace('www.', '').replace('http://','https://'))
     if 'hs.uguru.me' in request.url:
         from flask import send_file
         return send_file('templates/hs/index.html')
