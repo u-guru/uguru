@@ -34,8 +34,10 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 def catch_all(path):
     print "gets catch in catch_all_function", request.url
     if 'www.' in request.url:
+        print "is processing the www..."
         return redirect(request.url.replace('www.', ''))
     if 'hs.uguru.me' in request.url or 'hs' in request.url:
+        print "is processing the hs..."
         from flask import send_file
         return send_file('templates/hs/index.html')
     return redirect(url_for('new_home_page'))
@@ -324,7 +326,7 @@ def admin_devices():
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
     from flask import send_file
-    print "\n\nsubdomain routing: %s\n\n" % username
+    print "\n\nsubdomain routing: %s\n\n" % username, request.url
 
     if '.' in username and 'www.' in username:
         return redirect(request.url.replace("www.", ""))
