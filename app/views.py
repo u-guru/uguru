@@ -29,20 +29,22 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## Bens Views ##
 ################
 
-# @app.route('/', defaults={'path': ''})
-# @app.route('/<path:path>')
-# def catch_all(path):
-#     if 'www.' in request.url:
-#         return redirect(request.url.replace('www.', ''))
-#     print request.url.replace('sam', '')
-#     return redirect(url_for('new_home_page'))
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    print "gets catch in catch_all_function"
+    if 'www.' in request.url:
+        return redirect(request.url.replace('www.', ''))
+    print request.url.replace('sam', '')
+    return redirect(url_for('new_home_page'))
 
-# @app.route('/', defaults={'path': ''}, subdomain='www')
-# @app.route('/<path:path>', subdomain='www')
-# def catch_all(path):
-#     if 'www.' in request.url:
-#         return redirect(request.url.replace('www.', ''))
-#     return redirect(url_for('new_home_page'))
+@app.route('/', defaults={'path': ''}, subdomain='www')
+@app.route('/<path:path>', subdomain='www')
+def catch_all_two(path):
+    print "gets catch in catch_all_two function"
+    if 'www.' in request.url:
+        return redirect(request.url.replace('www.', ''))
+    return redirect(url_for('new_home_page'))
 
 @app.route('/loading/')
 def loading():
@@ -316,7 +318,7 @@ def admin_devices():
 
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
-
+    from flask import send_file
     print "\n\nsubdomain routing: %s\n\n" % username
     if username == 'hs':
         return send_file('templates/hs/index.html')
