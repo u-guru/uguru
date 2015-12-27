@@ -35,7 +35,7 @@ def catch_all(path):
     print "gets catch in catch_all_function", request.url
     if 'www.' in request.url:
         print "is processing the www..."
-        return redirect(request.url.replace('www.', ''))
+        return redirect(request.url.replace('www.', '').replace('http://', 'https://'))
     if 'hs.uguru.me' in request.url or 'hs' in request.url:
         print "is processing the hs..."
         from flask import send_file
