@@ -46,6 +46,8 @@ def catch_all(path):
 @app.route('/<path:path>', subdomain='www')
 def catch_all_two(path):
     print "gets catch in catch_two function", request.url
+    if 'www.uguru.me' in request.url:
+        return redirect(url_for('new_home_page',_scheme='https'))
     if 'www.' in request.url:
         filename_redirect = request.url.split('/static/')[-1]
         print 'redirecting to %s' % filename_redirect
