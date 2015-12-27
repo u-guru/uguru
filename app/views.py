@@ -36,7 +36,7 @@ def catch_all(path):
     if 'www.' in request.url:
         print "is processing the www..."
         return redirect(request.url.replace('www.', '').replace('http://', 'https://'))
-    if 'hs.uguru.me' in request.url or 'hs' in request.url:
+    if 'hs.uguru.me' in request.url or 'hs' in request.url or 'highschool.uguru.me' in request.url or 'highschool' in request.url:
         print "is processing the hs..."
         from flask import send_file
         return send_file('templates/hs/index.html')
