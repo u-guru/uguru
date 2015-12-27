@@ -324,7 +324,7 @@ def admin_devices():
 def profile_page_new_view(username):
     from flask import send_file
     print "\n\nsubdomain routing: %s\n\n" % username
-    if username == 'hs':
+    if username == 'hs' or username == 'highschool':
         return send_file('templates/hs/index.html')
     user_profile_exists = User.query.filter_by(profile_code=username).all()
     if username == "www":
