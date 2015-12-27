@@ -36,6 +36,8 @@ def catch_all(path):
     if 'www.' in request.url:
         print "is processing the www..."
         return redirect(request.url.replace('www.', '').replace('http://', 'https://'))
+    ## Put all custom domains here that are not profile URLS
+    ## TO FIGURE OUT
     if 'hs.uguru.me' in request.url or 'hs' in request.url or 'highschool.uguru.me' in request.url or 'highschool' in request.url:
         print "is processing the hs..."
         from flask import send_file
@@ -47,7 +49,7 @@ def catch_all(path):
 def catch_all_two(path):
     print "gets catch in catch_two function", request.url
     if 'www.uguru.me' in request.url:
-        return redirect(url_for('new_home_page',_scheme='https'))
+        return redirect(url_for('new_home_page'))
     if 'www.' in request.url:
         filename_redirect = request.url.split('/static/')[-1]
         print 'redirecting to %s' % filename_redirect
