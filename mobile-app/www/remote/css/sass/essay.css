@@ -878,6 +878,7 @@ ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
   background: white;
   color: #6f7d82;
   padding-bottom: 24px;
+  min-height: 300px;
 }
 
 .ticket .ticket-bot ul {
@@ -931,12 +932,20 @@ ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
   position: relative;
   width: 70%;
   margin: 0 15px 15px;
-  padding: 15px;
+  padding: 16px 15px 15px 15px;
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 500;
   text-align: center;
   background: #50A5DD;
   color: white;
+}
+
+.ticket .ticket-bot h1 span.strong {
+  font-weight: 900;
+}
+
+.ticket .ticket-bot h1:not(.verified) span:nth-child(2) {
+  display: initial !important;
 }
 
 .ticket .ticket-bot h1:before, .ticket .ticket-bot h1:after {
@@ -946,7 +955,7 @@ ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
   top: 0;
   width: 0;
   height: 0;
-  border: 29px solid transparent;
+  border: 30px solid transparent;
   border-left-width: 14px;
   border-right-width: 14px;
   border-top-color: #50A5DD;
@@ -1278,4 +1287,29 @@ ion-view {
 
 ion-scroll, .scroll {
   height: 100% !important;
+}
+
+#essay-student-home section#essay-pricing header {
+  height: 25% !important;
+}
+
+#essay-student-home section#essay-pricing .main {
+  height: 75% !important;
+}
+
+#essay-student-home section#essay-pricing .main h1.price-text {
+  color: #2B3234 !important;
+  opacity: 0.8 !important;
+}
+
+#essay-student-home section#essay-pricing .main h2.support-text {
+  margin-top: 20px;
+  color: #40484B !important;
+  font-weight: 400;
+}
+
+#essay-student-home section#essay-pricing .main h2.support-text a {
+  font-weight: 700;
+  color: #2B3234 !important;
+  opacity: 0.5 !important;
 }

@@ -122,18 +122,18 @@ function ContentService() {
       top_half: [
         {
           step_number: 1,
-          header: "Request Help",
-          content: "From last-second essay feedback to detailed teardowns to unlimited Q&A with gurus from your dream school."
+          header: "Request a Guru",
+          content: "Anything from last-second essay feedback, quick questions, to unlimited Q&A with gurus from your dream school."
         },
         {
           step_number: 2,
-          header: "Instant contact",
-          content: "We'll send out your request to all gurus across the nation. Our goal is to match you with the perfect one."
+          header: "Open 24/7",
+          content: "Your request is dispatched immediately. On-demand assistence past midnight (even @3am) occurs frequently."
         },
         {
           step_number: 3,
           header: "Make the perfect match",
-          content: "We'll send out your request to all gurus across the nation. Our goal is to match you with the perfect one."
+          content: "Applying for a particular scholarship? Looking for a guru with a particular major at your dream school? We got it."
         }
       ],
       bottom_half:[
@@ -149,8 +149,8 @@ function ContentService() {
         },
         {
           svg_url: "safety",
-          header: "A Safe & Honest Environment",
-          content: "We monitor our Gurus very carefully, assuring the best quality, privacy, "
+          header: "Safety and Honest First",
+          content: "All requests are verified to assure a fair process for all students. Cheating is not tolerated and our college gurus."
         },
       ]
     };

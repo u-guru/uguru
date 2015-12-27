@@ -40,6 +40,8 @@ angular.module('uguru.util.controllers')
   MapService, $ionicSlideBoxDelegate, ModalService, LoadingService,
   AnimationService, DeviceService, ngFB) {
 
+    $ionicSideMenuDelegate.canDragContent(false);
+
     function goGuruMode()
     {
 
@@ -95,9 +97,16 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.goToStudentEssayLanding = function() {
-      $ionicViewSwitcher.nextDirection('back');
-      $state.go('^.essay-home');
+    $scope.flipToStudentEssayLanding = function() {
+      LoadingService.showAmbig(null, 2000)
+      $timeout(function() {
+        AnimationService.flip('^.essay-home')
+      }, 500)
+    }
+
+    $scope.goBackToStudentEssayUniversity = function() {
+        $ionicViewSwitcher.nextDirection('back');
+        $state.go('^.essay-student-university');
     }
 
     $scope.preventSignupAndBackToAccess = function() {
@@ -149,10 +158,7 @@ angular.module('uguru.util.controllers')
 
 // ==========================
 
-    if ($scope.user.id && !$scope.root.vars.guru_mode && !LOCAL) {
-      LoadingService.showAmbig('Redirecting to home...', 2000);
-      goGuruMode();
-     }
+
 
     $scope.root.vars.show_account_fields = false;
     $scope.headerText = 'Sign Up';
@@ -1298,58 +1304,6 @@ angular.module('uguru.util.controllers')
         $scope.user.password = $scope.signupForm.password;
         return true
 
-
-      // if (!formDict.full_name) {
-      //   $scope.success.show(0,2000,'Please fill in all fields!');
-      //   // document.getElementsByName('signup-name')[0].focus();
-
-      //   return false;
-      // } else {
-      //   var nameComponents = $scope.signupForm.full_name.split(' ')
-      //   if(nameComponents.length < 2) {
-      //     $scope.success.show(0,2000,'Please enter both first and last name!');
-      //     return false;
-      //   }
-      //   var first_name = nameComponents[0];
-      //   var last_name = nameComponents[nameComponents.length - 1];
-      //   $scope.signupForm.first_name = first_name;
-      //   $scope.signupForm.last_name = last_name;
-      //   $scope.user.first_name = first_name
-      //   $scope.user.last_name = last_name
-      //   $scope.user.name = first_name + ' ' + last_name;
-      // }
-
-      // if (!formDict.last_name) {
-      //   $scope.success.show(0,2000,'Please fill in all fields!');
-      //   // document.getElementsByName('signup-last-name')[0].focus();
-      //   return false;
-      // } else {
-      //   $scope.user.last_name = $scope.signupForm.last_name;
-      // }
-
-      // if (!formDict.email || !Utilities.validateEmail(formDict.email)) {
-      //   $scope.success.show(0,2000,'Please enter a valid email.');
-      //   // document.getElementsByName('signup-email')[0].focus();
-      //   return false;
-      // } else {
-      //   $scope.user.email = $scope.signupForm.email;
-      // }
-
-      // if (!formDict.password) {
-      //   $scope.success.show(0,2000,'Please enter a valid password.');
-      //   $scope.user.password = $scope.signupForm.password;
-      //   // document.getElementsByName('signup-password')[0].focus();
-      //   return false;
-      // } else {
-      //   $scope.user.password = $scope.signupForm.password;
-      // }
-
-      // $scope.user.last_name = $scope.signupForm.last_name;
-      // $scope.user.email = $scope.signupForm.email;
-      // $scope.user.password = $scope.signupForm.password;
-
-      // return true;
-
     }
 
     $scope.loginUser = function() {
@@ -1420,15 +1374,6 @@ angular.module('uguru.util.controllers')
           else
           {
 
-            // if (ModalService.isOpen('signup')) {
-            //   ModalService.close('signup');
-            //   $timeout(function() {
-            //     if ($scope.user && $scope.user.university && $scope.user.university.id) {
-            //       MapService.initStudentHomeMap(user);
-            //     }
-            //     $ionicSlideBoxDelegate.update();
-            //   }, 250);
-            // }
             $scope.signupModal.hide();
             // $state.go('^.guru')
             if(!$scope.root.vars.guru_mode)
@@ -1473,6 +1418,14 @@ angular.module('uguru.util.controllers')
       });
     }
 
+    var isHighschoolEssayWorkflow = function() {
+      return window.location.href.indexOf('essay') > -1;
+    }
+
+    var validateHighSchoolEssayWorfklow = function() {
+      return (!$scope.user.universities || !$scope.user.universities.length);
+    }
+
     function fireEvent(obj, evt){
      var fireOnThis = obj;
      if( document.createEvent ) {
@@ -1501,14 +1454,26 @@ angular.module('uguru.util.controllers')
         return;
       }
 
+      //validation for high school essay flow
+      if (isHighschoolEssayWorkflow()) {
+        $scope.root.vars.essay = true;
+        if (validateHighSchoolEssayWorfklow()) {
+          LoadingService.showMsg('Please enter at least one university! <br> <br> Click "My Universities" on the top of this page to add one.', 3000);
+          return;
+        } else {
+          $scope.user.high_school = true;
+          $scope.user.add_hs_universities = $scope.user.universities;
+        }
+      }
+
 
       $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
       $scope.user.email = $scope.signupForm.email;
       $scope.user.password = $scope.signupForm.password;
-      $scope.user.name = $scope.signupForm.full_name
+      $scope.user.name = $scope.signupForm.full_name;
 
 
-      console.log('USER BEFORE SIGNING UP', $scope.user);
+
 
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.signupForm.current_device_id = $scope.user.current_device.id;
@@ -1542,7 +1507,8 @@ angular.module('uguru.util.controllers')
               ModalService.close('signup');
           }
 
-            if ($scope.desktopMode) {
+          var redirectToGuruHome = function() {
+          if ($scope.desktopMode) {
               console.log('detecting signup')
               LoadingService.showSuccess('Account Successfully Created', 2500);
               $state.go('^.guru-home');
@@ -1550,8 +1516,23 @@ angular.module('uguru.util.controllers')
               $scope.signupModal.hide();
               $state.go('^.guru');
             }
+          }
 
+          var redirectToStudentEssayHome = function() {
+            if ($scope.desktopMode) {
+              LoadingService.showSuccess('Account Successfully Created', 2500);
+              AnimationService.flip('^.essay-student-home-desktop');
+            } else {
+              LoadingService.showSuccess('Account Successfully Created', 2500);
+              AnimationService.flip('^.essay-student-home-mobile');
+            }
+          }
 
+          if (!$scope.root.vars.essay) {
+            redirectToGuruHome();
+          } else {
+            redirectToStudentEssayHome();
+          }
 
       },
       function(err){
@@ -1627,18 +1608,6 @@ angular.module('uguru.util.controllers')
 
     $scope.$on('$ionicView.enter', function() {
 
-      if ($scope.user && $scope.user.id && $scope.user.id > 0) {
-        console.log('user is already logged in!');
-        LoadingService.showAmbig('Redirecting...', 2000);
-        $ionicViewSwitcher.nextDirection('forward');
-        $timeout(function() {
-          if ($scope.desktopMode && _autoredirects) {
-            $state.go('^.guru-home');
-          } else if(!$scope.desktopMode && _autoredirects) {
-            $state.go('^.guru');
-          }
-        }, 1250);
-      }
     });
 
   }

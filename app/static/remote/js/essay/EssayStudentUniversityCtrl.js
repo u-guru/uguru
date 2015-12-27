@@ -10,14 +10,17 @@ angular.module('uguru.util.controllers')
   'ScrollService',
   'LoadingService',
   'AnimationService',
+  '$ionicSideMenuDelegate',
   function AccessController($scope, $timeout, $state, $interval, University, $ionicViewSwitcher, $ionicScrollDelegate,
-    ScrollService, LoadingService, AnimationService) {
+    ScrollService, LoadingService, AnimationService, $ionicSideMenuDelegate) {
     var UPPER = 12;
     var LOWER = 0;
     var pageParentContainer;
-
-    $scope.universities = University.getTargetted();
-    $scope.university = $scope.universities[0];
+    $ionicSideMenuDelegate.canDragContent(false);
+    $timeout(function() {
+      $scope.universities = University.getTargetted();
+      $scope.university = $scope.universities[0];
+    })
 
     if (!$scope.user.universities) {
       $scope.user.universities = [];
@@ -31,9 +34,11 @@ angular.module('uguru.util.controllers')
     var shouldShowBecomeGuruHeader = true;
 
     //default
-    $scope.university = {name:'Harvard'};
-    $scope.root.vars.theme = 'essay';
-    $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
+    $timeout(function() {
+      $scope.university = {name:'Harvard'};
+      $scope.root.vars.theme = 'essay';
+      $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
+    })
 
 
 
@@ -42,23 +47,38 @@ angular.module('uguru.util.controllers')
       $state.go('^.university');
     }
 
-    $scope.toggleUniversityState = function(university) {
-
-    }
-
-    $scope.addHighSchoolStudentUniversity = function(university, index) {
-      var university = $scope.universities.splice(index, 1)[0];
-      $scope.user.universities.push(university);
+    $scope.addHighSchoolStudentUniversity = function($event, university, index) {
+      if ($scope.lockClicking) {
+        return;
+      }
+      university.active = true;
+      $scope.lockClicking = true;
+      $timeout(function() {
+        $scope.lockClicking = false;
+        var university = $scope.universities.splice(index, 1)[0];
+        $scope.user.universities.push(university);
+      }, 500);
     }
 
     $scope.goToEssaySignup = function() {
-      $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.essay-student-login');
+      if (!$scope.user.universities || !$scope.user.universities.length) {
+        LoadingService.showMsg('Please add at least one college to continue.', 2500);
+        return;
+      } else {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.essay-student-login');
+      }
     }
 
-    $scope.removeHighSchoolStudentUniversity = function(university) {
+    $scope.removeHighSchoolStudentUniversity = function(university, index) {
       var university = $scope.user.universities.splice(index, 1)[0];
-      $scope.user.universities.unshift(university);
+      university.active = false;
+      $scope.universities.unshift(university);
+      $timeout(function() {
+        if ($scope.user.universities.length === 0) {
+          $scope.page.toggles.searchMode.active = true;
+        }
+      }, 100)
     }
 
     $scope.goBackToStudentEssayHome = function() {
@@ -69,6 +89,7 @@ angular.module('uguru.util.controllers')
         AnimationService.flip('^.essay-home');
       }
     }
+
 
     $scope.showComingSoon = function() {
       LoadingService.showMsg('Coming soon!', 2000);
@@ -101,7 +122,6 @@ angular.module('uguru.util.controllers')
         if ((university_arr[i].name.length <= UPPER && university_arr[i].name.length >= LOWER)) {
           continue;
         } else {
-          console.log(university_arr[i].name)
           indices_to_slice.push(i.toString());
         }
       }
@@ -115,11 +135,15 @@ angular.module('uguru.util.controllers')
       return new_arr;
     }
 
-    $scope.targettedUniversities = filterTargetted(University.getTargetted());
+    $timeout(function() {
+      $scope.targettedUniversities = filterTargetted(University.getTargetted());
+    });
 
     // loaded means first time only
     $scope.$on('$ionicView.loaded', function() {
-         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader()
+         $timeout(function() {
+          shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader()
+         })
     });
 
   }

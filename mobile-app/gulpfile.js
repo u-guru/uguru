@@ -260,6 +260,7 @@ gulp.task('scripts', function() {
       'lib/restangular/dist/restangular.js',
       'lib/angular-strap/angular-strap.min.js',
       'lib/angular-strap/angular-strap.tpl.min.js',
+      'lib/angular-fx/TweenMax.min.js',
       'lib/angular-fx/ng-fx.min.js',
       'lib/angular-animate/angular-animate.js',
       'lib/ngCordova/dist/ng-cordova.js',

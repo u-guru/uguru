@@ -48,6 +48,14 @@ angular.module('uguru.util.controllers')
         $scope.closeCTADict = {};
         $scope.search_text = {university:''};
         $scope.universities = University.getTargetted();
+        $scope.root.vars.essay = true;
+
+        $scope.flipToEssayHome = function() {
+            LoadingService.showAmbig(null, 2000);
+            $timeout(function() {
+                AnimationService.flip('^.essay-home');
+            }, 500)
+        }
 
         //temp function
         var selectRandom = function(arr) {
@@ -246,10 +254,7 @@ angular.module('uguru.util.controllers')
         $scope.$on('$ionicView.loaded', function() {
             $ionicSlideBoxDelegate.update();
             $scope.root.vars.guru_mode = false;
-            if (!$scope.mapInitialized) {
-                console.log('initializing map from load');
-                $scope.mapInitialized = true;
-            }
+
 
             if ($scope.desktopMode) {
                 $timeout(function() {
