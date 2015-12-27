@@ -35,15 +35,19 @@ def catch_all(path):
     print "gets catch in catch_all_function"
     if 'www.' in request.url:
         return redirect(request.url.replace('www.', ''))
-    print request.url.replace('sam', '')
+    if 'hs.uguru.me' in request.url:
+        from flask import send_file
+        return send_file('templates/hs/index.html')
     return redirect(url_for('new_home_page'))
 
 @app.route('/', defaults={'path': ''}, subdomain='www')
 @app.route('/<path:path>', subdomain='www')
 def catch_all_two(path):
-    print "gets catch in catch_all_two function"
     if 'www.' in request.url:
         return redirect(request.url.replace('www.', ''))
+    if 'hs.uguru.me' in request.url:
+        from flask import send_file
+        return send_file('templates/hs/index.html')
     return redirect(url_for('new_home_page'))
 
 @app.route('/loading/')
