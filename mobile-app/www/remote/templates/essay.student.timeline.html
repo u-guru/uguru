@@ -1,4 +1,13 @@
-<main id="timeline" ng-controller="TimelineController" class='full-xy main default'>
+<main id="timeline" ng-controller="TimelineController" class='full-xy main default essay-timeline'>
+    <header class="no-tabs">
+        <div class="timeline-header">
+            <div>
+                <h1>College Deadlines</h1>
+                <h2>Subheader Text</h2>
+            </div>
+        </div>
+	</header>
+    
     <section>
         <ul>
             <li class="post-month">
@@ -6,8 +15,9 @@
             </li>
             <li name='university_timeline' class="post post-{{deadline.category || 'high-school'}}" ng-repeat='deadline in user.timeline_universities' tabindex>
                 <span class="post-icon">
-                    <span ng-include="img_base + 'templates/svg/timeline/' + deadline.category + '.html'"></span>
-                    <span>{{deadline.formatted_category || deadline.category}}</span>
+                    <span class="post-icon-svg"><span ng-include="img_base + 'templates/svg/timeline/' + deadline.category + '.html'"></span></span>
+                    <span class="post-icon-title">{{deadline.formatted_category || deadline.category}}</span>
+                    <span class="post-icon-hack"></span>
                 </span>
                 <article class="post-content">
                     <header>

@@ -437,9 +437,19 @@ angular.module('uguru.user', [])
         for (var i = 0; i < student_transactions.length; i ++) {
             var utc = Date.parse(student_transactions[0].time_created);
             var date = new Date(utc);
-            user.student_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()]}
+            user.student_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()], year:date.getFullYear(), hour:date.getUTCHours(), minutes:date.getUTCMinutes()}
+            if (user.student_transactions[i].time.hour > 12) {
+                user.student_transactions[i].time.hour = user.student_transactions[i].time.hour - 12;
+                user.student_transactions[i].time.amPM = 'PM';
+            } else {
+                user.student_transactions[i].time.amPM = 'AM';
+            }
             user.student_transactions[i].student_amount = parseFloat(user.student_transactions[i].student_amount).toFixed(2);
             user.student_transactions[i].guru_amount = parseFloat(user.student_transactions[i].guru_amount).toFixed(2);
+            if (user.student_transactions[i].student_amount - parseInt(user.student_transactions[i].student_amount) === 0) {
+                user.student_transactions[i].student_amount = parseInt(user.student_transactions[i].student_amount);
+            }
+
             user.student_transactions[i].student_rate = 5;
         }
 
@@ -447,11 +457,14 @@ angular.module('uguru.user', [])
         for (var i = 0; i < guru_transactions.length; i ++) {
             var utc = Date.parse(guru_transactions[i].time_created);
             var date = new Date(utc);
-            user.guru_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()], year: date.getFullYear()}
+            user.guru_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()], year:date.getFullYear(), hour:date.getUTCHours(), minutes:date.getUTCMinutes()}
             user.guru_transactions[i].student_amount = parseFloat(user.guru_transactions[i].student_amount).toFixed(2);
             user.guru_transactions[i].guru_amount = (parseFloat(user.guru_transactions[i].guru_amount) / 100 ).toFixed(2);
             if (user.guru_transactions[i].guru_amount == parseInt(user.guru_transactions[i].guru_amount)) {
                 user.guru_transactions[i].guru_amount = parseInt(user.guru_transactions[i].guru_amount);
+            }
+            if (user.student_transactions[i].guru_amount - parseInt(user.student_transactions[i].guru_amount) === 0) {
+                user.student_transactions[i].guru_amount = parseInt(user.student_transactions[i].guru_amount);
             }
             user.guru_transactions[i].guru_rate = 5;
         }
@@ -461,7 +474,7 @@ angular.module('uguru.user', [])
         for (var i = 0; i < transfer_transactions.length; i ++) {
             var utc = Date.parse(transfer_transactions[0].time_created);
             var date = new Date(utc);
-            user.transfer_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()]}
+            user.transfer_transactions[i].time = {date: date.getDate(), month: MONTHS[date.getMonth()], year:date.getFullYear(), hour:date.getUTCHours(), minutes:date.getUTCMinutes()}
             user.transfer_transactions[i].student_amount = parseFloat(user.transfer_transactions[i].student_amount).toFixed(2);
             user.transfer_transactions[i].guru_amount = parseFloat(user.transfer_transactions[i].guru_amount).toFixed(2);
         }
@@ -670,7 +683,7 @@ angular.module('uguru.user', [])
         $scope.user.previous_proposals = user.previous_proposals;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
         $scope.user.universities = user.universities;
-
+        $scope.user.high_school = user.high_school;
         $scope.user.is_admin = user.is_admin;
         // if (!$scope.user.is_admin) {
         //     var AdminService = {};
@@ -697,7 +710,7 @@ angular.module('uguru.user', [])
         $scope.user.phone_friendly = user.phone_friendly;
         $scope.user.person_friendly = user.person_friendly;
         $scope.user.skype_friendly = user.skype_friendly;
-        $scope.user.hs_school = user.hs_school;
+        $scope.user.hs_student = user.hs_student;
         $scope.user.hs_files = user.hs_files;
         $scope.user.text_friendly = user.text_friendly;
         $scope.user.guru_experiences = user.guru_experiences;

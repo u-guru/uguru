@@ -16,39 +16,56 @@
 			</ion-pane>
 			<div>
 				<aside>
-					<h2>Payment History</h2>
+					<h2 class='txt-smoke'>Past Transactions</h2>
 					<ul class="sidebar-layout-list">
-						<li ng-repeat='transaction in user.guru_transactions'>
+						<li ng-repeat='transaction in user.student_transactions'>
 							<div>
-								<h3>You cashed out <b>${{transaction.guru_amount}}</b> to <b>**{{transaction.card.card_last4}}</b></h3>
-								<span>{{transaction.time.date}} {{transaction.time.month}} {{transaction.time.year}}</span>
+								<h3 class='txt-smoke'>
+
+									You purchased
+									<span class='capitalize weight-900 inline txt-smoke'> {{transaction.request.hs_request_option.toLowerCase()}} Help
+									</span> from a
+									<span class='capitalize weight-900 inline txt-smoke'>{{transaction.request.university.short_name || transaction.request.university.name}}</span> Guru
+
+								</h3>
+
+								<!-- Time processing-->
+								<div class='weight-500 txt-white p10y' style='opacity:0.66'>
+									<!--27 Dec 2015-->
+									{{transaction.time.date}} {{transaction.time.month}} {{transaction.time.year}}
+									on
+									<!--27 Dec 2015-->
+									{{transaction.time.hour + ':' + transaction.time.minutes + ' ' + transaction.time.amPM}}
+								</div>
 							</div>
-							<span>
-								<span class="chip bg-charcoal uppercase" ng-if='transaction.transfer_status'>{{transaction.transfer_status}}</span>
+							<span class='relative'>
+								<span class="chip bg-charcoal uppercase weight-900">${{transaction.student_amount || '10'}}</span>
+								<div class='mini-card flex-wrap-center absolute bottom-0 right-0 mx15y'>
+									<small class='uppercase weight-900 text-right txt-white'>{{transaction.card.card_type}}</small>
+									<small style='font-size:80%;'class='weight-500 text-right txt-smoke'>**{{transaction.card.card_last4}}</small>
+								</div>
 							</span>
 						</li>
 					</ul>
 				</aside>
-				<div class="text-center">
+				<div class="text-center" id='billing-card-container'>
 					<div>
 						<div>
-							<h1>Current Balance</h1>
-							<div id="balance-total">
-								<span>${{user.balance || 0}}</span>
-							</div>
-							<h4 class='text-center' style='opacity:0.6'>Total Earned:<strong style='font-weight:900'>${{user.total_earned}}</strong></h4>
+							<h1 class='txt-white'>My Cards</h1>
 						</div>
 						<div class="balance-cards">
-							<h2>Choose Method to Cash Out</h2>
+							<h4 class='txt-smoke opacity-50 uppercase weight-700'>Choose Default Card</h4>
 							<ul class="ugrid-3">
-								<li ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account'>
+								<li ng-repeat='card in user.payment_cards | limitTo:3' >
 									<a class='credit-card-wrapper' ng-click='editPayment(card)'>
 										<!-- BIND -->
-										<div id="credit-card-visa" class="credit-card cf">
+										<div id="credit-card-visa" class="credit-card cf relative">
 											<!-- BIND -->
-											<span ng-if='(card.is_payment_card || card.is_transfer_card) && card.card_type' class="card-type" ng-include="img_base + BASE + 'templates/cards/{{card.card_type}}.html'"></span>
-											<span ng-if='(card.is_payment_card || card.is_transfer_card) && !card.card_type' class="card-type">Debit Card</span>
-											<span ng-if='card.is_bank_account' class="card-type bg-slate txt-smoke p05xy" style='font-size:16px;'>Bank Account</span>
+											<span class="card-type absolute left-0 top-0 m20xy" ng-include="img_base + BASE + 'templates/cards/'+ card.card_type +'.html'"></span>
+					                        <span class="text-right absolute top-0 right-0 m20x m15y card-type txt-slate weight-700 uppercase">
+					                        	<span class='txt-smoke' style='padding:0;'>DEFAULT</span>
+					                        	<span style='padding:0;' class='no-padding-y'>Debit Card</span>
+					                    	</span>
 											<div class="card-number">**** **** **** {{card.card_last4}}</div>
 											<div class="card-name">{{user.name}}</div>
 											<div class="valid">
@@ -63,20 +80,66 @@
 										</h3>
 									</div>
 								</li>
-								<li>
-									<a id='cta-box-payments' class='cta-box'>
-										<span>
-											<svg viewBox="0 0 100 100">
-												<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-											</svg>
-											<span>Add New</span>
-										</span>
-									</a>
-								</li>
 							</ul>
 						</div>
+
+						<div class="request-payment-container request-content relative" ng-controller='PaymentsController'>
+							<h4 class='txt-smoke opacity-50 uppercase weight-400'>or&nbsp;&nbsp;<span class='weight-700'>ADD A CARD</span></h4>
+								<ul class='ugrid-2'>
+						            <li class='flex-wrap-center'>
+						                <a class='credit-card-wrapper' style='width:66%'>
+						                    <div id="credit-card-visa" class="credit-card cf relative">
+						                        <span class="card-type absolute left-0 top-0 m20xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
+						                        <span class="text-right absolute top-0 right-0 m20x m15y card-type txt-slate weight-700 uppercase">
+						                        	<span class='txt-smoke' style='padding:0;'>DEFAULT</span>
+						                        	<span style='padding:0;' class='no-padding-y'>Debit Card</span>
+						                    	</span>
+						                        <div class="card-number">**** **** **** 4242</div>
+						                        <div class="card-name">{{user.name}}</div>
+						                        <div class="valid">
+						                            <div class="group">Valid<br/>Thru</div>
+						                            <div class="expiry">**/**</div>
+						                        </div>
+						                    </div>
+						                </a>
+						            </li>
+									<li class='flex-wrap-center'>
+										<form class='width:66%'>
+											<div class="input-field relative full-x">
+												<input ng-model='root.vars.cardForm.number' ng-disabled='root.vars.cardForm.view_only' autocomplete="off" id="card-number" type="tel" class="validate"/>
+												<label for="email" class="ng-class:{'active':root.vars.cardForm.number.length}">Card Number</label>
+												<a ng-show="root.vars.cardForm.number.length" ng-click='root.vars.cardForm.number = "";' class="desktop-input-close-icon side-icon">
+													<i class='icon ion-close-circled'> </i>
+												</a>
+											</div>
+											<ul class="ugrid-2">
+												<li>
+													<div class="input-field">
+														<input autocomplete="off" ng-disabled='root.vars.cardForm.view_only' ng-model='root.vars.cardForm.exp' id="exp-date" type="tel" class="validate"/>
+														<label for="password" class="ng-class:{'active':root.vars.cardForm.exp.length}">Expiration Date</label>
+														<a ng-show="root.vars.cardForm.exp.length" ng-click='root.vars.cardForm.exp = "";' class="desktop-input-close-icon side-icon">
+															<i class='icon ion-close-circled'> </i>
+														</a>
+													</div>
+												</li>
+												<li>
+											 		<div class="input-field">
+														<input autocomplete="off" ng-disabled='root.vars.cardForm.view_only' id="cvv-number" type="tel" class="validate" value="123"/>
+														<label for="password" class="active">CVV</label>
+														<a class="desktop-input-close-icon side-icon">
+															<i class='icon ion-close-circled'> </i>
+														</a>
+													</div>
+												</li>
+											</ul>
+											<div class="desktop-login-buttons">
+												<button class="bg-shamrock caps hide ng-class:{'show':!root.vars.cardForm.view_only}" ng-click='savePayment()'>Add Card</button>
+											</div>
+										</form>
+									</li>
+								</ul>
+						    </div>
 					</div>
-					<button class="bg-moola" ng-click='cashoutUser()'>Cash Out</button>
 				</div>
 			</div>
 		</div>

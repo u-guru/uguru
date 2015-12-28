@@ -1653,6 +1653,9 @@
 		input {
 			color: white!important;
 		}
+		div.relative {
+			height:calc(100% - 150px);
+		}
 		.settings-save {
 			@include flex;
 			@include flex-center;
@@ -1664,6 +1667,9 @@
 				width: calc(100% / 3);
 				text-align: center;
 			}
+			position:absolute;
+			bottom:5%;
+			width:100%;
 		}
 		> div {
 			max-width: 600px;

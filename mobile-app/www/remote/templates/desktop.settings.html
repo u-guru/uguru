@@ -3,7 +3,7 @@
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main default">
 			<h1>Settings</h1>
-			<div>
+			<div class='relative'>
 				<div>
 					<h2>Profile Picture</h2>
 					<ul>
@@ -46,13 +46,22 @@
 					<div class='desktop-notifications-grid-item'>
 						<div>
 							<h2>Text Notifications</h2>
-							<p><small ng-if='user.phone_number'>{{user.phone_number}}</small></p>
+							<p class="hide ng-class:{'show':user.phone_number}"=>
+								<small>
+									<a ng-click='confirmPhonePopup($event)'>{{user.phone_number}}
+									<span class='hide uppercase txt-slate weight-900 ng-class:{"show":user.phone_number && !user.phone_number_confirmed}'>unconfirmed</span>
+									</a>
+								</small>
+							</p>
+							<p class="hide ng-class:{'show':!user.phone_number}">
+								<small><a ng-click='confirmPhonePopup($event)'>+ Add Phone Number</a></small>
+							</p>
 						</div>
 						<div>
 							<a name='text-toogle' ng-click='toggleTextNotifications()'>
 								<svg viewBox="0 0 100 100">
-	                                <circle class='notifications-circle ng-class:{"active":user.text_notifications}' cx="50" cy="50" r="36"></circle>
-	                                <path class='notifications-path ng-class:{"active":user.text_notifications}' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+	                                <circle class='notifications-circle ng-class:{"active":user.text_notifications && user.phone_number_confirmed}' cx="50" cy="50" r="36"></circle>
+	                                <path class='notifications-path' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
 	                            </svg>
 							</a>
 						</div>
@@ -72,7 +81,7 @@
 						</div>
 					</div>
 				</div>
-				<div>
+				<div ng-if='!root.vars.hs_mode'>
 					<a name='edit-university' ng-click='openModal("university")'>
 						<h2>University</h2>
 						<div class="input-field">
@@ -80,9 +89,9 @@
 						</div>
 					</a>
 				</div>
-				<div class="settings-save">
-					<a class="btn-ghost-white" href='#/guru-home' nav-direction="enter">Back</a>
-					<button name='save-setting' class="btn-ghost-white" ng-click='saveSettings()'>Save</button>
+				<div class="settings-save bottom-0">
+					<a class="btn-ghost-white" ng-click='goBackHome()'>Go Back</a>
+					<button name='save-setting'  class="btn-ghost-white" ng-click='saveSettings()'>Save All</button>
 				</div>
 			</div>
 		</div>

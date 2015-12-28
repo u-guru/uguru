@@ -227,6 +227,7 @@ request_fields['guru_calendar'] = fields.List(fields.Nested(calendar_fields))
 request_fields['tags'] = fields.List(fields.Nested(tag_fields))
 request_fields['type'] = fields.Integer(attribute='_type')
 request_fields['student_price'] = fields.Float(attribute='student_price')
+request_fields['hs_request_option'] = fields.String(attribute='hs_request_option')
 request_fields['task_title'] = fields.String(attribute='task_title')
 request_fields['verb_image'] = fields.String(attribute='verb_image')
 request_fields['initial_status'] = fields.String(attribute='inital_status')
@@ -513,7 +514,7 @@ UserSerializer = {
     'deactivated': fields.Boolean,
     'external_profiles': fields.List(fields.Nested(resource_fields)),
     'universities': fields.List(fields.Nested(university_fields)),
-    'hs_school': fields.Boolean,
+    'hs_student': fields.Boolean,
     'hs_files': fields.List(fields.Nested(file_fields))
 
 }

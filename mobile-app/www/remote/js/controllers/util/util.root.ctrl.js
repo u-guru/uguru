@@ -254,7 +254,7 @@ angular.module('uguru.util.controllers')
         $scope.root = RootService;
         $scope.root.vars = {};
 
-        if (window.location.hash.indexOf('essay') > -1) {
+        if (window.location.hash.indexOf('essay') > -1 || window.location.hash.indexOf('hs') > -1 || $scope.user.hs_student) {
             $scope.root.vars.hs_mode = true;
         }
 
@@ -262,7 +262,6 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
             $scope.root.vars.page_cache = $localstorage.getObject('page_cache') || {};
         }, 0)
-
 
         $scope.root.vars.remote_cache = [];
         $scope.root.vars.onboarding = false;
