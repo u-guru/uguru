@@ -4,6 +4,15 @@
 	z-index: auto!important;
 }
 
+// ESSAY UNIVERSITY SEARCH
+#desktop-university.essay-university-search {
+	.main {
+		form {
+			padding: 0 30px!important;
+		}
+	}
+}
+
 /* ---------- REQUESTS */
 #request {
 	header:not(.desktop-header) {
