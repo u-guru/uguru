@@ -224,17 +224,21 @@ def generateNumUserPaymentCards(num, user):
 def generateNumUserTransactions(num, user):
     from datetime import datetime
     from random import randint
-    for index in range(0, num):
+    for index in range(0, len(user.student_sessions)):
+        user_request = sorted(user.requests, key=lambda k:k.id)[index]
         t = Transaction()
         t.student_id = user.id
         t.time_created = datetime.now()
+        t.session = sorted(user.student_sessions, key=lambda k:k.id)[index]
         t.description = 'HS Tutoring'
         t.charge_id = 'aldksjasjd90ajsd9as'
-        t.card_id = user.cards[randint(0, len(user.get_payment_cards()) - 1)].id
+        t.card_id = user_request.payment_card_id
         t.is_task = True
-        t.request_id = user.requests[randint(0, len(user.requests) - 1)].id
-        t.stripe_amount = randint(1,20) * 10
-        t.profit =t.stripe_amount * 0.8
+        t.request = user_request
+        t.student_amount = Request.HS_OPTIONS_PRICE_DICT[user_request.hs_request_option]
+        t.stripe_amount = (t.student_amount * 0.029) + 0.3
+        t.guru_amount = t.student_amount * 0.8
+        t.profit =t.student_amount - t.stripe_amount - t.guru_amount
         db_session.add(t)
         db_session.commit()
     print "%s student transactions created" % len(user.student_transactions)
@@ -253,9 +257,9 @@ def getRelationshipFromGuru(user, guru):
         if guru.id == _relationship.guru.id:
             return _relationship
 
-def generateNumGuruRelationshipsAndSessions(num, user):
+def generateRelationshipsFromRequests(user):
     all_gurus_with_balance = [_user for _user in User.query.all() if len(_user.student_relationships) > 5]
-    for index in range(0, num):
+    for index in range(0, len(user.requests)):
         guru = all_gurus_with_balance[index]
         createRelationshipWithGuru(user, guru)
         session_json = {
@@ -264,6 +268,8 @@ def generateNumGuruRelationshipsAndSessions(num, user):
             'student_id': user.id,
             'status': 1,
             'relationship_id': getRelationshipFromGuru(user, guru).id,
+            'request_id': sorted(user.requests, key=lambda k:k.id)[index],
+            'request_card_id': sorted(user.requests, key=lambda k:k.id)[index].payment_card_id,
             'online': True,
             'in_person': False
         }
@@ -324,6 +330,20 @@ def generateNumGuruMessagesPerRelationship(num, user, with_messages=True):
 
         print "%s messages generated for guru relationship with %s" % (len(relationship.messages), relationship.guru.name)
 
+def generateNumHSRequests(num, user):
+    from random import randint
+    from app.models import Request
+    user_payment_cards = user.get_payment_cards()
+    for index in range(0, num):
+        hs_request_option = Request.HS_OPTIONS[randint(0, len(Request.HS_OPTIONS) - 1)]
+        random_payment_card = user_payment_cards[randint(0, len(user_payment_cards)- 1)]
+        university = user.universities[randint(0, len(user.universities)-1)]
+        file_arr = createFiveRandomFiles(user)
+        tag_arr = selectFiveRandomTags()
+        description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
+        _request = Request.createHSRequest(user.id, university.id, hs_request_option,\
+        file_arr, tag_arr, description, random_payment_card.id)
+
 
 def init_hs():
     from app.models import *
@@ -372,15 +392,18 @@ def init_hs():
 
     option_num = 1
     description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
-    _request = Request.createHSRequest(user.id, university.id, option_num,\
-        file_arr, tag_arr, description)
+
+
+
+
+
 
     print "HS request successfully created"
-
     generateNumUserPaymentCards(5, user)
-    generateNumUserTransactions(5, user)
-    generateNumGuruRelationshipsAndSessions(5, user)
+    generateNumHSRequests(5, user)
+    generateRelationshipsFromRequests(user)
     generateNumGuruMessagesPerRelationship(20, user)
+    generateNumUserTransactions(5, user)
 
     user_messages = countMessagesInRelationships(user)
     print """

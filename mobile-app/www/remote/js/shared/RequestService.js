@@ -36,7 +36,8 @@ function RequestService() {
       type: _types.DEFAULT,
       university:null,
       info: {
-        course: {},
+        hs: true,
+        course: {},//
         description: 'This is a sample description already filled in through the scope.request.info.description vars variable. To set the default go to RequestService.js and edit the initEmpty() function and ',
         tags: [],
         attachments: []

@@ -990,4 +990,80 @@ ion-scroll, .scroll {
       color: #2B3234 !important;
       opacity: 0.5 !important; }
 
+.inline {
+  display: inline-block; }
+
+#billing-card-container .request-payment-container {
+  background: #40484B;
+  padding-top: 20px;
+  margin-top: 20px; }
+  #billing-card-container .request-payment-container h4 {
+    margin: 15px; }
+  #billing-card-container .request-payment-container ul li form {
+    position: relative !important;
+    padding: 40px 0; }
+    #billing-card-container .request-payment-container ul li form button {
+      position: absolute;
+      margin: 0 auto;
+      text-align: center;
+      bottom: 0;
+      right: 0;
+      padding: 6px 20px;
+      width: 40%;
+      height: auto;
+      font-size: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: #F1F1F1;
+      background: transparent; }
+    #billing-card-container .request-payment-container ul li form ul li {
+      padding-left: 10px; }
+      #billing-card-container .request-payment-container ul li form ul li div.input-field {
+        position: relative; }
+        #billing-card-container .request-payment-container ul li form ul li div.input-field input {
+          color: #F1F1F1; }
+        #billing-card-container .request-payment-container ul li form ul li div.input-field label {
+          color: #F1F1F1; }
+        #billing-card-container .request-payment-container ul li form ul li div.input-field a {
+          margin: 12px;
+          top: 0px;
+          right: 0;
+          position: absolute;
+          width: 10px;
+          height: 10px; }
+          #billing-card-container .request-payment-container ul li form ul li div.input-field a i {
+            color: #40484B; }
+    #billing-card-container .request-payment-container ul li form div.input-field {
+      position: relative; }
+      #billing-card-container .request-payment-container ul li form div.input-field input {
+        color: #F1F1F1; }
+      #billing-card-container .request-payment-container ul li form div.input-field label {
+        color: #F1F1F1; }
+      #billing-card-container .request-payment-container ul li form div.input-field a {
+        margin: 12px;
+        top: 0px;
+        right: 0;
+        position: absolute;
+        width: 10px;
+        height: 10px; }
+        #billing-card-container .request-payment-container ul li form div.input-field a i {
+          color: #40484B; }
+
+.capitalize {
+  text-transform: capitalize; }
+
+#desktop-balance aside ul.sidebar-layout-list li div h3.txt-smoke span {
+  font-size: inherit !important; }
+
+.mini-card {
+  margin-bottom: 10px !important;
+  line-height: 15px !important;
+  border: 1px solid white;
+  padding: 3px;
+  border-radius: 5px;
+  margin-right: 2px !important;
+  min-width: 55px;
+  width: auto;
+  opacity: 0.85; }
+
 /*# sourceMappingURL=essay.css.map */

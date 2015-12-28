@@ -79,6 +79,16 @@ angular.module('uguru.desktop.controllers', [])
       }
     }
 
+    //assues already in desktop mode
+    $scope.goBackHome = function() {
+      if ($scope.root.vars.hs_mode || $scope.user.hs_student) {
+        $ionicViewSwitcher.nextDirection('enter');
+        $state.go('^.essay-student-home-desktop');
+      } else {
+        $state.go('^.guru-home');
+      }
+    }
+
     $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -179,7 +189,96 @@ angular.module('uguru.desktop.controllers', [])
 
 
 
+    $scope.confirmPhonePopup = function($event) {
+      console.log("EVENT", $event.target)
+      function callback() {
+          $scope.validateAndSendPhoneConfirmation();
+      }
 
+      PopupService.open('confirmPhone', callback, $event.target);
+    }
+
+    $scope.resendPhoneConfirmation = function() {
+
+      //validate
+      if(Utilities.validatePhone($scope.popupInput.phoneConfirm)) {
+        $scope.user.phone_number = $scope.popupInput.phoneConfirm;
+        var callbackSuccess = function() {
+               $scope.loader.showMsg('The code has been sent to '+ $scope.popupInput.phoneConfirm,0, 5000);
+         }
+
+        $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.popupInput.phoneConfirm, callbackSuccess, $scope);
+
+        PopupService.close('confirmPhone');
+        LoadingService.show();
+        $timeout(function() {
+          LoadingService.hide();
+          var msg = 'New code re-sent to ' + $scope.popupInput.phoneConfirm;
+          $scope.success.show(0, 2000, msg);
+        }, 1000)
+
+      } else {
+        alert('Please enter valid phone number');
+        $scope.popupInput.phoneConfirm = "";
+        return;
+      }
+
+
+    }
+
+
+    $scope.validateAndSendPhoneConfirmation = function() {
+      console.log("Confirm")
+
+      //1. re-verify / verify phone number
+      //2. invalid input
+
+      if(Utilities.validatePhone($scope.popupInput.phoneConfirm))
+      {
+        $scope.user.phone_number = $scope.popupInput.phoneConfirm;
+
+        if(Utilities.validateCode($scope.popupInput.code))
+        {
+            console.log('verify code confirm');
+            var callbackSuccess = function() {
+                if ($scope.user.phone_number_confirmed)
+                  $scope.calcGuruCredibilityProgress();
+                   $scope.loader.showMsg('Verification Code confirmed!',0, 2000)
+             }
+
+
+           var failureCallback = function(err) {
+              console.log("Real FAIL")
+              if (!$scope.user.phone_number_confirmed)
+              {
+                $scope.loader.showMsg('Invalid Code - please try again?',0, 2000);
+                $scope.popupInput.code =""
+              }
+            }
+
+            PopupService.close('confirmPhone');
+
+            $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.popupInput.code, callbackSuccess, $scope, failureCallback);
+        }
+        else
+        {
+
+          if(!$scope.popupInput.code)
+             $scope.resendPhoneConfirmation();
+            // console.log("Resubmit");
+          else
+            alert("Please enter a 4 digit code.")
+        }
+      }
+      else
+      {
+        if(!$scope.popupInput.phoneConfirm)
+          alert('Please fill in all fields')
+        else
+          alert('Please enter valid phone number.')
+      };
+        return;
+    }
 
 
     $scope.attemptToResetPassword = function() {

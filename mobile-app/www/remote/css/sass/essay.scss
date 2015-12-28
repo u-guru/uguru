@@ -865,3 +865,118 @@ ion-scroll, .scroll {
 		}
 	}
 }
+
+.inline {
+	display:inline-block;
+}
+
+#billing-card-container .request-payment-container {
+	background:$slate;
+	padding-top:20px;
+	margin-top:20px;
+	h4 {
+		margin:15px;
+	}
+	ul {
+		li {
+			form {
+				position:relative !important;
+				padding:40px 0;
+				button {
+					position:absolute;
+					margin:0 auto;
+					text-align: center;
+					bottom:0;
+					right:0;
+					padding:6px 20px;
+					width:40%;
+					height:auto;
+					font-size:16px;
+					border:2px solid rgba(255,255,255,0.2);
+					border-radius:8px;
+					color: $smoke;
+					background:transparent;
+				}
+				ul {
+					li {
+
+						padding-left:10px;
+						div.input-field {
+
+							position:relative;
+							input {
+								color:$smoke;
+							}
+							label {
+								color:$smoke;
+							}
+							a {
+								margin:12px;
+								top:0px;
+								right:0;
+								position:absolute;
+								width:10px;
+								height:10px;
+								i {
+									color:$slate;
+								}
+							}
+						}
+					}
+				}
+				div.input-field {
+					position:relative;
+					input {
+						color:$smoke;
+					}
+					label {
+						color:$smoke;
+					}
+					a {
+						margin:12px;
+						top:0px;
+						right:0;
+						position:absolute;
+						width:10px;
+						height:10px;
+						i {
+							color:$slate;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.capitalize {
+	text-transform:capitalize;
+}
+
+#desktop-balance
+{
+	aside  {
+		ul.sidebar-layout-list {
+			li {
+				div {
+					h3.txt-smoke {
+						span {
+							font-size:inherit !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.mini-card {
+	margin-bottom:10px !important;
+	line-height:15px !important;
+	border: 1px solid rgba(255,255,255,1);
+	padding:3px;
+	border-radius:5px;
+	margin-right:2px !important;
+	min-width:55px;
+	width:auto;
+	opacity:0.85;
+}
