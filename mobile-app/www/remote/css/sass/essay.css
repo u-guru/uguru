@@ -4,6 +4,7 @@ ion-view .student-mode {
 
 ion-view #student-files {
   height: 100%;
+  overflow: auto;
 }
 
 ion-view #student-files header {
@@ -36,7 +37,6 @@ ion-view #student-files .main {
   align-items: flex-start;
   height: 70%;
   padding: 22.5px 0 7.5px !important;
-  overflow: auto;
 }
 
 ion-view #student-files .main .attachment-list ul {

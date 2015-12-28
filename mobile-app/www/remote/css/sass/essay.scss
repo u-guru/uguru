@@ -8,6 +8,7 @@ ion-view {
 	// FILES
 	#student-files {
 		height: 100%;
+		overflow: auto;
 		header {
 			@include flex;
 			@include flex-center;
@@ -25,7 +26,6 @@ ion-view {
 			align-items: flex-start;
 			height: 70%;
 			padding: 22.5px 0 7.5px!important;
-			overflow: auto;
 			.attachment-list {
 				ul {
 					@include flex-center;
