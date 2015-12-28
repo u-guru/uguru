@@ -23,14 +23,14 @@
 
 			<ion-pane id='cta-modal-essay-student-universities' class='full-xy hide-display cta-modal bg-charcoal'>
 				<div class='full-xy'>
-					<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.theme && root.vars.theme === 'essay'}" ng-if='desktopMode'>
+					<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.hs_mode}" ng-if='desktopMode'>
 						<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
 						<div class="main default" ng-controller='EssayStudentUniversityController' ng-include="img_base + BASE + 'templates/essay.university.desktop.container.html'"></div>
 					</main>
 				</div>
 			</ion-pane>
 
-			<ion-pane id='cta-modal-essay-student-timeline' class='full-xy hide-display cta-modal bg-charcoal'>
+			<ion-pane id='cta-modal-essay-student-timeline' class='full-xy hide-display cta-modal bg-charcoal' >
 				<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
 				<div class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.timeline.html'"> </div>
 			</ion-pane>
@@ -40,7 +40,7 @@
 				<section class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.files.html'"> </section>
 			</ion-pane>
 
-			<ion-pane id='cta-modal-essay-student-messaging' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/essay.student.messaging.html'">
+			<ion-pane id='cta-modal-essay-student-messaging' ng-controller='GuruMessagesController' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/essay.student.messaging.html'">
 				<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
 				<div class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.messaging.html'"> </div>
 			</ion-pane>
@@ -72,7 +72,7 @@
 									<span class="notification-icon">
 										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.notification.html'">
 										</svg>
-										<span class="notification-number">{{user.student_relationships.length || 0}}</span>
+										<span class="notification-number">{{user.guru_relationships.length || 0}}</span>
 									</span>
 									<span class="notification-type">My Gurus</span>
 								</a>

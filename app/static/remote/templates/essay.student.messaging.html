@@ -3,12 +3,12 @@
 		<div class="main absolute bottom-0 full-x">
 			<div id="messenger">
 				<div id="messenger-sidebar">
-					<h1>My Students</h1>
+				<h1>My Gurus</h1>
 					<ul>
-						<li ng-repeat='relationship in user.student_relationships|filter:student_search.search_text:strict' ng-click='setToActiveRelationship(relationship)'>
+						<li ng-repeat='relationship in user.guru_relationships|filter:student_search.search_text:strict' ng-click='setToActiveRelationship(relationship)' ng-if='relationship.guru.name'>
 							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
-								<span class="messenger-icon" style="background-image: url({{relationship.student.profile_url}});"></span>
-								<span class="messenger-label">{{relationship.student.name}}</span>
+								<span class="messenger-icon" style="background-image: url({{relationship.guru.profile_url || 'https://uguru.me/static/remote/img/avatar.svg'}});"></span>
+								<span class="messenger-label">{{relationship.guru.name}}</span>
 							</a>
 						</li>
 					</ul>
@@ -24,7 +24,7 @@
 				</div>
 				<div id="messenger-content">
 					<div class="messenger-header">
-						<h1 class="no-menu">{{active_relationship.student.name}}</h1>
+						<h1 class="no-menu">{{active_relationship.guru.name}}</h1>
 						<a class='cta-modal-close close-button desktop-header-next'>
 							<svg viewBox="0 0 100 100">
 								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -109,11 +109,11 @@
 										<div class="message-single-info"></div>
 										<div class="message-single-status">
 											This is the beginning of your message thread with
-											<strong>{{active_relationship.student.name}}</strong>
+											<strong>{{active_relationship.guru.name || user.guru_relationships[0].name}}</strong>
 										</div>
 									</div>
 								</div>
-								<div ng-repeat='message in active_relationship.messages|filter:active_relationship.search_text:strict' class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}">
+								<div ng-repeat='message in active_relationship.messages|filter:active_relationship.search_text:strict' class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id, 'last-message':($index === active_relationship.messages.length - 1) }">
 									<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
 										<span ng-if='user.profile_url' style='background-image: url({{message.sender.profile_url}});' />
 									</div>

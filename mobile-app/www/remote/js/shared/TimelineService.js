@@ -35,6 +35,9 @@ angular
       arr[i].announcer = {name: 'Samir', profile_url:"https://www.uguru.me/static/web/images/team/samir.png"};
       arr[i].title = rfcToShortFormatDate(universities[0].sp16_deadline);
       arr[i].svg = universities[0].svg_url;
+      if (universities[0].banner_url) {
+        arr[i].banner = universities[0].banner_url.replace('_b.', '_m.');
+      }
       arr[i].formatted_time = "HS Advisor Guru"
       arr[i].formatted_category = "Application Deadline"
       //format tags

@@ -1,10 +1,10 @@
 <u-slide-box id='access-uni-slide' class='full-y' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university" cache-view='false'>
-	<u-slide ng-if='storedAccess && root.vars.theme !== "essay"'>
+	<u-slide>
 		<div ng-include="img_base + BASE + 'templates/access.html'"></div>
 	</u-slide>
 	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
 		<ion-view class='uguru-view university-view'>
-			<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.theme && root.vars.theme === 'essay'}" ng-if='desktopMode'>
+			<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.hs_mode}" ng-if='desktopMode'>
 			    <span data-velocity id="main-logo-container" ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 				<header data-velocity class="desktop-header">
 					<a name='university-head-back' class="desktop-header-back" ng-click='backToAccess()'>
@@ -14,7 +14,7 @@
 					</a>
 				</header>
 			    <div class="main default">
-			    	<div ng-if='root.vars.theme && root.vars.theme === "essay"' class='university-header'>
+			    	<div ng-if='root.vars.hs_mode' class='university-header'>
 			    		<h1> Which university do you currently attend? </h1>
 			    	</div>
 			        <form data-velocity>

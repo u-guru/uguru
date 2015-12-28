@@ -36,6 +36,7 @@ function ScrollService() {
   function scrollTo(to, callback, duration, viewSelectorID, destinationSelectorID) {
     if (!to && !(to === 0) && destinationSelectorID) {
       to = document.querySelector(destinationSelectorID).offsetTop;
+
     }
 
     // because it's so fucking difficult to detect the scrolling element, just move them all
@@ -50,6 +51,7 @@ function ScrollService() {
       change = to - start,
       currentTime = 0,
       increment = 20;
+    console.log(start);
     duration = (typeof(duration) === 'undefined') ? 500 : duration;
     var animateScroll = function() {
       // increment the time

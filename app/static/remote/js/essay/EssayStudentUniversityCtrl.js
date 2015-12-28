@@ -36,9 +36,18 @@ angular.module('uguru.util.controllers')
     //default
     $timeout(function() {
       $scope.university = {name:'Harvard'};
-      $scope.root.vars.theme = 'essay';
+
+      $scope.root.vars.hs_mode= true;
       $scope.page = {modals: {backdrop: {active:false}}, toggles:{searchMode:{active:true}}};
+
+      if ($state.current.name.indexOf('essay-student-home') > -1) {
+        $scope.page.toggles.searchMode.active = false;
+      } else {
+        $scope.page.toggles.searchMode.active = true;
+      }
+
     })
+
 
 
 

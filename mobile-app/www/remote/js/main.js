@@ -11,7 +11,7 @@ var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  // BASE_URL = _ipaddress;
+  BASE_URL = _ipaddress;
   REST_URL = "http://localhost:5000";
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -19,6 +19,8 @@ if (LOCAL) {
 } else {
   img_base = '/static/';
 }
+
+
 
 var tracker = 'lo';
 var stats = new Stats();
@@ -47,13 +49,20 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $ionicConfigProvider, $compileProvider, $provide, $httpProvider, uiGmapGoogleMapApiProvider) {
+  $ionicConfigProvider, $compileProvider, $provide, $httpProvider, uiGmapGoogleMapApiProvider,$sceDelegateProvider) {
 
   uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyDytQb8vjgkgYkAp7oVTjwIZkMtOE6xMZg',
         v: '3.21',
         libraries: 'places, weather,geometry,visualization'
     });
+
+   $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'https://uguru.me/static/**'
+  ]);
 
 
   $httpProvider.useApplyAsync(true);
