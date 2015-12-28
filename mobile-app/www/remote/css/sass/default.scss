@@ -4593,6 +4593,15 @@ input[type=range] {
 					&:hover, &:focus {
 						@include opacity(1);
 					}
+					svg {
+						@include rotate(45);
+						@include svg-stroke(white, 8);
+						position: absolute;
+						top: 5px;
+						right: 5px;
+						width: 25px;
+						height: 25px;
+					}
 				}
 			}
 			.attach-upload-img, .attach-upload-file {
@@ -4602,6 +4611,8 @@ input[type=range] {
 					z-index: 3;
 					top: 5px;
 					left: 5px;
+					width: 25px;
+					height: 25px;
 					svg {
 						@include rotate(45);
 						@include svg-stroke(white, 8);

@@ -6300,12 +6300,32 @@ input[type=range]:focus::-ms-fill-upper {
   opacity: 1;
 }
 
+.attachment-list ul li .attach-upload-img .doc-info svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
+}
+
 .attachment-list ul li .attach-upload-img a:not(.doc-info), .attachment-list ul li .attach-upload-file a:not(.doc-info) {
   display: block;
   position: absolute;
   z-index: 3;
   top: 5px;
   left: 5px;
+  width: 25px;
+  height: 25px;
 }
 
 .attachment-list ul li .attach-upload-img a:not(.doc-info) svg, .attachment-list ul li .attach-upload-file a:not(.doc-info) svg {
