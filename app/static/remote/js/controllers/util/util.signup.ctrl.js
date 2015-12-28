@@ -1329,6 +1329,11 @@ angular.module('uguru.util.controllers')
       $scope.loginPayload.university_id = $scope.user.university_id;
       $scope.loginPayload.current_device = $scope.user.current_device;
 
+
+      if ($scope.root.vars.hs_mode || window.location.href.indexOf('hs.uguru') > -1) {
+        $scope.loginPayload.hs_student = true;
+      }
+
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.loginPayload.current_device_id = $scope.user.current_device.id;
       }
@@ -1355,8 +1360,21 @@ angular.module('uguru.util.controllers')
           if (mixpanel && mixpanel.register) {
             mixpanel.register($scope.user);
           }
-          $scope.$apply();
           LoadingService.showSuccess('Login Successful!', 2500);
+
+
+
+          if ($scope.root.vars.hs_mode) {
+            if ($scope.desktopMode) {
+              AnimationService.flip('^.essay-student-home-desktop')
+            } else {
+              AnimationService.flip('^.essay-student-home-mobile')
+            }
+            return;
+          }
+
+
+          //if regular guru mode
           if ($scope.desktopMode)
           {
             if ($state.current.name !== 'root.guru-home'){
@@ -1373,7 +1391,6 @@ angular.module('uguru.util.controllers')
           }
           else
           {
-
             $scope.signupModal.hide();
             // $state.go('^.guru')
             if(!$scope.root.vars.guru_mode)
@@ -1393,6 +1410,10 @@ angular.module('uguru.util.controllers')
               //   passwordInput.focus();
               // }
             }, 1250)
+        } else if (err.status === 404 && $scope.loginPayload.hs_student) {
+          $scope.signupForm.password = '';
+          $scope.signupForm.email = '';
+          LoadingService.showMsg('Sorry, your account is not a high school account. <br> If you think this is by mistake, please contact support at support@uguru.me for a quickly reply.', 3000);
         } else if (err.status === 404) {
           $scope.signupForm.password = '';
           $scope.signupForm.email = '';

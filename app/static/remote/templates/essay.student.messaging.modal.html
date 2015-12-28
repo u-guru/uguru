@@ -19,14 +19,14 @@
 						</svg>
 					</a>
 				</div>
-				<h1 class="text-center">{{active_relationship.student.name}}</h1>
+				<h1 class="text-center">{{active_relationship.guru.name}}</h1>
 			</header>
 
 
 			<!-- ngIf: !doneLoading -->
 			<section id='message-container'>
 				<ul id='messenger-subheader' class='ng-class:{"active":messageOptionsShown}'>
-					<li ng-repeat='relationship in user.student_relationships'>
+					<li ng-repeat='relationship in user.guru_relationships' ng-if='relationship.guru.name'>
 						<a ng-click='setToActiveRelationship(relationship)' ng-if='relationship.id !== active_relationship.id' class='relative'>
 							<span class='student-photo-container'>
 								<img ng-src="{{relationship.student.profile_url}}" />

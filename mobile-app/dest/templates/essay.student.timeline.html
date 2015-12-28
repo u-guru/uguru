@@ -13,10 +13,10 @@
                     <header>
                         <a class="txt-white" ng-bind-html="deadline.title"></a>
                     </header>
-                    <figure ng-if="deadline.banner.length">
-                        <img class="post-banner" src='{{deadline.banner}}' alt=''/>
+                    <figure ng-if="deadline.banner">
+                        <img class="post-banner full-x" src='{{deadline.banner}}' alt=''/>
                     </figure>
-                    <figure ng-if="deadline.svg.length">
+                    <figure ng-if="deadline.svg.length && !deadline.banner">
                         <img class="post-svg" src='{{deadline.svg}}' alt=''/>
                     </figure>
                     <section ng-if="deadline.body.length">{{deadline.body}}</section>
@@ -43,9 +43,9 @@
                     </aside>
                     <footer>
                         <ul>
-                            <li><span style="background-image: url({{deadline.announcer.profile_url}});"></span></li>
+                            <li><span style="background: #e98a59 url({{img_base}}./img/svg/logo-white.svg) no-repeat center; background-size:28px 28px;"></span></li>
                             <li>
-                                <a>{{deadline.announcer.name}}</a>
+                                <a><span class='weight-300'>Posted by</span><!-- {{deadline.announcer.name}} --></a>
                                 <span>{{deadline.formatted_time}}</span>
                             </li>
                         </ul>

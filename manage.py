@@ -254,7 +254,7 @@ def getRelationshipFromGuru(user, guru):
             return _relationship
 
 def generateNumGuruRelationshipsAndSessions(num, user):
-    all_gurus_with_balance = [user for user in User.query.all() if len(user.student_relationships) > 5]
+    all_gurus_with_balance = [_user for _user in User.query.all() if len(_user.student_relationships) > 5]
     for index in range(0, num):
         guru = all_gurus_with_balance[index]
         createRelationshipWithGuru(user, guru)
@@ -284,11 +284,14 @@ def getRandomFile(user):
     files_with_pngs = [_user for _user in all_users if _user.profile_url and _user.name and 'png' in _user.profile_url and len(_user.name.split(' ')) > 1]
     user_with_profile = files_with_pngs[randint(0, len(files_with_pngs) - 1)]
     random_file_string = user_with_profile.profile_url
+    if not random_file_string:
+        random_file_string = 'https://uguru.me/static/remote/img/avatar.svg'
     f = File()
     f.url = random_file_string
     f.time_created = datetime.now()
     f.name = user_with_profile.getFirstName()
     f.high_school = True
+    f._type ='img'
     db_session.add(f)
     db_session.commit()
     f.user_id = user.id
@@ -313,10 +316,12 @@ def generateNumGuruMessagesPerRelationship(num, user, with_messages=True):
             else:
                 m.receiver_id = relationship.guru.id
             if (index % 7)  == 0:
-                m.file_id = getRandomFile(user).id,
+                m._file = getRandomFile(user)
+                m._file.high_school = True
 
             db_session.add(m)
             db_session.commit()
+
         print "%s messages generated for guru relationship with %s" % (len(relationship.messages), relationship.guru.name)
 
 
@@ -342,7 +347,7 @@ def init_hs():
 
     user.password = md5('launchuguru123').hexdigest()
     user.name = 'Sizzle N'
-    user.high_school = True
+    user.hs_student = True
     university = University.query.get(2307)
     ## create user with _high school
     ## add many propertyes
@@ -395,35 +400,35 @@ def init_hs():
         ## allow files to be linked to a relationship after it is added via message
 
     # teardown user relationships
-    for relationship in user.guru_relationships:
-        relationship.student_id = None
-        relationship.guru_id = None
-        for session in relationship.sessions:
-            session.student_id = None
-            session.guru_id = None
-            db_session.delete(session)
-        for message in relationship.messages:
-            message.sender_id = None
-            message.receiver_id = None
-            message.contents = None
-            db_session.delete(message)
-        db_session.delete(relationship)
-        db_session.commit()
+    # for relationship in user.guru_relationships:
+    #     relationship.student_id = None
+    #     relationship.guru_id = None
+    #     for session in relationship.sessions:
+    #         session.student_id = None
+    #         session.guru_id = None
+    #         db_session.delete(session)
+    #     for message in relationship.messages:
+    #         message.sender_id = None
+    #         message.receiver_id = None
+    #         message.contents = None
+    #         db_session.delete(message)
+    #     db_session.delete(relationship)
+    #     db_session.commit()
 
-    # teardown user cards
-    for card in user.cards:
-        card.user_id = None
-        db_session.delete(card)
-        db_session.commit()
+    # # teardown user cards
+    # for card in user.cards:
+    #     card.user_id = None
+    #     db_session.delete(card)
+    #     db_session.commit()
 
-    ## teardown requests
-    for request in user.requests:
-        request.student_id = None
-        db_session.delete(request)
-        db_session.commit()
+    # ## teardown requests
+    # for request in user.requests:
+    #     request.student_id = None
+    #     db_session.delete(request)
+    #     db_session.commit()
 
-    db_session.delete(user)
-    db_session.commit()
+    # db_session.delete(user)
+    # db_session.commit()
 
     print 'user successfully deleted'
 

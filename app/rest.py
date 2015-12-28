@@ -2548,6 +2548,12 @@ class UserNewView(restful.Resource):
                 course_id = None
                 user = email_user
 
+                is_high_school_login = request.json.get('hs_student')
+
+                ## if they dont have a high school account
+                if  is_high_school_login and not email_user.hs_student:
+                    abort(404)
+
                 if request.json.get('current_device'):
                     current_device_id = request.json.get('current_device').get('id')
                     device = Device.query.get(current_device_id)
