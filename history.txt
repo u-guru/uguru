@@ -1,0 +1,4144 @@
+    1  mkdir Git
+    2  cd Git
+    3  git clone https://github.com/sam1rm/uguru.git
+    4  cd uguru
+    5  git checkout -b samir-dev
+    6  git pull origin samir-dev
+    7  sudo easy_install_pip
+    8  sudo easy_install pip
+    9  heroku -v
+   10  heroku --v
+   11  heroku -V
+   12  heroku help
+   13  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+   14  brew help
+   15  brew install redis
+   16  '/Applications/Postgres.app/Contents/Versions/9.4/bin'/psql -p5432
+   17  source .zshrc
+   18  source ~/.zshrc
+   19  sudo pip install -U psycopg2
+   20  sudo pip install Flask-SQLAlchemy
+   21  sudo pip install -r requirements.txt
+   22  sudo pip install Pillow==2.4.0
+   23  xcode-select --install
+   24  sudo pip install Pillow==2.4.0
+   25  createuser uguru -d -s -P
+   26  createdb -U uguru -E utf-8 -O uguru uguru_db
+   27  honcho start -f PrcfileDev
+   28  honcho
+   29  pip install honcho
+   30  s requirements.txt
+   31  sublime requirements.txt
+   32  sublime2 requirements.txt
+   33  /Users/Jason-work/Git/uguru/requirements.txt 
+   34  sudo pip install -r requirements.txt
+   35  sudo apt-get remove six-1.4.1
+   36  sudo pip uninstall six-1.4.1
+   37  nvram boot-args="rootless=0"
+   38  # nvram boot-args="rootless=0"
+   39  # reboot
+   40  # rweuroewurowr
+   41  csrutil status
+   42  csrutil enable
+   43  #six
+   44  six
+   45  pip six
+   46  pip instasll --uppgrade six
+   47  pip install --uppgrade six
+   48  pip install --upgrade six
+   49  brew instasll python
+   50  brew install python
+   51  pip -v
+   52  pip -V
+   53  sudo pip install -r requirements.txt
+   54  honcho start -f PrcfileDev
+   55  honcho start -f ProcfileDev
+   56  brew install npm
+   57  python -m venv flask
+   58  cd
+   59  python -m venv flask
+   60  sudo pip install virtualenv
+   61  virtualenv flask
+   62  cd Git
+   63  mkdir app
+   64  mkdir app/static
+   65  mkdir app/templates
+   66  mkdir temp
+   67  ls
+   68  cd app
+   69  cd .. 
+   70  cd Hello\ Flask
+   71  cd app
+   72  cd..
+   73  cd ..
+   74  chmod a+x run.py
+   75  ls
+   76  dir
+   77  ls
+   78  chmod a+x run.py
+   79  ./run.py
+   80  flask
+   81  pip instasll Flask
+   82  pip install Flask
+   83  Flask
+   84  python
+   85  cd ..
+   86  cd Hello\ Flask
+   87  python run.py
+   88  cd aoo
+   89  cd app
+   90  ls
+   91  sudo easy_install virtualenv
+   92  virtualenv flask
+   93  flask/bin/pip install flask
+   94  cd
+   95  ls
+   96  flask/bin/pip install flask
+   97  flask/bin/pip install flask-login
+   98  cd app
+   99  cd Git/Hello\ Flask
+  100  chmod a+x run.py
+  101  ./run.py
+  102  cd ..
+  103  ./run.py
+  104  cd ..
+  105  ./run.py
+  106  cd Git/Hello\ Flask
+  107  run.py
+  108  flask\Scripts\python run.py
+  109  python run.py
+  110  ~./run.py
+  111  ~/run.py
+  112  ~./run.pd
+  113  ./run.pd
+  114  cd
+  115  ./Git/Hello\ Flask/run.py
+  116  flask/bin/pip install flask
+  117  flask/bin/pip install flask-login
+  118  ./Git/Hello\ Flask/run.py
+  119  cd Git
+  120  cd Hello\ Flask
+  121  app = Flask(__name__)
+  122  @app.route('/')
+  123  def hello_world():
+  124  if __name__ == '__main__':
+  125  python run.py
+  126  node 
+  127  um
+  128  cd Desktop
+  129  node euler.js
+  130  ccd
+  131  cd
+  132  pwd
+  133  java
+  134  npm
+  135  brew install android
+  136  android
+  137  java
+  138  java -v
+  139  java --v
+  140  java -version
+  141  android
+  142  node euler.js
+  143  cd Desktop
+  144  node euler.js
+  145  cd
+  146  cd Git/Hello\ Flask
+  147  python run.py
+  148  cd app
+  149  python __init__.py
+  150  cd ..
+  151  python run.py
+  152  android
+  153  npm install -g cordova@5.0.0
+  154  cordova -v
+  155  npm install -g ionic@1.3.2
+  156  cd Git
+  157  CD uguru
+  158  cd uguru
+  159  ionic serve
+  160  cd mobile-app
+  161  ionic serve
+  162  ionic run android -clr
+  163  cordova platform add android@4.1.1
+  164  ionic run android -clr
+  165  android
+  166  cordova -v
+  167  ionic -v
+  168  ionic serve
+  169  npm install
+  170  sudo nppm install
+  171  sudo npm install
+  172  sudo npm uninstall npm -g
+  173  rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/npm*
+  174  brew install node
+  175  brew uninstall node
+  176  npm
+  177  npm -version
+  178  npm -v
+  179  node
+  180  node -v
+  181  brew install node
+  182  node -v
+  183  npm -v
+  184  npm install
+  185  xcodebuild -version
+  186  cd
+  187  cd /Applications
+  188  ls
+  189  cd Xcode.app
+  190  ls
+  191  cd contents
+  192  ls
+  193  cd developer
+  194  cd platform
+  195  cd
+  196  cd /Applications/
+  197  cd Xcode.app
+  198  cd Contents/Developer/Platforms/iPhoneSimulator.platform
+  199  cd Developer/SDKs/iPhoneSimulator.sdk/usr/lib
+  200  ls
+  201  sudo mv dyld_sim dyld_sim.orig
+  202  cd
+  203  cd git
+  204  cd uguru
+  205  cd mobile-app
+  206  npm install
+  207  npm -v
+  208  node -v
+  209  npm install -g n n 0.12.7
+  210  npm install
+  211  brew uninstall node
+  212  npm -version
+  213  npm
+  214  brew install node@0.12.7
+  215  brew install node0127
+  216  brew search nde
+  217  brew search node
+  218  brew tap homebrew/versions
+  219  brew search node
+  220  brew install homebrew/versions/node012
+  221  npm install
+  222  sudo npm install
+  223  cordova platforms
+  224  ionic serve
+  225  sudo npm uninstall -g cordova
+  226  sudo npm uninstall -g ionic
+  227  sudo npm uninstall cordova
+  228  npm uninstall ionic
+  229  npm
+  230  node -v
+  231  npm install -g cordova
+  232  npm install -g ionic
+  233  npm uninstall -g cordova
+  234  npm uninstall -g ionic
+  235  npm install -g cordova@5.0.0
+  236  npm install -g ionic@1.3.2
+  237  ionic serve
+  238  r
+  239  ionic serve
+  240  d
+  241  s
+  242  a
+  243  A
+  244  p
+  245  r
+  246  p
+  247  r
+  248  p
+  249  q
+  250  ionic serve
+  251  s
+  252  r
+  253  s
+  254  ionic serve
+  255  r
+  256  ionic serve
+  257  r
+  258  ionic serve
+  259  r
+  260  ionic serve
+  261  c
+  262  r
+  263  c
+  264  q
+  265  source ~/.bash_profile
+  266  source ~/.bash
+  267  sudo npm uninstall grunt-concurrent
+  268  sudo npm uninstall -g grunt-concurrent
+  269  sudo npm install grunt-concurrent@1.0.0
+  270  ionic serve
+  271  q
+  272  r
+  273  q
+  274  git branch
+  275  q
+  276  cd ../
+  277  ls
+  278  cd mobile-app
+  279  ionic serve
+  280  r
+  281  ionic serve
+  282  r
+  283  ionic serve
+  284  c
+  285  r
+  286  c
+  287  ionic serve
+  288  q
+  289  r
+  290  q
+  291  git branch
+  292  cd ../
+  293  ls
+  294  cd mobile-app
+  295  git branch
+  296  pwd
+  297  cd ..
+  298  cd ../
+  299  cd uguru
+  300  cd mobile-app
+  301  cd ../
+  302  cd mobile-app
+  303  npm install
+  304  npm uninstall
+  305  npm install
+  306  ionic serve
+  307  sz
+  308  souce ~/.zshrc
+  309  source ~/.zshrc
+  310  zs
+  311  run-android
+  312  npm install gulp
+  313  ionic serve
+  314  npm install -g gulp
+  315  npm unisntall -g gulp
+  316  npm uninstall gulp
+  317  npm install gulp
+  318  sudo run-android
+  319  zs
+  320  run-android
+  321  npm install gulp-preprocess
+  322  run-android
+  323  zs
+  324  ug
+  325  f
+  326  \tchmod 777 ./scripts/ug_main.sh
+  327  \t\t\tchmod 777 ./scripts/ug_help.sh
+  328  \t\t\tchmod 777 ./scripts/ug_build.sh
+  329  \t\t\tchmod 777 ./scripts/ug_run.sh
+  330  \t\t\tchmod 777 ./scripts/ug_release.sh
+  331  \t\t\tchmod 777 ./scripts/ug_push.sh
+  332  \t\t\tchmod 777 ./scripts/ug_plugins.sh
+  333  zs
+  334  ug
+  335  ug build
+  336  cd ../
+  337  ug
+  338  cd mobile-app
+  339  ug
+  340  ug start
+  341  ug ug start
+  342  zs
+  343  ug
+  344  ug build
+  345  ug build android
+  346  ug
+  347  cd git
+  348  cd uguru/mobile-app
+  349  ug
+  350  ug build
+  351  ug run
+  352  zs
+  353  cd
+  354  ug
+  355  cd git
+  356  ug
+  357  cd uguru/mobile-app
+  358  ug
+  359  zs
+  360  ug build android
+  361  ug run
+  362  ug run android
+  363  ifconfig
+  364  ug run android
+  365  ionic address
+  366  cordova -v
+  367  ug run android
+  368  ug build ios
+  369  ug run ios
+  370  npm install -g ios-deploy
+  371  ug run ios
+  372  ug run
+  373  ug help
+  374  ug run
+  375  ug run ios
+  376  ug run ios 
+  377  git checkout -b plugins
+  378  git pull origin plugins
+  379  git add -A
+  380  git status
+  381  git commit -m "merge from nick's pulgins branch"
+  382  ug run ios 
+  383  git add -A
+  384  git commit -m "take off backup"
+  385  git pull origin plugins
+  386  ug run ios
+  387  ug build ios
+  388  ug run ios
+  389  cd ..
+  390  cd Hello\ Flask
+  391  python run.py
+  392  cd 
+  393  cd Desktop
+  394  ls
+  395  subl euler.js
+  396  npm install -g protractor
+  397  webdriver-manager update
+  398  npm install -g appium
+  399  um
+  400  cd ..
+  401  cd Git/uguru
+  402  cd mobile-app
+  403  git branch
+  404  git checkout master
+  405  git add -A
+  406  git commit -m "ug_build bash\n"
+  407  git commit -m "ug_build bash"
+  408  git checkout cd mobile-app
+  409  git checkout master
+  410  git checkout -b jason-dev
+  411  git pull origin jason-dev
+  412  git pull origin issue-3935
+  413  ionic serve
+  414  webdriver-manager start
+  415  protractor test/config/web.config.js
+  416  zs
+  417  pw 
+  418  zs
+  419  pw --suites production_error
+  420  pw --suite production_error
+  421  pw
+  422  pw --suite production_error
+  423  pw
+  424  git add _A
+  425  git add -A
+  426  git commit -m "Workflow 1 add for checking data is passing"
+  427  pw
+  428  git add -A
+  429  git commit -m "workflow data"
+  430  git pull origin samir-dev
+  431  git add -A
+  432  git commit -m "merge samir"
+  433  pw
+  434  git add -A
+  435  git commit -m "update desc"
+  436  git push origin jason-dev
+  437  webdriver-manager update
+  438  git push origin jason-dev
+  439  pw
+  440  webdriver-manager start
+  441  pw
+  442  git add -A
+  443  git commit -m 'longgggg workflow"\n\n'
+  444  git push origin jason-dev
+  445  ionic serve
+  446  git checkout -b neck-de
+  447  git checkout -b neck-dev
+  448  git pull origin neck-dev
+  449  git checkout -b nick-dev
+  450  git pull origin nick-dev
+  451  chmod 777 ./scripts/pr_build.sh
+  452  ./scripts/pr_build.sh
+  453  ug run android
+  454  ant-version
+  455  ant
+  456  android
+  457  brew install ant
+  458  ant-version
+  459  brew update ant
+  460  brew upgrade ant
+  461  ant
+  462  ant --v
+  463  ant -version
+  464  ionic serve
+  465  ./scripts/pr_build.sh
+  466  ug run android
+  467  appium
+  468  pm
+  469  zs
+  470  pm
+  471  appium
+  472  pm
+  473  cd git
+  474  cd uguru
+  475  cd mobile-app
+  476  npm install wd
+  477  npm install wd-bridge
+  478  appium
+  479  pm
+  480  Maven
+  481  appium-doctor
+  482  android
+  483  zs
+  484  appium-doctor
+  485  zs
+  486  appium-doctor
+  487  appium
+  488  pm
+  489  npm install protractor
+  490  pm
+  491  appium
+  492  pm
+  493  git checkout jason-dev
+  494  git add -A 
+  495  git commit -m "merge"
+  496  git checkout jason-dev
+  497  git checkout nick-dev
+  498  ./scripts/pr_build.sh
+  499  ug run android
+  500  pm
+  501  pw
+  502  webdriver-manager start
+  503  pw
+  504  git checkout jason-dev
+  505  git add -A
+  506  git commit -m "gettng nickdev\n"
+  507  git checkout jason-dev
+  508  git pull origin nick-dev
+  509  git stash
+  510  git git reset --hard origin/master
+  511  git git reset --hard origin/jason-dev
+  512  git reset --hard origin/jason-dev
+  513  git merge nick-dev
+  514  git add -A
+  515  git commit -m "merge from nick's dev'\n"
+  516  pw
+  517  cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps.git --variable API_KEY_FOR_ANDROID="AIzaSyB_voN6xxmCRcnalAW9IMjnfluJgM6BuJU" --variable API_KEY_FOR_IOS="AIzaSyCxaNq1wuWUE9dsq66uixM-Z49FYZzDctA"
+  518  ug run android
+  519  pw
+  520  git checkout nick-dev
+  521  git pull origin nick-dev
+  522  git add -A
+  523  git commit -m "merge "
+  524  ./scripts/pr_build.sh
+  525  ./scripts/pr_build.sh android
+  526  ug run android
+  527  webdriver-manager start
+  528  pw
+  529  git add all -A
+  530  git commit -m "work flow donw"
+  531  git add  -A
+  532  git commit -m "work flow donw"
+  533  git checkout jason-dev
+  534  git merge jason-dev
+  535  git merge nick-dev
+  536  git checkout nick-dev
+  537  git pull origin nick-dev
+  538  ug run android
+  539  ug setup
+  540  ug start
+  541  ug setup
+  542  ug help
+  543  ug build android
+  544  ug build ios
+  545  ug help
+  546  ug build android
+  547  ug run android
+  548  ug build ios
+  549  ug run ios
+  550  ionic -v
+  551  cordova -v
+  552  ug run ios
+  553  ionic address
+  554  ug run ios
+  555  ug build ios
+  556  ug run ios
+  557  cordova -v
+  558  ionic -v
+  559  brew install watchman
+  560  ug run ios
+  561  cordova platforms
+  562  subl ./scripts
+  563  ug run ios
+  564  ionic serve
+  565  um
+  566  cd Git/uguru
+  567  cd mobile-app
+  568  ug run ios
+  569  cd Git/uguru/mobile-app
+  570  ionic serve
+  571  ug run ios
+  572  git checkout jason-dev
+  573  git merge nick-dev
+  574  git add -A
+  575  git commit -m "merge nick's plugins"
+  576  ionic serve
+  577  cd ..
+  578  cd app
+  579  zs
+  580  pw
+  581  webdriver-manager start
+  582  pw
+  583  npm install jasmine-spec-reporter
+  584  pw
+  585  cd ..
+  586  cd mobile-app
+  587  ug run ios
+  588  pw
+  589  ug run ios
+  590  pw
+  591  ug run ios
+  592  pw
+  593  q
+  594  pw
+  595  git add -A
+  596  git commit -m "check css"
+  597  pw
+  598  ug run ios
+  599  git add -A
+  600  git commit -m "update home page"
+  601  git push origin jason-dev
+  602  pm 
+  603  pw
+  604  git add -A
+  605  git commit -m "Check location work"
+  606  pw
+  607  cd ..
+  608  git commit -m "Check location work"
+  609  honcho start -f ProcfileDev
+  610  kill -9 python
+  611  honcho start -f ProcfileDev
+  612  ionic serve
+  613  honcho start -f ProcfileDev
+  614  '/Applications/Postgres.app/Contents/Versions/9.4/bin'/psql -p5432
+  615  honcho start -f ProcfileDev
+  616  pw
+  617  cd app
+  618  pw
+  619  \t\t\tchmod 777 ./scripts/ug_plugins.sh
+  620  pw
+  621  cd ..
+  622  honcho start -f ProcfileDev
+  623  kill -9 chrome
+  624  killall -9 chrome
+  625  killall -9 python
+  626  killall -9 py
+  627  killall -9 python
+  628  honcho start -f Procfile
+  629  killall -9 python
+  630  killall -9 Python
+  631  honcho start -f Procfile
+  632  honcho start -f ProcfileDev
+  633  python run.py
+  634  cd ..
+  635  cd Hello\ Flask
+  636  python run.py
+  637  ionic serve
+  638  ionic address
+  639  killall -9 Python
+  640  killall -9 python
+  641  honcho start -f ProcfileDev
+  642  honcho run python
+  643  honcho start -f ProcfileDev
+  644  sudo pip install Flask-SQLAlchemy
+  645  ff
+  646  f
+  647  sudo pip install Flask-SQLAlchemy
+  648  cd
+  649  killall -9 chrome.exe
+  650  killall -9 chrome
+  651  killall -9 google chrome
+  652  cd Git
+  653  cd uguru
+  654  honcho start -f ProcfileDev
+  655  pip install -U flask-cors
+  656  sudo pip install -U flask-cors
+  657  honcho start -f ProcfileDev
+  658  killall -9 python
+  659  honcho start -f ProcfileDev
+  660  sudo pip install -r requirements.txt
+  661  honcho start -f ProcfileDev
+  662  git checkout -b issue-4040
+  663  git add -A
+  664  git checkout jason-dev
+  665  git add -A
+  666  git commit -m "fix #4040 ,some workflow is added"
+  667  git push origin jason-dev
+  668  cd ..
+  669  cd uguru/mobile-app
+  670  ionic serve
+  671  sudo pip install -r requirements.txt
+  672  honcho start -f ProcfileDev
+  673  git add -A
+  674  git commit -m "FAQ and Support took out loading spin for it"
+  675  git pushr origin jason-dev
+  676  git push origin jason-dev
+  677  ping 192.168.42.89
+  678  cd mobile-app
+  679  cd ../
+  680  cd mobile-app
+  681  cordova -v
+  682  cordova platforms
+  683  ug run ios
+  684  brew install ios-webkit-debug-proxy
+  685  instruments -s
+  686  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  687  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  688  pm
+  689  brew install --HEAD ideviceinstaller
+  690  pm
+  691  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  692  ifconfig en0
+  693  pm
+  694  pm 
+  695  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  696  pm 
+  697  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  698  pm 
+  699  apium -v
+  700  appium -v
+  701  appium-doctor
+  702  pm 
+  703  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  704  pm 
+  705  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  706  pm
+  707  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  708  pm
+  709  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  710  pm
+  711  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  712  pm
+  713  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  714  pm
+  715  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  716  pm
+  717  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  718  pm
+  719  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  720  pm
+  721  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  722  pm
+  723  appium -U ae0e73324f34a167a19b912f3f22af2f74bc0936
+  724  pm
+  725  appium
+  726  pm
+  727  appium
+  728  pm
+  729  webdriver-manager start
+  730  pw
+  731  pd
+  732  PM
+  733  pm
+  734  appium
+  735  pm
+  736  appium
+  737  pm
+  738  ug run ios
+  739  pm
+  740  ug run ios
+  741  pw
+  742  pd
+  743  ug run ios
+  744  pm
+  745  appium
+  746  pm
+  747  appium
+  748  pm
+  749  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  750  appium
+  751  pm
+  752  pd
+  753  pm
+  754  appium
+  755  pd
+  756  safari
+  757  Safari 
+  758  pd
+  759  ug run ios
+  760  pm
+  761  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  762  appium
+  763  pm
+  764  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  765  appium
+  766  ug run ios
+  767  source ~/.zshrc
+  768  pi
+  769  appium
+  770  zs
+  771  pi
+  772  appium
+  773  pi
+  774  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  775  pi
+  776  ug run ios
+  777  appium
+  778  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  779  pi
+  780  appium
+  781  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  782  pi
+  783  appium
+  784  pi
+  785  appium
+  786  killall -9 instruments
+  787  pi
+  788  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  789  pi
+  790  appium
+  791  pi
+  792  appium
+  793  pi
+  794  appium
+  795  pi
+  796  xcodebuild -version
+  797  pi
+  798  appium
+  799  pi
+  800  appium
+  801  pi
+  802  appium
+  803  pi
+  804  appium
+  805  pi
+  806  appium
+  807  pi
+  808  appium
+  809  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  810  pi
+  811  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  812  pi
+  813  appium
+  814  pi
+  815  appium
+  816  pi
+  817  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+  818  webdriver-manager start
+  819  pw
+  820  pd
+  821  ifconfig
+  822  pd
+  823  ifconfig
+  824  pd
+  825  git add -A
+  826  git commit -m "ios e2e test"
+  827  git push origin jason-dev
+  828  pi
+  829  pd
+  830  /Users/Jason-work/Downloads/phantomjs-2.0.0-macosx/bin/phantomjs ; exit;
+  831  pd
+  832  webdriver-manager update
+  833  webdriver-manager start
+  834  pd
+  835  brew install phantomjs
+  836  brew --v
+  837  brew -v
+  838  brew install phantomjs
+  839  pd
+  840  xpd
+  841  pd
+  842  git add -A
+  843  git commit -m "Desktop browser set"
+  844  git push origin jason-dev
+  845  cd 
+  846  cd Downloads
+  847  py euler_18.py
+  848  pip euler_18.py
+  849  python euler_18.py
+  850  cd
+  851  sudo port install aircrack-ng”
+  852  sudo port install aircrack-ng
+  853  port version
+  854  zs
+  855  port version
+  856  cd Git/uguru/mobile-app
+  857  webdriver-manager start
+  858  ionic serve
+  859  ug run ios
+  860  pd
+  861  ug run ios
+  862  ifconfig
+  863  ug run ios
+  864  pd
+  865  webdriver-manager start
+  866  pd
+  867  webdriver-manager start
+  868  pd
+  869  dk
+  870  pd
+  871  git add -A 
+  872  git commit -m " set up desktop screen config"
+  873  git pull origin samir-dev
+  874  git add -A 
+  875  git commit -m " merge from samir"
+  876  git push origin jason-dev
+  877  pd
+  878  ug
+  879  cd
+  880  ug
+  881  cd Git/uguru/mobile-app
+  882  zs
+  883  e2e
+  884  dk
+  885  pd
+  886  webdriver-manager start
+  887  pd
+  888  zf
+  889  zs
+  890  e2e 600 800
+  891  zs
+  892  e2e 600 800
+  893  e2e 
+  894  e2e 600 800
+  895  zf
+  896  zs
+  897  e2e 600 800
+  898  e2e
+  899  zf
+  900  zs
+  901  e2e
+  902  e2e 600 800
+  903  zs
+  904  e2e 600 800
+  905  zs
+  906  e2e 600 800
+  907  e2e 1080 1280
+  908  e2e 300 800
+  909  e2e 300 300
+  910  e2e 300 500
+  911  e2e 300 300
+  912  ug run ios
+  913  e2e 300 300
+  914  e2e 300 500
+  915  git add -A
+  916  git commit -m " workflows for mobie interface"
+  917  git push origin jason-dev
+  918  cd
+  919  cd mo
+  920  cd Git/uguru/mobile-app
+  921  cd ..
+  922  git clone https://github.com/Uguru/gpa.git
+  923  cd gpa
+  924  git pull origin samir-dev
+  925  brew install npm
+  926  npm install gulp gulp util --save
+  927  ionic -v
+  928  cordova -v
+  929  npm install -g
+  930  git checkout jason-dev
+  931  git checkout -b jason-dev
+  932  ionic serve
+  933  ionic serve -clr
+  934  git pull origin samir-dev
+  935  ionic serve
+  936  cd ..
+  937  cd gpa
+  938  ionic serve -clr
+  939  git add -A
+  940  git commit -m "Just set up the config and starting frist test"
+  941  git pull origin samir-dev
+  942  git push origin jason-dev
+  943  cd ..
+  944  cd gpa
+  945  git add -A
+  946  git commit "Just set up the config and starting frist test"
+  947  git commit -m "Just set up the config and starting frist test"
+  948  git pull origin samir-dev
+  949  git add -A 
+  950  git commit -m "merge samir-dev"
+  951  git push origin jason-dev
+  952  git add -A
+  953  git commit -m "Page obejct for university and Demgraphic set"
+  954  git pull origin samir-dev
+  955  git push origin jason-dev
+  956  git add -A 
+  957  git commit -m "Infite scroll add"
+  958  git push jason-dev
+  959  git push origin jason-dev
+  960  git add -A 
+  961  git commit -m "update prehome test"
+  962  git pull origin samir-dev
+  963  git status
+  964  protractor test/config/desktop.config.js
+  965  npm install jasmine-spec-reporter
+  966  protractor test/config/desktop.config.js
+  967  pd
+  968  protractor test/config/desktop.config.js
+  969  webdriver-manager start
+  970  protractor test/config/desktop.config.js
+  971  git add -A
+  972  git commit -m "add more university test"
+  973  git push origin jason-dev
+  974  protractor test/config/desktop.config.js
+  975  git pull origin samir-dev
+  976  protractor test/config/desktop.config.js
+  977  webdriver-manager start
+  978  protractor test/config/desktop.config.js
+  979  webdriver-manager start
+  980  protractor test/config/desktop.config.js
+  981  git push origin jason-dev
+  982  protractor test/config/desktop.config.js
+  983  git add -A
+  984  git commit -m 'Prehome update'
+  985  git pull origin samir-dev
+  986  git status
+  987  git add -A
+  988  git commit -m "merge from smair\n"
+  989  git pull origin samir-dev
+  990  git purh origin jason-dev
+  991  git push origin jason-dev
+  992  git add -A
+  993  git commit -m "put afterEach check"
+  994  git push origin jason-dev
+  995  protractor test/config/desktop.config.js
+  996  git add -A 
+  997  git commit -m "basic gpa pgae object add"
+  998  git pull origin samir-dev
+  999  git push origin jason-dev
+ 1000  protractor test/config/desktop.config.js
+ 1001  git add -A
+ 1002  git commit -m "more test for course (split them out cuz wanna just see the result)"
+ 1003  git push jason-dev
+ 1004  git push origin jason-dev
+ 1005  cd 
+ 1006  cd Downloads
+ 1007  python euler_18-1.py
+ 1008  git pull origin samir-dev
+ 1009  ionic serve -clr
+ 1010  git stash
+ 1011  git reset --hard origin/jason-dev
+ 1012  ionic serve -clr
+ 1013  git status
+ 1014  ionic serve -clr
+ 1015  ionic serve
+ 1016  cd Git/gpa
+ 1017  ionic serve
+ 1018  ionic serve -clr
+ 1019  git pull origin samir-dev
+ 1020  ionic serve -clr
+ 1021  webdriver-manager start
+ 1022  pd
+ 1023  jshint
+ 1024  npm install -g jshint
+ 1025  jshint
+ 1026  jshint -version
+ 1027  pd
+ 1028  git add -A
+ 1029  git commit -m "4 workflow added"
+ 1030  git push origin jason-dev
+ 1031  pd
+ 1032  git status
+ 1033  git add -A
+ 1034  git commit -m "update"
+ 1035  git push origin jason-dev
+ 1036  git pull origin samir-dev
+ 1037  pd
+ 1038  git checkout -b gabri-dev
+ 1039  git pull origin gabri-dev
+ 1040  ionic
+ 1041  ionic serve
+ 1042  git checkout -b jason-dev
+ 1043  git checkout jason-dev
+ 1044  ionic serve
+ 1045  cd ..
+ 1046  cd uguru/mobile-app
+ 1047  ionic serve
+ 1048  pd
+ 1049  cd 
+ 1050  git clone https://github.com/f230536/Create_Terrain.git
+ 1051  cd git 
+ 1052  git clone https://github.com/f230536/Create_Terrain.git
+ 1053  cd uguru/mobile-app
+ 1054  pd
+ 1055  git add -A
+ 1056  git commit -m "applying sidebar in + add popup into library"
+ 1057  git push origin jason-dev
+ 1058  cd ..
+ 1059  cd gpa
+ 1060  git add -A
+ 1061  git commit -m "updating sidebar in + add popup into library"
+ 1062  git push origin jason-dev
+ 1063  cd ..
+ 1064  cd uguru/mobile-app
+ 1065  pd
+ 1066  cd uguru/mobile-app
+ 1067  pd
+ 1068  git add -A
+ 1069  git commit -m "update sidePageObject"
+ 1070  git push origin jason-dev
+ 1071  cd ..
+ 1072  git add -A
+ 1073  git commit -m "finish sidebar updated"
+ 1074  appium
+ 1075  pi
+ 1076  cd mobile-app
+ 1077  pi
+ 1078  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+ 1079  ug run ios
+ 1080  pi
+ 1081  cd ..
+ 1082  cd gpa
+ 1083  ionic serve
+ 1084  cd ..
+ 1085  git clone https://github.com/Uguru/food.git
+ 1086  cd food
+ 1087  git checkout -b jason-dev
+ 1088  ionic run
+ 1089  ionic serve
+ 1090  webdriver-manager start
+ 1091  pd
+ 1092  npm install jasmine-spec-reporter --save-dev
+ 1093  pd
+ 1094  git add -A
+ 1095  git commit -m "prehome test" 
+ 1096  git push origin jason-dev
+ 1097  pd
+ 1098  git add -A
+ 1099  git commit -m "side test completed"
+ 1100  git push origin jason-dev
+ 1101  git add -A
+ 1102  git commit -m "account page obejct"
+ 1103  git pull origin nick-dev
+ 1104  git push origin jason-dev
+ 1105  git status
+ 1106  git push origin jason-dev
+ 1107  git pull origin nick-dev
+ 1108  git reset hard origin/jason-dev
+ 1109  git reset --hard origin/jason-dev
+ 1110  pd
+ 1111  webdriver-manager start
+ 1112  pd
+ 1113  git add -A 
+ 1114  git commit -m "trying to set up IE\n"
+ 1115  git push origin jason-dev
+ 1116  cd ..
+ 1117  cd flask
+ 1118  cd Hello\ Flask
+ 1119  run.py
+ 1120  ls
+ 1121  python run.py
+ 1122  cd ..cd
+ 1123  cd
+ 1124  cd Git/food/
+ 1125  dk
+ 1126  pd
+ 1127  ionic serve
+ 1128  pd
+ 1129  git add -A
+ 1130  pd
+ 1131  git add -A
+ 1132  git commit -m "Set up the envirment for IE and ME"
+ 1133  git push origin jason-dev
+ 1134  git add -A
+ 1135  git commit -m "new workflow add"
+ 1136  git push origin jason-dev
+ 1137  git checkout nick-dev
+ 1138  git checkout -b nick-dev
+ 1139  git pull origin nick-dev
+ 1140  \tgit checkout jason-dev
+ 1141  pd
+ 1142  ug build ios
+ 1143  git checkout -b jason-nick
+ 1144  git pull origin nick-dev
+ 1145  git status
+ 1146  git add -A
+ 1147  git commit -m "merge nick branch"
+ 1148  ./grub_build.sh ios
+ 1149  ./grub_run.sh ios
+ 1150  ionic serve
+ 1151  ./grub_run.sh ios
+ 1152  pd
+ 1153  git add -A
+ 1154  git commit -m 'update id"\n'
+ 1155  git checkout -b samir-feedback
+ 1156  git pull origin samir-feedback
+ 1157  git checkout jason-dev
+ 1158  ping google.com
+ 1159  git checkout jason-nick
+ 1160  git add -A
+ 1161  git commit -m "merge'\n"
+ 1162  git checkout jason-nick
+ 1163  git pull origin nick-dev
+ 1164  ionic serve
+ 1165  dk
+ 1166  pd
+ 1167  dk
+ 1168  pd
+ 1169  dk
+ 1170  pd
+ 1171  git pull origin nick-dev
+ 1172  pd
+ 1173  \tgit checkout jason-dev
+ 1174  pd
+ 1175  brew install reaver
+ 1176  brew uninstall reaver
+ 1177  pd
+ 1178  git add -A 
+ 1179  git commit -m 'update test case:\n;\n'
+ 1180  git checkout jason-dev
+ 1181  git merge jason-nick
+ 1182  pd
+ 1183  ionic serve
+ 1184  ionic servepd
+ 1185  pd
+ 1186  git add -A 
+ 1187  git commit -m "merge nick's work"
+ 1188  git push origin jason-dev
+ 1189  pd
+ 1190  git pull origin nick-dev
+ 1191  pd
+ 1192  git pull origin jason-dev
+ 1193  git pull origin nick-dev
+ 1194  git add -A
+ 1195  git commit -m "ios setup merge from nick"
+ 1196  ./grub_build.sh ios
+ 1197  ./grub_run.sh ios
+ 1198  ionic serve
+ 1199  pd
+ 1200  npm install protractor-html-screenshot-reporter --save-dev
+ 1201  pd
+ 1202  git status
+ 1203  git add -A
+ 1204  git commit -m "merge"
+ 1205  git push origin jason-dev
+ 1206  [safari #2]     Go through slide
+ 1207  [safari #2]        * ✗ Nav to /#/intro : 
+ 1208  [safari #2]         - Expected false to be true, 'log: [ { level: { name: 'INFO', value: 800 },
+ 1209  [safari #2]     message: 'launching FB SDK',
+ 1210  [safari #2]     timestamp: 1446603796663,
+ 1211  [safari #2]     type: '',
+ 1212  [safari #2]     closure_uid_554611635: undefined },
+ 1213  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1214  [safari #2]     message: '================',
+ 1215  [safari #2]     timestamp: 1446603797782,
+ 1216  [safari #2]     type: '',
+ 1217  [safari #2]     closure_uid_554611635: undefined },
+ 1218  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1219  [safari #2]     message: 'Body dom load complete, load time: 1.31 seconds',
+ 1220  [safari #2]     timestamp: 1446603797783,
+ 1221  [safari #2]     type: '',
+ 1222  [safari #2]     closure_uid_554611635: undefined },
+ 1223  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1224  [safari #2]     message: '================',
+ 1225  [safari #2]     timestamp: 1446603797783,
+ 1226  [safari #2]     type: '',
+ 1227  [safari #2]     closure_uid_554611635: undefined },
+ 1228  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1229  [safari #2]     message: 'false false',
+ 1230  [safari #2]     timestamp: 1446603797954,
+ 1231  [safari #2]     type: '',
+ 1232  [safari #2]     closure_uid_554611635: undefined },
+ 1233  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1234  [safari #2]     message: 'initializing filters modal..',
+ 1235  [safari #2]     timestamp: 1446603797985,
+ 1236  [safari #2]     type: '',
+ 1237  [safari #2]     closure_uid_554611635: undefined },
+ 1238  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1239  [safari #2]     message: 'Window size [object Object]',
+ 1240  [safari #2]     timestamp: 1446603798011,
+ 1241  [safari #2]     type: '',
+ 1242  [safari #2]     closure_uid_554611635: undefined },
+ 1243  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1244  [safari #2]     message: 'heard something!  ',
+ 1245  [safari #2]     timestamp: 1446603798441,
+ 1246  [safari #2]     type: '',
+ 1247  [safari #2]     closure_uid_554611635: undefined },
+ 1248  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1249  [safari #2]     message: 'heard something!  ',
+ 1250  [safari #2]     timestamp: 1446603798588,
+ 1251  [safari #2]     type: '',
+ 1252  [safari #2]     closure_uid_554611635: undefined },
+ 1253  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1254  [safari #2]     message: '================',
+ 1255  [safari #2]     timestamp: 1446603801596,
+ 1256  [safari #2]     type: '',
+ 1257  [safari #2]     closure_uid_554611635: undefined },
+ 1258  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1259  [safari #2]     message: 'Body dom load complete, load time: 0.204 seconds',
+ 1260  [safari #2]     timestamp: 1446603801597,
+ 1261  [safari #2]     type: '',
+ 1262  [safari #2]     closure_uid_554611635: undefined },
+ 1263  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1264  [safari #2]     message: '================',
+ 1265  [safari #2]     timestamp: 1446603801597,
+ 1266  [safari #2]     type: '',
+ 1267  [safari #2]     closure_uid_554611635: undefined },
+ 1268  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1269  [safari #2]     message: 'false false',
+ 1270  [safari #2]     timestamp: 1446603801741,
+ 1271  [safari #2]     type: '',
+ 1272  [safari #2]     closure_uid_554611635: undefined },
+ 1273  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1274  [safari #2]     message: 'initializing filters modal..',
+ 1275  [safari #2]     timestamp: 1446603801758,
+ 1276  [safari #2]     type: '',
+ 1277  [safari #2]     closure_uid_554611635: undefined },
+ 1278  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1279  [safari #2]     message: 'Window size [object Object]',
+ 1280  [safari #2]     timestamp: 1446603801761,
+ 1281  [safari #2]     type: '',
+ 1282  [safari #2]     closure_uid_554611635: undefined } ]'.
+ 1283  [safari #2]        * ✗ Get Start ->
+ 1284  [safari #2]         - Expected false to be true, 'log: [ { level: { name: 'INFO', value: 800 },
+ 1285  [safari #2]     message: 'heard something!  ',
+ 1286  [safari #2]     timestamp: 1446603802029,
+ 1287  [safari #2]     type: '',
+ 1288  [safari #2]     closure_uid_554611635: undefined },
+ 1289  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1290  pd 
+ 1291  [safari #2]   { level: { name: 'INFO', value: 800 },
+ 1292  pd 
+ 1293  git pull origin nick-dev
+ 1294  git add -A
+ 1295  git commit -m "polish test"
+ 1296  git push origin jason-dev
+ 1297  pd
+ 1298  ionic serve
+ 1299  pd
+ 1300  webdriver-manager start
+ 1301  pd
+ 1302  webdriver-manager start
+ 1303  pd
+ 1304  git add -A
+ 1305  git commit -m "update config"
+ 1306  git checkout jason-nick
+ 1307  git pull nick-dev
+ 1308  git pull origin nick-dev
+ 1309  git add -A
+ 1310  git commit -m "merge"
+ 1311  git checkout jason-dev
+ 1312  git status
+ 1313  git pull origin nick-dev
+ 1314  ./grub_build.sh ios
+ 1315  ./grub_run.sh ios
+ 1316  ./grub_build.sh ios
+ 1317  ./grub_run.sh ios
+ 1318  npm install
+ 1319  ./grub_run.sh ios
+ 1320  ./grub_build.sh ios
+ 1321  ./grub_run.sh ios
+ 1322  appium
+ 1323  pi
+ 1324  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+ 1325  pi
+ 1326  appium
+ 1327  pi
+ 1328  appium
+ 1329  pi
+ 1330  appium
+ 1331  pi
+ 1332  webdriver-manager start
+ 1333  pi
+ 1334  pd
+ 1335  pi
+ 1336  pd
+ 1337  git add -A
+ 1338  git commit -m "update for ios setup "
+ 1339  git push origin jason-dev
+ 1340  git pull nick-dev
+ 1341  git pull origin nick-dev
+ 1342  pd
+ 1343  ionic serve
+ 1344  pd
+ 1345  pi
+ 1346  appium
+ 1347  pi
+ 1348  appium
+ 1349  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+ 1350  pi
+ 1351  appium
+ 1352  pd
+ 1353  git checkout jason-dev-windows
+ 1354  git checkout -b jason-dev-windows
+ 1355  git add -a
+ 1356  git add -A
+ 1357  git commit -m " merge nick branch"
+ 1358  git checkout -b jason-dev-windows
+ 1359  cd scripts
+ 1360  ls
+ 1361  sublime
+ 1362  subl
+ 1363  cordova -v
+ 1364  ./grub_run.sh windows
+ 1365  ./grub_build.sh windows
+ 1366  cd ..
+ 1367  ./grub_build.sh windows
+ 1368  ./grub_build.sh wp8
+ 1369  ./grub_build.sh windows
+ 1370  cd ..
+ 1371  cd gpa
+ 1372  git pull origin samir-dev
+ 1373  git status
+ 1374  git add -A
+ 1375  git commit -m "merge smair"
+ 1376  ionic serve
+ 1377  npm install
+ 1378  git add -A
+ 1379  git commit -m 'merge"\n'
+ 1380  ionic serve
+ 1381  git checkout samir-dev
+ 1382  git pull origin samir-dev
+ 1383  ionic serve
+ 1384  git status
+ 1385  ./ug_build.sh windows
+ 1386  ./grub_build.sh windows
+ 1387  chmod 777 ./scripts/ug_build.sh
+ 1388  ./ug_build.sh windows
+ 1389  cd scripts
+ 1390  ug_build.sh windows
+ 1391  ls
+ 1392  ug_build.sh windows
+ 1393  ./ug_build.sh windows
+ 1394  cd ..
+ 1395  cd uguru
+ 1396  git checkout -b jason-win
+ 1397  git checkout -b master
+ 1398  git checkout master
+ 1399  git add -A
+ 1400  git commit "none"
+ 1401  git checkout master
+ 1402  git commit -m "none"
+ 1403  git checkout master
+ 1404  git pull origin master
+ 1405  git checkout -b jason-win
+ 1406  git checkout -b jason-wp
+ 1407  ./ug_build.sh windows
+ 1408  cd mobile-app
+ 1409  ./ug_build.sh windows
+ 1410  cd scripts
+ 1411  ./ug_build.sh windows
+ 1412  ./grub_build.sh windows
+ 1413  cd scripts
+ 1414  ./grub_build.sh windows
+ 1415  ./ug_build.sh windows
+ 1416  \t\tcordova platform rm wp8
+ 1417  \t\tcordova platform rm windows
+ 1418  ./ug_build.sh windows
+ 1419  cd
+ 1420  cd Desktop
+ 1421  node euler17.js
+ 1422  cd
+ 1423  cd Git
+ 1424  git clone https://github.com/Uguru/euler.git
+ 1425  cd euler
+ 1426  ls
+ 1427  git status
+ 1428  git add -A
+ 1429  git commit -m "jason 17"
+ 1430  git push origin master
+ 1431  cd ..
+ 1432  cd gpa
+ 1433  git checkout jason-dev
+ 1434  git merge samir-dev
+ 1435  ionic serve
+ 1436  cd 
+ 1437  cd Git/gpa
+ 1438  ionic serve
+ 1439  webdriver-manager start
+ 1440  ug
+ 1441  zs
+ 1442  pc
+ 1443  cd
+ 1444  cd Git/gpa
+ 1445  pc
+ 1446  pc 
+ 1447  pc  --params.screenSize.w=400 --params.screenSize.h=400
+ 1448  pd
+ 1449  pc  --params.screens=100x100
+ 1450  pc  
+ 1451  pc  --params.screens=100x100
+ 1452  pc  --params.screens=200x200
+ 1453  pc
+ 1454  pc  --params.screens=200x200
+ 1455  pc
+ 1456  zs
+ 1457  test
+ 1458  pf
+ 1459  protractor test/config/firefox.conifg.js
+ 1460  zs
+ 1461  ./source ~/.zshrc
+ 1462  source ~/.zshrc
+ 1463  pf
+ 1464  pf  --params.screens=200x200
+ 1465  pc  --params.screens=200x200
+ 1466  pc  --params.screensSize=200x200
+ 1467  pc  --params.screenSize=200x200
+ 1468  zs
+ 1469  test
+ 1470  git add -A
+ 1471  git commit -m "recent update"
+ 1472  git push origin jason-dev
+ 1473  git add -a 
+ 1474  git add -A
+ 1475  git commit -m "most update"
+ 1476  git push origin jason-dev
+ 1477  git pull origin jason-dev-command
+ 1478  git pull origin jason-dev-comments
+ 1479  cd
+ 1480  brew install reaver
+ 1481  reaver
+ 1482  wash
+ 1483  brew uninstall 
+ 1484  brew uninstall reaver
+ 1485  reaver
+ 1486  wash
+ 1487  pc --suite intro
+ 1488  ifconfig
+ 1489  brew install reaver
+ 1490  wash -i wlan0
+ 1491  wash
+ 1492  airmon-ng
+ 1493  brew install airmon-ng
+ 1494  brew install aircrack-ng
+ 1495  airmon-ng
+ 1496  aircrack-ng
+ 1497  brew uninstall aircrack-ng
+ 1498  wash
+ 1499  wash -i 
+ 1500  wash -i mon0
+ 1501  wash -i wlan1
+ 1502  wash -i wlan0
+ 1503  reaver 
+ 1504  [X] ERROR: Failed to compile packet filter
+ 1505  brew install aircrack-ng
+ 1506  airodump-ng-oui-update
+ 1507  aircrack
+ 1508  aircrack-ng
+ 1509  sudo airmon-ng start wlan0
+ 1510  brew uninstall aircrack-ng
+ 1511  sudo brew install aircrack-ng
+ 1512  brew install aircrack-ng
+ 1513  ifconfig
+ 1514  wash -i en0
+ 1515  wash -i bridge0
+ 1516  airport -s
+ 1517  aircrack-ng
+ 1518  aircrack-ng --help
+ 1519  sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
+ 1520  cd
+ 1521  sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
+ 1522  airport
+ 1523  aircrack-ng
+ 1524  sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
+ 1525  sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
+ 1526  sudo airport en0 sniff 6
+ 1527  sudo airport en0 
+ 1528  sudo airport en0 sniff
+ 1529  ifconfig
+ 1530  airport
+ 1531  sudo airport en1
+ 1532  sudo airport en1 sniff
+ 1533  airport -s
+ 1534  00:21:91:d8:98:6d
+ 1535  aircrack-ng -1 -a 1 -b 00:21:91:d8:98:6d
+ 1536  aircrack-ng -1 -a 1 -b 00:25:86:4c:c0:26 /tmp/airportSniffrekfv1.cap
+ 1537  aircrack-ng -1 -a 1 -b 00:25:86:4c:c0:26 /tmp/airportSniffrekf.cap
+ 1538  reaver 
+ 1539  reaver -i en0 -b 00:25:86:4c:c0:26 -vv
+ 1540  reaver -i en1 -b 00:25:86:4c:c0:26 -vv
+ 1541  airport -s
+ 1542  reaver -i en1 -b 00:25:86:4c:c0:26 -vv
+ 1543  airport -s
+ 1544  reaver -i en1 -b 00:21:91:d8:98:6d -vv
+ 1545  airport -s
+ 1546  sudo airport en0 sniff 6
+ 1547  sudo airport en0 sniff 165
+ 1548  aircrack-ng -1 -a 1 -b 00:21:91:d8:98:6d /tmp/airportSniffj3AXHQ.cap
+ 1549  cd Git
+ 1550  cd  gpa
+ 1551  git add -A
+ 1552  git commit -m "edit empty"
+ 1553  git push origin jason-dev
+ 1554  cd
+ 1555  cd git
+ 1556  ls
+ 1557  git clone https://github.com/Uguru/notes.git
+ 1558  cd
+ 1559  cd git 
+ 1560  cd notes
+ 1561  git add -A
+ 1562  git commit -m "test spec notes add"
+ 1563  git add -A
+ 1564  git push origin master
+ 1565  cd
+ 1566  cd Git/euler
+ 1567  cd jason
+ 1568  node 17.js
+ 1569  git add -A
+ 1570  git commit "finish 17"
+ 1571  git commit -m "finish 17"
+ 1572  git push origin master
+ 1573  git add -A
+ 1574  git commit -m "finish 17"
+ 1575  git push origin master
+ 1576  cd 
+ 1577  cd Git/euler
+ 1578  git push origin master
+ 1579  git add -A
+ 1580  git commit -m "finish 17-jason"
+ 1581  git pull origin master
+ 1582  git add -A
+ 1583  git commit -m "finish jason-17"
+ 1584  git push origin master
+ 1585  airpot -s
+ 1586  airport -s
+ 1587  node 17.js
+ 1588  cd jason
+ 1589  node 17.js
+ 1590  cd ..
+ 1591  cd notes
+ 1592  git pull origin master
+ 1593  git add -A
+ 1594  git commit -m "update food,song"
+ 1595  git push origin master
+ 1596  cd ..
+ 1597  cd food
+ 1598  git add -A
+ 1599  git commit -m 'empty case added"\n'
+ 1600  git switch jason-dev
+ 1601  git merge jason-dev-windows
+ 1602  git checkout jason-dev
+ 1603  git merge jason-dev-windows
+ 1604  git status
+ 1605  git push origin jason-dev
+ 1606  cd ,,
+ 1607  cd ..
+ 1608  git clone                           dlink 00:21:91:d8:98:6d -74  165,-1  Y  US WPA2(PSK/AES/AES) 
+ 1609  git clone https://github.com/Uguru/sound.git
+ 1610  cd sound
+ 1611  git checkout -b jason-dev
+ 1612  git add -A
+ 1613  git commit -m "empty test for songs"
+ 1614  git push origin jason-dev
+ 1615  cd ..
+ 1616  cd sound
+ 1617  git push origin jason-dev
+ 1618  git checkout -b nick-dev
+ 1619  git pull origin nick-dev
+ 1620  cd ..
+ 1621  cd food
+ 1622  git checkout nick-dev
+ 1623  git pull origin nick-dev
+ 1624  git checkout jason-dev
+ 1625  git checkout nick-dev
+ 1626  git pull origin nick-dev
+ 1627  git checkout jason-dev
+ 1628  git merge nick-dev
+ 1629  cd ../notes
+ 1630  git add -A
+ 1631  git commit -m "update nick work"
+ 1632  git push origin master
+ 1633  git add -A
+ 1634  git commit -m "update nightmare case"
+ 1635  git push origin jason-dev
+ 1636  git checkout jason-dev
+ 1637  git status
+ 1638  git add -A 
+ 1639  git commit -m "add more test case"
+ 1640  git checkout jason-dev
+ 1641  git merge nick-dev
+ 1642  git add -A
+ 1643  git commit -m "merge nick-dev"
+ 1644  git push origin jason-dev
+ 1645  cd ..
+ 1646  cd sound
+ 1647  git push origin jason-dev
+ 1648  ionic serve
+ 1649  git push origin jason-dev
+ 1650  ssh -T git@github.com
+ 1651  ssh -T f230536@github.com
+ 1652  git pull origin nick-dev
+ 1653  git push origin jason-dev
+ 1654  git branch
+ 1655  ionic serve
+ 1656  cd
+ 1657  cd Git/food
+ 1658  pd
+ 1659  webdriver-manager start
+ 1660  pd
+ 1661  git add -A
+ 1662  pd
+ 1663  git add -A
+ 1664  git commit -m "add the test case"
+ 1665  pd
+ 1666  git add -A
+ 1667  git commit -m "intro done , apply scroll to lib"
+ 1668  git push origin jason-dev
+ 1669  cd
+ 1670  sudo airport -s
+ 1671  sudo airport en1 sniff 165
+ 1672  sudo airport en0 sniff 165
+ 1673  cd /tmp
+ 1674  open .
+ 1675  ls -l
+ 1676  aircrack-ng
+ 1677  sudo airport en0 sniff 165
+ 1678  ls -l
+ 1679  aircrack-ng -1 -a 1 -b 00:21:91:d8:98:6d airportSniffSWJdjQ.cap
+ 1680  reaver -i en0 -b 00:21:91:d8:98:6d -vv
+ 1681  aircrack-ng -1 -a 1 -b 00:21:91:d8:98:6d airportSniffSWJdjQ.cap
+ 1682  sudo airport en0 sniff 157
+ 1683  ls -l
+ 1684  aircrack-ng -1 -a 1 -b 30:b5:c2:55:75:7e airportSniffSWJdjQ.cap
+ 1685  git remote -v
+ 1686  ls
+ 1687  git remote rm origin https://github.com/Uguru/sound.git
+ 1688  git remote remove origin https://github.com/Uguru/sound.git
+ 1689  git remote remove origin 
+ 1690  git remote add origin https://github.com/Uguru/sound.git
+ 1691  git add -A .
+ 1692  git commit -m 'anonther attempt'
+ 1693  git push origin jason-dev
+ 1694  ls
+ 1695  git remote
+ 1696  git remote -v
+ 1697  ls
+ 1698  git push origin jason-dev
+ 1699  airport
+ 1700  cd ..
+ 1701  cd sound
+ 1702  ionic serve
+ 1703  pc --suite intro
+ 1704  npm install
+ 1705  pc --suite intro
+ 1706  npm install jasmine-spec-reporter
+ 1707  pc --suite intro
+ 1708  cd ../gpa
+ 1709  ionic serve
+ 1710  cd ../gpa
+ 1711  pc
+ 1712  pc --suite intro
+ 1713  git add -A
+ 1714  git commit -m "udpate and refactory the intro"
+ 1715  git push origin jason-dev
+ 1716  cd ../food
+ 1717  git add -A
+ 1718  git commit -m "udpate and refactory the intro"
+ 1719  git push origin jason-dev
+ 1720  cd ../sound
+ 1721  git add -A
+ 1722  git commit -m "udpate and refactory the intro"
+ 1723  git push origin jason-dev
+ 1724  cd ..
+ 1725  git clone https://github.com/Uguru/transit.git
+ 1726  cd ..
+ 1727  cd Git/transit
+ 1728  git checkout -b jason-dev
+ 1729  cd ../transit
+ 1730  ionic serve
+ 1731  pc
+ 1732  npm install jasmine-spec-reporter
+ 1733  pc
+ 1734  ./ug_build.sh windows
+ 1735  ../ug_build.sh windows
+ 1736  cd scripts
+ 1737  ug_build.sh windows
+ 1738  cd..
+ 1739  cd ..
+ 1740  cd scripts
+ 1741  ./ug_build.sh windows
+ 1742  cd..
+ 1743  cd 
+ 1744  cd food
+ 1745  cd Git/food
+ 1746  git checkout master
+ 1747  git add -A
+ 1748  git commit -m "just update"
+ 1749  git push origin jason-dev
+ 1750  git checkout master
+ 1751  git pull origin master
+ 1752  git add -A
+ 1753  git commit -m "update master"
+ 1754  git add -A
+ 1755  git commit -m 'put build windows"\n'
+ 1756  git checkout master cordova platform rm ios
+ 1757  ug_build.sh windows
+ 1758  cd scripts
+ 1759  ./ug_build.sh windows
+ 1760  \t\tcordova platform rm wp8
+ 1761  \t\trm -rf plugins/*
+ 1762  cd ..
+ 1763  \t\trm -rf plugins/*
+ 1764  ./ug_build.sh windows
+ 1765  ../ug_build.sh windows
+ 1766  cd scripts
+ 1767  ./ug_build.sh windows
+ 1768  ./ug_build.sh ios
+ 1769  ./ug_run.sh ios 
+ 1770  cd ..
+ 1771  ./ug_run.sh ios 
+ 1772  cd scripts
+ 1773  chmod +x ug_run.sh
+ 1774  chmod +x ug_build.sh
+ 1775  cd ..
+ 1776  ./ug_run.sh ios 
+ 1777  bash scripts/ug_run.sh ios 
+ 1778  bash scripts/ug_build.sh windows 
+ 1779  ./grub_build.sh windows
+ 1780  cd ..
+ 1781  cd sound
+ 1782  git checkout master
+ 1783  git add -A
+ 1784  git commit -m "update config"
+ 1785  git push origin jason-dev
+ 1786  git checkout master
+ 1787  git pull orign master
+ 1788  git pull origin master
+ 1789  ionic serve
+ 1790  git status
+ 1791  git checkout jason-dev
+ 1792  ionic serve
+ 1793  git checkout master
+ 1794  git add -A
+ 1795  git commit -m "update config"
+ 1796  git push origin jason-dev
+ 1797  git checkout jason-dev
+ 1798  git add -A
+ 1799  git commit -m "conifg"
+ 1800  git push origin jason-dev
+ 1801  ./grub_build.sh windows
+ 1802  git pull origin master
+ 1803  git reset --hard origin/master
+ 1804  git pull origin master
+ 1805  ./grub_build.sh windows
+ 1806  git pull origin master
+ 1807  ./grub_build.sh windows
+ 1808  cordova plugin wp8
+ 1809  cordova plugin 
+ 1810  ./grub_build.sh windows
+ 1811  cd..
+ 1812  cd ..
+ 1813  cd Hello\ Flask
+ 1814  python run.py
+ 1815  cd
+ 1816  cd download
+ 1817  cd Downloads
+ 1818  ls
+ 1819  cd
+ 1820  cd Desktop
+ 1821  ls
+ 1822  dd if=kali-2.0.1-rpi2.img.xz of=/dev/sdb bs=512k
+ 1823  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/sdb bs=512k
+ 1824  diskutil list
+ 1825  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2 bs=512k
+ 1826  dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2 bs=512k
+ 1827  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2 bs=512k
+ 1828  mount
+ 1829  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2s1 bs=512k
+ 1830  umount /dev/disk2
+ 1831  umount /dev/disk2s1
+ 1832  sudo umount /dev/disk2s1
+ 1833  umount /dev/disk2s1
+ 1834  /Volumes/Kali/.fseventsd/fseventsd-uuid ; exit;
+ 1835  diskutil umount /dev/disk2s1
+ 1836  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2 bs=512k
+ 1837  diskutil list
+ 1838  mount
+ 1839  diskutil 
+ 1840  diskutil list
+ 1841  mount
+ 1842  mount /dev/disk2
+ 1843  diskutil list
+ 1844  mount
+ 1845  diskutil list
+ 1846  mount
+ 1847  diskutil umount /dev/disk2s1
+ 1848  mount
+ 1849  dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2 bs=512k
+ 1850  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2 bs=512k
+ 1851  mount /dev/disk2
+ 1852  diskutil mount /dev/disk2
+ 1853  diskutil mountDisk /dev/disk2
+ 1854  diskutil
+ 1855  diskutil list
+ 1856  mount
+ 1857  diskutil mount /dev/disk2
+ 1858  eject
+ 1859  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2s1 bs=512k
+ 1860  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/rdisk2 bs=512k
+ 1861  mount
+ 1862  diskutil unmountDisk /dev/disk2
+ 1863  mount
+ 1864  sudo dd if=kali-2.0.1-rpi2.img of=/dev/disk2 bs=512k
+ 1865  sudo dd if=kali-2.0.1-rpi2.img.xz of=/dev/disk2 bs=512k
+ 1866  cd 
+ 1867  cd Git/euler
+ 1868  node 17.js
+ 1869  node 16.js
+ 1870  cd jason
+ 1871  node 16.js
+ 1872  cd Git/j
+ 1873  cd Git/euler/jason
+ 1874  node 16.js
+ 1875  git add -A
+ 1876  git commit -m "weird superlarge number e+301..."
+ 1877  git push origin master
+ 1878  cd .. 
+ 1879  cd uguru
+ 1880  cd mobile-app
+ 1881  git checkout master
+ 1882  git pull origin master
+ 1883  git status
+ 1884  git reset --hard origin/master
+ 1885  git pull origin master
+ 1886  ug
+ 1887  ug build ios
+ 1888  ug run ios
+ 1889  ug build ios
+ 1890  ug run ios
+ 1891  cd ..
+ 1892  cd m
+ 1893  cd mobile-app
+ 1894  ug run ios
+ 1895  ifconfig
+ 1896  ug run ios
+ 1897  ug
+ 1898  ug build ios
+ 1899  ug run ios
+ 1900  cd Git/uguru
+ 1901  cd mobile-app
+ 1902  ug run ios
+ 1903  ionic serve
+ 1904  killall
+ 1905  ug run ios
+ 1906  ug build ios
+ 1907  git checkout jason-dev
+ 1908  git add -A
+ 1909  git commit -m "uncommand"
+ 1910  git checkout jason-dev
+ 1911  git checkout master
+ 1912  ug run ios
+ 1913  ug build ios
+ 1914  ug run ios
+ 1915  cd
+ 1916  cd Desktop
+ 1917  gunzip kali-2.0.1-rpi2.img.xz
+ 1918  cd
+ 1919  cd Desktop
+ 1920  mount
+ 1921  dd if=kali-2.0.1-rpi2.img of=/dev/disk2 bs=512k
+ 1922  sudo dd if=kali-2.0.1-rpi2.img of=/dev/disk2 bs=512k
+ 1923  sudo dd if=kali-2.0.1-rpi2.img of=/dev/disk3 bs=512k
+ 1924  diskutil list
+ 1925  mount
+ 1926  diskutil unmountDisk /dev/disk3s1
+ 1927  mount
+ 1928  sudo dd if=kali-2.0.1-rpi2.img of=/dev/disk3 bs=512k
+ 1929  git checkout -b jason-issue
+ 1930  git add -A
+ 1931  git commit -m "set up from master"
+ 1932  ionic serve
+ 1933  cd 
+ 1934  cd Git/uguru/mobile-app
+ 1935  git checkout -b jason-issue-4054
+ 1936  ionic serve
+ 1937  git add -A
+ 1938  git commit -m "sign up dialog update"
+ 1939  git add -A 
+ 1940  git commit -m "fix #4054"
+ 1941  git checkout jason-dev
+ 1942  git merge jason-issue-4054
+ 1943  git add -A
+ 1944  git commit -m "merge from jason-issue-4054"
+ 1945  git push origin jason-dev
+ 1946  git checkout jason-issue-4054
+ 1947  git checkout jason-issue
+ 1948  git add -A
+ 1949  git commit -m "header-down change on signup"
+ 1950  git push origin jason-issue-4054
+ 1951  git checkout jason-issue
+ 1952  git checkout -b jason-issue-4056
+ 1953  git status
+ 1954  git checkout jason-dev
+ 1955  git checkout jason-issue-4056
+ 1956  git add -A
+ 1957  git commit -m "fix state go home"
+ 1958  git checkout jason-issue-4056
+ 1959  ionic serve
+ 1960  git add -A
+ 1961  git commit -m "phone pop is not complicated yet"
+ 1962  git push origin jason-issue-4056
+ 1963  cd 
+ 1964  cd Git/Hello\ Flask
+ 1965  python run.py
+ 1966  ionic serve
+ 1967  git status
+ 1968  git add -A
+ 1969  git commit -m "fixed credibility bugs #4056"
+ 1970  git push origin jason-issue-4056
+ 1971  git checkout jason-dev
+ 1972  git status
+ 1973  git
+ 1974  git commit
+ 1975  git merge jason-issue-4056
+ 1976  git status
+ 1977  git add -A
+ 1978  git commit "merg"
+ 1979  git commit -m "merge #4056"
+ 1980  git push origin jason-dev
+ 1981  ug run ios
+ 1982  git status
+ 1983  git add -A
+ 1984  gi commit
+ 1985  git commit
+ 1986  git branch
+ 1987  git checkout jason-issue
+ 1988  git commit -m "constant location"
+ 1989  git checkout jason-issue
+ 1990  git checkout jason-issue-4057
+ 1991  git checkout -b jason-issue-4057
+ 1992  git checkout jason-dev
+ 1993  git add -A
+ 1994  git commit "category fixing"
+ 1995  git checkout jason-dev
+ 1996  git commit -m "category fixing"
+ 1997  git checkout jason-dev
+ 1998  git checkout jason-issue-4057
+ 1999  ug run ios
+ 2000  cd ..
+ 2001  cd uguru
+ 2002  honcho start -f ProcfileDev
+ 2003  ionic serve
+ 2004  honcho start -f ProcfileDev
+ 2005  98    111164   error    Error: undefined is not an object (evaluating '$scope.coursesSource.unshift')
+ 2006  removeGuruCourseAndUpdate@http://192.168.0.104:8100/remote/js/university/AddCourseCtrl.js:91:27
+ 2007  http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:229:308
+ 2008  http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:386:1301
+ 2009  $eval@http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:156:305
+ 2010  $apply@http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:157:11
+ 2011  http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:386:1288
+ 2012  c@http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:63:393
+ 2013  dispatchEvent@[native code]
+ 2014  n@http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:22:408
+ 2015  t@http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:22:228
+ 2016  l@http://192.168.0.104:8100/remote/lib/ionic/js/ionic.bundle.min.js:22:1459, 
+ 2017  heroku restart --app uguru-rest
+ 2018  ionic serve
+ 2019  heroku restart --app uguru-rest
+ 2020  git add -A
+ 2021  git commit -m " only fix category issue"
+ 2022  git push origin jason-issue-4057
+ 2023  git checkout jason-dev
+ 2024  git merge jason-issue-4057
+ 2025  git add -A
+ 2026  git commit -m "merge issue-4057"
+ 2027  git push jason-dev
+ 2028  git push origin jason-dev
+ 2029  git checkout samir dev
+ 2030  git checkout samir-dev
+ 2031  git pull origin samir-dev
+ 2032  ionic serve
+ 2033  git checkout jason-issue-4058
+ 2034  git checkout -b jason-issue-4058
+ 2035  heroku restart --app uguru-rest
+ 2036  cd ..
+ 2037  cd sound
+ 2038  git pull origin master
+ 2039  git checkout samir-dev
+ 2040  git checkout -b samir-dev
+ 2041  git pull origin samir-dev
+ 2042  heroku restart --app uguru-rest
+ 2043  git add -A
+ 2044  git commit -m "Alert fixed"
+ 2045  git add -A
+ 2046  git commit -m "enable popup in credibility, fix cagetory factories"
+ 2047  git push origin jason-issue-4058
+ 2048  git add -A
+ 2049  git commit -m "Setting popup is back"
+ 2050  git push origin jason-issue-4058
+ 2051  git add -A
+ 2052  git push origin jason-issue-4058
+ 2053  git add -A
+ 2054  git commit -m "undo the experiment of overlay"
+ 2055  git push origin jason-issue-4058
+ 2056  git add -A
+ 2057  git commit -m "switch guru/stuent done , both apply flip"
+ 2058  git push origin jaosn-issue-4058
+ 2059  git push origin jason-issue-4058
+ 2060  ionic serve
+ 2061  sass 
+ 2062  gem install sass
+ 2063  sudo gem install sass
+ 2064  sass --watch www/remote/css/sass:www/remote/css/sass
+ 2065  git add -A
+ 2066  git commit -m " refactory isDesktop"
+ 2067  git add -A
+ 2068  git commit -m "refactory isDesktop "
+ 2069  git push origin jason-issue-4058
+ 2070  git status
+ 2071  git check jason-dev
+ 2072  git checkout jason-dev
+ 2073  git merge jason-issue-4058
+ 2074  git status
+ 2075  git add -A
+ 2076  git commit -m "merge issue#4058"
+ 2077  git push origin jason-dev
+ 2078  cd ..
+ 2079  cd sound
+ 2080  git checkout master
+ 2081  git pull orign master
+ 2082  git pull origin master
+ 2083  cordova platform add wp8
+ 2084  git status
+ 2085  ionic serve
+ 2086  cd ..
+ 2087  honcho start -f ProcfileDev
+ 2088  git checkout ason-issue-4058
+ 2089  git checkout jason-issue-4058
+ 2090  ionic serve
+ 2091  heroku restart --app uguru-rest
+ 2092  git add -A 
+ 2093  git commit -m "supoort is showing again more friendly"
+ 2094  git push origin jason-issue-4058
+ 2095  heroku restart --app uguru-rest
+ 2096  ionic serve
+ 2097  git checkout jason-dev
+ 2098  git add -A
+ 2099  git commit -m "calendar"
+ 2100  git add -A
+ 2101  git checkout jason-dev
+ 2102  git merge jason-issue-4058
+ 2103  ionic serve
+ 2104  git add -A
+ 2105  git commit -m 'calendar is up"
+ 2106  git commit -m 'baseic calender"\n'
+ 2107  git push origin jason-dev
+ 2108  honcho start -f ProcfileDev
+ 2109  ionic serve
+ 2110  git checkout jason-dev-calendar
+ 2111  git checkout -b jason-dev-calendar
+ 2112  git add -A
+ 2113  git commit -m 'nothing'
+ 2114  git checkout jason-dev
+ 2115  git pull orign master
+ 2116  git pull origin master
+ 2117  ionic serve
+ 2118  git add -A
+ 2119  git commit -m "desktop sign up fixed"
+ 2120  git add -A 
+ 2121  git commit -m "facebook login will now lead to right page basic on ur mode"
+ 2122  git push origin jason-dev
+ 2123  sass --watch www/remote/css/sass:www/remote/css/sass
+ 2124  git checkout master
+ 2125  git add -A 
+ 2126  git commit -m "Desktop course"
+ 2127  git checkout master
+ 2128  git pull origin master
+ 2129  git checkout -b jason-dev-masterbugs
+ 2130  ionic serve
+ 2131  git checkout jason-dev
+ 2132  git add -A 
+ 2133  git commit -m "Fixed Access page"
+ 2134  git status
+ 2135  ug run ios
+ 2136  ionic serve
+ 2137  ionic build
+ 2138  ug build ios
+ 2139  cd mobile-app
+ 2140  ug build ios
+ 2141  ug run ios
+ 2142  q
+ 2143  ug run ios
+ 2144  ionic serve
+ 2145  ug run ios
+ 2146  git status
+ 2147  ug run ios
+ 2148  ionic serve
+ 2149  ug run ios
+ 2150  git status
+ 2151  ug run ios
+ 2152  ionic serve
+ 2153  pkill lldb 
+ 2154  ug run ios
+ 2155  git add -A
+ 2156  git commit -m "are u fking serious, ng-include?"
+ 2157  git pull origin master
+ 2158  git stash
+ 2159  git status
+ 2160  git reset --hard jason-dev-masterbugs
+ 2161  git pull origin master
+ 2162  git status
+ 2163  git add -A
+ 2164  git commit -m 'merge master"\n'
+ 2165  git push origin jason-dev-masterbugs
+ 2166  ug run ios
+ 2167  cd ..
+ 2168  git add -A
+ 2169  git commit -m "mere"
+ 2170  git push origin jason-dev-masterbugs
+ 2171  ug run ios
+ 2172  git pull origin master
+ 2173  ionic serve
+ 2174  git pull origin master
+ 2175  git add -A
+ 2176  git commit -m "merge master\n"
+ 2177  git pull origin master
+ 2178  ionic serve
+ 2179  git status
+ 2180  git add -A
+ 2181  git commit -m "Email Cap ignore fixed"
+ 2182  git status
+ 2183  git add -A
+ 2184  git commit -m "login fail message"
+ 2185  git add -A
+ 2186  git commit -m "login/signup in desktop version able to go to right page , add explore first now able to go back home page or guru page"
+ 2187  git push origin jason-dev-masterbugs
+ 2188  git add -A
+ 2189  git commit -m "login in desktop mode will go back to home page"
+ 2190  git add -A
+ 2191  git commit -m "Sign up will ignore cap on email , able to go home or guru page after signup"
+ 2192  git add -A
+ 2193  git commit -m "quick fix for detecting it is guru mode or not"
+ 2194  ug run ios
+ 2195  git status
+ 2196  git add -A
+ 2197  git commit -m "forget to ignore lowcase email if email input is null"
+ 2198  git push origin jason-dev-masterbugs
+ 2199  git pull origin master
+ 2200  git checkout master
+ 2201  git pull origin master
+ 2202  git checkout jason-dev-masterbugs
+ 2203  git merge master
+ 2204  git add -A
+ 2205  git commit -m "merge from master"
+ 2206  ug run ios
+ 2207  git pull origin master
+ 2208  git status
+ 2209  git add -A
+ 2210  git commit -m "nonthing'\n"
+ 2211  git pull origin master
+ 2212  git add -A
+ 2213  git commit -m 'merge master'
+ 2214  git push origin jason-dev-masterbugs
+ 2215  git pull origin master
+ 2216  ug run ios
+ 2217  heroku restart --app uguru-rest
+ 2218  Jump
+ 2219  ionic serve
+ 2220  git add -A
+ 2221  git commit -m "edit profile photo moving , span doesn't get hide that's why "
+ 2222  git push origin jason-dev-masterbugs
+ 2223  git add -A
+ 2224  git commit -m "course list shown correct course name"
+ 2225  git push origin jason-dev-masterbugs
+ 2226  git status
+ 2227  git pull origin master
+ 2228  git add -A
+ 2229  git commit -m "latest updated"
+ 2230  git pull origin master
+ 2231  git add -A
+ 2232  git commit -m "merge master"
+ 2233  git push origin jason-dev-masterbugs
+ 2234  ionic serve
+ 2235  git add -A
+ 2236  git commit -m "fix the fking photo width updated issue..."
+ 2237  ionic serve
+ 2238  ug run ios
+ 2239  git add -A 
+ 2240  git commit -m "force to close the keyboard when modal or pop is closed"
+ 2241  git add -A
+ 2242  git status
+ 2243  git add -A
+ 2244  git commit -m "latest version"
+ 2245  git pull origin master
+ 2246  git stash
+ 2247  git status
+ 2248  git pull origin master
+ 2249  git add -A
+ 2250  git commit -m "merge master'\n"
+ 2251  git pull origin master
+ 2252  git push origin jason-dev-masterbugs
+ 2253  git log
+ 2254  CONFLICT (content): Merge conflict in mobile-app/www/remote/templates/desktop.login.html
+ 2255  CONFLICT (content): Merge conflict in mobile-app/www/remote/templates/desktop.login.htmlgit checkout 0d1d7fc32
+ 2256  git checkout 0d1d7fc32
+ 2257  git checkout 4713319
+ 2258  git add -A
+ 2259  git checkout jason-dev-masterbugs
+ 2260  git reset --hard 4713319
+ 2261  git add -A
+ 2262  git commit "backup "
+ 2263  git commit -m "backup "
+ 2264  git pull origin master
+ 2265  git reset --hard 4713319
+ 2266  git push origin jason-dev-masterbugs
+ 2267  git push --force origin jason-dev-masterbugs
+ 2268  git add -A 
+ 2269  git commit -m "Signup header up change to the same position as other modal"
+ 2270  git push origin jason-dev-masterbugs
+ 2271  ug run ios
+ 2272  git add -A 
+ 2273  git commit -m "Fixed course not displaying bugs"
+ 2274  git add -A
+ 2275  git commit 
+ 2276  git push origin jason-dev-masterbugs
+ 2277  ug build android
+ 2278  ug run android
+ 2279  cd Git/uguru/mobile-app
+ 2280  ug run android
+ 2281  keytool -exportcert -alias <RELEASE_KEY_ALIAS> -keystore <RELEASE_KEY_PATH> | openssl sha1 -binary | openssl base64
+ 2282  keytool -exportcert -alias <RELEASE_KEY_ALIAS> -keystore <RELEASE_KEY_PATH> | openssl sha1 -binary | openssl base64√
+ 2283  keytool -exportcert -alias <RELEASE_KEY_ALIAS> -keystore <RELEASE_KEY_PATH> | openssl sha1 -binary | openssl base64
+ 2284  keytool
+ 2285  \tcordova plugins add org.apache.cordova.inappbrowser
+ 2286  ionic serve
+ 2287  cd Git/uguru/mobile-app
+ 2288  ionic serve
+ 2289  git add -A 
+ 2290  git commit -m "basic facebook account login"
+ 2291  git push origin jason-dev-masterbugs
+ 2292  ionic serve
+ 2293  git add -A
+ 2294  git commit -m "fb modal ..."
+ 2295  git push origin jason-dev-masterbugs
+ 2296  ionic serve
+ 2297  git pull origin master
+ 2298  ionic serve
+ 2299  honcho start -f ProcfileDev
+ 2300  cd ..
+ 2301  honcho start -f ProcfileDev
+ 2302  ionic serve
+ 2303  honcho start -f ProcfileDev
+ 2304  ionic serve
+ 2305  git pull origin master
+ 2306  git add -A
+ 2307  git commit -m "merge master"
+ 2308  git pull origin master
+ 2309  git diff --name-only --diff-filter=U
+ 2310  pip install Flask-SSLify
+ 2311  honcho start -f ProcfileDev
+ 2312  ws
+ 2313  webdriver-manager start
+ 2314  pc
+ 2315  git add -A
+ 2316  git commit -m "e2e test add up\n"
+ 2317  git pull origin master
+ 2318  pc
+ 2319  git add -A
+ 2320  git commit -m "first time user test add"
+ 2321  git push origin jason-dev-masterbugs
+ 2322  pc
+ 2323  git add -A 
+ 2324  git commit -m "first time user test : sign up"
+ 2325  git push origin jason-dev-masterbugs
+ 2326  pc
+ 2327  git add -a
+ 2328  git add -A
+ 2329  git commit -m "first time user test, able to signup "
+ 2330  git push jason-dev-masterbugs
+ 2331  git push origin jason-dev-masterbugs
+ 2332  pc
+ 2333  git add -A 
+ 2334  git commit -m "upload photo, enter text for intro"
+ 2335  git push origin jason-dev-masterbugs
+ 2336  pc
+ 2337  git add- A
+ 2338  git add -A
+ 2339  git commit -m "workflow done"
+ 2340  git push origin jason-dev-masterbugs
+ 2341  git pull origin master
+ 2342  git add -A
+ 2343  git commit -m "merge master"
+ 2344  pc
+ 2345  honcho start -f ProcfileDev
+ 2346  pc
+ 2347  webdriver-manager start
+ 2348  pc
+ 2349  git add -A
+ 2350  git commit -m "update profile"
+ 2351  git pull origin master
+ 2352  cd ..
+ 2353  git pull origin master
+ 2354  git add -A
+ 2355  git commit -m 'merge master"\n'
+ 2356  git push origin jason-dev-masterbugs
+ 2357  pc
+ 2358  cd m
+ 2359  cd mobile-app
+ 2360  pc
+ 2361  honcho start -f ProcfileDev
+ 2362  pc
+ 2363  git add -A
+ 2364  git commit -m "latest test update"
+ 2365  git push origin jason-dev-masterbugs
+ 2366  git pull origin master
+ 2367  ionic serve
+ 2368  honcho start -f ProcfileDev
+ 2369  git add -A 
+ 2370  git commit -m "quick fixed remote/DesktopbecomeGuru.ctrl remove code document.querySelector('#cta-modal-categories').classList.add('show'); at ionic.enter\n"
+ 2371  git add -A 
+ 2372  git commit -m "becomeguru now will lead to -> guru-home in desktop mode"
+ 2373  git add -A 
+ 2374  git commit -m "update that upload photo from lib and camera will both go guru-home page"
+ 2375  git add -A
+ 2376  git commit -m "able to sign up and login + received correct msg after  login / signup scuessed"
+ 2377  git add -A 
+ 2378  git commit -m "able to see the msg once experience has been saved"
+ 2379  git add -A 
+ 2380  git commit -m "fixed update experience"
+ 2381  git add -A
+ 2382  git commit -m 'able to upload profile picture at desktop guruprofile'
+ 2383  git push origin jason-dev-masterbugs
+ 2384  pc  --params.screenSize=2048x1536
+ 2385  webdriver-manager start
+ 2386  pc  --params.screenSize=2048x1536
+ 2387  pc  --params.screenSize=1024x690
+ 2388  git add -A
+ 2389  git commit -m "fixed Screen sizse detection"
+ 2390  git add -A
+ 2391  git commit -m "fixed Screen sizse detection"
+ 2392  pc  --params.screenSize=1024x690
+ 2393  git add -A
+ 2394  git push origin jason-dev-masterbugs
+ 2395  pc  --params.screenSize=1024x690
+ 2396  ionic serve
+ 2397  pc  --params.screenSize=1024x690
+ 2398  git add -A
+ 2399  git commit -m "best test case run completed"
+ 2400  git push origin jason-dev-masterbugs
+ 2401  pf
+ 2402  ps
+ 2403  pf
+ 2404  pf  --params.screenSize=1024x690
+ 2405  pd
+ 2406  webdriver-manager update
+ 2407  webdriver-manager start
+ 2408  pd
+ 2409  pc
+ 2410  pc  --params.screenSize=460x700
+ 2411  git status
+ 2412  git add all -A 
+ 2413  git add -A
+ 2414  git commit -m "add test case for broswer iphone size"
+ 2415  git push origin jason-dev-masterbugs
+ 2416  git add -A 
+ 2417  git commit -m "disable signup at access page for mobile device , login in access will lead to right page"
+ 2418  git push origin jason-dev-masterbugs
+ 2419  git add -A
+ 2420  zs
+ 2421  source ~/.zshrc
+ 2422  zs
+ 2423  source ~/.zshrc
+ 2424  cd mobile-app
+ 2425  ga
+ 2426  gm "hide desktop mode at category in modbile mode/screen size"
+ 2427  ga
+ 2428  gm "temp fix for the slide"
+ 2429  heroku restart --app uguru-rest
+ 2430  pc  --params.screenSize=1024x690
+ 2431  git add -A
+ 2432  git commit -m "latest updated"
+ 2433  git push origin jason-dev-masterbugs
+ 2434  cd ..
+ 2435  cd notes
+ 2436  git pull origin master
+ 2437  webdriver-manager start
+ 2438  honcho start -f ProcfileDev
+ 2439  cd..
+ 2440  cd ..
+ 2441  git pull origin master
+ 2442  honcho start -f ProcfileDev
+ 2443  pc  --params.screenSize=1200x800
+ 2444  ionic serve
+ 2445  cd mobile-app
+ 2446  ionic serve
+ 2447  pc  --params.screenSize=1200x800
+ 2448  pc  --params.screenSize=1600x1200
+ 2449  pf  --params.screenSize=1200x800
+ 2450  pc  --params.screenSize=1600x1200
+ 2451  pc  --params.screenSize=1200x800
+ 2452  pf  --params.screenSize=1200x800
+ 2453  ps  --params.screenSize=1600x1200
+ 2454  pc  --suite ios --params.screenSize=400x700
+ 2455  git add -A
+ 2456  git commit -m "update e2e notes"
+ 2457  git push origin master
+ 2458  pc  --suite ios --params.screenSize=400x700
+ 2459  ionic serve
+ 2460  pc  --suite ios --params.screenSize=400x700
+ 2461  pf  --suite ios --params.screenSize=400x700
+ 2462  ga
+ 2463  gm "recent e2e mobile size"
+ 2464  git pull origin master
+ 2465  pc  --params.screenSize=1200x800
+ 2466  pf  --suite ios --params.screenSize=400x700
+ 2467  2. sass --watch www/remote/css/sass:www/remote/css/sass
+ 2468  pf  --suite ios --params.screenSize=400x700
+ 2469  heroku restart --app uguru-rest
+ 2470  Jump
+ 2471  pf  --suite ios --params.screenSize=400x700
+ 2472  pd  --params.screenSize=1200x800
+ 2473  git checkout jason-dev
+ 2474  git add -A 
+ 2475  git commit -m "merge + lateest e2e"
+ 2476  git checkout jason-dev
+ 2477  git checkout jason-dev-masterbugs
+ 2478  appium
+ 2479  pi
+ 2480  cd Git/uguru
+ 2481  ug run ios
+ 2482  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+ 2483  ug run ios
+ 2484  git push origin master
+ 2485  cd ..
+ 2486  cd uguru/mobile-app
+ 2487  ug build ios
+ 2488  ug run ios
+ 2489  pi
+ 2490  appium
+ 2491  pi
+ 2492  appium
+ 2493  pi
+ 2494  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+ 2495  pi
+ 2496  appium
+ 2497  pi
+ 2498  appium
+ 2499  pi -suite ios
+ 2500  appium
+ 2501  pi -suite ios
+ 2502  pi
+ 2503  appium
+ 2504  pi
+ 2505  appium
+ 2506  pi
+ 2507  appium
+ 2508  ios_webkit_debug_proxy -c ae0e73324f34a167a19b912f3f22af2f74bc0936:27753 -d
+ 2509  pi
+ 2510  git add -A 
+ 2511  git commit -m "recent update"
+ 2512  git push origin jason-dev-masterbugs
+ 2513  git add -A
+ 2514  gm
+ 2515  gm "latest note"
+ 2516  git pull origin master
+ 2517  git push origin master
+ 2518  gad
+ 2519  ga
+ 2520  gm "udpate"
+ 2521  git push origin master
+ 2522  pi
+ 2523  appium
+ 2524  pi
+ 2525  zs
+ 2526  test
+ 2527  \tpd  --suite ios --params.screenSize=375×667;
+ 2528  pc  --suite ios --params.screenSize=400x700
+ 2529  \tpd  --suite ios --params.screenSize=375×667
+ 2530  pd --params.screenSize=400x700
+ 2531  pd --suite ios --params.screenSize=400x700
+ 2532  zs
+ 2533  ./source ~/.zshrc
+ 2534  source ~/.zshrc
+ 2535  zs
+ 2536  test
+ 2537  pd --suite ios --params.screenSize=400x700
+ 2538  ps --suite ios --params.screenSize=400x700
+ 2539  pd --suite ios --params.screenSize=400x700
+ 2540  git add -A
+ 2541  git commit -m "latest updated"
+ 2542  git pull origin master
+ 2543  git push origin jason-dev-masterbugs
+ 2544  git pull origin master
+ 2545  ga
+ 2546  gm "note update"
+ 2547  git push origin master
+ 2548  ug build android
+ 2549  ug run android
+ 2550  pa
+ 2551  appium
+ 2552  pa
+ 2553  appium
+ 2554  pa
+ 2555  git add -A 
+ 2556  gm
+ 2557  gm "most update notes"
+ 2558  git push origin master
+ 2559  git stastus
+ 2560  git status
+ 2561  git add -A 
+ 2562  gm "setup android phone\n"
+ 2563  git pull origin master
+ 2564  git status
+ 2565  git pull origin master
+ 2566  pc
+ 2567  git pull origin master
+ 2568  pc  --suite ios --params.screenSize=641x690
+ 2569  pc  --suite ios --params.screenSize=951x767
+ 2570  pc
+ 2571  heroku restart --app uguru-rest
+ 2572  Jump
+ 2573  ionic serve
+ 2574  pc
+ 2575  git add -A
+ 2576  gm "desktop setting test applied"
+ 2577  git push origin jason-dev-masterbugs
+ 2578  pc  --suite ios --params.screenSize=951x767
+ 2579  pc  --suite ios --params.screenSize=641x690
+ 2580  pc
+ 2581  pc  --suite ios --params.screenSize=641x690
+ 2582  pd --suite ios --params.screenSize=400x700
+ 2583  git add -A
+ 2584  gm "phone screen size setting test applied"
+ 2585  git push origin jaosn-dev-masterbugs
+ 2586  git push origin jason-dev-masterbugs
+ 2587  git pull origin master
+ 2588  git push origin jason-dev-masterbugs
+ 2589  git status
+ 2590  git pull origin master
+ 2591  git push origin master
+ 2592  git pull origin master
+ 2593  '/Applications/Postgres.app/Contents/Versions/9.4/bin'/psql -p5432
+ 2594  honcho start -f ProcfileDev
+ 2595  ionic serve
+ 2596  ga
+ 2597  gm "merge master"
+ 2598  git pull origin master
+ 2599  git push origin master
+ 2600  ls
+ 2601  cd ..
+ 2602  ls
+ 2603  s README.md
+ 2604  subl README.md
+ 2605  curl -o latest.dump `heroku pg:backups public-url --app uguru-rest`
+ 2606  pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+ 2607  honcho start -f ProcfileDev
+ 2608  cd m
+ 2609  cd mobile-app
+ 2610  pc  --suite referral --params.screenSize=641x690
+ 2611  pc  --suite referral --params.screenSize=800x690
+ 2612  git add -A
+ 2613  gm
+ 2614  gm "referal spec draft"
+ 2615  ga
+ 2616  gm "screen shot css"
+ 2617  git push origin master
+ 2618  git pull origin master
+ 2619  pc  --suite referral --params.screenSize=800x690
+ 2620  git add -A
+ 2621  ga
+ 2622  gm "CSS img update"
+ 2623  git pull origin master
+ 2624  git push origin master
+ 2625  ga
+ 2626  gm "more screenshot add:\n"
+ 2627  git push origin master
+ 2628  git add -A
+ 2629  git commit -m "css issue"
+ 2630  gm "css for firefox safari"
+ 2631  git push origin master
+ 2632  pc  --suite feature --params.screenSize=800x690
+ 2633  webdriver-manager start
+ 2634  pc  --suite feature --params.screenSize=800x690
+ 2635  cd ..
+ 2636  cd gpa
+ 2637  git pull origin master
+ 2638  ionic serve 
+ 2639  git add -A
+ 2640  git commit -m "university search fixed + disable draging sidemenu in intro"
+ 2641  git push origin jason-dev
+ 2642  git add -A
+ 2643  gm "course able to view now"
+ 2644  ga
+ 2645  gm "course name able to view now"
+ 2646  git push origin jason-dev
+ 2647  git add -A
+ 2648  gm "check the value is valid when add course"
+ 2649  ga
+ 2650  gm 
+ 2651  gm "latest update"
+ 2652  git push origin master
+ 2653  git push origin jason-dev
+ 2654  git pull origin master
+ 2655  gad
+ 2656  ga
+ 2657  git status
+ 2658  ga
+ 2659  gm "latest test case"
+ 2660  git push origin jason-dev-masterbugs
+ 2661  git pull origin master
+ 2662  ga
+ 2663  gm -m "merge"
+ 2664  gm "merge"
+ 2665  git pull origin master
+ 2666  ionic serve
+ 2667  honcho start -f ProcfileDev
+ 2668  webdriver-manager start
+ 2669  pc  --suite feature --params.screenSize=800x690
+ 2670  pc  --params.screenSize=800x690
+ 2671  pc 
+ 2672  q
+ 2673  pc 
+ 2674  pc  --suite feature 
+ 2675  pc --suite ios --params.screenSize = 500x690
+ 2676  pc --suite ios --params.screenSize=500x690
+ 2677  git add -A 
+ 2678  gm "chat test add"
+ 2679  git pull origin master
+ 2680  pc
+ 2681  cd gpa
+ 2682  pc
+ 2683  git add -A
+ 2684  gm "able to check % of ediprofile credib"
+ 2685  git push origin jason-dev-masterbugs
+ 2686  git pull origin master
+ 2687  cd ..
+ 2688  cd gpa
+ 2689  ionic serve
+ 2690  git checkout samir-dev
+ 2691  ionic serve
+ 2692  webdriver-manager start
+ 2693  pc --suite feature --params.screenSize=500x690
+ 2694  honcho start -f ProcfileDev
+ 2695  pc --suite feature --params.screenSize=500x690
+ 2696  pc --suite feature
+ 2697  git checkout jason-dev
+ 2698  ionic serve
+ 2699  git checkout jason-dev-refactory
+ 2700  git checkout -b jason-dev-refactory
+ 2701  cd ..
+ 2702  cd uguru/mobile-app
+ 2703  git pull origin samir-dev
+ 2704  honcho start -f ProcfileDev
+ 2705  webdriver-manager start
+ 2706  cd ..
+ 2707  webdriver-manager start
+ 2708  honcho start -f ProcfileDev
+ 2709  pc --suite feature --params.screenSize=500x690
+ 2710  pc --suite ios --params.screenSize=500x690
+ 2711  pc --suite feature
+ 2712  ionic serve
+ 2713  pc --suite feature
+ 2714  git pull origin master
+ 2715  git add -A
+ 2716  gm "Latest update"
+ 2717  git pull origin master
+ 2718  pc --suite feature
+ 2719  git pull origin master
+ 2720  ga
+ 2721  gm "merge master"
+ 2722  git pull origin master
+ 2723  pc --suite feature
+ 2724  ga
+ 2725  gm "payment test"
+ 2726  git push origin jaosn-dev-masterbugs
+ 2727  git push origin jason-dev-masterbugs
+ 2728  pc --suite gmail
+ 2729  git push origin jason-dev-masterbugs
+ 2730  pc --suite gmail
+ 2731  git add -A
+ 2732  gm "gmail test"
+ 2733  git push origin jason-dev-masterbugs
+ 2734  git add -A
+ 2735  gm 'name will be caps for first letter of first and last name'
+ 2736  ga
+ 2737  gm 'save setting will back to home page"\n;\n'
+ 2738  pc
+ 2739  \tpd  --suite ios --params.screenSize=375×667
+ 2740  pc
+ 2741  git pull origin master
+ 2742  git status
+ 2743  git 
+ 2744  ga
+ 2745  gm "merge master"
+ 2746  git log
+ 2747  pc --suite ios --params.screenSize=500x690
+ 2748  ga
+ 2749  gm "recent e2e update"
+ 2750  git push origin jason-dev-master
+ 2751  git push origin jason-dev-masterbugs
+ 2752  pc --suite ios --params.screenSize=500x690
+ 2753  git push origin jason-dev-masterbugs
+ 2754  pc --suite ios --params.screenSize=500x690
+ 2755  zs
+ 2756  pc
+ 2757  pc  --suite feature --params.screenSize=800x690
+ 2758  cd ..
+ 2759  npm install phanomjs
+ 2760  npm install phantomjs
+ 2761  gicd ..
+ 2762  cd ..
+ 2763  zs
+ 2764  q
+ 2765  webdriver-manager start
+ 2766  cd uguru/mobile-app
+ 2767  pj
+ 2768  zs
+ 2769  pj
+ 2770  npm list
+ 2771  pj
+ 2772  protractor -v
+ 2773  protractor --v
+ 2774  protractor --version
+ 2775  pj
+ 2776  ionic serve
+ 2777  pj
+ 2778  pc
+ 2779  cd
+ 2780  cd Desktop
+ 2781  cd .. 
+ 2782  cd Git/uguru
+ 2783  cd 
+ 2784  cd Desktop
+ 2785  ls
+ 2786  df -h
+ 2787  sudo dd if=kali-linux-1.0-armel-raspberrypi.img of=/dev/disk4
+ 2788  sudo dd if=kali-2.0.1-rpi2.img of=/dev/rdisk3
+ 2789  npm uninstall phantomjs
+ 2790  from selenium import webdriver
+ 2791  driver = webdriver.PhantomJS() # or add to your PATH\ndriver.set_window_size(1024, 768) # optional
+ 2792  driver.get('https://google.com/')
+ 2793  driver.save_screenshot('screen.png') # save a screenshot to disk
+ 2794  sbtn = driver.find_element_by_css_selector('button.gbqfba')
+ 2795  npm -g install phantomjs
+ 2796  cd test
+ 2797  ls
+ 2798  cd e2e
+ 2799  ls
+ 2800  phantomjs test.js
+ 2801  python test.py
+ 2802  pip install -U selenium
+ 2803  python test.py
+ 2804  git push origin master
+ 2805  git pull origin master
+ 2806  cd ..
+ 2807  git clone https://github.com/Uguru/tests.git
+ 2808  cd tests
+ 2809  cd play
+ 2810  python main.py
+ 2811  open photos/google.png
+ 2812  cd ..
+ 2813  cd test
+ 2814  cd tests
+ 2815  git pull origin master
+ 2816  git checkout -b jason-dev
+ 2817  ga
+ 2818  gm "test cases"
+ 2819  git push origin jason-dev
+ 2820  ga
+ 2821  gm "-_-"
+ 2822  git push origin jason-dev
+ 2823  git checkout master
+ 2824  git checkout jason-dev
+ 2825  python main.py
+ 2826  cd play
+ 2827  python main.py
+ 2828  ga
+ 2829  gm "updae"
+ 2830  git pull origin master
+ 2831  python main.py
+ 2832  python test.py
+ 2833  python main.py
+ 2834  cd Git/tests
+ 2835  ga
+ 2836  gm "play around"
+ 2837  git push origin jason-dev
+ 2838  git pull origin master
+ 2839  cd Git/tests
+ 2840  git pull origin master
+ 2841  cd play
+ 2842  lecttuce
+ 2843  sudo pip install -r requirements.txt
+ 2844  cd..
+ 2845  cd ..
+ 2846  sudo pip install -r requirements.txt
+ 2847  cd play
+ 2848  lecttuce
+ 2849  lettuce
+ 2850  git checkout master
+ 2851  ga 
+ 2852  gm "merge"
+ 2853  git push origin jason-dev
+ 2854  git checkout master
+ 2855  git pull origin master
+ 2856  lettuce
+ 2857  git checkout jason-dev
+ 2858  ga
+ 2859  gm "pull master"
+ 2860  git checkout jason-dev
+ 2861  git pull origin master
+ 2862  lettuce --help
+ 2863  lettuce
+ 2864  lettuce first.feature
+ 2865  lettuce
+ 2866  cd..
+ 2867  cd ..
+ 2868  cd jason_play
+ 2869  lettuce
+ 2870  cd Git/tests
+ 2871  lettuce
+ 2872  cd jason_play
+ 2873  lettuce
+ 2874  ccq
+ 2875  lettuce
+ 2876  ga
+ 2877  gm "recent done"
+ 2878  git push origin jason-ev
+ 2879  git push origin jason-dev
+ 2880  cd ..
+ 2881  cd uguru/mobile-app
+ 2882  ionic serve
+ 2883  lettuce
+ 2884  git push origin jason-dev
+ 2885  ga
+ 2886  gm "recent update"
+ 2887  git push origin master
+ 2888  git pull orign master
+ 2889  git pull origin master
+ 2890  git log
+ 2891  git status
+ 2892  lettuce
+ 2893  cd
+ 2894  cd Git/uguru
+ 2895  git pull origin master
+ 2896  ga
+ 2897  gm "recent update"
+ 2898  git pull origin master
+ 2899  cd mobile-app
+ 2900  ionic serve
+ 2901  cd ..
+ 2902  cd tests
+ 2903  pip install Celery
+ 2904  '/Applications/Postgres.app/Contents/Versions/9.4/bin'/psql -p5432
+ 2905  honcho start -f ProcfileDev
+ 2906  cd ../uguru
+ 2907  honcho start -f ProcfileDev
+ 2908  cd ..
+ 2909  cd uguru
+ 2910  git pull origin master
+ 2911  ga
+ 2912  gm "updated"
+ 2913  git pull origin master
+ 2914  honcho start -f ProcfileDev
+ 2915  sudo pip install -r requirements.txt
+ 2916  honcho start -f ProcfileDev
+ 2917  honcho run python run.pi db upgrade
+ 2918  honcho run python run.py db upgrade
+ 2919  honcho start -f ProcfileDev
+ 2920  honcho run python manage.py update_uni
+ 2921  ifconifg
+ 2922  config
+ 2923  cd uguru
+ 2924  cd mobile-app
+ 2925  ionic serve
+ 2926  honcho start -f ProcfileDev
+ 2927  ifconfig
+ 2928  ionic serve
+ 2929  honcho run python manage.py update_uni
+ 2930  git pull origin master
+ 2931  git status
+ 2932  git add -A
+ 2933  gm "update ben.py"
+ 2934  git pull origin master
+ 2935  cd mobile-app
+ 2936  ionic serve
+ 2937  git pull origin master
+ 2938  git status
+ 2939  ga
+ 2940  gm "merge"
+ 2941  git pull origin master
+ 2942  git push origin jason-dev-masterbugs
+ 2943  git pull origin master
+ 2944  ug build wp8
+ 2945  git pull origin master
+ 2946  git checkout master
+ 2947  ga
+ 2948  gm 'merge"\n'
+ 2949  git checkout master
+ 2950  git pull origin master
+ 2951  ug build wp8
+ 2952  ls
+ 2953  cd ..
+ 2954  s manage.py
+ 2955  subl manage.py
+ 2956  honcho run python manage.py -pbc
+ 2957  honcho start -f ProcfileDev
+ 2958  ionic serve
+ 2959  git reset --hard origin/master
+ 2960  git pull origin master
+ 2961  honcho start -f ProcfileDev
+ 2962  zs
+ 2963  uld
+ 2964  heroku
+ 2965  pg
+ 2966  psql
+ 2967  curl -o latest.dump `heroku pg:backups public-url --app uguru-rest`
+ 2968  pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+ 2969  heroku addons:open pgstudio --app uguru-rest
+ 2970  '/Applications/Postgres.app/Contents/Versions/9.4/bin'/psql -p5432
+ 2971  openHero
+ 2972  git checkout jason-dev-masterbugs
+ 2973  git pull origin master
+ 2974  ionic serve
+ 2975  cd mobile-app
+ 2976  ionic serve
+ 2977  git checkout master
+ 2978  honcho start -f ProcfileDev
+ 2979  cd ..
+ 2980  honcho start -f ProcfileDev
+ 2981  zs
+ 2982  openHero
+ 2983  cd ..
+ 2984  cd note
+ 2985  cd notes
+ 2986  git status
+ 2987  ga
+ 2988  gm "simple sql"
+ 2989  git pull origin master
+ 2990  git push origin master
+ 2991  openHero
+ 2992  git pull origin master
+ 2993  ionic serve
+ 2994  cd mobile-app
+ 2995  ionic serve
+ 2996  git pull origin master
+ 2997  git reset --hard master
+ 2998  git pull origin master
+ 2999  git checkout jason-dev
+ 3000  git merge master
+ 3001  git a
+ 3002  ga
+ 3003  gm 'merge master'
+ 3004  ionic serve
+ 3005  git checkout master
+ 3006  ga
+ 3007  gm "fix signup"
+ 3008  git checkout master
+ 3009  ionic serve
+ 3010  git checkout jason-dev
+ 3011  ionic serve
+ 3012  ga
+ 3013  gm "fixed the modal closed"
+ 3014  git push origin jason-dev
+ 3015  ga
+ 3016  gm "update incorrect msg to 3.5 second"
+ 3017  ga
+ 3018  gm "change alert to showmsg"
+ 3019  ga
+ 3020  gm "take out the alertdialog at signup page"
+ 3021  git push origin jason-dev
+ 3022  cd ..
+ 3023  cd tests
+ 3024  git pull origin master
+ 3025  git log
+ 3026  git pull origin master
+ 3027  git hard --reset
+ 3028  git hard --reset origin master
+ 3029  git hard --reset origin/master
+ 3030  git reset --hard origin/master
+ 3031  git pull origin master
+ 3032  python run.py
+ 3033  cd play
+ 3034  python run.py
+ 3035  cd ../main
+ 3036  python run.py
+ 3037  sudo pip install -r requirements.txt
+ 3038  cd ..
+ 3039  sudo pip install -r requirements.txt
+ 3040  cd main
+ 3041  python run.py
+ 3042  lettuce
+ 3043  webdriver-manager start
+ 3044  python run.py
+ 3045  cd ../play
+ 3046  lettuce
+ 3047  cd ../play
+ 3048  cd ../main
+ 3049  python run.py
+ 3050  cd mobile-app
+ 3051  ionic serve
+ 3052  python run.py
+ 3053  git add -A
+ 3054  gm "adding more flow"
+ 3055  git push origin jason-dev
+ 3056  git push origin jason-dev --force
+ 3057  ga
+ 3058  gm "update grammar"
+ 3059  git push origin jason-dev
+ 3060  git pull origin master
+ 3061  cd ..
+ 3062  ga
+ 3063  gm current workflow
+ 3064  gm "new workflow add"
+ 3065  git pull origin master
+ 3066  ga
+ 3067  gm "merge master"
+ 3068  python run.py
+ 3069  cd main
+ 3070  python run.py
+ 3071  coo
+ 3072  python run.py
+ 3073  ga
+ 3074  gm "work flow until logout"
+ 3075  python run.py
+ 3076  ionic serve
+ 3077  git add -A
+ 3078  gm "desktop test in prograss\n"
+ 3079  git push origin jason-dev
+ 3080  ga
+ 3081  gm
+ 3082  gm "change one line"
+ 3083  git push origin jason-dev
+ 3084  cd..
+ 3085  cd 
+ 3086  pip install beautifulsoup4
+ 3087  cd Git/tests/main
+ 3088  python run.py
+ 3089  cd..
+ 3090  cd 
+ 3091  cd Git
+ 3092  CD playground
+ 3093  cd playground
+ 3094  cd Beautiful\ soup
+ 3095  python play1.py
+ 3096  cd Beautiful\ soup
+ 3097  python play1.py
+ 3098  python play2.py
+ 3099  python mslc.py
+ 3100  cd osu
+ 3101  python mslc.py
+ 3102  python math.py
+ 3103  python mslc.py
+ 3104  cd ..
+ 3105  python mslc.py
+ 3106  python math.py
+ 3107  python play2.py
+ 3108  python math.py
+ 3109  pip install beautifulsoup4
+ 3110  pip install urllib2
+ 3111  python -version
+ 3112  python --version
+ 3113  python math.py
+ 3114  python mslc.py
+ 3115  python test.py
+ 3116  cd Git
+ 3117  cd playground
+ 3118  python test.py
+ 3119  cd Beautiful\ soup
+ 3120  python mslc.py
+ 3121  python test.py
+ 3122  python math.py
+ 3123  python test.py
+ 3124  python math.py
+ 3125  cd osu
+ 3126  python mslc.py
+ 3127  python math.py
+ 3128  python mslc.py
+ 3129  python math.py
+ 3130  cd ..
+ 3131  python play2.py
+ 3132  cd ..
+ 3133  cd uguru
+ 3134  git pull origin master
+ 3135  honcho run python run.py db upgrade
+ 3136  ionic serve
+ 3137  cd m
+ 3138  cd mobile-app
+ 3139  ionic serve
+ 3140  cd 
+ 3141  cd Git/tests
+ 3142  ls
+ 3143  cd main
+ 3144  python run.py
+ 3145  ga
+ 3146  gm "merge master , fixed the code that has been hidden"
+ 3147  git push origin jason-dev
+ 3148  ga 
+ 3149  gm "recent change"
+ 3150  git pull origin master
+ 3151  git log
+ 3152  git reset --hard af05e219051378631b6cf11de14ff486e671b097
+ 3153  git status
+ 3154  git pull origin master
+ 3155  git log
+ 3156  git status
+ 3157  ga 
+ 3158  gm "merge master"
+ 3159  git pull origin master
+ 3160  ionic serve
+ 3161  python run.py
+ 3162  git checkout master
+ 3163  git pull origin master
+ 3164  ionic serve
+ 3165  lettuce 
+ 3166  ga
+ 3167  gm "update desktop test case"
+ 3168  git pull origin master
+ 3169  lettuce 
+ 3170  git add -A
+ 3171  gm "desktop test story done"
+ 3172  git push origin jason-dev
+ 3173  git pull origin master
+ 3174  git checkout jason-dev
+ 3175  git pull origin master
+ 3176  ionic serve
+ 3177  git merge master
+ 3178  git checkout master
+ 3179  git checkout jason-dev
+ 3180  ionic serve
+ 3181  python run.py
+ 3182  pip install -U selenium
+ 3183  pip install lettuce
+ 3184  sudo pip install lettuce
+ 3185  python run.py
+ 3186  git add -A
+ 3187  ga
+ 3188  gm "test case update"
+ 3189  git push origin jason-dev
+ 3190  cd ..
+ 3191  cd playground/Beautiful\ soup
+ 3192  cd osu
+ 3193  python mslc.py
+ 3194  git pull origin master
+ 3195  python mslc.py
+ 3196  cd
+ 3197  cd Git/uguru
+ 3198  honcho start -f ProcfileDev
+ 3199  python run.py
+ 3200  ionic serve
+ 3201  cd mobile-app
+ 3202  ionic serve
+ 3203  python run.py
+ 3204  git pull origin master
+ 3205  python run.py
+ 3206  ionic serve
+ 3207  python run.py
+ 3208  \tpd  --suite ios --params.screenSize=375×667
+ 3209  python run.py
+ 3210  git pull origin master
+ 3211  git status
+ 3212  ga
+ 3213  gm "small fix on open faql in desktop and first time guru home signup page "
+ 3214  git pull origin master
+ 3215  git status
+ 3216  ga 
+ 3217  gm "merge master"
+ 3218  git pull origin master
+ 3219  ionic serve
+ 3220  python run.py
+ 3221  python run.py adminlogin.feature
+ 3222  lettuce adminlogin.feature
+ 3223  lettuce ./adminlogin.feature
+ 3224  lettuce /features/adminlogin.feature
+ 3225  cd features
+ 3226  lettuce adminlogin.feature
+ 3227  cd features
+ 3228  lettuce adminlogin.feature
+ 3229  npm install -g chromedriver
+ 3230  lettuce adminlogin.feature
+ 3231  ga 
+ 3232  gm "current workflow"
+ 3233  git push origin jason-dev
+ 3234  git status
+ 3235  lettuce adminlogin.feature
+ 3236  lettuce mobile/access.feature
+ 3237  lettuce mobile/access.feature -s 3
+ 3238  lettuce mobile/access.feature -s 4,5,6
+ 3239  lettuce mobile/access.feature
+ 3240  lettuce mobile/access.feature -s 6
+ 3241  lettuce mobile/access.feature -s 4,5,6
+ 3242  lettuce mobile/access.feature -s 5,6
+ 3243  lettuce mobile/access.feature 
+ 3244  ga
+ 3245  gm "test for access page"
+ 3246  git push origin jason-dev
+ 3247  cd ..
+ 3248  git push origin jason-dev
+ 3249  ga
+ 3250  git push origin jason-dev
+ 3251  ga
+ 3252  gm "test for access page"
+ 3253  git push origin jason-dev
+ 3254  git pull origin jason-dev
+ 3255  ga
+ 3256  gm 'merge jason-dev\n'
+ 3257  git push origin jason-dev
+ 3258  cd ..
+ 3259  python oregon.py
+ 3260  cd facebook
+ 3261  pwd
+ 3262  python 
+ 3263  python run play1
+ 3264  python play1.py
+ 3265  cd 
+ 3266  cd Git/playground
+ 3267  cd Beautifulsoup
+ 3268  cd facebook
+ 3269  python play1.py
+ 3270  \tpd  --suite ios --params.screenSize=375×667
+ 3271  python play1.py
+ 3272  mkdir Git
+ 3273  python play1.py
+ 3274  OA
+ 3275  python play1.py
+ 3276  \tpd  --suite ios --params.screenSize=375×667
+ 3277  python play1.py
+ 3278  OA
+ 3279  python play1.py
+ 3280  \tpd  --suite ios --params.screenSize=375×667
+ 3281  python play1.py
+ 3282  git pull origin master
+ 3283  lettuce others/facebook.feature 
+ 3284  cd main
+ 3285  lettuce others/facebook.feature 
+ 3286  lettuce .others/facebook.feature 
+ 3287  lettuce mobile/access.feature 
+ 3288  lettuce /others/facebook.feature 
+ 3289  cd features
+ 3290  lettuce /others/facebook.feature 
+ 3291  lettuce others/facebook.feature 
+ 3292  pip install lib.clients
+ 3293  sudo pip install lib.clients
+ 3294  lettuce others/facebook.feature 
+ 3295  lettuce others/facebook.feature
+ 3296  python run.py
+ 3297  cd ..
+ 3298  python run.py
+ 3299  python run.py chrome
+ 3300  python run.py 
+ 3301  cd ..
+ 3302  cd main
+ 3303  python run.py 
+ 3304  python run.py chrome
+ 3305  python run.py
+ 3306  python run.py --tag=-skip_circle
+ 3307  python play1.py
+ 3308  ga
+ 3309  git commit -m "facebook login , run.py is change "
+ 3310  git push origin jason-dev
+ 3311  git pull origin master
+ 3312  ionic serve
+ 3313  git pull origin master
+ 3314  ga
+ 3315  gm "merge master"
+ 3316  git push origin jason-dev
+ 3317  ga 
+ 3318  gm "merge master"
+ 3319  ionic serve
+ 3320  python run.py chrome
+ 3321  python run.py mobile/credibility.feature chrome
+ 3322  python run.py mobile/credibility chrome
+ 3323  python run.py mobile/credibility Chrome
+ 3324  python run.py mobile/credibility
+ 3325  python run.py mobile/credibility firefox
+ 3326  python run.py mobile/credibility chrome
+ 3327  python run.py mobile/credibility -chrome
+ 3328  python run.py mobile/credibility chrome
+ 3329  OA
+ 3330  python run.py mobile/account_setting chrome
+ 3331  python run.py mobile/account_setting firefox
+ 3332  ga 
+ 3333  gm "account setting feature add"
+ 3334  git push origin master
+ 3335  git push origin jason-dev
+ 3336  python run.py mobile/account_setting firefox
+ 3337  python run.py mobile/account_setting chrome
+ 3338  python run.py mobile/account_setting firefox
+ 3339  python run.py mobile/account_setting chrome
+ 3340  git checkout master
+ 3341  git pull origin master
+ 3342  ionic serve
+ 3343  git checkot jason-dev
+ 3344  git checkout jason-dev
+ 3345  ionic serve
+ 3346  python run.py mobile/account_setting chrome
+ 3347  python run.py mobile/credibility chrome
+ 3348  ga
+ 3349  gm "credibility add"
+ 3350  python run.py desktop/credibility chrome
+ 3351  ga
+ 3352  gm "mobile desktop credibility done"
+ 3353  git push origin jason-dev
+ 3354  python run.py desktop/setting chrome
+ 3355  python run.py desktop/account_setting chrome
+ 3356  python run.py berkeleyStudent chrome
+ 3357  pip install arr
+ 3358  python run.py berkeleyStudent chrome
+ 3359  uld
+ 3360  python run.py desktop/account_setting chrome
+ 3361  python run.py desktop/account_setting firefox
+ 3362  git status
+ 3363  ga
+ 3364  gm "latest"
+ 3365  git push origin jason-dev
+ 3366  git pull origin master
+ 3367  cd 
+ 3368  cd Git/playground/Beautifulsoup
+ 3369  python playaround.py
+ 3370  cd ..
+ 3371  git clone https://github.com/Uguru/scrape.git
+ 3372  cd scrape
+ 3373  git checkout -b jason-dev
+ 3374  python template.py
+ 3375  cd universities/usc
+ 3376  python template.py
+ 3377  python usc_play.py
+ 3378  cd..
+ 3379  cd ..
+ 3380  ga
+ 3381  gm 'universy python scrape'
+ 3382  git push origin jason-dev
+ 3383  git add -A
+ 3384  git commit "cornell add"
+ 3385  gm "cornell add"
+ 3386  git pushr oririn jason-dev
+ 3387  git push oririn jason-dev
+ 3388  git push origin jason-dev
+ 3389  cd stanford
+ 3390  cd universities/stanford
+ 3391  python stanford_university_tutor.py
+ 3392  cd ..
+ 3393  cd princeton
+ 3394  python mcgraw.py
+ 3395  cd ..
+ 3396  cd mit
+ 3397  python math_tutor.py
+ 3398  cd ..
+ 3399  cd .. 
+ 3400  cd universities/cornell
+ 3401  python biology_tutor.py
+ 3402  ga
+ 3403  gm "update scrapes"
+ 3404  git push origin jason-dev
+ 3405  cd ..
+ 3406  cd wisc
+ 3407  python math_wisc_tutor.py
+ 3408  gita
+ 3409  ga
+ 3410  gm 'incomplete school scrape"\n'
+ 3411  git push origin jasond-ev
+ 3412  git push origin jasond-div
+ 3413  git push origin jason-div
+ 3414  git push origin jason-dev
+ 3415  cd ..
+ 3416  cd unc
+ 3417  python learning_center_unc_tutor.py
+ 3418  openHero
+ 3419  '/Applications/Postgres.app/Contents/Versions/9.4/bin'/psql -p5432
+ 3420  openHero
+ 3421  python learning_center_unc_tutor.py
+ 3422  git add -A
+ 3423  gm "usc_tutor list"
+ 3424  git push origin jason-dev
+ 3425  cd ..
+ 3426  cd cornell
+ 3427  python biology_tutor.py
+ 3428  cd ..
+ 3429  cd wisc
+ 3430  python math_wisc_tutor.py
+ 3431  ga 
+ 3432  gm "wisc math scrape"
+ 3433  cd ..
+ 3434  cd ucdavis
+ 3435  python chem_ucdavis_tutor.py
+ 3436  cd ucdavis
+ 3437  python chem_ucdavis_tutor.py
+ 3438  ga
+ 3439  gm "ucd scrape"
+ 3440  git push origin jason-dev
+ 3441  cd ..
+ 3442  cd uga
+ 3443  python math_uga_tutor.py
+ 3444  ç
+ 3445  python math_uga_tutor.py
+ 3446  ga
+ 3447  gm "uga scrape"
+ 3448  git push origin jason-dev
+ 3449  cd ../uvm
+ 3450  python cs_uvm_tutor.py
+ 3451  cd
+ 3452  cd Git/scrape/universities/
+ 3453  cd ucsc
+ 3454  python chemistry_ucsc.py
+ 3455  \tpd  --suite ios --params.screenSize=375×667
+ 3456  python chemistry_ucsc.py
+ 3457  python math_ucsc_tutor.py
+ 3458  ga
+ 3459  gm "ucsc add"
+ 3460  python math_ucsc_tutor.py
+ 3461  ga
+ 3462  gm "fix bugs for math_ucsc"
+ 3463  cd ../osu
+ 3464  python physics_osu_tutor.py
+ 3465  git pull origin master
+ 3466  ga
+ 3467  gm "merge"
+ 3468  git pull origin master
+ 3469  python math_osu_tutor.py
+ 3470  ga
+ 3471  gm "osu math"
+ 3472  git push origin jason-dev
+ 3473  cd ..
+ 3474  cd mit
+ 3475  python math_tutor.py
+ 3476  cd mit
+ 3477  python math_tutor.py
+ 3478  python mit_search.py
+ 3479  python math_tutor.py
+ 3480  python mit_search.py
+ 3481  cd ..
+ 3482  cd jmu
+ 3483  python writing_jmu_tutor.py
+ 3484  cd jmu
+ 3485  python writing_jmu_tutor.py
+ 3486  cd ..
+ 3487  cd case
+ 3488  python writing_case_tutor.py
+ 3489  cd ..
+ 3490  cd jmu
+ 3491  python writing_jmu_tutor.py
+ 3492  cd ..case
+ 3493  cd ../case
+ 3494  python writing_case_tutor.py
+ 3495  cd 
+ 3496  cd Git/uguru
+ 3497  python manage.py print_uw_data
+ 3498  python manage.py -print_uw_data
+ 3499  python manage.py "print_uw_data"
+ 3500  python manage.py --print_uw_data
+ 3501  python manage.py print_uw_data
+ 3502  sudo easy_install pip
+ 3503  python manage.py print_uw_data
+ 3504  python run.py print_uw_data
+ 3505  honcho start -f ProcfileDev
+ 3506  python manage.py print_uw_data
+ 3507  honcho run python manage.py print_uw_data
+ 3508  git pull origin master
+ 3509  honcho run python manage.py print_uw_data
+ 3510  python writing_case_tutor.py
+ 3511  \tpd  --suite ios --params.screenSize=375×667
+ 3512  python writing_case_tutor.py
+ 3513  cd ..
+ 3514  cd usc
+ 3515  python usc_play.py
+ 3516  python usc_play.pycd
+ 3517  cd ../unc
+ 3518  python learning_center_unc_tutor.py
+ 3519  python learning_center_unc_tutor.py
+ 3520  cd .. 
+ 3521  cd ..
+ 3522  cd 
+ 3523  cd Git/tests
+ 3524  git pull origin master
+ 3525  lettuce features/editGuruProfile.feature chrome
+ 3526  lettuce features/editGuruProfile chrome
+ 3527  cd main
+ 3528  lettuce features/editGuruProfile chrome
+ 3529  lettuce features/editGuruProfile.feature chrome
+ 3530  git pull origin master
+ 3531  ionic serve
+ 3532  lettuce features/editGuruProfile.feature chrome
+ 3533  \tpd  --suite ios --params.screenSize=375×667
+ 3534  lettuce features/editGuruProfile.feature chrome
+ 3535  ga
+ 3536  gm "step added"
+ 3537  git push origin jason-dev
+ 3538  lettuce features/editGuruProfile.feature chrome
+ 3539  honcho start -f ProcfileDev
+ 3540  honcho run python manage.py print_uw_data
+ 3541  ga
+ 3542  gm "add check url"
+ 3543  git push origin jason-dev
+ 3544  lettuce features/editGuruProfile.feature chrome
+ 3545  git status
+ 3546  cd ..
+ 3547  git status
+ 3548  git pull origin master
+ 3549  cd main
+ 3550  lettuce features/editGuruProfile.feature chrome
+ 3551  lettuce features/editGuruProfile.feature firefox
+ 3552  lettuce features/editGuruProfile chrome
+ 3553  lettuce features/editGuruProfile.feature firefox
+ 3554  lettuce features/editGuruProfile.feature chrome
+ 3555  ga
+ 3556  gm "add test for detect counts"
+ 3557  git push origin jason-dev
+ 3558  lettuce features/editGuruProfile.feature chrome
+ 3559  ga
+ 3560  gm "recently update"
+ 3561  git push origin jason-dev
+ 3562  lettuce features/editGuruProfile.feature chrome
+ 3563  git pull origin master
+ 3564  ga
+ 3565  gm "current work"
+ 3566  git pull origin master
+ 3567  lettuce features/editGuruProfile.feature IE
+ 3568  lettuce features/editGuruProfile.feature chrome mobile-lg
+ 3569  git pull origin master
+ 3570  git status
+ 3571  ga "jason update"
+ 3572  ga
+ 3573  gm "jason update\n"
+ 3574  git pull origin master
+ 3575  lettuce features/editGuruProfile.feature chrome desktop-lg
+ 3576  lettuce features/editGuruProfile.feature chrome
+ 3577  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3578  ionic serve
+ 3579  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3580  lettuce features/editGuruProfile.feature chrome 
+ 3581  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3582  git pull origin master
+ 3583  ga 
+ 3584  gm "latest version"
+ 3585  git pull origin master
+ 3586  honcho run python run.py db upgrade
+ 3587  honcho run python manage.py init_admin
+ 3588  honcho run python manage.py seed_admin
+ 3589  honcho run python manage.py seed_admin jason@uguru.me
+ 3590  honcho run python
+ 3591  honcho start -f ProcfileDev
+ 3592  honcho run python manage.py seed_admin jason@uguru.me
+ 3593  honcho start -f ProcfileDev
+ 3594  ga
+ 3595  gm "edit profile test still in prograss"
+ 3596  git push origin jason-dev
+ 3597  honcho run python manage.py print_uw_data
+ 3598  python honcho run python manage.py print_uw_data
+ 3599  honcho run python manage.py print_uw_data
+ 3600  honcho start -f ProcfileDev
+ 3601  ionic serve
+ 3602  c
+ 3603  cd ../../tests/main
+ 3604  python run.py
+ 3605  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3606  ga
+ 3607  gm "activate , deactivate , remove test add "
+ 3608  ga
+ 3609  gm "recent update"
+ 3610  git push origin jason-dev
+ 3611  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3612  git push origin jason-dev
+ 3613  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3614  ga
+ 3615  gm "profile_url and description"
+ 3616  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3617  ga 
+ 3618  ga
+ 3619  gm "ouline added"
+ 3620  git push origin jason-dev
+ 3621  git pull origin master
+ 3622  ga
+ 3623  gm "before merge"
+ 3624  git pull origin master
+ 3625  cd ..
+ 3626  cd scrape
+ 3627  git pull origin mastaer
+ 3628  git pull origin master
+ 3629  cd csv
+ 3630  python j_utils.py
+ 3631  python j_utils.py /files/deadline/
+ 3632  lettuce features/editGuruProfile.feature chrome mobile-m
+ 3633  ionic serve
+ 3634  lettuce features/editGuruProfile.feature chrome mobile-m
+ 3635  lettuce features/mobile/editGuruProfile.feature chrome mobile-m
+ 3636  git pull origin master
+ 3637  ga
+ 3638  gm
+ 3639  gm "update"
+ 3640  git pull origin master
+ 3641  ionic serve
+ 3642  ga 
+ 3643  gm "latest test"
+ 3644  git push origin jason-dev
+ 3645  ga 
+ 3646  gm "latest"
+ 3647  git push origin jason-dev
+ 3648  ga
+ 3649  gm "jason's util tool"
+ 3650  git push origin jason-dev
+ 3651  honcho start -f ProcfileDev
+ 3652  ionic serve
+ 3653  gita
+ 3654  ga
+ 3655  gm "edit name = example in public profile.html"
+ 3656  git push origin jason-dev
+ 3657  git pull origin master
+ 3658  lettuce features/mobile/editGuruProfile.feature chrome mobile-m
+ 3659  ga
+ 3660  gm "add name = xxx for unit test"
+ 3661  git push origin jason-dev
+ 3662  git status
+ 3663  ga 
+ 3664  lettuce features/mobile/editGuruProfile.feature chrome mobile-m
+ 3665  ga
+ 3666  gm 'latest version\n"
+ 3667  gm "latest version"
+ 3668  git push origin jason-dev
+ 3669  ga
+ 3670  gm "adding english_tutor.csv"
+ 3671  git status
+ 3672  cd ..
+ 3673  ga
+ 3674  gm "adding english_tutor.csv"
+ 3675  git config --global user.email "f230536@hotmail.com"
+ 3676  git config --global user.name "Jason Huang"
+ 3677  ga
+ 3678  gm -m "adding english_tutor.csv"
+ 3679  gm "adding english_tutor.csv"
+ 3680  ga
+ 3681  gm "adding english_tutor.csv"
+ 3682  git push origin jason-dev
+ 3683  ga
+ 3684  gm "English Writing Tutor complete"
+ 3685  git pull origin master
+ 3686  git push origin jason-dev
+ 3687  cd ..
+ 3688  cd flask
+ 3689  cd ..
+ 3690  cd Git/Hello\ Flask
+ 3691  python run.py
+ 3692  cd
+ 3693  sudo ln -s 
+ 3694  sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/bin/sbl
+ 3695  ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/bin/sbl
+ 3696  zs
+ 3697  alias sbl='open -a "Sublime Text"'
+ 3698  cd ..
+ 3699  sbl Hello\ Flask
+ 3700  python run.py
+ 3701  netstat -tupln | grep ':5000'
+ 3702  python run.py
+ 3703  ifconfig
+ 3704  python run.py
+ 3705  bower install angular#1.4.8
+ 3706  python run.py
+ 3707  cd tests
+ 3708  cd uguru
+ 3709  cd mobile-app
+ 3710  ionic serve
+ 3711  honcho start -f ProcfileDev
+ 3712  cd ..
+ 3713  honcho start -f ProcfileDev
+ 3714  cd main
+ 3715  lettuce features/mobile/editGuruProfile.feature chrome desktop-m
+ 3716  lettuce features/mobile/editGuruProfile.feature chrome mobile-m -s [1,2,3,5]
+ 3717  lettuce features/mobile/editGuruProfile.feature chrome mobile-m -s (1,2,3,5)
+ 3718  lettuce features/mobile/editGuruProfile.feature chrome mobile-m -s 1,2,3,5
+ 3719  lettuce features/mobile/editGuruProfile.feature chrome mobile-m -s
+ 3720  lettuce features/mobile/editGuruProfile.feature chrome mobile-m -s 0,1,2,3,5
+ 3721  lettuce features/mobile/editGuruProfile.feature chrome mobile-m
+ 3722  git pull origin master
+ 3723  honcho start -f ProcfileDev
+ 3724  ionic serve
+ 3725  git status
+ 3726  git log
+ 3727  git reset --hard origin/jason-dev
+ 3728  ionic serve
+ 3729  git checkout master
+ 3730  git pull origin master
+ 3731  ionic serve
+ 3732  git checkout jason-dev
+ 3733  git checkout master
+ 3734  ionic serve
+ 3735  ga
+ 3736  gm "update config"
+ 3737  git checkout jason-dev
+ 3738  ionic serve
+ 3739  lettuce features/mobile/editGuruProfile.feature chrome mobile-m
+ 3740  ga
+ 3741  gm "latest test version"
+ 3742  git push origin jason-dev
+ 3743  git pull origin master
+ 3744  ionic serve
+ 3745  honcho start -f ProcfileDev
+ 3746  ionic serve
+ 3747  honcho start -f ProcfileDev
+ 3748  ionic serve
+ 3749  ga
+ 3750  gm "merge master"
+ 3751  git pull origin master
+ 3752  ga
+ 3753  gm "merge master"
+ 3754  git checkout master
+ 3755  git pull origin master
+ 3756  git checkout jason-dev
+ 3757  git pull orign master
+ 3758  git pull origin master
+ 3759  git status
+ 3760  git log
+ 3761  git reset --hard b69d42104038ddb1a5adb7dd9f1a716b086db787
+ 3762  git pull origin master
+ 3763  git status
+ 3764  git pull origin mater
+ 3765  git pull origin master
+ 3766  ga
+ 3767  gm "recent update"
+ 3768  git pull origin master
+ 3769  lettuce features/desktop/profile_about.feature chrome mobile-m
+ 3770  lettuce features/desktop/profile_about.feature chrome desktop-m
+ 3771  lettuce features/desktop/profile_about.feature chrome mobile-m
+ 3772  lettuce features/desktop/profile_about.feature chrome desktop-m
+ 3773  ga
+ 3774  gm "about feature"
+ 3775  git push origin jason-dev
+ 3776  ga
+ 3777  gm "add name for about feature"
+ 3778  git push origin jason-dev
+ 3779  git pull origin master
+ 3780  git status
+ 3781  ga
+ 3782  gm "merge master"
+ 3783  git pull origin master
+ 3784  lettuce features/desktop/profile_about.feature chrome mobile-m
+ 3785  lettuce features/desktop/profile_experience.feature chrome mobile-m
+ 3786  lettuce features/desktop/profile_experience.feature chrome desktop-m
+ 3787  ga
+ 3788  gm "experience add\n"
+ 3789  git push origin jason-dev
+ 3790  lettuce features/desktop/profile_experience.feature chrome mobile-m
+ 3791  git pull origin master
+ 3792  ga
+ 3793  gm "merge and add name for exp"
+ 3794  git pull origin master
+ 3795  lettuce features/desktop/profile_language.feature chrome mobile-m
+ 3796  lettuce features/desktop/profile_language.feature chrome desktop-m
+ 3797  ga
+ 3798  gm "language test add"
+ 3799  git push origin jason-dev
+ 3800  ga
+ 3801  gm "add name for laguage element"
+ 3802  git push origin jason-dev
+ 3803  git pull origin master
+ 3804  git status
+ 3805  ga
+ 3806  gm 'merge master'
+ 3807  git pull origin master
+ 3808  lettuce features/desktop/profile_activation_check.feature chrome desktop-m
+ 3809  ga
+ 3810  gm "communcation + will work for"
+ 3811  git push origin jason-dev
+ 3812  git pull origin master
+ 3813  ga
+ 3814  gm "add name"
+ 3815  git pull origin master
+ 3816  git push origin jason-dev
+ 3817  git pull origin master
+ 3818  ga
+ 3819  gm "merge master"
+ 3820  ga
+ 3821  gm "merge master"
+ 3822  git pull origin master
+ 3823  lettuce features/desktop/profile_activation_check.feature chrome desktop-m
+ 3824  git pull origin master
+ 3825  cd
+ 3826  cd Git/Hello\ Flask
+ 3827  python run.py
+ 3828  subl
+ 3829  sbl
+ 3830  python run.py
+ 3831  honcho start -f ProcfileDev
+ 3832  ionic serve
+ 3833  git pull origin master
+ 3834  lettuce features/desktop/profile_checkmark.feature chrome desktop-m
+ 3835  lettuce features/desktop/profile_checkmark.feature chrome mobile-m
+ 3836  lettuce features/mobile/profile_checkmark.feature chrome mobile-m
+ 3837  lettuce features/mobile/public_link.feature chrome mobile-m
+ 3838  lettuce features/desktop/public_link.feature chrome desktop-m
+ 3839  lettuce features/mobile/public_link.feature chrome mobile-m
+ 3840  ga
+ 3841  gm "checkmark + public link"
+ 3842  git push origin jason-dev
+ 3843  ga
+ 3844  gm "add name for checkmark and publick link"
+ 3845  git push origin jason-dev
+ 3846  git pull origin master
+ 3847  honcho run python run.py db upgrade
+ 3848  honcho start -f ProcfileDev
+ 3849  ionic serve
+ 3850  lettuce features/desktop/essay.feature chrome desktop-m
+ 3851  lettuce features/desktop/essay.feature chrome mobile-m
+ 3852  lettuce features/desktop/become.feature chrome mobile-m
+ 3853  lettuce features/desktop/becomeguru.feature chrome mobile-m
+ 3854  ga
+ 3855  gm "add name"
+ 3856  git pull origin master
+ 3857  lettuce features/mobile/public_link.feature chrome mobile-m
+ 3858  lettuce features/desktop/public_link.feature chrome mobile-m
+ 3859  lettuce features/desktop/public_link.feature chrome desktop-m
+ 3860  lettuce features/desktop/profile_checkmark.feature chrome desktop-m
+ 3861  lettuce features/desktop/activation_check.feature chrome desktop-m
+ 3862  lettuce features/desktop/activation_checks.feature chrome desktop-m
+ 3863  lettuce features/desktop/profile_activation_check.feature chrome desktop-m
+ 3864  lettuce features/desktop/account_setting.feature chrome desktop-m
+ 3865  a
+ 3866  ga
+ 3867  gm "desktop account setting"
+ 3868  git push origin jason-dev
+ 3869  '/Applications/Postgres.app/Contents/Versions/9.4/bin'/psql -p5432
+ 3870  lettuce features/desktop/credibility.feature chrome desktop-m
+ 3871  honcho run python manage.py seed_admin jason@uguru.me```\n\nAbout this conversation
+ 3872  honcho run python manage.py seed_admin jason@uguru.me
+ 3873  honcho start -f ProcfileDev
+ 3874  honcho run python manage.py seed_admin jason@uguru.me
+ 3875  honcho start -f ProcfileDev
+ 3876  lettuce features/desktop/credibility.feature chrome desktop-m
+ 3877  honcho start -f ProcfileDev
+ 3878  ionic serve
+ 3879  lettuce features/desktop/credibility.feature chrome desktop-m
+ 3880  lettuce features/desktop/credibility.feature chrome desktop-l
+ 3881  lettuce features/desktop/credibility.feature chrome desktop-lg
+ 3882  ga
+ 3883  gm "credbility done"
+ 3884  git push origin jason-dev
+ 3885  ga
+ 3886  git status
+ 3887  gm "add name for crediblity"
+ 3888  git push origin jason-dev
+ 3889  python run.py
+ 3890  git pull origin master
+ 3891  ionic serve
+ 3892  honcho start -f ProcfileDev
+ 3893  lettuce features/editGuruProfile.feature chrome desktop-lg
+ 3894  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3895  lettuce features/editGuruProfile.feature chrome mobile-m
+ 3896  lettuce features/editGuruProfile.feature chrome desktop-m
+ 3897  lettuce features/editGuruProfile.feature chrome mobile-m
+ 3898  lettuce features/mobile/editGuruProfile.feature chrome mobile-m
+ 3899  lettuce features/mobile/account_setting.feature chrome mobile-m
+ 3900  lettuce features/mobile/editGuruProfile.feature chrome mobile-m
+ 3901  ga
+ 3902  gm "mobile edit course"
+ 3903  git push origin jason-dev
+ 3904  lettuce features/mobile/account_setting.feature chrome mobile-m
+ 3905  ga
+ 3906  gm "mobile setting, mobile add course'\n"
+ 3907  git push origin jason-dev
+ 3908  lettuce features/desktop/add_card.feature chrome mobile-m
+ 3909  lettuce features/desktop/add_card.feature chrome desktop-m
+ 3910  lettuce features/mobile/add_card.feature chrome mobile-m
+ 3911  ga
+ 3912  gm "add card test"
+ 3913  lettuce features/desktop/billing_student.feature chrome desktop-m
+ 3914  ga 
+ 3915  gm "billing studnet basic test"
+ 3916  git push origin jason-dev
+ 3917  ga
+ 3918  gm "adding name for card"
+ 3919  git push origin jason-dev
+ 3920  ga
+ 3921  gm 'latest version'
+ 3922  git pull origin master
+ 3923  openHero
+ 3924  honcho run python manage.py print_uw_data
+ 3925  honcho start -f ProcfileDev
+ 3926  ionic serve
+ 3927  openHero
+ 3928  cd
+ 3929  cd Git/scrape
+ 3930  cd craigslist
+ 3931  git clone git://github.com/charlierguo/gmail.git
+ 3932  git clone https://github.com/clickthisnick/CraigLister.git
+ 3933  cd CraigLister
+ 3934  python craiglister.py
+ 3935  pip install --upgrade google-api-python-client
+ 3936  sudo pip install --upgrade google-api-python-client
+ 3937  python craiglister.py
+ 3938  cd ..
+ 3939  cd gmail
+ 3940  python setup.py
+ 3941  cd ..
+ 3942  python craiglister.py
+ 3943  cd gmail
+ 3944  python setup.py install
+ 3945  sudo python setup.py install
+ 3946  python craiglister.py
+ 3947  cd ..
+ 3948  python craiglister.py
+ 3949  pip install chromedriver
+ 3950  sudo pip install chromedriver
+ 3951  python craiglister.py
+ 3952  brew install chromedriver
+ 3953  python craiglister.py
+ 3954  sudo pip install selenium
+ 3955  python craiglister.py
+ 3956  pip install pygmail
+ 3957  python craiglister.py
+ 3958  cd..
+ 3959  cd ..
+ 3960  ga
+ 3961  gm "craiglist"
+ 3962  python craigslist/first.py
+ 3963  cd craigslist
+ 3964  python craigslist/first.py
+ 3965  python first.py
+ 3966  \tpd  --suite ios --params.screenSize=375×667
+ 3967  python first.py
+ 3968  ga
+ 3969  cd ..
+ 3970  ga
+ 3971  gm 'craiglist url and post url.json + scrape for make a post[sfo]"\n'
+ 3972  git push origin jason-dev
+ 3973  cd craigslist
+ 3974  python first.py
+ 3975  cd CraigLister
+ 3976  python craiglister.py
+ 3977  cd ..
+ 3978  python craiglister.py
+ 3979  python craiglist_post.py
+ 3980  ga
+ 3981  cd .
+ 3982  cd ..
+ 3983  cd notes
+ 3984  git pull origin master
+ 3985  python findZipCode.py
+ 3986  sudo easy_install googlemaps
+ 3987  python findZipCode.py
+ 3988  python --version
+ 3989  python findZipCode.py
+ 3990  pip install GoogleMaps   
+ 3991  cd ..
+ 3992  pip install GoogleMaps   
+ 3993  sudo pip install GoogleMaps   
+ 3994  python findZipCode.py
+ 3995  cd craigslist
+ 3996  python findZipCode.py
+ 3997  pip install -U googlemaps
+ 3998  sudo pip install -U googlemaps
+ 3999  python findZipCode.py
+ 4000  OA
+ 4001  python findZipCode.py
+ 4002  python findZipCode.py
+ 4003  OA
+ 4004  python findZipCode.py
+ 4005  python craiglist_post.py
+ 4006  shttps://post.craigslist.org/c/sdo
+ 4007  python craiglist_post.py
+ 4008  python first.py
+ 4009  cd 
+ 4010  cd Git/scrape
+ 4011  cd craigslist
+ 4012  python first.py
+ 4013  python findZipCode.py
+ 4014  pip install pygeocoder
+ 4015  python findZipCode.py
+ 4016  python craiglist_post.py
+ 4017  cd Git/scrape
+ 4018  ga
+ 4019  gm 'craglist post'
+ 4020  git push origin jason-dev
+ 4021  cd ..
+ 4022  cd Hello\ Flask
+ 4023  python run.py
+ 4024  cd ..
+ 4025  git clone https://github.com/sam1rm/jeselle-bday.git
+ 4026  cd jeselle-bday
+ 4027  sudo pip install -r requirements.txt
+ 4028  cd ..
+ 4029  cd uguru
+ 4030  git pull origin master
+ 4031  ga
+ 4032  gm "merge"
+ 4033  git pull origin master
+ 4034  ga
+ 4035  gm "merge master"
+ 4036  uld
+ 4037  heroku pg:backups capture --app uguru-rest && curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` && pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+ 4038  honcho start -f ProcfileDev
+ 4039  √√√ccc
+ 4040  honcho start -f ProcfileDev
+ 4041  cd ..
+ 4042  cd uguru
+ 4043  honcho start -f ProcfileDev
+ 4044  cd ..
+ 4045  cd uguru
+ 4046  ionic serve
+ 4047  cd mobile-app
+ 4048  ionic serve
+ 4049  honcho start -f ProcfileDev
+ 4050  git log
+ 4051  git checkout 36ca3643c3f4dd7b350ff6de6e8cd2b24977158d
+ 4052  honcho start -f ProcfileDev
+ 4053  git checkout jason-dev
+ 4054  honcho start -f ProcfileDev
+ 4055  sudo pip install flask==0.9
+ 4056  honcho start -f ProcfileDev
+ 4057  cd ..
+ 4058  cd tests
+ 4059  cd main
+ 4060  lettuce features/desktop/essayfeature chrome desktop-m
+ 4061  lettuce features/desktop/essay.feature chrome desktop-m
+ 4062  git pull origin master
+ 4063  ionic serve
+ 4064  lettuce features/desktop/essay.feature chrome desktop-m
+ 4065  lettuce features/desktop/essay.feature chrome desktop-s
+ 4066  ga
+ 4067  gm 'essay home page test\n'
+ 4068  git push origin jason-dev
+ 4069  ga
+ 4070  gm 'add university'
+ 4071  git push origin jason-dev
+ 4072  lettuce features/desktop/essay_university.feature chrome desktop-s
+ 4073  ga
+ 4074  gm "essay_university test"
+ 4075  git push origin jason-dev
+ 4076  lettuce features/desktop/essay_university.feature chrome mobile-m
+ 4077  honcho start -f ProcfileDev
+ 4078  heroku pg:backups capture --app uguru-rest && curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` && pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+ 4079  honcho start -f ProcfileDev
+ 4080  honcho run python manage.py seed_admin jason@uguru.me
+ 4081  honcho start -f ProcfileDev
+ 4082  honcho run python manage.py seed_admin jason@uguru.me
+ 4083  lettuce features/desktop/essay_signup.feature chrome mobile-m
+ 4084  lettuce features/desktop/essay_signup.feature chrome desktop-m
+ 4085  ga
+ 4086  gm "add signup test"
+ 4087  git push origin jason-dev
+ 4088  ga
+ 4089  gm 'add name for test'
+ 4090  git push origin jason-dev
+ 4091  ls
+ 4092  subl README.md
+ 4093  sulb README.md
+ 4094  subl
+ 4095  s
+ 4096  python app.py
+ 4097  git checkout -b jason-dev
+ 4098  ionic serve
+ 4099  python app.py
+ 4100  git pull origin master
+ 4101  heroku pg:backups capture --app uguru-rest && curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` && pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+ 4102  honcho run python manage.py init_hs
+ 4103  honcho start -f ProcfileDev
+ 4104  ionic serve
+ 4105  honcho run python manage.py init_hs
+ 4106  heroku restart --app uguru-rest
+ 4107  Jump
+ 4108  honcho run python run.py db upgrade
+ 4109  honcho start -f ProcfileDev
+ 4110  honcho run python manage.py init_hs
+ 4111  honcho start -f ProcfileDev
+ 4112  honcho run python run.py db upgrade
+ 4113  heroku pg:backups capture --app uguru-rest && curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` && pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+ 4114  honcho run python manage.py init_hs
+ 4115  honcho start -f ProcfileDev
+ 4116  honcho run python manage.py init_hs
+ 4117  ga
+ 4118  gm "merge master"
+ 4119  git checkout master
+ 4120  git pull origin master
+ 4121  ionic serve
+ 4122  git checkout jason-dev
+ 4123  ionic serve
+ 4124  honcho run python manage.py init_hs
+ 4125  honcho run python run.py db upgrade
+ 4126  git pull origin master
+ 4127  cd Git/uguru
+ 4128  heroku pg:backups capture --app uguru-rest && curl -o latest.dump `heroku pg:backups public-url --app uguru-rest` && pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
+ 4129  honcho run python manage.py init_hs
+ 4130  honcho start -f ProcfileDev
+ 4131  cd mobile-app
+ 4132  ionic serve
+ 4133  cd ..
+ 4134  honcho start -f ProcfileDev
+ 4135  lsof -i :5000
+ 4136  honcho start -f ProcfileDev
+ 4137  lsof -i :5000
+ 4138  lsof -i :6379
+ 4139  kill -9 6538
+ 4140  honcho start -f ProcfileDev
+ 4141  cat /var/log/system.log
+ 4142  subl
+ 4143  s
+ 4144  open ~/.bash_history
