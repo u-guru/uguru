@@ -2549,7 +2549,7 @@ class UserNewView(restful.Resource):
                 user = email_user
 
                 is_high_school_login = request.json.get('hs_student')
-
+                print "is this is a high school login: %s"  %is_high_school_login
                 ## if they dont have a high school account
                 if  is_high_school_login and not email_user.hs_student:
                     abort(404)
