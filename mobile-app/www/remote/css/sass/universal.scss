@@ -2499,13 +2499,22 @@
 	overflow: auto;
 	> header {
 		height: 30%;
+		width: 100%;
 		background: $charcoal;
 		color: white;
+		&.no-tabs {
+			@include flex;
+			@include flex-center;
+		}
+		&:not(.no-tabs) {
+			.timeline-header {
+				height: calc(100% - 60px);
+			}
+		}
 		.timeline-header {
 			@include flex;
 			@include flex-wrap;
 			@include flex-center;
-			height: calc(100% - 60px);
 			h1, h2 {
 				margin: 0;
 				width: 100%;
@@ -2664,10 +2673,10 @@
 				&:nth-child(even) {
 					padding-left: 57%;
 					.post-icon {
-						&:after {
+						.post-icon-hack {
 							left: 24px;
 						}
-						span:last-child {
+						.post-icon-title {
 							@include translate-x(100%);
 							-webkit-justify-content: flex-start;
 							justify-content: flex-start;
@@ -2687,10 +2696,10 @@
 				&:nth-child(odd) {
 					padding-right: 57%;
 					.post-icon {
-						&:after {
+						.post-icon-hack {
 							right: 24px;
 						}
-						span:last-child {
+						.post-icon-title {
 							@include translate-x(-100%);
 							-webkit-justify-content: flex-end;
 							justify-content: flex-end;
@@ -2710,7 +2719,7 @@
 				}
 				&:hover, &:focus {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							@include translate-x(0);
 						}
 					}
@@ -2736,7 +2745,16 @@
 							@include svg-stroke(white, 6);
 						}
 					}
-					&:after {
+					.post-icon-svg {
+						@include round;
+						display: block;
+						position: relative;
+						z-index: 4;
+						width: 48px;
+						height: 48px;
+						background: $slate;
+					}
+					.post-icon-hack {
 						content: "";
 						position: absolute;
 						z-index: 3;
@@ -2745,7 +2763,7 @@
 						width: 200px;
 						background: $smoke;
 					}
-					span:last-child {
+					.post-icon-title {
 						@include transition(.15s ease-in-out);
 						@include round;
 						@include flex;
@@ -2758,6 +2776,7 @@
 						color: white;
 						font-size: 16px;
 						font-weight: 600;
+						line-height: 1.1;
 						text-transform: uppercase;
 					}
 				}
@@ -2774,9 +2793,9 @@
 						font-weight: 600;
 						text-transform: uppercase;
 						background: $slate;
-						&:after {
+						.post-icon-hack {
 							display: none;
-						}
+						} 
 					}
 				}
 				article {
@@ -2931,20 +2950,20 @@
 				}
 				&.post-milestone {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $shamrock, 15%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $shamrock, 15%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+						 	.post-icon-title {
 								background: $shamrock;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $shamrock;
 						}
 					}
@@ -3011,20 +3030,20 @@
 				}
 				&.post-blog {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $gold, 10%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $gold, 10%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $gold;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $gold;
 						}
 					}
@@ -3091,20 +3110,20 @@
 				}
 				&.post-tutorial {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $azure, 15%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $azure, 15%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $azure;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $azure;
 						}
 					}
@@ -3171,20 +3190,20 @@
 				}
 				&.post-partnership {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $auburn, 10%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $auburn, 10%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $auburn;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $auburn;
 						}
 					}
@@ -3251,20 +3270,20 @@
 				}
 				&.post-parent {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $eggplant, 15%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $eggplant, 15%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $eggplant;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $eggplant;
 						}
 					}
@@ -3331,20 +3350,20 @@
 				}
 				&.post-college-main {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $cerise, 20%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $cerise, 20%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $cerise;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $cerise;
 						}
 					}
@@ -3411,20 +3430,20 @@
 				}
 				&.post-college-guru {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $moola, 15%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $moola, 15%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $moola;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $moola;
 						}
 					}
@@ -3491,20 +3510,20 @@
 				}
 				&.post-college-student {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $lake, 15%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $lake, 15%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $lake;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $lake;
 						}
 					}
@@ -3571,20 +3590,20 @@
 				}
 				&.post-professional {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $cobalt, 15%);
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $cobalt, 15%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $cobalt;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $cobalt;
 						}
 					}
@@ -3651,21 +3670,21 @@
 				}
 				&.post-high-school {
 					.post-icon {
-						span:last-child {
+						.post-icon-title {
 							background: mix(white, $orange, 15%);
 							min-width: 160px;
 						}
 					}
-					.post-icon svg, header a {
+					.post-icon svg, .post-icon .post-icon-svg, header a {
 						background: mix(white, $orange, 15%);
 					}
 					&:hover, &:focus {
 						.post-icon {
-							span:last-child {
+							.post-icon-title {
 								background: $orange;
 							}
 						}
-						.post-icon svg, header a {
+						.post-icon svg, .post-icon .post-icon-svg, header a {
 							background: $orange;
 						}
 					}
@@ -3727,6 +3746,19 @@
 									}
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.essay-timeline {
+		> section {
+			> ul {
+				> li {
+					&.post-month {
+						.post-icon {
+							font-size: 24px!important;
 						}
 					}
 				}
