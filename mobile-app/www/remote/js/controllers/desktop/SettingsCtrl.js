@@ -59,7 +59,11 @@ angular.module('uguru.desktop.controllers', [])
     $scope.resetCache = function() {
       LoadingService.showAmbig('Resetting Cache..', 1500, function(){
         $ionicViewSwitcher.nextDirection('back');
-        $state.go('^.university');
+        if ($scope.root.vars.hs_mode) {
+          $state.go('^.essay-home');
+        } else {
+          $state.go('^.university');
+        }
         AdminService.resetCache();
       })
     }
@@ -75,7 +79,6 @@ angular.module('uguru.desktop.controllers', [])
         } else {
           $state.go('^.guru');
         }
-
       }
     }
 

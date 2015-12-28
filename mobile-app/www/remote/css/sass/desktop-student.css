@@ -1,332 +1,241 @@
 /* ---------- STUDENT HOME */
 #desktop-student-home {
   background: #F1F1F1;
-  color: #40484B;
-}
+  color: #40484B; }
+  #desktop-student-home #top-bar {
+    background: #50A5DD; }
+    #desktop-student-home #top-bar div:nth-child(2) div {
+      background: #50A5DD; }
+    #desktop-student-home #top-bar div:nth-child(2) #top-menu-links {
+      background: #50A5DD; }
+      #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:hover span, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:active span, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
+        color: #50A5DD; }
+      #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:active svg, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
+        stroke: #50A5DD; }
+      #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li:last-child a span {
+        color: #50A5DD; }
+      #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li:last-child a svg {
+        stroke: #50A5DD; }
+  #desktop-student-home .main {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 0; }
+    #desktop-student-home .main a {
+      color: #40484B; }
+    #desktop-student-home .main .student-home-greeting {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      width: calc(100% - 655px);
+      height: 100%;
+      padding-left: 15px; }
+      #desktop-student-home .main .student-home-greeting div {
+        text-align: center;
+        text-transform: uppercase; }
+        #desktop-student-home .main .student-home-greeting div h1 {
+          color: #50A5DD;
+          font-size: 40px;
+          font-weight: 700; }
+        #desktop-student-home .main .student-home-greeting div .student-home-notifications ul {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          width: 100%;
+          margin-top: 10%; }
+          #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li {
+            padding: 0 15px; }
+            #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-items: center;
+              align-items: center; }
+              #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a span {
+                display: block; }
+              #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon {
+                position: relative; }
+                #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon svg {
+                  -webkit-transition: all 0.15s ease-in-out;
+                  -o-transition: all 0.15s ease-in-out;
+                  -ms-transition: all 0.15s ease-in-out;
+                  -moz-transition: all 0.15s ease-in-out;
+                  transition: all 0.15s ease-in-out;
+                  border-radius: 1000px;
+                  fill: none;
+                  stroke: #F1F1F1;
+                  stroke-width: 5px;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  background: #40484B;
+                  width: 64px;
+                  height: 64px;
+                  padding: 10px; }
+                #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon .notification-number {
+                  border-radius: 1000px;
+                  -ms-box-orient: horizontal;
+                  display: -webkit-box;
+                  display: -moz-box;
+                  display: -ms-flexbox;
+                  display: -moz-flex;
+                  display: -webkit-flex;
+                  display: flex;
+                  -webkit-flex-direction: row;
+                  flex-direction: row;
+                  -webkit-align-items: center;
+                  align-items: center;
+                  -webkit-justify-content: center;
+                  justify-content: center;
+                  position: absolute;
+                  top: -15px;
+                  right: -15px;
+                  width: 40px;
+                  height: 40px;
+                  background: #50A5DD;
+                  border: 3px solid #F1F1F1;
+                  color: white;
+                  font-size: 18px;
+                  font-weight: 600; }
+              #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-type {
+                padding-left: 15px;
+                font-weight: 600; }
+            #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:hover .notification-icon svg, #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:focus .notification-icon svg {
+              background: #7bbbe5; }
+            #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:active .notification-icon svg {
+              background: #50A5DD; }
+    #desktop-student-home .main .student-home-tiles {
+      width: 655px;
+      height: 100%;
+      max-height: 660px;
+      padding: 7.5px; }
+      #desktop-student-home .main .student-home-tiles > div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        width: 100%;
+        height: calc(100% / 3);
+        text-align: center; }
+        #desktop-student-home .main .student-home-tiles > div .square {
+          height: 100%;
+          fill: none; }
+        #desktop-student-home .main .student-home-tiles > div .square + div {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 5; }
+          #desktop-student-home .main .student-home-tiles > div .square + div h1, #desktop-student-home .main .student-home-tiles > div .square + div h2, #desktop-student-home .main .student-home-tiles > div .square + div h3 {
+            color: white;
+            font-weight: 700; }
+          #desktop-student-home .main .student-home-tiles > div .square + div h1 {
+            padding: 15px 0 0;
+            font-size: 24px;
+            text-transform: uppercase; }
+          #desktop-student-home .main .student-home-tiles > div .square + div h2 {
+            padding: 15px 0 0;
+            font-size: 20px;
+            text-transform: uppercase; }
+          #desktop-student-home .main .student-home-tiles > div .square + div h3 {
+            padding: 0 0 15px;
+            font-size: 16px; }
+          #desktop-student-home .main .student-home-tiles > div .square + div h1 + svg {
+            fill: none;
+            stroke: white;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            height: calc(100% - 43px - 34px); }
+          #desktop-student-home .main .student-home-tiles > div .square + div h2 + svg {
+            fill: none;
+            stroke: white;
+            stroke-width: 3.5px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            height: calc(100% - 39px - 53px); }
+      #desktop-student-home .main .student-home-tiles .home-tiles-quick, #desktop-student-home .main .student-home-tiles .home-tiles-request {
+        height: 100%;
+        width: calc(100% / 3 * 2);
+        padding: 7.5px; }
+        #desktop-student-home .main .student-home-tiles .home-tiles-quick > div, #desktop-student-home .main .student-home-tiles .home-tiles-request > div {
+          position: relative; }
+      #desktop-student-home .main .student-home-tiles .home-tiles-quick > div div {
+        background: #50A5DD; }
+      #desktop-student-home .main .student-home-tiles .home-tiles-request > div div {
+        background: #298ed1; }
+      #desktop-student-home .main .student-home-tiles .home-tiles-become, #desktop-student-home .main .student-home-tiles .home-tiles-courses {
+        height: 100%;
+        width: calc(100% / 3);
+        padding: 7.5px; }
+        #desktop-student-home .main .student-home-tiles .home-tiles-become > div, #desktop-student-home .main .student-home-tiles .home-tiles-courses > div {
+          position: relative; }
+      #desktop-student-home .main .student-home-tiles .home-tiles-become > div div {
+        background: #2a6f9d; }
+      #desktop-student-home .main .student-home-tiles .home-tiles-courses > div div {
+        background: #7bbbe5; }
+      #desktop-student-home .main .student-home-tiles .home-tiles-apps {
+        height: 100%;
+        width: 100%;
+        padding: 7.5px; }
+        #desktop-student-home .main .student-home-tiles .home-tiles-apps > div {
+          position: relative; }
+          #desktop-student-home .main .student-home-tiles .home-tiles-apps > div div {
+            background: #526775; }
+          #desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul {
+            height: calc(100% - 39px - 34px);
+            width: 100%;
+            padding: 7.5px; }
+            #desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul li {
+              padding: 7.5px;
+              height: 100%; }
+              #desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul li svg {
+                display: block;
+                margin: auto;
+                height: 100%;
+                width: auto; }
 
-#desktop-student-home #top-bar {
-  background: #50A5DD;
-}
-
-#desktop-student-home #top-bar div:nth-child(2) div {
-  background: #50A5DD;
-}
-
-#desktop-student-home #top-bar div:nth-child(2) #top-menu-links {
-  background: #50A5DD;
-}
-
-#desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:hover span, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:active span, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:focus span {
-  color: #50A5DD;
-}
-
-#desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:hover svg, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:active svg, #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li a:focus svg {
-  stroke: #50A5DD;
-}
-
-#desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li:last-child a span {
-  color: #50A5DD;
-}
-
-#desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li:last-child a svg {
-  stroke: #50A5DD;
-}
-
-#desktop-student-home .main {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  padding: 0;
-}
-
-#desktop-student-home .main a {
-  color: #40484B;
-}
-
-#desktop-student-home .main .student-home-greeting {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: calc(100% - 655px);
-  height: 100%;
-  padding-left: 15px;
-}
-
-#desktop-student-home .main .student-home-greeting div {
-  text-align: center;
-  text-transform: uppercase;
-}
-
-#desktop-student-home .main .student-home-greeting div h1 {
-  color: #50A5DD;
-  font-size: 40px;
-  font-weight: 700;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: 10%;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li {
-  padding: 0 15px;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a span {
-  display: block;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon {
-  position: relative;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon svg {
-  -webkit-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  -ms-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-  border-radius: 1000px;
-  fill: none;
-  stroke: #F1F1F1;
-  stroke-width: 5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  background: #40484B;
-  width: 64px;
-  height: 64px;
-  padding: 10px;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-icon .notification-number {
-  border-radius: 1000px;
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  width: 40px;
-  height: 40px;
-  background: #50A5DD;
-  border: 3px solid #F1F1F1;
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-type {
-  padding-left: 15px;
-  font-weight: 600;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:hover .notification-icon svg, #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:focus .notification-icon svg {
-  background: #7bbbe5;
-}
-
-#desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:active .notification-icon svg {
-  background: #50A5DD;
-}
-
-#desktop-student-home .main .student-home-tiles {
-  width: 655px;
-  height: 100%;
-  max-height: 660px;
-  padding: 7.5px;
-}
-
-#desktop-student-home .main .student-home-tiles > div {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  height: calc(100% / 3);
-  text-align: center;
-}
-
-#desktop-student-home .main .student-home-tiles > div .square {
-  height: 100%;
-  fill: none;
-}
-
-#desktop-student-home .main .student-home-tiles > div .square + div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-}
-
-#desktop-student-home .main .student-home-tiles > div .square + div h1, #desktop-student-home .main .student-home-tiles > div .square + div h2, #desktop-student-home .main .student-home-tiles > div .square + div h3 {
-  color: white;
-  font-weight: 700;
-}
-
-#desktop-student-home .main .student-home-tiles > div .square + div h1 {
-  padding: 15px 0 0;
-  font-size: 24px;
-  text-transform: uppercase;
-}
-
-#desktop-student-home .main .student-home-tiles > div .square + div h2 {
-  padding: 15px 0 0;
-  font-size: 20px;
-  text-transform: uppercase;
-}
-
-#desktop-student-home .main .student-home-tiles > div .square + div h3 {
-  padding: 0 0 15px;
-  font-size: 16px;
-}
-
-#desktop-student-home .main .student-home-tiles > div .square + div h1 + svg {
-  fill: none;
-  stroke: white;
-  stroke-width: 3px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  height: calc(100% - 43px - 34px);
-}
-
-#desktop-student-home .main .student-home-tiles > div .square + div h2 + svg {
-  fill: none;
-  stroke: white;
-  stroke-width: 3.5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  height: calc(100% - 39px - 53px);
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-quick, #desktop-student-home .main .student-home-tiles .home-tiles-request {
-  height: 100%;
-  width: calc(100% / 3 * 2);
-  padding: 7.5px;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-quick > div, #desktop-student-home .main .student-home-tiles .home-tiles-request > div {
-  position: relative;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-quick > div div {
-  background: #50A5DD;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-request > div div {
-  background: #298ed1;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-become, #desktop-student-home .main .student-home-tiles .home-tiles-courses {
-  height: 100%;
-  width: calc(100% / 3);
-  padding: 7.5px;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-become > div, #desktop-student-home .main .student-home-tiles .home-tiles-courses > div {
-  position: relative;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-become > div div {
-  background: #2a6f9d;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-courses > div div {
-  background: #7bbbe5;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-apps {
-  height: 100%;
-  width: 100%;
-  padding: 7.5px;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-apps > div {
-  position: relative;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-apps > div div {
-  background: #526775;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul {
-  height: calc(100% - 39px - 34px);
-  width: 100%;
-  padding: 7.5px;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul li {
-  padding: 7.5px;
-  height: 100%;
-}
-
-#desktop-student-home .main .student-home-tiles .home-tiles-apps > div ul li svg {
-  display: block;
-  margin: auto;
-  height: 100%;
-  width: auto;
-}
+/*# sourceMappingURL=desktop-student.css.map */
