@@ -23,12 +23,15 @@ angular.module('uguru.util.controllers')
     'LoadingService',
     'TimelineService',
     'Utilities',
+    'ScrollService',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
-        DeviceService, PopupService, LoadingService, TimelineService, Utilities) {
-
+        DeviceService, PopupService, LoadingService, TimelineService, Utilities, ScrollService) {
+        $timeout(function() {
+            console.log($scope.user)
+        }, 2500)
       var CTA_PARENT_DICT = {
             'cta-box-essay-student-request':'#desktop-student-home .main',
             'cta-box-content': '#desktop-student-home .main',
@@ -63,14 +66,14 @@ angular.module('uguru.util.controllers')
         }
 
         //temp data here
-        $scope.user.hs_files = []
-        for (var i = 0; i < 20; i++) {
-             var randUniversity = selectRandom($scope.universities)
-             $scope.user.hs_files.push({name:"Essay " + i, university: randUniversity, university_id:randUniversity.id, type:selectRandom(['doc', 'xls', 'pdf','img'])})
+        // $scope.user.hs_files = []
+        // for (var i = 0; i < 20; i++) {
+        //      var randUniversity = selectRandom($scope.universities)
+        //      $scope.user.hs_files.push({name:"Essay " + i, university: randUniversity, university_id:randUniversity.id, type:selectRandom(['doc', 'xls', 'pdf','img'])})
 
-        }
+        // }
 
-        Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
+        // Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
 
 
         function initCTA() {
@@ -88,6 +91,14 @@ angular.module('uguru.util.controllers')
                     var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
 
+                            $timeout(function() {
+
+                                if (modal_elem.id === 'cta-modal-essay-student-messaging') {
+
+                                    ScrollService.scrollTo(null, null, 250, '#messages .scroll', '.last-message');
+                                }
+
+                            }, 1000)
                             $ionicSlideBoxDelegate.update();
                             modal_elem.classList.add('show');
                             // $timeout(function() {

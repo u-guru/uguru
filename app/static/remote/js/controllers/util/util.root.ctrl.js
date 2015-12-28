@@ -254,6 +254,10 @@ angular.module('uguru.util.controllers')
         $scope.root = RootService;
         $scope.root.vars = {};
 
+        if (window.location.hash.indexOf('essay') > -1) {
+            $scope.root.vars.hs_mode = true;
+        }
+
         //create indepedent thread since blocking fun
         $timeout(function() {
             $scope.root.vars.page_cache = $localstorage.getObject('page_cache') || {};

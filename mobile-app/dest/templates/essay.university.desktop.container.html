@@ -1,8 +1,11 @@
-<div class="university-header">
+<div class="university-header hide ng-class:{'show': page.toggles.searchMode.eactive}">
 	<h1 >Add schools you would like to attend</h1>
 </div>
-<form data-velocity>
-	<div class="input-field">
+<div class="university-header hide show ng-class:{'show':!page.toggles.searchMode.active}">
+	<h1 class='weight-500'>You've added <span class='weight-900'><u>{{user.universities.length}}</u></span> universities</h1>
+</div>
+<form data-velocity class='hide ng-class:{"show":page.toggles.searchMode.active}'>
+	<div class='input-field'>
 		<i class="material-icons prefix">
 			<svg viewBox="0 0 100 100">
 			    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
@@ -85,8 +88,8 @@
 						<div class="school-card-color" style="background-color: {{university.school_color_one}};"></div>
 						<div class="school-card-info" style="color: {{university.school_color_one}};">
 							<h1 style="color: {{university.school_color_one}};">{{university.short_name || university.name}}</h1>
-							<h1>{{university.short_name || university.name}}</h1>
-							<!-- <h2 style="color: {{university.school_color_one}};">{{university.city}}, {{university.state}}</h2> -->
+							<!-- <h1>{{university.short_name || university.name}}</h1> -->
+							<h2 style="color: {{university.school_color_one}};">{{university.city}}, {{university.state}}</h2>
 						</div>
 						<ul class="school-card-footer">
 							<li>

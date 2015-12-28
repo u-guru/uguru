@@ -1889,6 +1889,12 @@ class Request(Base):
         uselist=False,
         backref="requests")
 
+    payment_card_id = Column(Integer, ForeignKey('card.id'))
+    payment_card = relationship("Card",
+        primaryjoin="Card.id==Request.payment_card_id",
+        uselist=False,
+        backref='requests')
+
     ## TODO REQUEST PAYMENT ID
 
     address = Column(String)
@@ -2212,7 +2218,7 @@ class File(Base):
         primaryjoin="Relationship.id == File.relationship_id",
         backref= "files")
 
-    message_id = Column(Integer, ForeignKey("message.id"))
+    # message_id = Column(Integer, ForeignKey("message.id"))
 
     @staticmethod
     def initEmptyFile():
@@ -2561,7 +2567,10 @@ class Message(Base):
         primaryjoin="(User.id==Message.receiver_id)",
                         uselist=False)
 
-    _file = relationship("File", uselist=False)
+    file_id = Column(Integer, ForeignKey('file.id'))
+    _file = relationship("File",
+        uselist=False,
+        primaryjoin="(File.id==Message.file_id)")
 
     @staticmethod
     def initFromJson(message_json, optional):

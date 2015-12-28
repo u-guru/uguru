@@ -52,9 +52,8 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
     matching: []
   };
 
-  if ($state.current.name.indexOf('essay') > -1) {
-    $scope.theme = 'essay';
-    $scope.root.vars.theme = 'essay';
+  if ($state.current.name.indexOf('hs') > -1) {
+    $scope.root.vars.hs_mode = true;
   }
 
   //only shows back button local
@@ -81,7 +80,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       mixpanel.track("Back to access selected");
     }
 
-    if ($scope.root.vars.theme === 'essay') {
+    if ($scope.root.vars.hs_mode) {
       $ionicViewSwitcher.nextDirection('back');
       $state.go('^.essay-home')
     } else {
