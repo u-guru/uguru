@@ -33,6 +33,39 @@ def ios_push(message, device_token):
 
     send_ios_notification(message, device_token)
 
+
+def createNewFile(user, _type=None, university_id=None):
+    _file = File()
+    _file.user_id = user.id
+    _file.url = user.profile_url
+    _file._type = _type
+    _file.university_id = university_id
+    db_session.add(_file)
+    db_session.commit()
+    return _file
+
+def createFiveRandomFiles(user):
+    file_types = ['doc', 'csv', 'pdf', 'xls', 'png']
+    new_files = []
+    for _type in file_types:
+        new_file = createNewFile(user, _type)
+        user.files.append(new_file)
+        new_files.append(new_file)
+        db_session.commit()
+    return new_files
+
+def selectFiveRandomTags():
+    from random import randint
+    tags = Tag.query.all()
+    tags = [tag for tag in tags if tag.name]
+    results = []
+    for index in range(0, 5):
+        randInt = randint(0, len(tags) - 1)
+        tag = tags[randInt]
+        tags.remove(tag)
+        results.append(tag)
+    return results
+
 # honcho run python manage.py ios_push yo 4d709d41a178d17c9256a509213282f600fb3cebb54830c9aa7a9f74cfc36542
 if arg == 'ios_push':
     from app.lib.push_notif import *
@@ -136,6 +169,271 @@ def init_mailgun_lists():
             print create_mailing_list(u)
 
 
+def getNumRandomTargettedUniversities(num):
+    import json
+    from random import randint
+    arr_universities = json.load(open('app/static/data/fa15_targetted.json'))
+    result = []
+    for index in range(0, num):
+        randInt = randint(0, len(arr_universities) - 1)
+        selected_uni = arr_universities[randInt]
+        arr_universities.remove(selected_uni)
+        result.append(selected_uni)
+    return result
+
+def addUniversitiesToUser(user, arr):
+    for uni_dict in arr:
+        uni_id = int(uni_dict.get('id'))
+        uni = University.query.get(uni_id)
+        user.universities.append(uni)
+        db_session.commit()
+    print "%s universities added to %s" % (len(arr), user.name)
+
+def createPaymentCards(user, arr):
+    pass
+
+def countMessagesInRelationships(_user):
+    return sum([len(_relationship.messages) for _relationship in _user.guru_relationships])
+
+def generateNumUserPaymentCards(num, user):
+        from datetime import datetime
+        for index in range(0, num):
+            card = Card()
+            card.stripe_token = 'askdljnaiond9a9dnas9d'
+            card.stripe_customer_id = 'iaa-9jda9sjd9ahdiad'
+            card.time_added = datetime.now()
+            card.is_transfer_card = False
+            card.is_payment_card = True
+            card.user_id = user.id
+            card.is_default_payment = True
+            card.is_bank_card = False
+            card.card_last4 = '4242'
+            if (index % 4 == 0):
+                card.card_type = 'visa'
+            if (index % 4 == 1):
+                card.card_type = 'amex'
+            if (index % 4 == 2):
+                card.card_type = 'discover'
+            if (index % 4 == 3):
+                card.card_type = 'master'
+            db_session.add(card)
+            db_session.commit()
+        print "%s payment cards created" % len(user.get_payment_cards())
+
+
+def generateNumUserTransactions(num, user):
+    from datetime import datetime
+    from random import randint
+    for index in range(0, num):
+        t = Transaction()
+        t.student_id = user.id
+        t.time_created = datetime.now()
+        t.description = 'HS Tutoring'
+        t.charge_id = 'aldksjasjd90ajsd9as'
+        t.card_id = user.cards[randint(0, len(user.get_payment_cards()) - 1)].id
+        t.is_task = True
+        t.request_id = user.requests[randint(0, len(user.requests) - 1)].id
+        t.stripe_amount = randint(1,20) * 10
+        t.profit =t.stripe_amount * 0.8
+        db_session.add(t)
+        db_session.commit()
+    print "%s student transactions created" % len(user.student_transactions)
+
+def createRelationshipWithGuru(user, guru):
+    relationship = Relationship()
+    db_session.add(relationship)
+    db_session.commit()
+    relationship.student_id = user.id
+    relationship.guru_id = guru.id
+    db_session.commit()
+
+
+def getRelationshipFromGuru(user, guru):
+    for _relationship in user.guru_relationships:
+        if guru.id == _relationship.guru.id:
+            return _relationship
+
+def generateNumGuruRelationshipsAndSessions(num, user):
+    all_gurus_with_balance = [_user for _user in User.query.all() if len(_user.student_relationships) > 5]
+    for index in range(0, num):
+        guru = all_gurus_with_balance[index]
+        createRelationshipWithGuru(user, guru)
+        session_json = {
+            'time_estimate': {'seconds':0, 'minutes': 10, 'hours':0},
+            'guru_id': guru.id,
+            'student_id': user.id,
+            'status': 1,
+            'relationship_id': getRelationshipFromGuru(user, guru).id,
+            'online': True,
+            'in_person': False
+        }
+        Session.initFromJson(session_json, False)
+    print "%s, %s student sessions, relationships created" % (len(user.student_sessions), len(user.guru_relationships))
+
+def grabRandomMessageContentFromPast():
+    from random import randint
+    message_contents = [message.contents for message in Message.query.all() if len(message.contents) > 20]
+    print "%s messages with content greater than 20" % len(message_contents)
+    return message_contents[randint(0, len(message_contents) - 1)]
+
+
+def getRandomFile(user):
+    from random import randint
+    from datetime import datetime
+    all_users = User.query.all()
+    files_with_pngs = [_user for _user in all_users if _user.profile_url and _user.name and 'png' in _user.profile_url and len(_user.name.split(' ')) > 1]
+    user_with_profile = files_with_pngs[randint(0, len(files_with_pngs) - 1)]
+    random_file_string = user_with_profile.profile_url
+    if not random_file_string:
+        random_file_string = 'https://uguru.me/static/remote/img/avatar.svg'
+    f = File()
+    f.url = random_file_string
+    f.time_created = datetime.now()
+    f.name = user_with_profile.getFirstName()
+    f.high_school = True
+    f._type ='img'
+    db_session.add(f)
+    db_session.commit()
+    f.user_id = user.id
+    db_session.commit()
+    return f
+
+
+def generateNumGuruMessagesPerRelationship(num, user, with_messages=True):
+    from datetime import datetime
+    from random import randint
+
+    for relationship in user.guru_relationships:
+        index = 0
+        for index in range(0, randint(num, num+20)):
+            index += 1
+            m = Message()
+            m.time_created = datetime.now()
+            m.relationship_id = relationship.id
+            m.contents = grabRandomMessageContentFromPast()
+            if (index % 2) == 1:
+                m.sender_id = user.id
+            else:
+                m.receiver_id = relationship.guru.id
+            if (index % 7)  == 0:
+                m._file = getRandomFile(user)
+                m._file.high_school = True
+
+            db_session.add(m)
+            db_session.commit()
+
+        print "%s messages generated for guru relationship with %s" % (len(relationship.messages), relationship.guru.name)
+
+
+def init_hs():
+    from app.models import *
+    from hashlib import md5
+    db_session.rollback()
+
+    email = "hs@uguru.me"
+    print "creating %s" % email
+    try:
+        user = User(email=email)
+    except:
+        user = User.query.filter_by(email=email).first()
+        messages = Message.query.filter_by(sender_id=user.id).all()
+        for message in messages:
+            message.sender_id = None
+            db_session.commit()
+
+        db_session.delete(user)
+        db_session.commit()
+        user = User(email=email)
+
+    user.password = md5('launchuguru123').hexdigest()
+    user.name = 'Sizzle N'
+    user.hs_student = True
+    university = University.query.get(2307)
+    ## create user with _high school
+    ## add many propertyes
+
+
+    ## add 5 universities
+
+    db_session.add(user)
+    db_session.commit()
+    print "user created"
+
+    ## Add 20 universities
+    randomUniversities = getNumRandomTargettedUniversities(20)
+    addUniversitiesToUser(user, randomUniversities)
+
+    ## Create a request
+
+    file_arr = createFiveRandomFiles(user)
+    print "5 random files created"
+    tag_arr = selectFiveRandomTags()
+    print "5 random tags created"
+
+    option_num = 1
+    description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
+    _request = Request.createHSRequest(user.id, university.id, option_num,\
+        file_arr, tag_arr, description)
+
+    print "HS request successfully created"
+
+    generateNumUserPaymentCards(5, user)
+    generateNumUserTransactions(5, user)
+    generateNumGuruRelationshipsAndSessions(5, user)
+    generateNumGuruMessagesPerRelationship(20, user)
+
+    user_messages = countMessagesInRelationships(user)
+    print """
+    Name: %s,
+    # Universities: %s,
+    # HS Requests: %s,
+    # HS Relationships: %s,
+    # HS Messages Within Relationships: %s,
+    # of total files: %s,
+    """ % (user.getFirstName, len(user.universities), len(user.requests), len(user.student_relationships), user_messages, len(user.files))
+
+
+
+    ###
+        ## create entire conversation
+        ## create messages linked to the files
+        ## allow files to be linked to a relationship after it is added via message
+
+    # teardown user relationships
+    # for relationship in user.guru_relationships:
+    #     relationship.student_id = None
+    #     relationship.guru_id = None
+    #     for session in relationship.sessions:
+    #         session.student_id = None
+    #         session.guru_id = None
+    #         db_session.delete(session)
+    #     for message in relationship.messages:
+    #         message.sender_id = None
+    #         message.receiver_id = None
+    #         message.contents = None
+    #         db_session.delete(message)
+    #     db_session.delete(relationship)
+    #     db_session.commit()
+
+    # # teardown user cards
+    # for card in user.cards:
+    #     card.user_id = None
+    #     db_session.delete(card)
+    #     db_session.commit()
+
+    # ## teardown requests
+    # for request in user.requests:
+    #     request.student_id = None
+    #     db_session.delete(request)
+    #     db_session.commit()
+
+    # db_session.delete(user)
+    # db_session.commit()
+
+    print 'user successfully deleted'
+
+if arg == 'init_hs':
+    init_hs()
 
 def init_university_dates(name):
     req = urllib2.Request("https://drive.google.com/uc?export=download&id=0By5VIgFdqFHddHdBT1U4YWZ2VkE", None)
@@ -612,6 +910,8 @@ if arg == 'update':
         env = 'local'
     print v.latest_ios, 'updated to', env
 
+    ## Helper functions
+
 if arg == 'seed_admin':
     user = User.query.filter_by(email='samir@uguru.me').first()
 
@@ -641,14 +941,7 @@ if arg == 'seed_admin':
         sys.exit()
 
 
-    ## Helper functions
-    def createNewFile(user):
-        _file = File()
-        _file.user_id = user.id
-        _file.url = user.profile_url
-        db_session.add(_file)
-        db_session.commit()
-        return _file
+
 
     def selectXRandomCourses(user, x):
         university_courses = user.university.popular_courses

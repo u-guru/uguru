@@ -10,21 +10,21 @@
 		<header class="third">
 			<div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
 			<div class="pf-header-color"></div>
-			<div class="pf-edit-mode-banner" ng-if="profile.edit_mode">
+			<div class="pf-edit-mode-banner" ng-if="!profile.public_mode">
 				<span>Edit Mode</span>
 				<button class="btn-ghost-white">Preview</button>
 			</div>
-			<div class="pf-banner pf-banner-academic ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/academic.html'"></div>
-			<div class="pf-banner pf-banner-photo ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/photography.html'"></div>
-			<div class="pf-banner pf-banner-baking ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/baking.html'"></div>
-			<div class="pf-banner pf-banner-household ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/household.html'"></div>
-			<div class="pf-banner pf-banner-delivery ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></div>
-			<div class="pf-banner pf-banner-freelancing ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/freelancing.html'"></div>
-			<div class="pf-banner pf-banner-athletic ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/athletic.html'"></div>
-			<div class="pf-banner pf-banner-tech ng-class:{'pf-banner-edit':profile.edit_mode}" ng-include="img_base + 'templates/svg/tech.html'"></div>
-			<div class="pf-header ng-class:{'pf-header-edit': profile.edit_mode}">
-				<span class="user-icon" ng-if="!profile.edit_mode" style="background-image: url({{user.profile_url}});"></span>
-				<a class="user-icon-container" ng-click='takeProfilePhoto()' ng-if="profile.edit_mode">
+			<div class="pf-banner pf-banner-academic ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/academic.html'"></div>
+			<div class="pf-banner pf-banner-photo ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/photography.html'"></div>
+			<div class="pf-banner pf-banner-baking ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/baking.html'"></div>
+			<div class="pf-banner pf-banner-household ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/household.html'"></div>
+			<div class="pf-banner pf-banner-delivery ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></div>
+			<div class="pf-banner pf-banner-freelancing ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/freelancing.html'"></div>
+			<div class="pf-banner pf-banner-athletic ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/athletic.html'"></div>
+			<div class="pf-banner pf-banner-tech ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/tech.html'"></div>
+			<div class="pf-header ng-class:{'pf-header-edit': !profile.public_mode}">
+				<span class="user-icon" ng-if="profile.public_mode" style="background-image: url({{user.profile_url}});"></span>
+				<a class="user-icon-container" ng-click='takeProfilePhoto()' ng-if="!profile.public_mode">
 					<span class='user-icon' style="background-image: url({{user.profile_url}});"></span>
 					<span class="user-icon-edit">Edit</span>
 				</a>
@@ -39,9 +39,9 @@
 				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
 				<!-- <button class="btn-ghost-white">Contact</button> -->
 				<div class='pf-textarea-container relative'>
-					<p class="pf-header-desc ng-class:{'hide': profile.edit_mode}">{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</p>
-					<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' rows="4"></textarea>
-					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{140 - user.guru_introduction.length}}</span>
+					<p class="pf-header-desc ng-class:{'hide': !profile.public_mode}">{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</p>
+					<textarea class="pf-header-desc hide ng-class:{'show': !profile.public_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' rows="4"></textarea>
+					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":!profile.public_mode}'>{{140 - user.guru_introduction.length}}</span>
 					<!-- @samir -->
 					<!-- BIND -->
 					<!-- add .checkmark to activate animation, parent must have .relative -->
@@ -50,7 +50,7 @@
 					  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 					</svg>
 				</div>
-				<ul class="pf-url"  ng-if="!profile.edit_mode">
+				<ul class="pf-url"  ng-if="profile.public_mode">
 					<li>
 						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code || user.first_name}}.uguru.me</a>
 					</li>
@@ -62,14 +62,14 @@
 						</a>
 					</li>
 				</ul>
-				<ul class="pf-url pf-edit-url" ng-if="profile.edit_mode">
+				<ul class="pf-url pf-edit-url" ng-if="!profile.public_mode">
 					<li class="relative">
-						<input ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length}}" />
+						<input ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length + 2}}" />
 						<span>.uguru.me</span>
 						<!-- @samir -->
 						<!-- BIND -->
 						<!-- add .checkmark to activate animation, parent must have .relative -->
-						<svg class="loader center-bottom" viewBox="0 0 100 100">
+						<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.profile_code}" viewBox="0 0 100 100">
 						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 						</svg>
@@ -106,7 +106,7 @@
 				<div class='backdrop full-xy bg-charcoal absolute top-0 left-0 ng-class:{"show":page.backdrops.activeTab}' ng-click='hideAllProfilePopups()' id='pf-shop-desc-backdrop'>
 				</div>
 				<!-- mobile-only -->
-				<ul class="pf-url"  ng-if="!profile.edit_mode">
+				<ul class="pf-url"  ng-if="profile.public_mode">
 					<li>
 						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code || user.first_name}}.uguru.me</a>
 					</li>
@@ -118,7 +118,7 @@
 						</a>
 					</li>
 				</ul>
-				<ul class="pf-url pf-edit-url" ng-if="profile.edit_mode">
+				<ul class="pf-url pf-edit-url" ng-if="!profile.public_mode">
 					<li>
 						<input ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length}}" />
 						<span>.uguru.me</span>
@@ -202,16 +202,16 @@
 					</li> -->
 				</ul>
 				<div class='pf-textarea-container relative'>
-					<p class="pf-header-desc ng-class:{'hide': profile.edit_mode}">{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</p>
-					<textarea class="pf-header-desc hide ng-class:{'show': profile.edit_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' rows="4"></textarea>
-					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":profile.edit_mode}'>{{140 - user.guru_introduction.length}}</span>
+					<p class="pf-header-desc ng-class:{'hide': !profile.public_mode}">{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</p>
+					<textarea class="pf-header-desc hide ng-class:{'show': !profile.public_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' rows="4"></textarea>
+					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":!profile.public_mode}'>{{140 - user.guru_introduction.length}}</span>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>About</h1>
 					<div>
-						<h2 class="hide ng-class:{'hide': profile.edit_mode}">I have a PhD in Math</h2>
-						<h2 class="show ng-class:{'show': profile.edit_mode}">I&nbsp;&nbsp;</h2>
-						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
+						<h2 class="show ng-class:{'hide': !profile.public_mode}">I <span ng-if="user.is_alumni">have</span><span ng-if='!user.is_alumni'>am seeking</span> a <span ng-if="user.is_alumni">degree</span><span ng-if="!user.is_alumni">{{user.year}} degree</span> in Math from {{user.university.short_name || user.university.name}}</h2>
+						<h2 ng-if='!profile.public_mode' class="show ng-class:{'show': !profile.public_mode}">I&nbsp;&nbsp;</h2>
+						<div class="hide custom-dropdown ng-class:{'show': !profile.public_mode}">
 							<div class='relative alumn-dropdown'>
 								<span class='flex-wrap-center full-xy'>
 									<span class="hide ng-class:{'show':user.is_alumni}" >have</span>
@@ -222,35 +222,49 @@
 										<path d="M14,32 L50,68 L86,32"></path>
 									</svg>
 								</a>
+								<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.alumni}" viewBox="0 0 100 100">
+								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+								</svg>
 							</div>
 							<ul class="ng-class:{'active': page.dropdowns.alumn.active}">
 								<li ng-click='updateUserAlumni(true)' class="hide ng-class:{'show':!user.is_alumni}" tabindex>have</li>
 								<li ng-click='updateUserAlumni(false)' class="hide ng-class:{'show':user.is_alumni}" tabindex>am seeking</li>
 							</ul>
 						</div>
-						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;a&nbsp;&nbsp;</h2>
-						<div class="show custom-dropdown ng-class:{'show': profile.edit_mode}">
-							<div>
-								<span>Bachelors</span>
-								<a>
+						<h2 ng-if='!profile.public_mode' class="hide ng-class:{'show': !profile.public_mode}">&nbsp;&nbsp;a&nbsp;&nbsp;</h2>
+						<div ng-if="!profile.public_mode" class="hide custom-dropdown ng-class:{'show': !profile.public_mode}">
+							<div class='relative'>
+								<span>{{user.year || 'Freshman'}}</span>
+								<a ng-click="page.dropdowns.year.active = !page.dropdowns.year.active">
 									<svg viewBox="0 0 100 100">
 										<path d="M14,32 L50,68 L86,32"></path>
 									</svg>
 								</a>
+								<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.year}" viewBox="0 0 100 100">
+								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+								</svg>
 							</div>
-							<ul class="active">
-								<li tabindex>Masters</li>
-								<li tabindex>PhD</li>
+							<ul class="ng-class:{'active': page.dropdowns.year.active}">
+								<li ng-click='updateUserYear(option)' ng-repeat='option in page.dropdowns.year.options' tabindex>{{option}}</li>
 							</ul>
 						</div>
-						<h2 class="show ng-class:{'show': profile.edit_mode}">&nbsp;&nbsp;in&nbsp;&nbsp;</h2>
-						<input class="show ng-class:{'show': profile.edit_mode}" value="Math" size="4"/>
+						<h2  class="hide ng-class:{'show': !profile.public_mode}">&nbsp;&nbsp;in&nbsp;&nbsp;</h2>
+						<span class='relative' ng-if="!profile.public_mode">
+							<input ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}
+							"/>
+							<svg class="loader center-bottom ng-class:{'checkmark': page.checkmarks.major}" viewBox="0 0 100 100">
+								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+							</svg>
+						</span>
 					</div>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>Experience</h1>
 					<ul class="pf-list-y">
-						<li ng-repeat='experience in user.guru_experiences' ng-click='editExperience(experience)'>
+						<li ng-repeat='experience in user.guru_experiences' ng-click='editGuruExperience(experience)'>
 							<ul class="ugrid-2">
 								<li class="text-left">{{experience.name || experience.description}}</li>
 								<li class="text-right" data-years="{{experience.years}}">{{experience.years}} year</li>
@@ -268,31 +282,26 @@
 							</div>
 						</li>
 					</ul>
-					<div class="hide ng-class{'show':page.modals.experience.visible}" ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
-					<button ng-click='page.modals.experience.visible = true;' class="chip">Add an Experience</button>
+					<div class="hide ng-class:{'show':page.toggles.experience.active}" ng-controller='ExperiencesController' ng-include="img_base + BASE + 'templates/guru.experiences.container.html'"></div>
+					<button ng-if='!profile.public_mode' ng-click='page.toggles.experience.active = !page.toggles.experience.active;' class="chip">Add an Experience</button>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>Languages</h1>
 					<ul class="pf-list-y ugrid-2">
 						<li ng-repeat='language in user.guru_languages' class="text-center">{{language.name}}</li>
 					</ul>
-					<div class='hide ng-class:{"show":page.modals.language.visible}' ng-controller='LanguagesController' ng-include="img_base + 'templates/guru.languages.container.html'"></div>
-					<button class="chip">Add a Language</button>
+					<div class='languages-container hide ng-class:{"show":page.toggles.languages.active}'>
+						<div ng-controller='LanguagesController' ng-include="img_base + BASE + 'templates/guru.languages.container.html'"></div>
+					</div>
+					<button ng-if='!profile.public_mode' class='chip' ng-click='page.toggles.languages.active = true;'>Add a Language</button>
 				</div>
 				<div class="pf-list p15top">
 					<h1>Will Work For</h1>
 					<ul class="pf-list-x ugrid-3">
-						<!-- <li ng-repeat='currency in all_currencies' ng-click='updateCurrency(currency)'>
-							<svg viewBox="0 0 100 100" ng-if='currency.active'>
-								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-							<small class="weight-500 p10xy ng-class:{'txt-cerise': currency.active, 'bg-academic': currency.active}"> {{currency.name}}
-							</small>
-						</li> -->
-						<li ng-repeat='currency in all_currencies'>
+						<li ng-repeat='currency in all_currencies' ng-if="(currency.active && profile.public_mode) || !profile.public_mode">
 							<span ng-include="img_base + BASE + 'templates/svg/wwf/' + currency.icon_url"></span>
 							<span>{{currency.name}}</span>
-							<div>
+							<div ng-if='!profile.public_mode'>
 								<input type="checkbox" ng-change='updateGuruCurrency(currency, currency.active)' ng-model="currency.active" />
 								<span>
 									<svg viewBox="0 0 100 100">
@@ -306,14 +315,14 @@
 				<div class="pf-list p15top">
 					<h1>Preferred Communication Methods</h1>
 					<ul class="pf-list-x ugrid-3">
-						<li>
+						<li ng-if = 'user.phone_friendly || !profile.public_mode'>
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M83.7938561,79.3821434 L78.6699409,84.5071137 C77.7551539,85.4205819 75.0764739,85.9906092 74.9904818,85.9906092 C58.7807089,86.131995 43.1731445,79.7648873 31.705598,68.2962858 C20.2066618,56.790755 13.8321683,41.1275331 14.0033612,24.8631579 C14.0033612,24.8557721 14.5900066,22.2538519 15.5040023,21.3485609 L20.6276537,16.2241181 C22.5025978,14.3404693 26.104242,13.4892531 28.6272922,14.3333473 L29.7050949,14.6928786 C32.2207592,15.5361814 34.8619825,18.3177354 35.5570413,20.8803525 L38.13443,30.34001 C38.8294888,32.9100129 37.8920167,36.5662594 36.0176002,38.4412035 L32.5963811,41.8629501 C35.9553482,54.2980395 45.7122852,64.0568229 58.1494848,67.4239672 L61.5693849,64.0014293 C63.4530338,62.1177804 67.1079614,61.1810997 69.6724249,61.8751034 L79.1307636,64.4617243 C81.6939082,65.1660154 84.4749346,67.7906206 85.3179736,70.3054936 L85.677505,71.3988593 C86.5131582,73.9147874 85.6685365,77.5156402 83.7938561,79.3821434 L83.7938561,79.3821434 Z"></path>
 								</svg>
 							</span>
 							<span>Phone</span>
-							<div>
+							<div ng-if='!profile.public_mode'>
 								<input type="checkbox" ng-change='updateCommunicationMethod("phone_friendly", user.phone_friendly)' ng-model='user.phone_friendly' checked />
 								<span>
 									<svg viewBox="0 0 100 100">
@@ -322,14 +331,14 @@
 								</span>
 							</div>
 						</li>
-						<li>
+						<li  ng-if = 'user.skype_friendly || !profile.public_mode'>
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M67.1700488,43.1554639 L67.1700488,32.2844044 C67.1700488,29.2226957 64.6887798,26.7381037 61.6348252,26.7381037 L19.5341159,26.7381037 C16.4812689,26.7381037 14,29.2226957 14,32.2844044 L14,67.7155956 C14,70.7773043 16.4801612,73.2618963 19.5341159,73.2618963 L61.6348252,73.2618963 C64.6876721,73.2618963 67.1700488,70.7773043 67.1700488,67.7155956 L67.1700488,56.8445361 L86,65.7892891 L86,34.2107109 L71.9187988,40.9001677 L67.1700488,43.1554639 Z M41.4037179,62.1366416 C48.1066,62.1366416 53.5403595,56.7028821 53.5403595,50 C53.5403595,43.2971179 48.1066,37.8633584 41.4037179,37.8633584 C34.7008359,37.8633584 29.2670763,43.2971179 29.2670763,50 C29.2670763,56.7028821 34.7008359,62.1366416 41.4037179,62.1366416 Z"></path>
 								</svg>
 							</span>
 							<span>Video</span>
-							<div>
+							<div ng-if='!profile.public_mode'>
 								<input type="checkbox" ng-change='updateCommunicationMethod("skype_friendly", user.skype_friendly)' ng-model='user.skype_friendly' checked />
 								<span>
 									<svg viewBox="0 0 100 100">
@@ -338,14 +347,14 @@
 								</span>
 							</div>
 						</li>
-						<li>
+						<li  ng-if = 'user.messenger_friendly || !profile.public_mode'>
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M23.2244571,18.0571429 L23.2244571,18.0571429 L78.7755429,18.0571429 C83.3177143,18.0571429 87,21.7445714 87,26.2826286 L87,65.3745143 C87,69.9177143 83.3177143,73.6 78.7755429,73.6 L57.1714286,73.6 L51,85.9428571 L44.8285714,73.6 L23.2244571,73.6 C18.6822857,73.6 15,69.9125714 15,65.3745143 L15,26.2826286 C15,21.7394286 18.6822857,18.0571429 23.2244571,18.0571429 L23.2244571,18.0571429 Z"></path>
 								</svg>
 							</span>
 							<span>Messaging</span>
-							<div>
+							<div ng-if='!profile.public_mode'>
 								<input type="checkbox" ng-change='updateCommunicationMethod("messenger_friendly", user.messenger_friendly)' ng-model='user.messenger_friendly' checked />
 								<span>
 									<svg viewBox="0 0 100 100">
@@ -354,14 +363,14 @@
 								</span>
 							</div>
 						</li>
-						<li>
+						<li  ng-if = 'user.text_friendly || !profile.public_mode'>
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M28,22.2242362 C28,17.682116 31.7514153,14 36.3796307,14 L63.6203693,14 C68.2483115,14 72,17.681934 72,22.2242362 L72,77.7757638 C72,82.317884 68.2485847,86 63.6203693,86 L36.3796307,86 C31.7516885,86 28,82.318066 28,77.7757638 L28,22.2242362 L28,22.2242362 Z M35,26 L65,26 L65,74 L35,74 L35,26 Z"></path>
 								</svg>
 							</span>
 							<span>Texting</span>
-							<div>
+							<div ng-if='!profile.public_mode'>
 								<input type="checkbox" ng-change='updateCommunicationMethod("text_friendly", user.text_friendly)' ng-model='user.text_friendly' checked />
 								<span>
 									<svg viewBox="0 0 100 100">
@@ -370,14 +379,14 @@
 								</span>
 							</div>
 						</li>
-						<li>
+						<li  ng-if = 'user.email_friendly || !profile.public_mode'>
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M15,31.9968376 C15,27.5803062 18.579658,24 22.9957852,24 L77.0042148,24 C81.420165,24 85,27.5741706 85,31.9968376 L85,68.0031624 C85,72.4196938 81.420342,76 77.0042148,76 L22.9957852,76 C18.579835,76 15,72.4258294 15,68.0031624 L15,31.9968376 L15,31.9968376 Z M84.9111543,31.4941352 L49.9585003,55.0012225 L15.0058463,31.4941352 M42.8716789,50.2025451 L15.0946246,68.884039 L42.8716789,50.2025451 M57.2229457,50.2025451 L85,68.884039 L57.2229457,50.2025451"></path>
 								</svg>
 							</span>
 							<span>Email</span>
-							<div>
+							<div ng-if='!profile.public_mode'>
 								<input type="checkbox" ng-change='updateCommunicationMethod("email_friendly", user.email_friendly)' ng-model='user.email_friendly' checked />
 								<span>
 									<svg viewBox="0 0 100 100">
@@ -386,14 +395,14 @@
 								</span>
 							</div>
 						</li>
-						<li>
+						<li  ng-if = 'user.person_friendly || !profile.public_mode'>
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M50.0000186,14 C30.1802821,14 14.030417,30.1419103 14.0000373,49.9835145 C13.9861494,59.7785062 17.8513192,69.2750235 24.6069034,76.038418 C31.0239706,82.4616905 39.5485232,86 48.6120989,86 C49.0955707,86 49.5825143,85.9904558 50.072062,85.969632 C70.2181637,85.1444892 86,69.3383625 86,49.9861175 C86,30.142778 69.8510029,14 50.0000186,14 L50.0000186,14 Z M24.18272,74.5721092 C25.26272,65.2447492 30.77792,57.3967492 38.83328,53.6988292 C35.65568,50.7151492 33.65696,46.4911492 33.65696,41.7986692 C33.65696,32.7871492 40.98848,25.4556292 50,25.4556292 C59.01152,25.4556292 66.34304,32.7871492 66.34304,41.7986692 C66.34304,46.4911492 64.34432,50.7151492 61.16672,53.6988292 C69.22208,57.3967492 74.73728,65.2447492 75.81728,74.5721092"></path>
 								</svg>
 							</span>
 							<span>In Person</span>
-							<div>
+							<div ng-if='!profile.public_mode'>
 								<input type="checkbox" ng-change='updateCommunicationMethod("person_friendly", user.person_friendly)' ng-model='user.person_friendly' checked />
 								<span>
 									<svg viewBox="0 0 100 100">
@@ -409,27 +418,35 @@
 			<ul class="relative pf-checklist pf-tab-item ng-class:{'active':activeTabIndex === 0}">
 				<!-- Description should be first child -->
 				<li class="pf-checklist-desc">
-					<!-- <h1 class="ng-class:{'hide': profile.edit_mode}">{{user.academic_shop.title || user.first_name + "’s Academic Shop"}}</h1> -->
-					<div class="relative">
+					<h1 class=" ng-class:{'hide': !profile.public_mode}">{{user.academic_shop.title || user.first_name + "’s Academic Shop"}}</h1>
+					<div class="relative" ng-if='!profile.public_mode'>
 						<input ng-model='user.academic_shop.title' ng-blur='saveGuruShopTitle()'/>
 						<!-- @samir -->
 						<!-- BIND -->
 						<!-- add .checkmark to activate animation, parent must have .relative -->
-						<svg class="loader right-center" viewBox="0 0 100 100">
+						<svg class="loader right-center ng-class:{'checkmark':page.checkmarks.shop_title}" viewBox="0 0 100 100">
 						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 						</svg>
 					</div>
 
-					<!-- <p class="pf-header-desc">{{user.active_shop.description}}</p> -->
+					<p class="pf-header-desc" ng-if="profile.public_mode">{{user.academic_shop.description}}</p>
 					<!-- @Gabrielle did you mean to put two here? -->
-					<div class='pf-textarea-container relative' ng-if='desktopMode'>
+					<div class='pf-textarea-container relative' ng-if='desktopMode && !profile.public_mode'>
 						<textarea ng-model='user.academic_shop.description' ng-blur='saveGuruShopDescription()' class="pf-header-desc" rows="2" maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{100 - user.guru_introduction.length}}</span>
+						<svg class="loader right-center ng-class:{'checkmark':page.checkmarks.shop_description}" viewBox="0 0 100 100">
+						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+						</svg>
 					</div>
-					<div class='pf-textarea-container relative' ng-if='!desktopMode'>
+					<div class='pf-textarea-container relative' ng-if='!desktopMode && !profile.public_mode'>
 						<textarea class="pf-header-desc" rows="3" ng-blur='saveGuruShopDescription()' maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{100 - user.guru_introduction.length}}</span>
+						<svg class="loader right-center ng-class:{'checkmark':page.checkmarks.shop_description}" viewBox="0 0 100 100">
+						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+						</svg>
 					</div>
 				</li>
 
@@ -441,8 +458,8 @@
 							<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
 							<span>{{portfolio_item.course.full_name || portfolio_item.course.title}}</span>
 						</div>
-						<a class="pf-edit-link" ng-click="showEditPortfolioItem(portfolio_item)">Edit</a>
-						<a class="pf-check pf-remove" ng-click='portfolio_item.showRemovePopup = true;'>
+						<a class="pf-edit-link" ng-if='!profile.public_mode' ng-click="showEditPortfolioItem(portfolio_item)">Edit</a>
+						<a class="pf-check pf-remove" ng-if='!profile.public_mode' ng-click='portfolio_item.showRemovePopup = true;'>
 							<svg viewBox="0 0 100 100">
 								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 							</svg>
@@ -478,7 +495,7 @@
 				</li>
 
 				<!-- <li class='pf-checklist-add ng-class:{"full-xy":activePortfolioItem.visible, "min-height-modal-desktop":activePortfolioItem.visible}'> -->
-				<li class='pf-checklist-add'>
+				<li class='pf-checklist-add' ng-if='!profile.public_mode'>
 					<div class="pf-check-container">
 						<a id='cta-box-profile-pi-item' class='cta-box' ng-click='addPortfolioItem($event)'>
 							<span class="pf-check-label">

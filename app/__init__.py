@@ -38,7 +38,7 @@ root.addHandler(ch)
 
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config.from_object('config')
 sslify = SSLify(app)
 mandrill = MandrillWebhooks(app)

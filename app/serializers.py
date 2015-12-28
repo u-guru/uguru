@@ -11,6 +11,12 @@ university_fields['num_gurus'] = fields.Integer(attribute='num_gurus')
 university_fields['latitude'] = fields.Float(attribute='latitude')
 university_fields['longitude'] = fields.Float(attribute='longitude')
 university_fields['short_name'] = fields.String(attribute='short_name')
+university_fields['school_color_one'] = fields.String(attribute='school_color_one')
+university_fields['school_color_two'] = fields.String(attribute='school_color_two')
+university_fields['svg_url'] = fields.String(attribute='svg_url')
+university_fields['name'] = fields.String(attribute='name')
+university_fields['sp16_deadline'] = fields.String(attribute='sp16_deadline')
+university_fields['banner_url'] = fields.String(attribute='banner_url')
 
 major_fields = {}
 major_fields['id'] = fields.Integer(attribute='id')
@@ -109,6 +115,7 @@ file_fields['request_id'] = fields.Integer(attribute='request_id')
 file_fields['description'] = fields.String(attribute='description')
 file_fields['size'] = fields.String(attribute='size')
 file_fields['name'] = fields.String(attribute='name')
+file_fields['type'] = fields.String(attribute='_type')
 
 guru_fields = {}
 guru_fields['name'] = fields.String(attribute='name')
@@ -175,6 +182,18 @@ device_fields['device_load_time'] = fields.Float(attribute='device_load_time')
 device_fields['network_speed'] = fields.String(attribute='network_speed')
 device_fields['typical_network_speed'] = fields.String(attribute='typical_network_speed')
 
+card_fields = {}
+card_fields['time_created'] = fields.DateTime(attribute='time_created')
+card_fields['card_last4'] = fields.String(attribute='card_last4')
+card_fields['bank_last4'] = fields.String(attribute='bank_last4')
+card_fields['card_type'] = fields.String(attribute='card_type')
+card_fields['is_default_payment'] = fields.Boolean(attribute='is_default_payment')
+card_fields['is_default_transfer'] = fields.Boolean(attribute='is_default_transfer')
+card_fields['is_bank_account'] = fields.Boolean(attribute='is_bank_account')
+card_fields['id'] = fields.Integer(attribute='id')
+card_fields['is_payment_card'] = fields.Boolean(attribute='is_payment_card')
+card_fields['is_transfer_card'] = fields.Boolean(attribute='is_transfer_card')
+
 request_fields = {}
 request_fields['time_created'] = fields.DateTime(attribute='time_created')
 request_fields['description'] = fields.String(attribute='description')
@@ -188,19 +207,31 @@ request_fields['guru'] = fields.Nested(guru_fields)
 request_fields['guru_id'] = fields.Integer(attribute='guru_id')
 request_fields['student'] = fields.Nested(student_fields)
 request_fields['position'] = fields.Nested(position_fields)
-request_fields['course'] = fields.Nested(course_fields)
+request_fields['info'] = {
+                            'hs': fields.Boolean(attribute='high_school'),
+                            'course': fields.Nested(course_fields),
+                            'description': fields.String(attribute='description'),
+                            'tags': fields.List(fields.Nested(tag_fields)),
+                            'attachments': fields.List(fields.Nested(file_fields))
+                        }
+request_fields['user'] = {
+                            'is_urgent': fields.Integer(attribute='urgency'),
+                            'time_estimate': {}
+                        }
+request_fields['compensation'] = {
+                            'payment_card': fields.Nested(card_fields)
+                        }
 request_fields['status'] = fields.Integer(attribute='status')
-request_fields['files'] = fields.List(fields.Nested(file_fields))
 request_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 request_fields['guru_calendar'] = fields.List(fields.Nested(calendar_fields))
 request_fields['tags'] = fields.List(fields.Nested(tag_fields))
-request_fields['_type'] = fields.Integer(attribute='_type')
+request_fields['type'] = fields.Integer(attribute='_type')
 request_fields['student_price'] = fields.Float(attribute='student_price')
 request_fields['task_title'] = fields.String(attribute='task_title')
 request_fields['verb_image'] = fields.String(attribute='verb_image')
 request_fields['initial_status'] = fields.String(attribute='inital_status')
+request_fields['university'] = fields.Nested(university_fields)
 
-# request_fields['files'] = fields.List(fields.Nested(file_fields))
 # request_fields['events'] = fields.List(fields.Nested(event_fields))
 
 proposal_fields = {}
@@ -227,17 +258,7 @@ selected_proposal_fields['question_response'] = fields.String(attribute='questio
 
 request_fields['selected_proposal'] = fields.Nested(selected_proposal_fields)
 
-card_fields = {}
-card_fields['time_created'] = fields.DateTime(attribute='time_created')
-card_fields['card_last4'] = fields.String(attribute='card_last4')
-card_fields['bank_last4'] = fields.String(attribute='bank_last4')
-card_fields['card_type'] = fields.String(attribute='card_type')
-card_fields['is_default_payment'] = fields.Boolean(attribute='is_default_payment')
-card_fields['is_default_transfer'] = fields.Boolean(attribute='is_default_transfer')
-card_fields['is_bank_account'] = fields.Boolean(attribute='is_bank_account')
-card_fields['id'] = fields.Integer(attribute='id')
-card_fields['is_payment_card'] = fields.Boolean(attribute='is_payment_card')
-card_fields['is_transfer_card'] = fields.Boolean(attribute='is_transfer_card')
+
 
 message_fields = {}
 message_fields['sender'] = fields.Nested(message_user_fields)
@@ -326,6 +347,8 @@ relationship_fields['student'] = fields.Nested(student_fields)
 relationship_fields['guru'] = fields.Nested(guru_fields)
 relationship_fields['sessions'] = fields.Nested(session_fields)
 relationship_fields['messages'] = fields.Nested(message_fields)
+relationship_fields['transactions'] = fields.List(fields.Nested(transaction_fields))
+relationship_fields['request'] = fields.List(fields.Nested(request_fields))
 
 referral_sender_fields = {}
 referral_sender_fields['id'] = fields.Integer(attribute='id')
@@ -440,7 +463,7 @@ UserSerializer = {
     'push_notifications_enabled': fields.Boolean,
     'guru_score': fields.Float,
     'last_position': fields.Nested(position_fields),
-    # 'requests': fields.List(fields.Nested(request_fields)),
+    'requests': fields.List(fields.Nested(request_fields)),
     # 'sessions': fields.List(fields.Nested(session_fields)),
     # 'proposals': fields.List(fields.Nested(proposal_fields)),
     'cards': fields.List(fields.Nested(card_fields)),
@@ -450,7 +473,7 @@ UserSerializer = {
     'phone_number': fields.String,
     'phone_number_token': fields.String,
     'phone_number_confirmed': fields.Boolean,
-    # 'student_transactions': fields.List(fields.Nested(transaction_fields)),
+    'student_transactions': fields.List(fields.Nested(transaction_fields)),
     'guru_transactions': fields.List(fields.Nested(transaction_fields)),
     'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
     'impact_events': fields.List(fields.Nested(event_fields)),
@@ -488,7 +511,11 @@ UserSerializer = {
     'second_degree_referrals': fields.Integer,
     'referral_limit': fields.Integer,
     'deactivated': fields.Boolean,
-    'external_profiles': fields.List(fields.Nested(resource_fields))
+    'external_profiles': fields.List(fields.Nested(resource_fields)),
+    'universities': fields.List(fields.Nested(university_fields)),
+    'hs_school': fields.Boolean,
+    'hs_files': fields.List(fields.Nested(file_fields))
+
 }
 
 DeviceSerializer = {
@@ -611,7 +638,8 @@ AdminUniversitySerializer = {
     'seal_url': fields.String,
     'school_color_one': fields.String,
     'school_color_two': fields.String,
-    'variations': fields.String
+    'variations': fields.String,
+    'sp16_deadline': fields.DateTime
 }
 
 AdminUniversityDetailedSerializer = {
@@ -642,7 +670,8 @@ AdminUniversityDetailedSerializer = {
     'school_color_one': fields.String,
     'school_color_two': fields.String,
     'variations': fields.String,
-    'popular_courses': fields.Nested(course_fields)
+    'popular_courses': fields.Nested(course_fields),
+    'sp16_deadline': fields.DateTime
 }
 
 

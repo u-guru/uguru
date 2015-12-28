@@ -58,7 +58,7 @@
     document.body.appendChild(bodyLoadingDiv);
     bodyLoadingDiv.innerHTML = '<div><span class="logo"> {% include "web/components/logo-shamrock.svg"|string%}' + ' </span><span class="loader"> {% include "web/components/svg-loader.svg"%} </span></div>'
 </script>
-<header id="top">
+<header id="top" style='display:none !important;'>
     <nav id="top-menu">
         <ul>
             <li><a id="top-link-menu" class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
@@ -83,7 +83,7 @@
 
 {% include 'web/layout/menu.html' %}
 
-<iframe class='full-x absolute' style='height:75%; top:12.5%;' src='/static/remote/index.html#/profiles/{{user.id}}'> </iframe>
+<iframe class='full-x absolute' style='height:100%;' src='https://uguru.me/static/remote/index.html#/profiles/{{user.id}}'> </iframe>
 
 
 

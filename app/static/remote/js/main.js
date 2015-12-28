@@ -20,12 +20,14 @@ if (LOCAL) {
   img_base = '/static/';
 }
 
+
+
 var tracker = 'lo';
 var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'ngAnimate',  'ngFx','uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic',
   'angularMoment','ngOpenFB', 'fox.scrollReveal', 'uiGmapgoogle-maps'])
@@ -47,13 +49,20 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $ionicConfigProvider, $compileProvider, $provide, $httpProvider, uiGmapGoogleMapApiProvider) {
+  $ionicConfigProvider, $compileProvider, $provide, $httpProvider, uiGmapGoogleMapApiProvider,$sceDelegateProvider) {
 
   uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyDytQb8vjgkgYkAp7oVTjwIZkMtOE6xMZg',
         v: '3.21',
         libraries: 'places, weather,geometry,visualization'
     });
+
+   $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'https://uguru.me/static/**'
+  ]);
 
 
   $httpProvider.useApplyAsync(true);
@@ -113,6 +122,27 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'AddUniversityCtrl'
   }).
 
+  //start essay
+  state('root.essay-student-university', {
+        url: '/essay-student-university',
+        templateUrl: BASE + 'templates/essay.university.desktop.html',
+        controller: 'EssayStudentUniversityController',
+  }).
+  state('root.essay-student-home-desktop', {
+        url: '/essay-student-home-desktop',
+        templateUrl: BASE + 'templates/essay.home.desktop.student.html',
+        controller: 'EssayStudentHomeController',
+  }).
+  state('root.essay-student-home-mobile', {
+        url: '/essay-student-home-mobile',
+        templateUrl: BASE + 'templates/essay.home.mobile.student.html',
+        controller: 'EssayStudentHomeController',
+  }).
+  state('root.essay-student-login', {
+        url: '/essay-student-login',
+        templateUrl: BASE + 'templates/essay.student.login.html',
+        controller: 'SignupController',
+  }).
   state('root.essay-guru-access', {
         url: '/essay-university',
         templateUrl: BASE + 'templates/university.html',
@@ -123,6 +153,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/essay.student.home.html',
         controller: "EssayStudentController"
   }).
+  //end essay
 
   state('root.timeline', {
         url: '/timeline',
@@ -296,11 +327,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.profile-card', {
     url:'/profile-card',
     templateUrl: BASE + 'templates/profile.card.html'
-  }).
-  state('root.university-card', {
-    url:'/university-card',
-    templateUrl: BASE + 'templates/university.card.html',
-    controller: 'AddUniversityCtrl'
   }).
   state('root.paper', {
     url:'/paper',

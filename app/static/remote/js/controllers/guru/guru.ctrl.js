@@ -77,16 +77,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         extraTransitionDuration:1
     }
 
-  $scope.closeGuruExperience = function() {
-    if ($scope.desktopMode) {
 
-
-    var modalElem = document.querySelector('#cta-modal-profile-experiences');
-    modalElem.classList.remove('show');
-    } else {
-      $scope.guruExperiencesModal.hide()
-    }
-  }
 
   $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;

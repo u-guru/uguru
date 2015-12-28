@@ -59,6 +59,8 @@ angular.module('uguru.user', [])
     var formatProfileUrl = function(profile_url) {
         if (profile_url === '/static/img/default-photo.jpg') {
             return img_base + BASE + "img/avatar.svg"
+        } else if (!profile_url) {
+            return "https://uguru.me/static/remote/img/avatar.svg";
         }
         return profile_url
     }
@@ -147,16 +149,21 @@ angular.module('uguru.user', [])
                 var firstNameStudent = nameSplitArr[0];
                 var lastInitialStudent = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
                 indexRelationship.student.name = firstNameStudent + ' ' + lastInitialStudent;
-            } else {
+            } else if (!indexRelationship.student.name) {
                 indexRelationship.student.name = '';
             }
             indexRelationship.student.profile_url = formatProfileUrl(indexRelationship.student.profile_url)
 
-            // parse guru name
-            var nameSplitArr = indexRelationship.guru.name.split(' ');
-            var firstNameGuru = nameSplitArr[0];
-            var lastInitialGuru = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
-            indexRelationship.guru.name = firstNameGuru + ' ' + lastInitialGuru;
+
+
+            if (indexRelationship.guru.name) {
+                var nameSplitArr = indexRelationship.guru.name.split(' ');
+                var firstNameGuru = nameSplitArr[0];
+                var lastInitialGuru = nameSplitArr[nameSplitArr.length - 1][0].toUpperCase() + '.';
+                indexRelationship.guru.name = firstNameGuru + ' ' + lastInitialGuru;
+            } else if (!indexRelationship.guru.name) {
+                indexRelationship.guru.name = '';
+            }
             indexRelationship.guru.profile_url = formatProfileUrl(indexRelationship.guru.profile_url)
 
 
@@ -618,7 +625,7 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
 
         $scope.user.majors = user.departments;
-        $scope.user.major = user.major;
+        $scope.user.major = user.major || 'mathematics';
         $scope.user.year = user.year;
 
         $scope.user.guru_categories = user.guru_categories;
@@ -651,7 +658,7 @@ angular.module('uguru.user', [])
         $scope.user.default_transfer_card = user.default_transfer_card;
         $scope.user.course_guru_dict = user.course_guru_dict;
         $scope.user.gurus = user.gurus;
-        $scope.user.guru_relationships = user.guru_relationships;
+        $scope.user.guru_relationships = parseRelationships(user.guru_relationships);
         $scope.user.student_relationships = parseRelationships(user.student_relationships);
         $scope.user.referred_by = user.referred_by;
         $scope.user.referral_code = user.referral_code;
@@ -662,7 +669,7 @@ angular.module('uguru.user', [])
         $scope.user.current_hourly = user.current_hourly;
         $scope.user.previous_proposals = user.previous_proposals;
         $scope.user.previous_guru_proposals = user.previous_guru_proposals;
-        $scope.user.external_re
+        $scope.user.universities = user.universities;
 
         $scope.user.is_admin = user.is_admin;
         // if (!$scope.user.is_admin) {
@@ -690,6 +697,8 @@ angular.module('uguru.user', [])
         $scope.user.phone_friendly = user.phone_friendly;
         $scope.user.person_friendly = user.person_friendly;
         $scope.user.skype_friendly = user.skype_friendly;
+        $scope.user.hs_school = user.hs_school;
+        $scope.user.hs_files = user.hs_files;
         $scope.user.text_friendly = user.text_friendly;
         $scope.user.guru_experiences = user.guru_experiences;
         $scope.user.guru_shops = user.guru_shops;
@@ -774,6 +783,14 @@ angular.module('uguru.user', [])
 
         $localstorage.setObject('user', $scope.user);
 
+        if (!$scope.root.vars.guru_mode && $scope.user.guru_relationships.length) {
+            $scope.root.vars.last_active_relationship = $scope.user.guru_relationships[0];
+        }
+
+        if ($scope.root.vars.guru_mode && $scope.user.student_relationships.length) {
+            $scope.root.vars.last_active_relationship = $scope.user.student_relationships[0];
+        }
+
 
     }
 
@@ -844,6 +861,9 @@ angular.module('uguru.user', [])
         },
         alumnOptions: function() {
             return ['am seeking', 'have'];
+        },
+        yearOptions: function() {
+            return ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Grad/Masters', 'PhD', 'Alumni'];
         },
         initUser: function() {
             var newUser = initUser();
@@ -1062,6 +1082,25 @@ angular.module('uguru.user', [])
                     'is_alumni': obj
                 }
               }
+
+              if (arg === 'update_guru_currency') {
+                return {
+                    'update_guru_currency': obj
+                }
+              }
+
+              if (arg === 'year') {
+                return {
+                    'year': obj
+                }
+              }
+
+              if (arg === 'major') {
+                return {
+                    'major': obj
+                }
+              }
+
 
               if (arg === 'recent_position') {
                 return {

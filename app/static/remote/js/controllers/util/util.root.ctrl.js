@@ -35,6 +35,7 @@ angular.module('uguru.util.controllers')
     'Github',
     'LoadingService',
     '$ionicSlideBoxDelegate',
+    'AnimationService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -43,7 +44,7 @@ angular.module('uguru.util.controllers')
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
          KeyboardService, ModalService, Github, LoadingService,
-         $ionicSlideBoxDelegate) {
+         $ionicSlideBoxDelegate, AnimationService) {
 
 
         var bodyRect;
@@ -88,6 +89,10 @@ angular.module('uguru.util.controllers')
             return height >= desktopHeightLimit && width >= desktopWidthLimit;
         };
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth) && !(navigator.userAgent.indexOf('iPad') > 0);
+
+        if ($scope.desktopMode) {
+            $ionicSideMenuDelegate.canDragContent(false);
+        }
 
         if ($scope.desktopMode) {
             document.body.classList.add('desktop-view');
@@ -195,6 +200,12 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
         }
 
+        if (window.location.hostname.indexOf('hs') > -1 || window.location.pathname.indexOf('hs') > -1) {
+          $scope.img_base = 'https://uguru.me/static/remote/';
+
+          // BASE = '/static/';
+        }
+
         $scope.getCoursesForUniversityId = function(uni_id, callback) {
             if (!uni_id) {
                 return;
@@ -243,6 +254,10 @@ angular.module('uguru.util.controllers')
         $scope.root = RootService;
         $scope.root.vars = {};
 
+        if (window.location.hash.indexOf('essay') > -1) {
+            $scope.root.vars.hs_mode = true;
+        }
+
         //create indepedent thread since blocking fun
         $timeout(function() {
             $scope.root.vars.page_cache = $localstorage.getObject('page_cache') || {};
@@ -264,6 +279,7 @@ angular.module('uguru.util.controllers')
                   $localstorage.setObject('user', []);
                   $localstorage.set('access', false);
                   $localstorage.setObject('appOnboarding', null);
+                  $localstorage.setObject('page_cache', null);
 
                   $ionicHistory.clearCache();
                   $ionicHistory.clearHistory();
@@ -278,10 +294,20 @@ angular.module('uguru.util.controllers')
                         $scope.user.createObj = User.createObj;
                         $scope.user.updateObj = User.updateObj;
                         $scope.root.vars.settings = {icons : {profile : true}};
-                        LoadingService.showSuccess('You have been successfully logged out!', 2500);
-                        $state.go('^.university');
-                        if (!$scope.desktopMode) {
-                            $ionicSideMenuDelegate.toggleRight();
+                        if (!$scope.root.vars.essay) {
+                            LoadingService.showSuccess('You have been successfully logged out!', 2500);
+                            $state.go('^.university');
+                            if (!$scope.desktopMode) {
+                                $ionicSideMenuDelegate.toggleRight();
+                            }
+                        } else {
+                            LoadingService.showAmbig(null, 1000, function() {
+                                $timeout(function() {
+                                    LoadingService.showSuccess('You have been successfully logged out!', 2500);
+                                }, 500)
+                                AnimationService.flip('^.essay-home');
+                            })
+
                         }
                   }, 1000);
             }
@@ -673,45 +699,45 @@ angular.module('uguru.util.controllers')
             }, false);
         });
 
-        if (window.location.href.indexOf('/profile/') > 0) {
-            console.log('redirecting...')
-            $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
-        } else if ($scope.user && $scope.user.guru_mode && $scope.autoRedirects) {
+        // if (window.location.href.indexOf('/profile/') > 0) {
+        //     console.log('redirecting...')
+        //     $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
+        // } else if ($scope.user && $scope.user.guru_mode && !$scope.autoRedirects) {
 
-            LoadingService.show();
-            $ionicViewSwitcher.nextDirection('enter');
-            if (LOCAL) {
-                $state.go('^.' + _startpage);
-            } else {
-                if ($scope.desktopMode) {
-                    $state.go('^.guru-home');
-                } else {
-                    $state.go('^.guru');
-                }
+        //     LoadingService.show();
+        //     $ionicViewSwitcher.nextDirection('enter');
+        //     if (LOCAL) {
+        //         $state.go('^.' + _startpage);
+        //     } else {
+        //         if ($scope.desktopMode) {
+        //             $state.go('^.guru-home');
+        //         } else {
+        //             $state.go('^.guru');
+        //         }
 
-            }
+        //     }
 
-            $timeout(function() {
-                LoadingService.hide();
-            }, 1000);
+        //     $timeout(function() {
+        //         LoadingService.hide();
+        //     }, 1000);
 
-        }
-        else if ($scope.user && $scope.user.university_id && $scope.autoRedirects) {
-            LoadingService.show();
-            $ionicViewSwitcher.nextDirection('enter');
-            if (LOCAL) {
-                $state.go('^.' + _startpage);
-            } else {
-                if ($scope.desktopMode) {
-                    $state.go('^.guru-home');
-                } else {
-                    $state.go('^.guru');
-                }
-            }
-            $timeout(function() {
-                LoadingService.hide();
-            }, 1000);
-        }
+        // }
+        // else if ($scope.user && $scope.user.university_id && !$scope.autoRedirects) {
+        //     LoadingService.show();
+        //     $ionicViewSwitcher.nextDirection('enter');
+        //     if (LOCAL) {
+        //         $state.go('^.' + _startpage);
+        //     } else {
+        //         if ($scope.desktopMode) {
+        //             $state.go('^.guru-home');
+        //         } else {
+        //             $state.go('^.guru');
+        //         }
+        //     }
+        //     $timeout(function() {
+        //         LoadingService.hide();
+        //     }, 1000);
+        // }
 
         // Override consolelog to prevent it frmo logging on the client side
         if (!$scope.LOCAL && console.log) {

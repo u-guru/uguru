@@ -7,13 +7,14 @@
 				</svg>
 			</a>
 		</div>
-		<h1 class="text-center">Add an Experience</h1>
+		<h1 class="text-center hide ng-class:{'show':!experience.id}">Add an Experience</h1>
+		<h1 class="text-center hide ng-class:{'show':experience && experience.id}">Edit Experience</h1>
 	</header>
 	<div class='main bg-charcoal'>
 		<div class='p15xy bg-campus-50p'>
 			<input class='input-outline full-x' id='experience-name-input' type="text" ng-model='experience.name' placeholder="Role Title"></input>
 		</div>
-		<div class='exp-years bg-charcoal'>
+		<div class='exp-years bg-charcoal relative'>
 			<label>
 				<h1 class="section-header">Years of Experience</h1>
 			</label>

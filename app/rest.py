@@ -383,6 +383,22 @@ class UserOneView(restful.Resource):
         #     if not user.email:
         #         user.email = request.json.get('email_address')
 
+        if request.json.get('add_hs_university'):
+            university_id = int(request.json.get('add_hs_university'))
+            if university_id:
+                university = University.query.get(university_id)
+                user.universities.append(university)
+            else:
+                abort(404)
+
+        if request.json.get('remove_hs_university'):
+            university_id = int(request.json.get('remove_hs_university'))
+            if university_id:
+                university = University.query.get(university_id)
+                user.universities.remove(university)
+            else:
+                abort(404)
+
         if request.json.get('confirm_school_email'):
             from emails import send_transactional_email
             from hashlib import md5
@@ -658,8 +674,23 @@ class UserOneView(restful.Resource):
             user.major = request.json.get('update_guru_major')
 
         if 'is_alumni' in request.json:
-            print "it gets here"
             user.is_alumni = request.json.get('is_alumni')
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+        if 'major' in request.json:
+            user.major = request.json.get('major')
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
+
+        if 'year' in request.json:
+            user.year = request.json.get('year')
             try:
                 db_session.commit()
             except:
@@ -668,6 +699,17 @@ class UserOneView(restful.Resource):
 
         if 'update_guru_demographic' in request.json:
             user.year = request.json.get('update_guru_demographic')
+
+        if 'update_guru_currency' in request.json:
+
+            currency_json = request.json.get('update_guru_currency')
+            currency_id = int(currency_json.get('id'))
+            add_currency = currency_json.get('active')
+
+            if add_currency:
+                user.addGuruCurrencyItem(currency_id)
+            else:
+                user.removeGuruCurrencyItem(currency_id)
 
         if 'update_guru_shop_description' in request.json:
 
@@ -2340,7 +2382,11 @@ class UserNewView(restful.Resource):
         if not user_email and request.json.get('fb_id'):
             user_email = 'fb_id:' + request.json.get('fb_id')
 
+
+        ### Main user creation script
         user = User.initNewUser(user_email, request.json)
+
+
         print user.guru_shops
         if request.json.get('access_code_sender_id'):
             sender_id = int(request.json.get('access_code_sender_id'))
@@ -2364,6 +2410,31 @@ class UserNewView(restful.Resource):
             user.add_guru_courses(guru_course_ids)
             db_session.commit()
             print user.name, 'has', len(user.guru_courses), 'guru courses'
+
+
+        if 'high_school' in request.json:
+            user.high_school = True
+            print "detected that user is a high school student"
+
+        ## if they added high schools
+        hs_universities_json = request.json.get('add_hs_universities')
+        if hs_universities_json:
+            university_ids = [int(uni_json.get('id')) for uni_json in hs_universities_json]
+            for university_id in university_ids:
+                university = University.query.get(university_id)
+                if university:
+                    user.universities.append(university)
+                else:
+                    db_session.rollback()
+                    raise
+
+            if len(user.universities):
+                try:
+                    db_session.commit()
+                    print "added %s universities for the user" % len(user.universities)
+                except:
+                    db_session.rollback()
+                    raise
 
         guru_subcategories_json = request.json.get('guru_subcategories')
         if  guru_subcategories_json:
@@ -2476,6 +2547,12 @@ class UserNewView(restful.Resource):
                 email_user.auth_token = uuid.uuid4().hex
                 course_id = None
                 user = email_user
+
+                is_high_school_login = request.json.get('hs_student')
+
+                ## if they dont have a high school account
+                if  is_high_school_login and not email_user.hs_student:
+                    abort(404)
 
                 if request.json.get('current_device'):
                     current_device_id = request.json.get('current_device').get('id')

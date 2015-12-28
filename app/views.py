@@ -32,16 +32,33 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
+    print "gets catch in catch_all_function", request.url
     if 'www.' in request.url:
-        return redirect(request.url.replace('www.', ''))
-    print request.url.replace('sam', '')
+        print "is processing the www..."
+        return redirect(request.url.replace('www.', '').replace('http://', 'https://'))
+    ## Put all custom domains here that are not profile URLS
+    ## TO FIGURE OUT
+    if 'hs.uguru.me' in request.url or 'hs' in request.url or 'highschool.uguru.me' in request.url or 'highschool' in request.url:
+        print "is processing the hs..."
+        from flask import send_file
+        return send_file('templates/hs/index.html')
     return redirect(url_for('new_home_page'))
 
 @app.route('/', defaults={'path': ''}, subdomain='www')
 @app.route('/<path:path>', subdomain='www')
-def catch_all(path):
+def catch_all_two(path):
+    print "gets catch in catch_two function", request.url
+    if 'www.uguru.me' in request.url:
+        return redirect(url_for('new_home_page'))
     if 'www.' in request.url:
-        return redirect(request.url.replace('www.', ''))
+        filename_redirect = request.url.split('/static/')[-1]
+        print 'redirecting to %s' % filename_redirect
+        return redirect(url_for('static', filename=filename_redirect, _scheme='https'))
+
+        # return redirect(request.url.replace('www.', '').replace('http://','https://'))
+    if 'hs.uguru.me' in request.url:
+        from flask import send_file
+        return send_file('templates/hs/index.html')
     return redirect(url_for('new_home_page'))
 
 @app.route('/loading/')
@@ -316,6 +333,14 @@ def admin_devices():
 
 @app.route('/', subdomain="<username>")
 def profile_page_new_view(username):
+    from flask import send_file
+    print "\n\nsubdomain routing: %s\n\n" % username, request.url
+
+    if '.' in username and 'www.' in username:
+        return redirect(request.url.replace("www.", ""))
+
+    if username == 'hs' or username == 'highschool':
+        return send_file('templates/hs/index.html')
     user_profile_exists = User.query.filter_by(profile_code=username).all()
     if username == "www":
         print 'redirecting to ' + request.url.replace("www.", "")
@@ -327,7 +352,7 @@ def profile_page_new_view(username):
     return render_template("web/pages/profile.html", user=user_profile_exists[0])
 
 @app.route('/profile/<username>')
-def profile_page_new_view(username):
+def profile_page_new_view_two(username):
     user_profile_exists = User.query.filter_by(profile_code=username).all()
     if not user_profile_exists:
         return redirect(url_for('new_home_page'))
@@ -336,6 +361,12 @@ def profile_page_new_view(username):
 @app.route('/')
 def new_home_page():
     return render_template("web/index.html")
+
+@app.route('/hs/')
+def hs_college_app():
+    from flask import send_from_directory, send_file
+    return send_file('templates/hs/index.html')
+    # return render_template(url_for('static', filename=angular_route))
 
 # @app.route('/', subdomain='www')
 # def new_home_page_www():
@@ -669,6 +700,9 @@ def admin_product_skills():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.product.categories.html")
 
+@app.route('/sticker/')
+def admin_product_skills():
+    return render_template("web/pages/sticker.html")
 
 
 @app.route('/admin/product/releases/')

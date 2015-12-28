@@ -29,12 +29,11 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.removeGuruLanguageAndUpdate = function(language, index) {
-      console.log("WTF");
+
       $scope.user.guru_languages.splice(index, 1);
 
       var confirmCallback = function() {
-        LoadingService.hide();
-        $scope.success.show(0, 1000, language.short_name + ' successfully removed');
+        LoadingService.showSuccess(language.short_name + ' successfully removed', 1000)
       }
       LoadingService.show();
       $scope.user.updateAttr('remove_guru_language', $scope.user, language, confirmCallback, $scope);

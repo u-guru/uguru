@@ -23,11 +23,12 @@ angular.module('uguru.student.controllers')
   'MockService',
   '$interval',
   '$ionicActionSheet',
+  'ScrollService',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $cordovaProgress,
   $stateParams, $cordovaKeyboard, $ionicScrollDelegate,
   Restangular, $ionicHistory, $cordovaStatusbar, $ionicPlatform, LoadingService,
-  $ionicViewSwitcher, MockService, $interval, $ionicActionSheet) {
+  $ionicViewSwitcher, MockService, $interval, $ionicActionSheet, ScrollService) {
 
     $scope.active_relationship = {search_text:'', new_message:''};
 
@@ -246,6 +247,11 @@ angular.module('uguru.student.controllers')
 
 
     $scope.setToActiveRelationship = function(relationship) {
+      if ($scope.desktopMode) {
+        $timeout(function() {
+          ScrollService.scrollTo(null, null, 250, '#messages .scroll', '.last-message');
+        }, 1000)
+      }
       $scope.active_relationship = relationship;
       $scope.active_relationship.msg_nav = false;
     }

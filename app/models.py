@@ -127,6 +127,12 @@ experience_portfolio_items_table = Table('experience-portfolio-items_assoc',
     Column('portfolio_item_id', Integer, ForeignKey('portfolio_item.id')),
     Column('experience_id', Integer, ForeignKey('experience.id')))
 
+user_university_table = Table('user-university_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('university_id', Integer, ForeignKey('university.id'))
+)
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -150,6 +156,7 @@ class User(Base):
     #admin fields
     is_admin = Column(Boolean)
     is_support_admin = Column(Boolean)
+    hs_student = Column(Boolean)
 
 
     fb_id = Column(String)
@@ -260,7 +267,10 @@ class User(Base):
         primaryjoin="Calendar.id==User.student_calendar_id",
         uselist=False)
 
-
+    universities = relationship("University",
+        secondary = user_university_table,
+        backref="users"
+    )
 
     guru_calendar_id = Column(Integer, ForeignKey('calendar.id'))
     guru_calendar = relationship("Calendar",
@@ -273,6 +283,11 @@ class User(Base):
     external_profiles = relationship("Resource",
         primaryjoin = "(Resource.contributed_user_id==User.id) & "\
                         "(Resource.is_profile==True)")
+
+
+    hs_files = relationship("File",
+        primaryjoin = "(File.user_id==User.id) & "\
+                        "(File.high_school==True)")
 
     # conducted every night at midnight
     estimated_guru_score = Column(Integer)
@@ -457,7 +472,8 @@ class User(Base):
 
         return course_ratings
 
-    def removeCurrencyItem(self, currency_id):
+    def removeGuruCurrencyItem(self, currency_id):
+
         for currency in self.guru_currencies:
             if currency.id == currency_id:
                 self.guru_currencies.remove(currency)
@@ -1135,6 +1151,7 @@ class University(Base):
     fa15_end = Column(DateTime)
     sp15_start = Column(DateTime)
     sp15_end = Column(DateTime)
+    sp16_deadline = Column(DateTime)
 
     departments_sanitized = Column(Boolean, default=False)
     courses_sanitized = Column(Boolean, default=False)
@@ -1146,6 +1163,8 @@ class University(Base):
     students = relationship("User",
         primaryjoin = "(User.university_id==University.id) & "\
                         "(User.is_a_guru==False)")
+
+
 
     majors = relationship("Major",
         secondary = university_major_table,
@@ -1839,6 +1858,8 @@ class Request(Base):
 
     time_created = Column(DateTime)
     time_accepted = Column(DateTime)
+    high_school = Column(Boolean, default=False)
+    hs_request_option = Column(String)
 
 
     description= Column(String)
@@ -1849,7 +1870,6 @@ class Request(Base):
 
     rating_id = Column(Integer, ForeignKey("rating.id"))
     transaction_id = Column(Integer, ForeignKey("transaction.id"))
-
 
     student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
     student_calendar = relationship("Calendar",
@@ -1868,6 +1888,14 @@ class Request(Base):
         primaryjoin="University.id==Request.university_id",
         uselist=False,
         backref="requests")
+
+    payment_card_id = Column(Integer, ForeignKey('card.id'))
+    payment_card = relationship("Card",
+        primaryjoin="Card.id==Request.payment_card_id",
+        uselist=False,
+        backref='requests')
+
+    ## TODO REQUEST PAYMENT ID
 
     address = Column(String)
     in_person = Column(Boolean)
@@ -1933,6 +1961,56 @@ class Request(Base):
         if self.status == 0 or self.status == 1:
             return True
         return False
+
+
+    @staticmethod
+    def createHSRequest(student_id, university_id, \
+        option_num, file_arr, tag_arr, description):
+        from datetime import datetime
+        r = Request()
+        r.high_school = True
+        r.hs_request_option = str(option_num)
+        r._type = option_num
+        r.time_created = datetime.now()
+        r.anonymous = True
+        r.description = description
+
+        db_session.add(r)
+        db_session.commit()
+
+        r.university_id = university_id
+        r.student_id = student_id
+        db_session.commit()
+
+
+        ## update files
+        for _file in file_arr:
+            if type(_file) == dict:
+                f_id = _file.get('id')
+            elif type(_file) == File:
+                f_id = _file.id
+            if not f_id:
+                print "No id number for file"
+                raise
+            f = File.query.get(f_id)
+            f.request_id = r.id
+            db_session.commit()
+
+
+        ## update tags
+        for _tag in tag_arr:
+            if type(_tag) == dict:
+                t_id = _tag.get('id')
+            elif type(_tag) == Tag:
+                t_id = _tag.id
+
+            if not t_id:
+                print "No id number for tag"
+                raise
+            t = Tag.query.get(t_id)
+            r.tags.append(t)
+        db_session.commit()
+
 
 
 class Proposal(Base):
@@ -2098,6 +2176,8 @@ class File(Base):
     time_updated = Column(String)
     name = Column(String)
 
+    high_school = Column(Boolean, default=False)
+
 
     request_id = Column(Integer, ForeignKey("request.id"))
     request = relationship("Request",
@@ -2110,6 +2190,13 @@ class File(Base):
     proposal = relationship("Proposal",
         uselist = False,
         primaryjoin = "Proposal.id == File.proposal_id",
+        backref = "files"
+    )
+
+    university_id = Column(Integer, ForeignKey("university.id"))
+    university = relationship("University",
+        uselist = False,
+        primaryjoin = "University.id == File.university_id",
         backref = "files"
     )
 
@@ -2131,7 +2218,7 @@ class File(Base):
         primaryjoin="Relationship.id == File.relationship_id",
         backref= "files")
 
-    message_id = Column(Integer, ForeignKey("message.id"))
+    # message_id = Column(Integer, ForeignKey("message.id"))
 
     @staticmethod
     def initEmptyFile():
@@ -2480,7 +2567,10 @@ class Message(Base):
         primaryjoin="(User.id==Message.receiver_id)",
                         uselist=False)
 
-    _file = relationship("File", uselist=False)
+    file_id = Column(Integer, ForeignKey('file.id'))
+    _file = relationship("File",
+        uselist=False,
+        primaryjoin="(File.id==Message.file_id)")
 
     @staticmethod
     def initFromJson(message_json, optional):
