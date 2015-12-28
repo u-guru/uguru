@@ -24,7 +24,7 @@
 
 			<ion-pane id='cta-modal-essay-student-universities' class='full-xy hide-display cta-modal bg-charcoal'>
 				<div class='full-xy'>
-					<main id="desktop-university" class="essay-university-search desktop-mode desktop-search ng-class:{'hs-view':root.vars.hs_mode}" ng-if='desktopMode'>
+					<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.hs_mode}" ng-if='desktopMode'>
 						<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
 						<div class="main default" ng-controller='EssayStudentUniversityController' ng-include="img_base + BASE + 'templates/essay.university.desktop.container.html'"></div>
 					</main>
@@ -36,7 +36,7 @@
 				<div class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.timeline.html'"> </div>
 			</ion-pane>
 
-			<ion-pane id='cta-modal-essay-student-files' class='show full-xy hide-display cta-modal bg-charcoal'>
+			<ion-pane id='cta-modal-essay-student-files' class='full-xy hide-display cta-modal bg-charcoal'>
 				<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
 				<section class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.files.html'"> </section>
 			</ion-pane>
