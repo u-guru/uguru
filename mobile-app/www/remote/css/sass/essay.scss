@@ -187,12 +187,79 @@ ion-view {
 				@include flex;
 				@include flex-center;
 				background: $orange;
-				height: 30%!important;
+				height: 25%!important;
 				h1 {
+					padding-top: 5%;
 					font-size: 48px;
 					font-weight: 900;
 					text-align: center;
 					text-transform: none!important;
+				}
+			}
+			.essay-footer-link {
+				@include round;
+				position: fixed;
+				z-index: 99;
+			    bottom: 15px;
+			    width: 48px;
+			    height: 48px;
+			    padding: 6px;
+			    background: rgba(white,.9);
+				&#essay-footer-support {
+					left: 15px;
+					&:before {
+						right: -20px;
+						border-right-color: rgba(white,.9);
+					}
+					&:after {
+						content: "Support";
+						right: -108px;
+					}
+				}
+				&#essay-footer-top {
+					right: 15px;
+					&:before {
+						left: -20px;
+						border-left-color: rgba(white,.9);
+					}
+					&:after {
+						content: "Back to Top";
+						left: -130px;
+					}
+				}
+				svg {
+					@include svg-stroke($orange, 7);
+				}
+				&:before, &:after {
+					@include transition(.15s ease-in-out);
+					@include opacity(0);
+					@include center-y;
+				}
+				&:before {
+					content: "";
+					width: 0;
+					height: 0;
+					border: 10px solid transparent;
+				}
+				&:after {
+					padding: 10px 15px;
+					background: rgba(white,.9);
+					font-size: 14px;
+					font-weight: 600;
+					text-transform: uppercase;
+					color: $slate;
+				}
+				&:hover, &:focus {
+					background: lighten($orange, 10%);
+					&:before, &:after {
+						@include opacity(1);
+					}
+					svg {
+						stroke: white;
+					}
+				}
+				&:active {
+					background: $orange;
 				}
 			}
 			.arrow-down-next {
@@ -223,7 +290,10 @@ ion-view {
 				}
 			}
 			.main {
-				height: 70%;
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				height: 75%;
 				color: $slate;
 				padding: 15px;
 				line-height: 1.2;
@@ -261,9 +331,7 @@ ion-view {
 						@include listless;
 						@include flex;
 						width: 100%;
-						overflow: auto;
 						margin: 0 auto;
-						padding: 15px;
 						> li {
 							width: 100%;
 							min-width: 320px;
@@ -278,15 +346,29 @@ ion-view {
 						}
 					}
 					> div {
+						position: relative;
+						z-index: 12;
 						width: 100%;
+						max-width: 830px;
 						text-align: center;
+						padding: 0 15px 15px;
 						h1 {
-							font-size: 24px;
+							color: $charcoal;
+							font-size: 18px;
 							font-weight: 700;
 						}
 						h2 {
-							font-size: 18px;
+							margin-top: 5px;
+							color: $slate;
+							font-size: 14px;
 							font-weight: 600;
+							a {
+								font-weight: 700;
+								color: lighten($slate, 20%);
+								&:hover, &:focus {
+									color: lighten($slate, 30%);
+								}
+							}
 						}
 					}
 				}
@@ -307,6 +389,7 @@ ion-view {
 						max-width: 830px;
 						margin: 0 auto;
 						font-weight: 600;
+						font-size: 18px!important;
 						text-align: center;
 					}
 					.paper {
@@ -481,12 +564,12 @@ ion-view {
 		color: white;
 		text-align: center;
 		h1 {
-			font-size: 32px;
+			font-size: 28px;
 			font-weight: 600;
 		}
 		p {
 			margin: 0;
-			font-size: 18px;
+			font-size: 16px;
 			font-weight: 400;
 		}
 		&:before {
@@ -518,9 +601,10 @@ ion-view {
 		background: white;
 		color: lighten($slate, 20%);
 		padding-bottom: 24px;
-		min-height:300px; // added to keep all the same height
+		min-height: 280px;
 		ul {
 			padding: 7.5px;
+			width: 100%;
 			li {
 				@include flex;
 				@include flex-center-vertical;
@@ -549,16 +633,20 @@ ion-view {
 			}
 		}
 		h1 {
+			-webkit-align-self: flex-end;
+			align-self: flex-end;
 			position: relative;
-			width: 70%;
-			margin: 0 15px 15px;
-			// before s: padding: 15px;
-			padding: 16px 15px 15px 15px; //after s
-			font-size: 24px;
-			font-weight:500;
+			width: 80%;
+			margin: 0 0 15px;
+			padding: 15px;
+			font-size: 22px;
+			font-weight: 600;
 			text-align: center;
 			background: $lake;
 			color: white;
+			> span {
+				display: block;
+			}
 			span.strong {
 				font-weight: 900;
 			}
@@ -572,7 +660,7 @@ ion-view {
 				top: 0;
 				width: 0;
 				height: 0;
-				border: 30px solid transparent;
+				border: 28px solid transparent;
 				border-left-width: 14px;
 				border-right-width: 14px;
 				border-top-color: $lake;
@@ -837,106 +925,79 @@ ion-scroll, .scroll {
 }
 
 //samir start css override 12/26/2015
-#essay-student-home {
-	section#essay-pricing {
-		header {
-			height:25% !important;
-		}
-		.main {
-			height:75% !important;
-			h1.price-text {
-				color: $charcoal !important;
-				opacity:0.8 !important;
-			}
-			h2.support-text {
-				margin-top:20px;
-				color:$slate !important;
-				font-weight:400;
-				a {
-					font-weight:700;
-					color:$charcoal !important;
-					opacity:0.5 !important;
-				}
-			}
-		}
-	}
-}
-
 .inline {
-	display:inline-block;
+	display: inline-block;
 }
 
 #billing-card-container .request-payment-container {
-	background:$slate;
-	padding-top:20px;
-	margin-top:20px;
+	background: $slate;
+	padding-top: 15px;
+	margin-top: 15px;
 	h4 {
-		margin:15px;
+		margin: 15px;
 	}
 	ul {
 		li {
 			form {
-				position:relative !important;
-				padding:40px 0;
+				position: relative !important;
+				padding: 30px 0;
 				button {
-					position:absolute;
-					margin:0 auto;
+					position: absolute;
+					margin: 0 auto;
 					text-align: center;
-					bottom:0;
-					right:0;
-					padding:6px 20px;
-					width:40%;
-					height:auto;
-					font-size:16px;
-					border:2px solid rgba(255,255,255,0.2);
-					border-radius:8px;
+					bottom: 0;
+					right: 0;
+					padding: 6px 20px;
+					width: 40%;
+					height: auto;
+					font-size: 16px;
+					border: 2px solid rgba(white,.2);
+					border-radius: 10px;
 					color: $smoke;
-					background:transparent;
+					background: none;
 				}
 				ul {
 					li {
-
-						padding-left:10px;
+						padding-left: 10px;
 						div.input-field {
-
-							position:relative;
+							position: relative;
 							input {
-								color:$smoke;
+								color: $smoke;
 							}
 							label {
-								color:$smoke;
+								color: $smoke;
 							}
 							a {
-								margin:12px;
-								top:0px;
-								right:0;
-								position:absolute;
-								width:10px;
-								height:10px;
+								position: absolute;
+								top: 0;
+								right: 0;
+								width: 10px;
+								height: 10px;
+								margin: 12px;
 								i {
-									color:$slate;
+									color: $slate;
 								}
 							}
 						}
 					}
 				}
 				div.input-field {
-					position:relative;
+					position: relative;
 					input {
-						color:$smoke;
+						color: $smoke;
 					}
 					label {
-						color:$smoke;
+						color: $smoke;
 					}
 					a {
-						margin:12px;
-						top:0px;
-						right:0;
-						position:absolute;
-						width:10px;
-						height:10px;
+						position: absolute;
+						top: 0;
+						right: 0;
+						width: 10px;
+						height: 10px;
+						margin: 12px;
 						i {
-							color:$slate;
+							color: $slate;
 						}
 					}
 				}
@@ -945,18 +1006,17 @@ ion-scroll, .scroll {
 	}
 }
 .capitalize {
-	text-transform:capitalize;
+	text-transform: capitalize;
 }
 
-#desktop-balance
-{
+#desktop-balance {
 	aside  {
 		ul.sidebar-layout-list {
 			li {
 				div {
 					h3.txt-smoke {
 						span {
-							font-size:inherit !important;
+							font-size: inherit !important;
 						}
 					}
 				}
@@ -966,13 +1026,13 @@ ion-scroll, .scroll {
 }
 
 .mini-card {
-	margin-bottom:10px !important;
-	line-height:15px !important;
-	border: 1px solid rgba(255,255,255,1);
-	padding:3px;
-	border-radius:5px;
-	margin-right:2px !important;
-	min-width:55px;
-	width:auto;
-	opacity:0.85;
+	@include opacity(.85);
+	margin-bottom: 10px!important;
+	line-height: 15px!important;
+	border: 1px solid white;
+	padding: 3px;
+	border-radius: 5px;
+	margin-right: 2px!important;
+	min-width: 55px;
+	width: auto;
 }

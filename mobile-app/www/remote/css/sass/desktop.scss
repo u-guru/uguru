@@ -65,8 +65,7 @@
 		svg {
 			@include svg-stroke($charcoal, 7);
 		}
-		&:before,
-		&:after {
+		&:before, &:after {
 			@include transition(.15s ease-in-out);
 			@include opacity(0);
 			@include center-y;
@@ -89,8 +88,7 @@
 			text-transform: uppercase;
 			color: $slate;
 		}
-		&:hover,
-		&:focus {
+		&:hover, &:focus {
 			background: lighten($gabrielle, 10%);
 			&:before,
 			&:after {
