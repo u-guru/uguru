@@ -1066,4 +1066,13 @@ ion-scroll, .scroll {
   width: auto;
   opacity: 0.85; }
 
+#desktop-request-form-course-list {
+  height: 500px;
+  position: relative;
+  top: 0 !important; }
+  #desktop-request-form-course-list.hide {
+    display: none !important; }
+  #desktop-request-form-course-list.show {
+    display: block !important; }
+
 /*# sourceMappingURL=essay.css.map */
