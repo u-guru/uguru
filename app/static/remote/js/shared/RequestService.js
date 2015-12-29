@@ -36,9 +36,13 @@ function RequestService() {
       type: _types.DEFAULT,
       university:null,
       info: {
-        course: {},
-        description: 'This is a sample description already filled in through the scope.request.info.description vars variable. To set the default go to RequestService.js and edit the initEmpty() function and ',
+        hs: true,
+        course: {},//
+        description: '',
         tags: [],
+        empty_tag: {
+          name: ''
+        },
         attachments: []
       },
       user: {
@@ -50,7 +54,8 @@ function RequestService() {
       compensation: {
         preferred: [],
         payment_card: null, //{card_token}
-      }
+      },
+      active_step: 1
     }
 
 

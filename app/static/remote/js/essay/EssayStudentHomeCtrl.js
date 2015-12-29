@@ -24,11 +24,12 @@ angular.module('uguru.util.controllers')
     'TimelineService',
     'Utilities',
     'ScrollService',
+    'RequestService',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
-        DeviceService, PopupService, LoadingService, TimelineService, Utilities, ScrollService) {
+        DeviceService, PopupService, LoadingService, TimelineService, Utilities, ScrollService, RequestService) {
         $timeout(function() {
             console.log($scope.user)
         }, 2500)
@@ -46,6 +47,8 @@ angular.module('uguru.util.controllers')
             duration:0.5,
             extraTransitionDuration:1
         }
+
+        $scope.newRequest = RequestService.init();
 
         $scope.launchCtaDict = {};
         $scope.closeCTADict = {};
@@ -74,6 +77,8 @@ angular.module('uguru.util.controllers')
         // }
 
         // Utilities.sortArrObjByKey($scope.user.hs_files, 'university_id');
+
+
 
 
         function initCTA() {

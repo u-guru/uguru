@@ -21,7 +21,7 @@
         <header id='essay-header' class='ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
             <a ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-hs.html'"></a>
             <a ng-click='scrollToSection("#essay-pricing")'>Pricing</a>
-            <a ng-click='scrollToSection("#essay-how-it-works")'>How it works</a>
+            <a ng-click='scrollToSection("#essay-how-it-works")'>How It Works</a>
             <!-- <a ng-click='scrollToSection("#timeline")'>Timeline</a> -->
             <a ng-click='scrollToSection("#essay-faq")'>FAQ</a>
             <a ng-click='flipToLogin()' ng-if='!user.id && !user.high_school'>Login</a>
@@ -215,7 +215,6 @@
                         <dl ng-repeat='faq in faqs'>
                             <dt>{{faq.question}}</dt>
                             <dd>{{faq.answer}}</dd>
-                            <br />
                         </dl>
                     </div>
                 </div>

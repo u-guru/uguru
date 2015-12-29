@@ -1,3 +1,4 @@
+
 @import 'mixin';
 
 // GABRIELLE CSS
@@ -8,6 +9,7 @@ ion-view {
 	// FILES
 	#student-files {
 		height: 100%;
+		overflow: auto;
 		header {
 			@include flex;
 			@include flex-center;
@@ -25,7 +27,6 @@ ion-view {
 			align-items: flex-start;
 			height: 70%;
 			padding: 22.5px 0 7.5px!important;
-			overflow: auto;
 			.attachment-list {
 				ul {
 					@include flex-center;
@@ -557,8 +558,7 @@ ion-view {
 			font-size: 24px;
 			font-weight:500;
 			text-align: center;
-			// background: lighten($lake, 20%); //old
-			background: darken($lake, 15%); //samir edit
+			background: $lake;
 			color: white;
 			span.strong {
 				font-weight: 900;
@@ -573,14 +573,11 @@ ion-view {
 				top: 0;
 				width: 0;
 				height: 0;
-				// border: 30px solid transparent; //before s:
-				border: 30px solid transparent; //after s:
+				border: 30px solid transparent;
 				border-left-width: 14px;
 				border-right-width: 14px;
-				border-top-color: darken($lake, 15%);
-				border-bottom-color: darken($lake, 15%);
-				// border-top-color: lighten($lake, 20%);
-				// border-bottom-color: lighten($lake, 20%);
+				border-top-color: $lake;
+				border-bottom-color: $lake;
 			}
 			&:before {
 				left: -14px;
@@ -864,4 +861,135 @@ ion-scroll, .scroll {
 			}
 		}
 	}
+}
+
+.inline {
+	display:inline-block;
+}
+
+#billing-card-container .request-payment-container {
+	background:$slate;
+	padding-top:20px;
+	margin-top:20px;
+	h4 {
+		margin:15px;
+	}
+	ul {
+		li {
+			form {
+				position:relative !important;
+				padding:40px 0;
+				button {
+					position:absolute;
+					margin:0 auto;
+					text-align: center;
+					bottom:0;
+					right:0;
+					padding:6px 20px;
+					width:40%;
+					height:auto;
+					font-size:16px;
+					border:2px solid rgba(255,255,255,0.2);
+					border-radius:8px;
+					color: $smoke;
+					background:transparent;
+				}
+				ul {
+					li {
+
+						padding-left:10px;
+						div.input-field {
+
+							position:relative;
+							input {
+								color:$smoke;
+							}
+							label {
+								color:$smoke;
+							}
+							a {
+								margin:12px;
+								top:0px;
+								right:0;
+								position:absolute;
+								width:10px;
+								height:10px;
+								i {
+									color:$slate;
+								}
+							}
+						}
+					}
+				}
+				div.input-field {
+					position:relative;
+					input {
+						color:$smoke;
+					}
+					label {
+						color:$smoke;
+					}
+					a {
+						margin:12px;
+						top:0px;
+						right:0;
+						position:absolute;
+						width:10px;
+						height:10px;
+						i {
+							color:$slate;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.capitalize {
+	text-transform:capitalize;
+}
+
+#desktop-balance
+{
+	aside  {
+		ul.sidebar-layout-list {
+			li {
+				div {
+					h3.txt-smoke {
+						span {
+							font-size:inherit !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.mini-card {
+	margin-bottom:10px !important;
+	line-height:15px !important;
+	border: 1px solid rgba(255,255,255,1);
+	padding:3px;
+	border-radius:5px;
+	margin-right:2px !important;
+	min-width:55px;
+	width:auto;
+	opacity:0.85;
+}
+
+
+
+//essay hacks to get the sizing decent
+
+#desktop-request-form-course-list {
+	height: 500px;
+    position: relative;
+    top: 0 !important;
+    &.hide {
+    	display: none !important;
+    }
+    &.show {
+    	display:block !important;
+    }
 }

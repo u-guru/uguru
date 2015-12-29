@@ -1,3 +1,4 @@
+
 @import 'mixin';
 
 // GABRIELLE CSS
@@ -975,4 +976,20 @@ ion-scroll, .scroll {
 	min-width:55px;
 	width:auto;
 	opacity:0.85;
+}
+
+
+
+//essay hacks to get the sizing decent
+
+#desktop-request-form-course-list {
+	height: 500px;
+    position: relative;
+    top: 0 !important;
+    &.hide {
+    	display: none !important;
+    }
+    &.show {
+    	display:block !important;
+    }
 }
