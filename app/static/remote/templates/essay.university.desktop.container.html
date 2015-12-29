@@ -1,8 +1,8 @@
-<div class="university-header hide ng-class:{'show': page.toggles.searchMode.eactive}">
-	<h1 >Add schools you would like to attend</h1>
+<div class="university-header hide ng-class:{'show': page.toggles.searchMode.active}">
+	<h1>Add schools you would like to attend</h1>
 </div>
 <div class="university-header hide show ng-class:{'show':!page.toggles.searchMode.active}">
-	<h1 class='weight-500'>You've added <span class='weight-900'><u>{{user.universities.length}}</u></span> universities</h1>
+	<h1>You've added <u>{{user.universities.length}}</u> universities</h1>
 </div>
 <form data-velocity class='hide ng-class:{"show":page.toggles.searchMode.active}'>
 	<div class='input-field'>
@@ -37,7 +37,7 @@
 							<span class="school-card-state" ng-include="img_base + 'templates/svg/main/plus.html'"></span>
 						</span>
 					</div>
-					<div class="school-card-main">
+					<div class="school-card-main no-footer">
 						<div class="school-card-map">
 							<!-- @samir - commented out images temporarily -->
 							<!-- <img src="https://maps.googleapis.com/maps/api/staticmap?center=({{university.latitude}},%20{{university.longitude}})&parameters&size=800x800&zoom=14"/> -->
@@ -48,20 +48,20 @@
 							<h1>{{university.short_name || university.name}}</h1>
 							<!-- <h2 style="color: {{university.school_color_one}};">{{university.city}}, {{university.state}}</h2> -->
 						</div>
-						<ul class="school-card-footer">
+						<!-- <ul class="school-card-footer">
 							<li>
-								<!-- <span ng-include="img_base + 'templates/svg/main/user.html'"></span>
-								<span>43</span> -->
+								<span ng-include="img_base + 'templates/svg/main/user.html'"></span>
+								<span>43</span>
 							</li>
 							<li>
-								<!-- <span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
-								<span>1/1/16</span> -->
+								<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
+								<span>1/1/16</span>
 							</li>
 							<li>
-								<!-- <span ng-include="img_base + 'templates/svg/main/attach.html'"></span>
-								<span>7</span> -->
+								<span ng-include="img_base + 'templates/svg/main/attach.html'"></span>
+								<span>7</span>
 							</li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>
@@ -80,7 +80,7 @@
 							<span class="school-card-state" ng-include="img_base + 'templates/svg/main/plus.html'"></span>
 						</span>
 					</div>
-					<div class="school-card-main">
+					<div class="school-card-main no-footer">
 						<div class="school-card-map">
 							<!-- @samir - commented out images temporarily -->
 							<!-- <img src="https://maps.googleapis.com/maps/api/staticmap?center=({{university.latitude}},%20{{university.longitude}})&parameters&size=800x800&zoom=14"/> -->
@@ -89,22 +89,22 @@
 						<div class="school-card-info" style="color: {{university.school_color_one}};">
 							<h1 style="color: {{university.school_color_one}};">{{university.short_name || university.name}}</h1>
 							<!-- <h1>{{university.short_name || university.name}}</h1> -->
-							<h2 style="color: {{university.school_color_one}};">{{university.city}}, {{university.state}}</h2>
+							<!-- <h2 style="color: {{university.school_color_one}};">{{university.city}}, {{university.state}}</h2> -->
 						</div>
-						<ul class="school-card-footer">
+						<!-- <ul class="school-card-footer">
 							<li>
-								<!-- <span ng-include="img_base + 'templates/svg/main/user.html'"></span>
-								<span>43</span> -->
+								<span ng-include="img_base + 'templates/svg/main/user.html'"></span>
+								<span>43</span>
 							</li>
 							<li>
-								<!-- <span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
-								<span>1/1/16</span> -->
+								<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
+								<span>1/1/16</span>
 							</li>
 							<li>
-								<!-- <span ng-include="img_base + 'templates/svg/main/attach.html'"></span>
-								<span>7</span> -->
+								<span ng-include="img_base + 'templates/svg/main/attach.html'"></span>
+								<span>7</span>
 							</li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>
