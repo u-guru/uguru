@@ -1,6 +1,9 @@
 #intercom-container {
   z-index: auto !important; }
 
+#desktop-university.essay-university-search .main form {
+  padding: 0 30px !important; }
+
 /* ---------- REQUESTS */
 #request header:not(.desktop-header) {
   background: #69B3A5; }
@@ -1392,8 +1395,25 @@
   overflow: auto; }
   #timeline > header {
     height: 30%;
+    width: 100%;
     background: #2B3234;
     color: white; }
+    #timeline > header.no-tabs {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center; }
+    #timeline > header:not(.no-tabs) .timeline-header {
+      height: calc(100% - 60px); }
     #timeline > header .timeline-header {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -1410,8 +1430,7 @@
       -webkit-align-items: center;
       align-items: center;
       -webkit-justify-content: center;
-      justify-content: center;
-      height: calc(100% - 60px); }
+      justify-content: center; }
       #timeline > header .timeline-header h1, #timeline > header .timeline-header h2 {
         margin: 0;
         width: 100%;
@@ -1606,9 +1625,9 @@
       margin-bottom: 30px; }
       #timeline > section > ul > li:nth-child(even) {
         padding-left: 57%; }
-        #timeline > section > ul > li:nth-child(even) .post-icon:after {
+        #timeline > section > ul > li:nth-child(even) .post-icon .post-icon-hack {
           left: 24px; }
-        #timeline > section > ul > li:nth-child(even) .post-icon span:last-child {
+        #timeline > section > ul > li:nth-child(even) .post-icon .post-icon-title {
           -webkit-transform: translateX(100%);
           -moz-transform: translateX(100%);
           -ms-transform: translateX(100%);
@@ -1623,9 +1642,9 @@
           border-right-color: #40484B; }
       #timeline > section > ul > li:nth-child(odd) {
         padding-right: 57%; }
-        #timeline > section > ul > li:nth-child(odd) .post-icon:after {
+        #timeline > section > ul > li:nth-child(odd) .post-icon .post-icon-hack {
           right: 24px; }
-        #timeline > section > ul > li:nth-child(odd) .post-icon span:last-child {
+        #timeline > section > ul > li:nth-child(odd) .post-icon .post-icon-title {
           -webkit-transform: translateX(-100%);
           -moz-transform: translateX(-100%);
           -ms-transform: translateX(-100%);
@@ -1639,7 +1658,7 @@
         #timeline > section > ul > li:nth-child(odd) article header a:after {
           right: -24px;
           border-left-color: #40484B; }
-      #timeline > section > ul > li:hover .post-icon span:last-child, #timeline > section > ul > li:focus .post-icon span:last-child {
+      #timeline > section > ul > li:hover .post-icon .post-icon-title, #timeline > section > ul > li:focus .post-icon .post-icon-title {
         -webkit-transform: translateX(0);
         -moz-transform: translateX(0);
         -ms-transform: translateX(0);
@@ -1678,7 +1697,15 @@
             stroke-width: 6px;
             stroke-linecap: round;
             stroke-linejoin: round; }
-        #timeline > section > ul > li .post-icon:after {
+        #timeline > section > ul > li .post-icon .post-icon-svg {
+          border-radius: 1000px;
+          display: block;
+          position: relative;
+          z-index: 4;
+          width: 48px;
+          height: 48px;
+          background: #40484B; }
+        #timeline > section > ul > li .post-icon .post-icon-hack {
           content: "";
           position: absolute;
           z-index: 3;
@@ -1686,7 +1713,7 @@
           height: 48px;
           width: 200px;
           background: #F1F1F1; }
-        #timeline > section > ul > li .post-icon span:last-child {
+        #timeline > section > ul > li .post-icon .post-icon-title {
           -webkit-transition: all 0.15s ease-in-out;
           -o-transition: all 0.15s ease-in-out;
           -ms-transition: all 0.15s ease-in-out;
@@ -1710,6 +1737,7 @@
           color: white;
           font-size: 16px;
           font-weight: 600;
+          line-height: 1.1;
           text-transform: uppercase; }
       #timeline > section > ul > li.post-month {
         padding-bottom: 150px; }
@@ -1735,7 +1763,7 @@
           font-weight: 600;
           text-transform: uppercase;
           background: #40484B; }
-          #timeline > section > ul > li.post-month .post-icon:after {
+          #timeline > section > ul > li.post-month .post-icon .post-icon-hack {
             display: none; }
       #timeline > section > ul > li article {
         position: relative;
@@ -1877,13 +1905,13 @@
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 1.2; }
-      #timeline > section > ul > li.post-milestone .post-icon span:last-child {
+      #timeline > section > ul > li.post-milestone .post-icon .post-icon-title {
         background: #80beb3; }
-      #timeline > section > ul > li.post-milestone .post-icon svg, #timeline > section > ul > li.post-milestone header a {
+      #timeline > section > ul > li.post-milestone .post-icon svg, #timeline > section > ul > li.post-milestone .post-icon .post-icon-svg, #timeline > section > ul > li.post-milestone header a {
         background: #80beb3; }
-      #timeline > section > ul > li.post-milestone:hover .post-icon span:last-child, #timeline > section > ul > li.post-milestone:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-milestone:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-milestone:focus .post-icon .post-icon-title {
         background: #69B3A5; }
-      #timeline > section > ul > li.post-milestone:hover .post-icon svg, #timeline > section > ul > li.post-milestone:hover header a, #timeline > section > ul > li.post-milestone:focus .post-icon svg, #timeline > section > ul > li.post-milestone:focus header a {
+      #timeline > section > ul > li.post-milestone:hover .post-icon svg, #timeline > section > ul > li.post-milestone:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-milestone:hover header a, #timeline > section > ul > li.post-milestone:focus .post-icon svg, #timeline > section > ul > li.post-milestone:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-milestone:focus header a {
         background: #69B3A5; }
       #timeline > section > ul > li.post-milestone article a:not(.txt-white) {
         color: #80beb3; }
@@ -1901,13 +1929,13 @@
         border-left-color: #80beb3; }
       #timeline > section > ul > li.post-milestone:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-milestone:nth-child(odd):focus article header a:after {
         border-left-color: #69B3A5; }
-      #timeline > section > ul > li.post-blog .post-icon span:last-child {
+      #timeline > section > ul > li.post-blog .post-icon .post-icon-title {
         background: #f7cc60; }
-      #timeline > section > ul > li.post-blog .post-icon svg, #timeline > section > ul > li.post-blog header a {
+      #timeline > section > ul > li.post-blog .post-icon svg, #timeline > section > ul > li.post-blog .post-icon .post-icon-svg, #timeline > section > ul > li.post-blog header a {
         background: #f7cc60; }
-      #timeline > section > ul > li.post-blog:hover .post-icon span:last-child, #timeline > section > ul > li.post-blog:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-blog:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-blog:focus .post-icon .post-icon-title {
         background: #F6C64E; }
-      #timeline > section > ul > li.post-blog:hover .post-icon svg, #timeline > section > ul > li.post-blog:hover header a, #timeline > section > ul > li.post-blog:focus .post-icon svg, #timeline > section > ul > li.post-blog:focus header a {
+      #timeline > section > ul > li.post-blog:hover .post-icon svg, #timeline > section > ul > li.post-blog:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-blog:hover header a, #timeline > section > ul > li.post-blog:focus .post-icon svg, #timeline > section > ul > li.post-blog:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-blog:focus header a {
         background: #F6C64E; }
       #timeline > section > ul > li.post-blog article a:not(.chip) {
         color: #F6C64E; }
@@ -1925,13 +1953,13 @@
         border-left-color: #f7cc60; }
       #timeline > section > ul > li.post-blog:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-blog:nth-child(odd):focus article header a:after {
         border-left-color: #F6C64E; }
-      #timeline > section > ul > li.post-tutorial .post-icon span:last-child {
+      #timeline > section > ul > li.post-tutorial .post-icon .post-icon-title {
         background: #6fb2c2; }
-      #timeline > section > ul > li.post-tutorial .post-icon svg, #timeline > section > ul > li.post-tutorial header a {
+      #timeline > section > ul > li.post-tutorial .post-icon svg, #timeline > section > ul > li.post-tutorial .post-icon .post-icon-svg, #timeline > section > ul > li.post-tutorial header a {
         background: #6fb2c2; }
-      #timeline > section > ul > li.post-tutorial:hover .post-icon span:last-child, #timeline > section > ul > li.post-tutorial:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-tutorial:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-tutorial:focus .post-icon .post-icon-title {
         background: #55A4B7; }
-      #timeline > section > ul > li.post-tutorial:hover .post-icon svg, #timeline > section > ul > li.post-tutorial:hover header a, #timeline > section > ul > li.post-tutorial:focus .post-icon svg, #timeline > section > ul > li.post-tutorial:focus header a {
+      #timeline > section > ul > li.post-tutorial:hover .post-icon svg, #timeline > section > ul > li.post-tutorial:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-tutorial:hover header a, #timeline > section > ul > li.post-tutorial:focus .post-icon svg, #timeline > section > ul > li.post-tutorial:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-tutorial:focus header a {
         background: #55A4B7; }
       #timeline > section > ul > li.post-tutorial article a:not(.chip) {
         color: #6fb2c2; }
@@ -1949,13 +1977,13 @@
         border-left-color: #6fb2c2; }
       #timeline > section > ul > li.post-tutorial:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-tutorial:nth-child(odd):focus article header a:after {
         border-left-color: #55A4B7; }
-      #timeline > section > ul > li.post-partnership .post-icon span:last-child {
+      #timeline > section > ul > li.post-partnership .post-icon .post-icon-title {
         background: #f26165; }
-      #timeline > section > ul > li.post-partnership .post-icon svg, #timeline > section > ul > li.post-partnership header a {
+      #timeline > section > ul > li.post-partnership .post-icon svg, #timeline > section > ul > li.post-partnership .post-icon .post-icon-svg, #timeline > section > ul > li.post-partnership header a {
         background: #f26165; }
-      #timeline > section > ul > li.post-partnership:hover .post-icon span:last-child, #timeline > section > ul > li.post-partnership:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-partnership:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-partnership:focus .post-icon .post-icon-title {
         background: #F04F54; }
-      #timeline > section > ul > li.post-partnership:hover .post-icon svg, #timeline > section > ul > li.post-partnership:hover header a, #timeline > section > ul > li.post-partnership:focus .post-icon svg, #timeline > section > ul > li.post-partnership:focus header a {
+      #timeline > section > ul > li.post-partnership:hover .post-icon svg, #timeline > section > ul > li.post-partnership:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-partnership:hover header a, #timeline > section > ul > li.post-partnership:focus .post-icon svg, #timeline > section > ul > li.post-partnership:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-partnership:focus header a {
         background: #F04F54; }
       #timeline > section > ul > li.post-partnership article a:not(.chip) {
         color: #f26165; }
@@ -1973,13 +2001,13 @@
         border-left-color: #f26165; }
       #timeline > section > ul > li.post-partnership:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-partnership:nth-child(odd):focus article header a:after {
         border-left-color: #F04F54; }
-      #timeline > section > ul > li.post-parent .post-icon span:last-child {
+      #timeline > section > ul > li.post-parent .post-icon .post-icon-title {
         background: #a974ce; }
-      #timeline > section > ul > li.post-parent .post-icon svg, #timeline > section > ul > li.post-parent header a {
+      #timeline > section > ul > li.post-parent .post-icon svg, #timeline > section > ul > li.post-parent .post-icon .post-icon-svg, #timeline > section > ul > li.post-parent header a {
         background: #a974ce; }
-      #timeline > section > ul > li.post-parent:hover .post-icon span:last-child, #timeline > section > ul > li.post-parent:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-parent:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-parent:focus .post-icon .post-icon-title {
         background: #9A5BC5; }
-      #timeline > section > ul > li.post-parent:hover .post-icon svg, #timeline > section > ul > li.post-parent:hover header a, #timeline > section > ul > li.post-parent:focus .post-icon svg, #timeline > section > ul > li.post-parent:focus header a {
+      #timeline > section > ul > li.post-parent:hover .post-icon svg, #timeline > section > ul > li.post-parent:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-parent:hover header a, #timeline > section > ul > li.post-parent:focus .post-icon svg, #timeline > section > ul > li.post-parent:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-parent:focus header a {
         background: #9A5BC5; }
       #timeline > section > ul > li.post-parent article a:not(.chip) {
         color: #a974ce; }
@@ -1997,13 +2025,13 @@
         border-left-color: #a974ce; }
       #timeline > section > ul > li.post-parent:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-parent:nth-child(odd):focus article header a:after {
         border-left-color: #9A5BC5; }
-      #timeline > section > ul > li.post-college-main .post-icon span:last-child {
+      #timeline > section > ul > li.post-college-main .post-icon .post-icon-title {
         background: #eb60af; }
-      #timeline > section > ul > li.post-college-main .post-icon svg, #timeline > section > ul > li.post-college-main header a {
+      #timeline > section > ul > li.post-college-main .post-icon svg, #timeline > section > ul > li.post-college-main .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-main header a {
         background: #eb60af; }
-      #timeline > section > ul > li.post-college-main:hover .post-icon span:last-child, #timeline > section > ul > li.post-college-main:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-college-main:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-college-main:focus .post-icon .post-icon-title {
         background: #e6389b; }
-      #timeline > section > ul > li.post-college-main:hover .post-icon svg, #timeline > section > ul > li.post-college-main:hover header a, #timeline > section > ul > li.post-college-main:focus .post-icon svg, #timeline > section > ul > li.post-college-main:focus header a {
+      #timeline > section > ul > li.post-college-main:hover .post-icon svg, #timeline > section > ul > li.post-college-main:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-main:hover header a, #timeline > section > ul > li.post-college-main:focus .post-icon svg, #timeline > section > ul > li.post-college-main:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-main:focus header a {
         background: #e6389b; }
       #timeline > section > ul > li.post-college-main article a:not(.chip) {
         color: #eb60af; }
@@ -2021,13 +2049,13 @@
         border-left-color: #eb60af; }
       #timeline > section > ul > li.post-college-main:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-main:nth-child(odd):focus article header a:after {
         border-left-color: #e6389b; }
-      #timeline > section > ul > li.post-college-guru .post-icon span:last-child {
+      #timeline > section > ul > li.post-college-guru .post-icon .post-icon-title {
         background: #94c07d; }
-      #timeline > section > ul > li.post-college-guru .post-icon svg, #timeline > section > ul > li.post-college-guru header a {
+      #timeline > section > ul > li.post-college-guru .post-icon svg, #timeline > section > ul > li.post-college-guru .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-guru header a {
         background: #94c07d; }
-      #timeline > section > ul > li.post-college-guru:hover .post-icon span:last-child, #timeline > section > ul > li.post-college-guru:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-college-guru:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-college-guru:focus .post-icon .post-icon-title {
         background: #81B566; }
-      #timeline > section > ul > li.post-college-guru:hover .post-icon svg, #timeline > section > ul > li.post-college-guru:hover header a, #timeline > section > ul > li.post-college-guru:focus .post-icon svg, #timeline > section > ul > li.post-college-guru:focus header a {
+      #timeline > section > ul > li.post-college-guru:hover .post-icon svg, #timeline > section > ul > li.post-college-guru:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-guru:hover header a, #timeline > section > ul > li.post-college-guru:focus .post-icon svg, #timeline > section > ul > li.post-college-guru:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-guru:focus header a {
         background: #81B566; }
       #timeline > section > ul > li.post-college-guru article a:not(.chip) {
         color: #94c07d; }
@@ -2045,13 +2073,13 @@
         border-left-color: #94c07d; }
       #timeline > section > ul > li.post-college-guru:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-guru:nth-child(odd):focus article header a:after {
         border-left-color: #81B566; }
-      #timeline > section > ul > li.post-college-student .post-icon span:last-child {
+      #timeline > section > ul > li.post-college-student .post-icon .post-icon-title {
         background: #6ab3e2; }
-      #timeline > section > ul > li.post-college-student .post-icon svg, #timeline > section > ul > li.post-college-student header a {
+      #timeline > section > ul > li.post-college-student .post-icon svg, #timeline > section > ul > li.post-college-student .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-student header a {
         background: #6ab3e2; }
-      #timeline > section > ul > li.post-college-student:hover .post-icon span:last-child, #timeline > section > ul > li.post-college-student:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-college-student:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-college-student:focus .post-icon .post-icon-title {
         background: #50A5DD; }
-      #timeline > section > ul > li.post-college-student:hover .post-icon svg, #timeline > section > ul > li.post-college-student:hover header a, #timeline > section > ul > li.post-college-student:focus .post-icon svg, #timeline > section > ul > li.post-college-student:focus header a {
+      #timeline > section > ul > li.post-college-student:hover .post-icon svg, #timeline > section > ul > li.post-college-student:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-student:hover header a, #timeline > section > ul > li.post-college-student:focus .post-icon svg, #timeline > section > ul > li.post-college-student:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-student:focus header a {
         background: #50A5DD; }
       #timeline > section > ul > li.post-college-student article a:not(.chip) {
         color: #6ab3e2; }
@@ -2069,13 +2097,13 @@
         border-left-color: #6ab3e2; }
       #timeline > section > ul > li.post-college-student:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-student:nth-child(odd):focus article header a:after {
         border-left-color: #50A5DD; }
-      #timeline > section > ul > li.post-professional .post-icon span:last-child {
+      #timeline > section > ul > li.post-professional .post-icon .post-icon-title {
         background: #8c87e7; }
-      #timeline > section > ul > li.post-professional .post-icon svg, #timeline > section > ul > li.post-professional header a {
+      #timeline > section > ul > li.post-professional .post-icon svg, #timeline > section > ul > li.post-professional .post-icon .post-icon-svg, #timeline > section > ul > li.post-professional header a {
         background: #8c87e7; }
-      #timeline > section > ul > li.post-professional:hover .post-icon span:last-child, #timeline > section > ul > li.post-professional:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-professional:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-professional:focus .post-icon .post-icon-title {
         background: #7872e3; }
-      #timeline > section > ul > li.post-professional:hover .post-icon svg, #timeline > section > ul > li.post-professional:hover header a, #timeline > section > ul > li.post-professional:focus .post-icon svg, #timeline > section > ul > li.post-professional:focus header a {
+      #timeline > section > ul > li.post-professional:hover .post-icon svg, #timeline > section > ul > li.post-professional:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-professional:hover header a, #timeline > section > ul > li.post-professional:focus .post-icon svg, #timeline > section > ul > li.post-professional:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-professional:focus header a {
         background: #7872e3; }
       #timeline > section > ul > li.post-professional article a:not(.chip) {
         color: #8c87e7; }
@@ -2093,14 +2121,14 @@
         border-left-color: #8c87e7; }
       #timeline > section > ul > li.post-professional:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-professional:nth-child(odd):focus article header a:after {
         border-right-color: #7872e3; }
-      #timeline > section > ul > li.post-high-school .post-icon span:last-child {
+      #timeline > section > ul > li.post-high-school .post-icon .post-icon-title {
         background: #e98a59;
         min-width: 160px; }
-      #timeline > section > ul > li.post-high-school .post-icon svg, #timeline > section > ul > li.post-high-school header a {
+      #timeline > section > ul > li.post-high-school .post-icon svg, #timeline > section > ul > li.post-high-school .post-icon .post-icon-svg, #timeline > section > ul > li.post-high-school header a {
         background: #e98a59; }
-      #timeline > section > ul > li.post-high-school:hover .post-icon span:last-child, #timeline > section > ul > li.post-high-school:focus .post-icon span:last-child {
+      #timeline > section > ul > li.post-high-school:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-high-school:focus .post-icon .post-icon-title {
         background: #E5753C; }
-      #timeline > section > ul > li.post-high-school:hover .post-icon svg, #timeline > section > ul > li.post-high-school:hover header a, #timeline > section > ul > li.post-high-school:focus .post-icon svg, #timeline > section > ul > li.post-high-school:focus header a {
+      #timeline > section > ul > li.post-high-school:hover .post-icon svg, #timeline > section > ul > li.post-high-school:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-high-school:hover header a, #timeline > section > ul > li.post-high-school:focus .post-icon svg, #timeline > section > ul > li.post-high-school:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-high-school:focus header a {
         background: #E5753C; }
       #timeline > section > ul > li.post-high-school article a:not(.chip) {
         color: #e98a59; }
@@ -2118,6 +2146,8 @@
         border-left-color: #e98a59; }
       #timeline > section > ul > li.post-high-school:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-high-school:nth-child(odd):focus article header a:after {
         border-left-color: #E5753C; }
+  #timeline.essay-timeline > section > ul > li.post-month .post-icon {
+    font-size: 24px !important; }
 
 /* ---------- APPLY */
 #apply {

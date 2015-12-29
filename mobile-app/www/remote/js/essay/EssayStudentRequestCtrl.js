@@ -29,8 +29,6 @@ angular.module('uguru.util.controllers')
 
     $scope.honorPledgeArr = ContentService.honorPledge;
 
-    $scope.request = RequestService.initSample();
-    $scope.request.selected_university = University.getTargetted()[0];
     $scope.requestProgress = {value:1};
     $scope.maxHourArr = RequestService.getMaxNumHourArr();
     $scope.search_text = {
@@ -68,9 +66,18 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.selectRequestSlideOneUniversity = function(university) {
+      $scope.newRequest.university = university;
+      LoadingService.showSuccess('Added ' + (university.short_name || university.name) + '!', 500);
+      $timeout(function() {
+          $scope.search_text.university = university.name;
+          $scope.newRequest.active_step = 2;
+      }, 500)
+    }
+
     $scope.removeTagFromRequest = function(index, tag) {
-      if ($scope.request && $scope.request.info.tags.length >= index) {
-        $scope.request.info.tags.splice(index, 1);
+      if ($scope.request && $scope.newRequest.info.tags.length >= index) {
+        $scope.newRequest.info.tags.splice(index, 1);
       }
     }
 
@@ -129,22 +136,22 @@ angular.module('uguru.util.controllers')
 
     $scope.jumpToSlide = function(index, recently_edited_component) {
       if (recently_edited_component === 'request-university') {
-        $scope.request.university = null;
+        $scope.newRequest.university = null;
       }
       if (recently_edited_component === 'textarea-description') {
-        $scope.request.university = null;
+        $scope.newRequest.university = null;
       }
       $ionicSlideBoxDelegate.slide(index - 1, 500)
     }
 
     $scope.addRequestTagAndInitEmpty = function() {
-      var emptyTagVal = $scope.request.info.empty_tag.name;
-      if (checkPropertyInArrayForDupes($scope.request.info.tags, emptyTagVal, 'name')) {
-        $scope.request.info.tags.push(JSON.parse(JSON.stringify($scope.request.info.empty_tag)))
-        $scope.request.info.empty_tag = {name: ''};
+      var emptyTagVal = $scope.newRequest.info.empty_tag.name;
+      if (checkPropertyInArrayForDupes($scope.newRequest.info.tags, emptyTagVal, 'name')) {
+        $scope.newRequest.info.tags.push(JSON.parse(JSON.stringify($scope.newRequest.info.empty_tag)))
+        $scope.newRequest.info.empty_tag = {name: ''};
       } else {
         LoadingService.showMsg(emptyTagVal + ' already exists as a tag', 2000);
-        $scope.request.info.empty_tag = {name: ''};
+        $scope.newRequest.info.empty_tag = {name: ''};
       }
     }
 
