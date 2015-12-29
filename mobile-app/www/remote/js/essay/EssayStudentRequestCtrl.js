@@ -192,7 +192,7 @@ angular.module('uguru.util.controllers')
 
       // check if greater than 3 characters
       if (emptyTagVal.length && emptyTagVal.length < 4) {
-        LoadingService.showMsg(emptyTagVal + ' must be at least 3 characters', 2000);
+        LoadingService.showMsg(emptyTagVal + ' must be at least 4 characters', 2000);
       }
       // check if already exists
       else if (checkPropertyInArrayForDupes($scope.newRequest.info.tags, emptyTagVal, 'name')) {
