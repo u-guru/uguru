@@ -99,7 +99,8 @@ ion-view #essay-student-home > header a:not(.header-close).active {
   color: #E5753C;
 }
 
-ion-view #essay-student-home > header a:not(.header-close):hover, ion-view #essay-student-home > header a:not(.header-close):focus {
+ion-view #essay-student-home > header a:not(.header-close):hover,
+ion-view #essay-student-home > header a:not(.header-close):focus {
   background: white;
   color: #50A5DD;
 }
@@ -133,15 +134,18 @@ ion-view #essay-student-home > header a:not(.header-close):first-child svg path:
   fill: white;
 }
 
-ion-view #essay-student-home > header a:not(.header-close):first-child:hover, ion-view #essay-student-home > header a:not(.header-close):first-child:focus {
+ion-view #essay-student-home > header a:not(.header-close):first-child:hover,
+ion-view #essay-student-home > header a:not(.header-close):first-child:focus {
   background: none !important;
 }
 
-ion-view #essay-student-home > header a:not(.header-close):first-child:hover svg path:first-child, ion-view #essay-student-home > header a:not(.header-close):first-child:focus svg path:first-child {
+ion-view #essay-student-home > header a:not(.header-close):first-child:hover svg path:first-child,
+ion-view #essay-student-home > header a:not(.header-close):first-child:focus svg path:first-child {
   fill: white;
 }
 
-ion-view #essay-student-home > header a:not(.header-close):first-child:hover svg path:last-child, ion-view #essay-student-home > header a:not(.header-close):first-child:focus svg path:last-child {
+ion-view #essay-student-home > header a:not(.header-close):first-child:hover svg path:last-child,
+ion-view #essay-student-home > header a:not(.header-close):first-child:focus svg path:last-child {
   fill: rgba(255, 255, 255, 0.8);
 }
 
@@ -360,7 +364,8 @@ ion-view #essay-student-home > section .essay-footer-link svg {
   stroke-linejoin: round;
 }
 
-ion-view #essay-student-home > section .essay-footer-link:before, ion-view #essay-student-home > section .essay-footer-link:after {
+ion-view #essay-student-home > section .essay-footer-link:before,
+ion-view #essay-student-home > section .essay-footer-link:after {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -393,16 +398,21 @@ ion-view #essay-student-home > section .essay-footer-link:after {
   color: #40484B;
 }
 
-ion-view #essay-student-home > section .essay-footer-link:hover, ion-view #essay-student-home > section .essay-footer-link:focus {
+ion-view #essay-student-home > section .essay-footer-link:hover,
+ion-view #essay-student-home > section .essay-footer-link:focus {
   background: #eb9569;
 }
 
-ion-view #essay-student-home > section .essay-footer-link:hover:before, ion-view #essay-student-home > section .essay-footer-link:hover:after, ion-view #essay-student-home > section .essay-footer-link:focus:before, ion-view #essay-student-home > section .essay-footer-link:focus:after {
+ion-view #essay-student-home > section .essay-footer-link:hover:before,
+ion-view #essay-student-home > section .essay-footer-link:hover:after,
+ion-view #essay-student-home > section .essay-footer-link:focus:before,
+ion-view #essay-student-home > section .essay-footer-link:focus:after {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-ion-view #essay-student-home > section .essay-footer-link:hover svg, ion-view #essay-student-home > section .essay-footer-link:focus svg {
+ion-view #essay-student-home > section .essay-footer-link:hover svg,
+ion-view #essay-student-home > section .essay-footer-link:focus svg {
   stroke: white;
 }
 
@@ -443,14 +453,16 @@ ion-view #essay-student-home > section button {
   text-transform: capitalize;
 }
 
-ion-view #essay-student-home > section button:hover, ion-view #essay-student-home > section button:focus {
+ion-view #essay-student-home > section button:hover,
+ion-view #essay-student-home > section button:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   background: #50A5DD;
   color: white;
 }
 
-ion-view #essay-student-home > section button:active, ion-view #essay-student-home > section button.activated {
+ion-view #essay-student-home > section button:active,
+ion-view #essay-student-home > section button.activated {
   background: #E5753C;
 }
 
@@ -492,7 +504,7 @@ ion-view #essay-student-home > section.essay-splash {
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  background: #F1F1F1 url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center/cover;
+  background: #F1F1F1 url("https://uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center/cover;
   text-align: center;
 }
 
@@ -596,11 +608,13 @@ ion-view #essay-student-home > section.essay-pricing .main > div h2 a {
   color: #6f7d82;
 }
 
-ion-view #essay-student-home > section.essay-pricing .main > div h2 a:hover, ion-view #essay-student-home > section.essay-pricing .main > div h2 a:focus {
+ion-view #essay-student-home > section.essay-pricing .main > div h2 a:hover,
+ion-view #essay-student-home > section.essay-pricing .main > div h2 a:focus {
   color: #89969b;
 }
 
-ion-view #essay-student-home > section#essay-how-it-works .main > h1, ion-view #essay-student-home > section#essay-faq .main > h1 {
+ion-view #essay-student-home > section#essay-how-it-works .main > h1,
+ion-view #essay-student-home > section#essay-faq .main > h1 {
   font-size: 28px;
   font-weight: 600;
 }
@@ -662,7 +676,8 @@ ion-view #essay-student-home > section#essay-faq .main .paper dl dt {
   font-size: 24px;
 }
 
-ion-view #essay-student-home > section#essay-faq .main .paper dl dt, ion-view #essay-student-home > section#essay-faq .main .paper dl dd {
+ion-view #essay-student-home > section#essay-faq .main .paper dl dt,
+ion-view #essay-student-home > section#essay-faq .main .paper dl dd {
   line-height: inherit;
 }
 
@@ -763,7 +778,8 @@ ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-typ
   background: #50A5DD;
 }
 
-ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li svg path, ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li svg circle {
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li svg path,
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li svg circle {
   fill: none;
   stroke: white;
   stroke-width: 3px;
@@ -771,15 +787,18 @@ ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-typ
   stroke-linejoin: round;
 }
 
-ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-shield-lock .hiw-icon:nth-child(2), ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-shield-lock .hiw-icon:nth-child(3) {
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-shield-lock .hiw-icon:nth-child(2),
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-shield-lock .hiw-icon:nth-child(3) {
   display: none !important;
 }
 
-ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-satisfaction .hiw-icon:nth-child(1), ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-satisfaction .hiw-icon:nth-child(3) {
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-satisfaction .hiw-icon:nth-child(1),
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-satisfaction .hiw-icon:nth-child(3) {
   display: none !important;
 }
 
-ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-safety .hiw-icon:nth-child(1), ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-safety .hiw-icon:nth-child(2) {
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-safety .hiw-icon:nth-child(1),
+ion-view #essay-student-home > section#essay-how-it-works .main > ul:last-of-type li.hiw-safety .hiw-icon:nth-child(2) {
   display: none !important;
 }
 
@@ -788,7 +807,8 @@ ion-view #essay-student-home > section#essay-how-it-works .main > ul li {
   padding: 15px;
 }
 
-ion-view #essay-student-home > section#essay-how-it-works .main > ul li h1, ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
+ion-view #essay-student-home > section#essay-how-it-works .main > ul li h1,
+ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
   width: 100%;
 }
 
@@ -1084,7 +1104,8 @@ ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
   display: initial !important;
 }
 
-.ticket .ticket-bot h1:before, .ticket .ticket-bot h1:after {
+.ticket .ticket-bot h1:before,
+.ticket .ticket-bot h1:after {
   content: "";
   display: block;
   position: absolute;
@@ -1167,13 +1188,15 @@ ion-view #essay-student-home > section#essay-how-it-works .main > ul li p {
   font-weight: 600;
 }
 
-#essay-student-login .main > div .notecard:first-child button:hover, #essay-student-login .main > div .notecard:first-child button:focus {
+#essay-student-login .main > div .notecard:first-child button:hover,
+#essay-student-login .main > div .notecard:first-child button:focus {
   filter: alpha(opacity=100);
   opacity: 1;
   background: #66918d;
 }
 
-#essay-student-login .main > div .notecard:first-child button:active, #essay-student-login .main > div .notecard:first-child button.activated {
+#essay-student-login .main > div .notecard:first-child button:active,
+#essay-student-login .main > div .notecard:first-child button.activated {
   filter: alpha(opacity=100);
   opacity: 1;
   background: #69B3A5;
@@ -1219,7 +1242,9 @@ ion-view {
   opacity: 1;
 }
 
-#essay-student-home section button:hover, #essay-student-home section button.activated, #essay-student-home section button.active {
+#essay-student-home section button:hover,
+#essay-student-home section button.activated,
+#essay-student-home section button.active {
   background-color: rgba(105, 179, 165, 0.8);
 }
 
@@ -1296,62 +1321,58 @@ ion-view {
   width: 33%;
 }
 
-#request-slide-two .desktop-forms-container h1, #request-slide-two .desktop-forms-container .cta-modal-close {
+#request-slide-two .desktop-forms-container h1,
+#request-slide-two .desktop-forms-container .cta-modal-close {
   display: none;
 }
 
-#request-slide-two .desktop-forms-container form
-.input-field input {
+#request-slide-two .desktop-forms-container form .input-field input {
   color: #40484B !important;
 }
 
-#request-slide-two .desktop-forms-container form
-.input-field input::-webkit-input-placeholder {
+#request-slide-two .desktop-forms-container form .input-field input::-webkit-input-placeholder {
   color: #40484B !important;
-  opacity: 0.5;
+  opacity: .5;
 }
 
-#request-slide-two .desktop-forms-container form
-.input-field input:-moz-placeholder {
+#request-slide-two .desktop-forms-container form .input-field input:-moz-placeholder {
   color: #40484B !important;
-  opacity: 0.5;
+  opacity: .5;
 }
 
-#request-slide-two .desktop-forms-container form
-.input-field input::-moz-placeholder {
+#request-slide-two .desktop-forms-container form .input-field input::-moz-placeholder {
   color: #40484B !important;
-  opacity: 0.5;
+  opacity: .5;
 }
 
-#request-slide-two .desktop-forms-container form
-.input-field input:-ms-input-placeholder {
+#request-slide-two .desktop-forms-container form .input-field input:-ms-input-placeholder {
   color: #40484B !important;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 #essay-student-request-form textarea::-webkit-input-placeholder {
   color: #40484B !important;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 #essay-student-request-form textarea:-moz-placeholder {
   color: #40484B !important;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 #essay-student-request-form textarea::-moz-placeholder {
   color: #40484B !important;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 #essay-student-request-form textarea:-ms-input-placeholder {
   color: #40484B !important;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 #essay-student-request-form .essay-request-type h1 {
   font-size: 28px;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 #essay-student-request-form .essay-request-type .pf-course-check {
@@ -1423,4 +1444,51 @@ ion-view {
 
 ion-scroll, .scroll {
   height: 100% !important;
+}
+
+section#request-one .request-content #request-search form .input-field-container {
+  padding-bottom: 25px;
+}
+
+section#request-one .request-content #request-search form .input-field-container .input-field {
+  padding-bottom: 0;
+}
+
+section#request-one .request-content #request-search form .input-field-container .input-field input {
+  height: 65px;
+}
+
+section#request-one .request-content #request-search form .input-field-container .input-field i svg.checkmark-input {
+  margin-top: -10px;
+  opacity: 1 !important;
+  height: 50px !important;
+  width: 50px !important;
+  color: white;
+  margin-left: 50px;
+  stroke-width: 8px !important;
+}
+
+section#request-one .request-content #request-search form .input-field-container .input-field i svg.checkmark-input path {
+  stroke: white !important;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+section#request-one .request-content #desktop-request-form-course-list {
+  height: 500px;
+  position: relative;
+  top: 0 !important;
+}
+
+section#request-one .request-content #desktop-request-form-course-list.hide {
+  display: none !important;
+}
+
+section#request-one .request-content #desktop-request-form-course-list.show {
+  display: block !important;
+}
+
+.loading {
+  display: block;
 }

@@ -1,4 +1,3 @@
-
 @import 'mixin';
 
 // GABRIELLE CSS
@@ -6,6 +5,7 @@ ion-view {
 	.student-mode {
 		background: $smoke;
 	}
+	
 	// FILES
 	#student-files {
 		height: 100%;
@@ -26,7 +26,7 @@ ion-view {
 			-webkit-align-items: flex-start;
 			align-items: flex-start;
 			height: 70%;
-			padding: 22.5px 0 7.5px!important;
+			padding: 22.5px 0 7.5px !important;
 			.attachment-list {
 				ul {
 					@include flex-center;
@@ -41,15 +41,16 @@ ion-view {
 			}
 		}
 	}
+	
 	// SPLASH
 	#essay-student-home {
 		background: white;
 		> header {
 			@include transition(.15s ease-in-out);
 			@include flex;
-	  		@include flex-wrap;
-	 		-webkit-justify-content: flex-end;
-	 		justify-content: flex-end;
+			@include flex-wrap;
+			-webkit-justify-content: flex-end;
+			justify-content: flex-end;
 			width: 100%;
 			position: fixed;
 			z-index: 99;
@@ -66,7 +67,8 @@ ion-view {
 					background: rgba(white,.9);
 					color: $orange;
 				}
-				&:hover, &:focus {
+				&:hover,
+				&:focus {
 					background: white;
 					color: $lake;
 				}
@@ -89,7 +91,8 @@ ion-view {
 							}
 						}
 					}
-					&:hover, &:focus {
+					&:hover,
+					&:focus {
 						background: none!important;
 						svg {
 							path {
@@ -105,8 +108,8 @@ ion-view {
 				}
 			}
 			&.active {
-	 			background: rgba($orange, 0.95);
-	 		}
+				background: rgba($orange, 0.95);
+			}
 		}
 		#essay-home-banner {
 			@include transition(.3s ease-in-out);
@@ -132,7 +135,7 @@ ion-view {
 				z-index: 100;
 			}
 			h1 {
-				padding: 15px!important;
+				padding: 15px !important;
 				text-transform: none;
 				line-height: 1.2;
 			}
@@ -164,7 +167,7 @@ ion-view {
 				padding: 30px 15px 15px;
 				text-align: center;
 				h1 {
-					padding: 0 15px 15px!important;
+					padding: 0 15px 15px !important;
 					font-size: 28px!important;
 				}
 				button {
@@ -176,7 +179,7 @@ ion-view {
 			}
 			@media screen and (min-width: 1106px) {
 				h1 {
-					padding: 0 15px!important;
+					padding: 0 15px !important;
 				}
 			}
 		}
@@ -201,11 +204,11 @@ ion-view {
 				@include round;
 				position: fixed;
 				z-index: 99;
-			    bottom: 15px;
-			    width: 48px;
-			    height: 48px;
-			    padding: 6px;
-			    background: rgba(white,.9);
+				bottom: 15px;
+				width: 48px;
+				height: 48px;
+				padding: 6px;
+				background: rgba(white,.9);
 				&#essay-footer-support {
 					left: 15px;
 					&:before {
@@ -231,7 +234,8 @@ ion-view {
 				svg {
 					@include svg-stroke($orange, 7);
 				}
-				&:before, &:after {
+				&:before,
+				&:after {
 					@include transition(.15s ease-in-out);
 					@include opacity(0);
 					@include center-y;
@@ -250,9 +254,11 @@ ion-view {
 					text-transform: uppercase;
 					color: $slate;
 				}
-				&:hover, &:focus {
+				&:hover,
+				&:focus {
 					background: lighten($orange, 10%);
-					&:before, &:after {
+					&:before,
+					&:after {
 						@include opacity(1);
 					}
 					svg {
@@ -281,12 +287,14 @@ ion-view {
 				color: $orange;
 				font-weight: 700;
 				text-transform: capitalize;
-				&:hover, &:focus {
+				&:hover,
+				&:focus {
 					@include opacity(1);
 					background: $lake;
 					color: white;
 				}
-				&:active, &.activated {
+				&:active,
+				&.activated {
 					background: $orange;
 				}
 			}
@@ -300,11 +308,12 @@ ion-view {
 				line-height: 1.2;
 				font-weight: 400;
 			}
+			
 			// // //
 			&.essay-splash {
 				@include flex;
 				@include flex-center;
-				background: $smoke url(https://uguru.me/static/web/images/bg/hs-desk.png) no-repeat center center / cover;
+				background: $smoke url("https://uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center / cover;
 				text-align: center;
 				h1 {
 					font-size: 32px;
@@ -322,6 +331,7 @@ ion-view {
 					margin-top: 30px;
 				}
 			}
+			
 			// // //
 			&.essay-pricing {
 				.main {
@@ -366,7 +376,8 @@ ion-view {
 							a {
 								font-weight: 700;
 								color: lighten($slate, 20%);
-								&:hover, &:focus {
+								&:hover,
+								&:focus {
 									color: lighten($slate, 30%);
 								}
 							}
@@ -374,7 +385,8 @@ ion-view {
 					}
 				}
 			}
-			&#essay-how-it-works, &#essay-faq {
+			&#essay-how-it-works,
+			&#essay-faq {
 				.main {
 					> h1 {
 						font-size: 28px;
@@ -382,6 +394,7 @@ ion-view {
 					}
 				}
 			}
+			
 			// // //
 			&#essay-faq {
 				.main {
@@ -421,24 +434,26 @@ ion-view {
 								padding-top: 2px;
 							}
 							&:nth-child(8) {
-								margin-top: -2px!important;
+								margin-top: -2px !important;
 							}
 							&:nth-child(9) {
-								margin-top: -3px!important;
+								margin-top: -3px !important;
 							}
 							&:nth-child(10) {
-								margin-top: -2px!important;
+								margin-top: -2px !important;
 							}
 							dt {
 								font-size: 24px;
 							}
-							dt, dd {
+							dt,
+							dd {
 								line-height: inherit;
 							}
 						}
 					}
 				}
 			}
+			
 			// // //
 			&#essay-how-it-works {
 				.main {
@@ -485,27 +500,31 @@ ion-view {
 									height: 64px;
 									margin-bottom: 15px;
 									background: $lake;
-									path, circle {
+									path,
+									circle {
 										@include svg-stroke(white, 3);
 									}
 								}
 								&.hiw-shield-lock {
 									.hiw-icon {
-										&:nth-child(2), &:nth-child(3) {
+										&:nth-child(2),
+										&:nth-child(3) {
 											display: none!important;
 										}
 									}
 								}
 								&.hiw-satisfaction {
 									.hiw-icon {
-										&:nth-child(1), &:nth-child(3) {
+										&:nth-child(1),
+										&:nth-child(3) {
 											display: none!important;
 										}
 									}
 								}
 								&.hiw-safety {
 									.hiw-icon {
-										&:nth-child(1), &:nth-child(2) {
+										&:nth-child(1),
+										&:nth-child(2) {
 											display: none!important;
 										}
 									}
@@ -515,7 +534,8 @@ ion-view {
 						li {
 							position: relative;
 							padding: 15px;
-							h1, p {
+							h1,
+							p {
 								width: 100%;
 							}
 							h1 {
@@ -534,7 +554,6 @@ ion-view {
 		}
 	}
 }
-
 @include keyframes(toast-pop) {
 	0% {
 		@include opacity(0);
@@ -652,9 +671,10 @@ ion-view {
 				font-weight: 900;
 			}
 			&:not(.verified) span:nth-child(2) {
-			    display: initial !important; //overrides nth-child(2) 'display: none' on 1081 lol
+				display: initial !important; //overrides nth-child(2) 'display: none' on 1081 lol
 			}
-			&:before, &:after {
+			&:before,
+			&:after {
 				content: "";
 				display: block;
 				position: absolute;
@@ -709,7 +729,7 @@ ion-view {
 					z-index: 10;
 					h1 {
 						font-size: 28px;
-    					font-weight: 700;
+						font-weight: 700;
 					}
 					button {
 						height: 62px;
@@ -718,11 +738,13 @@ ion-view {
 						border-radius: 0 0 2px 2px;
 						background: lighten($slate, 15%);
 						font-weight: 600;
-						&:hover, &:focus {
+						&:hover,
+						&:focus {
 							@include opacity(1);
 							background: mix($shamrock, lighten($slate, 15%));
 						}
-						&:active, &.activated {
+						&:active,
+						&.activated {
 							@include opacity(1);
 							background: $shamrock;
 						}
@@ -743,8 +765,8 @@ ion-view {
 		}
 	}
 }
-// END GABRIELLE CSS
 
+// END GABRIELLE CSS
 //samir essay css ---- START
 ion-view {
 	overflow: auto!important;
@@ -757,8 +779,10 @@ ion-view {
 	}
 	section {
 		@include opacity(1);
-		button:hover, button.activated, button.active {
-			background-color:rgba($shamrock, 0.8);
+		button:hover,
+		button.activated,
+		button.active {
+			background-color: rgba($shamrock, 0.8);
 		}
 	}
 }
@@ -781,7 +805,7 @@ ion-view {
 		.main {
 			.university-header {
 				h1 {
-					padding-top: 0!important;
+					padding-top: 0 !important;
 				}
 			}
 		}
@@ -789,21 +813,20 @@ ion-view {
 }
 #essay-student-university {
 	#desktop-essay-university-header {
-		position:relative !important;
+		position: relative !important;
 		h1 {
 			text-align: center;
-			position:absolute;
-			width:100%;
-			left:0;
+			position: absolute;
+			width: 100%;
+			left: 0;
 		}
 	}
 }
-
 #desktop-student-home {
 	ion-pane {
 		position: absolute!important;
 		top: 0;
-		z-index:100000;
+		z-index: 100000;
 		left: 0;
 		width: 100%;
 		height: 100%;
@@ -812,9 +835,9 @@ ion-view {
 		.main.default {
 			@include flex-center;
 			@include flex-wrap;
-			height:100%;
+			height: 100%;
 			form {
-				width:100%;
+				width: 100%;
 				.input-field {
 					padding: auto 20px;
 				}
@@ -822,60 +845,56 @@ ion-view {
 		}
 	}
 	.trending-resources-container {
-		overflow-x:scroll;
-		white-space:nowrap;
+		overflow-x: scroll;
+		white-space: nowrap;
 		ul {
 			li {
-				margin:5px;
+				margin: 5px;
 				img {
-					width:auto;
-					max-width:200px;
-					height:60px;
+					width: auto;
+					max-width: 200px;
+					height: 60px;
 				}
 			}
 		}
 	}
 }
-
-
 #request-slide-two {
 	.desktop-forms-container {
-		width:33%;
-
-		h1, .cta-modal-close {
-			display:none;
+		width: 33%;
+		h1,
+		.cta-modal-close {
+			display: none;
 		}
 		form {
-			.input-field
-			{
+			.input-field {
 				input {
-					color:$slate !important;
+					color: $slate !important;
 					@include placeholder {
 						color: $slate !important;
-						opacity:0.5;
+						opacity: .5;
 					}
 				}
 			}
 		}
 	}
 }
-
 #essay-student-request-form {
 	textarea {
 		@include placeholder {
 			color: $slate !important;
-			opacity:0.5;
+			opacity: .5;
 		}
 	}
 	.essay-request-type {
 		h1 {
-			font-size:28px;
-			padding:10px 0px;
+			font-size: 28px;
+			padding: 10px 0;
 		}
 		.pf-course-check {
 			@include flex;
 			@include flex-center;
-			margin-top: 0!important;
+			margin-top: 0 !important;
 			div {
 				position: relative;
 				input {
@@ -917,7 +936,56 @@ ion-view {
 		}
 	}
 }
+
 // samir essay css ---- END
 ion-scroll, .scroll {
-	height:100% !important;
+	height: 100% !important;
+}
+
+//essay hacks to get the sizing decent
+section#request-one {
+	.request-content {
+		#request-search {
+			form .input-field-container {
+				padding-bottom: 25px;
+				.input-field {
+					padding-bottom: 0;
+					input {
+						height: 65px;
+					}
+					i {
+						svg.checkmark-input {
+							margin-top: -10px;
+							opacity: 1 !important;
+							height: 50px !important;
+							width: 50px !important;
+							color: white;
+							margin-left: 50px;
+							stroke-width: 8px !important;
+							path {
+								stroke: white !important;
+								stroke-linecap: round;
+								stroke-linejoin: round;
+								fill: none;
+							}
+						}
+					}
+				}
+			}
+		}
+		#desktop-request-form-course-list {
+			height: 500px;
+			position: relative;
+			top: 0 !important;
+			&.hide {
+				display: none !important;
+			}
+			&.show {
+				display: block !important;
+			}
+		}
+	}
+}
+.loading {
+	display: block;
 }
