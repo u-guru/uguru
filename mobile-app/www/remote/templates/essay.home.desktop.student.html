@@ -10,15 +10,14 @@
 		<div class="main">
 			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal university-view' ng-include="img_base + BASE + 'templates/content.general.html'">
 			</ion-pane>
+			
 			<!-- <ion-pane id='cta-modal-essay-student-request' class='show full-xy hide-display cta-modal bg-charcoal'>
 				<main class='desktop-mode'>
-
 					<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
-
 					<div ng-controller='EssayStudentRequestController' ng-include="img_base + BASE + 'templates/essay.student.request.html'" class='main desktop-search'> </div>
 				</main>
 			</ion-pane> -->
-
+			
 			<ion-pane id='cta-modal-essay-student-request' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='EssayStudentRequestController' ng-include="img_base + BASE + 'templates/essay.student.request.html'">
 			</ion-pane>
 
@@ -46,7 +45,7 @@
 				<div class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.messaging.html'"> </div>
 			</ion-pane>
 
-			<ion-pane id='cta-modal-essay-student-transaction' class='full-xy hide-display cta-modal'>
+			<ion-pane id='cta-modal-essay-student-transaction' class='show full-xy hide-display cta-modal'>
 				<header class='desktop-header' ng-include="img_base + BASE + 'templates/desktop.cta.header.contents.html'"> </header>
 				<div class='full-xy' ng-include="img_base + BASE + 'templates/essay.student.billing.html'"> </div>
 			</ion-pane>

@@ -907,132 +907,16 @@ ion-view {
 				}
 			}
 			label {
-				width:100%;
+				width: 100%;
 				padding-left: 15px;
 				color: $slate;
 				font-size: 20px;
 				font-weight: 600;
 			}
 		}
-
 	}
-
 }
-//samir essay css ---- END
-
+// samir essay css ---- END
 ion-scroll, .scroll {
-	height:100% !important;
-}
-
-//samir start css override 12/26/2015
-.inline {
-	display: inline-block;
-}
-
-#billing-card-container .request-payment-container {
-	background: $slate;
-	padding-top: 15px;
-	margin-top: 15px;
-	h4 {
-		margin: 15px;
-	}
-	ul {
-		li {
-			form {
-				position: relative !important;
-				padding: 30px 0;
-				button {
-					position: absolute;
-					margin: 0 auto;
-					text-align: center;
-					bottom: 0;
-					right: 0;
-					padding: 6px 20px;
-					width: 40%;
-					height: auto;
-					font-size: 16px;
-					border: 2px solid rgba(white,.2);
-					border-radius: 10px;
-					color: $smoke;
-					background: none;
-				}
-				ul {
-					li {
-						padding-left: 10px;
-						div.input-field {
-							position: relative;
-							input {
-								color: $smoke;
-							}
-							label {
-								color: $smoke;
-							}
-							a {
-								position: absolute;
-								top: 0;
-								right: 0;
-								width: 10px;
-								height: 10px;
-								margin: 12px;
-								i {
-									color: $slate;
-								}
-							}
-						}
-					}
-				}
-				div.input-field {
-					position: relative;
-					input {
-						color: $smoke;
-					}
-					label {
-						color: $smoke;
-					}
-					a {
-						position: absolute;
-						top: 0;
-						right: 0;
-						width: 10px;
-						height: 10px;
-						margin: 12px;
-						i {
-							color: $slate;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.capitalize {
-	text-transform: capitalize;
-}
-
-#desktop-balance {
-	aside  {
-		ul.sidebar-layout-list {
-			li {
-				div {
-					h3.txt-smoke {
-						span {
-							font-size: inherit !important;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-.mini-card {
-	@include opacity(.85);
-	margin-bottom: 10px!important;
-	line-height: 15px!important;
-	border: 1px solid white;
-	padding: 3px;
-	border-radius: 5px;
-	margin-right: 2px!important;
-	min-width: 55px;
-	width: auto;
+	height: 100% !important;
 }
