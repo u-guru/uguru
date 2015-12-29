@@ -1066,13 +1066,40 @@ ion-scroll, .scroll {
   width: auto;
   opacity: 0.85; }
 
-#desktop-request-form-course-list {
+section#request-one .request-content #request-search form
+.input-field-container {
+  padding-bottom: 25px; }
+  section#request-one .request-content #request-search form
+  .input-field-container .input-field {
+    padding-bottom: 0px; }
+    section#request-one .request-content #request-search form
+    .input-field-container .input-field input {
+      height: 65px; }
+    section#request-one .request-content #request-search form
+    .input-field-container .input-field i svg.checkmark-input {
+      margin-top: -10px;
+      opacity: 1 !important;
+      height: 50px !important;
+      width: 50px !important;
+      color: white;
+      margin-left: 50px;
+      stroke-width: 8px !important; }
+      section#request-one .request-content #request-search form
+      .input-field-container .input-field i svg.checkmark-input path {
+        stroke: white !important;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none; }
+section#request-one .request-content #desktop-request-form-course-list {
   height: 500px;
   position: relative;
   top: 0 !important; }
-  #desktop-request-form-course-list.hide {
+  section#request-one .request-content #desktop-request-form-course-list.hide {
     display: none !important; }
-  #desktop-request-form-course-list.show {
+  section#request-one .request-content #desktop-request-form-course-list.show {
     display: block !important; }
+
+.loading {
+  display: block; }
 
 /*# sourceMappingURL=essay.css.map */

@@ -981,15 +981,56 @@ ion-scroll, .scroll {
 
 
 //essay hacks to get the sizing decent
+section#request-one {
 
-#desktop-request-form-course-list {
-	height: 500px;
-    position: relative;
-    top: 0 !important;
-    &.hide {
-    	display: none !important;
-    }
-    &.show {
-    	display:block !important;
-    }
+		.request-content {
+			#request-search {
+				form
+					.input-field-container {
+						padding-bottom:25px;
+						.input-field {
+							padding-bottom:0px;
+							input {
+								height:65px;
+							}
+							i {
+								svg.checkmark-input {
+									margin-top:-10px;
+									opacity:1 !important;
+									height:50px !important;
+									width:50px !important;
+									color:white;
+									margin-left:50px;
+									stroke-width:8px !important;
+									path {
+										stroke:white !important;
+										stroke-linecap:round;
+										stroke-linejoin:round;
+										fill:none;
+									}
+								}
+							}
+						}
+
+					}
+			}
+
+			#desktop-request-form-course-list {
+				height: 500px;
+			    position: relative;
+			    top: 0 !important;
+			    &.hide {
+			    	display: none !important;
+			    }
+			    &.show {
+			    	display:block !important;
+			    }
+			}
+		}
+
+}
+
+
+.loading {
+	display:block;
 }
