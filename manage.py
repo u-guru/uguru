@@ -1074,7 +1074,7 @@ if arg == 'seed_admin':
 
 
 
-    clearAccountInfo(user)
+    # clearAccountInfo(user)
 
     print "\n\nUpdate #1, previous account details cleared for %s" % user.getFirstName()
 
