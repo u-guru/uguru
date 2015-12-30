@@ -7,9 +7,9 @@ selected university
 		<h1>How can we help you achieve your college goals?</h1>
 	</header>
 	<div class="request-content relative">
-		<div id="request-search" ng-controller='EssayStudentUniversityController'>
+		<div id="request-search" class="ng-class:{'active': newRequest.active_step === 1 || newRequest.university}" ng-controller='EssayStudentUniversityController'>
 			<form>
-				<h1 class="request-step">
+				<h1 class="request-step ng-class:{'small': newRequest.university}">
 					<b>
 						Step
 						<span>1</span>
@@ -34,7 +34,7 @@ selected university
 						<label for="request-search-input">
 							<span class='hide ng-class:{"show":!newRequest.university}'>choose one of {{user.universities.length}} added universities</span>
 						</label>
-						<a  class="side-icon desktop-input-close-icon hide ng-class:{'show':search_text.university.length || newRequest.university.id}" ng-click="clearUniversityInput()">
+						<a class="side-icon desktop-input-close-icon hide ng-class:{'show':search_text.university.length || newRequest.university.id}" ng-click="clearUniversityInput()">
 							<i class="icon ion-close-circled txt-white"></i>
 						</a>
 					</div>
@@ -60,7 +60,7 @@ selected university
 		</div>
 
 		<div class="request-type ng-class:{'active': newRequest.active_step === 2 || newRequest.type}">
-			<h1 class="request-step">
+			<h1 class="request-step ng-class:{'small': newRequest.type}">
 				<a ng-click='newRequest.active_step = 2;' class='txt-white'>
 					<b>
 						Step

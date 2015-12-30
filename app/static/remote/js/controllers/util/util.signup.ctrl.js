@@ -70,7 +70,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.page = {toggles: {}};
-    $scope.page.toggles = {login: {active:false}};
+    $scope.page.toggles = {login: {active:true}};
 
     $scope.openModal = function(modalName) {
      if (!$scope.desktopMode) {

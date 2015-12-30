@@ -2,14 +2,14 @@
 selected university
 
 -->
-<section id="request-one" class="request-slide request-essay-form request-essay">
+<section ngfx-shake="invalidSlideOne" ngfx-speed="slow" id="request-one" class="request-slide request-essay-form request-essay ng-class:{'infinite':invalidSlideOne}">
 	<header>
 		<h1>How can we help you achieve your college goals?</h1>
 	</header>
 	<div class="request-content relative">
-		<div id="request-search" class="ng-class:{'active': newRequest.active_step === 1}" ng-controller='EssayStudentUniversityController'>
+		<div id="request-search" class="ng-class:{'active': newRequest.active_step === 1 || newRequest.university}" ng-controller='EssayStudentUniversityController'>
 			<form>
-				<h1 class="request-step">
+				<h1 class="request-step ng-class:{'small': newRequest.university}">
 					<b>
 						Step
 						<span>1</span>
@@ -19,20 +19,22 @@ selected university
 						<strong>&nbsp;&nbsp;Select a school</strong>
 					</b>
 				</h1>
-				<div>
+				<div class='input-field-container'>
 					<div class="input-field">
 						<i class="material-icons prefix">
-							<svg viewBox="0 0 100 100">
+							<svg viewBox="0 0 100 100" class="hide ng-class:{'show': !newRequest.university}">
 							    <path d="M43,27 L43,59 M27,43 L59,43 M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 							</svg>
+							<svg viewBox="0 0 100 100" class='checkmark-input hide ng-class:{"show": newRequest.university}'>
+							    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
 						</i>
-						<input ng-disabled="request.selected_university" id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="user.universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, name, variations"
-						ng-disabled="!user.universities || !user.universities.length" ng-model="search_text.university" autofocus=true/>
+						<input ng-disabled="request.selected_university" id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="user.universities" fast-matcher-output="search_text.matching" ng-focus="focusInput()" ng-blur="blurInput()" fast-matcher-properties="short_name, name, variations"
+						ng-disabled="!user.universities || !user.universities.length" ng-model="search_text.university" />
 						<label for="request-search-input">
-							<span class='hide ng-class:{"show":!request.selected_university}'>choose one of {{user.universities.length}} added universities</span>
-							<span class='hide selected-school ng-class:{"show":newRequest.university}'>{{newRequest.university.short_name || newRequest.university.name}}</span>
+							<span class='hide ng-class:{"show":!newRequest.university}'>choose one of {{user.universities.length}} added universities</span>
 						</label>
-						<a ng-click='newRequest.university = null;' class="side-icon desktop-input-close-icon hide ng-class:{'show':request.selected_university || (search_text.university && search_text.university.length)}" ng-click="search_text.course = '';">
+						<a class="side-icon desktop-input-close-icon hide ng-class:{'show':search_text.university.length || newRequest.university.id}" ng-click="clearUniversityInput()">
 							<i class="icon ion-close-circled txt-white"></i>
 						</a>
 					</div>
@@ -41,9 +43,14 @@ selected university
 			<div class='course-none hide ng-class:{"show": search_text.university.length && !user.universities.length}'>
 				No results, try again?
 			</div>
-			<div id='desktop-request-form-course-list' class="course-list hide ng-class:{'show': search_text.university.length && newRequest.active_step === 1}">
+			<div id='desktop-request-form-course-list' class="course-list hide ng-class:{'show': universityInputFocused && newRequest.active_step === 1}">
 				<ul>
-					<li class="show" ng-repeat='university in user.universities | filter:search_text.university:strict | limitTo: 9 track by university.id' ng-click='selectRequestSlideOneUniversity(university)'>
+					<li class="hide ng-class:{'show':search_text.university.length}" ng-repeat='university in user.universities | filter:search_text.university:strict | limitTo: 9 track by university.id' ng-click='selectRequestSlideOneUniversity(university)'>
+						<a>
+							<span class="course-name">{{university.short_name || university.name}}</span>
+						</a>
+					</li>
+					<li class="hide ng-class:{'show':!search_text.university.length}" ng-repeat='university in user.universities | limitTo: 9 track by university.id' ng-click='selectRequestSlideOneUniversity(university)'>
 						<a>
 							<span class="course-name">{{university.short_name || university.name}}</span>
 						</a>
@@ -53,15 +60,17 @@ selected university
 		</div>
 
 		<div class="request-type ng-class:{'active': newRequest.active_step === 2 || newRequest.type}">
-			<h1 class="request-step">
-				<b>
-					Step
-					<span>2</span>
-					<svg viewBox="0 0 100 100">
-						<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-					</svg>
-					<strong>&nbsp;&nbsp;Choose what kind of help you need</strong>
-				</b>
+			<h1 class="request-step ng-class:{'small': newRequest.type}">
+				<a ng-click='newRequest.active_step = 2;' class='txt-white'>
+					<b>
+						Step
+						<span>2</span>
+						<svg viewBox="0 0 100 100">
+							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+						</svg>
+						<strong>&nbsp;&nbsp;Choose what kind of help you need</strong>
+					</b>
+				</a>
 			</h1>
 			<ul>
 				<li>
@@ -126,7 +135,7 @@ selected university
 						<span>&times;&nbsp;&nbsp;</span>
 						<span>{{tag.name}}</span>
 					</a>
-					<input class='chip tag-add' ng-model='newRequest.info.empty_tag.name' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{newRequest.info.empty_tag.name.length || 10}}">
+					<input class='chip tag-add' ng-model='newRequest.info.empty_tag.name' ng-blur='addRequestTagAndInitEmpty($event, "blur")' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{newRequest.info.empty_tag.name.length || 10}}">
 				</div>
 				<div class='attachment-list'>
 					<ul>
@@ -188,7 +197,7 @@ selected university
 				</div>
 			</div>
 		</div>
-		<button ng-if='desktopMode' ng-click='nextSlide()'>Next</button>
+		<button ng-if='desktopMode' ng-click='validateRequestFormSlideOne()'>Next</button>
 	</div>
 	<button ng-if='!desktopMode'>Next</button>
 </section>

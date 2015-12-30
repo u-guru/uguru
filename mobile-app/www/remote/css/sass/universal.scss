@@ -137,16 +137,20 @@
 		}
 	}
 	h1.request-step {
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
 		width: 100%;
 		padding: 15px;
 		text-align: center;
 		font-size: 28px;
 		font-weight: 600;
+		a {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			width: 100%;
+		}
 		b {
 			@include flex;
+			@include flex-wrap;
 			@include flex-center;
 			font-weight: 600;
 			width: 100%;
@@ -2181,7 +2185,7 @@
 					top: 24px;
 					padding-right: 12px;
 					svg {
-						@include svg-stroke(white, 4);
+						@include svg-stroke(white, 7);
 						padding: 0;
 					}
 				}
