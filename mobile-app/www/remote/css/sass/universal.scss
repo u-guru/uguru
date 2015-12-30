@@ -19,7 +19,7 @@
 		background: $shamrock;
 	}
 	main {
-		height: calc(100% - 50px);
+		height: 100%;
 	}
 }
 .angular-google-map,
@@ -216,6 +216,9 @@
 			padding: 0 15px 15px 0;
 			position: relative;
 			z-index: 12;
+			.request-step {
+				padding-right: 0;
+			}
 		}
 		.input-field {
 			max-width: 800px;
@@ -232,15 +235,21 @@
 			}
 			.desktop-input-close-icon {
 				z-index: 3;
-			    margin: -10px -20px -10px 0!important;
-				.icon {
-					font-size: 20px!important;
+			    top: 25%;
+				@media screen and (min-width: 768px) {
+					top: 50%;
+					margin: -10px -20px -10px 0!important;
+					.icon {
+						font-size: 20px!important;
+					}
 				}
 			}
 			input, label {
 				border-color: rgba(white, .5)!important;
 				color: white!important;
-				text-align: center!important;
+				@media screen and (min-width: 768px) {
+					text-align: center!important;
+				}
 			}
 			input {
 				padding-right: 48px;
@@ -269,9 +278,13 @@
 		.course-list, .course-none {
 			top: 63px;
     		left: 0;
-			background: rgba($smoke,.7);
+			background: $smoke;
 			a {
 				color: white;
+				text-align: center;
+				.course-title {
+					text-align: center;
+				}
 			}
 		}
 		.course-list {
@@ -1325,6 +1338,74 @@
 		}
 	}
 }
+@media screen and (max-width: 768px) {
+	#request.request-essay {
+		.desktop-header {
+			padding: 0;
+			top: 5px;
+			a {
+				&:nth-child(1) {
+					width: calc(100% - 50px);
+				}
+				&:nth-child(2) {
+					@include flex;
+					@include flex-center;
+					width: 50px;
+					height: 50px;
+					svg {
+						margin: 8px;
+						width: 28px;
+						height: 28px;
+						stroke-width: 7px;
+					}
+				}
+			}
+		}
+	}
+	.request-essay.request-slide {
+		padding-bottom: 64px!important;
+		header {
+			h1 {
+				padding-bottom: 0!important;
+				text-align: center!important;
+			}
+		}
+		.request-content {
+			height: calc(100% / 3 * 2 + 98px)!important;
+			> div {
+				min-height: calc(100% / 3);
+				&.small {
+					min-height: auto!important;
+					&#request-type {
+						ul {
+							li {
+								.radio-container {
+									label {
+										font-size: 18px!important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		h1.request-step {
+			font-size: 20px!important;
+			span {
+				width: 28px;
+				height: 28px;
+			}
+			strong {
+				display: block;
+				width: 100%;
+				&:after {
+					content: "\00a0\00a0";
+				}
+			}
+		}
+	}
+}
 .request-essay {
 	h1.request-step {
 		span {
@@ -1378,13 +1459,17 @@
 		background: lighten($lake, 5%);
 	}
 	#request-search {
+		background: lighten($lake, 5%);
 		h1.request-step {
 			span {
 				color: lighten($lake, 5%);
 			}
 		}
 		.course-list, .course-none {
-			top: 138px;
+			top: 158px;
+			@media screen and (min-width: 768px) {
+				top: 153px;
+			}
 			&.active {
 				z-index: 1000;
 			}
@@ -1408,6 +1493,19 @@
 						}
 					}
 				}
+				@media screen and (max-width: 768px) {
+					width: 50%;
+					a {
+						height: 62px;
+						padding-left: 10px;
+						padding-right: 10px;
+						text-align: center;
+						.course-name {
+							text-align: center;
+							font-size: 18px;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -1428,9 +1526,13 @@
 		}
 	}
 	#request-one {
-		overflow: auto;
+		@media screen and (min-width: 768px) {
+			overflow: auto;
+			.request-content {
+				height: calc(70% + 87px - 94px)!important;
+			}
+		}
 		.request-content {
-			height: auto!important;
 			.request-type {
 				background: lighten($lake, 10%);
 				h1.request-step {
@@ -1440,9 +1542,19 @@
 				}
 				ul {
 					@include flex;
+					@include flex-wrap;
 					@include flex-center;
+					@media screen and (max-width: 768px) {
+						padding: 0 7.5px 10px;
+						li {
+							width: 100%;
+						}
+					}
 					li {
-						padding: 15px;
+						padding: 7.5px;
+						@media screen and (min-width: 768px) {
+							padding: 15px;
+						}
 						.radio-container {
 							div {
 								span {
@@ -1470,6 +1582,19 @@
 							.radio-container {
 								label {
 									font-size: 28px;
+								}
+							}
+						}
+					}
+				}
+				@media screen and (max-width: 768px) {
+					&.small {
+						ul {
+							li {
+								.radio-container {
+									label {
+										font-size: 18px!important;
+									}
 								}
 							}
 						}
@@ -1595,11 +1720,6 @@
 			}
 		}
 	}
-	#request-three {
-		.request-honor-pledge {
-			background: lighten($lake, 30%);
-		}
-	}
 	#request-two {
 		.request-payment-container {
 			background: lighten($lake, 35%);
@@ -1669,6 +1789,126 @@
 									background: lighten($lake, 10%);
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#request-three {
+		.request-honor-pledge {
+			background: lighten($lake, 30%);
+		}
+	}
+	#request-four {
+		.request-content {
+			@include flex;
+			@include flex-wrap;
+			padding: 7.5px;
+			height: calc(70% - 7px);
+			@media screen and (min-width: 768px) {
+				overflow: hidden;
+			}
+			> div {
+				width: 100%;
+				padding: 7.5px;
+				@media screen and (max-width: 768px) {
+					min-height: auto!important;
+				}
+				&.request-notes {
+					> div {
+						padding: 15px;
+						h3 {
+							font-weight: 600;
+							text-align: center;
+						}
+					}
+				}
+				> div {
+					position: relative;
+					background: lighten($lake, 10%);
+					.request-edit {
+						position: absolute;
+						z-index: 99;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						padding: 15px;
+						background: rgba($lake,.3);
+						color: white;
+						font-size: 18px;
+						font-weight: 600;
+						text-align: right;
+						&:hover, &:focus {
+							background: rgba($lake,.95);
+						}
+						@media screen and (min-width: 768px) {
+							@include opacity(0);
+							@include flex;
+							@include flex-center;
+							background: rgba($lake,.95);
+							font-size: 28px;
+							text-align: center;
+							&:hover, &:focus {
+								@include opacity(1);
+							}
+						}
+					}
+					h1:not(.request-step) {
+						margin-top: -10px;
+						padding: 0 15px 15px;
+						font-size: 24px;
+						font-weight: 600;
+						text-align: center;
+					}
+					p {
+						margin: 0 15px;
+						height: 68px;
+						overflow: hidden;
+						background: white;
+						border-color: $lake;
+						font-size: 18px;
+						font-weight: 400;
+						color: $slate;
+					}
+					.tag-list {
+						margin: 15px 15px 0;
+					}
+					.attachment-list {
+						height: 130px;
+						ul {
+							li {
+								div {
+									width: 100px!important;
+									> a {
+										display: none!important;
+									}
+								}
+							}
+						}
+					}
+					.credit-card-wrapper {
+						display: block;
+						margin: 0 auto;
+						.credit-card {
+							margin: 0 auto;
+							width: 250px;
+							height: 140px;
+						}
+					}
+					h1.estimated-total:not(.request-step) {
+						font-size: 40px;
+					}
+				}
+				@media screen and (min-width: 768px) {
+					width: 50%;
+					&.request-notes {
+						width: 100%!important;
+					}
+					> div {
+						h1:not(.request-step) {
+							font-size: 28px;
 						}
 					}
 				}

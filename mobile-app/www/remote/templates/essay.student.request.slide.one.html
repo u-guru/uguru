@@ -7,7 +7,7 @@ selected university
 		<h1>How can we help you achieve your college goals?</h1>
 	</header>
 	<div class="request-content relative">
-		<div id="request-search" class="ng-class:{'active': newRequest.active_step === 1 || newRequest.university}" ng-controller='EssayStudentUniversityController'>
+		<div id="request-search" class="ng-class:{'active': newRequest.active_step === 1 || newRequest.university, 'small': newRequest.university}" ng-controller='EssayStudentUniversityController'>
 			<form>
 				<h1 class="request-step ng-class:{'small': newRequest.university}">
 					<b>
@@ -59,7 +59,7 @@ selected university
 			</div>
 		</div>
 
-		<div class="request-type ng-class:{'active': newRequest.active_step === 2 || newRequest.type}">
+		<div class="request-type ng-class:{'active': newRequest.active_step === 2 || newRequest.type, 'small': newRequest.type}">
 			<h1 class="request-step ng-class:{'small': newRequest.type}">
 				<a ng-click='newRequest.active_step = 2;' class='txt-white'>
 					<b>
@@ -76,7 +76,7 @@ selected university
 				<li>
 					<div class="radio-container">
 						<div>
-							<input type="radio" id="checkbox-container-1" name="checkbox-container" value='QA' ng-change='newRequest.active_step = 3;' ng-model='newRequest.type' checked/>
+							<input type="radio" id="checkbox-container-1" name="checkbox-container" value='QA' ng-change='newRequest.active_step = 3;' ng-model='newRequest.type' />
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
@@ -89,7 +89,7 @@ selected university
 				<li>
 					<div class="radio-container">
 						<div>
-							<input type="radio" id="checkbox-container-2" value='Essay' ng-model='newRequest.type' ng-change='newRequest.active_step = 3;' name="checkbox-container" />
+							<input type="radio" id="checkbox-container-2" name="checkbox-container" value='Essay' ng-change='newRequest.active_step = 3;' ng-model='newRequest.type' />
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
@@ -102,7 +102,7 @@ selected university
 				<li>
 					<div class="radio-container">
 						<div>
-							<input value='Quick' ng-model='newRequest.type' type="radio" id="checkbox-container-3" ng-change='newRequest.active_step = 3;' name="checkbox-container" />
+							<input type="radio" id="checkbox-container-3" name="checkbox-container" value='Quick' ng-change='newRequest.active_step = 3;' ng-model='newRequest.type' />
 							<span>
 								<svg viewBox="0 0 100 100">
 									<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
@@ -197,7 +197,6 @@ selected university
 				</div>
 			</div>
 		</div>
-		<button ng-if='desktopMode' ng-click='validateRequestFormSlideOne()'>Next</button>
 	</div>
-	<button ng-if='!desktopMode'>Next</button>
+	<button ng-click='validateRequestFormSlideOne()'>Next</button>
 </section>
