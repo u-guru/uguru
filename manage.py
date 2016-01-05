@@ -350,48 +350,52 @@ def init_hs():
     from hashlib import md5
     db_session.rollback()
 
-    email = "hs@uguru.me"
-    print "creating %s" % email
-    try:
-        user = User(email=email)
-    except:
-        user = User.query.filter_by(email=email).first()
-        messages = Message.query.filter_by(sender_id=user.id).all()
-        for message in messages:
-            message.sender_id = None
+    if len(sys.argv) == 2:
+        email = sys.argv[1]
+    else:
+        email = "samir@uguru.me"
+
+        print "creating %s" % email
+        try:
+            user = User(email=email)
+        except:
+            user = User.query.filter_by(email=email).first()
+            messages = Message.query.filter_by(sender_id=user.id).all()
+            for message in messages:
+                message.sender_id = None
+                db_session.commit()
+
+            db_session.delete(user)
             db_session.commit()
+            user = User(email=email)
 
-        db_session.delete(user)
+        user.password = md5('launchuguru123').hexdigest()
+        user.name = 'Sizzle N'
+        user.hs_student = True
+        university = University.query.get(2307)
+        ## create user with _high school
+        ## add many propertyes
+
+
+        ## add 5 universities
+
+        db_session.add(user)
         db_session.commit()
-        user = User(email=email)
+        print "user created"
 
-    user.password = md5('launchuguru123').hexdigest()
-    user.name = 'Sizzle N'
-    user.hs_student = True
-    university = University.query.get(2307)
-    ## create user with _high school
-    ## add many propertyes
+        ## Add 20 universities
+        randomUniversities = getNumRandomTargettedUniversities(20)
+        addUniversitiesToUser(user, randomUniversities)
 
+        ## Create a request
 
-    ## add 5 universities
+        file_arr = createFiveRandomFiles(user)
+        print "5 random files created"
+        tag_arr = selectFiveRandomTags()
+        print "5 random tags created"
 
-    db_session.add(user)
-    db_session.commit()
-    print "user created"
-
-    ## Add 20 universities
-    randomUniversities = getNumRandomTargettedUniversities(20)
-    addUniversitiesToUser(user, randomUniversities)
-
-    ## Create a request
-
-    file_arr = createFiveRandomFiles(user)
-    print "5 random files created"
-    tag_arr = selectFiveRandomTags()
-    print "5 random tags created"
-
-    option_num = 1
-    description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
+        option_num = 1
+        description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
 
 
 
@@ -1048,10 +1052,14 @@ if arg == 'seed_admin':
 
     def clearAccountInfo(user):
         deleteAllUserFiles(user)
-        clearUserShopsAndItems(user)
-        clearUserCalendar(user)
-        clearGuruRatings(user)
-        clearGuruExperiences(user)
+        if user.guru_shops:
+            clearUserShopsAndItems(user)
+        if user.guru_calendar:
+            clearUserCalendar(user)
+        if user.guru_ratings:
+            clearGuruRatings(user)
+        if user.guru_experiences:
+            clearGuruExperiences(user)
         user.guru_subcategories = []
         try:
             for course in user.guru_courses:
@@ -1074,7 +1082,7 @@ if arg == 'seed_admin':
 
 
 
-    clearAccountInfo(user)
+    # clearAccountInfo(user)
 
     print "\n\nUpdate #1, previous account details cleared for %s" % user.getFirstName()
 

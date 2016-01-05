@@ -21,6 +21,10 @@ if (LOCAL) {
 }
 
 
+if (window.location.href.indexOf('hs.uguru') > -1) {
+  _startpage = 'essay-home';
+}
+
 
 var tracker = 'lo';
 var stats = new Stats();

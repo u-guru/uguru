@@ -162,6 +162,14 @@
 	-webkit-justify-content: center;
 	justify-content: center;
 }
+@mixin flex-center-column {
+	-webkit-flex-direction:column;
+	flex-direction: column;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
 @mixin flex-center-vertical {
 	-webkit-align-items: center;
 	align-items: center;
