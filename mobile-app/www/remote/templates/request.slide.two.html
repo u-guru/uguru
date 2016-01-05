@@ -1,4 +1,4 @@
-<section id="request-two" class="request-slide request-academic">
+<section id="request-two" class="request-slide request-academic" on-swipe-left='preventDragSwipe()' on-drag-left='preventDragSwipe()'>
 	<header>
 		<h1>When and where?</h1>
 	</header>
@@ -59,11 +59,10 @@
 			<!-- <div ng-include="img_base + BASE + 'templates/request-cal.html'"></div> -->
 			<div class="request-loc map-box-container">
 				<!-- https://angular-ui.github.io/angular-google-maps/#!/api/google-map -->
-				<div class='map-box'>
+				<!-- <div class='map-box'>
 					<input ng-keyup="queryAutocompleteFromSearch(page.dropdowns.location_search.input)" ng-model='page.dropdowns.location_search.input' type="text" placeholder="Search locations" />
 
 					<ul class="hide ng-class:{'show': page.dropdowns.location_search.predictions.length }">
-                        <!-- .has-image to show image -->
                         <li ng-repeat='prediction in page.dropdowns.location_search.predictions'>
                             <div>
                                 <div class="map-title">
@@ -80,12 +79,30 @@
                             <div style="background-image: url({{prediction.photos[0].getUrl}});"></div>
                         </li>
 					</ul>
-				</div>
-				<ui-gmap-google-map style='height:400px;' class='full-x' center="map.center" control="map.control" zoom="map.zoom" pan="false" options="{streetViewControl:false,panControl:false,zoomControl:false,mapTypeControl:false}">
-                    <ui-gmap-markers
+				</div> -->
+                <a ng-click='map.centerMarker.showWindow = !map.centerMarker.showWindow;' style='z-index:1000' class='absolute center-xy'>
+                    <img src='https://uguru.me/static/remote/img/icons/marker.svg' />
+                </a>
+				<ui-gmap-google-map style='height:400px;' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
+                    <!-- <ui-gmap-markers ng-if='input.search.searchActive'
                         models="page.predictionMarkers"
-                        >
-                </ui-gmap-markers>
+                        > -->
+                    <ui-gmap-window
+                            coords='map.centerMarker.coords'
+                            show="map.centerMarker.showWindow"
+                            closeClick="map.centerMarker.showWindow = false;"
+                            >
+                            {{map.centerMarker.windowText}}
+                    </ui-gmap-window>
+
+                     <!-- <ui-gmap-marker
+                            idKey='mainMarker.id'
+                            coords='mainMarker.coords'
+                            options='mainMarker.options'
+                            events='mainMarker.events'
+                            control='mainMarker.control'
+                            >
+                    </ui-gmap-marker> -->
 
 
                 </ui-gmap-google-map>
