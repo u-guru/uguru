@@ -685,31 +685,14 @@ angular.module('uguru.desktop.controllers', [])
     }
 
     $scope.goToStudent = function() {
-      LoadingService.showAmbig();
+      LoadingService.showAmbig('Loading...', 500);
 
       //let the server know the user was on guru mode for the next time app opens
 
-
-      $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
-      $timeout(function() {
-        LoadingService.hide();
-      }, 1000)
-
-      $scope.root.vars.guru_mode = false;
-      $timeout(function() {
-        $ionicViewSwitcher.nextDirection('enter');
-        $state.go('^.guru-home');
-      }, 500)
-
-      if (!$scope.desktopMode) {
-
-        $timeout(function() {
-          if ($ionicSideMenuDelegate.isOpen()) {
-            $ionicSideMenuDelegate.toggleRight();
-          }
-        }, 500)
-
+      if ($scope.desktopMode) {
+        AnimationService.flip('^.student-home')
       }
+
     }
 
     $scope.showComingSoon = function() {

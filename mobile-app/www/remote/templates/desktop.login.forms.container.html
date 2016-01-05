@@ -27,7 +27,7 @@
     				</a>
     			</div>
     			<div class="input-field ng-class:{'hide':root.vars.forgotPassword}">
-    				<input autocomplete="off" ng-model='signupForm.password' id="password" type="password" class="validate txt-white">
+    				<input autocomplete="off" ng-keyup="$event.keyCode == 13 && signupOnEnter()" ng-model='signupForm.password' id="password" type="password" class="validate txt-white">
     				<label for="password">Password</label>
     				<a ng-show="root.vars.loginMode && signupForm.password.length" ng-click='signupForm.password = "";' class="desktop-input-close-icon side-icon">
     					<i class='icon ion-close-circled'> </i>
