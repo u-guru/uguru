@@ -2446,13 +2446,46 @@ if arg == 'init_berkeley_course':
     print count
 
 
-if arg == 'print_uw_data':
-    print "University Name, Website, College Application Submission Date, Source"
-    print "UC Berkeley, www.berkeley.edu, 11/30/2015, http://admissions.berkeley.edu/datesdeadlines"
-    for u in University.query.all():
-        if u.us_news_ranking and u.us_news_ranking < 220 and ((u.website and len(u.website) < 50) or not u.website):
-            print "%s, %s, %s, , " % (u.us_news_ranking, u.name, u.website)
+if arg == 'analyze_courses':
+    all_unis = [u for u in University.query.all() if u.sp16_start]
+    need_more = 0
+    for uni in all_unis:
+        p_courses = uni.popular_courses
+        repaired_popular_courses = False
+        for course in p_courses:
+            if not course.times_mentioned:
+                print "Need to investigate popular courses for %s %s" % (uni.id, uni.name)
+                break
+            if course.times_mentioned and course.short_name and course.name and not course.full_name:
+                repaired_popular_courses = True
+                course.full_name = course.name
+            elif course.times_mentioned and course.short_name and course.full_name and not course.name:
+                repaired_popular_courses = True
+                course.name = course.full_name
+            if repaired_popular_courses:
+                "%s %s popular courses successfully repaired" % (uni.id, uni.name)
+        db_session.commit()
+        if len(p_courses) > 50:
+            print "All set for %s" % uni.name
+        ## Case there are not that many
+        if len(p_courses) < 50:
+            need_more += 1
+            uni.courses_sanitized = False
+            print "We need to get more courses for %s which has %s" % (uni.name, len(p_courses))
 
+        if uni.num_popular_courses != len(p_courses):
+            uni.num_popular_courses = len(p_courses)
+            db_session.commit()
+
+    print "%s need more popular courses" % need_more
+
+
+    ## Part 1
+    ## find courses with popular courses
+    ## --> short_name
+    ## --> name
+    ## 1. university.courses.filter_by
+    ## delete courses that dont have both
 
 if arg == 'variations_courses':
     cal = University.query.get(2307)
