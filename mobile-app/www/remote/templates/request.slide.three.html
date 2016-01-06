@@ -34,76 +34,85 @@
 				<div class="request-selection">
 					<p class="input-outline active" ng-model='request.info.description'>{{request.info.description || 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.'}}</p>
 					<div class='tag-list'>
-						<span class="chip tag-selected" ng-repeat="tag in request.info.tags">{{tag.name}}</span>
-						<!-- SAMPLE DATA -->
-						<span class="chip tag-selected">tag-name</span>
-						<span class="chip tag-selected">tag-name</span>
-						<span class="chip tag-selected">tag-name</span>
-						<span class="chip tag-selected">tag-name</span>
-						<!-- END SAMPLE DATA -->
+                        <span class="tag-list-label">Tags:</span>
+						<span class="chip tag-selected" ng-repeat="tag in request.info.tags | limitTo: 3">{{tag.name}}</span>
+                        <span class="chip tag-more">+ 10 more</span>
 					</div>
-					<div class='attachment-list'>
-						<ul>
-							<li ng-repeat='file in user.hs_files.slice(0, 5)'>
-								<div class="attach-upload-file attach-upload-{{file.type}}" ng-if='file.type !== "img"'>
-									<svg class="doc-outline" viewBox="0 0 75 75" fill="{{file.university.school_color_one}}" style="fill: {{file.university.school_color_one}}!important;">
-										<path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
-									</svg>
-									<a>
-										<svg viewBox="0 0 100 100">
-											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-										</svg>
-									</a>
-									<span class="doc-info">
-										<span class="doc-name">{{file.name}}</span>
-										<span class="doc-type">{{file.type.toUpperCase()}}</span>
-									</span>
-								</div>
-
-								<div ng-if='file.type === "img"' class="attach-upload-img" style="background-image: url({{img_base}}./img/stock/photography/5.jpg);">
-									<a>
-										<svg viewBox="0 0 100 100">
-											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-										</svg>
-									</a>
-								</div>
-							</li>
-						</ul>
+                    <div class='tag-list'>
+                        <span class="tag-list-label">Attachments:</span>
+                        <span class="chip tag-pdf">file.pdf</span>
+                        <span class="chip tag-img">file.jpg</span>
+                        <span class="chip tag-doc">file.doc</span>
+                        <span class="chip tag-more">+ 10 more</span>
 					</div>
 				</div>
 			</div>
 		</div>
+        <div>
+			<div>
+				<a class="request-edit">Edit</a>
+				<h1 class="request-step small selected">
+					<b>When and Where</b>
+				</h1>
+                <div class="request-selection">
+                    <div class="request-edit-cal">
+                        <div class="request-edit-cal-item">
+                            <h2>Wed, Jan 25</h2>
+                            <span>4pm-6pm</span>
+                        </div>
+                        <div class="request-edit-cal-item">
+                            <h2>Sun, Jan 23</h2>
+                            <span>4-6pm, 10pm-12am</span>
+                        </div>
+                        <div class="request-edit-cal-item">
+                            <h2>Mon, Jan 24</h2>
+                            <span>4pm-6pm</span>
+                        </div>
+                        <div class="request-edit-cal-item">
+                            <h3>+ 4</h3>
+                        </div>
+                    </div>
+                    <h1>Philz Coffee</h1>
+                    <h2>Hours: 9am-11pm</h2>
+                    <span>1600 Shattuck Avenue #100, Berkeley</span>
+                </div>
+            </div>
+        </div>
 		<div>
 			<div>
 				<a class="request-edit">Edit</a>
 				<h1 class="request-step small selected">
-					<b>Selected Payment Card</b>
+					<b>Preferred Payment</b>
 				</h1>
 				<div class="request-selection">
 					<a class='credit-card-wrapper'>
-						<!-- BIND -->
-						<div id="credit-card-visa" class="credit-card cf relative">
-							<!-- BIND -->
-							<span class="card-type absolute left-0 top-0 m20xy" ng-include="img_base + BASE + 'templates/cards/'+ card.card_type +'.html'"></span>
-							<span class="text-right absolute top-0 right-0 m20x m15y card-type txt-slate weight-700 uppercase">
-								<span class='txt-smoke' style='padding:0;'>DEFAULT</span>
-								<span style='padding:0;' class='no-padding-y'>Debit Card</span>
-							</span>
-							<div class="card-number">**** **** **** {{card.card_last4}}</div>
-							<div class="card-name">{{user.name}}</div>
-							<div class="valid">
-								<div class="group">Valid<br/>Thru</div>
-								<div class="expiry">**/**</div>
-							</div>
-						</div>
-					</a>
+                        <div id="credit-card-visa" class="credit-card cf relative">
+                            <span class="card-type absolute left-0 top-0 m20xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
+                            <span class="text-right absolute top-0 right-0 m20x-m15y card-type txt-slate weight-700 uppercase">
+                                <span class='padding-none txt-smoke'>DEFAULT</span>
+                                <span class='padding-none'>Debit Card</span>
+                            </span>
+                            <div class="card-number">**** **** **** 4242</div>
+                            <div class="card-name">{{user.name}}</div>
+                            <div class="valid">
+                                <div class="group">Valid
+                                    <br/>Thru</div>
+                                <div class="expiry">**/**</div>
+                            </div>
+                        </div>
+                    </a>
 				</div>
+            </div>
+        </div>
+        <div>
+            <div>
 				<h1 class="request-step small selected">
 					<b>Estimated Total</b>
 				</h1>
 				<div class="request-selection">
 					<h1 class="estimated-total">$50</h1>
 				</div>
+                <button class="request-edit">Edit</button>
 			</div>
 		</div>
 		<div class="request-notes">
