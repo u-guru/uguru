@@ -1152,6 +1152,7 @@ class University(Base):
     sp15_start = Column(DateTime)
     sp15_end = Column(DateTime)
     sp16_deadline = Column(DateTime)
+    sp16_start = Column(DateTime)
 
     departments_sanitized = Column(Boolean, default=False)
     courses_sanitized = Column(Boolean, default=False)
