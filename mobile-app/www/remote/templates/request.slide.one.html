@@ -224,8 +224,6 @@
 						<ul class="ng-class:{'active':page.dropdowns.hour}">
 							<li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
 						</ul>
-						<!-- @samir -->
-						<!-- this is just an example of what I want the overlay to look like, but you can just remove it if needed -->
 						<div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
 					</div>
 					<h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
@@ -243,8 +241,6 @@
 							<li tabindex ng-click='setMinDropdownValue(30)'>30</li>
 							<li tabindex ng-click='setMinDropdownValue(45)'>45</li>
 						</ul>
-						<!-- @samir -->
-						<!-- this is just an example of what I want the overlay to look like, but you can just remove it if needed -->
 						<div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
 					</div>
 					<h2>&nbsp;&nbsp;min</h2>
@@ -270,9 +266,14 @@
 				<div class="request-loc map-box-container">
 					<!-- https://angular-ui.github.io/angular-google-maps/#!/api/google-map -->
 					<div class='map-box'>
-						<input ng-keyup="queryAutocompleteFromSearch(page.dropdowns.location_search.input)" ng-model='page.dropdowns.location_search.input' type="text" placeholder="Search locations" />
+						<div class="map-search">
+							<input ng-keyup="queryAutocompleteFromSearch(page.dropdowns.location_search.input)" ng-model='page.dropdowns.location_search.input' type="text" placeholder="Search locations" />
+							<svg viewBox="0 0 100 100">
+							    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+							</svg>
+						</div>
 
-						<ul class="hide ng-class:{'show': page.dropdowns.location_search.predictions.length }">
+						<ul class="map-results hide ng-class:{'show': page.dropdowns.location_search.predictions.length }">
 	                        <li ng-repeat='prediction in page.dropdowns.location_search.predictions'>
 	                            <div>
 	                                <div class="map-title">

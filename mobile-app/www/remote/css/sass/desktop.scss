@@ -656,6 +656,14 @@
 		width: 100%;
 	}
 }
+.desktop-search-header, .university-header {
+	h1 {
+		text-align: center;
+		font-weight: 900;
+		font-size: 36px;
+		padding-top: 60px;
+	}
+}
 .desktop-search {
 	@include flex;
 	@include flex-wrap;
@@ -785,6 +793,9 @@
 	}
 }
 #desktop-courses {
+	#courses-list {
+		width: 100%;
+	}
 	.main {
 		.desktop-search-list {
 			.desktop-card-list {
@@ -792,6 +803,10 @@
 					a {
 						font-size: 20px!important;
 						text-align: center;
+						.course-title {
+							height: 50px;
+							overflow: hidden;
+						}
 						span {
 							display: block;
 							width: 100%;
@@ -1475,14 +1490,6 @@
 /* ---------- UNIVERSITY */
 #desktop-university {
 	.main {
-		.university-header {
-			h1 {
-				text-align: center;
-				font-weight: 900;
-				font-size: 36px;
-				padding-top: 60px;
-			}
-		}
 		form {
 			margin-top: -10px;
 		}

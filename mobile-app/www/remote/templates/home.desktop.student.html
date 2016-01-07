@@ -8,13 +8,13 @@
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 
 		<div class="main">
-			<ion-pane id='cta-modal-student-request' class='show full-xy hide-display cta-modal bg-charcoal' ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'">
+			<ion-pane id='cta-modal-student-request' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'">
 			</ion-pane>
 
 			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/content.general.html'">
 			</ion-pane>
 
-			<ion-pane id='cta-modal-student-courses' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/student.courses.container.html'">
+			<ion-pane id='cta-modal-student-courses' class='show full-xy hide-display cta-modal bg-charcoal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/student.courses.container.html'">
 			</ion-pane>
 
 			<div class="student-home-greeting">

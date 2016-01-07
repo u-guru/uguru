@@ -1029,6 +1029,13 @@
   width: 100%;
 }
 
+.desktop-search-header h1, .university-header h1 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 36px;
+  padding-top: 60px;
+}
+
 .desktop-search {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1229,9 +1236,18 @@
   font-size: 32px;
 }
 
+#desktop-courses #courses-list {
+  width: 100%;
+}
+
 #desktop-courses .main .desktop-search-list .desktop-card-list li a {
   font-size: 20px !important;
   text-align: center;
+}
+
+#desktop-courses .main .desktop-search-list .desktop-card-list li a .course-title {
+  height: 50px;
+  overflow: hidden;
 }
 
 #desktop-courses .main .desktop-search-list .desktop-card-list li a span {
@@ -2046,13 +2062,6 @@
 }
 
 /* ---------- UNIVERSITY */
-#desktop-university .main .university-header h1 {
-  text-align: center;
-  font-weight: 900;
-  font-size: 36px;
-  padding-top: 60px;
-}
-
 #desktop-university .main form {
   margin-top: -10px;
 }

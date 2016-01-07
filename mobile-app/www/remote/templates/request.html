@@ -10,7 +10,6 @@
 	</header>
 
 	<header class="flex-center" ng-if='!desktopMode'>
-		<h1 class='full-x text-center'>Instant Guru Request</h1>
 	    <div class="header-nav full-x">
 			<a class="header-close cta-modal-close" ng-click="studentRequestModal.hide()">
 				<svg viewBox="0 0 100 100">
@@ -24,10 +23,9 @@
 			<progress class="white" max="6" value="{{requestProgress.value}}"></progress>
 		</div>
 		<ion-slide-box id='request-form-slide-box' can-swipe-back='false' on-slide-changed="slideHasChanged($index)" class='full-y'>
-			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.three.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.one.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.two.html'"></ion-slide>
-			
+			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.three.html'"></ion-slide>
 		</ion-slide-box>
 	</main>
 </section>
