@@ -730,6 +730,33 @@
 	}
 	.request-payment {
 		background: darken($smoke, 12.5%);
+		.request-payment-mobile {
+			@media screen and (min-width: 768px) {
+				display: none;
+			}
+			.mini-card {
+				display: block;
+				width: 60px;
+				margin: 0 auto;
+				border: 2px solid rgba($slate,.5);
+				border-radius: 5px;
+				font-size: 14px;
+				font-weight: 600;
+				text-transform: uppercase;
+				text-align: center;
+				&:hover, &:focus {
+					border-color: $cerise;
+					background: $cerise;
+					color: white!important;
+				}
+			}
+		}
+		.request-payment-desktop {
+			display: none;
+			@media screen and (min-width: 768px) {
+				@include flex;
+			}
+		}
 		> div {
 			max-width: 800px;
 			margin: 0 auto;
@@ -737,6 +764,10 @@
 				margin: 15px 0 10px;
 				font-size: 24px;
 				font-weight: 600;
+				text-align: center;
+				@media screen and (min-width: 768px) {
+					text-align: left;
+				}
 			}
 			.credit-card {
 				height: 150px;
@@ -746,6 +777,22 @@
 				}
 			}
 			> div:last-child {
+				> .ugrid-2 {
+					> li:first-child {
+						display: none;
+						@media screen and (min-width: 768px) {
+							display: block;
+						}
+					}
+					> li:last-child {
+						width: 100%;
+						padding: 0 15px;
+						@media screen and (min-width: 768px) {
+							width: 50%;
+							padding: 0;
+						}
+					}
+				}
 				.credit-card {
 					height: 175px;
     				max-width: 300px;
@@ -756,6 +803,12 @@
 						li {
 							padding: 0 7.5px;
 						}
+					}
+					button {
+						position: static!important;
+						top: auto!important;
+						left: auto!important;
+						margin-bottom: 15px;
 					}
 				}
 			}

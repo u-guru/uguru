@@ -1040,6 +1040,46 @@
   background: #d1d1d1;
 }
 
+@media screen and (min-width: 768px) {
+  .request-slide .request-payment .request-payment-mobile {
+    display: none;
+  }
+}
+
+.request-slide .request-payment .request-payment-mobile .mini-card {
+  display: block;
+  width: 60px;
+  margin: 0 auto;
+  border: 2px solid rgba(64, 72, 75, 0.5);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.request-slide .request-payment .request-payment-mobile .mini-card:hover, .request-slide .request-payment .request-payment-mobile .mini-card:focus {
+  border-color: #e6389b;
+  background: #e6389b;
+  color: white !important;
+}
+
+.request-slide .request-payment .request-payment-desktop {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .request-slide .request-payment .request-payment-desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+}
+
 .request-slide .request-payment > div {
   max-width: 800px;
   margin: 0 auto;
@@ -1049,6 +1089,13 @@
   margin: 15px 0 10px;
   font-size: 24px;
   font-weight: 600;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .request-slide .request-payment > div h4 {
+    text-align: left;
+  }
 }
 
 .request-slide .request-payment > div .credit-card {
@@ -1058,6 +1105,28 @@
 
 .request-slide .request-payment > div .credit-card span {
   display: block !important;
+}
+
+.request-slide .request-payment > div > div:last-child > .ugrid-2 > li:first-child {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .request-slide .request-payment > div > div:last-child > .ugrid-2 > li:first-child {
+    display: block;
+  }
+}
+
+.request-slide .request-payment > div > div:last-child > .ugrid-2 > li:last-child {
+  width: 100%;
+  padding: 0 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .request-slide .request-payment > div > div:last-child > .ugrid-2 > li:last-child {
+    width: 50%;
+    padding: 0;
+  }
 }
 
 .request-slide .request-payment > div > div:last-child .credit-card {
@@ -1071,6 +1140,13 @@
 
 .request-slide .request-payment > div > div:last-child form ul li {
   padding: 0 7.5px;
+}
+
+.request-slide .request-payment > div > div:last-child form button {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  margin-bottom: 15px;
 }
 
 .request-slide#request-one .request-content > ul {
