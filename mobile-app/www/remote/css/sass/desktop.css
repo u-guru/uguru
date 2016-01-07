@@ -398,8 +398,7 @@
   height: 64px;
 }
 
-.desktop-mode #top-bar div:nth-child(2) #top-settings img,
-.desktop-mode #top-bar div:nth-child(2) #top-settings img.profile-url {
+.desktop-mode #top-bar div:nth-child(2) #top-settings img, .desktop-mode #top-bar div:nth-child(2) #top-settings img.profile-url {
   border-radius: 1000px;
   width: 40px;
   height: 40px;
@@ -2235,8 +2234,7 @@
   width: 100%;
 }
 
-#desktop-settings .main .settings-save button,
-#desktop-settings .main .settings-save a {
+#desktop-settings .main .settings-save button, #desktop-settings .main .settings-save a {
   display: block;
   margin: 0 auto;
   padding: 15px 30px;
