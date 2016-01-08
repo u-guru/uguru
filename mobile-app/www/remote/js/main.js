@@ -385,6 +385,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/one.university.html',
         controller: 'OneUniversityController'
   }).
+  state('root.universities-admin', {
+        url: '/university/:universityId/admin',
+        templateUrl: BASE + 'templates/one.university.admin.html',
+        controller: 'OneUniversityController'
+  }).
   state('root.cashout', {
         url: '/cashout',
         templateUrl: BASE + 'templates/guru.cashout.html',

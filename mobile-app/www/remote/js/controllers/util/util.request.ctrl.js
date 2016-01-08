@@ -179,10 +179,10 @@ angular.module('uguru.util.controllers')
       });
     }
     $scope.root.vars.initRequestMap = initRequestMap;
-    // $timeout(function() {
+    $timeout(function() {
 
-    //   $scope.root.vars.initRequestMap();
-    // }, 1000)
+      $scope.root.vars.initRequestMap();
+    }, 3000)
 
     $scope.slideHasChanged = function($index) {
       if ($index > $scope.requestProgress.value - 1) {
