@@ -2176,6 +2176,7 @@
 									text-align: center;
 									max-width: 50px;
 									background: lighten($slate, 10%);
+									color: white;
 									@include placeholder {
 										color: rgba(white,.5);
 									}

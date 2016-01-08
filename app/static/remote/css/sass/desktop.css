@@ -398,8 +398,7 @@
   height: 64px;
 }
 
-.desktop-mode #top-bar div:nth-child(2) #top-settings img,
-.desktop-mode #top-bar div:nth-child(2) #top-settings img.profile-url {
+.desktop-mode #top-bar div:nth-child(2) #top-settings img, .desktop-mode #top-bar div:nth-child(2) #top-settings img.profile-url {
   border-radius: 1000px;
   width: 40px;
   height: 40px;
@@ -1029,6 +1028,13 @@
   width: 100%;
 }
 
+.desktop-search-header h1, .university-header h1 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 36px;
+  padding-top: 60px;
+}
+
 .desktop-search {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1229,9 +1235,18 @@
   font-size: 32px;
 }
 
+#desktop-courses #courses-list {
+  width: 100%;
+}
+
 #desktop-courses .main .desktop-search-list .desktop-card-list li a {
   font-size: 20px !important;
   text-align: center;
+}
+
+#desktop-courses .main .desktop-search-list .desktop-card-list li a .course-title {
+  height: 50px;
+  overflow: hidden;
 }
 
 #desktop-courses .main .desktop-search-list .desktop-card-list li a span {
@@ -2046,13 +2061,6 @@
 }
 
 /* ---------- UNIVERSITY */
-#desktop-university .main .university-header h1 {
-  text-align: center;
-  font-weight: 900;
-  font-size: 36px;
-  padding-top: 60px;
-}
-
 #desktop-university .main form {
   margin-top: -10px;
 }
@@ -2226,8 +2234,7 @@
   width: 100%;
 }
 
-#desktop-settings .main .settings-save button,
-#desktop-settings .main .settings-save a {
+#desktop-settings .main .settings-save button, #desktop-settings .main .settings-save a {
   display: block;
   margin: 0 auto;
   padding: 15px 30px;

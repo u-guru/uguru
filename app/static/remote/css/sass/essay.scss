@@ -42,6 +42,58 @@ ion-view {
 		}
 	}
 	
+	#essay-footer-badges {
+		@include transition(.15s ease-in-out);
+		@include opacity(0);
+		@include center-x;
+		@include flex;
+		@include flex-center;
+		bottom: 15px;
+		width: calc(100% - 96px - 60px);
+		height: 48px;
+		&.active {
+			@include opacity(1);
+			z-index: 99;
+		}
+		ul {
+			@include flex;
+			li {
+				padding: 0 7.5px;
+				.chip {
+					@include round;
+					position: relative;
+					background: $lake;
+					height: 48px;
+					font-size: 18px;
+					line-height: 48px;
+					padding: 0 24px;
+					.badge {
+						@include round;
+						@include flex;
+						@include flex-center;
+						position: absolute;
+						top: -20px;
+						right: -20px;
+						min-width: auto;
+						width: 40px;
+						height: 40px;
+						background: $slate;
+						color: white;
+						font-size: 18px;
+					}
+					&:hover, &:focus {
+						background: white;
+						color: $lake;
+					}
+					&:active {
+						background: $orange;
+						color: white;
+					}
+				}
+			}
+		}
+	}
+	
 	// SPLASH
 	#essay-student-home {
 		background: white;
@@ -399,7 +451,7 @@ ion-view {
 			&#essay-faq {
 				.main {
 					> p {
-						padding: 30px 15px;
+						padding: 30px 15px 93px;
 						max-width: 830px;
 						margin: 0 auto;
 						font-weight: 600;

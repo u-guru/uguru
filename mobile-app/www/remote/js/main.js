@@ -381,7 +381,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'PublicProfileController'
   }).
   state('root.universities', {
-        url: '/universities/:universityId',
+        url: '/university/:universityId',
         templateUrl: BASE + 'templates/one.university.html',
         controller: 'OneUniversityController'
   }).

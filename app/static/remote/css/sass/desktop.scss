@@ -240,8 +240,7 @@
 				@include flex-center;
 				width: 90px;
 				height: 64px;
-				img,
-				img.profile-url {
+				img, img.profile-url {
 					@include round;
 					width: 40px;
 					height: 40px;
@@ -656,6 +655,14 @@
 		width: 100%;
 	}
 }
+.desktop-search-header, .university-header {
+	h1 {
+		text-align: center;
+		font-weight: 900;
+		font-size: 36px;
+		padding-top: 60px;
+	}
+}
 .desktop-search {
 	@include flex;
 	@include flex-wrap;
@@ -785,6 +792,9 @@
 	}
 }
 #desktop-courses {
+	#courses-list {
+		width: 100%;
+	}
 	.main {
 		.desktop-search-list {
 			.desktop-card-list {
@@ -792,6 +802,10 @@
 					a {
 						font-size: 20px!important;
 						text-align: center;
+						.course-title {
+							height: 50px;
+							overflow: hidden;
+						}
 						span {
 							display: block;
 							width: 100%;
@@ -1475,14 +1489,6 @@
 /* ---------- UNIVERSITY */
 #desktop-university {
 	.main {
-		.university-header {
-			h1 {
-				text-align: center;
-				font-weight: 900;
-				font-size: 36px;
-				padding-top: 60px;
-			}
-		}
 		form {
 			margin-top: -10px;
 		}
@@ -1657,17 +1663,16 @@
 		.settings-save {
 			@include flex;
 			@include flex-center;
-			button,
-			a {
+			position: absolute;
+			bottom: 5%;
+			width: 100%;
+			button, a {
 				display: block;
 				margin: 0 auto;
 				padding: 15px 30px;
 				width: calc(100% / 3);
 				text-align: center;
 			}
-			position:absolute;
-			bottom:5%;
-			width:100%;
 		}
 		> div {
 			max-width: 600px;

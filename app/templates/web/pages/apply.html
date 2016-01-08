@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Apply to Uguru</title>
+
+    <link rel="shortcut icon" href="https://uguru.me/static/web/images/favicon.ico">
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/base-min.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/grids-min.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/grids-responsive-min.css"/>
+    <script src="https://uguru.me/static/web/js/lib/modernizr.js"></script>
+
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/default.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/style.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/responsive.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/jason.css"/>
+
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/menu.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/samir.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/animate.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/material.components.css"/>
+    <link rel="stylesheet" href="https://uguru.me/static/web/css/ionicons.min.css"/>
+
+    <link href="https://uguru.me/static/remote/css/ionic.app.min.css" rel="stylesheet">
+
+
+    <!-- The main css file -->
+    <link href="https://uguru.me/static/remote/css/sass/default.css" rel="stylesheet">
+    <link href="https://uguru.me/static/remote/css/sass/material.css" rel="stylesheet">
+    <link href="https://uguru.me/static/remote/css/sass/desktop.css" rel="stylesheet">
+    <link href="https://uguru.me/static/remote/css/sass/desktop-student.css" rel="stylesheet">
+    <link href="https://uguru.me/static/remote/css/sass/desktop-guru.css" rel="stylesheet">
+    <link href="https://uguru.me/static/remote/css/sass/style.css" rel="stylesheet">
+    <link href="https://uguru.me/static/remote/css/sass/style-pf.css" rel="stylesheet">
+    <link href="https://uguru.me/static/remote/css/sass/style-modals.css" rel="stylesheet">
+    <link href="https://uguru.me/static/remote/css/sass/samir.css" rel="stylesheet">
+
+
+    {% if ( request.path != '/support-only/' and request.path != '/faq-only/') %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(e) {
+                onDomLoadSuccess();
+        });
+    </script>
+    {% endif %}
+
+</head>
+<body id="{% block pagetype %}{% endblock %}">
+
+{% if ( request.path != '/support-only/' and request.path != '/faq-only/') %}
+<script>
+    var bodyLoadingDiv = document.createElement('div');
+    bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
+    document.body.appendChild(bodyLoadingDiv);
+    bodyLoadingDiv.innerHTML = '<div><span class="logo"> {% include "web/components/logo-shamrock.svg"|string%}' + ' </span><span class="loader"> {% include "web/components/svg-loader.svg"%} </span></div>'
+</script>
+{% endif %}
+    <iframe style='height:100%; width:100%' src='https://www.uguru.me/app/#apply'> </iframe>
+    <script src="https://uguru.me/static/web/js/lib/uguru-animate.js"></script>
+</body>
+
+</html>
+
