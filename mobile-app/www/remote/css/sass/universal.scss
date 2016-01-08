@@ -1,5 +1,96 @@
 @import 'mixin';
 
+/* ---------- TEAM */
+#team {
+	width: 100%;
+	height: 100%;
+	background: $smoke;
+	header {
+		@include flex;
+		@include flex-center;
+		height: 25%;
+		max-height: none;
+		background: white;
+		h1 {
+			color: $lake;
+			font-size: 48px;
+			font-weight: 600;
+			text-transform: none;
+		}
+		&.no-graphic {
+			background: $shamrock;
+			h1 {
+				color: white;
+			}
+		}
+	}
+	section {
+		height: 75%;
+		> ul {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			width: 100%;
+			max-width: 900px;
+			margin: 7.5px auto;
+			> li {
+				width: calc(100% / 3);
+				min-width: 300px;
+				padding: 7.5px;
+			}
+		}
+	}
+	.pf-card {
+		margin: 0;
+		.pf-card-top {
+			height: 80px;
+			> ul {
+				li {
+					&:first-child {
+						width: 70%;
+					}
+					&:last-child {
+						width: 30%;
+					}
+				}
+			}
+			.user-icon {
+				@include center-x;
+				width: 96px;
+				height: 96px;
+				bottom: -60px;
+				border-width: 3px;
+			}
+		}
+		.pf-card-main {
+			padding: 60px 15px 15px;
+			h1 {
+				font-size: 24px;
+				span {
+					svg {
+						margin-left: 8px;
+						margin-top: 5px;
+						width: 20px;
+						height: 20px;
+					}
+				}
+			}
+			.pf-school {
+				font-size: 16px;
+				+ .pf-school {
+					color: lighten($slate, 25%);
+				}
+			}
+			.pf-quote {
+				display: none;
+				padding-top: 5px;
+				font-size: 14px;
+				font-weight: 400;
+			}
+		}
+	}
+}
+
 #intercom-container {
 	z-index: auto!important;
 }

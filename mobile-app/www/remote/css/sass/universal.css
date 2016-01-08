@@ -1,3 +1,136 @@
+/* ---------- TEAM */
+#team {
+  width: 100%;
+  height: 100%;
+  background: #F1F1F1;
+}
+
+#team header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 25%;
+  max-height: none;
+  background: white;
+}
+
+#team header h1 {
+  color: #50A5DD;
+  font-size: 48px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+#team header.no-graphic {
+  background: #69B3A5;
+}
+
+#team header.no-graphic h1 {
+  color: white;
+}
+
+#team section {
+  height: 75%;
+}
+
+#team section > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 7.5px auto;
+}
+
+#team section > ul > li {
+  width: calc(100% / 3);
+  min-width: 300px;
+  padding: 7.5px;
+}
+
+#team .pf-card {
+  margin: 0;
+}
+
+#team .pf-card .pf-card-top {
+  height: 80px;
+}
+
+#team .pf-card .pf-card-top > ul li:first-child {
+  width: 70%;
+}
+
+#team .pf-card .pf-card-top > ul li:last-child {
+  width: 30%;
+}
+
+#team .pf-card .pf-card-top .user-icon {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 96px;
+  height: 96px;
+  bottom: -60px;
+  border-width: 3px;
+}
+
+#team .pf-card .pf-card-main {
+  padding: 60px 15px 15px;
+}
+
+#team .pf-card .pf-card-main h1 {
+  font-size: 24px;
+}
+
+#team .pf-card .pf-card-main h1 span svg {
+  margin-left: 8px;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+#team .pf-card .pf-card-main .pf-school {
+  font-size: 16px;
+}
+
+#team .pf-card .pf-card-main .pf-school + .pf-school {
+  color: #7c8a8f;
+}
+
+#team .pf-card .pf-card-main .pf-quote {
+  display: none;
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 #intercom-container {
   z-index: auto !important;
 }
