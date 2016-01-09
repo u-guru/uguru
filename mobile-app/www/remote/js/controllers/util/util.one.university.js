@@ -29,7 +29,7 @@ angular.module('uguru.util.controllers')
       $scope.highlighted_item;
       $scope.activeTabIndex = 0;
       $scope.university = {}
-      $scope.page = {dropdowns: {}, predictionMarkers:[]}
+      $scope.page = {dropdowns: {}, predictionMarkers:[], showSidebar:true}
       $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
 
       var university_id = $stateParams.universityId;
