@@ -126,6 +126,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'AddUniversityCtrl'
   }).
 
+  state('root.team', {
+        url: '/team',
+        templateUrl: BASE + 'templates/team.html'
+  }).
+
   //start essay
   state('root.essay-student-university', {
         url: '/essay-student-university',
@@ -383,6 +388,16 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.universities', {
         url: '/university/:universityId',
         templateUrl: BASE + 'templates/one.university.html',
+        controller: 'OneUniversityController'
+  }).
+  state('root.universities-admin', {
+        url: '/university/:universityId/admin',
+        templateUrl: BASE + 'templates/one.university.admin.html',
+        controller: 'OneUniversityController'
+  }).
+  state('root.universities-animate', {
+        url: '/university/:universityId/animate',
+        templateUrl: BASE + 'templates/one.university.animations.html',
         controller: 'OneUniversityController'
   }).
   state('root.cashout', {

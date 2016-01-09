@@ -24,7 +24,6 @@ angular.module('uguru.util.controllers')
       ];
       var scrollDuration= 500;
       var shouldShowBecomeGuruHeader = false;
-
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
       $scope.activeTabIndex = 0;
@@ -48,6 +47,22 @@ angular.module('uguru.util.controllers')
                 };
       }
 
+      var pageLinks = [];
+      $scope.links = [];
+
+      $scope.toggleSidebar = function() {
+        $scope.page.sidebar.show=!$scope.page.sidebar.show;
+        if ($scope.page.sidebar.show) {
+          pageLinks = ['link 1', 'link 2', 'link 3', 'link 4'];
+          $scope.links = [];
+          $timeout(function() {$scope.links.push(pageLinks[0])}, 1000)
+          $timeout(function() {$scope.links.push(pageLinks[1])}, 1000)
+          $timeout(function() {$scope.links.push(pageLinks[2])}, 1000)
+          $timeout(function() {$scope.links.push(pageLinks[3])}, 1000)
+        } else {
+          $scope.links = [];
+        }
+      }
 
       $scope.queryAutocompleteFromSearch = function(query) {
 
