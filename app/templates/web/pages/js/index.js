@@ -57,19 +57,22 @@ var initTypeahead = function(matcher, source) {
                 '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img src="/static/web/svg/logo-shamrock.svg"/></div><div><h2 id="tt-no-results"><span class="title">No results found (yet!)</span> Click to bring Uguru to your university or school.</h2></div></a>',
                 '</div>'
             ].join('\n'),
-            suggestion: Handlebars.compile("<div><img src='{{logo_url}}' alt=''/></div><div><h2>{{name}}</h2><p>{{city}}, {{state}}, USA</p></div>")
+            suggestion: Handlebars.compile("<div><a href='/static/remote/index.html#/university/{{id}}'><img src='{{logo_url}}' alt=''/></div><div><h2>{{name}}</h2><p>{{city}}, {{state}}, USA</p></a></div>")
         }
-    }).on('typeahead:selected', function(event, suggested, dataset_name) {
+    })
+    .on('typeahead:selected', function(event, suggested, dataset_name) {
+        console.log(suggested);
+        window.location.replace("/static/remote/index.html#/university/" + suggested.id)
         // $("#search-box").slideUp();
         // $("#border-outer").css("fill", "white");
-        $("#top-school-banner").css("width", "20%");
-        $('#top-school-logo').css("width","auto");
-        var successCallback = function() {
-            itemSelectedGlobal = true;
-            showSearchResultsCallback(suggested);
-        }
-        customizeSearchResults(suggested, successCallback);
-            //make it wobble
+        // $("#top-school-banner").css("width", "20%");
+        // $('#top-school-logo').css("width","auto");
+        // var successCallback = function() {
+        //     itemSelectedGlobal = true;
+        //     showSearchResultsCallback(suggested);
+        // }
+        // customizeSearchResults(suggested, successCallback);
+        //     make it wobble
     }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
         $('.tt-suggestion').css('background-color', 'white');
         var suggestedTypeaheadListItem = document.querySelectorAll('.tt-suggestion.tt-cursor')[dataset_name];
@@ -194,7 +197,7 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
         var indexSVGElem = platformSVGElement[i];
         indexSVGElem.style.fill = uni_data.school_color_one;
     }
-    
+
     //population
     //Map latitude longitude
     if (postSearchCallback) {

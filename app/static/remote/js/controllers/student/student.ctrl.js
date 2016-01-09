@@ -10,8 +10,9 @@ angular.module('uguru.student.controllers', [])
     'DeviceService',
     '$timeout',
     '$ionicModal',
+    'GMapService',
     function($scope, $state, $ionicSideMenuDelegate, $ionicSlideBoxDelegate,
-        DeviceService, $timeout, $ionicModal) {
+        DeviceService, $timeout, $ionicModal, GMapService) {
 
         var CTA_PARENT_DICT = {
             'cta-box-student-request':'#desktop-student-home',
@@ -48,10 +49,26 @@ angular.module('uguru.student.controllers', [])
                         }, 200);
 
                         if (box_elem.id === 'cta-box-student-request') {
-                            console.log('initializing that damn map');
-                            $timeout(function() {
-                                $scope.root.vars.initRequestMap();
-                            }, 1000)
+                            $timeout(function(){
+                                console.log('initializing that damn map');
+                                console.log($scope.user.university);
+                                $scope.map = GMapService.initMapObj($scope.user.university);
+                                $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.user.university.latitude, longitude:$scope.user.university.longitude}};
+                                $scope.map.events.dragend = function(maps, event_name, drag_options) {
+                                  $scope.map.centerMarker.coords = {latitude: maps.center.G, longitude:maps.center.K};
+                                  GUtilService.getNearestLocation($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
+                                  $scope.map.centerMarker.showWindow = true;
+                                }
+
+                                $scope.map.events.dragstart = function(maps, event_name, drag_options) {
+                                  $scope.map.centerMarker.showWindow = false;
+                                }
+                                console.log('map', $scope.map)
+                                $timeout(function() {
+                                        $scope.$apply();
+                                })
+                                
+                            }, 1500)
                         }
 
                           var close_icon = modal_elem.querySelector('.cta-modal-close');

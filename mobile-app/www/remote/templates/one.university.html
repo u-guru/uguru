@@ -193,8 +193,8 @@
                     </ul>
                     <ul class='ugrid-3 text-center'>
                         <li class="hiw-{{hiw_item.svg_url}}" ng-repeat="hiw_item in how_it_works.bottom_half">
-                            <h1 class='weight-900'>{{hiw_item.header}}.</h1>
-                            <p>{{hiw_item.content}}</p>
+                            <h1 class='weight-900' ng-bind-html="hiw_item.header">.</h1>
+                            <p ng-bind-html="hiw_item.content"></p>
                         </li>
                     </ul>
                 </div>
@@ -205,15 +205,15 @@
                 </header>
                 <div class='main'>
                     <ul class='ugrid-3 text-center'>
-                        <li ng-repeat="hiw_item in how_it_works.top_half">
-                            <h1 class='weight-900' ng-bind-html="hiw_item.header">.</h1>
-                            <p ng-bind-html="hiw_item.content"></p>
+                        <li ng-repeat="bg_item in become_guru.top_half">
+                            <h1 class='weight-900' ng-bind-html="bg_item.header">.</h1>
+                            <p ng-bind-html="bg_item.content"></p>
                         </li>
                     </ul>
                     <ul class='ugrid-3 text-center'>
-                        <li class="hiw-{{hiw_item.svg_url}}" ng-repeat="hiw_item in how_it_works.bottom_half">
-                            <h1 class='weight-900'>{{hiw_item.header}}.</h1>
-                            <p>{{hiw_item.content}}</p>
+                        <li class="hiw-{{hiw_item.svg_url}}" ng-repeat="bg_item in become_guru.bottom_half">
+                            <h1 class='weight-900' ng-bind-html="bg_item.header">.</h1>
+                            <p ng-bind-html="bg_item.content"></p>
                         </li>
                     </ul>
                 </div>

@@ -192,7 +192,11 @@ angular.module('uguru.util.controllers')
     if ($scope.desktopMode) {
 
         $timeout(function() {
-        document.querySelector('#desktop-skills-save-button').addEventListener('click', function() {
+          var saveButton = document.querySelector('#desktop-skills-save-button');
+          if (!saveButton) {
+            return;
+          }
+          saveButton.addEventListener('click', function() {
 
           LoadingService.showSuccess('Saved!', 1500);
           $timeout(function() {
