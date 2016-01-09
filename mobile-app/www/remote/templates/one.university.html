@@ -8,7 +8,12 @@
 <ion-content on-scroll='checkPosition()' scroll-event-interval="250">
 <ion-view class='bg-smoke'>
     <!-- <ion-content> -->
+
     <main id='essay-student-home' class='hs-view full-xy' >
+
+        <ion-pane id='cta-modal-sidebar' style='z-index:10000;' class='full-xy cta-modal hide ng-class:{"show":page.showSidebar}' ng-include="img_base + BASE + 'templates/one.university.sidebar.html'">
+        </ion-pane>
+
         <header id='essay-home-banner' class='hide ng-class:{"show":becomeGuruHeaderActive}'>
             <div>
                 <!-- TODO SAMIR TEMPLATE THIS-->
@@ -27,7 +32,8 @@
             <!-- <a ng-click='scrollToSection("#timeline")'>Timeline</a> -->
             <a ng-click='scrollToSection("#live-map")'>Live</a>
             <a ng-click='scrollToSection("#browse-categories")'>Browse</a>
-            <a ng-click='scrollToSection("#become-guru")'>Apply Guru</a>
+            <a ng-click='page.showSidebar = true;'>Menu</a>
+            <a id='cta-box-sidebar'>Apply Guru</a>
             <a class="active university-txt" ng-click='goToUniversity()'>Student Portal</a>
             <div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
                 <a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
