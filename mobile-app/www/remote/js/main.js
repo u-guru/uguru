@@ -125,7 +125,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/university.html',
         controller: 'AddUniversityCtrl'
   }).
-  
+
   state('root.team', {
         url: '/team',
         templateUrl: BASE + 'templates/team.html'
@@ -393,6 +393,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.universities-admin', {
         url: '/university/:universityId/admin',
         templateUrl: BASE + 'templates/one.university.admin.html',
+        controller: 'OneUniversityController'
+  }).
+  state('root.universities-animate', {
+        url: '/university/:universityId/animate',
+        templateUrl: BASE + 'templates/one.university.animations.html',
         controller: 'OneUniversityController'
   }).
   state('root.cashout', {

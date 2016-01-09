@@ -21,7 +21,7 @@ angular.module('uguru.util.controllers')
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
-      ]
+      ];
       var scrollDuration= 500;
       var shouldShowBecomeGuruHeader = false;
 
@@ -29,12 +29,14 @@ angular.module('uguru.util.controllers')
       $scope.highlighted_item;
       $scope.activeTabIndex = 0;
       $scope.university = {}
-      $scope.page = {dropdowns: {}, predictionMarkers:[], showSidebar:true}
+      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false}
+      $scope.page.sidebar = {show:false};
       $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
 
       var university_id = $stateParams.universityId;
       $scope.university = {};
-      $scope.how_it_works = ContentService.how_it_works;
+      $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.user.university);
+      $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.user.university);
 
       var initMapFromUniversity = function(university) {
         var latitude = parseFloat(university.latitude);
@@ -79,7 +81,7 @@ angular.module('uguru.util.controllers')
     var initRequestMap = function() {
       console.log($scope.user.university)
       if ($scope.user.university) {
-        $scope.map = GMapService.initMapObj($scope.user.university);
+        $scope.map = GMapService.initMapObj($scope.user.university, {zoom:15, disableDoubleClickZoom:true, draggable:false});
         $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.user.university.latitude, longitude:$scope.user.university.longitude}};
         $scope.map.events.dragend = function(maps, event_name, drag_options) {
           $scope.map.centerMarker.coords = {latitude: maps.center.G, longitude:maps.center.K};
@@ -173,11 +175,11 @@ angular.module('uguru.util.controllers')
       $scope.scrollToSection = function(section_selector) {
         var amount = null;
         var successFunction = null;
-        var pageParentContainer = '#essay-student-home';
+        var pageParentContainer = '#university-splash';
         ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector);
-        $timeout(function() {
-          ScrollService.initStickyHeaderScroll("#essay-header", "#essay-pricing", 'active', '#essay-student-home');
-        }, scrollDuration + 100)
+        // $timeout(function() {
+        //   ScrollService.initStickyHeaderScroll("#essay-header", "#essay-pricing", 'active', '#essay-student-home');
+        // }, scrollDuration + 100)
       }
 
       getPublicUniversityInformation();
