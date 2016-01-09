@@ -1001,7 +1001,7 @@
   text-transform: none !important;
 }
 
-.splash-landing > section .essay-footer-link {
+.splash-landing > section .splash-footer-link {
   border-radius: 1000px;
   position: fixed;
   z-index: 99;
@@ -1012,44 +1012,43 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
-.splash-landing > section .essay-footer-link#essay-footer-support {
+.splash-landing > section .splash-footer-link#splash-footer-support {
   left: 15px;
 }
 
-.splash-landing > section .essay-footer-link#essay-footer-support:before {
+.splash-landing > section .splash-footer-link#splash-footer-support:before {
   right: -20px;
   border-right-color: rgba(255, 255, 255, 0.9);
 }
 
-.splash-landing > section .essay-footer-link#essay-footer-support:after {
+.splash-landing > section .splash-footer-link#splash-footer-support:after {
   content: "Support";
   right: -108px;
 }
 
-.splash-landing > section .essay-footer-link#essay-footer-top {
+.splash-landing > section .splash-footer-link#splash-footer-top {
   right: 15px;
 }
 
-.splash-landing > section .essay-footer-link#essay-footer-top:before {
+.splash-landing > section .splash-footer-link#splash-footer-top:before {
   left: -20px;
   border-left-color: rgba(255, 255, 255, 0.9);
 }
 
-.splash-landing > section .essay-footer-link#essay-footer-top:after {
+.splash-landing > section .splash-footer-link#splash-footer-top:after {
   content: "Back to Top";
   left: -130px;
 }
 
-.splash-landing > section .essay-footer-link svg {
+.splash-landing > section .splash-footer-link svg {
   fill: none;
-  stroke: #E5753C;
+  stroke: #69B3A5;
   stroke-width: 7px;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.splash-landing > section .essay-footer-link:before,
-.splash-landing > section .essay-footer-link:after {
+.splash-landing > section .splash-footer-link:before, .splash-landing > section .splash-footer-link:after {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -1066,14 +1065,14 @@
   transform: translateY(-50%);
 }
 
-.splash-landing > section .essay-footer-link:before {
+.splash-landing > section .splash-footer-link:before {
   content: "";
   width: 0;
   height: 0;
   border: 10px solid transparent;
 }
 
-.splash-landing > section .essay-footer-link:after {
+.splash-landing > section .splash-footer-link:after {
   padding: 10px 15px;
   background: rgba(255, 255, 255, 0.9);
   font-size: 14px;
@@ -1082,23 +1081,21 @@
   color: #40484B;
 }
 
-.splash-landing > section .essay-footer-link:hover, .splash-landing > section .essay-footer-link:focus {
-  background: #eb9569;
+.splash-landing > section .splash-footer-link:hover, .splash-landing > section .splash-footer-link:focus {
+  background: #8bc4b9;
 }
 
-.splash-landing > section .essay-footer-link:hover:before,
-.splash-landing > section .essay-footer-link:hover:after, .splash-landing > section .essay-footer-link:focus:before,
-.splash-landing > section .essay-footer-link:focus:after {
+.splash-landing > section .splash-footer-link:hover:before, .splash-landing > section .splash-footer-link:hover:after, .splash-landing > section .splash-footer-link:focus:before, .splash-landing > section .splash-footer-link:focus:after {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-.splash-landing > section .essay-footer-link:hover svg, .splash-landing > section .essay-footer-link:focus svg {
+.splash-landing > section .splash-footer-link:hover svg, .splash-landing > section .splash-footer-link:focus svg {
   stroke: white;
 }
 
-.splash-landing > section .essay-footer-link:active {
-  background: #E5753C;
+.splash-landing > section .splash-footer-link:active {
+  background: #69B3A5;
 }
 
 .splash-landing > section .arrow-down-next {
@@ -1129,22 +1126,20 @@
 .splash-landing > section button {
   max-width: 300px;
   background: white;
-  color: #E5753C;
+  color: #69B3A5;
   font-weight: 700;
   text-transform: capitalize;
 }
 
-.splash-landing > section button:hover,
-.splash-landing > section button:focus {
+.splash-landing > section button:hover, .splash-landing > section button:focus {
   filter: alpha(opacity=100);
   opacity: 1;
-  background: #50A5DD;
+  background: #69B3A5;
   color: white;
 }
 
-.splash-landing > section button:active,
-.splash-landing > section button.activated {
-  background: #E5753C;
+.splash-landing > section button:active, .splash-landing > section button.activated {
+  background: #e6389b;
 }
 
 .splash-landing > section .main {
@@ -1185,7 +1180,7 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  background: #F1F1F1 url("https://uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center/cover;
+  background: #F1F1F1;
   text-align: center;
 }
 
@@ -6476,351 +6471,6 @@
 
 #apply section#apply-perks .main #apply-table .apply-book:nth-child(5) .apply-label {
   color: #7bbbe5;
-}
-
-/* ---------- DISCOVER */
-#discover {
-  background: #F1F1F1;
-  color: #40484B;
-}
-
-#discover header {
-  position: relative;
-  height: 40%;
-  background: #40484B;
-}
-
-#discover header #discover-banner {
-  filter: alpha(opacity=40);
-  opacity: 0.4;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center center;
-  background-size: cover;
-}
-
-#discover header #discover-banner-color {
-  filter: alpha(opacity=20);
-  opacity: 0.2;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#discover header h1 {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  height: calc(100% - 102px);
-  color: white;
-  font-size: 60px;
-  font-weight: 700;
-  text-align: center;
-  text-transform: none;
-}
-
-#discover header #discover-search {
-  position: relative;
-  padding: 15px;
-}
-
-#discover header #discover-search .input-field {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0;
-}
-
-#discover header #discover-search .input-field .prefix {
-  top: 24px;
-  padding-right: 12px;
-}
-
-#discover header #discover-search .input-field .prefix svg {
-  fill: none;
-  stroke: white;
-  stroke-width: 4px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-#discover header #discover-search .input-field input {
-  height: 72px;
-  margin-bottom: 0;
-}
-
-#discover header #discover-search .input-field input::-webkit-input-placeholder {
-  color: white;
-}
-
-#discover header #discover-search .input-field input:-moz-placeholder {
-  color: white;
-}
-
-#discover header #discover-search .input-field input::-moz-placeholder {
-  color: white;
-}
-
-#discover header #discover-search .input-field input:-ms-input-placeholder {
-  color: white;
-}
-
-#discover header #discover-search .input-field input, #discover header #discover-search .input-field label {
-  color: white !important;
-  font-size: 32px !important;
-}
-
-#discover header #discover-search #discover-search-color {
-  filter: alpha(opacity=70);
-  opacity: 0.7;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#discover > div {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  height: 60%;
-}
-
-#discover > div > div {
-  padding: 15px;
-  height: 100%;
-  text-align: center;
-}
-
-#discover > div > div h1 {
-  padding: 15px;
-  font-size: 32px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-#discover > div #discover-courses {
-  width: calc(100% / 3 * 2);
-  padding-right: 7.5px;
-}
-
-#discover > div #discover-courses > ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  margin: -7.5px;
-  height: calc(100% - 53px);
-}
-
-#discover > div #discover-courses > ul > li {
-  width: calc(100% / 3);
-  height: 50%;
-  padding: 7.5px;
-}
-
-#discover > div #discover-courses > ul > li h2 {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  height: 60%;
-  background: #40484B;
-  font-size: 36px;
-  font-weight: 600;
-  color: white;
-}
-
-#discover > div #discover-courses > ul > li ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  height: 40%;
-  padding: 1px;
-}
-
-#discover > div #discover-courses > ul > li ul li {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  height: 100%;
-  width: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid #40484B;
-  color: white;
-  font-size: 18px;
-  font-weight: 400;
-}
-
-#discover > div #discover-courses > ul > li ul li svg {
-  fill: none;
-  stroke: white;
-  stroke-width: 4px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  margin-top: 5px;
-  display: block;
-  width: 100%;
-  height: 30px;
-}
-
-#discover > div #discover-courses > ul > li ul li span {
-  display: block;
-  margin-top: -10px;
-}
-
-#discover > div #discover-gurus {
-  width: calc(100% / 3);
-  padding-left: 7.5px;
-}
-
-#discover > div #discover-gurus h1 {
-  background: #40484B;
-  color: white;
-}
-
-#discover > div #discover-gurus > ul {
-  height: calc(100% - 68px);
-}
-
-#discover > div #discover-gurus > ul > li {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  height: calc(100% / 3);
-}
-
-#discover > div #discover-gurus > ul > li.discover-delivery {
-  background: #f08083;
-}
-
-#discover > div #discover-gurus > ul > li.discover-freelancing {
-  background: #eaa784;
-}
-
-#discover > div #discover-gurus > ul > li.discover-baking {
-  background: #f5d37f;
-}
-
-#discover > div #discover-gurus > ul > li.discover-photography {
-  background: #aecd9e;
-}
-
-#discover > div #discover-gurus > ul > li.discover-tech {
-  background: #93c3ce;
-}
-
-#discover > div #discover-gurus > ul > li.discover-household {
-  background: #9c98e7;
-}
-
-#discover > div #discover-gurus > ul > li.discover-athletic {
-  background: #b488d2;
-}
-
-#discover > div #discover-gurus > ul > li.discover-academic {
-  background: #ea82bd;
-}
-
-#discover > div #discover-gurus > ul > li h2 {
-  padding-top: 5px;
-  width: 100%;
-  color: white;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-#discover > div #discover-gurus > ul > li ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  padding: 7.5px;
-}
-
-#discover > div #discover-gurus > ul > li ul li {
-  padding: 7.5px;
-  width: calc(100% / 3);
 }
 
 /* ---------- PRICING */

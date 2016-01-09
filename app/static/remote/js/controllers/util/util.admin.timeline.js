@@ -40,7 +40,7 @@ angular.module('uguru.util.controllers')
 		$scope.timeline = {
 		    "version": 0.1,
 		    "audiences": ["general", "gurus", "students"],
-		    "threads": ["design + UX", "cleanup", "responsive", "data", "functionality", "marketing", "content"],
+		    "threads": ["design + UX", "cleanup", "responsive", "data", "functionality", "marketing", "content", "testing"],
 		    "threads_detailed": { //sheet specific
 		        "design + UX": {
 		            "owner": "Jeselle",
@@ -244,6 +244,39 @@ angular.module('uguru.util.controllers')
 		                    	name: "Samir"
 		                    }
 		            	}
+		            ]
+		        },
+		        "testing": {
+		        	"owner": "Jason",
+		            "todo": [
+		            	{
+		                	"title": "Home Page Workflow",
+		                    "description": "Here is the test cases to implement. This is just a mental list don't format it in the order below -- its just a list to communicate to you. Let me know if this description doesn't make sense.",
+		                    "checklist": [
+		                    	{item: "Search 'Berkeley' and select Berkeley", complete:false },
+		                    	{item: "Verify page has changed", complete:false },
+		                    	{item: "Repeat + setup for 10 universities", complete:false },
+		                        {item: "Click side menu, open + close (nothing else)", complete:false },
+		                    ],
+		                    "assignee": {
+		                    	name: "Jason"
+		                    }
+		            	},
+		            	{
+		                	"title": "University specific workflow",
+		                    "description": "When you get to /university/{{university.id}}, here are the things you should test",
+		                    "checklist": [
+		                    	{item: "Main Section: Nav bar, sidebar, all the top right links work", complete:false },
+		                    	{item: "Browse Section -> Courses: Create celery table, test 10 different inputs", complete:false },
+		                    	{item: "Browse Section -> Gurus: Click each guru + make sure CTA with full profile", complete:false },
+		                    	{item: "Browse Section -> Categorys: Make sure each clicks and shows all the options", complete:false },
+		                    	{item: "How it works -> Make sure all elements exist", complete:false },
+		                    	{item: "How it works -> Become a Guru", complete:false },
+		                    ],
+		                    "assignee": {
+		                    	name: "Jason"
+		                    }
+		            	},
 		            ]
 		        }
 		    }

@@ -18,6 +18,21 @@
         position: relative;
         z-index: 2;
     }
+    .splash-footer-link svg {
+        stroke: {{university.school_color_one}}!important;
+    }
+    .splash-footer-link:hover, .splash-footer-link:focus {
+        background: {{university.school_color_one}}!important;
+    }
+    .splash-footer-link:hover svg, .splash-footer-link:focus svg {
+        stroke: white!important;
+    }
+    .splash-footer-link:active {
+        background: white!important;
+    }
+    .splash-footer-link:active svg {
+        stroke: {{university.school_color_one}}!important;
+    }
     .border-university {
         border-color: {{university.school_color_one}}!important;
     }
@@ -29,10 +44,14 @@
         color: {{university.school_color_one}} !important;
     }
     .splash-hero, .splash-categories > header {
-        background: url('{{user.university.banner_url}}') center center / cover!important;
+        background: {{university.school_color_one}} url('{{user.university.banner_url}}') center center / cover!important;
     }
     button.bg-university:hover, button.bg-university:focus {
         background: white!important;
-        color: {{university.school_color_one}} !important;
+        color: {{university.school_color_one}}!important;
+    }
+    button.bg-university:active {
+        background: {{university.school_color_one}}!important;
+        color: white!important;
     }
 </style>

@@ -1,7 +1,7 @@
 <!--1. Read all @gabrielle comments-->
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
-<div ng-include="img_base + BASE + 'templates/one.university.style.html'"></div>
+<div ng-include="page.universityStyleUrl"></div>
 <ion-content on-scroll='checkPosition()' scroll-event-interval="250" zooming="false" >
 	<ion-view class='bg-smoke'>
 		<!-- <ion-content> -->
@@ -91,17 +91,17 @@
                 <div class="tab-bar bg-university">
                     <ul>
                         <li>
-                            <a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Categories</a>
+                            <a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex===0}">Categories</a>
                         </li>
                         <li>
-                            <a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">Gurus</a>
+                            <a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex===1}">Gurus</a>
                         </li>
                         <li>
-                            <a ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex === 2}">Courses</a>
+                            <a ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex===2}">Courses</a>
                         </li>
                     </ul>
                 </div>
-				<div id="splash-categories" class="main ng-class:{'active':activeTabIndex === 0}" ng-controller="CategoriesController">
+				<div id="splash-categories" class="main ng-class:{'active':activeTabIndex===0}" ng-controller="CategoriesController">
                     <div>
                         <h1>{{university.short_name}}'s Guru Categories</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
@@ -130,7 +130,7 @@
                         </div>
                     </div>
 				</div>
-                <div id="splash-gurus" class="main ng-class:{'active':activeTabIndex === 1}">
+                <div id="splash-gurus" class="main ng-class:{'active':activeTabIndex===1}">
                     <div>
                         <h1>{{university.short_name}}'s Top Gurus</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
@@ -165,7 +165,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="splash-courses" class="main ng-class:{'active':activeTabIndex === 2}" ng-controller="CoursesController">
+                <div id="splash-courses" class="main ng-class:{'active':activeTabIndex===2}" ng-controller="CoursesController">
                     <div>
                         <form>
                             <div class="input-field large">
