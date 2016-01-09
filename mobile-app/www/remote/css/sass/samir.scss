@@ -474,3 +474,13 @@ body.platform-ios #mobile-guru-home {
 ul#guru-courses-user-profile {
 	display:block!important;
 }
+
+//**university specific
+
+#cta-modal-sidebar {
+	z-index:100;
+	width:calc(43%) !important;
+	left:-10%;
+	position:absolute;
+}
+//end university specific

@@ -9,7 +9,7 @@ angular
 function GMapService() {
 
 
-  var initMapObj = function(university) {
+  var initMapObj = function(university, arg_options) {
 
 
     var dragEndMap = function(maps, event_name, drag_options) {
@@ -22,8 +22,7 @@ function GMapService() {
 
     var latitude = parseFloat(university.latitude);
     var longitude = parseFloat(university.longitude);
-	console.log(latitude, longitude);
-    return  {
+    var optionsDict = {
                   center:  {latitude: latitude, longitude:longitude },
                   zoom: 16,
                   pan: false,
@@ -37,9 +36,20 @@ function GMapService() {
                     zoomControl:false,
                     minZoom: 15,
                     maxZoom: 17,
+                    scrollwheel: false,
                     mapTypeControl:false
                   }
             };
+
+      if (arg_options) {
+        optionsDict.options.minZoom = arg_options.minZoom;
+        optionsDict.options.maxZoom = arg_options.maxZoom;
+        optionsDict.zoom = arg_options.zoom;
+        optionsDict.options.draggable = arg_options.draggable;
+        optionsDict.options.disableDoubleClickZoom = arg_options.disableDoubleClickZoom;
+      }
+
+      return optionsDict;
   }
 
 
