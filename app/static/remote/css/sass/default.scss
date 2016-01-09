@@ -3966,6 +3966,7 @@ input[type=range] {
 	.pf-card-top {
 		position: relative;
 		background: $shamrock;
+		border-radius: 2px;
 		height: 100px;
 		ul {
 			@include listless;
@@ -3988,6 +3989,7 @@ input[type=range] {
 						@include flex-center-vertical;
 						position: relative;
 						background: white;
+						border-top-right-radius: 2px;
 						padding: 10px 15px 10px 0;
 						height: 40px;
 						color: $shamrock;
@@ -4121,7 +4123,7 @@ input[type=range] {
 		}
 	}
 }
-.pf-card-photo {
+.pf-card-photography {
 	.pf-card-top {
 		background: $moola;
 		ul {
@@ -5025,6 +5027,85 @@ input[type=range] {
 			a {
 				height: 87px;
 			}
+		}
+	}
+}
+
+// Large Search
+.input-field.large {
+	.prefix {
+		top: 4px;
+		svg {
+			@include svg-stroke($slate, 5);
+			stroke: $slate!important;
+			width: 100%;
+			height: 100%;
+			padding: 10px;
+		}
+	}
+	.desktop-input-close-icon {
+		z-index: 3;
+		top: 25%;
+		@media screen and (min-width: 768px) {
+			top: 50%;
+			margin: -10px -20px -10px 0!important;
+			.icon {
+				font-size: 20px!important;
+			}
+		}
+		.txt-white {
+			color: $slate!important;
+		}
+	}
+	input, label {
+		border-color: rgba($slate, .5)!important;
+		color: $slate!important;
+		@media screen and (min-width: 768px) {
+			text-align: center!important;
+		}
+	}
+	input {
+		padding-right: 48px;
+		z-index: 2;
+		margin-bottom: 0;
+		@include placeholder {
+			color: $slate;
+		}
+		&:focus {
+			border-color: $slate!important;
+			box-shadow: 0 1px 0 0 $slate!important;
+		}
+	}
+	label {
+		width: calc(100% - 48px);
+		padding-right: 48px;
+		z-index: 1;
+		span.selected-school, span.selected-course {
+			font-weight: 600;
+		}
+		&.active {
+			@include opacity-important(0);
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.input-field.large {
+		.prefix {
+			top: 24px;
+			padding-right: 12px;
+			svg {
+				@include svg-stroke(white, 7);
+				padding: 0;
+			}
+		}
+		input {
+			height: 72px;
+		}
+		input, label {
+			font-size: 32px!important;
+		}
+		label.active {
+			font-size: 20px!important;
 		}
 	}
 }

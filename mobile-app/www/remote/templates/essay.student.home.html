@@ -6,8 +6,8 @@
 <ion-content on-scroll='checkPosition()' scroll-event-interval="250">
 <ion-view class='bg-smoke'>
     <!-- <ion-content> -->
-    <main id='essay-student-home' class='hs-view full-xy'>
-        <header id='essay-home-banner' class='hide ng-class:{"show":becomeGuruHeaderActive}'>
+    <main id='essay-splash' class='splash-landing hs-view full-xy'>
+        <header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
             <div>
                 <h1>Are you a college student? Help future college students <span class='weight-900'>now</span>!</h1>
             </div>
@@ -18,7 +18,7 @@
                 </svg>
             </a>
         </header>
-        <header id='essay-header' class='ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
+        <header class='splash-header ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
             <a ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-hs.html'"></a>
             <a name='price-scroll' ng-click='scrollToSection("#essay-pricing")'>Pricing</a>
             <a name='how-scroll' ng-click='scrollToSection("#essay-how-it-works")'>How It Works</a>
@@ -34,8 +34,8 @@
                 </a>
             </div>
         </header>
-        <section class='essay-splash relative' id='essay-home'>
-            <div class='essay-home-content-header'>
+        <section class='splash-hero relative' id='essay-home'>
+            <div>
                 <h1 id='main-text'>
                     Instant college app help from <br/><span class='weight-900'><u>{{university.name}}</u></span> student gurus
                 </h1>

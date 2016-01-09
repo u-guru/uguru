@@ -165,13 +165,17 @@ angular.module('uguru.util.controllers')
 
 
       uiGmapGoogleMapApi.then(function(maps) {
+        console.log('maps completed');
+        $timeout(function() {
+                $scope.$apply();
+        })
         maps.visualRefresh = true;
 
         // $scope.$on('$ionicView.loaded', function() {
 
           $scope.searchbox = initSearchboxGMap();
 
-          SearchboxService.initAutocomplete({lat:$scope.user.university.latitude, lng:$scope.user.university.longitude})
+        //   SearchboxService.initAutocomplete({lat:$scope.user.university.latitude, lng:$scope.user.university.longitude})
 
         // })
 
@@ -179,10 +183,10 @@ angular.module('uguru.util.controllers')
       });
     }
     $scope.root.vars.initRequestMap = initRequestMap;
-    // $timeout(function() {
+    $timeout(function() {
 
-    //   $scope.root.vars.initRequestMap();
-    // }, 1000)
+      $scope.root.vars.initRequestMap();
+  }, 5000)
 
     $scope.slideHasChanged = function($index) {
       if ($index > $scope.requestProgress.value - 1) {
