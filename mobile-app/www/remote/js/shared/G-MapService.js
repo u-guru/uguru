@@ -22,6 +22,7 @@ function GMapService() {
 
     var latitude = parseFloat(university.latitude);
     var longitude = parseFloat(university.longitude);
+	console.log(latitude, longitude);
     return  {
                   center:  {latitude: latitude, longitude:longitude },
                   zoom: 16,

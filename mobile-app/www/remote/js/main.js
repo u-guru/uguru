@@ -125,6 +125,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/university.html',
         controller: 'AddUniversityCtrl'
   }).
+  
+  state('root.team', {
+        url: '/team',
+        templateUrl: BASE + 'templates/team.html'
+  }).
 
   //start essay
   state('root.essay-student-university', {
