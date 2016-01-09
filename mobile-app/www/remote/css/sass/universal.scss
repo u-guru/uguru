@@ -655,7 +655,7 @@
 				background: white;
 				color: $cerise;
 			}
-			&:first-child {
+			&.splash-logo {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -690,6 +690,31 @@
 						}
 						text {
 							fill: $smoke;
+						}
+					}
+				}
+			}
+			&.splash-burger {
+				position: absolute;
+				top: 0;
+				left: 179px;
+				height: 100%;
+				svg {
+					height: 100%;
+					width: auto;
+					circle, path {
+						@include transition(.15s ease-in-out);
+						@include svg-stroke(white, 4);
+					}
+				}
+				&:hover, &:focus {
+					background: none;
+					svg {
+						circle {
+							fill: white;
+						}
+						path {
+							stroke: $slate;
 						}
 					}
 				}

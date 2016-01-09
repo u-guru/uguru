@@ -25,8 +25,8 @@
 				</a>
 			</header>
 			<header class='splash-header ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
-                <a ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
-                <a ng-click='page.sidebar.show = !page.sidebar.show;'>
+                <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+                <a class="splash-burger" ng-click="toggleSidebar()">
                     <svg viewBox="0 0 100 100">
                         <circle cx="50" cy="50" r="36"></circle>
                         <path d="M31,35.5 L69,35.5"></path>
@@ -36,8 +36,8 @@
                 </a>
                 
                 <a ng-click='scrollToSection("#how-it-works")'>How It Works</a>
+                <a ng-click='scrollToSection("#splash-categories")'>Browse</a>
                 <a ng-click='scrollToSection("#live-map")'>Live</a>
-                <a ng-click='scrollToSection("#browse-categories")'>Browse</a>
                 <a ng-click='scrollToSection("#become-guru")'>Apply Guru</a>
                 <a class="active university-txt" ng-click='goToUniversity()'>Student Portal</a>
 

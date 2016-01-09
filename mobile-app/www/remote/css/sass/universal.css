@@ -787,7 +787,7 @@
   color: #e6389b;
 }
 
-.splash-landing > header a:not(.header-close):first-child {
+.splash-landing > header a:not(.header-close).splash-logo {
   position: absolute;
   top: 0;
   left: 0;
@@ -795,12 +795,12 @@
   padding: 15px 15px 5px;
 }
 
-.splash-landing > header a:not(.header-close):first-child svg {
+.splash-landing > header a:not(.header-close).splash-logo svg {
   display: block;
   height: 100%;
 }
 
-.splash-landing > header a:not(.header-close):first-child svg path {
+.splash-landing > header a:not(.header-close).splash-logo svg path {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -808,32 +808,69 @@
   transition: all 0.15s ease-in-out;
 }
 
-.splash-landing > header a:not(.header-close):first-child svg path:first-child {
+.splash-landing > header a:not(.header-close).splash-logo svg path:first-child {
   fill: rgba(255, 255, 255, 0.8);
 }
 
-.splash-landing > header a:not(.header-close):first-child svg path:last-child {
+.splash-landing > header a:not(.header-close).splash-logo svg path:last-child {
   fill: white;
 }
 
-.splash-landing > header a:not(.header-close):first-child svg text {
+.splash-landing > header a:not(.header-close).splash-logo svg text {
   fill: white;
 }
 
-.splash-landing > header a:not(.header-close):first-child:hover, .splash-landing > header a:not(.header-close):first-child:focus {
+.splash-landing > header a:not(.header-close).splash-logo:hover, .splash-landing > header a:not(.header-close).splash-logo:focus {
   background: none !important;
 }
 
-.splash-landing > header a:not(.header-close):first-child:hover svg path:first-child, .splash-landing > header a:not(.header-close):first-child:focus svg path:first-child {
+.splash-landing > header a:not(.header-close).splash-logo:hover svg path:first-child, .splash-landing > header a:not(.header-close).splash-logo:focus svg path:first-child {
   fill: white;
 }
 
-.splash-landing > header a:not(.header-close):first-child:hover svg path:last-child, .splash-landing > header a:not(.header-close):first-child:focus svg path:last-child {
+.splash-landing > header a:not(.header-close).splash-logo:hover svg path:last-child, .splash-landing > header a:not(.header-close).splash-logo:focus svg path:last-child {
   fill: rgba(255, 255, 255, 0.8);
 }
 
-.splash-landing > header a:not(.header-close):first-child:hover svg text, .splash-landing > header a:not(.header-close):first-child:focus svg text {
+.splash-landing > header a:not(.header-close).splash-logo:hover svg text, .splash-landing > header a:not(.header-close).splash-logo:focus svg text {
   fill: #F1F1F1;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger {
+  position: absolute;
+  top: 0;
+  left: 179px;
+  height: 100%;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger svg {
+  height: 100%;
+  width: auto;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger svg circle, .splash-landing > header a:not(.header-close).splash-burger svg path {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  fill: none;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger:hover, .splash-landing > header a:not(.header-close).splash-burger:focus {
+  background: none;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger:hover svg circle, .splash-landing > header a:not(.header-close).splash-burger:focus svg circle {
+  fill: white;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger:hover svg path, .splash-landing > header a:not(.header-close).splash-burger:focus svg path {
+  stroke: #40484B;
 }
 
 .splash-landing .splash-toast {
