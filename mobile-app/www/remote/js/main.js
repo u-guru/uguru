@@ -21,13 +21,17 @@ if (LOCAL) {
 }
 
 
+if (window.location.href.indexOf('hs.uguru') > -1) {
+  _startpage = 'essay-home';
+}
+
 
 var tracker = 'lo';
 var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate',  'ngFx','uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic',
   'angularMoment','ngOpenFB', 'fox.scrollReveal', 'uiGmapgoogle-maps'])
@@ -170,6 +174,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/university-container',
         templateUrl: BASE + 'templates/university.container.html',
         controller: 'AddUniversityController'
+  }).
+  state('root.admin', {
+        url: '/admin',
+        templateUrl: BASE + 'templates/admin/admin.html',
+        controller: 'AdminTimelineController'
   }).
   state('root.majors-container', {
         url: '/majors-container',
@@ -372,8 +381,13 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'PublicProfileController'
   }).
   state('root.universities', {
-        url: '/universities/:universityId',
+        url: '/university/:universityId',
         templateUrl: BASE + 'templates/one.university.html',
+        controller: 'OneUniversityController'
+  }).
+  state('root.universities-admin', {
+        url: '/university/:universityId/admin',
+        templateUrl: BASE + 'templates/one.university.admin.html',
         controller: 'OneUniversityController'
   }).
   state('root.cashout', {

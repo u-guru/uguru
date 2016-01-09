@@ -1402,39 +1402,15 @@
 	#course {
 		background: white;
 		header {
-			color: $charcoal;
-			background: $beige;
+			color: white;
+			background: $lake;
+			h1 {
+				font-size: 28px!important;
+				text-transform: lowercase!important;
+			}
 			svg {
 				path {
-					stroke: $charcoal;
-				}
-			}
-			.onboarding-search {
-				.clear-search-input {
-					position: absolute;
-					right: 0;
-					top: 20px;
-					right: 10px;
-					color: rgba($charcoal,.7);
-					padding: 0;
-				}
-				input {
-					border-bottom: 1px solid rgba($charcoal,.5);
-					color: $charcoal;
-					@include placeholder {
-						color: rgba($charcoal,.5);
-					}
-				}
-				input:active,
-				input:focus {
-					border-bottom-color: $charcoal;
-					@include placeholder {
-						color: $charcoal;
-					}
-				}
-				&:before {
-					background: url("../../img/svg/search-dark.svg") no-repeat center center / cover,
-					url("/static/remote/img/svg/search-dark.svg") no-repeat center center / cover;
+					stroke: white;
 				}
 			}
 		}
@@ -1444,18 +1420,18 @@
 			li {
 				label {
 					background: $smoke;
-					color: $charcoal;
-					border-color: $campus;
+					color: $slate;
+					border-color: $lake;
 				}
 				input:checked + label {
-					background: $campus;
+					background: $lake;
 					border-color: rgba(white,.4)!important;
 				}
 				input:active + label {
-					background: rgba($campus,.2);
+					background: rgba($lake,.2);
 				}
 				input:checked:active + label {
-					background: $campus;
+					background: $lake;
 				}
 			}
 		}

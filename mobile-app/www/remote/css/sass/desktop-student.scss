@@ -15,7 +15,9 @@
 				ul {
 					li {
 						a {
-							&:hover, &:active, &:focus {
+							&:hover,
+							&:active,
+							&:focus {
 								span {
 									color: $lake;
 								}
@@ -106,7 +108,8 @@
 									font-weight: 600;
 								}
 							}
-							a:hover, a:focus {
+							a:hover,
+							a:focus {
 								.notification-icon svg {
 									background: lighten($lake, 10%);
 								}
@@ -143,7 +146,9 @@
 					width: 100%;
 					height: 100%;
 					z-index: 5;
-					h1, h2, h3 {
+					h1,
+					h2,
+					h3 {
 						color: white;
 						font-weight: 700;
 					}
@@ -171,7 +176,8 @@
 					}
 				}
 			}
-			.home-tiles-quick, .home-tiles-request {
+			.home-tiles-quick,
+			.home-tiles-request {
 				height: 100%;
 				width: calc(100% / 3 * 2);
 				padding: 7.5px;
@@ -193,7 +199,8 @@
 					}
 				}
 			}
-			.home-tiles-become, .home-tiles-courses {
+			.home-tiles-become,
+			.home-tiles-courses {
 				height: 100%;
 				width: calc(100% / 3);
 				padding: 7.5px;
@@ -239,6 +246,57 @@
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+}
+#desktop-courses.student-mode {
+	.input-field {
+		.prefix {
+			svg {
+				stroke: $slate;
+			}
+		}
+		input {
+			color: $slate;
+		}
+	}
+	.desktop-header {
+		a {
+			svg {
+				stroke: $slate!important;
+			}
+		}
+	}
+	.desktop-search-header {
+		color: $slate;
+	}
+	.desktop-card-list {
+		li {
+			a {
+				background: rgba($slate,.1);
+				border-bottom: 10px solid rgba(white,.7);
+				&:hover {
+					background: $lake;
+					span {
+						color: white;
+					}
+				}
+			}
+			a svg, label svg {
+				background: white;
+				path {
+					stroke: $lake;
+				}
+			}
+		}
+		.selected {
+			a {
+				background: $lake;
+				border-color: white;
+				span {
+					color: white;
 				}
 			}
 		}

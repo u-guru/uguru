@@ -8,7 +8,7 @@ angular
     ]);
 
 function LoadingService($rootScope, $ionicLoading, $timeout) {
-
+    var loadingDiv;
 	return {
 		show: show,
 		showAmbig: showAmbig,
@@ -25,20 +25,36 @@ function LoadingService($rootScope, $ionicLoading, $timeout) {
         });
     }
 
-    function showMsg(message, duration, callback) {
+    function showMsg(message, duration, callback, _class) {
         if (duration <= 3000 && message && message.length > 20)  {
             duration = 3000;
         }
+
+        $timeout(function() {
+            loadingDiv = document.querySelector('.loading');
+            loadingDiv && loadingDiv.classList.add('animated', 'bounceInUp');
+        }, 100)
+
         $ionicLoading.show({
             template: '<span id="E2E-msg" class="capitalized">' + message + '</span>',
             duration: duration || 3000,
         });
 
-        if (typeof callback !== 'undefined') {
-            $timeout(function() {
+        $timeout(function() {
+            if (callback && typeof callback !== 'undefined') {
                 callback();
-            }, duration)
-        }
+            }
+        }, duration);
+
+        $timeout(function() {
+            if (loadingDiv) {
+                loadingDiv.classList.remove('animated', 'bounceInUp');
+                loadingDiv.classList.add('animated', 'bounceOutDown');
+                $timeout(function() {
+                    loadingDiv.classList.remove('animated', 'bounceOutDown');
+                }, 2000)
+            }
+        }, duration - 750);
     }
 
     function showAmbig(text, duration, callback) {

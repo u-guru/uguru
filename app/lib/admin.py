@@ -8,14 +8,14 @@ admin_info = {
         'university': 'UC Berkeley',
         'role': 'Founding Guru'
     },
-    'ben@uguru.me': {
-        'name': 'Ben Dalal',
-        'profile_url': '/static/web/images/team/ben.png',
-        'about': 'I aggregate dish washer data',
-        'location': 'El Cerrito, CA',
-        'university': 'Berkeley City College',
-        'role': 'Data Guru'
-    },
+    # 'ben@uguru.me': {
+    #     'name': 'Ben Dalal',
+    #     'profile_url': '/static/web/images/team/ben.png',
+    #     'about': 'I aggregate dish washer data',
+    #     'location': 'El Cerrito, CA',
+    #     'university': 'Berkeley City College',
+    #     'role': 'Data Guru'
+    # },
     'gabrielle@uguru.me': {
         'name': 'Gabrielle Wee',
         'profile_url': '/static/web/images/team/gabrielle.png',

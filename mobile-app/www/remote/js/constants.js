@@ -1,4 +1,4 @@
 var _local = "true";
-var _startpage = "essay-student-home-desktop";
-var _ipaddress = "192.168.0.102";
-var _autoredirects = true;
+var _startpage = "student-home";
+var _ipaddress = "192.168.42.120";
+var _autoredirects = "false";

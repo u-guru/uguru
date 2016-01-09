@@ -57,6 +57,8 @@ angular.module('uguru.util.controllers')
       //  }
     }
 
+
+
     ngFB.init({appId: '1416375518604557'});
 
     $scope.ngFBlogin = function() {
@@ -77,6 +79,14 @@ angular.module('uguru.util.controllers')
       ModalService.open(modalName, $scope);
      }
     };
+
+    $scope.signupOnEnter = function() {
+      if ($scope.root.vars.loginMode) {
+        $scope.loginUser();
+      } else {
+        $scope.completeSignup();
+      }
+    }
 
     $scope.closeModal = function(modalName) {
      if (!$scope.desktopMode && !$state.current.name == 'root.university') {

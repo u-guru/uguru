@@ -44,7 +44,16 @@ angular.module('uguru.student.controllers', [])
                         $timeout(function() {
                             modal_elem.classList.add('show');
                             $ionicSlideBoxDelegate.update();
+
                         }, 200);
+
+                        if (box_elem.id === 'cta-box-student-request') {
+                            console.log('initializing that damn map');
+                            $timeout(function() {
+                                $scope.root.vars.initRequestMap();
+                            }, 1000)
+                        }
+
                           var close_icon = modal_elem.querySelector('.cta-modal-close');
                           if (close_icon) {
                               close_icon.addEventListener('click', function() {
@@ -66,6 +75,8 @@ angular.module('uguru.student.controllers', [])
             for (var i = 0; i < allCTABoxes.length; i++) {
                 var indexCTABox = allCTABoxes[i];
                 var indexCTAModalID = getModalCTAElemID(indexCTABox);
+
+
                 addEventListenerToCTABox(indexCTABox, indexCTAModalID, i)
 
             }

@@ -24,13 +24,17 @@ angular.module('uguru.student.controllers')
   '$ionicSideMenuDelegate',
   'LoadingService',
   'RequestService',
+  'ContentService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicTabsDelegate, $stateParams,
   $ionicNavBarDelegate, Geolocation, $ionicPosition, $cordovaDialogs, $cordovaGeolocation,
   $ionicHistory, CordovaPushWrapper, $ionicPlatform, User, $ionicViewSwitcher, $ionicSideMenuDelegate, LoadingService,
-  RequestService) {
+  RequestService, ContentService) {
     $scope.isRequestFormComplete = false;
+    
+    $ionicSideMenuDelegate.canDragContent(false);
 
+    $scope.honorPledgeArr = ContentService.honorPledge;
 
     $scope.request = RequestService.initSample();
 
