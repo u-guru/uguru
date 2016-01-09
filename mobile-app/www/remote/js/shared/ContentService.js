@@ -164,7 +164,7 @@ function ContentService() {
               icon: "https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/136434.svg?Expires=1452346781&Signature=XHvIEw8pDw4Vhg6IZyEBf6b0sdgJAES~RTwxXPP-OEWaZhltzurLkFh6KdPWho4KLsx~UAdV53kNVLu9NX5pcOxrCg3cjQaImlFdIIXnWq8Am2PIKGbcHzhJnDknu5QLCzaEJc-xD8mqk-wy7hNRWUAaKUx~ioHzHQGXLMZuPBA_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q",
               header: "24/7, Anytime, Anywhere",
               tag: null,
-              content: "Request course help @7am, or request a midnight snack at 11pm. Trust me, one of your peers " + ((university.name && ' ') || '') + 'is up',
+              content: "Request course help @7am, or request a midnight snack at 11pm. Trust me, one of your peers " + ((university && university.name && ' ') || '') + 'is up',
             },
             {
               icon: "https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/139071.svg?Expires=1452347225&Signature=V3nefdC-oWx1j2uH6KDrl6m6WAjbyo52B8HPGkYLrRTn6aEgsfvFZyLdQ2XHyJleNGzdMxxFVxjJD2yC2Am8WtlAs9UoFxYsdHCuC2yShQhCHz42zb1MmMjRCs3yKlEmI6ao8I6XFf~Mucv05SJxCXoxXYqLnPzgh--ldy8lluA_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q",

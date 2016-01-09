@@ -24,9 +24,9 @@ angular.module('uguru.util.controllers')
       ];
       var scrollDuration= 500;
       var shouldShowBecomeGuruHeader = false;
-
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
+      $scope.courses = [];
       $scope.activeTabIndex = 0;
       $scope.university = {}
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false}
@@ -35,8 +35,10 @@ angular.module('uguru.util.controllers')
 
       var university_id = $stateParams.universityId;
       $scope.university = {};
-      $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.user.university);
-      $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.user.university);
+      $timeout(function() {
+        $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
+        $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
+      }, 1000)
 
       var initMapFromUniversity = function(university) {
         var latitude = parseFloat(university.latitude);
@@ -48,6 +50,22 @@ angular.module('uguru.util.controllers')
                 };
       }
 
+      var pageLinks = [];
+      $scope.links = [];
+
+      $scope.toggleSidebar = function() {
+        $scope.page.sidebar.show=!$scope.page.sidebar.show;
+        if ($scope.page.sidebar.show) {
+          pageLinks = ['link 1', 'link 2', 'link 3', 'link 4'];
+          $scope.links = [];
+          $timeout(function() {$scope.links.push(pageLinks[0])}, 1000)
+          $timeout(function() {$scope.links.push(pageLinks[1])}, 1000)
+          $timeout(function() {$scope.links.push(pageLinks[2])}, 1000)
+          $timeout(function() {$scope.links.push(pageLinks[3])}, 1000)
+        } else {
+          $scope.links = [];
+        }
+      }
 
       $scope.queryAutocompleteFromSearch = function(query) {
 
@@ -65,7 +83,15 @@ angular.module('uguru.util.controllers')
 
         var success = function(universityObj) {
           $scope.university = universityObj;
-
+          $scope.root.vars.initRequestMap();
+          if (!LOCAL) {
+            $scope.page.universityStyleUrl = $scope.img_base + BASE + 'templates/one.university.style.html';
+          } else {
+            $scope.page.universityStyleUrl = $scope.img_base + 'templates/one.university.style.html';
+          }
+          $timeout(function() {
+            $scope.$apply();
+          })
 
           console.log('universityObj', universityObj)
         }
@@ -79,10 +105,10 @@ angular.module('uguru.util.controllers')
       }
 
     var initRequestMap = function() {
-      console.log($scope.user.university)
-      if ($scope.user.university) {
-        $scope.map = GMapService.initMapObj($scope.user.university, {zoom:15, disableDoubleClickZoom:true, draggable:false});
-        $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.user.university.latitude, longitude:$scope.user.university.longitude}};
+      console.log($scope.university)
+      if ($scope.university) {
+        $scope.map = GMapService.initMapObj($scope.university, {zoom:15, disableDoubleClickZoom:true, draggable:false});
+        $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.university.latitude, longitude:$scope.university.longitude}};
         $scope.map.events.dragend = function(maps, event_name, drag_options) {
           $scope.map.centerMarker.coords = {latitude: maps.center.G, longitude:maps.center.K};
           GUtilService.getNearestLocation($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
@@ -102,7 +128,7 @@ angular.module('uguru.util.controllers')
 
           $scope.searchbox = initSearchboxGMap();
 
-          SearchboxService.initAutocomplete({lat:$scope.user.university.latitude, lng:$scope.user.university.longitude})
+          // SearchboxService.initAutocomplete({lat:$scope.university.latitude, lng:$scope.university.longitude})
 
         // })
 
@@ -112,10 +138,6 @@ angular.module('uguru.util.controllers')
 
 
     $scope.root.vars.initRequestMap = initRequestMap;
-    $timeout(function() {
-
-      $scope.root.vars.initRequestMap();
-    }, 1000)
 
     var initSearchboxGMap = function() {
       // var events = { places_changed: function (searchBox) { processSearchBoxResults(searchBox); } }
