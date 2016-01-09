@@ -115,6 +115,34 @@ ion-view {
 		> header {
 			background: $orange;
 		}
+		&.splash-hero {
+			background: $smoke url("https://uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center / cover;
+		}
+		.splash-footer-link {
+			svg {
+				@include svg-stroke($orange, 7);
+			}
+			&:hover, &:focus {
+				background: lighten($orange, 10%);
+				svg {
+					stroke: white;
+				}
+			}
+			&:active {
+				background: $orange;
+			}
+		}
+		button {
+			background: white;
+			color: $orange;
+			&:hover, &:focus {
+				background: $lake;
+				color: white;
+			}
+			&:active, &.activated {
+				background: $orange;
+			}
+		}
 	}
 }
 
