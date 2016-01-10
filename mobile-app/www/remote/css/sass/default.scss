@@ -3892,6 +3892,7 @@ input[type=range] {
 }
 .pf-card-mini {
 	@include flex;
+	@include flex-wrap;
 	@include flex-center;
 	position: relative;
 	width: 50px;
@@ -3906,6 +3907,8 @@ input[type=range] {
 		width: 100%;
 		height: calc(100% / 3);
 		background: $shamrock;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
 	}
 	.user-icon {
 		position: relative;
@@ -3914,44 +3917,103 @@ input[type=range] {
 		height: 32px;
 		border-width: 3px;
 	}
+	&.large {
+		width: 96px;
+		height: 96px;
+		.pf-card-link {
+			@include transition(.15s ease-in-out);
+			@include opacity(0);
+			@include flex;
+			@include flex-center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 15;
+			background: $shamrock;
+			border-radius: 2px;
+			svg {
+				display: block;
+				width: 48px;
+				height: 48px;
+				path {
+					@include svg-stroke(white, 5);
+				}
+			}
+		}
+		&:hover, &:focus {
+			.pf-card-link {
+				@include opacity(1);
+			}
+		}
+		.user-icon {
+			width: 64px;
+			height: 64px;
+		}
+	}
 	&.pf-card-mini-delivery {
 		.user-icon, .pf-card-mini-banner {
 			background-color: $auburn;
+		}
+		&.large .pf-card-link {
+			background: rgba($auburn,.9);
 		}
 	}
 	&.pf-card-mini-freelancing {
 		.user-icon, .pf-card-mini-banner {
 			background-color: $orange;
 		}
+		&.large .pf-card-link {
+			background: rgba($orange,.9);
+		}
 	}
 	&.pf-card-mini-baking {
 		.user-icon, .pf-card-mini-banner {
 			background-color: $gold;
+		}
+		&.large .pf-card-link {
+			background: rgba($gold,.9);
 		}
 	}
 	&.pf-card-mini-photography {
 		.user-icon, .pf-card-mini-banner {
 			background-color: $moola;
 		}
+		&.large .pf-card-link {
+			background: rgba($moola,.9);
+		}
 	}
 	&.pf-card-mini-tech {
 		.user-icon, .pf-card-mini-banner {
 			background-color: $azure;
+		}
+		&.large .pf-card-link {
+			background: rgba($azure,.9);
 		}
 	}
 	&.pf-card-mini-household {
 		.user-icon, .pf-card-mini-banner {
 			background-color: $cobalt;
 		}
+		&.large .pf-card-link {
+			background: rgba($cobalt,.9);
+		}
 	}
 	&.pf-card-mini-athletic {
 		.user-icon, .pf-card-mini-banner {
 			background-color: $eggplant;
 		}
+		&.large .pf-card-link {
+			background: rgba($eggplant,.9);
+		}
 	}
 	&.pf-card-mini-academic {
 		.user-icon, .pf-card-mini-banner {
 			background-color: $cerise;
+		}
+		&.large .pf-card-link {
+			background: rgba($cerise,.9);
 		}
 	}
 }

@@ -39,7 +39,7 @@
                 <a ng-click='scrollToSection("#splash-categories")'>Browse</a>
                 <a ng-click='scrollToSection("#live-map")'>Live</a>
                 <a ng-click='scrollToSection("#become-guru")'>Apply Guru</a>
-                <a class="active university-txt" ng-click='goToUniversity()'>Student Portal</a>
+                <a class="active university-txt" ng-click='goToUniversity()'><span>Student</span> Portal</a>
 
 				<div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
 					<a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
@@ -62,7 +62,7 @@
                 </a>
                 <div>
                     <h1 id='main-text' class='bg-university-50p p20xy'>
-                        <span>Get instant help from your peers in
+                        <span>Get instant help from your&nbsp;peers&nbsp;in
                             <br/>
                             <span class='weight-900'><u>CS10</u></span> + much more</span>
                     </h1>
@@ -72,22 +72,43 @@
                 </div>
                 <a class='arrow-down-next' ng-click='scrollToSection("#become-guru")' ng-include="img_base + 'templates/svg/main/down.html'"></a>
             </section>
-            <section id='live-map'>
+            <section id='how-it-works' class="splash-postit">
                 <header class='bg-university'>
-                    <h1>Live Activity @ {{university.short_name}}</h1>
+                    <h1>{{how_it_works.header}}</h1>
                 </header>
-                <div style='height:75% !important'>
-                    <div class="request-loc map-box-container full-y">
-                        <ui-gmap-google-map style='height:400px;' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
-
-                        </ui-gmap-google-map>
-                    </div>
+                <div class='main'>
+                    <ul>
+                        <li ng-repeat="hiw_item in how_it_works.top_half">
+                            <div class="postit">
+                                <svg class="square" viewBox="0 0 100 80">
+    							    <rect x="0" y="0" width="100" height="80"></rect>
+    							</svg>
+                                <div>
+                                    <span ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+                                    <h1 ng-bind-html="hiw_item.header"></h1>
+                                    <p ng-bind-html="hiw_item.content"></p>
+                                </div>
+                                <span></span>
+                            </div>
+                        </li>
+                        <li ng-repeat="hiw_item in how_it_works.bottom_half">
+                            <div class="postit">
+                                <svg class="square" viewBox="0 0 100 80">
+    							    <rect x="0" y="0" width="100" height="80"></rect>
+    							</svg>
+                                <div>
+                                    <span ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+                                    <h1 ng-bind-html="hiw_item.header"></h1>
+                                    <p ng-bind-html="hiw_item.content"></p>
+                                </div>
+                                <span></span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </section>
             <section class='splash-categories' id='splash-browse'>
-				<header>
-					<!-- <h1>Browse</h1> -->
-				</header>
+				<header></header>
                 <div class="tab-bar bg-university">
                     <ul>
                         <li>
@@ -103,13 +124,16 @@
                 </div>
 				<div id="splash-categories" class="main ng-class:{'active':activeTabIndex === 0}" ng-controller="CategoriesController">
                     <div>
-                        <h1>{{university.short_name}}'s Guru Categories</h1>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
+                        <div>
+                            <h1>{{university.short_name}}'s Guru Categories</h1>
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
+                        </div>
                         <div>
                             <ul class='category-card-list'>
                     			<li ng-repeat='category in categories' ng-click='showDesktopSubcategories(category)' >
                 					<div style='background-image :url({{categories_img_base + category.background_url}})'>
                 	    				<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
+                                            <span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
                 	                        <span class="card-label">{{category.name}}</span>
                 	                    </a>
                 					</div>
@@ -135,6 +159,15 @@
                         <h1>{{university.short_name}}'s Top Gurus</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         <div>
+                            <ul class="pf-card-group-mobile">
+                                <li ng-repeat='category in categories'>
+                                    <a class="pf-card-mini large pf-card-mini-{{category.hex_color}}">
+                                        <div class="pf-card-mini-banner"></div>
+                                        <span class="user-icon" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=300);"></span>
+                                        <span class="pf-card-link" ng-include="img_base + 'templates/svg/main/external.html'"></span>
+                                    </a>
+                                </li>
+                            </ul>
                             <ul class="pf-card-group">
                                 <li ng-repeat='category in categories'>
                 					<a class="pf-card pf-card-{{category.hex_color}}">
@@ -167,6 +200,10 @@
                 </div>
                 <div id="splash-courses" class="main ng-class:{'active':activeTabIndex === 2}" ng-controller="CoursesController">
                     <div>
+                        <div>
+                            <h1>Popular Courses at Cal</h1>
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
+                        </div>
                         <form>
                             <div class="input-field large">
             					<i class="material-icons prefix">
@@ -185,7 +222,7 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 12 track by course.id'>
+        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by course.id'>
         						<div class="border-university">
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>
@@ -197,40 +234,48 @@
                     </div>
                 </div>
 			</section>
-            <section id='how-it-works' class='university-bg'>
-                <header>
-                    <h1>{{how_it_works.header}}</h1>
+            <section id='live-map'>
+                <header class='bg-university'>
+                    <h1>Live Activity @ {{university.short_name}}</h1>
                 </header>
-                <div class='main'>
-                    <ul class='ugrid-3 text-center'>
-                        <li ng-repeat="hiw_item in how_it_works.top_half">
-                            <h1 class='weight-900' ng-bind-html="hiw_item.header">.</h1>
-                            <p ng-bind-html="hiw_item.content"></p>
-                        </li>
-                    </ul>
-                    <ul class='ugrid-3 text-center'>
-                        <li class="hiw-{{hiw_item.svg_url}}" ng-repeat="hiw_item in how_it_works.bottom_half">
-                            <h1 class='weight-900' ng-bind-html="hiw_item.header">.</h1>
-                            <p ng-bind-html="hiw_item.content"></p>
-                        </li>
-                    </ul>
+                <div>
+                    <div class="request-loc map-box-container full-y">
+                        <ui-gmap-google-map style='height:400px;' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
+                        </ui-gmap-google-map>
+                    </div>
                 </div>
             </section>
-            <section id='become-guru'>
-                <header class='university-bg'>
+            <section id='become-guru' class="splash-postit">
+                <header class='bg-university'>
                     <h1>{{become_guru.header}}</h1>
                 </header>
-                <div class='main'>
-                    <ul class='ugrid-3 text-center'>
+                <div class='main bg-charcoal'>
+                    <ul>
                         <li ng-repeat="bg_item in become_guru.top_half">
-                            <h1 class='weight-900' ng-bind-html="bg_item.header">.</h1>
-                            <p ng-bind-html="bg_item.content"></p>
+                            <div class="postit">
+                                <svg class="square" viewBox="0 0 100 80">
+    							    <rect x="0" y="0" width="100" height="80"></rect>
+    							</svg>
+                                <div>
+                                    <span ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+                                    <h1 ng-bind-html="bg_item.header"></h1>
+                                    <p ng-bind-html="bg_item.content"></p>
+                                </div>
+                                <span></span>
+                            </div>
                         </li>
-                    </ul>
-                    <ul class='ugrid-3 text-center'>
-                        <li class="hiw-{{hiw_item.svg_url}}" ng-repeat="bg_item in become_guru.bottom_half">
-                            <h1 class='weight-900' ng-bind-html="bg_item.header">.</h1>
-                            <p ng-bind-html="bg_item.content"></p>
+                        <li ng-repeat="bg_item in become_guru.bottom_half">
+                            <div class="postit">
+                                <svg class="square" viewBox="0 0 100 80">
+    							    <rect x="0" y="0" width="100" height="80"></rect>
+    							</svg>
+                                <div>
+                                    <span ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+                                    <h1 ng-bind-html="bg_item.header"></h1>
+                                    <p ng-bind-html="bg_item.content"></p>
+                                </div>
+                                <span></span>
+                            </div>
                         </li>
                     </ul>
                 </div>
