@@ -192,12 +192,8 @@ angular.module('uguru.student.controllers', [])
             if (!$scope.mapInitialized) {
                 console.log('initializing map from load');
                 $scope.mapInitialized = true;
-
             }
-
-        })
-
-
+        });
 
         $scope.$on('$ionicView.afterLeave', function() {
             if (DeviceService.isIOSDevice()) {
