@@ -2514,6 +2514,7 @@ if arg == 'variations_courses':
 if arg == 'resolve_colors':
     from app.lib.universities import resolveAllColors
     resolveAllColors(University.query.all())
+    db_session.commit()
 
 if arg == 'vc_db':
     import json
