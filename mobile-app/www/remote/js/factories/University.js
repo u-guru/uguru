@@ -21,6 +21,57 @@ angular.module('uguru.rest', [])
                 source.courses.pop();
             }, 300);
         },
+        filterByAlreadyStarted: function(universities) {
+            var resultArr = [];
+            var currentDate = new Date();
+            for (var i = 0; i < universities.length; i++) {
+                var indexUniversity = universities[i];
+
+                //continue if it doesnt exist
+                if (!indexUniversity.sp16_start) {
+                    continue;
+                }
+
+                var universityJSDate =  new Date(Date.parse(indexUniversity.sp16_start));
+                if (universityJSDate <= currentDate) {
+                    indexUniversity.sp16_js_date = universityJSDate;
+                    indexUniversity.sp16_utc_date = universityJSDate.toUTCString();
+                    resultArr.push(JSON.parse(JSON.stringify(indexUniversity)))
+                }
+            }
+            resultArr.sort(function(a,b){
+                return new Date(b.sp16_js_date) - new Date(a.sp16_js_date);
+            });
+            return resultArr;
+        },
+        getUniversityDateDist : function(universities) {
+
+                var dateDistribution = {};
+                for (var i = 0; i < universities.length; i++) {
+                    var indexUniversity = universities[i];
+                    if (!dateDistribution[indexUniversity.sp16_utc_date]) {
+                        dateDistribution[indexUniversity.sp16_utc_date]= [indexUniversity];
+                    } else {
+                        dateDistribution[indexUniversity.sp16_utc_date].push(indexUniversity)
+                    }
+                }
+                return dateDistribution;
+        },
+        printUniversityDateDist : function(universities_dist_dict) {
+                for (var j = 0; j < Object.keys(universities_dist_dict).length; j++) {
+                    var indexKey = Object.keys(universities_dist_dict)[j];
+                    console.log(indexKey, universities_dist_dict[indexKey].length, 'universities');
+                }
+        },
+
+        getUniversityDateDistArrFromDict : function(universities_dist_dict) {
+                var resultArr = []
+                for (var j = 0; j < Object.keys(universities_dist_dict).length; j++) {
+                    var indexKey = Object.keys(universities_dist_dict)[j];
+                    resultArr.push(universities_dist_dict[indexKey]);
+                }
+                return resultArr;
+        },
         clearSelected: function() {
             $timeout(function() {
                 source.majors = [];

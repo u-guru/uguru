@@ -639,8 +639,13 @@ AdminUniversitySerializer = {
     'seal_url': fields.String,
     'school_color_one': fields.String,
     'school_color_two': fields.String,
+    'school_color_one': fields.String,
+    'school_color_two': fields.String,
+    'school_color_dark': fields.String,
+    'school_color_light': fields.String,
+    'school_color_primary': fields.String,
     'variations': fields.String,
-    'sp16_deadline': fields.DateTime
+    'sp16_start': fields.DateTime
 }
 
 AdminUniversityDetailedSerializer = {
@@ -676,7 +681,7 @@ AdminUniversityDetailedSerializer = {
     'tiny_name': fields.String,
     'variations': fields.String,
     'popular_courses': fields.Nested(course_fields),
-    'sp16_deadline': fields.DateTime
+    'sp16_start': fields.DateTime
 }
 
 

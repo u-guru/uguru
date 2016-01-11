@@ -185,6 +185,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/admin/admin.html',
         controller: 'AdminTimelineController'
   }).
+  state('root.admin-universities', {
+        url: '/admin-universities',
+        templateUrl: BASE + 'templates/admin/admin.universities.html',
+        controller: 'AdminUniversityController'
+  }).
   state('root.majors-container', {
         url: '/majors-container',
         templateUrl: BASE + 'templates/majors.container.html',
