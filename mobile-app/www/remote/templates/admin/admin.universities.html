@@ -33,18 +33,19 @@
                         {{uni.school_color_light}}
                     </span>
                     <span class='university-title border bg-slate txt-smoke p05xy'>
-                        <a href='/#/university/{{uni.id}}' target='_blank'>{{uni.name}} </a>
+                        <a ng-click="fieldPromptAndUpdate('Name', uni.name, uni)"> {{uni.name}} </a>
+                        <a href='/#/university/{{uni.id}}' target='_blank'><i class='icon ion-arrow-resize'></i></a>
                     </span>
-                    <span class='university-title bg-auburn relative'>
+                    <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Short Name', uni.short_name, uni)">
                         <small class='absolute'> </small>
                         <span ng-if='uni.short_name' class='p05xy bg-shamrock'>
                             &nbsp;&nbsp;&nbsp;{{uni.short_name}}&nbsp;&nbsp;&nbsp;
                         </span>
                         <span ng-if='!uni.short_name' class='p05xy bg-auburn'>
-                            !SHORT
+                            {{uni.website || '!SHORT'}}
                         </span>
                     </span>
-                    <span class='university-title bg-auburn relative'>
+                    <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Casual Name', uni.casual_name, uni)">
                         <small class='absolute'> </small>
                         <span ng-if='uni.school_casual_name' class='p05y bg-shamrock'>
                             &nbsp;&nbsp;&nbsp;{{uni.school_casual_name}}&nbsp;&nbsp;&nbsp;
@@ -53,7 +54,7 @@
                             !CASUAL
                         </span>
                     </span>
-                     <span class='university-title bg-auburn relative'>
+                     <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Mascot Name', uni.school_mascot_name, uni)">
                         <small class='absolute'> </small>
                         <span ng-if='uni.school_mascot_name' class='p05y bg-shamrock'>
                             &nbsp;&nbsp;&nbsp;{{uni.school_mascot_name}}&nbsp;&nbsp;&nbsp;
