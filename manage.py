@@ -2511,6 +2511,10 @@ if arg == 'variations_courses':
     with open('cal_courses_popular.json', 'wb') as fp:
         json.dump(unique_keys_full, fp, sort_keys = True, indent = 4)
 
+if arg == 'resolve_colors':
+    from app.lib.universities import resolveAllColors
+    resolveAllColors(University.query.all())
+
 if arg == 'vc_db':
     import json
     arr = json.load(open("cal_courses_popular.json"))

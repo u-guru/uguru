@@ -1154,6 +1154,10 @@ class University(Base):
     sp16_deadline = Column(DateTime)
     sp16_start = Column(DateTime)
 
+    school_color_dark = Column(String)
+    school_color_light = Column(String)
+
+
     departments_sanitized = Column(Boolean, default=False)
     courses_sanitized = Column(Boolean, default=False)
 
@@ -1205,6 +1209,9 @@ class University(Base):
 
     school_color_one = Column(String)
     school_color_two = Column(String)
+    school_color_primary = Column(String)
+    school_tiny_name = Column(String)
+
     school_logo_image_url = Column(String)
     variations = Column(String)
 
