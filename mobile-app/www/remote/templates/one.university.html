@@ -116,7 +116,7 @@
                 					</div>
                     			</li>
                 			</ul>
-                            <div class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
+                            <div name='subcategory-card' class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
                     			<ul class="category-card-list">
                     				<li ng-repeat='subcategory in category.subcategories'>
                                         <div class="bg-{{category.hex_color}}">
