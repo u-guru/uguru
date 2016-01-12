@@ -38,6 +38,8 @@ angular.module('uguru.util.controllers')
 				'Mascot Name': "school_mascot_name",
 				'Casual Name': "school_casual_name",
 				"Short Name": "short_name",
+				"School Color Light": "school_color_light",
+				"School Color Dark": "school_color_dark",
 				'Name': "name"
 			}
 			if (currentValue) {
