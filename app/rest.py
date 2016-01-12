@@ -3514,9 +3514,9 @@ class AdminOneUniversityView(restful.Resource):
 
             if 'school_color_light' in request.json:
                 school_color_light = request.json.get('school_color_light')
-                school_color_light = school_color_dark
+                school_color_two = school_color_light
                 u.school_color_light = school_color_light
-                u.school_color_light = school_color_light
+                u.school_color_two = school_color_two
 
             if 'short_name' in request.json:
                 short_name = request.json.get('short_name')
