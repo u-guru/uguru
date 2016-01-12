@@ -12,17 +12,17 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: {{university.school_color_one}};
+        background: {{university.school_color_dark}};
     }
     .bg-university-50p span {
         position: relative;
         z-index: 2;
     }
     .splash-footer-link svg {
-        stroke: {{university.school_color_one}}!important;
+        stroke: {{university.school_color_dark}}!important;
     }
     .splash-footer-link:hover, .splash-footer-link:focus {
-        background: {{university.school_color_one}}!important;
+        background: {{university.school_color_dark}}!important;
     }
     .splash-footer-link:hover svg, .splash-footer-link:focus svg {
         stroke: white!important;
@@ -31,27 +31,83 @@
         background: white!important;
     }
     .splash-footer-link:active svg {
-        stroke: {{university.school_color_one}}!important;
+        stroke: {{university.school_color_dark}}!important;
     }
     .border-university {
-        border-color: {{university.school_color_one}}!important;
+        border-color: {{university.school_color_dark}}!important;
     }
     .bg-university, #university-splash > header a:not(.header-close).active:hover, .splash-landing > header a:not(.header-close).active:focus, #university-splash > header:before {
-        background: {{university.school_color_one}} !important;
+        background: {{university.school_color_dark}} !important;
         color: white!important;
     }
     .university-txt, .tab-bar a.active, #university-splash > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus  {
-        color: {{university.school_color_one}} !important;
+        color: {{university.school_color_dark}} !important;
     }
     .splash-hero, .splash-categories > header {
-        background: {{university.school_color_one}} url({{university.banner_url}}) center center / cover!important;
+        background: {{university.school_color_dark}} url({{university.banner_url}}) center center / cover!important;
+    }
+    #desktop-guru-onboarding .header {
+        padding: 15px;
+    }
+    #desktop-guru-onboarding .header:before, #desktop-guru-onboarding .main #guru-onboarding-grid li a:after {
+        /* @samir - color won't bind, put $slate as a placeholder, pls fix */
+        /* {{university.school_color_one}} */
+        background: #023360!important;
+    }
+    #desktop-guru-onboarding .main #guru-onboarding-grid li a {
+        background: none!important;
+    }
+    #desktop-guru-onboarding .main #guru-onboarding-grid li a:hover:after,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li a:focus:after {
+        background: white!important;
+    }
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:hover > span span:first-child svg path,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:focus > span span:first-child svg path,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:hover > span span:first-child svg path,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:focus > span span:first-child svg path,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:hover > span span:first-child svg path,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:focus > span span:first-child svg path {
+        stroke: #023360!important;
+    }
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:hover > span,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:focus > span,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:hover > span,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:focus > span,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:hover > span,
+    #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:focus > span {
+        color: #023360!important;
+    }
+    #desktop-guru-onboarding .main #guru-onboarding-progress .progress ul li:nth-child(1) span,
+    #desktop-guru-onboarding .main #guru-onboarding-progress .progress ul li:nth-child(2) span,
+    #desktop-guru-onboarding .main #guru-onboarding-progress .progress ul li:nth-child(3) span {
+        /* @samir - color won't bind, put $slate as a placeholder, pls fix */
+        /* {{university.school_color_one}} */
+        border-color: #023360!important;
+        color: #023360!important;
+    }
+    #desktop-guru-onboarding .main #guru-onboarding-progress .progress ul li:nth-child(1) span svg,
+    #desktop-guru-onboarding .main #guru-onboarding-progress .progress ul li:nth-child(2) span svg,
+    #desktop-guru-onboarding .main #guru-onboarding-progress .progress ul li:nth-child(3) span svg {
+        /* @samir - color won't bind, put $slate as a placeholder, pls fix */
+        /* {{university.school_color_one}} */
+        stroke: #023360!important;
+    }
+    #how-it-works .postit > div:before, #how-it-works .postit > span:before {
+        background: {{university.school_color_one}}!important;
+    }
+    #how-it-works .postit > span:after {
+        border-top-color: {{university.school_color_one}}!important;
+        border-left-color: {{university.school_color_one}}!important;
+    }
+    #how-it-works .postit > div span svg circle, #how-it-works .postit > div span svg path {
+        stroke: {{university.school_color_one}}!important;
     }
     button.bg-university:hover, button.bg-university:focus {
         background: white!important;
-        color: {{university.school_color_one}}!important;
+        color: {{university.school_color_dark}}!important;
     }
     button.bg-university:active {
-        background: {{university.school_color_one}}!important;
+        background: {{university.school_color_dark}}!important;
         color: white!important;
     }
 </style>

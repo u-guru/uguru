@@ -3506,6 +3506,30 @@ class AdminOneUniversityView(restful.Resource):
                     abort(401)
                 u.school_mascot_name = school_mascot_name
 
+            if 'school_color_dark' in request.json:
+                school_color_dark = request.json.get('school_color_dark')
+                school_color_one = school_color_dark
+                u.school_color_dark = school_color_dark
+                u.school_color_one = school_color_dark
+
+            if 'school_color_light' in request.json:
+                school_color_light = request.json.get('school_color_light')
+                school_color_two = school_color_light
+                u.school_color_light = school_color_light
+                u.school_color_two = school_color_two
+
+            if 'short_name' in request.json:
+                short_name = request.json.get('short_name')
+                if type(short_name) != str:
+                    abort(401)
+                u.short_name = short_name
+
+            if 'name' in request.json:
+                name = request.json.get('name')
+                if type(name) != str:
+                    abort(401)
+                u.name = name
+
             if 'school_casual_name' in request.json:
                 school_casual_name = request.json.get('school_casual_name')
                 if type(school_casual_name) != str:

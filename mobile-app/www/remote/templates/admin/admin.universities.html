@@ -26,25 +26,26 @@
                         <span ng-if='uni.us_news_ranking.length === 2'>&nbsp;&nbsp;</span>
                         <span ng-if='uni.us_news_ranking.length === 1'>&nbsp;&nbsp;&nbsp;</span>
                     </span>
-                    <span class='university-school-color p05x txt-smoke' style='background-color:{{uni.school_color_dark}}; border:5px solid black;'>
-                        {{uni.school_color_dark}}
+                    <span class='university-school-color p05x txt-smoke ng-class{:"bg-auburn": !uni.school_color_dark || uni.school_color_dark === "#40484B"}' style='background-color:{{uni.school_color_dark}}; border:5px solid black;' ng-click="fieldPromptAndUpdate('School Color Dark', uni.school_color_dark, uni)">
+                        {{uni.school_color_dark || 'MISSING'}}
                     </span>
-                    <span class='university-school-color p05x txt-charcoal' style='background-color:{{uni.school_color_light}}; border:5px solid black;'>
-                        {{uni.school_color_light}}
+                    <span class='university-school-color p05x txt-charcoal ng-class{:"bg-auburn": !uni.school_color_light || uni.school_color_light === "#757575"' style='background-color:{{uni.school_color_light}}; border:5px solid black;' ng-click="fieldPromptAndUpdate('School Color Light', uni.school_color_light, uni)">
+                        {{uni.school_color_light || 'MISSING'}}
                     </span>
                     <span class='university-title border bg-slate txt-smoke p05xy'>
-                        <a href='/#/university/{{uni.id}}' target='_blank'>{{uni.name}} </a>
+                        <a ng-click="fieldPromptAndUpdate('Name', uni.name, uni)"> {{uni.name}} </a>
+                        <a href='/#/university/{{uni.id}}' target='_blank'><i class='icon ion-arrow-resize'></i></a>
                     </span>
-                    <span class='university-title bg-auburn relative'>
+                    <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Short Name', uni.short_name, uni)">
                         <small class='absolute'> </small>
                         <span ng-if='uni.short_name' class='p05xy bg-shamrock'>
                             &nbsp;&nbsp;&nbsp;{{uni.short_name}}&nbsp;&nbsp;&nbsp;
                         </span>
                         <span ng-if='!uni.short_name' class='p05xy bg-auburn'>
-                            !SHORT
+                            {{uni.website || '!SHORT'}}
                         </span>
                     </span>
-                    <span class='university-title bg-auburn relative'>
+                    <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Casual Name', uni.casual_name, uni)">
                         <small class='absolute'> </small>
                         <span ng-if='uni.school_casual_name' class='p05y bg-shamrock'>
                             &nbsp;&nbsp;&nbsp;{{uni.school_casual_name}}&nbsp;&nbsp;&nbsp;
@@ -53,7 +54,7 @@
                             !CASUAL
                         </span>
                     </span>
-                     <span class='university-title bg-auburn relative'>
+                     <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Mascot Name', uni.school_mascot_name, uni)">
                         <small class='absolute'> </small>
                         <span ng-if='uni.school_mascot_name' class='p05y bg-shamrock'>
                             &nbsp;&nbsp;&nbsp;{{uni.school_mascot_name}}&nbsp;&nbsp;&nbsp;
@@ -65,6 +66,14 @@
                     <span class='university-title bg-charcoal relative'>
                         <span class='p05xy bg-charcoal'>
                             {{uni.num_popular_courses}}/{{uni.num_courses}} popular
+                        </span>
+                    </span>
+                    <span class='university-title bg-charcoal relative'>
+                        <span class='p05xy bg-shamrock' ng-if='uni.banner_url_confirmed'>
+                            Banner URL Confirmed <i class='icon ion-checkmark'> </i>
+                        </span>
+                        <span class='p05xy bg-auburn' ng-if='!uni.banner_url_confirmed'>
+                            Banner URL NOT Confirmed &nbsp;&nbsp;<i class='icon ion-close'> &nbsp;&nbsp;</i>
                         </span>
                     </span>
                 </div>
