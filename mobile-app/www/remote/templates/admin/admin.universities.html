@@ -68,6 +68,14 @@
                             {{uni.num_popular_courses}}/{{uni.num_courses}} popular
                         </span>
                     </span>
+                    <span class='university-title bg-charcoal relative'>
+                        <span class='p05xy bg-shamrock' ng-if='uni.banner_url_confirmed'>
+                            Banner URL Confirmed <i class='icon ion-checkmark'> </i>
+                        </span>
+                        <span class='p05xy bg-auburn' ng-if='!uni.banner_url_confirmed'>
+                            Banner URL NOT Confirmed &nbsp;&nbsp;<i class='icon ion-close'> &nbsp;&nbsp;</i>
+                        </span>
+                    </span>
                 </div>
             </li>
             <li class="post post-{{event.category}}" ng-repeat='event in timeline.threads_detailed[page.active.thread].todo' tabindex>

@@ -360,7 +360,23 @@
 	.main {
 		height: auto;
 		.header {
+			position: relative;
 			text-align: center;
+			&:before {
+				@include transition(.15s ease-in-out);
+				@include opacity(.8);
+				display: block;
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			h1, h2 {
+				position: relative;
+		        z-index: 10;
+			}
 			h1 {
 				font-size: 36px;
 				font-weight: 900;
@@ -372,7 +388,7 @@
 			}
 		}
 		#guru-onboarding-grid {
-			margin: 15px -7.5px;
+			margin: 7.5px -7.5px;
 			li {
 				position: relative;
 				padding: 7.5px;
@@ -383,8 +399,26 @@
 					position: relative;
 					max-height: 270px;
 					border-radius: 2px;
+					&:after {
+						@include transition(.15s ease-in-out);
+						@include opacity(.8);
+				        display: block;
+				        content: "";
+				        position: absolute;
+				        top: 0;
+				        left: 0;
+				        width: 100%;
+				        height: 100%;
+					}
+					&:hover, &:focus {
+						&:after {
+							@include opacity(1);
+						}
+					}
 					> span {
 						display: block;
+						position: relative;
+				        z-index: 10;
 						span {
 							display: block;
 						}

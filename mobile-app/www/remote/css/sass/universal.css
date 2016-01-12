@@ -246,32 +246,41 @@
 #university-splash .tab-bar ul {
   max-width: 600px;
   margin: 0 auto;
+  padding: 0;
 }
 
-#university-splash .tab-bar ul a {
+#university-splash .tab-bar ul li {
+  padding: 0;
+}
+
+#university-splash .tab-bar ul li a {
   border: 0;
 }
 
-#university-splash .tab-bar ul a:hover, #university-splash .tab-bar ul a:focus {
+#university-splash .tab-bar ul li a:hover, #university-splash .tab-bar ul li a:focus {
   background: rgba(241, 241, 241, 0.25);
 }
 
-#university-splash .tab-bar ul a:active {
+#university-splash .tab-bar ul li a:active {
   background: rgba(241, 241, 241, 0.5);
 }
 
-#university-splash .tab-bar ul a.active {
+#university-splash .tab-bar ul li a.active {
   background: #F1F1F1;
   color: #40484B;
 }
 
-#university-splash .tab-bar ul a.active:hover, #university-splash .tab-bar ul a.active:focus {
+#university-splash .tab-bar ul li a.active:hover, #university-splash .tab-bar ul li a.active:focus {
   background: #F1F1F1;
   color: #40484B;
 }
 
-#university-splash .tab-bar ul a.active:active {
+#university-splash .tab-bar ul li a.active:active {
   background: #F1F1F1;
+}
+
+#university-splash .splash-categories > header {
+  height: 25% !important;
 }
 
 #university-splash .splash-categories .main {
@@ -305,28 +314,44 @@
 }
 
 #university-splash .splash-categories .main > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   width: 100%;
+  height: 100%;
 }
 
-#university-splash .splash-categories .main > div > h1, #university-splash .splash-categories .main > div > h2 {
+#university-splash .splash-categories .main > div > h1, #university-splash .splash-categories .main > div > h2, #university-splash .splash-categories .main > div > div > h1, #university-splash .splash-categories .main > div > div > h2 {
   width: 100%;
   text-align: center;
 }
 
-#university-splash .splash-categories .main > div > h1 {
-  font-size: 28px;
+#university-splash .splash-categories .main > div > h1, #university-splash .splash-categories .main > div > div > h1 {
+  font-size: 24px;
   font-weight: 600;
 }
 
-#university-splash .splash-categories .main > div > h2 {
-  margin: 5px auto 22.5px;
-  font-size: 20px;
+#university-splash .splash-categories .main > div > h2, #university-splash .splash-categories .main > div > div > h2 {
+  margin: 5px auto 7.5px;
+  font-size: 16px;
   font-weight: 400;
 }
 
 #university-splash .splash-categories .main > div > div {
   position: relative;
   width: 100%;
+}
+
+#university-splash .splash-categories .main > div > div:last-child {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
 }
 
 #university-splash .splash-categories .main .category-card-list {
@@ -349,18 +374,18 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  margin: 0 -15px -15px;
 }
 
 #university-splash .splash-categories .main .category-card-list li {
   width: 25%;
-  padding: 7.5px;
+  padding: 0;
 }
 
 #university-splash .splash-categories .main .category-card-list li div {
   height: 150px;
   background-position: center center;
   background-size: cover;
-  border-radius: 2px;
   overflow: hidden;
 }
 
@@ -381,8 +406,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 2px;
-  border-bottom: 10px solid white;
 }
 
 #university-splash .splash-categories .main .category-card-list li div a:before, #university-splash .splash-categories .main .category-card-list li div > span:before {
@@ -400,49 +423,107 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 2px;
   background: #40484B;
+}
+
+#university-splash .splash-categories .main .category-card-list li div a span, #university-splash .splash-categories .main .category-card-list li div > span span {
+  position: relative;
+  z-index: 5;
+}
+
+#university-splash .splash-categories .main .category-card-list li div a .card-icon, #university-splash .splash-categories .main .category-card-list li div > span .card-icon {
+  display: block;
+  padding: 15px;
+  max-width: 120px;
+  max-height: 120px;
+}
+
+#university-splash .splash-categories .main .category-card-list li div a .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span .card-icon svg {
+  border-radius: 1000px;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+  background: #69B3A5;
+}
+
+#university-splash .splash-categories .main .category-card-list li div a .card-icon svg path, #university-splash .splash-categories .main .category-card-list li div > span .card-icon svg path {
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#university-splash .splash-categories .main .category-card-list li div a .card-label, #university-splash .splash-categories .main .category-card-list li div > span .card-label {
+  display: none;
+  font-weight: 900;
+  font-size: 24px;
+  text-align: center;
 }
 
 #university-splash .splash-categories .main .category-card-list li div a.bg-delivery, #university-splash .splash-categories .main .category-card-list li div > span.bg-delivery {
   border-color: #F04F54;
 }
 
+#university-splash .splash-categories .main .category-card-list li div a.bg-delivery .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-delivery .card-icon svg {
+  background: #F04F54;
+}
+
 #university-splash .splash-categories .main .category-card-list li div a.bg-freelancing, #university-splash .splash-categories .main .category-card-list li div > span.bg-freelancing {
   border-color: #E5753C;
+}
+
+#university-splash .splash-categories .main .category-card-list li div a.bg-freelancing .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-freelancing .card-icon svg {
+  background: #E5753C;
 }
 
 #university-splash .splash-categories .main .category-card-list li div a.bg-baking, #university-splash .splash-categories .main .category-card-list li div > span.bg-baking {
   border-color: #F6C64E;
 }
 
+#university-splash .splash-categories .main .category-card-list li div a.bg-baking .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-baking .card-icon svg {
+  background: #F6C64E;
+}
+
 #university-splash .splash-categories .main .category-card-list li div a.bg-photography, #university-splash .splash-categories .main .category-card-list li div > span.bg-photography {
   border-color: #81B566;
+}
+
+#university-splash .splash-categories .main .category-card-list li div a.bg-photography .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-photography .card-icon svg {
+  background: #81B566;
 }
 
 #university-splash .splash-categories .main .category-card-list li div a.bg-tech, #university-splash .splash-categories .main .category-card-list li div > span.bg-tech {
   border-color: #55A4B7;
 }
 
+#university-splash .splash-categories .main .category-card-list li div a.bg-tech .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-tech .card-icon svg {
+  background: #55A4B7;
+}
+
 #university-splash .splash-categories .main .category-card-list li div a.bg-household, #university-splash .splash-categories .main .category-card-list li div > span.bg-household {
   border-color: #7872e3;
+}
+
+#university-splash .splash-categories .main .category-card-list li div a.bg-household .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-household .card-icon svg {
+  background: #7872e3;
 }
 
 #university-splash .splash-categories .main .category-card-list li div a.bg-athletic, #university-splash .splash-categories .main .category-card-list li div > span.bg-athletic {
   border-color: #9A5BC5;
 }
 
+#university-splash .splash-categories .main .category-card-list li div a.bg-athletic .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-athletic .card-icon svg {
+  background: #9A5BC5;
+}
+
 #university-splash .splash-categories .main .category-card-list li div a.bg-academic, #university-splash .splash-categories .main .category-card-list li div > span.bg-academic {
   border-color: #e6389b;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a span, #university-splash .splash-categories .main .category-card-list li div > span span {
-  display: block;
-  position: relative;
-  z-index: 5;
-  font-weight: 900;
-  font-size: 24px;
-  text-align: center;
+#university-splash .splash-categories .main .category-card-list li div a.bg-academic .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-academic .card-icon svg {
+  background: #e6389b;
 }
 
 #university-splash .splash-categories .main .category-card-list li div a:hover:before, #university-splash .splash-categories .main .category-card-list li div a:focus:before {
@@ -524,19 +605,28 @@
 }
 
 #university-splash .splash-categories .main .subcategory-card-list {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   position: absolute;
   top: 0;
-  left: 0;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
+  left: -15px;
+  width: calc(100% + 30px);
+  height: calc(100% + 15px);
   background: #F1F1F1;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.not-selected, #university-splash .splash-categories .main .subcategory-card-list:not(.selected) {
   filter: alpha(opacity=0);
   opacity: 0;
-  display: none;
+  z-index: -99;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.selected {
@@ -545,57 +635,54 @@
   z-index: 99;
 }
 
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list {
+  margin: 0 !important;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li {
+  width: 50%;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li:nth-child(9), #university-splash .splash-categories .main .subcategory-card-list .category-card-list li:nth-child(10) {
+  display: none;
+}
+
 #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div {
-  background: #40484B;
-  height: 80px;
+  background: none;
+  height: 49px;
 }
 
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-delivery {
-  background: #7f696e;
-}
-
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-freelancing {
-  background: #7d7169;
-}
-
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-baking {
-  background: #81816d;
-}
-
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-photography {
-  background: #697e71;
-}
-
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-tech {
-  background: #607a82;
-}
-
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-household {
-  background: #67708a;
-}
-
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-athletic {
-  background: #6e6c84;
-}
-
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-academic {
-  background: #7d657c;
-}
-
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div span span {
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div .card-label {
+  display: block !important;
+  padding: 15px;
   color: white !important;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div > span:before {
+  display: none !important;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list button {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
   display: block;
-  margin: 7.5px auto;
+  width: 100%;
+  max-width: none;
   color: white;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list button:hover, #university-splash .splash-categories .main .subcategory-card-list button:focus {
   background: #637074;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list.sub-delivery {
+  background: #9c6367;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.sub-delivery button {
@@ -606,12 +693,20 @@
   background: #f69598;
 }
 
+#university-splash .splash-categories .main .subcategory-card-list.sub-freelancing {
+  background: #97725e;
+}
+
 #university-splash .splash-categories .main .subcategory-card-list.sub-freelancing button {
   background: #E5753C;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.sub-freelancing button:active {
   background: #eea57f;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list.sub-baking {
+  background: #9e9265;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.sub-baking button {
@@ -622,12 +717,20 @@
   background: #f7ce66;
 }
 
+#university-splash .splash-categories .main .subcategory-card-list.sub-photography {
+  background: #6f8b6f;
+}
+
 #university-splash .splash-categories .main .subcategory-card-list.sub-photography button {
   background: #81B566;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.sub-photography button:active {
   background: #abce9a;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list.sub-tech {
+  background: #5e858f;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.sub-tech button {
@@ -638,12 +741,20 @@
   background: #8bc1ce;
 }
 
+#university-splash .splash-categories .main .subcategory-card-list.sub-household {
+  background: #6c71a1;
+}
+
 #university-splash .splash-categories .main .subcategory-card-list.sub-household button {
   background: #7872e3;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.sub-household button:active {
   background: #b5b2f0;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list.sub-athletic {
+  background: #796795;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list.sub-athletic button {
@@ -654,6 +765,10 @@
   background: #bd94d9;
 }
 
+#university-splash .splash-categories .main .subcategory-card-list.sub-academic {
+  background: #985984;
+}
+
 #university-splash .splash-categories .main .subcategory-card-list.sub-academic button {
   background: #e6389b;
 }
@@ -662,7 +777,42 @@
   background: #f193c9;
 }
 
+#university-splash .splash-categories .main .pf-card-group-mobile {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 0 -7.5px;
+}
+
+#university-splash .splash-categories .main .pf-card-group-mobile li {
+  padding: 7.5px;
+}
+
+#university-splash .splash-categories .main .pf-card-group {
+  display: none;
+  margin: 0 -7.5px;
+  padding: 0;
+}
+
+#university-splash .splash-categories .main#splash-gurus > div {
+  display: block;
+}
+
 #university-splash .splash-categories .main form {
+  display: none;
   position: relative;
   width: 100%;
 }
@@ -700,22 +850,20 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  margin: -1px -14px -14px;
 }
 
 #university-splash .splash-categories .main form + ul li {
-  width: 25%;
-  padding: 7.5px;
+  width: calc(100%  / 3);
+  padding: 1px;
 }
 
 #university-splash .splash-categories .main form + ul li > div {
   background: white;
-  height: 150px;
   padding: 15px;
   border-bottom: 10px solid #40484B;
   border-radius: 2px;
@@ -733,10 +881,319 @@
 }
 
 #university-splash .splash-categories .main form + ul li > div .course-title {
+  display: none;
   margin-top: 15px;
   max-height: 56px;
   overflow: hidden;
   font-size: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  #university-splash .splash-categories .main > div {
+    display: block;
+    height: auto;
+  }
+  #university-splash .splash-categories .main > div > h1, #university-splash .splash-categories .main > div > div > h1 {
+    font-size: 28px;
+  }
+  #university-splash .splash-categories .main > div > h2, #university-splash .splash-categories .main > div > div > h2 {
+    margin: 5px auto 22.5px;
+    font-size: 20px;
+  }
+  #university-splash .splash-categories .main > div > div {
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+  }
+  #university-splash .splash-categories .main .category-card-list {
+    margin: 0 -7.5px;
+  }
+  #university-splash .splash-categories .main .category-card-list li {
+    padding: 7.5px;
+  }
+  #university-splash .splash-categories .main .category-card-list li div {
+    border-radius: 2px;
+  }
+  #university-splash .splash-categories .main .category-card-list li div a, #university-splash .splash-categories .main .category-card-list li div > span {
+    border-radius: 2px;
+    border-bottom: 10px solid white;
+  }
+  #university-splash .splash-categories .main .category-card-list li div a:before, #university-splash .splash-categories .main .category-card-list li div > span:before {
+    border-radius: 2px;
+  }
+  #university-splash .splash-categories .main .category-card-list li div a .card-icon, #university-splash .splash-categories .main .category-card-list li div > span .card-icon {
+    display: none;
+  }
+  #university-splash .splash-categories .main .category-card-list li div a .card-label, #university-splash .splash-categories .main .category-card-list li div > span .card-label {
+    display: block;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #F1F1F1 !important;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list {
+    -webkit-align-self: auto;
+    align-self: auto;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 0 -7.5px !important;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li {
+    width: 25%;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li:nth-child(9), #university-splash .splash-categories .main .subcategory-card-list .category-card-list li:nth-child(10) {
+    display: block;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div {
+    background: #40484B;
+    height: 80px;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-delivery {
+    background: #7f696e;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-freelancing {
+    background: #7d7169;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-baking {
+    background: #81816d;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-photography {
+    background: #697e71;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-tech {
+    background: #607a82;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-household {
+    background: #67708a;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-athletic {
+    background: #6e6c84;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-academic {
+    background: #7d657c;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div > span:before {
+    display: block !important;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div .card-label {
+    padding: 0;
+    font-size: 20px;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list button {
+    -webkit-align-self: auto;
+    align-self: auto;
+    margin: 7.5px auto;
+    max-width: 300px;
+  }
+  #university-splash .splash-categories .main .pf-card-group-mobile {
+    display: none;
+  }
+  #university-splash .splash-categories .main .pf-card-group {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  #university-splash .splash-categories .main#splash-courses > div > div:first-child {
+    display: none;
+  }
+  #university-splash .splash-categories .main form {
+    display: block;
+  }
+  #university-splash .splash-categories .main form + ul {
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 0 -7.5px;
+  }
+  #university-splash .splash-categories .main form + ul li {
+    padding: 7.5px;
+    width: 25%;
+  }
+  #university-splash .splash-categories .main form + ul li > div {
+    height: 150px;
+  }
+  #university-splash .splash-categories .main form + ul li > div .course-title {
+    display: block;
+  }
+}
+
+#university-splash #live-map > div {
+  height: calc(100% - 100px) !important;
+}
+
+@media screen and (min-width: 768px) {
+  #university-splash #live-map > div {
+    height: 75% !important;
+  }
+}
+
+#university-splash .splash-postit .main {
+  height: calc(100% - 100px);
+  overflow: auto;
+}
+
+#university-splash .splash-postit .main ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  max-width: 945px;
+  margin: 0 -7.5px;
+}
+
+#university-splash .splash-postit .main ul li {
+  width: 100%;
+  padding: 7.5px;
+}
+
+@media screen and (min-width: 945px) {
+  #university-splash .splash-postit .main {
+    height: 75%;
+    overflow: hidden;
+  }
+  #university-splash .splash-postit .main ul li {
+    width: calc(100% / 3);
+  }
+}
+
+#university-splash .splash-postit .postit {
+  position: relative;
+  width: 300px !important;
+  height: 240px !important;
+  margin: auto;
+}
+
+#university-splash .splash-postit .postit .square {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: none;
+}
+
+#university-splash .splash-postit .postit > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow: hidden;
+  padding: 15px;
+  background: white;
+  text-align: center;
+}
+
+#university-splash .splash-postit .postit > div span {
+  border-radius: 1000px;
+  display: block;
+  position: relative;
+  z-index: 9;
+  margin: 0 auto 15px;
+  width: 48px;
+  height: 48px;
+  padding: 6px;
+  background: white;
+}
+
+#university-splash .splash-postit .postit > div span svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#university-splash .splash-postit .postit > div span svg circle, #university-splash .splash-postit .postit > div span svg path {
+  fill: none;
+  stroke: #69B3A5;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#university-splash .splash-postit .postit > div h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#university-splash .splash-postit .postit > div p {
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#university-splash .splash-postit .postit > div:before, #university-splash .splash-postit .postit > span:before {
+  filter: alpha(opacity=20);
+  opacity: 0.2;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #69B3A5;
+}
+
+#university-splash .splash-postit .postit > span {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 50px);
+  height: 50px;
+  background: white;
+}
+
+#university-splash .splash-postit .postit > span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: -50px;
+  width: 0;
+  height: 0;
+  border: 25px solid transparent;
+  border-top-color: #69B3A5;
+  border-left-color: #69B3A5;
+}
+
+#university-splash #become-guru .postit > div, #university-splash #become-guru .postit > span {
+  background: #69B3A5;
+  color: white;
+}
+
+#university-splash #become-guru .postit > span:after {
+  border-top-color: white;
+  border-left-color: white;
 }
 
 .splash-landing {
@@ -770,14 +1227,34 @@
   padding: 15px;
 }
 
+@media screen and (max-width: 680px) {
+  .splash-landing > header {
+    padding: 0;
+  }
+}
+
 .splash-landing > header a:not(.header-close) {
-  display: block;
+  display: none;
   padding: 15px;
   font-size: 20px;
   font-weight: 700;
 }
 
+.splash-landing > header a:not(.header-close) span {
+  display: none;
+}
+
+@media screen and (min-width: 860px) {
+  .splash-landing > header a:not(.header-close) {
+    display: block;
+  }
+  .splash-landing > header a:not(.header-close) span {
+    display: inline;
+  }
+}
+
 .splash-landing > header a:not(.header-close).active {
+  display: block;
   background: rgba(255, 255, 255, 0.85);
   color: #69B3A5;
 }
@@ -787,20 +1264,26 @@
   color: #e6389b;
 }
 
-.splash-landing > header a:not(.header-close):first-child {
+.splash-landing > header a:not(.header-close).splash-logo {
   position: absolute;
-  top: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: block;
   left: 0;
   height: 100%;
   padding: 15px 15px 5px;
 }
 
-.splash-landing > header a:not(.header-close):first-child svg {
+.splash-landing > header a:not(.header-close).splash-logo svg {
   display: block;
   height: 100%;
 }
 
-.splash-landing > header a:not(.header-close):first-child svg path {
+.splash-landing > header a:not(.header-close).splash-logo svg path {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -808,32 +1291,102 @@
   transition: all 0.15s ease-in-out;
 }
 
-.splash-landing > header a:not(.header-close):first-child svg path:first-child {
+.splash-landing > header a:not(.header-close).splash-logo svg path:first-child {
   fill: rgba(255, 255, 255, 0.8);
 }
 
-.splash-landing > header a:not(.header-close):first-child svg path:last-child {
+.splash-landing > header a:not(.header-close).splash-logo svg path:last-child {
   fill: white;
 }
 
-.splash-landing > header a:not(.header-close):first-child svg text {
+.splash-landing > header a:not(.header-close).splash-logo svg text {
   fill: white;
 }
 
-.splash-landing > header a:not(.header-close):first-child:hover, .splash-landing > header a:not(.header-close):first-child:focus {
+.splash-landing > header a:not(.header-close).splash-logo:hover, .splash-landing > header a:not(.header-close).splash-logo:focus {
   background: none !important;
 }
 
-.splash-landing > header a:not(.header-close):first-child:hover svg path:first-child, .splash-landing > header a:not(.header-close):first-child:focus svg path:first-child {
+.splash-landing > header a:not(.header-close).splash-logo:hover svg path:first-child, .splash-landing > header a:not(.header-close).splash-logo:focus svg path:first-child {
   fill: white;
 }
 
-.splash-landing > header a:not(.header-close):first-child:hover svg path:last-child, .splash-landing > header a:not(.header-close):first-child:focus svg path:last-child {
+.splash-landing > header a:not(.header-close).splash-logo:hover svg path:last-child, .splash-landing > header a:not(.header-close).splash-logo:focus svg path:last-child {
   fill: rgba(255, 255, 255, 0.8);
 }
 
-.splash-landing > header a:not(.header-close):first-child:hover svg text, .splash-landing > header a:not(.header-close):first-child:focus svg text {
+.splash-landing > header a:not(.header-close).splash-logo:hover svg text, .splash-landing > header a:not(.header-close).splash-logo:focus svg text {
   fill: #F1F1F1;
+}
+
+@media screen and (max-width: 680px) {
+  .splash-landing > header a:not(.header-close).splash-logo {
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+    max-height: 40px;
+  }
+}
+
+.splash-landing > header a:not(.header-close).splash-burger {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+@media screen and (max-width: 680px) {
+  .splash-landing > header a:not(.header-close).splash-burger {
+    padding: 5px;
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .splash-landing > header a:not(.header-close).splash-burger {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    left: 179px;
+  }
+}
+
+.splash-landing > header a:not(.header-close).splash-burger svg {
+  height: 100%;
+  width: auto;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger svg circle, .splash-landing > header a:not(.header-close).splash-burger svg path {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  fill: none;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger:hover, .splash-landing > header a:not(.header-close).splash-burger:focus {
+  background: none;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger:hover svg circle, .splash-landing > header a:not(.header-close).splash-burger:focus svg circle {
+  fill: white;
+}
+
+.splash-landing > header a:not(.header-close).splash-burger:hover svg path, .splash-landing > header a:not(.header-close).splash-burger:focus svg path {
+  stroke: #40484B;
 }
 
 .splash-landing .splash-toast {
@@ -990,15 +1543,24 @@
   -webkit-justify-content: center;
   justify-content: center;
   background: #40484B;
-  height: 25% !important;
+  padding: 50px 0 0;
 }
 
 .splash-landing > section > header h1 {
-  padding-top: 5%;
-  font-size: 48px;
-  font-weight: 900;
   text-align: center;
-  text-transform: none !important;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section > header {
+    height: 25% !important;
+    padding: 0 !important;
+  }
+  .splash-landing > section > header h1 {
+    padding-top: 45px;
+    font-size: 48px;
+    font-weight: 900;
+    text-transform: none !important;
+  }
 }
 
 .splash-landing > section .splash-footer-link {

@@ -199,29 +199,36 @@
 		ul {
 			max-width: 600px;
 			margin: 0 auto;
-			a {
-				border: 0;
-				&:hover, &:focus {
-					background: rgba($smoke, .25);
-				}
-				&:active {
-					background: rgba($smoke, .5);
-				}
-				&.active {
-					background: $smoke;
-					color: $slate;
+			padding: 0;
+			li {
+				padding: 0;
+				a {
+					border: 0;
 					&:hover, &:focus {
-						background: $smoke;
-						color: $slate;
+						background: rgba($smoke, .25);
 					}
 					&:active {
+						background: rgba($smoke, .5);
+					}
+					&.active {
 						background: $smoke;
+						color: $slate;
+						&:hover, &:focus {
+							background: $smoke;
+							color: $slate;
+						}
+						&:active {
+							background: $smoke;
+						}
 					}
 				}
 			}
 		}
 	}
 	.splash-categories {
+		> header {
+			height: 25%!important;
+		}
 		.main {
 			@include transition(.15s ease-in-out);
 			@include flex-wrap;
@@ -241,23 +248,30 @@
 				@include opacity(1);
 			}
 			> div {
+				@include flex;
+				@include flex-wrap;
 				width: 100%;
-				> h1, > h2 {
+				height: 100%;
+				> h1, > h2, > div > h1, > div > h2 {
 					width: 100%;
 					text-align: center;
 				}
-				> h1 {
-					font-size: 28px;
+				> h1, > div > h1 {
+					font-size: 24px;
 					font-weight: 600;
 				}
-				> h2 {
-					margin: 5px auto 22.5px;
-					font-size: 20px;
+				> h2, > div > h2 {
+					margin: 5px auto 7.5px;
+					font-size: 16px;
 					font-weight: 400;
 				}
 				> div {
 					position: relative;
 					width: 100%;
+					&:last-child {
+						-webkit-align-self: flex-end;
+						align-self: flex-end;
+					}
 				}
 			}
 			.category-card-list {
@@ -265,14 +279,14 @@
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
+				margin: 0 -15px -15px;
 				li {
 					width: 25%;
-					padding: 7.5px;
+					padding: 0;
 					div {
 						height: 150px;
 						background-position: center center;
 						background-size: cover;
-						border-radius: 2px;
 						overflow: hidden;
 						a, > span {
 							@include flex;
@@ -280,8 +294,6 @@
 							position: relative;
 							width: 100%;
 							height: 100%;
-							border-radius: 2px;
-							border-bottom: 10px solid white;
 							&:before {
 								@include transition(.15s ease-in-out);
 								@include opacity(.6);
@@ -292,40 +304,82 @@
 								left: 0;
 								width: 100%;
 								height: 100%;
-								border-radius: 2px;
 								background: $slate;
 							}
-							&.bg-delivery {
-								border-color: $auburn;
-							}
-							&.bg-freelancing {
-								border-color: $orange;
-							}
-							&.bg-baking {
-								border-color: $gold;
-							}
-							&.bg-photography {
-								border-color: $moola;
-							}
-							&.bg-tech {
-								border-color: $azure;
-							}
-							&.bg-household {
-								border-color: $cobalt;
-							}
-							&.bg-athletic {
-								border-color: $eggplant;
-							}
-							&.bg-academic {
-								border-color: $cerise;
-							}
 							span {
-								display: block;
 								position: relative;
 								z-index: 5;
+							}
+							.card-icon {
+								display: block;
+								padding: 15px;
+								max-width: 120px;
+								max-height: 120px;
+								svg {
+									@include round;
+									display: block;
+									width: 100%;
+									height: auto;
+									padding: 5px;
+									background: $shamrock;
+									path {
+										@include svg-stroke(white, 2);
+									}
+								}
+							}
+							.card-label {
+								display: none;
 								font-weight: 900;
 								font-size: 24px;
 								text-align: center;
+							}
+							&.bg-delivery {
+								border-color: $auburn;
+								.card-icon svg {
+									background: $auburn;
+								}
+							}
+							&.bg-freelancing {
+								border-color: $orange;
+								.card-icon svg {
+									background: $orange;
+								}
+							}
+							&.bg-baking {
+								border-color: $gold;
+								.card-icon svg {
+									background: $gold;
+								}
+							}
+							&.bg-photography {
+								border-color: $moola;
+								.card-icon svg {
+									background: $moola;
+								}
+							}
+							&.bg-tech {
+								border-color: $azure;
+								.card-icon svg {
+									background: $azure;
+								}
+							}
+							&.bg-household {
+								border-color: $cobalt;
+								.card-icon svg {
+									background: $cobalt;
+								}
+							}
+							&.bg-athletic {
+								border-color: $eggplant;
+								.card-icon svg {
+									background: $eggplant;
+								}
+							}
+							&.bg-academic {
+								border-color: $cerise;
+								.card-icon svg {
+									background: $cerise;
+								}
 							}
 						}
 						a {
@@ -445,69 +499,64 @@
 				}
 			}
 			.subcategory-card-list {
+				@include flex;
+				@include flex-wrap;
 				position: absolute;
 				top: 0;
-				left: 0;
-				z-index: 10;
-				width: 100%;
-				height: 100%;
+				left: -15px;
+				width: calc(100% + 30px);
+				height: calc(100% + 15px);
 				background: $smoke;
 				&.not-selected, &:not(.selected) {
 					@include opacity(0);
-					display: none;
+					z-index: -99;
 				}
 				&.selected {
 					@include opacity(1);
 					z-index: 99;
 				}
 				.category-card-list {
+					margin: 0!important;
+					-webkit-align-self: flex-start;
+					align-self: flex-start;
+					-webkit-justify-content: flex-start;
+					justify-content: flex-start;
 					li {
+						width: 50%;
+						&:nth-child(9), &:nth-child(10) {
+							display: none;
+						}
 						div {
-							background: $slate;
-							height: 80px;
-							&.bg-delivery {
-								background: mix($auburn, lighten($slate, 15%), 20%);
+							background: none;
+							height: 49px;
+							.card-label {
+								display: block!important;
+								padding: 15px;
+								color: white!important;
+								font-weight: 600;
+								font-size: 16px;
 							}
-							&.bg-freelancing {
-								background: mix($orange, lighten($slate, 15%), 20%);
-							}
-							&.bg-baking {
-								background: mix($gold, lighten($slate, 15%), 20%);
-							}
-							&.bg-photography {
-								background: mix($moola, lighten($slate, 15%), 20%);
-							}
-							&.bg-tech {
-								background: mix($azure, lighten($slate, 15%), 20%);
-							}
-							&.bg-household {
-								background: mix($cobalt, lighten($slate, 15%), 20%);
-							}
-							&.bg-athletic {
-								background: mix($eggplant, lighten($slate, 15%), 20%);
-							}
-							&.bg-academic {
-								background: mix($cerise, lighten($slate, 15%), 20%);
-							}
-							span {
-								span {
-									color: white!important;
-									font-weight: 600;
-									font-size: 20px;
+							> span {
+								&:before {
+									display: none!important;
 								}
 							}
 						}
 					}
 				}
 				button {
+					-webkit-align-self: flex-end;
+					align-self: flex-end;
 					display: block;
-					margin: 7.5px auto;
+					width: 100%;
+					max-width: none;
 					color: white;
 					&:hover, &:focus {
 						background: lighten($slate, 15%);
 					}
 				}
 				&.sub-delivery {
+					background: mix($auburn, lighten($slate, 15%), 40%);
 					button {
 						background: $auburn;
 						&:active {
@@ -516,6 +565,7 @@
 					}
 				}
 				&.sub-freelancing {
+					background: mix($orange, lighten($slate, 15%), 40%);
 					button {
 						background: $orange;
 						&:active {
@@ -524,6 +574,7 @@
 					}
 				}
 				&.sub-baking {
+					background: mix($gold, lighten($slate, 15%), 40%);
 					button {
 						background: $gold;
 						&:active {
@@ -532,6 +583,7 @@
 					}
 				}
 				&.sub-photography {
+					background: mix($moola, lighten($slate, 15%), 40%);
 					button {
 						background: $moola;
 						&:active {
@@ -540,6 +592,7 @@
 					}
 				}
 				&.sub-tech {
+					background: mix($azure, lighten($slate, 15%), 40%);
 					button {
 						background: $azure;
 						&:active {
@@ -548,6 +601,7 @@
 					}
 				}
 				&.sub-household {
+					background: mix($cobalt, lighten($slate, 15%), 40%);
 					button {
 						background: $cobalt;
 						&:active {
@@ -556,6 +610,7 @@
 					}
 				}
 				&.sub-athletic {
+					background: mix($eggplant, lighten($slate, 15%), 40%);
 					button {
 						background: $eggplant;
 						&:active {
@@ -564,6 +619,7 @@
 					}
 				}
 				&.sub-academic {
+					background: mix($cerise, lighten($slate, 15%), 40%);
 					button {
 						background: $cerise;
 						&:active {
@@ -572,7 +628,27 @@
 					}
 				}
 			}
+			.pf-card-group-mobile {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				margin: 0 -7.5px;
+				li {
+					padding: 7.5px;
+				}
+			}
+			.pf-card-group {
+				display: none;
+				margin: 0 -7.5px;
+				padding: 0;
+			}
+			&#splash-gurus {
+				> div {
+					display: block;
+				}
+			}
 			form {
+				display: none;
 				position: relative;
 				width: 100%;
 				.input-field {
@@ -595,13 +671,16 @@
 				+ ul {
 					@include flex;
 					@include flex-wrap;
-					@include flex-center;
+					-webkit-align-self: flex-end;
+					align-self: flex-end;
+					-webkit-align-items: flex-start;
+					align-items: flex-start;
+					margin: -1px -14px -14px;
 					li {
-						width: 25%;
-						padding: 7.5px;
+						width: calc(100%  / 3);
+						padding: 1px;
 						> div {
 							background: white;
-							height: 150px;
 							padding: 15px;
 							border-bottom: 10px solid $slate;
 							border-radius: 2px;
@@ -615,6 +694,7 @@
 								text-transform: uppercase;
 							}
 							.course-title {
+								display: none;
 								margin-top: 15px;
 								max-height: 56px;
 								overflow: hidden;
@@ -623,6 +703,276 @@
 						}
 					}
 				}
+			}
+			@media screen and (min-width: 768px) {
+				> div {
+					display: block;
+					height: auto;
+					> h1, > div > h1 {
+						font-size: 28px;
+					}
+					> h2, > div > h2 {
+						margin: 5px auto 22.5px;
+						font-size: 20px;
+					}
+					> div {
+						-webkit-align-self: flex-start;
+						align-self: flex-start;
+					}
+				}
+				.category-card-list {
+					margin: 0 -7.5px;
+					li {
+						padding: 7.5px;
+						div {
+							border-radius: 2px;
+							a, > span {
+								border-radius: 2px;
+								border-bottom: 10px solid white;
+								&:before {
+									border-radius: 2px;
+								}
+								.card-icon {
+									display: none;
+								}
+								.card-label {
+									display: block;
+								}
+							}
+						}
+					}
+				}
+				.subcategory-card-list {
+					display: block;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: $smoke!important;
+					.category-card-list {
+						-webkit-align-self: auto;
+						align-self: auto;
+						-webkit-justify-content: center;
+						justify-content: center;
+						margin: 0 -7.5px!important;
+						li {
+							width: 25%;
+							&:nth-child(9), &:nth-child(10) {
+								display: block;
+							}
+							div {
+								background: $slate;
+								height: 80px;
+								&.bg-delivery {
+									background: mix($auburn, lighten($slate, 15%), 20%);
+								}
+								&.bg-freelancing {
+									background: mix($orange, lighten($slate, 15%), 20%);
+								}
+								&.bg-baking {
+									background: mix($gold, lighten($slate, 15%), 20%);
+								}
+								&.bg-photography {
+									background: mix($moola, lighten($slate, 15%), 20%);
+								}
+								&.bg-tech {
+									background: mix($azure, lighten($slate, 15%), 20%);
+								}
+								&.bg-household {
+									background: mix($cobalt, lighten($slate, 15%), 20%);
+								}
+								&.bg-athletic {
+									background: mix($eggplant, lighten($slate, 15%), 20%);
+								}
+								&.bg-academic {
+									background: mix($cerise, lighten($slate, 15%), 20%);
+								}
+								> span {
+									&:before {
+										display: block!important;
+									}
+								}
+								.card-label {
+									padding: 0;
+									font-size: 20px;
+								}
+							}
+						}
+					}
+					button {
+						-webkit-align-self: auto;
+						align-self: auto;
+						margin: 7.5px auto;
+						max-width: 300px;
+					}
+				}
+				.pf-card-group-mobile {
+					display: none;
+				}
+				.pf-card-group {
+					@include flex;
+					@include flex-center;
+					margin: 0 auto;
+				}
+				&#splash-courses {
+					> div {
+						> div:first-child {
+							display: none;
+						}
+					}
+				}
+				form {
+					display: block;
+					+ ul {
+						-webkit-align-self: flex-start;
+						align-self: flex-start;
+						@include flex-center;
+						margin: 0 -7.5px;
+						li {
+							padding: 7.5px;
+							width: 25%;
+							> div {
+								height: 150px;
+								.course-title {
+									display: block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#live-map {
+		> div {
+			height: calc(100% - 100px)!important;
+			@media screen and (min-width: 768px) {
+				height: 75%!important;
+			}
+		}
+	}
+	.splash-postit {
+		.main {
+			height: calc(100% - 100px);
+			overflow: auto;
+			ul {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				max-width: 945px;
+				margin: 0 -7.5px;
+				li {
+					width: 100%;
+					padding: 7.5px;
+				}
+			}
+		}
+		@media screen and (min-width: 945px) {
+			.main {
+				height: 75%;
+				overflow: hidden;
+				ul {
+					li {
+						width: calc(100% / 3);
+					}
+				}
+			}
+		}
+		.postit {
+			position: relative;
+			width: 300px!important;
+			height: 240px!important;
+			margin: auto;
+			.square {
+				display: block;
+				width: 100%;
+				height: auto;
+				fill: none;
+			}
+			> div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: calc(100% - 50px);
+				overflow: hidden;
+				padding: 15px;
+				background: white;
+				text-align: center;
+				span {
+					@include round;
+					display: block;
+					position: relative;
+					z-index: 9;
+					margin: 0 auto 15px;
+					width: 48px;
+					height: 48px;
+					padding: 6px;
+					background: white;
+					svg {
+						display: block;
+						width: 100%;
+						height: 100%;
+						circle, path {
+							@include svg-stroke($shamrock, 5);
+						}
+					}
+				}
+				h1 {
+					font-size: 20px;
+					font-weight: 600;
+				}
+				p {
+					margin-top: 5px;
+					font-size: 16px;
+					font-weight: 400;
+				}
+			}
+			> div, > span {
+				&:before {
+					@include opacity(.2);
+					content: "";
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: $shamrock;
+				}
+			}
+			> span {
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: calc(100% - 50px);
+				height: 50px;
+				background: white;
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					bottom: 0;
+					right: -50px;
+					width: 0;
+					height: 0;
+					border: 25px solid transparent;
+					border-top-color: $shamrock;
+					border-left-color: $shamrock;
+				}
+			}
+		}
+	}
+	#become-guru {
+		.postit {
+			> div, > span {
+				background: $shamrock;
+				color: white;
+			}
+			> span:after {
+				border-top-color: white;
+				border-left-color: white;
 			}
 		}
 	}
@@ -642,12 +992,25 @@
 		top: 0;
 		right: 0;
 		padding: 15px;
+		@media screen and (max-width: 680px) {
+			padding: 0;
+		}
 		a:not(.header-close) {
-			display: block;
+			display: none;
 			padding: 15px;
 			font-size: 20px;
 			font-weight: 700;
+			span {
+				display: none;
+			}
+			@media screen and (min-width: 860px) {
+				display: block;
+				span {
+					display: inline;
+				}
+			}
 			&.active {
+				display: block;
 				background: rgba(white,.85);
 				color: $shamrock;
 			}
@@ -655,9 +1018,9 @@
 				background: white;
 				color: $cerise;
 			}
-			&:first-child {
-				position: absolute;
-				top: 0;
+			&.splash-logo {
+				@include center-y;
+				display: block;
 				left: 0;
 				height: 100%;
 				padding: 15px 15px 5px;
@@ -690,6 +1053,45 @@
 						}
 						text {
 							fill: $smoke;
+						}
+					}
+				}
+				@media screen and (max-width: 680px) {
+					padding: 0;
+					margin-top: 5px;
+					margin-left: 5px;
+					max-height: 40px;
+				}
+			}
+			&.splash-burger {
+				@include center-x;
+				display: block;
+				position: absolute;
+				top: 0;
+				height: 100%;
+				@media screen and (max-width: 680px) {
+					padding: 5px;
+				}
+				@media screen and (min-width: 860px) {
+					@include translate-x(0);
+					left: 179px;
+				}
+				svg {
+					height: 100%;
+					width: auto;
+					circle, path {
+						@include transition(.15s ease-in-out);
+						@include svg-stroke(white, 4);
+					}
+				}
+				&:hover, &:focus {
+					background: none;
+					svg {
+						circle {
+							fill: white;
+						}
+						path {
+							stroke: $slate;
 						}
 					}
 				}
@@ -777,13 +1179,21 @@
 			@include flex;
 			@include flex-center;
 			background: $slate;
-			height: 25%!important;
+			padding: 50px 0 0;
 			h1 {
-				padding-top: 5%;
-				font-size: 48px;
-				font-weight: 900;
 				text-align: center;
-				text-transform: none!important;
+			}
+		}
+		@media screen and (min-width: 768px) {
+			> header {
+				height: 25%!important;
+				padding: 0!important;
+				h1 {
+					padding-top: 45px;
+					font-size: 48px;
+					font-weight: 900;
+					text-transform: none!important;
+				}
 			}
 		}
 		.splash-footer-link {
