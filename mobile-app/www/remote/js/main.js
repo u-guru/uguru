@@ -13,6 +13,8 @@ if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = _ipaddress;
   REST_URL = "http://localhost:5000";
+  // BASE_URL = _ipaddress;
+  // REST_URL = "http://localhost:5000"
 
   // REST_URL = 'https://192.168.0.107:5000';
 
@@ -184,6 +186,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/admin',
         templateUrl: BASE + 'templates/admin/admin.html',
         controller: 'AdminTimelineController'
+  }).
+  state('root.admin-universities', {
+        url: '/admin-universities',
+        templateUrl: BASE + 'templates/admin/admin.universities.html',
+        controller: 'AdminUniversityController'
   }).
   state('root.majors-container', {
         url: '/majors-container',

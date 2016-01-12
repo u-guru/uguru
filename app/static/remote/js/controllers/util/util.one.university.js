@@ -107,11 +107,20 @@ angular.module('uguru.util.controllers')
     var initRequestMap = function() {
       console.log($scope.university)
       if ($scope.university) {
-        $scope.map = GMapService.initMapObj($scope.university, {zoom:15, disableDoubleClickZoom:true, draggable:false});
-        $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.university.latitude, longitude:$scope.university.longitude}};
+        $scope.map = GMapService.initMapObj($scope.university, {zoom:18, disableDoubleClickZoom:true, draggable:false});
+        $scope.map.nearbyLocations = {coords:"'self'", markers:[]};
+        $scope.gmapAnimation = google.maps.Animation.BOUNCE;
+        $scope.map.centerMarker = {id:1, options:{animation: $scope.gmapAnimation, icon:"https://uguru.me/static/remote/img/icons/marker.svg"}, windowText:"Campus Center",  showWindow:true, coords: {latitude:$scope.university.latitude, longitude:$scope.university.longitude}, control: {}};
+
+
+        $timeout(function() {
+          $scope.map.centerMarker.control.getGMarkers()[0].setAnimation(null);
+        }, 2500);
+
+
         $scope.map.events.dragend = function(maps, event_name, drag_options) {
           $scope.map.centerMarker.coords = {latitude: maps.center.G, longitude:maps.center.K};
-          GUtilService.getNearestLocation($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
+          GUtilService.getNearestLocationOneMarker($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
           $scope.map.centerMarker.showWindow = true;
         }
 
@@ -123,10 +132,12 @@ angular.module('uguru.util.controllers')
 
       uiGmapGoogleMapApi.then(function(maps) {
         maps.visualRefresh = true;
-
+        $timeout(function() {
+          GUtilService.getNearestLocationManyMarkers($scope.map.control.getGMap(), $scope.map.control.getGMap().center.G, $scope.map.control.getGMap().center.K, $scope);
+        }, 2000)
         // $scope.$on('$ionicView.loaded', function() {
 
-          $scope.searchbox = initSearchboxGMap();
+          // $scope.searchbox = initSearchboxGMap();
 
           // SearchboxService.initAutocomplete({lat:$scope.university.latitude, lng:$scope.university.longitude})
 

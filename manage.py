@@ -118,6 +118,16 @@ if arg == 'android_push':
     else:
         print "Please pass in message && device token"
 
+if arg == 'already_started':
+    already_started = []
+    for u in University.query.all():
+        if u.sp16_start and datetime.now() > u.sp16_start:
+            already_started.append(u)
+    already_started = sorted(already_started, key=lambda k:k.us_news_ranking)
+    print "\n\n%s universities already started! \n\n" % len(already_started)
+    for uni in already_started:
+        print "Rank #%s: %s started on %s/%s" % (uni.us_news_ranking, uni.name, uni.sp16_start.month, uni.sp16_start.day)
+    print [uni.id for uni in already_started]
 
 def update_universities_forbes():
     from app.static.data.universities import universities_dict
@@ -343,6 +353,8 @@ def generateNumHSRequests(num, user):
         description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
         _request = Request.createHSRequest(user.id, university.id, hs_request_option,\
         file_arr, tag_arr, description, random_payment_card.id)
+
+
 
 
 def init_hs():
@@ -2498,6 +2510,11 @@ if arg == 'variations_courses':
             unique_keys_full.append({'short_name': course.short_name, 'full_name': course.full_name, 'id': course.id, 'subject_variations': [" ".join(course.short_name.split(" ")[:len(course.short_name.split(' ')) - 1]), ""], "code":course.short_name.split(' ')[-1]})
     with open('cal_courses_popular.json', 'wb') as fp:
         json.dump(unique_keys_full, fp, sort_keys = True, indent = 4)
+
+if arg == 'resolve_colors':
+    from app.lib.universities import resolveAllColors
+    resolveAllColors(University.query.all())
+    db_session.commit()
 
 if arg == 'vc_db':
     import json

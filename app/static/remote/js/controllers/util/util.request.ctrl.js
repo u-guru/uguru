@@ -154,7 +154,7 @@ angular.module('uguru.util.controllers')
         $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.user.university.latitude, longitude:$scope.user.university.longitude}};
         $scope.map.events.dragend = function(maps, event_name, drag_options) {
           $scope.map.centerMarker.coords = {latitude: maps.center.G, longitude:maps.center.K};
-          GUtilService.getNearestLocation($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
+          GUtilService.getNearestLocationOneMarker($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
           $scope.map.centerMarker.showWindow = true;
         }
 

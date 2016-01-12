@@ -79,7 +79,24 @@
                 <div style='height:75% !important'>
                     <div class="request-loc map-box-container full-y">
                         <ui-gmap-google-map style='height:400px;' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
-
+                             <ui-gmap-marker
+                                idKey='map.centerMarker.id'
+                                coords='map.centerMarker.coords'
+                                options='map.centerMarker.options'
+                                control='map.centerMarker.control'
+                                >
+                            </ui-gmap-marker>
+                            <ui-gmap-markers
+                            models="map.nearbyLocations.markers"
+                            coords="'self'"
+                            ></ui-gmap-markers>
+                            <!--  <ui-gmap-window
+                                    coords='map.centerMarker.coords'
+                                    show="map.centerMarker.showWindow"
+                                    closeClick="map.centerMarker.showWindow = false;"
+                                    >
+                                    {{map.centerMarker.windowText}}
+                            </ui-gmap-window> -->
                         </ui-gmap-google-map>
                     </div>
                 </div>
@@ -104,7 +121,7 @@
 				<div id="splash-categories" class="main ng-class:{'active':activeTabIndex===0}" ng-controller="CategoriesController">
                     <div>
                         <h1>{{university.short_name}}'s Guru Categories</h1>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incident.</h2>
                         <div>
                             <ul class='category-card-list'>
                     			<li ng-repeat='category in categories' ng-click='showDesktopSubcategories(category)' >
