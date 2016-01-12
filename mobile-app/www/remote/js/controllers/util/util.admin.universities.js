@@ -38,7 +38,7 @@ angular.module('uguru.util.controllers')
 				'Mascot Name': "school_mascot_name",
 				'Casual Name': "school_casual_name",
 				"Short Name": "short_name",
-				'name': "name"
+				'Name': "name"
 			}
 			if (currentValue) {
 				uni[mappingDict[fieldName]] = currentValue;

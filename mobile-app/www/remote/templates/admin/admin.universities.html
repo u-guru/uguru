@@ -26,11 +26,11 @@
                         <span ng-if='uni.us_news_ranking.length === 2'>&nbsp;&nbsp;</span>
                         <span ng-if='uni.us_news_ranking.length === 1'>&nbsp;&nbsp;&nbsp;</span>
                     </span>
-                    <span class='university-school-color p05x txt-smoke' style='background-color:{{uni.school_color_dark}}; border:5px solid black;'>
-                        {{uni.school_color_dark}}
+                    <span class='university-school-color p05x txt-smoke ng-class{:"bg-auburn": !uni.school_color_dark || uni.school_color_dark === "#40484B"}' style='background-color:{{uni.school_color_dark}}; border:5px solid black;' ng-click="fieldPromptAndUpdate('School Color Dark', uni.school_color_dark, uni)">
+                        {{uni.school_color_dark || 'MISSING'}}
                     </span>
-                    <span class='university-school-color p05x txt-charcoal' style='background-color:{{uni.school_color_light}}; border:5px solid black;'>
-                        {{uni.school_color_light}}
+                    <span class='university-school-color p05x txt-charcoal ng-class{:"bg-auburn": !uni.school_color_light || uni.school_color_light === "#757575"' style='background-color:{{uni.school_color_light}}; border:5px solid black;' ng-click="fieldPromptAndUpdate('School Color Light', uni.school_color_light, uni)">
+                        {{uni.school_color_light || 'MISSING'}}
                     </span>
                     <span class='university-title border bg-slate txt-smoke p05xy'>
                         <a ng-click="fieldPromptAndUpdate('Name', uni.name, uni)"> {{uni.name}} </a>
