@@ -1,4 +1,4 @@
 var _local = "true";
-var _startpage = "admin-universities";
-var _ipaddress = "192.168.42.120";
-var _autoredirects = "false";
+var _startpage = "guru-home";
+var _ipaddress = "10.90.48.77";
+var _autoredirects = "false"

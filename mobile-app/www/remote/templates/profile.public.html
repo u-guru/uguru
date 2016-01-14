@@ -209,7 +209,6 @@
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>About</h1>
 					<div>
-						<h2 class="show ng-class:{'hide': !profile.public_mode}">I <span ng-if="user.is_alumni">have</span><span ng-if='!user.is_alumni'>am seeking</span> a <span ng-if="user.is_alumni">degree</span><span ng-if="!user.is_alumni">{{user.year}} degree</span> in Math from {{user.university.short_name || user.university.name}}</h2>
 						<h2 ng-if='!profile.public_mode' class="show ng-class:{'show': !profile.public_mode}">I&nbsp;&nbsp;</h2>
 						<div class="hide custom-dropdown ng-class:{'show': !profile.public_mode}">
 							<div class='relative alumn-dropdown'>
