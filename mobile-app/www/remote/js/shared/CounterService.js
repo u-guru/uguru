@@ -14,7 +14,7 @@ function CounterService($timeout, $interval) {
       separator : ',',
       decimal : '.',
       prefix : '',
-      suffix : ''
+      suffix : '%'
     };
 
   var initCounter = function(selector, minVal, maxVal, duration) {

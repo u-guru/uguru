@@ -391,7 +391,7 @@ angular.module('uguru.util.controllers')
         }
 
         CTAService.initSingleCTA('#cta-box-academic', '#university-splash', showCTACallback("academic"));
-        CTAService.initSingleCTA('#cta-box-baking', '#university-splash', showCTACallback("baking"));
+        CTAService.initSingleCTA('#cta-box-baking', '#university-splash', showCTACallback("bakery"));
         CTAService.initSingleCTA('#cta-box-household', '#university-splash', showCTACallback("household"));
         CTAService.initSingleCTA('#cta-box-photography', '#university-splash', showCTACallback("photography"));
         CTAService.initSingleCTA('#cta-box-tech', '#university-splash', showCTACallback("tech"));
