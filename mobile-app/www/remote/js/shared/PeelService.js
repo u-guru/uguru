@@ -32,23 +32,22 @@ function PeelService($timeout) {
     p.setFadeThreshold(.7);
     // $timeout(function() {
 
+    return p;
+  }
+
+  var launchPeelAction = function(p, cb) {
     startPeel(p);
 
-    // tween.seek(0);
-    // tween.play();
-    // }, 1000)
+    cb && cb();
+    console.log('calling callback');
     $timeout(function() {
-      // console.log('attempt to reset');
       resetPeel(p);
-      // tween.play();
-    }, 3000)
-    // p.handlePress(function(evt) {
-
-    // });
+    }, 3000);
   }
 
   return {
-    initPeel:initPeel
+    initPeel:initPeel,
+    launchPeelAction:launchPeelAction
   }
 
 }

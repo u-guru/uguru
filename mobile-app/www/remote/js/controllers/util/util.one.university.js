@@ -17,9 +17,10 @@ angular.module('uguru.util.controllers')
   'ContentService',
   'CTAService',
   'PeelService',
+  'TypedService',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
-    SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService){
+    SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService){
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
@@ -33,7 +34,7 @@ angular.module('uguru.util.controllers')
       $scope.activeTabIndex = 1;
       $scope.university = {}
       $scope.profile = {public_mode: true};
-      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}}
+      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}}
       $scope.page.sidebar = {show:false};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
@@ -49,9 +50,87 @@ angular.module('uguru.util.controllers')
       }
 
 
-      $scope.peelCard = function($event) {
+      var showAllPeels
+
+      $scope.peelCard = function($event, item, type) {
+        if ($scope.peelInTransition) {
+          console.log('already transitioning -- skip the click');
+          return;
+        }
         var targetId = $event.currentTarget.children[0].id;
-        PeelService.initPeel('#' + targetId);
+        var peel = $scope.page.peels[targetId];
+        var hidePeelCallback = function() {
+          $timeout(function() {
+            item.hide = true;
+          }, 3000)
+        }
+
+        PeelService.launchPeelAction(peel, hidePeelCallback);
+        $scope.peelInTransition = true;
+
+        $timeout(function() {
+
+          if (type === 'hiw' && isAllHiwPeeled()) {
+            showAllHiwPeels();
+          }
+
+          if (type === 'bg' && isAllBgPeeled()) {
+            showAllBgPeels();
+          }
+          $scope.peelInTransition = false;
+
+        }, 3100)
+
+      }
+
+      var initUniversityTypeWriter = function() {
+        TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
+      }
+      var isAllHiwPeeled = function() {
+        return  ($scope.how_it_works.top_half[0].hide &&
+        $scope.how_it_works.top_half[1].hide &&
+        $scope.how_it_works.top_half[2].hide &&
+        $scope.how_it_works.bottom_half[0].hide &&
+        $scope.how_it_works.bottom_half[1].hide &&
+        $scope.how_it_works.bottom_half[2].hide)
+      }
+      var isAllBgPeeled = function() {
+        return  ($scope.become_guru.top_half[0].hide &&
+        $scope.become_guru.top_half[1].hide &&
+        $scope.become_guru.top_half[2].hide &&
+        $scope.become_guru.bottom_half[0].hide &&
+        $scope.become_guru.bottom_half[1].hide &&
+        $scope.become_guru.bottom_half[2].hide)
+      }
+
+      var showAllBgPeels = function() {
+        $scope.become_guru.top_half[0].hide = false;
+        $scope.become_guru.top_half[1].hide = false;
+        $scope.become_guru.top_half[2].hide = false;
+        $scope.become_guru.bottom_half[0].hide = false;
+        $scope.become_guru.bottom_half[1].hide = false;
+        $scope.become_guru.bottom_half[2].hide = false;
+      }
+
+      var showAllHiwPeels = function() {
+        $scope.how_it_works.top_half[0].hide = false;
+        $scope.how_it_works.top_half[1].hide = false;
+        $scope.how_it_works.top_half[2].hide = false;
+        $scope.how_it_works.bottom_half[0].hide = false;
+        $scope.how_it_works.bottom_half[1].hide = false;
+        $scope.how_it_works.bottom_half[2].hide = false;
+      }
+
+      var initiateAllPeels = function() {
+
+        for (var i = 0; i < 6; i++) {
+          var howItWorksIndexElem = 'hiw-item-' + i;
+          var becomeGuruIndexElem = 'bg-item-' + i;
+          var bgPeel = PeelService.initPeel('#' + becomeGuruIndexElem);
+          var hiwPeel = PeelService.initPeel('#' + howItWorksIndexElem);
+          $scope.page.peels[becomeGuruIndexElem] = bgPeel;
+          $scope.page.peels[howItWorksIndexElem] = hiwPeel;
+        }
       }
 
       $scope.checkPosition = function(event) {
@@ -318,7 +397,11 @@ angular.module('uguru.util.controllers')
          $timeout(function() {
           calcAllMainSectionContainers();
           initProfileCTAS();
-         }, 2500)
+          initUniversityTypeWriter()
+
+          !$scope.desktopMode && initiateAllPeels();
+
+         }, 5000)
 
 
       });

@@ -572,3 +572,13 @@ ul#guru-courses-user-profile {
 	width:100% !important;
 	left:0 !important;
 }
+
+#university-splash {
+
+	#become-guru, #how-it-works{
+		.main.mobile-only {
+			min-height:calc(240px + 200px) !important;
+			width:100%;
+		}
+	}
+}
