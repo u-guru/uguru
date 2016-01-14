@@ -5,8 +5,8 @@
     .bg-university-50p:before {
         content: "";
         display: block;
-        filter: alpha(50);
-        opacity: .5;
+        filter: alpha(90);
+        opacity: .9;
         position: absolute;
         top: 0;
         left: 0;
@@ -27,6 +27,16 @@
         stroke:{{university.school_color_dark}} !important;
         background:{{university.school_color_dark}} !important;
         background-color:{{university.school_color_dark}} !important;
+    }
+    
+    .splash-hero > footer svg stop {
+        stop-color: {{university.school_color_dark}}!important;
+    }
+    .splash-hero > footer .border:before {
+        border-top-color: {{university.school_color_dark}}!important;
+    }
+    .splash-postit#how-it-works > footer .border {
+        background: {{university.school_color_dark}}!important;
     }
 
     .splash-footer-link svg {
@@ -51,10 +61,10 @@
         background: {{university.school_color_dark}} !important;
         color: white!important;
     }
-    .university-txt, .tab-bar a.active, #university-splash > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus  {
+    .txt-university, .tab-bar a.active, #university-splash > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus  {
         color: {{university.school_color_dark}} !important;
     }
-    .splash-hero, .splash-categories > header {
+    .splash-hero {
         background: {{university.school_color_dark}} url("{{university.banner_url}}") center center / cover!important;
     }
     #desktop-guru-onboarding .header {

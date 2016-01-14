@@ -184,7 +184,7 @@
 #university-splash {
 	> header {
 		&:before {
-			@include opacity(.5);
+			@include opacity(.9);
 			content: "";
 			display: block;
 			position: absolute;
@@ -195,63 +195,62 @@
 			background: $slate;
 		}
 	}
-	.tab-bar {
-		ul {
-			max-width: 600px;
-			margin: 0 auto;
-			padding: 0;
-			li {
+	.splash-categories {
+		.tab-bar {
+			padding-top: 45px;
+			background: $slate;
+			ul {
+				max-width: 600px;
+				margin: 0 auto;
 				padding: 0;
-				a {
-					border: 0;
-					&:hover, &:focus {
-						background: rgba($smoke, .25);
-					}
-					&:active {
-						background: rgba($smoke, .5);
-					}
-					&.active {
-						background: $smoke;
-						color: $slate;
+				li {
+					padding: 0;
+					a {
+						border: 0;
+						border-radius: 2px 2px 0 0;
 						&:hover, &:focus {
-							background: $smoke;
-							color: $slate;
+							background: rgba($smoke, .25);
 						}
 						&:active {
+							background: rgba($smoke, .5);
+						}
+						&.active {
 							background: $smoke;
+							color: $slate;
+							&:hover, &:focus {
+								background: $smoke;
+								color: $slate;
+							}
+							&:active {
+								background: $smoke;
+							}
 						}
 					}
 				}
 			}
-		}
-	}
-	.splash-categories {
-		> header {
-			height: 25%!important;
 		}
 		.main {
 			@include transition(.15s ease-in-out);
 			@include flex-wrap;
 			-webkit-align-items: flex-start;
 			align-items: flex-start;
-			position: absolute;
-			z-index: 10;
 			width: 100%;
-			height: calc(75% - 60px);
-			overflow: auto;
 			background: $smoke;
 			&:not(.active) {
 				@include opacity(0);
-				z-index: -10;
+				display: none;
 			}
 			&.active {
 				@include opacity(1);
+				display: block;
+			}
+			&#splash-livemap {
+				height: 600px;
 			}
 			> div {
 				@include flex;
 				@include flex-wrap;
 				width: 100%;
-				height: 100%;
 				> h1, > h2, > div > h1, > div > h2 {
 					width: 100%;
 					text-align: center;
@@ -259,6 +258,9 @@
 				> h1, > div > h1 {
 					font-size: 24px;
 					font-weight: 600;
+					span:first-letter {
+						text-transform: uppercase;
+					}
 				}
 				> h2, > div > h2 {
 					margin: 5px auto 7.5px;
@@ -842,6 +844,14 @@
 				}
 			}
 		}
+		> footer {
+			.border {
+				background: $slate!important;
+				&:before {
+					border-top-color: $smoke!important;
+				}
+			}
+		}
 	}
 	#live-map {
 		> div {
@@ -853,24 +863,22 @@
 	}
 	.splash-postit {
 		.main {
-			height: calc(100% - 100px);
-			overflow: auto;
 			ul {
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
-				max-width: 945px;
-				margin: 0 -7.5px;
 				li {
 					width: 100%;
-					padding: 7.5px;
+					padding: 15px;
 				}
+			}
+			button {
+				margin: 30px 0;
+				max-width: calc(100% / 3 - 30px);
 			}
 		}
 		@media screen and (min-width: 945px) {
 			.main {
-				height: 75%;
-				overflow: hidden;
 				ul {
 					li {
 						width: calc(100% / 3);
@@ -878,10 +886,16 @@
 				}
 			}
 		}
+		> footer {
+			.border {
+				background: $slate!important;
+				&:before {
+					border-top-color: $smoke!important;
+				}
+			}
+		}
 		.postit {
 			position: relative;
-			width: 300px!important;
-			height: 240px!important;
 			margin: auto;
 			.square {
 				display: block;
@@ -890,6 +904,8 @@
 				fill: none;
 			}
 			> div {
+				@include flex;
+				@include flex-center;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -905,9 +921,9 @@
 					position: relative;
 					z-index: 9;
 					margin: 0 auto 15px;
-					width: 48px;
-					height: 48px;
-					padding: 6px;
+					width: 64px;
+					height: 64px;
+					padding: 8px;
 					background: white;
 					svg {
 						display: block;
@@ -926,6 +942,14 @@
 					margin-top: 5px;
 					font-size: 16px;
 					font-weight: 400;
+				}
+				@media screen and (min-width: 768px) {
+					h1 {
+						font-size: 24px;
+					}
+					p {
+						font-size: 18px;
+					}
 				}
 			}
 			> div, > span {
@@ -965,6 +989,12 @@
 		}
 	}
 	#become-guru {
+		> header {
+			background: $slate!important;
+			h1 {
+				color: white!important;
+			}
+		}
 		.postit {
 			> div, > span {
 				background: $shamrock;
@@ -973,6 +1003,51 @@
 			> span:after {
 				border-top-color: white;
 				border-left-color: white;
+			}
+		}
+		> footer {
+			.border {
+				background: $shamrock!important;
+				&:before {
+					border-top-color: $slate!important;
+				}
+			}
+		}
+	}
+	#splash-start {
+		background: $shamrock;
+		text-align: center;
+		h1 {
+			font-size: 36px;
+			font-weight: 600;
+		}
+		h2 {
+			font-size: 24px;
+			font-weight: 600;
+		}
+		ul {
+			@include listless;
+			@include flex;
+			@include flex-center;
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 15px;
+			li {
+				width: 50%;
+				padding: 15px;
+				button {
+					display: block;
+					width: 100%;
+					max-width: none;
+					background: none;
+					font-size: 24px;
+					letter-spacing: 0;
+					text-transform: none;
+					&:hover, &:focus {
+						background: white;
+						color: $shamrock;
+					}
+				}
 			}
 		}
 	}
@@ -1173,7 +1248,7 @@
 	> section {
 		position: relative;
 		width: 100%;
-		height: 100%;
+		height: auto;
 		background-color: $smoke;
 		> header {
 			@include flex;
@@ -1186,13 +1261,61 @@
 		}
 		@media screen and (min-width: 768px) {
 			> header {
+				background: none!important;
+				color: $slate;
 				height: 25%!important;
 				padding: 0!important;
 				h1 {
 					padding-top: 45px;
-					font-size: 48px;
-					font-weight: 900;
+					font-size: 36px;
+					font-weight: 600;
 					text-transform: none!important;
+				}
+			}
+		}
+		> footer {
+			.border {
+				position: relative;
+				background: $smoke;
+				width: 100%;
+				height: 36px;
+				&:before {
+					@include center-x;
+					top: 0;
+					content: "";
+					display: block;
+					width: 0;
+					height: 0;
+					border: 24px solid transparent;
+					border-top-color: $slate;
+				}
+			}
+			.footer-content {
+				@include flex;
+				@include flex-center-vertical;
+				position: absolute;
+				bottom: 36px;
+				left: 0;
+				width: 100%;
+				height: calc(100% - 36px);
+				padding-top: 7.5%;
+				ul {
+					@include listless;
+					@include flex;
+					@include flex-center;
+					margin: 0 auto;
+					li {
+						width: calc(100% / 3);
+						padding: 15px;
+						h2 {
+							font-size: 36px;
+							font-weight: 600;
+						}
+						p {
+							font-size: 24px;
+							font-weight: 400;
+						}
+					}
 				}
 			}
 		}
@@ -1278,7 +1401,7 @@
 			max-width: 300px;
 			background: white;
 			color: $shamrock;
-			font-weight: 700;
+			font-weight: 600;
 			text-transform: capitalize;
 			&:hover, &:focus {
 				@include opacity(1);
@@ -1304,22 +1427,35 @@
 		&.splash-hero {
 			@include flex;
 			@include flex-center;
+			height: 100%;
 			background: $smoke;
 			text-align: center;
 			h1 {
+				padding: 20px 30px;
 				font-size: 32px;
 				font-weight: 600;
-				line-height: 44px;
+				line-height: 1.3;
 				@media screen and (min-width: 768px) {
-					font-size: 60px;
-					line-height: 90px;
+					font-size: 72px;
 				}
 				span {
-					display: inline-block;
+					display: block;
+					&:not(.weight-900) {
+						font-size: 50%;
+					}
 				}
 			}
-			button {
-				margin-top: 30px;
+			> div { 
+				margin-bottom: 10%;
+			}
+			> footer {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				svg {
+					display: block;
+				}
 			}
 		}
 		
