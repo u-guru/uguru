@@ -2,7 +2,7 @@
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
 
-<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController">
+<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader && page.status.showAnimation" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController">
 
 </ion-view>
 
@@ -262,7 +262,7 @@
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                                     <a class="pf-card-mini large pf-card-mini-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                                         <div class="pf-card-mini-banner"></div>
-                                        <span class="user-icon" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=300);"></span>
+                                        <span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
                                         <span class="pf-card-link" ng-include="img_base + 'templates/svg/main/external.html'"></span>
                                     </a>
                                 </li>

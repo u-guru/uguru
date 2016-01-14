@@ -36,7 +36,7 @@ angular.module('uguru.util.controllers')
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
       $scope.page.sidebar = {show:false};
-      $scope.page.status = {loaded:false, showLoader:true};
+      $scope.page.status = {loaded:false, showLoader:true, showAnimation:true};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
