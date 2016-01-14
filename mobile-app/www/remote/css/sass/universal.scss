@@ -139,9 +139,6 @@
 					bottom: -60px;
 					border-width: 3px;
 				}
-				ul li:last-child > span:before {
-					z-index: 5;
-				}
 			}
 			.pf-card-main {
 				padding: 60px 15px 15px;
@@ -283,7 +280,7 @@
 				@include flex-center;
 				margin: 0 -15px -15px;
 				li {
-					width: 25%;
+					width: calc(100% / 3);
 					padding: 0;
 					div {
 						height: 150px;

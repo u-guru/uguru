@@ -2,9 +2,7 @@
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
 
-<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader && page.status.showAnimation" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController">
-
-</ion-view>
+<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader && page.status.showAnimation" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view> -->
 
 <div ng-include="page.universityStyleUrl"></div>
 <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
@@ -27,7 +25,7 @@
 				</a>
 			</header>
 
-			<header class='splash-header ng-class:{"become-guru-active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}'>
+			<!-- <header class='splash-header ng-class:{"become-guru-active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}'>
                 <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
                 <a class="splash-burger ng-class:{'hide':page.sidebar.show && desktopMode}" ng-click="toggleSidebar()">
                     <svg viewBox="0 0 100 100">
@@ -50,8 +48,8 @@
 						</svg>
 					</a>
 				</div>
-			</header>
-            <section class='splash-hero relative' id='splash-home'>
+			</header> -->
+            <!-- <section class='splash-hero relative' id='splash-home'>
                 <a id="splash-footer-support" class="splash-footer-link">
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
                 		<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453" ></path>
@@ -108,8 +106,8 @@
 						</ul>
 					</div>
 				</footer>
-            </section>
-			<section id='how-it-works' class="splash-postit">
+            </section> -->
+			<section id='how-it-works' class="splash-postit" style="display:none!important">
                 <header>
                     <h1 class="txt-university">{{how_it_works.header}}</h1>
                 </header>
@@ -333,7 +331,7 @@
                     </div>
                 </div>
                 <div id="splash-livemap" class="main ng-class:{'active':activeTabIndex===3}">
-                   <div style='height: 600px!important'>
+                   <div style='height: 570px!important'>
                         <div class="request-loc map-box-container full-y">
                             <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
                                 <ui-gmap-markers
