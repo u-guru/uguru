@@ -247,6 +247,7 @@ gulp.task('scripts', function() {
       'lib/lodash/dist/lodash.js',
       'lib/stripe/stripe.js',
       'lib/cta/cta*.js',
+      'lib/peel/peel.js',
       'lib/fastMatcher.js',
       'lib/facebook/openfb.js',
       'lib/facebook/ngopenfb.js',

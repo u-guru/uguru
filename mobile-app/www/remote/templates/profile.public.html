@@ -1,4 +1,4 @@
-<ion-view class='uguru-view pf-type pf-type-academic pf-type-{{user.academic_shop.category.hex_color}} bg-slate pf-has-edit'>
+<ion-view class='uguru-view pf-type pf-type-{{category.hex_color || user.academic_shop.category.hex_color || "academic"}} bg-slate pf-has-edit'>
 	<a id='guru-profile-cta-close' class='cta-modal-close close-button' ng-click='closeProfileModal()'>
 		<svg viewBox="0 0 100 100">
 			<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
