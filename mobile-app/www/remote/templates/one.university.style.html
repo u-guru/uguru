@@ -67,19 +67,34 @@
         background: {{university.school_color_dark}}!important;
     }
 
-    .splash-footer-link svg {
+    .backpack .backpack-color {
+        fill: {{university.school_color_light}}!important;
+    }
+    #splash-footer-top .splash-footer-icon {
         stroke: {{university.school_color_dark}}!important;
     }
-    .splash-footer-link:hover, .splash-footer-link:focus {
+    #splash-footer-top:hover .splash-footer-icon, #splash-footer-top:focus .splash-footer-icon {
+        background: {{university.school_color_dark}}!important;
+        stroke: {{university.school_color_light}}!important;
+    }
+    #splash-footer-top:active .splash-footer-icon {
+        background: white!important;
+        stroke: {{university.school_color_dark}}!important;
+    }
+    
+    #splash-footer-support svg {
+        stroke: {{university.school_color_dark}}!important;
+    }
+    #splash-footer-support:hover, #splash-footer-support:focus {
         background: {{university.school_color_dark}}!important;
     }
-    .splash-footer-link:hover svg, .splash-footer-link:focus svg {
+    #splash-footer-support:hover svg, #splash-footer-support:focus svg {
         stroke: white!important;
     }
-    .splash-footer-link:active {
+    #splash-footer-support:active {
         background: white!important;
     }
-    .splash-footer-link:active svg {
+    #splash-footer-support:active svg {
         stroke: {{university.school_color_dark}}!important;
     }
     .border-university {

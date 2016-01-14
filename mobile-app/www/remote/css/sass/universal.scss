@@ -930,25 +930,25 @@
 						width: 100%;
 						height: 100%;
 						circle, path {
-							@include svg-stroke($shamrock, 5);
+							@include svg-stroke($shamrock, 3);
 						}
 					}
 				}
 				h1 {
-					font-size: 20px;
+					font-size: 24px;
 					font-weight: 600;
 				}
 				p {
 					margin-top: 5px;
-					font-size: 16px;
+					font-size: 18px;
 					font-weight: 400;
 				}
 				@media screen and (min-width: 768px) {
 					h1 {
-						font-size: 24px;
+						font-size: 32px;
 					}
 					p {
-						font-size: 18px;
+						font-size: 22px;
 					}
 				}
 			}
@@ -1324,34 +1324,12 @@
 			position: fixed;
 			z-index: 99;
 			bottom: 15px;
-			width: 48px;
-			height: 48px;
-			padding: 6px;
-			background: rgba(white,.9);
-			&#splash-footer-support {
-				left: 15px;
-				&:before {
-					right: -20px;
-					border-right-color: rgba(white,.9);
-				}
-				&:after {
-					content: "Support";
-					right: -108px;
-				}
-			}
-			&#splash-footer-top {
-				right: 15px;
-				&:before {
-					left: -20px;
-					border-left-color: rgba(white,.9);
-				}
-				&:after {
-					content: "Back to Top";
-					left: -130px;
-				}
-			}
-			svg {
+			svg:not(.backpack) {
+				@include round;
 				@include svg-stroke($shamrock, 7);
+				width: 48px;
+				height: 48px;
+				padding: 6px;
 			}
 			&:before, &:after {
 				@include transition(.15s ease-in-out);
@@ -1373,16 +1351,69 @@
 				color: $slate;
 			}
 			&:hover, &:focus {
-				background: lighten($shamrock, 10%);
 				&:before, &:after {
 					@include opacity(1);
 				}
-				svg {
-					stroke: white;
+			}
+			&#splash-footer-support {
+				left: 15px;
+				background: rgba(white,.9);
+				&:before {
+					right: -20px;
+					border-right-color: rgba(white,.9);
+				}
+				&:after {
+					content: "Support";
+					right: -108px;
+				}
+				&:hover, &:focus {
+					background: lighten($shamrock, 10%);
+					svg {
+						stroke: white;
+					}
+				}
+				&:active {
+					background: $shamrock;
 				}
 			}
-			&:active {
-				background: $shamrock;
+			&#splash-footer-top {
+				right: 15px;
+				span {
+					display: block;
+				}
+				.backpack {
+					display: block;
+					width: 100px;
+					height: auto;
+				}
+				.splash-footer-icon {
+					@include transition(.15s ease-in-out);
+					@include center-x;
+					top: 19%;
+					width: 36px;
+					height: 36px;
+					background: rgba(white,.9);
+					stroke-width: 10px;
+				}
+				&:hover, &:focus {
+					.splash-footer-icon {
+						stroke: white;
+						background: lighten($shamrock, 10%);
+					}
+				}
+				&:active {
+					.splash-footer-icon {
+						background: $shamrock;
+					}
+				}
+				&:before {
+					left: -20px;
+					border-left-color: rgba(white,.9);
+				}
+				&:after {
+					content: "Back to Top";
+					left: -130px;
+				}
 			}
 		}
 		.arrow-down-next {
