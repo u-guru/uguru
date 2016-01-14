@@ -1161,28 +1161,28 @@
 #university-splash .splash-postit .postit > div span svg circle, #university-splash .splash-postit .postit > div span svg path {
   fill: none;
   stroke: #69B3A5;
-  stroke-width: 5px;
+  stroke-width: 3px;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 #university-splash .splash-postit .postit > div h1 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
 }
 
 #university-splash .splash-postit .postit > div p {
   margin-top: 5px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
 }
 
 @media screen and (min-width: 768px) {
   #university-splash .splash-postit .postit > div h1 {
-    font-size: 24px;
+    font-size: 32px;
   }
   #university-splash .splash-postit .postit > div p {
-    font-size: 18px;
+    font-size: 22px;
   }
 }
 
@@ -1756,46 +1756,18 @@
   position: fixed;
   z-index: 99;
   bottom: 15px;
-  width: 48px;
-  height: 48px;
-  padding: 6px;
-  background: rgba(255, 255, 255, 0.9);
 }
 
-.splash-landing > section .splash-footer-link#splash-footer-support {
-  left: 15px;
-}
-
-.splash-landing > section .splash-footer-link#splash-footer-support:before {
-  right: -20px;
-  border-right-color: rgba(255, 255, 255, 0.9);
-}
-
-.splash-landing > section .splash-footer-link#splash-footer-support:after {
-  content: "Support";
-  right: -108px;
-}
-
-.splash-landing > section .splash-footer-link#splash-footer-top {
-  right: 15px;
-}
-
-.splash-landing > section .splash-footer-link#splash-footer-top:before {
-  left: -20px;
-  border-left-color: rgba(255, 255, 255, 0.9);
-}
-
-.splash-landing > section .splash-footer-link#splash-footer-top:after {
-  content: "Back to Top";
-  left: -130px;
-}
-
-.splash-landing > section .splash-footer-link svg {
+.splash-landing > section .splash-footer-link svg:not(.backpack) {
+  border-radius: 1000px;
   fill: none;
   stroke: #69B3A5;
   stroke-width: 7px;
   stroke-linecap: round;
   stroke-linejoin: round;
+  width: 48px;
+  height: 48px;
+  padding: 6px;
 }
 
 .splash-landing > section .splash-footer-link:before, .splash-landing > section .splash-footer-link:after {
@@ -1831,21 +1803,89 @@
   color: #40484B;
 }
 
-.splash-landing > section .splash-footer-link:hover, .splash-landing > section .splash-footer-link:focus {
-  background: #8bc4b9;
-}
-
 .splash-landing > section .splash-footer-link:hover:before, .splash-landing > section .splash-footer-link:hover:after, .splash-landing > section .splash-footer-link:focus:before, .splash-landing > section .splash-footer-link:focus:after {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-.splash-landing > section .splash-footer-link:hover svg, .splash-landing > section .splash-footer-link:focus svg {
+.splash-landing > section .splash-footer-link#splash-footer-support {
+  left: 15px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-support:before {
+  right: -20px;
+  border-right-color: rgba(255, 255, 255, 0.9);
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-support:after {
+  content: "Support";
+  right: -108px;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-support:hover, .splash-landing > section .splash-footer-link#splash-footer-support:focus {
+  background: #8bc4b9;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-support:hover svg, .splash-landing > section .splash-footer-link#splash-footer-support:focus svg {
   stroke: white;
 }
 
-.splash-landing > section .splash-footer-link:active {
+.splash-landing > section .splash-footer-link#splash-footer-support:active {
   background: #69B3A5;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-top {
+  right: 15px;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-top span {
+  display: block;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-top .backpack {
+  display: block;
+  width: 100px;
+  height: auto;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-top .splash-footer-icon {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 19%;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  stroke-width: 10px;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-top:hover .splash-footer-icon, .splash-landing > section .splash-footer-link#splash-footer-top:focus .splash-footer-icon {
+  stroke: white;
+  background: #8bc4b9;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-top:active .splash-footer-icon {
+  background: #69B3A5;
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-top:before {
+  left: -20px;
+  border-left-color: rgba(255, 255, 255, 0.9);
+}
+
+.splash-landing > section .splash-footer-link#splash-footer-top:after {
+  content: "Back to Top";
+  left: -130px;
 }
 
 .splash-landing > section .arrow-down-next {
