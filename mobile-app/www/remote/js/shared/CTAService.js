@@ -24,13 +24,14 @@ function CTAService($timeout) {
     return elem.querySelector('.cta-modal-close');
   }
 
-  var bindCtaToBoxElem = function(box_elem, modal_elem) {
+  var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback) {
     ctaFuncDict[box_elem.id] = function() {
 
       var closeCTAModal = cta(box_elem, modal_elem, ctaOptions, function() {
 
         //show modal cta
         $timeout(function() { showModalCTA(modal_elem) });
+        show_callback && show_callback();
 
         var modalCloseIcon = getModalCloseIcon(modal_elem);
         if (modalCloseIcon) {
@@ -47,7 +48,7 @@ function CTAService($timeout) {
     box_elem.addEventListener('click', ctaFuncDict[box_elem.id]);
   }
 
-  var initSingleCTA = function(boxSelector, parentSelector) {
+  var initSingleCTA = function(boxSelector, parentSelector, show_callback) {
     var parentElem = document.querySelector(parentSelector);
     var boxElem = document.querySelector(boxSelector);
 
@@ -59,9 +60,9 @@ function CTAService($timeout) {
       console.log('ERROR: Could not locate elems', boxSelector, parentSelector)
       return;
     }
-
     ctaParentDict[boxElem.id] = parentSelector;
-    bindCtaToBoxElem(boxElem, modalElem);
+    bindCtaToBoxElem(boxElem, modalElem, show_callback);
+
 
   }
 

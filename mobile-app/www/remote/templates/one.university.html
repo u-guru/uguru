@@ -262,21 +262,21 @@
                 							<ul>
                 								<li>{{category.hex_color}}</li>
                 								<li>
-                									<span><span>25</span>&nbsp;percentile</span>
+                									<span>{{sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
                 								</li>
                 							</ul>
-                							<span class="user-icon" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800);"></span>
+                							<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
                 						</div>
                 						<div class="pf-card-main">
                 							<h1 class="verified">
-                								<span class="inline">Gabrielle Wee</span>
+                								<span class="inline">{{sampleMiniProfilesDict[category.hex_color].name}}</span>
                 								<span class="inline">
                 									<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
                 								</span>
                 							</h1>
-                							<h2 class="pf-school">Ex'pression College</h2>
-                                            <ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-                                			<span class="pf-review-amt">3 Reviews</span>
+                							<h2 class="pf-school">{{sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
+                                            <ul class="pf-rating" data-rating="{{sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+                                			<span class="pf-review-amt">{{sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
                 						</div>
                 					</a>
                 				</li>
