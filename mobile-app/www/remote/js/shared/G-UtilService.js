@@ -45,36 +45,30 @@ function GUtilService() {
         position: gLocation,
         map: map,
         title: markerObj.name,
-        animation: google.maps.Animation.BOUNCE,
+        animation: google.maps.Animation.DROP,
         icon: iconUrl
       });
     return marker;
   }
 
-  var chooseRandomIcon = function(scope) {
+  var getRelevantIcon = function(scope, g_types) {
     // https://developers.google.com/maps/documentation/javascript/reference?hl=en#Symbol
     //rotation, scale, stroke color, stroke opacity, stroke weight, path, label origin, fillOpacity, fillColor, anchor
-    var universityIconOne = {
-      path: google.maps.SymbolPath.CIRCLE,
-      strokeColor: scope.university.school_color_two,
-      fillColor:scope.university.school_color_one,
-      fillOpacity: 1,
-      scale: 15
+    var formatIconSvgUrl = function(iconName,scope) {
+      return scope.img_base + 'templates/svg/map/' + iconName + '.svg'
     }
-    var universityIconTwo = {
-      path: google.maps.SymbolPath.CIRCLE,
-      strokeColor: scope.university.school_color_one,
-      fillColor:scope.university.school_color_two,
-      fillOpacity: 1,
-      scale: 15
+    var supportedIcons = ["bus-stop", "cafe", "establishment", "grocery", "library", "lodging", "parking", "restaurant", "theater", "weight"];
+
+    for (var i = 0; i < g_types.length; i++) {
+      var gTypeIndex = g_types[i];
+      var matchedIndex = supportedIcons.indexOf(gTypeIndex)
+      if (matchedIndex > -1) {
+        return formatIconSvgUrl(supportedIcons[matchedIndex], scope);
+      }
     }
-    var randomIcons = [universityIconOne, universityIconTwo, 'marker.svg', 'location.svg', 'paperclip.svg', 'task.svg', 'question.svg', 'clock.svg'];
+
     var randItem = randomIcons[Math.floor(Math.random()*randomIcons.length)];
-    if (randomIcons.indexOf(randItem) > 1) {
-      return "https://uguru.me/static/remote/img/icons/" + randItem;
-    } else {
-      return randItem
-    }
+    return formatIconSvgUrl(iconName)
   }
 
   var nearbyLocationMarkers = [];
@@ -83,7 +77,7 @@ function GUtilService() {
       publicPlaceService = initPlacesService(map, lat, lng);
     }
     var GLatLng = latCoordToGoogleLatLng(lat, lng);
-    var requestPayload = {location: GLatLng, rankBy:google.maps.places.RankBy.DISTANCE, types:["restaurant", "cafe", "food", "bar" ,"point_of_interest", "establishment"]};
+    var requestPayload = {location: GLatLng, rankBy:google.maps.places.RankBy.DISTANCE, types:["restaurant", "cafe", "food", "bar"]};
     publicPlaceService.nearbySearch(requestPayload,
       function(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -94,7 +88,7 @@ function GUtilService() {
               var placeObj = results[i];
               var placeLat = results[i].geometry.location.G;
               var placeLng = results[i].geometry.location.K;
-              var iconUrl = chooseRandomIcon(scope);
+              var iconUrl = getRelevantIcon(scope, placeObj.types);
               var indexMarker = createMarker(map, placeLat, placeLng, placeObj, iconUrl);
               nearbyLocationMarkers.push(indexMarker);
             }

@@ -24,13 +24,13 @@ angular.module('uguru.guru.controllers', [])
   'LoadingService',
   '$ionicModal',
   'TourService',
-  'Content',
+  'ContentService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet, RankingService, TipService, ModalService, PopupService,
   $ionicSlideBoxDelegate, DeviceService, LoadingService, $ionicModal, TourService,
-  Content) {
+  ContentService) {
 
   $scope.refreshTipsAndRanking = function(user) {
     TipService.currentTips = TipService.generateTips(user);
