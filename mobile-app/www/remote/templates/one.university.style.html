@@ -19,6 +19,34 @@
         z-index: 2;
     }
 
+    .typed-writer-container {
+        border-bottom:dashed 6px {{university.school_color_light}};
+        width:75%;
+        left:12.5%;
+    }
+    #university-typed-writer:before, {
+        content: " ";
+    }
+
+    @keyframes blink {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .is-typing::after {
+      content: '|';
+
+      animation: blink 500ms infinite;
+    }
+
+    #university-typed-writer {
+        height:60px;
+        display:inline-block;
+        font-size:30px;
+        font-weight:900;
+        margin-bottom:-10px;
+    }
+
     .peel-back-shadow {
         background-color: {{university.school_color_dark}} !important;
     }
@@ -28,7 +56,7 @@
         background:{{university.school_color_dark}} !important;
         background-color:{{university.school_color_dark}} !important;
     }
-    
+
     .splash-hero > footer svg stop {
         stop-color: {{university.school_color_dark}}!important;
     }
