@@ -231,8 +231,8 @@
 
 /* ---------- SPLASH PAGES */
 #university-splash > header:before {
-  filter: alpha(opacity=50);
-  opacity: 0.5;
+  filter: alpha(opacity=90);
+  opacity: 0.9;
   content: "";
   display: block;
   position: absolute;
@@ -243,44 +243,46 @@
   background: #40484B;
 }
 
-#university-splash .tab-bar ul {
+#university-splash .splash-categories .tab-bar {
+  padding-top: 45px;
+  background: #40484B;
+}
+
+#university-splash .splash-categories .tab-bar ul {
   max-width: 600px;
   margin: 0 auto;
   padding: 0;
 }
 
-#university-splash .tab-bar ul li {
+#university-splash .splash-categories .tab-bar ul li {
   padding: 0;
 }
 
-#university-splash .tab-bar ul li a {
+#university-splash .splash-categories .tab-bar ul li a {
   border: 0;
+  border-radius: 2px 2px 0 0;
 }
 
-#university-splash .tab-bar ul li a:hover, #university-splash .tab-bar ul li a:focus {
+#university-splash .splash-categories .tab-bar ul li a:hover, #university-splash .splash-categories .tab-bar ul li a:focus {
   background: rgba(241, 241, 241, 0.25);
 }
 
-#university-splash .tab-bar ul li a:active {
+#university-splash .splash-categories .tab-bar ul li a:active {
   background: rgba(241, 241, 241, 0.5);
 }
 
-#university-splash .tab-bar ul li a.active {
+#university-splash .splash-categories .tab-bar ul li a.active {
   background: #F1F1F1;
   color: #40484B;
 }
 
-#university-splash .tab-bar ul li a.active:hover, #university-splash .tab-bar ul li a.active:focus {
+#university-splash .splash-categories .tab-bar ul li a.active:hover, #university-splash .splash-categories .tab-bar ul li a.active:focus {
   background: #F1F1F1;
   color: #40484B;
 }
 
-#university-splash .tab-bar ul li a.active:active {
+#university-splash .splash-categories .tab-bar ul li a.active:active {
   background: #F1F1F1;
-}
-
-#university-splash .splash-categories > header {
-  height: 25% !important;
 }
 
 #university-splash .splash-categories .main {
@@ -294,23 +296,24 @@
   flex-flow: row wrap;
   -webkit-align-items: flex-start;
   align-items: flex-start;
-  position: absolute;
-  z-index: 10;
   width: 100%;
-  height: calc(75% - 60px);
-  overflow: auto;
   background: #F1F1F1;
 }
 
 #university-splash .splash-categories .main:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
-  z-index: -10;
+  display: none;
 }
 
 #university-splash .splash-categories .main.active {
   filter: alpha(opacity=100);
   opacity: 1;
+  display: block;
+}
+
+#university-splash .splash-categories .main#splash-livemap {
+  height: 600px;
 }
 
 #university-splash .splash-categories .main > div {
@@ -325,7 +328,6 @@
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
   width: 100%;
-  height: 100%;
 }
 
 #university-splash .splash-categories .main > div > h1, #university-splash .splash-categories .main > div > h2, #university-splash .splash-categories .main > div > div > h1, #university-splash .splash-categories .main > div > div > h2 {
@@ -336,6 +338,10 @@
 #university-splash .splash-categories .main > div > h1, #university-splash .splash-categories .main > div > div > h1 {
   font-size: 24px;
   font-weight: 600;
+}
+
+#university-splash .splash-categories .main > div > h1 span:first-letter, #university-splash .splash-categories .main > div > div > h1 span:first-letter {
+  text-transform: uppercase;
 }
 
 #university-splash .splash-categories .main > div > h2, #university-splash .splash-categories .main > div > div > h2 {
@@ -1036,6 +1042,14 @@
   }
 }
 
+#university-splash .splash-categories > footer .border {
+  background: #40484B !important;
+}
+
+#university-splash .splash-categories > footer .border:before {
+  border-top-color: #F1F1F1 !important;
+}
+
 #university-splash #live-map > div {
   height: calc(100% - 100px) !important;
 }
@@ -1044,11 +1058,6 @@
   #university-splash #live-map > div {
     height: 75% !important;
   }
-}
-
-#university-splash .splash-postit .main {
-  height: calc(100% - 100px);
-  overflow: auto;
 }
 
 #university-splash .splash-postit .main ul {
@@ -1068,29 +1077,34 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  max-width: 945px;
-  margin: 0 -7.5px;
 }
 
 #university-splash .splash-postit .main ul li {
   width: 100%;
-  padding: 7.5px;
+  padding: 15px;
+}
+
+#university-splash .splash-postit .main button {
+  margin: 30px 0;
+  max-width: calc(100% / 3 - 30px);
 }
 
 @media screen and (min-width: 945px) {
-  #university-splash .splash-postit .main {
-    height: 75%;
-    overflow: hidden;
-  }
   #university-splash .splash-postit .main ul li {
     width: calc(100% / 3);
   }
 }
 
+#university-splash .splash-postit > footer .border {
+  background: #40484B !important;
+}
+
+#university-splash .splash-postit > footer .border:before {
+  border-top-color: #F1F1F1 !important;
+}
+
 #university-splash .splash-postit .postit {
   position: relative;
-  width: 300px !important;
-  height: 240px !important;
   margin: auto;
 }
 
@@ -1102,6 +1116,19 @@
 }
 
 #university-splash .splash-postit .postit > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -1119,9 +1146,9 @@
   position: relative;
   z-index: 9;
   margin: 0 auto 15px;
-  width: 48px;
-  height: 48px;
-  padding: 6px;
+  width: 64px;
+  height: 64px;
+  padding: 8px;
   background: white;
 }
 
@@ -1148,6 +1175,15 @@
   margin-top: 5px;
   font-size: 16px;
   font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  #university-splash .splash-postit .postit > div h1 {
+    font-size: 24px;
+  }
+  #university-splash .splash-postit .postit > div p {
+    font-size: 18px;
+  }
 }
 
 #university-splash .splash-postit .postit > div:before, #university-splash .splash-postit .postit > span:before {
@@ -1186,6 +1222,14 @@
   border-left-color: #69B3A5;
 }
 
+#university-splash #become-guru > header {
+  background: #40484B !important;
+}
+
+#university-splash #become-guru > header h1 {
+  color: white !important;
+}
+
 #university-splash #become-guru .postit > div, #university-splash #become-guru .postit > span {
   background: #69B3A5;
   color: white;
@@ -1194,6 +1238,71 @@
 #university-splash #become-guru .postit > span:after {
   border-top-color: white;
   border-left-color: white;
+}
+
+#university-splash #become-guru > footer .border {
+  background: #69B3A5 !important;
+}
+
+#university-splash #become-guru > footer .border:before {
+  border-top-color: #40484B !important;
+}
+
+#university-splash #splash-start {
+  background: #69B3A5;
+  text-align: center;
+}
+
+#university-splash #splash-start h1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+#university-splash #splash-start h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#university-splash #splash-start ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+#university-splash #splash-start ul li {
+  width: 50%;
+  padding: 15px;
+}
+
+#university-splash #splash-start ul li button {
+  display: block;
+  width: 100%;
+  max-width: none;
+  background: none;
+  font-size: 24px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+#university-splash #splash-start ul li button:hover, #university-splash #splash-start ul li button:focus {
+  background: white;
+  color: #69B3A5;
 }
 
 .splash-landing {
@@ -1524,7 +1633,7 @@
 .splash-landing > section {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: #F1F1F1;
 }
 
@@ -1552,15 +1661,94 @@
 
 @media screen and (min-width: 768px) {
   .splash-landing > section > header {
+    background: none !important;
+    color: #40484B;
     height: 25% !important;
     padding: 0 !important;
   }
   .splash-landing > section > header h1 {
     padding-top: 45px;
-    font-size: 48px;
-    font-weight: 900;
+    font-size: 36px;
+    font-weight: 600;
     text-transform: none !important;
   }
+}
+
+.splash-landing > section > footer .border {
+  position: relative;
+  background: #F1F1F1;
+  width: 100%;
+  height: 36px;
+}
+
+.splash-landing > section > footer .border:before {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 0;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 24px solid transparent;
+  border-top-color: #40484B;
+}
+
+.splash-landing > section > footer .footer-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 36px);
+  padding-top: 7.5%;
+}
+
+.splash-landing > section > footer .footer-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.splash-landing > section > footer .footer-content ul li {
+  width: calc(100% / 3);
+  padding: 15px;
+}
+
+.splash-landing > section > footer .footer-content ul li h2 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.splash-landing > section > footer .footer-content ul li p {
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .splash-landing > section .splash-footer-link {
@@ -1689,7 +1877,7 @@
   max-width: 300px;
   background: white;
   color: #69B3A5;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: capitalize;
 }
 
@@ -1742,29 +1930,45 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  height: 100%;
   background: #F1F1F1;
   text-align: center;
 }
 
 .splash-landing > section.splash-hero h1 {
+  padding: 20px 30px;
   font-size: 32px;
   font-weight: 600;
-  line-height: 44px;
+  line-height: 1.3;
 }
 
 @media screen and (min-width: 768px) {
   .splash-landing > section.splash-hero h1 {
-    font-size: 60px;
-    line-height: 90px;
+    font-size: 72px;
   }
 }
 
 .splash-landing > section.splash-hero h1 span {
-  display: inline-block;
+  display: block;
 }
 
-.splash-landing > section.splash-hero button {
-  margin-top: 30px;
+.splash-landing > section.splash-hero h1 span:not(.weight-900) {
+  font-size: 50%;
+}
+
+.splash-landing > section.splash-hero > div {
+  margin-bottom: 10%;
+}
+
+.splash-landing > section.splash-hero > footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero > footer svg {
+  display: block;
 }
 
 .splash-landing > section.essay-pricing .main {
