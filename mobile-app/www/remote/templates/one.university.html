@@ -1,8 +1,13 @@
 <!--1. Read all @gabrielle comments-->
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
+
+<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy' style='z-index:20000; position:fixed; height:calc(100%);width:calc(100%);'>
+
+</ion-view>
+
 <div ng-include="page.universityStyleUrl"></div>
-<ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false" >
+<ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
 	<ion-view class='bg-smoke'>
 		<main id='university-splash' class='splash-landing hs-view full-xy'>
             <div id='cta-modal-sidebar' ng-if='page.sidebar.show'  class='fx-ease-none full-y hide ng-class:{"show":page.sidebar.show, "full-x":!desktopMode, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </div>

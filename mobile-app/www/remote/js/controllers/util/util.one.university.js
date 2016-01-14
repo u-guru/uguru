@@ -34,12 +34,14 @@ angular.module('uguru.util.controllers')
       $scope.activeTabIndex = 1;
       $scope.university = {}
       $scope.profile = {public_mode: true};
-      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}}
+      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
       $scope.page.sidebar = {show:false};
+      $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
       console.log('sample mini profiles dict', $scope.sampleMiniProfilesDict);
+
 
       var calcAllMainSectionContainers = function() {
         $scope.page.offsets = {
@@ -250,7 +252,15 @@ angular.module('uguru.util.controllers')
           })
           //update sidebar link
           $scope.pageLinks[1].name = universityObj.short_name
-          console.log('universityObj', universityObj)
+
+          $timeout(function() {
+            $scope.page.status.loaded = true;
+          }, 1000);
+
+          $timeout(function() {
+            $scope.page.status.showLoader = false;
+          }, 2500)
+
         }
 
         var failure = function(err) {

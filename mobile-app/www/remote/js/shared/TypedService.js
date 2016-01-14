@@ -28,7 +28,7 @@ function TypedService($timeout, $interval) {
       actor.$element.classList.remove('is-typing')
     })
 
-    theater.addActor(selector_id, {speed:0.9});
+    theater.addActor(selector_id, {speed:0.9, accuracy:1});
 
     msCount = 0
     for (var i = 0; i < dataArr.length; i++) {
