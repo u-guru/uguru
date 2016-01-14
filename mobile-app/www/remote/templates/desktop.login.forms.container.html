@@ -45,6 +45,6 @@
     	</div>
         <a class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' ng-click="root.vars.forgotPassword = true;">Forgot Your Password?</a>
         <a class="form-link" ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode && !root.vars.forgotPassword'>Have an account?</a>
-        <a class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>Create an account</a>
+        <a name='createAccount' class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>Create an account</a>
     </section>
 </div>
