@@ -36,6 +36,9 @@ angular.module('uguru.util.controllers')
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}}
       $scope.page.sidebar = {show:false};
       $scope.page.header = {showSolidNav:false};
+      $scope.sampleProfiles = ContentService.sampleProfiles;
+      $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
+      console.log('sample mini profiles dict', $scope.sampleMiniProfilesDict);
 
       var calcAllMainSectionContainers = function() {
         $scope.page.offsets = {
@@ -292,11 +295,17 @@ angular.module('uguru.util.controllers')
       }
 
       var initProfileCTAS = function() {
-        CTAService.initSingleCTA('#cta-box-academic', '#university-splash');
-        CTAService.initSingleCTA('#cta-box-baking', '#university-splash');
-        CTAService.initSingleCTA('#cta-box-household', '#university-splash');
-        CTAService.initSingleCTA('#cta-box-photography', '#university-splash');
-        CTAService.initSingleCTA('#cta-box-tech', '#university-splash');
+        var showCTACallback = function(category) {
+          return function() {
+            $scope.user = $scope.sampleProfiles[category];
+          }
+        }
+
+        CTAService.initSingleCTA('#cta-box-academic', '#university-splash', showCTACallback("academic"));
+        CTAService.initSingleCTA('#cta-box-baking', '#university-splash', showCTACallback("baking"));
+        CTAService.initSingleCTA('#cta-box-household', '#university-splash', showCTACallback("household"));
+        CTAService.initSingleCTA('#cta-box-photography', '#university-splash', showCTACallback("photography"));
+        CTAService.initSingleCTA('#cta-box-tech', '#university-splash', showCTACallback("tech"));
       }
 
       getPublicUniversityInformation();
