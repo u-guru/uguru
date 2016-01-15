@@ -1,20 +1,12 @@
 
 <main id="timeline" class='full-xy'>
-    <header>
-        <div class="timeline-header">
+    <div class='full-x'>
+        <div class="timeline-header p20xy text-center bg-shamrock">
             <div>
-                <h1>Sp16 Universities</h1>
-                <h2><u class='weight-900'>{{alreadyStartedUniversities.length}}</u> already started</h2>
+                <h1 style='font-size:48px;'>Sp16 Universities</h1>
+                <h2 style='font-size:36px;'><u class='weight-900'>{{alreadyStartedUniversities.length}}</u> already started</h2>
             </div>
         </div>
-        <div class="tab-bar">
-            <ul>
-                <li ng-repeat='thread in timeline.threads'><a ng-click="setActiveThread(thread)" class="ng-class:{'active':page.active.thread === thread}">{{thread}}</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <div class='full-x'>
        <!-- 1 -->
         <h1 class='text-center uppercase weight-900 full-x p20top m20top hide ng-class:{"show":page.active.progress_percent}'> {{page.active.progress}} items completed</h1>
         <ul class='text-center flex-wrap full-x'>
