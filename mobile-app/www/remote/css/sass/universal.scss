@@ -193,7 +193,7 @@
 		}
 	}
 	.splash-categories {
-		.tab-bar {
+		.splash-bar {
 			padding-top: 45px;
 			background: $slate;
 			ul {
@@ -1458,29 +1458,75 @@
 			height: 100%;
 			background: $smoke;
 			text-align: center;
+			> div { 
+				width: 100%;
+				margin-bottom: 10%;
+			}
 			h1 {
+				width: 100%;
+				max-width: 800px;
+				margin: 0 auto;
 				padding: 20px 30px;
 				font-size: 32px;
 				font-weight: 600;
 				line-height: 1.3;
-				@media screen and (min-width: 768px) {
-					font-size: 72px;
-				}
 				span {
 					display: block;
 					&:not(.weight-900) {
-						font-size: 50%;
+						font-size: 20px;
+					}
+				}
+				.typed-writer-container {
+					border-bottom: dashed 2px $shamrock;
+					margin: 15px 0;
+					.is-typing::after {
+						content: '|';
+						animation: blink 500ms infinite;
+				    }
+				    .weight-900 {
+				        height: 48px;
+				    }
+				}
+			}
+			@media screen and (min-width: 600px) {
+				h1 {
+					font-size: 48px;
+					span {
+						&:not(.weight-900) {
+							font-size: 32px;
+						}
+					}
+					.typed-writer-container {
+						border-width: 4px;
+						margin: 20px 0;
+						.weight-900 {
+					        height: 72px;
+					    }
 					}
 				}
 			}
-			> div { 
-				margin-bottom: 10%;
+			@media screen and (min-width: 800px) {
+				h1 {
+					font-size: 72px;
+					span {
+						&:not(.weight-900) {
+							font-size: 36px;
+						}
+					}
+					.typed-writer-container {
+						border-width: 6px;
+						margin: 30px 0;
+						.weight-900 {
+					        height: 93px;
+					    }
+					}
+				}
 			}
 			> footer {
-				position: absolute;
+				@include center-x;
 				bottom: 0;
-				left: 0;
 				width: 100%;
+				min-width: 1000px;
 				svg {
 					display: block;
 				}
@@ -1722,6 +1768,10 @@
 		@include opacity(1);
 		@include translate-y(0);
 	}
+}
+@include keyframes(blink) {
+	0% { @include opacity(0); }
+	100% { @include opacity(1); }
 }
 
 // TICKET STUB

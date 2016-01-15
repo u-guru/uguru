@@ -20,31 +20,7 @@
     }
 
     .typed-writer-container {
-        border-bottom:dashed 6px {{university.school_color_light}};
-        width:75%;
-        left:12.5%;
-    }
-    #university-typed-writer:before, {
-        content: " ";
-    }
-
-    @keyframes blink {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .is-typing::after {
-      content: '|';
-
-      animation: blink 500ms infinite;
-    }
-
-    #university-typed-writer {
-        height:60px;
-        display:inline-block;
-        font-size:30px;
-        font-weight:900;
-        margin-bottom:-10px;
+        border-bottom-color: {{university.school_color_light}}!important;
     }
 
     .peel-back-shadow {
@@ -104,7 +80,7 @@
         background: {{university.school_color_dark}} !important;
         color: white!important;
     }
-    .txt-university, .tab-bar a.active, #university-splash > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus  {
+    .txt-university, .splash-bar a.active, #university-splash > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus  {
         color: {{university.school_color_dark}} !important;
     }
     .splash-hero {

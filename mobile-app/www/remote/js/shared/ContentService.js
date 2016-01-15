@@ -45,7 +45,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+			"profile_url": "remote/./img/filler/avatars/guru-academic-f.jpg",
 			"guru_introduction": "Note-taking guru extraordinaire.",
 			"profile_code": "academic",
 			"verified": true,
@@ -63,14 +63,13 @@ function ContentService() {
 			"messenger_friendly": true,
 			"phone_friendly": true,
 			"text_friendly": true,
+			"year": "grad student",
 			"is_alumni": false,
-			"major": "Mathematics",
+			"major": "Computer Science",
 			"guru_languages": [{
-				name: "Portuguese"
+				name: "English"
 			}, {
-				name: "Gujrati"
-			}, {
-				name: "Zulu"
+				name: "Spanish"
 			}, ],
 			"all_currencies": [{
 				name: "Money",
@@ -89,10 +88,6 @@ function ContentService() {
 				active: true,
 				icon_url: "meal_points.html"
 			}, {
-				name: "Chipotle",
-				active: true,
-				icon_url: "chipotle.html"
-			}, {
 				name: "Coffee",
 				active: true,
 				icon_url: "coffee.html"
@@ -102,16 +97,20 @@ function ContentService() {
 				icon_url: "kitten_time.html"
 			}],
 			"guru_experiences": [{
-				name: "Life Coaching 101 instructor",
-				years: 12,
-				description: "Yeah i can tech..",
+				name: "NASA Intern",
+				years: 1,
+				description: "",
 			}, {
-				name: "Venice Beach LifeSave",
-				description: "Thats right, not only do i coach lives, i save them",
-				years: 5
+				name: "CS 312 TA",
+				years: 2,
+				description: "",
+			}, {
+				name: "CS 200 TA",
+				description: "",
+				years: 1
 			}],
 			"academic_shop": {
-				"banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+				"banner_url": "remote/./img/filler/avatars/guru-academic-f.jpg",
 				"title": "The Golden Bear Tutor",
 				"description": "Tutoring for three years, I am devoted in helping my peers achieve eureka moments when studying. Dean’s List and in the top quartile of all my classes.",
 				"portfolio_items":
@@ -119,27 +118,53 @@ function ContentService() {
 					"rounded_avg_rating": 5,
 					"half_stars": false,
 					"avg_rating": 4.9,
-					"name": "iPhone",
-					"full_name": "4s/5s/6/6 plus",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "CS 200",
+					"full_name": "Algorithms and Data Structures",
+					"hourly_price": 20,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
 					}]
 				}, {
 					"rounded_avg_rating": 4,
 					"avg_rating": 4.0,
 					"half_stars": true,
-					"name": "Android Repair",
-					"full_name": "Ice cream, gingerbread, etc",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "CS 312",
+					"full_name": "Introduction to Programming",
+					"hourly_price": 25,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "MATH 410",
+					"full_name": "Linear Algebra",
+					"hourly_price": 15,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "CS 420",
+					"full_name": "Analysis of Algorithms",
+					"hourly_price": 15,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
 					}]
 				}]
 			}
@@ -153,7 +178,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+			"profile_url": "remote/./img/filler/avatars/guru-baker-m.jpg",
 			"guru_introduction": "I make yummy things",
 			"profile_code": "baking",
 			"verified": true,
@@ -171,14 +196,13 @@ function ContentService() {
 			"messenger_friendly": true,
 			"phone_friendly": true,
 			"text_friendly": true,
+			"year": "junior",
 			"is_alumni": false,
-			"major": "Mathematics",
+			"major": "Hospitality",
 			"guru_languages": [{
-				name: "Portuguese"
+				name: "French"
 			}, {
-				name: "Gujrati"
-			}, {
-				name: "Zulu"
+				name: "Italian"
 			}, ],
 			"all_currencies": [{
 				name: "Money",
@@ -197,10 +221,6 @@ function ContentService() {
 				active: true,
 				icon_url: "meal_points.html"
 			}, {
-				name: "Chipotle",
-				active: true,
-				icon_url: "chipotle.html"
-			}, {
 				name: "Coffee",
 				active: true,
 				icon_url: "coffee.html"
@@ -210,16 +230,16 @@ function ContentService() {
 				icon_url: "kitten_time.html"
 			}],
 			"guru_experiences": [{
-				name: "Life Coaching 101 instructor",
-				years: 12,
-				description: "Yeah i can tech..",
+				name: "Barista at Starbucks",
+				description: "",
+				years: "current"
 			}, {
-				name: "Venice Beach LifeSave",
-				description: "Thats right, not only do i coach lives, i save them",
-				years: 5
+				name: "Baker at Mrs. Fields",
+				description: "",
+				years: 2
 			}],
 			"academic_shop": {
-				"banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+				"banner_url": "remote/./img/filler/avatars/guru-baker-m.jpg",
 				"title": "Jem's Quality Treats",
 				"description": "Fresh delivery with tasty vegan, gluten-free and kosher options. Creating the most delicious, all natural baked goods from Court Hall on North Campus. Drop me a line to check out my seasonal treats.",
 				"portfolio_items":
@@ -227,27 +247,61 @@ function ContentService() {
 					"rounded_avg_rating": 5,
 					"half_stars": false,
 					"avg_rating": 4.9,
-					"name": "iPhone",
-					"full_name": "4s/5s/6/6 plus",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "",
+					"full_name": "Chocolate Chip Cookies",
+					"hourly_price": 5,
+					"price_measure": "dozen",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/baking/cookie.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
 					}]
 				}, {
 					"rounded_avg_rating": 4,
 					"avg_rating": 4.0,
 					"half_stars": true,
-					"name": "Android Repair",
-					"full_name": "Ice cream, gingerbread, etc",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "",
+					"full_name": "Cupcakes",
+					"hourly_price": 10,
+					"price_measure": "dozen",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/baking/cupcake.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "Donuts",
+					"hourly_price": 8,
+					"price_measure": "dozen",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/baking/donut.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "Macarons",
+					"hourly_price": 12,
+					"price_measure": "dozen",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/baking/maca.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
 					}]
 				}]
 			}
@@ -261,9 +315,9 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+			"profile_url": "remote/./img/filler/avatars/guru-clean-m.jpg",
 			"guru_introduction": "So fresh, so clean, and a five-star guru.",
-			"profile_code": "tech",
+			"profile_code": "household",
 			"verified": true,
 			"percentile": "25th",
 			"guru_rating": {
@@ -279,14 +333,17 @@ function ContentService() {
 			"messenger_friendly": true,
 			"phone_friendly": true,
 			"text_friendly": true,
+			"year": "sophomore",
 			"is_alumni": false,
-			"major": "Mathematics",
+			"major": "Hospitality",
 			"guru_languages": [{
-				name: "Portuguese"
+				name: "English"
 			}, {
-				name: "Gujrati"
+				name: "Spanish"
 			}, {
-				name: "Zulu"
+				name: "Latin"
+			}, {
+				name: "German"
 			}, ],
 			"all_currencies": [{
 				name: "Money",
@@ -296,10 +353,6 @@ function ContentService() {
 				name: "Food",
 				active: true,
 				icon_url: "food.html"
-			}, {
-				name: "Bitcoin",
-				active: true,
-				icon_url: "dogecoin.html"
 			}, {
 				name: "Meal Points",
 				active: true,
@@ -318,16 +371,16 @@ function ContentService() {
 				icon_url: "kitten_time.html"
 			}],
 			"guru_experiences": [{
-				name: "Life Coaching 101 instructor",
-				years: 12,
-				description: "Yeah i can tech..",
+				name: "Guest Service Agent at Holiday Inn",
+				years: 1,
+				description: "",
 			}, {
-				name: "Venice Beach LifeSave",
-				description: "Thats right, not only do i coach lives, i save them",
-				years: 5
+				name: "Sales Associate at Target",
+				description: "",
+				years: 2
 			}],
 			"academic_shop": {
-				"banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+				"banner_url": "remote/./img/filler/avatars/guru-clean-m.jpg",
 				"title": "Cleanly by Austin",
 				"description": "Spruce your dorm or apartment whether you have a messy closet or preparing for a house party. Your living space will be lemon-fresh and squeaky-clean.",
 				"portfolio_items":
@@ -335,27 +388,71 @@ function ContentService() {
 					"rounded_avg_rating": 5,
 					"half_stars": false,
 					"avg_rating": 4.9,
-					"name": "iPhone",
-					"full_name": "4s/5s/6/6 plus",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "",
+					"full_name": "Dishwashing",
+					"hourly_price": 10,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/household/dish.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
+					}]
+				}, {
+				"rounded_avg_rating": 5,
+				"half_stars": false,
+				"avg_rating": 4.9,
+				"name": "",
+				"full_name": "Furniture Cleaning",
+				"hourly_price": 12,
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+				"featured_url": "remote/./img/filler/household/furclean.jpg",
+				"resources": [{
+					"is_url": true,
+					"is_featured": true,
+					"site_url": ""
+				}]
+			}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "Floor Care",
+					"hourly_price": 12,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/household/floor.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
 					}]
 				}, {
 					"rounded_avg_rating": 4,
 					"avg_rating": 4.0,
 					"half_stars": true,
-					"name": "Android Repair",
-					"full_name": "Ice cream, gingerbread, etc",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "",
+					"full_name": "Laundry",
+					"hourly_price": 18,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/household/laundry.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "General Cleaning",
+					"hourly_price": 20,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/household/genclean.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
 					}]
 				}]
 			}
@@ -369,7 +466,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+			"profile_url": "remote/./img/filler/avatars/guru-photo-f.jpg",
 			"guru_introduction": "Often imitated, never duplicated. Photography maniac",
 			"profile_code": "photo",
 			"verified": true,
@@ -387,14 +484,17 @@ function ContentService() {
 			"messenger_friendly": true,
 			"phone_friendly": true,
 			"text_friendly": true,
+			"year": "Freshman",
 			"is_alumni": false,
-			"major": "Mathematics",
+			"major": "Art History",
 			"guru_languages": [{
-				name: "Portuguese"
+				name: "English"
 			}, {
-				name: "Gujrati"
+				name: "Chinese"
 			}, {
-				name: "Zulu"
+				name: "Japanese"
+			}, {
+				name: "Tagalog"
 			}, ],
 			"all_currencies": [{
 				name: "Money",
@@ -404,10 +504,6 @@ function ContentService() {
 				name: "Food",
 				active: true,
 				icon_url: "food.html"
-			}, {
-				name: "Bitcoin",
-				active: true,
-				icon_url: "dogecoin.html"
 			}, {
 				name: "Meal Points",
 				active: true,
@@ -426,16 +522,12 @@ function ContentService() {
 				icon_url: "kitten_time.html"
 			}],
 			"guru_experiences": [{
-				name: "Life Coaching 101 instructor",
-				years: 12,
-				description: "Yeah i can tech..",
-			}, {
-				name: "Venice Beach LifeSave",
-				description: "Thats right, not only do i coach lives, i save them",
-				years: 5
+				name: "Freelance Photographer",
+				years: 6,
+				description: ""
 			}],
 			"academic_shop": {
-				"banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+				"banner_url": "remote/./img/filler/avatars/guru-photo-f.jpg",
 				"title": "Limitless Photos",
 				"description": "A multi-disciplinary creative specializing in photography. Self-taught. Passionate about capturing the human spirit. Prints for sale on my website.",
 				"portfolio_items":
@@ -443,27 +535,57 @@ function ContentService() {
 					"rounded_avg_rating": 5,
 					"half_stars": false,
 					"avg_rating": 4.9,
-					"name": "iPhone",
-					"full_name": "4s/5s/6/6 plus",
+					"name": "",
+					"full_name": "Adventure Series",
 					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/photography/night.jpeg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
 					}]
 				}, {
 					"rounded_avg_rating": 4,
 					"avg_rating": 4.0,
 					"half_stars": true,
-					"name": "Android Repair",
-					"full_name": "Ice cream, gingerbread, etc",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "",
+					"full_name": "Formal Events",
+					"hourly_price": 20,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/photography/suit.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "Headshots",
+					"hourly_price": 20,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/photography/headshots.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "Fun Around Campus",
+					"hourly_price": 15,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/photography/singer.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
 					}]
 				}]
 			}
@@ -477,7 +599,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+			"profile_url": "remote/./img/filler/avatars/guru-tech-m.jpg",
 			"guru_introduction": "Retro gamer. Go-to person for campus tech advice. Blue Devils fan.",
 			"profile_code": "tech",
 			"verified": true,
@@ -495,15 +617,14 @@ function ContentService() {
 			"messenger_friendly": true,
 			"phone_friendly": true,
 			"text_friendly": true,
+			"year": "senior",
 			"is_alumni": false,
-			"major": "Mathematics",
+			"major": "Electrical Engineering",
 			"guru_languages": [{
-				name: "Portuguese"
+				name: "English"
 			}, {
-				name: "Gujrati"
-			}, {
-				name: "Zulu"
-			}, ],
+				name: "Greek"
+			} ],
 			"all_currencies": [{
 				name: "Money",
 				active: true,
@@ -528,18 +649,14 @@ function ContentService() {
 				name: "Coffee",
 				active: true,
 				icon_url: "coffee.html"
-			}, {
-				name: "Kitten Time",
-				active: true,
-				icon_url: "kitten_time.html"
 			}],
 			"guru_experiences": [{
-				name: "Life Coaching 101 instructor",
-				years: 12,
-				description: "Yeah i can tech..",
+				name: "Best Buy Geek Squad",
+				description: "",
+				years: 2
 			}, {
-				name: "Venice Beach LifeSave",
-				description: "Thats right, not only do i coach lives, i save them",
+				name: "Genius at Apple Store",
+				description: "",
 				years: 5
 			}],
 			"academic_shop": {
@@ -551,27 +668,87 @@ function ContentService() {
 					"rounded_avg_rating": 5,
 					"half_stars": false,
 					"avg_rating": 4.9,
-					"name": "iPhone",
-					"full_name": "4s/5s/6/6 plus",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "",
+					"full_name": "Broken Device Screens",
+					"hourly_price": "25-$80",
+					"price_measure": "device",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/tech/broken.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
 					}]
 				}, {
 					"rounded_avg_rating": 4,
 					"avg_rating": 4.0,
 					"half_stars": true,
-					"name": "Android Repair",
-					"full_name": "Ice cream, gingerbread, etc",
-					"hourly_price": 15,
-					"description": "Add portfolio item description here",
+					"name": "",
+					"full_name": "Water Damage",
+					"hourly_price": "25-$80",
+					"price_measure": "device",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/tech/waterdmg.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
-						"site_url": "https://uguru.me/static/remote/img/avatar.svg"
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "WiFi Installation",
+					"hourly_price": 15,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/tech/wifi.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "Memory Backup",
+					"hourly_price": 15,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/tech/memory.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "Gadget Help",
+					"hourly_price": 25,
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/tech/gadgethlp.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
+					}]
+				}, {
+					"rounded_avg_rating": 4,
+					"avg_rating": 4.0,
+					"half_stars": true,
+					"name": "",
+					"full_name": "Web Design",
+					"hourly_price": "20-$30",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"featured_url": "remote/./img/filler/tech/design.jpg",
+					"resources": [{
+						"is_url": true,
+						"is_featured": true,
+						"site_url": ""
 					}]
 				}]
 			}
