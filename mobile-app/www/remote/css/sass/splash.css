@@ -28,12 +28,16 @@
 }
 
 #university-splash .splash-categories .splash-bar ul li a {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   border: 0;
   border-radius: 2px 2px 0 0;
 }
 
 #university-splash .splash-categories .splash-bar ul li a span {
   display: block;
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -159,7 +163,6 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin: 0 -15px -15px;
 }
 
 #university-splash .splash-categories .main .category-card-list li {
@@ -402,9 +405,9 @@
   flex-flow: row wrap;
   position: absolute;
   top: 0;
-  left: -15px;
-  width: calc(100% + 30px);
-  height: calc(100% + 15px);
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: #F1F1F1;
 }
 
@@ -588,8 +591,13 @@
 
 #university-splash .splash-categories .main .pf-card-group {
   display: none;
-  margin: 0 -7.5px;
-  padding: 0;
+  max-width: 960px;
+  margin: -30px auto 0;
+  padding: 15px;
+}
+
+#university-splash .splash-categories .main .pf-card-group > li {
+  padding: 15px;
 }
 
 #university-splash .splash-categories .main#splash-gurus > div {
@@ -690,10 +698,10 @@
     align-self: flex-start;
   }
   #university-splash .splash-categories .main .category-card-list {
-    margin: 0 -7.5px;
+    margin: -15px 0 0;
   }
   #university-splash .splash-categories .main .category-card-list li {
-    padding: 7.5px;
+    padding: 15px;
   }
   #university-splash .splash-categories .main .category-card-list li div {
     border-radius: 2px;
@@ -932,6 +940,10 @@
   height: 100%;
 }
 
+#university-splash .splash-postit .peel.active {
+  box-shadow: 0 0 20px rgba(64, 72, 75, 0.2) !important;
+}
+
 #university-splash .splash-postit .peel-top, #university-splash .splash-postit .peel-back, #university-splash .splash-postit .peel-bottom {
   position: absolute;
   top: 0;
@@ -947,6 +959,11 @@
 #university-splash .splash-postit .peel-ready {
   filter: alpha(opacity=100);
   opacity: 1;
+}
+
+#university-splash .splash-postit .peel-bottom {
+  filter: alpha(opacity=20);
+  opacity: 0.2;
 }
 
 #university-splash .splash-postit .peel-svg-clip-element {

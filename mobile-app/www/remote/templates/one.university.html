@@ -198,26 +198,34 @@
                     <ul>
                         <li>
                             <a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex===0}">
-								<span>Student-Run</span>
-								<span>Shops</span>
+								<div>
+									<span>Student-Run</span>
+									<span>Shops</span>
+								</div>
 							</a>
                         </li>
                         <li>
                             <a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex===1}">
-								<span>Guru</span>
-								<span>Profiles</span>
+								<div>
+									<span>Guru</span>
+									<span>Profiles</span>
+								</div>
 							</a>
                         </li>
                         <li>
                             <a ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex===2}">
-								<span>Trending</span>
-								<span>Courses</span>
+								<div>
+									<span>Trending</span>
+									<span>Courses</span>
+								</div>
 							</a>
                         </li>
                         <li>
                             <a ng-click='activeTabIndex = 3;' class="ng-class:{'active':activeTabIndex===3}">
-								<span>Campus</span>
-								<span>Live</span>
+								<div>
+									<span>Campus</span>
+									<span>Live</span>
+								</div>
 							</a>
                         </li>
                     </ul>
@@ -267,7 +275,7 @@
                         <h1><span>{{university.short_name}}</span>'s Top Gurus</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         <div>
-                            <ul class="pf-card-group-mobile" ng-if='!desktopMode'>
+                            <ul class="pf-card-group-mobile">
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                                     <a class="pf-card-mini large pf-card-mini-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                                         <div class="pf-card-mini-banner"></div>
@@ -276,7 +284,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="pf-card-group" ng-if='desktopMode'>
+                            <ul class="pf-card-group">
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                 					<a class="pf-card pf-card-{{category.hex_color}} bg-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                 						<span class="pf-hover">View Profile</span>
@@ -366,6 +374,8 @@
                 <div class='main bg-slate'>
                     <ul ng-if='!desktopMode'>
                         <li ng-repeat="bg_item in become_guru.top_half" ng-click='peelCard($event, bg_item, "bg")' class='ng-class:{"hide":bg_item.hide}'>
+							<!-- @samir -->
+							<!-- .active -->
                             <div class='peel' id='bg-item-{{$index}}'>
 								<svg class="square" viewBox="0 0 100 100">
 									<rect x="0" y="0" width="100" height="100"></rect>

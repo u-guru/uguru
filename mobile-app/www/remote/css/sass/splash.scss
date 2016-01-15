@@ -27,10 +27,12 @@
 				li {
 					padding: 0;
 					a {
+						@include flex-wrap;
 						border: 0;
 						border-radius: 2px 2px 0 0;
 						span {
 							display: block;
+							width: 100%;
 							@media screen and (max-width: 768px) {
 								&:first-child {
 									display: none;
@@ -111,7 +113,6 @@
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
-				margin: 0 -15px -15px;
 				li {
 					width: calc(100% / 3);
 					padding: 0;
@@ -336,9 +337,9 @@
 				@include flex-wrap;
 				position: absolute;
 				top: 0;
-				left: -15px;
-				width: calc(100% + 30px);
-				height: calc(100% + 15px);
+				left: 0;
+				width: 100%;
+				height: 100%;
 				background: $smoke;
 				&.not-selected, &:not(.selected) {
 					@include opacity(0);
@@ -472,8 +473,12 @@
 			}
 			.pf-card-group {
 				display: none;
-				margin: 0 -7.5px;
-				padding: 0;
+				max-width: 960px;
+				margin: -30px auto 0;
+				padding: 15px;
+				> li {
+					padding: 15px;
+				}
 			}
 			&#splash-gurus {
 				> div {
@@ -554,9 +559,9 @@
 					}
 				}
 				.category-card-list {
-					margin: 0 -7.5px;
+					margin: -15px 0 0;
 					li {
-						padding: 7.5px;
+						padding: 15px;
 						div {
 							border-radius: 2px;
 							a, > span {
@@ -762,6 +767,9 @@
 				width: 100%;
 				height: 100%;
 			}
+			&.active {
+				box-shadow: 0 0 20px rgba($slate,.2)!important;
+			}
 		}
 		.peel-top, .peel-back, .peel-bottom {
 			position: absolute;
@@ -775,6 +783,9 @@
 		}
 		.peel-ready {
 			@include opacity(1);
+		}
+		.peel-bottom {
+			@include opacity(.2);
 		}
 		.peel-svg-clip-element {
 			@include opacity(0);
