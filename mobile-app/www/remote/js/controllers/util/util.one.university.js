@@ -19,10 +19,11 @@ angular.module('uguru.util.controllers')
   'PeelService',
   'TypedService',
   '$localstorage',
+  '$ionicViewSwitcher',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
     SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
-    $localstorage){
+    $localstorage, $ionicViewSwitcher){
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
@@ -281,6 +282,15 @@ angular.module('uguru.util.controllers')
     $scope.removeStudentCourse = function(course, $index) {
       var course = $scope.user.student_courses.splice($index, 1);
       $scope.courses.unshift(course);
+    }
+
+    $scope.backpackAction = function() {
+      if ($scope.user.student_courses.length) {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.desktop-login');
+      } else {
+        scrollToSection("#splash-home")
+      }
     }
 
     var initRequestMap = function() {
