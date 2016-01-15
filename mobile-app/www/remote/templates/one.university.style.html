@@ -5,8 +5,8 @@
     .bg-university-50p:before {
         content: "";
         display: block;
-        filter: alpha(50);
-        opacity: .5;
+        filter: alpha(90);
+        opacity: .9;
         position: absolute;
         top: 0;
         left: 0;
@@ -19,6 +19,34 @@
         z-index: 2;
     }
 
+    .typed-writer-container {
+        border-bottom:dashed 6px {{university.school_color_light}};
+        width:75%;
+        left:12.5%;
+    }
+    #university-typed-writer:before, {
+        content: " ";
+    }
+
+    @keyframes blink {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .is-typing::after {
+      content: '|';
+
+      animation: blink 500ms infinite;
+    }
+
+    #university-typed-writer {
+        height:60px;
+        display:inline-block;
+        font-size:30px;
+        font-weight:900;
+        margin-bottom:-10px;
+    }
+
     .peel-back-shadow {
         background-color: {{university.school_color_dark}} !important;
     }
@@ -29,19 +57,44 @@
         background-color:{{university.school_color_dark}} !important;
     }
 
-    .splash-footer-link svg {
-        stroke: {{university.school_color_dark}}!important;
+    .splash-hero > footer svg stop {
+        stop-color: {{university.school_color_dark}}!important;
     }
-    .splash-footer-link:hover, .splash-footer-link:focus {
+    .splash-hero > footer .border:before {
+        border-top-color: {{university.school_color_dark}}!important;
+    }
+    .splash-postit#how-it-works > footer .border {
         background: {{university.school_color_dark}}!important;
     }
-    .splash-footer-link:hover svg, .splash-footer-link:focus svg {
+
+    .backpack .backpack-color {
+        fill: {{university.school_color_light}}!important;
+    }
+    #splash-footer-top .splash-footer-icon {
+        stroke: {{university.school_color_dark}}!important;
+    }
+    #splash-footer-top:hover .splash-footer-icon, #splash-footer-top:focus .splash-footer-icon {
+        background: {{university.school_color_dark}}!important;
+        stroke: {{university.school_color_light}}!important;
+    }
+    #splash-footer-top:active .splash-footer-icon {
+        background: white!important;
+        stroke: {{university.school_color_dark}}!important;
+    }
+    
+    #splash-footer-support svg {
+        stroke: {{university.school_color_dark}}!important;
+    }
+    #splash-footer-support:hover, #splash-footer-support:focus {
+        background: {{university.school_color_dark}}!important;
+    }
+    #splash-footer-support:hover svg, #splash-footer-support:focus svg {
         stroke: white!important;
     }
-    .splash-footer-link:active {
+    #splash-footer-support:active {
         background: white!important;
     }
-    .splash-footer-link:active svg {
+    #splash-footer-support:active svg {
         stroke: {{university.school_color_dark}}!important;
     }
     .border-university {
@@ -51,11 +104,11 @@
         background: {{university.school_color_dark}} !important;
         color: white!important;
     }
-    .university-txt, .tab-bar a.active, #university-splash > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus  {
+    .txt-university, .tab-bar a.active, #university-splash > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus  {
         color: {{university.school_color_dark}} !important;
     }
-    .splash-hero, .splash-categories > header {
-        background: {{university.school_color_dark}} url({{university.banner_url}}) center center / cover!important;
+    .splash-hero {
+        background: {{university.school_color_dark}} url("{{university.banner_url}}") center center / cover!important;
     }
     #desktop-guru-onboarding .header {
         padding: 15px;
