@@ -2,7 +2,7 @@
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
 
-<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>
+<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view> -->
 
 <div ng-include="page.universityStyleUrl"></div>
 <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
@@ -111,7 +111,7 @@
                 <header>
                     <h1 class="txt-university">{{how_it_works.header}}</h1>
                 </header>
-                <div class='main ng-class:{"mobile-only":!desktopMode}'>
+                <div class='main'>
                     <ul ng-if='!desktopMode'>
                         <li ng-repeat="hiw_item in how_it_works.top_half" ng-click='peelCard($event, hiw_item, "hiw")' class='ng-class:{"hide": hiw_item.hide}'>
                             <div class='peel' id='hiw-item-{{$index}}'>
@@ -367,7 +367,7 @@
                 <header>
                     <h1>{{become_guru.header}}</h1>
                 </header>
-                <div class='main bg-slate ng-class:{"mobile-only":!desktopMode}'>
+                <div class='main bg-slate'>
                     <ul ng-if='!desktopMode'>
                         <li ng-repeat="bg_item in become_guru.top_half" ng-click='peelCard($event, bg_item, "bg")' class='ng-class:{"hide":bg_item.hide}'>
                             <div class='peel' id='bg-item-{{$index}}'>

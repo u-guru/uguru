@@ -702,7 +702,7 @@
 				@include flex-wrap;
 				@include flex-center;
 				width: 100%;
-				.square {
+				> .square {
 					display: none;
 				}
 				li {
@@ -717,7 +717,7 @@
 			@media screen and (max-width: 768px) {
 				ul {
 					position: relative;
-					.square {
+					> .square {
 						display: block;
 						width: 100%;
 						fill: none;

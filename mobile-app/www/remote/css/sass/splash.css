@@ -859,7 +859,7 @@
   width: 100%;
 }
 
-#university-splash .splash-postit .main ul .square {
+#university-splash .splash-postit .main ul > .square {
   display: none;
 }
 
@@ -877,7 +877,7 @@
   #university-splash .splash-postit .main ul {
     position: relative;
   }
-  #university-splash .splash-postit .main ul .square {
+  #university-splash .splash-postit .main ul > .square {
     display: block;
     width: 100%;
     fill: none;
