@@ -248,6 +248,9 @@
 			.pf-school {
 				margin: 0!important;
 				font-size: 20px;
+				&:first-letter {
+					text-transform: uppercase;
+				}
 			}
 			a.profile-icon {
 				position: relative;

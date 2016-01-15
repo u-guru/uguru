@@ -401,6 +401,10 @@
   font-size: 20px;
 }
 
+.pf-type header.third .pf-header .pf-school:first-letter {
+  text-transform: uppercase;
+}
+
 .pf-type header.third .pf-header a.profile-icon {
   position: relative;
   display: block;
