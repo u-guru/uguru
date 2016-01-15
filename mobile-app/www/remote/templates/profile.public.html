@@ -209,50 +209,60 @@
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>About</h1>
-					<div>
-						<h2 ng-if='!profile.public_mode' class="show ng-class:{'show': !profile.public_mode}">I&nbsp;&nbsp;</h2>
-						<div class="hide custom-dropdown ng-class:{'show': !profile.public_mode}">
-							<div class='relative alumn-dropdown'>
-								<span class='flex-wrap-center full-xy'>
-									<span class="hide ng-class:{'show':user.is_alumni}" >have</span>
-									<span class="hide ng-class:{'show':!user.is_alumni}">am seeking</span>
-								</span>
-								<a name="alumni-btn" ng-click="page.dropdowns.alumn.active = !page.dropdowns.alumn.active">
-									<svg viewBox="0 0 100 100">
-										<path d="M14,32 L50,68 L86,32"></path>
-									</svg>
-								</a>
-								<svg name='alumni-checkmark' class="loader center-bottom ng-class:{'checkmark': page.checkmarks.alumni}" viewBox="0 0 100 100">
-								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
-								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
-								</svg>
-							</div>
-							<ul name="alumni-dropdown" class="ng-class:{'active': page.dropdowns.alumn.active}">
-								<li ng-click='updateUserAlumni(true)' class="hide ng-class:{'show':!user.is_alumni}" tabindex>have</li>
-								<li ng-click='updateUserAlumni(false)' class="hide ng-class:{'show':user.is_alumni}" tabindex>am seeking</li>
-							</ul>
-						</div>
-						<h2 ng-if='!profile.public_mode' class="hide ng-class:{'show': !profile.public_mode}">&nbsp;&nbsp;a&nbsp;&nbsp;</h2>
-						<div ng-if="!profile.public_mode" class="hide custom-dropdown ng-class:{'show': !profile.public_mode}">
+					<div ng-if='profile.public_mode'>
+						<h2>
+							I am a
+							<span data-year="{{user.year || 'Freshman'}}">{{user.year || 'Freshman'}}</span>
+							<span ng-if='user.is_alumni'>with</span>
+							<span ng-if='!user.is_alumni'>seeking</span>
+							a degree in <span class="user-major">{{user.major}}</span>.
+						</h2>
+					</div>
+					<div ng-if='!profile.public_mode'>
+						<h2>I am a&nbsp;&nbsp;</h2>
+						<div class="custom-dropdown">
 							<div class='relative'>
-								<span>{{user.year || 'Freshman'}}</span>
-								<a name="year-btn" ng-click="page.dropdowns.year.active = !page.dropdowns.year.active">
+								<span data-year="{{user.year || 'Freshman'}}">{{user.year || 'Freshman'}}</span>
+								<a name="alumni-btn" ng-click="page.dropdowns.year.active = !page.dropdowns.year.active">
 									<svg viewBox="0 0 100 100">
 										<path d="M14,32 L50,68 L86,32"></path>
 									</svg>
 								</a>
-								<svg name='year-checkmark' class="loader center-bottom ng-class:{'checkmark': page.checkmarks.year}" viewBox="0 0 100 100">
+								<svg name='alumni-checkmark' class="loader center-bottom ng-class:{'checkmark': page.checkmarks.year}" viewBox="0 0 100 100">
 								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 								</svg>
 							</div>
-							<ul name="year-dropdown" class="ng-class:{'active': page.dropdowns.year.active}">
+							<ul name="alumni-dropdown" class="ng-class:{'active': page.dropdowns.year.active}">
 								<li ng-click='updateUserYear(option)' ng-repeat='option in page.dropdowns.year.options' tabindex>{{option}}</li>
 							</ul>
 						</div>
-						<h2  class="hide ng-class:{'show': !profile.public_mode}">&nbsp;&nbsp;in&nbsp;&nbsp;</h2>
-						<span class='relative' ng-if="!profile.public_mode">
-							<input name="userMajor-input" ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}"/>
+						<h2>&nbsp;&nbsp;</h2>
+						<div class="custom-dropdown">
+							<div class='relative alumn-dropdown'>
+								<span class='flex-wrap-center full-xy'>
+									<span class="hide ng-class:{'show':user.is_alumni}" >with</span>
+									<span class="hide ng-class:{'show':!user.is_alumni}">seeking</span>
+								</span>
+								<a  name="year-btn" ng-click="page.dropdowns.alumn.active = !page.dropdowns.alumn.active">
+									<svg viewBox="0 0 100 100">
+										<path d="M14,32 L50,68 L86,32"></path>
+									</svg>
+								</a>
+								<svg name='year-checkmark' class="loader center-bottom ng-class:{'checkmark': page.checkmarks.alumni}" viewBox="0 0 100 100">
+								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+								</svg>
+							</div>
+							<ul name="year-dropdown" class="ng-class:{'active': page.dropdowns.alumn.active}">
+								<li ng-click='updateUserAlumni(true)' class="hide ng-class:{'show':!user.is_alumni}" tabindex>with</li>
+								<li ng-click='updateUserAlumni(false)' class="hide ng-class:{'show':user.is_alumni}" tabindex>seeking</li>
+							</ul>
+						</div>
+						<h2>&nbsp;&nbsp;a degree in&nbsp;&nbsp;</h2>
+						<span class='relative'>
+							<input ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}
+							"/>
 							<svg name='major-checkmark' class="loader center-bottom ng-class:{'checkmark': page.checkmarks.major}" viewBox="0 0 100 100">
 								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
@@ -266,7 +276,7 @@
 						<li ng-repeat='experience in user.guru_experiences' ng-click='editGuruExperience(experience)'>
 							<ul class="ugrid-2">
 								<li class="text-left">{{experience.name || experience.description}}</li>
-								<li class="text-right" data-years="{{experience.years}}">{{experience.years}} year</li>
+								<li class="text-right" data-years="{{experience.years}}">{{experience.years}}&nbsp;<span>year</span></li>
 							</ul>
 							<div class="pf-list-desc" ng-if="experience.name">{{experience.description}}</div>
 						</li>
@@ -274,7 +284,7 @@
 						<li ng-if='!user.guru_experiences || !user.guru_experiences.length'>
 							<ul class="ugrid-2">
 								<li class="text-left">Sample Guru Experience</li>
-								<li class="text-right" data-years="3">3 year</li>
+								<li class="text-right" data-years="3">3&nbsp;<span>year</span></li>
 							</ul>
 							<div class="pf-list-desc">
 								Describe your core achievements, and what value you can bring towards a studnet reading this!
@@ -452,9 +462,9 @@
 				<!-- <li class='relative ng-class:{"full-xy":portfolio_item.visible, "min-height-modal-desktop":portfolio_item.visible}' ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-if='!portfolio_item.archived'> -->
 				<li name='portfolio-item-course' ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-if='!portfolio_item.archived' class=" ng-class:{'disabled':portfolio_item.active == false}">
 					<div class="pf-check-container">
-						<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
-						<div class="pf-checklist-item-bg">
-							<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
+						<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/{{portfolio_item.price_measure || 'hr'}}</span>
+						<div class="pf-checklist-item-bg" style="background-image: url({{portfolio_item.featured_url}})">
+							<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/{{portfolio_item.price_measure || 'hr'}}</span>
 							<span>{{portfolio_item.name || portfolio_item.course.full_name || portfolio_item.course.title}}</span>
 						</div>
 						<a class="pf-edit-link" ng-if='!profile.public_mode' ng-click="showEditPortfolioItem(portfolio_item)">Edit</a>

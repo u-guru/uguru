@@ -2,9 +2,7 @@
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
 
-
-<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader && page.status.showAnimation" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController">
-</ion-view>
+<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>
 
 <div ng-include="page.universityStyleUrl"></div>
 <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
@@ -57,27 +55,27 @@
 			</header>
             <section class='splash-hero relative' id='splash-home'>
                 <a id="splash-footer-support" class="splash-footer-link">
+					<span ng-if="desktopMode" ng-include="img_base + 'templates/svg/support.html'"></span>
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
                 		<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453" ></path>
                 	</svg>
                 </a>
-                <a id="splash-footer-top" class="splash-footer-link" ng-click='scrollToSection("#splash-home")'>
+
+                <a id="splash-footer-top" class="splash-footer-link" ng-click='backpackAction()'>
 					<span ng-include="img_base + 'templates/svg/backpack.html'"></span>
-                	<svg class="splash-footer-icon" viewBox="0 0 100 100">
+                	<svg class='splash-footer-icon ng-class:{"hide":user.student_courses.length}' viewBox="0 0 100 100">
                 		<path d="M14,68 L50,32 L86,68"></path>
                 	</svg>
+                    <b class='splash-footer-icon ng-class:{"hide":!user.student_courses.length}'>{{user.student_courses.length}}</b>
                 </a>
 
                 <div>
                     <h1 id='main-text' class='bg-university-50p'>
                         <span class='weight-400'>Last-second dirt-cheap</span>
-                        <span class='flex-wrap-center full-xy'> &nbsp;
-                            <span class='typed-writer-container'>
-                                &nbsp;
-                                <span id='university-typed-writer'> </span>
-                                &nbsp;
+                        <span class='weight-900'>
+                            <span class='typed-writer-container weight-900'>
+                                <span id='university-typed-writer' class="weight-900"> </span>
                             </span>
-                          &nbsp;
                         </span>
 						<span class='weight-400'>powered&nbsp;by your&nbsp;classmates</span>
                     </h1>
@@ -97,7 +95,7 @@
 					<div class="border"></div>
 					<div class="footer-content">
 						<ul>
-							<li>
+							<li class="active">
 								<h2>Open 24/7</h2>
 								<p>Create an academic shop for<br/>course-related skills</p>
 							</li>
@@ -117,15 +115,17 @@
                 <header>
                     <h1 class="txt-university">{{how_it_works.header}}</h1>
                 </header>
-                <div class='main ng-class:{"mobile-only":!desktopMode}'>
-                    <ul ng-if='!desktopMode' class='relative full-xy'>
-                        <li ng-repeat="hiw_item in how_it_works.top_half" ng-click='peelCard($event, hiw_item, "hiw")' class='absolute full-x left-0 ng-class:{"hide": hiw_item.hide}'>
+                <div class='main'>
+                    <ul ng-if='!desktopMode'>
+                        <li ng-repeat="hiw_item in how_it_works.top_half" ng-click='peelCard($event, hiw_item, "hiw")' class='ng-class:{"hide": hiw_item.hide}'>
                             <div class='peel' id='hiw-item-{{$index}}'>
-                                <div class="peel-top">
-                                    <div class='postit absolute full-xy'>
-                                        <svg class="square" viewBox="0 0 100 100">
-                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                        </svg>
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+                                <div class='peel-back bg-university'></div>
+                                <div class='peel-bottom bg-university'></div>
+								<div class="peel-top">
+                                    <div class='postit'>
                                         <div>
                                             <div>
 												<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
@@ -133,14 +133,11 @@
 	                                            <p ng-bind-html="hiw_item.content"></p>
 											</div>
                                         </div>
-                                        <span></span>
                                     </div>
                                 </div>
-                                <div class='peel-back bg-university'>back</div>
-                                <div class='peel-bottom bg-university' style='opacity:0.2'></div>
                             </div>
                         </li>
-                        <li ng-repeat="hiw_item in how_it_works.bottom_half" ng-click='peelCard($event, hiw_item, "hiw")' class='absolute full-x left-0 ng-class:{"hide": hiw_item.hide}'>
+                        <li ng-repeat="hiw_item in how_it_works.bottom_half" ng-click='peelCard($event, hiw_item, "hiw")' class='ng-class:{"hide": hiw_item.hide}'>
                             <div class='peel' id='hiw-item-{{3 + $index}}'>
                                 <div class="peel-top">
                                     <div class='postit absolute full-xy'>
@@ -154,13 +151,15 @@
 	                                            <p ng-bind-html="hiw_item.content"></p>
 											</div>
                                         </div>
-                                        <span></span>
                                     </div>
                                 </div>
-                                <div class='peel-back bg-university'>back</div>
-                                <div class='peel-bottom bg-university' style='opacity:0.2'></div>
+                                <div class='peel-back bg-university'></div>
+                                <div class='peel-bottom bg-university'></div>
                             </div>
                         </li>
+						<svg class="square" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
                     </ul>
                     <ul ng-if='desktopMode'>
                         <li ng-repeat="hiw_item in how_it_works.top_half">
@@ -175,7 +174,6 @@
 	                                    <p ng-bind-html="hiw_item.content"></p>
 									</div>
                                 </div>
-                                <span></span>
                             </div>
                         </li>
                         <li ng-repeat="hiw_item in how_it_works.bottom_half">
@@ -190,7 +188,6 @@
 	                                    <p ng-bind-html="hiw_item.content"></p>
 									</div>
                                 </div>
-                                <span></span>
                             </div>
                         </li>
                     </ul>
@@ -201,19 +198,39 @@
 				</footer>
             </section>
             <section class='splash-categories' id='splash-browse'>
-                <div class="tab-bar bg-university">
+                <div class="tab-bar splash-bar bg-university">
                     <ul>
                         <li>
-                            <a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex===0}">Student-Run<br/>Shops</a>
+                            <a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex===0}">
+								<div>
+									<span>Student-Run</span>
+									<span>Shops</span>
+								</div>
+							</a>
                         </li>
                         <li>
-                            <a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex===1}">Guru<br/>Profiles</a>
+                            <a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex===1}">
+								<div>
+									<span>Guru</span>
+									<span>Profiles</span>
+								</div>
+							</a>
                         </li>
                         <li>
-                            <a ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex===2}">Trending<br/>Courses</a>
+                            <a ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex===2}">
+								<div>
+									<span>Trending</span>
+									<span>Courses</span>
+								</div>
+							</a>
                         </li>
                         <li>
-                            <a ng-click='activeTabIndex = 3;' class="ng-class:{'active':activeTabIndex===3}">Campus<br/>Live</a>
+                            <a ng-click='activeTabIndex = 3;' class="ng-class:{'active':activeTabIndex===3}">
+								<div>
+									<span>Campus</span>
+									<span>Live</span>
+								</div>
+							</a>
                         </li>
                     </ul>
                 </div>
@@ -262,7 +279,7 @@
                         <h1><span>{{university.short_name}}</span>'s Top Gurus</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         <div>
-                            <ul class="pf-card-group-mobile" ng-if='!desktopMode'>
+                            <ul class="pf-card-group-mobile">
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                                     <a class="pf-card-mini large pf-card-mini-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                                         <div class="pf-card-mini-banner"></div>
@@ -271,7 +288,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="pf-card-group" ng-if='desktopMode'>
+                            <ul class="pf-card-group">
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                 					<a class="pf-card pf-card-{{category.hex_color}} bg-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                 						<span class="pf-hover">View Profile</span>
@@ -325,7 +342,7 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-click='addStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by course.id'>
+        					<li ng-click='addStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
         						<div class="border-university">
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>
@@ -337,7 +354,7 @@
                     </div>
                 </div>
                 <div id="splash-livemap" class="main ng-class:{'active':activeTabIndex===3}">
-                   <div style='height: 600px!important'>
+                   <div style='height: 570px!important'>
                         <div class="request-loc map-box-container full-y">
                             <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
                                 <ui-gmap-markers
@@ -358,15 +375,19 @@
                 <header>
                     <h1>{{become_guru.header}}</h1>
                 </header>
-                <div class='main bg-slate ng-class:{"mobile-only":!desktopMode}'>
-                    <ul ng-if='!desktopMode' class='relative full-xy'>
-                        <li ng-repeat="bg_item in become_guru.top_half" ng-click='peelCard($event, bg_item, "bg")' class='absolute left-0 ng-class:{"hide":bg_item.hide}'>
+                <div class='main bg-slate'>
+                    <ul ng-if='!desktopMode'>
+                        <li ng-repeat="bg_item in become_guru.top_half" ng-click='peelCard($event, bg_item, "bg")' class='ng-class:{"hide":bg_item.hide}'>
+							<!-- @samir -->
+							<!-- .active -->
                             <div class='peel' id='bg-item-{{$index}}'>
-                                <div class="peel-top">
-                                    <div class='postit absolute full-xy'>
-                                        <svg class="square" viewBox="0 0 100 100">
-                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                        </svg>
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+                                <div class='peel-back'></div>
+                                <div class='peel-bottom'></div>
+								<div class="peel-top">
+                                    <div class='postit'>
                                         <div>
                                             <div>
                                                 <span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
@@ -374,20 +395,19 @@
                                                 <p ng-bind-html="bg_item.content"></p>
                                             </div>
                                         </div>
-                                        <span></span>
                                     </div>
                                 </div>
-                                <div class='peel-back'>back</div>
-                                <div class='peel-bottom' style='opacity:0.2'></div>
                             </div>
                         </li>
-                        <li ng-repeat="bg_item in become_guru.bottom_half" ng-click='peelCard($event, bg_item, "bg")' class='absolute left-0 ng-class:{"hide":bg_item.hide}'>
+                        <li ng-repeat="bg_item in become_guru.bottom_half" ng-click='peelCard($event, bg_item, "bg")' class='ng-class:{"hide":bg_item.hide}'>
                             <div class='peel' id='bg-item-{{3 + $index}}'>
-                                <div class="peel-top">
-                                    <div class='postit absolute full-xy'>
-                                        <svg class="square" viewBox="0 0 100 100">
-                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                        </svg>
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+                                <div class='peel-back'></div>
+                                <div class='peel-bottom'></div>
+								<div class="peel-top">
+                                    <div class='postit'>
                                         <div>
                                             <div>
                                                 <span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
@@ -395,13 +415,13 @@
                                                 <p ng-bind-html="bg_item.content"></p>
                                             </div>
                                         </div>
-                                        <span></span>
                                     </div>
                                 </div>
-                                <div class='peel-back'>back</div>
-                                <div class='peel-bottom' style='opacity:0.2'></div>
                             </div>
                         </li>
+						<svg class="square" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
                     </ul>
                     <ul ng-if='desktopMode'>
                         <li ng-repeat="bg_item in become_guru.top_half">
@@ -416,7 +436,6 @@
 	                                    <p ng-bind-html="bg_item.content"></p>
 									</div>
                                 </div>
-                                <span></span>
                             </div>
                         </li>
                         <li ng-repeat="bg_item in become_guru.bottom_half" >
@@ -431,11 +450,10 @@
 	                                    <p ng-bind-html="bg_item.content"></p>
 									</div>
                                 </div>
-                                <span></span>
                             </div>
                         </li>
                     </ul>
-					<button>Learn More</button>
+					<button class='capitalize'>Become a {{university.school_mascot_name}} Guru</button>
                 </div>
 				<footer>
 					<div class="border"></div>
@@ -446,8 +464,8 @@
 					<h1>We can't wait to see you do your thing.</h1>
 					<h2>Get started earning cash by helping your campus today.</h2>
 					<ul>
-						<li><button class="btn-ghost-white">Become a Guru</button></li>
-						<li><button class="btn-ghost-white">Launch Student Portal</button></li>
+						<li><button class="btn-ghost-white" ng-click="goToBecomeGuru()">Become a Guru</button></li>
+						<li><button class="btn-ghost-white" ng-click='goToLoginPage()'>Launch Student Portal</button></li>
 					</ul>
 				</div>
 			</section>
