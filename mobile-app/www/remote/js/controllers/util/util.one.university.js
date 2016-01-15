@@ -31,12 +31,12 @@ angular.module('uguru.util.controllers')
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
       $scope.courses = [];
-      $scope.activeTabIndex = 1;
+      $scope.activeTabIndex = 3;
       $scope.university = {}
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
       $scope.page.sidebar = {show:false};
-      $scope.page.status = {loaded:false, showLoader:false, showAnimation:false};
+      $scope.page.status = {loaded:false, showLoader:true, showAnimation:false};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();

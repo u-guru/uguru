@@ -532,7 +532,10 @@ DeviceSerializer = {
     'push_notif_enabled': fields.Boolean,
     'background_location_enabled': fields.Boolean,
     'location_enabled': fields.Boolean,
-    'camera_enabled': fields.Boolean
+    'camera_enabled': fields.Boolean,
+    'avg_hourly': fields.Integer,
+    'avg_hourly_higher': fields.Integer,
+    'avg_hourly_lower': fields.Integer,
 }
 
 CategorySerializer = {
