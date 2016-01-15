@@ -726,22 +726,13 @@
 						position: absolute;
 						top: 0;
 						left: 0;
-						&:nth-child(1) {
+						&:nth-child(1), &:nth-child(4) {
 							@include rotate(10);
 						}
-						&:nth-child(2) {
-							@include rotate(-3);
-						}
-						&:nth-child(3) {
-							@include rotate(5);
-						}
-						&:nth-child(4) {
+						&:nth-child(2), &:nth-child(5) {
 							@include rotate(-7);
 						}
-						&:nth-child(5) {
-							@include rotate(7);
-						}
-						&:nth-child(6) {
+						&:nth-child(3), &:nth-child(6) {
 							@include rotate(0);
 						}
 					}
@@ -779,7 +770,7 @@
 			width: 100%;
 			height: 100%;
 		}
-		.peel-back, .peel-bottom {
+		.peel-back, .peel-bottom, .peel-back-shadow {
 			background: $shamrock;
 		}
 		.peel-ready {
@@ -827,7 +818,8 @@
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: calc(100% - 50px);
+				// height: calc(100% - 50px);
+				height: 100%;
 				overflow: hidden;
 				padding: 15px;
 				background: white;
@@ -882,27 +874,27 @@
 					background: $shamrock;
 				}
 			}
-			> span {
-				display: block;
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: calc(100% - 50px);
-				height: 50px;
-				background: white;
-				&:after {
-					content: "";
-					display: block;
-					position: absolute;
-					bottom: 0;
-					right: -50px;
-					width: 0;
-					height: 0;
-					border: 25px solid transparent;
-					border-top-color: $shamrock;
-					border-left-color: $shamrock;
-				}
-			}
+			// > span {
+			// 	display: block;
+			// 	position: absolute;
+			// 	bottom: 0;
+			// 	left: 0;
+			// 	width: calc(100% - 50px);
+			// 	height: 50px;
+			// 	background: white;
+			// 	&:after {
+			// 		content: "";
+			// 		display: block;
+			// 		position: absolute;
+			// 		bottom: 0;
+			// 		right: -50px;
+			// 		width: 0;
+			// 		height: 0;
+			// 		border: 25px solid transparent;
+			// 		border-top-color: $shamrock;
+			// 		border-left-color: $shamrock;
+			// 	}
+			// }
 		}
 	}
 	// BECOME A GURU

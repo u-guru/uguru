@@ -887,42 +887,21 @@
     top: 0;
     left: 0;
   }
-  #university-splash .splash-postit .main ul li:nth-child(1) {
+  #university-splash .splash-postit .main ul li:nth-child(1), #university-splash .splash-postit .main ul li:nth-child(4) {
     -webkit-transform: rotate(10deg);
     -moz-transform: rotate(10deg);
     -ms-transform: rotate(10deg);
     -o-transform: rotate(10deg);
     transform: rotate(10deg);
   }
-  #university-splash .splash-postit .main ul li:nth-child(2) {
-    -webkit-transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -ms-transform: rotate(-3deg);
-    -o-transform: rotate(-3deg);
-    transform: rotate(-3deg);
-  }
-  #university-splash .splash-postit .main ul li:nth-child(3) {
-    -webkit-transform: rotate(5deg);
-    -moz-transform: rotate(5deg);
-    -ms-transform: rotate(5deg);
-    -o-transform: rotate(5deg);
-    transform: rotate(5deg);
-  }
-  #university-splash .splash-postit .main ul li:nth-child(4) {
+  #university-splash .splash-postit .main ul li:nth-child(2), #university-splash .splash-postit .main ul li:nth-child(5) {
     -webkit-transform: rotate(-7deg);
     -moz-transform: rotate(-7deg);
     -ms-transform: rotate(-7deg);
     -o-transform: rotate(-7deg);
     transform: rotate(-7deg);
   }
-  #university-splash .splash-postit .main ul li:nth-child(5) {
-    -webkit-transform: rotate(7deg);
-    -moz-transform: rotate(7deg);
-    -ms-transform: rotate(7deg);
-    -o-transform: rotate(7deg);
-    transform: rotate(7deg);
-  }
-  #university-splash .splash-postit .main ul li:nth-child(6) {
+  #university-splash .splash-postit .main ul li:nth-child(3), #university-splash .splash-postit .main ul li:nth-child(6) {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
@@ -961,7 +940,7 @@
   height: 100%;
 }
 
-#university-splash .splash-postit .peel-back, #university-splash .splash-postit .peel-bottom {
+#university-splash .splash-postit .peel-back, #university-splash .splash-postit .peel-bottom, #university-splash .splash-postit .peel-back-shadow {
   background: #69B3A5;
 }
 
@@ -1034,7 +1013,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - 50px);
+  height: 100%;
   overflow: hidden;
   padding: 15px;
   background: white;
@@ -1098,29 +1077,6 @@
   width: 100%;
   height: 100%;
   background: #69B3A5;
-}
-
-#university-splash .splash-postit .postit > span {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: calc(100% - 50px);
-  height: 50px;
-  background: white;
-}
-
-#university-splash .splash-postit .postit > span:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  right: -50px;
-  width: 0;
-  height: 0;
-  border: 25px solid transparent;
-  border-top-color: #69B3A5;
-  border-left-color: #69B3A5;
 }
 
 #university-splash #become-guru > header {
