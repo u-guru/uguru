@@ -1,19 +1,39 @@
 <div class='full-xy absolute' >
     <div class='full-y bg-university relative'>
-        <main id='desktop-billing' class="desktop-mode bg-university" ng-if='isDesktopMode()'>
-            <header class="desktop-header">
-                <a></a>
-                <a style='z-index:100000' class='cta-modal-close close-button desktop-header-next' ng-click='toggleSideBar()'>
+        <main id='desktop-billing' class="bg-university">
+            <header class="desktop-header relative full-x" style='z-index:1000'>
+                <a style='margin-left:30%' class="splash-logo absolute left-0 top-0 m20xy" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+                <a class='cta-modal-close close-button desktop-header-next absolute m10xy top-0 right-0' ng-click='toggleSidebar()'>
                     <svg viewBox="0 0 100 100">
                         <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                     </svg>
                 </a>
             </header>
-            <div class='full-xy absolute top-0 left-0' style='z-index:1000;'>
-                <div class='flex-wrap-center text-left full-xy'>
+            <div class='full-xy absolute left-0' style="padding-top:15% !important;">
+                <div class='flex-wrap-center text-left full-xy uppercase weight-500'>
                     <ul class='full-y'>
-                        <li ng-repeat="link in links" class='p20xy m10xy full-x fx-fade-left fx-dur-1500 fx-stagger-500'>
-                            {{link}}
+                        <li name='pageLinks' ng-repeat="link in pageLinks" class='p20xy m10xy full-x fx-fade-left fx-dur-1500 fx-stagger-500'>
+                            <div class='full-x' ng-if='!link.sublinks'>
+                                <a ng-if="link.href">
+                                    {{link.name}}
+                                </a>
+                                <a ng-if="link.ngClickFunc" ng-click="link.ngClickFunc()">
+                                    {{link.name}}
+                                </a>
+                            </div>
+                            <div class='full-x p20left' ng-if='link.sublinks'>
+                                <ul>
+                                    <li name='sublinks' ng-repeat='link in link.sublinks' class='p20xy'>
+                                        <small>
+                                            <a ng-if="link.href">
+                                                {{link.name}}
+                                            </a>
+                                            <a ng-if="link.ngClickFunc" ng-click="link.ngClickFunc()">
+                                                {{link.name}}
+                                            </a>
+                                        </small>
+                                    </li>
+                            </div>
                         </li>
                     </ul>
                 </div>

@@ -37,6 +37,631 @@ function ContentService() {
       }
     }
 
+    var sampleProfiles = {
+      "tech": {
+        "name": "Samir M",
+        "category": {name: "Technology & IT"},
+        "rating": {
+          "review_count": 24,
+          "avg_stars": 4.5
+        },
+        "profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+        "guru_introduction": "hi, ive laksjdaslkdj laksdjlkas dlajsdklajsdkasljdsal",
+        "profile_code": "tech", //tech.uguru.me
+        "verified": true,
+        "percentile": "< 1st",
+        "guru_ratings": new Array(36),
+        "guru_rating": {
+          "int":4,
+          "half":false,
+        },
+        "university": {
+          "name": "University of California, Berkeley",
+          "short_name": "UC Berkeley"
+        },
+        //start communication methods
+        "skype_friendly": true,
+        "messenger_friendly": true,
+        "phone_friendly": true,
+        "text_friendly":true,
+        "is_alumni": false,
+        //end communication methods
+        "major": "Mathematics",
+        "guru_languages": [
+          {name: "Portuguese"},
+          {name: "Gujrati"},
+          {name: "Zulu"},
+        ],
+        //AKA "Will work for"
+        "all_currencies": [
+          {
+            name: "Money",
+            active: true, //must be true for it ti show up on template
+            icon_url: "cash.html"
+          },
+          {
+            name: "Food",
+            active: true, //must be true for it ti show up on template
+            icon_url: "food.html"
+          },
+          {
+            name: "Bitcoin",
+            active: true, //must be true for it ti show up on template
+            icon_url: "dogecoin.html"
+          },
+          {
+            name: "Meal Points",
+            active: true, //must be true for it ti show up on template
+            icon_url: "meal_points.html"
+          },
+          {
+            name: "Chipotle",
+            active: true,
+            icon_url: "chipotle.html"
+          },
+          {
+            name: "Coffee",
+            active: true,
+            icon_url: "coffee.html"
+          },
+          {
+            name: "Kitten Time",
+            active: true,
+            icon_url: "kitten_time.html"
+          }
+        ],
+        "guru_experiences": [
+          {
+            name: "Life Coaching 101 instructor",
+            years: 12,
+            description: "Yeah i can tech..",
+          },
+          {
+            name: "Venice Beach LifeSave",
+            description: "Thats right, not only do i coach lives, i save them",
+            years: 5
+          }
+        ],
+        "academic_shop": {
+          //for main banner of the shop
+          "banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+          "title": "Samir's 24/7 Tech Shop",
+          "description": "I've been tinkering with hardware since you were probably born - therefore, pay me lots of discounted money to enhance your tech lives.",
+          "portfolio_items":
+          //this will take up a lot of space
+          [
+            {
+              "rounded_avg_rating": 5,
+              "half_stars": false,
+              "avg_rating": 4.9,
+              "name": "iPhone",
+              "full_name": "4s/5s/6/6 plus",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            },
+            {
+              "rounded_avg_rating": 4,
+              "avg_rating": 4.0,
+              "half_stars": true,
+              "name": "Android Repair",
+              "full_name": "Ice cream, gingerbread, etc",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            }
+          ]
+        }
+      },
+      "bakery": {
+        "name": "Jeremy O.",
+        "category": {name: "Bakery"},
+        "rating": {
+          "review_count": 24,
+          "avg_stars": 4.5
+        },
+        "profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+        "guru_introduction": "I make yummy things",
+        "profile_code": "tech", //tech.uguru.me
+        "verified": true,
+        "percentile": "8th",
+        "guru_ratings": new Array(15),
+        "guru_rating": {
+          "int":4,
+          "half":true,
+        },
+        "university": {
+          "name": "Cornell University",
+          "short_name": "Cornell"
+        },
+        //start communication methods
+        "skype_friendly": true,
+        "messenger_friendly": true,
+        "phone_friendly": true,
+        "text_friendly":true,
+        "is_alumni": false,
+        //end communication methods
+        "major": "Mathematics",
+        "guru_languages": [
+          {name: "Portuguese"},
+          {name: "Gujrati"},
+          {name: "Zulu"},
+        ],
+        //AKA "Will work for"
+        "all_currencies": [
+          {
+            name: "Money",
+            active: true, //must be true for it ti show up on template
+            icon_url: "cash.html"
+          },
+          {
+            name: "Food",
+            active: true, //must be true for it ti show up on template
+            icon_url: "food.html"
+          },
+          {
+            name: "Bitcoin",
+            active: true, //must be true for it ti show up on template
+            icon_url: "dogecoin.html"
+          },
+          {
+            name: "Meal Points",
+            active: true, //must be true for it ti show up on template
+            icon_url: "meal_points.html"
+          },
+          {
+            name: "Chipotle",
+            active: true,
+            icon_url: "chipotle.html"
+          },
+          {
+            name: "Coffee",
+            active: true,
+            icon_url: "coffee.html"
+          },
+          {
+            name: "Kitten Time",
+            active: true,
+            icon_url: "kitten_time.html"
+          }
+        ],
+        "guru_experiences": [
+          {
+            name: "Life Coaching 101 instructor",
+            years: 12,
+            description: "Yeah i can tech..",
+          },
+          {
+            name: "Venice Beach LifeSave",
+            description: "Thats right, not only do i coach lives, i save them",
+            years: 5
+          }
+        ],
+        "academic_shop": {
+          //for main banner of the shop
+          "banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+          "title": "Jer's Quality Treats",
+          "description": "Fresh delivery with tasty vegan, gluten-free and kosher options. Creating the most delicious, all natural baked goods from Court Hall on North Campus. Drop us a line to check out my seasonal treats.",
+          "portfolio_items":
+          //this will take up a lot of space
+          [
+            {
+              "rounded_avg_rating": 5,
+              "half_stars": false,
+              "avg_rating": 4.9,
+              "name": "iPhone",
+              "full_name": "4s/5s/6/6 plus",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            },
+            {
+              "rounded_avg_rating": 4,
+              "avg_rating": 4.0,
+              "half_stars": true,
+              "name": "Android Repair",
+              "full_name": "Ice cream, gingerbread, etc",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            }
+          ]
+        }
+      },
+      "academic": {
+        "name": "Samir M",
+        "category": {name: "Academic Course Shop"},
+        "rating": {
+          "review_count": 24,
+          "avg_stars": 4.5
+        },
+        "profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+        "guru_introduction": "hi, ive laksjdaslkdj laksdjlkas dlajsdklajsdkasljdsal",
+        "profile_code": "tech", //tech.uguru.me
+        "verified": true,
+        "percentile": "3rd",
+        "guru_ratings": new Array(49),
+        "guru_rating": {
+          "int":5,
+          "half":false,
+        },
+        "university": {
+          "name": "University of California, Berkeley",
+          "short_name": "UC Berkeley"
+        },
+        //start communication methods
+        "skype_friendly": true,
+        "messenger_friendly": true,
+        "phone_friendly": true,
+        "text_friendly":true,
+        "is_alumni": false,
+        //end communication methods
+        "major": "Mathematics",
+        "guru_languages": [
+          {name: "Portuguese"},
+          {name: "Gujrati"},
+          {name: "Zulu"},
+        ],
+        //AKA "Will work for"
+        "all_currencies": [
+          {
+            name: "Money",
+            active: true, //must be true for it ti show up on template
+            icon_url: "cash.html"
+          },
+          {
+            name: "Food",
+            active: true, //must be true for it ti show up on template
+            icon_url: "food.html"
+          },
+          {
+            name: "Bitcoin",
+            active: true, //must be true for it ti show up on template
+            icon_url: "dogecoin.html"
+          },
+          {
+            name: "Meal Points",
+            active: true, //must be true for it ti show up on template
+            icon_url: "meal_points.html"
+          },
+          {
+            name: "Chipotle",
+            active: true,
+            icon_url: "chipotle.html"
+          },
+          {
+            name: "Coffee",
+            active: true,
+            icon_url: "coffee.html"
+          },
+          {
+            name: "Kitten Time",
+            active: true,
+            icon_url: "kitten_time.html"
+          }
+        ],
+        "guru_experiences": [
+          {
+            name: "Life Coaching 101 instructor",
+            years: 12,
+            description: "Yeah i can tech..",
+          },
+          {
+            name: "Venice Beach LifeSave",
+            description: "Thats right, not only do i coach lives, i save them",
+            years: 5
+          }
+        ],
+        "academic_shop": {
+          //for main banner of the shop
+          "banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+          "title": "Samir's 24/7 Tech Shop",
+          "description": "I've been tinkering with hardware since you were probably born - therefore, pay me lots of discounted money to enhance your tech lives.",
+          "portfolio_items":
+          //this will take up a lot of space
+          [
+            {
+              "rounded_avg_rating": 5,
+              "half_stars": false,
+              "avg_rating": 4.9,
+              "name": "iPhone",
+              "full_name": "4s/5s/6/6 plus",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            },
+            {
+              "rounded_avg_rating": 4,
+              "avg_rating": 4.0,
+              "half_stars": true,
+              "name": "Android Repair",
+              "full_name": "Ice cream, gingerbread, etc",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            }
+          ]
+        }
+      },
+      "photography": {
+        "name": "Samir M",
+        "category": {name: "Photography"},
+        "rating": {
+          "review_count": 24,
+          "avg_stars": 4.5
+        },
+        "profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+        "guru_introduction": "hi, ive laksjdaslkdj laksdjlkas dlajsdklajsdkasljdsal",
+        "profile_code": "tech", //tech.uguru.me
+        "verified": true,
+        "percentile": "5th",
+        "guru_ratings": new Array(19),
+        "guru_rating": {
+          "int":4,
+          "half":true,
+        },
+        "university": {
+          "name": "University of California, Berkeley",
+          "short_name": "UC Berkeley"
+        },
+        //start communication methods
+        "skype_friendly": true,
+        "messenger_friendly": true,
+        "phone_friendly": true,
+        "text_friendly":true,
+        "is_alumni": false,
+        //end communication methods
+        "major": "Mathematics",
+        "guru_languages": [
+          {name: "Portuguese"},
+          {name: "Gujrati"},
+          {name: "Zulu"},
+        ],
+        //AKA "Will work for"
+        "all_currencies": [
+          {
+            name: "Money",
+            active: true, //must be true for it ti show up on template
+            icon_url: "cash.html"
+          },
+          {
+            name: "Food",
+            active: true, //must be true for it ti show up on template
+            icon_url: "food.html"
+          },
+          {
+            name: "Bitcoin",
+            active: true, //must be true for it ti show up on template
+            icon_url: "dogecoin.html"
+          },
+          {
+            name: "Meal Points",
+            active: true, //must be true for it ti show up on template
+            icon_url: "meal_points.html"
+          },
+          {
+            name: "Chipotle",
+            active: true,
+            icon_url: "chipotle.html"
+          },
+          {
+            name: "Coffee",
+            active: true,
+            icon_url: "coffee.html"
+          },
+          {
+            name: "Kitten Time",
+            active: true,
+            icon_url: "kitten_time.html"
+          }
+        ],
+        "guru_experiences": [
+          {
+            name: "Life Coaching 101 instructor",
+            years: 12,
+            description: "Yeah i can tech..",
+          },
+          {
+            name: "Venice Beach LifeSave",
+            description: "Thats right, not only do i coach lives, i save them",
+            years: 5
+          }
+        ],
+        "academic_shop": {
+          //for main banner of the shop
+          "banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+          "title": "Samir's 24/7 Tech Shop",
+          "description": "I've been tinkering with hardware since you were probably born - therefore, pay me lots of discounted money to enhance your tech lives.",
+          "portfolio_items":
+          //this will take up a lot of space
+          [
+            {
+              "rounded_avg_rating": 5,
+              "half_stars": false,
+              "avg_rating": 4.9,
+              "name": "iPhone",
+              "full_name": "4s/5s/6/6 plus",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            },
+            {
+              "rounded_avg_rating": 4,
+              "avg_rating": 4.0,
+              "half_stars": true,
+              "name": "Android Repair",
+              "full_name": "Ice cream, gingerbread, etc",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            }
+          ]
+        }
+      },
+      "household": {
+        "name": "Austin L",
+        "category": {name: "Household"},
+        "rating": {
+          "review_count": 24,
+          "avg_stars": 4.5
+        },
+        "profile_url": "https://uguru.me/static/remote/img/avatar.svg",
+        "guru_introduction": "So fresh, so clean, and a five-star guru.",
+        "profile_code": "tech", //tech.uguru.me
+        "verified": true,
+        "percentile": "25th",
+        "guru_rating": {
+          "int":4,
+          "half":true,
+        },
+        "guru_ratings": new Array(83),
+        "university": {
+          "name": "Washington University in St Louis",
+          "short_name": "Wash U"
+        },
+        //start communication methods
+        "skype_friendly": true,
+        "messenger_friendly": true,
+        "phone_friendly": true,
+        "text_friendly":true,
+        "is_alumni": false,
+        //end communication methods
+        "major": "Mathematics",
+        "guru_languages": [
+          {name: "Portuguese"},
+          {name: "Gujrati"},
+          {name: "Zulu"},
+        ],
+        //AKA "Will work for"
+        "all_currencies": [
+          {
+            name: "Money",
+            active: true, //must be true for it ti show up on template
+            icon_url: "cash.html"
+          },
+          {
+            name: "Food",
+            active: true, //must be true for it ti show up on template
+            icon_url: "food.html"
+          },
+          {
+            name: "Bitcoin",
+            active: true, //must be true for it ti show up on template
+            icon_url: "dogecoin.html"
+          },
+          {
+            name: "Meal Points",
+            active: true, //must be true for it ti show up on template
+            icon_url: "meal_points.html"
+          },
+          {
+            name: "Chipotle",
+            active: true,
+            icon_url: "chipotle.html"
+          },
+          {
+            name: "Coffee",
+            active: true,
+            icon_url: "coffee.html"
+          },
+          {
+            name: "Kitten Time",
+            active: true,
+            icon_url: "kitten_time.html"
+          }
+        ],
+        "guru_experiences": [
+          {
+            name: "Life Coaching 101 instructor",
+            years: 12,
+            description: "Yeah i can tech..",
+          },
+          {
+            name: "Venice Beach LifeSave",
+            description: "Thats right, not only do i coach lives, i save them",
+            years: 5
+          }
+        ],
+        "academic_shop": {
+          //for main banner of the shop
+          "banner_url": "https://uguru.me/static/remote/img/avatar.svg",
+          "title": "Cleanly by Austin",
+          "description": "Spruce your dorm or apartment whether you have a messy closet or preparing for a house party. Your living space will be lemon-fresh and squeaky-clean.",
+          "portfolio_items":
+          //this will take up a lot of space
+          [
+            {
+              "rounded_avg_rating": 5,
+              "half_stars": false,
+              "avg_rating": 4.9,
+              "name": "iPhone",
+              "full_name": "4s/5s/6/6 plus",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            },
+            {
+              "rounded_avg_rating": 4,
+              "avg_rating": 4.0,
+              "half_stars": true,
+              "name": "Android Repair",
+              "full_name": "Ice cream, gingerbread, etc",
+              "hourly_price": 15,
+              "description": "Add portfolio item description here",
+              "resources": [
+                {"is_url":true, "is_featured": true, "site_url": "https://uguru.me/static/remote/img/avatar.svg"}
+              ]
+            }
+          ]
+        }
+      },
+    }
+
+    var generateMiniSampleProfileDict = function() {
+
+      var getMainAttributesFromUser = function(category) {
+        return {
+          name: sampleProfiles[category]["name"],
+          profile_url: sampleProfiles[category]["profile_url"],
+          verified: sampleProfiles[category]["verified"],
+          category_name: sampleProfiles[category]["category"]["name"],
+          university_name: sampleProfiles[category]["university"]["short_name"],
+          percentile: sampleProfiles[category]["percentile"],
+          rating: {
+            "whole_stars": sampleProfiles[category]["guru_rating"]["int"],
+            "has_half_star": sampleProfiles[category]["guru_rating"]["half"],
+            "count": sampleProfiles[category]["guru_ratings"].length
+          }
+        }
+      }
+
+      return {
+        tech: getMainAttributesFromUser("tech"),
+        household: getMainAttributesFromUser("household"),
+        academic: getMainAttributesFromUser("academic"),
+        photography: getMainAttributesFromUser("photography"),
+        baking: getMainAttributesFromUser("bakery")
+      }
+    }
+
     var faq = [
       {
         question: "Is this college ruled?",
@@ -120,37 +745,37 @@ function ContentService() {
       return{
           header: "The Most Flexible Part-Time",
           top_half: [{
-              icon: "Profile Card",
+              icon_src: "main/profile.html",
               header: "Full Stack Profile",
               tag: 'See Preview',
               content: "A platform where you come first. Complete control over your profile. Customize, set prices, bill others",
             },
             {
-              icon: "Chart icon",
+              icon_src: "main/stats.html",
               header: "Analytics & Promotion Tool",
               tags: 'See Preview',
               content: "Digital marketing kits, business cards, high quality graphics and much more.",
             },
             {
-              icon: "credit card",
+              icon_src: "main/payment-portal.svg",
               header: "Your own payment portal",
               content: "Money goes straight to your bank account. Send an invoice to whoever, whenever",
             },
           ],
           bottom_half:[
             {
-              icon: "Profile Card from Guru Onboarding",
+              icon_src: "main/full-stack.svg",
               header: "Have Multiple Profiles for Multiple Skills",
               content: "Create an academic shop for course-related skills, photography shop to earn from grad photos, tech shop for iPhone repair..",
             },
             {
-              icon: "Credit Card",
+              icon_src: "main/card.html",
               header: "Zero Transaction Fees",
               tag: 'See Preview',
               content: "Earn your first $500 within a month & then we'll discuss business partnerships and monthly subscriptions. You come first.",
             },
             {
-              icon: "",
+              icon_src: "main/pajama.svg",
               header: "Work anytime, anywhere, <br>even in your PJs",
               content: "Toggle a switch on when you are available to earn side cash, and we'll market you. Focus on great quality, we'll take care of the rest",
             },
@@ -161,36 +786,36 @@ function ContentService() {
     var generateUniversitySpecificHowItWorks = function(university) {
       return {header: "Uguru Can Help You ..",
         top_half: [{
-              icon: "https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/136434.svg?Expires=1452346781&Signature=XHvIEw8pDw4Vhg6IZyEBf6b0sdgJAES~RTwxXPP-OEWaZhltzurLkFh6KdPWho4KLsx~UAdV53kNVLu9NX5pcOxrCg3cjQaImlFdIIXnWq8Am2PIKGbcHzhJnDknu5QLCzaEJc-xD8mqk-wy7hNRWUAaKUx~ioHzHQGXLMZuPBA_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q",
+              icon_src: "../svg.icon.calendar.html",
               header: "24/7, Anytime, Anywhere",
               tag: null,
               content: "Request course help @7am, or request a midnight snack at 11pm. Trust me, one of your peers " + ((university && university.name && ' ') || '') + 'is up',
             },
             {
-              icon: "https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/139071.svg?Expires=1452347225&Signature=V3nefdC-oWx1j2uH6KDrl6m6WAjbyo52B8HPGkYLrRTn6aEgsfvFZyLdQ2XHyJleNGzdMxxFVxjJD2yC2Am8WtlAs9UoFxYsdHCuC2yShQhCHz42zb1MmMjRCs3yKlEmI6ao8I6XFf~Mucv05SJxCXoxXYqLnPzgh--ldy8lluA_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q",
+              icon_src: "main/lightbulb.html",
               header: "Save $$$ on Academic Help",
               content: "Get help from a quick 5-min question to several hours at super-cheap rates, averaging at $13/hr"
             },
             {
-              icon: "https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/14634.svg?Expires=1452347158&Signature=G5XkxjC8k7AqecF6pc0golzfD~X2wftnZxqo8peFvahEILGeEmUMWs-2z6ytl85Iy7sExP0t-x1fTDKAPdFShmipO9JkfTtw3meAgbfOmc1aCGpgmY~S9EgH4p3L7zGrdy7odCt~epR0DrhHsKb4SMklJeWb7a~68PC4cBt3KQU_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q",
+              icon_src: "wwf/tutor.html",
               header: "Same Course, Same Professor",
               content: "We'll connect you a student who has already aced it recently, and possible the same professor!"
             }
           ],
           bottom_half:[
             {
-              svg_url: "shield-lock",
+              icon_src: "academic.html",
               header: "Stay Organized & Improve Focus",
               tag: 'Coming Soon!',
               content: "Apps to help calculate & project your GPA, + other power-ups coming soon!"
             },
             {
-              svg_url: "satisfaction",
+              icon_src: "main/experience.html",
               header: "Prepare for Your Career",
               content: "Connect with mentors related to your major, or peers who have your dream internship. They're just one tap away."
             },
             {
-              icon: "dollar sign",
+              icon_src: "main/money.html",
               tag: 'Read More',
               header: "Earn Side Cash, Work For Yourself",
               content: "Help your peers in aced courses, your talents, or pretty much anything else"
@@ -214,6 +839,8 @@ function ContentService() {
       parents: parents,
       sophisticated_modal:sophisticated_modal,
       affordability_modal:affordability_modal,
+      sampleProfiles: sampleProfiles,
+      generateMiniSampleProfileDict: generateMiniSampleProfileDict
     }
 
 }

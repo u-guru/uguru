@@ -15,23 +15,98 @@ angular.module('uguru.util.controllers')
   'GMapService',
   'GUtilService',
   'ContentService',
+  'CTAService',
+  'PeelService',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
-    SearchboxService, GMapService,GUtilService, ContentService){
+    SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService){
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
       ];
       var scrollDuration= 500;
       var shouldShowBecomeGuruHeader = false;
+      var mainPageContainer = document.querySelector('#university-splash')
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
       $scope.courses = [];
-      $scope.activeTabIndex = 0;
+      $scope.activeTabIndex = 1;
       $scope.university = {}
-      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false}
+      $scope.profile = {public_mode: true};
+      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}}
       $scope.page.sidebar = {show:false};
-      $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
+      $scope.page.header = {showSolidNav:false};
+      $scope.sampleProfiles = ContentService.sampleProfiles;
+      $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
+      console.log('sample mini profiles dict', $scope.sampleMiniProfilesDict);
+
+      var calcAllMainSectionContainers = function() {
+        $scope.page.offsets = {
+          browse: document.querySelector('#splash-browse').offsetTop,
+          become_guru: document.querySelector('#become-guru').offsetTop,
+          how_it_works: document.querySelector('#how-it-works').offsetTop,
+        }
+      }
+
+
+      $scope.peelCard = function($event) {
+        var targetId = $event.currentTarget.children[0].id;
+        PeelService.initPeel('#' + targetId);
+      }
+
+      $scope.checkPosition = function(event) {
+        var scrollDistanceToTop = mainPageContainer.scrollTop;
+        var default_offset = 50;
+        $scope.page.offsets.current = scrollDistanceToTop;
+
+        //if we have scrolled to the browse section
+        if (($scope.page.offsets.current + default_offset) > $scope.page.offsets.browse) {
+          $scope.page.header.showSolidNav = true;
+        } else {
+          $scope.page.header.showSolidNav = false;
+        }
+
+        // if (($scope.page.offsets.current + default_offset) > $scope.page.offsets.become_guru) {
+        //   console.log('we have passed become a guru')
+        // }
+
+        // if (($scope.page.offsets.current + default_offset) > $scope.page.offsets.how_it_works) {
+        //   console.log('we have passed how it works')
+        // }
+
+      }
+
+
+
+      var generatePageLinks = function() {
+        var howItWorksFunc = function() {
+          $scope.scrollToSection("#how-it-works")
+        }
+        var browseFunc = function() {
+          $scope.scrollToSection("#splash-browse");
+        }
+        var becomeGuruFunc = function() {
+          $scope.scrollToSection("#become-guru");
+        }
+        return [
+          {name:"Home", href:"/"},
+          {name:null, href:"#",
+            sublinks:[
+                {name:'How it works', ngClickFunc:howItWorksFunc},
+                {name:"Browse", ngClickFunc:browseFunc},
+                {name:"Become a Guru", ngClickFunc:becomeGuruFunc}
+              ]
+          },
+          {name:"Meet the Team", href:"#/team"},
+          {name:"Timeline", href:"#/timeline"},
+          {name:"FAQ", href:"#/faq"},
+          {name:"Pricing", href:"#/pricing"},
+          {name: "Apply", href:"#/apply"},
+          {name: "Support", href:"#/support"}
+        ];
+      }
+
+      $scope.pageLinks =  generatePageLinks()
 
       var university_id = $stateParams.universityId;
       $scope.university = {};
@@ -54,9 +129,9 @@ angular.module('uguru.util.controllers')
       $scope.links = [];
 
       $scope.toggleSidebar = function() {
-        $scope.page.sidebar.show=!$scope.page.sidebar.show;
+        console.log('this was calledf');
+        $scope.page.sidebar.show= !$scope.page.sidebar.show;
         if ($scope.page.sidebar.show) {
-          pageLinks = ['link 1', 'link 2', 'link 3', 'link 4'];
           $scope.links = [];
           $timeout(function() {$scope.links.push(pageLinks[0])}, 1000)
           $timeout(function() {$scope.links.push(pageLinks[1])}, 1000)
@@ -79,6 +154,8 @@ angular.module('uguru.util.controllers')
 
       }
 
+
+
       var getPublicUniversityInformation = function() {
 
         var success = function(universityObj) {
@@ -92,7 +169,8 @@ angular.module('uguru.util.controllers')
           $timeout(function() {
             $scope.$apply();
           })
-
+          //update sidebar link
+          $scope.pageLinks[1].name = universityObj.short_name
           console.log('universityObj', universityObj)
         }
 
@@ -104,18 +182,19 @@ angular.module('uguru.util.controllers')
 
       }
 
+    var showMarkerInfoWindow = function(gMarker, event, modelMark) {
+            console.log(gMarker, event, modelMark);
+            gMarker.showInfoWindow();
+      }
+
     var initRequestMap = function() {
       console.log($scope.university)
       if ($scope.university) {
-        $scope.map = GMapService.initMapObj($scope.university, {zoom:18, disableDoubleClickZoom:true, draggable:false});
-        $scope.map.nearbyLocations = {coords:"'self'", markers:[]};
+        $scope.map = GMapService.initMapObj($scope.university, {zoom:16, disableDoubleClickZoom:true, draggable:false});
+
+        $scope.map.nearbyLocations = {coords:"'self'", markers:[], control:{}, showWindow: showMarkerInfoWindow};
         $scope.gmapAnimation = google.maps.Animation.BOUNCE;
         $scope.map.centerMarker = {id:1, options:{animation: $scope.gmapAnimation, icon:"https://uguru.me/static/remote/img/icons/marker.svg"}, windowText:"Campus Center",  showWindow:true, coords: {latitude:$scope.university.latitude, longitude:$scope.university.longitude}, control: {}};
-
-
-        $timeout(function() {
-          $scope.map.centerMarker.control.getGMarkers()[0].setAnimation(null);
-        }, 2500);
 
 
         $scope.map.events.dragend = function(maps, event_name, drag_options) {
@@ -215,21 +294,33 @@ angular.module('uguru.util.controllers')
         // }, scrollDuration + 100)
       }
 
+      var initProfileCTAS = function() {
+        var showCTACallback = function(category) {
+          return function() {
+            $scope.user = $scope.sampleProfiles[category];
+          }
+        }
+
+        CTAService.initSingleCTA('#cta-box-academic', '#university-splash', showCTACallback("academic"));
+        CTAService.initSingleCTA('#cta-box-baking', '#university-splash', showCTACallback("baking"));
+        CTAService.initSingleCTA('#cta-box-household', '#university-splash', showCTACallback("household"));
+        CTAService.initSingleCTA('#cta-box-photography', '#university-splash', showCTACallback("photography"));
+        CTAService.initSingleCTA('#cta-box-tech', '#university-splash', showCTACallback("tech"));
+      }
+
       getPublicUniversityInformation();
 
 
       $scope.$on('$ionicView.loaded', function() {
-         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader()
-         if ($scope.user.id && $scope.user.high_school) {
-          var user_name = $scope.user.name.split(' ')[0];
-          if (user_name.length < 12) {
-            user_name = user_name[0].toUpperCase() + user_name.slice(1);
-            $scope.callToAction.text = user_name + "'s Account";
-          } else {
-            $scope.callToAction.text = 'My Dashboard';
-          }
-          $scope.callToAction.extendedText = 'Go to My Dashboard'
-         }
+
+         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+
+         $timeout(function() {
+          calcAllMainSectionContainers();
+          initProfileCTAS();
+         }, 2500)
+
+
       });
 
     }

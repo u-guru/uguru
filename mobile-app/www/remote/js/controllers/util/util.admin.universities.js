@@ -40,10 +40,14 @@ angular.module('uguru.util.controllers')
 				"Short Name": "short_name",
 				"School Color Light": "school_color_light",
 				"School Color Dark": "school_color_dark",
-				'Name': "name"
+				'Name': "name",
+				"Banner Url": "university_banner"
 			}
 			if (currentValue) {
 				uni[mappingDict[fieldName]] = currentValue;
+				if (fieldName === 'Banner Url') {
+					uni.banner_url_confirmed = true;
+				}
 				var payload = {};
 				payload[mappingDict[fieldName]] = currentValue;
 				console.log('updating db value for payload', payload)

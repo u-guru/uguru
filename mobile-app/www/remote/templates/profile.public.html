@@ -1,4 +1,4 @@
-<ion-view class='uguru-view pf-type pf-type-academic pf-type-{{user.academic_shop.category.hex_color}} bg-slate pf-has-edit'>
+<ion-view class='uguru-view pf-type pf-type-{{category.hex_color || user.academic_shop.category.hex_color || "academic"}} bg-slate pf-has-edit'>
 	<a id='guru-profile-cta-close' class='cta-modal-close close-button' ng-click='closeProfileModal()'>
 		<svg viewBox="0 0 100 100">
 			<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -298,7 +298,7 @@
 				<div class="pf-list p15top">
 					<h1>Will Work For</h1>
 					<ul class="pf-list-x ugrid-3">
-						<li name="currency-check" ng-repeat='currency in all_currencies' ng-if="(currency.active && profile.public_mode) || !profile.public_mode">
+						<li name="currency-check" ng-repeat='currency in (all_currencies||user.all_currencies)' ng-if="(currency.active && profile.public_mode) || !profile.public_mode">
 							<span ng-include="img_base + BASE + 'templates/svg/wwf/' + currency.icon_url"></span>
 							<span>{{currency.name}}</span>
 							<div ng-if='!profile.public_mode'>
@@ -456,7 +456,7 @@
 						<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
 						<div class="pf-checklist-item-bg">
 							<span class="pf-price pf-price-right">${{portfolio_item.hourly_price}}/hr</span>
-							<span>{{portfolio_item.course.full_name || portfolio_item.course.title}}</span>
+							<span>{{portfolio_item.name || portfolio_item.course.full_name || portfolio_item.course.title}}</span>
 						</div>
 						<a class="pf-edit-link" ng-if='!profile.public_mode' ng-click="showEditPortfolioItem(portfolio_item)">Edit</a>
 						<a name='remove' class="pf-check pf-remove" ng-if='!profile.public_mode' ng-click='portfolio_item.showRemovePopup = true;'>
@@ -468,7 +468,7 @@
 							</svg>
 						</a>
 						<span class="pf-check-label">
-							<span name='portfolio-item-course-short_name'>{{portfolio_item.course.short_name}}</span>
+							<span name='portfolio-item-course-short_name'>{{portfolio_item.full_name|| portfolio_item.name|| portfolio_item.course.short_name}}</span>
 							<ul class="pf-rating" data-rating="{{portfolio_item.rounded_avg_rating}}" data-half="{{portfolio_item.half_stars}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 							<span class="pf-review-amt">{{portfolio_item.avg_rating}}</span>
 						</span>
