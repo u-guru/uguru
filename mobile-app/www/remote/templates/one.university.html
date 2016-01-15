@@ -229,10 +229,10 @@
                 	                    </a>
                 					</div>
                     			</li>
-                                <li >
+                                <li>
                                     <div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
                                         <a class='bg-{{categories[0].hex_color}}' ng-click='launchCategoryModal(category)'>
-                                            <span class="card-icon" ng-include="img_base + 'templates/svg/' + categories[0].hex_color + '.html'"></span>
+                                            <span class="card-icon"></span>
                                             <span class="card-label">More Coming Soon!</span>
                                         </a>
                                     </div>
@@ -321,7 +321,7 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by course.id'>
+        					<li ng-click='addStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by course.id'>
         						<div class="border-university">
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>

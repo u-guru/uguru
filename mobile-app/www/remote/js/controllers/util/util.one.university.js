@@ -18,9 +18,11 @@ angular.module('uguru.util.controllers')
   'CTAService',
   'PeelService',
   'TypedService',
+  '$localstorage',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
-    SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService){
+    SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
+    $localstorage){
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
@@ -229,15 +231,13 @@ angular.module('uguru.util.controllers')
         } else {
           $scope.page.dropdowns.location_search.predictions = [];
         }
-
       }
-
-
 
       var getPublicUniversityInformation = function() {
 
         var success = function(universityObj) {
-          $scope.university = universityObj;
+          $scope.university = universityObj.plain();
+          $scope.user.university = $scope.university;
           $scope.root.vars.initRequestMap();
           if (!LOCAL) {
             $scope.page.universityStyleUrl = $scope.img_base + BASE + 'templates/one.university.style.html';
@@ -293,7 +293,6 @@ angular.module('uguru.util.controllers')
           $scope.map.centerMarker.showWindow = false;
         }
       }
-
 
       uiGmapGoogleMapApi.then(function(maps) {
         maps.visualRefresh = true;
@@ -404,7 +403,8 @@ angular.module('uguru.util.controllers')
          $timeout(function() {
           calcAllMainSectionContainers();
           initProfileCTAS();
-          initUniversityTypeWriter()
+          initUniversityTypeWriter();
+          console.log('PRINTING USER', $scope.user);
 
           !$scope.desktopMode && initiateAllPeels();
 
