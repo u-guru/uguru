@@ -59,9 +59,10 @@
                 </a>
                 <a id="splash-footer-top" class="splash-footer-link" ng-click='scrollToSection("#splash-home")'>
 					<span ng-include="img_base + 'templates/svg/backpack.html'"></span>
-                	<svg class="splash-footer-icon" viewBox="0 0 100 100">
+                	<svg class='splash-footer-icon ng-class:{"hide":user.student_courses.length}' viewBox="0 0 100 100">
                 		<path d="M14,68 L50,32 L86,68"></path>
                 	</svg>
+                    <small class='weight-900 splash-footer-icon txt-university-dark ng-class:{"hide":!user.student_courses.length}'>{{user.student_courses.length}}</small>
                 </a>
 
                 <div>

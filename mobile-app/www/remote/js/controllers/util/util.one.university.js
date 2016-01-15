@@ -33,7 +33,7 @@ angular.module('uguru.util.controllers')
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
       $scope.courses = [];
-      $scope.activeTabIndex = 0;
+      $scope.activeTabIndex = 2;
       $scope.university = {}
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
@@ -272,6 +272,16 @@ angular.module('uguru.util.controllers')
             console.log(gMarker, event, modelMark);
             gMarker.showInfoWindow();
       }
+
+    $scope.addStudentCourse = function(course, $index) {
+      var course = $scope.courses.splice($index, 1);
+      $scope.user.student_courses.push(course);
+    }
+
+    $scope.removeStudentCourse = function(course, $index) {
+      var course = $scope.user.student_courses.splice($index, 1);
+      $scope.courses.unshift(course);
+    }
 
     var initRequestMap = function() {
       console.log($scope.university)
