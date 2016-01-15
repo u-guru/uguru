@@ -588,3 +588,52 @@ ul#guru-courses-user-profile {
   min-height: calc(240px + 200px) !important;
   width: 100%;
 }
+
+.gmap-marker-label {
+  font-weight: 900;
+  font-size: 24px;
+  animation: swing 1.5s infinite;
+}
+
+@keyframes bob {
+  0% {
+    transform: translate(0, 0);
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    transform: translate(0, 30px);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: translate(0, 0);
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out;
+  }
+  25% {
+    transform: rotate(-20deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    transform: rotate(0deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out;
+  }
+  75% {
+    transform: rotate(20deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out;
+  }
+}
