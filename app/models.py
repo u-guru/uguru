@@ -3395,6 +3395,9 @@ class Subcategory(Base):
         )
     icon_url = Column(String)
     description = Column(String)
+    avg_hourly = Column(Integer)
+    avg_hourly_lower = Column(Integer)
+    avg_hourly_higher = Column(Integer)
     is_active = Column(Boolean, default=True)
     is_approved = Column(Boolean, default=False)
 
