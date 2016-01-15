@@ -26,7 +26,7 @@ angular.module('uguru.util.controllers')
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
       ];
       var scrollDuration= 500;
-      var shouldShowBecomeGuruHeader = false;
+      var shouldShowBecomeGuruHeader = true;
       var mainPageContainer = document.querySelector('#university-splash')
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
