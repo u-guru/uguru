@@ -12,30 +12,34 @@ angular.module('uguru.util.controllers')
 	'$timeout',
 	'University',
 	'TimelineService',
-	function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, LoadingService, $timeout, University, TimelineService) {
+	'CTAService',
+	function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, LoadingService, $timeout, University, TimelineService, CTAService) {
 
 		//first format by
-		$scope.page = {active: {thread: 'design + UX', progress:null}};
-		$scope.setActiveThread = function(thread) {
-			$scope.page.active.thread = thread;
-			var numComplete = 0;
-			var totalItems = 0;
+		$scope.page = {active: {tabName: 'Home', progress:null}};
 
-			//iterate over item objects
-			allTodoItems = $scope.timeline.threads_detailed[thread].todo;
-			for (var i = 0; i < allTodoItems.length; i++) {
-				totalItems += allTodoItems[i].checklist.length;
-				for (var j = 0; j < allTodoItems[i].checklist.length; j++) {
-					var indexChecklistItem = allTodoItems[i].checklist[j];
-					if (indexChecklistItem.complete) {
-						numComplete += 1;
-						console.log('yay ' + indexChecklistItem.item + ' complete!');
-					}
-				}
-			}
-			$scope.page.active.progress = numComplete + '/' + totalItems;
-			$scope.page.active.progress_percent = parseInt(numComplete/totalItems * 100 ) + '%';
+		$scope.setActiveThread = function(tabName) {
+			$scope.page.active.tabName = tabName;
 		}
+
+		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides", "Timeline", "Moodboards"];
+		$scope.projects = [{name:'University Specific + Home', deadline:"1/15/2015", urgent:true}, {name: 'Student Everything MVP'}, {name: 'Guru Everything MVP'}, {name: 'GPA App'}];
+
+		var initProjectCTAS = function() {
+
+			for (var i = 0; i < $scope.projects.length; i ++) {
+				indexProject = $scope.projects[i];
+				CTAService.initSingleCTA('#cta-box-project-' + i, '#admin-main');
+			}
+
+		}
+
+		$scope.$on('$ionicView.loaded', function() {
+			$timeout(function() {
+				initProjectCTAS();
+			}, 1000)
+		})
+
 
 		$scope.timeline = {
 		    "version": 0.1,
@@ -282,7 +286,7 @@ angular.module('uguru.util.controllers')
 		    }
 		}
 
-		$scope.setActiveThread('design + UX');
+
 
 		// 1. Define everything that needs to be done & share it
 
