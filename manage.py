@@ -705,7 +705,10 @@ def generate_categories_json():
                 'is_approved': subcategory.is_approved,
                 'is_active': subcategory.is_active,
                 'icon_url': subcategory.icon_url,
-                'description': category.description
+                'description': category.description,
+                'avg_hourly': subcategory.avg_hourly,
+                'avg_hourly_higher': subcategory.avg_hourly_higher,
+                'avg_hourly_lower': subcategory.avg_hourly_lower
             }
 
             result_dict[category.name]['subcategories'].append(subcategory_info)
@@ -733,8 +736,14 @@ def update_categories():
         print category.id, category.name
         for subcategory in categories_dict[key]['subcategories']:
             subcategory_id = subcategory['id']
-            subcategory = Subcategory.query.get(subcategory_id)
-            print '   >>', subcategory.id, subcategory.name
+            subcategory_obj = Subcategory.query.get(subcategory_id)
+            subcategory_obj.name = subcategory['name']
+            subcategory_obj.icon_url = subcategory['icon_url']
+            subcategory_obj.description = subcategory['description']
+            subcategory_obj.avg_hourly = subcategory.get('avg_hourly')
+            subcategory_obj.avg_hourly_lower = subcategory.get('avg_hourly_lower')
+            subcategory_obj.avg_hourly_higher = subcategory.get('avg_hourly_higher')
+            print '   >>', subcategory_obj.id, subcategory_obj.name
         print
     db_session.commit()
     generate_categories_json()
