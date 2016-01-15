@@ -233,10 +233,10 @@
                 	                    </a>
                 					</div>
                     			</li>
-                                <li >
+                                <li>
                                     <div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
                                         <a class='bg-{{categories[0].hex_color}}' ng-click='launchCategoryModal(category)'>
-                                            <span class="card-icon" ng-include="img_base + 'templates/svg/' + categories[0].hex_color + '.html'"></span>
+                                            <span class="card-icon"></span>
                                             <span class="card-label">More Coming Soon!</span>
                                         </a>
                                     </div>
@@ -325,7 +325,7 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by course.id'>
+        					<li ng-click='addStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by course.id'>
         						<div class="border-university">
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>
@@ -377,8 +377,8 @@
                                         <span></span>
                                     </div>
                                 </div>
-                                <div class='peel-back bg-university'>back</div>
-                                <div class='peel-bottom bg-university' style='opacity:0.2'></div>
+                                <div class='peel-back'>back</div>
+                                <div class='peel-bottom' style='opacity:0.2'></div>
                             </div>
                         </li>
                         <li ng-repeat="bg_item in become_guru.bottom_half" ng-click='peelCard($event, bg_item, "bg")' class='absolute left-0 ng-class:{"hide":bg_item.hide}'>
@@ -398,8 +398,8 @@
                                         <span></span>
                                     </div>
                                 </div>
-                                <div class='peel-back bg-university'>back</div>
-                                <div class='peel-bottom bg-university' style='opacity:0.2'></div>
+                                <div class='peel-back'>back</div>
+                                <div class='peel-bottom' style='opacity:0.2'></div>
                             </div>
                         </li>
                     </ul>
