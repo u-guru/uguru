@@ -186,6 +186,7 @@ angular.module('uguru.util.controllers')
 
 
       var generatePageLinks = function() {
+        initSupportBox();
         var howItWorksFunc = function() {
           $scope.scrollToSection("#how-it-works")
         }
@@ -194,6 +195,35 @@ angular.module('uguru.util.controllers')
         }
         var becomeGuruFunc = function() {
           $scope.scrollToSection("#become-guru");
+        }
+        var topPageFunc = function() {
+          $scope.scrollToSection("#home-splash");
+        }
+        var triggerTeamCTA = function() {
+          LoadingService.showMsg('Coming Soon', 3000);
+        }
+        var triggerPricingCTA = function() {
+          LoadingService.showMsg('Coming Soon', 3000);
+        }
+        var triggerApplyCTA = function() {
+          LoadingService.showMsg('Coming Soon', 3000);
+        }
+
+        var triggerSupportBox = function() {
+          Intercom('boot', {
+                app_id: "yoz6vu28",
+                widget: {"activator": "#Intercom"}
+          })
+          var intercomContainer = document.querySelector('#intercom-container');
+          intercomContainer.style.cssText += ' z-index:1000 !important;';
+          Intercom('show');
+          intercomContainer.style.visibility = "visible";
+          Intercom('onHide', function() {
+            intercomContainer.style.visibility = "hidden";
+          })
+        }
+        var triggerFAQCTA = function() {
+          LoadingService.showMsg('Coming Soon', 3000);
         }
         return [
           {name:"Home", href:"/"},

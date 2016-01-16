@@ -33,6 +33,7 @@ angular.module('uguru.util.controllers')
 				{"Scroll Reveal": true},
 				{"Update University.js":true},
 				{"Add tiny_name to university":true},
+				{"Support Library":true},
 				{"Home Page Sidebar + link in-app-views":false},
 				{"Helicopter Transition":false},
 				{"FAQ":false},
@@ -42,8 +43,9 @@ angular.module('uguru.util.controllers')
 				{"Sanitize Courses": false},
 				{"Main section templating": false},
 				{"Code Cleanup": false},
+				{"Category Content": false},
 				{"Content": false},
-				{"image url + static assets conversion":false}
+				{"image url + static assets conversion":false}.
 			];
 
 			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
@@ -55,7 +57,11 @@ angular.module('uguru.util.controllers')
 				{"Content card spacing + spec":false},
 				{"Cross platform":false},
 				{"Fluidity":false},
-				{"FAQ polishing":false}
+				{"Resolve Categories":false},
+				{"Support styling + finalize w.r.t support icon":false},
+				{"Agree on animation spec":false},
+				{"FAQ polishing":false},
+				{"Staging Env":false}
 			];
 
 			return resultDict;
