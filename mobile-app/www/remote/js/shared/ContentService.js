@@ -858,33 +858,33 @@ function ContentService() {
 		return {
 			header: "The Most Flexible Part-Time",
 			top_half: [{
-				icon_src: "main/profile.html",
-				header: "Full Stack Profile",
+				icon_src: "splash/profile.html",
+				header: "Full Stack<br/>Profile",
 				tag: 'See Preview',
-				content: "A platform where you come first. Complete control over your profile. Customize, set prices, bill others",
+				content: "A platform where you come first. Complete control over your profile. Customize, set prices, bill others.",
 			}, {
-				icon_src: "main/stats.html",
-				header: "Analytics & Promotion Tool",
+				icon_src: "splash/promotion.html",
+				header: "Analytics and<br/>Promotion Tool",
 				tags: 'See Preview',
-				content: "Digital marketing kits, business cards, high quality graphics and much more.",
+				content: "We'll help you out with digital marketing kits, business cards, high quality graphics and much more.",
 			}, {
-				icon_src: "main/payment-portal.svg",
-				header: "Your own payment portal",
-				content: "Money goes straight to your bank account. Send an invoice to whoever, whenever",
+				icon_src: "splash/payment.html",
+				header: "Your Own<br/>Payment Portal",
+				content: "Money goes straight to your bank account. Send an invoice to whoever, whenever, with just one tap.",
 			}, ],
 			bottom_half: [{
-				icon_src: "main/full-stack.svg",
-				header: "Have Multiple Profiles for Multiple Skills",
-				content: "Create an academic shop for course-related skills, photography shop to earn from grad photos, tech shop for iPhone repair..",
+				icon_src: "splash/skills.html",
+				header: "Many Shops For<br/>Many Skills",
+				content: "Create an academic shop for tutoring, photography shop to earn from grad photos, tech shop for device repair.",
 			}, {
-				icon_src: "main/card.html",
-				header: "Zero Transaction Fees",
+				icon_src: "splash/fees.html",
+				header: "Zero<br/>Transaction Fees",
 				tag: 'See Preview',
-				content: "Earn your first $500 within a month & then we'll discuss business partnerships and monthly subscriptions. You come first.",
+				content: "Earn your first $500 in a month and then we'll discuss business partnerships and subscriptions.",
 			}, {
-				icon_src: "main/pajama.svg",
+				icon_src: "splash/pajamas.html",
 				header: "Work anytime, anywhere, <br>even in your PJs",
-				content: "Toggle a switch on when you are available to earn side cash, and we'll market you. Focus on great quality, we'll take care of the rest",
+				content: "Toggle a switch when you're available to earn and we'll market you. Focus on quality, we'll take care of the rest.",
 			}, ]
 		};
 
@@ -893,33 +893,33 @@ function ContentService() {
 		return {
 			header: "Uguru Can Help You ..",
 			top_half: [{
-				icon_src: "../svg.icon.calendar.html",
+				icon_src: "splash/anytime.html",
 				header: "24/7, Anytime, Anywhere",
 				tag: null,
 				content: "Request course help @7am, or request a midnight snack at 11pm. Trust me, one of your peers " + ((university && university.name && ' ') || '') + 'is up',
 			}, {
-				icon_src: "main/lightbulb.html",
-				header: "Save $$$ on Academic Help",
+				icon_src: "splash/save.html",
+				header: "Save $ on Academic Help",
 				content: "Get help from a quick 5-min question to several hours at super-cheap rates, averaging at $13/hr"
 			}, {
-				icon_src: "wwf/tutor.html",
-				header: "Same Course, Same Professor",
-				content: "We'll connect you a student who has already aced it recently, and possible the same professor!"
+				icon_src: "splash/same.html",
+				header: "Ace the course",
+				content: "We'll connect you to a student who has already aced it recently, and possible the same professor!"
 			}],
 			bottom_half: [{
-				icon_src: "academic.html",
-				header: "Stay Organized & Improve Focus",
+				icon_src: "splash/organize.html",
+				header: "Stay Organized & Focused",
 				tag: 'Coming Soon!',
-				content: "Apps to help calculate & project your GPA, + other power-ups coming soon!"
+				content: "Apps to help calculate & project your GPA, increase productivity + other power-ups coming soon!"
 			}, {
-				icon_src: "main/experience.html",
+				icon_src: "splash/career.html",
 				header: "Prepare for Your Career",
-				content: "Connect with mentors related to your major, or peers who have your dream internship. They're just one tap away."
+				content: "Connect with mentors related to your major or peers who have your dream internship, just one tap away."
 			}, {
-				icon_src: "main/money.html",
+				icon_src: "splash/earn.html",
 				tag: 'Read More',
-				header: "Earn Side Cash, Work For Yourself",
-				content: "Help your peers in aced courses, your talents, or pretty much anything else"
+				header: "Earn Side Cash",
+				content: "Help your peers in aced courses, your talents, or pretty much anything else you can think of."
 			}, ]
 		};
 

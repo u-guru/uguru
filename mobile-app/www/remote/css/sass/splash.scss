@@ -748,6 +748,18 @@
 					li {
 						width: calc(100% / 3);
 					}
+					&.desktop-postit-list {
+						li {
+							.postit {
+								> div {
+									background: $slate!important;
+									&:before {
+										background: $slate!important;
+									}
+								}
+							}
+						}
+					}
 				}
 				button {
 					max-width: calc(100% / 3 - 30px);
@@ -841,17 +853,12 @@
 					position: relative;
 					z-index: 9;
 					margin: 0 auto 15px;
-					width: 64px;
-					height: 64px;
-					padding: 8px;
-					background: white;
+					width: 128px;
+					height: 128px;
 					svg {
 						display: block;
 						width: 100%;
 						height: 100%;
-						circle, path {
-							@include svg-stroke($shamrock, 3);
-						}
 					}
 				}
 				h1 {
@@ -1232,7 +1239,7 @@
 				display: block;
 			}
 			.backpack, .support {
-				display: block;
+				display: none;
 				width: 100px;
 				height: auto;
 			}
@@ -1249,7 +1256,12 @@
 				font-size: 28px;
 				font-weight: 600;
 				color: $shamrock;
-				&:not(:only-child) {
+			}
+			@media screen and (min-width: 768px) {
+				.backpack, .support {
+					display: block;
+				}
+				.splash-footer-icon {
 					@include center-x;
 					top: 19%;
 					width: 36px;

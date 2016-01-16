@@ -922,6 +922,12 @@
   #university-splash .splash-postit .main ul li {
     width: calc(100% / 3);
   }
+  #university-splash .splash-postit .main ul.desktop-postit-list li .postit > div {
+    background: #40484B !important;
+  }
+  #university-splash .splash-postit .main ul.desktop-postit-list li .postit > div:before {
+    background: #40484B !important;
+  }
   #university-splash .splash-postit .main button {
     max-width: calc(100% / 3 - 30px);
   }
@@ -1043,24 +1049,14 @@
   position: relative;
   z-index: 9;
   margin: 0 auto 15px;
-  width: 64px;
-  height: 64px;
-  padding: 8px;
-  background: white;
+  width: 128px;
+  height: 128px;
 }
 
 #university-splash .splash-postit .postit > div span svg {
   display: block;
   width: 100%;
   height: 100%;
-}
-
-#university-splash .splash-postit .postit > div span svg circle, #university-splash .splash-postit .postit > div span svg path {
-  fill: none;
-  stroke: #69B3A5;
-  stroke-width: 3px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 #university-splash .splash-postit .postit > div h1 {
@@ -1602,7 +1598,7 @@
 }
 
 .splash-landing > section .splash-footer-link .backpack, .splash-landing > section .splash-footer-link .support {
-  display: block;
+  display: none;
   width: 100px;
   height: auto;
 }
@@ -1641,18 +1637,23 @@
   color: #69B3A5;
 }
 
-.splash-landing > section .splash-footer-link .splash-footer-icon:not(:only-child) {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  top: 19%;
-  width: 36px;
-  height: 36px;
-  stroke-width: 10px;
+@media screen and (min-width: 768px) {
+  .splash-landing > section .splash-footer-link .backpack, .splash-landing > section .splash-footer-link .support {
+    display: block;
+  }
+  .splash-landing > section .splash-footer-link .splash-footer-icon {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 19%;
+    width: 36px;
+    height: 36px;
+    stroke-width: 10px;
+  }
 }
 
 .splash-landing > section .splash-footer-link:before, .splash-landing > section .splash-footer-link:after {
