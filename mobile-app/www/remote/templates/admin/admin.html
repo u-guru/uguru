@@ -31,8 +31,8 @@
                     <div class='full-x content flex-wrap-center weight-400 bg-slate p05xy' ng-if='project.action_items'>
                         <div class='full-x'>
                             <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.alpha track by $index'>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items);' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items)' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
                             </ul>
                         </div>
                     </div>
@@ -45,8 +45,8 @@
                     <div class='full-x content flex-wrap-center weight-400 bg-charcoal p05xy' ng-if='project.action_items'>
                         <div class='full-x'>
                             <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.beta track by $index'>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items);' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress()' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
                             </ul>
                         </div>
                     </div>
@@ -59,8 +59,8 @@
                     <div class='full-x content flex-wrap-center weight-400 bg-slate p05xy' ng-if='project.action_items'>
                         <div class='full-x'>
                             <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.production track by $index'>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items);' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items)' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
                             </ul>
                         </div>
                     </div>

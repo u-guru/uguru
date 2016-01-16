@@ -376,7 +376,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'PaymentsController'
   }).
   state('root.home', {
-        url: '/home',
+        url: '/',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).
