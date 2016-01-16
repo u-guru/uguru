@@ -3819,6 +3819,7 @@ input[type=range] {
 					position: absolute;
     				top: 30px;
 					color: rgba($charcoal,.4);
+					width: 100%;
 				}
 			}
 			&.no-footer {
@@ -3832,6 +3833,14 @@ input[type=range] {
 			h2 {
 				font-size: 18px;
 				font-weight: 600;
+				span {
+					&:first-child {
+						text-transform: capitalize;
+					}
+					&:last-child {
+						text-transform: uppercase;
+					}
+				}
 			}
 		}
 	}
