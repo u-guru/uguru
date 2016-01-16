@@ -307,7 +307,7 @@ angular.module('uguru.util.controllers')
               google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
             }, 1000)
           }
-          GUtilService.initSeveralMarkersWithLabel($scope.map.control.getGMap(), $scope.universities.splice(0,1), $scope.map.university.markers, universityCustomMapOptions, callback);
+          GUtilService.initSeveralMarkersWithLabel($scope.map.control.getGMap(), $scope.universities.splice(0,50), $scope.map.university.markers, universityCustomMapOptions, callback);
 
         }, 2000)
           // $scope.map.control.getGMap()
