@@ -8,8 +8,8 @@
               </ion-nav-view>
             </ion-side-menu-content>
 
-            <ion-side-menu side="right" width='window.width * 0.8'>
-              <div ng-include="'remote/templates/components.side-menu.html'"></div>
+            <ion-side-menu side="right" width='window.width * 0.8' drag-content="!desktopMode">
+              <div ng-include="'remote/templates/components.side-menu.html'" ng-if='!desktopMode'></div>
             </ion-side-menu>
 </ion-side-menus>
 

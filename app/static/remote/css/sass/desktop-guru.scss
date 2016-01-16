@@ -2176,6 +2176,7 @@
 									text-align: center;
 									max-width: 50px;
 									background: lighten($slate, 10%);
+									color: white;
 									@include placeholder {
 										color: rgba(white,.5);
 									}
@@ -2206,92 +2207,6 @@
 }
 
 /* ---------- REFERRALS */
-.sidebar-layout {
-	.main {
-		@include flex;
-		@include flex-center;
-		padding: 0;
-		> div {
-			@include flex;
-			width: 100%;
-			height: 100%;
-			max-width: 1280px;
-			max-height: 800px;
-			background: lighten($charcoal, 5%);
-		}
-		aside {
-			width: calc(100% / 3);
-			height: 100%;
-			h2 {
-				padding: 15px;
-				font-size: 32px;
-				font-weight: 700;
-				text-align: center;
-			}
-			.sidebar-layout-list {
-				overflow: auto;
-				li {
-					@include flex;
-					padding: 15px;
-					border-bottom: 1px solid rgba(white,.4);
-					&:last-child {
-						border-bottom: 0;
-					}
-					.user-icon {
-						width: 60px;
-						height: 60px;
-						border-width: 3px;
-						+ div {
-							padding-left: 15px;
-						}
-					}
-					div {
-						width: calc(100% - 60px);
-						h3, span {
-							font-weight: 400;
-							b {
-								font-weight: 600;
-							}
-						}
-						h3 {
-							font-size: 22px;
-						}
-						span {
-							color: rgba(white,.5);
-							font-size: 18px;
-						}
-					}
-					.chip {
-						min-width: 60px;
-						text-align: center;
-					}
-				}
-			}
-		}
-		aside + div {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			width: calc(100% / 3 * 2);
-			height: 100%;
-			h1 {
-				font-size: 48px;
-				font-weight: 900;
-				svg {
-					@include svg-stroke(white, 3);
-					display: block;
-					margin: 0 auto;
-					width: 100px;
-					height: 100px;
-				}
-				+ h2 {
-					margin-top: 0!important;
-					font-weight: 600;
-				}
-			}
-		}
-	}
-}
 #desktop-referrals {
 	.main {
 		aside {
@@ -2376,99 +2291,6 @@
 						}
 					}
 				}
-			}
-		}
-	}
-}
-
-/* ---------- BALANCE */
-#desktop-balance {
-	.main {
-		height: 100%!important;
-		aside {
-			background: $moola;
-			.sidebar-layout-list {
-				height: calc(100% - 68px);
-			}
-		}
-		aside + div {
-			padding: 15px;
-			> div {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				height: calc(100% - 79px);
-				width: 100%;
-				div {
-					width: 100%;
-					#balance-total {
-						@include flex;
-						@include flex-center;
-						margin: 15px 0;
-						padding: 30px;
-						font-size: 96px;
-						font-weight: 900;
-						line-height: 1;
-						background: $slate;
-					}
-					h2 {
-						font-size: 32px;
-						font-weight: 600;
-					}
-					ul {
-						margin: 15px -7.5px 0;
-						li {
-							padding: 7.5px;
-							a {
-								@include flex;
-								@include flex-wrap;
-								@include flex-center;
-								width: 100%;
-								height: 150px;
-								background: $slate;
-								font-weight: 600;
-								svg {
-									@include svg-stroke(white, 4);
-									width: 80px;
-									height: 80px;
-								}
-								span {
-									display: block;
-									span {
-										padding-top: 10px;
-										padding-bottom: 10px;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		button {
-			font-weight: 600;
-		}
-		.credit-card {
-			svg {
-				stroke-width: 0!important;
-				width: 80px;
-				height: auto;
-			}
-		}
-		#credit-card-mastercard {
-			background: darken($slate, 10%);
-		}
-		#credit-card-amex {
-			background: lighten($slate, 10%);
-			svg {
-				width: 50px;
-				height: 50px;
-			}
-		}
-		#credit-card-discover {
-			background: $smoke;
-			* {
-				color: $charcoal!important;
 			}
 		}
 	}

@@ -10,8 +10,9 @@ angular.module('uguru.student.controllers', [])
     'DeviceService',
     '$timeout',
     '$ionicModal',
+    'GMapService',
     function($scope, $state, $ionicSideMenuDelegate, $ionicSlideBoxDelegate,
-        DeviceService, $timeout, $ionicModal) {
+        DeviceService, $timeout, $ionicModal, GMapService) {
 
         var CTA_PARENT_DICT = {
             'cta-box-student-request':'#desktop-student-home',
@@ -44,7 +45,32 @@ angular.module('uguru.student.controllers', [])
                         $timeout(function() {
                             modal_elem.classList.add('show');
                             $ionicSlideBoxDelegate.update();
+
                         }, 200);
+
+                        if (box_elem.id === 'cta-box-student-request') {
+                            $timeout(function(){
+                                console.log('initializing that damn map');
+                                console.log($scope.user.university);
+                                $scope.map = GMapService.initMapObj($scope.user.university);
+                                $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.user.university.latitude, longitude:$scope.user.university.longitude}};
+                                $scope.map.events.dragend = function(maps, event_name, drag_options) {
+                                  $scope.map.centerMarker.coords = {latitude: maps.center.G, longitude:maps.center.K};
+                                  GUtilService.getNearestLocation($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
+                                  $scope.map.centerMarker.showWindow = true;
+                                }
+
+                                $scope.map.events.dragstart = function(maps, event_name, drag_options) {
+                                  $scope.map.centerMarker.showWindow = false;
+                                }
+                                console.log('map', $scope.map)
+                                $timeout(function() {
+                                        $scope.$apply();
+                                })
+                                
+                            }, 1500)
+                        }
+
                           var close_icon = modal_elem.querySelector('.cta-modal-close');
                           if (close_icon) {
                               close_icon.addEventListener('click', function() {
@@ -66,6 +92,8 @@ angular.module('uguru.student.controllers', [])
             for (var i = 0; i < allCTABoxes.length; i++) {
                 var indexCTABox = allCTABoxes[i];
                 var indexCTAModalID = getModalCTAElemID(indexCTABox);
+
+
                 addEventListenerToCTABox(indexCTABox, indexCTAModalID, i)
 
             }

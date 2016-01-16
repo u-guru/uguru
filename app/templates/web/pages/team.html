@@ -22,9 +22,10 @@
 	    <h4 class="text-center">UGURU</h4>
 	    <h1 class="text-center">Meet the Team</h1>
 	</header>
+
     <div class='pure-u-1'>
         <ul>
-            {% for member in team_members %}
+            {% for member in team_members[1:4] %}
             <li class="text-center">
                 <img src='/static/web/images/team/{{member["name"].split(" ")[0]|lower}}.png' height="200" width="200"/>
                 <div>
@@ -36,6 +37,24 @@
             {% endfor %}
         </ul>
     </div>
+    <div class='pure-u-1'>
+        <div class='pure-g'>
+	        <div class='pure-u-1'>
+		        <ul class='pure-u-1'>
+		            {% for member in team_members[0:1] %}
+		            <li class="text-center" style='margin-left:33.33%;'>
+		                <img src='/static/web/images/team/{{member["name"].split(" ")[0]|lower}}.png' height="200" width="200"/>
+		                <div>
+			                <h3>{{member['name']}}</h3>
+			                <q class='team-role'>{{member["role"]}}</q>
+							<a hidden class='launch-profile-link' href='javascript:void(0);'>Read more</a>
+		                </div>
+		            </li>
+		            {% endfor %}
+		        </ul>
+		    </div>
+	    </div>
+	</div>
 </div>
 
 {% for member in team_members %}

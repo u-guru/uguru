@@ -8,11 +8,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-     <style>
-      [data-sr] {
-        visibility: hidden;
-      }
-    </style>
+
     <script type="text/javascript">
       var start_dom_time = Date.now();
       var deviceReadyLoadTime;
@@ -52,6 +48,8 @@
 
     <!-- ARCHIVE To get rid of soon! -->
     <link href="remote/css/ionic.app.min.css" rel="stylesheet">
+    <link href="remote/css/archive/animate.css" rel="stylesheet">
+    <link href="remote/css/archive/angular-fx.css" rel="stylesheet">
 
 
     <!-- The main css file -->
@@ -65,6 +63,7 @@
     <link href="remote/css/sass/style-pf-color.css" rel="stylesheet">
     <link href="remote/css/sass/style-modals.css" rel="stylesheet">
     <link href="remote/css/sass/universal.css" rel="stylesheet">
+    <link href="remote/css/sass/splash.css" rel="stylesheet">
     <link href="remote/css/sass/intercom.css" rel="stylesheet">
     <link href="remote/css/sass/samir.css" rel="stylesheet">
     <link href="remote/css/sass/essay.css" rel="stylesheet">
@@ -151,13 +150,14 @@
     <script src='remote/lib/spinningwheel/spinning-wheel.min.js'></script>
     <script src='http://maps.google.com/maps/api/js?key=AIzaSyDytQb8vjgkgYkAp7oVTjwIZkMtOE6xMZg&libraries=places&sensor=false&v=3.21'></script>
     <script src='remote/lib/angular-google-maps/default-map-styles.js'></script>
-    <script src='remote/lib/angular-google-maps/google-marker-with-labels.js'></script>
+    <!--<script src='remote/lib/angular-google-maps/google-marker-with-labels.js'></script>-->
+    <script src='http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerwithlabel/1.1.8/src/markerwithlabel.js'></script>
    <script src='remote/lib/angular-google-maps/angular-google-maps.min.js'></script>
 
 
 
     <script type="text/javascript" src="remote/lib/cta/cta.min.js"></script>
-    <script src='remote/lib/angular-google-maps/google-marker-with-labels.js'></script>
+    <!-- <script src='remote/lib/angular-google-maps/google-marker-with-labels.js'></script>-->
 
 
     <script src="remote/lib/restangular/dist/restangular.js"></script>
@@ -168,6 +168,8 @@
     <script src="remote/lib/angular-strap/angular-strap.tpl.min.js"></script>
     <script src="remote/lib/angular-fx/TweenMax.min.js"></script>
     <script src="remote/lib/angular-fx/ng-fx.min.js"></script>
+    <script src="remote/lib/angular-fx/ng-fx-720.min.js"></script>
+    <script src="remote/lib/scroll/waypoints.min.js"></script>
     <script src="remote/lib/angular-payments/angular-payments.js"></script>
     <script src="remote/lib/progressbar/progressbar.min.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
@@ -181,6 +183,9 @@
     <script src="remote/lib/velocity/angular-velocity.min.js"></script>
     <script src="remote/lib/fastMatcher.js"></script>
     <script src="remote/lib/d3/d3.min.js"></script>
+    <script src="remote/lib/peel/peel.js"></script>
+    <script src="remote/lib/countup/countUp.min.js"></script>
+    <script src="remote/lib/theatre/theatre.min.js"></script>
     <script src="remote/lib/ua-parser.min.js"></script>
 
 
@@ -220,8 +225,6 @@
    <script type="text/javascript" src="remote/js/shared/stats.js"></script>
     <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
     <script type="text/javascript" src="remote/lib/facebook/facebookConnectPlugin.js"></script>
-    <script src="remote/lib/scroll/scrollReveal.js"></script>
-        <script src="remote/lib/scroll/fox-scrollReveal.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
     <!-- <script src="lib/facebook/openfb.js"></script>
@@ -239,7 +242,6 @@
     <script type="text/javascript" src="remote/lib/facebook/ngopenfb.js"></script>
     <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
-    <script type="text/javascript" src="remote/js/directives/bufferedScroll.js"></script>
     <script type="text/javascript" src="remote/js/directives/imageSaver.js"></script>
     <script type="text/javascript" src="remote/js/directives/uSlideBox.js"></script>
     <script type="text/javascript" src="remote/js/directives/bindInput.js"></script>
@@ -357,11 +359,16 @@
     <script type="text/javascript" src="remote/js/shared/MediaService.js"></script>
     <script type="text/javascript" src="remote/js/shared/RequestService.js"></script>
     <script type="text/javascript" src="remote/js/shared/G-UtilService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/G-MapService.js"></script>
     <script type="text/javascript" src="remote/js/shared/ContentService.js"></script>
     <script type="text/javascript" src="remote/js/shared/TransitionService.js"></script>
     <script type="text/javascript" src="remote/js/shared/ScrollService.js"></script>
     <script type="text/javascript" src="remote/js/shared/TimelineService.js"></script>
     <script type="text/javascript" src="remote/js/shared/SearchboxService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CTAService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/PeelService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/CounterService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/TypedService.js"></script>
     <script type="text/javascript" src="remote/js/shared/CardReader.js"></script>
     <script type="text/javascript" src="remote/js/shared/SocialSharing.js"></script>
     <script type="text/javascript" src="remote/js/shared/CalendarService.js"></script>
@@ -395,7 +402,11 @@
     <script type="text/javascript" src="remote/js/controllers/util/PricingCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/ApplyCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.one.university.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.home.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.one.timeline.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.admin.timeline.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.admin.universities.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.loading.ctrl.js"></script>
 
     <script type="text/javascript" src="remote/js/controllers/util/util.availability.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.gurubook.ctrl.js"></script>
@@ -422,12 +433,6 @@
     <!-- Card component -->
     <script type="text/javascript" src="remote/js/controllers/util/CardList.ctrl.js"></script>
 
-
-    <script>
-
-      window.sr = new scrollReveal();
-
-    </script>
 <!--
     <script type="text/javascript">
     var map;
@@ -451,7 +456,11 @@
     }
     </script>
  -->
-
+ <script>
+    var lastDivLoaded = function() {
+        alert('last div loaded');
+    }
+ </script>
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()">
 

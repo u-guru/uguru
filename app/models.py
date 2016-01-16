@@ -12,7 +12,7 @@ import os
 
 from app import flask_bcrypt
 
-DEFAULT_PROFILE_PHOTO = 'https://www.uguru.me/static/remote/img/avatar.svg';
+DEFAULT_PROFILE_PHOTO = 'https://uguru.me/static/remote/img/avatar.svg';
 
 ####################
 #Association Tables#
@@ -1152,6 +1152,11 @@ class University(Base):
     sp15_start = Column(DateTime)
     sp15_end = Column(DateTime)
     sp16_deadline = Column(DateTime)
+    sp16_start = Column(DateTime)
+
+    school_color_dark = Column(String)
+    school_color_light = Column(String)
+
 
     departments_sanitized = Column(Boolean, default=False)
     courses_sanitized = Column(Boolean, default=False)
@@ -1204,6 +1209,9 @@ class University(Base):
 
     school_color_one = Column(String)
     school_color_two = Column(String)
+    school_color_primary = Column(String)
+    school_tiny_name = Column(String)
+
     school_logo_image_url = Column(String)
     variations = Column(String)
 
@@ -1948,6 +1956,15 @@ class Request(Base):
     # selected_proposal_id = Column(Integer, ForeignKey('proposal.id'))
     selected_proposal =  relationship("Proposal", uselist=False)
 
+
+    # instance variables
+    HS_OPTIONS = ['QA', 'Quick', 'Essay']
+    HS_OPTIONS_PRICE_DICT = {
+        'QA': 5,
+        'Quick': 2,
+        'Essay': 10,
+    }
+
     def process_proposal(self, proposal_json):
         self.status = proposal_json.get('status')
         try:
@@ -1965,15 +1982,16 @@ class Request(Base):
 
     @staticmethod
     def createHSRequest(student_id, university_id, \
-        option_num, file_arr, tag_arr, description):
+        option_num, file_arr, tag_arr, description, card_id):
         from datetime import datetime
         r = Request()
         r.high_school = True
         r.hs_request_option = str(option_num)
-        r._type = option_num
+        # r._type = option_num
         r.time_created = datetime.now()
         r.anonymous = True
         r.description = description
+        r.payment_card_id = card_id
 
         db_session.add(r)
         db_session.commit()
@@ -2455,7 +2473,8 @@ class Session(Base):
         _session.expiration_date = session_json.get('expiration_date')
         _session.time_created = datetime.now()
         if is_request_json:
-            _session.request_id = session_json.get('id')
+            _session.request_id = session_json.get('request_id')
+            _session.card_id = session_json.get('request_card_id')
         _session.address = session_json.get('address')
         _session.in_person = session_json.get('in_person')
         _session.online = session_json.get('online')
@@ -3376,6 +3395,9 @@ class Subcategory(Base):
         )
     icon_url = Column(String)
     description = Column(String)
+    avg_hourly = Column(Integer)
+    avg_hourly_lower = Column(Integer)
+    avg_hourly_higher = Column(Integer)
     is_active = Column(Boolean, default=True)
     is_approved = Column(Boolean, default=False)
 

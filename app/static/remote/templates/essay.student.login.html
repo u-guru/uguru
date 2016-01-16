@@ -22,19 +22,19 @@
 		</aside>
 
 		<div class="main relative">
-			<a class="back-link absolute top-0 left-0 m30xy" ng-click='goBackToStudentEssayUniversity()'>
+			<a class="back-link absolute top-0 left-0 m15xy weight-600" style="font-size: 18px;" ng-click='goBackToStudentEssayUniversity()'>
             	My Universities
         	</a>
-			<a class="back-link absolute top-0 right-0 m30xy" ng-click='flipToStudentEssayLanding()'>
+			<a class="back-link absolute top-0 right-0 m15xy weight-600" style="font-size: 18px;" ng-click='flipToStudentEssayLanding()'>
             	Home
         	</a>
 		    <div>
 				<div class="notecard">
 			        <svg viewBox="0 0 328 182">
-			            <rect x="0" y="0" rx="2"></rect>
-			            <rect x="0" y="78"></rect><rect x="0" y="104"></rect>
-			            <rect x="0" y="130"></rect><rect x="0" y="156"></rect>
-			            <rect x="0" y="52"></rect>
+			            <rect x="0" y="0" rx="2" width="328" height="182"></rect>
+			            <rect x="0" y="78" width="328" height="2"></rect><rect x="0" y="104" width="328" height="2"></rect>
+			            <rect x="0" y="130" width="328" height="2"></rect><rect x="0" y="156" width="328" height="2"></rect>
+			            <rect x="0" y="52" width="328" height="2"></rect>
 			        </svg>
 			        <h1 class="notecard-title">
 			        		<span class="hide ng-class:{'show':!page.toggles.login.active}">
@@ -46,13 +46,9 @@
 			        </h1>
 
 			        <div class="notecard-text">
-			            <div>
-			            	<br>
-			            </div>
-			            <div  class='ng-class:{"hide":page.toggles.login.active}'>
-			                <label for="notecard-name"><span class='ng-class:{"hide":page.toggles.login.active}'>Name </span>&nbsp;</label>
+			            <div class='ng-class:{"hide":page.toggles.login.active}'>
+			                <label for="notecard-name"><span class='ng-class:{"hide":page.toggles.login.active}'>Name</span>&nbsp;</label>
 			                <input  class='ng-class:{"hide":page.toggles.login.active}' id="notecard-name" name="notecard-name" type='text' ng-model="signupForm.full_name" placeholder="Full Name"/>
-
 			            </div>
 			            <div>
 			                <label for="notecard-email">Email</label>
@@ -62,19 +58,16 @@
 			                <label for="notecard-password">Password</label>
 			                <input id="notecard-password" name="notecard-password" type='password' placeholder="••••••••••••" ng-model="signupForm.password"/>
 			            </div>
-			            <div>
-			            	<br>
-			            </div>
 						<button class='hide ng-class:{"show": page.toggles.login.active}' ng-click='loginUser()'>Login</button>
 						<button class='hide ng-class:{"show": !page.toggles.login.active}' ng-click='completeSignup()'>Create</button>
 			        </div>
 			    </div>
 				<div class="notecard">
-			        <svg viewBox="0 0 328 182">
-			            <rect x="0" y="0" rx="2"></rect>
-			            <rect x="0" y="78"></rect><rect x="0" y="104"></rect>
-			            <rect x="0" y="130"></rect><rect x="0" y="156"></rect>
-			            <rect x="0" y="52"></rect>
+					<svg viewBox="0 0 328 182">
+			            <rect x="0" y="0" rx="2" width="328" height="182"></rect>
+			            <rect x="0" y="78" width="328" height="2"></rect><rect x="0" y="104" width="328" height="2"></rect>
+			            <rect x="0" y="130" width="328" height="2"></rect><rect x="0" y="156" width="328" height="2"></rect>
+			            <rect x="0" y="52" width="328" height="2"></rect>
 			        </svg>
 			    </div>
 			</div>

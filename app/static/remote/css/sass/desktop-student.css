@@ -133,7 +133,8 @@
               #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a .notification-type {
                 padding-left: 15px;
                 font-weight: 600; }
-            #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:hover .notification-icon svg, #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:focus .notification-icon svg {
+            #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:hover .notification-icon svg,
+            #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:focus .notification-icon svg {
               background: #7bbbe5; }
             #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a:active .notification-icon svg {
               background: #50A5DD; }
@@ -169,7 +170,9 @@
           width: 100%;
           height: 100%;
           z-index: 5; }
-          #desktop-student-home .main .student-home-tiles > div .square + div h1, #desktop-student-home .main .student-home-tiles > div .square + div h2, #desktop-student-home .main .student-home-tiles > div .square + div h3 {
+          #desktop-student-home .main .student-home-tiles > div .square + div h1,
+          #desktop-student-home .main .student-home-tiles > div .square + div h2,
+          #desktop-student-home .main .student-home-tiles > div .square + div h3 {
             color: white;
             font-weight: 700; }
           #desktop-student-home .main .student-home-tiles > div .square + div h1 {
@@ -197,21 +200,25 @@
             stroke-linecap: round;
             stroke-linejoin: round;
             height: calc(100% - 39px - 53px); }
-      #desktop-student-home .main .student-home-tiles .home-tiles-quick, #desktop-student-home .main .student-home-tiles .home-tiles-request {
+      #desktop-student-home .main .student-home-tiles .home-tiles-quick,
+      #desktop-student-home .main .student-home-tiles .home-tiles-request {
         height: 100%;
         width: calc(100% / 3 * 2);
         padding: 7.5px; }
-        #desktop-student-home .main .student-home-tiles .home-tiles-quick > div, #desktop-student-home .main .student-home-tiles .home-tiles-request > div {
+        #desktop-student-home .main .student-home-tiles .home-tiles-quick > div,
+        #desktop-student-home .main .student-home-tiles .home-tiles-request > div {
           position: relative; }
       #desktop-student-home .main .student-home-tiles .home-tiles-quick > div div {
         background: #50A5DD; }
       #desktop-student-home .main .student-home-tiles .home-tiles-request > div div {
         background: #298ed1; }
-      #desktop-student-home .main .student-home-tiles .home-tiles-become, #desktop-student-home .main .student-home-tiles .home-tiles-courses {
+      #desktop-student-home .main .student-home-tiles .home-tiles-become,
+      #desktop-student-home .main .student-home-tiles .home-tiles-courses {
         height: 100%;
         width: calc(100% / 3);
         padding: 7.5px; }
-        #desktop-student-home .main .student-home-tiles .home-tiles-become > div, #desktop-student-home .main .student-home-tiles .home-tiles-courses > div {
+        #desktop-student-home .main .student-home-tiles .home-tiles-become > div,
+        #desktop-student-home .main .student-home-tiles .home-tiles-courses > div {
           position: relative; }
       #desktop-student-home .main .student-home-tiles .home-tiles-become > div div {
         background: #2a6f9d; }
@@ -237,5 +244,30 @@
                 margin: auto;
                 height: 100%;
                 width: auto; }
+
+#desktop-courses.student-mode .input-field .prefix svg {
+  stroke: #40484B; }
+#desktop-courses.student-mode .input-field input {
+  color: #40484B; }
+#desktop-courses.student-mode .desktop-header a svg {
+  stroke: #40484B !important; }
+#desktop-courses.student-mode .desktop-search-header {
+  color: #40484B; }
+#desktop-courses.student-mode .desktop-card-list li a {
+  background: rgba(64, 72, 75, 0.1);
+  border-bottom: 10px solid rgba(255, 255, 255, 0.7); }
+  #desktop-courses.student-mode .desktop-card-list li a:hover {
+    background: #50A5DD; }
+    #desktop-courses.student-mode .desktop-card-list li a:hover span {
+      color: white; }
+#desktop-courses.student-mode .desktop-card-list li a svg, #desktop-courses.student-mode .desktop-card-list li label svg {
+  background: white; }
+  #desktop-courses.student-mode .desktop-card-list li a svg path, #desktop-courses.student-mode .desktop-card-list li label svg path {
+    stroke: #50A5DD; }
+#desktop-courses.student-mode .desktop-card-list .selected a {
+  background: #50A5DD;
+  border-color: white; }
+  #desktop-courses.student-mode .desktop-card-list .selected a span {
+    color: white; }
 
 /*# sourceMappingURL=desktop-student.css.map */

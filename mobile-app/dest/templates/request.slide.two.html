@@ -1,98 +1,22 @@
-<section id="request-two" class="request-slide request-academic">
+<section id="request-two" class="request-slide request-pledge">
 	<header>
-		<h1>When and where?</h1>
+		<h1>Honor Pledge</h1>
 	</header>
-	<div class='request-urgency checkbox-container'>
-		<div>
-			<input type="checkbox" id='urgency-check' ng-model='request.user.is_urgent' name="urgency-check" />
-			<span>
-				<svg viewBox="0 0 100 100">
-					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-				</svg>
-			</span>
-		</div>
-		<label for="urgency-check">I need help urgently</label>
-	</div>
 	<div class="request-content">
 		<div>
-			<div class='request-form'>
-				<h2>I think I will need&nbsp;&nbsp;</h2>
-				<div class="custom-dropdown request-hours">
-					<div>
-						<span>{{request.user.time_estimate.hours}}</span>
-						<a ng-click='page.dropdowns.hour = !page.dropdowns.hour'>
-							<svg viewBox="0 0 100 100">
-								<path d="M14,32 L50,68 L86,32"></path>
-							</svg>
-						</a>
-					</div>
-
-
-					<ul class="ng-class:{'active':page.dropdowns.hour}">
-						<li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
-					</ul>
-					<!-- @samir -->
-					<!-- this is just an example of what I want the overlay to look like, but you can just remove it if needed -->
-					<div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
-				</div>
-				<h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
-				<div class="custom-dropdown request-minutes">
-					<div>
-						<span>{{request.user.time_estimate.minutes}}</span>
-						<a ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'>
-							<svg viewBox="0 0 100 100">
-								<path d="M14,32 L50,68 L86,32"></path>
-							</svg>
-						</a>
-					</div>
-					<ul class="ng-class:{'active':page.dropdowns.minutes}">
-						<li tabindex ng-click='setMinDropdownValue(15)'>15</li>
-						<li tabindex ng-click='setMinDropdownValue(30)'>30</li>
-						<li tabindex ng-click='setMinDropdownValue(45)'>45</li>
-					</ul>
-					<!-- @samir -->
-					<!-- this is just an example of what I want the overlay to look like, but you can just remove it if needed -->
-					<div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
-				</div>
-				<h2>&nbsp;&nbsp;min</h2>
-			</div>
-			<!-- <div ng-include="img_base + BASE + 'templates/request-cal.html'"></div> -->
-			<div class="request-loc map-box-container">
-				<!-- https://angular-ui.github.io/angular-google-maps/#!/api/google-map -->
-				<div class='map-box'>
-					<input ng-keyup="queryAutocompleteFromSearch(page.dropdowns.location_search.input)" ng-model='page.dropdowns.location_search.input' type="text" placeholder="Search locations" />
-
-					<ul class="hide ng-class:{'show': page.dropdowns.location_search.predictions.length }">
-                        <!-- .has-image to show image -->
-                        <li ng-repeat='prediction in page.dropdowns.location_search.predictions'>
-                            <div>
-                                <div class="map-title">
-                                    <h3><a target='_blank' href="{{prediction.website}}">{{prediction.name}}</a></h3>
-                                    <div class="map-rating">
-                                        <span>{{prediction.rating}}</span>
-                                        <ul class="rating-stars" data-rating="{{prediction.rating}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-                                        <span>({{prediction.user_ratings_total}})</span>
-                                    </div>
-                                </div>
-                                <span class="map-address">{{prediction.vicinity}}</span>
-    							<span class="map-phone">{{prediction.international_phone_number}}</span>
-                            </div>
-                            <div style="background-image: url({{prediction.photos[0].getUrl}});"></div>
-                        </li>
-					</ul>
-				</div>
-				<ui-gmap-google-map style='height:400px;' class='full-x' center="map.center" control="map.control" zoom="map.zoom" pan="false" options="{streetViewControl:false,panControl:false,zoomControl:false,mapTypeControl:false}">
-                    <ui-gmap-markers
-                        models="page.predictionMarkers"
-                        >
-                </ui-gmap-markers>
-
-
-                </ui-gmap-google-map>
-            </div>
-            <button ng-if='desktopMode'>Next</button>
-
-        </div>
+			<!-- @samir -->
+			<!-- I couldn't get the contentservice to work even though I put all the right code into student.request.ctrl.js - please fix for me when possible -->
+			<ol>
+				<li><span>I will not request that any portion of my work be rewritten by a Guru.</span></li>
+		        <li><span>I understand that if I do, I risk immediately losing access to my Uguru account.</span></li>
+		        <li><span>All of the work I'm submitting for feedback is my work and my work only.</span></li>
+		        <li><span>I understand that Uguru's services may not result in acceptance to any school.</span></li>
+		        <li><span>I understand that addicting usage of Uguru may result in cancer.</span></li>
+			</ol>
+			<input type="text" value="{{user.name}}" />
+			<label>{{user.name}}</label>
+		</div>
     </div>
+	
 	<button ng-if='!desktopMode'>Next</button>
 </section>

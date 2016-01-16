@@ -351,6 +351,27 @@ def profile_page_new_view(username):
         return "200"
     return render_template("web/pages/profile.html", user=user_profile_exists[0])
 
+
+@app.route('/apply/')
+def apply_page():
+    return render_template('templates/web/pages/apply.html')
+
+@app.route('/timeline/')
+def timeline_page():
+    return render_template('templates/web/pages/timeline.html')
+
+@app.route('/supported/')
+def supported_html():
+    return render_template('templates/web/pages/supported.html')
+
+@app.route('/pricing/')
+def pricing_html():
+    return render_template('templates/web/pages/pricing.html')
+
+@app.route('/university/<university_id>/')
+def university_page(university_id):
+    return render_template('web/pages/university.html', university_id=university_id)
+
 @app.route('/profile/<username>')
 def profile_page_new_view_two(username):
     user_profile_exists = User.query.filter_by(profile_code=username).all()
@@ -425,6 +446,7 @@ def team():
 @app.route('/support-only/')
 def support_only():
     return render_template("web/pages/support_only.html")
+
 
 
 

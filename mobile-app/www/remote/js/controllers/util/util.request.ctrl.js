@@ -18,10 +18,14 @@ angular.module('uguru.util.controllers')
   'University',
   'uiGmapGoogleMapApi',
   'SearchboxService',
+  'GMapService',
+  '$ionicSlideBoxDelegate',
+  'GUtilService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, $ionicGesture, $cordovaGeolocation,
     $ionicSideMenuDelegate, LoadingService, RequestService, University,
-    uiGmapGoogleMapApi, SearchboxService) {
+    uiGmapGoogleMapApi, SearchboxService, GMapService, $ionicSlideBoxDelegate,
+    GUtilService) {
 
     $scope.request = RequestService.initSample();
     $scope.requestProgress = {value:1};
@@ -32,7 +36,16 @@ angular.module('uguru.util.controllers')
       input_focused: false
     };
 
+    $ionicSideMenuDelegate.canDragContent(false);
+    $ionicSlideBoxDelegate.enableSlide(false);
+    $timeout(function() {
+      $ionicSlideBoxDelegate.stop();
+    }, 2000)
     $scope.predictionMarkers = [];
+
+    $scope.preventDragSwipe = function() {
+      $ionicSlideBoxDelegate.slide(0, 100);
+    }
 
     $scope.page = {dropdowns: {}, predictionMarkers:[]}
     $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
@@ -134,20 +147,46 @@ angular.module('uguru.util.controllers')
       $scope.toggleMinDropdown = !$scope.toggleMinDropdown;
     }
 
-    $scope.map = initMapFromUniversity($scope.user.university)
-    uiGmapGoogleMapApi.then(function(maps) {
-      maps.visualRefresh = true;
+    var initRequestMap = function() {
 
-      // $scope.$on('$ionicView.loaded', function() {
+      if ($scope.user.university) {
+        $scope.map = GMapService.initMapObj($scope.user.university);
+        $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.user.university.latitude, longitude:$scope.user.university.longitude}};
+        $scope.map.events.dragend = function(maps, event_name, drag_options) {
+          $scope.map.centerMarker.coords = {latitude: maps.center.G, longitude:maps.center.K};
+          GUtilService.getNearestLocationOneMarker($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
+          $scope.map.centerMarker.showWindow = true;
+        }
 
-        $scope.searchbox = initSearchboxGMap();
+        $scope.map.events.dragstart = function(maps, event_name, drag_options) {
+          $scope.map.centerMarker.showWindow = false;
+        }
+      }
 
-        SearchboxService.initAutocomplete({lat:$scope.user.university.latitude, lng:$scope.user.university.longitude})
 
-      // })
+      uiGmapGoogleMapApi.then(function(maps) {
+        console.log('maps completed');
+        $timeout(function() {
+                $scope.$apply();
+        })
+        maps.visualRefresh = true;
+
+        // $scope.$on('$ionicView.loaded', function() {
+
+          $scope.searchbox = initSearchboxGMap();
+
+        //   SearchboxService.initAutocomplete({lat:$scope.user.university.latitude, lng:$scope.user.university.longitude})
+
+        // })
 
 
-    });
+      });
+    }
+    $scope.root.vars.initRequestMap = initRequestMap;
+    $timeout(function() {
+
+      $scope.root.vars.initRequestMap();
+  }, 5000)
 
     $scope.slideHasChanged = function($index) {
       if ($index > $scope.requestProgress.value - 1) {
@@ -155,6 +194,13 @@ angular.module('uguru.util.controllers')
       } else {
         $scope.requestProgress.value = $scope.requestProgress.value - 1;
       }
+
+      if ($index === 1 || $index === 0) {
+        if ($scope.desktopMode) {
+          $ionicSlideBoxDelegate.enableSlide(false);
+        }
+      }
+
     }
 
     $scope.addRequestTagAndInitEmpty = function() {

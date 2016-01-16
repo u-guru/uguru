@@ -116,50 +116,100 @@ function ContentService() {
 
     }
 
-    var how_it_works = {
-      // to be changed
-      header: "Get through the last application sprint successfully",
-      top_half: [
-        {
-          step_number: 1,
-          header: "Request a Guru",
-          content: "Anything from last-second essay feedback, quick questions, to unlimited Q&A with gurus from your dream school."
-        },
-        {
-          step_number: 2,
-          header: "Open 24/7",
-          content: "Your request is dispatched immediately. On-demand assistence past midnight (even @3am) occurs frequently."
-        },
-        {
-          step_number: 3,
-          header: "Make the perfect match",
-          content: "Applying for a particular scholarship? Looking for a guru with a particular major at your dream school? We got it."
-        }
-      ],
-      bottom_half:[
-        {
-          svg_url: "shield-lock",
-          header: "Your Privacy Comes First",
-          content: "You are just an ID number to Gurus (by default, your choice to reveal), and we do not sell data to third parties)."
-        },
-        {
-          svg_url: "satisfaction",
-          header: "Satisfaction Guaranteed",
-          content: "If your feedback wasn't valuable, we'll closely examine the situation and likely provide a full refund."
-        },
-        {
-          svg_url: "safety",
-          header: "Safety and Honest First",
-          content: "All requests are verified to assure a fair process for all students. Cheating is not tolerated and our college gurus."
-        },
-      ]
-    };
+    var generateUniversitySpecificBecomeGuruText = function(university) {
+      return{
+          header: "The Most Flexible Part-Time",
+          top_half: [{
+              icon: "Profile Card",
+              header: "Full Stack Profile",
+              tag: 'See Preview',
+              content: "A platform where you come first. Complete control over your profile. Customize, set prices, bill others",
+            },
+            {
+              icon: "Chart icon",
+              header: "Analytics & Promotion Tool",
+              tags: 'See Preview',
+              content: "Digital marketing kits, business cards, high quality graphics and much more.",
+            },
+            {
+              icon: "credit card",
+              header: "Your own payment portal",
+              content: "Money goes straight to your bank account. Send an invoice to whoever, whenever",
+            },
+          ],
+          bottom_half:[
+            {
+              icon: "Profile Card from Guru Onboarding",
+              header: "Have Multiple Profiles for Multiple Skills",
+              content: "Create an academic shop for course-related skills, photography shop to earn from grad photos, tech shop for iPhone repair..",
+            },
+            {
+              icon: "Credit Card",
+              header: "Zero Transaction Fees",
+              tag: 'See Preview',
+              content: "Earn your first $500 within a month & then we'll discuss business partnerships and monthly subscriptions. You come first.",
+            },
+            {
+              icon: "",
+              header: "Work anytime, anywhere, <br>even in your PJs",
+              content: "Toggle a switch on when you are available to earn side cash, and we'll market you. Focus on great quality, we'll take care of the rest",
+            },
+          ]
+        };
+
+    }
+    var generateUniversitySpecificHowItWorks = function(university) {
+      return {header: "Uguru Can Help You ..",
+        top_half: [{
+              icon: "https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/136434.svg?Expires=1452346781&Signature=XHvIEw8pDw4Vhg6IZyEBf6b0sdgJAES~RTwxXPP-OEWaZhltzurLkFh6KdPWho4KLsx~UAdV53kNVLu9NX5pcOxrCg3cjQaImlFdIIXnWq8Am2PIKGbcHzhJnDknu5QLCzaEJc-xD8mqk-wy7hNRWUAaKUx~ioHzHQGXLMZuPBA_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q",
+              header: "24/7, Anytime, Anywhere",
+              tag: null,
+              content: "Request course help @7am, or request a midnight snack at 11pm. Trust me, one of your peers " + ((university && university.name && ' ') || '') + 'is up',
+            },
+            {
+              icon: "https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/139071.svg?Expires=1452347225&Signature=V3nefdC-oWx1j2uH6KDrl6m6WAjbyo52B8HPGkYLrRTn6aEgsfvFZyLdQ2XHyJleNGzdMxxFVxjJD2yC2Am8WtlAs9UoFxYsdHCuC2yShQhCHz42zb1MmMjRCs3yKlEmI6ao8I6XFf~Mucv05SJxCXoxXYqLnPzgh--ldy8lluA_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q",
+              header: "Save $$$ on Academic Help",
+              content: "Get help from a quick 5-min question to several hours at super-cheap rates, averaging at $13/hr"
+            },
+            {
+              icon: "https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/14634.svg?Expires=1452347158&Signature=G5XkxjC8k7AqecF6pc0golzfD~X2wftnZxqo8peFvahEILGeEmUMWs-2z6ytl85Iy7sExP0t-x1fTDKAPdFShmipO9JkfTtw3meAgbfOmc1aCGpgmY~S9EgH4p3L7zGrdy7odCt~epR0DrhHsKb4SMklJeWb7a~68PC4cBt3KQU_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q",
+              header: "Same Course, Same Professor",
+              content: "We'll connect you a student who has already aced it recently, and possible the same professor!"
+            }
+          ],
+          bottom_half:[
+            {
+              svg_url: "shield-lock",
+              header: "Stay Organized & Improve Focus",
+              tag: 'Coming Soon!',
+              content: "Apps to help calculate & project your GPA, + other power-ups coming soon!"
+            },
+            {
+              svg_url: "satisfaction",
+              header: "Prepare for Your Career",
+              content: "Connect with mentors related to your major, or peers who have your dream internship. They're just one tap away."
+            },
+            {
+              icon: "dollar sign",
+              tag: 'Read More',
+              header: "Earn Side Cash, Work For Yourself",
+              content: "Help your peers in aced courses, your talents, or pretty much anything else"
+            },
+          ]
+        };
+
+    }
+
+
+
+
 
     return {
       pricing: pricing,
       faq: faq,
       timeline: timeline,
-      how_it_works: how_it_works,
+      generateUniversitySpecificHowItWorks:generateUniversitySpecificHowItWorks,
+      generateUniversitySpecificBecomeGuruText:generateUniversitySpecificBecomeGuruText,
       honorPledge: honorPledge,
       parents: parents,
       sophisticated_modal:sophisticated_modal,

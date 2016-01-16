@@ -2,9 +2,10 @@
 
 // start samir css 11/9
 .desktop-input-close-icon {
-	position: absolute;
-	right: 10px;
-	top: 50%;
+	@include center-y;
+	margin: 0;
+	padding: 10px;
+    right: 0;
 }
 .desktop-login-view {
 	.desktop-input-close-icon {
@@ -251,10 +252,6 @@ body.platform-ios {
 	background-color: $charcoal!important;
 	background: $charcoal!important;
 }
-.desktop-input-close-icon {
-	padding: 10px;
-	margin: -10px;
-}
 #profile-footer-desc {
 	font-size: 20px;
 }
@@ -435,7 +432,6 @@ body.platform-ios #mobile-guru-home {
 	min-height: 800px;
 }
 .hs-view {
-	background: url("https: //uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center fixed!important;
 	-webkit-background-size: 100% 100%!important;
 	-moz-background-size: 100% 100%!important;
 	-o-background-size: 100% 100%!important;
@@ -476,4 +472,116 @@ body.platform-ios #mobile-guru-home {
 #language-list
 ul#guru-courses-user-profile {
 	display:block!important;
+}
+
+.hide-display {
+	display:none;
+}
+.hide-display.show {
+	display:block;
+}
+
+.pf-card-group, .cta-modal {
+
+	.bg-tech, &.bg-tech {
+	background: $azure;
+	background-color: $azure;
+	}
+	.bg-academic, &.bg-academic {
+		background: $cerise;
+		background-color:$cerise;
+	}
+	.bg-baking, &.bg-baking {
+		background:$gold;
+		background-color: $gold;
+	}
+	.bg-photography, &.bg-photography {
+		background:$moola;
+		background-color: $moola;
+	}
+	.bg-household, &.bg-household{
+		background: $cobalt;
+		background-color: $cobalt;
+	}
+
+	.pf-card-main {
+		background:white;
+	}
+
+}
+
+#cta-modal-sidebar.full-x {
+	width:100% !important;
+	left:0 !important;
+}
+
+#university-splash {
+	#become-guru, #how-it-works{
+		.main.mobile-only {
+			min-height:calc(240px + 200px) !important;
+			width:100%;
+		}
+	}
+}
+
+// for styling any labels within a container
+.gmap-marker-label {
+	font-weight:900;
+	font-size:24px;
+	animation: swing 1.5s infinite;
+	@keyframes bob {
+      0% {
+        transform: translate(0, 0);
+        animation-timing-function: ease-in-out;
+      }
+      50% {
+        transform: translate(0, 30px);
+        animation-timing-function: ease-in-out;
+      }
+      100% {
+        transform: translate(0, 0);
+        animation-timing-function: ease-in-out;
+      }
+    }
+
+    @keyframes swing {
+      0% {
+        transform: rotate(0deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+      25% {
+        transform: rotate(-20deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+      50% {
+        transform: rotate(0deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+      75% {
+        transform: rotate(20deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+      100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+    }
+}
+
+
+.university-svg-icon {
+	opacity: 1 !important;
+	img {
+
+		z-index: 5;
+		top: 15px;
+		width:50px !important;
+		height:50px !important;
+		opacity:1 !important;
+	}
 }

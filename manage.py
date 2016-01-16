@@ -118,6 +118,16 @@ if arg == 'android_push':
     else:
         print "Please pass in message && device token"
 
+if arg == 'already_started':
+    already_started = []
+    for u in University.query.all():
+        if u.sp16_start and datetime.now() > u.sp16_start:
+            already_started.append(u)
+    already_started = sorted(already_started, key=lambda k:k.us_news_ranking)
+    print "\n\n%s universities already started! \n\n" % len(already_started)
+    for uni in already_started:
+        print "Rank #%s: %s started on %s/%s" % (uni.us_news_ranking, uni.name, uni.sp16_start.month, uni.sp16_start.day)
+    print [uni.id for uni in already_started]
 
 def update_universities_forbes():
     from app.static.data.universities import universities_dict
@@ -224,17 +234,21 @@ def generateNumUserPaymentCards(num, user):
 def generateNumUserTransactions(num, user):
     from datetime import datetime
     from random import randint
-    for index in range(0, num):
+    for index in range(0, len(user.student_sessions)):
+        user_request = sorted(user.requests, key=lambda k:k.id)[index]
         t = Transaction()
         t.student_id = user.id
         t.time_created = datetime.now()
+        t.session = sorted(user.student_sessions, key=lambda k:k.id)[index]
         t.description = 'HS Tutoring'
         t.charge_id = 'aldksjasjd90ajsd9as'
-        t.card_id = user.cards[randint(0, len(user.get_payment_cards()) - 1)].id
+        t.card_id = user_request.payment_card_id
         t.is_task = True
-        t.request_id = user.requests[randint(0, len(user.requests) - 1)].id
-        t.stripe_amount = randint(1,20) * 10
-        t.profit =t.stripe_amount * 0.8
+        t.request = user_request
+        t.student_amount = Request.HS_OPTIONS_PRICE_DICT[user_request.hs_request_option]
+        t.stripe_amount = (t.student_amount * 0.029) + 0.3
+        t.guru_amount = t.student_amount * 0.8
+        t.profit =t.student_amount - t.stripe_amount - t.guru_amount
         db_session.add(t)
         db_session.commit()
     print "%s student transactions created" % len(user.student_transactions)
@@ -253,9 +267,9 @@ def getRelationshipFromGuru(user, guru):
         if guru.id == _relationship.guru.id:
             return _relationship
 
-def generateNumGuruRelationshipsAndSessions(num, user):
+def generateRelationshipsFromRequests(user):
     all_gurus_with_balance = [_user for _user in User.query.all() if len(_user.student_relationships) > 5]
-    for index in range(0, num):
+    for index in range(0, len(user.requests)):
         guru = all_gurus_with_balance[index]
         createRelationshipWithGuru(user, guru)
         session_json = {
@@ -264,6 +278,8 @@ def generateNumGuruRelationshipsAndSessions(num, user):
             'student_id': user.id,
             'status': 1,
             'relationship_id': getRelationshipFromGuru(user, guru).id,
+            'request_id': sorted(user.requests, key=lambda k:k.id)[index],
+            'request_card_id': sorted(user.requests, key=lambda k:k.id)[index].payment_card_id,
             'online': True,
             'in_person': False
         }
@@ -324,63 +340,86 @@ def generateNumGuruMessagesPerRelationship(num, user, with_messages=True):
 
         print "%s messages generated for guru relationship with %s" % (len(relationship.messages), relationship.guru.name)
 
+def generateNumHSRequests(num, user):
+    from random import randint
+    from app.models import Request
+    user_payment_cards = user.get_payment_cards()
+    for index in range(0, num):
+        hs_request_option = Request.HS_OPTIONS[randint(0, len(Request.HS_OPTIONS) - 1)]
+        random_payment_card = user_payment_cards[randint(0, len(user_payment_cards)- 1)]
+        university = user.universities[randint(0, len(user.universities)-1)]
+        file_arr = createFiveRandomFiles(user)
+        tag_arr = selectFiveRandomTags()
+        description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
+        _request = Request.createHSRequest(user.id, university.id, hs_request_option,\
+        file_arr, tag_arr, description, random_payment_card.id)
+
+
+
 
 def init_hs():
     from app.models import *
     from hashlib import md5
     db_session.rollback()
 
-    email = "hs@uguru.me"
-    print "creating %s" % email
-    try:
-        user = User(email=email)
-    except:
-        user = User.query.filter_by(email=email).first()
-        messages = Message.query.filter_by(sender_id=user.id).all()
-        for message in messages:
-            message.sender_id = None
+    if len(sys.argv) == 2:
+        email = sys.argv[1]
+    else:
+        email = "samir@uguru.me"
+
+        print "creating %s" % email
+        try:
+            user = User(email=email)
+        except:
+            user = User.query.filter_by(email=email).first()
+            messages = Message.query.filter_by(sender_id=user.id).all()
+            for message in messages:
+                message.sender_id = None
+                db_session.commit()
+
+            db_session.delete(user)
             db_session.commit()
+            user = User(email=email)
 
-        db_session.delete(user)
+        user.password = md5('launchuguru123').hexdigest()
+        user.name = 'Sizzle N'
+        user.hs_student = True
+        university = University.query.get(2307)
+        ## create user with _high school
+        ## add many propertyes
+
+
+        ## add 5 universities
+
+        db_session.add(user)
         db_session.commit()
-        user = User(email=email)
+        print "user created"
 
-    user.password = md5('launchuguru123').hexdigest()
-    user.name = 'Sizzle N'
-    user.hs_student = True
-    university = University.query.get(2307)
-    ## create user with _high school
-    ## add many propertyes
+        ## Add 20 universities
+        randomUniversities = getNumRandomTargettedUniversities(20)
+        addUniversitiesToUser(user, randomUniversities)
+
+        ## Create a request
+
+        file_arr = createFiveRandomFiles(user)
+        print "5 random files created"
+        tag_arr = selectFiveRandomTags()
+        print "5 random tags created"
+
+        option_num = 1
+        description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
 
 
-    ## add 5 universities
 
-    db_session.add(user)
-    db_session.commit()
-    print "user created"
 
-    ## Add 20 universities
-    randomUniversities = getNumRandomTargettedUniversities(20)
-    addUniversitiesToUser(user, randomUniversities)
 
-    ## Create a request
-
-    file_arr = createFiveRandomFiles(user)
-    print "5 random files created"
-    tag_arr = selectFiveRandomTags()
-    print "5 random tags created"
-
-    option_num = 1
-    description = "EMERGENCY HELP! I just started my college essays and I really could use some revisioning"
-    _request = Request.createHSRequest(user.id, university.id, option_num,\
-        file_arr, tag_arr, description)
 
     print "HS request successfully created"
-
     generateNumUserPaymentCards(5, user)
-    generateNumUserTransactions(5, user)
-    generateNumGuruRelationshipsAndSessions(5, user)
+    generateNumHSRequests(5, user)
+    generateRelationshipsFromRequests(user)
     generateNumGuruMessagesPerRelationship(20, user)
+    generateNumUserTransactions(5, user)
 
     user_messages = countMessagesInRelationships(user)
     print """
@@ -666,7 +705,10 @@ def generate_categories_json():
                 'is_approved': subcategory.is_approved,
                 'is_active': subcategory.is_active,
                 'icon_url': subcategory.icon_url,
-                'description': category.description
+                'description': category.description,
+                'avg_hourly': subcategory.avg_hourly,
+                'avg_hourly_higher': subcategory.avg_hourly_higher,
+                'avg_hourly_lower': subcategory.avg_hourly_lower
             }
 
             result_dict[category.name]['subcategories'].append(subcategory_info)
@@ -694,8 +736,14 @@ def update_categories():
         print category.id, category.name
         for subcategory in categories_dict[key]['subcategories']:
             subcategory_id = subcategory['id']
-            subcategory = Subcategory.query.get(subcategory_id)
-            print '   >>', subcategory.id, subcategory.name
+            subcategory_obj = Subcategory.query.get(subcategory_id)
+            subcategory_obj.name = subcategory['name']
+            subcategory_obj.icon_url = subcategory['icon_url']
+            subcategory_obj.description = subcategory['description']
+            subcategory_obj.avg_hourly = subcategory.get('avg_hourly')
+            subcategory_obj.avg_hourly_lower = subcategory.get('avg_hourly_lower')
+            subcategory_obj.avg_hourly_higher = subcategory.get('avg_hourly_higher')
+            print '   >>', subcategory_obj.id, subcategory_obj.name
         print
     db_session.commit()
     generate_categories_json()
@@ -1025,10 +1073,14 @@ if arg == 'seed_admin':
 
     def clearAccountInfo(user):
         deleteAllUserFiles(user)
-        clearUserShopsAndItems(user)
-        clearUserCalendar(user)
-        clearGuruRatings(user)
-        clearGuruExperiences(user)
+        if user.guru_shops:
+            clearUserShopsAndItems(user)
+        if user.guru_calendar:
+            clearUserCalendar(user)
+        if user.guru_ratings:
+            clearGuruRatings(user)
+        if user.guru_experiences:
+            clearGuruExperiences(user)
         user.guru_subcategories = []
         try:
             for course in user.guru_courses:
@@ -1051,7 +1103,7 @@ if arg == 'seed_admin':
 
 
 
-    clearAccountInfo(user)
+    # clearAccountInfo(user)
 
     print "\n\nUpdate #1, previous account details cleared for %s" % user.getFirstName()
 
@@ -2415,13 +2467,46 @@ if arg == 'init_berkeley_course':
     print count
 
 
-if arg == 'print_uw_data':
-    print "University Name, Website, College Application Submission Date, Source"
-    print "UC Berkeley, www.berkeley.edu, 11/30/2015, http://admissions.berkeley.edu/datesdeadlines"
-    for u in University.query.all():
-        if u.us_news_ranking and u.us_news_ranking < 220 and ((u.website and len(u.website) < 50) or not u.website):
-            print "%s, %s, %s, , " % (u.us_news_ranking, u.name, u.website)
+if arg == 'analyze_courses':
+    all_unis = [u for u in University.query.all() if u.sp16_start]
+    need_more = 0
+    for uni in all_unis:
+        p_courses = uni.popular_courses
+        repaired_popular_courses = False
+        for course in p_courses:
+            if not course.times_mentioned:
+                print "Need to investigate popular courses for %s %s" % (uni.id, uni.name)
+                break
+            if course.times_mentioned and course.short_name and course.name and not course.full_name:
+                repaired_popular_courses = True
+                course.full_name = course.name
+            elif course.times_mentioned and course.short_name and course.full_name and not course.name:
+                repaired_popular_courses = True
+                course.name = course.full_name
+            if repaired_popular_courses:
+                "%s %s popular courses successfully repaired" % (uni.id, uni.name)
+        db_session.commit()
+        if len(p_courses) > 50:
+            print "All set for %s" % uni.name
+        ## Case there are not that many
+        if len(p_courses) < 50:
+            need_more += 1
+            uni.courses_sanitized = False
+            print "We need to get more courses for %s which has %s" % (uni.name, len(p_courses))
 
+        if uni.num_popular_courses != len(p_courses):
+            uni.num_popular_courses = len(p_courses)
+            db_session.commit()
+
+    print "%s need more popular courses" % need_more
+
+
+    ## Part 1
+    ## find courses with popular courses
+    ## --> short_name
+    ## --> name
+    ## 1. university.courses.filter_by
+    ## delete courses that dont have both
 
 if arg == 'variations_courses':
     cal = University.query.get(2307)
@@ -2434,6 +2519,11 @@ if arg == 'variations_courses':
             unique_keys_full.append({'short_name': course.short_name, 'full_name': course.full_name, 'id': course.id, 'subject_variations': [" ".join(course.short_name.split(" ")[:len(course.short_name.split(' ')) - 1]), ""], "code":course.short_name.split(' ')[-1]})
     with open('cal_courses_popular.json', 'wb') as fp:
         json.dump(unique_keys_full, fp, sort_keys = True, indent = 4)
+
+if arg == 'resolve_colors':
+    from app.lib.universities import resolveAllColors
+    resolveAllColors(University.query.all())
+    db_session.commit()
 
 if arg == 'vc_db':
     import json

@@ -1,6 +1,130 @@
 
-              <ion-nav-view animation="slide-left-right">
+<main id="timeline" class='full-xy'>
+    <header>
+        <div class="timeline-header">
+            <div>
+                <h1>Uguru Admin</h1>
+                <h2>Your go to for *everything*</h2>
+            </div>
+        </div>
+        <div class="tab-bar">
+            <ul>
+                <li ng-repeat='tabName in adminTabs'><a ng-click="setActiveThread(tabName)" class="ng-class:{'active':page.active.tabName === tabName}">{{tabName}}</a></li>
+            </ul>
+        </div>
+    </header>
 
-              </ion-nav-view>
+    <section id='admin-main' class="full-x hide ng-class:{'show':page.active.tabName === 'Home'}">
+        <ion-pane id='cta-modal-project-{{$index}}' ng-repeat='project in projects' class='full-xy hide-display bg-charcoal fixed top-0 left-0 high-z-index cta-modal'>
+
+            <a id='guru-profile-cta-close' class='cta-modal-close close-button'>
+                <svg viewBox="0 0 100 100">
+                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                </svg>
+            </a>
+            <div class='absolute full-xy flex-wrap-center left-0 top-0 ugrid-3'>
+                <div class='bg-auburn full-y flex-wrap-center txt-smoke text-center relative'>
+                    <div class='full-x header p20xy'>
+                        <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Functional</h1>
+                        <small class='weight-900 lowercase txt-smoke'>Alpha</small>
+                    </div>
+                    <div class='full-x content flex-wrap-center weight-400 bg-slate p05xy' ng-if='project.action_items'>
+                        <div class='full-x'>
+                            <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.alpha track by $index'>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items);' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items)' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class='bg-gold full-y flex-wrap-center txt-smoke text-center relative'>
+                    <div class='full-x header p20xy'>
+                        <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Fully Tested</h1>
+                        <small class='weight-900 lowercase txt-smoke'>Beta</small>
+                    </div>
+                    <div class='full-x content flex-wrap-center weight-400 bg-charcoal p05xy' ng-if='project.action_items'>
+                        <div class='full-x'>
+                            <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.beta track by $index'>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items);' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress()' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class='bg-shamrock full-y flex-wrap-center txt-smoke text-center relative'>
+                    <div class='full-x header p20xy'>
+                        <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Sleek</h1>
+                        <small class='weight-900 lowercase txt-smoke'>Production</small>
+                    </div>
+                    <div class='full-x content flex-wrap-center weight-400 bg-slate p05xy' ng-if='project.action_items'>
+                        <div class='full-x'>
+                            <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.production track by $index'>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items);' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName] && calculateProjectProgress(project.action_items)' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </ion-pane>
+
+        <div class='flex-wrap-center full-xy absolute txt-charcoal weight-600' style='height:75% !important;'>
+            <div class='ugrid-4 full-x'>
+                <a id='cta-box-project-{{$index}}' ng-repeat='project in projects' class='flex-wrap-center bg-auburn cta-box relative' ng-if='project.urgent' style='height:200px; width:25%; border:4px solid black;'>
+                    <h1 class='full-x text-center weight-900 p20xy'>
+                        #{{$index + 1}} <br> {{project.name}}
+                    </h1>
+                    <div class='full-x text-center'>
+                        <p ng-if='project.progress'>  <span class='weight-900'>{{project.progress.overall}}/{{project.progress.total}}</span> complete</p>
+                    </div>
+                    <div class='full-x text-center'>
+                        <small class='p10xy bg-charcoal'>Alpha: {{project.progress.alpha}} </small>
+                        <small class='p10xy bg-charcoal'>Beta: {{project.progress.beta}} </small>
+                        <small class='p10xy bg-charcoal'>Production: {{project.progress.production}} </small>
+                    </div>
+                </a>
+                <a  id='cta-box-project-{{$index}}' ng-repeat='project in projects' class='flex-wrap-center bg-shamrock cta-box' ng-if='!project.urgent' style='height:200px; width:25%; border:4px solid black;'>
+                    <h1 class='full-x text-center weight-900 p20xy'>
+                        #{{$index + 1}} <br> {{project.name}}
+                    </h1>
+                    <p ng-if='project.progress'>  {{project.progress.overall}} / {{project.progress.total}} </p>
+                    <p> {{project.deadline}} </p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Roles'}">
+        <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>
+            Roles - Coming Soon!
+        </div>
+    </section>
+    <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Calendar'}">
+        <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>
+            Calendar - Coming Soon!
+        </div>
+    </section>
+    <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Moodboards'}">
+        <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>
+            Moodboards - Coming Soon!
+        </div>
+    </section>
+    <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Timeline'}">
+        <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>
+            Timeline - Coming Soon!
+        </div>
+    </section>
+    <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Guides'}">
+        <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>
+            Guides - Coming Soon!
+        </div>
+    </section>
+
+    <section class="hide full-xy ng-class:{'show':page.active.tabName === 'Universities'}" ng-include="img_base + 'templates/admin/admin.universities.html'" ng-controller='AdminUniversityController'>
+
+    </section>
 
 
+
+</main>

@@ -1,0 +1,23 @@
+<div class='full-xy absolute' >
+    <div class='full-y bg-university relative'>
+        <main id='desktop-billing' class="desktop-mode bg-university" ng-if='isDesktopMode()'>
+            <header class="desktop-header">
+                <a></a>
+                <a style='z-index:100000' class='cta-modal-close close-button desktop-header-next' ng-click='toggleSideBar()'>
+                    <svg viewBox="0 0 100 100">
+                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+            </header>
+            <div class='full-xy absolute top-0 left-0' style='z-index:1000;'>
+                <div class='flex-wrap-center text-left full-xy'>
+                    <ul class='full-y'>
+                        <li ng-repeat="link in links" class='p20xy m10xy full-x fx-fade-left fx-dur-1500 fx-stagger-500'>
+                            {{link}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

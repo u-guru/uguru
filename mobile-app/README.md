@@ -16,7 +16,7 @@ Uguru Mobile
 **Run on Android live-reload device (first time) **
 - % NOTE: Make sure android is setup. Make sure by typing android in your terminal and seeing if returns familiarity
 - % source ~/.bash_profile
-- % cordova platform rm android 
+- % cordova platform rm android
 - % cordova plugins rm com.phonegap.plugins.facebookconnect
 - % cordova platform add android
 - % cordova -d plugin add packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"

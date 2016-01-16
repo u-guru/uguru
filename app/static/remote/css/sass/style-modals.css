@@ -39,10 +39,10 @@
   position: fixed;
   z-index: 100;
   visibility: hidden;
-  top: 0;
+  top: 64px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 64px);
   background: rgba(43, 50, 52, 0.9);
   pointer-events: none; }
   .uguru-popup .uguru-popup-content {
@@ -1255,56 +1255,24 @@
 .student-courses-view #course {
   background: white; }
   .student-courses-view #course header {
-    color: #2B3234;
-    background: #FFFDFA; }
+    color: white;
+    background: #50A5DD; }
+    .student-courses-view #course header h1 {
+      font-size: 28px !important;
+      text-transform: lowercase !important; }
     .student-courses-view #course header svg path {
-      stroke: #2B3234; }
-    .student-courses-view #course header .onboarding-search .clear-search-input {
-      position: absolute;
-      right: 0;
-      top: 20px;
-      right: 10px;
-      color: rgba(43, 50, 52, 0.7);
-      padding: 0; }
-    .student-courses-view #course header .onboarding-search input {
-      border-bottom: 1px solid rgba(43, 50, 52, 0.5);
-      color: #2B3234; }
-      .student-courses-view #course header .onboarding-search input::-webkit-input-placeholder {
-        color: rgba(43, 50, 52, 0.5); }
-      .student-courses-view #course header .onboarding-search input:-moz-placeholder {
-        color: rgba(43, 50, 52, 0.5); }
-      .student-courses-view #course header .onboarding-search input::-moz-placeholder {
-        color: rgba(43, 50, 52, 0.5); }
-      .student-courses-view #course header .onboarding-search input:-ms-input-placeholder {
-        color: rgba(43, 50, 52, 0.5); }
-    .student-courses-view #course header .onboarding-search input:active,
-    .student-courses-view #course header .onboarding-search input:focus {
-      border-bottom-color: #2B3234; }
-      .student-courses-view #course header .onboarding-search input:active::-webkit-input-placeholder,
-      .student-courses-view #course header .onboarding-search input:focus::-webkit-input-placeholder {
-        color: #2B3234; }
-      .student-courses-view #course header .onboarding-search input:active:-moz-placeholder,
-      .student-courses-view #course header .onboarding-search input:focus:-moz-placeholder {
-        color: #2B3234; }
-      .student-courses-view #course header .onboarding-search input:active::-moz-placeholder,
-      .student-courses-view #course header .onboarding-search input:focus::-moz-placeholder {
-        color: #2B3234; }
-      .student-courses-view #course header .onboarding-search input:active:-ms-input-placeholder,
-      .student-courses-view #course header .onboarding-search input:focus:-ms-input-placeholder {
-        color: #2B3234; }
-    .student-courses-view #course header .onboarding-search:before {
-      background: url("../../img/svg/search-dark.svg") no-repeat center center/cover, url("/static/remote/img/svg/search-dark.svg") no-repeat center center/cover; }
+      stroke: white; }
 .student-courses-view #courses-list.onboarding-list ul li label {
   background: #F1F1F1;
-  color: #2B3234;
-  border-color: #8A9EA3; }
+  color: #40484B;
+  border-color: #50A5DD; }
 .student-courses-view #courses-list.onboarding-list ul li input:checked + label {
-  background: #8A9EA3;
+  background: #50A5DD;
   border-color: rgba(255, 255, 255, 0.4) !important; }
 .student-courses-view #courses-list.onboarding-list ul li input:active + label {
-  background: rgba(138, 158, 163, 0.2); }
+  background: rgba(80, 165, 221, 0.2); }
 .student-courses-view #courses-list.onboarding-list ul li input:checked:active + label {
-  background: #8A9EA3; }
+  background: #50A5DD; }
 
 .mobile-mode .sidebar-layout-list {
   overflow: auto; }

@@ -2,9 +2,10 @@
 
 // start samir css 11/9
 .desktop-input-close-icon {
-	position: absolute;
-	right: 10px;
-	top: 50%;
+	@include center-y;
+	margin: 0;
+	padding: 10px;
+    right: 0;
 }
 .desktop-login-view {
 	.desktop-input-close-icon {
@@ -251,10 +252,6 @@ body.platform-ios {
 	background-color: $charcoal!important;
 	background: $charcoal!important;
 }
-.desktop-input-close-icon {
-	padding: 10px;
-	margin: -10px;
-}
 #profile-footer-desc {
 	font-size: 20px;
 }
@@ -477,3 +474,13 @@ body.platform-ios #mobile-guru-home {
 ul#guru-courses-user-profile {
 	display:block!important;
 }
+
+//**university specific
+
+#cta-modal-sidebar {
+	z-index:100;
+	width:calc(43%) !important;
+	left:-10%;
+	position:absolute;
+}
+//end university specific

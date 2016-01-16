@@ -33,6 +33,38 @@ def filterStudentsWithBalance(students_arr, num=100):
     students = [student for student in students_arr if hasBalanceGreaterThan(student, num)]
     return students
 
+def resolveAllColors(universities):
+    from colour import Color
+    errors = 0
+    index = 0
+    for university in universities:
+        if university.school_color_one and university.school_color_two and \
+        university.us_news_ranking and university.us_news_ranking < 220:
+            index += 1
+            try:
+                color_one = Color(university.school_color_one)
+            except:
+                errors = 1
+                print "invalid color one for university %s:%s %s" % (university.id, university.name, university.school_color_one)
+            try:
+                color_two = Color(university.school_color_two)
+            except:
+                errors += 1
+                print "invalid color two for university %s:%s %s" % (university.id, university.name, university.school_color_two)
+
+            if color_one.luminance > color_two.luminance:
+                university.school_color_dark = university.school_color_two
+                university.school_color_light = university.school_color_one
+            else:
+                university.school_color_dark = university.school_color_one
+                university.school_color_light = university.school_color_two
+
+            print "university %s, %s has light color %s, and dark color %s" % (university.id, university.name, university.school_color_light, university.school_color_dark)
+
+    print "%s total errors out of %s total" % (errors, index)
+
+
+
 def calcAndSortedPrepared(universities):
     ## Returns preparedness of a universitiy from 0 to 1
     prepared_info = {}
@@ -137,10 +169,10 @@ def calcPreparedScore(university):
         if university.banner_url:
             total += 1
         else:
-            missing_fields.append('banner_url')    
-       
+            missing_fields.append('banner_url')
+
         percentage = float(total) / total_fields
-        percentange_single_int = int(percentage * 100) 
-        
+        percentange_single_int = int(percentage * 100)
+
 
         return percentage, missing_fields

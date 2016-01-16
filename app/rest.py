@@ -2549,7 +2549,7 @@ class UserNewView(restful.Resource):
                 user = email_user
 
                 is_high_school_login = request.json.get('hs_student')
-
+                print "is this is a high school login: %s"  %is_high_school_login
                 ## if they dont have a high school account
                 if  is_high_school_login and not email_user.hs_student:
                     abort(404)
@@ -3505,6 +3505,30 @@ class AdminOneUniversityView(restful.Resource):
                 if type(school_mascot_name) != str:
                     abort(401)
                 u.school_mascot_name = school_mascot_name
+
+            if 'school_color_dark' in request.json:
+                school_color_dark = request.json.get('school_color_dark')
+                school_color_one = school_color_dark
+                u.school_color_dark = school_color_dark
+                u.school_color_one = school_color_dark
+
+            if 'school_color_light' in request.json:
+                school_color_light = request.json.get('school_color_light')
+                school_color_two = school_color_light
+                u.school_color_light = school_color_light
+                u.school_color_two = school_color_two
+
+            if 'short_name' in request.json:
+                short_name = request.json.get('short_name')
+                if type(short_name) != str:
+                    abort(401)
+                u.short_name = short_name
+
+            if 'name' in request.json:
+                name = request.json.get('name')
+                if type(name) != str:
+                    abort(401)
+                u.name = name
 
             if 'school_casual_name' in request.json:
                 school_casual_name = request.json.get('school_casual_name')

@@ -1,58 +1,19 @@
 <!--
     Purpose of this page: to select a card to charge or add a new one
 -->
-<section id="request-three" class="request-slide request-essay relative">
+<section id="request-three" class="request-slide request-essay request-pledge relative">
 	<header>
 		<h1>Honor Pledge</h1>
 	</header>
-	<div class="request-honor-pledge request-content">
-		<div class="paper">
-			<svg viewBox="0 0 800 1035">
-				<rect x="0" y="0"></rect>
-				<path d="M0,122 L800,122"></path>
-				<path d="M0,160 L800,160"></path>
-				<path d="M0,198 L800,198"></path>
-				<path d="M0,236 L800,236"></path>
-				<path d="M0,274 L800,274"></path>
-				<path d="M0,312 L800,312"></path>
-				<path d="M0,350 L800,350"></path>
-				<path d="M0,388 L800,388"></path>
-				<path d="M0,426 L800,426"></path>
-				<path d="M0,464 L800,464"></path>
-				<path d="M0,502 L800,502"></path>
-				<path d="M0,540 L800,540"></path>
-				<path d="M0,578 L800,578"></path>
-				<path d="M0,616 L800,616"></path>
-				<path d="M0,654 L800,654"></path>
-				<path d="M0,692 L800,692"></path>
-				<path d="M0,730 L800,730"></path>
-				<path d="M0,768 L800,768"></path>
-				<path d="M0,806 L800,806"></path>
-				<path d="M0,844 L800,844"></path>
-				<path d="M0,882 L800,882"></path>
-				<path d="M0,920 L800,920"></path>
-				<path d="M0,958 L800,958"></path>
-				<path d="M0,996 L800,996"></path>
-				<path d="M0,806 L800,806"></path>
-				<path d="M0,844 L800,844"></path>
-				<path d="M0,882 L800,882"></path>
-				<path d="M0,920 L800,920"></path>
-				<path d="M0,958 L800,958"></path>
-				<path d="M0,996 L800,996"></path>
-				<path d="M126,0 L126,1035"></path>
-			</svg>
-
-			<div class="paper-text">
-				<dl ng-repeat='_dict in honorPledgeArr'>
-					<dt>
-						<span class='strong'>{{_dict.content}}</strong>
-					</dt>
-				</dl>
-				<input type="text" value="{{user.name}}" />
-				<label>{{user.name}}</label>
-			</div>
+	<div class="request-content">
+		<div>
+			<ol>
+				<li ng-repeat='_dict in honorPledgeArr'><span>{{_dict.content}}</span></li>
+			</ol>
+			<input type="text" value="{{user.name}}" />
+			<label>{{user.name}}</label>
 		</div>
-	</div>
-	</div>
+    </div>
+	
 	<button ng-if='!desktopMode'>Next</button>
 </section>

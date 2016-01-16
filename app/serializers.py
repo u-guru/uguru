@@ -227,6 +227,7 @@ request_fields['guru_calendar'] = fields.List(fields.Nested(calendar_fields))
 request_fields['tags'] = fields.List(fields.Nested(tag_fields))
 request_fields['type'] = fields.Integer(attribute='_type')
 request_fields['student_price'] = fields.Float(attribute='student_price')
+request_fields['hs_request_option'] = fields.String(attribute='hs_request_option')
 request_fields['task_title'] = fields.String(attribute='task_title')
 request_fields['verb_image'] = fields.String(attribute='verb_image')
 request_fields['initial_status'] = fields.String(attribute='inital_status')
@@ -513,7 +514,7 @@ UserSerializer = {
     'deactivated': fields.Boolean,
     'external_profiles': fields.List(fields.Nested(resource_fields)),
     'universities': fields.List(fields.Nested(university_fields)),
-    'hs_school': fields.Boolean,
+    'hs_student': fields.Boolean,
     'hs_files': fields.List(fields.Nested(file_fields))
 
 }
@@ -531,7 +532,10 @@ DeviceSerializer = {
     'push_notif_enabled': fields.Boolean,
     'background_location_enabled': fields.Boolean,
     'location_enabled': fields.Boolean,
-    'camera_enabled': fields.Boolean
+    'camera_enabled': fields.Boolean,
+    'avg_hourly': fields.Integer,
+    'avg_hourly_higher': fields.Integer,
+    'avg_hourly_lower': fields.Integer,
 }
 
 CategorySerializer = {
@@ -620,6 +624,7 @@ AdminUniversitySerializer = {
     'short_name': fields.String,
     'logo_url': fields.String,
     'banner_url':fields.String,
+    'banner_url_confirmed':fields.Boolean,
     'svg_url': fields.String,
     'city': fields.String,
     'state': fields.String,
@@ -635,11 +640,17 @@ AdminUniversitySerializer = {
     'latitude': fields.Float,
     'longitude': fields.Float,
     'forbes_url': fields.String,
+    'school_tiny_name': fields.String,
     'seal_url': fields.String,
     'school_color_one': fields.String,
     'school_color_two': fields.String,
+    'school_color_one': fields.String,
+    'school_color_two': fields.String,
+    'school_color_dark': fields.String,
+    'school_color_light': fields.String,
+    'school_color_primary': fields.String,
     'variations': fields.String,
-    'sp16_deadline': fields.DateTime
+    'sp16_start': fields.DateTime
 }
 
 AdminUniversityDetailedSerializer = {
@@ -651,6 +662,7 @@ AdminUniversityDetailedSerializer = {
     'short_name': fields.String,
     'logo_url': fields.String,
     'banner_url':fields.String,
+    'banner_url_confirmed':fields.Boolean,
     'svg_url': fields.String,
     'city': fields.String,
     'state': fields.String,
@@ -669,9 +681,13 @@ AdminUniversityDetailedSerializer = {
     'seal_url': fields.String,
     'school_color_one': fields.String,
     'school_color_two': fields.String,
+    'school_color_dark': fields.String,
+    'school_color_light': fields.String,
+    'school_color_primary': fields.String,
+    'school_tiny_name': fields.String,
     'variations': fields.String,
     'popular_courses': fields.Nested(course_fields),
-    'sp16_deadline': fields.DateTime
+    'sp16_start': fields.DateTime
 }
 
 

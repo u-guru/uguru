@@ -30,8 +30,6 @@ angular.module('uguru.student.controllers', [])
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
         DeviceService, PopupService, LoadingService) {
 
-
-
         if ($scope.desktopMode && $scope.autoRedirects) {
             LoadingService.showAmbig('Redirecting',1000);
             $ionicViewSwitcher.nextDirection('enter');
@@ -39,6 +37,7 @@ angular.module('uguru.student.controllers', [])
         }
 
         $ionicSideMenuDelegate.canDragContent(false);
+        $ionicSideMenuDelegate.enableSlide(false);
 
         $scope.user.is_a_guru = false;
         // var universityColor = $scope.user.university.school_color_one;
@@ -193,12 +192,8 @@ angular.module('uguru.student.controllers', [])
             if (!$scope.mapInitialized) {
                 console.log('initializing map from load');
                 $scope.mapInitialized = true;
-
             }
-
-        })
-
-
+        });
 
         $scope.$on('$ionicView.afterLeave', function() {
             if (DeviceService.isIOSDevice()) {

@@ -29,8 +29,6 @@ angular.module('uguru.util.controllers')
 
     $scope.honorPledgeArr = ContentService.honorPledge;
 
-    $scope.request = RequestService.initSample();
-    $scope.request.selected_university = University.getTargetted()[0];
     $scope.requestProgress = {value:1};
     $scope.maxHourArr = RequestService.getMaxNumHourArr();
     $scope.search_text = {
@@ -41,8 +39,9 @@ angular.module('uguru.util.controllers')
 
     $scope.predictionMarkers = [];
 
-    $scope.page = {dropdowns: {}, predictionMarkers:[]}
+    $scope.page = {dropdowns: {}, predictionMarkers:[], animations: {}}
     $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
+    $scope.page.animations = {slideOne: ""}
 
     var initMapFromUniversity = function(university) {
       var latitude = parseFloat(university.latitude);
@@ -68,12 +67,63 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.removeTagFromRequest = function(index, tag) {
-      if ($scope.request && $scope.request.info.tags.length >= index) {
-        $scope.request.info.tags.splice(index, 1);
+    $scope.clearUniversityInput = function() {
+      //clear text
+      $scope.search_text.university = '';
+      $scope.newRequest.university = null;
+      $scope.newRequest.active_step = 1;
+    }
+
+    $scope.selectRequestSlideOneUniversity = function(university) {
+      $scope.newRequest.university = university;
+      $scope.search_text.university = university.name;
+      $timeout(function() {
+        LoadingService.showSuccess('Added ' + (university.short_name || university.name) + '!', 500);
+      }, 250)
+      $timeout(function() {
+          $scope.newRequest.active_step = 2;
+      }, 750)
+    }
+
+    $scope.validateRequestFormSlideOne = function() {
+      var showInvalidAnimation = function(callback) {
+        $scope.invalidSlideOne = true;
+        $timeout(function() {
+          $scope.invalidSlideOne = false;
+          callback && callback();
+        }, 250)
+      }
+
+      if (!$scope.newRequest.university || !$scope.newRequest.type || !$scope.newRequest.info.description.length || !$scope.newRequest.info.tags.length) {
+
+        var callback  = function() {
+          LoadingService.showMsg('Please fill in all steps', 1000, null);
+        }
+
+        showInvalidAnimation(callback);
+      } else {
+        $scope.nextSlide()
       }
     }
 
+    $scope.removeTagFromRequest = function(index, tag) {
+      console.log('test this works');
+      if ($scope.newRequest.info.tags.length >= index) {
+        $scope.newRequest.info.tags.splice(index, 1);
+      }
+    }
+
+    $scope.focusInput = function() {
+      $timeout(function() {
+        $scope.universityInputFocused = true;
+      }, 250)
+    }
+
+    $scope.blurInput = function() {
+      $timeout(function() {
+        $scope.universityInputFocused = false;
+      }, 250)
+    }
 
     var checkPropertyInArrayForDupes = function(arr, val, property) {
       for (var i = 0; i < arr.length; i++) {
@@ -129,22 +179,32 @@ angular.module('uguru.util.controllers')
 
     $scope.jumpToSlide = function(index, recently_edited_component) {
       if (recently_edited_component === 'request-university') {
-        $scope.request.university = null;
+        $scope.newRequest.university = null;
       }
       if (recently_edited_component === 'textarea-description') {
-        $scope.request.university = null;
+        $scope.newRequest.university = null;
       }
       $ionicSlideBoxDelegate.slide(index - 1, 500)
     }
 
-    $scope.addRequestTagAndInitEmpty = function() {
-      var emptyTagVal = $scope.request.info.empty_tag.name;
-      if (checkPropertyInArrayForDupes($scope.request.info.tags, emptyTagVal, 'name')) {
-        $scope.request.info.tags.push(JSON.parse(JSON.stringify($scope.request.info.empty_tag)))
-        $scope.request.info.empty_tag = {name: ''};
-      } else {
-        LoadingService.showMsg(emptyTagVal + ' already exists as a tag', 2000);
-        $scope.request.info.empty_tag = {name: ''};
+    $scope.addRequestTagAndInitEmpty = function($event, blur) {
+      var emptyTagVal = $scope.newRequest.info.empty_tag.name;
+
+      // check if greater than 3 characters
+      if (emptyTagVal.length && emptyTagVal.length < 4) {
+        LoadingService.showMsg(emptyTagVal + ' must be at least 4 characters', 2000);
+      }
+      // check if already exists
+      else if (checkPropertyInArrayForDupes($scope.newRequest.info.tags, emptyTagVal, 'name')) {
+        $scope.newRequest.info.tags.push(JSON.parse(JSON.stringify($scope.newRequest.info.empty_tag)))
+        $scope.newRequest.info.empty_tag = {name: ''};
+      }
+      // it already exists
+      else {
+        if (!blur) {
+          LoadingService.showMsg(emptyTagVal + ' already exists as a tag', 2000);
+          $scope.newRequest.info.empty_tag = {name: ''};
+        }
       }
     }
 
