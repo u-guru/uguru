@@ -891,7 +891,7 @@ function ContentService() {
 	}
 	var generateUniversitySpecificHowItWorks = function(university) {
 		return {
-			header: "Uguru Can Help You ..",
+			header: "Uguru Can Help You",
 			top_half: [{
 				icon_src: "splash/anytime.html",
 				header: "24/7, Anytime, Anywhere",
