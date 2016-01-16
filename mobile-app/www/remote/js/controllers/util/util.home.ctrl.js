@@ -23,10 +23,11 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   'AnimationService',
   'University',
+  'CounterService',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
     SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
-    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University) {
+    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService) {
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
@@ -36,13 +37,14 @@ angular.module('uguru.util.controllers')
       var shouldRenderMap = true;
       var mainPageContainer = document.querySelector('#university-splash')
       $ionicSideMenuDelegate.canDragContent(false);
+
       $scope.highlighted_item;
       $scope.courses = [];
       $scope.activeTabIndex = 2;
       $scope.university = {}
       $scope.search_text = {university:''};
       $scope.profile = {public_mode: true};
-      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
+      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
       $scope.page.sidebar = {show:false};
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
@@ -299,13 +301,13 @@ angular.module('uguru.util.controllers')
       uiGmapGoogleMapApi.then(function(maps) {
         maps.visualRefresh = true;
         $timeout(function() {
-          var universityCustomMapOptions = {icon_type:"university_penant", label_color:"white", custom_class:'university-pennant'};
+          var universityCustomMapOptions = {icon_type:"university_penant", label_color:"white", custom_class:'university-pennant', img_base:$scope.img_base};
           var callback = function() {
             $timeout(function() {
               google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
             }, 1000)
           }
-          GUtilService.initSeveralMarkersWithLabel($scope.map.control.getGMap(), $scope.universities, $scope.map.university.markers, universityCustomMapOptions, callback);
+          GUtilService.initSeveralMarkersWithLabel($scope.map.control.getGMap(), $scope.universities.splice(0,50), $scope.map.university.markers, universityCustomMapOptions, callback);
 
         }, 2000)
           // $scope.map.control.getGMap()
@@ -324,7 +326,6 @@ angular.module('uguru.util.controllers')
             $scope.root.vars.page_cache.essayHomeBecomeGuru = true;
             $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
           } else {
-            console.log('already shown');
           }
         }, 7000);
       }
@@ -360,18 +361,64 @@ angular.module('uguru.util.controllers')
 
       }
 
+      var initiateCounters = function() {
+
+        $scope.page.counters['num-university-counter'].start();
+        $scope.page.counters['num-course-counter'].start();
+        $scope.page.counters['num-guru-counter'].start();
+
+      }
+
+      var calcTotalCourses = function(universities) {
+        var sum = 0
+        for (var i = 0; i < universities.length; i ++) {
+          var indexUniversity = universities[i];
+          if (indexUniversity) {
+            sum += indexUniversity.num_courses;
+          }
+        }
+        return sum;
+      }
+
+
+
+      var calculateAndInitiateCounters = function() {
+        var totalUniversities = $scope.universities.length;
+        var totalCourses = calcTotalCourses($scope.universities);
+        $scope.page.counters['num-university-counter'] = CounterService.initCounter('num-university-counter', 1.0, totalUniversities, 5);
+        $scope.page.counters['num-course-counter'] = CounterService.initCounter('num-course-counter', 1.0, parseInt(totalCourses / 1000), 5, 'K');
+        $scope.page.counters['num-guru-counter'] = CounterService.initCounter('num-guru-counter', 1.0, 1130, 5);
+        //@samir - todo, implement when scroll down to the section
+        initiateCounters();
+      }
+
+
+      $scope.$on('$ionicView.afterEnter', function() {
+
+        var waypointDict = {
+          "how-it-works": {func:null},
+          "splash-university": {func:null},
+          "splash-browse": {func:null},
+          "become-guru": {func:null}
+        }
+
+        $timeout(function() {
+
+          ScrollService.initArrWaypoints(waypointDict, "university-splash");
+        }, 5000)
+      })
 
       $scope.$on('$ionicView.loaded', function() {
-
          shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+
+
 
          $timeout(function() {
           // calcAllMainSectionContainers();
           initUniversityMap();
           initProfileCTAS();
+          calculateAndInitiateCounters();
           initUniversityTypeWriter();
-          console.log('PRINTING USER', $scope.user);
-
           runMobileOnlyFunctions();
 
          }, 5000)

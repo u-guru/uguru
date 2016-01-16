@@ -87,11 +87,11 @@ function GUtilService() {
         position: gLocation,
         map: map,
         // title: markerObj.name,
-        animation: google.maps.Animation.DROP,
-        icon: icon,
+        animation: options.animation,
+        // icon: icon,
         labelContent: options.labelContent,
         labelAnchor: new google.maps.Point(0,20),
-        labelStyle:"color:" + options.labelColor + ' !important;',
+        labelStyle:"color:" + options.labelColor + ' !important;' + options.customStyle || '',
         labelClass: options.className, // the CSS class for the label
         labelInBackground: false,
       });
@@ -125,13 +125,25 @@ function GUtilService() {
     for (var i = 0; i < obj_arr.length; i++) {
       var objIndex = obj_arr[i];
       var icon = getRelevantIcon(objIndex.school_color_dark, objIndex.school_color_light, options.icon_type);
-      var markerOptions = {
-        labelContent: objIndex.tiny_name || objIndex.short_name,
-        labelColor: options.label_color || "white",
-        className: options.custom_class || 'gmap-marker-label',
-      }
 
-      var indexMarker = createMarkerWithLabel(map, objIndex.latitude, objIndex.longitude, icon, markerOptions);
+
+      // var pictureLabel = document.createElement("div");
+      picture_src = objIndex.svg_url || objIndex.seal_url || objIndex.logo_url;
+      // pictureLabel.style.backgroundImage = 'url("' + picture_src + '")';
+      var pictureLabel = document.createElement("img");
+      pictureLabel.src = options.img_base + 'templates/svg/map/cafe.svg';
+
+      var indexmarker = new MarkerWithLabel({
+        position: latCoordToGoogleLatLng(objIndex.latitude, objIndex.longitude),
+        map: map,
+        icon: getRelevantIcon(objIndex.school_color_one, objIndex.school_color_two, ['cafe']) , //cant edit the icon css
+        labelContent: pictureLabel,
+        labelAnchor: new google.maps.Point(50,0),
+        labelClass: 'university-svg-icon', // the CSS class for the label
+        labelInBackground: false
+      });
+
+      // var indexMarker = createMarkerWithLabel(map, objIndex.latitude, objIndex.longitude, null, markerOptions);
     }
     callback && callback();
   }

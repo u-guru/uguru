@@ -46,8 +46,6 @@ angular.module('uguru.util.controllers')
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
-      console.log('sample mini profiles dict', $scope.sampleMiniProfilesDict);
-
 
       var calcAllMainSectionContainers = function() {
         $scope.page.offsets = {

@@ -14,10 +14,13 @@ function CounterService($timeout, $interval) {
       separator : ',',
       decimal : '.',
       prefix : '',
-      suffix : '%'
+      suffix : ''
     };
 
-  var initCounter = function(selector, minVal, maxVal, duration) {
+  var initCounter = function(selector, minVal, maxVal, duration, suffix) {
+    if (suffix) {
+      defaultOptions.suffix = suffix;
+    }
     return new CountUp(selector, minVal, maxVal, 0, 5, defaultOptions);
 
   }
