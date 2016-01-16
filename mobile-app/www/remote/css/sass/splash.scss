@@ -590,11 +590,21 @@
 					li {
 						width: calc(100%  / 3);
 						padding: 1px;
-						> div {
+						> a {
+							display: block;
 							background: white;
+							color: $slate;
 							padding: 15px;
 							border-bottom: 10px solid $slate;
 							border-radius: 2px;
+							&:hover, &:focus {
+								background: lighten($slate, 15%);
+								color: white;
+								border-color: white;
+							}
+							&:active, &.activated {
+								background: $slate;
+							}
 							span {
 								display: block;
 								font-weight: 600;
@@ -769,7 +779,7 @@
 						li {
 							padding: 7.5px;
 							width: 25%;
-							> div {
+							> a {
 								height: 150px;
 								.course-title {
 									display: block;
@@ -1087,6 +1097,200 @@
 .splash-landing {
 	background: white;
 	overflow-x: hidden;
+	.splash-sidebar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 999999;
+		width: 100%;
+		height: 100%;
+		&:before {
+			@include opacity(.95);
+			content: "";
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: $slate;
+		}
+		> * {
+			position: relative;
+			z-index: 2;
+		}
+		> header {
+			height: 50px;
+			background: $shamrock;
+			.close-button {
+				height: 100%;
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 5px;
+				svg {
+					height: 100%;
+					width: auto;
+					path, circle {
+						@include transition(.15s ease-it-out);
+						@include svg-stroke(white, 4);
+					}
+				}
+				&:hover {
+					svg {
+						circle {
+							fill: white;
+						}
+						path {
+							stroke: $shamrock;
+						}
+					}
+				}
+			}
+		}
+		a {
+			display: block;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+		.splash-sidebar-desktop {
+			display: none;
+			> li {
+				> div {
+					a, h2 {
+						padding: 15px;
+						font-size: 20px;
+					}
+					h2 {
+						font-weight: 700;
+					}
+					a {
+						&:hover, &:focus {
+							background: white;
+							color: lighten($slate, 15%);
+						}
+						&:active {
+							background: $charcoal;
+							color: $shamrock;
+						}
+					}
+					ul {
+						li {
+							a {
+								font-size: 16px;
+								padding-left: 30px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.splash-sidebar-mobile {
+			@include flex;
+			padding: 2px;
+			> ul {
+				width: 50%;
+				&:only-child {
+					width: 100%;
+				}
+				li {
+					padding: 2px;
+					a, h2 {
+						@include flex;
+						@include flex-center;
+						margin: 0;
+						padding: 15px;
+						min-height: 64px;
+						background: $charcoal;
+						font-size: 20px;
+						line-height: 1.2;
+					}
+					h2 {
+						background: none;
+						font-weight: 700;
+					}
+					a {
+						&:hover, &:focus {
+							background: $shamrock;
+						}
+						&:active, &.active {
+							background: lighten($slate, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	@media screen and (min-width: 768px) {
+		.splash-sidebar {
+			width: calc(100% / 3);
+			> header {
+				height: 80px;
+				background: none;
+				.close-button {
+					padding: 15px;
+					&:hover, &:focus {
+						svg {
+							path {
+								stroke: lighten($slate, 15%);
+							}
+						}
+					}
+				}
+			}
+			.splash-sidebar-desktop {
+				display: block;
+			}
+			.splash-sidebar-mobile {
+				display: none;
+			}
+		}
+	}
+	.splash-logo {
+		@include center-y;
+		display: block;
+		left: 0;
+		height: 100%;
+		padding: 15px 15px 5px;
+		svg {
+			display: block;
+			height: 100%;
+			path {
+				@include transition(.15s ease-in-out);
+				&:first-child {
+					fill: rgba(white,.8);
+				}
+				&:last-child {
+					fill: white;
+				}
+			}
+			text {
+				fill: white;
+			}
+		}
+		&:hover, &:focus {
+			background: none!important;
+			svg {
+				path {
+					&:first-child {
+						fill: white;
+					}
+					&:last-child {
+						fill: rgba(white,.8);
+					}
+				}
+				text {
+					fill: $smoke;
+				}
+			}
+		}
+		@media screen and (max-width: 680px) {
+			padding: 0;
+			margin-top: 5px;
+			margin-left: 5px;
+			max-height: 40px;
+		}
+	}
 	> header {
 		@include transition(.15s ease-in-out);
 		@include flex;
@@ -1124,51 +1328,6 @@
 			&:hover, &:focus {
 				background: white;
 				color: $cerise;
-			}
-			&.splash-logo {
-				@include center-y;
-				display: block;
-				left: 0;
-				height: 100%;
-				padding: 15px 15px 5px;
-				svg {
-					display: block;
-					height: 100%;
-					path {
-						@include transition(.15s ease-in-out);
-						&:first-child {
-							fill: rgba(white,.8);
-						}
-						&:last-child {
-							fill: white;
-						}
-					}
-					text {
-						fill: white;
-					}
-				}
-				&:hover, &:focus {
-					background: none!important;
-					svg {
-						path {
-							&:first-child {
-								fill: white;
-							}
-							&:last-child {
-								fill: rgba(white,.8);
-							}
-						}
-						text {
-							fill: $smoke;
-						}
-					}
-				}
-				@media screen and (max-width: 680px) {
-					padding: 0;
-					margin-top: 5px;
-					margin-left: 5px;
-					max-height: 40px;
-				}
 			}
 			&.splash-burger {
 				@include center-x;
@@ -1264,6 +1423,10 @@
 			padding: 30px 15px 15px;
 			margin-top: -15px!important;
 			text-align: center;
+			a {
+				top: calc(50% + 7.5px);
+    			margin-top: -25px;
+			}
 			h1 {
 				padding: 0 15px 15px !important;
 				font-size: 28px!important;

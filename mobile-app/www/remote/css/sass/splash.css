@@ -749,25 +749,37 @@
   padding: 1px;
 }
 
-#university-splash .splash-categories .main form + ul li > div {
+#university-splash .splash-categories .main form + ul li > a {
+  display: block;
   background: white;
+  color: #40484B;
   padding: 15px;
   border-bottom: 10px solid #40484B;
   border-radius: 2px;
 }
 
-#university-splash .splash-categories .main form + ul li > div span {
+#university-splash .splash-categories .main form + ul li > a:hover, #university-splash .splash-categories .main form + ul li > a:focus {
+  background: #637074;
+  color: white;
+  border-color: white;
+}
+
+#university-splash .splash-categories .main form + ul li > a:active, #university-splash .splash-categories .main form + ul li > a.activated {
+  background: #40484B;
+}
+
+#university-splash .splash-categories .main form + ul li > a span {
   display: block;
   font-weight: 600;
   text-align: center;
 }
 
-#university-splash .splash-categories .main form + ul li > div .course-name {
+#university-splash .splash-categories .main form + ul li > a .course-name {
   font-size: 16px;
   text-transform: uppercase;
 }
 
-#university-splash .splash-categories .main form + ul li > div .course-title {
+#university-splash .splash-categories .main form + ul li > a .course-title {
   display: none;
   margin-top: 15px;
   max-height: 56px;
@@ -940,10 +952,10 @@
     padding: 7.5px;
     width: 25%;
   }
-  #university-splash .splash-categories .main form + ul li > div {
+  #university-splash .splash-categories .main form + ul li > a {
     height: 150px;
   }
-  #university-splash .splash-categories .main form + ul li > div .course-title {
+  #university-splash .splash-categories .main form + ul li > a .course-title {
     display: block;
   }
 }
@@ -1317,6 +1329,250 @@
   overflow-x: hidden;
 }
 
+.splash-landing .splash-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing .splash-sidebar:before {
+  filter: alpha(opacity=95);
+  opacity: 0.95;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #40484B;
+}
+
+.splash-landing .splash-sidebar > * {
+  position: relative;
+  z-index: 2;
+}
+
+.splash-landing .splash-sidebar > header {
+  height: 50px;
+  background: #69B3A5;
+}
+
+.splash-landing .splash-sidebar > header .close-button {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+}
+
+.splash-landing .splash-sidebar > header .close-button svg {
+  height: 100%;
+  width: auto;
+}
+
+.splash-landing .splash-sidebar > header .close-button svg path, .splash-landing .splash-sidebar > header .close-button svg circle {
+  -webkit-transition: all 0.15s ease-it-out;
+  -o-transition: all 0.15s ease-it-out;
+  -ms-transition: all 0.15s ease-it-out;
+  -moz-transition: all 0.15s ease-it-out;
+  transition: all 0.15s ease-it-out;
+  fill: none;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.splash-landing .splash-sidebar > header .close-button:hover svg circle {
+  fill: white;
+}
+
+.splash-landing .splash-sidebar > header .close-button:hover svg path {
+  stroke: #69B3A5;
+}
+
+.splash-landing .splash-sidebar a {
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-desktop {
+  display: none;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-desktop > li > div a, .splash-landing .splash-sidebar .splash-sidebar-desktop > li > div h2 {
+  padding: 15px;
+  font-size: 20px;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-desktop > li > div h2 {
+  font-weight: 700;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-desktop > li > div a:hover, .splash-landing .splash-sidebar .splash-sidebar-desktop > li > div a:focus {
+  background: white;
+  color: #637074;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-desktop > li > div a:active {
+  background: #2B3234;
+  color: #69B3A5;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-desktop > li > div ul li a {
+  font-size: 16px;
+  padding-left: 30px;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-mobile {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  padding: 2px;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-mobile > ul {
+  width: 50%;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-mobile > ul:only-child {
+  width: 100%;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-mobile > ul li {
+  padding: 2px;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-mobile > ul li a, .splash-landing .splash-sidebar .splash-sidebar-mobile > ul li h2 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 0;
+  padding: 15px;
+  min-height: 64px;
+  background: #2B3234;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-mobile > ul li h2 {
+  background: none;
+  font-weight: 700;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-mobile > ul li a:hover, .splash-landing .splash-sidebar .splash-sidebar-mobile > ul li a:focus {
+  background: #69B3A5;
+}
+
+.splash-landing .splash-sidebar .splash-sidebar-mobile > ul li a:active, .splash-landing .splash-sidebar .splash-sidebar-mobile > ul li a.active {
+  background: #637074;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing .splash-sidebar {
+    width: calc(100% / 3);
+  }
+  .splash-landing .splash-sidebar > header {
+    height: 80px;
+    background: none;
+  }
+  .splash-landing .splash-sidebar > header .close-button {
+    padding: 15px;
+  }
+  .splash-landing .splash-sidebar > header .close-button:hover svg path, .splash-landing .splash-sidebar > header .close-button:focus svg path {
+    stroke: #637074;
+  }
+  .splash-landing .splash-sidebar .splash-sidebar-desktop {
+    display: block;
+  }
+  .splash-landing .splash-sidebar .splash-sidebar-mobile {
+    display: none;
+  }
+}
+
+.splash-landing .splash-logo {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: block;
+  left: 0;
+  height: 100%;
+  padding: 15px 15px 5px;
+}
+
+.splash-landing .splash-logo svg {
+  display: block;
+  height: 100%;
+}
+
+.splash-landing .splash-logo svg path {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+}
+
+.splash-landing .splash-logo svg path:first-child {
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.splash-landing .splash-logo svg path:last-child {
+  fill: white;
+}
+
+.splash-landing .splash-logo svg text {
+  fill: white;
+}
+
+.splash-landing .splash-logo:hover, .splash-landing .splash-logo:focus {
+  background: none !important;
+}
+
+.splash-landing .splash-logo:hover svg path:first-child, .splash-landing .splash-logo:focus svg path:first-child {
+  fill: white;
+}
+
+.splash-landing .splash-logo:hover svg path:last-child, .splash-landing .splash-logo:focus svg path:last-child {
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.splash-landing .splash-logo:hover svg text, .splash-landing .splash-logo:focus svg text {
+  fill: #F1F1F1;
+}
+
+@media screen and (max-width: 680px) {
+  .splash-landing .splash-logo {
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+    max-height: 40px;
+  }
+}
+
 .splash-landing > header {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
@@ -1378,70 +1634,6 @@
 .splash-landing > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus {
   background: white;
   color: #e6389b;
-}
-
-.splash-landing > header a:not(.header-close).splash-logo {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  display: block;
-  left: 0;
-  height: 100%;
-  padding: 15px 15px 5px;
-}
-
-.splash-landing > header a:not(.header-close).splash-logo svg {
-  display: block;
-  height: 100%;
-}
-
-.splash-landing > header a:not(.header-close).splash-logo svg path {
-  -webkit-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  -ms-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-}
-
-.splash-landing > header a:not(.header-close).splash-logo svg path:first-child {
-  fill: rgba(255, 255, 255, 0.8);
-}
-
-.splash-landing > header a:not(.header-close).splash-logo svg path:last-child {
-  fill: white;
-}
-
-.splash-landing > header a:not(.header-close).splash-logo svg text {
-  fill: white;
-}
-
-.splash-landing > header a:not(.header-close).splash-logo:hover, .splash-landing > header a:not(.header-close).splash-logo:focus {
-  background: none !important;
-}
-
-.splash-landing > header a:not(.header-close).splash-logo:hover svg path:first-child, .splash-landing > header a:not(.header-close).splash-logo:focus svg path:first-child {
-  fill: white;
-}
-
-.splash-landing > header a:not(.header-close).splash-logo:hover svg path:last-child, .splash-landing > header a:not(.header-close).splash-logo:focus svg path:last-child {
-  fill: rgba(255, 255, 255, 0.8);
-}
-
-.splash-landing > header a:not(.header-close).splash-logo:hover svg text, .splash-landing > header a:not(.header-close).splash-logo:focus svg text {
-  fill: #F1F1F1;
-}
-
-@media screen and (max-width: 680px) {
-  .splash-landing > header a:not(.header-close).splash-logo {
-    padding: 0;
-    margin-top: 5px;
-    margin-left: 5px;
-    max-height: 40px;
-  }
 }
 
 .splash-landing > header a:not(.header-close).splash-burger {
@@ -1623,6 +1815,10 @@
     padding: 30px 15px 15px;
     margin-top: -15px !important;
     text-align: center;
+  }
+  .splash-landing .splash-toast a {
+    top: calc(50% + 7.5px);
+    margin-top: -25px;
   }
   .splash-landing .splash-toast h1 {
     padding: 0 15px 15px !important;

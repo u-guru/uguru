@@ -8,13 +8,13 @@
 <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
 	<ion-view class='bg-smoke'>
 		<main id='university-splash' class='splash-landing hs-view full-xy'>
-            <div id='cta-modal-sidebar' ng-if='page.sidebar.show'  class='fx-ease-none full-y hide ng-class:{"show":page.sidebar.show, "full-x":!desktopMode, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </div>
+            <aside id='cta-modal-sidebar' ng-if='page.sidebar.show' class='splash-sidebar fx-ease-none hide ng-class:{"show":page.sidebar.show, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+			
             <ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'"> </ion-pane>
 
 			<header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
 				<div>
-					<!-- TODO SAMIR TEMPLATE THIS-->
-					<h1>Help Berkeley students ace courses like <u>CS10</u>, <u>CS61C</u>
+					<h1>Help {{university.short_name}} students ace courses like <u>CS10</u>, <u>CS61C</u>
 					<span class='weight-900'> &amp; earn side cash</span>!</h1>
 				</div>
 				<button ng-click='goToUniversity()'>Become a college Guru</button>
@@ -349,13 +349,13 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
-        						<div class="border-university">
+        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
+        						<a class="border-university" ng-click='addUniversityStudentCourse(course, $index)'>
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>
             							<span class="course-title">{{course.full_name || course.title}}</span>
                                     </div>
-        						</div>
+        						</a>
         					</li>
         				</ul>
                     </div>
