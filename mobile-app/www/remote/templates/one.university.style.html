@@ -30,6 +30,34 @@
         background: {{university.school_color_dark}}!important;
         color: white!important;
     }
+    
+    /* SPLASH SIDEBAR */
+    .splash-sidebar > header {
+        background: #637074!important;
+    }
+    @media screen and (min-width: 768px) {
+        .splash-sidebar > header {
+            background: none!important;
+        }
+    }
+    .splash-sidebar .splash-sidebar-desktop li a:hover, .splash-sidebar .splash-sidebar-desktop li a:focus {
+        color: {{university.school_color_dark}}!important;
+    }
+    .splash-sidebar .splash-sidebar-desktop li a:active {
+        background: {{university.school_color_dark}}!important;
+        color: white!important;
+    }
+    .splash-sidebar-school-links li a {
+        background: {{university.school_color_dark}}!important;
+    }
+    .splash-sidebar-school-links li a:hover, .splash-sidebar-school-links li a:focus {
+        background: white!important;
+        color: {{university.school_color_dark}}!important;
+    }
+    .splash-sidebar-school-links li a:active, .splash-sidebar-school-links li a:focus {
+        background: #637074!important;
+        color: white;
+    }
 
     /* SPLASH HERO */
     .splash-hero {
@@ -50,6 +78,17 @@
 
     /* SPLASH CATEGORIES */
     .border-university {
+        color: {{university.school_color_dark}}!important;
+        border-color: {{university.school_color_dark}}!important;
+    }
+    .border-university:hover, .border-university:focus {
+        background: {{university.school_color_dark}}!important;
+        color: white!important;
+        border-color: white!important;
+    }
+    .border-university:active {
+        background: white!important;
+        color: {{university.school_color_dark}}!important;
         border-color: {{university.school_color_dark}}!important;
     }
     #desktop-guru-onboarding .header {
@@ -121,9 +160,15 @@
     }
 
     /* MISC */
-    .bg-university, #university-splash > header a:not(.header-close).active:hover, .splash-landing > header a:not(.header-close).active:focus, #university-splash > header:before {
-        background: {{university.school_color_dark}} !important;
+    .bg-university, #university-splash .splash-header a:not(.header-close).active:hover, .splash-landing > header a:not(.header-close).active:focus, #university-splash .splash-header:before {
+        background: {{university.school_color_dark}}!important;
         color: white!important;
+    }
+    #university-splash .splash-toast {
+        color: {{university.school_color_dark}}!important;
+    }
+    #university-splash .splash-toast a svg path {
+        stroke: {{university.school_color_dark}}!important;
     }
     .txt-university, .splash-bar a.active, #university-splash > header a:not(.header-close):hover, .splash-landing > header a:not(.header-close):focus  {
         color: {{university.school_color_dark}} !important;

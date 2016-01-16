@@ -204,7 +204,7 @@ angular.module('uguru.util.controllers')
                 {name:"Become a Guru", ngClickFunc:becomeGuruFunc}
               ]
           },
-          {name:"Meet the Team", href:"#/team"},
+          {name:"Team", href:"#/team"},
           {name:"Timeline", href:"#/timeline"},
           {name:"FAQ", href:"#/faq"},
           {name:"Pricing", href:"#/pricing"},
@@ -447,6 +447,7 @@ angular.module('uguru.util.controllers')
           calcAllMainSectionContainers();
           initProfileCTAS();
           initUniversityTypeWriter();
+          console.log($scope.courses);
           console.log('PRINTING USER', $scope.user);
 
           runMobileOnlyFunctions();

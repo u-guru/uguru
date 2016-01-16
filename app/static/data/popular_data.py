@@ -33,7 +33,7 @@ def generateTargettedJsonFile():
             print 'ERROR, look further into %s' % uni['name']
         print "%s diverse courses retrieved for %s" % (len(uni['popular_courses']), uni['name'])
         sleep(0.5)
-    saveObjToJson(result_arr, 'fa15_targetted_new')
+    saveObjToJson(result_arr, 'fa15_targetted')
 
 def getPreparedUniversities(arr):
     image_fields = ['logo_url', 'seal_url', 'forbes_url']
@@ -83,4 +83,4 @@ def getPopularStats():
 
 
 # getPopularStats()
-generateTargettedJsonFile()
+# generateTargettedJsonFile()

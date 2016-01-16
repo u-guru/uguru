@@ -2,19 +2,19 @@
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
 
-<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>
+<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view> -->
 
 <div ng-include="page.universityStyleUrl"></div>
 <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
 	<ion-view class='bg-smoke'>
 		<main id='university-splash' class='splash-landing hs-view full-xy'>
-            <div id='cta-modal-sidebar' ng-if='page.sidebar.show'  class='fx-ease-none full-y hide ng-class:{"show":page.sidebar.show, "full-x":!desktopMode, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </div>
+            <aside id='cta-modal-sidebar' ng-if='page.sidebar.show' class='splash-sidebar fx-ease-none hide ng-class:{"show":page.sidebar.show, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+			
             <ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'"> </ion-pane>
 
 			<header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
 				<div>
-					<!-- TODO SAMIR TEMPLATE THIS-->
-					<h1>Help Berkeley students ace courses like <u>CS10</u>, <u>CS61C</u>
+					<h1>Help {{university.short_name}} students ace courses like <u>CS10</u>, <u>CS61C</u>
 					<span class='weight-900'> &amp; earn side cash</span>!</h1>
 				</div>
 				<button ng-click='goToUniversity()'>Become a college Guru</button>
@@ -25,7 +25,7 @@
 				</a>
 			</header>
 
-			<header class='splash-header ng-class:{"become-guru-active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}'>
+			<header class='splash-header ng-class:{"active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}'>
                 <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
                 <a class="splash-burger ng-class:{'hide':page.sidebar.show && desktopMode}" ng-click="toggleSidebar()">
                     <svg viewBox="0 0 100 100">
@@ -49,7 +49,7 @@
 					</a>
 				</div>
 			</header>
-            <section class='splash-hero relative' id='splash-home'>
+            <section id='splash-home' class='splash-hero relative ng-class:{"active":becomeGuruHeaderActive}'>
                 <a id="splash-footer-support" class="splash-footer-link">
 					<span ng-include="img_base + 'templates/svg/support.html'"></span>
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
@@ -240,29 +240,41 @@
                     			<li ng-repeat='category in categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category)' >
                 					<div style='background-image :url({{categories_img_base + category.background_url}})'>
                 	    				<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
-                                            <span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
-                	                        <span class="card-label">{{category.name}}</span>
+                                            <div>
+												<span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
+	                	                        <span class="card-label">{{category.name}}</span>
+											</div>
                 	                    </a>
                 					</div>
                     			</li>
                                 <li>
                                     <div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
-                                        <a class='bg-{{categories[0].hex_color}}' ng-click='launchCategoryModal(category)'>
-                                            <span class="card-icon"></span>
-                                            <span class="card-label">More Coming Soon!</span>
-                                        </a>
+                                        <span class='bg-more' ng-click='launchCategoryModal(category)'>
+                                            <div>
+												<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+	                                            <span class="card-label">More Coming Soon!</span>
+											</div>
+                                        </span>
                                     </div>
                                 </li>
+								<li class="card-button">
+									<button ng-click='goToSignup()'>Start Your Shop</button>
+								</li>
                 			</ul>
                             <div class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
                     			<ul class="category-card-list">
                     				<li ng-repeat='subcategory in category.subcategories'>
                                         <div class="bg-{{category.hex_color}}">
                                             <span class='bg-{{category.hex_color}}'>
-                                                <span class="card-label txt-slate">{{subcategory.name}}</span>
+												<div>
+													<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+	                                                <span class="card-label txt-slate">{{subcategory.name}}</span>
+												</div>
                         					</span>
+											<span class="card-price bg-{{category.hex_color}}">Free - $10/hr Avg</span>
                                         </div>
                     				</li>
+									<li></li><li></li><li></li><li></li>
                     			</ul>
                     			<button ng-click='hideCategorySkillsModal()'>Back</button>
                         	</div>
@@ -337,13 +349,13 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
-        						<div class="border-university">
+        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
+        						<a class="border-university" ng-click='addUniversityStudentCourse(course, $index)'>
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>
             							<span class="course-title">{{course.full_name || course.title}}</span>
                                     </div>
-        						</div>
+        						</a>
         					</li>
         				</ul>
                     </div>
@@ -418,7 +430,7 @@
 							<rect x="0" y="0" width="100" height="100"></rect>
 						</svg>
                     </ul>
-                    <ul class="desktop-postit-list" ng-if='desktopMode'>
+                    <ul ng-if='desktopMode'>
                         <li ng-repeat="bg_item in become_guru.top_half">
                             <div class="postit">
                                 <svg class="square" viewBox="0 0 100 100">
