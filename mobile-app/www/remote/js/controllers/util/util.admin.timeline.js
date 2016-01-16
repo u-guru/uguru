@@ -27,7 +27,7 @@ angular.module('uguru.util.controllers')
 
 		var getProjectOneActionItems = function() {
 			var resultDict = {};
-			resultDict.alpha = [{"Home page counter":true}, {"Scroll Reveal": true}, {"Update University.js":true},  {"Add tiny_name to university":false}, {"Home Page Sidebar + link in-app-views":false},{"Sanitize Courses": false}, {"Add svg_url to admin":false}, {"Clean-up maps + add pennant + resize after render":false}, {"Main section templating": false}, {"Code Cleanup": false}, {"Content": false}];
+			resultDict.alpha = [{"Home page counter":true}, {"Scroll Reveal": true}, {"Update University.js":true},  {"Add tiny_name to university":true}, {"Home Page Sidebar + link in-app-views":false},{"Sanitize Courses": false}, {"Add svg_url to admin":false}, {"Clean-up maps + add pennant + resize after render":false}, {"Main section templating": false}, {"Code Cleanup": false}, {"Content": false}, {"image url + static assets conversion":false}];
 			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
 			resultDict.production = [{"Home Page 100% Sleek":false}, {"Pre-App 100% Templated": false}];
 			return resultDict;
