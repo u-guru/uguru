@@ -25,6 +25,48 @@ angular.module('uguru.util.controllers')
 		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides", "Timeline", "Moodboards"];
 		$scope.projects = [{name:'University Specific + Home', deadline:"1/15/2015", urgent:true}, {name: 'Student Everything MVP'}, {name: 'Guru Everything MVP'}, {name: 'GPA App'}];
 
+		var getProjectOneActionItems = function() {
+			var resultDict = {};
+			resultDict.alpha = [{"Subdomains":true}, {"Home Page Converted":false}, {"Bug-Free": false}];
+			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
+			resultDict.production = [{"Home Page 100% Sleek":false}, {"Pre-App 100% Templated": false}];
+			return resultDict;
+		}
+
+		var calculateProjectProgress = function(project) {
+			var progressDict = {alpha:0, beta:0, production:0, overall:0};
+			progressDict.total = project.alpha.length + project.beta.length + project.production.length;
+			for (var i = 0; i < project.alpha.length; i ++) {
+				var indexAlphaItem = project.alpha[i];
+				var indexAlphaKey = Object.keys(project.alpha[i]);
+				if (indexAlphaItem[indexAlphaKey]) {
+					progressDict.alpha += 1;
+					progressDict.overall += 1;
+				}
+			}
+			for (var j = 0; j < project.beta.length; j ++) {
+				var indexBetaItem = project.beta[j];
+				var indexBetaKey = Object.keys(project.beta[j]);
+				if (indexBetaItem[indexBetaKey]) {
+					progressDict.beta += 1;
+					progressDict.overall += 1;
+				}
+
+			}
+			for (var k = 0; k < project.production.length; k ++) {
+				var indexProductionItem = project.beta[k];
+				var indexProductionKey = Object.keys(project.production[k]);
+				if (indexProductionItem[indexProductionKey]) {
+					progressDict.production += 1;
+					progressDict.overall += 1;
+				}
+			}
+			return progressDict;
+		}
+
+		$scope.projects[0].action_items = getProjectOneActionItems();
+		$scope.projects[0].progress = calculateProjectProgress($scope.projects[0].action_items);
+
 		var initProjectCTAS = function() {
 
 			for (var i = 0; i < $scope.projects.length; i ++) {
