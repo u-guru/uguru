@@ -835,6 +835,94 @@
   font-weight: 400;
 }
 
+.splash-landing > section form {
+  position: relative;
+  width: 100%;
+}
+
+.splash-landing > section form .input-field {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.splash-landing > section form .input-field .prefix {
+  top: 9px;
+}
+
+.splash-landing > section form .input-field input {
+  padding-right: 48px;
+}
+
+.splash-landing > section form .input-field label:not(.active) {
+  top: 0;
+}
+
+.splash-landing > section form .input-field .desktop-input-close-icon {
+  margin: 0 !important;
+}
+
+.splash-landing > section form + ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  margin: -1px -14px -14px;
+}
+
+.splash-landing > section form + ul li {
+  width: calc(100%  / 3);
+  padding: 1px;
+}
+
+.splash-landing > section form + ul li > a {
+  display: block;
+  background: white;
+  color: #40484B;
+  padding: 15px;
+  border-bottom: 10px solid #40484B;
+  border-radius: 2px;
+}
+
+.splash-landing > section form + ul li > a:hover, .splash-landing > section form + ul li > a:focus {
+  background: #637074;
+  color: white;
+  border-color: white;
+}
+
+.splash-landing > section form + ul li > a:active, .splash-landing > section form + ul li > a.activated {
+  background: #40484B;
+}
+
+.splash-landing > section form + ul li > a span {
+  display: block;
+  font-weight: 600;
+  text-align: center;
+}
+
+.splash-landing > section form + ul li > a .course-name {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.splash-landing > section form + ul li > a .course-title {
+  display: none;
+  margin-top: 15px;
+  max-height: 56px;
+  overflow: hidden;
+  font-size: 24px;
+}
+
 .splash-landing > section.splash-hero {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1758,91 +1846,6 @@
 
 .splash-landing > section.splash-categories .main form {
   display: none;
-  position: relative;
-  width: 100%;
-}
-
-.splash-landing > section.splash-categories .main form .input-field {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.splash-landing > section.splash-categories .main form .input-field .prefix {
-  top: 9px;
-}
-
-.splash-landing > section.splash-categories .main form .input-field input {
-  padding-right: 48px;
-}
-
-.splash-landing > section.splash-categories .main form .input-field label:not(.active) {
-  top: 0;
-}
-
-.splash-landing > section.splash-categories .main form .input-field .desktop-input-close-icon {
-  margin: 0 !important;
-}
-
-.splash-landing > section.splash-categories .main form + ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-align-self: flex-end;
-  align-self: flex-end;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-  margin: -1px -14px -14px;
-}
-
-.splash-landing > section.splash-categories .main form + ul li {
-  width: calc(100%  / 3);
-  padding: 1px;
-}
-
-.splash-landing > section.splash-categories .main form + ul li > a {
-  display: block;
-  background: white;
-  color: #40484B;
-  padding: 15px;
-  border-bottom: 10px solid #40484B;
-  border-radius: 2px;
-}
-
-.splash-landing > section.splash-categories .main form + ul li > a:hover, .splash-landing > section.splash-categories .main form + ul li > a:focus {
-  background: #637074;
-  color: white;
-  border-color: white;
-}
-
-.splash-landing > section.splash-categories .main form + ul li > a:active, .splash-landing > section.splash-categories .main form + ul li > a.activated {
-  background: #40484B;
-}
-
-.splash-landing > section.splash-categories .main form + ul li > a span {
-  display: block;
-  font-weight: 600;
-  text-align: center;
-}
-
-.splash-landing > section.splash-categories .main form + ul li > a .course-name {
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.splash-landing > section.splash-categories .main form + ul li > a .course-title {
-  display: none;
-  margin-top: 15px;
-  max-height: 56px;
-  overflow: hidden;
-  font-size: 24px;
 }
 
 @media screen and (min-width: 768px) {

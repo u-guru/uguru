@@ -557,6 +557,72 @@
 			line-height: 1.2;
 			font-weight: 400;
 		}
+		form {
+			position: relative;
+			width: 100%;
+			.input-field {
+				width: 100%;
+				max-width: 800px;
+				margin: 0 auto;
+				.prefix {
+					top: 9px;
+				}
+				input {
+					padding-right: 48px;
+				}
+				label:not(.active) {
+					top: 0;
+				}
+				.desktop-input-close-icon {
+					margin: 0!important;
+				}
+			}
+			+ ul {
+				@include flex;
+				@include flex-wrap;
+				-webkit-align-self: flex-end;
+				align-self: flex-end;
+				-webkit-align-items: flex-start;
+				align-items: flex-start;
+				margin: -1px -14px -14px;
+				li {
+					width: calc(100%  / 3);
+					padding: 1px;
+					> a {
+						display: block;
+						background: white;
+						color: $slate;
+						padding: 15px;
+						border-bottom: 10px solid $slate;
+						border-radius: 2px;
+						&:hover, &:focus {
+							background: lighten($slate, 15%);
+							color: white;
+							border-color: white;
+						}
+						&:active, &.activated {
+							background: $slate;
+						}
+						span {
+							display: block;
+							font-weight: 600;
+							text-align: center;
+						}
+						.course-name {
+							font-size: 16px;
+							text-transform: uppercase;
+						}
+						.course-title {
+							display: none;
+							margin-top: 15px;
+							max-height: 56px;
+							overflow: hidden;
+							font-size: 24px;
+						}
+					}
+				}
+			}
+		}
 		
 		// HERO
 		&.splash-hero {
@@ -1265,70 +1331,6 @@
 				}
 				form {
 					display: none;
-					position: relative;
-					width: 100%;
-					.input-field {
-						width: 100%;
-						max-width: 800px;
-						margin: 0 auto;
-						.prefix {
-							top: 9px;
-						}
-						input {
-							padding-right: 48px;
-						}
-						label:not(.active) {
-							top: 0;
-						}
-						.desktop-input-close-icon {
-							margin: 0!important;
-						}
-					}
-					+ ul {
-						@include flex;
-						@include flex-wrap;
-						-webkit-align-self: flex-end;
-						align-self: flex-end;
-						-webkit-align-items: flex-start;
-						align-items: flex-start;
-						margin: -1px -14px -14px;
-						li {
-							width: calc(100%  / 3);
-							padding: 1px;
-							> a {
-								display: block;
-								background: white;
-								color: $slate;
-								padding: 15px;
-								border-bottom: 10px solid $slate;
-								border-radius: 2px;
-								&:hover, &:focus {
-									background: lighten($slate, 15%);
-									color: white;
-									border-color: white;
-								}
-								&:active, &.activated {
-									background: $slate;
-								}
-								span {
-									display: block;
-									font-weight: 600;
-									text-align: center;
-								}
-								.course-name {
-									font-size: 16px;
-									text-transform: uppercase;
-								}
-								.course-title {
-									display: none;
-									margin-top: 15px;
-									max-height: 56px;
-									overflow: hidden;
-									font-size: 24px;
-								}
-							}
-						}
-					}
 				}
 				// DESKTOP CATEGORY CARDS
 				@media screen and (min-width: 768px) {
