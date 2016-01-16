@@ -44,7 +44,8 @@
                 <a name= 'how-scroll' ng-click='scrollToSection("#how-it-works")'>How It Works</a>
 				<a name= 'splash-scroll' ng-click='scrollToSection("#splash-browse")'>Browse</a>
                 <a name= 'become-scroll' ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
-                <a name='start-btn' class="active txt-university" ng-click='scrollToSection("#splash-start")'>Get Started</a>
+                <a name='start-btn' class="active txt-university" ng-click='goToSignup()'>Get Started</a>
+
 				<div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
 					<a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
 						<svg viewBox="0 0 100 100">
@@ -191,7 +192,7 @@
                             </div>
                         </li>
                     </ul>
-					<button class="bg-university">Learn More</button>
+					<button ng-click='goToSignup()' class="bg-university">Launch {{university.school_mascot_name || ''}} Portal</button>
                 </div>
 				<footer>
 					<div class="border"></div>
@@ -224,7 +225,7 @@
 								</div>
 							</a>
                         </li>
-                        <li>
+                        <li ng-if='false'>
                             <a ng-click='activeTabIndex = 3;' class="ng-class:{'active':activeTabIndex===3}">
 								<div>
 									<span>Campus</span>
@@ -342,7 +343,7 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-click='addStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
+        					<li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
         						<div class="border-university">
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>
@@ -353,7 +354,7 @@
         				</ul>
                     </div>
                 </div>
-                <div id="splash-livemap" class="main ng-class:{'active':activeTabIndex===3}">
+                <div id="splash-livemap" class="main ng-class:{'active':activeTabIndex===3}" ng-if='false'>
                    <div style='height: 570px!important'>
                         <div class="request-loc map-box-container full-y">
                             <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
@@ -453,7 +454,7 @@
                             </div>
                         </li>
                     </ul>
-					<button class='capitalize'>Become a {{university.school_mascot_name}} Guru</button>
+					<button ng-click='goToBecomeGuru()' class='capitalize'>Become a {{university.school_mascot_name}} Guru</button>
                 </div>
 				<footer>
 					<div class="border"></div>
@@ -465,7 +466,7 @@
 					<h2>Get started earning cash by helping your campus today.</h2>
 					<ul>
 						<li><button class="btn-ghost-white" ng-click="goToBecomeGuru()">Become a Guru</button></li>
-						<li><button class="btn-ghost-white" ng-click='goToLoginPage()'>Launch Student Portal</button></li>
+						<li><button class="btn-ghost-white" ng-click='goToSignup()'>Launch Student Portal</button></li>
 					</ul>
 				</div>
 			</section>

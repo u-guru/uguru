@@ -32,6 +32,7 @@ angular.module('uguru.util.controllers')
       ];
       var scrollDuration= 500;
       var shouldShowBecomeGuruHeader = true;
+      var shouldRenderMap = false;
       var mainPageContainer = document.querySelector('#university-splash')
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
@@ -118,9 +119,17 @@ angular.module('uguru.util.controllers')
 
       $scope.goToBecomeGuru = function() {
         if ($scope.desktopMode) {
+          AnimationService.flip('^.desktop-become-guru')
+        } else {
+          AnimationService.flip('^.become-guru')
+        }
+      }
+
+      $scope.goToSignup = function() {
+        if ($scope.desktopMode) {
           AnimationService.flip('^.desktop-login')
         } else {
-
+          $scope.signupModal.show();
         }
       }
 
@@ -258,7 +267,7 @@ angular.module('uguru.util.controllers')
         var success = function(universityObj) {
           $scope.university = universityObj.plain();
           $scope.user.university = $scope.university;
-          $scope.root.vars.initRequestMap();
+          shouldRenderMap && $scope.root.vars.initRequestMap();
           if (!LOCAL) {
             $scope.page.universityStyleUrl = $scope.img_base + BASE + 'templates/one.university.style.html';
           } else {
@@ -293,16 +302,6 @@ angular.module('uguru.util.controllers')
             gMarker.showInfoWindow();
       }
 
-    $scope.addStudentCourse = function(course, $index) {
-      console.log(course, $index, 'selected');
-      var course = $scope.courses.slice($index, 1);
-      $scope.user.student_courses.push(course);
-    }
-
-    $scope.removeStudentCourse = function(course, $index) {
-      var course = $scope.user.student_courses.splice($index, 1);
-      $scope.courses.unshift(course);
-    }
 
     $scope.backpackAction = function() {
       if ($scope.user.student_courses.length) {

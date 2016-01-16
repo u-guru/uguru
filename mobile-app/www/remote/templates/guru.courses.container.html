@@ -43,8 +43,8 @@
 					</a>
 				</li>
 			</ul>
-			<ul class='desktop-card-list'>
-				<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
+			<ul name= 'guru-courses-list' class='desktop-card-list'>
+				<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 8 track by course.id' ng-click='addSelectedGuruCourse(course)'>
 					<a ng-if='course.full_name || course.title'>
 						<span>
 							<span class="course-name">{{course.short_name}}</span>

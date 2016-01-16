@@ -36,10 +36,10 @@
     			<!-- radio input for remember me -->
     			<div class="desktop-login-buttons">
     				<button ng-click='connectWithFacebook()' class="bg-fb caps ng-class:{'hide':root.vars.forgotPassword}">Login with Facebook</button>
-    				<button id='login-button' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
+    				<button name='loginUser' id='login-button' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
     				<button class="bg-charcoal caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='root.vars.forgotPassword = false;'>Cancel</button>
     				<button class="bg-shamrock caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='attemptToResetPassword()'>Submit</button>
-    				<button class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
+    				<button name='completeSignup' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
     			</div>
     		</form>
     	</div>
