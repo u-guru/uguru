@@ -13,7 +13,7 @@ angular.module('uguru.util.controllers')
 
 
 		$timeout(function() {
-			var loadingPageCounter = CounterService.initCounter('loading-counter', 1.0, 100.0, 5);
+			var loadingPageCounter = CounterService.initCounter('loading-counter', 1.0, 100.0, 5, '%');
 			loadingPageCounter.start();
 		}, 500)
 

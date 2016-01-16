@@ -22,8 +22,84 @@ angular.module('uguru.util.controllers')
 			$scope.page.active.tabName = tabName;
 		}
 
-		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides", "Timeline", "Moodboards"];
-		$scope.projects = [{name:'University Specific + Home', deadline:"1/15/2015", urgent:true}, {name: 'Student Everything MVP'}, {name: 'Guru Everything MVP'}, {name: 'GPA App'}];
+		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides", "Timeline", "Moodboards", "Glossary"];
+		$scope.projects = [{name:'University Specific + Home', deadline:"1/15/2015", urgent:true, progress:null, action_items:[]}, {name: 'Student Everything MVP'}, {name: 'Guru Everything MVP'}, {name: 'GPA App'}];
+
+		var getProjectOneActionItems = function() {
+			var resultDict = {};
+
+			resultDict.alpha = [
+				{"Home page counter":true},
+				{"Scroll Reveal": true},
+				{"Update University.js":true},
+				{"Add tiny_name to university":true},
+				{"Home Page Sidebar + link in-app-views":false},
+				{"Helicopter Transition":false},
+				{"FAQ":false},
+				{"Pricing + other page animations":false},
+				{"Add svg_url + tiny name edit to admin + cleanup courses":false},
+				{"Clean-up maps + add pennant + resize after render":false},
+				{"Sanitize Courses": false},
+				{"Main section templating": false},
+				{"Code Cleanup": false},
+				{"Content": false},
+				{"image url + static assets conversion":false}
+			];
+
+			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
+
+			resultDict.production = [
+				{"Complete all pages/components":false},
+				{"Map Finalize + customize map":false},
+				{"Home page scroll spec + implement":false},
+				{"Content card spacing + spec":false},
+				{"Cross platform":false},
+				{"Fluidity":false},
+				{"FAQ polishing":false}
+			];
+
+			return resultDict;
+		}
+
+		$scope.calculateProjectProgress = function(project) {
+			var progressDict = {alpha:0, beta:0, production:0, overall:0};
+			progressDict.total = project.alpha.length + project.beta.length + project.production.length;
+			for (var i = 0; i < project.alpha.length; i ++) {
+				var indexAlphaItem = project.alpha[i];
+				var indexAlphaKey = Object.keys(project.alpha[i]);
+				if (indexAlphaItem[indexAlphaKey]) {
+					progressDict.alpha += 1;
+					progressDict.overall += 1;
+				}
+			}
+			for (var j = 0; j < project.beta.length; j ++) {
+				var indexBetaItem = project.beta[j];
+				var indexBetaKey = Object.keys(project.beta[j]);
+				if (indexBetaItem[indexBetaKey]) {
+					progressDict.beta += 1;
+					progressDict.overall += 1;
+				}
+
+			}
+			for (var k = 0; k < project.production.length; k ++) {
+				var indexProductionItem = project.production[k];
+				var indexProductionKey = Object.keys(project.production[k]);
+				if (indexProductionItem[indexProductionKey]) {
+					progressDict.production += 1;
+					progressDict.overall += 1;
+				}
+			}
+			$timeout(function() {
+				$scope.projects[0].progress = progressDict;
+				$timeout(function() {
+					$scope.$apply();
+				});
+			}, 100)
+			return progressDict;
+		}
+
+		$scope.projects[0].action_items = getProjectOneActionItems();
+		$scope.projects[0].progress = $scope.calculateProjectProgress($scope.projects[0].action_items);
 
 		var initProjectCTAS = function() {
 

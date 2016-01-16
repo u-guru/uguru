@@ -81,24 +81,24 @@ function GUtilService() {
     return marker;
   }
 
-  var createMarkerWithLabel = function(map, lat, lng, markerObj, icon, options) {
+  var createMarkerWithLabel = function(map, lat, lng, icon, options) {
     var gLocation = latCoordToGoogleLatLng(lat, lng);
     var marker = new MarkerWithLabel({
         position: gLocation,
         map: map,
-        title: markerObj.name,
-        animation: google.maps.Animation.DROP,
-        icon: icon,
+        // title: markerObj.name,
+        animation: options.animation,
+        // icon: icon,
         labelContent: options.labelContent,
         labelAnchor: new google.maps.Point(0,20),
-        labelStyle:"color:" + options.labelColor + ' !important;',
+        labelStyle:"color:" + options.labelColor + ' !important;' + options.customStyle || '',
         labelClass: options.className, // the CSS class for the label
         labelInBackground: false,
       });
     return marker;
   }
 
-  var getRelevantIcon = function(scope, g_types) {
+  var getRelevantIcon = function(color_one, color_two, g_types) {
     // https://developers.google.com/maps/documentation/javascript/reference?hl=en#Symbol
     //rotation, scale, stroke color, stroke opacity, stroke weight, path, label origin, fillOpacity, fillColor, anchor
     var formatIconSvgUrl = function(iconName,scope) {
@@ -111,12 +111,41 @@ function GUtilService() {
       var matchedIndex = supportedIcons.indexOf(gTypeIndex)
       if (matchedIndex > -1) {
         // return formatIconSvgUrl(supportedIcons[matchedIndex], scope);
-        return getMapIconPath(supportedIcons[matchedIndex], scope.university.school_color_dark, scope.university.school_color_light, 5);
+        return getMapIconPath(supportedIcons[matchedIndex], color_one, color_two, 5);
       }
     }
 
-    var randItem = randomIcons[Math.floor(Math.random()*randomIcons.length)];
-    return formatIconSvgUrl(iconName)
+    var randItem = supportedIcons[Math.floor(Math.random()*supportedIcons.length)];
+    return getMapIconPath(randItem, color_one, color_two, 5);
+  }
+
+  // (map, university_arr, scope.map.markers, {icon_type:"university_penant", label_color:"white", custom_class})
+  var initSeveralMarkersWithLabel = function(map, obj_arr, marker_arr, options, callback) {
+    result_arr = [];
+    for (var i = 0; i < obj_arr.length; i++) {
+      var objIndex = obj_arr[i];
+      var icon = getRelevantIcon(objIndex.school_color_dark, objIndex.school_color_light, options.icon_type);
+
+
+      // var pictureLabel = document.createElement("div");
+      picture_src = objIndex.svg_url || objIndex.seal_url || objIndex.logo_url;
+      // pictureLabel.style.backgroundImage = 'url("' + picture_src + '")';
+      var pictureLabel = document.createElement("img");
+      pictureLabel.src = options.img_base + 'templates/svg/map/cafe.svg';
+
+      var indexmarker = new MarkerWithLabel({
+        position: latCoordToGoogleLatLng(objIndex.latitude, objIndex.longitude),
+        map: map,
+        icon: getRelevantIcon(objIndex.school_color_one, objIndex.school_color_two, ['cafe']) , //cant edit the icon css
+        labelContent: pictureLabel,
+        labelAnchor: new google.maps.Point(50,0),
+        labelClass: 'university-svg-icon', // the CSS class for the label
+        labelInBackground: false
+      });
+
+      // var indexMarker = createMarkerWithLabel(map, objIndex.latitude, objIndex.longitude, null, markerOptions);
+    }
+    callback && callback();
   }
 
   var nearbyLocationMarkers = [];
@@ -136,13 +165,13 @@ function GUtilService() {
               var placeObj = results[i];
               var placeLat = results[i].geometry.location.G;
               var placeLng = results[i].geometry.location.K;
-              var iconUrl = getRelevantIcon(scope, placeObj.types);
+              var iconUrl = getRelevantIcon(scope.university.school_color_dark, scope.university.school_color_light, placeObj.types);
               var markerOptions = {
                 labelContent: placeObj.types[0],
                 labelColor: scope.university.school_color_dark,
                 className: 'gmap-marker-label',
               }
-              var indexMarker = createMarkerWithLabel(map, placeLat, placeLng, placeObj, iconUrl, markerOptions);
+              var indexMarker = createMarkerWithLabel(map, placeLat, placeLng, iconUrl, markerOptions);
               nearbyLocationMarkers.push(indexMarker);
             }
             scope.map.nearbyLocations.markers = JSON.parse(JSON.stringify(nearbyLocationMarkers));
@@ -157,6 +186,7 @@ function GUtilService() {
     initPlacesService:initPlacesService,
     getNearestLocationOneMarker: getNearestLocationOneMarker,
     getNearestLocationManyMarkers: getNearestLocationManyMarkers,
+    initSeveralMarkersWithLabel: initSeveralMarkersWithLabel
   }
 
 }

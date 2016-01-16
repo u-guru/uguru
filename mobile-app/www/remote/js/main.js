@@ -36,7 +36,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic',
-  'angularMoment','ngOpenFB', 'fox.scrollReveal', 'uiGmapgoogle-maps'])
+  'angularMoment','ngOpenFB', 'uiGmapgoogle-maps'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -378,7 +378,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'PaymentsController'
   }).
   state('root.home', {
-        url: '/home',
+        url: '/',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).

@@ -474,16 +474,6 @@ ul#guru-courses-user-profile {
 	display:block!important;
 }
 
-//**university specific
-
-#cta-modal-sidebar {
-	z-index:100;
-	width:calc(43%) !important;
-	left:-10%;
-	position:absolute;
-}
-//end university specific
-
 .hide-display {
 	display:none;
 }
@@ -581,4 +571,17 @@ ul#guru-courses-user-profile {
         animation-timing-function: ease-in-out;
       }
     }
+}
+
+
+.university-svg-icon {
+	opacity: 1 !important;
+	img {
+
+		z-index: 5;
+		top: 15px;
+		width:50px !important;
+		height:50px !important;
+		opacity:1 !important;
+	}
 }
