@@ -23,7 +23,7 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides", "Timeline", "Moodboards"];
-		$scope.projects = [{name:'University Specific + Home', deadline:"1/15/2015", urgent:true}, {name: 'Student Everything MVP'}, {name: 'Guru Everything MVP'}, {name: 'GPA App'}];
+		$scope.projects = [{name:'University Specific + Home', deadline:"1/15/2015", urgent:true, progress:null, action_items:[]}, {name: 'Student Everything MVP'}, {name: 'Guru Everything MVP'}, {name: 'GPA App'}];
 
 		var getProjectOneActionItems = function() {
 			var resultDict = {};
@@ -33,7 +33,7 @@ angular.module('uguru.util.controllers')
 			return resultDict;
 		}
 
-		var calculateProjectProgress = function(project) {
+		$scope.calculateProjectProgress = function(project) {
 			var progressDict = {alpha:0, beta:0, production:0, overall:0};
 			progressDict.total = project.alpha.length + project.beta.length + project.production.length;
 			for (var i = 0; i < project.alpha.length; i ++) {
@@ -54,18 +54,24 @@ angular.module('uguru.util.controllers')
 
 			}
 			for (var k = 0; k < project.production.length; k ++) {
-				var indexProductionItem = project.beta[k];
+				var indexProductionItem = project.production[k];
 				var indexProductionKey = Object.keys(project.production[k]);
 				if (indexProductionItem[indexProductionKey]) {
 					progressDict.production += 1;
 					progressDict.overall += 1;
 				}
 			}
+			$timeout(function() {
+				$scope.projects[0].progress = progressDict;
+				$timeout(function() {
+					$scope.$apply();
+				});
+			}, 100)
 			return progressDict;
 		}
 
 		$scope.projects[0].action_items = getProjectOneActionItems();
-		$scope.projects[0].progress = calculateProjectProgress($scope.projects[0].action_items);
+		$scope.projects[0].progress = $scope.calculateProjectProgress($scope.projects[0].action_items);
 
 		var initProjectCTAS = function() {
 
