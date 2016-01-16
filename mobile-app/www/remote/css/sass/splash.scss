@@ -1,1102 +1,11 @@
 @import 'mixin';
 
 /* ---------- SPLASH PAGES */
-#university-splash {
-	> header {
-		&:before {
-			@include opacity(.9);
-			content: "";
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: $slate;
-		}
-	}
-	// CATEGORIES
-	.splash-categories {
-		.splash-bar {
-			padding-top: 45px;
-			background: $slate;
-			ul {
-				max-width: 600px;
-				margin: 0 auto;
-				padding: 0;
-				li {
-					padding: 0;
-					a {
-						@include flex-wrap;
-						border: 0;
-						border-radius: 2px 2px 0 0;
-						span {
-							display: block;
-							width: 100%;
-							@media screen and (max-width: 768px) {
-								&:first-child {
-									display: none;
-								}
-							}
-						}
-						&:hover, &:focus {
-							background: rgba($smoke, .25);
-						}
-						&:active {
-							background: rgba($smoke, .5);
-						}
-						&.active {
-							background: $smoke;
-							color: $slate;
-							&:hover, &:focus {
-								background: $smoke;
-								color: $slate;
-							}
-							&:active {
-								background: $smoke;
-							}
-						}
-					}
-				}
-			}
-		}
-		.main {
-			@include transition(.15s ease-in-out);
-			@include flex-wrap;
-			-webkit-align-items: flex-start;
-			align-items: flex-start;
-			width: 100%;
-			background: $smoke;
-			&:not(.active) {
-				@include opacity(0);
-				display: none;
-			}
-			&.active {
-				@include opacity(1);
-				display: block;
-			}
-			&#splash-livemap {
-				height: 600px;
-			}
-			> div {
-				@include flex;
-				@include flex-wrap;
-				width: 100%;
-				> h1, > h2, > div > h1, > div > h2 {
-					width: 100%;
-					text-align: center;
-				}
-				> h1, > div > h1 {
-					font-size: 24px;
-					font-weight: 600;
-					span:first-letter {
-						text-transform: uppercase;
-					}
-				}
-				> h2, > div > h2 {
-					margin: 5px auto 7.5px;
-					font-size: 16px;
-					font-weight: 400;
-				}
-				> div {
-					position: relative;
-					width: 100%;
-					&:last-child {
-						-webkit-align-self: flex-end;
-						align-self: flex-end;
-					}
-				}
-			}
-			// CATEGORY CARDS
-			.category-card-list {
-				@include listless;
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				li {
-					width: calc(100% / 3);
-					padding: 0;
-					@media screen and (max-width: 768px) {
-						&.card-button {
-							width: 100%!important;
-						}
-					}
-					button {
-						max-width: 100%;
-					}
-					> div {
-						height: 200px;
-						background-position: center center;
-						background-size: cover;
-						overflow: hidden;
-						a, > span {
-							@include flex;
-							@include flex-wrap;
-							@include flex-center;
-							position: relative;
-							width: 100%;
-							height: 100%;
-							&:before {
-								@include transition(.15s ease-in-out);
-								@include opacity(.6);
-								content: "";
-								display: block;
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								height: 100%;
-								background: $slate;
-							}
-							span {
-								position: relative;
-								z-index: 5;
-							}
-							.card-icon {
-								display: block;
-								margin: 0 auto;
-								padding: 15px;
-								max-width: 120px;
-								max-height: 120px;
-								svg {
-									@include round;
-									display: block;
-									width: 100%;
-									height: auto;
-									padding: 5px;
-									background: $shamrock;
-									path, circle {
-										@include svg-stroke(white, 2);
-									}
-								}
-							}
-							.card-label {
-								display: none;
-								width: 100%;
-								font-weight: 900;
-								font-size: 24px;
-								text-align: center;
-							}
-							&.bg-delivery {
-								border-color: $auburn;
-								.card-icon svg {
-									background: $auburn;
-								}
-							}
-							&.bg-freelancing {
-								border-color: $orange;
-								.card-icon svg {
-									background: $orange;
-								}
-							}
-							&.bg-baking {
-								border-color: $gold;
-								.card-icon svg {
-									background: $gold;
-								}
-							}
-							&.bg-photography {
-								border-color: $moola;
-								.card-icon svg {
-									background: $moola;
-								}
-							}
-							&.bg-more {
-								border-color: $shamrock;
-								.card-label {
-									color: white!important;
-								}
-								.card-icon svg {
-									background: $shamrock;
-								}
-							}
-							&.bg-tech {
-								border-color: $azure;
-								.card-icon svg {
-									background: $azure;
-								}
-							}
-							&.bg-household {
-								border-color: $cobalt;
-								.card-icon svg {
-									background: $cobalt;
-								}
-							}
-							&.bg-athletic {
-								border-color: $eggplant;
-								.card-icon svg {
-									background: $eggplant;
-								}
-							}
-							&.bg-academic {
-								border-color: $cerise;
-								.card-icon svg {
-									background: $cerise;
-								}
-							}
-						}
-						a {
-							&:hover, &:focus {
-								&:before {
-									background: $shamrock;
-								}
-							}
-							&:active {
-								&:before {
-									@include opacity(.8);
-								}
-							}
-							&.bg-delivery {
-								&:hover, &:focus {
-									&:before {
-										background: $auburn;
-									}
-								}
-							}
-							&.bg-freelancing {
-								&:hover, &:focus {
-									&:before {
-										background: $orange;
-									}
-								}
-							}
-							&.bg-baking {
-								&:hover, &:focus {
-									&:before {
-										background: $gold;
-									}
-								}
-							}
-							&.bg-photography {
-								&:hover, &:focus {
-									&:before {
-										background: $moola;
-									}
-								}
-							}
-							&.bg-tech {
-								&:hover, &:focus {
-									&:before {
-										background: $azure;
-									}
-								}
-							}
-							&.bg-household {
-								&:hover, &:focus {
-									&:before {
-										background: $cobalt;
-									}
-								}
-							}
-							&.bg-athletic {
-								&:hover, &:focus {
-									&:before {
-										background: $eggplant;
-									}
-								}
-							}
-							&.bg-academic {
-								&:hover, &:focus {
-									&:before {
-										background: $cerise;
-									}
-								}
-							}
-						}
-						> span:not(.bg-more) {
-							&:before {
-								@include opacity(.2);
-							}
-							&.bg-delivery {
-								&:before {
-									background: $auburn;
-								}
-							}
-							&.bg-freelancing {
-								&:before {
-									background: $orange;
-								}
-							}
-							&.bg-baking {
-								&:before {
-									background: $gold;
-								}
-							}
-							&.bg-photography {
-								&:before {
-									background: $moola;
-								}
-							}
-							&.bg-tech {
-								&:before {
-									background: $azure;
-								}
-							}
-							&.bg-household {
-								&:before {
-									background: $cobalt;
-								}
-							}
-							&.bg-athletic {
-								&:before {
-									background: $eggplant;
-								}
-							}
-							&.bg-academic {
-								&:before {
-									background: $cerise;
-								}
-							}
-						}
-					}
-				}
-			}
-			// SUBCATEGORY CARDS
-			.subcategory-card-list {
-				@include flex;
-				@include flex-wrap;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: $smoke;
-				&.not-selected, &:not(.selected) {
-					@include opacity(0);
-					z-index: -99;
-				}
-				&.selected {
-					@include opacity(1);
-					z-index: 99;
-				}
-				.category-card-list {
-					margin: 0!important;
-					-webkit-align-items: flex-start;
-					align-items: flex-start;
-					-webkit-align-self: flex-start;
-					align-self: flex-start;
-					-webkit-justify-content: flex-start;
-					justify-content: flex-start;
-					height: calc(100% - 64px);
-					overflow: hidden;
-					li {
-						width: 50%;
-						height: 25%;
-						&:nth-child(9), &:nth-child(10) {
-							display: none;
-						}
-						> div {
-							background: none;
-							height: 100%;
-							.card-label {
-								display: block!important;
-								padding: 0;
-								color: white!important;
-								font-weight: 600;
-								font-size: 16px;
-							}
-							> span {
-								&:before {
-									display: none!important;
-								}
-								&:first-child {
-									height: calc(100% - 30px);
-								}
-								.card-icon {
-									padding: 0;
-									max-width: 36px;
-									max-height: 36px;
-									svg {
-										background: none!important;
-										padding: 0!important;
-										* {
-											stroke-width: 4px!important;
-										}
-									}
-								}
-								&.card-price {
-									height: 30px!important;
-									color: white;
-									font-size: 16px;
-									font-weight: 600;
-									&:before {
-										display: none!important;
-									}
-									&.bg-delivery {
-										background: $auburn;
-									}
-									&.bg-freelancing {
-										background: $orange;
-									}
-									&.bg-baking {
-										background: $gold;
-									}
-									&.bg-photography {
-										background: $moola;
-									}
-									&.bg-tech {
-										background: $azure;
-									}
-									&.bg-household {
-										background: $cobalt;
-									}
-									&.bg-athletic {
-										background: $eggplant;
-									}
-									&.bg-academic {
-										background: $cerise;
-									}
-								}
-							}
-						}
-					}
-				}
-				button {
-					-webkit-align-self: flex-end;
-					align-self: flex-end;
-					display: block;
-					width: 100%;
-					max-width: none;
-					color: white;
-					&:hover, &:focus {
-						background: lighten($slate, 15%);
-					}
-				}
-				&.sub-delivery {
-					background: mix($auburn, lighten($slate, 15%), 40%);
-					button {
-						background: $auburn;
-						&:active {
-							background: lighten($auburn, 15%);
-						}
-					}
-				}
-				&.sub-freelancing {
-					background: mix($orange, lighten($slate, 15%), 40%);
-					button {
-						background: $orange;
-						&:active {
-							background: lighten($orange, 15%);
-						}
-					}
-				}
-				&.sub-baking {
-					background: mix($gold, lighten($slate, 15%), 40%);
-					button {
-						background: $gold;
-						&:active {
-							background: lighten($gold, 5%);
-						}
-					}
-				}
-				&.sub-photography {
-					background: mix($moola, lighten($slate, 15%), 40%);
-					button {
-						background: $moola;
-						&:active {
-							background: lighten($moola, 15%);
-						}
-					}
-				}
-				&.sub-tech {
-					background: mix($azure, lighten($slate, 15%), 40%);
-					button {
-						background: $azure;
-						&:active {
-							background: lighten($azure, 15%);
-						}
-					}
-				}
-				&.sub-household {
-					background: mix($cobalt, lighten($slate, 15%), 40%);
-					button {
-						background: $cobalt;
-						&:active {
-							background: lighten($cobalt, 15%);
-						}
-					}
-				}
-				&.sub-athletic {
-					background: mix($eggplant, lighten($slate, 15%), 40%);
-					button {
-						background: $eggplant;
-						&:active {
-							background: lighten($eggplant, 15%);
-						}
-					}
-				}
-				&.sub-academic {
-					background: mix($cerise, lighten($slate, 15%), 40%);
-					button {
-						background: $cerise;
-						&:active {
-							background: lighten($cerise, 20%);
-						}
-					}
-				}
-			}
-			.pf-card-group-mobile {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				margin: 0 -7.5px;
-				li {
-					padding: 7.5px;
-				}
-			}
-			.pf-card-group {
-				display: none;
-				max-width: 960px;
-				margin: -30px auto 0;
-				padding: 15px;
-				> li {
-					padding: 15px;
-				}
-			}
-			&#splash-gurus {
-				> div {
-					display: block;
-				}
-			}
-			form {
-				display: none;
-				position: relative;
-				width: 100%;
-				.input-field {
-					width: 100%;
-					max-width: 800px;
-					margin: 0 auto;
-					.prefix {
-						top: 9px;
-					}
-					input {
-						padding-right: 48px;
-					}
-					label:not(.active) {
-						top: 0;
-					}
-					.desktop-input-close-icon {
-						margin: 0!important;
-					}
-				}
-				+ ul {
-					@include flex;
-					@include flex-wrap;
-					-webkit-align-self: flex-end;
-					align-self: flex-end;
-					-webkit-align-items: flex-start;
-					align-items: flex-start;
-					margin: -1px -14px -14px;
-					li {
-						width: calc(100%  / 3);
-						padding: 1px;
-						> a {
-							display: block;
-							background: white;
-							color: $slate;
-							padding: 15px;
-							border-bottom: 10px solid $slate;
-							border-radius: 2px;
-							&:hover, &:focus {
-								background: lighten($slate, 15%);
-								color: white;
-								border-color: white;
-							}
-							&:active, &.activated {
-								background: $slate;
-							}
-							span {
-								display: block;
-								font-weight: 600;
-								text-align: center;
-							}
-							.course-name {
-								font-size: 16px;
-								text-transform: uppercase;
-							}
-							.course-title {
-								display: none;
-								margin-top: 15px;
-								max-height: 56px;
-								overflow: hidden;
-								font-size: 24px;
-							}
-						}
-					}
-				}
-			}
-			// DESKTOP CATEGORY CARDS
-			@media screen and (min-width: 768px) {
-				> div {
-					display: block;
-					height: auto;
-					> h1, > div > h1 {
-						font-size: 28px;
-					}
-					> h2, > div > h2 {
-						margin: 5px auto 22.5px;
-						font-size: 20px;
-					}
-					> div {
-						-webkit-align-self: flex-start;
-						align-self: flex-start;
-					}
-				}
-				.category-card-list {
-					margin: -15px 0 0;
-					li {
-						padding: 15px;
-						&:empty {
-							display: none!important;
-							padding: 0!important;
-							margin: 0!important;
-						}
-						> div {
-							border-radius: 2px;
-							a, > span {
-								border-radius: 2px;
-								border-bottom: 10px solid white;
-								&:before {
-									border-radius: 2px;
-								}
-								.card-label {
-									display: block;
-								}
-							}
-						}
-					}
-				}
-				.subcategory-card-list {
-					display: block;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background: $smoke!important;
-					button {
-						max-width: calc(25% - 30px);
-					}
-					.category-card-list {
-						-webkit-align-self: auto;
-						align-self: auto;
-						-webkit-justify-content: center;
-						justify-content: center;
-						height: auto;
-						li {
-							width: 25%;
-							height: auto;
-							&:nth-child(9), &:nth-child(10) {
-								display: block;
-							}
-							> div {
-								background: $slate;
-								height: 200px;
-								> span {
-									border: 0;
-									&:first-child {
-										height: calc(100% - 50px);
-									}
-									.card-icon {
-										padding: 0;
-										max-width: 96px;
-										max-height: 96px;
-									}
-									&.card-price {
-										height: 50px!important;
-										font-size: 20px;
-									}
-								}
-								.card-label {
-									padding: 15px;
-									font-size: 20px;
-								}
-								&.bg-delivery {
-									background: mix($auburn, lighten($slate, 15%), 20%);
-								}
-								&.bg-freelancing {
-									background: mix($orange, lighten($slate, 15%), 20%);
-								}
-								&.bg-baking {
-									background: mix($gold, lighten($slate, 15%), 20%);
-								}
-								&.bg-photography {
-									background: mix($moola, lighten($slate, 15%), 20%);
-								}
-								&.bg-tech {
-									background: mix($azure, lighten($slate, 15%), 20%);
-								}
-								&.bg-household {
-									background: mix($cobalt, lighten($slate, 15%), 20%);
-								}
-								&.bg-athletic {
-									background: mix($eggplant, lighten($slate, 15%), 20%);
-								}
-								&.bg-academic {
-									background: mix($cerise, lighten($slate, 15%), 20%);
-								}
-								> span {
-									&:before {
-										display: block!important;
-									}
-								}
-								.card-label {
-									padding: 0;
-									font-size: 20px;
-								}
-							}
-						}
-					}
-					button {
-						-webkit-align-self: auto;
-						align-self: auto;
-						margin: 7.5px auto;
-						max-width: 300px;
-					}
-				}
-				.pf-card-group-mobile {
-					display: none;
-				}
-				.pf-card-group {
-					@include flex;
-					@include flex-center;
-					margin: 0 auto;
-				}
-				// COURSES
-				&#splash-courses {
-					> div {
-						> div:first-child {
-							display: none;
-						}
-					}
-				}
-				form {
-					display: block;
-					+ ul {
-						-webkit-align-self: flex-start;
-						align-self: flex-start;
-						@include flex-center;
-						margin: 0 -7.5px;
-						li {
-							padding: 7.5px;
-							width: 25%;
-							> a {
-								height: 150px;
-								.course-title {
-									display: block;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		> footer {
-			.border {
-				background: $charcoal!important;
-				&:before {
-					border-top-color: $smoke!important;
-				}
-			}
-		}
-	}
-	// MAP
-	#live-map {
-		> div {
-			height: calc(100% - 100px)!important;
-			@media screen and (min-width: 768px) {
-				height: 75%!important;
-			}
-		}
-	}
-	// POSTITS
-	.splash-postit {
-		.main {
-			ul {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				width: 100%;
-				> .square {
-					display: none;
-				}
-				li {
-					width: 100%;
-					padding: 15px;
-				}
-			}
-			button {
-				margin: 30px 0;
-				max-width: calc(100% - 30px);
-			}
-			@media screen and (max-width: 768px) {
-				button {
-					max-width: 100%;
-				}
-				ul {
-					position: relative;
-					> .square {
-						display: block;
-						width: 100%;
-						fill: none;
-					}
-					li {
-						position: absolute;
-						top: 0;
-						left: 0;
-						&:nth-child(1), &:nth-child(4) {
-							@include rotate(10);
-						}
-						&:nth-child(2), &:nth-child(5) {
-							@include rotate(-7);
-						}
-						&:nth-child(3), &:nth-child(6) {
-							@include rotate(0);
-						}
-					}
-				}
-			}
-			@media screen and (min-width: 768px) {
-				ul {
-					li {
-						width: calc(100% / 3);
-					}
-				}
-				button {
-					max-width: calc(100% / 3 - 30px);
-				}
-			}
-		}
-		> footer {
-			.border {
-				background: $slate!important;
-				&:before {
-					border-top-color: $smoke!important;
-				}
-			}
-		}
-		.peel {
-			.postit {
-				width: 100%;
-				height: 100%;
-			}
-			&.active {
-				box-shadow: 0 0 20px rgba($slate,.2)!important;
-			}
-		}
-		.peel-top, .peel-back, .peel-bottom {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-		.peel-back, .peel-bottom, .peel-back-shadow {
-			background: $slate;
-		}
-		.peel-ready {
-			@include opacity(1);
-		}
-		.peel-bottom {
-			@include opacity(.2);
-		}
-		.peel-svg-clip-element {
-			@include opacity(0);
-			position: absolute;
-			top: -10000px;
-			left: -10000px;
-			width: 1px;
-			height: 1px;
-		}
-		.peel-layer {
-			@include transform-origin(top left);
-			position: absolute;
-			z-index: 1;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			user-select: none;
-		}
-		.peel, .postit {
-		  	position: relative;
-		    overflow: hidden;
-			.square {
-				display: block;
-				width: 100%;
-				height: auto;
-				fill: none;
-			}
-		}
-		.postit {
-			position: relative;
-			margin: auto;
-			> div {
-				@include flex;
-				@include flex-center;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				// height: calc(100% - 50px);
-				height: 100%;
-				overflow: hidden;
-				padding: 15px;
-				background: white;
-				text-align: center;
-				span {
-					@include round;
-					display: block;
-					position: relative;
-					z-index: 9;
-					margin: 0 auto 15px;
-					width: 128px;
-					height: 128px;
-					svg {
-						display: block;
-						width: 100%;
-						height: 100%;
-					}
-				}
-				h1 {
-					font-size: 24px;
-					font-weight: 600;
-				}
-				p {
-					margin-top: 5px;
-					font-size: 18px;
-					font-weight: 400;
-				}
-				@media screen and (min-width: 768px) {
-					h1 {
-						font-size: 32px;
-					}
-					p {
-						font-size: 22px;
-					}
-				}
-			}
-			> div, > span {
-				&:before {
-					@include opacity(.2);
-					content: "";
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background: $slate;
-				}
-			}
-			// > span {
-			// 	display: block;
-			// 	position: absolute;
-			// 	bottom: 0;
-			// 	left: 0;
-			// 	width: calc(100% - 50px);
-			// 	height: 50px;
-			// 	background: white;
-			// 	&:after {
-			// 		content: "";
-			// 		display: block;
-			// 		position: absolute;
-			// 		bottom: 0;
-			// 		right: -50px;
-			// 		width: 0;
-			// 		height: 0;
-			// 		border: 25px solid transparent;
-			// 		border-top-color: $shamrock;
-			// 		border-left-color: $shamrock;
-			// 	}
-			// }
-		}
-	}
-	// BECOME A GURU
-	#become-guru {
-		> header {
-			background: $charcoal!important;
-			h1 {
-				color: white!important;
-			}
-		}
-		.postit {
-			> div, > span {
-				background: $slate;
-				color: white;
-			}
-			> span:after {
-				border-top-color: white;
-				border-left-color: white;
-			}
-		}
-		> footer {
-			.border {
-				background: $shamrock!important;
-				&:before {
-					border-top-color: $charcoal!important;
-				}
-			}
-		}
-	}
-	#splash-start {
-		background: $shamrock;
-		text-align: center;
-		h1, h2 {
-			padding: 0 15px;
-			font-weight: 600;
-		}
-		h1 {
-			font-size: 28px;
-		}
-		h2 {
-			font-size: 20px;
-		}
-		@media screen and (min-width: 768px) {
-			h1 {
-				font-size: 36px;
-			}
-			h2 {
-				font-size: 24px;
-			}
-		}
-		ul {
-			@include listless;
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			max-width: 900px;
-			margin: 0 auto;
-			padding: 15px;
-			li {
-				width: 100%;
-				padding: 15px;
-				@media screen and (min-width: 768px) {
-					width: 50%;
-				}
-				button {
-					display: block;
-					width: 100%;
-					max-width: none;
-					background: none;
-					font-size: 24px;
-					letter-spacing: 0;
-					text-transform: none;
-					&:hover, &:focus {
-						background: white;
-						color: $shamrock;
-					}
-				}
-			}
-		}
-	}
-}
 .splash-landing {
 	background: white;
 	overflow-x: hidden;
+	
+	// SIDEBAR
 	.splash-sidebar {
 		position: absolute;
 		top: 0;
@@ -1246,6 +155,8 @@
 			}
 		}
 	}
+	
+	// HEADERS
 	.splash-logo {
 		@include center-y;
 		display: block;
@@ -1306,11 +217,22 @@
 		@media screen and (max-width: 680px) {
 			padding: 0;
 		}
+		&:before {
+			@include opacity(.9);
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: $slate;
+		}
 		a:not(.header-close) {
 			display: none;
 			padding: 15px;
 			font-size: 20px;
-			font-weight: 700;
+			font-weight: 600;
 			span {
 				display: none;
 			}
@@ -1327,7 +249,7 @@
 			}
 			&:hover, &:focus {
 				background: white;
-				color: $cerise;
+				color: $lake;
 			}
 			&.splash-burger {
 				@include center-x;
@@ -1453,11 +375,15 @@
 		@include animation-iteration-count(1);
 		margin-top: 94px;
 	}
+		
+	// CONTENT SECTIONS
 	> section {
 		position: relative;
 		width: 100%;
 		height: auto;
 		background-color: $smoke;
+		
+		// SECTION STYLES
 		> header {
 			@include flex;
 			@include flex-center;
@@ -1637,7 +563,9 @@
 			@include flex;
 			@include flex-center;
 			height: 100%;
-			background: $smoke;
+			background-color: $smoke;
+			background-position: center;
+			background-size: cover;
 			text-align: center;
 			&.active {
 				> div {
@@ -1792,6 +720,1088 @@
 			}
 		}
 		
+		// CATEGORIES
+		&.splash-categories {
+			.splash-bar {
+				padding-top: 45px;
+				background: $slate;
+				ul {
+					max-width: 600px;
+					margin: 0 auto;
+					padding: 0;
+					li {
+						padding: 0;
+						a {
+							@include flex-wrap;
+							border: 0;
+							border-radius: 2px 2px 0 0;
+							span {
+								display: block;
+								width: 100%;
+								@media screen and (max-width: 768px) {
+									&:first-child {
+										display: none;
+									}
+								}
+							}
+							&:hover, &:focus {
+								background: rgba($smoke, .25);
+							}
+							&:active {
+								background: rgba($smoke, .5);
+							}
+							&.active {
+								background: $smoke;
+								color: $slate;
+								&:hover, &:focus {
+									background: $smoke;
+									color: $slate;
+								}
+								&:active {
+									background: $smoke;
+								}
+							}
+						}
+					}
+				}
+			}
+			.main {
+				@include transition(.15s ease-in-out);
+				@include flex-wrap;
+				-webkit-align-items: flex-start;
+				align-items: flex-start;
+				width: 100%;
+				background: $smoke;
+				&:not(.active) {
+					@include opacity(0);
+					display: none;
+				}
+				&.active {
+					@include opacity(1);
+					display: block;
+				}
+				&#splash-livemap {
+					height: 600px;
+				}
+				> div {
+					@include flex;
+					@include flex-wrap;
+					width: 100%;
+					> h1, > h2, > div > h1, > div > h2 {
+						width: 100%;
+						text-align: center;
+					}
+					> h1, > div > h1 {
+						font-size: 24px;
+						font-weight: 600;
+						span:first-letter {
+							text-transform: uppercase;
+						}
+					}
+					> h2, > div > h2 {
+						margin: 5px auto 7.5px;
+						font-size: 16px;
+						font-weight: 400;
+					}
+					> div {
+						position: relative;
+						width: 100%;
+						&:last-child {
+							-webkit-align-self: flex-end;
+							align-self: flex-end;
+						}
+					}
+				}
+				// CATEGORY CARDS
+				.category-card-list {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					li {
+						width: calc(100% / 3);
+						padding: 0;
+						@media screen and (max-width: 768px) {
+							&.card-button {
+								width: 100%!important;
+							}
+						}
+						button {
+							max-width: 100%;
+						}
+						> div {
+							height: 200px;
+							background-position: center center;
+							background-size: cover;
+							overflow: hidden;
+							a, > span {
+								@include flex;
+								@include flex-wrap;
+								@include flex-center;
+								position: relative;
+								width: 100%;
+								height: 100%;
+								&:before {
+									@include transition(.15s ease-in-out);
+									@include opacity(.6);
+									content: "";
+									display: block;
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									background: $slate;
+								}
+								span {
+									position: relative;
+									z-index: 5;
+								}
+								.card-icon {
+									display: block;
+									margin: 0 auto;
+									padding: 15px;
+									max-width: 120px;
+									max-height: 120px;
+									svg {
+										@include round;
+										display: block;
+										width: 100%;
+										height: auto;
+										padding: 5px;
+										background: $shamrock;
+										path, circle {
+											@include svg-stroke(white, 2);
+										}
+									}
+								}
+								.card-label {
+									display: none;
+									width: 100%;
+									font-weight: 900;
+									font-size: 24px;
+									text-align: center;
+								}
+								&.bg-delivery {
+									border-color: $auburn;
+									.card-icon svg {
+										background: $auburn;
+									}
+								}
+								&.bg-freelancing {
+									border-color: $orange;
+									.card-icon svg {
+										background: $orange;
+									}
+								}
+								&.bg-baking {
+									border-color: $gold;
+									.card-icon svg {
+										background: $gold;
+									}
+								}
+								&.bg-photography {
+									border-color: $moola;
+									.card-icon svg {
+										background: $moola;
+									}
+								}
+								&.bg-more {
+									border-color: $shamrock;
+									.card-label {
+										color: white!important;
+									}
+									.card-icon svg {
+										background: $shamrock;
+									}
+								}
+								&.bg-tech {
+									border-color: $azure;
+									.card-icon svg {
+										background: $azure;
+									}
+								}
+								&.bg-household {
+									border-color: $cobalt;
+									.card-icon svg {
+										background: $cobalt;
+									}
+								}
+								&.bg-athletic {
+									border-color: $eggplant;
+									.card-icon svg {
+										background: $eggplant;
+									}
+								}
+								&.bg-academic {
+									border-color: $cerise;
+									.card-icon svg {
+										background: $cerise;
+									}
+								}
+							}
+							a {
+								&:hover, &:focus {
+									&:before {
+										background: $shamrock;
+									}
+								}
+								&:active {
+									&:before {
+										@include opacity(.8);
+									}
+								}
+								&.bg-delivery {
+									&:hover, &:focus {
+										&:before {
+											background: $auburn;
+										}
+									}
+								}
+								&.bg-freelancing {
+									&:hover, &:focus {
+										&:before {
+											background: $orange;
+										}
+									}
+								}
+								&.bg-baking {
+									&:hover, &:focus {
+										&:before {
+											background: $gold;
+										}
+									}
+								}
+								&.bg-photography {
+									&:hover, &:focus {
+										&:before {
+											background: $moola;
+										}
+									}
+								}
+								&.bg-tech {
+									&:hover, &:focus {
+										&:before {
+											background: $azure;
+										}
+									}
+								}
+								&.bg-household {
+									&:hover, &:focus {
+										&:before {
+											background: $cobalt;
+										}
+									}
+								}
+								&.bg-athletic {
+									&:hover, &:focus {
+										&:before {
+											background: $eggplant;
+										}
+									}
+								}
+								&.bg-academic {
+									&:hover, &:focus {
+										&:before {
+											background: $cerise;
+										}
+									}
+								}
+							}
+							> span:not(.bg-more) {
+								&:before {
+									@include opacity(.2);
+								}
+								&.bg-delivery {
+									&:before {
+										background: $auburn;
+									}
+								}
+								&.bg-freelancing {
+									&:before {
+										background: $orange;
+									}
+								}
+								&.bg-baking {
+									&:before {
+										background: $gold;
+									}
+								}
+								&.bg-photography {
+									&:before {
+										background: $moola;
+									}
+								}
+								&.bg-tech {
+									&:before {
+										background: $azure;
+									}
+								}
+								&.bg-household {
+									&:before {
+										background: $cobalt;
+									}
+								}
+								&.bg-athletic {
+									&:before {
+										background: $eggplant;
+									}
+								}
+								&.bg-academic {
+									&:before {
+										background: $cerise;
+									}
+								}
+							}
+						}
+					}
+				}
+				// SUBCATEGORY CARDS
+				.subcategory-card-list {
+					@include flex;
+					@include flex-wrap;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: $smoke;
+					&.not-selected, &:not(.selected) {
+						@include opacity(0);
+						z-index: -99;
+					}
+					&.selected {
+						@include opacity(1);
+						z-index: 99;
+					}
+					.category-card-list {
+						margin: 0!important;
+						-webkit-align-items: flex-start;
+						align-items: flex-start;
+						-webkit-align-self: flex-start;
+						align-self: flex-start;
+						-webkit-justify-content: flex-start;
+						justify-content: flex-start;
+						height: calc(100% - 64px);
+						overflow: hidden;
+						li {
+							width: 50%;
+							height: 25%;
+							&:nth-child(9), &:nth-child(10) {
+								display: none;
+							}
+							> div {
+								background: none;
+								height: 100%;
+								.card-label {
+									display: block!important;
+									padding: 0;
+									color: white!important;
+									font-weight: 600;
+									font-size: 16px;
+								}
+								> span {
+									&:before {
+										display: none!important;
+									}
+									&:first-child {
+										height: calc(100% - 30px);
+									}
+									.card-icon {
+										padding: 0;
+										max-width: 36px;
+										max-height: 36px;
+										svg {
+											background: none!important;
+											padding: 0!important;
+											* {
+												stroke-width: 4px!important;
+											}
+										}
+									}
+									&.card-price {
+										height: 30px!important;
+										color: white;
+										font-size: 16px;
+										font-weight: 600;
+										&:before {
+											display: none!important;
+										}
+										&.bg-delivery {
+											background: $auburn;
+										}
+										&.bg-freelancing {
+											background: $orange;
+										}
+										&.bg-baking {
+											background: $gold;
+										}
+										&.bg-photography {
+											background: $moola;
+										}
+										&.bg-tech {
+											background: $azure;
+										}
+										&.bg-household {
+											background: $cobalt;
+										}
+										&.bg-athletic {
+											background: $eggplant;
+										}
+										&.bg-academic {
+											background: $cerise;
+										}
+									}
+								}
+							}
+						}
+					}
+					button {
+						-webkit-align-self: flex-end;
+						align-self: flex-end;
+						display: block;
+						width: 100%;
+						max-width: none;
+						color: white;
+						&:hover, &:focus {
+							background: lighten($slate, 15%);
+						}
+					}
+					&.sub-delivery {
+						background: mix($auburn, lighten($slate, 15%), 40%);
+						button {
+							background: $auburn;
+							&:active {
+								background: lighten($auburn, 15%);
+							}
+						}
+					}
+					&.sub-freelancing {
+						background: mix($orange, lighten($slate, 15%), 40%);
+						button {
+							background: $orange;
+							&:active {
+								background: lighten($orange, 15%);
+							}
+						}
+					}
+					&.sub-baking {
+						background: mix($gold, lighten($slate, 15%), 40%);
+						button {
+							background: $gold;
+							&:active {
+								background: lighten($gold, 5%);
+							}
+						}
+					}
+					&.sub-photography {
+						background: mix($moola, lighten($slate, 15%), 40%);
+						button {
+							background: $moola;
+							&:active {
+								background: lighten($moola, 15%);
+							}
+						}
+					}
+					&.sub-tech {
+						background: mix($azure, lighten($slate, 15%), 40%);
+						button {
+							background: $azure;
+							&:active {
+								background: lighten($azure, 15%);
+							}
+						}
+					}
+					&.sub-household {
+						background: mix($cobalt, lighten($slate, 15%), 40%);
+						button {
+							background: $cobalt;
+							&:active {
+								background: lighten($cobalt, 15%);
+							}
+						}
+					}
+					&.sub-athletic {
+						background: mix($eggplant, lighten($slate, 15%), 40%);
+						button {
+							background: $eggplant;
+							&:active {
+								background: lighten($eggplant, 15%);
+							}
+						}
+					}
+					&.sub-academic {
+						background: mix($cerise, lighten($slate, 15%), 40%);
+						button {
+							background: $cerise;
+							&:active {
+								background: lighten($cerise, 20%);
+							}
+						}
+					}
+				}
+				.pf-card-group-mobile {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					margin: 0 -7.5px;
+					li {
+						padding: 7.5px;
+					}
+				}
+				.pf-card-group {
+					display: none;
+					max-width: 960px;
+					margin: -30px auto 0;
+					padding: 15px;
+					> li {
+						padding: 15px;
+					}
+				}
+				&#splash-gurus {
+					> div {
+						display: block;
+					}
+				}
+				form {
+					display: none;
+					position: relative;
+					width: 100%;
+					.input-field {
+						width: 100%;
+						max-width: 800px;
+						margin: 0 auto;
+						.prefix {
+							top: 9px;
+						}
+						input {
+							padding-right: 48px;
+						}
+						label:not(.active) {
+							top: 0;
+						}
+						.desktop-input-close-icon {
+							margin: 0!important;
+						}
+					}
+					+ ul {
+						@include flex;
+						@include flex-wrap;
+						-webkit-align-self: flex-end;
+						align-self: flex-end;
+						-webkit-align-items: flex-start;
+						align-items: flex-start;
+						margin: -1px -14px -14px;
+						li {
+							width: calc(100%  / 3);
+							padding: 1px;
+							> a {
+								display: block;
+								background: white;
+								color: $slate;
+								padding: 15px;
+								border-bottom: 10px solid $slate;
+								border-radius: 2px;
+								&:hover, &:focus {
+									background: lighten($slate, 15%);
+									color: white;
+									border-color: white;
+								}
+								&:active, &.activated {
+									background: $slate;
+								}
+								span {
+									display: block;
+									font-weight: 600;
+									text-align: center;
+								}
+								.course-name {
+									font-size: 16px;
+									text-transform: uppercase;
+								}
+								.course-title {
+									display: none;
+									margin-top: 15px;
+									max-height: 56px;
+									overflow: hidden;
+									font-size: 24px;
+								}
+							}
+						}
+					}
+				}
+				// DESKTOP CATEGORY CARDS
+				@media screen and (min-width: 768px) {
+					> div {
+						display: block;
+						height: auto;
+						> h1, > div > h1 {
+							font-size: 28px;
+						}
+						> h2, > div > h2 {
+							margin: 5px auto 22.5px;
+							font-size: 20px;
+						}
+						> div {
+							-webkit-align-self: flex-start;
+							align-self: flex-start;
+						}
+					}
+					.category-card-list {
+						margin: -15px 0 0;
+						li {
+							padding: 15px;
+							&:empty {
+								display: none!important;
+								padding: 0!important;
+								margin: 0!important;
+							}
+							> div {
+								border-radius: 2px;
+								a, > span {
+									border-radius: 2px;
+									border-bottom: 10px solid white;
+									&:before {
+										border-radius: 2px;
+									}
+									.card-label {
+										display: block;
+									}
+								}
+							}
+						}
+					}
+					.subcategory-card-list {
+						display: block;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: $smoke!important;
+						button {
+							max-width: calc(25% - 30px);
+						}
+						.category-card-list {
+							-webkit-align-self: auto;
+							align-self: auto;
+							-webkit-justify-content: center;
+							justify-content: center;
+							height: auto;
+							li {
+								width: 25%;
+								height: auto;
+								&:nth-child(9), &:nth-child(10) {
+									display: block;
+								}
+								> div {
+									background: $slate;
+									height: 200px;
+									> span {
+										border: 0;
+										&:first-child {
+											height: calc(100% - 50px);
+										}
+										.card-icon {
+											padding: 0;
+											max-width: 96px;
+											max-height: 96px;
+										}
+										&.card-price {
+											height: 50px!important;
+											font-size: 20px;
+										}
+									}
+									.card-label {
+										padding: 15px;
+										font-size: 20px;
+									}
+									&.bg-delivery {
+										background: mix($auburn, lighten($slate, 15%), 20%);
+									}
+									&.bg-freelancing {
+										background: mix($orange, lighten($slate, 15%), 20%);
+									}
+									&.bg-baking {
+										background: mix($gold, lighten($slate, 15%), 20%);
+									}
+									&.bg-photography {
+										background: mix($moola, lighten($slate, 15%), 20%);
+									}
+									&.bg-tech {
+										background: mix($azure, lighten($slate, 15%), 20%);
+									}
+									&.bg-household {
+										background: mix($cobalt, lighten($slate, 15%), 20%);
+									}
+									&.bg-athletic {
+										background: mix($eggplant, lighten($slate, 15%), 20%);
+									}
+									&.bg-academic {
+										background: mix($cerise, lighten($slate, 15%), 20%);
+									}
+									> span {
+										&:before {
+											display: block!important;
+										}
+									}
+									.card-label {
+										padding: 0;
+										font-size: 20px;
+									}
+								}
+							}
+						}
+						button {
+							-webkit-align-self: auto;
+							align-self: auto;
+							margin: 7.5px auto;
+							max-width: 300px;
+						}
+					}
+					.pf-card-group-mobile {
+						display: none;
+					}
+					.pf-card-group {
+						@include flex;
+						@include flex-center;
+						margin: 0 auto;
+					}
+					// COURSES
+					&#splash-courses {
+						> div {
+							> div:first-child {
+								display: none;
+							}
+						}
+					}
+					form {
+						display: block;
+						+ ul {
+							-webkit-align-self: flex-start;
+							align-self: flex-start;
+							@include flex-center;
+							margin: 0 -7.5px;
+							li {
+								padding: 7.5px;
+								width: 25%;
+								> a {
+									height: 150px;
+									.course-title {
+										display: block;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			> footer {
+				.border {
+					background: $charcoal!important;
+					&:before {
+						border-top-color: $smoke!important;
+					}
+				}
+			}
+		}
+		
+		// MAP
+		&#live-map {
+			> div {
+				height: calc(100% - 100px)!important;
+				@media screen and (min-width: 768px) {
+					height: 75%!important;
+				}
+			}
+		}
+		
+		// POSTITS
+		&.splash-postit {
+			.main {
+				ul {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					width: 100%;
+					> .square {
+						display: none;
+					}
+					li {
+						width: 100%;
+						padding: 15px;
+					}
+				}
+				button {
+					margin: 30px 0;
+					max-width: calc(100% - 30px);
+				}
+				@media screen and (max-width: 768px) {
+					button {
+						max-width: 100%;
+					}
+					ul {
+						position: relative;
+						> .square {
+							display: block;
+							width: 100%;
+							fill: none;
+						}
+						li {
+							position: absolute;
+							top: 0;
+							left: 0;
+							&:nth-child(1), &:nth-child(4) {
+								@include rotate(10);
+							}
+							&:nth-child(2), &:nth-child(5) {
+								@include rotate(-7);
+							}
+							&:nth-child(3), &:nth-child(6) {
+								@include rotate(0);
+							}
+						}
+					}
+				}
+				@media screen and (min-width: 768px) {
+					ul {
+						li {
+							width: calc(100% / 3);
+						}
+					}
+					button {
+						max-width: calc(100% / 3 - 30px);
+					}
+				}
+			}
+			> footer {
+				.border {
+					background: $slate!important;
+					&:before {
+						border-top-color: $smoke!important;
+					}
+				}
+			}
+			.peel {
+				.postit {
+					width: 100%;
+					height: 100%;
+				}
+				&.active {
+					box-shadow: 0 0 20px rgba($slate,.2)!important;
+				}
+			}
+			.peel-top, .peel-back, .peel-bottom {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.peel-back, .peel-bottom, .peel-back-shadow {
+				background: $slate;
+			}
+			.peel-ready {
+				@include opacity(1);
+			}
+			.peel-bottom {
+				@include opacity(.2);
+			}
+			.peel-svg-clip-element {
+				@include opacity(0);
+				position: absolute;
+				top: -10000px;
+				left: -10000px;
+				width: 1px;
+				height: 1px;
+			}
+			.peel-layer {
+				@include transform-origin(top left);
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+			}
+			.peel, .postit {
+			  	position: relative;
+			    overflow: hidden;
+				.square {
+					display: block;
+					width: 100%;
+					height: auto;
+					fill: none;
+				}
+			}
+			.postit {
+				position: relative;
+				margin: auto;
+				> div {
+					@include flex;
+					@include flex-center;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					// height: calc(100% - 50px);
+					height: 100%;
+					overflow: hidden;
+					padding: 15px;
+					background: white;
+					text-align: center;
+					span {
+						@include round;
+						display: block;
+						position: relative;
+						z-index: 9;
+						margin: 0 auto 15px;
+						width: 128px;
+						height: 128px;
+						svg {
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+					}
+					h1 {
+						font-size: 24px;
+						font-weight: 600;
+					}
+					p {
+						margin-top: 5px;
+						font-size: 18px;
+						font-weight: 400;
+					}
+					@media screen and (min-width: 768px) {
+						h1 {
+							font-size: 32px;
+						}
+						p {
+							font-size: 22px;
+						}
+					}
+				}
+				> div, > span {
+					&:before {
+						@include opacity(.2);
+						content: "";
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: $slate;
+					}
+				}
+				// > span {
+				// 	display: block;
+				// 	position: absolute;
+				// 	bottom: 0;
+				// 	left: 0;
+				// 	width: calc(100% - 50px);
+				// 	height: 50px;
+				// 	background: white;
+				// 	&:after {
+				// 		content: "";
+				// 		display: block;
+				// 		position: absolute;
+				// 		bottom: 0;
+				// 		right: -50px;
+				// 		width: 0;
+				// 		height: 0;
+				// 		border: 25px solid transparent;
+				// 		border-top-color: $shamrock;
+				// 		border-left-color: $shamrock;
+				// 	}
+				// }
+			}
+		}
+		
+		// BECOME A GURU
+		&#become-guru {
+			> header {
+				background: $charcoal!important;
+				h1 {
+					color: white!important;
+				}
+			}
+			.postit {
+				> div, > span {
+					background: $slate;
+					color: white;
+				}
+				> span:after {
+					border-top-color: white;
+					border-left-color: white;
+				}
+			}
+			> footer {
+				.border {
+					background: $shamrock!important;
+					&:before {
+						border-top-color: $charcoal!important;
+					}
+				}
+			}
+		}
+		&#splash-start {
+			background: $shamrock;
+			text-align: center;
+			h1, h2 {
+				padding: 0 15px;
+				font-weight: 600;
+			}
+			h1 {
+				font-size: 28px;
+			}
+			h2 {
+				font-size: 20px;
+			}
+			@media screen and (min-width: 768px) {
+				h1 {
+					font-size: 36px;
+				}
+				h2 {
+					font-size: 24px;
+				}
+			}
+			ul {
+				@include listless;
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				max-width: 900px;
+				margin: 0 auto;
+				padding: 15px;
+				li {
+					width: 100%;
+					padding: 15px;
+					@media screen and (min-width: 768px) {
+						width: 50%;
+					}
+					button {
+						display: block;
+						width: 100%;
+						max-width: none;
+						background: none;
+						font-size: 24px;
+						letter-spacing: 0;
+						text-transform: none;
+						&:hover, &:focus {
+							background: white;
+							color: $shamrock;
+						}
+					}
+				}
+			}
+		}
+		
 		// ESSAY PRICING
 		&.essay-pricing {
 			.main {
@@ -1845,8 +1855,9 @@
 				}
 			}
 		}
-		&#essay-how-it-works,
-		&#essay-faq {
+		
+		// ESSAY FAQ
+		&#essay-how-it-works, &#essay-faq {
 			.main {
 				> h1 {
 					font-size: 28px;
@@ -1854,8 +1865,6 @@
 				}
 			}
 		}
-		
-		// ESSAY FAQ
 		&#essay-faq {
 			.main {
 				> p {
@@ -2006,6 +2015,115 @@
 							margin-top: 5px;
 							font-size: 18px;
 							font-weight: 400;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	&#home-splash {
+		.splash-logo {
+			display: block!important;
+			margin: 0!important;
+			height: 100%;
+    		padding: 0 15px;
+			svg {
+				height: 100%;
+				padding: 10px 0 5px;
+			}
+		}
+		> .splash-toast {
+			a.header-close {
+				svg {
+					path {
+						stroke: $slate!important;
+					}
+				}
+			}
+		}
+		> .splash-header {
+			&:before {
+				@include opacity(.75);
+				background: $shamrock;
+			}
+			.splash-burger {
+				left: 162px!important;
+			}
+		}
+		@media screen and (min-width: 768px) {
+			.splash-logo {
+				height: 72px;
+				svg {
+					height: 72px;
+					padding: 20px 0 15px;
+				}
+			}
+		}
+		> section {
+			&.splash-hero {
+				h1 {
+					&:before {
+						@include opacity(.75);
+				        background-color: $shamrock;
+				    }
+					.typed-writer-container {
+						border-color: white;
+					}
+				}
+				> footer {
+					svg {
+						stop {
+							stop-color: $shamrock;
+						}
+					}
+					.border {
+						background: $smoke!important;
+						&:before {
+							border-top-color: $shamrock;
+						}
+					}
+				}
+			}
+			&.splash-school-search {
+				> footer {
+					.border {
+						background: white!important;
+						&:before {
+							border-top-color: $smoke;
+						}
+					}
+				}
+			}
+			&#how-it-works {
+				background: white!important;
+				header {
+					background: white!important;
+				}
+				.postit {
+					> div {
+						background: white;
+						color: lighten($slate, 15%);
+						&:before {
+							background: $shamrock;
+						}
+					}
+				}
+				button {
+					background: $shamrock!important;
+					color: white!important;
+					&:hover, &:focus {
+						background: lighten($slate, 15%)!important;
+					}
+					&:active, &.activated {
+						background: $slate!important;
+					}
+				}
+				> footer {
+					.border {
+						background: $shamrock!important;
+						&:before {
+							border-top-color: white!important;
 						}
 					}
 				}
