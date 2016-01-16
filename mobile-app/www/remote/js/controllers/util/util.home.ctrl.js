@@ -35,7 +35,7 @@ angular.module('uguru.util.controllers')
       var scrollDuration= 500;
       var shouldShowBecomeGuruHeader = true;
       var shouldRenderMap = true;
-      var mainPageContainer = document.querySelector('#university-splash')
+      var mainPageContainer = document.querySelector('#home-splash')
       $ionicSideMenuDelegate.canDragContent(false);
 
       $scope.highlighted_item;
@@ -191,9 +191,21 @@ angular.module('uguru.util.controllers')
 
       }
 
+      var initSupportBox = function() {
+        $timeout(function() {
+          var intercomContainer = document.querySelector('#intercom-container');
+          console.log('attempting intercom container');
+          if (intercomContainer) {
+            Intercom('hide');
+            console.log('initiating intercom container');
+            intercomContainer.style.cssText += ' z-index:1000 !important; visibility:hidden;';
 
+          }
+        }, 15000)
+      }
 
       var generatePageLinks = function() {
+        initSupportBox();
         var howItWorksFunc = function() {
           $scope.scrollToSection("#how-it-works")
         }
@@ -203,8 +215,37 @@ angular.module('uguru.util.controllers')
         var becomeGuruFunc = function() {
           $scope.scrollToSection("#become-guru");
         }
+        var topPageFunc = function() {
+          $scope.scrollToSection("#home-splash");
+        }
+        var triggerTeamCTA = function() {
+          LoadingService.showMsg('Coming Soon', 3000);
+        }
+        var triggerPricingCTA = function() {
+          LoadingService.showMsg('Coming Soon', 3000);
+        }
+        var triggerApplyCTA = function() {
+          LoadingService.showMsg('Coming Soon', 3000);
+        }
+
+        var triggerSupportBox = function() {
+          Intercom('boot', {
+                app_id: "yoz6vu28",
+                widget: {"activator": "#Intercom"}
+          })
+          var intercomContainer = document.querySelector('#intercom-container');
+          intercomContainer.style.cssText += ' z-index:1000 !important;';
+          Intercom('show');
+          intercomContainer.style.visibility = "visible";
+          Intercom('onHide', function() {
+            intercomContainer.style.visibility = "hidden";
+          })
+        }
+        var triggerFAQCTA = function() {
+          LoadingService.showMsg('Coming Soon', 3000);
+        }
         return [
-          {name:"Home", href:"/"},
+          {name:"Home", ngClickFunc:topPageFunc},
           {name:null, href:"#",
             sublinks:[
                 {name:'How it works', ngClickFunc:howItWorksFunc},
@@ -212,12 +253,12 @@ angular.module('uguru.util.controllers')
                 {name:"Become a Guru", ngClickFunc:becomeGuruFunc}
               ]
           },
-          {name:"Meet the Team", href:"#/team"},
-          {name:"Timeline", href:"#/timeline"},
-          {name:"FAQ", href:"#/faq"},
-          {name:"Pricing", href:"#/pricing"},
-          {name: "Apply", href:"#/apply"},
-          {name: "Support", href:"#/support"}
+          {name:"Meet the Team", ngClickFunc:triggerTeamCTA},
+          // {name:"Timeline", href:"#/timeline"},
+          {name:"FAQ", ngClickFunc:triggerFAQCTA},
+          {name:"Pricing", ngClickFunc:triggerPricingCTA},
+          {name: "Apply", ngClickFunc:triggerApplyCTA},
+          {name: "Support", ngClickFunc:triggerSupportBox}
         ];
       }
 
@@ -244,7 +285,7 @@ angular.module('uguru.util.controllers')
       $scope.links = [];
 
       $scope.toggleSidebar = function() {
-        console.log('this was calledf');
+
         $scope.page.sidebar.show= !$scope.page.sidebar.show;
         if ($scope.page.sidebar.show) {
           $scope.links = [];
@@ -333,7 +374,7 @@ angular.module('uguru.util.controllers')
       $scope.scrollToSection = function(section_selector) {
         var amount = null;
         var successFunction = null;
-        var pageParentContainer = '#university-splash';
+        var pageParentContainer = '#home-splash';
         ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector);
         // $timeout(function() {
         //   ScrollService.initStickyHeaderScroll("#essay-header", "#essay-pricing", 'active', '#essay-student-home');
@@ -347,11 +388,11 @@ angular.module('uguru.util.controllers')
           }
         }
 
-        CTAService.initSingleCTA('#cta-box-academic', '#university-splash', showCTACallback("academic"));
-        CTAService.initSingleCTA('#cta-box-baking', '#university-splash', showCTACallback("bakery"));
-        CTAService.initSingleCTA('#cta-box-household', '#university-splash', showCTACallback("household"));
-        CTAService.initSingleCTA('#cta-box-photography', '#university-splash', showCTACallback("photography"));
-        CTAService.initSingleCTA('#cta-box-tech', '#university-splash', showCTACallback("tech"));
+        CTAService.initSingleCTA('#cta-box-academic', '#home-splash', showCTACallback("academic"));
+        CTAService.initSingleCTA('#cta-box-baking', '#home-splash', showCTACallback("bakery"));
+        CTAService.initSingleCTA('#cta-box-household', '#home-splash', showCTACallback("household"));
+        CTAService.initSingleCTA('#cta-box-photography', '#home-splash', showCTACallback("photography"));
+        CTAService.initSingleCTA('#cta-box-tech', '#home-splash', showCTACallback("tech"));
       }
 
       var runMobileOnlyFunctions = function() {
