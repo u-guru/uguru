@@ -170,14 +170,24 @@
   padding: 0;
 }
 
-#university-splash .splash-categories .main .category-card-list li div {
-  height: 150px;
+@media screen and (max-width: 768px) {
+  #university-splash .splash-categories .main .category-card-list li.card-button {
+    width: 100% !important;
+  }
+}
+
+#university-splash .splash-categories .main .category-card-list li button {
+  max-width: 100%;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div {
+  height: 200px;
   background-position: center center;
   background-size: cover;
   overflow: hidden;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a, #university-splash .splash-categories .main .category-card-list li div > span {
+#university-splash .splash-categories .main .category-card-list li > div a, #university-splash .splash-categories .main .category-card-list li > div > span {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -185,6 +195,9 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -196,7 +209,7 @@
   height: 100%;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a:before, #university-splash .splash-categories .main .category-card-list li div > span:before {
+#university-splash .splash-categories .main .category-card-list li > div a:before, #university-splash .splash-categories .main .category-card-list li > div > span:before {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -214,19 +227,20 @@
   background: #40484B;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a span, #university-splash .splash-categories .main .category-card-list li div > span span {
+#university-splash .splash-categories .main .category-card-list li > div a span, #university-splash .splash-categories .main .category-card-list li > div > span span {
   position: relative;
   z-index: 5;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a .card-icon, #university-splash .splash-categories .main .category-card-list li div > span .card-icon {
+#university-splash .splash-categories .main .category-card-list li > div a .card-icon, #university-splash .splash-categories .main .category-card-list li > div > span .card-icon {
   display: block;
+  margin: 0 auto;
   padding: 15px;
   max-width: 120px;
   max-height: 120px;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span .card-icon svg {
+#university-splash .splash-categories .main .category-card-list li > div a .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span .card-icon svg {
   border-radius: 1000px;
   display: block;
   width: 100%;
@@ -235,7 +249,7 @@
   background: #69B3A5;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a .card-icon svg path, #university-splash .splash-categories .main .category-card-list li div > span .card-icon svg path {
+#university-splash .splash-categories .main .category-card-list li > div a .card-icon svg path, #university-splash .splash-categories .main .category-card-list li > div a .card-icon svg circle, #university-splash .splash-categories .main .category-card-list li > div > span .card-icon svg path, #university-splash .splash-categories .main .category-card-list li > div > span .card-icon svg circle {
   fill: none;
   stroke: white;
   stroke-width: 2px;
@@ -243,152 +257,165 @@
   stroke-linejoin: round;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a .card-label, #university-splash .splash-categories .main .category-card-list li div > span .card-label {
+#university-splash .splash-categories .main .category-card-list li > div a .card-label, #university-splash .splash-categories .main .category-card-list li > div > span .card-label {
   display: none;
+  width: 100%;
   font-weight: 900;
   font-size: 24px;
   text-align: center;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-delivery, #university-splash .splash-categories .main .category-card-list li div > span.bg-delivery {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-delivery, #university-splash .splash-categories .main .category-card-list li > div > span.bg-delivery {
   border-color: #F04F54;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-delivery .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-delivery .card-icon svg {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-delivery .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-delivery .card-icon svg {
   background: #F04F54;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-freelancing, #university-splash .splash-categories .main .category-card-list li div > span.bg-freelancing {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-freelancing, #university-splash .splash-categories .main .category-card-list li > div > span.bg-freelancing {
   border-color: #E5753C;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-freelancing .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-freelancing .card-icon svg {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-freelancing .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-freelancing .card-icon svg {
   background: #E5753C;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-baking, #university-splash .splash-categories .main .category-card-list li div > span.bg-baking {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-baking, #university-splash .splash-categories .main .category-card-list li > div > span.bg-baking {
   border-color: #F6C64E;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-baking .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-baking .card-icon svg {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-baking .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-baking .card-icon svg {
   background: #F6C64E;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-photography, #university-splash .splash-categories .main .category-card-list li div > span.bg-photography {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-photography, #university-splash .splash-categories .main .category-card-list li > div > span.bg-photography {
   border-color: #81B566;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-photography .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-photography .card-icon svg {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-photography .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-photography .card-icon svg {
   background: #81B566;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-tech, #university-splash .splash-categories .main .category-card-list li div > span.bg-tech {
-  border-color: #55A4B7;
+#university-splash .splash-categories .main .category-card-list li > div a.bg-more, #university-splash .splash-categories .main .category-card-list li > div > span.bg-more {
+  border-color: #69B3A5;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-tech .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-tech .card-icon svg {
-  background: #55A4B7;
+#university-splash .splash-categories .main .category-card-list li > div a.bg-more .card-label, #university-splash .splash-categories .main .category-card-list li > div > span.bg-more .card-label {
+  color: white !important;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-household, #university-splash .splash-categories .main .category-card-list li div > span.bg-household {
-  border-color: #7872e3;
-}
-
-#university-splash .splash-categories .main .category-card-list li div a.bg-household .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-household .card-icon svg {
-  background: #7872e3;
-}
-
-#university-splash .splash-categories .main .category-card-list li div a.bg-athletic, #university-splash .splash-categories .main .category-card-list li div > span.bg-athletic {
-  border-color: #9A5BC5;
-}
-
-#university-splash .splash-categories .main .category-card-list li div a.bg-athletic .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-athletic .card-icon svg {
-  background: #9A5BC5;
-}
-
-#university-splash .splash-categories .main .category-card-list li div a.bg-academic, #university-splash .splash-categories .main .category-card-list li div > span.bg-academic {
-  border-color: #e6389b;
-}
-
-#university-splash .splash-categories .main .category-card-list li div a.bg-academic .card-icon svg, #university-splash .splash-categories .main .category-card-list li div > span.bg-academic .card-icon svg {
-  background: #e6389b;
-}
-
-#university-splash .splash-categories .main .category-card-list li div a:hover:before, #university-splash .splash-categories .main .category-card-list li div a:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-more .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-more .card-icon svg {
   background: #69B3A5;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a:active:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-tech, #university-splash .splash-categories .main .category-card-list li > div > span.bg-tech {
+  border-color: #55A4B7;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a.bg-tech .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-tech .card-icon svg {
+  background: #55A4B7;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a.bg-household, #university-splash .splash-categories .main .category-card-list li > div > span.bg-household {
+  border-color: #7872e3;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a.bg-household .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-household .card-icon svg {
+  background: #7872e3;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a.bg-athletic, #university-splash .splash-categories .main .category-card-list li > div > span.bg-athletic {
+  border-color: #9A5BC5;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a.bg-athletic .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-athletic .card-icon svg {
+  background: #9A5BC5;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a.bg-academic, #university-splash .splash-categories .main .category-card-list li > div > span.bg-academic {
+  border-color: #e6389b;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a.bg-academic .card-icon svg, #university-splash .splash-categories .main .category-card-list li > div > span.bg-academic .card-icon svg {
+  background: #e6389b;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a:hover:before, #university-splash .splash-categories .main .category-card-list li > div a:focus:before {
+  background: #69B3A5;
+}
+
+#university-splash .splash-categories .main .category-card-list li > div a:active:before {
   filter: alpha(opacity=80);
   opacity: 0.8;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-delivery:hover:before, #university-splash .splash-categories .main .category-card-list li div a.bg-delivery:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-delivery:hover:before, #university-splash .splash-categories .main .category-card-list li > div a.bg-delivery:focus:before {
   background: #F04F54;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-freelancing:hover:before, #university-splash .splash-categories .main .category-card-list li div a.bg-freelancing:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-freelancing:hover:before, #university-splash .splash-categories .main .category-card-list li > div a.bg-freelancing:focus:before {
   background: #E5753C;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-baking:hover:before, #university-splash .splash-categories .main .category-card-list li div a.bg-baking:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-baking:hover:before, #university-splash .splash-categories .main .category-card-list li > div a.bg-baking:focus:before {
   background: #F6C64E;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-photography:hover:before, #university-splash .splash-categories .main .category-card-list li div a.bg-photography:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-photography:hover:before, #university-splash .splash-categories .main .category-card-list li > div a.bg-photography:focus:before {
   background: #81B566;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-tech:hover:before, #university-splash .splash-categories .main .category-card-list li div a.bg-tech:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-tech:hover:before, #university-splash .splash-categories .main .category-card-list li > div a.bg-tech:focus:before {
   background: #55A4B7;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-household:hover:before, #university-splash .splash-categories .main .category-card-list li div a.bg-household:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-household:hover:before, #university-splash .splash-categories .main .category-card-list li > div a.bg-household:focus:before {
   background: #7872e3;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-athletic:hover:before, #university-splash .splash-categories .main .category-card-list li div a.bg-athletic:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-athletic:hover:before, #university-splash .splash-categories .main .category-card-list li > div a.bg-athletic:focus:before {
   background: #9A5BC5;
 }
 
-#university-splash .splash-categories .main .category-card-list li div a.bg-academic:hover:before, #university-splash .splash-categories .main .category-card-list li div a.bg-academic:focus:before {
+#university-splash .splash-categories .main .category-card-list li > div a.bg-academic:hover:before, #university-splash .splash-categories .main .category-card-list li > div a.bg-academic:focus:before {
   background: #e6389b;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more):before {
   filter: alpha(opacity=20);
   opacity: 0.2;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span.bg-delivery:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more).bg-delivery:before {
   background: #F04F54;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span.bg-freelancing:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more).bg-freelancing:before {
   background: #E5753C;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span.bg-baking:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more).bg-baking:before {
   background: #F6C64E;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span.bg-photography:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more).bg-photography:before {
   background: #81B566;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span.bg-tech:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more).bg-tech:before {
   background: #55A4B7;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span.bg-household:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more).bg-household:before {
   background: #7872e3;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span.bg-athletic:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more).bg-athletic:before {
   background: #9A5BC5;
 }
 
-#university-splash .splash-categories .main .category-card-list li div > span.bg-academic:before {
+#university-splash .splash-categories .main .category-card-list li > div > span:not(.bg-more).bg-academic:before {
   background: #e6389b;
 }
 
@@ -425,35 +452,102 @@
 
 #university-splash .splash-categories .main .subcategory-card-list .category-card-list {
   margin: 0 !important;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
   -webkit-align-self: flex-start;
   align-self: flex-start;
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
+  height: calc(100% - 64px);
+  overflow: hidden;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list .category-card-list li {
   width: 50%;
+  height: 25%;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list .category-card-list li:nth-child(9), #university-splash .splash-categories .main .subcategory-card-list .category-card-list li:nth-child(10) {
   display: none;
 }
 
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div {
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div {
   background: none;
-  height: 49px;
+  height: 100%;
 }
 
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div .card-label {
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div .card-label {
   display: block !important;
-  padding: 15px;
+  padding: 0;
   color: white !important;
   font-weight: 600;
   font-size: 16px;
 }
 
-#university-splash .splash-categories .main .subcategory-card-list .category-card-list li div > span:before {
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span:before {
   display: none !important;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span:first-child {
+  height: calc(100% - 30px);
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span .card-icon {
+  padding: 0;
+  max-width: 36px;
+  max-height: 36px;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span .card-icon svg {
+  background: none !important;
+  padding: 0 !important;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span .card-icon svg * {
+  stroke-width: 4px !important;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price {
+  height: 30px !important;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price:before {
+  display: none !important;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-delivery {
+  background: #F04F54;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-freelancing {
+  background: #E5753C;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-baking {
+  background: #F6C64E;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-photography {
+  background: #81B566;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-tech {
+  background: #55A4B7;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-household {
+  background: #7872e3;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-athletic {
+  background: #9A5BC5;
+}
+
+#university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-academic {
+  background: #e6389b;
 }
 
 #university-splash .splash-categories .main .subcategory-card-list button {
@@ -703,20 +797,22 @@
   #university-splash .splash-categories .main .category-card-list li {
     padding: 15px;
   }
-  #university-splash .splash-categories .main .category-card-list li div {
+  #university-splash .splash-categories .main .category-card-list li:empty {
+    display: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #university-splash .splash-categories .main .category-card-list li > div {
     border-radius: 2px;
   }
-  #university-splash .splash-categories .main .category-card-list li div a, #university-splash .splash-categories .main .category-card-list li div > span {
+  #university-splash .splash-categories .main .category-card-list li > div a, #university-splash .splash-categories .main .category-card-list li > div > span {
     border-radius: 2px;
     border-bottom: 10px solid white;
   }
-  #university-splash .splash-categories .main .category-card-list li div a:before, #university-splash .splash-categories .main .category-card-list li div > span:before {
+  #university-splash .splash-categories .main .category-card-list li > div a:before, #university-splash .splash-categories .main .category-card-list li > div > span:before {
     border-radius: 2px;
   }
-  #university-splash .splash-categories .main .category-card-list li div a .card-icon, #university-splash .splash-categories .main .category-card-list li div > span .card-icon {
-    display: none;
-  }
-  #university-splash .splash-categories .main .category-card-list li div a .card-label, #university-splash .splash-categories .main .category-card-list li div > span .card-label {
+  #university-splash .splash-categories .main .category-card-list li > div a .card-label, #university-splash .splash-categories .main .category-card-list li > div > span .card-label {
     display: block;
   }
   #university-splash .splash-categories .main .subcategory-card-list {
@@ -727,51 +823,74 @@
     height: 100%;
     background: #F1F1F1 !important;
   }
+  #university-splash .splash-categories .main .subcategory-card-list button {
+    max-width: calc(25% - 30px);
+  }
   #university-splash .splash-categories .main .subcategory-card-list .category-card-list {
     -webkit-align-self: auto;
     align-self: auto;
     -webkit-justify-content: center;
     justify-content: center;
-    margin: 0 -7.5px !important;
+    height: auto;
   }
   #university-splash .splash-categories .main .subcategory-card-list .category-card-list li {
     width: 25%;
+    height: auto;
   }
   #university-splash .splash-categories .main .subcategory-card-list .category-card-list li:nth-child(9), #university-splash .splash-categories .main .subcategory-card-list .category-card-list li:nth-child(10) {
     display: block;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div {
     background: #40484B;
-    height: 80px;
+    height: 200px;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-delivery {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span {
+    border: 0;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span:first-child {
+    height: calc(100% - 50px);
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span .card-icon {
+    padding: 0;
+    max-width: 96px;
+    max-height: 96px;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span.card-price {
+    height: 50px !important;
+    font-size: 20px;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div .card-label {
+    padding: 15px;
+    font-size: 20px;
+  }
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div.bg-delivery {
     background: #7f696e;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-freelancing {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div.bg-freelancing {
     background: #7d7169;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-baking {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div.bg-baking {
     background: #81816d;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-photography {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div.bg-photography {
     background: #697e71;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-tech {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div.bg-tech {
     background: #607a82;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-household {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div.bg-household {
     background: #67708a;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-athletic {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div.bg-athletic {
     background: #6e6c84;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div.bg-academic {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div.bg-academic {
     background: #7d657c;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div > span:before {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div > span:before {
     display: block !important;
   }
-  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li div .card-label {
+  #university-splash .splash-categories .main .subcategory-card-list .category-card-list li > div .card-label {
     padding: 0;
     font-size: 20px;
   }
@@ -830,7 +949,7 @@
 }
 
 #university-splash .splash-categories > footer .border {
-  background: #40484B !important;
+  background: #2B3234 !important;
 }
 
 #university-splash .splash-categories > footer .border:before {
@@ -882,6 +1001,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  #university-splash .splash-postit .main button {
+    max-width: 100%;
+  }
   #university-splash .splash-postit .main ul {
     position: relative;
   }
@@ -922,12 +1044,6 @@
   #university-splash .splash-postit .main ul li {
     width: calc(100% / 3);
   }
-  #university-splash .splash-postit .main ul.desktop-postit-list li .postit > div {
-    background: #40484B !important;
-  }
-  #university-splash .splash-postit .main ul.desktop-postit-list li .postit > div:before {
-    background: #40484B !important;
-  }
   #university-splash .splash-postit .main button {
     max-width: calc(100% / 3 - 30px);
   }
@@ -959,7 +1075,7 @@
 }
 
 #university-splash .splash-postit .peel-back, #university-splash .splash-postit .peel-bottom, #university-splash .splash-postit .peel-back-shadow {
-  background: #69B3A5;
+  background: #40484B;
 }
 
 #university-splash .splash-postit .peel-ready {
@@ -1089,11 +1205,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #69B3A5;
+  background: #40484B;
 }
 
 #university-splash #become-guru > header {
-  background: #40484B !important;
+  background: #2B3234 !important;
 }
 
 #university-splash #become-guru > header h1 {
@@ -1101,7 +1217,7 @@
 }
 
 #university-splash #become-guru .postit > div, #university-splash #become-guru .postit > span {
-  background: #69B3A5;
+  background: #40484B;
   color: white;
 }
 
@@ -1115,7 +1231,7 @@
 }
 
 #university-splash #become-guru > footer .border:before {
-  border-top-color: #40484B !important;
+  border-top-color: #2B3234 !important;
 }
 
 #university-splash #splash-start {
@@ -1400,11 +1516,15 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  background: rgba(64, 72, 75, 0.95);
+  background: rgba(255, 255, 255, 0.75) !important;
+  color: #40484B;
   z-index: 100;
   width: 100%;
   padding: 15px 0 0;
-  margin-top: -15px;
+}
+
+.splash-landing .splash-toast:before {
+  background: none !important;
 }
 
 .splash-landing .splash-toast.hide {
@@ -1501,6 +1621,7 @@
     -webkit-justify-content: center;
     justify-content: center;
     padding: 30px 15px 15px;
+    margin-top: -15px !important;
     text-align: center;
   }
   .splash-landing .splash-toast h1 {
@@ -1519,6 +1640,34 @@
   .splash-landing .splash-toast h1 {
     padding: 0 15px !important;
   }
+}
+
+.splash-landing .splash-header.active {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-animation-name: toast-pop;
+  -moz-animation-name: toast-pop;
+  -o-animation-name: toast-pop;
+  animation-name: toast-pop;
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  -o-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  margin-top: 94px;
 }
 
 .splash-landing > section {
@@ -1548,18 +1697,6 @@
 .splash-landing > section > header h1 {
   padding-top: 15px;
   text-align: center;
-}
-
-@media screen and (min-width: 768px) {
-  .splash-landing > section > header {
-    height: 25% !important;
-  }
-  .splash-landing > section > header h1 {
-    padding-top: 45px;
-    font-size: 36px;
-    font-weight: 600;
-    text-transform: none !important;
-  }
 }
 
 .splash-landing > section > footer .border {
@@ -1757,7 +1894,7 @@
 }
 
 .splash-landing > section button {
-  max-width: 300px;
+  max-width: 100%;
   background: white;
   color: #69B3A5;
   font-weight: 600;
@@ -1772,7 +1909,22 @@
 }
 
 .splash-landing > section button:active, .splash-landing > section button.activated {
-  background: #e6389b;
+  background: #637074;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section button {
+    max-width: 300px;
+  }
+  .splash-landing > section > header {
+    height: 25% !important;
+  }
+  .splash-landing > section > header h1 {
+    padding-top: 45px;
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: none !important;
+  }
 }
 
 .splash-landing > section .main {
@@ -1816,6 +1968,34 @@
   height: 100%;
   background: #F1F1F1;
   text-align: center;
+}
+
+.splash-landing > section.splash-hero.active > div {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-animation-name: toast-pop;
+  -moz-animation-name: toast-pop;
+  -o-animation-name: toast-pop;
+  animation-name: toast-pop;
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  -o-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  margin-bottom: 7.5%;
 }
 
 .splash-landing > section.splash-hero > div {

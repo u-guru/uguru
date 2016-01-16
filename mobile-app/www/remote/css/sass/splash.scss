@@ -116,13 +116,22 @@
 				li {
 					width: calc(100% / 3);
 					padding: 0;
-					div {
-						height: 150px;
+					@media screen and (max-width: 768px) {
+						&.card-button {
+							width: 100%!important;
+						}
+					}
+					button {
+						max-width: 100%;
+					}
+					> div {
+						height: 200px;
 						background-position: center center;
 						background-size: cover;
 						overflow: hidden;
 						a, > span {
 							@include flex;
+							@include flex-wrap;
 							@include flex-center;
 							position: relative;
 							width: 100%;
@@ -145,6 +154,7 @@
 							}
 							.card-icon {
 								display: block;
+								margin: 0 auto;
 								padding: 15px;
 								max-width: 120px;
 								max-height: 120px;
@@ -155,13 +165,14 @@
 									height: auto;
 									padding: 5px;
 									background: $shamrock;
-									path {
+									path, circle {
 										@include svg-stroke(white, 2);
 									}
 								}
 							}
 							.card-label {
 								display: none;
+								width: 100%;
 								font-weight: 900;
 								font-size: 24px;
 								text-align: center;
@@ -188,6 +199,15 @@
 								border-color: $moola;
 								.card-icon svg {
 									background: $moola;
+								}
+							}
+							&.bg-more {
+								border-color: $shamrock;
+								.card-label {
+									color: white!important;
+								}
+								.card-icon svg {
+									background: $shamrock;
 								}
 							}
 							&.bg-tech {
@@ -283,7 +303,7 @@
 								}
 							}
 						}
-						> span {
+						> span:not(.bg-more) {
 							&:before {
 								@include opacity(.2);
 							}
@@ -351,21 +371,26 @@
 				}
 				.category-card-list {
 					margin: 0!important;
+					-webkit-align-items: flex-start;
+					align-items: flex-start;
 					-webkit-align-self: flex-start;
 					align-self: flex-start;
 					-webkit-justify-content: flex-start;
 					justify-content: flex-start;
+					height: calc(100% - 64px);
+					overflow: hidden;
 					li {
 						width: 50%;
+						height: 25%;
 						&:nth-child(9), &:nth-child(10) {
 							display: none;
 						}
-						div {
+						> div {
 							background: none;
-							height: 49px;
+							height: 100%;
 							.card-label {
 								display: block!important;
-								padding: 15px;
+								padding: 0;
 								color: white!important;
 								font-weight: 600;
 								font-size: 16px;
@@ -373,6 +398,54 @@
 							> span {
 								&:before {
 									display: none!important;
+								}
+								&:first-child {
+									height: calc(100% - 30px);
+								}
+								.card-icon {
+									padding: 0;
+									max-width: 36px;
+									max-height: 36px;
+									svg {
+										background: none!important;
+										padding: 0!important;
+										* {
+											stroke-width: 4px!important;
+										}
+									}
+								}
+								&.card-price {
+									height: 30px!important;
+									color: white;
+									font-size: 16px;
+									font-weight: 600;
+									&:before {
+										display: none!important;
+									}
+									&.bg-delivery {
+										background: $auburn;
+									}
+									&.bg-freelancing {
+										background: $orange;
+									}
+									&.bg-baking {
+										background: $gold;
+									}
+									&.bg-photography {
+										background: $moola;
+									}
+									&.bg-tech {
+										background: $azure;
+									}
+									&.bg-household {
+										background: $cobalt;
+									}
+									&.bg-athletic {
+										background: $eggplant;
+									}
+									&.bg-academic {
+										background: $cerise;
+									}
 								}
 							}
 						}
@@ -542,6 +615,7 @@
 					}
 				}
 			}
+			// DESKTOP CATEGORY CARDS
 			@media screen and (min-width: 768px) {
 				> div {
 					display: block;
@@ -562,16 +636,18 @@
 					margin: -15px 0 0;
 					li {
 						padding: 15px;
-						div {
+						&:empty {
+							display: none!important;
+							padding: 0!important;
+							margin: 0!important;
+						}
+						> div {
 							border-radius: 2px;
 							a, > span {
 								border-radius: 2px;
 								border-bottom: 10px solid white;
 								&:before {
 									border-radius: 2px;
-								}
-								.card-icon {
-									display: none;
 								}
 								.card-label {
 									display: block;
@@ -587,20 +663,43 @@
 					width: 100%;
 					height: 100%;
 					background: $smoke!important;
+					button {
+						max-width: calc(25% - 30px);
+					}
 					.category-card-list {
 						-webkit-align-self: auto;
 						align-self: auto;
 						-webkit-justify-content: center;
 						justify-content: center;
-						margin: 0 -7.5px!important;
+						height: auto;
 						li {
 							width: 25%;
+							height: auto;
 							&:nth-child(9), &:nth-child(10) {
 								display: block;
 							}
-							div {
+							> div {
 								background: $slate;
-								height: 80px;
+								height: 200px;
+								> span {
+									border: 0;
+									&:first-child {
+										height: calc(100% - 50px);
+									}
+									.card-icon {
+										padding: 0;
+										max-width: 96px;
+										max-height: 96px;
+									}
+									&.card-price {
+										height: 50px!important;
+										font-size: 20px;
+									}
+								}
+								.card-label {
+									padding: 15px;
+									font-size: 20px;
+								}
 								&.bg-delivery {
 									background: mix($auburn, lighten($slate, 15%), 20%);
 								}
@@ -683,7 +782,7 @@
 		}
 		> footer {
 			.border {
-				background: $slate!important;
+				background: $charcoal!important;
 				&:before {
 					border-top-color: $smoke!important;
 				}
@@ -720,6 +819,9 @@
 				max-width: calc(100% - 30px);
 			}
 			@media screen and (max-width: 768px) {
+				button {
+					max-width: 100%;
+				}
 				ul {
 					position: relative;
 					> .square {
@@ -747,18 +849,6 @@
 				ul {
 					li {
 						width: calc(100% / 3);
-					}
-					&.desktop-postit-list {
-						li {
-							.postit {
-								> div {
-									background: $slate!important;
-									&:before {
-										background: $slate!important;
-									}
-								}
-							}
-						}
 					}
 				}
 				button {
@@ -791,7 +881,7 @@
 			height: 100%;
 		}
 		.peel-back, .peel-bottom, .peel-back-shadow {
-			background: $shamrock;
+			background: $slate;
 		}
 		.peel-ready {
 			@include opacity(1);
@@ -889,7 +979,7 @@
 					left: 0;
 					width: 100%;
 					height: 100%;
-					background: $shamrock;
+					background: $slate;
 				}
 			}
 			// > span {
@@ -918,14 +1008,14 @@
 	// BECOME A GURU
 	#become-guru {
 		> header {
-			background: $slate!important;
+			background: $charcoal!important;
 			h1 {
 				color: white!important;
 			}
 		}
 		.postit {
 			> div, > span {
-				background: $shamrock;
+				background: $slate;
 				color: white;
 			}
 			> span:after {
@@ -937,7 +1027,7 @@
 			.border {
 				background: $shamrock!important;
 				&:before {
-					border-top-color: $slate!important;
+					border-top-color: $charcoal!important;
 				}
 			}
 		}
@@ -1119,11 +1209,14 @@
 		@include transition(.3s ease-in-out);
 		@include flex-center-vertical;
 		@include flex-wrap;
-		background: rgba($slate, .95);
+		background: rgba(white, .75)!important;
+		color: $slate;
 		z-index: 100;
 		width: 100%;
 		padding: 15px 0 0;
-		margin-top: -15px;
+		&:before {
+			background: none!important;
+		}
 		&.hide {
 			@include flex-important;
 			@include opacity(0);
@@ -1169,6 +1262,7 @@
 		@media screen and (min-width: 768px) {
 			@include flex-center;
 			padding: 30px 15px 15px;
+			margin-top: -15px!important;
 			text-align: center;
 			h1 {
 				padding: 0 15px 15px !important;
@@ -1187,6 +1281,15 @@
 			}
 		}
 	}
+	.splash-header.active {
+		@include transition(.3s ease-in-out);
+		@include opacity(1);
+		@include translate-y(0);
+		@include animation-name(toast-pop);
+		@include animation-duration(.4s);
+		@include animation-iteration-count(1);
+		margin-top: 94px;
+	}
 	> section {
 		position: relative;
 		width: 100%;
@@ -1199,17 +1302,6 @@
 			h1 {
 				padding-top: 15px;
 				text-align: center;
-			}
-		}
-		@media screen and (min-width: 768px) {
-			> header {
-				height: 25%!important;
-				h1 {
-					padding-top: 45px;
-					font-size: 36px;
-					font-weight: 600;
-					text-transform: none!important;
-				}
 			}
 		}
 		> footer {
@@ -1338,7 +1430,7 @@
 			}
 		}
 		button {
-			max-width: 300px;
+			max-width: 100%;
 			background: white;
 			color: $shamrock;
 			font-weight: 600;
@@ -1349,7 +1441,21 @@
 				color: white;
 			}
 			&:active, &.activated {
-				background: $cerise;
+				background: lighten($slate, 15%);
+			}
+		}
+		@media screen and (min-width: 768px) {
+			button {
+				max-width: 300px;
+			}
+			> header {
+				height: 25%!important;
+				h1 {
+					padding-top: 45px;
+					font-size: 36px;
+					font-weight: 600;
+					text-transform: none!important;
+				}
 			}
 		}
 		.main {
@@ -1370,6 +1476,17 @@
 			height: 100%;
 			background: $smoke;
 			text-align: center;
+			&.active {
+				> div {
+					@include transition(.3s ease-in-out);
+					@include opacity(1);
+					@include translate-y(0);
+					@include animation-name(toast-pop);
+					@include animation-duration(.4s);
+					@include animation-iteration-count(1);
+					margin-bottom: 7.5%;
+				}
+			}
 			> div { 
 				width: 100%;
 				margin-bottom: 14%;
