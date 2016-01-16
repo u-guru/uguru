@@ -22,12 +22,12 @@ angular.module('uguru.util.controllers')
 			$scope.page.active.tabName = tabName;
 		}
 
-		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides", "Timeline", "Moodboards"];
+		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides", "Timeline", "Moodboards", "Glossary"];
 		$scope.projects = [{name:'University Specific + Home', deadline:"1/15/2015", urgent:true, progress:null, action_items:[]}, {name: 'Student Everything MVP'}, {name: 'Guru Everything MVP'}, {name: 'GPA App'}];
 
 		var getProjectOneActionItems = function() {
 			var resultDict = {};
-			resultDict.alpha = [{"Subdomains":true}, {"Home Page Converted":false}, {"Bug-Free": false}];
+			resultDict.alpha = [{"Home page counter":true}, {"Scroll Reveal": false}, {"Home Page Sidebar + link in-app-views":false}, {"Sanitize Courses": false}, {"Update University.js":false}, {"Add tiny_name to university":false}, {"Add svg_url to admin":false}, {"Clean-up maps + resize after render":false}, {"Main section templating": false}, {"Code Cleanup": false}, {"Content": false}];
 			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
 			resultDict.production = [{"Home Page 100% Sleek":false}, {"Pre-App 100% Templated": false}];
 			return resultDict;

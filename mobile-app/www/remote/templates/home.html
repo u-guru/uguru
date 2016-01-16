@@ -4,10 +4,9 @@
 
 <!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view> -->
 
-<div ng-include="page.universityStyleUrl"></div>
-<ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
-	<ion-view class='bg-smoke'>
-		<main id='university-splash' class='splash-landing hs-view full-xy'>
+    <div ng-include="page.universityStyleUrl"></div>
+	<ion-view class='bg-smoke main-splash' >
+		<main id='university-splash' class='home-page splash-landing hs-view full-xy'>
             <div id='cta-modal-sidebar' ng-if='page.sidebar.show'  class='fx-ease-none full-y hide ng-class:{"show":page.sidebar.show, "full-x":!desktopMode, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </div>
             <ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'"> </ion-pane>
 
@@ -50,7 +49,7 @@
 					</a>
 				</div>
 			</header>
-            <section class='splash-hero relative' id='splash-home' ng-if='false'>
+            <section class='splash-hero relative' id='splash-home'>
                 <a id="splash-footer-support" class="splash-footer-link">
 					<span ng-include="img_base + 'templates/svg/support.html'"></span>
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
@@ -100,7 +99,7 @@
 					</div>
 				</footer>
             </section>
-			<section id='how-it-works' class="splash-postit" ng-if='false'>
+			<section id='how-it-works' class="splash-postit">
                 <header>
                     <h1 class="txt-university">{{how_it_works.header}}</h1>
                 </header>
@@ -191,7 +190,7 @@
                     <h1 class="txt-university">Connect with your University</h1>
                 </header>
                 <div id="splash-courses" class="main active" ng-controller="AddUniversityCtrl">
-                    <div ng-if='false'>
+                    <div>
                         <form>
                             <div class="input-field large">
                                 <i class="material-icons prefix">
@@ -231,12 +230,33 @@
                             </ui-gmap-google-map>
                     </div>
                 </div>
+                 <div class='ugrid-2'>
+                    <div class='p20xy text-left'>
+                        <h1 class='txt-charcoal weight-900'> By the numbers </h1>
+                    </div>
+                    <div class='p20xy'>
+                        <div class='relative full-x ugrid-3'>
+                            <div>
+                                <small style='font-size:14px;' class='uppercase weight-600 txt-slate'>Supported Universities</small>
+                                <h1 class='uppercase txt-charcoal' id='num-university-counter'>0</h1>
+                            </div>
+                            <div>
+                                <small style='font-size:14px;' class='uppercase weight-600 txt-slate'>Available Courses</small>
+                                <h1 class='uppercase txt-charcoal' id='num-course-counter'></h1>
+                            </div>
+                            <div>
+                                <small style='font-size:14px;' class='uppercase weight-600 txt-slate'>Student Gurus</small>
+                                <h1 class='uppercase txt-charcoal' id='num-guru-counter'></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <footer>
                     <div class="border"></div>
                 </footer>
             </section>
             <!--False for now @gabrille, -->
-            <section class='splash-categories' id='splash-browse' ng-if='false'>
+            <section class='splash-categories' id='splash-browse'>
                 <div class="tab-bar splash-bar bg-university">
                     <ul>
                         <li>
@@ -444,6 +464,7 @@
 			</section>
 		</main>
 		<!-- </ion-content> -->
+        <div id='last-div-main' onload="lastDivLoaded()"> </div>
 	</ion-view>
 	<!-- </ion-scroll> -->
-</ion-content>
+<!-- </ion-content> -->

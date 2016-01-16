@@ -1362,7 +1362,7 @@
 			line-height: 1.2;
 			font-weight: 400;
 		}
-		
+
 		// HERO
 		&.splash-hero {
 			@include flex;
@@ -1370,7 +1370,7 @@
 			height: 100%;
 			background: $smoke;
 			text-align: center;
-			> div { 
+			> div {
 				width: 100%;
 				margin-bottom: 14%;
 			}
@@ -1511,7 +1511,7 @@
 				}
 			}
 		}
-		
+
 		// ESSAY PRICING
 		&.essay-pricing {
 			.main {
@@ -1574,7 +1574,7 @@
 				}
 			}
 		}
-		
+
 		// ESSAY FAQ
 		&#essay-faq {
 			.main {
@@ -1633,7 +1633,7 @@
 				}
 			}
 		}
-		
+
 		// ESSAY HOW IT WORKS
 		&#essay-how-it-works {
 			.main {
@@ -1737,3 +1737,6 @@
 	0% { @include opacity(0); }
 	100% { @include opacity(1); }
 }
+
+
+

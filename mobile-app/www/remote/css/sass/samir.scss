@@ -582,3 +582,23 @@ ul#guru-courses-user-profile {
       }
     }
 }
+
+
+.university-svg-icon {
+	opacity: 1 !important;
+	img {
+		// @include center-x;
+		// @include round;
+		// @include flex;
+		// @include flex-center;
+		z-index: 5;
+		top: 15px;
+		// background-position: center;
+		// background-size: cover;
+		// background-color: white;
+		// border: 3px solid $slate;
+		width:50px !important;
+		height:50px !important;
+		opacity:1 !important;
+	}
+}
