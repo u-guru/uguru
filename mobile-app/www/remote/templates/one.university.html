@@ -2,7 +2,7 @@
 <!--2. Please create fixed support icon && I can link it-->
 <!--3. Please format the pricing with the template content (for context)-->
 
-<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view> -->
+<ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>
 
 <div ng-include="page.universityStyleUrl"></div>
 <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
@@ -39,7 +39,7 @@
                 <a ng-click='scrollToSection("#how-it-works")'>How It Works</a>
 				<a ng-click='scrollToSection("#splash-browse")'>Browse</a>
                 <a ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
-                <a class="active txt-university" ng-click='scrollToSection("#splash-start")'>Get Started</a>
+                <a class="active txt-university" ng-click='goToSignup()'>Get Started</a>
 
 				<div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
 					<a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
@@ -56,13 +56,12 @@
                 		<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453" ></path>
                 	</svg>
                 </a>
-                <a id="splash-footer-top" class="splash-footer-link" ng-click='scrollToSection("#splash-home")'>
+                <a id="splash-footer-top" class="splash-footer-link" ng-click='backpackAction()'>
 					<span ng-include="img_base + 'templates/svg/backpack.html'"></span>
-                	<svg class="splash-footer-icon" viewBox="0 0 100 100">
+                	<svg class='splash-footer-icon ng-class:{"hide":user.student_courses.length}' viewBox="0 0 100 100">
                 		<path d="M14,68 L50,32 L86,68"></path>
                 	</svg>
-					<!-- @samir -->
-					<!-- <b class="splash-footer-icon">10</b> -->
+                    <b class='splash-footer-icon ng-class:{"hide":!user.student_courses.length}'>{{user.student_courses.length}}</b>
                 </a>
 
                 <div>
@@ -187,7 +186,7 @@
                             </div>
                         </li>
                     </ul>
-					<button class="bg-university">Learn More</button>
+					<button ng-click='goToSignup()' class="bg-university">Launch {{university.school_mascot_name || ''}} Portal</button>
                 </div>
 				<footer>
 					<div class="border"></div>
@@ -220,7 +219,7 @@
 								</div>
 							</a>
                         </li>
-                        <li>
+                        <li ng-if='false'>
                             <a ng-click='activeTabIndex = 3;' class="ng-class:{'active':activeTabIndex===3}">
 								<div>
 									<span>Campus</span>
@@ -246,10 +245,10 @@
                 	                    </a>
                 					</div>
                     			</li>
-                                <li >
+                                <li>
                                     <div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
                                         <a class='bg-{{categories[0].hex_color}}' ng-click='launchCategoryModal(category)'>
-                                            <span class="card-icon" ng-include="img_base + 'templates/svg/' + categories[0].hex_color + '.html'"></span>
+                                            <span class="card-icon"></span>
                                             <span class="card-label">More Coming Soon!</span>
                                         </a>
                                     </div>
@@ -338,7 +337,7 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by course.id'>
+        					<li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
         						<div class="border-university">
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>
@@ -349,7 +348,7 @@
         				</ul>
                     </div>
                 </div>
-                <div id="splash-livemap" class="main ng-class:{'active':activeTabIndex===3}">
+                <div id="splash-livemap" class="main ng-class:{'active':activeTabIndex===3}" ng-if='false'>
                    <div style='height: 570px!important'>
                         <div class="request-loc map-box-container full-y">
                             <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
@@ -449,7 +448,7 @@
                             </div>
                         </li>
                     </ul>
-					<button>Learn More</button>
+					<button ng-click='goToBecomeGuru()' class='capitalize'>Become a {{university.school_mascot_name}} Guru</button>
                 </div>
 				<footer>
 					<div class="border"></div>
@@ -460,8 +459,8 @@
 					<h1>We can't wait to see you do your thing.</h1>
 					<h2>Get started earning cash by helping your campus today.</h2>
 					<ul>
-						<li><button class="btn-ghost-white">Become a Guru</button></li>
-						<li><button class="btn-ghost-white">Launch Student Portal</button></li>
+						<li><button class="btn-ghost-white" ng-click="goToBecomeGuru()">Become a Guru</button></li>
+						<li><button class="btn-ghost-white" ng-click='goToSignup()'>Launch Student Portal</button></li>
 					</ul>
 				</div>
 			</section>

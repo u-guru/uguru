@@ -18,25 +18,31 @@ angular.module('uguru.util.controllers')
   'CTAService',
   'PeelService',
   'TypedService',
+  '$localstorage',
+  '$ionicViewSwitcher',
+  '$ionicModal',
+  'AnimationService',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
-    SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService){
+    SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
+    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService) {
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
       ];
       var scrollDuration= 500;
-      var shouldShowBecomeGuruHeader = false;
+      var shouldShowBecomeGuruHeader = true;
+      var shouldRenderMap = false;
       var mainPageContainer = document.querySelector('#university-splash')
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.highlighted_item;
       $scope.courses = [];
-      $scope.activeTabIndex = 0;
+      $scope.activeTabIndex = 2;
       $scope.university = {}
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
       $scope.page.sidebar = {show:false};
-      $scope.page.status = {loaded:false, showLoader:true, showAnimation:false};
+      $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
@@ -100,6 +106,31 @@ angular.module('uguru.util.controllers')
         $scope.become_guru.bottom_half[0].hide &&
         $scope.become_guru.bottom_half[1].hide &&
         $scope.become_guru.bottom_half[2].hide)
+      }
+
+      var initMobileModals = function() {
+        $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.signupModal = modal;
+          });
+      }
+
+      $scope.goToBecomeGuru = function() {
+        if ($scope.desktopMode) {
+          AnimationService.flip('^.desktop-become-guru')
+        } else {
+          AnimationService.flip('^.become-guru')
+        }
+      }
+
+      $scope.goToSignup = function() {
+        if ($scope.desktopMode) {
+          AnimationService.flip('^.desktop-login')
+        } else {
+          $scope.signupModal.show();
+        }
       }
 
       var showAllBgPeels = function() {
@@ -229,16 +260,14 @@ angular.module('uguru.util.controllers')
         } else {
           $scope.page.dropdowns.location_search.predictions = [];
         }
-
       }
-
-
 
       var getPublicUniversityInformation = function() {
 
         var success = function(universityObj) {
-          $scope.university = universityObj;
-          $scope.root.vars.initRequestMap();
+          $scope.university = universityObj.plain();
+          $scope.user.university = $scope.university;
+          shouldRenderMap && $scope.root.vars.initRequestMap();
           if (!LOCAL) {
             $scope.page.universityStyleUrl = $scope.img_base + BASE + 'templates/one.university.style.html';
           } else {
@@ -273,6 +302,16 @@ angular.module('uguru.util.controllers')
             gMarker.showInfoWindow();
       }
 
+
+    $scope.backpackAction = function() {
+      if ($scope.user.student_courses.length) {
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.desktop-login');
+      } else {
+        $scope.scrollToSection("#splash-home")
+      }
+    }
+
     var initRequestMap = function() {
       console.log($scope.university)
       if ($scope.university) {
@@ -293,7 +332,6 @@ angular.module('uguru.util.controllers')
           $scope.map.centerMarker.showWindow = false;
         }
       }
-
 
       uiGmapGoogleMapApi.then(function(maps) {
         maps.visualRefresh = true;
@@ -395,6 +433,12 @@ angular.module('uguru.util.controllers')
       }
 
       getPublicUniversityInformation();
+      var runMobileOnlyFunctions = function() {
+
+        !$scope.desktopMode && initiateAllPeels();
+        !$scope.desktopMode && initMobileModals();
+
+      }
 
 
       $scope.$on('$ionicView.loaded', function() {
@@ -404,9 +448,10 @@ angular.module('uguru.util.controllers')
          $timeout(function() {
           calcAllMainSectionContainers();
           initProfileCTAS();
-          initUniversityTypeWriter()
+          initUniversityTypeWriter();
+          console.log('PRINTING USER', $scope.user);
 
-          !$scope.desktopMode && initiateAllPeels();
+          runMobileOnlyFunctions();
 
          }, 5000)
 

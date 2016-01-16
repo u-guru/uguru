@@ -45,6 +45,15 @@ angular.module('uguru.util.controllers')
 			};
 		}
 
+		$scope.addUniversityStudentCourse = function(course, $index) {
+	      var course = $scope.courses.splice($index, 1);
+	      $scope.user.student_courses.push(course);
+	    }
+
+	    $scope.removeUniversityStudentCourse = function(course, $index) {
+	      var course = $scope.user.student_courses.splice($index, 1);
+	      $scope.courses.unshift(course);
+	    }
 
 
 		function updateDOM() {
