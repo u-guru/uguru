@@ -5523,6 +5523,7 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   top: 30px;
   color: rgba(43, 50, 52, 0.4);
+  width: 100%;
 }
 
 .school-card .school-card-inside .school-card-main.no-footer .school-card-info {
@@ -5536,6 +5537,14 @@ input[type=range]:focus::-ms-fill-upper {
 .school-card .school-card-inside .school-card-main h2 {
   font-size: 18px;
   font-weight: 600;
+}
+
+.school-card .school-card-inside .school-card-main h2 span:first-child {
+  text-transform: capitalize;
+}
+
+.school-card .school-card-inside .school-card-main h2 span:last-child {
+  text-transform: uppercase;
 }
 
 .school-card input:hover + .school-card-inside .school-card-top .school-card-icon .school-card-icon-bg {

@@ -862,67 +862,6 @@
   margin: 0 !important;
 }
 
-.splash-landing > section form + ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-align-self: flex-end;
-  align-self: flex-end;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-  margin: -1px -14px -14px;
-}
-
-.splash-landing > section form + ul li {
-  width: calc(100%  / 3);
-  padding: 1px;
-}
-
-.splash-landing > section form + ul li > a {
-  display: block;
-  background: white;
-  color: #40484B;
-  padding: 15px;
-  border-bottom: 10px solid #40484B;
-  border-radius: 2px;
-}
-
-.splash-landing > section form + ul li > a:hover, .splash-landing > section form + ul li > a:focus {
-  background: #637074;
-  color: white;
-  border-color: white;
-}
-
-.splash-landing > section form + ul li > a:active, .splash-landing > section form + ul li > a.activated {
-  background: #40484B;
-}
-
-.splash-landing > section form + ul li > a span {
-  display: block;
-  font-weight: 600;
-  text-align: center;
-}
-
-.splash-landing > section form + ul li > a .course-name {
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.splash-landing > section form + ul li > a .course-title {
-  display: none;
-  margin-top: 15px;
-  max-height: 56px;
-  overflow: hidden;
-  font-size: 24px;
-}
-
 .splash-landing > section.splash-hero {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1848,6 +1787,67 @@
   display: none;
 }
 
+.splash-landing > section.splash-categories .main form + ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  margin: -1px -14px -14px;
+}
+
+.splash-landing > section.splash-categories .main form + ul li {
+  width: calc(100%  / 3);
+  padding: 1px;
+}
+
+.splash-landing > section.splash-categories .main form + ul li > a {
+  display: block;
+  background: white;
+  color: #40484B;
+  padding: 15px;
+  border-bottom: 10px solid #40484B;
+  border-radius: 2px;
+}
+
+.splash-landing > section.splash-categories .main form + ul li > a:hover, .splash-landing > section.splash-categories .main form + ul li > a:focus {
+  background: #637074;
+  color: white;
+  border-color: white;
+}
+
+.splash-landing > section.splash-categories .main form + ul li > a:active, .splash-landing > section.splash-categories .main form + ul li > a.activated {
+  background: #40484B;
+}
+
+.splash-landing > section.splash-categories .main form + ul li > a span {
+  display: block;
+  font-weight: 600;
+  text-align: center;
+}
+
+.splash-landing > section.splash-categories .main form + ul li > a .course-name {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.splash-landing > section.splash-categories .main form + ul li > a .course-title {
+  display: none;
+  margin-top: 15px;
+  max-height: 56px;
+  overflow: hidden;
+  font-size: 24px;
+}
+
 @media screen and (min-width: 768px) {
   .splash-landing > section.splash-categories .main > div {
     display: block;
@@ -2734,6 +2734,109 @@
 
 .splash-landing#home-splash > section.splash-hero > footer .border:before {
   border-top-color: #69B3A5;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div {
+  width: 100%;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  padding: 7.5px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results li {
+  width: 100%;
+  padding: 7.5px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  min-height: 150px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > * {
+  width: 100%;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > * h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > * h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #637074;
+  text-transform: uppercase;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > * h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > div {
+  padding: 15px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > ul {
+  padding: 7.5px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > ul li {
+  padding: 7.5px;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results {
+    padding: 15px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results li {
+    width: 25%;
+    padding: 15px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > div {
+    width: calc(100% - 613px);
+    min-width: 354px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > ul {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    width: 613px;
+  }
 }
 
 .splash-landing#home-splash > section.splash-school-search > footer .border {

@@ -577,51 +577,6 @@
 					margin: 0!important;
 				}
 			}
-			+ ul {
-				@include flex;
-				@include flex-wrap;
-				-webkit-align-self: flex-end;
-				align-self: flex-end;
-				-webkit-align-items: flex-start;
-				align-items: flex-start;
-				margin: -1px -14px -14px;
-				li {
-					width: calc(100%  / 3);
-					padding: 1px;
-					> a {
-						display: block;
-						background: white;
-						color: $slate;
-						padding: 15px;
-						border-bottom: 10px solid $slate;
-						border-radius: 2px;
-						&:hover, &:focus {
-							background: lighten($slate, 15%);
-							color: white;
-							border-color: white;
-						}
-						&:active, &.activated {
-							background: $slate;
-						}
-						span {
-							display: block;
-							font-weight: 600;
-							text-align: center;
-						}
-						.course-name {
-							font-size: 16px;
-							text-transform: uppercase;
-						}
-						.course-title {
-							display: none;
-							margin-top: 15px;
-							max-height: 56px;
-							overflow: hidden;
-							font-size: 24px;
-						}
-					}
-				}
-			}
 		}
 		
 		// HERO
@@ -1331,6 +1286,51 @@
 				}
 				form {
 					display: none;
+					+ ul {
+						@include flex;
+						@include flex-wrap;
+						-webkit-align-self: flex-end;
+						align-self: flex-end;
+						-webkit-align-items: flex-start;
+						align-items: flex-start;
+						margin: -1px -14px -14px;
+						li {
+							width: calc(100%  / 3);
+							padding: 1px;
+							> a {
+								display: block;
+								background: white;
+								color: $slate;
+								padding: 15px;
+								border-bottom: 10px solid $slate;
+								border-radius: 2px;
+								&:hover, &:focus {
+									background: lighten($slate, 15%);
+									color: white;
+									border-color: white;
+								}
+								&:active, &.activated {
+									background: $slate;
+								}
+								span {
+									display: block;
+									font-weight: 600;
+									text-align: center;
+								}
+								.course-name {
+									font-size: 16px;
+									text-transform: uppercase;
+								}
+								.course-title {
+									display: none;
+									margin-top: 15px;
+									max-height: 56px;
+									overflow: hidden;
+									font-size: 24px;
+								}
+							}
+						}
+					}
 				}
 				// DESKTOP CATEGORY CARDS
 				@media screen and (min-width: 768px) {
@@ -2088,6 +2088,75 @@
 				}
 			}
 			&.splash-school-search {
+				.main {
+					> div {
+						width: 100%;
+						.splash-school-results {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							width: 100%;
+							padding: 7.5px;
+							li {
+								width: 100%;
+								padding: 7.5px;
+							}
+						}
+					}
+					.splash-map-stats {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center-vertical;
+						min-height: 150px;
+						> * {
+							width: 100%;
+							h1 {
+								font-size: 48px;
+								font-weight: 600;
+							}
+							h4 {
+								font-size: 20px;
+								font-weight: 600;
+								color: lighten($slate, 15%);
+								text-transform: uppercase;
+							}
+							h2 {
+								font-size: 28px;
+								font-weight: 700;
+							}
+						}
+						> div {
+							padding: 15px;
+						}
+						> ul {
+							padding: 7.5px;
+							li {
+								padding: 7.5px;
+							}
+						}
+					}
+					@media screen and (min-width: 768px) {
+						> div {
+							.splash-school-results {
+								padding: 15px;
+								li {
+									width: 25%;
+									padding: 15px;
+								}
+							}
+						}
+						.splash-map-stats {
+							> div {
+								width: calc(100% - 613px);
+								min-width: 354px;
+							}
+							> ul {
+								@include flex;
+								width: 613px;
+							}
+						}
+					}
+				}
 				> footer {
 					.border {
 						background: white!important;
