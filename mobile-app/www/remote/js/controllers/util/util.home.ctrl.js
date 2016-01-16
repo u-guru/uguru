@@ -40,7 +40,7 @@ angular.module('uguru.util.controllers')
 
       $scope.highlighted_item;
       $scope.courses = [];
-      $scope.activeTabIndex = 2;
+      $scope.activeTabIndex = 1;
       $scope.university = {}
       $scope.search_text = {university:''};
       $scope.profile = {public_mode: true};

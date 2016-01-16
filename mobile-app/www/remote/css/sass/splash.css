@@ -796,21 +796,6 @@
   background: #637074;
 }
 
-@media screen and (min-width: 768px) {
-  .splash-landing > section button {
-    max-width: 300px;
-  }
-  .splash-landing > section > header {
-    height: 25% !important;
-  }
-  .splash-landing > section > header h1 {
-    padding-top: 45px;
-    font-size: 36px;
-    font-weight: 600;
-    text-transform: none !important;
-  }
-}
-
 .splash-landing > section .main {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -854,12 +839,26 @@
   padding-right: 48px;
 }
 
-.splash-landing > section form .input-field label:not(.active) {
-  top: 0;
-}
-
 .splash-landing > section form .input-field .desktop-input-close-icon {
   margin: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section button {
+    max-width: 300px;
+  }
+  .splash-landing > section > header {
+    height: 25% !important;
+  }
+  .splash-landing > section > header h1 {
+    padding-top: 45px;
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: none !important;
+  }
+  .splash-landing > section form .input-field label:not(.active) {
+    top: 0;
+  }
 }
 
 .splash-landing > section.splash-hero {
@@ -2700,10 +2699,6 @@
   background: #69B3A5;
 }
 
-.splash-landing#home-splash > .splash-header .splash-burger {
-  left: 162px !important;
-}
-
 @media screen and (min-width: 768px) {
   .splash-landing#home-splash .splash-logo {
     height: 72px;
@@ -2711,6 +2706,9 @@
   .splash-landing#home-splash .splash-logo svg {
     height: 72px;
     padding: 20px 0 15px;
+  }
+  .splash-landing#home-splash > .splash-header .splash-burger {
+    left: 162px !important;
   }
 }
 
@@ -2740,7 +2738,27 @@
   width: 100%;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results {
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  display: none;
+  width: 100%;
+  padding: 7.5px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop li {
+  width: 100%;
+  padding: 7.5px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2751,19 +2769,75 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  padding: 7.5px;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  margin: -1px -14px 15px;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results li {
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li {
+  width: 50%;
+  padding: 1px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a {
+  display: block;
+  background: white;
+  color: #40484B;
+  padding: 15px;
+  border-bottom: 10px solid #40484B;
+  border-radius: 2px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:hover, .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:focus {
+  background: #637074;
+  color: white !important;
+  border-color: white !important;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:active, .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a.activated {
+  background: #40484B;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a span {
+  display: block;
+  font-weight: 600;
+  text-align: center;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a .school-name {
+  font-size: 16px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a .school-name:first-letter {
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile {
+    display: none;
+  }
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map {
   width: 100%;
-  padding: 7.5px;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing#home-splash > section.splash-school-search .main .splash-map {
+    margin: 0 -13px !important;
+    width: calc(100% + 26px) !important;
+  }
 }
 
 .splash-landing#home-splash > section.splash-school-search .main .splash-map-stats {
@@ -2883,6 +2957,14 @@
 
 .splash-landing#home-splash > section#how-it-works > footer .border:before {
   border-top-color: white !important;
+}
+
+.splash-landing#home-splash > section.splash-categories .splash-bar {
+  background: #69B3A5;
+}
+
+.splash-landing#home-splash > section.splash-categories .splash-bar ul li a.active {
+  color: #69B3A5;
 }
 
 @-webkit-keyframes blink {
