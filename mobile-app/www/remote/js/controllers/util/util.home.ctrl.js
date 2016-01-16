@@ -396,7 +396,7 @@ angular.module('uguru.util.controllers')
       $scope.$on('$ionicView.afterEnter', function() {
 
         var waypointDict = {
-          "how-it-works": {func:null},
+          "how-it-works": {func:null, offset:100},
           "splash-university": {func:null},
           "splash-browse": {func:null},
           "become-guru": {func:null}
@@ -404,7 +404,7 @@ angular.module('uguru.util.controllers')
 
         $timeout(function() {
 
-          ScrollService.initArrWaypoints(waypointDict, "university-splash");
+          ScrollService.initArrWaypoints(waypointDict, "home-splash");
         }, 5000)
       })
 
