@@ -19,7 +19,7 @@
 		</div>
 	</li>
 </ul>
-<div class="splash-sidebar-mobile">
+<div class="splash-sidebar-mobile ng-class:{'hide': !pageLinks} ">
     <ul>
         <li ng-repeat="link in pageLinks" ng-if='!link.sublinks'>
             <a ng-if="link.href">{{link.name}}</a>

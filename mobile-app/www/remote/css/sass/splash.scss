@@ -1639,9 +1639,7 @@
 			height: 100%;
 			background: $smoke;
 			text-align: center;
-<<<<<<< HEAD
-			> div {
-=======
+
 			&.active {
 				> div {
 					@include transition(.3s ease-in-out);
@@ -1653,8 +1651,7 @@
 					margin-bottom: 7.5%;
 				}
 			}
-			> div { 
->>>>>>> f7a73477c49cfc8e1cb627eab2eae17a5a019b51
+			> div {
 				width: 100%;
 				margin-bottom: 14%;
 			}
