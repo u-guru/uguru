@@ -366,14 +366,16 @@
 			}
 		}
 	}
-	.splash-header.active {
-		@include transition(.3s ease-in-out);
-		@include opacity(1);
-		@include translate-y(0);
-		@include animation-name(toast-pop);
-		@include animation-duration(.4s);
-		@include animation-iteration-count(1);
-		margin-top: 94px;
+	@media screen and (min-width: 768px) {
+		.splash-header.active {
+			@include transition(.3s ease-in-out);
+			@include opacity(1);
+			@include translate-y(0);
+			@include animation-name(toast-pop);
+			@include animation-duration(.4s);
+			@include animation-iteration-count(1);
+			margin-top: 94px;
+		}
 	}
 		
 	// CONTENT SECTIONS
@@ -592,15 +594,17 @@
 			background-position: center;
 			background-size: cover;
 			text-align: center;
-			&.active {
-				> div {
-					@include transition(.3s ease-in-out);
-					@include opacity(1);
-					@include translate-y(0);
-					@include animation-name(toast-pop);
-					@include animation-duration(.4s);
-					@include animation-iteration-count(1);
-					margin-bottom: 7.5%;
+			@media screen and (min-width: 768px) {
+				&.active {
+					> div {
+						@include transition(.3s ease-in-out);
+						@include opacity(1);
+						@include translate-y(0);
+						@include animation-name(toast-pop);
+						@include animation-duration(.4s);
+						@include animation-iteration-count(1);
+						margin-bottom: 7.5%;
+					}
 				}
 			}
 			> div { 
@@ -2071,7 +2075,7 @@
 				background: $shamrock;
 			}
 		}
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 680px) {
 			.splash-logo {
 				height: 72px;
 				svg {
@@ -2079,6 +2083,8 @@
 					padding: 20px 0 15px;
 				}
 			}
+		}
+		@media screen and (min-width: 860px) {
 			> .splash-header {
 				.splash-burger {
 					left: 162px!important;
@@ -2087,6 +2093,14 @@
 		}
 		> section {
 			&.splash-hero {
+				.backpack .backpack-color, .support .support-color {
+			        fill: $shamrock!important;
+			    }
+				.backpack, .support {
+					* {
+						stroke: $slate!important;
+					}
+				}
 				h1 {
 					&:before {
 						@include opacity(.75);
@@ -2121,7 +2135,7 @@
 							width: 100%;
 							padding: 7.5px;
 							li {
-								width: 100%;
+								width: 25%;
 								padding: 7.5px;
 							}
 						}

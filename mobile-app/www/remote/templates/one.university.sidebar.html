@@ -1,5 +1,6 @@
 <header>
-	<a class="splash-logo" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+	<a class="splash-logo" ng-if="page.sidebar.university" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+	<a class="splash-logo" ng-if="!page.sidebar.university" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-title.html'"></a>
 	<a class='cta-modal-close close-button' ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/main/plus-circle.html'"></a>
 </header>
 <ul class="splash-sidebar-desktop">
