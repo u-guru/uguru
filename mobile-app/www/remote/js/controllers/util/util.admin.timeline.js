@@ -34,7 +34,7 @@ angular.module('uguru.util.controllers')
 				{"Update University.js":true},
 				{"Add tiny_name to university":true},
 				{"Support Library":true},
-				{"Home Page Sidebar + link in-app-views":false},
+				{"Home Page Sidebar + link in-app-views":true},
 				{"Helicopter Transition":false},
 				{"FAQ":false},
 				{"Pricing + other page animations":false},

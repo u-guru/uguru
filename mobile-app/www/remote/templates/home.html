@@ -145,12 +145,12 @@
 	                        </form>
 						</div>
                         <ul class="splash-school-results">
-                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index'>
+                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)' id='cta-box-university-card-{{university.id}}'>
 								<div class="fx-fade-down fx-dur-500 fx-ease-back school-card">
 									<svg class="rect" viewBox="0 0 300 175">
 										<rect x="0" y="0" width="300" height="175" fill="none"></rect>
 									</svg>
-									<input type="checkbox" ng-click='selectUniversityAndTransition(university, $index)' />
+									<input type="checkbox"/>
 									<div class="school-card-inside">
 										<div class="school-card-top" style="background-color: {{university.school_color_one}};">
 											<span class="school-card-icon" style="background-image: url({{university.svg_url || university.seal_url || university.logo_url}}); border-color: {{university.school_color_one}};">

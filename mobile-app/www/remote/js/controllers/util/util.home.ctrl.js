@@ -45,7 +45,7 @@ angular.module('uguru.util.controllers')
       $scope.search_text = {university:''};
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
-      $scope.page.sidebar = {show:true};
+      $scope.page.sidebar = {show:false};
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
@@ -59,8 +59,11 @@ angular.module('uguru.util.controllers')
         }
       }
 
-      $scope.selectUniversityAndTransition = function(university) {
-        alert('should transition to ' + university.short_name || university.name + ' with id ' + university.id);
+
+
+      $scope.selectUniversityAndTransition = function(university, $event, $index) {
+        var pageLoader = document.querySelector('cta-modal-page-loader');
+        AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
       }
 
       $scope.peelCard = function($event, item, type) {
@@ -437,6 +440,15 @@ angular.module('uguru.util.controllers')
         //@samir - todo, implement when scroll down to the section
         initiateCounters();
       }
+
+
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/page.loader.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.pageLoaderModal = modal;
+        });
 
 
       $scope.$on('$ionicView.afterEnter', function() {

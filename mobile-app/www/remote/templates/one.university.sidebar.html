@@ -9,7 +9,7 @@
 			<a ng-if="link.ngClickFunc" id='{{link.id}}' ng-click="link.ngClickFunc()">{{link.name}}</a>
 		</div>
 		<div ng-if='link.sublinks'>
-            <h2>{{university.short_name}}</h2>
+            <h2 >{{university.short_name}}</h2>
 			<ul>
 				<li ng-repeat='link in link.sublinks'>
                     <a ng-if="link.href">{{link.name}}</a>
