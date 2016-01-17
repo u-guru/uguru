@@ -51,7 +51,7 @@ angular.module('uguru.util.controllers')
 			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
 
 			resultDict.production = [
-				{"Complete all pages/components":false},
+				{"Complete all pages/components":true},
 				{"Map Finalize + customize map":false},
 				{"Home page scroll spec + implement":false},
 				{"Content card spacing + spec":false},
