@@ -45,7 +45,7 @@ angular.module('uguru.util.controllers')
 				{"Code Cleanup": false},
 				{"Category Content": false},
 				{"Content": false},
-				{"image url + static assets conversion":false}.
+				{"image url + static assets conversion":false}
 			];
 
 			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
