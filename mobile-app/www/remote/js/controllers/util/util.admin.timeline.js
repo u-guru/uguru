@@ -45,16 +45,17 @@ angular.module('uguru.util.controllers')
 				{"Code Cleanup": false},
 				{"Category Content": false},
 				{"Content": false},
-				{"image url + static assets conversion":false}.
+				{"image url + static assets conversion":false}
 			];
 
 			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
 
 			resultDict.production = [
-				{"Complete all pages/components":false},
+				{"Complete all pages/components":true},
 				{"Map Finalize + customize map":false},
 				{"Home page scroll spec + implement":false},
 				{"Content card spacing + spec":false},
+				{"Tab bar":false},
 				{"Cross platform":false},
 				{"Fluidity":false},
 				{"Resolve Categories":false},

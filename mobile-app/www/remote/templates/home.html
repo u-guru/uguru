@@ -8,8 +8,28 @@
 <!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
 	<ion-view class='bg-smoke'>
 		<main id='home-splash' class='splash-landing hs-view full-xy'>
+            <!-- START Home Page CTAs -->
+
             <aside id='cta-modal-sidebar' ng-if='page.sidebar.show' class='splash-sidebar fx-ease-none hide ng-class:{"show":page.sidebar.show, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+
             <ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'"> </ion-pane>
+
+            <ion-pane id='cta-modal-pricing' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/pricing.html'"> </ion-pane>
+
+            <ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/team.html'"> </ion-pane>
+
+            <ion-pane id='cta-modal-apply' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/apply.html'"> </ion-pane>
+
+            <ion-pane id='cta-modal-FAQ' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index'>
+                <a id='guru-profile-cta-close' class='cta-modal-close close-button high-z-index'>
+                    <svg viewBox="0 0 100 100">
+                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+                <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe>
+            </ion-pane>
+
+            <!-- END Home Page CTAS -->
 
 			<header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
 				<div>
@@ -49,7 +69,7 @@
 					</a>
 				</div>
 			</header>
-			
+
             <section id='splash-home' class='splash-hero relative ng-class:{"active": becomeGuruHeaderActive}' style="background-image: url('{{img_base}}./img/main-bg-cambridge.jpg');">
                 <a id="splash-footer-support" class="splash-footer-link">
 					<span ng-include="img_base + 'templates/svg/support.html'"></span>
