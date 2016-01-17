@@ -23,11 +23,11 @@
 				</div>
 				<label for="pf-course-check">This is a university course</label>
 			</div>
-			<div class='pf-item-search' ng-controller='CoursesController'>
-				<div class='pf-item-selected relative hide ng-class:{"show":portfolio_item.course.id}' ng-if="portfolio_item.course.id">
+			<div ng-if='!portfolio_item.id' class='pf-item-search' ng-controller='CoursesController'>
+				<div name='select-course' class='pf-item-selected relative hide ng-class:{"show":portfolio_item.course.id}' ng-if="portfolio_item.course.id">
 					<h2>{{portfolio_item.course.short_name}}</h2>
 					<h1>{{portfolio_item.course.full_name || portfolio_item.course.title}}</h1>
-					<a class="side-icon desktop-input-close-icon activated" ng-click="clearCourseAndFocusInput()">
+					<a name='course-clear' class="side-icon desktop-input-close-icon activated" ng-click="clearCourseAndFocusInput()">
 						<i class="icon ion-close-circled text-white"></i>
 					</a>
 				</div>
@@ -59,7 +59,7 @@
 				<div class='course-none pf-course-none hide ng-class:{"show":search_text.input_focused}'>
 					No results, try again?
 				</div>
-				<ul class='course-list pf-course-list hide ng-class:{"show":search_text.input_focused && courses && courses.length}'>
+				<ul name='course-list' class='course-list pf-course-list hide ng-class:{"show":search_text.input_focused && courses && courses.length}'>
 					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 9 track by course.id'>
 						<a class="hide ng-class:{'show':course.full_name || course.title}" ng-click='setCourseAndClearInput(course)'>
 							<span>
@@ -73,7 +73,7 @@
 			<!-- Not needed for shops for now-->
 			<input ng-if='false' class="pf-title-edit input-outline" placeholder="Shop Item Title" ng-model='portfolio_item.title' />
 			<!-- -->
-			<textarea class="input-outline" ng-model='portfolio_item.description' placeholder="Description"></textarea>
+			<textarea name='portfolio.description' class="input-outline" ng-model='portfolio_item.description' placeholder="Description"></textarea>
 			<div class="pf-tag-edit">
 				<!-- auto-generated tag, not selected -->
 				<input class="chip tag-auto" disabled value="tag" size="2" />
@@ -225,6 +225,6 @@
 				</ul>
 			</div>
 		</div>
-		<button id='save-portfolio-item-button' ng-click='savePortfolioItem(portfolio_item)'>Save</button>
+		<button name='portfolio-save-button' id='save-portfolio-item-button' ng-click='savePortfolioItem(portfolio_item)'>Save</button>
 	</section>
 </div>

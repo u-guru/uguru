@@ -29,7 +29,7 @@
 </main>
 
 <div ng-if='desktopMode'>
-	<main class='desktop-skills subcategory desktop-mode desktop-search desktop-guru-onboarding ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
+	<main name='desktop-categories' class='desktop-skills subcategory desktop-mode desktop-search desktop-guru-onboarding ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
 		<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 		<header class="desktop-header">
 			<a></a>

@@ -36,15 +36,15 @@
     			<!-- radio input for remember me -->
     			<div class="desktop-login-buttons">
     				<button ng-click='connectWithFacebook()' class="bg-fb caps ng-class:{'hide':root.vars.forgotPassword}">Login with Facebook</button>
-    				<button id='login-button' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
+    				<button name='loginUser' id='login-button' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
     				<button class="bg-charcoal caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='root.vars.forgotPassword = false;'>Cancel</button>
     				<button class="bg-shamrock caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='attemptToResetPassword()'>Submit</button>
-    				<button class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
+    				<button name='completeSignup' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
     			</div>
     		</form>
     	</div>
         <a class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' ng-click="root.vars.forgotPassword = true;">Forgot Your Password?</a>
         <a class="form-link" ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode && !root.vars.forgotPassword'>Have an account?</a>
-        <a class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>Create an account</a>
+        <a name='createAccount' class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>Create an account</a>
     </section>
 </div>

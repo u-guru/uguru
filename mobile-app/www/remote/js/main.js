@@ -11,6 +11,8 @@ var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
+  BASE_URL = _ipaddress;
+  REST_URL = "http://localhost:5000";
   // BASE_URL = _ipaddress;
   // REST_URL = "http://localhost:5000"
 

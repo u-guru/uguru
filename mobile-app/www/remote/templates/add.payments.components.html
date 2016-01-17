@@ -82,9 +82,9 @@
           </form>
 
 
-      <button class='bottom-0 bg-slate semibold absolute hide ng-class:{"show":!root.vars.cardForm.view_only}' ng-click='savePayment()'>Save</button>
-      <button style='bottom:64px;'class='bg-slate semibold absolute hide ng-class:{"show":root.vars.cardForm.view_only}' ng-click='setDefaultTransfer()'>Set Default</button>
-      <button class='bg-auburn semibold absolute bottom-0 hide ng-class:{"show":root.vars.cardForm.view_only}' ng-click='removeCard()'>Remove Card</button>
+      <button name='save_card-btn' class='bottom-0 bg-slate semibold absolute hide ng-class:{"show":!root.vars.cardForm.view_only}' ng-click='savePayment()'>Save</button>
+      <button name='default_card-btn' style='bottom:64px;'class='bg-slate semibold absolute hide ng-class:{"show":root.vars.cardForm.view_only}' ng-click='setDefaultTransfer()'>Set Default</button>
+      <button name='remove-btn' class='bg-auburn semibold absolute bottom-0 hide ng-class:{"show":root.vars.cardForm.view_only}' ng-click='removeCard()'>Remove Card</button>
     </div>
   </div>
 
