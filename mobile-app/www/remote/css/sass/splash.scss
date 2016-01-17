@@ -2029,6 +2029,23 @@
 	}
 	
 	&#home-splash {
+		.splash-sidebar {
+			.splash-sidebar-mobile {
+				.splash-sidebar-school-links {
+					li {
+						a {
+							background: $shamrock;
+							&:hover, &:focus {
+								background: lighten($shamrock, 15%);
+							}
+							&:active, &.active {
+								background: lighten($slate, 15%);
+							}
+						}
+					}
+				}
+			}
+		}
 		.splash-logo {
 			display: block!important;
 			margin: 0!important;

@@ -45,7 +45,7 @@ angular.module('uguru.util.controllers')
       $scope.search_text = {university:''};
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
-      $scope.page.sidebar = {show:true};
+      $scope.page.sidebar = {show:true, university:false};
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
