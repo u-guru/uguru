@@ -138,6 +138,7 @@ function GUtilService() {
         map: map,
         icon: getRelevantIcon(objIndex.school_color_one, objIndex.school_color_two, ['cafe']) , //cant edit the icon css
         labelContent: pictureLabel,
+        labelStyle: {},
         labelAnchor: new google.maps.Point(50,0),
         labelClass: 'university-svg-icon', // the CSS class for the label
         labelInBackground: false
