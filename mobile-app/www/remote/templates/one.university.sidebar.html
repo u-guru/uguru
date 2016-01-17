@@ -1,10 +1,10 @@
 <header>
-	<a class="splash-logo" ng-if="page.sidebar.university" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
-	<a class="splash-logo" ng-if="!page.sidebar.university" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-title.html'"></a>
+	<a class="splash-logo" ng-if="page.sidebar.university && page.sidebar.show" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+	<a class="splash-logo" ng-if="!page.sidebar.university && page.sidebar.show" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-title.html'"></a>
 	<a class='cta-modal-close close-button' ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/main/plus-circle.html'"></a>
 </header>
 <ul class="splash-sidebar-desktop">
-	<li ng-repeat="link in pageLinks" class='fx-fade-left fx-dur-1500 fx-stagger-500 ng-class'>
+	<li ng-repeat="link in pageLinks" class=''>
 		<div ng-if='!link.sublinks'>
 			<a id='{{link.id}}' ng-if="!link.ngClickFunc">{{link.name}}</a>
 			<a id='{{link.id}}' ng-if="link.ngClickFunc" ng-click="link.ngClickFunc()">{{link.name}}</a>

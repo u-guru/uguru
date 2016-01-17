@@ -44,9 +44,20 @@ function GUtilService() {
       // anchor: new google.maps.Point(0, 0),
       strokeWeight: !stroke_weight || 3
     }
-
-
     return templatedPathValue;
+  }
+
+  function getInvisibleIconPath() {
+    return {
+      path: "M33.4454342",
+      fillOpacity: 0,
+      strokeOpacity:0,
+      rotation: 0,
+      scale:0.01,
+      strokeColor: "transparent",
+      fillColor: "transparent",
+      strokeWeight: 0
+    }
   }
 
   function getNearestLocationOneMarker(map, lat, lng, scope) {
@@ -119,6 +130,12 @@ function GUtilService() {
     return getMapIconPath(randItem, color_one, color_two, 5);
   }
 
+  var convertSVGStringIntoDataUri = function(svg_string) {
+    var precursorFormat = "data:image/svg+xml,";
+    var result = precursorFormat + encodeURIComponent(svg_string);
+    return result;
+  }
+
   // (map, university_arr, scope.map.markers, {icon_type:"university_penant", label_color:"white", custom_class})
   var initSeveralMarkersWithLabel = function(map, obj_arr, marker_arr, options, callback) {
     result_arr = [];
@@ -127,16 +144,33 @@ function GUtilService() {
       var icon = getRelevantIcon(objIndex.school_color_dark, objIndex.school_color_light, options.icon_type);
 
 
-      // var pictureLabel = document.createElement("div");
-      picture_src = objIndex.svg_url || objIndex.seal_url || objIndex.logo_url;
-      // pictureLabel.style.backgroundImage = 'url("' + picture_src + '")';
+
+
       var pictureLabel = document.createElement("img");
-      pictureLabel.src = options.img_base + 'templates/svg/map/cafe.svg';
+      if (objIndex.school_tiny_name && objIndex.school_tiny_name.length) {
+        var universityName = objIndex.school_tiny_name
+      }
+      else if (objIndex.short_name && objIndex.short_name.length) {
+        var universityName = objIndex.short_name;
+      } else if (objIndex.name && objIndex.name.length) {
+        var universityName = objIndex.name;
+      }
+
+
+      if (universityName.length > 4) {
+        universityName = universityName.substring(0,4);
+      }
+
+      var svgImage = "<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + objIndex.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='#40484B'></path><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' fill='none' stroke='#FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + objIndex.school_color_light || '#FFFFFF' +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"
+      var pennantPaths = [];
+      pictureLabel.src = convertSVGStringIntoDataUri(svgImage, options);
+
+
 
       var indexmarker = new MarkerWithLabel({
         position: latCoordToGoogleLatLng(objIndex.latitude, objIndex.longitude),
         map: map,
-        icon: getRelevantIcon(objIndex.school_color_one, objIndex.school_color_two, ['cafe']) , //cant edit the icon css
+        icon:  getInvisibleIconPath(), //cant edit the icon css
         labelContent: pictureLabel,
         labelStyle: {},
         labelAnchor: new google.maps.Point(50,0),

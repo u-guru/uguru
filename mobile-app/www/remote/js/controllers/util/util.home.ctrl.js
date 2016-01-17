@@ -443,13 +443,6 @@ angular.module('uguru.util.controllers')
 
 
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/page.loader.modal.html', {
-          scope: $scope,
-          animation: 'slide-in-up'
-        }).then(function(modal) {
-          $scope.pageLoaderModal = modal;
-        });
-
 
       $scope.$on('$ionicView.afterEnter', function() {
 
