@@ -45,7 +45,7 @@ angular.module('uguru.util.controllers')
       $scope.search_text = {university:''};
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
-      $scope.page.sidebar = {show:false};
+      $scope.page.sidebar = {show:true};
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
@@ -253,12 +253,12 @@ angular.module('uguru.util.controllers')
                 {name:"Become a Guru", ngClickFunc:becomeGuruFunc}
               ]
           },
-          {name:"Meet the Team", ngClickFunc:triggerTeamCTA},
+          {name:"Meet the Team", id:'cta-box-team'},
           // {name:"Timeline", href:"#/timeline"},
-          {name:"FAQ", ngClickFunc:triggerFAQCTA},
-          {name:"Pricing", ngClickFunc:triggerPricingCTA},
-          {name: "Apply", ngClickFunc:triggerApplyCTA},
-          {name: "Support", ngClickFunc:triggerSupportBox}
+          {name:"FAQ", id:'cta-box-FAQ'},
+          {name:"Pricing",  id:'cta-box-pricing'},
+          {name: "Apply", id:'cta-box-apply'},
+          {name: "Support", id:'cta-box-support'}
         ];
       }
 
@@ -393,6 +393,11 @@ angular.module('uguru.util.controllers')
         CTAService.initSingleCTA('#cta-box-household', '#home-splash', showCTACallback("household"));
         CTAService.initSingleCTA('#cta-box-photography', '#home-splash', showCTACallback("photography"));
         CTAService.initSingleCTA('#cta-box-tech', '#home-splash', showCTACallback("tech"));
+        //sidebar
+        CTAService.initSingleCTA('#cta-box-pricing', '#home-splash');
+        CTAService.initSingleCTA('#cta-box-FAQ', '#home-splash');
+        CTAService.initSingleCTA('#cta-box-apply', '#home-splash');
+        CTAService.initSingleCTA('#cta-box-team', '#home-splash');
       }
 
       var runMobileOnlyFunctions = function() {
