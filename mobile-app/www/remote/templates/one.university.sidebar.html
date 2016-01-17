@@ -1,15 +1,17 @@
 <header>
-	<a class="splash-logo" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+	<a class="splash-logo" ng-if="page.sidebar.university" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+	<a class="splash-logo" ng-if="!page.sidebar.university" ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/logo-title.html'"></a>
 	<a class='cta-modal-close close-button' ng-click='toggleSidebar()' ng-include="img_base + 'templates/svg/main/plus-circle.html'"></a>
 </header>
 <ul class="splash-sidebar-desktop">
 	<li ng-repeat="link in pageLinks" class='fx-fade-left fx-dur-1500 fx-stagger-500 ng-class'>
 		<div ng-if='!link.sublinks'>
 			<a id='{{link.id}}' ng-if="!link.ngClickFunc">{{link.name}}</a>
-			<a ng-if="link.ngClickFunc" id='{{link.id}}' ng-click="link.ngClickFunc()">{{link.name}}</a>
+			<a id='{{link.id}}' ng-if="link.ngClickFunc" ng-click="link.ngClickFunc()">{{link.name}}</a>
 		</div>
 		<div ng-if='link.sublinks'>
-            <h2 >{{university.short_name}}</h2>
+            <h2 ng-if="page.sidebar.university">{{university.short_name}}</h2>
+
 			<ul>
 				<li ng-repeat='link in link.sublinks'>
                     <a ng-if="link.href">{{link.name}}</a>
@@ -22,12 +24,12 @@
 <div class="splash-sidebar-mobile">
     <ul>
         <li ng-repeat="link in pageLinks" ng-if='!link.sublinks'>
-            <a ng-if="link.href">{{link.name}}</a>
-			<a ng-if="link.ngClickFunc" ng-click="link.ngClickFunc()">{{link.name}}</a>
+			<a id='{{link.id}}' ng-if="!link.ngClickFunc">{{link.name}}</a>
+			<a id='{{link.id}}' ng-if="link.ngClickFunc" ng-click="link.ngClickFunc()">{{link.name}}</a>
         </li>
     </ul>
     <ul class="splash-sidebar-school-links" ng-repeat="link in pageLinks" ng-if='link.sublinks'>
-        <li><h2>{{university.short_name}}</h2></li>
+        <li><h2>{{university.short_name || 'Home'}}</h2></li>
         <li ng-repeat='link in link.sublinks'>
             <a ng-if="link.href">{{link.name}}</a>
             <a ng-if="link.ngClickFunc" ng-click="link.ngClickFunc()">{{link.name}}</a>

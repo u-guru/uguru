@@ -366,14 +366,16 @@
 			}
 		}
 	}
-	.splash-header.active {
-		@include transition(.3s ease-in-out);
-		@include opacity(1);
-		@include translate-y(0);
-		@include animation-name(toast-pop);
-		@include animation-duration(.4s);
-		@include animation-iteration-count(1);
-		margin-top: 94px;
+	@media screen and (min-width: 768px) {
+		.splash-header.active {
+			@include transition(.3s ease-in-out);
+			@include opacity(1);
+			@include translate-y(0);
+			@include animation-name(toast-pop);
+			@include animation-duration(.4s);
+			@include animation-iteration-count(1);
+			margin-top: 94px;
+		}
 	}
 		
 	// CONTENT SECTIONS
@@ -533,20 +535,6 @@
 				background: lighten($slate, 15%);
 			}
 		}
-		@media screen and (min-width: 768px) {
-			button {
-				max-width: 300px;
-			}
-			> header {
-				height: 25%!important;
-				h1 {
-					padding-top: 45px;
-					font-size: 36px;
-					font-weight: 600;
-					text-transform: none!important;
-				}
-			}
-		}
 		.main {
 			@include flex;
 			@include flex-wrap;
@@ -570,11 +558,29 @@
 				input {
 					padding-right: 48px;
 				}
-				label:not(.active) {
-					top: 0;
-				}
 				.desktop-input-close-icon {
 					margin: 0!important;
+				}
+			}
+		}
+		@media screen and (min-width: 768px) {
+			button {
+				max-width: 300px;
+			}
+			> header {
+				height: 25%!important;
+				h1 {
+					padding-top: 45px;
+					font-size: 36px;
+					font-weight: 600;
+					text-transform: none!important;
+				}
+			}
+			form {
+				.input-field {
+					label:not(.active) {
+						top: 0;
+					}
 				}
 			}
 		}
@@ -588,15 +594,17 @@
 			background-position: center;
 			background-size: cover;
 			text-align: center;
-			&.active {
-				> div {
-					@include transition(.3s ease-in-out);
-					@include opacity(1);
-					@include translate-y(0);
-					@include animation-name(toast-pop);
-					@include animation-duration(.4s);
-					@include animation-iteration-count(1);
-					margin-bottom: 7.5%;
+			@media screen and (min-width: 768px) {
+				&.active {
+					> div {
+						@include transition(.3s ease-in-out);
+						@include opacity(1);
+						@include translate-y(0);
+						@include animation-name(toast-pop);
+						@include animation-duration(.4s);
+						@include animation-iteration-count(1);
+						margin-bottom: 7.5%;
+					}
 				}
 			}
 			> div { 
@@ -2025,6 +2033,23 @@
 	}
 	
 	&#home-splash {
+		.splash-sidebar {
+			.splash-sidebar-mobile {
+				.splash-sidebar-school-links {
+					li {
+						a {
+							background: $shamrock;
+							&:hover, &:focus {
+								background: lighten($shamrock, 15%);
+							}
+							&:active, &.active {
+								background: lighten($slate, 15%);
+							}
+						}
+					}
+				}
+			}
+		}
 		.splash-logo {
 			display: block!important;
 			margin: 0!important;
@@ -2049,11 +2074,8 @@
 				@include opacity(.75);
 				background: $shamrock;
 			}
-			.splash-burger {
-				left: 162px!important;
-			}
 		}
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 680px) {
 			.splash-logo {
 				height: 72px;
 				svg {
@@ -2062,8 +2084,23 @@
 				}
 			}
 		}
+		@media screen and (min-width: 860px) {
+			> .splash-header {
+				.splash-burger {
+					left: 162px!important;
+				}
+			}
+		}
 		> section {
 			&.splash-hero {
+				.backpack .backpack-color, .support .support-color {
+			        fill: $shamrock!important;
+			    }
+				.backpack, .support {
+					* {
+						stroke: $slate!important;
+					}
+				}
 				h1 {
 					&:before {
 						@include opacity(.75);
@@ -2091,16 +2128,73 @@
 				.main {
 					> div {
 						width: 100%;
-						.splash-school-results {
-							@include flex;
+						.splash-school-desktop {
 							@include flex-wrap;
 							@include flex-center;
+							display: none;
 							width: 100%;
 							padding: 7.5px;
 							li {
-								width: 100%;
+								width: 25%;
 								padding: 7.5px;
 							}
+						}
+						.splash-school-mobile {
+							@include flex;
+							@include flex-wrap;
+							-webkit-align-self: flex-end;
+							align-self: flex-end;
+							-webkit-align-items: flex-start;
+							align-items: flex-start;
+							margin: -1px -14px 15px;
+							li {
+								width: 50%;
+								padding: 1px;
+								> a {
+									display: block;
+									background: white;
+									color: $slate;
+									padding: 15px;
+									border-bottom: 10px solid $slate;
+									border-radius: 2px;
+									&:hover, &:focus {
+										background: lighten($slate, 15%);
+										color: white!important;
+										border-color: white!important;
+									}
+									&:active, &.activated {
+										background: $slate;
+									}
+									span {
+										display: block;
+										font-weight: 600;
+										text-align: center;
+									}
+									.school-name {
+										font-size: 16px;
+										&:first-letter {
+											text-transform: uppercase;
+										}
+									}
+								}
+							}
+						}
+						@media screen and (min-width: 768px) {
+							.splash-school-desktop {
+								@include flex;
+							}
+							.splash-school-mobile {
+								display: none;
+							}
+						}
+					}
+					.splash-map {
+						width: 100%;
+					}
+					@media screen and (max-width: 768px) {
+						.splash-map {
+							margin: 0 -13px!important;
+							width: calc(100% + 26px)!important;
 						}
 					}
 					.splash-map-stats {
@@ -2196,6 +2290,14 @@
 						&:before {
 							border-top-color: white!important;
 						}
+					}
+				}
+			}
+			&.splash-categories {
+				.splash-bar {
+					background: $shamrock;
+					ul li a.active {
+						color: $shamrock;
 					}
 				}
 			}

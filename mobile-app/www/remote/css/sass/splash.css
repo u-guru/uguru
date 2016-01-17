@@ -526,32 +526,34 @@
   }
 }
 
-.splash-landing .splash-header.active {
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  filter: alpha(opacity=100);
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
-  transform: translateY(0);
-  -webkit-animation-name: toast-pop;
-  -moz-animation-name: toast-pop;
-  -o-animation-name: toast-pop;
-  animation-name: toast-pop;
-  -webkit-animation-duration: 0.4s;
-  -moz-animation-duration: 0.4s;
-  -o-animation-duration: 0.4s;
-  animation-duration: 0.4s;
-  -webkit-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -o-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  margin-top: 94px;
+@media screen and (min-width: 768px) {
+  .splash-landing .splash-header.active {
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-name: toast-pop;
+    -moz-animation-name: toast-pop;
+    -o-animation-name: toast-pop;
+    animation-name: toast-pop;
+    -webkit-animation-duration: 0.4s;
+    -moz-animation-duration: 0.4s;
+    -o-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    margin-top: 94px;
+  }
 }
 
 .splash-landing > section {
@@ -796,21 +798,6 @@
   background: #637074;
 }
 
-@media screen and (min-width: 768px) {
-  .splash-landing > section button {
-    max-width: 300px;
-  }
-  .splash-landing > section > header {
-    height: 25% !important;
-  }
-  .splash-landing > section > header h1 {
-    padding-top: 45px;
-    font-size: 36px;
-    font-weight: 600;
-    text-transform: none !important;
-  }
-}
-
 .splash-landing > section .main {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -854,12 +841,26 @@
   padding-right: 48px;
 }
 
-.splash-landing > section form .input-field label:not(.active) {
-  top: 0;
-}
-
 .splash-landing > section form .input-field .desktop-input-close-icon {
   margin: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section button {
+    max-width: 300px;
+  }
+  .splash-landing > section > header {
+    height: 25% !important;
+  }
+  .splash-landing > section > header h1 {
+    padding-top: 45px;
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: none !important;
+  }
+  .splash-landing > section form .input-field label:not(.active) {
+    top: 0;
+  }
 }
 
 .splash-landing > section.splash-hero {
@@ -883,32 +884,34 @@
   text-align: center;
 }
 
-.splash-landing > section.splash-hero.active > div {
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  filter: alpha(opacity=100);
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
-  transform: translateY(0);
-  -webkit-animation-name: toast-pop;
-  -moz-animation-name: toast-pop;
-  -o-animation-name: toast-pop;
-  animation-name: toast-pop;
-  -webkit-animation-duration: 0.4s;
-  -moz-animation-duration: 0.4s;
-  -o-animation-duration: 0.4s;
-  animation-duration: 0.4s;
-  -webkit-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -o-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  margin-bottom: 7.5%;
+@media screen and (min-width: 768px) {
+  .splash-landing > section.splash-hero.active > div {
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-name: toast-pop;
+    -moz-animation-name: toast-pop;
+    -o-animation-name: toast-pop;
+    animation-name: toast-pop;
+    -webkit-animation-duration: 0.4s;
+    -moz-animation-duration: 0.4s;
+    -o-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    margin-bottom: 7.5%;
+  }
 }
 
 .splash-landing > section.splash-hero > div {
@@ -2678,6 +2681,18 @@
   font-weight: 400;
 }
 
+.splash-landing#home-splash .splash-sidebar .splash-sidebar-mobile .splash-sidebar-school-links li a {
+  background: #69B3A5;
+}
+
+.splash-landing#home-splash .splash-sidebar .splash-sidebar-mobile .splash-sidebar-school-links li a:hover, .splash-landing#home-splash .splash-sidebar .splash-sidebar-mobile .splash-sidebar-school-links li a:focus {
+  background: #9ccdc3;
+}
+
+.splash-landing#home-splash .splash-sidebar .splash-sidebar-mobile .splash-sidebar-school-links li a:active, .splash-landing#home-splash .splash-sidebar .splash-sidebar-mobile .splash-sidebar-school-links li a.active {
+  background: #637074;
+}
+
 .splash-landing#home-splash .splash-logo {
   display: block !important;
   margin: 0 !important;
@@ -2700,11 +2715,7 @@
   background: #69B3A5;
 }
 
-.splash-landing#home-splash > .splash-header .splash-burger {
-  left: 162px !important;
-}
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 680px) {
   .splash-landing#home-splash .splash-logo {
     height: 72px;
   }
@@ -2712,6 +2723,20 @@
     height: 72px;
     padding: 20px 0 15px;
   }
+}
+
+@media screen and (min-width: 860px) {
+  .splash-landing#home-splash > .splash-header .splash-burger {
+    left: 162px !important;
+  }
+}
+
+.splash-landing#home-splash > section.splash-hero .backpack .backpack-color, .splash-landing#home-splash > section.splash-hero .support .support-color {
+  fill: #69B3A5 !important;
+}
+
+.splash-landing#home-splash > section.splash-hero .backpack *, .splash-landing#home-splash > section.splash-hero .support * {
+  stroke: #40484B !important;
 }
 
 .splash-landing#home-splash > section.splash-hero h1:before {
@@ -2740,7 +2765,27 @@
   width: 100%;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results {
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  display: none;
+  width: 100%;
+  padding: 7.5px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop li {
+  width: 25%;
+  padding: 7.5px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2751,19 +2796,75 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  padding: 7.5px;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  margin: -1px -14px 15px;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results li {
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li {
+  width: 50%;
+  padding: 1px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a {
+  display: block;
+  background: white;
+  color: #40484B;
+  padding: 15px;
+  border-bottom: 10px solid #40484B;
+  border-radius: 2px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:hover, .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:focus {
+  background: #637074;
+  color: white !important;
+  border-color: white !important;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:active, .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a.activated {
+  background: #40484B;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a span {
+  display: block;
+  font-weight: 600;
+  text-align: center;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a .school-name {
+  font-size: 16px;
+}
+
+.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a .school-name:first-letter {
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile {
+    display: none;
+  }
+}
+
+.splash-landing#home-splash > section.splash-school-search .main .splash-map {
   width: 100%;
-  padding: 7.5px;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing#home-splash > section.splash-school-search .main .splash-map {
+    margin: 0 -13px !important;
+    width: calc(100% + 26px) !important;
+  }
 }
 
 .splash-landing#home-splash > section.splash-school-search .main .splash-map-stats {
@@ -2883,6 +2984,14 @@
 
 .splash-landing#home-splash > section#how-it-works > footer .border:before {
   border-top-color: white !important;
+}
+
+.splash-landing#home-splash > section.splash-categories .splash-bar {
+  background: #69B3A5;
+}
+
+.splash-landing#home-splash > section.splash-categories .splash-bar ul li a.active {
+  color: #69B3A5;
 }
 
 @-webkit-keyframes blink {

@@ -55,8 +55,8 @@
                     </svg>
                 </a>
 
-                <a ng-click='scrollToSection("#how-it-works")'>How It Works</a>
 				<a ng-click='scrollToSection("#splash-university")'>University</a>
+                <a ng-click='scrollToSection("#how-it-works")'>How It Works</a>
                 <a ng-click='scrollToSection("#splash-browse")'>Browse</a>
                 <a ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
                 <a class="active txt-university" ng-click='goToSignup()'>Login</a>
@@ -136,7 +136,7 @@
 	                                </i>
 	                                <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations"  ng-model="search_text.university"/>
 	                                <label for="request-search-input">
-	                                    <span ng-show='universities.length'>search {{universities.length}} supported - more coming soon</span>
+	                                    <span ng-show='universities.length'>search {{universities.length}} supported schools</span>
 	                                </label>
 	                                <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.university = '';" ng-if="search_text.university.trim().length > 0">
 	                                    <i class="icon ion-close-circled txt-white"></i>
@@ -144,11 +144,12 @@
 	                            </div>
 	                        </form>
 						</div>
-                        <ul class="splash-school-results">
-                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)' id='cta-box-university-card-{{university.id}}'>
+
+                        <ul class="splash-school-desktop">
+                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index'>
 								<div class="fx-fade-down fx-dur-500 fx-ease-back school-card">
-									<svg class="rect" viewBox="0 0 300 175">
-										<rect x="0" y="0" width="300" height="175" fill="none"></rect>
+									<svg class="rect" viewBox="0 0 300 200">
+										<rect x="0" y="0" width="300" height="200" fill="none"></rect>
 									</svg>
 									<input type="checkbox"/>
 									<div class="school-card-inside">
@@ -172,8 +173,18 @@
 								</div>
                             </li>
                         </ul>
+						<ul class="splash-school-mobile">
+							<li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index'>
+								<a style="border-color: {{university.school_color_dark}}; color: {{university.school_color_dark}}" ng-click='addUniversityStudentCourse(course, $index)'>
+        							<div>
+                                        <span class="school-name">{{university.short_name || university.name}}</span>
+                                    </div>
+									<span class="splash-school-mobile-bg" style="background: {{university.school_color_dark}}!important;"></span>
+        						</a>
+							</li>
+						</ul>
                     </div>
-                    <div style='height: 600px!important' class='full-x'>
+                    <div style='height: 600px!important' class='splash-map'>
                         <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
                             <ui-gmap-markers
                             models="map.university.markers"
@@ -319,37 +330,49 @@
 				<div id="splash-categories" class="main ng-class:{'active':activeTabIndex===0}" ng-controller="CategoriesController">
                     <div>
                         <div>
-                            <h1><span>{{university.short_name}}</span>'s Guru Categories</h1>
+                            <h1>Guru Categories</h1>
                             <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         </div>
-                        <div>
+						<div>
                             <ul class='category-card-list'>
                     			<li ng-repeat='category in categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category)' >
                 					<div style='background-image :url({{categories_img_base + category.background_url}})'>
                 	    				<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
-                                            <span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
-                	                        <span class="card-label">{{category.name}}</span>
+                                            <div>
+												<span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
+	                	                        <span class="card-label">{{category.name}}</span>
+											</div>
                 	                    </a>
                 					</div>
                     			</li>
                                 <li>
                                     <div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
-                                        <a class='bg-{{categories[0].hex_color}}' ng-click='launchCategoryModal(category)'>
-                                            <span class="card-icon"></span>
-                                            <span class="card-label">More Coming Soon!</span>
-                                        </a>
+                                        <span class='bg-more' ng-click='launchCategoryModal(category)'>
+                                            <div>
+												<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+	                                            <span class="card-label">More Coming Soon!</span>
+											</div>
+                                        </span>
                                     </div>
                                 </li>
+								<li class="card-button">
+									<button ng-click='goToSignup()'>Start Your Shop</button>
+								</li>
                 			</ul>
                             <div class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
                     			<ul class="category-card-list">
                     				<li ng-repeat='subcategory in category.subcategories'>
                                         <div class="bg-{{category.hex_color}}">
                                             <span class='bg-{{category.hex_color}}'>
-                                                <span class="card-label txt-slate">{{subcategory.name}}</span>
+												<div>
+													<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+	                                                <span class="card-label txt-slate">{{subcategory.name}}</span>
+												</div>
                         					</span>
+											<span class="card-price bg-{{category.hex_color}}">Free - $10/hr Avg</span>
                                         </div>
                     				</li>
+									<li></li><li></li><li></li><li></li>
                     			</ul>
                     			<button ng-click='hideCategorySkillsModal()'>Back</button>
                         	</div>
