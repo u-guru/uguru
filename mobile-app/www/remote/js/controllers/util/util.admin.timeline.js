@@ -29,28 +29,19 @@ angular.module('uguru.util.controllers')
 			var resultDict = {};
 
 			resultDict.alpha = [
-				{"Home page counter":true},
-				{"Scroll Reveal": true},
-				{"Update University.js":true},
-				{"Add tiny_name to university":true},
-				{"Support Library":true},
-				{"Home Page Sidebar + link in-app-views":true},
-				{"Helicopter Transition":true},
-				{"FAQ":true},
-				{"Pricing + other page animations":true},
-				{"Add svg_url + tiny name edit to admin + cleanup courses":true},
-				{"Order pizza":false},
-				{"Make proper 'remaining list'":false},
-				{"Resize maps after render":false},
-				{"Staging": false},
+				{'Pricing counter':true},
+				{'Map Resize, Zoom':true},
+				{'Page Linking':false},
+				{'MVP Scroll reveal spec + implement':false},
+				{'Data: Categories, Tiny Name, Popular Courses, Content, Privacy Terms': false},
+				{'Fluidity Spec':false},
 				{"Sanitize Courses": false},
-				{"Fluidity": false},
-				{"Fluidity + mobile":false},
-				{"Main section templating": false},
+				{"Fluidity spec + implement": false},
+				{"Testing comfort + verify + admin": false},
+				{"PLANNING + Project specs: saturday-logo, whack wednesday, login/signup/fb, independent project": false},
 				{"Code Cleanup": false},
-				{"Category Content": false},
-				{"Content": false},
-				{"image url + static assets conversion":false}
+				{"Admin tools private only": false},
+				{"Map Window": false},
 			];
 
 			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];

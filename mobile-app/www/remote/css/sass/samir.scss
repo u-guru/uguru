@@ -577,7 +577,9 @@ ul#guru-courses-user-profile {
 .university-svg-icon {
 	opacity: 1 !important;
 	img {
-
+		opacity:0 !important;
+	}
+	img:nth-child(1) {
 		z-index: 5;
 		top: 15px;
 		width:50px !important;
@@ -588,3 +590,4 @@ ul#guru-courses-user-profile {
 #cta-modal-FAQ .cta-modal-close {
 	@include flex-right-center;
 }
+

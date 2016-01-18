@@ -475,6 +475,8 @@ ul#guru-courses-user-profile {
 .university-svg-icon {
   opacity: 1 !important; }
   .university-svg-icon img {
+    opacity: 0 !important; }
+  .university-svg-icon img:nth-child(1) {
     z-index: 5;
     top: 15px;
     width: 50px !important;

@@ -50,7 +50,7 @@ function GUtilService($timeout) {
 
   function getInvisibleIconPath() {
     return {
-      "path": "M33.4454342",
+      "path": "M33.4454342, 31.4545455",
       "fillOpacity": 0,
       "strokeOpacity":0,
       "rotation": 0,
@@ -170,7 +170,9 @@ function GUtilService($timeout) {
 
 
 
-        var indexmarker = new MarkerWithLabel({
+        // var indexmarker =
+
+        result_arr.push(new MarkerWithLabel({
           'position': latCoordToGoogleLatLng(objIndex.latitude, objIndex.longitude),
           'map': map,
           'icon':  getInvisibleIconPath(), //cant edit the icon css
@@ -179,11 +181,13 @@ function GUtilService($timeout) {
           'labelClass': 'university-svg-icon', // the CSS class for the label
           'labelInBackground': false
 
-      })
+        }))
+
 
       // var indexMarker = createMarkerWithLabel(map, objIndex.latitude, objIndex.longitude, null, markerOptions);
     }
-    callback && callback();
+
+    callback && callback(result_arr);
   }
 
   var nearbyLocationMarkers = [];

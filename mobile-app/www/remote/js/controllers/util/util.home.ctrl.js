@@ -333,7 +333,26 @@ angular.module('uguru.util.controllers')
       if (!$scope.universities) {
         $scope.universities = University.getTargetted().slice();
       }
-      $scope.map = GMapService.initMapObj($scope.universities[0], {zoom:4, disableDoubleClickZoom:true, draggable:false});
+      var styleOptions = [
+        {
+          featureType: 'water',
+          elementType: 'geometry',
+          stylers: [
+            { hue: '#F1F1F1' },
+            { saturation: -100 },
+            { lightness: 60 },
+            { visibility: 'on' }
+          ]
+        },
+        {
+          featureType: 'water',
+          elementType: 'labels',
+          stylers: [
+            { visibility: 'off' }
+          ]
+        }
+      ]
+      $scope.map = GMapService.initMapObj($scope.universities[0], {minZoom:4, style:styleOptions, maxZoom:6, zoom:5, disableDoubleClickZoom:false, zoomControl:true, draggable:true, latitude:39.8282, longitude:-98.5795});
       console.log('map status', $scope.map)
       $scope.map.university = {coords:"'self'", markers:[], control:{}};
       $scope.gmapAnimation = google.maps.Animation.BOUNCE;
@@ -346,12 +365,31 @@ angular.module('uguru.util.controllers')
         maps.visualRefresh = true;
         $timeout(function() {
           var universityCustomMapOptions = {icon_type:"university_penant", label_color:"white", custom_class:'university-pennant', img_base:$scope.img_base};
-          var callback = function() {
-            $timeout(function() {
-              google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
-            }, 1000)
+          var callback = function(marker_arr) {
+            // var mapcounter = 0;
+            // var mapInterval = setInterval(function() {
+
+              var map = $scope.map.control.getGMap();
+              map.setCenter(new google.maps.LatLng(39.8282, -98.5795));
+
+              var bounds = new google.maps.LatLngBounds();
+              for(i=0;i<marker_arr.length;i++) {
+               bounds.extend(marker_arr[i].getPosition());
+              }
+              map.fitBounds(bounds);
+
+              // google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
+            //   if (mapcounter > 10) {
+            //     clearInterval(mapInterval);
+            //   }
+            //   mapcounter += 1;
+            // }, 1000);
+            console.log('this gets called again');
           }
-          GUtilService.initSeveralMarkersWithLabel($scope.map.control.getGMap(), $scope.universities, $scope.map.university.markers, universityCustomMapOptions, callback);
+          if (!$scope.mapDrawn) {
+            $scope.mapDrawn = true;
+            GUtilService.initSeveralMarkersWithLabel($scope.map.control.getGMap(), $scope.universities, $scope.map.university.markers, universityCustomMapOptions, callback);
+          }
 
         }, 2000)
           // $scope.map.control.getGMap()
