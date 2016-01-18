@@ -46,13 +46,22 @@
                             !CASUAL
                         </span>
                     </span>
-                     <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Mascot Name', uni.school_mascot_name, uni)">
+                    <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Mascot Name', uni.school_mascot_name, uni)">
                         <small class='absolute'> </small>
                         <span ng-if='uni.school_mascot_name' class='p05y bg-shamrock'>
                             &nbsp;&nbsp;&nbsp;{{uni.school_mascot_name}}&nbsp;&nbsp;&nbsp;
                         </span>
                         <span ng-if='!uni.school_mascot_name' class='p05y bg-auburn'>
                             &nbsp;!MASCOT
+                        </span>
+                    </span>
+                    <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('School Tiny Name', uni.school_tiny_name, uni)">
+                        <small class='absolute'> </small>
+                        <span ng-if='uni.school_tiny_name' class='p05y bg-shamrock'>
+                            &nbsp;&nbsp;&nbsp;{{uni.school_tiny_name}}&nbsp;&nbsp;&nbsp;
+                        </span>
+                        <span ng-if='!uni.school_tiny_name' class='p05y bg-auburn'>
+                            &nbsp;!TINY NAME
                         </span>
                     </span>
                     <span class='university-title bg-charcoal relative'>

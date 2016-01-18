@@ -40,6 +40,7 @@ angular.module('uguru.util.controllers')
 				"Short Name": "short_name",
 				"School Color Light": "school_color_light",
 				"School Color Dark": "school_color_dark",
+				"School Tiny Name": "school_tiny_name",
 				'Name': "name",
 				"Banner Url": "university_banner"
 			}
