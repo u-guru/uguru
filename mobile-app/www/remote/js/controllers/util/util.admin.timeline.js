@@ -44,6 +44,7 @@ angular.module('uguru.util.controllers')
 		$scope.projects = [
 			{name:'Pre-app (Universities, Sidebar)'},
 			{name: 'Login/Logout + Signup + School Email Verify'},
+			{name: 'Become a Guru'},
 			{name: 'Guru can fill out their profile'},
 			{name: 'Guru can increase their credibility'},
 			{name: 'Guru can create 1-->Many shops'},
@@ -137,6 +138,7 @@ angular.module('uguru.util.controllers')
 			for (var i = 0; i < project.alpha.length; i ++) {
 				var indexAlphaItem = project.alpha[i];
 				var indexAlphaKey = Object.keys(project.alpha[i]);
+				progressDict.alpha_total += 1;
 				if (indexAlphaItem[indexAlphaKey]) {
 					progressDict.alpha += 1;
 					progressDict.overall += 1;
@@ -145,6 +147,7 @@ angular.module('uguru.util.controllers')
 			for (var j = 0; j < project.beta.length; j ++) {
 				var indexBetaItem = project.beta[j];
 				var indexBetaKey = Object.keys(project.beta[j]);
+				progressDict.beta_total += 1;
 				if (indexBetaItem[indexBetaKey]) {
 					progressDict.beta += 1;
 					progressDict.overall += 1;
@@ -154,11 +157,30 @@ angular.module('uguru.util.controllers')
 			for (var k = 0; k < project.production.length; k ++) {
 				var indexProductionItem = project.production[k];
 				var indexProductionKey = Object.keys(project.production[k]);
+				progressDict.production_total += 1;
 				if (indexProductionItem[indexProductionKey]) {
 					progressDict.production += 1;
 					progressDict.overall += 1;
 				}
 			}
+
+			progressDict.alpha_percent = parseInt((progressDict.alpha / parseFloat(progressDict.alpha_total) * 100)) + '%';
+			progressDict.beta_percent = parseInt((progressDict.beta / parseFloat(progressDict.beta_total) * 100)) + '%';
+			progressDict.production_percent = parseInt((progressDict.production / parseFloat(progressDict.production_total) * 100)) + '%';
+			progressDict.overall_percent = parseInt((progressDict.overall / parseFloat(progressDict.total) * 100)) + '%';
+
+			if (progressDict.alpha === progressDict.alpha_total) {
+				progressDict.alpha_complete = true;
+			}
+
+			if (progressDict.beta === progressDict.beta_total) {
+				progressDict.beta_complete = true;
+			}
+
+			if (progressDict.production === progressDict.production_total) {
+				progressDict.production_complete = true;
+			}
+
 			$timeout(function() {
 				$scope.projects[0].progress = progressDict;
 				$timeout(function() {
@@ -171,6 +193,7 @@ angular.module('uguru.util.controllers')
 		$scope.projects[0].action_items = getProjectOneActionItems();
 
 		$scope.projects[0].progress = $scope.calculateProjectProgress($scope.projects[0].action_items);
+		console.log($scope.projects[0].progress)
 
 		$scope.sprints = [{description:"Functional product students can use", projects:$scope.projects.slice(0,NUM_PRIORITIZED)}, {description:"Icebox", projects:$scope.projects.slice(NUM_PRIORITIZED, $scope.projects.length)}];
 

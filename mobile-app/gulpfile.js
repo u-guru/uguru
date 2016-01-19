@@ -174,15 +174,16 @@ gulp.task('styles', function() {
   var cssStream11 = gulp.src('www/remote/css/sass/style-pf-color.css');
   var cssStream12 = gulp.src('www/remote/css/sass/style-modals.css');
   var cssStream13 = gulp.src('www/remote/css/sass/universal.css');
-  var cssStream14 = gulp.src('www/remote/css/sass/intercom.css');
-  var cssStream15 = gulp.src('www/remote/css/sass/samir.css');
-  var cssStream16 = gulp.src('www/remote/css/sass/essay.css');
+  var cssStream14 = gulp.src('www/remote/css/sass/splash.css');
+  var cssStream15 = gulp.src('www/remote/css/sass/intercom.css');
+  var cssStream16 = gulp.src('www/remote/css/sass/samir.css');
+  var cssStream17 = gulp.src('www/remote/css/sass/essay.css');
 
 
 
   return streamqueue({ objectMode: true }, cssStream1, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10,
-    cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16).pipe(plugins.concat('main.css'))
+    cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -252,6 +253,7 @@ gulp.task('scripts', function() {
       'lib/theatre/*.js',
       'lib/fastMatcher.js',
       'lib/facebook/openfb.js',
+      'lib/scroll/waypoints.min.js',
       'lib/facebook/ngopenfb.js',
       'lib/facebook/*.js',
       'lib/ngElastic/*.js',
@@ -294,11 +296,14 @@ gulp.task('scripts', function() {
       "!js/shared/*LogService.js",
       "js/shared/uTracker.js",
       "js/shared/RankingService.js",
+
       "js/shared/TipService.js",
       "js/shared/Settings.js",
       "js/directives/*.js",
       "js/device/*.js",
       "js/shared/*.js",
+
+
       "js/university/AddUniversityCtrl.js",
       "js/university/*.js",
       "js/essay/*.js",
@@ -310,9 +315,6 @@ gulp.task('scripts', function() {
       "js/controllers/util/*js",
       "js/controllers/desktop/SettingsCtrl.js",
       "js/controllers/desktop/*",
-      // "js/controllers/util/*.js",
-      // "js/controllers/onboarding/onboarding.request-location.ctrl.js",
-      // "js/controllers/onboarding/*.js"
       ], { cwd: 'www/remote' })
     // .src(['templates.js', 'app.js', '**/*.js'], { cwd: 'app/scripts' })
 

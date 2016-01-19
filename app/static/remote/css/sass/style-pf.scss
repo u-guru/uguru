@@ -248,6 +248,9 @@
 			.pf-school {
 				margin: 0!important;
 				font-size: 20px;
+				&:first-letter {
+					text-transform: uppercase;
+				}
 			}
 			a.profile-icon {
 				position: relative;
@@ -634,13 +637,25 @@
 			@include flex-center;
 			background: $charcoal;
 		    margin-top: 2px;
-		    padding: 15px;
+		    padding: 0 15px 15px;
 			h2 {
 				margin: 0!important;
 				font-weight: 600;
 				@media screen and (min-width:768px) {
 					font-size: 32px;
 				}
+				&:only-child {
+					padding-top: 10px;
+				}
+			}
+			span[data-year]:not([data-year="PhD"]) {
+				text-transform: lowercase!important;
+			}
+			.user-major {
+				white-space: nowrap;
+			}
+			.custom-dropdown {
+				margin: 15px 0;
 			}
 			input {
 				@include flex;
@@ -670,6 +685,11 @@
 				line-height: 1.2;
 				[data-years]:not([data-years="1"]):after {
 					content: "s";
+				}
+				[data-years="current"] {
+					&:after, span {
+						display: none;
+					}
 				}
 				ul {
 					li:last-child {

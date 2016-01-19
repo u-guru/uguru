@@ -375,7 +375,6 @@ body.platform-ios #mobile-guru-home {
   min-height: 800px; }
 
 .hs-view {
-  background: url("https: //uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center fixed !important;
   -webkit-background-size: 100% 100% !important;
   -moz-background-size: 100% 100% !important;
   -o-background-size: 100% 100% !important;
@@ -406,10 +405,90 @@ body.platform-ios #mobile-guru-home {
 ul#guru-courses-user-profile {
   display: block !important; }
 
-#cta-modal-sidebar {
-  z-index: 100;
-  width: calc(43%) !important;
-  left: -10%;
-  position: absolute; }
+.hide-display {
+  display: none; }
+
+.hide-display.show {
+  display: block; }
+
+.pf-card-group .bg-tech, .pf-card-group.bg-tech, .cta-modal .bg-tech, .cta-modal.bg-tech {
+  background: #55A4B7;
+  background-color: #55A4B7; }
+.pf-card-group .bg-academic, .pf-card-group.bg-academic, .cta-modal .bg-academic, .cta-modal.bg-academic {
+  background: #e6389b;
+  background-color: #e6389b; }
+.pf-card-group .bg-baking, .pf-card-group.bg-baking, .cta-modal .bg-baking, .cta-modal.bg-baking {
+  background: #F6C64E;
+  background-color: #F6C64E; }
+.pf-card-group .bg-photography, .pf-card-group.bg-photography, .cta-modal .bg-photography, .cta-modal.bg-photography {
+  background: #81B566;
+  background-color: #81B566; }
+.pf-card-group .bg-household, .pf-card-group.bg-household, .cta-modal .bg-household, .cta-modal.bg-household {
+  background: #7872e3;
+  background-color: #7872e3; }
+.pf-card-group .pf-card-main, .cta-modal .pf-card-main {
+  background: white; }
+
+#cta-modal-sidebar.full-x {
+  width: 100% !important;
+  left: 0 !important; }
+
+#university-splash #become-guru .main.mobile-only, #university-splash #how-it-works .main.mobile-only {
+  min-height: calc(240px + 200px) !important;
+  width: 100%; }
+
+.gmap-marker-label {
+  font-weight: 900;
+  font-size: 24px;
+  animation: swing 1.5s infinite; }
+@keyframes bob {
+  0% {
+    transform: translate(0, 0);
+    animation-timing-function: ease-in-out; }
+  50% {
+    transform: translate(0, 30px);
+    animation-timing-function: ease-in-out; }
+  100% {
+    transform: translate(0, 0);
+    animation-timing-function: ease-in-out; } }
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out; }
+  25% {
+    transform: rotate(-20deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out; }
+  50% {
+    transform: rotate(0deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out; }
+  75% {
+    transform: rotate(20deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out; }
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 85%;
+    animation-timing-function: ease-in-out; } }
+.university-svg-icon {
+  opacity: 1 !important; }
+  .university-svg-icon img {
+    opacity: 0 !important; }
+  .university-svg-icon img:nth-child(1) {
+    z-index: 5;
+    top: 15px;
+    width: 50px !important;
+    height: 50px !important;
+    opacity: 1 !important; }
+
+#cta-modal-FAQ .cta-modal-close {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end; }
 
 /*# sourceMappingURL=samir.css.map */

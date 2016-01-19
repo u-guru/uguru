@@ -1373,41 +1373,48 @@ angular.module('uguru.util.controllers')
           LoadingService.showSuccess('Login Successful!', 2500);
 
 
-
-          if ($scope.root.vars.hs_mode) {
-            if ($scope.desktopMode) {
-              AnimationService.flip('^.essay-student-home-desktop')
-            } else {
-              AnimationService.flip('^.essay-student-home-mobile')
-            }
-            return;
-          }
-
-
-          //if regular guru mode
-          if ($scope.desktopMode)
-          {
-            if ($state.current.name !== 'root.guru-home'){
-              if ($scope.user.guru_mode)
-                $state.go('^.guru')
-              else
-                $state.go('^.guru-home')
-            } else {
-              var ctaModalSignupContainer = document.getElementById('cta-modal-signup');
-              if (ctaModalSignupContainer) {
-                ctaModalSignupContainer.classList.remove('show');
+          //if regular guru mode but sneak preview without signup..
+          if ($state.current.name === 'root.guru-home') {
+              if ($scope.desktopMode) {
+                var ctaModalSignupContainer = document.getElementById('cta-modal-signup');
+                if (ctaModalSignupContainer) {
+                  ctaModalSignupContainer.classList.remove('show');
+                }
+              } else {
+                if ($scope.signupModal && $scope.signupModal.isShown()) {
+                  $scope.signupModal.destroy();
+                }
               }
+          }
+
+
+
+          if (!$scope.desktopMode && $scope.signupModal && $scope.signupModal.isShown()) {
+            $scope.signupModal.destroy();
+          }
+
+          // case -- it is not login from guru-home
+          // case 1 - desktop mode
+          // if user is a guru
+          if ($scope.user.is_a_guru) {
+
+            // $state.go('^.guru')
+            if($scope.desktopMode) {
+              AnimationService.flip('^.guru-home');
+            } else {
+              AnimationService.flip('^.guru');
+            }
+
+          }
+
+          // case 2 - mobile mode
+
+          else {
+
+            if($scope.desktopMode) {
+              AnimationService.flip('^.student-home');
             }
           }
-          else
-          {
-            $scope.signupModal.hide();
-            // $state.go('^.guru')
-            if(!$scope.root.vars.guru_mode)
-              AnimationService.flip('^.guru');
-
-          }
-
 
 
       }, function(err) {
