@@ -31,6 +31,7 @@ subcategory_fields['icon_url'] = fields.String(attribute='icon_url')
 subcategory_fields['is_active'] = fields.String(attribute='is_active')
 subcategory_fields['is_approved'] = fields.String(attribute='is_approved')
 subcategory_fields['description'] = fields.String(attribute='description')
+subcategory_fields['unit_name'] = fields.String(attribute='unit_name')
 
 
 category_fields = {}
@@ -47,6 +48,7 @@ currency_fields['icon_url'] = fields.String(attribute='icon_url')
 user_subcategory_fields = {}
 user_subcategory_fields['id'] = fields.Integer(attribute='id')
 user_subcategory_fields['name'] = fields.String(attribute='name')
+user_subcategory_fields['unit_name'] = fields.String(attribute='unit_name')
 user_subcategory_fields['category'] = fields.Nested(category_fields)
 
 tag_fields = {}
