@@ -381,7 +381,8 @@ def profile_page_new_view_two(username):
 
 @app.route('/')
 def new_home_page():
-    return render_template("web/index.html")
+    from flask import send_from_directory, send_file
+    return render_template('web/index.html')
 
 @app.route('/hs/')
 def hs_college_app():

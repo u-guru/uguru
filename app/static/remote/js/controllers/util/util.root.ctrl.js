@@ -239,9 +239,9 @@ angular.module('uguru.util.controllers')
         };
 
 
-        if ($scope.user.university && $scope.user.university_id) {
-             University.getPopularCourses($scope.user.university_id, $scope);
-             University.getMajors($scope.user.university_id, $scope);
+        if (($scope.university && $scope.university.id) || ($scope.user.university && $scope.user.university_id)) {
+             University.getPopularCourses($scope.university.id || $scope.user.university_id, $scope);
+             University.getMajors($scope.university.id || $scope.user.university_id, $scope);
         }
 
 
@@ -293,21 +293,12 @@ angular.module('uguru.util.controllers')
                         $scope.user.createObj = User.createObj;
                         $scope.user.updateObj = User.updateObj;
                         $scope.root.vars.settings = {icons : {profile : true}};
-                        if (!$scope.root.vars.essay) {
-                            LoadingService.showSuccess('You have been successfully logged out!', 2500);
-                            $state.go('^.university');
-                            if (!$scope.desktopMode) {
-                                $ionicSideMenuDelegate.toggleRight();
-                            }
-                        } else {
-                            LoadingService.showAmbig(null, 1000, function() {
-                                $timeout(function() {
-                                    LoadingService.showSuccess('You have been successfully logged out!', 2500);
-                                }, 500)
-                                AnimationService.flip('^.essay-home');
-                            })
 
-                        }
+                        LoadingService.showSuccess('You have been successfully logged out!', 2500);
+                        $timeout(function() {
+                            AnimationService.flip('^.home');
+                        }, 1000)
+
                   }, 1000);
             }
         };
