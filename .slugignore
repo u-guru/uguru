@@ -7,7 +7,7 @@ mobile-app/plugins/*
 mobile-app/*
 latest.dump
 app/templates/web-remote/*
-app/templates/web/*
+!app/templates/web-remote/index.html
 app/static/sound-remote/**
 app/static/sound-remote/**/**
 app/static/web/**
