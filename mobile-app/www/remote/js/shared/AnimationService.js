@@ -104,7 +104,7 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	}
 
 	//customOptions is optional, if none are set then default options will be used
-	function flip(target, customOptions, params) {
+	function flip(target, customOptions, params, cb) {
 
 		var pane = document.querySelectorAll('body')[0];
 
@@ -132,6 +132,9 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 				pane.style.webkitTransform = 'rotateY(0deg)';
 			}, 40);
 		}, 440);
+		$timeout(function() {
+			cb && cb();
+		}, 500)
 
 	}
 

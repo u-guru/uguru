@@ -6,7 +6,7 @@
 
 
 <!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
-	<ion-view class='bg-smoke'>
+	<ion-view class='bg-smoke' cache-view="false">
 		<main id='home-splash' class='splash-landing hs-view full-xy'>
             <!-- START Home Page CTAs -->
 
@@ -55,11 +55,12 @@
                     </svg>
                 </a>
 
-				<a ng-click='scrollToSection("#splash-university")'>University</a>
                 <a ng-click='scrollToSection("#how-it-works")'>How It Works</a>
                 <a ng-click='scrollToSection("#splash-browse")'>Browse</a>
                 <a ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
-                <a class="active txt-university" ng-click='goToSignup()'>Login</a>
+                <a ng-click='goToSignup()' ng-if='!user.id'>Login</a>
+                <a class="active txt-university ng-class:{'hide':!user.id && !user.first_name}" ng-click='goToStudentHome()'>My Dashboard</a>
+                <a class="active txt-university ng-class:{'hide':user.id}" ng-click='scrollToSection("#splash-university")'>Get Started</a>
 
 				<div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
 					<a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
@@ -70,8 +71,8 @@
 				</div>
 			</header>
 
-            <section id='splash-home' class='splash-hero relative ng-class:{"active": becomeGuruHeaderActive}' style="background-image: url('{{img_base}}./img/main-bg-cambridge.jpg');">
-                <a id="splash-footer-support" class="splash-footer-link">
+            <section id='splash-home' class='splash-hero relative ng-class:{"active": becomeGuruHeaderActive}' style="background-image: url('{{page.css.bg_banner}}');">
+                <a id="splash-footer-support" class="splash-footer-link" ng-click='launchSupportOverlay()'>
 					<span ng-include="img_base + 'templates/svg/support.html'"></span>
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
                 		<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453" ></path>
@@ -92,8 +93,8 @@
 					<svg viewBox="0 0 1280 284">
 					    <defs>
 					        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient">
-					            <stop stop-color="#40484B" stop-opacity="0.4" offset="0%"></stop>
-					            <stop stop-color="#40484B" offset="100%"></stop>
+					            <stop stop-color="{{page.css.main.gradient_fill}} !important;" stop-opacity="0.4" offset="0%"></stop>
+					            <stop stop-color="{{page.css.main.gradient_fill}} !important;" offset="100%"></stop>
 					        </linearGradient>
 					    </defs>
 					    <g fill="url(#gradient)">
@@ -146,12 +147,13 @@
 						</div>
 
                         <ul class="splash-school-desktop">
-                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index'>
+                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
 								<div class="fx-fade-down fx-dur-500 fx-ease-back school-card">
 									<svg class="rect" viewBox="0 0 300 200">
 										<rect x="0" y="0" width="300" height="200" fill="none"></rect>
 									</svg>
-									<input type="checkbox"/>
+									<!--@gabrielle dont need this here actually -->
+                                    <!-- <input type="checkbox"/> -->
 									<div class="school-card-inside">
 										<div class="school-card-top" style="background-color: {{university.school_color_one}};">
 											<span class="school-card-icon" style="background-image: url({{university.svg_url || university.seal_url || university.logo_url}}); border-color: {{university.school_color_one}};">
@@ -299,7 +301,7 @@
                             </div>
                         </li>
                     </ul>
-					<button ng-click='scrollToSection("#university-splash")' class="bg-university">Join Your University</button>
+					<button ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
                 </div>
 				<footer>
 					<div class="border"></div>
@@ -384,7 +386,7 @@
                         <h1><span>Browse Sample</span> Guru Profiles</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         <div>
-                            <ul class="pf-card-group-mobile">
+                            <ul class="pf-card-group-mobile" ng-if='!desktopMode'>
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                                     <a class="pf-card-mini large pf-card-mini-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                                         <div class="pf-card-mini-banner"></div>
@@ -393,7 +395,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="pf-card-group">
+                            <ul class="pf-card-group" ng-if='desktopMode'>
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                 					<a class="pf-card pf-card-{{category.hex_color}} bg-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                 						<span class="pf-hover">View Profile</span>
@@ -510,7 +512,7 @@
                             </div>
                         </li>
                     </ul>
-					<button ng-click='goToBecomeGuru()' class='capitalize'>Become a University Guru</button>
+					<button ng-click='scrollToSection("#splash-university")' class='capitalize'>Become a University Guru</button>
                 </div>
 				<footer>
 					<div class="border"></div>
@@ -522,7 +524,7 @@
 					<h1>We can't wait to see you do your thing.</h1>
 					<h2>Get started earning cash by helping your campus today.</h2>
 					<ul>
-						<li><button class="btn-ghost-white" ng-click='goToSignup()'>Find Your University</button></li>
+						<li><button class="btn-ghost-white" ng-click='scrollToSection("#splash-university")'>Find Your University</button></li>
 					</ul>
 				</div>
 			</section>

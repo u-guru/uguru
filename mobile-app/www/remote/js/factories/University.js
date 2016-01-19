@@ -123,7 +123,9 @@ angular.module('uguru.rest', [])
                                  });
                              }, 1000);
 
+
                              if (scope && callback) {
+                                console.log('saving courses');
                                 callback(scope, source.courses.slice());
                              }
 
@@ -131,6 +133,12 @@ angular.module('uguru.rest', [])
                          console.log("Error getting popularCourses: " + err);
                      });
              }, 0);
+         },
+         getPopularCoursesPromise: function(uni_id, scope, callback) {
+             if (!uni_id) {
+                return;
+             }
+             return Restangular.one('universities', uni_id).customGET('popular_courses');
          },
         getCourses: function(uni_id) {
             return $timeout(function() {

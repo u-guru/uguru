@@ -5,8 +5,8 @@
 <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>
 
 <div ng-include="page.universityStyleUrl"></div>
-<ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false">
-	<ion-view class='bg-smoke'>
+
+	<ion-view class='bg-smoke ng-class:{"hide":page.status.showLoader}'  cache-view='false'>
 		<main id='university-splash' class='splash-landing hs-view full-xy'>
             <aside id='cta-modal-sidebar' ng-if='page.sidebar.show' class='splash-sidebar fx-ease-none hide ng-class:{"show":page.sidebar.show, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
 
@@ -51,7 +51,7 @@
 			</header>
 
             <section id='splash-home' class='splash-hero relative ng-class:{"active":becomeGuruHeaderActive}'>
-                <a id="splash-footer-support" class="splash-footer-link">
+                <a id="splash-footer-support" class="splash-footer-link" ng-click='launchSupportOverlay()'>
 					<span ng-include="img_base + 'templates/svg/support.html'"></span>
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
                 		<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453" ></path>
@@ -288,7 +288,7 @@
                         <h1><span>{{university.short_name}}</span>'s Top Gurus</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         <div>
-                            <ul class="pf-card-group-mobile">
+                            <ul class="pf-card-group-mobile" ng-if='!desktopMode'>
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                                     <a class="pf-card-mini large pf-card-mini-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                                         <div class="pf-card-mini-banner"></div>
@@ -297,7 +297,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="pf-card-group">
+                            <ul class="pf-card-group" ng-if='desktopMode'>
                                 <li ng-repeat='category in categories' ng-if='category.is_active'>
                 					<a class="pf-card pf-card-{{category.hex_color}} bg-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                 						<span class="pf-hover">View Profile</span>
@@ -340,7 +340,7 @@
             							<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
             						</svg>
             					</i>
-            					<input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-disabled="!courses || !courses.length" ng-model="search_text.course"/>
+            					<input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-model="search_text.course"/>
             					<label for="request-search-input">
             						<span ng-show='courses.length'>search {{courses.length}} popular {{university.school_casual_name}} courses</span>
             						<span ng-hide='courses.length'>search popular {{university.school_casual_name}} courses</span>
@@ -484,4 +484,3 @@
 		<!-- </ion-content> -->
 	</ion-view>
 	<!-- </ion-scroll> -->
-</ion-content>

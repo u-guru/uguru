@@ -44,12 +44,15 @@ angular.module('uguru.util.controllers')
       $scope.university = {}
       $scope.search_text = {university:''};
       $scope.profile = {public_mode: true};
-      $scope.page = {dropdowns: {}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
+      $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
       $scope.page.sidebar = {show:false};
+      $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
+
+
 
       var calcAllMainSectionContainers = function() {
         $scope.page.offsets = {
@@ -142,6 +145,18 @@ angular.module('uguru.util.controllers')
         }
       }
 
+      $scope.goToStudentHome = function() {
+        if ($scope.user.id && $scope.user.first_name) {
+          AnimationService.flip('^.student-home');
+        } else {
+          if ($scope.desktopMode) {
+            AnimationService.flip('^.desktop-login');
+          } else {
+            $scope.signupModal.show();
+          }
+        }
+      }
+
       var showAllBgPeels = function() {
         $scope.become_guru.top_half[0].hide = false;
         $scope.become_guru.top_half[1].hide = false;
@@ -195,6 +210,10 @@ angular.module('uguru.util.controllers')
       }
 
       var initSupportBox = function() {
+        Intercom('boot', {
+                app_id: "yoz6vu28",
+                widget: {"activator": "#Intercom"}
+        })
         $timeout(function() {
           var intercomContainer = document.querySelector('#intercom-container');
           console.log('attempting intercom container');
@@ -204,7 +223,17 @@ angular.module('uguru.util.controllers')
             intercomContainer.style.cssText += ' z-index:1000 !important; visibility:hidden;';
 
           }
-        }, 15000)
+        }, 5000)
+      }
+
+      $scope.launchSupportOverlay = function(){
+        var intercomContainer = document.querySelector('#intercom-container');
+        intercomContainer.style.cssText += ' z-index:1000 !important;';
+        Intercom('show');
+        intercomContainer.style.visibility = "visible";
+        Intercom('onHide', function() {
+          intercomContainer.style.visibility = "hidden";
+        })
       }
 
       var generatePageLinks = function() {
@@ -232,17 +261,7 @@ angular.module('uguru.util.controllers')
         }
 
         var triggerSupportBox = function() {
-          Intercom('boot', {
-                app_id: "yoz6vu28",
-                widget: {"activator": "#Intercom"}
-          })
-          var intercomContainer = document.querySelector('#intercom-container');
-          intercomContainer.style.cssText += ' z-index:1000 !important;';
-          Intercom('show');
-          intercomContainer.style.visibility = "visible";
-          Intercom('onHide', function() {
-            intercomContainer.style.visibility = "hidden";
-          })
+          $scope.launchSupportOverlay();
         }
         var triggerFAQCTA = function() {
           LoadingService.showMsg('Coming Soon', 3000);
@@ -261,7 +280,7 @@ angular.module('uguru.util.controllers')
           {name:"FAQ", id:'cta-box-FAQ'},
           {name:"Pricing",  id:'cta-box-pricing'},
           {name: "Apply", id:'cta-box-apply'},
-          {name: "Support", id:'cta-box-support'}
+          {name: "Support", ngClickFunc:triggerSupportBox}
         ];
       }
 
@@ -388,6 +407,9 @@ angular.module('uguru.util.controllers')
           }
           if (!$scope.mapDrawn) {
             $scope.mapDrawn = true;
+            if (!$scope.map || !$scope.map.control) {
+              $scope.map = GMapService.initMapObj($scope.universities[0], {minZoom:4, style:styleOptions, maxZoom:6, zoom:5, disableDoubleClickZoom:false, zoomControl:true, draggable:true, latitude:39.8282, longitude:-98.5795});
+            }
             GUtilService.initSeveralMarkersWithLabel($scope.map.control.getGMap(), $scope.universities, $scope.map.university.markers, universityCustomMapOptions, callback);
           }
 
@@ -500,18 +522,39 @@ angular.module('uguru.util.controllers')
       $scope.$on('$ionicView.loaded', function() {
          shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
 
+            $timeout(function() {
+              if (!$scope.mainPageSetup) {
+              // calcAllMainSectionContainers();
+              $scope.mainPageSetup = true;
+              $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
+              initUniversityMap();
+              initProfileCTAS();
+              calculateAndInitiateCounters();
+              initUniversityTypeWriter();
+              runMobileOnlyFunctions();
+              }
+            }, 5000)
+
+      });
+
+      $scope.$on('$ionicView.enter', function() {
+         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
 
 
-         $timeout(function() {
-          // calcAllMainSectionContainers();
-          initUniversityMap();
-          initProfileCTAS();
-          calculateAndInitiateCounters();
-          initUniversityTypeWriter();
-          runMobileOnlyFunctions();
 
-         }, 5000)
+           $timeout(function() {
+            if (!$scope.mainPageSetup) {
+            // calcAllMainSectionContainers();
+              $scope.mainPageSetup = true;
+              $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
+              initUniversityMap();
+              initProfileCTAS();
+              calculateAndInitiateCounters();
+              initUniversityTypeWriter();
+              runMobileOnlyFunctions();
+            }
 
+           }, 5000)
 
       });
 
