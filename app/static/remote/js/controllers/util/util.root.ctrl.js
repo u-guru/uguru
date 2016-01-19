@@ -197,7 +197,7 @@ angular.module('uguru.util.controllers')
         if (LOCAL) {
             $scope.img_base = 'remote/';
         } else {
-            $scope.img_base = '';
+            $scope.img_base = '/static/remote/';
         }
 
         if (window.location.hostname.indexOf('hs') > -1 || window.location.pathname.indexOf('hs') > -1) {
