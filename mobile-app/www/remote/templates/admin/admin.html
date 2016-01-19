@@ -23,7 +23,7 @@
                 </svg>
             </a>
             <div class='absolute full-xy flex-wrap-center left-0 top-0 ugrid-3'>
-                <div class='bg-auburn full-y flex-wrap-center txt-smoke text-center relative'>
+                <div class='bg-gold full-y flex-wrap-center txt-smoke text-center relative'>
                     <div class='full-x header p20xy'>
                         <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Functional</h1>
                         <small class='weight-900 lowercase txt-smoke'>Alpha</small>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='bg-gold full-y flex-wrap-center txt-smoke text-center relative'>
+                <div class='bg-azure full-y flex-wrap-center txt-smoke text-center relative'>
                     <div class='full-x header p20xy'>
                         <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Fully Tested</h1>
                         <small class='weight-900 lowercase txt-smoke'>Beta</small>
@@ -69,28 +69,42 @@
 
         </ion-pane>
 
-        <div class='flex-wrap-center full-xy absolute txt-charcoal weight-600' style='height:75% !important;'>
-            <div class='ugrid-4 full-x'>
-                <a id='cta-box-project-{{$index}}' ng-repeat='project in projects' class='flex-wrap-center bg-auburn cta-box relative' ng-if='project.urgent' style='height:200px; width:25%; border:4px solid black;'>
-                    <h1 class='full-x text-center weight-900 p20xy'>
-                        #{{$index + 1}} <br> {{project.name}}
-                    </h1>
-                    <div class='full-x text-center'>
-                        <p ng-if='project.progress'>  <span class='weight-900'>{{project.progress.overall}}/{{project.progress.total}}</span> complete</p>
-                    </div>
-                    <div class='full-x text-center'>
-                        <small class='p10xy bg-charcoal'>Alpha: {{project.progress.alpha}} </small>
-                        <small class='p10xy bg-charcoal'>Beta: {{project.progress.beta}} </small>
-                        <small class='p10xy bg-charcoal'>Production: {{project.progress.production}} </small>
-                    </div>
-                </a>
-                <a  id='cta-box-project-{{$index}}' ng-repeat='project in projects' class='flex-wrap-center bg-shamrock cta-box' ng-if='!project.urgent' style='height:200px; width:25%; border:4px solid black;'>
-                    <h1 class='full-x text-center weight-900 p20xy'>
-                        #{{$index + 1}} <br> {{project.name}}
-                    </h1>
-                    <p ng-if='project.progress'>  {{project.progress.overall}} / {{project.progress.total}} </p>
-                    <p> {{project.deadline}} </p>
-                </a>
+
+        <div class='flex-wrap-center main'>
+            <div class='full-x txt-charcoal weight-600' ng-repeat='sprint in sprints'>
+                <div class='ugrid flex-wrap-center p20xy full-x'>
+                    <h1 class='uppercase text-center p10y p20top full-x uppercase' ng-if='$index === 0'> Weekly Sprint #{{$index + 1}} </h1>
+                    <h1 class='uppercase text-center p10y p20top full-x uppercase' ng-if='$index > 0'> Icebox</h1>
+                    <small class='txt-charcoal weight-900 text-center full-x p05xy' ng-if='$index === 0'><u>Summary</u></small>
+                    <small class='txt-slate'>{{sprint.description}}</small>
+                </div>
+                <div class='ugrid-4 full-x m30y' style='overflow:hidden;'>
+                    <a id='cta-box-project-{{$index + $parent.$parent.$index * sprints[0].projects.length}}' ng-repeat='project in sprint.projects' class='flex-wrap-center bg-auburn cta-box relative' ng-if='project.alpha_complete' style='height:200px; width:25%; border:4px solid black;'>
+                        <h1 class='full-x text-center weight-900 p20xy'>
+                            #{{$index + 1}} <br> {{project.name}}
+                        </h1>
+                        <div class='full-x text-center'>
+                            <p ng-if='project.progress' style='font-size:10px; !important'>  <span class='weight-900'>{{project.progress.overall}}/{{project.progress.total}}</span> complete</p>
+                        </div>
+                        <div class='full-x text-center'>
+                            <small class='p10xy bg-charcoal'>Alpha: {{project.progress.alpha}} </small>
+                            <small class='p10xy bg-charcoal'>Beta: {{project.progress.beta}} </small>
+                            <small class='p10xy bg-charcoal'>Production: {{project.progress.production}} </small>
+                        </div>
+                    </a>
+                    <a  id='cta-box-project-{{$index + $parent.$parent.$index * sprints[0].projects.length}}' ng-repeat='project in sprint.projects' class='flex-wrap-center bg-slate cta-box' ng-if='!project.urgent' style='height:200px; width:25%; border:4px solid black;'>
+                        <h1 class='full-x text-center weight-900 p20xy'>
+                            #{{$index + 1}} <br> {{project.name}}
+                        </h1>
+                        <p ng-if='project.progress' style='font-size:16px;'>  {{project.progress.overall}} / {{project.progress.total}} </p>
+                        <p> {{project.deadline}} </p>
+                        <div class='full-x text-center'>
+                            <small class='p10xy bg-charcoal'>Alpha: {{project.progress.alpha}} </small>
+                            <small class='p10xy bg-charcoal'>Beta: {{project.progress.beta}} </small>
+                            <small class='p10xy bg-charcoal'>Production: {{project.progress.production}} </small>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -108,11 +122,6 @@
     <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Moodboards'}">
         <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>
             Moodboards - Coming Soon!
-        </div>
-    </section>
-    <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Timeline'}">
-        <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>
-            Timeline - Coming Soon!
         </div>
     </section>
     <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Guides'}">

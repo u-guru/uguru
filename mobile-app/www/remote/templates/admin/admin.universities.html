@@ -18,6 +18,12 @@
                         <span ng-if='uni.us_news_ranking.length === 2'>&nbsp;&nbsp;</span>
                         <span ng-if='uni.us_news_ranking.length === 1'>&nbsp;&nbsp;&nbsp;</span>
                     </span>
+                    <span class='relative university-school-color p05xy txt-smoke bg-shamrock' ng-show='uni.svg_url' ng-click="fieldPromptAndUpdate('School SVG Url', uni.svg_url, uni)" style='height:39px !important; width:110px !important;'>
+                        <img style='margin-bottom:-10px; max-width:110px;; max-height:39px !important;' src='{{uni.svg_url}}' class='full-y'/>
+                    </span>
+                    <span  class='relative university-school-color p05xy txt-smoke bg-auburn' ng-show='!uni.svg_url' ng-click="fieldPromptAndUpdate('School SVG Url', uni.svg_url, uni)" style='height:39px !important; width:110px !important;'>
+                            !SVG URL
+                    </span>
                     <span class='university-school-color p05x txt-smoke ng-class{:"bg-auburn": !uni.school_color_dark || uni.school_color_dark === "#40484B"}' style='background-color:{{uni.school_color_dark}}; border:5px solid black;' ng-click="fieldPromptAndUpdate('School Color Dark', uni.school_color_dark, uni)">
                         {{uni.school_color_dark || 'MISSING'}}
                     </span>
@@ -46,13 +52,22 @@
                             !CASUAL
                         </span>
                     </span>
-                     <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Mascot Name', uni.school_mascot_name, uni)">
+                    <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('Mascot Name', uni.school_mascot_name, uni)">
                         <small class='absolute'> </small>
                         <span ng-if='uni.school_mascot_name' class='p05y bg-shamrock'>
                             &nbsp;&nbsp;&nbsp;{{uni.school_mascot_name}}&nbsp;&nbsp;&nbsp;
                         </span>
                         <span ng-if='!uni.school_mascot_name' class='p05y bg-auburn'>
                             &nbsp;!MASCOT
+                        </span>
+                    </span>
+                    <span class='university-title bg-auburn relative' ng-click="fieldPromptAndUpdate('School Tiny Name', uni.school_tiny_name, uni)">
+                        <small class='absolute'> </small>
+                        <span ng-if='uni.school_tiny_name' class='p05y bg-shamrock'>
+                            &nbsp;&nbsp;&nbsp;{{uni.school_tiny_name}}&nbsp;&nbsp;&nbsp;
+                        </span>
+                        <span ng-if='!uni.school_tiny_name' class='p05y bg-auburn'>
+                            &nbsp;!TINY NAME
                         </span>
                     </span>
                     <span class='university-title bg-charcoal relative'>

@@ -3562,6 +3562,12 @@ class AdminOneUniversityView(restful.Resource):
                     abort(401)
                 u.school_color_two = school_color_two
 
+            if 'school_tiny_name' in request.json:
+                school_tiny_name = request.json.get('school_tiny_name')
+                if type(school_tiny_name) != str:
+                    abort(401)
+                u.school_tiny_name = school_tiny_name
+
             if 'is_public' in request.json:
                 is_public = request.json.get('is_public')
                 if type(is_public) != bool:

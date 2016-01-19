@@ -17,36 +17,99 @@ angular.module('uguru.util.controllers')
 
 		//first format by
 		$scope.page = {active: {tabName: 'Home', progress:null}};
+		var NUM_PRIORITIZED = 16;
 
 		$scope.setActiveThread = function(tabName) {
 			$scope.page.active.tabName = tabName;
 		}
+		// Define format
+		// - Google hyperlinks to subprojects
+		// --- uguru/milestones/january/date
+		// --- I maintain all of it, dw on your end
+		// --- Create day goals
+		// --- Test Sprint vs Weak
+		// - functional + testing is a MUST
+		// - Sleek is best-effort
 
-		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides", "Timeline", "Moodboards", "Glossary"];
-		$scope.projects = [{name:'University Specific + Home', deadline:"1/15/2015", urgent:true, progress:null, action_items:[]}, {name: 'Student Everything MVP'}, {name: 'Guru Everything MVP'}, {name: 'GPA App'}];
+		// alpha beta percentages
+		// fill in this weeks' projects
+		// visual colors
+		// all remaining projects --> icebox
+		// team photos within betas
+		// moodboard component page MVP
+		// roles + responsibilities
+		// Glossary
 
+		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides",  "Moodboards", "Glossary"];
+		$scope.projects = [
+			{name:'Pre-app (Universities, Sidebar)'},
+			{name: 'Login/Logout + Signup + School Email Verify'},
+			{name: 'Guru can fill out their profile'},
+			{name: 'Guru can increase their credibility'},
+			{name: 'Guru can create 1-->Many shops'},
+			{name: 'Guru can promote themselves'},
+			{name: 'Guru can bill students'},
+			{name: 'Student can create a request'},
+			{name: 'Student add/remove courses'},
+			{name: 'Student + Guru can enhance message'},
+			{name: 'MVP Email Marketing'},
+			{name: 'Logo Redesign (Saturday)'},
+			{name: 'uMoodboard MVP'},
+			{name: 'One Pagers'},
+			{name: 'Admin Stuff'}, //remove mobile app from stores
+			{name: 'Access 2.0'},
+			{name: 'Guru OH'},
+			{name: 'Catchup with Mobile Apps'},
+			{name: 'Better Mobile Experience'},
+			{name: 'Data + Content'},
+			{name: 'All Audience Edge Case'},
+			{name: 'First Time Experience + Tutorials'},
+			{name: 'Custom Courses + Universities'},
+		];
+
+		// {"PLANNING Figure out format for the week + push it": false},
+				// {"PLANNING + Project specs: saturday-logo, whack wednesday, login/signup/fb, independent project": false},
+				// {"Add to plan--> guru mode vs student mode + last mode signed in": false},
+				// {"Hi-fi --- guru + student dashboard on mobile": false},
+				// {"Hi-fi --- signup page / not signup apge": false},
+				// {"Add to plan --> 'design project transitions + sneakViews + scrollreveal'": false},
+				// {"Add to plan --> 'university specific project'": false},
+				// {"Add to plan --> 'pricing on profile cards etc'": false},
+				// {"Add to plan --> 'Loading Spec'": false},
+				// {"Add to plan --> 'complete profiles'": false},
+				// {"Add to plan --> 'helicopter theme'": false},
+				// {"Add to plan --> 'edge cases'": false},
+				// {"Add to plan --> 'checkin on goals'": false},
+				// {"Add to plan --> 'components'": false},
+				// {"Add to plan --> 'all audiences'": false},
+				// {"Add to plan --> 'user personal site icon'": false},
+				// {"Add to plan --> 'weekly themes: build moodboards -- tie & finalize animations'": false},
+				// {"Add to plan --> 'marketing + email transactions'": false},
+				// {"Add to plan --> tutorial benchmark": false},
+
+		$scope.sprints = [];
 		var getProjectOneActionItems = function() {
 			var resultDict = {};
 
+			//STOP USING THIS DAMN THING & FINALIZE
 			resultDict.alpha = [
-				{"Home page counter":true},
-				{"Scroll Reveal": true},
-				{"Update University.js":true},
-				{"Add tiny_name to university":true},
-				{"Support Library":true},
-				{"Home Page Sidebar + link in-app-views":false},
-				{"Helicopter Transition":false},
-				{"FAQ":false},
-				{"Pricing + other page animations":false},
-				{"Add svg_url + tiny name edit to admin + cleanup courses":false},
-				{"Clean-up maps + add pennant + resize after render":false},
+				{'Add all projects to admin + template': false},
+				{'Compile + Ship MVP': false},
+				{'Fluid Spec': false},
+				{'Data:  Finalize categories, Analyse + get + Scrape Popular Courses, Map All Documents': false},
+				{"Testing comfort + verify + admin": false},
+				{'Content, Privacy Terms, Final categories': false},
+				{'Minor errors --> back button action become guru / login/ signup':false},
+				{'Fluidity Spec':false},
 				{"Sanitize Courses": false},
-				{"Main section templating": false},
+				{"Fluidity spec + implement": false},
+				{"Login / signup / facebook connect spec": false},
+				{"list of all unfinished threads": false},
 				{"Code Cleanup": false},
-				{"Category Content": false},
-				{"Content": false},
-				{"image url + static assets conversion":false}
+				{"Admin tools private only": false},
+				{"Map Window": false}
 			];
+
 
 			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
 
@@ -69,7 +132,7 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.calculateProjectProgress = function(project) {
-			var progressDict = {alpha:0, beta:0, production:0, overall:0};
+			var progressDict = {alpha:0, alpha_total:0, beta:0, beta_total:0, production_total:0, production:0, overall:0};
 			progressDict.total = project.alpha.length + project.beta.length + project.production.length;
 			for (var i = 0; i < project.alpha.length; i ++) {
 				var indexAlphaItem = project.alpha[i];
@@ -106,16 +169,34 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.projects[0].action_items = getProjectOneActionItems();
+
 		$scope.projects[0].progress = $scope.calculateProjectProgress($scope.projects[0].action_items);
+
+		$scope.sprints = [{description:"Functional product students can use", projects:$scope.projects.slice(0,NUM_PRIORITIZED)}, {description:"Icebox", projects:$scope.projects.slice(NUM_PRIORITIZED, $scope.projects.length)}];
+
+		var initProject = function(project) {
+			project.alpha_complete = false;
+			project.beta_complete = false;
+			project.production_complete = false;
+			project.progress_percentage = 0;
+			if (!project.action_items) {
+				project.action_items = {alpha:[], beta:[], production:[]}
+			}
+			return project;
+		}
+
 
 		var initProjectCTAS = function() {
 
 			for (var i = 0; i < $scope.projects.length; i ++) {
-				indexProject = $scope.projects[i];
+				// indexProject = $scope.projects[i];
+
 				CTAService.initSingleCTA('#cta-box-project-' + i, '#admin-main');
+
 			}
 
 		}
+
 
 		$scope.$on('$ionicView.loaded', function() {
 			$timeout(function() {
@@ -123,251 +204,6 @@ angular.module('uguru.util.controllers')
 			}, 1000)
 		})
 
-
-		$scope.timeline = {
-		    "version": 0.1,
-		    "audiences": ["general", "gurus", "students"],
-		    "threads": ["design + UX", "cleanup", "responsive", "data", "functionality", "marketing", "content", "testing"],
-		    "threads_detailed": { //sheet specific
-		        "design + UX": {
-		            "owner": "Jeselle",
-		            "todo": [
-		            	{
-		                	"title": "Design Guide 100% for these workflows",
-		                    "description": "All workflows' mapped + resolved to design guide. This means their components + containers following Dont-Repeat-Yourself Principles",
-		                    "checklist": [
-		                    	{item: "Signup/Login", complete: true},
-		                        {item: "Guru Onboarding", complete: true},
-		                        {item: "Student Home", complete: true},
-		                        {item: "Guru Profile", complete: true},
-		                        {item: "Edit Guru Profile", complete: true},
-		                        {item: "Guru Home Page", complete: true},
-		                        {item: "Student Request Form", complete:false},
-		                        {item: "Student Add Course", complete:false},
-		                        {item: "Student Messaging + files", complete:false},
-		                        {item: "Desktop/Mobile Settings", complete:false},
-		                        {item: "Add/edit/remove Payment + Transactions", complete:false}
-		                    ],
-		                    "checklist_fields": ["components", "containers", "100%"],
-		                    "assignee": {
-		                    	name: "Jeselle"
-		                    }
-		                },
-		                { "title": "Page Specific",
-		                    "description": "Discuss, reconstruct, finalize hi-fis pertaining to most-updated guide",
-		                    "checklist": [
-		                        {item: "University Specific Page", complete:false },
-		                        {item: "Team Page", complete:false },
-		                        {item: "FAQ Page", complete:false },
-		                        {item: "Pricing Page", complete:false },
-		                        {item: "Apply Page", complete:false },
-		                        {item: "Home Page (last -- fun!)", complete:false },
-		                        {item: "Stray, one-time-use components", complete:false },
-		                    ],
-		                    "assignee": {
-		                    	name: "Jeselle"
-		                    }
-		                },
-		                { "title": "Mobile mapping",
-		                    "description": "Discuss & finalize mobile versions from part 1",
-		                    "checklist": [
-		                        {item: "Everything Mobile", complete:false }
-		                    ],
-		                    "assignee": {
-		                    	name: "Jeselle"
-		                    }
-		                },
-		     	   ],
-		    	},
-		        "responsive": {
-		        		"owner": "Samir",
-			            "todo": [
-			            	{
-			                	"title": "All Components + Containers",
-			                    "description": "All components in Jeselle's design guide implemented & modular for all 7 screen sizers",
-			                    "checklist": [
-			                    	{item: "Buttons", complete:false },
-			                    	{item: "Search Bars", complete:false },
-			                    	{item: "Calendar", complete:false },
-			                    	{item: "Maps", complete:false },
-			                    	{item: "etc.", complete:false },
-			                    ],
-			                    "assignee": {
-			                    	name: "Gabrielle"
-			                    }
-			            	}
-			            ]
-		            },
-		        "data": {
-
-		        		"owner": "Samir",
-			            "todo": [
-			            	{
-			                	"title": "University Data Final",
-			                    "description": "Spring Semester Start Date for Top 200 + Course Cleanup",
-			                    "checklist": [
-			                    	{item: "General Course Cleanup Algorithm", complete:false },
-			                    	{item: "Spring Semester load", complete:false },
-			                    	{item: "Verify images are great quality", complete:false },
-			                    ],
-			                    "assignee": {
-			                    	name: "Samir"
-			                    }
-			            	}
-			            ]
-
-		            },
-		        "functionality": {
-		        	"owner": "Samir",
-			            "todo": [
-			            	{
-			                	"title": "University Data Final",
-			                    "description": "Spring Semester Start Date for Top 200 + Course Cleanup",
-			                    "checklist": [
-			                    	{item: "Signup/Login", complete: true},
-		                        	{item: "Guru Onboarding", complete: true},
-		                        	{item: "Student Home", complete: true},
-		                        	{item: "Guru Profile", complete: true},
-		                        	{item: "Edit Guru Profile", complete: true},
-		                        	{item: "Guru Home Page", complete: true},
-		                        	{item: "Student Request Form", complete:false},
-		                        	{item: "Student Add Course", complete:false},
-		                        	{item: "Student Messaging + files", complete:false},
-		                        	{item: "Desktop/Mobile Settings", complete:false},
-		                        	{item: "Add/edit/remove Payment + Transactions", complete:false}
-			                    ],
-			                    "assignee": {
-			                    	name: "Samir"
-			                    }
-			            	}
-			            ]
-		            },
-		        "marketing": {
-		        	  "todo": [
-		            	{
-		                	"title": "Email Scraping",
-		                    "description": "Determine morning 1st hour -- daily schedule to scrape emails + post on facebook (automated facebook post)",
-		                    "checklist": [
-		                    	{item: "Create general post on facebook", complete:false },
-		                    	{item: "Create general post on Instagram", complete:false },
-		                        {item: "Find tool that's cheap to auto-post for us (selenium?)", complete:false },
-		                        {item: "Create docs to have jason take over", complete:false }
-		                    ],
-		                    "assignee": {
-		                    	name: "Samir"
-		                    }
-		            	},
-		            	{
-		                	"title": "Email Marketing Templating + Product Hooks",
-		                    "description": "All emails drafted, templated, and linked into the product",
-		                    "checklist": [
-		                    	{item: "First time signup", complete:false },
-		                    	{item: "+ 3 follow-up", complete:false },
-		                        {item: "+ 3 follow-up + active", complete:false },
-		                        {item: "set up task queue", complete:false },
-		                    ],
-		                    "assignee": {
-		                    	name: "Samir"
-		                    }
-		            	}
-		            ],
-		        },
-		        "content": {
-		        	"owner": "Samir",
-		            "todo": [
-		            	{
-		                	"title": "Email Marketing Templating + Product Hooks",
-		                    "description": "All emails drafted, templated, and linked into the product",
-		                    "checklist": [
-		                    	{item: "First time signup", complete:false },
-		                    	{item: "+ 3 follow-up", complete:false },
-		                        {item: "+ 3 follow-up + active", complete:false },
-		                        {item: "set up task queue", complete:false },
-		                    ],
-		                    "assignee": {
-		                    	name: "Samir"
-		                    }
-		            	},
-		            	{
-		                	"title": "Home page marketing Content",
-		                    "description": "Student / Guru Centric content to better explain the product",
-		                    "checklist": [
-		                    	{item: "Slide one", complete:false },
-		                    	{item: "Slide two", complete:false },
-		                        {item: "Slide three", complete:false },
-		                        {item: "Slide four", complete:false },
-		                        {item: "Slide five", complete:false },
-		                    ],
-		                    "assignee": {
-		                    	name: "Samir"
-		                    }
-		            	},
-		            	{
-		                	"title": "'Docs/FAQ'",
-		                    "description": "Content for tour guru etc.",
-		                    "checklist": [
-		                    	{item: "Go through Guru Home & Determine Ambigious", complete:false }
-		                    ],
-		                    "assignee": {
-		                    	name: "Samir"
-		                    }
-		            	},
-
-		            ]
-		            },
-		        "cleanup": {
-		        	"owner": "Samir",
-		            "todo": [
-		            	{
-		                	"title": "Change file structure",
-		                    "description": "All old js/html/css filess not being used",
-		                    "checklist": [
-		                    	{item: "Create a gameplan", complete:false },
-		                    	{item: "HTML", complete:false },
-		                        {item: "JS", complete:false },
-		                        {item: "UI-Router", complete:false },
-		                    ],
-		                    "assignee": {
-		                    	name: "Samir"
-		                    }
-		            	}
-		            ]
-		        },
-		        "testing": {
-		        	"owner": "Jason",
-		            "todo": [
-		            	{
-		                	"title": "Home Page Workflow",
-		                    "description": "Here is the test cases to implement. This is just a mental list don't format it in the order below -- its just a list to communicate to you. Let me know if this description doesn't make sense.",
-		                    "checklist": [
-		                    	{item: "Search 'Berkeley' and select Berkeley", complete:false },
-		                    	{item: "Verify page has changed", complete:false },
-		                    	{item: "Repeat + setup for 10 universities", complete:false },
-		                        {item: "Click side menu, open + close (nothing else)", complete:false },
-		                    ],
-		                    "assignee": {
-		                    	name: "Jason"
-		                    }
-		            	},
-		            	{
-		                	"title": "University specific workflow",
-		                    "description": "When you get to /university/{{university.id}}, here are the things you should test",
-		                    "checklist": [
-		                    	{item: "Main Section: Nav bar, sidebar, all the top right links work", complete:false },
-		                    	{item: "Browse Section -> Courses: Create celery table, test 10 different inputs", complete:false },
-		                    	{item: "Browse Section -> Gurus: Click each guru + make sure CTA with full profile", complete:false },
-		                    	{item: "Browse Section -> Categorys: Make sure each clicks and shows all the options", complete:false },
-		                    	{item: "How it works -> Make sure all elements exist", complete:false },
-		                    	{item: "How it works -> Become a Guru", complete:false },
-		                    ],
-		                    "assignee": {
-		                    	name: "Jason"
-		                    }
-		            	},
-		            ]
-		        }
-		    }
-		}
 
 
 

@@ -17,11 +17,14 @@ function CounterService($timeout, $interval) {
       suffix : ''
     };
 
-  var initCounter = function(selector, minVal, maxVal, duration, suffix) {
+  var initCounter = function(selector, minVal, maxVal, duration, suffix, prefix) {
     if (suffix) {
       defaultOptions.suffix = suffix;
     }
-    return new CountUp(selector, minVal, maxVal, 0, 5, defaultOptions);
+    if (prefix) {
+      defaultOptions.prefix = prefix;
+    }
+    return new CountUp(selector, minVal, maxVal, 0, duration, defaultOptions);
 
   }
 
@@ -31,7 +34,7 @@ function CounterService($timeout, $interval) {
 
   return {
     initCounter:initCounter,
-    startCounter:startCounter
+    startCounter:startCounter,
   }
 
 }

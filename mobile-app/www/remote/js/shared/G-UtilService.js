@@ -3,10 +3,11 @@
 angular
 	.module('sharedServices')
 	.factory("GUtilService", [
-		GUtilService
+		'$timeout',
+    GUtilService
 	]);
 
-function GUtilService() {
+function GUtilService($timeout) {
   var publicPlaceService;
 
 
@@ -33,20 +34,31 @@ function GUtilService() {
       "weight": 'M35.1764706,50 L64.8235294,50 M82.8235294,50 L86,50 M14,50 L17.1764706,50 M18.2352941,42.3333604 C18.2352941,40.6764912 19.577484,39.3333333 21.2336271,39.3333333 L23.7075494,39.3333333 C25.3634829,39.3333333 26.7058824,40.6678289 26.7058824,42.3333604 L26.7058824,57.6666396 C26.7058824,59.3235088 25.3636925,60.6666667 23.7075494,60.6666667 L21.2336271,60.6666667 C19.5776935,60.6666667 18.2352941,59.3321711 18.2352941,57.6666396 L18.2352941,42.3333604 Z M26.7058824,36.9961002 C26.7058824,35.3413998 28.0480722,34 29.7042153,34 L32.1781376,34 C33.8340712,34 35.1764706,35.3342595 35.1764706,36.9961002 L35.1764706,63.0038998 C35.1764706,64.6586002 33.8342807,66 32.1781376,66 L29.7042153,66 C28.0482818,66 26.7058824,64.6657405 26.7058824,63.0038998 L26.7058824,36.9961002 Z M64.8235294,36.9961002 C64.8235294,35.3413998 66.1657193,34 67.8218624,34 L70.2957847,34 C71.9517182,34 73.2941176,35.3342595 73.2941176,36.9961002 L73.2941176,63.0038998 C73.2941176,64.6586002 71.9519278,66 70.2957847,66 L67.8218624,66 C66.1659288,66 64.8235294,64.6657405 64.8235294,63.0038998 L64.8235294,36.9961002 Z M73.2941176,42.3333604 C73.2941176,40.6764912 74.6363075,39.3333333 76.2924506,39.3333333 L78.7663729,39.3333333 C80.4223065,39.3333333 81.7647059,40.6678289 81.7647059,42.3333604 L81.7647059,57.6666396 C81.7647059,59.3235088 80.422516,60.6666667 78.7663729,60.6666667 L76.2924506,60.6666667 C74.6365171,60.6666667 73.2941176,59.3321711 73.2941176,57.6666396 L73.2941176,42.3333604 Z'
     }
     var templatedPathValue = {
-      path: mapIconDict[keyVal],
-      fillOpacity: 1,
-      strokeOpacity:1,
+      'path': mapIconDict[keyVal],
+      'fillOpacity': 1,
+      'strokeOpacity':1,
       // labelOrigin: new google.maps.Point(0, 40),
-      rotation: 0,
-      scale: 0.5,
-      strokeColor: stroke_hex,
-      fillColor: fill_hex,
+      'rotation': 0,
+      'scale': 0.5,
+      'strokeColor': stroke_hex,
+      'fillColor': fill_hex,
       // anchor: new google.maps.Point(0, 0),
-      strokeWeight: !stroke_weight || 3
+      'strokeWeight': (!stroke_weight || 3)
     }
-
-
     return templatedPathValue;
+  }
+
+  function getInvisibleIconPath() {
+    return {
+      "path": "M33.4454342, 31.4545455",
+      "fillOpacity": 0,
+      "strokeOpacity":0,
+      "rotation": 0,
+      "scale":0.01,
+      "strokeColor": "transparent",
+      "fillColor": "transparent",
+      "strokeWeight": 0
+    }
   }
 
   function getNearestLocationOneMarker(map, lat, lng, scope) {
@@ -119,6 +131,12 @@ function GUtilService() {
     return getMapIconPath(randItem, color_one, color_two, 5);
   }
 
+  var convertSVGStringIntoDataUri = function(svg_string) {
+    var precursorFormat = "data:image/svg+xml,";
+    var result = precursorFormat + encodeURIComponent(svg_string);
+    return result;
+  }
+
   // (map, university_arr, scope.map.markers, {icon_type:"university_penant", label_color:"white", custom_class})
   var initSeveralMarkersWithLabel = function(map, obj_arr, marker_arr, options, callback) {
     result_arr = [];
@@ -127,26 +145,49 @@ function GUtilService() {
       var icon = getRelevantIcon(objIndex.school_color_dark, objIndex.school_color_light, options.icon_type);
 
 
-      // var pictureLabel = document.createElement("div");
-      picture_src = objIndex.svg_url || objIndex.seal_url || objIndex.logo_url;
-      // pictureLabel.style.backgroundImage = 'url("' + picture_src + '")';
-      var pictureLabel = document.createElement("img");
-      pictureLabel.src = options.img_base + 'templates/svg/map/cafe.svg';
 
-      var indexmarker = new MarkerWithLabel({
-        position: latCoordToGoogleLatLng(objIndex.latitude, objIndex.longitude),
-        map: map,
-        icon: getRelevantIcon(objIndex.school_color_one, objIndex.school_color_two, ['cafe']) , //cant edit the icon css
-        labelContent: pictureLabel,
-        labelStyle: {},
-        labelAnchor: new google.maps.Point(50,0),
-        labelClass: 'university-svg-icon', // the CSS class for the label
-        labelInBackground: false
-      });
+
+      var pictureLabel = document.createElement("img");
+      if (objIndex.school_tiny_name && objIndex.school_tiny_name.length) {
+        var universityName = objIndex.school_tiny_name
+      }
+      else if (objIndex.short_name && objIndex.short_name.length) {
+        var universityName = objIndex.short_name;
+      } else if (objIndex.name && objIndex.name.length) {
+        var universityName = objIndex.name;
+      }
+
+
+      if (universityName.length > 4) {
+        universityName = universityName.substring(0,4);
+      }
+      if (objIndex.school_color_light === '#757575')  {
+        objIndex.school_color_light = '#FFFFFF';
+      }
+      var svgImage = "<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + objIndex.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='#40484B'></path><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' fill='none' stroke='#FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + objIndex.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"
+      var pennantPaths = [];
+      pictureLabel.src = convertSVGStringIntoDataUri(svgImage, options);
+
+
+
+        // var indexmarker =
+
+        result_arr.push(new MarkerWithLabel({
+          'position': latCoordToGoogleLatLng(objIndex.latitude, objIndex.longitude),
+          'map': map,
+          'icon':  getInvisibleIconPath(), //cant edit the icon css
+          'labelContent': pictureLabel,
+          'labelAnchor': new google.maps.Point(0,0),
+          'labelClass': 'university-svg-icon', // the CSS class for the label
+          'labelInBackground': false
+
+        }))
+
 
       // var indexMarker = createMarkerWithLabel(map, objIndex.latitude, objIndex.longitude, null, markerOptions);
     }
-    callback && callback();
+
+    callback && callback(result_arr);
   }
 
   var nearbyLocationMarkers = [];

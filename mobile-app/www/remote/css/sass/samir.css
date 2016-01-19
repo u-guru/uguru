@@ -475,10 +475,20 @@ ul#guru-courses-user-profile {
 .university-svg-icon {
   opacity: 1 !important; }
   .university-svg-icon img {
+    opacity: 0 !important; }
+  .university-svg-icon img:nth-child(1) {
     z-index: 5;
     top: 15px;
     width: 50px !important;
     height: 50px !important;
     opacity: 1 !important; }
+
+#cta-modal-FAQ .cta-modal-close {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end; }
 
 /*# sourceMappingURL=samir.css.map */

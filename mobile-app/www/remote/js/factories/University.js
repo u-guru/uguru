@@ -123,7 +123,9 @@ angular.module('uguru.rest', [])
                                  });
                              }, 1000);
 
+
                              if (scope && callback) {
+                                console.log('saving courses');
                                 callback(scope, source.courses.slice());
                              }
 
@@ -131,6 +133,12 @@ angular.module('uguru.rest', [])
                          console.log("Error getting popularCourses: " + err);
                      });
              }, 0);
+         },
+         getPopularCoursesPromise: function(uni_id, scope, callback) {
+             if (!uni_id) {
+                return;
+             }
+             return Restangular.one('universities', uni_id).customGET('popular_courses');
          },
         getCourses: function(uni_id) {
             return $timeout(function() {
@@ -9576,7 +9584,7 @@ var targettedUniversities = [{
         "city": "Grove city",
         "num_popular_courses": 245,
         "state": "PA",
-        "latitude": "17.3698797",
+        "latitude": "41.1560",
         "logo_url": "http://i.forbesimg.com/media/lists/colleges/grove-city-college_50x50.jpg",
         "website": "http://www.gcc.edu/",
         "banner_url_confirmed": false,
@@ -9594,7 +9602,7 @@ var targettedUniversities = [{
         "num_emails": 0,
         "num_courses": 864,
         "variations": "willie the wolverine wolverines gcc",
-        "longitude": "78.4726026",
+        "longitude": "-80.0800",
         "courses_sanitized": true,
         "popular_courses": [
             "ECON 102",

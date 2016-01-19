@@ -3400,6 +3400,7 @@ class Subcategory(Base):
     avg_hourly_higher = Column(Integer)
     is_active = Column(Boolean, default=True)
     is_approved = Column(Boolean, default=False)
+    unit_name = Column(String, default="hour")
 
     @staticmethod
     def create(name, category_id, icon_url=None,

@@ -24,12 +24,15 @@ angular.module('uguru.util.controllers')
 
 		$scope.searchInputFocus;
 
-		$scope.courses = University.source.courses || [];
-		if (!$scope.courses || !$scope.courses.length) {
-			var successCallback = function() {
-				$scope.courses = University.source.courses;
+
+		if ($state.current.name !== 'root.universities') {
+			$scope.courses = University.source.courses || [];
+			if (!$scope.courses || !$scope.courses.length) {
+				var successCallback = function() {
+					$scope.courses = University.source.courses;
+				}
+				University.getPopularCourses($scope.user.university_id, $scope, successCallback)
 			}
-			University.getPopularCourses($scope.user.university_id, $scope, successCallback)
 		}
 
 		if (!$scope.user.guru_courses) {
