@@ -159,7 +159,7 @@
 	// HEADERS
 	.splash-logo {
 		@include center-y;
-		display: block;
+		display: block!important;
 		left: 0;
 		height: 100%;
 		padding: 15px 15px 5px;

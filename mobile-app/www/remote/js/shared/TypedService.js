@@ -14,17 +14,17 @@ function TypedService($timeout, $interval) {
 
   var initTypedTicker = function(selector_id, dataArr) {
     "use strict";
-    let theater = theaterJS({minSpeed:50, maxSpeed: 350})
+    var theater = theaterJS({minSpeed:50, maxSpeed: 350})
 
     theater
     .on('type:start, erase:start', function () {
       // add a class to actor's dom element when he starts typing/erasing
-      let actor = theater.getCurrentActor()
+      var actor = theater.getCurrentActor()
       actor.$element.classList.add('is-typing')
     })
     .on('type:end, erase:end', function () {
       // and then remove it when he's done
-      let actor = theater.getCurrentActor()
+      var actor = theater.getCurrentActor()
       actor.$element.classList.remove('is-typing')
     })
 
