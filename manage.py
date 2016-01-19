@@ -740,8 +740,12 @@ def update_categories():
             subcategory_obj = Subcategory.query.get(subcategory_id)
             subcategory_obj.name = subcategory['name']
             subcategory_obj.icon_url = subcategory['icon_url']
+            if not subcategory_obj.icon_url and category.icon_url:
+                subcategory_obj.icon_url = category.icon_url
             subcategory_obj.description = subcategory['description']
             subcategory_obj.unit_name = subcategory.get('unit_name')
+            subcategory_obj.is_active = subcategory.get('is_active')
+            subcategory_obj.is_approved = subcategory.get('is_approved')
             subcategory_obj.avg_hourly = subcategory.get('avg_hourly')
             subcategory_obj.avg_hourly_lower = subcategory.get('avg_hourly_lower')
             subcategory_obj.avg_hourly_higher = subcategory.get('avg_hourly_higher')
