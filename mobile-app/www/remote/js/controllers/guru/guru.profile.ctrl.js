@@ -49,7 +49,7 @@ angular.module('uguru.guru.controllers')
     }
 
     // credibility only variable
-    $scope.activeTabIndex = 1;
+    $scope.activeTabIndex = 0;
     $scope.profile.edit_mode = false;
 
     $scope.page = { modals : {}, popups: {}, backdrops: {}, dropdowns: {}, toggles:{} }

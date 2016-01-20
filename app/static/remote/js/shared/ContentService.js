@@ -5,7 +5,7 @@ angular
 	]);
 
 function ContentService() {
-
+	var STATIC_BASE = "https://uguru-rest-test.herokuapp.com/static/remote/"
 
 	var pricing = {
 		header: "Estimated Pricing",
@@ -252,7 +252,7 @@ function ContentService() {
 					"hourly_price": 5,
 					"price_measure": "dozen",
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/baking/cookie.jpg",
+					"featured_url": STATIC_BASE + "img/filler/baking/cookie.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -267,7 +267,7 @@ function ContentService() {
 					"hourly_price": 10,
 					"price_measure": "dozen",
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/baking/cupcake.jpg",
+					"featured_url": STATIC_BASE + "img/filler/baking/cupcake.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -282,7 +282,7 @@ function ContentService() {
 					"hourly_price": 8,
 					"price_measure": "dozen",
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/baking/donut.jpg",
+					"featured_url": STATIC_BASE + "img/filler/baking/donut.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -297,7 +297,7 @@ function ContentService() {
 					"hourly_price": 12,
 					"price_measure": "dozen",
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/baking/maca.jpg",
+					"featured_url": STATIC_BASE + "img/filler/baking/maca.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -392,7 +392,7 @@ function ContentService() {
 					"full_name": "Dishwashing",
 					"hourly_price": 10,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/household/dish.jpg",
+					"featured_url": STATIC_BASE + "img/filler/household/dish.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -406,7 +406,7 @@ function ContentService() {
 				"full_name": "Furniture Cleaning",
 				"hourly_price": 12,
 				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				"featured_url": "remote/./img/filler/household/furclean.jpg",
+				"featured_url": STATIC_BASE + "img/filler/household/furclean.jpg",
 				"resources": [{
 					"is_url": true,
 					"is_featured": true,
@@ -420,7 +420,7 @@ function ContentService() {
 					"full_name": "Floor Care",
 					"hourly_price": 12,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/household/floor.jpg",
+					"featured_url": STATIC_BASE + "img/filler/household/floor.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -434,7 +434,7 @@ function ContentService() {
 					"full_name": "Laundry",
 					"hourly_price": 18,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/household/laundry.jpg",
+					"featured_url": STATIC_BASE + "img/filler/household/laundry.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -448,7 +448,7 @@ function ContentService() {
 					"full_name": "General Cleaning",
 					"hourly_price": 20,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/household/genclean.jpg",
+					"featured_url": STATIC_BASE + "img/filler/household/genclean.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -466,7 +466,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "remote/./img/filler/avatars/guru-photo-f.jpg",
+			"profile_url": STATIC_BASE + "img/filler/avatars/guru-photo-f.jpg",
 			"guru_introduction": "Often imitated, never duplicated. Photography maniac",
 			"profile_code": "photo",
 			"verified": true,
@@ -527,7 +527,7 @@ function ContentService() {
 				description: ""
 			}],
 			"academic_shop": {
-				"banner_url": "remote/./img/filler/avatars/guru-photo-f.jpg",
+				"banner_url": STATIC_BASE + "img/filler/avatars/guru-photo-f.jpg",
 				"title": "Limitless Photos",
 				"description": "A multi-disciplinary creative specializing in photography. Self-taught. Passionate about capturing the human spirit. Prints for sale on my website.",
 				"portfolio_items":
@@ -539,7 +539,7 @@ function ContentService() {
 					"full_name": "Adventure Series",
 					"hourly_price": 15,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/photography/night.jpeg",
+					"featured_url": STATIC_BASE + "img/filler/photography/night.jpeg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -553,7 +553,7 @@ function ContentService() {
 					"full_name": "Formal Events",
 					"hourly_price": 20,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/photography/suit.jpg",
+					"featured_url": STATIC_BASE + "img/filler/photography/suit.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -567,7 +567,7 @@ function ContentService() {
 					"full_name": "Headshots",
 					"hourly_price": 20,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/photography/headshots.jpg",
+					"featured_url": STATIC_BASE + "img/filler/photography/headshots.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -581,7 +581,7 @@ function ContentService() {
 					"full_name": "Fun Around Campus",
 					"hourly_price": 15,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/photography/singer.jpg",
+					"featured_url": STATIC_BASE + "img/filler/photography/singer.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -599,7 +599,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "remote/./img/filler/avatars/guru-tech-m.jpg",
+			"profile_url": STATIC_BASE + "img/filler/avatars/guru-tech-m.jpg",
 			"guru_introduction": "Retro gamer. Go-to person for campus tech advice. Blue Devils fan.",
 			"profile_code": "tech",
 			"verified": true,
@@ -673,7 +673,7 @@ function ContentService() {
 					"hourly_price": "25-$80",
 					"price_measure": "device",
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/tech/broken.jpg",
+					"featured_url": STATIC_BASE + "img/filler/tech/broken.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -688,7 +688,7 @@ function ContentService() {
 					"hourly_price": "25-$80",
 					"price_measure": "device",
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/tech/waterdmg.jpg",
+					"featured_url": STATIC_BASE + "img/filler/tech/waterdmg.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -702,7 +702,7 @@ function ContentService() {
 					"full_name": "WiFi Installation",
 					"hourly_price": 15,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/tech/wifi.jpg",
+					"featured_url": STATIC_BASE + "img/filler/tech/wifi.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -716,7 +716,7 @@ function ContentService() {
 					"full_name": "Memory Backup",
 					"hourly_price": 15,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/tech/memory.jpg",
+					"featured_url": STATIC_BASE + "img/filler/tech/memory.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -730,7 +730,7 @@ function ContentService() {
 					"full_name": "Gadget Help",
 					"hourly_price": 25,
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/tech/gadgethlp.jpg",
+					"featured_url": STATIC_BASE + "img/filler/tech/gadgethlp.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
@@ -744,7 +744,7 @@ function ContentService() {
 					"full_name": "Web Design",
 					"hourly_price": "20-$30",
 					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-					"featured_url": "remote/./img/filler/tech/design.jpg",
+					"featured_url": STATIC_BASE + "img/filler/tech/design.jpg",
 					"resources": [{
 						"is_url": true,
 						"is_featured": true,
