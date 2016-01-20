@@ -4,6 +4,17 @@
   overflow-x: hidden;
 }
 
+.splash-landing button:not([class*="btn-ghost"]) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing button:not([class*="btn-ghost"]) {
+    font-size: 22px !important;
+  }
+}
+
 .splash-landing .splash-sidebar {
   position: absolute;
   top: 0;
@@ -241,7 +252,7 @@
 
 @media screen and (max-width: 680px) {
   .splash-landing .splash-logo {
-    padding: 0;
+    padding: 0 0 5px !important;
     margin-top: 5px;
     margin-left: 5px;
     max-height: 40px;
@@ -456,7 +467,7 @@
 
 .splash-landing .splash-toast button {
   height: auto;
-  padding: 10px 15px;
+  padding: 10px 15px !important;
   font-weight: 600;
   text-transform: lowercase;
   background: #81B566;
@@ -516,7 +527,7 @@
     border-radius: 1000px;
     margin: 0 15px;
     width: auto;
-    padding: 15px 30px;
+    padding: 15px 30px !important;
   }
 }
 
@@ -1817,7 +1828,7 @@
   display: block;
   background: white;
   color: #40484B;
-  padding: 15px;
+  padding: 15px 0;
   border-bottom: 10px solid #40484B;
   border-radius: 2px;
 }
@@ -2315,6 +2326,10 @@
   text-align: center;
 }
 
+.splash-landing > section#splash-start > div {
+  padding-bottom: 64px;
+}
+
 .splash-landing > section#splash-start h1, .splash-landing > section#splash-start h2 {
   padding: 0 15px;
   font-weight: 600;
@@ -2359,18 +2374,12 @@
   justify-content: center;
   max-width: 900px;
   margin: 0 auto;
-  padding: 15px;
+  padding: 7.5px;
 }
 
 .splash-landing > section#splash-start ul li {
   width: 100%;
-  padding: 15px;
-}
-
-@media screen and (min-width: 768px) {
-  .splash-landing > section#splash-start ul li {
-    width: 50%;
-  }
+  padding: 7.5px;
 }
 
 .splash-landing > section#splash-start ul li button {
@@ -2378,7 +2387,7 @@
   width: 100%;
   max-width: none;
   background: none;
-  font-size: 24px;
+  font-size: 22px;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -2386,6 +2395,22 @@
 .splash-landing > section#splash-start ul li button:hover, .splash-landing > section#splash-start ul li button:focus {
   background: white;
   color: #69B3A5;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-start > div {
+    padding-bottom: 0;
+  }
+  .splash-landing > section#splash-start ul {
+    padding: 15px;
+  }
+  .splash-landing > section#splash-start ul li {
+    width: 50%;
+    padding: 15px;
+  }
+  .splash-landing > section#splash-start ul li button {
+    font-size: 24px;
+  }
 }
 
 .splash-landing > section.essay-pricing .main {
