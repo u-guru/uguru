@@ -576,15 +576,10 @@ ul#guru-courses-user-profile {
 
 .university-svg-icon {
 	opacity: 1 !important;
-	img {
-		opacity:0 !important;
-	}
-	img:nth-child(1) {
-		z-index: 5;
-		top: 15px;
-		width:50px !important;
-		height:50px !important;
-		opacity:1 !important;
+	//omg genius --> http://stackoverflow.com/questions/15196630/hide-text-node-in-element-but-not-children
+	visibility:collapse;
+	svg {
+		visibility:visible !important;
 	}
 }
 #cta-modal-FAQ .cta-modal-close {
