@@ -13,7 +13,7 @@ function TypedService($timeout, $interval) {
   var defaultCharSpeed = 40;
 
   var initTypedTicker = function(selector_id, dataArr) {
-
+    "use strict";
     var theater = theaterJS({minSpeed:50, maxSpeed: 350})
 
     theater
