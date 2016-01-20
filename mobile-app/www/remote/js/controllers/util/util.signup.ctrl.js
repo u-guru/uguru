@@ -42,6 +42,20 @@ angular.module('uguru.util.controllers')
 
     $ionicSideMenuDelegate.canDragContent(false);
 
+
+    //dev mode
+    $scope.$on('$ionicView.beforeEnter', function() {
+
+        if (LOCAL && $state.current.name === 'root.desktop-login') {
+          $scope.university = {
+            popular_courses: ["ESPM 165","IAS 115","ECON 119","ANTHRO 139","PSYCH 125","PACS 94","MUSIC 142",
+                "MATH 98", "FILM 50","GEOG 130","CHEM 103","ART 8","GREEK 10","STAT 157","UGBA 103","EPS 3","DUTCH 166","GWS 103",
+                "ISF 61","UGIS 112"],
+            short_name: 'UC Berkeley'
+          }
+        }
+    });
+
     function goGuruMode()
     {
 
@@ -56,7 +70,6 @@ angular.module('uguru.util.controllers')
       //    $state.go('^.guru');
       //  }
     }
-
 
 
     ngFB.init({appId: '1416375518604557'});

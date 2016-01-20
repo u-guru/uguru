@@ -39,6 +39,49 @@ angular.module('uguru.util.controllers')
 		// moodboard component page MVP
 		// roles + responsibilities
 		// Glossary
+		$scope.moodboardComponents = [
+			{
+				name: "Cards",
+				cta_box_bg: 'bg-azure',
+				description: "Cards with a purpose",
+				top_five: [
+					{
+						title: "Google's Material Cards",
+						reference: "http://www.google.com",
+					},
+					{
+						title: "Pinterest's Material Cards",
+						reference: "http://www.Pinterests.com",
+						//@GABRIELLE-NOTE (feel free to add other fields)
+					}
+
+				],
+				icebox: [
+
+					{
+						title: "Yahoo's Material Cards",
+						reference: "http://www.yahoo.com",
+					},
+					{
+						title: "Facebooks's Material Cards",
+						reference: "http://www.facebook.com",
+					}
+					// add however many
+
+				]
+			},
+			//end day 1
+			{
+				name: "Component Two",
+				top_five: [
+					{
+						title: "Google's Material Lists",
+						reference: "http://www.google.com"
+					}
+				]
+			},
+
+		]
 
 		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides",  "Moodboards", "Glossary"];
 		$scope.projects = [
@@ -220,10 +263,18 @@ angular.module('uguru.util.controllers')
 
 		}
 
+		// <!--@GABRIELLE-NOTE this is the moodboard code JS -->
+		var initMoodboardCTAS = function() {
+			for (var i = 0; i < $scope.moodboardComponents.length; i ++) {
+				CTAService.initSingleCTA('#cta-box-moodboard-' + i, '#moodboard-main');
+			}
+		}
+
 
 		$scope.$on('$ionicView.loaded', function() {
 			$timeout(function() {
 				initProjectCTAS();
+				initMoodboardCTAS();
 			}, 1000)
 		})
 

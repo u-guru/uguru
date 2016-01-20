@@ -147,7 +147,7 @@
 						</div>
 
                         <ul class="splash-school-desktop">
-                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
+                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 8 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
 								<div class="fx-fade-down fx-dur-500 fx-ease-back school-card">
 									<svg class="rect" viewBox="0 0 300 200">
 										<rect x="0" y="0" width="300" height="200" fill="none"></rect>

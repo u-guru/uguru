@@ -45,7 +45,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "remote/./img/filler/avatars/guru-academic-f.jpg",
+			"profile_url": "https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-academic-f.jpg",
 			"guru_introduction": "Note-taking guru extraordinaire.",
 			"profile_code": "academic",
 			"verified": true,
@@ -110,7 +110,7 @@ function ContentService() {
 				years: 1
 			}],
 			"academic_shop": {
-				"banner_url": "remote/./img/filler/avatars/guru-academic-f.jpg",
+				"banner_url": "https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-academic-f.jpg",
 				"title": "The Golden Bear Tutor",
 				"description": "Tutoring for three years, I am devoted in helping my peers achieve eureka moments when studying. Dean’s List and in the top quartile of all my classes.",
 				"portfolio_items":
@@ -178,7 +178,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "remote/./img/filler/avatars/guru-baker-m.jpg",
+			"profile_url": "https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-baker-m.jpg",
 			"guru_introduction": "I make yummy things",
 			"profile_code": "baking",
 			"verified": true,
@@ -239,7 +239,7 @@ function ContentService() {
 				years: 2
 			}],
 			"academic_shop": {
-				"banner_url": "remote/./img/filler/avatars/guru-baker-m.jpg",
+				"banner_url": "https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-baker-m.jpg",
 				"title": "Jem's Quality Treats",
 				"description": "Fresh delivery with tasty vegan, gluten-free and kosher options. Creating the most delicious, all natural baked goods from Court Hall on North Campus. Drop me a line to check out my seasonal treats.",
 				"portfolio_items":
@@ -315,7 +315,7 @@ function ContentService() {
 				"review_count": 24,
 				"avg_stars": 4.5
 			},
-			"profile_url": "remote/./img/filler/avatars/guru-clean-m.jpg",
+			"profile_url": "https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-clean-m.jpg",
 			"guru_introduction": "So fresh, so clean, and a five-star guru.",
 			"profile_code": "household",
 			"verified": true,
@@ -380,7 +380,7 @@ function ContentService() {
 				years: 2
 			}],
 			"academic_shop": {
-				"banner_url": "remote/./img/filler/avatars/guru-clean-m.jpg",
+				"banner_url": "https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-clean-m.jpg",
 				"title": "Cleanly by Austin",
 				"description": "Spruce your dorm or apartment whether you have a messy closet or preparing for a house party. Your living space will be lemon-fresh and squeaky-clean.",
 				"portfolio_items":
