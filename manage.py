@@ -727,10 +727,9 @@ def update_categories():
         category.num_subcategories = len(categories_dict[key]['subcategories'])
         category.background_url = categories_dict[key]['background_url']
         category.icon_url = categories_dict[key]['icon_url']
-        category.is_approved = True
-        # category.is_approved = categories_dict[key]['is_approved']
-        # category.is_active = categories_dict[key]['is_active']
-        category.is_active = True
+
+        category.is_approved = categories_dict[key]['is_approved']
+        category.is_active = categories_dict[key]['is_active']
         category.num_gurus = len(category.gurus.all())
         category.description = categories_dict[key]['description']
 
