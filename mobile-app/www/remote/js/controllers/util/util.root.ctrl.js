@@ -239,9 +239,14 @@ angular.module('uguru.util.controllers')
         };
 
 
-        if (($scope.university && $scope.university.id) || ($scope.user.university && $scope.user.university_id)) {
-             University.getPopularCourses($scope.university.id || $scope.user.university_id, $scope);
-             University.getMajors($scope.university.id || $scope.user.university_id, $scope);
+        if ($state.current.name !== 'root.universities') {
+            if (($scope.university && $scope.university.id)) {
+                University.getPopularCourses($scope.university.id, $scope);
+                University.getMajors($scope.university.id, $scope);
+            } else if ($scope.user.university && $scope.user.university_id) {
+                University.getPopularCourses($scope.user.university_id, $scope);
+                University.getMajors($scope.user.university_id, $scope);
+            }
         }
 
 

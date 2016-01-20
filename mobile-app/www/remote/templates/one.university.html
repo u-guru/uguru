@@ -351,7 +351,7 @@
             				</div>
                         </form>
                         <ul>
-        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 15 track by $index'>
+        					<li ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 8 track by $index'>
         						<a class="border-university" ng-click='addUniversityStudentCourse(course, $index)'>
         							<div>
                                         <span class="course-name">{{course.short_name}}</span>
