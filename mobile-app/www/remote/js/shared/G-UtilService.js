@@ -146,8 +146,7 @@ function GUtilService($timeout) {
     var result_arr = [];
     var obj_arr = JSON.parse(JSON.stringify(obj_arr));
     for (var i = 0; i < obj_arr.length; i++) {
-<<<<<<< HEAD
-=======
+
       var objIndex = obj_arr[i];
       var icon = getRelevantIcon(objIndex.school_color_dark, objIndex.school_color_light, options.icon_type);
 
@@ -174,7 +173,6 @@ function GUtilService($timeout) {
       var svgImage = "<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + objIndex.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + objIndex.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + objIndex.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"
       var pennantPaths = [];
       pictureLabel.src = convertSVGStringIntoDataUri(svgImage, options);
->>>>>>> master
 
       var objIndex = obj_arr[i];
         // var indexmarker =
