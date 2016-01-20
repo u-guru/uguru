@@ -24,7 +24,6 @@ angular.module('uguru.util.controllers')
 
 		$scope.searchInputFocus;
 
-
 		if ($state.current.name !== 'root.universities') {
 			$scope.courses = University.source.courses || [];
 			if (!$scope.courses || !$scope.courses.length) {
@@ -49,12 +48,16 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.addUniversityStudentCourse = function(course, $index) {
-	      var course = $scope.courses.splice($index, 1);
+	      var course = $scope.courses.splice($index, 1)[0];
 	      $scope.user.student_courses.push(course);
+	      console.log(course, $index, $scope.user.student_courses);
+	      $timeout(function(){
+	      	$scope.$apply();
+	      })
 	    }
 
 	    $scope.removeUniversityStudentCourse = function(course, $index) {
-	      var course = $scope.user.student_courses.splice($index, 1);
+	      var course = $scope.user.student_courses.splice($index, 1)[0];
 	      $scope.courses.unshift(course);
 	    }
 
