@@ -1,13 +1,3 @@
-// angular.module('uguru.root.services')
-// .service('CameraService', [
-//     '$timeout',
-//     'DeviceService',
-//     'LoadingService',
-//     CameraService
-//     ]);
-
-// function CameraService($timeout, DeviceService, LoadingService) {
-
 angular
 	.module('sharedServices')
 	.factory("SearchboxService", [

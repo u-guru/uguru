@@ -1,6 +1,6 @@
 
 var LOCAL = _local || false; //local to the 8100 codebasebirbirs
-_startpage = _startpage || 'university';
+_startpage = _startpage || '';
 var FIRST_PAGE='^.' + _startpage;
 
 var BASE_URL = 'https://uguru.me/production/app/';
@@ -12,7 +12,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   // BASE_URL = _ipaddress;
-  REST_URL = "http://localhost:5000"
+  // REST_URL = "http://localhost:5000"
 
   // REST_URL = 'https://192.168.0.107:5000';
 
@@ -34,7 +34,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic',
-  'angularMoment','ngOpenFB', 'fox.scrollReveal', 'uiGmapgoogle-maps'])
+  'angularMoment','ngOpenFB', 'uiGmapgoogle-maps'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -185,6 +185,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/admin/admin.html',
         controller: 'AdminTimelineController'
   }).
+  state('root.admin-universities', {
+        url: '/admin-universities',
+        templateUrl: BASE + 'templates/admin/admin.universities.html',
+        controller: 'AdminUniversityController'
+  }).
   state('root.majors-container', {
         url: '/majors-container',
         templateUrl: BASE + 'templates/majors.container.html',
@@ -216,8 +221,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.pricing', {
     url:'/pricing',
-    templateUrl: BASE + 'templates/pricing.html'
-    // controller: 'PricingController'
+    templateUrl: BASE + 'templates/pricing.html',
+    controller: 'PricingController'
   }).
   state('root.apply', {
     url:'/apply',
@@ -371,7 +376,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'PaymentsController'
   }).
   state('root.home', {
-        url: '/home',
+        url: '/',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).

@@ -40,7 +40,17 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
         resetCache:resetCache
 	}
 
-
+    function universityLaunchContent() {
+        return {
+            "title": "Steps to prepare a university",
+            "body": {
+                "text": "The following attributes must be examined manually: ",
+                "attributes":["banner_url", "school_color_light", "school_color_dark", "short_name", "mascot_name", "popular_courses", "school_casual_name"],
+                "time_sensitive": ["banner_url", "popular_courses"],
+                "quick": ["school_color_light", "school_color_dark", "short_name", "school_mascot_name", "school_casual_name"]
+            }
+        }
+    }
 
     function setDeviceKeyboardState(bool) {
     	deviceKeyboardOpen = bool;

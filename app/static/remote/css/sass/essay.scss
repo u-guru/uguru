@@ -40,7 +40,7 @@ ion-view {
 			}
 		}
 	}
-	
+
 	#essay-footer-badges {
 		@include transition(.15s ease-in-out);
 		@include opacity(0);
@@ -114,9 +114,6 @@ ion-view {
 	> section {
 		> header {
 			background: $orange;
-		}
-		&.splash-hero {
-			background: $smoke url("https://uguru.me/static/web/images/bg/hs-desk.png") no-repeat center center / cover;
 		}
 		.splash-footer-link {
 			svg {

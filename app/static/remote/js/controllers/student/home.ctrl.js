@@ -1,7 +1,7 @@
 angular.module('uguru.student.controllers', [])
 
 //ALL student controllers
-.controller('HomeController', [
+.controller('ArchivedHomeController', [
     //All imported packages go here
     '$scope',
     '$state',

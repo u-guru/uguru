@@ -3,14 +3,17 @@
 angular
 	.module('sharedServices')
 	.factory("ScrollService", [
-		ScrollService
+		'LoadingService',
+    '$timeout',
+    ScrollService
 	]);
 
-function ScrollService() {
-
+function ScrollService(LoadingService, $timeout) {
+  var globalWaypointsDict = {};
   return {
     scrollTo:scrollTo,
-    initStickyHeaderScroll: initStickyHeaderScroll
+    initStickyHeaderScroll: initStickyHeaderScroll,
+    initArrWaypoints: initArrWaypoints
   }
 
   function initStickyHeaderScroll(header_selector, start_element, inject_class, parent_container) {
@@ -31,6 +34,33 @@ function ScrollService() {
     }
 
     stickyScroll();
+  }
+
+  function initWaypoint(elemId, contextId, elemCb, elemOptions) {
+
+    var elemWaypoint = new Waypoint({
+        element: document.getElementById(elemId),
+        handler: function(direction) {
+          console.log('Scrolled to waypoint!', direction, this.element.id);
+          //call callback
+          elemCb && elemCb(direction);
+        },
+        enable:true,
+        context: document.getElementById(contextId)
+      });
+    return elemWaypoint;
+
+  }
+
+  function initArrWaypoints(wayPointsDict, parentContainerId) {
+    wayPointElemIds = Object.keys(wayPointsDict);
+    for (var i = 0; i < wayPointElemIds.length; i++) {
+      var wpElemId = wayPointElemIds[i];
+      var wpElemOptions = wayPointsDict[wpElemId]
+      var wpElemCb = wpElemOptions.func;
+      globalWaypointsDict[wpElemId] = initWaypoint(wpElemId, parentContainerId, wpElemCb, wpElemOptions);
+    }
+
   }
 
   function scrollTo(to, callback, duration, viewSelectorID, destinationSelectorID) {

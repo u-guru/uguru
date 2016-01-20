@@ -79,29 +79,28 @@
                     <small class='txt-slate'>{{sprint.description}}</small>
                 </div>
                 <div class='ugrid-4 full-x m30y' style='overflow:hidden;'>
-                    <a id='cta-box-project-{{$index + $parent.$parent.$index * sprints[0].projects.length}}' ng-repeat='project in sprint.projects' class='flex-wrap-center bg-auburn cta-box relative' ng-if='project.alpha_complete' style='height:200px; width:25%; border:4px solid black;'>
+                    <a id='cta-box-project-{{$index + $parent.$parent.$index * sprints[0].projects.length}}' ng-repeat='project in sprint.projects' class='flex-wrap-center bg-gold cta-box relative' ng-if='project.progress.alpha_complete' style='height:200px; width:25%; border:4px solid black; padding-bottom:10%;'>
                         <h1 class='full-x text-center weight-900 p20xy'>
                             #{{$index + 1}} <br> {{project.name}}
                         </h1>
-                        <div class='full-x text-center'>
-                            <p ng-if='project.progress' style='font-size:10px; !important'>  <span class='weight-900'>{{project.progress.overall}}/{{project.progress.total}}</span> complete</p>
-                        </div>
-                        <div class='full-x text-center'>
-                            <small class='p10xy bg-charcoal'>Alpha: {{project.progress.alpha}} </small>
-                            <small class='p10xy bg-charcoal'>Beta: {{project.progress.beta}} </small>
-                            <small class='p10xy bg-charcoal'>Production: {{project.progress.production}} </small>
+                        <p style='font-size:16px;'>  <b>{{project.progress.overall_percent}}</b> ({{project.progress.overall || 0 }} / {{project.progress.total || 0}}) </p>
+                        <p> {{project.deadline}} </p>
+                        <div class='full-x ugrid-3 absolute left-0 bottom-0' style='font-size:14px !important;'>
+                            <small class='p05xy bg-gold txt-charcoal'>Alpha: {{project.progress.alpha_percent}} ({{project.progress.alpha}} / {{project.progress.alpha_total}}) </small>
+                            <small class='p05xy bg-azure txt-white'>Beta: {{project.progress.beta_percent}} ({{project.progress.beta}} / {{project.progress.beta_total}}) </small>
+                            <small class='p05xy bg-shamrock txt-white'>Prod: {{project.progress.production_percent }} ({{project.progress.production}} / {{project.progress.production_total}}) </small>
                         </div>
                     </a>
-                    <a  id='cta-box-project-{{$index + $parent.$parent.$index * sprints[0].projects.length}}' ng-repeat='project in sprint.projects' class='flex-wrap-center bg-slate cta-box' ng-if='!project.urgent' style='height:200px; width:25%; border:4px solid black;'>
+                    <a  id='cta-box-project-{{$index + $parent.$parent.$index * sprints[0].projects.length}}' ng-repeat='project in sprint.projects' class='flex-wrap-center relative bg-slate cta-box' ng-if='!project.urgent' style='height:200px; width:25%; border:4px solid black; padding-bottom:10%;'>
                         <h1 class='full-x text-center weight-900 p20xy'>
                             #{{$index + 1}} <br> {{project.name}}
                         </h1>
-                        <p ng-if='project.progress' style='font-size:16px;'>  {{project.progress.overall}} / {{project.progress.total}} </p>
+                        <p style='font-size:16px;'>  <b>{{project.progress.overall_percent}}</b> ({{project.progress.overall || 0 }} / {{project.progress.total || 0}}) </p>
                         <p> {{project.deadline}} </p>
-                        <div class='full-x text-center'>
-                            <small class='p10xy bg-charcoal'>Alpha: {{project.progress.alpha}} </small>
-                            <small class='p10xy bg-charcoal'>Beta: {{project.progress.beta}} </small>
-                            <small class='p10xy bg-charcoal'>Production: {{project.progress.production}} </small>
+                        <div class='full-x ugrid-3 absolute left-0 bottom-0' style='font-size:14px !important;'>
+                            <small class='p05xy bg-gold txt-charcoal'>Alpha: {{project.progress.alpha_percent}} ({{project.progress.alpha}} / {{project.progress.alpha_total}}) </small>
+                            <small class='p05xy bg-azure txt-white'>Beta: {{project.progress.beta_percent}} ({{project.progress.beta}} / {{project.progress.beta_total}}) </small>
+                            <small class='p05xy bg-shamrock txt-white'>Prod: {{project.progress.production_percent}} ({{project.progress.production}} / {{project.progress.production_total}}) </small>
                         </div>
                     </a>
                 </div>

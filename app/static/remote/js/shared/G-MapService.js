@@ -23,9 +23,10 @@ function GMapService() {
     var latitude = parseFloat(university.latitude);
     var longitude = parseFloat(university.longitude);
     var optionsDict = {
-                  center:  {latitude: latitude, longitude:longitude },
+                  center:  {latitude: arg_options.latitude || latitude, longitude: arg_options.longitude || longitude },
                   zoom: 16,
                   pan: false,
+                  rebuildMarkers: false,
                   control: {},
                   events: {
                     dragend: dragEndMap
@@ -44,7 +45,9 @@ function GMapService() {
       if (arg_options) {
         optionsDict.options.minZoom = arg_options.minZoom;
         optionsDict.options.maxZoom = arg_options.maxZoom;
+        optionsDict.options.styles = arg_options.style;
         optionsDict.zoom = arg_options.zoom;
+        optionsDict.options.zoomControl = arg_options.zoomControl;
         optionsDict.options.draggable = arg_options.draggable;
         optionsDict.options.disableDoubleClickZoom = arg_options.disableDoubleClickZoom;
       }
