@@ -521,7 +521,7 @@ angular.module('uguru.util.controllers')
       // Only need to regenerate once
       if (!ov.southwest && nv.southwest) {
         var markers = [];
-        for (var i = 0; i < $scope.universities.length; i++) {
+        for (var i = 0; i < 1; i++) {
           markers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
         }
         $scope.universityMarkers = markers;
