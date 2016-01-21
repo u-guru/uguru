@@ -30,6 +30,8 @@ angular.module('uguru.util.controllers')
         var scrollDuration= 500;
         var shouldShowBecomeGuruHeader = true;
         var shouldRenderMap = false;
+        $scope.activeBrowseTabIndex = 1;
+        $scope.activeTabIndex = 0;
         var mainPageContainer = document.querySelector('#university-splash');
         $scope.profile = {public_mode: true};
 

@@ -198,7 +198,7 @@
                 <div class="tab-bar splash-bar bg-university">
                     <ul>
                         <li>
-                            <a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex===0}">
+                            <a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
 								<div>
 									<span>Student-Run</span>
 									<span>Shops</span>
@@ -206,7 +206,7 @@
 							</a>
                         </li>
                         <li>
-                            <a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex===1}">
+                            <a ng-click='activeBrowseTabIndex = 1;' class="ng-class:{'active':activeBrowseTabIndex===1}">
 								<div>
 									<span>Guru</span>
 									<span>Profiles</span>
@@ -214,7 +214,7 @@
 							</a>
                         </li>
                         <li>
-                            <a ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex===2}">
+                            <a ng-click='activeBrowseTabIndex = 2;' class="ng-class:{'active':activeBrowseTabIndex===2}">
 								<div>
 									<span>Trending</span>
 									<span>Courses</span>
@@ -222,7 +222,7 @@
 							</a>
                         </li>
                         <li ng-if='false'>
-                            <a ng-click='activeTabIndex = 3;' class="ng-class:{'active':activeTabIndex===3}">
+                            <a ng-click='activeBrowseTabIndex = 3;' class="ng-class:{'active':activeBrowseTabIndex===3}">
 								<div>
 									<span>Campus</span>
 									<span>Live</span>
@@ -231,7 +231,7 @@
                         </li>
                     </ul>
                 </div>
-				<div id="splash-categories" class="main ng-class:{'active':activeTabIndex===0}" ng-controller="CategoriesController">
+				<div id="splash-categories" class="main ng-class:{'active':activeBrowseTabIndex===0}" ng-controller="CategoriesController">
                     <div>
                         <div>
                             <h1><span>{{university.short_name}}</span>'s Guru Categories</h1>
@@ -283,7 +283,7 @@
                         </div>
                     </div>
 				</div>
-                <div id="splash-gurus" class="main ng-class:{'active':activeTabIndex===1}">
+                <div id="splash-gurus" class="main ng-class:{'active':activeBrowseTabIndex===1}">
                     <div>
                         <h1><span>{{university.short_name}}</span>'s Top Gurus</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
@@ -327,7 +327,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="splash-courses" class="main ng-class:{'active':activeTabIndex===2}" ng-controller="CoursesController">
+                <div id="splash-courses" class="main ng-class:{'active':activeBrowseTabIndex===2}" ng-controller="CoursesController">
                     <div>
                         <div>
                             <h1>Popular Courses at <span>{{university.short_name}}</span></h1>
@@ -362,7 +362,7 @@
         				</ul>
                     </div>
                 </div>
-                <div id="splash-livemap" class="main ng-class:{'active':activeTabIndex===3}" ng-if='false'>
+                <div id="splash-livemap" class="main ng-class:{'active':activeBrowseTabIndex===3}" ng-if='false'>
                    <div style='height: 570px!important'>
                         <div class="request-loc map-box-container full-y">
                             <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
