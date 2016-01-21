@@ -1,11 +1,41 @@
 <style>
-    /* GURU ONBOARDING */
     /* @samir - color won't bind, put $slate as a placeholder, pls fix */
     /* {{university.school_color_dark}} */
     /* #023360 */
-    #desktop-guru-onboarding {
-        background: {{university.school_color_dark}} url("https://farm8.staticflickr.com/7318/9357094656_965041bc2b_k.jpg") center center / cover!important;
+
+    #desktop-guru-onboarding, .desktop-forms aside {
+        background: #023360 url("https://farm8.staticflickr.com/7318/9357094656_965041bc2b_k.jpg") center center / cover!important;
     }
+    .desktop-forms aside:after {
+        filter: alpha(opacity=50);
+        opacity: .5;
+        background: #023360;
+    }
+    #desktop-courses, #desktop-skills, .subcategory {
+        background: #023360!important;
+    }
+    
+    /* LOGIN/SIGNUP */
+    .desktop-forms {
+        
+    }
+    .desktop-signup .main .login-courses-container h2 {
+        color: #023360;
+    }
+    .desktop-forms .main .login-courses-container > div .login-backpack svg .backpack-color {
+        fill: #fbb432;
+    }
+    .desktop-forms .main .login-courses-container > div .login-backpack b {
+        color: #023360;
+    }
+    .desktop-forms .main .login-courses-container > div .login-courses ul li > span {
+        color: #023360;
+    }
+    .desktop-forms .main .login-courses-container > div .login-courses ul li > span:after {
+        background: #023360;
+    }
+    
+    /* GURU ONBOARDING */
     #desktop-guru-onboarding .main #guru-onboarding-grid li a:after {
         background: #023360!important;
     }
@@ -42,10 +72,6 @@
     #desktop-guru-onboarding .main #guru-onboarding-progress .progress ul li:nth-child(2) span svg,
     #desktop-guru-onboarding .main #guru-onboarding-progress .progress ul li:nth-child(3) span svg {
         stroke: #023360!important;
-    }
-    
-    #desktop-courses, #desktop-skills, .subcategory {
-        background: #023360!important;
     }
     
     /* COURSES */
