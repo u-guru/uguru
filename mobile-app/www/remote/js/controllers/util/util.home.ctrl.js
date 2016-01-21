@@ -429,6 +429,13 @@ angular.module('uguru.util.controllers')
             {visibility: 'off'}
           ]
         },
+        {
+          featureType: 'administrative.locality',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
 
       ]
       var usBounds = {
@@ -448,7 +455,7 @@ angular.module('uguru.util.controllers')
                 streetViewControl:false,
                 panControl:false,
                 zoomControl:false,
-                minZoom: 4,
+                minZoom: 5,
                 maxZoom: 7,
                 styles: styleOptions,
                 scrollwheel: false,
