@@ -137,10 +137,16 @@ function GUtilService($timeout) {
     return result;
   }
 
+  var getHtmlForUniversityPennant = function(university) {
+    return "<h1>" + university.short_name + "</h1><br>" + "<small>" + university.city + ", " + university.state + "</small>"
+  }
+
   // (map, university_arr, scope.map.markers, {icon_type:"university_penant", label_color:"white", custom_class})
-  var initSeveralMarkersWithLabel = function(map, obj_arr, marker_arr, options, callback) {
-    result_arr = [];
+  var initSeveralMarkersWithLabel = function(map, obj_arr, scope, options, callback) {
+    var result_arr = [];
+    var obj_arr = JSON.parse(JSON.stringify(obj_arr));
     for (var i = 0; i < obj_arr.length; i++) {
+
       var objIndex = obj_arr[i];
       var icon = getRelevantIcon(objIndex.school_color_dark, objIndex.school_color_light, options.icon_type);
 
@@ -164,30 +170,62 @@ function GUtilService($timeout) {
       if (objIndex.school_color_light === '#757575')  {
         objIndex.school_color_light = '#FFFFFF';
       }
-      var svgImage = "<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + objIndex.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='#40484B'></path><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' fill='none' stroke='#FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + objIndex.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"
+      var svgImage = "<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + objIndex.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + objIndex.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + objIndex.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"
       var pennantPaths = [];
       pictureLabel.src = convertSVGStringIntoDataUri(svgImage, options);
 
-
-
+      var objIndex = obj_arr[i];
         // var indexmarker =
+      var createMarker = function(university, i) {
+        var pictureLabel = document.createElement("img");
+        if (university.school_tiny_name && university.school_tiny_name.length) {
+          var universityName = university.school_tiny_name
+        }
+        else if (university.short_name && university.short_name.length) {
+          var universityName = university.short_name;
+        } else if (university.name && university.name.length) {
+          var universityName = university.name;
+        }
 
-        result_arr.push(new MarkerWithLabel({
-          'position': latCoordToGoogleLatLng(objIndex.latitude, objIndex.longitude),
+
+        if (university.school_color_light === '#757575')  {
+          university.school_color_light = '#FFFFFF';
+        }
+        var svgImage = "<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + university.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + university.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"
+        var pennantPaths = [];
+        pictureLabel.src = convertSVGStringIntoDataUri(svgImage, options);
+
+        var markerWithLabelDict = {
+          'position': latCoordToGoogleLatLng(university.latitude, university.longitude),
           'map': map,
           'icon':  getInvisibleIconPath(), //cant edit the icon css
           'labelContent': pictureLabel,
           'labelAnchor': new google.maps.Point(0,0),
           'labelClass': 'university-svg-icon', // the CSS class for the label
-          'labelInBackground': false
+          'labelInBackground': false,
+          'customInfo': {short_name: university.short_name, city:university.city, state:university.state},
+          'idKey': i
+        }
+        return markerWithLabelDict;
+        // return new MarkerWithLabel(markerWithLabelDict);
+      }
 
-        }))
+      result_arr.push(createMarker(obj_arr[i], i))
+      // google.maps.event.addListener(marker_arr[i], 'click', function() {
+      //   alert('this was clicked')
+      //   var infowindow = new google.maps.InfoWindow({
+      //     content: getHtmlForUniversityPennant(this.customInfo)
+      //   });
+      //   infowindow.open(map, this);
+      // })
+
+
 
 
       // var indexMarker = createMarkerWithLabel(map, objIndex.latitude, objIndex.longitude, null, markerOptions);
     }
-
-    callback && callback(result_arr);
+    return result_arr;
+    // callback && callback(result_arr);
   }
 
   var nearbyLocationMarkers = [];

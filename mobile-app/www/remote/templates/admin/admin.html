@@ -118,10 +118,50 @@
             Calendar - Coming Soon!
         </div>
     </section>
-    <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Moodboards'}">
-        <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>
-            Moodboards - Coming Soon!
-        </div>
+    <!--@GABRIELLE-NOTE this is the moodboard code html-->
+    <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Moodboards'}" id='moodboard-main'>
+        <div class='flex-wrap-center bg-smoke txt-smoke full-xy absolute txt-charcoal weight-900'>
+
+            <!--Mooboard CTA Pane-->
+            <ion-pane id='cta-modal-moodboard-{{$index}}' ng-repeat='component in moodboardComponents' class='full-xy hide-display bg-charcoal fixed top-0 left-0 high-z-index cta-modal'>
+                <a id='guru-profile-cta-close' class='cta-modal-close close-button'>
+                    <svg viewBox="0 0 100 100">
+                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+                <div class='absolute full-xy flex-wrap-center left-0 top-0 ugrid-2'>
+                    <div class='bg-azure full-y flex-wrap-center txt-smoke text-center relative'>
+                        <div class='full-x header p20xy'>
+                            <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Top 5</h1>
+                            <small class='weight-900 lowercase txt-smoke'>Here are the top {{component.name}}</small>
+                        </div>
+
+                    </div>
+                    <div class='bg-charcoal full-y flex-wrap-center txt-smoke text-center relative'>
+                        <div class='full-x header p20xy'>
+                            <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Icebox</h1>
+                            <small class='weight-900 lowercase txt-smoke'>Here are the other great examples we found</small>
+                        </div>
+                    </div>
+                </div>
+            </ion-pane>
+            <div class='flex-wrap-center main full-x'>
+                <div class='full-x txt-charcoal weight-600'>
+                    <div class='ugrid flex-wrap p20xy full-x'>
+                        <h1 class='uppercase text-center p10y p20top full-x uppercase'> Moodboard Components</h1>
+                        <small class='txt-slate text-center full-x'>The freshest moodboard components</small>
+                    </div>
+                    <div class='ugrid-3 full-x m30y' style='overflow:hidden;'>
+                        <a id='cta-box-moodboard-{{$index}}' ng-repeat='component in moodboardComponents' class='flex-wrap-center bg-gold cta-box relative {{component.cta_box_bg}}' style='height:200px; width:25%; border:4px solid black; padding-bottom:10%;'>
+                            <h1 class='full-x text-center weight-900 p20xy'>
+                                {{component.name}}
+                            </h1>
+
+                            <p> {{component.description}} </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
     </section>
     <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Guides'}">
         <div class='flex-wrap-center bg-auburn txt-smoke full-xy absolute txt-charcoal weight-900'>

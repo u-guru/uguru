@@ -40,7 +40,8 @@ angular.module('uguru.util.controllers')
 
       $scope.highlighted_item;
       $scope.courses = [];
-      $scope.activeTabIndex = 1;
+      $scope.activeBrowseTabIndex = 1;
+      $scope.activeTabIndex = 0;
       $scope.university = {}
       $scope.search_text = {university:''};
       $scope.profile = {public_mode: true};
@@ -347,11 +348,8 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    var initUniversityMap = function() {
+    var initHomePageMap = function(lat, lng) {
 
-      if (!$scope.universities) {
-        $scope.universities = University.getTargetted().slice();
-      }
       var styleOptions = [
         {
           featureType: 'water',
@@ -371,52 +369,165 @@ angular.module('uguru.util.controllers')
           ]
         }
       ]
-      $scope.map = GMapService.initMapObj($scope.universities[0], {minZoom:4, style:styleOptions, maxZoom:6, zoom:5, disableDoubleClickZoom:false, zoomControl:true, draggable:true, latitude:39.8282, longitude:-98.5795});
-      console.log('map status', $scope.map)
-      $scope.map.university = {coords:"'self'", markers:[], control:{}};
-      $scope.gmapAnimation = google.maps.Animation.BOUNCE;
-      $scope.map.centerMarker = {id:1, options:{animation: null, icon:"https://uguru.me/static/remote/img/icons/marker.svg"}, windowText:"Campus Center",  showWindow:true, coords: {latitude:$scope.university.latitude, longitude:$scope.university.longitude}, control: {}};
-
-
-
-
-      uiGmapGoogleMapApi.then(function(maps) {
-        maps.visualRefresh = true;
-        $timeout(function() {
-          var universityCustomMapOptions = {icon_type:"university_penant", label_color:"white", custom_class:'university-pennant', img_base:$scope.img_base};
-          var callback = function(marker_arr) {
-            // var mapcounter = 0;
-            // var mapInterval = setInterval(function() {
-
-              var map = $scope.map.control.getGMap();
-              map.setCenter(new google.maps.LatLng(39.8282, -98.5795));
-
-              var bounds = new google.maps.LatLngBounds();
-              for(i=0;i<marker_arr.length;i++) {
-               bounds.extend(marker_arr[i].getPosition());
-              }
-              map.fitBounds(bounds);
-
-              // google.maps.event.trigger($scope.map.control.getGMap(), 'resize');
-            //   if (mapcounter > 10) {
-            //     clearInterval(mapInterval);
-            //   }
-            //   mapcounter += 1;
-            // }, 1000);
-            console.log('this gets called again');
-          }
-          if (!$scope.mapDrawn) {
-            $scope.mapDrawn = true;
-            if (!$scope.map || !$scope.map.control) {
-              $scope.map = GMapService.initMapObj($scope.universities[0], {minZoom:4, style:styleOptions, maxZoom:6, zoom:5, disableDoubleClickZoom:false, zoomControl:true, draggable:true, latitude:39.8282, longitude:-98.5795});
-            }
-            GUtilService.initSeveralMarkersWithLabel($scope.map.control.getGMap(), $scope.universities, $scope.map.university.markers, universityCustomMapOptions, callback);
-          }
-
-        }, 2000)
-          // $scope.map.control.getGMap()
-      });
+      var resultDict = {
+        center:  {latitude: lat, longitude: lng},
+        zoom: 5,
+        pan: false,
+        rebuildMarkers: false,
+              control: {},
+              options: {
+                streetViewControl:false,
+                panControl:false,
+                zoomControl:false,
+                minZoom: 5,
+                maxZoom: 7,
+                styles: styleOptions,
+                scrollwheel: false,
+                mapTypeControl:false,
+                style:styleOptions,
+                draggable:true,
+                disableDoubleClickZoom:false,
+                zoomControl: true
+              },
+              bounds: {},
+        };
+      return resultDict
     }
+
+    if (!$scope.universities) {
+        $scope.universities = University.getTargetted().slice();
+    }
+    function getInvisibleIconPath() {
+      return {
+        "path": "M33.4454342, 31.4545455",
+        "fillOpacity": 0,
+        "strokeOpacity":0,
+        "rotation": 0,
+        "scale":0.01,
+        "strokeColor": "transparent",
+        "fillColor": "transparent",
+        "strokeWeight": 0
+      }
+    }
+    var convertSVGStringIntoDataUri = function(svg_string) {
+      var precursorFormat = "data:image/svg+xml,";
+      var result = (precursorFormat + encodeURIComponent(svg_string));
+      return result;
+    }
+
+    var mouseOverTimeout = null;
+    var lastMousedOverUniversity = null;
+    var defaultMouseoverTime = 1000; //milliseconds
+    var showWindow = function() {
+      console.log('showing window!');
+      if ($scope.delayedUniversity && $scope.delayedUniversity.id === $scope.window.university.id) {
+        $scope.window.university = $scope.delayedUniversity;
+        $scope.window.coords = {latitude: $scope.window.university.latitude, longitude: $scope.window.university.longitude};
+        $scope.delayedUniversity = null;
+      }
+      $scope.delayedUniversity = null;
+      $scope.window.show = true;
+      clearTimeout(mouseOverTimeout);
+    }
+    var closeWindow = function() {
+      $scope.window.show = false;
+      mouseOverTimeout = null;
+
+    }
+
+    $scope.window = {university: null, show:false, close:closeWindow};
+
+
+    var createUniversityMarkerLabelImg = function(tiny_name, school_color_light, school_color_dark) {
+
+        var pictureLabel = document.createElement("img");
+        var universityName =tiny_name;
+
+
+        if (school_color_light === '#757575')  {
+          school_color_light = '#FFFFFF';
+        }
+        var svgImage = "data:image/svg+xml,<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"
+        var pennantPaths = [];
+        pictureLabel.src = convertSVGStringIntoDataUri(svgImage);
+        return pictureLabel
+    }
+    $scope.universityMarkers = [];
+    $scope.markerEvents = {
+      mouseover: function (gMarker, eventName, model) {
+        console.log('mouseover for ', model.university.name, 'initiated');
+        lastMousedOverUniversity = model.university;
+          // if user mouses over one while another is open
+
+          if ($scope.window.show && $scope.window.university.id !== model.university.id) {
+            //another window is already open
+            $scope.delayedUniversity = model.university;
+            $timeout(function() {
+              if (mouseOverTimeout && lastMousedOverUniversity.university.id === $scope.delayedUniversity.id) {
+                $scope.window.university = model.university;
+                $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+              }
+            }, defaultMouseoverTime)
+            return;
+          } else {
+            $scope.window.university = model.university;
+            $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+          }
+
+          mouseOverTimeout = setTimeout(showWindow, defaultMouseoverTime);
+      },
+      mouseout: function (gMarker, eventName, model) {
+
+          // if no window is shown + a timer is going..
+          if (!$scope.window.show && mouseOverTimeout) {
+              clearTimeout(mouseOverTimeout);
+          }
+      }
+
+    }
+    var centerOfUS = {latitude:39.8282, longitude:-98.5795}
+    $scope.map = initHomePageMap(centerOfUS.latitude, centerOfUS.longitude);
+    var createRandomMarker = function(i, bounds, university, idKey) {
+      var lat_min = bounds.southwest.latitude,
+        lat_range = bounds.northeast.latitude - lat_min,
+        lng_min = bounds.southwest.longitude,
+        lng_range = bounds.northeast.longitude - lng_min;
+
+      if (idKey == null) {
+        idKey = "id";
+      }
+      var pictureLabel = document.createElement("img");
+      var universityName = university.school_tiny_name;
+      var svgImage = "data:image/svg+xml," +  encodeURIComponent("<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + university.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + university.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>");
+      pictureLabel.src = svgImage;
+      var ret = {
+        latitude: university.latitude,
+        longitude: university.longitude,
+        icon: getInvisibleIconPath(),
+        options: {labelClass:'university-svg-icon', labelContent:"data:image/svg+xml,<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + university.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + university.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"},
+
+        // labelContent: ''
+        // labelContent: "",
+        university: university
+      };
+      ret[idKey] = i;
+      return ret;
+    };
+    $scope.universityMarkers = [];
+
+    // Get the bounds from the map once it's loaded
+    $scope.$watch(function() {
+      return $scope.map.bounds;
+    }, function(nv, ov) {
+      // Only need to regenerate once
+      if (!ov.southwest && nv.southwest) {
+        var markers = [];
+        for (var i = 0; i < $scope.universities.length; i++) {
+          markers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
+        }
+        $scope.universityMarkers = markers;
+      }
+    }, true);
 
 
       var showDelayedBecomeGuruHeader = function() {
@@ -527,7 +638,7 @@ angular.module('uguru.util.controllers')
               // calcAllMainSectionContainers();
               $scope.mainPageSetup = true;
               $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
-              initUniversityMap();
+              // initUniversityMap();
               initProfileCTAS();
               calculateAndInitiateCounters();
               initUniversityTypeWriter();
@@ -547,7 +658,7 @@ angular.module('uguru.util.controllers')
             // calcAllMainSectionContainers();
               $scope.mainPageSetup = true;
               $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
-              initUniversityMap();
+              // initUniversityMap();
               initProfileCTAS();
               calculateAndInitiateCounters();
               initUniversityTypeWriter();

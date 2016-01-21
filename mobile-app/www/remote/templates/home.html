@@ -147,7 +147,7 @@
 						</div>
 
                         <ul class="splash-school-desktop">
-                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 15 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
+                            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 8 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
 								<div class="fx-fade-down fx-dur-500 fx-ease-back school-card">
 									<svg class="rect" viewBox="0 0 300 200">
 										<rect x="0" y="0" width="300" height="200" fill="none"></rect>
@@ -196,6 +196,7 @@
                             options="'options'"
                             fit="true"
                             events="markerEvents"
+                            click="showWindow(self)"
                             >
                             </ui-gmap-markers>
                             <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->
@@ -336,7 +337,7 @@
                 <div class="tab-bar splash-bar bg-university">
                     <ul>
                         <li>
-                            <a ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex===0}">
+                            <a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
 								<div>
 									<span>Student-Run</span>
 									<span>Shops</span>
@@ -344,7 +345,7 @@
 							</a>
                         </li>
                         <li>
-                            <a ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex===1}">
+                            <a ng-click='activeBrowseTabIndex = 1;' class="ng-class:{'active':activeBrowseTabIndex===1}">
 								<div>
 									<span>Guru</span>
 									<span>Profiles</span>
@@ -353,7 +354,7 @@
                         </li>
                     </ul>
                 </div>
-				<div id="splash-categories" class="main ng-class:{'active':activeTabIndex===0}" ng-controller="CategoriesController">
+				<div id="splash-categories" class="main ng-class:{'active':activeBrowseTabIndex===0}" ng-controller="CategoriesController">
                     <div>
                         <div>
                             <h1>Guru Categories</h1>
@@ -405,7 +406,7 @@
                         </div>
                     </div>
 				</div>
-                <div id="splash-gurus" class="main ng-class:{'active':activeTabIndex===1}">
+                <div id="splash-gurus" class="main ng-class:{'active':activeBrowseTabIndex===1}">
                     <div>
                         <h1><span>Browse Sample</span> Guru Profiles</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
