@@ -186,8 +186,13 @@
 							</li>
 						</ul>
                     </div>
-                    <div style='height: 600px!important' class='splash-map'>
-                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" bounds="map.bounds" pan="false" options="map.options">
+                    <!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
+                    <div style='height: 600px!important' class='splash-map relative zoom-{{map.zoom}}'>
+                        <div class='bg-shamrock txt-white  absolute top-0 bottom-0  high-z-index ugrid-2 inline' style='width:100px; height:30px;'>
+                            <a class='p20xy' ng-click='incrementZoom()'> + </a>
+                            <a class='p20xy weight-900' ng-click='decrementZoom()'> - </a>
+                        </div>
+                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" events="map.events" zoom="map.zoom" bounds="map.bounds" pan="false" options="map.options">
 
                             <ui-gmap-markers
                             models="universityMarkers"
@@ -196,7 +201,7 @@
                             options="'options'"
                             fit="true"
                             events="markerEvents"
-                            click="showWindow(self)"
+                            click="showWindow('self')"
                             >
                             </ui-gmap-markers>
                             <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->
