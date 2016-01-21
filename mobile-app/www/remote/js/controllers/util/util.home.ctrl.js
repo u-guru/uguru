@@ -533,34 +533,34 @@ angular.module('uguru.util.controllers')
 
     $scope.universityMarkers = [];
     $scope.markerEventsPending = {
-      mouseover: function (gMarker, eventName, model) {
-        lastMousedOverUniversity = model.university;
-          // if user mouses over one while another is open
+      // mouseover: function (gMarker, eventName, model) {
+      //   lastMousedOverUniversity = model.university;
+      //     // if user mouses over one while another is open
 
-          if ($scope.window.show && $scope.window.university.id !== model.university.id) {
-            //another window is already open
-            $scope.delayedUniversity = model.university;
-            $timeout(function() {
-              if (mouseOverTimeout && lastMousedOverUniversity && lastMousedOverUniversity.university && lastMousedOverUniversity.university.id === $scope.delayedUniversity.id) {
-                $scope.window.university = model.university;
-                $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
-              }
-            }, defaultMouseoverTime)
-            return;
-          } else {
-            $scope.window.university = model.university;
-            $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
-          }
+      //     if ($scope.window.show && $scope.window.university.id !== model.university.id) {
+      //       //another window is already open
+      //       $scope.delayedUniversity = model.university;
+      //       $timeout(function() {
+      //         if (mouseOverTimeout && lastMousedOverUniversity && lastMousedOverUniversity.university && lastMousedOverUniversity.university.id === $scope.delayedUniversity.id) {
+      //           $scope.window.university = model.university;
+      //           $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+      //         }
+      //       }, defaultMouseoverTime)
+      //       return;
+      //     } else {
+      //       $scope.window.university = model.university;
+      //       $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+      //     }
 
-          mouseOverTimeout = setTimeout(showWindow, defaultMouseoverTime);
-      },
-      mouseout: function (gMarker, eventName, model) {
+      //     mouseOverTimeout = setTimeout(showWindow, defaultMouseoverTime);
+      // },
+      // mouseout: function (gMarker, eventName, model) {
 
-          // if no window is shown + a timer is going..
-          if (!$scope.window.show && mouseOverTimeout) {
-              clearTimeout(mouseOverTimeout);
-          }
-      },
+      //     // if no window is shown + a timer is going..
+      //     if (!$scope.window.show && mouseOverTimeout) {
+      //         clearTimeout(mouseOverTimeout);
+      //     }
+      // },
       click: function(gMarker, eventName, model) {
         $scope.window.university = model.university;
         $scope.window.show = true;
