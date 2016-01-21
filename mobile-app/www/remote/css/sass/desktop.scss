@@ -575,6 +575,29 @@
 							}
 						}
 					}
+					.desktop-card-list {
+						li {
+							a {
+								font-size: 20px!important;
+								text-align: center;
+								.course-title {
+									height: 50px;
+									overflow: hidden;
+								}
+								span {
+									display: block;
+									width: 100%;
+									text-align: center;
+									span {
+										display: block;
+										&.course-name:not(:only-child) {
+											font-size: 14px!important;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}

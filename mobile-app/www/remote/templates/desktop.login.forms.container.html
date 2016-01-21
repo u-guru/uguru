@@ -1,6 +1,9 @@
+<a id='cta-desktop-signup-back' ng-click='goBackOneLevel()' class='m20xy absolute top-0 left-0 weight-600 txt-smoke opacity-50'>
+    Back
+</a>
 <div class="desktop-forms-container">
 	<header class="desktop-header hidden">
-		<a class='cta-modal-close close-button desktop-header-next' id='cta-desktop-signup-close'>
+        <a class='cta-modal-close close-button desktop-header-next' id='cta-desktop-signup-close'>
 			<svg viewBox="0 0 100 100">
 				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 			</svg>
@@ -54,17 +57,25 @@
     </section>
 </div>
 
-<div class="login-courses-container">
-	<h2><span>{{university.short_name}}</span> courses in your backpack</h2>
+<div class="login-courses-container" ng-if='university'>
+	<h2 class='hide ng-class:{"show":user.student_courses.length}'>Your <span>{{university.short_name}}</span> courses</h2>
+    <h2 class='hide ng-class:{"show":!user.student_courses.length}'>Link <span>{{university.short_name}}</span> courses to your account</h2>
 	<div class="ugrid-2">
 		<div class="login-backpack">
 			<span ng-include="img_base + 'templates/svg/backpack.html'"></span>
 			<b>{{user.student_courses.length}}</b>
 			<a ng-click='showGoBackToUniversityPage()'>+ add more</a>
 		</div>
-		<div class="login-courses" ng-controller='CoursesController' ng-if='university'>
-			<ul>
-				<li ng-repeat='course in courses |  limitTo: (9 - user.student_courses.length) track by $index'>
+		<div class="login-courses" ng-controller='CoursesController'>
+			<ul class='desktop-card-list'>
+                <li ng-repeat='course in user.student_courses |  limitTo: 8 track by $index' class='course-item selected'>
+                    <span class='bg-slate' style='background:#40484B !important;'>
+                        <div>
+                            <span class="course-name txt-white">{{course.short_name}}</span>
+                        </div>
+                    </span>
+                </li>
+				<li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in university.popular_courses |  limitTo: (9 - user.student_courses.length) track by $index'>
 					<span>
 						<div>
 							<span class="course-name">{{course.short_name}}</span>

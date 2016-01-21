@@ -33,6 +33,8 @@ angular.module('uguru.guru.controllers')
 
     var startScanner;
 
+
+
     // $timeout(function() {
     //   $scope.courses = University.source.courses;
 

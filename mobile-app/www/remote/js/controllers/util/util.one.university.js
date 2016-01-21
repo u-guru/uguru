@@ -37,12 +37,11 @@ angular.module('uguru.util.controllers')
         $scope.profile = {public_mode: true};
 
         $scope.page = {dropdowns: {}, css:{}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
-
+        $scope.university = null;
 
         var getUniversityId = function() {
           if ($stateParams) {
             if ($stateParams.universityObj) {
-              console.log('this exists');
               $scope.university = $stateParams.universityObj;
               $scope.page.css = {bg_banner:$scope.university.banner_url, main:{gradient_fill:$scope.university.school_color_dark}};
             }
@@ -193,9 +192,14 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.goToBecomeGuru = function() {
+        console.log('transitioning to become guru', $scope.university);
         if ($scope.desktopMode) {
-          AnimationService.flip('^.desktop-become-guru')
+          if ($scope.university) {
+            $scope.root.vars.university = $scope.university;
+            AnimationService.flip('^.desktop-become-guru', {}, {universityId:$scope.university.id, universityObj:$scope.university});
+          }
         } else {
+
           AnimationService.flip('^.become-guru')
         }
       }
@@ -552,17 +556,30 @@ angular.module('uguru.util.controllers')
       }
 
 
-      $scope.$on('$ionicView.loaded', function() {
+      $scope.$on('$ionicView.enter', function() {
 
          shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
 
          $timeout(function() {
           calcAllMainSectionContainers();
           initProfileCTAS();
-          initUniversityTypeWriter();
+
+          if (!$scope.typeWriterInitialized) {
+            $scope.typeWriterInitialized = true;
+            initUniversityTypeWriter();
+          }
+
           console.log($scope.courses);
           console.log('PRINTING USER', $scope.user);
+          if ($scope.university) {
+              $timeout(function() {
+                $scope.page.status.loaded = true;
+              });
 
+            $timeout(function() {
+              $scope.page.status.showLoader = false;
+            })
+          }
           runMobileOnlyFunctions();
 
          }, 5000)

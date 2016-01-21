@@ -218,7 +218,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.desktop-login', {
     url:'/desktop-login',
     templateUrl: BASE + 'templates/desktop.login.html',
-    controller: 'SignupController'
+    controller: 'AccountPageController',
   }).
   state('root.pricing', {
     url:'/pricing',
