@@ -324,7 +324,6 @@ angular.module('uguru.util.controllers')
       $scope.queryAutocompleteFromSearch = function(query) {
 
         query = $scope.page.dropdowns.location_search.input;
-        console.log('querying', $scope.page.dropdowns.location_search.input)
         if (query && query.length) {
           SearchboxService.queryAutocompleteService($scope.page.dropdowns.location_search.input, $scope, $scope.map.control.getGMap());
         } else {
@@ -348,8 +347,48 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    var initHomePageMap = function(lat, lng) {
+    var onZoomChanged = function(map) {
+      $timeout(function() {
+        console.log($scope.map.zoom);
+      }, 1000)
+    }
+    var lastValidCenter = new google.maps.LatLng(39.8282, -98.5795);
+    var strictBounds = new google.maps.LatLngBounds(
+       new google.maps.LatLng(28.70, -127.50),
+       new google.maps.LatLng(48.85, -55.90)
+     );
+    var onCenterChanged = function(map) {
 
+      if (strictBounds.contains(map.getCenter())) {
+        // still within valid bounds, so save the last valid position
+        lastValidCenter = map.getCenter();
+        return;
+      }
+
+      $scope.map.control.getGMap().panTo(lastValidCenter);
+
+    }
+
+    $scope.incrementZoom = function() {
+      if ($scope.map.zoom === 5 || $scope.map.zoom === 6) {
+        $scope.map.control.getGMap().setZoom($scope.map.zoom + 1);
+      }
+    }
+
+    $scope.decrementZoom = function() {
+      if ($scope.map.zoom === 6 || $scope.map.zoom === 7) {
+        $scope.map.control.getGMap().setZoom($scope.map.zoom - 1);
+      }
+    }
+
+
+
+    var initHomePageMap = function(lat, lng) {
+      // @GABRIELLE-NOTE
+      // full list of stylers here
+      // https://developers.google.com/maps/documentation/javascript/reference#MapTypeStyleFeatureType
+      // really awesome tool to play around
+      // http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html
       var styleOptions = [
         {
           featureType: 'water',
@@ -367,12 +406,49 @@ angular.module('uguru.util.controllers')
           stylers: [
             { visibility: 'off' }
           ]
-        }
+        },
+        // @GABRIELLE-NOTE, you can also do landscape.natural.terrain, or just landscape
+        {
+          featureType: 'landscape',
+          elementType: 'all',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
+        {
+          featureType: 'poi',
+          elementType: 'all',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
+        {
+          featureType: 'administrative.country',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
+        {
+          featureType: 'administrative.locality',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
+
       ]
+      var usBounds = {
+         northEast: {latitude: 48.85, longitude: -55.90},
+         southWest: {latitude: 28.70, longitude: -127.50}
+      }
+
       var resultDict = {
         center:  {latitude: lat, longitude: lng},
         zoom: 5,
-        pan: false,
+        pan: true,
+        bounds: usBounds,
+        events: {"zoom_changed":onZoomChanged, "center_changed": onCenterChanged},
         rebuildMarkers: false,
               control: {},
               options: {
@@ -387,7 +463,7 @@ angular.module('uguru.util.controllers')
                 style:styleOptions,
                 draggable:true,
                 disableDoubleClickZoom:false,
-                zoomControl: true
+                zoomControl: false
               },
               bounds: {},
         };
@@ -455,6 +531,7 @@ angular.module('uguru.util.controllers')
         pictureLabel.src = convertSVGStringIntoDataUri(svgImage);
         return pictureLabel
     }
+
     $scope.universityMarkers = [];
     $scope.markerEvents = {
       mouseover: function (gMarker, eventName, model) {
@@ -535,6 +612,8 @@ angular.module('uguru.util.controllers')
           markers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
         }
         $scope.universityMarkers = markers;
+        $scope.map.bounds = {northeast: {latitude: 48.85, longitude: -55.90}, southwest: {latitude: 28.70, longitude:127.50}};
+
       }
     }, true);
 
