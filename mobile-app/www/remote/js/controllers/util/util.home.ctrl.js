@@ -418,8 +418,11 @@ angular.module('uguru.util.controllers')
     var mouseOverTimeout = null;
     var lastMousedOverUniversity = null;
     var defaultMouseoverTime = 1000; //milliseconds
-    var showWindow = function() {
-      console.log('showing window!');
+    var showWindow = function(university) {
+      console.log(university);
+      if (university) {
+        $scope.window.university = university;
+      }
       if ($scope.delayedUniversity && $scope.delayedUniversity.id === $scope.window.university.id) {
         $scope.window.university = $scope.delayedUniversity;
         $scope.window.coords = {latitude: $scope.window.university.latitude, longitude: $scope.window.university.longitude};
@@ -463,7 +466,7 @@ angular.module('uguru.util.controllers')
             //another window is already open
             $scope.delayedUniversity = model.university;
             $timeout(function() {
-              if (mouseOverTimeout && lastMousedOverUniversity.university.id === $scope.delayedUniversity.id) {
+              if (mouseOverTimeout && lastMousedOverUniversity && lastMousedOverUniversity.university && lastMousedOverUniversity.university.id === $scope.delayedUniversity.id) {
                 $scope.window.university = model.university;
                 $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
               }
@@ -482,6 +485,12 @@ angular.module('uguru.util.controllers')
           if (!$scope.window.show && mouseOverTimeout) {
               clearTimeout(mouseOverTimeout);
           }
+      },
+      click: function(gMarker, eventName, model) {
+        console.log('shit was clicked');
+        $scope.window.university = model.university;
+        $scope.window.show = true;
+        mouseOverTimeout && clearTimeout(mouseOverTimeout);
       }
 
     }
