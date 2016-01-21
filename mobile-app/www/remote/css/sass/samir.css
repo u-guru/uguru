@@ -311,6 +311,8 @@ ul.mobile-cards-container li {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     width: 80%;

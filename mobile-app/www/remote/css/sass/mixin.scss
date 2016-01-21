@@ -159,6 +159,8 @@
 	flex-direction: row;
 	-webkit-align-items: center;
 	align-items: center;
+	-webkit-align-content: center;
+	align-content: center;
 	-webkit-justify-content: center;
 	justify-content: center;
 }
@@ -368,11 +370,14 @@ $taupe: #757575;
 $campus: #8A9EA3;
 $smoke: #F1F1F1;
 
+$shamrock: #69B3A5;
+$moxie: #43cb9d;
+$crimson: #d3242c;
+
 $auburn: #F04F54;
 $orange: #E5753C;
 $gold: #F6C64E;
 $moola: #81B566;
-$shamrock: #69B3A5;
 $azure: #55A4B7;
 $lake: #50A5DD;
 $cobalt: #7872e3;

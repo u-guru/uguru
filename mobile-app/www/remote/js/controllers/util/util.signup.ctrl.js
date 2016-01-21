@@ -71,7 +71,9 @@ angular.module('uguru.util.controllers')
       //  }
     }
 
-
+    $scope.showGoBackToUniversityPage = function() {
+      LoadingService.showMsg('Go back to your university page to add more courses', 2000);
+    }
     ngFB.init({appId: '1416375518604557'});
 
     $scope.ngFBlogin = function() {

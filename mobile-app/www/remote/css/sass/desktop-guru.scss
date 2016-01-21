@@ -251,26 +251,41 @@
 						@include flex-center;
 						height: 84px;
 						padding: 15px;
-						border-bottom: 10px solid rgba(white,.3);
+						border-bottom: 10px solid rgba(white,.5);
 						font-size: 16px;
 						font-weight: 600;
 						line-height: 1.25;
 						text-align: center;
 						&:hover {
-							background: $campus;
+							background: lighten($slate, 15%);
 						}
 					}
-					a svg, label svg {
+					a > svg, label > svg, a .icon {
+						display: block;
 						position: absolute;
 						top: 0;
 						right: 0;
-						width: 40px;
+						width: 40px!important;
 						height: 40px;
 						border-radius: 0 0 0 75%;
 						padding: 5px 5px 10px 10px !important;
 						background: white;
 						path {
-							@include svg-stroke($campus, 15);
+							@include svg-stroke(lighten($slate, 15%), 15);
+						}
+					}
+					a {
+						.icon {
+							@include transition(.15s ease-in-out);
+							@include opacity(0);
+							svg {
+								@include rotate(45);
+							}
+						}
+						&:hover, &:focus {
+							.icon {
+								@include opacity(1);
+							}
 						}
 					}
 				}
@@ -280,8 +295,20 @@
 				}
 				.selected {
 					a {
-						background: $campus;
+						background: lighten($slate, 15%);
 						border-color: white;
+						&:hover, &:focus {
+							background: $slate;
+							svg {
+								path {
+									stroke: $slate;
+								}
+							}
+						}
+						&:active {
+							background: rgba(white,.25);
+							border-bottom: 10px solid rgba(white,.5);
+						}
 					}
 				}
 			}
@@ -354,44 +381,50 @@
 }
 
 /* ---------- BECOME GURU ONBOARDING */
+.guru-onboarding-header {
+	position: relative;
+	text-align: center;
+	h1, h2 {
+		position: relative;
+		z-index: 10;
+		font-weight: 600;
+	}
+	h1 {
+		font-size: 48px;
+	}
+	h2 {
+		margin-top: 0;
+		font-size: 28px;
+	}
+}
 #desktop-guru-onboarding {
 	@include flex;
 	@include flex-center;
+	&:before {
+		@include opacity(.4);
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: $slate;
+	}
 	.main {
 		height: auto;
-		.header {
-			position: relative;
-			text-align: center;
-			&:before {
-				@include transition(.15s ease-in-out);
-				@include opacity(.8);
-				display: block;
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
-			h1, h2 {
-				position: relative;
-		        z-index: 10;
-			}
+		.guru-onboarding-header {
 			h1 {
-				font-size: 36px;
-				font-weight: 900;
-				text-transform: uppercase;
-			}
-			h2 {
-				font-size: 24px;
-				font-weight: 300;
+				font-size: 72px;
 			}
 		}
 		#guru-onboarding-grid {
-			margin: 7.5px -7.5px;
+			padding: 60px 15px 15px;
+			max-width: 1020px;
+			margin: auto;
 			li {
 				position: relative;
-				padding: 7.5px;
+				padding: 15px;
 				a {
 					@include flex;
 					@include flex-wrap;
@@ -412,6 +445,12 @@
 					}
 					&:hover, &:focus {
 						&:after {
+							@include opacity(1);
+						}
+					}
+					&.complete {
+						@include opacity(.5);
+						&:hover, &:focus {
 							@include opacity(1);
 						}
 					}
@@ -519,7 +558,9 @@
 			}
 		}
 		#guru-onboarding-progress {
-			padding-top: 25px;
+			padding-top: 30px;
+			max-width: 960px;
+			margin: auto;
 			.progress {
 				position: relative;
 				overflow: visible;
@@ -532,6 +573,12 @@
 					width: 100%;
 					li {
 						width: 33%;
+						&:first-child {
+							padding-right: 30px;
+						}
+						&:last-child {
+							padding-left: 30px;
+						}
 						span {
 							@include flex;
 							@include flex-center;
@@ -667,1042 +714,6 @@
 	}
 }
 
-/* ---------- GURU PROFILE */
-#desktop-guru-profile {
-	@include flex;
-	@include flex-center;
-	background: $charcoal;
-	a, *[ng-click], *[tabindex], input[type=checkbox] {
-		@include transition-none;
-	}
-	button {
-		&.activated, &:active, &:hover, &:focus {
-			color: $gabrielle!important;
-		}
-	}
-	#guru-profile-edit {
-		@include flex;
-		@include flex-center;
-		position: fixed;
-		z-index: 9999;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 64px;
-		background: rgba(lighten($gabrielle,10%),.9);
-	}
-	#profile {
-		@include flex;
-		@include flex-center;
-		width: 100%;
-		height: 100%;
-		max-width: 1280px;
-		max-height: 800px;
-		background: lighten($charcoal, 5%);
-		border-radius: 2px;
-		overflow: hidden;
-		#profile-desc {
-			@include flex;
-			@include flex-center;
-			position: relative;
-			overflow: hidden;
-			width: calc(100% / 3);
-			height: 100%;
-			padding: 15px;
-			background: $slate;
-			.profile-inside {
-				width: 100%;
-			}
-			#profile-icon {
-				@include round;
-				position: relative;
-				z-index: 9;
-				margin: 15px auto;
-				display: block;
-				span {
-					display: block;
-					margin: 0 auto;
-					width: 100px;
-					height: 100px;
-					overflow: hidden;
-				}
-				img {
-					@include round;
-					display: block;
-					margin: 0 auto;
-					width: 100%;
-					height: 100px;
-					padding: 5px;
-					background: rgba(white, .5);
-				}
-				a {
-					position: relative;
-					display: block;
-					img {
-						@include opacity(.3);
-					}
-					h1 {
-						@include center-xy;
-						width: 100px;
-						font-size: 18px;
-						font-weight: 700;
-						text-align: center;
-						text-transform: uppercase;
-					}
-				}
-				a.active, a.activated, a:active {
-					@include opacity(.75);
-				}
-			}
-			#profile-list {
-				width: 100%;
-				text-align: center;
-				ul {
-					@include listless;
-					#profile-name {
-						h1 {
-							margin-top: 10px;
-							padding: 0 10px 3px;
-							color: white;
-							font-size: 28px;
-							font-weight: 600;
-							line-height: 1;
-						}
-					}
-					#profile-school {
-						margin-bottom: 3px;
-						font-size: 24px;
-						font-weight: 400;
-						line-height: 1.2;
-					}
-					#profile-contact, #profile-intro {
-						margin: 15px 0;
-					}
-					#profile-intro {
-						textarea {
-							background: none;
-							resize: none;
-							width: 100%;
-							height: auto;
-							min-height: 120px;
-							color: white;
-							font-size: 20px;
-							font-weight: 400;
-							line-height: 1.2;
-							text-align: center;
-						}
-					}
-					#profile-loc {
-						font-size: 16px;
-						#profile-loc-city:not(:empty)::after {
-							content: ", "
-						}
-					}
-					#profile-footer {
-						ul {
-							@include flex;
-							@include flex-center;
-							font-size: 18px;
-							font-weight: 400;
-							li:first-child {
-								padding: 10px 15px;
-								background: rgba(white,.7);
-								a {
-									color: $slate;
-								}
-							}
-							li:last-child {
-								a {
-									@include flex;
-									@include flex-center;
-									width: 40px;
-									height: 40px;
-									padding: 5px;
-									background: white;
-									svg {
-										@include svg-stroke-width(5);
-										stroke: $gabrielle;
-										width: 100%;
-										height: 100%;
-									}
-									&:hover, &:focus {
-										background: darken($gabrielle, 10%);
-										svg {
-											stroke: white;
-										}
-									}
-									&:active {
-										background: darken($gabrielle, 20%);
-										svg {
-											stroke: white;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		#profile-info {
-			position: relative;
-			width: calc(100% / 3 * 2);
-			height: 100%;
-			max-height: 800px;
-			overflow: auto;
-			font-weight: 600;
-			font-size: 18px;
-			text-transform: uppercase;
-			padding-bottom: 64px;
-			a.edit-button {
-				margin: 8px 16px;
-			}
-			h1 {
-				background: rgba($gabrielle,.4);
-				color: white;
-				padding: 10px;
-				font-size: 14px;
-				font-weight: 400;
-				letter-spacing: 2px;
-				text-align: center;
-				text-transform: uppercase;
-				color: white;
-			}
-			svg {
-				@include svg-stroke(white, 3);
-			}
-			ul {
-				@include flex;
-				@include flex-wrap;
-				border-left: 1px solid rgba($gabrielle,.4);
-				border-right: 1px solid rgba($gabrielle,.4);
-				li {
-					width: 50%;
-					text-align: center;
-					padding: 15px;
-					border: 1px solid rgba($gabrielle,.4);
-					position: relative;
-					&:nth-last-child(2) {
-						border-bottom: 0!important;
-					}
-					&:last-child:nth-child(odd):empty {
-						display: none;
-					}
-					&:nth-child(1), &:nth-child(2) {
-						border-top: 0;
-					}
-					&:nth-last-child(2),
-					&:nth-last-child(3):nth-child(odd),
-					&:last-child:nth-child(even) {
-						border-bottom: 0;
-					}
-					&:last-child:nth-child(even) {
-						display: block;
-					}
-				}
-				&.empty {
-					border-bottom: 0!important;
-					li {
-						width: 100%!important;
-						border-bottom: 0!important;
-						font-weight: 400;
-						text-transform: none;
-					}
-				}
-			}
-			#profile-courses {
-				.profile-list {
-					li {
-						h2 {
-							font-size: 28px!important;
-							font-weight: 700!important;
-						}
-						.profile-course-rating {
-							width: 30%;
-							margin: 0 auto 10px;
-							border: 0!important;
-							padding: 0!important;
-							li {
-								display: block!important;
-								width: 20%;
-								border: 0!important;
-								padding: 0!important;
-								svg {
-									stroke: $gold;
-									stroke-width: 7px;
-									polygon:nth-child(2) {
-										@include opacity(0);
-										stroke-width: 0;
-										fill: $gold;
-									}
-								}
-							}
-							&[data-rating="1"] {
-								li:nth-child(1) {
-									svg {
-										polygon {
-											fill: $gold;
-										}
-									}
-								}
-								&[data-half="true"] {
-									li:nth-child(2) {
-										svg {
-											polygon:nth-child(2) {
-												@include opacity(1);
-											}
-										}
-									}
-								}
-							}
-							&[data-rating="2"] {
-								li:nth-child(1), li:nth-child(2) {
-									svg {
-										polygon {
-											fill: $gold;
-										}
-									}
-								}
-								&[data-half="true"] {
-									li:nth-child(3) {
-										svg {
-											polygon:nth-child(2) {
-												@include opacity(1);
-											}
-										}
-									}
-								}
-							}
-							&[data-rating="3"] {
-								li:nth-child(1), li:nth-child(2), li:nth-child(3) {
-									svg {
-										polygon {
-											fill: $gold;
-										}
-									}
-								}
-								&[data-half="true"] {
-									li:nth-child(4) {
-										svg {
-											polygon:nth-child(2) {
-												@include opacity(1);
-											}
-										}
-									}
-								}
-							}
-							&[data-rating="4"] {
-								li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4) {
-									svg {
-										polygon {
-											fill: $gold;
-										}
-									}
-								}
-								&[data-half="true"] {
-									li:nth-child(5) {
-										svg {
-											polygon:nth-child(2) {
-												@include opacity(1);
-											}
-										}
-									}
-								}
-							}
-							&[data-rating="5"] {
-								li {
-									svg {
-										polygon {
-											fill: $gold;
-										}
-									}
-								}
-							}
-						}
-						.profile-course-desc {
-							text-transform: none;
-							margin-bottom: 10px;
-							width: 100%;
-							background: $slate;
-							resize: none;
-							color: white;
-							font-size: 18px;
-							text-align: center;
-							&[disabled] {
-								background: none;
-							}
-						}
-						.profile-course-price {
-							&.active {
-								display: none;
-							}
-							font-size: 24px;
-							font-weight: 700;
-						}
-						.profile-course-price-edit {
-							padding-top: 52px;
-							&:not(.active) {
-								display: none;
-							}
-							input[type=range] {
-								&::-webkit-slider-thumb {
-									position: relative;
-									border-radius: 0;
-									margin-top: -64px;
-									width: 36px;
-									height: 36px;
-									&:before {
-										@include center-xy;
-										content: "$5";
-										font-size: 18px;
-										font-weight: 600;
-									}
-									&:after {
-										content: "";
-										display: block;
-										position: absolute;
-										right: 0;
-										bottom: -36px;
-										width: 0;
-										height: 0;
-										border: 18px solid transparent;
-										border-top-color: white;
-									}
-								}
-								&[value="0"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "‹ 1";
-										}
-									}
-								}
-								&[value="5"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$5";
-										}
-									}
-								}
-								&[value="6"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$6";
-										}
-									}
-								}
-								&[value="7"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$7";
-										}
-									}
-								}
-								&[value="8"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$8";
-										}
-									}
-								}
-								&[value="9"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$9";
-										}
-									}
-								}
-								&[value="10"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$10";
-										}
-									}
-								}
-								&[value="11"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$11";
-										}
-									}
-								}
-								&[value="12"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$12";
-										}
-									}
-								}
-								&[value="13"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$13";
-										}
-									}
-								}
-								&[value="14"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$14";
-										}
-									}
-								}
-								&[value="15"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$15";
-										}
-									}
-								}
-								&[value="16"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$16";
-										}
-									}
-								}
-								&[value="17"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$17";
-										}
-									}
-								}
-								&[value="18"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$18";
-										}
-									}
-								}
-								&[value="19"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$19";
-										}
-									}
-								}
-								&[value="20"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$20";
-										}
-									}
-								}
-								&[value="21"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$21";
-										}
-									}
-								}
-								&[value="22"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$22";
-										}
-									}
-								}
-								&[value="23"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$23";
-										}
-									}
-								}
-								&[value="24"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$24";
-										}
-									}
-								}
-								&[value="25"] {
-									&::-webkit-slider-thumb {
-										&:before {
-											content: "$25";
-										}
-									}
-								}
-								&::-webkit-slider-runnable-track {
-									height: 5px;
-								}
-								&::-moz-range-track {
-									height: 5px;
-								}
-								&::-ms-track {
-									height: 5px;
-								}
-							}
-							ul {
-								padding: 0;
-								border: 0;
-								margin: 5px 0 0;
-								li {
-									display: block!important;
-									width: calc(100% / 3);
-									padding: 0;
-									border: 0;
-									&:first-child {
-										text-align: left;
-									}
-									&:last-child {
-										text-align: right;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			#profile-experiences {
-				ul {
-					@include flex;
-					@include flex-wrap;
-					li {
-						width: 100%;
-						text-align: center;
-						padding: 15px;
-						border: 1px solid rgba($gabrielle,.4);
-						position: relative;
-						a {
-							height: auto;
-							background: none;
-						}
-						h2 {
-							padding-bottom: 5px;
-							font-size: 28px;
-							font-weight: 700;
-							line-height: 1.2;
-							text-transform: none;
-						}
-						.list-item-icon {
-							@include center-y;
-							right: 15px;
-						}
-						.list-item-detail {
-							width: 100%!important;
-						}
-					}
-				}
-			}
-			#profile-workfor {
-				border: 2px solid rgba($gabrielle,.4);
-				border-top: 0;
-				div {
-					ol {
-						@include flex;
-						@include flex-center;
-						margin: 0 auto;
-						max-width: 80%;
-						li {
-							min-width: calc(100% / 3);
-							padding: 10px 0;
-							svg {
-								display: block;
-								margin: 0 auto;
-								width: 64px;
-								height: 64px;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	ion-pane {
-		position: absolute!important;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		max-height: 800px;
-		font-size: 18px;
-		background: lighten($charcoal, 5%)!important;
-		main, .main, .profile-header {
-			background: lighten($charcoal, 5%)!important;
-		}
-		ul {
-			border: 0!important;
-			padding: 7.5px!important;
-			li {
-				padding: 7.5px!important;
-				border: 0!important;
-				font-size: 24px!important;
-			}
-		}
-		.desktop-search {
-			-webkit-align-items: flex-start!important;
-			align-items: flex-start!important;
-		}
-		#desktop-skills {
-			padding-top: 0;
-			.main #skills-list .desktop-card-list li .skill-item-info a {
-				height: 126px!important;
-			}
-		}
-		.desktop-search-list {
-			li {
-				a {
-					height: 102px!important;
-				}
-			}
-		}
-		.input-field {
-			margin-top: 0;
-			padding-top: 0;
-			label {
-				text-transform: lowercase!important;
-			}
-			input:focus ~ label {
-				@include opacity(0);
-			}
-		}
-		.subcategory {
-			padding-top: 0;
-			h1 {
-				text-align: left!important;
-			}
-			ul {
-				li {
-					label {
-						svg {
-							top: 7.5px;
-	    					right: 7.5px;
-						}
-					}
-				}
-			}
-			.desktop-header {
-				@include flex-important;
-				top: 0;
-				z-index: 9999;
-				height: 77px;
-				a {
-					padding: 11.5px 0 15.5px;
-					svg {
-						stroke-width: 5px!important;
-						margin-right: -1px;
-					}
-				}
-			}
-			&.selected {
-				top: 0;
-				left: 0;
-				-webkit-transform: none;
-				-moz-transform: none;
-				-ms-transform: none;
-				-o-transform: none;
-				transform: none;
-			}
-		}
-	}
-	#guru-contact-container {
-		height: calc(100% - 140px)!important;
-		#contact-type {
-			height: calc(100% - 64px);
-			padding: 0!important;
-			#contact-type-list {
-				li {
-					padding: 7.5px!important;
-					overflow: hidden;
-					> div {
-						input {
-							top: 7.5px;
-							left: 7.5px;
-							width: calc(100% - 15px);
-							height: calc(100% - 15px);
-						}
-						input + span {
-							position: relative!important;
-							height: 100%;
-						}
-					}
-					label {
-						padding: 0!important;
-						span {
-							padding-bottom: 75px!important;
-							color: white;
-						}
-						svg {
-							height: 50px;
-						}
-					}
-				}
-			}
-		}
-		button.bg-cerise {
-			background: white!important;
-			color: $gabrielle!important;
-			&:hover, &:focus {
-				background: lighten($gabrielle, 5%)!important;
-				color: white!important;
-			}
-			&:active, &.activated {
-				background: darken($gabrielle, 10%)!important;
-				color: white!important;
-			}
-		}
-	}
-	#cta-modal-profile-contact > div:last-child {
-		height: 100%;
-	}
-	.cta-modal {
-		header {
-			display: none;
-		}
-		form {
-			width: 100%!important;
-		}
-	}
-	#cta-modal-profile-skills, #cta-modal-profile-courses, #cta-modal-profile-languages {
-		button {
-			width: 100%;
-		    border-radius: 0;
-			border: 0;
-		    position: absolute;
-		    left: 0;
-			background: white!important;
-			color: $gabrielle!important;
-			bottom: 140px;
-			&:hover, &:focus {
-				background: lighten($gabrielle, 5%)!important;
-				color: white!important;
-			}
-			&:active, &.activated {
-				background: darken($gabrielle, 10%)!important;
-				color: white!important;
-			}
-		}
-	}
-	#cta-modal-profile-skills {
-		.subcategory {
-			button {
-				bottom: 64px;
-			}
-		}
-	}
-	#cta-modal-profile-courses {
-		#desktop-courses {
-			#main-logo {
-				display: none;
-			}
-			div.main.default {
-				@include flex-center;
-				@include flex-wrap;
-			}
-		}
-		.desktop-card-list {
-			margin-top: -15px!important;
-		}
-		#courses-list {
-			li:nth-child(7):not(.selected),
-			li:nth-child(8):not(.selected),
-			li:nth-child(9):not(.selected),
-			li:nth-child(10):not(.selected),
-			li:nth-child(11):not(.selected),
-			li:nth-child(12):not(.selected),
-			li:nth-child(13):not(.selected),
-			li:nth-child(14):not(.selected),
-			li:nth-child(15):not(.selected),
-			li:nth-child(16):not(.selected),
-			li:last-child:nth-child(even):not(.selected) {
-				display: none!important;
-			}
-			li:last-child:nth-child(odd):not(.selected) {
-				display: none!important;
-			}
-		}
-	}
-	#cta-modal-profile-languages {
-		#desktop-languages {
-			#main-logo {
-				display: none;
-			}
-			div.main.default {
-				@include flex-center;
-				@include flex-wrap;
-			}
-		}
-		#language-list {
-			li:nth-child(9),
-			li:nth-child(10),
-			li:nth-child(11),
-			li:nth-child(12),
-			li:nth-child(13),
-			li:nth-child(14),
-			li:nth-child(15),
-			li:nth-child(16) {
-				display:none !important;
-			}
-		}
-	}
-	#experience-modal {
-		height: calc(100% - 91px) !important;
-		bottom: 0;
-		top: 77px;
-		width: 100%;
-		div.main {
-			@include flex-wrap;
-			width: 100%;
-			div {
-				width: 100%
-			}
-			#exp-input {
-    			height: calc(100% - 295px)!important;
-			}
-			.bg-campus-50p {
-				background: rgba($gabrielle,.5)!important;
-			}
-			ul {
-				li {
-					width: calc(100% / 3)!important;
-					&:first-child {
-						text-align: left!important;
-					}
-					&:last-child {
-						display: block!important;
-						text-align: right!important;
-					}
-				}
-			}
-		}
-		button.bg-campus {
-			background: white!important;
-			color: $gabrielle!important;
-			&:hover, &:focus {
-				background: lighten($gabrielle, 5%)!important;
-				color: white!important;
-			}
-			&:active, &.activated {
-				background: darken($gabrielle, 10%)!important;
-				color: white!important;
-			}
-		}
-	}
-	.profile-header, .pane .subcategory {
-		h1 {
-			background: none!important;
-			padding: 10px 15px!important;
-			margin-bottom: 0!important;
-			font-size: 48px!important;
-			font-weight: 900!important;
-			letter-spacing: 0!important;
-			text-transform: none!important;
-		}
-	}
-	.profile-header {
-		position: relative;
-		.close-button {
-			@include center-y;
-			right: 8.75px;
-			svg {
-				stroke-width: 5px!important;
-			}
-		}
-	}
-}
-@media screen and (max-height:768px) {
-	#desktop-guru-profile {
-		ion-pane {
-			#desktop-skills {
-				.main #skills-list .desktop-card-list li .skill-item-info a {
-					height: 123px!important;
-				}
-			}
-			.desktop-search-list {
-				li {
-					a {
-						height: 103px!important;
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (min-height:801px) {
-	#desktop-guru-profile {
-		#profile {
-			#profile-info {
-				padding-bottom: 0;
-			}
-		}
-		#guru-contact-container {
-			height: calc(100% - 76px)!important;
-			#contact-type {
-				#contact-type-list {
-					li {
-						label {
-							svg {
-								padding-top: 10px;
-								height: 60px!important;
-							}
-							span {
-								padding-bottom: 100px!important;
-							}
-						}
-					}
-				}
-			}
-		}
-		ion-pane {
-			#desktop-skills {
-				.main #skills-list .desktop-card-list li .skill-item-info a {
-
-					height: 147px!important;
-				}
-			}
-			.desktop-search-list {
-				//Samir
-				#guru-courses-user-profile {
-					display:flex !important;
-					justify-content: flex-start!important;
-					-webkit-justify-content: flex-start !important;
-				}
-				li.course-item.selected{
-					width:20% !important;
-					display:block !important;
-					a {
-						height:60px !important;
-						max-height:60px !important;
-						span {
-							font-size:16px;
-							margin-right:25% !important;
-						}
-						svg {
-							path {
-								transform: translate(60px, -25px) rotate(45deg) !important;
-							}
-						}
-					}
-				}
-				//endsamir
-				li {
-					a, .skill-item-info a {
-						height: 127px!important;
-					}
-				}
-			}
-		}
-		#cta-modal-profile-courses, #cta-modal-profile-skills, #cta-modal-profile-languages {
-			button {
-			    bottom: 76px;
-			}
-		}
-		#cta-modal-profile-courses {
-			.subcategory {
-				button {
-					bottom: 0;
-				}
-			}
-		}
-		#experience-modal {
-			height: calc(100% - 27px)!important;
-			.main #exp-input {
-    			height: calc(100% - 217px)!important;
-			}
-		}
-	}
-}
 .close-button {
 	display: block;
 	svg {

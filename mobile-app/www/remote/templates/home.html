@@ -103,12 +103,12 @@
 					</svg>
 					<div class="border"></div>
 					<div class="footer-content">
-						<ul>
-							<li class="active">
+						<ul ng-if='desktopMode'>
+							<li>
 								<h2>Open 24/7</h2>
 								<p>Create an academic shop for<br/>course-related skills</p>
 							</li>
-							<li>
+							<li class='active'>
 								<h2>Trusted</h2>
 								<p>Create an academic shop for<br/>course-related skills</p>
 							</li>
@@ -117,6 +117,28 @@
 								<p>Create an academic shop for<br/>course-related skills</p>
 							</li>
 						</ul>
+                        <div id='splash-hero-slidebox-container' class='full-xy flex-wrap-center'>
+                            <ion-slide-box class='full-xy' ng-if='!desktopMode' show-pager='true' does-continue='true' slide-interval='2500' auto-play="true">
+                                <ion-slide>
+                                    <div class='full-xy flex-wrap-center'>
+                                        <h2 class='full-x p10top'>Open 24/7</h2>
+                                        <p>Create an academic shop for<br/>course-related skills</p>
+                                    </div>
+                                </ion-slide>
+                                <ion-slide>
+                                    <div class='full-xy flex-wrap-center'>
+                                        <h2 class='full-x p10top'>Trusted</h2>
+                                        <p>Create an academic shop for<br/>course-related skills</p>
+                                    </div>
+                                </ion-slide>
+                                <ion-slide>
+                                    <div class='full-xy flex-wrap-center'>
+                                        <h2 class='full-x p10top'>No BS</h2>
+                                        <p>Create an academic shop for<br/>course-related skills</p>
+                                    </div>
+                                </ion-slide>
+                            </ion-slide-box>
+                        </div>
 					</div>
 				</footer>
             </section>
@@ -192,7 +214,7 @@
                             <a class='p20xy' ng-click='incrementZoom()'> + </a>
                             <a class='p20xy weight-900' ng-click='decrementZoom()'> - </a>
                         </div>
-                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" events="map.events" zoom="map.zoom" bounds="map.bounds" pan="false" options="map.options">
+                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom"  pan="map.pan" options="map.options">
 
                             <ui-gmap-markers
                             models="universityMarkers"
@@ -201,7 +223,6 @@
                             options="'options'"
                             fit="true"
                             events="markerEvents"
-                            click="showWindow('self')"
                             >
                             </ui-gmap-markers>
                             <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->

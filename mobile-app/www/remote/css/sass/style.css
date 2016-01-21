@@ -143,6 +143,8 @@ section {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     height: calc(100% - 384px); }
@@ -267,6 +269,8 @@ section {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     padding: 0 10px;
@@ -325,6 +329,8 @@ section {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   height: auto !important; }
@@ -340,6 +346,8 @@ section {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center; }
   .slider-pager .icon {
@@ -386,6 +394,8 @@ section {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center; }
   .access-view #access-start {
@@ -471,6 +481,8 @@ section {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           position: absolute;
@@ -496,6 +508,8 @@ section {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         border-radius: 0 0 10px 10px;
@@ -635,6 +649,8 @@ section {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         color: white; }
@@ -655,6 +671,8 @@ section {
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             padding: 0 5px;
@@ -687,6 +705,8 @@ section {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         width: 100%;
@@ -704,6 +724,8 @@ section {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           width: 100%;
@@ -721,6 +743,8 @@ section {
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             height: 100%;
@@ -1014,6 +1038,8 @@ section {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         position: relative;
@@ -1043,6 +1069,8 @@ section {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           position: absolute;
@@ -1211,6 +1239,8 @@ section {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     margin: 5px auto;
@@ -1337,6 +1367,8 @@ section {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       width: 100%;
@@ -1610,6 +1642,8 @@ section {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       position: absolute;
@@ -1693,6 +1727,8 @@ section {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       position: absolute;
@@ -1800,6 +1836,8 @@ section {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     height: 25%;
@@ -1835,6 +1873,8 @@ section {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           width: 100%;
@@ -1955,6 +1995,8 @@ section {
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             position: absolute;
@@ -2011,6 +2053,8 @@ section {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   position: absolute;
@@ -2077,6 +2121,8 @@ section {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       color: #69B3A5; }
@@ -2097,6 +2143,8 @@ section {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           padding: 0 5px;
@@ -2159,6 +2207,8 @@ section {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       width: 100%;
@@ -2262,6 +2312,8 @@ section {
               flex-direction: row;
               -webkit-align-items: center;
               align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
               -webkit-justify-content: center;
               justify-content: center;
               font-size: 44px;
@@ -2291,6 +2343,8 @@ section {
               flex-direction: row;
               -webkit-align-items: center;
               align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
               -webkit-justify-content: center;
               justify-content: center;
               padding-top: 10px !important;
@@ -2318,6 +2372,8 @@ section {
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             height: calc(100% - 1px); }
@@ -2376,6 +2432,8 @@ section {
                 flex-direction: row;
                 -webkit-align-items: center;
                 align-items: center;
+                -webkit-align-content: center;
+                align-content: center;
                 -webkit-justify-content: center;
                 justify-content: center;
                 margin: 0 15px;
@@ -2460,6 +2518,8 @@ section {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   padding: 15px;
@@ -2949,6 +3009,8 @@ section {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       position: absolute;
@@ -3004,6 +3066,8 @@ section {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       padding: 15px 0; }

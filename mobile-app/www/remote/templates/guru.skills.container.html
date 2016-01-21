@@ -1,5 +1,4 @@
 <main id="desktop-skills" class="desktop-mode desktop-search desktop-guru-onboarding" ng-if='desktopMode'>
-	<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 	<header class="desktop-header">
 		<a></a>
         <a class='cta-modal-close desktop-header-next desktop-header-close'>
@@ -9,15 +8,28 @@
         </a>
 	</header>
 	<div class="main default skills-container">
+		<div class="guru-onboarding-header">
+			<h1>Add Your Skills</h1>
+			<h2>In hac habitasse platea dictumst. Vivamus adipisci.</h2>
+		</div>
 		<div id="skills-list" class="desktop-search-list">
 			<ul class='desktop-card-list'>
-    			<li ng-repeat='category in categories' ng-click='showDesktopSubcategories(category)' class='ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }'>
+    			<li ng-repeat='category in categories' ng-click='showDesktopSubcategories(category)' class='skill-item-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }'>
 					<div class="skill-item-info" style='background-image :url({{categories_img_base + category.background_url}})'>
 	    				<a class='skill-item-link bg-{{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
 							<span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}}</span>
 							<span class="skill-count" ng-show='category.active_subcategories === 1'>{{category.active_subcategories}}</span>
 	                        <div>
 	                            <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.name}}</span>
+	                        </div>
+	                    </a>
+					</div>
+    			</li>
+				<li class='skill-item-more'>
+					<div class="skill-item-info" style='background-image :url({{categories_img_base + categories[0].background_url}})'>
+	    				<a class='skill-item-link bg-more'>
+	                        <div>
+	                            <span class="skill-label">More Coming&nbsp;Soon</span>
 	                        </div>
 	                    </a>
 					</div>
@@ -29,8 +41,8 @@
 </main>
 
 <div ng-if='desktopMode'>
-	<main name='desktop-categories' class='desktop-skills subcategory desktop-mode desktop-search desktop-guru-onboarding ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
-		<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+
+	<main class='desktop-skills subcategory desktop-mode desktop-search desktop-guru-onboarding ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
 		<header class="desktop-header">
 			<a></a>
 			<a class='desktop-header-next desktop-header-close' ng-click='hideCategorySkillsModal()'>
@@ -40,10 +52,10 @@
 			</a>
 		</header>
 		<div>
-			<h1>
-				{{category.name}}
-				<span>{{category.description}}</span>
-			</h1>
+			<div class="guru-onboarding-header">
+				<h1>{{category.name}}</h1>
+				<h2>{{category.description}}</h2>
+			</div>
 			<ul class="desktop-card-list">
 				<li ng-repeat='subcategory in category.subcategories'>
 					<input type="checkbox" ng-model='subcategory.active' ng-change='updateCategoryCount(active_category, subcategory, $index)'/>
@@ -52,8 +64,14 @@
 						<svg viewBox="0 0 100 100">
 							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 						</svg>
+						<span class="icon">
+							<svg viewBox="0 0 100 100">
+								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+							</svg>
+						</span>
 					</label>
 				</li>
+				<li ng-click='hideCategorySkillsModal()'><button>Back to Categories</button></li>
 			</ul>
 			<button ng-click='hideCategorySkillsModal()' id='desktop-skills-nested-save-button'  class="save-button semibold btn-ghost-white">Save</button>
 		</div>

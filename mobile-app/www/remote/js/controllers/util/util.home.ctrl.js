@@ -24,10 +24,11 @@ angular.module('uguru.util.controllers')
   'AnimationService',
   'University',
   'CounterService',
+  'uiGmapIsReady',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
     SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
-    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService) {
+    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService, uiGmapIsReady) {
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
@@ -358,7 +359,7 @@ angular.module('uguru.util.controllers')
        new google.maps.LatLng(48.85, -55.90)
      );
     var onCenterChanged = function(map) {
-
+      console.log('center has changed');
       if (strictBounds.contains(map.getCenter())) {
         // still within valid bounds, so save the last valid position
         lastValidCenter = map.getCenter();
@@ -448,7 +449,6 @@ angular.module('uguru.util.controllers')
         zoom: 5,
         pan: true,
         bounds: usBounds,
-        events: {"zoom_changed":onZoomChanged, "center_changed": onCenterChanged},
         rebuildMarkers: false,
               control: {},
               options: {
@@ -495,7 +495,6 @@ angular.module('uguru.util.controllers')
     var lastMousedOverUniversity = null;
     var defaultMouseoverTime = 1000; //milliseconds
     var showWindow = function(university) {
-      console.log(university);
       if (university) {
         $scope.window.university = university;
       }
@@ -533,9 +532,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.universityMarkers = [];
-    $scope.markerEvents = {
+    $scope.markerEventsPending = {
       mouseover: function (gMarker, eventName, model) {
-        console.log('mouseover for ', model.university.name, 'initiated');
         lastMousedOverUniversity = model.university;
           // if user mouses over one while another is open
 
@@ -564,20 +562,17 @@ angular.module('uguru.util.controllers')
           }
       },
       click: function(gMarker, eventName, model) {
-        console.log('shit was clicked');
         $scope.window.university = model.university;
         $scope.window.show = true;
         mouseOverTimeout && clearTimeout(mouseOverTimeout);
       }
 
     }
+    $scope.markerEvents = {};
     var centerOfUS = {latitude:39.8282, longitude:-98.5795}
     $scope.map = initHomePageMap(centerOfUS.latitude, centerOfUS.longitude);
     var createRandomMarker = function(i, bounds, university, idKey) {
-      var lat_min = bounds.southwest.latitude,
-        lat_range = bounds.northeast.latitude - lat_min,
-        lng_min = bounds.southwest.longitude,
-        lng_range = bounds.northeast.longitude - lng_min;
+
 
       if (idKey == null) {
         idKey = "id";
@@ -600,24 +595,65 @@ angular.module('uguru.util.controllers')
       return ret;
     };
     $scope.universityMarkers = [];
-
+    $scope.universityMarkersPending = [];
     // Get the bounds from the map once it's loaded
-    $scope.$watch(function() {
-      return $scope.map.bounds;
-    }, function(nv, ov) {
-      // Only need to regenerate once
-      if (!ov.southwest && nv.southwest) {
-        var markers = [];
+    // $scope.$watch(function() {
+    //   return $scope.map.bounds;
+    // }, function(nv, ov) {
+    //   // Only need to regenerate once
+    //   $scope.map.bounds = {northeast: {latitude: 48.85, longitude: -55.90}, southwest: {latitude: 28.70, longitude:127.50}};
+    //   if (!ov.southwest && nv.southwest) {
+
+    //     // console.log('map bounds watcher triggered');
+    //     // staggerXMarkersEveryYSeconds(20, 1000, markers);
+    //   }
+    // }, true);
+
+    var prepareMarkers = function() {
+        // var markers = [];
         for (var i = 0; i < $scope.universities.length; i++) {
-          markers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
+          $scope.universityMarkersPending.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
         }
-        $scope.universityMarkers = markers;
-        $scope.map.bounds = {northeast: {latitude: 48.85, longitude: -55.90}, southwest: {latitude: 28.70, longitude:127.50}};
+        // return markers;
 
+    }
+
+    $timeout(function() {
+      prepareMarkers();
+    }, 500)
+
+    $scope.markerEvents = $scope.markerEventsPending;
+
+    uiGmapIsReady.promise(1).then(function(instances) {
+      // @GABRIELLE-NOTEThis staggers them, its a bit janky so its commented
+      // $timeout(function() {
+      //   placeAllMarkersOnMapInXMillSeconds(5000, $scope.universityMarkersPending);
+      // }, 2500);
+
+      // $timeout(function() {
+        $timeout(function() {
+          $scope.universityMarkers = $scope.universityMarkersPending;
+        }, 1000)
+        $timeout(function() {
+
+          // $scope.map.events = {center_changed:onCenterChanged}
+        }, 4000);
+    });
+      //adds X markers every Y seconds
+      var placeAllMarkersOnMapInXMillSeconds = function(ms, markerArr) {
+        var markerLength = markerArr.length;
+        var intervalLength = ((ms * 1.0) / markerLength)|0;
+        var i =0
+        console.log('placing', markerLength, '. One every', intervalLength, 'seconds.')
+        var staggerTimeout = setInterval(function() {
+              if (i === markerArr.length) {
+                clearTimeout(intervalLength);
+              }
+              var indexMarker = markerArr[i];
+              $scope.universityMarkers.push(indexMarker);
+              i++;
+        }, intervalLength)
       }
-    }, true);
-
-
       var showDelayedBecomeGuruHeader = function() {
 
 
