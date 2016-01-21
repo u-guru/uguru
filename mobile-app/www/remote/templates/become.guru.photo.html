@@ -1,6 +1,5 @@
 <ion-view class='uguru-view photo-view desktop-mode desktop-guru-onboarding' ng-controller='BecomeGuruPhotoController'>
     <main id="desktop-upload-photo" class="desktop-mode" ng-show='desktopMode'>
-        <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
         <header class="desktop-header">
             <a></a>
             <a class='cta-modal-close desktop-header-next desktop-header-close'>
@@ -11,12 +10,10 @@
         </header>
         <div class="main default">
             <div id="profile-icon" ng-click='showAttachActionSheet()'>
-                <h1 ng-show='!user.profile_url'>Upload Photo</h1>
-                <h1 ng-show='user.profile_url'>Edit Profile Photo</h1>
-                <img class='user-photo-img' ng-show='user.profile_url' id='user-instant-photo' ng-src="{{user.profile_url}}" ng-show='photoUploaded || user.profile_url' alt=""/>
-                <svg width="300" height="300" viewBox="0 0 300 300" ng-show='!user.profile_url'>
-                    <circle cx="150" cy="150" r="146" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="15,20"></circle>
-                </svg>
+                <span class="profile-icon-img" ng-if='photoUploaded || user.profile_url' alt="" style="background-image: url('{{user.profile_url}}');"></span>
+                <span class="profile-icon-svg" ng-include="img_base + BASE + 'templates/svg/main/photo.html'"></span>
+                <h1 ng-if='!user.profile_url'>Upload Photo</h1>
+                <h1 ng-if='user.profile_url'>Edit Photo</h1>
             </div>
 
 			<div id="photo-list">
