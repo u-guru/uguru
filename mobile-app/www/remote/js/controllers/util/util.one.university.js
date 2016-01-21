@@ -23,10 +23,11 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   'AnimationService',
   'University',
+  'CounterService',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
     SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
-    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University) {
+    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService) {
         var scrollDuration= 500;
         var shouldShowBecomeGuruHeader = true;
         var shouldRenderMap = false;
@@ -332,11 +333,11 @@ angular.module('uguru.util.controllers')
                 {name:"Become a Guru", ngClickFunc:becomeGuruFunc}
               ]
           },
-          {name:"Team", href:"#/team"},
-          {name:"Timeline", href:"#/timeline"},
-          {name:"FAQ", href:"#/faq"},
-          {name:"Pricing", href:"#/pricing"},
-          {name: "Apply", href:"#/apply"},
+          {name:"Meet the Team", id:'cta-box-team'},
+          // {name:"Timeline", href:"#/timeline"},
+          {name:"FAQ", id:'cta-box-FAQ'},
+          {name:"Pricing",  id:'cta-box-pricing'},
+          {name: "Apply", id:'cta-box-apply'},
           {name: "Support", ngClickFunc:triggerSupportBox}
         ];
       }
@@ -517,12 +518,30 @@ angular.module('uguru.util.controllers')
             $scope.user = $scope.sampleProfiles[category];
           }
         }
+        var initPricingCounters = function() {
+          $timeout(function() {
+            if (!$scope.pricingSidebarAlreadyInitialized) {
+              $scope.pricingSidebarAlreadyInitialized = true;
+              var feeCounter = CounterService.initCounter(document.getElementById('our-fees'), 40, 0, 10, '%');
+              CounterService.startCounter(feeCounter);
+              var pricingCounter = CounterService.initCounter(document.getElementById('students-pay'), 100, 14, 10, '/hr', '$');
+              CounterService.startCounter(pricingCounter);
+              var chargeCounter = CounterService.initCounter(document.getElementById('guru-charge'), 100, 20, 10, '/hr', '&lsaquo;$');
+              CounterService.startCounter(chargeCounter);
+            }
+          }, 1500);
+        }
 
         CTAService.initSingleCTA('#cta-box-academic', '#university-splash', showCTACallback("academic"));
         CTAService.initSingleCTA('#cta-box-baking', '#university-splash', showCTACallback("bakery"));
         CTAService.initSingleCTA('#cta-box-household', '#university-splash', showCTACallback("household"));
         CTAService.initSingleCTA('#cta-box-photography', '#university-splash', showCTACallback("photography"));
         CTAService.initSingleCTA('#cta-box-tech', '#university-splash', showCTACallback("tech"));
+
+        CTAService.initSingleCTA('#cta-box-pricing', '#university-splash', initPricingCounters);
+        CTAService.initSingleCTA('#cta-box-FAQ', '#university-splash');
+        CTAService.initSingleCTA('#cta-box-apply', '#university-splash');
+        CTAService.initSingleCTA('#cta-box-team', '#university-splash');
       }
 
       var runMobileOnlyFunctions = function() {

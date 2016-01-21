@@ -8,9 +8,24 @@
 
 	<ion-view class='bg-smoke ng-class:{"hide":page.status.showLoader}'  cache-view='false'>
 		<main id='university-splash' class='splash-landing hs-view full-xy'>
-            <aside id='cta-modal-sidebar' ng-if='page.sidebar.show' class='splash-sidebar fx-ease-none hide ng-class:{"show":page.sidebar.show, "fx-bounce-left fx-duration-100":desktopMode, "fx-zoom-down fx-duration-700":!desktopMode}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+            <aside id='cta-modal-sidebar' class='splash-sidebar hide ng-class:{"show":page.sidebar.show, "fx-bounce-left fx-duration-100": page.sidebar.show && desktopMode, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
 
             <ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'"> </ion-pane>
+
+            <ion-pane id='cta-modal-pricing' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/pricing.html'"> </ion-pane>
+
+            <ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/team.html'"> </ion-pane>
+
+            <ion-pane id='cta-modal-apply' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/apply.html'"> </ion-pane>
+
+            <ion-pane id='cta-modal-FAQ' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' >
+                <a id='guru-profile-cta-close' style='z-index:1000' class='cta-modal-close bg-white close-button high-z-index dark-modal-close full-x p20xy flex-right-center'>
+                    <svg viewBox="0 0 100 100" class='m10xy' style='stroke:black;'>
+                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+                <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe>
+            </ion-pane>
 
 			<header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
 				<div>

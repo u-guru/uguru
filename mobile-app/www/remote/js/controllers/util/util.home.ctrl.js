@@ -686,13 +686,27 @@ angular.module('uguru.util.controllers')
           }
         }
 
+        var initPricingCounters = function() {
+          $timeout(function() {
+            if (!$scope.pricingSidebarAlreadyInitialized) {
+              $scope.pricingSidebarAlreadyInitialized = true;
+              var feeCounter = CounterService.initCounter(document.getElementById('our-fees'), 40, 0, 10, '%');
+              CounterService.startCounter(feeCounter);
+              var pricingCounter = CounterService.initCounter(document.getElementById('students-pay'), 100, 14, 10, '/hr', '$');
+              CounterService.startCounter(pricingCounter);
+              var chargeCounter = CounterService.initCounter(document.getElementById('guru-charge'), 100, 20, 10, '/hr', '&lsaquo;$');
+              CounterService.startCounter(chargeCounter);
+            }
+          }, 1500);
+        }
+
         CTAService.initSingleCTA('#cta-box-academic', '#home-splash', showCTACallback("academic"));
         CTAService.initSingleCTA('#cta-box-baking', '#home-splash', showCTACallback("bakery"));
         CTAService.initSingleCTA('#cta-box-household', '#home-splash', showCTACallback("household"));
         CTAService.initSingleCTA('#cta-box-photography', '#home-splash', showCTACallback("photography"));
         CTAService.initSingleCTA('#cta-box-tech', '#home-splash', showCTACallback("tech"));
         //sidebar
-        CTAService.initSingleCTA('#cta-box-pricing', '#home-splash');
+        CTAService.initSingleCTA('#cta-box-pricing', '#home-splash', initPricingCounters);
         CTAService.initSingleCTA('#cta-box-FAQ', '#home-splash');
         CTAService.initSingleCTA('#cta-box-apply', '#home-splash');
         CTAService.initSingleCTA('#cta-box-team', '#home-splash');
