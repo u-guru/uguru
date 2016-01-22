@@ -220,6 +220,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/desktop.login.html',
     controller: 'AccountPageController',
   }).
+  state('root.mobile-login', {
+    url:'/mobile-login',
+    templateUrl: BASE + 'templates/signup.modal.html',
+    controller: 'AccountPageController',
+  }).
   state('root.pricing', {
     url:'/pricing',
     templateUrl: BASE + 'templates/pricing.html',
