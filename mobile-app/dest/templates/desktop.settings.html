@@ -17,16 +17,16 @@
 				</div>
 				<div>
 					<h2>Name</h2>
-					<a ng-click='launchEditStudentNamePopup($event)'>
+					<a name='edit-name' ng-click='launchEditStudentNamePopup($event)'>
 						<div class="input-field">
-							<input class="validate" type="text" placeholder="{{user.name}}" ng-model='user.name'/>
+							<input name='usr-name' class="validate" type="text" placeholder="{{user.name}}" ng-model='user.name'/>
 						</div>
 					</a>
 				</div>
 				<div class="ugrid-2">
 					<div>
 						<h2>Email</h2>
-						<a ng-click='launchEditEmailPopup($event)'>
+						<a name='edit-email' ng-click='launchEditEmailPopup($event)'>
 							<div class="input-field">
 								<input name="email" class="validate" type='email' placeholder="username@school.edu" ng-model="user.email"/>
 								<label for="email" data-error="Please use a valid email address">&nbsp;</label>
@@ -35,7 +35,7 @@
 					</div>
 					<div>
 						<h2>Password</h2>
-						<a ng-click='launchEditPasswordPopup($event)'>
+						<a name='edit-pwd' ng-click='launchEditPasswordPopup($event)'>
 							<div class="input-field">
 								<input class="validate" ng-model='user.password' type="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
 							</div>
@@ -58,7 +58,7 @@
 							</p>
 						</div>
 						<div>
-							<a ng-click='toggleTextNotifications()'>
+							<a name='text-toogle' ng-click='toggleTextNotifications()'>
 								<svg viewBox="0 0 100 100">
 	                                <circle class='notifications-circle ng-class:{"active":user.text_notifications && user.phone_number_confirmed}' cx="50" cy="50" r="36"></circle>
 	                                <path class='notifications-path' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
@@ -72,7 +72,7 @@
 							<p><small>{{user.email}}</small></p>
 						</div>
 						<div>
-							<a ng-click='toggleEmailNotifications()'>
+							<a name='email-toogle' ng-click='toggleEmailNotifications()'>
 								<svg viewBox="0 0 100 100">
 	                                <circle class='notifications-circle ng-class:{"active":user.email_notifications}' cx="50" cy="50" r="36"></circle>
 	                                <path class='notifications-path ng-class:{"active":user.email_notifications}' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
@@ -82,16 +82,16 @@
 					</div>
 				</div>
 				<div ng-if='!root.vars.hs_mode'>
-					<a ng-click='openModal("university")'>
+					<a name='edit-university' ng-click='openModal("university")'>
 						<h2>University</h2>
 						<div class="input-field">
-							<input type='text' placeholder="{{user.university.name}}" ng-model='user.university.title'/>
+							<input name='usr-university' type='text' placeholder="{{user.university.name}}" ng-model='user.university.title'/>
 						</div>
 					</a>
 				</div>
 				<div class="settings-save bottom-0">
-					<a class="btn-ghost-white" ng-click='goBackHome()'>Go Back</a>
-					<button class="btn-ghost-white" ng-click='saveSettings()'>Save All</button>
+					<a name="goBackHome" class="btn-ghost-white" ng-click='goBackHome()'>Go Back</a>
+					<button name='save-setting'  class="btn-ghost-white" ng-click='saveSettings()'>Save All</button>
 				</div>
 			</div>
 		</div>

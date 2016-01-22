@@ -8,43 +8,26 @@
 	</ion-pane>
 	<ion-pane id='cta-modal-photo' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='BecomeGuruPhotoController' ng-include="img_base + BASE + 'templates/become.guru.photo.html'">
 	</ion-pane>
-	<div ng-include="img_base + BASE + 'templates/one.university.style.html'"></div>
+	<div ng-include="img_base + BASE + 'templates/become.guru.style.html'"></div>
 	<main id="desktop-guru-onboarding" class="desktop-mode">
-		<span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 		<div class="main default">
 			<div class="desktop-header">
-				<a ng-click='goBackToUniversities()' class='desktop-header-back'>
+				<a name='returnUniversity' ng-click='goBackOneLevel()' class='desktop-header-back'>
 					<svg viewBox="0 0 100 100">
 						<path d="M68,86 L32,50 L68,14"></path>
 					</svg>
 				</a>
 				<a ng-click='skipBecomeGuruAndGoToGuru()' class='desktop-header-next skip-button ng-class:{"show-opacity-impt": showFinishButton}'>
-					<h4 class="ng-class:{'hide':showFinishButton}">Skip</h4>
-					<h1 class="hide white-text ng-class:{'show': showFinishButton }"><strong>Finish</strong></h1>
+					<h4 class="weight-600 ng-class:{'hide':showFinishButton}">Skip</h4>
+					<h1 class="weight-600 hide white-text ng-class:{'show': showFinishButton }"><strong>Finish</strong></h1>
 				</a>
 			</div>
-			<div class="header">
+			<div class="guru-onboarding-header">
 				<h1>Become a Guru</h1>
 				<h2>You're only a couple steps away from great success!</h2>
 			</div>
 			<ul id="guru-onboarding-grid" class="ugrid-3">
-			<!-- <li class='cta-box'>
-					<a class='ng-class:{"complete":user.majors.length > 0}' href="#">
-						<svg viewBox="0 0 100 100">
-							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-						</svg>
-						<span>
-							<span>
-								<svg viewBox="0 0 100 100">
-								    <path d="M17.9994146,24 L82.0005854,24 C84.2094011,24 86,25.7899577 86,28.0155217 L86,71.9844783 C86,74.2021897 84.2022516,76 82.0005854,76 L17.9994146,76 C15.7905989,76 14,74.2100423 14,71.9844783 L14,28.0155217 C14,25.7978103 15.7977484,24 17.9994146,24 Z M25,61 L37,61 M25,50 L41,50 M25,39 L43,39 M60,53.0000001 L60,64.8700967 L64.9352489,61.4378124 L70,65 L69.9999997,53 M67.5993576,51.4888747 L65,54 L62.4006424,51.4888747 L58.8196601,51.9946784 L58.1947935,48.4373961 L55,46.7446784 L56.5883022,43.5 L55,40.2553216 L58.1947935,38.5626039 L58.8196601,35.0053216 L62.4006424,35.5111253 L65,33 L67.5993576,35.5111253 L71.1803399,35.0053216 L71.8052065,38.5626039 L75,40.2553216 L73.4116978,43.5 L75,46.7446784 L71.8052065,48.4373961 L71.1803399,51.9946784 L67.5993576,51.4888747 L67.5993576,51.4888747 Z"></path>
-								</svg>
-							</span>
-							<span>Add a Major</span>
-						</span>
-					</a>
-				</li> -->
-
-				<li >
+				<li>
 					<a id='cta-box-courses' class='cta-box ng-class:{"complete":user.guru_courses.length > 0}' href="#">
 						<span>
 							<span>

@@ -409,6 +409,8 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center; }
 
@@ -1093,6 +1095,8 @@ h1:not(.verified) span:nth-child(2) {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center; }
   .verified span svg {
@@ -1432,6 +1436,8 @@ button.disabled {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center; }
     .picker.picker-date .picker-day {
@@ -1454,6 +1460,8 @@ button.disabled {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center; }
         .picker.picker-date .picker-colon li.active {
@@ -1475,6 +1483,8 @@ button.disabled {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     -ms-flex-flow: row wrap;
@@ -1531,6 +1541,8 @@ button.disabled {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   position: relative;
@@ -1980,6 +1992,8 @@ input[type=range]:focus::-ms-fill-upper {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     width: 100%; }
@@ -2016,6 +2030,8 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   width: 64px; }
@@ -2715,6 +2731,8 @@ input[type=range]:focus::-ms-fill-upper {
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center; }
     .custom-dropdown > div span, .dropdown > div span {
@@ -2729,6 +2747,8 @@ input[type=range]:focus::-ms-fill-upper {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       width: 152px;
@@ -2834,6 +2854,8 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   padding: 7.5px; }
@@ -3032,6 +3054,8 @@ input[type=range]:focus::-ms-fill-upper {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           width: 36px;
@@ -3345,6 +3369,8 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   padding: 15px; }
@@ -3537,6 +3563,8 @@ input[type=range]:focus::-ms-fill-upper {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         z-index: 5;
@@ -3634,6 +3662,8 @@ input[type=range]:focus::-ms-fill-upper {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       position: relative;
@@ -3703,6 +3733,8 @@ input[type=range]:focus::-ms-fill-upper {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         -webkit-align-self: flex-end;
@@ -3726,6 +3758,8 @@ input[type=range]:focus::-ms-fill-upper {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           width: calc(100% / 3);
@@ -3818,6 +3852,8 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   position: relative;
@@ -3863,6 +3899,8 @@ input[type=range]:focus::-ms-fill-upper {
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       position: absolute;
@@ -4168,6 +4206,8 @@ input[type=range]:focus::-ms-fill-upper {
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         border-top: 5px solid transparent;
@@ -4198,6 +4238,8 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   width: 100%;
@@ -4372,6 +4414,8 @@ input[type=range]:focus::-ms-fill-upper {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           z-index: 2;
@@ -4466,6 +4510,8 @@ input[type=range]:focus::-ms-fill-upper {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           position: absolute;
@@ -4505,6 +4551,8 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center; }
   .checkbox-container div, .radio-container div {
@@ -4639,6 +4687,8 @@ input[type=range]:focus::-ms-fill-upper {
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           border-radius: 2px;
@@ -4779,6 +4829,8 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   z-index: 90;
@@ -4797,6 +4849,8 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   -ms-flex-flow: row wrap;

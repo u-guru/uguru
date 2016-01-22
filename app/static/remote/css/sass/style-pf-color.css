@@ -283,6 +283,8 @@
                   flex-direction: row;
                   -webkit-align-items: center;
                   align-items: center;
+                  -webkit-align-content: center;
+                  align-content: center;
                   -webkit-justify-content: center;
                   justify-content: center;
                   padding-left: 7.5px; }
@@ -307,6 +309,8 @@
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         position: absolute;

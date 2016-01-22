@@ -2,12 +2,12 @@
 	<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.hs_mode}" ng-if='desktopMode'>
 		<span data-velocity id="main-logo-container" ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
 		<header data-velocity class="desktop-header">
-			<a class="desktop-header-back" ng-click='goBackToStudentEssayHome()'>
+			<a name='goBackStudentEssay'class="desktop-header-back" ng-click='goBackToStudentEssayHome()'>
 				<svg viewBox="0 0 100 100">
 					<path d="M68,86 L32,50 L68,14"></path>
 				</svg>
 			</a>
-			<a ng-click='goToEssaySignup()' class='desktop-header-next skip-button ng-class:{"show-opacity-impt": user.universities.length}'>Next</a>
+			<a name='goToEssaySignup' ng-click='goToEssaySignup()' class='desktop-header-next skip-button ng-class:{"show-opacity-impt": user.universities.length}'>Next</a>
 		</header>
 		<div class="main default" ng-include="img_base + BASE + 'templates/essay.university.desktop.container.html'"></div>
 	</main>

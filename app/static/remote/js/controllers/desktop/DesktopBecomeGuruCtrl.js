@@ -27,12 +27,13 @@ angular.module('uguru.desktop.controllers')
   'KeyboardService',
   'LoadingService',
   'AnimationService',
+  '$stateParams',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker, AnimationService,
     Category, $ionicSlideBoxDelegate, DeviceService, Utilities, $interval,
-    KeyboardService, LoadingService, AnimationService) {
+    KeyboardService, LoadingService, AnimationService, $stateParams) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
@@ -40,6 +41,25 @@ angular.module('uguru.desktop.controllers')
     var CTA_OPTIONS = {
         duration:0.33,
         extraTransitionDuration:1
+    }
+
+    console.log('starting to detect object');
+    if ($stateParams.universityObj) {
+      console.log('universityObj passed in', $stateParams.universityObj);
+      $scope.university = $scope.universityObj;
+    }
+    if ($scope.root.vars.university && !$stateParams.universityObj) {
+      console.log('root vars passted in ', $scope.root.vars.university);
+      $scope.university = $scope.root.vars.university;
+    }
+
+    $scope.goBackOneLevel = function() {
+      if ($scope.root.vars.university) {
+        var university = $scope.university || $scope.root.vars.university;
+        AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
+      } else {
+        AnimationService.flip('^.home');
+      }
     }
 
     $scope.progress = {width:0};

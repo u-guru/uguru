@@ -447,7 +447,7 @@ angular.module('uguru.util.controllers')
       var resultDict = {
         center:  {latitude: lat, longitude: lng},
         zoom: 5,
-        pan: true,
+        pan: false,
         bounds: usBounds,
         rebuildMarkers: false,
               control: {},
@@ -624,19 +624,26 @@ angular.module('uguru.util.controllers')
 
     $scope.markerEvents = $scope.markerEventsPending;
 
+    var closeHomePageLoader = function() {
+
+
+        bodyLoadingDiv.classList.add('hide');
+
+
+        // document.body.removeChild(bodyLoadingDiv);
+    }
+
     uiGmapIsReady.promise(1).then(function(instances) {
       // @GABRIELLE-NOTEThis staggers them, its a bit janky so its commented
       // $timeout(function() {
       //   placeAllMarkersOnMapInXMillSeconds(5000, $scope.universityMarkersPending);
       // }, 2500);
-
-      // $timeout(function() {
+      $timeout(function() {
+        console.log('ready to close loader');
+        closeHomePageLoader();
+      }, 1000);
         $timeout(function() {
           $scope.universityMarkers = $scope.universityMarkersPending;
-        }, 1000)
-        $timeout(function() {
-
-          // $scope.map.events = {center_changed:onCenterChanged}
         }, 4000);
     });
       //adds X markers every Y seconds

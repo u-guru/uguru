@@ -24,10 +24,11 @@ angular.module('uguru.util.controllers')
   'AnimationService',
   'University',
   'CounterService',
+  'uiGmapIsReady',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
     SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
-    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService) {
+    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService, uiGmapIsReady) {
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
@@ -324,7 +325,6 @@ angular.module('uguru.util.controllers')
       $scope.queryAutocompleteFromSearch = function(query) {
 
         query = $scope.page.dropdowns.location_search.input;
-        console.log('querying', $scope.page.dropdowns.location_search.input)
         if (query && query.length) {
           SearchboxService.queryAutocompleteService($scope.page.dropdowns.location_search.input, $scope, $scope.map.control.getGMap());
         } else {
@@ -348,8 +348,48 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    var initHomePageMap = function(lat, lng) {
+    var onZoomChanged = function(map) {
+      $timeout(function() {
+        console.log($scope.map.zoom);
+      }, 1000)
+    }
+    var lastValidCenter = new google.maps.LatLng(39.8282, -98.5795);
+    var strictBounds = new google.maps.LatLngBounds(
+       new google.maps.LatLng(28.70, -127.50),
+       new google.maps.LatLng(48.85, -55.90)
+     );
+    var onCenterChanged = function(map) {
+      console.log('center has changed');
+      if (strictBounds.contains(map.getCenter())) {
+        // still within valid bounds, so save the last valid position
+        lastValidCenter = map.getCenter();
+        return;
+      }
 
+      $scope.map.control.getGMap().panTo(lastValidCenter);
+
+    }
+
+    $scope.incrementZoom = function() {
+      if ($scope.map.zoom === 5 || $scope.map.zoom === 6) {
+        $scope.map.control.getGMap().setZoom($scope.map.zoom + 1);
+      }
+    }
+
+    $scope.decrementZoom = function() {
+      if ($scope.map.zoom === 6 || $scope.map.zoom === 7) {
+        $scope.map.control.getGMap().setZoom($scope.map.zoom - 1);
+      }
+    }
+
+
+
+    var initHomePageMap = function(lat, lng) {
+      // @GABRIELLE-NOTE
+      // full list of stylers here
+      // https://developers.google.com/maps/documentation/javascript/reference#MapTypeStyleFeatureType
+      // really awesome tool to play around
+      // http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html
       var styleOptions = [
         {
           featureType: 'water',
@@ -367,12 +407,48 @@ angular.module('uguru.util.controllers')
           stylers: [
             { visibility: 'off' }
           ]
-        }
+        },
+        // @GABRIELLE-NOTE, you can also do landscape.natural.terrain, or just landscape
+        {
+          featureType: 'landscape',
+          elementType: 'all',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
+        {
+          featureType: 'poi',
+          elementType: 'all',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
+        {
+          featureType: 'administrative.country',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
+        {
+          featureType: 'administrative.locality',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'}
+          ]
+        },
+
       ]
+      var usBounds = {
+         northEast: {latitude: 48.85, longitude: -55.90},
+         southWest: {latitude: 28.70, longitude: -127.50}
+      }
+
       var resultDict = {
         center:  {latitude: lat, longitude: lng},
         zoom: 5,
         pan: false,
+        bounds: usBounds,
         rebuildMarkers: false,
               control: {},
               options: {
@@ -387,7 +463,7 @@ angular.module('uguru.util.controllers')
                 style:styleOptions,
                 draggable:true,
                 disableDoubleClickZoom:false,
-                zoomControl: true
+                zoomControl: false
               },
               bounds: {},
         };
@@ -418,8 +494,10 @@ angular.module('uguru.util.controllers')
     var mouseOverTimeout = null;
     var lastMousedOverUniversity = null;
     var defaultMouseoverTime = 1000; //milliseconds
-    var showWindow = function() {
-      console.log('showing window!');
+    var showWindow = function(university) {
+      if (university) {
+        $scope.window.university = university;
+      }
       if ($scope.delayedUniversity && $scope.delayedUniversity.id === $scope.window.university.id) {
         $scope.window.university = $scope.delayedUniversity;
         $scope.window.coords = {latitude: $scope.window.university.latitude, longitude: $scope.window.university.longitude};
@@ -452,46 +530,49 @@ angular.module('uguru.util.controllers')
         pictureLabel.src = convertSVGStringIntoDataUri(svgImage);
         return pictureLabel
     }
+
     $scope.universityMarkers = [];
-    $scope.markerEvents = {
-      mouseover: function (gMarker, eventName, model) {
-        console.log('mouseover for ', model.university.name, 'initiated');
-        lastMousedOverUniversity = model.university;
-          // if user mouses over one while another is open
+    $scope.markerEventsPending = {
+      // mouseover: function (gMarker, eventName, model) {
+      //   lastMousedOverUniversity = model.university;
+      //     // if user mouses over one while another is open
 
-          if ($scope.window.show && $scope.window.university.id !== model.university.id) {
-            //another window is already open
-            $scope.delayedUniversity = model.university;
-            $timeout(function() {
-              if (mouseOverTimeout && lastMousedOverUniversity.university.id === $scope.delayedUniversity.id) {
-                $scope.window.university = model.university;
-                $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
-              }
-            }, defaultMouseoverTime)
-            return;
-          } else {
-            $scope.window.university = model.university;
-            $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
-          }
+      //     if ($scope.window.show && $scope.window.university.id !== model.university.id) {
+      //       //another window is already open
+      //       $scope.delayedUniversity = model.university;
+      //       $timeout(function() {
+      //         if (mouseOverTimeout && lastMousedOverUniversity && lastMousedOverUniversity.university && lastMousedOverUniversity.university.id === $scope.delayedUniversity.id) {
+      //           $scope.window.university = model.university;
+      //           $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+      //         }
+      //       }, defaultMouseoverTime)
+      //       return;
+      //     } else {
+      //       $scope.window.university = model.university;
+      //       $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+      //     }
 
-          mouseOverTimeout = setTimeout(showWindow, defaultMouseoverTime);
-      },
-      mouseout: function (gMarker, eventName, model) {
+      //     mouseOverTimeout = setTimeout(showWindow, defaultMouseoverTime);
+      // },
+      // mouseout: function (gMarker, eventName, model) {
 
-          // if no window is shown + a timer is going..
-          if (!$scope.window.show && mouseOverTimeout) {
-              clearTimeout(mouseOverTimeout);
-          }
+      //     // if no window is shown + a timer is going..
+      //     if (!$scope.window.show && mouseOverTimeout) {
+      //         clearTimeout(mouseOverTimeout);
+      //     }
+      // },
+      click: function(gMarker, eventName, model) {
+        $scope.window.university = model.university;
+        $scope.window.show = true;
+        mouseOverTimeout && clearTimeout(mouseOverTimeout);
       }
 
     }
+    $scope.markerEvents = {};
     var centerOfUS = {latitude:39.8282, longitude:-98.5795}
     $scope.map = initHomePageMap(centerOfUS.latitude, centerOfUS.longitude);
     var createRandomMarker = function(i, bounds, university, idKey) {
-      var lat_min = bounds.southwest.latitude,
-        lat_range = bounds.northeast.latitude - lat_min,
-        lng_min = bounds.southwest.longitude,
-        lng_range = bounds.northeast.longitude - lng_min;
+
 
       if (idKey == null) {
         idKey = "id";
@@ -514,22 +595,72 @@ angular.module('uguru.util.controllers')
       return ret;
     };
     $scope.universityMarkers = [];
-
+    $scope.universityMarkersPending = [];
     // Get the bounds from the map once it's loaded
-    $scope.$watch(function() {
-      return $scope.map.bounds;
-    }, function(nv, ov) {
-      // Only need to regenerate once
-      if (!ov.southwest && nv.southwest) {
-        var markers = [];
+    // $scope.$watch(function() {
+    //   return $scope.map.bounds;
+    // }, function(nv, ov) {
+    //   // Only need to regenerate once
+    //   $scope.map.bounds = {northeast: {latitude: 48.85, longitude: -55.90}, southwest: {latitude: 28.70, longitude:127.50}};
+    //   if (!ov.southwest && nv.southwest) {
+
+    //     // console.log('map bounds watcher triggered');
+    //     // staggerXMarkersEveryYSeconds(20, 1000, markers);
+    //   }
+    // }, true);
+
+    var prepareMarkers = function() {
+        // var markers = [];
         for (var i = 0; i < $scope.universities.length; i++) {
-          markers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
+          $scope.universityMarkersPending.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
         }
-        $scope.universityMarkers = markers;
+        // return markers;
+
+    }
+
+    $timeout(function() {
+      prepareMarkers();
+    }, 500)
+
+    $scope.markerEvents = $scope.markerEventsPending;
+
+    var closeHomePageLoader = function() {
+
+
+        bodyLoadingDiv.classList.add('hide');
+
+
+        // document.body.removeChild(bodyLoadingDiv);
+    }
+
+    uiGmapIsReady.promise(1).then(function(instances) {
+      // @GABRIELLE-NOTEThis staggers them, its a bit janky so its commented
+      // $timeout(function() {
+      //   placeAllMarkersOnMapInXMillSeconds(5000, $scope.universityMarkersPending);
+      // }, 2500);
+      $timeout(function() {
+        console.log('ready to close loader');
+        closeHomePageLoader();
+      }, 1000);
+        $timeout(function() {
+          $scope.universityMarkers = $scope.universityMarkersPending;
+        }, 4000);
+    });
+      //adds X markers every Y seconds
+      var placeAllMarkersOnMapInXMillSeconds = function(ms, markerArr) {
+        var markerLength = markerArr.length;
+        var intervalLength = ((ms * 1.0) / markerLength)|0;
+        var i =0
+        console.log('placing', markerLength, '. One every', intervalLength, 'seconds.')
+        var staggerTimeout = setInterval(function() {
+              if (i === markerArr.length) {
+                clearTimeout(intervalLength);
+              }
+              var indexMarker = markerArr[i];
+              $scope.universityMarkers.push(indexMarker);
+              i++;
+        }, intervalLength)
       }
-    }, true);
-
-
       var showDelayedBecomeGuruHeader = function() {
 
 
@@ -562,13 +693,27 @@ angular.module('uguru.util.controllers')
           }
         }
 
+        var initPricingCounters = function() {
+          $timeout(function() {
+            if (!$scope.pricingSidebarAlreadyInitialized) {
+              $scope.pricingSidebarAlreadyInitialized = true;
+              var feeCounter = CounterService.initCounter(document.getElementById('our-fees'), 40, 0, 10, '%');
+              CounterService.startCounter(feeCounter);
+              var pricingCounter = CounterService.initCounter(document.getElementById('students-pay'), 100, 14, 10, '/hr', '$');
+              CounterService.startCounter(pricingCounter);
+              var chargeCounter = CounterService.initCounter(document.getElementById('guru-charge'), 100, 20, 10, '/hr', '&lsaquo;$');
+              CounterService.startCounter(chargeCounter);
+            }
+          }, 1500);
+        }
+
         CTAService.initSingleCTA('#cta-box-academic', '#home-splash', showCTACallback("academic"));
         CTAService.initSingleCTA('#cta-box-baking', '#home-splash', showCTACallback("bakery"));
         CTAService.initSingleCTA('#cta-box-household', '#home-splash', showCTACallback("household"));
         CTAService.initSingleCTA('#cta-box-photography', '#home-splash', showCTACallback("photography"));
         CTAService.initSingleCTA('#cta-box-tech', '#home-splash', showCTACallback("tech"));
         //sidebar
-        CTAService.initSingleCTA('#cta-box-pricing', '#home-splash');
+        CTAService.initSingleCTA('#cta-box-pricing', '#home-splash', initPricingCounters);
         CTAService.initSingleCTA('#cta-box-FAQ', '#home-splash');
         CTAService.initSingleCTA('#cta-box-apply', '#home-splash');
         CTAService.initSingleCTA('#cta-box-team', '#home-splash');

@@ -1,7 +1,7 @@
 <section id="experience-modal" class='full-xy bg-charcoal'>
 	<header>
 		<div class='header-nav'>
-			<a class="header-close cta-modal-close" ng-click="closeGuruExperience()">
+			<a name='exp-close-btn' class="header-close cta-modal-close" ng-click="closeGuruExperience()">
 				<svg viewBox="0 0 100 100">
 					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 				</svg>
@@ -12,7 +12,7 @@
 	</header>
 	<div class='main bg-charcoal'>
 		<div class='p15xy bg-campus-50p'>
-			<input class='input-outline full-x' id='experience-name-input' type="text" ng-model='experience.name' placeholder="Role Title"></input>
+			<input name='exp-title'class='input-outline full-x' id='experience-name-input' type="text" ng-model='experience.name' placeholder="Role Title"></input>
 		</div>
 		<div class='exp-years bg-charcoal relative'>
 			<label>
@@ -20,7 +20,7 @@
 			</label>
 			<!-- BIND -->
 			<!-- change input value from 0-10 -->
-			<input type="range" class='full-x' name="volume" min="0" max="10" value="{{experience.years}}" ng-model='experience.years'>
+			<input name='exp-year'type="range" class='full-x' name="volume" min="0" max="10" value="{{experience.years}}" ng-model='experience.years'>
 			<ul class="ugrid-3 exp-years-label">
 				<li>&lsaquo; 1</li>
 				<li>5</li>
@@ -28,13 +28,13 @@
 			</ul>
 		</div>
 		<div id="exp-input" class='p15xy bg-campus-50p ng-class:{"removable":experience.id}'>
-			<textarea class='input-outline full-x' placeholder='Role Description' ng-model='experience.description'>{{experience.description}}</textarea>
+			<textarea name='exp-descp' class='input-outline full-x' placeholder='Role Description' ng-model='experience.description'>{{experience.description}}</textarea>
 		</div>
-		<button class='bg-slate semibold' id='guru-experience-remove-button' ng-if="experience && experience.id" ng-click='removeGuruExperience(experience, experience_index)'>Remove</button>
+		<button name='remove-btn' class='bg-slate semibold' id='guru-experience-remove-button' ng-if="experience && experience.id" ng-click='removeGuruExperience(experience, experience_index)'>Remove</button>
 
 
 	</div>
-	<button class='bg-campus semibold' ng-if=" !(experience && experience.id)" ng-click='saveGuruExperience()'>Save</button>
-	<button class='bg-campus semibold' ng-if="experience && experience.id" ng-click='saveGuruExperience()'>Update</button>
+	<button name='save-btn' class='bg-campus semibold' ng-if=" !(experience && experience.id)" ng-click='saveGuruExperience()'>Save</button>
+	<button name='update-btn'class='bg-campus semibold' ng-if="experience && experience.id" ng-click='saveGuruExperience()'>Update</button>
 
 </section>

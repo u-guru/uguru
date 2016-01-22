@@ -39,7 +39,7 @@
           </a>
         </li> -->
 
-        <li ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account'>
+        <li name='cards' ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account'>
                   <a class='credit-card-wrapper' ng-click='editPaymentMobile(card)'>
                     <!-- BIND -->
                     <div id="credit-card-visa" class="credit-card cf">
@@ -63,7 +63,7 @@
                 </li>
 
       </ul>
-      <button class='bg-moola semibold absolute bottom-0' ng-click='addCardModal.show()'>Add Card</button>
+      <button name='add_card_modal-btn' class='bg-moola semibold absolute bottom-0' ng-click='addCardModal.show()'>Add Card</button>
     </div>
   </div>
 

@@ -43,18 +43,7 @@ angular.module('uguru.util.controllers')
     $ionicSideMenuDelegate.canDragContent(false);
 
 
-    //dev mode
-    $scope.$on('$ionicView.beforeEnter', function() {
 
-        if (LOCAL && $state.current.name === 'root.desktop-login') {
-          $scope.university = {
-            popular_courses: ["ESPM 165","IAS 115","ECON 119","ANTHRO 139","PSYCH 125","PACS 94","MUSIC 142",
-                "MATH 98", "FILM 50","GEOG 130","CHEM 103","ART 8","GREEK 10","STAT 157","UGBA 103","EPS 3","DUTCH 166","GWS 103",
-                "ISF 61","UGIS 112"],
-            short_name: 'UC Berkeley'
-          }
-        }
-    });
 
     function goGuruMode()
     {
@@ -71,7 +60,9 @@ angular.module('uguru.util.controllers')
       //  }
     }
 
-
+    $scope.showGoBackToUniversityPage = function() {
+      LoadingService.showMsg('Go back to your university page to add more courses', 2000);
+    }
     ngFB.init({appId: '1416375518604557'});
 
     $scope.ngFBlogin = function() {
@@ -440,9 +431,11 @@ angular.module('uguru.util.controllers')
 
                 var failureCallback = function(err) {
                   if (err.status === 401) {
-                    LoadingService.hide();
+                    // LoadingService.hide();
                     $scope.signupForm.password = '';
-                    alert('Another account already exists with this email. Please login with that email or try again.');
+                    // alert('Another account already exists with this email. Please login with that email or try again.');
+                    LoadingService.showMsg('Another account already exists with this email. Please login with that email or try again.', 0, 3500);
+
                   }
                 }
 
@@ -479,19 +472,22 @@ angular.module('uguru.util.controllers')
               type: 'button-positive',
               onTap: function(e) {
                 if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 6) {
-                  alert('Please fill in all fields');
+                  // alert('Please fill in all fields');
+                  LoadingService.showMsg('Please fill in all fields', 0, 3500);
                   return;
                 }
 
                 if ($scope.data.new_password.length < 6) {
-                  alert('Please create a password with at least 6 characters.');
+                  // alert('Please create a password with at least 6 characters.');
+                  LoadingService.showMsg('Please create a password with at least 6 characters.', 0, 3500);
                   return;
                 }
                 else
                 {
                   if ($scope.data.new_password.length < 7)
                   {
-                    alert('Please create a password longer than 6 characters');
+                    // alert('Please create a password longer than 6 characters');
+                    LoadingService.showMsg('Please create a password longer than 6 characters', 0, 3500);
                     return;
                   }
                   else
@@ -504,7 +500,8 @@ angular.module('uguru.util.controllers')
                       }
 
                     var failureCallback = function() {
-                      alert('Incorrect Password - try again?');
+                      // alert('Incorrect Password - try again?');
+                      LoadingService.showMsg('Incorrect Password - try again?', 0, 2500);
                     }
 
                     var payload = {
@@ -539,7 +536,8 @@ angular.module('uguru.util.controllers')
               type: 'button-positive',
               onTap: function(e) {
                 if (!$scope.data.name || $scope.data.name.length < 2) {
-                  alert('Please enter a valid name');
+                  // alert('Please enter a valid name');
+                  LoadingService.showMsg('Please enter a valid name', 0, 3500);
                   return;
                 }
                 $scope.inputPopup.close();

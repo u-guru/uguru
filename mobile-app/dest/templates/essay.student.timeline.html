@@ -13,7 +13,7 @@
             <li class="post-month">
                 <span class="post-icon">{{header.timestamp}}</span>
             </li>
-            <li class="post post-{{deadline.category || 'high-school'}}" ng-repeat='deadline in user.timeline_universities' tabindex>
+            <li name='university_timeline' class="post post-{{deadline.category || 'high-school'}}" ng-repeat='deadline in user.timeline_universities' tabindex>
                 <span class="post-icon">
                     <span class="post-icon-svg"><span ng-include="img_base + 'templates/svg/timeline/' + deadline.category + '.html'"></span></span>
                     <span class="post-icon-title">{{deadline.formatted_category || deadline.category}}</span>

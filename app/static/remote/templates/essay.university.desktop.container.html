@@ -4,7 +4,7 @@
 <div class="university-header hide show ng-class:{'show':!page.toggles.searchMode.active}">
 	<h1>You've added <u>{{user.universities.length}}</u> universities</h1>
 </div>
-<form data-velocity class='hide ng-class:{"show":page.toggles.searchMode.active}'>
+<form name='search-bar' data-velocity class='hide ng-class:{"show":page.toggles.searchMode.active}'>
 	<div class='input-field'>
 		<i class="material-icons prefix">
 			<svg viewBox="0 0 100 100">
@@ -15,7 +15,7 @@
 		ng-model="search_text.university" />
 		<!-- <input id="university-input" type="text" /> -->
 		<label class="ng-class:{'hide': search_text.university.length}" for="university-input">search universities</label>
-		<a class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
+		<a name='university_input-reset' class='side-icon desktop-input-close-icon' ng-click='resetUniversities()' ng-if='search_text.university.trim().length > 0'>
 			<i class='icon ion-close-circled text-white'></i>
 		</a>
 	</div>
@@ -23,7 +23,7 @@
 <div data-velocity class="flex-wrap-center desktop-search-list">
 	<ul class='desktop-card-list'>
 		<!-- -->
-		<li class='hide ng-class:{"show":page.toggles.searchMode.active}' ng-if="universities && universities.length"  ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 8  | orderBy:id track by $index'>
+		<li name='university-list' class='hide ng-class:{"show":page.toggles.searchMode.active}' ng-if="universities && universities.length"  ng-repeat='university in universities | filter:search_text.university:strict |limitTo: 8  | orderBy:id track by $index'>
 			<div ng-if='!university.active' class="fx-fade-down fx-dur-500 fx-ease-back school-card">
 				<svg class="rect" viewBox="0 0 300 175">
 					<rect x="0" y="0" width="300" height="175" fill="none"></rect>
@@ -66,7 +66,7 @@
 				</div>
 			</div>
 		</li>
-		<li class='hide ng-class:{"show":!page.toggles.searchMode.active}' ng-if="universities && universities.length" ng-repeat='university in user.universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
+		<li name='selected_university-list' class='hide ng-class:{"show":!page.toggles.searchMode.active}' ng-if="universities && universities.length" ng-repeat='university in user.universities | filter:search_text.university:strict |limitTo: 8 track by $index'>
 			<div class="school-card">
 				<svg class="rect" viewBox="0 0 300 175">
 					<rect x="0" y="0" width="300" height="175" fill="none"></rect>
@@ -111,9 +111,9 @@
 		</li>
 	</ul>
 	<div class="save-button-container">
-		<button ng-click='page.toggles.searchMode.active = false;' id='desktop-skills-nested-save-button' class="save-button semibold btn-ghost-white hide ng-class:{'show':user.universities.length && page.toggles.searchMode.active}">
+		<button name='add_university_list-btn' ng-click='page.toggles.searchMode.active = false;' id='desktop-skills-nested-save-button' class="save-button semibold btn-ghost-white hide ng-class:{'show':user.universities.length && page.toggles.searchMode.active}">
 			See <span class='weight-700'><u>{{user.universities.length}}</u> added universities</span>
 		</button>
-		<button ng-click='page.toggles.searchMode.active = true;' id='desktop-skills-nested-save-button' class="save-button semibold btn-ghost-white hide ng-class:{'show':user.universities.length && !page.toggles.searchMode.active}">Back to search</button>
+		<button name='back_university_list-btn' ng-click='page.toggles.searchMode.active = true;' id='desktop-skills-nested-save-button' class="save-button semibold btn-ghost-white hide ng-class:{'show':user.universities.length && !page.toggles.searchMode.active}">Back to search</button>
 	</div>
 </div>

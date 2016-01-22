@@ -11,8 +11,6 @@ angular.module('uguru.util.controllers')
 
     $scope.$on('$ionicView.loaded', function() {
 
-
-
       $timeout(function() {
         var feeCounter = CounterService.initCounter(document.getElementById('our-fees'), 40, 0, 10, '%');
         CounterService.startCounter(feeCounter);

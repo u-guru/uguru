@@ -1,6 +1,9 @@
+<a id='cta-desktop-signup-back' ng-click='goBackOneLevel()' class='m20xy absolute top-0 left-0 weight-600 txt-smoke opacity-50'>
+    Back
+</a>
 <div class="desktop-forms-container">
 	<header class="desktop-header hidden">
-		<a class='cta-modal-close close-button desktop-header-next' id='cta-desktop-signup-close'>
+        <a class='cta-modal-close close-button desktop-header-next' id='cta-desktop-signup-close'>
 			<svg viewBox="0 0 100 100">
 				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 			</svg>
@@ -8,7 +11,7 @@
 	</header>
     <section class='flex-wrap-center full-xy'>
     	<div class='full-x'>
-    		<h1 class='hide ng-class: {"show": root.vars.forgotPassword}'>Forgot Password Form</h1>
+    		<h1 class='hide ng-class: {"show": root.vars.forgotPassword}'>Forgot Password</h1>
     		<h1 class='ng-class: {"hide": !root.vars.loginMode || root.vars.forgotPassword}'>Login</h1>
     		<h1 class='hide ng-class: {"show": !root.vars.loginMode && !root.vars.forgotPassword}'>Create an Account!</h1>
     		<form onkeypress="return event.keyCode != 13;">
@@ -34,70 +37,52 @@
     				</a>
     			</div>
     			<!-- radio input for remember me -->
-    			<div class="desktop-login-buttons">
-    				<button ng-click='connectWithFacebook()' class="bg-fb caps ng-class:{'hide':root.vars.forgotPassword}">Login with Facebook</button>
-    				<button id='login-button' class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='root.vars.loginMode' ng-click='loginUser()'>Login</button>
-    				<button class="bg-charcoal caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='root.vars.forgotPassword = false;'>Cancel</button>
-    				<button class="bg-shamrock caps hide ng-class:{'show':root.vars.forgotPassword}" ng-click='attemptToResetPassword()'>Submit</button>
-    				<button class="bg-shamrock caps ng-class:{'hide':root.vars.forgotPassword}" ng-if='!root.vars.loginMode' ng-click='completeSignup()'>Create an Account</button>
+
+    			<div ng-if="!root.vars.loginMode" class="desktop-login-buttons hide ng-class:{'show':!root.vars.forgotPassword}">
+    				<button ng-click='connectWithFacebook()' class="bg-fb">Login with Facebook</button>
+    				<button ng-click='completeSignup()' class="bg-shamrock">Create an Account</button>
     			</div>
+				<div ng-if="root.vars.loginMode" class="desktop-login-buttons hide ng-class:{'show':!root.vars.forgotPassword}">
+					<button ng-click="root.vars.forgotPassword = true;" class="login-links-forgot-pw">Forgot Your Password?</button>
+    				<button ng-click='connectWithFacebook()' class="bg-fb">Login with Facebook</button>
+    				<button ng-click='loginUser()' id='login-button' class="bg-shamrock">Login</button>
+    			</div>
+				<div class="desktop-login-buttons hide ng-class:{'show':root.vars.forgotPassword}">
+					<button ng-click='root.vars.forgotPassword = false;' class="login-links-cancel">Cancel</button>
+    				<button ng-click='attemptToResetPassword()' class="bg-shamrock">Submit</button>
+				</div>
     		</form>
     	</div>
-        <div class='full-x'>
-            <a class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' ng-click="root.vars.forgotPassword = true;">Forgot Your Password?</a>
-            <a class="form-link" ng-click='toggleLoginMode()' ng-show='!root.vars.loginMode && !root.vars.forgotPassword'>Have an account?</a>
-            <a class="form-link" ng-show='root.vars.loginMode && !root.vars.forgotPassword' class='p20xy absolute full-x text-center left-0' ng-click='toggleLoginMode()'>Create an account</a>
-            <!--@GABRIELLE NOTE, please style properly (hacked for now)-->
-            <a style='height:50px; width:50px;' id="splash-footer-top" class="splash-footer-link absolute bottom-0 right-0 m20xy" ng-click='backpackAction()'>
-                <span ng-include="img_base + 'templates/svg/backpack.html'"></span>
-                <svg class='splash-footer-icon ng-class:{"hide":user.student_courses.length}' viewBox="0 0 100 100">
-                    <path d="M14,68 L50,32 L86,68"></path>
-                </svg>
-                <b class='splash-footer-icon ng-class:{"hide":!user.student_courses.length}'>{{user.student_courses.length}}</b>
-            </a>
-        </div>
-        <div ng-controller='CoursesController' ng-if='university' class='full-x bg-shamrock'>
-            <div class='text-center'>
-                <small class='ng-class:{"hide":user.student_courses.length}' >Link <span class='weight-600'>{{university.short_name}}</span> courses to account</small>
-                <small class='ng-class:{"hide":!user.student_courses.length}'><span class='weight-600'>{{user.student_courses.length}}</span> Added <span class='weight-600'>{{university.short_name}}</span> courses</small>
-            </div>
-            <!--@GABRIELLE-NOTE, hidden for now but if you wanted to include it and can keep it simple, feel free to put it back, it should work when you remove the ng-if='false' -->
-            <form ng-if='false'>
-                <div class="input-field large">
-                    <i class="material-icons prefix">
-                        <svg viewBox="0 0 100 100">
-                            <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
-                        </svg>
-                    </i>
-                    <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-model="search_text.course"/>
-                    <label for="request-search-input">
-                        <span ng-show='courses.length'>search {{courses.length}} popular {{university.school_casual_name}} courses</span>
-                        <span ng-hide='courses.length'>search popular {{university.school_casual_name}} courses</span>
-                    </label>
-                    <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
-                        <i class="icon ion-close-circled txt-white"></i>
-                    </a>
-                </div>
-            </form>
-            <ul>
-                <li ng-repeat='course in user.student_courses | limitTo: 8 track by $index' class='hide ng-class:{"show":user.student_courses.length}'>
-                    <a class="border-university" ng-click='addUniversityStudentCourse(course, $index)'>
-                        <div class='bg-smoke txt-charcoal p05xy'>
-                            <span class="course-name txt-charcoal">{{course.short_name}}</span>
-                            <span class="course-title txt-charcoal">{{course.full_name || course.title}}</span>
-                            <i class='icon ion-checkmark txt-charcoal'> </i>
-                        </div>
-                    </a>
-                </li>
-                <li ng-repeat='course in courses |  limitTo: (8 - user.student_courses.length) track by $index'>
-                    <a class="border-university" ng-click='addUniversityStudentCourse(course, $index)'>
-                        <div>
-                            <span class="course-name">{{course.short_name}}</span>
-                            <span class="course-title">{{course.full_name || course.title}}</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
+
     </section>
+</div>
+
+<div class="login-courses-container" ng-if='university'>
+	<h2 class='hide ng-class:{"show":user.student_courses.length}'>Your <span>{{university.short_name}}</span> courses</h2>
+    <h2 class='hide ng-class:{"show":!user.student_courses.length}'>Link <span>{{university.short_name}}</span> courses to your account</h2>
+	<div class="ugrid-2">
+		<div class="login-backpack">
+			<span ng-include="img_base + 'templates/svg/backpack.html'"></span>
+			<b>{{user.student_courses.length}}</b>
+			<a ng-click='showGoBackToUniversityPage()'>+ add more</a>
+		</div>
+		<div class="login-courses" ng-controller='CoursesController'>
+			<ul class='desktop-card-list'>
+                <li ng-repeat='course in user.student_courses |  limitTo: 8 track by $index' class='course-item selected'>
+                    <span class='bg-slate' style='background:#40484B !important;'>
+                        <div>
+                            <span class="course-name txt-white">{{course.short_name}}</span>
+                        </div>
+                    </span>
+                </li>
+				<li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in university.popular_courses |  limitTo: (9 - user.student_courses.length) track by $index'>
+					<span>
+						<div>
+							<span class="course-name">{{course.short_name}}</span>
+						</div>
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>

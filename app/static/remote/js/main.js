@@ -11,8 +11,9 @@ var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
+  BASE_URL = _ipaddress;
+  // REST_URL = "http://localhost:5000";
   // BASE_URL = _ipaddress;
-  REST_URL = "http://localhost:5000"
 
   // REST_URL = 'https://192.168.0.107:5000';
 
@@ -217,7 +218,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.desktop-login', {
     url:'/desktop-login',
     templateUrl: BASE + 'templates/desktop.login.html',
-    controller: 'SignupController'
+    controller: 'AccountPageController',
   }).
   state('root.pricing', {
     url:'/pricing',

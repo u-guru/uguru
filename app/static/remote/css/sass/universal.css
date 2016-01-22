@@ -15,6 +15,8 @@
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     height: 25%;
@@ -53,6 +55,8 @@
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
   width: 100%;
@@ -91,6 +95,8 @@
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         position: absolute;
@@ -326,6 +332,8 @@
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     position: relative;
@@ -502,6 +510,8 @@
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     fill: none;
@@ -542,6 +552,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center; }
     .map-results > li:not(:last-child) {
@@ -624,6 +636,8 @@
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     background: #69B3A5;
@@ -668,6 +682,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       width: 100%;
@@ -687,6 +703,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       font-weight: 600;
@@ -707,6 +725,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       background: #40484B;
@@ -871,6 +891,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center; }
       @media screen and (max-width: 768px) {
@@ -988,6 +1010,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       padding: 15px; }
@@ -1116,6 +1140,8 @@
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             width: 100%;
@@ -1226,6 +1252,8 @@
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     height: calc(70% + 87px); }
@@ -1282,6 +1310,8 @@
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         margin-bottom: 15px;
@@ -1300,6 +1330,8 @@
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           content: counter(li);
@@ -1386,6 +1418,8 @@
               flex-direction: row;
               -webkit-align-items: center;
               align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
               -webkit-justify-content: center;
               justify-content: center; }
               .request-slide.request-confirm .request-content > div > div a.request-edit:hover, .request-slide.request-confirm .request-content > div > div a.request-edit:focus {
@@ -1447,6 +1481,8 @@
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           margin: -7.5px 7.5px 7.5px; }
@@ -1520,6 +1556,8 @@
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           height: 175px;
@@ -1566,6 +1604,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       width: 50px;
@@ -1947,6 +1987,8 @@
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center; }
     .request-essay #request-search .course-list li a:hover, .request-essay #request-search .course-list li a:focus {
@@ -2045,6 +2087,8 @@
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         position: absolute;
@@ -2379,6 +2423,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center; }
     #timeline > header:not(.no-tabs) .timeline-header {
@@ -2398,6 +2444,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center; }
       #timeline > header .timeline-header h1, #timeline > header .timeline-header h2 {
@@ -2433,6 +2481,8 @@
     flex-direction: row;
     -webkit-align-items: center;
     align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
     margin: 60px auto 30px; }
@@ -2451,6 +2501,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       width: 100%;
@@ -2493,6 +2545,8 @@
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         padding: 7.5px;
@@ -2723,6 +2777,8 @@
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           width: 72px;
@@ -3140,6 +3196,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       background: #50A5DD;
@@ -3174,6 +3232,8 @@
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         width: 100%;
@@ -3193,6 +3253,8 @@
           flex-direction: row;
           -webkit-align-items: center;
           align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-justify-content: center;
           justify-content: center;
           position: relative;
@@ -3219,6 +3281,8 @@
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             position: absolute;
@@ -3253,6 +3317,8 @@
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             position: absolute;
@@ -3296,6 +3362,8 @@
         flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
         position: absolute;
@@ -3359,6 +3427,8 @@
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             position: absolute;
@@ -3387,6 +3457,8 @@
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             position: absolute;
@@ -3505,6 +3577,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       position: relative;
@@ -3562,6 +3636,8 @@
       flex-direction: row;
       -webkit-align-items: center;
       align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
       width: 815px;
@@ -3595,6 +3671,8 @@
             flex-direction: row;
             -webkit-align-items: center;
             align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-justify-content: center;
             justify-content: center;
             margin: 15px auto;

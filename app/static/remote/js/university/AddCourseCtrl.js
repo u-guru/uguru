@@ -48,7 +48,7 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.addUniversityStudentCourse = function(course, $index) {
-	      var course = $scope.courses.splice($index, 1)[0];
+	      var course = $scope.university.popular_courses.splice($index, 1)[0];
 	      $scope.user.student_courses.push(course);
 	      console.log(course, $index, $scope.user.student_courses);
 	      $timeout(function(){

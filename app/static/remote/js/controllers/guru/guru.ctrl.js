@@ -199,7 +199,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
             $scope.launchCtaDict[box_elem.id] = function() {
                 var modal_elem = document.querySelector('#' + modal_elem_id);
-
                 var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
                     $timeout(function() {
@@ -576,7 +575,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 			//desktop version but not loggedd in
 			$timeout(function() {
-
 				if ($scope.desktopMode) {
 					appOnboardingObj = $localstorage.getObject('appOnboarding');
 					if (!appOnboardingObj) {
@@ -595,7 +593,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 					//   LoadingService.hide();
 					// }, 2000)
 				}
-
 			}, 250)
 
 
