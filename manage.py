@@ -262,6 +262,9 @@ def createRelationshipWithGuru(user, guru):
     db_session.commit()
 
 
+
+
+
 def getRelationshipFromGuru(user, guru):
     for _relationship in user.guru_relationships:
         if guru.id == _relationship.guru.id:
@@ -805,6 +808,40 @@ if arg in ['delete_categories', '-dc']:
 
 if arg in ['update_categories', '-uc']:
     update_categories()
+
+if arg in ['university_report', '-ur']:
+    from app.static.data.course_utils import *
+    from app.models import University
+    # university = University.query.get(2307)
+    # print "parsing %s" % university.name
+    # print countValidCourses(university.popular_courses)
+    universities = University.query.all()
+    universities = [university for university in universities if university.us_news_ranking and university.us_news_ranking < 220]
+    benchmark = 200
+    # from pprint import pprint
+    stats = runUniversityBenchmark(universities, benchmark)
+    num_unresolved = len(stats['below_popular_courses'])
+    num_resolved = 0
+    print "resolving popular courses for %s universities" % len(stats['below_popular_courses'])
+    for uni in stats['below_popular_courses']:
+        uni = University.query.get(uni[0])
+        before_popular = uni.num_popular_courses
+        after_resolve = resolveUniversityToPopular(uni)
+        if ((after_resolve + before_popular) > 100):
+            num_resolved += 1
+        print uni.name, uni.num_popular_courses, after_resolve
+        print "committing..."
+        db_session.commit()
+        uni.num_popular_courses = len(uni.popular_courses)
+        db_session.commit()
+        print "committed"
+    print "%s out of %s unresolved, %s remaining" % (num_resolved, num_unresolved, num_unresolved - num_resolved)
+    # updateLookupDict(university)
+    # pprint(stats)
+    # for u in University.query.all():
+    #     if u.us_news_ranking and u.us_news_ranking < 220:
+    #         resolveUniversity(u)
+
 
 if arg in ['generate_categories_json', '-gc']:
     generate_categories_json()
