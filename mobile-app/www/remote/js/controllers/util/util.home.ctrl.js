@@ -829,7 +829,6 @@ angular.module('uguru.util.controllers')
 		}
 
 
-
 		var calculateAndInitiateCounters = function() {
 			var totalUniversities = $scope.universities.length;
 			var totalCourses = calcTotalCourses($scope.universities);
@@ -839,8 +838,6 @@ angular.module('uguru.util.controllers')
 			//@samir - todo, implement when scroll down to the section
 			initiateCounters();
 		}
-
-
 
 
 		$scope.$on('$ionicView.afterEnter', function() {
@@ -893,8 +890,6 @@ angular.module('uguru.util.controllers')
 		$scope.$on('$ionicView.enter', function() {
 			shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
 
-
-
 			$timeout(function() {
 				if (!$scope.mainPageSetup) {
 					// calcAllMainSectionContainers();
@@ -917,6 +912,5 @@ angular.module('uguru.util.controllers')
 		});
 
 	}
-
 
 ])
