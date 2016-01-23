@@ -7,7 +7,9 @@ angular.module('uguru.util.controllers')
   '$stateParams',
   'Restangular',
   'AnimationService',
-  function($scope, $state, $stateParams, Restangular, AnimationService){
+  '$localstorage',
+  '$timeout',
+  function($scope, $state, $stateParams, Restangular, AnimationService, $localstorage, $timeout){
 
 
       $scope.goBackOneLevel = function() {
@@ -25,6 +27,15 @@ angular.module('uguru.util.controllers')
       if ($stateParams.universityObj && !$scope.root.vars.university) {
         $scope.university = $stateParams.universityObj;
       }
+      $timeout(function() {
+        var localCacheUniversity = $localstorage.getObject('university');
+        if (localCacheUniversity) {
+
+          $scope.university = localCacheUniversity;
+          $scope.root.vars.university = localCacheUniversity
+        }
+      });
+
       //dev mode
     // $scope.$on('$ionicView.beforeEnter', function() {
 
