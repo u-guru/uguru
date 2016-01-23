@@ -578,10 +578,19 @@ ul#guru-courses-user-profile {
 	opacity: 1 !important;
 	//omg genius --> http://stackoverflow.com/questions/15196630/hide-text-node-in-element-but-not-children
 	visibility:collapse;
+	// display:none !important;
 	svg {
 		visibility:visible !important;
+		// visibility:hidden !important;
 	}
 }
+
+.show-markers {
+	.university-svg-icon {
+		display:block !important;
+	}
+}
+
 #cta-modal-FAQ .cta-modal-close {
 	@include flex-right-center;
 }

@@ -34,10 +34,11 @@ angular.module('uguru.util.controllers')
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
       ];
       var scrollDuration= 500;
-      var shouldShowBecomeGuruHeader = true;
+      var shouldShowBecomeGuruHeader = false;
       var shouldRenderMap = true;
       var mainPageContainer = document.querySelector('#home-splash')
       $ionicSideMenuDelegate.canDragContent(false);
+      $scope.markerEvents = {};
 
       $scope.highlighted_item;
       $scope.courses = [];
@@ -68,6 +69,8 @@ angular.module('uguru.util.controllers')
 
       $scope.selectUniversityAndTransition = function(university, $event, $index) {
         var pageLoader = document.querySelector('cta-modal-page-loader');
+        $scope.root.vars.university = university;
+        $localstorage.setObject('university', university);
         AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
       }
 
@@ -533,6 +536,13 @@ angular.module('uguru.util.controllers')
 
     $scope.universityMarkers = [];
     $scope.markerEventsPending = {
+      click: function(gMarker, eventName, model) {
+        $scope.window.university = model.university;
+        $scope.window.show = true;
+        $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+        mouseOverTimeout && clearTimeout(mouseOverTimeout);
+      }
+    }
       // mouseover: function (gMarker, eventName, model) {
       //   lastMousedOverUniversity = model.university;
       //     // if user mouses over one while another is open
@@ -561,14 +571,6 @@ angular.module('uguru.util.controllers')
       //         clearTimeout(mouseOverTimeout);
       //     }
       // },
-      click: function(gMarker, eventName, model) {
-        $scope.window.university = model.university;
-        $scope.window.show = true;
-        mouseOverTimeout && clearTimeout(mouseOverTimeout);
-      }
-
-    }
-    $scope.markerEvents = {};
     var centerOfUS = {latitude:39.8282, longitude:-98.5795}
     $scope.map = initHomePageMap(centerOfUS.latitude, centerOfUS.longitude);
     var createRandomMarker = function(i, bounds, university, idKey) {
@@ -612,7 +614,7 @@ angular.module('uguru.util.controllers')
     var prepareMarkers = function() {
         // var markers = [];
         for (var i = 0; i < $scope.universities.length; i++) {
-          $scope.universityMarkersPending.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
+          $scope.universityMarkers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
         }
         // return markers;
 
@@ -620,9 +622,8 @@ angular.module('uguru.util.controllers')
 
     $timeout(function() {
       prepareMarkers();
-    }, 500)
-
-    $scope.markerEvents = $scope.markerEventsPending;
+      // $scope.universityMarkers = $scope.universityMarkersPending;
+    })
 
     var closeHomePageLoader = function() {
 
@@ -643,7 +644,7 @@ angular.module('uguru.util.controllers')
         closeHomePageLoader();
       }, 1000);
         $timeout(function() {
-          $scope.universityMarkers = $scope.universityMarkersPending;
+          $scope.markerEvents = $scope.markerEventsPending;
         }, 4000);
     });
       //adds X markers every Y seconds
@@ -776,41 +777,43 @@ angular.module('uguru.util.controllers')
       })
 
       $scope.$on('$ionicView.loaded', function() {
-         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
 
-            $timeout(function() {
-              if (!$scope.mainPageSetup) {
-              // calcAllMainSectionContainers();
-              $scope.mainPageSetup = true;
-              $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
-              // initUniversityMap();
-              initProfileCTAS();
-              calculateAndInitiateCounters();
-              initUniversityTypeWriter();
-              runMobileOnlyFunctions();
-              }
-            }, 5000)
+          if (!$scope.mainPageSetup) {
+            $scope.mainPageSetup = true;
+            shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+            calculateAndInitiateCounters();
+            initUniversityTypeWriter();
+
+              $timeout(function() {
+                if (!$scope.mainPageSetup) {
+                  initProfileCTAS();
+                // calcAllMainSectionContainers();
+                $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
+                // initUniversityMap();
+                runMobileOnlyFunctions();
+                }
+              }, 5000)
+          }
 
       });
 
       $scope.$on('$ionicView.enter', function() {
-         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+         if (!$scope.mainPageSetup) {
+          $scope.mainPageSetup = true;
+            shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+            initUniversityTypeWriter();
+            calculateAndInitiateCounters();
+             $timeout(function() {
+              if (!$scope.mainPageSetup) {
+              // calcAllMainSectionContainers();
+                $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
+                // initUniversityMap();
+                initProfileCTAS();
+                runMobileOnlyFunctions();
+              }
 
-
-
-           $timeout(function() {
-            if (!$scope.mainPageSetup) {
-            // calcAllMainSectionContainers();
-              $scope.mainPageSetup = true;
-              $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
-              // initUniversityMap();
-              initProfileCTAS();
-              calculateAndInitiateCounters();
-              initUniversityTypeWriter();
-              runMobileOnlyFunctions();
-            }
-
-           }, 5000)
+             }, 5000)
+         }
 
       });
 

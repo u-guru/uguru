@@ -53,6 +53,14 @@ angular.module('uguru.desktop.controllers')
       $scope.university = $scope.root.vars.university;
     }
 
+    $timeout(function() {
+      var localCacheUniversity = $localstorage.getObject('university');
+      if (localCacheUniversity) {
+        $scope.university = localCacheUniversity;
+        $scope.root.vars.university = localCacheUniversity
+      }
+    });
+
     $scope.goBackOneLevel = function() {
       if ($scope.root.vars.university) {
         var university = $scope.university || $scope.root.vars.university;

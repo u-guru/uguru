@@ -6,7 +6,7 @@
 
 
 <!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
-	<ion-view class='bg-smoke' cache-view="false">
+	<div class='bg-smoke' cache-view="false">
 		<main id='home-splash' class='splash-landing hs-view full-xy'>
             <!-- START Home Page CTAs -->
 
@@ -209,7 +209,7 @@
 						</ul>
                     </div>
                     <!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-                    <div style='height: 600px!important' class='splash-map relative zoom-{{map.zoom}}'>
+                    <div style='height: 600px!important; width:calc(100%);' class='splash-map relative zoom-{{map.zoom}}'>
                         <div class='bg-shamrock txt-white  absolute top-0 bottom-0  high-z-index ugrid-2 inline' style='width:100px; height:30px;'>
                             <a class='p20xy' ng-click='incrementZoom()'> + </a>
                             <a class='p20xy weight-900' ng-click='decrementZoom()'> - </a>
@@ -582,6 +582,6 @@
 		</main>
 		<!-- </ion-content> -->
         <div id='last-div-main' onload="lastDivLoaded()"> </div>
-	</ion-view>
+	</div>
 	<!-- </ion-scroll> -->
 <!-- </ion-content> -->
