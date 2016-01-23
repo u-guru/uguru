@@ -27,7 +27,7 @@
 
             <!-- END Home Page CTAS -->
 
-			<header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
+			<header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}' style="display:none!important;">
 				<div>
 					<h1>Help {{university.short_name}} students ace courses like <u>CS10</u>, <u>CS61C</u>
 					<span class='weight-900'> &amp; earn side cash</span>!</h1>
@@ -40,7 +40,7 @@
 				</a>
 			</header>
 
-			<header class='splash-header ng-class:{"active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}'>
+			<header class='splash-header ng-class:{"active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}' style="display:none!important;">
                 <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
 
                 <div class="ugrid-3">
@@ -73,7 +73,7 @@
 				</div>
 			</header>
 
-            <section id='splash-home' class='splash-hero relative ng-class:{"active": becomeGuruHeaderActive}' style="background-image: url('{{page.css.bg_banner}}');">
+            <!-- <section id='splash-home' class='splash-hero relative ng-class:{"active": becomeGuruHeaderActive}' style="background-image: url('{{page.css.bg_banner}}');">
                 <a id="splash-footer-support" class="splash-footer-link" ng-click='launchSupportOverlay()'>
 					<span ng-include="img_base + 'templates/svg/support.html'"></span>
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
@@ -143,14 +143,14 @@
                         </div>
 					</div>
 				</footer>
-            </section>
+            </section> -->
 
 			<section id='splash-university' class='splash-school-search'>
                 <header>
                     <h1>Find Your University</h1>
                 </header>
                 <div class="main" ng-controller="AddUniversityCtrl">
-                    <div>
+                    <div style="display:none!important;">
                         <div>
 							<form>
 	                            <div class="input-field large">

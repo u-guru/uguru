@@ -2447,3 +2447,47 @@
 	0% { @include opacity(0); }
 	100% { @include opacity(1); }
 }
+
+
+
+// MAP
+.university-svg-icon {
+	@include opacity-important(1);
+	// http://stackoverflow.com/questions/15196630/hide-text-node-in-element-but-not-children
+	visibility: collapse;
+	svg {
+		visibility: visible!important;
+	}
+}
+.show-markers {
+	.university-svg-icon {
+		display: block!important;
+	}
+}
+.zoom-5 {
+	.university-svg-icon {
+		svg {
+			width: 36px;
+			height: auto;
+			text {
+				display: none;
+			}
+		}
+	}
+}
+.zoom-6 {
+	.university-svg-icon {
+		svg {
+			width: 48px;
+			height: auto;
+		}
+	}
+}
+.zoom-7 {
+	.university-svg-icon {
+		svg {
+			width: 64px;
+			height: auto;
+		}
+	}
+}

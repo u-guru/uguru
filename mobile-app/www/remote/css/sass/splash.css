@@ -3264,3 +3264,36 @@
     opacity: 1;
   }
 }
+
+.university-svg-icon {
+  filter: alpha(opacity=100) !important;
+  opacity: 1 !important;
+  visibility: collapse;
+}
+
+.university-svg-icon svg {
+  visibility: visible !important;
+}
+
+.show-markers .university-svg-icon {
+  display: block !important;
+}
+
+.zoom-5 .university-svg-icon svg {
+  width: 36px;
+  height: auto;
+}
+
+.zoom-5 .university-svg-icon svg text {
+  display: none;
+}
+
+.zoom-6 .university-svg-icon svg {
+  width: 48px;
+  height: auto;
+}
+
+.zoom-7 .university-svg-icon svg {
+  width: 64px;
+  height: auto;
+}
