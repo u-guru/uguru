@@ -474,15 +474,6 @@ ul#guru-courses-user-profile {
     transform: rotate(0deg);
     transform-origin: 50% 85%;
     animation-timing-function: ease-in-out; } }
-.university-svg-icon {
-  opacity: 1 !important;
-  visibility: collapse; }
-  .university-svg-icon svg {
-    visibility: visible !important; }
-
-.show-markers .university-svg-icon {
-  display: block !important; }
-
 #cta-modal-FAQ .cta-modal-close {
   -webkit-flex-direction: row;
   flex-direction: row;

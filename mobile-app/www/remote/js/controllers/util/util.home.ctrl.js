@@ -429,9 +429,9 @@ angular.module('uguru.util.controllers')
           featureType: 'water',
           elementType: 'geometry',
           stylers: [
-            { hue: '#F1F1F1' },
-            { saturation: -100 },
-            { lightness: 60 },
+            { hue: '#50A5DD' },
+            { saturation: -50 },
+            { lightness: 0 },
             { visibility: 'on' }
           ]
         },
@@ -623,11 +623,6 @@ angular.module('uguru.util.controllers')
     $scope.infoWindow = {visible: false, coords:{latitude:null, longitude:null}, university:null};
 
 
-    // $scope.window = {university: null, show:false, coords:null, closeWindow:closeMarkerWindow, showWindow: showMarkerWindow};
-    $scope.onMarkerClick = function(marker, eventName, model) {
-        model.show = !model.show;
-        console.log('this was clicked');
-    };
 
 
 
@@ -641,7 +636,7 @@ angular.module('uguru.util.controllers')
     }
 
     uiGmapIsReady.promise(1).then(function(instances) {
-      // @GABRIELLE-NOTEThis staggers them, its a bit janky so its commented
+      // @GABRIELLE-NOTE This staggers them, its a bit janky so its commented
       // $timeout(function() {
       //   placeAllMarkersOnMapInXMillSeconds(5000, $scope.universityMarkersPending);
       // }, 2500);
