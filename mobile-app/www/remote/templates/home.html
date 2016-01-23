@@ -1,4 +1,4 @@
-<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view> -->
+<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>  -->
 
 
 <!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
@@ -50,7 +50,7 @@
 	                <a name='login-scroll' class="splash-nav-link" ng-click='goToSignup()' ng-if='!user.id'>Login</a>
 					<hr/>
 				</div>
-				
+
 				<div class="right">
 					<a name='sidebar' class="splash-burger" ng-click="toggleSidebar()">
 	                    <svg viewBox="0 0 100 100">
@@ -216,29 +216,61 @@
                             <a class='p20xy' ng-click='incrementZoom()'> + </a>
                             <a class='p20xy weight-900' ng-click='decrementZoom()'> - </a>
                         </div>
-                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom"  pan="map.pan" options="map.options">
+                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" control="map.control" zoom="map.zoom"  pan="map.pan" options="map.options">
+
+                            <!-- <ui-gmap-window  show="map.window.show" coords="map.window.model" options="map.window.options" closeclick="map.window.closeClick()">
+                                <div ng-non-bindable="">test</div>
+                            </ui-gmap-window> -->
+
+                            <ui-gmap-window show="map.window.show" closeClick="closeMarkerWindow()" coords="map.window.coords">
+                                <div class='university-label'>
+                                    <header style="background-image: url('{{window.university.banner_url}}')!important;">
+                                        <!-- {{university.svg_url || university.logo_url}} -->
+                                        <div style="background-color: {{window.university.school_color_dark}}!important"></div>
+                                        <h1>{{map.window.university.name}}</h1>
+                                    </header>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <h2>Courses</h2>
+                                                <span>12k</span>
+                                            </li>
+                                            <li>
+                                                <h2>Gurus</h2>
+                                                <span>725</span>
+                                            </li>
+                                            <li>
+                                                <h2>Students</h2>
+                                                <span>12k</span>
+                                            </li>
+                                        </ul>
+                                        <button style="background-color: {{window.university.school_color_dark}};">Go to School</button>
+                                    </div>
+                                </div>
+                            </ui-gmap-window>
+
 
                             <ui-gmap-markers
-                            models="universityMarkers"
+                            models="map.markers"
                             coords="'self'"
                             icon="'icon'"
+                            control="map.markerControl"
                             options="'options'"
-                            fit="true"
-                            click="showMarkerWindow"
+                            events="map.markersEvents"
                             >
+
                             </ui-gmap-markers>
-                            <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->
-                            <ui-gmap-window show="window.show" closeClick="closeMarkerWindow()" coords="window.coords">
+
+                            <!-- <ui-gmap-window show="infoWindow.visible" options="info" coords="infoWindow.coords" closeClick="closeMarkerWindow()">
                                 <div>
                                     <div class='p20xy flex-wrap-center full-x'>
                                         <div class='full-x'>
-                                            <!-- <img style='height:30px; width:30px;' src='{{university.svg_url || university.logo_url}}'> -->
                                         </div>
                                         <div class=='weight-700 full-x'>
-                                            {{window.university.name}}
+                                            {{infoWindow.university.name}}
                                         </div>
                                         <small class='full-x'>
-                                            {{window.university.city}}, {{university.state}}
+                                            {{infoWindow.university.city}}, {{infoWindow.university.state}}
                                         </small>
                                         <small class='full-x' style='font-size:10px;'>
                                             {{window.university.latitude}}, {{university.longitude}}
@@ -246,7 +278,12 @@
 
                                     </div>
                                 </div>
-                            </ui-gmap-window>
+                            </ui-gmap-window> -->
+
+
+
+                            <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->
+
                         </ui-gmap-google-map>
                     </div>
                     <div class="splash-map-stats">
@@ -587,4 +624,4 @@
         <div id='last-div-main' onload="lastDivLoaded()"> </div>
 	</div>
 	<!-- </ion-scroll> -->
-<!-- </ion-content> -->
+<!-- </ion-content>
