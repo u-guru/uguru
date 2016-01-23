@@ -222,11 +222,11 @@
                             icon="'icon'"
                             options="'options'"
                             fit="true"
-                            events="markerEvents"
+                            click="showMarkerWindow"
                             >
                             </ui-gmap-markers>
                             <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->
-                            <ui-gmap-window show="window.show" closeClick="window.close()" coords="window.coords">
+                            <ui-gmap-window show="window.show" closeClick="closeMarkerWindow()" coords="window.coords">
                                 <div>
                                     <div class='p20xy flex-wrap-center full-x'>
                                         <div class='full-x'>
