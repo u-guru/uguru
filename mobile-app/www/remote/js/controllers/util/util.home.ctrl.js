@@ -398,9 +398,9 @@ angular.module('uguru.util.controllers')
           featureType: 'water',
           elementType: 'geometry',
           stylers: [
-            { hue: '#F1F1F1' },
-            { saturation: -100 },
-            { lightness: 60 },
+            { hue: '#50A5DD' },
+            { saturation: -50 },
+            { lightness: 0 },
             { visibility: 'on' }
           ]
         },
@@ -512,11 +512,9 @@ angular.module('uguru.util.controllers')
     }
     var closeWindow = function() {
       $scope.window.show = false;
-      mouseOverTimeout = null;
-
     }
 
-    $scope.window = {university: null, show:false, close:closeWindow};
+    $scope.window = {university: null, show:false};
 
 
     var createUniversityMarkerLabelImg = function(tiny_name, school_color_light, school_color_dark) {
@@ -577,10 +575,8 @@ angular.module('uguru.util.controllers')
         latitude: university.latitude,
         longitude: university.longitude,
         icon: getInvisibleIconPath(),
-        options: {labelClass:'university-svg-icon', labelContent:"data:image/svg+xml,<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + university.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + university.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"},
-
-        // labelContent: ''
-        // labelContent: "",
+        options: {labelClass:'university-svg-icon',
+        labelContent:"data:image/svg+xml,<svg viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='pole' fill='#757575'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='" + university.school_color_light + "'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + university.school_tiny_name + "</tspan></text></svg>"},
         university: university
       };
       ret[idKey] = i;
@@ -588,6 +584,18 @@ angular.module('uguru.util.controllers')
     };
     $scope.universityMarkers = [];
     $scope.universityMarkersPending = [];
+
+    $scope.showMarkerWindow = function(gMarker, event_name, model) {
+      console.log('show ')
+      $scope.window.university = model.university;
+      $scope.window.show = true;
+      $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+    }
+
+    $scope.closeMarkerWindow = function() {
+      console.log('closing window');
+      $scope.window.show = false;
+    }
     // Get the bounds from the map once it's loaded
     // $scope.$watch(function() {
     //   return $scope.map.bounds;
@@ -603,14 +611,12 @@ angular.module('uguru.util.controllers')
 
     var prepareMarkers = function() {
         // var markers = [];
-        $scope.markerEvents = {
-          click: function(gMarker, eventName, model) {
-              $scope.window.university = model.university;
-              $scope.window.show = true;
-              $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
-              mouseOverTimeout && clearTimeout(mouseOverTimeout);
-          }
-        }
+        // $scope.markerEvents = {
+        //   click: function(gMarker, eventName, model) {
+        //       alert('this was clicked');
+
+        //   }
+        // }
         for (var i = 0; i < $scope.universities.length; i++) {
           $scope.universityMarkers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
         }
@@ -632,7 +638,7 @@ angular.module('uguru.util.controllers')
     }
 
     uiGmapIsReady.promise(1).then(function(instances) {
-      // @GABRIELLE-NOTEThis staggers them, its a bit janky so its commented
+      // @GABRIELLE-NOTE This staggers them, its a bit janky so its commented
       // $timeout(function() {
       //   placeAllMarkersOnMapInXMillSeconds(5000, $scope.universityMarkersPending);
       // }, 2500);
