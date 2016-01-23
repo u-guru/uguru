@@ -533,16 +533,6 @@ angular.module('uguru.util.controllers')
         pictureLabel.src = convertSVGStringIntoDataUri(svgImage);
         return pictureLabel
     }
-
-    $scope.universityMarkers = [];
-    $scope.markerEventsPending = {
-      click: function(gMarker, eventName, model) {
-        $scope.window.university = model.university;
-        $scope.window.show = true;
-        $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
-        mouseOverTimeout && clearTimeout(mouseOverTimeout);
-      }
-    }
       // mouseover: function (gMarker, eventName, model) {
       //   lastMousedOverUniversity = model.university;
       //     // if user mouses over one while another is open
@@ -613,6 +603,14 @@ angular.module('uguru.util.controllers')
 
     var prepareMarkers = function() {
         // var markers = [];
+        $scope.markerEvents = {
+          click: function(gMarker, eventName, model) {
+              $scope.window.university = model.university;
+              $scope.window.show = true;
+              $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
+              mouseOverTimeout && clearTimeout(mouseOverTimeout);
+          }
+        }
         for (var i = 0; i < $scope.universities.length; i++) {
           $scope.universityMarkers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
         }
@@ -622,8 +620,7 @@ angular.module('uguru.util.controllers')
 
     $timeout(function() {
       prepareMarkers();
-      // $scope.universityMarkers = $scope.universityMarkersPending;
-    })
+    });
 
     var closeHomePageLoader = function() {
 
@@ -643,9 +640,6 @@ angular.module('uguru.util.controllers')
         console.log('ready to close loader');
         closeHomePageLoader();
       }, 1000);
-        $timeout(function() {
-          $scope.markerEvents = $scope.markerEventsPending;
-        }, 4000);
     });
       //adds X markers every Y seconds
       var placeAllMarkersOnMapInXMillSeconds = function(ms, markerArr) {
