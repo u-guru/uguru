@@ -12,7 +12,7 @@
 			<h1 class='hide ng-class:{"show": !root.vars.loginMode}'>Join us!</h1>
 			<h1 class='hide ng-class:{"show":root.vars.loginMode && !root.vars.forgotPassword}'>Welcome back!</h1>
 			<h1 class='hide ng-class:{"show":root.vars.loginMode && root.vars.forgotPassword}'>Forgot Your Password?</h1>
-			<h2 ng-if='university'>Selected <span>{{user.student_courses.length}}</span> {{university.short_name}} Courses</h2>
+			<h2  ng-if='user.student_courses.length'>Selected <span>{{user.student_courses.length}}</span> {{university.short_name}} Courses</h2>
 			<ul class="switch ugrid-2">
 				<li>
 					<a ng-click='root.vars.loginMode = true;' class='ng-class:{"selected": root.vars.loginMode}'>Login</a>

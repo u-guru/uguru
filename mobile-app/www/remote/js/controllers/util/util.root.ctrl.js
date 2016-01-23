@@ -287,6 +287,7 @@ angular.module('uguru.util.controllers')
 
                   $ionicHistory.clearCache();
                   $ionicHistory.clearHistory();
+                  var tempUniversity = $scope.user.university;
                   $timeout(function() {
                         $scope.user = User.getLocal();
                         $scope.user.majors = [];
@@ -301,7 +302,16 @@ angular.module('uguru.util.controllers')
 
                         LoadingService.showSuccess('You have been successfully logged out!', 2500);
                         $timeout(function() {
-                            AnimationService.flip('^.home');
+                            if (!$scope.desktopMode) {
+                                $scope.toggleRightSideMenu();
+                            }
+                            if (!tempUniversity) {
+                                AnimationService.flip('^.home');
+                            } else {
+                                $scope.root.vars.university = university;
+                                $localstorage.setObject('university', university);
+                                AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
+                            }
                         }, 1000)
 
                   }, 1000);

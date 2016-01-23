@@ -277,6 +277,7 @@ angular.module('uguru.util.controllers')
           {name:"Home", ngClickFunc:topPageFunc},
           {name:null, href:"#",
             sublinks:[
+                {name:'Login', ngClickFunc:$scope.goToSignup},
                 {name:'How it works', ngClickFunc:howItWorksFunc},
                 {name:"Browse", ngClickFunc:browseFunc},
                 {name:"Become a Guru", ngClickFunc:becomeGuruFunc}
@@ -719,8 +720,9 @@ angular.module('uguru.util.controllers')
       }
 
       var runMobileOnlyFunctions = function() {
-
-        !$scope.desktopMode && initiateAllPeels();
+        $timeout(function() {
+          !$scope.desktopMode && initiateAllPeels();
+        }, 2500);
         !$scope.desktopMode && initMobileModals();
 
       }
@@ -781,6 +783,7 @@ angular.module('uguru.util.controllers')
             shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
             calculateAndInitiateCounters();
             initUniversityTypeWriter();
+            runMobileOnlyFunctions();
 
               $timeout(function() {
                 if (!$scope.mainPageSetup) {
@@ -801,13 +804,14 @@ angular.module('uguru.util.controllers')
             shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
             initUniversityTypeWriter();
             calculateAndInitiateCounters();
+            runMobileOnlyFunctions();
              $timeout(function() {
               if (!$scope.mainPageSetup) {
               // calcAllMainSectionContainers();
                 $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
                 // initUniversityMap();
-                initProfileCTAS();
-                runMobileOnlyFunctions();
+
+
               }
 
              }, 5000)

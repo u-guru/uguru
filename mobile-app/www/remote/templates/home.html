@@ -201,7 +201,7 @@
                         </ul>
 						<ul class="splash-school-mobile">
 							<li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 8 track by $index'>
-								<a style="border-color: {{university.school_color_dark}}; color: {{university.school_color_dark}}" ng-click='addUniversityStudentCourse(course, $index)'>
+								<a style="border-color: {{university.school_color_dark}}; color: {{university.school_color_dark}}" ng-click='selectUniversityAndTransition(university, $event, $index)'>
         							<div>
                                         <span class="school-name">{{university.short_name || university.name}}</span>
                                     </div>
