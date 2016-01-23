@@ -35,8 +35,13 @@
 			z-index: 2;
 		}
 		> header {
+			@include flex;
+			@include flex-center-vertical;
 			height: 50px;
 			background: $shamrock;
+			.splash-logo {
+				margin-left: 5px;
+			}
 			.close-button {
 				height: 100%;
 				position: absolute;
@@ -140,10 +145,17 @@
 		.splash-sidebar {
 			width: calc(100% / 3);
 			> header {
-				height: 80px;
+				height: 70px;
 				background: none;
+				.splash-logo {
+					margin-left: 15px;
+				}
 				.close-button {
-					padding: 15px;
+					@include center-y;
+					right: 15px;
+					padding: 0;
+					width: 42px;
+					height: 42px;
 					&:hover, &:focus {
 						svg {
 							path {
@@ -164,11 +176,9 @@
 
 	// HEADERS
 	.splash-logo {
-		@include center-y;
 		display: block!important;
-		left: 0;
 		height: 100%;
-		padding: 15px 15px 5px;
+		max-height: 42px;
 		svg {
 			display: block;
 			height: 100%;
@@ -201,28 +211,18 @@
 				}
 			}
 		}
-		@media screen and (max-width: 680px) {
-			padding: 0 0 5px!important;
-			margin-top: 5px;
-			margin-left: 5px;
-			max-height: 40px;
-		}
 	}
 	> header {
 		@include transition(.15s ease-in-out);
 		@include flex;
+		@include flex-center-vertical;
 		@include flex-wrap;
-		-webkit-justify-content: flex-end;
-		justify-content: flex-end;
-		width: 100%;
 		position: fixed;
 		z-index: 99;
 		top: 0;
 		right: 0;
-		padding: 15px;
-		@media screen and (max-width: 680px) {
-			padding: 0;
-		}
+		width: 100%;
+		
 		&:before {
 			@include opacity(.9);
 			content: "";
@@ -234,42 +234,38 @@
 			height: 100%;
 			background: $slate;
 		}
-		a:not(.header-close) {
-			display: none;
+	}
+	.splash-header {
+		height: 50px;
+		.splash-nav-link {
 			padding: 15px;
 			font-size: 20px;
 			font-weight: 600;
-			span {
-				display: none;
-			}
-			@media screen and (min-width: 860px) {
-				display: block;
-				span {
-					display: inline;
+			text-align: center;
+			&.highlight {
+				background: rgba(white,.7);
+				color: $shamrock;
+				&:hover, &:focus {
+					background: white;
+					color: $lake;
 				}
 			}
-			&.active {
-				display: block;
-				background: rgba(white,.85);
-				color: $shamrock;
-			}
-			&:hover, &:focus {
-				background: white;
-				color: $lake;
-			}
-			&.splash-burger {
-				@include center-x;
-				display: block;
+		}
+		.right {
+			height: 100%;
+			.splash-nav-link {
+				@include flex;
+				@include flex-center-vertical;
 				position: absolute;
 				top: 0;
+				right: 0;
 				height: 100%;
-				@media screen and (max-width: 680px) {
-					padding: 5px;
-				}
-				@media screen and (min-width: 860px) {
-					@include translate-x(0);
-					left: 179px;
-				}
+			}
+			.splash-burger {
+				@include center-xy;
+				height: 100%;
+				max-width: 42px;
+				max-height: 42px;
 				svg {
 					height: 100%;
 					width: auto;
@@ -288,6 +284,145 @@
 							stroke: $slate;
 						}
 					}
+				}
+			}
+		}
+		hr {
+			@include transition(.15s ease-in-out);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			margin: 0;
+			width: 160px;
+			height: 0;
+			border-top: 5px solid rgba(white,.7);
+		}
+		div[class*="ugrid-"] {
+			display: none;
+			position: relative;
+			height: 100%;
+			a {
+				&:nth-child(1) {
+					&.active {
+						~ hr {
+							@include translate-x(0);
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							@include translate-x(165px);
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							@include translate-x(330px);
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							@include translate-x(495px);
+							border-color: white;
+						}
+					}
+				}
+				
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(0);
+							border-color: rgba(white,.7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(165px);
+							border-color: rgba(white,.7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(330px);
+							border-color: rgba(white,.7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(495px);
+							border-color: rgba(white,.7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+			}
+		}
+		.splash-logo {
+			height: 50px!important;
+			margin: 5px;
+		}
+	}
+	@media screen and (min-width: 860px) {
+		.splash-header {
+			height: 70px;
+			.splash-nav-link {
+				padding: 25px 15px;
+				&:not(.highlight) {
+					width: 165px;
+				}
+			}
+			div[class*="ugrid-"] {
+				@include flex;
+			}
+			.splash-logo {
+				height: 100%!important;
+				margin: 0 15px!important;
+			}
+			.right {
+				@include flex;
+				@include flex-center-vertical;
+				@include center-y;
+				right: 0;
+				.splash-burger {
+					@include reset-pos;
+					margin: 0 15px 0 0!important;
+				}
+				.splash-nav-link {
+					@include reset-pos;
+					right: auto;
+					height: auto;
 				}
 			}
 		}
@@ -761,9 +896,19 @@
 				padding-top: 45px;
 				background: $slate;
 				ul {
+					position: relative;
 					max-width: 600px;
 					margin: 0 auto;
 					padding: 0;
+					> div {
+						display: none;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 50%;
+						height: 100%;
+						background: red;
+					}
 					li {
 						padding: 0;
 						a {
@@ -2034,8 +2179,7 @@
 					li {
 						position: relative;
 						padding: 15px;
-						h1,
-						p {
+						h1, p {
 							width: 100%;
 						}
 						h1 {
@@ -2071,16 +2215,6 @@
 				}
 			}
 		}
-		.splash-logo {
-			display: block!important;
-			margin: 0!important;
-			height: 100%;
-    		padding: 0 15px;
-			svg {
-				height: 100%;
-				padding: 10px 0 5px;
-			}
-		}
 		> .splash-toast {
 			a.header-close {
 				svg {
@@ -2094,22 +2228,6 @@
 			&:before {
 				@include opacity(.75);
 				background: $shamrock;
-			}
-		}
-		@media screen and (min-width: 680px) {
-			.splash-logo {
-				height: 72px;
-				svg {
-					height: 72px;
-					padding: 20px 0 15px;
-				}
-			}
-		}
-		@media screen and (min-width: 860px) {
-			> .splash-header {
-				.splash-burger {
-					left: 162px!important;
-				}
 			}
 		}
 		> section {
