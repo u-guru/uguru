@@ -34,7 +34,7 @@ angular.module('uguru.util.controllers')
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
       ];
       var scrollDuration= 500;
-      var shouldShowBecomeGuruHeader = true;
+      var shouldShowBecomeGuruHeader = false;
       var shouldRenderMap = true;
       var mainPageContainer = document.querySelector('#home-splash')
       $ionicSideMenuDelegate.canDragContent(false);
@@ -614,7 +614,7 @@ angular.module('uguru.util.controllers')
     var prepareMarkers = function() {
         // var markers = [];
         for (var i = 0; i < $scope.universities.length; i++) {
-          $scope.universityMarkersPending.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
+          $scope.universityMarkers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
         }
         // return markers;
 
@@ -622,7 +622,8 @@ angular.module('uguru.util.controllers')
 
     $timeout(function() {
       prepareMarkers();
-    }, 500)
+      // $scope.universityMarkers = $scope.universityMarkersPending;
+    })
 
     var closeHomePageLoader = function() {
 
@@ -643,7 +644,6 @@ angular.module('uguru.util.controllers')
         closeHomePageLoader();
       }, 1000);
         $timeout(function() {
-          $scope.universityMarkers = $scope.universityMarkersPending;
           $scope.markerEvents = $scope.markerEventsPending;
         }, 4000);
     });
@@ -777,41 +777,43 @@ angular.module('uguru.util.controllers')
       })
 
       $scope.$on('$ionicView.loaded', function() {
-         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
 
-            $timeout(function() {
-              if (!$scope.mainPageSetup) {
-              // calcAllMainSectionContainers();
-              $scope.mainPageSetup = true;
-              $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
-              // initUniversityMap();
-              initProfileCTAS();
-              calculateAndInitiateCounters();
-              initUniversityTypeWriter();
-              runMobileOnlyFunctions();
-              }
-            }, 5000)
+          if (!$scope.mainPageSetup) {
+            $scope.mainPageSetup = true;
+            shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+            calculateAndInitiateCounters();
+            initUniversityTypeWriter();
+
+              $timeout(function() {
+                if (!$scope.mainPageSetup) {
+                  initProfileCTAS();
+                // calcAllMainSectionContainers();
+                $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
+                // initUniversityMap();
+                runMobileOnlyFunctions();
+                }
+              }, 5000)
+          }
 
       });
 
       $scope.$on('$ionicView.enter', function() {
-         shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+         if (!$scope.mainPageSetup) {
+          $scope.mainPageSetup = true;
+            shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+            initUniversityTypeWriter();
+            calculateAndInitiateCounters();
+             $timeout(function() {
+              if (!$scope.mainPageSetup) {
+              // calcAllMainSectionContainers();
+                $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
+                // initUniversityMap();
+                initProfileCTAS();
+                runMobileOnlyFunctions();
+              }
 
-
-
-           $timeout(function() {
-            if (!$scope.mainPageSetup) {
-            // calcAllMainSectionContainers();
-              $scope.mainPageSetup = true;
-              $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
-              // initUniversityMap();
-              initProfileCTAS();
-              calculateAndInitiateCounters();
-              initUniversityTypeWriter();
-              runMobileOnlyFunctions();
-            }
-
-           }, 5000)
+             }, 5000)
+         }
 
       });
 
