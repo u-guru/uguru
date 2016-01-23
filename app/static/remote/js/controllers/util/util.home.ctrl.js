@@ -39,13 +39,13 @@ angular.module('uguru.util.controllers')
       var mainPageContainer = document.querySelector('#home-splash')
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.markerEvents = {};
-
       $scope.highlighted_item;
       $scope.courses = [];
       $scope.activeBrowseTabIndex = 1;
       $scope.activeTabIndex = 0;
       $scope.university = {}
       $scope.search_text = {university:''};
+      $scope.rebuildAll = false;
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
       $scope.page.sidebar = {show:false};
@@ -180,6 +180,8 @@ angular.module('uguru.util.controllers')
         $scope.how_it_works.bottom_half[2].hide = false;
       }
 
+
+
       var initiateAllPeels = function() {
 
         for (var i = 0; i < 6; i++) {
@@ -275,6 +277,7 @@ angular.module('uguru.util.controllers')
           {name:"Home", ngClickFunc:topPageFunc},
           {name:null, href:"#",
             sublinks:[
+                {name:'Login', ngClickFunc:$scope.goToSignup},
                 {name:'How it works', ngClickFunc:howItWorksFunc},
                 {name:"Browse", ngClickFunc:browseFunc},
                 {name:"Become a Guru", ngClickFunc:becomeGuruFunc}
@@ -385,7 +388,36 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    var createRandomMarker = function(i, bounds, university, idKey) {
 
+
+      if (idKey == null) {
+        idKey = "id";
+      }
+      var pictureLabel = document.createElement("img");
+      var universityName = university.school_tiny_name;
+      var svgImage = "data:image/svg+xml," +  encodeURIComponent("<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + university.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + university.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>");
+      pictureLabel.src = svgImage;
+      var ret = {
+        latitude: university.latitude,
+        longitude: university.longitude,
+        id: i,
+        icon: getInvisibleIconPath(),
+        options: {
+          labelClass:'university-svg-icon',
+          labelContent:"data:image/svg+xml,<svg viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + university.school_color_light + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + university.school_tiny_name + "</tspan></text></svg>"
+        },
+        showInfoWindow: function(gMarker, event_name, model) {
+          console.log('show');
+          $scope.infoWindow.university = model.university;
+          $scope.infoWindow.coords = {latitude:model.university.latitude, longitude:model.university.longitude};
+          $scope.infoWindow.visible = !$scope.infoWindow.visible;
+        },
+        university: university
+      };
+      ret[idKey] = i;
+      return ret;
+    };
 
     var initHomePageMap = function(lat, lng) {
       // @GABRIELLE-NOTE
@@ -398,9 +430,9 @@ angular.module('uguru.util.controllers')
           featureType: 'water',
           elementType: 'geometry',
           stylers: [
-            { hue: '#F1F1F1' },
-            { saturation: -100 },
-            { lightness: 60 },
+            { hue: '#50A5DD' },
+            { saturation: -50 },
+            { lightness: 0 },
             { visibility: 'on' }
           ]
         },
@@ -446,16 +478,61 @@ angular.module('uguru.util.controllers')
          northEast: {latitude: 48.85, longitude: -55.90},
          southWest: {latitude: 28.70, longitude: -127.50}
       }
+      var prepareMarkers = function() {
+        var markers = [];
+        for (var i = 0; i < $scope.universities.length; i++) {
+          markers.push(createRandomMarker(i, {}, $scope.universities[i]))
+        }
+        return markers;
+      }
 
       var resultDict = {
         center:  {latitude: lat, longitude: lng},
         zoom: 5,
         pan: false,
+        markersEvents: {
+          click: function(marker, eventName, model, arguments) {
+                console.log('shit is clicked', model);
+                $scope.map.window.coords = {latitude: model.university.latitude, longitude:model.university.longitude};
+                $scope.map.window.university = model.university;
+                $scope.map.window.model = model;
+                $scope.map.window.show = true;
+          }
+        },
+        markerControl: {},
+        markers: prepareMarkers(),
+        window: {
+            marker: {},
+            show: false,
+            closeClick: function() {
+                $scope.map.window.show = false;
+                console.log($scope.map.control.gMap)
+                console.log($scope.map.markerControl.getPlurals());
+                $scope.map.markersEvents = {
+                      click: function(marker, eventName, model, arguments) {
+                            var elem = document.querySelector('.gm-style-iw');
+                            children = elem.parentElement.childNodes;
+                            for (var i = 0; i < children.length; i++) {
+                                var indexChild = children[i];
+                                if (indexChild !== elem) {
+                                    indexChild.style.display = "none"
+                                }
+                            }
+                            $scope.map.window.model = model;
+                            $scope.map.window.show = true;
+                      }
+                }
+                $timeout(function() {
+                  $scope.map.window.show = true;
+                }, 3000);
+            },
+            options: {} // define when map is ready
+        },
         bounds: usBounds,
-        rebuildMarkers: false,
               control: {},
               options: {
                 streetViewControl:false,
+                scrollwheel:false,
                 panControl:false,
                 zoomControl:false,
                 minZoom: 5,
@@ -494,29 +571,9 @@ angular.module('uguru.util.controllers')
       return result;
     }
 
-    var mouseOverTimeout = null;
-    var lastMousedOverUniversity = null;
-    var defaultMouseoverTime = 1000; //milliseconds
-    var showWindow = function(university) {
-      if (university) {
-        $scope.window.university = university;
-      }
-      if ($scope.delayedUniversity && $scope.delayedUniversity.id === $scope.window.university.id) {
-        $scope.window.university = $scope.delayedUniversity;
-        $scope.window.coords = {latitude: $scope.window.university.latitude, longitude: $scope.window.university.longitude};
-        $scope.delayedUniversity = null;
-      }
-      $scope.delayedUniversity = null;
-      $scope.window.show = true;
-      clearTimeout(mouseOverTimeout);
-    }
-    var closeWindow = function() {
-      $scope.window.show = false;
-      mouseOverTimeout = null;
+    $scope.closeWindow = function() {
 
     }
-
-    $scope.window = {university: null, show:false, close:closeWindow};
 
 
     var createUniversityMarkerLabelImg = function(tiny_name, school_color_light, school_color_dark) {
@@ -532,16 +589,6 @@ angular.module('uguru.util.controllers')
         var pennantPaths = [];
         pictureLabel.src = convertSVGStringIntoDataUri(svgImage);
         return pictureLabel
-    }
-
-    $scope.universityMarkers = [];
-    $scope.markerEventsPending = {
-      click: function(gMarker, eventName, model) {
-        $scope.window.university = model.university;
-        $scope.window.show = true;
-        $scope.window.coords = {latitude:model.university.latitude, longitude: model.university.longitude};
-        mouseOverTimeout && clearTimeout(mouseOverTimeout);
-      }
     }
       // mouseover: function (gMarker, eventName, model) {
       //   lastMousedOverUniversity = model.university;
@@ -572,58 +619,13 @@ angular.module('uguru.util.controllers')
       //     }
       // },
     var centerOfUS = {latitude:39.8282, longitude:-98.5795}
-    $scope.map = initHomePageMap(centerOfUS.latitude, centerOfUS.longitude);
-    var createRandomMarker = function(i, bounds, university, idKey) {
-
-
-      if (idKey == null) {
-        idKey = "id";
-      }
-      var pictureLabel = document.createElement("img");
-      var universityName = university.school_tiny_name;
-      var svgImage = "data:image/svg+xml," +  encodeURIComponent("<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + university.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + university.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>");
-      pictureLabel.src = svgImage;
-      var ret = {
-        latitude: university.latitude,
-        longitude: university.longitude,
-        icon: getInvisibleIconPath(),
-        options: {labelClass:'university-svg-icon', labelContent:"data:image/svg+xml,<svg viewBox='0 0 73 41' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M71.7272013,15.1343641 L63.071575,20.5 L72.2393802,25.9924931 L0,41 L1.42108547e-14,0 L71.7272013,15.1343641 L71.7272013,15.1343641 Z' id='flag' opacity='0.9' fill='" + university.school_color_dark +"'></path><path d='M0,0 L0,41 L6.261,39.7 L6.261,1.321 L0,0 Z' id='border' fill='" + university.school_color_light +"'></path><text font-family='Source Sans Pro' font-size='16' font-weight='600' line-spacing='16' fill='" + university.school_color_light +"'><tspan x='8' y='26'>" + universityName + "</tspan></text></svg>"},
-
-        // labelContent: ''
-        // labelContent: "",
-        university: university
-      };
-      ret[idKey] = i;
-      return ret;
-    };
     $scope.universityMarkers = [];
-    $scope.universityMarkersPending = [];
-    // Get the bounds from the map once it's loaded
-    // $scope.$watch(function() {
-    //   return $scope.map.bounds;
-    // }, function(nv, ov) {
-    //   // Only need to regenerate once
-    //   $scope.map.bounds = {northeast: {latitude: 48.85, longitude: -55.90}, southwest: {latitude: 28.70, longitude:127.50}};
-    //   if (!ov.southwest && nv.southwest) {
+    $scope.map = initHomePageMap(centerOfUS.latitude, centerOfUS.longitude);
+    $scope.infoWindow = {visible: false, coords:{latitude:null, longitude:null}, university:null};
 
-    //     // console.log('map bounds watcher triggered');
-    //     // staggerXMarkersEveryYSeconds(20, 1000, markers);
-    //   }
-    // }, true);
 
-    var prepareMarkers = function() {
-        // var markers = [];
-        for (var i = 0; i < $scope.universities.length; i++) {
-          $scope.universityMarkers.push(createRandomMarker(i, $scope.map.bounds, $scope.universities[i]))
-        }
-        // return markers;
 
-    }
 
-    $timeout(function() {
-      prepareMarkers();
-      // $scope.universityMarkers = $scope.universityMarkersPending;
-    })
 
     var closeHomePageLoader = function() {
 
@@ -635,7 +637,7 @@ angular.module('uguru.util.controllers')
     }
 
     uiGmapIsReady.promise(1).then(function(instances) {
-      // @GABRIELLE-NOTEThis staggers them, its a bit janky so its commented
+      // @GABRIELLE-NOTE This staggers them, its a bit janky so its commented
       // $timeout(function() {
       //   placeAllMarkersOnMapInXMillSeconds(5000, $scope.universityMarkersPending);
       // }, 2500);
@@ -643,9 +645,6 @@ angular.module('uguru.util.controllers')
         console.log('ready to close loader');
         closeHomePageLoader();
       }, 1000);
-        $timeout(function() {
-          $scope.markerEvents = $scope.markerEventsPending;
-        }, 4000);
     });
       //adds X markers every Y seconds
       var placeAllMarkersOnMapInXMillSeconds = function(ms, markerArr) {
@@ -721,8 +720,9 @@ angular.module('uguru.util.controllers')
       }
 
       var runMobileOnlyFunctions = function() {
-
-        !$scope.desktopMode && initiateAllPeels();
+        $timeout(function() {
+          !$scope.desktopMode && initiateAllPeels();
+        }, 2500);
         !$scope.desktopMode && initMobileModals();
 
       }
@@ -783,6 +783,7 @@ angular.module('uguru.util.controllers')
             shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
             calculateAndInitiateCounters();
             initUniversityTypeWriter();
+            runMobileOnlyFunctions();
 
               $timeout(function() {
                 if (!$scope.mainPageSetup) {
@@ -803,13 +804,14 @@ angular.module('uguru.util.controllers')
             shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
             initUniversityTypeWriter();
             calculateAndInitiateCounters();
+            runMobileOnlyFunctions();
              $timeout(function() {
               if (!$scope.mainPageSetup) {
               // calcAllMainSectionContainers();
                 $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
                 // initUniversityMap();
-                initProfileCTAS();
-                runMobileOnlyFunctions();
+
+
               }
 
              }, 5000)
@@ -818,6 +820,5 @@ angular.module('uguru.util.controllers')
       });
 
     }
-
 
 ])

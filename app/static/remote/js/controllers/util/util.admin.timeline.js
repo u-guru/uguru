@@ -110,6 +110,54 @@ angular.module('uguru.util.controllers')
 			{name: 'First Time Experience + Tutorials'},
 			{name: 'Custom Courses + Universities'},
 		];
+		// To resolve
+		// -analytics + marketing
+		// -empty state for all collections
+		//
+		// use cases
+		// 1. Student can select university & create an account
+		// 2. Student can go to student dashboard and modify
+		//       - settings
+		//       - Their courses
+		//       - create a request & activate their account
+		//       - intro (student
+		//       - next steps
+		// 3. Guru can become a guru
+		//       - setup their profile
+		//       - create many shops
+		//       - swap to student mode and remember last session
+		//       - settings
+		//       - become a guru
+		// 4. Guru can receive requests from students
+		// 5. Student can receive requests from gurus
+		//       - accept
+		//       - reject
+		//       - cancel
+		// 6. Enhanced messaging
+		// 7. Ratings
+		// 8. Continue Future Communications
+		//       - Direct billing
+		//       - Location sharing
+		//       - student files
+		//       - transaction history
+		// 9. Student & Guru shops
+
+		// Icebox
+		//
+		// GPA App
+		// Mobile Support APp
+		// GPA Promote
+		// HS Support
+		// Parent Support
+		// Access 2.0
+		// Component centric tutorials
+		// Data management
+		// Interns + applications
+		// Guru OH
+		// Detailed FAQ + Docs
+		// Detailed Custom courses + universities
+
+
 
 		// {"PLANNING Figure out format for the week + push it": false},
 				// {"PLANNING + Project specs: saturday-logo, whack wednesday, login/signup/fb, independent project": false},
