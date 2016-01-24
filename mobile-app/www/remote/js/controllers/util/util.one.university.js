@@ -225,6 +225,7 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.root.vars.university = $scope.university;
+        $localstorage.setObject('university', $scope.university);
 
         if ($scope.desktopMode) {
           if ($scope.university) {
