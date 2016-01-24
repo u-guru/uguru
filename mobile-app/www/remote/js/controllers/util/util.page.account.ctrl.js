@@ -9,8 +9,12 @@ angular.module('uguru.util.controllers')
   'AnimationService',
   '$localstorage',
   '$timeout',
-  function($scope, $state, $stateParams, Restangular, AnimationService, $localstorage, $timeout){
+  'University',
+  function($scope, $state, $stateParams, Restangular, AnimationService, $localstorage, $timeout, University){
 
+    if (!$scope.courses) {
+      $scope.courses = [];
+    }
 
       $scope.goBackOneLevel = function() {
         if ($scope.root.vars.university) {
@@ -32,9 +36,23 @@ angular.module('uguru.util.controllers')
         if (localCacheUniversity) {
 
           $scope.university = localCacheUniversity;
-          $scope.root.vars.university = localCacheUniversity
+          $scope.root.vars.university = localCacheUniversity;
+          console.log('getting courses');
+          loadUniversityCourses($scope.university.id);
         }
       });
+
+      var loadUniversityCourses = function(university_id) {
+        if (!$scope.courses.length) {
+          var loadingCourseCallback = function(scope, courses) {
+            console.log('courses have loaded', courses.length);
+            $scope.university.popular_courses = courses;
+          }
+          University.getPopularCourses(university_id, $scope, loadingCourseCallback);
+        }
+      }
+
+
 
       //dev mode
     // $scope.$on('$ionicView.beforeEnter', function() {
