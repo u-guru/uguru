@@ -25,10 +25,11 @@ angular.module('uguru.util.controllers')
   'University',
   'CounterService',
   'uiGmapIsReady',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate,
     LoadingService, $timeout, ScrollService, uiGmapGoogleMapApi,
     SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
-    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService, uiGmapIsReady) {
+    $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService, uiGmapIsReady, $ionicSlideBoxDelegate) {
 
       $scope.componentList = [
         {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
@@ -36,7 +37,8 @@ angular.module('uguru.util.controllers')
       var scrollDuration= 500;
       var shouldShowBecomeGuruHeader = false;
       var shouldRenderMap = true;
-      var mainPageContainer = document.querySelector('#home-splash')
+      var mainPageContainer = document.querySelector('#home-splash');
+
       $ionicSideMenuDelegate.canDragContent(false);
       $scope.markerEvents = {};
       $scope.highlighted_item;
@@ -49,7 +51,7 @@ angular.module('uguru.util.controllers')
       $scope.profile = {public_mode: true};
       $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
       $scope.page.sidebar = {show:false};
-      $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
+      $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}};
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
       $scope.sampleProfiles = ContentService.sampleProfiles;
@@ -618,10 +620,10 @@ angular.module('uguru.util.controllers')
       //         clearTimeout(mouseOverTimeout);
       //     }
       // },
-    var centerOfUS = {latitude:39.8282, longitude:-98.5795}
-    $scope.universityMarkers = [];
-    $scope.map = initHomePageMap(centerOfUS.latitude, centerOfUS.longitude);
-    $scope.infoWindow = {visible: false, coords:{latitude:null, longitude:null}, university:null};
+    // var centerOfUS = {latitude:39.8282, longitude:-98.5795}
+    // $scope.universityMarkers = [];
+    // $scope.map = initHomePageMap(centerOfUS.latitude, centerOfUS.longitude);
+    // $scope.infoWindow = {visible: false, coords:{latitude:null, longitude:null}, university:null};
 
 
 
@@ -687,6 +689,18 @@ angular.module('uguru.util.controllers')
       }
 
       var initProfileCTAS = function() {
+
+        var academicCTABoxElem = document.getElementById('cta-box-academic');
+        console.log(academicCTABoxElem);
+        if (!academicCTABoxElem) {
+          console.log('checking for categories again in 1 second');
+          setTimeout(function() {
+            initProfileCTAS();
+          }, 1000)
+          return;
+        }
+
+
         var showCTACallback = function(category) {
           return function() {
             $scope.user = $scope.sampleProfiles[category];
@@ -707,7 +721,16 @@ angular.module('uguru.util.controllers')
           }, 1500);
         }
 
-        CTAService.initSingleCTA('#cta-box-academic', '#home-splash', showCTACallback("academic"));
+
+
+        var result = CTAService.initSingleCTA('#cta-box-academic', '#home-splash', showCTACallback("academic"));
+        if (result === false) {
+          $timeout(function() {
+            console.log('trying again in 1000 ms');
+            initProfileCTAS();
+          }, 1000)
+          return;
+        }
         CTAService.initSingleCTA('#cta-box-baking', '#home-splash', showCTACallback("bakery"));
         CTAService.initSingleCTA('#cta-box-household', '#home-splash', showCTACallback("household"));
         CTAService.initSingleCTA('#cta-box-photography', '#home-splash', showCTACallback("photography"));
@@ -719,13 +742,7 @@ angular.module('uguru.util.controllers')
         CTAService.initSingleCTA('#cta-box-team', '#home-splash');
       }
 
-      var runMobileOnlyFunctions = function() {
-        $timeout(function() {
-          !$scope.desktopMode && initiateAllPeels();
-        }, 2500);
-        !$scope.desktopMode && initMobileModals();
 
-      }
 
       var initiateCounters = function() {
 
@@ -759,7 +776,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-
+      $scope.initProfileCTAS = initProfileCTAS;
 
       $scope.$on('$ionicView.afterEnter', function() {
 
@@ -770,53 +787,43 @@ angular.module('uguru.util.controllers')
           "become-guru": {func:null}
         }
 
+        initProfileCTAS();
+
         $timeout(function() {
 
           ScrollService.initArrWaypoints(waypointDict, "home-splash");
         }, 5000)
       })
 
-      $scope.$on('$ionicView.loaded', function() {
+      $scope.hiwSlideChanged = function($index) {
+        $ionicSlideBoxDelegate.$getByHandle('hiw-slidebox').update();
+        if ($index === 5) {
+          $timeout(function() {
+            $ionicSlideBoxDelegate.$getByHandle('hiw-slidebox').slide(0, 250);
+            // $ionicSlideBoxDelegate.$getByHandle('hiw-slidebox').next();
+          }, 2500)
+        }
+      }
 
-          if (!$scope.mainPageSetup) {
-            $scope.mainPageSetup = true;
-            shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
-            calculateAndInitiateCounters();
-            initUniversityTypeWriter();
-            runMobileOnlyFunctions();
+      $scope.bgSlideChanged = function($index) {
+        $ionicSlideBoxDelegate.$getByHandle('hiw-slidebox').update();
+        if ($index === 5) {
+          $timeout(function() {
+            $ionicSlideBoxDelegate.$getByHandle('hiw-slidebox').slide(0, 250);
+            // $ionicSlideBoxDelegate.$getByHandle('hiw-slidebox').next();
+          }, 2500)
+        }
+      }
 
-              $timeout(function() {
-                if (!$scope.mainPageSetup) {
-                  initProfileCTAS();
-                // calcAllMainSectionContainers();
-                $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
-                // initUniversityMap();
-                runMobileOnlyFunctions();
-                }
-              }, 5000)
-          }
-
-      });
 
       $scope.$on('$ionicView.enter', function() {
-         if (!$scope.mainPageSetup) {
-          $scope.mainPageSetup = true;
-            shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
-            initUniversityTypeWriter();
-            calculateAndInitiateCounters();
-            runMobileOnlyFunctions();
-             $timeout(function() {
-              if (!$scope.mainPageSetup) {
-              // calcAllMainSectionContainers();
-                $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}}
-                // initUniversityMap();
-
-
-              }
-
-             }, 5000)
-         }
-
+         $timeout(function() {
+            $ionicSlideBoxDelegate.update();
+          }, 5000)
+          shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+          initUniversityTypeWriter();
+          calculateAndInitiateCounters();
+          !$scope.desktopMode && initMobileModals();
       });
 
     }

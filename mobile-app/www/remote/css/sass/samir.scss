@@ -590,3 +590,25 @@ ul#guru-courses-user-profile {
 .gm-style-iw + div {
   display: none;
 }
+
+
+@media screen and (max-width: 768px) {
+	#how-it-works, #become-guru {
+		height:calc(100%);
+		header {
+			height:50px;
+		}
+		.main {
+			height:calc(100% - 50px - 36px);
+		}
+		footer {
+			width:100%;
+			bottom:0;
+			left:0;
+			position:absolute;
+		}
+	}
+	#become-guru .slider-pager .slider-pager-page {
+		color:white;
+	}
+}
