@@ -1,12 +1,8 @@
-<!--1. Read all @gabrielle comments-->
-<!--2. Please create fixed support icon && I can link it-->
-<!--3. Please format the pricing with the template content (for context)-->
-
-<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view> -->
+<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>  -->
 
 
 <!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
-	<ion-view class='bg-smoke' cache-view="false">
+	<div class='bg-smoke' cache-view="false">
 		<main id='home-splash' class='splash-landing hs-view full-xy'>
             <!-- START Home Page CTAs -->
 
@@ -45,22 +41,28 @@
 			</header>
 
 			<header class='splash-header ng-class:{"active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}'>
-                <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-title.html'"></a>
-                <a name = 'sidebar' class="splash-burger" ng-click="toggleSidebar()">
-                    <svg viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="36"></circle>
-                        <path d="M31,35.5 L69,35.5"></path>
-                        <path d="M31,50.5 L69,50.5"></path>
-                        <path d="M31,65.5 L69,65.5"></path>
-                    </svg>
-                </a>
+                <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
 
-                <a name= 'how-scroll' ng-click='scrollToSection("#how-it-works")'>How It Works</a>
-                <a name= 'browse-scroll' ng-click='scrollToSection("#splash-browse")'>Browse</a>
-                <a name= 'become-scroll' ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
-                <a name= 'login-scroll' ng-click='goToSignup()' ng-if='!user.id'>Login</a>
-                <a class="active txt-university ng-class:{'hide':!user.id && !user.first_name}" ng-click='goToStudentHome()'>My Dashboard</a>
-                <a name= 'start-scroll' class="active txt-university ng-class:{'hide':user.id}" ng-click='scrollToSection("#splash-university")'>Get Started</a>
+                <div class="ugrid-3">
+					<a name='how-scroll' class="active splash-nav-link" ng-click='scrollToSection("#how-it-works")'>How It Works</a>
+	                <a name='browse-scroll' class="splash-nav-link" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
+	                <a name='become-scroll' class="splash-nav-link" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
+	                <a name='login-scroll' class="splash-nav-link" ng-click='goToSignup()' ng-if='!user.id'>Login</a>
+					<hr/>
+				</div>
+
+				<div class="right">
+					<a name='sidebar' class="splash-burger" ng-click="toggleSidebar()">
+	                    <svg viewBox="0 0 100 100">
+	                        <circle cx="50" cy="50" r="36"></circle>
+	                        <path d="M31,35.5 L69,35.5"></path>
+	                        <path d="M31,50.5 L69,50.5"></path>
+	                        <path d="M31,65.5 L69,65.5"></path>
+	                    </svg>
+	                </a>
+					<a class="splash-nav-link highlight ng-class:{'hide':!user.id && !user.first_name}" ng-click='goToStudentHome()'>Dashboard</a>
+	                <a name='start-scroll' class="splash-nav-link highlight ng-class:{'hide':user.id}" ng-click='scrollToSection("#splash-university")'>Start</a>
+				</div>
 
 				<div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
 					<a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
@@ -199,7 +201,7 @@
                         </ul>
 						<ul class="splash-school-mobile">
 							<li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 8 track by $index'>
-								<a style="border-color: {{university.school_color_dark}}; color: {{university.school_color_dark}}" ng-click='addUniversityStudentCourse(course, $index)'>
+								<a style="border-color: {{university.school_color_dark}}; color: {{university.school_color_dark}}" ng-click='selectUniversityAndTransition(university, $event, $index)'>
         							<div>
                                         <span class="school-name">{{university.short_name || university.name}}</span>
                                     </div>
@@ -209,42 +211,56 @@
 						</ul>
                     </div>
                     <!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-                    <div style='height: 600px!important' class='splash-map relative zoom-{{map.zoom}}'>
+                    <div style='height: 600px!important; width:calc(100%);' class='splash-map relative zoom-{{map.zoom}}'>
                         <div class='bg-shamrock txt-white  absolute top-0 bottom-0  high-z-index ugrid-2 inline' style='width:100px; height:30px;'>
                             <a class='p20xy' ng-click='incrementZoom()'> + </a>
                             <a class='p20xy weight-900' ng-click='decrementZoom()'> - </a>
                         </div>
-                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom"  pan="map.pan" options="map.options">
+                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" control="map.control" zoom="map.zoom"  pan="map.pan" options="map.options">
 
-                            <ui-gmap-markers
-                            models="universityMarkers"
-                            coords="'self'"
-                            icon="'icon'"
-                            options="'options'"
-                            fit="true"
-                            events="markerEvents"
-                            >
-                            </ui-gmap-markers>
-                            <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->
-                            <ui-gmap-window show="window.show" closeClick="window.close()" coords="window.coords">
-                                <div>
-                                    <div class='p20xy flex-wrap-center full-x'>
-                                        <div class='full-x'>
-                                            <!-- <img style='height:30px; width:30px;' src='{{university.svg_url || university.logo_url}}'> -->
-                                        </div>
-                                        <div class=='weight-700 full-x'>
-                                            {{window.university.name}}
-                                        </div>
-                                        <small class='full-x'>
-                                            {{window.university.city}}, {{university.state}}
-                                        </small>
-                                        <small class='full-x' style='font-size:10px;'>
-                                            {{window.university.latitude}}, {{university.longitude}}
-                                        </small>
+                            <!-- <ui-gmap-window  show="map.window.show" coords="map.window.model" options="map.window.options" closeclick="map.window.closeClick()">
+                                <div ng-non-bindable="">test</div>
+                            </ui-gmap-window> -->
 
+                            <ui-gmap-window show="map.window.show" closeClick="closeMarkerWindow()" coords="map.window.coords">
+                                <div class='university-label'>
+                                    <header style="background-image: url('{{window.university.banner_url}}')!important;">
+                                        <!-- {{university.svg_url || university.logo_url}} -->
+                                        <div style="background-color: {{window.university.school_color_dark}}!important"></div>
+                                        <h1>{{map.window.university.name}}</h1>
+                                    </header>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <h2>Courses</h2>
+                                                <span>12k</span>
+                                            </li>
+                                            <li>
+                                                <h2>Gurus</h2>
+                                                <span>725</span>
+                                            </li>
+                                            <li>
+                                                <h2>Students</h2>
+                                                <span>12k</span>
+                                            </li>
+                                        </ul>
+                                        <button style="background-color: {{window.university.school_color_dark}};">Go to School</button>
                                     </div>
                                 </div>
                             </ui-gmap-window>
+
+                            <ui-gmap-markers
+                            models="map.markers"
+                            coords="'self'"
+                            icon="'icon'"
+                            control="map.markerControl"
+                            options="'options'"
+                            events="map.markersEvents"
+                            >
+
+                            </ui-gmap-markers>
+                            <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->
+
                         </ui-gmap-google-map>
                     </div>
                     <div class="splash-map-stats">
@@ -378,6 +394,7 @@
 								</div>
 							</a>
                         </li>
+						<div></div>
                     </ul>
                 </div>
 				<div id="splash-categories" class="main ng-class:{'active':activeBrowseTabIndex===0}" ng-controller="CategoriesController">
@@ -582,6 +599,6 @@
 		</main>
 		<!-- </ion-content> -->
         <div id='last-div-main' onload="lastDivLoaded()"> </div>
-	</ion-view>
+	</div>
 	<!-- </ion-scroll> -->
-<!-- </ion-content> -->
+<!-- </ion-content>

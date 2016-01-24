@@ -109,7 +109,7 @@
 							font-weight: 600;
 							line-height: 1;
 							text-align: center;
-							&::after {
+							&:after {
 								content: "th";
 								display: block;
 								position: absolute;
@@ -263,20 +263,20 @@
 	button {
 		z-index: 10;
 	}
-	.jp-card.jp-card-visa.jp-card-identified .jp-card-front::before,
-	.jp-card.jp-card-visa.jp-card-identified .jp-card-back::before {
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-front:before,
+	.jp-card.jp-card-visa.jp-card-identified .jp-card-back:before {
 		background: $eggplant!important;
 	}
-	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::before,
-	.jp-card.jp-card-discover.jp-card-identified .jp-card-back::before {
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front:before,
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-back:before {
 		background: $campus!important;
 	}
-	.jp-card.jp-card-discover.jp-card-identified .jp-card-front::after {
+	.jp-card.jp-card-discover.jp-card-identified .jp-card-front:after {
 		background: $orange!important;
 		box-shadow: none!important;
 	}
-	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front::before,
-	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-back::before {
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front:before,
+	.jp-card.jp-card-mastercard.jp-card-identified .jp-card-back:before {
 		background: $azure!important;
 	}
 	.card-list-item {
@@ -294,7 +294,7 @@
 	}
 }
 .jp-card-front {
-	&::before {
+	&:before {
 		background-image: none!important;
 	}
 }
@@ -490,7 +490,7 @@
 		input[type=range] {
 			padding: 105px 15px 20px;
 			height: 50px;
-			&::-webkit-slider-thumb {
+			&:-webkit-slider-thumb {
 				position: relative;
 				border-radius: 0;
 				margin-top: -80px;
@@ -514,7 +514,7 @@
 					border-top-color: white;
 				}
 			}
-			&::-moz-range-thumb {
+			&:-moz-range-thumb {
 				position: relative;
 				border-radius: 0;
 				margin-top: -80px;
@@ -538,7 +538,7 @@
 					border-top-color: white;
 				}
 			}
-			&::-ms-range-thumb {
+			&:-ms-range-thumb {
 				position: relative;
 				border-radius: 0;
 				margin-top: -80px;
@@ -563,77 +563,77 @@
 				}
 			}
 			&[value="0"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "‹ 1";
 					}
 				}
 			}
 			&[value="1"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "1";
 					}
 				}
 			}
 			&[value="2"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "2";
 					}
 				}
 			}
 			&[value="3"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "3";
 					}
 				}
 			}
 			&[value="4"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "4";
 					}
 				}
 			}
 			&[value="5"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "5";
 					}
 				}
 			}
 			&[value="6"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "6";
 					}
 				}
 			}
 			&[value="7"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "7";
 					}
 				}
 			}
 			&[value="8"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "8";
 					}
 				}
 			}
 			&[value="9"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "9";
 					}
 				}
 			}
 			&[value="10"] {
-				&::-webkit-slider-thumb {
+				&:-webkit-slider-thumb {
 					&:before {
 						content: "10+";
 					}
@@ -670,7 +670,7 @@
 // ACCOUNT MODAL
 .signup-modal {
 	header.third {
-		&::before {
+		&:before {
 			background: url(../../img/login@2x.jpg) no-repeat bottom center / cover,
 						url(/static/remote/img/login@2x.jpg) no-repeat bottom center / cover;
 		}
@@ -678,6 +678,25 @@
 			font-size: 28px!important;
 			line-height: 1.2;
 			text-transform: lowercase;
+		}
+		h2 {
+			@include flex;
+			@include flex-center-vertical;
+			margin-top: -15px;
+			padding: 0 15px 15px;
+    		font-size: 16px;
+			font-weight: 600;
+			span {
+				@include round;
+				@include flex;
+				@include flex-center;
+				margin: 0 5px;
+				width: 24px;
+				height: 24px;
+				background: white;
+				color: $slate;
+				font-weight: 700;
+			}
 		}
 		.switch {
 			position: absolute;
@@ -690,11 +709,12 @@
 					display: block;
 					padding: 15px 0;
 					border-bottom: 5px solid transparent;
+					font-size: 20px;
 					font-weight: 600;
 					text-align: center;
 				}
 				.selected {
-					border-bottom-color: $shamrock;
+					border-bottom-color: white;
 				}
 			}
 		}
@@ -703,11 +723,26 @@
 		margin-top: 0;
 	}
 	#account-form {
-		height: calc(100% - 50px);
+		height: calc(100% / 3 * 2);
 		padding: 0 15px 15px;
-		input {
-			margin: 30px 0 15px;
-			font-size: 20px;
+		background: $slate;
+		.input-field {
+			input, label {
+				color: white;
+				border-color: white;
+			}
+			input:focus {
+				border-color: $shamrock;
+			}
+			input:focus + label {
+				color: $shamrock;
+			}
+			a {
+				display: block;
+				position: absolute;
+				top: 12px;
+				right: 10px;
+			}
 		}
 		#tos {
 			@include opacity(.6);
@@ -719,23 +754,66 @@
 			line-height: 1;
 			text-align: center;
 			text-transform: uppercase;
-		}
-		#tos:active,
-		#tos:focus {
-			color: $shamrock;
+			&:active, &:focus {
+				color: $shamrock;
+			}
 		}
 		#social-login {
-			margin-top: 30px;
-			margin-bottom: 20px;
+			margin-top: 20px;
+			margin-bottom: 15px;
+			button {
+				background: lighten($slate, 15%);
+				height: 48px;
+				font-size: 20px;
+				font-weight: 600;
+				&:not(:last-child) {
+					margin-bottom: 15px;
+				}
+				&.bg-shamrock {
+					background: $shamrock;
+				}
+				&.bg-fb {
+					background: $facebook;
+				}
+				&:hover, &:focus {
+					@include opacity(1);
+					background: lighten($slate, 20%);
+				}
+				&:active {
+					background: lighten($slate, 25%);
+				}
+				&.bg-shamrock:active {
+					background: lighten($shamrock, 15%);
+				}
+				&.bg-fb:active {
+					background: lighten($facebook, 15%);
+				}
+			}
 		}
 	}
-}
-@media screen and (max-width:320px) {
-	#account-form {
-		padding-top: 0 !important;
-		input {
-			margin-top: 20px !important;
-			font-size: 18px!important;
+	.account-signup {
+		#account-form {
+			background: $smoke;
+			a {
+				color: $slate!important;
+			}
+			.input-field {
+				input, label {
+					color: $slate;
+					border-color: $slate;
+				}
+				input:focus {
+					border-color: $shamrock;
+				}
+				input:focus + label {
+					color: $shamrock;
+				}
+				a {
+					i {
+						color: $slate;
+					}
+				}
+			}
 		}
 	}
 }
@@ -1020,10 +1098,10 @@
 			color: $slate;
 			font-size: 18px;
 			font-weight: 300;
-			&::-ms-expand {
+			&:-ms-expand {
 				display: none;
 			}
-			&::-webkit-input-placeholder {
+			&:-webkit-input-placeholder {
 				font-weight: 300!important;
 				color: rgba($slate, .5);
 			}
@@ -1031,7 +1109,7 @@
 				font-weight: 300!important;
 				color: rgba($slate, .5);
 			}
-			&::-moz-placeholder {
+			&:-moz-placeholder {
 				font-weight: 300!important;
 				color: rgba($slate, .5);
 			}
@@ -1040,13 +1118,13 @@
 				color: rgba($slate, .5);
 			}
 			&:focus {
-				&::-webkit-input-placeholder {
+				&:-webkit-input-placeholder {
 					color: $slate;
 				}
 				&:-moz-placeholder {
 					color: $slate;
 				}
-				&::-moz-placeholder {
+				&:-moz-placeholder {
 					color: $slate;
 				}
 				&:-ms-input-placeholder {
@@ -1104,7 +1182,7 @@
 				padding: 15px;
 				border: 2px solid $smoke;
 				border-bottom: 0;
-				&::after {
+				&:after {
 					@include center-xy;
 					@include opacity(.15);
 					-webkit-filter: grayscale(1);
@@ -1246,7 +1324,7 @@
 		> div {
 			height: 100%;
 			width: 100%;
-			&::after {
+			&:after {
 				content: "";
 				position: fixed;
 				z-index: 10;

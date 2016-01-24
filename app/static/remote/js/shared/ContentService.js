@@ -1,10 +1,11 @@
 angular
 	.module('sharedServices')
 	.factory("ContentService", [
+		'Category',
 		ContentService
 	]);
 
-function ContentService() {
+function ContentService(Category) {
 	var STATIC_BASE = "https://uguru-rest-test.herokuapp.com/static/remote/"
 
 	var pricing = {
@@ -856,16 +857,14 @@ function ContentService() {
 
 	var generateUniversitySpecificBecomeGuruText = function(university) {
 		return {
-			header: "The Most Flexible Part-Time",
+			header: "A Part-Time Job where U Come First",
 			top_half: [{
 				icon_src: "splash/profile.html",
 				header: "Full Stack<br/>Profile",
-				tag: 'See Preview',
 				content: "A platform where you come first. Complete control over your profile. Customize, set prices, bill others.",
 			}, {
 				icon_src: "splash/promotion.html",
 				header: "Analytics and<br/>Promotion Tool",
-				tags: 'See Preview',
 				content: "We'll help you out with digital marketing kits, business cards, high quality graphics and much more.",
 			}, {
 				icon_src: "splash/payment.html",
@@ -879,7 +878,6 @@ function ContentService() {
 			}, {
 				icon_src: "splash/fees.html",
 				header: "Zero<br/>Transaction Fees",
-				tag: 'See Preview',
 				content: "Earn your first $500 in a month and then we'll discuss business partnerships and subscriptions.",
 			}, {
 				icon_src: "splash/pajamas.html",
@@ -891,41 +889,64 @@ function ContentService() {
 	}
 	var generateUniversitySpecificHowItWorks = function(university) {
 		return {
-			header: "Uguru Can Help You",
+			header: "How Uguru Impacts You", //bold this // or how about "How Uguru Increases Life Quality"
+			subheader: "Enjoy all 4 Years of College. Uguru helps you stay on top of your academic life.",
 			top_half: [{
 				icon_src: "splash/anytime.html",
 				header: "24/7, Anytime, Anywhere",
-				tag: null,
-				content: "Request course help @7am, or request a midnight snack at 11pm. Trust me, one of your peers " + ((university && university.name && ' ') || '') + 'is up',
+				content: "Request anything. Your peers can your Biology Grade @2am, take your grad photos, or do dirty laundry",
 			}, {
 				icon_src: "splash/save.html",
-				header: "Save $ on Academic Help",
-				content: "Get help from a quick 5-min question to several hours at super-cheap rates, averaging at $13/hr"
+				header: "Dirt-Cheap Academic Tutoring",
+				content: "Got a quick question? Need an entire course crammed the night before? Perhaps a guru for your study group of 4?",
 			}, {
 				icon_src: "splash/same.html",
-				header: "Ace the course",
-				content: "We'll connect you to a student who has already aced it recently, and possible the same professor!"
+				header: "Not Just 'Math' Help",
+				content: "Yes, you can now request a Guru who has taken Math 16A recently, possibly the same professor & textbook",
 			}],
 			bottom_half: [{
 				icon_src: "splash/organize.html",
-				header: "Stay Organized & Focused",
-				tag: 'Coming Soon!',
-				content: "Apps to help calculate & project your GPA, increase productivity + other power-ups coming soon!"
+				header: "100% LTE Coverage", // add 100
+				content: "Got a quick question? Need an entire course crammed the night before? Need a guru for your study group of 4?"
 			}, {
 				icon_src: "splash/career.html",
-				header: "Prepare for Your Career",
-				content: "Connect with mentors related to your major or peers who have your dream internship, just one tap away."
+				header: "Meet the Future You. Right Now.", //FUTURE: Have the dynamic text here
+				content: "On the Pre-Med rack? Meet with alumni already @ your dream school. Dream job Google? Match with a peer already there.",
 			}, {
 				icon_src: "splash/earn.html",
-				tag: 'Read More',
-				header: "Earn Side Cash",
-				content: "Help your peers in aced courses, your talents, or pretty much anything else you can think of."
+				header: "Become a College Guru",
+				content: "Earn great sidecash anytime, anywhere. Build cred and earn up to $40/hr. Earn, learn, & burn those loans early."
 			}, ]
 		};
 
 	}
-
-
+	var homeHowItWorks = generateUniversitySpecificHowItWorks();
+	var homeBecomeAGuru = generateUniversitySpecificBecomeGuruText();
+	var homeFooter = {
+		header: "Congrats! You're the first to make it all the way down here.",
+		subheader: "Don't worry. We've summarized your next steps below to make your life easier.", //add emoji wink
+		button_left: "Become a Guru",
+		button_right: "Launch College Student Portal"
+	}
+	var homeNavbar;
+	var homeSidebar;
+	var homePage = {
+		how_it_works: homeHowItWorks,
+		become_a_guru: homeBecomeAGuru, //final 'draft' --> requires approval
+		navbar: homeNavbar,
+		sidebar:homeSidebar,
+		footer: homeFooter,
+		sections: {
+			main: {
+				header_constant: [],
+				header_dynamic: []
+			},
+			browse: {
+				profiles: generateMiniSampleProfileDict(),
+				categories: Category.categories
+			}
+		}
+	}
 
 
 

@@ -193,21 +193,45 @@ angular.module('uguru.util.controllers')
 
       $scope.goToBecomeGuru = function() {
         console.log('transitioning to become guru', $scope.university);
+
+        if (!$scope.university) {
+          LoadingService.showMsg('Something went wrong.. Redirecting you back to home page.', 2000)
+          $timeout(function() {
+            AnimationService.flip('^.home');
+          }, 1000)
+          return;
+        }
+
+        $scope.root.vars.university = $scope.university;
+
         if ($scope.desktopMode) {
-          if ($scope.university) {
-            $scope.root.vars.university = $scope.university;
+
+
             AnimationService.flip('^.desktop-become-guru', {}, {universityId:$scope.university.id, universityObj:$scope.university});
           }
-        } else {
+        else {
 
-          AnimationService.flip('^.become-guru')
+          AnimationService.flip('^.become-guru', {}, {universityId:$scope.university.id, universityObj:$scope.university})
         }
       }
 
       $scope.goToSignup = function() {
+        if (!$scope.university) {
+          LoadingService.showMsg('Something went wrong.. Redirecting you back to home page.', 2000)
+          $timeout(function() {
+            AnimationService.flip('^.home');
+          }, 1000)
+          return
+        }
+
+        $scope.root.vars.university = $scope.university;
+
         if ($scope.desktopMode) {
-          AnimationService.flip('^.desktop-login')
+          if ($scope.university) {
+            AnimationService.flip('^.desktop-login', {}, {universityId:$scope.university.id, universityObj:$scope.university});
+          }
         } else {
+
           $scope.signupModal.show();
         }
       }

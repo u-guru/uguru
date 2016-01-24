@@ -70,10 +70,10 @@
 			.pf-hover {
 				@include transition(.15s ease-in-out);
 				@include opacity(0);
-				z-index: -10;
 				@include flex;
 				@include flex-center;
 				position: absolute;
+				z-index: 10;
 				top: 0;
 				left: 0;
 				width: 100%;
@@ -128,7 +128,6 @@
 				color: $slate;
 				.pf-hover {
 					@include opacity(1);
-					z-index: 10;
 				}
 			}
 			.pf-card-top {

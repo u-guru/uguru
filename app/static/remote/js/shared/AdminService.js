@@ -152,7 +152,7 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                         $ionicSideMenuDelegate.toggleRight();
                         scope.user.university_id = null;
                         scope.user.university = null;
-                        $state.go('^.university');
+                        $state.go('^.home');
                     }, 500)
                     break;
 

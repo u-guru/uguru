@@ -1393,7 +1393,7 @@ angular.module('uguru.util.controllers')
                 }
               } else {
                 if ($scope.signupModal && $scope.signupModal.isShown()) {
-                  $scope.signupModal.destroy();
+                  $scope.signupModal.remove();
                 }
               }
           }
@@ -1401,7 +1401,7 @@ angular.module('uguru.util.controllers')
 
 
           if (!$scope.desktopMode && $scope.signupModal && $scope.signupModal.isShown()) {
-            $scope.signupModal.destroy();
+            $scope.signupModal.remove();
           }
 
           // case -- it is not login from guru-home
