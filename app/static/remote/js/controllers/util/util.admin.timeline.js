@@ -83,103 +83,6 @@ angular.module('uguru.util.controllers')
 
 		]
 
-		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides",  "Moodboards", "Glossary"];
-		$scope.projects = [
-			{name:'Pre-app (Universities, Sidebar)'},
-			{name: 'Login/Logout + Signup + School Email Verify'},
-			{name: 'Become a Guru'},
-			{name: 'Guru can fill out their profile'},
-			{name: 'Guru can increase their credibility'},
-			{name: 'Guru can create 1-->Many shops'},
-			{name: 'Guru can promote themselves'},
-			{name: 'Guru can bill students'},
-			{name: 'Student can create a request'},
-			{name: 'Student add/remove courses'},
-			{name: 'Student + Guru can enhance message'},
-			{name: 'MVP Email Marketing'},
-			{name: 'Logo Redesign (Saturday)'},
-			{name: 'uMoodboard MVP'},
-			{name: 'One Pagers'},
-			{name: 'Admin Stuff'}, //remove mobile app from stores
-			{name: 'Access 2.0'},
-			{name: 'Guru OH'},
-			{name: 'Catchup with Mobile Apps'},
-			{name: 'Better Mobile Experience'},
-			{name: 'Data + Content'},
-			{name: 'All Audience Edge Case'},
-			{name: 'First Time Experience + Tutorials'},
-			{name: 'Custom Courses + Universities'},
-		];
-		// To resolve
-		// -analytics + marketing
-		// -empty state for all collections
-		//
-		// use cases
-		// 1. Student can select university & create an account
-		// 2. Student can go to student dashboard and modify
-		//       - settings
-		//       - Their courses
-		//       - create a request & activate their account
-		//       - intro (student
-		//       - next steps
-		// 3. Guru can become a guru
-		//       - setup their profile
-		//       - create many shops
-		//       - swap to student mode and remember last session
-		//       - settings
-		//       - become a guru
-		// 4. Guru can receive requests from students
-		// 5. Student can receive requests from gurus
-		//       - accept
-		//       - reject
-		//       - cancel
-		// 6. Enhanced messaging
-		// 7. Ratings
-		// 8. Continue Future Communications
-		//       - Direct billing
-		//       - Location sharing
-		//       - student files
-		//       - transaction history
-		// 9. Student & Guru shops
-
-		// Icebox
-		//
-		// GPA App
-		// Mobile Support APp
-		// GPA Promote
-		// HS Support
-		// Parent Support
-		// Access 2.0
-		// Component centric tutorials
-		// Data management
-		// Interns + applications
-		// Guru OH
-		// Detailed FAQ + Docs
-		// Detailed Custom courses + universities
-
-
-
-		// {"PLANNING Figure out format for the week + push it": false},
-				// {"PLANNING + Project specs: saturday-logo, whack wednesday, login/signup/fb, independent project": false},
-				// {"Add to plan--> guru mode vs student mode + last mode signed in": false},
-				// {"Hi-fi --- guru + student dashboard on mobile": false},
-				// {"Hi-fi --- signup page / not signup apge": false},
-				// {"Add to plan --> 'design project transitions + sneakViews + scrollreveal'": false},
-				// {"Add to plan --> 'university specific project'": false},
-				// {"Add to plan --> 'pricing on profile cards etc'": false},
-				// {"Add to plan --> 'Loading Spec'": false},
-				// {"Add to plan --> 'complete profiles'": false},
-				// {"Add to plan --> 'helicopter theme'": false},
-				// {"Add to plan --> 'edge cases'": false},
-				// {"Add to plan --> 'checkin on goals'": false},
-				// {"Add to plan --> 'components'": false},
-				// {"Add to plan --> 'all audiences'": false},
-				// {"Add to plan --> 'user personal site icon'": false},
-				// {"Add to plan --> 'weekly themes: build moodboards -- tie & finalize animations'": false},
-				// {"Add to plan --> 'marketing + email transactions'": false},
-				// {"Add to plan --> tutorial benchmark": false},
-
-		$scope.sprints = [];
 		var getProjectOneActionItems = function() {
 			var resultDict = {};
 
@@ -281,10 +184,306 @@ angular.module('uguru.util.controllers')
 			return progressDict;
 		}
 
+		//1. initialize all sprints
+
+		// sprints --> many projects --> projects --> many action items
+		// have a sprint id
+
+		var addUniqueIdToAllProjects = function(sprints) {
+			index = 0;
+			for (var i = 0; i < sprints.length; i++) {
+				var indexSprint = sprints[i];
+				for (var j = 0; j < indexSprint.projects.length; j++) {
+					var indexProject = indexSprint.projects[j];
+					indexProject.id = index;
+					index += 1;
+				}
+			}
+		}
+
+		//takes a project and initializes the ideal object
+		// project
+		// project_dict
+		// -- name
+		// -- alpha_action
+		// -- beta_action
+		// -- production
+		// -- action_items_arr
+		// --- --- action_item =
+		var initProject = function(project_dict) {
+
+		}
+
+		// takes in a sprint meta data and creates
+		var initSprint = function(sprint_dict) {
+
+		}
+
+		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides",  "Moodboards", "Glossary"];
+		$scope.projects = [
+			{name:'Pre-app (Universities, Sidebar)'},
+			{name: 'Login/Logout + Signup + School Email Verify'},
+			{name: 'Become a Guru'},
+			{name: 'Guru can fill out their profile'},
+			{name: 'Guru can increase their credibility'},
+			{name: 'Guru can create 1-->Many shops'},
+			{name: 'Guru can promote themselves'},
+			{name: 'Guru can bill students'},
+			{name: 'Student can create a request'},
+			{name: 'Student add/remove courses'},
+			{name: 'Student + Guru can enhance message'},
+			{name: 'MVP Email Marketing'},
+			{name: 'Logo Redesign (Saturday)'},
+			{name: 'uMoodboard MVP'},
+			{name: 'One Pagers'},
+			{name: 'Admin Stuff'}, //remove mobile app from stores
+			{name: 'Access 2.0'},
+			{name: 'Guru OH'},
+			{name: 'Catchup with Mobile Apps'},
+			{name: 'Better Mobile Experience'},
+			{name: 'Data + Content'},
+			{name: 'All Audience Edge Case'},
+			{name: 'First Time Experience + Tutorials'},
+			{name: 'Custom Courses + Universities'},
+		];
+
+		//0. Get it working with 3 sprint objs
+		//1. Create sprint init objs
+		//   ---each has
+		//        - name with usecase
+		//        - array of projects
+		//              - each project has dict
+		//                    - name
+		//                    - action_alpha [array of action_strings]
+		//                    - action_beta [array of acton_strings]
+		//                    - action_production [array of action_strings]
+		//                    - External_Link_Dict = {"": "": }
+
+		//2. Initialize sprints
+		//		- Create sprint final object
+		//		- For-loop projects
+		//            - initialize project init obj from sprint metadata
+		//            - 3x for-loop-action_items for each production, beta, alpha
+		//            			- initialize action_item from project metadata
+		//                      - parse action_item
+		//            			- map default roles to all action_items
+		//                      -
+		//            - initialize project progress
+
+		// Sprint: Student can select university & create an account
+		// - name:
+		// - projects_dict:
+		// ----> name
+		// ----> action_alpha: str[]
+		// ----> action_beta: str[]
+		// ----> action_production: str["J:", "B:", "G:"]
+		//
+
+		// To resolve
+		// -analytics + marketing
+		// -empty state for all collections
+		//
+		// use cases
+		// 1. Student can select university & create an account
+		// 2. Student can go to student dashboard and modify
+		//       - settings
+		//       - Their courses
+		//       - create a request & activate their account
+		//       - intro (student
+		//       - next steps
+		// 3. Guru can become a guru
+		//       - setup their profile
+		//       - create many shops
+		//       - swap to student mode and remember last session
+		//       - settings
+		//       - become a guru
+		// 4. Guru can receive requests from students
+		// 5. Student can receive requests from gurus
+		//       - accept
+		//       - reject
+		//       - cancel
+		// 6. Enhanced messaging
+		// 7. Ratings
+		// 8. Continue Future Communications
+		//       - Direct billing
+		//       - Location sharing
+		//       - student files
+		//       - transaction history
+		// 9. Student & Guru shops
+
+		// Icebox
+		//
+		// GPA App
+		// Mobile Support APp
+		// GPA Promote
+		// HS Support
+		// Parent Support
+		// Access 2.0
+		// Component centric tutorials
+		// Data management
+		// Interns + applications
+		// Guru OH
+		// Detailed FAQ + Docs
+		// Detailed Custom courses + universities
+
+
+
+		// {"PLANNING Figure out format for the week + push it": false},
+				// {"PLANNING + Project specs: saturday-logo, whack wednesday, login/signup/fb, independent project": false},
+				// {"Add to plan--> guru mode vs student mode + last mode signed in": false},
+				// {"Hi-fi --- guru + student dashboard on mobile": false},
+				// {"Hi-fi --- signup page / not signup apge": false},
+				// {"Add to plan --> 'design project transitions + sneakViews + scrollreveal'": false},
+				// {"Add to plan --> 'university specific project'": false},
+				// {"Add to plan --> 'pricing on profile cards etc'": false},
+				// {"Add to plan --> 'Loading Spec'": false},
+				// {"Add to plan --> 'complete profiles'": false},
+				// {"Add to plan --> 'helicopter theme'": false},
+				// {"Add to plan --> 'edge cases'": false},
+				// {"Add to plan --> 'checkin on goals'": false},
+				// {"Add to plan --> 'components'": false},
+				// {"Add to plan --> 'all audiences'": false},
+				// {"Add to plan --> 'user personal site icon'": false},
+				// {"Add to plan --> 'weekly themes: build moodboards -- tie & finalize animations'": false},
+				// {"Add to plan --> 'marketing + email transactions'": false},
+				// {"Add to plan --> tutorial benchmark": false},
+
+		// use cases
+		// 1. Student can select university & create an account
+		// 2. Student can go to student dashboard and modify
+		//       - settings
+		//       - Their courses
+		//       - create a request & activate their account
+		//       - intro (student
+		//       - next steps
+		// 3. Guru can become a guru
+		//       - setup their profile
+		//       - create many shops
+		//       - swap to student mode and remember last session
+		//       - settings
+		//       - become a guru
+
+		//0. Get it working with 3 sprint objs
+		//1. Create sprint init objs
+		//   ---each has
+		//        - name with usecase
+		//        - array of projects
+		//              - each project has dict
+		//                    - name
+		//                    - action_alpha [array of action_strings]
+		//                    - action_beta [array of acton_strings]
+		//                    - action_production [array of action_strings]
+		//                    - External_Link_Dict = {"": "": }
+
+		var sprint_one = {
+			name: "Student can select university & create an account",
+			projects: [
+				{
+					name: "analytics",
+					alpha: ["Inspectlet MVP", "Mixpanel MVP", "Separate Local, Dev, Production", "Finalize Tools List + Add to Admin"],
+					beta: ["Test Inspectlet Works", "Test Mixpanel Work"]
+				},
+				{
+					name: "Display on Admin",
+					alpha: ["Analytics", "Moodboard", "Roles"],
+					beta: [""],
+				},
+				{
+					name: "Functionality",
+					alpha: ["Make Maps Fast", "Mobile App Support", "Scroll Reveal", "University Specific"],
+					beta: ["University Specific", "Home Page", "Test Home Page"],
+				},
+				{
+					name: "Functionality",
+					alpha: ["Make Maps Fast", "Mobile App Support"],
+					beta: ["University Specific", "Home Page"]
+				},
+				{
+					name: "Logo",
+					Production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
+				}
+			]
+		}
+		var sprint_two = {
+			name: "Student MVP",
+			descrition: "Student can go to student dashboard and can modify settings, their courses, create/edit/delete requests, add/edit cards + purchase credits",
+			projects: [
+				{
+					name: "Settings",
+					alpha: [""],
+					beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
+					production: ["Components are implimented"],
+				},
+				{
+					name: "Add/Remove Courses",
+				},
+				{
+					name: "Tour",
+					alpha: ["TourService"],
+					beta: ["Test TourService on First Time Student"],
+					production: ["B: Discuss, Finalize, Gameplan", "J:100% Design + Templated", "G:100% CSS/HTML w/ Best Practices"]
+				},
+				{
+					name: "Requests",
+					alpha: ["Make Maps Fast", "Mobile App Support"],
+					beta: ["University Specific", "Home Page"]
+				},
+				{
+					name: "Add/Delete Cards",
+					alpha: ["Add a Card", "Delete a Card", "Stripe Local/Dev/Staging"],
+					beta: ["Test Add a Card", "Test Delete a Card"],
+					production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
+				},
+				{
+					name: "Purchase Credits",
+					alpha: ["Bare bones MVP"]
+				}
+			]
+		}
+
+		var sprint_three = {
+			name: "Guru MVP",
+			descrition: "setup their profile, create many shops, swap to student/guru mode + stay put, settings, become a guru",
+			projects: [
+				{
+					name: "Add/Edit Profile",
+				},
+				{
+					name: "Create man shops",
+				},
+				{
+					name: "Swap to student/guru mode",
+				},
+				{
+					name: "Settings"
+				},
+				{
+					name: "Become a Guru"
+				}
+			]
+		}
+
+		// Next steps for admin 1/24/2015
+
+		// 1. Finish MVP view
+		// - def initSprints + test
+		// - def initProjects
+		// - def initActionItem
+		// - def create unique ids + modals for projects (CTA - box)
+		// 2. external URLS
+		// 3. Personalized
+		// - view profile pic
+		// - click profile link & get all actions specific to that person
+		// - add row of profile pics on top of dashboard "View by"
+		// 4.  create MVP spec for rest
+
+
+		$scope.sprints = [];
+
+
 		$scope.projects[0].action_items = getProjectOneActionItems();
 
 		$scope.projects[0].progress = $scope.calculateProjectProgress($scope.projects[0].action_items);
-		console.log($scope.projects[0].progress)
 
 		$scope.sprints = [{description:"Functional product students can use", projects:$scope.projects.slice(0,NUM_PRIORITIZED)}, {description:"Icebox", projects:$scope.projects.slice(NUM_PRIORITIZED, $scope.projects.length)}];
 

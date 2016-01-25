@@ -2,7 +2,7 @@
 
 
 <!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
-	<div class='bg-smoke' cache-view="false">
+	<div class='bg-smoke' cache-view="false" >
 		<main id='home-splash' class='splash-landing hs-view full-xy'>
             <!-- START Home Page CTAs -->
 
@@ -159,7 +159,7 @@
 	                                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 	                                    </svg>
 	                                </i>
-	                                <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations"  ng-model="search_text.university"/>
+	                                <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"  ng-model="search_text.university"/>
 	                                <label for="request-search-input">
 	                                    <span ng-show='universities.length'>search {{universities.length}} supported schools</span>
 	                                </label>
@@ -172,7 +172,7 @@
 
                         <ul class="splash-school-desktop">
                             <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 8 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
-								<div class="fx-fade-down fx-dur-500 fx-ease-back school-card">
+								<div class="school-card">
 									<svg class="rect" viewBox="0 0 300 200">
 										<rect x="0" y="0" width="300" height="200" fill="none"></rect>
 									</svg>
@@ -200,7 +200,7 @@
                             </li>
                         </ul>
 						<ul class="splash-school-mobile">
-							<li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 8 track by $index'>
+							<li ng-repeat='university in ::universities | filter:search_text.university:strict | limitTo: 8 track by $index'>
 								<a style="border-color: {{university.school_color_dark}}; color: {{university.school_color_dark}}" ng-click='selectUniversityAndTransition(university, $event, $index)'>
         							<div>
                                         <span class="school-name">{{university.short_name || university.name}}</span>
@@ -211,56 +211,47 @@
 						</ul>
                     </div>
                     <!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-                    <div style='height: 600px!important; width:calc(100%);' class='splash-map relative zoom-{{map.zoom}}'>
-                        <div class='bg-shamrock txt-white  absolute top-0 bottom-0  high-z-index ugrid-2 inline' style='width:100px; height:30px;'>
-                            <a class='p20xy' ng-click='incrementZoom()'> + </a>
-                            <a class='p20xy weight-900' ng-click='decrementZoom()'> - </a>
-                        </div>
-                        <ui-gmap-google-map style='height: 600px' class='full-x relative' center="map.center" control="map.control" zoom="map.zoom"  pan="map.pan" options="map.options">
-
-                            <!-- <ui-gmap-window  show="map.window.show" coords="map.window.model" options="map.window.options" closeclick="map.window.closeClick()">
-                                <div ng-non-bindable="">test</div>
-                            </ui-gmap-window> -->
-
-                            <ui-gmap-window show="map.window.show" closeClick="closeMarkerWindow()" coords="map.window.coords">
-                                <div class='university-label'>
-                                    <header style="background-image: url('{{window.university.banner_url}}')!important;">
-                                        <!-- {{university.svg_url || university.logo_url}} -->
-                                        <div style="background-color: {{window.university.school_color_dark}}!important"></div>
-                                        <h1>{{map.window.university.name}}</h1>
-                                    </header>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <h2>Courses</h2>
-                                                <span>12k</span>
-                                            </li>
-                                            <li>
-                                                <h2>Gurus</h2>
-                                                <span>725</span>
-                                            </li>
-                                            <li>
-                                                <h2>Students</h2>
-                                                <span>12k</span>
-                                            </li>
-                                        </ul>
-                                        <button style="background-color: {{window.university.school_color_dark}};">Go to School</button>
+                    <div  style='height:500px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
+                        <ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
+                                <ui-gmap-markers
+                                    models="::map.markers"
+                                    coords="'self'"
+                                    options="'options'"
+                                    icon="'icon'"
+                                    doRebuildAll="map.rebuildMarkers"
+                                >
+                                </ui-gmap-markers>
+                                <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
+                                    <div class='university-label'>
+                                        <a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
+                                            <svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
+                                                <path stroke="#FFFFFF" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                            </svg>
+                                        </a>
+                                        <header style="background-image: url('{{map.window.university.banner_url}}')!important;">
+                                            <!-- {{university.svg_url || university.logo_url}} -->
+                                            <div style="background-color: {{map.window.university.school_color_dark}}!important"></div>
+                                            <h1>{{map.window.university.name}}</h1>
+                                        </header>
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <h2>Courses</h2>
+                                                    <span>12k</span>
+                                                </li>
+                                                <li>
+                                                    <h2>Gurus</h2>
+                                                    <span>725</span>
+                                                </li>
+                                                <li>
+                                                    <h2>Students</h2>
+                                                    <span>12k</span>
+                                                </li>
+                                            </ul>
+                                            <button id='university-info-window-button' ng-click="universityButtonClicked()" style="background-color: {{map.window.university.school_color_dark}};" >Go to School</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </ui-gmap-window>
-
-                            <ui-gmap-markers
-                            models="map.markers"
-                            coords="'self'"
-                            icon="'icon'"
-                            control="map.markerControl"
-                            options="'options'"
-                            events="map.markersEvents"
-                            >
-
-                            </ui-gmap-markers>
-                            <!--@GABRIELLE-NOTE: Edit here, you have access to ALL university attributes-->
-
+                                </ui-gmap-window>
                         </ui-gmap-google-map>
                     </div>
                     <div class="splash-map-stats">
@@ -292,83 +283,77 @@
                 <header>
                     <h1 class="txt-university">{{how_it_works.header}}</h1>
                 </header>
-                <div class='main'>
-                    <ul ng-if='!desktopMode'>
-                        <li ng-repeat="hiw_item in how_it_works.top_half" ng-click='peelCard($event, hiw_item, "hiw")' class='ng-class:{"hide": hiw_item.hide}'>
-                            <div class='peel' id='hiw-item-{{$index}}'>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-                                <div class='peel-back bg-university'></div>
-                                <div class='peel-bottom bg-university'></div>
-								<div class="peel-top">
+                <div class='main full-x relative'>
+
+                    <!--Mobile mode, hacked css @595-611, samir.scss -->
+                    <div class='full-xy absolute left-0 top-0 p20y' ng-if='!desktopMode'>
+                        <div class='full-x'>
+                            <ion-slide-box delegate-handle='hiw-slidebox' class='full-xy' on-slide-changed="hiwSlideChanged($index)" show-pager='true'  slide-interval='2500' auto-play="true">
+                                <ion-slide ng-repeat='hiw_item in ::how_it_works.top_half'>
                                     <div class='postit'>
-                                        <div>
-                                            <div>
-												<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-	                                            <h1 ng-bind-html="hiw_item.header"></h1>
-	                                            <p ng-bind-html="hiw_item.content"></p>
-											</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li ng-repeat="hiw_item in how_it_works.bottom_half" ng-click='peelCard($event, hiw_item, "hiw")' class='ng-class:{"hide": hiw_item.hide}'>
-                            <div class='peel' id='hiw-item-{{3 + $index}}'>
-                                <div class="peel-top">
-                                    <div class='postit absolute full-xy'>
                                         <svg class="square" viewBox="0 0 100 100">
                                             <rect x="0" y="0" width="100" height="100"></rect>
                                         </svg>
-                                        <div>
-                                            <div>
-												<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-	                                            <h1 ng-bind-html="hiw_item.header"></h1>
-	                                            <p ng-bind-html="hiw_item.content"></p>
-											</div>
+                                        <div class='flex-wrap-center full-xy'>
+                                            <span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+                                            <h1 class='full-x' ng-bind-html="hiw_item.header"></h1>
+                                            <p ng-bind-html="hiw_item.content"></p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class='peel-back bg-university'></div>
-                                <div class='peel-bottom bg-university'></div>
-                            </div>
-                        </li>
-						<svg class="square" viewBox="0 0 100 100">
-							<rect x="0" y="0" width="100" height="100"></rect>
-						</svg>
-                    </ul>
-                    <ul ng-if='desktopMode'>
-                        <li ng-repeat="hiw_item in how_it_works.top_half">
-                            <div class="postit">
-                                <svg class="square" viewBox="0 0 100 100">
-                                    <rect x="0" y="0" width="100" height="100"></rect>
-                                </svg>
-                                <div>
+                                </ion-slide>
+                                <ion-slide ng-repeat='hiw_item in ::how_it_works.bottom_half'>
+                                    <div class='postit'>
+                                        <svg class="square" viewBox="0 0 100 100">
+                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                        </svg>
+                                        <div class='flex-wrap-center full-xy'>
+                                            <span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+                                            <h1 class='full-x' ng-bind-html="hiw_item.header"></h1>
+                                            <p ng-bind-html="hiw_item.content"></p>
+                                        </div>
+                                    </div>
+                                </ion-slide>
+                            </ion-slide-box>
+                        </div>
+                        <div class='full-x'>
+                            <button ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
+                        </div>
+                    </div>
+
+                    <!--Desktop mode-->
+                    <div ng-if='desktopMode' class='flex-wrap-center'>
+                        <ul>
+                            <li ng-repeat="hiw_item in ::how_it_works.top_half">
+                                <div class="postit">
+                                    <svg class="square" viewBox="0 0 100 100">
+                                        <rect x="0" y="0" width="100" height="100"></rect>
+                                    </svg>
                                     <div>
-										<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-	                                    <h1 ng-bind-html="hiw_item.header"></h1>
-	                                    <p ng-bind-html="hiw_item.content"></p>
-									</div>
+                                        <div>
+    										<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+    	                                    <h1 ng-bind-html="hiw_item.header"></h1>
+    	                                    <p ng-bind-html="hiw_item.content"></p>
+    									</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li ng-repeat="hiw_item in how_it_works.bottom_half">
-                            <div class="postit">
-                                <svg class="square" viewBox="0 0 100 100">
-                                    <rect x="0" y="0" width="100" height="100"></rect>
-                                </svg>
-                                <div>
+                            </li>
+                            <li ng-repeat="hiw_item in ::how_it_works.bottom_half">
+                                <div class="postit">
+                                    <svg class="square" viewBox="0 0 100 100">
+                                        <rect x="0" y="0" width="100" height="100"></rect>
+                                    </svg>
                                     <div>
-										<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-	                                    <h1 ng-bind-html="hiw_item.header"></h1>
-	                                    <p ng-bind-html="hiw_item.content"></p>
-									</div>
+                                        <div>
+    										<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+    	                                    <h1 ng-bind-html="hiw_item.header"></h1>
+    	                                    <p ng-bind-html="hiw_item.content"></p>
+    									</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-					<button ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
+                            </li>
+                        </ul>
+					   <button ng-if='desktopMode' ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
+                    </div>
                 </div>
 				<footer>
 					<div class="border"></div>
@@ -405,7 +390,7 @@
                         </div>
 						<div>
                             <ul class='category-card-list'>
-                    			<li ng-repeat='category in categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category)' >
+                    			<li ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category)' >
                 					<div style='background-image :url({{categories_img_base + category.background_url}})'>
                 	    				<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
                                             <div>
@@ -429,11 +414,11 @@
 									<button ng-click='goToSignup()'>Start Your Shop</button>
 								</li>
                 			</ul>
-                            <div class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in categories'>
+                            <div class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in ::categories'>
                     			<ul class="category-card-list">
-                    				<li ng-repeat='subcategory in category.subcategories'>
-                                        <div class="bg-{{category.hex_color}}">
-                                            <span class='bg-{{category.hex_color}}'>
+                    				<li ng-repeat='subcategory in ::category.subcategories'>
+                                        <div class="bg-{{::category.hex_color}}">
+                                            <span class='bg-{{::category.hex_color}}'>
 												<div>
 													<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
 	                                                <span class="card-label txt-slate">{{subcategory.name}}</span>
@@ -455,7 +440,7 @@
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         <div>
                             <ul class="pf-card-group-mobile" ng-if='!desktopMode'>
-                                <li ng-repeat='category in categories' ng-if='category.is_active'>
+                                <li ng-repeat='category in ::categories' ng-if='category.is_active'>
                                     <a class="pf-card-mini large pf-card-mini-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
                                         <div class="pf-card-mini-banner"></div>
                                         <span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
@@ -464,8 +449,8 @@
                                 </li>
                             </ul>
                             <ul class="pf-card-group" ng-if='desktopMode'>
-                                <li ng-repeat='category in categories' ng-if='category.is_active'>
-                					<a class="pf-card pf-card-{{category.hex_color}} bg-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
+                                <li ng-repeat='category in ::categories' ng-if='category.is_active'>
+                					<a class="pf-card pf-card-{{::category.hex_color}} bg-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
                 						<span class="pf-hover">View Profile</span>
                 						<div class="pf-card-top">
                 							<ul>
@@ -474,18 +459,18 @@
                 									<span>{{sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
                 								</li>
                 							</ul>
-                							<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+                							<span class="user-icon" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
                 						</div>
                 						<div class="pf-card-main">
                 							<h1 class="verified">
-                								<span class="inline">{{sampleMiniProfilesDict[category.hex_color].name}}</span>
+                								<span class="inline">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
                 								<span class="inline">
                 									<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
                 								</span>
                 							</h1>
-                							<h2 class="pf-school">{{sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
-                                            <ul class="pf-rating" data-rating="{{sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-                                			<span class="pf-review-amt">{{sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
+                							<h2 class="pf-school">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
+                                            <ul class="pf-rating" data-rating="{{::sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{::sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+                                			<span class="pf-review-amt">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
                 						</div>
                 					</a>
                 				</li>
@@ -502,85 +487,74 @@
                 <header>
                     <h1>{{become_guru.header}}</h1>
                 </header>
-                <div class='main bg-charcoal'>
-                    <ul ng-if='!desktopMode'>
-                        <li ng-repeat="bg_item in become_guru.top_half" ng-click='peelCard($event, bg_item, "bg")' class='ng-class:{"hide":bg_item.hide}'>
-							<!-- @samir -->
-							<!-- .active -->
-                            <div class='peel' id='bg-item-{{$index}}'>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-                                <div class='peel-back'></div>
-                                <div class='peel-bottom'></div>
-								<div class="peel-top">
+                <div class='main bg-charcoal relative full-x'>
+                    <!--Mobile mode, hacked css @595-611, samir.scss -->
+                    <div class='full-xy absolute left-0 top-0 p20y' ng-if='!desktopMode'>
+                        <div class='full-x'>
+                            <ion-slide-box delegate-handle='bg-slidebox' class='full-xy' on-slide-changed="bgSlideChanged($index)" show-pager='true'  slide-interval='2500' auto-play="true">
+                                <ion-slide ng-repeat='bg_item in ::become_guru.top_half'>
                                     <div class='postit'>
-                                        <div>
-                                            <div>
-                                                <span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-                                                <h1 ng-bind-html="bg_item.header"></h1>
-                                                <p ng-bind-html="bg_item.content"></p>
-                                            </div>
+                                        <svg class="square" viewBox="0 0 100 100">
+                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                        </svg>
+                                        <div class='flex-wrap-center full-xy'>
+                                            <span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
+                                            <h1 class='full-x' ng-bind-html="bg_item.header"></h1>
+                                            <p ng-bind-html="bg_item.content"></p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li ng-repeat="bg_item in become_guru.bottom_half" ng-click='peelCard($event, bg_item, "bg")' class='ng-class:{"hide":bg_item.hide}'>
-                            <div class='peel' id='bg-item-{{3 + $index}}'>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-                                <div class='peel-back'></div>
-                                <div class='peel-bottom'></div>
-								<div class="peel-top">
+                                </ion-slide>
+                                <ion-slide ng-repeat='hiw_item in ::how_it_works.bottom_half'>
                                     <div class='postit'>
-                                        <div>
-                                            <div>
-                                                <span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
-                                                <h1 ng-bind-html="bg_item.header"></h1>
-                                                <p ng-bind-html="bg_item.content"></p>
-                                            </div>
+                                        <svg class="square" viewBox="0 0 100 100">
+                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                        </svg>
+                                        <div class='flex-wrap-center full-xy'>
+                                            <span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
+                                            <h1 class='full-x' ng-bind-html="bg_item.header"></h1>
+                                            <p ng-bind-html="bg_item.content"></p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-						<svg class="square" viewBox="0 0 100 100">
-							<rect x="0" y="0" width="100" height="100"></rect>
-						</svg>
-                    </ul>
-                    <ul class="desktop-postit-list" ng-if='desktopMode'>
-                        <li ng-repeat="bg_item in become_guru.top_half">
-                            <div class="postit">
-                                <svg class="square" viewBox="0 0 100 100">
-    							    <rect x="0" y="0" width="100" height="100"></rect>
-    							</svg>
-                                <div>
+                                </ion-slide>
+                            </ion-slide-box>
+                        </div>
+                        <div class='full-x'>
+                            <button ng-click='scrollToSection("#splash-university")' class='capitalize'>Become a University Guru</button>
+                        </div>
+                    </div>
+                    <div ng-if='desktopMode' class='flex-wrap-center'>
+                        <ul class="desktop-postit-list">
+                            <li ng-repeat="bg_item in ::become_guru.top_half">
+                                <div class="postit">
+                                    <svg class="square" viewBox="0 0 100 100">
+        							    <rect x="0" y="0" width="100" height="100"></rect>
+        							</svg>
                                     <div>
-										<span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
-	                                    <h1 ng-bind-html="bg_item.header"></h1>
-	                                    <p ng-bind-html="bg_item.content"></p>
-									</div>
+                                        <div>
+    										<span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
+    	                                    <h1 ng-bind-html="bg_item.header"></h1>
+    	                                    <p ng-bind-html="bg_item.content"></p>
+    									</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li ng-repeat="bg_item in become_guru.bottom_half" >
-                            <div class="postit">
-                                <svg class="square" viewBox="0 0 100 100">
-    							    <rect x="0" y="0" width="100" height="100"></rect>
-    							</svg>
-                                <div>
+                            </li>
+                            <li ng-repeat="bg_item in ::become_guru.bottom_half" >
+                                <div class="postit">
+                                    <svg class="square" viewBox="0 0 100 100">
+        							    <rect x="0" y="0" width="100" height="100"></rect>
+        							</svg>
                                     <div>
-										<span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
-	                                    <h1 ng-bind-html="bg_item.header"></h1>
-	                                    <p ng-bind-html="bg_item.content"></p>
-									</div>
+                                        <div>
+    										<span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
+    	                                    <h1 ng-bind-html="bg_item.header"></h1>
+    	                                    <p ng-bind-html="bg_item.content"></p>
+    									</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-					<button ng-click='scrollToSection("#splash-university")' class='capitalize'>Become a University Guru</button>
+                            </li>
+                        </ul>
+					   <button ng-click='scrollToSection("#splash-university")' class='capitalize'>Become a University Guru</button>
+                    </div>
                 </div>
 				<footer>
 					<div class="border"></div>

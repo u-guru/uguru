@@ -69,7 +69,7 @@
 			<h2>Choose the classes you can tutor.</h2>
 		</div>
 		<div class="header-nav">
-			<a class="header-nav-back" ng-click='goBackToStudentHome()'>
+			<a class="header-nav-back" ng-click='goBackOneLevel()'>
 				<svg viewBox="0 0 100 100">
 					<path d="M68,86 L32,50 L68,14"></path>
 				</svg>
@@ -137,11 +137,11 @@
 					</span>
 				</a>
 			</li>
-			<li ng-repeat='course in courses| filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)'>
+			<li ng-repeat='course in university.popular_courses| filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)' ng-if='course.short_name && course.full_name'>
 				<input type="checkbox">
 				<label>
-					<span class="course-name">{{course.department_long}} {{course.code}}</span>
-					<span class="course-title" ng-if="course.full_name">{{course.full_name}}</span>
+					<span class="course-name">{{course.full_name}}</span>
+					<span class="course-title" ng-if="course.full_name">{{course.short_name}}</span>
 				</label>
 			</li>
 		</ul>

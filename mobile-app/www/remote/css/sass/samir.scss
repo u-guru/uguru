@@ -612,3 +612,17 @@ ul#guru-courses-user-profile {
 		color:white;
 	}
 }
+
+.invisible {
+	visibility: hidden !important;
+}
+
+
+
+.university-svg-icon ~ .gmnoprint {
+	z-index:10000 !important;
+}
+
+.invisible .university-svg-icon svg{
+	visibility:hidden !important;
+}

@@ -58,7 +58,7 @@ function CTAService($timeout) {
     //if both dont exist dont do anything
     if (!(parentElem && boxElem && modalElem)) {
       console.log('ERROR: Could not locate elems', boxSelector, parentSelector)
-      return;
+      return false;
     }
     ctaParentDict[boxElem.id] = parentSelector;
     bindCtaToBoxElem(boxElem, modalElem, show_callback);

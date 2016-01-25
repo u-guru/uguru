@@ -2341,12 +2341,12 @@
 .show-markers .university-svg-icon {
   display: block !important; }
 
-.zoom-5 .university-svg-icon {
+.zoom-5 .university-svg-icon, .zoom-4 .university-svg-icon, .zoom-3 .university-svg-icon, .zoom-2 .university-svg-icon, .zoom-1 .university-svg-icon {
   width: 36px; }
-  .zoom-5 .university-svg-icon svg {
+  .zoom-5 .university-svg-icon svg, .zoom-4 .university-svg-icon svg, .zoom-3 .university-svg-icon svg, .zoom-2 .university-svg-icon svg, .zoom-1 .university-svg-icon svg {
     width: 36px;
     height: auto; }
-    .zoom-5 .university-svg-icon svg text {
+    .zoom-5 .university-svg-icon svg text, .zoom-4 .university-svg-icon svg text, .zoom-3 .university-svg-icon svg text, .zoom-2 .university-svg-icon svg text, .zoom-1 .university-svg-icon svg text {
       display: none; }
 
 .zoom-6 .university-svg-icon {

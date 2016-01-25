@@ -8,7 +8,7 @@
 
 	<ion-view class='bg-smoke ng-class:{"hide":page.status.showLoader}'  cache-view='false'>
 		<main id='university-splash' class='splash-landing hs-view full-xy'>
-            <aside id='cta-modal-sidebar' class='splash-sidebar hide ng-class:{"show":page.sidebar.show, "fx-bounce-left fx-duration-100": page.sidebar.show && desktopMode, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+            <aside id='cta-modal-sidebar' class='splash-sidebar ng-class:{"hide":!page.sidebar.show,  "show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
 
             <ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'"> </ion-pane>
 
@@ -56,9 +56,9 @@
 	                <a name='become-scroll' class="splash-nav-link" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
 					<hr/>
 				</div>
-				
+
 				<div class="right">
-					<a name='sidebar' class="splash-burger ng-class:{'hide':page.sidebar.show && desktopMode}" ng-click="toggleSidebar()">
+					<a name='sidebar' class="splash-burger" ng-click="toggleSidebar()">
 	                    <svg viewBox="0 0 100 100">
 	                        <circle cx="50" cy="50" r="36"></circle>
 	                        <path d="M31,35.5 L69,35.5"></path>
