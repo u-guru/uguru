@@ -396,6 +396,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/profile.public.html',
         controller: 'PublicProfileController'
   }).
+  state('root.map', {
+        url: '/map',
+        templateUrl: BASE + 'templates/maps.html',
+        controller: 'GMapController'
+  }).
   state('root.universities', {
         url: '/university/:universityId',
         templateUrl: BASE + 'templates/one.university.html',

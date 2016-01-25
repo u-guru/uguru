@@ -47,17 +47,24 @@ angular.module('uguru.desktop.controllers')
     if ($stateParams.universityObj) {
       console.log('universityObj passed in', $stateParams.universityObj);
       $scope.university = $scope.universityObj;
+      $scope.root.vars.university = $scope.university;
+      $localstorage.setObject('university', $scope.university);
+      $scope.user.university = $scope.university;
     }
     if ($scope.root.vars.university && !$stateParams.universityObj) {
       console.log('root vars passted in ', $scope.root.vars.university);
       $scope.university = $scope.root.vars.university;
+      $localstorage.setObject('university', $scope.university);
+      $scope.user.university = $scope.university;
     }
 
     $timeout(function() {
       var localCacheUniversity = $localstorage.getObject('university');
       if (localCacheUniversity) {
         $scope.university = localCacheUniversity;
-        $scope.root.vars.university = localCacheUniversity
+        $scope.root.vars.university = localCacheUniversity;
+        $localstorage.setObject('university', $scope.university);
+        $scope.user.university = $scope.university;
       }
     });
 

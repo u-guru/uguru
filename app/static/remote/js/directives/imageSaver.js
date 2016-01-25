@@ -8,19 +8,19 @@ angular.module('uguru.directives')
 				return;
 			}
 			var assetURL = attrs.ngSrc.toString();
-			
+
 		 	//var assetURL = attrs.imageSaver.toString();
 		 	//console.log("assetURL: " + assetURL);
 
 			var directory = null;
 
 			try {
-				directory = cordova.file.dataDirectory;	
+				directory = cordova.file.dataDirectory;
 			} catch(err) {
 				//console.log('Turning off imageSaver since deviceReady did not load in time.');
 				return;
 			}
-			
+
 			// if(attrs.imageSaver === 'cache' || !Utilities.checkFreeSpace() ) {
 			// 	directory = cordova.file.cacheDirectory;
 			// }

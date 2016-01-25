@@ -746,9 +746,9 @@ angular.module('uguru.util.controllers')
 
         // Override consolelog to prevent it frmo logging on the client side
         if (!$scope.LOCAL && console.log) {
-            console.log = function() {
-                return;
-            }
+            // console.log = function() {
+            //     return;
+            // }
         }
 
 

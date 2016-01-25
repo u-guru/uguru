@@ -24,33 +24,68 @@ angular.module('uguru.guru.controllers')
   '$interval',
   'KeyboardService',
   'LoadingService',
+  '$stateParams',
   function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicSlideBoxDelegate, $ionicViewSwitcher, $window, University, uTracker, AnimationService,
-    Category,DeviceService, Utilities, $interval, KeyboardService, LoadingService) {
+    Category,DeviceService, Utilities, $interval, KeyboardService, LoadingService, $stateParams) {
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
 
     var startScanner;
+    $scope.courses = [];
 
+    console.log('starting to detect object');
+    if ($stateParams.universityObj) {
+      console.log('universityObj passed in', $stateParams.universityObj);
+      $scope.university = $scope.universityObj;
+      $scope.root.vars.university = $scope.university;
+      $localstorage.setObject('university', $scope.university);
+      $scope.user.university = $scope.university;
+    }
+    if ($scope.root.vars.university && !$stateParams.universityObj) {
+      console.log('root vars passted in ', $scope.root.vars.university);
+      $scope.university = $scope.root.vars.university;
+      $localstorage.setObject('university', $scope.university);
+      $scope.user.university = $scope.university;
+    }
 
+    $timeout(function() {
+      var localCacheUniversity = $localstorage.getObject('university');
+      if (localCacheUniversity) {
+        $scope.university = localCacheUniversity;
+        $scope.root.vars.university = localCacheUniversity
+        $localstorage.setObject('university', $scope.university);
+        $scope.user.university = $scope.university;
+      }
+    });
 
-    // $timeout(function() {
-    //   $scope.courses = University.source.courses;
+    $scope.goBackOneLevel = function() {
+      if ($scope.root.vars.university || $scope.university) {
+        var university = $scope.university || $scope.root.vars.university;
+        AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
+      } else {
+        AnimationService.flip('^.home');
+      }
+    }
 
-    //   if (!$scope.courses || !$scope.courses.length) {
-    //     LoadingService.showAmbig("Loading Courses...", 10000);
-    //     loadingCourseCallback = function(scope, courses) {
-    //       scope.courses = courses;
-    //       $timeout(function() {
-    //         LoadingService.hide();
-    //       }, 250)
-    //     }
+    $timeout(function() {
+      $scope.courses = University.source.courses;
 
-    //     University.getPopularCourses($scope.user.university_id, $scope, loadingCourseCallback);
-    //   }
+      if (!$scope.courses || !$scope.courses.length) {
+        LoadingService.showAmbig("Loading Courses...", 10000);
+        loadingCourseCallback = function(scope, courses) {
+          scope.courses = courses;
+          $scope.university.popular_courses = courses;
+          $timeout(function() {
+            LoadingService.hide();
+          }, 250)
+        }
 
-    // }, 50)
+        University.getPopularCourses($scope.user.university_id || $scope.university.id, $scope, loadingCourseCallback);
+      }
+
+    }, 50)
 
 
 
