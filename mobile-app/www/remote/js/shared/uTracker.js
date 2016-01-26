@@ -50,7 +50,7 @@ function uTracker($timeout) {
 
 				case 'lo':
 					console.log("initializing localytics tracking: " + defaultTokens.lo);
-					ll('init', token || defaultTokens.lo);
+					// ll('init', token || defaultTokens.lo);
 					// localyticsSession = LocalyticsSession(token || defaultTokens.lo);
 					// localyticsSession.open();
 					// localyticsSession.upload();
@@ -72,8 +72,9 @@ function uTracker($timeout) {
 					//var mixpanelID = deviceUUID.substring(0, 8);
 					mixpanel.identify(userID);
 					break;
-				case 'lo': 
-					ll('setCustomerId', userID);
+				case 'lo':
+					var doNothing;
+					// ll('setCustomerId', userID);
 					break;
 				case 'ga': break;
 				case 'hp': break;
@@ -100,7 +101,7 @@ function uTracker($timeout) {
 						// }
 					);
 					break;
-				case 'lo': 
+				case 'lo':
 					//ll('setCustomDimension', 0, )
 					break;
 				case 'ga': break;
@@ -144,7 +145,7 @@ function uTracker($timeout) {
 				case 'lo':
 					$timeout(function() {
 						ll('tagEvent', event, data);
-					}, 300); 
+					}, 300);
 					break;
 				case 'ga': break;
 				case 'hp': break;

@@ -1,5 +1,5 @@
 <div class='bg-charcoal full-xy flex-wrap-center' cache-view="false">
-    <div  style='max-height:500px !important;' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
+    <div style='max-height:500px !important;' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
         <ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
                 <ui-gmap-markers
                     models="map.markers"
@@ -8,7 +8,6 @@
                     options="'options'"
                     icon="'icon'"
                     doRebuildAll="map.rebuildMarkers"
-                    class="ng-class:{'invisible': !mapHasRendered}"
                 >
                 </ui-gmap-markers>
                 <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">

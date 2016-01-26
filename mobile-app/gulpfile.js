@@ -165,6 +165,7 @@ gulp.task('styles', function() {
   var cssStream2 = gulp.src('www/remote/css/archive/animate.css');
   var cssStream3 = gulp.src('www/remote/css/archive/angular-fx.css');
   var cssStream4 = gulp.src('www/remote/css/sass/default.css');
+  var cssStream2 = gulp.src('www/remote/css/sass/loading.css');
   var cssStream5 = gulp.src('www/remote/css/sass/material.css');
   var cssStream6 = gulp.src('www/remote/css/sass/desktop.css');
   var cssStream7 = gulp.src('www/remote/css/sass/desktop-student.css');
@@ -246,10 +247,12 @@ gulp.task('scripts', function() {
 
     .src([
       'templates.js',
+      "lib/google/webfont.js",
+      'lib/uguru/detect.mobile.js',
+      'lib/uguru/preload.analytics.js',
       'lib/ionic/js/ionic.bundle.min.js',
       'lib/angular-ui-custom/ui-bootstrap-custom*.min.js',
       'lib/lodash/dist/lodash.js',
-      'lib/stripe/stripe.js',
       'lib/cta/cta*.js',
       'lib/peel/peel.js',
       'lib/countup/*.js',
@@ -258,13 +261,14 @@ gulp.task('scripts', function() {
       'lib/facebook/openfb.js',
       'lib/scroll/waypoints.min.js',
       'lib/facebook/ngopenfb.js',
+      'lib/facebook/facebookConnectPlugin.js',
       'lib/facebook/*.js',
       'lib/ngElastic/*.js',
       'lib/ngMoment/moment.min.js',
       'lib/ngMoment/*.js',
       'lib/angular-google-maps/angular-google-maps.min.js',
       'http://maps.google.com/maps/api/js?sensor=false',
-      'lib/angular-google-maps/google-marker-with-labels.js',
+      // 'lib/angular-google-maps/google-marker-with-labels.js',
       'lib/restangular/dist/restangular.js',
       'lib/angular-strap/angular-strap.min.js',
       'lib/angular-strap/angular-strap.tpl.min.js',
@@ -327,8 +331,8 @@ gulp.task('scripts', function() {
   return streamqueue({ objectMode: true }, scriptStream, templateStream)
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.concat('app.js')))
-    .pipe(plugins.if(build, plugins.uglify()))
-    .pipe(plugins.if(build, plugins.rev()))
+    // .pipe(plugins.if(build, plugins.uglify()))
+    // .pipe(plugins.if(build, plugins.rev()))
 
     .pipe(gulp.dest(dest))
 
