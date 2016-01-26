@@ -565,14 +565,14 @@ angular.module('uguru.util.controllers')
         console.log('university button clicked');
       }
       var timerCounter = null;
-      $scope.$on('$ionicView.beforeEnter', function() {
-          console.log('before ionic has entered');
-          var index = 0;
-          timerCounter = setInterval(function() {
-            index += 1
-            console.log(index, 'seconds have passed');
-          }, 1000)
-      })
+      // $scope.$on('$ionicView.beforeEnter', function() {
+      //     console.log('before ionic has entered');
+      //     var index = 0;
+      //     timerCounter = setInterval(function() {
+      //       index += 1
+      //       console.log(index, 'seconds have passed');
+      //     }, 1000)
+      // })
 
       $scope.$on('$ionicView.enter', function() {
          console.log('ionic has entered');
