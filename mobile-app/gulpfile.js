@@ -250,7 +250,7 @@ gulp.task('scripts', function() {
       "lib/google/webfont.js",
       'lib/uguru/detect.mobile.js',
       'lib/uguru/preload.analytics.js',
-      'lib/ionic/js/ionic.bundle.min.js',
+      'lib/ionic/js/ionic.bundle.min.v2.js',
       'lib/angular-ui-custom/ui-bootstrap-custom*.min.js',
       'lib/lodash/dist/lodash.js',
       'lib/cta/cta*.js',
