@@ -856,15 +856,15 @@
 						margin: 0 auto;
 						li {
 							padding: 15px;
-							h2 {
-								font-size: 36px;
-								font-weight: 600;
-							}
-							p {
-								font-size: 24px;
-								font-weight: 400;
-							}
 						}
+					}
+					h2 {
+						font-size: 36px;
+						font-weight: 600;
+					}
+					p {
+						font-size: 24px;
+						font-weight: 400;
 					}
 					@media screen and (max-width: 768px) {
 						ul {

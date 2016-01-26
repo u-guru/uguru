@@ -55,6 +55,41 @@
 		background: none!important;
 	}
 }
+.pf-contact {
+	&.btn-ghost-white {
+		display: none;
+		margin-top: 15px;
+	}
+	&:not(.btn-ghost-white) {
+		position: fixed;
+		z-index: 99;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background: rgba(white, .9);
+		color: lighten($slate, 15%);
+		font-weight: 600;
+		&:hover, &:focus {
+			@include opacity(1);
+			background: white;
+		}
+		&:active {
+			background: lighten($slate, 15%);
+			color: white;
+		}
+	}
+}
+@media screen and (min-width:768px) {
+	.pf-contact {
+		&.btn-ghost-white {
+			display: inline-block;
+		}
+		&:not(.btn-ghost-white) {
+			display: none;
+		}
+	}
+	
+}
 .pf-url {
 	@include flex;
 	@include flex-center;
@@ -277,9 +312,11 @@
 				@include opacity(.75);
 			}
 			.user-icon {
-				width: 72px;
-				height: 72px;
 				border-width: 3px;
+				@media screen and (max-width:768px) {
+					width: 72px;
+					height: 72px;
+				}
 			}
 			.pf-rating {
 				margin: 5px auto 0;

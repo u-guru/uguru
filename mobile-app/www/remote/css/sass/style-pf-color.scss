@@ -117,6 +117,20 @@
 	}
 }
 .pf-type-academic {
+	.pf-contact {
+		&.btn-ghost-white {
+			&:hover, &:focus {
+				color: $cerise;
+			}
+		}
+		&:not(.btn-ghost-white) {
+			color: $cerise;
+			&:active {
+				background: $cerise;
+				color: white;
+			}
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -523,6 +537,20 @@
 	}
 }
 .pf-type-photography {
+	.pf-contact {
+		&.btn-ghost-white {
+			&:hover, &:focus {
+				color: $moola;
+			}
+		}
+		&:not(.btn-ghost-white) {
+			color: $moola;
+			&:active {
+				background: $moola;
+				color: white;
+			}
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -1071,6 +1099,20 @@
 	}
 }
 .pf-type-baking {
+	.pf-contact {
+		&.btn-ghost-white {
+			&:hover, &:focus {
+				color: $gold;
+			}
+		}
+		&:not(.btn-ghost-white) {
+			color: $gold;
+			&:active {
+				background: $gold;
+				color: white;
+			}
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -1541,6 +1583,20 @@
 	}
 }
 .pf-type-household {
+	.pf-contact {
+		&.btn-ghost-white {
+			&:hover, &:focus {
+				color: $cobalt;
+			}
+		}
+		&:not(.btn-ghost-white) {
+			color: $cobalt;
+			&:active {
+				background: $cobalt;
+				color: white;
+			}
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -1947,6 +2003,20 @@
 	}
 }
 .pf-type-delivery {
+	.pf-contact {
+		&.btn-ghost-white {
+			&:hover, &:focus {
+				color: $auburn;
+			}
+		}
+		&:not(.btn-ghost-white) {
+			color: $auburn;
+			&:active {
+				background: $auburn;
+				color: white;
+			}
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -2353,6 +2423,20 @@
 	}
 }
 .pf-type-freelancing {
+	.pf-contact {
+		&.btn-ghost-white {
+			&:hover, &:focus {
+				color: $orange;
+			}
+		}
+		&:not(.btn-ghost-white) {
+			color: $orange;
+			&:active {
+				background: $orange;
+				color: white;
+			}
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -2759,6 +2843,20 @@
 	}
 }
 .pf-type-athletic {
+	.pf-contact {
+		&.btn-ghost-white {
+			&:hover, &:focus {
+				color: $eggplant;
+			}
+		}
+		&:not(.btn-ghost-white) {
+			color: $eggplant;
+			&:active {
+				background: $eggplant;
+				color: white;
+			}
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -3165,6 +3263,20 @@
 	}
 }
 .pf-type-tech {
+	.pf-contact {
+		&.btn-ghost-white {
+			&:hover, &:focus {
+				color: $azure;
+			}
+		}
+		&:not(.btn-ghost-white) {
+			color: $azure;
+			&:active {
+				background: $azure;
+				color: white;
+			}
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
