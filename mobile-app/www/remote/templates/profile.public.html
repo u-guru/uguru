@@ -7,6 +7,19 @@
 
 	<section>
 		<!--Left third -->
+		<div class="pf-banner-container">
+			<a class="pf-banner pf-banner-{{user.academic_shop.category.hex_color}} ng-class:{'pf-banner-edit':!profile.public_mode, 'active': isActive}" ng-include="img_base + 'templates/svg/' + user.academic_shop.category.hex_color + '.html'" ng-init="isActive = false" ng-click="isActive = !isActive"></a>
+			<div>
+				<a class="pf-banner pf-banner-academic" ng-include="img_base + 'templates/svg/academic.html'"></a>
+				<a class="pf-banner pf-banner-photo" ng-include="img_base + 'templates/svg/photography.html'"></a>
+				<a class="pf-banner pf-banner-baking" ng-include="img_base + 'templates/svg/baking.html'"></a>
+				<a class="pf-banner pf-banner-household" ng-include="img_base + 'templates/svg/household.html'"></a>
+				<a class="pf-banner pf-banner-delivery" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></a>
+				<a class="pf-banner pf-banner-freelancing" ng-include="img_base + 'templates/svg/freelancing.html'"></a>
+				<a class="pf-banner pf-banner-athletic" ng-include="img_base + 'templates/svg/athletic.html'"></a>
+				<a class="pf-banner pf-banner-tech" ng-include="img_base + 'templates/svg/tech.html'"></a>
+			</div>
+		</div>
 		<header class="third">
 			<div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
 			<div class="pf-header-color"></div>
@@ -14,14 +27,6 @@
 				<span>Edit Mode</span>
 				<button class="btn-ghost-white">Preview</button>
 			</div>
-			<div class="pf-banner pf-banner-academic ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/academic.html'"></div>
-			<div class="pf-banner pf-banner-photo ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/photography.html'"></div>
-			<div class="pf-banner pf-banner-baking ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/baking.html'"></div>
-			<div class="pf-banner pf-banner-household ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/household.html'"></div>
-			<div class="pf-banner pf-banner-delivery ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></div>
-			<div class="pf-banner pf-banner-freelancing ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/freelancing.html'"></div>
-			<div class="pf-banner pf-banner-athletic ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/athletic.html'"></div>
-			<div class="pf-banner pf-banner-tech ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/tech.html'"></div>
 			<div class="pf-header ng-class:{'pf-header-edit': !profile.public_mode}">
 				<span class="user-icon" ng-if="profile.public_mode" style="background-image: url({{user.profile_url}});"></span>
 				<a class="user-icon-container" ng-click='takeProfilePhoto()' ng-if="!profile.public_mode">

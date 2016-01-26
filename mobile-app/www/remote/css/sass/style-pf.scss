@@ -1,6 +1,139 @@
 @import 'mixin';
 
 /* ---------- PROFILE STYLES */
+.pf-banner {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 15px;
+	background: $shamrock;
+	width: 50px;
+	height: 50px;
+	svg {
+		position: absolute;
+		top: 5px;
+		padding: 5px;
+		width: 50px;
+		height: 50px;
+		path {
+			@include svg-stroke(white, 3);
+		}
+	}
+	&:after {
+		@include transition(.15s ease-in-out);
+		content: "";
+		position: absolute;
+		bottom: -20px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border: 25px solid $shamrock;
+		border-top-width: 10px!important;
+		border-bottom-width: 10px!important;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		background: white!important;
+		&:after {
+			border-color: white!important;
+			border-bottom-color: transparent!important;
+		}
+	}
+}
+.pf-banner-container {
+	z-index: 99;
+	div {
+		@include transition-type(background, .15s ease-in-out);
+		position: relative;
+		z-index: 100;
+		.pf-banner {
+			&:nth-child(1) {
+				z-index: 107;
+				top: 10px;
+			}
+			&:nth-child(2) {
+				z-index: 106;
+				top: 20px;
+			}
+			&:nth-child(3) {
+				z-index: 105;
+				top: 30px;
+			}
+			&:nth-child(4) {
+				z-index: 104;
+				top: 40px;
+			}
+			&:nth-child(5) {
+				z-index: 103;
+				top: 50px;
+			}
+			&:nth-child(6) {
+				z-index: 102;
+				top: 60px;
+			}
+			&:nth-child(7) {
+				z-index: 101;
+				top: 70px;
+			}
+			&:nth-child(8) {
+				z-index: 100;
+				top: 80px;
+			}
+			&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+				@include opacity-important(0);
+			}
+		}
+	}
+	> .pf-banner:not(.active) + div {
+		.pf-banner {
+			@include opacity(.2);
+			background: white!important;
+			&:after {
+				border-color: white!important;
+				border-bottom-color: transparent!important;
+			}
+		}
+	}
+	> .pf-banner {
+		@include opacity-important(1);
+		z-index: 108;
+		&.active {
+			+ div {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				background: rgba($slate,.9);
+				.pf-banner {
+					@include opacity-important(1);
+					&:nth-child(1) {
+						@include translate-y(50px);
+					}
+					&:nth-child(2) {
+						@include translate-y(100px);
+					}
+					&:nth-child(3) {
+						@include translate-y(150px);
+					}
+					&:nth-child(4) {
+						@include translate-y(200px);
+					}
+					&:nth-child(5) {
+						@include translate-y(250px);
+					}
+					&:nth-child(6) {
+						@include translate-y(300px);
+					}
+					&:nth-child(7) {
+						@include translate-y(350px);
+					}
+					&:nth-child(8) {
+						@include translate-y(400px);
+					}
+				}
+			}
+		}
+	}
+}
 .pf-review-amt {
 	display: block;
 	font-size: 14px;
@@ -229,45 +362,6 @@
 		h1.pf-title {
 			font-size: 28px!important;
 			text-transform: none;
-		}
-		.pf-banner {
-			display: none;
-			position: absolute;
-			top: 0;
-			left: 15px;
-			z-index: 21;
-			background: $shamrock;
-			width: 50px;
-			height: 50px;
-			svg {
-				position: absolute;
-				top: 5px;
-				padding: 5px;
-				width: 50px;
-				height: 50px;
-				path {
-					@include svg-stroke(white, 3);
-				}
-			}
-			&:after {
-				content: "";
-				position: absolute;
-				bottom: -20px;
-				left: 0;
-				width: 0;
-				height: 0;
-				border: 25px solid $shamrock;
-				border-top-width: 10px!important;
-				border-bottom-width: 10px!important;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-edit {
-				background: white;
-				&:after {
-					border: 25px solid white;
-					border-bottom-color: transparent;
-				}
-			}
 		}
 		.pf-header {
 			width: 100%;

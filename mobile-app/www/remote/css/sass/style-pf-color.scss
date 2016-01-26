@@ -1,5 +1,103 @@
 @import 'mixin';
 
+.pf-banner.pf-banner-academic {
+	background: $cerise;
+	&:after {
+		border-color: $cerise;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $cerise;
+		}
+	}
+}
+.pf-banner.pf-banner-photo {
+	background: $moola;
+	&:after {
+		border-color: $moola;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $moola;
+		}
+	}
+}
+.pf-banner.pf-banner-baking {
+	background: $gold;
+	&:after {
+		border-color: $gold;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $gold;
+		}
+	}
+}
+.pf-banner.pf-banner-household {
+	background: $cobalt;
+	&:after {
+		border-color: $cobalt;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $cobalt;
+		}
+	}
+}
+.pf-banner.pf-banner-delivery {
+	background: $auburn;
+	&:after {
+		border-color: $auburn;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $auburn;
+		}
+	}
+}
+.pf-banner.pf-banner-freelancing {
+	background: $orange;
+	&:after {
+		border-color: $orange;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $orange;
+		}
+	}
+}
+.pf-banner.pf-banner-athletic {
+	background: $eggplant;
+	&:after {
+		border-color: $eggplant;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $eggplant;
+		}
+	}
+}
+.pf-banner.pf-banner-tech {
+	background: $azure;
+	&:after {
+		border-color: $azure;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $azure;
+		}
+	}
+}
+
+
 // ACADEMIC
 #desktop-guru-home {
 	.pf-type-academic {
@@ -171,21 +269,6 @@
 	header.third {
 		.pf-header-color {
 			background: desaturate(darken($cerise, 20%), 20%);
-		}
-		.pf-banner {
-			background: $cerise;
-			&:after {
-				border: 25px solid $cerise;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-academic {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $cerise;
-				}
-			}
 		}
 	}
 	.pf-url {
@@ -729,21 +812,6 @@
 		.pf-header-color {
 			background: desaturate(darken($moola, 20%), 20%);
 		}
-		.pf-banner {
-			background: $moola;
-			&:after {
-				border: 25px solid $moola;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-photo {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $moola;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -1145,21 +1213,6 @@
 	header.third {
 		.pf-header-color {
 			background: desaturate(darken($gold, 40%), 20%);
-		}
-		.pf-banner {
-			background: $gold;
-			&:after {
-				border: 25px solid $gold;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-baking {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $gold;
-				}
-			}
 		}
 	}
 	.pf-url {
@@ -1626,21 +1679,6 @@
 		.pf-header-color {
 			background: desaturate(darken($cobalt, 30%), 20%);
 		}
-		.pf-banner {
-			background: $cobalt;
-			&:after {
-				border: 25px solid $cobalt;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-household {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $cobalt;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -2041,21 +2079,6 @@
 	header.third {
 		.pf-header-color {
 			background: desaturate(darken($auburn, 30%), 20%);
-		}
-		.pf-banner {
-			background: $auburn;
-			&:after {
-				border: 25px solid $auburn;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-delivery {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $auburn;
-				}
-			}
 		}
 	}
 	.pf-url {
@@ -2458,21 +2481,6 @@
 		.pf-header-color {
 			background: desaturate(darken($orange, 20%), 20%);
 		}
-		.pf-banner {
-			background: $orange;
-			&:after {
-				border: 25px solid $orange;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-freelancing {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $orange;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -2874,21 +2882,6 @@
 		.pf-header-color {
 			background: desaturate(darken($eggplant, 20%), 10%);
 		}
-		.pf-banner {
-			background: $eggplant;
-			&:after {
-				border: 25px solid $eggplant;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-athletic {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $eggplant;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -3289,21 +3282,6 @@
 	header.third {
 		.pf-header-color {
 			background: desaturate(darken($azure, 20%), 10%);
-		}
-		.pf-banner {
-			background: $azure;
-			&:after {
-				border: 25px solid $azure;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-tech {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $azure;
-				}
-			}
 		}
 	}
 	.pf-url {

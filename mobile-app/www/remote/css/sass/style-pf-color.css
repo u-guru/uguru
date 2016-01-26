@@ -1,3 +1,107 @@
+.pf-banner.pf-banner-academic {
+  background: #e6389b;
+}
+
+.pf-banner.pf-banner-academic:after {
+  border-color: #e6389b;
+  border-bottom-color: transparent;
+}
+
+.pf-banner.pf-banner-academic.pf-banner-edit svg path {
+  stroke: #e6389b;
+}
+
+.pf-banner.pf-banner-photo {
+  background: #81B566;
+}
+
+.pf-banner.pf-banner-photo:after {
+  border-color: #81B566;
+  border-bottom-color: transparent;
+}
+
+.pf-banner.pf-banner-photo.pf-banner-edit svg path {
+  stroke: #81B566;
+}
+
+.pf-banner.pf-banner-baking {
+  background: #F6C64E;
+}
+
+.pf-banner.pf-banner-baking:after {
+  border-color: #F6C64E;
+  border-bottom-color: transparent;
+}
+
+.pf-banner.pf-banner-baking.pf-banner-edit svg path {
+  stroke: #F6C64E;
+}
+
+.pf-banner.pf-banner-household {
+  background: #7872e3;
+}
+
+.pf-banner.pf-banner-household:after {
+  border-color: #7872e3;
+  border-bottom-color: transparent;
+}
+
+.pf-banner.pf-banner-household.pf-banner-edit svg path {
+  stroke: #7872e3;
+}
+
+.pf-banner.pf-banner-delivery {
+  background: #F04F54;
+}
+
+.pf-banner.pf-banner-delivery:after {
+  border-color: #F04F54;
+  border-bottom-color: transparent;
+}
+
+.pf-banner.pf-banner-delivery.pf-banner-edit svg path {
+  stroke: #F04F54;
+}
+
+.pf-banner.pf-banner-freelancing {
+  background: #E5753C;
+}
+
+.pf-banner.pf-banner-freelancing:after {
+  border-color: #E5753C;
+  border-bottom-color: transparent;
+}
+
+.pf-banner.pf-banner-freelancing.pf-banner-edit svg path {
+  stroke: #E5753C;
+}
+
+.pf-banner.pf-banner-athletic {
+  background: #9A5BC5;
+}
+
+.pf-banner.pf-banner-athletic:after {
+  border-color: #9A5BC5;
+  border-bottom-color: transparent;
+}
+
+.pf-banner.pf-banner-athletic.pf-banner-edit svg path {
+  stroke: #9A5BC5;
+}
+
+.pf-banner.pf-banner-tech {
+  background: #55A4B7;
+}
+
+.pf-banner.pf-banner-tech:after {
+  border-color: #55A4B7;
+  border-bottom-color: transparent;
+}
+
+.pf-banner.pf-banner-tech.pf-banner-edit svg path {
+  stroke: #55A4B7;
+}
+
 #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
   background: #e6389b !important;
 }
@@ -138,23 +242,6 @@
 
 .pf-type-academic header.third .pf-header-color {
   background: #912763;
-}
-
-.pf-type-academic header.third .pf-banner {
-  background: #e6389b;
-}
-
-.pf-type-academic header.third .pf-banner:after {
-  border: 25px solid #e6389b;
-  border-bottom-color: transparent;
-}
-
-.pf-type-academic header.third .pf-banner.pf-banner-academic {
-  display: block;
-}
-
-.pf-type-academic header.third .pf-banner.pf-banner-edit svg path {
-  stroke: #e6389b;
 }
 
 .pf-type-academic .pf-url li:first-child input {
@@ -715,23 +802,6 @@
   background: #56684d;
 }
 
-.pf-type-photography header.third .pf-banner {
-  background: #81B566;
-}
-
-.pf-type-photography header.third .pf-banner:after {
-  border: 25px solid #81B566;
-  border-bottom-color: transparent;
-}
-
-.pf-type-photography header.third .pf-banner.pf-banner-photo {
-  display: block;
-}
-
-.pf-type-photography header.third .pf-banner.pf-banner-edit svg path {
-  stroke: #81B566;
-}
-
 .pf-type-photography .pf-url li:first-child input {
   color: #56684d !important;
 }
@@ -1053,23 +1123,6 @@
 
 .pf-type-baking header.third .pf-header-color {
   background: #664e12;
-}
-
-.pf-type-baking header.third .pf-banner {
-  background: #F6C64E;
-}
-
-.pf-type-baking header.third .pf-banner:after {
-  border: 25px solid #F6C64E;
-  border-bottom-color: transparent;
-}
-
-.pf-type-baking header.third .pf-banner.pf-banner-baking {
-  display: block;
-}
-
-.pf-type-baking header.third .pf-banner.pf-banner-edit svg path {
-  stroke: #F6C64E;
 }
 
 .pf-type-baking .pf-url li:first-child input {
@@ -1438,23 +1491,6 @@
   background: #37328a;
 }
 
-.pf-type-household header.third .pf-banner {
-  background: #7872e3;
-}
-
-.pf-type-household header.third .pf-banner:after {
-  border: 25px solid #7872e3;
-  border-bottom-color: transparent;
-}
-
-.pf-type-household header.third .pf-banner.pf-banner-household {
-  display: block;
-}
-
-.pf-type-household header.third .pf-banner.pf-banner-edit svg path {
-  stroke: #7872e3;
-}
-
 .pf-type-household .pf-url li:first-child input {
   color: #37328a !important;
 }
@@ -1775,23 +1811,6 @@
 
 .pf-type-delivery header.third .pf-header-color {
   background: #881e21;
-}
-
-.pf-type-delivery header.third .pf-banner {
-  background: #F04F54;
-}
-
-.pf-type-delivery header.third .pf-banner:after {
-  border: 25px solid #F04F54;
-  border-bottom-color: transparent;
-}
-
-.pf-type-delivery header.third .pf-banner.pf-banner-delivery {
-  display: block;
-}
-
-.pf-type-delivery header.third .pf-banner.pf-banner-edit svg path {
-  stroke: #F04F54;
 }
 
 .pf-type-delivery .pf-url li:first-child input {
@@ -2116,23 +2135,6 @@
   background: #924c29;
 }
 
-.pf-type-freelancing header.third .pf-banner {
-  background: #E5753C;
-}
-
-.pf-type-freelancing header.third .pf-banner:after {
-  border: 25px solid #E5753C;
-  border-bottom-color: transparent;
-}
-
-.pf-type-freelancing header.third .pf-banner.pf-banner-freelancing {
-  display: block;
-}
-
-.pf-type-freelancing header.third .pf-banner.pf-banner-edit svg path {
-  stroke: #E5753C;
-}
-
 .pf-type-freelancing .pf-url li:first-child input {
   color: #924c29 !important;
 }
@@ -2455,23 +2457,6 @@
   background: #643a80;
 }
 
-.pf-type-athletic header.third .pf-banner {
-  background: #9A5BC5;
-}
-
-.pf-type-athletic header.third .pf-banner:after {
-  border: 25px solid #9A5BC5;
-  border-bottom-color: transparent;
-}
-
-.pf-type-athletic header.third .pf-banner.pf-banner-athletic {
-  display: block;
-}
-
-.pf-type-athletic header.third .pf-banner.pf-banner-edit svg path {
-  stroke: #9A5BC5;
-}
-
 .pf-type-athletic .pf-url li:first-child input {
   color: #643a80 !important;
 }
@@ -2792,23 +2777,6 @@
 
 .pf-type-tech header.third .pf-header-color {
   background: #3a626c;
-}
-
-.pf-type-tech header.third .pf-banner {
-  background: #55A4B7;
-}
-
-.pf-type-tech header.third .pf-banner:after {
-  border: 25px solid #55A4B7;
-  border-bottom-color: transparent;
-}
-
-.pf-type-tech header.third .pf-banner.pf-banner-tech {
-  display: block;
-}
-
-.pf-type-tech header.third .pf-banner.pf-banner-edit svg path {
-  stroke: #55A4B7;
 }
 
 .pf-type-tech .pf-url li:first-child input {
