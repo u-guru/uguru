@@ -22,23 +22,9 @@ angular.module('uguru.util.controllers')
 		$scope.setActiveThread = function(tabName) {
 			$scope.page.active.tabName = tabName;
 		}
-		// Define format
-		// - Google hyperlinks to subprojects
-		// --- uguru/milestones/january/date
-		// --- I maintain all of it, dw on your end
-		// --- Create day goals
-		// --- Test Sprint vs Weak
-		// - functional + testing is a MUST
-		// - Sleek is best-effort
 
-		// alpha beta percentages
-		// fill in this weeks' projects
-		// visual colors
-		// all remaining projects --> icebox
-		// team photos within betas
-		// moodboard component page MVP
-		// roles + responsibilities
-		// Glossary
+
+		//@GABRIELLE-NOTE
 		$scope.moodboardComponents = [
 			{
 				name: "Cards",
@@ -83,84 +69,50 @@ angular.module('uguru.util.controllers')
 
 		]
 
-		var getProjectOneActionItems = function() {
-			var resultDict = {};
-
-			//STOP USING THIS DAMN THING & FINALIZE
-			resultDict.alpha = [
-				{'Add all projects to admin + template': false},
-				{'Compile + Ship MVP': false},
-				{'Fluid Spec': false},
-				{'Data:  Finalize categories, Analyse + get + Scrape Popular Courses, Map All Documents': false},
-				{"Testing comfort + verify + admin": false},
-				{'Content, Privacy Terms, Final categories': false},
-				{'Minor errors --> back button action become guru / login/ signup':false},
-				{'Fluidity Spec':false},
-				{"Sanitize Courses": false},
-				{"Fluidity spec + implement": false},
-				{"Login / signup / facebook connect spec": false},
-				{"list of all unfinished threads": false},
-				{"Code Cleanup": false},
-				{"Admin tools private only": false},
-				{"Map Window": false}
-			];
 
 
-			resultDict.beta = [{"Pre-App Test Spec": false}, {"Full University Page PDF Report": false}];
-
-			resultDict.production = [
-				{"Complete all pages/components":true},
-				{"Map Finalize + customize map":false},
-				{"Home page scroll spec + implement":false},
-				{"Content card spacing + spec":false},
-				{"Tab bar":false},
-				{"Cross platform":false},
-				{"Fluidity":false},
-				{"Resolve Categories":false},
-				{"Support styling + finalize w.r.t support icon":false},
-				{"Agree on animation spec":false},
-				{"FAQ polishing":false},
-				{"Staging Env":false}
-			];
-
-			return resultDict;
-		}
-
-		$scope.calculateProjectProgress = function(project) {
+		var calculateProjectProgress = function(project) {
 			var progressDict = {alpha:0, alpha_total:0, beta:0, beta_total:0, production_total:0, production:0, overall:0};
-			progressDict.total = project.alpha.length + project.beta.length + project.production.length;
-			for (var i = 0; i < project.alpha.length; i ++) {
-				var indexAlphaItem = project.alpha[i];
-				var indexAlphaKey = Object.keys(project.alpha[i]);
-				progressDict.alpha_total += 1;
-				if (indexAlphaItem[indexAlphaKey]) {
-					progressDict.alpha += 1;
-					progressDict.overall += 1;
-				}
-			}
-			for (var j = 0; j < project.beta.length; j ++) {
-				var indexBetaItem = project.beta[j];
-				var indexBetaKey = Object.keys(project.beta[j]);
-				progressDict.beta_total += 1;
-				if (indexBetaItem[indexBetaKey]) {
-					progressDict.beta += 1;
-					progressDict.overall += 1;
-				}
 
+			progressDict.total = ((project.alpha && project.alpha.length) || 0) + ((project.beta && project.beta.length) || 0) + ((project.production && project.production.length) || 0)
+			if (project.alpha) {
+				for (var i = 0; i < project.alpha.length; i ++) {
+					var indexAlphaItem = project.alpha[i];
+					var indexAlphaKey = Object.keys(project.alpha[i]);
+					progressDict.alpha_total += 1;
+					if (indexAlphaItem[indexAlphaKey]) {
+						progressDict.alpha += 1;
+						progressDict.overall += 1;
+					}
+				}
 			}
-			for (var k = 0; k < project.production.length; k ++) {
-				var indexProductionItem = project.production[k];
-				var indexProductionKey = Object.keys(project.production[k]);
-				progressDict.production_total += 1;
-				if (indexProductionItem[indexProductionKey]) {
-					progressDict.production += 1;
-					progressDict.overall += 1;
+			if (project.beta) {
+				for (var j = 0; j < project.beta.length; j ++) {
+					var indexBetaItem = project.beta[j];
+					var indexBetaKey = Object.keys(project.beta[j]);
+					progressDict.beta_total += 1;
+					if (indexBetaItem[indexBetaKey]) {
+						progressDict.beta += 1;
+						progressDict.overall += 1;
+					}
+
+				}
+			}
+			if (project.production) {
+				for (var k = 0; k < project.production.length; k ++) {
+					var indexProductionItem = project.production[k];
+					var indexProductionKey = Object.keys(project.production[k]);
+					progressDict.production_total += 1;
+					if (indexProductionItem[indexProductionKey]) {
+						progressDict.production += 1;
+						progressDict.overall += 1;
+					}
 				}
 			}
 
-			progressDict.alpha_percent = parseInt((progressDict.alpha / parseFloat(progressDict.alpha_total) * 100)) + '%';
-			progressDict.beta_percent = parseInt((progressDict.beta / parseFloat(progressDict.beta_total) * 100)) + '%';
-			progressDict.production_percent = parseInt((progressDict.production / parseFloat(progressDict.production_total) * 100)) + '%';
+			progressDict.alpha_percent =  progressDict.alpa_total &&  parseInt((progressDict.alpha / parseFloat(progressDict.alpha_total) * 100)) + '%';
+			progressDict.beta_percent = progressDict.beta_total && parseInt((progressDict.beta / parseFloat(progressDict.beta_total) * 100)) + '%';
+			progressDict.production_percent = progressDict.production_total && parseInt((progressDict.production / parseFloat(progressDict.production_total) * 100)) + '%';
 			progressDict.overall_percent = parseInt((progressDict.overall / parseFloat(progressDict.total) * 100)) + '%';
 
 			if (progressDict.alpha === progressDict.alpha_total) {
@@ -189,17 +141,7 @@ angular.module('uguru.util.controllers')
 		// sprints --> many projects --> projects --> many action items
 		// have a sprint id
 
-		var addUniqueIdToAllProjects = function(sprints) {
-			index = 0;
-			for (var i = 0; i < sprints.length; i++) {
-				var indexSprint = sprints[i];
-				for (var j = 0; j < indexSprint.projects.length; j++) {
-					var indexProject = indexSprint.projects[j];
-					indexProject.id = index;
-					index += 1;
-				}
-			}
-		}
+
 
 		//takes a project and initializes the ideal object
 		// project
@@ -210,14 +152,7 @@ angular.module('uguru.util.controllers')
 		// -- production
 		// -- action_items_arr
 		// --- --- action_item =
-		var initProject = function(project_dict) {
 
-		}
-
-		// takes in a sprint meta data and creates
-		var initSprint = function(sprint_dict) {
-
-		}
 
 		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides",  "Moodboards", "Glossary"];
 		$scope.projects = [
@@ -376,37 +311,64 @@ angular.module('uguru.util.controllers')
 		//                    - External_Link_Dict = {"": "": }
 
 		var sprint_one = {
-			name: "Student can select university & create an account",
+			name: "Pre-app",
+			description: "Student can select university & create an account",
 			projects: [
 				{
-					name: "analytics",
-					alpha: ["Inspectlet MVP", "Mixpanel MVP", "Separate Local, Dev, Production", "Finalize Tools List + Add to Admin"],
-					beta: ["Test Inspectlet Works", "Test Mixpanel Work"]
+					name: "Home",
+					alpha: ["Bind + compile the home loader", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
+					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
+					production: ["G:Nail the scroll reveal animations", "G:Browse Tab bar", "B: Top Section", "B: Approve Content on MVP Completion", "J:Verify Components", "J:Make Homepage:DesignGuide w/ best practices = 1:1"],
 				},
 				{
-					name: "Display on Admin",
-					alpha: ["Analytics", "Moodboard", "Roles"],
-					beta: [""],
-				},
-				{
-					name: "Functionality",
-					alpha: ["Make Maps Fast", "Mobile App Support", "Scroll Reveal", "University Specific"],
-					beta: ["University Specific", "Home Page", "Test Home Page"],
-				},
-				{
-					name: "Functionality",
-					alpha: ["Make Maps Fast", "Mobile App Support"],
-					beta: ["University Specific", "Home Page"]
+					name: "University",
+					alpha: ["Improve Scroll", "Make Maps Fast", "Mobile App Support", "Scroll Reveal Handlers + MVP"],
+					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
+					production: ["G: Apply Course Spec to Course Search", "B: Discuss & Finalize Top Section", "B: Approve Content on MVP Completion"],
 				},
 				{
 					name: "Logo",
-					Production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
+					production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
+				},
+				{
+					name: "Content",
+					alpha: ["Home > Main > Top Section", "FAQ", "Become Guru", "How it works", "University Templating"],
+					beta: ["All Home Page Content Renders"],
+					production: ["G: Verify content meets limitations aesthetically"]
+				},
+				{
+					name: "Analytics",
+					alpha: ["Inspectlet MVP", "Mixpanel MVP", "Separate Local, Dev, Production", "Finalize Tools List + Add to Admin"],
+					beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
+					production: ["B:Become Familiar With Tools"]
+				},
+				{
+					name: "Cleanup/Wrapup",
+					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
+					beta: ["Link all tests together"],
+					production: ["G: Google Maps CSS", "G: Style guide for all sprint components 100%", "G: Design guide for all sprint components 100%"],
+				},
+				{
+					name: "Misc",
+					production: ["G: Admin Template Moodboard Spec"]
+				},
+				{
+					name: "Static Pages",
+					alpha: ["FAQ MVP Content", "FAQ MVP Template w/ Search"],
+					beta: ["Link all tests together"],
+					production: ["G: Google Maps CSS", "G: Style guide for all sprint components 100%", "G: Design guide for all sprint components 100%"],
+				},
+				{
+					name: "Extra Credit",
+					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
+					beta: ["Ability to track load time for specific components"],
+					production: ["", "Static Assets Compressed", "Static Assets Window Responsive"]
 				}
 			]
 		}
 		var sprint_two = {
 			name: "Student MVP",
-			descrition: "Student can go to student dashboard and can modify settings, their courses, create/edit/delete requests, add/edit cards + purchase credits",
+			description: "Student can go to student dashboard and can modify settings, their courses, create/edit/delete requests, add/edit cards + purchase credits",
 			projects: [
 				{
 					name: "Settings",
@@ -443,7 +405,7 @@ angular.module('uguru.util.controllers')
 
 		var sprint_three = {
 			name: "Guru MVP",
-			descrition: "setup their profile, create many shops, swap to student/guru mode + stay put, settings, become a guru",
+			description: "setup their profile, create many shops, swap to student/guru mode + stay put, settings, become a guru",
 			projects: [
 				{
 					name: "Add/Edit Profile",
@@ -463,29 +425,204 @@ angular.module('uguru.util.controllers')
 			]
 		}
 
-		// Next steps for admin 1/24/2015
+		$scope.sprints = [sprint_one, sprint_two, sprint_three];
+		var roleDict = {
+			'alpha': {
+				name: 'Samir',
+				profile_url: 'https://uguru.me/static/web/images/team/samir.png'
+			},
+			'beta': {
+				name: 'Jason',
+				profile_url: 'https://uguru.me/static/web/images/team/jason.png'
+			},
+			'jeselle': {
+				name: 'Jeselle',
+				profile_url: 'https://uguru.me/static/web/images/team/jeselle.png'
+			},
+			'gabrielle': {
+				name: 'Gabrielle',
+				profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png'
+			},
+			'both': [
+				{
+					name: 'Gabrielle',
+					profile_url: 'https://uguru.me/static/images/img/team/gabrielle.png'
+				},
+				{
+					name: 'Jeselle',
+					profile_url: 'https://uguru.me/static/images/img/team/jeselle.png'
+				}
+			]
 
-		// 1. Finish MVP view
-		// - def initSprints + test
-		// - def initProjects
-		// - def initActionItem
-		// - def create unique ids + modals for projects (CTA - box)
-		// 2. external URLS
-		// 3. Personalized
-		// - view profile pic
-		// - click profile link & get all actions specific to that person
-		// - add row of profile pics on top of dashboard "View by"
-		// 4.  create MVP spec for rest
+		}
 
+		$scope.roleDict = roleDict;
+		$scope.roleArr = [
+							{name:'Samir', role:'alpha', profile_url:roleDict['alpha'].profile_url, bg_color:'gold', all_projects:[]},
+							{name:'Jason', role:'beta', profile_url:roleDict['beta'].profile_url, bg_color: 'azure', all_projects:[]},
+							{name:'Jeselle', role:'production', profile_url:roleDict['jeselle'].profile_url, bg_color:'shamrock', all_projects:[]},
+							{name:'Gabrielle', role:'production', profile_url:roleDict['gabrielle'].profile_url, bg_color: 'shamrock', all_projects:[]}
+						];
 
-		$scope.sprints = [];
+		var alphaBetaActionsToArr = function(arr_str, role) {
+			var result_arr = [];
+			for (var i = 0; i < arr_str.length; i++) {
+				var indexActionItem = arr_str[i];
+				if (indexActionItem.split(':').length > 1) {
+					result_arr.push({indexActionItem: true, member:roleDict[role]});
+				} else {
+					tempDict = {}
+					var key = indexActionItem + " ";
+					tempDict[key] = false;
+					result_arr.push(tempDict);
+				}
+			}
+			return result_arr;
+		}
 
+		var parseAndGetRole = function(str_action) {
+			var actionSplit = str_action;
+			if (actionSplit.length > 1) {
+				var firstLetterLower = actionSplit[0].toLowerCase();
+				if (firstLetterLower === 'g') {
+					return 'gabrielle';
+				}
+				else if (firstLetterLower === 'j') {
+					return 'jeselle';
+				}
+				else if (firstLetterLower === 'b') {
+					return 'both'
+				}
+			}
+		}
 
-		$scope.projects[0].action_items = getProjectOneActionItems();
+		var productionActionsToArr = function(arr_str, role) {
+			var result_arr = [];
+			for (var i = 0; i < arr_str.length; i++) {
+				var indexActionItem = arr_str[i];
+				if (indexActionItem.split(':').length > 2) {
+					result_arr.push({indexActionItem: true, member:parseAndGetRole(indexActionItem , role)});
+				} else {
+					tempDict = {}
+					var key = indexActionItem + " ";
+					tempDict[key] = false;
+					result_arr.push(tempDict);
+				}
+			}
+			return result_arr;
+		}
+		$scope.roleDict = {alpha: [], beta:[], gabrielle: [], jeselle: []};
+		$scope.flattenedProjects = [];
 
-		$scope.projects[0].progress = $scope.calculateProjectProgress($scope.projects[0].action_items);
+		var processAndFilterProductionActionItems = function(p_actions) {
+			result_dict = {gabrielle:[], jeselle:[], both:[]}
+			for (var i = 0; i < p_actions.length; i++) {
+				var indexActionObj = p_actions[i];
+				var indexActionKey = Object.keys(indexActionObj)[0];
+				var indexActionValue = indexActionObj[indexActionKey];
+				var actionType = parseAndGetRole(indexActionKey);
+				if (actionType === 'gabrielle') {
+					var unformattedKey = indexActionKey.slice(2).trim();
+					var removeFormattingDict = {}
+					removeFormattingDict[unformattedKey] = indexActionValue;
+					result_dict.gabrielle.push(removeFormattingDict);
+				}
+				else if (actionType === 'jeselle') {
+					var unformattedKey = indexActionKey.slice(2).trim();
+					var removeFormattingDict = {}
+					removeFormattingDict[unformattedKey] = indexActionValue;
+					result_dict.jeselle.push(removeFormattingDict);
+				}
+				else if (actionType === 'both') {
+					var unformattedKey = indexActionKey.slice(2).trim();
+					var removeFormattingDict = {}
+					removeFormattingDict[unformattedKey] = indexActionValue;
+					result_dict.both.push(removeFormattingDict);
+				}
+			}
+			return result_dict;
+		}
 
-		$scope.sprints = [{description:"Functional product students can use", projects:$scope.projects.slice(0,NUM_PRIORITIZED)}, {description:"Icebox", projects:$scope.projects.slice(NUM_PRIORITIZED, $scope.projects.length)}];
+		// takes in a sprint meta data and creates
+		var initSprints = function(sprint_arr) {
+			var uniqueProjectIndex = 0
+			for (var i = 0; i < sprint_arr.length; i++) {
+				var indexSprint = sprint_arr[i];
+				var sprintProjects = indexSprint.projects;
+				for (var j = 0; j < sprintProjects.length; j++) {
+					var indexProject = sprintProjects[j];
+					$scope.flattenedProjects.push(indexProject);
+					sprintProjects[j].id = uniqueProjectIndex;
+					uniqueProjectIndex += 1;
+					sprintProjects[j].action_items = {
+						alpha : sprintProjects[j].alpha && alphaBetaActionsToArr(indexProject.alpha, 'alpha'),
+						beta: sprintProjects[j].beta && alphaBetaActionsToArr(indexProject.beta, 'beta'),
+						production: sprintProjects[j].production && productionActionsToArr(indexProject.production, 'production'),
+						gabrielle: [],
+						jeselle: [],
+						both: []
+					}
+					sprintProjects[j].progress = calculateProjectProgress(indexProject);
+					if (sprintProjects[j].action_items.alpha) {
+						$scope.roleArr[0].all_projects.push({
+							sprint:indexSprint,
+							id: sprintProjects[j].id,
+							name: sprintProjects[j].name,
+							progress: sprintProjects[j].progress,
+							action_items:sprintProjects[j].action_items.alpha
+						});
+					};
+
+					if (sprintProjects[j].action_items.beta) {
+						$scope.roleArr[1].all_projects.push({
+							sprint:indexSprint,
+							name: sprintProjects[j].name,
+							id: sprintProjects[j].id,
+							progress: sprintProjects[j].progress,
+							action_items:sprintProjects[j].action_items.beta
+						});
+					}
+
+					if (sprintProjects[j].action_items.production) {
+						var productionDict = processAndFilterProductionActionItems(sprintProjects[j].action_items.production);
+						if (productionDict.gabrielle && productionDict.gabrielle.length) {
+							$scope.roleArr[3].all_projects.push({
+								sprint:indexSprint,
+								name: sprintProjects[j].name,
+								id: sprintProjects[j].id,
+								progress: sprintProjects[j].progress,
+								action_items:productionDict.gabrielle
+							});
+							sprintProjects[j].action_items.gabrielle = productionDict.gabrielle;
+						}
+						if (productionDict.jeselle && productionDict.jeselle.length) {
+							$scope.roleArr[2].all_projects.push({
+								sprint:indexSprint,
+								name: sprintProjects[j].name,
+								id: sprintProjects[j].id,
+								progress: sprintProjects[j].progress,
+								action_items:productionDict.jeselle
+							});
+							sprintProjects[j].action_items.jeselle = productionDict.jeselle;
+						}
+						if (productionDict.both && productionDict.both.length) {
+							sprintProjects[j].action_items.both = productionDict.both;
+						}
+					}
+				}
+			}
+			return sprint_arr;
+		}
+
+		var sprintArr = initSprints($scope.sprints)
+		console.log(sprintArr);
+		console.log($scope.roleArr);
+		// $scope.projects[0].action_items = getProjectOneActionItems();
+
+		// $scope.projects[0].progress = $scope.calculateProjectProgress($scope.projects[0].action_items);
+
+		// $scope.sprints = [{description:"Functional product students can use", projects:$scope.projects.slice(0,NUM_PRIORITIZED)}, {description:"Icebox", projects:$scope.projects.slice(NUM_PRIORITIZED, $scope.projects.length)}];
+		$scope.sprints = sprintArr;
 
 		var initProject = function(project) {
 			project.alpha_complete = false;
@@ -501,13 +638,22 @@ angular.module('uguru.util.controllers')
 
 		var initProjectCTAS = function() {
 
-			for (var i = 0; i < $scope.projects.length; i ++) {
+			for (var i = 0; i < $scope.flattenedProjects.length; i ++) {
 				// indexProject = $scope.projects[i];
 
 				CTAService.initSingleCTA('#cta-box-project-' + i, '#admin-main');
 
 			}
 
+		}
+
+		var initRoleCTAS = function() {
+			for (var i = 0; i < $scope.roleArr.length; i ++) {
+				// indexProject = $scope.projects[i];
+
+				CTAService.initSingleCTA('#cta-box-role-' + i, '#admin-main');
+
+			}
 		}
 
 		// <!--@GABRIELLE-NOTE this is the moodboard code JS -->
@@ -522,7 +668,8 @@ angular.module('uguru.util.controllers')
 			$timeout(function() {
 				initProjectCTAS();
 				initMoodboardCTAS();
-			}, 1000)
+				initRoleCTAS();
+			}, 2000)
 		})
 
 

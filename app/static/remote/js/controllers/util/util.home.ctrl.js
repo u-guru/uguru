@@ -357,7 +357,9 @@ angular.module('uguru.util.controllers')
           "become-guru": {func:null}
         }
 
-        initProfileCTAS();
+        $timeout(function() {
+          initProfileCTAS();
+        })
 
         $timeout(function() {
 
@@ -407,8 +409,8 @@ angular.module('uguru.util.controllers')
 
       var mapDefaults = {
         zoom: calcZoom(),
-        options: { streetViewControl:false, scrollwheel:false, panControl:false, zoomControl:false, minZoom: 1, maxZoom: 7, styles: styleOptions,
-                   scrollwheel: false, mapTypeControl:false, style:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: false
+        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: 1, maxZoom: 7, styles: styleOptions,
+                   scrollwheel: false, mapTypeControl:false, style:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: true
                  }
       }
 
@@ -447,7 +449,24 @@ angular.module('uguru.util.controllers')
         }
       }
 
-      var generateXMarkersFromUniversities = function(x, universities_arr) {
+      //adds X markers every Y seconds
+      var placeAllMarkersOnMapInXMillSeconds = function(ms, markerArr) {
+        var markerLength = markerArr.length;
+        var intervalLength = ((ms * 1.0) / markerLength)|0;
+        var i =0
+        console.log('placing', markerLength, '. One every', intervalLength, 'seconds.')
+        var staggerTimeout = setInterval(function() {
+              if (i === markerArr.length) {
+                clearTimeout(intervalLength);
+              }
+              var indexMarker = markerArr[i];
+              $scope.universityMarkers.push(indexMarker);
+              i++;
+        }, intervalLength)
+      }
+
+      var generateXMarkersFromUniversities = function(x, universities_arr, with_interval) {
+
         var universities_arr = universities_arr.slice(0, x);
         var marker_obj_arr = [];
         for (var i = 0; i < universities_arr.length; i++) {
@@ -518,41 +537,57 @@ angular.module('uguru.util.controllers')
         if (!$scope.map.og_map) {
           $scope.mapHasRendered = true;
           $scope.map.og_map = map;
+          closeHomePageLoader();
+          console.log('map has finalled rendered');
+          clearTimeout(timerCounter);
+          console.log('clearing counter');
         }
       }
 
-      $timeout(function() {
-        $scope.map = {
-          center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
-          control: {},
-          zoom:  mapDefaults.zoom,
-          dragging: true, //true while map is dragging state, false otherwise
-          refresh: false,
-          options: mapDefaults.options,
-          events: {tilesloaded: onMapRenderCompleteOnce},
-          bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
-          pan: true,
-          markers: generateXMarkersFromUniversities(200, $scope.universities.slice()),
-          rebuildMarkers: false,
-          window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
-        }
-      })
+      $scope.map = {
+        center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
+        control: {},
+        zoom:  mapDefaults.zoom,
+        dragging: true, //true while map is dragging state, false otherwise
+        refresh: false,
+        options: mapDefaults.options,
+        events: {tilesloaded: onMapRenderCompleteOnce},
+        bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
+        pan: true,
+        markers: generateXMarkersFromUniversities(20, $scope.universities),
+        rebuildMarkers: false,
+        window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+      }
 
 
       $scope.universityButtonClicked = function() {
         console.log('university button clicked');
       }
-
+      var timerCounter = null;
+      $scope.$on('$ionicView.beforeEnter', function() {
+          console.log('before ionic has entered');
+          var index = 0;
+          timerCounter = setInterval(function() {
+            index += 1
+            console.log(index, 'seconds have passed');
+          }, 1000)
+      })
 
       $scope.$on('$ionicView.enter', function() {
+         console.log('ionic has entered');
          $timeout(function() {
+            shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
+            initUniversityTypeWriter();
+            calculateAndInitiateCounters();
+            !$scope.desktopMode && initMobileModals();
             $ionicSlideBoxDelegate.update();
           }, 5000)
-          shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
-          initUniversityTypeWriter();
-          calculateAndInitiateCounters();
-          !$scope.desktopMode && initMobileModals();
       });
+
+      $scope.$on('$ionicView.afterEnter', function() {
+        console.log('ionic has after entered');
+      })
+
 
        $scope.$on('$viewContentLoaded', function(){
           // alert('view has loaded');

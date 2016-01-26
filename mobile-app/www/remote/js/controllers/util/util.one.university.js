@@ -29,17 +29,32 @@ angular.module('uguru.util.controllers')
     SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
     $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService) {
         var scrollDuration= 500;
-        var shouldShowBecomeGuruHeader = true;
+
+
+        var shouldShowBecomeGuruHeader = $scope.desktopMode;
         var shouldRenderMap = false;
         $scope.activeBrowseTabIndex = 1;
         $scope.activeTabIndex = 0;
         var mainPageContainer = document.querySelector('#university-splash');
         $scope.profile = {public_mode: true};
+        $scope.courses = [];
+        $scope.search_text = {course: ""};
+        $scope.page = {dropdowns: {}, css:{}, predictionMarkers:[], sidebar:{transitions: null}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
+        $scope.university = $stateParams.universityObj || null;
 
-        $scope.page = {dropdowns: {}, css:{}, predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}}
-        $scope.university = null;
+
+        var initMobileSideBarTransitions = function() {
+          if (!$scope.desktopMode) {
+            $scope.sidebar.transitions = {active: null, inactive:null};
+          } else {
+            $scope.sidebar.transitions = {active: null, inactive:null};
+          }
+        }
 
         var getUniversityId = function() {
+          if ($scope.university && $scope.university.id) {
+            return $scope.university.id;
+          }
           if ($stateParams) {
             if ($stateParams.universityObj) {
               $scope.university = $stateParams.universityObj;
@@ -88,7 +103,7 @@ angular.module('uguru.util.controllers')
 
         var getUniversityInfoForView = function(university_id) {
           getPublicUniversityInformation(university_id);
-          $scope.courses = University.getPopularCoursesPromise(university_id).then(function(response) {
+          University.getPopularCoursesPromise(university_id).then(function(response) {
             $scope.courses = response.plain();
             console.log('fetched ' + $scope.courses.length + ' courses');
           });
@@ -97,25 +112,27 @@ angular.module('uguru.util.controllers')
         }
 
 
-        var university_id = getUniversityId();
-        if (university_id) {
-          getUniversityInfoForView(university_id);
-        }
+        $timeout(function() {
+          var university_id = getUniversityId();
+          if (university_id) {
+            getUniversityInfoForView(university_id);
+          }
+        })
 
       $scope.$on('$ionicView.beforeEnter', function() {
-         $scope.componentList = [
-          {type: 'university', fields:['name', 'num_popular_courses', 'start date', 'city', 'state', 'longitude', 'latitude', 'days til start', 'num_courses' ,'school_color_one', 'school_color_two', 'banner_url', 'short_name', 'name', 'popular_courses']}
-        ];
         $ionicSideMenuDelegate.canDragContent(false);
         $scope.highlighted_item;
-        $scope.courses = [];
         $scope.activeTabIndex = 2;
 
-
+        $scope.courses = [];
+        $scope.search_text = {course: ""};
         $scope.page.sidebar = {show:false, university:true};
         $scope.page.status = {loaded:false, showLoader:true};
         $scope.page.header = {showSolidNav:false};
         $scope.sampleProfiles = ContentService.sampleProfiles;
+
+
+
 
       });
 
@@ -588,14 +605,15 @@ angular.module('uguru.util.controllers')
          $timeout(function() {
           calcAllMainSectionContainers();
           initProfileCTAS();
+          initMobileSideBarTransitions();
 
           if (!$scope.typeWriterInitialized) {
             $scope.typeWriterInitialized = true;
             initUniversityTypeWriter();
           }
 
-          console.log($scope.courses);
-          console.log('PRINTING USER', $scope.user);
+
+
           if ($scope.university) {
               $timeout(function() {
                 $scope.page.status.loaded = true;
