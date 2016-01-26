@@ -210,12 +210,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $cerise;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $cerise;
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cerise, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cerise, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cerise, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cerise, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cerise;
+						}
 					}
 				}
 			}
@@ -682,12 +757,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $moola;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $moola;
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($moola, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($moola, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($moola, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($moola, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $moola;
+						}
 					}
 				}
 			}
@@ -1014,12 +1164,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $gold;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $gold;
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($gold, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($gold, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($gold, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($gold, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $gold;
+						}
 					}
 				}
 			}
@@ -1409,12 +1634,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $cobalt;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $cobalt;
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cobalt, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cobalt, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cobalt, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cobalt, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cobalt;
+						}
 					}
 				}
 			}
@@ -1740,12 +2040,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $auburn;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $auburn;
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($auburn, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($auburn, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($auburn, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($auburn, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $auburn;
+						}
 					}
 				}
 			}
@@ -2071,12 +2446,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $orange;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $orange;
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($orange, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($orange, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($orange, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($orange, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $orange;
+						}
 					}
 				}
 			}
@@ -2402,12 +2852,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $eggplant;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $eggplant;
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($eggplant, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($eggplant, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($eggplant, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($eggplant, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $eggplant;
+						}
 					}
 				}
 			}
@@ -2733,12 +3258,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $azure;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $azure;
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($azure, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($azure, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($azure, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($azure, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $azure;
+						}
 					}
 				}
 			}

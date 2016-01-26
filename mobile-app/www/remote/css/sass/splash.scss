@@ -895,51 +895,12 @@
 			.splash-bar {
 				padding-top: 45px;
 				background: $slate;
-				ul {
-					position: relative;
+				div {
 					max-width: 600px;
-					margin: 0 auto;
-					padding: 0;
-					> div {
-						display: none;
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 50%;
-						height: 100%;
-						background: red;
-					}
-					li {
-						padding: 0;
-						a {
-							@include flex-wrap;
-							border: 0;
-							border-radius: 2px 2px 0 0;
+					a {
+						div {
 							span {
 								display: block;
-								width: 100%;
-								@media screen and (max-width: 768px) {
-									&:first-child {
-										display: none;
-									}
-								}
-							}
-							&:hover, &:focus {
-								background: rgba($smoke, .25);
-							}
-							&:active {
-								background: rgba($smoke, .5);
-							}
-							&.active {
-								background: $smoke;
-								color: $slate;
-								&:hover, &:focus {
-									background: $smoke;
-									color: $slate;
-								}
-								&:active {
-									background: $smoke;
-								}
 							}
 						}
 					}
@@ -2437,9 +2398,6 @@
 			&.splash-categories {
 				.splash-bar {
 					background: $shamrock;
-					ul li a.active {
-						color: $shamrock;
-					}
 				}
 			}
 		}

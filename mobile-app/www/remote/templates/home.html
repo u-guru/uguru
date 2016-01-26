@@ -361,26 +361,22 @@
             </section>
 
             <section class='splash-categories' id='splash-browse'>
-                <div class="tab-bar splash-bar bg-university">
-                    <ul>
-                        <li>
-                            <a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
-								<div>
-									<span>Student-Run</span>
-									<span>Shops</span>
-								</div>
-							</a>
-                        </li>
-                        <li>
-                            <a ng-click='activeBrowseTabIndex = 1;' class="ng-class:{'active':activeBrowseTabIndex===1}">
-								<div>
-									<span>Guru</span>
-									<span>Profiles</span>
-								</div>
-							</a>
-                        </li>
-						<div></div>
-                    </ul>
+                <div class="tab-bar slide splash-bar bg-university">
+                    <div>
+                        <a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
+							<div>
+								<span>Student-Run</span>
+								<span>Shops</span>
+							</div>
+						</a>
+                        <a ng-click='activeBrowseTabIndex = 1;' class="ng-class:{'active':activeBrowseTabIndex===1}">
+							<div>
+								<span>Guru</span>
+								<span>Profiles</span>
+							</div>
+						</a>
+						<hr/>
+                    </div>
                 </div>
 				<div id="splash-categories" class="main ng-class:{'active':activeBrowseTabIndex===0}" ng-controller="CategoriesController">
                     <div>

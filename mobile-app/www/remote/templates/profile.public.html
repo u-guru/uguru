@@ -85,18 +85,13 @@
 			</div>
 		</header>
 		<div class="pf-tab-container">
-			<div class="pf-tabs tab-bar">
-				<ul>
-					<li>
-						<a name='services-btn' ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
-					</li>
-					<li>
-						<a name='about-btn' ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
-					</li>
-					<li ng-if='false'>
-						<a name='calendar-btn' ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex === 2}">Calendar</a>
-					</li>
-				</ul>
+			<div class="pf-tabs tab-bar slide">
+				<div>
+					<a name='services-btn' ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
+					<a name='about-btn' ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
+					<a ng-if='false' name='calendar-btn' ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex === 2}">Calendar</a>
+					<hr/>
+				</div>
 			</div>
 			<!-- end CTA containers -->
 
