@@ -91,38 +91,44 @@
   background: none !important;
 }
 
-.pf-contact.btn-ghost-white {
-  display: none;
-  margin-top: 15px;
-}
-
-.pf-contact:not(.btn-ghost-white) {
-  position: fixed;
+.pf-contact {
+  display: block;
+  position: absolute;
   z-index: 99;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  color: #637074;
-  font-weight: 600;
+  background: white;
+  color: #7c8a8f;
+  font-weight: 700;
+  font-size: 28px !important;
 }
 
-.pf-contact:not(.btn-ghost-white):hover, .pf-contact:not(.btn-ghost-white):focus {
+.pf-contact:hover, .pf-contact:focus {
   filter: alpha(opacity=100);
   opacity: 1;
-  background: white;
-}
-
-.pf-contact:not(.btn-ghost-white):active {
   background: #637074;
   color: white;
 }
 
+.pf-contact:active {
+  background: #7c8a8f;
+  color: white;
+}
+
+.pf-contact.pf-contact-desktop {
+  display: none;
+}
+
+.pf-contact.pf-contact-mobile {
+  position: fixed;
+}
+
 @media screen and (min-width: 768px) {
-  .pf-contact.btn-ghost-white {
-    display: inline-block;
+  .pf-contact.pf-contact-desktop {
+    display: block;
   }
-  .pf-contact:not(.btn-ghost-white) {
+  .pf-contact.pf-contact-mobile {
     display: none;
   }
 }

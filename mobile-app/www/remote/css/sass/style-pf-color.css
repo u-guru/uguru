@@ -95,17 +95,17 @@
   background: #e6389b;
 }
 
-.pf-type-academic .pf-contact.btn-ghost-white:hover, .pf-type-academic .pf-contact.btn-ghost-white:focus {
+.pf-type-academic .pf-contact {
   color: #e6389b;
 }
 
-.pf-type-academic .pf-contact:not(.btn-ghost-white) {
-  color: #e6389b;
-}
-
-.pf-type-academic .pf-contact:not(.btn-ghost-white):active {
-  background: #e6389b;
+.pf-type-academic .pf-contact:hover, .pf-type-academic .pf-contact:focus {
+  background: #f193c9;
   color: white;
+}
+
+.pf-type-academic .pf-contact:active {
+  background: #7c8a8f;
 }
 
 .pf-type-academic .custom-dropdown > div a:hover svg, .pf-type-academic .custom-dropdown > div a:focus svg {
@@ -434,17 +434,17 @@
   background: #81B566;
 }
 
-.pf-type-photography .pf-contact.btn-ghost-white:hover, .pf-type-photography .pf-contact.btn-ghost-white:focus {
+.pf-type-photography .pf-contact {
   color: #81B566;
 }
 
-.pf-type-photography .pf-contact:not(.btn-ghost-white) {
-  color: #81B566;
-}
-
-.pf-type-photography .pf-contact:not(.btn-ghost-white):active {
-  background: #81B566;
+.pf-type-photography .pf-contact:hover, .pf-type-photography .pf-contact:focus {
+  background: #bad6ab;
   color: white;
+}
+
+.pf-type-photography .pf-contact:active {
+  background: #7c8a8f;
 }
 
 .pf-type-photography .custom-dropdown > div a:hover svg, .pf-type-photography .custom-dropdown > div a:focus svg {
@@ -1010,17 +1010,17 @@
   background: #F6C64E;
 }
 
-.pf-type-baking .pf-contact.btn-ghost-white:hover, .pf-type-baking .pf-contact.btn-ghost-white:focus {
+.pf-type-baking .pf-contact {
   color: #F6C64E;
 }
 
-.pf-type-baking .pf-contact:not(.btn-ghost-white) {
-  color: #F6C64E;
-}
-
-.pf-type-baking .pf-contact:not(.btn-ghost-white):active {
-  background: #F6C64E;
+.pf-type-baking .pf-contact:hover, .pf-type-baking .pf-contact:focus {
+  background: #f7ce66;
   color: white;
+}
+
+.pf-type-baking .pf-contact:active {
+  background: #7c8a8f;
 }
 
 .pf-type-baking .custom-dropdown > div a:hover svg, .pf-type-baking .custom-dropdown > div a:focus svg {
@@ -1393,17 +1393,17 @@
   background: #7872e3;
 }
 
-.pf-type-household .pf-contact.btn-ghost-white:hover, .pf-type-household .pf-contact.btn-ghost-white:focus {
+.pf-type-household .pf-contact {
   color: #7872e3;
 }
 
-.pf-type-household .pf-contact:not(.btn-ghost-white) {
-  color: #7872e3;
-}
-
-.pf-type-household .pf-contact:not(.btn-ghost-white):active {
-  background: #7872e3;
+.pf-type-household .pf-contact:hover, .pf-type-household .pf-contact:focus {
+  background: #b5b2f0;
   color: white;
+}
+
+.pf-type-household .pf-contact:active {
+  background: #7c8a8f;
 }
 
 .pf-type-household .custom-dropdown > div a:hover svg, .pf-type-household .custom-dropdown > div a:focus svg {
@@ -1732,17 +1732,17 @@
   background: #F04F54;
 }
 
-.pf-type-delivery .pf-contact.btn-ghost-white:hover, .pf-type-delivery .pf-contact.btn-ghost-white:focus {
+.pf-type-delivery .pf-contact {
   color: #F04F54;
 }
 
-.pf-type-delivery .pf-contact:not(.btn-ghost-white) {
-  color: #F04F54;
-}
-
-.pf-type-delivery .pf-contact:not(.btn-ghost-white):active {
-  background: #F04F54;
+.pf-type-delivery .pf-contact:hover, .pf-type-delivery .pf-contact:focus {
+  background: #f2666b;
   color: white;
+}
+
+.pf-type-delivery .pf-contact:active {
+  background: #7c8a8f;
 }
 
 .pf-type-delivery .custom-dropdown > div a:hover svg, .pf-type-delivery .custom-dropdown > div a:focus svg {
@@ -2071,17 +2071,17 @@
   background: #E5753C;
 }
 
-.pf-type-freelancing .pf-contact.btn-ghost-white:hover, .pf-type-freelancing .pf-contact.btn-ghost-white:focus {
+.pf-type-freelancing .pf-contact {
   color: #E5753C;
 }
 
-.pf-type-freelancing .pf-contact:not(.btn-ghost-white) {
-  color: #E5753C;
-}
-
-.pf-type-freelancing .pf-contact:not(.btn-ghost-white):active {
-  background: #E5753C;
+.pf-type-freelancing .pf-contact:hover, .pf-type-freelancing .pf-contact:focus {
+  background: #eea57f;
   color: white;
+}
+
+.pf-type-freelancing .pf-contact:active {
+  background: #7c8a8f;
 }
 
 .pf-type-freelancing .custom-dropdown > div a:hover svg, .pf-type-freelancing .custom-dropdown > div a:focus svg {
@@ -2410,17 +2410,17 @@
   background: #9A5BC5;
 }
 
-.pf-type-athletic .pf-contact.btn-ghost-white:hover, .pf-type-athletic .pf-contact.btn-ghost-white:focus {
+.pf-type-athletic .pf-contact {
   color: #9A5BC5;
 }
 
-.pf-type-athletic .pf-contact:not(.btn-ghost-white) {
-  color: #9A5BC5;
-}
-
-.pf-type-athletic .pf-contact:not(.btn-ghost-white):active {
-  background: #9A5BC5;
+.pf-type-athletic .pf-contact:hover, .pf-type-athletic .pf-contact:focus {
+  background: #bd94d9;
   color: white;
+}
+
+.pf-type-athletic .pf-contact:active {
+  background: #7c8a8f;
 }
 
 .pf-type-athletic .custom-dropdown > div a:hover svg, .pf-type-athletic .custom-dropdown > div a:focus svg {
@@ -2749,17 +2749,17 @@
   background: #55A4B7;
 }
 
-.pf-type-tech .pf-contact.btn-ghost-white:hover, .pf-type-tech .pf-contact.btn-ghost-white:focus {
+.pf-type-tech .pf-contact {
   color: #55A4B7;
 }
 
-.pf-type-tech .pf-contact:not(.btn-ghost-white) {
-  color: #55A4B7;
-}
-
-.pf-type-tech .pf-contact:not(.btn-ghost-white):active {
-  background: #55A4B7;
+.pf-type-tech .pf-contact:hover, .pf-type-tech .pf-contact:focus {
+  background: #8bc1ce;
   color: white;
+}
+
+.pf-type-tech .pf-contact:active {
+  background: #7c8a8f;
 }
 
 .pf-type-tech .custom-dropdown > div a:hover svg, .pf-type-tech .custom-dropdown > div a:focus svg {

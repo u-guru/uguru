@@ -50,19 +50,7 @@
 					  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 					</svg>
 				</div>
-				<button ng-if="!profile.public_mode" class="pf-contact btn-ghost-white">Contact Guru</button>
-				<ul class="pf-url"  ng-if="profile.public_mode">
-					<li>
-						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code || user.first_name}}.uguru.me</a>
-					</li>
-					<li>
-						<a href='http://{{user.profile_code}}.uguru.me' target='_blank' class='bg-white'>
-							<svg viewBox="0 0 100 100">
-								<path d="M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848"></path>
-							</svg>
-						</a>
-					</li>
-				</ul>
+				<button ng-if="profile.public_mode" class="pf-contact pf-contact-desktop">Contact</button>
 				<ul class="pf-url pf-edit-url" ng-if="!profile.public_mode">
 					<li class="relative">
 						<input name='profile_code' ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length + 2}}" />
@@ -1118,7 +1106,7 @@
 				</div>
 			</div>
 		</div>
-		<button class="pf-contact">Contact Guru</button>
+		<button ng-if="profile.public_mode" class="pf-contact pf-contact-mobile">Contact</button>
 	</section>
 
 	<!-- @samir -->

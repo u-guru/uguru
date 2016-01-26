@@ -56,35 +56,38 @@
 	}
 }
 .pf-contact {
-	&.btn-ghost-white {
-		display: none;
-		margin-top: 15px;
+	display: block;
+	position: absolute;
+	z-index: 99;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: white;
+	color: lighten($slate, 25%);
+	font-weight: 700;
+	font-size: 28px!important;
+	&:hover, &:focus {
+		@include opacity(1);
+		background: lighten($slate, 15%);
+		color: white;
 	}
-	&:not(.btn-ghost-white) {
-		position: fixed;
-		z-index: 99;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		background: rgba(white, .9);
-		color: lighten($slate, 15%);
-		font-weight: 600;
-		&:hover, &:focus {
-			@include opacity(1);
-			background: white;
-		}
-		&:active {
-			background: lighten($slate, 15%);
-			color: white;
-		}
+	&:active {
+		background: lighten($slate, 25%);
+		color: white;
+	}
+	&.pf-contact-desktop {
+		display: none;
+	}
+	&.pf-contact-mobile {
+		position: fixed
 	}
 }
 @media screen and (min-width:768px) {
 	.pf-contact {
-		&.btn-ghost-white {
-			display: inline-block;
+		&.pf-contact-desktop {
+			display: block;
 		}
-		&:not(.btn-ghost-white) {
+		&.pf-contact-mobile {
 			display: none;
 		}
 	}

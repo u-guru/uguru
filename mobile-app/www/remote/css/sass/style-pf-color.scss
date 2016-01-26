@@ -118,17 +118,13 @@
 }
 .pf-type-academic {
 	.pf-contact {
-		&.btn-ghost-white {
-			&:hover, &:focus {
-				color: $cerise;
-			}
+		color: $cerise;
+		&:hover, &:focus {
+			background: lighten($cerise, 20%);
+			color: white;
 		}
-		&:not(.btn-ghost-white) {
-			color: $cerise;
-			&:active {
-				background: $cerise;
-				color: white;
-			}
+		&:active {
+			background: lighten($slate, 25%);
 		}
 	}
 	.custom-dropdown {
@@ -538,17 +534,13 @@
 }
 .pf-type-photography {
 	.pf-contact {
-		&.btn-ghost-white {
-			&:hover, &:focus {
-				color: $moola;
-			}
+		color: $moola;
+		&:hover, &:focus {
+			background: lighten($moola, 20%);
+			color: white;
 		}
-		&:not(.btn-ghost-white) {
-			color: $moola;
-			&:active {
-				background: $moola;
-				color: white;
-			}
+		&:active {
+			background: lighten($slate, 25%);
 		}
 	}
 	.custom-dropdown {
@@ -1100,17 +1092,13 @@
 }
 .pf-type-baking {
 	.pf-contact {
-		&.btn-ghost-white {
-			&:hover, &:focus {
-				color: $gold;
-			}
+		color: $gold;
+		&:hover, &:focus {
+			background: lighten($gold, 5%);
+			color: white;
 		}
-		&:not(.btn-ghost-white) {
-			color: $gold;
-			&:active {
-				background: $gold;
-				color: white;
-			}
+		&:active {
+			background: lighten($slate, 25%);
 		}
 	}
 	.custom-dropdown {
@@ -1584,17 +1572,13 @@
 }
 .pf-type-household {
 	.pf-contact {
-		&.btn-ghost-white {
-			&:hover, &:focus {
-				color: $cobalt;
-			}
+		color: $cobalt;
+		&:hover, &:focus {
+			background: lighten($cobalt, 15%);
+			color: white;
 		}
-		&:not(.btn-ghost-white) {
-			color: $cobalt;
-			&:active {
-				background: $cobalt;
-				color: white;
-			}
+		&:active {
+			background: lighten($slate, 25%);
 		}
 	}
 	.custom-dropdown {
@@ -2004,17 +1988,13 @@
 }
 .pf-type-delivery {
 	.pf-contact {
-		&.btn-ghost-white {
-			&:hover, &:focus {
-				color: $auburn;
-			}
+		color: $auburn;
+		&:hover, &:focus {
+			background: lighten($auburn, 5%);
+			color: white;
 		}
-		&:not(.btn-ghost-white) {
-			color: $auburn;
-			&:active {
-				background: $auburn;
-				color: white;
-			}
+		&:active {
+			background: lighten($slate, 25%);
 		}
 	}
 	.custom-dropdown {
@@ -2424,17 +2404,13 @@
 }
 .pf-type-freelancing {
 	.pf-contact {
-		&.btn-ghost-white {
-			&:hover, &:focus {
-				color: $orange;
-			}
+		color: $orange;
+		&:hover, &:focus {
+			background: lighten($orange, 15%);
+			color: white;
 		}
-		&:not(.btn-ghost-white) {
-			color: $orange;
-			&:active {
-				background: $orange;
-				color: white;
-			}
+		&:active {
+			background: lighten($slate, 25%);
 		}
 	}
 	.custom-dropdown {
@@ -2844,17 +2820,13 @@
 }
 .pf-type-athletic {
 	.pf-contact {
-		&.btn-ghost-white {
-			&:hover, &:focus {
-				color: $eggplant;
-			}
+		color: $eggplant;
+		&:hover, &:focus {
+			background: lighten($eggplant, 15%);
+			color: white;
 		}
-		&:not(.btn-ghost-white) {
-			color: $eggplant;
-			&:active {
-				background: $eggplant;
-				color: white;
-			}
+		&:active {
+			background: lighten($slate, 25%);
 		}
 	}
 	.custom-dropdown {
@@ -3264,17 +3236,13 @@
 }
 .pf-type-tech {
 	.pf-contact {
-		&.btn-ghost-white {
-			&:hover, &:focus {
-				color: $azure;
-			}
+		color: $azure;
+		&:hover, &:focus {
+			background: lighten($azure, 15%);
+			color: white;
 		}
-		&:not(.btn-ghost-white) {
-			color: $azure;
-			&:active {
-				background: $azure;
-				color: white;
-			}
+		&:active {
+			background: lighten($slate, 25%);
 		}
 	}
 	.custom-dropdown {
