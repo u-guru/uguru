@@ -315,23 +315,26 @@ angular.module('uguru.util.controllers')
 			description: "Student can select university & create an account",
 			projects: [
 				{
-					name: "Functionality",
-					alpha: ["Make Maps Fast", "Mobile App Support", "Scroll Reveal", "University Specific"],
-					beta: ["University Specific", "Home Page", "Test Home Page"],
+					name: "Home",
+					alpha: ["Bind + compile the home loader", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
+					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
+					production: ["G:Nail the scroll reveal animations", "G:Browse Tab bar", "B: Top Section", "B: Approve Content on MVP Completion", "J:Verify Components", "J:Make Homepage:DesignGuide w/ best practices = 1:1"],
+				},
+				{
+					name: "University",
+					alpha: ["Improve Scroll", "Make Maps Fast", "Mobile App Support", "Scroll Reveal Handlers + MVP"],
+					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
+					production: ["G: Apply Course Spec to Course Search", "B: Discuss & Finalize Top Section", "B: Approve Content on MVP Completion"],
 				},
 				{
 					name: "Logo",
-					Production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
+					production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
 				},
 				{
 					name: "Content",
-					alpha: ["Home > Main > Top Section", "FAQ"],
-					beta: ["All Home Page Content Renders"]
-				},
-				{
-					name: "Wrap-up",
-					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
-					beta: ["Home"]
+					alpha: ["Home > Main > Top Section", "FAQ", "Become Guru", "How it works", "University Templating"],
+					beta: ["All Home Page Content Renders"],
+					production: ["G: Verify content meets limitations aesthetically"]
 				},
 				{
 					name: "Analytics",
@@ -340,9 +343,26 @@ angular.module('uguru.util.controllers')
 					production: ["B:Become Familiar With Tools"]
 				},
 				{
+					name: "Cleanup/Wrapup",
+					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
+					beta: ["Link all tests together"],
+					production: ["G: Google Maps CSS", "G: Style guide for all sprint components 100%", "G: Design guide for all sprint components 100%"],
+				},
+				{
+					name: "Misc",
+					production: ["G: Admin Template Moodboard Spec"]
+				},
+				{
+					name: "Static Pages",
+					alpha: ["FAQ MVP Content", "FAQ MVP Template w/ Search"],
+					beta: ["Link all tests together"],
+					production: ["G: Google Maps CSS", "G: Style guide for all sprint components 100%", "G: Design guide for all sprint components 100%"],
+				},
+				{
 					name: "Extra Credit",
 					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
-					beta: ["Home"]
+					beta: ["Ability to track load time for specific components"],
+					production: ["", "Static Assets Compressed", "Static Assets Window Responsive"]
 				}
 			]
 		}
@@ -444,7 +464,7 @@ angular.module('uguru.util.controllers')
 							{name:'Gabrielle', role:'production', profile_url:roleDict['gabrielle'].profile_url, bg_color: 'shamrock', all_projects:[]}
 						];
 
-		var alphaBetaActionsToDict = function(arr_str, role) {
+		var alphaBetaActionsToArr = function(arr_str, role) {
 			var result_arr = [];
 			for (var i = 0; i < arr_str.length; i++) {
 				var indexActionItem = arr_str[i];
@@ -476,7 +496,7 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
-		var productionActionsToDict = function(arr_str, role) {
+		var productionActionsToArr = function(arr_str, role) {
 			var result_arr = [];
 			for (var i = 0; i < arr_str.length; i++) {
 				var indexActionItem = arr_str[i];
@@ -495,16 +515,29 @@ angular.module('uguru.util.controllers')
 		$scope.flattenedProjects = [];
 
 		var processAndFilterProductionActionItems = function(p_actions) {
-			result_dict = {gabrielle:[], jeselle:[]}
+			result_dict = {gabrielle:[], jeselle:[], both:[]}
 			for (var i = 0; i < p_actions.length; i++) {
 				var indexActionObj = p_actions[i];
 				var indexActionKey = Object.keys(indexActionObj)[0];
+				var indexActionValue = indexActionObj[indexActionKey];
 				var actionType = parseAndGetRole(indexActionKey);
 				if (actionType === 'gabrielle') {
-					result_dict.gabrielle.push(indexActionObj);
+					var unformattedKey = indexActionKey.slice(2).trim();
+					var removeFormattingDict = {}
+					removeFormattingDict[unformattedKey] = indexActionValue;
+					result_dict.gabrielle.push(removeFormattingDict);
 				}
 				else if (actionType === 'jeselle') {
-					result_dict.jeselle.push(indexActionObj);
+					var unformattedKey = indexActionKey.slice(2).trim();
+					var removeFormattingDict = {}
+					removeFormattingDict[unformattedKey] = indexActionValue;
+					result_dict.jeselle.push(removeFormattingDict);
+				}
+				else if (actionType === 'both') {
+					var unformattedKey = indexActionKey.slice(2).trim();
+					var removeFormattingDict = {}
+					removeFormattingDict[unformattedKey] = indexActionValue;
+					result_dict.both.push(removeFormattingDict);
 				}
 			}
 			return result_dict;
@@ -522,9 +555,12 @@ angular.module('uguru.util.controllers')
 					sprintProjects[j].id = uniqueProjectIndex;
 					uniqueProjectIndex += 1;
 					sprintProjects[j].action_items = {
-						alpha : sprintProjects[j].alpha && alphaBetaActionsToDict(indexProject.alpha, 'alpha'),
-						beta: sprintProjects[j].beta && alphaBetaActionsToDict(indexProject.beta, 'beta'),
-						production: sprintProjects[j].production && productionActionsToDict(indexProject.production, 'production')
+						alpha : sprintProjects[j].alpha && alphaBetaActionsToArr(indexProject.alpha, 'alpha'),
+						beta: sprintProjects[j].beta && alphaBetaActionsToArr(indexProject.beta, 'beta'),
+						production: sprintProjects[j].production && productionActionsToArr(indexProject.production, 'production'),
+						gabrielle: [],
+						jeselle: [],
+						both: []
 					}
 					sprintProjects[j].progress = calculateProjectProgress(indexProject);
 					if (sprintProjects[j].action_items.alpha) {
@@ -535,7 +571,7 @@ angular.module('uguru.util.controllers')
 							progress: sprintProjects[j].progress,
 							action_items:sprintProjects[j].action_items.alpha
 						});
-					}
+					};
 
 					if (sprintProjects[j].action_items.beta) {
 						$scope.roleArr[1].all_projects.push({
@@ -557,6 +593,7 @@ angular.module('uguru.util.controllers')
 								progress: sprintProjects[j].progress,
 								action_items:productionDict.gabrielle
 							});
+							sprintProjects[j].action_items.gabrielle = productionDict.gabrielle;
 						}
 						if (productionDict.jeselle && productionDict.jeselle.length) {
 							$scope.roleArr[2].all_projects.push({
@@ -566,6 +603,10 @@ angular.module('uguru.util.controllers')
 								progress: sprintProjects[j].progress,
 								action_items:productionDict.jeselle
 							});
+							sprintProjects[j].action_items.jeselle = productionDict.jeselle;
+						}
+						if (productionDict.both && productionDict.both.length) {
+							sprintProjects[j].action_items.both = productionDict.both;
 						}
 					}
 				}

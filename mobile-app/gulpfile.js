@@ -227,6 +227,9 @@ gulp.task('scripts', function() {
         // 'templates/become-guru.modal.html',
         'templates/offline.html',
         'templates/*html',
+        'templates/**/*html',
+        'templates/**/**/*html',
+        'templates/**/**/**/*html',
         // 'templates/guru/*html',
         // 'templates/components/modals/*html',
         // 'templates/components/details/*html',
@@ -234,7 +237,7 @@ gulp.task('scripts', function() {
       ], { cwd: 'www/remote' })
 
     .pipe(plugins.angularTemplatecache('templates.js', {
-      root: 'templates/',
+      root: '/static/remote/templates/',
       module: 'uguru',
       htmlmin: build && minifyConfig
     }));
@@ -373,6 +376,10 @@ gulp.task('jsHint', function(done) {
 // copy templates
 gulp.task('templates', function() {
   return gulp.src([
+        'templates/**/*.html',
+        'templates/**/**/*.html',
+        'templates/**/**/**/*.html',
+        'templates/svg/**/*.html',
         'templates/student.home.html',
         'templates/student.home.body.html',
         'templates/student.guru-book.html',

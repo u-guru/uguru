@@ -46,6 +46,9 @@ angular.module('uguru.util.controllers')
          KeyboardService, ModalService, Github, LoadingService,
          $ionicSlideBoxDelegate, AnimationService) {
 
+        if (DeviceService.isIOSBrowser()) {
+            document.body.parentElement.style.webkitOverflowScrolling = 'touch !important;';
+        }
 
         var bodyRect;
         var windowHeight;
@@ -749,6 +752,10 @@ angular.module('uguru.util.controllers')
             // console.log = function() {
             //     return;
             // }
+        }
+
+        if ($state.current.name !== 'root.home') {
+            bodyLoadingDiv.classList.add('hide');
         }
 
 
