@@ -2232,6 +2232,7 @@
   -webkit-justify-content: center;
   justify-content: center;
   width: 100%;
+  max-width: 1020px;
 }
 
 .splash-landing > section.splash-postit .main ul > .square {
@@ -2243,6 +2244,18 @@
   padding: 15px;
 }
 
+.splash-landing > section.splash-postit .main ul li .tape {
+  display: block;
+  position: absolute;
+  z-index: 40;
+  width: 40px;
+  height: auto;
+}
+
+.splash-landing > section.splash-postit .main ul li .tape path {
+  fill: rgba(165, 209, 238, 0.4);
+}
+
 .splash-landing > section.splash-postit .main button {
   margin: 30px 0;
   max-width: calc(100% - 30px);
@@ -2250,7 +2263,7 @@
 
 @media screen and (max-width: 768px) {
   .splash-landing > section.splash-postit .main {
-    height: calc(100%);
+    height: 100%;
   }
   .splash-landing > section.splash-postit .main button {
     max-width: 100%;
@@ -2268,6 +2281,9 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
+  .splash-landing > section.splash-postit .main ul li .tape {
+    display: none !important;
   }
   .splash-landing > section.splash-postit .main ul li:nth-child(1), .splash-landing > section.splash-postit .main ul li:nth-child(4) {
     -webkit-transform: rotate(10deg);
@@ -2440,15 +2456,6 @@
   font-weight: 400;
 }
 
-@media screen and (min-width: 768px) {
-  .splash-landing > section.splash-postit .postit > div h1 {
-    font-size: 32px;
-  }
-  .splash-landing > section.splash-postit .postit > div p {
-    font-size: 22px;
-  }
-}
-
 .splash-landing > section.splash-postit .postit > div:before, .splash-landing > section.splash-postit .postit > span:before {
   filter: alpha(opacity=20);
   opacity: 0.2;
@@ -2478,6 +2485,198 @@
 .splash-landing > section#become-guru .postit > span:after {
   border-top-color: white;
   border-left-color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#become-guru .main ul li:nth-child(3) {
+    -webkit-transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+    -moz-transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+    -ms-transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+    -o-transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+    transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .tape {
+    display: none;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div {
+    background: #b5b2f0;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div:before {
+    background: #7872e3;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg path {
+    stroke: #7872e3;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg rect[fill="#69B3A5"] {
+    fill: #7872e3;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #7872e3;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) {
+    -webkit-transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+    -moz-transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+    -ms-transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+    -o-transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+    transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 30px;
+    top: -20px;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .tape:nth-child(2) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: -20px;
+    right: 30px;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div {
+    background: #bd94d9;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div:before {
+    background: #9A5BC5;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg path {
+    stroke: #9A5BC5;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg path[fill="#69B3A5"] {
+    fill: #9A5BC5;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #9A5BC5;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) {
+    -webkit-transform: rotate(7deg) translate(0, 20px) scale(0.85);
+    -moz-transform: rotate(7deg) translate(0, 20px) scale(0.85);
+    -ms-transform: rotate(7deg) translate(0, 20px) scale(0.85);
+    -o-transform: rotate(7deg) translate(0, 20px) scale(0.85);
+    transform: rotate(7deg) translate(0, 20px) scale(0.85);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(1) {
+    display: none;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(2) {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    top: -50px;
+    left: 50%;
+    margin-left: -20px;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div {
+    background: #ef7cbd;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div:before {
+    background: #e6389b;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg path {
+    stroke: #e6389b;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #e6389b;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) {
+    -webkit-transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+    -moz-transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+    -ms-transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+    -o-transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+    transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 30px;
+    top: -20px;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    bottom: -20px;
+    right: 30px;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div {
+    background: #8bc1ce;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div:before {
+    background: #55A4B7;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg path {
+    stroke: #55A4B7;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #55A4B7;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(4) {
+    -webkit-transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+    -moz-transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+    -ms-transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+    -o-transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+    transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(4) .tape {
+    display: none;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div {
+    background: #eea57f;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div:before {
+    background: #E5753C;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg path {
+    stroke: #E5753C;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg circle[fill="#69B3A5"] {
+    fill: #E5753C !important;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #E5753C;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(5) {
+    -webkit-transform: rotate(5deg) scale(0.85);
+    -moz-transform: rotate(5deg) scale(0.85);
+    -ms-transform: rotate(5deg) scale(0.85);
+    -o-transform: rotate(5deg) scale(0.85);
+    transform: rotate(5deg) scale(0.85);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(5) .tape {
+    display: none;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div {
+    background: #abce9a;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div:before {
+    background: #81B566;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path {
+    stroke: #81B566;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #81B566;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(2) {
+    fill: none !important;
+    stroke: white;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(3) {
+    fill: none !important;
+    stroke: #81B566;
+  }
 }
 
 .splash-landing > section#become-guru > footer .border {
@@ -3140,6 +3339,167 @@
 
 .splash-landing#home-splash > section#how-it-works .postit > div:before {
   background: #69B3A5;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing#home-splash > section#how-it-works .main ul li .postit > div {
+    background: white;
+    color: #637074;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) {
+    -webkit-transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+    -moz-transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+    -ms-transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+    -o-transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+    transform: rotate(5deg) translate(30px, 20px) scale(0.85);
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .tape {
+    display: none;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div:before {
+    background: #7872e3;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg path {
+    stroke: #7872e3;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #7872e3;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) {
+    -webkit-transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+    -moz-transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+    -ms-transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+    -o-transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+    transform: rotate(-7deg) translate(-25px, 60px) scale(0.85);
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 30px;
+    top: -20px;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape:nth-child(2) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: -20px;
+    right: 30px;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div:before {
+    background: #9A5BC5;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg path {
+    stroke: #9A5BC5;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #9A5BC5;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) {
+    -webkit-transform: rotate(7deg) translate(0, 20px) scale(0.85);
+    -moz-transform: rotate(7deg) translate(0, 20px) scale(0.85);
+    -ms-transform: rotate(7deg) translate(0, 20px) scale(0.85);
+    -o-transform: rotate(7deg) translate(0, 20px) scale(0.85);
+    transform: rotate(7deg) translate(0, 20px) scale(0.85);
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .tape:nth-child(1) {
+    display: none;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .tape:nth-child(2) {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    top: -50px;
+    left: 50%;
+    margin-left: -20px;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div:before {
+    background: #e6389b;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg path {
+    stroke: #e6389b;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #e6389b;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) {
+    -webkit-transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+    -moz-transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+    -ms-transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+    -o-transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+    transform: rotate(-2deg) translate(-20px, 15px) scale(0.85);
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 30px;
+    top: -20px;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    bottom: -20px;
+    right: 30px;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div:before {
+    background: #55A4B7;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg path {
+    stroke: #55A4B7;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #55A4B7;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) {
+    -webkit-transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+    -moz-transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+    -ms-transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+    -o-transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+    transform: rotate(20deg) translate(-10px, -10px) scale(0.85);
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .tape {
+    display: none;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div:before {
+    background: #E5753C;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg path {
+    stroke: #E5753C;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #E5753C;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) {
+    -webkit-transform: rotate(-5deg) scale(0.85);
+    -moz-transform: rotate(-5deg) scale(0.85);
+    -ms-transform: rotate(-5deg) scale(0.85);
+    -o-transform: rotate(-5deg) scale(0.85);
+    transform: rotate(-5deg) scale(0.85);
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .tape {
+    display: none;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div:before {
+    background: #81B566;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg path {
+    stroke: #81B566;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #81B566;
+  }
 }
 
 .splash-landing#home-splash > section#how-it-works button {
