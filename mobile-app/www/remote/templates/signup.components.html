@@ -13,14 +13,13 @@
 			<h1 class='hide ng-class:{"show":root.vars.loginMode && !root.vars.forgotPassword}'>Welcome back!</h1>
 			<h1 class='hide ng-class:{"show":root.vars.loginMode && root.vars.forgotPassword}'>Forgot Your Password?</h1>
 			<h2  ng-if='user.student_courses.length'>Selected <span>{{user.student_courses.length}}</span> {{university.short_name}} Courses</h2>
-			<ul class="switch ugrid-2">
-				<li>
+			<div class="switch tab-bar slide">
+				<div>
 					<a ng-click='root.vars.loginMode = true;' class='ng-class:{"selected": root.vars.loginMode}'>Login</a>
-				</li>
-				<li>
 					<a ng-click='toggleLoginMode()' class='ng-class:{"selected": !root.vars.loginMode}'>Sign Up</a>
-				</li>
-			</ul>
+					<hr/>
+				</div>
+			</div>
 		</header>
 		<div id="account-form" class="onboarding-list">
 			<div class="input-field relative full-x hide ng-class:{'show': !root.vars.loginMode}">

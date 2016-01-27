@@ -1,5 +1,103 @@
 @import 'mixin';
 
+.pf-banner.pf-banner-academic {
+	background: $cerise;
+	&:after {
+		border-color: $cerise;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $cerise;
+		}
+	}
+}
+.pf-banner.pf-banner-photo {
+	background: $moola;
+	&:after {
+		border-color: $moola;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $moola;
+		}
+	}
+}
+.pf-banner.pf-banner-baking {
+	background: $gold;
+	&:after {
+		border-color: $gold;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $gold;
+		}
+	}
+}
+.pf-banner.pf-banner-household {
+	background: $cobalt;
+	&:after {
+		border-color: $cobalt;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $cobalt;
+		}
+	}
+}
+.pf-banner.pf-banner-delivery {
+	background: $auburn;
+	&:after {
+		border-color: $auburn;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $auburn;
+		}
+	}
+}
+.pf-banner.pf-banner-freelancing {
+	background: $orange;
+	&:after {
+		border-color: $orange;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $orange;
+		}
+	}
+}
+.pf-banner.pf-banner-athletic {
+	background: $eggplant;
+	&:after {
+		border-color: $eggplant;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $eggplant;
+		}
+	}
+}
+.pf-banner.pf-banner-tech {
+	background: $azure;
+	&:after {
+		border-color: $azure;
+		border-bottom-color: transparent;
+	}
+	&.pf-banner-edit {
+		svg path {
+			stroke: $azure;
+		}
+	}
+}
+
+
 // ACADEMIC
 #desktop-guru-home {
 	.pf-type-academic {
@@ -117,6 +215,16 @@
 	}
 }
 .pf-type-academic {
+	.pf-contact {
+		color: $cerise;
+		&:hover, &:focus {
+			background: lighten($cerise, 20%);
+			color: white;
+		}
+		&:active {
+			background: lighten($slate, 25%);
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -162,21 +270,6 @@
 		.pf-header-color {
 			background: desaturate(darken($cerise, 20%), 20%);
 		}
-		.pf-banner {
-			background: $cerise;
-			&:after {
-				border: 25px solid $cerise;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-academic {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $cerise;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -210,12 +303,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $cerise;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $cerise;
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cerise, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cerise, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cerise, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cerise, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cerise;
+						}
 					}
 				}
 			}
@@ -448,6 +616,16 @@
 	}
 }
 .pf-type-photography {
+	.pf-contact {
+		color: $moola;
+		&:hover, &:focus {
+			background: lighten($moola, 20%);
+			color: white;
+		}
+		&:active {
+			background: lighten($slate, 25%);
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -634,21 +812,6 @@
 		.pf-header-color {
 			background: desaturate(darken($moola, 20%), 20%);
 		}
-		.pf-banner {
-			background: $moola;
-			&:after {
-				border: 25px solid $moola;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-photo {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $moola;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -682,12 +845,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $moola;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $moola;
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($moola, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($moola, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($moola, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($moola, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $moola;
+						}
 					}
 				}
 			}
@@ -921,6 +1159,16 @@
 	}
 }
 .pf-type-baking {
+	.pf-contact {
+		color: $gold;
+		&:hover, &:focus {
+			background: lighten($gold, 5%);
+			color: white;
+		}
+		&:active {
+			background: lighten($slate, 25%);
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -966,21 +1214,6 @@
 		.pf-header-color {
 			background: desaturate(darken($gold, 40%), 20%);
 		}
-		.pf-banner {
-			background: $gold;
-			&:after {
-				border: 25px solid $gold;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-baking {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $gold;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -1014,12 +1247,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $gold;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $gold;
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($gold, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($gold, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($gold, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($gold, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $gold;
+						}
 					}
 				}
 			}
@@ -1316,6 +1624,16 @@
 	}
 }
 .pf-type-household {
+	.pf-contact {
+		color: $cobalt;
+		&:hover, &:focus {
+			background: lighten($cobalt, 15%);
+			color: white;
+		}
+		&:active {
+			background: lighten($slate, 25%);
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -1361,21 +1679,6 @@
 		.pf-header-color {
 			background: desaturate(darken($cobalt, 30%), 20%);
 		}
-		.pf-banner {
-			background: $cobalt;
-			&:after {
-				border: 25px solid $cobalt;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-household {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $cobalt;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -1409,12 +1712,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $cobalt;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $cobalt;
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cobalt, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cobalt, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cobalt, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cobalt;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($cobalt, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $cobalt;
+						}
 					}
 				}
 			}
@@ -1647,6 +2025,16 @@
 	}
 }
 .pf-type-delivery {
+	.pf-contact {
+		color: $auburn;
+		&:hover, &:focus {
+			background: lighten($auburn, 5%);
+			color: white;
+		}
+		&:active {
+			background: lighten($slate, 25%);
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -1692,21 +2080,6 @@
 		.pf-header-color {
 			background: desaturate(darken($auburn, 30%), 20%);
 		}
-		.pf-banner {
-			background: $auburn;
-			&:after {
-				border: 25px solid $auburn;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-delivery {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $auburn;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -1740,12 +2113,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $auburn;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $auburn;
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($auburn, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($auburn, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($auburn, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $auburn;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($auburn, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $auburn;
+						}
 					}
 				}
 			}
@@ -1978,6 +2426,16 @@
 	}
 }
 .pf-type-freelancing {
+	.pf-contact {
+		color: $orange;
+		&:hover, &:focus {
+			background: lighten($orange, 15%);
+			color: white;
+		}
+		&:active {
+			background: lighten($slate, 25%);
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -2023,21 +2481,6 @@
 		.pf-header-color {
 			background: desaturate(darken($orange, 20%), 20%);
 		}
-		.pf-banner {
-			background: $orange;
-			&:after {
-				border: 25px solid $orange;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-freelancing {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $orange;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -2071,12 +2514,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $orange;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $orange;
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($orange, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($orange, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($orange, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($orange, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $orange;
+						}
 					}
 				}
 			}
@@ -2309,6 +2827,16 @@
 	}
 }
 .pf-type-athletic {
+	.pf-contact {
+		color: $eggplant;
+		&:hover, &:focus {
+			background: lighten($eggplant, 15%);
+			color: white;
+		}
+		&:active {
+			background: lighten($slate, 25%);
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -2354,21 +2882,6 @@
 		.pf-header-color {
 			background: desaturate(darken($eggplant, 20%), 10%);
 		}
-		.pf-banner {
-			background: $eggplant;
-			&:after {
-				border: 25px solid $eggplant;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-athletic {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $eggplant;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -2402,12 +2915,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $eggplant;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $eggplant;
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($eggplant, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($eggplant, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($eggplant, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($eggplant, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $eggplant;
+						}
 					}
 				}
 			}
@@ -2640,6 +3228,16 @@
 	}
 }
 .pf-type-tech {
+	.pf-contact {
+		color: $azure;
+		&:hover, &:focus {
+			background: lighten($azure, 15%);
+			color: white;
+		}
+		&:active {
+			background: lighten($slate, 25%);
+		}
+	}
 	.custom-dropdown {
 		> div {
 			a {
@@ -2685,21 +3283,6 @@
 		.pf-header-color {
 			background: desaturate(darken($azure, 20%), 10%);
 		}
-		.pf-banner {
-			background: $azure;
-			&:after {
-				border: 25px solid $azure;
-				border-bottom-color: transparent;
-			}
-			&.pf-banner-tech {
-				display: block;
-			}
-			&.pf-banner-edit {
-				svg path {
-					stroke: $azure;
-				}
-			}
-		}
 	}
 	.pf-url {
 		li {
@@ -2733,12 +3316,87 @@
 			}
 		}
 	}
-	.pf-tabs {
-		ul {
-			li {
-				a {
+	.pf-tabs.slide {
+		div {
+			hr {
+				border-color: $azure;
+			}
+			a {
+				&:nth-child(1) {
 					&.active {
-						border-bottom: 5px solid $azure;
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($azure, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($azure, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($azure, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $azure;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							border-color: lighten($azure, 15%);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: $azure;
+						}
 					}
 				}
 			}

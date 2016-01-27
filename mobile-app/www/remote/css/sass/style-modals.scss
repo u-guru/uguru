@@ -670,6 +670,7 @@
 // ACCOUNT MODAL
 .signup-modal {
 	header.third {
+		background: $shamrock;
 		&:before {
 			background: url(../../img/login@2x.jpg) no-repeat bottom center / cover,
 						url(/static/remote/img/login@2x.jpg) no-repeat bottom center / cover;
@@ -699,23 +700,13 @@
 			}
 		}
 		.switch {
+			background: none;
 			position: absolute;
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			li {
-				padding: 0 15px;
-				a {
-					display: block;
-					padding: 15px 0;
-					border-bottom: 5px solid transparent;
-					font-size: 20px;
-					font-weight: 600;
-					text-align: center;
-				}
-				.selected {
-					border-bottom-color: white;
-				}
+			a {
+				width: 165px!important;
 			}
 		}
 	}
