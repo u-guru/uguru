@@ -33,6 +33,11 @@ angular.module('uguru.util.controllers')
     $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService, uiGmapIsReady, $ionicSlideBoxDelegate, $compile) {
 
 
+      // Make everything
+      // Display None by default except top section
+      // Directive for image loads
+      //
+
 
       $ionicSideMenuDelegate.canDragContent(false);
       var shouldShowBecomeGuruHeader = false;
@@ -48,6 +53,53 @@ angular.module('uguru.util.controllers')
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
 
+      var sectionOneLoaded = function() {
+        console.log('section one has rendered, preparing two');
+
+        //wrap up section one
+        $scope.root.loader.body.hide = true;
+        initUniversityTypeWriter();
+
+        //fire preparation for section two
+        $timeout(function() {
+          $scope.page.load.sections.two.display = true;
+          $scope.map = {
+        center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
+        control: {},
+        zoom:  mapDefaults.zoom,
+        dragging: true, //true while map is dragging state, false otherwise
+        refresh: false,
+        options: mapDefaults.options,
+        events: {tilesloaded: onMapRenderCompleteOnce},
+        bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
+        pan: true,
+        markers: generateXMarkersFromUniversities(200, $scope.universities),
+        rebuildMarkers: false,
+        window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+      }
+        }, 5000)
+
+      }
+
+      var sectionTwoHasLoaded = function() {
+        console.log('section two has rendered, preparing three');
+        $scope.page.load.sections.two.visible = true;
+        $scope.page.load.sections.three.display = true;
+        $scope.page.load.sections.four.display = true;
+        $scope.page.load.sections.five.display = true;
+        $scope.page.load.sections.footer.display = true;
+
+        var waypointDict = {
+          "how-it-works": {func:null, offset:100},
+          "splash-university": {func:null},
+          "splash-browse": {func:null},
+          "become-guru": {func:null}
+        }
+
+        ScrollService.initArrWaypoints(waypointDict, "home-splash");
+
+        initHomePageWayPoint();
+      }
 
       // page initialize vars
       $scope.university = {}
@@ -56,6 +108,29 @@ angular.module('uguru.util.controllers')
       $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}};
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showSolidNav:false};
+      $scope.page.load = {sections:{}, complete:false};
+      $scope.page.load.sections = {
+        one: {visible:true, display:true, nested:{bg_image: false}, ready:sectionOneLoaded},
+        two: {visible:false, display:false, nested:{}, on_activate:null},
+        three: {visible:false, display:false, nested:{}, on_activate:null},
+        four: {visible:false, display:false, nested:{}, on_activate:null},
+        five: {visible:false, display:false, nested:{}, on_activate:null},
+        footer: {visible:false, display:false, nested:{}, on_activate:null}
+      }
+
+      //gets element and makes it accesible via root.vars
+      var compileLoaderIntoAngular = function() {
+
+      }
+
+      //gets element and makes it accesible via root.vars
+      var toggleSectionDisplay = function() {
+
+      }
+
+      var toggleSectionVisiblity = function() {
+
+      }
 
 
       //outgoing transitioning functions
@@ -214,9 +289,9 @@ angular.module('uguru.util.controllers')
 
 
 
-    var closeHomePageLoader = function() {
-        bodyLoadingDiv.classList.add('hide');
-    }
+    // var closeHomePageLoader = function() {
+    //     bodyLoadingDiv.classList.add('hide');
+    // }
 
       //adds X markers every Y seconds
       var placeAllMarkersOnMapInXMillSeconds = function(ms, markerArr) {
@@ -350,21 +425,9 @@ angular.module('uguru.util.controllers')
 
       $scope.$on('$ionicView.afterEnter', function() {
 
-        var waypointDict = {
-          "how-it-works": {func:null, offset:100},
-          "splash-university": {func:null},
-          "splash-browse": {func:null},
-          "become-guru": {func:null}
-        }
-
         $timeout(function() {
           initProfileCTAS();
         })
-
-        $timeout(function() {
-
-          ScrollService.initArrWaypoints(waypointDict, "home-splash");
-        }, 5000)
       })
 
       $scope.hiwSlideChanged = function($index) {
@@ -536,28 +599,15 @@ angular.module('uguru.util.controllers')
       var onMapRenderCompleteOnce = function(map) {
         if (!$scope.map.og_map) {
           $scope.mapHasRendered = true;
+          sectionTwoHasLoaded();
           $scope.map.og_map = map;
-          closeHomePageLoader();
           console.log('map has finalled rendered');
           clearTimeout(timerCounter);
           console.log('clearing counter');
         }
       }
 
-      $scope.map = {
-        center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
-        control: {},
-        zoom:  mapDefaults.zoom,
-        dragging: true, //true while map is dragging state, false otherwise
-        refresh: false,
-        options: mapDefaults.options,
-        events: {tilesloaded: onMapRenderCompleteOnce},
-        bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
-        pan: true,
-        markers: generateXMarkersFromUniversities(20, $scope.universities),
-        rebuildMarkers: false,
-        window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
-      }
+
 
 
       $scope.universityButtonClicked = function() {
@@ -577,7 +627,7 @@ angular.module('uguru.util.controllers')
          console.log('ionic has entered');
          $timeout(function() {
             shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
-            initUniversityTypeWriter();
+            // initUniversityTypeWriter();
             calculateAndInitiateCounters();
             !$scope.desktopMode && initMobileModals();
             $ionicSlideBoxDelegate.update();

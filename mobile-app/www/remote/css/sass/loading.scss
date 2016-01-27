@@ -1,6 +1,11 @@
-  .body-loading-div {
+  #body-loading-div {
+      display:block !important;
+      &.hide {
+        display:none !important;
+      }
       div {
         width: 100%;
+        height: 100%;
         svg {
           padding: 1em;
           width: 5em;
