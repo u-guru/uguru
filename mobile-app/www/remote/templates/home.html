@@ -2,7 +2,8 @@
 
 
 <!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
-<div class='bg-smoke' cache-view="false" >
+<!-- <div class='bg-smoke' cache-view="false" > -->
+    <div>
         <main id='home-splash' class='splash-landing hs-view full-xy'>
             <!-- START Home Page CTAs -->
 
@@ -25,13 +26,13 @@
                 <!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
             </ion-pane>
 
-            <header class='splash-header ng-class:{"active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}'>
+            <header class='splash-header' id='home-nav-header' ng-class="{'bg-charcoal': page.header.showOnScrollNav.length, active: becomeGuruHeaderActive}">
                     <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
 
                     <div class="ugrid-3">
-                        <a name='how-scroll' class="active splash-nav-link" ng-click='scrollToSection("#how-it-works")'>How It Works</a>
-                        <a name='browse-scroll' class="splash-nav-link" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
-                        <a name='become-scroll' class="splash-nav-link" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
+                        <a name='how-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.how_it_works}" ng-click='scrollToSection("#how-it-works")'>How It Works</a>
+                        <a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.university}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
+                        <a name='become-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.become_guru}" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
                         <hr/>
                     </div>
 
@@ -159,7 +160,7 @@
 	                                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 	                                    </svg>
 	                                </i>
-	                                <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"  ng-model="search_text.university"/>
+	                                <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"  ng-model="search_text.university" ng-focus='focusUniversitySearchInput'/>
 	                                <label for="request-search-input">
 	                                    <span ng-show='universities.length'>search {{universities.length}} supported schools</span>
 	                                </label>
@@ -596,7 +597,8 @@
 		</main>
 		<!-- </ion-content> -->
         <div id='last-div-main' onload="lastDivLoaded()"> </div>
-    </ion-content>
-</ion-view>
+    </div>
+    <!-- </ion-content> -->
+<!-- </ion-view> -->
 	<!-- </ion-scroll> -->
 <!-- </ion-content>

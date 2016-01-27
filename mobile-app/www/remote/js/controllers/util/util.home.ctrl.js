@@ -43,6 +43,9 @@ angular.module('uguru.util.controllers')
       var shouldShowBecomeGuruHeader = false;
       var shouldRenderMap = true;
       var mainPageContainer = document.querySelector('#home-splash');
+      var homeNavHeader = document.querySelector('#home-nav-header');
+      var homePageWayPoint;
+      var pageNavbarHeight = 70; //@Gabrielle-NOTE, is this consisent with mobile too? If not let me know
 
       //START BROWSE SECTION
 
@@ -73,7 +76,7 @@ angular.module('uguru.util.controllers')
         events: {tilesloaded: onMapRenderCompleteOnce},
         bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
         pan: true,
-        markers: generateXMarkersFromUniversities(200, $scope.universities),
+        markers: generateXMarkersFromUniversities(20, $scope.universities),
         rebuildMarkers: false,
         window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
       }
@@ -89,16 +92,70 @@ angular.module('uguru.util.controllers')
         $scope.page.load.sections.five.display = true;
         $scope.page.load.sections.footer.display = true;
 
+        $timeout(function() {
+          initHomePageWayPoint();
+        }, 5000)
+      }
+
+      var initHomePageWayPoint = function() {
+
+        var scrollUniversityCallback = function(direction, element, scrollTop) {
+            if (direction === 'down') {
+              homeNavHeader.classList.add('bg-charcoal');
+
+              $scope.page.header.active_tab.become_guru = false;
+              $scope.page.header.active_tab.how_it_works = false;
+              $scope.page.header.active_tab.university = true;
+            } else {
+              homeNavHeader.classList.remove('bg-charcoal');
+              $scope.page.header.active_tab.become_guru = false;
+              $scope.page.header.active_tab.how_it_works = true;
+              $scope.page.header.active_tab.university = false;
+            }
+            // $scope.page.header.showOnScrollNav = 'bg-charcoal'
+            //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
+        }
+
+        var scrollHowitWorksCallback = function(direction, element, scrollTop) {
+            if (direction === 'down') {
+              console.log('scrolling past how it works');
+              $scope.page.header.active_tab.university = false;
+              $scope.page.header.active_tab.become_guru = false;
+              $scope.page.header.active_tab.how_it_works = true;
+            } else {
+              $scope.page.header.active_tab.university = true;
+              $scope.page.header.active_tab.how_it_works = false;
+              $scope.page.header.active_tab.become_guru = false;
+            }
+            // $scope.page.header.showOnScrollNav = 'bg-charcoal'
+            //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
+        }
+
+        var scrollBecomeGuruCallback = function(direction, element, scrollTop) {
+            if (direction === 'down') {
+              console.log('scrolling past become a guru');
+              $scope.page.header.active_tab.university = false;
+              $scope.page.header.active_tab.become_guru = true;
+              $scope.page.header.active_tab.how_it_works = false;
+            } else {
+              $scope.page.header.active_tab.university = false;
+              $scope.page.header.active_tab.how_it_works = true;
+              $scope.page.header.active_tab.become_guru = false;
+            }
+            // $scope.page.header.showOnScrollNav = 'bg-charcoal'
+            //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
+        }
+
         var waypointDict = {
-          "how-it-works": {func:null, offset:100},
-          "splash-university": {func:null},
-          "splash-browse": {func:null},
-          "become-guru": {func:null}
+          "splash-home": {func:null},
+          "how-it-works": {func:scrollHowitWorksCallback, offset: 36 + 70},
+          "splash-university": {func:scrollUniversityCallback, offset:70}, //navbar + bottom footer
+          "splash-browse": {func:null, offset:70},
+          "become-guru": {func:scrollBecomeGuruCallback, offset:70}
         }
 
         ScrollService.initArrWaypoints(waypointDict, "home-splash");
 
-        initHomePageWayPoint();
       }
 
       // page initialize vars
@@ -107,7 +164,7 @@ angular.module('uguru.util.controllers')
       $scope.page.sidebar = {show:false};
       $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}};
       $scope.page.status = {loaded:false, showLoader:true};
-      $scope.page.header = {showSolidNav:false};
+      $scope.page.header = {showOnScrollNav:'', becomeGuruHeaderActive:false, active_tab:{how_it_works:false, become_guru:false, university:false}};
       $scope.page.load = {sections:{}, complete:false};
       $scope.page.load.sections = {
         one: {visible:true, display:true, nested:{bg_image: false}, ready:sectionOneLoaded},
@@ -329,6 +386,25 @@ angular.module('uguru.util.controllers')
         var amount = null;
         var successFunction = null;
         var pageParentContainer = '#home-splash';
+
+        if (section_selector === '#how-it-works') {
+          $scope.page.header.active_tab.university = false;
+          $scope.page.header.active_tab.become_guru = false;
+          $scope.page.header.active_tab.how_it_works = true;
+        }
+
+        if (section_selector === '#become-guru') {
+          $scope.page.header.active_tab.university = false;
+          $scope.page.header.active_tab.how_it_works = false;
+          $scope.page.header.active_tab.become_guru = true;
+        }
+
+        if (section_selector === '#university-splash') {
+          $scope.page.header.active_tab.how_it_works = false;
+          $scope.page.header.active_tab.become_guru = false;
+          $scope.page.header.active_tab.university = true;
+        }
+
         ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector);
       }
 

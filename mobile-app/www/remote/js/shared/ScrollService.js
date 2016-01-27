@@ -10,10 +10,14 @@ angular
 
 function ScrollService(LoadingService, $timeout) {
   var globalWaypointsDict = {};
+  var mainWaypointContext;
+  var currentWaypointContextElem;
   return {
     scrollTo:scrollTo,
     initStickyHeaderScroll: initStickyHeaderScroll,
-    initArrWaypoints: initArrWaypoints
+    initArrWaypoints: initArrWaypoints,
+    mainWaypointContext: mainWaypointContext,
+    currentWaypointContextElem: currentWaypointContextElem
   }
 
   function initStickyHeaderScroll(header_selector, start_element, inject_class, parent_container) {
@@ -36,19 +40,18 @@ function ScrollService(LoadingService, $timeout) {
     stickyScroll();
   }
 
-  function initWaypoint(elemId, contextId, elemCb, elemOptions) {
 
-    var elemWaypoint = new Waypoint({
+
+  function initWaypoint(elemId, contextId, elemCb, elemOptions) {
+    currentWaypointContextElem  = document.getElementById(contextId)
+    var waypoint = new Waypoint({
         element: document.getElementById(elemId),
-        handler: function(direction) {
-          console.log('Scrolled to waypoint!', direction, this.element.id);
-          //call callback
-          elemCb && elemCb(direction);
-        },
+        handler: elemOptions.func || function() {},
         enable:true,
-        context: document.getElementById(contextId)
+        context: currentWaypointContextElem,
+        offset:elemOptions.offset
       });
-    return elemWaypoint;
+    return waypoint;
 
   }
 
