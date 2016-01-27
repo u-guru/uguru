@@ -894,28 +894,34 @@ function ContentService(Category) {
 			top_half: [{
 				icon_src: "splash/anytime.html",
 				header: "24/7, Anytime, Anywhere",
-				content: "Request anything. Your peers can your Biology Grade @2am, take your grad photos, or do dirty laundry",
+				content: "Request anything. Your peers can your Biology Grade @2am",
+				// content: "Request anything. Your peers can your Biology Grade @2am, take your grad photos, or do dirty laundry",
 			}, {
 				icon_src: "splash/save.html",
-				header: "Dirt-Cheap Academic Tutoring",
-				content: "Got a quick question? Need an entire course crammed the night before? Perhaps a guru for your study group of 4?",
+				header: "Dirt-Cheap Tutoring",
+				content: "Got a quick question? Need an entire course crammed the night before?",
+				// content: "Got a quick question? Need an entire course crammed the night before? Perhaps a guru for your study group of 4?",
 			}, {
 				icon_src: "splash/same.html",
 				header: "Not Just 'Math' Help",
-				content: "Yes, you can now request a Guru who has taken Math 16A recently, possibly the same professor & textbook",
+				content: "Yes, you can now request a Guru who has taken Math 16A recently",
+				// content: "Yes, you can now request a Guru who has taken Math 16A recently, possibly the same professor & textbook",
 			}],
 			bottom_half: [{
 				icon_src: "splash/organize.html",
 				header: "100% LTE Coverage", // add 100
-				content: "Got a quick question? Need an entire course crammed the night before? Need a guru for your study group of 4?"
+				content: "Got a quick question? Need an entire course crammed the night before?"
+				// content: "Got a quick question? Need an entire course crammed the night before? Need a guru for your study group of 4?"
 			}, {
 				icon_src: "splash/career.html",
-				header: "Meet the Future You. Right Now.", //FUTURE: Have the dynamic text here
-				content: "On the Pre-Med rack? Meet with alumni already @ your dream school. Dream job Google? Match with a peer already there.",
+				header: "Meet the Future You.", //FUTURE: Have the dynamic text here
+				content: "On the Pre-Med track? Meet with alumni already @ your dream school.",
+				// content: "On the Pre-Med track? Meet with alumni already @ your dream school. Dream job Google? Match with a peer already there.",
 			}, {
 				icon_src: "splash/earn.html",
 				header: "Become a College Guru",
-				content: "Earn great sidecash anytime, anywhere. Build cred and earn up to $40/hr. Earn, learn, & burn those loans early."
+				content: "Earn great sidecash anytime, anywhere. Build cred and earn."
+				// content: "Earn great sidecash anytime, anywhere. Build cred and earn up to $40/hr. Earn, learn, & burn those loans early."
 			}, ]
 		};
 
