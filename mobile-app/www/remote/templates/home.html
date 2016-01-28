@@ -44,8 +44,8 @@
                 <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
 
                 <div class="ugrid-3">
-					<a name='how-scroll' class="active splash-nav-link" ng-click='scrollToSection("#how-it-works")'>How It Works</a>
-	                <a name='browse-scroll' class="splash-nav-link" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
+					<a name='browse-scroll' class="active splash-nav-link" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
+					<a name='how-scroll' class="splash-nav-link" ng-click='scrollToSection("#splash-browse")'>How It Works</a>
 	                <a name='become-scroll' class="splash-nav-link" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
 	                <a name='login-scroll' class="splash-nav-link" ng-click='goToSignup()' ng-if='!user.id'>Login</a>
 					<hr/>
@@ -72,14 +72,38 @@
 					</a>
 				</div>
 			</header>
+			
+			<div class="splash-sub-header tab-bar slide">
+				<div>
+					<a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">How It Works</a>
+					<a ng-click='activeBrowseTabIndex = 1' class="ng-class:{'active':activeBrowseTabIndex===1}">Student-Run Shops</a>
+					<a ng-click='activeBrowseTabIndex = 2;' class="ng-class:{'active':activeBrowseTabIndex===2}">Guru Profiles </a>
+					<hr/>
+				</div>
+			</div>
 
             <section id='splash-home' class='splash-hero relative ng-class:{"active": becomeGuruHeaderActive}' style="background-image: url('{{page.css.bg_banner}}');">
                 <a id="splash-footer-support" class="splash-footer-link" ng-click='launchSupportOverlay()'>
-					<span ng-include="img_base + 'templates/svg/support.html'"></span>
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
                 		<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453" ></path>
                 	</svg>
                 </a>
+				<!-- @samir -->
+				<!-- next arrow -->
+				<a id="splash-footer-next" class="splash-footer-link">
+					<div>
+						<h4>Up Next</h4>
+						<span>How It Works</span>
+					</div>
+				   <svg class="splash-footer-icon" viewBox="0 0 100 100">
+					   <path d="M14,32 L50,68 L86,32"></path>
+				   </svg>
+			   </a>
+				<a id="splash-footer-top" class="splash-footer-link" ng-click='scrollToSection("#splash-home")'>
+				   <svg class="splash-footer-icon" viewBox="0 0 100 100">
+					   <path d="M14,68 L50,32 L86,68"></path>
+				   </svg>
+			   </a>
                 <div>
                     <h1 id='main-text'>
                         <span class='weight-400'>Last-second dirt-cheap</span>
@@ -279,130 +303,106 @@
                 </footer>
             </section>
 
-			<section id='how-it-works' class="splash-postit">
-                <header>
-                    <h1 class="txt-university">{{how_it_works.header}}</h1>
-                </header>
-                <div class='main relative'>
-                    <!--Mobile mode, hacked css @595-611, samir.scss -->
-                    <div class="full-xy" ng-if='!desktopMode'>
-                        <div class="p15xy">
-							<div class='postit empty'>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-							</div>
-							<div class='postit empty'>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-							</div>
-                            <ion-slide-box delegate-handle='hiw-slidebox' class='full-xy' on-slide-changed="hiwSlideChanged($index)" show-pager='true'  slide-interval='2500' auto-play="false">
-                                <ion-slide ng-repeat='hiw_item in ::how_it_works.top_half'>
-                                    <div class='postit'>
-                                        <svg class="square" viewBox="0 0 100 100">
-                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                        </svg>
-                                        <div class='flex-wrap-center full-xy'>
-                                            <span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-                                            <h1 class='full-x' ng-bind-html="hiw_item.header"></h1>
-                                            <p ng-bind-html="hiw_item.content"></p>
-                                        </div>
-                                    </div>
-                                </ion-slide>
-                                <ion-slide ng-repeat='hiw_item in ::how_it_works.bottom_half'>
-                                    <div class='postit'>
-                                        <svg class="square" viewBox="0 0 100 100">
-                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                        </svg>
-                                        <div class='flex-wrap-center full-xy'>
-                                            <span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-                                            <h1 class='full-x' ng-bind-html="hiw_item.header"></h1>
-                                            <p ng-bind-html="hiw_item.content"></p>
-                                        </div>
-                                    </div>
-                                </ion-slide>
-                            </ion-slide-box>
-                        </div>
-                        <div class="p15xy absolute bottom-0 left-0 full-x">
-                            <button ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
-                        </div>
-                    </div>
-
-                    <!--Desktop mode-->
-                    <div ng-if='desktopMode' class='flex-wrap-center'>
-                        <ul>
-                            <li ng-repeat="hiw_item in ::how_it_works.top_half">
-								<svg class="tape" viewBox="0 0 200 650">
-									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-								</svg>
-								<svg class="tape" viewBox="0 0 200 650">
-									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-								</svg>
-                                <div class="postit">
-                                    <svg class="square" viewBox="0 0 100 100">
-                                        <rect x="0" y="0" width="100" height="100"></rect>
-                                    </svg>
-                                    <div>
-                                        <div>
-    										<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-    	                                    <h1 ng-bind-html="hiw_item.header"></h1>
-    	                                    <p ng-bind-html="hiw_item.content"></p>
-    									</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li ng-repeat="hiw_item in ::how_it_works.bottom_half">
-								<svg class="tape" viewBox="0 0 200 650">
-									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-								</svg>
-								<svg class="tape" viewBox="0 0 200 650">
-									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-								</svg>
-                                <div class="postit">
-                                    <svg class="square" viewBox="0 0 100 100">
-                                        <rect x="0" y="0" width="100" height="100"></rect>
-                                    </svg>
-                                    <div>
-                                        <div>
-    										<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-    	                                    <h1 ng-bind-html="hiw_item.header"></h1>
-    	                                    <p ng-bind-html="hiw_item.content"></p>
-    									</div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-					   <button ng-if='desktopMode' ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
-                    </div>
-                </div>
-				<footer>
-					<div class="border"></div>
-				</footer>
-            </section>
-
             <section class='splash-categories' id='splash-browse'>
-                <div class="tab-bar slide splash-bar bg-university">
-                    <div>
-                        <a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
-							<div>
-								<span>Student-Run</span>
-								<span>Shops</span>
-							</div>
-						</a>
-                        <a ng-click='activeBrowseTabIndex = 1;' class="ng-class:{'active':activeBrowseTabIndex===1}">
-							<div>
-								<span>Guru</span>
-								<span>Profiles</span>
-							</div>
-						</a>
-						<hr/>
-                    </div>
-                </div>
-				<div id="splash-categories" class="main ng-class:{'active':activeBrowseTabIndex===0}" ng-controller="CategoriesController">
+				<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
+	                <div class='main relative'>
+	                    <!--Mobile mode, hacked css @595-611, samir.scss -->
+	                    <div class="full-xy" ng-if='!desktopMode'>
+	                        <div class="p15xy">
+								<div class='postit empty'>
+									<svg class="square" viewBox="0 0 100 100">
+										<rect x="0" y="0" width="100" height="100"></rect>
+									</svg>
+								</div>
+								<div class='postit empty'>
+									<svg class="square" viewBox="0 0 100 100">
+										<rect x="0" y="0" width="100" height="100"></rect>
+									</svg>
+								</div>
+	                            <ion-slide-box delegate-handle='hiw-slidebox' class='full-xy' on-slide-changed="hiwSlideChanged($index)" show-pager='true'  slide-interval='2500' auto-play="false">
+	                                <ion-slide ng-repeat='hiw_item in ::how_it_works.top_half'>
+	                                    <div class='postit'>
+	                                        <svg class="square" viewBox="0 0 100 100">
+	                                            <rect x="0" y="0" width="100" height="100"></rect>
+	                                        </svg>
+	                                        <div class='flex-wrap-center full-xy'>
+	                                            <span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+	                                            <h1 class='full-x' ng-bind-html="hiw_item.header"></h1>
+	                                            <p ng-bind-html="hiw_item.content"></p>
+	                                        </div>
+	                                    </div>
+	                                </ion-slide>
+	                                <ion-slide ng-repeat='hiw_item in ::how_it_works.bottom_half'>
+	                                    <div class='postit'>
+	                                        <svg class="square" viewBox="0 0 100 100">
+	                                            <rect x="0" y="0" width="100" height="100"></rect>
+	                                        </svg>
+	                                        <div class='flex-wrap-center full-xy'>
+	                                            <span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+	                                            <h1 class='full-x' ng-bind-html="hiw_item.header"></h1>
+	                                            <p ng-bind-html="hiw_item.content"></p>
+	                                        </div>
+	                                    </div>
+	                                </ion-slide>
+	                            </ion-slide-box>
+	                        </div>
+	                        <div class="p15xy absolute bottom-0 left-0 full-x">
+	                            <button ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
+	                        </div>
+	                    </div>
+
+	                    <!--Desktop mode-->
+	                    <div ng-if='desktopMode' class='flex-wrap-center'>
+	                        <ul>
+	                            <li ng-repeat="hiw_item in ::how_it_works.top_half">
+									<svg class="tape" viewBox="0 0 200 650">
+										<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+									</svg>
+									<svg class="tape" viewBox="0 0 200 650">
+										<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+									</svg>
+	                                <div class="postit">
+	                                    <svg class="square" viewBox="0 0 100 100">
+	                                        <rect x="0" y="0" width="100" height="100"></rect>
+	                                    </svg>
+	                                    <div>
+	                                        <div>
+	    										<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+	    	                                    <h1 ng-bind-html="hiw_item.header"></h1>
+	    	                                    <p ng-bind-html="hiw_item.content"></p>
+	    									</div>
+	                                    </div>
+	                                </div>
+	                            </li>
+	                            <li ng-repeat="hiw_item in ::how_it_works.bottom_half">
+									<svg class="tape" viewBox="0 0 200 650">
+										<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+									</svg>
+									<svg class="tape" viewBox="0 0 200 650">
+										<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+									</svg>
+	                                <div class="postit">
+	                                    <svg class="square" viewBox="0 0 100 100">
+	                                        <rect x="0" y="0" width="100" height="100"></rect>
+	                                    </svg>
+	                                    <div>
+	                                        <div>
+	    										<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+	    	                                    <h1 ng-bind-html="hiw_item.header"></h1>
+	    	                                    <p ng-bind-html="hiw_item.content"></p>
+	    									</div>
+	                                    </div>
+	                                </div>
+	                            </li>
+	                        </ul>
+						   <button ng-if='desktopMode' ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
+	                    </div>
+	                </div>
+	            </div>
+				<div id="splash-categories" class="main ng-class:{'active':activeBrowseTabIndex===1}" ng-controller="CategoriesController">
                     <div>
                         <div>
-                            <h1>Guru Categories</h1>
+							<h1>Browse Sample Guru Categories</h1>
                             <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         </div>
 						<div>
@@ -451,9 +451,9 @@
                         </div>
                     </div>
 				</div>
-                <div id="splash-gurus" class="main ng-class:{'active':activeBrowseTabIndex===1}">
+                <div id="splash-gurus" class="main ng-class:{'active':activeBrowseTabIndex===2}">
                     <div>
-                        <h1><span>Browse Sample</span> Guru Profiles</h1>
+						<h1>Browse Sample Guru Profiles</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
                         <div>
                             <ul class="pf-card-group-mobile" ng-if='!desktopMode'>
