@@ -33,10 +33,6 @@ angular.module('uguru.util.controllers')
     $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService, uiGmapIsReady, $ionicSlideBoxDelegate, $compile) {
 
 
-      // Make everything
-      // Display None by default except top section
-      // Directive for image loads
-      //
 
 
       $ionicSideMenuDelegate.canDragContent(false);
@@ -45,9 +41,7 @@ angular.module('uguru.util.controllers')
       var mainPageContainer = document.querySelector('#home-splash');
       var homeNavHeader = document.querySelector('#home-nav-header');
       var homePageWayPoint;
-      var pageNavbarHeight = 70; //@Gabrielle-NOTE, is this consisent with mobile too? If not let me know
-
-      //START BROWSE SECTION
+      var pageNavbarHeight = 70;
 
       //cta specific initialization vars
       $scope.activeBrowseTabIndex = 1;
@@ -56,53 +50,62 @@ angular.module('uguru.util.controllers')
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
 
-      var createPennantPng = function() {
-        var img = document.createElement('img');
-        img.src = 'data:image/svg+xml,PHN2ZyB2aWV3Qm94PSIwIDAgNzMgOTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8cGF0aCBkPSJNNC41LDg1LjQwMTM0NDEgTDQuNSw1LjU5ODY1NTg2IEM1LjM5NjcwMjQzLDUuMDc5OTM4NjggNiw0LjExMDQyMzE5IDYsMyBDNiwxLjM0MzE0NTc1IDQuNjU2ODU0MjUsMCAzLDAgQzEuMzQzMTQ1NzUsMCAwLDEuMzQzMTQ1NzUgMCwzIEMwLDQuMTEwNDIzMTkgMC42MDMyOTc1Nyw1LjA3OTkzODY4IDEuNDk5OTk5MTYsNS41OTg2NTI5MyBMMS41LDg1LjQwMTM0NDEgQzAuNjAzMjk3NTcsODUuOTIwMDYxMyAwLDg2Ljg4OTU3NjggMCw4OCBDMCw4OS42NTY4NTQyIDEuMzQzMTQ1NzUsOTEgMyw5MSBDNC42NTY4NTQyNSw5MSA2LDg5LjY1Njg1NDIgNiw4OCBDNiw4Ni44ODk1NzY4IDUuMzk2NzAyNDMsODUuOTIwMDYxMyA0LjUwMDAwMDg0LDg1LjQwMTM0NzEgWiIgaWQ9InBvbGUiIGZpbGw9IiNEOEQ4RDgiPjwvcGF0aD4KICAgIDxwYXRoIGQ9Ik02My4wNzE1NzUsMjcuNSBMNzIuMjM5MzgwMiwzMi45OTI0OTMxIEwwLDQ4IEwxLjQyMTA4NTQ3ZS0xNCw3IEw3MS43MjcyMDEzLDIyLjEzNDM2NDEgTDYzLjA3MTU3NSwyNy41IFoiIGlkPSJmbGFnIiBvcGFjaXR5PSIwLjkiIGZpbGw9IiM2OUIzQTUiPjwvcGF0aD4KICAgIDxwYXRoIGQ9Ik0wLDcgTDAsNDggTDYuMjYxLDQ2LjcgTDYuMjYxLDguMzIxIEwwLDcgTDAsNyBaIiBpZD0iYm9yZGVyIiBmaWxsPSIjNDA0ODRCIj48L3BhdGg+CiAgICA8dGV4dCBmaWxsPSIjRkZGRkZGIiBmb250LWZhbWlseT0iU291cmNlIFNhbnMgUHJvIiBmb250LXNpemU9IjEyLjcyODY5MzQiIGZvbnQtd2VpZ2h0PSJib2xkIj4KICAgICAgICA8dHNwYW4geD0iMTAiIHk9IjMyIiBmaWxsPSIjRkZGRkZGIj5DYWw8L3RzcGFuPgogICAgPC90ZXh0Pgo8L3N2Zz4=';
-
+      var initClusterObj = function(marker_arr) {
+        var sampleUniversityObj1 = {school_color_dark:$scope.universities[0].school_dark_color, tiny_name: $scope.universities[0].school_tiny_name};
+        var sampleUniversityObj2 = {school_color_dark:$scope.universities[0].school_color_light, tiny_name: $scope.universities[0].school_tiny_name};
+        var options_dict = {
+            minimumClusterSize:5,
+            styles:[
+              {
+                width:100,
+                height:100,
+                url: generateClusterImgDataURI(sampleUniversityObj1),
+              },
+              {
+                width:50,
+                height:50,
+                url: generateClusterImgDataURI(sampleUniversityObj2),
+              }
+            ]
+        }
+        return options_dict
       }
 
-      var sectionOneLoaded = function() {
-        console.log('section one has rendered, preparing two');
+        var generateClusterImgDataURI = function(obj) {
+          var baseSVGURL = "<svg viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.school_color_dark + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj.tiny_name + "</tspan></text></svg>"
+          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
+        }
 
-        //wrap up section one
-        $scope.root.loader.body.hide = true;
-        initUniversityTypeWriter();
-
-        //fire preparation for section two
-        $timeout(function() {
+        var generateUniversityImgDataURI = function(obj) {
+          var baseSVGURL = "<svg style='height:25px; width:25px;' viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.school_color_dark + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj.tiny_name + "</tspan></text></svg>"
+          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
+        }
+      var initHomeMap = function() {
           $scope.page.load.sections.two.display = true;
           $scope.map = {
-        center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
-        control: {},
-        zoom:  mapDefaults.zoom,
-        dragging: true, //true while map is dragging state, false otherwise
-        refresh: false,
-        options: mapDefaults.options,
-        events: {tilesloaded: onMapRenderCompleteOnce},
-        clusterOptions: {minimumClusterSize:5, styles:[{width:50, height:50, url:'data:image/svg+xml;base64,' + window.btoa('<svg viewBox="0 0 73 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z" id="pole" fill="#D8D8D8"></path><path d="M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z" id="flag" opacity="0.9" fill="#69B3A5"></path><path d="M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z" id="border" fill="#40484B"></path><text fill="#FFFFFF" font-family="Source Sans Pro" font-size="12.7286934" font-weight="bold"><tspan x="10" y="32" fill="#FFFFFF">Cal</tspan></text></svg>')}
-        ]},
-        bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
-        pan: true,
-        markers: generateXMarkersFromUniversities(200, $scope.universities),
-        rebuildMarkers: false,
-        window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
-      }
-        }, 5000)
-
+          center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
+          control: {},
+          zoom:  mapDefaults.zoom,
+          dragging: true, //true while map is dragging state, false otherwise
+          refresh: false,
+          options: mapDefaults.options,
+          events: {tilesloaded: onMapRenderCompleteOnce},
+          clusterOptions: initClusterObj(),
+          bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
+          pan: true,
+          markers: generateXMarkersFromUniversities(200, $scope.universities),
+          rebuildMarkers: false,
+          window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+        }
       }
 
-      var sectionTwoHasLoaded = function() {
-        console.log('section two has rendered, preparing three');
-        $scope.page.load.sections.two.visible = true;
-        $scope.page.load.sections.three.display = true;
-        $scope.page.load.sections.four.display = true;
-        $scope.page.load.sections.five.display = true;
-        $scope.page.load.sections.footer.display = true;
+      var whileLoaderIsOn = function() {
+        initHomeMap();
+      }
 
-        $timeout(function() {
-          initHomePageWayPoint();
-        }, 5000)
+      // render page functions
+      var initUniversityTypeWriter = function() {
+        TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
       }
 
       var initHomePageWayPoint = function() {
@@ -166,6 +169,12 @@ angular.module('uguru.util.controllers')
 
       }
 
+      var onSectionOneLoad = function() {
+        $scope.root.loader.body.hide = true;
+        initHomePageWayPoint();
+        initUniversityTypeWriter();
+      }
+
       // page initialize vars
       $scope.university = {}
       $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
@@ -175,27 +184,15 @@ angular.module('uguru.util.controllers')
       $scope.page.header = {showOnScrollNav:'', becomeGuruHeaderActive:false, active_tab:{how_it_works:false, become_guru:false, university:false}};
       $scope.page.load = {sections:{}, complete:false};
       $scope.page.load.sections = {
-        one: {visible:true, display:true, nested:{bg_image: false}, ready:sectionOneLoaded},
+        one: {visible:true, display:true, nested:{bg_image: false}, ready:onSectionOneLoad()},
         two: {visible:true, display:true, nested:{}, on_activate:null},
-        three: {visible:false, display:false, nested:{}, on_activate:null},
-        four: {visible:false, display:false, nested:{}, on_activate:null},
-        five: {visible:false, display:false, nested:{}, on_activate:null},
-        footer: {visible:false, display:false, nested:{}, on_activate:null}
+        three: {visible:true, display:true, nested:{}, on_activate:null},
+        four: {visible:true, display:true, nested:{}, on_activate:null},
+        five: {visible:true, display:true, nested:{}, on_activate:null},
+        footer: {visible:true, display:true, nested:{}, on_activate:null}
       }
 
-      //gets element and makes it accesible via root.vars
-      var compileLoaderIntoAngular = function() {
 
-      }
-
-      //gets element and makes it accesible via root.vars
-      var toggleSectionDisplay = function() {
-
-      }
-
-      var toggleSectionVisiblity = function() {
-
-      }
 
 
       //outgoing transitioning functions
@@ -244,10 +241,7 @@ angular.module('uguru.util.controllers')
       }
 
 
-      // render page functions
-      var initUniversityTypeWriter = function() {
-        TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
-      }
+
 
       var generatePageLinks = function() {
         initSupportBox();
@@ -327,51 +321,6 @@ angular.module('uguru.util.controllers')
 
       $scope.toggleSidebar = function() {
         $scope.page.sidebar.show= !$scope.page.sidebar.show;
-      }
-
-    //get universities
-    if (!$scope.universities) {
-        $scope.universities = University.getTargetted().slice();
-    }
-
-    function getInvisibleIconPath() {
-      return {
-        "path": "M33.4454342, 31.4545455",
-        "fillOpacity": 0,
-        "strokeOpacity":0,
-        "rotation": 0,
-        "scale":0.01,
-        "strokeColor": "transparent",
-        "fillColor": "transparent",
-        "strokeWeight": 0
-      }
-    }
-    var convertSVGStringIntoDataUri = function(svg_string) {
-      var precursorFormat = "data:image/svg+xml,";
-      var result = (precursorFormat + encodeURIComponent(svg_string));
-      return result;
-    }
-
-
-
-    // var closeHomePageLoader = function() {
-    //     bodyLoadingDiv.classList.add('hide');
-    // }
-
-      //adds X markers every Y seconds
-      var placeAllMarkersOnMapInXMillSeconds = function(ms, markerArr) {
-        var markerLength = markerArr.length;
-        var intervalLength = ((ms * 1.0) / markerLength)|0;
-        var i =0
-        console.log('placing', markerLength, '. One every', intervalLength, 'seconds.')
-        var staggerTimeout = setInterval(function() {
-              if (i === markerArr.length) {
-                clearTimeout(intervalLength);
-              }
-              var indexMarker = markerArr[i];
-              $scope.universityMarkers.push(indexMarker);
-              i++;
-        }, intervalLength)
       }
       var showDelayedBecomeGuruHeader = function() {
 
@@ -561,60 +510,30 @@ angular.module('uguru.util.controllers')
                  }
       }
 
-      var generateNullIcon = function() {
-        return {
-          "path": "M 100, 100m -75, 0a 75,75 0 1,0 150,0a 75,75 0 1,0 -150,0",
-          "fillOpacity": 1,
-          "strokeOpacity":1,
-          "scale":0.4,
-          "anchor": new google.maps.Point(100, 200),
-          "strokeColor": "transparent",
-          "fillColor": "transparent",
-        }
-      }
 
-      var createAndCompileImage = function() {
-
-      }
 
       var createMarkerObj = function(obj) {
+
+        var universityObj = {
+            school_color_light: obj.school_color_light,
+            banner_url: obj.banner_url,
+            school_color_dark: obj.school_color_dark,
+            name: obj.name,
+            tiny_name: obj.school_tiny_name
+        }
         return {
           id: obj.id,
           latitude: obj.latitude,
           longitude: obj.longitude,
-          icon: $scope.img_base + './templates/svg/pennant.svg',
-          // options: {
-          //   labelClass: 'university-svg-icon',
-          //   labelContent: generateSVGLabelContent(obj.school_color_dark, obj.school_color_light, obj.school_tiny_name),
-          //   labelAnchor: "0 200"
-          // },
+          icon: generateUniversityImgDataURI(universityObj),
           events: {
             click: onMarkerClick
           },
-          university: {
-            school_color_light: obj.school_color_light,
-            banner_url: obj.banner_url,
-            school_color_dark: obj.school_color_dark,
-            name: obj.name
-          }
+          university: universityObj
         }
       }
 
-      //adds X markers every Y seconds
-      var placeAllMarkersOnMapInXMillSeconds = function(ms, markerArr) {
-        var markerLength = markerArr.length;
-        var intervalLength = ((ms * 1.0) / markerLength)|0;
-        var i =0
-        console.log('placing', markerLength, '. One every', intervalLength, 'seconds.')
-        var staggerTimeout = setInterval(function() {
-              if (i === markerArr.length) {
-                clearTimeout(intervalLength);
-              }
-              var indexMarker = markerArr[i];
-              $scope.universityMarkers.push(indexMarker);
-              i++;
-        }, intervalLength)
-      }
+
 
       var generateXMarkersFromUniversities = function(x, universities_arr, with_interval) {
 
@@ -647,11 +566,7 @@ angular.module('uguru.util.controllers')
         })
       }
 
-      var generateSVGLabelContent = function(dark_color, light_color, text) {
-        var base_str = "data:image/svg+xml,"
-        var base_svg = "data:image/svg+xml,<svg viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + dark_color + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + dark_color +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + text + "</tspan></text></svg>"
-        return base_str + base_svg;
-      }
+
 
       var updateWindowToMarker = function(window_obj, model_obj) {
         window_obj.coords = {latitude:model_obj.latitude, longitude:model_obj.longitude};
@@ -687,29 +602,21 @@ angular.module('uguru.util.controllers')
       var onMapRenderCompleteOnce = function(map) {
         if (!$scope.map.og_map) {
           $scope.mapHasRendered = true;
-          sectionTwoHasLoaded();
           $scope.map.og_map = map;
           console.log('map has finalled rendered');
-          clearTimeout(timerCounter);
-          console.log('clearing counter');
         }
       }
 
 
+      $scope.$on('$ionicView.beforeEnter', function() {
 
+        if (!$scope.universities) {
+            $scope.universities = University.getTargetted().slice();
+        }
+        initHomeMap();
 
-      $scope.universityButtonClicked = function() {
-        console.log('university button clicked');
-      }
-      var timerCounter = null;
-      // $scope.$on('$ionicView.beforeEnter', function() {
-      //     console.log('before ionic has entered');
-      //     var index = 0;
-      //     timerCounter = setInterval(function() {
-      //       index += 1
-      //       console.log(index, 'seconds have passed');
-      //     }, 1000)
-      // })
+      })
+
 
       $scope.$on('$ionicView.enter', function() {
          console.log('ionic has entered');
@@ -717,20 +624,12 @@ angular.module('uguru.util.controllers')
             shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
             // initUniversityTypeWriter();
             calculateAndInitiateCounters();
+
             !$scope.desktopMode && initMobileModals();
             $ionicSlideBoxDelegate.update();
           }, 5000)
       });
 
-      $scope.$on('$ionicView.afterEnter', function() {
-        console.log('ionic has after entered');
-      })
-
-
-       $scope.$on('$viewContentLoaded', function(){
-          // alert('view has loaded');
-        //Here your view content is fully loaded !!
-        });
 
     }
 
