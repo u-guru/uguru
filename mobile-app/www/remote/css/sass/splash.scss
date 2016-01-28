@@ -1639,8 +1639,10 @@
 
 		// POSTITS
 		&.splash-postit {
-			// height: 100%;
-			// overflow: hidden;
+			@media screen and (max-width: 768px) {
+				height: 100%;
+				overflow: hidden;
+			}
 			.main {
 				ul {
 					@include flex;
@@ -1679,8 +1681,24 @@
 					margin: 30px 0;
 					max-width: calc(100% - 30px);
 				}
-				@media screen and (max-width: 768px) {
-					height: 100%;
+			}
+			@media screen and (max-width: 768px) {
+				header {
+					height: 100px;
+					padding-top: 50px;
+				}
+				.main {
+					width: 100%;
+					height: calc(100% - 136px);
+					.empty {
+						position: absolute;
+						top: 30px;
+						left: 30px;
+						width: calc(100% - 60px);
+						svg {
+							width: 100%;
+						}
+					}
 					button {
 						max-width: 100%;
 						margin:0;
@@ -1711,7 +1729,9 @@
 						}
 					}
 				}
-				@media screen and (min-width: 768px) {
+			}
+			@media screen and (min-width: 768px) {
+				.main {
 					ul {
 						li {
 							width: calc(100% / 3);
@@ -1874,12 +1894,34 @@
 			}
 			.postit {
 				> div, > span {
-					background: $slate;
+					background: lighten($slate, 15%);
 					color: white;
 				}
 				> span:after {
 					border-top-color: white;
 					border-left-color: white;
+				}
+			}
+			@media screen and (max-width: 768px) {
+				.main {
+					.empty {
+						&:nth-child(1) {
+							background: $slate;
+							-webkit-transform: rotate(-7deg) translate(-20px, -10px);
+							-moz-transform: rotate(-7deg) translate(-20px, -10px);
+							-ms-transform: rotate(-7deg) translate(-20px, -10px);
+							-o-transform: rotate(-7deg) translate(-20px, -10px);
+							transform: rotate(-7deg) translate(-20px, -10px);
+						}
+						&:nth-child(2) {
+							background: lighten($slate, 5%);
+							-webkit-transform: rotate(5deg) translate(10px, 10px);
+							-moz-transform: rotate(5deg) translate(10px, 10px);
+							-ms-transform: rotate(5deg) translate(10px, 10px);
+							-o-transform: rotate(5deg) translate(10px, 10px);
+							transform: rotate(5deg) translate(10px, 10px);
+						}
+					}
 				}
 			}
 			@media screen and (min-width: 768px) {
@@ -2599,6 +2641,28 @@
 						color: lighten($slate, 15%);
 						&:before {
 							background: $shamrock;
+						}
+					}
+				}
+				@media screen and (max-width: 768px) {
+					.main {
+						.empty {
+							&:nth-child(1) {
+								background: $shamrock;
+								-webkit-transform: rotate(-7deg) translate(10px, 10px);
+								-moz-transform: rotate(-7deg) translate(10px, 10px);
+								-ms-transform: rotate(-7deg) translate(10px, 10px);
+								-o-transform: rotate(-7deg) translate(10px, 10px);
+								transform: rotate(-7deg) translate(10px, 10px);
+							}
+							&:nth-child(2) {
+								background: lighten($shamrock, 25%);
+								-webkit-transform: rotate(5deg) translate(-20px, -10px);
+								-moz-transform: rotate(5deg) translate(-20px, -10px);
+								-ms-transform: rotate(5deg) translate(-20px, -10px);
+								-o-transform: rotate(5deg) translate(-20px, -10px);
+								transform: rotate(5deg) translate(-20px, -10px);
+							}
 						}
 					}
 				}

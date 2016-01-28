@@ -860,29 +860,29 @@ function ContentService(Category) {
 			header: "A Part-Time Job where U Come First",
 			top_half: [{
 				icon_src: "splash/profile.html",
-				header: "Full Stack<br/>Profile",
-				content: "A platform where you come first. Complete control over your profile. Customize, set prices, bill others.",
+				header: "Full Stack Profile",
+				content: "A platform where you come first. Complete control over your profile.",
 			}, {
 				icon_src: "splash/promotion.html",
-				header: "Analytics and<br/>Promotion Tool",
-				content: "We'll help you out with digital marketing kits, business cards, high quality graphics and much more.",
+				header: "Analytics & Promotion",
+				content: "We'll help you out with digital marketing kits, business cards",
 			}, {
 				icon_src: "splash/payment.html",
-				header: "Your Own<br/>Payment Portal",
-				content: "Money goes straight to your bank account. Send an invoice to whoever, whenever, with just one tap.",
+				header: "Your Payment Portal",
+				content: "Money goes straight to your bank account. Send an invoice to whoever",
 			}, ],
 			bottom_half: [{
 				icon_src: "splash/skills.html",
-				header: "Many Shops For<br/>Many Skills",
-				content: "Create an academic shop for tutoring, photography shop to earn from grad photos, tech shop for device repair.",
+				header: "A Shop For ___ Skill",
+				content: "Create an academic shop for tutoring, photography shop.",
 			}, {
 				icon_src: "splash/fees.html",
-				header: "Zero<br/>Transaction Fees",
-				content: "Earn your first $500 in a month and then we'll discuss business partnerships and subscriptions.",
+				header: "Zero Transaction Fees",
+				content: "Earn your first $500 in a month and then we'll discuss business.",
 			}, {
 				icon_src: "splash/pajamas.html",
-				header: "Work anytime, anywhere, <br>even in your PJs",
-				content: "Toggle a switch when you're available to earn and we'll market you. Focus on quality, we'll take care of the rest.",
+				header: "Work anytime, anywhere",
+				content: "Toggle a switch when you're available to earn and we'll market.",
 			}, ]
 		};
 

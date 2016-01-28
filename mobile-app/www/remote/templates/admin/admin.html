@@ -211,19 +211,18 @@
                     </div>
                 </div>
             </ion-pane>
-            <div class='flex-wrap-center main full-x'>
-                <div class='full-x txt-charcoal weight-600'>
+            <div class='flex-wrap-center main full-xy'>
+                <div class='full-xy txt-charcoal weight-600'>
                     <div class='ugrid flex-wrap p20xy full-x'>
                         <h1 class='uppercase text-center p10y p20top full-x uppercase'> Moodboard Components</h1>
                         <small class='txt-slate text-center full-x'>The freshest moodboard components</small>
                     </div>
                     <div class='ugrid-3 full-x m30y' style='overflow:hidden;'>
-                        <a id='cta-box-moodboard-{{$index}}' ng-repeat='component in moodboardComponents' class='flex-wrap-center bg-gold cta-box relative {{component.cta_box_bg}}' style='height:200px; width:25%; border:4px solid black; padding-bottom:10%;'>
+                        <a id='cta-box-moodboard-{{$index}}' ng-repeat='component in moodboardComponents' class='flex-wrap-center bg-gold cta-box relative {{component.cta_box_bg}}' style='height:200px; width:25%; border:4px solid black;'>
                             <h1 class='full-x text-center weight-900 p20xy'>
                                 {{component.name}}
                             </h1>
-
-                            <p> {{component.description}} </p>
+                            <!-- <p> {{component.description}} </p> -->
                         </a>
                     </div>
                 </div>

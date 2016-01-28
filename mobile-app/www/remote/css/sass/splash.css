@@ -2212,6 +2212,13 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .splash-landing > section.splash-postit {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
 .splash-landing > section.splash-postit .main ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2262,8 +2269,22 @@
 }
 
 @media screen and (max-width: 768px) {
+  .splash-landing > section.splash-postit header {
+    height: 100px;
+    padding-top: 50px;
+  }
   .splash-landing > section.splash-postit .main {
-    height: 100%;
+    width: 100%;
+    height: calc(100% - 136px);
+  }
+  .splash-landing > section.splash-postit .main .empty {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: calc(100% - 60px);
+  }
+  .splash-landing > section.splash-postit .main .empty svg {
+    width: 100%;
   }
   .splash-landing > section.splash-postit .main button {
     max-width: 100%;
@@ -2478,13 +2499,32 @@
 }
 
 .splash-landing > section#become-guru .postit > div, .splash-landing > section#become-guru .postit > span {
-  background: #40484B;
+  background: #637074;
   color: white;
 }
 
 .splash-landing > section#become-guru .postit > span:after {
   border-top-color: white;
   border-left-color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing > section#become-guru .main .empty:nth-child(1) {
+    background: #40484B;
+    -webkit-transform: rotate(-7deg) translate(-20px, -10px);
+    -moz-transform: rotate(-7deg) translate(-20px, -10px);
+    -ms-transform: rotate(-7deg) translate(-20px, -10px);
+    -o-transform: rotate(-7deg) translate(-20px, -10px);
+    transform: rotate(-7deg) translate(-20px, -10px);
+  }
+  .splash-landing > section#become-guru .main .empty:nth-child(2) {
+    background: #4c5559;
+    -webkit-transform: rotate(5deg) translate(10px, 10px);
+    -moz-transform: rotate(5deg) translate(10px, 10px);
+    -ms-transform: rotate(5deg) translate(10px, 10px);
+    -o-transform: rotate(5deg) translate(10px, 10px);
+    transform: rotate(5deg) translate(10px, 10px);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -3339,6 +3379,25 @@
 
 .splash-landing#home-splash > section#how-it-works .postit > div:before {
   background: #69B3A5;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing#home-splash > section#how-it-works .main .empty:nth-child(1) {
+    background: #69B3A5;
+    -webkit-transform: rotate(-7deg) translate(10px, 10px);
+    -moz-transform: rotate(-7deg) translate(10px, 10px);
+    -ms-transform: rotate(-7deg) translate(10px, 10px);
+    -o-transform: rotate(-7deg) translate(10px, 10px);
+    transform: rotate(-7deg) translate(10px, 10px);
+  }
+  .splash-landing#home-splash > section#how-it-works .main .empty:nth-child(2) {
+    background: #beded8;
+    -webkit-transform: rotate(5deg) translate(-20px, -10px);
+    -moz-transform: rotate(5deg) translate(-20px, -10px);
+    -ms-transform: rotate(5deg) translate(-20px, -10px);
+    -o-transform: rotate(5deg) translate(-20px, -10px);
+    transform: rotate(5deg) translate(-20px, -10px);
+  }
 }
 
 @media screen and (min-width: 768px) {
