@@ -584,7 +584,7 @@ ul#guru-courses-user-profile {
 }
 
 .opacity-50 {
-	opacity:0.5;
+	@include opacity(.5);
 }
 
 .gm-style-iw + div {
@@ -594,13 +594,6 @@ ul#guru-courses-user-profile {
 
 @media screen and (max-width: 768px) {
 	#how-it-works, #become-guru {
-		height:calc(100%);
-		header {
-			height:50px;
-		}
-		.main {
-			height:calc(100% - 50px - 36px);
-		}
 		footer {
 			width:100%;
 			bottom:0;

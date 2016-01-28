@@ -483,23 +483,18 @@ ul#guru-courses-user-profile {
   justify-content: flex-end; }
 
 .opacity-50 {
+  filter: alpha(opacity=50);
   opacity: 0.5; }
 
 .gm-style-iw + div {
   display: none; }
 
 @media screen and (max-width: 768px) {
-  #how-it-works, #become-guru {
-    height: calc(100%); }
-    #how-it-works header, #become-guru header {
-      height: 50px; }
-    #how-it-works .main, #become-guru .main {
-      height: calc(100% - 50px - 36px); }
-    #how-it-works footer, #become-guru footer {
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      position: absolute; }
+  #how-it-works footer, #become-guru footer {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute; }
 
   #become-guru .slider-pager .slider-pager-page {
     color: white; } }

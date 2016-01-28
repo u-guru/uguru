@@ -38,33 +38,76 @@ angular.module('uguru.util.controllers')
 		//@GABRIELLE-NOTE
 		$scope.moodboardComponents = [
 			{
-				name: "Cards",
-				cta_box_bg: 'bg-azure',
-				description: "Cards with a purpose",
-				top_five: [
+				name: "Search",
+				cta_box_bg: 'bg-cerise',
+				description: "",
+				date: "January 19, 2016",
+				top: [
 					{
-						title: "Google's Material Cards",
-						reference: "http://www.google.com",
+						title: "Search Behavior Concept",
+						reference: "https://dribbble.com/shots/2467219-Search-behaviour",
+						type: "mobile",
+						banner: "https://d13yacurqjgara.cloudfront.net/users/118673/screenshots/2467219/garadge2-15.png",
 					},
 					{
-						title: "Pinterest's Material Cards",
-						reference: "http://www.Pinterests.com",
-						//@GABRIELLE-NOTE (feel free to add other fields)
+						title: "Craiglist Redesign Concept",
+						reference: "https://dribbble.com/shots/2361864-Craiglist-Mobile-animation",
+						type: "mobile",
+						banner: "https://d13yacurqjgara.cloudfront.net/users/30252/screenshots/2361864/craiglist-mobile-dribbble.gif",
+					},
+					{
+						title: "Tumblr",
+						reference: "http://tumblr.com",
+						type: "both",
+					},
+					{
+						title: "Style Seat",
+						reference: "https://itunes.apple.com/us/app/styleseat-beauty-barber-appointments/id414313281",
+						type: "mobile",
+					},
+					{
+						title: "8tracks",
+						reference: "https://itunes.apple.com/us/app/8tracks-playlist-radio-free/id346194763",
+						type: "mobile",
+					},
+					{
+						title: "Twitter",
+						reference: "https://itunes.apple.com/us/app/twitter/id409789998",
+						type: "desktop",
+					},
+					{
+						title: "Google Maps",
+						reference: "http://google.com/maps",
+						type: "desktop",
+					},
+					{
+						title: "Google Inbox",
+						reference: "http://inbox.google.com",
+						type: "desktop",
+					},
+					{
+						title: "Fantastical 2",
+						reference: "https://itunes.apple.com/us/app/fantastical-2-calendar-reminders/id975937182",
+						type: "desktop",
 					}
 
 				],
 				icebox: [
-
 					{
-						title: "Yahoo's Material Cards",
-						reference: "http://www.yahoo.com",
+						title: "Washington University",
+						reference: "http://oncologyk12.wustl.edu/?s=oncology",
+						type: "desktop",
 					},
 					{
-						title: "Facebooks's Material Cards",
-						reference: "http://www.facebook.com",
+						title: "Facebook",
+						reference: "https://itunes.apple.com/us/app/facebook/id284882215",
+						type: "mobile",
+					},
+					{
+						title: "Slack",
+						reference: "https://itunes.apple.com/us/app/slack-team-communication/id618783545",
+						type: "mobile",
 					}
-					// add however many
-
 				]
 			},
 			//end day 1
