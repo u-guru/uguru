@@ -327,56 +327,64 @@ angular.module('uguru.util.controllers')
 			projects: [
 				{
 					name: "Home",
-					priority:{samir: 2, gabrielle:1},
-					alpha: ["T: Bind + compile the home loader |['http://google.com', http://yahoo.com]", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
+					priority:{samir: 2, gabrielle:1, jeselle:2},
+					alpha: ["T: Bind + compile the home loader", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
 					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
-					production: ["G: Sidebar + Navbar Animations/OnScroll", "G:University Write All States Exercise", "G: Animate University Search", "G: Animate Entire Home Page", "B: Show and tell, feedback from Jeselle -> 100%"]
+					production: ["J: Main top section brainstorm", "J: Desktop/Mobile Iterate until 100%", "G: Mobilized already complete desktop sections", "G: Sidebar Animations/OnScroll (Mobile+Desktop)", "G: Mobile Nav + Smooth Scroll","University Search (discuss+spec+impl)", "G:Animation Spec+Check-in+Implement", "B: Verify + Finalize"]
 				},
 				{
 					name: "University",
-					priority: {samir: 1},
+					priority: {samir: 1, gabrielle:3},
 					alpha: ["Improve Scroll", "Make Maps Fast", "Mobile App Support", "Scroll Reveal Handlers + MVP"],
 					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
-					production: ["G: Apply Course Spec to Course Search", "B: Discuss & Finalize Top Section", "B: Approve Content on MVP Completion"],
+					production: [ "G: Discuss + Finalize format w/ Samir", "G: Update Course Search from Zeplin", "G: Mobile/Desktop Top Section", "B: Verify + Finalize"],
 				},
 				{
 					name: "Logo",
-					production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
+					priority: {gabrielle: 5, jeselle: 3},
+					production: ["B:First Iteration", "J: Juxtapose Icon into app", "G:Embed into app", "G: Animate into App", "J:Update Design Guide"]
 				},
 				{
 					name: "Content",
+					priorities: {jeselle:2},
 					alpha: ["Home > Main > Top Section", "FAQ", "Become Guru", "How it works", "University Templating"],
-					beta: ["All Home Page Content Renders"],
-					production: ["G: Verify content meets limitations aesthetically"]
+					production: ["G: Verify content meets limitations aesthetically", "J: Choose category icons for upwork"]
 				},
 				{
 					name: "Analytics",
 					alpha: ["Inspectlet MVP", "Mixpanel MVP", "Separate Local, Dev, Production", "Finalize Tools List + Add to Admin"],
-					beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
 					production: ["B:Become Familiar With Tools"]
 				},
 				{
 					name: "Cleanup/Wrapup",
 					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
-					beta: ["Link all tests together"],
 					production: ["G: Google Maps CSS", "G: Style guide for all sprint components 100%", "G: Design guide for all sprint components 100%"],
 				},
 				{
-					name: "Misc",
-					priority: {gabrielle:2},
-					production: ["G: Cross Platform Scroll Analysis"]
+					name: "Misc + Tools",
+					priority: {gabrielle:2, jason:1},
+					beta: [
+						"Create listener for css events|['http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/,http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/']",
+						"Verify that your listener works for animations |['http://callmenick.com/post/listen-for-css-animation-events-with-javascript ']",
+						"All recent listeners --> Property table |['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Apply above to the home page section one: Navbar|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Click one of the nav items, the page should scroll (which is an animation) |['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Map events YAY|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Create a step that records events to mixpanel through python|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Same as step 7, but instead use the javascript library.|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Learn how to use selenium world global dictionary for test codebase|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']"
+					],
+					production: ["G: Multi-Platform Scroll/Animate Analysis"]
 				},
 				{
 					name: "Static Pages",
-					priority: {gabrielle: 3},
+					priority: {gabrielle: 4},
 					alpha: ["FAQ MVP Content", "FAQ MVP Template w/ Search"],
-					beta: ["Link all tests together"],
-					production: ["G: FAQ Page"],
+					production: ["G: FAQ Page", "G: Evil Pricing"],
 				},
 				{
 					name: "Extra Credit",
 					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
-					beta: ["Ability to track load time for specific components"],
 					production: ["", "Static Assets Compressed", "Static Assets Window Responsive"]
 				}
 			]
@@ -386,9 +394,15 @@ angular.module('uguru.util.controllers')
 			description: "Student can go to student dashboard and can modify settings, their courses, create/edit/delete requests, add/edit cards + purchase credits",
 			projects: [
 				{
+					name: "Dashboard Mobile + Desktop",
+					// beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
+					priority: {jeselle:1},
+					production: ["J T: First Iteration", "J: Mobile Dashboard", "J: Resolve/Finalize Desktop (if needed)"]
+				},
+				{
 					name: "Settings",
 					alpha: [""],
-					beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
+					// beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
 					production: ["Components are implimented"],
 				},
 				{
@@ -397,23 +411,28 @@ angular.module('uguru.util.controllers')
 				{
 					name: "Tour",
 					alpha: ["TourService"],
-					beta: ["Test TourService on First Time Student"],
+					// beta: ["Test TourService on First Time Student"],
 					production: ["B: Discuss, Finalize, Gameplan", "J:100% Design + Templated", "G:100% CSS/HTML w/ Best Practices"]
 				},
 				{
 					name: "Requests",
+					priority: {jeselle:5},
 					alpha: ["Make Maps Fast", "Mobile App Support"],
-					beta: ["University Specific", "Home Page"]
+					// beta: ["University Specific", "Home Page"],
+					production: ["J: Resolve+Finalize Mobile+Desktop Form Structure", "J: Resolve+Finalize Mobile+Desktop Calendar", "J: Resolve+Finalize Map"]
 				},
 				{
 					name: "Add/Delete Cards",
+					priority: {jeselle:6},
 					alpha: ["Add a Card", "Delete a Card", "Stripe Local/Dev/Staging"],
-					beta: ["Test Add a Card", "Test Delete a Card"],
+					// beta: ["Test Add a Card", "Test Delete a Card"],
 					production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
 				},
 				{
-					name: "Purchase Credits",
-					alpha: ["Bare bones MVP"]
+					name: "Student Purchase Credits",
+					priority: {jeselle:7},
+					alpha: ["Bare bones MVP"],
+					production: ["J: Student can purchse credits @ Thrift Shop"]
 				}
 			]
 		}
@@ -436,8 +455,31 @@ angular.module('uguru.util.controllers')
 				},
 				{
 					name: "Become a Guru"
+				},
+				{
+					name: "Guru Profiles",
+					priority: {jeselle:3},
+					production: ["J: Discuss + Finalize + Template Bakery, Photography", "J: Tech: Rubric/Spec + Ambitious", "J: Academic: Rubric/Spec + Ambitious", "J: Laundry: Rubric/Spec + Ambitious"]
 				}
 			]
+		}
+
+		var sprint_four = {
+			name: "Guru Receives Request",
+			priority: {jeselle: 8},
+			production: ["J: Resolve + Finalize Desktop + Mobile"]
+		}
+
+		var sprint_five = {
+			name: "Student receives Guru Request + Chooses",
+			priority: {jeselle: 9},
+			production: ["J: Resolve & Finalize Desktop + Mobile "]
+		}
+
+		var sprint_six = {
+			name: "Guru & Student Enhance Message",
+			priority: {jeselle: 10},
+			production: ["J: Resolve & Finalize Desktop + Mobile "]
 		}
 
 		$scope.sprints = [sprint_one, sprint_two, sprint_three];

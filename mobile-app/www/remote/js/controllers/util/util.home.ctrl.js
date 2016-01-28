@@ -56,6 +56,12 @@ angular.module('uguru.util.controllers')
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
 
+      var createPennantPng = function() {
+        var img = document.createElement('img');
+        img.src = 'data:image/svg+xml,PHN2ZyB2aWV3Qm94PSIwIDAgNzMgOTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8cGF0aCBkPSJNNC41LDg1LjQwMTM0NDEgTDQuNSw1LjU5ODY1NTg2IEM1LjM5NjcwMjQzLDUuMDc5OTM4NjggNiw0LjExMDQyMzE5IDYsMyBDNiwxLjM0MzE0NTc1IDQuNjU2ODU0MjUsMCAzLDAgQzEuMzQzMTQ1NzUsMCAwLDEuMzQzMTQ1NzUgMCwzIEMwLDQuMTEwNDIzMTkgMC42MDMyOTc1Nyw1LjA3OTkzODY4IDEuNDk5OTk5MTYsNS41OTg2NTI5MyBMMS41LDg1LjQwMTM0NDEgQzAuNjAzMjk3NTcsODUuOTIwMDYxMyAwLDg2Ljg4OTU3NjggMCw4OCBDMCw4OS42NTY4NTQyIDEuMzQzMTQ1NzUsOTEgMyw5MSBDNC42NTY4NTQyNSw5MSA2LDg5LjY1Njg1NDIgNiw4OCBDNiw4Ni44ODk1NzY4IDUuMzk2NzAyNDMsODUuOTIwMDYxMyA0LjUwMDAwMDg0LDg1LjQwMTM0NzEgWiIgaWQ9InBvbGUiIGZpbGw9IiNEOEQ4RDgiPjwvcGF0aD4KICAgIDxwYXRoIGQ9Ik02My4wNzE1NzUsMjcuNSBMNzIuMjM5MzgwMiwzMi45OTI0OTMxIEwwLDQ4IEwxLjQyMTA4NTQ3ZS0xNCw3IEw3MS43MjcyMDEzLDIyLjEzNDM2NDEgTDYzLjA3MTU3NSwyNy41IFoiIGlkPSJmbGFnIiBvcGFjaXR5PSIwLjkiIGZpbGw9IiM2OUIzQTUiPjwvcGF0aD4KICAgIDxwYXRoIGQ9Ik0wLDcgTDAsNDggTDYuMjYxLDQ2LjcgTDYuMjYxLDguMzIxIEwwLDcgTDAsNyBaIiBpZD0iYm9yZGVyIiBmaWxsPSIjNDA0ODRCIj48L3BhdGg+CiAgICA8dGV4dCBmaWxsPSIjRkZGRkZGIiBmb250LWZhbWlseT0iU291cmNlIFNhbnMgUHJvIiBmb250LXNpemU9IjEyLjcyODY5MzQiIGZvbnQtd2VpZ2h0PSJib2xkIj4KICAgICAgICA8dHNwYW4geD0iMTAiIHk9IjMyIiBmaWxsPSIjRkZGRkZGIj5DYWw8L3RzcGFuPgogICAgPC90ZXh0Pgo8L3N2Zz4=';
+
+      }
+
       var sectionOneLoaded = function() {
         console.log('section one has rendered, preparing two');
 
@@ -74,9 +80,11 @@ angular.module('uguru.util.controllers')
         refresh: false,
         options: mapDefaults.options,
         events: {tilesloaded: onMapRenderCompleteOnce},
+        clusterOptions: {minimumClusterSize:5, styles:[{width:50, height:50, url:'data:image/svg+xml;base64,' + window.btoa('<svg viewBox="0 0 73 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z" id="pole" fill="#D8D8D8"></path><path d="M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z" id="flag" opacity="0.9" fill="#69B3A5"></path><path d="M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z" id="border" fill="#40484B"></path><text fill="#FFFFFF" font-family="Source Sans Pro" font-size="12.7286934" font-weight="bold"><tspan x="10" y="32" fill="#FFFFFF">Cal</tspan></text></svg>')}
+        ]},
         bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
         pan: true,
-        markers: generateXMarkersFromUniversities(20, $scope.universities),
+        markers: generateXMarkersFromUniversities(200, $scope.universities),
         rebuildMarkers: false,
         window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
       }
@@ -168,7 +176,7 @@ angular.module('uguru.util.controllers')
       $scope.page.load = {sections:{}, complete:false};
       $scope.page.load.sections = {
         one: {visible:true, display:true, nested:{bg_image: false}, ready:sectionOneLoaded},
-        two: {visible:false, display:false, nested:{}, on_activate:null},
+        two: {visible:true, display:true, nested:{}, on_activate:null},
         three: {visible:false, display:false, nested:{}, on_activate:null},
         four: {visible:false, display:false, nested:{}, on_activate:null},
         five: {visible:false, display:false, nested:{}, on_activate:null},
@@ -565,17 +573,21 @@ angular.module('uguru.util.controllers')
         }
       }
 
+      var createAndCompileImage = function() {
+
+      }
+
       var createMarkerObj = function(obj) {
         return {
           id: obj.id,
           latitude: obj.latitude,
           longitude: obj.longitude,
-          icon: generateNullIcon(),
-          options: {
-            labelClass: 'university-svg-icon',
-            labelContent: generateSVGLabelContent(obj.school_color_dark, obj.school_color_light, obj.school_tiny_name),
-            labelAnchor: "0 200"
-          },
+          icon: $scope.img_base + './templates/svg/pennant.svg',
+          // options: {
+          //   labelClass: 'university-svg-icon',
+          //   labelContent: generateSVGLabelContent(obj.school_color_dark, obj.school_color_light, obj.school_tiny_name),
+          //   labelAnchor: "0 200"
+          // },
           events: {
             click: onMarkerClick
           },
