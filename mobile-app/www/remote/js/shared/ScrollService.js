@@ -66,7 +66,8 @@ function ScrollService(LoadingService, $timeout) {
 
   }
 
-  function scrollTo(to, callback, duration, viewSelectorID, destinationSelectorID) {
+  function scrollTo(to, callback, duration, viewSelectorID, destinationSelectorID, offset) {
+    offset = offset || 0;
     if (!to && !(to === 0) && destinationSelectorID) {
       to = document.querySelector(destinationSelectorID).offsetTop;
 
@@ -81,7 +82,7 @@ function ScrollService(LoadingService, $timeout) {
       return document.querySelector(viewSelectorID).scrollTop || document.querySelector(viewSelectorID).parentNode.scrollTop;
     }
     var start = position(),
-      change = to - start,
+      change = to - start - offset,
       currentTime = 0,
       increment = 20;
     console.log(start);

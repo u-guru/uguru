@@ -40,8 +40,11 @@ angular.module('uguru.util.controllers')
       var shouldRenderMap = true;
       var mainPageContainer = document.querySelector('#home-splash');
       var homeNavHeader = document.querySelector('#home-nav-header');
+      var splashHiwNav = document.querySelector("#splash-hiw-nav");
       var homePageWayPoint;
       var pageNavbarHeight = 70;
+      var sectionSneakHeight = 36;
+      var scrollOffset = pageNavbarHeight + sectionSneakHeight + 1;
 
       //cta specific initialization vars
       $scope.activeBrowseTabIndex = 1;
@@ -113,12 +116,13 @@ angular.module('uguru.util.controllers')
         var scrollUniversityCallback = function(direction, element, scrollTop) {
             if (direction === 'down') {
               homeNavHeader.classList.add('bg-charcoal');
-
+              $scope.page.scroll.section_index = 1;
               $scope.page.header.active_tab.become_guru = false;
               $scope.page.header.active_tab.how_it_works = false;
               $scope.page.header.active_tab.university = true;
             } else {
               homeNavHeader.classList.remove('bg-charcoal');
+              $scope.page.scroll.section_index = 0;
               $scope.page.header.active_tab.become_guru = false;
               $scope.page.header.active_tab.how_it_works = true;
               $scope.page.header.active_tab.university = false;
@@ -129,14 +133,17 @@ angular.module('uguru.util.controllers')
 
         var scrollHowitWorksCallback = function(direction, element, scrollTop) {
             if (direction === 'down') {
-              console.log('scrolling past how it works');
+              $scope.page.scroll.section_index = 2;
               $scope.page.header.active_tab.university = false;
               $scope.page.header.active_tab.become_guru = false;
               $scope.page.header.active_tab.how_it_works = true;
+              homeNavHeader.classList.add('show');
             } else {
+              $scope.page.scroll.section_index = 1;
               $scope.page.header.active_tab.university = true;
               $scope.page.header.active_tab.how_it_works = false;
               $scope.page.header.active_tab.become_guru = false;
+              homeNavHeader.classList.remove('show');
             }
             // $scope.page.header.showOnScrollNav = 'bg-charcoal'
             //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
@@ -144,11 +151,11 @@ angular.module('uguru.util.controllers')
 
         var scrollBecomeGuruCallback = function(direction, element, scrollTop) {
             if (direction === 'down') {
-              console.log('scrolling past become a guru');
               $scope.page.header.active_tab.university = false;
               $scope.page.header.active_tab.become_guru = true;
               $scope.page.header.active_tab.how_it_works = false;
             } else {
+              $scope.page.scroll.section_index = 1;
               $scope.page.header.active_tab.university = false;
               $scope.page.header.active_tab.how_it_works = true;
               $scope.page.header.active_tab.become_guru = false;
@@ -159,20 +166,21 @@ angular.module('uguru.util.controllers')
 
         var waypointDict = {
           "splash-home": {func:null},
-          "how-it-works": {func:scrollHowitWorksCallback, offset: 36 + 70},
-          "splash-university": {func:scrollUniversityCallback, offset:36 + 70}, //precursor-section-height + navbar.height
-          "splash-browse": {func:null, offset:70},
-          "become-guru": {func:scrollBecomeGuruCallback, offset:70}
+          "splash-university": {func:scrollUniversityCallback, offset:scrollOffset}, //precursor-section-height + navbar.height
+          "splash-browse": {func:scrollHowitWorksCallback, offset:scrollOffset},
+          "become-guru": {func:scrollBecomeGuruCallback, offset:scrollOffset}
         }
-
         ScrollService.initArrWaypoints(waypointDict, "home-splash");
 
       }
 
       var onSectionOneLoad = function() {
-        $scope.root.loader.body.hide = true;
         initHomePageWayPoint();
         initUniversityTypeWriter();
+        $timeout(function() {
+          $scope.root.loader.body.hide = true;
+          $scope.page.scroll.section_index = 0;
+        }, 250)
       }
 
       // page initialize vars
@@ -183,8 +191,9 @@ angular.module('uguru.util.controllers')
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showOnScrollNav:'', becomeGuruHeaderActive:false, active_tab:{how_it_works:false, become_guru:false, university:false}};
       $scope.page.load = {sections:{}, complete:false};
+      $scope.page.scroll = {section_index:0};
       $scope.page.load.sections = {
-        one: {visible:true, display:true, nested:{bg_image: false}, ready:onSectionOneLoad()},
+        one: {visible:true, display:true, nested:{bg_image: false}, ready:onSectionOneLoad},
         two: {visible:true, display:true, nested:{}, on_activate:null},
         three: {visible:true, display:true, nested:{}, on_activate:null},
         four: {visible:true, display:true, nested:{}, on_activate:null},
@@ -193,7 +202,29 @@ angular.module('uguru.util.controllers')
       }
 
 
+      $scope.scrollNextSection = function() {
+        if ($scope.page.scroll.section_index === 0) {
+          $scope.scrollToSection("#splash-university");
+        }
+        if ($scope.page.scroll.section_index === 1) {
+          $scope.scrollToSection("#splash-browse");
+        }
+        if ($scope.page.scroll.section_index === 2) {
+          $scope.scrollToSection("#become-guru");
+        }
+      }
 
+      $scope.scrollUpSection = function() {
+        if ($scope.page.scroll.section_index === 2) {
+          $scope.scrollToSection("#splash-browse");
+        }
+        if ($scope.page.scroll.section_index === 1) {
+          $scope.scrollToSection("#splash-university");
+        }
+        if ($scope.page.scroll.section_index === 2) {
+          $scope.scrollToSection("#splash-home");
+        }
+      }
 
       //outgoing transitioning functions
       $scope.selectUniversityAndTransition = function(university, $event) {
@@ -344,7 +375,7 @@ angular.module('uguru.util.controllers')
         var successFunction = null;
         var pageParentContainer = '#home-splash';
 
-        if (section_selector === '#how-it-works') {
+        if (section_selector === '#splash-browse') {
           $scope.page.header.active_tab.university = false;
           $scope.page.header.active_tab.become_guru = false;
           $scope.page.header.active_tab.how_it_works = true;
@@ -362,7 +393,7 @@ angular.module('uguru.util.controllers')
           $scope.page.header.active_tab.university = true;
         }
 
-        ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector);
+        ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector, scrollOffset);
       }
 
       // rendering functions
