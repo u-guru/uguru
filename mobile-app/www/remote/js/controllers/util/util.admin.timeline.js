@@ -363,6 +363,7 @@ angular.module('uguru.util.controllers')
 				{
 					name: "Misc + Tools",
 					priority: {gabrielle:2, jason:1},
+					alpha: ["Animate Setup", "Gabrielle day setup", "Jeselle Day Setup", "Maps", "Homepage MVP Spec + Wrapup", "Code cleanup [Home]", "Mobile MVP", "Safari scroll", "SVG Images", "University Search", "FAQ/Evil pricing / team", "University MVP", "Upwork", "Categories", "Content", "Logo Creative"],
 					beta: [
 						"Create listener for css events|['http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/','http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/']",
 						"Verify that your listener works for animations |['http://callmenick.com/post/listen-for-css-animation-events-with-javascript ']",

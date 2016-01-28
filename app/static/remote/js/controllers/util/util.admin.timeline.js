@@ -363,8 +363,9 @@ angular.module('uguru.util.controllers')
 				{
 					name: "Misc + Tools",
 					priority: {gabrielle:2, jason:1},
+					alpha: ["Animate Setup", "Gabrielle day setup", "Jeselle Day Setup", "Maps", "Homepage MVP Spec + Wrapup", "Code cleanup [Home]", "Mobile MVP", "Safari scroll", "SVG Images", "University Search", "FAQ/Evil pricing / team", "University MVP", "Upwork", "Categories", "Content", "Logo Creative"],
 					beta: [
-						"Create listener for css events|['http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/,http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/']",
+						"Create listener for css events|['http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/','http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/']",
 						"Verify that your listener works for animations |['http://callmenick.com/post/listen-for-css-animation-events-with-javascript ']",
 						"All recent listeners --> Property table |['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
 						"Apply above to the home page section one: Navbar|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",

@@ -45,7 +45,7 @@
                                             <ul class='full-x text-left relative' ng-repeat='todoObj in project.action_items track by $index'>
                                                 <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
                                                 <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' target='_blank' href='{{link}}'><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
+                                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                             </ul>
                                         </div>
                                     </div>
@@ -74,8 +74,9 @@
                     <div style='height:calc(85%)' class='full-x content flex-wrap-center weight-400 bg-slate p05xy' ng-if='project.action_items'>
                         <div class='full-x'>
                             <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.alpha track by $index'>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                               <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                             </ul>
                         </div>
                     </div>
@@ -89,8 +90,9 @@
                     <div style='height:calc(85%)'  class='full-x content flex-wrap-center weight-400 bg-charcoal p05xy' ng-if='project.action_items'>
                         <div class='full-x'>
                             <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.beta track by $index'>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                             </ul>
                         </div>
                     </div>
@@ -110,15 +112,17 @@
                                 <div ng-if='project.action_items.both' class='full-x'>
                                     <h1 class='weight-900 text-center txt-shamrock bg-charcoal p20xy full-x'>BOTH</h1>
                                     <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.both track by $index'>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}} </li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                     </ul>
                                 </div>
                                 <div ng-if='project.action_items.jeselle' class='full-x'>
                                     <h1 class='weight-900 text-center txt-shamrock p20xy bg-charcoal full-x'>Jeselle</h1>
                                     <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.jeselle track by $index'>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                     </ul>
 
                                 </div>
@@ -126,8 +130,9 @@
                                 <div ng-if='project.action_items.gabrielle' class='full-x p05xy'>
                                     <h1 class='weight-900 text-center txt-shamrock p20xy bg-charcoal full-x'>Gabrielle</h1>
                                     <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.gabrielle track by $index'>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                     </ul>
                                 </div>
                             </div>
