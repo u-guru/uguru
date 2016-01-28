@@ -1,5 +1,6 @@
 
-<main id="timeline" class='full-xy ng-class:{"hide":!showAdmin}'>
+<div class='full-xy' class="ng-class:{'hide':!showAdmin}">
+<main id="timeline" class='full-xy'>
     <header>
         <div class="timeline-header">
             <div>
@@ -32,16 +33,19 @@
                     <div style='max-height:calc(85%)' class='full-x content weight-400 bg-slate relative' ng-if='obj.all_projects'>
                         <div class='flex-wrap absolute full-xy left-0 top-0'>
                             <div class='ugrid-4 full-x m30y' style='overflow:scroll;'>
-                                <div class='flex-wrap-center bg-slate cta-box relative' ng-repeat='project in obj.all_projects'  style='min-height:200px;  width:25%; border:4px solid black; padding-bottom:20%;'>
+                                <div class='flex-wrap-center bg-slate cta-box relative' ng-repeat='project in obj.all_projects | orderBy:"priority"'  style='min-height:200px;  width:25%; border:4px solid black; padding-bottom:20%;'>
                                     <div class='full-xy flex-wrap-center absolute left-0 top-0'>
-                                        <h1 class='full-x text-center weight-900 p20xy capitalize'>
-                                            #{{project.id + 1}} <br> {{project.name}}
+                                        <h1 class='full-x text-center weight-900 p20xy capitalize' ng-if='project.priority < 11'>
+                                            #{{project.priority}} <br> {{project.name}}
+                                        </h1>
+                                        <h1 class='full-x text-center weight-900 p20xy capitalize txt-white' ng-if='project.priority > 11'>
+                                            <span class='txt-charcoal' style='display:inline;'> ICEBOX </span><br> {{project.name}}
                                         </h1>
                                         <div class='full-x'>
                                             <ul class='full-x text-left relative' ng-repeat='todoObj in project.action_items track by $index'>
                                                 <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
                                                 <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links"> <a ng-repeat='link in todoObj.links track by $index' target='_blank' href='{{link}}'><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
+                                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' target='_blank' href='{{link}}'><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                             </ul>
                                         </div>
                                     </div>
@@ -270,3 +274,5 @@
 
 
 </main>
+
+</div>

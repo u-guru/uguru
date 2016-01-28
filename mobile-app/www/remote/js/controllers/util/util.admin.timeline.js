@@ -165,7 +165,7 @@ angular.module('uguru.util.controllers')
 		// --- --- action_item =
 
 
-		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides",  "Moodboards", "Glossary"];
+		$scope.adminTabs = ["Home", "Universities", "Roles", "Moodboards"];
 		$scope.projects = [
 			{name:'Pre-app (Universities, Sidebar)'},
 			{name: 'Login/Logout + Signup + School Email Verify'},
@@ -327,10 +327,10 @@ angular.module('uguru.util.controllers')
 			projects: [
 				{
 					name: "Home",
-					priority:{samir: 2},
+					priority:{samir: 2, gabrielle:1},
 					alpha: ["T: Bind + compile the home loader |['http://google.com', http://yahoo.com]", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
 					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
-					production: ["G:Nail the scroll reveal animations", "G:Browse Tab bar", "B: Top Section", "B: Approve Content on MVP Completion", "J:Verify Components", "J:Make Homepage:DesignGuide w/ best practices = 1:1"],
+					production: ["G: Sidebar + Navbar Animations/OnScroll", "G:University Write All States Exercise", "G: Animate University Search", "G: Animate Entire Home Page", "B: Show and tell, feedback from Jeselle -> 100%"]
 				},
 				{
 					name: "University",
@@ -363,13 +363,15 @@ angular.module('uguru.util.controllers')
 				},
 				{
 					name: "Misc",
-					production: ["G: Admin Template Moodboard Spec"]
+					priority: {gabrielle:2},
+					production: ["G: Cross Platform Scroll Analysis"]
 				},
 				{
 					name: "Static Pages",
+					priority: {gabrielle: 3},
 					alpha: ["FAQ MVP Content", "FAQ MVP Template w/ Search"],
 					beta: ["Link all tests together"],
-					production: ["G: Google Maps CSS", "G: Style guide for all sprint components 100%", "G: Design guide for all sprint components 100%"],
+					production: ["G: FAQ Page"],
 				},
 				{
 					name: "Extra Credit",
@@ -399,7 +401,6 @@ angular.module('uguru.util.controllers')
 					production: ["B: Discuss, Finalize, Gameplan", "J:100% Design + Templated", "G:100% CSS/HTML w/ Best Practices"]
 				},
 				{
-					priority: {samir:-1},
 					name: "Requests",
 					alpha: ["Make Maps Fast", "Mobile App Support"],
 					beta: ["University Specific", "Home Page"]
@@ -622,7 +623,7 @@ angular.module('uguru.util.controllers')
 							id: sprintProjects[j].id,
 							name: sprintProjects[j].name,
 							progress: sprintProjects[j].progress,
-							priority: (sprintProjects[j].priority && sprintProjects[j].priority.samir) || null,
+							priority: (sprintProjects[j].priority && sprintProjects[j].priority.samir) || 10000,
 							action_items:sprintProjects[j].action_items.alpha
 						});
 					};
@@ -633,7 +634,7 @@ angular.module('uguru.util.controllers')
 							name: sprintProjects[j].name,
 							id: sprintProjects[j].id,
 							progress: sprintProjects[j].progress,
-							priority: (sprintProjects[j].priority && sprintProjects[j].priority.jason) || null,
+							priority: (sprintProjects[j].priority && sprintProjects[j].priority.jason) || 10000,
 							action_items:sprintProjects[j].action_items.beta
 						});
 					}
@@ -641,12 +642,13 @@ angular.module('uguru.util.controllers')
 					if (sprintProjects[j].action_items.production) {
 						var productionDict = processAndFilterProductionActionItems(sprintProjects[j].action_items.production);
 						if (productionDict.gabrielle && productionDict.gabrielle.length) {
+							console.log(sprintProjects[j], sprintProjects[j].priority && sprintProjects[j].priority.gabrielle);
 							$scope.roleArr[3].all_projects.push({
 								sprint:indexSprint,
 								name: sprintProjects[j].name,
 								id: sprintProjects[j].id,
 								progress: sprintProjects[j].progress,
-								priority: (sprintProjects[j].priority && sprintProjects[j].priority.gabrielle) || null,
+								priority: (sprintProjects[j].priority && sprintProjects[j].priority.gabrielle) || 10000,
 								action_items:productionDict.gabrielle
 							});
 							sprintProjects[j].action_items.gabrielle = productionDict.gabrielle;
@@ -657,7 +659,7 @@ angular.module('uguru.util.controllers')
 								name: sprintProjects[j].name,
 								id: sprintProjects[j].id,
 								progress: sprintProjects[j].progress,
-								priority: (sprintProjects[j].priority && sprintProjects[j].priority.jeselle) || null,
+								priority: (sprintProjects[j].priority && sprintProjects[j].priority.jeselle) || 10000,
 								action_items:productionDict.jeselle
 							});
 							sprintProjects[j].action_items.jeselle = productionDict.jeselle;
@@ -667,12 +669,7 @@ angular.module('uguru.util.controllers')
 						}
 					}
 
-					//sort all by priority
-					if(sprintProjects[j].action_items.alpha && sprintProjects[j].action_items.alpha.length) {
-						if ($scope.roleArr[0].all_projects && $scope.roleArr[1].all_projects.length) {
-							$scope.roleArr[0].all_projects.sort(prioritySort).reverse();
-						}
-					}
+
 				}
 			}
 			return sprint_arr;
