@@ -4,10 +4,11 @@ angular
 	'$rootScope',
 	'Settings',
 	'User',
+	'$compile',
 	Utilities
 	]);
 
-function Utilities($rootScope, Settings, User) {
+function Utilities($rootScope, Settings, User, $compile) {
 
 	return {
 		getNetworkSpeed: getNetworkSpeed,
@@ -34,7 +35,8 @@ function Utilities($rootScope, Settings, User) {
 		keyboardExists: keyboardExists,
 		cordovaExists: cordovaExists,
 		numberWithCommas: numberWithCommas,
-		isAdminRequest: isAdminRequest
+		isAdminRequest: isAdminRequest,
+		compileToAngular: compileToAngular
 	}
 
 	function sortArrObjByKey(arr, key) {
@@ -47,6 +49,11 @@ function Utilities($rootScope, Settings, User) {
 		}
 		arr.sort(compare);
 		return arr
+	}
+
+	function compileToAngular(elemID, scope) {
+		var elem = document.getElementById(elemID);
+		elem && $compile(elem)(scope);
 	}
 
 	function getNetworkSpeed() {

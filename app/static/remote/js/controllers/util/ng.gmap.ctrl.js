@@ -65,8 +65,8 @@ angular.module('uguru.util.controllers')
           "strokeOpacity":1,
           "scale":0.4,
           "anchor": new google.maps.Point(100, 200),
-          "strokeColor": "transparent",
-          "fillColor": "transparent",
+          // "strokeColor": "transparent",
+          // "fillColor": "transparent",
         }
       }
 
@@ -110,12 +110,12 @@ angular.module('uguru.util.controllers')
           id: obj.id,
           latitude: obj.latitude,
           longitude: obj.longitude,
-          icon: generateNullIcon(),
-          options: {
-            labelClass: 'university-svg-icon',
-            labelContent: generateSVGLabelContent(obj.school_color_dark, obj.school_color_light, obj.school_tiny_name),
-            labelAnchor: "0 200"
-          },
+          icon: {},
+          // options: { //markerWithLabelOptions
+          //   labelClass: 'university-svg-icon',
+          //   labelContent: generateSVGLabelContent(obj.school_color_dark, obj.school_color_light, obj.school_tiny_name),
+          //   labelAnchor: "0 200"
+          // },
           events: {
             click: onMarkerClick
           },

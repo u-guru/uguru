@@ -551,7 +551,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 		})
 
 		$scope.$on('$ionicView.enter', function() {
-
 			$scope.root.vars.showDesktopSettings = false;
 
 			$timeout(function() {
@@ -561,7 +560,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 			}, 0)
 
 			$timeout(function() {
-
 				if ($scope.desktopMode && !$scope.guruRankingCircle) {
 					$scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar', null, null, true);
 					$timeout(function() {

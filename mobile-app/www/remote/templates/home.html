@@ -2,11 +2,12 @@
 
 
 <!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
-	<div class='bg-smoke' cache-view="false" >
-		<main id='home-splash' class='splash-landing hs-view full-xy'>
+<!-- <div class='bg-smoke' cache-view="false" > -->
+    <div>
+        <main id='home-splash' class='splash-landing hs-view full-xy'>
             <!-- START Home Page CTAs -->
 
-            <aside id='cta-modal-sidebar' class='splash-sidebar hide ng-class:{"show":page.sidebar.show, "fx-bounce-left fx-duration-100": page.sidebar.show && desktopMode, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+            <aside id='cta-modal-sidebar' class='splash-sidebar hide ng-class:{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}'  ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
 
             <ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'"> </ion-pane>
 
@@ -22,67 +23,69 @@
                         <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                     </svg>
                 </a>
-                <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe>
+                <!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
             </ion-pane>
+
+            <header class='splash-header' id='home-nav-header' ng-class="{'bg-charcoal': page.header.showOnScrollNav.length, active: becomeGuruHeaderActive}">
+                    <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+
+                    <div class="ugrid-3">
+                        <a name='how-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.how_it_works}" ng-click='scrollToSection("#how-it-works")'>How It Works</a>
+                        <a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.university}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
+                        <a name='become-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.become_guru}" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
+                        <hr/>
+                    </div>
+
+                    <div class="right">
+                        <a name='sidebar' class="splash-burger" ng-click="toggleSidebar()">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="36"></circle>
+                                <path d="M31,35.5 L69,35.5"></path>
+                                <path d="M31,50.5 L69,50.5"></path>
+                                <path d="M31,65.5 L69,65.5"></path>
+                            </svg>
+                        </a>
+                        <a class="splash-nav-link highlight ng-class:{'hide':!user.id && !user.first_name}" ng-click='goToStudentHome()'>Dashboard</a>
+                        <a  class="splash-nav-link highlight ng-class:{'hide':user.id}" ng-click='goToSignup()'>Login</a>
+                    </div>
+
+            </header>
+
+
+
 
             <!-- END Home Page CTAS -->
 
-			<header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
-				<div>
-					<h1>Help {{university.short_name}} students ace courses like <u>CS10</u>, <u>CS61C</u>
-					<span class='weight-900'> &amp; earn side cash</span>!</h1>
-				</div>
-				<button ng-click='goToUniversity()'>Become a college Guru</button>
-				<a class="header-close" ng-click='becomeGuruHeaderActive = false;'>
-					<svg viewBox="0 0 100 100">
-						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-					</svg>
-				</a>
-			</header>
+                <header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
+                    <div>
+                        <h1>Help {{university.short_name}} students ace courses like <u>CS10</u>, <u>CS61C</u>
+                        <span class='weight-900'> &amp; earn side cash</span>!</h1>
+                    </div>
+                    <button ng-click='goToUniversity()'>Become a college Guru</button>
+                    <a class="header-close" ng-click='becomeGuruHeaderActive = false;'>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
+    				<div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
+    					<a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
+    						<svg viewBox="0 0 100 100">
+    							<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+    						</svg>
+    					</a>
+    				</div>
+                </header>
+                 <div class="splash-sub-header tab-bar slide" id='splash-hiw-nav'>
+                    <div>
+                        <a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">How It Works</a>
+                        <a ng-click='activeBrowseTabIndex = 1' class="ng-class:{'active':activeBrowseTabIndex===1}">Student-Run Shops</a>
+                        <a ng-click='activeBrowseTabIndex = 2;' class="ng-class:{'active':activeBrowseTabIndex===2}">Guru Profiles </a>
+                        <hr/>
+                    </div>
+                </div>
 
-			<header class='splash-header ng-class:{"active": becomeGuruHeaderActive, "bg-university":page.header.showSolidNav}'>
-                <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
 
-                <div class="ugrid-3">
-					<a name='browse-scroll' class="active splash-nav-link" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
-					<a name='how-scroll' class="splash-nav-link" ng-click='scrollToSection("#splash-browse")'>How It Works</a>
-	                <a name='become-scroll' class="splash-nav-link" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
-	                <a name='login-scroll' class="splash-nav-link" ng-click='goToSignup()' ng-if='!user.id'>Login</a>
-					<hr/>
-				</div>
-
-				<div class="right">
-					<a name='sidebar' class="splash-burger" ng-click="toggleSidebar()">
-	                    <svg viewBox="0 0 100 100">
-	                        <circle cx="50" cy="50" r="36"></circle>
-	                        <path d="M31,35.5 L69,35.5"></path>
-	                        <path d="M31,50.5 L69,50.5"></path>
-	                        <path d="M31,65.5 L69,65.5"></path>
-	                    </svg>
-	                </a>
-					<a class="splash-nav-link highlight ng-class:{'hide':!user.id && !user.first_name}" ng-click='goToStudentHome()'>Dashboard</a>
-	                <a name='start-scroll' class="splash-nav-link highlight ng-class:{'hide':user.id}" ng-click='scrollToSection("#splash-university")'>Start</a>
-				</div>
-
-				<div id='essay-home-backdrop' class="hide fixed left-0 top-0 full-xy bg-charcoal ng-class:{'show':page.modals.backdrop.active}">
-					<a class='close-popup-link close-guru-ranking-modal-link close-become-guru-header' ng-click='page.modals.backdrop.active = false;'>
-						<svg viewBox="0 0 100 100">
-							<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-						</svg>
-					</a>
-				</div>
-			</header>
-			
-			<div class="splash-sub-header tab-bar slide">
-				<div>
-					<a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">How It Works</a>
-					<a ng-click='activeBrowseTabIndex = 1' class="ng-class:{'active':activeBrowseTabIndex===1}">Student-Run Shops</a>
-					<a ng-click='activeBrowseTabIndex = 2;' class="ng-class:{'active':activeBrowseTabIndex===2}">Guru Profiles </a>
-					<hr/>
-				</div>
-			</div>
-
-            <section id='splash-home' class='splash-hero relative ng-class:{"active": becomeGuruHeaderActive}' style="background-image: url('{{page.css.bg_banner}}');">
+            <section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' on-drag-up="scrollNextSection()" bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()">
                 <a id="splash-footer-support" class="splash-footer-link" ng-click='launchSupportOverlay()'>
                 	<svg class="splash-footer-icon" viewBox="0 0 100 100">
                 		<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453" ></path>
@@ -90,7 +93,7 @@
                 </a>
 				<!-- @samir -->
 				<!-- next arrow -->
-				<a id="splash-footer-next" class="splash-footer-link">
+				<a id="splash-footer-next" class="splash-footer-link ng-class:{'show':page.scroll.section_index !== 2}" ng-click='scrollNextSection()'>
 					<div>
 						<h4>Up Next</h4>
 						<span>How It Works</span>
@@ -99,7 +102,7 @@
 					   <path d="M14,32 L50,68 L86,32"></path>
 				   </svg>
 			   </a>
-				<a id="splash-footer-top" class="splash-footer-link" ng-click='scrollToSection("#splash-home")'>
+				<a id="splash-footer-top" class="splash-footer-link hide ng-class:{'show':page.scroll.section_index}"  on-hold="scrollToSection('#splash-home')" ng-click='scrollUpSection()'>
 				   <svg class="splash-footer-icon" viewBox="0 0 100 100">
 					   <path d="M14,68 L50,32 L86,68"></path>
 				   </svg>
@@ -169,7 +172,7 @@
 				</footer>
             </section>
 
-			<section id='splash-university' class='splash-school-search'>
+			<section id='splash-university' on-drag-up="scrollUpSection()" on-drag-down="scrollNextSection()" class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'>
                 <header>
                     <h1>Find Your University</h1>
                 </header>
@@ -183,7 +186,7 @@
 	                                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 	                                    </svg>
 	                                </i>
-	                                <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"  ng-model="search_text.university"/>
+	                                <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"  ng-model="search_text.university" ng-focus='focusUniversitySearchInput'/>
 	                                <label for="request-search-input">
 	                                    <span ng-show='universities.length'>search {{universities.length}} supported schools</span>
 	                                </label>
@@ -238,11 +241,12 @@
                     <div  style='height:500px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
                         <ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
                                 <ui-gmap-markers
-                                    models="::map.markers"
+                                    models="map.markers"
                                     coords="'self'"
                                     options="'options'"
                                     icon="'icon'"
-                                    doRebuildAll="map.rebuildMarkers"
+                                    clusterOptions="map.clusterOptions"
+                                    doCluster="true"
                                 >
                                 </ui-gmap-markers>
                                 <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
@@ -500,7 +504,7 @@
 				</footer>
 			</section>
 
-            <section id='become-guru' class="splash-postit">
+            <section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}" >
                 <header>
                     <h1>{{become_guru.header}}</h1>
                 </header>
@@ -600,7 +604,7 @@
 				</footer>
             </section>
 
-			<section id="splash-start">
+			<section id="splash-start" class="ng-class:{'hide': !page.load.sections.footer.display}">
 				<div>
 					<h1>We can't wait to see you do your thing.</h1>
 					<h2>Get started earning cash by helping your campus today.</h2>
@@ -612,6 +616,8 @@
 		</main>
 		<!-- </ion-content> -->
         <div id='last-div-main' onload="lastDivLoaded()"> </div>
-	</div>
+    </div>
+    <!-- </ion-content> -->
+<!-- </ion-view> -->
 	<!-- </ion-scroll> -->
 <!-- </ion-content>

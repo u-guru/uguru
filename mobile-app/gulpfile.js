@@ -165,25 +165,26 @@ gulp.task('styles', function() {
   var cssStream2 = gulp.src('www/remote/css/archive/animate.css');
   var cssStream3 = gulp.src('www/remote/css/archive/angular-fx.css');
   var cssStream4 = gulp.src('www/remote/css/sass/default.css');
-  var cssStream5 = gulp.src('www/remote/css/sass/material.css');
-  var cssStream6 = gulp.src('www/remote/css/sass/desktop.css');
-  var cssStream7 = gulp.src('www/remote/css/sass/desktop-student.css');
-  var cssStream8 = gulp.src('www/remote/css/sass/desktop-guru.css');
-  var cssStream9 = gulp.src('www/remote/css/sass/style.css');
-  var cssStream10 = gulp.src('www/remote/css/sass/style-pf.css');
-  var cssStream11 = gulp.src('www/remote/css/sass/style-pf-color.css');
-  var cssStream12 = gulp.src('www/remote/css/sass/style-modals.css');
-  var cssStream13 = gulp.src('www/remote/css/sass/universal.css');
-  var cssStream14 = gulp.src('www/remote/css/sass/splash.css');
-  var cssStream15 = gulp.src('www/remote/css/sass/intercom.css');
-  var cssStream16 = gulp.src('www/remote/css/sass/samir.css');
-  var cssStream17 = gulp.src('www/remote/css/sass/essay.css');
+  var cssStream5 = gulp.src('www/remote/css/sass/loading.css');
+  var cssStream6 = gulp.src('www/remote/css/sass/material.css');
+  var cssStream7 = gulp.src('www/remote/css/sass/desktop.css');
+  var cssStream8 = gulp.src('www/remote/css/sass/desktop-student.css');
+  var cssStream9 = gulp.src('www/remote/css/sass/desktop-guru.css');
+  var cssStream10 = gulp.src('www/remote/css/sass/style.css');
+  var cssStream11 = gulp.src('www/remote/css/sass/style-pf.css');
+  var cssStream12 = gulp.src('www/remote/css/sass/style-pf-color.css');
+  var cssStream13 = gulp.src('www/remote/css/sass/style-modals.css');
+  var cssStream14 = gulp.src('www/remote/css/sass/universal.css');
+  var cssStream15 = gulp.src('www/remote/css/sass/splash.css');
+  var cssStream16 = gulp.src('www/remote/css/sass/intercom.css');
+  var cssStream17 = gulp.src('www/remote/css/sass/samir.css');
+  var cssStream18 = gulp.src('www/remote/css/sass/essay.css');
 
 
 
   return streamqueue({ objectMode: true }, cssStream1, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10,
-    cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17).pipe(plugins.concat('main.css'))
+    cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -227,6 +228,9 @@ gulp.task('scripts', function() {
         // 'templates/become-guru.modal.html',
         'templates/offline.html',
         'templates/*html',
+        'templates/**/*html',
+        'templates/**/**/*html',
+        'templates/**/**/**/*html',
         // 'templates/guru/*html',
         // 'templates/components/modals/*html',
         // 'templates/components/details/*html',
@@ -234,7 +238,7 @@ gulp.task('scripts', function() {
       ], { cwd: 'www/remote' })
 
     .pipe(plugins.angularTemplatecache('templates.js', {
-      root: 'templates/',
+      root: '/static/remote/templates/',
       module: 'uguru',
       htmlmin: build && minifyConfig
     }));
@@ -243,10 +247,12 @@ gulp.task('scripts', function() {
 
     .src([
       'templates.js',
-      'lib/ionic/js/ionic.bundle.min.js',
+      "lib/google/webfont.js",
+      'lib/uguru/detect.mobile.js',
+      'lib/uguru/preload.analytics.js',
+      'lib/ionic/js/ionic.bundle.min.v2.js',
       'lib/angular-ui-custom/ui-bootstrap-custom*.min.js',
       'lib/lodash/dist/lodash.js',
-      'lib/stripe/stripe.js',
       'lib/cta/cta*.js',
       'lib/peel/peel.js',
       'lib/countup/*.js',
@@ -255,13 +261,14 @@ gulp.task('scripts', function() {
       'lib/facebook/openfb.js',
       'lib/scroll/waypoints.min.js',
       'lib/facebook/ngopenfb.js',
+      'lib/facebook/facebookConnectPlugin.js',
       'lib/facebook/*.js',
       'lib/ngElastic/*.js',
       'lib/ngMoment/moment.min.js',
       'lib/ngMoment/*.js',
       'lib/angular-google-maps/angular-google-maps.min.js',
       'http://maps.google.com/maps/api/js?sensor=false',
-      'lib/angular-google-maps/google-marker-with-labels.js',
+      // 'lib/angular-google-maps/google-marker-with-labels.js',
       'lib/restangular/dist/restangular.js',
       'lib/angular-strap/angular-strap.min.js',
       'lib/angular-strap/angular-strap.tpl.min.js',
@@ -373,6 +380,10 @@ gulp.task('jsHint', function(done) {
 // copy templates
 gulp.task('templates', function() {
   return gulp.src([
+        'templates/**/*.html',
+        'templates/**/**/*.html',
+        'templates/**/**/**/*.html',
+        'templates/svg/**/*.html',
         'templates/student.home.html',
         'templates/student.home.body.html',
         'templates/student.guru-book.html',
