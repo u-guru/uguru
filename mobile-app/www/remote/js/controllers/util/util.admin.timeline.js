@@ -15,6 +15,17 @@ angular.module('uguru.util.controllers')
 	'CTAService',
 	function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, LoadingService, $timeout, University, TimelineService, CTAService) {
 
+		$scope.showAdmin = false;
+
+		if (!$scope.user || !$scope.user.id || !$scope.user.is_admin) {
+			LoadingService.showMsg('404', 4000, function() {
+				$state.go('^.desktop-login');
+			})
+		} else {
+			$scope.showAdmin = true;
+		}
+
+
 		//first format by
 		$scope.page = {active: {tabName: 'Home', progress:null}};
 		var NUM_PRIORITIZED = 16;
@@ -316,12 +327,14 @@ angular.module('uguru.util.controllers')
 			projects: [
 				{
 					name: "Home",
-					alpha: ["Bind + compile the home loader", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
+					priority:{samir: 2},
+					alpha: ["T: Bind + compile the home loader |['http://google.com', http://yahoo.com]", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
 					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
 					production: ["G:Nail the scroll reveal animations", "G:Browse Tab bar", "B: Top Section", "B: Approve Content on MVP Completion", "J:Verify Components", "J:Make Homepage:DesignGuide w/ best practices = 1:1"],
 				},
 				{
 					name: "University",
+					priority: {samir: 1},
 					alpha: ["Improve Scroll", "Make Maps Fast", "Mobile App Support", "Scroll Reveal Handlers + MVP"],
 					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
 					production: ["G: Apply Course Spec to Course Search", "B: Discuss & Finalize Top Section", "B: Approve Content on MVP Completion"],
@@ -386,6 +399,7 @@ angular.module('uguru.util.controllers')
 					production: ["B: Discuss, Finalize, Gameplan", "J:100% Design + Templated", "G:100% CSS/HTML w/ Best Practices"]
 				},
 				{
+					priority: {samir:-1},
 					name: "Requests",
 					alpha: ["Make Maps Fast", "Mobile App Support"],
 					beta: ["University Specific", "Home Page"]
@@ -468,16 +482,34 @@ angular.module('uguru.util.controllers')
 			var result_arr = [];
 			for (var i = 0; i < arr_str.length; i++) {
 				var indexActionItem = arr_str[i];
-				if (indexActionItem.split(':').length > 1) {
-					result_arr.push({indexActionItem: true, member:roleDict[role]});
-				} else {
-					tempDict = {}
-					var key = indexActionItem + " ";
-					tempDict[key] = false;
-					result_arr.push(tempDict);
+				var indexActionItemComplete = isActionItemComplete(indexActionItem);
+				var externalLinksArr = hasExternalLinks(indexActionItem) || [];
+				if (indexActionItemComplete) {
+					indexActionItem = indexActionItem.replace('T:', '');
 				}
+				if (externalLinksArr.length) {
+					indexActionItem = indexActionItem.split('|')[0];
+				}
+				tempDict = {}
+				var key = indexActionItem + " ";
+				tempDict[key] = indexActionItemComplete;
+				tempDict.links = externalLinksArr;
+				result_arr.push(tempDict);
 			}
 			return result_arr;
+		}
+
+		//
+		var hasExternalLinks = function(action_string) {
+			if (action_string.indexOf('|') > 0) {
+				external_link_string = action_string.split('|')[1].replace('[', '').replace(']', '');
+				external_link_arr = external_link_string.split(',');
+				return external_link_arr;
+			}
+		}
+
+		var isActionItemComplete = function(action_string) {
+			return action_string.indexOf("T:") > -1;
 		}
 
 		var parseAndGetRole = function(str_action) {
@@ -500,14 +532,15 @@ angular.module('uguru.util.controllers')
 			var result_arr = [];
 			for (var i = 0; i < arr_str.length; i++) {
 				var indexActionItem = arr_str[i];
-				if (indexActionItem.split(':').length > 2) {
-					result_arr.push({indexActionItem: true, member:parseAndGetRole(indexActionItem , role)});
-				} else {
-					tempDict = {}
-					var key = indexActionItem + " ";
-					tempDict[key] = false;
-					result_arr.push(tempDict);
+				var indexActionItemComplete = isActionItemComplete(indexActionItem);
+				if (indexActionItemComplete) {
+					indexActionItem = indexActionItem.replace('T:', '');
 				}
+
+				tempDict = {}
+				var key = indexActionItem + " ";
+				tempDict[key] = indexActionItemComplete;
+				result_arr.push(tempDict);
 			}
 			return result_arr;
 		}
@@ -543,6 +576,26 @@ angular.module('uguru.util.controllers')
 			return result_dict;
 		}
 
+		function prioritySort(a, b) {
+		  if (!a.priority && !b.priority) {
+		    return 0;
+		  }
+		  if (!a.priority && b.priority) {
+		  	return 1;
+		  }
+		  if (a.priority && !b.priority) {
+		  	return 1;
+		  }
+		  if (a.priority && b.priority && a.priority <= b.priority) {
+		  	return 1;
+		  }
+		  if (a.priority && b.priority && a.priority > b.priority) {
+		  	return -1;
+		  }
+		  // a must be equal to b
+		  return 0;
+		}
+
 		// takes in a sprint meta data and creates
 		var initSprints = function(sprint_arr) {
 			var uniqueProjectIndex = 0
@@ -569,6 +622,7 @@ angular.module('uguru.util.controllers')
 							id: sprintProjects[j].id,
 							name: sprintProjects[j].name,
 							progress: sprintProjects[j].progress,
+							priority: (sprintProjects[j].priority && sprintProjects[j].priority.samir) || null,
 							action_items:sprintProjects[j].action_items.alpha
 						});
 					};
@@ -579,6 +633,7 @@ angular.module('uguru.util.controllers')
 							name: sprintProjects[j].name,
 							id: sprintProjects[j].id,
 							progress: sprintProjects[j].progress,
+							priority: (sprintProjects[j].priority && sprintProjects[j].priority.jason) || null,
 							action_items:sprintProjects[j].action_items.beta
 						});
 					}
@@ -591,6 +646,7 @@ angular.module('uguru.util.controllers')
 								name: sprintProjects[j].name,
 								id: sprintProjects[j].id,
 								progress: sprintProjects[j].progress,
+								priority: (sprintProjects[j].priority && sprintProjects[j].priority.gabrielle) || null,
 								action_items:productionDict.gabrielle
 							});
 							sprintProjects[j].action_items.gabrielle = productionDict.gabrielle;
@@ -601,12 +657,20 @@ angular.module('uguru.util.controllers')
 								name: sprintProjects[j].name,
 								id: sprintProjects[j].id,
 								progress: sprintProjects[j].progress,
+								priority: (sprintProjects[j].priority && sprintProjects[j].priority.jeselle) || null,
 								action_items:productionDict.jeselle
 							});
 							sprintProjects[j].action_items.jeselle = productionDict.jeselle;
 						}
 						if (productionDict.both && productionDict.both.length) {
 							sprintProjects[j].action_items.both = productionDict.both;
+						}
+					}
+
+					//sort all by priority
+					if(sprintProjects[j].action_items.alpha && sprintProjects[j].action_items.alpha.length) {
+						if ($scope.roleArr[0].all_projects && $scope.roleArr[1].all_projects.length) {
+							$scope.roleArr[0].all_projects.sort(prioritySort).reverse();
 						}
 					}
 				}

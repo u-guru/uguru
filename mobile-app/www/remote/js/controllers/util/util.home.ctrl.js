@@ -149,7 +149,7 @@ angular.module('uguru.util.controllers')
         var waypointDict = {
           "splash-home": {func:null},
           "how-it-works": {func:scrollHowitWorksCallback, offset: 36 + 70},
-          "splash-university": {func:scrollUniversityCallback, offset:70}, //navbar + bottom footer
+          "splash-university": {func:scrollUniversityCallback, offset:36 + 70}, //precursor-section-height + navbar.height
           "splash-browse": {func:null, offset:70},
           "become-guru": {func:scrollBecomeGuruCallback, offset:70}
         }

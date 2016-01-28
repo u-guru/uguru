@@ -1,5 +1,5 @@
 
-<main id="timeline" class='full-xy'>
+<main id="timeline" class='full-xy ng-class:{"hide":!showAdmin}'>
     <header>
         <div class="timeline-header">
             <div>
@@ -38,9 +38,10 @@
                                             #{{project.id + 1}} <br> {{project.name}}
                                         </h1>
                                         <div class='full-x'>
-                                            <ul class='full-x text-left' ng-repeat='todoObj in project.action_items track by $index'>
-                                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                            <ul class='full-x text-left relative' ng-repeat='todoObj in project.action_items track by $index'>
+                                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links"> <a ng-repeat='link in todoObj.links track by $index' target='_blank' href='{{link}}'><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                             </ul>
                                         </div>
                                     </div>

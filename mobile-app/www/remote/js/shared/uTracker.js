@@ -144,7 +144,7 @@ function uTracker($timeout) {
 					break;
 				case 'lo':
 					$timeout(function() {
-						ll('tagEvent', event, data);
+						// ll('tagEvent', event, data);
 					}, 300);
 					break;
 				case 'ga': break;
