@@ -382,6 +382,7 @@ def profile_page_new_view_two(username):
 @app.route('/')
 def new_home_page():
     from flask import send_from_directory, send_file
+    print request.remote_addr
     return send_file('templates/web-remote/index.html')
 
 @app.route('/hs/')

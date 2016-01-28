@@ -8,7 +8,6 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-
     <script type="text/javascript">
       var start_dom_time = Date.now();
       var deviceReadyLoadTime;
@@ -54,7 +53,7 @@
 
     <!-- The main css file -->
     <link href="remote/css/sass/default.css" rel="stylesheet">
-    <!-- <link href="remote/css/sass/loading.css" rel="stylesheet"> -->
+    <link href="remote/css/sass/loading.css" rel="stylesheet">
     <link href="remote/css/sass/material.css" rel="stylesheet">
     <link href="remote/css/sass/desktop.css" rel="stylesheet">
     <link href="remote/css/sass/desktop-student.css" rel="stylesheet">
@@ -458,12 +457,11 @@
  -->
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()">
-
+    <script type="text/javascript" src="remote/lib/uLoader/uguru.loader.js">
+    </script>
     <!-- <h3>In App Google Maps Plugin</h3>
    <div style="width:100%;height:400px" id="map_canvas"></div>
    <button id="button">Full Screen</button> -->
-    <script type="text/javascript" src="remote/lib/uLoader/uguru.loader.js">
-    </script>
 
     <ui-view>
 
