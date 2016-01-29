@@ -2225,14 +2225,6 @@
 										top: -20px;
 										right: 30px;
 									}
-									&.animate {
-										&:nth-child(1) {
-											@include animation-name(tape-1);
-										}
-										&:nth-child(2) {
-											@include animation-name(tape-2);
-										}
-									}
 								}
 								.postit {
 									> div {
@@ -2270,11 +2262,6 @@
 										left: 50%;
 										margin-left: -20px;
 									}
-									&.animate {
-										&:nth-child(2) {
-											@include animation-name(tape-3);
-										}
-									}
 								}
 								.postit {
 									> div {
@@ -2309,14 +2296,6 @@
 										@include rotate(45);
 										bottom: -20px;
 										right: 30px;
-									}
-									&.animate {
-										&:nth-child(1) {
-											@include animation-name(tape-1);
-										}
-										&:nth-child(2) {
-											@include animation-name(tape-4);
-										}
 									}
 								}
 								.postit {
@@ -2917,6 +2896,9 @@
 						ul {
 							li {
 								position: relative!important;
+								.tape {
+									@include opacity(0);
+								}
 								.postit {
 									> div {
 										background: white;
@@ -2973,6 +2955,15 @@
 										    top: -20px;
 										    right: 30px;
 										}
+										&.animate {
+											&:nth-child(1) {
+												@include animation-name(tape-1);
+											}
+											&:nth-child(2) {
+												@include animation-name(tape-2);
+												@include animation-delay(.25s);
+											}
+										}
 									}
 									.postit {
 										> div {
@@ -3008,6 +2999,12 @@
 										    top: -50px;
 											left: 50%;
 										    margin-left: -20px;
+										}
+										&.animate {
+											&:nth-child(2) {
+												@include animation-name(tape-3);
+												@include animation-delay(.5s);
+											}
 										}
 									}
 									.postit {
@@ -3045,6 +3042,16 @@
 											@include rotate(45);
 										    bottom: -20px;
 										    right: 30px;
+										}
+										&.animate {
+											&:nth-child(1) {
+												@include animation-name(tape-1);
+												@include animation-delay(.5s);
+											}
+											&:nth-child(2) {
+												@include animation-name(tape-4);
+												@include animation-delay(.75s);
+											}
 										}
 									}
 									.postit {

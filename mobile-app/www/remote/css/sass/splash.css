@@ -2981,18 +2981,6 @@
     top: -20px;
     right: 30px;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(2) .tape.animate:nth-child(1) {
-    -webkit-animation-name: tape-1;
-    -moz-animation-name: tape-1;
-    -o-animation-name: tape-1;
-    animation-name: tape-1;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(2) .tape.animate:nth-child(2) {
-    -webkit-animation-name: tape-2;
-    -moz-animation-name: tape-2;
-    -o-animation-name: tape-2;
-    animation-name: tape-2;
-  }
   .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div {
     background: #bd94d9;
   }
@@ -3027,12 +3015,6 @@
     top: -50px;
     left: 50%;
     margin-left: -20px;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(1) .tape.animate:nth-child(2) {
-    -webkit-animation-name: tape-3;
-    -moz-animation-name: tape-3;
-    -o-animation-name: tape-3;
-    animation-name: tape-3;
   }
   .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div {
     background: #ef7cbd;
@@ -3070,18 +3052,6 @@
     transform: rotate(45deg);
     bottom: -20px;
     right: 30px;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape.animate:nth-child(1) {
-    -webkit-animation-name: tape-1;
-    -moz-animation-name: tape-1;
-    -o-animation-name: tape-1;
-    animation-name: tape-1;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape.animate:nth-child(2) {
-    -webkit-animation-name: tape-4;
-    -moz-animation-name: tape-4;
-    -o-animation-name: tape-4;
-    animation-name: tape-4;
   }
   .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div {
     background: #8bc1ce;
@@ -3840,6 +3810,10 @@
   .splash-landing#home-splash > section#how-it-works .main ul li, .splash-landing#home-splash > section #how-it-works .main ul li {
     position: relative !important;
   }
+  .splash-landing#home-splash > section#how-it-works .main ul li .tape, .splash-landing#home-splash > section #how-it-works .main ul li .tape {
+    filter: alpha(opacity=0);
+    opacity: 0;
+  }
   .splash-landing#home-splash > section#how-it-works .main ul li .postit > div, .splash-landing#home-splash > section #how-it-works .main ul li .postit > div {
     background: white;
     color: #637074;
@@ -3902,6 +3876,22 @@
     top: -20px;
     right: 30px;
   }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(1) {
+    -webkit-animation-name: tape-1;
+    -moz-animation-name: tape-1;
+    -o-animation-name: tape-1;
+    animation-name: tape-1;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-2;
+    -moz-animation-name: tape-2;
+    -o-animation-name: tape-2;
+    animation-name: tape-2;
+    -webkit-animation-delay: 0.25s;
+    -moz-animation-delay: 0.25s;
+    -o-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+  }
   .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div:before {
     background: #9A5BC5;
   }
@@ -3936,6 +3926,16 @@
     top: -50px;
     left: 50%;
     margin-left: -20px;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .tape.animate:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-3;
+    -moz-animation-name: tape-3;
+    -o-animation-name: tape-3;
+    animation-name: tape-3;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
   }
   .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div:before {
     background: #e6389b;
@@ -3976,6 +3976,26 @@
     transform: rotate(45deg);
     bottom: -20px;
     right: 30px;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(1) {
+    -webkit-animation-name: tape-1;
+    -moz-animation-name: tape-1;
+    -o-animation-name: tape-1;
+    animation-name: tape-1;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-4;
+    -moz-animation-name: tape-4;
+    -o-animation-name: tape-4;
+    animation-name: tape-4;
+    -webkit-animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+    -o-animation-delay: 0.75s;
+    animation-delay: 0.75s;
   }
   .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div:before {
     background: #55A4B7;

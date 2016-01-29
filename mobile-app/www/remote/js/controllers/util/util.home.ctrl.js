@@ -42,9 +42,9 @@ angular.module('uguru.util.controllers')
         viewed: false,
         beforeScroll: null,
         firstViewed: {
-          css_classes:['bounceInDown:keep', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
-          selectors:['.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)'],
-          delays: [500, 550, 600, 650, 700, 750],
+          css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep'],
+          selectors:['.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.hiw-postit-li:nth-child(2) .tape:nth-child(1)', '.hiw-postit-li:nth-child(2) .tape:nth-child(2)', '.hiw-postit-li:nth-child(3) .tape:nth-child(2)', '.hiw-postit-li:nth-child(4) .tape:nth-child(1)', '.hiw-postit-li:nth-child(4) .tape:nth-child(2)'],
+          delays: [500, 600, 700, 800, 900, 1000, 2000, 2000, 2000, 2000, 2000],
         },
         onScrollStart: null, //coming soon, not first time
         onScrollEnd: null,  // coming soon, not first time
