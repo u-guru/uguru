@@ -40,7 +40,7 @@
 				<!-- <button class="btn-ghost-white">Contact</button> -->
 				<div class='pf-textarea-container relative'>
 					<p class="pf-header-desc ng-class:{'hide': !profile.public_mode}">{{user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</p>
-					<textarea class="pf-header-desc hide ng-class:{'show': !profile.public_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' rows="4"></textarea>
+					<textarea name ="guru.edit.intro" class="pf-header-desc hide ng-class:{'show': !profile.public_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' rows="4"></textarea>
 					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":!profile.public_mode}'>{{140 - user.guru_introduction.length}}</span>
 					<!-- @samir -->
 					<!-- BIND -->
@@ -133,7 +133,7 @@
 				</ul>
 				<ul class="pf-links">
 					<li>
-						<a class="bg-li" ng-click='showPagePopup("linkedin")' ng-include="img_base + BASE + 'templates/svg/social/linkedin.html'"></a>
+						<a class="bg-li" name='soc-linkedin' ng-click='showPagePopup("linkedin")' ng-include="img_base + BASE + 'templates/svg/social/linkedin.html'"></a>
 						<div class="guru-popup hide ng-class:{'show':pagePopups.linkedin}">
 							<h1>Edit your LinkedIn URL</h1>
 							<div class="with-button">
@@ -148,7 +148,7 @@
 						</div>
 					</li>
 					<li>
-						<a class="bg-fb" ng-click='showPagePopup("facebook")' ng-include="img_base + BASE + 'templates/svg/social/facebook.html'"></a>
+						<a class="bg-fb" name='soc-facebook' ng-click='showPagePopup("facebook")' ng-include="img_base + BASE + 'templates/svg/social/facebook.html'"></a>
 						<div class="guru-popup hide ng-class:{'show':pagePopups.facebook}">
 							<h1>Edit your Facebook URL</h1>
 							<div class="with-button">
@@ -163,7 +163,7 @@
 						</div>
 					</li>
 					<li>
-						<a class="bg-tw" ng-click='showPagePopup("twitter")' ng-include="img_base + BASE + 'templates/svg/social/twitter.html'"></a>
+						<a class="bg-tw" name='soc-twitter' ng-click='showPagePopup("twitter")' ng-include="img_base + BASE + 'templates/svg/social/twitter.html'"></a>
 						<div class="guru-popup hide ng-class:{'show':pagePopups.twitter}">
 							<h1>Edit your Twitter URL</h1>
 							<div class="with-button">
@@ -179,7 +179,7 @@
 						</div>
 					</li>
 					<li>
-						<a class="bg-in" ng-click='showPagePopup("instagram")' ng-include="img_base + BASE + 'templates/svg/social/instagram.html'"></a>
+						<a class="bg-in" name='soc-instagram' ng-click='showPagePopup("instagram")' ng-include="img_base + BASE + 'templates/svg/social/instagram.html'"></a>
 						<div class="guru-popup hide ng-class:{'show':pagePopups.instagram}">
 							<h1>Edit your Instagram URL</h1>
 							<div class="with-button">
@@ -261,7 +261,7 @@
 						</div>
 						<h2>&nbsp;&nbsp;a degree in&nbsp;&nbsp;</h2>
 						<span class='relative'>
-							<input ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}
+							<input name='userMajor-input' ng-blur='updateUserMajor()' ng-model="user.major" size="{{user.major.length || 'mathematics'.length}}
 							"/>
 							<svg name='major-checkmark' class="loader center-bottom ng-class:{'checkmark': page.checkmarks.major}" viewBox="0 0 100 100">
 								  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
