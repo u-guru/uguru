@@ -1294,6 +1294,16 @@
   text-align: center;
 }
 
+.splash-landing > section.splash-hero.show {
+  -ms-box-orient: horizontal !important;
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -moz-flex !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+}
+
 @media screen and (min-width: 768px) {
   .splash-landing > section.splash-hero.active > div {
     -webkit-transition: all 0.3s ease-in-out;

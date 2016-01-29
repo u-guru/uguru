@@ -902,6 +902,9 @@
 			background-position: center;
 			background-size: cover;
 			text-align: center;
+			&.show {
+				@include flex-important;
+			}
 			@media screen and (min-width: 768px) {
 				&.active {
 					> div {
