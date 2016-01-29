@@ -13,12 +13,19 @@
 	}
 	// SIDEBAR
 	.splash-sidebar {
+		@include opacity(0);
+		@include translate-x(-100%);
+		@include transition(.15s ease-in-out);
 		position: absolute;
 		top: 0;
 		left: 0;
 		z-index: 999999;
 		width: 100%;
 		height: 100%;
+		&.show {
+			@include opacity(1);
+			@include translate-x(0);
+		}
 		&:before {
 			@include opacity(.95);
 			content: "";
