@@ -361,9 +361,9 @@
 					</div>
 
 					<!--Desktop mode-->
-					<div ng-if='desktopMode' class='flex-wrap-center'>
+					<div ng-if='desktopMode' class='flex-wrap-center' style='overflow:hidden;'>
 						<ul>
-							<li ng-repeat="hiw_item in ::how_it_works.top_half">
+							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half">
 								<svg class="tape" viewBox="0 0 200 650">
 									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 								</svg>
@@ -383,7 +383,7 @@
 									</div>
 								</div>
 							</li>
-							<li ng-repeat="hiw_item in ::how_it_works.bottom_half">
+							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.bottom_half">
 								<svg class="tape" viewBox="0 0 200 650">
 									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 								</svg>
@@ -563,7 +563,7 @@
 		</div>
 		<div ng-if='desktopMode' class='flex-wrap-center'>
 			<ul class="desktop-postit-list">
-				<li ng-repeat="bg_item in ::become_guru.top_half">
+				<li class='opacity-0 bg-postit-li' ng-repeat="bg_item in ::become_guru.top_half">
 					<svg class="tape" viewBox="0 0 200 650">
 						<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 					</svg>
@@ -583,7 +583,7 @@
 						</div>
 					</div>
 				</li>
-				<li ng-repeat="bg_item in ::become_guru.bottom_half">
+				<li class='opacity-0 bg-postit-li' ng-repeat="bg_item in ::become_guru.bottom_half">
 					<svg class="tape" viewBox="0 0 200 650">
 						<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 					</svg>
