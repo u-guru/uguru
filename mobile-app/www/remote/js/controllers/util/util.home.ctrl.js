@@ -35,19 +35,56 @@ angular.module('uguru.util.controllers')
       $scope.page = {animation: false, dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
 
 
-      $scope.page.animations = {hiw:{}, bg:{}};
+      $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}};
       //@gabrielle just worry about this
+      // next steps
+      //
 
       $scope.page.animations.hiw = {
         viewed: false,
         beforeScroll: null,
         firstViewed: {
-          css_classes:['bounceInDown:keep', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
+          css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
+          selectors:['.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)'],
+          delays: [500, 550, 600, 650, 700, 750],
+        },
+        secondViewed: {
+          css_classes:['hinge', 'hinge', 'hinge', 'hinge', 'hinge', 'hinge'],
           selectors:['.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)'],
           delays: [500, 550, 600, 650, 700, 750],
         },
         onScrollStart: null, //coming soon, not first time
         onScrollEnd: null,  // coming soon, not first time
+      }
+
+      $scope.page.animations.categories = {
+        viewed: false,
+        beforeScroll: null,
+        firstViewed: {
+          css_classes:[],
+          selectors:[],
+          delays: []
+        },
+        secondViewed: {
+          css_classes:[],
+          selectors:[],
+          delays: []
+        }
+      }
+
+      $scope.page.animations.profiles = {
+        viewed: false,
+        beforeScroll: null,
+        firstViewed: {
+          css_classes:[],
+          selectors:[],
+          delays: []
+        },
+        secondViewed: {
+          css_classes:[],
+          selectors:[],
+          delays: []
+        }
       }
 
       $scope.page.animations.bg = {
@@ -57,12 +94,24 @@ angular.module('uguru.util.controllers')
           css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
           selectors:['.bg-postit-li:nth-child(2)', '.bg-postit-li:nth-child(6)', '.bg-postit-li:nth-child(4)', '.bg-postit-li:nth-child(1)', '.bg-postit-li:nth-child(3)', '.bg-postit-li:nth-child(5)'],
           delays: [500, 550, 600, 650, 700, 750],
+        },
+        secondViewed: {
+          css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
+          selectors:['.bg-postit-li:nth-child(2)', '.bg-postit-li:nth-child(6)', '.bg-postit-li:nth-child(4)', '.bg-postit-li:nth-child(1)', '.bg-postit-li:nth-child(3)', '.bg-postit-li:nth-child(5)'],
+          delays: [500, 550, 600, 650, 700, 750],
         }
+
       }
 
       var initializePageAnimations = function() {
           AnimationService.initializeSectionComponents($scope.page.animations.hiw.firstViewed, $scope.page.animations.hiw.firstViewed.selectors, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
           AnimationService.initializeSectionComponents($scope.page.animations.bg.firstViewed, $scope.page.animations.bg.firstViewed.selectors, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.categories.firstViewed, $scope.page.animations.categories.firstViewed.selectors, $scope.page.animations.categories.firstViewed.css_classes, $scope.page.animations.categories.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.profiles.firstViewed, $scope.page.animations.profiles.firstViewed.selectors, $scope.page.animations.profiles.firstViewed.css_classes, $scope.page.animations.profiles.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.hiw.secondViewed, $scope.page.animations.hiw.firstViewed.selectors, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.bg.secondViewed, $scope.page.animations.bg.firstViewed.selectors, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.categories.secondViewed, $scope.page.animations.categories.firstViewed.selectors, $scope.page.animations.categories.firstViewed.css_classes, $scope.page.animations.categories.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.profiles.secondViewed, $scope.page.animations.profiles.firstViewed.selectors, $scope.page.animations.profiles.firstViewed.css_classes, $scope.page.animations.profiles.firstViewed.delays);
       }
 
 
@@ -84,11 +133,13 @@ angular.module('uguru.util.controllers')
       $scope.university = {}
       // $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
       $scope.page.sidebar = {show:false};
+      $scope.page.tabs = {hiw:{}};
       $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}};
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showOnScrollNav:'', becomeGuruHeaderActive:false, active_tab:{how_it_works:false, become_guru:false, university:false}};
       $scope.page.load = {sections:{}, complete:false};
       $scope.page.scroll = {section_index:0};
+
       $scope.page.load.sections = {
         one: {visible:true, display:true, nested:{bg_image: false}, ready:onSectionOneLoad},
         two: {visible:true, display:true, nested:{}, on_activate:null},
@@ -98,6 +149,45 @@ angular.module('uguru.util.controllers')
         footer: {visible:true, display:true, nested:{}, on_activate:null}
       }
 
+
+      $scope.switchToTabIndex = function(index) {
+        var currentIndex = $scope.page.tabs.hiw.index;
+        $scope.activeBrowseTabIndex = index;
+        //switching to how it works
+        if (index !== currentIndex && index === 2) {
+          if (!$scope.page.animations.profiles.viewed) {
+            $scope.page.animations.profiles.viewed = true;
+            console.log('firing first time animations for profiles')
+            AnimationService.activateSectionAnimations($scope.page.animations.profiles.firstViewed.elements, $scope.page.animations.profiles.firstViewed.css_classes, $scope.page.animations.profiles.firstViewed.delays);
+          } else {
+            console.log('firing second time animations for profiles')
+            AnimationService.activateSectionAnimations($scope.page.animations.profiles.secondViewed.elements, $scope.page.animations.profiles.secondViewed.css_classes, $scope.page.animations.profiles.secondViewed.delays);
+          }
+        }
+        if (index !== currentIndex && index === 1) {
+
+          if (!$scope.page.animations.categories.viewed) {
+            $scope.page.animations.categories.viewed = true;
+            console.log('firing first time animations for categories')
+            AnimationService.activateSectionAnimations($scope.page.animations.categories.firstViewed.elements, $scope.page.animations.categories.firstViewed.css_classes, $scope.page.animations.categories.firstViewed.delays);
+          } else {
+            console.log('firing second time animations for categories')
+            AnimationService.activateSectionAnimations($scope.page.animations.categories.secondViewed.elements, $scope.page.animations.categories.secondViewed.css_classes, $scope.page.animations.categories.secondViewed.delays);
+          }
+        }
+        if (index !== currentIndex && index === 0) {
+
+          if (!$scope.page.animations.hiw.viewed) {
+            console.log('firing first time animations for how it works')
+            $scope.page.animations.hiw.viewed = true;
+            AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+          } else {
+            console.log('firing second time animations for how it works')
+            AnimationService.activateSectionAnimations($scope.page.animations.hiw.secondViewed.elements, $scope.page.animations.hiw.secondViewed.css_classes, $scope.page.animations.hiw.secondViewed.delays);
+          }
+
+        }
+      }
       // $scope.page.animations = {hiw: {}};
       // $scope.page.animations.hiw = {
       //   // on first appearance
@@ -179,7 +269,11 @@ angular.module('uguru.util.controllers')
 
               if (!$scope.page.animations.hiw.viewed) {
                 $scope.page.animations.hiw.viewed = true;
+                console.log('firing first time animations for hiw')
                 AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+              } else {
+                console.log('firing second time animations for hiw')
+                AnimationService.activateSectionAnimations($scope.page.animations.hiw.secondViewed.elements, $scope.page.animations.hiw.secondViewed.css_classes, $scope.page.animations.hiw.secondViewed.delays);
               }
 
             } else {
@@ -203,7 +297,11 @@ angular.module('uguru.util.controllers')
 
               if (!$scope.page.animations.bg.viewed) {
                 $scope.page.animations.bg.viewed = true;
+                console.log('firing first time animations for become guru');
                 AnimationService.activateSectionAnimations($scope.page.animations.bg.firstViewed.elements, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
+              } else {
+                console.log('firing second time animations for become guru');
+                AnimationService.activateSectionAnimations($scope.page.animations.bg.secondViewed.elements, $scope.page.animations.bg.secondViewed.css_classes, $scope.page.animations.bg.secondViewed.delays);
               }
 
             } else {
