@@ -577,15 +577,6 @@
   border-color: #dfefec;
 }
 
-.splash-landing .splash-sub-header > div a:nth-child(4).active ~ hr {
-  -webkit-transform: translateX(495px);
-  -moz-transform: translateX(495px);
-  -ms-transform: translateX(495px);
-  -o-transform: translateX(495px);
-  transform: translateX(495px);
-  border-color: #dfefec;
-}
-
 .splash-landing .splash-sub-header > div a:nth-child(1):hover ~ hr, .splash-landing .splash-sub-header > div a:nth-child(1):focus ~ hr {
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
@@ -625,22 +616,73 @@
   border-color: #dfefec;
 }
 
-.splash-landing .splash-sub-header > div a:nth-child(4):hover ~ hr, .splash-landing .splash-sub-header > div a:nth-child(4):focus ~ hr {
-  -webkit-transform: translateX(495px);
-  -moz-transform: translateX(495px);
-  -ms-transform: translateX(495px);
-  -o-transform: translateX(495px);
-  transform: translateX(495px);
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.splash-landing .splash-sub-header > div a:nth-child(4):active ~ hr {
-  border-color: #dfefec;
-}
-
 .splash-landing .splash-sub-header > div hr {
   z-index: 8;
   border-top-width: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing .splash-sub-header > div {
+    margin: 0;
+    width: 100%;
+  }
+  .splash-landing .splash-sub-header > div a {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: calc(100% / 3) !important;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .splash-landing .splash-sub-header > div a span {
+    display: block;
+    width: 100%;
+  }
+  .splash-landing .splash-sub-header > div a:nth-child(1).active ~ hr {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+  .splash-landing .splash-sub-header > div a:nth-child(2).active ~ hr {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .splash-landing .splash-sub-header > div a:nth-child(3).active ~ hr {
+    -webkit-transform: translateX(200%);
+    -moz-transform: translateX(200%);
+    -ms-transform: translateX(200%);
+    -o-transform: translateX(200%);
+    transform: translateX(200%);
+  }
+  .splash-landing .splash-sub-header > div a:nth-child(1):hover ~ hr, .splash-landing .splash-sub-header > div a:nth-child(1):focus ~ hr {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+  .splash-landing .splash-sub-header > div a:nth-child(2):hover ~ hr, .splash-landing .splash-sub-header > div a:nth-child(2):focus ~ hr {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .splash-landing .splash-sub-header > div a:nth-child(3):hover ~ hr, .splash-landing .splash-sub-header > div a:nth-child(3):focus ~ hr {
+    -webkit-transform: translateX(200%);
+    -moz-transform: translateX(200%);
+    -ms-transform: translateX(200%);
+    -o-transform: translateX(200%);
+    transform: translateX(200%);
+  }
+  .splash-landing .splash-sub-header > div hr {
+    width: calc(100% / 3) !important;
+  }
 }
 
 @media screen and (min-width: 860px) {

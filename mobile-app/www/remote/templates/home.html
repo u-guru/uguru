@@ -26,6 +26,8 @@
 			</a>
 			<!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
 		</ion-pane>
+		
+		<!-- END Home Page CTAS -->
 
 		<header class='splash-header' id='home-nav-header' ng-class="{'bg-charcoal': page.header.showOnScrollNav.length, 'active': becomeGuruHeaderActive}">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
@@ -50,7 +52,24 @@
 				<a class="splash-nav-link highlight ng-class:{'hide':user.id}" ng-click='goToSignup()'>Login</a>
 			</div>
 		</header>
-		<!-- END Home Page CTAS -->
+		
+		<div class="splash-sub-header tab-bar slide" id='splash-hiw-nav'>
+			<div>
+				<a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
+					<span>How It </span>
+					<span>Works</span>
+				</a>
+				<a ng-click='activeBrowseTabIndex = 1' class="ng-class:{'active':activeBrowseTabIndex===1}">
+					<span>Student-Run </span>
+					<span>Shops</span>
+				</a>
+				<a ng-click='activeBrowseTabIndex = 2;' class="ng-class:{'active':activeBrowseTabIndex===2}">
+					<span>Guru </span>
+					<span>Profiles</span>
+				</a>
+				<hr/>
+			</div>
+		</div>
 
 		<header class='splash-toast hide ng-class:{"show":becomeGuruHeaderActive}'>
 			<div>
@@ -70,14 +89,6 @@
 				</a>
 			</div>
 		</header>
-		<div class="splash-sub-header tab-bar slide" id='splash-hiw-nav'>
-			<div>
-				<a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">How It Works</a>
-				<a ng-click='activeBrowseTabIndex = 1' class="ng-class:{'active':activeBrowseTabIndex===1}">Student-Run Shops</a>
-				<a ng-click='activeBrowseTabIndex = 2;' class="ng-class:{'active':activeBrowseTabIndex===2}">Guru Profiles </a>
-				<hr/>
-			</div>
-		</div>
 
 		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' on-drag-up="scrollNextSection()" bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()">
 			<a id="splash-footer-support" class="splash-footer-link" ng-click='launchSupportOverlay()'>
