@@ -2936,6 +2936,7 @@
 					.main {
 						ul {
 							li {
+								position: relative!important;
 								.postit {
 									> div {
 										background: white;
@@ -2948,6 +2949,9 @@
 									-ms-transform: rotate(5deg) translate(30px, 20px);
 									-o-transform: rotate(5deg) translate(30px, 20px);
 									transform: rotate(5deg) translate(30px, 20px);
+									&.bounceInLeft {
+										@include animation-name(bounceInLeft-hiw-1);
+									}
 									.tape {
 										display: none;
 									}
@@ -2975,6 +2979,9 @@
 									-ms-transform: rotate(-7deg) translate(-25px, 60px);
 									-o-transform: rotate(-7deg) translate(-25px, 60px);
 									transform: rotate(-7deg) translate(-25px, 60px);
+									&.bounceInDown {
+										@include animation-name(bounceInDown-hiw-2);
+									}
 									.tape {
 										&:nth-child(1) {
 											@include rotate(45);
@@ -3009,6 +3016,9 @@
 									-ms-transform: rotate(7deg) translate(0, 20px);
 									-o-transform: rotate(7deg) translate(0, 20px);
 									transform: rotate(7deg) translate(0, 20px);
+									&.bounceInRight {
+										@include animation-name(bounceInRight-hiw-3);
+									}
 									.tape {
 										&:nth-child(1) {
 											display: none;
@@ -3042,6 +3052,9 @@
 									-ms-transform: rotate(-2deg) translate(-20px, 15px);
 									-o-transform: rotate(-2deg) translate(-20px, 15px);
 									transform: rotate(-2deg) translate(-20px, 15px);
+									&.bounceInLeft {
+										@include animation-name(bounceInLeft-hiw-4);
+									}
 									.tape {
 										&:nth-child(1) {
 											@include rotate(45);
@@ -3071,11 +3084,14 @@
 									}
 								}
 								&:nth-child(5) {
-									-webkit-transform: rotate(20deg) translate(-10px,-10px);
-									-moz-transform: rotate(20deg) translate(-10px,-10px);
-									-ms-transform: rotate(20deg) translate(-10px,-10px);
-									-o-transform: rotate(20deg) translate(-10px,-10px);
-									transform: rotate(20deg) translate(-10px,-10px);
+									-webkit-transform: rotate(20deg) translate(-10px, -10px);
+									-moz-transform: rotate(20deg) translate(-10px, -10px);
+									-ms-transform: rotate(20deg) translate(-10px, -10px);
+									-o-transform: rotate(20deg) translate(-10px, -10px);
+									transform: rotate(20deg) translate(-10px, -10px);
+									&.bounceInUp {
+										@include animation-name(bounceInUp-hiw-5);
+									}
 									.tape {
 										display: none;
 									}
@@ -3101,6 +3117,9 @@
 									-ms-transform: rotate(-5deg);
 									-o-transform: rotate(-5deg);
 									transform: rotate(-5deg);
+									&.bounceInRight {
+										@include animation-name(bounceInRight-hiw-6);
+									}
 									.tape {
 										display: none;
 									}
@@ -3145,10 +3164,6 @@
 			}
 		}
 	}
-}
-@include keyframes(blink) {
-	0% { @include opacity(0); }
-	100% { @include opacity(1); }
 }
 
 
@@ -3314,93 +3329,4 @@
 	display: none!important;
 	visibility: hidden!important;
 	z-index: -999999!important;
-}
-
-@include keyframes(opacity-pulse) {
-	0% { @include opacity(.5); }
-	50% { @include opacity(.2); }
-	100% { @include opacity(.5); }
-}
-@include keyframes(opacity-pulse-stroke) {
-	0% { @include opacity(.5); }
-	50% { @include opacity(.8); }
-	100% { @include opacity(.5); }
-}
-@include keyframes(opacity-scale) {
-	0% { @include scale(1); }
-	50% { @include scale(1.05); }
-	100% { @include scale(1); }
-}
-
-@include keyframes(tape-1) {
-	0% {
-		@include opacity(0);
-		-webkit-transform: rotate(30deg) scale(1.5);
-		-moz-transform: rotate(30deg) scale(1.5);
-		-ms-transform: rotate(30deg) scale(1.5);
-		-o-transform: rotate(30deg) scale(1.5);
-		transform: rotate(30deg) scale(1.5);
-	}
-	100% {
-		@include opacity(1);
-		-webkit-transform: rotate(45deg) scale(1);
-		-moz-transform: rotate(45deg) scale(1);
-		-ms-transform: rotate(45deg) scale(1);
-		-o-transform: rotate(45deg) scale(1);
-		transform: rotate(45deg) scale(1);
-	}
-}
-@include keyframes(tape-2) {
-	0% {
-		@include opacity(0);
-		-webkit-transform: rotate(-60deg) scale(1.5);
-		-moz-transform: rotate(-60deg) scale(1.5);
-		-ms-transform: rotate(-60deg) scale(1.5);
-		-o-transform: rotate(-60deg) scale(1.5);
-		transform: rotate(-60deg) scale(1.5);
-	}
-	100% {
-		@include opacity(1);
-		-webkit-transform: rotate(-45deg) scale(1);
-		-moz-transform: rotate(-45deg) scale(1);
-		-ms-transform: rotate(-45deg) scale(1);
-		-o-transform: rotate(-45deg) scale(1);
-		transform: rotate(-45deg) scale(1);
-	}
-}
-@include keyframes(tape-3) {
-	0% {
-		@include opacity(0);
-		-webkit-transform: rotate(-75deg) scale(1.5);
-		-moz-transform: rotate(-75deg) scale(1.5);
-		-ms-transform: rotate(-75deg) scale(1.5);
-		-o-transform: rotate(-75deg) scale(1.5);
-		transform: rotate(-75deg) scale(1.5);
-	}
-	100% {
-		@include opacity(1);
-		-webkit-transform: rotate(-90deg) scale(1);
-		-moz-transform: rotate(-90deg) scale(1);
-		-ms-transform: rotate(-90deg) scale(1);
-		-o-transform: rotate(-90deg) scale(1);
-		transform: rotate(-90deg) scale(1);
-	}
-}
-@include keyframes(tape-4) {
-	0% {
-		@include opacity(0);
-		-webkit-transform: rotate(-75deg) scale(1.5);
-		-moz-transform: rotate(-75deg) scale(1.5);
-		-ms-transform: rotate(-75deg) scale(1.5);
-		-o-transform: rotate(-75deg) scale(1.5);
-		transform: rotate(-75deg) scale(1.5);
-	}
-	100% {
-		@include opacity(1);
-		-webkit-transform: rotate(-45deg) scale(1);
-		-moz-transform: rotate(-45deg) scale(1);
-		-ms-transform: rotate(-45deg) scale(1);
-		-o-transform: rotate(-45deg) scale(1);
-		transform: rotate(-45deg) scale(1);
-	}
 }
