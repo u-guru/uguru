@@ -35,52 +35,40 @@ angular.module('uguru.util.controllers')
       $scope.page = {animation: false, dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
 
 
-      $scope.page.animations = {hiw:{}};
+      $scope.page.animations = {hiw:{}, bg:{}};
       //@gabrielle just worry about this
 
       $scope.page.animations.hiw = {
-        nav: {enter: false, exit:false, exit_speed:650}
+        viewed: false,
+        beforeScroll: null,
+        firstViewed: {
+          css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
+          selectors:['.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)'],
+          delays: [500, 550, 600, 650, 700, 750],
+        },
+        onScrollStart: null, //coming soon, not first time
+        onScrollEnd: null,  // coming soon, not first time
       }
-      // $scope.page.animations = {
-      //   hiw: {
-      //     states: [],
-      //     header: 'fadeIn',
-      //     nav: { container: {_class:"bounce-down", show: false, duration: 1000, ease:'back'}, nav_link: 'bounceInUp'}, //ngfx
-      //     postits: {
-      //       mobile: {
-      //         animations: [],
-      //       },
-      //       desktop: {
-      //         animations: ["bounceInDown", "bounceInRight", "bounceInLeft", "bounceInLeft", "bounceInRight", "bounceInUp"],
-      //         ordering: [2, 6, 4, 1, 3, 5],
-      //         interval: 100,
-      //       }
-      //     },
-      //     tape: {
-      //       desktop: {
-      //         interval: 100,
-      //         animations: [4, 2, 3],
-      //         animations: ["zoomInUp", "zoomInUp", "zoomInUp"]
-      //       }
-      //     },
-      //     hover: {
-      //       icon: {}
-      //     },
-      //     selectors: []
-      //   }
-      // }
+
+      $scope.page.animations.bg = {
+        viewed: false,
+        beforeScroll: null,
+        firstViewed: {
+          css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
+          selectors:['.bg-postit-li:nth-child(2)', '.bg-postit-li:nth-child(6)', '.bg-postit-li:nth-child(4)', '.bg-postit-li:nth-child(1)', '.bg-postit-li:nth-child(3)', '.bg-postit-li:nth-child(5)'],
+          delays: [500, 550, 600, 650, 700, 750],
+        }
+      }
+
+      var initializePageAnimations = function() {
+          AnimationService.initializeSectionComponents($scope.page.animations.hiw.firstViewed, $scope.page.animations.hiw.firstViewed.selectors, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.bg.firstViewed, $scope.page.animations.bg.firstViewed.selectors, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
+      }
+
 
       var getHiwAnimationElements = function(selector_arr) {
         $scope.page.animations.hiw.state = 1;
       }
-
-      var triggerHIWAnimations = function() {
-
-      }
-
-      // t = 0, hiw_nav, postits
-      // t = 1, after staggered
-
 
       //Scope var declarations
       var onSectionOneLoad = function() {
@@ -88,10 +76,9 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
-          $timeout(function() {
-            initHomePageWayPoint();
-            Waypoint.refreshAll();
-          }, 1000)
+          initHomePageWayPoint();
+          initializePageAnimations();
+          Waypoint.refreshAll();
         }, 250)
       }
       $scope.university = {}
@@ -152,54 +139,9 @@ angular.module('uguru.util.controllers')
       $scope.sampleProfiles = ContentService.sampleProfiles;
       $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
 
-      var initClusterObj = function(marker_arr) {
-        var sampleUniversityObj1 = {school_color_dark:$scope.universities[0].school_dark_color, tiny_name: $scope.universities[0].school_tiny_name};
-        var sampleUniversityObj2 = {school_color_dark:$scope.universities[0].school_color_light, tiny_name: $scope.universities[0].school_tiny_name};
-        var options_dict = {
-            minimumClusterSize:5,
-            styles:[
-              {
-                width:100,
-                height:100,
-                url: generateClusterImgDataURI(sampleUniversityObj1),
-              },
-              {
-                width:50,
-                height:50,
-                url: generateClusterImgDataURI(sampleUniversityObj2),
-              }
-            ]
-        }
-        return options_dict
-      }
 
-        var generateClusterImgDataURI = function(obj) {
-          var baseSVGURL = "<svg viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.school_color_dark + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj.tiny_name + "</tspan></text></svg>"
-          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
-        }
 
-        var generateUniversityImgDataURI = function(obj) {
-          var baseSVGURL = "<svg style='height:25px; width:25px;' viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.school_color_dark + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj.tiny_name + "</tspan></text></svg>"
-          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
-        }
-      var initHomeMap = function() {
-          $scope.page.load.sections.two.display = true;
-          $scope.map = {
-          center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
-          control: {},
-          zoom:  mapDefaults.zoom,
-          dragging: true, //true while map is dragging state, false otherwise
-          refresh: false,
-          options: mapDefaults.options,
-          events: {tilesloaded: onMapRenderCompleteOnce},
-          clusterOptions: initClusterObj(),
-          bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
-          pan: true,
-          markers: generateXMarkersFromUniversities(200, $scope.universities),
-          rebuildMarkers: false,
-          window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
-        }
-      }
+
 
       var whileLoaderIsOn = function() {
         initHomeMap();
@@ -210,15 +152,8 @@ angular.module('uguru.util.controllers')
         TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
       }
 
-      // prefixer helper function
 
-      var pfx = ["webkit", "moz", "MS", "o", ""];
-      function prefixedEventListener(element, type, callback) {
-          for (var p = 0; p < pfx.length; p++) {
-              if (!pfx[p]) type = type.toLowerCase();
-              element.addEventListener(pfx[p]+type, callback, false);
-          }
-      }
+
 
 
       var initHomePageWayPoint = function() {
@@ -242,6 +177,10 @@ angular.module('uguru.util.controllers')
               $scope.page.scroll.section_index = 2;
               AnimationService.animateIn(splashHiwNav, "bounceInDown");
 
+              if (!$scope.page.animations.hiw.viewed) {
+                $scope.page.animations.hiw.viewed = true;
+                AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+              }
 
             } else {
               $scope.page.scroll.section_index = 1;
@@ -261,6 +200,12 @@ angular.module('uguru.util.controllers')
               }
               AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
 
+
+              if (!$scope.page.animations.bg.viewed) {
+                $scope.page.animations.bg.viewed = true;
+                AnimationService.activateSectionAnimations($scope.page.animations.bg.firstViewed.elements, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
+              }
+
             } else {
               $scope.page.scroll.section_index = 1;
             }
@@ -279,8 +224,6 @@ angular.module('uguru.util.controllers')
       }
 
 
-
-      // page initialize vars
 
 
       $scope.scrollNextSection = function() {
@@ -456,24 +399,6 @@ angular.module('uguru.util.controllers')
         var successFunction = null;
         var pageParentContainer = '#home-splash';
 
-        if (section_selector === '#splash-browse') {
-          $scope.page.header.active_tab.university = false;
-          $scope.page.header.active_tab.become_guru = false;
-          $scope.page.header.active_tab.how_it_works = true;
-        }
-
-        if (section_selector === '#become-guru') {
-          $scope.page.header.active_tab.university = false;
-          $scope.page.header.active_tab.how_it_works = false;
-          $scope.page.header.active_tab.become_guru = true;
-        }
-
-        if (section_selector === '#university-splash') {
-          $scope.page.header.active_tab.how_it_works = false;
-          $scope.page.header.active_tab.become_guru = false;
-          $scope.page.header.active_tab.university = true;
-        }
-
         ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector, scrollOffset);
       }
 
@@ -622,7 +547,155 @@ angular.module('uguru.util.controllers')
                  }
       }
 
+      var generateClusterImgDataURI = function(obj) {
+          var baseSVGURL = "<svg viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.bg_color + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.bg_color +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj._text + "</tspan></text></svg>"
+          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
+        }
 
+      var generateUniversityImgDataURI = function(obj) {
+        var baseSVGURL = "<svg style='height:25px; width:25px;' viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.school_color_dark + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj.tiny_name + "</tspan></text></svg>"
+        return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
+      }
+
+
+      var clusterCalculator = function(markers, num_styles) {
+        //The function used to determine the text to be displayed on a cluster marker and the index indicating which
+        // style to use for the cluster marker.
+
+        var markerValues = markers.values();
+        var universityArr = getUniversitiesFromMarkers(markerValues)
+        var stateDict = getMostCommonStateFromUniversities(universityArr);
+        var getTopXStateStr = processStateDictToStr(stateDict);
+
+        function processStateDictToStr(state_dict) {
+          var results = [];
+          for (var key in state_dict) results.push([key, state_dict[key]]);
+
+          results.sort(function(a, b) {
+              a = a[1];
+              b = b[1];
+
+              return a < b ? -1 : (a > b ? 1 : 0);
+          }).reverse();
+          result_str = "";
+          if (results.length === 1) {
+            return results[0][0] + ""
+          }
+          if (results.length === 2) {
+            return results[0][0] + " + " + results[1][0] + ""
+          }
+          if (results.length === 3) {
+            return results[0][0] + ", " + results[1][0] + " + " + results[2][0] + ""
+          }
+          if (results.length > 3) {
+            return results[0][0] + ", " + results[1][0] + " + "  + results[2][0] + " + more"
+          }
+          // for (var i = 0; i < results.length; i++) {
+          //     var key = results[i][0];
+          //     var value = results[i][1];
+          // }
+        }
+
+        function getUniversitiesFromMarkers(markers) {
+          var arrUniversities = [];
+          for (var i = 0; i < markers.length; i++) {
+            var indexMarker = markers[i];
+            arrUniversities.push(indexMarker.model.university);
+          }
+          return arrUniversities;
+        }
+
+        function getMostCommonStateFromUniversities(universities) {
+          var stateDict = {};
+          for (var i = 0; i < universities.length; i++) {
+            var indexUniversity = universities[i];
+            if (indexUniversity.state) {
+              if (stateDict[indexUniversity.state]) {
+                stateDict[indexUniversity.state] += 1;
+              } else {
+                stateDict[indexUniversity.state] = 1;
+              }
+            }
+          }
+          return stateDict;
+        }
+
+
+
+        if (universityArr.length > 10) {
+          var indexNumber = 1
+        } else {
+          var indexNumber = 2
+        }
+
+
+        var resultDict = {
+          text: "Colleges in " + getTopXStateStr,
+          title: '+more',
+          index: indexNumber
+        }
+        return resultDict;
+      }
+
+
+      var initClusterObj = function(marker_arr) {
+        var options_dict = {
+            minimumClusterSize:5,
+            calculator: clusterCalculator,
+            styles:[
+              {
+                width:125,
+                height:125,
+                url: generateClusterImgDataURI({bg_color:$scope.universities[0].school_color_dark, _text: ""}),
+                fontFamily: "Source Sans Pro",
+                fontWeight: "600",
+                textColor: "#FFFFFF",
+                textSize: 12,
+                // anchorText: "[0, 0]",
+                anchorIcon: "[0, 0]"
+              },
+              {
+                width:75,
+                height:75,
+                url: generateClusterImgDataURI({bg_color:$scope.universities[43].school_color_dark, _text: ""}),
+                fontFamily: "Source Sans Pro",
+                fontWeight: "600",
+                textColor: "#FFFFFF",
+                textSize: 12,
+                anchorText: "[0, 0]"
+              }
+            ],
+            title: "",
+            zoomOnClick: true,
+            maxZoom: 7,
+            gridSize: 60,
+            clusterClass: "university-svg-cluster",
+            // batchSize:
+            averageCenter: true
+        }
+        return options_dict
+      }
+
+
+
+      var initHomeMap = function() {
+          $scope.page.load.sections.two.display = true;
+          $scope.map = {
+          center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
+          control: {},
+          zoom:  mapDefaults.zoom,
+          dragging: true, //true while map is dragging state, false otherwise
+          refresh: false,
+          options: mapDefaults.options,
+          events: {tilesloaded: onMapRenderCompleteOnce},
+          clusterOptions: initClusterObj(),
+          bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
+          pan: true,
+          markers: generateXMarkersFromUniversities(200, $scope.universities),
+          rebuildMarkers: false,
+          window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+        }
+      }
 
       var createMarkerObj = function(obj) {
 
@@ -631,7 +704,9 @@ angular.module('uguru.util.controllers')
             banner_url: obj.banner_url,
             school_color_dark: obj.school_color_dark,
             name: obj.name,
-            tiny_name: obj.school_tiny_name
+            tiny_name: obj.school_tiny_name,
+            city: obj.city,
+            state: obj.state
         }
         return {
           id: obj.id,
@@ -644,8 +719,6 @@ angular.module('uguru.util.controllers')
           university: universityObj
         }
       }
-
-
 
       var generateXMarkersFromUniversities = function(x, universities_arr, with_interval) {
 

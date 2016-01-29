@@ -31,6 +31,8 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 		fadeOutElem: fadeOutElem,
 		animateIn: animateIn,
 		animateOut: animateOut,
+		activateSectionAnimations: activateSectionAnimations,
+		initializeSectionComponents: initializeSectionComponents
 	}
 
 
@@ -55,16 +57,40 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 
 	}
 
-	function animateIn(elem, css_class) {
-		elem.classList.add('animated', css_class);
-      	prefixedEventListener(elem,"AnimationStart",function(e){
-          elem.style.opacity = 1;
-          e.target.removeEventListener(e.type, false);
-      	});
-      	prefixedEventListener(elem,"AnimationEnd",function(e){
-        	elem.classList.remove(css_class, "animated");
-          	e.target.removeEventListener(e.type, false);
-      	});
+	 function activateSectionAnimations(elements, css_arr, delay_arr) {
+        for (var i = 0; i < elements.length; i ++) {
+          animateIn(elements[i], css_arr[i], delay_arr[i]);
+        }
+      }
+
+	function initializeSectionComponents(section_var, selector_arr, css_arr, delay_arr) {
+        for (var i = 0; i < selector_arr.length; i++) {
+          var indexSelector = selector_arr[i];
+          var elem = document.querySelector(indexSelector);
+          if (!elem) {
+            continue
+          }
+          if (!section_var.elements) {
+            section_var.elements = [elem];
+          } else {
+            section_var.elements.push(elem);
+          }
+          console.log(indexSelector, 'added to section var', css_arr[i], delay_arr[i]);
+        }
+     }
+
+	function animateIn(elem, css_class, delay) {
+		$timeout(function() {
+			elem.classList.add('animated', css_class);
+	      	prefixedEventListener(elem,"AnimationStart",function(e){
+	          elem.style.opacity = 1;
+	          e.target.removeEventListener(e.type, false);
+	      	});
+	      	prefixedEventListener(elem,"AnimationEnd",function(e){
+	        	elem.classList.remove(css_class, "animated");
+	          	e.target.removeEventListener(e.type, false);
+	      	});
+		}, delay || 0);
 	}
 
 	function animateOut(elem, css_class, cb) {

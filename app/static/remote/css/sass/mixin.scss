@@ -315,6 +315,12 @@
 	-o-animation-duration: $duration;
 	animation-duration: $duration;
 }
+@mixin animation-fill-mode($mode) {
+	-webkit-animation-fill-mode: $mode;
+	-moz-animation-fill-mode: $mode;
+	-o-animation-fill-mode: $mode;
+	animation-fill-mode: $mode;
+}
 @mixin animation-delay($delay) {
 	-webkit-animation-delay: $delay;
 	-moz-animation-delay: $delay;

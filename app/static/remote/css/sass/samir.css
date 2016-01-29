@@ -507,4 +507,8 @@ ul#guru-courses-user-profile {
 .invisible .university-svg-icon svg {
   visibility: hidden !important; }
 
+.opacity-0 {
+  filter: alpha(opacity=0);
+  opacity: 0; }
+
 /*# sourceMappingURL=samir.css.map */

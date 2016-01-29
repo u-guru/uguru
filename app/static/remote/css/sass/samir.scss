@@ -619,3 +619,7 @@ ul#guru-courses-user-profile {
 .invisible .university-svg-icon svg{
 	visibility:hidden !important;
 }
+
+.opacity-0 {
+	@include opacity(0);
+}
