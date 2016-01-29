@@ -2400,75 +2400,48 @@
 			}
 			> footer {
 				.border {
-					background: $shamrock!important;
+					background: $slate!important;
 					&:before {
 						border-top-color: $charcoal!important;
 					}
 				}
 			}
 		}
-		&#splash-start {
-			background: $shamrock;
-			text-align: center;
-			> div {
-				padding-bottom: 64px;
-			}
-			h1, h2 {
-				padding: 0 15px;
-				font-weight: 600;
-			}
-			h1 {
-				font-size: 28px;
-			}
-			h2 {
-				font-size: 20px;
-			}
-			@media screen and (min-width: 768px) {
-				h1 {
-					font-size: 36px;
-				}
-				h2 {
-					font-size: 24px;
-				}
-			}
+		&#splash-footer {
+			background: $slate;
+			padding: 36px 0 72px;
 			ul {
-				@include listless;
 				@include flex;
-				@include flex-wrap;
 				@include flex-center;
-				max-width: 900px;
-				margin: 0 auto;
-				padding: 7.5px;
 				li {
-					width: 100%;
-					padding: 7.5px;
-					button {
-						display: block;
-						width: 100%;
-						max-width: none;
-						background: none;
-						font-size: 22px;
-						letter-spacing: 0;
-						text-transform: none;
-						&:hover, &:focus {
-							background: white;
-							color: $shamrock;
+					position: relative;
+					font-size: 36px;
+					font-weight: 600;
+					&:first-child, &:last-child {
+						z-index: 2;
+					}
+					&:nth-child(2) {
+						@include flex;
+						@include flex-center;
+						z-index: 1;
+						width: 84px;
+						height: 84px;
+					}
+					svg {
+						@include transition(1.2s ease-in-out);
+						@include animation-name(pulse-heart);
+						@include animation-duration(1.2s);
+						@include animation-iteration-count(infinite);
+						@include transform-origin(center);
+						width: 72px;
+						height: 72px;
+						path {
+							stroke: mix($cerise, $auburn);
+							fill: mix($cerise, $auburn);
 						}
 					}
-				}
-			}
-			@media screen and (min-width: 768px) {
-				> div {
-					padding-bottom: 0;
-				}
-				ul {
-					padding: 15px;
-					li {
-						width: 50%;
-						padding: 15px;
-						button {
-							font-size: 24px;
-						}
+					span:last-child svg {
+						@include animation-delay(.6s);
 					}
 				}
 			}

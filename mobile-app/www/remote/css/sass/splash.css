@@ -3131,48 +3131,19 @@
 }
 
 .splash-landing > section#become-guru > footer .border {
-  background: #69B3A5 !important;
+  background: #40484B !important;
 }
 
 .splash-landing > section#become-guru > footer .border:before {
   border-top-color: #2B3234 !important;
 }
 
-.splash-landing > section#splash-start {
-  background: #69B3A5;
-  text-align: center;
+.splash-landing > section#splash-footer {
+  background: #40484B;
+  padding: 36px 0 72px;
 }
 
-.splash-landing > section#splash-start > div {
-  padding-bottom: 64px;
-}
-
-.splash-landing > section#splash-start h1, .splash-landing > section#splash-start h2 {
-  padding: 0 15px;
-  font-weight: 600;
-}
-
-.splash-landing > section#splash-start h1 {
-  font-size: 28px;
-}
-
-.splash-landing > section#splash-start h2 {
-  font-size: 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .splash-landing > section#splash-start h1 {
-    font-size: 36px;
-  }
-  .splash-landing > section#splash-start h2 {
-    font-size: 24px;
-  }
-}
-
-.splash-landing > section#splash-start ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.splash-landing > section#splash-footer ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3180,9 +3151,6 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -3191,45 +3159,76 @@
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 7.5px;
 }
 
-.splash-landing > section#splash-start ul li {
-  width: 100%;
-  padding: 7.5px;
+.splash-landing > section#splash-footer ul li {
+  position: relative;
+  font-size: 36px;
+  font-weight: 600;
 }
 
-.splash-landing > section#splash-start ul li button {
-  display: block;
-  width: 100%;
-  max-width: none;
-  background: none;
-  font-size: 22px;
-  letter-spacing: 0;
-  text-transform: none;
+.splash-landing > section#splash-footer ul li:first-child, .splash-landing > section#splash-footer ul li:last-child {
+  z-index: 2;
 }
 
-.splash-landing > section#splash-start ul li button:hover, .splash-landing > section#splash-start ul li button:focus {
-  background: white;
-  color: #69B3A5;
+.splash-landing > section#splash-footer ul li:nth-child(2) {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  z-index: 1;
+  width: 84px;
+  height: 84px;
 }
 
-@media screen and (min-width: 768px) {
-  .splash-landing > section#splash-start > div {
-    padding-bottom: 0;
-  }
-  .splash-landing > section#splash-start ul {
-    padding: 15px;
-  }
-  .splash-landing > section#splash-start ul li {
-    width: 50%;
-    padding: 15px;
-  }
-  .splash-landing > section#splash-start ul li button {
-    font-size: 24px;
-  }
+.splash-landing > section#splash-footer ul li svg {
+  -webkit-transition: all 1.2s ease-in-out;
+  -o-transition: all 1.2s ease-in-out;
+  -ms-transition: all 1.2s ease-in-out;
+  -moz-transition: all 1.2s ease-in-out;
+  transition: all 1.2s ease-in-out;
+  -webkit-animation-name: pulse-heart;
+  -moz-animation-name: pulse-heart;
+  -o-animation-name: pulse-heart;
+  animation-name: pulse-heart;
+  -webkit-animation-duration: 1.2s;
+  -moz-animation-duration: 1.2s;
+  -o-animation-duration: 1.2s;
+  animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  width: 72px;
+  height: 72px;
+}
+
+.splash-landing > section#splash-footer ul li svg path {
+  stroke: #eb4478;
+  fill: #eb4478;
+}
+
+.splash-landing > section#splash-footer ul li span:last-child svg {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  animation-delay: 0.6s;
 }
 
 .splash-landing > section.essay-pricing .main {
