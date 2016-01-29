@@ -42,7 +42,7 @@ angular.module('uguru.util.controllers')
         viewed: false,
         beforeScroll: null,
         firstViewed: {
-          css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
+          css_classes:['bounceInDown:keep', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
           selectors:['.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)'],
           delays: [500, 550, 600, 650, 700, 750],
         },
