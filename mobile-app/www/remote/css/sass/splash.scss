@@ -250,6 +250,9 @@
 					color: $lake;
 				}
 			}
+			&.show {
+				@include flex-important;
+			}
 		}
 		.right {
 			height: 100%;

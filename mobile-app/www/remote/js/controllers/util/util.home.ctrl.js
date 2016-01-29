@@ -137,13 +137,13 @@ angular.module('uguru.util.controllers')
               $scope.page.header.active_tab.university = false;
               $scope.page.header.active_tab.become_guru = false;
               $scope.page.header.active_tab.how_it_works = true;
-              homeNavHeader.classList.add('show');
+              splashHiwNav.classList.add('active');
             } else {
               $scope.page.scroll.section_index = 1;
               $scope.page.header.active_tab.university = true;
               $scope.page.header.active_tab.how_it_works = false;
               $scope.page.header.active_tab.become_guru = false;
-              homeNavHeader.classList.remove('show');
+              splashHiwNav.classList.remove('active');
             }
             // $scope.page.header.showOnScrollNav = 'bg-charcoal'
             //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
