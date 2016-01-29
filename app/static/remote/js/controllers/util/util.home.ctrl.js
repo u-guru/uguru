@@ -32,19 +32,121 @@ angular.module('uguru.util.controllers')
     SearchboxService, GMapService,GUtilService, ContentService, CTAService, PeelService, TypedService,
     $localstorage, $ionicViewSwitcher, $ionicModal, AnimationService, University, CounterService, uiGmapIsReady, $ionicSlideBoxDelegate, $compile) {
 
+      $scope.page = {animation: false, dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
 
 
+      $scope.page.animations = {hiw:{}};
+      //@gabrielle just worry about this
 
+      $scope.page.animations.hiw = {
+        nav: {enter: false, exit:false, exit_speed:650}
+      }
+      // $scope.page.animations = {
+      //   hiw: {
+      //     states: [],
+      //     header: 'fadeIn',
+      //     nav: { container: {_class:"bounce-down", show: false, duration: 1000, ease:'back'}, nav_link: 'bounceInUp'}, //ngfx
+      //     postits: {
+      //       mobile: {
+      //         animations: [],
+      //       },
+      //       desktop: {
+      //         animations: ["bounceInDown", "bounceInRight", "bounceInLeft", "bounceInLeft", "bounceInRight", "bounceInUp"],
+      //         ordering: [2, 6, 4, 1, 3, 5],
+      //         interval: 100,
+      //       }
+      //     },
+      //     tape: {
+      //       desktop: {
+      //         interval: 100,
+      //         animations: [4, 2, 3],
+      //         animations: ["zoomInUp", "zoomInUp", "zoomInUp"]
+      //       }
+      //     },
+      //     hover: {
+      //       icon: {}
+      //     },
+      //     selectors: []
+      //   }
+      // }
+
+      var getHiwAnimationElements = function(selector_arr) {
+        $scope.page.animations.hiw.state = 1;
+      }
+
+      var triggerHIWAnimations = function() {
+
+      }
+
+      // t = 0, hiw_nav, postits
+      // t = 1, after staggered
+
+
+      //Scope var declarations
+      var onSectionOneLoad = function() {
+        initUniversityTypeWriter();
+        $timeout(function() {
+          $scope.root.loader.body.hide = true;
+          $scope.page.scroll.section_index = 0;
+          $timeout(function() {
+            initHomePageWayPoint();
+            Waypoint.refreshAll();
+          }, 1000)
+        }, 250)
+      }
+      $scope.university = {}
+      // $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
+      $scope.page.sidebar = {show:false};
+      $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}};
+      $scope.page.status = {loaded:false, showLoader:true};
+      $scope.page.header = {showOnScrollNav:'', becomeGuruHeaderActive:false, active_tab:{how_it_works:false, become_guru:false, university:false}};
+      $scope.page.load = {sections:{}, complete:false};
+      $scope.page.scroll = {section_index:0};
+      $scope.page.load.sections = {
+        one: {visible:true, display:true, nested:{bg_image: false}, ready:onSectionOneLoad},
+        two: {visible:true, display:true, nested:{}, on_activate:null},
+        three: {visible:true, display:true, nested:{}, on_activate:null},
+        four: {visible:true, display:true, nested:{}, on_activate:null},
+        five: {visible:true, display:true, nested:{}, on_activate:null},
+        footer: {visible:true, display:true, nested:{}, on_activate:null}
+      }
+
+      // $scope.page.animations = {hiw: {}};
+      // $scope.page.animations.hiw = {
+      //   // on first appearance
+
+      //   onScrollEnd: null,
+      //   onScrollEndOnce: null, //first time
+      //   generalCard: null, //apply to all cards
+      // }
+
+      //Scope func declarations
+      $scope.universityButtonClicked;
+      $scope.map;
+      $scope.scrollToNextSection;
+      $scope.scrollUpSection;
+      $scope.scrollToSection;
+      $scope.launchSupportOverlay;
+      $scope.goToUniversity;
+      $scope.goToSignup;
+      $scope.toggleSidebar;
+
+      //Helper Function declarations
+
+      //TODO CLEANUP REST
       $ionicSideMenuDelegate.canDragContent(false);
       var shouldShowBecomeGuruHeader = false;
       var shouldRenderMap = true;
       var mainPageContainer = document.querySelector('#home-splash');
       var homeNavHeader = document.querySelector('#home-nav-header');
+      var splashHiwNav = document.querySelector("#splash-hiw-nav");
       var homePageWayPoint;
       var pageNavbarHeight = 70;
+      var sectionSneakHeight = 36;
+      var scrollOffset = pageNavbarHeight + sectionSneakHeight - 2;
 
       //cta specific initialization vars
-      $scope.activeBrowseTabIndex = 1;
+      $scope.activeBrowseTabIndex = 0;
       $scope.activeTabIndex = 0;
       $scope.profile = {public_mode: true};
       $scope.sampleProfiles = ContentService.sampleProfiles;
@@ -108,50 +210,59 @@ angular.module('uguru.util.controllers')
         TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
       }
 
+      // prefixer helper function
+
+      var pfx = ["webkit", "moz", "MS", "o", ""];
+      function prefixedEventListener(element, type, callback) {
+          for (var p = 0; p < pfx.length; p++) {
+              if (!pfx[p]) type = type.toLowerCase();
+              element.addEventListener(pfx[p]+type, callback, false);
+          }
+      }
+
+
       var initHomePageWayPoint = function() {
 
         var scrollUniversityCallback = function(direction, element, scrollTop) {
             if (direction === 'down') {
               homeNavHeader.classList.add('bg-charcoal');
-
-              $scope.page.header.active_tab.become_guru = false;
-              $scope.page.header.active_tab.how_it_works = false;
-              $scope.page.header.active_tab.university = true;
+              $scope.page.scroll.section_index = 1;
             } else {
               homeNavHeader.classList.remove('bg-charcoal');
-              $scope.page.header.active_tab.become_guru = false;
-              $scope.page.header.active_tab.how_it_works = true;
-              $scope.page.header.active_tab.university = false;
+              $scope.page.scroll.section_index = 0;
             }
             // $scope.page.header.showOnScrollNav = 'bg-charcoal'
             //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
         }
 
+
+
         var scrollHowitWorksCallback = function(direction, element, scrollTop) {
             if (direction === 'down') {
-              console.log('scrolling past how it works');
-              $scope.page.header.active_tab.university = false;
-              $scope.page.header.active_tab.become_guru = false;
-              $scope.page.header.active_tab.how_it_works = true;
+              $scope.page.scroll.section_index = 2;
+              AnimationService.animateIn(splashHiwNav, "bounceInDown");
+
+
             } else {
-              $scope.page.header.active_tab.university = true;
-              $scope.page.header.active_tab.how_it_works = false;
-              $scope.page.header.active_tab.become_guru = false;
-            }
-            // $scope.page.header.showOnScrollNav = 'bg-charcoal'
-            //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
+              $scope.page.scroll.section_index = 1;
+
+              var callback = function() {
+                splashHiwNav = document.querySelector('#splash-hiw-nav');
+              }
+              AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
+          }
         }
 
         var scrollBecomeGuruCallback = function(direction, element, scrollTop) {
             if (direction === 'down') {
-              console.log('scrolling past become a guru');
-              $scope.page.header.active_tab.university = false;
-              $scope.page.header.active_tab.become_guru = true;
-              $scope.page.header.active_tab.how_it_works = false;
+
+              var callback = function() {
+                splashHiwNav = document.querySelector('#splash-hiw-nav');
+              }
+              AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
+
             } else {
-              $scope.page.header.active_tab.university = false;
-              $scope.page.header.active_tab.how_it_works = true;
-              $scope.page.header.active_tab.become_guru = false;
+              $scope.page.scroll.section_index = 1;
             }
             // $scope.page.header.showOnScrollNav = 'bg-charcoal'
             //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
@@ -159,41 +270,42 @@ angular.module('uguru.util.controllers')
 
         var waypointDict = {
           "splash-home": {func:null},
-          "how-it-works": {func:scrollHowitWorksCallback, offset: 36 + 70},
-          "splash-university": {func:scrollUniversityCallback, offset:36 + 70}, //precursor-section-height + navbar.height
-          "splash-browse": {func:null, offset:70},
-          "become-guru": {func:scrollBecomeGuruCallback, offset:70}
+          "splash-university": {func:scrollUniversityCallback, offset:scrollOffset}, //precursor-section-height + navbar.height
+          "splash-browse": {func:scrollHowitWorksCallback, offset:scrollOffset},
+          "become-guru": {func:scrollBecomeGuruCallback, offset:scrollOffset}
         }
-
         ScrollService.initArrWaypoints(waypointDict, "home-splash");
 
       }
 
-      var onSectionOneLoad = function() {
-        $scope.root.loader.body.hide = true;
-        initHomePageWayPoint();
-        initUniversityTypeWriter();
-      }
+
 
       // page initialize vars
-      $scope.university = {}
-      $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
-      $scope.page.sidebar = {show:false};
-      $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}};
-      $scope.page.status = {loaded:false, showLoader:true};
-      $scope.page.header = {showOnScrollNav:'', becomeGuruHeaderActive:false, active_tab:{how_it_works:false, become_guru:false, university:false}};
-      $scope.page.load = {sections:{}, complete:false};
-      $scope.page.load.sections = {
-        one: {visible:true, display:true, nested:{bg_image: false}, ready:onSectionOneLoad()},
-        two: {visible:true, display:true, nested:{}, on_activate:null},
-        three: {visible:true, display:true, nested:{}, on_activate:null},
-        four: {visible:true, display:true, nested:{}, on_activate:null},
-        five: {visible:true, display:true, nested:{}, on_activate:null},
-        footer: {visible:true, display:true, nested:{}, on_activate:null}
+
+
+      $scope.scrollNextSection = function() {
+        if ($scope.page.scroll.section_index === 0) {
+          $scope.scrollToSection("#splash-university");
+        }
+        if ($scope.page.scroll.section_index === 1) {
+          $scope.scrollToSection("#splash-browse");
+        }
+        if ($scope.page.scroll.section_index === 2) {
+          $scope.scrollToSection("#become-guru");
+        }
       }
 
-
-
+      $scope.scrollUpSection = function() {
+        if ($scope.page.scroll.section_index === 2) {
+          $scope.scrollToSection("#splash-browse");
+        }
+        if ($scope.page.scroll.section_index === 1) {
+          $scope.scrollToSection("#splash-university");
+        }
+        if ($scope.page.scroll.section_index === 2) {
+          $scope.scrollToSection("#splash-home");
+        }
+      }
 
       //outgoing transitioning functions
       $scope.selectUniversityAndTransition = function(university, $event) {
@@ -246,7 +358,7 @@ angular.module('uguru.util.controllers')
       var generatePageLinks = function() {
         initSupportBox();
         var howItWorksFunc = function() {
-          $scope.scrollToSection("#how-it-works")
+          $scope.scrollToSection("#splash-browse")
         }
         var browseFunc = function() {
           $scope.scrollToSection("#splash-browse");
@@ -344,7 +456,7 @@ angular.module('uguru.util.controllers')
         var successFunction = null;
         var pageParentContainer = '#home-splash';
 
-        if (section_selector === '#how-it-works') {
+        if (section_selector === '#splash-browse') {
           $scope.page.header.active_tab.university = false;
           $scope.page.header.active_tab.become_guru = false;
           $scope.page.header.active_tab.how_it_works = true;
@@ -362,7 +474,7 @@ angular.module('uguru.util.controllers')
           $scope.page.header.active_tab.university = true;
         }
 
-        ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector);
+        ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector, scrollOffset);
       }
 
       // rendering functions

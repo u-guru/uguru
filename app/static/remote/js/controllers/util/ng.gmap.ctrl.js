@@ -110,12 +110,12 @@ angular.module('uguru.util.controllers')
           id: obj.id,
           latitude: obj.latitude,
           longitude: obj.longitude,
-          icon: {},
-          // options: { //markerWithLabelOptions
-          //   labelClass: 'university-svg-icon',
-          //   labelContent: generateSVGLabelContent(obj.school_color_dark, obj.school_color_light, obj.school_tiny_name),
-          //   labelAnchor: "0 200"
-          // },
+          icon: generateNullIcon(),
+          options: { //markerWithLabelOptions
+            labelClass: 'university-svg-icon',
+            labelContent: generateSVGLabelContent(obj.school_color_dark, obj.school_color_light, obj.school_tiny_name),
+            labelAnchor: "0 200"
+          },
           events: {
             click: onMarkerClick
           },

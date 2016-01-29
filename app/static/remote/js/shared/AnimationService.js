@@ -28,8 +28,19 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 		slide: slide,
 		flip: flip,
 		shakeElem: shakeElem,
-		fadeOutElem: fadeOutElem
+		fadeOutElem: fadeOutElem,
+		animateIn: animateIn,
+		animateOut: animateOut,
 	}
+
+
+  	function prefixedEventListener(element, type, callback) {
+      var pfx = ["webkit", "moz", "MS", "o", ""];
+      for (var p = 0; p < pfx.length; p++) {
+          if (!pfx[p]) type = type.toLowerCase();
+          element.addEventListener(pfx[p]+type, callback, false);
+      }
+  	}
 
 	function initSlide() {
 		if(DeviceService.isMobile() && window.plugins.nativepagetransitions) {
@@ -43,6 +54,42 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 		}
 
 	}
+
+	function animateIn(elem, css_class) {
+		elem.classList.add('animated', css_class);
+      	prefixedEventListener(elem,"AnimationStart",function(e){
+          elem.style.opacity = 1;
+          e.target.removeEventListener(e.type, false);
+      	});
+      	prefixedEventListener(elem,"AnimationEnd",function(e){
+        	elem.classList.remove(css_class, "animated");
+          	e.target.removeEventListener(e.type, false);
+      	});
+	}
+
+	function animateOut(elem, css_class, cb) {
+
+		elem.classList.add('animated', css_class);
+	    prefixedEventListener(elem,"AnimationStart",function(e){
+	    	elem.style.opacity = 0;
+	       	e.target.removeEventListener(e.type, false);
+	    });
+
+      	prefixedEventListener(elem,"AnimationEnd",function(e){
+        	elem.classList.remove('animated', css_class);
+          	e.target.removeEventListener(e.type, false);
+          	// $timeout(function() {
+      		var cloneNode = e.target.cloneNode(true)
+      		e.target.parentNode.replaceChild(cloneNode, e.target);
+      		cb();
+
+          		// cb();
+          	// }, 100);
+
+          	// splashHiwNav = document.querySelector('#splash-hiw-nav');
+      	});
+	}
+
 
 	function shakeElem(elem, duration, callback) {
 

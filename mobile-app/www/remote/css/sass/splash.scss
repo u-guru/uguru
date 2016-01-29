@@ -407,12 +407,15 @@
 		position: fixed;
 		top: 50px;
 		left: 0;
-		z-index: 99;
+		z-index: 98;
 		width: 100%;
 		background: rgba(white,.9);
-		&:not(.active) {
+		@include opacity(0);
+		&.animated {
+			@include opacity(1);
+		}
+		&:not(.animated) {
 			@include opacity(0);
-			z-index: -99;
 		}
 		> div {
 			a {

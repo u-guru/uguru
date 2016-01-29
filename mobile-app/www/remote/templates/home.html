@@ -26,16 +26,16 @@
 			</a>
 			<!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
 		</ion-pane>
-		
+
 		<!-- END Home Page CTAS -->
 
 		<header class='splash-header' id='home-nav-header' ng-class="{'bg-charcoal': page.header.showOnScrollNav.length, 'active': becomeGuruHeaderActive}">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
 
 			<div class="ugrid-3">
-				<a name='how-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.how_it_works}" ng-click='scrollToSection("#how-it-works")'>How It Works</a>
-				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.university}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
-				<a name='become-scroll' class="splash-nav-link ng-class:{'active':page.header.active_tab.become_guru}" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
+				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 1}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
+                <a name='how-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 2}" ng-click='scrollToSection("#splash-browse")'>How It Works</a>
+				<a name='become-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 3}" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
 				<hr/>
 			</div>
 
@@ -52,7 +52,7 @@
 				<a class="splash-nav-link highlight ng-class:{'hide':user.id}" ng-click='goToSignup()'>Login</a>
 			</div>
 		</header>
-		
+
 		<div class="splash-sub-header tab-bar slide" id='splash-hiw-nav'>
 			<div>
 				<a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
@@ -624,9 +624,8 @@
 	</div>
 </section>
 </main>
-<!-- </ion-content> -->
-<div id='last-div-main' onload="lastDivLoaded()"> </div>
 </div>
+<!-- </ion-content> -->
 <!-- </ion-content> -->
 <!-- </ion-view> -->
 <!-- </ion-scroll> -->
