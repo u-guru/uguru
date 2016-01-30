@@ -6,7 +6,7 @@
 	<main id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);'>
 		<!-- START Home Page CTAs -->
 
-		<aside id='cta-modal-sidebar' class='splash-sidebar ng-class:{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class:{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
 
 		<ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'">
 		</ion-pane>
@@ -39,7 +39,7 @@
 			</div>
 
 			<div class="right">
-				<a name='sidebar' class="splash-burger" ng-click="toggleSidebar()">
+				<a name='sidebar' class="splash-burger" id='cta-box-sidebar'>
 					<svg viewBox="0 0 100 100">
 						<circle cx="50" cy="50" r="36"></circle>
 						<path d="M31,35.5 L69,35.5"></path>
@@ -248,7 +248,7 @@
 					</ul>
 				</div>
 				<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-				<div style='height:500px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}' ng-if='false'>
+				<div style='height:500px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
 					<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
 						<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
 						</ui-gmap-markers>

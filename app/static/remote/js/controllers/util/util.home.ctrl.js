@@ -236,10 +236,6 @@ angular.module('uguru.util.controllers')
 
 
 
-      var whileLoaderIsOn = function() {
-        initHomeMap();
-      }
-
       // render page functions
       var initUniversityTypeWriter = function() {
         TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
@@ -558,6 +554,8 @@ angular.module('uguru.util.controllers')
           }, 1000)
           return;
         }
+
+        CTAService.initSingleCTA("#cta-box-sidebar", "#home-splash");
         CTAService.initSingleCTA('#cta-box-baking', '#home-splash', showCTACallback("bakery"));
         CTAService.initSingleCTA('#cta-box-household', '#home-splash', showCTACallback("household"));
         CTAService.initSingleCTA('#cta-box-photography', '#home-splash', showCTACallback("photography"));
