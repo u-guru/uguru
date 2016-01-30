@@ -2,6 +2,8 @@
 .splash-landing {
   background: white;
   overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .splash-landing button:not([class*="btn-ghost"]) {

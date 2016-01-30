@@ -4,6 +4,8 @@
 .splash-landing {
 	background: white;
 	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	button:not([class*="btn-ghost"]) {
 		padding-left: 0!important;
 		padding-right: 0!important;
