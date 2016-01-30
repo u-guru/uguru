@@ -629,7 +629,7 @@ ul#guru-courses-user-profile {
 	#home-splash {
 		overflow-y: scroll;
   		-webkit-overflow-scrolling: touch;
-  		-webkit-backface-visibility: hidden !important;
+  		// -webkit-backface-visibility: hidden !important;
   		// height:calc(100%);
   		// -webkit-perspective: 1000;
   		// height:calc(100% + 1px);
@@ -658,7 +658,7 @@ ul#guru-courses-user-profile {
 div#splash-hiw-nav.splash-sub-header.tab-bar.slide,
 header#home-nav-header.splash-header,
 #essay-home-backdrop, .splash-toast, .hide,
-#splash-footer-next,
+#splash-footer-next
 {
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;

@@ -513,8 +513,7 @@ ul#guru-courses-user-profile {
 
 .platform-ios #home-splash {
   overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  -webkit-backface-visibility: hidden !important; }
+  -webkit-overflow-scrolling: touch; }
 .platform-ios .splash-footer-link {
   position: fixed !important;
   -webkit-backface-visibility: hidden !important; }
